@@ -14,8 +14,9 @@ export interface ChatMessageVariables {
   authorMarginRight: string;
   authorMarginRightCompact: string;
   authorColor: string;
-  authorColorCompact: string;
+  authorColorMineCompact: string;
   authorFontWeight: number;
+  authorFontWeightCompact: number;
   headerMarginBottom: string;
   compactHoverBackground: string;
   compactSpacing: string;
@@ -35,7 +36,7 @@ export interface ChatMessageVariables {
   reactionGroupMarginLeft: string;
   reactionGroupBorderColor: string;
   showActionMenu?: boolean;
-  timestampColorCompact: string;
+  timestampColor: string;
   timestampColorMine: string;
   zIndex: number;
   overlayZIndex: number;
@@ -55,8 +56,9 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   authorMarginRight: pxToRem(12),
   authorMarginRightCompact: pxToRem(8),
   authorColor: siteVars.colorScheme.default.foreground,
-  authorColorCompact: siteVars.colorScheme.brand.foreground,
+  authorColorMineCompact: siteVars.colorScheme.brand.foreground,
   authorFontWeight: siteVars.fontWeightSemibold,
+  authorFontWeightCompact: siteVars.fontWeightSemibold,
   headerMarginBottom: pxToRem(2),
   compactHoverBackground: siteVars.colorScheme.default.backgroundHover3,
   compactSpacing: pxToRem(12),
@@ -76,7 +78,7 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   reactionGroupMarginLeft: pxToRem(12),
   reactionGroupBorderColor: 'transparent',
   showActionMenu: undefined,
-  timestampColorCompact: siteVars.colorScheme.default.foreground2,
+  timestampColor: undefined,
   timestampColorMine: siteVars.colorScheme.default.foreground1,
   zIndex: siteVars.zIndexes.foreground,
   overlayZIndex: siteVars.zIndexes.overlay,

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react_v8.21.1",
+      "version": "8.21.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "This ports the change to allow title on menu sections to be an IContextualMenuItem to support lang props",
+            "author": "makopch@microsoft.com",
+            "commit": "bed5091b9baf6359298e40849e2810fb0c80ba85",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 07:35:16 GMT",
       "tag": "@fluentui/react_v8.21.0",
       "version": "8.21.0",

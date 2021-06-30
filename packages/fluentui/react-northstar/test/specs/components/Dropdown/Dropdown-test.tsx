@@ -752,10 +752,11 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).toHaveTextContent(items[itemToBeClickedIndex]);
     });
 
-    it('has onChange called when item is added', () => {
+    it('has onChange and onSearchQueryChange called when item is added', () => {
       const itemToClickIndex = 2;
       const onChange = jest.fn();
-      const { clickOnItemAtIndex } = renderDropdown({ open: true, onChange });
+      const onSearchQueryChange = jest.fn();
+      const { clickOnItemAtIndex } = renderDropdown({ open: true, onChange, onSearchQueryChange });
 
       clickOnItemAtIndex(itemToClickIndex);
 
@@ -764,6 +765,13 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           value: items[itemToClickIndex],
+        }),
+      );
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenCalledWith(
+        null,
+        expect.objectContaining({
           searchQuery: items[itemToClickIndex],
         }),
       );
@@ -824,11 +832,13 @@ describe('Dropdown', () => {
       expect(itemsListNode.textContent).toBe(noResultsMessage);
     });
 
-    it('has onChange called with null value by hitting Escape in search input', () => {
+    it('has onChange and onSearchQueryChange called with null value by hitting Escape in search input', () => {
       const onChange = jest.fn();
+      const onSearchQueryChange = jest.fn();
       const { keyDownOnSearchInput } = renderDropdown({
         search: true,
         onChange,
+        onSearchQueryChange,
         defaultValue: items[2],
         defaultSearchQuery: items[2],
       });
@@ -840,9 +850,10 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           value: null,
-          searchQuery: '',
         }),
       );
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ searchQuery: '' }));
     });
 
     it('onChange is called after onSearchQueryChange', () => {
@@ -1327,20 +1338,20 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           searchQuery: '',
-          value: null,
-          open: false,
         }),
       );
     });
 
     it('has onChange called with null when changed to empty string and there was item selected', () => {
       const onChange = jest.fn();
+      const onSearchQueryChange = jest.fn();
       const { changeSearchInput, getClearIndicatorWrapper } = renderDropdown({
         defaultValue: items[0],
         defaultOpen: true,
         search: true,
         clearable: true,
         onChange,
+        onSearchQueryChange,
         defaultSearchQuery: items[0],
       });
 
@@ -1353,8 +1364,15 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           value: null,
-          searchQuery: '',
           open: false,
+        }),
+      );
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: '',
         }),
       );
     });
@@ -1386,11 +1404,14 @@ describe('Dropdown', () => {
     });
 
     it('is set to empty when item is selected in multiple search', () => {
-      const { clickOnItemAtIndex, searchInputNode, getSelectedItemNodes } = renderDropdown({
+      const { clickOnItemAtIndex, searchInputNode, getSelectedItemNodes, changeSearchInput } = renderDropdown({
         search: true,
         multiple: true,
         defaultOpen: true,
       });
+
+      changeSearchInput('item');
+      expect(searchInputNode).toHaveValue('item');
 
       clickOnItemAtIndex(2);
 

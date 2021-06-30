@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.1.3)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.1.2..@fluentui/codemods_v8.1.3)
+
+### Patches
+
+- Remove unnecessary dep on semver ([PR #18689](https://github.com/microsoft/fluentui/pull/18689) by elcraig@microsoft.com)
 
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.1.2)
 

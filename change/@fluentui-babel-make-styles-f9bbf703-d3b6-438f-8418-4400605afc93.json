@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update fixtures to match latest implementation",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
