@@ -21,7 +21,7 @@
     "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "storybook",
+    "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest"
   },
