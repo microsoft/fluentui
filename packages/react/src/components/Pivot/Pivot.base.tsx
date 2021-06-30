@@ -247,7 +247,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           role="tablist"
           direction={FocusZoneDirection.horizontal}
           {...focusZoneProps}
-          className={css(classNames.root, focusZoneProps.className)}
+          className={css(classNames.root, focusZoneProps?.className)}
         >
           {items}
           {overflowBehavior === 'menu' && (
