@@ -39,7 +39,7 @@
     "@fluentui/foundation-legacy": "^8.1.4",
     "@fluentui/merge-styles": "^8.1.2",
     "@fluentui/react": "^8.21.1",
-    "@fluentui/react-avatar": "^9.0.0-alpha.48",
+    "@fluentui/react-avatar": "^9.0.0-alpha.49",
     "@fluentui/react-button": "^9.0.0-alpha.51",
     "@fluentui/react-charting": "^5.3.2",
     "@fluentui/react-checkbox": "^9.0.0-alpha.5",
