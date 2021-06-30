@@ -41,7 +41,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >
@@ -50,7 +49,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         </strong>
       </div>
       <div
-        aria-label="number 40 of 63"
         data-is-focusable={true}
         role="text"
       >
@@ -211,7 +209,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >
@@ -220,7 +217,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         </strong>
       </div>
       <div
-        aria-label="number 40 of 63"
         data-is-focusable={true}
         role="text"
       >
@@ -381,7 +377,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >
@@ -390,7 +385,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         </strong>
       </div>
       <div
-        aria-label="number 63"
         data-is-focusable={true}
         role="text"
       >
@@ -537,7 +531,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >
@@ -546,7 +539,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         </strong>
       </div>
       <div
-        aria-label="number 40 of 63"
         data-is-focusable={true}
         role="text"
       >
@@ -707,7 +699,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >
@@ -846,7 +837,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >
@@ -855,7 +845,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </strong>
       </div>
       <div
-        aria-label="number 40 of 63"
         data-is-focusable={true}
         role="text"
       >
@@ -1016,7 +1005,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           }
     >
       <div
-        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
         data-is-focusable={true}
         role="text"
       >

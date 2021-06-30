@@ -79,14 +79,19 @@
     "@fluentui/foundation-legacy": { "root": "packages/foundation-legacy", "projectType": "library" },
     "@fluentui/jest-serializer-make-styles": {
       "root": "packages/jest-serializer-make-styles",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/jest-serializer-make-styles/src"
     },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
       "projectType": "library"
     },
     "@fluentui/keyboard-key": { "root": "packages/keyboard-key", "projectType": "library" },
-    "@fluentui/make-styles": { "root": "packages/make-styles", "projectType": "library" },
+    "@fluentui/make-styles": {
+      "root": "packages/make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/make-styles/src"
+    },
     "@fluentui/merge-styles": { "root": "packages/merge-styles", "projectType": "library" },
     "@fluentui/monaco-editor": { "root": "packages/monaco-editor", "projectType": "library" },
     "@fluentui/public-docsite-setup": { "root": "packages/public-docsite-setup", "projectType": "library" },
@@ -99,7 +104,7 @@
     "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
     "@fluentui/react-badge": { "root": "packages/react-badge", "projectType": "library" },
     "@fluentui/react-button": { "root": "packages/react-button", "projectType": "library" },
-    "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
+    "@fluentui/react-card": { "root": "packages/react-card", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
     "@fluentui/react-checkbox": { "root": "packages/react-checkbox", "projectType": "library" },
     "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
@@ -132,7 +137,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-link/src"
     },
-    "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
+    "@fluentui/react-make-styles": {
+      "root": "packages/react-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-make-styles/src"
+    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",
@@ -149,12 +158,20 @@
       "projectType": "library",
       "sourceRoot": "packages/react-positioning/src"
     },
-    "@fluentui/react-provider": { "root": "packages/react-provider", "projectType": "library" },
+    "@fluentui/react-provider": {
+      "root": "packages/react-provider",
+      "projectType": "library",
+      "sourceRoot": "packages/react-provider/src"
+    },
     "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
     "@fluentui/react-slider": { "root": "packages/react-slider", "projectType": "library" },
     "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
-    "@fluentui/react-tabster": { "root": "packages/react-tabster", "projectType": "library" },
+    "@fluentui/react-tabster": {
+      "root": "packages/react-tabster",
+      "projectType": "library",
+      "sourceRoot": "packages/react-tabster/src"
+    },
     "@fluentui/react-text": {
       "root": "packages/react-text",
       "projectType": "library",
@@ -176,12 +193,16 @@
     "@fluentui/web-components": { "root": "packages/web-components", "projectType": "library" },
     "@fluentui/webpack-utilities": { "root": "packages/webpack-utilities", "projectType": "library" },
     "@fluentui/scripts": { "root": "scripts", "projectType": "library" },
+    "@fluentui/react-label": {
+      "root": "packages/react-label",
+      "projectType": "library",
+      "sourceRoot": "packages/react-label/src"
+    },
     "@fluentui/react-popover": {
       "root": "packages/react-popover",
       "projectType": "library",
       "sourceRoot": "packages/react-popover/src"
     },
-    "@fluentui/react-label": { "root": "packages/react-label", "projectType": "library" },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",

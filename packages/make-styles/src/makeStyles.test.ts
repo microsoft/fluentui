@@ -71,11 +71,11 @@ describe('makeStyles', () => {
       .frdkuqy {
         padding-left: 10px;
       }
-      .f1c8chgj {
-        border-left-width: 10px;
-      }
       .f81rol6 {
         padding-right: 10px;
+      }
+      .f1c8chgj {
+        border-left-width: 10px;
       }
       .f19krssl {
         border-right-width: 10px;
@@ -101,6 +101,20 @@ describe('makeStyles', () => {
     expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__3kh5ri0 f1fp4ujf f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
+      @-webkit-keyframes f1q8eu9e {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
       @-webkit-keyframes f55c0se {
         from {
           -webkit-transform: rotate(0deg);
@@ -114,6 +128,10 @@ describe('makeStyles', () => {
           -ms-transform: rotate(-360deg);
           transform: rotate(-360deg);
         }
+      }
+      .f1g6ul6r {
+        -webkit-animation-name: f1q8eu9e;
+        animation-name: f1q8eu9e;
       }
       .f1fp4ujf {
         -webkit-animation-name: f55c0se;
@@ -146,11 +164,14 @@ describe('makeStyles', () => {
     // Classes emitted by different renderers can be the same
     expect(classesA).toBe(classesB);
     // Style elements should be different for different renderers
-    expect(rendererA.styleElements['']).not.toBe(rendererB.styleElements['']);
+    expect(rendererA.styleElements.d).not.toBe(rendererB.styleElements.d);
 
     expect(rendererA).toMatchInlineSnapshot(`
       .f22iagw {
         display: flex;
+      }
+      .frdkuqy {
+        padding-left: 10px;
       }
       .f81rol6 {
         padding-right: 10px;

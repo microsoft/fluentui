@@ -209,7 +209,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
   label: ({ props: p }): ICSSInJSStyle => ({
     display: 'block', // IE11: should be forced to be block, as inline-block is not supported
-
+    userSelect: 'none',
     gridColumn: 3,
     msGridColumn: 3,
 

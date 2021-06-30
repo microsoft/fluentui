@@ -15,7 +15,7 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
     display: 'grid',
     gridTemplateColumns: 'auto',
     msGridColumns: 'auto',
-
+    userSelect: 'none',
     ...(p.content && {
       gridTemplateColumns: 'auto 1fr',
       msGridColumns: 'auto 1fr',
