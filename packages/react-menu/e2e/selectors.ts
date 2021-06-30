@@ -1,0 +1,13 @@
+export const menuTriggerSelector = '[aria-haspopup="true"]';
+export const menuItemSelector = '[role="menuitem"]';
+export const menuItemCheckboxSelector = '[role="menuitemcheckbox"]';
+export const menuItemRadioSelector = '[role="menuitemradio"]';
+export const menuSelector = '[role="menu"]';
+export const defaultStory = 'Default';
+export const groupsStory = 'WithGroups';
+export const customTriggerStory = 'CustomTrigger';
+export const selectionGroupStory = 'SelectionGroup';
+export const nestedMenuStory = 'NestedSubmenus';
+export const nestedMenuControlledStory = 'NestedSubmenusControlled';
+export const menuStoriesTitle = 'Components/Menu';
+export const defaultMouseOverDelay = 250;
