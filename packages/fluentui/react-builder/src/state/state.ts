@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Reducer, useImmerReducer } from 'use-immer';
 import { JSONTreeElement } from '../components/types';
 import { ComponentInfo } from '../componentInfo/types';
-import { debug, focusTreeTitle, getDefaultJSONTree } from './utils';
+import { focusTreeTitle, getDefaultJSONTree } from './utils';
 import {
   jsonTreeFindElement,
   resolveDrop,
@@ -11,11 +11,13 @@ import {
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
   resolveDraggingElement,
+  jsonTreeMap,
 } from '../config';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderElementToJSX } from '../../../docs-components/src/index';
-// import { AxeResults } from 'axe-core';
+import { AccessibilityError } from '../accessibility/types';
+import { useAxeOnElement } from '../hooks/useAxeOnElement';
 
 export type JSONTreeOrigin = 'store' | 'url';
 
@@ -33,6 +35,7 @@ export type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
+  accessibilityErrors: Array<AccessibilityError>;
 };
 
 export type DesignerAction =
@@ -60,7 +63,7 @@ export type DesignerAction =
   | { type: 'ADD_COMPONENT'; component: string; module: string };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
-  debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
+  // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
   let treeChanged = false;
 
   switch (action.type) {
@@ -137,6 +140,9 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
     case 'DELETE_SELECTED_COMPONENT':
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
+      if (draftState.accessibilityErrors[draftState.selectedJSONTreeElementUuid]) {
+        delete draftState.accessibilityErrors[draftState.selectedJSONTreeElementUuid];
+      }
       draftState.redo = [];
 
       if (draftState.selectedJSONTreeElementUuid) {
@@ -213,6 +219,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.selectedComponentInfo = null;
       draftState.jsonTree = action.jsonTree;
       draftState.codeError = null;
+
       break;
 
     case 'SOURCE_CODE_ERROR':
@@ -279,6 +286,12 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       throw new Error(`Invalid action ${action}`);
   }
 
+  if (treeChanged) {
+    // if the tree changed, run axe error check on every element in the tree and push it to the state
+    jsonTreeMap(draftState.jsonTree, element => draftState.accessibilityErrors.push.apply(...useAxeOnElement(element)));
+    console.log(draftState.accessibilityErrors);
+  }
+
   if (treeChanged && draftState.showCode) {
     draftState.code = renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree));
     draftState.codeError = null;
@@ -308,8 +321,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       history: [],
       redo: [],
       insertComponent: null,
-      // TODO: accessibility errors for draft state and/or toolbar?
-      accessibilityErrors: null,
+      accessibilityErrors: [],
     };
   });
 

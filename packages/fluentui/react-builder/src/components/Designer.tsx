@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, List } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -22,7 +22,7 @@ import { GetShareableLink } from './GetShareableLink';
 import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
-import { useAxeOnElement, useMode } from '../hooks';
+import { useMode } from '../hooks';
 import { ErrorPanel } from './ErrorPanel';
 
 const HEADER_HEIGHT = '3rem';
@@ -95,14 +95,6 @@ export const Designer: React.FunctionComponent = () => {
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [headerMessage, setHeaderMessage] = React.useState('');
 
-  const [axeErrorsForElement, runAxeOnElement] = useAxeOnElement();
-
-  React.useEffect(() => {
-    if (state.selectedJSONTreeElementUuid) {
-      runAxeOnElement(state.selectedJSONTreeElementUuid);
-    }
-  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
-
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
       writeTreeToStore(state.jsonTree);
@@ -121,11 +113,16 @@ export const Designer: React.FunctionComponent = () => {
     activeTab,
     codeError,
     insertComponent,
+    accessibilityErrors,
   } = state;
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
+    : null;
+
+  const selectedComponentAccessibilityErrors = selectedJSONTreeElement
+    ? accessibilityErrors.filter(error => error.elementUuid === selectedJSONTreeElementUuid)
     : null;
 
   const handleReset = React.useCallback(() => {
@@ -314,19 +311,8 @@ export const Designer: React.FunctionComponent = () => {
      HandleAccessibilityErros / accessibilityErrors = for use w component view
      HandleShowAll = for toolbar
      TODO: Clarify/streamline this? */
-  const handleAccessibilityErrors = React.useCallback(errors => {
-    setAccessibilityErrors(errors);
-  }, []);
 
   // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
-
-  if (accessibilityErrors[selectedJSONTreeElementUuid] || axeErrorsForElement.length !== 0) {
-    accessibilityErrors[selectedJSONTreeElementUuid] = _.mapValues(axeErrorsForElement, message => ({
-      source: 'AXE-Core Error',
-      error: message,
-    }));
-  }
   /* End accessibility error handler block */
 
   const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
@@ -375,6 +361,7 @@ export const Designer: React.FunctionComponent = () => {
     command += e.key;
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
+  console.log(accessibilityErrors);
 
   return (
     <div
@@ -512,24 +499,10 @@ export const Designer: React.FunctionComponent = () => {
             </div>
           )}
           {activeTab === 'accessibility' && (
-            <div
-              style={{
-                display: 'flex',
-                overflowY: 'auto',
-                margin: '.5em',
-                flexDirection: 'column',
-              }}
-            >
-              To learn more about best practices for accessibility, visit
-              <a href="https://www.microsoft.com/accessibility"> https://www.microsoft.com/accessibility</a> <br />
-              {accessibilityErrors === {}
+            <div>
+              {_.isEmpty(accessibilityErrors)
                 ? '\t No accessibility errors automatically detected.'
-                : _.keys(accessibilityErrors).map(elementUUID => (
-                    <div>
-                      <Header as="h4">{elementUUID}</Header>
-                      <List items={accessibilityErrors[elementUUID]} />
-                    </div>
-                  ))}
+                : accessibilityErrors}
             </div>
           )}
           {activeTab === 'nav' && (
@@ -545,7 +518,7 @@ export const Designer: React.FunctionComponent = () => {
               <ComponentTree
                 tree={jsonTree}
                 selectedComponent={selectedComponent}
-                selectedComponentAccessibilityErrors={axeErrorsForElement.length}
+                selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
                 onSelectComponent={handleSelectComponent}
                 onCloneComponent={handleCloneComponent}
                 onMoveComponent={handleMoveComponent}
@@ -641,7 +614,6 @@ export const Designer: React.FunctionComponent = () => {
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
                   accessibilityErrors={accessibilityErrors}
-                  onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -712,8 +684,11 @@ export const Designer: React.FunctionComponent = () => {
 
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
 
-            {!!axeErrorsForElement.length && (
-              <ErrorPanel accessibilityErrors={axeErrorsForElement} elementUuid={selectedJSONTreeElementUuid} />
+            {selectedJSONTreeElement && !!!_.isEmpty(selectedComponentAccessibilityErrors) && (
+              <ErrorPanel
+                accessibilityErrors={selectedComponentAccessibilityErrors}
+                elementUuid={selectedJSONTreeElementUuid}
+              />
             )}
             {selectedJSONTreeElement && (
               <Knobs

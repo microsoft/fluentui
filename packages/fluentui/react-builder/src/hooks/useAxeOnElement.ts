@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as axeCore from 'axe-core';
+import { AccessibilityError } from '../accessibility/types';
 
-export function useAxeOnElement(): [any[], (selectedElementUuid: any) => void] {
+export function useAxeOnElement(uuid): [AccessibilityError[]] {
   const [axeErrors, setAxeErrors] = React.useState([]);
   const runAxeOnElement = React.useCallback(selectedElementUuid => {
     const iframe = document.getElementsByTagName('iframe')[0];
@@ -23,19 +24,25 @@ export function useAxeOnElement(): [any[], (selectedElementUuid: any) => void] {
           result.violations.forEach(violation => {
             violation.nodes.forEach(node => {
               if (node.html.includes(`data-builder-id="${selectedElementUuid}"`)) {
-                selectedComponentAxeErrors.push(
-                  node.failureSummary
-                    .replace('Fix all of the following:', '-')
-                    .replace('Fix any of the following:', '-'),
-                );
+                const axeError: AccessibilityError = {
+                  elementUuid: selectedElementUuid,
+                  source: 'AXE-Core',
+                  error: node.failureSummary
+                    .replace('Fix all of the following:', '')
+                    .replace('Fix any of the following:', ''),
+                  severity: node.impact,
+                };
+                selectedComponentAxeErrors.push(axeError);
               }
             });
           });
         }
-        setAxeErrors(selectedComponentAxeErrors);
+        setAxeErrors(axeErrors => [...axeErrors, selectedComponentAxeErrors]);
       },
     );
   }, []);
+  runAxeOnElement(uuid);
+  console.log(axeErrors);
 
-  return [axeErrors, runAxeOnElement];
+  return [axeErrors];
 }

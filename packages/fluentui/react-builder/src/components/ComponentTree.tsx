@@ -4,11 +4,12 @@ import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from './types';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton, AccessibilityErrorIcon } from './DebugButtons';
+import { AccessibilityError } from '../accessibility/types';
 
 export type ComponentTreeProps = {
   tree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
-  selectedComponentAccessibilityErrors?: number;
+  selectedComponentAccessibilityErrors?: AccessibilityError[];
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -43,7 +44,7 @@ const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
   selectedComponentId: string,
-  selectedComponentAccessibilityErrors: number,
+  selectedComponentAccessibilityErrors: AccessibilityError[],
   handleSelectedComponent: TreeItemProps['onTitleClick'],
   handleClone: React.MouseEventHandler<HTMLButtonElement>,
   handleMove: React.MouseEventHandler<HTMLButtonElement>,
@@ -61,6 +62,9 @@ const jsonTreeToTreeItems: (
   handleAddComponent,
   handleDeleteComponent,
 ) => {
+  // calculate number of accessibility errors
+  // todo: test, create function as class?
+  const numberAccessibilityErrors = selectedComponentAccessibilityErrors.length;
   if (typeof tree === 'string') {
     return {
       id: Math.random().toString(36).slice(2),
@@ -101,10 +105,10 @@ const jsonTreeToTreeItems: (
               <MoveDebugButton onClick={handleMove} />
               <CloneDebugButton onClick={handleClone} />
               <TrashDebugButton onClick={handleDeleteSelected} />
-              {selectedComponentAccessibilityErrors !== 0 && (
+              {numberAccessibilityErrors !== 0 && (
                 <span style={{ marginLeft: '.25em' }}>
                   <AccessibilityErrorIcon style={{ width: '.9em', height: '.9em', marginRight: '0.2em' }} />
-                  {selectedComponentAccessibilityErrors}
+                  {numberAccessibilityErrors}
                 </span>
               )}
             </>

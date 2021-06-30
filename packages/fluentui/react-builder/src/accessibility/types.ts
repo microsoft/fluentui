@@ -1,9 +1,8 @@
-export type AccessibilityErrorsBySource = {
-  source: string;
-  errors: string[];
-};
-
-export type AccessibilityErrors = {
+export type AccessibilityError = {
   elementUuid: string | number;
-  accessibilityErrors: AccessibilityErrorsBySource[];
+  source: string;
+  error: string;
+  help?: string;
+  url?: string;
+  severity?: string;
 };

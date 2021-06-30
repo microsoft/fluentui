@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as _ from 'lodash';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
@@ -9,7 +8,7 @@ import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTre
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
-import { AbilityAttributesValidator, AbilityAttributesErrors } from '../accessibility/AbilityAttributesValidator';
+import { AccessibilityError } from '../accessibility/types';
 
 const pkg = require('../../package.json');
 
@@ -36,8 +35,7 @@ export type CanvasProps = {
   role?: string;
   inUseMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
-  accessibilityErrors: AbilityAttributesErrors;
-  onAccessibilityErrorsChanged: (errors: AbilityAttributesErrors) => void;
+  accessibilityErrors: AccessibilityError[];
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -62,7 +60,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   inUseMode,
   setHeaderMessage,
   accessibilityErrors,
-  onAccessibilityErrorsChanged,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -197,7 +194,10 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       const iframeDocument = iframe.contentDocument;
       const iframeWindow = iframe.contentWindow;
 
-      // The comments before some selectors below are intentionally there so that the matched elements are not focusable by the virtual cursor. These elements are instead narrated as the landmarks or groups narration part of a focusable element when entering the element. But let's keep them here in case it will change in the future, and so that it's clear that they are not missed out but that they are not focusable intentionally
+      // The comments before some selectors below are intentionally there so that the matched elements are not focusable
+      // by the virtual cursor. These elements are instead narrated as the landmarks or groups narration part of a
+      // focusable element when entering the element. But let's keep them here in case it will change in the future,
+      // and so that it's clear that they are not missed out but that they are not focusable intentionally
       setVirtualCursorElements(
         Array.from(
           iframeDocument.querySelectorAll(
@@ -387,9 +387,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       id={iframeId}
     >
       <FrameContextConsumer>
-        {({ document, window }) => (
+        {({ document }) => (
           <>
-            <AbilityAttributesValidator window={window} onErrorsChanged={onAccessibilityErrorsChanged} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
@@ -430,7 +429,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 target={document}
                 selector={`[data-builder-id="${selectedComponent.uuid}"]`}
                 componentName={selectedComponent.displayName}
-                accessibilityErrors={_.keys(accessibilityErrors[selectedComponent.uuid]).length}
+                componentAccessibilityErrors={accessibilityErrors.filter(
+                  error => error.elementUuid === selectedComponent.uuid,
+                )}
                 onClone={handleCloneComponent}
                 onMove={handleMoveComponent}
                 onDelete={onDeleteSelectedComponent}

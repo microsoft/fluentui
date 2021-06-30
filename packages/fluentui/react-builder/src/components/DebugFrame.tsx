@@ -5,7 +5,7 @@ export type DebugFrameProps = {
   target;
   selector;
   componentName?;
-  accessibilityErrors?;
+  componentAccessibilityErrors?;
   onClone?;
   onDelete?;
   onMove?;
@@ -17,7 +17,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   target,
   selector,
   componentName,
-  accessibilityErrors,
+  componentAccessibilityErrors,
   onClone,
   onDelete,
   onMove,
@@ -26,7 +26,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   const frameRef = React.useRef<HTMLPreElement>();
   const animationFrameId = React.useRef<number>();
   const [isTopElement, setIsTopElement] = React.useState(false);
-  const [hasAccessibilityErrors, setHasAccessibilityErrors] = React.useState(false);
 
   const setFramePosition = React.useCallback((frameEl, controlEl) => {
     const rect = controlEl.getBoundingClientRect();
@@ -86,13 +85,10 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
       animationFrameId.current = requestAnimationFrame(() => hideFrame(frameRef.current));
     }
 
-    accessibilityErrors !== 0
-      ? !hasAccessibilityErrors && setHasAccessibilityErrors(true)
-      : hasAccessibilityErrors && setHasAccessibilityErrors(false);
-
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [target, selector, accessibilityErrors, animationFrameId, setFramePosition, isTopElement, hasAccessibilityErrors]);
+  }, [target, selector, animationFrameId, setFramePosition, isTopElement]);
 
+  const hasAccessibilityErrors = componentAccessibilityErrors.length !== 0;
   const styles: React.CSSProperties = {
     position: 'absolute',
     padding: '2px 4px',
@@ -134,7 +130,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         {hasAccessibilityErrors && (
           <span style={{ marginLeft: '.25em ' }}>
             <AccessibilityErrorIcon style={{ width: '.9em', marginTop: '.1em', marginRight: '0.2em' }} />
-            {accessibilityErrors}
+            {}
           </span>
         )}
       </div>
