@@ -21,7 +21,7 @@
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-positioning/src && yarn docs",
     "storybook": "start-storybook",
-    "start": "storybook"
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.1",

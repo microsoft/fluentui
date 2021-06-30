@@ -6,13 +6,15 @@ import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 import { ChatDensity } from './chatDensityContext';
 
 export interface ChatMessageDetailsOwnProps {
+  /** Controls messages's relation to other chat messages. */
+  attached?: boolean | 'top' | 'bottom';
   /** Chat density. */
   density?: ChatDensity;
   mine?: boolean;
 }
 export interface ChatMessageDetailsProps extends ChatMessageDetailsOwnProps, BoxProps {}
 
-export type ChatMessageDetailsStylesProps = Required<Pick<ChatMessageDetailsOwnProps, 'density' | 'mine'>>;
+export type ChatMessageDetailsStylesProps = Required<Pick<ChatMessageDetailsOwnProps, 'attached' | 'density' | 'mine'>>;
 export const chatMessageDetailsClassName = 'ui-chat__messagedetails';
 
 /**
@@ -27,14 +29,15 @@ export const ChatMessageDetails = compose<
 >(Box, {
   className: chatMessageDetailsClassName,
   displayName: 'ChatMessageDetails',
-  handledProps: ['density', 'mine'],
-  mapPropsToStylesProps: ({ density, mine }) => ({ density, mine }),
+  handledProps: ['attached', 'density', 'mine'],
+  mapPropsToStylesProps: ({ attached, density, mine }) => ({ attached, density, mine }),
   overrideStyles: true,
   shorthandConfig: { mappedProp: 'content' },
 });
 
 ChatMessageDetails.propTypes = {
   ...commonPropTypes.createCommon(),
+  attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   mine: PropTypes.bool,
 };
