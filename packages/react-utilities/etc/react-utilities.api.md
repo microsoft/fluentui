@@ -40,6 +40,9 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public (undocumented)
+export type ComponentProps<Record extends SlotPropsRecord = {}> = DefaultComponentProps & ShorthandPropsRecord<Record>;
+
+// @public (undocumented)
 export interface ComponentPropsCompat {
     // (undocumented)
     as?: React_2.ElementType;
@@ -49,6 +52,17 @@ export interface ComponentPropsCompat {
     className?: string;
 }
 
+// @public (undocumented)
+export type ComponentState<Record extends SlotPropsRecord = {}> = Pick<ComponentProps<Record>, keyof DefaultComponentProps> & {
+    components?: {
+        [K in keyof Record]?: React_2.ElementType<Record[K]>;
+    };
+} & {
+    components?: {
+        root?: React_2.ElementType;
+    };
+} & ObjectShorthandPropsRecord<Record>;
+
 // @public
 export type ComponentStateCompat<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;
 
@@ -57,6 +71,12 @@ export function createDescendantContext<DescendantType extends Descendant>(name:
 
 // @public (undocumented)
 export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React_2.Context<ContextValueType>;
+
+// @public (undocumented)
+export interface DefaultComponentProps {
+    // (undocumented)
+    as?: keyof JSX.IntrinsicElements;
+}
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -98,6 +118,16 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
+
+// @public
+export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>, slotNames?: string[]): {
+    readonly slots: { [K in keyof SlotProps]: React_2.ElementType<SlotProps[K]>; } & {
+        root: React_2.ElementType;
+    };
+    readonly slotProps: SlotProps & {
+        root: any;
+    };
+};
 
 // Warning: (ae-forgotten-export) The symbol "GenericDictionary" needs to be exported by the entry point index.d.ts
 //
@@ -145,15 +175,27 @@ export type MergePropsOptions<TState> = {
 export const nullRender: () => null;
 
 // @public (undocumented)
+export type ObjectShorthandProps<Props extends {
+    children?: React_2.ReactNode;
+} = {}> = Props & Pick<ComponentProps, 'as'> & {
+    children?: Props['children'] | ShorthandRenderFunction<Props>;
+};
+
+// @public (undocumented)
 export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = TProps & Omit<ComponentPropsCompat, 'children'> & {
     children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
+};
+
+// @public (undocumented)
+export type ObjectShorthandPropsRecord<Record extends SlotPropsRecord = SlotPropsRecord> = {
+    [K in keyof Record]: ObjectShorthandProps<NonNullable<Record[K]>>;
 };
 
 // @public
 export const olProperties: Record<string, number>;
 
 // @public
-export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
 // @public
 export const onlyChild: (child: React_2.ReactNode) => React_2.ReactElement;
@@ -178,13 +220,27 @@ export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> & {
 };
 
 // @public
+export function resolveShorthand<Props extends Record<string, any>>(value: ShorthandProps<Props>, defaultProps?: Props): ObjectShorthandProps<Props>;
+
+// @public
 export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandPropsCompat<TProps, TShorthandPropNames>;
 
 // @public
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
+export type ShorthandProps<Props = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandProps<Props>;
+
+// @public (undocumented)
 export type ShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandPropsCompat<TProps>;
+
+// @public (undocumented)
+export type ShorthandPropsRecord<Record extends SlotPropsRecord = SlotPropsRecord> = {
+    [K in keyof Record]: ShorthandProps<NonNullable<Record[K]>>;
+};
+
+// @public (undocumented)
+export type ShorthandRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Props) => React_2.ReactNode;
 
 // @public (undocumented)
 export type ShorthandRenderFunctionCompat<TProps> = (Component: React_2.ElementType<TProps>, props: TProps) => React_2.ReactNode;
@@ -198,6 +254,9 @@ export type SlotPropsCompat<TSlots extends BaseSlotsCompat, TProps, TRootProps e
 } & {
     root: TRootProps;
 };
+
+// @public
+export type SlotPropsRecord = Record<string, Record<string, any> | undefined>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
 //
