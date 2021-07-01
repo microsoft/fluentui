@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
+import { useMenuItem, menuItemShorthandPropsCompat } from '../MenuItem/useMenuItem';
 import { AcceptIcon } from '../../utils/DefaultIcons';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemCheckboxShorthandProps = [...menuItemShorthandProps] as const;
+export const menuItemCheckboxShorthandPropsCompat = [...menuItemShorthandPropsCompat] as const;
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (

@@ -5,10 +5,10 @@ import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuGroupShorthandProps = ['loader', 'content'];
+export const menuGroupShorthandPropsCompat = ['loader', 'content'];
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuGroupState>({ deepMerge: menuGroupShorthandProps });
+const mergeProps = makeMergePropsCompat<MenuGroupState>({ deepMerge: menuGroupShorthandPropsCompat });
 
 /**
  * Given user props, returns state and render function for a MenuGroup.

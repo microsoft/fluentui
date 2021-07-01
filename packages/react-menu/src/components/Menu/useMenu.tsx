@@ -16,10 +16,10 @@ import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 
-export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
+export const menuShorthandPropsCompat: (keyof MenuProps)[] = ['menuPopup'];
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandProps });
+const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPropsCompat });
 
 /**
  * Create the state required to render Menu.
@@ -47,7 +47,7 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
       triggerId,
     },
     defaultProps,
-    resolveShorthandProps(props, menuShorthandProps),
+    resolveShorthandProps(props, menuShorthandPropsCompat),
   );
 
   state.isSubmenu = isSubmenu;

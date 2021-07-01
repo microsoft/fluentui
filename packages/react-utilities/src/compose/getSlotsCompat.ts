@@ -1,8 +1,10 @@
 import * as React from 'react';
 
 import { getNativeElementProps, omit } from '../utils/index';
-import { GenericDictionary } from './types';
 import { nullRender } from './nullRender';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type GenericDictionary = Record<string, any>;
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
@@ -20,7 +22,7 @@ import { nullRender } from './nullRender';
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export const getSlots = (state: GenericDictionary, slotNames?: readonly string[]) => {
+export const getSlotsCompat = (state: GenericDictionary, slotNames?: readonly string[]) => {
   const slots: GenericDictionary = {
     root: state.as || 'div',
   };
