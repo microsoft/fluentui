@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react_v8.22.0",
+      "version": "8.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added focusZoneProps to the Pivot component to have ability be more customized",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "a7015bc278ac653e2030571598e27cc88c8d1044",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixing a bug within ComboBox which caused aria-labelledby to be added to list even when label was absent.",
+            "author": "czearing@outlook.com",
+            "commit": "f50c2be442860efb7caca91d29ca9ae1e96905f6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Jun 2021 07:33:32 GMT",
       "tag": "@fluentui/react_v8.21.1",
       "version": "8.21.1",

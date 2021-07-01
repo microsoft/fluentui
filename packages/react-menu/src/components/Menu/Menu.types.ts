@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
 import { MenuListProps } from '../MenuList/index';
 
@@ -34,7 +34,7 @@ export interface MenuProps
   /**
    * Wrapper to style and add events for the popup
    */
-  menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  menuPopup?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /*
    * Opens the menu on hover

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { PartialTheme, Theme } from '@fluentui/react-theme';
 import { TooltipContextType } from '@fluentui/react-shared-contexts';
 
-export interface FluentProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface FluentProviderProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /** Sets the direction of text & generated styles. */
   dir?: 'ltr' | 'rtl';
 

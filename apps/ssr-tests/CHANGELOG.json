@@ -2,6 +2,21 @@
   "name": "ssr-tests",
   "entries": [
     {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.36",
+            "author": "olfedias@microsoft.com",
+            "commit": "76680e02208f2e8a479a60289ba9f6b9e27c9f5d",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jun 2021 07:38:35 GMT",
       "tag": "ssr-tests_v1.0.0",
       "version": "1.0.0",

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
-export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface MenuListProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Callback when checked items change for value with a name
    *

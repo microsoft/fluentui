@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Card}
  */
-export type CardProps = ComponentProps &
+export type CardProps = ComponentPropsCompat &
   React.HTMLAttributes<HTMLDivElement> & {
     /** A card can be compact, without any padding inside. */
     compact?: boolean;

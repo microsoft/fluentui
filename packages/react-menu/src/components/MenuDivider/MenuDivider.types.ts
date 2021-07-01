@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory MenuDivider}
  */
-export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export type MenuDividerProps = ComponentPropsCompat & React.HTMLAttributes<HTMLElement>;
 
 /**
  * {@docCategory MenuDivider}

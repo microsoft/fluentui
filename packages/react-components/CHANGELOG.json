@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove @fluentui/react-theme-provider",
+            "author": "olfedias@microsoft.com",
+            "commit": "76680e02208f2e8a479a60289ba9f6b9e27c9f5d",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.45",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5c06b5a9bd09cefc6ef3afc90f5575ca4663f665",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.43",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c7eff2580a6fe159bbb3c4e77e549925187f3150",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.12",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c7eff2580a6fe159bbb3c4e77e549925187f3150",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jun 2021 07:38:35 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.71",
       "version": "9.0.0-alpha.71",

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
-export interface AccordionPanelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {}
+export interface AccordionPanelProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {}
 
-export interface AccordionPanelState extends ComponentState<AccordionPanelProps> {
+export interface AccordionPanelState extends ComponentStateCompat<AccordionPanelProps> {
   /**
    * Ref to the root slot
    */
