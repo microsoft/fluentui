@@ -113,7 +113,7 @@
     "@fluentui/react-tabs": { "implicitDependencies": [] },
     "@fluentui/react-tabster": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-theme": { "implicitDependencies": [] },
+    "@fluentui/react-theme": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-toggle": { "implicitDependencies": [] },
     "@fluentui/react-tooltip": { "implicitDependencies": [] },
     "@fluentui/react-utilities": { "implicitDependencies": [] },
