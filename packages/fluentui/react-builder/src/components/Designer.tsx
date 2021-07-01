@@ -24,6 +24,7 @@ import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { ErrorPanel } from './ErrorPanel';
+import { AccessLogoIcon} from '@fluentui/react-icons-mdl2'
 
 const HEADER_HEIGHT = '3rem';
 

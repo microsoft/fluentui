@@ -289,7 +289,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
   if (treeChanged) {
     // if the tree changed, run axe error check on every element in the tree and push it to the state
     jsonTreeMap(draftState.jsonTree, element =>
-      draftState.accessibilityErrors.push.apply(...useAxeOnElement(element.uuid)),
+      draftState.accessibilityErrors.concat(useAxeOnElement(element.uuid)),
     );
     console.log(draftState.accessibilityErrors);
   }
