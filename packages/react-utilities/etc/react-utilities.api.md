@@ -297,6 +297,7 @@ export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefOb
 // @public (undocumented)
 export interface UseOnClickOrScrollOutsideOptions {
     callback: (ev: MouseEvent | TouchEvent) => void;
+    capture?: boolean;
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
     element: Document | undefined;
