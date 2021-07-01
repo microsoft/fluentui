@@ -10,7 +10,10 @@ import {
   strokeWidth,
 } from '../design-tokens';
 
-export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const menuStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
       --elevation: 11;
