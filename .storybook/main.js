@@ -78,9 +78,11 @@ function overrideDefaultBabelLoader(rules) {
 
   const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
 
-  if (!Object.prototype.hasOwnProperty.call(loader, 'options')) {
+  if (loader && !Object.prototype.hasOwnProperty.call(loader, 'options')) {
     throw new Error('storybook webpack rules changed');
   }
 
-  loader.options.customize = customLoaderPath;
+  if (loader) {
+    loader.options.customize = customLoaderPath;
+  }
 }
