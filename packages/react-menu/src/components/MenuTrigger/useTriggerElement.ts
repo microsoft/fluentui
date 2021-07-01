@@ -60,9 +60,6 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
     }
 
     const keyCode = getCode(e);
-    if (keyCode === ArrowDownKey) {
-      console.log('ARROW DOWN');
-    }
 
     if (!openOnContext && ((isSubmenu && keyCode === OpenArrowKey) || (!isSubmenu && keyCode === ArrowDownKey))) {
       setOpen(e, { open: true, keyboard: true });
