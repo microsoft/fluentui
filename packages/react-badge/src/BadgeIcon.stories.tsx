@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Badge } from '@fluentui/react-badge';
-import { AcceptIcon } from '@fluentui/react-icons-mdl2';
+import { Badge } from './index';
+import { AcceptIcon } from './tmp-icons.stories';
 
 export const BadgeIconExample = () => (
   <div
@@ -19,3 +19,8 @@ export const BadgeIconExample = () => (
     <Badge size="largest" icon={<AcceptIcon />} />
   </div>
 );
+
+export default {
+  title: 'Components/BadgeIcon',
+  component: Badge,
+};
