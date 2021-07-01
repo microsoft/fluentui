@@ -534,7 +534,7 @@ describe('migrate-converged-pkg generator', () => {
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
-        start: 'storybook',
+        start: 'yarn storybook',
         storybook: 'start-storybook',
         test: 'jest',
       });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Badge } from '@fluentui/react-badge';
+import { Badge } from './index';
 
 export const BadgeContentExample = () => (
   <div
@@ -84,3 +84,8 @@ export const BadgeContentExample = () => (
     </div>
   </div>
 );
+
+export default {
+  title: 'Components/BadgeContent',
+  component: Badge,
+};

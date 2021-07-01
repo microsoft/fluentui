@@ -282,7 +282,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
       // eslint-disable-next-line @fluentui/max-len
     ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
     json.scripts.storybook = 'start-storybook';
-    json.scripts.start = 'storybook';
+    json.scripts.start = 'yarn storybook';
     json.scripts.test = 'jest';
 
     return json;

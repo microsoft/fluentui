@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "move theming capabilities from @fluentui/react-theme-provider",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
