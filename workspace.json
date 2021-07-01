@@ -200,7 +200,11 @@
     },
     "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": { "root": "packages/react-tooltip", "projectType": "library" },
-    "@fluentui/react-utilities": { "root": "packages/react-utilities", "projectType": "library" },
+    "@fluentui/react-utilities": {
+      "root": "packages/react-utilities",
+      "projectType": "library",
+      "sourceRoot": "packages/react-utilities/src"
+    },
     "@fluentui/react-window-provider": { "root": "packages/react-window-provider", "projectType": "library" },
     "@fluentui/scheme-utilities": { "root": "packages/scheme-utilities", "projectType": "library" },
     "@fluentui/set-version": { "root": "packages/set-version", "projectType": "library" },
