@@ -145,5 +145,14 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         lineHeight: '22px',
       },
     ],
+    descriptionMessage: [
+      theme.fonts.small,
+      {
+        color: theme.semanticColors.bodyText,
+        marginTop: '10px',
+        paddingTop: '10px',
+        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
+      },
+    ],
   };
 };

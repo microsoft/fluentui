@@ -43,10 +43,10 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         max={5}
         size={RatingSize.Large}
         rating={largeStarRating}
-        getAriaLabel={getRatingComponentAriaLabel}
+        ariaLabel="Large stars"
         // eslint-disable-next-line react/jsx-no-bind
         onChange={onLargeStarChange}
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabelFormat={'{0} of {1} stars'}
       />
       Small Stars
       <Rating
@@ -56,8 +56,8 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         rating={smallStarRating}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={onSmallStarChange}
-        getAriaLabel={getRatingComponentAriaLabel}
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabel="Small stars"
+        ariaLabelFormat={'{0} of {1} stars'}
       />
       10 Small Stars
       <Rating
@@ -66,11 +66,11 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         rating={tenStarRating}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={onTenStarChange}
-        getAriaLabel={getRatingComponentAriaLabel}
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabel="10 small stars"
+        ariaLabelFormat={'{0} of {1} stars'}
       />
       Disabled:
-      <Rating min={1} max={5} rating={1} disabled={true} ariaLabelFormat={'Select {0} of {1} stars'} />
+      <Rating min={1} max={5} rating={1} disabled={true} ariaLabelFormat={'{0} of {1} stars'} />
       Half star in readOnly mode:
       <Rating
         min={1}
@@ -78,7 +78,7 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         rating={2.5}
         getAriaLabel={getRatingComponentAriaLabel}
         readOnly
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabelFormat={'{0} of {1} stars'}
       />
       Custom icons:
       <Rating
@@ -87,8 +87,8 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         rating={customIconStarRating}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={onCustomIconStarChange}
-        getAriaLabel={getRatingComponentAriaLabel}
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabel="Custom icons"
+        ariaLabelFormat={'{0} of {1} stars'}
         icon="StarburstSolid"
         unselectedIcon="Starburst"
       />
@@ -99,8 +99,8 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         rating={themedStarRating}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={onThemedStarChange}
-        getAriaLabel={getRatingComponentAriaLabel}
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabel="Themed star"
+        ariaLabelFormat={'{0} of {1} stars'}
         theme={customTheme}
       />
     </div>

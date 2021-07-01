@@ -2,6 +2,111 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.75",
+      "version": "7.9.75",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.14.11",
+            "author": "nojittip@microsoft.com",
+            "commit": "b52f00209018559732fec523c876521cf978bc8b",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.74",
+      "version": "7.9.74",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.1",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.73",
+      "version": "7.9.73",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.14.9",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.72",
+      "version": "7.9.72",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.14.8",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jun 2021 12:24:51 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.71",
+      "version": "7.9.71",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.14.7",
+            "author": "v-jasha@microsoft.com",
+            "commit": "b193fa7eab73154b5024c8a3cae2438b474f64d4",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.70",
+      "version": "7.9.70",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.3",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.69",
+      "version": "7.9.69",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.2",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 May 2021 12:23:20 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.9.68",
       "version": "7.9.68",

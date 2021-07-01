@@ -1,8 +1,62 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 19 May 2021 12:23:23 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jun 2021 12:25:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.43](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.43)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.42..@uifabric/azure-themes_v7.7.43)
+
+### Patches
+
+- Combobox multi-select selected state fix ([PR #18684](https://github.com/microsoft/fluentui/pull/18684) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.7.42](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.42)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.41..@uifabric/azure-themes_v7.7.42)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.1 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.7.41](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.41)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.40..@uifabric/azure-themes_v7.7.41)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.7.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.40)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.39..@uifabric/azure-themes_v7.7.40)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.7.39](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.39)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.38..@uifabric/azure-themes_v7.7.39)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.3 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.7.38](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.38)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.37..@uifabric/azure-themes_v7.7.38)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.2 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
 
 ## [7.7.37](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.37)
 

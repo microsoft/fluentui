@@ -1,8 +1,54 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jun 2021 17:23:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.172.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.1)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.0..office-ui-fabric-react_v7.172.1)
+
+### Patches
+
+- Cherrypick HC Coachmark Beak styling to v7 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.172.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.0)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.171.0..office-ui-fabric-react_v7.172.0)
+
+### Minor changes
+
+- Rating: specifies when a rating's button is selected/not selected to improve a11y experience ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+- allow custom filter icons for the details header ([PR #18603](https://github.com/microsoft/fluentui/pull/18603) by khhuynh@microsoft.com)
+
+## [7.171.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.171.0)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.3..office-ui-fabric-react_v7.171.0)
+
+### Minor changes
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.170.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.3)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.2..office-ui-fabric-react_v7.170.3)
+
+### Patches
+
+- "Fix a11y bug for DatePicker day cell: Ensures ARIA attributes are allowed for an element's role" ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.170.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.2)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.1..office-ui-fabric-react_v7.170.2)
+
+### Patches
+
+- applying package updates ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
 
 ## [7.170.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.1)
 

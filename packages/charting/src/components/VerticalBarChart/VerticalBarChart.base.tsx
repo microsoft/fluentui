@@ -207,6 +207,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
             visibility={this.state.acitveXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            onClick={item.point.lineData?.onClick}
           />
         );
       },
@@ -472,6 +473,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           aria-labelledby={`toolTip${this._calloutId}`}
           aria-label="Vertical bar chart"
@@ -527,6 +529,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
+          onClick={point.onClick}
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}

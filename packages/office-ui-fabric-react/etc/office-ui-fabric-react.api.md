@@ -2913,6 +2913,7 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
@@ -3551,6 +3552,12 @@ export interface IDetailsCheckboxProps {
     checked: boolean;
     // (undocumented)
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnFilterIconProps extends IIconProps {
+    // (undocumented)
+    columnProps?: IDetailsColumnProps;
 }
 
 // @public (undocumented)
@@ -6907,6 +6914,7 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     // @deprecated
     ariaLabelId?: string;
@@ -9359,6 +9367,7 @@ export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps>
 
 // @public
 export class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
+    constructor(props: IProgressIndicatorProps);
     // (undocumented)
     static defaultProps: {
         label: string;

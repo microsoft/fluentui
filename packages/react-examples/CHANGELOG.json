@@ -2,6 +2,123 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@fluentui/react-examples_v0.14.11",
+      "version": "0.14.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add features to Line Chart (gaps, borders, line properties, etc.) (#18665)",
+            "author": "nojittip@microsoft.com",
+            "commit": "b52f00209018559732fec523c876521cf978bc8b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is",
+            "author": "v-scharde@microsoft.com",
+            "commit": "5024353a97c3d120050441c6e32f203cecfadc3c",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f6011e9ca2736a0223fbebce74f974d5949926e3",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "@fluentui/react-examples_v0.14.10",
+      "version": "0.14.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.45",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@fluentui/react-examples_v0.14.9",
+      "version": "0.14.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Rating: updated examples to reflect addition of ariaLabel prop",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@fluentui/react-examples_v0.14.8",
+      "version": "0.14.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jun 2021 12:24:51 GMT",
+      "tag": "@fluentui/react-examples_v0.14.7",
+      "version": "0.14.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.29",
+            "author": "v-jasha@microsoft.com",
+            "commit": "b193fa7eab73154b5024c8a3cae2438b474f64d4",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@fluentui/react-examples_v0.14.6",
+      "version": "0.14.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.42",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@fluentui/react-examples_v0.14.5",
+      "version": "0.14.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.41",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 May 2021 12:23:20 GMT",
       "tag": "@fluentui/react-examples_v0.14.4",
       "version": "0.14.4",

@@ -2,6 +2,96 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@uifabric/react-cards_v0.115.57",
+      "version": "0.115.57",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.43",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "a56eae2fabfcb80899987d0026ee8ca958f68f1b",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "@uifabric/react-cards_v0.115.56",
+      "version": "0.115.56",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.42",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@uifabric/react-cards_v0.115.55",
+      "version": "0.115.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.41",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@uifabric/react-cards_v0.115.54",
+      "version": "0.115.54",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.40",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@uifabric/react-cards_v0.115.53",
+      "version": "0.115.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.39",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@uifabric/react-cards_v0.115.52",
+      "version": "0.115.52",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.38",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 May 2021 12:23:23 GMT",
       "tag": "@uifabric/react-cards_v0.115.51",
       "version": "0.115.51",

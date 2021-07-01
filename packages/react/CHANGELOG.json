@@ -2,6 +2,57 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@fluentui/react_v7.172.0",
+      "version": "7.172.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@fluentui/react_v7.171.0",
+      "version": "7.171.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.171.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@fluentui/react_v7.170.2",
+      "version": "7.170.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 12:24:23 GMT",
       "tag": "@fluentui/react_v7.170.0",
       "version": "7.170.0",

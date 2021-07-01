@@ -195,7 +195,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -207,6 +207,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -219,7 +220,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -231,6 +232,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -243,7 +245,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -256,6 +258,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id="DatePickerDay-active0"
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -268,7 +271,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -280,6 +283,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -292,7 +296,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -304,6 +308,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -316,7 +321,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -328,6 +333,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -340,7 +346,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -352,6 +358,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -366,7 +373,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -378,6 +385,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -390,7 +398,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -402,6 +410,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -414,7 +423,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -426,6 +435,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -438,7 +448,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -450,6 +460,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -462,7 +473,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -474,6 +485,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -486,7 +498,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -498,6 +510,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -510,7 +523,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -522,6 +535,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -536,7 +550,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -548,6 +562,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -560,7 +575,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -572,6 +587,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -584,7 +600,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -596,6 +612,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -608,7 +625,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -620,6 +637,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -632,7 +650,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -644,6 +662,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -656,7 +675,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -668,6 +687,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -680,7 +700,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -692,6 +712,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -706,7 +727,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -718,6 +739,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -730,7 +752,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -742,6 +764,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -754,7 +777,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -766,6 +789,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -778,7 +802,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -790,6 +814,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -802,7 +827,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -814,6 +839,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -826,7 +852,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -838,6 +864,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -850,7 +877,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -862,6 +889,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -876,7 +904,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -888,6 +916,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -900,7 +929,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -912,6 +941,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -924,7 +954,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -936,6 +966,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -948,7 +979,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -960,6 +991,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -972,7 +1004,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -984,6 +1016,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -996,7 +1029,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -1008,6 +1041,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -1020,7 +1054,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
                       onClick={[Function]}
-                      role="gridcell"
+                      role="presentation"
                     >
                       <button
                         aria-disabled={false}
@@ -1032,6 +1066,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
+                        role="gridcell"
                         type="button"
                       >
                         <span

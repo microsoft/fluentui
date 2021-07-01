@@ -2,6 +2,96 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.43",
+      "version": "7.7.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox multi-select selected state fix",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "a56eae2fabfcb80899987d0026ee8ca958f68f1b",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.42",
+      "version": "7.7.42",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.1",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.41",
+      "version": "7.7.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.40",
+      "version": "7.7.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.171.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.39",
+      "version": "7.7.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.3",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.38",
+      "version": "7.7.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.2",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 May 2021 12:23:23 GMT",
       "tag": "@uifabric/azure-themes_v7.7.37",
       "version": "7.7.37",
