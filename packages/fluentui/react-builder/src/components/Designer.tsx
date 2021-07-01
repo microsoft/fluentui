@@ -428,106 +428,109 @@ export const Designer: React.FunctionComponent = () => {
       />
 
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <Menu
-          accessibility={tabListBehavior}
-          vertical
-          styles={({ theme }) => ({
-            background: '#FAF9F8',
-            border: '0px',
-            borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
-            borderRadius: '0px',
-            display: 'flex',
-            flexDirection: 'column',
-            width: '3.4rem',
-            transition: 'opacity 0.2s',
-            position: 'relative',
-            padding: '0px',
-            ...(mode === 'use' && {
-              pointerEvents: 'none',
-              opacity: 0,
-            }),
-          })}
-        >
-          <NavBarItem
-            title="Add components"
-            isSelected={activeTab === 'add'}
-            icon={<AddIcon size="large" outline />}
-            onClickHandler={() => selectActiveTab('add')}
-          />
+        <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
+          <Menu
+            accessibility={tabListBehavior}
+            vertical
+            styles={({ theme }) => ({
+              background: '#FAF9F8',
+              border: '0px',
+              borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
+              borderRadius: '0px',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '3.4rem',
+              transition: 'opacity 0.2s',
+              position: 'relative',
+              padding: '0px',
+              ...(mode === 'use' && {
+                pointerEvents: 'none',
+                opacity: 0,
+              }),
+            })}
+          >
+            <NavBarItem
+              title="Add components"
+              isSelected={activeTab === 'add'}
+              icon={<AddIcon size="large" outline />}
+              onClickHandler={() => selectActiveTab('add')}
+            />
 
-          <NavBarItem
-            title="Accessibility"
-            isSelected={activeTab === 'accessibility'}
-            icon={<ExclamationCircleIcon size="large" outline />}
-            onClickHandler={() => selectActiveTab('accessibility')}
-          />
+            <NavBarItem
+              title="Accessibility"
+              isSelected={activeTab === 'accessibility'}
+              icon={<ExclamationCircleIcon size="large" outline />}
+              onClickHandler={() => selectActiveTab('accessibility')}
+            />
 
-          <NavBarItem
-            title="Navigator"
-            isSelected={activeTab === 'nav'}
-            icon={<MenuIcon size="large" outline />}
-            onClickHandler={() => selectActiveTab('nav')}
-          />
-        </Menu>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            minWidth: '22.85rem',
-            transition: 'opacity 0.2s',
-            ...(mode === 'use' && {
-              pointerEvents: 'none',
-              opacity: 0,
-            }),
-          }}
-        >
+            <NavBarItem
+              title="Navigator"
+              isSelected={activeTab === 'nav'}
+              icon={<MenuIcon size="large" outline />}
+              onClickHandler={() => selectActiveTab('nav')}
+            />
+          </Menu>
           <div
             style={{
               display: 'flex',
-              alignItems: 'center',
-              padding: '0 10px 0 20px',
-              borderBottom: '1px solid #E1DFDD',
+              flexDirection: 'column',
+              minWidth: '22.85rem',
+              transition: 'opacity 0.2s',
+              ...(mode === 'use' && {
+                pointerEvents: 'none',
+                opacity: 0,
+              }),
             }}
           >
-            <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-              {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
-            </Header>
-          </div>
-          {activeTab === 'add' && (
-            <div>
-              <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '0 10px 0 20px',
+                borderBottom: '1px solid #E1DFDD',
+              }}
+            >
+              <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
+              </Header>
             </div>
-          )}
-          {activeTab === 'accessibility' && (
-            <div>
-              {_.isEmpty(accessibilityErrors)
-                ? '\t No accessibility errors automatically detected.'
-                : accessibilityErrors}
-            </div>
-          )}
-          {activeTab === 'nav' && (
-            <div>
-              {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
-                <Button
-                  text
-                  content="Insert first component"
-                  fluid
-                  onClick={() => handleOpenAddComponentDialog('', 'first')}
+            {activeTab === 'add' && (
+              <div>
+                <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+              </div>
+            )}
+            {activeTab === 'accessibility' && (
+              <div>
+                {_.isEmpty(accessibilityErrors)
+                  ? '\t No accessibility errors automatically detected.'
+                  : accessibilityErrors}
+              </div>
+            )}
+            {activeTab === 'nav' && (
+              <div>
+                {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
+                  <Button
+                    text
+                    content="Insert first component"
+                    fluid
+                    onClick={() => handleOpenAddComponentDialog('', 'first')}
+                  />
+                )}
+                <ComponentTree
+                  tree={jsonTree}
+                  selectedComponent={selectedComponent}
+                  selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+                  onSelectComponent={handleSelectComponent}
+                  onCloneComponent={handleCloneComponent}
+                  onMoveComponent={handleMoveComponent}
+                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
+                  onAddComponent={handleOpenAddComponentDialog}
                 />
-              )}
-              <ComponentTree
-                tree={jsonTree}
-                selectedComponent={selectedComponent}
-                selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                onSelectComponent={handleSelectComponent}
-                onCloneComponent={handleCloneComponent}
-                onMoveComponent={handleMoveComponent}
-                onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                onAddComponent={handleOpenAddComponentDialog}
-              />
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
+
         <div
           style={{
             display: 'flex',
