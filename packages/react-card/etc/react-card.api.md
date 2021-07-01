@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -23,7 +23,7 @@ export const CardHeader: React_2.FunctionComponent<CardSectionProps>;
 export const CardPreview: React_2.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export type CardProps = ComponentProps & React_2.HTMLAttributes<HTMLDivElement> & {
+export type CardProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLDivElement> & {
     compact?: boolean;
     horizontal?: boolean;
     centered?: boolean;
@@ -37,7 +37,7 @@ export type CardProps = ComponentProps & React_2.HTMLAttributes<HTMLDivElement> 
 };
 
 // @public (undocumented)
-export type CardSectionProps = ComponentProps & React_2.HTMLAttributes<HTMLDivElement> & {
+export type CardSectionProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean;
 };
 
