@@ -5,6 +5,7 @@ import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 const mergeProps = makeMergeProps<MenuPopoverState>({});
 
@@ -26,7 +27,7 @@ export const useMenuPopover = (
   const popoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const openOnHover = useMenuContext(context => context.openOnHover);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
 
