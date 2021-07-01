@@ -8,6 +8,11 @@ export interface IIconSubset {
   };
 
   style?: IRawStyle;
+  /**
+   * Whether or not to merge any props required for images into the child elements for
+   * accessibiity comlpliance.
+   */
+  mergeImageProps?: boolean;
 }
 
 export interface IIconSubsetRecord extends IIconSubset {

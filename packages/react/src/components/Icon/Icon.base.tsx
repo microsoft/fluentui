@@ -32,7 +32,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
       // eslint-disable-next-line deprecation/deprecation
       !!this.props.imageProps || this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const iconContent = getIconContent(iconName) || {};
-    const { iconClassName, children: iconContentChildren } = iconContent;
+    const { iconClassName, children: iconContentChildren, mergeImageProps } = iconContent;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -55,7 +55,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     // eslint-disable-next-line deprecation/deprecation
     const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
-    const accessibleName = imageProps.alt || ariaLabel;
+    const accessibleName = imageProps.alt || ariaLabel || this.props.title;
     const hasName = !!(
       accessibleName ||
       this.props['aria-labelledby'] ||
@@ -64,16 +64,34 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     );
     const containerProps = hasName
       ? {
-          role: isImage ? undefined : 'img',
-          'aria-label': isImage ? undefined : accessibleName,
+          role: isImage || mergeImageProps ? undefined : 'img',
+          'aria-label': isImage || mergeImageProps ? undefined : accessibleName,
         }
       : {
           'aria-hidden': true,
         };
 
+    let finalIconContentChildren = iconContentChildren;
+
+    if (mergeImageProps && finalIconContentChildren && typeof finalIconContentChildren === 'object') {
+      finalIconContentChildren = React.cloneElement(iconContentChildren, {
+        alt: this.props.title,
+      });
+    }
+
     return (
-      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
-        {isImage ? <ImageType {...imageProps} /> : children || iconContentChildren}
+      <RootType
+        data-icon-name={iconName}
+        {...containerProps}
+        {...nativeProps}
+        {...(mergeImageProps
+          ? {
+              title: undefined,
+            }
+          : {})}
+        className={classNames.root}
+      >
+        {isImage ? <ImageType {...imageProps} /> : children || finalIconContentChildren}
       </RootType>
     );
   }
