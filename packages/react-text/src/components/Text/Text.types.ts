@@ -86,7 +86,7 @@ export interface TextProps extends ComponentPropsCompat, React.HTMLAttributes<HT
 /**
  * Names of TextProps that have a default value in useText
  */
-export type TextDefaultedProps = never; // TODO add names of properties with default values
+export type TextDefaultedProps = never;
 
 /**
  * State used in rendering Text

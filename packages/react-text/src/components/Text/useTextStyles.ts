@@ -95,8 +95,6 @@ const useStyles = makeStyles({
   alignJustify: {
     textAlign: 'justify',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -131,9 +129,6 @@ export const useTextStyles = (state: TextState): TextState => {
     state.align === 'justify' && styles.alignJustify,
     state.className,
   );
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

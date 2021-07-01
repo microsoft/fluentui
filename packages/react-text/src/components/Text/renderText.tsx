@@ -8,10 +8,5 @@ import { TextState } from './Text.types';
 export const renderText = (state: TextState) => {
   const { slots, slotProps } = getSlotsCompat(state);
 
-  return (
-    <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
-      {state.children}
-    </slots.root>
-  );
+  return <slots.root {...slotProps.root}>{state.children}</slots.root>;
 };
