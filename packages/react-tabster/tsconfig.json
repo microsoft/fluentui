@@ -1,17 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
+  "include": ["src"],
   "compilerOptions": {
     "target": "ES5",
-    "lib": ["ES2015", "DOM"],
+    "module": "CommonJS",
+    "lib": ["ES2015", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
-    "module": "CommonJS",
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
     "types": ["jest", "custom-global", "inline-style-expand-shorthand"]
-  },
-  "include": ["src"]
+  }
 }

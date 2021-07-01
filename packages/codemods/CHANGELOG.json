@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/codemods_v8.1.3",
+      "version": "8.1.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove unnecessary dep on semver",
+            "author": "elcraig@microsoft.com",
+            "commit": "b5027948c5d58663bb745a3d0fa6c55efbf6e311",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Jun 2021 07:38:15 GMT",
       "tag": "@fluentui/codemods_v8.1.2",
       "version": "8.1.2",

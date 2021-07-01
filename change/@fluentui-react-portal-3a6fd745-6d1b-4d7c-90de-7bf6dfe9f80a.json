@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update build:local output path",
-  "packageName": "@fluentui/react-portal",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}

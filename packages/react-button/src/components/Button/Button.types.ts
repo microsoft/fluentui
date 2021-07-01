@@ -97,13 +97,11 @@ export type ButtonProps = ComponentProps &
   };
 
 /**
- * Names of the shorthand properties in ButtonProps.
  * {@docCategory Button}
  */
 export type ButtonShorthandProps = 'children' | 'icon';
 
 /**
- * Names of ButtonProps that have a default value in useButton.
  * {@docCategory Button}
  */
 export type ButtonDefaultedProps = 'icon' | 'size';
@@ -123,84 +121,3 @@ export interface ButtonState extends ComponentState<ButtonProps, ButtonShorthand
    */
   ref: React.Ref<HTMLElement>;
 }
-
-/**
- * {@docCategory Button}
- */
-export type ButtonStyleSelectors = {
-  disabled?: boolean;
-  iconOnly?: boolean;
-  primary?: boolean;
-  size?: string;
-  subtle?: boolean;
-  transparent?: boolean;
-};
-
-/**
- * {@docCategory Button}
- */
-export type ButtonTokens = {
-  height: string;
-  maxWidth: string;
-  minWidth: string;
-  paddingX: string;
-  paddingY: string;
-
-  fontSize: string;
-  fontWeight: number;
-  lineHeight: string;
-
-  iconFontSize: string;
-  iconHeight: string;
-  iconSpacing: string;
-  iconWidth: string;
-
-  background: string;
-  color: string;
-
-  borderColor: string;
-  borderRadius: string;
-  borderWidth: string;
-
-  shadow: string;
-
-  hovered: Partial<{
-    background: string;
-    borderColor: string;
-    color: string;
-    shadow: string;
-  }>;
-
-  pressed: Partial<{
-    background: string;
-    borderColor: string;
-    color: string;
-    shadow: string;
-  }>;
-};
-
-/**
- * {@docCategory Button}
- */
-export type ButtonVariants =
-  | 'base'
-  | 'disabled'
-  | 'iconOnly'
-  | 'primary'
-  | 'subtle'
-  | 'transparent'
-  | 'small'
-  | 'large'
-  // TODO: get rid of these combinations, use individual variants in matchers
-  | 'disabledPrimary'
-  | 'disabledSubtle'
-  | 'disabledTransparent'
-  | 'iconOnlySmall'
-  | 'iconOnlyLarge';
-
-/**
- * {@docCategory Button}
- */
-export type ButtonVariantTokens = {
-  [variant in ButtonVariants]: Partial<ButtonTokens>;
-};

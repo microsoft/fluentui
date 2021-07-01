@@ -2,7 +2,7 @@ import hashString from '@emotion/hash';
 import { convert, convertProperty } from 'rtl-css-js/core';
 
 import { HASH_PREFIX } from '../constants';
-import { MakeStyles, MakeStylesResolvedRule } from '../types';
+import { MakeStyles, CSSClassesMap, CSSRulesByBucket, StyleBucketName } from '../types';
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { expandShorthand } from './expandShorthand';
@@ -17,25 +17,42 @@ import { hashClassName } from './utils/hashClassName';
 import { resolveProxyValues } from './createCSSVariablesProxy';
 import { hashPropertyKey } from './utils/hashPropertyKey';
 
-/**
- * Transforms input styles to resolved rules: generates classnames and CSS.
- *
- * @internal
- */
-export function resolveStyleRules(
+function pushToClassesMap(
+  classesMap: CSSClassesMap,
+  propertyKey: string,
+  ltrClassname: string,
+  rtlClassname: string | undefined,
+) {
+  classesMap[propertyKey] = rtlClassname ? [ltrClassname!, rtlClassname] : ltrClassname;
+}
+
+function pushToCSSRules(
+  cssRulesByBucket: CSSRulesByBucket,
+  styleBucketName: StyleBucketName,
+  ltrCSS: string,
+  rtlCSS: string | undefined,
+) {
+  cssRulesByBucket[styleBucketName] = cssRulesByBucket[styleBucketName] || [];
+  cssRulesByBucket[styleBucketName]!.push(ltrCSS);
+
+  if (rtlCSS) {
+    cssRulesByBucket[styleBucketName]!.push(rtlCSS);
+  }
+}
+
+function resolveStyleRulesInner(
   styles: MakeStyles,
   unstable_cssPriority: number = 0,
   pseudo = '',
   media = '',
   support = '',
-  result: Record<string, MakeStylesResolvedRule> = {},
+  cssClassesMap: CSSClassesMap = {},
+  cssRulesByBucket: CSSRulesByBucket = {},
   rtlValue?: string,
-): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
-
+): [CSSClassesMap, CSSRulesByBucket] {
   // eslint-disable-next-line guard-for-in
-  for (const property in expandedStyles) {
-    const value = expandedStyles[property];
+  for (const property in styles) {
+    const value = styles[property];
 
     // eslint-disable-next-line eqeqeq
     if (value == null) {
@@ -57,15 +74,16 @@ export function resolveStyleRules(
       const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
       const flippedInRtl = rtlDefinition.key !== property || rtlDefinition.value !== value;
 
-      const rtlClassName = hashClassName({
-        value: rtlDefinition.value.toString(),
-        property: rtlDefinition.key,
-        pseudo,
-        media,
-        support,
-        unstable_cssPriority,
-      });
-
+      const rtlClassName = flippedInRtl
+        ? hashClassName({
+            value: rtlDefinition.value.toString(),
+            property: rtlDefinition.key,
+            pseudo,
+            media,
+            support,
+            unstable_cssPriority,
+          })
+        : undefined;
       const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
         ? {
             rtlClassName,
@@ -74,6 +92,7 @@ export function resolveStyleRules(
           }
         : undefined;
 
+      const styleBucketName = getStyleBucketName(pseudo, media, support);
       const [ltrCSS, rtlCSS] = compileCSS({
         className,
         media,
@@ -85,13 +104,8 @@ export function resolveStyleRules(
         ...rtlCompileOptions,
       });
 
-      const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
-
-      if (rtlCSS) {
-        resolvedRule.push(rtlClassName, rtlCSS);
-      }
-
-      result[key] = resolvedRule;
+      pushToClassesMap(cssClassesMap, key, className, rtlClassName);
+      pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS);
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
@@ -120,35 +134,76 @@ export function resolveStyleRules(
 
       const animationName = names.join(' ');
       const animationNameRtl = namesRtl.join(' ');
-      result[animationName] = [
+
+      pushToCSSRules(
+        cssRulesByBucket,
         'k', // keyframes styles should be inserted into own bucket
-        undefined,
         keyframeCSS,
-        undefined,
         keyframeRtlCSS || undefined,
-      ];
-      resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result, animationNameRtl);
+      );
+      resolveStyleRulesInner(
+        { animationName },
+        unstable_cssPriority,
+        pseudo,
+        media,
+        support,
+        cssClassesMap,
+        cssRulesByBucket,
+        animationNameRtl,
+      );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
-        resolveStyleRules(
+        resolveStyleRulesInner(
           value,
           unstable_cssPriority,
           pseudo + normalizeNestedProperty(property),
           media,
           support,
-          result,
+          cssClassesMap,
+          cssRulesByBucket,
         );
       } else if (isMediaQuerySelector(property)) {
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
-        resolveStyleRules(value, unstable_cssPriority, pseudo, combinedMediaQuery, support, result);
+        resolveStyleRulesInner(
+          value,
+          unstable_cssPriority,
+          pseudo,
+          combinedMediaQuery,
+          support,
+          cssClassesMap,
+          cssRulesByBucket,
+        );
       } else if (isSupportQuerySelector(property)) {
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
-        resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
+        resolveStyleRulesInner(
+          value,
+          unstable_cssPriority,
+          pseudo,
+          media,
+          combinedSupportQuery,
+          cssClassesMap,
+          cssRulesByBucket,
+        );
       }
     }
   }
 
-  return result;
+  return [cssClassesMap, cssRulesByBucket];
+}
+
+/**
+ * Transforms input styles to classes maps & CSS rules.
+ *
+ * @internal
+ */
+export function resolveStyleRules(
+  styles: MakeStyles,
+  unstable_cssPriority: number = 0,
+): [CSSClassesMap, CSSRulesByBucket] {
+  // expandShorthand() and resolveProxyValues() are recursive functions and should be evaluated once for a style object
+  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
+
+  return resolveStyleRulesInner(expandedStyles, unstable_cssPriority);
 }

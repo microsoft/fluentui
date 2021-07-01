@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.117)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.116..@fluentui/react-toggle_v1.0.0-beta.117)
+
+### Patches
+
+- Bump @fluentui/react to v8.22.0 ([PR #18430](https://github.com/microsoft/fluentui/pull/18430) by nikolenkoanton92@gmail.com)
+
+## [1.0.0-beta.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.116)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.115..@fluentui/react-toggle_v1.0.0-beta.116)
+
+### Patches
+
+- Bump @fluentui/react to v8.21.1 ([PR #18713](https://github.com/microsoft/fluentui/pull/18713) by makopch@microsoft.com)
+
+## [1.0.0-beta.115](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.115)
+
+Mon, 28 Jun 2021 07:35:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.114..@fluentui/react-toggle_v1.0.0-beta.115)
+
+### Patches
+
+- Bump @fluentui/react to v8.21.0 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/utilities to v8.2.0 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/react-hooks to v8.2.3 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.4 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
 
 ## [1.0.0-beta.114](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.114)
 
