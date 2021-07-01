@@ -15,6 +15,7 @@ import {
   IColorFillBarsProps,
   ILineChartStyleProps,
   ILineChartStyles,
+  ILineChartGap,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -132,6 +133,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _yAxisScale: any = '';
   private _circleId: string;
   private _lineId: string;
+  private _borderId: string;
   private _verticalLine: string;
   private _colorFillBarPatternId: string;
   private _uniqueCallOutID: string;
@@ -165,6 +167,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
+    this._borderId = getId('borderID');
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
     this._tooltipId = getId('LineChartTooltipId_');
@@ -211,6 +214,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       onDismiss: this._closeCallout,
       preventDismissOnEvent: () => true,
       hidden: !(!this.props.hideTooltip && this.state.isCalloutVisible),
+      descriptionMessage:
+        this.props.getCalloutDescriptionMessage && this.state.stackCalloutProps
+          ? this.props.getCalloutDescriptionMessage(this.state.stackCalloutProps)
+          : undefined,
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -347,6 +354,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         hoverAction: () => {
           this.setState({ activeLegend: point.legend });
         },
+        ...(point.legendShape && {
+          shape: point.legendShape,
+        }),
         ...(allowMultipleShapesForPoints && {
           shape: Points[point.index % Object.keys(pointTypes).length] as ILegend['shape'],
         }),
@@ -462,13 +472,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
   private _createLines(xElement: SVGElement): JSX.Element[] {
-    const lines = [];
+    const lines: JSX.Element[] = [];
+    const points: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     }
     for (let i = 0; i < this._points.length; i++) {
+      const linesForLine: JSX.Element[] = [];
+      const bordersForLine: JSX.Element[] = [];
+      const pointsForLine: JSX.Element[] = [];
+
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color;
       const { activePoint } = this.state;
@@ -478,7 +493,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const y1 = this._points[i].data[0].y;
         const xAxisCalloutData = this._points[i].data[0].xAxisCalloutData;
         const circleId = `${this._circleId}${i}`;
-        lines.push(
+        pointsForLine.push(
           <circle
             id={`${this._circleId}${i}`}
             key={`${this._circleId}${i}`}
@@ -494,8 +509,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           />,
         );
       }
+
+      let gapIndex = 0;
+      const gaps = this._points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
+
       for (let j = 1; j < this._points[i].data.length; j++) {
+        const gapResult = this._checkInGap(j, gaps, gapIndex);
+        const isInGap = gapResult.isInGap;
+        gapIndex = gapResult.gapIndex;
+
         const lineId = `${this._lineId}${i}${j}`;
+        const borderId = `${this._borderId}${i}${j}`;
         const circleId = `${this._circleId}${i}${j}`;
         const x1 = this._points[i].data[j - 1].x;
         const y1 = this._points[i].data[j - 1].y;
@@ -503,29 +527,57 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const y2 = this._points[i].data[j].y;
         const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         let path = this._getPath(this._xAxisScale(x1), this._yAxisScale(y1), circleId, j, false, this._points[i].index);
+        const strokeWidth =
+          this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend) {
-          lines.push(
-            <line
-              id={lineId}
-              key={lineId}
-              x1={this._xAxisScale(x1)}
-              y1={this._yAxisScale(y1)}
-              x2={this._xAxisScale(x2)}
-              y2={this._yAxisScale(y2)}
-              strokeWidth={this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE}
-              ref={(e: SVGLineElement | null) => {
-                this._refCallback(e!, lineId);
-              }}
-              onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
-              onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
-              onMouseOut={this._handleMouseOut}
-              stroke={lineColor}
-              strokeLinecap={'round'}
-              opacity={1}
-              onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
-            />,
-          );
-          lines.push(
+          // don't draw line if it is in a gap
+          if (!isInGap) {
+            const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
+              ? Number.parseFloat(this._points[i].lineOptions!.lineBorderWidth!.toString())
+              : 0;
+            if (lineBorderWidth > 0) {
+              bordersForLine.push(
+                <line
+                  id={borderId}
+                  key={borderId}
+                  x1={this._xAxisScale(x1)}
+                  y1={this._yAxisScale(y1)}
+                  x2={this._xAxisScale(x2)}
+                  y2={this._yAxisScale(y2)}
+                  strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+                  strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
+                  stroke={this._points[i].lineOptions?.lineBorderColor || theme!.palette.white}
+                  opacity={1}
+                />,
+              );
+            }
+
+            linesForLine.push(
+              <line
+                id={lineId}
+                key={lineId}
+                x1={this._xAxisScale(x1)}
+                y1={this._yAxisScale(y1)}
+                x2={this._xAxisScale(x2)}
+                y2={this._yAxisScale(y2)}
+                strokeWidth={strokeWidth}
+                ref={(e: SVGLineElement | null) => {
+                  this._refCallback(e!, lineId);
+                }}
+                onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+                onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+                onMouseOut={this._handleMouseOut}
+                stroke={lineColor}
+                strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+                strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
+                strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
+                opacity={1}
+                onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
+              />,
+            );
+          }
+          const hideNonActiveDots = activePoint !== circleId && this._points[i].hideNonActiveDots;
+          pointsForLine.push(
             <path
               id={circleId}
               key={circleId}
@@ -537,12 +589,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId)}
               onBlur={this._handleMouseOut}
               onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
+              visibility={hideNonActiveDots ? 'hidden' : 'visible'}
               opacity={1}
               fill={this._getPointFill(lineColor, circleId, j, false)}
               stroke={lineColor}
               strokeWidth={2}
             />,
           );
+
           if (j + 1 === this._points[i].data.length) {
             const lastCircleId = `${circleId}${j}L`;
             path = this._getPath(
@@ -554,7 +608,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               this._points[i].index,
             );
             const lastCirlceXCallout = this._points[i].data[j].xAxisCalloutData;
-            lines.push(
+            pointsForLine.push(
               <path
                 id={lastCircleId}
                 key={lastCircleId}
@@ -566,6 +620,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 onFocus={() => this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId)}
                 onBlur={this._handleMouseOut}
                 onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
+                visibility={hideNonActiveDots ? 'hidden' : 'visible'}
                 opacity={1}
                 fill={this._getPointFill(lineColor, lastCircleId, j, true)}
                 stroke={lineColor}
@@ -575,22 +630,28 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             /* eslint-enable react/jsx-no-bind */
           }
         } else {
-          lines.push(
-            <line
-              id={lineId}
-              key={lineId}
-              x1={this._xAxisScale(x1)}
-              y1={this._yAxisScale(y1)}
-              x2={this._xAxisScale(x2)}
-              y2={this._yAxisScale(y2)}
-              strokeWidth={this.props.strokeWidth || 4}
-              stroke={lineColor}
-              strokeLinecap={'round'}
-              opacity={0.1}
-            />,
-          );
+          if (!isInGap) {
+            linesForLine.push(
+              <line
+                id={lineId}
+                key={lineId}
+                x1={this._xAxisScale(x1)}
+                y1={this._yAxisScale(y1)}
+                x2={this._xAxisScale(x2)}
+                y2={this._yAxisScale(y2)}
+                strokeWidth={strokeWidth}
+                stroke={lineColor}
+                strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+                strokeDasharray={this._points[i].lineOptions?.strokeDasharray}
+                strokeDashoffset={this._points[i].lineOptions?.strokeDashoffset}
+                opacity={0.1}
+              />,
+            );
+          }
         }
       }
+      lines.push(...bordersForLine, ...linesForLine);
+      points.push(...pointsForLine);
     }
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -616,7 +677,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
-    return lines;
+    return lines.concat(points);
   }
 
   private _createColorFillBars = (containerHeight: number) => {
@@ -677,6 +738,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   };
 
+  private _checkInGap = (pointIndex: number, gaps: ILineChartGap[], currentGapIndex: number) => {
+    let gapIndex = currentGapIndex;
+    let isInGap = false;
+
+    while (gapIndex < gaps.length && pointIndex > gaps[gapIndex].endIndex) {
+      gapIndex++;
+    }
+
+    if (gapIndex < gaps.length && pointIndex > gaps[gapIndex].startIndex && pointIndex <= gaps[gapIndex].endIndex) {
+      isInGap = true;
+    }
+    return { isInGap, gapIndex };
+  };
+
   private _refCallback(element: SVGGElement, legendTitle: string): void {
     this._refArray.push({ index: legendTitle, refElement: element });
   }
@@ -692,24 +767,31 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
-    const _this = this;
-    d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
-    d3Select(`#${this._verticalLine}`)
-      .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
-      .attr('visibility', 'visibility');
-    this._refArray.forEach((obj: IRefArrayData) => {
-      if (obj.index === lineId) {
-        this.setState({
-          isCalloutVisible: true,
-          refSelected: obj.refElement,
-          hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
-          YValueHover: found.values,
-          stackCalloutProps: found!,
-          dataPointCalloutProps: found!,
-          activePoint: circleId,
-        });
-      }
-    });
+    // if no points need to be called out then don't show vertical line and callout card
+    if (found) {
+      const _this = this;
+      d3Select('#' + circleId).attr('aria-labelledby', `toolTip${this._uniqueCallOutID}`);
+      d3Select(`#${this._verticalLine}`)
+        .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
+        .attr('visibility', 'visibility');
+      this._refArray.forEach((obj: IRefArrayData) => {
+        if (obj.index === lineId) {
+          this.setState({
+            isCalloutVisible: true,
+            refSelected: obj.refElement,
+            hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+            YValueHover: found.values,
+            stackCalloutProps: found!,
+            dataPointCalloutProps: found!,
+            activePoint: circleId,
+          });
+        }
+      });
+    } else {
+      this.setState({
+        activePoint: circleId,
+      });
+    }
   };
 
   private _handleHover = (
@@ -723,19 +805,26 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const _this = this;
-    d3Select(`#${this._verticalLine}`)
-      .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
-      .attr('visibility', 'visibility');
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
-    this.setState({
-      isCalloutVisible: true,
-      refSelected: mouseEvent,
-      hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
-      YValueHover: found.values,
-      stackCalloutProps: found!,
-      dataPointCalloutProps: found!,
-      activePoint: circleId,
-    });
+    // if no points need to be called out then don't show vertical line and callout card
+    if (found) {
+      d3Select(`#${this._verticalLine}`)
+        .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
+        .attr('visibility', 'visibility');
+      this.setState({
+        isCalloutVisible: true,
+        refSelected: mouseEvent,
+        hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+        YValueHover: found.values,
+        stackCalloutProps: found!,
+        dataPointCalloutProps: found!,
+        activePoint: circleId,
+      });
+    } else {
+      this.setState({
+        activePoint: circleId,
+      });
+    }
   };
 
   private _onLineClick = (func: () => void) => {

@@ -11,9 +11,9 @@ import {
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionPanelShorthandProps = [];
+export const accordionPanelShorthandPropsCompat = [];
 
-const mergeProps = makeMergeProps<AccordionPanelState>({ deepMerge: accordionPanelShorthandProps });
+const mergeProps = makeMergeProps<AccordionPanelState>({ deepMerge: accordionPanelShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -38,8 +38,8 @@ export const useAccordionPanel = (
       role: 'region',
       'aria-labelledby': header?.id,
     },
-    resolveShorthandProps(defaultProps, accordionPanelShorthandProps),
-    resolveShorthandProps(props, accordionPanelShorthandProps),
+    resolveShorthandProps(defaultProps, accordionPanelShorthandPropsCompat),
+    resolveShorthandProps(props, accordionPanelShorthandPropsCompat),
   );
   useAccordionItemDescendant(
     {

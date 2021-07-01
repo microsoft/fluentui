@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ObjectShorthandPropsCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
 import { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
 
@@ -7,11 +7,11 @@ import { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
  * {@docCategory MenuItemRadio}
  */
 export interface MenuItemRadioProps
-  extends ComponentProps,
+  extends ComponentPropsCompat,
     React.HTMLAttributes<HTMLElement>,
     MenuItemProps,
     MenuItemSelectableProps {
-  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  checkmark?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**
@@ -22,5 +22,5 @@ export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableSta
   /**
    * Slot for the checkmark indicator
    */
-  checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  checkmark: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 }

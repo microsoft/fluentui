@@ -82,6 +82,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -253,6 +254,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -424,6 +426,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -595,6 +598,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -770,6 +774,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -941,6 +946,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1112,6 +1118,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1283,6 +1290,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1458,6 +1466,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1629,6 +1638,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1800,6 +1810,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {
@@ -1971,6 +1982,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
+                  vertical-align: top;
                   width: 20px;
                 }
                 &::-moz-focus-inner {

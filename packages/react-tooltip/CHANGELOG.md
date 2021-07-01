@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.50)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.49..@fluentui/react-tooltip_v9.0.0-alpha.50)
+
+### Changes
+
+- use react-shared-contexts instead of react-theme-provider ([PR #18710](https://github.com/microsoft/fluentui/pull/18710) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.49)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.48..@fluentui/react-tooltip_v9.0.0-alpha.49)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.46 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.48)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.47..@fluentui/react-tooltip_v9.0.0-alpha.48)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.45 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.47)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.46..@fluentui/react-tooltip_v9.0.0-alpha.47)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.44 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.46)
 

@@ -39,6 +39,7 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentCompo
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
+import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -619,5 +620,5 @@ MenuItem.shorthandConfig = {
 MenuItem.defaultProps = {
   as: 'a',
   wrapper: {},
-  indicator: {},
+  indicator: <ChevronEndIcon outline />,
 };

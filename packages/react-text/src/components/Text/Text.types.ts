@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Text Props
  */
-export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface TextProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Wraps the text content on white spaces.
    *
@@ -91,7 +91,7 @@ export type TextDefaultedProps = never; // TODO add names of properties with def
 /**
  * State used in rendering Text
  */
-export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
+export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
   /**
    * Ref to the root element
    */
