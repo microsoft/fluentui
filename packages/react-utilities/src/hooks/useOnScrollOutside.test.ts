@@ -2,7 +2,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useOnScrollOutside } from './useOnScrollOutside';
 
 describe('useOnScrollOutside', () => {
-  it.each(['wheel', 'touchmove'])('should add %s listener', event => {
+  const supportedEvents = ['wheel', 'touchmove'];
+
+  it.each(supportedEvents)('should add %s listener', event => {
     // Arrange
     const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
 
@@ -11,10 +13,10 @@ describe('useOnScrollOutside', () => {
 
     // Assert
     expect(element.addEventListener).toHaveBeenCalledTimes(2);
-    expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything());
+    expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), false);
   });
 
-  it.each(['wheel', 'touchmove'])('should cleanup %s listener', event => {
+  it.each(supportedEvents)('should cleanup %s listener', event => {
     // Arrange
     const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
 
@@ -24,7 +26,32 @@ describe('useOnScrollOutside', () => {
 
     // Assert
     expect(element.removeEventListener).toHaveBeenCalledTimes(2);
-    expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything());
+    expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), false);
+  });
+
+  it.each(supportedEvents)('should add %s capture listener', event => {
+    // Arrange
+    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
+
+    // Act
+    renderHook(() => useOnScrollOutside({ element, callback: jest.fn(), refs: [], capture: true }));
+
+    // Assert
+    expect(element.addEventListener).toHaveBeenCalledTimes(2);
+    expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
+  });
+
+  it.each(supportedEvents)('should cleanup %s capture listener', event => {
+    // Arrange
+    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
+
+    // Act
+    const { unmount } = renderHook(() => useOnScrollOutside({ element, callback: jest.fn(), refs: [], capture: true }));
+    unmount();
+
+    // Assert
+    expect(element.removeEventListener).toHaveBeenCalledTimes(2);
+    expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 
   it('should not add event listeners when disabled', () => {
