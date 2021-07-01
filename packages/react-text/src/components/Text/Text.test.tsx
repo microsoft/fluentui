@@ -159,11 +159,4 @@ describe('Text', () => {
       text-align: ${expectedValue};
     `);
   });
-
-  it('allows overriding the component being rendered', () => {
-    const { getByText } = render(<Text as="p">Test</Text>);
-
-    const textElement = getByText('Test');
-    expect(textElement.nodeName).toBe('P');
-  });
 });
