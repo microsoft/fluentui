@@ -8,77 +8,77 @@ export interface TextProps extends ComponentPropsCompat, React.HTMLAttributes<HT
   /**
    * Wraps the text content on white spaces.
    *
-   * @defaultvalue true
+   * @defaultValue true
    */
   wrap?: boolean;
 
   /**
    * Truncate overflowing text for block displays.
    *
-   * @defaultvalue false
+   * @defaultValue false
    */
   truncate?: boolean;
 
   /**
    * Applies a block display for the content.
    *
-   * @defaultvalue false
+   * @defaultValue false
    */
   block?: boolean;
 
   /**
    * Applies the italic font style to the content.
    *
-   * @defaultvalue false
+   * @defaultValue false
    */
   italic?: boolean;
 
   /**
    * Applies the underline text decoration to the content.
    *
-   * @defaultvalue false
+   * @defaultValue false
    */
   underline?: boolean;
 
   /**
    * Applies the strikethrough text decoration to the content.
    *
-   * @defaultvalue false
+   * @defaultValue false
    */
   strikethrough?: boolean;
 
   /**
    * Applies font size and line height based on the theme tokens.
    *
-   * @defaultvalue 300
+   * @defaultValue 300
    */
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
   /**
    * Applies the font family to the content.
    *
-   * @defaultvalue base
+   * @defaultValue base
    */
   font?: 'base' | 'monospace' | 'numeric';
 
   /**
    * Applies font weight to the content.
    *
-   * @defaultvalue regular
+   * @defaultValue regular
    */
   weight?: 'regular' | 'medium' | 'semibold';
 
   /**
    * Aligns text based on the parent container.
    *
-   * @defaultvalue start
+   * @defaultValue start
    */
   align?: 'start' | 'center' | 'end' | 'justify';
 
   /**
    * Component to be rendered as.
    *
-   * @defaultvalue span
+   * @defaultValue span
    */
   as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
 }
