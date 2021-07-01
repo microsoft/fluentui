@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Removing react-badge examples that have been moved due to migration to new DX.",
+  "packageName": "@fluentui/react-examples",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "none"
+}

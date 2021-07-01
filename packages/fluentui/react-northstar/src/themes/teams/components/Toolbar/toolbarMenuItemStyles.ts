@@ -3,7 +3,6 @@ import { getColorScheme } from '../../colors';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarVariables } from './toolbarVariables';
-import { submenuIndicatorUrl } from './submenuIndicatorUrl';
 import { activeIndicatorUrl } from './activeIndicatorUrl';
 import { toolbarMenuItemSubmenuIndicatorClassName } from '../../../../components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 import { toolbarMenuItemActiveIndicatorClassName } from '../../../../components/Toolbar/ToolbarMenuItemActiveIndicator';
@@ -31,6 +30,7 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
       cursor: 'pointer',
       minHeight: v.itemHeight,
       lineHeight: v.lineHeightBase,
+      userSelect: 'none',
 
       ':focus': {
         outline: 0,
@@ -40,7 +40,7 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
         color: v.menuItemForegroundHover || colors.menuItemForegroundHover,
         backgroundColor: v.menuItemBackgroundHover || colors.menuItemBackgroundHover,
         [`& .${toolbarMenuItemSubmenuIndicatorClassName}`]: {
-          backgroundImage: submenuIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
+          color: v.menuItemForegroundHover || colors.menuItemForegroundHover,
         },
         [`& .${toolbarMenuItemActiveIndicatorClassName}`]: {
           backgroundImage: activeIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
@@ -54,7 +54,7 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
         color: v.menuItemForegroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.menuItemBackgroundDisabled,
         [`& .${toolbarMenuItemSubmenuIndicatorClassName}`]: {
-          backgroundImage: submenuIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
+          color: v.menuItemForegroundDisabled || colors.foregroundDisabled1,
         },
         [`& .${toolbarMenuItemActiveIndicatorClassName}`]: {
           backgroundImage: activeIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),

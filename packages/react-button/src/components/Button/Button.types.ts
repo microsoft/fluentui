@@ -1,22 +1,25 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Button}
  */
-export type ButtonProps = ComponentProps &
+export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
+    // Temporarily declare children as a shorthand slot until #18471 is fixed
+    children?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
     // /**
     //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
     //  * is set to `true`.
     //  */
-    // loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    // loader?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 
     // /**
     //  * A button can fill the width of its container.
@@ -94,13 +97,11 @@ export type ButtonProps = ComponentProps &
   };
 
 /**
- * Names of the shorthand properties in ButtonProps.
  * {@docCategory Button}
  */
-export type ButtonShorthandProps = 'children' | 'icon';
+export type ButtonShorthandPropsCompat = 'children' | 'icon';
 
 /**
- * Names of ButtonProps that have a default value in useButton.
  * {@docCategory Button}
  */
 export type ButtonDefaultedProps = 'icon' | 'size';
@@ -108,7 +109,8 @@ export type ButtonDefaultedProps = 'icon' | 'size';
 /**
  * {@docCategory Button}
  */
-export interface ButtonState extends ComponentState<ButtonProps, ButtonShorthandProps, ButtonDefaultedProps> {
+export interface ButtonState
+  extends ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> {
   /**
    * A button can contain only an icon.
    * @default false
@@ -120,84 +122,3 @@ export interface ButtonState extends ComponentState<ButtonProps, ButtonShorthand
    */
   ref: React.Ref<HTMLElement>;
 }
-
-/**
- * {@docCategory Button}
- */
-export type ButtonStyleSelectors = {
-  disabled?: boolean;
-  iconOnly?: boolean;
-  primary?: boolean;
-  size?: string;
-  subtle?: boolean;
-  transparent?: boolean;
-};
-
-/**
- * {@docCategory Button}
- */
-export type ButtonTokens = {
-  height: string;
-  maxWidth: string;
-  minWidth: string;
-  paddingX: string;
-  paddingY: string;
-
-  fontSize: string;
-  fontWeight: number;
-  lineHeight: string;
-
-  iconFontSize: string;
-  iconHeight: string;
-  iconSpacing: string;
-  iconWidth: string;
-
-  background: string;
-  color: string;
-
-  borderColor: string;
-  borderRadius: string;
-  borderWidth: string;
-
-  shadow: string;
-
-  hovered: Partial<{
-    background: string;
-    borderColor: string;
-    color: string;
-    shadow: string;
-  }>;
-
-  pressed: Partial<{
-    background: string;
-    borderColor: string;
-    color: string;
-    shadow: string;
-  }>;
-};
-
-/**
- * {@docCategory Button}
- */
-export type ButtonVariants =
-  | 'base'
-  | 'disabled'
-  | 'iconOnly'
-  | 'primary'
-  | 'subtle'
-  | 'transparent'
-  | 'small'
-  | 'large'
-  // TODO: get rid of these combinations, use individual variants in matchers
-  | 'disabledPrimary'
-  | 'disabledSubtle'
-  | 'disabledTransparent'
-  | 'iconOnlySmall'
-  | 'iconOnlyLarge';
-
-/**
- * {@docCategory Button}
- */
-export type ButtonVariantTokens = {
-  [variant in ButtonVariants]: Partial<ButtonTokens>;
-};

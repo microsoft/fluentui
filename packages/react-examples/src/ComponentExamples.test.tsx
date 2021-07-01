@@ -91,6 +91,7 @@ const excludedComponents = [
   'ContextualMenu',
   'HoverCard',
   'MarqueeSelection',
+  'MessageBar',
   'Modal',
   'Overlay',
   'Panel',
@@ -125,7 +126,6 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 const includedPackages = [
   'react',
   'react-button',
-  'react-cards',
   'react-checkbox',
   'react-focus',
   'react-link',

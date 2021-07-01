@@ -7,7 +7,7 @@ import { MakeStylesRenderer, StyleBucketName } from '../types';
  */
 export const styleBucketOrdering: StyleBucketName[] = [
   // catch-all
-  '',
+  'd',
   // link
   'l',
   // visited
@@ -51,7 +51,7 @@ export function getStyleSheetForBucket(
 
     const tag = target.createElement('style');
 
-    tag.dataset.makeStylesBucket = bucketName || 'default';
+    tag.dataset.makeStylesBucket = bucketName;
     renderer.styleElements[bucketName] = tag;
 
     target.head.insertBefore(tag, nextBucketFromCache);

@@ -1,33 +1,33 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 
-export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface MenuItemProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Icon slot rendered before children content
    */
-  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  checkmark?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  submenuIndicator?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  content?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  secondaryContent?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * If the menu item is a trigger for a submenu
@@ -54,26 +54,26 @@ export interface MenuItemState extends MenuItemProps {
   /**
    * Icon slot when processed by internal state
    */
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  icon?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  checkmark: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  submenuIndicator?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Slot for the component children, avoid in favour of children and classnames for customization
    */
-  content: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  content: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  secondaryContent: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 }

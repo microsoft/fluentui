@@ -8,4 +8,5 @@ export const TimeConstants = {
   MinutesInOneHour: 60,
   DaysInOneWeek: 7,
   MonthInOneYear: 12,
+  HoursInOneDay: 24,
 };

@@ -83,6 +83,7 @@ export * from './Text';
 export * from './TextField';
 export * from './Theme';
 export * from './ThemeGenerator';
+export * from './TimePicker';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
