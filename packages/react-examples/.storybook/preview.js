@@ -140,7 +140,7 @@ function loadStories() {
   // - after new config is in place remove this whole IF
   if (packageNamePlaceholder === 'react-components') {
     // include package collocated stories within react-components
-    contexts.push(require.context('../../', true, /(REACT_DEPS)\/src\/[\w./]+\.(Example|stories)\.(tsx|mdx)$/));
+    contexts.push(require.context('../../', true, /(REACT_DEPS)\/src\/[\w./]+\.(stories)\.(tsx|mdx)$/));
   }
 
   for (const req of contexts) {

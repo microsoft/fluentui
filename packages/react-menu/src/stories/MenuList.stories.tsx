@@ -11,10 +11,10 @@ import {
   MenuItemCheckboxProps,
   MenuItemRadioProps,
   MenuListProps,
-} from './index';
+} from '../index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
-import { CutIcon, PasteIcon, EditIcon } from './tmp-icons.stories';
+import { CutIcon, PasteIcon, EditIcon } from '../tmp-icons.stories';
 
 const useStyles = makeStyles({
   container: theme => ({
