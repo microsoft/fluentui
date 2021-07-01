@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
+
+
 <!--------------------------------[ v0.57.0 ]------------------------------- -->
 ## [v0.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.57.0) (2021-06-29)
 
