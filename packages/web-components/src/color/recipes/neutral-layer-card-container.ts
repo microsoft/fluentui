@@ -6,11 +6,7 @@ import { baseLayerLuminanceSwatch } from '../utilities/base-layer-luminance';
 /**
  * @internal
  */
-export function neutralLayerCardContainer(
-  palette: Palette,
-  relativeLuminance: number,
-  layerDelta: number,
-): Swatch {
+export function neutralLayerCardContainer(palette: Palette, relativeLuminance: number, layerDelta: number): Swatch {
   const oldCardIndex: number = clamp(
     palette.closestIndexOf(baseLayerLuminanceSwatch(relativeLuminance)) - layerDelta,
     0,

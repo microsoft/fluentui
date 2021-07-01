@@ -1,5 +1,12 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -20,7 +27,10 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const textFieldFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const textFieldFilledStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host([appearance='filled']) .root {
       background: ${neutralFillRest};
@@ -68,54 +78,54 @@ export const textFieldFilledStyles: (context: ElementDefinitionContext, definiti
 export const textFieldStyles = (context, definition) =>
   css`
     ${display('inline-block')} :host {
-        font-family: ${bodyFont};
-        outline: none;
-        user-select: none;
-        position: relative;
+      font-family: ${bodyFont};
+      outline: none;
+      user-select: none;
+      position: relative;
     }
 
     .root {
-        box-sizing: border-box;
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        color: ${neutralForegroundRest};
-        background: ${neutralFillInputRest};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-        height: calc(${heightNumber} * 1px);
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      color: ${neutralForegroundRest};
+      background: ${neutralFillInputRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      height: calc(${heightNumber} * 1px);
     }
 
     .control {
-        -webkit-appearance: none;
-        background: transparent;
-        border: 0;
-        height: calc(100% - 4px);
-        width: 100%;
-        margin-top: auto;
-        margin-bottom: auto;
-        border: none;
-        padding: 0 calc(var(--design-unit) * 2px + 1px);
-        color: ${neutralForegroundRest};
-        font-family: inherit;
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
+      -webkit-appearance: none;
+      background: transparent;
+      border: 0;
+      height: calc(100% - 4px);
+      width: 100%;
+      margin-top: auto;
+      margin-bottom: auto;
+      border: none;
+      padding: 0 calc(var(--design-unit) * 2px + 1px);
+      color: ${neutralForegroundRest};
+      font-family: inherit;
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
     }
 
     .control:hover,
     .control:${focusVisible},
     .control:disabled,
     .control:active {
-        outline: none;
+      outline: none;
     }
 
     .label {
-        display: block;
-        color: ${neutralForegroundRest};
-        cursor: pointer;
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
-        margin-bottom: 4px;
+      display: block;
+      color: ${neutralForegroundRest};
+      cursor: pointer;
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      margin-bottom: 4px;
     }
 
     .label__hidden {
@@ -125,46 +135,47 @@ export const textFieldStyles = (context, definition) =>
 
     .start,
     .end {
-        margin: auto;
-        fill: currentcolor;
+      margin: auto;
+      fill: currentcolor;
     }
 
-    ::slotted(svg) {      ${
-      /* Glyph size and margin-left is temporary -
+    ::slotted(svg) {
+      ${
+        /* Glyph size and margin-left is temporary -
             replace when adaptive typography is figured out */ ''
-    } width: 16px;
-        height: 16px;
+      } width: 16px;
+      height: 16px;
     }
 
     .start {
-        margin-inline-start: 11px;
+      margin-inline-start: 11px;
     }
 
     .end {
-        margin-inline-end: 11px;
+      margin-inline-end: 11px;
     }
 
     :host(:hover:not(.disabled)) .root {
-        background: ${neutralFillInputHover};
-        border-color: ${neutralStrokeHover};
+      background: ${neutralFillInputHover};
+      border-color: ${neutralStrokeHover};
     }
 
     :host(:focus-within:not(.disabled)) .root {
-        border-color: ${focusStrokeOuter};
-        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
+      border-color: ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(.disabled) .label,
     :host(.readonly) .label,
     :host(.readonly) .control,
     :host(.disabled) .control {
-        cursor: ${disabledCursor};
+      cursor: ${disabledCursor};
     }
 
     :host(.disabled) {
-        opacity: ${disabledOpacity};
+      opacity: ${disabledOpacity};
     }
-`.withBehaviors(
+  `.withBehaviors(
     appearanceBehavior('filled', textFieldFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`

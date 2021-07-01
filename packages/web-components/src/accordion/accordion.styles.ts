@@ -9,7 +9,10 @@ import {
   typeRampMinus1LineHeight,
 } from '../design-tokens';
 
-export const accordionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const accordionStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('flex')} :host {
       box-sizing: border-box;
