@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.48)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.47..@fluentui/react-image_v9.0.0-alpha.48)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.19 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.47)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.46..@fluentui/react-image_v9.0.0-alpha.47)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.18 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.46)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.45..@fluentui/react-image_v9.0.0-alpha.46)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.17 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.45)
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing a bug within ComboBox which caused aria-labelledby to be added to list even when label was absent.",
+  "packageName": "@fluentui/react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}

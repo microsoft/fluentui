@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.44)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.43..@fluentui/react-accordion_v9.0.0-alpha.44)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.19 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.43)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.42..@fluentui/react-accordion_v9.0.0-alpha.43)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.18 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.42)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.41..@fluentui/react-accordion_v9.0.0-alpha.42)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.17 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.41)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.40..@fluentui/react-accordion_v9.0.0-alpha.41)
+
+### Changes
+
+- Adds react-aria ([PR #18597](https://github.com/microsoft/fluentui/pull/18597) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.40)
 

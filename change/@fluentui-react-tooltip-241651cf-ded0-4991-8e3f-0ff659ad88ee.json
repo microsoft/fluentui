@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use react-shared-contexts instead of react-theme-provider",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
