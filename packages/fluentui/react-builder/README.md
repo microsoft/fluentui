@@ -2,7 +2,7 @@
 
 ## Usage
 
-#### Requirements
+### Requirements
 
 Node JS: `npm install -g npm`
 Yarn: `npm install --global yarn`
