@@ -173,7 +173,9 @@ const useMenuOpenState = (state: MenuState) => {
     element: targetDocument,
     refs: [state.menuPopoverRef, state.triggerRef],
     callback: e => state.setOpen(e, { open: false }),
+    capture: true,
   });
+
   useOnMenuMouseEnter({
     element: targetDocument,
     callback: e => {

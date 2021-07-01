@@ -22,17 +22,23 @@ export interface UseOnClickOrScrollOutsideOptions {
    * Disables event listeners
    */
   disabled?: boolean;
+
   /**
    * Called if the click is outside the element refs
    */
   callback: (ev: MouseEvent | TouchEvent) => void;
+
+  /**
+   * Event will be handled during he capture phase
+   */
+  capture?: boolean;
 }
 
 /**
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
-  const { refs, callback, element, disabled, contains: containsProp } = options;
+  const { refs, callback, element, disabled, contains: containsProp, capture } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
@@ -62,8 +68,8 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     };
 
     if (!disabled) {
-      element?.addEventListener('click', conditionalHandler);
-      element?.addEventListener('touchstart', conditionalHandler);
+      element?.addEventListener('click', conditionalHandler, !!capture);
+      element?.addEventListener('touchstart', conditionalHandler, !!capture);
     }
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
@@ -72,13 +78,13 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     }, 1);
 
     return () => {
-      element?.removeEventListener('click', conditionalHandler);
-      element?.removeEventListener('touchstart', conditionalHandler);
+      element?.removeEventListener('click', conditionalHandler, !!capture);
+      element?.removeEventListener('touchstart', conditionalHandler, !!capture);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
     };
-  }, [listener, element, disabled]);
+  }, [listener, element, disabled, capture]);
 };
 
 const getWindowEvent = (target: Node | Window): Event | undefined => {

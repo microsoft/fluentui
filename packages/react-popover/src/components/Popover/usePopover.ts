@@ -65,13 +65,17 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
     disabled: !state.open,
+    // React can update DOM before them DOM event is handled
+    // e.g. click removes previous content -> popover will close
+    capture: true,
   });
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
-    disabled: !state.open || !state.openOnContext,
+    disabled: !state.open || !state.openOnContext, // only close on scroll for context
+    capture: true,
   });
 
   return state;
