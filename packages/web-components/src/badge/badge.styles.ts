@@ -12,7 +12,10 @@ import {
   typeRampMinus1LineHeight,
 } from '../design-tokens';
 
-export const badgeStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const badgeStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('inline-block')} :host {
       box-sizing: border-box;

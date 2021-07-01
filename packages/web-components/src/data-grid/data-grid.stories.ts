@@ -6,6 +6,7 @@ import { STORY_RENDERED } from '@storybook/core-events';
 import DataGridTemplate from './fixtures/base.html';
 import './index';
 
+/* eslint-disable @typescript-eslint/ban-types */
 let defaultGridElement: DataGrid | null = null;
 const defaultRowData: object = newDataRow('default');
 
@@ -429,6 +430,8 @@ const templateColumns: ColumnDefinition[] = [
 function getFocusTarget(cell: DataGridCell): HTMLElement {
   return cell.querySelector('fast-button') as HTMLElement;
 }
+
+/* eslint-enable @typescript-eslint/ban-types */
 
 export default {
   title: 'Data Grid',

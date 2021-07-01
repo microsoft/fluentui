@@ -15,11 +15,11 @@ if (!window.matchMedia) {
   // @ts-ignore
   window.matchMedia =
     window.matchMedia ||
-    function() {
+    function () {
       return {
         matches: false,
-        addListener: function() {},
-        removeListener: function() {},
+        addListener: function () {},
+        removeListener: function () {},
       };
     };
 }

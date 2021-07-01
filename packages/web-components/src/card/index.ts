@@ -29,10 +29,7 @@ export class Card extends FoundationCard {
 
       if (parsedColor !== null) {
         this.neutralPaletteSource = next;
-        fillColor.setValueFor(
-          this,
-          SwatchRGB.create(parsedColor.r, parsedColor.g, parsedColor.b)
-        );
+        fillColor.setValueFor(this, SwatchRGB.create(parsedColor.r, parsedColor.g, parsedColor.b));
       }
     }
   }

@@ -4,7 +4,10 @@ import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { strokeWidth, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
 
-export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles = (context: ElementDefinitionContext, definition: ComboboxOptions) =>
+export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: ComboboxOptions,
+) =>
   css`
     ${selectStyles(context, definition)}
 

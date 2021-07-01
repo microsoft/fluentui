@@ -1,5 +1,10 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   AccentButtonStyles,
@@ -18,7 +23,10 @@ import {
   neutralStrokeRest,
 } from '../design-tokens';
 
-export const buttonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const buttonStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host([disabled]),
     :host([disabled]:hover),

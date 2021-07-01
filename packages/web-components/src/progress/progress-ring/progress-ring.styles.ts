@@ -1,10 +1,18 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, ProgressRingOptions } from '@microsoft/fast-foundation';
+import {
+  display,
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  ProgressRingOptions,
+} from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import { accentForegroundRest, neutralFillRest, neutralForegroundHint } from '../../design-tokens';
 
-export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles = (context: ElementDefinitionContext, definition: ProgressRingOptions) =>
+export const progressRingStyles: (
+  context: ElementDefinitionContext,
+  definition: ProgressRingOptions,
+) => ElementStyles = (context: ElementDefinitionContext, definition: ProgressRingOptions) =>
   css`
     ${display('flex')} :host {
       align-items: center;

@@ -1,8 +1,8 @@
 import {
   DataGrid,
   DataGridCell,
-  DataGridRow,
   dataGridCellTemplate,
+  DataGridRow,
   dataGridRowTemplate,
   dataGridTemplate,
 } from '@microsoft/fast-foundation';

@@ -1,4 +1,4 @@
-import { html } from "@microsoft/fast-element";
+import { html } from '@microsoft/fast-element';
 import {
   HorizontalScroll as FoundationHorizontalScroll,
   HorizontalScrollOptions,
@@ -36,16 +36,13 @@ export const fluentHorizontalScroll = HorizontalScroll.compose<HorizontalScrollO
   template,
   styles,
   nextFlipper: html`
-    <fluent-flipper
-        @click="${x => x.scrollToNext()}"
-        aria-hidden="${x => x.flippersHiddenFromAT}"
-    ></fluent-flipper>
+    <fluent-flipper @click="${x => x.scrollToNext()}" aria-hidden="${x => x.flippersHiddenFromAT}"></fluent-flipper>
   `,
   previousFlipper: html`
     <fluent-flipper
-        @click="${x => x.scrollToPrevious()}"
-        direction="previous"
-        aria-hidden="${x => x.flippersHiddenFromAT}"
+      @click="${x => x.scrollToPrevious()}"
+      direction="previous"
+      aria-hidden="${x => x.flippersHiddenFromAT}"
     ></fluent-flipper>
   `,
 });

@@ -2,7 +2,10 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { bodyFont, density, designUnit, typeRampMinus1FontSize, typeRampMinus1LineHeight } from '../../design-tokens';
 
-export const tabPanelStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
+export const tabPanelStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
   ${display('flex')} :host {
     box-sizing: border-box;
     font-family: ${bodyFont};

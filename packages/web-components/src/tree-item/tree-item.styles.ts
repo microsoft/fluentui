@@ -79,26 +79,29 @@ const selectedExpandCollapseHoverBehavior = DesignToken.create<Swatch>(
   return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
 });
 
-export const treeItemStyles: (context: ElementDefinitionContext, definition: TreeItemOptions) => ElementStyles = (context: ElementDefinitionContext, definition: TreeItemOptions) =>
+export const treeItemStyles: (context: ElementDefinitionContext, definition: TreeItemOptions) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: TreeItemOptions,
+) =>
   css`
     ${display('block')} :host {
-        contain: content;
-        position: relative;
-        outline: none;
-        color: ${neutralForegroundRest};
-        background: ${neutralFillStealthRest};
-        cursor: pointer;
-        font-family: ${bodyFont};
-        --expand-collapse-button-size: calc(${heightNumber} * 1px);
-        --tree-item-nested-width: 0;
+      contain: content;
+      position: relative;
+      outline: none;
+      color: ${neutralForegroundRest};
+      background: ${neutralFillStealthRest};
+      cursor: pointer;
+      font-family: ${bodyFont};
+      --expand-collapse-button-size: calc(${heightNumber} * 1px);
+      --tree-item-nested-width: 0;
     }
 
     :host(:focus) > .positioning-region {
-        outline: none;
+      outline: none;
     }
 
     :host(:focus) .content-region {
-        outline: none;
+      outline: none;
     }
 
     .positioning-region {
@@ -110,106 +113,106 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(:${focusVisible}) .positioning-region {
-        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        color: ${neutralForegroundRest};
+      border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      color: ${neutralForegroundRest};
     }
 
     .positioning-region::before {
-        content: "";
-        display: block;
-        width: var(--tree-item-nested-width);
-        flex-shrink: 0;
+      content: '';
+      display: block;
+      width: var(--tree-item-nested-width);
+      flex-shrink: 0;
     }
 
     .positioning-region:hover {
-        background: ${neutralFillStealthHover};
+      background: ${neutralFillStealthHover};
     }
 
     .positioning-region:active {
-        background: ${neutralFillStealthActive};
+      background: ${neutralFillStealthActive};
     }
 
     .content-region {
-        display: inline-flex;
-        align-items: center;
-        white-space: nowrap;
-        width: 100%;
-        height: calc(${heightNumber} * 1px);
-        margin-inline-start: calc(${designUnit} * 2px + 8px);
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
-        font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      width: 100%;
+      height: calc(${heightNumber} * 1px);
+      margin-inline-start: calc(${designUnit} * 2px + 8px);
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      font-weight: 400;
     }
 
     .items {
-        display: none;
-        ${
-          /* Font size should be based off calc(1em + (design-unit + glyph-size-number) * 1px) -
+      display: none;
+      ${
+        /* Font size should be based off calc(1em + (design-unit + glyph-size-number) * 1px) -
             update when density story is figured out */ ''
-        } font-size: calc(1em + (${designUnit} + 16) * 1px);
+      } font-size: calc(1em + (${designUnit} + 16) * 1px);
     }
 
     .expand-collapse-button {
-        background: none;
-        border: none;
-        outline: none;
-        ${
-          /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
+      background: none;
+      border: none;
+      outline: none;
+      ${
+        /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
             update when density story is figured out */ ''
-        } width: calc((${expandCollapseButtonSize} + (${designUnit} * 2)) * 1px);
-        height: calc((${expandCollapseButtonSize} + (${designUnit} * 2)) * 1px);
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        margin: 0 6px;
+      } width: calc((${expandCollapseButtonSize} + (${designUnit} * 2)) * 1px);
+      height: calc((${expandCollapseButtonSize} + (${designUnit} * 2)) * 1px);
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin: 0 6px;
     }
 
     .expand-collapse-glyph {
-        width: 16px;
-        height: 16px;
-        transition: transform 0.1s linear;
-        transform: rotate(-45deg);
-        pointer-events: none;
-        fill: ${neutralForegroundRest};
+      width: 16px;
+      height: 16px;
+      transition: transform 0.1s linear;
+      transform: rotate(-45deg);
+      pointer-events: none;
+      fill: ${neutralForegroundRest};
     }
     .start,
     .end {
-        display: flex;
-        fill: currentcolor;
+      display: flex;
+      fill: currentcolor;
     }
 
-     ::slotted(svg) {
-        ${/* Glyph size is temporary -
+    ::slotted(svg) {
+      ${/* Glyph size is temporary -
             replace when glyph-size var is added */ ''} width: 16px;
-        height: 16px;
+      height: 16px;
     }
 
     .start {
-        ${
-          /* need to swap out once we understand how horizontalSpacing will work */ ''
-        } margin-inline-end: calc(${designUnit} * 2px + 2px);
+      ${
+        /* need to swap out once we understand how horizontalSpacing will work */ ''
+      } margin-inline-end: calc(${designUnit} * 2px + 2px);
     }
 
     .end {
-        ${
-          /* need to swap out once we understand how horizontalSpacing will work */ ''
-        } margin-inline-start: calc(${designUnit} * 2px + 2px);
+      ${
+        /* need to swap out once we understand how horizontalSpacing will work */ ''
+      } margin-inline-start: calc(${designUnit} * 2px + 2px);
     }
 
     :host(.expanded) > .positioning-region .expand-collapse-glyph {
-        ${/* transform needs to be localized */ ''} transform: rotate(0deg);
+      ${/* transform needs to be localized */ ''} transform: rotate(0deg);
     }
 
     :host(.expanded) > .items {
-        display: block;
+      display: block;
     }
 
     :host([disabled]) .content-region {
-        opacity: ${disabledOpacity};
-        cursor: ${disabledCursor};
+      opacity: ${disabledOpacity};
+      cursor: ${disabledCursor};
     }
 
     :host(.nested) .content-region {
@@ -218,15 +221,15 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(.nested) .expand-collapse-button {
-        position: absolute;
+      position: absolute;
     }
 
     :host(.nested) .expand-collapse-button:hover {
-        background: ${expandCollapseHoverBehavior};
+      background: ${expandCollapseHoverBehavior};
     }
 
     :host([selected]) .positioning-region {
-        background: ${neutralFillRest};
+      background: ${neutralFillRest};
     }
 
     :host([selected]) .expand-collapse-button:hover {
@@ -234,48 +237,48 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host([selected])::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: calc((${heightNumber} / 4) * 1px);
-        width: 3px;
-        height: calc((${heightNumber} / 2) * 1px);
-        ${
-          /* The french fry background needs to be calculated based on the selected background state for this control.
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc((${heightNumber} / 4) * 1px);
+      width: 3px;
+      height: calc((${heightNumber} / 2) * 1px);
+      ${
+        /* The french fry background needs to be calculated based on the selected background state for this control.
             We currently have no way of chaning that, so setting to accent-foreground-rest for the time being */ ''
-        } background: ${accentForegroundRest};
-        border-radius: calc(${controlCornerRadius} * 1px);
+      } background: ${accentForegroundRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     ::slotted(fluent-tree-item) {
-        --tree-item-nested-width: 1em;
-        --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
+      --tree-item-nested-width: 1em;
+      --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
     }
-`.withBehaviors(
+  `.withBehaviors(
     new DirectionalStyleSheetBehavior(ltr, rtl),
     forcedColorsStylesheetBehavior(
       css`
         :host {
-            forced-color-adjust: none;
-            border-color: transparent;
-            background: ${SystemColors.Field};
-            color: ${SystemColors.FieldText};
+          forced-color-adjust: none;
+          border-color: transparent;
+          background: ${SystemColors.Field};
+          color: ${SystemColors.FieldText};
         }
         :host .content-region {
-            color: ${SystemColors.FieldText};
+          color: ${SystemColors.FieldText};
         }
         :host .content-region .expand-collapse-glyph,
         :host .content-region .start,
         :host .content-region .end {
-            fill: ${SystemColors.FieldText};
+          fill: ${SystemColors.FieldText};
         }
         :host .positioning-region:hover,
         :host([selected]) .positioning-region {
-            background: ${SystemColors.Highlight};
+          background: ${SystemColors.Highlight};
         }
         :host .positioning-region:hover .content-region,
         :host([selected]) .positioning-region .content-region {
-            color: ${SystemColors.HighlightText};
+          color: ${SystemColors.HighlightText};
         }
         :host .positioning-region:hover .content-region .expand-collapse-glyph,
         :host .positioning-region:hover .content-region .start,
@@ -283,20 +286,20 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
         :host([selected]) .content-region .expand-collapse-glyph,
         :host([selected]) .content-region .start,
         :host([selected]) .content-region .end {
-            fill: ${SystemColors.HighlightText};
+          fill: ${SystemColors.HighlightText};
         }
         :host([selected])::after {
-            background: ${SystemColors.Field}
+          background: ${SystemColors.Field};
         }
         :host(:${focusVisible}) .positioning-region {
-            border-color: ${SystemColors.FieldText};
-            box-shadow: 0 0 0 2px inset ${SystemColors.Field};
-            color: ${SystemColors.FieldText};
+          border-color: ${SystemColors.FieldText};
+          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
+          color: ${SystemColors.FieldText};
         }
         :host([disabled]) .content-region,
         :host([disabled]) .positioning-region:hover .content-region {
-            opacity: 1;
-            color: ${SystemColors.GrayText};
+          opacity: 1;
+          color: ${SystemColors.GrayText};
         }
         :host([disabled]) .content-region .expand-collapse-glyph,
         :host([disabled]) .content-region .start,
@@ -304,22 +307,22 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
         :host([disabled]) .positioning-region:hover .content-region .expand-collapse-glyph,
         :host([disabled]) .positioning-region:hover .content-region .start,
         :host([disabled]) .positioning-region:hover .content-region .end {
-            fill: ${SystemColors.GrayText};
+          fill: ${SystemColors.GrayText};
         }
         :host([disabled]) .positioning-region:hover {
-            background: ${SystemColors.Field};
+          background: ${SystemColors.Field};
         }
         .expand-collapse-glyph,
         .start,
         .end {
-            fill: ${SystemColors.FieldText};
+          fill: ${SystemColors.FieldText};
         }
         :host(.nested) .expand-collapse-button:hover {
-            background: ${SystemColors.Field};
+          background: ${SystemColors.Field};
         }
         :host(.nested) .expand-collapse-button:hover .expand-collapse-glyph {
-            fill: ${SystemColors.FieldText};
+          fill: ${SystemColors.FieldText};
         }
-        `,
+      `,
     ),
   );

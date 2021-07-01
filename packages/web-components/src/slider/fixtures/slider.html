@@ -1,38 +1,23 @@
-<div
-  style="
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      width: 500px;
-  "
->
+<div style="display: flex; flex-direction: column; justify-content: space-evenly; width: 500px">
   <h2>Toggle orientation</h2>
-  <div style="margin-bottom: 60px; height: 200px;">
+  <div style="margin-bottom: 60px; height: 200px">
     <button
-      style="width: 90px; margin: 10px;"
+      style="width: 90px; margin: 10px"
       onclick="const slider = document.getElementById('switcher'); slider.getAttribute('orientation') === 'horizontal' ? slider.setAttribute('orientation', 'vertical') : slider.setAttribute('orientation', 'horizontal');"
     >
       Toggle orientation
     </button>
     <button
-      style="width: 90px; margin: 10px;"
+      style="width: 90px; margin: 10px"
       onclick="const slider = document.getElementById('switcher'); const currentVal = Number(slider.value); slider.value = (currentVal + 10);"
     >
       Change slider val
     </button>
     <fluent-slider id="switcher" orientation="vertical" min="0" max="100" step="10">
-      <fluent-slider-label position="0">
-        0&#8451;
-      </fluent-slider-label>
-      <fluent-slider-label position="10">
-        10&#8451;
-      </fluent-slider-label>
-      <fluent-slider-label position="90">
-        90&#8451;
-      </fluent-slider-label>
-      <fluent-slider-label position="100">
-        100&#8451;
-      </fluent-slider-label>
+      <fluent-slider-label position="0"> 0&#8451; </fluent-slider-label>
+      <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
+      <fluent-slider-label position="90"> 90&#8451; </fluent-slider-label>
+      <fluent-slider-label position="100"> 100&#8451; </fluent-slider-label>
     </fluent-slider>
   </div>
   <!-- No max or min -->
@@ -41,97 +26,54 @@
 
   <!-- Margin offsets -->
   <h2>horizontal with left offset</h2>
-  <fluent-slider style="margin-left: 100px;"></fluent-slider>
+  <fluent-slider style="margin-left: 100px"></fluent-slider>
 
   <!-- Margin offsets vertical -->
   <h2>Vertical with top offset</h2>
-  <fluent-slider orientation="vertical" style="margin-left: 100px; height: 120px;"></fluent-slider>
+  <fluent-slider orientation="vertical" style="margin-left: 100px; height: 120px"></fluent-slider>
 
   <!-- Negative positions -->
   <h2>Negative positions</h2>
   <fluent-slider min="-3" max="3" step="1">
-    <fluent-slider-label position="-3">
-      -3
-    </fluent-slider-label>
-    <fluent-slider-label position="-2">
-      -2
-    </fluent-slider-label>
-    <fluent-slider-label position="-1">
-      -1
-    </fluent-slider-label>
-    <fluent-slider-label position="0">
-      0
-    </fluent-slider-label>
-    <fluent-slider-label position="1">
-      1
-    </fluent-slider-label>
-    <fluent-slider-label position="2">
-      2
-    </fluent-slider-label>
-    <fluent-slider-label position="3">
-      3
-    </fluent-slider-label>
+    <fluent-slider-label position="-3"> -3 </fluent-slider-label>
+    <fluent-slider-label position="-2"> -2 </fluent-slider-label>
+    <fluent-slider-label position="-1"> -1 </fluent-slider-label>
+    <fluent-slider-label position="0"> 0 </fluent-slider-label>
+    <fluent-slider-label position="1"> 1 </fluent-slider-label>
+    <fluent-slider-label position="2"> 2 </fluent-slider-label>
+    <fluent-slider-label position="3"> 3 </fluent-slider-label>
   </fluent-slider>
 
   <!-- Min above 0 -->
   <h2>Min value greater than 0</h2>
-  <div style="width: 160px;">
-    <fluent-slider min="5" max="15" step="1" value="10" style="min-width: unset;">
-      <fluent-slider-label hide-mark="true" position="5">
-        5
-      </fluent-slider-label>
-      <fluent-slider-label hide-mark="true" position="15">
-        15
-      </fluent-slider-label>
+  <div style="width: 160px">
+    <fluent-slider min="5" max="15" step="1" value="10" style="min-width: unset">
+      <fluent-slider-label hide-mark="true" position="5"> 5 </fluent-slider-label>
+      <fluent-slider-label hide-mark="true" position="15"> 15 </fluent-slider-label>
     </fluent-slider>
   </div>
 
   <!-- Text Labels -->
   <h2>Text labels</h2>
-  <div style="display: flex; flex-direction: column; height: min-content;">
-    <label for="slider1" style="margin-left: 8px; color: var(--neutral-foreground-rest);">
-      Temperature:
-    </label>
+  <div style="display: flex; flex-direction: column; height: min-content">
+    <label for="slider1" style="margin-left: 8px; color: var(--neutral-foreground-rest)"> Temperature: </label>
     <fluent-slider id="slider1" min="0" max="100" step="10">
-      <fluent-slider-label position="10">
-        10&#8451;
-      </fluent-slider-label>
-      <fluent-slider-label position="90">
-        90&#8451;
-      </fluent-slider-label>
+      <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
+      <fluent-slider-label position="90"> 90&#8451; </fluent-slider-label>
     </fluent-slider>
   </div>
 
   <!-- Custom labels (rtl) -->
   <h2>Custom labels (rtl)</h2>
-  <div
-    style="
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          height: min-content;
-      "
-  >
-    <label for="rtl-slider" style="margin-left: 8px; color: var(--neutral-foreground-rest);">
-      rtl support
-    </label>
-    <div dir="rtl" style="width: 100%;">
+  <div style="display: flex; flex-direction: column; align-items: flex-start; height: min-content">
+    <label for="rtl-slider" style="margin-left: 8px; color: var(--neutral-foreground-rest)"> rtl support </label>
+    <div dir="rtl" style="width: 100%">
       <fluent-slider id="rtl-slider" min="0" max="100" step="10" value="80">
-        <fluent-slider-label position="10">
-          10
-        </fluent-slider-label>
-        <fluent-slider-label position="20">
-          20
-        </fluent-slider-label>
-        <fluent-slider-label position="40">
-          40
-        </fluent-slider-label>
-        <fluent-slider-label position="60">
-          60
-        </fluent-slider-label>
-        <fluent-slider-label position="80">
-          80
-        </fluent-slider-label>
+        <fluent-slider-label position="10"> 10 </fluent-slider-label>
+        <fluent-slider-label position="20"> 20 </fluent-slider-label>
+        <fluent-slider-label position="40"> 40 </fluent-slider-label>
+        <fluent-slider-label position="60"> 60 </fluent-slider-label>
+        <fluent-slider-label position="80"> 80 </fluent-slider-label>
       </fluent-slider>
     </div>
   </div>
@@ -139,39 +81,17 @@
   <!-- Using slot for custom thumb -->
   <h2>Custom thumb</h2>
   <fluent-slider min="0" max="100" step="10">
-    <fluent-slider-label position="0">
-      0
-    </fluent-slider-label>
-    <fluent-slider-label position="10">
-      10
-    </fluent-slider-label>
-    <fluent-slider-label position="20">
-      20
-    </fluent-slider-label>
-    <fluent-slider-label position="30">
-      30
-    </fluent-slider-label>
-    <fluent-slider-label position="40">
-      40
-    </fluent-slider-label>
-    <fluent-slider-label position="50">
-      50
-    </fluent-slider-label>
-    <fluent-slider-label position="60">
-      60
-    </fluent-slider-label>
-    <fluent-slider-label position="70">
-      70
-    </fluent-slider-label>
-    <fluent-slider-label position="80">
-      80
-    </fluent-slider-label>
-    <fluent-slider-label position="90">
-      90
-    </fluent-slider-label>
-    <fluent-slider-label position="100">
-      100
-    </fluent-slider-label>
+    <fluent-slider-label position="0"> 0 </fluent-slider-label>
+    <fluent-slider-label position="10"> 10 </fluent-slider-label>
+    <fluent-slider-label position="20"> 20 </fluent-slider-label>
+    <fluent-slider-label position="30"> 30 </fluent-slider-label>
+    <fluent-slider-label position="40"> 40 </fluent-slider-label>
+    <fluent-slider-label position="50"> 50 </fluent-slider-label>
+    <fluent-slider-label position="60"> 60 </fluent-slider-label>
+    <fluent-slider-label position="70"> 70 </fluent-slider-label>
+    <fluent-slider-label position="80"> 80 </fluent-slider-label>
+    <fluent-slider-label position="90"> 90 </fluent-slider-label>
+    <fluent-slider-label position="100"> 100 </fluent-slider-label>
     <svg slot="thumb" xmlns="http://www.w3.org/2000/svg" height="13" width="16" viewBox="0 0 16 13">
       <path
         d="M0 0H16V13H0V0ZM15 12V1H1V12H15ZM12 3V4h2V3H12ZM5 7V10H2V7H5ZM4 9V8H3V9h2ZM6.5 10V7H9.5V10H6.5ZM7.5 8V9H8.5V8H7.5ZM11 10V7H14V10H11ZM12 8V9H13V8H12Z"
@@ -188,20 +108,12 @@
     max="100"
     step="10"
     value="50"
-    style="height: 300px; width: 50px;"
+    style="height: 300px; width: 50px"
   >
-    <fluent-slider-label position="0">
-      0&#8451;
-    </fluent-slider-label>
-    <fluent-slider-label position="10">
-      10&#8451;
-    </fluent-slider-label>
-    <fluent-slider-label position="90">
-      90&#8451;
-    </fluent-slider-label>
-    <fluent-slider-label position="100">
-      100&#8451;
-    </fluent-slider-label>
+    <fluent-slider-label position="0"> 0&#8451; </fluent-slider-label>
+    <fluent-slider-label position="10"> 10&#8451; </fluent-slider-label>
+    <fluent-slider-label position="90"> 90&#8451; </fluent-slider-label>
+    <fluent-slider-label position="100"> 100&#8451; </fluent-slider-label>
   </fluent-slider>
 
   <!-- Custom labels and thumb hide marks on labels -->
@@ -214,9 +126,7 @@
         />
       </svg>
     </fluent-slider-label>
-    <fluent-slider-label position="50" hide-mark="true">
-      50
-    </fluent-slider-label>
+    <fluent-slider-label position="50" hide-mark="true"> 50 </fluent-slider-label>
     <fluent-slider-label position="100" hide-mark="true">
       <svg width="14px" height="14px" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
         <title>Clock Icon</title>
@@ -235,75 +145,31 @@
   <!-- Disabled -->
   <h2>Disabled</h2>
   <fluent-slider min="0" max="100" step="5" disabled>
-    <fluent-slider-label position="0">
-      0
-    </fluent-slider-label>
-    <fluent-slider-label position="10">
-      10
-    </fluent-slider-label>
-    <fluent-slider-label position="20">
-      20
-    </fluent-slider-label>
-    <fluent-slider-label position="30">
-      30
-    </fluent-slider-label>
-    <fluent-slider-label position="40">
-      40
-    </fluent-slider-label>
-    <fluent-slider-label position="50">
-      50
-    </fluent-slider-label>
-    <fluent-slider-label position="60">
-      60
-    </fluent-slider-label>
-    <fluent-slider-label position="70">
-      70
-    </fluent-slider-label>
-    <fluent-slider-label position="80">
-      80
-    </fluent-slider-label>
-    <fluent-slider-label position="90">
-      90
-    </fluent-slider-label>
-    <fluent-slider-label position="100">
-      100
-    </fluent-slider-label>
+    <fluent-slider-label position="0"> 0 </fluent-slider-label>
+    <fluent-slider-label position="10"> 10 </fluent-slider-label>
+    <fluent-slider-label position="20"> 20 </fluent-slider-label>
+    <fluent-slider-label position="30"> 30 </fluent-slider-label>
+    <fluent-slider-label position="40"> 40 </fluent-slider-label>
+    <fluent-slider-label position="50"> 50 </fluent-slider-label>
+    <fluent-slider-label position="60"> 60 </fluent-slider-label>
+    <fluent-slider-label position="70"> 70 </fluent-slider-label>
+    <fluent-slider-label position="80"> 80 </fluent-slider-label>
+    <fluent-slider-label position="90"> 90 </fluent-slider-label>
+    <fluent-slider-label position="100"> 100 </fluent-slider-label>
   </fluent-slider>
   <!-- Read Only -->
   <h2>Read Only</h2>
   <fluent-slider min="0" max="100" step="5" readonly>
-    <fluent-slider-label position="0">
-      0
-    </fluent-slider-label>
-    <fluent-slider-label position="10">
-      10
-    </fluent-slider-label>
-    <fluent-slider-label position="20">
-      20
-    </fluent-slider-label>
-    <fluent-slider-label position="30">
-      30
-    </fluent-slider-label>
-    <fluent-slider-label position="40">
-      40
-    </fluent-slider-label>
-    <fluent-slider-label position="50">
-      50
-    </fluent-slider-label>
-    <fluent-slider-label position="60">
-      60
-    </fluent-slider-label>
-    <fluent-slider-label position="70">
-      70
-    </fluent-slider-label>
-    <fluent-slider-label position="80">
-      80
-    </fluent-slider-label>
-    <fluent-slider-label position="90">
-      90
-    </fluent-slider-label>
-    <fluent-slider-label position="100">
-      100
-    </fluent-slider-label>
+    <fluent-slider-label position="0"> 0 </fluent-slider-label>
+    <fluent-slider-label position="10"> 10 </fluent-slider-label>
+    <fluent-slider-label position="20"> 20 </fluent-slider-label>
+    <fluent-slider-label position="30"> 30 </fluent-slider-label>
+    <fluent-slider-label position="40"> 40 </fluent-slider-label>
+    <fluent-slider-label position="50"> 50 </fluent-slider-label>
+    <fluent-slider-label position="60"> 60 </fluent-slider-label>
+    <fluent-slider-label position="70"> 70 </fluent-slider-label>
+    <fluent-slider-label position="80"> 80 </fluent-slider-label>
+    <fluent-slider-label position="90"> 90 </fluent-slider-label>
+    <fluent-slider-label position="100"> 100 </fluent-slider-label>
   </fluent-slider>
 </div>

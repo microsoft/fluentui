@@ -40,12 +40,12 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
   context: ElementDefinitionContext,
   definition: SelectOptions,
 ) => css`
-  :host([appearance="filled"]) {
+  :host([appearance='filled']) {
     background: ${neutralFillRest};
     border-color: transparent;
   }
 
-  :host([appearance="filled"]:hover:not([disabled])) {
+  :host([appearance='filled']:hover:not([disabled])) {
     background: ${neutralFillHover};
     border-color: transparent;
   }
@@ -58,150 +58,149 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
 export const selectStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-        --elevation: 14;
-        background: ${neutralFillInputRest};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-        box-sizing: border-box;
-        color: ${neutralForegroundRest};
-        font-family: ${bodyFont};
-        height: calc(${heightNumber} * 1px);
-        position: relative;
-        user-select: none;
-        min-width: 250px;
-        vertical-align: top;
+      --elevation: 14;
+      background: ${neutralFillInputRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      box-sizing: border-box;
+      color: ${neutralForegroundRest};
+      font-family: ${bodyFont};
+      height: calc(${heightNumber} * 1px);
+      position: relative;
+      user-select: none;
+      min-width: 250px;
+      vertical-align: top;
     }
 
     .listbox {
-        ${elevation}
-        background: ${neutralLayerFloating};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        box-sizing: border-box;
-        display: inline-flex;
-        flex-direction: column;
-        left: 0;
-        max-height: calc(var(--max-height) - (${heightNumber} * 1px));
-        padding: calc(${designUnit} * 1px) 0;
-        overflow-y: auto;
-        position: absolute;
-        width: 100%;
-        z-index: 1;
-        margin: 1px 0;
+      ${elevation}
+      background: ${neutralLayerFloating};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      box-sizing: border-box;
+      display: inline-flex;
+      flex-direction: column;
+      left: 0;
+      max-height: calc(var(--max-height) - (${heightNumber} * 1px));
+      padding: calc(${designUnit} * 1px) 0;
+      overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      margin: 1px 0;
     }
 
     .listbox[hidden] {
-        display: none;
+      display: none;
     }
 
     .control {
-        align-items: center;
-        box-sizing: border-box;
-        cursor: pointer;
-        display: flex;
-        font-size: ${typeRampBaseFontSize};
-        font-family: inherit;
-        min-height: 100%;
-        line-height: ${typeRampBaseLineHeight};
-        padding: 0 calc(${designUnit} * 2.25px);
-        width: 100%;
+      align-items: center;
+      box-sizing: border-box;
+      cursor: pointer;
+      display: flex;
+      font-size: ${typeRampBaseFontSize};
+      font-family: inherit;
+      min-height: 100%;
+      line-height: ${typeRampBaseLineHeight};
+      padding: 0 calc(${designUnit} * 2.25px);
+      width: 100%;
     }
 
     :host(:not([disabled]):hover) {
-        background: ${neutralFillInputHover};
-        border-color: ${neutralStrokeHover};
+      background: ${neutralFillInputHover};
+      border-color: ${neutralStrokeHover};
     }
 
     :host(:focus) {
-        outline: none;
+      outline: none;
     }
 
     :host(:${focusVisible}) {
-        border-color: ${focusStrokeOuter};
-        outline: none;
-        box-shadow:
-            0 0 0 1px inset ${focusStrokeOuter};
+      border-color: ${focusStrokeOuter};
+      outline: none;
+      box-shadow: 0 0 0 1px inset ${focusStrokeOuter};
     }
 
     :host([open]:${focusVisible}) {
-        border-color: ${neutralStrokeRest};
-        outline: none;
-        box-shadow: none;
-  }
+      border-color: ${neutralStrokeRest};
+      outline: none;
+      box-shadow: none;
+    }
 
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${focusStrokeInner};
-        border-color: ${focusStrokeOuter};
-        background: ${accentFillFocus};
-        color: ${foregroundOnAccentFocus};
+      box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${focusStrokeInner};
+      border-color: ${focusStrokeOuter};
+      background: ${accentFillFocus};
+      color: ${foregroundOnAccentFocus};
     }
 
     :host([disabled]) {
-        cursor: ${disabledCursor};
-        opacity: ${disabledOpacity};
+      cursor: ${disabledCursor};
+      opacity: ${disabledOpacity};
     }
 
     :host([disabled]) .control {
-        cursor: ${disabledCursor};
-        user-select: none;
+      cursor: ${disabledCursor};
+      user-select: none;
     }
 
     :host([disabled]:hover) {
-        background: ${neutralFillStealthRest};
-        color: ${neutralForegroundRest};
-        fill: currentcolor;
+      background: ${neutralFillStealthRest};
+      color: ${neutralForegroundRest};
+      fill: currentcolor;
     }
 
     :host(:not([disabled])) .control:active {
-        background: ${neutralFillInputActive};
-        border-color: ${neutralStrokeActive};
+      background: ${neutralFillInputActive};
+      border-color: ${neutralStrokeActive};
     }
 
-    :host([open][position="above"]) .listbox,
-    :host([open][position="below"]) .control {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+    :host([open][position='above']) .listbox,
+    :host([open][position='below']) .control {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
-    :host([open][position="above"]) .control,
-    :host([open][position="below"]) .listbox {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+    :host([open][position='above']) .control,
+    :host([open][position='below']) .listbox {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
 
-    :host([open][position="above"]) .listbox {
-        border-bottom: 0;
-        bottom: calc(${heightNumber} * 1px);
+    :host([open][position='above']) .listbox {
+      border-bottom: 0;
+      bottom: calc(${heightNumber} * 1px);
     }
 
-    :host([open][position="below"]) .listbox {
-        border-top: 0;
-        top: calc(${heightNumber} * 1px);
+    :host([open][position='below']) .listbox {
+      border-top: 0;
+      top: calc(${heightNumber} * 1px);
     }
 
     .selected-value {
-        font-family: inherit;
-        flex: 1 1 auto;
-        text-align: start;
+      font-family: inherit;
+      flex: 1 1 auto;
+      text-align: start;
     }
 
     .indicator {
-        flex: 0 0 auto;
-        margin-inline-start: 1em;
+      flex: 0 0 auto;
+      margin-inline-start: 1em;
     }
 
-    slot[name="listbox"] {
-        display: none;
-        width: 100%;
+    slot[name='listbox'] {
+      display: none;
+      width: 100%;
     }
 
-    :host([open]) slot[name="listbox"] {
-        display: flex;
-        position: absolute;
-        ${elevation}
+    :host([open]) slot[name='listbox'] {
+      display: flex;
+      position: absolute;
+      ${elevation}
     }
 
     .end {
-        margin-inline-start: auto;
+      margin-inline-start: auto;
     }
 
     .start,
@@ -209,72 +208,72 @@ export const selectStyles = (context, definition) =>
     .indicator,
     .select-indicator,
     ::slotted(svg) {
-        ${`` /* Glyph size is temporary - replace when glyph-size var is added */}
-        fill: currentcolor;
-        height: 1em;
-        min-height: calc(${designUnit} * 4px);
-        min-width: calc(${designUnit} * 4px);
-        width: 1em;
+      ${`` /* Glyph size is temporary - replace when glyph-size var is added */}
+      fill: currentcolor;
+      height: 1em;
+      min-height: calc(${designUnit} * 4px);
+      min-width: calc(${designUnit} * 4px);
+      width: 1em;
     }
 
-    ::slotted([role="option"]) {
-        flex: 0 0 auto;
+    ::slotted([role='option']) {
+      flex: 0 0 auto;
     }
-`.withBehaviors(
+  `.withBehaviors(
     appearanceBehavior('filled', selectFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
-            :host([disabled]) {
-                border-color: ${SystemColors.GrayText};
-                background-color: ${SystemColors.ButtonFace};
-                color: ${SystemColors.GrayText};
-                opacity: 1;
-                forced-color-adjust: none;
-            }
+        :host([disabled]) {
+          border-color: ${SystemColors.GrayText};
+          background-color: ${SystemColors.ButtonFace};
+          color: ${SystemColors.GrayText};
+          opacity: 1;
+          forced-color-adjust: none;
+        }
 
-            :host([disabled]:hover) {
-                background: ${SystemColors.ButtonFace};
-            }
+        :host([disabled]:hover) {
+          background: ${SystemColors.ButtonFace};
+        }
 
-            :host([disabled]) .control {
-                color: ${SystemColors.GrayText};
-                border-color: ${SystemColors.GrayText};
-            }
+        :host([disabled]) .control {
+          color: ${SystemColors.GrayText};
+          border-color: ${SystemColors.GrayText};
+        }
 
-            :host(:not([disabled]):hover) {
-              background: ${SystemColors.ButtonFace};
-              border-color: ${SystemColors.Highlight};
-            }
+        :host(:not([disabled]):hover) {
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.Highlight};
+        }
 
-            :host(:${focusVisible}) {
-              forced-color-adjust: none;
-              background: ${SystemColors.ButtonFace};
-              border-color: ${SystemColors.Highlight};
-              box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
-              color: ${SystemColors.ButtonText};
-              fill: currentcolor;
-            }
+        :host(:${focusVisible}) {
+          forced-color-adjust: none;
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.Highlight};
+          box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
+          color: ${SystemColors.ButtonText};
+          fill: currentcolor;
+        }
 
-            :host([open]) .listbox {
-                background: ${SystemColors.ButtonFace};
-                border: 1px solid ${SystemColors.ButtonText};
-            }
+        :host([open]) .listbox {
+          background: ${SystemColors.ButtonFace};
+          border: 1px solid ${SystemColors.ButtonText};
+        }
 
-            :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-                background: ${SystemColors.Highlight};
-                border-color: ${SystemColors.ButtonText};
-                box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
-                color: ${SystemColors.HighlightText};
-                fill: currentcolor;
-            }
+        :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
+          background: ${SystemColors.Highlight};
+          border-color: ${SystemColors.ButtonText};
+          box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
+          color: ${SystemColors.HighlightText};
+          fill: currentcolor;
+        }
 
-            ::slotted([role="option"]:not([aria-selected="true"]):not([disabled]):hover) {
-                forced-color-adjust: none;
-                color: ${SystemColors.ButtonText};
-                background: ${SystemColors.ButtonFace};
-                border-color: ${SystemColors.Highlight};
-                box-shadow: none;
-            }
-        `,
+        ::slotted([role='option']:not([aria-selected='true']):not([disabled]):hover) {
+          forced-color-adjust: none;
+          color: ${SystemColors.ButtonText};
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.Highlight};
+          box-shadow: none;
+        }
+      `,
     ),
   );
