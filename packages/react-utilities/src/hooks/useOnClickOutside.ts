@@ -27,18 +27,13 @@ export interface UseOnClickOrScrollOutsideOptions {
    * Called if the click is outside the element refs
    */
   callback: (ev: MouseEvent | TouchEvent) => void;
-
-  /**
-   * Event will be handled during he capture phase
-   */
-  capture?: boolean;
 }
 
 /**
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
-  const { refs, callback, element, disabled, contains: containsProp, capture } = options;
+  const { refs, callback, element, disabled, contains: containsProp } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
@@ -68,8 +63,9 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     };
 
     if (!disabled) {
-      element?.addEventListener('click', conditionalHandler, !!capture);
-      element?.addEventListener('touchstart', conditionalHandler, !!capture);
+      // use capture phase because React can update DOM before the event bubbles to the document
+      element?.addEventListener('click', conditionalHandler, true);
+      element?.addEventListener('touchstart', conditionalHandler, true);
     }
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
@@ -78,13 +74,13 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     }, 1);
 
     return () => {
-      element?.removeEventListener('click', conditionalHandler, !!capture);
-      element?.removeEventListener('touchstart', conditionalHandler, !!capture);
+      element?.removeEventListener('click', conditionalHandler, true);
+      element?.removeEventListener('touchstart', conditionalHandler, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
     };
-  }, [listener, element, disabled, capture]);
+  }, [listener, element, disabled]);
 };
 
 const getWindowEvent = (target: Node | Window): Event | undefined => {

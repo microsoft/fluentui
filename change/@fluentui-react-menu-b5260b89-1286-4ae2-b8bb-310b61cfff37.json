@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(useOnClickOutside): Allow capture event handling",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

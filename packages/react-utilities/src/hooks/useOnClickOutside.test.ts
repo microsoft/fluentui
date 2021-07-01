@@ -13,7 +13,7 @@ describe('useOnClickOutside', () => {
 
     // Assert
     expect(element.addEventListener).toHaveBeenCalledTimes(2);
-    expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), false);
+    expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 
   it.each(supportedEvents)('should cleanup %s listener', event => {
@@ -22,31 +22,6 @@ describe('useOnClickOutside', () => {
 
     // Act
     const { unmount } = renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [] }));
-    unmount();
-
-    // Assert
-    expect(element.removeEventListener).toHaveBeenCalledTimes(2);
-    expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), false);
-  });
-
-  it.each(supportedEvents)('should add %s capture listener', event => {
-    // Arrange
-    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
-
-    // Act
-    renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [], capture: true }));
-
-    // Assert
-    expect(element.addEventListener).toHaveBeenCalledTimes(2);
-    expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
-  });
-
-  it.each(supportedEvents)('should cleanup %s capture listener', event => {
-    // Arrange
-    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
-
-    // Act
-    const { unmount } = renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [], capture: true }));
     unmount();
 
     // Assert
