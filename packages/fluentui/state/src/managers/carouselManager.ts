@@ -25,14 +25,13 @@ export const createCarouselManager = (
     ...config,
     state: {
       activeIndex: 0,
-      prevActiveIndex: -1,
       ariaLiveOn: false,
       shouldFocusContainer: false,
       isFromKeyboard: false,
       ...config.state,
     },
     actions: {
-      setIndexes: (activeIndex, prevActiveIndex) => () => ({ activeIndex, prevActiveIndex }),
+      setIndexes: activeIndex => () => ({ activeIndex }),
       setAriaLiveOn: ariaLiveOn => () => ({ ariaLiveOn }),
       setShouldFocusContainer: shouldFocusContainer => () => ({ shouldFocusContainer }),
       setIsFromKeyboard: isFromKeyboard => () => ({ isFromKeyboard }),
