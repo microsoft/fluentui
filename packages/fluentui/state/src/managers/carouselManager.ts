@@ -2,7 +2,7 @@ import { createManager } from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type CarouselActions = {
-  setIndexes: (activeIndex: number, prevActiveIndex: number) => void;
+  setIndexes: (activeIndex: number) => void;
   setAriaLiveOn: (ariaLiveOn: boolean) => void;
   setShouldFocusContainer: (shouldFocusContainer: boolean) => void;
   setIsFromKeyboard: (isFromKeyboard: boolean) => void;
@@ -10,7 +10,6 @@ export type CarouselActions = {
 
 export type CarouselState = {
   activeIndex: number;
-  prevActiveIndex: number;
   ariaLiveOn: boolean;
   shouldFocusContainer: boolean;
   isFromKeyboard: boolean;
