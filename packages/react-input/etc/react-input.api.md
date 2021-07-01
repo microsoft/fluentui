@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -15,7 +15,7 @@ export const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAt
 export type InputDefaultedProps = never;
 
 // @public
-export interface InputProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface InputProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
@@ -25,7 +25,7 @@ export type InputShorthandProps = never;
 export const inputShorthandProps: InputShorthandProps[];
 
 // @public
-export interface InputState extends ComponentState<InputProps, InputShorthandProps, InputDefaultedProps> {
+export interface InputState extends ComponentStateCompat<InputProps, InputShorthandProps, InputDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

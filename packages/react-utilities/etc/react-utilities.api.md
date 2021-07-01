@@ -19,7 +19,7 @@ export const baseElementEvents: Record<string, number>;
 export const baseElementProperties: Record<string, number>;
 
 // @public (undocumented)
-export interface BaseSlots {
+export interface BaseSlotsCompat {
     // (undocumented)
     root: React_2.ElementType;
 }
@@ -33,9 +33,6 @@ export function canUseDOM(): boolean;
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
-// @public
-export type ClassDictionary = Record<string, string>;
-
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
 
@@ -43,7 +40,7 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public (undocumented)
-export interface ComponentProps {
+export interface ComponentPropsCompat {
     // (undocumented)
     as?: React_2.ElementType;
     // (undocumented)
@@ -53,7 +50,7 @@ export interface ComponentProps {
 }
 
 // @public
-export type ComponentState<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandProps<Props, ShorthandPropNames> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames>;
+export type ComponentStateCompat<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;
 
 // @public (undocumented)
 export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React_2.Context<DescendantContextValue<DescendantType>>;
@@ -97,16 +94,15 @@ export const divProperties: Record<string, number>;
 export const formProperties: Record<string, number>;
 
 // @public
-export type GenericDictionary = Record<string, any>;
-
-// @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
+// Warning: (ae-forgotten-export) The symbol "GenericDictionary" needs to be exported by the entry point index.d.ts
+//
 // @public
-export const getSlots: (state: GenericDictionary, slotNames?: readonly string[] | undefined) => {
+export const getSlotsCompat: (state: GenericDictionary, slotNames?: readonly string[] | undefined) => {
     slots: Record<string, any>;
     slotProps: Record<string, any>;
 };
@@ -135,8 +131,10 @@ export const liProperties: Record<string, number>;
 // @public
 export const makeMergeProps: <TState>(options?: MergePropsOptions<TState>) => (target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState;
 
+// Warning: (ae-forgotten-export) The symbol "GenericDictionary" needs to be exported by the entry point index.d.ts
+//
 // @public @deprecated
-export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]) => TState;
+export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: GenericDictionary_2, ...propSets: (GenericDictionary_2 | undefined)[]) => TState;
 
 // @public (undocumented)
 export type MergePropsOptions<TState> = {
@@ -147,8 +145,8 @@ export type MergePropsOptions<TState> = {
 export const nullRender: () => null;
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & Omit<ComponentProps, 'children'> & {
-    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = TProps & Omit<ComponentPropsCompat, 'children'> & {
+    children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
 };
 
 // @public
@@ -167,7 +165,7 @@ export const optionProperties: Record<string, number>;
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
-export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
+export type RequiredPropsCompat<T, K extends keyof T> = Omit<T, K> & {
     [P in K]-?: T[P];
 };
 
@@ -175,27 +173,27 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
 export function resetIdsForTests(): void;
 
 // @public
-export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> & {
-    [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P];
+export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> & {
+    [P in K]: T[P] extends ShorthandPropsCompat<infer U> ? ObjectShorthandPropsCompat<U> : T[P];
 };
 
 // @public
-export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandProps<TProps, TShorthandPropNames>;
+export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandPropsCompat<TProps, TShorthandPropNames>;
 
 // @public
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ShorthandProps<TProps extends ComponentProps = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandProps<TProps>;
+export type ShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandPropsCompat<TProps>;
 
 // @public (undocumented)
-export type ShorthandRenderFunction<TProps> = (Component: React_2.ElementType<TProps>, props: TProps) => React_2.ReactNode;
+export type ShorthandRenderFunctionCompat<TProps> = (Component: React_2.ElementType<TProps>, props: TProps) => React_2.ReactNode;
 
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
 // @public (undocumented)
-export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React_2.HTMLAttributes<HTMLElement>> = {
+export type SlotPropsCompat<TSlots extends BaseSlotsCompat, TProps, TRootProps extends React_2.HTMLAttributes<HTMLElement>> = {
     [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
 } & {
     root: TRootProps;

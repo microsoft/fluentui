@@ -4,11 +4,11 @@
 
 ```ts
 
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export function useARIAButton(shorthand: ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>): ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>;
+export function useARIAButton(shorthand: ObjectShorthandPropsCompat<React_2.ButtonHTMLAttributes<HTMLElement>>): ObjectShorthandPropsCompat<React_2.ButtonHTMLAttributes<HTMLElement>>;
 
 
 // (No @packageDocumentation comment for this package)

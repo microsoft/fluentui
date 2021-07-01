@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ObjectShorthandProps, useEventCallback } from '@fluentui/react-utilities';
+import { ObjectShorthandPropsCompat, useEventCallback } from '@fluentui/react-utilities';
 import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
 
 /**
@@ -8,8 +8,8 @@ import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
  * where no attribute addition is required
  */
 export function useARIAButton(
-  shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>>,
-): ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> {
+  shorthand: ObjectShorthandPropsCompat<React.ButtonHTMLAttributes<HTMLElement>>,
+): ObjectShorthandPropsCompat<React.ButtonHTMLAttributes<HTMLElement>> {
   const { onClick, onKeyDown, onKeyUp, disabled: defaultDisabled, ['aria-disabled']: ariaDisabled } = shorthand;
   const disabled = mergeARIADisabled(defaultDisabled ?? ariaDisabled);
 

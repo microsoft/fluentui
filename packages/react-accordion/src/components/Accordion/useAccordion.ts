@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionShorthandProps, AccordionState } from './Accordion.types';
+import { AccordionProps, AccordionShorthandPropsCompat, AccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionShorthandProps: AccordionShorthandProps[] = ['expandIcon', 'button', 'icon'];
+export const accordionShorthandPropsCompat: AccordionShorthandPropsCompat[] = ['expandIcon', 'button', 'icon'];
 
-const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandProps });
+const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -39,8 +39,8 @@ export const useAccordion = (
         /* noop */
       },
     },
-    defaultProps && resolveShorthandProps(defaultProps, accordionShorthandProps),
-    resolveShorthandProps(props, accordionShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, accordionShorthandPropsCompat),
+    resolveShorthandProps(props, accordionShorthandPropsCompat),
   );
 
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
-export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {
+export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * An alternative text for an image.
    */
