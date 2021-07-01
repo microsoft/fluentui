@@ -17,13 +17,11 @@ export function accentFill(
   neutralFillActiveDelta: number,
 ): InteractiveSwatchSet {
   const accent = palette.source;
-  const referenceIndex = neutralPalette.closestIndexOf(reference);
-  const swapThreshold = Math.max(neutralFillRestDelta, neutralFillHoverDelta, neutralFillActiveDelta);
-  const direction = referenceIndex >= swapThreshold ? -1 : 1;
+  const direction = 1;
   const accentIndex = palette.closestIndexOf(accent);
 
-  const hoverIndex = accentIndex;
-  const restIndex = hoverIndex + direction * -1 * hoverDelta;
+  const restIndex = accentIndex;
+  const hoverIndex = restIndex + direction * hoverDelta;
   const activeIndex = restIndex + direction * activeDelta;
   const focusIndex = restIndex + direction * focusDelta;
 
