@@ -1,10 +1,18 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  display,
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import { bodyFont, designUnit, disabledOpacity, neutralStrokeRest } from '../design-tokens';
 
-export const sliderLabelStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const sliderLabelStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
       font-family: ${bodyFont};

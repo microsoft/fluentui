@@ -1,5 +1,12 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -18,7 +25,10 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const textAreaFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const textAreaFilledStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host([appearance='filled']) .control {
       background: ${neutralFillRest};
@@ -54,83 +64,83 @@ export const textAreaFilledStyles: (context: ElementDefinitionContext, definitio
 export const textAreaStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-        font-family: var(--body-font);
-        outline: none;
-        user-select: none;
-        position: relative;
-        flex-direction: column;
-        vertical-align: bottom;
+      font-family: var(--body-font);
+      outline: none;
+      user-select: none;
+      position: relative;
+      flex-direction: column;
+      vertical-align: bottom;
     }
 
     .control {
-        box-sizing: border-box;
-        position: relative;
-        color: ${neutralForegroundRest};
-        background: ${neutralFillInputRest};
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-        height: calc(${heightNumber} * 2px);
-        font: inherit;
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
-        padding: calc(${designUnit}} * 1.5px) calc(${designUnit}} * 2px + 1px);
-        width: 100%;
-        resize: none;
+      box-sizing: border-box;
+      position: relative;
+      color: ${neutralForegroundRest};
+      background: ${neutralFillInputRest};
+      border-radius: calc(var(--corner-radius) * 1px);
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      height: calc(${heightNumber} * 2px);
+      font: inherit;
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      padding: calc(${designUnit}} * 1.5px) calc(${designUnit}} * 2px + 1px);
+      width: 100%;
+      resize: none;
     }
 
     .control:hover:enabled {
-        background: ${neutralFillInputHover};
-        border-color: ${neutralStrokeHover};
+      background: ${neutralFillInputHover};
+      border-color: ${neutralStrokeHover};
     }
 
     .control:hover,
     .control:${focusVisible},
     .control:disabled,
     .control:active {
-        outline: none;
+      outline: none;
     }
 
     :host(:focus-within) .control {
-        border-color: ${focusStrokeOuter};
-        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
+      border-color: ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(.resize-both) .control {
-        resize: both;
+      resize: both;
     }
 
     :host(.resize-horizontal) .control {
-        resize: horizontal;
+      resize: horizontal;
     }
 
     :host(.resize-vertical) .control {
-        resize: vertical;
+      resize: vertical;
     }
 
     .label__hidden {
-        display: none;
-        visibility: hidden;
+      display: none;
+      visibility: hidden;
     }
 
     .label {
-        display: block;
-        color: ${neutralForegroundRest};
-        cursor: pointer;
-        $font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
-        margin-bottom: 4px;
+      display: block;
+      color: ${neutralForegroundRest};
+      cursor: pointer;
+      $font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      margin-bottom: 4px;
     }
 
     :host([disabled]) .label,
     :host([readonly]) .label,
     :host([readonly]) .control,
     :host([disabled]) .control {
-        cursor: ${disabledCursor};
+      cursor: ${disabledCursor};
     }
     :host([disabled]) {
-        opacity: var(--disabled-opacity);
+      opacity: var(--disabled-opacity);
     }
-`.withBehaviors(
+  `.withBehaviors(
     appearanceBehavior('filled', textAreaFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`

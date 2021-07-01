@@ -1,5 +1,12 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, NumberFieldOptions } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  NumberFieldOptions,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -23,7 +30,10 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const numberFieldFilledStyles: (context: ElementDefinitionContext, definition: NumberFieldOptions) => ElementStyles = (context: ElementDefinitionContext, definition: NumberFieldOptions) =>
+export const numberFieldFilledStyles: (
+  context: ElementDefinitionContext,
+  definition: NumberFieldOptions,
+) => ElementStyles = (context: ElementDefinitionContext, definition: NumberFieldOptions) =>
   css`
     :host([appearance='filled']) .root {
       background: ${neutralFillRest};
@@ -72,145 +82,145 @@ export const numberFieldFilledStyles: (context: ElementDefinitionContext, defini
 export const numberFieldStyles = (context, definition) =>
   css`
     ${display('inline-block')} :host {
-        font-family: ${bodyFont};
-        outline: none;
-        user-select: none;
-        position: relative;
+      font-family: ${bodyFont};
+      outline: none;
+      user-select: none;
+      position: relative;
     }
 
     .root {
-        box-sizing: border-box;
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        color: ${neutralForegroundRest};
-        background: ${neutralFillInputRest};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-        height: calc(${heightNumber} * 1px);
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      color: ${neutralForegroundRest};
+      background: ${neutralFillInputRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      height: calc(${heightNumber} * 1px);
     }
 
     .control {
-        -webkit-appearance: none;
-        font: inherit;
-        background: transparent;
-        border: 0;
-        color: inherit;
-        height: calc(100% - 4px);
-        width: 100%;
-        margin-top: auto;
-        margin-bottom: auto;
-        border: none;
-        padding: 0 calc(${designUnit} * 2px + 1px);
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
+      -webkit-appearance: none;
+      font: inherit;
+      background: transparent;
+      border: 0;
+      color: inherit;
+      height: calc(100% - 4px);
+      width: 100%;
+      margin-top: auto;
+      margin-bottom: auto;
+      border: none;
+      padding: 0 calc(${designUnit} * 2px + 1px);
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
     }
 
     .control:hover,
     .control:${focusVisible},
     .control:disabled,
     .control:active {
-        outline: none;
+      outline: none;
     }
 
     .controls {
-        opacity: 0;
+      opacity: 0;
     }
 
     .label {
-        display: block;
-        color: ${neutralForegroundRest};
-        cursor: pointer;
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
-        margin-bottom: 4px;
+      display: block;
+      color: ${neutralForegroundRest};
+      cursor: pointer;
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      margin-bottom: 4px;
     }
 
     .label__hidden {
-        display: none;
-        visibility: hidden;
+      display: none;
+      visibility: hidden;
     }
 
     .start,
     .end {
-        margin: auto;
-        fill: currentcolor;
+      margin: auto;
+      fill: currentcolor;
     }
 
     .step-up,
     .step-down {
-        padding: 2px 10px;
-        cursor: pointer;
+      padding: 2px 10px;
+      cursor: pointer;
     }
 
     .step-up:before,
     .step-down:before {
-        content: '';
-        display: block;
-        border: solid transparent 6px;
+      content: '';
+      display: block;
+      border: solid transparent 6px;
     }
 
     .step-up:before {
-        border-bottom-color: ${neutralForegroundRest};
+      border-bottom-color: ${neutralForegroundRest};
     }
 
     .step-down:before {
-        border-top-color: ${neutralForegroundRest};
+      border-top-color: ${neutralForegroundRest};
     }
 
     ::slotted(svg) {
-        ${
-          /* Glyph size and margin-left is temporary -
+      ${
+        /* Glyph size and margin-left is temporary -
             replace when adaptive typography is figured out */ ''
-        } width: 16px;
-        height: 16px;
+      } width: 16px;
+      height: 16px;
     }
 
     .start {
-        display: flex;
-        margin-inline-start: 11px;
+      display: flex;
+      margin-inline-start: 11px;
     }
 
     .end {
-        display: flex;
-        margin-inline-end: 11px;
+      display: flex;
+      margin-inline-end: 11px;
     }
 
     :host(:hover:not([disabled])) .root {
-        background: ${neutralFillInputHover};
-        border-color: ${neutralStrokeHover};
+      background: ${neutralFillInputHover};
+      border-color: ${neutralStrokeHover};
     }
 
     :host(:active:not([disabled])) .root {
-        background: ${neutralFillInputActive};
-        border-color: ${neutralStrokeActive};
+      background: ${neutralFillInputActive};
+      border-color: ${neutralStrokeActive};
     }
 
     :host(:focus-within:not([disabled])) .root {
-        border-color: ${focusStrokeOuter};
-        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
+      border-color: ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(:hover:not([disabled])) .controls,
     :host(:focus-within:not([disabled])) .controls {
-        opacity: 1;
+      opacity: 1;
     }
 
     :host([disabled]) .label,
     :host([readonly]) .label,
     :host([readonly]) .control,
     :host([disabled]) .control {
-        cursor: ${disabledCursor};
+      cursor: ${disabledCursor};
     }
 
     :host([disabled]) {
-        opacity: ${disabledOpacity};
+      opacity: ${disabledOpacity};
     }
 
     :host([disabled]) .control {
-        border-color: ${neutralStrokeRest};
+      border-color: ${neutralStrokeRest};
     }
-`.withBehaviors(
+  `.withBehaviors(
     appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
