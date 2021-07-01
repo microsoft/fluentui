@@ -5,7 +5,6 @@ import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
 import { tabListBehavior } from '@fluentui/accessibility';
-// import { AccessibilityError } from '../accessibility/types';
 
 // const designUnit = 4;
 // const sizeRamp = [
