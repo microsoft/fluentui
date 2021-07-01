@@ -40,7 +40,6 @@
     "@fluentui/merge-styles": "^8.1.2",
     "@fluentui/react": "^8.22.0",
     "@fluentui/react-avatar": "^9.0.0-alpha.50",
-    "@fluentui/react-badge": "^9.0.0-alpha.51",
     "@fluentui/react-button": "^9.0.0-alpha.53",
     "@fluentui/react-charting": "^5.3.3",
     "@fluentui/react-checkbox": "^9.0.0-alpha.5",

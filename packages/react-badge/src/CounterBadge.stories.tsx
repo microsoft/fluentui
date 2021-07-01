@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CounterBadge } from '@fluentui/react-badge';
+import { CounterBadge } from './index';
 
 const DisplayBadge: React.FC<{}> = props => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 4, margin: 4 }}>{props.children}</div>
@@ -56,4 +56,9 @@ export const BadgeAppearanceExample = () => {
       </div>
     </>
   );
+};
+
+export default {
+  title: 'Components/CounterBadge',
+  component: CounterBadge,
 };

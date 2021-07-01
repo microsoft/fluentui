@@ -21,5 +21,6 @@ module.exports = {
     '<rootDir>/packages/jest-serializer-make-styles',
     '<rootDir>/packages/react-context-selector',
     '<rootDir>/packages/babel-make-styles',
+    '<rootDir>/packages/react-badge',
   ],
 };
