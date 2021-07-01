@@ -105,6 +105,7 @@ export namespace BaseColors {
   export const GRAY_808080_015 = 'rgba(128, 128, 128, .15)';
   export const GRAY_808080_025 = 'rgba(128, 128, 128, .25)';
   export const GRAY_808080_030 = 'rgba(128, 128, 128, .30)';
+  export const GRAY_808080_050 = 'rgba(128, 128, 128, .50)';
   export const GRAY_808080_070 = 'rgba(128, 128, 128, .70)';
   export const BLUE_55B3FF_010 = 'rgba(85, 179, 255, .10)';
   export const BLUE_55B3FF_020 = 'rgba(85, 179, 255, .20)';
@@ -161,7 +162,6 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     disabled: BaseColors.GRAY_A19F9D,
     hyperlink: BaseColors.BLUE_2899F5,
     hyperlinkHovered: BaseColors.BLUE_82C7FF,
-    hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_5DB300,
     error: BaseColors.RED_F1707B,
     placeholder: BaseColors.GRAY_A19F9D,
@@ -332,6 +332,8 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     hoveredLink: BaseColors.BLUE_82C7FF,
     hoveredRowLink: BaseColors.BLUE_82C7FF,
     hoveredBackground: BaseColors.GRAY_323130,
+    selectedLink: BaseColors.BLUE_82C7FF,
+    selectedHoveredLink: BaseColors.BLUE_82C7FF,
   },
   radioButton: {
     circle: {
@@ -363,7 +365,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
 };
 
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
-  background: BaseColors.GRAY_111111,
+  background: BaseColors.BLACK,
   text: {
     list: BaseColors.WHITE,
     heading: BaseColors.WHITE,
@@ -375,7 +377,6 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     disabled: BaseColors.GREEN_0AFF00,
     hyperlink: BaseColors.YELLOW_FEFF00,
     hyperlinkHovered: BaseColors.BLACK,
-    hyperlinkBackgroundHovered: BaseColors.BLUE_00FFFF,
     success: BaseColors.GREEN_5DB300,
     error: BaseColors.RED_F63747,
     placeholder: BaseColors.GREEN_0AFF00,
@@ -493,8 +494,8 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   item: {
     hover: BaseColors.BLUE_00FFFF,
-    select: BaseColors.GRAY_808080_025,
-    selectHovered: BaseColors.BLUE_00FFFF,
+    select: BaseColors.GRAY_808080_050,
+    selectHovered: BaseColors.GRAY_808080_050,
   },
   shimmer: {
     primary: BaseColors.GRAY_808080,
@@ -546,6 +547,8 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     hoveredRowLink: BaseColors.BLUE_7BB2FE,
     hoveredLink: BaseColors.BLACK,
     hoveredBackground: BaseColors.GRAY_808080_030,
+    selectedLink: BaseColors.YELLOW_FEFF00,
+    selectedHoveredLink: BaseColors.BLUE_7BB2FE,
   },
   radioButton: {
     circle: {
@@ -589,7 +592,6 @@ export const LightSemanticColors: IAzureSemanticColors = {
     disabled: BaseColors.GRAY_A19F9D,
     hyperlink: BaseColors.BLUE_0078D4,
     hyperlinkHovered: BaseColors.BLUE_004578,
-    hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_428000,
     error: BaseColors.RED_A4262C,
     placeholder: BaseColors.GRAY_8A8886,
@@ -760,6 +762,8 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hoveredRowLink: BaseColors.BLUE_106EBE,
     hoveredLink: BaseColors.BLUE_106EBE,
     hoveredBackground: BaseColors.GRAY_F3F2F1,
+    selectedLink: BaseColors.BLUE_106EBE,
+    selectedHoveredLink: BaseColors.BLUE_005A9E,
   },
   radioButton: {
     circle: {
@@ -802,8 +806,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     label: BaseColors.BLACK,
     disabled: BaseColors.RED_800000,
     hyperlink: BaseColors.BLUE_0000CD,
-    hyperlinkHovered: BaseColors.WHITE,
-    hyperlinkBackgroundHovered: BaseColors.PURPLE_800080,
+    hyperlinkHovered: BaseColors.BLUE_0000CD,
     success: BaseColors.GREEN_428000,
     error: BaseColors.RED_E00B1C,
     placeholder: BaseColors.RED_800000,
@@ -886,21 +889,21 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     rest: {
       border: BaseColors.GRAY_323130,
       background: BaseColors.BLUE_0078D4,
-      hover: BaseColors.GRAY_323130,
-      hoverText: BaseColors.BLACK,
-      focus: BaseColors.BLACK,
-      check: BaseColors.BLACK,
+      hover: BaseColors.GRAY_605E5C,
+      hoverText: BaseColors.GRAY_201F1E,
+      focus: BaseColors.GRAY_605E5C,
+      check: BaseColors.WHITE,
     },
     checked: {
       border: BaseColors.BLUE_0078D4,
-      background: BaseColors.WHITE,
+      background: BaseColors.BLUE_0078D4,
       default: BaseColors.BLUE_106EBE,
-      hoverBackground: BaseColors.WHITE,
+      hoverBackground: BaseColors.BLUE_005A9E,
       hoverBorder: BaseColors.BLUE_005A9E,
     },
     disabled: {
       border: BaseColors.GRAY_C8C6C4,
-      background: BaseColors.TRANSPARENT,
+      background: BaseColors.GRAY_C8C6C4,
     },
   },
   controlOutlines: {
@@ -922,7 +925,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.PURPLE_800080,
     select: BaseColors.GRAY_EDEBE9,
-    selectHovered: BaseColors.PURPLE_800080,
+    selectHovered: BaseColors.GRAY_E1DFDD,
   },
   shimmer: {
     primary: BaseColors.GRAY_F7F7F7,
@@ -974,6 +977,8 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     hoveredRowLink: BaseColors.BLUE_0F64AE,
     hoveredLink: BaseColors.WHITE,
     hoveredBackground: BaseColors.GRAY_F3F2F1,
+    selectedLink: BaseColors.BLUE_0000CD,
+    selectedHoveredLink: BaseColors.BLUE_0F64AE,
   },
   radioButton: {
     circle: {
