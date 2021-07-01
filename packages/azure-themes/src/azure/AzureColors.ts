@@ -150,7 +150,7 @@ export namespace CommonSemanticColors {
 }
 
 export const DarkSemanticColors: IAzureSemanticColors = {
-  background: BaseColors.GRAY_111111,
+  background: BaseColors.GRAY_1B1A19,
   text: {
     list: BaseColors.GRAY_F3F2F1,
     heading: BaseColors.GRAY_F3F2F1,
