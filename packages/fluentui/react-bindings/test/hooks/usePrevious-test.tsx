@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { usePrevious } from '../../src/hooks/usePrevious';
 
 describe('usePrevious', () => {
-  it('should return null initially', () => {
+  it('should return undefined initially', () => {
     // Arrange
     const value = {};
 
@@ -10,7 +10,7 @@ describe('usePrevious', () => {
     const { result } = renderHook(() => usePrevious(value));
 
     // Assert
-    expect(result.current).toBeNull();
+    expect(result.current).toBeUndefined();
   });
 
   it('should return previous value on next render', () => {
