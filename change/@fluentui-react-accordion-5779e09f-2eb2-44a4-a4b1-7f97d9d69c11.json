@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove redundant dependency on react-theme-provider",
-  "packageName": "@fluentui/react-accordion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

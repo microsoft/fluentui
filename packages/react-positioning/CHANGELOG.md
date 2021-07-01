@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.30)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.29..@fluentui/react-positioning_v9.0.0-alpha.30)
+
+### Changes
+
+- Fixing bug in start script of converged packages. ([PR #18768](https://github.com/microsoft/fluentui/pull/18768) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.29)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Breadcrumb: Update doc and example to demonstrate how to add tab navigation behavior.",
-  "packageName": "@fluentui/react-examples",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

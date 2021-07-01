@@ -1,8 +1,24 @@
 # Change Log - perf-test
 
-This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.22.0 ([PR #18430](https://github.com/microsoft/fluentui/pull/18430) by nikolenkoanton92@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.50 ([PR #18680](https://github.com/microsoft/fluentui/pull/18680) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.53 ([PR #18680](https://github.com/microsoft/fluentui/pull/18680) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.119 ([PR #18430](https://github.com/microsoft/fluentui/pull/18430) by nikolenkoanton92@gmail.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.50 ([PR #18768](https://github.com/microsoft/fluentui/pull/18768) by Humberto.Morimoto@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 

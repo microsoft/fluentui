@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update examples to use @fluentui/react-provider",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

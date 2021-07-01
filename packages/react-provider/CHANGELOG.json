@@ -2,6 +2,27 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing bug in start script of converged packages.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c7eff2580a6fe159bbb3c4e77e549925187f3150",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "move theming capabilities from @fluentui/react-theme-provider",
+            "author": "olfedias@microsoft.com",
+            "commit": "76680e02208f2e8a479a60289ba9f6b9e27c9f5d",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jun 2021 07:38:35 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-alpha.49",
       "version": "9.0.0-alpha.49",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(react-context-selector): Migrate DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5c06b5a9bd09cefc6ef3afc90f5575ca4663f665",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-alpha.13",
       "version": "9.0.0-alpha.13",
