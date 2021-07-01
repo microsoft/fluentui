@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, Descendant } from '@fluentui/react-utilities';
-import { AccordionHeaderProps, AccordionHeaderShorthandPropsCompat } from '../AccordionHeader/AccordionHeader.types';
+import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
+import { AccordionHeaderProps, AccordionHeaderShorthands } from '../AccordionHeader/AccordionHeader.types';
 
 export type AccordionIndex = number | number[];
 
 /**
  * Common properties shared between Accordion and AccordionHeader through context
  */
-type AccordionHeaderCommonProps = Pick<
-  AccordionHeaderProps,
-  AccordionShorthandPropsCompat | 'expandIconPosition' | 'size' | 'inline'
->;
-export interface AccordionContextValue extends AccordionHeaderCommonProps {
+type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIconPosition' | 'size' | 'inline'>;
+
+export interface AccordionContextValue
+  extends AccordionHeaderCommonProps,
+    Partial<Pick<AccordionState, keyof AccordionShorthands>> {
   navigable: boolean;
   /**
    * The list of opened panels by index
@@ -23,8 +23,10 @@ export interface AccordionContextValue extends AccordionHeaderCommonProps {
   requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
+export type AccordionShorthands = Partial<Omit<AccordionHeaderShorthands, 'children'>>;
+
 export interface AccordionProps
-  extends ComponentPropsCompat,
+  extends ComponentProps<AccordionShorthands>,
     AccordionHeaderCommonProps,
     React.HTMLAttributes<HTMLElement> {
   /**
@@ -50,12 +52,33 @@ export interface AccordionProps
   onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
 }
 
-export type AccordionShorthandPropsCompat = Exclude<AccordionHeaderShorthandPropsCompat, 'children'>;
-
-export type AccordionDefaultedProps = 'collapsible' | 'multiple' | 'navigable';
+// export type AccordionDefaultedProps = 'collapsible' | 'multiple' | 'navigable';
 
 export interface AccordionState
-  extends ComponentStateCompat<AccordionProps, AccordionShorthandPropsCompat, AccordionDefaultedProps> {
+  extends ComponentState<AccordionShorthands>,
+    AccordionHeaderCommonProps,
+    React.HTMLAttributes<HTMLElement> {
+  /**
+   * Indicates if keyboard navigation is available
+   */
+  navigable: boolean;
+  /**
+   * Indicates if Accordion support multiple Panels opened at the same time
+   */
+  multiple: boolean;
+  /**
+   * Indicates if Accordion support multiple Panels closed at the same time
+   */
+  collapsible: boolean;
+  /**
+   * Controls the state of the panel
+   */
+  index?: AccordionIndex;
+  /**
+   * Default value for the uncontrolled state of the panel
+   */
+  defaultIndex?: AccordionIndex;
+  onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
   /**
    * Ref to the root slot
    */
@@ -73,6 +96,8 @@ export interface AccordionState
    */
   setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
 }
+
+export type UninitializedAccordionState = Omit<AccordionState, 'context' | 'descendants' | 'setDescendants'>;
 
 export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
   /**

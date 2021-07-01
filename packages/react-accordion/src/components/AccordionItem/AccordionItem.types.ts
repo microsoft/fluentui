@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, Descendant } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
@@ -7,14 +7,16 @@ export interface AccordionItemContextValue {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 }
 
-export interface AccordionItemProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type AccordionItemShorthands = {};
+
+export interface AccordionItemProps extends ComponentProps<AccordionItemShorthands>, React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
    */
   disabled?: boolean;
 }
 
-export interface AccordionItemState extends ComponentStateCompat<AccordionItemProps> {
+export interface AccordionItemState extends ComponentState<AccordionItemShorthands>, React.HTMLAttributes<HTMLElement> {
   /**
    * Ref to the root slot
    */
@@ -28,8 +30,14 @@ export interface AccordionItemState extends ComponentStateCompat<AccordionItemPr
    * Internal Context used by Accordion and AccordionItem communication
    */
   setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
+  /**
+   * Disables opening/closing of panel
+   */
+  disabled: boolean;
 }
 
 export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
   id: string;
 }
+
+export type UninitializedAccordionItemState = Omit<AccordionItemState, 'setDescendants' | 'descendants' | 'context'>;

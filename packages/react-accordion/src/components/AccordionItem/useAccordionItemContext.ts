@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAccordionDescendant, AccordionContext } from '../Accordion/useAccordionContext';
-import { AccordionItemContextValue, AccordionItemState } from './AccordionItem.types';
+import { AccordionItemContextValue, UninitializedAccordionItemState } from './AccordionItem.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
 // No default value.
@@ -17,7 +17,10 @@ export const useAccordionItemContext = () => React.useContext(AccordionItemConte
 /**
  * Creates internal context to be consumed by AccordionHeader and AccordionPanel
  */
-export function useCreateAccordionItemContextValue(state: AccordionItemState, ref: React.RefObject<HTMLElement>) {
+export function useCreateAccordionItemContextValue(
+  state: UninitializedAccordionItemState,
+  ref: React.RefObject<HTMLElement>,
+) {
   const disabled = state.disabled ?? false;
   // index -1 means context not provided
   const index = useAccordionDescendant({

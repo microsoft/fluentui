@@ -1,14 +1,18 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
-  resolveShorthandProps,
   createDescendantContext,
   useDescendant,
   useDescendantsInit,
   DescendantContextValue,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
+import {
+  AccordionItemProps,
+  AccordionItemState,
+  AccordionItemDescendant,
+  AccordionItemShorthands,
+  UninitializedAccordionItemState,
+} from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -17,13 +21,11 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionItemShorthandPropsCompat = [];
+export const accordionItemShorthandProps: Array<keyof AccordionItemShorthands> = [];
 
 export const accordionItemDescendantContext: React.Context<
   DescendantContextValue<AccordionItemDescendant<HTMLElement>>
 > = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
-
-const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -31,26 +33,20 @@ const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItem
  * @param ref - reference to root HTMLElement of AccordionItem
  * @param defaultProps - default values for the properties of AccordionItem
  */
-export const useAccordionItem = (
-  props: AccordionItemProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: AccordionItemProps,
-): AccordionItemState => {
+export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
   const innerRef = React.useRef<HTMLElement>(null);
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, innerRef),
-      context: undefined!,
-      descendants: undefined!,
-      setDescendants: undefined!,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, accordionItemShorthandPropsCompat),
-    resolveShorthandProps(props, accordionItemShorthandPropsCompat),
-  );
+  const uninitializedState: UninitializedAccordionItemState = {
+    ref: useMergedRefs(ref, innerRef),
+    disabled: false,
+    ...props,
+  };
   const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
-  state.descendants = descendants;
-  state.setDescendants = setDescendants;
-  state.context = useCreateAccordionItemContextValue(state, innerRef);
+  const state: AccordionItemState = {
+    ...uninitializedState,
+    descendants,
+    setDescendants,
+    context: useCreateAccordionItemContextValue(uninitializedState, innerRef),
+  };
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},

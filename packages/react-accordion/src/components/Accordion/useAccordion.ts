@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionShorthandPropsCompat, AccordionState } from './Accordion.types';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { AccordionProps, AccordionShorthands, AccordionState, UninitializedAccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionShorthandPropsCompat: AccordionShorthandPropsCompat[] = ['expandIcon', 'button', 'icon'];
-
-const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandPropsCompat });
+export const accordionShorthandProps: Array<keyof AccordionShorthands> = [];
 
 /**
  * Returns the props and state required to render the component
@@ -16,36 +14,25 @@ const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthan
  * @param ref - reference to root HTMLElement of Accordion
  * @param defaultProps - default values for the properties of Accordion
  */
-export const useAccordion = (
-  props: AccordionProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: AccordionProps,
-): AccordionState => {
-  const state = mergeProps(
-    {
-      ref,
-      collapsible: false,
-      multiple: false,
-      navigable: false,
-      context: {
-        navigable: false,
-        openItems: [],
-        requestToggle() {
-          /* noop */
-        },
-      },
-      descendants: [],
-      setDescendants() {
-        /* noop */
-      },
+export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
+  const uninitializedAccordionState: UninitializedAccordionState = {
+    ref,
+    collapsible: false,
+    multiple: false,
+    navigable: false,
+    ...props,
+    components: {
+      root: 'div',
     },
-    defaultProps && resolveShorthandProps(defaultProps, accordionShorthandPropsCompat),
-    resolveShorthandProps(props, accordionShorthandPropsCompat),
-  );
-
-  const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
-  state.context = context;
-  state.descendants = descendants;
-  state.setDescendants = setDescendants;
-  return state;
+    button: props.button ? resolveShorthand(props.button) : undefined,
+    expandIcon: props.expandIcon ? resolveShorthand(props.expandIcon) : undefined,
+    icon: props.icon ? resolveShorthand(props.icon) : undefined,
+  };
+  const [context, descendants, setDescendants] = useCreateAccordionContextValue(uninitializedAccordionState);
+  return {
+    ...uninitializedAccordionState,
+    context,
+    descendants,
+    setDescendants,
+  };
 };
