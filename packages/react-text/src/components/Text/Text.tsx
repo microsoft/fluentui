@@ -8,7 +8,7 @@ import { useTextStyles } from './useTextStyles';
  * Typography and styling abstraction component used to ensure consistency of text.
  */
 export const Text = React.forwardRef<HTMLElement, TextProps>((props, ref) => {
-  const state = useText(props, ref, { as: 'span' });
+  const state = useText(props, ref);
 
   useTextStyles(state);
   return renderText(state);
