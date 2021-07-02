@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.38)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.37..@fluentui/react-tabster_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.45 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.37)
 

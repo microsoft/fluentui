@@ -21,6 +21,17 @@ export type TextDefaultedProps = never;
 
 // @public
 export interface TextProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+    align?: 'start' | 'center' | 'end' | 'justify';
+    as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
+    block?: boolean;
+    font?: 'base' | 'monospace' | 'numeric';
+    italic?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    strikethrough?: boolean;
+    truncate?: boolean;
+    underline?: boolean;
+    weight?: 'regular' | 'medium' | 'semibold';
+    wrap?: boolean;
 }
 
 // @public

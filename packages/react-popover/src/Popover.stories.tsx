@@ -176,6 +176,33 @@ export const NestedPopovers = () => {
   );
 };
 
+// Used for internal testing
+export const InternalUpdateContent = () => {
+  const [visible, setVisible] = React.useState(true);
+
+  const changeContent = () => setVisible(false);
+
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <button>Popover trigger</button>
+      </PopoverTrigger>
+
+      <PopoverSurface>
+        <ExampleContent />
+
+        {visible ? (
+          <div>
+            <button onClick={changeContent}>Action</button>
+          </div>
+        ) : (
+          <div>The second panel</div>
+        )}
+      </PopoverSurface>
+    </Popover>
+  );
+};
+
 export default {
   title: 'Components/Popover',
   component: Popover,

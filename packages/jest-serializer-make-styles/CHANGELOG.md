@@ -1,8 +1,17 @@
 # Change Log - @fluentui/jest-serializer-make-styles
 
-This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-make-styles_v9.0.0-alpha.21)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-make-styles_v9.0.0-alpha.20..@fluentui/jest-serializer-make-styles_v9.0.0-alpha.21)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.45 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-make-styles_v9.0.0-alpha.20)
 

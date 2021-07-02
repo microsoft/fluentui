@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Rename typings and getSlots to have the Compat Suffix",
+  "comment": "Add new prop mergin mechanism",
   "packageName": "@fluentui/react-utilities",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"

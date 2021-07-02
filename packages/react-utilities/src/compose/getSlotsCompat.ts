@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { getNativeElementProps, omit } from '../utils/index';
 import { nullRender } from './nullRender';
+import { getNativeElementProps, omit } from '../utils/index';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GenericDictionary = Record<string, any>;

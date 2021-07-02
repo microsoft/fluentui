@@ -2,6 +2,27 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename typings and getSlots to have the Compat Suffix",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "c939e67b1840a9eb5f7706afcda8c14df8f18d33",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "react-checkbox: Adding spec for review",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8470c87cf8dedbff9037047a77f18ddca295f637",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jun 2021 07:38:35 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-alpha.5",
       "version": "9.0.0-alpha.5",

@@ -1,5 +1,56 @@
 import * as React from 'react';
 
+/**
+ * Generic record of possible ShorthandProps
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SlotPropsRecord = Record<string, Record<string, any> | undefined>;
+
+export type ShorthandPropsRecord<Record extends SlotPropsRecord = SlotPropsRecord> = {
+  [K in keyof Record]: ShorthandProps<NonNullable<Record[K]>>;
+};
+
+export type ObjectShorthandPropsRecord<Record extends SlotPropsRecord = SlotPropsRecord> = {
+  [K in keyof Record]: ObjectShorthandProps<NonNullable<Record[K]>>;
+};
+
+export type ShorthandRenderFunction<Props> = (Component: React.ElementType<Props>, props: Props) => React.ReactNode;
+
+export type ShorthandProps<Props = {}> =
+  | React.ReactChild
+  | React.ReactNodeArray
+  | React.ReactPortal
+  | number
+  | null
+  | undefined
+  | ObjectShorthandProps<Props>;
+
+export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props &
+  Pick<ComponentProps, 'as'> & {
+    children?: Props['children'] | ShorthandRenderFunction<Props>;
+  };
+
+export interface DefaultComponentProps {
+  as?: keyof JSX.IntrinsicElements;
+}
+
+export type ComponentProps<Record extends SlotPropsRecord = {}> = DefaultComponentProps & ShorthandPropsRecord<Record>;
+
+export type ComponentState<Record extends SlotPropsRecord = {}> = Pick<
+  ComponentProps<Record>,
+  keyof DefaultComponentProps
+> & {
+  components?: {
+    [K in keyof Record]?: React.ElementType<Record[K]>;
+  };
+} & {
+  components?: {
+    root?: React.ElementType;
+  };
+} & ObjectShorthandPropsRecord<Record>;
+
+/////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
+
 export interface ComponentPropsCompat {
   as?: React.ElementType;
   className?: string;

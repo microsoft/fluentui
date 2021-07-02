@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.44)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.43..@fluentui/react-menu_v9.0.0-alpha.44)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
+- fix(Menu): Submenu state should include `MenuList` ([PR #18791](https://github.com/microsoft/fluentui/pull/18791) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.43)
 

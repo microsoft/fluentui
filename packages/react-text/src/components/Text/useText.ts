@@ -18,6 +18,7 @@ export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultPr
   const state = mergeProps(
     {
       ref,
+      as: 'span',
     },
     defaultProps,
     props,
