@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Checkbox, Dropdown, IDropdownOption, TextField } from './tmp-components.stories';
-import { Text } from '@fluentui/react-text';
 import { PlaygroundProps } from './Playground.types.stories';
 import { makeStyles } from '@fluentui/react-make-styles';
 
@@ -186,7 +185,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
       <React.Fragment key={section.sectionName}>
         <tr>
           <td style={cellStyle} colSpan={2}>
-            <Text>{section.sectionName}</Text>
+            <text>{section.sectionName}</text>
           </td>
         </tr>
         {sectionList}
