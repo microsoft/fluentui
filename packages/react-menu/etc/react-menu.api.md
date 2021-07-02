@@ -6,6 +6,7 @@
 
 import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
@@ -16,10 +17,11 @@ import { usePopperMouseTarget } from '@fluentui/react-positioning';
 // @public
 export const Menu: React_2.FC<MenuProps>;
 
+// @public (undocumented)
+export const MenuContext: Context<MenuContextValue>;
+
 // @public
 export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline'> {
-    // (undocumented)
-    hasMenuContext: boolean;
     // (undocumented)
     open: boolean;
     // (undocumented)
@@ -156,10 +158,11 @@ export interface MenuItemState extends MenuItemProps {
 // @public
 export const MenuList: React_2.FunctionComponent<MenuListProps & React_2.RefAttributes<HTMLElement>>;
 
+// @public (undocumented)
+export const MenuListContext: Context<MenuListContextValue>;
+
 // @public
 export interface MenuListContextValue extends Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> {
-    // (undocumented)
-    hasMenuListContext?: boolean;
     // (undocumented)
     selectRadio?: SelectableHandler;
     // (undocumented)

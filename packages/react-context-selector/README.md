@@ -52,12 +52,17 @@ const Counter1 = () => {
   const count1 = useCounterContext(context => context.count1);
   const increment = useCounterContext(context => context.incrementCount1);
 
+  // An easy way to test if a context provider is wrapped around this component
+  // since it's more complicated to compare with a default context value
+  const isWrappedWithContext = useHasParentContext(CounterContext);
+
   return <button onClick={increment}>Counter 1: {count1}</button>;
 };
 
 const Counter2 = () => {
   const count1 = useCounterContext(context => context.count2);
   const increment = useCounterContext(context => context.incrementCount2);
+  const isWrappedWithContext = useHasParentContext(CounterContext);
 
   return <button onClick={increment}>Counter 1: {count1}</button>;
 };
