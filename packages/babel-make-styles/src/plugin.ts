@@ -430,7 +430,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
 
   const pluginOptions: BabelPluginOptions = {
     babelOptions: {
-      presets: ['@babel/preset-typescript'],
+      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
     },
     modules: [
       { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
