@@ -1,14 +1,25 @@
-import { NodePath, TransformOptions, types as t } from '@babel/core';
+import { NodePath, transformSync, types as t, TransformOptions } from '@babel/core';
 import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
 import { resolveProxyValues } from '@fluentui/make-styles';
-import { Module, StrictOptions } from '@linaria/babel';
-import shakerEvaluator from '@linaria/shaker';
+import { Evaluator, Module, StrictOptions } from '@linaria/babel';
 
 import { astify } from './astify';
 
 const EVAL_EXPORT_NAME = '__mkPreval';
+
+const evaluator: Evaluator = (filename, options, text) => {
+  const { code } = transformSync(text, {
+    // to avoid collisions with user's configs
+    babelrc: false,
+
+    filename: filename,
+    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+  })!;
+
+  return [code!, null];
+};
 
 function evaluate(code: string, filename: string, babelOptions: TransformOptions) {
   const options: StrictOptions = {
@@ -16,7 +27,10 @@ function evaluate(code: string, filename: string, babelOptions: TransformOptions
     evaluate: true,
 
     rules: [
-      { action: shakerEvaluator },
+      {
+        // TODO: this should use @linaria/shaker for better performance and less dependencies
+        action: evaluator,
+      },
       {
         test: /\/node_modules\//,
         action: 'ignore',
