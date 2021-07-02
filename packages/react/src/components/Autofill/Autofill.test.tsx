@@ -291,4 +291,34 @@ describe('Autofill', () => {
       ['🆘', false],
     ]);
   });
+
+  it('does not allow changes to the input value when (defaultVisibleValue) prop is provided', () => {
+    component = mount(<Autofill componentRef={autofillRef} defaultVisibleValue={'hello'} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!);
+    ReactTestUtils.Simulate.compositionStart(autofill.inputElement!, {});
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.p, which: KeyCodes.p });
+
+    expect(autofill.value).toBe('hello');
+  });
+
+  it('does not allow changes to the input value when (value) prop is provided', () => {
+    component = mount(<Autofill componentRef={autofillRef} value={'hello'} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!);
+    ReactTestUtils.Simulate.compositionStart(autofill.inputElement!, {});
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.p, which: KeyCodes.p });
+
+    expect(autofill.value).toBe('hello');
+  });
+
+  it('does not allow changes to the input value when deprecated (updateValueInWillReceiveProps) is provided', () => {
+    component = mount(<Autofill componentRef={autofillRef} updateValueInWillReceiveProps={() => 'test'} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!);
+    ReactTestUtils.Simulate.compositionStart(autofill.inputElement!, {});
+    ReactTestUtils.Simulate.keyDown(autofill.inputElement!, { keyCode: KeyCodes.p, which: KeyCodes.p });
+
+    expect(autofill.value).toBe('test');
+  });
 });
