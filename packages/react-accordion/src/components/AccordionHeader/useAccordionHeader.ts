@@ -5,7 +5,6 @@ import {
   AccordionHeaderState,
   AccordionHeaderContextValue,
   AccordionHeaderShorthands,
-  UninitializedAccordionHeaderState,
 } from './AccordionHeader.types';
 import {
   useAccordionItemContext,
@@ -45,7 +44,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const id = useId('accordion-header-', props.id);
   const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const innerRef = React.useRef<HTMLElement>(null);
-  const uninitializedState: UninitializedAccordionHeaderState = {
+  const uninitializedState = {
     ...props,
     ref: useMergedRefs(ref, innerRef),
     size: props.size ?? size ?? 'medium',
@@ -68,7 +67,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
       'aria-controls': panel?.id,
     }),
     children: resolveShorthand(props.children),
-  };
+  } as const;
 
   useAccordionItemDescendant(
     {

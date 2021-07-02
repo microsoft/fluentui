@@ -11,7 +11,6 @@ import {
   AccordionItemState,
   AccordionItemDescendant,
   AccordionItemShorthands,
-  UninitializedAccordionItemState,
 } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
@@ -35,11 +34,11 @@ export const accordionItemDescendantContext: React.Context<
  */
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
   const innerRef = React.useRef<HTMLElement>(null);
-  const uninitializedState: UninitializedAccordionItemState = {
+  const uninitializedState = {
     ref: useMergedRefs(ref, innerRef),
     disabled: false,
     ...props,
-  };
+  } as const;
   const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
   const state: AccordionItemState = {
     ...uninitializedState,

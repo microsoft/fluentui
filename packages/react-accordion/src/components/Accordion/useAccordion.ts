@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionShorthands, AccordionState, UninitializedAccordionState } from './Accordion.types';
+import { AccordionProps, AccordionSlots, AccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionShorthandProps: Array<keyof AccordionShorthands> = [];
+export const accordionShorthandProps: Array<keyof AccordionSlots> = [];
 
 /**
  * Returns the props and state required to render the component
@@ -15,7 +15,7 @@ export const accordionShorthandProps: Array<keyof AccordionShorthands> = [];
  * @param defaultProps - default values for the properties of Accordion
  */
 export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
-  const uninitializedAccordionState: UninitializedAccordionState = {
+  const uninitializedAccordionState = {
     ref,
     collapsible: false,
     multiple: false,
@@ -27,7 +27,7 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
     button: props.button ? resolveShorthand(props.button) : undefined,
     expandIcon: props.expandIcon ? resolveShorthand(props.expandIcon) : undefined,
     icon: props.icon ? resolveShorthand(props.icon) : undefined,
-  };
+  } as const;
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(uninitializedAccordionState);
   return {
     ...uninitializedAccordionState,

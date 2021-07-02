@@ -10,7 +10,9 @@ import {
   AccordionContextValue,
   AccordionDescendant,
   AccordionIndex,
-  UninitializedAccordionState,
+  AccordionSlots,
+  AccordionState,
+  AccordionCommons,
 } from './Accordion.types';
 import { createContext } from '@fluentui/react-context-selector';
 
@@ -27,7 +29,9 @@ export const AccordionContext = createContext<AccordionContextValue>({
 /**
  * Creates the context to be provided for AccordionItem components
  */
-export function useCreateAccordionContextValue(state: UninitializedAccordionState) {
+export function useCreateAccordionContextValue(
+  state: Pick<AccordionState, keyof AccordionCommons | keyof AccordionSlots>,
+) {
   const {
     index,
     multiple,
@@ -83,7 +87,11 @@ export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescen
 /**
  * Initial value for the uncontrolled case of the list of open indexes
  */
-function initializeUncontrolledOpenItems({ defaultIndex, multiple, collapsible }: UninitializedAccordionState) {
+function initializeUncontrolledOpenItems({
+  defaultIndex,
+  multiple,
+  collapsible,
+}: Pick<AccordionState, keyof AccordionCommons>) {
   switch (true) {
     case defaultIndex !== undefined: {
       if (multiple) {
@@ -108,7 +116,7 @@ function initializeUncontrolledOpenItems({ defaultIndex, multiple, collapsible }
 function updateOpenItems(
   index: number,
   previousOpenItems: number[],
-  { multiple, collapsible }: Pick<UninitializedAccordionState, 'multiple' | 'collapsible'>,
+  { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
 ) {
   if (multiple) {
     if (previousOpenItems.includes(index)) {

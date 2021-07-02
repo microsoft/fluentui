@@ -9,14 +9,16 @@ export interface AccordionItemContextValue {
 
 export type AccordionItemShorthands = {};
 
-export interface AccordionItemProps extends ComponentProps<AccordionItemShorthands>, React.HTMLAttributes<HTMLElement> {
+export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
    */
-  disabled?: boolean;
+  disabled: boolean;
 }
 
-export interface AccordionItemState extends ComponentState<AccordionItemShorthands>, React.HTMLAttributes<HTMLElement> {
+export interface AccordionItemProps extends ComponentProps<AccordionItemShorthands>, Partial<AccordionItemCommons> {}
+
+export interface AccordionItemState extends ComponentState<AccordionItemShorthands>, AccordionItemCommons {
   /**
    * Ref to the root slot
    */
@@ -30,14 +32,8 @@ export interface AccordionItemState extends ComponentState<AccordionItemShorthan
    * Internal Context used by Accordion and AccordionItem communication
    */
   setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
-  /**
-   * Disables opening/closing of panel
-   */
-  disabled: boolean;
 }
 
 export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
   id: string;
 }
-
-export type UninitializedAccordionItemState = Omit<AccordionItemState, 'setDescendants' | 'descendants' | 'context'>;

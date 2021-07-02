@@ -28,33 +28,7 @@ export type AccordionHeaderShorthands = {
   children: React.HTMLAttributes<HTMLElement>;
 };
 
-export interface AccordionHeaderProps
-  extends ComponentProps<Partial<AccordionHeaderShorthands>>,
-    Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
-  /**
-   * Size of spacing in the heading
-   */
-  size?: AccordionHeaderSize;
-  /**
-   * The position of the expand  icon slot in heading
-   */
-  expandIconPosition?: AccordionHeaderExpandIconPosition;
-  /**
-   * Indicates if the AccordionHeader should be rendered inline
-   */
-  inline?: boolean;
-}
-
-// export type AccordionHeaderDefaultedProps = 'size' | 'expandIconPosition' | 'inline' | 'button';
-
-export interface AccordionHeaderState
-  extends ComponentState<AccordionHeaderShorthands>,
-    Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.Ref<HTMLElement>;
-  context: AccordionHeaderContextValue;
+export interface AccordionHeaderCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
   /**
    * Size of spacing in the heading
    */
@@ -69,4 +43,14 @@ export interface AccordionHeaderState
   inline: boolean;
 }
 
-export type UninitializedAccordionHeaderState = Omit<AccordionHeaderState, 'context'>;
+export interface AccordionHeaderProps
+  extends ComponentProps<Partial<AccordionHeaderShorthands>>,
+    Partial<AccordionHeaderCommons> {}
+
+export interface AccordionHeaderState extends ComponentState<AccordionHeaderShorthands>, AccordionHeaderCommons {
+  /**
+   * Ref to the root slot
+   */
+  ref: React.Ref<HTMLElement>;
+  context: AccordionHeaderContextValue;
+}
