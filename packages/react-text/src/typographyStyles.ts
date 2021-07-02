@@ -1,1 +1,1 @@
-export * from './typographyStyles';
+export * from './typographyStyles/index';
