@@ -1322,14 +1322,14 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options } = props;
+    const { onRenderItem, options, label } = props;
 
     const id = this._id;
     return (
       <div
         id={id + '-list'}
         className={this._classNames.optionsContainer}
-        aria-labelledby={id + '-label'}
+        aria-labelledby={label && id + '-label'}
         role="listbox"
       >
         {options.map(item => (onRenderItem as any)(item, this._onRenderItem))}

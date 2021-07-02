@@ -801,6 +801,20 @@ describe('ComboBox', () => {
     expect(ariaRequiredAttribute).toEqual('true');
   });
 
+  it('correctly handles (aria-labelledby) when no label prop is provided', () => {
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} aria-labelledby={'customAriaLabel'} />);
+    const inputElement = wrapper.find('input').getDOMNode();
+
+    expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
+  });
+
+  it('correctly handles (aria-labelledby) when label prop is provided', () => {
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />);
+    const inputElement = wrapper.find('input').getDOMNode();
+
+    expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox358-label');
+  });
+
   it('does not add aria-required to the DOM when the required prop is not set', () => {
     const comboBoxRef = React.createRef<any>();
     wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
