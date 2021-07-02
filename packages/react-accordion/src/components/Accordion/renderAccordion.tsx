@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { getSlots, DescendantProvider } from '@fluentui/react-utilities';
+import { getSlotsCompat, DescendantProvider } from '@fluentui/react-utilities';
 import { AccordionState } from './Accordion.types';
-import { accordionShorthandProps } from './useAccordion';
+import { accordionShorthandPropsCompat } from './useAccordion';
 import { AccordionContext, AccordionDescendantContext } from './useAccordionContext';
 
 /**
  * Function that renders the final JSX of the component
  */
 export const renderAccordion = (state: AccordionState) => {
-  const { slots, slotProps } = getSlots(state, accordionShorthandProps);
+  const { slots, slotProps } = getSlotsCompat(state, accordionShorthandPropsCompat);
   return (
     <slots.root {...slotProps.root}>
       <AccordionContext.Provider value={state.context}>

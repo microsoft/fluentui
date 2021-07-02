@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-tabster): Migrate to new DX",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

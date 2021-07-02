@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 28 Jun 2021 07:35:16 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.0)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.21.1..@fluentui/react_v8.22.0)
+
+### Minor changes
+
+- Added focusZoneProps to the Pivot component to have ability be more customized ([PR #18430](https://github.com/microsoft/fluentui/pull/18430) by nikolenkoanton92@gmail.com)
+
+### Patches
+
+- Fixing a bug within ComboBox which caused aria-labelledby to be added to list even when label was absent. ([PR #18734](https://github.com/microsoft/fluentui/pull/18734) by czearing@outlook.com)
+
+## [8.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.1)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.21.0..@fluentui/react_v8.21.1)
+
+### Patches
+
+- This ports the change to allow title on menu sections to be an IContextualMenuItem to support lang props ([PR #18713](https://github.com/microsoft/fluentui/pull/18713) by makopch@microsoft.com)
 
 ## [8.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.0)
 

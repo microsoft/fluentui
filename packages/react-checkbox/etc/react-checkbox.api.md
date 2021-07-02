@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -15,7 +15,7 @@ export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2
 export type CheckboxDefaultedProps = never;
 
 // @public
-export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface CheckboxProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
@@ -25,7 +25,7 @@ export type CheckboxShorthandProps = never;
 export const checkboxShorthandProps: CheckboxShorthandProps[];
 
 // @public
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+export interface CheckboxState extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

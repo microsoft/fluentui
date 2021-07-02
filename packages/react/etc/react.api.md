@@ -3415,7 +3415,7 @@ export interface IContextualMenuRenderItem {
 export interface IContextualMenuSection extends React_2.ClassAttributes<any> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
-    title?: string;
+    title?: string | IContextualMenuItem;
     topDivider?: boolean;
 }
 
@@ -6634,6 +6634,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     className?: string;
     componentRef?: React_2.RefObject<IPivot>;
     defaultSelectedKey?: string;
+    focusZoneProps?: IFocusZoneProps;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;

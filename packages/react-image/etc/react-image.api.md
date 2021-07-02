@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -13,7 +13,7 @@ const Image_2: React_2.FunctionComponent<ImageProps & React_2.RefAttributes<HTML
 export { Image_2 as Image }
 
 // @public (undocumented)
-export interface ImageProps extends ComponentProps, React_2.ImgHTMLAttributes<HTMLImageElement> {
+export interface ImageProps extends ComponentPropsCompat, React_2.ImgHTMLAttributes<HTMLImageElement> {
     alt?: string;
     bordered?: boolean;
     circular?: boolean;

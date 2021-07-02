@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
-import { AccordionHeaderProps, AccordionHeaderShorthandProps } from '../AccordionHeader/AccordionHeader.types';
+import { ComponentPropsCompat, ComponentStateCompat, Descendant } from '@fluentui/react-utilities';
+import { AccordionHeaderProps, AccordionHeaderShorthandPropsCompat } from '../AccordionHeader/AccordionHeader.types';
 
 export type AccordionIndex = number | number[];
 
@@ -9,7 +9,7 @@ export type AccordionIndex = number | number[];
  */
 type AccordionHeaderCommonProps = Pick<
   AccordionHeaderProps,
-  AccordionShorthandProps | 'expandIconPosition' | 'size' | 'inline'
+  AccordionShorthandPropsCompat | 'expandIconPosition' | 'size' | 'inline'
 >;
 export interface AccordionContextValue extends AccordionHeaderCommonProps {
   navigable: boolean;
@@ -23,7 +23,10 @@ export interface AccordionContextValue extends AccordionHeaderCommonProps {
   requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
-export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
+export interface AccordionProps
+  extends ComponentPropsCompat,
+    AccordionHeaderCommonProps,
+    React.HTMLAttributes<HTMLElement> {
   /**
    * Indicates if keyboard navigation is available
    */
@@ -47,12 +50,12 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
   onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
 }
 
-export type AccordionShorthandProps = Exclude<AccordionHeaderShorthandProps, 'children'>;
+export type AccordionShorthandPropsCompat = Exclude<AccordionHeaderShorthandPropsCompat, 'children'>;
 
 export type AccordionDefaultedProps = 'collapsible' | 'multiple' | 'navigable';
 
 export interface AccordionState
-  extends ComponentState<AccordionProps, AccordionShorthandProps, AccordionDefaultedProps> {
+  extends ComponentStateCompat<AccordionProps, AccordionShorthandPropsCompat, AccordionDefaultedProps> {
   /**
    * Ref to the root slot
    */

@@ -1,4 +1,4 @@
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useARIAButton } from './useARIAButton';
 
@@ -8,7 +8,7 @@ interface DefaultArgs {
 
 export const Default = (args: DefaultArgs) => {
   const props = useARIAButton({ as: 'button', onClick: args.onClick });
-  const { slots, slotProps } = getSlots(props, []);
+  const { slots, slotProps } = getSlotsCompat(props, []);
   return <slots.root {...slotProps.root}>this is a button</slots.root>;
 };
 
@@ -20,7 +20,7 @@ export const Anchor = (args: DefaultArgs) => {
       args.onClick(ev);
     },
   });
-  const { slots, slotProps } = getSlots(props, []);
+  const { slots, slotProps } = getSlotsCompat(props, []);
   return (
     <slots.root href="/" {...slotProps.root}>
       this is an anchor
@@ -30,13 +30,13 @@ export const Anchor = (args: DefaultArgs) => {
 
 export const Span = (args: DefaultArgs) => {
   const props = useARIAButton({ as: 'span', onClick: args.onClick });
-  const { slots, slotProps } = getSlots(props, []);
+  const { slots, slotProps } = getSlotsCompat(props, []);
   return <slots.root {...slotProps.root}>this is a span</slots.root>;
 };
 
 export const Div = (args: DefaultArgs) => {
   const props = useARIAButton({ as: 'div', onClick: args.onClick });
-  const { slots, slotProps } = getSlots(props, []);
+  const { slots, slotProps } = getSlotsCompat(props, []);
   return <slots.root {...slotProps.root}>this is a div</slots.root>;
 };
 
