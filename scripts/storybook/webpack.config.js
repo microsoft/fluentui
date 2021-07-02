@@ -103,13 +103,8 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
     ];
     for (const file of filesToWatch) {
       fs.watchFile(file, (curr, prev) => {
-        let stack;
-        try {
-          throw new Error();
-        } catch (err) {
-          // Get the stack but remove the first line about it being an error
-          stack = err.stack.split(/\r?\n/g).slice(1).join('\n');
-        }
+        // Get the stack but remove the first line about it being an error
+        const stack = new Error().stack.split(/\r?\n/g).slice(1).join('\n');
         const isAccess = curr.mtime.getTime() === prev.mtime.getTime();
         console.log(`${isAccess ? 'Accessed' : 'Modified'} ${file}:`);
         console.log(stack);

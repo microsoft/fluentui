@@ -83,7 +83,9 @@ export function buildStorybookTask() {
       mode: 'static',
       outputDir: path.join(process.cwd(), 'dist/storybook'),
     };
-    console.log('Storybook options:', JSON.stringify(options, null, 2));
+    if (process.env.TF_BUILD) {
+      console.log('Storybook options:', JSON.stringify(options, null, 2));
+    }
     await storybook(options);
   };
 }
