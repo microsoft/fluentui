@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
@@ -63,6 +63,10 @@ describe('ComboBox', () => {
       }
       domNode = undefined;
     }
+  });
+
+  beforeEach(() => {
+    resetIds();
   });
 
   it('Renders correctly', () => {
@@ -812,7 +816,7 @@ describe('ComboBox', () => {
     wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />);
     const inputElement = wrapper.find('input').getDOMNode();
 
-    expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox358-label');
+    expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
   });
 
   it('does not add aria-required to the DOM when the required prop is not set', () => {
