@@ -16,9 +16,11 @@ function evaluate(code: string, filename: string, babelOptions: TransformOptions
     evaluate: true,
 
     rules: [
+      /* TODO: rules should be configurable */
+
       { action: shakerEvaluator },
       {
-        test: /\/node_modules\//,
+        test: /[/\\]node_modules[/\\]/,
         action: 'ignore',
       },
     ],
