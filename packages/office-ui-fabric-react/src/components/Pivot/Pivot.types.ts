@@ -3,6 +3,7 @@ import { PivotBase } from './Pivot.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory Pivot}
@@ -108,6 +109,11 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+
+  /**
+   * Props passed to the `FocusZone` component used as the root of `Pivot`.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**
