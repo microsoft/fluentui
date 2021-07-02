@@ -223,6 +223,12 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /**
+   *  Refers to the iconName for the remove item action
+   *  @defaultvalue 'Cancel'
+   */
+  iconName?: string;
 }
 
 /**
