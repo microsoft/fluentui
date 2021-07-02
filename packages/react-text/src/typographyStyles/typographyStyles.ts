@@ -1,6 +1,9 @@
 import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
 import { Theme } from '@fluentui/react-theme';
 
+/**
+ * Make-styles rules for the typography variants
+ */
 export const typographyStyles: {
   caption: MakeStylesStyleFunctionRule<Theme>;
   body: MakeStylesStyleFunctionRule<Theme>;
