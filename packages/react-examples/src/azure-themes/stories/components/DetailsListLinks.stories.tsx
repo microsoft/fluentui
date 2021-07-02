@@ -206,7 +206,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             multiSelect
             options={options}
             styles={dropdownStyles}
-            onChange={this.onChangeDropDown}
+            onChange={this._onChangeDropDown}
           />
         </div>
         <DetailsList
@@ -239,10 +239,10 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       searching: text as string,
     });
 
-    this.setFilterStateItems(text as string, this.state.filtering);
+    this._setFilterStateItems(text as string, this.state.filtering);
   };
 
-  private onChangeDropDown = (event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
+  private _onChangeDropDown = (event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
     if (item) {
       let temp = this.state.filtering;
       if (item.selected) {
@@ -254,11 +254,11 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         filtering: temp,
       });
 
-      this.setFilterStateItems(this.state.searching, temp);
+      this._setFilterStateItems(this.state.searching, temp);
     }
   };
 
-  private setFilterStateItems(value: string, set: Array<string>): void {
+  private _setFilterStateItems(value: string, set: Array<string>): void {
     let temp = value
       ? this._allItems.filter(i => i.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
       : this._allItems;
@@ -326,7 +326,7 @@ function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boo
 function _generateDocuments() {
   const items: IDocument[] = [];
   for (let i = 0; i < content.length - 1; i++) {
-    let fileName = content[i].title;
+    const fileName = content[i].title;
 
     let userName = _lorem(2);
     userName = userName

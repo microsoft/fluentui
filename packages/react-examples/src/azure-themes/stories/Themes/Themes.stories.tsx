@@ -47,7 +47,6 @@ import { DetailsListDocumentsExample } from '../components/DetailsListLinks.stor
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
-      <DetailsListDocumentsExample />
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
@@ -89,6 +88,7 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
+      <DetailsListDocumentsExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
