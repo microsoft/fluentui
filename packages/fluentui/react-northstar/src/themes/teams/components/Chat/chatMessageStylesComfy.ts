@@ -54,6 +54,7 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
   author: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...((p.mine || p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: v.authorColor,
+    fontWeight: v.authorFontWeight,
     marginRight: v.authorMarginRight,
     marginBottom: v.headerMarginBottom,
   }),

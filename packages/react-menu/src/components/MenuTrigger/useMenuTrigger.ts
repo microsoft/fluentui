@@ -2,10 +2,10 @@ import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-uti
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useTriggerElement } from './useTriggerElement';
 
-export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[] = [];
+export const menuTriggerShorthandPropsCompat: (keyof MenuTriggerProps)[] = [];
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuTriggerState>({ deepMerge: menuTriggerShorthandProps });
+const mergeProps = makeMergePropsCompat<MenuTriggerState>({ deepMerge: menuTriggerShorthandPropsCompat });
 
 /**
  * Create the state required to render MenuTrigger.
@@ -17,7 +17,7 @@ const mergeProps = makeMergePropsCompat<MenuTriggerState>({ deepMerge: menuTrigg
  * {@docCategory MenuTrigger }
  */
 export const useMenuTrigger = (props: MenuTriggerProps, defaultProps?: MenuTriggerProps): MenuTriggerState => {
-  const state = mergeProps({}, defaultProps, resolveShorthandProps(props, menuTriggerShorthandProps));
+  const state = mergeProps({}, defaultProps, resolveShorthandProps(props, menuTriggerShorthandPropsCompat));
 
   return useTriggerElement(state);
 };

@@ -491,7 +491,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ density, mine }),
+    defaultProps: () => ({ attached, density, mine }),
   });
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {

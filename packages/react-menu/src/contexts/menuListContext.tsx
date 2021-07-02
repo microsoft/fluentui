@@ -11,6 +11,7 @@ const MenuListContext = createContext<MenuListContextValue>({
   selectRadio: () => null,
   hasIcons: false,
   hasCheckmarks: false,
+  hasMenuListContext: false,
 });
 
 /**
@@ -21,6 +22,7 @@ export interface MenuListContextValue
   setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
   toggleCheckbox?: SelectableHandler;
   selectRadio?: SelectableHandler;
+  hasMenuListContext?: boolean;
 }
 
 export const MenuListProvider = MenuListContext.Provider;
