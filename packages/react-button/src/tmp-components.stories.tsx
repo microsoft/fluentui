@@ -1,6 +1,5 @@
 //
 // !!!   A temporary workaround to avoid dependencies on any non converged packages.
-// !!!   Usage of converged Checkbox, Dropdown and TextField should be considered.
 //
 
 /* eslint-disable @typescript-eslint/naming-convention */
