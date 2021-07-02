@@ -233,11 +233,9 @@
         ],
         "dependencies": [
           "mocha",
-          "prettier",
           "ts-loader",
           "ts-node",
           "tslib",
-          "typescript",
           "webpack"
         ]
       },

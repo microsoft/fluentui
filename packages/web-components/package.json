@@ -50,15 +50,12 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.7.1",
-    "@storybook/addons": "^6.1.17",
-    "@storybook/html": "^6.1.17",
-    "@storybook/theming": "^6.1.17",
+    "@storybook/html": "6.0.28",
+    "@storybook/theming": "6.0.28",
     "@types/chai": "^4.2.11",
     "@types/chai-spies": "^1.0.1",
     "@types/karma": "^5.0.0",
     "@types/mocha": "^7.0.2",
-    "@typescript-eslint/eslint-plugin": "4.22.0",
-    "@typescript-eslint/parser": "4.22.0",
     "chai": "^4.2.0",
     "chai-spies": "1.0.0",
     "circular-dependency-plugin": "^5.0.2",
@@ -93,7 +90,6 @@
     "ts-loader": "^7.0.2",
     "ts-node": "^8.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "4.1.5",
     "webpack": "^4.43.0"
   },
   "dependencies": {
