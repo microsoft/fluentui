@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "disable linaria/shaker as it causes build issues on Windows",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
