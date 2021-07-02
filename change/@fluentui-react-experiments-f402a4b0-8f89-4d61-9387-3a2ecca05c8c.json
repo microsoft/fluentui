@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "don't exit if the user clicked on any part of the picker",
-  "packageName": "@fluentui/react-experiments",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}

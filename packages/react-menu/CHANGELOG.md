@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.45)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.44..@fluentui/react-menu_v9.0.0-alpha.45)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.22 ([PR #18816](https://github.com/microsoft/fluentui/pull/18816) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.44)
 

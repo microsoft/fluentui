@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.37](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.37)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.36..@fluentui/public-docsite_v8.2.37)
+
+### Patches
+
+- Bump @fluentui/react-experiments to v8.1.34 ([PR #18766](https://github.com/microsoft/fluentui/pull/18766) by jaredi@microsoft.com)
 
 ## [8.2.36](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.36)
 

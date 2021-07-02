@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "create recipes and tokens on DI and update components to leverage tokens",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}

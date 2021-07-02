@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Migrated recipes from DI to Design Tokens Renamed neutralForeground back to neutralForegroundRest Removed the \"L\" from layer names Added some typing and made `RGB` type imports less specific",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

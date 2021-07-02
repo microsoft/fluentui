@@ -1,8 +1,17 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.22)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.21..@fluentui/babel-make-styles_v9.0.0-alpha.22)
+
+### Changes
+
+- fix: update regex for rules ([PR #18816](https://github.com/microsoft/fluentui/pull/18816) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.21)
 

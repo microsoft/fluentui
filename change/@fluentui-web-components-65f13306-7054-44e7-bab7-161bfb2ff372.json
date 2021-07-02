@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Rename and clean up of design tokens and recipe: - neutralContrastFill -> neutralFillInverse - neutralFillToggle -> neutralFillContrast - neutralFocus -> focusStrokeOuter - neutralFocusInnerAccent -> focusStrokeInner - outline -> stroke - Removed 'selected' colors",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

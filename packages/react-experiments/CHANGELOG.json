@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.34",
+      "version": "8.1.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "don't exit if the user clicked on any part of the picker",
+            "author": "jaredi@microsoft.com",
+            "commit": "dc5027fffb57cdbb6cf4bf12da4a1fd98c7a3e15",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jul 2021 07:35:05 GMT",
       "tag": "@fluentui/react-experiments_v8.1.33",
       "version": "8.1.33",

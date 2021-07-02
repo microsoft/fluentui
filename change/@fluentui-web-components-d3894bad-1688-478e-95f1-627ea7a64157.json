@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "migrate DSP to design tokens",
-  "packageName": "@fluentui/web-components",
-  "email": "nicholasrice@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
