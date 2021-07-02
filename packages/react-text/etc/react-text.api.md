@@ -11,6 +11,13 @@ import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
 
 // @public
+export const Display: React_2.ForwardRefExoticComponent<DisplayProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export interface DisplayProps extends Omit<TextProps, 'font' | 'size'> {
+}
+
+// @public
 export const renderText: (state: TextState) => JSX.Element;
 
 // @public

@@ -1,7 +1,6 @@
 import { makeStyles } from '@fluentui/react-make-styles';
 import * as React from 'react';
-import { Text } from './Text';
-import { TextProps } from './Text.types';
+import { Text, TextProps } from './Text';
 
 const useStyles = makeStyles({
   container: {
