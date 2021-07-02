@@ -18,7 +18,6 @@ module.exports = {
       'no-prototype-builtins': 'off',
       'no-fallthrough': 'off',
       'no-unexpected-multiline': 'off',
-      'max-len': ['error', 140],
       'import/order': 'error',
       'sort-imports': [
           'error',
