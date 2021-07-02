@@ -12,6 +12,7 @@ describe('neutralFillLayer', (): void => {
     for (let i: number = 0; i < delta; i++) {
       const color = neutralFillLayer(neutralPalette, neutralPalette.get(i), delta);
       const resolved = neutralPalette.get(delta + i);
+
       expect(color).to.equal(resolved);
     }
   });
