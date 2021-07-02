@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Reset position of CalloutContent control if the target prop has changed.",
+  "packageName": "office-ui-fabric-react",
+  "email": "kinhln@microsoft.com",
+  "dependentChangeType": "patch"
+}
