@@ -1842,13 +1842,6 @@ Array [
                               .ms-List-cell:first-child &:before {
                                 display: none;
                               }
-                              &:hover {
-                                background: #f3f2f1;
-                                color: #323130;
-                              }
-                              &:hover .is-row-header {
-                                color: #201f1e;
-                              }
                               &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
@@ -3153,13 +3146,6 @@ Array [
                               }
                               .ms-List-cell:first-child &:before {
                                 display: none;
-                              }
-                              &:hover {
-                                background: #f3f2f1;
-                                color: #323130;
-                              }
-                              &:hover .is-row-header {
-                                color: #201f1e;
                               }
                               &:hover .ms-DetailsRow-check {
                                 opacity: 1;

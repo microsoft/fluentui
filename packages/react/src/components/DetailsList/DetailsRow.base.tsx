@@ -231,6 +231,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         compact,
         enableUpdateAnimations,
         cellStyleProps,
+        selectionMode,
       }),
     };
 

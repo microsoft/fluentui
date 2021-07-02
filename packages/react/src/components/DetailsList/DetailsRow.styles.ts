@@ -61,8 +61,8 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     className,
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     enableUpdateAnimations,
+    selectionMode,
   } = props;
-
   const { palette, fonts } = theme;
   const {
     neutralPrimary,
@@ -313,7 +313,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
             display: 'none',
           },
 
-          '&:hover': {
+          '&:hover': selectionMode && {
             background: colors.defaultHoverBackground,
             color: colors.defaultHoverMetaText,
             selectors: {

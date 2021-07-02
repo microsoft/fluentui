@@ -574,13 +574,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
-                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -826,13 +819,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                           .ms-List-cell:first-child &:before {
                             display: none;
-                          }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -1080,13 +1066,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
-                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -1332,13 +1311,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                           .ms-List-cell:first-child &:before {
                             display: none;
-                          }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -1586,13 +1558,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
-                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -1838,13 +1803,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                           .ms-List-cell:first-child &:before {
                             display: none;
-                          }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -2092,13 +2050,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
-                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -2344,13 +2295,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                           .ms-List-cell:first-child &:before {
                             display: none;
-                          }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
@@ -2598,13 +2542,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
-                          }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
@@ -2850,13 +2787,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                           .ms-List-cell:first-child &:before {
                             display: none;
-                          }
-                          &:hover {
-                            background: #f3f2f1;
-                            color: #323130;
-                          }
-                          &:hover .is-row-header {
-                            color: #201f1e;
                           }
                           &:hover .ms-DetailsRow-check {
                             opacity: 1;

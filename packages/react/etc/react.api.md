@@ -4029,6 +4029,7 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
     compact?: boolean;
     cellStyleProps?: ICellStyleProps;
     enableUpdateAnimations?: boolean;
+    selectionMode: any;
 };
 
 // @public (undocumented)

@@ -275,6 +275,9 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
 
   /** Whether to animate updates */
   enableUpdateAnimations?: boolean;
+
+  /** Defines the selection mode of list among single, multi or none */
+  selectionMode: any;
 };
 
 /**
