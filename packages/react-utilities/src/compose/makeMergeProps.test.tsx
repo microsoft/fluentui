@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { makeMergeProps } from './makeMergeProps';
-import { GenericDictionary } from './types';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type GenericDictionary = Record<string, any>;
 
 describe('mergeProps', () => {
   const basicMergeProps = makeMergeProps<GenericDictionary>({ deepMerge: ['a', 'b', 'c', 'd', 'e', 'f'] });

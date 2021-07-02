@@ -116,7 +116,7 @@ export interface ICalendarDayGridProps extends IDayGridOptions, IBaseProps<ICale
   showWeekNumbers?: boolean;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter: IDateFormatting;
 
@@ -226,7 +226,7 @@ export interface ICalendarDayGridStyleProps {
   animateBackwards?: boolean;
 
   /**
-   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   * The cardinal directions for animation to occur during transitions, either horizontal or vertical
    */
   animationDirection?: AnimationDirection;
 }

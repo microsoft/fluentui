@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(Menu): Change chevron icon for RTL",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

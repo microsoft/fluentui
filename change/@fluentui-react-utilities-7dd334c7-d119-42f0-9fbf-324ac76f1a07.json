@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-utilities): Migrate DX",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}

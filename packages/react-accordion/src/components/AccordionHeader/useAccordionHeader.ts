@@ -13,7 +13,7 @@ import {
   AccordionHeaderSize,
   AccordionHeaderState,
   AccordionHeaderContextValue,
-  AccordionHeaderShorthandProps,
+  AccordionHeaderShorthandPropsCompat,
 } from './AccordionHeader.types';
 import {
   useAccordionItemContext,
@@ -29,14 +29,14 @@ import { useARIAButton } from '@fluentui/react-aria';
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps: AccordionHeaderShorthandProps[] = [
+export const accordionHeaderShorthandPropsCompat: AccordionHeaderShorthandPropsCompat[] = [
   'expandIcon',
   'button',
   'children',
   'icon',
 ];
 
-const mergeProps = makeMergeProps<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
+const mergeProps = makeMergeProps<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -84,12 +84,12 @@ export const useAccordionHeader = (
         expandIconPosition: 'start',
       },
     },
-    resolveShorthandProps<AccordionHeaderProps, AccordionHeaderShorthandProps>(
+    resolveShorthandProps<AccordionHeaderProps, AccordionHeaderShorthandPropsCompat>(
       { button, icon, expandIconPosition, expandIcon, size, inline },
-      accordionHeaderShorthandProps,
+      accordionHeaderShorthandPropsCompat,
     ),
-    defaultProps && resolveShorthandProps(defaultProps, accordionHeaderShorthandProps),
-    resolveShorthandProps(props, accordionHeaderShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, accordionHeaderShorthandPropsCompat),
+    resolveShorthandProps(props, accordionHeaderShorthandPropsCompat),
   );
   const originalButtonKeyDown = state.button.onKeyDown;
   state.button.onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {

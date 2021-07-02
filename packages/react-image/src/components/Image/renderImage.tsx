@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import { ImageState } from './Image.types';
 
 /**
@@ -7,7 +7,7 @@ import { ImageState } from './Image.types';
  * Given the state of an image, renders it.
  */
 export const renderImage = (state: ImageState) => {
-  const { slots, slotProps } = getSlots(state);
+  const { slots, slotProps } = getSlotsCompat(state);
 
   return <slots.root {...slotProps.root} />;
 };

@@ -17,13 +17,13 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionItemShorthandProps = [];
+export const accordionItemShorthandPropsCompat = [];
 
 export const accordionItemDescendantContext: React.Context<
   DescendantContextValue<AccordionItemDescendant<HTMLElement>>
 > = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
 
-const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
+const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -44,8 +44,8 @@ export const useAccordionItem = (
       descendants: undefined!,
       setDescendants: undefined!,
     },
-    defaultProps && resolveShorthandProps(defaultProps, accordionItemShorthandProps),
-    resolveShorthandProps(props, accordionItemShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, accordionItemShorthandPropsCompat),
+    resolveShorthandProps(props, accordionItemShorthandPropsCompat),
   );
   const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
   state.descendants = descendants;
