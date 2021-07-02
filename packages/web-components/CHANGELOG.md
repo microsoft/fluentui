@@ -1,8 +1,41 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 08 Jun 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.0)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.22.1..@fluentui/web-components_v1.0.0)
+
+### Major changes
+
+- add directional stylesheet, css partials, and default slotted content for vNext components ([PR #18275](https://github.com/microsoft/fluentui/pull/18275) by chhol@microsoft.com)
+- undefined ([PR #18187](https://github.com/microsoft/fluentui/pull/18187) by chhol@microsoft.com)
+- create recipes and tokens on DI and update components to leverage tokens ([PR #18226](https://github.com/microsoft/fluentui/pull/18226) by chhol@microsoft.com)
+- migrate DSP to design tokens ([PR #18578](https://github.com/microsoft/fluentui/pull/18578) by nicholasrice@users.noreply.github.com)
+
+### Minor changes
+
+- Updated Card color handling for new design tokens Updated fill-color handling in design-system-provider Added neutral-fill-layer-rest-delta to design-system-provider Updated use of fluent-design-system-provider in samples Cleaned up styles and sorted imports ([PR #18631](https://github.com/microsoft/fluentui/pull/18631) by 47367562+bheston@users.noreply.github.com)
+- Updated the neutral fill card color recipe to always be lighter or equal to the container, instead of flipping to go darker over white. ([PR #18444](https://github.com/microsoft/fluentui/pull/18444) by 47367562+bheston@users.noreply.github.com)
+- Migrated recipes from DI to Design Tokens Renamed neutralForeground back to neutralForegroundRest Removed the "L" from layer names Added some typing and made `RGB` type imports less specific ([PR #18561](https://github.com/microsoft/fluentui/pull/18561) by 47367562+bheston@users.noreply.github.com)
+- correct tabs font size and line height ([PR #18240](https://github.com/microsoft/fluentui/pull/18240) by chhol@microsoft.com)
+- add support for sub menus to menu ([PR #18233](https://github.com/microsoft/fluentui/pull/18233) by jes@microsoft.com)
+- Removed old color recipes and moved vNext. ([PR #18732](https://github.com/microsoft/fluentui/pull/18732) by 47367562+bheston@users.noreply.github.com)
+- Standardized remaining design token recipe types ([PR #18602](https://github.com/microsoft/fluentui/pull/18602) by 47367562+bheston@users.noreply.github.com)
+- Rename and clean up of design tokens and recipe: - neutralContrastFill -> neutralFillInverse - neutralFillToggle -> neutralFillContrast - neutralFocus -> focusStrokeOuter - neutralFocusInnerAccent -> focusStrokeInner - outline -> stroke - Removed 'selected' colors ([PR #18410](https://github.com/microsoft/fluentui/pull/18410) by 47367562+bheston@users.noreply.github.com)
+- add color-vNext folder with recipes and update specs ([PR #18199](https://github.com/microsoft/fluentui/pull/18199) by chhol@microsoft.com)
+- update web component corner radius token value to 4 ([PR #18231](https://github.com/microsoft/fluentui/pull/18231) by chhol@microsoft.com)
+- Fixed foregroundOnAccent recipe to work in all states ([PR #18765](https://github.com/microsoft/fluentui/pull/18765) by 47367562+bheston@users.noreply.github.com)
+
+### Patches
+
+- update typings for context and definition, export base classes ([PR #18716](https://github.com/microsoft/fluentui/pull/18716) by chhol@microsoft.com)
+- Updated type ramp to latest values. ([PR #16927](https://github.com/microsoft/fluentui/pull/16927) by brheston@microsoft.com)
+- fix a bug where the bottom border for select and comobox would visually disappear on active states ([PR #18348](https://github.com/microsoft/fluentui/pull/18348) by chhol@microsoft.com)
+- Removed accent fill direction handling to standardize foreground text color ([PR #18789](https://github.com/microsoft/fluentui/pull/18789) by 47367562+bheston@users.noreply.github.com)
 
 ## [0.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.1)
 

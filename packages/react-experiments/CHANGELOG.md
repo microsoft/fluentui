@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.34)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.33..@fluentui/react-experiments_v8.1.34)
+
+### Patches
+
+- don't exit if the user clicked on any part of the picker ([PR #18766](https://github.com/microsoft/fluentui/pull/18766) by jaredi@microsoft.com)
 
 ## [8.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.33)
 

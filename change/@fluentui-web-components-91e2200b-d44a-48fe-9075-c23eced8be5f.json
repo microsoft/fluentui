@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add color-vNext folder with recipes and update specs",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}

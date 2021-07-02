@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removed old color recipes and moved vNext.",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Fixed foregroundOnAccent recipe to work in all states",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.31)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.30..@fluentui/react-utilities_v9.0.0-alpha.31)
+
+### Changes
+
+- Add new prop mergin mechanism ([PR #18721](https://github.com/microsoft/fluentui/pull/18721) by bsunderhus@microsoft.com)
+- chore(Menu): use capture event to handle outside click ([PR #18792](https://github.com/microsoft/fluentui/pull/18792) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.30)
 

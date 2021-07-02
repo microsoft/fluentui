@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.31",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6c37a1cb5c312d4be8b239bfd9f6c9f28e9f0d24",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Jul 2021 07:37:06 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",
