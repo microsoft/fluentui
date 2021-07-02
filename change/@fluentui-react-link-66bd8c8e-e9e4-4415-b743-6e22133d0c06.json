@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename typings and getSlots to have the Compat Suffix",
-  "packageName": "@fluentui/react-link",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
