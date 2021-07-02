@@ -54,7 +54,7 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "Run server",
+      "name": "Run server-rendered-app",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
@@ -62,14 +62,14 @@
       "stopOnEntry": false,
       "args": ["-i"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
       "sourceMaps": true
     },
     {
-      "name": "Build fabric",
+      "name": "Build @fluentui/react",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just-scripts.js",
@@ -77,42 +77,15 @@
       "stopOnEntry": false,
       "args": ["ts"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
+      "console": "integratedTerminal",
       "env": {
         "NODE_ENV": "development"
       },
       "sourceMaps": true
     },
     {
-      "name": "Debug build",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/scripts/just-scripts.js",
-      "stopOnEntry": false,
-      "args": ["build"],
-      "cwd": "${workspaceRoot}/packages/style-utilities",
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    {
-      "name": "Debug build Dogfood",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/scripts/just-scripts.js",
-      "stopOnEntry": false,
-      "args": ["webpack", "--", "--production", "--dogfood"],
-      "cwd": "${workspaceRoot}/apps/public-docsite",
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    {
-      "name": "Debug npm start (public-docsite)",
+      "name": "Start public-docsite",
       "type": "node",
       "request": "launch",
       // scripts/start.js generates this script path and launches a subprocess (which is harder
@@ -124,7 +97,7 @@
       // Use the config file for public-docsite, plus command line options used in start.js
       "args": [
         "--nolazy",
-        "--debug",
+        "--inspect",
         "--config",
         "${workspaceRoot}/apps/public-docsite/webpack.serve.config.js",
         "--open"
@@ -139,10 +112,10 @@
       "request": "launch",
       "program": "${workspaceRoot}/apps/ssr-tests/node_modules/mocha/bin/_mocha",
       "stopOnEntry": false,
-      "args": ["--debug", "dist/ssr-tests.js"],
+      "args": ["--inspect", "dist/ssr-tests.js"],
       "cwd": "${workspaceRoot}/apps/ssr-tests",
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -157,7 +130,7 @@
       "stopOnEntry": false,
       "args": ["--name", "TestComponentName"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -179,7 +152,7 @@
         "--age",
         "10"
       ],
-      "runtimeArgs": ["--nolazy", "--debug", "-r", "${workspaceRoot}/scripts/ts-node-register"],
+      "runtimeArgs": ["--nolazy", "--inspect", "-r", "${workspaceRoot}/scripts/ts-node-register"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -195,7 +168,7 @@
       "stopOnEntry": false,
       "runtimeExecutable": null,
       "args": ["--ext", ".ts,.tsx,.js,.jsx", "src"],
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -210,7 +183,7 @@
       "cwd": "${workspaceRoot}/packages/api-docs",
       "stopOnEntry": false,
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -223,7 +196,7 @@
       "request": "launch",
       "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       // You can change the task name and cwd locally as needed
       "args": ["build"],
       "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
