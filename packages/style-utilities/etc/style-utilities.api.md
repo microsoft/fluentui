@@ -206,6 +206,7 @@ export interface IIconSubset {
     icons: {
         [key: string]: string | JSX.Element;
     };
+    mergeImageProps?: boolean;
     // (undocumented)
     style?: IRawStyle;
 }
