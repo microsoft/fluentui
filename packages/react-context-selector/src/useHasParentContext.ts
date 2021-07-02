@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Context, ContextValue } from './types';
 
 /**
- * Utility hook for contexts created by @fluentui/react-context-selector to determine if a parent context exists
+ * Utility hook for contexts created by react-context-selector to determine if a parent context exists
  * WARNING: This hook will not work for native React contexts
  *
- * @param context - context created by @fluentui/react-context-selector
+ * @param context - context created by react-context-selector
  * @returns whether the hook is wrapped by a parent context
  */
 export function useHasParentContext<Value>(context: Context<Value>) {
