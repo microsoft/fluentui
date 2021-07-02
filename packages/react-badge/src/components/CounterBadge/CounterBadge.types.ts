@@ -3,11 +3,6 @@ import { BadgeProps, BadgeState } from '../Badge/index';
 /**
  * {@docCategory CounterBadge}
  */
-export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
-
-/**
- * {@docCategory CounterBadge}
- */
 export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
   /**
    * A Badge can be circular or rounded
@@ -22,19 +17,13 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
   appearance?: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
 
   /**
-   * A Badge can have color variations
-   * @defaultvalue accent
-   */
-  color?: CounterBadgeColors;
-
-  /**
    * Max number to be displayed
    * @defaultvalue 99
    */
   overflowCount?: number;
 
   /**
-   * Value diplayed by the Badge
+   * Value displayed by the Badge
    * @defaultvalue 0
    */
   count?: number;
@@ -63,7 +52,7 @@ export interface CounterBadgeState extends BadgeState {
   overflowCount: number;
 
   /**
-   * Value diplayed by the Badge
+   * Value displayed by the Badge
    * @defaultvalue 0
    */
   count: number;

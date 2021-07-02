@@ -44,10 +44,7 @@ export const emptyTheme: ThemePrepared = {
 /**
  * Merges a single component's styles (keyed by component part) with another component's styles.
  */
-export const mergeComponentStyles__PROD = (
-  stylesA: ComponentSlotStyle | null | undefined,
-  stylesB: ComponentSlotStyle | null | undefined,
-): ComponentSlotStylesPrepared => {
+export const mergeComponentStyles__PROD: typeof mergeComponentStyles = (stylesA, stylesB) => {
   const result = {};
 
   if (stylesA) {
@@ -108,10 +105,7 @@ export const mergeComponentStyles__PROD = (
   return result;
 };
 
-export const mergeComponentStyles__DEV = (
-  stylesA: ComponentSlotStylesInput | null | undefined,
-  stylesB: ComponentSlotStylesInput | null | undefined,
-): ComponentSlotStylesPrepared => {
+export const mergeComponentStyles__DEV: typeof mergeComponentStyles = (stylesA, stylesB) => {
   if (!isDebugEnabled) {
     return mergeComponentStyles__PROD(stylesA, stylesB);
   }
@@ -164,7 +158,8 @@ export const mergeComponentStyles__DEV = (
 };
 
 export const mergeComponentStyles: (
-  ...sources: (ComponentSlotStylesInput | null | undefined)[]
+  stylesA: ComponentSlotStylesInput | null | undefined,
+  stylesB: ComponentSlotStylesInput | null | undefined,
 ) => ComponentSlotStylesPrepared =
   process.env.NODE_ENV === 'production' ? mergeComponentStyles__PROD : mergeComponentStyles__DEV;
 

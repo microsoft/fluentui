@@ -15,11 +15,12 @@ import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
-export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
+export const menuShorthandPropsCompat: (keyof MenuProps)[] = ['menuPopup'];
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandProps });
+const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPropsCompat });
 
 /**
  * Create the state required to render Menu.
@@ -35,7 +36,7 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  */
 export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState => {
   const triggerId = useId('menu');
-  const isSubmenu = useMenuContext(context => context.hasMenuContext);
+  const isSubmenu = useIsSubmenu();
 
   const state = mergeProps(
     {
@@ -45,12 +46,11 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
       openOnHover: isSubmenu,
       hoverDelay: 500,
       triggerId,
+      isSubmenu,
     },
     defaultProps,
-    resolveShorthandProps(props, menuShorthandProps),
+    resolveShorthandProps(props, menuShorthandPropsCompat),
   );
-
-  state.isSubmenu = isSubmenu;
 
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
@@ -156,9 +156,9 @@ const useMenuOpenState = (state: MenuState) => {
       e.persist();
     }
 
-    if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === MENU_ENTER_EVENT) {
+    if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === 'mousemove' || e.type === MENU_ENTER_EVENT) {
       if (state.triggerRef.current?.contains(e.target as HTMLElement)) {
-        enteringTriggerRef.current = e.type === 'mouseenter';
+        enteringTriggerRef.current = e.type === 'mouseenter' || e.type === 'mousemove';
       }
 
       setOpenTimeout.current = setTimeout(() => trySetOpen(e, data), state.hoverDelay);
@@ -213,11 +213,13 @@ const useMenuOpenState = (state: MenuState) => {
   }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
-    if (open) {
-      focusFirst();
+    if (!shouldHandleKeyboadRef.current) {
+      return;
     }
 
-    if (shouldHandleKeyboadRef.current && !open) {
+    if (open) {
+      focusFirst();
+    } else {
       if (shouldHandleTabRef.current && !state.isSubmenu) {
         pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
       } else {

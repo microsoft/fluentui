@@ -6,20 +6,27 @@ import {
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
-import { ChevronRightIcon } from '../../utils/DefaultIcons';
+import { ChevronRightIcon, ChevronLeftIcon } from '../../utils/DefaultIcons';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuContext } from '../../contexts/menuContext';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemShorthandProps = ['icon', 'submenuIndicator', 'content', 'secondaryContent', 'checkmark'] as const;
+export const menuItemShorthandPropsCompat = [
+  'icon',
+  'submenuIndicator',
+  'content',
+  'secondaryContent',
+  'checkmark',
+] as const;
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
+const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -36,12 +43,14 @@ export const useMenuItem = (
   const persistOnClickContext = useMenuContext(context => context.persistOnItemClick);
   const dismissedWithKeyboardRef = React.useRef(false);
 
+  const { dir } = useFluent();
+
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       icon: { as: 'span', children: hasIcons ? '' : undefined },
       checkmark: { as: 'span', children: hasCheckmarks ? '' : undefined },
-      submenuIndicator: { as: 'span', children: <ChevronRightIcon /> },
+      submenuIndicator: { as: 'span', children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon /> },
       content: { as: 'span', children: props.children },
       secondaryContent: { as: 'span' },
       role: 'menuitem',
@@ -49,8 +58,8 @@ export const useMenuItem = (
       hasSubmenu,
       'aria-disabled': props.disabled,
     },
-    defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandProps),
-    resolveShorthandProps(props, menuItemShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandPropsCompat),
+    resolveShorthandProps(props, menuItemShorthandPropsCompat),
   );
 
   const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state;

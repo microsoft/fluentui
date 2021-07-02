@@ -198,6 +198,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         margin: 0,
         color: palette.white,
         fontWeight: FontWeights.semibold,
+        overflowWrap: 'break-word',
       },
       hasLargeHeadline && [
         {

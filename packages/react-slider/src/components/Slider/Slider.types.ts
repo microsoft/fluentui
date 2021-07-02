@@ -166,7 +166,7 @@ export interface ISliderStyles {
   container: IStyle;
 
   /**
-   * Style set for the actual box containting interactive elements of the slider.
+   * Style set for the actual box containing interactive elements of the slider.
    */
   slideBox: IStyle;
 

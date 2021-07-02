@@ -12,7 +12,12 @@ import { IList, IListProps, ScrollToMode } from '../../List';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
+import {
+  IDetailsColumnStyleProps,
+  IDetailsColumnProps,
+  IDetailsColumnStyles,
+  IDetailsColumnFilterIconProps,
+} from './DetailsColumn.types';
 
 export {
   IDetailsHeaderProps,
@@ -138,10 +143,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   isHeaderVisible?: boolean;
 
-  /** column defitions. If none are provided, default columns will be created based on the items' properties. */
+  /** Column definitions. If none are provided, default columns will be created based on the items' properties. */
   columns?: IColumn[];
 
-  /** Controls how the list contrains overflow. */
+  /** Controls how the list constrains overflow. */
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
@@ -435,6 +440,9 @@ export interface IColumn {
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+
+  /** Custom renderer for filter icon. */
+  onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
 
   /** Custom renderer for column header content, instead of the default text rendering. */
   onRenderHeader?: IRenderFunction<IDetailsColumnProps>;

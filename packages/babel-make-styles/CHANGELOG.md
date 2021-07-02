@@ -1,8 +1,53 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.21)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.20..@fluentui/babel-make-styles_v9.0.0-alpha.21)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.16 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.20)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.19..@fluentui/babel-make-styles_v9.0.0-alpha.20)
+
+### Changes
+
+- integrate linaria/shaker to improve performance ([PR #18680](https://github.com/microsoft/fluentui/pull/18680) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.19)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.18..@fluentui/babel-make-styles_v9.0.0-alpha.19)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.44 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.18)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.17..@fluentui/babel-make-styles_v9.0.0-alpha.18)
+
+### Changes
+
+- update fixtures to match latest implementation ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.17)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.16..@fluentui/babel-make-styles_v9.0.0-alpha.17)
+
+### Changes
+
+- support custom imports of makeStyles ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.16)
 

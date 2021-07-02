@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
+import { useMenuItem, menuItemShorthandPropsCompat } from '../MenuItem/useMenuItem';
 import { AcceptIcon } from '../../utils/DefaultIcons';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemRadioShorthandProps = [...menuItemShorthandProps] as const;
+export const menuItemRadioShorthandPropsCompat = [...menuItemShorthandPropsCompat] as const;
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.

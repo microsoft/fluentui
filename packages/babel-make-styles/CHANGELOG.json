@@ -2,6 +2,134 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.16",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7222c057ece8a528431a1860223d9d920685f975",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "migrate to new DX",
+            "author": "olfedias@microsoft.com",
+            "commit": "cc979d76b9c15148302ba7f39bb683746ff33d2d",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "integrate linaria/shaker to improve performance",
+            "author": "olfedias@microsoft.com",
+            "commit": "c5019f09e666bac820addb36facaf0c133c0f7bc",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.44",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "804ca93da84e19cec0737729473be5034a2e4939",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update fixtures to match latest implementation",
+            "author": "olfedias@microsoft.com",
+            "commit": "073ea5f67e3088a92f68caeeca32ef96410aabc5",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "bf6fd1290ea6c6861a5d80f704e0d6d0cadb71e0",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "clean after bad rebase",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "support custom imports of makeStyles",
+            "author": "olfedias@microsoft.com",
+            "commit": "3fccf5c8a8ea30529b736b9189e294969242f886",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.15",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",

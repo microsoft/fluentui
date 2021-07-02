@@ -293,11 +293,45 @@ describe('Menu', () => {
     expect(getByRole('menuitemcheckbox').getAttribute('aria-checked')).toEqual('true');
   });
 
-  it('should open nested menu with mouse enter', () => {
+  it('should open nested menu with mouse move', () => {
     // Arrange
     jest.useFakeTimers();
     const expected = 'visible';
     const { getByRole, getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>Item</MenuItem>
+              </MenuTrigger>
+              <MenuList>
+                <MenuItem>{expected}</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    // Act
+    act(() => {
+      fireEvent.mouseMove(getByRole('menuitem'));
+      jest.runOnlyPendingTimers();
+    });
+
+    // Assert
+    getByText(expected);
+  });
+
+  it('should not open nested menu with mouseenter without mousemove', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const expected = 'hidden';
+    const { getByRole, queryByText } = render(
       <Menu open>
         <MenuTrigger>
           <button>Menu trigger</button>
@@ -324,7 +358,52 @@ describe('Menu', () => {
     });
 
     // Assert
-    getByText(expected);
+    expect(queryByText(expected)).toBeNull();
+  });
+
+  it('should not open nested menu mousemove after first mousemove event', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const expected = 'hidden';
+    const { getByText, queryByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>Trigger</MenuItem>
+              </MenuTrigger>
+              <MenuList>
+                <MenuItem>{expected}</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    // Act
+    act(() => {
+      // open menu
+      fireEvent.mouseMove(getByText('Trigger'));
+      jest.runOnlyPendingTimers();
+    });
+    act(() => {
+      // close menu
+      fireEvent.mouseLeave(getByText('Trigger'));
+      jest.runOnlyPendingTimers();
+    });
+    act(() => {
+      // fail to open again with mouse mouve
+      fireEvent.mouseMove(getByText('Trigger'));
+      jest.runOnlyPendingTimers();
+    });
+
+    // Assert
+    expect(queryByText(expected)).toBeNull();
   });
 
   it('should close open nested menu when mouse enters another menuitem', () => {
