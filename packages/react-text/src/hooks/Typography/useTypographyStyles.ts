@@ -1,5 +1,4 @@
 import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
-import { makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 
 export const typographyStyles: {
@@ -68,15 +67,3 @@ export const typographyStyles: {
     fontWeight: theme.global.type.fontWeights.semibold,
   }),
 };
-
-export const useTypographyStyles = makeStyles({
-  caption: typographyStyles.caption,
-  body: typographyStyles.body,
-  subheadline: typographyStyles.subheadline,
-  headline: typographyStyles.headline,
-  title3: typographyStyles.title3,
-  title2: typographyStyles.title2,
-  title1: typographyStyles.title1,
-  largeTitle: typographyStyles.largeTitle,
-  display: typographyStyles.display,
-});

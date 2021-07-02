@@ -1,5 +1,4 @@
 import { Theme } from '@fluentui/react-theme';
-import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
 import { typographyStyles } from './useTypographyStyles';
 
 const weightsMock = {
