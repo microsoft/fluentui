@@ -106,7 +106,11 @@
       "sourceRoot": "packages/react-accordion/src"
     },
     "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
-    "@fluentui/react-badge": { "root": "packages/react-badge", "projectType": "library" },
+    "@fluentui/react-badge": {
+      "root": "packages/react-badge",
+      "projectType": "library",
+      "sourceRoot": "packages/react-badge/src"
+    },
     "@fluentui/react-button": { "root": "packages/react-button", "projectType": "library" },
     "@fluentui/react-card": { "root": "packages/react-card", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
@@ -139,7 +143,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-image/src"
     },
-    "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
+    "@fluentui/react-input": {
+      "root": "packages/react-input",
+      "projectType": "library",
+      "sourceRoot": "packages/react-input/src"
+    },
     "@fluentui/react-link": {
       "root": "packages/react-link",
       "projectType": "library",
@@ -185,11 +193,18 @@
       "projectType": "library",
       "sourceRoot": "packages/react-text/src"
     },
-    "@fluentui/react-theme": { "root": "packages/react-theme", "projectType": "library" },
-    "@fluentui/react-theme-provider": { "root": "packages/react-theme-provider", "projectType": "library" },
+    "@fluentui/react-theme": {
+      "root": "packages/react-theme",
+      "projectType": "library",
+      "sourceRoot": "packages/react-theme/src"
+    },
     "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": { "root": "packages/react-tooltip", "projectType": "library" },
-    "@fluentui/react-utilities": { "root": "packages/react-utilities", "projectType": "library" },
+    "@fluentui/react-utilities": {
+      "root": "packages/react-utilities",
+      "projectType": "library",
+      "sourceRoot": "packages/react-utilities/src"
+    },
     "@fluentui/react-window-provider": { "root": "packages/react-window-provider", "projectType": "library" },
     "@fluentui/scheme-utilities": { "root": "packages/scheme-utilities", "projectType": "library" },
     "@fluentui/set-version": { "root": "packages/set-version", "projectType": "library" },

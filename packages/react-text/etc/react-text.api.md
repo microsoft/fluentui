@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
 import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
@@ -22,11 +22,11 @@ export { Text_2 as Text }
 export type TextDefaultedProps = never;
 
 // @public
-export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface TextProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
-export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
+export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

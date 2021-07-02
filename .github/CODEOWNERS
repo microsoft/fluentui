@@ -90,7 +90,6 @@ packages/style-utilities/src/interfaces/ @phkuo @dzearing
 packages/style-utilities/src/styles/ @phkuo @dzearing
 packages/theme/ @dzearing
 packages/react-provider/ @teams-prg
-packages/react-theme-provider/ @teams-prg
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @microsoft/cxe-red

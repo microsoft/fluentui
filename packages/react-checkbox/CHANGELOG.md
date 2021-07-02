@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.6)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.5..@fluentui/react-checkbox_v9.0.0-alpha.6)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
+- react-checkbox: Adding spec for review ([PR #18591](https://github.com/microsoft/fluentui/pull/18591) by esteban.230@hotmail.com)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.5)
 

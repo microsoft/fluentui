@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory MenuGroupHeader}
  */
-export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export type MenuGroupHeaderProps = ComponentPropsCompat & React.HTMLAttributes<HTMLElement>;
 
 /**
  * {@docCategory MenuGroupHeader}

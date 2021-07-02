@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.51)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.50..@fluentui/react-provider_v9.0.0-alpha.51)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.50)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.49..@fluentui/react-provider_v9.0.0-alpha.50)
+
+### Changes
+
+- Fixing bug in start script of converged packages. ([PR #18768](https://github.com/microsoft/fluentui/pull/18768) by Humberto.Morimoto@microsoft.com)
+- move theming capabilities from @fluentui/react-theme-provider ([PR #18710](https://github.com/microsoft/fluentui/pull/18710) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.49)
 

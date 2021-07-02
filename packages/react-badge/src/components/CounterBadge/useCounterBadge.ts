@@ -6,10 +6,10 @@ import { useBadge, BadgeProps } from '../Badge/index';
 /**
  * Consts listing which props are shorthand props.
  */
-export const counterBadgeShorthandProps = ['icon'] as const;
+export const counterBadgeShorthandPropsCompat = ['icon'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<CounterBadgeState>({ deepMerge: counterBadgeShorthandProps });
+const mergeProps = makeMergePropsCompat<CounterBadgeState>({ deepMerge: counterBadgeShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
