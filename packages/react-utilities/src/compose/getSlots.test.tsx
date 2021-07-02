@@ -36,7 +36,7 @@ describe('getSlots', () => {
     });
   });
 
-  it('returns root as a component, leaving the props intact', () => {
+  it('retains all props, when root is a component,', () => {
     expect(
       getSlots({ as: 'div', id: 'id', href: 'href', blah: 1, components: { root: Foo } } as ComponentState),
     ).toEqual({
