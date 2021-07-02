@@ -20,7 +20,7 @@ describe('getSlots', () => {
     });
   });
 
-  it('omits props which are not valid for the element rendered', () => {
+  it('omits invalid props for the rendered element', () => {
     expect(
       getSlots<{}>({ as: 'button', id: 'id', href: 'href' } as ComponentState),
     ).toEqual({
