@@ -71,14 +71,17 @@ export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 export type AccordionHeaderExpandIconProps = React_2.HTMLAttributes<HTMLSpanElement>;
 
 // @public (undocumented)
-export interface AccordionHeaderProps extends ComponentProps<Partial<AccordionHeaderShorthands>>, Partial<AccordionHeaderCommons> {
+export interface AccordionHeaderProps extends ComponentProps<Partial<AccordionHeaderSlots>>, Partial<AccordionHeaderCommons> {
 }
 
 // @public
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderShorthands>;
+export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots>;
 
 // @public (undocumented)
-export type AccordionHeaderShorthands = {
+export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
+
+// @public (undocumented)
+export type AccordionHeaderSlots = {
     button: React_2.ButtonHTMLAttributes<HTMLElement>;
     expandIcon: AccordionHeaderExpandIconProps;
     icon: React_2.HTMLAttributes<HTMLElement>;
@@ -86,10 +89,7 @@ export type AccordionHeaderShorthands = {
 };
 
 // @public (undocumented)
-export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
-
-// @public (undocumented)
-export interface AccordionHeaderState extends ComponentState<AccordionHeaderShorthands>, AccordionHeaderCommons {
+export interface AccordionHeaderState extends ComponentState<AccordionHeaderSlots>, AccordionHeaderCommons {
     // (undocumented)
     context: AccordionHeaderContextValue;
     ref: React_2.Ref<HTMLElement>;
@@ -129,17 +129,17 @@ export interface AccordionItemDescendant<ElementType = HTMLElement> extends Desc
 export const accordionItemDescendantContext: React_2.Context<DescendantContextValue<AccordionItemDescendant<HTMLElement>>>;
 
 // @public (undocumented)
-export interface AccordionItemProps extends ComponentProps<AccordionItemShorthands>, Partial<AccordionItemCommons> {
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
 }
 
 // @public
-export const accordionItemShorthandProps: Array<keyof AccordionItemShorthands>;
+export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
 
 // @public (undocumented)
-export type AccordionItemShorthands = {};
+export type AccordionItemSlots = {};
 
 // @public (undocumented)
-export interface AccordionItemState extends ComponentState<AccordionItemShorthands>, AccordionItemCommons {
+export interface AccordionItemState extends ComponentState<AccordionItemSlots>, AccordionItemCommons {
     // (undocumented)
     context: AccordionItemContextValue;
     descendants: AccordionItemDescendant[];
@@ -151,17 +151,17 @@ export interface AccordionItemState extends ComponentState<AccordionItemShorthan
 export const AccordionPanel: React_2.ForwardRefExoticComponent<AccordionPanelProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface AccordionPanelProps extends ComponentProps<AccordionPanelShorthands>, React_2.HTMLAttributes<HTMLElement> {
+export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots>, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
-export const accordionPanelShorthandProps: Array<keyof AccordionPanelShorthands>;
+export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
 
 // @public (undocumented)
-export type AccordionPanelShorthands = {};
+export type AccordionPanelSlots = {};
 
 // @public (undocumented)
-export interface AccordionPanelState extends ComponentState<AccordionPanelShorthands>, React_2.HTMLAttributes<HTMLElement> {
+export interface AccordionPanelState extends ComponentState<AccordionPanelSlots>, React_2.HTMLAttributes<HTMLElement> {
     open: boolean;
     ref: React_2.Ref<HTMLElement>;
 }
@@ -174,7 +174,7 @@ export interface AccordionProps extends ComponentProps<AccordionSlots>, Partial<
 export const accordionShorthandProps: Array<keyof AccordionSlots>;
 
 // @public (undocumented)
-export type AccordionSlots = Partial<Omit<AccordionHeaderShorthands, 'children'>>;
+export type AccordionSlots = Partial<Omit<AccordionHeaderSlots, 'children'>>;
 
 // @public (undocumented)
 export interface AccordionState extends ComponentState<AccordionSlots>, AccordionCommons {

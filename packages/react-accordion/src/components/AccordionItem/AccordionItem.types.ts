@@ -7,7 +7,7 @@ export interface AccordionItemContextValue {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 }
 
-export type AccordionItemShorthands = {};
+export type AccordionItemSlots = {};
 
 export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -16,9 +16,9 @@ export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> 
   disabled: boolean;
 }
 
-export interface AccordionItemProps extends ComponentProps<AccordionItemShorthands>, Partial<AccordionItemCommons> {}
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {}
 
-export interface AccordionItemState extends ComponentState<AccordionItemShorthands>, AccordionItemCommons {
+export interface AccordionItemState extends ComponentState<AccordionItemSlots>, AccordionItemCommons {
   /**
    * Ref to the root slot
    */

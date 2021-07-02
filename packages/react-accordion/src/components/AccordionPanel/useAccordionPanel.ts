@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMergedRefs, useId, useDescendants } from '@fluentui/react-utilities';
-import { AccordionPanelProps, AccordionPanelShorthands, AccordionPanelState } from './AccordionPanel.types';
+import { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 import {
   useAccordionItemContext,
   AccordionItemDescendant,
@@ -11,7 +11,7 @@ import {
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionPanelShorthandProps: Array<keyof AccordionPanelShorthands> = [];
+export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots> = [];
 
 /**
  * Returns the props and state required to render the component

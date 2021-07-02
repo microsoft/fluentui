@@ -10,7 +10,7 @@ import {
   AccordionItemProps,
   AccordionItemState,
   AccordionItemDescendant,
-  AccordionItemShorthands,
+  AccordionItemSlots,
 } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
@@ -20,7 +20,7 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionItemShorthandProps: Array<keyof AccordionItemShorthands> = [];
+export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = [];
 
 export const accordionItemDescendantContext: React.Context<
   DescendantContextValue<AccordionItemDescendant<HTMLElement>>

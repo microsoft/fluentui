@@ -4,7 +4,7 @@ import {
   AccordionHeaderProps,
   AccordionHeaderState,
   AccordionHeaderContextValue,
-  AccordionHeaderShorthands,
+  AccordionHeaderSlots,
 } from './AccordionHeader.types';
 import {
   useAccordionItemContext,
@@ -20,7 +20,7 @@ import { useARIAButton } from '@fluentui/react-aria';
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderShorthands> = [
+export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = [
   'icon',
   'button',
   'children',

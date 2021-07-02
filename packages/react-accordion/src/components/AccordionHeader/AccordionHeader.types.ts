@@ -12,7 +12,7 @@ export interface AccordionHeaderContextValue {
   size: AccordionHeaderSize;
 }
 
-export type AccordionHeaderShorthands = {
+export type AccordionHeaderSlots = {
   /**
    * The component to be used as button in heading
    */
@@ -44,10 +44,10 @@ export interface AccordionHeaderCommons extends Omit<React.HTMLAttributes<HTMLEl
 }
 
 export interface AccordionHeaderProps
-  extends ComponentProps<Partial<AccordionHeaderShorthands>>,
+  extends ComponentProps<Partial<AccordionHeaderSlots>>,
     Partial<AccordionHeaderCommons> {}
 
-export interface AccordionHeaderState extends ComponentState<AccordionHeaderShorthands>, AccordionHeaderCommons {
+export interface AccordionHeaderState extends ComponentState<AccordionHeaderSlots>, AccordionHeaderCommons {
   /**
    * Ref to the root slot
    */

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
-import { AccordionHeaderProps, AccordionHeaderShorthands } from '../AccordionHeader/AccordionHeader.types';
+import { AccordionHeaderProps, AccordionHeaderSlots } from '../AccordionHeader/AccordionHeader.types';
 
 export type AccordionIndex = number | number[];
 
@@ -23,7 +23,7 @@ export interface AccordionContextValue
   requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
-export type AccordionSlots = Partial<Omit<AccordionHeaderShorthands, 'children'>>;
+export type AccordionSlots = Partial<Omit<AccordionHeaderSlots, 'children'>>;
 
 export interface AccordionCommons extends AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
   /**
