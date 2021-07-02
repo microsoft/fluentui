@@ -251,6 +251,11 @@
       "root": "packages/react-aria",
       "projectType": "library",
       "sourceRoot": "packages/react-aria/src"
+    },
+    "@fluentui/keyboard-keys": {
+      "root": "packages/keyboard-keys",
+      "projectType": "library",
+      "sourceRoot": "packages/keyboard-keys/src"
     }
   }
 }
