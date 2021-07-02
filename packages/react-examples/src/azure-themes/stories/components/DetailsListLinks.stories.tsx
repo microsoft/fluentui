@@ -31,7 +31,6 @@ const classNames = mergeStyleSets({
   },
   controlWrapper: {
     display: 'flex',
-    //flexWrap: 'wrap',
   },
   exampleToggle: {
     display: 'inline-block',
@@ -127,7 +126,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onRender: (item: IDocument) => {
           return <Link href={item.url}>{item.name}</Link>;
         },
-        //return <Link href="#">{fieldContent}</Link>;
       },
       {
         key: 'column2',
@@ -196,7 +194,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
   public render() {
     const { columns, isCompactMode, items } = this.state;
-    //selectionDetails, isModalSelection, announcedMessage, filtering, searching
 
     return (
       <div>
@@ -239,8 +236,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text?: string): void => {
     console.log(text);
     this.setState({
-      //items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text.toLowerCase()) > -1) : this._allItems,
-
       searching: text as string,
     });
 
@@ -248,7 +243,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
   };
 
   private onChangeDropDown = (event: React.FormEvent<HTMLDivElement>, item?: IDropdownOption): void => {
-    //refactor
     if (item) {
       let temp = this.state.filtering;
       if (item.selected) {
@@ -279,13 +273,9 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     this.setState({
       items: temp,
     });
-
-    //console.log(this.state)
   }
 
   private _onItemInvoked(item: any): void {
-    //alert(`Item invoked: ${item}`);
-    //console.log(item)
     window.open(item.url, 'CNN_WindowName');
   }
 
@@ -353,7 +343,6 @@ function _generateDocuments() {
       contentLength: 'lorem ipsum',
       theme: content[i].theme,
       url: content[i].url,
-      //add theme and type
     });
   }
   return items;
@@ -372,7 +361,6 @@ function _lorem(wordCount: number): string {
   return LOREM_IPSUM.slice(startIndex, loremIndex).join(' ');
 }
 
-// my attempt
 const content = [
   {
     theme: 'Belonging',
@@ -890,12 +878,4 @@ const content = [
     length: 'Various',
     url: 'https://microsoft.sharepoint.com/sites/infopedia/globallearning/pages/lgbtqi-series.aspx',
   },
-  // {
-  //     "theme":"",
-  //     "title":"",
-  //     "who":"",
-  //     "type":"",
-  //     "length":"",
-  //     "url":""
-  // },
 ];
