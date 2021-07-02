@@ -18,11 +18,10 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  *
  * @param props - props from this instance of Menu
  * @param ref - reference to root HTMLElement of Menu
- * @param defaultProps - (optional) default prop values provided by the implementing type
  *
  * {@docCategory Menu }
  */
-export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState => {
+export const useMenu = (props: MenuProps): MenuState => {
   const triggerId = useId('menu');
   const isSubmenu = useIsSubmenu();
   const [contextTarget, setContextTarget] = usePopperMouseTarget();

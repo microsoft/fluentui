@@ -16,7 +16,7 @@ import { useMenuContext } from '../../contexts/menuContext';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemShorthandProps: Array<keyof MenuItemSlots> = [
+export const menuItemSlots: Array<keyof MenuItemSlots> = [
   'icon',
   'submenuIndicator',
   'content',
@@ -27,11 +27,7 @@ export const menuItemShorthandProps: Array<keyof MenuItemSlots> = [
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem = (
-  props: MenuItemProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuItemProps,
-): MenuItemState => {
+export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
   const hasSubmenu = useMenuTriggerContext();
   const hasIcons = useMenuListContext(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);

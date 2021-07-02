@@ -7,11 +7,7 @@ import { useMenuContext } from '../../contexts/menuContext';
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuList = (
-  props: MenuListProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuListProps,
-): MenuListState => {
+export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const focusAttributes = useArrowNavigationGroup({ circular: true });
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
