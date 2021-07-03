@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(Menu): use capture event to handle outside click",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

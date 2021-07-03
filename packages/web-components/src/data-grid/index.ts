@@ -1,59 +1,14 @@
-import { customElement, ViewTemplate } from '@microsoft/fast-element';
 import {
-  createDataGridCellTemplate,
-  createDataGridRowTemplate,
-  createDataGridTemplate,
   DataGrid,
   DataGridCell,
+  dataGridCellTemplate,
   DataGridRow,
+  dataGridRowTemplate,
+  dataGridTemplate,
 } from '@microsoft/fast-foundation';
-import { DataGridStyles as gridStyles } from './data-grid.styles';
-import { DataGridRowStyles as rowStyles } from './data-grid-row.styles';
-import { DataGridCellStyles as cellStyles } from './data-grid-cell.styles';
-
-const cellTemplate: ViewTemplate = createDataGridCellTemplate('fluent');
-const gridTemplate: ViewTemplate = createDataGridTemplate('fluent');
-const rowTemplate: ViewTemplate = createDataGridRowTemplate('fluent');
-
-/**
- * The Fluent Data Grid Element.
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-data-grid\>
- */
-@customElement({
-  name: 'fluent-data-grid',
-  template: gridTemplate,
-  styles: gridStyles,
-})
-export class FluentDataGrid extends DataGrid {}
-
-/**
- * Styles for DataGrid
- * @public
- */
-export const DataGridStyles = gridStyles;
-
-/**
- * The Fluent Data Grid Row Element.
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-data-grid-row\>
- */
-@customElement({
-  name: 'fluent-data-grid-row',
-  template: rowTemplate,
-  styles: rowStyles,
-})
-export class FluentDataGridRow extends DataGridRow {}
-
-/**
- * Styles for DataGrid row
- * @public
- */
-export const DataGridRowStyles = rowStyles;
+import { dataGridStyles as gridStyles } from './data-grid.styles';
+import { dataGridRowStyles as rowStyles } from './data-grid-row.styles';
+import { dataGridCellStyles as cellStyles } from './data-grid-cell.styles';
 
 /**
  * The Fluent Data Grid Cell Element.
@@ -62,15 +17,58 @@ export const DataGridRowStyles = rowStyles;
  * @remarks
  * HTML Element: \<fluent-data-grid-cell\>
  */
-@customElement({
-  name: 'fluent-data-grid-cell',
-  template: cellTemplate,
+export const fluentDataGridCell = DataGridCell.compose({
+  baseName: 'data-grid-cell',
+  template: dataGridCellTemplate,
   styles: cellStyles,
-})
-export class FluentDataGridCell extends DataGridCell {}
+});
 
 /**
  * Styles for DataGrid cell
  * @public
  */
-export const DataGridCellStyles = cellStyles;
+export const dataGridCellStyles = cellStyles;
+
+/**
+ * The Fluent Data Grid Row Element.
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-data-grid-row\>
+ */
+export const fluentDataGridRow = DataGridRow.compose({
+  baseName: 'data-grid-row',
+  template: dataGridRowTemplate,
+  styles: rowStyles,
+});
+
+/**
+ * Styles for DataGrid row
+ * @public
+ */
+export const dataGridRowStyles = rowStyles;
+
+/**
+ * The Fluent Data Grid Element.
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-data-grid\>
+ */
+export const fluentDataGrid = DataGrid.compose({
+  baseName: 'data-grid',
+  template: dataGridTemplate,
+  styles: gridStyles,
+});
+
+/**
+ * Styles for DataGrid
+ * @public
+ */
+export const dataGridStyles = gridStyles;
+
+/**
+ * Data grid base class definitions
+ * @public
+ */
+export { DataGrid, DataGridCell, DataGridRow };
