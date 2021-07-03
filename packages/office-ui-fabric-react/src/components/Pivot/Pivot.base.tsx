@@ -13,12 +13,11 @@ import {
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
-import { FocusZone, IFocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
 import { Icon } from '../../Icon';
-import { IFocusZoneProps } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 const PivotName = 'Pivot';
