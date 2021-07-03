@@ -269,6 +269,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
     | 'showForceResolve'
+    | 'iconName'
   > {}
 
 /**
