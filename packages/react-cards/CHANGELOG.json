@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Mon, 05 Jul 2021 12:25:05 GMT",
+      "tag": "@uifabric/react-cards_v0.115.58",
+      "version": "0.115.58",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.44",
+            "author": "kinhln@microsoft.com",
+            "commit": "4bc101e57a9415fa11761b9519d4097a93bfcad0",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 12:25:06 GMT",
       "tag": "@uifabric/react-cards_v0.115.57",
       "version": "0.115.57",
