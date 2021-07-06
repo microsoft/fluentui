@@ -7,15 +7,12 @@ import * as yargs from 'yargs';
 import config from '../../config';
 import webpackPlugin from '../plugins/gulp-webpack';
 
-import jest from '../plugins/gulp-jest';
+import cypress from '../plugins/gulp-cypress';
 import serve, { forceClose } from '../serve';
 
 const { paths } = config;
 
-const argv = yargs
-  .option('skipBuild', {})
-  .option('testNamePattern', { alias: 't' })
-  .option('testFilePattern', { alias: 'F' }).argv;
+const argv = yargs.option('skipBuild', {}).option('testNamePattern', { alias: 't' }).argv;
 
 task('test:e2e:clean', () => del(paths.e2eDist(), { force: true }));
 
@@ -38,16 +35,13 @@ task('test:e2e:serve:start', async () => {
 task('test:e2e:serve:stop', () => forceClose(server));
 task('test:e2e:serve', series('test:e2e:build', 'test:e2e:serve:start'));
 
-task(
-  'test:e2e:run',
-  jest({
-    config: paths.e2e('jest.config.js'),
-    runInBand: true,
-    rootDir: paths.e2e(),
-    testNamePattern: argv.testNamePattern as string,
-    testFilePattern: argv.testFilePattern as string,
-  }),
-);
+task('test:e2e:run', cb => {
+  const serverHost = 'localhost';
+  const e2ePort = Number(process.env.E2E_PORT) || 8082;
+  const serverUrl = `http://${serverHost}:${e2ePort}`;
+
+  return cypress({ serverUrl, rootDir: paths.e2eTests(), testNamePattern: argv.testNamePattern as string })(cb);
+});
 
 task(
   'test:e2e',

@@ -1,4 +1,4 @@
-import { TeamsCustomizations } from '@uifabric/theme-samples';
-import { Theme } from '@fluentui/react-theme-provider';
+import { TeamsCustomizations } from '@fluentui/theme-samples';
+import { Theme } from '@fluentui/theme';
 
 export const TeamsTheme: Theme = TeamsCustomizations.settings.theme;

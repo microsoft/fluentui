@@ -1,14 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import {
-  ContextualMenu,
-  ContextualMenuItemType,
-  IContextualMenuItem,
-  DefaultButton,
-} from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const items: IContextualMenuItem[] = [
   {
@@ -311,7 +306,6 @@ storiesOf('ContextualMenu', module)
   ));
 
 storiesOf('ContextualMenu', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

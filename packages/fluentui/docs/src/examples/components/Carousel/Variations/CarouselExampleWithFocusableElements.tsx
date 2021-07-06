@@ -2,17 +2,17 @@ import * as React from 'react';
 import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Ade',
-  elliot: 'Portrait of Elliot',
-  kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan',
+  allan: 'Portrait of Allan',
+  carole: 'Portrait of Carole',
+  elvia: 'Portrait of Elvia',
+  kat: 'Portrait of Kat',
 };
 
 const tabAriaLabel = {
-  ade: 'Ade',
-  elliot: 'Elliot',
-  kristy: 'Kristy',
-  nan: 'Nan',
+  allan: 'Allan',
+  carole: 'Carole',
+  elvia: 'Elvia',
+  kat: 'Kat',
 };
 
 const carouselTextContent = (
@@ -55,54 +55,54 @@ const carouselToolbarContent = (
 
 const carouselItems = [
   {
-    key: 'ade',
-    id: 'ade',
+    key: 'allan',
+    id: 'allan',
     content: (
       <div>
         <Flex gap="gap.medium">
           <Image
             styles={imageStyles}
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
             fluid
-            alt={imageAltTags.ade}
+            alt={imageAltTags.allan}
           />
           {carouselTextContent}
         </Flex>
         <Button content="Open" styles={buttonStyles} />
       </div>
     ),
-    'aria-label': 'Ade card',
+    'aria-label': 'Allan card',
   },
   {
-    key: 'elliot',
-    id: 'elliot',
+    key: 'carole',
+    id: 'carole',
     content: (
       <div>
         <Flex gap="gap.medium">
           <Image
             styles={imageStyles}
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
             fluid
-            alt={imageAltTags.elliot}
+            alt={imageAltTags.carole}
           />
           {carouselTextContent}
         </Flex>
         {carouselToolbarContent}
       </div>
     ),
-    'aria-label': 'Elliot card',
+    'aria-label': 'Carole card',
   },
   {
-    key: 'kristy',
-    id: 'kristy',
+    key: 'elvia',
+    id: 'elvia',
     content: (
       <div>
         <Flex gap="gap.medium">
           <Image
             styles={imageStyles}
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/kristy.png"
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
             fluid
-            alt={imageAltTags.kristy}
+            alt={imageAltTags.elvia}
           />
           {carouselTextContent}
         </Flex>
@@ -112,7 +112,7 @@ const carouselItems = [
         </Flex>
       </div>
     ),
-    'aria-label': 'Kristy card',
+    'aria-label': 'Elvia card',
   },
 ];
 

@@ -1,2 +1,1 @@
-export * from './withStrictMode';
-export * from './withThemeProvider';
+export * from './withKeytipLayer';

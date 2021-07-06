@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
@@ -7,6 +7,7 @@ import { Tree } from 'src/components/Tree/Tree';
 import { treeTitleClassName } from 'src/components/Tree/TreeTitle';
 import { treeItemClassName } from 'src/components/Tree/TreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
+import { TriangleDownIcon, TriangleEndIcon, svgIconClassName } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
@@ -35,7 +36,15 @@ const items = [
     items: [
       {
         id: '21',
-        title: '21',
+        title: {
+          content: '21',
+          children: (Component, { content, expanded, hasSubtree, ...restProps }) => (
+            <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
+              {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
+              {content}
+            </Component>
+          ),
+        },
         items: [
           {
             id: '211',
@@ -203,6 +212,71 @@ describe('Tree', () => {
         expect.objectContaining({ type: 'click' }),
         expect.objectContaining({ activeItemIds: expect.arrayContaining(['2', '21', '1']) }),
       );
+    });
+
+    it('should expand on click when TreeTitle renders children components ', () => {
+      const wrapper = mountWithProvider(<Tree items={items} />);
+
+      // open title '2'
+      getTitles(wrapper).at(1).simulate('click');
+
+      // click on icon of title '21'
+      const icon = wrapper.find(`.${svgIconClassName}`).filterWhere(n => typeof n.type() === 'string');
+      icon.simulate('click');
+      checkOpenTitles(wrapper, ['1', '2', '21', '211', '22', '3']);
+    });
+  });
+
+  describe('onTitleClick', () => {
+    const mockRootTitleClick = jest.fn();
+    const mockLeafTitleClick = jest.fn();
+    const items = [
+      {
+        id: 'root',
+        title: 'root',
+        onTitleClick: mockRootTitleClick,
+        items: [
+          {
+            id: 'leaf',
+            title: 'leaf',
+            onTitleClick: mockLeafTitleClick,
+          },
+        ],
+      },
+    ];
+
+    const getRoot = () => {
+      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+      return getItems(wrapper).at(0);
+    };
+    const getLeaf = () => {
+      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+      return getTitles(wrapper).at(1);
+    };
+
+    beforeEach(() => {
+      mockLeafTitleClick.mockClear();
+      mockRootTitleClick.mockClear();
+    });
+
+    it('should be called on click for leaf item', () => {
+      getLeaf().simulate('click');
+      expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should be called on click for non-leaf item', () => {
+      getRoot().simulate('click');
+      expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
+    });
+
+    it.each(['Enter', ' '])('should be called on "%s" key for leaf item', key => {
+      getLeaf().simulate('keydown', { key });
+      expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
+    });
+
+    it.each(['Enter', ' '])('should be called on "%s" key for non-leaf item', key => {
+      getRoot().simulate('keydown', { key });
+      expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
     });
   });
 });

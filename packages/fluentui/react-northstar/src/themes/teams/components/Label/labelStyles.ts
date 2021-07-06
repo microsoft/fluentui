@@ -2,11 +2,10 @@ import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { LabelStylesProps } from '../../../../components/Label/Label';
 import { LabelVariables } from './labelVariables';
-import { getColorScheme } from '../../colors';
 
 export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme, p.color);
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
+    const { siteVariables } = theme;
 
     return {
       display: 'inline-flex',
@@ -14,15 +13,49 @@ export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVar
       overflow: 'hidden',
       height: v.height,
       lineHeight: v.height,
-      color: colors.background,
-      backgroundColor: colors.foreground,
+      color: v.foreground,
+      backgroundColor: v.background,
       fontSize: pxToRem(14),
-      borderRadius: pxToRem(3),
+      borderRadius: siteVariables.borderRadiusMedium,
       padding: v.padding,
+
       ...(p.hasImage &&
         (p.imagePosition === 'start' ? { paddingLeft: v.startPaddingLeft } : { paddingRight: v.endPaddingRight })),
       ...(p.circular && {
         borderRadius: v.circularRadius,
+      }),
+
+      ...(p.color === 'black' && {
+        color: v.blackForeground,
+        backgroundColor: v.blackBackground,
+      }),
+      ...(p.color === 'white' && {
+        color: v.whiteForeground,
+        backgroundColor: v.whiteBackground,
+      }),
+      ...(p.color === 'brand' && {
+        color: v.brandForeground,
+        backgroundColor: v.brandBackground,
+      }),
+      ...(p.color === 'grey' && {
+        color: v.greyForeground,
+        backgroundColor: v.greyBackground,
+      }),
+      ...(p.color === 'orange' && {
+        color: v.orangeForeground,
+        backgroundColor: v.orangeBackground,
+      }),
+      ...(p.color === 'red' && {
+        color: v.redForeground,
+        backgroundColor: v.redBackground,
+      }),
+      ...(p.color === 'green' && {
+        color: v.greenForeground,
+        backgroundColor: v.greenBackground,
+      }),
+      ...(p.color === 'yellow' && {
+        color: v.yellowForeground,
+        backgroundColor: v.yellowBackground,
       }),
     };
   },
@@ -35,9 +68,17 @@ export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVar
       ...(hasStartElement && {
         marginLeft: pxToRem(3),
       }),
+      ...(!hasStartElement &&
+        p.circular && {
+          marginLeft: pxToRem(4),
+        }),
       ...(hasEndElement && {
         marginRight: pxToRem(3),
       }),
+      ...(!hasEndElement &&
+        p.circular && {
+          marginRight: pxToRem(4),
+        }),
     };
   },
 

@@ -1,13 +1,14 @@
 import * as React from 'react';
 
+// @ts-ignore
 import { Persona, IPersonaSharedProps } from 'office-ui-fabric-react/lib/Persona';
+// @ts-ignore
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const renderCoin: IRenderFunction<IPersonaSharedProps> = (props: IPersonaSharedProps | undefined) => {
   return <div>Foo</div>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderPersona = (props: any) => {
   return (
     <div>

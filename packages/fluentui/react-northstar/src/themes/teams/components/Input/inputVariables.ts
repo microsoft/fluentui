@@ -31,15 +31,15 @@ export const inputVariables = (siteVars): InputVariables => ({
   borderColorError: siteVars.colorScheme.red.background,
   iconPosition: 'absolute',
   iconRight: pxToRem(10),
-  iconLeft: pxToRem(6),
+  iconLeft: pxToRem(9),
 
-  inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(24)}`,
-  inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(24)} ${pxToRem(5)} ${pxToRem(12)}`,
+  inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(34)}`,
+  inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(35)} ${pxToRem(5)} ${pxToRem(12)}`,
   inputPadding: `${pxToRem(5)} ${pxToRem(12)}`,
   inputInsideLabelPaddingTop: pxToRem(14),
 
   borderColor: 'transparent',
-  borderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
+  borderRadius: siteVars.borderRadiusMedium,
   borderWidth: `0 0 ${pxToRem(2)} 0`,
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorInverted: siteVars.colorScheme.default.background,
@@ -50,6 +50,6 @@ export const inputVariables = (siteVars): InputVariables => ({
   iconColor: siteVars.colorScheme.default.foreground,
   successfulColor: siteVars.colorScheme.green.foreground,
   inputFocusBorderColor: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
-  inputFocusBorderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
+  inputFocusBorderRadius: `${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium} ${siteVars.borderRadiusSmall} ${siteVars.borderRadiusSmall}`,
   placeholderColor: siteVars.colorScheme.default.foreground1,
 });

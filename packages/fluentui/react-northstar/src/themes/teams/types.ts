@@ -19,6 +19,9 @@ import { AttachmentDescriptionStylesProps } from '../../components/Attachment/At
 import { AttachmentHeaderStylesProps } from '../../components/Attachment/AttachmentHeader';
 import { AttachmentIconStylesProps } from '../../components/Attachment/AttachmentIcon';
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
+import { AvatarImageStylesProps } from '../../components/Avatar/AvatarImage';
+import { AvatarStatusStylesProps } from '../../components/Avatar/AvatarStatus';
+import { AvatarStatusIconStylesProps } from '../../components/Avatar/AvatarStatusIcon';
 import { BoxStylesProps } from '../../components/Box/Box';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
 import { ButtonStylesProps } from '../../components/Button/Button';
@@ -72,6 +75,7 @@ import { ToolbarDividerStylesProps } from '../../components/Toolbar/ToolbarDivid
 import { ToolbarItemStylesProps } from '../../components/Toolbar/ToolbarItem';
 import { ToolbarCustomItemStylesProps } from '../../components/Toolbar/ToolbarCustomItem';
 import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
+import { ToolbarMenuItemContentStylesProps } from '../../components/Toolbar/ToolbarMenuItemContent';
 import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
 import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
@@ -102,6 +106,13 @@ import { SkeletonShapeStylesProps } from '../../components/Skeleton/SkeletonShap
 import { SkeletonLineStylesProps } from '../../components/Skeleton/SkeletonLine';
 import { SkeletonAvatarStylesProps } from '../../components/Skeleton/SkeletonAvatar';
 import { SkeletonInputStylesProps } from '../../components/Skeleton/SkeletonInput';
+import { SplitButtonToggleStylesProps } from '../../components/SplitButton/SplitButtonToggle';
+import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
+import { PillStylesProps } from '../../components/Pill/Pill';
+import { PillContentStylesProps } from '../../components/Pill/PillContent';
+import { PillGroupStylesProps } from '../../components/Pill/PillGroup';
+import { PillImageStylesProps } from '../../components/Pill/PillImage';
+import { PillIconStylesProps } from '../../components/Pill/PillIcon';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -111,10 +122,14 @@ export type TeamsThemeStylesProps = {
   Animation: AnimationProps;
   Attachment: AttachmentProps;
   AttachmentAction: AttachmentActionStylesProps;
+  AttachmentBody: AttachmentBodyStylesProps;
   AttachmentDescription: AttachmentDescriptionStylesProps;
   AttachmentHeader: AttachmentHeaderStylesProps;
   AttachmentIcon: AttachmentIconStylesProps;
   Avatar: AvatarStylesProps;
+  AvatarImage: AvatarImageStylesProps;
+  AvatarStatus: AvatarStatusStylesProps;
+  AvatarStatusIcon: AvatarStatusIconStylesProps;
   Button: ButtonStylesProps;
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
@@ -158,6 +173,11 @@ export type TeamsThemeStylesProps = {
   MenuItemContent: MenuItemContentStylesProps;
   MenuItemWrapper: MenuItemWrapperStylesProps;
   MenuDivider: MenuDividerStylesProps;
+  Pill: PillStylesProps;
+  PillGroup: PillGroupStylesProps;
+  PillContent: PillContentStylesProps;
+  PillIcon: PillIconStylesProps;
+  PillImage: PillImageStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
@@ -173,6 +193,7 @@ export type TeamsThemeStylesProps = {
   SkeletonInput: SkeletonInputStylesProps;
   SkeletonText: SkeletonTextStylesProps;
   SplitButton: SplitButtonStylesProps;
+  SplitButtonToggle: SplitButtonToggleStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarStylesProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;
@@ -181,6 +202,7 @@ export type TeamsThemeStylesProps = {
   ToolbarRadioGroup: ToolbarRadioGroupStylesProps;
   ToolbarMenu: ToolbarMenuStylesProps;
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
+  ToolbarMenuItemContent: ToolbarMenuItemContentStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;

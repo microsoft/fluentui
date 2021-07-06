@@ -4,92 +4,45 @@
 
 ```ts
 
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITheme } from '@uifabric/styling';
-import * as React from 'react';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+
+// @public
+export const Link: React_2.FunctionComponent<LinkProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface ILink {
-    focus(): void;
-}
-
-// @public (undocumented)
-export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-    // (undocumented)
-    [index: string]: any;
-    // (undocumented)
-    autoFocus?: boolean;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    download?: any;
-    // (undocumented)
-    form?: string;
-    // (undocumented)
-    formAction?: string;
-    // (undocumented)
-    formEncType?: string;
-    // (undocumented)
-    formMethod?: string;
-    // (undocumented)
-    formNoValidate?: boolean;
-    // (undocumented)
-    formTarget?: string;
-    // (undocumented)
+export type LinkProps = ComponentPropsCompat & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
     href?: string;
-    // (undocumented)
-    hrefLang?: string;
-    // (undocumented)
-    media?: string;
-    // (undocumented)
-    name?: string;
-    // (undocumented)
+    onClick?: (event: React_2.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
     rel?: string;
-    // (undocumented)
     target?: string;
-    // (undocumented)
     type?: string;
-    // (undocumented)
-    value?: string | string[] | number;
-}
-
-// @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
-    as?: React.ElementType;
-    componentRef?: IRefObject<ILink>;
     disabled?: boolean;
-    // @deprecated
-    keytipProps?: IKeytipProps;
-    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
-    theme?: ITheme;
+    disabledFocusable?: boolean;
+    inline?: boolean;
+    secondary?: boolean;
+};
+
+// @public
+export const linkShorthandProps: never[];
+
+// @public (undocumented)
+export interface LinkState extends LinkProps {
+    // (undocumented)
+    ref: React_2.Ref<HTMLElement>;
 }
 
-// @public (undocumented)
-export interface ILinkStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    isButton?: boolean;
-    // (undocumented)
-    isDisabled?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
+// @public
+export const renderLink: (state: LinkState) => JSX.Element;
+
+// @public
+export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>, defaultProps?: LinkProps | undefined) => LinkState;
+
+// @public
+export const useLinkState: (state: LinkState) => LinkState;
 
 // @public (undocumented)
-export interface ILinkStyles {
-    // (undocumented)
-    root: IStyle;
-}
-
-// @public (undocumented)
-export const Link: React.FunctionComponent<ILinkProps>;
-
-// @public (undocumented)
-export const LinkBase: React.FunctionComponent<ILinkProps>;
+export const useLinkStyles: (state: LinkState) => LinkState;
 
 
 // (No @packageDocumentation comment for this package)

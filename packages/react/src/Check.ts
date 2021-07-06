@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Check';
+export * from './components/Check/index';

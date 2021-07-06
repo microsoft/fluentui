@@ -9,12 +9,11 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
 
 import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
@@ -27,6 +26,7 @@ import Downshift, {
   GetInputPropsOptions,
   GetToggleButtonPropsOptions,
   GetItemPropsOptions,
+  ControllerStateAndHelpers,
 } from 'downshift';
 import {
   commonPropTypes,
@@ -49,7 +49,10 @@ import {
   PositioningProps,
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
+import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
@@ -68,6 +71,12 @@ export interface DropdownSlotClassNames {
 export interface DropdownProps extends UIComponentProps<DropdownProps>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
+
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** A dropdown item can show a check indicator if it is selected. */
   checkable?: boolean;
@@ -211,7 +220,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
    * Called when the focus moves out from dropdown.
    * @param event - React's original SyntheticEvent.
    */
-  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+  onBlur?: (event: React.FocusEvent | null) => void;
 
   /** A dropdown's open state can be controlled. */
   open?: boolean;
@@ -269,6 +278,7 @@ export type DropdownStylesProps = Required<
   hasToggleIndicator: boolean;
   isFromKeyboard: boolean;
   search: boolean;
+  hasItemsSelected: boolean;
 };
 
 type DropdownStateForInvoke = {
@@ -329,10 +339,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        item => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -356,6 +363,7 @@ const isEmpty = prop => {
  * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
+ * [JAWS - ESC (ESCAPE) not closing collapsible listbox (dropdown) on first time #528](https://github.com/FreedomScientific/VFO-standards-support/issues/528)
  */
 export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   FluentComponentStaticProps<DropdownProps> & {
@@ -369,8 +377,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   setStart();
 
   const {
-    align,
     'aria-labelledby': ariaLabelledby,
+    'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
     checkable,
@@ -396,8 +404,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     loading,
     loadingMessage,
     placeholder,
-    position,
-    offset,
     renderItem,
     renderSelectedItem,
     search,
@@ -405,10 +411,22 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     styles,
     toggleIndicator,
     triggerButton,
-    unstable_pinned,
     variables,
   } = props;
-  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
+
+  const {
+    align,
+    flipBoundary,
+    overflowBoundary,
+    popperRef,
+    position,
+    positionFixed,
+    offset,
+    unstable_disableTether,
+    unstable_pinned,
+    autoSize,
+  } = props; // PositioningProps passed directly to Dropdown
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list); // PositioningProps passed to Dropdown `list` prop's `popper` key
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -478,8 +496,9 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       isFromKeyboard,
       multiple,
       open,
-      position,
+      position: positioningProps?.position ?? position,
       search: !!search,
+      hasItemsSelected: value.length > 0,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -530,6 +549,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
+      'aria-invalid': ariaInvalid,
       'aria-label': undefined,
       'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
@@ -634,14 +654,21 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }}
       >
         <Popper
-          align={align}
-          position={position}
-          offset={offset}
           rtl={context.rtl}
           enabled={open}
           targetRef={containerRef}
-          unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
+          // positioning props:
+          align={align}
+          flipBoundary={flipBoundary}
+          overflowBoundary={overflowBoundary}
+          popperRef={popperRef}
+          position={position}
+          positionFixed={positionFixed}
+          offset={offset}
+          unstable_disableTether={unstable_disableTether}
+          unstable_pinned={unstable_pinned}
+          autoSize={autoSize}
           {...positioningProps}
         >
           {List.create(list, {
@@ -796,6 +823,21 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
+  const handleInputValueChange = (
+    inputValue: string,
+    stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
+  ) => {
+    const itemSelected = stateAndHelpers.selectedItem && inputValue === itemToString(stateAndHelpers.selectedItem);
+    if (
+      inputValue !== searchQuery &&
+      !itemSelected // when item is selected, `handleStateChange` will update searchQuery.
+    ) {
+      setStateAndInvokeHandler(['onSearchQueryChange'], null, {
+        searchQuery: inputValue,
+      });
+    }
+  };
+
   const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
     const { type } = changes;
     const newState = {} as DropdownStateForInvoke;
@@ -803,7 +845,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     switch (type) {
       case Downshift.stateChangeTypes.changeInput: {
         const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
-        newState.searchQuery = changes.inputValue;
+
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
 
         if (shouldValueChange) {
@@ -842,19 +884,19 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }
 
         if (multiple) {
-          setTimeout(() => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight), 0);
+          context.target?.defaultView.setTimeout(
+            () => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight),
+            0,
+          );
         }
 
-        tryFocusTriggerButton();
+        // timeout because of NVDA, otherwise it narrates old button value/state
+        context.target?.defaultView.setTimeout(() => tryFocusTriggerButton(), 100);
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
-        if (search) {
-          newState.searchQuery = '';
-
-          if (!multiple) {
-            newState.value = [];
-          }
+        if (search && !multiple) {
+          newState.value = [];
         }
         newState.open = false;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
@@ -1507,6 +1549,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
             // Replicating same config that Downshift uses
             const actions = computeScrollIntoView(nodeToScroll, {
+              boundary: menu, // Explicitly set boundary to avoid unnecessary scrolling by checking all parent elements
               scrollMode: 'if-needed',
               block: 'nearest',
               inline: 'nearest',
@@ -1520,6 +1563,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         getA11yStatusMessage={getA11yStatusMessage}
         highlightedIndex={highlightedIndex}
         onStateChange={handleStateChange}
+        onInputValueChange={handleInputValueChange}
         labelId={ariaLabelledby}
         environment={context.target?.defaultView}
         inputId={searchInput && searchInput['id'] ? searchInput['id'] : undefined}
@@ -1548,17 +1592,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                 onClick={search && !open ? handleContainerClick : undefined}
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
+                  {/* We previously were rendering the trigger button after selected items list,
+                  after listbox wrapper was introduced we moved it to before and
+                   set as absolute to avoid visual regressions   */}
+                  {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
-                  {search
-                    ? renderSearchInput(
-                        accessibilityRootPropsRest,
-                        highlightedIndex,
-                        getInputProps,
-                        selectItemAtIndex,
-                        toggleMenu,
-                        variables,
-                      )
-                    : renderTriggerButton(getToggleButtonProps)}
+                  {search &&
+                    renderSearchInput(
+                      accessibilityRootPropsRest,
+                      highlightedIndex,
+                      getInputProps,
+                      selectItemAtIndex,
+                      toggleMenu,
+                      variables,
+                    )}
                 </div>
                 {showClearIndicator
                   ? Box.create(clearIndicator, {
@@ -1625,7 +1672,6 @@ Dropdown.propTypes = {
     content: false,
   }),
   activeSelectedIndex: PropTypes.number,
-  align: PropTypes.oneOf(ALIGNMENTS),
   checkable: PropTypes.bool,
   checkableIndicator: customPropTypes.shorthandAllowingChildren,
   clearable: PropTypes.bool,
@@ -1654,10 +1700,6 @@ Dropdown.propTypes = {
   moveFocusOnTab: PropTypes.bool,
   multiple: PropTypes.bool,
   noResultsMessage: customPropTypes.itemShorthand,
-  offset: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
-  ]),
   onOpenChange: PropTypes.func,
   onSearchQueryChange: PropTypes.func,
   onBlur: PropTypes.func,
@@ -1666,7 +1708,6 @@ Dropdown.propTypes = {
   onHighlightedIndexChange: PropTypes.func,
   open: PropTypes.bool,
   placeholder: PropTypes.string,
-  position: PropTypes.oneOf(POSITIONS),
   renderItem: PropTypes.func,
   renderSelectedItem: PropTypes.func,
   search: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
@@ -1674,14 +1715,38 @@ Dropdown.propTypes = {
   searchInput: customPropTypes.itemShorthand,
   toggleIndicator: customPropTypes.shorthandAllowingChildren,
   triggerButton: customPropTypes.itemShorthand,
-  unstable_pinned: PropTypes.bool,
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+  'aria-labelledby': PropTypes.string,
+  'aria-invalid': PropTypes.bool,
+  a11ySelectedItemsMessage: PropTypes.string,
+  // positioning props
+  align: PropTypes.oneOf(ALIGNMENTS),
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  popperRef: customPropTypes.ref,
+  position: PropTypes.oneOf(POSITIONS),
+  positionFixed: PropTypes.bool,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
+  unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 
 Dropdown.defaultProps = {
   align: 'start',
-  clearIndicator: {},
+  clearIndicator: <CloseIcon outline />,
   itemToString: item => {
     if (!item || React.isValidElement(item)) {
       return '';
@@ -1700,7 +1765,7 @@ Dropdown.defaultProps = {
   },
   list: {},
   position: 'below',
-  toggleIndicator: {},
+  toggleIndicator: <ChevronDownIcon outline />,
   triggerButton: {},
 };
 

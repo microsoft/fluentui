@@ -79,7 +79,6 @@ The following section documents the properties that will become part of the new 
 | Name | Type | Default value | Description |
 | ---- | ---- | ------------- | ----------- |
 
-
 ### Recommended component props
 
 | Name             |   Type    | Default value | Description                                                                                                                                 |
@@ -216,9 +215,7 @@ The following section documents the DOM structure for the component from differe
 
 ```html
 <svg data-baseweb="icon" viewBox="0 0 24 24" class="by bz c0 k2 kt">
-  <title>
-    Arrow Up
-  </title>
+  <title>Arrow Up</title>
   <path
     fill-rule="evenodd"
     clip-rule="evenodd"
@@ -257,9 +254,7 @@ The following section documents the DOM structure for the component from differe
 ##### Font Icon
 
 ```html
-<i data-icon-name="CompassNW" role="presentation" aria-hidden="true" class="ms-Icon root-38 css-176 css-144">
-  
-</i>
+<i data-icon-name="CompassNW" role="presentation" aria-hidden="true" class="ms-Icon root-38 css-176 css-144"></i>
 ```
 
 ##### SVG Icon
@@ -317,9 +312,7 @@ The following section documents the DOM structure for the component from differe
 ##### Font Icon
 
 ```html
-<span class="material-icons MuiIcon-root" aria-hidden="true">
-  add_circle
-</span>
+<span class="material-icons MuiIcon-root" aria-hidden="true">add_circle</span>
 ```
 
 ##### SVG Icon
@@ -339,9 +332,7 @@ None.
 #### Example DOM
 
 ```html
-<i aria-hidden="true" class="users icon">
-  ::before
-</i>
+<i aria-hidden="true" class="users icon">::before</i>
 ```
 
 #### Considerations
@@ -385,9 +376,7 @@ None.
 After looking at all the component libraries above and taking into consideration common patterns the following DOM is recommended.
 
 ```html
-<span class="root" aria-hidden="true">
-  {fontIconName}
-</span>
+<span class="root" aria-hidden="true">{fontIconName}</span>
 ```
 
 > TODO: Discuss need to shim back to Fabric with `as=i` because of different tag being used in order to not break styling.
@@ -471,9 +460,9 @@ Fabric uses global registration for its icons which needs a call to an initializ
 
 - [Wiki page](https://github.com/microsoft/fluentui/wiki/Using-icons)
 - [Icon font generation tool](https://uifabricicons.azurewebsites.net)
-- [Main `initializeIcons` function](https://github.com/microsoft/fluentui/blob/master/packages/icons/src/index.ts)
-- [Icon registration utilities](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/utilities/icons.ts)
-- [Icon component](https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Icon)
+- [Main `initializeIcons` function](https://github.com/microsoft/fluentui/blob/master/packages/font-icons-mdl2/src/index.ts)
+- [Icon registration utilities](https://github.com/microsoft/fluentui/blob/master/packages/style-utilities/src/utilities/icons.ts)
+- [Icon component](https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Icon)
 
 #### Stardust
 

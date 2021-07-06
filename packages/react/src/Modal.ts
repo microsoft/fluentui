@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Modal';
+export * from './components/Modal/index';
+export { Modal as default } from './components/Modal/index';

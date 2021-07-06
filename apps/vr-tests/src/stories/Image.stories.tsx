@@ -1,48 +1,47 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import { storiesOf } from '@storybook/react';
-import { Image, ImageFit, Label, Layer, IImageProps } from 'office-ui-fabric-react';
+import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 
-const img350x150 = 'http://placehold.it/350x150';
+const img350x150 = 'http://via.placeholder.com/350x150';
 
 const imagePropsFitNone: IImageProps = {
-  src: 'http://placehold.it/500x250',
+  src: 'http://via.placeholder.com/500x250',
   imageFit: ImageFit.none,
   width: 350,
   height: 150,
 };
 
 const imagePropsFitCenter: IImageProps = {
-  src: 'http://placehold.it/800x300',
+  src: 'http://via.placeholder.com/800x300',
   imageFit: ImageFit.center,
   width: 350,
   height: 150,
 };
 
 const imagePropsFitContain: IImageProps = {
-  src: 'http://placehold.it/700x300',
+  src: 'http://via.placeholder.com/700x300',
   imageFit: ImageFit.contain,
 };
 
 const imagePropsFitCover: IImageProps = {
-  src: 'http://placehold.it/500x500',
+  src: 'http://via.placeholder.com/500x500',
   imageFit: ImageFit.cover,
 };
 
 const imagePropsFitCenterContain: IImageProps = {
-  src: 'http://placehold.it/400x400',
+  src: 'http://via.placeholder.com/400x400',
   imageFit: ImageFit.centerContain,
 };
 
 const imagePropsFitCenterCover: IImageProps = {
-  src: 'http://placehold.it/400x400',
+  src: 'http://via.placeholder.com/400x400',
   imageFit: ImageFit.centerCover,
 };
 
 const imagePropsMaximizeFrame: IImageProps = {
-  src: 'http://placehold.it/500x500',
+  src: 'http://via.placeholder.com/500x500',
   imageFit: ImageFit.cover,
   maximizeFrame: true,
 };
@@ -103,7 +102,7 @@ storiesOf('Image', module)
         The image is smaller than the frame, so there is empty space within the frame. The image is
         positioned at the upper left of the frame.
       </Label>
-      <Image {...imagePropsFitNone} src="http://placehold.it/100x100" />
+      <Image {...imagePropsFitNone} src="http://via.placeholder.com/100x100" />
     </div>
   ))
   .addStory('Fit: center, image larger', () => (
@@ -111,7 +110,7 @@ storiesOf('Image', module)
       <Label>
         The image is larger than the frame, so all sides are cropped to center the image.
       </Label>
-      <Image {...imagePropsFitCenter} src="http://placehold.it/800x300" />
+      <Image {...imagePropsFitCenter} src="http://via.placeholder.com/800x300" />
     </div>
   ))
   .addStory('Fit: center, image smaller', () => (
@@ -120,7 +119,7 @@ storiesOf('Image', module)
         The image is smaller than the frame, so there is empty space within the frame. The image is
         centered in the available space.
       </Label>
-      <Image {...imagePropsFitCenter} src="http://placehold.it/100x100" />
+      <Image {...imagePropsFitCenter} src="http://via.placeholder.com/100x100" />
     </div>
   ))
   .addStory('Fit: contain, image wider', () => (

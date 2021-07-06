@@ -1,6 +1,6 @@
 import { menuClassName } from '@fluentui/react-northstar';
 import getScreenerSteps from '../commonScreenerSteps';
-import { ScreenerTestsConfig } from '@uifabric/build/screener';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   menu: `.${menuClassName}`,
@@ -12,7 +12,13 @@ const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
     (builder, keys) =>
-      getScreenerSteps({ startItem: 2, endItem: 4 })[0](builder, keys)
+      /*
+      getScreenerSteps
+      3rd item is disabled therefore:
+      - navigate from second to disabled item, to verify outline on disabled
+      - navigate from 5th item to 4th, to verify outline on common item
+      */
+      getScreenerSteps({ startItem: 2, endItem: 5 })[0](builder, keys)
         .click(selectors.lastItem)
         .snapshot('Clicks on the last item and opens submenu')
 

@@ -3,7 +3,7 @@ import { Alert } from '@fluentui/react-northstar';
 export const meta = {
   title: 'Composition',
   previous: { name: 'Shorthand Props', url: '/shorthand-props' },
-  next: { name: 'Icons', url: '/icon-viewer' }
+  next: { name: 'Icons', url: '/icon-viewer' },
 };
 
 ## `as` prop
@@ -22,8 +22,8 @@ Fluent UI provides a way to compose React components through the `as` prop. It a
 
 <Alert warning>
   <p>
-    Using <code>as</code> prop can change the behavior of the component. If this prop is used it is the responsibility of the consumer to
-    verify accessibility and styling aspects of the component and handle them correctly.
+    Using <code>as</code> prop can change the behavior of the component. If this prop is used it is the responsibility
+    of the consumer to verify accessibility and styling aspects of the component and handle them correctly.
   </p>
 </Alert>
 
@@ -37,8 +37,8 @@ Our components handle only props that are defined in their interfaces, all unhan
   {/* Will output: <button class="ui-button" type="submit" /> */}
   <Button type="submit" />
   {/* `onLoad` and `onError` will be passed to `img` */}
-  {/* Will output: <img class="ui-image" src="//placehold.it/300" /> */}
-  <Image src="//placehold.it/300" onLoad={() => alert('Loaded')} onError={() => alert('Error')} />
+  {/* Will output: <img class="ui-image" src="//via.placeholder.com/300" /> */}
+  <Image src="//via.placeholder.com/300" onLoad={() => alert('Loaded')} onError={() => alert('Error')} />
 </>
 ```
 
@@ -50,5 +50,5 @@ import { Link } from 'react-router-dom';
 // 💡 `to` prop is not handled in `Button` and will be passed to `Link` component
 <Button as={Link} to="/home">
   To homepage
-</Button>
+</Button>;
 ```

@@ -3,8 +3,6 @@ module.exports = {
     'airbnb',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
     'plugin:@typescript-eslint/eslint-recommended', // disable some rules not needed for TS
   ],
   parser: '@typescript-eslint/parser',
@@ -23,6 +21,10 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
 
     'import/no-default-export': 'error',
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'] },
+    ],
 
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
@@ -48,10 +50,6 @@ module.exports = {
     'import/export': 'off',
     'import/first': 'off',
     'import/no-dynamic-require': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'] },
-    ],
     'import/no-named-default': 'off',
     'import/no-useless-path-segments': 'off',
     'import/order': 'off',
@@ -83,6 +81,7 @@ module.exports = {
     'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
+    'arrow-body-style': 'off',
     camelcase: 'off',
     'class-methods-use-this': 'off',
     'consistent-return': 'off',

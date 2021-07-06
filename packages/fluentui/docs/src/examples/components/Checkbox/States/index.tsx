@@ -15,6 +15,11 @@ const States = () => (
       description="A checkbox can be read-only and unable to change states."
       examplePath="components/Checkbox/States/CheckboxExampleDisabled"
     />
+    <ComponentExample
+      title="Mixed"
+      description="A checkbox can have mixed (indeterminate) state."
+      examplePath="components/Checkbox/States/CheckboxExampleCheckedMixed"
+    />
   </ExampleSection>
 );
 

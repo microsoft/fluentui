@@ -59,9 +59,7 @@ const jsonTreeToTreeItems: (
 ) => {
   if (typeof tree === 'string') {
     return {
-      id: Math.random()
-        .toString(36)
-        .slice(2),
+      id: Math.random().toString(36).slice(2),
       title: 'string',
     };
   }
@@ -208,7 +206,11 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
       onKeyDown={treeKeyDown}
       items={items}
       activeItemIds={activeItems}
-      styles={{ minHeight: '17rem', maxHeight: '17rem', overflowY: 'auto' }}
+      styles={{
+        minHeight: '17rem',
+        maxHeight: '57rem',
+        overflowY: 'auto',
+      }}
     />
   );
 };

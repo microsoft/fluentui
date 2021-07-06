@@ -1,4 +1,9 @@
-import { Accessibility, datepickerBehavior, DatepickerBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  datepickerBehavior,
+  DatepickerBehaviorProps,
+  AccessibilityAttributes,
+} from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
@@ -8,7 +13,8 @@ import {
   ICalendarStrings,
   IDatepickerOptions,
   IRestrictedDatesOptions,
-} from '@fluentui/date-time-utilities';
+} from '../../utils/date-time-utilities';
+
 import {
   ComponentWithAs,
   getElementType,
@@ -19,9 +25,10 @@ import {
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
+
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { handleRef } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -32,15 +39,24 @@ import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
 import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
 import { DatepickerCalendarCell } from './DatepickerCalendarCell';
+import { DatepickerCalendarCellButton } from './DatepickerCalendarCellButton';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
 import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
 import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
+import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<DatepickerBehaviorProps>;
+
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `input` with usage accessibibility behavior. */
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `input` with usage accessibibility behavior. */
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** Shorthand for the datepicker calendar. */
   calendar?: ShorthandValue<DatepickerCalendarProps>;
@@ -128,8 +144,10 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
 };
 
 /**
- * A Datepicker is used to display dates.
- * This component is currently unstable!
+ * A Datepicker is a control which is used to display dates grid and allow user to select them.
+ *
+ * @accessibilityIssues
+ * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
 export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
@@ -138,14 +156,19 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
     CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
     CalendarCell: typeof DatepickerCalendarCell;
+    CalendarCellButton: typeof DatepickerCalendarCellButton;
+    CalendarGrid: typeof DatepickerCalendarGrid;
+    CalendarGridRow: typeof DatepickerCalendarGridRow;
     Input: typeof Input;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
-  const datepickerRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLElement>();
 
+  // FIXME: This object is created every render, causing a cascade of useCallback/useEffect re-runs.
+  // Needs to be reworked by someone who understands the intent for when various updates ought to happen.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
     formatYear: props.formatYear,
@@ -174,15 +197,29 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     weekNumberFormatString: props.weekNumberFormatString,
     selectedDateFormatString: props.selectedDateFormatString,
     todayDateFormatString: props.todayDateFormatString,
-    calendarCellFormatString: props.calendarCellFormatString,
     inputAriaLabel: props.inputAriaLabel,
     inputBoundedFormatString: props.inputBoundedFormatString,
     inputMinBoundedFormatString: props.inputMinBoundedFormatString,
     inputMaxBoundedFormatString: props.inputMaxBoundedFormatString,
   };
 
-  const { calendar, popup, input, className, design, styles, variables, formatMonthDayYear, allowManualInput } = props;
-  const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
+  const {
+    calendar,
+    popup,
+    input,
+    className,
+    design,
+    styles,
+    variables,
+    formatMonthDayYear,
+    allowManualInput,
+    'aria-labelledby': ariaLabelledby,
+    'aria-invalid': ariaInvalid,
+  } = props;
+  const valueFormatter = React.useCallback(date => (date ? formatMonthDayYear(date, dateFormatting) : ''), [
+    dateFormatting,
+    formatMonthDayYear,
+  ]);
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
     defaultValue: props.defaultCalendarOpenState,
@@ -195,7 +232,12 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     value: props.selectedDate,
     initialValue: undefined,
   });
+
   const [formattedDate, setFormattedDate] = React.useState<string>(valueFormatter(selectedDate));
+
+  React.useEffect(() => {
+    setFormattedDate(valueFormatter(selectedDate));
+  }, [selectedDate, valueFormatter]);
 
   const restrictedDatesOptions: IRestrictedDatesOptions = {
     minDate: props.minDate,
@@ -210,7 +252,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   );
 
   const calendarOptions: IDayGridOptions = {
-    selectedDate: selectedDate ?? props.today ?? new Date(),
+    selectedDate,
     navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
     firstDayOfWeek: props.firstDayOfWeek,
     firstWeekOfYear: props.firstWeekOfYear,
@@ -224,6 +266,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
+
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
     actionHandlers: {
@@ -238,6 +281,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
         e.preventDefault();
       },
     },
+    mapPropsToBehavior: () => ({
+      'aria-invalid': ariaInvalid,
+      'aria-labelledby': ariaLabelledby,
+    }),
     rtl: context.rtl,
   });
 
@@ -316,61 +363,61 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
     },
+
+    inputRef: (node: HTMLInputElement) => {
+      handleRef(predefinedProps.inputRef, node);
+      inputRef.current = node;
+    },
   });
 
   const triggerButtonElement = props.inputOnly ? null : (
     <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} type="button" />
   );
 
-  const element = (
-    <Ref innerRef={datepickerRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
-        <ElementType
-          {...getA11yProps('root', {
-            className: classes.root,
-            ...unhandledProps,
-          })}
-        >
-          {!props.buttonOnly &&
-            createShorthand(Input, input, {
-              defaultProps: () =>
-                getA11yProps('input', {
-                  placeholder: props.inputPlaceholder,
-                  disabled: props.disabled,
-                  error: !!error,
-                  value: formattedDate,
-                  readOnly: !allowManualInput,
-                  required: props.required,
-                  ref: inputRef,
-                  'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
-                }),
-              overrideProps: overrideInputProps,
-            })}
-          {createShorthand(Popup, popup, {
-            defaultProps: () => ({
-              open: openState && !props.disabled,
-              content: calendarElement,
-              trapFocus: {
-                disableFirstFocus: true,
-              },
-              trigger: triggerButtonElement,
-              target: !props.buttonOnly ? inputRef.current : null,
-              position: 'below' as const,
-              align: 'start' as const,
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...unhandledProps,
+      })}
+    >
+      {!props.buttonOnly &&
+        createShorthand(Input, input, {
+          defaultProps: () =>
+            getA11yProps('input', {
+              placeholder: props.inputPlaceholder,
+              disabled: props.disabled,
+              error: !!error,
+              value: formattedDate,
+              readOnly: !allowManualInput,
+              required: props.required,
+              'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
             }),
-            overrideProps: (predefinedProps: PopupProps): PopupProps => ({
-              onOpenChange: (e, { open }) => {
-                // In case the event is a click on input, we ignore such events as it should be directly handled by input.
-                if (!(e.type === 'click' && e.target === inputRef?.current)) {
-                  setOpenState(open);
-                  _.invoke(predefinedProps, 'onOpenChange', e, { open });
-                }
-              },
-            }),
-          })}
-        </ElementType>,
-      )}
-    </Ref>
+          overrideProps: overrideInputProps,
+        })}
+      {createShorthand(Popup, popup, {
+        defaultProps: () => ({
+          open: openState && !props.disabled,
+          trapFocus: {
+            disableFirstFocus: true,
+          },
+          position: 'below' as const,
+          align: 'start' as const,
+        }),
+        overrideProps: (predefinedProps: PopupProps): PopupProps => ({
+          trigger: predefinedProps.trigger ?? triggerButtonElement,
+          target: props.buttonOnly ? null : inputRef.current,
+          content: calendarElement,
+          onOpenChange: (e, { open }) => {
+            // In case the event is a click on input, we ignore such events as it should be directly handled by input.
+            if (!(e.type === 'click' && e.target === inputRef?.current)) {
+              setOpenState(open);
+              _.invoke(predefinedProps, 'onOpenChange', e, { open });
+            }
+          },
+        }),
+      })}
+    </ElementType>,
   );
   setEnd();
   return element;
@@ -441,12 +488,14 @@ Datepicker.propTypes = {
   weekNumberFormatString: PropTypes.string,
   selectedDateFormatString: PropTypes.string,
   todayDateFormatString: PropTypes.string,
-  calendarCellFormatString: PropTypes.string,
 
   inputAriaLabel: PropTypes.string,
   inputBoundedFormatString: PropTypes.string,
   inputMinBoundedFormatString: PropTypes.string,
   inputMaxBoundedFormatString: PropTypes.string,
+
+  'aria-labelledby': PropTypes.string,
+  'aria-invalid': PropTypes.bool,
 };
 
 Datepicker.defaultProps = {
@@ -478,4 +527,7 @@ Datepicker.CalendarHeader = DatepickerCalendarHeader;
 Datepicker.CalendarHeaderAction = DatepickerCalendarHeaderAction;
 Datepicker.CalendarHeaderCell = DatepickerCalendarHeaderCell;
 Datepicker.CalendarCell = DatepickerCalendarCell;
+Datepicker.CalendarCellButton = DatepickerCalendarCellButton;
+Datepicker.CalendarGrid = DatepickerCalendarGrid;
+Datepicker.CalendarGridRow = DatepickerCalendarGridRow;
 Datepicker.Input = Input;

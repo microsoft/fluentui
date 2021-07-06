@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
@@ -9,10 +10,10 @@ import {
   IStyleFunction,
   IStyleFunctionOrObject,
   mergeStyles,
-} from '@uifabric/merge-styles';
+} from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
-import { safeCreate } from '@uifabric/test-utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
 
 interface ITestStyles {

@@ -1,6 +1,6 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import * as StyleConstants from '../Constants';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
@@ -58,19 +58,22 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
+      selectors: {
+        '::after': {
+          outlineColor: `${extendedSemanticColors.ButtonBorderFocus} !important`,
+        },
+      },
       backgroundColor: semanticColors.buttonBackground,
       color: semanticColors.buttonText,
       fill: semanticColors.buttonTextHovered,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
     },
     rootHovered: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
       backgroundColor: semanticColors.buttonBackgroundHovered,
       color: semanticColors.buttonTextHovered,
     },
     rootPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
       color: semanticColors.buttonTextHovered,
     },
     rootChecked: {

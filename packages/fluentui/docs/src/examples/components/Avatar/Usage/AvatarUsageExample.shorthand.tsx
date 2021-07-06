@@ -9,17 +9,21 @@ const AvatarUsageExampleShorthand = () => (
     Correct:
     <div>
       <div style={{ backgroundColor: 'violet', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'violet' }} />
+        <Avatar name="Cecil Folk (Software Developer)" status={status} variables={{ statusBorderColor: 'violet' }} />
       </div>
       <div style={{ backgroundColor: 'yellowgreen', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'yellowgreen' }} />
+        <Avatar
+          name="Cecil Folk (Software Developer)"
+          status={status}
+          variables={{ statusBorderColor: 'yellowgreen' }}
+        />
       </div>
       <div style={{ backgroundColor: 'orangered', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'orangered' }} />
+        <Avatar name="Cecil Folk (Software Developer)" status={status} variables={{ statusBorderColor: 'orangered' }} />
       </div>
       <div style={{ backgroundColor: 'cornflowerblue', padding: '1rem', display: 'inline-block' }}>
         <Avatar
-          name="John Doe (Software Developer)"
+          name="Cecil Folk (Software Developer)"
           status={status}
           variables={{ statusBorderColor: 'cornflowerblue' }}
         />
@@ -28,16 +32,16 @@ const AvatarUsageExampleShorthand = () => (
     Incorrect (Border should not be visible, unless in Contrast theme):
     <div>
       <div style={{ backgroundColor: 'violet', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} />
+        <Avatar name="Cecil Folk (Software Developer)" status={status} />
       </div>
       <div style={{ backgroundColor: 'yellowgreen', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} />
+        <Avatar name="Cecil Folk (Software Developer)" status={status} />
       </div>
       <div style={{ backgroundColor: 'orangered', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} />
+        <Avatar name="Cecil Folk (Software Developer)" status={status} />
       </div>
       <div style={{ backgroundColor: 'cornflowerblue', padding: '1rem', display: 'inline-block' }}>
-        <Avatar name="John Doe (Software Developer)" status={status} />
+        <Avatar name="Cecil Folk (Software Developer)" status={status} />
       </div>
     </div>
   </div>

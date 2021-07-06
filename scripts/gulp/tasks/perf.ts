@@ -160,11 +160,24 @@ task('perf:build', cb => {
 
 task('perf:run', async () => {
   const filter = (argv.filter as string) || '';
-  const browserName: 'chrome' | 'electron' = (argv.browser as 'chrome' | 'electron') || 'chrome';
   const mode = (argv.mode as string) || 'new-page';
   const times = (argv.times as number) || DEFAULT_RUN_TIMES;
 
-  const browser = browserName === 'electron' ? await createElectron(argv.electronPath as string) : await createChrome();
+  const browserName: 'chrome' | 'electron' = (argv.browser as 'chrome' | 'electron') || 'chrome';
+  let browser: Browser;
+
+  if (browserName === 'electron') {
+    if (typeof argv.electronPath === 'undefined') {
+      throw new Error(
+        `To run perf tests with Electron, please provide a path to Electron's binary via "--electronPath" argument`,
+      );
+    }
+
+    browser = await createElectron(argv.electronPath as string);
+  } else {
+    browser = await createChrome();
+  }
+
   let measures: ProfilerMeasureCycle[];
 
   try {

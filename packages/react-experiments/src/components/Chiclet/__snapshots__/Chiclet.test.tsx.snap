@@ -1,0 +1,568 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] = `
+<div
+  className=
+      ms-ChicletCard
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 112px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        user-select: none;
+        width: 576px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ChicletCard-preview
+        {
+          align-items: center;
+          background-color: #ffffff;
+          display: flex;
+          height: 112px;
+          justify-content: center;
+          width: 33.33333333333333%;
+        }
+  >
+    <img
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
+    />
+  </div>
+  <div
+    className=
+
+        {
+          display: block;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          width: 66.66666666666666%;
+          word-wrap: break-word;
+        }
+  >
+    <div
+      className=
+
+          {
+            color: #323130;
+            font-size: 16px;
+            font-stretch: normal;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: normal;
+            line-height: 1.25;
+            max-height: 37px;
+            overflow: hidden;
+            padding-bottom: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
+            text-align: left;
+            word-wrap: break-word;
+          }
+    >
+      My Daily Notes
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            color: #605e5c;
+            display: flex;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.33;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0px;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      contoso.sharepoint.com
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extension 1`] = `
+<div
+  className=
+      ms-ChicletXsmall
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 4px;
+        position: relative;
+        user-select: none;
+        width: 250px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ChicletXsmall-preview
+        {
+          align-items: center;
+          display: flex;
+          height: 64px;
+          justify-content: center;
+          margin-bottom: 4px;
+          width: 59px;
+        }
+  >
+    <img
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
+    />
+  </div>
+  <div
+    className=
+        ms-ChicletXsmall-info
+        {
+          display: flex;
+          flex-wrap: wrap;
+          height: 63px;
+          margin-left: 10px;
+          width: 170px;
+        }
+  >
+    <div
+      className=
+          ms-ChicletXsmall-title
+          {
+            color: #323130;
+            font-size: 14px;
+            font-weight: 600;
+            height: 35px;
+            letter-spacing: normal;
+            line-height: 1.25;
+            overflow: hidden;
+            text-align: left;
+            width: 170px;
+            word-wrap: break-word;
+          }
+    >
+      My Daily Notes.xlsx
+    </div>
+    <div
+      className=
+
+          {
+            color: #605e5c;
+            font-size: 12px;
+            font-weight: 600;
+            height: 15px;
+            overflow: hidden;
+            padding-bottom: 1px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 170px;
+          }
+    >
+      contoso.sharepoint.com
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`] = `
+<div
+  className=
+      ms-ChicletXsmall
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 4px;
+        position: relative;
+        user-select: none;
+        width: 250px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ChicletXsmall-preview
+        {
+          align-items: center;
+          display: flex;
+          height: 64px;
+          justify-content: center;
+          margin-bottom: 4px;
+          width: 59px;
+        }
+  >
+    <img
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
+    />
+  </div>
+  <div
+    className=
+        ms-ChicletXsmall-info
+        {
+          display: flex;
+          flex-wrap: wrap;
+          height: 63px;
+          margin-left: 10px;
+          width: 170px;
+        }
+  >
+    <div
+      className=
+          ms-ChicletXsmall-title
+          {
+            color: #323130;
+            font-size: 14px;
+            font-weight: 600;
+            height: 35px;
+            letter-spacing: normal;
+            line-height: 1.25;
+            overflow: hidden;
+            text-align: left;
+            width: 170px;
+            word-wrap: break-word;
+          }
+    >
+      My Daily Notes
+    </div>
+    <div
+      className=
+
+          {
+            color: #605e5c;
+            font-size: 12px;
+            font-weight: 600;
+            height: 15px;
+            overflow: hidden;
+            padding-bottom: 1px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 170px;
+          }
+    >
+      contoso.sharepoint.com
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`] = `
+<div
+  className=
+      ms-ChicletXsmall
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 4px;
+        position: relative;
+        user-select: none;
+        width: 250px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ChicletXsmall-preview
+        {
+          align-items: center;
+          display: flex;
+          height: 64px;
+          justify-content: center;
+          margin-bottom: 4px;
+          width: 59px;
+        }
+  >
+    <img
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
+      src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"
+    />
+  </div>
+  <div
+    className=
+        ms-ChicletXsmall-info
+        {
+          display: flex;
+          flex-wrap: wrap;
+          height: 63px;
+          margin-left: 10px;
+          width: 170px;
+        }
+  >
+    <div
+      className=
+          ms-ChicletXsmall-title
+          {
+            color: #323130;
+            font-size: 14px;
+            font-weight: 600;
+            height: 35px;
+            letter-spacing: normal;
+            line-height: 1.25;
+            overflow: hidden;
+            text-align: left;
+            width: 170px;
+            word-wrap: break-word;
+          }
+    >
+      My Daily Notes
+    </div>
+    <div
+      className=
+
+          {
+            color: #605e5c;
+            font-size: 12px;
+            font-weight: 600;
+            height: 15px;
+            overflow: hidden;
+            padding-bottom: 1px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 170px;
+          }
+    >
+      contoso.sharepoint.com
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chiclet should set className on preview 1`] = `
+<div
+  className=
+      ms-ChicletCard
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 112px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        user-select: none;
+        width: 576px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ChicletCard-preview
+        {
+          align-items: center;
+          background-color: #ffffff;
+          display: flex;
+          height: 112px;
+          justify-content: center;
+          width: 33.33333333333333%;
+        }
+  >
+    <img
+      className=
+          ms-ChicletCard-preview-custom
+          {
+            height: 112px;
+            object-fit: contain;
+            width: 100%;
+          }
+      src="http://via.placeholder.com/100x100"
+    />
+  </div>
+  <div
+    className=
+
+        {
+          display: block;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          width: 66.66666666666666%;
+          word-wrap: break-word;
+        }
+  >
+    <div
+      className=
+
+          {
+            color: #323130;
+            font-size: 16px;
+            font-stretch: normal;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: normal;
+            line-height: 1.25;
+            max-height: 37px;
+            overflow: hidden;
+            padding-bottom: 4px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
+            text-align: left;
+            word-wrap: break-word;
+          }
+    >
+      My Daily Notes
+    </div>
+    <div
+      className=
+
+          {
+            align-items: center;
+            color: #605e5c;
+            display: flex;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.33;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0px;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      contoso.sharepoint.com
+    </div>
+  </div>
+</div>
+`;

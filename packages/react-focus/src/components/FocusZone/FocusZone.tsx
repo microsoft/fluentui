@@ -26,8 +26,9 @@ import {
   getWindow,
   findScrollableParent,
   createMergedRef,
-} from '@uifabric/utilities';
-import { mergeStyles } from '@uifabric/merge-styles';
+} from '@fluentui/utilities';
+import { mergeStyles } from '@fluentui/merge-styles';
+import { getTheme, ITheme } from '@fluentui/style-utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -251,6 +252,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // the case the element was removed.
     this._evaluateFocusBeforeRender();
 
+    // Only support RTL defined in global theme, not contextual theme/RTL.
+    const theme: ITheme = getTheme();
+
     return (
       <Tag
         aria-labelledby={ariaLabelledBy}
@@ -270,7 +274,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         // eslint-disable-next-line deprecation/deprecation
         ref={this._mergedRef(this.props.elementRef, this._root)}
         data-focuszone-id={this._id}
-        onKeyDown={this._onKeyDown}
+        // eslint-disable-next-line react/jsx-no-bind
+        onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme)}
         onFocus={this._onFocus}
         onMouseDownCapture={this._onMouseDown}
       >
@@ -405,12 +410,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | null | undefined;
 
-    if (onFocus) {
-      onFocus(ev);
-    } else if (onFocusNotification) {
-      onFocusNotification();
-    }
-
     if (isImmediateDescendant) {
       newActiveElement = ev.target as HTMLElement;
     } else {
@@ -468,6 +467,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     if (stopFocusPropagation || doNotAllowFocusEventToPropagate) {
       ev.stopPropagation();
+    }
+
+    if (onFocus) {
+      onFocus(ev);
+    } else if (onFocusNotification) {
+      onFocusNotification();
     }
   };
 
@@ -567,7 +572,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Handle the keystrokes.
    */
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: ITheme): boolean | undefined => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
@@ -624,7 +629,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props
+      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props, deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
@@ -635,7 +640,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         case KeyCodes.left:
           if (direction !== FocusZoneDirection.vertical) {
             this._preventDefaultWhenHandled(ev);
-            if (this._moveFocusLeft()) {
+            if (this._moveFocusLeft(theme)) {
               break;
             }
           }
@@ -644,7 +649,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         case KeyCodes.right:
           if (direction !== FocusZoneDirection.vertical) {
             this._preventDefaultWhenHandled(ev);
-            if (this._moveFocusRight()) {
+            if (this._moveFocusRight(theme)) {
               break;
             }
           }
@@ -694,8 +699,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
             ) {
               focusChanged = ev.shiftKey ? this._moveFocusUp() : this._moveFocusDown();
             } else {
-              const tabWithDirection = getRTL() ? !ev.shiftKey : ev.shiftKey;
-              focusChanged = tabWithDirection ? this._moveFocusLeft() : this._moveFocusRight();
+              const tabWithDirection = getRTL(theme) ? !ev.shiftKey : ev.shiftKey;
+              focusChanged = tabWithDirection ? this._moveFocusLeft(theme) : this._moveFocusRight(theme);
             }
             this._processingTabKey = false;
             if (focusChanged) {
@@ -985,16 +990,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusLeft(): boolean {
+  private _moveFocusLeft(theme: ITheme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
-        getRTL(),
+        getRTL(theme),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
           let topBottomComparison;
 
-          if (getRTL()) {
+          if (getRTL(theme)) {
             // When in RTL, this comparison should be the same as the one in _moveFocusRight for LTR.
             // Going left at a leftmost rectangle will go down a line instead of up a line like in LTR.
             // This is important, because we want to be comparing the top of the target rect
@@ -1027,16 +1032,16 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusRight(): boolean {
+  private _moveFocusRight(theme: ITheme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
-        !getRTL(),
+        !getRTL(theme),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
           let topBottomComparison;
 
-          if (getRTL()) {
+          if (getRTL(theme)) {
             // When in RTL, this comparison should be the same as the one in _moveFocusLeft for LTR.
             // Going right at a rightmost rectangle will go up a line instead of down a line like in LTR.
             // This is important, because we want to be comparing the bottom of the target rect

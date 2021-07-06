@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/SpinButton';
+export * from './components/SpinButton/index';

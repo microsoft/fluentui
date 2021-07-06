@@ -1,112 +1,129 @@
 import * as React from 'react';
-import { makeMergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import {
-  AvatarProps,
-  AvatarState,
-  AvatarSizeValue,
-  avatarSizeValues,
-  defaultAvatarSize,
-  AvatarTokenSet,
-} from './Avatar.types';
-import { useMergedRefs } from '@uifabric/react-hooks';
-import { getInitials as defaultGetInitials, nullRender } from '@uifabric/utilities';
-import { Image } from '../Image/index';
-import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons';
-
-const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
-
-export const renderAvatar = (state: AvatarState) => {
-  const { slots, slotProps } = getSlots(state, avatarShorthandProps);
-
-  return (
-    <slots.root {...slotProps.root}>
-      <slots.label {...slotProps.label} />
-      <slots.image {...slotProps.image} />
-      <slots.badge {...slotProps.badge} />
-    </slots.root>
-  );
-};
-
-const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { getInitials } from '../../utils/index';
+import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandPropsCompat } from './Avatar.types';
+import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
 /**
- * The "size class" of the avatar is the closest AvatarSizeValue that is less-or-equal to the given custom size.
- * This is used in scss style rules to pick the appropriate font size, icon size, etc.
+ * Names of the shorthand properties in AvatarProps
  */
-const calcSizeClass = (customSize: number): AvatarSizeValue => {
-  // Note: deliberately skipping i = 0 because it's the default return value below
-  for (let i = avatarSizeValues.length - 1; i > 0; i--) {
-    if (customSize >= avatarSizeValues[i]) {
-      return avatarSizeValues[i];
-    }
-  }
+export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[] = ['label', 'image', 'badge'];
 
-  return avatarSizeValues[0];
-};
+const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandPropsCompat });
 
-interface AvatarStyleProps {
-  size: AvatarSizeValue;
-  tokens: AvatarTokenSet | undefined;
-  inactive: boolean | undefined;
-  activeRing: boolean | undefined;
-  activeShadow: boolean | undefined;
-  activeGlow: boolean | undefined;
-}
-
-const calcStyleProps = (state: AvatarState): AvatarStyleProps => ({
-  // Make sure the size prop has a valid size from AvatarSizeValues
-  size: state.customSize ? calcSizeClass(state.customSize) : state.size || defaultAvatarSize,
-  // If a custom size was specified, override the width/height tokens
-  tokens: state.customSize
-    ? { width: `${state.customSize}px`, height: `${state.customSize}px`, ...state.tokens }
-    : undefined,
-  inactive: state.active === false,
-  activeRing: state.active
-    ? state.activeDisplay === 'ring' || state.activeDisplay === 'ring-shadow' || state.activeDisplay === 'ring-glow'
-    : undefined,
-  activeShadow: state.active ? state.activeDisplay === 'shadow' || state.activeDisplay === 'ring-shadow' : undefined,
-  activeGlow: state.active ? state.activeDisplay === 'glow' || state.activeDisplay === 'ring-glow' : undefined,
-});
-
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
+export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
     {
       as: 'span',
-      display: props.image ? 'image' : 'label',
       label: { as: 'span' },
-      image: { as: Image },
-      badge: { as: nullRender },
+      image: { as: 'img' },
+      size: 32,
+      color: 'neutral',
       activeDisplay: 'ring',
-      inactive: props.active === false,
-      getInitials: defaultGetInitials,
-      ref: useMergedRefs(ref, React.useRef(null)),
+      getInitials,
+      ref,
     },
-    defaultProps,
-    resolveShorthandProps(props, avatarShorthandProps),
+    defaultProps && resolveAvatarShorthandPropsCompat(defaultProps),
+    resolveAvatarShorthandPropsCompat(props),
   );
 
-  // Add in props used for styling
-  mergeProps(state, calcStyleProps(state));
-
-  // Display the initials if there's no label
+  // If a label was not provided, use the following priority:
+  // icon => initials => default icon
   if (!state.label.children) {
-    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
-    if (initials) {
-      state.label.children = initials;
-    } else if (state.display === 'label') {
-      state.display = 'icon'; // If there are no initials or image, fall back to the icon
+    if (state.icon) {
+      state.label.children = state.icon;
+    } else {
+      const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+      if (initials) {
+        state.label.children = initials;
+      } else {
+        // useAvatarStyles expects state.icon to be set if displaying an icon
+        state.label.children = state.icon = <DefaultAvatarIcon />;
+      }
     }
   }
 
-  // Display the icon if requested
-  if (state.display === 'icon') {
-    state.label.children = state.icon || <DefaultAvatarIcon />;
+  // Provide a default badge size based on the avatar size
+  if (state.badge && state.badge.size === undefined) {
+    const { size, badge } = state;
+    if (size >= 96) {
+      badge.size = 'larger';
+    } else if (size >= 64) {
+      badge.size = 'large';
+    } else if (size >= 56) {
+      badge.size = 'medium';
+    } else if (size >= 40) {
+      badge.size = 'small';
+    } else if (size >= 28) {
+      badge.size = 'smaller';
+    } else {
+      badge.size = 'smallest';
+    }
   }
 
-  // Don't show the image if it's not supposed to be displayed
-  if (state.display !== 'image') {
-    state.image = { as: nullRender };
+  if (state.color === 'colorful') {
+    const value = state.idForColor || state.name;
+    if (value) {
+      state.color = avatarColors[getHashCode(value) % avatarColors.length];
+    }
   }
 
-  return { state, render: renderAvatar };
+  return state;
+};
+
+/**
+ * Avatar treats shorthand for the image and badge props differently. Rather than the string being
+ * the child of those slots, they translate to the image's src and the badge's status prop.
+ */
+const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
+  const image = typeof props.image === 'string' ? { src: props.image, children: null } : props.image;
+  const badge = typeof props.badge === 'string' ? { status: props.badge, children: null } : props.badge;
+  if (image !== props.image || badge !== props.badge) {
+    props = { ...props, image, badge };
+  }
+  return resolveShorthandProps(props, avatarShorthandPropsCompat);
+};
+
+const avatarColors: AvatarNamedColor[] = [
+  'darkRed',
+  'cranberry',
+  'red',
+  'pumpkin',
+  'peach',
+  'marigold',
+  'gold',
+  'brass',
+  'brown',
+  'forest',
+  'seafoam',
+  'darkGreen',
+  'lightTeal',
+  'teal',
+  'steel',
+  'blue',
+  'royalBlue',
+  'cornflower',
+  'navy',
+  'lavender',
+  'purple',
+  'grape',
+  'lilac',
+  'pink',
+  'magenta',
+  'plum',
+  'beige',
+  'mink',
+  'platinum',
+  'anchor',
+];
+
+const getHashCode = (str: string): number => {
+  let hashCode = 0;
+  for (let len: number = str.length - 1; len >= 0; len--) {
+    const ch = str.charCodeAt(len);
+    const shift = len % 8;
+    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+  }
+
+  return hashCode;
 };

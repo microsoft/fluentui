@@ -5,7 +5,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role='cell'.
  */
-export const tableCellBehavior: Accessibility<TableCellBehaviorProps> = props => ({
+export const tableCellBehavior: Accessibility<TableCellBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'cell',

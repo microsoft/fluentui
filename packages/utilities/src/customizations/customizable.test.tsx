@@ -1,10 +1,11 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { mount } from 'enzyme';
 import { customizable } from './customizable';
 import { Customizations } from './Customizations';
 import { Customizer } from './Customizer';
-import { IStyle } from '@uifabric/merge-styles';
+import { IStyle } from '@fluentui/merge-styles';
 
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {

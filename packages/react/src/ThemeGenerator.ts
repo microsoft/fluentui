@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ThemeGenerator';
+export * from './components/ThemeGenerator/index';

@@ -7,8 +7,9 @@ import { CarouselVariables } from './carouselVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { paddleIndicatorUrl } from './paddleIndicatorUrl';
-import { pxToRem } from '../../../../utils';
+
 import { faster, ultraFast } from '../../animations/durations';
+import { pxToRem } from '../../../../utils';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -41,32 +42,18 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       color: v.paddleColor,
       backgroundColor: v.paddleBackgroundColor,
       borderRadius: v.paddleBorderRadius,
+      border: 0,
       display: 'inline-flex',
       justifyContent: 'center',
       alignItems: 'center',
       position: 'relative',
       verticalAlign: 'middle',
       cursor: 'pointer',
-
+      marginBottom: pxToRem(40),
       outline: 0,
       padding: 0,
-      borderWidth,
-      borderStyle: 'solid',
-      borderColor: v.paddleBorderColor,
-      boxShadow: v.paddleBoxShadow,
       transition: faster,
-
-      ...(p.next && {
-        height: pxToRem(v.paddleNextSize),
-        top: pxToRem(-v.height / 2 - v.paddleNextSize / 2),
-        left: pxToRem(v.width - 2 * v.paddleNextSize),
-      }),
-
-      ...(p.previous && {
-        height: pxToRem(v.paddlePreviousSize),
-        top: pxToRem(-v.height / 2 - v.paddlePreviousSize / 2),
-      }),
-
+      zIndex: 1,
       ...(p.hidden && {
         visibility: 'hidden',
       }),
@@ -74,44 +61,31 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         [`& .${carouselPaddleSlotClassNames.content}`]: {
-          ...getIndicatorStyles(v.paddleColorHover, p.next, v.paddleIndicatorSize),
+          ...getIndicatorStyles(v.paddleColor, p.next, v.paddleIndicatorSize),
         },
-        color: v.paddleColorHover,
         background: v.paddleBackgroundColorHover,
       },
 
       ':active': {
         transition: ultraFast,
-        color: v.paddleColorActive,
         backgroundColor: v.paddleBackgroundColorActive,
-        borderColor: v.paddleBorderColorActive,
-        boxShadow: 'none',
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
-        backgroundColor: v.paddleBackgroundColorFocus,
-        borderColor: v.paddleBorderColorFocus,
-        color: v.paddleColorFocus,
-        borderWidth,
-
-        ':hover': {
-          borderColor: v.paddleBorderColorHover,
-        },
+        ...borderFocusStyles[':focus-visible'],
       },
 
       // Overrides for "disabled" buttons
       ...(p.disabled && {
         cursor: 'default',
         color: v.paddleColorDisabled,
-        boxShadow: 'none',
         pointerEvents: 'none',
         ':hover': {
           color: v.paddleColorDisabled,
         },
 
         backgroundColor: v.paddleBackgroundColorDisabled,
-        borderColor: v.paddleBorderColorDisabled,
       }),
     };
   },

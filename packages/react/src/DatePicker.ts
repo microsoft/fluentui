@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/DatePicker';
+export * from './components/DatePicker/index';

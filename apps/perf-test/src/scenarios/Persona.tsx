@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Persona, PersonaSize, PersonaPresence, IPersonaSharedProps } from 'office-ui-fabric-react';
+import { Persona, PersonaSize, PersonaPresence, IPersonaSharedProps } from '@fluentui/react';
 
 const examplePersona: IPersonaSharedProps = {
   imageInitials: 'AL',

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Positioning';
+export * from './utilities/positioning/index';

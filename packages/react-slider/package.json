@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "0.3.4",
+  "version": "1.0.0-beta.117",
   "description": "Fluent UI React Slider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,47 +13,48 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u",
     "test": "just-scripts test",
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
-    "@fluentui/react-conformance": "^0.1.2",
-    "@fluentui/storybook": "^0.4.17",
+    "@fluentui/eslint-plugin": "^1.3.1",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.7",
+    "@fluentui/react-conformance": "^0.4.1",
+    "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.15.1",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/jest-serializer-merge-styles": "^7.2.2",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/react-hooks": "^7.13.4",
-    "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.5",
-    "@uifabric/utilities": "^7.32.2",
-    "office-ui-fabric-react": "^7.139.0",
-    "tslib": "^1.10.0"
+    "@fluentui/react": "^8.22.0",
+    "@fluentui/react-hooks": "^8.2.3",
+    "@fluentui/style-utilities": "^8.1.4",
+    "@fluentui/utilities": "^8.2.0",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "beta",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }

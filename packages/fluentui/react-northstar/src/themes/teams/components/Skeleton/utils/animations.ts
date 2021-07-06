@@ -5,11 +5,12 @@ import { skeletonShapeClassName } from '../../../../../components/Skeleton/Skele
 import { skeletonButtonClassName } from '../../../../../components/Skeleton/SkeletonButton';
 import { skeletonInputClassName } from '../../../../../components/Skeleton/SkeletonInput';
 import { skeletonAvatarClassName } from '../../../../../components/Skeleton/SkeletonAvatar';
+import { skeletonTextClassName } from '../../../../../components/Skeleton/SkeletonText';
 
 const waveStyles = (primaryColor: string, secondoryColor: string) => ({
   position: 'static',
   overflow: 'hidden',
-  animationDuration: '4.8s',
+  animationDuration: '4.5s',
   animationName: wave,
   animationIterationCount: 'infinite',
   backgroundColor: '#FFFFFF',
@@ -31,6 +32,7 @@ export const getAnimations = (primaryColor: string, secondoryColor: string): Rec
     [`& .${skeletonButtonClassName}`]: pulseStyles,
     [`& .${skeletonAvatarClassName}`]: pulseStyles,
     [`& .${skeletonInputClassName}`]: pulseStyles,
+    [`& .${skeletonTextClassName}`]: pulseStyles,
   },
   wave: {
     [`& .${skeletonLineClassName}`]: waveStyles(primaryColor, secondoryColor),
@@ -38,5 +40,6 @@ export const getAnimations = (primaryColor: string, secondoryColor: string): Rec
     [`& .${skeletonButtonClassName}`]: waveStyles(primaryColor, secondoryColor),
     [`& .${skeletonAvatarClassName}`]: waveStyles(primaryColor, secondoryColor),
     [`& .${skeletonInputClassName}`]: waveStyles(primaryColor, secondoryColor),
+    [`& .${skeletonTextClassName}`]: waveStyles(primaryColor, secondoryColor),
   },
 });

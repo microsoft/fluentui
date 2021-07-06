@@ -6,6 +6,8 @@ import {
   teamsTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
   RendererContext,
 } from '@fluentui/react-northstar';
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
@@ -29,10 +31,12 @@ const themes = {
   teamsTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
 };
 
 function useRendererFactory(): CreateRenderer {
-  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer : createFelaRenderer;
+  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer() : createFelaRenderer;
 
   React.useEffect(() => {
     (window as any).setFluentRenderer = (rendererName: 'fela' | 'emotion') => {

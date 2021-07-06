@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
-const Scenario = () => (
-  <Button
-    icon="X"
-    tokens={{ background: 'red', height: '50px', minWidth: '80px', padding: '10px', margin: '8px', fontWeight: '600' }}
-  >
-    I am a button
-  </Button>
+const Scenario = () => <Button>I am a button</Button>;
+
+Scenario.decorator = (props: { children: React.ReactNode }) => (
+  <FluentProvider theme={webLightTheme}>{props.children}</FluentProvider>
 );
 
 export default Scenario;

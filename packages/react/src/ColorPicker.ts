@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ColorPicker';
+export * from './components/ColorPicker/index';

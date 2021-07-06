@@ -1,104 +1,73 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Link}
  */
-export interface ILink {
-  /** Sets focus to the link. */
-  focus(): void;
-}
+export type LinkProps = ComponentPropsCompat &
+  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
+  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+    /**
+     * URL the link points to. If not provided, the link renders as a button (unless that behavior is
+     * overridden using `as`).
+     */
+    href?: string;
+
+    /**
+     * Click handler for the link.
+     */
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+
+    /**
+     * Relationship to the linked URL (can be a space-separated list).
+     * Most common values are `noreferrer` and/or `noopener`.
+     * This prop is only applied if `href` is set.
+     */
+    rel?: string;
+
+    /**
+     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
+     * `_self` (the current window/context), `_parent`, and `_top`.
+     * This prop is only applied if `href` is set.
+     */
+    target?: string;
+
+    /**
+     * Built-in HTML attribute with different behavior depending on how the link is rendered.
+     * If rendered as `<a>`, hints at the MIME type.
+     * If rendered as `<button>`, override the type of button (`button` is the default).
+     */
+    type?: string;
+
+    /**
+     * Whether the link is disabled.
+     * @default false
+     */
+    disabled?: boolean;
+
+    /**
+     * When set, allows the link to be focusable even when it has been disabled. This is used in scenarios where it is
+     * important to keep a consistent tab order for screen reader and keyboard users.
+     * @default false
+     */
+    disabledFocusable?: boolean;
+
+    /**
+     * If true, changes styling when the link is being used alongside other text content.
+     * @default false
+     */
+    inline?: boolean;
+
+    /**
+     * If true, changes the link styling to emphasize that it represents an alternative action.
+     * @default false
+     */
+    secondary?: boolean;
+  };
 
 /**
  * {@docCategory Link}
  */
-export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-  // Shared
-  type?: string;
-
-  // Anchor
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  download?: any;
-  href?: string;
-  hrefLang?: string;
-  media?: string;
-  rel?: string;
-  target?: string;
-
-  // Button
-  autoFocus?: boolean;
-  disabled?: boolean;
-  form?: string;
-  formAction?: string;
-  formEncType?: string;
-  formMethod?: string;
-  formNoValidate?: boolean;
-  formTarget?: string;
-  name?: string;
-  value?: string | string[] | number;
-
-  // Any other props for HTMLElements or a React component passed to as=
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [index: string]: any;
-}
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkProps
-  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
-    React.RefAttributes<HTMLElement> {
-  /**
-   * Optional callback to access the ILink interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ILink>;
-
-  /**
-   * Whether the link is disabled
-   */
-  disabled?: boolean;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
-   * A component type or primitive that is rendered as the type of the root element.
-   */
-  as?: React.ElementType;
-
-  /**
-   * Optional keytip.
-   *
-   * @deprecated This no longer works. Use `useKeytipData` hook instead.
-   */
-  keytipProps?: IKeytipProps;
-}
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkStyleProps {
-  className?: string;
-  isButton?: boolean;
-  isDisabled?: boolean;
-  theme: ITheme;
-}
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkStyles {
-  root: IStyle;
+export interface LinkState extends LinkProps {
+  ref: React.Ref<HTMLElement>;
 }

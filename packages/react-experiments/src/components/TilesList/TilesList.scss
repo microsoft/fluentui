@@ -1,0 +1,77 @@
+@import '~@fluentui/common-styles/src/common';
+
+.listCell {
+  display: block;
+  margin: 0;
+  border-color: $ms-color-white;
+}
+
+.listPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell {
+  display: block;
+  position: relative;
+}
+
+.cellContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.cellFirstInRow {
+  display: block;
+}
+
+.sizer {
+  display: block;
+  visibility: hidden;
+}
+
+.header {
+  display: block;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+
+  &.headerRow {
+    display: block;
+  }
+}
+
+.shimmeredList {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 30%,
+      $ms-color-whiteTranslucent40 65%,
+      $ms-color-white 100%
+    );
+  }
+}
+
+.none {
+  display: block;
+}

@@ -1,6 +1,6 @@
 // @ts-check
 
-require('@uifabric/build/babel/register');
+require('@fluentui/scripts/babel/register');
 
 const cp = require('child_process');
 
@@ -12,11 +12,7 @@ function getCurrentHash() {
 
     if (buffer) {
       // The command returns a list of hashes, the last one is the one we want
-      return buffer
-        .toString()
-        .trim()
-        .split(' ')
-        .pop();
+      return buffer.toString().trim().split(' ').pop();
     }
   } catch (e) {
     console.error('Cannot get current git hash');

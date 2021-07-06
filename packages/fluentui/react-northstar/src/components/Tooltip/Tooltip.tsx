@@ -5,6 +5,7 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -31,6 +32,8 @@ import {
   PopperChildrenProps,
   Alignment,
   Position,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
@@ -113,7 +116,9 @@ export const Tooltip: React.FC<TooltipProps> &
     positionFixed,
     target,
     trigger,
+    unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -123,6 +128,8 @@ export const Tooltip: React.FC<TooltipProps> &
     initialValue: false,
   });
   const triggerElement = useTriggerElement(props);
+
+  const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
@@ -227,7 +234,12 @@ export const Tooltip: React.FC<TooltipProps> &
   const element = (
     <>
       {triggerElement && (
-        <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>
+        <Ref innerRef={triggerRef}>
+          {React.cloneElement(
+            triggerElement,
+            getA11Props('trigger', { ...triggerElement.props, ...triggerProps, ...unhandledProps }),
+          )}
+        </Ref>
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
@@ -243,6 +255,8 @@ export const Tooltip: React.FC<TooltipProps> &
           rtl={context.rtl}
           targetRef={target || triggerRef}
           children={renderPopperChildren}
+          unstable_disableTether={unstable_disableTether}
+          autoSize={autoSize}
           unstable_pinned={unstable_pinned}
         />
       </PortalInner>
@@ -284,7 +298,9 @@ Tooltip.propTypes = {
   target: customPropTypes.domNode,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,

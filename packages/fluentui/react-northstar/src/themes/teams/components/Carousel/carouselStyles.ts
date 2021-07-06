@@ -6,12 +6,12 @@ import { CarouselVariables } from './carouselVariables';
 export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'inline-block',
+    position: 'relative',
   }),
   itemsContainerWrapper: ({ variables: v, props: p }): ICSSInJSStyle => ({
     display: 'flex',
     width: pxToRem(v.width),
     overflowX: 'hidden',
-    border: '1px solid transparent',
     ...(p.shouldFocusContainer &&
       p.isFromKeyboard && {
         border: `1px solid ${v.focusOuterBorderColor}`,

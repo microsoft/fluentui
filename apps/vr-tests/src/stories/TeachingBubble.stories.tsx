@@ -1,10 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { FabricDecoratorTall } from '../utilities/index';
+import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
@@ -20,7 +19,7 @@ storiesOf('TeachingBubble', module)
     () => {
       return (
         <TeachingBubble
-          illustrationImage={{ src: 'http://placehold.it/364x220' }}
+          illustrationImage={{ src: 'http://via.placeholder.com/364x220' }}
           calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
           isWide={true}
           hasSmallHeadline={true}

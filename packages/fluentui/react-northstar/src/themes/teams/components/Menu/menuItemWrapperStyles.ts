@@ -5,7 +5,7 @@ import { menuItemClassName } from '../../../../components/Menu/MenuItem';
 import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
 import { getColorScheme } from '../../colors';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { submenuIndicatorUrl } from './submenuIndicatorUrl';
+import { submenuIndicatorDirection } from './submenuIndicatorDirection';
 import {
   horizontalPillsRightMargin,
   verticalPillsBottomMargin,
@@ -159,11 +159,13 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         }),
 
         [`&>.${menuItemClassName}>.${menuItemIndicatorClassName}`]: {
-          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
+          color: v.indicatorColorHover,
 
           ...(primary && {
-            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover, vertical),
+            color: v.primaryIndicatorColorHover,
           }),
+
+          ...submenuIndicatorDirection(vertical),
         },
       },
 

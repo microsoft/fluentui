@@ -23,6 +23,10 @@ describe('merge', () => {
     });
   });
 
+  it('can handle array values', () => {
+    expect(merge({}, { a: [1, 2] })).toEqual({ a: [1, 2] });
+  });
+
   it('can merge deeply', () => {
     expect(merge<{ a: { c: number }; b: number }>({}, { b: 0 }, { a: { c: 1 } }, { a: { c: 2 } })).toEqual({
       a: { c: 2 },

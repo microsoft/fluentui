@@ -51,6 +51,7 @@ import { ToolbarMenuItemIcon } from './ToolbarMenuItemIcon';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarMenuContextProvider } from './toolbarMenuContext';
 import { PopperShorthandProps } from '../../utils/positioner';
+import { BoxProps, Box } from '../Box/Box';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;
@@ -99,6 +100,14 @@ export interface ToolbarProps
   overflowItem?: ShorthandValue<ToolbarOverflowItemProps>;
 
   /**
+   * Renders a sentinel node when the overflow menu is open to stop the width of the toolbar changing
+   * Only needed if the container hosting the toolbar does not have a fixed/min width
+   *
+   * @default null
+   */
+  overflowSentinel?: ShorthandValue<BoxProps>;
+
+  /**
    * Called when overflow is recomputed (after render, update or window resize). Even if all items fit.
    * @param itemsVisible - number of items visible
    */
@@ -119,7 +128,7 @@ export interface ToolbarProps
   getOverflowItems?: (startIndex: number) => ToolbarItemProps['menu'];
 }
 
-export type ToolbarStylesProps = never;
+export type ToolbarStylesProps = Pick<ToolbarProps, 'overflowOpen'>;
 
 export const toolbarClassName = 'ui-toolbar';
 
@@ -130,6 +139,7 @@ export const toolbarClassName = 'ui-toolbar';
  *  * Implements [ARIA Toolbar](https://www.w3.org/TR/wai-aria-practices-1.1/#toolbar) design pattern.
  * @accessibilityIssues
  * [Issue 988424: VoiceOver narrates selected for button in toolbar](https://bugs.chromium.org/p/chromium/issues/detail?id=988424)
+ * [In toolbars that can toggle items in a menu, VoiceOver narrates "1" for menuitemcheckbox/radio when checked.](https://github.com/microsoft/fluentui/issues/14064)
  */
 export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
@@ -147,12 +157,14 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       overflow,
       overflowItem,
       overflowOpen,
+      overflowSentinel,
       styles,
       variables,
     } = props;
 
     const overflowContainerRef = React.useRef<HTMLDivElement>();
     const overflowItemWrapperRef = React.useRef<HTMLElement>();
+    const overflowSentinelRef = React.useRef<HTMLDivElement>();
     const offsetMeasureRef = React.useRef<HTMLDivElement>();
     const containerRef = React.useRef<HTMLElement>();
 
@@ -167,6 +179,9 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const { classes } = useStyles<ToolbarStylesProps>(composeOptions.displayName, {
       className: toolbarClassName,
       composeOptions,
+      mapPropsToStyles: () => ({
+        overflowOpen,
+      }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -292,18 +307,22 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         if (context.rtl) {
           const lastVisibleItemMarginLeft = parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginLeft) || 0;
 
-          $overflowItem.style.right = `${containerBoundingRect.right -
+          $overflowItem.style.right = `${
+            containerBoundingRect.right -
             lastVisibleItemRect.left +
             lastVisibleItemMarginLeft +
-            absolutePositioningOffset.horizontal}px`;
+            absolutePositioningOffset.horizontal
+          }px`;
         } else {
           const lastVisibleItemRightMargin =
             parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginRight) || 0;
 
-          $overflowItem.style.left = `${lastVisibleItemRect.right -
+          $overflowItem.style.left = `${
+            lastVisibleItemRect.right -
             containerBoundingRect.left +
             lastVisibleItemRightMargin +
-            absolutePositioningOffset.horizontal}px`;
+            absolutePositioningOffset.horizontal
+          }px`;
         }
       } else {
         // there is no last visible item -> position the overflow as the first item
@@ -319,6 +338,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const hideOverflowItems = () => {
       const $overflowContainer = overflowContainerRef.current;
       const $overflowItem = overflowItemWrapperRef.current;
+      const $overflowSentinel = overflowSentinelRef.current;
       const $offsetMeasure = offsetMeasureRef.current;
       if (!$overflowContainer || !$overflowItem || !$offsetMeasure) {
         return;
@@ -358,7 +378,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
       // check all items from the last one back
       _.forEachRight($items, ($item: HTMLElement, i: number) => {
-        if ($item === $overflowItem) {
+        if ($item === $overflowItem || $item === $overflowSentinel) {
           return true;
         }
 
@@ -487,6 +507,23 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         }),
       });
 
+    // renders a sentinel div that maintains the toolbar dimensions when the the overflow menu is open
+    // hidden elements are removed from the DOM
+    const renderOverflowSentinel = () => (
+      <Ref
+        innerRef={(element: HTMLDivElement) => {
+          overflowSentinelRef.current = element;
+        }}
+      >
+        {Box.create(overflowSentinel, {
+          defaultProps: () => ({
+            id: 'sentinel',
+            className: classes.overflowSentinel,
+          }),
+        })}
+      </Ref>
+    );
+
     React.useEffect(() => {
       const actualWindow: Window = context.target.defaultView;
 
@@ -498,7 +535,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
       return () => {
         if (animationFrameId.current !== undefined) {
-          context.target.defaultView.cancelAnimationFrame(animationFrameId.current);
+          context.target.defaultView?.cancelAnimationFrame(animationFrameId.current);
           animationFrameId.current = undefined;
         }
       };
@@ -518,6 +555,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
                 <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
                   <ToolbarVariablesProvider value={variables}>
                     {childrenExist(children) ? children : renderItems(getVisibleItems())}
+                    {overflowSentinel && renderOverflowSentinel()}
                     {renderOverflowItem(overflowItem)}
                   </ToolbarVariablesProvider>
                 </ToolbarMenuContextProvider>
@@ -587,6 +625,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       'overflow',
       'overflowItem',
       'overflowOpen',
+      'overflowSentinel',
       'styles',
       'variables',
     ],
@@ -613,6 +652,7 @@ Toolbar.propTypes = {
   items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item', 'group', 'toggle', 'custom']),
   overflow: PropTypes.bool,
   overflowOpen: PropTypes.bool,
+  overflowSentinel: customPropTypes.shorthandAllowingChildren,
   overflowItem: customPropTypes.shorthandAllowingChildren,
   onOverflow: PropTypes.func,
   onOverflowOpenChange: PropTypes.func,
@@ -622,6 +662,7 @@ Toolbar.defaultProps = {
   accessibility: toolbarBehavior,
   items: [],
   overflowItem: {},
+  overflowSentinel: {},
 };
 
 Toolbar.CustomItem = ToolbarCustomItem;

@@ -1,6 +1,6 @@
 import { serializeStyles } from '@emotion/serialize';
 import { EmotionCache } from '@emotion/utils';
-import { AnimationName, ICSSInJSStyle } from '@fluentui/styles';
+import { AnimationKeyFrame, AnimationName, ICSSInJSStyle } from '@fluentui/styles';
 
 import { isStyleObject } from './utils';
 
@@ -31,19 +31,23 @@ const keyframes = (
  * Allows to transform animations that are defined under "animationName" to keyframes.
  */
 export function invokeKeyframes(cache: EmotionCache, styles: ICSSInJSStyle) {
-  for (const property in styles) {
+  let property: keyof ICSSInJSStyle;
+
+  for (property in styles) {
     if (isStyleObject(styles[property])) {
       if (property === 'animationName') {
         const style = styles[property] as AnimationName;
 
         if (style.keyframe) {
           styles[property] = keyframes(cache, style.keyframe, style.params);
+          continue;
         }
 
+        styles[property] = keyframes(cache, style as AnimationKeyFrame, style.params);
         continue;
       }
 
-      styles[property] = invokeKeyframes(cache, styles[property]);
+      styles[property] = invokeKeyframes(cache, styles[property] as ICSSInJSStyle);
     }
   }
 

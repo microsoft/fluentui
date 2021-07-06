@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorTall } from '../utilities';
+import { FabricDecorator, FabricDecoratorTall } from '../utilities/index';
 import {
   DefaultButton,
   ActionButton,
@@ -10,7 +9,7 @@ import {
   IconButton,
   IButtonProps,
   CommandBarButton,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
   iconProps: {
@@ -45,7 +44,7 @@ const commandProps: IButtonProps = {
   },
 };
 
-storiesOf('Button Default', module)
+storiesOf('Button (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -76,7 +75,7 @@ storiesOf('Button Default', module)
   .addStory('No Icon', () => <DefaultButton>Button</DefaultButton>)
   .addStory('Icon Only', () => <DefaultButton iconProps={baseProps.iconProps} />);
 
-storiesOf('Button Action', module)
+storiesOf('Button Action (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -97,7 +96,7 @@ storiesOf('Button Action', module)
   .addStory('No Icon', () => <ActionButton>Button</ActionButton>)
   .addStory('Icon Only', () => <ActionButton iconProps={baseProps.iconProps} />);
 
-storiesOf('Button Compound', module)
+storiesOf('Button Compound (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -124,7 +123,7 @@ storiesOf('Button Compound', module)
   ))
   .addStory('No Icon', () => <CompoundButton {...baseProps} iconProps={undefined} />);
 
-storiesOf('Button Command', module)
+storiesOf('Button Command (compat)', module)
   .addDecorator(story => (
     <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
   ))
@@ -149,7 +148,7 @@ storiesOf('Button Command', module)
   .addStory('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
   .addStory('Checked', () => <CommandBarButton {...commandProps} checked={true} />);
 
-storiesOf('Button Split', module)
+storiesOf('Button Split (compat)', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
@@ -191,7 +190,7 @@ storiesOf('Button Split', module)
   ))
   .addStory('Command Split', () => <CommandBarButton {...commandProps} split={true} />);
 
-storiesOf('Button Special Scenarios', module)
+storiesOf('Button Special Scenarios (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
@@ -224,7 +223,7 @@ storiesOf('Button Special Scenarios', module)
     </div>
   ));
 
-storiesOf('IconButton Scenarios', module)
+storiesOf('IconButton Scenarios (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener

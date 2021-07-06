@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Styling';
+import './version';
+export * from '@fluentui/style-utilities';

@@ -1,14 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import {
-  Shimmer,
-  ShimmerElementType as ElemType,
-  ShimmerElementsGroup,
-} from 'office-ui-fabric-react';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { FabricDecorator } from '../utilities/index';
+import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from '@fluentui/react';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
 
 const wrapperClassName = mergeStyles({
   width: 400,

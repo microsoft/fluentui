@@ -22,7 +22,6 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  SizeValue,
   ShorthandFactory,
   createShorthand,
 } from '../../utils';
@@ -66,6 +65,9 @@ export interface ButtonProps
   /** A button can show a loading indicator. */
   loading?: boolean;
 
+  /** A button can be disabled and focusable at the same time. */
+  disabledFocusable?: boolean;
+
   /**
    * Called after a user clicks the button.
    * @param event - React's original SyntheticEvent.
@@ -89,13 +91,27 @@ export interface ButtonProps
   /** A button can emphasize that it represents an alternative action. */
   secondary?: boolean;
 
+  /** A button can emphasize that it represents the tinted style. */
+  tinted?: boolean;
+
   /** A button can be sized. */
-  size?: SizeValue;
+  size?: 'small' | 'medium';
 }
 
 export type ButtonStylesProps = Pick<
   ButtonProps,
-  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid' | 'iconPosition'
+  | 'text'
+  | 'primary'
+  | 'tinted'
+  | 'disabled'
+  | 'disabledFocusable'
+  | 'circular'
+  | 'size'
+  | 'loading'
+  | 'inverted'
+  | 'iconOnly'
+  | 'fluid'
+  | 'iconPosition'
 > & {
   hasContent?: boolean;
 };
@@ -124,6 +140,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       icon,
       loader,
       disabled,
+      disabledFocusable,
       iconPosition,
       loading,
       text,
@@ -135,6 +152,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       circular,
       className,
       styles,
+      tinted,
       variables,
       design,
     } = props;
@@ -147,7 +165,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         as,
         active,
         disabled,
-        loading,
+        disabledFocusable,
       }),
       actionHandlers: {
         performClick: event => {
@@ -163,6 +181,8 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         text,
         primary,
         disabled,
+        tinted,
+        disabledFocusable,
         circular,
         size,
         loading,
@@ -215,7 +235,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     };
 
     const handleClick = (e: React.SyntheticEvent) => {
-      if (disabled) {
+      if (disabled || disabledFocusable) {
         e.preventDefault();
         return;
       }
@@ -232,7 +252,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
         {...getA11yProps('root', {
           onClick: handleClick,
-          disabled,
           className: classes.root,
           onFocus: handleFocus,
           ref,
@@ -286,6 +305,8 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       'content',
       'design',
       'disabled',
+      'tinted',
+      'disabledFocusable',
       'fluid',
       'icon',
       'iconOnly',
@@ -322,6 +343,7 @@ Button.propTypes = {
   }),
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
+  disabledFocusable: PropTypes.bool,
   fluid: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
   iconOnly: PropTypes.bool,
@@ -331,10 +353,11 @@ Button.propTypes = {
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
+  tinted: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   text: PropTypes.bool,
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-  size: customPropTypes.size,
+  size: PropTypes.oneOf(['medium', 'small']),
 };
 
 Button.Group = ButtonGroup;

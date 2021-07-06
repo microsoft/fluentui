@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { isElement } from 'react-is';
 import * as _ from 'lodash';
-
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
@@ -18,7 +17,9 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Surfaces: ['Popup', 'Dialog'],
+  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Content: [
     'Text',
     'Image',
@@ -37,11 +38,10 @@ export const COMPONENT_GROUP = {
     'Status',
     'Tooltip',
     'Video',
+    'Skeleton',
   ],
-  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Surfaces: ['Popup', 'Dialog'],
 };
 
 export const DRAGGING_ELEMENTS = {
@@ -140,16 +140,16 @@ export const DRAGGING_ELEMENTS = {
         {
           gutter: (
             <FUI.Avatar
-              image="public/images/avatar/small/ade.jpg"
+              image="public/images/avatar/RobinCounts.jpg"
               status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
             />
           ),
-          message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+          message: <FUI.Chat.Message content="Hi!" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
           attached: 'top',
           key: 'message-id-4',
         },
         {
-          message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+          message: <FUI.Chat.Message content="Hello!" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
           contentPosition: 'end',
           attached: true,
           key: 'message-id-2',
@@ -265,23 +265,23 @@ export const DRAGGING_ELEMENTS = {
     props: {
       items: [
         {
-          key: 'irving',
-          media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
-          header: 'Irving Kuhic',
+          key: 'robert',
+          media: <FUI.Image src="public/images/avatar/RobertTolbert.jpg" avatar />,
+          header: 'Robert Tolbert',
           headerMedia: '7:26:56 AM',
           content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
         },
         {
-          key: 'skyler',
-          media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
-          header: 'Skyler Parks',
+          key: 'celeste',
+          media: <FUI.Image src="public/images/avatar/CelesteBurton.jpg" avatar />,
+          header: 'Celeste Burton',
           headerMedia: '11:30:17 PM',
           content: 'Use the online FTP application to input the multi-byte application!',
         },
         {
-          key: 'dante',
-          media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
-          header: 'Dante Schneider',
+          key: 'cecil',
+          media: <FUI.Image src="public/images/avatar/CecilFolk.jpg" avatar />,
+          header: 'Cecil Folk',
           headerMedia: '5:22:40 PM',
           content: 'The GB pixel is down, navigate the virtual interface!',
         },
@@ -768,82 +768,4 @@ export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONT
     result.uuid = getUUID();
   }
   return result;
-};
-
-/**
- * Displays a knob with the ability to switch between data `types`.
- */
-export const MultiTypeKnob: React.FunctionComponent<{
-  label: string;
-  types: ('boolean' | 'number' | 'string' | 'literal')[];
-  value: any;
-  onChange: (value: any) => void;
-  literalOptions: string[];
-}> = ({ label, types, value, onChange, literalOptions }) => {
-  const valueType = typeof value;
-  const defaultType = valueType !== 'undefined' ? valueType : types[0];
-  const [type, setType] = React.useState(defaultType);
-  const knob = knobs[type];
-  const handleChangeType = React.useCallback(
-    e => setType(e.target.value), // @ts-ignore
-    [],
-  );
-
-  // console.log('MultiTypeKnob', { label, value, type, types });
-
-  const propId = `prop-${label}`;
-
-  return (
-    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
-      <div>
-        {type !== 'boolean' && <label htmlFor={propId}>{label} </label>}
-        {types.length === 1 ? (
-          <code style={{ float: 'right' }}>{type}</code>
-        ) : (
-          types.map(t => (
-            <button key={t} onClick={() => handleChangeType(t)}>
-              {t}
-            </button>
-          ))
-        )}
-      </div>
-      {knob && knob({ options: literalOptions, value, onChange, id: propId })}
-      {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
-    </div>
-  );
-};
-
-export const knobs = {
-  boolean: ({ value, onChange, id }) => (
-    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
-  ),
-
-  number: ({ value, onChange, id }) => (
-    <input
-      id={id}
-      style={{ width: '100%' }}
-      type="number"
-      value={Number(value)}
-      onChange={e => onChange(Number(e.target.value))}
-    />
-  ),
-
-  string: ({ value, onChange, id }) => (
-    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
-  ),
-
-  literal: ({ options, value, onChange, id }) => (
-    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
-      {options?.map((
-        opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
-      ) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  ),
-
-  ReactText: (value, onChange, id) => knobs.string({ value, onChange, id }),
-  'React.ElementType': (value, onChange, id) => knobs.string({ value, onChange, id }),
 };

@@ -1,123 +1,79 @@
-import { mount } from 'enzyme';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/server';
-import { create } from '@uifabric/utilities/lib/test';
-import { Customizer } from '@uifabric/utilities';
-import { createTheme } from '@uifabric/styling';
-
+import { mount, ReactWrapper } from 'enzyme';
+import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
+import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
 
 describe('Link', () => {
-  it('renders Link correctly', () => {
-    const component = create(<Link href="#">I'm a link</Link>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-  it('renders disabled Link correctly', () => {
-    const component = create(
-      <Link href="#" disabled={true}>
-        I'm a disabled link
-      </Link>,
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-  it('renders Link with no href as a button', () => {
-    const component = create(<Link>I'm a link as a button</Link>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  let wrapper: ReactWrapper | undefined;
 
-  it('Set type=button property when link is a button', () => {
-    const component = mount(<Link>I'm link as a button</Link>);
-
-    expect(Object.keys(component.find('button').props())).toContain('type');
-    expect(component.find('button').props().type).toBe('button');
-  });
-
-  it('renders disabled Link with no href as a button correctly', () => {
-    const component = create(<Link disabled={true}>I'm a link as a button</Link>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-  it('renders Link with a custom class name', () => {
-    const component = create(
-      <Link href="#" className="customClassName">
-        I'm a link
-      </Link>,
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders Link with "as=div" a div element', () => {
-    const component = create(
-      <Link as="div" className="customClassName">
-        I'm a div
-      </Link>,
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('supports non button/anchor html attributes when "as=" is used', () => {
-    const component = create(<Link as="input" type="text" value={'This is an input.'} className="customClassName" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders Link with "as=Route" a Route element', () => {
-    class Route extends React.Component {
-      public render() {
-        return null;
-      }
+  afterEach(() => {
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
     }
+  });
 
-    const component = create(
-      <Link as={Route} className="customClassName">
-        I'm a Route
+  isConformant({
+    Component: Link,
+    displayName: 'Link',
+  });
+
+  describe('AccessibilityLinkBehavior', () => {
+    const testFacade = new ComponentTestFacade(Link, {});
+    const errors = validateBehavior(linkBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  it('renders as a button if no href is provided', () => {
+    wrapper = mount(<Link>This is a link</Link>);
+    const button = wrapper.find('button');
+    const anchor = wrapper.find('a');
+    expect(button.length).toBe(1);
+    expect(anchor.length).toBe(0);
+
+    const tree = button.debug();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders as an anchor when href is provided', () => {
+    wrapper = mount(<Link href="https://www.bing.com">This is a link</Link>);
+    const button = wrapper.find('button');
+    const anchor = wrapper.find('a');
+    expect(button.length).toBe(0);
+    expect(anchor.length).toBe(1);
+
+    const tree = anchor.debug();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can be focused when rendered as an anchor', () => {
+    const rootRef = React.createRef<HTMLAnchorElement>();
+
+    wrapper = mount(
+      <Link href="https://www.bing.com" ref={rootRef}>
+        This is a link
       </Link>,
     );
-    const testInstance = component.root;
-    expect(() => testInstance.findByType(Route)).not.toThrow();
+
+    expect(typeof rootRef.current).toEqual('object');
+    expect(document.activeElement).not.toEqual(rootRef.current);
+
+    rootRef.current?.focus();
+
+    expect(document.activeElement).toEqual(rootRef.current);
   });
 
-  it('can have the global styles for Link component be disabled', () => {
-    const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
+  it('can be focused when rendered as a button', () => {
+    const rootRef = React.createRef<HTMLAnchorElement>();
 
-    expect(
-      /ms-Link($| )/.test(
-        ReactDOM.renderToStaticMarkup(
-          <Customizer settings={{ theme: NoClassNamesTheme }}>
-            <Link href="helloworld.html">My Link</Link>
-          </Customizer>,
-        ),
-      ),
-    ).toBe(false);
-  });
+    wrapper = mount(<Link ref={rootRef}>This is a link</Link>);
 
-  it('does not throw a React warning when the componentRef prop is provided', () => {
-    const myRef = React.createRef<HTMLDivElement>();
+    expect(typeof rootRef.current).toEqual('object');
+    expect(document.activeElement).not.toEqual(rootRef.current);
 
-    const renderLinkWithComponentRef = () =>
-      mount(
-        <Link as="div" className="customClassName" componentRef={myRef}>
-          I'm a div
-        </Link>,
-      );
+    rootRef.current?.focus();
 
-    expect(renderLinkWithComponentRef).not.toThrow();
-  });
-
-  it('does not pass the componentRef property through to the button element', () => {
-    const myRef = React.createRef<HTMLDivElement>();
-
-    const component = mount(
-      <Link className="customClassName" componentRef={myRef}>
-        I'm a div
-      </Link>,
-    );
-
-    expect(Object.keys(component.find('button').props())).not.toContain('componentRef');
+    expect(document.activeElement).toEqual(rootRef.current);
   });
 });

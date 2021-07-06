@@ -1,7 +1,6 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, keyboardKey } from '@fluentui/accessibility';
 import { useAccessibility } from '@fluentui/react-bindings';
 import { mount, shallow } from 'enzyme';
-import { keyboardKey } from '@fluentui/keyboard-key';
 import * as React from 'react';
 
 type TestBehaviorProps = {
@@ -231,12 +230,9 @@ describe('useAccessibility', () => {
     const onClick = jest.fn();
     const wrapper = mount(<TestComponent onClick={onClick} onKeyDown={onKeyDown} />);
 
-    wrapper
-      .find('div')
-      .simulate('click')
-      .simulate('keydown', {
-        keyCode: keyboardKey.ArrowDown,
-      });
+    wrapper.find('div').simulate('click').simulate('keydown', {
+      keyCode: keyboardKey.ArrowDown,
+    });
 
     expect(onKeyDown).toBeCalledTimes(1);
     expect(onKeyDown).toBeCalledWith(

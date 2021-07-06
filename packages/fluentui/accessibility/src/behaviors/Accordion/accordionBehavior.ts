@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 import { Accessibility } from '../../types';
 
 /**
@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  * Triggers 'moveFirst' action with 'Home' on 'root'.
  * Triggers 'moveLast' action with 'End' on 'root'.
  */
-export const accordionBehavior: Accessibility = () => ({
+export const accordionBehavior: Accessibility<AccordionBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'presentation',

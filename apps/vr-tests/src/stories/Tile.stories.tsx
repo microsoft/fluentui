@@ -7,11 +7,11 @@ import {
   NewSignal,
   SharedSignal,
   ITileBackgroundProps,
-} from '@uifabric/experiments';
+} from '@fluentui/react-experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
-import { FabricDecorator } from '../utilities';
+import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
+import { FabricDecorator } from '../utilities/index';
 
 interface IDocumentItem {
   name: JSX.Element;
@@ -74,7 +74,7 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 
     return (
       <img
-        src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
         style={{ display: 'block' }}
       />
     );
@@ -108,7 +108,7 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
   function renderBackground(backgroundProps: ITileBackgroundProps) {
     return (
       <img
-        src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
         style={{ display: 'block' }}
       />
     );

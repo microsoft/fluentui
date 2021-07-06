@@ -1,16 +1,8 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
 
-/**
- * @description
- * Adds tabIndex='0' to 'trigger' slot, if it is not tabbable element and no tabIndex attribute provided.
- *
- * @specification
- * Adds attribute 'role=dialog' to 'popup' slot if 'trapFocus' property is true. Sets the attribute to 'complementary' otherwise.
- * Adds attribute 'aria-modal=true' to 'popup' slot if 'trapFocus' property is true. Does not set the attribute otherwise.
- */
 export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
   const onAsArray = _.isArray(props.on) ? props.on : [props.on];
   const tabbableTriggerProps = props.tabbableTrigger
@@ -32,8 +24,9 @@ export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
         ...tabbableTriggerProps,
       },
       popup: {
-        role: props.trapFocus ? 'dialog' : 'complementary',
+        role: props.trapFocus ? 'dialog' : props.inline ? undefined : 'complementary',
         'aria-modal': props.trapFocus ? true : undefined,
+        'data-popup-trapfocus': props.trapFocus ? true : undefined,
       },
     },
     keyActions: {
@@ -120,4 +113,6 @@ export type PopupBehaviorProps = {
   tabbableTrigger?: boolean;
   /** Whether the popup was opened by right click */
   isOpenedByRightClick?: boolean;
+  /** Whether the Popup should be rendered inline with the trigger or in the body. */
+  inline?: boolean;
 };

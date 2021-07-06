@@ -2,7 +2,7 @@ export const meta = {
   title: 'Shorthand Props',
   previous: { name: 'Introduction', url: '/' },
   next: { url: '/composition', name: 'Composition' },
-}
+};
 
 Fluent UI components can have "slots" which accept shothand props. For example, `Loader` component has an `label` slot which value defines the message that will appear together with the loading indicator.
 
@@ -98,9 +98,9 @@ The same approach can be used with components that accept shorthand collections,
       tooltip: 'First item',
       children: (Component, props) => {
         /* ☝️ `tooltip` comes from shorthand object */
-        const { tooltip, ...rest } = props
+        const { tooltip, ...rest } = props;
 
-        return <Tooltip content={tooltip} trigger={<Component {...props} />} />
+        return <Tooltip content={tooltip} trigger={<Component {...props} />} />;
       },
     },
   ]}

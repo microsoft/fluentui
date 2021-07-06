@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ComboBox';
+export * from './components/ComboBox/index';

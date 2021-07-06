@@ -8,6 +8,9 @@
 export function addDays(date: Date, days: number): Date;
 
 // @public
+export const addMinutes: (date: Date, minutes: number) => Date;
+
+// @public
 export function addMonths(date: Date, months: number): Date;
 
 // @public
@@ -15,6 +18,9 @@ export function addWeeks(date: Date, weeks: number): Date;
 
 // @public
 export function addYears(date: Date, years: number): Date;
+
+// @public
+export const ceilMinuteToIncrement: (date: Date, increments: number) => Date;
 
 // @public
 export function compareDatePart(date1: Date, date2: Date): Number;
@@ -62,7 +68,7 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings;
 export const DEFAULT_DATE_FORMATTING: IDateFormatting;
 
 // @public (undocumented)
-export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings;
+export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings;
 
 // @public
 export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
@@ -81,10 +87,16 @@ export enum FirstWeekOfYear {
 export const formatDay: (date: Date) => string;
 
 // @public
+export const formatMonth: (date: Date, strings: IDateGridStrings) => string;
+
+// @public
 export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
 
 // @public
 export const formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
+
+// @public
+export const formatTimeString: (date: Date, showSeconds?: boolean | undefined, useHour12?: boolean | undefined) => string;
 
 // @public
 export const formatYear: (date: Date) => string;
@@ -136,23 +148,14 @@ export interface IAvailableDateOptions extends IRestrictedDatesOptions {
 }
 
 // @public (undocumented)
-export interface ICalendarStrings extends IDateFormatting {
-    calendarCellFormatString?: string;
+export interface ICalendarStrings extends IDateGridStrings {
     closeButtonAriaLabel?: string;
+    dayMarkedAriaLabel?: string;
     goToToday: string;
-    inputAriaLabel?: string;
-    inputBoundedFormatString?: string;
-    inputMaxBoundedFormatString?: string;
-    inputMinBoundedFormatString?: string;
-    inputPlaceholder: string;
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
     monthPickerHeaderAriaLabel?: string;
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
     nextYearRangeAriaLabel?: string;
-    openCalendarTitle: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
     prevYearRangeAriaLabel?: string;
@@ -163,12 +166,12 @@ export interface ICalendarStrings extends IDateFormatting {
 }
 
 // @public (undocumented)
-export interface IDateFormatting extends IDateGridStrings {
+export interface IDateFormatting {
     formatDay: (date: Date) => string;
+    formatMonth: (date: Date, strings: IDateGridStrings) => string;
     formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
     formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
     formatYear: (date: Date) => string;
-    parseDate: (date: string) => Date | null;
 }
 
 // @public (undocumented)
@@ -177,18 +180,6 @@ export interface IDateGridStrings {
     months: string[];
     shortDays: string[];
     shortMonths: string[];
-}
-
-// @public (undocumented)
-export interface IDatepickerOptions extends IRestrictedDatesOptions {
-    dateRangeType: DateRangeType;
-    daysToSelectInDayView?: number;
-    firstDayOfWeek: DayOfWeek;
-    firstWeekOfYear: FirstWeekOfYear;
-    markedDays?: Date[];
-    showWeekNumbers?: boolean;
-    today?: Date;
-    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)
@@ -204,10 +195,18 @@ export interface IDay {
 }
 
 // @public (undocumented)
-export interface IDayGridOptions extends IDatepickerOptions {
+export interface IDayGridOptions extends IRestrictedDatesOptions {
+    dateRangeType: DateRangeType;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    markedDays?: Date[];
     navigatedDate: Date;
     selectedDate: Date;
+    showWeekNumbers?: boolean;
+    today?: Date;
     weeksToShow?: number;
+    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)
@@ -262,6 +261,20 @@ export enum MonthOfYear {
 
 // @public
 export function setMonth(date: Date, month: number): Date;
+
+// @public (undocumented)
+export const TimeConstants: {
+    MillisecondsInOneDay: number;
+    MillisecondsIn1Sec: number;
+    MillisecondsIn1Min: number;
+    MillisecondsIn30Mins: number;
+    MillisecondsIn1Hour: number;
+    MinutesInOneDay: number;
+    MinutesInOneHour: number;
+    DaysInOneWeek: number;
+    MonthInOneYear: number;
+    HoursInOneDay: number;
+};
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "migrate-converged-pkg",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Package name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Which converged package would you like migrate to new DX? (ex: @fluentui/react-menu)",
+      "pattern": "^[a-zA-Z].*$"
+    },
+    "stats": {
+      "type": "boolean",
+      "description": "Get statistics for how many projects have been migrated"
+    }
+  },
+  "required": []
+}

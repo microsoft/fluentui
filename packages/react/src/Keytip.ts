@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Keytip';
+export * from './components/Keytip/index';

@@ -12,6 +12,7 @@ export const menuItemContentStyles: ComponentSlotStylesPrepared<MenuItemContentS
       marginTop: pxToRem(-4),
       marginBottom: pxToRem(-4),
       display: 'inline-block',
+      userSelect: 'none',
       ...((p.inSubmenu || p.vertical) && {
         width: 'max-content',
         minWidth: pxToRem(46 - widthAdjust),

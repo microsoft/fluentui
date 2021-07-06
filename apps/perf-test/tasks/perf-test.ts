@@ -1,106 +1,19 @@
-// @ts-check
-
-const fs = require('fs');
-const path = require('path');
-const flamegrill = require('flamegrill');
-const scenarioIterations = require('../src/scenarioIterations');
-const { scenarioRenderTypes, DefaultRenderTypes } = require('../src/scenarioRenderTypes');
-const { argv } = require('@uifabric/build').just;
+import fs from 'fs';
+import path from 'path';
+import flamegrill, { CookResults, Scenarios, ScenarioConfig, CookResult } from 'flamegrill';
+import scenarioIterations from '../src/scenarioIterations';
+import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
+import { argv } from '@fluentui/scripts';
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
 
 // TODO: consolidate with newer version of fluent perf-test
 
-// Flamegrill Types
-/**
- * @typedef {{
- *   scenario: string;
- *   baseline?: string;
- * }} Scenario
- *
- * @typedef {{
- *   [scenarioName: string]: Scenario;
- * }} Scenarios
- *
- * @typedef {{
- *   outDir?: string;
- *   tempDir?: string;
- * }} ScenarioConfig
- *
- * @typedef {{
- *   Timestamp: number;
- *   Documents: number;
- *   Frames: number;
- *   JSEventListeners: number;
- *   Nodes: number;
- *   LayoutCount: number;
- *   RecalcStyleCount: number;
- *   LayoutDuration: number;
- *   RecalcStyleDuration: number;
- *   ScriptDuration: number;
- *   TaskDuration: number;
- *   JSHeapUsedSize: number;
- *   JSHeapTotalSize: number;
- * }} Metrics
- *
- * @typedef {{
- *   logFile: string;
- *   metrics: Metrics;
- *   baseline?: {
- *     logFile: string;
- *     metrics: Metrics;
- *   }
- * }} ScenarioProfile
- *
- * @typedef {{
- *   dataFile: string;
- *   flamegraphFile: string;
- * }} ProcessedOutput
- *
- * @typedef {{
- *   errorFile: string;
- * }} ProcessedError
- *
- * @typedef {{
- *   output?: ProcessedOutput;
- *   error?: ProcessedError;
- *   baseline?: {
- *     output?: ProcessedOutput;
- *     error?: ProcessedError;
- *   }
- * }} ProcessedScenario
- *
- * @typedef {{
- *   numTicks: number;
- * }} Analysis
- *
- * @typedef {{
- *   summary: string;
- *   isRegression: boolean;
- *   regressionFile?: string;
- * }} RegressionAnalysis
- *
- * @typedef {{
- *   numTicks: number;
- *   baseline?: Analysis;
- *   regression?: RegressionAnalysis;
- * }} ScenarioAnalysis
- *
- * @typedef {{
- *   profile: ScenarioProfile;
- *   processed: ProcessedScenario;
- *   analysis?: ScenarioAnalysis;
- * }} CookResult
- *
- * @typedef {{
- *   [scenarioName: string]: CookResult;
- * }} CookResults
- */
-
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
 const iterationsDefault = 5000;
 
+/* eslint-disable @fluentui/max-len */
 // TODO:
 //  - Results Analysis
 //    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
@@ -189,8 +102,8 @@ const iterationsDefault = 5000;
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
-const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
+const urlForDeployPath = process.env.DEPLOYURL
+  ? `${process.env.DEPLOYURL}/perf-test`
   : 'file://' + path.resolve(__dirname, '../dist/');
 
 // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
@@ -199,15 +112,18 @@ const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 // const urlForDeploy = urlForDeployPath + '/index.html';
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
-const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
-  : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
+const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
+const urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
-module.exports = async function getPerfRegressions() {
-  const iterationsArgv = /** @type {number} */ argv().iterations;
+export async function getPerfRegressions() {
+  // For debugging, in case the environment variables used to generate these have unexpected values
+  console.log(`urlForDeployPath: "${urlForDeployPath}"`);
+  console.log(`urlForMaster: "${urlForMaster}"`);
+
+  const iterationsArgv: number = argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
 
   const scenariosAvailable = fs
@@ -215,8 +131,8 @@ module.exports = async function getPerfRegressions() {
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
 
-  const scenariosArgv = /** @type {string} */ argv().scenarios;
-  const scenariosArg = (scenariosArgv && scenariosArgv.split && scenariosArgv.split(',')) || [];
+  const scenariosArgv: string = argv().scenarios;
+  const scenariosArg = scenariosArgv?.split?.(',') || [];
   scenariosArg.forEach(scenario => {
     if (!scenariosAvailable.includes(scenario)) {
       throw new Error(`Invalid scenario: ${scenario}.`);
@@ -225,8 +141,7 @@ module.exports = async function getPerfRegressions() {
 
   const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
-  /** @type {Scenarios} */
-  const scenarios = {};
+  const scenarios: Scenarios = {};
   const scenarioSettings = {};
   scenarioList.forEach(scenarioName => {
     if (!scenariosAvailable.includes(scenarioName)) {
@@ -268,8 +183,7 @@ module.exports = async function getPerfRegressions() {
     }
   }
 
-  /** @type {ScenarioConfig} */
-  const scenarioConfig = {
+  const scenarioConfig: ScenarioConfig = {
     outDir,
     tempDir,
     pageActions: async (page, options) => {
@@ -282,12 +196,9 @@ module.exports = async function getPerfRegressions() {
     },
   };
 
-  /** @type {CookResults} */
-  const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
+  const scenarioResults: CookResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  let comment = createReport(scenarioSettings, scenarioResults);
-
-  comment = comment.concat(getFluentPerfRegressions());
+  const comment = createReport(scenarioSettings, scenarioResults) + getFluentPerfRegressions();
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -300,16 +211,13 @@ module.exports = async function getPerfRegressions() {
 
   console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
-};
+}
 
 /**
  * Create test summary based on test results.
- *
- * @param {CookResults} testResults
- * @returns {string}
  */
-function createReport(scenarioSettings, testResults) {
-  const report = '## [Perf Analysis](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
+function createReport(scenarioSettings, testResults: CookResults) {
+  const report = '## [Perf Analysis (`@fluentui/react`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
     .concat(createScenarioTable(scenarioSettings, testResults, false))
@@ -324,12 +232,9 @@ function createReport(scenarioSettings, testResults) {
 
 /**
  * Create a table of scenario results.
- *
- * @param {CookResults} testResults
- * @param {boolean} showAll Show only significant results by default.
- * @returns {string}
+ * @param showAll Show only significant results by default.
  */
-function createScenarioTable(scenarioSettings, testResults, showAll) {
+function createScenarioTable(scenarioSettings, testResults: CookResults, showAll: boolean) {
   const resultsToDisplay = Object.keys(testResults).filter(
     key =>
       showAll ||
@@ -381,12 +286,8 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
 
 /**
  * Helper that renders an output cell based on a test result.
- *
- * @param {CookResult} testResult
- * @param {boolean} getBaseline
- * @returns {string}
  */
-function getCell(testResult, getBaseline) {
+function getCell(testResult: CookResult, getBaseline: boolean) {
   let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile;
   let errorFile = testResult.processed.error && testResult.processed.error.errorFile;
   let numTicks = testResult.analysis && testResult.analysis.numTicks;
@@ -409,11 +310,8 @@ function getCell(testResult, getBaseline) {
 
 /**
  * Helper that renders an output cell based on a test result.
- *
- * @param {CookResult} testResult
- * @returns {string}
  */
-function getRegression(testResult) {
+function getRegression(testResult: CookResult) {
   const cell =
     testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
       ? testResult.analysis.regression.regressionFile

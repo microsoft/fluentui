@@ -14,8 +14,9 @@ import {
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
+import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
-import { getCode } from '@fluentui/keyboard-key';
+import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
@@ -31,7 +32,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker', process.env.NODE_ENV === 'production' && 'SvgIcon'];
+const componentsBlackList = ['Debug', 'Design', process.env.NODE_ENV === 'production' && 'SvgIcon'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarProps {
@@ -61,6 +62,11 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'chatMssages',
     title: { content: 'Chat Messages', as: NavLink, to: '/prototype-chat-messages' },
+    public: true,
+  },
+  {
+    id: 'compactChat',
+    title: { content: 'Compact Chat', as: NavLink, to: '/prototype-compact-chat' },
     public: true,
   },
   {
@@ -119,6 +125,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'roster',
+    title: { content: 'Roster', as: NavLink, to: '/prototype-roster' },
+    public: false,
+  },
+  {
     id: 'searchpage',
     title: { content: 'Search Page', as: NavLink, to: '/prototype-search-page' },
     public: false,
@@ -140,6 +151,11 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'virtualized-tree',
     title: { content: 'VirtualizedTree', as: NavLink, to: '/virtualized-tree' },
+    public: true,
+  },
+  {
+    id: 'virtualized-sticky-tree',
+    title: { content: 'Virtualized StickyTree', as: NavLink, to: '/virtualized-sticky-tree' },
     public: true,
   },
   {
@@ -188,11 +204,6 @@ const prototypesTreeItems: TreeProps['items'] = [
     title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
     public: true,
   },
-  {
-    id: 'unstable-datepicker',
-    title: { content: 'Datepicker', as: NavLink, to: '/unstable-datepicker' },
-    public: true,
-  },
 ];
 
 const baseTreeItems: TreeProps['items'] = [
@@ -237,28 +248,6 @@ const baseTreeItems: TreeProps['items'] = [
           to: '/icon-viewer',
         },
       },
-      {
-        id: 'component-architecture',
-        title: {
-          as: NavLink,
-          content: 'Component Architecture',
-          activeClassName: 'active',
-          to: '/component-architecture',
-        },
-      },
-      ...(process.env.NODE_ENV !== 'production'
-        ? [
-            {
-              id: 'theming-specification',
-              title: {
-                as: NavLink,
-                content: 'Theming Specification',
-                activeClassName: 'active',
-                to: '/theming-specification',
-              },
-            },
-          ]
-        : []),
     ],
   },
   {
@@ -315,15 +304,6 @@ const baseTreeItems: TreeProps['items'] = [
           as: NavLink,
           activeClassName: 'active',
           to: '/integrate-custom-components',
-        },
-      },
-      {
-        id: 'styles-overrides',
-        title: {
-          content: 'Styles overrides',
-          as: NavLink,
-          activeClassName: 'active',
-          to: '/styles-overrides',
         },
       },
       {
@@ -491,30 +471,33 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         >
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
-        <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
-          {(active, onClick) => (
-            <Box
-              as="code"
-              onClick={onClick}
-              styles={{
-                display: 'block',
-                fontWeight: 'normal',
-                fontSize: '12px',
-                opacity: active ? 1 : 0.6,
-                color: active ? 'rgb(138, 255, 124)' : 'inherit',
-                marginTop: '10px',
-                cursor: 'pointer',
-                ...(!active && {
-                  ':hover': {
-                    opacity: 0.75,
-                  },
-                }),
-              }}
-            >
-              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
-            </Box>
-          )}
-        </CopyToClipboard>
+        <VersionDropdown width={props.width} />
+        {process.env.NIGHTLYRELEASEDATE ? null : (
+          <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
+            {(active, onClick) => (
+              <Box
+                as="code"
+                onClick={onClick}
+                styles={{
+                  display: 'block',
+                  fontWeight: 'normal',
+                  fontSize: '12px',
+                  opacity: active ? 1 : 0.6,
+                  color: active ? 'rgb(138, 255, 124)' : 'inherit',
+                  marginTop: '10px',
+                  cursor: 'pointer',
+                  ...(!active && {
+                    ':hover': {
+                      opacity: 0.75,
+                    },
+                  }),
+                }}
+              >
+                {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
+              </Box>
+            )}
+          </CopyToClipboard>
+        )}
       </Flex>
       <Flex column>
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
@@ -566,6 +549,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           setActiveItemIds(activeItemIds);
         }}
       />
+      {/* TODO enable after we have data
+      <Flex column>
+        <NavLink to="/perf-tests" exact style={topItemTheme}>
+          <Box>Performance Tests</Box>
+        </NavLink>
+      </Flex> */}
     </Segment>
   );
 };

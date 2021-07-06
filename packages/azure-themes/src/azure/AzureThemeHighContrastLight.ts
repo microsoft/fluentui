@@ -1,8 +1,9 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { createTheme, Theme } from '@fluentui/react';
 import { CommonSemanticColors, HighContrastLightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
+import { AzureStyleSettings } from './AzureStyleSettings';
 
 const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: HighContrastLightSemanticColors.background,
@@ -16,6 +17,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   buttonBackgroundHovered: HighContrastLightSemanticColors.secondaryButton.hover.background,
   buttonBackgroundPressed: HighContrastLightSemanticColors.secondaryButton.pressed.background,
   ButtonBorderDisabled: HighContrastLightSemanticColors.disabledButton.text,
+  ButtonBorderFocus: HighContrastLightSemanticColors.secondaryButton.focus.border,
   buttonText: HighContrastLightSemanticColors.secondaryButton.rest.text,
   buttonTextChecked: HighContrastLightSemanticColors.secondaryButton.pressed.border,
   buttonTextCheckedHovered: HighContrastLightSemanticColors.secondaryButton.hover.border,
@@ -30,11 +32,13 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   checkBoxCheck: HighContrastLightSemanticColors.checkBox.rest.check,
   checkBoxCheckedFocus: HighContrastLightSemanticColors.checkBox.rest.focus,
   checkBoxCheckHover: HighContrastLightSemanticColors.checkBox.rest.hover,
+  checkBoxCheckHoverTest: HighContrastLightSemanticColors.checkBox.rest.hoverText,
   checkBoxCheckedDisabledBackground: HighContrastLightSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: HighContrastLightSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: HighContrastLightSemanticColors.checkBox.rest.check,
   checkBoxIndeterminateDefaultChecked: HighContrastLightSemanticColors.checkBox.checked.default,
   choiceGroupUncheckedDotHover: HighContrastLightSemanticColors.choiceGroup.circle.hover,
+  choiceGroupFocusBorder: HighContrastLightSemanticColors.choiceGroup.focus,
   commandBarBorder: HighContrastLightSemanticColors.commandBar.border,
   datePickerDisabledBorder: HighContrastLightSemanticColors.datePicker.disabled.border,
   datePickerSelectionBackground: HighContrastLightSemanticColors.primaryButton.hover.background,
@@ -84,14 +88,25 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   radioButtonThumbUncheckedDisabled: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
   radioButtonThumbCheckedDisabled: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: HighContrastLightSemanticColors.radioButton.circle.checkedDisabled,
+  rowFocus: HighContrastLightSemanticColors.detailsRow.focus,
   tabHover: HighContrastLightSemanticColors.tabs.hover,
   variantBorder: HighContrastLightSemanticColors.controlOutlines.rest,
   // extended
+  commandBarButtonAfterColor: HighContrastLightSemanticColors.commandBar.button.focus.borderColor,
+  commandBarButtonBackgroundHover: HighContrastLightSemanticColors.commandBar.button.hover.background,
+  commandBarButtonBackgroundSelected: HighContrastLightSemanticColors.commandBar.button.selected.background,
+  commandBarButtonBackgroundSelectedHover: HighContrastLightSemanticColors.commandBar.button.selectedHover.background,
+  commandBarButtonIconHover: HighContrastLightSemanticColors.commandBar.button.hover.icon,
+  commandBarButtonIconSelected: HighContrastLightSemanticColors.commandBar.button.selected.icon,
+  commandBarButtonText: HighContrastLightSemanticColors.commandBar.button.root.color,
+  commandBarButtonTextDisabled: HighContrastLightSemanticColors.commandBar.button.disabled.color,
+  commandBarButtonTextHover: HighContrastLightSemanticColors.commandBar.button.hover.color,
   controlAccent: HighContrastLightSemanticColors.controlOutlines.accent,
+  controlBackground: HighContrastLightSemanticColors.controlOutlines.background,
+  controlFocus: HighContrastLightSemanticColors.controlOutlines.focus,
   controlOutline: HighContrastLightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: HighContrastLightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: HighContrastLightSemanticColors.controlOutlines.hover,
-  iconButtonBackground: HighContrastLightSemanticColors.primaryButton.hover.background,
   iconButtonFill: HighContrastLightSemanticColors.text.icon,
   iconButtonFillHovered: HighContrastLightSemanticColors.primaryButton.hover.text,
   labelText: HighContrastLightSemanticColors.text.label,
@@ -114,6 +129,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   statusWarningText: HighContrastLightSemanticColors.text.body,
   statusWarningIcon: HighContrastLightSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: HighContrastLightSemanticColors.teachingBubble.rest.background,
+  teachingBubbleBorder: HighContrastLightSemanticColors.teachingBubble.rest.border,
   teachingBubblePrimaryButtonHover: HighContrastLightSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: HighContrastLightSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: HighContrastLightSemanticColors.teachingBubble.rest.text,
@@ -121,16 +137,20 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '1px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'dashed',
   listUnderline: 'underline',
   linkBorderStyle: 'dashed',
 };
 
-export const AzureThemeHighContrastLight: ITheme = createTheme({
+export const AzureThemeHighContrastLight: Theme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
       fontSize: FontSizes.size13,
+    },
+    large: {
+      fontSize: FontSizes.size14,
     },
   },
   palette: {
@@ -146,3 +166,5 @@ export const AzureThemeHighContrastLight: ITheme = createTheme({
   },
   semanticColors: highContrastLightExtendedSemanticColors,
 });
+
+AzureThemeHighContrastLight.components = AzureStyleSettings(AzureThemeHighContrastLight);

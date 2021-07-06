@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Layer } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Layer } from '@fluentui/react';
 
 storiesOf('Layer', module)
   .addDecorator(FabricDecorator)

@@ -1,29 +1,42 @@
-// @ts-check
+import { task, series, parallel, condition, option, argv, addResolvePath } from 'just-scripts';
+import { Arguments } from 'yargs-parser';
 
-const { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } = require('just-scripts');
+import path from 'path';
+import fs from 'fs';
 
-const path = require('path');
-const fs = require('fs');
+import { babel } from './tasks/babel';
+import { clean } from './tasks/clean';
+import { copy } from './tasks/copy';
+import { jest as jestTask, jestWatch } from './tasks/jest';
+import { sass } from './tasks/sass';
+import { ts } from './tasks/ts';
+import { eslint } from './tasks/eslint';
+import { webpack, webpackDevServer } from './tasks/webpack';
+import { apiExtractor } from './tasks/api-extractor';
+import { lintImports } from './tasks/lint-imports';
+import { prettier } from './tasks/prettier';
+import { checkForModifiedFiles } from './tasks/check-for-modified-files';
+import { generateVersionFiles } from './tasks/generate-version-files';
+import { postprocessTask } from './tasks/postprocess';
+import { postprocessAmdTask } from './tasks/postprocess-amd';
+import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
+import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 
-const { clean } = require('./tasks/clean');
-const { copy } = require('./tasks/copy');
-const { jest: jestTask, jestWatch } = require('./tasks/jest');
-const { sass } = require('./tasks/sass');
-const { ts } = require('./tasks/ts');
-const { eslint } = require('./tasks/eslint');
-const { webpack, webpackDevServer } = require('./tasks/webpack');
-const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
-const lintImports = require('./tasks/lint-imports');
-const prettier = require('./tasks/prettier');
-const bundleSizeCollect = require('./tasks/bundle-size-collect');
-const checkForModifiedFiles = require('./tasks/check-for-modified-files');
-const generateVersionFiles = require('./tasks/generate-version-files');
-const generatePackageManifestTask = require('./tasks/generate-package-manifest');
-const { postprocessTask } = require('./tasks/postprocess');
-const { postprocessAmdTask } = require('./tasks/postprocess-amd');
-const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
-const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
-const { fluentuiLernaPublish } = require('./tasks/fluentui-publish');
+interface BasicPresetArgs extends Arguments {
+  babel: boolean;
+  production: boolean;
+  webpackConfig: string;
+  commonjs: boolean;
+  cached: boolean;
+  registry: string;
+  push: boolean;
+  package: string;
+  min: boolean;
+}
+
+function getJustArgv() {
+  return argv() as Partial<BasicPresetArgs>;
+}
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -37,14 +50,16 @@ function basicPreset() {
   // Build only commonjs (not other TS variants) but still run other tasks
   option('commonjs');
 
-  option('cached', { default: false });
+  option('cached', { default: false } as any);
 
-  option('registry', { default: 'https://registry.npmjs.org' });
+  option('registry', { default: 'https://registry.npmjs.org' } as any);
 
-  option('push', { default: true });
+  option('push', { default: true } as any);
+
+  option('package', { alias: 'p' });
 }
 
-module.exports = function preset() {
+export function preset() {
   basicPreset();
 
   task('no-op', () => {}).cached();
@@ -62,32 +77,35 @@ module.exports = function preset() {
   task('eslint', eslint);
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
-  task('webpack-dev-server', webpackDevServer);
-  task('api-extractor:verify', verifyApiExtractor());
-  task('api-extractor:update', updateApiExtractor());
+  task('webpack-dev-server', webpackDevServer(getJustArgv()));
+  task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
-  task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
-
-  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
-  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('babel:postprocess', babel);
 
   task('ts:compile', () => {
-    return argv().commonjs
+    const args = getJustArgv();
+
+    return args.commonjs
       ? 'ts:commonjs-only'
       : parallel(
-          condition('ts:commonjs', () => !argv().min),
+          condition('ts:commonjs', () => !args.min),
           'ts:esm',
-          condition('ts:amd', () => !!argv().production),
+          condition('ts:amd', () => !!args.production),
         );
   });
 
-  task('ts', series('ts:compile', 'ts:postprocess'));
+  task('ts', () => {
+    return series(
+      'ts:compile',
+      'ts:postprocess',
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    );
+  });
 
   task(
     'test',
@@ -97,7 +115,6 @@ module.exports = function preset() {
   task('lint', parallel('lint-imports', 'eslint'));
 
   task('code-style', series('prettier', 'lint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
@@ -111,17 +128,19 @@ module.exports = function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => !argv().min),
+      condition('api-extractor', () => !getJustArgv().min),
     ),
   ).cached();
 
   task(
     'bundle',
-    parallel(
-      condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
-    ),
+    condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
-};
+}
 
-module.exports.basic = basicPreset;
+preset.basic = basicPreset;
+
+if (process.cwd() === __dirname) {
+  // load the preset if this is being run within the scripts package
+  preset();
+}

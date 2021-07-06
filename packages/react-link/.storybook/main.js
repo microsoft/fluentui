@@ -1,8 +1,11 @@
-const custom = require('@uifabric/build/storybook/webpack.config');
+const rootMain = require('../../../.storybook/main');
 
-module.exports = {
-  webpackFinal: config => {
-    return custom({ config });
+module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
+  stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+  addons: [...rootMain.addons],
+  webpackFinal: (config, options) => {
+    const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+    return localConfig;
   },
-  addons: ['@storybook/addon-a11y/register', 'storybook-addon-performance/register', '@storybook/addon-knobs/register'],
-};
+});

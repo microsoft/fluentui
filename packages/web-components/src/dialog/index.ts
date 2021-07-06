@@ -1,25 +1,29 @@
-import { customElement } from '@microsoft/fast-element';
-import { Dialog, DialogTemplate as template } from '@microsoft/fast-foundation';
-import { DialogStyles as styles } from './dialog.styles';
+import { Dialog, dialogTemplate as template } from '@microsoft/fast-foundation';
+import { dialogStyles as styles } from './dialog.styles';
 
 /**
  * The Fluent Dialog Element. Implements {@link @microsoft/fast-foundation#Dialog},
- * {@link @microsoft/fast-foundation#DialogTemplate}
+ * {@link @microsoft/fast-foundation#dialogTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-dialog\>
  */
-@customElement({
-  name: 'fluent-dialog',
+export const fluentDialog = Dialog.compose({
+  baseName: 'dialog',
   template,
   styles,
-})
-export class FluentDialog extends Dialog {}
+});
 
 /**
  * Styles for Dialog
  * @public
  */
-export const DialogStyles = styles;
+export const dialogStyles = styles;
+
+/**
+ * Base Dialog Class
+ * @public
+ */
+export { Dialog };

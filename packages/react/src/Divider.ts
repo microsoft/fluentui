@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Divider';
+export * from './components/Divider/index';

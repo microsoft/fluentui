@@ -1,8 +1,8 @@
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 
 import { Avatar } from 'src/components/Avatar/Avatar';
-import { Label } from 'src/components/Label/Label';
-import { Image } from 'src/components/Image/Image';
+import { AvatarImage } from 'src/components/Avatar/AvatarImage';
+import { AvatarLabel } from 'src/components/Avatar/AvatarLabel';
 
 const avatarImplementsShorthandProp = implementsShorthandProp(Avatar);
 const { getInitials } = (Avatar as any).defaultProps;
@@ -12,18 +12,18 @@ describe('Avatar', () => {
     testPath: __filename,
     constructorName: 'Avatar',
   });
-  avatarImplementsShorthandProp('label', Label);
-  avatarImplementsShorthandProp('image', Image, { mapsValueToProp: 'src' });
+  avatarImplementsShorthandProp('label', AvatarLabel);
+  avatarImplementsShorthandProp('image', AvatarImage, { mapsValueToProp: 'src' });
 
   describe('generateInitials', () => {
     it('generateInitials should show just the initials of the first and last words in the name', () => {
-      expect(getInitials('John Middle Doe')).toEqual('JD');
+      expect(getInitials('Cecil MiddleName Folk')).toEqual('CF');
     });
 
     it('generateInitials removes the text inside brackets', () => {
-      expect(getInitials('John Doe (Working position)')).toEqual('JD');
-      expect(getInitials('John Doe {Working position}')).toEqual('JD');
-      expect(getInitials('John Doe [Working position]')).toEqual('JD');
+      expect(getInitials('Cecil Folk (Working position)')).toEqual('CF');
+      expect(getInitials('Cecil Folk {Working position}')).toEqual('CF');
+      expect(getInitials('Cecil Folk [Working position]')).toEqual('CF');
     });
 
     it('handles null inputs', () => {

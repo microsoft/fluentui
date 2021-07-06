@@ -1,14 +1,13 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { List } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { List } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
 const items = [
   {
-    thumbnail: '//placehold.it/233x233',
+    thumbnail: '//via.placeholder.com/233x233',
     key: 'item-0 sit Lorem culpa cillum',
     name: 'reprehenderit dolore nulla laborum officia',
     description:
@@ -20,7 +19,7 @@ const items = [
     height: 233,
   },
   {
-    thumbnail: '//placehold.it/210x210',
+    thumbnail: '//via.placeholder.com/210x210',
     key: 'item-1 dolor elit, sit mollit',
     name: 'consectetur ipsum tempor nostrud commodo',
     description:
@@ -32,7 +31,7 @@ const items = [
     height: 210,
   },
   {
-    thumbnail: '//placehold.it/231x231',
+    thumbnail: '//via.placeholder.com/231x231',
     key: 'item-2 dolor reprehenderit id sint',
     name: 'velit nisi aliquip do minim',
     description:
@@ -44,7 +43,7 @@ const items = [
     height: 231,
   },
   {
-    thumbnail: '//placehold.it/158x158',
+    thumbnail: '//via.placeholder.com/158x158',
     key: 'item-3 magna Ut nisi dolor',
     name: 'nostrud in reprehenderit eu anim',
     description:
@@ -56,7 +55,7 @@ const items = [
     height: 158,
   },
   {
-    thumbnail: '//placehold.it/165x165',
+    thumbnail: '//via.placeholder.com/165x165',
     key: 'item-4 nisi proident, in dolore',
     name: 'nostrud Duis aliquip Lorem sunt',
     description:
@@ -68,7 +67,7 @@ const items = [
     height: 165,
   },
   {
-    thumbnail: '//placehold.it/226x226',
+    thumbnail: '//via.placeholder.com/226x226',
     key: 'item-5 mollit elit, ex elit,',
     name: 'nulla ipsum esse Lorem sed',
     description:
@@ -80,7 +79,7 @@ const items = [
     height: 226,
   },
   {
-    thumbnail: '//placehold.it/182x182',
+    thumbnail: '//via.placeholder.com/182x182',
     key: 'item-6 ut irure dolor et',
     name: 'nulla consectetur eiusmod velit sed',
     description:
@@ -92,7 +91,7 @@ const items = [
     height: 182,
   },
   {
-    thumbnail: '//placehold.it/206x206',
+    thumbnail: '//via.placeholder.com/206x206',
     key: 'item-7 non ad consequat. mollit',
     name: 'sint quis in Excepteur enim',
     description:
@@ -104,7 +103,7 @@ const items = [
     height: 206,
   },
   {
-    thumbnail: '//placehold.it/240x240',
+    thumbnail: '//via.placeholder.com/240x240',
     key: 'item-8 enim et aliqua. enim',
     name: 'in commodo dolore ea Duis',
     description:
@@ -116,7 +115,7 @@ const items = [
     height: 240,
   },
   {
-    thumbnail: '//placehold.it/158x158',
+    thumbnail: '//via.placeholder.com/158x158',
     key: 'item-9 reprehenderit minim cillum do',
     name: 'dolore et sed dolore sed',
     description:

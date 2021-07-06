@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Input, Tree } from '@fluentui/react-northstar';
+import { Box, Input, Tree, Tooltip } from '@fluentui/react-northstar';
 import { SearchIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 import { ComponentInfo } from '../componentInfo/types';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -14,7 +14,7 @@ export type ListProps = {
 export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [filter, setFilter] = React.useState<string>('');
 
-  const filterRegexp = new RegExp(filter, 'i');
+  const filterRegexp = React.useMemo(() => new RegExp(filter, 'i'), [filter]);
 
   const handleMouseDown = React.useCallback(
     componentInfo => e => {
@@ -35,25 +35,12 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     [filterRegexp],
   );
 
-  const titleComponent = (
-    Component,
-    {
-      content,
-      expanded,
-      hasSubtree,
-      treeSize,
-      selectable,
-      selectableParent,
-      selectionIndicator,
-      accessibility,
-      ...rest
-    },
-  ) => {
+  const titleComponent = (Component, { content, expanded, ...rest }) => {
     return (
-      <div {...rest}>
+      <Component {...rest}>
         {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
         {content}
-      </div>
+      </Component>
     );
   };
 
@@ -74,6 +61,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
                 id: info.displayName,
                 title: (
                   <Box
+                    as="span"
                     key={info.displayName}
                     onMouseDown={handleMouseDown(info)}
                     styles={{
@@ -104,9 +92,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
       aria-label="Available components"
       style={{
         ...style,
-        boxShadow: '1px 0px 3px rgba(0, 0, 0, 0.2)',
         userSelect: 'none',
-        marginTop: '1rem',
       }}
     >
       <Input
@@ -121,16 +107,25 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
       {unsupportedComponents
         .filter(info => info.displayName.match(filterRegexp))
         .map(info => (
-          <Box
+          <Tooltip
+            pointing
+            position="after"
+            align="center"
             key={info.displayName}
-            styles={{
-              padding: '0.2em 0.5em',
-              background: '#eee',
-              color: '#888',
-            }}
-          >
-            {info.displayName}
-          </Box>
+            trigger={
+              <Box
+                key={info.displayName}
+                styles={{
+                  padding: '0.2em 0.5em',
+                  background: '#eee',
+                  color: '#888',
+                }}
+              >
+                {info.displayName}
+              </Box>
+            }
+            content={info.docblock.description + info.docblock.tags}
+          />
         ))}
     </div>
   );

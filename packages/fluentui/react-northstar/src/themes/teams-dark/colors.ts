@@ -12,6 +12,9 @@ export const colorScheme: ColorSchemeMapping = {
     foreground4: colors.white,
     foreground5: colors.grey[450],
     foreground6: colors.grey[550],
+    foreground7: colors.white,
+    foreground8: colors.grey[200],
+    foreground9: colors.grey[340],
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -19,11 +22,13 @@ export const colorScheme: ColorSchemeMapping = {
     background3: colors.grey[550],
     background4: colors.grey[600],
     background5: colors.grey[250],
+    background6: colors.grey[900],
 
     border: colors.grey[450], // buttons
     border1: colors.grey[850],
     border2: colors.grey[900],
     border3: colors.grey[650],
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
@@ -50,11 +55,13 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundActive: colors.grey[800],
     backgroundActive1: colors.grey[500],
+    backgroundActive2: colors.grey[600],
 
     borderActive: colors.grey[450], // buttons
     borderActive1: colors.grey[850],
     borderActive2: colors.grey[900],
     borderActive3: colors.grey[650],
+    borderActive4: colors.grey[440],
 
     foregroundFocus: colors.white,
     foregroundFocus1: colors.grey[250],
@@ -85,12 +92,15 @@ export const colorScheme: ColorSchemeMapping = {
     foreground2: colors.brand[400],
     foreground3: colors.brand[200],
     foreground4: colors.white,
+    foreground5: colors.grey[750],
 
     background: colors.brand[600],
     background1: colors.brand[900],
     background2: colors.brand[900],
     background3: colors.brand[1000],
     background4: colors.grey[650],
+    background5: colors.brand[900],
+    background6: colors.brand[450],
 
     border: colors.grey[450],
     border1: colors.brand[800],
@@ -112,6 +122,7 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[700],
+    backgroundPressed1: colors.brand[800],
     borderPressed: colors.brand[800],
 
     foregroundActive: colors.brand[400],
@@ -152,7 +163,9 @@ export const colorScheme: ColorSchemeMapping = {
   }),
   black: {
     foreground: colors.black,
+    foreground1: colors.grey[750],
     background: colors.white,
+    background1: colors.white,
     border: colors.black,
     shadow: colors.black,
 
@@ -183,7 +196,9 @@ export const colorScheme: ColorSchemeMapping = {
   },
   white: {
     foreground: colors.white,
+    foreground1: colors.white,
     background: colors.black,
+    background1: colors.grey[700],
     border: colors.white,
     shadow: colors.white,
 
@@ -216,12 +231,18 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.green[200],
     foreground1: colors.grey[800],
     foreground2: colors.green[200],
+    foreground3: colors.green[750],
     background: colors.green[200],
+    background1: colors.green[200],
+    background2: colors.green[800],
+    border: colors.green[900],
   }),
   orange: createColorScheme({
     foreground: colors.orange[300],
     foreground1: colors.orange[300],
+    foreground2: colors.grey[750],
     background: colors.orange[300],
+    background1: colors.orange[300],
     border: colors.grey[400],
   }),
   pink: createColorScheme({
@@ -253,9 +274,13 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.yellow[300],
     foreground1: colors.grey[800],
     foreground2: colors.grey[800],
+    foreground3: colors.grey[750],
+    foreground4: colors.yellow[200],
     background: colors.yellow[400],
     background1: colors.grey[450],
     background2: colors.yellow[500],
+    background3: colors.yellow[800],
+    border: colors.yellow[900],
   }),
   silver: createColorScheme({
     foreground: colors.white,
@@ -275,6 +300,9 @@ export const colorScheme: ColorSchemeMapping = {
     background: colors.onyx[500],
     background1: colors.onyx[100],
     background2: colors.onyx[500],
+    background3: colors.onyx[700],
+    backgroundHover: colors.onyx[900],
+    backgroundPressed: colors.onyx[900],
     border: colors.onyx[800],
     border1: 'transparent',
     border2: colors.silver[400],
@@ -294,6 +322,7 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground: categoryColors[color][250],
     foreground1: categoryColors[color][550],
     background: categoryColors[color][800],
+    borderActive: categoryColors[color][350],
     ...customValues,
   };
 };

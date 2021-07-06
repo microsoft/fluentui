@@ -1,5 +1,5 @@
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { initializeFolderCovers } from '@uifabric/experiments/lib/FolderCover';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
+import { initializeFolderCovers } from '@fluentui/react-experiments/lib/FolderCover';
 
 initializeIcons();
 initializeFolderCovers();
@@ -17,4 +17,5 @@ declare module '@storybook/addons/dist/types' {
 }
 
 export * from './FabricDecorator';
+export * from './FluentProviderDecorator';
 export * from './DevOnlyStoryHeader';

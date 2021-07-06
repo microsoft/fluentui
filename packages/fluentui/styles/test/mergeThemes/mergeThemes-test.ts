@@ -185,16 +185,6 @@ describe('mergeThemes', () => {
       expect(merged.componentStyles).toHaveProperty('Icon');
     });
 
-    test('component parts without styles are not merged', () => {
-      const target = { componentStyles: { Button: { root: {} } } };
-      const source = { componentStyles: { Button: { icon: {} } } };
-
-      const merged = mergeThemes(target, source);
-
-      expect(merged.componentStyles.Button).not.toHaveProperty('root');
-      expect(merged.componentStyles.Button).not.toHaveProperty('icon');
-    });
-
     test('component parts with style properties are merged', () => {
       const target = { componentStyles: { Button: { root: { color: 'red' } } } };
       const source = { componentStyles: { Icon: { root: { color: 'red' } } } };
@@ -506,7 +496,7 @@ describe('mergeThemes', () => {
       const buttonRootStyles = merged.componentStyles.Button.root({
         variables: buttonVariables,
       } as any);
-      expect(buttonRootStyles._debug).toBe(undefined);
+      expect((buttonRootStyles as any)._debug).toBe(undefined);
     });
 
     test('contain debugId', () => {

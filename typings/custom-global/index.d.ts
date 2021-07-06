@@ -1,5 +1,3 @@
-/// <reference types="webpack-env" />
-
 /**
  * Generic typings for sass files.
  */
@@ -64,7 +62,7 @@ declare interface SetConstructor {
 declare var Set: SetConstructor;
 
 declare namespace NodeJS {
-  interface Process extends __WebpackModuleApi.NodeProcess {
+  interface Process {
     env: {
       // This is mainly so we can do `process.env.NODE_ENV` checks without any extra conditionals.
       //
@@ -78,3 +76,5 @@ declare namespace NodeJS {
     };
   }
 }
+
+declare var process: NodeJS.Process;

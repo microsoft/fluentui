@@ -5,8 +5,8 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 const defaultAvatar = (
   <Avatar
     image={{
-      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-      alt: 'Profile picture of Matt',
+      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+      alt: 'Profile picture of Robert',
     }}
     status={{
       color: 'green',
@@ -18,21 +18,15 @@ const defaultAvatar = (
 
 const AvatarExampleStatusCustomizationShorthand = () => (
   <Grid
-    styles={{
-      gridTemplateColumns: '50% 50px 50px',
-      msGridColumns: '50% 50px 50px',
-      justifyContent: 'start',
-      justifyItems: 'start',
-      gap: '10px',
-      alignItems: 'center',
-    }}
+    columns="50% 50px 50px"
+    styles={{ justifyContent: 'start', justifyItems: 'start', gap: '10px', alignItems: 'center' }}
   >
     <Text content="Status can receive variables." />
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       status={{
         color: 'green',
@@ -45,8 +39,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       size="larger"
       status={{
@@ -59,8 +53,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       status={{
         color: 'green',
@@ -73,8 +67,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       size="larger"
       status={{

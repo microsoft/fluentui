@@ -1,0 +1,36 @@
+@import '../../../styles/common';
+
+.example {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caption {
+  text-align: center;
+  @include ms-fontWeight-semibold;
+}
+
+.compact {
+  height: 100px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 160px;
+}
+
+.usageList {
+  margin: 0;
+  padding: 0;
+
+  &.usageList {
+    @include ms-padding-left(0);
+  }
+
+  .usageListItem {
+    list-style: none;
+    margin-bottom: 4px;
+    @include ms-fontColor-gray130;
+    @include ms-fontSize-14;
+  }
+}

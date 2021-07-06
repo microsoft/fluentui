@@ -18,6 +18,11 @@ export interface TestDefinition {
 }
 
 const skipSpecChecksForFiles = [
+  'menuButtonBehavior.ts', // tests are written new way in menuButtonBehaviorDefinition.ts
+  'popupBehavior.ts', // tests are written new way in popupBehaviorDefinition.ts
+  'buttonBehavior.ts', // tests are written new way in buttonBehaviorDefinition.ts
+  'buttonGroupBehavior.ts', // tests are written new way in buttonGroupBehaviorDefinition.ts
+  'toggleButtonBehavior.ts', // tests are written new way in toggleButtonBehaviorDefinition.ts
   'listBehavior.ts', // tests are written in listBehavior-test.tsx
   'listItemBehavior.ts', // tests are written in listItemBehavior-test.tsx
   'alertBehavior.ts', // tests are written in alertBehavior-test.tsx
@@ -25,7 +30,15 @@ const skipSpecChecksForFiles = [
   'sliderBehavior.ts', // tests are written in sliderBehavior-test.ts
   'treeItemAsListItemBehavior.ts', // tests are written in treeItemAsListItemBehavior-test.ts
   'treeTitleAsListItemTitleBehavior.ts', // tests are written in treeTitleAsListItemTitleBehavior-test.ts
+  'treeItemAsOptionBehavior.ts', // tests are written in treeItemAsOptionBehavior-test.ts
+  'treeTitleAsOptionBehavior.ts', // tests are written in treeTitleAsOptionBehavior-test.ts
   'gridRowBehavior.ts', // tests are written in gridRowBehavior-test.ts
+  'pillBehavior.ts', // tests are written in pillBehaviorDefinition.ts
+  'pillGroupBehavior.ts', // tests are written in pillGroupBehaviorDefinition.ts
+  'pillOptionBehavior.ts', // tests are written in pillOptionBehaviorDefinition.ts
+  'pillActionBehavior.ts', // tests are written in pillBehaviorDefinition.ts
+  'pillImageBehavior.ts', // tests are written in pillImageBehaviorDefinition.ts
+  'pillIconBehavior.ts', // tests are written in pillIconBehaviorDefinition.ts
 ];
 
 export class TestHelper {
@@ -73,7 +86,11 @@ export class TestHelper {
         if (!variant.specification && !variant.description) {
           this.failDescriptionPresenceTest(variant.name);
         }
-        if (!variant.specification && !skipSpecChecksForFiles.find(item => item === variant.name)) {
+        // should not continue when behavior is skipped/exluded
+        if (skipSpecChecksForFiles.find(item => item === variant.name)) {
+          return;
+        }
+        if (!variant.specification) {
           this.failSpecificationPresenceTest(variant.name);
         } else {
           variant.specification.split('\n').forEach(specLine => {

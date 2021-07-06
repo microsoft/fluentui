@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
 import Todo from './components/Todo';
 import DataProvider from './DataProvider';
-
-import './version';
 
 let _rootDiv: HTMLElement;
 let _dataProvider = new DataProvider();

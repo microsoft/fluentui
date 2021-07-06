@@ -1,4 +1,4 @@
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -43,8 +43,8 @@ export function resetMemoizations(): void {
  * @public
  */
 export function memoize<T extends Function>(
-  target: any,
-  key: string,
+  _target: any,
+  _key: string,
   descriptor: TypedPropertyDescriptor<T>,
 ): {
   configurable: boolean;
@@ -94,7 +94,7 @@ export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(
   if (!_initializedStylesheetResets) {
     const stylesheet = Stylesheet.getInstance();
 
-    if (stylesheet && stylesheet.onReset) {
+    if (stylesheet && (stylesheet as { onReset?: unknown }).onReset) {
       Stylesheet.getInstance().onReset(resetMemoizations);
     }
     _initializedStylesheetResets = true;

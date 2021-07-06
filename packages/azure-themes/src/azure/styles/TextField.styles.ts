@@ -1,4 +1,4 @@
-import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
+import { ITextFieldStyleProps, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
@@ -11,13 +11,23 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
     fieldGroup: [
       !multiline && {
         height: StyleConstants.inputControlHeight,
-
+      },
+      !hasErrorMessage && {
+        borderColor: semanticColors.inputPlaceholderText,
         selectors: {
           '::after': {
-            borderColor: semanticColors.primaryButtonBackgroundHovered,
+            borderColor: extendedSemanticColors.controlFocus,
           },
         },
       },
+      !focused &&
+        !disabled && {
+          selectors: {
+            ':hover': {
+              borderColor: semanticColors.inputText,
+            },
+          },
+        },
       focused && {
         borderColor: semanticColors.focusBorder,
       },
@@ -51,7 +61,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
     field: [
       {
         color: semanticColors.inputText,
-        backgroundColor: semanticColors.inputBackground,
+        backgroundColor: extendedSemanticColors.controlBackground,
         fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '::placeholder': {

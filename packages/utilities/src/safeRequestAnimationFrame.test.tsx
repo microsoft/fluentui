@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { safeRequestAnimationFrame } from './safeRequestAnimationFrame';
 import { mount } from 'enzyme';
-import * as sinon from 'sinon';
 
 describe('safeRequestAnimationFrame', () => {
   let rafCalled = false;
-  let clock: sinon.SinonFakeTimers;
 
   class Foo extends React.Component {
     private _raf = safeRequestAnimationFrame(this);
@@ -25,11 +23,12 @@ describe('safeRequestAnimationFrame', () => {
 
   beforeEach(() => {
     rafCalled = false;
-    clock = sinon.useFakeTimers();
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
-    clock.restore();
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
   });
 
   it('can request animation frame', () => {
@@ -37,7 +36,7 @@ describe('safeRequestAnimationFrame', () => {
 
     expect(rafCalled).toEqual(false);
 
-    clock.tick(100);
+    jest.runOnlyPendingTimers();
 
     expect(rafCalled).toEqual(true);
   });
@@ -49,7 +48,7 @@ describe('safeRequestAnimationFrame', () => {
 
     wrapper.unmount();
 
-    clock.tick(100);
+    jest.runOnlyPendingTimers();
 
     expect(rafCalled).toEqual(false);
   });

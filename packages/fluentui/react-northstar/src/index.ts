@@ -3,7 +3,6 @@ export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
-export * from '@fluentui/date-time-utilities';
 
 //
 // Themes
@@ -11,6 +10,8 @@ export * from '@fluentui/date-time-utilities';
 export { teamsTheme } from './themes/teams';
 export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
+export { teamsV2Theme } from './themes/teams-v2';
+export { teamsDarkV2Theme } from './themes/teams-dark-v2';
 
 export * from './themes/types';
 export * from './themes/colorUtils';
@@ -38,6 +39,11 @@ export * from './components/Attachment/AttachmentHeader';
 export * from './components/Attachment/AttachmentIcon';
 
 export * from './components/Avatar/Avatar';
+export * from './components/Avatar/AvatarStatus';
+export * from './components/Avatar/AvatarStatusIcon';
+export * from './components/Avatar/AvatarImage';
+export * from './components/Avatar/AvatarIcon';
+export * from './components/Avatar/AvatarLabel';
 
 export * from './components/Box/Box';
 
@@ -48,6 +54,7 @@ export * from './components/Button/ButtonContent';
 export * from './components/Breadcrumb/Breadcrumb';
 export * from './components/Breadcrumb/BreadcrumbItem';
 export * from './components/Breadcrumb/BreadcrumbDivider';
+export * from './components/Breadcrumb/BreadcrumbLink';
 
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
@@ -64,6 +71,13 @@ export * from './components/Debug/DebugSelector';
 export * from './components/Design/Design';
 
 export * from './components/MenuButton/MenuButton';
+
+export * from './components/Pill/PillGroup';
+export * from './components/Pill/Pill';
+export * from './components/Pill/PillContent';
+export * from './components/Pill/PillAction';
+export * from './components/Pill/PillImage';
+export * from './components/Pill/PillIcon';
 
 export * from './components/Divider/Divider';
 export * from './components/Divider/DividerContent';
@@ -87,6 +101,7 @@ export * from './components/Flex/FlexItem';
 export * from './components/Form/Form';
 export * from './components/Form/FormField';
 export * from './components/Form/FormInput';
+export * from './components/Form/FormTextArea';
 export * from './components/Form/FormInput';
 export * from './components/Form/FormLabel';
 export * from './components/Form/FormMessage';
@@ -180,6 +195,7 @@ export * from './components/Toolbar/ToolbarItemIcon';
 export * from './components/Toolbar/ToolbarMenu';
 export * from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemContent';
 export * from './components/Toolbar/ToolbarMenuItemIcon';
 export * from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
@@ -190,6 +206,9 @@ export * from './components/Toolbar/ToolbarRadioGroup';
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
+export * from './components/Tree/context';
+export * from './components/Tree/hooks/useTree';
+export * from './components/Tree/hooks/useVirtualTree';
 
 export * from './components/Reaction/Reaction';
 export * from './components/Reaction/ReactionGroup';
@@ -207,6 +226,7 @@ export * from './components/Carousel/CarouselItem';
 export * from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export * from './components/Carousel/CarouselPaddle';
+export * from './components/Carousel/CarouselPaddlesContainer';
 
 export * from './components/Table/Table';
 export * from './components/Table/TableRow';
@@ -227,14 +247,18 @@ export * from './components/Datepicker/DatepickerCalendarHeader';
 export * from './components/Datepicker/DatepickerCalendarHeaderAction';
 export * from './components/Datepicker/DatepickerCalendarHeaderCell';
 export * from './components/Datepicker/DatepickerCalendarCell';
+export * from './components/Datepicker/DatepickerCalendarCellButton';
+export * from './components/Datepicker/DatepickerCalendarGrid';
+export * from './components/Datepicker/DatepickerCalendarGridRow';
 
 //
 // Utilities
 //
 export * from './utils/createComponent';
+export * from './utils/date-time-utilities';
 export * from './utils';
 export * from './types';
-export { Popper as UNSTABLE_Popper } from './utils/positioner';
+export { createReferenceFromClick, Popper as UNSTABLE_Popper, usePopper } from './utils/positioner';
 export * from './utils/positioner/types';
 
 //

@@ -56,7 +56,12 @@ export const Card: KnobComponentGenerators<CardProps> = {
         [
           <_CardHeader key="header">
             <_Flex gap="gap.small">
-              <_Avatar image="public/images/avatar/small/matt.jpg" label={jobTitle} name={name} status="unknown" />
+              <_Avatar
+                image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+                label={jobTitle}
+                name={name}
+                status="unknown"
+              />
               <_Flex column>
                 <_Text content={name} weight="bold" />
                 <_Text content={jobTitle} size="small" />
@@ -85,7 +90,8 @@ export const Embed: KnobComponentGenerators<EmbedProps> = {
   placeholder: ({ componentInfo, propName }) => ({
     hook: useStringKnob,
     name: propName,
-    initialValue: 'https://raw.githubusercontent.com/bower-media-samples/big-buck-bunny-480p-5s/master/poster.jpg',
+    initialValue:
+      'http://fabricweb.azureedge.net/fabric-website/assets/images/2020_MSFT_Icon_Celebration_placeholder.jpg',
   }),
   // Hack until `size` prop will not supported
   variables: () => ({
@@ -114,12 +120,12 @@ export const Video: KnobComponentGenerators<VideoProps> = {
   poster: ({ componentInfo, propName }) => ({
     hook: useStringKnob,
     name: propName,
-    initialValue: 'public/images/tears-of-steel.jpg',
+    initialValue: 'public/images/2020_MSFT_Icon_Celebration_placeholder.jpg',
   }),
   src: ({ propName }) => ({
     hook: useStringKnob,
     name: propName,
-    initialValue: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    initialValue: 'http://fabricweb.azureedge.net/fabric-website/assets/videos/2020_MSFT_Icon_Celebration.mp4',
   }),
   // Hack until `size` prop will not supported
   variables: () => ({

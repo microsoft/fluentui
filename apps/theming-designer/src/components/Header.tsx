@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Stack, Link, ILinkStyleProps, ILinkStyles, PrimaryButton, ITheme, IStackProps } from 'office-ui-fabric-react';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { mergeStyles } from '@uifabric/merge-styles';
-import { CodepenComponent } from '@uifabric/example-app-base';
+import { Stack, Link, ILinkStyleProps, ILinkStyles, ITheme, IStackProps } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { IThemeRules, ThemeGenerator } from '@fluentui/react/lib/ThemeGenerator';
+import { mergeStyles } from '@fluentui/merge-styles';
+import { CodepenComponent } from '@fluentui/react-docsite-components';
 
 export interface IHeaderProps {
   themeRules?: IThemeRules;
@@ -55,21 +56,20 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
 const codepenHeader = `const {
   createTheme,
   Checkbox,
-  Customizations,
   DefaultButton,
   Fabric,
-  loadTheme,
   Pivot,
   PivotItem,
   PrimaryButton,
   Stack,
-  Toggle
-} = Fabric;\n\n`;
+  Toggle,
+  ThemeProvider
+} = FluentUIReact;\n\n`;
 const codepenSamples = `\n\n
+
 const Content = () => {
-    Customizations.applySettings({ theme: myTheme });
     return (
-      <Fabric applyThemeToBody>
+      <ThemeProvider applyTo='body' theme={myTheme}>
         <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
           <Pivot>
             <PivotItem headerText="Home" />
@@ -86,7 +86,7 @@ const Content = () => {
           <Checkbox label="Checkbox"/>
           <Checkbox checked label="Checkbox Checked" />
         </Stack>
-      </Fabric>
+      </ThemeProvider>
     );
 }
 ReactDOM.render(<Content />,document.getElementById('content'));`;
@@ -135,9 +135,8 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
           <span>
             <p>
               This code block creates the theme you have configured above using the createTheme utility function.
-              Calling Customizations.applySettings with this theme will automatically apply the configured theming to
-              any Fabric controls used within the same app. You can also export this example to CodePen with a few
-              component examples below.
+              Calling loadTheme with this theme will automatically apply the configured theming to any Fabric controls
+              used within the same app. You can also export this example to CodePen with a few component examples below.
             </p>
           </span>
           <div className={outputPanelClassName}>

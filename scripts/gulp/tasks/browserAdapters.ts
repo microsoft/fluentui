@@ -1,12 +1,9 @@
 import { spawn, spawnSync } from 'child_process';
 import CDP from 'chrome-remote-interface';
-import electron from 'electron';
 import puppeteer from 'puppeteer';
 import * as net from 'net';
 
 import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
-
-const DEFAULT_ELECTRON_PATH = (electron as unknown) as string;
 
 export type Page = {
   executeJavaScript: <R>(code: string) => Promise<R>;
@@ -20,7 +17,23 @@ export type Browser = {
 };
 
 export async function createChrome(): Promise<Browser> {
-  const browser = await puppeteer.launch(safeLaunchOptions());
+  const options = safeLaunchOptions();
+  let browser: puppeteer.Browser;
+  let attempt = 1;
+  while (!browser) {
+    try {
+      browser = await puppeteer.launch(options);
+    } catch (err) {
+      if (attempt === 5) {
+        console.error(`Puppeteer failed to launch after 5 attempts`);
+        throw err;
+      }
+      console.warn('Puppeteer failed to launch (will retry):');
+      console.warn(err);
+      attempt++;
+    }
+  }
+
   console.log(`Chromium version: ${await browser.version()}`);
 
   return {
@@ -84,7 +97,7 @@ async function waitUntilDevtoolsAvailable(host = 'localhost', port = 9222, tries
   throw new Error('A browser process started, but Devtools are not available');
 }
 
-export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PATH): Promise<Browser> {
+export async function createElectron(electronPath: string): Promise<Browser> {
   const electronVersion = spawnSync(electronPath, ['-v'], {
     encoding: 'utf8',
   }).stdout.trim();

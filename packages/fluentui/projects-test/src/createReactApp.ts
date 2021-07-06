@@ -1,5 +1,5 @@
-import config from '@uifabric/build/config';
-import sh from '@uifabric/build/gulp/sh';
+import config from '@fluentui/scripts/config';
+import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
 import portfinder from 'portfinder';
@@ -50,6 +50,7 @@ export async function createReactApp() {
 
   const testAppPath = config.paths.withRootAt(await prepareApp(tmpDirectory, 'test-app'));
   logger(`Test React project is successfully created: ${testAppPath()}`);
+
   logger('STEP 2. Add Fluent UI dependency to test project..');
 
   const packedPackages = await packProjectPackages(logger);

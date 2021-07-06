@@ -10,7 +10,6 @@ type ExtendedCookResult = CookResult & {
     story: string;
     iterations: number;
     tpi?: number;
-    fabricTpi?: number;
     filename?: number;
   };
 };
@@ -27,14 +26,7 @@ type ExtendedCookResults = Record<string, ExtendedCookResult>;
 
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
 // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
-// const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-//   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
-//   : `file://${path.resolve(__dirname, '../dist/')}`;
 const urlForDeployPath = `file://${path.resolve(__dirname, '../dist/')}`;
-
-// const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-//   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
-//   : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
 
 const urlForDeploy = `${urlForDeployPath}/index.html`;
 const defaultIterations = 1;
@@ -45,13 +37,16 @@ const tempDir = path.join(__dirname, '../logfiles');
 console.log(`__dirname: ${__dirname}`);
 
 export default async function getPerfRegressions(baselineOnly: boolean = false) {
-  let urlForMaster;
+  let urlForMaster: string | undefined;
 
   if (!baselineOnly) {
-    urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
-      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
+    const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
+    urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test-northstar/index.html`;
   }
+
+  // For debugging, in case the environment variables used to generate these have unexpected values
+  console.log(`urlForDeployPath: "${urlForDeployPath}"`);
+  console.log(`urlForMaster: "${urlForMaster}"`);
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
   // TODO: can do this now that we have story information
@@ -137,7 +132,6 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
     const story = getStoryKey(resultKey);
     const iterations = getIterations(stories, kind, story);
     const tpi = getTpiResult(testResults, stories, kind, story); // || 'n/a'
-    const fabricTpi = getTpiResult(testResults, stories, kind, 'Fabric'); // || ''
 
     return {
       ...testResult,
@@ -146,7 +140,6 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
         story,
         iterations,
         tpi,
-        fabricTpi,
         filename: stories[kind][story].filename,
       },
     };
@@ -235,7 +228,6 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   <tr>
     <th>Kind</th>
     <th>Story</th>
-    <th>Fabric TPI</th>
     <th>TPI</th>
     <th>Iterations</th>
     <th>
@@ -252,18 +244,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
               false,
             )
           : 'n/a';
-        const fabricTpi = testResult.extended.fabricTpi
-          ? linkifyResult(
-              testResult,
-              testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
-              false,
-            )
-          : '';
 
         return `<tr>
             <td>${testResult.extended.kind}</td>
             <td>${testResult.extended.story}</td>
-            <td>${fabricTpi}</td>
             <td>${tpi}</td>
             <td>${testResult.extended.iterations}</td>
             <td>${getTicksResult(testResult, false)}</td>

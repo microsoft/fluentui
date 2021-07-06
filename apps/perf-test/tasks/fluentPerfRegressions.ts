@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 
-import config from '@uifabric/build/config';
+import config from '@fluentui/scripts/config';
 
 // TODO: check false positive potential regression reports in fluent ui repo and fix
 
@@ -27,55 +27,11 @@ export function getFluentPerfRegressions() {
 }
 
 function linkToFlamegraph(value: string, filename: string) {
-  const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-    ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/fluentui`
+  const urlForDeployPath = process.env.DEPLOYURL
+    ? `${process.env.DEPLOYURL}/perf-test-northstar`
     : 'file://' + config.paths.packageDist('perf-test');
 
   return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;
-}
-
-function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
-  const results = _.mapValues(
-    _.pickBy(perfCounts, (value, key) => key.endsWith('.Fluent')),
-    stats => {
-      const fluentTpi = _.get(stats, 'extended.tpi');
-      const fabricTpi = _.get(stats, 'extended.fabricTpi');
-      return {
-        numTicks: stats.analysis.numTicks,
-        iterations: stats.extended.iterations,
-        fluentTpi,
-        fabricTpi,
-        fluentToFabric: Math.round((fluentTpi / fabricTpi) * 100) / 100,
-        fluentFlamegraphFile: _.get(stats, 'processed.output.flamegraphFile'),
-      };
-    },
-  );
-
-  const getStatus: (arg: number) => string = fluentToFabric =>
-    fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄';
-
-  reporter.markdown(
-    [
-      '<details><summary>Perf comparison</summary>',
-      '',
-      'Status | Scenario | Fluent TPI | Fabric TPI | Ratio | Iterations | Ticks',
-      ':---: | :--- | ---:| ---:| ---:| ---:| ---:',
-      ..._.map(results, (value, key) =>
-        [
-          getStatus(value.fluentToFabric),
-          key,
-          linkToFlamegraph(value.fluentTpi, value.fluentFlamegraphFile),
-          value.fabricTpi,
-          `${value.fluentToFabric}:1`,
-          value.iterations,
-          value.numTicks,
-        ].join(' | '),
-      ),
-      '>🔧 Needs work &nbsp; &nbsp; 🎯 On target &nbsp; &nbsp; 🦄 Amazing',
-      '',
-      '</details>',
-    ].join('\n'),
-  );
 }
 
 function reportResults(perfCounts: any, reporter: Reporter) {
@@ -123,8 +79,6 @@ function reportResults(perfCounts: any, reporter: Reporter) {
     );
   }
 
-  fluentFabricComparison(perfCounts, reporter);
-
   const noRegressions = _.sortBy(
     _.filter(results, stats => !stats.isRegression),
     stats => stats.currentToBaseline * -1,
@@ -152,7 +106,7 @@ function reportResults(perfCounts: any, reporter: Reporter) {
 const checkPerfRegressions = (reporter: Reporter) => {
   let perfCounts;
 
-  reporter.markdown('## Perf Analysis (Fluent)');
+  reporter.markdown('## Perf Analysis (`@fluentui/react-northstar`)');
 
   try {
     perfCounts = require(config.paths.packageDist('perf-test', 'perfCounts.json'));

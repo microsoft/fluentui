@@ -1,6 +1,6 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { Button, ButtonTemplate as template } from '@microsoft/fast-foundation';
-import { ButtonStyles as styles } from './button.styles';
+import { attr } from '@microsoft/fast-element';
+import { Button as FoundationButton, buttonTemplate as template } from '@microsoft/fast-foundation';
+import { buttonStyles as styles } from './button.styles';
 
 /**
  * Types of button appearance.
@@ -9,25 +9,10 @@ import { ButtonStyles as styles } from './button.styles';
 export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' | 'stealth';
 
 /**
- * The Fluent Button Element. Implements {@link @microsoft/fast-foundation#Button},
- * {@link @microsoft/fast-foundation#ButtonTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-button\>
- *
- * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ * The Fluent button class
+ * @internal
  */
-@customElement({
-  name: 'fluent-button',
-  template,
-  styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
-})
-export class FluentButton extends Button {
+export class Button extends FoundationButton {
   /**
    * The appearance the button should have.
    *
@@ -54,10 +39,45 @@ export class FluentButton extends Button {
       this.appearance = 'neutral';
     }
   }
+
+  /**
+   * Applies 'icon-only' class when there is only an SVG in the default slot
+   *
+   * @internal
+   */
+  public defaultSlottedContentChanged(): void {
+    const slottedElements = this.defaultSlottedContent.filter(x => x.nodeType === Node.ELEMENT_NODE);
+
+    if (slottedElements.length === 1 && slottedElements[0] instanceof SVGElement) {
+      this.control.classList.add('icon-only');
+    } else {
+      this.control.classList.remove('icon-only');
+    }
+  }
 }
+
+/**
+ * The Fluent Button Element. Implements {@link @microsoft/fast-foundation#Button},
+ * {@link @microsoft/fast-foundation#buttonTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-button\>
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ */
+export const fluentButton = Button.compose({
+  baseName: 'button',
+  template,
+  styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
+});
 
 /**
  * Styles for Button
  * @public
  */
-export const ButtonStyles = styles;
+export const buttonStyles = styles;

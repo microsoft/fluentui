@@ -1,149 +1,124 @@
 import * as React from 'react';
-import { BaseSlots, SlotProps } from '@fluentui/react-compose';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ColorTokenSet, RecursivePartial } from '@fluentui/theme';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
-
-export type ButtonProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
-    /**
-     * Shorthand icon. A shorthand prop can be a literal, object, or
-     * JSX. The `children` prop of the object can be a render function,
-     * taking in the original slot component and props.
-     */
-    icon?: ShorthandProps;
+/**
+ * {@docCategory Button}
+ */
+export type ButtonProps = ComponentPropsCompat &
+  React.ButtonHTMLAttributes<HTMLElement> & {
+    // Temporarily declare children as a shorthand slot until #18471 is fixed
+    children?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
     /**
-     * Shorthand loader content within the button.
+     * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
+     * `iconPosition` prop.
      */
-    loader?: ShorthandProps;
+    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+    // /**
+    //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
+    //  * is set to `true`.
+    //  */
+    // loader?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
+
+    // /**
+    //  * A button can fill the width of its container.
+    //  * @default false
+    //  */
+    // block?: boolean;
+
+    // /**
+    //  * A button can have completely rounded corners.
+    //  * @default false
+    //  */
+    // circular?: boolean;
 
     /**
-     * Shorthand children content within the button.
+     * A button can show that it cannot be interacted with.
+     * @default false
      */
-    content?: ShorthandProps;
-
-    /**
-     * Defines the href to navigate to. If applied, will render the button as an anchor
-     * element by default, unless `as` specifies otherwise. Note that specifying an href
-     * and a non-anchor as the render type will prevent the Button from behaving like a
-     * hyperlink and opening the href on click.
-     */
-    href?: string;
-
-    /**
-     * Defines the target window to open the href in. Only is applied if the button renders
-     * as an anchor tag, which is the default behavior if href is provided.
-     */
-    target?: string;
-
-    /** A button can appear circular. */
-    circular?: boolean;
-
-    /** A button can show that it cannot be interacted with. */
     disabled?: boolean;
 
-    /** A button can fill the width of its container. */
-    fluid?: boolean;
+    // /**
+    //  * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
+    //  * is important to keep a consistent tab order for screen reader and keyboard users.
+    //  * @default false
+    //  */
+    // disabledFocusable?: boolean;
 
-    /** A button can contain only an icon. */
-    iconOnly?: boolean;
-
-    /** An icon button can format its icon to appear before or after its content. */
+    /**
+     * A button can format its icon to appear before or after its content.
+     * @default 'before'
+     */
     iconPosition?: 'before' | 'after';
 
-    /** A button that inherits its background and has a subtle appearance. */
-    inverted?: boolean;
+    // /**
+    //  * A button can show a loading indicator if it is waiting for another action to happen before allowing itself to
+    //  * be interacted with.
+    //  * @default false
+    //  */
+    // loading?: boolean;
 
-    /** A button can show a loading indicator. */
-    loading?: boolean;
+    // /**
+    //  * A button can be styled such that it has no background styling and is just emphasized through the styling of
+    //  * its content and borders.
+    //  * Mutually exclusive with `primary`, `subtle` and `transparent`.
+    //  * @default false
+    //  */
+    // outline?: boolean;
 
     /**
-     * Called after a user clicks the button.
-     * @param event - React's original SyntheticEvent.
-     * @param data - All props.
+     * A button can be styled to emphasize that it represents the primary action.
+     * Mutually exclusive with `outline`, `subtle` and `transparent`.
+     * @default false
      */
-    // onClick?: ComponentEventHandler<ButtonProps>;
-
-    /**
-     * Called after a user focuses the button.
-     * @param event - React's original SyntheticEvent.
-     * @param data - All props.
-     */
-    // onFocus?: ComponentEventHandler<ButtonProps>;
-
-    /** A button can emphasize that it represents the primary action. */
     primary?: boolean;
 
-    /** A button can emphasize that it represents an alternative action. */
-    secondary?: boolean;
+    /**
+     * A button supports different sizes.
+     * @default 'medium'
+     */
+    size?: 'small' | 'medium' | 'large';
 
-    /** A button can blend into its background to become less emphasized. */
-    ghost?: boolean;
+    /**
+     * A button can be styled to blend into its background and become less emphasized.
+     * @default false
+     * Mutually exclusive with `outline`, `primary` and `transparent`.
+     */
+    subtle?: boolean;
 
-    /** A button can be sized. */
-    size?: SizeValue;
-
-    // TODO: Deprecate or rename to textOnly for alignment with iconOnly?
-    /** A button can be formatted to show only text in order to indicate a less-pronounced action. */
-    // text?: boolean;
-
-    tokens?: RecursivePartial<ButtonTokenSet>;
+    /**
+     * A button can be styled such that it has no background or border styling and is just emphasized through its
+     * content styling.
+     * Mutually exclusive with `outline`, `primary` and `subtle`.
+     * @default false
+     */
+    transparent?: boolean;
   };
 
-export interface ButtonState extends ButtonProps {
-  buttonRef?: React.RefObject<HTMLButtonElement>;
+/**
+ * {@docCategory Button}
+ */
+export type ButtonShorthandPropsCompat = 'children' | 'icon';
+
+/**
+ * {@docCategory Button}
+ */
+export type ButtonDefaultedProps = 'icon' | 'size';
+
+/**
+ * {@docCategory Button}
+ */
+export interface ButtonState
+  extends ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> {
+  /**
+   * A button can contain only an icon.
+   * @default false
+   */
+  iconOnly?: boolean;
+
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
 }
-
-export interface ButtonSlots extends BaseSlots {
-  icon: React.ElementType;
-  loader: React.ElementType;
-}
-
-export type ButtonSlotProps = SlotProps<ButtonSlots, ButtonProps, React.ButtonHTMLAttributes<HTMLButtonElement>>;
-
-export type ButtonTokenSet = ColorTokenSet & {
-  /* sizing */
-  paddingLeft: string;
-  paddingRight: string;
-  paddingTop: string;
-  paddingBottom: string;
-  margin: string;
-  height: string;
-  minWidth: string;
-  maxWidth: string;
-  minHeight: string;
-  contentGap: string;
-  iconSize: string;
-  borderRadius: string;
-  borderTopLeftRadius: string;
-  borderTopRightRadius: string;
-  borderBottomLeftRadius: string;
-  borderBottomRightRadius: string;
-  borderWidth: string;
-  boxShadow: string;
-  width: string;
-
-  size: {
-    smallest: string;
-    smaller: string;
-    small: string;
-    regular: string;
-    large: string;
-    larger: string;
-    largest: string;
-  };
-
-  transform: string;
-  transition: string;
-
-  fontFamily: string;
-  fontSize: string;
-  fontWeight: string;
-
-  pressed: {
-    transform: string;
-    transition: string;
-  };
-};

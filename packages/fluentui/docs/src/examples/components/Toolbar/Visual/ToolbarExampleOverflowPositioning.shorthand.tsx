@@ -3,6 +3,7 @@ import {
   Provider,
   ShorthandValue,
   Toolbar,
+  ToolbarProps,
   ToolbarItemProps,
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
@@ -30,9 +31,11 @@ import {
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
-const FrameRenderer: React.FC<React.IframeHTMLAttributes<HTMLIFrameElement> & {
-  children: (externalDocument: Document) => React.ReactElement;
-}> = props => {
+const FrameRenderer: React.FC<
+  React.IframeHTMLAttributes<HTMLIFrameElement> & {
+    children: (externalDocument: Document) => React.ReactElement;
+  }
+> = props => {
   const { children, ...rest } = props;
   const [node, setNode] = React.useState<HTMLIFrameElement>();
 
@@ -54,7 +57,7 @@ const FrameRenderer: React.FC<React.IframeHTMLAttributes<HTMLIFrameElement> & {
   );
 };
 
-const EditorToolbar: React.FC = () => {
+const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overflowSentinel }) => {
   const [overflowOpen, setOverflowOpen] = React.useState<boolean>(false);
   const overflowIndex = React.useRef<number>();
 
@@ -102,6 +105,7 @@ const EditorToolbar: React.FC = () => {
   return (
     <Flex>
       <Toolbar
+        overflowSentinel={overflowSentinel}
         aria-label="visual test only with editor toolbar"
         styles={{ minWidth: 0, flexGrow: 1 }} // necessary for Toolbar with overflow inside a flex container
         items={_.map(combinedItems, 'toolbarItem')}
@@ -137,7 +141,7 @@ const EditorToolbar: React.FC = () => {
   );
 };
 
-const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
+const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => (
   <FrameRenderer
     frameBorder="0"
     width="400px"
@@ -147,6 +151,7 @@ const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
   >
     {externalDocument => (
       <Provider
+        dir={dir}
         styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
         target={externalDocument}
         theme={teamsTheme}

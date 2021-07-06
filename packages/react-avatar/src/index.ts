@@ -1,3 +1,1 @@
-import './version';
-
-export * from './components/Avatar/index';
+export * from './Avatar';

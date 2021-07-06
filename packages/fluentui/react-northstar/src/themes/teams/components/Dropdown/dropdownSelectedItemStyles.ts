@@ -16,10 +16,10 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
 
     return {
+      maxWidth: v.selectedItemsMaxWidth,
       display: 'inline-flex',
       alignItems: 'center',
-      // overflow: 'hidden',
-      padding: `0 ${pxToRem(4)} 0 ${pxToRem(4)}`,
+      padding: `0 ${pxToRem(8)}`,
       startPaddingLeft: '0px',
       lineHeight: pxToRem(20),
       borderRadius: pxToRem(9999),
@@ -60,6 +60,9 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     return {
       ...(p.hasImage && { marginLeft: pxToRem(3) }),
       marginRight: pxToRem(3),
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     };
   },
   icon: ({ variables: v }) => ({
@@ -67,15 +70,17 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     alignItems: 'center',
     justifyContent: 'center',
     width: pxToRem(16),
+    minWidth: pxToRem(16),
     height: pxToRem(16),
     '& > :first-child': {
-      height: '100%',
-      width: '100%',
+      width: pxToRem(16),
+      height: pxToRem(16),
       '& svg': {
-        height: '100%',
-        width: '100%',
+        width: pxToRem(16),
+        height: pxToRem(16),
       },
     },
+
     cursor: 'pointer',
     color: v.selectedItemIconColor,
     ...getIconFillOrOutlineStyles({ outline: true }),
