@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update picker suggestions scroll into view so it works with inline suggestions",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

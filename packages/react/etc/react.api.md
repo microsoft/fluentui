@@ -9609,6 +9609,8 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
+    protected _scrollContainer: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
     scrollSelected(): void;
     // (undocumented)
     protected _searchForMoreButton: React_2.RefObject<IButton>;
