@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adds new example of a TagPicker with an inline suggestions dropdown",
+  "packageName": "@fluentui/react-examples",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
