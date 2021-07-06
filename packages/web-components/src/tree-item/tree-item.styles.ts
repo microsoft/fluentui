@@ -174,10 +174,10 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       width: 16px;
       height: 16px;
       transition: transform 0.1s linear;
-      transform: rotate(-45deg);
       pointer-events: none;
       fill: ${neutralForegroundRest};
     }
+
     .start,
     .end {
       display: flex;
@@ -200,10 +200,6 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       ${
         /* need to swap out once we understand how horizontalSpacing will work */ ''
       } margin-inline-start: calc(${designUnit} * 2px + 2px);
-    }
-
-    :host(.expanded) > .positioning-region .expand-collapse-glyph {
-      ${/* transform needs to be localized */ ''} transform: rotate(0deg);
     }
 
     :host(.expanded) > .items {
