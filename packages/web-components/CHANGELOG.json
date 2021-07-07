@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 07 Jul 2021 07:32:54 GMT",
+      "tag": "@fluentui/web-components_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removes duplicate styles for expand-collapse-glyph on tree item causing specificity/ordering issues",
+            "author": "chhol@microsoft.com",
+            "commit": "a712d19f8b73ea33406cfa5c51bb3e338599087a",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Jul 2021 23:15:55 GMT",
       "tag": "@fluentui/web-components_v1.0.0",
       "version": "1.0.0",

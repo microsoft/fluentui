@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 07 Jul 2021 07:32:54 GMT",
+      "tag": "@fluentui/react_v8.22.1",
+      "version": "8.22.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update picker suggestions scroll into view so it works with inline suggestions",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "9babbdb459a85f5ec7640b35e921d17a675f7856",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jul 2021 07:35:05 GMT",
       "tag": "@fluentui/react_v8.22.0",
       "version": "8.22.0",

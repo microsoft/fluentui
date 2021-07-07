@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Jul 2021 07:32:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.0)
+
+Wed, 07 Jul 2021 07:32:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.33.4..@fluentui/react-examples_v8.34.0)
+
+### Minor changes
+
+- Adds new example of a TagPicker with an inline suggestions dropdown ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/react to v8.22.1 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/azure-themes to v8.1.32 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/storybook to v1.0.0 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-charting to v5.3.4 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.2.32 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-experiments to v8.1.35 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/theme-samples to v8.1.32 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.118 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.120 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.118 ([PR #18825](https://github.com/microsoft/fluentui/pull/18825) by sarah.higley@microsoft.com)
 
 ## [8.33.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.33.4)
 
