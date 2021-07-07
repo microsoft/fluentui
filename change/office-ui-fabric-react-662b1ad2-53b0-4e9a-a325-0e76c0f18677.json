@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing a bug within the V7 ComboBox which caused aria-labeledby to be added to list even when label was absent.",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}

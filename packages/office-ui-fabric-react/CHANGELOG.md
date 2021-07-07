@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 05 Jul 2021 12:25:05 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Jul 2021 12:23:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.172.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.3)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.2..office-ui-fabric-react_v7.172.3)
+
+### Patches
+
+- Fixing a bug within the V7 ComboBox which caused aria-labeledby to be added to list even when label was absent. ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
 
 ## [7.172.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.2)
 
