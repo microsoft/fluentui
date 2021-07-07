@@ -23,6 +23,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Wrap ChatMessage header elements correctly @Hirse ([#18837](https://github.com/microsoft/fluentui/pull/18837))
 - Fix compact hover background in dark themes @Hirse ([#18842](https://github.com/microsoft/fluentui/pull/18842))
 
+### Features
+- Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
+
 
 <!--------------------------------[ v0.57.0 ]------------------------------- -->
 ## [v0.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.57.0) (2021-06-29)
