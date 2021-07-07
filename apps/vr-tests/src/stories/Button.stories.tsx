@@ -17,6 +17,12 @@ const baseProps: IButtonProps = {
   },
   children: 'Button',
   secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+  styles: {
+    label: {
+      marginLeft: '30px',
+      marginRight: '5px',
+    },
+  },
 };
 
 const commandProps: IButtonProps = {
