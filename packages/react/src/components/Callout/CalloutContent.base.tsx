@@ -188,8 +188,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
 }
 
 /**
- * Get the position information for the callout. If the callout does not fit in the given orientation,
- * a new position is calculated for the next frame, up to 5 attempts
+ * Finds the current position of Callout. If Callout is adjusted then a new position is calculated to fit the screen.
  */
 function usePositions(
   props: ICalloutProps,
@@ -198,10 +197,32 @@ function usePositions(
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
 ) {
-  const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
-  const positionAttempts = React.useRef(0);
-  const async = useAsync();
   const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
+
+  const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
+  const prevElementPosition = React.useRef<ICalloutPositionedInfo | null>(null);
+
+  const async = useAsync();
+
+  /**
+   * Sets the current position of Callout upon resize. Callout will resize when:
+   *
+   * 1. elementPositions is undefined (initial render)
+   * 2. elementPositions does not equal newElementPositions
+   *
+   * @param newElementPositions The incoming position for the Callout
+   */
+  const setCalloutPositions = React.useCallback(
+    (newElementPositions: ICalloutPositionedInfo) => {
+      if (
+        (!elementPositions && newElementPositions) ||
+        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+      ) {
+        setElementPositions(newElementPositions);
+      }
+    },
+    [elementPositions],
+  );
 
   React.useEffect(() => {
     if (!hidden) {
@@ -216,27 +237,38 @@ function usePositions(
             target: targetRef.current!,
             bounds: getBounds(),
           };
+
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
-          const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, calloutElement.current, positions)
-            : positionCallout(currentProps, hostElement.current, calloutElement.current, positions);
+          const newElementPositions: ICalloutPositionedInfo = finalHeight
+            ? positionCard(currentProps, hostElement.current, calloutElement.current, elementPositions)
+            : positionCallout(currentProps, hostElement.current, calloutElement.current, elementPositions);
 
-          // Set the new position only when the positions are not exists or one of the new callout positions
-          // are different. The position should not change if the position is within 2 decimal places.
-          if (
-            (!positions && newPositions) ||
-            (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
-          ) {
-            // We should not reposition the callout more than a few times, if it is then the content is likely resizing
-            // and we should stop trying to reposition to prevent a stack overflow.
-            positionAttempts.current++;
-            setPositions(newPositions);
-          } else if (positionAttempts.current > 0) {
-            // Only call the onPositioned callback if the callout has been re-positioned at least once.
-            positionAttempts.current = 0;
-            onPositioned?.(positions);
-          }
+          // The position should not change if the position is within 2 decimal places.
+          console.log('I ran');
+
+          setCalloutPositions(newElementPositions);
+
+          // console.log(elementPositions !== newElementPositions);
+          // if ((!positions && newPositions) || positions !== newPositions) {
+          //   positionAttempts.current++;
+          //   setPositions(newPositions);
+          // }
+          //   if (
+          //     (!positions && newPositions) ||
+          //     (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          //   ) {
+          //     console.log('Positioned' + positions + ' ' + newPositions);
+          //     // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+          //     // and we should stop trying to reposition to prevent a stack overflow.
+          //     positionAttempts.current++;
+          //     setPositions(newPositions);
+          //   } else if (positionAttempts.current > 0) {
+          //     console.log('Positioned' + positions + ' ' + newPositions);
+          //     // Only call the onPositioned callback if the callout has been re-positioned at least once.
+          //     positionAttempts.current++;
+          //     setPositions(newPositions);
+          //   }
         }
       }, calloutElement.current);
 
@@ -246,18 +278,18 @@ function usePositions(
     hidden,
     directionalHint,
     async,
+    elementPositions,
     calloutElement,
     hostElement,
     targetRef,
     finalHeight,
     getBounds,
     onPositioned,
-    positions,
     props,
     target,
+    setCalloutPositions,
   ]);
-
-  return positions;
+  return elementPositions;
 }
 
 /**
@@ -540,7 +572,8 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onMouseUp={mouseUpOnPopup}
           >
             {children}
-          </Popup>
+          </Popup>{' '}
+          */
         </div>
       </div>
     );
@@ -571,18 +604,33 @@ function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSPropertie
   return beakPositionStyle;
 }
 
-function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
+/**
+ * Compares two different elementPositions to determine whether they are equal.
+ *
+ * @param prevElementPositions
+ * @param newElementPosition
+ */
+function arePositionsEqual(
+  prevElementPositions: ICalloutPositionedInfo,
+  newElementPosition: ICalloutPositionedInfo,
+): boolean {
   return (
-    comparePositions(positions.elementPosition, newPosition.elementPosition) &&
-    comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition)
+    comparePositions(prevElementPositions.elementPosition, newElementPosition.elementPosition) &&
+    comparePositions(prevElementPositions.beakPosition.elementPosition, newElementPosition.beakPosition.elementPosition)
   );
 }
 
-function comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
-  for (const key in newPositions) {
-    if (newPositions.hasOwnProperty(key)) {
-      const oldPositionEdge = oldPositions[key];
-      const newPositionEdge = newPositions[key];
+/**
+ * Utility used in **arePositionsEqual** to compare two different elementPositions.
+ *
+ * @param prevElementPositions
+ * @param newElementPositions
+ */
+function comparePositions(prevElementPositions: IPosition, newElementPositions: IPosition): boolean {
+  for (const key in newElementPositions) {
+    if (newElementPositions.hasOwnProperty(key)) {
+      const oldPositionEdge = prevElementPositions[key];
+      const newPositionEdge = prevElementPositions[key];
 
       if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
         if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
