@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Button: Remove pointer-events: 'none' from disabled styles.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
