@@ -10,5 +10,7 @@ export const chatMessageVariables = (siteVars: any): Partial<ChatMessageVariable
     timestampColorMine: siteVars.colors.grey[250],
     hasMentionNubbinColor: siteVars.colors.orange[300],
     isImportantColor: siteVars.colors.red[300],
+    compactHoverBackground: siteVars.colorScheme.default.backgroundHover,
+    compactHoverBorder: `solid 1px ${siteVars.colorScheme.default.backgroundHover}`,
   };
 };
