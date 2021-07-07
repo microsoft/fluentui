@@ -11,13 +11,12 @@ import {
   jsonTreeFindParent,
   renderJSONTreeToJSXElement,
   resolveDraggingElement,
-  jsonTreeMap,
 } from '../config';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderElementToJSX } from '../../../docs-components/src/index';
 import { AccessibilityError } from '../accessibility/types';
-import { useAxeOnElement } from '../hooks/useAxeOnElement';
+import { runAxeOnElements } from '../accessibility/runAxeOnElement';
 
 export type JSONTreeOrigin = 'store' | 'url';
 
@@ -140,9 +139,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
     case 'DELETE_SELECTED_COMPONENT':
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
-      if (draftState.accessibilityErrors[draftState.selectedJSONTreeElementUuid]) {
-        delete draftState.accessibilityErrors[draftState.selectedJSONTreeElementUuid];
-      }
       draftState.redo = [];
 
       if (draftState.selectedJSONTreeElementUuid) {
@@ -163,6 +159,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
+
         treeChanged = true;
       }
       break;
@@ -285,12 +282,8 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     default:
       throw new Error(`Invalid action ${action}`);
   }
-
   if (treeChanged) {
-    // if the tree changed, run axe error check on every element in the tree and push it to the state
-    jsonTreeMap(draftState.jsonTree, element =>
-      draftState.accessibilityErrors.concat(useAxeOnElement(element.uuid)),
-    );
+    draftState.accessibilityErrors = runAxeOnElements();
     console.log(draftState.accessibilityErrors);
   }
 
