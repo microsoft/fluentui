@@ -725,8 +725,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         };
         ariaLabellledby = id;
       } else {
-        headerContextualMenuItem = sectionProps.title;
-        ariaLabellledby = this._id + sectionProps.title.text?.replace(/\s/g, '');
+        const id = sectionProps.title.text ? this._id + sectionProps.title.text.replace(/\s/g, '') : this._id;
+        headerContextualMenuItem = { ...sectionProps.title, id };
+        ariaLabellledby = id;
       }
 
       if (headerContextualMenuItem) {
