@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  makeMergePropsCompat,
+  makeMergeProps,
   resolveShorthandProps,
-  useMergedRefs,
   createDescendantContext,
   useDescendant,
   useDescendantsInit,
   DescendantContextValue,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
@@ -17,14 +17,13 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionItemShorthandProps = [];
+export const accordionItemShorthandPropsCompat = [];
 
 export const accordionItemDescendantContext: React.Context<
   DescendantContextValue<AccordionItemDescendant<HTMLElement>>
 > = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
+const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandPropsCompat });
 
 /**
  * Returns the props and state required to render the component
@@ -37,17 +36,21 @@ export const useAccordionItem = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionItemProps,
 ): AccordionItemState => {
+  const innerRef = React.useRef<HTMLElement>(null);
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref: useMergedRefs(ref, innerRef),
+      context: undefined!,
+      descendants: undefined!,
+      setDescendants: undefined!,
     },
-    defaultProps,
-    resolveShorthandProps(props, accordionItemShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, accordionItemShorthandPropsCompat),
+    resolveShorthandProps(props, accordionItemShorthandPropsCompat),
   );
   const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
   state.descendants = descendants;
   state.setDescendants = setDescendants;
-  state.context = useCreateAccordionItemContextValue(state);
+  state.context = useCreateAccordionItemContextValue(state, innerRef);
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},

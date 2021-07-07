@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Check style to fix text spacing alignment bug",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

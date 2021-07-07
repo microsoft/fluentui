@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { getCode, ArrowLeftKey, TabKey } from '@fluentui/keyboard-key';
+import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
 import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 const mergeProps = makeMergeProps<MenuPopoverState>({});
 
@@ -25,10 +27,12 @@ export const useMenuPopover = (
   const popoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const openOnHover = useMenuContext(context => context.openOnHover);
-  const openOnContext = useMenuContext(context => context.openOnContext);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
+
+  const { dir } = useFluent();
+  const CloseArrowKey = dir === 'ltr' ? ArrowLeftKey : ArrowRightKey;
 
   // use DOM listener since react events propagate up the react tree
   // no need to do `contains` logic as menus are all positioned in different portals
@@ -44,7 +48,7 @@ export const useMenuPopover = (
             dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore #16889 Node setTimeout type leaking
-            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 500);
+            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 250);
           }
         });
       }
@@ -72,7 +76,7 @@ export const useMenuPopover = (
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
 
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, { open: true, keyboard: false });
     }
 
@@ -81,7 +85,7 @@ export const useMenuPopover = (
 
   state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
     const keyCode = getCode(e);
-    if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === ArrowLeftKey)) {
+    if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === CloseArrowKey)) {
       if (popoverRef.current?.contains(e.target as HTMLElement)) {
         setOpen(e, { open: false, keyboard: true });
       }

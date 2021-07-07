@@ -1,4 +1,4 @@
-import { callable, ICSSInJSStyle } from '@fluentui/styles';
+import { AnimationKeyFrame, callable, ICSSInJSStyle } from '@fluentui/styles';
 import * as _ from 'lodash';
 
 /**
@@ -9,13 +9,15 @@ import * as _ from 'lodash';
  * tree.
  */
 export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
-  return Object.keys(styles).reduce((acc, cssPropertyName) => {
+  return Object.keys(styles).reduce((acc, cssPropertyName: keyof ICSSInJSStyle) => {
     const cssPropertyValue = styles[cssPropertyName];
 
     if (_.isPlainObject(cssPropertyValue)) {
       if (cssPropertyName === 'animationName') {
-        if (cssPropertyValue.keyframe) {
-          styles[cssPropertyName] = callable(cssPropertyValue.keyframe)(cssPropertyValue.params || {});
+        const animationDefinition = cssPropertyValue as AnimationKeyFrame;
+
+        if (animationDefinition.keyframe) {
+          styles[cssPropertyName] = callable(animationDefinition.keyframe)(animationDefinition.params || {});
         }
 
         return {
@@ -26,7 +28,7 @@ export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle 
 
       return {
         ...acc,
-        [cssPropertyName]: felaInvokeKeyframesPlugin(cssPropertyValue),
+        [cssPropertyName]: felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle),
       };
     }
 

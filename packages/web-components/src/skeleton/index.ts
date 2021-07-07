@@ -1,25 +1,29 @@
-import { customElement } from '@microsoft/fast-element';
-import { Skeleton, SkeletonTemplate as template } from '@microsoft/fast-foundation';
-import { SkeletonStyles as styles } from './skeleton.styles';
+import { Skeleton, skeletonTemplate as template } from '@microsoft/fast-foundation';
+import { skeletonStyles as styles } from './skeleton.styles';
 
 /**
  * The Fluent Skeleton Element. Implements {@link @microsoft/fast-foundation#Skeleton},
- * {@link @microsoft/fast-foundation#SkeletonTemplate}
+ * {@link @microsoft/fast-foundation#skeletonTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-skeleton\>
  */
-@customElement({
-  name: 'fluent-skeleton',
+export const fluentSkeleton = Skeleton.compose({
+  baseName: 'skeleton',
   template,
   styles,
-})
-export class FluentSkeleton extends Skeleton {}
+});
 
 /**
  * Styles for Skeleton
  * @public
  */
-export const SkeletonStyles = styles;
+export const skeletonStyles = styles;
+
+/**
+ * Skeleton base class
+ * @public
+ */
+export { Skeleton };

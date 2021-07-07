@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(E2E): Revert popover e2e",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}

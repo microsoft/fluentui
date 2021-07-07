@@ -2,6 +2,171 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Wed, 07 Jul 2021 07:32:54 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "9babbdb459a85f5ec7640b35e921d17a675f7856",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.0",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "a7015bc278ac653e2030571598e27cc88c8d1044",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.21.1",
+            "author": "makopch@microsoft.com",
+            "commit": "bed5091b9baf6359298e40849e2810fb0c80ba85",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.21.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jun 2021 07:31:35 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "78a001da63401022bbcb1cef142240d2c9671e53",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "175dd17740eab5d2c05f3c6779a2afbb3fd85227",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "59b3902db0c883c5cc91dc8870d8f268d56ef6be",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.1",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.0",
+            "author": "khhuynh@microsoft.com",
+            "commit": "c67362c086adf01363d1bb85a4303c35852a7d6c",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.19.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.19.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d07a25897e1a867be07a19481c8ee5724e63d70e",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jun 2021 07:34:26 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

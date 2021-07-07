@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.41)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.40..@fluentui/react-divider_v9.0.0-alpha.41)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.22 ([PR #18816](https://github.com/microsoft/fluentui/pull/18816) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.40)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.39..@fluentui/react-divider_v9.0.0-alpha.40)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.39)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.38..@fluentui/react-divider_v9.0.0-alpha.39)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.20 ([PR #18680](https://github.com/microsoft/fluentui/pull/18680) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.38)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.37..@fluentui/react-divider_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.19 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.37)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.36..@fluentui/react-divider_v9.0.0-alpha.37)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.18 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.36)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.35..@fluentui/react-divider_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.17 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.35)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.34..@fluentui/react-divider_v9.0.0-alpha.35)
+
+### Changes
+
+- Divider: Migrate react-divider to new DX. ([PR #18625](https://github.com/microsoft/fluentui/pull/18625) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.34)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.33..@fluentui/react-divider_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.29 ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.33)
 
