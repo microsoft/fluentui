@@ -186,36 +186,31 @@ function usePositions(
 
   React.useEffect(() => {
     if (!hidden) {
-      const timerId = async.requestAnimationFrame(() => {
-        // If we expect a target element to position against, `targetRef.current` should be defined.
-        // Once provided we can try to position the element.
-        const expectsTarget = !!target;
+      // If we expect a target element to position against, `targetRef.current` should be defined.
+      // Once provided we can try to position the element.
+      const expectsTarget = !!target;
 
-        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-          const currentProps: IPositionProps = {
-            ...props,
-            target: targetRef.current!,
-            bounds: getBounds(),
-          };
+      if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+        const currentProps: IPositionProps = {
+          ...props,
+          target: targetRef.current!,
+          bounds: getBounds(),
+        };
 
-          // If there is a finalHeight given then we assume that the user knows and will handle
-          // additional positioning adjustments so we should call positionCard
-          const newElementPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, calloutElement.current, elementPositions)
-            : positionCallout(currentProps, hostElement.current, calloutElement.current, elementPositions);
+        // If there is a finalHeight given then we assume that the user knows and will handle
+        // additional positioning adjustments so we should call positionCard
+        const newElementPositions: ICalloutPositionedInfo = finalHeight
+          ? positionCard(currentProps, hostElement.current, calloutElement.current, elementPositions)
+          : positionCallout(currentProps, hostElement.current, calloutElement.current, elementPositions);
 
-          console.log('THIS RAN');
+        console.log('THIS RAN');
 
-          setCalloutPositions(newElementPositions);
-        }
-      }, calloutElement.current);
-
-      return () => async.cancelAnimationFrame(timerId);
+        setCalloutPositions(newElementPositions);
+      }
     }
   }, [
     hidden,
     directionalHint,
-    async,
     elementPositions,
     calloutElement,
     hostElement,
