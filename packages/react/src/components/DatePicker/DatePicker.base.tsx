@@ -431,17 +431,13 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
-      <div
-        ref={datePickerDiv}
-        aria-haspopup="true"
-        aria-owns={isCalendarShown ? calloutId : undefined}
-        className={classNames.wrapper}
-      >
+      <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
         <TextField
           role="combobox"
           label={label}
           aria-expanded={isCalendarShown}
           ariaLabel={ariaLabel}
+          aria-haspopup="dialog"
           aria-controls={isCalendarShown ? calloutId : undefined}
           required={isRequired}
           disabled={disabled}
