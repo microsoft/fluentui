@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuItemCheckbox } from '../index';
-import { CutIcon } from '../tmp-icons.stories';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuItemCheckbox } from '../../index';
+import { CutIcon } from '../../tmp-icons.stories';
 
 export const AligningWithSelectableItems = () => (
   <Menu hasIcons hasCheckmarks>

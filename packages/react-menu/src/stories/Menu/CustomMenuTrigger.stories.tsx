@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuProps, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuProps, MenuPopover, MenuTriggerChildProps } from '../../index';
 
-export const ControlledPopup = () => {
+const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
+  return (
+    <button {...props} ref={ref}>
+      Custom Trigger
+    </button>
+  );
+});
+
+export const CustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);
@@ -10,7 +18,7 @@ export const ControlledPopup = () => {
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <button>Toggle menu</button>
+        <CustomMenuTrigger />
       </MenuTrigger>
 
       <MenuPopover>
@@ -23,9 +31,4 @@ export const ControlledPopup = () => {
       </MenuPopover>
     </Menu>
   );
-};
-
-export default {
-  title: 'Components/Menu',
-  component: Menu,
 };

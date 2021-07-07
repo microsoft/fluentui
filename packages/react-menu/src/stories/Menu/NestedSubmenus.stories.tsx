@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuProps, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuProps, MenuPopover } from '../../index';
 
 const EditorLayoutSubMenu = (props: { controlled?: boolean }) => {
   const { controlled } = props;

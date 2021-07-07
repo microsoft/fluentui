@@ -9,9 +9,9 @@ import {
   MenuDivider,
   MenuGroupHeader,
   MenuPopover,
-} from '../index';
+} from '../../index';
 
-import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '../tmp-icons.stories';
+import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '../../tmp-icons.stories';
 
 export const SelectionGroup = () => (
   <Menu>

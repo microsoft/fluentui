@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../../index';
 
-import { PasteIcon } from '../tmp-icons.stories';
+import { PasteIcon } from '../../tmp-icons.stories';
 
 export const AligningWithIcons = () => (
   <Menu hasIcons hasCheckmarks>

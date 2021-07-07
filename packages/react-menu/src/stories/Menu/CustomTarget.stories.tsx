@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, MenuList, MenuItem, MenuProps, MenuPopover } from '../index';
+import { Menu, MenuList, MenuItem, MenuProps, MenuPopover } from '../../index';
 
 export const CustomTarget = () => {
   const [open, setOpen] = React.useState(false);

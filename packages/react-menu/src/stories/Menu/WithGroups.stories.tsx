@@ -1,7 +1,16 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuGroup, MenuDivider, MenuGroupHeader, MenuPopover } from '../index';
+import {
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuGroup,
+  MenuDivider,
+  MenuGroupHeader,
+  MenuPopover,
+} from '../../index';
 
-import { CutIcon, PasteIcon, EditIcon } from '../tmp-icons.stories';
+import { CutIcon, PasteIcon, EditIcon } from '../../tmp-icons.stories';
 
 export const WithGroups = () => (
   <Menu>

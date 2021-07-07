@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuProps, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuProps, MenuPopover } from '../../index';
 
-export const TabOrder = (props: Partial<MenuProps>) => (
+export const Default = (props: Partial<MenuProps>) => (
   <Menu {...props}>
     <MenuTrigger>
-      <button>FOOBAR</button>
+      <button>Toggle menu</button>
     </MenuTrigger>
 
     <MenuPopover>
