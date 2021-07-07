@@ -35,7 +35,7 @@ jobs:
       - script: |
           yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
         displayName: upload a report (base only)
-        condition: not(variables.isPR)
+        condition: eq(variables.isPR, false)
         env:
           # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
           BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
