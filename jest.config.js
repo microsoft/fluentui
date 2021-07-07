@@ -1,6 +1,7 @@
 module.exports = {
   projects: [
     '<rootDir>/tools',
+    '<rootDir>/packages/bundle-size',
     '<rootDir>/packages/react-menu',
     '<rootDir>/packages/react-storybook',
     '<rootDir>/packages/react-accordion',

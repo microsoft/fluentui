@@ -25,7 +25,11 @@
       "projectType": "library",
       "sourceRoot": "packages/babel-make-styles/src"
     },
-    "@fluentui/bundle-size": { "root": "packages/bundle-size", "projectType": "library" },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
+      "projectType": "library",
+      "sourceRoot": "packages/bundle-size/src"
+    },
     "@fluentui/codemods": { "root": "packages/codemods", "projectType": "library" },
     "@fluentui/common-styles": { "root": "packages/common-styles", "projectType": "library" },
     "@fluentui/cra-template": { "root": "packages/cra-template", "projectType": "library" },

@@ -3,7 +3,7 @@ const yargs = require('yargs');
 const cliSetup = yargs
   .commandDir('commands')
   .option('quiet', {
-    alias: 'v',
+    alias: 'q',
     type: 'boolean',
     description: 'Suppress verbose build output',
     default: false,
