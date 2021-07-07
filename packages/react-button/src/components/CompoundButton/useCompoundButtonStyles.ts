@@ -192,7 +192,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     state.primary && rootStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    state['aria-disabled'] && rootStyles.disabled,
+    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );

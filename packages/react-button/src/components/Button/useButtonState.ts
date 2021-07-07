@@ -68,8 +68,8 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   };
 
   // Set the aria-disabled and disabled props correctly.
-  state['aria-disabled'] = disabled || disabledFocusable;
   state.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
+  state['aria-disabled'] = disabled && !state.disabled;
 
   return state;
 };

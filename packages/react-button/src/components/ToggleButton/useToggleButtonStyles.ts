@@ -181,10 +181,10 @@ export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonSta
     state.checked && state.primary && rootStyles.checkedPrimary,
     state.checked && state.subtle && rootStyles.checkedSubtle,
     state.checked && state.transparent && rootStyles.checkedTransparent,
-    state['aria-disabled'] && rootStyles.disabled,
-    state['aria-disabled'] && state.primary && rootStyles.disabledPrimary,
-    state['aria-disabled'] && state.subtle && rootStyles.disabledSubtle,
-    state['aria-disabled'] && state.transparent && rootStyles.disabledTransparent,
+    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
+    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
+    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
+    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
     state.className,
   );
 
