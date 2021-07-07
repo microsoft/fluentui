@@ -13,6 +13,12 @@ import {
 } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
+  styles: {
+    label: {
+      marginLeft: '30px',
+      marginRight: '5px',
+    },
+  },
   iconProps: {
     iconName: 'AddFriend',
   },
