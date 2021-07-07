@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add E2E test for updating content in Popover",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -5,9 +5,43 @@ trigger:
   - master
 
 variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
   - template: .devops/templates/variables.yml
 
 jobs:
+  - job: bundlesize
+    workspace:
+      clean: all
+    pool: 'Self Host Ubuntu'
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn build --no-cache $(sinceArg)
+        displayName: build packages
+
+      - script: |
+          yarn lage bundle-size --no-cache
+        displayName: create reports for packages
+
+      - script: |
+          yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+        displayName: upload a report (base only)
+        condition: not(variables.isPR)
+        env:
+          # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
+          BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
+
+      - template: .devops/templates/cleanup.yml
+
   - job: build_react
     workspace:
       clean: all

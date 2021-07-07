@@ -1,12 +1,9 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import ListboxTemplate from './fixtures/base.html';
-import { FluentListbox } from './';
-
-FluentListbox;
-FluentDesignSystemProvider;
+import Base from './fixtures/base.html';
+import '../listbox-option';
+import './index';
 
 export default {
   title: 'Listbox',
 };
 
-export const Listbox = (): string => ListboxTemplate;
+export const Listbox = () => Base;

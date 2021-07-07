@@ -1,10 +1,5 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import BreadcrumbItemTemplate from './fixtures/breadcrumb-item.html';
-import { FluentBreadcrumbItem } from '.';
-
-// Prevent tree-shaking
-FluentBreadcrumbItem;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Breadcrumb Item',
