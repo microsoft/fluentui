@@ -24,5 +24,6 @@ module.exports = {
     '<rootDir>/packages/react-utilities',
     '<rootDir>/packages/react-theme',
     '<rootDir>/packages/react-badge',
+    '<rootDir>/packages/keyboard-keys',
   ],
 };
