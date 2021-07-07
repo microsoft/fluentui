@@ -12,10 +12,7 @@ jobs:
     continue-on-error: true
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
-
+        uses: actions/checkout@v1
       - name: Use Node (v14.16.0)
         uses: actions/setup-node@v1
         with:
