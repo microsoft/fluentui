@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Jul 2021 07:32:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.1)
+
+Wed, 07 Jul 2021 07:32:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.0..@fluentui/web-components_v1.0.1)
+
+### Patches
+
+- removes duplicate styles for expand-collapse-glyph on tree item causing specificity/ordering issues ([PR #18828](https://github.com/microsoft/fluentui/pull/18828) by chhol@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.0)
 
