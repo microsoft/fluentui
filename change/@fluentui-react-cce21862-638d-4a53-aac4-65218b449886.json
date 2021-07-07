@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added focusZoneProps to the Pivot component to have ability be more customized",
-  "packageName": "@fluentui/react",
-  "email": "nikolenkoanton92@gmail.com",
-  "dependentChangeType": "patch"
-}

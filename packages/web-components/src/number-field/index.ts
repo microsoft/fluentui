@@ -1,6 +1,10 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { NumberField, NumberFieldTemplate as template } from '@microsoft/fast-foundation';
-import { NumberFieldStyles as styles } from './number-field.styles';
+import { attr } from '@microsoft/fast-element';
+import {
+  NumberField as FoundationNumberField,
+  NumberFieldOptions,
+  numberFieldTemplate as template,
+} from '@microsoft/fast-foundation';
+import { numberFieldStyles as styles } from './number-field.styles';
 
 /**
  * Number field appearances
@@ -9,26 +13,10 @@ import { NumberFieldStyles as styles } from './number-field.styles';
 export type NumberFieldAppearance = 'filled' | 'outline';
 
 /**
- * The Fluent Number Field Custom Element. Implements {@link @microsoft/fast-foundation#NumberField},
- * {@link @microsoft/fast-foundation#NumberFieldTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-number-field\>
- *
- * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ * The Fluent number field class
+ * @internal
  */
-@customElement({
-  name: 'fluent-number-field',
-  shadowOptions: {
-    delegatesFocus: true,
-    mode: 'closed',
-  },
-  styles,
-  template,
-})
-export class FluentNumberField extends NumberField {
+export class NumberField extends FoundationNumberField {
   /**
    * The appearance of the element.
    *
@@ -55,4 +43,30 @@ export class FluentNumberField extends NumberField {
  * Styles for NumberField
  * @public
  */
-export const NumberFieldStyles = styles;
+export const numberFieldStyles = styles;
+
+/**
+ * The Fluent Number Field Custom Element. Implements {@link @microsoft/fast-foundation#NumberField},
+ * {@link @microsoft/fast-foundation#numberFieldTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-number-field\>
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ */
+export const fluentNumberField = NumberField.compose<NumberFieldOptions>({
+  baseName: 'number-field',
+  styles,
+  template,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
+  stepDownGlyph: `
+    <span class="step-down-glyph" part="step-down-glyph"></span>
+  `,
+  stepUpGlyph: `
+    <span class="step-up-glyph" part="step-up-glyph"></span>
+  `,
+});

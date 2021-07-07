@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-context-selector): Migrate DX",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

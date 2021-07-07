@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 30 Jun 2021 07:38:35 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.45)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.44..@fluentui/react-menu_v9.0.0-alpha.45)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.22 ([PR #18816](https://github.com/microsoft/fluentui/pull/18816) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.44)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.43..@fluentui/react-menu_v9.0.0-alpha.44)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
+- fix(Menu): Submenu state should include `MenuList` ([PR #18791](https://github.com/microsoft/fluentui/pull/18791) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.43)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.42..@fluentui/react-menu_v9.0.0-alpha.43)
+
+### Changes
+
+- Fixing bug in start script of converged packages. ([PR #18768](https://github.com/microsoft/fluentui/pull/18768) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.42)
 

@@ -4,21 +4,21 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const Divider: React_2.ForwardRefExoticComponent<DividerProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface DividerProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface DividerProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
     alignContent?: 'start' | 'end' | 'center';
     appearance?: 'default' | 'subtle' | 'brand' | 'strong';
     important?: boolean;
     inset?: boolean;
     vertical?: boolean;
-    wrapper?: ShorthandProps<React_2.HTMLAttributes<HTMLDivElement>>;
+    wrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
 }
 
 // @public
