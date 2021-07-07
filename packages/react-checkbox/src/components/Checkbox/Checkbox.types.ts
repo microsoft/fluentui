@@ -7,9 +7,9 @@ import { LabelProps } from '@fluentui/react-label';
  */
 export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
   /**
-   * Label to be rendered with the checkbox.
+   * Children to be rendered as a Label.
    */
-  label?: ShorthandProps<LabelProps>;
+  children?: ShorthandProps<LabelProps>;
 
   /**
    * Icon to be displayed when the checkbox is in the checked state.
@@ -17,9 +17,9 @@ export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes
   checkmarkIcon?: React.ReactElement;
 
   /**
-   * Icon to be displayed when the checkbox is in the indeterminate state.
+   * Icon to be displayed when the checkbox is in the mixed state.
    */
-  indeterminateIcon?: React.ReactElement;
+  mixedIcon?: React.ReactElement;
 
   /**
    * Disabled state of the checkbox.
@@ -40,12 +40,12 @@ export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes
    * A checkbox's state can be controlled.
    * @defaultvalue false
    */
-  checked?: 'indeterminate' | boolean;
+  checked?: 'mixed' | boolean;
 
   /**
    * Whether the checkbox should be rendered as checked by default.
    */
-  defaultChecked?: 'indeterminate' | boolean;
+  defaultChecked?: 'mixed' | boolean;
 
   /**
    * Checkbox supports two different checkbox sizes.
@@ -65,37 +65,31 @@ export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes
   rootId?: string;
 
   /**
-   * ID of the <input/> element that represents the checkbox.
+   * ID of the native element that represents the checkbox.
    */
   id?: string;
 
   /**
    * Callback to be called when the checked state value changes.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: CheckboxOnChangeData) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
 }
 /**
  * Data for the onChange event for checkbox.
  */
 export interface CheckboxOnChangeData {
-  checked?: 'indeterminate' | boolean;
+  checked?: 'mixed' | boolean;
 }
 
 /**
  * Names of the shorthand properties in CheckboxProps
  */
-export type CheckboxShorthandProps = 'label';
+export type CheckboxShorthandProps = 'children';
 
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
  */
-export type CheckboxDefaultedProps =
-  | 'label'
-  | 'size'
-  | 'labelPosition'
-  | 'checked'
-  | 'checkmarkIcon'
-  | 'indeterminateIcon';
+export type CheckboxDefaultedProps = 'children' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon' | 'mixedIcon';
 
 /**
  * State used in rendering Checkbox
@@ -120,6 +114,8 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
    * Props to be applied to the input element.
    */
   inputProps?: InputProps;
+
+  focused?: boolean;
 }
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {

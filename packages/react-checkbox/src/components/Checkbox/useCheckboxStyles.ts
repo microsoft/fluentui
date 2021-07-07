@@ -1,89 +1,28 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
+  root: theme => ({
     display: 'flex',
+    alignSelf: 'flex-start',
+    padding: '4px',
+    border: `2px solid transparent`,
+    borderRadius: '4px',
     alignItems: 'center',
-  },
+    ':global([data-keyboard-nav]) :focus-within': {
+      border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+    },
+  }),
 
   input: {
     opacity: 0,
     margin: 0,
     padding: 0,
+    cursor: 'pointer',
   },
-
-  focusIndicator: createFocusIndicatorStyleRule(theme => ({
-    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-    borderRadius: '4px',
-  })),
-
-  // checkbox styles
-  checkbox: theme => ({
-    borderRadius: theme.global.borderRadius.small,
-    borderStyle: 'solid',
-    boxSizing: 'border-box',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }),
-
-  circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
-  }),
-
-  // TODO: get the disabled theme working, knowing if checked...
-  disabled: theme => ({
-    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
-    borderWidth: theme.global.strokeWidth.thin,
-  }),
-
-  uncheckedCheckbox: theme => ({
-    borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
-    borderWidth: theme.global.strokeWidth.thin,
-    ':hover': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
-    },
-    ':active': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
-    },
-  }),
-
-  checkedCheckbox: theme => ({
-    backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
-    borderWidth: 0,
-    ':hover': {
-      backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
-    },
-    ':active': {
-      backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
-    },
-  }),
-
-  indeterminateCheckbox: theme => ({
-    borderWidth: theme.global.strokeWidth.thin,
-    bordercolor: theme.alias.color.neutral.compoundBrandStroke,
-    ':hover': {
-      borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
-    },
-    ':active': {
-      borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
-    },
-  }),
-
-  startSpacing: theme => ({
-    // TODO: change this to Spacing horizontal M
-    marginLeft: '12px',
-  }),
-
-  endSpacing: theme => ({
-    // TODO: change this to Spacing horizontal M
-    marginRight: '12px',
-  }),
 
   medium: {
     width: '16px',
@@ -95,7 +34,70 @@ const useStyles = makeStyles({
     height: '20px',
   },
 
-  // icon styles
+  checkbox: theme => ({
+    borderRadius: theme.global.borderRadius.small,
+    borderStyle: 'solid',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexShrink: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }),
+
+  circular: theme => ({
+    borderRadius: theme.global.borderRadius.circular,
+  }),
+
+  disabled: theme => ({
+    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+    borderWidth: theme.global.strokeWidth.thin,
+  }),
+
+  unchecked: theme => ({
+    borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
+    borderWidth: theme.global.strokeWidth.thin,
+    ':hover': {
+      borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+    },
+    ':active': {
+      borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
+    },
+  }),
+
+  checked: theme => ({
+    backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
+    borderWidth: 0,
+    ':hover': {
+      backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
+    },
+  }),
+
+  mixed: theme => ({
+    bordercolor: theme.alias.color.neutral.compoundBrandStroke,
+    borderWidth: theme.global.strokeWidth.thin,
+    ':hover': {
+      borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
+    },
+    ':active': {
+      borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
+    },
+  }),
+
+  start: theme => ({
+    // TODO: change this to Spacing horizontal M
+    marginLeft: '12px',
+  }),
+
+  end: theme => ({
+    // TODO: change this to Spacing horizontal M
+    marginRight: '12px',
+  }),
+});
+
+const useIconStyles = makeStyles({
   icon: {
     position: 'absolute',
     display: 'flex',
@@ -103,36 +105,34 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
 
-  disabledIcon: theme => ({
+  disabled: theme => ({
     opacity: 1,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 
-  mediumIcon: {
+  medium: {
     width: '8px',
     height: '8px',
   },
 
-  largeIcon: {
+  large: {
     width: '10px',
     height: '10px',
   },
 
-  uncheckedIcon: theme => ({
+  unchecked: theme => ({
     opacity: 0,
     ':hover': {
-      opacity: 1,
-      color: theme.alias.color.neutral.neutralForeground4,
+      opacity: 0,
     },
     ':active': {
-      opacity: 1,
-      color: theme.alias.color.neutral.neutralForeground1,
+      opacity: 0,
     },
   }),
 
-  checkedIcon: theme => ({
+  // TODO: change to NeutralForegroundOnBrand once it's added
+  checked: theme => ({
     opacity: 1,
-    // TODO: change to NeutralForegroundOnBrand once it's added
     color: theme.alias.color.neutral.neutralForegroundInverted,
     ':hover': {
       opacity: 1,
@@ -144,7 +144,7 @@ const useStyles = makeStyles({
     },
   }),
 
-  indeterminateIcon: theme => ({
+  mixed: theme => ({
     opacity: 1,
     color: theme.alias.color.neutral.compoundBrandForeground1,
     ':hover': {
@@ -156,23 +156,30 @@ const useStyles = makeStyles({
       color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
     },
   }),
+});
 
-  // Label styles
-  disabledLabel: theme => ({
+const useLabelStyles = makeStyles({
+  label: {
+    userSelect: 'none',
+    cursor: 'pointer',
+  },
+
+  disabled: theme => ({
     color: theme.alias.color.neutral.neutralForegroundDisabled,
+    cursor: 'default',
   }),
 
-  uncheckedLabel: theme => ({
+  unchecked: theme => ({
     color: theme.alias.color.neutral.neutralForeground3,
     ':hover': {
       color: theme.alias.color.neutral.neutralForeground2,
     },
     ':active': {
-      color: theme.alias.color.neutral.neutralForeground4,
+      color: theme.alias.color.neutral.neutralForeground1,
     },
   }),
 
-  checkedLabel: theme => ({
+  checked: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     ':hover': {
       color: theme.alias.color.neutral.neutralForeground1,
@@ -182,7 +189,7 @@ const useStyles = makeStyles({
     },
   }),
 
-  indeterminateLabel: theme => ({
+  mixed: theme => ({
     color: theme.alias.color.neutral.neutralForeground3,
     ':hover': {
       color: theme.alias.color.neutral.neutralForeground3,
@@ -197,48 +204,44 @@ const useStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
+  const mapCheckedStyle = (styles: Record<'mixed' | 'checked' | 'unchecked', string>, checked: typeof state.checked) =>
+    checked === 'mixed' ? styles.mixed : checked ? styles.checked : styles.unchecked;
   const styles = useStyles();
-  let checkboxState;
-
-  if (state.checked === 'indeterminate') {
-    checkboxState = 'indeterminate';
-  } else if (state.checked) {
-    checkboxState = 'checked';
-  } else {
-    checkboxState = 'unchecked';
-  }
 
   state.className = mergeClasses(styles.root, state.className);
 
   if (state.inputProps) {
-    state.inputProps.className = mergeClasses(
-      styles.input,
-      styles.focusIndicator,
-      state.size && styles[`${state.size}` as keyof typeof styles],
-    );
+    state.inputProps.className = mergeClasses(styles.input, state.size && styles[state.size]);
   }
 
   state.checkboxClassName = mergeClasses(
+    styles[state.size],
     styles.checkbox,
     state.disabled && styles.disabled,
     state.circular && styles.circular,
-    styles[state.size],
-    !state.disabled && styles[`${checkboxState}Checkbox` as keyof typeof styles],
-    styles[`${state.labelPosition}Spacing` as keyof typeof styles],
+    !state.disabled && mapCheckedStyle(styles, state.checked),
+    !!state.children.children && styles[state.labelPosition],
   );
+
+  const iconStyles = useIconStyles();
 
   state.iconClassName = mergeClasses(
-    styles.icon,
-    state.disabled && styles.disabledIcon,
-    state.disabled && !state.checked && styles.uncheckedIcon,
-    styles[`${state.size}Icon` as keyof typeof styles],
-    !state.disabled && styles[`${checkboxState}Icon` as keyof typeof styles],
+    iconStyles.icon,
+    state.disabled && iconStyles.disabled,
+    state.disabled && !state.checked && iconStyles.unchecked,
+    iconStyles[state.size],
+    !state.disabled && mapCheckedStyle(iconStyles, state.checked),
   );
 
-  state.label.className = mergeClasses(
-    !state.disabled && styles[`${checkboxState}Label` as keyof typeof styles],
-    state.disabled && styles.disabledLabel,
-  );
+  const labelStyles = useLabelStyles();
+
+  if (state.children) {
+    state.children.className = mergeClasses(
+      labelStyles.label,
+      !state.disabled && mapCheckedStyle(labelStyles, state.checked),
+      state.disabled && labelStyles.disabled,
+    );
+  }
 
   return state;
 };

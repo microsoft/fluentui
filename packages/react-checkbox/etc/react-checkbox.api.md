@@ -14,33 +14,33 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = 'label' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon' | 'indeterminateIcon';
+export type CheckboxDefaultedProps = 'children' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon' | 'mixedIcon';
 
 // @public
 export interface CheckboxOnChangeData {
     // (undocumented)
-    checked?: 'indeterminate' | boolean;
+    checked?: 'mixed' | boolean;
 }
 
 // @public
-export interface CheckboxProps extends ComponentProps, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
-    checked?: 'indeterminate' | boolean;
+export interface CheckboxProps extends ComponentProps {
+    checked?: 'mixed' | boolean;
     checkmarkIcon?: React_2.ReactElement;
+    children?: ShorthandProps<LabelProps>;
     circular?: boolean;
-    defaultChecked?: 'indeterminate' | boolean;
+    defaultChecked?: 'mixed' | boolean;
     disabled?: boolean;
     id?: string;
-    indeterminateIcon?: React_2.ReactElement;
-    label?: ShorthandProps<LabelProps>;
     labelPosition?: 'start' | 'end';
-    onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, checked?: CheckboxOnChangeData) => void;
+    mixedIcon?: React_2.ReactElement;
+    onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
     required?: boolean;
     rootId?: string;
     size?: 'medium' | 'large';
 }
 
 // @public
-export type CheckboxShorthandProps = 'label';
+export type CheckboxShorthandProps = 'children';
 
 // @public
 export const checkboxShorthandProps: CheckboxShorthandProps[];

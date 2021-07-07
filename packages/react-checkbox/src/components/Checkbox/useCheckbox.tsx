@@ -7,7 +7,7 @@ import { Label } from '@fluentui/react-label';
 /**
  * Array of all shorthand properties listed in CheckboxShorthandProps
  */
-export const checkboxShorthandProps: CheckboxShorthandProps[] = ['label'];
+export const checkboxShorthandProps: CheckboxShorthandProps[] = ['children'];
 
 const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandProps });
 
@@ -29,8 +29,8 @@ export const useCheckbox = (
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
 
-  const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
-    if (isChecked === 'indeterminate') {
+  const onChange = () => {
+    if (isChecked === 'mixed') {
       setIsChecked(false);
     } else {
       setIsChecked(!isChecked);
@@ -42,7 +42,8 @@ export const useCheckbox = (
   const state = mergeProps(
     {
       ref,
-      label: {
+      id: useId('checkbox-'),
+      children: {
         as: Label,
         required: props.required,
         disabled: props.disabled,
@@ -51,29 +52,28 @@ export const useCheckbox = (
       labelPosition: 'end',
       checked: isChecked ? isChecked : false,
       checkmarkIcon: <CheckMarkIcon />,
-      indeterminateIcon: <CheckboxIndeterminateIcon />,
-      id: useId('checkbox-'),
+      mixedIcon: <CheckboxIndeterminateIcon />,
       inputProps: {
         ref: inputRef,
         type: 'checkbox',
         onChange: onChange,
         disabled: props.disabled,
         required: props.required,
-        'aria-label': props['aria-label'],
-        'aria-labelledby': props['aria-labelledby'],
+        'aria-label': props['aria-label'], // todo
+        'aria-labelledby': props['aria-labelledby'], // todo
         'aria-describedby': props['aria-describedby'],
         'aria-posinset': props['aria-posinset'],
         'aria-setsize': props['aria-setsize'],
         'aria-disabled': props.disabled,
-        'aria-checked': isChecked === 'indeterminate' ? 'mixed' : isChecked,
+        'aria-checked': isChecked,
       },
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
-  if (!state.label.htmlFor) {
-    state.label.htmlFor = state.id;
+  if (!state.children.htmlFor) {
+    state.children.htmlFor = state.id;
   }
 
   if (state.inputProps) {
@@ -81,26 +81,34 @@ export const useCheckbox = (
   }
   state.id = state.rootId;
 
+  // TODO: set indetereminate
+  if (inputRef.current) {
+    inputRef.current.indeterminate = isChecked === 'mixed' ? true : false;
+  }
+
   return state;
 };
 
 const useComponentRef = (
   ref: React.Ref<Partial<HTMLElement>>,
-  isChecked: 'indeterminate' | boolean | undefined,
-  checkboxRef: React.RefObject<HTMLInputElement>,
+  isChecked: 'mixed' | boolean | undefined,
+  inputRef: React.RefObject<HTMLInputElement>,
 ) => {
   React.useImperativeHandle(
     ref,
     () => ({
       get checked() {
-        return isChecked === 'indeterminate' ? isChecked : !!isChecked;
+        return isChecked;
+      },
+      get indeterminate() {
+        return isChecked === 'mixed';
       },
       focus() {
-        if (checkboxRef.current) {
-          checkboxRef.current.focus();
+        if (inputRef.current) {
+          inputRef.current.focus();
         }
       },
     }),
-    [checkboxRef, isChecked],
+    [inputRef, isChecked],
   );
 };
