@@ -11,23 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: Check out PR branch
-        run: |
-          echo ${{ github.github_server_url }}/${{ github.repository }}
-
-      # - name: Use Node (v14.16.0)
-      #   uses: actions/setup-node@v1
+      - name: Check out main branch
+        uses: actions/checkout@v2
+      # - name: Check out PR branch
+      #   uses: actions/checkout@v2
       #   with:
-      #     node-version: v14.16.0
+      #     ref: 'master'
+      #     fetch-depth: 0
 
-      # - name: Install Yarn
-      #   run: npm install -g yarn
+      - name: Use Node (v14.16.0)
+        uses: actions/setup-node@v1
+        with:
+          node-version: v14.16.0
 
-      # - name: Install dependencies
-      #   run: yarn
+      - name: Install Yarn
+        run: npm install -g yarn
 
-      # - name: Run nx dep-graph
-      #   run: yarn nx affected:dep-graph --file=tmp/dep-graph/index.html
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run nx dep-graph
+        run: yarn nx affected:dep-graph --base=origin/master --file=tmp/dep-graph/index.html
 
       # - name: 'Deploy to Azure WebApp'
       #   uses: azure/webapps-deploy@v2
