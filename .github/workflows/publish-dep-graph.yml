@@ -13,9 +13,7 @@ jobs:
     steps:
       - name: Check out PR branch
         run: |
-          echo ${{ github }}
-          echo ${{ github.repository }}
-          echo ${{ github.head_ref }}
+          echo ${{ github.github_server_url }}/${{ github.repository }}
 
       # - name: Use Node (v14.16.0)
       #   uses: actions/setup-node@v1
@@ -30,3 +28,10 @@ jobs:
 
       # - name: Run nx dep-graph
       #   run: yarn nx affected:dep-graph --file=tmp/dep-graph/index.html
+
+      # - name: 'Deploy to Azure WebApp'
+      #   uses: azure/webapps-deploy@v2
+      #   with:
+      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
+      #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+      #     package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
