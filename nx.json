@@ -30,7 +30,7 @@
     "@fluentui/api-docs": { "implicitDependencies": [] },
     "@fluentui/azure-themes": { "implicitDependencies": [] },
     "@fluentui/babel-make-styles": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
-    "@fluentui/bundle-size": { "implicitDependencies": [] },
+    "@fluentui/bundle-size": { "tags": ["platform:node"], "implicitDependencies": []},
     "@fluentui/codemods": { "implicitDependencies": [] },
     "@fluentui/common-styles": { "implicitDependencies": [] },
     "@fluentui/cra-template": { "implicitDependencies": [] },
