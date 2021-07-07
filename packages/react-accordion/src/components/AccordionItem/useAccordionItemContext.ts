@@ -21,11 +21,10 @@ export function useCreateAccordionItemContextValue(
   state: Pick<AccordionItemState, 'disabled'>,
   ref: React.RefObject<HTMLElement>,
 ) {
-  const disabled = state.disabled ?? false;
   // index -1 means context not provided
   const index = useAccordionDescendant({
     element: ref.current,
-    disabled,
+    disabled: state.disabled,
   });
   const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
   const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(index));
@@ -37,9 +36,9 @@ export function useCreateAccordionItemContextValue(
     () => ({
       open,
       onHeaderClick: onAccordionHeaderClick,
-      disabled,
+      disabled: state.disabled,
     }),
-    [onAccordionHeaderClick, open, disabled],
+    [onAccordionHeaderClick, open, state.disabled],
   );
   return context;
 }

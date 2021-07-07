@@ -44,7 +44,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const id = useId('accordion-header-', props.id);
   const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const innerRef = React.useRef<HTMLElement>(null);
-  const uninitializedState = {
+  const initialState = {
     ...props,
     ref: useMergedRefs(ref, innerRef),
     size: props.size ?? size ?? 'medium',
@@ -78,15 +78,15 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   );
 
   return {
-    ...uninitializedState,
+    ...initialState,
     context: React.useMemo<AccordionHeaderContextValue>(
       () => ({
         disabled,
         open,
-        size: uninitializedState.size,
-        expandIconPosition: uninitializedState.expandIconPosition,
+        size: initialState.size,
+        expandIconPosition: initialState.expandIconPosition,
       }),
-      [open, uninitializedState.size, uninitializedState.expandIconPosition, disabled],
+      [open, initialState.size, initialState.expandIconPosition, disabled],
     ),
   };
 };

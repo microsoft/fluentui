@@ -34,26 +34,23 @@ export const accordionItemDescendantContext: React.Context<
  */
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
   const innerRef = React.useRef<HTMLElement>(null);
-  const uninitializedState = {
+  const initialState = {
     ref: useMergedRefs(ref, innerRef),
-    disabled: false,
     ...props,
+    disabled: props.disabled ?? false,
   } as const;
   const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
-  const state: AccordionItemState = {
-    ...uninitializedState,
-    descendants,
-    setDescendants,
-    context: useCreateAccordionItemContextValue(uninitializedState, innerRef),
-  };
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},
   });
-  if (navigable) {
-    Object.assign(state, tabsterAttributes);
-  }
-  return state;
+  return {
+    ...initialState,
+    descendants,
+    setDescendants,
+    context: useCreateAccordionItemContextValue(initialState, innerRef),
+    ...(navigable ? tabsterAttributes : {}),
+  };
 };
 
 /**

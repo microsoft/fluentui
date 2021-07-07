@@ -15,7 +15,7 @@ export const accordionShorthandProps: Array<keyof AccordionSlots> = [];
  * @param defaultProps - default values for the properties of Accordion
  */
 export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
-  const uninitializedAccordionState = {
+  const initialState = {
     ref,
     collapsible: false,
     multiple: false,
@@ -28,9 +28,9 @@ export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>)
     expandIcon: props.expandIcon ? resolveShorthand(props.expandIcon) : undefined,
     icon: props.icon ? resolveShorthand(props.icon) : undefined,
   } as const;
-  const [context, descendants, setDescendants] = useCreateAccordionContextValue(uninitializedAccordionState);
+  const [context, descendants, setDescendants] = useCreateAccordionContextValue(initialState);
   return {
-    ...uninitializedAccordionState,
+    ...initialState,
     context,
     descendants,
     setDescendants,
