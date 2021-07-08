@@ -38,7 +38,7 @@ async function getRemoteReport(branch, attempt = 1) {
     console.log([chalk.yellow('[w]'), 'Failed to fetch report from the remote. Retrying...'].join(' '));
 
     if (attempt >= 5) {
-      console.log(
+      console.error(
         [chalk.red('[e]'), 'Exceeded 5 attempts to fetch reports, please check previously reported warnings...'].join(
           ' ',
         ),
