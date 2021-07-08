@@ -64,32 +64,38 @@ describe('getSlots', () => {
     });
   });
 
-  it('returns slot as button and omits unsupported props (href)', () => {
-    type ShorthandProps = {
+  it('returns slot as button', () => {
+    type Slots = {
       icon: React.ButtonHTMLAttributes<HTMLElement>;
     };
     expect(
-      getSlots<ShorthandProps>(
+      getSlots<Slots>(
         {
-          as: 'div',
-          icon: { as: 'button', id: 'id', children: 'children' },
+          components: { icon: 'button', root: 'div' },
+          as: 'span',
+          icon: { id: 'id', children: 'children' },
         },
         ['icon'],
       ),
     ).toEqual({
-      slots: { root: 'div', icon: 'button' },
+      slots: { root: 'span', icon: 'button' },
       slotProps: { root: {}, icon: { id: 'id', children: 'children' } },
     });
   });
 
   it('returns slot as anchor and includes supported props (href)', () => {
-    type ShorthandProps = {
+    type Slots = {
       icon: React.AnchorHTMLAttributes<HTMLElement>;
     };
     expect(
-      getSlots<ShorthandProps>({ as: 'div', icon: { as: 'a', id: 'id', href: 'href', children: 'children' } }, [
-        'icon',
-      ]),
+      getSlots<Slots>(
+        {
+          as: 'div',
+          components: { root: 'div', icon: 'a' },
+          icon: { id: 'id', href: 'href', children: 'children' },
+        },
+        ['icon'],
+      ),
     ).toEqual({
       slots: { root: 'div', icon: 'a' },
       slotProps: { root: {}, icon: { id: 'id', href: 'href', children: 'children' } },
@@ -128,11 +134,11 @@ describe('getSlots', () => {
   });
 
   it('can render a primitive input with no children', () => {
-    type ShorthandProps = {
+    type Slots = {
       input: React.AnchorHTMLAttributes<HTMLElement>;
     };
     expect(
-      getSlots<ShorthandProps>({ as: 'div', input: { as: 'input', children: null } }, ['input']),
+      getSlots<Slots>({ as: 'div', components: { input: 'input' }, input: { children: null } }, ['input']),
     ).toEqual({
       slots: { root: 'div', input: 'input' },
       slotProps: { root: {}, input: { children: null } },
