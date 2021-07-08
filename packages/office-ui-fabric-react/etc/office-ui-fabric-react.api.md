@@ -6676,6 +6676,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
     // @deprecated
     defaultSelectedIndex?: number;
     defaultSelectedKey?: string;
+    focusZoneProps?: IFocusZoneProps;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
     // @deprecated
