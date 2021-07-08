@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(storybook): fix babel-plugin warnings when running storybook in converged packages",
+  "packageName": "@fluentui/react-menu",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
