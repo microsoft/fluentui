@@ -2,6 +2,55 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react-examples_v8.34.1",
+      "version": "8.34.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshot updates for removing close button tooltip",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.74",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f945172f2b3904cf993a6a7f65a13bbe44f31fbe",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.33",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.119",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.121",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.119",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Jul 2021 07:32:54 GMT",
       "tag": "@fluentui/react-examples_v8.34.0",
       "version": "8.34.0",

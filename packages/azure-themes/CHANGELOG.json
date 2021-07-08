@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.33",
+      "version": "8.1.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Jul 2021 07:32:54 GMT",
       "tag": "@fluentui/azure-themes_v8.1.32",
       "version": "8.1.32",

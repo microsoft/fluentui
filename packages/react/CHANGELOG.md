@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 07 Jul 2021 07:32:54 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jul 2021 07:32:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.2)
+
+Thu, 08 Jul 2021 07:32:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.1..@fluentui/react_v8.22.2)
+
+### Patches
+
+- Remove title tooltip from TeachingBubble close button ([PR #18771](https://github.com/microsoft/fluentui/pull/18771) by sarah.higley@microsoft.com)
+- Datepicker: move aria-haspopup to the correct element ([PR #18838](https://github.com/microsoft/fluentui/pull/18838) by sarah.higley@microsoft.com)
 
 ## [8.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.1)
 

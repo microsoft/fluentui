@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 07 Jul 2021 07:32:54 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jul 2021 07:32:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.5)
+
+Thu, 08 Jul 2021 07:32:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.4..@fluentui/react-charting_v5.3.5)
+
+### Patches
+
+- Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty ([PR #18811](https://github.com/microsoft/fluentui/pull/18811) by v-scharde@microsoft.com)
 
 ## [5.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.4)
 

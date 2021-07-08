@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

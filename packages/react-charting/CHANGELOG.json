@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react-charting_v5.3.5",
+      "version": "5.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty",
+            "author": "v-scharde@microsoft.com",
+            "commit": "5f38175f0e5ae26a36361a3037250b5b4b959f86",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Jul 2021 07:32:54 GMT",
       "tag": "@fluentui/react-charting_v5.3.4",
       "version": "5.3.4",
