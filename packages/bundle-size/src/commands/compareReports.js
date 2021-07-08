@@ -8,6 +8,7 @@ const { compareResultsInReports } = require('../utils/compareResultsInReports');
 const { hrToSeconds } = require('../utils/helpers');
 
 const MAX_HTTP_ATTEMPT_COUNT = 5;
+const REPORT_API_ENDPOINT = `https://fluentbundlesize.azurewebsites.net/api/latest`;
 
 /**
  * Grabs data for a branch from Azure Table Storage.
@@ -19,7 +20,7 @@ const MAX_HTTP_ATTEMPT_COUNT = 5;
  */
 async function getRemoteReport(branch, attempt = 1) {
   try {
-    const response = await fetch(`https://fluentbundlesize.azurewebsites.net/api/latest?branch=${branch}`);
+    const response = await fetch(`${REPORT_API_ENDPOINT}?branch=${branch}`);
     /** @type {(import("../utils/collectLocalReport").BundleSizeReportEntry & {commitSHA: string})[]} */
     const result = await response.json();
 
