@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.74",
+      "version": "9.0.0-alpha.74",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.14",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f945172f2b3904cf993a6a7f65a13bbe44f31fbe",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Jul 2021 23:15:55 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.74",
       "version": "9.0.0-alpha.74",

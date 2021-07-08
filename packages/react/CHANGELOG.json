@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react_v8.22.2",
+      "version": "8.22.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove title tooltip from TeachingBubble close button",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Datepicker: move aria-haspopup to the correct element",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "bc44a88956298d7333cc8cdea52236101f1e1c28",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Jul 2021 07:32:54 GMT",
       "tag": "@fluentui/react_v8.22.1",
       "version": "8.22.1",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Datepicker: move aria-haspopup to the correct element",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
