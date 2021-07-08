@@ -1,9 +1,8 @@
 import * as React from 'react';
+import { StoryExample } from './StoryExample.stories';
 import { AvatarExamples } from './AvatarExamples.stories';
-// import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-// import { Button } from '@fluentui/react-button';
 import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from './index';
-// import { useBoolean } from '@fluentui/react-hooks';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
   CalendarIcon,
   CatIcon,
@@ -14,13 +13,17 @@ import {
   RoomIcon,
   TelemarketerIcon,
 } from './tmp-icons.stories';
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 
-import { StoryExample } from './StoryExample.stories';
-import { useState } from 'react';
-
-const Button: React.FC = props => {
-  return <button>{props.children}</button>;
+/**
+ * Temporary workaround for Buttons
+ * The converged Button component is not yet migrated to the new DX: https://github.com/microsoft/fluentui/pull/18607
+ */
+const Button: React.FC<{ value?: string | number; onClick: React.MouseEventHandler<HTMLButtonElement> }> = props => {
+  return (
+    <button value={props.value} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
 };
 
 const examples = {
@@ -214,7 +217,7 @@ export const ActiveAnimation = () => {
         </div>
         <div className={flexStyles.stack}>
           <Button onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</Button>
-          {/* Replaced the Spin Buttons */}
+          {/* Temporarly replacement of SpinButtons */}
           <div className={flexStyles.flex}>
             Active Display:
             <Button value={activeDisplay} onClick={nextActiveDisplay}>
@@ -244,15 +247,6 @@ export const ActiveAnimation = () => {
               prev
             </Button>
           </div>
-
-          {/*<SpinButton
-            label="activeDisplay"
-            value={activeDisplay}
-            onIncrement={nextActiveDisplay}
-            onDecrement={prevActiveDisplay}
-          />
-           <SpinButton label="display" value={display} onIncrement={nextDisplay} onDecrement={prevDisplay} />
-          <SpinButton label="size" value={`${size}`} onIncrement={nextSize} onDecrement={prevSize} /> */}
         </div>
       </div>
     </>
@@ -327,10 +321,10 @@ export const AvatarPlayground = () => {
   const propSelectors = [
     useValueSelector('size', useValueSelectorState(examples.size, 96), true),
     useValueSelector('square', useValueSelectorState([true, false])),
-    // useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
+    useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
-    // useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
-    // useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
+    useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
+    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
@@ -346,10 +340,10 @@ export const AvatarPlayground = () => {
         <Avatar {...propValues} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
-        {...propSelectors.map(p => p.renderSelector())}
+        {propSelectors.map(p => p.renderSelector())}
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
           {`<Avatar `}
-          {...propSelectors.map(p => p.renderValue())}
+          {propSelectors.map(p => p.renderValue())}
           {`/>`}
         </div>
       </div>
@@ -357,13 +351,13 @@ export const AvatarPlayground = () => {
   );
 };
 
-// //
-// // Helpers
-// //
+//
+// Helpers
+//
 
-// /**
-//  * Generate a list of Avatars with sample properties
-//  */
+/**
+ * Generate a list of Avatars with sample properties
+ */
 const AvatarExampleList: React.FC<
   AvatarProps & {
     names?: readonly string[];
@@ -393,10 +387,10 @@ const AvatarExampleList: React.FC<
   );
 };
 
-// const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
-// const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
-//   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
-// const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
+const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
+const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
+  typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
+const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
 
 type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () => void];
 
@@ -420,7 +414,7 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
   initialEnabled: boolean = false,
   valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
 ) => {
-  const [enabled, setEnabled] = useState(initialEnabled);
+  const [enabled, setEnabled] = React.useState(initialEnabled);
 
   return {
     /** Assign this property's value to the given props object, if the property is set */
