@@ -68,7 +68,8 @@ module.exports = async function cliReporter(result) {
 
   if (table.length > 0) {
     console.log(table.toString());
-  } else {
-    console.log(`${chalk.green('[✔]')} No changes found`);
+    return;
   }
+
+  console.log(`${chalk.green('[✔]')} No changes found`);
 };
