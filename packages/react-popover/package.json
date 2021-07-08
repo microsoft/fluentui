@@ -19,6 +19,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
+    "e2e": "e2e",
     "storybook": "start-storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",

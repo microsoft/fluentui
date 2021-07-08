@@ -29,7 +29,7 @@
     "copy-notices": "node scripts/copy-notices.js",
     "create-component": "plop --plopfile ./scripts/create-component/create-component.ts --dest . --require ./scripts/ts-node-register",
     "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
-    "e2e": "lage e2e --verbose --mode run",
+    "e2e": "lage e2e --verbose --concurrency=1 --mode run",
     "format": "node scripts/format.js",
     "generate-version-files": "yarn workspace @fluentui/scripts just generate-version-files",
     "graph": "node ./scripts/dependency-graph-generator/index.js",
