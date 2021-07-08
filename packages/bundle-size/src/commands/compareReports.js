@@ -7,37 +7,39 @@ const collectLocalReport = require('../utils/collectLocalReport');
 const { compareResultsInReports } = require('../utils/compareResultsInReports');
 const { hrToSeconds } = require('../utils/helpers');
 
+const MAX_HTTP_ATTEMPT_COUNT = 5;
+
 /**
  * Grabs data for a branch from Azure Table Storage.
  *
  * @param {string} branch
  * @param {number} attempt
  *
- * @return {Promise<[string, import("../utils/collectLocalReport").BundleSizeReport]>}
+ * @return {Promise<{ commitSHA: string, remoteReport: import("../utils/collectLocalReport").BundleSizeReport}>}
  */
 async function getRemoteReport(branch, attempt = 1) {
   try {
     const response = await fetch(`https://fluentbundlesize.azurewebsites.net/api/latest?branch=${branch}`);
     /** @type {(import("../utils/collectLocalReport").BundleSizeReportEntry & {commitSHA: string})[]} */
-    const report = await response.json();
+    const result = await response.json();
 
     /** @type {import("../utils/collectLocalReport").BundleSizeReport} */
-    const result = [];
+    const remoteReport = [];
     let commitSHA = '';
 
-    report.forEach(entity => {
+    result.forEach(entity => {
       const { commitSHA: entrySHA, ...rest } = entity;
 
       commitSHA = entrySHA;
-      result.push(rest);
+      remoteReport.push(rest);
     });
 
-    return [commitSHA, result];
+    return { commitSHA, remoteReport };
   } catch (e) {
     console.log([chalk.yellow('[w]'), e.toString()].join(' '));
     console.log([chalk.yellow('[w]'), 'Failed to fetch report from the remote. Retrying...'].join(' '));
 
-    if (attempt >= 5) {
+    if (attempt >= MAX_HTTP_ATTEMPT_COUNT) {
       console.error(
         [chalk.red('[e]'), 'Exceeded 5 attempts to fetch reports, please check previously reported warnings...'].join(
           ' ',
@@ -67,7 +69,7 @@ async function compareReports(options) {
   }
 
   const remoteReportStartTime = process.hrtime();
-  const [commitSHA, remoteReport] = await getRemoteReport(branch);
+  const { commitSHA, remoteReport } = await getRemoteReport(branch);
 
   if (!quiet) {
     if (commitSHA === '') {
