@@ -38,9 +38,7 @@ function formatPercent(fraction) {
  */
 module.exports = function calculateDiffByMetric(local, remote, property) {
   const delta = local[property] - remote[property];
+  const percent = remote[property] === 0 ? 0 : delta / remote[property];
 
-  return {
-    delta,
-    percent: formatPercent(delta / remote[property]),
-  };
+  return { delta, percent: formatPercent(percent) };
 };
