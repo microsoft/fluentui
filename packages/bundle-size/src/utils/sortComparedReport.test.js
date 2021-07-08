@@ -9,22 +9,10 @@ describe('sortComparedReport', () => {
       { packageName: 'bcd', name: 'BCD-A', path: 'bcd-a.js', minifiedSize: 0, gzippedSize: 0, diff: emptyDiff },
       { packageName: 'abc', name: 'ABC', path: 'abc.js', minifiedSize: 0, gzippedSize: 0, diff: emptyDiff },
     ];
+    const actual = sortComparedReport(report);
 
-    expect(sortComparedReport(report).map(({ packageName, path }) => ({ packageName, path }))).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "packageName": "abc",
-          "path": "abc.js",
-        },
-        Object {
-          "packageName": "bcd",
-          "path": "bcd-a.js",
-        },
-        Object {
-          "packageName": "bcd",
-          "path": "bcd-b.js",
-        },
-      ]
-    `);
+    expect(actual[0]).toEqual(report[2]);
+    expect(actual[1]).toEqual(report[1]);
+    expect(actual[2]).toEqual(report[0]);
   });
 });
