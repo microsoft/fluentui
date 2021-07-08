@@ -25,6 +25,7 @@ import {
 } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
+import { observeResize } from '../../utilities/observeResize';
 import { AnimationClassNames } from '../../Styling';
 import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
 
@@ -92,6 +93,7 @@ function useBounds(
       }
       cachedBounds.current = currentBounds;
     }
+
     return cachedBounds.current;
   }, [bounds, minPagePadding, target, targetRef, targetWindow]);
 
@@ -169,30 +171,28 @@ function usePositions(
    *
    * @param newElementPositions The incoming position for the Callout
    */
-  // const setCalloutPositions = React.useCallback(
-  //   (newElementPositions: ICalloutPositionedInfo) => {
-  //     if (
-  //       (!elementPositions && newElementPositions) ||
-  //       (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-  //     ) {
-  //       // Only call the onPositioned callback if the callout has been re-positioned at least once.
-  //       // if (positionAttempts.current > 0) {
-  //       //   positionAttempts.current = 0;
-  //       //   onPositioned?.(elementPositions);
-  //       // }
+  const setCalloutPositions = React.useCallback(
+    (newElementPositions: ICalloutPositionedInfo) => {
+      if (elementPositions) {
+        console.log('randfsaasfdfdsa ' + !arePositionsEqual(elementPositions, newElementPositions));
+      }
 
-  //       positionAttempts.current++;
-  //       setElementPositions(newElementPositions);
-  //     } else if (positionAttempts.current > 0) {
-  //       // Only call the onPositioned callback if the callout has been re-positioned at least once.
-  //       positionAttempts.current = 0;
-  //       onPositioned?.(elementPositions);
-  //     }
+      if (
+        (!elementPositions && newElementPositions) ||
+        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+      ) {
+        if (elementPositions !== undefined) {
+          onPositioned?.(elementPositions);
+        }
+        console.log('State was updated');
 
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when receiving a newElementPosition
-  //   },
-  //   [elementPositions, onPositioned],
-  // );
+        setElementPositions(newElementPositions);
+      }
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when receiving a newElementPosition
+    },
+    [elementPositions, onPositioned],
+  );
 
   React.useEffect(() => {
     console.log('THIS RAN 1');
@@ -216,19 +216,19 @@ function usePositions(
           ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
           : positionCallout(currentPositionProps, hostElement.current, calloutElement.current, elementPositions);
 
-        // setCalloutPositions(newElementPositions);
+        observeResize(hostElement.current, () => {
+          if (
+            (!elementPositions && newElementPositions) ||
+            (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+          ) {
+            if (elementPositions !== undefined) {
+              onPositioned?.(elementPositions);
+            }
+            console.log('State was updated');
 
-        if (
-          (!elementPositions && newElementPositions) ||
-          (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-        ) {
-          // Only call the onPositioned callback if the callout has been re-positioned at least once.
-          if (elementPositions !== undefined) {
-            onPositioned?.(elementPositions);
+            setElementPositions(newElementPositions);
           }
-
-          setElementPositions(newElementPositions);
-        }
+        });
       }
     }
   }, [
@@ -241,13 +241,9 @@ function usePositions(
     getBounds,
     onPositioned,
     target,
-    props.styles,
-    props.calloutWidth,
-    props.children,
-    props,
     elementPositions,
-    calloutElement,
-    finalHeight,
+    // setCalloutPositions,
+    props,
   ]);
 
   return elementPositions;
@@ -619,7 +615,7 @@ function arePositionsEqual(
   newElementPosition: ICalloutPositionedInfo,
 ): boolean {
   return (
-    comparePositions(prevElementPositions.elementPosition, newElementPosition.elementPosition) &&
+    comparePositions(prevElementPositions, newElementPosition) &&
     comparePositions(prevElementPositions.beakPosition.elementPosition, newElementPosition.beakPosition.elementPosition)
   );
 }
@@ -634,7 +630,7 @@ function comparePositions(prevElementPositions: IPosition, newElementPositions: 
   for (const key in newElementPositions) {
     if (newElementPositions.hasOwnProperty(key)) {
       const oldPositionEdge = prevElementPositions[key];
-      const newPositionEdge = prevElementPositions[key];
+      const newPositionEdge = newElementPositions[key];
 
       if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
         if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
@@ -645,6 +641,7 @@ function comparePositions(prevElementPositions: IPosition, newElementPositions: 
       }
     }
   }
+  console.log('They are equal');
   return true;
 }
 
