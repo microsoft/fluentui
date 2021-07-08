@@ -5,19 +5,6 @@ import { nullRender } from './nullRender';
 import { getNativeElementProps } from '../utils/getNativeElementProps';
 
 /**
- * Gets the value to be used as element from the root slot
- */
-function getRootSlot(
-  defaultComponent: React.ElementType | undefined,
-  userComponent: keyof JSX.IntrinsicElements | undefined,
-) {
-  if (defaultComponent === undefined || typeof defaultComponent === 'string') {
-    return userComponent || defaultComponent || 'div';
-  }
-  return defaultComponent;
-}
-
-/**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
  * collections.
  *
@@ -47,7 +34,10 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
   type Slots = { [K in keyof SlotProps]: React.ElementType<SlotProps[K]> };
 
   const slots = ({
-    root: getRootSlot(typedState.components ? typedState.components.root : undefined, typedState.as),
+    root:
+      typedState.components?.root === undefined || typeof typedState.components.root === 'string'
+        ? typedState.as || typedState.components?.root || 'div'
+        : typedState.components.root,
   } as Slots & { root: React.ElementType }) as Slots;
 
   const slotProps = ({
@@ -59,7 +49,7 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
     for (const name of typedSlotNames) {
       const { children, ...rest } = typedState[name];
 
-      const slot = ((typedState.components && typedState.components[name]) || 'div') as Slots[typeof name];
+      const slot = (typedState.components?.[name] || 'div') as Slots[typeof name];
 
       // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader, Input
       if (typeof slot === 'string' && children === undefined) {
