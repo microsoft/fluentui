@@ -43,9 +43,6 @@ module.exports = async function cliReporter(result) {
   const table = new Table({
     colAligns: ['left', 'right', 'right'],
     head: ['Fixture', 'Before', 'After (minified/GZIP)'],
-
-    // Removes special characters in output for tests
-    ...(process.env.NODE_ENV === 'test' && { style: { border: [], head: [] } }),
   });
   const { changedEntries } = getChangedEntriesInReport(result);
 
