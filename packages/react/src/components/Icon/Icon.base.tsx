@@ -73,7 +73,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     let finalIconContentChildren = iconContentChildren;
 
-    if (mergeImageProps && iconContentChildren && typeof iconContentChildren === 'object') {
+    if (mergeImageProps && iconContentChildren && typeof iconContentChildren === 'object' && this.props.title) {
       finalIconContentChildren = React.cloneElement(iconContentChildren, {
         alt: this.props.title,
       });

@@ -9,8 +9,8 @@ export interface IIconSubset {
 
   style?: IRawStyle;
   /**
-   * Whether or not to merge any props required for images into the child elements for
-   * accessibiity comlpliance.
+   * Indicates to the icon renderer that it is safe to merge any props on the original `Icon` element
+   * onto the child content element registered for the icon which are valid for HTML images.
    */
   mergeImageProps?: boolean;
 }

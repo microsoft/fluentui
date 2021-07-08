@@ -57,7 +57,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   let finalChildren = children;
 
   if (mergeImageProps) {
-    if (typeof children === 'object' && typeof children.props === 'object') {
+    if (typeof children === 'object' && typeof children.props === 'object' && props.title) {
       finalChildren = React.cloneElement(children, { alt: props.title });
     }
   }
