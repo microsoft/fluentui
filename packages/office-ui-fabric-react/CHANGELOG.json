@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 12:26:48 GMT",
+      "tag": "office-ui-fabric-react_v7.172.4",
+      "version": "7.172.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Remove pointer-events: 'none' from disabled styles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2b352893a2a3af326dedbc9b54f865013469c782",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Jul 2021 12:23:05 GMT",
       "tag": "office-ui-fabric-react_v7.172.3",
       "version": "7.172.3",

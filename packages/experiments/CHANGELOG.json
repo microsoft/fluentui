@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 08 Jul 2021 12:26:48 GMT",
+      "tag": "@uifabric/experiments_v7.39.39",
+      "version": "7.39.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2b352893a2a3af326dedbc9b54f865013469c782",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Jul 2021 12:23:05 GMT",
       "tag": "@uifabric/experiments_v7.39.38",
       "version": "7.39.38",

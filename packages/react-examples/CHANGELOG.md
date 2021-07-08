@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 07 Jul 2021 12:23:05 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jul 2021 12:26:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.14)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.13..@fluentui/react-examples_v0.14.14)
+
+### Patches
+
+- Button: Remove pointer-events: 'none' from disabled styles. ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
 
 ## [0.14.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.13)
 

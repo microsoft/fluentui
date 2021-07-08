@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 07 Jul 2021 12:23:05 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jul 2021 12:26:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.39](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.39)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.38..@uifabric/experiments_v7.39.39)
+
+### Patches
+
+- Updating snapshots. ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
 
 ## [7.39.38](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.38)
 

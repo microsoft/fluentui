@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Jul 2021 12:23:05 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jul 2021 12:26:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.172.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.4)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.3..office-ui-fabric-react_v7.172.4)
+
+### Patches
+
+- Button: Remove pointer-events: 'none' from disabled styles. ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
 
 ## [7.172.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.3)
 
