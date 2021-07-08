@@ -4,7 +4,7 @@ import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, ILegend, Legends } from '../../index';
+import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 
@@ -24,6 +24,7 @@ export interface IDonutChartState {
   focusedArcId?: string;
   selectedLegend: string;
   dataPointCalloutProps?: IChartDataPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -134,6 +135,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
+          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
           {this.props.onRenderCalloutPerDataPoint ? (
             this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps!)
@@ -234,6 +236,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
       dataPointCalloutProps: data,
+      callOutAccessibilityData: data.callOutAccessibilityData!,
     });
   };
 
@@ -249,6 +252,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: data.yAxisCalloutData!,
       activeLegend: data.legend,
       dataPointCalloutProps: data,
+      callOutAccessibilityData: data.callOutAccessibilityData!,
     });
   };
   private _onBlur = (): void => {
@@ -273,4 +277,19 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       return valueInsideDonut;
     }
   }
+
+  private _getAccessibleDataObject = (
+    accessibleData?: IAccessibilityProps,
+    role: string = 'text',
+    isDataFocusable: boolean = true,
+  ) => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': isDataFocusable,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
+  };
 }
