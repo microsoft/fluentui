@@ -4,11 +4,8 @@ const path = require('path');
 const prettier = require('prettier');
 const { findPackageRoot } = require('workspace-tools');
 
+const getChangedEntriesInReport = require('../utils/getChangedEntriesInReport');
 const { formatBytes } = require('../utils/helpers');
-const sortComparedReport = require('../utils/sortComparedReport');
-
-/** @typedef {import('../utils/compareResultsInReports').ComparedReportEntry} ComparedReportEntry */
-/** @typedef {import('../utils/compareResultsInReports').ComparedReport} ComparedReport */
 
 /**
  * @param {number} value
@@ -41,31 +38,6 @@ function formatDelta({ delta }) {
 }
 
 /**
- * @param {ComparedReport} report
- *
- * @return {{ changedEntries: ComparedReportEntry[], unchangedEntries: ComparedReportEntry[] }}
- */
-function partitionReport(report) {
-  /** @type {ComparedReportEntry[]} */
-  const changedEntries = [];
-  /** @type {ComparedReportEntry[]} */
-  const unchangedEntries = [];
-
-  report.forEach(reportEntry => {
-    if (reportEntry.diff.gzip.delta === 0 || reportEntry.diff.minified.delta === 0) {
-      unchangedEntries.push(reportEntry);
-    } else {
-      changedEntries.push(reportEntry);
-    }
-  });
-
-  return {
-    changedEntries: sortComparedReport(changedEntries),
-    unchangedEntries: sortComparedReport(unchangedEntries),
-  };
-}
-
-/**
  * @param {import('../utils/compareResultsInReports').ComparedReport} result
  * @param {string} commitSHA
  * @param {boolean} quiet
@@ -90,7 +62,7 @@ module.exports = async function markdownReporter(result, commitSHA, quiet) {
   report.push('## 📊 Bundle size report');
   report.push('');
 
-  const { changedEntries, unchangedEntries } = partitionReport(result);
+  const { changedEntries, unchangedEntries } = getChangedEntriesInReport(result);
 
   if (changedEntries.length > 0) {
     report.push('| Package & Exports | Baseline (minified/GZIP) | PR    | Change     |');

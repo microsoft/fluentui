@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const Table = require('cli-table3');
 
+const getChangedEntriesInReport = require('../utils/getChangedEntriesInReport');
 const { formatBytes } = require('../utils/helpers');
 
 /**
@@ -43,16 +44,13 @@ module.exports = async function cliReporter(result) {
     colAligns: ['left', 'right', 'right'],
     head: ['Fixture', 'Before', 'After (minified/GZIP)'],
 
+    // Removes special characters in output for tests
     ...(process.env.NODE_ENV === 'test' && { style: { border: [], head: [] } }),
   });
+  const { changedEntries } = getChangedEntriesInReport(result);
 
-  result.forEach(resultEntry => {
-    const { diff, gzippedSize, minifiedSize, name, packageName } = resultEntry;
-
-    if (diff.gzip.delta === 0 || diff.minified.delta === 0) {
-      return;
-    }
-
+  changedEntries.forEach(entry => {
+    const { diff, gzippedSize, minifiedSize, name, packageName } = entry;
     const fixtureColumn = chalk.bold(packageName) + '\n' + name + (diff.empty ? chalk.cyan(' (new)') : '');
 
     const minifiedBefore = diff.empty ? 'N/A' : formatBytes(minifiedSize + diff.minified.delta);
