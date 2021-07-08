@@ -24,15 +24,11 @@ async function getRemoteReport(branch, attempt = 1) {
     const result = await response.json();
 
     /** @type {import("../utils/collectLocalReport").BundleSizeReport} */
-    const remoteReport = [];
-    let commitSHA = '';
-
-    result.forEach(entity => {
-      const { commitSHA: entrySHA, ...rest } = entity;
-
-      commitSHA = entrySHA;
-      remoteReport.push(rest);
+    const remoteReport = result.map(entity => {
+      const { commitSHA: _, ...rest } = entity;
+      return rest;
     });
+    const { commitSHA } = result[result.length - 1];
 
     return { commitSHA, remoteReport };
   } catch (e) {
