@@ -37,14 +37,14 @@ function formatDelta({ delta, percent }) {
 }
 
 /**
- * @param {import('../utils/compareResultsInReports').ComparedReport} result
+ * @param {import('../utils/compareResultsInReports').ComparedReport} report
  */
-module.exports = async function cliReporter(result) {
-  const table = new Table({
+module.exports = async function cliReporter(report) {
+  const result = new Table({
     colAligns: ['left', 'right', 'right'],
     head: ['Fixture', 'Before', 'After (minified/GZIP)'],
   });
-  const { changedEntries } = getChangedEntriesInReport(result);
+  const { changedEntries } = getChangedEntriesInReport(report);
 
   changedEntries.forEach(entry => {
     const { diff, gzippedSize, minifiedSize, name, packageName } = entry;
@@ -60,11 +60,11 @@ module.exports = async function cliReporter(result) {
     const afterColumn =
       formatDelta(diff.minified) + ' ' + minifiedAfter + '\n' + formatDelta(diff.gzip) + ' ' + gzippedAfter;
 
-    table.push([fixtureColumn, beforeColumn, afterColumn]);
+    result.push([fixtureColumn, beforeColumn, afterColumn]);
   });
 
-  if (table.length > 0) {
-    console.log(table.toString());
+  if (result.length > 0) {
+    console.log(result.toString());
     return;
   }
 
