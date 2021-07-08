@@ -20,7 +20,7 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
 
-module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFinal'>} */ ({
+module.exports = /** @type {Omit<StorybookConfig,'typescript'>} */ ({
   stories: [],
   addons: [
     '@storybook/addon-essentials',
@@ -43,7 +43,25 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
 
     return config;
   },
+  babel: async config => {
+    const rootConfig = overrideDefaultBabelConfig(config);
+
+    return rootConfig;
+  },
 });
+
+/**
+ * Note: this function mutates rules argument
+ * @param {Parameters<StorybookConfig['babel']>[0]} config
+ */
+function overrideDefaultBabelConfig(config) {
+  if (!Array.isArray(config.presets)) {
+    throw new Error('storybook babel config changed');
+  }
+  config.presets[0][1].loose = true;
+
+  return config;
+}
 
 /**
  * This is a temporary quick-fix solution. Remove this once we'll came up with robust solution - @see https://github.com/microsoft/fluentui/issues/18775
