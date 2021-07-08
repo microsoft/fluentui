@@ -18,8 +18,7 @@
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "compression": "^1.7.2",
-    "express": "^4.15.4"
+    "compression": "^1.7.2"
   },
   "dependencies": {
     "@fluentui/font-icons-mdl2": "^8.1.4",
