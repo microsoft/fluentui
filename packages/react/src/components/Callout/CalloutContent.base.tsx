@@ -159,39 +159,52 @@ function usePositions(
   getBounds: () => IRectangle | undefined,
 ) {
   const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
-
   const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
-
-  const async = useAsync();
 
   /**
    * Sets the current position of Callout upon resize. Callout will resize when:
    *
-   * 1. elementPositions is undefined (initial render)
-   * 2. elementPositions does not equal newElementPositions
+   * 1. `elementPositions` is undefined (initial render)
+   * 2. `elementPositions` does not equal the `newElementPositions`
    *
    * @param newElementPositions The incoming position for the Callout
    */
-  const setCalloutPositions = React.useCallback(
-    (newElementPositions: ICalloutPositionedInfo) => {
-      if (
-        (!elementPositions && newElementPositions) ||
-        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-      ) {
-        setElementPositions(newElementPositions);
-      }
-    },
-    [elementPositions],
-  );
+  // const setCalloutPositions = React.useCallback(
+  //   (newElementPositions: ICalloutPositionedInfo) => {
+  //     if (
+  //       (!elementPositions && newElementPositions) ||
+  //       (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+  //     ) {
+  //       // Only call the onPositioned callback if the callout has been re-positioned at least once.
+  //       // if (positionAttempts.current > 0) {
+  //       //   positionAttempts.current = 0;
+  //       //   onPositioned?.(elementPositions);
+  //       // }
+
+  //       positionAttempts.current++;
+  //       setElementPositions(newElementPositions);
+  //     } else if (positionAttempts.current > 0) {
+  //       // Only call the onPositioned callback if the callout has been re-positioned at least once.
+  //       positionAttempts.current = 0;
+  //       onPositioned?.(elementPositions);
+  //     }
+
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when receiving a newElementPosition
+  //   },
+  //   [elementPositions, onPositioned],
+  // );
 
   React.useEffect(() => {
+    console.log('THIS RAN 1');
     if (!hidden) {
       // If we expect a target element to position against, `targetRef.current` should be defined.
       // Once provided we can try to position the element.
       const expectsTarget = !!target;
 
       if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-        const currentProps: IPositionProps = {
+        console.log('THIS RAN 2');
+
+        const currentPositionProps: IPositionProps = {
           ...props,
           target: targetRef.current!,
           bounds: getBounds(),
@@ -200,28 +213,43 @@ function usePositions(
         // If there is a finalHeight given then we assume that the user knows and will handle
         // additional positioning adjustments so we should call positionCard
         const newElementPositions: ICalloutPositionedInfo = finalHeight
-          ? positionCard(currentProps, hostElement.current, calloutElement.current, elementPositions)
-          : positionCallout(currentProps, hostElement.current, calloutElement.current, elementPositions);
+          ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
+          : positionCallout(currentPositionProps, hostElement.current, calloutElement.current, elementPositions);
 
-        console.log('THIS RAN');
+        // setCalloutPositions(newElementPositions);
 
-        setCalloutPositions(newElementPositions);
+        if (
+          (!elementPositions && newElementPositions) ||
+          (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+        ) {
+          // Only call the onPositioned callback if the callout has been re-positioned at least once.
+          if (elementPositions !== undefined) {
+            onPositioned?.(elementPositions);
+          }
+
+          setElementPositions(newElementPositions);
+        }
       }
     }
   }, [
     hidden,
     directionalHint,
-    elementPositions,
     calloutElement,
     hostElement,
     targetRef,
     finalHeight,
     getBounds,
     onPositioned,
-    props,
     target,
-    setCalloutPositions,
+    props.styles,
+    props.calloutWidth,
+    props.children,
+    props,
+    elementPositions,
+    calloutElement,
+    finalHeight,
   ]);
+
   return elementPositions;
 }
 
@@ -519,6 +547,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div ref={rootRef} className={classNames.container} style={visibilityStyle}>
+        {console.log('re-render')}
         <div
           {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
