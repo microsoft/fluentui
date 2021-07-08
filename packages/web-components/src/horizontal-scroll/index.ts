@@ -47,4 +47,8 @@ export const fluentHorizontalScroll = HorizontalScroll.compose<HorizontalScrollO
   `,
 });
 
+/**
+ * Styles for horizontal scroll
+ * @public
+ */
 export const horizontalScrollStyles = styles;
