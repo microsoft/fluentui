@@ -7,12 +7,12 @@ const calculateDiffByMetric = require('./calculateDiffByMetric');
 /** @typedef {ComparedReportEntry[]} ComparedReport */
 
 /** @type {DiffForEntry} */
-const emptyDiff = {
+const emptyDiff = Object.freeze({
   empty: true,
 
-  minified: { delta: Infinity, percent: '100%' },
-  gzip: { delta: Infinity, percent: '100%' },
-};
+  minified: { delta: 1, percent: '100%' },
+  gzip: { delta: 1, percent: '100%' },
+});
 
 /**
  * @param {import("./collectLocalReport").BundleSizeReport} localReport

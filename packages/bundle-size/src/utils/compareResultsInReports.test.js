@@ -14,9 +14,16 @@ describe('compareResultsInReports', () => {
       { packageName: 'xyz', name: 'xyz', path: 'xyz.js', minifiedSize: 10, gzippedSize: 5 },
     ];
 
-    expect(compareResultsInReports(localReport, remoteReport).map(entry => entry.diff)).toMatchInlineSnapshot(`
-      Array [
-        Object {
+    const actual = compareResultsInReports(localReport, remoteReport);
+    const packageAbcReport = {
+      fileAbcA: actual[0],
+      fileAbcB: actual[1],
+    };
+    const packageXyzReport = actual[2];
+
+    expect(packageAbcReport.fileAbcA).toMatchInlineSnapshot(`
+      Object {
+        "diff": Object {
           "empty": false,
           "gzip": Object {
             "delta": -2,
@@ -27,18 +34,36 @@ describe('compareResultsInReports', () => {
             "percent": "-16.7%",
           },
         },
-        Object {
+        "gzippedSize": 5,
+        "minifiedSize": 10,
+        "name": "abc-a",
+        "packageName": "abc",
+        "path": "abc-b.js",
+      }
+    `);
+    expect(packageAbcReport.fileAbcB).toMatchInlineSnapshot(`
+      Object {
+        "diff": Object {
           "empty": true,
           "gzip": Object {
-            "delta": Infinity,
+            "delta": 1,
             "percent": "100%",
           },
           "minified": Object {
-            "delta": Infinity,
+            "delta": 1,
             "percent": "100%",
           },
         },
-        Object {
+        "gzippedSize": 5,
+        "minifiedSize": 10,
+        "name": "abc-b",
+        "packageName": "abc",
+        "path": "abc-a.js",
+      }
+    `);
+    expect(packageXyzReport).toMatchInlineSnapshot(`
+      Object {
+        "diff": Object {
           "empty": false,
           "gzip": Object {
             "delta": 0,
@@ -49,7 +74,12 @@ describe('compareResultsInReports', () => {
             "percent": "0%",
           },
         },
-      ]
+        "gzippedSize": 5,
+        "minifiedSize": 10,
+        "name": "xyz",
+        "packageName": "xyz",
+        "path": "xyz.js",
+      }
     `);
   });
 });

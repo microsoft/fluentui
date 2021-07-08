@@ -8,24 +8,18 @@ const sortComparedReport = require('./sortComparedReport');
  * @return {{ changedEntries: ComparedReport, unchangedEntries: ComparedReport }}
  */
 module.exports = function getChangedEntriesInReport(report) {
-  /** @type {ComparedReport} */
-  const changedEntries = [];
-  /** @type {ComparedReport} */
-  const unchangedEntries = [];
+  const { changedEntries, unchangedEntries } = report.reduce(
+    (acc, reportEntry) => {
+      if (reportEntry.diff.gzip.delta === 0 && reportEntry.diff.minified.delta === 0) {
+        acc.unchangedEntries.push(reportEntry);
+        return acc;
+      }
 
-  report.forEach(reportEntry => {
-    if (reportEntry.diff.empty) {
-      changedEntries.push(reportEntry);
-      return;
-    }
-
-    if (reportEntry.diff.gzip.delta === 0 && reportEntry.diff.minified.delta === 0) {
-      unchangedEntries.push(reportEntry);
-      return;
-    }
-
-    changedEntries.push(reportEntry);
-  });
+      acc.changedEntries.push(reportEntry);
+      return acc;
+    },
+    { changedEntries: /** @type {ComparedReport} */ ([]), unchangedEntries: /** @type {ComparedReport} */ ([]) },
+  );
 
   return {
     changedEntries: sortComparedReport(changedEntries),
