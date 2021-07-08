@@ -1,7 +1,7 @@
 const stripAnsi = require('strip-ansi');
 
 const cliReporter = require('./cliReporter');
-const sampleReport = require('../../__fixture__/sampleReport');
+const sampleComparedReport = require('../../__fixture__/sampleComparedReport');
 
 function noop() {
   /* does nothing */
@@ -23,7 +23,7 @@ expect.addSnapshotSerializer({
 describe('cliReporter', () => {
   it('renders a report to CLI output', async () => {
     const log = jest.spyOn(console, 'log').mockImplementation(noop);
-    await cliReporter(sampleReport);
+    await cliReporter(sampleComparedReport);
 
     expect(log.mock.calls[0][0]).toMatchInlineSnapshot(`
       ┌────────────────────┬────────┬───────────────────────┐

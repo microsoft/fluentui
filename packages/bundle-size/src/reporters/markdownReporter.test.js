@@ -1,5 +1,5 @@
 const markdownReporter = require('./markdownReporter');
-const sampleReport = require('../../__fixture__/sampleReport');
+const sampleComparedReport = require('../../__fixture__/sampleComparedReport');
 
 describe('markdownReporter', () => {
   it('renders a report to a file', async () => {
@@ -7,7 +7,7 @@ describe('markdownReporter', () => {
       return new Promise(resolve => resolve());
     });
 
-    await markdownReporter(sampleReport, 'commit-hash', true);
+    await markdownReporter(sampleComparedReport, 'commit-hash', true);
     expect(writeFile.mock.calls[0][1]).toMatchSnapshot();
   });
 });
