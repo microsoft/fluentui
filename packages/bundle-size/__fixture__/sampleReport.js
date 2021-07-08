@@ -1,6 +1,6 @@
-const { emptyDiff } = require('../utils/compareResultsInReports');
+const { emptyDiff } = require('../src/utils/compareResultsInReports');
 
-/** @type {import('../utils/compareResultsInReports').ComparedReport} */
+/** @type {import('../src/utils/compareResultsInReports').ComparedReport} */
 const sampleReport = [
   {
     packageName: 'foo-package',

@@ -1,5 +1,5 @@
 const markdownReporter = require('./markdownReporter');
-const sampleReport = require('./sampleReport');
+const sampleReport = require('../../__fixture__/sampleReport');
 
 describe('markdownReporter', () => {
   it('renders a report to a file', async () => {

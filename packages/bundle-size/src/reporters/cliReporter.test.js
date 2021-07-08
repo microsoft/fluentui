@@ -1,7 +1,7 @@
 const stripAnsi = require('strip-ansi');
 
 const cliReporter = require('./cliReporter');
-const sampleReport = require('./sampleReport');
+const sampleReport = require('../../__fixture__/sampleReport');
 
 function noop() {}
 
