@@ -72,6 +72,7 @@ const excludedExampleFiles: string[] = [
 
   'Calendar.Inline.Example.tsx', // date mocking appears to trigger infinite loop
   'Card.Configure.Example.tsx', // too many unrelated components, and covered by other examples
+  'DetailsList.DragDrop.Example.tsx',
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
   'List.Basic.Example.tsx',
