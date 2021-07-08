@@ -46,3 +46,5 @@ export const fluentHorizontalScroll = HorizontalScroll.compose<HorizontalScrollO
     ></fluent-flipper>
   `,
 });
+
+export const horizontalScrollStyles = styles;
