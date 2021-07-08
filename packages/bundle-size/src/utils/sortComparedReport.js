@@ -7,6 +7,8 @@ function compareReports(a, b) {
 }
 
 /**
+ * Sorts entries in a report by "packageName" & "path".
+ *
  * @param {import('../utils/compareResultsInReports').ComparedReport} report
  */
 module.exports = function sortComparedReport(report) {
