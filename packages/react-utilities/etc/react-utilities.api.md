@@ -177,7 +177,7 @@ export const nullRender: () => null;
 // @public (undocumented)
 export type ObjectShorthandProps<Props extends {
     children?: React_2.ReactNode;
-} = {}> = Props & Pick<ComponentProps, 'as'> & {
+} = {}> = Props & {
     children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
 
