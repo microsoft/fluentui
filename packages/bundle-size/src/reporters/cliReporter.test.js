@@ -1,25 +1,14 @@
-// Mock "chalk" to avoid special characters in output
-/** @param {string} val */
-function colorNoop(val) {
-  return val;
-}
-
-jest.mock('chalk', () => ({
-  bold: colorNoop,
-
-  cyan: colorNoop,
-  green: colorNoop,
-  red: colorNoop,
-}));
+const chalk = require('chalk');
+chalk.level = 0;
 
 const cliReporter = require('./cliReporter');
 const sampleReport = require('./sampleReport');
 
+function noop() {}
+
 describe('cliReporter', () => {
   it('renders a report to CLI output', async () => {
-    const log = jest.spyOn(console, 'log').mockImplementation(() => {
-      /* does nothing */
-    });
+    const log = jest.spyOn(console, 'log').mockImplementation(noop);
     await cliReporter(sampleReport);
 
     expect(log.mock.calls[0][0]).toMatchInlineSnapshot(`
