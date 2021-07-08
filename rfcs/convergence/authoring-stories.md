@@ -85,6 +85,8 @@ AccordionExample.argTypes = {
 
 **Proposal:**
 
+> **NOTE:** we still need to manually provide `argTypes` until all vNext packages including react-components will be migrated to new DX. See [#18514](https://github.com/microsoft/fluentui/issues/18514)
+
 - this is not necessary as storybook generates all those controls automatically from TS metadata (Props interface)
 - `argTypes` can be used for use cases when:
 
