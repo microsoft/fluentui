@@ -2,9 +2,12 @@ import * as React from 'react';
 
 import { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 import { nullRender } from './nullRender';
-import { getNativeElementProps, omit } from '../utils/index';
+import { getNativeElementProps } from '../utils/getNativeElementProps';
 
-function getSlot(
+/**
+ * Gets the value to be used as element from the root slot
+ */
+function getRootSlot(
   defaultComponent: React.ElementType | undefined,
   userComponent: keyof JSX.IntrinsicElements | undefined,
 ) {
@@ -44,7 +47,7 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
   type Slots = { [K in keyof SlotProps]: React.ElementType<SlotProps[K]> };
 
   const slots = ({
-    root: getSlot(typedState.components ? typedState.components.root : undefined, typedState.as),
+    root: getRootSlot(typedState.components ? typedState.components.root : undefined, typedState.as),
   } as Slots & { root: React.ElementType }) as Slots;
 
   const slotProps = ({
@@ -54,11 +57,11 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
 
   if (typedSlotNames) {
     for (const name of typedSlotNames) {
-      const { as, children } = typedState[name];
+      const { children, ...rest } = typedState[name];
 
-      const slot = getSlot(typedState.components ? typedState.components[name] : undefined, as) as Slots[typeof name];
+      const slot = ((typedState.components && typedState.components[name]) || 'div') as Slots[typeof name];
 
-      // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader
+      // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader, Input
       if (typeof slot === 'string' && children === undefined) {
         slots[name] = nullRender;
         continue;
@@ -70,17 +73,11 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
         const render = children as ShorthandRenderFunction<SlotProps[keyof SlotProps]>;
         // TODO: converting to unknown might be harmful
         slotProps[name] = ({
-          children: render(
-            slots[name],
-            omit(typedState[name], ['children']) as ComponentState<SlotProps>[keyof SlotProps],
-          ),
+          children: render(slots[name], rest as ComponentState<SlotProps>[keyof SlotProps]),
         } as unknown) as SlotProps[keyof SlotProps];
         slots[name] = React.Fragment;
       } else {
-        slotProps[name] =
-          typeof slots[name] === 'string'
-            ? (omit(typedState[name], ['as']) as ComponentState<SlotProps>[keyof SlotProps])
-            : typedState[name];
+        slotProps[name] = typedState[name];
       }
     }
   }
