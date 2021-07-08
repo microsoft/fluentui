@@ -7,18 +7,29 @@ const { findPackageRoot } = require('workspace-tools');
 const getChangedEntriesInReport = require('../utils/getChangedEntriesInReport');
 const { formatBytes } = require('../utils/helpers');
 
+const icons = {
+  increase: 'IncreaseYellow.svg',
+  decrease: 'Decrease.svg',
+};
+
 /**
  * @param {number} value
  *
  * @return {string}
  */
 function getDirectionSymbol(value) {
+  /**
+   * @param {string} iconName
+   */
+  const img = iconName =>
+    `<img aria-hidden="true" src="https://microsoft.github.io/sizeAuditor-website/images/icons/${iconName}" />`;
+
   if (value < 0) {
-    return '<img aria-hidden="true" src="https://microsoft.github.io/sizeAuditor-website/images/icons/Decrease.svg" />';
+    return img(icons.decrease);
   }
 
   if (value > 0) {
-    return '<img aria-hidden="true" src="https://microsoft.github.io/sizeAuditor-website/images/icons/IncreaseYellow.svg" />';
+    return img(icons.increase);
   }
 
   return '';
