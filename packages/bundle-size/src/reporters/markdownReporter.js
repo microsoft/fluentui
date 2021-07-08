@@ -92,7 +92,7 @@ module.exports = async function markdownReporter(result, commitSHA, quiet) {
 
   if (unchangedEntries.length > 0) {
     report.push('<details>');
-    report.push('<summary>Unchanged files</summary>');
+    report.push('<summary>Unchanged fixtures</summary>');
     report.push('');
 
     report.push('| Package & Exports | Size (minified/GZIP) |');
