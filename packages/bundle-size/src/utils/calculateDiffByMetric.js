@@ -1,3 +1,5 @@
+const formatter = new Intl.NumberFormat([], { style: 'percent', maximumSignificantDigits: 3 });
+
 /**
  * @param {number} value
  * @param {number} fractionDigits
@@ -5,7 +7,7 @@
  * @return {number}
  */
 function roundNumber(value, fractionDigits) {
-  return parseFloat(value.toFixed(fractionDigits));
+  return Number(value.toFixed(fractionDigits));
 }
 
 /**
@@ -15,17 +17,14 @@ function roundNumber(value, fractionDigits) {
  */
 function formatPercent(fraction) {
   if (fraction < 0.001) {
-    fraction = roundNumber(fraction, 4);
-  } else if (fraction < 0.01) {
-    fraction = roundNumber(fraction, 3);
-  } else {
-    fraction = roundNumber(fraction, 2);
+    return formatter.format(roundNumber(fraction, 4));
   }
 
-  return fraction.toLocaleString(undefined, {
-    style: 'percent',
-    maximumSignificantDigits: 3,
-  });
+  if (fraction < 0.01) {
+    return formatter.format(roundNumber(fraction, 3));
+  }
+
+  return formatter.format(roundNumber(fraction, 2));
 }
 
 /** @typedef {{ delta: number, percent: string }} DiffByMetric */
