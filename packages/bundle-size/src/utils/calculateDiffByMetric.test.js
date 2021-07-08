@@ -19,17 +19,13 @@ describe('calculateDiffByMetric', () => {
       gzippedSize: 150,
     };
 
-    expect(calculateDiffByMetric(localEntry, remoteEntry, 'minifiedSize')).toMatchInlineSnapshot(`
-      Object {
-        "delta": 500,
-        "percent": "50%",
-      }
-    `);
-    expect(calculateDiffByMetric(localEntry, remoteEntry, 'gzippedSize')).toMatchInlineSnapshot(`
-      Object {
-        "delta": 50,
-        "percent": "50%",
-      }
-    `);
+    expect(calculateDiffByMetric(localEntry, remoteEntry, 'minifiedSize')).toEqual({
+      delta: 500,
+      percent: '50%',
+    });
+    expect(calculateDiffByMetric(localEntry, remoteEntry, 'gzippedSize')).toEqual({
+      delta: 50,
+      percent: '50%',
+    });
   });
 });
