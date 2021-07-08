@@ -3,7 +3,9 @@ const stripAnsi = require('strip-ansi');
 const cliReporter = require('./cliReporter');
 const sampleReport = require('../../__fixture__/sampleReport');
 
-function noop() {}
+function noop() {
+  /* does nothing */
+}
 
 // We are using "chalk" and "cli-table3" in this reporter, they are adding colors to the output via escape codes that
 // makes snapshots look ugly.
