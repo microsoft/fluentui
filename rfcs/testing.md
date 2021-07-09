@@ -40,6 +40,12 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   These can be achieved simply through the `isConformant` function generated when creating a converged component.
 
+- **Snapshot**
+
+  These are unit tests that strictly enforce the DOM structure consistency and nothing else. This will guarantee our users don't have breaking changes when they expect a certain structure.
+
+  They are achieved with Jest's `expect(component).toMatchSnapshot()`.
+
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
 
 ### Pros and Cons
