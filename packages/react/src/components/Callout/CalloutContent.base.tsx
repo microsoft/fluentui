@@ -160,9 +160,8 @@ function usePositions(
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
 ) {
-  const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
+  const { hidden, target, finalHeight, onPositioned } = props;
   const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
-  // const prevDimensions = React.useRef<DOMRect | undefined>(undefined);
   const async = useAsync();
 
   /**
@@ -170,105 +169,67 @@ function usePositions(
    *
    * 1. `elementPositions` is undefined (initial render)
    * 2. `elementPositions` does not equal the `newElementPositions`
+   * 3. There is a two decimal place difference in position.
    *
-   * @param newElementPositions The incoming position for the Callout
+   * @param newElementPositions The incoming positions for the Callout
    */
-  // const setCalloutPositions = React.useCallback(
-  //   (newElementPositions: ICalloutPositionedInfo) => {
-  //     if (
-  //       (elementPositions === undefined && newElementPositions) ||
-  //       (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-  //     ) {
-  //       if (elementPositions !== undefined) {
-  //         onPositioned?.(elementPositions);
-  //       }
-
-  //       setElementPositions(newElementPositions);
-
-  //       console.log(
-  //         (!elementPositions && newElementPositions) +
-  //           ' ' +
-  //           (prevDimensions?.current?.width !== calloutElement?.current?.getBoundingClientRect().width) +
-  //           ' ' +
-  //           (prevDimensions?.current?.height !== calloutElement?.current?.getBoundingClientRect().height) +
-  //           ' ' +
-  //           (prevDimensions?.current?.top !== calloutElement?.current?.getBoundingClientRect().top) +
-  //           ' ' +
-  //           (prevDimensions?.current?.bottom !== calloutElement?.current?.getBoundingClientRect().bottom) +
-  //           ' ' +
-  //           (prevDimensions?.current?.left !== calloutElement?.current?.getBoundingClientRect().left) +
-  //           ' ' +
-  //           (prevDimensions?.current?.right !== calloutElement?.current?.getBoundingClientRect().right) +
-  //           ' ' +
-  //           (prevDimensions?.current?.x !== calloutElement?.current?.getBoundingClientRect().x) +
-  //           ' ' +
-  //           (prevDimensions?.current?.y !== calloutElement?.current?.getBoundingClientRect().y) +
-  //           ' ' +
-  //           (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions)) +
-  //           ' ' +
-  //           !arePositionsEqual(elementPositions ? elementPositions : newElementPositions, newElementPositions) +
-  //           ' ' +
-  //           elementPositions +
-  //           newElementPositions,
-  //       );
-  //     }
-
-  //     prevDimensions.current = calloutElement?.current?.getBoundingClientRect();
-  //   },
-  //   [calloutElement, elementPositions, onPositioned],
-  // );
-
-  React.useEffect(() => {
-    if (!hidden) {
-      const timerId = async.requestAnimationFrame(() => {
-        // If we expect a target element to position against, `targetRef.current` should be defined.
-        // Once provided we can try to position the element.
-        const expectsTarget = !!target;
-
-        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-          const currentPositionProps: IPositionProps = {
-            ...props,
-            target: targetRef.current!,
-            bounds: getBounds(),
-          };
-
-          // If there is a finalHeight given then we assume that the user knows and will handle
-          // additional positioning adjustments so we should call positionCard
-          const newElementPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
-            : positionCallout(currentPositionProps, hostElement.current, calloutElement.current, elementPositions);
-
-          observeResize(calloutElement.current, () => {
-            if (
-              (elementPositions === undefined && newElementPositions) ||
-              (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-            ) {
-              if (elementPositions !== undefined) {
-                onPositioned?.(elementPositions);
-              }
-
-              setElementPositions(newElementPositions);
-            }
-          });
+  const setCalloutPositions = React.useCallback(
+    (newElementPositions: ICalloutPositionedInfo) => {
+      if (
+        (elementPositions === undefined && newElementPositions) ||
+        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+      ) {
+        if (elementPositions !== undefined) {
+          onPositioned?.(elementPositions);
         }
-      }, calloutElement.current);
 
-      return () => async.cancelAnimationFrame(timerId);
-    }
-  }, [
-    hidden,
-    directionalHint,
-    calloutElement,
-    hostElement,
-    targetRef,
-    finalHeight,
-    getBounds,
-    onPositioned,
-    target,
-    elementPositions,
-    async,
-    props,
-  ]);
+        setElementPositions(newElementPositions);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only update if onPositioned mutates
+    [onPositioned],
+  );
+
+  React.useEffect(
+    () => {
+      if (!hidden && calloutElement.current) {
+        const timerId = async.requestAnimationFrame(() => {
+          // If we expect a target element to position against, `targetRef.current` should be defined.
+          // Once provided we can try to position the element.
+          const expectsTarget = !!target;
+
+          if (calloutElement.current) {
+            observeResize(calloutElement.current, () => {
+              if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+                const currentPositionProps: IPositionProps = {
+                  ...props,
+                  target: targetRef.current!,
+                  bounds: getBounds(),
+                };
+
+                // If there is a finalHeight given then we assume that the user knows and will handle
+                // additional positioning adjustments so we should call positionCard
+                const newElementPositions: ICalloutPositionedInfo = finalHeight
+                  ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
+                  : positionCallout(
+                      currentPositionProps,
+                      hostElement.current,
+                      calloutElement.current,
+                      elementPositions,
+                    );
+
+                setCalloutPositions(newElementPositions);
+              }
+            });
+          }
+        }, calloutElement.current);
+
+        return () => async.cancelAnimationFrame(timerId);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [async, calloutElement, finalHeight, getBounds, hidden, hostElement, setCalloutPositions, target, targetRef],
+  );
 
   return elementPositions;
 }
@@ -567,7 +528,6 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div ref={rootRef} className={classNames.container} style={visibilityStyle}>
-        {console.log('re-render')}
         <div
           {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
