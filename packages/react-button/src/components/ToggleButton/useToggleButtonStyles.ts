@@ -28,6 +28,17 @@ const useRootStyles = makeStyles({
       boxShadow: theme.alias.shadow.shadow2,
     },
   }),
+  checkedOutline: theme => ({
+    background: theme.alias.color.neutral.transparentBackgroundSelected,
+
+    ':hover': {
+      background: theme.alias.color.neutral.transparentBackgroundHover,
+    },
+
+    ':active': {
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
+    },
+  }),
   checkedPrimary: theme => ({
     background: theme.alias.color.neutral.brandBackgroundSelected,
     borderColor: 'transparent',
@@ -166,13 +177,14 @@ export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonSta
 
   state.className = mergeClasses(
     state.checked && rootStyles.checked,
+    state.checked && state.outline && rootStyles.checkedOutline,
     state.checked && state.primary && rootStyles.checkedPrimary,
     state.checked && state.subtle && rootStyles.checkedSubtle,
     state.checked && state.transparent && rootStyles.checkedTransparent,
-    state.disabled && rootStyles.disabled,
-    state.disabled && state.primary && rootStyles.disabledPrimary,
-    state.disabled && state.subtle && rootStyles.disabledSubtle,
-    state.disabled && state.transparent && rootStyles.disabledTransparent,
+    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
+    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
+    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
+    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
     state.className,
   );
 

@@ -110,14 +110,20 @@ const useRootStyles = makeStyles({
 
 const useRootIconOnlyStyles = makeStyles({
   small: {
+    padding: buttonSpacing.smaller,
+
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
+    padding: buttonSpacing.small,
+
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
+    padding: buttonSpacing.medium,
+
     maxWidth: '56px',
     minWidth: '56px',
   },
@@ -186,7 +192,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     state.primary && rootStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    state.disabled && rootStyles.disabled,
+    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );
