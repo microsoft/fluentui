@@ -198,6 +198,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       text: 'defaultSelectedKey',
       selectedKey: 'value',
       dropdownWidth: 'useComboBoxAsMenuWidth',
+      ariaLabel: 'label',
     });
 
     this._id = props.id || getId('ComboBox');
@@ -1322,7 +1323,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options, label } = props;
+    const { onRenderItem, options, label, ariaLabel } = props;
 
     const id = this._id;
     return (
@@ -1330,6 +1331,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         id={id + '-list'}
         className={this._classNames.optionsContainer}
         aria-labelledby={label && id + '-label'}
+        aria-label={ariaLabel && !label ? ariaLabel : undefined}
         role="listbox"
       >
         {options.map(item => (onRenderItem as any)(item, this._onRenderItem))}

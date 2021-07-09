@@ -819,6 +819,18 @@ describe('ComboBox', () => {
     expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
   });
 
+  it('sets ariaLabel on both the input and the dropdown list', () => {
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} ariaLabel="customAriaLabel" persistMenu />);
+
+    const inputElement = wrapper.find('input').getDOMNode();
+    expect(inputElement.getAttribute('aria-label')).toBe('customAriaLabel');
+    expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
+
+    const listElement = wrapper.find('.ms-ComboBox-optionsContainer').getDOMNode();
+    expect(listElement.getAttribute('aria-label')).toBe('customAriaLabel');
+    expect(listElement.getAttribute('aria-labelledby')).toBeNull();
+  });
+
   it('does not add aria-required to the DOM when the required prop is not set', () => {
     const comboBoxRef = React.createRef<any>();
     wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
