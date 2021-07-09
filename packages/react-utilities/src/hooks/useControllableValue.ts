@@ -15,6 +15,7 @@ type DefaultValue<TValue> = TValue | (() => TValue);
 /**
  * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
  * text box string.
+ * @deprecated prefer useControllableState
  * @param controlledValue - The controlled value passed in the props. This value will always be used if provided,
  * and the internal state will be updated to reflect it.
  * @param defaultUncontrolledValue - Initial value for the internal state in the uncontrolled case.
