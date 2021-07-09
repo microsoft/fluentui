@@ -151,6 +151,48 @@ function useMaxHeight(
 }
 
 /**
+ * (Hook) to return the height offset of the callout element and updates it each frame to approach the configured
+ * finalHeight.
+ */
+function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
+  const [heightOffset, setHeightOffset] = React.useState<number>(0);
+  const async = useAsync();
+  const setHeightOffsetTimer = React.useRef<number | undefined>();
+
+  const setHeightOffsetEveryFrame = React.useCallback((): void => {
+    if (calloutElement.current && finalHeight) {
+      setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
+        const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
+
+        if (!calloutMainElem) {
+          return;
+        }
+
+        const cardScrollHeight: number = calloutMainElem.scrollHeight;
+        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
+
+        setHeightOffset(currentHeightOffset => currentHeightOffset + scrollDiff);
+
+        if (calloutMainElem.offsetHeight < finalHeight) {
+          setHeightOffsetEveryFrame();
+        } else {
+          async.cancelAnimationFrame(setHeightOffsetTimer.current!, calloutElement.current);
+        }
+      }, calloutElement.current);
+    }
+  }, [async, calloutElement, finalHeight]);
+
+  React.useEffect(() => {
+    if (!hidden) {
+      setHeightOffsetEveryFrame();
+    }
+  }, [finalHeight, hidden, setHeightOffsetEveryFrame]);
+
+  return heightOffset;
+}
+
+/**
  * (Hook) to find the current position of Callout. If Callout is resized then a new position is calculated.
  */
 function usePositions(
@@ -232,48 +274,6 @@ function usePositions(
   );
 
   return elementPositions;
-}
-
-/**
- * (Hook) to return the height offset of the callout element and updates it each frame to approach the configured
- * finalHeight.
- */
-function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
-  const [heightOffset, setHeightOffset] = React.useState<number>(0);
-  const async = useAsync();
-  const setHeightOffsetTimer = React.useRef<number | undefined>();
-
-  const setHeightOffsetEveryFrame = React.useCallback((): void => {
-    if (calloutElement.current && finalHeight) {
-      setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
-        const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
-
-        if (!calloutMainElem) {
-          return;
-        }
-
-        const cardScrollHeight: number = calloutMainElem.scrollHeight;
-        const cardCurrHeight: number = calloutMainElem.offsetHeight;
-        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
-
-        setHeightOffset(currentHeightOffset => currentHeightOffset + scrollDiff);
-
-        if (calloutMainElem.offsetHeight < finalHeight) {
-          setHeightOffsetEveryFrame();
-        } else {
-          async.cancelAnimationFrame(setHeightOffsetTimer.current!, calloutElement.current);
-        }
-      }, calloutElement.current);
-    }
-  }, [async, calloutElement, finalHeight]);
-
-  React.useEffect(() => {
-    if (!hidden) {
-      setHeightOffsetEveryFrame();
-    }
-  }, [finalHeight, hidden, setHeightOffsetEveryFrame]);
-
-  return heightOffset;
 }
 
 /**
