@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useAccordionHeaderContext } from './useAccordionHeaderContext';
 import { AccordionHeaderContextValue } from './AccordionHeader.types';
 
-export const DefaultExpandIcon = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
+export type AccordionHeaderExpandIconProps = React.HTMLAttributes<HTMLSpanElement>;
+
+export const AccordionHeaderExpandIcon = React.forwardRef<HTMLSpanElement, AccordionHeaderExpandIconProps>(
   ({ children, ...rest }, ref) => {
     const { open, expandIconPosition } = useAccordionHeaderContext();
     return (

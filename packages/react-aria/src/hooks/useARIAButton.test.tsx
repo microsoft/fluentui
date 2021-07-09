@@ -3,11 +3,11 @@ import { useARIAButton } from './useARIAButton';
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, screen, render } from '@testing-library/react';
-import { getSlotsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import { getSlotsCompat, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 describe('useARIAButton', () => {
   it('should return by default shorthand props for a button', () => {
-    const shorthand: ObjectShorthandPropsCompat<React.ButtonHTMLAttributes<HTMLElement>> = {};
+    const shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> = {};
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('button');
     expect(shorthand.disabled).toBeUndefined();
@@ -19,7 +19,7 @@ describe('useARIAButton', () => {
     expect(shorthand.onKeyUp).toBeUndefined();
   });
   it('should return handlers for anchor when anchor element is declared', () => {
-    const shorthand: ObjectShorthandPropsCompat<React.ButtonHTMLAttributes<HTMLElement>> = { as: 'a' };
+    const shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> = { as: 'a' };
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('a');
     expect(shorthand.disabled).toBeUndefined();
@@ -33,7 +33,7 @@ describe('useARIAButton', () => {
     expect(shorthand.onKeyUp).toBeInstanceOf(Function);
   });
   it('should return handlers when shorthand props declares another semantic element', () => {
-    const shorthand: ObjectShorthandPropsCompat<React.ButtonHTMLAttributes<HTMLElement>> = { as: 'div' };
+    const shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> = { as: 'div' };
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('div');
     expect(shorthand.role).toBe('button');

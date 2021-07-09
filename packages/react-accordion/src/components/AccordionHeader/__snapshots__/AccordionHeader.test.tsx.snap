@@ -10,7 +10,6 @@ exports[`AccordionHeader renders a default state 1`] = `
     className=""
     id="accordion-header-1"
     onClick={[Function]}
-    onKeyDown={[Function]}
   >
     <span
       aria-hidden={true}
@@ -28,11 +27,11 @@ exports[`AccordionHeader renders a default state 1`] = `
         />
       </svg>
     </span>
-    <span
+    <div
       className=""
     >
       Default AccordionHeader
-    </span>
+    </div>
   </button>
 </div>
 `;
