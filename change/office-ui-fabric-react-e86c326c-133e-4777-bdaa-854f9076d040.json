@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherrypick: Fix resizing of justified columns for constrained viewport widths",
-  "packageName": "office-ui-fabric-react",
-  "email": "sasyedah@microsoft.com",
-  "dependentChangeType": "patch"
-}

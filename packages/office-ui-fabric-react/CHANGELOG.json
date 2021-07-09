@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "office-ui-fabric-react_v7.173.0",
+      "version": "7.173.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added focusZoneProps to the Pivot component to have ability be more customized",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "f6aae9ce315b703e7dbf6f75fb9a996249e5dcc0",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Cherrypick: Fix resizing of justified columns for constrained viewport widths",
+            "author": "sasyedah@microsoft.com",
+            "commit": "6e0f04a47a5d4efb391abb5eb83d839af94716f2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Jul 2021 12:26:48 GMT",
       "tag": "office-ui-fabric-react_v7.172.4",
       "version": "7.172.4",

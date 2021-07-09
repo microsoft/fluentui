@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 08 Jul 2021 12:26:48 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 12:22:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.15)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.14..@fluentui/react-examples_v0.14.15)
+
+### Patches
+
+- Cherrypick: Fix resizing of justified columns for constrained viewport widths ([PR #18612](https://github.com/microsoft/fluentui/pull/18612) by sasyedah@microsoft.com)
 
 ## [0.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.14)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "@fluentui/react-examples_v0.14.15",
+      "version": "0.14.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherrypick: Fix resizing of justified columns for constrained viewport widths",
+            "author": "sasyedah@microsoft.com",
+            "commit": "6e0f04a47a5d4efb391abb5eb83d839af94716f2",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Jul 2021 12:26:48 GMT",
       "tag": "@fluentui/react-examples_v0.14.14",
       "version": "0.14.14",
