@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 08 Jul 2021 07:32:49 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.3)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.2..@fluentui/react_v8.22.3)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.2.1 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [8.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.2)
 

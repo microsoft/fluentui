@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.2)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.1..@fluentui/eslint-plugin_v1.3.2)
+
+### Patches
+
+- chore: migrate packages(mostly eslint related)  to single version policy ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.1)
 

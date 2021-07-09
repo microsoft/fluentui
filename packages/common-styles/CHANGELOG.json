@@ -2,6 +2,21 @@
   "name": "@fluentui/common-styles",
   "entries": [
     {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/common-styles_v1.0.11",
+      "version": "1.0.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 07:35:16 GMT",
       "tag": "@fluentui/common-styles_v1.0.10",
       "version": "1.0.10",

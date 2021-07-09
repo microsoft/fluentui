@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate packages(express,fsextra)  to single version policy",
-  "packageName": "@fluentui/codemods",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
