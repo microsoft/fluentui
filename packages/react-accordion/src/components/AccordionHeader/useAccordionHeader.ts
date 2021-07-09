@@ -44,6 +44,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     id,
     disabled,
     'aria-controls': panel?.id,
+    children: React.Fragment,
   });
 
   return {
