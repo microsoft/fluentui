@@ -77,10 +77,6 @@ export function useARIAButton<T extends React.ButtonHTMLAttributes<HTMLElement>>
     }
   });
 
-  if (!shorthand.hasOwnProperty('children')) {
-    shorthand.children = null;
-  }
-
   if (!shorthand.hasOwnProperty('as') || shorthand.as === 'button') {
     shorthand.as = 'button';
     return shorthand; // there's nothing to be done if as prop === 'button'

@@ -24,8 +24,6 @@ describe('useARIAButton', () => {
     expect(shorthand.as).toBe('a');
     expect(shorthand.disabled).toBeUndefined();
     expect(shorthand['aria-disabled']).toBe(false);
-    expect(shorthand.children).toBe(null);
-    expect(shorthand.children).toBe(null);
     expect(shorthand.role).toBe('button');
     expect(shorthand.onClick).toBeInstanceOf(Function);
     expect(shorthand.tabIndex).toBeUndefined();
@@ -39,7 +37,6 @@ describe('useARIAButton', () => {
     expect(shorthand.role).toBe('button');
     expect(shorthand.disabled).toBeUndefined();
     expect(shorthand['aria-disabled']).toBe(false);
-    expect(shorthand.children).toBe(null);
     expect(shorthand.tabIndex).toBe(0);
     expect(shorthand.onClick).toBeInstanceOf(Function);
     expect(shorthand.onKeyDown).toBeInstanceOf(Function);
