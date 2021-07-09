@@ -76,7 +76,7 @@
     "@azure/data-tables": "12.0.0-beta.3",
     "@babel/core": "7.12.16",
     "@ctrl/tinycolor": "3.3.4",
-    "@microsoft/api-extractor": "7.13.0",
+    "@microsoft/api-extractor": "7.18.1",
     "@nrwl/cli": "12.1.0",
     "@nrwl/devkit": "12.1.0",
     "@nrwl/jest": "12.1.0",
