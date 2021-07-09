@@ -23,7 +23,6 @@ import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
-import { ErrorPanel } from './ErrorPanel';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
 
@@ -374,7 +373,10 @@ export const Designer: React.FunctionComponent = () => {
     command += e.key;
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
-  console.log(selectedComponentAccessibilityErrors);
+
+  // group the accesssibility errors (if they exist)
+  const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
+  console.log(groupedAccessibilityErrors);
 
   return (
     <div
@@ -516,7 +518,11 @@ export const Designer: React.FunctionComponent = () => {
               <div>
                 {_.isEmpty(accessibilityErrors)
                   ? '\t No accessibility errors automatically detected.'
-                  : _.groupBy(accessibilityErrors, error => error.elementUuid)}
+                  : _.mapKeys(groupedAccessibilityErrors, severityLevel => (
+                      <div>
+                        <Header as="h3">{severityLevel.toString}</Header>
+                      </div>
+                    ))}
               </div>
             )}
             {activeTab === 'nav' && (
@@ -698,13 +704,6 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
 
-            {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-            {selectedJSONTreeElement && !_.isEmpty(selectedComponentAccessibilityErrors) && (
-              <ErrorPanel
-                accessibilityErrors={selectedComponentAccessibilityErrors}
-                elementUuid={selectedJSONTreeElementUuid}
-              />
-            )}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
