@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { Text } from '../Text/index';
+import { renderText, useText, useTextStyles } from '../Text/index';
 import { typographyStyles } from '../../typographyStyles/index';
 import { DisplayProps } from './Display.types';
 
@@ -16,9 +16,12 @@ const useStyles = makeStyles({
  */
 export const Display = React.forwardRef<HTMLElement, DisplayProps>((props, ref) => {
   const styles = useStyles();
-  const className = mergeClasses(styles.root, props.className);
+  const state = useText(props, ref);
+  useTextStyles(state);
 
-  return <Text {...props} ref={ref} className={className} />;
+  state.className = mergeClasses(state.className, styles.root, props.className);
+
+  return renderText(state);
 });
 
 Display.displayName = 'Display';
