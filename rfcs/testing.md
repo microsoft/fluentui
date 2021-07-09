@@ -57,6 +57,17 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Integration tests mirror Unit tests in terms of focus but for cases where you want to test your component/service with other components/services, without mocking those dependencies. Currently we don't differentiate them from Unit tests but a possibility would be to split them into separate files. However, given our tight dependency on other utilities on our components (i.e. `make-styles`) such deliniation might be complicated.
 
+- **Performance**
+
+  These are tests that focus on testing rendering performance. They are covered by our performance testing utility
+
+- Accessibility
+- Bundle size
+- Visual Regression
+  Avoid unwanted changes in the styling
+- E2E
+  User behavior/interaction testing
+
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
 
 ### Pros and Cons
