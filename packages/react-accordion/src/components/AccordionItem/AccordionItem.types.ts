@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, Descendant } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
@@ -7,14 +7,18 @@ export interface AccordionItemContextValue {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 }
 
-export interface AccordionItemProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type AccordionItemSlots = {};
+
+export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
    */
-  disabled?: boolean;
+  disabled: boolean;
 }
 
-export interface AccordionItemState extends ComponentStateCompat<AccordionItemProps> {
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {}
+
+export interface AccordionItemState extends ComponentState<AccordionItemSlots>, AccordionItemCommons {
   /**
    * Ref to the root slot
    */
