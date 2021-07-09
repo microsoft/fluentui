@@ -6,6 +6,7 @@ import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
 import { tabListBehavior } from '@fluentui/accessibility';
 import { AccessibilityError } from '../accessibility/types';
+import { ErrorPanel } from './ErrorPanel';
 
 // const designUnit = 4;
 // const sizeRamp = [
@@ -190,6 +191,9 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
 
   return (
     <div>
+      {!_.isEmpty(elementAccessibilityErrors) && (
+        <ErrorPanel accessibilityErrors={elementAccessibilityErrors} elementUuid={jsonTreeElement.uuid} />
+      )}
       <Menu
         accessibility={tabListBehavior}
         defaultActiveIndex={0}
