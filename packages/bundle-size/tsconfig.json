@@ -5,7 +5,7 @@
     "checkJs": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "types": ["node"]
+    "types": ["jest", "node"]
   },
   "include": ["src/**/*.js"]
 }
