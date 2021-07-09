@@ -36,7 +36,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
 - **Conformance**
 
-  These are unit tests that focus on ensuring the consistency of our components. They test that props like `as` and ... are present and that the component is rendered.
+  These are unit tests that focus on ensuring the consistency of our components. They test that props like `as`, `ref`, `className` are supported and that the component is rendered.
 
   These can be achieved simply through the `isConformant` function generated when creating a converged component.
 
@@ -45,6 +45,13 @@ To start, this is the proposal for defining the goals of each testing layer.
   These are unit tests that strictly enforce the DOM structure consistency and nothing else. This will guarantee our users don't have breaking changes when they expect a certain structure.
 
   They are achieved with Jest's `expect(component).toMatchSnapshot()`.
+
+- Unit
+
+  These are tests that focus on testing the behaviour or functionality. We should use them to guarantee the outcome, wheter this is a styling, behaviour or functionality change.
+  We should try to focus on behaviour, when possible, but mainly on the expected results for the code.
+
+  These are all the additional unit tests defined in your `*.test.ts[x]` file.
 
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
 
