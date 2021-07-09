@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 08 Jul 2021 07:32:49 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.34)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.33..@fluentui/azure-themes_v8.1.34)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [8.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.33)
 

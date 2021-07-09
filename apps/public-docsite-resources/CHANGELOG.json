@@ -2,6 +2,35 @@
   "name": "@fluentui/public-docsite-resources",
   "entries": [
     {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.40",
+      "version": "8.1.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/api-docs to v8.1.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Jul 2021 07:32:49 GMT",
       "tag": "@fluentui/public-docsite-resources_v8.1.39",
       "version": "8.1.39",
