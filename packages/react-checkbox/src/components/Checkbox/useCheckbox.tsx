@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  resolveShorthandProps,
+  useControllableValue,
+  useId,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
-import { CheckMarkIcon, CheckboxIndeterminateIcon } from '@fluentui/react-icons-mdl2';
+import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
 import { Label } from '@fluentui/react-label';
 
 /**
  * Array of all shorthand properties listed in CheckboxShorthandProps
  */
-export const checkboxShorthandProps: CheckboxShorthandProps[] = ['children'];
+export const checkboxShorthandProps: CheckboxShorthandProps[] = ['label', 'indicator', 'input'];
 
 const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandProps });
 
@@ -28,6 +34,11 @@ export const useCheckbox = (
 ): CheckboxState => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
+  const DefaultMixedIcon = () => (
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" />
+    </svg>
+  );
 
   const onChange = () => {
     if (isChecked === 'mixed') {
@@ -43,48 +54,53 @@ export const useCheckbox = (
     {
       ref,
       id: useId('checkbox-'),
-      children: {
+      label: {
         as: Label,
         required: props.required,
         disabled: props.disabled,
       },
+      indicator: {
+        as: 'div',
+        children: isChecked === 'mixed' ? <DefaultMixedIcon /> : <CheckMarkIcon />,
+      },
+      input: {
+        as: 'input',
+        // ref: inputRef, // React.LegacyRef<HTMLInputElement> | undefined
+        type: 'checkbox',
+        onchange: onChange,
+        // disabled: !!props.disabled,
+        // required: !!props.required,
+        // 'aria-label': props['aria-label'], // todo
+        // 'aria-labelledby': props['aria-labelledby'], // todo
+        // 'aria-describedby': props['aria-describedby'], // todo
+        // 'aria-posinset': props['aria-posinset'],
+        // 'aria-setsize': props['aria-setsize'],
+        // 'aria-disabled': !!props.disabled,
+        // 'aria-checked': isChecked,
+      },
       size: 'medium',
       labelPosition: 'end',
       checked: isChecked ? isChecked : false,
-      checkmarkIcon: <CheckMarkIcon />,
-      mixedIcon: <CheckboxIndeterminateIcon />,
-      inputProps: {
-        ref: inputRef,
-        type: 'checkbox',
-        onChange: onChange,
-        disabled: props.disabled,
-        required: props.required,
-        'aria-label': props['aria-label'], // todo
-        'aria-labelledby': props['aria-labelledby'], // todo
-        'aria-describedby': props['aria-describedby'],
-        'aria-posinset': props['aria-posinset'],
-        'aria-setsize': props['aria-setsize'],
-        'aria-disabled': props.disabled,
-        'aria-checked': isChecked,
-      },
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
-  if (!state.children.htmlFor) {
-    state.children.htmlFor = state.id;
+  if (!state.label.htmlFor) {
+    state.label.htmlFor = state.id;
   }
 
-  if (state.inputProps) {
-    state.inputProps.id = state.id;
+  if (state.input && state.id) {
+    state.input.id = state.id;
   }
   state.id = state.rootId;
 
-  // TODO: set indetereminate
-  if (inputRef.current) {
-    inputRef.current.indeterminate = isChecked === 'mixed' ? true : false;
-  }
+  const isMixed = isChecked === 'mixed';
+  useIsomorphicLayoutEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.indeterminate = isMixed;
+    }
+  }, [isMixed]);
 
   return state;
 };

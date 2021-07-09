@@ -1,41 +1,28 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-checkbox';
+import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
 
 // TODO add 'react-checkbox' to the list for withFluentProvider in react-examples/.storybook/preview.js
 
 export const CheckboxExample = () => (
   <div style={{ display: 'flex', gap: '6px', flexDirection: 'column' }}>
-    <Checkbox defaultChecked size="large">
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" defaultChecked size="large" />
 
-    <Checkbox size="large" required>
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" size="large" required />
 
-    <Checkbox size="large" disabled>
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" size="large" disabled />
 
-    <Checkbox defaultChecked size="large" disabled>
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" defaultChecked size="large" disabled />
 
-    <Checkbox defaultChecked circular size="large">
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" defaultChecked circular size="large" />
 
-    <Checkbox defaultChecked="mixed" disabled>
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" defaultChecked="mixed" disabled />
 
-    <Checkbox defaultChecked>FooBarBaz</Checkbox>
+    <Checkbox label="FooBarBaz" defaultChecked />
 
-    <Checkbox defaultChecked="mixed">FooBarBaz</Checkbox>
+    <Checkbox label="FooBarBaz" defaultChecked="mixed" />
 
-    <Checkbox labelPosition="start" defaultChecked="mixed">
-      FooBarBaz
-    </Checkbox>
+    <Checkbox label="FooBarBaz" labelPosition="start" defaultChecked="mixed" />
 
     <Checkbox />
   </div>

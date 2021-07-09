@@ -14,7 +14,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = 'children' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon' | 'mixedIcon';
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'size' | 'labelPosition' | 'checked' | 'input';
 
 // @public
 export interface CheckboxOnChangeData {
@@ -23,16 +23,18 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export interface CheckboxProps extends ComponentProps {
+export interface CheckboxProps extends Omit<ComponentProps, 'children'>, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
     checked?: 'mixed' | boolean;
-    checkmarkIcon?: React_2.ReactElement;
-    children?: ShorthandProps<LabelProps>;
     circular?: boolean;
     defaultChecked?: 'mixed' | boolean;
     disabled?: boolean;
     id?: string;
+    // (undocumented)
+    indicator?: ShorthandProps<ComponentProps>;
+    // (undocumented)
+    input?: ShorthandProps<Partial<HTMLInputElement>>;
+    label?: ShorthandProps<LabelProps>;
     labelPosition?: 'start' | 'end';
-    mixedIcon?: React_2.ReactElement;
     onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
     required?: boolean;
     rootId?: string;
@@ -40,7 +42,7 @@ export interface CheckboxProps extends ComponentProps {
 }
 
 // @public
-export type CheckboxShorthandProps = 'children';
+export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
 
 // @public
 export const checkboxShorthandProps: CheckboxShorthandProps[];
@@ -48,17 +50,7 @@ export const checkboxShorthandProps: CheckboxShorthandProps[];
 // @public
 export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
     checkboxClassName?: string;
-    iconClassName?: string;
-    inputProps?: InputProps;
     ref: React_2.Ref<HTMLElement>;
-}
-
-// @public (undocumented)
-export interface InputProps extends React_2.InputHTMLAttributes<HTMLInputElement> {
-    className?: string;
-    id?: string;
-    onChange?: (ev: React_2.ChangeEvent<HTMLElement>) => void;
-    ref: React_2.Ref<HTMLInputElement>;
 }
 
 // @public

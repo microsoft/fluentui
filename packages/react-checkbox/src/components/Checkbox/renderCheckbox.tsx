@@ -9,15 +9,14 @@ import { checkboxShorthandProps } from './useCheckbox';
 export const renderCheckbox = (state: CheckboxState) => {
   const { slots, slotProps } = getSlots(state, checkboxShorthandProps);
 
-  //TODO: find a way to simplify state.children.children check
   return (
     <slots.root {...slotProps.root}>
-      {state.labelPosition === 'start' && state.children.children && <slots.children {...slotProps.children} />}
+      {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
       <div className={state.checkboxClassName}>
-        <div className={state.iconClassName}>{state.checked === 'mixed' ? state.mixedIcon : state.checkmarkIcon}</div>
-        <input {...state.inputProps} />
+        <slots.indicator {...slotProps.indicator} />
+        <slots.input {...slotProps.input} />
       </div>
-      {state.labelPosition === 'end' && state.children.children && <slots.children {...slotProps.children} />}
+      {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };
