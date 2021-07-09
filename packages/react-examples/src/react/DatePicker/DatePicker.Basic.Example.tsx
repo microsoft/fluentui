@@ -16,7 +16,7 @@ export const DatePickerBasicExample: React.FunctionComponent = () => {
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
   const onDropdownChange = React.useCallback((event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {
-    setFirstDayOfWeek((DayOfWeek as any)[option.key]);
+    setFirstDayOfWeek(option.key as number);
   }, []);
 
   return (

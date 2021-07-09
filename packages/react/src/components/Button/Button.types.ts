@@ -187,7 +187,7 @@ export interface IButtonProps
   onRenderText?: IRenderFunction<IButtonProps>;
 
   /**
-   * Custom render function for the desciption text.
+   * Custom render function for the description text.
    */
   onRenderDescription?: IRenderFunction<IButtonProps>;
 

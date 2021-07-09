@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
@@ -48,7 +48,7 @@ export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
 export const checkboxShorthandProps: CheckboxShorthandProps[];
 
 // @public
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+export interface CheckboxState extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
     checkboxClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }

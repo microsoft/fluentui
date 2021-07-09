@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { ButtonState } from './Button.types';
 
@@ -52,10 +52,6 @@ const useRootStyles = makeStyles({
       outline: 'none',
     },
   }),
-  focusIndicator: createFocusIndicatorStyleRule(theme => ({
-    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-    borderRadius: '4px',
-  })),
   small: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.smaller,
@@ -85,6 +81,24 @@ const useRootStyles = makeStyles({
     minWidth: '96px',
 
     borderRadius: theme.global.borderRadius.medium,
+  }),
+  block: {
+    maxWidth: '100%',
+    width: '100%',
+  },
+  circular: theme => ({
+    borderRadius: theme.global.borderRadius.circular,
+  }),
+  outline: theme => ({
+    background: theme.alias.color.neutral.transparentBackground,
+
+    ':hover': {
+      background: theme.alias.color.neutral.transparentBackgroundHover,
+    },
+
+    ':active': {
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
+    },
   }),
   primary: theme => ({
     background: theme.alias.color.neutral.brandBackground,
@@ -162,7 +176,7 @@ const useRootStyles = makeStyles({
 
     boxShadow: 'none',
 
-    cursor: 'default',
+    cursor: 'not-allowed',
 
     ':hover': {
       background: theme.alias.color.neutral.neutralBackgroundDisabled,
@@ -170,6 +184,8 @@ const useRootStyles = makeStyles({
       color: theme.alias.color.neutral.neutralForegroundDisabled,
 
       boxShadow: 'none',
+
+      cursor: 'not-allowed',
     },
 
     ':active': {
@@ -178,6 +194,19 @@ const useRootStyles = makeStyles({
       color: theme.alias.color.neutral.neutralForegroundDisabled,
 
       boxShadow: 'none',
+
+      cursor: 'not-allowed',
+    },
+  }),
+  disabledOutline: theme => ({
+    background: theme.alias.color.neutral.transparentBackground,
+
+    ':hover': {
+      background: theme.alias.color.neutral.transparentBackgroundHover,
+    },
+
+    ':active': {
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
     },
   }),
   disabledPrimary: {
@@ -221,6 +250,20 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useRootFocusStyles = makeStyles({
+  base: createFocusIndicatorStyleRule(theme => ({
+    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+    borderRadius: '4px',
+  })),
+  circular: createFocusIndicatorStyleRule(theme => ({
+    borderRadius: theme.global.borderRadius.circular,
+  })),
+  primary: createFocusIndicatorStyleRule(theme => ({
+    border: `1px solid ${theme.alias.color.neutral.neutralForegroundInvertedAccessible}`,
+    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralForeground1}`,
+  })),
+});
+
 const useRootIconOnlyStyles = makeStyles({
   small: {
     padding: buttonSpacing.smaller,
@@ -243,11 +286,11 @@ const useRootIconOnlyStyles = makeStyles({
 });
 
 const useChildrenStyles = makeStyles({
-  base: theme => ({
+  base: {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-  }),
+  },
   small: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
     fontWeight: theme.global.type.fontWeights.regular,
@@ -290,21 +333,28 @@ const useIconStyles = makeStyles({
 
 export const useButtonStyles = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
+  const rootFocusStyles = useRootFocusStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const childrenStyles = useChildrenStyles();
   const iconStyles = useIconStyles();
 
   state.className = mergeClasses(
     rootStyles.base,
-    rootStyles.focusIndicator,
+    rootFocusStyles.base,
     rootStyles[state.size],
+    state.block && rootStyles.block,
+    state.circular && rootStyles.circular,
+    state.circular && rootFocusStyles.circular,
+    state.outline && rootStyles.outline,
     state.primary && rootStyles.primary,
+    state.primary && rootFocusStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    state.disabled && rootStyles.disabled,
-    state.disabled && state.primary && rootStyles.disabledPrimary,
-    state.disabled && state.subtle && rootStyles.disabledSubtle,
-    state.disabled && state.transparent && rootStyles.disabledTransparent,
+    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
+    (state.disabled || state.disabledFocusable) && state.outline && rootStyles.disabledOutline,
+    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
+    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
+    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );

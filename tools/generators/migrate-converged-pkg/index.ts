@@ -84,10 +84,14 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 // ==== helpers ====
 
 const templates = {
-  apiExtractor: {
+  apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
     mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
+  },
+  apiExtractor: {
+    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
   },
   tsconfig: {
     extends: '../../tsconfig.base.json',
@@ -270,14 +274,15 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   updateJson(tree, options.paths.packageJson, json => {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
+    delete json.scripts['test:watch'];
 
     json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
     json.scripts[
       'build:local'
       // eslint-disable-next-line @fluentui/max-len
-    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.projectConfig.root}/src && yarn docs`;
+    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
     json.scripts.storybook = 'start-storybook';
-    json.scripts.start = 'storybook';
+    json.scripts.start = 'yarn storybook';
     json.scripts.test = 'jest';
 
     return json;
@@ -287,7 +292,8 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractor);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractorLocal);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), templates.apiExtractor);
 
   return tree;
 }

@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandProps } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 
 /**
  * Checkbox Props
  */
 export interface CheckboxProps
-  extends Omit<ComponentProps, 'children'>,
+  extends Omit<ComponentPropsCompat, 'children'>,
     Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
   /**
    * Label that will be rendered next to the input.
    */
   label?: ShorthandProps<LabelProps>;
 
-  indicator?: ShorthandProps<ComponentProps>;
+  indicator?: ShorthandProps<ComponentPropsCompat>;
 
   input?: ShorthandProps<Partial<HTMLInputElement>>;
 
@@ -90,7 +90,8 @@ export type CheckboxDefaultedProps = 'label' | 'indicator' | 'size' | 'labelPosi
 /**
  * State used in rendering Checkbox
  */
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+export interface CheckboxState
+  extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
   /**
    * Ref to the root element.
    */

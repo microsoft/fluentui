@@ -61,7 +61,7 @@ function addCustomDecorators() {
   const customDecorators = new Set();
 
   if (
-    ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
+    ['react-button', 'react-card', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
       packageNamePlaceholder,
     )
   ) {

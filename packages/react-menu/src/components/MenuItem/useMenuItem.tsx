@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useMergedRefs,
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
+  resolveShorthand,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { MenuItemProps, MenuItemState } from './MenuItem.types';
+import { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
 import { ChevronRightIcon, ChevronLeftIcon } from '../../utils/DefaultIcons';
@@ -17,19 +16,18 @@ import { useMenuContext } from '../../contexts/menuContext';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemShorthandProps = ['icon', 'submenuIndicator', 'content', 'secondaryContent', 'checkmark'] as const;
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
+export const menuItemSlots: Array<keyof MenuItemSlots> = [
+  'icon',
+  'submenuIndicator',
+  'content',
+  'secondaryContent',
+  'checkmark',
+];
 
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuItem = (
-  props: MenuItemProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuItemProps,
-): MenuItemState => {
+export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): MenuItemState => {
   const hasSubmenu = useMenuTriggerContext();
   const hasIcons = useMenuListContext(context => context.hasIcons);
   const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
@@ -38,23 +36,31 @@ export const useMenuItem = (
   const dismissedWithKeyboardRef = React.useRef(false);
 
   const { dir } = useFluent();
+  const innerRef = React.useRef<HTMLElement>(null);
 
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      icon: { as: 'span', children: hasIcons ? '' : undefined },
-      checkmark: { as: 'span', children: hasCheckmarks ? '' : undefined },
-      submenuIndicator: { as: 'span', children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon /> },
-      content: { as: 'span', children: props.children },
-      secondaryContent: { as: 'span' },
-      role: 'menuitem',
-      tabIndex: 0,
-      hasSubmenu,
-      'aria-disabled': props.disabled,
+  const state: MenuItemState = {
+    ref: useMergedRefs(ref, innerRef),
+    role: 'menuitem',
+    tabIndex: 0,
+    hasSubmenu,
+    'aria-disabled': props.disabled,
+    ...props,
+    components: {
+      icon: 'span',
+      checkmark: 'span',
+      submenuIndicator: 'span',
+      content: 'span',
+      secondaryContent: 'span',
     },
-    defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandProps),
-    resolveShorthandProps(props, menuItemShorthandProps),
-  );
+
+    icon: resolveShorthand(props.icon, { children: hasIcons ? '' : undefined }),
+    checkmark: resolveShorthand(props.checkmark, { children: hasCheckmarks ? '' : undefined }),
+    submenuIndicator: resolveShorthand(props.submenuIndicator, {
+      children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
+    }),
+    content: resolveShorthand(props.content, { children: props.children }),
+    secondaryContent: resolveShorthand(props.secondaryContent),
+  };
 
   const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state;
   state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -96,11 +102,11 @@ export const useMenuItem = (
 
   const { onMouseEnter: onMouseEnterOriginal } = state;
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    state.ref.current?.focus();
+    innerRef.current?.focus();
 
     onMouseEnterOriginal?.(e);
   });
 
-  useCharacterSearch(state);
+  useCharacterSearch(state, innerRef);
   return state;
 };
