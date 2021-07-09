@@ -376,7 +376,6 @@ export const Designer: React.FunctionComponent = () => {
 
   // group the accesssibility errors (if they exist)
   const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
-  console.log(groupedAccessibilityErrors);
 
   return (
     <div
@@ -518,9 +517,30 @@ export const Designer: React.FunctionComponent = () => {
               <div>
                 {_.isEmpty(accessibilityErrors)
                   ? '\t No accessibility errors automatically detected.'
-                  : _.mapKeys(groupedAccessibilityErrors, severityLevel => (
-                      <div>
-                        <Header as="h3">{severityLevel.toString}</Header>
+                  : Object.keys(groupedAccessibilityErrors).map(severityLevel => (
+                      <div
+                        style={{
+                          margin: '1em',
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}
+                      >
+                        <Header as="h3">{severityLevel}</Header>
+                        {groupedAccessibilityErrors[severityLevel].map(error => (
+                          <div
+                            style={{
+                              display: 'flex',
+                              minWidth: '1em',
+                              maxWidth: '2em',
+                            }}
+                          >
+                            <ul>
+                              <li>{error.elementUuid}</li>
+                              <li>{error.error}</li>
+                              <li>Source: {error.source}</li>
+                            </ul>
+                          </div>
+                        ))}
                       </div>
                     ))}
               </div>
