@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { DescendantProvider } from '@fluentui/react-utilities';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { AccordionContext, AccordionDescendantContext } from './useAccordionContext';
+import { AccordionContext, AccordionDescendantContext } from './AccordionContext';
 
 describe('Accordion', () => {
   isConformant({
