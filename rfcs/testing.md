@@ -32,6 +32,14 @@ By defining a common approach, we can make the testing process less ambiguous, a
 
 ## Detailed Design or Proposal
 
+To start, this is the proposal for defining the goals of each testing layer.
+
+- **Conformance**
+
+  These are unit tests that focus on ensuring the consistency of our components. They test that props like `as` and ... are present and that the component is rendered.
+
+  These can be achieved simply through the `isConformant` function generated when creating a converged component.
+
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
 
 ### Pros and Cons
