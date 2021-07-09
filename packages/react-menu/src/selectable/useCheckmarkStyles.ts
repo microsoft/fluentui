@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemSelectableState } from './types';
 
 const useStyles = makeStyles({
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
  * @param state - should contain a `checkmark` slot
  */
 export const useCheckmarkStyles = (
-  state: MenuItemSelectableState & { checkmark: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLElement>> },
+  state: MenuItemSelectableState & { checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>> },
 ) => {
   const styles = useStyles();
   if (state.checkmark) {

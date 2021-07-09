@@ -72,7 +72,8 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      result.current.setFocusByFirstCharacter?.(createEvent(current.textContent), current);
+      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      result.current.setFocusByFirstCharacter(createEvent(current.textContent), current);
 
       // Assert
       expect(menuitems[0].focus).toHaveBeenCalledTimes(1);
@@ -87,7 +88,8 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      result.current.setFocusByFirstCharacter?.(createEvent('d'), current);
+      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      result.current.setFocusByFirstCharacter(createEvent('d'), current);
 
       // Assert
       expect(menuitems[4].focus).toHaveBeenCalledTimes(1);
