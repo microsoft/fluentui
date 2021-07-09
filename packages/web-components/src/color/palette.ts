@@ -1,326 +1,145 @@
-import {
-  accentPalette,
-  backgroundColor,
-  DesignSystem,
-  DesignSystemResolver,
-  evaluateDesignSystemResolver,
-  neutralPalette,
-} from '../fluent-design-system';
-import { clamp, colorMatches, contrast, isValidColor, luminance, Swatch, SwatchResolver } from './common';
+import { clamp, ColorRGBA64, ComponentStateColorPalette, parseColorHexRGB } from '@microsoft/fast-colors';
+import { Swatch, SwatchRGB } from './swatch';
+import { binarySearch } from './utilities/binary-search';
+import { directionByIsDark } from './utilities/direction-by-is-dark';
+import { contrast, RelativeLuminance } from './utilities/relative-luminance';
 
 /**
- * The named palettes of the MSFT design system
- * @deprecated - use neutralPalette and accentPalette functions instead
+ * A collection of {@link Swatch} instances
  * @public
  */
-export enum PaletteType {
-  neutral = 'neutral',
-  accent = 'accent',
+export interface Palette<T extends Swatch = Swatch> {
+  readonly source: T;
+  readonly swatches: ReadonlyArray<T>;
+
+  /**
+   * Returns a swatch from the palette that most closely matches
+   * the contrast ratio provided to a provided reference.
+   */
+  colorContrast(reference: Swatch, contrast: number, initialIndex?: number, direction?: 1 | -1): T;
+
+  /**
+   * Returns the index of the palette that most closely matches
+   * the relativeLuminance of the provided swatch
+   */
+  closestIndexOf(reference: RelativeLuminance): number;
+
+  /**
+   * Gets a swatch by index. Index is clamped to the limits
+   * of the palette so a Swatch will always be returned.
+   */
+  get(index: number): T;
 }
 
+/** @public */
+export type PaletteRGB = Palette<SwatchRGB>;
+
+/** @public */
+export const PaletteRGB = Object.freeze({
+  create(source: SwatchRGB): PaletteRGB {
+    return PaletteRGBImpl.from(source);
+  },
+});
+
 /**
- * The structure of a color palette
- *
+ * A {@link Palette} representing RGB swatch values.
  * @public
  */
-export type Palette = Swatch[];
+class PaletteRGBImpl implements Palette<SwatchRGB> {
+  /**
+   * {@inheritdoc Palette.source}
+   */
+  public readonly source: SwatchRGB;
+  public readonly swatches: ReadonlyArray<SwatchRGB>;
+  private lastIndex: number;
+  private reversedSwatches: ReadonlyArray<SwatchRGB>;
+  /**
+   *
+   * @param source - The source color for the palette
+   * @param swatches - All swatches in the palette
+   */
+  constructor(source: SwatchRGB, swatches: ReadonlyArray<SwatchRGB>) {
+    this.source = source;
+    this.swatches = swatches;
 
-/**
- * Retrieves a palette by name. This function returns a function that accepts
- * a design system, returning a palette a palette or null
- * @deprecated - use neutralPalette and accentPalette functions instead
- * @internal
- */
-export function palette(paletteType: PaletteType): DesignSystemResolver<Palette> {
-  return (designSystem: DesignSystem | undefined): Palette => {
-    switch (paletteType) {
-      case PaletteType.accent:
-        return accentPalette(designSystem!);
-      case PaletteType.neutral:
-      default:
-        return neutralPalette(designSystem!);
+    this.reversedSwatches = Object.freeze([...this.swatches].reverse());
+    this.lastIndex = this.swatches.length - 1;
+  }
+
+  /**
+   * {@inheritdoc Palette.colorContrast}
+   */
+  public colorContrast(
+    reference: Swatch,
+    contrastTarget: number,
+    initialSearchIndex?: number,
+    direction?: 1 | -1,
+  ): SwatchRGB {
+    if (initialSearchIndex === undefined) {
+      initialSearchIndex = this.closestIndexOf(reference);
     }
-  };
-}
 
-/**
- * A function to find the index of a swatch in a specified palette. If the color is found,
- * otherwise it will return -1
- *
- * @internal
- */
-export function findSwatchIndex(
-  paletteResolver: Palette | DesignSystemResolver<Palette>,
-  swatch: Swatch,
-): DesignSystemResolver<number> {
-  return (designSystem: DesignSystem): number => {
-    if (!isValidColor(swatch)) {
-      return -1;
+    let source: ReadonlyArray<SwatchRGB> = this.swatches;
+    const endSearchIndex = this.lastIndex;
+    let startSearchIndex = initialSearchIndex;
+
+    if (direction === undefined) {
+      direction = directionByIsDark(reference);
     }
 
-    const colorPalette: Palette = evaluateDesignSystemResolver(paletteResolver, designSystem);
-    const index: number = colorPalette.indexOf(swatch);
+    const condition = (value: SwatchRGB) => contrast(reference, value) >= contrastTarget;
 
-    // If we don't find the string exactly, it might be because of color formatting differences
-    return index !== -1
-      ? index
-      : colorPalette.findIndex((paletteSwatch: Swatch): boolean => {
-          return isValidColor(paletteSwatch) && colorMatches(swatch, paletteSwatch);
-        });
-  };
-}
+    if (direction === -1) {
+      source = this.reversedSwatches;
+      startSearchIndex = endSearchIndex - startSearchIndex;
+    }
 
-/**
- * Returns the closest swatch in a palette to an input swatch.
- * If the input swatch cannot be converted to a color, 0 will be returned
- *
- * @internal
- */
-export function findClosestSwatchIndex(
-  paletteResolver: Palette | DesignSystemResolver<Palette>,
-  swatch: Swatch | DesignSystemResolver<Swatch>,
-): DesignSystemResolver<number> {
-  return (designSystem: DesignSystem): number => {
-    const resolvedPalette: Palette = evaluateDesignSystemResolver(paletteResolver, designSystem);
-    const resolvedSwatch: Swatch = evaluateDesignSystemResolver(swatch, designSystem);
-    const index: number = findSwatchIndex(resolvedPalette, resolvedSwatch)(designSystem);
-    let swatchLuminance: number;
+    return binarySearch(source, condition, startSearchIndex, endSearchIndex);
+  }
+
+  /**
+   * {@inheritdoc Palette.get}
+   */
+  public get(index: number): SwatchRGB {
+    return this.swatches[index] || this.swatches[clamp(index, 0, this.lastIndex)];
+  }
+
+  /**
+   * {@inheritdoc Palette.closestIndexOf}
+   */
+  public closestIndexOf(reference: Swatch): number {
+    const index = this.swatches.indexOf(reference as SwatchRGB);
 
     if (index !== -1) {
       return index;
     }
 
-    try {
-      swatchLuminance = luminance(resolvedSwatch);
-    } catch (e) {
-      swatchLuminance = -1;
-    }
-
-    if (swatchLuminance === -1) {
-      return 0;
-    }
-
-    interface LuminanceMap {
-      luminance: number;
-      index: number;
-    }
-
-    return resolvedPalette
-      .map(
-        (mappedSwatch: Swatch, mappedIndex: number): LuminanceMap => {
-          return {
-            luminance: luminance(mappedSwatch),
-            index: mappedIndex,
-          };
-        },
-      )
-      .reduce(
-        (previousValue: LuminanceMap, currentValue: LuminanceMap): LuminanceMap => {
-          return Math.abs(currentValue.luminance - swatchLuminance) <
-            Math.abs(previousValue.luminance - swatchLuminance)
-            ? currentValue
-            : previousValue;
-        },
-      ).index;
-  };
-}
-
-/**
- * @public
- * @privateRemarks
- * Determines if the design-system should be considered in "dark mode".
- * We're in dark mode if we have more contrast between #000000 and our background
- * color than #FFFFFF and our background color. That threshold can be expressed as a relative luminance
- * using the contrast formula as (1 + 0.5) / (bg + 0.05) === (bg + 0.05) / (0 + 0.05),
- * which reduces to the following, where bg is the relative luminance of the background color
- */
-export function isDarkMode(designSystem: DesignSystem): boolean {
-  return luminance(backgroundColor(designSystem)) <= (-0.1 + Math.sqrt(0.21)) / 2;
-}
-
-/**
- * @internal
- * @deprecated
- * Determines if the design-system should be considered in "light mode".
- */
-export function isLightMode(designSystem: DesignSystem): boolean {
-  return !isDarkMode(designSystem);
-}
-
-/**
- * @internal
- * Safely retrieves an index of a palette. The index is clamped to valid
- * array indexes so that a swatch is always returned
- */
-export function getSwatch(index: number, colorPalette: Palette): Swatch;
-export function getSwatch(
-  index: DesignSystemResolver<number>,
-  colorPalette: DesignSystemResolver<Palette>,
-): DesignSystemResolver<Swatch>;
-export function getSwatch(index: any, colorPalette: any): any {
-  if (typeof index === 'function') {
-    return (designSystem: DesignSystem): Swatch => {
-      return colorPalette(designSystem)[clamp(index(designSystem), 0, colorPalette(designSystem).length - 1)];
-    };
-  } else {
-    return colorPalette[clamp(index, 0, colorPalette.length - 1)];
-  }
-}
-
-/**
- * @internal
- */
-export function swatchByMode(
-  paletteResolver: DesignSystemResolver<Palette>,
-): (
-  a: number | DesignSystemResolver<number>,
-  b: number | DesignSystemResolver<number>,
-) => DesignSystemResolver<Swatch> {
-  return (
-    valueA: number | DesignSystemResolver<number>,
-    valueB?: number | DesignSystemResolver<number>,
-  ): DesignSystemResolver<Swatch> => {
-    return (designSystem: DesignSystem): Swatch => {
-      return getSwatch(
-        isDarkMode(designSystem)
-          ? evaluateDesignSystemResolver(valueB!, designSystem)
-          : evaluateDesignSystemResolver(valueA, designSystem),
-        paletteResolver(designSystem),
-      );
-    };
-  };
-}
-
-function binarySearch<T>(
-  valuesToSearch: T[],
-  searchCondition: (value: T) => boolean,
-  startIndex: number = 0,
-  endIndex: number = valuesToSearch.length - 1,
-): T {
-  if (endIndex === startIndex) {
-    return valuesToSearch[startIndex];
-  }
-
-  const middleIndex: number = Math.floor((endIndex - startIndex) / 2) + startIndex;
-
-  // Check to see if this passes on the item in the center of the array
-  // if it does check the previous values
-  if (searchCondition(valuesToSearch[middleIndex])) {
-    return binarySearch(
-      valuesToSearch,
-      searchCondition,
-      startIndex,
-      middleIndex, // include this index because it passed the search condition
+    const closest = this.swatches.reduce((previous, next) =>
+      Math.abs(next.relativeLuminance - reference.relativeLuminance) <
+      Math.abs(previous.relativeLuminance - reference.relativeLuminance)
+        ? next
+        : previous,
     );
-  } else {
-    return binarySearch(
-      valuesToSearch,
-      searchCondition,
-      middleIndex + 1, // exclude this index because it failed the search condition
-      endIndex,
-    );
-  }
-}
 
-// disable type-defs because this a deeply curried function and the call-signature is pretty complicated
-// and typescript can work it out automatically for consumers
-/**
- * Retrieves a swatch from an input palette, where the swatch's contrast against the reference color
- * passes an input condition. The direction to search in the palette is determined by an input condition.
- * Where to begin the search in the palette will be determined another input function that should return the starting index.
- * example: swatchByContrast(
- *              "#FFF" // compare swatches against "#FFF"
- *          )(
- *              neutralPalette // use the neutral palette from the DesignSystem - since this is a function, it will be evaluated with the DesignSystem
- *          )(
- *              () => 0 // begin searching for a swatch at the beginning of the neutral palette
- *          )(
- *              () => 1 // While searching, search in the direction toward the end of the array (-1 moves towards the beginning of the array)
- *          )(
- *              minContrastTargetFactory(4.5) // A swatch is only valid if the contrast is greater than 4.5
- *          )(
- *              designSystem // Pass the design-system. The first swatch that passes the previous condition will be returned from this function
- *          )
- * @internal
- */
-export function swatchByContrast(referenceColor: string | SwatchResolver) {
+    return this.swatches.indexOf(closest);
+  }
+
   /**
-   * A function that expects a function that resolves a palette
+   * Create a color palette from a provided swatch
+   * @param source - The source swatch to create a palette from
+   * @returns
    */
-  return (paletteResolver: Palette | DesignSystemResolver<Palette>) => {
-    /**
-     * A function that expects a function that resolves the index
-     * of the palette that the algorithm should begin looking for a swatch at
-     */
-    return (indexResolver: (referenceColor: string, palette: Palette, designSystem: DesignSystem) => number) => {
-      /**
-       * A function that expects a function that determines which direction in the
-       * palette we should look for a swatch relative to the initial index
-       */
-      return (directionResolver: (referenceIndex: number, palette: Palette, designSystem: DesignSystem) => 1 | -1) => {
-        /**
-         * A function that expects a function that determines if the contrast
-         * between the reference color and color from the palette are acceptable
-         */
-        return (contrastCondition: (contrastRatio: number) => boolean): DesignSystemResolver<Swatch> => {
-          /**
-           * A function that accepts a design-system. It resolves all of the curried arguments
-           * and loops over the palette until we reach the bounds of the palette or the condition
-           * is satisfied. Once either the condition is satisfied or we reach the end of the palette,
-           * we return the color
-           */
-          return (designSystem: DesignSystem): Swatch => {
-            const color: Swatch = evaluateDesignSystemResolver(referenceColor, designSystem);
-            const sourcePalette: Palette = evaluateDesignSystemResolver(paletteResolver, designSystem);
-            const length: number = sourcePalette.length;
-            const initialSearchIndex: number = clamp(indexResolver(color, sourcePalette, designSystem), 0, length - 1);
-            const direction: 1 | -1 = directionResolver(initialSearchIndex, sourcePalette, designSystem);
-
-            function contrastSearchCondition(valueToCheckAgainst: Swatch): boolean {
-              return contrastCondition(contrast(color, valueToCheckAgainst));
-            }
-
-            const constrainedSourcePalette: Palette = [].concat(sourcePalette as any);
-            const endSearchIndex: number = length - 1;
-            let startSearchIndex: number = initialSearchIndex;
-
-            if (direction === -1) {
-              // reverse the palette array when the direction that
-              // the contrast resolves for is reversed
-              constrainedSourcePalette.reverse();
-              startSearchIndex = endSearchIndex - startSearchIndex;
-            }
-
-            return binarySearch(constrainedSourcePalette, contrastSearchCondition, startSearchIndex, endSearchIndex);
-          };
-        };
-      };
-    };
-  };
-}
-
-/**
- * @internal
- * Resolves the index that the contrast search algorithm should start at
- */
-export function referenceColorInitialIndexResolver(
-  referenceColor: string,
-  sourcePalette: Palette,
-  designSystem: DesignSystem,
-): number {
-  return findClosestSwatchIndex(sourcePalette, referenceColor)(designSystem);
-}
-
-/**
- * @internal
- */
-export function findClosestBackgroundIndex(designSystem: DesignSystem): number {
-  return findClosestSwatchIndex(neutralPalette, backgroundColor(designSystem))(designSystem);
-}
-
-/**
- * @internal
- */
-export function minContrastTargetFactory(targetContrast: number): (instanceContrast: number) => boolean {
-  return (instanceContrast: number): boolean => instanceContrast >= targetContrast;
+  static from(source: SwatchRGB): PaletteRGB {
+    return new PaletteRGBImpl(
+      source,
+      Object.freeze(
+        new ComponentStateColorPalette({
+          baseColor: ColorRGBA64.fromObject(source)!,
+        }).palette.map(x => {
+          const _x = parseColorHexRGB(x.toStringHexRGB())!;
+          return SwatchRGB.create(_x.r, _x.g, _x.b);
+        }),
+      ),
+    );
+  }
 }

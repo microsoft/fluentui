@@ -1,6 +1,6 @@
 const { default: Ajv } = require('ajv');
 const Babel = require('@babel/core');
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 const path = require('path');
 
 const fixtureSchema = require('../schema.json');
@@ -18,9 +18,9 @@ const ajv = new Ajv();
  */
 module.exports = async function prepareFixture(fixture) {
   const sourceFixturePath = path.resolve(process.cwd(), fixture);
-  const sourceFixtureCode = (await fs.promises.readFile(sourceFixturePath)).toString();
+  const sourceFixtureCode = await fs.readFile(sourceFixturePath, 'utf8');
 
-  const result = await Babel.transformAsync(sourceFixtureCode.toString(), {
+  const result = await Babel.transformAsync(sourceFixtureCode, {
     ast: false,
     code: true,
 
@@ -54,21 +54,32 @@ module.exports = async function prepareFixture(fixture) {
     ],
   });
 
-  if (!result || !result.metadata) {
-    // TODO: proper error reporting
-    throw new Error();
+  /**
+   * @param {typeof result} value
+   * @return {value is Required<NonNullable<typeof result>> & {metadata: FixtureMetadata}}
+   */
+  function isTransformedFixtureResultHasMetadata(value) {
+    return Boolean(value && value.metadata && Object.keys(value.metadata).length);
+  }
+
+  if (!isTransformedFixtureResultHasMetadata(result)) {
+    throw new Error(
+      [
+        'A fixture file should contain a default export with metadata.',
+        "For example: export default { name: 'Test fixture' }",
+      ].join('\n'),
+    );
   }
 
   const outputFixturePath = path.resolve(process.cwd(), 'dist', fixture);
-  await fs.outputFile(outputFixturePath, result.code);
 
-  const metadata = /** @type {unknown} */ (result.metadata);
-  const { name } = /** @type {FixtureMetadata} */ (metadata);
+  await fs.mkdir(path.dirname(outputFixturePath), { recursive: true });
+  await fs.writeFile(outputFixturePath, result.code);
 
   return {
     absolutePath: outputFixturePath,
     relativePath: fixture,
 
-    name,
+    name: result.metadata.name,
   };
 };

@@ -15,6 +15,7 @@ import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 export const menuShorthandPropsCompat: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -35,7 +36,7 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  */
 export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState => {
   const triggerId = useId('menu');
-  const isSubmenu = useMenuContext(context => context.hasMenuContext);
+  const isSubmenu = useIsSubmenu();
 
   const state = mergeProps(
     {
@@ -45,12 +46,11 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
       openOnHover: isSubmenu,
       hoverDelay: 500,
       triggerId,
+      isSubmenu,
     },
     defaultProps,
     resolveShorthandProps(props, menuShorthandPropsCompat),
   );
-
-  state.isSubmenu = isSubmenu;
 
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];

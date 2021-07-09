@@ -159,6 +159,8 @@ export const MenuList: React_2.FunctionComponent<MenuListProps & React_2.RefAttr
 // @public
 export interface MenuListContextValue extends Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> {
     // (undocumented)
+    hasMenuListContext?: boolean;
+    // (undocumented)
     selectRadio?: SelectableHandler;
     // (undocumented)
     setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;

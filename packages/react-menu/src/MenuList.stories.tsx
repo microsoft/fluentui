@@ -11,6 +11,9 @@ import {
   MenuItemCheckboxProps,
   MenuItemRadioProps,
   MenuListProps,
+  Menu,
+  MenuPopover,
+  MenuTrigger,
 } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
@@ -296,8 +299,29 @@ export const RadioItemsControlled = () => {
   );
 };
 
+export const NestedSubmenus = () => (
+  <Container>
+    <MenuList>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem>Paste</MenuItem>
+      <MenuItem>Edit</MenuItem>
+      <Menu>
+        <MenuTrigger>
+          <MenuItem>Preferences</MenuItem>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Cut</MenuItem>
+            <MenuItem>Paste</MenuItem>
+            <MenuItem>Edit</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </MenuList>
+  </Container>
+);
+
 export default {
-  // use the Components prefix and (react-menu) suffix to have the same naming convention as react-examples
   title: 'Components/MenuList',
   component: MenuList,
 };
