@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { getCode, ArrowRightKey, ArrowDownKey } from '@fluentui/keyboard-key';
+import { getCode, ArrowRightKey, ArrowDownKey, ArrowLeftKey } from '@fluentui/keyboard-key';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 const noop = () => null;
 
@@ -18,7 +20,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   const triggerId = useMenuContext(context => context.triggerId);
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const isSubmenu = useIsSubmenu();
   const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(menuPopoverRef.current);
@@ -26,6 +28,10 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   }, [findFirstFocusable, menuPopoverRef]);
 
   const openedWithKeyboardRef = React.useRef(false);
+  const hasMouseMoved = React.useRef(false);
+
+  const { dir } = useFluent();
+  const OpenArrowKey = dir === 'ltr' ? ArrowRightKey : ArrowLeftKey;
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
@@ -55,12 +61,16 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
 
     const keyCode = getCode(e);
 
-    if (!openOnContext && ((isSubmenu && keyCode === ArrowRightKey) || (!isSubmenu && keyCode === ArrowDownKey))) {
+    if (!openOnContext && ((isSubmenu && keyCode === OpenArrowKey) || (!isSubmenu && keyCode === ArrowDownKey))) {
       setOpen(e, { open: true, keyboard: true });
     }
 
+    if (keyCode === 27 /* Escape */ && !isSubmenu) {
+      setOpen(e, { open: false, keyboard: true });
+    }
+
     // if menu is already open, can't rely on effects to focus
-    if (open && keyCode === ArrowRightKey && isSubmenu) {
+    if (open && keyCode === OpenArrowKey && isSubmenu) {
       focusFirst();
     }
 
@@ -72,15 +82,25 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   });
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover && hasMouseMoved.current) {
       setOpen(e, { open: true, keyboard: false });
     }
 
     child.props?.onMouseEnter?.(e);
   });
 
+  // Opening a menu when a mouse hasn't moved and just entering the trigger is a bad a11y experience
+  // First time open the mouse using mousemove and then continue with mouseenter
+  // Only use once to determine that the user is using the mouse since it is an expensive event to handle
+  const onMouseMove = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (openOnHover && !hasMouseMoved.current) {
+      setOpen(e, { open: true, keyboard: false });
+      hasMouseMoved.current = true;
+    }
+  });
+
   const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, { open: false, keyboard: false });
     }
 
@@ -100,6 +120,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
           onMouseLeave,
           onContextMenu,
           onKeyDown,
+          onMouseMove,
         }
       : // Spread disabled event handlers to implement contract and avoid specific disabled logic in handlers
         {
@@ -108,6 +129,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
           onMouseLeave: noop,
           onContextMenu: noop,
           onKeyDown: noop,
+          onMouseMove: noop,
         }),
   };
 

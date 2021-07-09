@@ -795,6 +795,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       display: block;
                                       fill: #0078d4;
                                     }
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      fill: windowtext;
+                                    }
                                 height={10}
                                 width={18}
                               >
@@ -953,6 +956,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                     margin-left: 0px;
                                                     margin-right: 0px;
                                                     margin-top: 0px;
+                                                    overflow-wrap: break-word;
                                                   }
                                               id="example-label1"
                                               role="heading"
@@ -1071,7 +1075,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             onKeyUp={[Function]}
                                             onMouseDown={[Function]}
                                             onMouseUp={[Function]}
-                                            title="Close"
                                             type="button"
                                           >
                                             <span

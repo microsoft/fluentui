@@ -2,10 +2,10 @@ import { pxToRem } from '../../../../utils';
 import { MenuVariables } from './menuVariables';
 import { MenuItemIndicatorStylesProps } from '../../../../components/Menu/MenuItemIndicator';
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { submenuIndicatorUrl, submenuIndicatorDirection } from './submenuIndicatorUrl';
+import { submenuIndicatorDirection } from './submenuIndicatorDirection';
 
 export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
-  root: ({ props: p, variables: v, rtl }) => {
+  root: ({ props: p, variables: v }) => {
     return {
       position: 'relative',
       float: 'right',
@@ -27,24 +27,24 @@ export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndica
       width: pxToRem(16),
       backgroundSize: pxToRem(16),
 
-      backgroundImage: submenuIndicatorUrl(v.indicatorColor),
+      color: v.indicatorColor,
 
       ...(p.active && {
-        backgroundImage: submenuIndicatorUrl(v.activeIndicatorColor),
+        color: v.activeIndicatorColor,
 
         ...(p.primary && {
-          backgroundImage: submenuIndicatorUrl(v.activePrimaryIndicatorColor),
+          color: v.activePrimaryIndicatorColor,
 
           ...(p.vertical && {
-            backgroundImage: submenuIndicatorUrl(v.activePrimaryVerticalIndicatorColor),
+            color: v.activePrimaryVerticalIndicatorColor,
           }),
         }),
       }),
 
-      ...(p.underlined && { backgroundImage: submenuIndicatorUrl(v.indicatorColor) }),
-      ...(p.iconOnly && { backgroundImage: submenuIndicatorUrl(v.indicatorColor) }),
+      ...(p.underlined && { color: v.indicatorColor }),
+      ...(p.iconOnly && { color: v.indicatorColor }),
 
-      ...submenuIndicatorDirection(p.vertical, rtl),
+      ...submenuIndicatorDirection(p.vertical),
     };
   },
 };

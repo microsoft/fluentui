@@ -2647,7 +2647,7 @@ export interface ICoachmarkProps extends React_2.RefAttributes<HTMLDivElement> {
     preventDismissOnLostFocus?: boolean;
     preventFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
-    target: HTMLElement | string | null;
+    target: Target;
     // @deprecated (undocumented)
     teachingBubbleRef?: ITeachingBubble;
     theme?: ITheme;
@@ -2946,6 +2946,7 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
@@ -3414,7 +3415,7 @@ export interface IContextualMenuRenderItem {
 export interface IContextualMenuSection extends React_2.ClassAttributes<any> {
     bottomDivider?: boolean;
     items: IContextualMenuItem[];
-    title?: string;
+    title?: string | IContextualMenuItem;
     topDivider?: boolean;
 }
 
@@ -3565,6 +3566,12 @@ export interface IDetailsCheckboxProps {
     checked: boolean;
     // (undocumented)
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnFilterIconProps extends IIconProps {
+    // (undocumented)
+    columnProps?: IDetailsColumnProps;
 }
 
 // @public (undocumented)
@@ -6531,6 +6538,7 @@ export interface IPersonaSharedProps extends React_2.HTMLAttributes<HTMLDivEleme
     primaryText?: string;
     secondaryText?: string;
     showInitialsUntilImageLoads?: boolean;
+    showOverflowTooltip?: boolean;
     // (undocumented)
     showSecondaryText?: boolean;
     showUnknownPersonaCoin?: boolean;
@@ -6626,6 +6634,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     className?: string;
     componentRef?: React_2.RefObject<IPivot>;
     defaultSelectedKey?: string;
+    focusZoneProps?: IFocusZoneProps;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;
@@ -6768,7 +6777,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | Point | null;
+    target?: Target;
     // @deprecated
     targetPoint?: Point;
     // @deprecated
@@ -7070,6 +7079,7 @@ export interface ISearchBoxProps extends React_2.InputHTMLAttributes<HTMLInputEl
     onSearch?: (newValue: any) => void;
     placeholder?: string;
     role?: string;
+    showIcon?: boolean;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
@@ -7088,6 +7098,8 @@ export interface ISearchBoxStyleProps {
     hasFocus?: boolean;
     // (undocumented)
     hasInput?: boolean;
+    // (undocumented)
+    showIcon?: boolean;
     // (undocumented)
     theme: ITheme;
     // (undocumented)
@@ -7439,8 +7451,8 @@ export interface ISliderProps extends Omit<React_2.HTMLAttributes<HTMLDivElement
     lowerValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number, range?: [number, number]) => void;
-    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
+    onChange?: (value: number, range?: [number, number], event?: React_2.MouseEvent | React_2.TouchEvent | MouseEvent | TouchEvent | React_2.KeyboardEvent) => void;
+    onChanged?: (event: any, value: number, range?: [number, number]) => void;
     originFromZero?: boolean;
     ranged?: boolean;
     showValue?: boolean;
@@ -8214,6 +8226,30 @@ export interface IThemeSlotRule {
     isCustomized?: boolean;
     name: string;
     value?: string;
+}
+
+// @public (undocumented)
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text'> {
+    allowFreeform?: boolean;
+    increments?: number;
+    label?: string;
+    onFormatDate?: (date: Date) => string;
+    onValidateUserInput?: (userInput: string) => string;
+    showSeconds?: boolean;
+    strings?: ITimePickerStrings;
+    timeRange?: ITimeRange;
+    useHour12?: boolean;
+}
+
+// @public
+export interface ITimePickerStrings {
+    invalidInputErrorMessage: string;
+}
+
+// @public
+export interface ITimeRange {
+    end: number;
+    start: number;
 }
 
 // @public (undocumented)
@@ -9573,6 +9609,8 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
+    protected _scrollContainer: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
     scrollSelected(): void;
     // (undocumented)
     protected _searchForMoreButton: React_2.RefObject<IButton>;
@@ -9847,6 +9885,9 @@ export interface ThemeProviderProps extends React_2.HTMLAttributes<HTMLDivElemen
 
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
+
+// @public (undocumented)
+export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
 
 // @public (undocumented)
 export const Toggle: React_2.FunctionComponent<IToggleProps>;

@@ -7,7 +7,7 @@ const stylesWithAnimationShorthand: ICSSInJSStyle = {
 };
 
 const stylesWithFallbackValues: ICSSInJSStyle = {
-  display: ['grid', '-ms-grid'],
+  display: ['grid', '-ms-grid'] as any,
 };
 
 const stylesWithAnimationProps: ICSSInJSStyle = {

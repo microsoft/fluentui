@@ -1,6 +1,5 @@
 import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
@@ -8,7 +7,6 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds role 'presentation' to 'wrapper' slot.
  * Adds role 'tab' to 'root' slot.
  * Adds attribute 'tabIndex=0' to 'root' slot.
- * Adds attribute 'data-is-focusable=false' to 'root' slot if 'disabled' property is true. Sets the attribute to 'true' otherwise.
  * Adds attribute 'aria-selected=true' based on the property 'active'. This can be overriden by providing 'aria-selected' property directly to the component.
  * Adds attribute 'aria-label' based on the property 'aria-label' to 'root' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
@@ -31,7 +29,6 @@ export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
       'aria-describedby': props['aria-describedby'],
       'aria-controls': props['aria-controls'],
       'aria-disabled': props['disabled'],
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
     },
   },
 
