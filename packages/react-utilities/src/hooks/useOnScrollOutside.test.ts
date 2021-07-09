@@ -2,7 +2,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useOnScrollOutside } from './useOnScrollOutside';
 
 describe('useOnScrollOutside', () => {
-  it.each(['wheel', 'touchmove'])('should add %s listener', event => {
+  const supportedEvents = ['wheel', 'touchmove'];
+
+  it.each(supportedEvents)('should add %s listener', event => {
     // Arrange
     const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
 
@@ -14,7 +16,7 @@ describe('useOnScrollOutside', () => {
     expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything());
   });
 
-  it.each(['wheel', 'touchmove'])('should cleanup %s listener', event => {
+  it.each(supportedEvents)('should cleanup %s listener', event => {
     // Arrange
     const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
 

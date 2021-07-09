@@ -91,7 +91,7 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   state.className = mergeClasses(
     styles.root,
     state.inline && styles.rootInline,
-    state.context.disabled && styles.rootDisabled,
+    state.disabled && styles.rootDisabled,
     state.className,
   );
 

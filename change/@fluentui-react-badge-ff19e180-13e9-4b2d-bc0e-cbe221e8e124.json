@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migrate to new DX",
-  "packageName": "@fluentui/react-badge",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
-}

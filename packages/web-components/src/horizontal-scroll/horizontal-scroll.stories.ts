@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import HorizontalScrollTemplate from './fixtures/horizontal-scroll.html';
-import { FluentHorizontalScroll } from './';
-
-// Prevent tree-shaking
-FluentHorizontalScroll;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Horizontal Scroll',
 };
 
-export const HorizontalScroll = (): string => HorizontalScrollTemplate;
+export const HorizontalScroll = () => HorizontalScrollTemplate;
