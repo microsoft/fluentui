@@ -22,13 +22,14 @@ export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescen
   return useDescendant<AccordionDescendant>(accordionDescendant, AccordionDescendantContext);
 }
 
-export function useAccordionContextValue({ navigable, openItems, requestToggle }: AccordionState) {
-  return React.useMemo<AccordionContextValue>(
-    () => ({
-      navigable,
-      openItems,
-      requestToggle,
-    }),
-    [navigable, openItems, requestToggle],
-  );
+export function createAccordionContextValue({
+  navigable,
+  openItems,
+  requestToggle,
+}: AccordionState): AccordionContextValue {
+  return {
+    navigable,
+    openItems,
+    requestToggle,
+  };
 }

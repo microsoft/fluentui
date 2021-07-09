@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DescendantProvider, getSlots } from '@fluentui/react-utilities';
 import { AccordionState, AccordionSlots } from './Accordion.types';
-import { AccordionContext, AccordionDescendantContext, useAccordionContextValue } from './AccordionContext';
+import { AccordionContext, AccordionDescendantContext, createAccordionContextValue } from './AccordionContext';
 
 /**
  * Function that renders the final JSX of the component
@@ -9,9 +9,7 @@ import { AccordionContext, AccordionDescendantContext, useAccordionContextValue 
 export const renderAccordion = (state: AccordionState) => {
   const { slots, slotProps } = getSlots<AccordionSlots>(state);
 
-  // TODO: either render function should be a hook or this hook should not be called here
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = useAccordionContextValue(state);
+  const value = createAccordionContextValue(state);
 
   return (
     <slots.root {...slotProps.root}>

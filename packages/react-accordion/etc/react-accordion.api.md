@@ -193,6 +193,9 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 // @public (undocumented)
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
+// @public (undocumented)
+export function createAccordionContextValue({ navigable, openItems, requestToggle, }: AccordionState): AccordionContextValue;
+
 // @public
 export const renderAccordion: (state: AccordionState) => JSX.Element;
 
@@ -207,9 +210,6 @@ export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element |
 
 // @public (undocumented)
 export const useAccordion: ({ index, defaultIndex, multiple, collapsible, onToggle, navigable, ...rest }: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
-
-// @public (undocumented)
-export function useAccordionContextValue({ navigable, openItems, requestToggle }: AccordionState): AccordionContextValue;
 
 // @public
 export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescendant, 'index'>): number;

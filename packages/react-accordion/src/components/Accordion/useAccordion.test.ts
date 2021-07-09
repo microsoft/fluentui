@@ -1,14 +1,14 @@
 import { useAccordion } from './useAccordion';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { createRef } from 'react';
-import { useAccordionContextValue } from './AccordionContext';
+import { createAccordionContextValue } from './AccordionContext';
 
 describe('useAccordionContextValue', () => {
   const ref = createRef<HTMLElement>();
   it('should return Accordion internal Context', () => {
     const {
       result: { current: context },
-    } = renderHook(() => useAccordionContextValue(useAccordion({}, ref)));
+    } = renderHook(() => createAccordionContextValue(useAccordion({}, ref)));
     expect(context).toBeDefined();
     expect(context.openItems).toBeInstanceOf(Array);
     expect(context.requestToggle).toBeInstanceOf(Function);
@@ -16,7 +16,7 @@ describe('useAccordionContextValue', () => {
 
   describe('AccordionContextValue', () => {
     it('should respect accordion behavior', () => {
-      const { result } = renderHook(() => useAccordionContextValue(useAccordion({ defaultIndex: [0, 1, 2] }, ref)));
+      const { result } = renderHook(() => createAccordionContextValue(useAccordion({ defaultIndex: [0, 1, 2] }, ref)));
       expect(result.current.openItems.length).toEqual(1);
       expect(result.current.openItems.includes(0)).toBeTruthy();
       act(() => result.current.requestToggle(undefined!, { index: 1 }));
@@ -24,7 +24,7 @@ describe('useAccordionContextValue', () => {
       expect(result.current.openItems.includes(1)).toBeTruthy();
     });
     it('should respect multiple behavior', () => {
-      const { result } = renderHook(() => useAccordionContextValue(useAccordion({ multiple: true }, ref)));
+      const { result } = renderHook(() => createAccordionContextValue(useAccordion({ multiple: true }, ref)));
       expect(result.current.openItems.length).toEqual(1);
       expect(result.current.openItems.includes(0)).toBeTruthy();
       act(() => result.current.requestToggle(undefined!, { index: 1 }));
@@ -33,7 +33,7 @@ describe('useAccordionContextValue', () => {
       expect(result.current.openItems.includes(1)).toBeTruthy();
     });
     it('should respect collapsible behavior', () => {
-      const { result } = renderHook(() => useAccordionContextValue(useAccordion({ collapsible: true }, ref)));
+      const { result } = renderHook(() => createAccordionContextValue(useAccordion({ collapsible: true }, ref)));
       expect(result.current.openItems.length).toEqual(0);
       act(() => result.current.requestToggle(undefined!, { index: 0 }));
       expect(result.current.openItems.length).toEqual(1);
@@ -44,7 +44,7 @@ describe('useAccordionContextValue', () => {
     });
     it('should respect collapsible and multiple behavior', () => {
       const { result } = renderHook(() =>
-        useAccordionContextValue(useAccordion({ multiple: true, collapsible: true }, ref)),
+        createAccordionContextValue(useAccordion({ multiple: true, collapsible: true }, ref)),
       );
       expect(result.current.openItems.length).toEqual(0);
       act(() => result.current.requestToggle(undefined!, { index: 0 }));
