@@ -73,9 +73,9 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     let finalIconContentChildren = iconContentChildren;
 
-    if (mergeImageProps && iconContentChildren && typeof iconContentChildren === 'object' && this.props.title) {
+    if (mergeImageProps && iconContentChildren && typeof iconContentChildren === 'object' && accessibleName) {
       finalIconContentChildren = React.cloneElement(iconContentChildren, {
-        alt: this.props.title,
+        alt: accessibleName,
       });
     }
 
@@ -87,6 +87,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
         {...(mergeImageProps
           ? {
               title: undefined,
+              'aria-label': undefined,
             }
           : {})}
         className={classNames.root}

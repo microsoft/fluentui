@@ -45,6 +45,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconClassName, children, fontFamily, mergeImageProps } = iconContent;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
+  const accessibleName = props['aria-label'] || props.title;
   const containerProps =
     props['aria-label'] || props['aria-labelledby'] || props.title
       ? {
@@ -57,8 +58,8 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   let finalChildren = children;
 
   if (mergeImageProps) {
-    if (typeof children === 'object' && typeof children.props === 'object' && props.title) {
-      finalChildren = React.cloneElement(children, { alt: props.title });
+    if (typeof children === 'object' && typeof children.props === 'object' && accessibleName) {
+      finalChildren = React.cloneElement(children, { alt: accessibleName });
     }
   }
 
@@ -70,6 +71,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
       {...(mergeImageProps
         ? {
             title: undefined,
+            'aria-label': undefined,
           }
         : {})}
       className={css(MS_ICON, classNames.root, iconClassName, !iconName && classNames.placeholder, className)}
