@@ -616,6 +616,9 @@ export class HorizontalScroll extends HorizontalScroll_2 {
     connectedCallback(): void;
 }
 
+// @public
+export const horizontalScrollStyles: (context: import("@microsoft/fast-foundation").ElementDefinitionContext, definition: HorizontalScrollOptions) => import("@microsoft/fast-element").ElementStyles;
+
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
