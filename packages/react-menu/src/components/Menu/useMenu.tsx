@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { usePopperMouseTarget, usePopper } from '@fluentui/react-positioning';
-import {
-  useControllableValue,
-  useControllableState,
-  useId,
-  useOnClickOutside,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -94,7 +88,12 @@ export const useMenu = (props: MenuProps): MenuState => {
 const useMenuSelectableState = (
   state: Pick<MenuState, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+  // const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: state.checkedValues,
+    defaultState: state.defaultCheckedValues,
+    initialState: {},
+  });
   const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
   const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, name, checkedItems) => {
     if (onCheckedValueChangeOriginal) {
