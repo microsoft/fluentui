@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 /**
@@ -7,7 +7,7 @@ import { MenuGroupHeaderState } from './MenuGroupHeader.types';
  * slots to children.
  */
 export const renderMenuGroupHeader = (state: MenuGroupHeaderState) => {
-  const { slots, slotProps } = getSlotsCompat(state);
+  const { slots, slotProps } = getSlots(state);
 
   return <slots.root {...slotProps.root}>{state.children}</slots.root>;
 };

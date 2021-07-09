@@ -49,7 +49,7 @@ jobs:
       - script: |
           yarn danger ci
         displayName: danger
-        condition: variables.isPR
+        condition: eq(variables.isPR, true)
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
