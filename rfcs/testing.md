@@ -46,12 +46,16 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   They are achieved with Jest's `expect(component).toMatchSnapshot()`.
 
-- Unit
+- **Unit**
 
   These are tests that focus on testing the behaviour or functionality. We should use them to guarantee the outcome, wheter this is a styling, behaviour or functionality change.
   We should try to focus on behaviour, when possible, but mainly on the expected results for the code.
 
   These are all the additional unit tests defined in your `*.test.ts[x]` file.
+
+- **Integration**
+
+  Integration tests mirror Unit tests in terms of focus but for cases where you want to test your component/service with other components/services, without mocking those dependencies. Currently we don't differentiate them from Unit tests but a possibility would be to split them into separate files. However, given our tight dependency on other utilities on our components (i.e. `make-styles`) such deliniation might be complicated.
 
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
 
