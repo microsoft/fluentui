@@ -24,6 +24,8 @@ import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { ErrorPanel } from './ErrorPanel';
+import { AccessibilityError } from '../accessibility/types';
+import { useAxeOnElement } from '../hooks/useAxeOnElement';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -101,11 +103,19 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
+  // const accessibilityErrors = useAxeOnElements();
+  const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
+
+  React.useEffect(() => {
+    if (state.selectedJSONTreeElementUuid) {
+      runAxeOnElement(state.selectedJSONTreeElementUuid);
+    }
+  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
+
   const {
     draggingElement,
     jsonTree,
     jsonTreeOrigin,
-    /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
     enabledVirtualCursor,
     showCode,
@@ -121,9 +131,9 @@ export const Designer: React.FunctionComponent = () => {
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
     : null;
 
-  const selectedComponentAccessibilityErrors = selectedJSONTreeElement
+  /* const selectedComponentAccessibilityErrors = selectedJSONTreeElement
     ? accessibilityErrors.filter(error => error.elementUuid === selectedJSONTreeElementUuid)
-    : null;
+    : null; */
 
   const handleReset = React.useCallback(() => {
     /* eslint-disable-next-line no-alert */
@@ -307,13 +317,16 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
-  /* Handlers for showing accessibility errors
-     HandleAccessibilityErros / accessibilityErrors = for use w component view
-     HandleShowAll = for toolbar
-     TODO: Clarify/streamline this? */
-
-  // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  /* End accessibility error handler block */
+  const handleAccessibilityErrorChange = React.useCallback(
+    (jsonTreeElement: JSONTreeElement, elementAccessibilityErrors: AccessibilityError[]) => {
+      dispatch({
+        type: 'ACCESSIBILITY_CHANGE',
+        component: jsonTreeElement,
+        componentAccessibilityErrors: elementAccessibilityErrors,
+      });
+    },
+    [dispatch],
+  );
 
   const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
   const hotkeys = {
@@ -361,7 +374,7 @@ export const Designer: React.FunctionComponent = () => {
     command += e.key;
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
-  console.log(accessibilityErrors);
+  console.log(selectedComponentAccessibilityErrors);
 
   return (
     <div
@@ -503,7 +516,7 @@ export const Designer: React.FunctionComponent = () => {
               <div>
                 {_.isEmpty(accessibilityErrors)
                   ? '\t No accessibility errors automatically detected.'
-                  : accessibilityErrors}
+                  : _.groupBy(accessibilityErrors, error => error.elementUuid)}
               </div>
             )}
             {activeTab === 'nav' && (
@@ -616,7 +629,7 @@ export const Designer: React.FunctionComponent = () => {
                   role="main"
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
-                  accessibilityErrors={accessibilityErrors}
+                  selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -686,8 +699,7 @@ export const Designer: React.FunctionComponent = () => {
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
 
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-
-            {selectedJSONTreeElement && !!!_.isEmpty(selectedComponentAccessibilityErrors) && (
+            {selectedJSONTreeElement && !_.isEmpty(selectedComponentAccessibilityErrors) && (
               <ErrorPanel
                 accessibilityErrors={selectedComponentAccessibilityErrors}
                 elementUuid={selectedJSONTreeElementUuid}
@@ -699,6 +711,8 @@ export const Designer: React.FunctionComponent = () => {
                 onPropDelete={handlePropDelete}
                 info={selectedComponentInfo}
                 jsonTreeElement={selectedJSONTreeElement}
+                elementAccessibilityErrors={selectedComponentAccessibilityErrors}
+                onAccessibilityErrorChange={handleAccessibilityErrorChange}
               />
             )}
           </div>

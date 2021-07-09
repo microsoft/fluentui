@@ -130,7 +130,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         {hasAccessibilityErrors && (
           <span style={{ marginLeft: '.25em ' }}>
             <AccessibilityErrorIcon style={{ width: '.9em', marginTop: '.1em', marginRight: '0.2em' }} />
-            {}
+            {componentAccessibilityErrors.length}
           </span>
         )}
       </div>

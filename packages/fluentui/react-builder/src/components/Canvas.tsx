@@ -35,7 +35,7 @@ export type CanvasProps = {
   role?: string;
   inUseMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
-  accessibilityErrors: AccessibilityError[];
+  selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -59,12 +59,11 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   role,
   inUseMode,
   setHeaderMessage,
-  accessibilityErrors,
+  selectedComponentAccessibilityErrors,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
   const iframeId = React.useMemo(() => `frame-${Math.random().toString(36).slice(2)}`, []);
-  111;
 
   const [virtualCursorElements, setVirtualCursorElements] = React.useState<HTMLElement[]>([]);
   const [vcIndex, setVcIndex] = React.useState(0);
@@ -429,9 +428,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 target={document}
                 selector={`[data-builder-id="${selectedComponent.uuid}"]`}
                 componentName={selectedComponent.displayName}
-                componentAccessibilityErrors={accessibilityErrors.filter(
-                  error => error.elementUuid === selectedComponent.uuid,
-                )}
+                componentAccessibilityErrors={selectedComponentAccessibilityErrors}
                 onClone={handleCloneComponent}
                 onMove={handleMoveComponent}
                 onDelete={onDeleteSelectedComponent}

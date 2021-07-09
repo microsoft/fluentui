@@ -16,7 +16,6 @@ import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderElementToJSX } from '../../../docs-components/src/index';
 import { AccessibilityError } from '../accessibility/types';
-import { runAxeOnElements } from '../accessibility/runAxeOnElement';
 
 export type JSONTreeOrigin = 'store' | 'url';
 
@@ -59,7 +58,8 @@ export type DesignerAction =
   | { type: 'REDO' }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
-  | { type: 'ADD_COMPONENT'; component: string; module: string };
+  | { type: 'ADD_COMPONENT'; component: string; module: string }
+  | { type: 'ACCESSIBILITY_CHANGE'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -159,7 +159,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
-
+        // draftState.accessibilityErrors[action.component.uuid] = runAxeOnElement(action.component.uuid);
         treeChanged = true;
       }
       break;
@@ -279,12 +279,21 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       setTimeout(() => focusTreeTitle(element.uuid));
       break;
     }
+
+    case 'ACCESSIBILITY_CHANGE': {
+      if (draftState.accessibilityErrors) {
+        // if accessibility errors already exist, remove any accessibility errors for the component
+        draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
+          error => error.elementUuid !== action.component.uuid,
+        );
+      }
+      // add the accesibility errors for the component
+      draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
+      break;
+    }
+
     default:
       throw new Error(`Invalid action ${action}`);
-  }
-  if (treeChanged) {
-    draftState.accessibilityErrors = runAxeOnElements();
-    console.log(draftState.accessibilityErrors);
   }
 
   if (treeChanged && draftState.showCode) {

@@ -5,6 +5,7 @@ import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
 import { tabListBehavior } from '@fluentui/accessibility';
+import { AccessibilityError } from '../accessibility/types';
 
 // const designUnit = 4;
 // const sizeRamp = [
@@ -142,6 +143,11 @@ type DesignKnobProps = {
   onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
+  elementAccessibilityErrors: AccessibilityError[];
+  onAccessibilityErrorChange: (
+    jsonTreeElement: JSONTreeElement,
+    elementAccessibilityErrors: AccessibilityError[],
+  ) => void;
 };
 
 const isHandledType = (type: string): boolean => {
@@ -153,7 +159,10 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
   onPropDelete,
   info,
   jsonTreeElement,
+  elementAccessibilityErrors,
+  onAccessibilityErrorChange,
 }) => {
+  console.log(elementAccessibilityErrors);
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
     prop => {
@@ -220,6 +229,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 }}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
+                  onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
                 }}
               />
             );
@@ -242,6 +252,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               value={value}
               onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
+                onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
               }}
             />
           );

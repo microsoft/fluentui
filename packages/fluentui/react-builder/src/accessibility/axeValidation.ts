@@ -31,6 +31,7 @@ export function runAxeOnElement(selectedElementUuid): AccessibilityError[] {
                 severity: node.impact,
               };
               axeErrors.push(axeError);
+              console.log(violation, axeError);
             }
           });
         });
@@ -45,42 +46,40 @@ export function runAxeOnElement(selectedElementUuid): AccessibilityError[] {
 export function runAxeOnElements(): Array<AccessibilityError> {
   const iframe = document.getElementsByTagName('iframe')[0];
   const axeErrors = [];
-  axeCore.run(
-    iframe,
-    {
+  axeCore
+    .run(iframe, {
+      resultTypes: ['violations'],
       rules: {
         // excluding rules which are related to the whole page not to components
         'page-has-heading-one': { enabled: false },
         region: { enabled: false },
         'landmark-one-main': { enabled: false },
       },
-    },
-
-    (err, result) => {
-      if (err) {
-        console.error('AXE check failed', err);
-      } else {
-        result.violations.forEach(violation => {
-          violation.nodes.forEach(node => {
-            // get the element uuid from the data-builder-id attribute with regex matching
-            const matchedId = node.html.match(/data-builder-id=\"(.+?)\"/);
-            if (matchedId) {
-              const violationUuid = matchedId[1];
-              const axeError: AccessibilityError = {
-                elementUuid: violationUuid,
-                source: 'AXE-Core',
-                error: node.failureSummary
-                  .replace('Fix all of the following:', '')
-                  .replace('Fix any of the following:', ''),
-                severity: node.impact,
-              };
-              axeErrors.push(axeError);
-            }
-          });
+    })
+    .then(result => {
+      result.violations.forEach(violation => {
+        violation.nodes.forEach(node => {
+          // get the element uuid from the data-builder-id attribute with regex matching
+          const matchedId = node.html.match(/data-builder-id=\"(.*?)\"/);
+          console.log(matchedId);
+          if (matchedId) {
+            const violationUuid = matchedId[1];
+            const axeError: AccessibilityError = {
+              elementUuid: violationUuid,
+              source: 'AXE-Core',
+              error: node.failureSummary
+                .replace('Fix all of the following:', '')
+                .replace('Fix any of the following:', ''),
+              severity: node.impact,
+            };
+            axeErrors.push(axeError);
+          }
         });
-      }
-    },
-  );
+      });
+    })
+    .catch(err => {
+      console.error('Axe-CORE failed to run.', err.message);
+    });
   console.log(axeErrors);
 
   return axeErrors;

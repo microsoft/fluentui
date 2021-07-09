@@ -2,9 +2,12 @@ import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
 import { Text, Accordion } from '@fluentui/react-northstar';
 import { AccessibilityError } from '../accessibility/types';
+import * as _ from 'lodash';
 
 export const ErrorPanel = (elementUuid, elementAccessibilityErrors: AccessibilityError[]) => {
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
+
+  console.log('access', elementAccessibilityErrors);
   const panels = [
     {
       key: `accessibility-errors-${elementUuid}`,
@@ -17,16 +20,9 @@ export const ErrorPanel = (elementUuid, elementAccessibilityErrors: Accessibilit
           </Text>
         ),
       },
-      content: (
-        <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>
-          {elementAccessibilityErrors.map(error => (
-            <li key="{error}">{error}</li>
-          ))}
-        </ul>
-      ),
+      content: <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>{_.keys(elementAccessibilityErrors)}</ul>,
     },
   ];
-  console.log('access', elementAccessibilityErrors);
 
   return (
     <div
