@@ -1075,7 +1075,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             onKeyUp={[Function]}
                                             onMouseDown={[Function]}
                                             onMouseUp={[Function]}
-                                            title="Close"
                                             type="button"
                                           >
                                             <span

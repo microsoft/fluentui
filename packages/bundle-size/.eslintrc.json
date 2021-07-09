@@ -2,6 +2,6 @@
   "extends": ["plugin:@fluentui/eslint-plugin/node"],
   "root": true,
   "rules": {
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": ["error", { "packageDir": ["../../", "./"] }]
   }
 }
