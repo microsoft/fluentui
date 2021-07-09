@@ -1,38 +1,100 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionSlots, AccordionState } from './Accordion.types';
-import { useCreateAccordionContextValue } from './useAccordionContext';
+import { useControllableValue, useDescendantsInit, useEventCallback } from '@fluentui/react-utilities';
+import {
+  AccordionDescendant,
+  AccordionIndex,
+  AccordionProps,
+  AccordionState,
+  AccordionToggleData,
+  AccordionToggleEvent,
+} from './Accordion.types';
 
-/**
- * Const listing which props are shorthand props.
- */
-export const accordionShorthandProps: Array<keyof AccordionSlots> = [];
+export const useAccordion = (
+  { index, defaultIndex, multiple = false, collapsible = false, onToggle, navigable = false, ...rest }: AccordionProps,
+  ref: React.Ref<HTMLElement>,
+): AccordionState => {
+  const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
+  const normalizedIndex = React.useMemo(() => normalizeIndex(index), [index]);
 
-/**
- * Returns the props and state required to render the component
- * @param props - Accordion properties
- * @param ref - reference to root HTMLElement of Accordion
- * @param defaultProps - default values for the properties of Accordion
- */
-export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
-  const initialState = {
-    ref,
-    collapsible: false,
-    multiple: false,
-    navigable: false,
-    ...props,
-    components: {
-      root: 'div',
-    },
-    button: props.button ? resolveShorthand(props.button) : undefined,
-    expandIcon: props.expandIcon ? resolveShorthand(props.expandIcon) : undefined,
-    icon: props.icon ? resolveShorthand(props.icon) : undefined,
-  } as const;
-  const [context, descendants, setDescendants] = useCreateAccordionContextValue(initialState);
+  // TODO: fix typings in useControllableValue
+  const [openItems, setOpenItems] = useControllableValue<number[], HTMLElement>(normalizedIndex!, () =>
+    initializeUncontrolledOpenItems({ collapsible, defaultIndex, multiple }),
+  );
+
+  const requestToggle = useEventCallback((ev: AccordionToggleEvent, data: AccordionToggleData) => {
+    if (descendants[data.index]?.disabled === true) {
+      return;
+    }
+    onToggle?.(ev, data);
+    setOpenItems(previousOpenItems =>
+      updateOpenItems(data.index, previousOpenItems, {
+        collapsible,
+        multiple,
+      }),
+    );
+  });
+
   return {
-    ...initialState,
-    context,
+    ...rest,
+    ref,
+    multiple,
+    collapsible,
+    navigable,
+    openItems,
+    requestToggle,
     descendants,
     setDescendants,
   };
 };
+
+/**
+ * Initial value for the uncontrolled case of the list of open indexes
+ */
+function initializeUncontrolledOpenItems({
+  defaultIndex,
+  multiple,
+  collapsible,
+}: Pick<AccordionProps, 'defaultIndex' | 'multiple' | 'collapsible'>): number[] {
+  if (defaultIndex !== undefined) {
+    if (Array.isArray(defaultIndex)) {
+      return multiple ? defaultIndex : [defaultIndex[0]];
+    }
+    return [defaultIndex];
+  }
+  return collapsible ? [] : [0];
+}
+
+/**
+ * Updates the list of open indexes based on an index that changes
+ * @param index - the index that will change
+ * @param previousOpenItems - list of current open indexes
+ * @param param2 - {multiple, collapsible}
+ */
+function updateOpenItems(
+  index: number,
+  previousOpenItems: number[],
+  { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
+) {
+  if (multiple) {
+    if (previousOpenItems.includes(index)) {
+      if (previousOpenItems.length > 1 || collapsible) {
+        return previousOpenItems.filter(i => i !== index);
+      }
+    } else {
+      return [...previousOpenItems, index].sort();
+    }
+  } else {
+    return previousOpenItems[0] === index && collapsible ? [] : [index];
+  }
+  return previousOpenItems;
+}
+
+/**
+ * Normalizes Accordion index into an array of indexes
+ */
+function normalizeIndex(index?: AccordionIndex) {
+  if (index === undefined) {
+    return undefined;
+  }
+  return Array.isArray(index) ? index : [index];
+}

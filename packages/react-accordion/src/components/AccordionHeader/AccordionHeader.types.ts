@@ -47,10 +47,12 @@ export interface AccordionHeaderProps
   extends ComponentProps<Partial<AccordionHeaderSlots>>,
     Partial<AccordionHeaderCommons> {}
 
-export interface AccordionHeaderState extends ComponentState<AccordionHeaderSlots>, AccordionHeaderCommons {
+export interface AccordionHeaderState
+  extends ComponentState<AccordionHeaderSlots>,
+    AccordionHeaderCommons,
+    AccordionHeaderContextValue {
   /**
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  context: AccordionHeaderContextValue;
 }

@@ -1,13 +1,25 @@
 import * as React from 'react';
+import { RocketIcon } from './icons.stories';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from './index';
 import { ArgType } from '@storybook/addons';
-import { RocketIcon } from './icons.stories';
+import { AccordionHeaderProps } from './components/AccordionHeader/AccordionHeader.types';
 
-export const AccordionExample = (props: AccordionProps) => {
+interface AccordionExampleProps
+  extends AccordionProps,
+    Pick<AccordionHeaderProps, 'icon' | 'inline' | 'size' | 'expandIconPosition'> {}
+
+export const AccordionExample = ({ icon, inline, size, expandIconPosition, ...props }: AccordionExampleProps) => {
   return (
-    <Accordion {...props} icon={props.icon ? <RocketIcon /> : undefined}>
+    <Accordion {...props}>
       <AccordionItem>
-        <AccordionHeader>Accordion Header 1</AccordionHeader>
+        <AccordionHeader
+          inline={inline}
+          size={size}
+          expandIconPosition={expandIconPosition}
+          icon={icon ? <RocketIcon /> : undefined}
+        >
+          Accordion Header 1
+        </AccordionHeader>
         <AccordionPanel>
           <div>
             <button>Button 1</button>
@@ -16,7 +28,14 @@ export const AccordionExample = (props: AccordionProps) => {
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
-        <AccordionHeader>Accordion Header 2</AccordionHeader>
+        <AccordionHeader
+          inline={inline}
+          size={size}
+          expandIconPosition={expandIconPosition}
+          icon={icon ? <RocketIcon /> : undefined}
+        >
+          Accordion Header 2
+        </AccordionHeader>
         <AccordionPanel>
           <div>
             <button>Button 2</button>
@@ -25,7 +44,14 @@ export const AccordionExample = (props: AccordionProps) => {
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
-        <AccordionHeader>Accordion Header 3</AccordionHeader>
+        <AccordionHeader
+          inline={inline}
+          size={size}
+          expandIconPosition={expandIconPosition}
+          icon={icon ? <RocketIcon /> : undefined}
+        >
+          Accordion Header 3
+        </AccordionHeader>
         <AccordionPanel>
           <div>
             <button>Button 3</button>
@@ -68,6 +94,15 @@ AccordionExample.argTypes = {
       options: ['small', 'medium', 'large', 'extra-large'],
     },
   },
+  as: {
+    control: false,
+  },
+  index: {
+    control: false,
+  },
+  defaultIndex: {
+    control: false,
+  },
   expandIconPosition: {
     defaultValue: 'start',
     control: {
@@ -75,7 +110,7 @@ AccordionExample.argTypes = {
       options: ['start', 'end'],
     },
   },
-} as { [K in keyof AccordionProps]: ArgType };
+} as { [K in keyof (AccordionProps | AccordionHeaderProps)]: ArgType };
 
 export default {
   title: 'Components/Accordion',

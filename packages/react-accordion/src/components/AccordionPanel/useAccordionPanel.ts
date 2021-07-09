@@ -25,12 +25,12 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
   const header = useDescendants(accordionItemDescendantContext)[0] as AccordionItemDescendant | undefined;
   const innerRef = React.useRef<HTMLElement>(null);
   const state: AccordionPanelState = {
-    ref: useMergedRefs(ref, innerRef),
-    id,
     open,
     role: 'region',
     'aria-labelledby': header?.id,
     ...props,
+    ref: useMergedRefs(ref, innerRef),
+    id,
   };
   useAccordionItemDescendant(
     {
