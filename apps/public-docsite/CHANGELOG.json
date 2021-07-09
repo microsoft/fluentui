@@ -2,6 +2,35 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.40",
+      "version": "8.2.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/api-docs to v8.1.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Jul 2021 07:32:49 GMT",
       "tag": "@fluentui/public-docsite_v8.2.39",
       "version": "8.2.39",
