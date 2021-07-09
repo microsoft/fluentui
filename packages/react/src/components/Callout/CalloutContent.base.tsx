@@ -162,6 +162,8 @@ function usePositions(
 ) {
   const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
   const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
+  // const prevDimensions = React.useRef<DOMRect | undefined>(undefined);
+  const async = useAsync();
 
   /**
    * Sets the current position of Callout upon resize. Callout will resize when:
@@ -171,65 +173,87 @@ function usePositions(
    *
    * @param newElementPositions The incoming position for the Callout
    */
-  const setCalloutPositions = React.useCallback(
-    (newElementPositions: ICalloutPositionedInfo) => {
-      if (elementPositions) {
-        console.log('randfsaasfdfdsa ' + !arePositionsEqual(elementPositions, newElementPositions));
-      }
+  // const setCalloutPositions = React.useCallback(
+  //   (newElementPositions: ICalloutPositionedInfo) => {
+  //     if (
+  //       (elementPositions === undefined && newElementPositions) ||
+  //       (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+  //     ) {
+  //       if (elementPositions !== undefined) {
+  //         onPositioned?.(elementPositions);
+  //       }
 
-      if (
-        (!elementPositions && newElementPositions) ||
-        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-      ) {
-        if (elementPositions !== undefined) {
-          onPositioned?.(elementPositions);
-        }
-        console.log('State was updated');
+  //       setElementPositions(newElementPositions);
 
-        setElementPositions(newElementPositions);
-      }
+  //       console.log(
+  //         (!elementPositions && newElementPositions) +
+  //           ' ' +
+  //           (prevDimensions?.current?.width !== calloutElement?.current?.getBoundingClientRect().width) +
+  //           ' ' +
+  //           (prevDimensions?.current?.height !== calloutElement?.current?.getBoundingClientRect().height) +
+  //           ' ' +
+  //           (prevDimensions?.current?.top !== calloutElement?.current?.getBoundingClientRect().top) +
+  //           ' ' +
+  //           (prevDimensions?.current?.bottom !== calloutElement?.current?.getBoundingClientRect().bottom) +
+  //           ' ' +
+  //           (prevDimensions?.current?.left !== calloutElement?.current?.getBoundingClientRect().left) +
+  //           ' ' +
+  //           (prevDimensions?.current?.right !== calloutElement?.current?.getBoundingClientRect().right) +
+  //           ' ' +
+  //           (prevDimensions?.current?.x !== calloutElement?.current?.getBoundingClientRect().x) +
+  //           ' ' +
+  //           (prevDimensions?.current?.y !== calloutElement?.current?.getBoundingClientRect().y) +
+  //           ' ' +
+  //           (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions)) +
+  //           ' ' +
+  //           !arePositionsEqual(elementPositions ? elementPositions : newElementPositions, newElementPositions) +
+  //           ' ' +
+  //           elementPositions +
+  //           newElementPositions,
+  //       );
+  //     }
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when receiving a newElementPosition
-    },
-    [elementPositions, onPositioned],
-  );
+  //     prevDimensions.current = calloutElement?.current?.getBoundingClientRect();
+  //   },
+  //   [calloutElement, elementPositions, onPositioned],
+  // );
 
   React.useEffect(() => {
-    console.log('THIS RAN 1');
     if (!hidden) {
-      // If we expect a target element to position against, `targetRef.current` should be defined.
-      // Once provided we can try to position the element.
-      const expectsTarget = !!target;
+      const timerId = async.requestAnimationFrame(() => {
+        // If we expect a target element to position against, `targetRef.current` should be defined.
+        // Once provided we can try to position the element.
+        const expectsTarget = !!target;
 
-      if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-        console.log('THIS RAN 2');
+        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+          const currentPositionProps: IPositionProps = {
+            ...props,
+            target: targetRef.current!,
+            bounds: getBounds(),
+          };
 
-        const currentPositionProps: IPositionProps = {
-          ...props,
-          target: targetRef.current!,
-          bounds: getBounds(),
-        };
+          // If there is a finalHeight given then we assume that the user knows and will handle
+          // additional positioning adjustments so we should call positionCard
+          const newElementPositions: ICalloutPositionedInfo = finalHeight
+            ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
+            : positionCallout(currentPositionProps, hostElement.current, calloutElement.current, elementPositions);
 
-        // If there is a finalHeight given then we assume that the user knows and will handle
-        // additional positioning adjustments so we should call positionCard
-        const newElementPositions: ICalloutPositionedInfo = finalHeight
-          ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
-          : positionCallout(currentPositionProps, hostElement.current, calloutElement.current, elementPositions);
+          observeResize(calloutElement.current, () => {
+            if (
+              (elementPositions === undefined && newElementPositions) ||
+              (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+            ) {
+              if (elementPositions !== undefined) {
+                onPositioned?.(elementPositions);
+              }
 
-        observeResize(hostElement.current, () => {
-          if (
-            (!elementPositions && newElementPositions) ||
-            (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-          ) {
-            if (elementPositions !== undefined) {
-              onPositioned?.(elementPositions);
+              setElementPositions(newElementPositions);
             }
-            console.log('State was updated');
+          });
+        }
+      }, calloutElement.current);
 
-            setElementPositions(newElementPositions);
-          }
-        });
-      }
+      return () => async.cancelAnimationFrame(timerId);
     }
   }, [
     hidden,
@@ -242,7 +266,7 @@ function usePositions(
     onPositioned,
     target,
     elementPositions,
-    // setCalloutPositions,
+    async,
     props,
   ]);
 
@@ -615,7 +639,7 @@ function arePositionsEqual(
   newElementPosition: ICalloutPositionedInfo,
 ): boolean {
   return (
-    comparePositions(prevElementPositions, newElementPosition) &&
+    comparePositions(prevElementPositions.elementPosition, newElementPosition.elementPosition) &&
     comparePositions(prevElementPositions.beakPosition.elementPosition, newElementPosition.beakPosition.elementPosition)
   );
 }
@@ -631,7 +655,6 @@ function comparePositions(prevElementPositions: IPosition, newElementPositions: 
     if (newElementPositions.hasOwnProperty(key)) {
       const oldPositionEdge = prevElementPositions[key];
       const newPositionEdge = newElementPositions[key];
-
       if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
         if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
           return false;
@@ -641,7 +664,6 @@ function comparePositions(prevElementPositions: IPosition, newElementPositions: 
       }
     }
   }
-  console.log('They are equal');
   return true;
 }
 
