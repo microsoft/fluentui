@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -20,11 +20,22 @@ export { Text_2 as Text }
 export type TextDefaultedProps = never;
 
 // @public
-export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface TextProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+    align?: 'start' | 'center' | 'end' | 'justify';
+    as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
+    block?: boolean;
+    font?: 'base' | 'monospace' | 'numeric';
+    italic?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    strikethrough?: boolean;
+    truncate?: boolean;
+    underline?: boolean;
+    weight?: 'regular' | 'medium' | 'semibold';
+    wrap?: boolean;
 }
 
 // @public
-export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
+export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

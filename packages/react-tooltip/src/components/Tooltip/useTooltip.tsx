@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
-import { useTheme } from '@fluentui/react-theme-provider';
+import { TooltipContext, useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import {
   makeMergeProps,
   onlyChild,

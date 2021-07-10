@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Link}
  */
-export type LinkProps = ComponentProps &
+export type LinkProps = ComponentPropsCompat &
   React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
   Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
     /**

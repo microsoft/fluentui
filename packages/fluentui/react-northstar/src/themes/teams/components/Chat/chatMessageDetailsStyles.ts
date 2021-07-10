@@ -1,31 +1,25 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { ChatMessageDetailsVariables } from './chatMessageDetailsVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+
 import { ChatMessageDetailsStylesProps } from '../../../../components/Chat/ChatMessageDetails';
+import { ChatMessageDetailsVariables } from './chatMessageDetailsVariables';
 
 export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
   ChatMessageDetailsStylesProps,
   ChatMessageDetailsVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    marginLeft: v.detailsMargin,
-    fontSize: v.detailsFontSize,
+    color: v.detailsColor,
     display: 'inline-block',
-    color: p.compact ? v.detailsColorCompact : v.detailsColor,
-    ...(p.compact
-      ? {
-          alignSelf: 'flex-start',
-          flexShrink: 0,
-        }
-      : {
-          ':hover': {
-            color: v.detailsHoverColor,
-          },
-          ...(p.mine && {
-            color: v.detailsColorMine,
-            ':hover': {
-              color: v.detailsHoverColorMine,
-            },
-          }),
-        }),
+    fontSize: v.detailsFontSize,
+    ...(p.density === 'comfy' && {
+      ...((p.attached === 'top' || !p.attached) && {
+        marginLeft: v.detailsMargin,
+      }),
+    }),
+    ...(p.density === 'compact' && {
+      alignSelf: 'flex-start',
+      flexShrink: 0,
+      marginLeft: v.detailsMargin,
+    }),
   }),
 };

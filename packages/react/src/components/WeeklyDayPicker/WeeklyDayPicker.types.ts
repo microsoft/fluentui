@@ -80,7 +80,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   today?: Date;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: IDateFormatting;
 

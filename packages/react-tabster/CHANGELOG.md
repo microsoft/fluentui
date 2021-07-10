@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.40)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.39..@fluentui/react-tabster_v9.0.0-alpha.40)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.47 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.39)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.38..@fluentui/react-tabster_v9.0.0-alpha.39)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.46 ([PR #18721](https://github.com/microsoft/fluentui/pull/18721) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.38)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.37..@fluentui/react-tabster_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.45 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.37)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.36..@fluentui/react-tabster_v9.0.0-alpha.37)
+
+### Changes
+
+- Fixing bug in start script of converged packages. ([PR #18768](https://github.com/microsoft/fluentui/pull/18768) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.36)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.35..@fluentui/react-tabster_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.44 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.35)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.34..@fluentui/react-tabster_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump tabster version ([PR #18698](https://github.com/microsoft/fluentui/pull/18698) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.34)
 

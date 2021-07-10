@@ -3,6 +3,19 @@ import { AccordionHeaderState } from './AccordionHeader.types';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 
 const useStyles = makeStyles({
+  // TODO: this should be extracted to another package
+  resetButton: {
+    boxSizing: 'content-box',
+    background: 'none',
+    color: 'inherit',
+    font: 'inherit',
+    lineHeight: 'normal',
+    overflow: 'visible',
+    padding: '0',
+    WebkitAppearance: 'button',
+    userSelect: 'none',
+    textAlign: 'unset',
+  },
   focusIndicator: createFocusIndicatorStyleRule(theme => ({
     border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
     borderRadius: '2px',
@@ -20,6 +33,7 @@ const useStyles = makeStyles({
     display: 'inline-block',
   },
   button: {
+    width: 'calc(100% - 22px)',
     border: '1px solid transparent',
     paddingRight: '10px',
     paddingLeft: '10px',
@@ -77,11 +91,12 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   state.className = mergeClasses(
     styles.root,
     state.inline && styles.rootInline,
-    state.context.disabled && styles.rootDisabled,
+    state.disabled && styles.rootDisabled,
     state.className,
   );
 
   state.button.className = mergeClasses(
+    styles.resetButton,
     styles.button,
     styles.focusIndicator,
     state.inline && styles.buttonInline,
