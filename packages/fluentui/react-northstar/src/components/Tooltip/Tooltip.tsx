@@ -84,8 +84,6 @@ export interface TooltipProps
   trigger?: JSX.Element;
 }
 
-export const tooltipClassName = 'ui-tooltip';
-
 /**
  * A Tooltip displays additional non-modal information on top of its target element.
  * Tooltip doesn't receive focus and cannot contain focusable elements.

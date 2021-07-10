@@ -14,6 +14,7 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useFrameFocus,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -127,6 +128,8 @@ export interface PopupProps
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
+export const tooltipClassName = 'ui-tooltip';
+
 export const popupClassName = 'ui-popup';
 
 /**
@@ -181,6 +184,13 @@ export const Popup: React.FC<PopupProps> &
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
   const triggerFocusableRef = React.useRef<HTMLElement>();
   const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
+
+  useFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
