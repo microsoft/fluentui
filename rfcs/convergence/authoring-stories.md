@@ -261,17 +261,112 @@ export const parameters = { controls: { expanded: true } };
 
 ### 5. how to author e2e suites for those stories
 
-TBA
+> This section assumes that the storybook stories forms the core documentation of Fluent converged.
+> This may change in the future so the measures proposed in this section might no longer be relevant
+> if this assumption is no longer true.
 
-### 6. how to properly annotate stories with TS metadata to get the best DX possible
+`react-menu` already has entire test suites dedicated to testing against storybook. Since each PR build will
+deploy a storybook, the cypress testing solution for converged components will test against the PR storybook. This
+includes the constraint that until a component is added to `react-components` it cannot be tested in CI.
 
-TBA
+The e2e testing solution for `react-menu` can be used for any converged component using storybook, and is also used by
+`react-accordion` and `react-popover`. The purposes of E2E tests currently is to run internaction tests against the browser.
+Visual regression tests are handled by screener in `app-vrtests` and is out of the scope of this RFC.
+
+We propose to write an NX workspace generator to setup the e2e testing folder structure and dependencies for each package. The process is quite simple currently but still needs to be done manually.
+
+How to write E2E tests is out of the scope of the RFC. Testing is encouraged to use publicly viewable stories as much as possible. However there will be edge cases and scenarios that will be tested which require stories that are accessible to the E2E test runner but not viewable by public consumers. We provide a proposal to handle this in a later section in this RFC.
+
+### 6. dissecting big story files into smaller ones
+
+For easier maintainability, each story should be in its own file. Common utilities can be shared in their own modules.
+We need to make sure that no code used in stories accidentally leak into the exported package. To make this more explicit
+in the repo, all colocated stories and related code should be stored under a `/stories` folder in the package. Below is
+an example of the proposed file tree:
+
+```
+packages/react-menu/
+├─ stories/
+│  ├─ Menu/
+│    ├─ Default.stories.tsx
+│    ├─ Controlled.stories.tsx
+│  ├─ MenuList/
+│    ├─ Default.stories.tsx
+│    ├─ WithIcons.stories.tsx
+│  ├─ tmp-icons.tsx
+├─ src/
+│  ├─ index.js
+├─ .gitignore
+├─ package.json
+├─ README.md
+├─ Spec.md
+```
+
+The name of each `stories` file should be the name of the story in storybook, for easy searching in the IDE. Since we follow
+`Component Story Format (CSF)` a different folder should be used for each component in storybook.
+
+We should invest in creating lint rules and automation that will enforce this file structure and guarantee imports
+from storybook related code do not leak into the package.
 
 ### 7. how structure stories in the storybook nav tree
 
-TBA
+> This section assumes that the storybook stories forms the core documentation of Fluent converged.
+> This may change in the future so the measures proposed in this section might no longer be relevant
+> if this assumption is no longer true.
 
-### 8. dissecting big story files into smaller ones
+Previous proposals regarding controls state that each component will contain one Default/Playground story which should
+be the first story that is displayed when the component is selected in storybook. By default storybook's CSF will display
+the first story loaded by import when a component is selected.
+
+Following the proposal by the previous section to extract each story into its own file, the order that storybook loads
+stories is no longer deterministic. Therefore, we need to modify the root storybook configuration to use a custom
+sorting algorithm so that a story called `Default` will always be sorted to be the first story under a component.
+
+The `Default` story will be reserved and unique for each component. Each package can choose to document stories for each
+component that is exported, as stated in the previous section.
+
+#### Internal stories
+
+As mentioned in for E2E testing, we should ensure maximum coverage for all publicly viewable stories by our consumers.
+For more complex scenarios that need to be tested we should make sure that stories exist for E2E tests but should not be
+easily accessible publicly.
+
+Storybook has proposed a feature for this in [storybookjs/storybook](https://github.com/storybookjs/storybook/issues/9209)
+which will configure stories to exist in deeplink URL format, but do not appear in the nav tree. As stated in the issue,
+we can workaround before the release of this feature by modifying `manager-head.html` and set `display:none`for all
+stories with a specific DOM `id` attribute. Storybook uses the `id` attribute for each link in the nav tree, and sets
+the value to the story id.
+
+We propose to use an extra filename extension and naming convention for internal stories:
+
+```ts
+// MenuTabstops.internal.stories.tsx
+
+export const MenuTabstopsInternal = () => {
+  // story
+};
+```
+
+The filename extension `.internal.` is used for IDE searchability and codebase readability.
+
+The naming convention of the story simply adds the `Internal` keyword to the Pascal case story name. This will match the
+filename. More importantly the generated id will contain `menu-tabstops-internal`.
+
+We can simply use a css wildcard query selector:
+
+```css
+[id*='internal'] {
+  display: none;
+}
+```
+
+This means that `Internal` will be a reserved keyword in our stories which will determine visibility. This does not cause
+any conflicts with current stories, since this word is never used in any story name.
+
+This solution will only need to be applied `react-components` storybook since that is the storybook currently targeted for
+public use. Individual component storybooks are only used for local development, so there is no need to hide internal stories from their nav trees.
+
+### 8. how to properly annotate stories with TS metadata to get the best DX possible
 
 TBA
 
