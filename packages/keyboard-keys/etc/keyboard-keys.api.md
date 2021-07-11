@@ -4,6 +4,868 @@
 
 ```ts
 
+// @public (undocumented)
+export const Accept = "Accept";
+
+// @public (undocumented)
+export const Again = "Again";
+
+// @public (undocumented)
+export const AllCandidates = "AllCandidates";
+
+// @public (undocumented)
+export const Alphanumeric = "Alphanumeric";
+
+// @public (undocumented)
+export const Alt = "Alt";
+
+// @public (undocumented)
+export const AltGraph = "AltGraph";
+
+// @public (undocumented)
+export const AppSwitch = "AppSwitch";
+
+// @public (undocumented)
+export const ArrowDown = "ArrowDown";
+
+// @public (undocumented)
+export const ArrowLeft = "ArrowLeft";
+
+// @public (undocumented)
+export const ArrowRight = "ArrowRight";
+
+// @public (undocumented)
+export const ArrowUp = "ArrowUp";
+
+// @public (undocumented)
+export const Attn = "Attn";
+
+// @public (undocumented)
+export const AudioBalanceLeft = "AudioBalanceLeft";
+
+// @public (undocumented)
+export const AudioBalanceRight = "AudioBalanceRight";
+
+// @public (undocumented)
+export const AudioBassBoostDown = "AudioBassBoostDown";
+
+// @public (undocumented)
+export const AudioBassBoostToggle = "AudioBassBoostToggle";
+
+// @public (undocumented)
+export const AudioBassBoostUp = "AudioBassBoostUp";
+
+// @public (undocumented)
+export const AudioFaderFront = "AudioFaderFront";
+
+// @public (undocumented)
+export const AudioFaderRear = "AudioFaderRear";
+
+// @public (undocumented)
+export const AudioSurroundModeNext = "AudioSurroundModeNext";
+
+// @public (undocumented)
+export const AudioTrebleDown = "AudioTrebleDown";
+
+// @public (undocumented)
+export const AudioTrebleUp = "AudioTrebleUp";
+
+// @public (undocumented)
+export const AudioVolumeDown = "AudioVolumeDown";
+
+// @public (undocumented)
+export const AudioVolumeMute = "AudioVolumeMute";
+
+// @public (undocumented)
+export const AudioVolumeUp = "AudioVolumeUp";
+
+// @public (undocumented)
+export const AVRInput = "AVRInput";
+
+// @public (undocumented)
+export const AVRPower = "AVRPower";
+
+// @public (undocumented)
+export const Backspace = "Backspace";
+
+// @public (undocumented)
+export const BrightnessDown = "BrightnessDown";
+
+// @public (undocumented)
+export const BrightnessUp = "BrightnessUp";
+
+// @public (undocumented)
+export const BrowserBack = "BrowserBack";
+
+// @public (undocumented)
+export const BrowserFavorites = "BrowserFavorites";
+
+// @public (undocumented)
+export const BrowserForward = "BrowserForward";
+
+// @public (undocumented)
+export const BrowserHome = "BrowserHome";
+
+// @public (undocumented)
+export const BrowserRefresh = "BrowserRefresh";
+
+// @public (undocumented)
+export const BrowserSearch = "BrowserSearch";
+
+// @public (undocumented)
+export const BrowserStop = "BrowserStop";
+
+// @public (undocumented)
+export const Call = "Call";
+
+// @public (undocumented)
+export const Camera = "Camera";
+
+// @public (undocumented)
+export const CameraFocus = "CameraFocus";
+
+// @public (undocumented)
+export const Cancel = "Cancel";
+
+// @public (undocumented)
+export const CapsLock = "CapsLock";
+
+// @public (undocumented)
+export const ChannelDown = "ChannelDown";
+
+// @public (undocumented)
+export const ChannelUp = "ChannelUp";
+
+// @public (undocumented)
+export const Clear = "Clear";
+
+// @public (undocumented)
+export const Close = "Close";
+
+// @public (undocumented)
+export const ClosedCaptionToggle = "ClosedCaptionToggle";
+
+// @public (undocumented)
+export const CodeInput = "CodeInput";
+
+// @public (undocumented)
+export const ColorF0Red = "ColorF0Red";
+
+// @public (undocumented)
+export const ColorF1Green = "ColorF1Green";
+
+// @public (undocumented)
+export const ColorF2Yellow = "ColorF2Yellow";
+
+// @public (undocumented)
+export const ColorF3Blue = "ColorF3Blue";
+
+// @public (undocumented)
+export const ColorF4Grey = "ColorF4Grey";
+
+// @public (undocumented)
+export const ColorF5Brown = "ColorF5Brown";
+
+// @public (undocumented)
+export const Compose = "Compose";
+
+// @public (undocumented)
+export const ContextMenu = "ContextMenu";
+
+// @public (undocumented)
+export const Control = "Control";
+
+// @public (undocumented)
+export const Convert = "Convert";
+
+// @public (undocumented)
+export const Copy = "Copy";
+
+// @public (undocumented)
+export const CrSel = "CrSel";
+
+// @public (undocumented)
+export const Cut = "Cut";
+
+// @public (undocumented)
+export const Dead = "Dead";
+
+// @public (undocumented)
+export const Delete = "Delete";
+
+// @public (undocumented)
+export const Dimmer = "Dimmer";
+
+// @public (undocumented)
+export const DisplaySwap = "DisplaySwap";
+
+// @public (undocumented)
+export const DVR = "DVR";
+
+// @public (undocumented)
+export const Eisu = "Eisu";
+
+// @public (undocumented)
+export const Eject = "Eject";
+
+// @public (undocumented)
+export const End = "End";
+
+// @public (undocumented)
+export const EndCall = "EndCall";
+
+// @public (undocumented)
+export const Enter = "Enter";
+
+// @public (undocumented)
+export const EraseEof = "EraseEof";
+
+// @public (undocumented)
+export const Escape = "Escape";
+
+// @public (undocumented)
+export const Execute = "Execute";
+
+// @public (undocumented)
+export const Exit = "Exit";
+
+// @public (undocumented)
+export const ExSel = "ExSel";
+
+// @public (undocumented)
+export const F1 = "F1";
+
+// @public (undocumented)
+export const F10 = "F10";
+
+// @public (undocumented)
+export const F11 = "F11";
+
+// @public (undocumented)
+export const F12 = "F12";
+
+// @public (undocumented)
+export const F2 = "F2";
+
+// @public (undocumented)
+export const F3 = "F3";
+
+// @public (undocumented)
+export const F4 = "F4";
+
+// @public (undocumented)
+export const F5 = "F5";
+
+// @public (undocumented)
+export const F6 = "F6";
+
+// @public (undocumented)
+export const F7 = "F7";
+
+// @public (undocumented)
+export const F8 = "F8";
+
+// @public (undocumented)
+export const F9 = "F9";
+
+// @public (undocumented)
+export const FavoriteClear0 = "FavoriteClear0";
+
+// @public (undocumented)
+export const FavoriteClear1 = "FavoriteClear1";
+
+// @public (undocumented)
+export const FavoriteClear2 = "FavoriteClear2";
+
+// @public (undocumented)
+export const FavoriteClear3 = "FavoriteClear3";
+
+// @public (undocumented)
+export const FavoriteRecall0 = "FavoriteRecall0";
+
+// @public (undocumented)
+export const FavoriteRecall1 = "FavoriteRecall1";
+
+// @public (undocumented)
+export const FavoriteRecall2 = "FavoriteRecall2";
+
+// @public (undocumented)
+export const FavoriteRecall3 = "FavoriteRecall3";
+
+// @public (undocumented)
+export const FavoriteStore0 = "FavoriteStore0";
+
+// @public (undocumented)
+export const FavoriteStore1 = "FavoriteStore1";
+
+// @public (undocumented)
+export const FavoriteStore2 = "FavoriteStore2";
+
+// @public (undocumented)
+export const FavoriteStore3 = "FavoriteStore3";
+
+// @public (undocumented)
+export const FinalMode = "FinalMode";
+
+// @public (undocumented)
+export const Find = "Find";
+
+// @public (undocumented)
+export const Fn = "Fn";
+
+// @public (undocumented)
+export const FnLock = "FnLock";
+
+// @public (undocumented)
+export const GoBack = "GoBack";
+
+// @public (undocumented)
+export const GoHome = "GoHome";
+
+// @public (undocumented)
+export const GroupFirst = "GroupFirst";
+
+// @public (undocumented)
+export const GroupLast = "GroupLast";
+
+// @public (undocumented)
+export const GroupNext = "GroupNext";
+
+// @public (undocumented)
+export const GroupPrevious = "GroupPrevious";
+
+// @public (undocumented)
+export const Guide = "Guide";
+
+// @public (undocumented)
+export const GuideNextDay = "GuideNextDay";
+
+// @public (undocumented)
+export const GuidePreviousDay = "GuidePreviousDay";
+
+// @public (undocumented)
+export const HangulMode = "HangulMode";
+
+// @public (undocumented)
+export const HanjaMode = "HanjaMode";
+
+// @public (undocumented)
+export const Hankaku = "Hankaku";
+
+// @public (undocumented)
+export const HeadsetHook = "HeadsetHook";
+
+// @public (undocumented)
+export const Help = "Help";
+
+// @public (undocumented)
+export const Hibernate = "Hibernate";
+
+// @public (undocumented)
+export const Hiragana = "Hiragana";
+
+// @public (undocumented)
+export const HiraganaKatakana = "HiraganaKatakana";
+
+// @public (undocumented)
+export const Home = "Home";
+
+// @public (undocumented)
+export const Hyper = "Hyper";
+
+// @public (undocumented)
+export const Info = "Info";
+
+// @public (undocumented)
+export const Insert = "Insert";
+
+// @public (undocumented)
+export const InstantReplay = "InstantReplay";
+
+// @public (undocumented)
+export const JunjaMode = "JunjaMode";
+
+// @public (undocumented)
+export const KanaMode = "KanaMode";
+
+// @public (undocumented)
+export const KanjiMode = "KanjiMode";
+
+// @public (undocumented)
+export const Katakana = "Katakana";
+
+// @public (undocumented)
+export const Key11 = "Key11";
+
+// @public (undocumented)
+export const Key12 = "Key12";
+
+// @public (undocumented)
+export const LastNumberRedial = "LastNumberRedial";
+
+// @public (undocumented)
+export const LaunchApplication1 = "LaunchApplication1";
+
+// @public (undocumented)
+export const LaunchApplication2 = "LaunchApplication2";
+
+// @public (undocumented)
+export const LaunchCalendar = "LaunchCalendar";
+
+// @public (undocumented)
+export const LaunchContacts = "LaunchContacts";
+
+// @public (undocumented)
+export const LaunchMail = "LaunchMail";
+
+// @public (undocumented)
+export const LaunchMediaPlayer = "LaunchMediaPlayer";
+
+// @public (undocumented)
+export const LaunchMusicPlayer = "LaunchMusicPlayer";
+
+// @public (undocumented)
+export const LaunchPhone = "LaunchPhone";
+
+// @public (undocumented)
+export const LaunchScreenSaver = "LaunchScreenSaver";
+
+// @public (undocumented)
+export const LaunchSpreadsheet = "LaunchSpreadsheet";
+
+// @public (undocumented)
+export const LaunchWebBrowser = "LaunchWebBrowser";
+
+// @public (undocumented)
+export const LaunchWebCam = "LaunchWebCam";
+
+// @public (undocumented)
+export const LaunchWordProcessor = "LaunchWordProcessor";
+
+// @public (undocumented)
+export const Link = "Link";
+
+// @public (undocumented)
+export const ListProgram = "ListProgram";
+
+// @public (undocumented)
+export const LiveContent = "LiveContent";
+
+// @public (undocumented)
+export const Lock = "Lock";
+
+// @public (undocumented)
+export const LogOff = "LogOff";
+
+// @public (undocumented)
+export const MailForward = "MailForward";
+
+// @public (undocumented)
+export const MailReply = "MailReply";
+
+// @public (undocumented)
+export const MailSend = "MailSend";
+
+// @public (undocumented)
+export const MannerMode = "MannerMode";
+
+// @public (undocumented)
+export const MediaApps = "MediaApps";
+
+// @public (undocumented)
+export const MediaAudioTrack = "MediaAudioTrack";
+
+// @public (undocumented)
+export const MediaClose = "MediaClose";
+
+// @public (undocumented)
+export const MediaFastForward = "MediaFastForward";
+
+// @public (undocumented)
+export const MediaLast = "MediaLast";
+
+// @public (undocumented)
+export const MediaNextTrack = "MediaNextTrack";
+
+// @public (undocumented)
+export const MediaPause = "MediaPause";
+
+// @public (undocumented)
+export const MediaPlay = "MediaPlay";
+
+// @public (undocumented)
+export const MediaPlayPause = "MediaPlayPause";
+
+// @public (undocumented)
+export const MediaPreviousTrack = "MediaPreviousTrack";
+
+// @public (undocumented)
+export const MediaRecord = "MediaRecord";
+
+// @public (undocumented)
+export const MediaRewind = "MediaRewind";
+
+// @public (undocumented)
+export const MediaSkipBackward = "MediaSkipBackward";
+
+// @public (undocumented)
+export const MediaSkipForward = "MediaSkipForward";
+
+// @public (undocumented)
+export const MediaStepBackward = "MediaStepBackward";
+
+// @public (undocumented)
+export const MediaStepForward = "MediaStepForward";
+
+// @public (undocumented)
+export const MediaStop = "MediaStop";
+
+// @public (undocumented)
+export const MediaTopMenu = "MediaTopMenu";
+
+// @public (undocumented)
+export const MediaTrackNext = "MediaTrackNext";
+
+// @public (undocumented)
+export const MediaTrackPrevious = "MediaTrackPrevious";
+
+// @public (undocumented)
+export const Meta = "Meta";
+
+// @public (undocumented)
+export const MicrophoneToggle = "MicrophoneToggle";
+
+// @public (undocumented)
+export const MicrophoneVolumeDown = "MicrophoneVolumeDown";
+
+// @public (undocumented)
+export const MicrophoneVolumeMute = "MicrophoneVolumeMute";
+
+// @public (undocumented)
+export const MicrophoneVolumeUp = "MicrophoneVolumeUp";
+
+// @public (undocumented)
+export const ModeChange = "ModeChange";
+
+// @public (undocumented)
+export const NavigateIn = "NavigateIn";
+
+// @public (undocumented)
+export const NavigateNext = "NavigateNext";
+
+// @public (undocumented)
+export const NavigateOut = "NavigateOut";
+
+// @public (undocumented)
+export const NavigatePrevious = "NavigatePrevious";
+
+// @public (undocumented)
+export const New = "New";
+
+// @public (undocumented)
+export const NextCandidate = "NextCandidate";
+
+// @public (undocumented)
+export const NextFavoriteChannel = "NextFavoriteChannel";
+
+// @public (undocumented)
+export const NextUserProfile = "NextUserProfile";
+
+// @public (undocumented)
+export const NonConvert = "NonConvert";
+
+// @public (undocumented)
+const Notification_2 = "Notification";
+
+export { Notification_2 as Notification }
+
+// @public (undocumented)
+export const NumLock = "NumLock";
+
+// @public (undocumented)
+export const OnDemand = "OnDemand";
+
+// @public (undocumented)
+export const Open = "Open";
+
+// @public (undocumented)
+export const PageDown = "PageDown";
+
+// @public (undocumented)
+export const PageUp = "PageUp";
+
+// @public (undocumented)
+export const Pairing = "Pairing";
+
+// @public (undocumented)
+export const Paste = "Paste";
+
+// @public (undocumented)
+export const Pause = "Pause";
+
+// @public (undocumented)
+export const PinPDown = "PinPDown";
+
+// @public (undocumented)
+export const PinPMove = "PinPMove";
+
+// @public (undocumented)
+export const PinPToggle = "PinPToggle";
+
+// @public (undocumented)
+export const PinPUp = "PinPUp";
+
+// @public (undocumented)
+export const Play = "Play";
+
+// @public (undocumented)
+export const PlaySpeedDown = "PlaySpeedDown";
+
+// @public (undocumented)
+export const PlaySpeedReset = "PlaySpeedReset";
+
+// @public (undocumented)
+export const PlaySpeedUp = "PlaySpeedUp";
+
+// @public (undocumented)
+export const Power = "Power";
+
+// @public (undocumented)
+export const PowerOff = "PowerOff";
+
+// @public (undocumented)
+export const PreviousCandidate = "PreviousCandidate";
+
+// @public (undocumented)
+export const Print = "Print";
+
+// @public (undocumented)
+export const PrintScreen = "PrintScreen";
+
+// @public (undocumented)
+export const Process = "Process";
+
+// @public (undocumented)
+export const Props = "Props";
+
+// @public (undocumented)
+export const RandomToggle = "RandomToggle";
+
+// @public (undocumented)
+export const RcLowBattery = "RcLowBattery";
+
+// @public (undocumented)
+export const RecordSpeedNext = "RecordSpeedNext";
+
+// @public (undocumented)
+export const Redo = "Redo";
+
+// @public (undocumented)
+export const RfBypass = "RfBypass";
+
+// @public (undocumented)
+export const Romaji = "Romaji";
+
+// @public (undocumented)
+export const Save = "Save";
+
+// @public (undocumented)
+export const ScanChannelsToggle = "ScanChannelsToggle";
+
+// @public (undocumented)
+export const ScreenModeNext = "ScreenModeNext";
+
+// @public (undocumented)
+export const ScrollLock = "ScrollLock";
+
+// @public (undocumented)
+export const Select = "Select";
+
+// @public (undocumented)
+export const Settings = "Settings";
+
+// @public (undocumented)
+export const Shift = "Shift";
+
+// @public (undocumented)
+export const SingleCandidate = "SingleCandidate";
+
+// @public (undocumented)
+export const Soft1 = "Soft1";
+
+// @public (undocumented)
+export const Soft2 = "Soft2";
+
+// @public (undocumented)
+export const Soft3 = "Soft3";
+
+// @public (undocumented)
+export const Soft4 = "Soft4";
+
+// @public (undocumented)
+export const SpeechCorrectionList = "SpeechCorrectionList";
+
+// @public (undocumented)
+export const SpeechInputToggle = "SpeechInputToggle";
+
+// @public (undocumented)
+export const SpellCheck = "SpellCheck";
+
+// @public (undocumented)
+export const SplitScreenToggle = "SplitScreenToggle";
+
+// @public (undocumented)
+export const Standby = "Standby";
+
+// @public (undocumented)
+export const STBInput = "STBInput";
+
+// @public (undocumented)
+export const STBPower = "STBPower";
+
+// @public (undocumented)
+export const Subtitle = "Subtitle";
+
+// @public (undocumented)
+export const Super = "Super";
+
+// @public (undocumented)
+const Symbol_2 = "Symbol";
+
+export { Symbol_2 as Symbol }
+
+// @public (undocumented)
+export const SymbolLock = "SymbolLock";
+
+// @public (undocumented)
+export const Tab = "Tab";
+
+// @public (undocumented)
+export const Teletext = "Teletext";
+
+// @public (undocumented)
+export const TV = "TV";
+
+// @public (undocumented)
+export const TV3DMode = "TV3DMode";
+
+// @public (undocumented)
+export const TVAntennaCable = "TVAntennaCable";
+
+// @public (undocumented)
+export const TVAudioDescription = "TVAudioDescription";
+
+// @public (undocumented)
+export const TVAudioDescriptionMixDown = "TVAudioDescriptionMixDown";
+
+// @public (undocumented)
+export const TVAudioDescriptionMixUp = "TVAudioDescriptionMixUp";
+
+// @public (undocumented)
+export const TVContentsMenu = "TVContentsMenu";
+
+// @public (undocumented)
+export const TVDataService = "TVDataService";
+
+// @public (undocumented)
+export const TVInput = "TVInput";
+
+// @public (undocumented)
+export const TVInputComponent1 = "TVInputComponent1";
+
+// @public (undocumented)
+export const TVInputComponent2 = "TVInputComponent2";
+
+// @public (undocumented)
+export const TVInputComposite1 = "TVInputComposite1";
+
+// @public (undocumented)
+export const TVInputComposite2 = "TVInputComposite2";
+
+// @public (undocumented)
+export const TVInputHDMI1 = "TVInputHDMI1";
+
+// @public (undocumented)
+export const TVInputHDMI2 = "TVInputHDMI2";
+
+// @public (undocumented)
+export const TVInputHDMI3 = "TVInputHDMI3";
+
+// @public (undocumented)
+export const TVInputHDMI4 = "TVInputHDMI4";
+
+// @public (undocumented)
+export const TVInputVGA1 = "TVInputVGA1";
+
+// @public (undocumented)
+export const TVMediaContext = "TVMediaContext";
+
+// @public (undocumented)
+export const TVNetwork = "TVNetwork";
+
+// @public (undocumented)
+export const TVNumberEntry = "TVNumberEntry";
+
+// @public (undocumented)
+export const TVPower = "TVPower";
+
+// @public (undocumented)
+export const TVRadioService = "TVRadioService";
+
+// @public (undocumented)
+export const TVSatellite = "TVSatellite";
+
+// @public (undocumented)
+export const TVSatelliteBS = "TVSatelliteBS";
+
+// @public (undocumented)
+export const TVSatelliteCS = "TVSatelliteCS";
+
+// @public (undocumented)
+export const TVSatelliteToggle = "TVSatelliteToggle";
+
+// @public (undocumented)
+export const TVTerrestrialAnalog = "TVTerrestrialAnalog";
+
+// @public (undocumented)
+export const TVTerrestrialDigital = "TVTerrestrialDigital";
+
+// @public (undocumented)
+export const TVTimer = "TVTimer";
+
+// @public (undocumented)
+export const Undo = "Undo";
+
+// @public (undocumented)
+export const Unidentified = "Unidentified";
+
+// @public (undocumented)
+export const VideoModeNext = "VideoModeNext";
+
+// @public (undocumented)
+export const VoiceDial = "VoiceDial";
+
+// @public (undocumented)
+export const WakeUp = "WakeUp";
+
+// @public (undocumented)
+export const Wink = "Wink";
+
+// @public (undocumented)
+export const Zenkaku = "Zenkaku";
+
+// @public (undocumented)
+export const ZenkakuHankaku = "ZenkakuHankaku";
+
+// @public (undocumented)
+export const ZoomIn = "ZoomIn";
+
+// @public (undocumented)
+export const ZoomOut = "ZoomOut";
+
+// @public (undocumented)
+export const ZoomToggle = "ZoomToggle";
+
 
 // (No @packageDocumentation comment for this package)
 
