@@ -5,7 +5,7 @@ export const FUI_FRAME_EVENT = 'fuiframefocus';
 export const useFrameFocusDispatch = (
   enableFrameFocusDispatch: boolean,
   $document: Document,
-  intervalMS: number = 1000,
+  pollDuration: number = 1000,
 ) => {
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
 
@@ -17,10 +17,10 @@ export const useFrameFocusDispatch = (
           const event = new CustomEvent(FUI_FRAME_EVENT, { bubbles: true });
           activeElement.dispatchEvent(event);
         }
-      }, intervalMS);
+      }, pollDuration);
     }
     return () => {
       clearTimeout(timeoutRef.current as ReturnType<typeof setTimeout>);
     };
-  }, [$document.activeElement, enableFrameFocusDispatch, intervalMS]);
+  }, [$document.activeElement, enableFrameFocusDispatch, pollDuration]);
 };
