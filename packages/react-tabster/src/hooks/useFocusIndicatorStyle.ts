@@ -6,20 +6,21 @@ const defaultStyleRule = (theme: Theme) => ({
   outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
 });
 
+export interface CreateFocusIndicatorStyleRuleOptions {
+  selector?: 'focus' | 'focus-within';
+}
+
+const defaultOptions: CreateFocusIndicatorStyleRuleOptions = {
+  selector: 'focus',
+};
+
 export const createFocusIndicatorStyleRule = (
   rule: MakeStylesStyleRule<Theme> = defaultStyleRule,
+  options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
 ): MakeStylesStyleRule<Theme> => theme => ({
   ':focus-visible': {
     outline: 'none',
   },
-  [`${KEYBOARD_NAV_SELECTOR} :focus`]: typeof rule === 'function' ? rule(theme) : rule,
-});
-
-export const createFocusWithinIndicatorStyleRule = (
-  rule: MakeStylesStyleRule<Theme> = defaultStyleRule,
-): MakeStylesStyleRule<Theme> => theme => ({
-  ':focus-visible': {
-    outline: 'none',
-  },
-  [`${KEYBOARD_NAV_SELECTOR} :focus-within`]: typeof rule === 'function' ? rule(theme) : rule,
+  [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]:
+    typeof rule === 'function' ? rule(theme) : rule,
 });

@@ -10,10 +10,13 @@ import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public (undocumented)
-export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>) => MakeStylesStyleRule<Theme>;
+export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
 
 // @public (undocumented)
-export const createFocusWithinIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>) => MakeStylesStyleRule<Theme>;
+export interface CreateFocusIndicatorStyleRuleOptions {
+    // (undocumented)
+    selector?: 'focus' | 'focus-within';
+}
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
