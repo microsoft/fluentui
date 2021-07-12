@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Forces children prop with Fragment in useAccordionHeader",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
