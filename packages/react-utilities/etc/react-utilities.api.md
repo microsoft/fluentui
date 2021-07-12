@@ -310,7 +310,7 @@ export const useControllableState: <ControllableState, State extends NonUndefine
 
 // Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
 //
-// @public @deprecated
+// @public
 export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>) => void]>;
 
 // @public (undocumented)
