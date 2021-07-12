@@ -5,6 +5,7 @@ import {
   HighContrastSelector,
   IStyle,
   normalize,
+  getFocusStyle,
   getPlaceholderStyles,
   IconFontSizes,
   getHighContrastNoAdjustStyle,
@@ -420,6 +421,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       classNames.revealButton,
       'ms-Button',
       'ms-Button--icon',
+      getFocusStyle(theme),
       {
         height: 30,
         width: 32,
