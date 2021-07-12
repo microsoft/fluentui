@@ -230,6 +230,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 value={value}
                 onRemoveProp={() => {
                   onPropDelete({ jsonTreeElement, name: prop.name });
+                  onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
                 }}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
@@ -247,6 +248,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
             <MultiTypeKnob
               onRemoveProp={() => {
                 onPropDelete({ jsonTreeElement, name: prop.name });
+                onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
               }}
               required={prop.required}
               key={prop.name}

@@ -104,6 +104,12 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
         false,
       );
+      /* if (draftState.accessibilityErrors) {
+        // if accessibility errors already exist, copy over any accessibility errors for the component
+         const elementAccessibilityErrors = draftState.accessibilityErrors.filter(
+          error => error.elementUuid === draftState.selectedJSONTreeElementUuid,
+        ).map(newErrors => newErrors.elementUuid = draftState.draggingElement.uuid);
+      } */
       break;
 
     case 'DRAG_MOVE':
@@ -146,6 +152,12 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         draftState.selectedJSONTreeElementUuid = null;
         draftState.selectedComponentInfo = null;
         treeChanged = true;
+        if (draftState.accessibilityErrors) {
+          // if accessibility errors already exist, remove any accessibility errors for the component
+          draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
+            error => error.elementUuid !== draftState.selectedJSONTreeElementUuid,
+          );
+        }
       }
       break;
 
@@ -194,6 +206,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
+      draftState.accessibilityErrors = [];
       treeChanged = true;
       break;
 

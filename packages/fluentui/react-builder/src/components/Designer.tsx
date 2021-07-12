@@ -305,6 +305,8 @@ export const Designer: React.FunctionComponent = () => {
   const handleAddComponent = React.useCallback(
     (component: string, module: string) => {
       dispatch({ type: 'ADD_COMPONENT', component, module });
+
+      console.log(component);
     },
     [dispatch],
   );
@@ -373,9 +375,6 @@ export const Designer: React.FunctionComponent = () => {
     command += e.key;
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
-
-  // group the accesssibility errors (if they exist)
-  const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
 
   return (
     <div
@@ -517,7 +516,9 @@ export const Designer: React.FunctionComponent = () => {
               <div>
                 {_.isEmpty(accessibilityErrors)
                   ? '\t No accessibility errors automatically detected.'
-                  : Object.keys(groupedAccessibilityErrors).map(severityLevel => (
+                  : // group the accesssibility errors (if they exist)
+                    // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
+                    Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
                       <div
                         style={{
                           margin: '1em',
@@ -526,12 +527,10 @@ export const Designer: React.FunctionComponent = () => {
                         }}
                       >
                         <Header as="h3">{severityLevel}</Header>
-                        {groupedAccessibilityErrors[severityLevel].map(error => (
+                        {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
                           <div
                             style={{
-                              display: 'flex',
-                              minWidth: '1em',
-                              maxWidth: '2em',
+                              minWidth: '2em',
                             }}
                           >
                             <ul>
