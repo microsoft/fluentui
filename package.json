@@ -266,6 +266,7 @@
         ],
         "dependencies": [
           "@babel/core",
+          "@babel/preset-typescript",
           "@typescript-eslint/eslint-plugin",
           "@typescript-eslint/experimental-utils",
           "@typescript-eslint/parser",
