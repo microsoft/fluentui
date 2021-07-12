@@ -321,10 +321,15 @@ export const AvatarPlayground = () => {
   const propSelectors = [
     useValueSelector('size', useValueSelectorState(examples.size, 96), true),
     useValueSelector('square', useValueSelectorState([true, false])),
-    useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
+    useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString as () => string),
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
-    useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
-    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
+    useValueSelector(
+      'image',
+      [nameAndImage.image, nextNameAndImage, prevNameAndImage],
+      true,
+      getFilenameFromUrl as () => string,
+    ),
+    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString as () => string),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
