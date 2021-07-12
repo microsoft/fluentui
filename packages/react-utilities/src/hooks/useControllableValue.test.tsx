@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { renderHook } from '@testing-library/react-hooks';
 import { useControllableValue } from './useControllableValue';
 
