@@ -14,7 +14,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = 'label' | 'indicator' | 'size' | 'labelPosition' | 'checked' | 'input';
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition' | 'checked';
 
 // @public
 export interface CheckboxOnChangeData {
@@ -29,10 +29,8 @@ export interface CheckboxProps extends Omit<ComponentPropsCompat, 'children'>, O
     defaultChecked?: 'mixed' | boolean;
     disabled?: boolean;
     id?: string;
-    // (undocumented)
     indicator?: ShorthandProps<ComponentPropsCompat>;
-    // (undocumented)
-    input?: ShorthandProps<Partial<HTMLInputElement>>;
+    input?: ShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement>>;
     label?: ShorthandProps<LabelProps>;
     labelPosition?: 'start' | 'end';
     onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
