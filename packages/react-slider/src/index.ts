@@ -1,1 +1,2 @@
-export * from './Slider';
+// TODO: replace with real exports
+export {};
