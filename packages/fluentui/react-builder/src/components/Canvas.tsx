@@ -35,7 +35,8 @@ export type CanvasProps = {
   role?: string;
   inUseMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
-  selectedComponentAccessibilityErrors: AccessibilityError[];
+  selectedComponentAccessibilityErrors?: AccessibilityError[];
+  onAccessibilityErrors?: (jsonTreeElement: JSONTreeElement, elementAccessibilityErrors: AccessibilityError[]) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -60,6 +61,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   inUseMode,
   setHeaderMessage,
   selectedComponentAccessibilityErrors,
+  onAccessibilityErrors,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -173,6 +175,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       setBodyFocused(false);
     }
   };
+  // const accessibilityErrors = useAxeOnElements();
+  // const [accessibilityErrors, runAxeOnAllElements] = useAxeOnAllElements();
 
   const debugSize = '8px';
 
@@ -274,8 +278,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       const elements = iframe.contentDocument.querySelectorAll(
         '[data-builder-id]:not([data-builder-id="builder-root"])',
       );
-
-      // console.log('Canvas:effect elements', elements);
 
       const elementStyles = !isExpanding
         ? ''

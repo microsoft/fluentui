@@ -191,9 +191,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
 
   return (
     <div>
-      {!_.isEmpty(elementAccessibilityErrors) && (
-        <ErrorPanel accessibilityErrors={elementAccessibilityErrors} elementUuid={jsonTreeElement.uuid} />
-      )}
+      {!_.isEmpty(elementAccessibilityErrors) && <ErrorPanel elementAccessibilityErrors={elementAccessibilityErrors} />}
       <Menu
         accessibility={tabListBehavior}
         defaultActiveIndex={0}

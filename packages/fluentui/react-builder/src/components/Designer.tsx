@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -129,10 +129,6 @@ export const Designer: React.FunctionComponent = () => {
   const selectedComponentInfo = selectedJSONTreeElement
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
     : null;
-
-  /* const selectedComponentAccessibilityErrors = selectedJSONTreeElement
-    ? accessibilityErrors.filter(error => error.elementUuid === selectedJSONTreeElementUuid)
-    : null; */
 
   const handleReset = React.useCallback(() => {
     /* eslint-disable-next-line no-alert */
@@ -376,6 +372,18 @@ export const Designer: React.FunctionComponent = () => {
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
 
+  const accessErrorLabelStyle = {
+    position: 'relative',
+    right: '5px',
+    top: '-5px',
+    transform: 'rotate(0deg);',
+    border: 'solid 2px white',
+    height: '18px',
+    width: '18px',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
   return (
     <div
       style={{
@@ -472,7 +480,22 @@ export const Designer: React.FunctionComponent = () => {
             <NavBarItem
               title="Accessibility"
               isSelected={activeTab === 'accessibility'}
-              icon={<ExclamationCircleIcon size="large" outline />}
+              icon={
+                accessibilityErrors.length !== 0 ? (
+                  <>
+                    {' '}
+                    <ExclamationCircleIcon size="large" outline />
+                    <Label
+                      design={accessErrorLabelStyle}
+                      color={'red'}
+                      content={<Text size="smaller">{accessibilityErrors.length}</Text>}
+                      circular
+                    />{' '}
+                  </>
+                ) : (
+                  <ExclamationCircleIcon size="large" outline />
+                )
+              }
               onClickHandler={() => selectActiveTab('accessibility')}
             />
 
@@ -536,7 +559,12 @@ export const Designer: React.FunctionComponent = () => {
                   // group the accesssibility errors (if they exist)
                   // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
                   Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
-                    <div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
                       <Header as="h3">{severityLevel}</Header>
                       {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
                         <div
@@ -667,6 +695,7 @@ export const Designer: React.FunctionComponent = () => {
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
                   selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+                  onAccessibilityErrors={handleAccessibilityErrorChange}
                 />
               </ErrorBoundary>
             </BrowserWindow>
