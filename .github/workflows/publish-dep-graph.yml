@@ -11,13 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: Check out main branch
+      - name: Check out PR branch
         uses: actions/checkout@v2
-      # - name: Check out PR branch
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: 'master'
-      #     fetch-depth: 0
+        with:
+          fetch-depth: 0
 
       - name: Use Node (v14.16.0)
         uses: actions/setup-node@v1
