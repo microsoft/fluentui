@@ -98,6 +98,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     const { props: p, variables: v } = componentStyleFunctionParam;
     return {
       color: v.timestampColor,
+      display: 'inline-block',
       ...getChatMessageDensityStyles(p.density).timestamp?.(componentStyleFunctionParam),
     };
   },
