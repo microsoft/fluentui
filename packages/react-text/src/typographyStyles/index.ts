@@ -1,1 +1,2 @@
-export * as typographyStyles from './typographyStyles';
+import * as typographyStyles from './typographyStyles';
+export { typographyStyles };
