@@ -191,9 +191,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
 
   return (
     <div>
-      {!_.isEmpty(elementAccessibilityErrors) && (
-        <ErrorPanel accessibilityErrors={elementAccessibilityErrors} elementUuid={jsonTreeElement.uuid} />
-      )}
+      {!_.isEmpty(elementAccessibilityErrors) && <ErrorPanel elementAccessibilityErrors={elementAccessibilityErrors} />}
       <Menu
         accessibility={tabListBehavior}
         defaultActiveIndex={0}
@@ -230,6 +228,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 value={value}
                 onRemoveProp={() => {
                   onPropDelete({ jsonTreeElement, name: prop.name });
+                  onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
                 }}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
@@ -247,6 +246,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
             <MultiTypeKnob
               onRemoveProp={() => {
                 onPropDelete({ jsonTreeElement, name: prop.name });
+                onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
               }}
               required={prop.required}
               key={prop.name}

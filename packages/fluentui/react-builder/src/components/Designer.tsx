@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -131,10 +131,6 @@ export const Designer: React.FunctionComponent = () => {
   const selectedComponentInfo = selectedJSONTreeElement
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
     : null;
-
-  /* const selectedComponentAccessibilityErrors = selectedJSONTreeElement
-    ? accessibilityErrors.filter(error => error.elementUuid === selectedJSONTreeElementUuid)
-    : null; */
 
   const handleReset = React.useCallback(() => {
     /* eslint-disable-next-line no-alert */
@@ -307,6 +303,8 @@ export const Designer: React.FunctionComponent = () => {
   const handleAddComponent = React.useCallback(
     (component: string, module: string) => {
       dispatch({ type: 'ADD_COMPONENT', component, module });
+
+      console.log(component);
     },
     [dispatch],
   );
@@ -376,8 +374,17 @@ export const Designer: React.FunctionComponent = () => {
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
 
-  // group the accesssibility errors (if they exist)
-  const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
+  const accessErrorLabelStyle = {
+    position: 'relative',
+    right: '5px',
+    top: '-5px',
+    transform: 'rotate(0deg);',
+    border: 'solid 2px white',
+    height: '18px',
+    width: '18px',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
   return (
     <div
@@ -475,7 +482,22 @@ export const Designer: React.FunctionComponent = () => {
             <NavBarItem
               title="Accessibility"
               isSelected={activeTab === 'accessibility'}
-              icon={<ExclamationCircleIcon size="large" outline />}
+              icon={
+                accessibilityErrors.length !== 0 ? (
+                  <>
+                    {' '}
+                    <ExclamationCircleIcon size="large" outline />
+                    <Label
+                      design={accessErrorLabelStyle}
+                      color={'red'}
+                      content={<Text size="smaller">{accessibilityErrors.length}</Text>}
+                      circular
+                    />{' '}
+                  </>
+                ) : (
+                  <ExclamationCircleIcon size="large" outline />
+                )
+              }
               onClickHandler={() => selectActiveTab('accessibility')}
             />
 
@@ -516,35 +538,52 @@ export const Designer: React.FunctionComponent = () => {
               </div>
             )}
             {activeTab === 'accessibility' && (
-              <div>
-                {_.isEmpty(accessibilityErrors)
-                  ? '\t No accessibility errors automatically detected.'
-                  : Object.keys(groupedAccessibilityErrors).map(severityLevel => (
-                      <div
-                        style={{
-                          margin: '1em',
-                          display: 'flex',
-                          flexDirection: 'column',
-                        }}
-                      >
-                        <Header as="h3">{severityLevel}</Header>
-                        {groupedAccessibilityErrors[severityLevel].map(error => (
-                          <div
-                            style={{
-                              display: 'flex',
-                              minWidth: '1em',
-                              maxWidth: '2em',
-                            }}
-                          >
-                            <ul>
-                              <li>{error.elementUuid}</li>
-                              <li>{error.error}</li>
-                              <li>Source: {error.source}</li>
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '0 2em 0 2em',
+                  maxWidth: '5em',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <Text size={'small'}>
+                  To learn more about best practices for accessibility, visit
+                  <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
+                    {' https://www.microsoft.com/en-us/accessibility/'}
+                  </a>
+                  <br />
+                  <br />
+                </Text>
+                {_.isEmpty(accessibilityErrors) ? (
+                  <Text weight={'bold'}>No accessibility errors automatically detected.</Text>
+                ) : (
+                  // group the accesssibility errors (if they exist)
+                  // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
+                  Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      <Header as="h3">{severityLevel}</Header>
+                      {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
+                        <div
+                          style={{
+                            minWidth: '2em',
+                          }}
+                        >
+                          <ul>
+                            <li>{error.elementUuid}</li>
+                            <li>{error.error}</li>
+                            <li>Source: {error.source}</li>
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                )}
               </div>
             )}
             {activeTab === 'nav' && (
@@ -658,6 +697,7 @@ export const Designer: React.FunctionComponent = () => {
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
                   selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+                  onAccessibilityErrors={handleAccessibilityErrorChange}
                 />
               </ErrorBoundary>
             </BrowserWindow>

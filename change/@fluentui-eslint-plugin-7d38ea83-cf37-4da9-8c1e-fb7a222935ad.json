@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate packages(mostly eslint related)  to single version policy",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

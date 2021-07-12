@@ -25,12 +25,8 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn build --no-cache $(sinceArg)
-        displayName: build packages
-
-      - script: |
-          yarn lage bundle-size --no-cache
-        displayName: create reports for packages
+          yarn lage bundle-size --no-cache --verbose $(sinceArg)
+        displayName: build packages & create reports
 
       - script: |
           yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)

@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
-import { Text, Accordion } from '@fluentui/react-northstar';
+import { Text, Accordion, List } from '@fluentui/react-northstar';
 import { AccessibilityError } from '../accessibility/types';
-import * as _ from 'lodash';
 
-export const ErrorPanel = (elementUuid, elementAccessibilityErrors: AccessibilityError[]) => {
+export type ErrorPanelProps = {
+  elementAccessibilityErrors: AccessibilityError[];
+};
+
+export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAccessibilityErrors }) => {
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
+  const uuid = elementAccessibilityErrors[0].elementUuid;
 
-  console.log('access', elementAccessibilityErrors);
   const panels = [
     {
-      key: `accessibility-errors-${elementUuid}`,
+      key: `accessibility-errors-${uuid}`,
       title: {
         'aria-level': 4,
         content: (
@@ -20,7 +23,7 @@ export const ErrorPanel = (elementUuid, elementAccessibilityErrors: Accessibilit
           </Text>
         ),
       },
-      content: <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>{_.keys(elementAccessibilityErrors)}</ul>,
+      content: <List style={{ marginBottom: '1rem' }} items={elementAccessibilityErrors.map(error => error.error)} />,
     },
   ];
 
