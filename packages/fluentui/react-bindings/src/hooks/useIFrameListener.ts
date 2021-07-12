@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { FUI_FRAME_EVENT } from './useFrameFocusDispatch';
+import { FUI_FRAME_EVENT } from './useIFrameFocusDispatch';
 
-export const useFrameListener = (
+export const useIFrameListener = (
   enableFrameFocusDispatch: boolean,
   callback: (e: Event) => void,
-  $document: Document,
+  targetDocument: Document,
 ) => {
   const listener = React.useCallback(
     (e: Event) => {
@@ -17,10 +17,10 @@ export const useFrameListener = (
 
   React.useEffect(() => {
     if (enableFrameFocusDispatch) {
-      $document?.addEventListener(FUI_FRAME_EVENT, listener);
+      targetDocument?.addEventListener(FUI_FRAME_EVENT, listener);
     }
     return () => {
-      $document?.removeEventListener(FUI_FRAME_EVENT, listener);
+      targetDocument?.removeEventListener(FUI_FRAME_EVENT, listener);
     };
-  }, [$document, enableFrameFocusDispatch, listener]);
+  }, [targetDocument, enableFrameFocusDispatch, listener]);
 };

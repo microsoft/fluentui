@@ -14,7 +14,7 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
-  useOnFrameFocus,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -183,7 +183,7 @@ export const Popup: React.FC<PopupProps> &
   const triggerFocusableRef = React.useRef<HTMLElement>();
   const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
 
-  useOnFrameFocus(open, context.target, (e: Event) => {
+  useOnIFrameFocus(open, context.target, (e: Event) => {
     setOpen(__ => {
       _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
       return false;
