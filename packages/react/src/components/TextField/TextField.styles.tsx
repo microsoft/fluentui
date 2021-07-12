@@ -1,11 +1,11 @@
 import {
   AnimationClassNames,
+  getFocusStyle,
   getGlobalClassNames,
   getInputFocusStyle,
   HighContrastSelector,
   IStyle,
   normalize,
-  getFocusStyle,
   getPlaceholderStyles,
   IconFontSizes,
   getHighContrastNoAdjustStyle,
