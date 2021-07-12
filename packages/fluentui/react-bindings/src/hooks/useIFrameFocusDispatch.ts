@@ -2,6 +2,9 @@ import * as React from 'react';
 
 export const FUI_FRAME_EVENT = 'fuiframefocus';
 
+/**
+ * Watch the `document.activeElement` and dispatch a custom event if the current active element is a iframe.
+ */
 export const useIFrameFocusDispatch = (
   enableFrameFocusDispatch: boolean,
   targetDocument: Document,
