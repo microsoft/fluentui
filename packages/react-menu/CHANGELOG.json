@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore(Menu): remove makeMergeProps and getSlotsCompat",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5f61787263000f237fbb4b9168ca2a3bc385764c",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.46",
       "version": "9.0.0-alpha.46",

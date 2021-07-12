@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/api-docs_v8.1.34",
+      "version": "8.1.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.3",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "394b16b92fae7773125c32edc1df56c7758cba4e",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/api-docs_v8.1.34",
       "version": "8.1.34",
