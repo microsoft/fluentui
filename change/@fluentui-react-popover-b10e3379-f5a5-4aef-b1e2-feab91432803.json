@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Enable e2e tests in CI",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

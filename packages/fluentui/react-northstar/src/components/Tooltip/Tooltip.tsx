@@ -237,7 +237,7 @@ export const Tooltip: React.FC<TooltipProps> &
         <Ref innerRef={triggerRef}>
           {React.cloneElement(
             triggerElement,
-            getA11Props('trigger', { ...triggerElement.props, ...triggerProps, ...unhandledProps }),
+            getA11Props('trigger', { ...unhandledProps, ...triggerElement.props, ...triggerProps }),
           )}
         </Ref>
       )}
