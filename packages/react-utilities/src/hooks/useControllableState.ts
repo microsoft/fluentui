@@ -3,7 +3,7 @@ import { useConst } from './useConst';
 
 type NonUndefined<T> = T extends undefined ? never : T;
 
-type useControllableStateOptions<ControllableState, State> = {
+type UseControllableStateOptions<ControllableState, State> = {
   /**
    * User provided default state or factory initializer
    */
@@ -31,8 +31,11 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
  * Useful for components which allow uncontrolled and controlled behaviours for users
  * @returns - https://reactjs.org/docs/hooks-state.html
  */
-export const useControllableState = <ControllableState, State extends NonUndefined<ControllableState>>(
-  options: useControllableStateOptions<ControllableState, State>,
+export const useControllableState = <
+  ControllableState,
+  State extends NonUndefined<ControllableState> = NonUndefined<ControllableState>
+>(
+  options: UseControllableStateOptions<ControllableState, State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
   const isControlled = useIsControlled(options.state);
   const initialState = isUndefined(options.defaultState) ? options.initialState : options.defaultState;
