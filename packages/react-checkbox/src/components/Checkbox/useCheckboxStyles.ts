@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 
   input: {
-    opacity: 0,
+    // opacity: 0,
     margin: 0,
     padding: 0,
     // cursor: 'pointer',
@@ -201,7 +201,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
 
   state.className = mergeClasses(styles.root, state.className);
 
-  state.input.className = mergeClasses(styles.input, styles[state.size]);
+  state.input.className = mergeClasses(styles.input, styles[state.size], state.input.className);
 
   const boxStyles = useBoxStyles();
 

@@ -13,9 +13,15 @@ export interface CheckboxProps
    */
   label?: ShorthandProps<LabelProps>;
 
+  /**
+   * Indicator to be rendered as the checkbox icon.
+   */
   indicator?: ShorthandProps<ComponentPropsCompat>;
 
-  input?: ShorthandProps<Partial<HTMLInputElement>>;
+  /**
+   * Hidden input that handles the checkbox's functionality.
+   */
+  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement>>;
 
   /**
    * Disabled state of the checkbox.

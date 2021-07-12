@@ -64,9 +64,10 @@ export const useCheckbox = (
         children: isChecked === 'mixed' ? <DefaultMixedIcon /> : <CheckMarkIcon />,
       },
       input: {
+        as: 'input',
         // ref: inputRef, // React.LegacyRef<HTMLInputElement> | undefined
         type: 'checkbox',
-        onchange: onChange,
+        onChange: onChange,
         // disabled: !!props.disabled,
         // required: !!props.required,
         // 'aria-label': props['aria-label'], // todo
