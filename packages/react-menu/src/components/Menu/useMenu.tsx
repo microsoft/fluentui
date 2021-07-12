@@ -88,7 +88,6 @@ export const useMenu = (props: MenuProps): MenuState => {
 const useMenuSelectableState = (
   state: Pick<MenuState, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
-  // const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
   const [checkedValues, setCheckedValues] = useControllableState({
     state: state.checkedValues,
     defaultState: state.defaultCheckedValues,
@@ -122,7 +121,6 @@ const useMenuOpenState = (
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
-  // const [openState, setOpenState] = useControllableValue(state.open, state.defaultOpen);
   const [open, setOpenState] = useControllableState({
     state: state.open,
     defaultState: state.defaultOpen,
