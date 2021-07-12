@@ -1,7 +1,7 @@
 const yargs = require('yargs');
 
 const cliSetup = yargs
-  .commandDir('commands', { exclude: /.test.js$/ })
+  .commandDir('commands', { exclude: /.test\.js$/ })
   .option('quiet', {
     alias: 'q',
     type: 'boolean',
