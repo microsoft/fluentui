@@ -17,10 +17,10 @@ export const useFrameListener = (
 
   React.useEffect(() => {
     if (enableFrameFocusDispatch) {
-      $document.addEventListener(FUI_FRAME_EVENT, listener);
+      $document?.addEventListener(FUI_FRAME_EVENT, listener);
     }
     return () => {
-      $document.removeEventListener(FUI_FRAME_EVENT, listener);
+      $document?.removeEventListener(FUI_FRAME_EVENT, listener);
     };
   }, [$document, enableFrameFocusDispatch, listener]);
 };
