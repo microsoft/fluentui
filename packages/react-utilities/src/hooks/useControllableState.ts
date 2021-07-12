@@ -5,7 +5,7 @@ type NonUndefined<T> = T extends undefined ? never : T;
 
 type UseAutoControlledOptions<ControllableState, State> = {
   /**
-   * User provided default state
+   * User provided default state or factory initializer
    */
   defaultState?: State | (() => State);
   /**
@@ -13,12 +13,12 @@ type UseAutoControlledOptions<ControllableState, State> = {
    */
   state: ControllableState;
   /**
-   * Used to initialize state if all user proided states are undefined
+   * Used to initialize state if all user provided states are undefined
    */
   initialState: State;
 };
 
-function isUndefined(state: unknown) {
+function isUndefined(state: unknown): state is undefined {
   return typeof state === 'undefined';
 }
 
@@ -35,8 +35,8 @@ export const useControllableState = <ControllableState, State extends NonUndefin
   options: UseAutoControlledOptions<ControllableState, State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
   const isControlled = useIsControlled(options.state);
-  const initialState = isUndefined(options.defaultState) ? options.initialState : (options.defaultState as State);
-  const [internalState, setStateState] = React.useState<State>(initialState);
+  const initialState = isUndefined(options.defaultState) ? options.initialState : options.defaultState;
+  const [internalState, setInternalState] = React.useState<State>(initialState);
 
   const state = isControlled ? (options.state as NonUndefined<State>) : internalState;
 
@@ -54,7 +54,7 @@ export const useControllableState = <ControllableState, State extends NonUndefin
       stateRef.current = newState;
     }
 
-    setStateState(stateRef.current);
+    setInternalState(stateRef.current);
   }, []);
 
   return [state, setState];
