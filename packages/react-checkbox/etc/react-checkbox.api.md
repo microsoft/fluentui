@@ -23,14 +23,14 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export interface CheckboxProps extends Omit<ComponentProps, 'children'>, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
+export interface CheckboxProps extends Omit<ComponentPropsCompat, 'children'>, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
     checked?: 'mixed' | boolean;
     circular?: boolean;
     defaultChecked?: 'mixed' | boolean;
     disabled?: boolean;
     id?: string;
     // (undocumented)
-    indicator?: ShorthandProps<ComponentProps>;
+    indicator?: ShorthandProps<ComponentPropsCompat>;
     // (undocumented)
     input?: ShorthandProps<Partial<HTMLInputElement>>;
     label?: ShorthandProps<LabelProps>;

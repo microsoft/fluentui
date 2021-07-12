@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-checkbox';
-import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
 
 // TODO add 'react-checkbox' to the list for withFluentProvider in react-examples/.storybook/preview.js
 

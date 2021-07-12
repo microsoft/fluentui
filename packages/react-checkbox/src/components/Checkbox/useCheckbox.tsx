@@ -64,7 +64,6 @@ export const useCheckbox = (
         children: isChecked === 'mixed' ? <DefaultMixedIcon /> : <CheckMarkIcon />,
       },
       input: {
-        as: 'input',
         // ref: inputRef, // React.LegacyRef<HTMLInputElement> | undefined
         type: 'checkbox',
         onchange: onChange,
@@ -90,9 +89,9 @@ export const useCheckbox = (
     state.label.htmlFor = state.id;
   }
 
-  if (state.input && state.id) {
-    state.input.id = state.id;
-  }
+  // if (state.input && state.id) {
+  //   state.input.id = state.id;
+  // }
   state.id = state.rootId;
 
   const isMixed = isChecked === 'mixed';

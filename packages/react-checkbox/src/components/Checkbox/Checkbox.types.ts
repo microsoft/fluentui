@@ -85,7 +85,7 @@ export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
  */
-export type CheckboxDefaultedProps = 'label' | 'indicator' | 'size' | 'labelPosition' | 'checked' | 'input';
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition' | 'checked';
 
 /**
  * State used in rendering Checkbox
