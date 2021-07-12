@@ -318,6 +318,7 @@ export class DesignSystemProvider extends FoundationElement {
     disabledOpacity: number;
     fillColor: Swatch;
     focusStrokeWidth: number;
+    neutralBaseColor: Swatch;
     neutralFillActiveDelta: number;
     neutralFillFocusDelta: number;
     neutralFillHoverDelta: number;
