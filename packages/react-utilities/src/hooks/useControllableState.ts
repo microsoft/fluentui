@@ -3,7 +3,7 @@ import { useConst } from './useConst';
 
 type NonUndefined<T> = T extends undefined ? never : T;
 
-type UseAutoControlledOptions<ControllableState, State> = {
+type useControllableStateOptions<ControllableState, State> = {
   /**
    * User provided default state or factory initializer
    */
@@ -32,7 +32,7 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
  * @returns - https://reactjs.org/docs/hooks-state.html
  */
 export const useControllableState = <ControllableState, State extends NonUndefined<ControllableState>>(
-  options: UseAutoControlledOptions<ControllableState, State>,
+  options: useControllableStateOptions<ControllableState, State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
   const isControlled = useIsControlled(options.state);
   const initialState = isUndefined(options.defaultState) ? options.initialState : options.defaultState;
@@ -45,6 +45,8 @@ export const useControllableState = <ControllableState, State extends NonUndefin
     stateRef.current = state;
   }, [state]);
 
+  // To match the behavior of the setter returned by React.useState, this callback's identity
+  // should never change. This means it MUST NOT directly reference variables that can change.
   const setState = React.useCallback((newState: React.SetStateAction<State>) => {
     // React dispatch can use a factory
     // https://reactjs.org/docs/hooks-reference.html#functional-updates
