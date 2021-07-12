@@ -262,7 +262,8 @@
     },
     "@fluentui/react-slider": {
       "root": "packages/react-slider",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/react-slider/src"
     }
   }
 }
