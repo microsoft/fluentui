@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jul 2021 07:33:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.47)
+
+Mon, 12 Jul 2021 07:33:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.46..@fluentui/react-menu_v9.0.0-alpha.47)
+
+### Changes
+
+- chore(Menu): remove makeMergeProps and getSlotsCompat ([PR #18819](https://github.com/microsoft/fluentui/pull/18819) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.46)
 

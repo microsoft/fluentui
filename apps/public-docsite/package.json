@@ -34,7 +34,7 @@
     "@fluentui/public-docsite-setup": "^0.3.6",
     "@fluentui/react": "^8.22.3",
     "@fluentui/react-docsite-components": "^8.2.34",
-    "@fluentui/react-examples": "^8.34.2",
+    "@fluentui/react-examples": "^8.34.3",
     "@fluentui/react-experiments": "^8.1.37",
     "@fluentui/react-file-type-icons": "^8.1.5",
     "@fluentui/set-version": "^8.1.3",

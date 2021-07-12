@@ -2,6 +2,27 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update prop merging mechanism",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5d52e386874b7c44f7c1ba39091c7b5638eb9d65",
+            "package": "@fluentui/react-aria"
+          },
+          {
+            "comment": "Removes forcing children on useARIAButton",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b77307bb8ec2b07db583fda8367b73911598b4f6",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/react-aria_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",

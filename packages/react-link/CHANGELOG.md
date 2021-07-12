@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jul 2021 07:33:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.55)
+
+Mon, 12 Jul 2021 07:33:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.54..@fluentui/react-link_v9.0.0-alpha.55)
+
+### Changes
+
+- Link: Adding missing state management to handle disabledFocusable scenarios. ([PR #18563](https://github.com/microsoft/fluentui/pull/18563) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.54)
 

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Forces children prop with Fragment in useAccordionHeader",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b77307bb8ec2b07db583fda8367b73911598b4f6",
+            "package": "@fluentui/react-accordion"
+          },
+          {
+            "comment": "Refactor Accordion component internals",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "8176afa816ded18f39884673d5afa3ce709a17dd",
+            "package": "@fluentui/react-accordion"
+          },
+          {
+            "comment": "Update prop merging mechanism",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5d52e386874b7c44f7c1ba39091c7b5638eb9d65",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.48",
       "version": "9.0.0-alpha.48",

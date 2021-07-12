@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jul 2021 07:33:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.57)
+
+Mon, 12 Jul 2021 07:33:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.56..@fluentui/react-button_v9.0.0-alpha.57)
+
+### Changes
+
+- Button: Adding back block, circular, disabledFocusable and outline props and making some styling fixes. ([PR #18563](https://github.com/microsoft/fluentui/pull/18563) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.56)
 
