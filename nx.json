@@ -134,6 +134,6 @@
     "nx-workspace-tools": { "tags": [] },
     "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/keyboard-keys": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] }
+    "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] }
   }
 }
