@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 09 Jul 2021 12:22:25 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jul 2021 12:21:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.5)
+
+Mon, 12 Jul 2021 12:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.4..@uifabric/charting_v4.16.5)
+
+### Patches
+
+- Cherry pick-Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty ([PR #18859](https://github.com/microsoft/fluentui/pull/18859) by v-scharde@microsoft.com)
 
 ## [4.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.4)
 

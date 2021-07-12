@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 12 Jul 2021 12:21:23 GMT",
+      "tag": "@uifabric/charting_v4.16.5",
+      "version": "4.16.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry pick-Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2a125e1eede531af4e60ed7924dc70724bd21c89",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 12:22:25 GMT",
       "tag": "@uifabric/charting_v4.16.4",
       "version": "4.16.4",
