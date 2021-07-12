@@ -12,5 +12,14 @@ export const createFocusIndicatorStyleRule = (
   ':focus-visible': {
     outline: 'none',
   },
-  [KEYBOARD_NAV_SELECTOR]: typeof rule === 'function' ? rule(theme) : rule,
+  [`${KEYBOARD_NAV_SELECTOR} :focus`]: typeof rule === 'function' ? rule(theme) : rule,
+});
+
+export const createFocusWithinIndicatorStyleRule = (
+  rule: MakeStylesStyleRule<Theme> = defaultStyleRule,
+): MakeStylesStyleRule<Theme> => theme => ({
+  ':focus-visible': {
+    outline: 'none',
+  },
+  [`${KEYBOARD_NAV_SELECTOR} :focus-within`]: typeof rule === 'function' ? rule(theme) : rule,
 });
