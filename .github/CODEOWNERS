@@ -121,6 +121,7 @@ packages/react-input/ @microsoft/cxe-red @ecraig12345
 packages/react-storybook/ @cxe-prg @ling1726 @layershifter
 packages/storybook/ @cxe-prg @ling1726 @layershifter
 packages/react-link/ @microsoft/cxe-red @khmakoto
+packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell
 packages/react-toggle/ @microsoft/cxe-red @behowell
 packages/react-tooltip/ @microsoft/cxe-red @behowell
