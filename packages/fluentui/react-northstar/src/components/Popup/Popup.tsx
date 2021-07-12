@@ -128,8 +128,6 @@ export interface PopupProps
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
-export const tooltipClassName = 'ui-tooltip';
-
 export const popupClassName = 'ui-popup';
 
 /**
