@@ -22,5 +22,5 @@ export const useFrameFocusDispatch = (
     return () => {
       clearTimeout(timeoutRef.current as ReturnType<typeof setTimeout>);
     };
-  }, [$document?.activeElement, enableFrameFocusDispatch, pollDuration]);
+  }, [$document, enableFrameFocusDispatch, pollDuration]);
 };
