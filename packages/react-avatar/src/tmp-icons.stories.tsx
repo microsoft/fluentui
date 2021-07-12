@@ -39,7 +39,7 @@ const useIconProps = (props: React.HTMLAttributes<HTMLSpanElement>) => {
   return { containerProps, nativeProps, rootClasses, svgClasses };
 };
 
-export const renderIcon = (
+const renderIcon = (
   SVGElement: (props: { svgClasses: string }) => JSX.Element,
 ): React.FC<React.HTMLAttributes<HTMLSpanElement>> => props => {
   const { containerProps, nativeProps, rootClasses, svgClasses } = useIconProps(props);
