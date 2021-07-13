@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 import { nullRender } from './nullRender';
 import { getNativeElementProps } from '../utils/getNativeElementProps';
-import { omit } from '../utils';
+import { omit } from '../utils/omit';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getRootSlot<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>) {
