@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Mon, 12 Jul 2021 07:33:23 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Jul 2021 07:35:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.50)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.49..@fluentui/react-accordion_v9.0.0-alpha.50)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.24 ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.49)
 
