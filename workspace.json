@@ -264,6 +264,11 @@
       "root": "packages/react-slider",
       "projectType": "library",
       "sourceRoot": "packages/react-slider/src"
+    },
+    "@fluentui/make-styles-webpack-loader": {
+      "root": "packages/make-styles-webpack-loader",
+      "projectType": "library",
+      "sourceRoot": "packages/make-styles-webpack-loader/src"
     }
   }
 }
