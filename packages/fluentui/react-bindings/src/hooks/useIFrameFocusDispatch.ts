@@ -10,11 +10,11 @@ export const useIFrameFocusDispatch = (
   targetDocument: Document,
   pollDuration: number = 1000,
 ) => {
-  const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = React.useRef<number>();
 
   React.useEffect(() => {
     if (enableFrameFocusDispatch) {
-      timeoutRef.current = setInterval(() => {
+      timeoutRef.current = targetDocument.defaultView?.setInterval(() => {
         const activeElement = targetDocument?.activeElement;
         if (activeElement?.tagName === 'IFRAME') {
           const event = new CustomEvent(FUI_FRAME_EVENT, { bubbles: true });
@@ -23,7 +23,7 @@ export const useIFrameFocusDispatch = (
       }, pollDuration);
     }
     return () => {
-      clearTimeout(timeoutRef.current as ReturnType<typeof setTimeout>);
+      targetDocument.defaultView?.clearTimeout(timeoutRef.current);
     };
   }, [targetDocument, enableFrameFocusDispatch, pollDuration]);
 };
