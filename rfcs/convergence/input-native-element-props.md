@@ -147,8 +147,6 @@ So doing this would give the desired HTML:
 
 ```html
 <div>
-  <div />
-  <!-- checkmark -->
   <input type="checkbox" />
   <label>Foo</label>
 </div>
@@ -166,8 +164,6 @@ Which would give you roughly this:
 
 ```html
 <div class="bar">
-  <div />
-  <!-- checkmark -->
   <input type="checkbox" name="foo" checked className="foo" />
   <label>sample</label>
 </div>
