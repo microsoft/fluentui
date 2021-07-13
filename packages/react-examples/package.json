@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-examples",
   "version": "8.34.4",
+  "private": true,
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
