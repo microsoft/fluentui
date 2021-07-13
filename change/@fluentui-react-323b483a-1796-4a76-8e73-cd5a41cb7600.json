@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pivot: removed cyclic imports that were causing ordering issues with esbuild output.",
-  "packageName": "@fluentui/react",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch"
-}

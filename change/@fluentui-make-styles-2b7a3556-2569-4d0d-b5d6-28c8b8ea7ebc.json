@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update makeStyles to have correct types when using numeric keys",
-  "packageName": "@fluentui/make-styles",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
