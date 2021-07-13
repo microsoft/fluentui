@@ -222,6 +222,7 @@
     ]
   },
   "resolutions": {
+    "@microsoft/api-extractor/typescript": "4.1.5",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
