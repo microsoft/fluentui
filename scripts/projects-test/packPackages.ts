@@ -11,7 +11,7 @@ type PackedPackages = Record<string, string>;
 /** Shared packed packages between tests since they're not modified by any test */
 let packedPackages: PackedPackages;
 
-function flattenPackageGraph(rootPackages: string[], projectGraph, packageList = []): string[] {
+function flattenPackageGraph(rootPackages: string[], projectGraph, packageList: string[] = []): string[] {
   rootPackages.forEach(packageName => {
     packageList.push(packageName);
 
@@ -47,7 +47,8 @@ export async function packProjectPackages(
   packedPackages = {};
 
   const lernaProject = new Project(lernaRoot);
-  const projectPackages = await lernaProject.getPackages();
+  // this is the list of package.json contents with some extra properties
+  const projectPackages: { name: string; location: string; main?: string }[] = await lernaProject.getPackages();
 
   logger(`✔️ Used lerna config: ${lernaProject.rootConfigLocation}`);
 
@@ -62,7 +63,16 @@ export async function packProjectPackages(
   await Promise.all(
     requiredPackages.map(async packageName => {
       const filename = path.join(tmpDirectory, path.basename(packageName)) + '.tgz';
-      const packagePath = projectPackages.find(pkg => pkg.name === packageName).location;
+      const packageInfo = projectPackages.find(pkg => pkg.name === packageName);
+      const packagePath = packageInfo.location;
+
+      const entryPointPath = packageInfo.main && path.join(packagePath, packageInfo.main);
+      if (entryPointPath && !fs.existsSync(entryPointPath)) {
+        throw new Error(
+          `Package ${packageName} does not appear to have been built yet. Please ensure that root package(s) ` +
+            `${rootPackages.join(', ')} are listed in devDependencies of the package running the test.`,
+        );
+      }
 
       await sh(`yarn pack --filename ${filename}`, packagePath);
       packedPackages[packageName] = filename;

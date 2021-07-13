@@ -46,6 +46,7 @@ async function prepareTemplate(logger: Function, tmpDirectory: string) {
   const templatePath = path.join(tmpDirectory, 'cra-template');
 
   const packageJson = fs.readJSONSync(path.resolve(__dirname, '../package.json'));
+  // Copy only the template files that would be installed from npm
   const filesToCopy = [...packageJson.files, 'package.json'];
   for (const file of filesToCopy) {
     await fs.copy(path.resolve(__dirname, '..', file), path.join(templatePath, file));
