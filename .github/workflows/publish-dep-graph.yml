@@ -30,9 +30,12 @@ jobs:
       - name: Run nx dep-graph
         run: yarn nx affected:dep-graph --base=origin/master --file=tmp/dep-graph/index.html
 
-      # - name: 'Deploy to Azure WebApp'
-      #   uses: azure/webapps-deploy@v2
-      #   with:
-      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-      #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-      #     package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.DEP_GRAPH_WEB_APP_TOKEN }}
+          action: 'upload'
+          app_location: 'tmp/dep-graph'
+          output_location: '${{ github.ref }}/dep-graph'
+          skip_app_build: true
