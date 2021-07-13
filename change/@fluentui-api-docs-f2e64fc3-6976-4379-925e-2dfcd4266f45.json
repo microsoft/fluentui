@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update API Extractor dependencies",
-  "packageName": "@fluentui/api-docs",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "none"
-}
