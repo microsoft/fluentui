@@ -56,8 +56,8 @@ export interface MenuProps
     Partial<MenuCommons>,
     ComponentProps {
   /**
-   * Can contain two children including {@Link MenuTrigger} and {@Link MenuPopover}
-   * Alternatively can only contain {@Link MenuPopover} if using a custom {@Link target}
+   * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
+   * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
 }
