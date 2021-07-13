@@ -214,7 +214,7 @@ function useFooContextValues() {
 
 function FooComponent() {
   const state = useFooState();
-  const contextValues = useFooContextValues();
+  const contextValues = useFooContextValues(state);
 
   return renderFoo(state, contextValues);
 }
