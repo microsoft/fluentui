@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: Propagate ariaLabel to the dropdown list element",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

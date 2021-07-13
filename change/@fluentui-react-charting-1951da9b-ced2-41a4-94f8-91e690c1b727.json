@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "GroupedVertical Chart accessibility change",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
