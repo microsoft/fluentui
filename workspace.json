@@ -260,6 +260,11 @@
       "root": "packages/keyboard-keys",
       "projectType": "library",
       "sourceRoot": "packages/keyboard-keys/src"
+    },
+    "@fluentui/make-styles-webpack-loader": {
+      "root": "packages/make-styles-webpack-loader",
+      "projectType": "library",
+      "sourceRoot": "packages/make-styles-webpack-loader/src"
     }
   }
 }
