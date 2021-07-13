@@ -8,7 +8,6 @@ const useStyles = makeStyles({
   root: theme => ({
     fontFamily: theme.global.type.fontFamilies.base,
     color: theme.alias.color.neutral.neutralForeground1,
-    boxSizing: 'content-box',
   }),
 
   disabled: theme => ({
