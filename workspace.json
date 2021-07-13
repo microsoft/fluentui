@@ -184,7 +184,6 @@
       "sourceRoot": "packages/react-provider/src"
     },
     "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
-    "@fluentui/react-slider": { "root": "packages/react-slider", "projectType": "library" },
     "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
     "@fluentui/react-tabster": {
@@ -260,6 +259,11 @@
       "root": "packages/keyboard-keys",
       "projectType": "library",
       "sourceRoot": "packages/keyboard-keys/src"
+    },
+    "@fluentui/react-slider": {
+      "root": "packages/react-slider",
+      "projectType": "library",
+      "sourceRoot": "packages/react-slider/src"
     },
     "@fluentui/make-styles-webpack-loader": {
       "root": "packages/make-styles-webpack-loader",
