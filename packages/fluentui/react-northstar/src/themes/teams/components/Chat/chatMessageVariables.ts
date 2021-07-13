@@ -36,8 +36,6 @@ export interface ChatMessageVariables {
   reactionGroupMarginLeft: string;
   reactionGroupBorderColor: string;
   showActionMenu?: boolean;
-  timestampColor: string;
-  timestampColorMine: string;
   zIndex: number;
   overlayZIndex: number;
 }
@@ -78,8 +76,6 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   reactionGroupMarginLeft: pxToRem(12),
   reactionGroupBorderColor: 'transparent',
   showActionMenu: undefined,
-  timestampColor: undefined,
-  timestampColorMine: siteVars.colorScheme.default.foreground1,
   zIndex: siteVars.zIndexes.foreground,
   overlayZIndex: siteVars.zIndexes.overlay,
 });

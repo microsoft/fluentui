@@ -95,9 +95,8 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
   },
 
   timestamp: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const { props: p, variables: v } = componentStyleFunctionParam;
+    const { props: p } = componentStyleFunctionParam;
     return {
-      color: v.timestampColor,
       display: 'inline-block',
       ...getChatMessageDensityStyles(p.density).timestamp?.(componentStyleFunctionParam),
     };

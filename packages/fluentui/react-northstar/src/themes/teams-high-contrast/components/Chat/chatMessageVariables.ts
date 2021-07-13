@@ -13,7 +13,6 @@ export const chatMessageVariables = (siteVars: any): Partial<ChatMessageVariable
     hasMentionNubbinColor: siteVars.accessibleYellow,
     isImportantColor: siteVars.accessibleYellow,
     badgeTextColor: siteVars.colors.black,
-    timestampColorMine: siteVars.colors.white,
     reactionGroupBorderColor: siteVars.colors.white,
   };
 };
