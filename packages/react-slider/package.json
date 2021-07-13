@@ -1,7 +1,8 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "1.0.0-beta.122",
-  "description": "Fluent UI React Slider component",
+  "version": "9.0.0-alpha.0",
+  "private": true,
+  "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -18,9 +19,9 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
-    "update-snapshots": "just-scripts jest -u",
+    "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "start-test": "just-scripts jest-watch"
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.2",
@@ -31,16 +32,16 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
+    "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.23.1",
-    "@fluentui/react-hooks": "^8.2.4",
-    "@fluentui/style-utilities": "^8.2.0",
-    "@fluentui/utilities": "^8.2.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.48",
+    "@fluentui/react-utilities": "^9.0.0-alpha.32",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -50,7 +51,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
       "minor",

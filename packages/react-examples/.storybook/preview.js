@@ -60,11 +60,7 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (
-    ['react-button', 'react-card', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-      packageNamePlaceholder,
-    )
-  ) {
+  if (['react-button', 'react-card', 'react-checkbox', 'react-tabs', 'react-toggle'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }

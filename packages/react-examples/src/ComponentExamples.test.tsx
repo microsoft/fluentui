@@ -136,7 +136,6 @@ const includedPackages = [
   'react-checkbox',
   'react-focus',
   'react-link',
-  'react-slider',
   'react-tabs',
   'react-toggle',
 ];

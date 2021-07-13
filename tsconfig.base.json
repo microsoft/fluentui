@@ -40,6 +40,7 @@
       "@fluentui/babel-make-styles": ["packages/babel-make-styles/src/index.ts"],
       "@fluentui/react-badge": ["packages/react-badge/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"],
+      "@fluentui/react-slider": ["packages/react-slider/src/index.ts"],
       "@fluentui/make-styles-webpack-loader": ["packages/make-styles-webpack-loader/src/index.ts"]
     }
   },

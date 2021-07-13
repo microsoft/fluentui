@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Removing react-slider package and examples to prepare for convergence.",
+  "packageName": "@fluentui/react-examples",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}
