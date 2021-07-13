@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Link: Adding missing state management to handle disabledFocusable scenarios.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

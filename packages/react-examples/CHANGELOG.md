@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jul 2021 07:33:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.3)
+
+Mon, 12 Jul 2021 07:33:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.2..@fluentui/react-examples_v8.34.3)
+
+### Patches
+
+- Adding block, circular, disabledFocusable and outline props to Button stories. ([PR #18563](https://github.com/microsoft/fluentui/pull/18563) by Humberto.Morimoto@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-components to v9.0.0-alpha.76 ([PR #18879](https://github.com/microsoft/fluentui/pull/18879) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.57 ([PR #18563](https://github.com/microsoft/fluentui/pull/18563) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.47 ([PR #18819](https://github.com/microsoft/fluentui/pull/18819) by lingfan.gao@microsoft.com)
 
 ## [8.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.2)
 

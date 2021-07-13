@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix compact hover background in dark themes @Hirse ([#18842](https://github.com/microsoft/fluentui/pull/18842))
 - Fix children conflict with compactBody in `ChatMessage` @chassunc ([#18874](https://github.com/microsoft/fluentui/pull/18874))
 - Fix `Tooltip` trigger order of props being spread @chassunc ([#18875](https://github.com/microsoft/fluentui/pull/18875))
+- Ensure wide content fits in compact ChatMessage @Hirse ([#18871](https://github.com/microsoft/fluentui/pull/18871))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
