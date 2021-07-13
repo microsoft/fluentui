@@ -23,6 +23,7 @@ import {
   useFluentContext,
   useAutoControlled,
   useStyles,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
@@ -146,6 +147,13 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     defaultValue: props.defaultOpen,
     value: props.open,
     initialValue: false,
+  });
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
   });
 
   const menuId = React.useRef<string>();
