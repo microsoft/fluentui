@@ -306,6 +306,7 @@ export const density: CSSDesignToken<number>;
 // @public
 export class DesignSystemProvider extends FoundationElement {
     constructor();
+    accentBaseColor: Swatch;
     accentFillActiveDelta: number;
     accentFillFocusDelta: number;
     accentFillHoverDelta: number;
