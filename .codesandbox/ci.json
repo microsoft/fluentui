@@ -1,5 +1,5 @@
 {
-  "buildCommand": "build:min",
+  "buildCommand": "build:codesandbox",
   "packages": ["packages/react"],
   "sandboxes": ["x5u3t"],
   "node": "12"
