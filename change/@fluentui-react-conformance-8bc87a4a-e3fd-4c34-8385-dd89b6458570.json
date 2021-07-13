@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Make tests work if repo is under a parent folder called src",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
