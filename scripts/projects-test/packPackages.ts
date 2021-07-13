@@ -1,7 +1,6 @@
 import Project from '@lerna/project';
 import PackageGraph from '@lerna/package-graph';
-import config from '@fluentui/scripts/config';
-import sh from '@fluentui/scripts/gulp/sh';
+import sh from '../gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -22,19 +21,24 @@ function flattenPackageGraph(rootPackages: string[], projectGraph, packageList =
   return packageList.sort().filter((v, i, a) => a.indexOf(v) === i);
 }
 
-export async function addResolutionPathsForProjectPackages(testProjectDir: string) {
-  const packageJsonPath = path.resolve(testProjectDir, 'package.json');
-  const packageJson = require(packageJsonPath);
+export async function addResolutionPathsForProjectPackages(testProjectDir: string, isTemplateJson?: boolean) {
+  const jsonPath = path.resolve(testProjectDir, isTemplateJson ? 'template.json' : 'package.json');
+  const json = fs.readJSONSync(jsonPath);
+  const packageJson = isTemplateJson ? json.package : json;
 
   packageJson.resolutions = packageJson.resolutions || {};
   Object.keys(packedPackages).forEach(packageName => {
     packageJson.resolutions[`**/${packageName}`] = `file:${packedPackages[packageName]}`;
   });
 
-  fs.writeJSONSync(packageJsonPath, packageJson, { spaces: 2 });
+  fs.writeJSONSync(jsonPath, json, { spaces: 2 });
 }
 
-export async function packProjectPackages(logger: Function): Promise<PackedPackages> {
+export async function packProjectPackages(
+  logger: Function,
+  lernaRoot: string,
+  rootPackages: string[],
+): Promise<PackedPackages> {
   if (packedPackages) {
     logger(`✔️ Packages already packed`);
     return packedPackages;
@@ -42,13 +46,13 @@ export async function packProjectPackages(logger: Function): Promise<PackedPacka
 
   packedPackages = {};
 
-  const lernaProject = new Project(config.paths.packages());
+  const lernaProject = new Project(lernaRoot);
   const projectPackages = await lernaProject.getPackages();
 
-  logger(`✔️ A lerna config that was used: ${lernaProject.rootConfigLocation}`);
+  logger(`✔️ Used lerna config: ${lernaProject.rootConfigLocation}`);
 
   const projectPackagesGraph = new PackageGraph(projectPackages, 'dependencies');
-  const requiredPackages = flattenPackageGraph(['@fluentui/react-northstar'], projectPackagesGraph);
+  const requiredPackages = flattenPackageGraph(rootPackages, projectPackagesGraph);
 
   logger(`✔️ Following packages will be packed:${requiredPackages.map(p => `\n${' '.repeat(30)}- ${p}`)}`);
 

@@ -15,5 +15,8 @@
   "files": [
     "template",
     "template.json"
-  ]
+  ],
+  "devDependencies": {
+    "@fluentui/scripts": "^1.0.0"
+  }
 }
