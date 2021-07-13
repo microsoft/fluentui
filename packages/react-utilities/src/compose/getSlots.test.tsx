@@ -5,6 +5,7 @@ import { ComponentState } from './types';
 
 describe('getSlots', () => {
   const Foo = (props: { id?: string }) => <div />;
+  const FooForward = React.forwardRef((props: { id?: string }, ref) => <div />);
 
   it('returns div for root if the as prop is not provided', () => {
     expect(getSlots({})).toEqual({
@@ -36,12 +37,12 @@ describe('getSlots', () => {
     });
   });
 
-  it('retains all props, when root is a component,', () => {
+  it('retains all props but components, when root is a component,', () => {
     expect(
-      getSlots({ as: 'div', id: 'id', href: 'href', blah: 1, components: { root: Foo } } as ComponentState),
+      getSlots({ as: 'div', id: 'id', href: 'href', blah: 1, components: { root: FooForward } } as ComponentState),
     ).toEqual({
-      slots: { root: Foo },
-      slotProps: { root: { as: 'div', id: 'id', href: 'href', blah: 1, components: { root: Foo } } },
+      slots: { root: FooForward },
+      slotProps: { root: { as: 'div', id: 'id', href: 'href', blah: 1 } },
     });
   });
 
