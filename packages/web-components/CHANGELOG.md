@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 07 Jul 2021 07:32:54 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.2)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.1..@fluentui/web-components_v1.0.2)
+
+### Patches
+
+- export horizontal scroll styles ([PR #18858](https://github.com/microsoft/fluentui/pull/18858) by chhol@microsoft.com)
 
 ## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.1)
 

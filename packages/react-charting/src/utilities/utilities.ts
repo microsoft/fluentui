@@ -5,6 +5,7 @@ import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
+  IAccessibilityProps,
   IEventsAnnotationProps,
   ILineChartPoints,
   ILineChartDataPoint,
@@ -897,4 +898,25 @@ export const pointTypes: PointTypes = {
   [Points.octagon]: {
     widthRatio: 2.414,
   },
+};
+
+/**
+ * @param accessibleData accessible data
+ * @param role string to define role of tag
+ * @param isDataFocusable boolean
+ * function returns the accessibility data object
+ */
+export const getAccessibleDataObject = (
+  accessibleData?: IAccessibilityProps,
+  role: string = 'text',
+  isDataFocusable: boolean = true,
+) => {
+  accessibleData = accessibleData ?? {};
+  return {
+    role,
+    'data-is-focusable': isDataFocusable,
+    'aria-label': accessibleData!.ariaLabel,
+    'aria-labelledby': accessibleData!.ariaLabelledBy,
+    'aria-describedby': accessibleData!.ariaDescribedBy,
+  };
 };

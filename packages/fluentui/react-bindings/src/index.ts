@@ -25,6 +25,7 @@ export * from './hooks/useStyles';
 export { useTriggerElement } from './hooks/useTriggerElement';
 export { useUnhandledProps } from './hooks/useUnhandledProps';
 export { usePrevious } from './hooks/usePrevious';
+export { useOnIFrameFocus } from './hooks/useOnIFrameFocus';
 
 export { RendererContext } from './renderer/RendererContext';
 

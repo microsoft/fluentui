@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Snapshot updates for removing close button tooltip",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}

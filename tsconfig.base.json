@@ -39,7 +39,8 @@
       "@fluentui/jest-serializer-make-styles": ["packages/jest-serializer-make-styles/src/index.ts"],
       "@fluentui/babel-make-styles": ["packages/babel-make-styles/src/index.ts"],
       "@fluentui/react-badge": ["packages/react-badge/src/index.ts"],
-      "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"]
+      "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"],
+      "@fluentui/make-styles-webpack-loader": ["packages/make-styles-webpack-loader/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
