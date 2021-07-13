@@ -185,6 +185,28 @@ export class DesignSystemProvider extends FoundationElement {
   public fillColor: Swatch;
 
   /**
+   * A convenience to recreate the accentPalette
+   * @remarks
+   * HTML attribute: accent-base-color
+   */
+  @attr({
+    attribute: 'accent-base-color',
+    converter: swatchConverter,
+  })
+  public accentBaseColor: Swatch;
+
+  /**
+   * @internal
+   */
+  private accentBaseColorChanged(prev: Swatch, next: Swatch): void {
+    if (next !== undefined && next !== null) {
+      accentPalette.setValueFor(this, PaletteRGB.create(next as SwatchRGB));
+    } else {
+      accentPalette.deleteValueFor(this);
+    }
+  }
+
+  /**
    * A convenience to recreate the neutralPalette
    * @remarks
    * HTML attribute: neutral-base-color
