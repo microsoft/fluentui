@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.0.0-alpha.8",
+  "version": "9.0.0-alpha.9",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.2",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.23",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.24",
     "@fluentui/react-conformance": "^0.4.2",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -39,7 +39,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.47",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.48",
     "@fluentui/react-utilities": "^9.0.0-alpha.32",
     "tslib": "^2.1.0"
   },

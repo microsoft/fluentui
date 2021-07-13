@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update prop merging mechanism",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
