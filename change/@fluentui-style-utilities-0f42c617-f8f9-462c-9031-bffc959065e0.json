@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Pass Icon 'title' as alt text for File Type Icons",
-  "packageName": "@fluentui/style-utilities",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
