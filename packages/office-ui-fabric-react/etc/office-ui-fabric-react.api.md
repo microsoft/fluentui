@@ -5390,11 +5390,13 @@ export interface IHSV {
 // @public (undocumented)
 export interface IIconContent {
     // (undocumented)
-    children?: string;
+    children?: string | JSX.Element;
     // (undocumented)
     fontFamily?: string;
     // (undocumented)
     iconClassName?: string;
+    // (undocumented)
+    mergeImageProps?: boolean;
 }
 
 // @public (undocumented)

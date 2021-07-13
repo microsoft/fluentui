@@ -6,9 +6,10 @@ import { css, getNativeProps, htmlElementProperties, memoizeFunction } from '../
 import { getIcon, IIconRecord, IIconSubsetRecord } from '../../Styling';
 
 export interface IIconContent {
-  children?: string;
+  children?: string | JSX.Element;
   iconClassName?: string;
   fontFamily?: string;
+  mergeImageProps?: boolean;
 }
 
 export const getIconContent = memoizeFunction(
@@ -26,6 +27,7 @@ export const getIconContent = memoizeFunction(
       children: code,
       iconClassName: subset.className,
       fontFamily: subset.fontFace && subset.fontFace.fontFamily,
+      mergeImageProps: subset.mergeImageProps,
     };
   },
   undefined,
@@ -40,27 +42,44 @@ export const getIconContent = memoizeFunction(
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className, style = {} } = props;
   const iconContent = getIconContent(iconName) || {};
-  const { iconClassName, children, fontFamily } = iconContent;
+  const { iconClassName, children, fontFamily, mergeImageProps } = iconContent;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
-  const containerProps = props['aria-label']
-    ? {}
-    : {
-        role: 'presentation',
-        'aria-hidden': true,
-      };
+  const accessibleName = props['aria-label'] || props.title;
+  const containerProps =
+    props['aria-label'] || props['aria-labelledby'] || props.title
+      ? {
+          role: mergeImageProps ? undefined : 'img',
+        }
+      : {
+          'aria-hidden': true,
+        };
+
+  let finalChildren = children;
+
+  if (mergeImageProps) {
+    if (typeof children === 'object' && typeof children.props === 'object' && accessibleName) {
+      finalChildren = React.cloneElement(children, { alt: accessibleName });
+    }
+  }
 
   return (
     <i
       data-icon-name={iconName}
       {...containerProps}
       {...nativeProps}
+      {...(mergeImageProps
+        ? {
+            title: undefined,
+            'aria-label': undefined,
+          }
+        : {})}
       className={css(MS_ICON, classNames.root, iconClassName, !iconName && classNames.placeholder, className)}
       // Apply the font family this way to ensure it doesn't get overridden by Fabric Core ms-Icon styles
       // https://github.com/microsoft/fluentui/issues/10449
       style={{ fontFamily, ...style }}
     >
-      {children}
+      {finalChildren}
     </i>
   );
 };
