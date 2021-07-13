@@ -725,6 +725,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         };
         ariaLabellledby = id;
       } else {
+        // Since title is an IContextualMenuItem and text property is optional
+        // there is the possibility if text is undefined that the id would appear
+        // in the DOM with 'undefined' appended to the end of the id, breaking the aria-labelledby scenario.
         const id = sectionProps.title.text ? this._id + sectionProps.title.text.replace(/\s/g, '') : this._id;
         headerContextualMenuItem = { ...sectionProps.title, id };
         ariaLabellledby = id;
