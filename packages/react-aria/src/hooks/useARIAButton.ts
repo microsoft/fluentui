@@ -9,11 +9,11 @@ function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   return disabled ?? false;
 }
 
-export type ARIAButtonProps =
-  | (React.ButtonHTMLAttributes<HTMLElement> & { as?: 'button' })
-  | (React.HTMLAttributes<HTMLDivElement> & { as: 'div' })
-  | (React.HTMLAttributes<HTMLSpanElement> & { as: 'span' })
-  | (React.AnchorHTMLAttributes<HTMLAnchorElement> & { as: 'a' });
+export type ARIAButtonAsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & { as?: 'button' };
+export type ARIAButtonAsElementProps = React.HTMLAttributes<HTMLElement> & { as: 'div' | 'span' };
+export type ARIAButtonAsAnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & { as: 'a' };
+
+export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
 
 /**
  * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
