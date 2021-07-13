@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Accessibility fixes for nav, feedback list, header",
+  "comment": "Accessibility fixes for nav, feedback list, header, properties table",
   "packageName": "@fluentui/react-docsite-components",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
