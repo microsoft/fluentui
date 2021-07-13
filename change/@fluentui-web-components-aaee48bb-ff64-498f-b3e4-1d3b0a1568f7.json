@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update API Extractor for web-components and force TS resolution to 4.1.5",
-  "packageName": "@fluentui/web-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

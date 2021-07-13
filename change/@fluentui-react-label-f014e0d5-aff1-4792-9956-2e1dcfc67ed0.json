@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding missing line-height to Label.",
-  "packageName": "@fluentui/react-label",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

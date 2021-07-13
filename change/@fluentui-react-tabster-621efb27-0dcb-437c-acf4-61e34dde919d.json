@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Create :focus-within indicator style rule",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

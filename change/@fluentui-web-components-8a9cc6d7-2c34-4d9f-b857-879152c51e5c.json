@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added attribute to allow easy update to the neutral palette",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

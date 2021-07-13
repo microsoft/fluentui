@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 13 Jul 2021 07:35:36 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.8)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.7..@fluentui/react-charting_v5.3.8)
+
+### Patches
+
+- GroupedVertical Chart accessibility change ([PR #18880](https://github.com/microsoft/fluentui/pull/18880) by v-scharde@microsoft.com)
 
 ## [5.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.7)
 
