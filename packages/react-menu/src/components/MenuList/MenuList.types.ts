@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
-export interface MenuListProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+interface MenuListCommons extends React.HTMLAttributes<HTMLElement> {
   /**
    * Callback when checked items change for value with a name
    *
@@ -15,7 +15,7 @@ export interface MenuListProps extends ComponentPropsCompat, React.HTMLAttribute
   /**
    * Map of all checked values
    */
-  checkedValues?: Record<string, string[]>;
+  checkedValues: Record<string, string[]>;
 
   /**
    * Default values to be checked on mount
@@ -33,16 +33,18 @@ export interface MenuListProps extends ComponentPropsCompat, React.HTMLAttribute
   hasCheckmarks?: boolean;
 }
 
-export interface MenuListState extends MenuListProps {
+export interface MenuListProps extends ComponentProps, Partial<MenuListCommons> {}
+
+export interface MenuListState extends ComponentState, MenuListCommons {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
+  ref: React.Ref<HTMLElement>;
 
   /**
    * Callback to set focus on the next menu item by first character
    */
-  setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
+  setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
 
   /*
    * Toggles the state of a checkbox item
@@ -54,3 +56,7 @@ export interface MenuListState extends MenuListProps {
    */
   selectRadio: SelectableHandler;
 }
+
+export interface UninitializedMenuListState
+  extends Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'>,
+    Partial<Pick<MenuListState, 'checkedValues'>> {}

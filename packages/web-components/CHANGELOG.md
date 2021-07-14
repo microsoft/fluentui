@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 07 Jul 2021 07:32:54 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.0)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.2..@fluentui/web-components_v1.1.0)
+
+### Minor changes
+
+- add attribute to recreate the accent palette using design system provider ([PR #18922](https://github.com/microsoft/fluentui/pull/18922) by chhol@microsoft.com)
+- Added attribute to allow easy update to the neutral palette ([PR #18910](https://github.com/microsoft/fluentui/pull/18910) by 47367562+bheston@users.noreply.github.com)
+
+## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.2)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.1..@fluentui/web-components_v1.0.2)
+
+### Patches
+
+- export horizontal scroll styles ([PR #18858](https://github.com/microsoft/fluentui/pull/18858) by chhol@microsoft.com)
 
 ## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.1)
 
