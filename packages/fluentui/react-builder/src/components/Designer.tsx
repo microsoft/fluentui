@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, Label, List } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -25,6 +24,7 @@ import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
+import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -536,40 +536,12 @@ export const Designer: React.FunctionComponent = () => {
               </div>
             )}
             {activeTab === 'accessibility' && (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: '1em 0 0 1em',
-                  maxWidth: '5em',
-                  flexWrap: 'wrap',
-                }}
-              >
-                <Text size={'small'}>
-                  To learn more about best practices for accessibility, visit
-                  <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
-                    {' https://www.microsoft.com/en-us/accessibility/'}
-                  </a>
-                  <br />
-                  <br />
-                </Text>
-                {_.isEmpty(accessibilityErrors) ? (
-                  <Text weight={'bold'}>No accessibility errors automatically detected.</Text>
-                ) : (
-                  // group the accesssibility errors (if they exist)
-                  // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
-                  Object.keys(_.groupBy(accessibilityErrors, error => error.elementUuid)).map(elementUuid => (
-                    <div>
-                      <Button text onClick={handleSelectComponent}>
-                        {jsonTreeFindElement(jsonTree, elementUuid).displayName}
-                      </Button>
-                      {_.groupBy(accessibilityErrors, error => error.elementUuid)[elementUuid].map(error => (
-                        <List items={[error.error, `Severity: ${error.severity}`, `Source: ${error.source}`]} />
-                      ))}
-                    </div>
-                  ))
-                )}
-              </div>
+              <AccessibilityErrorMenu
+                tree={jsonTree}
+                selectedComponent={selectedComponent}
+                accessibilityErrors={accessibilityErrors}
+                onSelectComponent={handleSelectComponent}
+              />
             )}
             {activeTab === 'nav' && (
               <div>
