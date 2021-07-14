@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix react-aria due to changes on slots typings",
+  "packageName": "@fluentui/react-aria",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
