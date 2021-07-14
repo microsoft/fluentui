@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(Menu): replace useControllableValue with useControllableState",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

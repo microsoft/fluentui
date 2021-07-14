@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(useControllableState): deprecate useControlledValue with new hook",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
