@@ -2,6 +2,29 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update documentation",
+            "author": "andredias@microsoft.com",
+            "commit": "a84e6352e7a0a8ed79a75e9688b87d8890d5a241",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "12b74625dec55bd1919f6370513043d87705e5ea",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Jul 2021 07:35:36 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.48",
       "version": "9.0.0-alpha.48",

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 14 Jul 2021 07:28:19 GMT",
+      "tag": "@fluentui/react-charting_v5.3.9",
+      "version": "5.3.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.2",
+            "author": "makopch@microsoft.com",
+            "commit": "54d610936b6670ecfe3c1577ed779af25c27ef3e",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-charting_v5.3.8",
+      "version": "5.3.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedVertical Chart accessibility change",
+            "author": "v-scharde@microsoft.com",
+            "commit": "048e29ee864b0490393627399f6e2d398b2eac0b",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Jul 2021 07:35:36 GMT",
       "tag": "@fluentui/react-charting_v5.3.7",
       "version": "5.3.7",

@@ -26,6 +26,8 @@ module.exports = {
     '<rootDir>/packages/react-theme',
     '<rootDir>/packages/react-badge',
     '<rootDir>/packages/keyboard-keys',
+    '<rootDir>/packages/react-slider',
+    '<rootDir>/packages/make-styles-webpack-loader',
     '<rootDir>/packages/react-avatar',
   ],
 };
