@@ -15,7 +15,7 @@ function isInsideComponent() {
   }
 }
 
-export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
+export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
   const getStyles = vanillaMakeStyles(stylesBySlots);
 
   if (process.env.NODE_ENV !== 'production') {
