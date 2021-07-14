@@ -203,53 +203,51 @@ export const ActiveAnimation = () => {
   }, []);
 
   return (
-    <>
+    <div className={flexStyles.stack}>
+      <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Avatar
+          size={size}
+          active={active ? 'active' : 'inactive'}
+          activeDisplay={activeDisplay}
+          name={examples.name[10]}
+          image={display === 'image' ? examples.image[10] : undefined}
+          icon={display === 'icon' ? <ContactIcon /> : undefined}
+        />
+      </div>
       <div className={flexStyles.stack}>
-        <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Avatar
-            size={size}
-            active={active ? 'active' : 'inactive'}
-            activeDisplay={activeDisplay}
-            name={examples.name[10]}
-            image={display === 'image' ? examples.image[10] : undefined}
-            icon={display === 'icon' ? <ContactIcon /> : undefined}
-          />
+        <Button onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</Button>
+        {/* Temporarly replacement of SpinButtons */}
+        <div className={flexStyles.flex}>
+          <span>activeDisplay="{activeDisplay}"</span>
+          <Button value={activeDisplay} onClick={nextActiveDisplay}>
+            next
+          </Button>
+          <Button value={activeDisplay} onClick={prevActiveDisplay}>
+            prev
+          </Button>
         </div>
-        <div className={flexStyles.stack}>
-          <Button onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</Button>
-          {/* Temporarly replacement of SpinButtons */}
-          <div className={flexStyles.flex}>
-            Active Display:
-            <Button value={activeDisplay} onClick={nextActiveDisplay}>
-              next
-            </Button>
-            <Button value={activeDisplay} onClick={prevActiveDisplay}>
-              prev
-            </Button>
-          </div>
 
-          <div className={flexStyles.flex}>
-            Display:
-            <Button value={display} onClick={nextDisplay}>
-              next
-            </Button>
-            <Button value={display} onClick={prevDisplay}>
-              prev
-            </Button>
-          </div>
+        <div className={flexStyles.flex}>
+          <span>display="{display}"</span>
+          <Button value={display} onClick={nextDisplay}>
+            next
+          </Button>
+          <Button value={display} onClick={prevDisplay}>
+            prev
+          </Button>
+        </div>
 
-          <div className={flexStyles.flex}>
-            size:
-            <Button value={size} onClick={nextSize}>
-              next
-            </Button>
-            <Button value={size} onClick={prevSize}>
-              prev
-            </Button>
-          </div>
+        <div className={flexStyles.flex}>
+          <span>size="{size}"</span>
+          <Button value={size} onClick={nextSize}>
+            next
+          </Button>
+          <Button value={size} onClick={prevSize}>
+            prev
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
