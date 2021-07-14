@@ -1,22 +1,19 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
+import { Box, Text, Button, Tooltip, Menu } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
-import { tabListBehavior } from '@fluentui/accessibility';
 // import Anatomy from './Anatomy';
 import { BrowserWindow } from './BrowserWindow';
 import { Canvas } from './Canvas';
 import { Description } from './Description';
 import { Knobs } from './Knobs';
-import { ComponentList } from './ComponentList';
 import { Toolbar } from './Toolbar';
 import { jsonTreeFindElement, renderJSONTreeToJSXElement, getCodeSandboxInfo, resolveDraggingElement } from '../config';
 import { writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 import { JSONTreeElement } from './types';
-import { ComponentTree } from './ComponentTree';
 import { GetShareableLink } from './GetShareableLink';
 import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
@@ -24,7 +21,7 @@ import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
-import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
+import { NavigationMenuTab } from './NavigationMenuTab/NavigationMenu';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -372,18 +369,6 @@ export const Designer: React.FunctionComponent = () => {
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
 
-  const accessErrorLabelStyle = {
-    position: 'relative',
-    right: '5px',
-    top: '-5px',
-    transform: 'rotate(0deg);',
-    border: 'solid 2px white',
-    height: '18px',
-    width: '18px',
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
-
   return (
     <div
       style={{
@@ -447,128 +432,29 @@ export const Designer: React.FunctionComponent = () => {
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
-
-      <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
-          <Menu
-            accessibility={tabListBehavior}
-            vertical
-            styles={({ theme }) => ({
-              background: '#FAF9F8',
-              border: '0px',
-              borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
-              borderRadius: '0px',
-              display: 'flex',
-              flexDirection: 'column',
-              width: '3.4rem',
-              transition: 'opacity 0.2s',
-              position: 'relative',
-              padding: '0px',
-              ...(mode === 'use' && {
-                pointerEvents: 'none',
-                opacity: 0,
-              }),
-            })}
-          >
-            <NavBarItem
-              title="Add components"
-              isSelected={activeTab === 'add'}
-              icon={<AddIcon size="large" outline />}
-              onClickHandler={() => selectActiveTab('add')}
-            />
-
-            <NavBarItem
-              title="Accessibility"
-              isSelected={activeTab === 'accessibility'}
-              icon={
-                accessibilityErrors.length !== 0 ? (
-                  <>
-                    {' '}
-                    <AccessibilityIcon size="large" />
-                    <Label
-                      design={accessErrorLabelStyle}
-                      color={'red'}
-                      content={accessibilityErrors.length}
-                      circular
-                      fluid
-                    />{' '}
-                  </>
-                ) : (
-                  <AccessibilityIcon size="large" outline />
-                )
-              }
-              onClickHandler={() => selectActiveTab('accessibility')}
-            />
-
-            <NavBarItem
-              title="Navigator"
-              isSelected={activeTab === 'nav'}
-              icon={<MenuIcon size="large" outline />}
-              onClickHandler={() => selectActiveTab('nav')}
-            />
-          </Menu>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              minWidth: '22.85rem',
-              transition: 'opacity 0.2s',
-              ...(mode === 'use' && {
-                pointerEvents: 'none',
-                opacity: 0,
-              }),
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0 10px 0 20px',
-                borderBottom: '1px solid #E1DFDD',
-              }}
-            >
-              <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-                {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
-              </Header>
-            </div>
-            {activeTab === 'add' && (
-              <div>
-                <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-              </div>
-            )}
-            {activeTab === 'accessibility' && (
-              <AccessibilityErrorMenu
-                tree={jsonTree}
-                selectedComponent={selectedComponent}
-                accessibilityErrors={accessibilityErrors}
-                onSelectComponent={handleSelectComponent}
-              />
-            )}
-            {activeTab === 'nav' && (
-              <div>
-                {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
-                  <Button
-                    text
-                    content="Insert first component"
-                    fluid
-                    onClick={() => handleOpenAddComponentDialog('', 'first')}
-                  />
-                )}
-                <ComponentTree
-                  tree={jsonTree}
-                  selectedComponent={selectedComponent}
-                  selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                  onSelectComponent={handleSelectComponent}
-                  onCloneComponent={handleCloneComponent}
-                  onMoveComponent={handleMoveComponent}
-                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                  onAddComponent={handleOpenAddComponentDialog}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          overflow: 'auto',
+        }}
+      >
+        <NavigationMenuTab
+          mode={mode}
+          jsonTree={jsonTree}
+          activeTab={activeTab}
+          selectedComponent={selectedComponent}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+          accessibilityErrors={accessibilityErrors}
+          onSelectComponent={handleSelectComponent}
+          onCloneComponent={handleCloneComponent}
+          onMoveComponent={handleMoveComponent}
+          onDeleteSelectedComponent={handleDeleteSelectedComponent}
+          onAddComponent={handleOpenAddComponentDialog}
+          onDragStart={handleDragStart}
+          selectActiveTab={selectActiveTab}
+        />
         <div
           style={{
             display: 'flex',
