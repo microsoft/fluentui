@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Jul 2021 12:22:25 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jul 2021 12:23:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.173.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.173.1)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.173.0..office-ui-fabric-react_v7.173.1)
+
+### Patches
+
+- Set id correctly on header item when title is an IContextualMenuItem ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+- ComboBox: Propagate ariaLabel to the dropdown list element ([PR #18891](https://github.com/microsoft/fluentui/pull/18891) by behowell@microsoft.com)
 
 ## [7.173.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.173.0)
 

@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 14 Jul 2021 12:23:18 GMT",
+      "tag": "office-ui-fabric-react_v7.173.1",
+      "version": "7.173.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set id correctly on header item when title is an IContextualMenuItem",
+            "author": "makopch@microsoft.com",
+            "commit": "83b8a259c0d0c0e4643fcd2cac514b2a32c08bd2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ComboBox: Propagate ariaLabel to the dropdown list element",
+            "author": "behowell@microsoft.com",
+            "commit": "54f41cd6ba45ae18b9293f7a41df1b1cdad3da3b",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 12:22:25 GMT",
       "tag": "office-ui-fabric-react_v7.173.0",
       "version": "7.173.0",
