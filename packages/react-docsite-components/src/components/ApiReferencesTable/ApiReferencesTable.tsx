@@ -3,12 +3,11 @@ import { mergeStyles, getTheme } from '@fluentui/react/lib/Styling';
 import {
   DetailsList,
   DetailsRow,
+  IDetailsRowProps,
   IDetailsRowStyles,
   DetailsListLayoutMode,
   IColumn,
   ColumnActionsMode,
-  IDetailsListProps,
-  DetailsHeader,
 } from '@fluentui/react/lib/DetailsList';
 import { Link } from '@fluentui/react/lib/Link';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
@@ -229,7 +228,6 @@ const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo
       selectionMode={SelectionMode.none}
       layoutMode={DetailsListLayoutMode.justified}
       onRenderRow={_onRenderRow}
-      onRenderDetailsHeader={_onRenderHeader}
       onShouldVirtualize={_returnFalse}
     />
   );
@@ -249,18 +247,9 @@ const rowStyles: Partial<IDetailsRowStyles> = {
   },
   isMultiline: { wordBreak: 'break-word' },
 };
-const _onRenderRow: IDetailsListProps['onRenderRow'] = props => {
-  return <DetailsRow {...props!} styles={rowStyles} />;
-};
-
-const _onRenderHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
-  return (
-    <DetailsHeader
-      {...props!}
-      ariaLabelForToggleAllGroupsButton={props!.isAllCollapsed ? 'Expand all groups' : 'Collapse all groups'}
-    />
-  );
-};
+function _onRenderRow(props: IDetailsRowProps) {
+  return <DetailsRow {...props} styles={rowStyles} />;
+}
 
 /** Field names used in the API list (used in generating columns and renderers) */
 type ApiListFieldName = 'name' | 'value' | 'type' | 'defaultValue' | 'description' | 'signature';
