@@ -19,8 +19,12 @@ export type ButtonDefaultedProps = 'icon' | 'size';
 export type ButtonProps = ComponentPropsCompat & React_2.ButtonHTMLAttributes<HTMLElement> & {
     children?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    block?: boolean;
+    circular?: boolean;
     disabled?: boolean;
+    disabledFocusable?: boolean;
     iconPosition?: 'before' | 'after';
+    outline?: boolean;
     primary?: boolean;
     size?: 'small' | 'medium' | 'large';
     subtle?: boolean;

@@ -18,12 +18,14 @@ export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> 
 
 export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {}
 
-export interface AccordionItemState extends ComponentState<AccordionItemSlots>, AccordionItemCommons {
+export interface AccordionItemState
+  extends ComponentState<AccordionItemSlots>,
+    AccordionItemCommons,
+    AccordionItemContextValue {
   /**
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  context: AccordionItemContextValue;
   /**
    * Internal Context used by AccordionHeader and AccordionPanel communication
    */
