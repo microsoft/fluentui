@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, useControllableValue } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 import { useMenuContext } from '../../contexts/menuContext';
+import { MenuContext } from '../../contexts/menuContext';
 
 /**
  * Returns the props and state required to render the component
@@ -11,8 +13,9 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
   const focusAttributes = useArrowNavigationGroup({ circular: true });
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
+  const hasMenuContext = useHasParentContext(MenuContext);
 
-  if (usingPropsAndMenuContext(props, menuContext)) {
+  if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
     // eslint-disable-next-line no-console
     console.warn('You are using both MenuList and Menu props, we recommend you to use Menu props when available');
@@ -26,10 +29,10 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
     hasIcons: menuContext.hasIcons,
     hasCheckmarks: menuContext.hasCheckmarks,
     ...focusAttributes,
-    ...(menuContext.hasMenuContext && menuContext),
+    ...(hasMenuContext && menuContext),
     // TODO: This is needed because Menu 'controls' the MenuList and will cause switching controlled state warnings
     // Solution is to define 'initial value' in useControllableValue like in v0
-    ...(menuContext.hasMenuContext && !menuContext.checkedValues && { checkedValues: {} }),
+    ...(hasMenuContext && !menuContext.checkedValues && { checkedValues: {} }),
     ...props,
   };
 
@@ -121,7 +124,6 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
  * Adds some sugar to fetching multiple context selector values
  */
 const useMenuContextSelectors = () => {
-  const hasMenuContext = useMenuContext(context => context.hasMenuContext);
   const checkedValues = useMenuContext(context => context.checkedValues);
   const onCheckedValueChange = useMenuContext(context => context.onCheckedValueChange);
   const defaultCheckedValues = useMenuContext(context => context.defaultCheckedValues);
@@ -130,7 +132,6 @@ const useMenuContextSelectors = () => {
   const hasCheckmarks = useMenuContext(context => context.hasCheckmarks);
 
   return {
-    hasMenuContext,
     checkedValues,
     onCheckedValueChange,
     defaultCheckedValues,
@@ -143,7 +144,11 @@ const useMenuContextSelectors = () => {
 /**
  * Helper function to detect if props and MenuContext values are both used
  */
-const usingPropsAndMenuContext = (props: MenuListProps, contextValue: ReturnType<typeof useMenuContextSelectors>) => {
+const usingPropsAndMenuContext = (
+  props: MenuListProps,
+  contextValue: ReturnType<typeof useMenuContextSelectors>,
+  hasMenuContext: boolean,
+) => {
   let isUsingPropsAndContext = false;
   for (const val in contextValue) {
     if (props[val as keyof Omit<typeof contextValue, 'hasMenuContext' | 'onCheckedValueChange' | 'triggerId'>]) {
@@ -151,5 +156,5 @@ const usingPropsAndMenuContext = (props: MenuListProps, contextValue: ReturnType
     }
   }
 
-  return contextValue.hasMenuContext && isUsingPropsAndContext;
+  return hasMenuContext && isUsingPropsAndContext;
 };

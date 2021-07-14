@@ -1,5 +1,6 @@
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext } from '../contexts/menuContext';
-import { useMenuListContext } from '../contexts/menuListContext';
+import { MenuListContext } from '../contexts/menuListContext';
 
 /**
  * A component can be a part of a submenu whether its menu context `isSubmenu` flag is true
@@ -11,7 +12,7 @@ import { useMenuListContext } from '../contexts/menuListContext';
  */
 export function useIsSubmenu() {
   const menuContextValue = useMenuContext(context => context.isSubmenu);
-  const menuListContextValue = useMenuListContext(context => context.hasMenuListContext);
+  const hasMenuListContext = useHasParentContext(MenuListContext);
 
-  return menuContextValue || menuListContextValue;
+  return menuContextValue || hasMenuListContext;
 }

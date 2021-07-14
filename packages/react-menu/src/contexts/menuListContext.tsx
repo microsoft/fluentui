@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
 import { SelectableHandler } from '../selectable/index';
 import { MenuListProps } from '../components/index';
 
-const MenuListContext = createContext<MenuListContextValue>({
+export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue>({
   checkedValues: {},
   onCheckedValueChange: () => null,
   setFocusByFirstCharacter: () => null,
@@ -11,7 +11,6 @@ const MenuListContext = createContext<MenuListContextValue>({
   selectRadio: () => null,
   hasIcons: false,
   hasCheckmarks: false,
-  hasMenuListContext: false,
 });
 
 /**
@@ -22,7 +21,6 @@ export interface MenuListContextValue
   setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
   toggleCheckbox?: SelectableHandler;
   selectRadio?: SelectableHandler;
-  hasMenuListContext?: boolean;
 }
 
 export const MenuListProvider = MenuListContext.Provider;
