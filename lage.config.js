@@ -4,6 +4,7 @@ module.exports = {
     build: ['^build'],
     'build:info': [],
     bundle: ['build'],
+    'bundle-size': ['build'],
     'bundle:storybook': ['build'],
     'screener:build': [],
     screener: ['screener:build'],

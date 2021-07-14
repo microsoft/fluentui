@@ -502,7 +502,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   if (density === 'compact') {
     const headerElement = createShorthand(ChatMessageHeader, header);
 
-    const bodyElement = Box.create(compactBody, {
+    const bodyElement = Box.create(compactBody || {}, {
       defaultProps: () =>
         getA11Props('compactBody', {
           className: chatMessageSlotClassNames.compactBody,
@@ -593,7 +593,6 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
-  compactBody: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };

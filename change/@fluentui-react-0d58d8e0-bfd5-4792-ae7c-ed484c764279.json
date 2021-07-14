@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove title tooltip from TeachingBubble close button",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
