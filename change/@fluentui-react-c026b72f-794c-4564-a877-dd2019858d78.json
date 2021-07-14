@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Set id correctly on header item when title is an IContextualMenuItem",
-  "packageName": "@fluentui/react",
-  "email": "makopch@microsoft.com",
-  "dependentChangeType": "patch"
-}
