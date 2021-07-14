@@ -1,6 +1,6 @@
-import { keyCodes } from '@fluentui/keyboard-keys';
+import { Enter, Tab, ArrowDown, ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 
-console.log(keyCodes.Enter, keyCodes.Tab, keyCodes.ArrowDown, keyCodes.ArrowLeft, keyCodes.ArrowRight);
+console.log(Enter, Tab, ArrowDown, ArrowLeft, ArrowRight);
 
 export default {
   name: 'Multiple keys',
