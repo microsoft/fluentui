@@ -519,6 +519,10 @@ export interface IHeatMapChartDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IHeatMapChartData {

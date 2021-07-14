@@ -1,4 +1,5 @@
 import {
+  IAccessibilityProps,
   CartesianChart,
   IChildProps,
   IModifiedCartesianChartProps,
@@ -80,6 +81,10 @@ export interface IHeatMapChartState {
    * id to give to callout for accesiblity purpose
    */
   calloutId: string;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -175,7 +180,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       styles: this._classNames.subComponentStyles.calloutStyles,
       directionalHint: DirectionalHint.bottomLeftEdge,
       onDismiss: this._closeCallout,
+      ...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
+      preventDismissOnLostFocus: true,
     };
+    console.log('Callout Props Data : ', this.state.callOutAccessibilityData);
     const chartHoverProps: IModifiedCartesianChartProps['chartHoverProps'] = {
       ...(this.state.ratio && {
         ratio: this.state.ratio,
@@ -239,6 +247,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _onRectFocus = (id: string, data: FlattenData): void => {
+    console.log('_onRectFocus : ', data.callOutAccessibilityData);
     this.setState({
       target: this._rectRefArray[id].refElement,
       isCalloutVisible: true,
@@ -248,11 +257,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
       calloutId: id,
+      callOutAccessibilityData: data.callOutAccessibilityData,
     });
   };
 
   private _onRectMouseOver = (id: string, data: FlattenData, mouseEvent: React.MouseEvent<SVGGElement>): void => {
     mouseEvent.persist();
+    console.log('_onRectMouseOver : ', data.callOutAccessibilityData);
     this.setState({
       target: this._rectRefArray[id].refElement,
       isCalloutVisible: true,
@@ -262,6 +273,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
       calloutId: id,
+      callOutAccessibilityData: data.callOutAccessibilityData,
     });
   };
 
@@ -654,6 +666,21 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getFormattedLabelForYAxisDataPoint = (point: string): string => {
     const { yAxisStringFormatter } = this.props;
     return yAxisStringFormatter ? yAxisStringFormatter(point) : point;
+  };
+
+  private _getAccessibleDataObject = (
+    accessibleData?: IAccessibilityProps,
+    role: string = 'text',
+    isDataFocusable: boolean = true,
+  ) => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': isDataFocusable,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
   };
 
   private _closeCallout = () => {
