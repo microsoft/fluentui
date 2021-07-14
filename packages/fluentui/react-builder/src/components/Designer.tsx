@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, Label, List } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -102,15 +102,6 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
-  // const accessibilityErrors = useAxeOnElements();
-  const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
-
-  React.useEffect(() => {
-    if (state.selectedJSONTreeElementUuid) {
-      runAxeOnElement(state.selectedJSONTreeElementUuid);
-    }
-  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
-
   const {
     draggingElement,
     jsonTree,
@@ -124,6 +115,15 @@ export const Designer: React.FunctionComponent = () => {
     insertComponent,
     accessibilityErrors,
   } = state;
+
+  // const accessibilityErrors = useAxeOnElements();
+  const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
+
+  React.useEffect(() => {
+    if (selectedJSONTreeElementUuid) {
+      runAxeOnElement(selectedJSONTreeElementUuid);
+    }
+  }, [selectedJSONTreeElementUuid, runAxeOnElement]);
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
@@ -540,7 +540,7 @@ export const Designer: React.FunctionComponent = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  padding: '0 2em 0 2em',
+                  padding: '1em 0 0 1em',
                   maxWidth: '5em',
                   flexWrap: 'wrap',
                 }}
@@ -558,26 +558,13 @@ export const Designer: React.FunctionComponent = () => {
                 ) : (
                   // group the accesssibility errors (if they exist)
                   // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
-                  Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <Header as="h3">{severityLevel}</Header>
-                      {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
-                        <div
-                          style={{
-                            minWidth: '2em',
-                          }}
-                        >
-                          <ul>
-                            <li>{error.elementUuid}</li>
-                            <li>{error.error}</li>
-                            <li>Source: {error.source}</li>
-                          </ul>
-                        </div>
+                  Object.keys(_.groupBy(accessibilityErrors, error => error.elementUuid)).map(elementUuid => (
+                    <div>
+                      <Button text onClick={handleSelectComponent}>
+                        {jsonTreeFindElement(jsonTree, elementUuid).displayName}
+                      </Button>
+                      {_.groupBy(accessibilityErrors, error => error.elementUuid)[elementUuid].map(error => (
+                        <List items={[error.error, `Severity: ${error.severity}`, `Source: ${error.source}`]} />
                       ))}
                     </div>
                   ))
