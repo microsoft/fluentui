@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CompoundButton, CompoundButtonProps } from './CompoundButton';
 import { Playground } from './Playground.stories';
 import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
-import { buttonBaseProps } from './buttonBaseProps';
+import { buttonBaseProps } from './buttonBaseProps.stories';
 
 type ExampleProps = { iconOnly?: string };
 

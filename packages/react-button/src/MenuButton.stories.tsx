@@ -3,7 +3,7 @@ import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/reac
 import { MenuButton, MenuButtonProps } from './MenuButton';
 import { Playground } from './Playground.stories';
 import { PlaygroundProps } from './Playground.types.stories';
-import { buttonBaseProps } from './buttonBaseProps';
+import { buttonBaseProps } from './buttonBaseProps.stories';
 
 const ExampleMenu = (props: MenuButtonProps): JSX.Element => (
   <Menu>

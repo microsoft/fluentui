@@ -3,7 +3,7 @@ import { useBoolean } from '@fluentui/react-utilities';
 import { ToggleButton, ToggleButtonProps } from './ToggleButton';
 import { Playground } from './Playground.stories';
 import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
-import { buttonBaseProps } from './buttonBaseProps';
+import { buttonBaseProps } from './buttonBaseProps.stories';
 
 export const ToggleButtonPlayground = () => {
   const [checked, { setTrue: setTrueChecked, setFalse: setFalseChecked, toggle: toggleChecked }] = useBoolean(false);
