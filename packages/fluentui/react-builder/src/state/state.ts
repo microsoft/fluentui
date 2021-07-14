@@ -148,16 +148,16 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.redo = [];
 
       if (draftState.selectedJSONTreeElementUuid) {
+        jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
+        draftState.selectedJSONTreeElementUuid = null;
+        draftState.selectedComponentInfo = null;
+        treeChanged = true;
         if (draftState.accessibilityErrors) {
           // if accessibility errors already exist, remove any accessibility errors for the component
           draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
             error => error.elementUuid !== draftState.selectedJSONTreeElementUuid,
           );
         }
-        jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
-        draftState.selectedJSONTreeElementUuid = null;
-        draftState.selectedComponentInfo = null;
-        treeChanged = true;
       }
       break;
 
@@ -171,6 +171,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
+        // draftState.accessibilityErrors[action.component.uuid] = runAxeOnElement(action.component.uuid);
         treeChanged = true;
       }
       break;

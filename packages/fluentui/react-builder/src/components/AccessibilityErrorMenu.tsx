@@ -75,7 +75,7 @@ export const AccessibilityErrorMenu: React.FunctionComponent<AccessibilityErrorM
                   flexDirection: 'column',
                   marginBottom: '1rem',
                   padding: '.5em',
-                  lineHeight: '1.25em',
+                  lineHeight: '1.5em',
                 }}
               >
                 {error.error}
