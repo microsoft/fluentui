@@ -63,13 +63,11 @@ See [react-image/Image.types.ts] for the API.
 
 | Name       | Type      | Default value | Comments                                     |
 | ---------- | --------- | ------------- | -------------------------------------------- |
-| `alt`      | `string`  | `undefined`   |                                              |
 | `bordered` | `boolean` | `false`       |                                              |
 | `fit`      | `string`  | "`none`"      | One of: `none`, `center`, `contain`, `cover` |
 | `fluid`    | `boolean` | `false`       |                                              |
 | `circular` | `boolean` | `false`       |                                              |
 | `rounded`  | `boolean` | `false`       | rounded corners                              |
-| `src`      | `string`  | `undefined`   |                                              |
 
 ## Sample Code
 
