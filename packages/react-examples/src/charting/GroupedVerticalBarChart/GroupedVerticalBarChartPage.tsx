@@ -5,10 +5,12 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.Basic.Example';
 import { GroupedVerticalBarChartBasic2Example } from './GroupedVerticalBarChart.Basic2.Example';
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
+import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVerticalBarChart.CustomAccessibility.Example';
 
 const GroupedVerticalBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
 const GroupedVerticalStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
 const GroupedVerticalBasic2ExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic2.Example.tsx') as string;
+const GroupedVerticalCustomAccessibilityExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/GroupedVerticalBarChart/GroupedVerticalBarChart.CustomAccessibility.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,6 +28,12 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
             </ExampleCard>
             <ExampleCard title="Grouped Vertical Bar Chart Styled" code={GroupedVerticalStyledExampleCode}>
               <GroupedVerticalBarChartStyledExample />
+            </ExampleCard>
+            <ExampleCard
+              title="Grouped Vertical Bar Chart Custom Accessibility"
+              code={GroupedVerticalCustomAccessibilityExampleCode}
+            >
+              <GroupedVerticalBarChartCustomAccessibilityExample />
             </ExampleCard>
           </div>
         }

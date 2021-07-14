@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "GroupedVertical Chart accessibility change",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
