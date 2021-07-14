@@ -1,6 +1,7 @@
 module.exports = {
   projects: [
     '<rootDir>/tools',
+    '<rootDir>/packages/bundle-size',
     '<rootDir>/packages/react-menu',
     '<rootDir>/packages/react-storybook',
     '<rootDir>/packages/react-accordion',
@@ -25,5 +26,8 @@ module.exports = {
     '<rootDir>/packages/react-theme',
     '<rootDir>/packages/react-badge',
     '<rootDir>/packages/react-button',
+    '<rootDir>/packages/keyboard-keys',
+    '<rootDir>/packages/react-slider',
+    '<rootDir>/packages/make-styles-webpack-loader',
   ],
 };

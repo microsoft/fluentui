@@ -25,10 +25,9 @@ export type ShorthandProps<Props = {}> =
   | undefined
   | ObjectShorthandProps<Props>;
 
-export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props &
-  Pick<ComponentProps, 'as'> & {
-    children?: Props['children'] | ShorthandRenderFunction<Props>;
-  };
+export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props & {
+  children?: Props['children'] | ShorthandRenderFunction<Props>;
+};
 
 export interface DefaultComponentProps {
   as?: keyof JSX.IntrinsicElements;
