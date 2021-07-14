@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat(useControllableState): deprecate useControlledValue with new hook",
+  "comment": "feat(Menu): replace useControllableValue with useControllableState",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { useConst } from './useConst';
 
-type NonUndefined<T> = T extends undefined ? never : T;
-
-type UseControllableStateOptions<State> = {
+export type UseControllableStateOptions<State> = {
   /**
    * User provided default state or factory initializer
    */
@@ -38,7 +36,7 @@ export const useControllableState = <State>(
   const initialState = isUndefined(options.defaultState) ? options.initialState : options.defaultState;
   const [internalState, setInternalState] = React.useState<State>(initialState);
 
-  const state = isControlled ? (options.state as NonUndefined<State>) : internalState;
+  const state = isControlled ? (options.state as State) : internalState;
 
   const stateRef = React.useRef(state);
   React.useEffect(() => {
@@ -67,7 +65,7 @@ export const useControllableState = <State>(
  * Prints an error when isControlled value switches between subsequent renders
  * @returns - whether the value is controlled
  */
-const useIsControlled = <TValue>(controlledValue: TValue) => {
+const useIsControlled = (controlledValue: unknown) => {
   const isControlled = useConst<boolean>(controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {

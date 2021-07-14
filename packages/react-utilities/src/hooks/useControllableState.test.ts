@@ -1,30 +1,30 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useControllableState } from './useControllableState';
 
+interface RenderProps<T> {
+  state: boolean | undefined;
+  defaultState?: boolean;
+  initialState: boolean;
+}
+
 describe('useControllableState', () => {
   afterEach(jest.resetAllMocks);
 
   it('respects controlled state', () => {
-    let state: boolean;
-    let defaultState: boolean | undefined;
-    const initialState = false;
+    const { result, rerender } = renderHook((props: RenderProps<boolean>) => useControllableState({ ...props }), {
+      initialProps: { state: true, initialState: false },
+    });
 
-    state = true;
-    const { result, rerender } = renderHook(() => useControllableState({ state, defaultState, initialState }));
-    expect(result.current[0]).toBe(state);
+    expect(result.current[0]).toBe(true);
 
-    state = false;
-    rerender();
-    expect(result.current[0]).toBe(state);
+    rerender({ state: false, initialState: false });
+    expect(result.current[0]).toBe(false);
 
-    state = false;
-    defaultState = true;
-    rerender();
-    expect(result.current[0]).toBe(state);
+    rerender({ defaultState: true, state: false, initialState: false });
+    expect(result.current[0]).toBe(false);
 
-    state = true;
-    rerender();
-    expect(result.current[0]).toBe(state);
+    rerender({ state: true, initialState: false });
+    expect(result.current[0]).toBe(true);
   });
 
   it('uses initial state if state and default state are undefined', () => {
