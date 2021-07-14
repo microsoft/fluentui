@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
 import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
+import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -484,23 +484,17 @@ export const Designer: React.FunctionComponent = () => {
                 accessibilityErrors.length !== 0 ? (
                   <>
                     {' '}
-                    <ExclamationCircleIcon size="large" outline />
+                    <AccessibilityIcon size="large" />
                     <Label
                       design={accessErrorLabelStyle}
                       color={'red'}
-                      content={
-                        <span
-                          style={{ fontSize: '6px !important', width: '100%', textAlign: 'center', lineHeight: '.5em' }}
-                        >
-                          {accessibilityErrors.length}
-                        </span>
-                      }
+                      content={accessibilityErrors.length}
                       circular
                       fluid
                     />{' '}
                   </>
                 ) : (
-                  <ExclamationCircleIcon size="large" outline />
+                  <AccessibilityIcon size="large" outline />
                 )
               }
               onClickHandler={() => selectActiveTab('accessibility')}
