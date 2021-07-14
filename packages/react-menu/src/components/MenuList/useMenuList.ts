@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs, useEventCallback, useControllableValue } from '@fluentui/react-utilities';
+import { useMergedRefs, useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
@@ -30,9 +30,6 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
     hasCheckmarks: menuContext.hasCheckmarks,
     ...focusAttributes,
     ...(hasMenuContext && menuContext),
-    // TODO: This is needed because Menu 'controls' the MenuList and will cause switching controlled state warnings
-    // Solution is to define 'initial value' in useControllableValue like in v0
-    ...(hasMenuContext && !menuContext.checkedValues && { checkedValues: {} }),
     ...props,
   };
 
@@ -82,10 +79,11 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
     [findAllFocusable],
   );
 
-  const [checkedValues, setCheckedValues] = useControllableValue(
-    initialState.checkedValues,
-    initialState.defaultCheckedValues,
-  );
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: initialState.checkedValues,
+    defaultState: initialState.defaultCheckedValues,
+    initialState: {},
+  });
 
   const { onCheckedValueChange } = initialState;
   const toggleCheckbox = useEventCallback(

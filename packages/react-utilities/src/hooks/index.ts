@@ -1,3 +1,4 @@
+export * from './useControllableState';
 export * from './useBoolean';
 export * from './useConst';
 export * from './useControllableValue';
