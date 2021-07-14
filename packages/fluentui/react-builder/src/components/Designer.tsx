@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
 import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
+import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -25,6 +24,7 @@ import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
+import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -102,17 +102,6 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
-  // const accessibilityErrors = useAxeOnElements();
-  const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
-
-  React.useEffect(() => {
-    if (state.selectedJSONTreeElementUuid) {
-      runAxeOnElement(state.selectedJSONTreeElementUuid);
-    }
-  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
-
-  // test
-
   const {
     draggingElement,
     jsonTree,
@@ -126,6 +115,15 @@ export const Designer: React.FunctionComponent = () => {
     insertComponent,
     accessibilityErrors,
   } = state;
+
+  // const accessibilityErrors = useAxeOnElements();
+  const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
+
+  React.useEffect(() => {
+    if (selectedJSONTreeElementUuid) {
+      runAxeOnElement(selectedJSONTreeElementUuid);
+    }
+  }, [selectedJSONTreeElementUuid, runAxeOnElement]);
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
@@ -486,16 +484,17 @@ export const Designer: React.FunctionComponent = () => {
                 accessibilityErrors.length !== 0 ? (
                   <>
                     {' '}
-                    <ExclamationCircleIcon size="large" outline />
+                    <AccessibilityIcon size="large" />
                     <Label
                       design={accessErrorLabelStyle}
                       color={'red'}
-                      content={<Text size="smaller">{accessibilityErrors.length}</Text>}
+                      content={accessibilityErrors.length}
                       circular
+                      fluid
                     />{' '}
                   </>
                 ) : (
-                  <ExclamationCircleIcon size="large" outline />
+                  <AccessibilityIcon size="large" outline />
                 )
               }
               onClickHandler={() => selectActiveTab('accessibility')}
@@ -538,53 +537,12 @@ export const Designer: React.FunctionComponent = () => {
               </div>
             )}
             {activeTab === 'accessibility' && (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: '0 2em 0 2em',
-                  maxWidth: '5em',
-                  flexWrap: 'wrap',
-                }}
-              >
-                <Text size={'small'}>
-                  To learn more about best practices for accessibility, visit
-                  <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
-                    {' https://www.microsoft.com/en-us/accessibility/'}
-                  </a>
-                  <br />
-                  <br />
-                </Text>
-                {_.isEmpty(accessibilityErrors) ? (
-                  <Text weight={'bold'}>No accessibility errors automatically detected.</Text>
-                ) : (
-                  // group the accesssibility errors (if they exist)
-                  // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
-                  Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <Header as="h3">{severityLevel}</Header>
-                      {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
-                        <div
-                          style={{
-                            minWidth: '2em',
-                          }}
-                        >
-                          <ul>
-                            <li>{error.elementUuid}</li>
-                            <li>{error.error}</li>
-                            <li>Source: {error.source}</li>
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  ))
-                )}
-              </div>
+              <AccessibilityErrorMenu
+                tree={jsonTree}
+                selectedComponent={selectedComponent}
+                accessibilityErrors={accessibilityErrors}
+                onSelectComponent={handleSelectComponent}
+              />
             )}
             {activeTab === 'nav' && (
               <div>

@@ -31,6 +31,9 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
     <div
       style={{
         background: '#e3404022',
+        marginTop: '1rem',
+        padding: '.25rem',
+        borderRadius: '.5rem',
       }}
     >
       <Accordion panels={panels} />
