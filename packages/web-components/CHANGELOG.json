@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/web-components_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add attribute to recreate the accent palette using design system provider",
+            "author": "chhol@microsoft.com",
+            "commit": "3d08290cc1852c60751ed8f28a4ebea56fb92af9",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "Added attribute to allow easy update to the neutral palette",
+            "author": "47367562+bheston@users.noreply.github.com",
+            "commit": "a63f33c38288c5be11443f648487db825b23ba7a",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update API Extractor for web-components and force TS resolution to 4.1.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "a84e6352e7a0a8ed79a75e9688b87d8890d5a241",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/web-components_v1.0.2",
       "version": "1.0.2",
