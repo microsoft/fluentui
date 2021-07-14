@@ -38,7 +38,6 @@ export interface IAzureSemanticColors {
     disabled: string;
     hyperlink: string;
     hyperlinkHovered: string;
-    hyperlinkBackgroundHovered: string;
     success: string;
     error: string;
     placeholder: string;
@@ -179,6 +178,11 @@ export interface IAzureSemanticColors {
   detailsRow: {
     border: string;
     focus: string;
+    hoveredLink: string;
+    hoveredRowLink: string;
+    hoveredBackground: string;
+    selectedLink: string;
+    selectedHoveredLink: string;
   };
   radioButton: {
     circle: {
