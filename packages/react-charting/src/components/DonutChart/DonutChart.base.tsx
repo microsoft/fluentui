@@ -7,7 +7,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-
+import { getAccessibleDataObject } from '../../utilities/index';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export interface IDonutChartState {
@@ -135,7 +135,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
-          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
           {this.props.onRenderCalloutPerDataPoint ? (
             this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps!)
@@ -277,19 +277,4 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       return valueInsideDonut;
     }
   }
-
-  private _getAccessibleDataObject = (
-    accessibleData?: IAccessibilityProps,
-    role: string = 'text',
-    isDataFocusable: boolean = true,
-  ) => {
-    accessibleData = accessibleData ?? {};
-    return {
-      role,
-      'data-is-focusable': isDataFocusable,
-      'aria-label': accessibleData!.ariaLabel,
-      'aria-labelledby': accessibleData!.ariaLabelledBy,
-      'aria-describedby': accessibleData!.ariaDescribedBy,
-    };
-  };
 }
