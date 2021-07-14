@@ -25,6 +25,7 @@ import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
+import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -102,8 +103,8 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
-  // const accessibilityErrors = useAxeOnElements();
   const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
+  // const [validationErrors, runAxeAll] = useAxeOnElements();
 
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
@@ -111,7 +112,7 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
 
-  // test
+  const { validateAll, validationErrors } = useA11yValidationContext();
 
   const {
     draggingElement,
@@ -124,9 +125,18 @@ export const Designer: React.FunctionComponent = () => {
     activeTab,
     codeError,
     insertComponent,
-    accessibilityErrors,
   } = state;
 
+  let { accessibilityErrors } = state;
+  accessibilityErrors = validationErrors;
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      validateAll();
+    }, 1000);
+  }, [validateAll]);
+
+  // accessibilityErrors = accessibilityErrors.concat(validationErrors);
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
@@ -318,6 +328,7 @@ export const Designer: React.FunctionComponent = () => {
 
   const handleAccessibilityErrorChange = React.useCallback(
     (jsonTreeElement: JSONTreeElement, elementAccessibilityErrors: AccessibilityError[]) => {
+      console.log('error change');
       dispatch({
         type: 'ACCESSIBILITY_CHANGE',
         component: jsonTreeElement,
@@ -450,335 +461,341 @@ export const Designer: React.FunctionComponent = () => {
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
-      <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
-          <Menu
-            accessibility={tabListBehavior}
-            vertical
-            styles={({ theme }) => ({
-              background: '#FAF9F8',
-              border: '0px',
-              borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
-              borderRadius: '0px',
-              display: 'flex',
-              flexDirection: 'column',
-              width: '3.4rem',
-              transition: 'opacity 0.2s',
-              position: 'relative',
-              padding: '0px',
-              ...(mode === 'use' && {
-                pointerEvents: 'none',
-                opacity: 0,
-              }),
-            })}
-          >
-            <NavBarItem
-              title="Add components"
-              isSelected={activeTab === 'add'}
-              icon={<AddIcon size="large" outline />}
-              onClickHandler={() => selectActiveTab('add')}
-            />
+      <A11yValidationContextProvider>
+        <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
+            <Menu
+              accessibility={tabListBehavior}
+              vertical
+              styles={({ theme }) => ({
+                background: '#FAF9F8',
+                border: '0px',
+                borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
+                borderRadius: '0px',
+                display: 'flex',
+                flexDirection: 'column',
+                width: '3.4rem',
+                transition: 'opacity 0.2s',
+                position: 'relative',
+                padding: '0px',
+                ...(mode === 'use' && {
+                  pointerEvents: 'none',
+                  opacity: 0,
+                }),
+              })}
+            >
+              <NavBarItem
+                title="Add components"
+                isSelected={activeTab === 'add'}
+                icon={<AddIcon size="large" outline />}
+                onClickHandler={() => selectActiveTab('add')}
+              />
 
-            <NavBarItem
-              title="Accessibility"
-              isSelected={activeTab === 'accessibility'}
-              icon={
-                accessibilityErrors.length !== 0 ? (
-                  <>
-                    {' '}
+              <NavBarItem
+                title="Accessibility"
+                isSelected={activeTab === 'accessibility'}
+                icon={
+                  accessibilityErrors.length !== 0 ? (
+                    <>
+                      {' '}
+                      <ExclamationCircleIcon size="large" outline />
+                      <Label
+                        design={accessErrorLabelStyle}
+                        color={'red'}
+                        content={<Text size="smaller">{accessibilityErrors.length}</Text>}
+                        circular
+                      />{' '}
+                    </>
+                  ) : (
                     <ExclamationCircleIcon size="large" outline />
-                    <Label
-                      design={accessErrorLabelStyle}
-                      color={'red'}
-                      content={<Text size="smaller">{accessibilityErrors.length}</Text>}
-                      circular
-                    />{' '}
-                  </>
-                ) : (
-                  <ExclamationCircleIcon size="large" outline />
-                )
-              }
-              onClickHandler={() => selectActiveTab('accessibility')}
-            />
+                  )
+                }
+                onClickHandler={() => selectActiveTab('accessibility')}
+              />
 
-            <NavBarItem
-              title="Navigator"
-              isSelected={activeTab === 'nav'}
-              icon={<MenuIcon size="large" outline />}
-              onClickHandler={() => selectActiveTab('nav')}
-            />
-          </Menu>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              minWidth: '22.85rem',
-              transition: 'opacity 0.2s',
-              ...(mode === 'use' && {
-                pointerEvents: 'none',
-                opacity: 0,
-              }),
-            }}
-          >
+              <NavBarItem
+                title="Navigator"
+                isSelected={activeTab === 'nav'}
+                icon={<MenuIcon size="large" outline />}
+                onClickHandler={() => selectActiveTab('nav')}
+              />
+            </Menu>
             <div
               style={{
                 display: 'flex',
-                alignItems: 'center',
-                padding: '0 10px 0 20px',
-                borderBottom: '1px solid #E1DFDD',
+                flexDirection: 'column',
+                minWidth: '22.85rem',
+                transition: 'opacity 0.2s',
+                ...(mode === 'use' && {
+                  pointerEvents: 'none',
+                  opacity: 0,
+                }),
               }}
             >
-              <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-                {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
-              </Header>
-            </div>
-            {activeTab === 'add' && (
-              <div>
-                <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-              </div>
-            )}
-            {activeTab === 'accessibility' && (
               <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'column',
-                  padding: '0 2em 0 2em',
-                  maxWidth: '5em',
-                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  padding: '0 10px 0 20px',
+                  borderBottom: '1px solid #E1DFDD',
                 }}
               >
-                <Text size={'small'}>
-                  To learn more about best practices for accessibility, visit
-                  <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
-                    {' https://www.microsoft.com/en-us/accessibility/'}
-                  </a>
-                  <br />
-                  <br />
-                </Text>
-                {_.isEmpty(accessibilityErrors) ? (
-                  <Text weight={'bold'}>No accessibility errors automatically detected.</Text>
-                ) : (
-                  // group the accesssibility errors (if they exist)
-                  // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
-                  Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <Header as="h3">{severityLevel}</Header>
-                      {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
-                        <div
-                          style={{
-                            minWidth: '2em',
-                          }}
-                        >
-                          <ul>
-                            <li>{error.elementUuid}</li>
-                            <li>{error.error}</li>
-                            <li>Source: {error.source}</li>
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  ))
-                )}
+                <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                  {activeTab === 'add'
+                    ? 'Add components'
+                    : activeTab === 'accessibility'
+                    ? 'Accessibility'
+                    : 'Navigator'}
+                </Header>
               </div>
-            )}
-            {activeTab === 'nav' && (
-              <div>
-                {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
-                  <Button
-                    text
-                    content="Insert first component"
-                    fluid
-                    onClick={() => handleOpenAddComponentDialog('', 'first')}
+              {activeTab === 'add' && (
+                <div>
+                  <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+                </div>
+              )}
+              {activeTab === 'accessibility' && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: '0 2em 0 2em',
+                    maxWidth: '5em',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <Text size={'small'}>
+                    To learn more about best practices for accessibility, visit
+                    <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
+                      {' https://www.microsoft.com/en-us/accessibility/'}
+                    </a>
+                    <br />
+                    <br />
+                  </Text>
+                  {_.isEmpty(accessibilityErrors) ? (
+                    <Text weight={'bold'}>No accessibility errors automatically detected.</Text>
+                  ) : (
+                    // group the accesssibility errors (if they exist)
+                    // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
+                    Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}
+                      >
+                        <Header as="h3">{severityLevel}</Header>
+                        {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
+                          <div
+                            style={{
+                              minWidth: '2em',
+                            }}
+                          >
+                            <ul>
+                              <li>{error.elementUuid}</li>
+                              <li>{error.error}</li>
+                              <li>Source: {error.source}</li>
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+              {activeTab === 'nav' && (
+                <div>
+                  {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
+                    <Button
+                      text
+                      content="Insert first component"
+                      fluid
+                      onClick={() => handleOpenAddComponentDialog('', 'first')}
+                    />
+                  )}
+                  <ComponentTree
+                    tree={jsonTree}
+                    selectedComponent={selectedComponent}
+                    selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+                    onSelectComponent={handleSelectComponent}
+                    onCloneComponent={handleCloneComponent}
+                    onMoveComponent={handleMoveComponent}
+                    onDeleteSelectedComponent={handleDeleteSelectedComponent}
+                    onAddComponent={handleOpenAddComponentDialog}
                   />
-                )}
-                <ComponentTree
-                  tree={jsonTree}
-                  selectedComponent={selectedComponent}
-                  selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                  onSelectComponent={handleSelectComponent}
-                  onCloneComponent={handleCloneComponent}
-                  onMoveComponent={handleMoveComponent}
-                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                  onAddComponent={handleOpenAddComponentDialog}
-                />
-              </div>
-            )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            flex: 1,
-            overflow: 'auto',
-          }}
-        >
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
               flex: 1,
-              minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
+              overflow: 'auto',
             }}
           >
-            <BrowserWindow
-              showNavBar={false}
-              headerItems={[
-                <div key="headerMessage" style={{ marginLeft: 10 }}>
-                  {mode === 'use' && <Text error>{headerMessage}</Text>}
-                </div>,
-                <div key="headrTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
-                  {jsonTreeOrigin === 'url' && (
-                    <>
-                      <Text error>You are working from a shared URL, no changes are saved!</Text>
-                      <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={switchToStore}>
-                        View local
-                      </Button>
-                    </>
-                  )}
-                  {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
-                  <CodeSandboxExporter
-                    exampleCode={codeSandboxData.code}
-                    exampleLanguage="js"
-                    exampleName="uibuilder"
-                    imports={codeSandboxData.imports}
-                  >
-                    {(state, onCodeSandboxClick) => {
-                      const codeSandboxContent =
-                        state === CodeSandboxState.Default
-                          ? 'CodeSandbox'
-                          : state === CodeSandboxState.Loading
-                          ? 'Exporting...'
-                          : 'Click to open';
-
-                      const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
-
-                      return (
-                        <Button
-                          loading={state === CodeSandboxState.Loading}
-                          styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
-                          onClick={onCodeSandboxClick}
-                          icon={codeSandboxIcon}
-                          content={codeSandboxContent}
-                        />
-                      );
-                    }}
-                  </CodeSandboxExporter>
-                </div>,
-              ]}
+            <div
               style={{
+                display: 'flex',
+                flexDirection: 'column',
                 flex: 1,
+                minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
               }}
             >
-              <ErrorBoundary code={code} jsonTree={jsonTree}>
-                <Canvas
-                  draggingElement={draggingElement}
-                  isExpanding={isExpanding}
-                  isSelecting={isSelecting || !!draggingElement}
-                  onMouseMove={handleDrag}
-                  onMouseUp={handleCanvasMouseUp}
-                  onKeyDown={handleKeyDown}
-                  onSelectComponent={handleSelectComponent}
-                  onDropPositionChange={handleDropPositionChange}
-                  jsonTree={jsonTree}
-                  selectedComponent={selectedComponent}
-                  onCloneComponent={handleCloneComponent}
-                  onMoveComponent={handleMoveComponent}
-                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                  onGoToParentComponent={handleGoToParentComponent}
-                  enabledVirtualCursor={enabledVirtualCursor}
-                  role="main"
-                  inUseMode={mode === 'use'}
-                  setHeaderMessage={setHeaderMessage}
-                  selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                  onAccessibilityErrors={handleAccessibilityErrorChange}
-                />
-              </ErrorBoundary>
-            </BrowserWindow>
-
-            {(showCode || showJSONTree) && (
-              <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
-                {showCode && (
-                  <div role="complementary" aria-label="Code editor">
-                    <React.Suspense fallback={<div>Loading...</div>}>
-                      <CodeEditor
-                        code={code}
-                        onCodeChange={handleSourceCodeChange}
-                        onCodeError={handleSourceCodeError}
-                      />
-                    </React.Suspense>
-                    {codeError && (
-                      <pre
-                        style={{
-                          position: 'sticky',
-                          bottom: 0,
-                          padding: '1em',
-                          // don't block viewport
-                          maxHeight: '50vh',
-                          overflowY: 'auto',
-                          color: '#fff',
-                          background: 'red',
-                          whiteSpace: 'pre-wrap',
-                          // above code editor text :/
-                          zIndex: 4,
-                        }}
-                      >
-                        {codeError}
-                      </pre>
+              <BrowserWindow
+                showNavBar={false}
+                headerItems={[
+                  <div key="headerMessage" style={{ marginLeft: 10 }}>
+                    {mode === 'use' && <Text error>{headerMessage}</Text>}
+                  </div>,
+                  <div key="headrTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
+                    {jsonTreeOrigin === 'url' && (
+                      <>
+                        <Text error>You are working from a shared URL, no changes are saved!</Text>
+                        <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={switchToStore}>
+                          View local
+                        </Button>
+                      </>
                     )}
-                  </div>
-                )}
-                {showJSONTree && (
-                  <div
-                    role="complementary"
-                    aria-label="JSON tree"
-                    style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
-                  >
-                    <h3 style={{ margin: 0 }}>JSON Tree</h3>
-                    <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
-                  </div>
-                )}
-              </div>
-            )}
+                    {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
+                    <CodeSandboxExporter
+                      exampleCode={codeSandboxData.code}
+                      exampleLanguage="js"
+                      exampleName="uibuilder"
+                      imports={codeSandboxData.imports}
+                    >
+                      {(state, onCodeSandboxClick) => {
+                        const codeSandboxContent =
+                          state === CodeSandboxState.Default
+                            ? 'CodeSandbox'
+                            : state === CodeSandboxState.Loading
+                            ? 'Exporting...'
+                            : 'Click to open';
+
+                        const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
+
+                        return (
+                          <Button
+                            loading={state === CodeSandboxState.Loading}
+                            styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
+                            onClick={onCodeSandboxClick}
+                            icon={codeSandboxIcon}
+                            content={codeSandboxContent}
+                          />
+                        );
+                      }}
+                    </CodeSandboxExporter>
+                  </div>,
+                ]}
+                style={{
+                  flex: 1,
+                }}
+              >
+                <ErrorBoundary code={code} jsonTree={jsonTree}>
+                  <Canvas
+                    draggingElement={draggingElement}
+                    isExpanding={isExpanding}
+                    isSelecting={isSelecting || !!draggingElement}
+                    onMouseMove={handleDrag}
+                    onMouseUp={handleCanvasMouseUp}
+                    onKeyDown={handleKeyDown}
+                    onSelectComponent={handleSelectComponent}
+                    onDropPositionChange={handleDropPositionChange}
+                    jsonTree={jsonTree}
+                    selectedComponent={selectedComponent}
+                    onCloneComponent={handleCloneComponent}
+                    onMoveComponent={handleMoveComponent}
+                    onDeleteSelectedComponent={handleDeleteSelectedComponent}
+                    onGoToParentComponent={handleGoToParentComponent}
+                    enabledVirtualCursor={enabledVirtualCursor}
+                    role="main"
+                    inUseMode={mode === 'use'}
+                    setHeaderMessage={setHeaderMessage}
+                    selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+                    onAccessibilityErrors={handleAccessibilityErrorChange}
+                  />
+                </ErrorBoundary>
+              </BrowserWindow>
+
+              {(showCode || showJSONTree) && (
+                <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
+                  {showCode && (
+                    <div role="complementary" aria-label="Code editor">
+                      <React.Suspense fallback={<div>Loading...</div>}>
+                        <CodeEditor
+                          code={code}
+                          onCodeChange={handleSourceCodeChange}
+                          onCodeError={handleSourceCodeError}
+                        />
+                      </React.Suspense>
+                      {codeError && (
+                        <pre
+                          style={{
+                            position: 'sticky',
+                            bottom: 0,
+                            padding: '1em',
+                            // don't block viewport
+                            maxHeight: '50vh',
+                            overflowY: 'auto',
+                            color: '#fff',
+                            background: 'red',
+                            whiteSpace: 'pre-wrap',
+                            // above code editor text :/
+                            zIndex: 4,
+                          }}
+                        >
+                          {codeError}
+                        </pre>
+                      )}
+                    </div>
+                  )}
+                  {showJSONTree && (
+                    <div
+                      role="complementary"
+                      aria-label="JSON tree"
+                      style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
+                    >
+                      <h3 style={{ margin: 0 }}>JSON Tree</h3>
+                      <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
+
+          {selectedComponentInfo && (
+            <div
+              role="complementary"
+              aria-label="Component properties"
+              style={{
+                width: '20rem',
+                padding: '1rem',
+                overflow: 'auto',
+                transition: 'opacity 0.2s',
+                ...(mode === 'use' && {
+                  pointerEvents: 'none',
+                  opacity: 0,
+                }),
+              }}
+            >
+              <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
+
+              {selectedJSONTreeElement && (
+                <Knobs
+                  onPropChange={handlePropChange}
+                  onPropDelete={handlePropDelete}
+                  info={selectedComponentInfo}
+                  jsonTreeElement={selectedJSONTreeElement}
+                  elementAccessibilityErrors={validationErrors}
+                  onAccessibilityErrorChange={handleAccessibilityErrorChange}
+                />
+              )}
+            </div>
+          )}
         </div>
-
-        {selectedComponentInfo && (
-          <div
-            role="complementary"
-            aria-label="Component properties"
-            style={{
-              width: '20rem',
-              padding: '1rem',
-              overflow: 'auto',
-              transition: 'opacity 0.2s',
-              ...(mode === 'use' && {
-                pointerEvents: 'none',
-                opacity: 0,
-              }),
-            }}
-          >
-            <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-
-            {selectedJSONTreeElement && (
-              <Knobs
-                onPropChange={handlePropChange}
-                onPropDelete={handlePropDelete}
-                info={selectedComponentInfo}
-                jsonTreeElement={selectedJSONTreeElement}
-                elementAccessibilityErrors={selectedComponentAccessibilityErrors}
-                onAccessibilityErrorChange={handleAccessibilityErrorChange}
-              />
-            )}
-          </div>
-        )}
-      </div>
+      </A11yValidationContextProvider>
     </div>
   );
 };
