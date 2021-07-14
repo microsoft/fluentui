@@ -3,6 +3,17 @@
  */
 export * from './custom-elements';
 
+/**
+ * Export typings
+ */
+export { Palette, PaletteRGB } from './color/palette';
+export { InteractiveSwatchSet } from './color/recipe';
+export { Swatch, SwatchRGB } from './color/swatch';
+export { StandardLuminance } from './color/utilities/base-layer-luminance';
+
+/**
+ * Export all files
+ */
 export * from './accordion/';
 export * from './anchor/';
 export * from './anchored-region';
@@ -15,6 +26,7 @@ export * from './checkbox/';
 export * from './combobox/';
 export * from './data-grid';
 export * from './design-system-provider/';
+export * from './design-tokens';
 export * from './dialog/';
 export * from './divider/';
 export * from './flipper/';
@@ -39,11 +51,8 @@ export * from './tooltip';
 export * from './tree-item/';
 export * from './tree-view/';
 
-// export styles and utils
-export { Palette, PaletteRGB } from './color/palette';
-export { InteractiveSwatchSet } from './color/recipe';
-export { Swatch, SwatchRGB } from './color/swatch';
-export { isDark } from './color/utilities/is-dark';
-export { StandardLuminance } from './color/utilities/base-layer-luminance';
-export * from './design-tokens';
+/**
+ * Export all style utilities
+ */
 export * from './styles';
+export { isDark } from './color/utilities/is-dark';
