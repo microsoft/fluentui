@@ -31,14 +31,14 @@ is not encouraged for reuse since this propoerty has been deprecated for a while
 standards.
 
 ```ts
-import { Enter, a } from '@fluentui/keyboard-keys/lib/keyCodes';
+import { keyCodes } from '@fluentui/keyboard-keys';
 
 const onKeyDown = (e: React.KeyboardEvent) => {
-  if (e.keyCode === Enter) {
+  if (e.keyCode === keyCodes.Enter) {
     // ...
   }
 
-  if (e.key === a) {
+  if (e.key === keyCodes.a) {
     // ...
   }
 };

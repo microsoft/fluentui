@@ -1,6 +1,6 @@
-import { Enter } from '@fluentui/keyboard-keys/lib/keyCodes';
+import { keyCodes } from '@fluentui/keyboard-keys';
 
-console.log(Enter);
+console.log(keyCodes.Enter);
 
 export default {
   name: 'Single keyCode',
