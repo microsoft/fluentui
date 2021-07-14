@@ -10,6 +10,7 @@
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
     "build": "lage build --verbose",
+    "build:codesandbox": "yarn build --to @fluentui/react --min",
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
     "buildci": "yarn prelint && lage build test lint type-check --verbose",

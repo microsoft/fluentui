@@ -2,11 +2,6 @@
   "version": 2,
   "projects": {
     "a11y-tests": { "root": "apps/a11y-tests", "projectType": "application" },
-    "codesandbox-react-northstar-template": {
-      "root": "apps/codesandbox-react-northstar-template",
-      "projectType": "application"
-    },
-    "codesandbox-react-template": { "root": "apps/codesandbox-react-template", "projectType": "application" },
     "perf-test": { "root": "apps/perf-test", "projectType": "application" },
     "@fluentui/pr-deploy-site": { "root": "apps/pr-deploy-site", "projectType": "application" },
     "@fluentui/public-docsite": { "root": "apps/public-docsite", "projectType": "application" },
