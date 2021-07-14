@@ -175,6 +175,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       // eslint-disable-next-line deprecation/deprecation
       onLayerDidMount,
       isModeless,
+      isAlert,
       dragOptions,
       enableAriaHiddenSiblings,
     } = this.props;
@@ -185,6 +186,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     }
 
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
+    const isAlertRole = isAlert ?? (isBlocking && !isModeless);
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -257,7 +259,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       return (
         <Layer {...mergedLayerProps}>
           <Popup
-            role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
+            role={isAlertRole ? 'alertdialog' : 'dialog'}
             aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
