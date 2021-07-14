@@ -488,8 +488,15 @@ export const Designer: React.FunctionComponent = () => {
                     <Label
                       design={accessErrorLabelStyle}
                       color={'red'}
-                      content={<Text size="smaller">{accessibilityErrors.length}</Text>}
+                      content={
+                        <span
+                          style={{ fontSize: '6px !important', width: '100%', textAlign: 'center', lineHeight: '.5em' }}
+                        >
+                          {accessibilityErrors.length}
+                        </span>
+                      }
                       circular
+                      fluid
                     />{' '}
                   </>
                 ) : (
