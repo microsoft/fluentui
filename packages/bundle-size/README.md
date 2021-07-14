@@ -26,6 +26,14 @@ export default {
 
 ### Commands
 
+#### `compare-reports`
+
+Compares local (requires call of `bundle-size measure` first) and remote results, provides output to CLI or to a Markdown file.
+
+```sh
+yarn bundle-size compare-reports --branch=main --output=["cli"|"markdown"] [--quiet]
+```
+
 #### `measure`
 
 ```sh
