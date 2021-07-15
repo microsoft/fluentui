@@ -97,7 +97,11 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
       />
 
       <ComponentPropertiesPanel
-        accessibilityErrors={props.accessibilityErrors.filter(x => x.elementUuid === props.selectedComponent.uuid)}
+        accessibilityErrors={
+          props.selectedComponent
+            ? props.accessibilityErrors?.filter(x => x.elementUuid === props.selectedComponent.uuid)
+            : []
+        }
         mode={props.mode}
         onAccessibilityErrorChange={props.onAccessibilityErrorChange}
         onPropChange={props.onPropChange}
