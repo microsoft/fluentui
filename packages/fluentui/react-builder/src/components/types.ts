@@ -11,3 +11,9 @@ export type JSONTreeElement = {
 };
 
 export type DesignerMode = 'build' | 'design' | 'use';
+
+export type DragAndDropData = {
+  position: { x: number; y: number };
+  dropIndex: number;
+  dropParent: JSONTreeElement | null;
+};
