@@ -35,7 +35,28 @@ The `Input` component is a good case example of that as [reported](https://githu
 
 Right now for input case this is the solution to avoid `children = undefined` problem:
 
-<iframe style="width: 100%;" height="400" src="https://stackblitz.com/edit/react-ts-wwguyp?embed=1&file=Input.tsx&hideExplorer=1&hideNavigation=1&view=editor"></iframe>
+```tsx
+export function Input(props) {
+  const state = {
+    components: {
+      input: 'input'
+    },
+    input: resolveShorthand(props.input, {
+      children: React.Fragment // 🚨 getSlots requires children
+    })
+  };
+  const { slots, slotProps } = getSlots(state, ['input']);
+  delete slotProps.input.children; // 🚨 input can't have children
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.input {...slotProps.input} />
+    </slots.root>
+  );
+}
+```
+[Live Example](https://stackblitz.com/edit/react-ts-wwguyp?file=Input.tsx)
+
 
 ### Slot as a parent for other slots
 
@@ -43,7 +64,32 @@ This edge case has been seen in different converged components ([`CompoundButton
 
 The problem is that using a slot as parent for other slots means overriding `children` props, so `children` is not declared in the moment `resolveShorthand` is invoked but in the moment that the slot will be rendered.
 
-<iframe style="width: 100%;" height="400" src="https://stackblitz.com/edit/react-ts-wwguyp?embed=1&file=SlotAsParent.tsx&hideExplorer=1&hideNavigation=1&view=editor"></iframe>
+
+```tsx
+export function Component(props) {
+  const state = {
+    components: {
+      button: 'button',
+      icon: 'i'
+    },
+    button: resolveShorthand(props.button, {
+      children: React.Fragment // 🚨 getSlots requires children
+    }),
+    icon: resolveShorthand(props.icon)
+  };
+
+  const { slots, slotProps } = getSlots(state, ['input']);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.button {...slotProps.button}>
+        <slots.icon {...slotProps.icon} />
+      </slots.button>
+    </slots.root>
+  );
+}
+```
+[Live Example](https://stackblitz.com/edit/react-ts-wwguyp?file=SlotAsParent.tsx)
 
 ### Native elements without children
 
