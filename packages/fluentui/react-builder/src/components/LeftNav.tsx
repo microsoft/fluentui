@@ -7,7 +7,6 @@ import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
 import { NavBarItem } from './NavBarItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { useMode } from '../hooks/useMode';
-import { useDesignerState } from '../state/state';
 import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
 
@@ -30,7 +29,6 @@ export type LeftNavProps = {
 
 export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavProps) => {
   const [{ mode }] = useMode();
-  const [state] = useDesignerState();
 
   // const { jsonTree } = state;
 
