@@ -385,26 +385,26 @@ export const Designer: React.FunctionComponent = () => {
         />
 
         <CanvasWindow
-          selectedComponent={selectedComponent}
-          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+          getShareableLink={getShareableLink}
           isExpanding={isExpanding}
           isSelecting={isSelecting}
+          onAccessibilityErrorChange={handleAccessibilityErrorChange}
+          onCanvasMouseUp={handleCanvasMouseUp}
+          onCloneComponent={handleCloneComponent}
+          onDeleteSelectedComponent={handleDeleteSelectedComponent}
+          onDrag={handleDrag}
+          onDropPositionChange={handleDropPositionChange}
+          onGoToParentComponent={handleGoToParentComponent}
+          onKeyDown={handleKeyDown}
+          onMoveComponent={handleMoveComponent}
+          onSelectComponent={handleSelectComponent}
+          onSourceCodeChange={handleSourceCodeChange}
+          onSourceCodeError={handleSourceCodeError}
+          selectedComponent={selectedComponent}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
           showJSONTree={showJSONTree}
           state={state}
           switchToStore={handleSwitchToStore}
-          getShareableLink={getShareableLink}
-          handleDrag={handleDrag}
-          handleCanvasMouseUp={handleCanvasMouseUp}
-          handleSelectComponent={handleSelectComponent}
-          handleDropPositionChange={handleDropPositionChange}
-          handleSourceCodeError={handleSourceCodeError}
-          handleSourceCodeChange={handleSourceCodeChange}
-          handleCloneComponent={handleCloneComponent}
-          handleDeleteSelectedComponent={handleDeleteSelectedComponent}
-          handleMoveComponent={handleMoveComponent}
-          handleGoToParentComponent={handleGoToParentComponent}
-          handleKeyDown={handleKeyDown}
-          handleAccessibilityErrorChange={handleAccessibilityErrorChange}
         />
 
         {selectedComponentInfo && (
