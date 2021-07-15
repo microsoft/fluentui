@@ -1,20 +1,13 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Text, Button } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 // import Anatomy from './Anatomy';
-import { BrowserWindow } from './BrowserWindow';
-import { Canvas } from './Canvas';
 import { Description } from './Description';
 import { Knobs } from './Knobs';
-import { jsonTreeFindElement, renderJSONTreeToJSXElement, getCodeSandboxInfo, resolveDraggingElement } from '../config';
+import { jsonTreeFindElement, renderJSONTreeToJSXElement, resolveDraggingElement } from '../config';
 import { writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 import { JSONTreeElement } from './types';
-import { GetShareableLink } from './GetShareableLink';
-import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
@@ -22,15 +15,9 @@ import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
 import { Toolbar } from './Toolbar';
 import { LeftNav } from './LeftNav';
+import { CanvasWindow } from './CanvasWindow';
 
 const HEADER_HEIGHT = '3rem';
-
-const CodeEditor = React.lazy(async () => {
-  const _CodeEditor = (await import(/* webpackChunkName: "codeeditor" */ './CodeEditor')).CodeEditor;
-  return {
-    default: _CodeEditor,
-  };
-});
 
 export const Designer: React.FunctionComponent = () => {
   debug('render');
@@ -46,7 +33,6 @@ export const Designer: React.FunctionComponent = () => {
   const [state, dispatch] = useDesignerState();
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
-  const [headerMessage, setHeaderMessage] = React.useState('');
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -56,13 +42,10 @@ export const Designer: React.FunctionComponent = () => {
 
   const {
     activeTab,
-    code,
-    codeError,
     draggingElement,
     enabledVirtualCursor,
     insertComponent,
     jsonTree,
-    jsonTreeOrigin,
     selectedJSONTreeElementUuid,
     showCode,
   } = state;
@@ -273,7 +256,6 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
   const hotkeys = {
     'Ctrl+c': () => {
       if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
@@ -399,146 +381,31 @@ export const Designer: React.FunctionComponent = () => {
           onSelectComponent={handleSelectComponent}
           onSwitchTab={handleSwitchTab}
           selectedComponent={selectedComponent}
-          selectedComponentAccessibilityErrors={[]}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
         />
 
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            flex: 1,
-            overflow: 'auto',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              flex: 1,
-              minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
-            }}
-          >
-            <BrowserWindow
-              showNavBar={false}
-              headerItems={[
-                <div key="headerMessage" style={{ marginLeft: 10 }}>
-                  {mode === 'use' && <Text error>{headerMessage}</Text>}
-                </div>,
-                <div key="headerTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
-                  {jsonTreeOrigin === 'url' && (
-                    <>
-                      <Text error>You are working from a shared URL, no changes are saved!</Text>
-                      <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={handleSwitchToStore}>
-                        View local
-                      </Button>
-                    </>
-                  )}
-                  {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
-                  <CodeSandboxExporter
-                    exampleCode={codeSandboxData.code}
-                    exampleLanguage="js"
-                    exampleName="uibuilder"
-                    imports={codeSandboxData.imports}
-                  >
-                    {(state, onCodeSandboxClick) => {
-                      const codeSandboxContent =
-                        state === CodeSandboxState.Default
-                          ? 'CodeSandbox'
-                          : state === CodeSandboxState.Loading
-                          ? 'Exporting...'
-                          : 'Click to open';
-
-                      const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
-
-                      return (
-                        <Button
-                          loading={state === CodeSandboxState.Loading}
-                          styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
-                          onClick={onCodeSandboxClick}
-                          icon={codeSandboxIcon}
-                          content={codeSandboxContent}
-                        />
-                      );
-                    }}
-                  </CodeSandboxExporter>
-                </div>,
-              ]}
-              style={{
-                flex: 1,
-              }}
-            >
-              <ErrorBoundary code={code} jsonTree={jsonTree}>
-                <Canvas
-                  draggingElement={draggingElement}
-                  isExpanding={isExpanding}
-                  isSelecting={isSelecting || !!draggingElement}
-                  onMouseMove={handleDrag}
-                  onMouseUp={handleCanvasMouseUp}
-                  onKeyDown={handleKeyDown}
-                  onSelectComponent={handleSelectComponent}
-                  onDropPositionChange={handleDropPositionChange}
-                  jsonTree={jsonTree}
-                  selectedComponent={selectedComponent}
-                  onCloneComponent={handleCloneComponent}
-                  onMoveComponent={handleMoveComponent}
-                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                  onGoToParentComponent={handleGoToParentComponent}
-                  enabledVirtualCursor={enabledVirtualCursor}
-                  role="main"
-                  inUseMode={mode === 'use'}
-                  setHeaderMessage={setHeaderMessage}
-                  selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                  onAccessibilityErrors={handleAccessibilityErrorChange}
-                />
-              </ErrorBoundary>
-            </BrowserWindow>
-
-            {(showCode || showJSONTree) && (
-              <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
-                {showCode && (
-                  <div role="complementary" aria-label="Code editor">
-                    <React.Suspense fallback={<div>Loading...</div>}>
-                      <CodeEditor
-                        code={code}
-                        onCodeChange={handleSourceCodeChange}
-                        onCodeError={handleSourceCodeError}
-                      />
-                    </React.Suspense>
-                    {codeError && (
-                      <pre
-                        style={{
-                          position: 'sticky',
-                          bottom: 0,
-                          padding: '1em',
-                          // don't block viewport
-                          maxHeight: '50vh',
-                          overflowY: 'auto',
-                          color: '#fff',
-                          background: 'red',
-                          whiteSpace: 'pre-wrap',
-                          // above code editor text :/
-                          zIndex: 4,
-                        }}
-                      >
-                        {codeError}
-                      </pre>
-                    )}
-                  </div>
-                )}
-                {showJSONTree && (
-                  <div
-                    role="complementary"
-                    aria-label="JSON tree"
-                    style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
-                  >
-                    <h3 style={{ margin: 0 }}>JSON Tree</h3>
-                    <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
+        <CanvasWindow
+          selectedComponent={selectedComponent}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+          isExpanding={isExpanding}
+          isSelecting={isSelecting}
+          showJSONTree={showJSONTree}
+          state={state}
+          switchToStore={handleSwitchToStore}
+          getShareableLink={getShareableLink}
+          handleDrag={handleDrag}
+          handleCanvasMouseUp={handleCanvasMouseUp}
+          handleSelectComponent={handleSelectComponent}
+          handleDropPositionChange={handleDropPositionChange}
+          handleSourceCodeError={handleSourceCodeError}
+          handleSourceCodeChange={handleSourceCodeChange}
+          handleCloneComponent={handleCloneComponent}
+          handleDeleteSelectedComponent={handleDeleteSelectedComponent}
+          handleMoveComponent={handleMoveComponent}
+          handleGoToParentComponent={handleGoToParentComponent}
+          handleKeyDown={handleKeyDown}
+          handleAccessibilityErrorChange={handleAccessibilityErrorChange}
+        />
 
         {selectedComponentInfo && (
           <div

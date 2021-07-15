@@ -1,5 +1,6 @@
 import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
 import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
 
@@ -20,6 +21,7 @@ import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper'.
  * Triggers 'openMenu' action with 'ArrowDown' on 'wrapper', when orientation is horizontal.
  * Triggers 'doNotNavigateNextParentItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
+ * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
 export const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
@@ -34,6 +36,7 @@ export const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProp
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
     },
   },
 
