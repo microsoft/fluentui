@@ -52,7 +52,10 @@ export function webpackLoader(
   let error: Error | null = null;
 
   try {
-    // Use Webpack's resolution when evaluating modules in Babel plugin
+    // We are evaluating modules in Babel plugin to resolve expressions (function calls, imported constants, etc.) in
+    // makeStyles() calls, see evaluatePathsInVM.ts.
+    // Webpack's config can define own module resolution, Babel plugin should use Webpack's resolution to properly
+    // resolve paths.
     Module._resolveFilename = (id, { filename }) => {
       const resolvedPath = resolveSync(path.dirname(filename), id);
 
