@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { Button, Header, Label, Menu } from '@fluentui/react-northstar';
+import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
 import { ComponentList } from './ComponentList';
-import { ComponentTree } from './ComponentTree';
 import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
+import { NavigatorTabPanel } from './TabPanels/NavigationTabPanel';
 import { NavBarItem } from './NavBarItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { useMode } from '../hooks/useMode';
-import { useDesignerState } from '../state/state';
 import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
 
 export type LeftNavProps = {
   accessibilityErrors: AccessibilityError[];
+  activeTab: string;
+  jsonTree: JSONTreeElement;
   onAddComponent?: (uuid: string, where: string) => void;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteSelectedComponent?: () => void;
@@ -28,9 +29,6 @@ export type LeftNavProps = {
 
 export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavProps) => {
   const [{ mode }] = useMode();
-  const [state] = useDesignerState();
-
-  const { activeTab, jsonTree } = state;
 
   const accessErrorLabelStyle = {
     position: 'relative',
@@ -68,14 +66,14 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
       >
         <NavBarItem
           title="Add components"
-          isSelected={activeTab === 'add'}
+          isSelected={props.activeTab === 'add'}
           icon={<AddIcon size="large" outline />}
           onClickHandler={() => props.onSwitchTab('add')}
         />
 
         <NavBarItem
           title="Accessibility"
-          isSelected={activeTab === 'accessibility'}
+          isSelected={props.activeTab === 'accessibility'}
           icon={
             props.accessibilityErrors.length !== 0 ? (
               <>
@@ -98,7 +96,7 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
 
         <NavBarItem
           title="Navigator"
-          isSelected={activeTab === 'nav'}
+          isSelected={props.activeTab === 'nav'}
           icon={<MenuIcon size="large" outline />}
           onClickHandler={() => props.onSwitchTab('nav')}
         />
@@ -124,43 +122,39 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
           }}
         >
           <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-            {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
+            {props.activeTab === 'add'
+              ? 'Add components'
+              : props.activeTab === 'accessibility'
+              ? 'Accessibility'
+              : 'Navigator'}
           </Header>
         </div>
-        {activeTab === 'add' && (
+        {props.activeTab === 'add' && (
           <div>
             <ComponentList style={{ overflowY: 'auto' }} onDragStart={props.onDragStart} />
           </div>
         )}
-        {activeTab === 'accessibility' && (
+        {props.activeTab === 'accessibility' && (
           <AccessibilityErrorMenu
-            tree={jsonTree}
+            tree={props.jsonTree}
             selectedComponent={props.selectedComponent}
             accessibilityErrors={props.accessibilityErrors}
             onSelectComponent={props.onSelectComponent}
           />
         )}
-        {activeTab === 'nav' && (
-          <div>
-            {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
-              <Button
-                text
-                content="Insert first component"
-                fluid
-                onClick={() => props.onOpenAddComponentDialog('', 'first')}
-              />
-            )}
-            <ComponentTree
-              tree={jsonTree}
-              selectedComponent={props.selectedComponent}
-              selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
-              onSelectComponent={props.onSelectComponent}
-              onCloneComponent={props.onCloneComponent}
-              onMoveComponent={props.onMoveComponent}
-              onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-              onAddComponent={props.onAddComponent}
-            />
-          </div>
+        {props.activeTab === 'nav' && (
+          <NavigatorTabPanel
+            jsonTree={props.jsonTree}
+            onAddComponent={props.onAddComponent}
+            onCloneComponent={props.onCloneComponent}
+            onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+            onDragStart={props.onDragStart}
+            onOpenAddComponentDialog={props.onOpenAddComponentDialog}
+            onMoveComponent={props.onMoveComponent}
+            onSelectComponent={props.onSelectComponent}
+            selectedComponent={props.selectedComponent}
+            selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
+          />
         )}
       </div>
     </div>

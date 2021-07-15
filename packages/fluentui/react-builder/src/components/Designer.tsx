@@ -55,18 +55,18 @@ export const Designer: React.FunctionComponent = () => {
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
   const {
+    activeTab,
+    code,
+    codeError,
     draggingElement,
+    enabledVirtualCursor,
+    insertComponent,
     jsonTree,
     jsonTreeOrigin,
     selectedJSONTreeElementUuid,
-    enabledVirtualCursor,
     showCode,
-    code,
-    codeError,
-    insertComponent,
   } = state;
 
-  // const accessibilityErrors = useAxeOnElements();
   const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
 
   React.useEffect(() => {
@@ -239,7 +239,7 @@ export const Designer: React.FunctionComponent = () => {
     return writeTreeToURL(jsonTree, window.location.href);
   }, [jsonTree]);
 
-  const switchToStore = React.useCallback(() => {
+  const handleSwitchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
     const url = window.location.href.split('#')[0];
     window.history.pushState('', document.title, url);
@@ -387,6 +387,8 @@ export const Designer: React.FunctionComponent = () => {
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
         <LeftNav
           accessibilityErrors={[]}
+          activeTab={activeTab}
+          jsonTree={jsonTree}
           onAddComponent={handleAddComponent}
           onCloneComponent={handleCloneComponent}
           onDeleteSelectedComponent={handleDeleteSelectedComponent}
@@ -426,7 +428,7 @@ export const Designer: React.FunctionComponent = () => {
                   {jsonTreeOrigin === 'url' && (
                     <>
                       <Text error>You are working from a shared URL, no changes are saved!</Text>
-                      <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={switchToStore}>
+                      <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={handleSwitchToStore}>
                         View local
                       </Button>
                     </>

@@ -6,14 +6,14 @@ import { Text, Button } from '@fluentui/react-northstar';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 
-export type AccessibilityErrorMenuProps = {
+export type AccessibilityTabPanelProps = {
   tree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
   accessibilityErrors?: AccessibilityError[];
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
 };
 
-export const AccessibilityErrorMenu: React.FunctionComponent<AccessibilityErrorMenuProps> = ({
+export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = ({
   tree,
   selectedComponent,
   accessibilityErrors,
