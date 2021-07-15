@@ -7,3 +7,4 @@ export * from './Title2';
 export * from './Title3';
 export * from './Headline';
 export * from './Subheadline';
+export * from './Body';
