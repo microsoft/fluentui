@@ -59,11 +59,17 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
     },
     {
       test: /\.(gif|jpg|jpeg|png|svg)$/,
-      loader: 'file-loader?name=[name].[ext]',
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+      },
     },
     {
       test: /\.(woff|woff2|ttf)$/,
-      loader: 'file-loader?name=[name].[ext]',
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+      },
     },
     {
       test: /\.md$/,
