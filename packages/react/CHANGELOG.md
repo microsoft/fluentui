@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.3)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.2..@fluentui/react_v8.23.3)
+
+### Patches
+
+- Prevent tooltip from showing on tab switch for the focused element ([PR #18884](https://github.com/microsoft/fluentui/pull/18884) by behowell@microsoft.com)
+
+## [8.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.2)
+
+Wed, 14 Jul 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.1..@fluentui/react_v8.23.2)
+
+### Patches
+
+- Set id correctly on header item when title is an IContextualMenuItem ([PR #18853](https://github.com/microsoft/fluentui/pull/18853) by makopch@microsoft.com)
+
+## [8.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.1)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.0..@fluentui/react_v8.23.1)
+
+### Patches
+
+- ComboBox: Propagate ariaLabel to the dropdown list element ([PR #18890](https://github.com/microsoft/fluentui/pull/18890) by behowell@microsoft.com)
+
+## [8.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.0)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.22.3..@fluentui/react_v8.23.0)
+
+### Minor changes
+
+- Pass Icon 'title' as alt text for File Type Icons ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
+
+### Patches
+
+- Pivot: removed cyclic imports that were causing ordering issues with esbuild output. ([PR #18888](https://github.com/microsoft/fluentui/pull/18888) by dzearing@microsoft.com)
+- Bump @fluentui/style-utilities to v8.2.0 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.12 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.1.6 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.6 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
+- Bump @fluentui/react-focus to v8.1.7 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
 
 ## [8.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.22.3)
 
