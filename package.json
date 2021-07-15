@@ -136,6 +136,7 @@
     "cypress-storybook": "0.5.1",
     "danger": "^6.0.5",
     "del": "6.0.0",
+    "enhanced-resolve": "5.8.2",
     "eslint": "7.25.0",
     "eslint-plugin-es": "4.1.0",
     "eslint-plugin-import": "2.22.1",
