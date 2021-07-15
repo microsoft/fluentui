@@ -2,8 +2,8 @@
   "name": "@fluentui/make-styles-webpack-loader",
   "version": "9.0.0-alpha.0",
   "description": "A Webpack for makeStyles",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib/src/index.js",
+  "typings": "lib/src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

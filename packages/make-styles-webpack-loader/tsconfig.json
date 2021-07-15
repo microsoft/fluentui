@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src"],
+  "include": ["__fixtures__/**/code.ts", "src"],
   "compilerOptions": {
     "target": "ES2015",
     "module": "CommonJS",
