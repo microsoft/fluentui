@@ -30,7 +30,11 @@ export default {
       resolve: {
         ...customConfig.resolve,
         // @ts-ignore
-        fallback: { crypto: require.resolve('crypto-browserify'), stream: require.resolve('stream-browserify') },
+        fallback: {
+          crypto: require.resolve('crypto-browserify'),
+          stream: require.resolve('stream-browserify'),
+          vm: require.resolve('vm-browserify'),
+        },
       },
     };
   },
