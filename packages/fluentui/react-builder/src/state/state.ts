@@ -58,12 +58,14 @@ export type DesignerAction =
   | { type: 'REDO' }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
+  | { type: 'DESIGNER_LOADED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'ADD_COMPONENT'; component: string; module: string }
   | { type: 'ACCESSIBILITY_CHANGE'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
   let treeChanged = false;
+  console.log(`type: ${action.type}`);
 
   switch (action.type) {
     case 'DRAG_START':
@@ -294,6 +296,11 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       deleteAccessibilityErrorsForElement(draftState);
       // add the accesibility errors for the component
       draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
+      break;
+    }
+
+    case 'DESIGNER_LOADED': {
+      draftState.accessibilityErrors = action.accessibilityErrors;
       break;
     }
 

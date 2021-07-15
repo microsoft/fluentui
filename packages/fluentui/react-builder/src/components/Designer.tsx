@@ -9,10 +9,12 @@ import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
-import { useAxeOnElement } from '../hooks/useAxeOnElement';
+//  import { useAxeOnElement } from '../hooks/useAxeOnElement';
 // import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
 import { Toolbar } from './Toolbar';
 import { Builder } from './Builder';
+import { runAxe } from '../hooks/useAxeOnElement';
+// import { A11yValidationContextProvider } from './A11yValidationContext';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -37,6 +39,7 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
+  /*
   const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
   // const [validationErrors, runAxeAll] = useAxeOnElements();
 
@@ -45,6 +48,7 @@ export const Designer: React.FunctionComponent = () => {
       runAxeOnElement(state.selectedJSONTreeElementUuid);
     }
   }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
+  */
 
   // const { validateAll, validationErrors } = useA11yValidationContext();
 
@@ -56,28 +60,8 @@ export const Designer: React.FunctionComponent = () => {
     jsonTree,
     selectedJSONTreeElementUuid,
     showCode,
+    accessibilityErrors,
   } = state;
-
-  // let { accessibilityErrors } = state;
-  // accessibilityErrors = validationErrors;
-
-  /*
-  React.useEffect(() => {
-    setTimeout(() => {
-      validateAll();
-    }, 1000);
-  }, [validateAll]);
-  */
-
-  // accessibilityErrors = accessibilityErrors.concat(validationErrors);
-
-  // const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
-
-  React.useEffect(() => {
-    if (selectedJSONTreeElementUuid) {
-      runAxeOnElement(selectedJSONTreeElementUuid);
-    }
-  }, [selectedJSONTreeElementUuid, runAxeOnElement]);
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
@@ -105,6 +89,34 @@ export const Designer: React.FunctionComponent = () => {
     },
     [dispatch],
   );
+
+  const handleDesignerLoaded = React.useCallback(async () => {
+    const { violations } = await runAxe();
+    const errors = [];
+    violations.forEach(node => {
+      node.nodes.forEach(nodeResult => {
+        const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
+        if (idMatch) {
+          const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);
+          results.forEach(result => {
+            errors.push({
+              elementUuid: idMatch[1],
+              source: 'AXE-core',
+              error: result.message,
+            } as AccessibilityError);
+          });
+        }
+      });
+    });
+
+    dispatch({ type: 'DESIGNER_LOADED', accessibilityErrors: errors });
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      handleDesignerLoaded();
+    }, 1000);
+  }, [handleDesignerLoaded]);
 
   const handleEnableVirtualCursorChange = React.useCallback(
     enabledVC => {
@@ -389,6 +401,7 @@ export const Designer: React.FunctionComponent = () => {
       />
 
       <Builder
+        accessibilityErrors={accessibilityErrors}
         activeTab={activeTab}
         getShareableLink={getShareableLink}
         isExpanding={isExpanding}
@@ -415,7 +428,7 @@ export const Designer: React.FunctionComponent = () => {
         onSwitchTab={handleSwitchTab}
         onSwitchToStore={handleSwitchToStore}
         selectedComponent={selectedComponent}
-        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+        selectedComponentAccessibilityErrors={[]}
         selectedComponentInfo={selectedComponentInfo}
         selectedJSONTreeElement={selectedJSONTreeElement}
         showJSONTree={showJSONTree}

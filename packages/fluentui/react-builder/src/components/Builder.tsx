@@ -8,6 +8,7 @@ import { DesignerState } from '../state/state';
 import { ComponentInfo } from '../componentInfo/types';
 
 export type BuilderProps = {
+  accessibilityErrors: AccessibilityError[];
   activeTab: string;
   getShareableLink: () => string;
   isExpanding: boolean;
@@ -56,7 +57,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
   return (
     <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
       <NavigationPanel
-        accessibilityErrors={[]}
+        accessibilityErrors={props.accessibilityErrors}
         activeTab={props.activeTab}
         jsonTree={props.jsonTree}
         onAddComponent={props.onAddComponent}
@@ -96,7 +97,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
       />
 
       <ComponentPropertiesPanel
-        accessibilityErrors={[]}
+        accessibilityErrors={props.accessibilityErrors}
         mode={props.mode}
         onAccessibilityErrorChange={props.onAccessibilityErrorChange}
         onPropChange={props.onPropChange}
