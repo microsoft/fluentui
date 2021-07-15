@@ -25,7 +25,14 @@ export default {
       loader: path.resolve(__dirname, 'preview-loader.js'),
     });
 
-    return customConfig;
+    return {
+      ...customConfig,
+      resolve: {
+        ...customConfig.resolve,
+        // @ts-ignore
+        fallback: { crypto: require.resolve('crypto-browserify'), stream: require.resolve('stream-browserify') },
+      },
+    };
   },
 
   core: {
