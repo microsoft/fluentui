@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "create and export web component definitions for use with Monaco editor tooling",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
