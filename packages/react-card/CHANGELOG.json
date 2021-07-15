@@ -2,6 +2,84 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.48",
+            "author": "behowell@microsoft.com",
+            "commit": "8e5969e291bcafac21df12c9fb591bdd5654c613",
+            "package": "@fluentui/react-card"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-card"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-card"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-card"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-card"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.31",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6c37a1cb5c312d4be8b239bfd9f6c9f28e9f0d24",
+            "package": "@fluentui/react-card"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.45",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7222c057ece8a528431a1860223d9d920685f975",
+            "package": "@fluentui/react-card"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jun 2021 07:38:35 GMT",
       "tag": "@fluentui/react-card_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

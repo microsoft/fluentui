@@ -1,6 +1,19 @@
 import * as React from 'react';
-import { ObjectShorthandProps, useEventCallback } from '@fluentui/react-utilities';
-import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
+import { ObjectShorthandProps, resolveShorthand, ShorthandProps, useEventCallback } from '@fluentui/react-utilities';
+import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
+
+function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
+  if (typeof disabled === 'string') {
+    return disabled === 'false' ? false : true;
+  }
+  return disabled ?? false;
+}
+
+export type ARIAButtonAsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & { as?: 'button' };
+export type ARIAButtonAsElementProps = React.HTMLAttributes<HTMLElement> & { as: 'div' | 'span' };
+export type ARIAButtonAsAnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & { as: 'a' };
+
+export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
 
 /**
  * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
@@ -8,12 +21,16 @@ import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
  * where no attribute addition is required
  */
 export function useARIAButton(
-  shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>>,
-): ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> {
-  const { onClick, onKeyDown, onKeyUp, disabled: defaultDisabled, ['aria-disabled']: ariaDisabled } = shorthand;
-  const disabled = mergeARIADisabled(defaultDisabled ?? ariaDisabled);
+  value: ShorthandProps<ARIAButtonProps>,
+  defaultProps?: ARIAButtonProps,
+): ObjectShorthandProps<ARIAButtonProps> {
+  const shorthand = resolveShorthand(value, defaultProps);
 
-  const onClickHandler = useEventCallback((ev: React.MouseEvent<HTMLElement>) => {
+  const { onClick, onKeyDown, onKeyUp, ['aria-disabled']: ariaDisabled } = shorthand;
+
+  const disabled = mergeARIADisabled((shorthand.as === 'button' ? shorthand.disabled : undefined) ?? ariaDisabled);
+
+  const onClickHandler: ARIAButtonProps['onClick'] = useEventCallback(ev => {
     if (disabled) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -24,7 +41,7 @@ export function useARIAButton(
     }
   });
 
-  const onKeyDownHandler = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
+  const onKeyDownHandler: ARIAButtonProps['onKeyDown'] = useEventCallback(ev => {
     const code = getCode(ev);
     if (typeof onKeyDown === 'function') {
       onKeyDown(ev);
@@ -48,7 +65,7 @@ export function useARIAButton(
     }
   });
 
-  const onKeyupHandler = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
+  const onKeyupHandler: ARIAButtonProps['onKeyUp'] = useEventCallback(ev => {
     const code = getCode(ev);
     if (typeof onKeyUp === 'function') {
       onKeyUp(ev);
@@ -67,22 +84,8 @@ export function useARIAButton(
     }
   });
 
-  if (!shorthand.hasOwnProperty('children')) {
-    shorthand.children = null;
-  }
-
-  if (!shorthand.hasOwnProperty('as') || shorthand.as === 'button') {
-    shorthand.as = 'button';
-    return shorthand; // there's nothing to be done if as prop === 'button'
-  }
-
-  /**
-   * TODO: Ideally this is unnecessary after implementation of as-prop RFC.
-   * The way to go is to have an assertion method to ensure types,
-   * in the case of button we'd like to limit it for: button, div, span, a
-   */
-  if (typeof shorthand.as !== 'string') {
-    return shorthand;
+  if (shorthand.as === 'button' || shorthand.as === undefined) {
+    return shorthand; // there's nothing to be done if as prop === 'button' or undefined
   }
 
   if (!shorthand.hasOwnProperty('role')) {
@@ -103,11 +106,4 @@ export function useARIAButton(
     }
   }
   return shorthand;
-}
-
-function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
-  if (typeof disabled === 'string') {
-    return disabled === 'false' ? false : true;
-  }
-  return disabled ?? false;
 }

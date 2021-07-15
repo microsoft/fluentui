@@ -12,7 +12,7 @@ export interface MenuPopoverProps extends ComponentProps, React.HTMLAttributes<H
 /**
  * State used in rendering MenuPopover
  */
-export interface MenuPopoverState extends ComponentState<MenuPopoverProps>, Pick<MenuState, 'inline'> {
+export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inline'>, React.HTMLAttributes<HTMLElement> {
   /**
    * Ref to the root element
    */

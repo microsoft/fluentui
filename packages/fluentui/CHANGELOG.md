@@ -18,6 +18,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
+- Wrap ChatMessage header elements correctly @Hirse ([#18837](https://github.com/microsoft/fluentui/pull/18837))
+- Align ChatMessageDetails color with ChatMessage header @Hirse ([#18840](https://github.com/microsoft/fluentui/pull/18840))
+- Fix Timestamp colors for dark and both v2 themes @Hirse ([#18841](https://github.com/microsoft/fluentui/pull/18841))
+- Fix compact hover background in dark themes @Hirse ([#18842](https://github.com/microsoft/fluentui/pull/18842))
+- Fix children conflict with compactBody in `ChatMessage` @chassunc ([#18874](https://github.com/microsoft/fluentui/pull/18874))
+- Fix `Tooltip` trigger order of props being spread @chassunc ([#18875](https://github.com/microsoft/fluentui/pull/18875))
+- Ensure wide content fits in compact ChatMessage @Hirse ([#18871](https://github.com/microsoft/fluentui/pull/18871))
+- Adding back data-is-focusable attribute for `menuitem` @kolaps33 ([#18934](https://github.com/microsoft/fluentui/pull/18934))
+
+### Features
+- Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
+
+
 <!--------------------------------[ v0.57.0 ]------------------------------- -->
 ## [v0.57.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.57.0) (2021-06-29)
 
@@ -71,6 +86,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Documentation
 - Allow switching to V2 themes in maximized examples @Hirse ([#18292](https://github.com/microsoft/fluentui/pull/18292))
 - Add DocumentTitle from Prototype section @Hirse ([#18539](https://github.com/microsoft/fluentui/pull/18539))
+- Update selectable list example to make sure selection state is visible in all themes @yuanboxue-amber ([#18639](https://github.com/microsoft/fluentui/pull/18639))
 
 <!--------------------------------[ v0.56.0 ]------------------------------- -->
 ## [v0.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.56.0) (2021-05-14)

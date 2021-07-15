@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.33)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.32..@fluentui/react-positioning_v9.0.0-alpha.33)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.32 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.32)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.31..@fluentui/react-positioning_v9.0.0-alpha.32)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.31 ([PR #18721](https://github.com/microsoft/fluentui/pull/18721) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.31)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.30..@fluentui/react-positioning_v9.0.0-alpha.31)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.16 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.30)
 

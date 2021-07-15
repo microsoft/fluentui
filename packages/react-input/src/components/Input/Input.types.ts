@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Input Props
  */
-export interface InputProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface InputProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the inputShorthandProps array below
@@ -25,7 +25,7 @@ export type InputDefaultedProps = never; // TODO add names of properties with de
 /**
  * State used in rendering Input
  */
-export interface InputState extends ComponentState<InputProps, InputShorthandProps, InputDefaultedProps> {
+export interface InputState extends ComponentStateCompat<InputProps, InputShorthandProps, InputDefaultedProps> {
   /**
    * Ref to the root element
    */

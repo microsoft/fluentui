@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Thu, 01 Jul 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.17)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.16..@fluentui/react-label_v9.0.0-alpha.17)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+### Changes
+
+- Adding missing line-height to Label. ([PR #18889](https://github.com/microsoft/fluentui/pull/18889) by esteban.230@hotmail.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.16)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.15..@fluentui/react-label_v9.0.0-alpha.16)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.24 ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.15)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.14..@fluentui/react-label_v9.0.0-alpha.15)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.23 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.14)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.13..@fluentui/react-label_v9.0.0-alpha.14)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.31 ([PR #18721](https://github.com/microsoft/fluentui/pull/18721) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.13)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.12..@fluentui/react-label_v9.0.0-alpha.13)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.12)
 

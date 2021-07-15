@@ -1,14 +1,33 @@
 import * as React from 'react';
 
-import { getNativeElementProps, omit } from '../utils/index';
-import { GenericDictionary } from './types';
+import { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 import { nullRender } from './nullRender';
+import { getNativeElementProps } from '../utils/getNativeElementProps';
+import { omit } from '../utils/omit';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getRootSlot<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>) {
+  const slot =
+    state.components?.root === undefined || typeof state.components.root === 'string'
+      ? state.as || state.components?.root || 'div'
+      : state.components.root;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const props: any = typeof slot === 'string' ? getNativeElementProps(slot, state) : omit(state, ['components']);
+  return [slot, props] as const;
+}
+
+/**
+ * Hack that converts an Union to an Intersection
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : U;
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
  * collections.
  *
- * The root is always derived from the `as` prop.
+ * The root is derived from a mix of `components` props and `as` prop.
  *
  * Slots will render as null if they are rendered as primitives with undefined children.
  *
@@ -20,36 +39,58 @@ import { nullRender } from './nullRender';
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export const getSlots = (state: GenericDictionary, slotNames?: readonly string[]) => {
-  const slots: GenericDictionary = {
-    root: state.as || 'div',
-  };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>, slotNames?: string[]) {
+  /**
+   * force typings on state, this should not be added directly in parameters to avoid type inference
+   */
+  const typedState = state as ComponentState<SlotProps>;
+  /**
+   * force typings on slotNames, this should not be added directly in parameters to avoid type inference
+   */
+  const typedSlotNames = slotNames as Array<keyof SlotProps> | undefined;
 
-  const slotProps: GenericDictionary = {
-    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, state) : omit(state, ['as']),
-  };
+  type Slots = { [K in keyof SlotProps]: React.ElementType<SlotProps[K]> };
 
-  if (slotNames) {
-    for (const name of slotNames) {
-      const slotDefinition = state[name] || {};
-      const { as: slotAs = 'span', children } = slotDefinition;
-      const isSlotPrimitive = typeof slotAs === 'string';
-      const isSlotEmpty = isSlotPrimitive && slotDefinition.children === undefined;
+  const slots = {} as Slots;
 
-      slots[name] = isSlotEmpty ? nullRender : slotAs;
+  const slotProps = {} as SlotProps;
+
+  if (typedSlotNames) {
+    for (const name of typedSlotNames) {
+      const { children, ...rest } = typedState[name];
+
+      const slot = (typedState.components?.[name] || 'div') as Slots[typeof name];
+
+      // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader, Input
+      if (typeof slot === 'string' && children === undefined) {
+        slots[name] = nullRender;
+        continue;
+      } else {
+        slots[name] = slot;
+      }
 
       if (typeof children === 'function') {
-        slotProps[name] = {
-          children: children(slots[name], omit(slotDefinition, ['as', 'children'])),
-        };
+        const render = children as ShorthandRenderFunction<SlotProps[keyof SlotProps]>;
+        // TODO: converting to unknown might be harmful
+        slotProps[name] = ({
+          children: render(slots[name], rest as ComponentState<SlotProps>[keyof SlotProps]),
+        } as unknown) as SlotProps[keyof SlotProps];
         slots[name] = React.Fragment;
-      } else if (slots[name] !== nullRender) {
-        slotProps[name] = isSlotPrimitive
-          ? getNativeElementProps(slotAs, slotDefinition)
-          : omit(slotDefinition, ['as']);
+      } else {
+        slotProps[name] = typedState[name];
       }
     }
   }
 
-  return { slots, slotProps };
-};
+  const [root, rootProps] = getRootSlot(state);
+
+  const typedSlotProps = slotProps as {
+    [Key in keyof SlotProps]: UnionToIntersection<SlotProps[Key]>;
+  };
+
+  return {
+    slots: { ...slots, root },
+    slotProps: { ...typedSlotProps, root: rootProps },
+  } as const;
+}

@@ -30,7 +30,7 @@
     "@fluentui/api-docs": { "implicitDependencies": [] },
     "@fluentui/azure-themes": { "implicitDependencies": [] },
     "@fluentui/babel-make-styles": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
-    "@fluentui/bundle-size": { "implicitDependencies": [] },
+    "@fluentui/bundle-size": { "tags": ["platform:node"], "implicitDependencies": [] },
     "@fluentui/codemods": { "implicitDependencies": [] },
     "@fluentui/common-styles": { "implicitDependencies": [] },
     "@fluentui/cra-template": { "implicitDependencies": [] },
@@ -108,15 +108,14 @@
     "@fluentui/react-positioning": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-provider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-shared-contexts": { "implicitDependencies": [] },
-    "@fluentui/react-slider": { "implicitDependencies": [] },
     "@fluentui/react-storybook": { "implicitDependencies": [] },
     "@fluentui/react-tabs": { "implicitDependencies": [] },
     "@fluentui/react-tabster": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-theme": { "implicitDependencies": [] },
+    "@fluentui/react-theme": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-toggle": { "implicitDependencies": [] },
     "@fluentui/react-tooltip": { "implicitDependencies": [] },
-    "@fluentui/react-utilities": { "implicitDependencies": [] },
+    "@fluentui/react-utilities": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-window-provider": { "implicitDependencies": [] },
     "@fluentui/scheme-utilities": { "implicitDependencies": [] },
     "@fluentui/set-version": { "implicitDependencies": [] },
@@ -132,6 +131,9 @@
     "@fluentui/react-label": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-popover": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "nx-workspace-tools": { "tags": [] },
-    "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] }
+    "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] },
+    "@fluentui/keyboard-keys": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
+    "@fluentui/react-slider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
+    "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] }
   }
 }

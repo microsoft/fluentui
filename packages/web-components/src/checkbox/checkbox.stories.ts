@@ -1,30 +1,14 @@
-import { STORY_RENDERED } from '@storybook/core-events';
 import addons from '@storybook/addons';
-import { FluentDesignSystemProvider } from '../design-system-provider';
+import { STORY_RENDERED } from '@storybook/core-events';
+import { Checkbox as FoundationCheckbox } from '@microsoft/fast-foundation';
 import Examples from './fixtures/checkbox.html';
-import { FluentCheckbox } from './';
-
-// Prevent tree-shaking
-FluentCheckbox;
-FluentDesignSystemProvider;
+import './index';
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
   if (name.toLowerCase().startsWith('checkbox')) {
-    setIndeterminate();
-  }
-});
-
-function setIndeterminate(): void {
-  document.querySelectorAll('.flag-indeterminate').forEach(el => {
-    if (el instanceof FluentCheckbox) {
+    document.querySelectorAll('.flag-indeterminate').forEach((el: FoundationCheckbox) => {
       el.indeterminate = true;
-    }
-  });
-}
-
-document.addEventListener('readystatechange', () => {
-  if (document.readyState === 'complete') {
-    setIndeterminate();
+    });
   }
 });
 
@@ -32,4 +16,4 @@ export default {
   title: 'Checkbox',
 };
 
-export const Checkbox = (): string => Examples;
+export const Checkbox = () => Examples;

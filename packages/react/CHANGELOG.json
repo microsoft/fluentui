@@ -2,6 +2,155 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 14 Jul 2021 07:28:19 GMT",
+      "tag": "@fluentui/react_v8.23.2",
+      "version": "8.23.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set id correctly on header item when title is an IContextualMenuItem",
+            "author": "makopch@microsoft.com",
+            "commit": "54d610936b6670ecfe3c1577ed779af25c27ef3e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react_v8.23.1",
+      "version": "8.23.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Propagate ariaLabel to the dropdown list element",
+            "author": "behowell@microsoft.com",
+            "commit": "035ba0498cee783b11b31dffa0cbf595b73d6ec8",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react_v8.23.0",
+      "version": "8.23.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pivot: removed cyclic imports that were causing ordering issues with esbuild output.",
+            "author": "dzearing@microsoft.com",
+            "commit": "6b2a1529c216ec0e9d57ff6fa7ba8c4a152cbc3d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.2.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.12",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.7",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Pass Icon 'title' as alt text for File Type Icons",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/react_v8.22.3",
+      "version": "8.22.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Prettier update.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "394b16b92fae7773125c32edc1df56c7758cba4e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react_v8.22.3",
+      "version": "8.22.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.2.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react_v8.22.2",
+      "version": "8.22.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove title tooltip from TeachingBubble close button",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Datepicker: move aria-haspopup to the correct element",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "bc44a88956298d7333cc8cdea52236101f1e1c28",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 07:32:54 GMT",
+      "tag": "@fluentui/react_v8.22.1",
+      "version": "8.22.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update picker suggestions scroll into view so it works with inline suggestions",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "9babbdb459a85f5ec7640b35e921d17a675f7856",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jul 2021 07:35:05 GMT",
       "tag": "@fluentui/react_v8.22.0",
       "version": "8.22.0",
