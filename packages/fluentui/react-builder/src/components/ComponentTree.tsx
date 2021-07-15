@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
 import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
-import { JSONTreeElement } from '../types';
-import { jsonTreeFindElement } from '../../config';
-import { CloneDebugButton, TrashDebugButton, MoveDebugButton, AccessibilityErrorIcon } from '../DebugButtons';
-import { AccessibilityError } from '../../accessibility/types';
+import { JSONTreeElement } from './types';
+import { jsonTreeFindElement } from '../config';
+import { CloneDebugButton, TrashDebugButton, MoveDebugButton, AccessibilityErrorIcon } from './DebugButtons';
+import { AccessibilityError } from '../accessibility/types';
 
 export type ComponentTreeProps = {
   tree: JSONTreeElement;
