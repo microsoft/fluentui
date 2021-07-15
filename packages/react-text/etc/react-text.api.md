@@ -64,9 +64,6 @@ export interface LargeTitleProps extends Omit<TextProps, 'font' | 'size'> {
 // @public
 export const renderText: (state: TextState) => JSX.Element;
 
-// @public (undocumented)
-const subheadline: MakeStylesStyleFunctionRule<Theme>;
-
 // @public
 export const Subheadline: React_2.ForwardRefExoticComponent<SubheadlineProps & React_2.RefAttributes<HTMLElement>>;
 
@@ -103,30 +100,6 @@ export interface TextProps extends ComponentPropsCompat, React_2.HTMLAttributes<
 export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
-
-// @public (undocumented)
-const title1: MakeStylesStyleFunctionRule<Theme>;
-
-// @public (undocumented)
-const title2: MakeStylesStyleFunctionRule<Theme>;
-
-// @public (undocumented)
-const title3: MakeStylesStyleFunctionRule<Theme>;
-
-declare namespace typographyStyles {
-    export {
-        caption,
-        body,
-        subheadline,
-        headline,
-        title3,
-        title2,
-        title1,
-        largeTitle,
-        display
-    }
-}
-export { typographyStyles }
 
 // @public
 export const Title1: React_2.ForwardRefExoticComponent<Title1Props & React_2.RefAttributes<HTMLElement>>;
