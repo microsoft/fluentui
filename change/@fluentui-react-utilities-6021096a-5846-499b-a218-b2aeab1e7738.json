@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix bugs on getSlots to follow with RFC",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.50)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.49..@fluentui/react-menu_v9.0.0-alpha.50)
+
+### Changes
+
+- feat(Menu): replace useControllableValue with useControllableState ([PR #18881](https://github.com/microsoft/fluentui/pull/18881) by lingfan.gao@microsoft.com)
+- feat(Menu): remove parent context flags with new hook ([PR #18812](https://github.com/microsoft/fluentui/pull/18812) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.49)
 
