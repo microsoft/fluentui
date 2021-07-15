@@ -61,6 +61,8 @@ See [react-image/Image.types.ts] for the API.
 
 [react-image/image.types.ts]: https://github.com/microsoft/fluentui/blob/master/packages/react-image/src/components/Image/Image.types.ts
 
+Proposed component props:
+
 | Name       | Type      | Default value | Comments                                     |
 | ---------- | --------- | ------------- | -------------------------------------------- |
 | `bordered` | `boolean` | `false`       |                                              |
@@ -68,6 +70,8 @@ See [react-image/Image.types.ts] for the API.
 | `fluid`    | `boolean` | `false`       |                                              |
 | `circular` | `boolean` | `false`       |                                              |
 | `rounded`  | `boolean` | `false`       | rounded corners                              |
+
+All native html attributes of the `<img />` will be available to be used as props of the Image component.
 
 ## Sample Code
 
