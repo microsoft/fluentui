@@ -32,10 +32,10 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
 
   const accessErrorLabelStyle = {
     position: 'relative',
-    right: '5px',
+    right: '8px',
     top: '-5px',
     transform: 'rotate(0deg);',
-    border: 'solid 2px white',
+    border: 'solid 1px white',
     height: '18px',
     width: '18px',
     justifyContent: 'center',
