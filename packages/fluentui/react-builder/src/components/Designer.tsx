@@ -278,17 +278,27 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
-  const handleAccessibilityErrorChange = React.useCallback(
-    (jsonTreeElement: JSONTreeElement, elementAccessibilityErrors: AccessibilityError[]) => {
-      console.log('error change');
-      dispatch({
-        type: 'ACCESSIBILITY_CHANGE',
-        component: jsonTreeElement,
-        componentAccessibilityErrors: elementAccessibilityErrors,
+  const handleAccessibilityErrorChange = React.useCallback(async () => {
+    const { violations } = await runAxe();
+    const errors = [];
+    violations.forEach(node => {
+      node.nodes.forEach(nodeResult => {
+        const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
+        if (idMatch) {
+          const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);
+          results.forEach(result => {
+            errors.push({
+              elementUuid: idMatch[1],
+              source: 'AXE-core',
+              error: result.message,
+            } as AccessibilityError);
+          });
+        }
       });
-    },
-    [dispatch],
-  );
+    });
+
+    dispatch({ type: 'ACCESSIBILITY_CHANGE', component: selectedComponent, componentAccessibilityErrors: errors });
+  }, [dispatch, selectedComponent]);
 
   const hotkeys = {
     'Ctrl+c': () => {
