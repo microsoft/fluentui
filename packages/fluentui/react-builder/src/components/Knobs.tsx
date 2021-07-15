@@ -231,6 +231,8 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 }}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
+                }}
+                onBlur={() => {
                   onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
                 }}
               />
@@ -255,6 +257,8 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               value={value}
               onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
+              }}
+              onBlur={() => {
                 onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
               }}
             />

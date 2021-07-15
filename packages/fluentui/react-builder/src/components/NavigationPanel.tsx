@@ -10,7 +10,7 @@ import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
 import { AddTabPanel } from './tabPanels/AddTabPanel';
 
-export type LeftNavProps = {
+export type NavigationPanelProps = {
   accessibilityErrors: AccessibilityError[];
   activeTab: string;
   jsonTree: JSONTreeElement;
@@ -27,15 +27,15 @@ export type LeftNavProps = {
   selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
-export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavProps) => {
+export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
   const [{ mode }] = useMode();
 
   const accessErrorLabelStyle = {
     position: 'relative',
-    right: '5px',
+    right: '8px',
     top: '-5px',
     transform: 'rotate(0deg);',
-    border: 'solid 2px white',
+    border: 'solid 1px white',
     height: '18px',
     width: '18px',
     justifyContent: 'center',

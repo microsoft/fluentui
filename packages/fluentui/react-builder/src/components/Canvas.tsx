@@ -175,8 +175,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       setBodyFocused(false);
     }
   };
-  // const accessibilityErrors = useAxeOnElements();
-  // const [accessibilityErrors, runAxeOnAllElements] = useAxeOnAllElements();
 
   const debugSize = '8px';
 

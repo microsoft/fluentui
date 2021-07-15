@@ -2,9 +2,20 @@ import * as React from 'react';
 import * as axeCore from 'axe-core';
 import { AccessibilityError } from '../accessibility/types';
 
-export function useAxeOnElements(): AccessibilityError[] {
+export async function runAxe() {
+  return await axeCore.run(document.getElementsByTagName('iframe')[0], {
+    rules: {
+      // excluding rules which are related to the whole page not to components
+      'page-has-heading-one': { enabled: false },
+      region: { enabled: false },
+      'landmark-one-main': { enabled: false },
+    },
+  });
+}
+
+export function useAxeOnElements(): [AccessibilityError[], () => void] {
   const [axeErrors, setAxeErrors] = React.useState([]);
-  React.useCallback(() => {
+  const runAxeOnAllElements = React.useCallback(() => {
     const iframe = document.getElementsByTagName('iframe')[0];
     const componentAxeErrors = [];
     axeCore.run(
@@ -44,7 +55,7 @@ export function useAxeOnElements(): AccessibilityError[] {
     );
   }, []);
   console.log(axeErrors);
-  return axeErrors;
+  return [axeErrors, runAxeOnAllElements];
 }
 export function useAxeOnAllElements(): [AccessibilityError[], (elements: Element[]) => void] {
   const [axeErrors, setAxeErrors] = React.useState<AccessibilityError[]>([]);

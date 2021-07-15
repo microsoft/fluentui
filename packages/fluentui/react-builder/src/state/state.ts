@@ -58,12 +58,14 @@ export type DesignerAction =
   | { type: 'REDO' }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
+  | { type: 'DESIGNER_LOADED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'ADD_COMPONENT'; component: string; module: string }
   | { type: 'ACCESSIBILITY_CHANGE'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
   let treeChanged = false;
+  console.log(`type: ${action.type}`);
 
   switch (action.type) {
     case 'DRAG_START':
@@ -152,12 +154,8 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         draftState.selectedJSONTreeElementUuid = null;
         draftState.selectedComponentInfo = null;
         treeChanged = true;
-        if (draftState.accessibilityErrors) {
-          // if accessibility errors already exist, remove any accessibility errors for the component
-          draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
-            error => error.elementUuid !== draftState.selectedJSONTreeElementUuid,
-          );
-        }
+
+        deleteAccessibilityErrorsForElement(draftState);
       }
       break;
 
@@ -188,6 +186,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         delete component.props[action.propName];
         treeChanged = true;
       }
+
       break;
 
     case 'ENABLE_VIRTUAL_CURSOR':
@@ -294,14 +293,14 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     }
 
     case 'ACCESSIBILITY_CHANGE': {
-      if (draftState.accessibilityErrors) {
-        // if accessibility errors already exist, remove any accessibility errors for the component
-        draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
-          error => error.elementUuid !== action.component.uuid,
-        );
-      }
+      deleteAccessibilityErrorsForElement(draftState);
       // add the accesibility errors for the component
       draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
+      break;
+    }
+
+    case 'DESIGNER_LOADED': {
+      draftState.accessibilityErrors = action.accessibilityErrors;
       break;
     }
 
@@ -313,7 +312,18 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     draftState.code = renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree));
     draftState.codeError = null;
   }
+
+  console.log(`Completed action: ${action.type}`);
 };
+
+function deleteAccessibilityErrorsForElement(draftState) {
+  if (draftState.accessibilityErrors) {
+    // if accessibility errors already exist, remove any accessibility errors for the component
+    draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
+      error => error.elementUuid !== draftState.selectedJSONTreeElementUuid,
+    );
+  }
+}
 
 export function useDesignerState(): [DesignerState, React.Dispatch<DesignerAction>] {
   const [state, dispatch] = useImmerReducer(stateReducer, null, () => {

@@ -19,23 +19,23 @@ export type CanvasWindowProps = {
   isSelecting: boolean;
   showJSONTree: boolean;
   state: DesignerState;
-  switchToStore: () => void;
   getShareableLink: () => string;
-  onDrag: (e: MouseEvent) => void;
-  onCanvasMouseUp: () => void;
-  onSelectComponent: (jsonTreeElement: any) => void;
-  onDropPositionChange: (dropParent: any, dropIndex: any) => void;
-  onSourceCodeError: (code: any, error: any) => void;
-  onSourceCodeChange: (code: any, jsonTree: any) => void;
-  onCloneComponent: (e: MouseEvent) => void;
-  onDeleteSelectedComponent: () => void;
-  onMoveComponent: (e: MouseEvent) => void;
-  onGoToParentComponent: () => void;
-  onKeyDown: (e: KeyboardEvent) => void;
   onAccessibilityErrorChange: (
     jsonTreeElement: JSONTreeElement,
     elementAccessibilityErrors: AccessibilityError[],
   ) => void;
+  onCanvasMouseUp: () => void;
+  onCloneComponent: (e: MouseEvent) => void;
+  onDeleteSelectedComponent: () => void;
+  onDrag: (e: MouseEvent) => void;
+  onDropPositionChange: (dropParent: any, dropIndex: any) => void;
+  onGoToParentComponent: () => void;
+  onKeyDown: (e: KeyboardEvent) => void;
+  onMoveComponent: (e: MouseEvent) => void;
+  onSourceCodeChange: (code: any, jsonTree: any) => void;
+  onSourceCodeError: (code: any, error: any) => void;
+  onSelectComponent: (jsonTreeElement: any) => void;
+  onSwitchToStore: () => void;
 };
 
 export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: CanvasWindowProps) => {
@@ -80,7 +80,7 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
               {props.state.jsonTreeOrigin === 'url' && (
                 <>
                   <Text error>You are working from a shared URL, no changes are saved!</Text>
-                  <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={props.switchToStore}>
+                  <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={props.onSwitchToStore}>
                     View local
                   </Button>
                 </>
