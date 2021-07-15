@@ -27,4 +27,8 @@ export default {
 
     return customConfig;
   },
+
+  core: {
+    builder: 'webpack5',
+  },
 };

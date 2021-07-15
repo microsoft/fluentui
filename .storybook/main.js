@@ -51,6 +51,10 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
 
     return config;
   },
+
+  core: {
+    builder: 'webpack5',
+  },
 });
 
 /**
@@ -73,12 +77,12 @@ function overrideDefaultBabelLoader(rules) {
   }
 
   const loaderIdx = rule.use.findIndex(loaderConfig => {
-    return /** @type {LoaderObjectDef} */ (loaderConfig).loader === 'babel-loader';
+    return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
   });
 
   const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
 
-  if (loader && !Object.prototype.hasOwnProperty.call(loader, 'options')) {
+  if (!Object.prototype.hasOwnProperty.call(loader, 'options')) {
     throw new Error('storybook webpack rules changed');
   }
 
