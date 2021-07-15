@@ -51,13 +51,12 @@ export function webpackLoader(
   let error: Error | null = null;
 
   try {
-    // Use Webpack's resolution when evaluating modules
+    // Use Webpack's resolution when evaluating modules in Babel plugin
     Module._resolveFilename = (id, { filename }) => {
       const resolvedPath = resolveSync(path.dirname(filename), id);
 
       if (!resolvedPath) {
-        // enhanced-resolve v4 throws a error when dependency is missed
-        throw new Error('No result');
+        throw new Error(`enhanced-resolve: Failed to resolve module "${id}"`);
       }
 
       this.addDependency(resolvedPath);
