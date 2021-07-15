@@ -25,6 +25,8 @@ yarn add @fluentui/react-context-selector
 
 ## Usage
 
+### Getting started
+
 ```tsx
 import * as React from 'react';
 import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
@@ -84,6 +86,24 @@ export default function App() {
     </div>
   );
 }
+```
+
+### useHasParentContext
+
+This helper hook will allow you to know if a component is wrapped by a context selector provider
+
+```tsx
+const Foo = () => {
+  // An easy way to test if a context provider is wrapped around this component
+  // since it's more complicated to compare with a default context value
+  const isWrappedWithContext = useHasParentContext(CounterContext);
+
+  if (isWrappedWithContext) {
+    return <div>I am inside context selector provider</div>;
+  } else {
+    return <div>I can only use default context value</div>;
+  }
+};
 ```
 
 ## Technical memo

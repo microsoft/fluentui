@@ -67,7 +67,7 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     }),
     button: {
       ...buttonShorthand,
-      onClick: useEventCallback((ev: React.MouseEvent<HTMLElement>) => {
+      onClick: useEventCallback(ev => {
         buttonShorthand.onClick?.(ev);
         if (!ev.defaultPrevented) {
           onAccordionHeaderClick(ev);

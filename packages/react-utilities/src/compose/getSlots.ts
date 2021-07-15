@@ -2,17 +2,26 @@ import * as React from 'react';
 
 import { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 import { nullRender } from './nullRender';
-import { getNativeElementProps, omit } from '../utils/index';
+import { getNativeElementProps } from '../utils/getNativeElementProps';
+import { omit } from '../utils/omit';
 
-function getSlot(
-  defaultComponent: React.ElementType | undefined,
-  userComponent: keyof JSX.IntrinsicElements | undefined,
-) {
-  if (defaultComponent === undefined || typeof defaultComponent === 'string') {
-    return userComponent || defaultComponent || 'div';
-  }
-  return defaultComponent;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getRootSlot<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>) {
+  const slot =
+    state.components?.root === undefined || typeof state.components.root === 'string'
+      ? state.as || state.components?.root || 'div'
+      : state.components.root;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const props: any = typeof slot === 'string' ? getNativeElementProps(slot, state) : omit(state, ['components']);
+  return [slot, props] as const;
 }
+
+/**
+ * Hack that converts an Union to an Intersection
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : U;
 
 /**
  * Given the state and an array of slot names, will break out `slots` and `slotProps`
@@ -39,26 +48,21 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
   /**
    * force typings on slotNames, this should not be added directly in parameters to avoid type inference
    */
-  const typedSlotNames = slotNames as Array<keyof SlotProps>;
+  const typedSlotNames = slotNames as Array<keyof SlotProps> | undefined;
 
   type Slots = { [K in keyof SlotProps]: React.ElementType<SlotProps[K]> };
 
-  const slots = ({
-    root: getSlot(typedState.components ? typedState.components.root : undefined, typedState.as),
-  } as Slots & { root: React.ElementType }) as Slots;
+  const slots = {} as Slots;
 
-  const slotProps = ({
-    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, typedState) : typedState,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as SlotProps & { root: any }) as SlotProps;
+  const slotProps = {} as SlotProps;
 
   if (typedSlotNames) {
     for (const name of typedSlotNames) {
-      const { as, children } = typedState[name];
+      const { children, ...rest } = typedState[name];
 
-      const slot = getSlot(typedState.components ? typedState.components[name] : undefined, as) as Slots[typeof name];
+      const slot = (typedState.components?.[name] || 'div') as Slots[typeof name];
 
-      // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader
+      // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader, Input
       if (typeof slot === 'string' && children === undefined) {
         slots[name] = nullRender;
         continue;
@@ -70,24 +74,23 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
         const render = children as ShorthandRenderFunction<SlotProps[keyof SlotProps]>;
         // TODO: converting to unknown might be harmful
         slotProps[name] = ({
-          children: render(
-            slots[name],
-            omit(typedState[name], ['children']) as ComponentState<SlotProps>[keyof SlotProps],
-          ),
+          children: render(slots[name], rest as ComponentState<SlotProps>[keyof SlotProps]),
         } as unknown) as SlotProps[keyof SlotProps];
         slots[name] = React.Fragment;
       } else {
-        slotProps[name] =
-          typeof slots[name] === 'string'
-            ? (omit(typedState[name], ['as']) as ComponentState<SlotProps>[keyof SlotProps])
-            : typedState[name];
+        slotProps[name] = typedState[name];
       }
     }
   }
 
+  const [root, rootProps] = getRootSlot(state);
+
+  const typedSlotProps = slotProps as {
+    [Key in keyof SlotProps]: UnionToIntersection<SlotProps[Key]>;
+  };
+
   return {
-    slots: slots as Slots & { root: React.ElementType },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    slotProps: slotProps as SlotProps & { root: any },
+    slots: { ...slots, root },
+    slotProps: { ...typedSlotProps, root: rootProps },
   } as const;
 }
