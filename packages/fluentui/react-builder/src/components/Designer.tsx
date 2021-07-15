@@ -102,7 +102,7 @@ export const Designer: React.FunctionComponent = () => {
             errors.push({
               elementUuid: idMatch[1],
               source: 'AXE-core',
-              error: result.message,
+              message: result.message,
             } as AccessibilityError);
           });
         }
@@ -284,13 +284,13 @@ export const Designer: React.FunctionComponent = () => {
     violations.forEach(node => {
       node.nodes.forEach(nodeResult => {
         const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
-        if (idMatch) {
+        if (idMatch && idMatch[0] === selectedComponent.uuid) {
           const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);
           results.forEach(result => {
             errors.push({
               elementUuid: idMatch[1],
               source: 'AXE-core',
-              error: result.message,
+              message: result.message,
             } as AccessibilityError);
           });
         }

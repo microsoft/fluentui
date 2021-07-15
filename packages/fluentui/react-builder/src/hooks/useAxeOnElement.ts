@@ -40,7 +40,7 @@ export function useAxeOnElements(): [AccessibilityError[], () => void] {
                 const axeError: AccessibilityError = {
                   elementUuid: violationUuid,
                   source: 'AXE-Core',
-                  error: node.failureSummary
+                  message: node.failureSummary
                     .replace('Fix all of the following:', '')
                     .replace('Fix any of the following:', ''),
                   severity: node.impact,
@@ -84,7 +84,7 @@ export function useAxeOnAllElements(): [AccessibilityError[], (elements: Element
                   const axeError: AccessibilityError = {
                     elementUuid: elementBuilderId,
                     source: 'AXE-Core',
-                    error: node.failureSummary
+                    message: node.failureSummary
                       .replace('Fix all of the following:', '')
                       .replace('Fix any of the following:', ''),
                     severity: node.impact,
@@ -127,7 +127,7 @@ export function useAxeOnElement(): [AccessibilityError[], (selectedElementUuid: 
                 const axeError: AccessibilityError = {
                   elementUuid: selectedElementUuid,
                   source: 'AXE-Core',
-                  error: node.failureSummary
+                  message: node.failureSummary
                     .replace('Fix all of the following:', '')
                     .replace('Fix any of the following:', ''),
                   severity: node.impact,

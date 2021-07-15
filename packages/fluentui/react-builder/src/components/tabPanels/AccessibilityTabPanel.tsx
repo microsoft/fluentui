@@ -87,7 +87,7 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
                         lineHeight: '1.5em',
                       }}
                     >
-                      {error.error}
+                      {error.message}
                       <br />
                       <Text size="smaller" weight="light">
                         {`Severity: ${error.severity}`}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
-import { Text, Accordion, List } from '@fluentui/react-northstar';
+import { Text, Accordion } from '@fluentui/react-northstar';
 import { AccessibilityError } from '../accessibility/types';
 
 export type ErrorPanelProps = {
@@ -23,7 +23,13 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
           </Text>
         ),
       },
-      content: <List style={{ marginBottom: '1rem' }} items={elementAccessibilityErrors.map(error => error.error)} />,
+      content: (
+        <ul style={{ padding: '0rem 0.7rem' }}>
+          {elementAccessibilityErrors.map(error => (
+            <li>{error.message}</li>
+          ))}
+        </ul>
+      ),
     },
   ];
 
