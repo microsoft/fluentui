@@ -1,7 +1,7 @@
 {
-  "type": "none",
-  "comment": "Add more thorough test for template",
+  "type": "patch",
+  "comment": "Update package description to clarify that the template is for `@fluentui/react`",
   "packageName": "@fluentui/cra-template",
   "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
