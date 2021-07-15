@@ -6,14 +6,33 @@
 
 import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
 import * as React_2 from 'react';
+import { Theme } from '@fluentui/react-theme';
+
+// @public (undocumented)
+const body: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+const caption: MakeStylesStyleFunctionRule<Theme>;
+
+// @public (undocumented)
+const display: MakeStylesStyleFunctionRule<Theme>;
+
+// @public (undocumented)
+const headline: MakeStylesStyleFunctionRule<Theme>;
+
+// @public (undocumented)
+const largeTitle: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
 export const renderText: (state: TextState) => JSX.Element;
 
+// @public (undocumented)
+const subheadline: MakeStylesStyleFunctionRule<Theme>;
+
 // @public
 const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
-
 export { Text_2 as Text }
 
 // @public
@@ -39,12 +58,35 @@ export interface TextState extends ComponentStateCompat<TextProps, TextDefaulted
     ref: React_2.Ref<HTMLElement>;
 }
 
+// @public (undocumented)
+const title1: MakeStylesStyleFunctionRule<Theme>;
+
+// @public (undocumented)
+const title2: MakeStylesStyleFunctionRule<Theme>;
+
+// @public (undocumented)
+const title3: MakeStylesStyleFunctionRule<Theme>;
+
+declare namespace typographyStyles {
+    export {
+        caption,
+        body,
+        subheadline,
+        headline,
+        title3,
+        title2,
+        title1,
+        largeTitle,
+        display
+    }
+}
+export { typographyStyles }
+
 // @public
 export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
 // @public
 export const useTextStyles: (state: TextState) => TextState;
-
 
 // (No @packageDocumentation comment for this package)
 
