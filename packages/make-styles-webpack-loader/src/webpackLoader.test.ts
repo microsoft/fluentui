@@ -21,7 +21,7 @@ async function compileSourceWithWebpack(entryPath: string, configOverrides: webp
       module: {
         rules: [
           {
-            test: /\.(js|ts|tsx|txt)$/,
+            test: /\.(ts|tsx|txt)$/,
             include: path.dirname(entryPath),
             use: {
               loader: path.resolve(__dirname, './index.ts'),
@@ -86,29 +86,25 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
   it(`"${fixtureName}" fixture`, async () => {
     const fixturePath = path.resolve(__dirname, '..', '__fixtures__', fixtureName);
 
-    const jsCodePath = path.resolve(fixturePath, 'code.js');
     const tsCodePath = path.resolve(fixturePath, 'code.ts');
     const tsxCodePath = path.resolve(fixturePath, 'code.tsx');
     // Specially for cases when "code" contains syntax errors
     const txtCodePath = path.resolve(fixturePath, 'code.txt');
 
-    const jsOutputPath = path.resolve(fixturePath, 'output.js');
     const tsOutputPath = path.resolve(fixturePath, 'output.ts');
     const tsxOutputPath = path.resolve(fixturePath, 'output.tsx');
 
     const inputPath = [
-      fs.existsSync(jsCodePath) && jsCodePath,
       fs.existsSync(tsCodePath) && tsCodePath,
       fs.existsSync(tsxCodePath) && tsxCodePath,
       fs.existsSync(txtCodePath) && txtCodePath,
     ].find(Boolean);
     const outputPath = [
-      fs.existsSync(jsOutputPath) && jsOutputPath,
       fs.existsSync(tsOutputPath) && tsOutputPath,
       fs.existsSync(tsxOutputPath) && tsxOutputPath,
     ].find(Boolean);
 
-    const errorPath = path.resolve(fixturePath, 'error.js');
+    const errorPath = path.resolve(fixturePath, 'error.ts');
     const expectedError = fs.existsSync(errorPath) && require(errorPath);
 
     if (!inputPath) {
@@ -116,7 +112,15 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
     }
 
     if (!outputPath && !expectedError) {
-      throw new Error(`Failed to find "output.{js,ts,tsx}" or "error.js" in "${fixturePath}"`);
+      throw new Error(`Failed to find "output.{js,ts,tsx}" or "error.ts" in "${fixturePath}"`);
+    }
+
+    if (expectedError) {
+      if (!expectedError.default) {
+        throw new Error(
+          `Please check that "error.ts" contains a default export with an error or regex in "${fixturePath}"`,
+        );
+      }
     }
 
     let result = '';
@@ -145,7 +149,7 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
     }
 
     if (expectedError) {
-      expect(resultError.message).toMatch(expectedError);
+      expect(resultError.message).toMatch(expectedError.default);
     }
   });
 }
