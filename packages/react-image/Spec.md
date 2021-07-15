@@ -29,8 +29,6 @@ Comparison done in: [#17608](https://github.com/microsoft/fluentui/pull/17608)
 | Provides customized styling that will layer on top of the variant rules | `styles`                | `styles`        | matching                      |
 | Theme provided by HOC                                                   | `theme`                 | `variables`     | matching                      |
 | Accessibility behavior overridden by the user                           | N/A                     | `accessibility` | v7/v8 missing                 |
-| Alternative text                                                        | N/A                     | `alt`           | v7/v8 missing                 |
-| ARIA label                                                              | N/A                     | `aria-label`    | v7/v8 missing                 |
 | An element type to render as (string or component)                      | N/A                     | `as`            | v7/v8 missing                 |
 | An image may be formatted to appear inline with text as an avatar       | N/A                     | `avatar`        | v7/v8 missing                 |
 | An image can appear circular                                            | N/A                     | `circular`      | v7/v8 missing                 |
