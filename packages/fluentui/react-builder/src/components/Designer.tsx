@@ -12,9 +12,7 @@ import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
 // import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
 import { Toolbar } from './Toolbar';
-import { NavigationPanel } from './NavigationPanel';
-import { CanvasWindow } from './CanvasWindow';
-import { ComponentPropertiesPanel } from './ComponentPropertiesPanel';
+import { Builder } from './Builder';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -390,57 +388,39 @@ export const Designer: React.FunctionComponent = () => {
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
-      <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <NavigationPanel
-          accessibilityErrors={[]}
-          activeTab={activeTab}
-          jsonTree={jsonTree}
-          onAddComponent={handleAddComponent}
-          onCloneComponent={handleCloneComponent}
-          onDeleteSelectedComponent={handleDeleteSelectedComponent}
-          onDragStart={handleDragStart}
-          onGoToParentComponent={handleGoToParentComponent}
-          onMoveComponent={handleMoveComponent}
-          onOpenAddComponentDialog={handleOpenAddComponentDialog}
-          onSelectComponent={handleSelectComponent}
-          onSwitchTab={handleSwitchTab}
-          selectedComponent={selectedComponent}
-          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-        />
-
-        <CanvasWindow
-          getShareableLink={getShareableLink}
-          isExpanding={isExpanding}
-          isSelecting={isSelecting}
-          onAccessibilityErrorChange={handleAccessibilityErrorChange}
-          onCanvasMouseUp={handleCanvasMouseUp}
-          onCloneComponent={handleCloneComponent}
-          onDeleteSelectedComponent={handleDeleteSelectedComponent}
-          onDrag={handleDrag}
-          onDropPositionChange={handleDropPositionChange}
-          onGoToParentComponent={handleGoToParentComponent}
-          onKeyDown={handleKeyDown}
-          onMoveComponent={handleMoveComponent}
-          onSelectComponent={handleSelectComponent}
-          onSourceCodeChange={handleSourceCodeChange}
-          onSourceCodeError={handleSourceCodeError}
-          selectedComponent={selectedComponent}
-          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-          showJSONTree={showJSONTree}
-          state={state}
-          switchToStore={handleSwitchToStore}
-        />
-
-        <ComponentPropertiesPanel
-          accessibilityErrors={[]}
-          mode={mode}
-          onAccessibilityErrorChange={handleAccessibilityErrorChange}
-          onPropChange={handlePropChange}
-          onPropDelete={handlePropDelete}
-          selectedComponentInfo={selectedComponentInfo}
-          selectedJSONTreeElement={selectedJSONTreeElement}
-        />
-      </div>
+      <Builder
+        activeTab={activeTab}
+        getShareableLink={getShareableLink}
+        isExpanding={isExpanding}
+        isSelecting={isSelecting}
+        jsonTree={jsonTree}
+        mode={mode}
+        onAccessibilityErrorChange={handleAccessibilityErrorChange}
+        onAddComponent={handleAddComponent}
+        onCanvasMouseUp={handleCanvasMouseUp}
+        onCloneComponent={handleCloneComponent}
+        onDeleteSelectedComponent={handleDeleteSelectedComponent}
+        onDrag={handleDrag}
+        onDragStart={handleDragStart}
+        onDropPositionChange={handleDropPositionChange}
+        onGoToParentComponent={handleGoToParentComponent}
+        onKeyDown={handleKeyDown}
+        onMoveComponent={handleMoveComponent}
+        onOpenAddComponentDialog={handleOpenAddComponentDialog}
+        onPropChange={handlePropChange}
+        onPropDelete={handlePropDelete}
+        onSelectComponent={handleSelectComponent}
+        onSourceCodeChange={handleSourceCodeChange}
+        onSourceCodeError={handleSourceCodeError}
+        onSwitchTab={handleSwitchTab}
+        onSwitchToStore={handleSwitchToStore}
+        selectedComponent={selectedComponent}
+        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+        selectedComponentInfo={selectedComponentInfo}
+        selectedJSONTreeElement={selectedJSONTreeElement}
+        showJSONTree={showJSONTree}
+        state={state}
+      />
     </div>
   );
 };
