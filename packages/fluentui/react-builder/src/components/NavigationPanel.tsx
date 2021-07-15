@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
-import { AccessibiltyTabPanel } from './TabPanels/AccessibilityTabPanel';
-import { NavigatorTabPanel } from './TabPanels/NavigationTabPanel';
+import { AccessibiltyTabPanel } from './tabPanels/AccessibilityTabPanel';
+import { NavigatorTabPanel } from './tabPanels/NavigationTabPanel';
 import { NavBarItem } from './NavBarItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { useMode } from '../hooks/useMode';
 import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
-import { AddTabPanel } from './TabPanels/AddTabPanel';
+import { AddTabPanel } from './tabPanels/AddTabPanel';
 
-export type LeftNavProps = {
+export type NavigationPanelProps = {
   accessibilityErrors: AccessibilityError[];
   activeTab: string;
   jsonTree: JSONTreeElement;
@@ -27,7 +27,7 @@ export type LeftNavProps = {
   selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
-export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavProps) => {
+export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
   const [{ mode }] = useMode();
 
   const accessErrorLabelStyle = {

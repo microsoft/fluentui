@@ -12,7 +12,7 @@ import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
 // import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
 import { Toolbar } from './Toolbar';
-import { LeftNav } from './LeftNav';
+import { NavigationPanel } from './NavigationPanel';
 import { CanvasWindow } from './CanvasWindow';
 import { ComponentPropertiesPanel } from './ComponentPropertiesPanel';
 
@@ -391,7 +391,7 @@ export const Designer: React.FunctionComponent = () => {
       />
 
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <LeftNav
+        <NavigationPanel
           accessibilityErrors={[]}
           activeTab={activeTab}
           jsonTree={jsonTree}
