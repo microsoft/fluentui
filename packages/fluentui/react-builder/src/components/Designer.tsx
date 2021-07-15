@@ -422,7 +422,7 @@ export const Designer: React.FunctionComponent = () => {
                 <div key="headerMessage" style={{ marginLeft: 10 }}>
                   {mode === 'use' && <Text error>{headerMessage}</Text>}
                 </div>,
-                <div key="headrTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
+                <div key="headerTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
                       <Text error>You are working from a shared URL, no changes are saved!</Text>
