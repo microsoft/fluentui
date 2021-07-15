@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/web-components_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update fast-foundation version to fix design token typings",
+            "author": "chhol@microsoft.com",
+            "commit": "966a306ca3db42c6f2a71cfef8e2b6542e3a18b4",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Jul 2021 22:32:58 GMT",
       "tag": "@fluentui/web-components_v1.1.0",
       "version": "1.1.0",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Menu): remove parent context flags with new hook",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

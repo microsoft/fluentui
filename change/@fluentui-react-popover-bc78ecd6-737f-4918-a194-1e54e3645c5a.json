@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-popover): apply controls setup based on SB authoring RFC",
-  "packageName": "@fluentui/react-popover",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

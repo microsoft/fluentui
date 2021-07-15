@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update fast-foundation version to fix design token typings",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(useHasParentContext): new hook to determine if a context provider exists as parent",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

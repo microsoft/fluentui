@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(useHasParentContext): new hook to determine if a context provider exists as parent",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fce57b22cb51acd0b125421278655258b871c1b5",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",

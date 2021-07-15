@@ -2,6 +2,27 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Menu): replace useControllableValue with useControllableState",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "57b43a4d07fbccd83fa03a3b7879813be920b91f",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "feat(Menu): remove parent context flags with new hook",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fce57b22cb51acd0b125421278655258b871c1b5",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Jul 2021 22:32:58 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.49",
       "version": "9.0.0-alpha.49",

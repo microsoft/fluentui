@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 14 Jul 2021 07:28:19 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/react-docsite-components to v8.2.38 ([PR #18928](https://github.com/microsoft/fluentui/pull/18928) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-components to v9.0.0-alpha.79 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.126 ([PR #18884](https://github.com/microsoft/fluentui/pull/18884) by behowell@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.124 ([PR #18884](https://github.com/microsoft/fluentui/pull/18884) by behowell@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.50 ([PR #18881](https://github.com/microsoft/fluentui/pull/18881) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.33 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.56 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.60 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.0.0-alpha.11 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.49 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.56 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
 
 ## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
 

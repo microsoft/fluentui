@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react_v8.23.3",
+      "version": "8.23.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prevent tooltip from showing on tab switch for the focused element",
+            "author": "behowell@microsoft.com",
+            "commit": "77457de1a3be11dfe66b3634daaa35d7ab23cef9",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Jul 2021 07:28:19 GMT",
       "tag": "@fluentui/react_v8.23.2",
       "version": "8.23.2",

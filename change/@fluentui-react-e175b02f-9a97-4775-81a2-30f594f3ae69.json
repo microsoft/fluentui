@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Prevent tooltip from showing on tab switch for the focused element",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/theme-samples_v8.1.38",
+      "version": "8.1.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.3",
+            "author": "behowell@microsoft.com",
+            "commit": "77457de1a3be11dfe66b3634daaa35d7ab23cef9",
+            "package": "@fluentui/theme-samples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Jul 2021 07:28:19 GMT",
       "tag": "@fluentui/theme-samples_v8.1.37",
       "version": "8.1.37",
