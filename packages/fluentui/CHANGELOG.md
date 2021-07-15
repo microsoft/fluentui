@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tooltip` trigger order of props being spread @chassunc ([#18875](https://github.com/microsoft/fluentui/pull/18875))
 - Ensure wide content fits in compact ChatMessage @Hirse ([#18871](https://github.com/microsoft/fluentui/pull/18871))
 - Adding back data-is-focusable attribute for `menuitem` @kolaps33 ([#18934](https://github.com/microsoft/fluentui/pull/18934))
+- Fix `ChatMessage` to pass `popperRef` from user to `usePopper` @yuanboxue-amber ([#18950](https://github.com/microsoft/fluentui/pull/18950))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
