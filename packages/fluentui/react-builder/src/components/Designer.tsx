@@ -1,6 +1,6 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
+import { Text, Button, Header, Menu, Label } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -25,6 +25,7 @@ import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
 import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
+import { NavBarItem } from './NavBarItem';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -34,51 +35,6 @@ const CodeEditor = React.lazy(async () => {
     default: _CodeEditor,
   };
 });
-
-export type NavBarItemProps = {
-  title: string;
-  icon: any;
-  isSelected: boolean;
-  onClickHandler: () => void;
-};
-
-export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, icon, isSelected, onClickHandler }) => {
-  return (
-    <Box
-      styles={({ theme }) => ({
-        height: '3.4rem',
-        display: 'flex',
-        alignItems: 'center',
-        background: isSelected ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
-        position: 'relative',
-      })}
-    >
-      {isSelected && (
-        <Box
-          styles={({ theme }) => ({
-            position: 'absolute',
-            width: '2px',
-            height: '32px',
-            background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
-            top: '8px',
-            left: '4px',
-          })}
-        />
-      )}
-      <Tooltip
-        pointing
-        position="after"
-        align="center"
-        trigger={
-          <Menu.Item iconOnly style={{ marginLeft: '6px' }} onClick={onClickHandler} active={isSelected}>
-            {icon}
-          </Menu.Item>
-        }
-        content={title}
-      />
-    </Box>
-  );
-};
 
 export const Designer: React.FunctionComponent = () => {
   debug('render');
