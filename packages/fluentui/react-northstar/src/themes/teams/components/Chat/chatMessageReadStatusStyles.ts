@@ -10,8 +10,8 @@ export const chatMessageReadStatusStyles: ComponentSlotStylesPrepared<
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
-    right: p.density === 'compact' ? v.rightPositionCompact : v.rightPoistion,
-    bottom: p.density === 'compact' ? v.bottomPositionCompact : v.bottomPoistion,
+    right: p.density === 'compact' ? v.rightPositionCompact : v.rightPosition,
+    bottom: p.density === 'compact' ? v.bottomPositionCompact : v.bottomPosition,
     ':after': {
       content: `"${p.title}"`,
       ...(screenReaderContainerStyles as ICSSInJSStyle),
