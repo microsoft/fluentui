@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.50)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.49..@fluentui/react-menu_v9.0.0-alpha.50)
+
+### Changes
+
+- feat(Menu): replace useControllableValue with useControllableState ([PR #18881](https://github.com/microsoft/fluentui/pull/18881) by lingfan.gao@microsoft.com)
+- feat(Menu): remove parent context flags with new hook ([PR #18812](https://github.com/microsoft/fluentui/pull/18812) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.49)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.48..@fluentui/react-menu_v9.0.0-alpha.49)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.48)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.47..@fluentui/react-menu_v9.0.0-alpha.48)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.24 ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.47)
+
+Mon, 12 Jul 2021 07:33:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.46..@fluentui/react-menu_v9.0.0-alpha.47)
+
+### Changes
+
+- chore(Menu): remove makeMergeProps and getSlotsCompat ([PR #18819](https://github.com/microsoft/fluentui/pull/18819) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.46)
 

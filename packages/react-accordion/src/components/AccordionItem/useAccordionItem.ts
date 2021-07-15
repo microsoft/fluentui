@@ -12,10 +12,11 @@ import {
   AccordionItemDescendant,
   AccordionItemSlots,
 } from './AccordionItem.types';
-import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import { AccordionContext } from '../Accordion/useAccordionContext';
+import { AccordionContext } from '../Accordion/AccordionContext';
+import { useAccordionDescendant } from '../Accordion/AccordionContext';
+import { AccordionToggleEvent } from '../Accordion/Accordion.types';
 
 /**
  * Consts listing which props are shorthand props.
@@ -34,21 +35,33 @@ export const accordionItemDescendantContext: React.Context<
  */
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
   const innerRef = React.useRef<HTMLElement>(null);
-  const initialState = {
-    ref: useMergedRefs(ref, innerRef),
-    ...props,
-    disabled: props.disabled ?? false,
-  } as const;
   const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},
   });
+  const disabled = props.disabled || false;
+
+  const index = useAccordionDescendant({
+    element: innerRef.current,
+    disabled,
+  });
+
+  const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
+  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(index));
+  const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { index }), [
+    requestToggle,
+    index,
+  ]);
+
   return {
-    ...initialState,
+    ...props,
+    ref: useMergedRefs(ref, innerRef),
+    open,
+    onHeaderClick: onAccordionHeaderClick,
+    disabled,
     descendants,
     setDescendants,
-    context: useCreateAccordionItemContextValue(initialState, innerRef),
     ...(navigable ? tabsterAttributes : {}),
   };
 };

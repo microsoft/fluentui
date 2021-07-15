@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Apply getFocusStyle to TextField's `canRevealPassword` icon button",
+  "packageName": "@fluentui/react",
+  "email": "ilrosen@microsoft.com",
+  "dependentChangeType": "patch"
+}
