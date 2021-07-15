@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Header, Menu } from '@fluentui/react-northstar';
+import { Button, Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
 import { ComponentList } from './ComponentList';
 import { ComponentTree } from './ComponentTree';
@@ -32,7 +32,6 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
 
   const { activeTab, jsonTree } = state;
 
-  /*
   const accessErrorLabelStyle = {
     position: 'relative',
     right: '5px',
@@ -44,7 +43,6 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
     justifyContent: 'center',
     alignItems: 'center',
   };
-  */
 
   return (
     <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
@@ -79,16 +77,14 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
           title="Accessibility"
           isSelected={activeTab === 'accessibility'}
           icon={
-            <AccessibilityIcon size="large" />
-            /*
-          accessibilityErrors.length !== 0 ? (
+            props.accessibilityErrors.length !== 0 ? (
               <>
                 {' '}
                 <AccessibilityIcon size="large" />
                 <Label
                   design={accessErrorLabelStyle}
                   color={'red'}
-                  content={accessibilityErrors.length}
+                  content={props.accessibilityErrors.length}
                   circular
                   fluid
                 />{' '}
@@ -96,7 +92,6 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
             ) : (
               <AccessibilityIcon size="large" outline />
             )
-              */
           }
           onClickHandler={() => props.onSwitchTab('accessibility')}
         />
