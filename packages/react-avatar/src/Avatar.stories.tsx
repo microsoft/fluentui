@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AvatarExamples } from '@fluentui/example-data';
-import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
-import { useBoolean } from '@fluentui/react-hooks';
+import { StoryExample } from './StoryExample.stories';
+import { AvatarExamples } from './AvatarExamples.stories';
+import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from './index';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import {
   CalendarIcon,
   CatIcon,
@@ -12,10 +12,19 @@ import {
   IDBadgeIcon,
   RoomIcon,
   TelemarketerIcon,
-} from '@fluentui/react-icons-mdl2';
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+} from './tmp-icons.stories';
 
-import { StoryExample } from '../utils/StoryExample';
+/**
+ * Temporary workaround for Buttons
+ * The converged Button component is not yet migrated to the new DX: https://github.com/microsoft/fluentui/pull/18607
+ */
+const Button: React.FC<{ value?: string | number; onClick: React.MouseEventHandler<HTMLButtonElement> }> = props => {
+  return (
+    <button value={props.value} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
+};
 
 const examples = {
   ...AvatarExamples,
@@ -45,56 +54,73 @@ const examples = {
   ],
 } as const;
 
-export const Basic = () => (
-  <>
-    <StoryExample title="Simple examples">
-      <Avatar />
-      <Avatar name={examples.name[0]} />
-      <Avatar size={40} icon={<IDBadgeIcon />} />
-      <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
-    </StoryExample>
-    <StoryExample title="Square">
-      <Avatar square name="Group" />
-      <Avatar square icon={<GroupIcon />} />
-    </StoryExample>
-    <StoryExample title="Badges">
-      <Avatar name={examples.name[1]} badge="available" />
-      <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
-      <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
-    </StoryExample>
-    <StoryExample title="Size">
-      <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
-      <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
-      <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
-    </StoryExample>
-    <StoryExample title="Brand color">
-      <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
-      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="available" />
-    </StoryExample>
-    <StoryExample title="Colorful">
-      <Avatar color="colorful" name={examples.name[13]} />
-      <Avatar color="colorful" name={examples.name[14]} />
-      <Avatar color="colorful" name={examples.name[15]} />
-      <Avatar color="colorful" name={examples.name[16]} />
-      <Avatar color="colorful" name={examples.name[17]} />
-      <Avatar color="colorful" idForColor={examples.name[18]} />
-      <Avatar color="colorful" idForColor={examples.name[19]} />
-      <Avatar color="colorful" idForColor={examples.name[20]} />
-      <Avatar color="colorful" idForColor={examples.name[21]} />
-      <Avatar color="colorful" idForColor={examples.name[22]} />
-    </StoryExample>
-    <StoryExample title="Active/inactive">
-      <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
-        <Avatar name={examples.name[7]} active="active" />
-        <Avatar image={examples.image[8]} active="active" activeDisplay="shadow" />
-        <Avatar image={examples.image[9]} active="active" activeDisplay="glow" />
-        <Avatar image={examples.image[10]} active="active" activeDisplay="ring-shadow" />
-        <Avatar image={examples.image[11]} active="active" activeDisplay="ring-glow" />
-        <Avatar image={examples.image[12]} active="inactive" />
-      </Stack>
-    </StoryExample>
-  </>
-);
+const useFlexStyles = makeStyles({
+  root: {},
+  stack: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: '16px',
+  },
+});
+
+export const Basic = () => {
+  const styles = useFlexStyles();
+  return (
+    <>
+      <StoryExample title="Simple examples">
+        <Avatar />
+        <Avatar name={examples.name[0]} />
+        <Avatar size={40} icon={<IDBadgeIcon />} />
+        <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
+      </StoryExample>
+      <StoryExample title="Square">
+        <Avatar square name="Group" />
+        <Avatar square icon={<GroupIcon />} />
+      </StoryExample>
+      <StoryExample title="Badges">
+        <Avatar name={examples.name[1]} badge="available" />
+        <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
+        <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
+      </StoryExample>
+      <StoryExample title="Size">
+        <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
+        <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
+        <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
+      </StoryExample>
+      <StoryExample title="Brand color">
+        <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
+        <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="available" />
+      </StoryExample>
+      <StoryExample title="Colorful">
+        <Avatar color="colorful" name={examples.name[13]} />
+        <Avatar color="colorful" name={examples.name[14]} />
+        <Avatar color="colorful" name={examples.name[15]} />
+        <Avatar color="colorful" name={examples.name[16]} />
+        <Avatar color="colorful" name={examples.name[17]} />
+        <Avatar color="colorful" idForColor={examples.name[18]} />
+        <Avatar color="colorful" idForColor={examples.name[19]} />
+        <Avatar color="colorful" idForColor={examples.name[20]} />
+        <Avatar color="colorful" idForColor={examples.name[21]} />
+        <Avatar color="colorful" idForColor={examples.name[22]} />
+      </StoryExample>
+      <StoryExample title="Active/inactive">
+        <div className={styles.flex}>
+          <Avatar name={examples.name[7]} active="active" />
+          <Avatar image={examples.image[8]} active="active" activeDisplay="shadow" />
+          <Avatar image={examples.image[9]} active="active" activeDisplay="glow" />
+          <Avatar image={examples.image[10]} active="active" activeDisplay="ring-shadow" />
+          <Avatar image={examples.image[11]} active="active" activeDisplay="ring-glow" />
+          <Avatar image={examples.image[12]} active="inactive" />
+        </div>
+      </StoryExample>
+    </>
+  );
+};
 
 export const AllSizes = () => (
   <>
@@ -170,38 +196,58 @@ export const ActiveAnimation = () => {
   const [size, nextSize, prevSize] = useValueSelectorState(examples.size, 96);
   const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(examples.activeDisplay, 'ring');
   const [display, nextDisplay, prevDisplay] = useValueSelectorState(['image', 'icon', 'label'], 'image');
-
+  const flexStyles = useFlexStyles();
   React.useEffect(() => {
     const id = setTimeout(() => setActive(true), 500);
     return () => clearTimeout(id);
   }, []);
 
   return (
-    <ThemeProvider>
-      <Stack>
-        <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Avatar
-            size={size}
-            active={active ? 'active' : 'inactive'}
-            activeDisplay={activeDisplay}
-            name={examples.name[10]}
-            image={display === 'image' ? examples.image[10] : undefined}
-            icon={display === 'icon' ? <ContactIcon /> : undefined}
-          />
+    <div className={flexStyles.stack}>
+      <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Avatar
+          size={size}
+          active={active ? 'active' : 'inactive'}
+          activeDisplay={activeDisplay}
+          name={examples.name[10]}
+          image={display === 'image' ? examples.image[10] : undefined}
+          icon={display === 'icon' ? <ContactIcon /> : undefined}
+        />
+      </div>
+      <div className={flexStyles.stack}>
+        <Button onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</Button>
+        {/* Temporarly replacement of SpinButtons */}
+        <div className={flexStyles.flex}>
+          <span>activeDisplay="{activeDisplay}"</span>
+          <Button value={activeDisplay} onClick={nextActiveDisplay}>
+            next
+          </Button>
+          <Button value={activeDisplay} onClick={prevActiveDisplay}>
+            prev
+          </Button>
         </div>
-        <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
-          <PrimaryButton onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</PrimaryButton>
-          <SpinButton
-            label="activeDisplay"
-            value={activeDisplay}
-            onIncrement={nextActiveDisplay}
-            onDecrement={prevActiveDisplay}
-          />
-          <SpinButton label="display" value={display} onIncrement={nextDisplay} onDecrement={prevDisplay} />
-          <SpinButton label="size" value={`${size}`} onIncrement={nextSize} onDecrement={prevSize} />
-        </Stack>
-      </Stack>
-    </ThemeProvider>
+
+        <div className={flexStyles.flex}>
+          <span>display="{display}"</span>
+          <Button value={display} onClick={nextDisplay}>
+            next
+          </Button>
+          <Button value={display} onClick={prevDisplay}>
+            prev
+          </Button>
+        </div>
+
+        <div className={flexStyles.flex}>
+          <span>size="{size}"</span>
+          <Button value={size} onClick={nextSize}>
+            next
+          </Button>
+          <Button value={size} onClick={prevSize}>
+            prev
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -252,16 +298,17 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
 });
 
 export const RobotExample = () => {
+  const flexStyles = useFlexStyles();
   return (
     <StoryExample title="Robot Example">
-      <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
+      <div className={flexStyles.flex}>
         <RobotAvatar size={20} />
         <RobotAvatar size={32} />
         <RobotAvatar size={48} />
         <RobotAvatar size={64} />
         <RobotAvatar size={96} />
         <RobotAvatar size={128} />
-      </Stack>
+      </div>
     </StoryExample>
   );
 };
@@ -272,10 +319,15 @@ export const AvatarPlayground = () => {
   const propSelectors = [
     useValueSelector('size', useValueSelectorState(examples.size, 96), true),
     useValueSelector('square', useValueSelectorState([true, false])),
-    useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
+    useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString as () => string),
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
-    useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
-    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
+    useValueSelector(
+      'image',
+      [nameAndImage.image, nextNameAndImage, prevNameAndImage],
+      true,
+      getFilenameFromUrl as () => string,
+    ),
+    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString as () => string),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
@@ -291,10 +343,10 @@ export const AvatarPlayground = () => {
         <Avatar {...propValues} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
-        {...propSelectors.map(p => p.renderSelector())}
+        {propSelectors.map(p => p.renderSelector())}
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
           {`<Avatar `}
-          {...propSelectors.map(p => p.renderValue())}
+          {propSelectors.map(p => p.renderValue())}
           {`/>`}
         </div>
       </div>
@@ -319,9 +371,10 @@ const AvatarExampleList: React.FC<
 > = props => {
   const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
+  const flexStyles = useFlexStyles();
 
   return (
-    <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
+    <div className={flexStyles.flex}>
       {examples.size.map((size, i) => (
         <Avatar
           key={size}
@@ -333,7 +386,7 @@ const AvatarExampleList: React.FC<
           {...restOfProps}
         />
       ))}
-    </Stack>
+    </div>
   );
 };
 
@@ -364,7 +417,7 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
   initialEnabled: boolean = false,
   valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
 ) => {
-  const [enabled, { toggle: toggleEnabled }] = useBoolean(initialEnabled);
+  const [enabled, setEnabled] = React.useState(initialEnabled);
 
   return {
     /** Assign this property's value to the given props object, if the property is set */
@@ -373,9 +426,9 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
     /** Render the UI to select the property value */
     renderSelector: () => (
       <div style={{ opacity: !enabled ? '50%' : undefined }}>
-        <button onClick={enabled ? prev : toggleEnabled}>&lt;</button>
-        <button onClick={enabled ? next : toggleEnabled}>&gt;</button>
-        <input id={`prop_${name}`} type="checkbox" onChange={toggleEnabled} checked={enabled} />
+        <button onClick={enabled ? prev : () => setEnabled(!enabled)}>&lt;</button>
+        <button onClick={enabled ? next : () => setEnabled(!enabled)}>&gt;</button>
+        <input id={`prop_${name}`} type="checkbox" onChange={() => setEnabled(!enabled)} checked={enabled} />
         <label htmlFor={`prop_${name}`}>{`${name}: ${enabled ? `${valueToString(value)}` : `(unset)`}`}</label>
       </div>
     ),
@@ -386,4 +439,9 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
       return enabled && <span>{`${name}=${quotes[0]}${valueToString(value)}${quotes[1]}`}</span>;
     },
   };
+};
+
+export default {
+  title: 'Components/Avatar',
+  component: Avatar,
 };

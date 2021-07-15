@@ -104,7 +104,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-accordion/src"
     },
-    "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
+    "@fluentui/react-avatar": {
+      "root": "packages/react-avatar",
+      "projectType": "library",
+      "sourceRoot": "packages/react-avatar/src"
+    },
     "@fluentui/react-badge": {
       "root": "packages/react-badge",
       "projectType": "library",
