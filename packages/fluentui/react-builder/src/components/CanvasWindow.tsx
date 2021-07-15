@@ -21,18 +21,18 @@ export type CanvasWindowProps = {
   state: DesignerState;
   switchToStore: () => void;
   getShareableLink: () => string;
-  handleDrag: (e: MouseEvent) => void;
-  handleCanvasMouseUp: () => void;
-  handleSelectComponent: (jsonTreeElement: any) => void;
-  handleDropPositionChange: (dropParent: any, dropIndex: any) => void;
-  handleSourceCodeError: (code: any, error: any) => void;
-  handleSourceCodeChange: (code: any, jsonTree: any) => void;
-  handleCloneComponent: (e: MouseEvent) => void;
-  handleDeleteSelectedComponent: () => void;
-  handleMoveComponent: (e: MouseEvent) => void;
-  handleGoToParentComponent: () => void;
-  handleKeyDown: (e: KeyboardEvent) => void;
-  handleAccessibilityErrorChange: (
+  onDrag: (e: MouseEvent) => void;
+  onCanvasMouseUp: () => void;
+  onSelectComponent: (jsonTreeElement: any) => void;
+  onDropPositionChange: (dropParent: any, dropIndex: any) => void;
+  onSourceCodeError: (code: any, error: any) => void;
+  onSourceCodeChange: (code: any, jsonTree: any) => void;
+  onCloneComponent: (e: MouseEvent) => void;
+  onDeleteSelectedComponent: () => void;
+  onMoveComponent: (e: MouseEvent) => void;
+  onGoToParentComponent: () => void;
+  onKeyDown: (e: KeyboardEvent) => void;
+  onAccessibilityErrorChange: (
     jsonTreeElement: JSONTreeElement,
     elementAccessibilityErrors: AccessibilityError[],
   ) => void;
@@ -124,23 +124,23 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
               draggingElement={props.state.draggingElement}
               isExpanding={props.isExpanding}
               isSelecting={props.isSelecting || !!props.state.draggingElement}
-              onMouseMove={props.handleDrag}
-              onMouseUp={props.handleCanvasMouseUp}
-              onKeyDown={props.handleKeyDown}
-              onSelectComponent={props.handleSelectComponent}
-              onDropPositionChange={props.handleDropPositionChange}
+              onMouseMove={props.onDrag}
+              onMouseUp={props.onCanvasMouseUp}
+              onKeyDown={props.onKeyDown}
+              onSelectComponent={props.onSelectComponent}
+              onDropPositionChange={props.onDropPositionChange}
               jsonTree={props.state.jsonTree}
               selectedComponent={props.selectedComponent}
-              onCloneComponent={props.handleCloneComponent}
-              onMoveComponent={props.handleMoveComponent}
-              onDeleteSelectedComponent={props.handleDeleteSelectedComponent}
-              onGoToParentComponent={props.handleGoToParentComponent}
+              onCloneComponent={props.onCloneComponent}
+              onMoveComponent={props.onMoveComponent}
+              onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+              onGoToParentComponent={props.onGoToParentComponent}
               enabledVirtualCursor={props.state.enabledVirtualCursor}
               role="main"
               inUseMode={mode === 'use'}
               setHeaderMessage={setHeaderMessage}
               selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
-              onAccessibilityErrors={props.handleAccessibilityErrorChange}
+              onAccessibilityErrors={props.onAccessibilityErrorChange}
             />
           </ErrorBoundary>
         </BrowserWindow>
@@ -152,8 +152,8 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
                 <React.Suspense fallback={<div>Loading...</div>}>
                   <CodeEditor
                     code={props.state.code}
-                    onCodeChange={props.handleSourceCodeChange}
-                    onCodeError={props.handleSourceCodeError}
+                    onCodeChange={props.onSourceCodeChange}
+                    onCodeError={props.onSourceCodeError}
                   />
                 </React.Suspense>
                 {props.state.codeError && (

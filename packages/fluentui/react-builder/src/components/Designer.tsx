@@ -2,9 +2,6 @@ import * as React from 'react';
 import DocumentTitle from 'react-document-title';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
-// import Anatomy from './Anatomy';
-import { Description } from './Description';
-import { Knobs } from './Knobs';
 import { jsonTreeFindElement, renderJSONTreeToJSXElement, resolveDraggingElement } from '../config';
 import { writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 import { JSONTreeElement } from './types';
@@ -16,6 +13,7 @@ import { useAxeOnElement } from '../hooks/useAxeOnElement';
 import { Toolbar } from './Toolbar';
 import { LeftNav } from './LeftNav';
 import { CanvasWindow } from './CanvasWindow';
+import { ComponentPropertiesPanel } from './ComponentPropertiesPanel';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -407,35 +405,15 @@ export const Designer: React.FunctionComponent = () => {
           switchToStore={handleSwitchToStore}
         />
 
-        {selectedComponentInfo && (
-          <div
-            role="complementary"
-            aria-label="Component properties"
-            style={{
-              width: '20rem',
-              padding: '1rem',
-              overflow: 'auto',
-              transition: 'opacity 0.2s',
-              ...(mode === 'use' && {
-                pointerEvents: 'none',
-                opacity: 0,
-              }),
-            }}
-          >
-            <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-
-            {selectedJSONTreeElement && (
-              <Knobs
-                onPropChange={handlePropChange}
-                onPropDelete={handlePropDelete}
-                info={selectedComponentInfo}
-                jsonTreeElement={selectedJSONTreeElement}
-                elementAccessibilityErrors={selectedComponentAccessibilityErrors}
-                onAccessibilityErrorChange={handleAccessibilityErrorChange}
-              />
-            )}
-          </div>
-        )}
+        <ComponentPropertiesPanel
+          accessibilityErrors={[]}
+          mode={mode}
+          onAccessibilityErrorChange={handleAccessibilityErrorChange}
+          onPropChange={handlePropChange}
+          onPropDelete={handlePropDelete}
+          selectedComponentInfo={selectedComponentInfo}
+          selectedJSONTreeElement={selectedJSONTreeElement}
+        />
       </div>
     </div>
   );
