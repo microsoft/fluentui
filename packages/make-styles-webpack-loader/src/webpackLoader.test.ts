@@ -21,7 +21,7 @@ async function compileSourceWithWebpack(entryPath: string, configOverrides: webp
       module: {
         rules: [
           {
-            test: /\.(js|tsx|ts)$/,
+            test: /\.(js|ts|tsx|txt)$/,
             include: path.dirname(entryPath),
             use: {
               loader: path.resolve(__dirname, './index.ts'),
@@ -89,6 +89,8 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
     const jsCodePath = path.resolve(fixturePath, 'code.js');
     const tsCodePath = path.resolve(fixturePath, 'code.ts');
     const tsxCodePath = path.resolve(fixturePath, 'code.tsx');
+    // Specially for cases when "code" contains syntax errors
+    const txtCodePath = path.resolve(fixturePath, 'code.txt');
 
     const jsOutputPath = path.resolve(fixturePath, 'output.js');
     const tsOutputPath = path.resolve(fixturePath, 'output.ts');
@@ -98,6 +100,7 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
       fs.existsSync(jsCodePath) && jsCodePath,
       fs.existsSync(tsCodePath) && tsCodePath,
       fs.existsSync(tsxCodePath) && tsxCodePath,
+      fs.existsSync(txtCodePath) && txtCodePath,
     ].find(Boolean);
     const outputPath = [
       fs.existsSync(jsOutputPath) && jsOutputPath,
