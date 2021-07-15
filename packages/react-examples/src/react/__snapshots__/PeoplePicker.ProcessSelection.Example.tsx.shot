@@ -27,6 +27,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
       role="presentation"
     >
       <div
+        aria-owns=""
         className=
             ms-BasePicker-text
             {
