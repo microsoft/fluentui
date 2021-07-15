@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { jsonTreeFindElement } from '../../config';
 
-import { Text, Button } from '@fluentui/react-northstar';
+import { Text, Button, Accordion } from '@fluentui/react-northstar';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 
@@ -25,6 +25,7 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
     },
     [onSelectComponent, tree],
   );
+
   return (
     <div
       style={{
@@ -50,44 +51,55 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
         // group the accesssibility errors (if they exist)
         Object.keys(_.groupBy(accessibilityErrors, error => error.elementUuid)).map(elementUuid => (
           <div>
-            <Button
-              text
-              onClick={handleSelectComponent}
-              style={{
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '4px 4px',
-                background: '#FFFF',
-                ...(selectedComponent &&
-                  selectedComponent.uuid === elementUuid && {
-                    background: '#ffc65c',
-                    color: '#444',
-                  }),
-                width: '120%',
-              }}
-            >
-              {jsonTreeFindElement(tree, elementUuid).displayName}
-            </Button>
-            {_.groupBy(accessibilityErrors, error => error.elementUuid)[elementUuid].map(error => (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  marginBottom: '1rem',
-                  padding: '.5em',
-                  lineHeight: '1.5em',
-                }}
-              >
-                {error.error}
-                <br />
-                <Text size="smaller" weight="light">
-                  {`Severity: ${error.severity}`}
-                </Text>
-                <Text size="smaller" weight="light">
-                  {`Source: ${error.source}`}
-                </Text>
-              </div>
-            ))}
+            <Accordion
+              expanded
+              panels={[
+                {
+                  title: {
+                    content: (
+                      <Button
+                        text
+                        onClick={handleSelectComponent}
+                        style={{
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '4px 4px',
+                          background: '#FFFF',
+                          ...(selectedComponent &&
+                            selectedComponent.uuid === elementUuid && {
+                              background: '#ffc65c',
+                              color: '#444',
+                            }),
+                          width: '120%',
+                        }}
+                      >
+                        {jsonTreeFindElement(tree, elementUuid).displayName}
+                      </Button>
+                    ),
+                  },
+                  content: _.groupBy(accessibilityErrors, error => error.elementUuid)[elementUuid].map(error => (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        marginBottom: '1rem',
+                        padding: '.5em',
+                        lineHeight: '1.5em',
+                      }}
+                    >
+                      {error.error}
+                      <br />
+                      <Text size="smaller" weight="light">
+                        {`Severity: ${error.severity}`}
+                      </Text>
+                      <Text size="smaller" weight="light">
+                        {`Source: ${error.source}`}
+                      </Text>
+                    </div>
+                  )),
+                },
+              ]}
+            />
           </div>
         ))
       )}
