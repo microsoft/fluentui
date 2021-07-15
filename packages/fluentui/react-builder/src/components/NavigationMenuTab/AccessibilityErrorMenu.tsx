@@ -1,10 +1,10 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { jsonTreeFindElement } from '../config';
+import { jsonTreeFindElement } from '../../config';
 
 import { Text, Button } from '@fluentui/react-northstar';
-import { JSONTreeElement } from './types';
-import { AccessibilityError } from '../accessibility/types';
+import { JSONTreeElement } from '../types';
+import { AccessibilityError } from '../../accessibility/types';
 
 export type AccessibilityErrorMenuProps = {
   tree: JSONTreeElement;
