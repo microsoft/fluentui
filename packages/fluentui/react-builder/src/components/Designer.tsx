@@ -46,7 +46,6 @@ export const Designer: React.FunctionComponent = () => {
   const [state, dispatch] = useDesignerState();
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
-  const [headerMessage, setHeaderMessage] = React.useState('');
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -273,7 +272,6 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
   const hotkeys = {
     'Ctrl+c': () => {
       if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
@@ -386,7 +384,7 @@ export const Designer: React.FunctionComponent = () => {
 
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
         <LeftNav
-          accessibilityErrors={[]}
+          accessibilityErrors={state.accessibilityErrors}
           onAddComponent={handleAddComponent}
           onCloneComponent={handleCloneComponent}
           onDeleteSelectedComponent={handleDeleteSelectedComponent}
@@ -397,7 +395,9 @@ export const Designer: React.FunctionComponent = () => {
           onSelectComponent={handleSelectComponent}
           onSwitchTab={handleSwitchTab}
           selectedComponent={selectedComponent}
-          selectedComponentAccessibilityErrors={[]}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+          activeTab={state.activeTab}
+          jsonTree={state.jsonTree}
         />
 
         <div
