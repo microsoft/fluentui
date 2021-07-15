@@ -289,7 +289,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     modifiers,
 
     ...positioningProps,
-    popperRef: useMergedRefs(positioningProps.popperRef, popperRef),
+    popperRef: useMergedRefs(positioningProps?.popperRef, popperRef),
   });
 
   // `focused` state is used for show/hide actionMenu
