@@ -19,15 +19,19 @@ export type TransformResult = {
 export function transformSync(sourceCode: string, options: TransformOptions): TransformResult {
   // Parse the code first so Babel will use user's babel config for parsing
   // During transforms we don't want to use user's config
-  const ast = Babel.parseSync(sourceCode, {
+  const babelAST = Babel.parseSync(sourceCode, {
     caller: { name: 'make-styles' },
 
     filename: options.filename,
     inputSourceMap: options.inputSourceMap,
     sourceMaps: options.enableSourceMaps,
-  })!;
+  });
 
-  const babelFileResult = Babel.transformFromAstSync(ast, sourceCode, {
+  if (babelAST === null) {
+    throw new Error(`Failed to create AST for "${options.filename}" due unknown Babel error...`);
+  }
+
+  const babelFileResult = Babel.transformFromAstSync(babelAST, sourceCode, {
     // Ignore all user's configs and apply only our plugin
     babelrc: false,
     configFile: false,
@@ -38,7 +42,11 @@ export function transformSync(sourceCode: string, options: TransformOptions): Tr
     sourceMaps: options.enableSourceMaps,
     sourceFileName: options.filename,
     inputSourceMap: options.inputSourceMap,
-  })!;
+  });
+
+  if (babelFileResult === null) {
+    throw new Error(`Failed to transform "${options.filename}" due unknown Babel error...`);
+  }
 
   return {
     code: babelFileResult.code as string,
