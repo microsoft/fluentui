@@ -17,7 +17,7 @@ import {
  *
  * @return - A tuple with an object classnames mapping where a key is a slot name and an array with CSS rules
  */
-export function resolveStyleRulesForSlots<Slots extends string, Tokens>(
+export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(
   stylesBySlots: StylesBySlots<Slots, Tokens>,
   unstable_cssPriority: number,
 ): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket] {

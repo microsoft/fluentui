@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add new prop mergin mechanism",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

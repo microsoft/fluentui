@@ -122,10 +122,10 @@ export function getNativeProps<T extends Record<string, any>>(props: Record<stri
 // @public
 export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>, slotNames?: string[]): {
     readonly slots: { [K in keyof SlotProps]: React_2.ElementType<SlotProps[K]>; } & {
-        root: React_2.ElementType;
+        readonly root: React_2.ElementType<any>;
     };
-    readonly slotProps: SlotProps & {
-        root: any;
+    readonly slotProps: { [Key in keyof SlotProps]: UnionToIntersection<SlotProps[Key]>; } & {
+        readonly root: any;
     };
 };
 
@@ -177,7 +177,7 @@ export const nullRender: () => null;
 // @public (undocumented)
 export type ObjectShorthandProps<Props extends {
     children?: React_2.ReactNode;
-} = {}> = Props & Pick<ComponentProps, 'as'> & {
+} = {}> = Props & {
     children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
 
@@ -302,6 +302,16 @@ export interface UseBooleanCallbacks {
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
+// @public
+export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
+
+// @public (undocumented)
+export type UseControllableStateOptions<State> = {
+    defaultState?: State | (() => State);
+    state: State | undefined;
+    initialState: State;
+};
+
 // Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -380,6 +390,7 @@ export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
+// lib/compose/getSlots.d.ts:27:5 - (ae-forgotten-export) The symbol "UnionToIntersection" needs to be exported by the entry point index.d.ts
 // lib/descendants/descendants.d.ts:64:5 - (ae-forgotten-export) The symbol "SomeElement" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)

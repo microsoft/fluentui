@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { menuItemCheckboxShorthandPropsCompat } from './useMenuItemCheckbox';
+import { MenuItemSlots } from '../MenuItem/MenuItem.types';
+import { menuItemSlots } from '../MenuItem/index';
 
 /** Function that renders the final JSX of the component  */
 export const renderMenuItemCheckbox = (state: MenuItemCheckboxState) => {
-  const { slots, slotProps } = getSlotsCompat(state, menuItemCheckboxShorthandPropsCompat);
+  const { slots, slotProps } = getSlots<MenuItemSlots>(state, menuItemSlots);
 
   return (
     <slots.root {...slotProps.root}>

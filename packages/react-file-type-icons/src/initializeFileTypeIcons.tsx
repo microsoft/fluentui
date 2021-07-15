@@ -30,20 +30,20 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     // 1.5x is a special case where both SVGs and PNGs need a different image.
 
     fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_1.5x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_1.5x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
     fileTypeIcons[type + size + '_1.5x' + SVG_SUFFIX] = (
-      <img src={baseUrl + size + '_1.5x/' + type + '.svg'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_1.5x/' + type + '.svg'} height="100%" width="100%" alt="" />
     );
 
     fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_2x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_2x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
     fileTypeIcons[type + size + '_3x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_3x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_3x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
     fileTypeIcons[type + size + '_4x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_4x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_4x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
   });
 
@@ -56,6 +56,7 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
         overflow: 'hidden',
       },
       icons: fileTypeIcons,
+      mergeImageProps: true,
     },
     options,
   );

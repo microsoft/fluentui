@@ -1,5 +1,5 @@
 import { Theme } from '@fluentui/react-theme';
-import { typographyStyles } from './typographyStyles';
+import { typographyStyles } from './index';
 
 const weightsMock = {
   regular: 1,
@@ -62,8 +62,8 @@ test.each([
   ['title1', 'base', '800', '800', weightsMock.semibold],
   ['largeTitle', 'base', '900', '900', weightsMock.semibold],
   ['display', 'base', '1000', '1000', weightsMock.semibold],
-])('Uses the right tokens for %s', (ruleName, fontFamily, fontSize, lineHeight, fontWeight) => {
-  const ruleFunction = typographyStyles[ruleName as keyof typeof typographyStyles];
+] as const)('Uses the right tokens for %s', (ruleName, fontFamily, fontSize, lineHeight, fontWeight) => {
+  const ruleFunction = typographyStyles[ruleName];
 
   const rules = ruleFunction(themeMock as Theme);
 
