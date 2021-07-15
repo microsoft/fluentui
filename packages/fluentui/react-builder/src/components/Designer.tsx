@@ -136,7 +136,6 @@ export const Designer: React.FunctionComponent = () => {
 
   const handleDragStart = React.useCallback(
     (info, e) => {
-      console.log('DRAG_START');
       dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
       dispatch({
         type: 'DRAG_START',
@@ -252,8 +251,6 @@ export const Designer: React.FunctionComponent = () => {
   const handleAddComponent = React.useCallback(
     (component: string, module: string) => {
       dispatch({ type: 'ADD_COMPONENT', component, module });
-
-      console.log(component);
     },
     [dispatch],
   );
