@@ -116,7 +116,7 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
       throw new Error(`Failed to find "output.{js,ts,tsx}" or "error.js" in "${fixturePath}"`);
     }
 
-    let result: string = '';
+    let result = '';
     let resultError: Error | webpack.StatsError = new Error();
 
     try {
