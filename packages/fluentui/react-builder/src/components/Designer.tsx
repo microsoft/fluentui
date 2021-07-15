@@ -1,85 +1,22 @@
 import * as React from 'react';
-import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, Label } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
-import { tabListBehavior } from '@fluentui/accessibility';
-// import Anatomy from './Anatomy';
-import { BrowserWindow } from './BrowserWindow';
-import { Canvas } from './Canvas';
-import { Description } from './Description';
-import { Knobs } from './Knobs';
-import { ComponentList } from './ComponentList';
-import { Toolbar } from './Toolbar';
-import { jsonTreeFindElement, renderJSONTreeToJSXElement, getCodeSandboxInfo, resolveDraggingElement } from '../config';
+import { jsonTreeFindElement, renderJSONTreeToJSXElement, resolveDraggingElement } from '../config';
 import { writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
 import { JSONTreeElement } from './types';
-import { ComponentTree } from './ComponentTree';
-import { GetShareableLink } from './GetShareableLink';
-import { ErrorBoundary } from './ErrorBoundary';
 import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
 import { useAxeOnElement } from '../hooks/useAxeOnElement';
-import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
+// import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
+import { Toolbar } from './Toolbar';
+import { LeftNav } from './LeftNav';
+import { CanvasWindow } from './CanvasWindow';
+import { ComponentPropertiesPanel } from './ComponentPropertiesPanel';
 
 const HEADER_HEIGHT = '3rem';
-
-const CodeEditor = React.lazy(async () => {
-  const _CodeEditor = (await import(/* webpackChunkName: "codeeditor" */ './CodeEditor')).CodeEditor;
-  return {
-    default: _CodeEditor,
-  };
-});
-
-export type NavBarItemProps = {
-  title: string;
-  icon: any;
-  isSelected: boolean;
-  onClickHandler: () => void;
-};
-
-export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, icon, isSelected, onClickHandler }) => {
-  return (
-    <Box
-      styles={({ theme }) => ({
-        height: '3.4rem',
-        display: 'flex',
-        alignItems: 'center',
-        background: isSelected ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
-        position: 'relative',
-      })}
-    >
-      {isSelected && (
-        <Box
-          styles={({ theme }) => ({
-            position: 'absolute',
-            width: '2px',
-            height: '32px',
-            background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
-            top: '8px',
-            left: '4px',
-          })}
-        />
-      )}
-      <Tooltip
-        pointing
-        position="after"
-        align="center"
-        trigger={
-          <Menu.Item iconOnly style={{ marginLeft: '6px' }} onClick={onClickHandler} active={isSelected}>
-            {icon}
-          </Menu.Item>
-        }
-        content={title}
-      />
-    </Box>
-  );
-};
 
 export const Designer: React.FunctionComponent = () => {
   debug('render');
@@ -95,7 +32,6 @@ export const Designer: React.FunctionComponent = () => {
   const [state, dispatch] = useDesignerState();
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
-  const [headerMessage, setHeaderMessage] = React.useState('');
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -112,31 +48,39 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
 
-  const { validateAll, validationErrors } = useA11yValidationContext();
+  // const { validateAll, validationErrors } = useA11yValidationContext();
 
   const {
-    draggingElement,
-    jsonTree,
-    jsonTreeOrigin,
-    selectedJSONTreeElementUuid,
-    enabledVirtualCursor,
-    showCode,
-    code,
     activeTab,
-    codeError,
+    draggingElement,
+    enabledVirtualCursor,
     insertComponent,
+    jsonTree,
+    selectedJSONTreeElementUuid,
+    showCode,
   } = state;
 
-  let { accessibilityErrors } = state;
-  accessibilityErrors = validationErrors;
+  // let { accessibilityErrors } = state;
+  // accessibilityErrors = validationErrors;
 
+  /*
   React.useEffect(() => {
     setTimeout(() => {
       validateAll();
     }, 1000);
   }, [validateAll]);
+  */
 
   // accessibilityErrors = accessibilityErrors.concat(validationErrors);
+
+  // const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
+
+  React.useEffect(() => {
+    if (selectedJSONTreeElementUuid) {
+      runAxeOnElement(selectedJSONTreeElementUuid);
+    }
+  }, [selectedJSONTreeElementUuid, runAxeOnElement]);
+
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
@@ -157,7 +101,7 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const selectActiveTab = React.useCallback(
+  const handleSwitchTab = React.useCallback(
     tab => {
       dispatch({ type: 'SWITCH_TAB', tab });
     },
@@ -167,17 +111,6 @@ export const Designer: React.FunctionComponent = () => {
   const handleEnableVirtualCursorChange = React.useCallback(
     enabledVC => {
       dispatch({ type: 'ENABLE_VIRTUAL_CURSOR', enabledVirtualCursor: enabledVC });
-    },
-    [dispatch],
-  );
-
-  const handleDragStart = React.useCallback(
-    (info, e) => {
-      dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
-      dispatch({
-        type: 'DRAG_START',
-        component: resolveDraggingElement(info.displayName, info.moduleName),
-      });
     },
     [dispatch],
   );
@@ -207,6 +140,24 @@ export const Designer: React.FunctionComponent = () => {
     dragAndDropData.current.dropIndex = dropIndex;
   }, []);
 
+  const handleDragStart = React.useCallback(
+    (info, e) => {
+      dragAndDropData.current.position = { x: e.clientX, y: e.clientY };
+      dispatch({
+        type: 'DRAG_START',
+        component: resolveDraggingElement(info.displayName, info.moduleName),
+      });
+    },
+    [dispatch],
+  );
+
+  const handleOpenAddComponentDialog = React.useCallback(
+    (uuid: string, where: string) => {
+      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
+    },
+    [dispatch],
+  );
+
   const handleSelectComponent = React.useCallback(
     jsonTreeElement => {
       dispatch({
@@ -230,7 +181,7 @@ export const Designer: React.FunctionComponent = () => {
   );
 
   const handlePropDelete = React.useCallback(
-    ({ jsonTreeElement, name, value }) => {
+    ({ jsonTreeElement, name }) => {
       dispatch({
         type: 'PROP_DELETE',
         component: jsonTreeElement,
@@ -294,18 +245,11 @@ export const Designer: React.FunctionComponent = () => {
     return writeTreeToURL(jsonTree, window.location.href);
   }, [jsonTree]);
 
-  const switchToStore = React.useCallback(() => {
+  const handleSwitchToStore = React.useCallback(() => {
     dispatch({ type: 'SWITCH_TO_STORE' });
     const url = window.location.href.split('#')[0];
     window.history.pushState('', document.title, url);
   }, [dispatch]);
-
-  const handleOpenAddComponentDialog = React.useCallback(
-    (uuid: string, where: string) => {
-      dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
-    },
-    [dispatch],
-  );
 
   const handleCloseAddComponentDialog = React.useCallback(() => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
@@ -313,8 +257,6 @@ export const Designer: React.FunctionComponent = () => {
   const handleAddComponent = React.useCallback(
     (component: string, module: string) => {
       dispatch({ type: 'ADD_COMPONENT', component, module });
-
-      console.log(component);
     },
     [dispatch],
   );
@@ -338,7 +280,6 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
   const hotkeys = {
     'Ctrl+c': () => {
       if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
@@ -383,18 +324,6 @@ export const Designer: React.FunctionComponent = () => {
     command += e.shiftKey ? 'Shift+' : '';
     command += e.key;
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
-  };
-
-  const accessErrorLabelStyle = {
-    position: 'relative',
-    right: '5px',
-    top: '-5px',
-    transform: 'rotate(0deg);',
-    border: 'solid 2px white',
-    height: '18px',
-    width: '18px',
-    justifyContent: 'center',
-    alignItems: 'center',
   };
 
   return (
@@ -461,341 +390,57 @@ export const Designer: React.FunctionComponent = () => {
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
-      <A11yValidationContextProvider>
-        <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-          <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
-            <Menu
-              accessibility={tabListBehavior}
-              vertical
-              styles={({ theme }) => ({
-                background: '#FAF9F8',
-                border: '0px',
-                borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
-                borderRadius: '0px',
-                display: 'flex',
-                flexDirection: 'column',
-                width: '3.4rem',
-                transition: 'opacity 0.2s',
-                position: 'relative',
-                padding: '0px',
-                ...(mode === 'use' && {
-                  pointerEvents: 'none',
-                  opacity: 0,
-                }),
-              })}
-            >
-              <NavBarItem
-                title="Add components"
-                isSelected={activeTab === 'add'}
-                icon={<AddIcon size="large" outline />}
-                onClickHandler={() => selectActiveTab('add')}
-              />
+      <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
+        <LeftNav
+          accessibilityErrors={[]}
+          activeTab={activeTab}
+          jsonTree={jsonTree}
+          onAddComponent={handleAddComponent}
+          onCloneComponent={handleCloneComponent}
+          onDeleteSelectedComponent={handleDeleteSelectedComponent}
+          onDragStart={handleDragStart}
+          onGoToParentComponent={handleGoToParentComponent}
+          onMoveComponent={handleMoveComponent}
+          onOpenAddComponentDialog={handleOpenAddComponentDialog}
+          onSelectComponent={handleSelectComponent}
+          onSwitchTab={handleSwitchTab}
+          selectedComponent={selectedComponent}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+        />
 
-              <NavBarItem
-                title="Accessibility"
-                isSelected={activeTab === 'accessibility'}
-                icon={
-                  accessibilityErrors.length !== 0 ? (
-                    <>
-                      {' '}
-                      <ExclamationCircleIcon size="large" outline />
-                      <Label
-                        design={accessErrorLabelStyle}
-                        color={'red'}
-                        content={<Text size="smaller">{accessibilityErrors.length}</Text>}
-                        circular
-                      />{' '}
-                    </>
-                  ) : (
-                    <ExclamationCircleIcon size="large" outline />
-                  )
-                }
-                onClickHandler={() => selectActiveTab('accessibility')}
-              />
+        <CanvasWindow
+          getShareableLink={getShareableLink}
+          isExpanding={isExpanding}
+          isSelecting={isSelecting}
+          onAccessibilityErrorChange={handleAccessibilityErrorChange}
+          onCanvasMouseUp={handleCanvasMouseUp}
+          onCloneComponent={handleCloneComponent}
+          onDeleteSelectedComponent={handleDeleteSelectedComponent}
+          onDrag={handleDrag}
+          onDropPositionChange={handleDropPositionChange}
+          onGoToParentComponent={handleGoToParentComponent}
+          onKeyDown={handleKeyDown}
+          onMoveComponent={handleMoveComponent}
+          onSelectComponent={handleSelectComponent}
+          onSourceCodeChange={handleSourceCodeChange}
+          onSourceCodeError={handleSourceCodeError}
+          selectedComponent={selectedComponent}
+          selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
+          showJSONTree={showJSONTree}
+          state={state}
+          switchToStore={handleSwitchToStore}
+        />
 
-              <NavBarItem
-                title="Navigator"
-                isSelected={activeTab === 'nav'}
-                icon={<MenuIcon size="large" outline />}
-                onClickHandler={() => selectActiveTab('nav')}
-              />
-            </Menu>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                minWidth: '22.85rem',
-                transition: 'opacity 0.2s',
-                ...(mode === 'use' && {
-                  pointerEvents: 'none',
-                  opacity: 0,
-                }),
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0 10px 0 20px',
-                  borderBottom: '1px solid #E1DFDD',
-                }}
-              >
-                <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-                  {activeTab === 'add'
-                    ? 'Add components'
-                    : activeTab === 'accessibility'
-                    ? 'Accessibility'
-                    : 'Navigator'}
-                </Header>
-              </div>
-              {activeTab === 'add' && (
-                <div>
-                  <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-                </div>
-              )}
-              {activeTab === 'accessibility' && (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: '0 2em 0 2em',
-                    maxWidth: '5em',
-                    flexWrap: 'wrap',
-                  }}
-                >
-                  <Text size={'small'}>
-                    To learn more about best practices for accessibility, visit
-                    <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
-                      {' https://www.microsoft.com/en-us/accessibility/'}
-                    </a>
-                    <br />
-                    <br />
-                  </Text>
-                  {_.isEmpty(accessibilityErrors) ? (
-                    <Text weight={'bold'}>No accessibility errors automatically detected.</Text>
-                  ) : (
-                    // group the accesssibility errors (if they exist)
-                    // const groupedAccessibilityErrors = _.groupBy(accessibilityErrors, error => error.severity);
-                    Object.keys(_.groupBy(accessibilityErrors, error => error.severity)).map(severityLevel => (
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                        }}
-                      >
-                        <Header as="h3">{severityLevel}</Header>
-                        {_.groupBy(accessibilityErrors, error => error.severity)[severityLevel].map(error => (
-                          <div
-                            style={{
-                              minWidth: '2em',
-                            }}
-                          >
-                            <ul>
-                              <li>{error.elementUuid}</li>
-                              <li>{error.error}</li>
-                              <li>Source: {error.source}</li>
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    ))
-                  )}
-                </div>
-              )}
-              {activeTab === 'nav' && (
-                <div>
-                  {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
-                    <Button
-                      text
-                      content="Insert first component"
-                      fluid
-                      onClick={() => handleOpenAddComponentDialog('', 'first')}
-                    />
-                  )}
-                  <ComponentTree
-                    tree={jsonTree}
-                    selectedComponent={selectedComponent}
-                    selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                    onSelectComponent={handleSelectComponent}
-                    onCloneComponent={handleCloneComponent}
-                    onMoveComponent={handleMoveComponent}
-                    onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                    onAddComponent={handleOpenAddComponentDialog}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              flex: 1,
-              overflow: 'auto',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                flex: 1,
-                minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
-              }}
-            >
-              <BrowserWindow
-                showNavBar={false}
-                headerItems={[
-                  <div key="headerMessage" style={{ marginLeft: 10 }}>
-                    {mode === 'use' && <Text error>{headerMessage}</Text>}
-                  </div>,
-                  <div key="headrTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
-                    {jsonTreeOrigin === 'url' && (
-                      <>
-                        <Text error>You are working from a shared URL, no changes are saved!</Text>
-                        <Button text styles={{ paddingLeft: '.25em', minWidth: 0 }} onClick={switchToStore}>
-                          View local
-                        </Button>
-                      </>
-                    )}
-                    {jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={getShareableLink} />}
-                    <CodeSandboxExporter
-                      exampleCode={codeSandboxData.code}
-                      exampleLanguage="js"
-                      exampleName="uibuilder"
-                      imports={codeSandboxData.imports}
-                    >
-                      {(state, onCodeSandboxClick) => {
-                        const codeSandboxContent =
-                          state === CodeSandboxState.Default
-                            ? 'CodeSandbox'
-                            : state === CodeSandboxState.Loading
-                            ? 'Exporting...'
-                            : 'Click to open';
-
-                        const codeSandboxIcon = state === CodeSandboxState.Default ? <FilesCodeIcon /> : <AcceptIcon />;
-
-                        return (
-                          <Button
-                            loading={state === CodeSandboxState.Loading}
-                            styles={{ marginTop: 'auto', marginLeft: '0.7rem' }}
-                            onClick={onCodeSandboxClick}
-                            icon={codeSandboxIcon}
-                            content={codeSandboxContent}
-                          />
-                        );
-                      }}
-                    </CodeSandboxExporter>
-                  </div>,
-                ]}
-                style={{
-                  flex: 1,
-                }}
-              >
-                <ErrorBoundary code={code} jsonTree={jsonTree}>
-                  <Canvas
-                    draggingElement={draggingElement}
-                    isExpanding={isExpanding}
-                    isSelecting={isSelecting || !!draggingElement}
-                    onMouseMove={handleDrag}
-                    onMouseUp={handleCanvasMouseUp}
-                    onKeyDown={handleKeyDown}
-                    onSelectComponent={handleSelectComponent}
-                    onDropPositionChange={handleDropPositionChange}
-                    jsonTree={jsonTree}
-                    selectedComponent={selectedComponent}
-                    onCloneComponent={handleCloneComponent}
-                    onMoveComponent={handleMoveComponent}
-                    onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                    onGoToParentComponent={handleGoToParentComponent}
-                    enabledVirtualCursor={enabledVirtualCursor}
-                    role="main"
-                    inUseMode={mode === 'use'}
-                    setHeaderMessage={setHeaderMessage}
-                    selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
-                    onAccessibilityErrors={handleAccessibilityErrorChange}
-                  />
-                </ErrorBoundary>
-              </BrowserWindow>
-
-              {(showCode || showJSONTree) && (
-                <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
-                  {showCode && (
-                    <div role="complementary" aria-label="Code editor">
-                      <React.Suspense fallback={<div>Loading...</div>}>
-                        <CodeEditor
-                          code={code}
-                          onCodeChange={handleSourceCodeChange}
-                          onCodeError={handleSourceCodeError}
-                        />
-                      </React.Suspense>
-                      {codeError && (
-                        <pre
-                          style={{
-                            position: 'sticky',
-                            bottom: 0,
-                            padding: '1em',
-                            // don't block viewport
-                            maxHeight: '50vh',
-                            overflowY: 'auto',
-                            color: '#fff',
-                            background: 'red',
-                            whiteSpace: 'pre-wrap',
-                            // above code editor text :/
-                            zIndex: 4,
-                          }}
-                        >
-                          {codeError}
-                        </pre>
-                      )}
-                    </div>
-                  )}
-                  {showJSONTree && (
-                    <div
-                      role="complementary"
-                      aria-label="JSON tree"
-                      style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}
-                    >
-                      <h3 style={{ margin: 0 }}>JSON Tree</h3>
-                      <pre>{JSON.stringify(jsonTree, null, 2)}</pre>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {selectedComponentInfo && (
-            <div
-              role="complementary"
-              aria-label="Component properties"
-              style={{
-                width: '20rem',
-                padding: '1rem',
-                overflow: 'auto',
-                transition: 'opacity 0.2s',
-                ...(mode === 'use' && {
-                  pointerEvents: 'none',
-                  opacity: 0,
-                }),
-              }}
-            >
-              <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-
-              {selectedJSONTreeElement && (
-                <Knobs
-                  onPropChange={handlePropChange}
-                  onPropDelete={handlePropDelete}
-                  info={selectedComponentInfo}
-                  jsonTreeElement={selectedJSONTreeElement}
-                  elementAccessibilityErrors={validationErrors}
-                  onAccessibilityErrorChange={handleAccessibilityErrorChange}
-                />
-              )}
-            </div>
-          )}
-        </div>
-      </A11yValidationContextProvider>
+        <ComponentPropertiesPanel
+          accessibilityErrors={[]}
+          mode={mode}
+          onAccessibilityErrorChange={handleAccessibilityErrorChange}
+          onPropChange={handlePropChange}
+          onPropDelete={handlePropDelete}
+          selectedComponentInfo={selectedComponentInfo}
+          selectedJSONTreeElement={selectedJSONTreeElement}
+        />
+      </div>
     </div>
   );
 };

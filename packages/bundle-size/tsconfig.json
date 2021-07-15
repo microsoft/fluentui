@@ -7,5 +7,5 @@
     "resolveJsonModule": true,
     "types": ["jest", "node"]
   },
-  "include": ["src/**/*.js"]
+  "include": ["src/**/*.js", "__fixture__/*.js"]
 }

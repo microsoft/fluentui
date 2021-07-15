@@ -163,8 +163,6 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
   elementAccessibilityErrors,
   onAccessibilityErrorChange,
 }) => {
-  console.log(`Element accessibility errors`);
-  console.log(elementAccessibilityErrors);
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
     prop => {
