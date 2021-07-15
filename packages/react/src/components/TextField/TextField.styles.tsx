@@ -421,7 +421,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       classNames.revealButton,
       'ms-Button',
       'ms-Button--icon',
-      getFocusStyle(theme),
+      getFocusStyle(theme, { inset: 1 }),
       {
         height: 30,
         width: 32,

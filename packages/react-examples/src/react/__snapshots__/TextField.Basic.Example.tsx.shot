@@ -2122,13 +2122,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 1px;
+                  bottom: 2px;
                   content: "";
-                  left: 1px;
+                  left: 2px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 1px;
-                  top: 1px;
+                  right: 2px;
+                  top: 2px;
                   z-index: 1;
                 }
                 &:hover {
