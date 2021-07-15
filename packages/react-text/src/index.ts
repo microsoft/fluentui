@@ -8,3 +8,4 @@ export * from './Title3';
 export * from './Headline';
 export * from './Subheadline';
 export * from './Body';
+export * from './Caption';
