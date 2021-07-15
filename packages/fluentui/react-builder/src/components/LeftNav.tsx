@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
 import { ComponentList } from './ComponentList';
-import { AccessibilityErrorMenu } from './AccessibilityErrorMenu';
+import { AccessibiltyTabPanel } from './TabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './TabPanels/NavigationTabPanel';
 import { NavBarItem } from './NavBarItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
@@ -135,8 +135,8 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
           </div>
         )}
         {props.activeTab === 'accessibility' && (
-          <AccessibilityErrorMenu
-            tree={props.jsonTree}
+          <AccessibiltyTabPanel
+            jsonTree={props.jsonTree}
             selectedComponent={props.selectedComponent}
             accessibilityErrors={props.accessibilityErrors}
             onSelectComponent={props.onSelectComponent}

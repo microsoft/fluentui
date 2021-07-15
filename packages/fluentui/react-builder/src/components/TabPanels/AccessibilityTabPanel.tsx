@@ -7,14 +7,14 @@ import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 
 export type AccessibilityTabPanelProps = {
-  tree: JSONTreeElement;
+  jsonTree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
   accessibilityErrors?: AccessibilityError[];
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
 };
 
 export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = ({
-  tree,
+  jsonTree: tree,
   selectedComponent,
   accessibilityErrors,
   onSelectComponent,
