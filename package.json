@@ -263,6 +263,7 @@
           "@typescript-eslint/experimental-utils",
           "@typescript-eslint/parser",
           "chalk",
+          "enhanced-resolve",
           "eslint-config-airbnb",
           "eslint-config-prettier",
           "eslint-import-resolver-typescript",
