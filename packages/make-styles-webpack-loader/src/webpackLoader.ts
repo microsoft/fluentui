@@ -34,8 +34,9 @@ export function webpackLoader(
     conditionNames: ['require'],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   };
-  // ⚠ "this._compilation" is a deprecated API, however there seems to be no other way to access Webpack's resolver
-  // There is this.resolve, but it's asynchronous. Another option is to read the webpack.config.js, but it won't work
+  // ⚠ "this._compilation" limits loaders compatibility, however there seems to be no other way to access Webpack's
+  // resolver.
+  // There is this.resolve(), but it's asynchronous. Another option is to read the webpack.config.js, but it won't work
   // for programmatic usage. This API is used by many loaders/plugins, so hope we're safe for a while
   const resolveOptionsFromWebpackConfig: webpack.ResolveOptions = this._compilation?.options.resolve || {};
 
