@@ -16,8 +16,15 @@ const body: MakeStylesStyleFunctionRule<Theme>;
 // @public
 const caption: MakeStylesStyleFunctionRule<Theme>;
 
+// @public
+export const Display: React_2.ForwardRefExoticComponent<DisplayProps & React_2.RefAttributes<HTMLElement>>;
+
 // @public (undocumented)
 const display: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+export interface DisplayProps extends Omit<TextProps, 'font' | 'size'> {
+}
 
 // @public (undocumented)
 const headline: MakeStylesStyleFunctionRule<Theme>;
