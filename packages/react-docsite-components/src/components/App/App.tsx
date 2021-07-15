@@ -14,13 +14,15 @@ import { getQueryParam } from '../../utilities/index2';
 
 export interface IAppState {
   isMenuVisible: boolean;
+  /** Menu (nav) panel is in the process of closing and should not be re-opened */
+  isMenuClosing: boolean;
 }
 
 const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 
 @withResponsiveMode
 export class AppBase extends React.Component<IAppProps, IAppState> {
-  public state: IAppState = { isMenuVisible: false };
+  public state: IAppState = { isMenuVisible: false, isMenuClosing: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;
   private _isStrict: boolean;
@@ -54,7 +56,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const nav = (
       <Nav
         groups={appDefinition.examplePages}
-        onLinkClick={this._onLinkClick}
+        onLinkClick={this._onMenuDismiss}
         onRenderLink={this._onRenderLink}
         styles={classNames.subComponentStyles.nav}
       />
@@ -86,12 +88,10 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
             isOpen={isMenuVisible}
             isLightDismiss={true}
             type={PanelType.smallFixedNear}
-            // Close by tapping outside the panel
+            // Close by tapping outside the panel or pressing escape
             hasCloseButton={false}
-            // Use onDismissed (not onDismiss) to prevent _onIsMenuVisibleChanged being called twice
-            // (once by the panel and once by the header button)
-            // eslint-disable-next-line react/jsx-no-bind
-            onDismissed={this._onIsMenuVisibleChanged.bind(this, false)}
+            onDismiss={this._onMenuDismiss}
+            onDismissed={this._onMenuDismissed}
             styles={classNames.subComponentStyles.navPanel}
           >
             {nav}
@@ -118,12 +118,20 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     return app;
   }
 
-  private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
-    this.setState({ isMenuVisible });
+  private _onMenuDismiss = () => {
+    // If the user clicks the hamburger to dismiss, by default it would trigger the click handler
+    // and immediately reopen the menu panel. Set a flag while the menu is closing to prevent this.
+    this.setState({ isMenuVisible: false, isMenuClosing: true });
   };
 
-  private _onLinkClick = (): void => {
-    this.setState({ isMenuVisible: false });
+  private _onMenuDismissed = () => {
+    // Menu panel is finished dismissing, so re-activate the hamburger button
+    this.setState({ isMenuClosing: false });
+  };
+
+  private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
+    // Toggle visibility only if the menu panel is not in the process of closing
+    this.setState(prevState => (prevState.isMenuClosing ? null : { isMenuVisible }));
   };
 
   private _onRenderLink = (link: INavLink): JSX.Element => {

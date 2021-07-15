@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.2.38",
+      "version": "8.2.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility fixes for nav, feedback list, header, properties table",
+            "author": "elcraig@microsoft.com",
+            "commit": "5bf5b8e682004069501664192082c22a7a6f51ac",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Jul 2021 07:28:19 GMT",
       "tag": "@fluentui/react-docsite-components_v8.2.37",
       "version": "8.2.37",

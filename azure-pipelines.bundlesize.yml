@@ -31,7 +31,7 @@ jobs:
       - script: |
           yarn bundle-size compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
         displayName: compare bundle size with base (PR only)
-        condition: variables.isPR
+        condition: eq(variables.isPR, true)
 
       - task: GithubPRComment@0
         displayName: Post results to PR (PR only)
