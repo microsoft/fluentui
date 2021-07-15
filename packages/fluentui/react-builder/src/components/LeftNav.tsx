@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
-import { ComponentList } from './ComponentList';
 import { AccessibiltyTabPanel } from './TabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './TabPanels/NavigationTabPanel';
 import { NavBarItem } from './NavBarItem';
@@ -9,6 +8,7 @@ import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-nort
 import { useMode } from '../hooks/useMode';
 import { JSONTreeElement } from './types';
 import { AccessibilityError } from '../accessibility/types';
+import { AddTabPanel } from './TabPanels/AddTabPanel';
 
 export type LeftNavProps = {
   accessibilityErrors: AccessibilityError[];
@@ -129,11 +129,7 @@ export const LeftNav: React.FunctionComponent<LeftNavProps> = (props: LeftNavPro
               : 'Navigator'}
           </Header>
         </div>
-        {props.activeTab === 'add' && (
-          <div>
-            <ComponentList style={{ overflowY: 'auto' }} onDragStart={props.onDragStart} />
-          </div>
-        )}
+        {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
         {props.activeTab === 'accessibility' && (
           <AccessibiltyTabPanel
             jsonTree={props.jsonTree}
