@@ -12,5 +12,5 @@
 Combobox dropdowns render in their own layer by default to ensure they are not clipped by containers with `overflow: hidden` or `overflow: scroll`. This causes extra difficulty for people who use touch-based screen readers, so we recommend rendering the Combobox options dropdown inline unless they are in overflow containers. To do so, set the following property on the Combobox, as demonstrated in the ComboBox with inline dropdown example:
 
 ```js
-pickerCalloutProps={{ doNotLayer: true }}
+calloutProps={{ doNotLayer: true }}
 ```
