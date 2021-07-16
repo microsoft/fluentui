@@ -151,11 +151,11 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
+        deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
+
         draftState.selectedJSONTreeElementUuid = null;
         draftState.selectedComponentInfo = null;
         treeChanged = true;
-
-        deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       }
       break;
 
