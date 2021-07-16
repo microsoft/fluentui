@@ -120,13 +120,16 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     rtl: context.rtl,
   });
 
-  const handleItemOverrides = variables => predefinedProps => ({
-    onClick: (e, itemProps) => {
-      _.invoke(props, 'onItemClick', e, itemProps);
-      _.invoke(predefinedProps, 'onClick', e, itemProps);
-    },
-    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
-  });
+  const handleItemOverrides = (variables: any, disableClickableNav: boolean) => predefinedProps =>
+    disableClickableNav
+      ? undefined
+      : {
+          onClick: (e, itemProps) => {
+            _.invoke(props, 'onItemClick', e, itemProps);
+            _.invoke(predefinedProps, 'onClick', e, itemProps);
+          },
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+        };
 
   const renderItems = () => {
     return _.map(items, (item, index) =>
@@ -141,7 +144,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
             vertical,
             thumbnails,
           }),
-        overrideProps: disableClickableNav ? undefined : handleItemOverrides(variables),
+        overrideProps: handleItemOverrides(variables, disableClickableNav),
       }),
     );
   };
