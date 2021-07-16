@@ -3,13 +3,11 @@ import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
 import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from './types';
 import { jsonTreeFindElement } from '../config';
-import { CloneDebugButton, TrashDebugButton, MoveDebugButton, AccessibilityErrorIcon } from './DebugButtons';
-import { AccessibilityError } from '../accessibility/types';
+import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
 
 export type ComponentTreeProps = {
   tree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
-  selectedComponentAccessibilityErrors?: AccessibilityError[];
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
@@ -44,7 +42,6 @@ const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
   selectedComponentId: string,
-  selectedComponentAccessibilityErrors: AccessibilityError[],
   handleSelectedComponent: TreeItemProps['onTitleClick'],
   handleClone: React.MouseEventHandler<HTMLButtonElement>,
   handleMove: React.MouseEventHandler<HTMLButtonElement>,
@@ -54,7 +51,6 @@ const jsonTreeToTreeItems: (
 ) => TreeItemProps = (
   tree,
   selectedComponentId,
-  selectedComponentAccessibilityErrors,
   handleSelectedComponent,
   handleClone,
   handleMove,
@@ -64,7 +60,6 @@ const jsonTreeToTreeItems: (
 ) => {
   // calculate number of accessibility errors
   // todo: test, create function as class?
-  const numberAccessibilityErrors = selectedComponentAccessibilityErrors.length;
   if (typeof tree === 'string') {
     return {
       id: Math.random().toString(36).slice(2),
@@ -105,12 +100,6 @@ const jsonTreeToTreeItems: (
               <MoveDebugButton onClick={handleMove} />
               <CloneDebugButton onClick={handleClone} />
               <TrashDebugButton onClick={handleDeleteSelected} />
-              {numberAccessibilityErrors !== 0 && (
-                <span style={{ marginLeft: '.25em' }}>
-                  <AccessibilityErrorIcon style={{ width: '.9em', height: '.9em', marginRight: '0.2em' }} />
-                  {numberAccessibilityErrors}
-                </span>
-              )}
             </>
           </C>
         );
@@ -120,7 +109,6 @@ const jsonTreeToTreeItems: (
       jsonTreeToTreeItems(
         item,
         selectedComponentId,
-        selectedComponentAccessibilityErrors,
         handleSelectedComponent,
         handleClone,
         handleMove,
@@ -135,7 +123,6 @@ const jsonTreeToTreeItems: (
 export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   tree,
   selectedComponent,
-  selectedComponentAccessibilityErrors,
   onSelectComponent,
   onCloneComponent,
   onMoveComponent,
@@ -207,7 +194,6 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
       jsonTreeToTreeItems(
         item,
         selectedComponentId,
-        selectedComponentAccessibilityErrors,
         handleSelectComponent,
         handleClone,
         handleMove,

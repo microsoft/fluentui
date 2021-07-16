@@ -24,7 +24,6 @@ export type NavigationPanelProps = {
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSwitchTab?: (tab: any) => void;
   selectedComponent?: JSONTreeElement;
-  selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
 export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
