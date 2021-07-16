@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed ability to set palette base color on DSP",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
