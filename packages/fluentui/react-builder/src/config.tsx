@@ -14,7 +14,78 @@ const projectPackageJson = require('@fluentui/react-northstar/package.json');
 const sandboxPackageJson = require('@fluentui/code-sandbox/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
 
-export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
+export const EXCLUDED_COMPONENTS = [
+  'Animation',
+  'Debug',
+  'Design',
+  'FocusZone',
+  'Portal',
+  'Provider',
+  'Ref',
+  'DialogFooter',
+  'PopupContent',
+  'AlertDismissAction',
+  'AttachmentAction',
+  'AttachmentBody',
+  'AttachmentHeader',
+  'AttachmentDescription',
+  'AttachmentIcon',
+  'ChatMessageDetails',
+  'ChatMessageHeader',
+  'ChatMessageReadStatus',
+  'DatepickerCalendarCell',
+  'DatepickerCalendarHeader',
+  'DividerContent',
+  'HeaderDescription',
+  'SvgIcon',
+  'TooltipContent',
+  'FlexItem',
+  'ItemLayout',
+  'DropdownSelectedItem',
+  'DropdownSearchInput',
+  'FormFieldCustom',
+  'FormMessage',
+  'InputLabel',
+  'ButtonContent',
+  'MenuDivider',
+  'MenuItemIcon',
+  'MenuItemIndicator',
+  'MenuItemWrapper',
+  'MenuItemContent',
+  'SplitButtonToggle',
+  'ToolbarDivider',
+  'ToolbarItemIcon',
+  'ToolbarItemWrapper',
+  'ToolbarMenuDivider',
+  'ToolbarMenuItem',
+  'ToolbarMenuItemActiveIndicator',
+  'ToolbarMenuItemIcon',
+  'ToolbarMenuItemSubmenuIndicator',
+  'ToolbarMenuRadioGroup',
+  'ToolbarMenuRadioGroupWrapper',
+  'ToolbarRadioGroup',
+  'ToolbarItem',
+  'ToolbarCustomItem',
+  'ToolbarMenu',
+  'AccordionHeader',
+  'AccordionTitle',
+  'CardBody',
+  'CardHeader',
+  'CardFooter',
+  'CardColumn',
+  'CardExpandableBox',
+  'CardPreview',
+  'CardTopControls',
+  'CarouselNavigation',
+  'CarouselPaddle',
+  'CarouselNavigationItem',
+  'ListItemContent',
+  'ListItemContentMedia',
+  'ListItemEndMedia',
+  'ListItemHeader',
+  'ListItemHeaderMedia',
+  'ListItemMedia',
+];
 
 export const COMPONENT_GROUP = {
   Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
@@ -158,6 +229,21 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.ChatProps,
   },
 
+  ChatMessage: {
+    props: {
+      content: "Hi, can we talk? It's important!",
+      author: 'John Doe',
+      timestamp: 'Yesterday, 10:15 PM',
+      badge: {
+        icon: <FUIIcons.RedbangIcon />,
+      },
+      badgePosition: 'start',
+      variables: {
+        isImportant: true,
+      },
+    } as FUI.ChatMessageProps,
+  },
+
   Checkbox: {
     props: { label: 'Checkbox' } as FUI.CheckboxProps,
   },
@@ -190,7 +276,15 @@ export const DRAGGING_ELEMENTS = {
     } as FUI.DropdownProps,
   },
 
-  // Embed: { props: { content: 'Embed' } as FUI.EmbedProps },
+  Embed: {
+    props: {
+      placeholder: 'https://raw.githubusercontent.com/bower-media-samples/big-buck-bunny-480p-5s/master/poster.jpg',
+      variables: {
+        width: '480px',
+      },
+      video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+    } as FUI.EmbedProps,
+  },
 
   Flex: {
     props: {} as FUI.FlexProps,
@@ -229,6 +323,39 @@ export const DRAGGING_ELEMENTS = {
       ],
     } as FUI.FormProps,
   },
+
+  FormButton: { props: { content: 'Button' } } as FUI.FormButtonProps,
+
+  FormLabel: { props: { content: 'Label' } } as FUI.FormLabelProps,
+
+  FormRadioGroup: {
+    props: {
+      items: [
+        {
+          name: 'pizza',
+          key: 'Capricciosa',
+          label: 'Capricciosa',
+          value: 'capricciosa',
+        },
+        {
+          name: 'pizza',
+          key: 'Prosciutto',
+          label: 'Prosciutto',
+          value: 'prosciutto',
+          disabled: true,
+        },
+        {
+          name: 'pizza',
+          key: 'Pepperoni',
+          label: 'Pepperoni',
+          value: 'pepperoni',
+        },
+      ],
+      label: 'Pizza',
+      vertical: true,
+      defaultCheckedValue: 'prosciutto',
+    },
+  } as FUI.FormRadioGroupProps,
 
   // Grid: { props: { content: 'Grid' } as FUI.GridProps},
 
@@ -341,6 +468,23 @@ export const DRAGGING_ELEMENTS = {
     props: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
   },
 
+  ReactionGroup: {
+    props: {
+      items: [
+        {
+          icon: <FUIIcons.LikeIcon />,
+          content: '2K',
+          key: 'up',
+        },
+        {
+          icon: <FUIIcons.EmojiIcon />,
+          content: 10,
+          key: 'smile',
+        },
+      ],
+    } as FUI.ReactionGroupProps,
+  },
+
   Segment: {
     props: { content: 'Segment' } as FUI.SegmentProps,
   },
@@ -349,13 +493,54 @@ export const DRAGGING_ELEMENTS = {
     props: {} as FUI.SliderProps,
   },
 
-  // SplitButton: { props: { content: 'SplitButton' } as FUI.SplitButtonProps},
+  SplitButton: {
+    props: {
+      menu: [
+        {
+          key: 'group',
+          content: 'New group message',
+        },
+        {
+          key: 'channel',
+          content: 'New channel message',
+        },
+      ],
+      button: {
+        content: 'New conversation',
+        'aria-roledescription': 'splitbutton',
+        'aria-describedby': 'instruction-message',
+      },
+      toggleButton: {
+        'aria-label': 'more options',
+      },
+    },
+  } as FUI.SplitButtonProps,
 
   Status: {
     props: { state: 'success' } as FUI.StatusProps,
   },
 
-  // Table: { props: { content: 'Table' } as FUI.TableProps },
+  Table: {
+    props: {
+      header: {
+        items: ['id', 'Name', 'Picture', 'Age'],
+      },
+      rows: [
+        {
+          key: 1,
+          items: ['1', 'Roman van von der Longername', 'None', '30 years'],
+        },
+        {
+          key: 2,
+          items: ['2', 'Alex', 'None', '1 year'],
+        },
+        {
+          key: 3,
+          items: ['3', 'Ali', 'None', '30000000000000 years'],
+        },
+      ],
+    },
+  } as FUI.TableProps,
 
   Text: {
     props: { content: 'Text' } as FUI.TextProps,
@@ -365,9 +550,107 @@ export const DRAGGING_ELEMENTS = {
     props: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
   },
 
-  // Toolbar: { props: { content: 'Toolbar' } as FUI.ToolbarProps },
+  Toolbar: {
+    props: {
+      ariaLabel: 'Default',
+      items: [
+        {
+          icon: (
+            <FUIIcons.BoldIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'bold',
+          kind: 'toggle',
+          title: 'Toggle bold',
+        },
+        {
+          icon: (
+            <FUIIcons.ItalicIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'italic',
+          kind: 'toggle',
+          title: 'Toggle italic',
+        },
+        {
+          icon: (
+            <FUIIcons.UnderlineIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'underline',
+          kind: 'toggle',
+          title: 'Toggle underline',
+        },
+        {
+          key: 'divider-1',
+          kind: 'divider',
+        },
+        {
+          icon: (
+            <FUIIcons.FontSizeIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'font-size',
+          title: 'Font size',
+        },
+        {
+          icon: (
+            <FUIIcons.RemoveFormatIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'remove-format',
+          title: 'Remove formatting',
+        },
+        {
+          key: 'divider-2',
+          kind: 'divider',
+        },
+        {
+          icon: (
+            <FUIIcons.OutdentIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'outdent',
+          title: 'Outdent',
+        },
+        {
+          icon: (
+            <FUIIcons.IndentIcon
+              {...{
+                outline: true,
+              }}
+            />
+          ),
+          key: 'indent',
+          title: 'Indent',
+        },
+        {
+          key: 'divider-3',
+          kind: 'divider',
+        },
+      ],
+    },
+  } as FUI.ToolbarProps,
 
-  // Tooltip: { props: { content: 'Tooltip' } as FUI.TooltipProps },
+  Tooltip: <FUI.Tooltip content="Hack application" trigger={<FUI.Button content="A trigger" />} />,
 
   Tree: {
     props: {
