@@ -11,12 +11,12 @@ export const MultiTypeKnob: React.FunctionComponent<{
   label: string;
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;
-  onBlur: (value: any) => void;
+  onPropUpdate: (value: any) => void;
   onChange: (value: any) => void;
   onRemoveProp: () => void;
   options: string[];
   required: boolean;
-}> = ({ label, types, value, onChange, onBlur, onRemoveProp, options, required }) => {
+}> = ({ label, types, value, onChange, onPropUpdate, onRemoveProp, options, required }) => {
   const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
 
@@ -42,7 +42,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
           ))
         )}
       </div>
-      {knob && knob({ options, value, onChange, onBlur, id: propId })}
+      {knob && knob({ options, value, onChange, onPropUpdate, id: propId })}
       {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
       {!required && type === 'literal' && value && (
         <button
@@ -69,24 +69,24 @@ export const knobs = {
     <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
   ),
 
-  number: ({ value, onChange, onBlur, id }) => (
+  number: ({ value, onChange, onPropUpdate, id }) => (
     <input
       id={id}
       style={{ width: '100%' }}
       type="number"
       value={Number(value)}
       onChange={e => onChange(Number(e.target.value))}
-      onBlur={e => onBlur(Number(e.target.value))}
+      onBlur={e => onPropUpdate(Number(e.target.value))}
     />
   ),
 
-  string: ({ value, onChange, onBlur, id }) => (
+  string: ({ value, onChange, onPropUpdate, id }) => (
     <input
       id={id}
       style={{ width: '100%' }}
       value={String(value)}
       onChange={e => onChange(e.target.value)}
-      onBlur={e => onBlur(e.target.value)}
+      onBlur={e => onPropUpdate(e.target.value)}
     />
   ),
 
@@ -102,6 +102,6 @@ export const knobs = {
     </select>
   ),
 
-  ReactText: ({ value, onChange, onBlur, id }) => knobs.string({ value, onChange, onBlur, id }),
-  'React.ElementType': ({ value, onChange, onBlur, id }) => knobs.string({ value, onChange, onBlur, id }),
+  ReactText: ({ value, onChange, onPropUpdate, id }) => knobs.string({ value, onChange, onPropUpdate, id }),
+  'React.ElementType': ({ value, onChange, onPropUpdate, id }) => knobs.string({ value, onChange, onPropUpdate, id }),
 };

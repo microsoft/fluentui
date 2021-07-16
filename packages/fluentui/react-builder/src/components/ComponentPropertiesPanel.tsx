@@ -8,7 +8,7 @@ import { DesignerMode, JSONTreeElement } from './types';
 export type ComponentPropertiesPanelProps = {
   accessibilityErrors: AccessibilityError[];
   mode: DesignerMode;
-  onAccessibilityErrorChange: (jsonTree: JSONTreeElement, errors: AccessibilityError[]) => void;
+  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
   onPropChange: ({
     jsonTreeElement,
     name,
@@ -19,7 +19,6 @@ export type ComponentPropertiesPanelProps = {
     value: number;
   }) => void;
   onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
-
   selectedComponentInfo: ComponentInfo;
   selectedJSONTreeElement: JSONTreeElement;
 };
@@ -55,7 +54,7 @@ export const ComponentPropertiesPanel: React.FunctionComponent<ComponentProperti
             info={props.selectedComponentInfo}
             jsonTreeElement={props.selectedJSONTreeElement}
             elementAccessibilityErrors={props.accessibilityErrors}
-            onAccessibilityErrorChange={props.onAccessibilityErrorChange}
+            onPropUpdate={props.onPropUpdate}
           />
         )}
       </div>

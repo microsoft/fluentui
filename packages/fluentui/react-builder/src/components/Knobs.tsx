@@ -145,10 +145,7 @@ type DesignKnobProps = {
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
   elementAccessibilityErrors: AccessibilityError[];
-  onAccessibilityErrorChange: (
-    jsonTreeElement: JSONTreeElement,
-    elementAccessibilityErrors: AccessibilityError[],
-  ) => void;
+  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
 };
 
 const isHandledType = (type: string): boolean => {
@@ -156,12 +153,12 @@ const isHandledType = (type: string): boolean => {
 };
 
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
-  onPropChange,
-  onPropDelete,
+  elementAccessibilityErrors,
   info,
   jsonTreeElement,
-  elementAccessibilityErrors,
-  onAccessibilityErrorChange,
+  onPropUpdate: PROP_UPDATED,
+  onPropChange,
+  onPropDelete,
 }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
@@ -227,13 +224,12 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 value={value}
                 onRemoveProp={() => {
                   onPropDelete({ jsonTreeElement, name: prop.name });
-                  onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
                 }}
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
                 }}
-                onBlur={() => {
-                  onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
+                onPropUpdate={() => {
+                  PROP_UPDATED({ jsonTreeElement });
                 }}
               />
             );
@@ -247,7 +243,6 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
             <MultiTypeKnob
               onRemoveProp={() => {
                 onPropDelete({ jsonTreeElement, name: prop.name });
-                onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
               }}
               required={prop.required}
               key={prop.name}
@@ -258,8 +253,8 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
               }}
-              onBlur={() => {
-                onAccessibilityErrorChange(jsonTreeElement, elementAccessibilityErrors);
+              onPropUpdate={() => {
+                PROP_UPDATED({ jsonTreeElement });
               }}
             />
           );
