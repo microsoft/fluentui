@@ -192,6 +192,7 @@ export class DesignSystemProvider extends FoundationElement {
   @attr({
     attribute: 'accent-base-color',
     converter: swatchConverter,
+    mode: 'fromView',
   })
   public accentBaseColor: Swatch;
 
@@ -214,6 +215,7 @@ export class DesignSystemProvider extends FoundationElement {
   @attr({
     attribute: 'neutral-base-color',
     converter: swatchConverter,
+    mode: 'fromView',
   })
   public neutralBaseColor: Swatch;
 

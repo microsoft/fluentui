@@ -16,6 +16,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  useMergedRefs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -286,9 +287,9 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
     enabled: hasActionMenu && positionActionMenu,
     modifiers,
-    popperRef,
 
     ...positioningProps,
+    popperRef: useMergedRefs(positioningProps?.popperRef, popperRef),
   });
 
   // `focused` state is used for show/hide actionMenu
