@@ -1872,7 +1872,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
-      role="checkbox"
+      role="radio"
       tabIndex={-1}
     >
       <div

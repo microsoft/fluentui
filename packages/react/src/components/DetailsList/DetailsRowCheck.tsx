@@ -54,7 +54,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
 
   const divProps = getNativeElementProps('div', buttonProps, ['aria-label', 'aria-labelledby', 'aria-describedby']);
 
-  const checkRole = selectionMode === SelectionMode.multiple ? 'checkbox' : 'radio';
+  const checkRole = selectionMode === SelectionMode.single ? 'radio' : 'checkbox';
 
   return canSelect ? (
     <div
