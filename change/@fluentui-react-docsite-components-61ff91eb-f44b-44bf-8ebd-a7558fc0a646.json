@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Delete unused styling files",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
