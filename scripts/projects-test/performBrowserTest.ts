@@ -1,7 +1,8 @@
-import config from '@fluentui/scripts/config';
-import { safeLaunchOptions } from '@fluentui/scripts/puppeteer/puppeteer.config';
+import config from '../config';
+import { safeLaunchOptions } from '../puppeteer/puppeteer.config';
 import express from 'express';
 import http from 'http';
+import portfinder from 'portfinder';
 import puppeteer from 'puppeteer';
 
 function startServer(publicDirectory: string, listenPort: number) {
@@ -17,7 +18,8 @@ function startServer(publicDirectory: string, listenPort: number) {
   });
 }
 
-export async function performBrowserTest(publicDirectory: string, listenPort: number) {
+export async function performBrowserTest(publicDirectory: string) {
+  const listenPort = await portfinder.getPortPromise();
   const server = await startServer(publicDirectory, listenPort);
 
   const options = safeLaunchOptions();

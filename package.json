@@ -167,6 +167,7 @@
     "lerna": "^3.21.0",
     "lint-staged": "^10.2.9",
     "node-fetch": "2.6.1",
+    "portfinder": "1.0.28",
     "postcss": "8.2.10",
     "postcss-loader": "4.1.0",
     "postcss-modules": "4.1.3",

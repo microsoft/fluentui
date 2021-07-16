@@ -2,36 +2,15 @@ import config from '@fluentui/scripts/config';
 import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
-import portfinder from 'portfinder';
 
-import { addResolutionPathsForProjectPackages, packProjectPackages } from './packPackages';
-import { createTempDir, log } from './utils';
-import { performBrowserTest } from './performBrowserTest';
-
-async function prepareApp(tmpDirectory: string, appName: string): Promise<string> {
-  const atDirectorySubpath = config.paths.withRootAt(tmpDirectory);
-
-  // we need this temp sibling project to install create-react-app util without polluting
-  // global state, as well as the scope of test project
-  const tempUtilProjectPath = atDirectorySubpath('util');
-  const appProjectPath = atDirectorySubpath(appName);
-
-  fs.mkdirSync(tempUtilProjectPath);
-
-  try {
-    // restoring bits of create-react-app inside util project
-    await sh('yarn add create-react-app', tempUtilProjectPath);
-
-    // create test project with util's create-react-app
-    fs.mkdirSync(appProjectPath);
-    await sh(`yarn create-react-app ${appProjectPath} --template typescript`, tempUtilProjectPath);
-  } finally {
-    // remove temp util directory
-    fs.removeSync(tempUtilProjectPath);
-  }
-
-  return appProjectPath;
-}
+import {
+  addResolutionPathsForProjectPackages,
+  packProjectPackages,
+  createTempDir,
+  log,
+  performBrowserTest,
+  prepareCreateReactApp,
+} from '@fluentui/scripts/projects-test';
 
 /**
  * Tests the following scenario:
@@ -48,12 +27,12 @@ export async function createReactApp() {
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
   logger('STEP 1. Create test React project with TSX scripts..');
 
-  const testAppPath = config.paths.withRootAt(await prepareApp(tmpDirectory, 'test-app'));
+  const testAppPath = config.paths.withRootAt(await prepareCreateReactApp(tmpDirectory, 'typescript', 'test-app'));
   logger(`Test React project is successfully created: ${testAppPath()}`);
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
 
-  const packedPackages = await packProjectPackages(logger);
+  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(testAppPath());
 
   await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPath());
@@ -65,6 +44,6 @@ export async function createReactApp() {
   logger('STEP 4. Build test project..');
   await sh(`yarn build`, testAppPath());
 
-  await performBrowserTest(testAppPath('build'), await portfinder.getPortPromise());
+  await performBrowserTest(testAppPath('build'));
   logger(`✔️ Browser test was passed`);
 }
