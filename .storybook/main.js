@@ -27,6 +27,14 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
@@ -42,6 +50,10 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
     }
 
     return config;
+  },
+
+  core: {
+    builder: 'webpack5',
   },
 });
 
@@ -65,7 +77,7 @@ function overrideDefaultBabelLoader(rules) {
   }
 
   const loaderIdx = rule.use.findIndex(loaderConfig => {
-    return /** @type {LoaderObjectDef} */ (loaderConfig).loader === 'babel-loader';
+    return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
   });
 
   const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
@@ -74,5 +86,7 @@ function overrideDefaultBabelLoader(rules) {
     throw new Error('storybook webpack rules changed');
   }
 
-  loader.options.customize = customLoaderPath;
+  if (loader) {
+    loader.options.customize = customLoaderPath;
+  }
 }

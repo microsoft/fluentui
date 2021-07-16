@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
-import { StoryFnReactReturnType } from '@storybook/react/dist/client/preview/types';
+import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types';
 
 export const FabricDecorator: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>

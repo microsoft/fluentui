@@ -31,10 +31,6 @@ export const Default = (props: PopoverProps) => (
 // @FIXME - remove manually specified argTypes once `react-components` package will use new storybook setup(DX)
 // https://github.com/microsoft/fluentui/issues/18514
 Default.argTypes = {
-  open: {
-    defaultValue: false,
-    control: 'boolean',
-  },
   openOnContext: {
     defaultValue: false,
     control: 'boolean',
