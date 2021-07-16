@@ -13,15 +13,10 @@ const useStyles = makeStyles({
 
   targetContainer: {
     display: 'inline-grid',
-    alignItems: 'center',
-    justifyItems: 'center',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateRows: 'repeat(5, 64px)',
     gap: '4px',
     margin: '16px 128px',
-  },
-
-  target: {
-    width: '48px',
-    height: '48px',
   },
 
   // multiTarget: theme => ({
@@ -115,43 +110,43 @@ export const Positioning = () => {
       <div>Each of these buttons places the tooltip in a different location relative to its trigger button.</div>
       <div className={styles.targetContainer}>
         <Tooltip content="above start" position="above" align="start">
-          <button className={styles.target} style={{ gridArea: '1 / 2' }} />
+          <button style={{ gridArea: '1 / 2' }}>above start</button>
         </Tooltip>
         <Tooltip content="above center" position="above" align="center">
-          <button className={styles.target} style={{ gridArea: '1 / 3' }} />
+          <button style={{ gridArea: '1 / 3' }}>above center</button>
         </Tooltip>
         <Tooltip content="above end" position="above" align="end">
-          <button className={styles.target} style={{ gridArea: '1 / 4' }} />
+          <button style={{ gridArea: '1 / 4' }}>above end</button>
         </Tooltip>
 
         <Tooltip content="before top" position="before" align="top">
-          <button className={styles.target} style={{ gridArea: '2 / 1' }} />
+          <button style={{ gridArea: '2 / 1' }}>before top</button>
         </Tooltip>
         <Tooltip content="before center" position="before" align="center">
-          <button className={styles.target} style={{ gridArea: '3 / 1' }} />
+          <button style={{ gridArea: '3 / 1' }}>before center</button>
         </Tooltip>
         <Tooltip content="before bottom" position="before" align="bottom">
-          <button className={styles.target} style={{ gridArea: '4 / 1' }} />
+          <button style={{ gridArea: '4 / 1' }}>before bottom</button>
         </Tooltip>
 
         <Tooltip content="after top" position="after" align="top">
-          <button className={styles.target} style={{ gridArea: '2 / 5' }} />
+          <button style={{ gridArea: '2 / 5' }}>after top</button>
         </Tooltip>
         <Tooltip content="after center" position="after" align="center">
-          <button className={styles.target} style={{ gridArea: '3 / 5' }} />
+          <button style={{ gridArea: '3 / 5' }}>after center</button>
         </Tooltip>
         <Tooltip content="after bottom" position="after" align="bottom">
-          <button className={styles.target} style={{ gridArea: '4 / 5' }} />
+          <button style={{ gridArea: '4 / 5' }}>after bottom</button>
         </Tooltip>
 
         <Tooltip content="below start" position="below" align="start">
-          <button className={styles.target} style={{ gridArea: '5 / 2' }} />
+          <button style={{ gridArea: '5 / 2' }}>below start</button>
         </Tooltip>
         <Tooltip content="below center" position="below" align="center">
-          <button className={styles.target} style={{ gridArea: '5 / 3' }} />
+          <button style={{ gridArea: '5 / 3' }}>below center</button>
         </Tooltip>
         <Tooltip content="below end" position="below" align="end">
-          <button className={styles.target} style={{ gridArea: '5 / 4' }} />
+          <button style={{ gridArea: '5 / 4' }}>below end</button>
         </Tooltip>
       </div>
     </>
