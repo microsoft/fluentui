@@ -29,7 +29,6 @@
     "@fluentui/eslint-plugin": "^1.3.2",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.25",
     "@fluentui/react-conformance": "^0.4.3",
-    "@fluentui/react-menu": "^9.0.0-alpha.50",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
