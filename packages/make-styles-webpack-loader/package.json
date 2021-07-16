@@ -2,9 +2,8 @@
   "name": "@fluentui/make-styles-webpack-loader",
   "version": "9.0.0-alpha.0",
   "description": "A Webpack for makeStyles",
-  "private": true,
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib/src/index.js",
+  "typings": "lib/src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -16,7 +15,7 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/make-styles-webpack-loader/src && yarn docs"
   },
@@ -25,6 +24,10 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.25",
+    "@linaria/babel": "^3.0.0-beta.0",
+    "enhanced-resolve": "^5.8.2",
     "tslib": "^2.1.0"
   }
 }
