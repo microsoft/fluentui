@@ -60,34 +60,12 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (
-    ['react-button', 'react-card', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-      packageNamePlaceholder,
-    )
-  ) {
+  if (['react-cards', 'react-checkbox', 'react-tabs', 'react-toggle'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }
 
-  if (
-    [
-      'react-avatar',
-      'react-badge',
-      'react-button',
-      'react-divider',
-      'react-image',
-      'react-label',
-      'react-link',
-      'react-accordion',
-      'react-menu',
-      'react-text',
-      'react-components',
-      'react-checkbox',
-      'react-popover',
-      'react-portal',
-      'react-tooltip',
-    ].includes(packageNamePlaceholder)
-  ) {
+  if (['react-button', 'react-components', 'react-tooltip', 'react-checkbox'].includes(packageNamePlaceholder)) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
   }
 

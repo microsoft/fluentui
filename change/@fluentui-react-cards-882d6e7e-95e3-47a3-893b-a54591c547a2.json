@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Re-introduce legacy Card package for compatibility",
+  "packageName": "@fluentui/react-cards",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { CheckboxState } from './Checkbox.types';
 
 /**
@@ -6,16 +7,27 @@ import { CheckboxState } from './Checkbox.types';
  */
 const useStyles = makeStyles({
   root: theme => ({
-    display: 'flex',
+    display: 'inline-flex',
+    position: 'relative',
     alignSelf: 'flex-start',
     alignItems: 'center',
-    // padding: '4px',
-    // border: `2px solid transparent`,
-    // borderRadius: '4px',
-    // ':global([data-keyboard-nav]) :focus-within': {
-    //   border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-    // },
+    padding: '4px',
   }),
+
+  focusIndictor: createFocusIndicatorStyleRule(
+    theme => ({
+      ':after': {
+        content: "''",
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+        borderRadius: '4px',
+        margin: '-6px',
+      },
+    }),
+    { selector: 'focus-within' },
+  ),
 
   medium: {
     width: '16px',
@@ -26,12 +38,18 @@ const useStyles = makeStyles({
     width: '20px',
     height: '20px',
   },
+});
 
+const useInputStyle = makeStyles({
   input: {
-    // opacity: 0,
+    opacity: 0,
     margin: 0,
     padding: 0,
-    // cursor: 'pointer',
+    cursor: 'pointer',
+  },
+
+  disabled: {
+    cursor: 'default',
   },
 });
 
@@ -128,9 +146,9 @@ const useIndicatorStyles = makeStyles({
     fill: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 
-  unchecked: theme => ({
+  unchecked: {
     opacity: 0,
-  }),
+  },
 
   // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
   checked: theme => ({
@@ -199,16 +217,23 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const checkedState = state.checked === 'mixed' ? 'mixed' : state.checked ? 'checked' : 'unchecked';
   const styles = useStyles();
 
-  state.className = mergeClasses(styles.root, state.className);
+  state.className = mergeClasses(styles.root, styles.focusIndictor, state.className);
 
-  state.input.className = mergeClasses(styles.input, styles[state.size], state.input.className);
+  const inputStyles = useInputStyle();
+
+  state.input.className = mergeClasses(
+    styles[state.size],
+    inputStyles.input,
+    state.disabled && inputStyles.disabled,
+    state.input.className,
+  );
 
   const boxStyles = useBoxStyles();
 
   state.checkboxClassName = mergeClasses(
     boxStyles.box,
     styles[state.size],
-    boxStyles[state.labelPosition],
+    !!state.label.children && boxStyles[state.labelPosition],
     !state.disabled && boxStyles[checkedState],
     state.disabled && boxStyles.disabled,
     state.circular && boxStyles.circular,

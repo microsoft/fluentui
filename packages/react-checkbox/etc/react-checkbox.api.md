@@ -30,7 +30,9 @@ export interface CheckboxProps extends Omit<ComponentPropsCompat, 'children'>, O
     disabled?: boolean;
     id?: string;
     indicator?: ShorthandProps<ComponentPropsCompat>;
-    input?: ShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement>>;
+    input?: ShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement> & {
+        ref: React_2.RefObject<HTMLInputElement>;
+    }>;
     label?: ShorthandProps<LabelProps>;
     labelPosition?: 'start' | 'end';
     onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;

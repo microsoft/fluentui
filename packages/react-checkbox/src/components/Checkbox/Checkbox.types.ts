@@ -21,7 +21,7 @@ export interface CheckboxProps
   /**
    * Hidden input that handles the checkbox's functionality.
    */
-  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement>>;
+  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & { ref: React.RefObject<HTMLInputElement> }>;
 
   /**
    * Disabled state of the checkbox.

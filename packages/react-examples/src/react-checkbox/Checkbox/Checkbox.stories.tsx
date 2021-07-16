@@ -1,28 +1,21 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-checkbox';
 
-// TODO add 'react-checkbox' to the list for withFluentProvider in react-examples/.storybook/preview.js
+export const CheckboxVariations = () => (
+  <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
+    <Checkbox label="Simple Checkbox" />
+    <Checkbox label="Circular Checkbox" circular />
+    <Checkbox label="Checkbox with label positioned at start" labelPosition="start" />
+    <Checkbox label="Required Checkbox" required />
+    <Checkbox label="Large Checkbox" size="large" />
+  </div>
+);
 
-export const CheckboxExample = () => (
-  <div style={{ display: 'flex', gap: '6px', flexDirection: 'column' }}>
-    <Checkbox label="FooBarBaz" defaultChecked size="large" />
-
-    <Checkbox label="FooBarBaz" size="large" required />
-
-    <Checkbox label="FooBarBaz" size="large" disabled />
-
-    <Checkbox label="FooBarBaz" defaultChecked size="large" disabled />
-
-    <Checkbox label="FooBarBaz" defaultChecked circular size="large" />
-
-    <Checkbox label="FooBarBaz" defaultChecked="mixed" disabled />
-
-    <Checkbox label="FooBarBaz" defaultChecked />
-
-    <Checkbox label="FooBarBaz" defaultChecked="mixed" />
-
-    <Checkbox label="FooBarBaz" labelPosition="start" defaultChecked="mixed" />
-
-    <Checkbox />
+export const CheckboxStates = () => (
+  <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
+    <Checkbox label="Unchecked Checkbox" />
+    <Checkbox label="Checked Checkbox" defaultChecked />
+    <Checkbox label="Mixed Checkbox" defaultChecked="mixed" />
+    <Checkbox label="Disabled Checkbox" disabled />
   </div>
 );

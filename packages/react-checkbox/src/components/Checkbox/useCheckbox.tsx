@@ -32,8 +32,8 @@ export const useCheckbox = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CheckboxProps,
 ): CheckboxState => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
   const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
+
   const DefaultMixedIcon = () => (
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <rect width="100%" height="100%" />
@@ -48,12 +48,13 @@ export const useCheckbox = (
     }
   };
 
-  useComponentRef(ref, isChecked, inputRef);
-
   const state = mergeProps(
     {
       ref,
       id: useId('checkbox-'),
+      size: 'medium',
+      labelPosition: 'end',
+      checked: isChecked ? isChecked : false,
       label: {
         as: Label,
         required: props.required,
@@ -65,34 +66,32 @@ export const useCheckbox = (
       },
       input: {
         as: 'input',
-        // ref: inputRef, // React.LegacyRef<HTMLInputElement> | undefined
+        ref: React.useRef<HTMLInputElement>(null),
         type: 'checkbox',
+        checked: isChecked === true,
         onChange: onChange,
-        // disabled: !!props.disabled,
-        // required: !!props.required,
-        // 'aria-label': props['aria-label'], // todo
-        // 'aria-labelledby': props['aria-labelledby'], // todo
-        // 'aria-describedby': props['aria-describedby'], // todo
-        // 'aria-posinset': props['aria-posinset'],
-        // 'aria-setsize': props['aria-setsize'],
-        // 'aria-disabled': !!props.disabled,
-        // 'aria-checked': isChecked,
+        children: null,
+        disabled: !!props.disabled,
+        required: !!props.required,
+        'aria-disabled': props.disabled,
+        'aria-checked': isChecked === undefined ? false : isChecked,
       },
-      size: 'medium',
-      labelPosition: 'end',
-      checked: isChecked ? isChecked : false,
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
+  const inputRef = state.input.ref;
+
+  useComponentRef(ref, isChecked, inputRef);
+
   if (!state.label.htmlFor) {
     state.label.htmlFor = state.id;
   }
 
-  // if (state.input && state.id) {
-  //   state.input.id = state.id;
-  // }
+  if (state.input) {
+    state.input.id = state.id;
+  }
   state.id = state.rootId;
 
   const isMixed = isChecked === 'mixed';
@@ -106,12 +105,14 @@ export const useCheckbox = (
 };
 
 const useComponentRef = (
-  ref: React.Ref<Partial<HTMLElement>>,
+  ref: React.Ref<HTMLElement>,
   isChecked: 'mixed' | boolean | undefined,
   inputRef: React.RefObject<HTMLInputElement>,
 ) => {
   React.useImperativeHandle(
-    ref,
+    () => {
+      ref;
+    },
     () => ({
       get checked() {
         return isChecked;

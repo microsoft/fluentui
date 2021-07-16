@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Tue, 13 Jul 2021 07:35:36 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.52)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.51..@fluentui/react-accordion_v9.0.0-alpha.52)
+
+### Changes
+
+- Fix react-accordion due to changes on slots typings ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.51)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.50..@fluentui/react-accordion_v9.0.0-alpha.51)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.50)
 
