@@ -34,6 +34,8 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       borderPadding: borderWidth,
     });
 
+    const toggleButtonColorHover = () => (p.primary ? v.toggleButtonPrimaryHoverColor : v.toggleButtonColorHover);
+
     return {
       height: v.toggleButtonHeight,
       minWidth: v.toggleButtonHeight,
@@ -68,12 +70,16 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       },
 
       ':hover': {
-        ...getIconFillOrOutlineStyles({ outline: false }),
+        ...getIconFillOrOutlineStyles({ outline: true }),
+        color: toggleButtonColorHover(),
+        backgroundColor: v.toggleButtonBackgroundColorHover,
+        borderTopColor: v.toggleButtonBorderColorHover,
+        borderRightColor: v.toggleButtonBorderColorHover,
+        borderBottomColor: v.toggleButtonBorderColorHover,
+        // ':before' styles apply to the content (chevron) part of Toggle button
         ':before': {
-          ...getIndicatorStyles(v.toggleButtonColorHover, false, v.toggleButtonIndicatorSize),
+          ...getIndicatorStyles(toggleButtonColorHover(), true, v.toggleButtonIndicatorSize),
         },
-        color: v.toggleButtonColorHover,
-        background: v.toggleButtonBackgroundColorHover,
       },
 
       ':active': {
