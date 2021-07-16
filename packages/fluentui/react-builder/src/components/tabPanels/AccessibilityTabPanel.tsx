@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Button } from '@fluentui/react-northstar';
-import { ComponentTree } from '../ComponentTree';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
+import { ComponentListViewPanel } from '../ComponentTreePanel';
 
 export type AccessibilityTabPanelProps = {
   accessibilityErrors: AccessibilityError[];
@@ -12,11 +11,10 @@ export type AccessibilityTabPanelProps = {
   onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteSelectedComponent?: () => void;
   onDragStart?: (info: any, e: any) => void;
-  onOpenAddComponentDialog?: (uuid: string, where: string) => void;
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
+  onOpenAddComponentDialog?: (uuid: string, where: string) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
-  selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
 export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = (
@@ -41,25 +39,15 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
   } as JSONTreeElement;
 
   return (
-    <div>
-      {(!props.jsonTree?.props?.children || props.jsonTree?.props?.children?.length === 0) && (
-        <Button
-          text
-          content="Insert first component"
-          fluid
-          onClick={() => props.onOpenAddComponentDialog('', 'first')}
-        />
-      )}
-      <ComponentTree
-        tree={updatedElement}
-        selectedComponent={props.selectedComponent}
-        selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
-        onSelectComponent={props.onSelectComponent}
-        onCloneComponent={props.onCloneComponent}
-        onMoveComponent={props.onMoveComponent}
-        onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-        onAddComponent={props.onAddComponent}
-      />
-    </div>
+    <ComponentListViewPanel
+      jsonTree={updatedElement}
+      onAddComponent={props.onAddComponent}
+      onCloneComponent={props.onCloneComponent}
+      onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+      onMoveComponent={props.onMoveComponent}
+      onOpenAddComponentDialog={props.onOpenAddComponentDialog}
+      onSelectComponent={props.onSelectComponent}
+      selectedComponent={props.selectedComponent}
+    />
   );
 };

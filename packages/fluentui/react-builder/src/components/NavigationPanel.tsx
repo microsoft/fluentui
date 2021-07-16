@@ -142,7 +142,6 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
             onMoveComponent={props.onMoveComponent}
             onSelectComponent={props.onSelectComponent}
             selectedComponent={props.selectedComponent}
-            selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
           />
         )}
         {props.activeTab === 'nav' && (
@@ -156,7 +155,6 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
             onMoveComponent={props.onMoveComponent}
             onSelectComponent={props.onSelectComponent}
             selectedComponent={props.selectedComponent}
-            selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
           />
         )}
       </div>
