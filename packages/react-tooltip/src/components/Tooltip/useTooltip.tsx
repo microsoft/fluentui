@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent, useTheme } from '@fluentui/react-shared-contexts';
+import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   makeMergeProps,
   onlyChild,
@@ -11,7 +11,6 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
 
 /**
  * Names of the shorthand properties in TooltipProps
@@ -20,6 +19,10 @@ import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
 export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
 const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandProps });
+
+// Style values that are required for popper to properly position the tooltip
+const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
+const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts if this changes
 
 /**
  * Create the state required to render Tooltip.
@@ -63,13 +66,12 @@ export const useTooltip = (
     resolveShorthandProps(props, tooltipShorthandProps),
   );
 
-  const theme = useTheme();
   const popper = usePopper({
     enabled: visible,
     position: state.position,
     align: state.align,
     offset: [0, state.offset + (state.noArrow ? 0 : arrowHeight)],
-    arrowPadding: theme?.global ? 2 * parseInt(tooltipBorderRadius(theme), 10) : 0,
+    arrowPadding: 2 * tooltipBorderRadius,
   });
 
   state.ref = useMergedRefs(state.ref, popper.containerRef);
