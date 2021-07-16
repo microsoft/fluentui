@@ -1,8 +1,5 @@
 import * as React from 'react';
-// import { isElement } from 'react-is';
-// import * as _ from 'lodash';
-// import * as FUI from '@fluentui/react-northstar';
-// import * as FUIIcons from '@fluentui/react-icons-northstar';
+import { knobs } from './knobs/index';
 
 /**
  * Displays a knob with the ability to switch between data `types`.
@@ -11,11 +8,13 @@ export const MultiTypeKnob: React.FunctionComponent<{
   label: string;
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;
+  shorthandType?: string;
   onChange: (value: any) => void;
   onRemoveProp: () => void;
+  onNavigateProp: (propName: string) => void;
   options: string[];
   required: boolean;
-}> = ({ label, types, value, onChange, onRemoveProp, options, required }) => {
+}> = ({ label, types, value, onChange, onRemoveProp, options, required, onNavigateProp }) => {
   const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
 
@@ -41,7 +40,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
           ))
         )}
       </div>
-      {knob && knob({ options, value, onChange, id: propId })}
+      {knob && knob({ options, value, onChange, onNavigateProp, id: propId })}
       {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
       {!required && type === 'literal' && value && (
         <button
@@ -61,39 +60,4 @@ export const MultiTypeKnob: React.FunctionComponent<{
       )}
     </div>
   );
-};
-
-export const knobs = {
-  boolean: ({ value, onChange, id }) => (
-    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
-  ),
-
-  number: ({ value, onChange, id }) => (
-    <input
-      id={id}
-      style={{ width: '100%' }}
-      type="number"
-      value={Number(value)}
-      onChange={e => onChange(Number(e.target.value))}
-    />
-  ),
-
-  string: ({ value, onChange, id }) => (
-    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
-  ),
-
-  literal: ({ options, value, onChange, id }) => (
-    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
-      {options?.map((
-        opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
-      ) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  ),
-
-  ReactText: ({ value, onChange, id }) => knobs.string({ value, onChange, id }),
-  'React.ElementType': ({ value, onChange, id }) => knobs.string({ value, onChange, id }),
 };

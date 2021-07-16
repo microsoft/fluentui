@@ -32,6 +32,7 @@ export type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
+  propPath: Array<string>;
 };
 
 export type DesignerAction =
@@ -45,6 +46,7 @@ export type DesignerAction =
   | { type: 'DELETE_SELECTED_COMPONENT' }
   | { type: 'PROP_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
   | { type: 'PROP_DELETE'; component: JSONTreeElement; propName: string }
+  | { type: 'PROP_NAVIGATE'; component: JSONTreeElement; propPath: string[] }
   | { type: 'ENABLE_VIRTUAL_CURSOR'; enabledVirtualCursor: boolean }
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
@@ -66,17 +68,20 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     case 'DRAG_START':
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
+      draftState.propPath = [];
 
       draftState.draggingElement = action.component;
       break;
 
     case 'DRAG_ABORT':
       draftState.history.pop();
+      draftState.propPath = [];
 
       draftState.draggingElement = null;
       break;
 
     case 'DRAG_DROP':
+      draftState.propPath = [];
       if (action.dropParent) {
         const dropParent = jsonTreeFindElement(draftState.jsonTree, action.dropParent.uuid);
         resolveDrop(draftState.draggingElement, dropParent, action.dropIndex);
@@ -95,6 +100,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     case 'DRAG_CLONE':
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
+      draftState.propPath = [];
 
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
@@ -105,6 +111,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     case 'DRAG_MOVE':
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
+      draftState.propPath = [];
 
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
@@ -115,6 +122,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       break;
 
     case 'SELECT_COMPONENT':
+      draftState.propPath = [];
       if (action.component && draftState.selectedJSONTreeElementUuid !== action.component.uuid) {
         draftState.selectedJSONTreeElementUuid = action.component.uuid;
         draftState.selectedComponentInfo = componentInfoContext.byDisplayName[action.component.displayName];
@@ -125,6 +133,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       break;
 
     case 'SELECT_PARENT':
+      draftState.propPath = [];
       const parent = jsonTreeFindParent(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
       if (parent) {
         draftState.selectedJSONTreeElementUuid = parent.uuid;
@@ -133,6 +142,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       break;
 
     case 'DELETE_SELECTED_COMPONENT':
+      draftState.propPath = [];
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
 
@@ -148,7 +158,14 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
 
-      const editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
+      let editedComponent = jsonTreeFindElement(draftState.jsonTree, action.component.uuid);
+      if (draftState.propPath) {
+        for (const propName of draftState.propPath) {
+          if (editedComponent && editedComponent.props && editedComponent.props) {
+            editedComponent = editedComponent.props[propName];
+          }
+        }
+      }
       if (editedComponent) {
         if (!editedComponent.props) {
           editedComponent.props = {};
@@ -172,11 +189,16 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       }
       break;
 
+    case 'PROP_NAVIGATE':
+      draftState.propPath = action.propPath;
+      break;
+
     case 'ENABLE_VIRTUAL_CURSOR':
       draftState.enabledVirtualCursor = action.enabledVirtualCursor;
       break;
 
     case 'SWITCH_TO_STORE':
+      draftState.propPath = [];
       draftState.jsonTree = readTreeFromStore() || getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
       treeChanged = true;
@@ -185,6 +207,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     case 'RESET_STORE':
       draftState.history.push(JSON.parse(JSON.stringify(draftState.jsonTree)));
       draftState.redo = [];
+      draftState.propPath = [];
 
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
@@ -210,6 +233,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.selectedComponentInfo = null;
       draftState.jsonTree = action.jsonTree;
       draftState.codeError = null;
+      draftState.propPath = [];
       break;
 
     case 'SOURCE_CODE_ERROR':
@@ -307,6 +331,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       history: [],
       redo: [],
       insertComponent: null,
+      propPath: [],
     };
   });
 

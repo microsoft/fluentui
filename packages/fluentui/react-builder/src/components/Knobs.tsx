@@ -4,6 +4,7 @@ import { Menu, tabListBehavior } from '@fluentui/react-northstar';
 import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
+import { PropPathBreadcrumb } from './PropPathBreadcrumb';
 
 // const designUnit = 4;
 // const sizeRamp = [
@@ -139,47 +140,85 @@ type DesignKnobProps = {
     value: number;
   }) => void;
   onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
+  onPropNavigate: ({ jsonTreeElement, path }: { jsonTreeElement: JSONTreeElement; path: string[] }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
+  propPath: string[];
+  getShorthandComponentInfo: (componentType: string) => ComponentInfo;
 };
 
 const isHandledType = (type: string): boolean => {
-  return ['boolean', 'string', 'literal', 'React.ElementType', 'number'].includes(type);
+  return ['boolean', 'string', 'literal', 'React.ElementType', 'number', 'ShorthandValue'].includes(type);
 };
 
 export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
   onPropChange,
   onPropDelete,
+  onPropNavigate,
   info,
   jsonTreeElement,
+  propPath,
+  getShorthandComponentInfo,
 }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
-  const getValues = React.useCallback(
-    prop => {
-      const propValue = jsonTreeElement.props?.[prop.name];
-      const tempTypes = _.uniq(_.map(prop.types, 'name'));
-      const types = isHandledType(tempTypes[0]) ? tempTypes : _.uniq(_.map(prop.resolvedType, 'name'));
-      const isLiteral = _.every(types, name => name === 'literal');
-      // console.log(prop.name, types, prop);
-      const options = isLiteral
-        ? _.map(Array.isArray(prop.resolvedType) ? prop.resolvedType : prop.types, 'value')
-        : null;
+  const getValues = React.useCallback((obj, prop) => {
+    const propValue = obj.props?.[prop.name];
+    const tempTypes = _.uniq(_.map(prop.types, 'name'));
+    const types = isHandledType(tempTypes[0]) ? tempTypes : _.uniq(_.map(prop.resolvedType, 'name'));
+    const isShorthand = tempTypes[0] === 'ShorthandValue';
+    const shorthandType =
+      isShorthand && _.find(prop.resolvedType.types, t => t.type === 'intersection')['types'][0].name;
+    const isLiteral = _.every(types, name => name === 'literal');
+    // console.log(prop.name, types, prop);
+    const options = isLiteral
+      ? _.map(Array.isArray(prop.resolvedType) ? prop.resolvedType : prop.types, 'value')
+      : isShorthand
+      ? [shorthandType]
+      : null;
 
-      const defaultValues = {
-        boolean: false,
-        number: 0,
-        string: '',
-        'React.ElementType': prop.defaultValue,
-      };
+    const defaultValues = {
+      boolean: false,
+      number: 0,
+      string: '',
+      'React.ElementType': prop.defaultValue,
+    };
 
-      const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
-      return { types, options, value };
+    const value = typeof propValue !== 'undefined' ? propValue : defaultValues[types[0]];
+    return { types, options, value, shorthandType };
+  }, []);
+
+  const applyPath = React.useCallback(
+    (initialProps: ComponentProp[], initialElement: JSONTreeElement, propPath: string[]) => {
+      let selectedProps = initialProps;
+      let selectedElement = initialElement;
+      for (const propName of propPath || []) {
+        const prop = selectedProps.filter(p => p.name === propName);
+        if (prop && prop.length) {
+          const { shorthandType, value } = getValues(selectedElement, prop[0]);
+          if (shorthandType) {
+            selectedProps = getShorthandComponentInfo(shorthandType)?.props;
+            selectedElement = value as JSONTreeElement;
+          }
+        }
+      }
+
+      return { selectedElement, selectedProps };
     },
-    [jsonTreeElement],
+    [getShorthandComponentInfo, getValues],
   );
+
+  const { selectedElement, selectedProps } = applyPath(info.props, jsonTreeElement, propPath);
 
   return (
     <div>
+      {propPath && propPath.length > 0 && (
+        <PropPathBreadcrumb
+          onPropNavigate={onPropNavigate}
+          displayName={info.displayName}
+          jsonTreeElement={jsonTreeElement}
+          propPath={propPath}
+        />
+      )}
       <Menu
         accessibility={tabListBehavior}
         defaultActiveIndex={0}
@@ -200,11 +239,11 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
         styles={{ marginBottom: '1rem', marginTop: '1.5rem' }}
       />
       {menuActivePane === 'props' &&
-        info.props
+        selectedProps
           // only allow knobs for regular props, not default props
           .filter(prop => !/default[A-Z]/.test(prop.name))
           .map(prop => {
-            const { types, options, value } = getValues(prop);
+            const { types, options, value } = getValues(selectedElement, prop);
 
             return (
               <MultiTypeKnob
@@ -220,13 +259,14 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
                 }}
+                onNavigateProp={() => onPropNavigate({ jsonTreeElement, path: [prop.name] })}
               />
             );
           })}
 
       {menuActivePane === 'accessibility' &&
         A11YPROPS.filter(prop => !/default[A-Z]/.test(prop.name)).map(prop => {
-          const { types, options, value } = getValues(prop);
+          const { types, options, value, shorthandType } = getValues(selectedElement, prop);
 
           return (
             <MultiTypeKnob
@@ -237,11 +277,13 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               key={prop.name}
               label={prop.name}
               types={types as any}
+              shorthandType={shorthandType}
               options={options}
               value={value}
               onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
               }}
+              onNavigateProp={() => onPropNavigate({ jsonTreeElement, path: [prop.name] })}
             />
           );
         })}
