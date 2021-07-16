@@ -62,7 +62,7 @@ interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithRespo
 
 interface IDropdownState {
   isOpen: boolean;
-  /** Whether the root dropdown element has focus. */
+  /** Used to track whether focus is already within the Dropdown, for openOnFocus handling. */
   hasFocus: boolean;
   calloutRenderEdge?: RectangleEdge;
 }
@@ -955,7 +955,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       return;
     }
 
-    // hasFocus tracks whether the root element or dropdown has focus so always update the state.
     this.setState({ hasFocus: false });
 
     if (this.props.onBlur) {
