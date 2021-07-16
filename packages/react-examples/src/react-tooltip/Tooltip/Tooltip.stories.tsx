@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -23,12 +23,21 @@ const useStyles = makeStyles({
     width: '48px',
     height: '48px',
   },
+
+  multiTarget: theme => ({
+    margin: '64px 128px',
+    width: '320px',
+    height: '128px',
+    color: theme.alias.color.darkRed.foreground1,
+    border: `1px solid ${theme.alias.color.darkRed.border2}`,
+    background: theme.alias.color.darkRed.background1,
+  }),
 });
 
 export const Basic = () => {
   const styles = useStyles();
 
-  const targetRef = React.useRef<HTMLDivElement>(null);
+  const [exampleTarget, setExampleTarget] = React.useState<HTMLDivElement | null>(null);
 
   return (
     <>
@@ -55,16 +64,15 @@ export const Basic = () => {
         </Tooltip>
         <Tooltip
           content="This tooltip targets the red square"
-          onBeforeShow={(_, data) => {
-            if (targetRef.current) {
-              data.target = targetRef.current;
-            }
-          }}
+          target={exampleTarget}
           triggerAriaAttribute="describedby"
         >
           <button>
             Custom target:{' '}
-            <div ref={targetRef} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
+            <div
+              ref={setExampleTarget}
+              style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }}
+            />
           </button>
         </Tooltip>
         <Tooltip content="The trigger button was rendered by a render function" triggerAriaAttribute="describedby">
@@ -150,23 +158,68 @@ export const Positioning = () => {
   );
 };
 
-export const OnlyIfTruncated = () => {
-  const [wide, setWide] = React.useState(true);
-  const text = 'The tooltip will only show if the text is truncated.';
+// export const Positioning = () => {
+//   const styles = useStyles();
+//   const [target, setTarget] = React.useState<HTMLElement | null>(null);
 
-  const onBeforeShow: TooltipProps['onBeforeShow'] = (_, data) => {
-    const { target } = data;
+//   return (
+//     <>
+//       <div ref={setTarget} className={styles.multiTarget} />
 
-    // Cnacel showing the tooltip if the target does not overflow its bounds
-    if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
-      data.preventShow = true;
-    }
-  };
+//       <Tooltip visible={true} target={target} content="before top" position="before" align="top" />
+//       <Tooltip visible={true} target={target} content="before center" position="before" align="center" />
+//       <Tooltip visible={true} target={target} content="before bottom" position="before" align="bottom" />
+//       <Tooltip visible={true} target={target} content="after top" position="after" align="top" />
+//       <Tooltip visible={true} target={target} content="after center" position="after" align="center" />
+//       <Tooltip visible={true} target={target} content="after bottom" position="after" align="bottom" />
+//       <Tooltip visible={true} target={target} content="above start" position="above" align="start" />
+//       <Tooltip visible={true} target={target} content="above center" position="above" align="center" />
+//       <Tooltip visible={true} target={target} content="above end" position="above" align="end" />
+//       <Tooltip visible={true} target={target} content="below start" position="below" align="start" />
+//       <Tooltip visible={true} target={target} content="below center" position="below" align="center" />
+//       <Tooltip visible={true} target={target} content="below end" position="below" align="end" />
+//     </>
+//   );
+// };
 
+export const ControlledTooltip = () => {
+  const [tooltipVisible, setTooltipVisible] = React.useState(false);
   return (
     <>
-      <Tooltip content={text} onBeforeShow={onBeforeShow}>
+      <Tooltip content="The visibility of this tooltip is controlled by the parent component" visible={tooltipVisible}>
+        <button onClick={() => setTooltipVisible(v => !v)}>Toggle tooltip</button>
+      </Tooltip>
+    </>
+  );
+};
+
+export const OnlyIfTruncated = () => {
+  const textContainerRef = React.useRef<HTMLDivElement>(null);
+  const [tooltipVisible, setTooltipVisible] = React.useState(false);
+  const [wide, setWide] = React.useState(true);
+  const text = 'The tooltip only shows if the text is truncated';
+  return (
+    <>
+      <button onClick={() => setWide(w => !w)}>Toggle container width</button>
+      <Tooltip
+        content={text}
+        visible={tooltipVisible}
+        onVisibleChange={(_ev, { visible }) => {
+          if (
+            visible &&
+            textContainerRef.current &&
+            textContainerRef.current.scrollWidth <= textContainerRef.current.clientWidth &&
+            textContainerRef.current.scrollHeight <= textContainerRef.current.clientHeight
+          ) {
+            // Don't show the tooltip if the textContainer's content is not truncated
+            visible = false;
+          }
+
+          setTooltipVisible(visible);
+        }}
+      >
         <div
+          ref={textContainerRef}
           tabIndex={0}
           style={{
             width: !wide ? '100px' : undefined,
@@ -179,7 +232,6 @@ export const OnlyIfTruncated = () => {
           {text}
         </div>
       </Tooltip>
-      <button onClick={() => setWide(w => !w)}>Toggle width</button>
     </>
   );
 };
