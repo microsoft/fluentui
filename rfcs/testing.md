@@ -1,16 +1,5 @@
 # RFC: Testing standards
 
-<!--
-An RFC can be anything. A question, a suggestion, a plan. The purpose of this template is to give some structure to help folks write successful RFCs. However, don't feel constrained by this template; use your best judgement.
-
-Tips for writing a successful RFC:
-
-- Simple plain words that make your point, fancy words obfuscate
-- Try to stay concise, but don't gloss over important details
-- Try to write a neutral problem statement, not one that motivates your desired solution
-- Remember, "Writing is thinking". It's natural to realize new ideas while writing your proposal
--->
-
 ---
 
 _@andrefcdias_
@@ -59,21 +48,28 @@ To start, this is the proposal for defining the goals of each testing layer.
 
 - **Performance**
 
-  Focus on the rendering performance. They are covered by the [flamegrill](https://github.com/microsoft/Flamegrill) utility.
+  Focus on the rendering performance and avoiding it's degradation. They are currently covered by the [flamegrill](https://github.com/microsoft/Flamegrill) utility.
 
 - Bundle size
-- Accessibility
-- Visual Regression
-  Avoid unwanted changes in the styling
-- E2E
-  User behavior/interaction testing
 
-<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
+  Prevent regressions in the bundle size. Currently measured using our custom solution under `/packages/bundle-size`.
+
+- Accessibility
+
+  We do not automate accessibility testing as of the writing of this document.
+
+- Visual Regression
+
+  Prevent regressions in component styling. Covered currently with [Screener](https://screener.io/).
+
+- E2E
+
+  Prevent regressions in user flows by testing interactions. We're currently using [Cypress](https://www.cypress.io/) for this.
 
 ### Pros and Cons
 
-<!-- Enumerate the pros and cons of the proposal. Make sure to think about and be clear on the cons or drawbacks of this propsoal. If there are multiple proposals include this for each. -->
+There are no pros and cons currently. We should agree on the standards first.
 
 ## Discarded Solutions
 
-<!-- As you enumerate possible solutions, try to keep track of the discarded ones. This should include why we discarded the solution. -->
+N/A
