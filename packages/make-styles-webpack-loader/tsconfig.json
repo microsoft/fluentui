@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src"],
+  "include": ["__fixtures__/**/code.ts", "src"],
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2015",
     "module": "CommonJS",
-    "lib": ["es2015"],
+    "lib": ["ES2017", "DOM"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
@@ -12,6 +12,6 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node", "babel-helper-plugin-utils"]
   }
 }

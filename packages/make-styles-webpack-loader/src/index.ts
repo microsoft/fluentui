@@ -1,1 +1,1 @@
-// empty file
+export { webpackLoader as default } from './webpackLoader';

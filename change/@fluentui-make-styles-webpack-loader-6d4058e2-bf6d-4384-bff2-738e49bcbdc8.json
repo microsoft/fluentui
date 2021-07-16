@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "base implementation of the loader",
+  "packageName": "@fluentui/make-styles-webpack-loader",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
