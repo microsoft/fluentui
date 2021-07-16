@@ -345,7 +345,11 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
 
     return (
-      <div className={this._classNames.root} ref={this.props.hoisted.rootRef}>
+      <div
+        className={this._classNames.root}
+        ref={this.props.hoisted.rootRef}
+        aria-owns={isOpen ? this._listId : undefined}
+      >
         {onRenderLabel(this.props, this._onRenderLabel)}
         <div
           data-is-focusable={!disabled}

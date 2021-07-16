@@ -568,6 +568,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         ref={this._comboBoxWrapper}
         id={this._id + 'wrapper'}
         className={this._classNames.root}
+        aria-owns={isOpen ? this._id + '-list' : undefined}
       >
         <Autofill
           data-ktp-execute-target={true}
@@ -595,7 +596,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={this._getAriaActiveDescendantValue()}
           aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._id + '-list' : undefined}
+          aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
