@@ -72,6 +72,7 @@ perf-test/ @microsoft/fluentui-react-build
 # todo-app/
 
 #### Packages
+packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-charting/ @Raghurk
 packages/react-date-time @lorejoh12 @evlevy
 packages/date-time-utilities @lorejoh12 @evlevy
