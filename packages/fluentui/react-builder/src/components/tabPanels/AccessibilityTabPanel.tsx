@@ -96,8 +96,9 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
                         lineHeight: '1.5em',
                       }}
                     >
-                      {error.message}
-                      <br />
+                      <div style={{ display: 'list-item', listStyleType: 'disc', listStylePosition: 'outside' }}>
+                        {error.message}
+                      </div>
                       <Text size="smaller" weight="light">
                         {`Severity: ${error.severity}`}
                       </Text>
