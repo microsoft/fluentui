@@ -760,7 +760,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? this._classNames.dropdownItemDisabled
       : this._classNames.dropdownItem;
 
-    const { title = item.text } = item;
+    const { title } = item;
 
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
@@ -950,13 +950,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       return;
     }
 
+    if (this.state.isOpen) {
+      // Do not call onBlur or update focus state when the callout is opened
+      return;
+    }
+
     // hasFocus tracks whether the root element has focus so always update the state.
     this.setState({ hasFocus: false });
 
-    if (this.state.isOpen) {
-      // Do not onBlur when the callout is opened
-      return;
-    }
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }

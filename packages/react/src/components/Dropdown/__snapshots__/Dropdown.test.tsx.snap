@@ -622,7 +622,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
-                    title="1"
                   >
                     <input
                       aria-checked="true"
@@ -650,7 +649,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                       id="Dropdown0-list1"
                       role="option"
                       tabindex="0"
-                      title="1"
                       type="checkbox"
                     />
                     <label
@@ -1653,7 +1651,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                     id="Dropdown0-list1"
                     role="option"
                     tabindex="0"
-                    title="1"
                     type="button"
                   >
                     <span
