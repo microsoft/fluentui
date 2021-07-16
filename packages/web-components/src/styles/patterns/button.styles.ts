@@ -92,7 +92,7 @@ export const baseButtonStyles = (context, definition) =>
       background-color: ${neutralFillActive};
     }
 
-    .control: ${focusVisible} {
+    .control:${focusVisible} {
       border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
