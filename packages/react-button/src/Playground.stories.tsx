@@ -105,7 +105,6 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
                     : (prop.defaultValue as boolean)
                 }
                 disabled={!isPropEnabled}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={onBooleanPropChange}
                 styles={styles.checkbox}
               />
@@ -137,7 +136,6 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
                     : (prop.defaultValue as string)
                 }
                 disabled={!isPropEnabled}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={onStringPropChange}
               />
             </td>
@@ -173,7 +171,6 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
                     : (defaultSelectedKey as string)
                 }
                 options={propType.map(value => ({ key: value, text: value }))}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={onOptionsPropChange}
               />
             </td>
