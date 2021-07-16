@@ -20,7 +20,7 @@ export type AccessibilityTabPanelProps = {
 export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = (
   props: AccessibilityTabPanelProps,
 ) => {
-  const currentChildren = props.jsonTree.props.children;
+  const currentChildren = props.jsonTree?.props.children;
   const filteredChildren = [];
   if (currentChildren) {
     for (const child of currentChildren) {
