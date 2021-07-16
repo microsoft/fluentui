@@ -90,34 +90,6 @@ export const Designer: React.FunctionComponent = () => {
     [dispatch],
   );
 
-  const handleDesignerLoaded = React.useCallback(async () => {
-    const { violations } = await runAxe();
-    const errors = [];
-    violations.forEach(node => {
-      node.nodes.forEach(nodeResult => {
-        const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
-        if (idMatch) {
-          const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);
-          results.forEach(result => {
-            errors.push({
-              elementUuid: idMatch[1],
-              source: 'AXE-core',
-              error: result.message,
-            } as AccessibilityError);
-          });
-        }
-      });
-    });
-
-    dispatch({ type: 'DESIGNER_LOADED', accessibilityErrors: errors });
-  }, [dispatch]);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      handleDesignerLoaded();
-    }, 1000);
-  }, [handleDesignerLoaded]);
-
   const handleEnableVirtualCursorChange = React.useCallback(
     enabledVC => {
       dispatch({ type: 'ENABLE_VIRTUAL_CURSOR', enabledVirtualCursor: enabledVC });
@@ -279,26 +251,41 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement;
 
   const handleAccessibilityErrorChange = React.useCallback(async () => {
+    const errors = await runAndEvaluateAxe(match => match && match[1] === selectedComponent.uuid);
+    dispatch({ type: 'ACCESSIBILITY_CHANGE', component: selectedComponent, componentAccessibilityErrors: errors });
+  }, [dispatch, selectedComponent]);
+
+  const handleDesignerLoaded = React.useCallback(async () => {
+    const errors = await runAndEvaluateAxe(match => match != null);
+    dispatch({ type: 'DESIGNER_LOADED', accessibilityErrors: errors });
+  }, [dispatch]);
+
+  const runAndEvaluateAxe = async (match: (match: RegExpMatchArray) => boolean) => {
     const { violations } = await runAxe();
     const errors = [];
     violations.forEach(node => {
       node.nodes.forEach(nodeResult => {
         const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
-        if (idMatch) {
+        if (match(idMatch)) {
           const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);
           results.forEach(result => {
             errors.push({
               elementUuid: idMatch[1],
               source: 'AXE-core',
-              error: result.message,
+              message: result.message,
             } as AccessibilityError);
           });
         }
       });
     });
+    return errors;
+  };
 
-    dispatch({ type: 'ACCESSIBILITY_CHANGE', component: selectedComponent, componentAccessibilityErrors: errors });
-  }, [dispatch, selectedComponent]);
+  React.useEffect(() => {
+    setTimeout(() => {
+      handleDesignerLoaded();
+    }, 1000);
+  }, [handleDesignerLoaded]);
 
   const hotkeys = {
     'Ctrl+c': () => {

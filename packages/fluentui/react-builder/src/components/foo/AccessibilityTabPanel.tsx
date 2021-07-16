@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { jsonTreeFindElement } from '../../config';
 
-import { Text, Button, Accordion } from '@fluentui/react-northstar';
+import { Text, Button } from '@fluentui/react-northstar';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 
@@ -21,16 +21,10 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
 }) => {
   const handleSelectComponent = React.useCallback(
     elementUuid => {
-      const element = jsonTreeFindElement(tree, elementUuid);
-      onSelectComponent?.(element);
-      setElementDisplayName(element.displayName);
+      onSelectComponent?.(jsonTreeFindElement(tree, elementUuid));
     },
     [onSelectComponent, tree],
   );
-
-  const [elementDisplayName, setElementDisplayName] = React.useState('');
-  const accessibilityErrorsByElement = _.groupBy(accessibilityErrors, error => error.elementUuid);
-  console.log(accessibilityErrorsByElement, accessibilityErrors);
   return (
     <div
       style={{
@@ -54,7 +48,7 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
         <Text weight={'bold'}>No accessibility errors automatically detected!</Text>
       ) : (
         // group the accesssibility errors (if they exist)
-        Object.keys(accessibilityErrorsByElement).map(elementUuid => (
+        Object.keys(_.groupBy(accessibilityErrors, error => error.elementUuid)).map(elementUuid => (
           <div>
             <Button
               text
@@ -72,43 +66,28 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
                 width: '120%',
               }}
             >
-              {console.log(elementDisplayName)}
-              {elementDisplayName}
+              {jsonTreeFindElement(tree, elementUuid).displayName}
             </Button>
-            <Accordion
-              panels={[
-                {
-                  title: {
-                    'aria-level': 4,
-                    content: (
-                      <Text>
-                        {accessibilityErrorsByElement[elementUuid].length}{' '}
-                        {accessibilityErrorsByElement[elementUuid].length > 1 ? 'Errors' : 'Error'}
-                      </Text>
-                    ),
-                  },
-                  content: accessibilityErrorsByElement[elementUuid].map(error => (
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        marginBottom: '1rem',
-                        lineHeight: '1.5em',
-                      }}
-                    >
-                      {error.message}
-                      <br />
-                      <Text size="smaller" weight="light">
-                        {`Severity: ${error.severity}`}
-                      </Text>
-                      <Text size="smaller" weight="light">
-                        {`Source: ${error.source}`}
-                      </Text>
-                    </div>
-                  )),
-                },
-              ]}
-            />
+            {_.groupBy(accessibilityErrors, error => error.elementUuid)[elementUuid].map(error => (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  marginBottom: '1rem',
+                  padding: '.5em',
+                  lineHeight: '1.5em',
+                }}
+              >
+                {error.message}
+                <br />
+                <Text size="smaller" weight="light">
+                  {`Severity: ${error.severity}`}
+                </Text>
+                <Text size="smaller" weight="light">
+                  {`Source: ${error.source}`}
+                </Text>
+              </div>
+            ))}
           </div>
         ))
       )}
