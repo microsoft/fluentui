@@ -59,14 +59,13 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
 }
 
 // @public
-export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>, 'ref' | 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
+export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<never>, 'ref' | 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
 export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
-
 
 // (No @packageDocumentation comment for this package)
 

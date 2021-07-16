@@ -108,7 +108,7 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
  * {@docCategory Tooltip}
  */
 export type TooltipTriggerProps = Pick<
-  React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>,
+  React.HTMLAttributes<HTMLElement> & React.RefAttributes<never>,
   | 'ref'
   | 'onPointerEnter'
   | 'onPointerLeave'
