@@ -22,7 +22,7 @@ export const ComboBoxInlineExample: React.FunctionComponent = () => {
       />
       <div
         // since this example is an inline picker, it needs some forced space below
-        // so when embedded in an iframe in the website, the dropdown shows up
+        // so when wrapped in an overflow: hidden container in the website, the dropdown shows up
         style={{ height: '10em' }}
       />
     </div>
