@@ -21,11 +21,16 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
 }) => {
   const handleSelectComponent = React.useCallback(
     elementUuid => {
-      onSelectComponent?.(jsonTreeFindElement(tree, elementUuid));
+      const element = jsonTreeFindElement(tree, elementUuid);
+      onSelectComponent?.(element);
+      setElementDisplayName(element.displayName);
     },
     [onSelectComponent, tree],
   );
 
+  const [elementDisplayName, setElementDisplayName] = React.useState('');
+  const accessibilityErrorsByElement = _.groupBy(accessibilityErrors, error => error.elementUuid);
+  console.log(accessibilityErrorsByElement, accessibilityErrors);
   return (
     <div
       style={{
@@ -49,46 +54,51 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
         <Text weight={'bold'}>No accessibility errors automatically detected!</Text>
       ) : (
         // group the accesssibility errors (if they exist)
-        Object.keys(_.groupBy(accessibilityErrors, error => error.elementUuid)).map(elementUuid => (
+        Object.keys(accessibilityErrorsByElement).map(elementUuid => (
           <div>
+            <Button
+              text
+              onClick={handleSelectComponent}
+              style={{
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '4px 4px',
+                background: '#FFFF',
+                ...(selectedComponent &&
+                  selectedComponent.uuid === elementUuid && {
+                    background: '#ffc65c',
+                    color: '#444',
+                  }),
+                width: '120%',
+              }}
+            >
+              {console.log(elementDisplayName)}
+              {elementDisplayName}
+            </Button>
             <Accordion
-              expanded
               panels={[
                 {
                   title: {
+                    'aria-level': 4,
                     content: (
-                      <Button
-                        text
-                        onClick={handleSelectComponent}
-                        style={{
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          padding: '4px 4px',
-                          background: '#FFFF',
-                          ...(selectedComponent &&
-                            selectedComponent.uuid === elementUuid && {
-                              background: '#ffc65c',
-                              color: '#444',
-                            }),
-                          width: '120%',
-                        }}
-                      >
-                        {jsonTreeFindElement(tree, elementUuid).displayName}
-                      </Button>
+                      <Text>
+                        {accessibilityErrorsByElement[elementUuid].length}{' '}
+                        {accessibilityErrorsByElement[elementUuid].length > 1 ? 'Errors' : 'Error'}
+                      </Text>
                     ),
                   },
-                  content: _.groupBy(accessibilityErrors, error => error.elementUuid)[elementUuid].map(error => (
+                  content: accessibilityErrorsByElement[elementUuid].map(error => (
                     <div
                       style={{
                         display: 'flex',
                         flexDirection: 'column',
                         marginBottom: '1rem',
-                        padding: '.5em',
                         lineHeight: '1.5em',
                       }}
                     >
-                      {error.message}
-                      <br />
+                      <div style={{ display: 'list-item', listStyleType: 'disc', listStylePosition: 'outside' }}>
+                        {error.message}
+                      </div>
                       <Text size="smaller" weight="light">
                         {`Severity: ${error.severity}`}
                       </Text>

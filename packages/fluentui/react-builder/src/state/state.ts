@@ -155,7 +155,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         draftState.selectedComponentInfo = null;
         treeChanged = true;
 
-        deleteAccessibilityErrorsForElement(draftState);
+        deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       }
       break;
 
@@ -293,7 +293,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     }
 
     case 'PROP_UPDATED': {
-      deleteAccessibilityErrorsForElement(draftState);
+      deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       // add the accesibility errors for the component
       draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
       break;
@@ -316,11 +316,11 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
   console.log(`Completed action: ${action.type}`);
 };
 
-function deleteAccessibilityErrorsForElement(draftState) {
+function deleteAccessibilityErrorsForElement(draftState, componentUuid) {
   if (draftState.accessibilityErrors) {
     // if accessibility errors already exist, remove any accessibility errors for the component
     draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
-      error => error.elementUuid !== draftState.selectedJSONTreeElementUuid,
+      error => error.elementUuid !== componentUuid,
     );
   }
 }
