@@ -5,7 +5,7 @@ import { pxToRem } from '../../../../utils';
 import { ChatItemVariables } from './chatItemVariables';
 
 export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  root: ({ props: p }): ICSSInJSStyle => ({
     position: 'relative',
     ...((!p.attached || p.attached === 'top') && {
       paddingTop: p.density === 'compact' ? pxToRem(8) : pxToRem(16),
@@ -14,7 +14,6 @@ export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, Ch
       paddingTop: p.density === 'compact' ? 0 : pxToRem(2),
     }),
     paddingBottom: 0,
-
     ...(p.density === 'compact' && {
       marginTop: pxToRem(-2),
       marginBottom: pxToRem(-2),
