@@ -5,7 +5,7 @@ import {
   makeMergeProps,
   onlyChild,
   resolveShorthandProps,
-  useControllableValue,
+  useControllableState,
   useId,
   useIsomorphicLayoutEffect,
   useIsSSR,
@@ -65,23 +65,23 @@ export const useTooltip = (
     resolveShorthandProps(props, tooltipShorthandProps),
   );
 
-  const [visible, setVisibleInternal] = useControllableValue(state.visible, false);
-  state.visible = visible;
-  state.shouldRenderTooltip = visible;
-
-  const { onVisibleChange } = state;
+  const [visible, setVisibleInternal] = useControllableState({ state: state.visible, initialState: false });
   const setVisible = React.useCallback(
     (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
         if (newVisible !== oldVisible) {
+          const onVisibleChange = state.onVisibleChange; // Workaround for bug in react-exhaustive-deps lint rule
           onVisibleChange?.(ev, { visible: newVisible });
         }
         return newVisible;
       });
     },
-    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
+    [clearDelayTimeout, setVisibleInternal, state.onVisibleChange],
   );
+
+  state.visible = visible;
+  state.shouldRenderTooltip = visible;
 
   const { targetRef, containerRef, arrowRef } = usePopper({
     enabled: state.visible,
@@ -122,6 +122,11 @@ export const useTooltip = (
     }
   }, [context, targetDocument, visible, setVisible]);
 
+  // The focused element gets a blur event when the document loses focus
+  // (e.g. switching tabs in the browser), but we don't want to show the
+  // tooltip again when the document gets focus back. Handle this case by
+  // checking if the blurred element is still the document's activeElement.
+  // See https://github.com/microsoft/fluentui/issues/13541
   const ignoreNextFocusEventRef = React.useRef(false);
 
   // Listener for onPointerEnter and onFocus on the trigger element
@@ -152,12 +157,6 @@ export const useTooltip = (
       if (ev.type === 'blur') {
         // Hide immediately when losing focus
         delay = 0;
-
-        // The focused element gets a blur event when the document loses focus
-        // (e.g. switching tabs in the browser), but we don't want to show the
-        // tooltip again when the document gets focus back. Handle this case by
-        // checking if the blurred element is still the document's activeElement.
-        // See https://github.com/microsoft/fluentui/issues/13541
         ignoreNextFocusEventRef.current = targetDocument?.activeElement === ev.target;
       }
 
@@ -175,19 +174,19 @@ export const useTooltip = (
   state.onPointerEnter = useMergedCallbacks(state.onPointerEnter, clearDelayTimeout);
   state.onPointerLeave = useMergedCallbacks(state.onPointerLeave, onLeaveTrigger);
 
-  const child = React.isValidElement(state.children) ? state.children : undefined;
+  const childProps = React.isValidElement(state.children) ? state.children.props : undefined;
 
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
-    onPointerEnter: useMergedCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedCallbacks(child?.props?.onFocus, onEnterTrigger),
-    onBlur: useMergedCallbacks(child?.props?.onBlur, onLeaveTrigger),
+    onPointerEnter: useMergedCallbacks(childProps?.onPointerEnter, onEnterTrigger),
+    onPointerLeave: useMergedCallbacks(childProps?.onPointerLeave, onLeaveTrigger),
+    onFocus: useMergedCallbacks(childProps?.onFocus, onEnterTrigger),
+    onBlur: useMergedCallbacks(childProps?.onBlur, onLeaveTrigger),
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop.
   // Otherwise, use the target prop directly.
-  const childTargetRef = useMergedRefs(child?.props?.ref, targetRef);
+  const childTargetRef = useMergedRefs(childProps?.ref, targetRef);
   if (state.target === undefined) {
     triggerProps.ref = childTargetRef;
   } else {
