@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 07:32:14 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.39",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2d09c451d74f72d248d805e875865ab5944661df",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Jul 2021 00:35:31 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",
