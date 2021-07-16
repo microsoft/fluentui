@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 00:35:31 GMT",
+      "tag": "@fluentui/web-components_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add single export object for easily registering all Fluent UI web components",
+            "author": "chhol@microsoft.com",
+            "commit": "874be4906a0177df3316e2a15a88dc699836bca9",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "create and export web component definitions for use with Monaco editor tooling",
+            "author": "chhol@microsoft.com",
+            "commit": "f5120ce31c3b16a74e32177ff00f864f397a399b",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixed ability to set palette base color on DSP",
+            "author": "47367562+bheston@users.noreply.github.com",
+            "commit": "445c04ac55f894b8265a38ddf31ff83979ba3854",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Jul 2021 07:36:18 GMT",
       "tag": "@fluentui/web-components_v1.1.1",
       "version": "1.1.1",
