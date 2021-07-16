@@ -188,7 +188,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       fontWeight: FontWeights.regular,
     },
     dayButton: [
-      getFocusStyle(theme, { inset: -2 }),
+      getFocusStyle(theme, { inset: -3 }),
       {
         width: 24,
         height: 24,
