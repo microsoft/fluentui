@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "handle MemberExpression as a mixin",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
