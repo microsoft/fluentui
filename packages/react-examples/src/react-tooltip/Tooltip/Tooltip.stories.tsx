@@ -18,15 +18,6 @@ const useStyles = makeStyles({
     gap: '4px',
     margin: '16px 128px',
   },
-
-  // multiTarget: theme => ({
-  //   margin: '64px 128px',
-  //   width: '320px',
-  //   height: '128px',
-  //   color: theme.alias.color.darkRed.foreground1,
-  //   border: `1px solid ${theme.alias.color.darkRed.border2}`,
-  //   background: theme.alias.color.darkRed.background1,
-  // }),
 });
 
 export const Basic = () => {
@@ -152,30 +143,6 @@ export const Positioning = () => {
     </>
   );
 };
-
-// export const Positioning = () => {
-//   const styles = useStyles();
-//   const [target, setTarget] = React.useState<HTMLElement | null>(null);
-
-//   return (
-//     <>
-//       <div ref={setTarget} className={styles.multiTarget} />
-
-//       <Tooltip visible={true} target={target} content="before top" position="before" align="top" />
-//       <Tooltip visible={true} target={target} content="before center" position="before" align="center" />
-//       <Tooltip visible={true} target={target} content="before bottom" position="before" align="bottom" />
-//       <Tooltip visible={true} target={target} content="after top" position="after" align="top" />
-//       <Tooltip visible={true} target={target} content="after center" position="after" align="center" />
-//       <Tooltip visible={true} target={target} content="after bottom" position="after" align="bottom" />
-//       <Tooltip visible={true} target={target} content="above start" position="above" align="start" />
-//       <Tooltip visible={true} target={target} content="above center" position="above" align="center" />
-//       <Tooltip visible={true} target={target} content="above end" position="above" align="end" />
-//       <Tooltip visible={true} target={target} content="below start" position="below" align="start" />
-//       <Tooltip visible={true} target={target} content="below center" position="below" align="center" />
-//       <Tooltip visible={true} target={target} content="below end" position="below" align="end" />
-//     </>
-//   );
-// };
 
 export const ControlledTooltip = () => {
   const [tooltipVisible, setTooltipVisible] = React.useState(false);
