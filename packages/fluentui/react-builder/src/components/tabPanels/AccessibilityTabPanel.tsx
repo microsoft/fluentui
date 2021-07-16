@@ -23,11 +23,11 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
   props: AccessibilityTabPanelProps,
 ) => {
   const currentChildren = props.jsonTree.props.children;
-  const newChildren = [];
+  const filteredChildren = [];
   if (currentChildren) {
     for (const child of currentChildren) {
       if (props.accessibilityErrors.find(e => e.elementUuid === (child as JSONTreeElement).uuid)) {
-        newChildren.push(child);
+        filteredChildren.push(child);
       }
     }
   }
@@ -36,7 +36,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
     uuid: props.jsonTree.uuid,
     type: props.jsonTree.type,
     props: {
-      children: newChildren,
+      children: filteredChildren,
     },
   } as JSONTreeElement;
 
