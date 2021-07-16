@@ -60,7 +60,7 @@ export type DesignerAction =
   | { type: 'CLOSE_ADD_DIALOG' }
   | { type: 'DESIGNER_LOADED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'ADD_COMPONENT'; component: string; module: string }
-  | { type: 'ACCESSIBILITY_CHANGE'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
+  | { type: 'PROP_UPDATED'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
   // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
@@ -151,11 +151,11 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
+        deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
+
         draftState.selectedJSONTreeElementUuid = null;
         draftState.selectedComponentInfo = null;
         treeChanged = true;
-
-        deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       }
       break;
 
@@ -292,8 +292,8 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       break;
     }
 
-    case 'ACCESSIBILITY_CHANGE': {
-      deleteAccessibilityErrorsForElement(draftState, action.component.uuid);
+    case 'PROP_UPDATED': {
+      deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       // add the accesibility errors for the component
       draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
       break;

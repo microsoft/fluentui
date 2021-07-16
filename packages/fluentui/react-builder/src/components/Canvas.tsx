@@ -36,7 +36,6 @@ export type CanvasProps = {
   inUseMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
   selectedComponentAccessibilityErrors?: AccessibilityError[];
-  onAccessibilityErrors?: (jsonTreeElement: JSONTreeElement, elementAccessibilityErrors: AccessibilityError[]) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({
@@ -61,7 +60,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   inUseMode,
   setHeaderMessage,
   selectedComponentAccessibilityErrors,
-  onAccessibilityErrors,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 

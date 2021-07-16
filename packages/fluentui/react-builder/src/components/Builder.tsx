@@ -15,10 +15,6 @@ export type BuilderProps = {
   isSelecting: boolean;
   jsonTree: JSONTreeElement;
   mode: DesignerMode;
-  onAccessibilityErrorChange: (
-    jsonTreeElement: JSONTreeElement,
-    elementAccessibilityErrors: AccessibilityError[],
-  ) => void;
   onAddComponent?: (uuid: string, where: string) => void;
   onCanvasMouseUp: () => void;
   onCloneComponent: (e: MouseEvent) => void;
@@ -40,6 +36,7 @@ export type BuilderProps = {
     value: number;
   }) => void;
   onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
+  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
   onSelectComponent: (jsonTreeElement: any) => void;
   onSourceCodeChange: (code: any, jsonTree: any) => void;
   onSourceCodeError: (code: any, error: any) => void;
@@ -77,7 +74,6 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         getShareableLink={props.getShareableLink}
         isExpanding={props.isExpanding}
         isSelecting={props.isSelecting}
-        onAccessibilityErrorChange={props.onAccessibilityErrorChange}
         onCanvasMouseUp={props.onCanvasMouseUp}
         onCloneComponent={props.onCloneComponent}
         onDeleteSelectedComponent={props.onDeleteSelectedComponent}
@@ -86,6 +82,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         onGoToParentComponent={props.onGoToParentComponent}
         onKeyDown={props.onKeyDown}
         onMoveComponent={props.onMoveComponent}
+        onPropUpdate={props.onPropUpdate}
         onSelectComponent={props.onSelectComponent}
         onSourceCodeChange={props.onSourceCodeChange}
         onSourceCodeError={props.onSourceCodeError}
@@ -103,7 +100,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
             : []
         }
         mode={props.mode}
-        onAccessibilityErrorChange={props.onAccessibilityErrorChange}
+        onPropUpdate={props.onPropUpdate}
         onPropChange={props.onPropChange}
         onPropDelete={props.onPropDelete}
         selectedComponentInfo={props.selectedComponentInfo}

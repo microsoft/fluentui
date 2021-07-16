@@ -250,9 +250,9 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement.uuid !== 'builder-root' &&
     selectedJSONTreeElement;
 
-  const handleAccessibilityErrorChange = React.useCallback(async () => {
+  const handlePropUpdate = React.useCallback(async () => {
     const errors = await runAndEvaluateAxe(match => match && match[1] === selectedComponent.uuid);
-    dispatch({ type: 'ACCESSIBILITY_CHANGE', component: selectedComponent, componentAccessibilityErrors: errors });
+    dispatch({ type: 'PROP_UPDATED', component: selectedComponent, componentAccessibilityErrors: errors });
   }, [dispatch, selectedComponent]);
 
   const handleDesignerLoaded = React.useCallback(async () => {
@@ -405,7 +405,6 @@ export const Designer: React.FunctionComponent = () => {
         isSelecting={isSelecting}
         jsonTree={jsonTree}
         mode={mode}
-        onAccessibilityErrorChange={handleAccessibilityErrorChange}
         onAddComponent={handleAddComponent}
         onCanvasMouseUp={handleCanvasMouseUp}
         onCloneComponent={handleCloneComponent}
@@ -419,6 +418,7 @@ export const Designer: React.FunctionComponent = () => {
         onOpenAddComponentDialog={handleOpenAddComponentDialog}
         onPropChange={handlePropChange}
         onPropDelete={handlePropDelete}
+        onPropUpdate={handlePropUpdate}
         onSelectComponent={handleSelectComponent}
         onSourceCodeChange={handleSourceCodeChange}
         onSourceCodeError={handleSourceCodeError}

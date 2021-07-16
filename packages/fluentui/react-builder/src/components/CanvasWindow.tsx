@@ -20,10 +20,6 @@ export type CanvasWindowProps = {
   showJSONTree: boolean;
   state: DesignerState;
   getShareableLink: () => string;
-  onAccessibilityErrorChange: (
-    jsonTreeElement: JSONTreeElement,
-    elementAccessibilityErrors: AccessibilityError[],
-  ) => void;
   onCanvasMouseUp: () => void;
   onCloneComponent: (e: MouseEvent) => void;
   onDeleteSelectedComponent: () => void;
@@ -32,6 +28,7 @@ export type CanvasWindowProps = {
   onGoToParentComponent: () => void;
   onKeyDown: (e: KeyboardEvent) => void;
   onMoveComponent: (e: MouseEvent) => void;
+  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
   onSourceCodeChange: (code: any, jsonTree: any) => void;
   onSourceCodeError: (code: any, error: any) => void;
   onSelectComponent: (jsonTreeElement: any) => void;
@@ -140,7 +137,6 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
               inUseMode={mode === 'use'}
               setHeaderMessage={setHeaderMessage}
               selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
-              onAccessibilityErrors={props.onAccessibilityErrorChange}
             />
           </ErrorBoundary>
         </BrowserWindow>
