@@ -6,6 +6,80 @@ import { Text, Button, Accordion } from '@fluentui/react-northstar';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 
+type AccessibilityTabProps = {
+  jsonTree: JSONTreeElement;
+  selectedComponent: JSONTreeElement;
+  elementUuid: string | number;
+  handleSelectedComponent: (elementUuid) => void;
+  accessibilityErrorsByElement: _.Dictionary<AccessibilityError[]>;
+};
+const AccesssibiltyTab: React.FunctionComponent<AccessibilityTabProps> = ({
+  jsonTree,
+  selectedComponent,
+  elementUuid,
+  handleSelectedComponent,
+  accessibilityErrorsByElement,
+}) => {
+  return (
+    <div>
+      <Button
+        text
+        onClick={handleSelectedComponent}
+        style={{
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '4px 4px',
+          background: '#FFFF',
+          ...(selectedComponent &&
+            selectedComponent.uuid === elementUuid && {
+              background: '#ffc65c',
+              color: '#444',
+            }),
+          width: '120%',
+        }}
+      >
+        {jsonTreeFindElement(jsonTree, elementUuid)}
+      </Button>
+      <Accordion
+        styles={{ padding: '.5rem' }}
+        panels={[
+          {
+            title: {
+              'aria-level': 4,
+              content: (
+                <Text>
+                  {accessibilityErrorsByElement[elementUuid].length}{' '}
+                  {accessibilityErrorsByElement[elementUuid].length > 1 ? 'Errors' : 'Error'}
+                </Text>
+              ),
+            },
+            content: accessibilityErrorsByElement[elementUuid].map(error => (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  marginBottom: '1rem',
+                  lineHeight: '1.5em',
+                }}
+              >
+                <div style={{ display: 'list-item', listStyleType: 'disc', listStylePosition: 'outside' }}>
+                  {error.message}
+                </div>
+                <Text size="smaller" weight="light">
+                  {`Severity: ${error.severity}`}
+                </Text>
+                <Text size="smaller" weight="light">
+                  {`Source: ${error.source}`}
+                </Text>
+              </div>
+            )),
+          },
+        ]}
+      />
+    </div>
+  );
+};
+
 export type AccessibilityTabPanelProps = {
   jsonTree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
@@ -20,17 +94,16 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
   onSelectComponent,
 }) => {
   const handleSelectComponent = React.useCallback(
-    elementUuid => {
-      const element = jsonTreeFindElement(tree, elementUuid);
+    (props: AccessibilityTabProps) => {
+      const element = jsonTreeFindElement(tree, props.elementUuid);
       onSelectComponent?.(element);
-      setElementDisplayName(element.displayName);
+      // setElementDisplayName(element.displayName);
     },
     [onSelectComponent, tree],
   );
 
-  const [elementDisplayName, setElementDisplayName] = React.useState('');
+  // const [elementDisplayName, setElementDisplayName] = React.useState('');
   const accessibilityErrorsByElement = _.groupBy(accessibilityErrors, error => error.elementUuid);
-  console.log(accessibilityErrorsByElement, accessibilityErrors);
   return (
     <div
       style={{
@@ -55,62 +128,13 @@ export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanel
       ) : (
         // group the accesssibility errors (if they exist)
         Object.keys(accessibilityErrorsByElement).map(elementUuid => (
-          <div>
-            <Button
-              text
-              onClick={handleSelectComponent}
-              style={{
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '4px 4px',
-                background: '#FFFF',
-                ...(selectedComponent &&
-                  selectedComponent.uuid === elementUuid && {
-                    background: '#ffc65c',
-                    color: '#444',
-                  }),
-                width: '120%',
-              }}
-            >
-              {console.log(elementDisplayName)}
-              {elementDisplayName}
-            </Button>
-            <Accordion
-              panels={[
-                {
-                  title: {
-                    'aria-level': 4,
-                    content: (
-                      <Text>
-                        {accessibilityErrorsByElement[elementUuid].length}{' '}
-                        {accessibilityErrorsByElement[elementUuid].length > 1 ? 'Errors' : 'Error'}
-                      </Text>
-                    ),
-                  },
-                  content: accessibilityErrorsByElement[elementUuid].map(error => (
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        marginBottom: '1rem',
-                        lineHeight: '1.5em',
-                      }}
-                    >
-                      <div style={{ display: 'list-item', listStyleType: 'disc', listStylePosition: 'outside' }}>
-                        {error.message}
-                      </div>
-                      <Text size="smaller" weight="light">
-                        {`Severity: ${error.severity}`}
-                      </Text>
-                      <Text size="smaller" weight="light">
-                        {`Source: ${error.source}`}
-                      </Text>
-                    </div>
-                  )),
-                },
-              ]}
-            />
-          </div>
+          <AccesssibiltyTab
+            jsonTree={tree}
+            selectedComponent={selectedComponent}
+            elementUuid={elementUuid}
+            handleSelectedComponent={handleSelectComponent}
+            accessibilityErrorsByElement={accessibilityErrorsByElement}
+          />
         ))
       )}
     </div>
