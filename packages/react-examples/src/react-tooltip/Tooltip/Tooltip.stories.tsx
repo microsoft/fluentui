@@ -24,14 +24,14 @@ const useStyles = makeStyles({
     height: '48px',
   },
 
-  multiTarget: theme => ({
-    margin: '64px 128px',
-    width: '320px',
-    height: '128px',
-    color: theme.alias.color.darkRed.foreground1,
-    border: `1px solid ${theme.alias.color.darkRed.border2}`,
-    background: theme.alias.color.darkRed.background1,
-  }),
+  // multiTarget: theme => ({
+  //   margin: '64px 128px',
+  //   width: '320px',
+  //   height: '128px',
+  //   color: theme.alias.color.darkRed.foreground1,
+  //   border: `1px solid ${theme.alias.color.darkRed.border2}`,
+  //   background: theme.alias.color.darkRed.background1,
+  // }),
 });
 
 export const Basic = () => {
