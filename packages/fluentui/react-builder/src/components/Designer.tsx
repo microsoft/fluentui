@@ -39,10 +39,10 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
 
-  /*
-  const [selectedComponentAccessibilityErrors, runAxeOnElement] = useAxeOnElement();
+  // const selectedComponentAccessibilityErrors = state.accessibilityErrors.filter(x=>x.elementUuid === state.selectedJSONTreeElementUuid);
   // const [validationErrors, runAxeAll] = useAxeOnElements();
 
+  /*
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
       runAxeOnElement(state.selectedJSONTreeElementUuid);
