@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Checkbox, Dropdown, IDropdownOption, Stack, Text, TextField } from '@fluentui/react';
-import { PlaygroundProps } from './Playground.types';
+import { Checkbox, Dropdown, IDropdownOption, TextField } from './tmp-components.stories';
+import { PlaygroundProps } from './Playground.types.stories';
+import { makeStyles } from '@fluentui/react-make-styles';
 
 const tableStyle: React.CSSProperties = {
   border: '1px solid black',
@@ -10,8 +11,39 @@ const cellStyle: React.CSSProperties = {
   padding: '5px',
 };
 
+const useStyles = makeStyles({
+  stack: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    width: 'auto',
+    height: 'auto',
+    boxSizing: 'border-box',
+    justifyContent: 'center',
+  },
+
+  checkbox: {
+    position: 'relative',
+    display: 'flex',
+    flexShrink: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '20px',
+    width: '20px',
+    border: `1px solid rgb(50, 49, 48)`,
+    borderRadius: '2px',
+    boxSizing: 'border-box',
+    transitionProperty: 'background, border, border-color',
+    transitionDuration: '200ms',
+    transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.23, 1)',
+    overflow: 'hidden',
+    marginRight: '4px',
+  },
+});
+
 export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.Element {
   const { children, sections } = props;
+  const styles = useStyles();
 
   const [componentProps, setComponentProps] = React.useState<{ [key in string]: boolean | string } | null>(null);
   const newProps: { [key in string]: boolean | string } = {};
@@ -54,7 +86,9 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
         }
 
         const onBooleanPropChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-          const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
+          const newComponentProps: { [key in string]: boolean | string } = {
+            ...componentProps,
+          };
           newComponentProps[propName] = checked || false;
           setComponentProps(newComponentProps);
           prop.setDefaultValue?.(checked || false);
@@ -71,8 +105,8 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
                     : (prop.defaultValue as boolean)
                 }
                 disabled={!isPropEnabled}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={onBooleanPropChange}
+                styles={styles.checkbox}
               />
             </td>
           </tr>,
@@ -84,7 +118,9 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
           ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
           newValue?: string,
         ) => {
-          const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
+          const newComponentProps: { [key in string]: boolean | string } = {
+            ...componentProps,
+          };
           newComponentProps[propName] = newValue || '';
           setComponentProps(newComponentProps);
         };
@@ -100,7 +136,6 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
                     : (prop.defaultValue as string)
                 }
                 disabled={!isPropEnabled}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={onStringPropChange}
               />
             </td>
@@ -111,11 +146,13 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
         newProps[propName] = (componentProps && componentProps[propName]) || prop.defaultValue || propType[0];
 
         const onOptionsPropChange = (
-          ev?: React.FormEvent<HTMLDivElement>,
-          option?: IDropdownOption<any>,
+          ev?: React.FormEvent<HTMLSelectElement>,
+          option?: IDropdownOption,
           index?: number,
         ) => {
-          const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
+          const newComponentProps: { [key in string]: boolean | string } = {
+            ...componentProps,
+          };
           if (option) {
             newComponentProps[propName] = (option.key as string) || '';
             setComponentProps(newComponentProps);
@@ -134,7 +171,6 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
                     : (defaultSelectedKey as string)
                 }
                 options={propType.map(value => ({ key: value, text: value }))}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={onOptionsPropChange}
               />
             </td>
@@ -146,7 +182,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
       <React.Fragment key={section.sectionName}>
         <tr>
           <td style={cellStyle} colSpan={2}>
-            <Text variant="medium">{section.sectionName}</Text>
+            <text>{section.sectionName}</text>
           </td>
         </tr>
         {sectionList}
@@ -166,7 +202,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
 
   return (
     <>
-      <Stack horizontalAlign="center">{React.cloneElement(children, elementProps || {})}</Stack>
+      <div className={styles.stack}>{React.cloneElement(children, elementProps || {})}</div>
       <table style={tableStyle} cellSpacing={0}>
         <tbody>{playgroundSections}</tbody>
       </table>

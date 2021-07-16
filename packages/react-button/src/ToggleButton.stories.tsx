@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
 import { useBoolean } from '@fluentui/react-utilities';
-import { buttonBaseProps } from '../Button/Button.stories';
-import { Playground } from '../Playground';
-import { PlaygroundProps, PropDefinition } from '../Playground.types';
+import { ToggleButton, ToggleButtonProps } from './ToggleButton';
+import { Playground } from './Playground.stories';
+import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
+import { buttonBaseProps } from './buttonBaseProps.stories';
 
 export const ToggleButtonPlayground = () => {
   const [checked, { setTrue: setTrueChecked, setFalse: setFalseChecked, toggle: toggleChecked }] = useBoolean(false);
@@ -42,4 +42,9 @@ export const ToggleButtonPlayground = () => {
       <ToggleButton onClick={onClick} />
     </Playground>
   );
+};
+
+export default {
+  title: 'Components/ToggleButton',
+  component: ToggleButton,
 };
