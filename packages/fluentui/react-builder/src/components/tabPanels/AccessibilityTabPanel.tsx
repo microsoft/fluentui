@@ -5,7 +5,7 @@ import { ComponentTree } from '../ComponentTree';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 
-export type TestProps = {
+export type AccessibilityTabPanelProps = {
   accessibilityErrors: AccessibilityError[];
   jsonTree: JSONTreeElement;
   onAddComponent?: (uuid: string, where: string) => void;
@@ -19,7 +19,9 @@ export type TestProps = {
   selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
-export const AccessibilityTabPanel: React.FunctionComponent<TestProps> = (props: TestProps) => {
+export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = (
+  props: AccessibilityTabPanelProps,
+) => {
   const currentChildren = props.jsonTree.props.children;
   const newChildren = [];
   if (currentChildren) {
@@ -30,7 +32,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<TestProps> = (props:
     }
   }
 
-  const element = {
+  const updatedElement = {
     uuid: props.jsonTree.uuid,
     type: props.jsonTree.type,
     props: {
@@ -49,7 +51,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<TestProps> = (props:
         />
       )}
       <ComponentTree
-        tree={element}
+        tree={updatedElement}
         selectedComponent={props.selectedComponent}
         selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
         onSelectComponent={props.onSelectComponent}
