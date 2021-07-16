@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removes forcing children on useARIAButton",
-  "packageName": "@fluentui/react-aria",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

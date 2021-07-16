@@ -8,8 +8,26 @@ import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export type ARIAButtonAsAnchorProps = React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    as: 'a';
+};
+
+// @public (undocumented)
+export type ARIAButtonAsButtonProps = React_2.ButtonHTMLAttributes<HTMLButtonElement> & {
+    as?: 'button';
+};
+
+// @public (undocumented)
+export type ARIAButtonAsElementProps = React_2.HTMLAttributes<HTMLElement> & {
+    as: 'div' | 'span';
+};
+
+// @public (undocumented)
+export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
+
 // @public
-export function useARIAButton<T extends React_2.ButtonHTMLAttributes<HTMLElement>>(value: ShorthandProps<T>, defaultProps?: T): ObjectShorthandProps<T>;
+export function useARIAButton(value: ShorthandProps<ARIAButtonProps>, defaultProps?: ARIAButtonProps): ObjectShorthandProps<ARIAButtonProps>;
 
 
 // (No @packageDocumentation comment for this package)

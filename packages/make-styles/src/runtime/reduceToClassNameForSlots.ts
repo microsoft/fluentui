@@ -34,7 +34,7 @@ export function reduceToClassName(classMap: CSSClassesMap, dir: 'ltr' | 'rtl'): 
  *
  * @private
  */
-export function reduceToClassNameForSlots<Slots extends string>(
+export function reduceToClassNameForSlots<Slots extends string | number>(
   classesMapBySlot: CSSClassesMapBySlot<Slots>,
   dir: 'ltr' | 'rtl',
 ): Record<Slots, string> {

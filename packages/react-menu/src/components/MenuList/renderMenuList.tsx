@@ -28,7 +28,6 @@ export const renderMenuList = (state: MenuListState) => {
         setFocusByFirstCharacter,
         hasIcons,
         hasCheckmarks,
-        hasMenuListContext: true,
       }}
     >
       <slots.root {...slotProps.root}>{state.children}</slots.root>
