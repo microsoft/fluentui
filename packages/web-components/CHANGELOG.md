@@ -1,8 +1,22 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Jul 2021 00:35:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.0)
+
+Fri, 16 Jul 2021 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.1..@fluentui/web-components_v1.2.0)
+
+### Minor changes
+
+- add single export object for easily registering all Fluent UI web components ([PR #18962](https://github.com/microsoft/fluentui/pull/18962) by chhol@microsoft.com)
+- create and export web component definitions for use with Monaco editor tooling ([PR #18961](https://github.com/microsoft/fluentui/pull/18961) by chhol@microsoft.com)
+
+### Patches
+
+- Fixed ability to set palette base color on DSP ([PR #18958](https://github.com/microsoft/fluentui/pull/18958) by 47367562+bheston@users.noreply.github.com)
 
 ## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.1)
 

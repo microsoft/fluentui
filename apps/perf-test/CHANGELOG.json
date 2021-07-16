@@ -2,6 +2,37 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 00:35:31 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.56",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "bafb9f17e40291fef604725051aae526ba7345a6",
+            "package": "perf-test"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.4",
+            "author": "ilrosen@microsoft.com",
+            "commit": "581307da7a88ba9a2b74d5b213ab989729468f5f",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.127",
+            "author": "ilrosen@microsoft.com",
+            "commit": "581307da7a88ba9a2b74d5b213ab989729468f5f",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Jul 2021 07:36:18 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",
