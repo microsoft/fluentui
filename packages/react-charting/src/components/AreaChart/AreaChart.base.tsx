@@ -231,19 +231,30 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
       return element.x === modifiedXVal;
     });
-    this.setState({
-      refSelected: mouseEvent,
-      isCalloutVisible: true,
-      nearestCircleToHighlight:
-        axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight,
-      lineXValue: this._xAxisRectScale(pointToHighlight),
-      displayOfLine: InterceptVisibility.show,
-      isCircleClicked: false,
-      stackCalloutProps: found!,
-      YValueHover: found.values,
-      dataPointCalloutProps: found!,
-      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-    });
+    const nearestCircleToHighlight =
+      axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
+    // if no points need to be called out then don't show vertical line and callout card
+    if (found) {
+      this.setState({
+        refSelected: mouseEvent,
+        isCalloutVisible: true,
+        nearestCircleToHighlight: nearestCircleToHighlight,
+        lineXValue: this._xAxisRectScale(pointToHighlight),
+        displayOfLine: InterceptVisibility.show,
+        isCircleClicked: false,
+        stackCalloutProps: found!,
+        YValueHover: found.values,
+        dataPointCalloutProps: found!,
+        hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+      });
+    } else {
+      this.setState({
+        isCalloutVisible: false,
+        nearestCircleToHighlight: nearestCircleToHighlight,
+        displayOfLine: InterceptVisibility.hide,
+        isCircleClicked: false,
+      });
+    }
   };
   /**
    * just cleaning up the state which we have set in the mouse move event
@@ -552,7 +563,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 r={this._getCircleRadius(xDataPoint)}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this.state.isCalloutVisible ? 'visibility' : 'hidden'}
+                visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}

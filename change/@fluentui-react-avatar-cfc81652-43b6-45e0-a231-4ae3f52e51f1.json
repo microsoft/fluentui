@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-avatar: migration to new DX",
+  "packageName": "@fluentui/react-avatar",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "none"
+}

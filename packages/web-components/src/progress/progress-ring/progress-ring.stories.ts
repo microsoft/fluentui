@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../../design-system-provider';
 import Examples from './fixtures/circular.html';
-import { FluentProgressRing } from './';
-
-// Prevent tree-shaking
-FluentProgressRing;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Progress Ring',
 };
 
-export const ProgressRing = (): string => Examples;
+export const ProgressRing = () => Examples;

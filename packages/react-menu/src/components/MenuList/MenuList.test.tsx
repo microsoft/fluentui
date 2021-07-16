@@ -2,8 +2,10 @@ import * as React from 'react';
 import { MenuList } from './MenuList';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListContext, MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuList', () => {
   isConformant({
@@ -28,5 +30,24 @@ describe('MenuList', () => {
     const component = renderer.create(<MenuList>Default MenuList</MenuList>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('set hasMenuListContext to true', () => {
+    // Arrange
+    let hasMenuListContext: boolean | undefined = false;
+    const TestComponent = () => {
+      hasMenuListContext = useHasParentContext(MenuListContext);
+      return null;
+    };
+
+    // Act
+    render(
+      <MenuList>
+        <TestComponent />
+      </MenuList>,
+    );
+
+    // Assert
+    expect(hasMenuListContext).toBe(true);
   });
 });

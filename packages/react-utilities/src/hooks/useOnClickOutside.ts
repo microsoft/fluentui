@@ -22,6 +22,7 @@ export interface UseOnClickOrScrollOutsideOptions {
    * Disables event listeners
    */
   disabled?: boolean;
+
   /**
    * Called if the click is outside the element refs
    */
@@ -62,8 +63,9 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     };
 
     if (!disabled) {
-      element?.addEventListener('click', conditionalHandler);
-      element?.addEventListener('touchstart', conditionalHandler);
+      // use capture phase because React can update DOM before the event bubbles to the document
+      element?.addEventListener('click', conditionalHandler, true);
+      element?.addEventListener('touchstart', conditionalHandler, true);
     }
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
@@ -72,8 +74,8 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     }, 1);
 
     return () => {
-      element?.removeEventListener('click', conditionalHandler);
-      element?.removeEventListener('touchstart', conditionalHandler);
+      element?.removeEventListener('click', conditionalHandler, true);
+      element?.removeEventListener('touchstart', conditionalHandler, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;

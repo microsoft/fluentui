@@ -8,11 +8,11 @@ export const chatMessageVariables = (siteVars: any): Partial<ChatMessageVariable
     contentColor: siteVars.colors.white,
     color: siteVars.colors.white,
     border: `1px solid ${siteVars.colors.white}`,
+    compactHoverBorder: `solid 1px ${siteVars.accessibleYellow}`,
     hasMentionColor: siteVars.accessibleYellow,
     hasMentionNubbinColor: siteVars.accessibleYellow,
     isImportantColor: siteVars.accessibleYellow,
     badgeTextColor: siteVars.colors.black,
-    timestampColorMine: siteVars.colors.white,
     reactionGroupBorderColor: siteVars.colors.white,
   };
 };

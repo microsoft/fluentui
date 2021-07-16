@@ -23,6 +23,7 @@ import {
   useFluentContext,
   useAutoControlled,
   useStyles,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
@@ -148,6 +149,13 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     initialValue: false,
   });
 
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
+
   const menuId = React.useRef<string>();
   menuId.current = getOrGenerateIdFromShorthand('menubutton-menu-', menu, menuId.current);
   const triggerId = React.useRef<string>();
@@ -237,6 +245,12 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
       if (!itemProps || !itemProps.menu) {
         // do not close if clicked on item with submenu
         handleOpenChange(e, false);
+      }
+    },
+    onKeyDown: (e: React.KeyboardEvent, itemProps: MenuItemProps) => {
+      _.invoke(predefinedProps, 'onKeyDown', e, itemProps);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.stopPropagation();
       }
     },
   });

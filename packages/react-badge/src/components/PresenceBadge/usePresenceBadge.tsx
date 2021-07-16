@@ -13,18 +13,18 @@ import {
 /**
  * Consts listing which props are shorthand props.
  */
-export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'];
+export const presenceBadgeShorthandPropsCompat: (keyof PresenceBadgeProps)[] = ['icon'];
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
+const mergeProps = makeMergePropsCompat<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandPropsCompat });
 
 const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element | null> = outOfOffice => ({
-  busy: <SkypeMinusIcon />,
+  busy: null,
   available: outOfOffice ? <SkypeArrowIcon /> : <SkypeCheckIcon />,
   away: outOfOffice ? <SkypeArrowIcon /> : <SkypeClockIcon />,
   offline: <CancelIcon />,
   outOfOffice: <SkypeArrowIcon />,
-  doNotDisturb: null,
+  doNotDisturb: <SkypeMinusIcon />,
 });
 
 /**

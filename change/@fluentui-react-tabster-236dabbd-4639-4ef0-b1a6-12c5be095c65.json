@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(useFocusFinders): add findNextFocusable and findPreviousFocusable",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
