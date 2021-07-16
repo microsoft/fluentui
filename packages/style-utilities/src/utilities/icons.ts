@@ -8,6 +8,11 @@ export interface IIconSubset {
   };
 
   style?: IRawStyle;
+  /**
+   * Indicates to the icon renderer that it is safe to merge any props on the original `Icon` element
+   * onto the child content element registered for the icon which are valid for HTML images.
+   */
+  mergeImageProps?: boolean;
 }
 
 export interface IIconSubsetRecord extends IIconSubset {

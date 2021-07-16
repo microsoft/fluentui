@@ -2,6 +2,54 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix bugs on getSlots to follow with RFC",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b60234948eacb8c6fa9d08ab8e98d963f583d475",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "feat(useControllableState): deprecate useControlledValue with new hook",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "57b43a4d07fbccd83fa03a3b7879813be920b91f",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Jul 2021 23:15:55 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.31",
       "version": "9.0.0-alpha.31",

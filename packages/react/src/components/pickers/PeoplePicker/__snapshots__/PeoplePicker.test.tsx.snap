@@ -24,6 +24,7 @@ exports[`PeoplePicker renders correctly 1`] = `
     role="presentation"
   >
     <div
+      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -121,6 +122,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     role="presentation"
   >
     <div
+      aria-owns=""
       className=
           ms-BasePicker-text
           {
