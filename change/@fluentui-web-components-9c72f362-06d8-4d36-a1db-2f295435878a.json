@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding react-checkbox to react-examples' preview.js.",
-  "packageName": "@fluentui/web-components",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
