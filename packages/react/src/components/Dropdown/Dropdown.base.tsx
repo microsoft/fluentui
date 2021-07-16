@@ -955,7 +955,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       return;
     }
 
-    // hasFocus tracks whether the root element has focus so always update the state.
+    // hasFocus tracks whether the root element or dropdown has focus so always update the state.
     this.setState({ hasFocus: false });
 
     if (this.props.onBlur) {
