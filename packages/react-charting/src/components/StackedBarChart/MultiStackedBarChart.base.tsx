@@ -205,7 +205,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
-    const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
 
     return (
       <div className={this._classNames.singleChartRoot}>
@@ -218,7 +217,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{chartDataVal}</strong>
+                <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
                 {!hideDenominator && <span>/{total}</span>}
               </div>
             )}

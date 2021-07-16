@@ -1,5 +1,8 @@
-<fluent-design-system-provider use-defaults background-color="#F7F7F7" corner-radius="10">
+<fluent-design-system-provider fill-color="#F7F7F7" layer-corner-radius="10">
   <style>
+    fluent-design-system-provider {
+      padding: 20px 0;
+    }
     fluent-card {
       --card-height: 400px;
       --card-width: 500px;
@@ -30,7 +33,7 @@
   <div>
     <fluent-card class="state-override">Custom size and elevation on hover using CSS</fluent-card>
 
-    <fluent-design-system-provider background-color="#333333">
+    <fluent-design-system-provider fill-color="#333333">
       <fluent-card>
         <div class="contents">
           Dark
@@ -42,8 +45,8 @@
       </fluent-card>
     </fluent-design-system-provider>
 
-    <fluent-design-system-provider background-color="#E5E5E5">
-      <fluent-card neutral-base-color="#3995C9">
+    <fluent-design-system-provider fill-color="#E5E5E5">
+      <fluent-card neutral-palette-source="#3995C9">
         <div class="contents">
           Tinted neutral, light
           <fluent-button appearance="accent">Accent</fluent-button>
@@ -54,8 +57,8 @@
       </fluent-card>
     </fluent-design-system-provider>
 
-    <fluent-design-system-provider background-color="#333333">
-      <fluent-card neutral-base-color="#3995C9">
+    <fluent-design-system-provider fill-color="#333333">
+      <fluent-card neutral-palette-source="#3995C9">
         <div class="contents">
           Tinted neutral, dark
           <fluent-button appearance="accent">Accent</fluent-button>
@@ -66,8 +69,8 @@
       </fluent-card>
     </fluent-design-system-provider>
 
-    <fluent-design-system-provider background-color="#333333">
-      <fluent-card neutral-base-color="#3995C9">
+    <fluent-design-system-provider fill-color="#333333">
+      <fluent-card neutral-palette-source="#3995C9">
         <div class="contents">
           Tinted neutral, dark
           <fluent-button appearance="accent">Accent</fluent-button>
@@ -75,7 +78,7 @@
           <fluent-button appearance="outline">Outline</fluent-button>
           <fluent-button appearance="lightweight">Lightweight</fluent-button>
         </div>
-        <fluent-card neutral-base-color="#00A900" style="margin: 0; --card-height: 200px; --card-width: 460px;">
+        <fluent-card neutral-palette-source="#00A900" style="margin: 0; --card-height: 200px; --card-width: 460px">
           <div class="contents">
             Tinted neutral, nested, dark
             <fluent-button appearance="accent">Accent</fluent-button>
@@ -87,14 +90,27 @@
       </fluent-card>
     </fluent-design-system-provider>
 
-    <fluent-card card-background-color="#2A5193">
+    <fluent-card card-fill-color="#2A5193">
       <div class="contents">
-        Custom card background color
+        Custom card fill color
         <fluent-button appearance="accent">Accent</fluent-button>
         <fluent-button appearance="stealth">Stealth</fluent-button>
         <fluent-button appearance="outline">Outline</fluent-button>
         <fluent-button appearance="lightweight">Lightweight</fluent-button>
       </div>
     </fluent-card>
+
+    <fluent-design-system-provider accent-base-color="#00a900" neutral-base-color="#A90000">
+      <fluent-card>
+        <div class="contents">
+          Accent and neutral color by DSP
+          <fluent-button appearance="accent">Accent</fluent-button>
+          <fluent-button>Neutral</fluent-button>
+          <fluent-button appearance="stealth">Stealth</fluent-button>
+          <fluent-button appearance="outline">Outline</fluent-button>
+          <fluent-button appearance="lightweight">Lightweight</fluent-button>
+        </div>
+      </fluent-card>
+    </fluent-design-system-provider>
   </div>
 </fluent-design-system-provider>

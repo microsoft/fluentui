@@ -53,7 +53,7 @@ export interface IFileTypeIconOptions {
  * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
  * @param options
  */
-export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string } {
+export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
   // First, obtain the base name of the icon using the extension or type.
   let iconBaseName: string;
   const { extension, type, size, imageFileType } = options;
@@ -64,7 +64,7 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
   let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
   let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
 
-  return { iconName: iconBaseName + suffix };
+  return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
 
 export function getFileTypeIconNameFromExtensionOrType(

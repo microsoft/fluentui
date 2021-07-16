@@ -5345,11 +5345,13 @@ export interface IHSV {
 // @public (undocumented)
 export interface IIconContent {
     // (undocumented)
-    children?: string;
+    children?: string | JSX.Element;
     // (undocumented)
     fontFamily?: string;
     // (undocumented)
     iconClassName?: string;
+    // (undocumented)
+    mergeImageProps?: boolean;
 }
 
 // @public (undocumented)
@@ -9608,6 +9610,8 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
     hasSuggestedActionSelected(): boolean;
     // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    protected _scrollContainer: React_2.RefObject<HTMLDivElement>;
     // (undocumented)
     scrollSelected(): void;
     // (undocumented)
