@@ -45,8 +45,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         boxSizing: 'content-box',
         padding: '0 4px',
         alignSelf: 'flex-end',
-        marginRight: 16,
-        marginTop: 3,
+        margin: '3px 16px 11px 0',
         fontSize: FontSizes.small,
         fontFamily: 'inherit',
         overflow: 'visible', // explicitly specify for IE11

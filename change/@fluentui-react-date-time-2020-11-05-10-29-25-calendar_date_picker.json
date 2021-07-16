@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update Calendar spacing around \"Go to today\" button.",
+  "packageName": "@fluentui/react-date-time",
+  "email": "lesliewilliams234@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-11-05T18:29:25.460Z"
+}
