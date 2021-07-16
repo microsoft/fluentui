@@ -1907,7 +1907,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             className=
                 
-                ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1966,37 +1965,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
-                {
-                  background-color: #edebe9!important;
-                }
-                &:hover {
-                  background-color: #edebe9!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                  background: Highlight!important;
-                  color: HighlightText!important;
-                }
-                &.ms-CalendarDay-hoverStyle {
-                  background-color: #edebe9!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
-                  background: Highlight!important;
-                  color: HighlightText!important;
-                }
-                &.ms-CalendarDay-pressedStyle {
-                  background-color: #edebe9!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
-                  background: Highlight!important;
-                  color: HighlightText!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background: Highlight!important;
-                  border-color: Highlight!important;
-                  color: HighlightText!important;
-                  forced-color-adjust: none;
-                }
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
@@ -2011,7 +1979,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
               aria-readonly={true}
               aria-selected={true}
               className=
-                  ms-CalendarDay-dayIsToday
+
                   {
                     background-color: transparent;
                     border-radius: 100%;
@@ -4852,7 +4820,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             className=
                 
-                ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4911,37 +4878,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
-                {
-                  background-color: #edebe9!important;
-                }
-                &:hover {
-                  background-color: #edebe9!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                  background: Highlight!important;
-                  color: HighlightText!important;
-                }
-                &.ms-CalendarDay-hoverStyle {
-                  background-color: #edebe9!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
-                  background: Highlight!important;
-                  color: HighlightText!important;
-                }
-                &.ms-CalendarDay-pressedStyle {
-                  background-color: #edebe9!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
-                  background: Highlight!important;
-                  color: HighlightText!important;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background: Highlight!important;
-                  border-color: Highlight!important;
-                  color: HighlightText!important;
-                  forced-color-adjust: none;
-                }
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseOut={[Function]}
@@ -4956,7 +4892,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
               aria-readonly={true}
               aria-selected={true}
               className=
-                  ms-CalendarDay-dayIsToday
+
                   {
                     background-color: transparent;
                     border-radius: 100%;

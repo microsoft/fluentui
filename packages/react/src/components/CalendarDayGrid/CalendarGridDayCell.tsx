@@ -223,8 +223,8 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       className={css(
         classNames.dayCell,
         weekCorners && cornerStyle,
-        day.isSelected && classNames.daySelected,
-        day.isSelected && 'ms-CalendarDay-daySelected',
+        day.isToday && !day.isSelected && classNames.dayIsToday,
+        day.isToday && !day.isSelected && 'ms-CalendarDay-daySelected',
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
@@ -245,8 +245,8 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
         aria-hidden={ariaHidden}
         className={css(
           classNames.dayButton,
-          day.isToday && classNames.dayIsToday,
-          day.isToday && 'ms-CalendarDay-dayIsToday',
+          day.isSelected && classNames.daySelected,
+          day.isToday && !day.isSelected && 'ms-CalendarDay-dayIsToday',
         )}
         onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
         aria-label={ariaLabel}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fixed date picker colors by exchanging isSelected and isToday classes",
+  "packageName": "@fluentui/react",
+  "email": "hetanthakkar1@gmail.com",
+  "dependentChangeType": "patch"
+}
