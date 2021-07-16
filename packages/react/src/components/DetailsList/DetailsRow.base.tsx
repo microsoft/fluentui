@@ -305,6 +305,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             {onRenderCheck({
               id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
+              selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
               'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
