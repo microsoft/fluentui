@@ -9,3 +9,8 @@ export const gridStyles = (gridGap: string): MakeStyles => ({
   display: 'grid',
   gridGap,
 });
+
+export const typography: Record<'text' | 'header', MakeStyles> = {
+  text: { fontWeight: 'normal' },
+  header: { fontWeight: 'bold' },
+};

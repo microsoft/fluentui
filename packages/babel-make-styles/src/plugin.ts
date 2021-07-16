@@ -16,6 +16,7 @@ type AstStyleNode =
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
   | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
+  | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
@@ -398,11 +399,28 @@ function processDefinitions(
         return;
       }
 
+      /**
+       * A scenario when slots styles are represented by a function call.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: display() })
+       *    makeStyles({ root: typography.display() })
+       */
       if (stylesPath.isCallExpression()) {
-        state.styleNodes?.push({
-          kind: 'LAZY_EXPRESSION_CALL',
-          nodePath: stylesPath,
-        });
+        state.styleNodes?.push({ kind: 'LAZY_EXPRESSION_CALL', nodePath: stylesPath });
+        return;
+      }
+
+      /**
+       * A scenario when slots styles are represented by an object.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: typography.display })
+       */
+      if (stylesPath.isMemberExpression()) {
+        state.styleNodes?.push({ kind: 'LAZY_MEMBER', nodePath: stylesPath });
         return;
       }
     }
@@ -465,6 +483,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               if (
                 styleNode.kind === 'LAZY_IDENTIFIER' ||
                 styleNode.kind === 'LAZY_FUNCTION' ||
+                styleNode.kind === 'LAZY_MEMBER' ||
                 styleNode.kind === 'LAZY_EXPRESSION_CALL'
               ) {
                 return [...acc, styleNode.nodePath];
