@@ -4,6 +4,14 @@
 
 Image is a visual representation of some content, such as a photo, illustration etc.
 
+## Concerns
+
+Based on the OpenUI research and the Figma specification, Image seems to be one of those components that is purely styling, thus I would appreciate your answers in any of these questions:
+
+- Are there any components would need to use Image?
+- Apart from styling, are there any other functionalities for Image?
+- Is there any benefit of having Image as a component? (taking into consideration that it is css styling and we will need to maintain it over time.)
+
 ## Prior Art
 
 - Convergence epic issue: [#16658](https://github.com/microsoft/fluentui/issues/16658)
