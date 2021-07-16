@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/react-cards_v0.200.1",
+      "version": "0.200.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Re-introduce legacy Card package for compatibility",
+            "author": "elcraig@microsoft.com",
+            "commit": "b20a263eadf0e233e9051d9b3d62e31fb92521c0",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Jun 2021 12:23:02 GMT",
       "tag": "@uifabric/react-cards_v0.115.53",
       "version": "0.115.53",

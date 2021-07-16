@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Wed, 09 Jun 2021 12:23:02 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.200.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.1)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.115.53..@fluentui/react-cards_v0.200.1)
+
+### Patches
+
+- Re-introduce legacy Card package for compatibility ([PR #18965](https://github.com/microsoft/fluentui/pull/18965) by elcraig@microsoft.com)
 
 ## [0.115.53](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.115.53)
 

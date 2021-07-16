@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.80",
+      "version": "9.0.0-alpha.80",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.53",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Jul 2021 00:35:31 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.79",
       "version": "9.0.0-alpha.79",

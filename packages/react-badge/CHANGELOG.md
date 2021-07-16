@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.58)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.57..@fluentui/react-badge_v9.0.0-alpha.58)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.26 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.57)
 

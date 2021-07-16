@@ -2,6 +2,51 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.26",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.53",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.57",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.61",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.46",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.59",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Jul 2021 07:32:14 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",
