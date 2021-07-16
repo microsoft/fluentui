@@ -32,14 +32,16 @@ The possibility to use native ES2015/ES6 features without the risks to breaking 
 transpilation of IE11 features that results in more code. This can result in perf and bundle size gains, and tslib
 will no longer be needed as a hard dependency to emulate the missing features of modern javascript.
 
-### Improved Themeing
+### Improved Theming
 
 Theming a web application is always a challenge and can easily lead to performance issues. Performance has been a challenge for the current
 versions of fluent that evaluated theme values with javascript. Fluent v9 uses CSS variables for its theming and styling solution. This means
 that it does not need to have a different set of classes for each theme and css rules never change regardless of theme which is a
 big boost to performance.
 
-> TODO add some details about make-styles proxy usage
+Our future theming system also uses the [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+in a key step to create the CSS variables that map to theme values. Without this feature that IE11 lacks, we would need
+to dedicate more time to another solution for this.
 
 ### Maintenance Burden
 
