@@ -1,0 +1,3 @@
+{
+  "plugins": ["module:@fluentui/babel-make-styles", "annotate-pure-calls", "@babel/transform-react-pure-annotations"]
+}

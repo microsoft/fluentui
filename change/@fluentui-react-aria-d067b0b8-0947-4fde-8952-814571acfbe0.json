@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add Babel plugins to build pipeline",
+  "packageName": "@fluentui/react-aria",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
