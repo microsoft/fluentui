@@ -40,7 +40,9 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
 
   return (
     <div>
-      {(!updatedTree || updatedTree?.props?.children?.length === 0) && <div>There are no accessibility errors!</div>}
+      {(!updatedTree || updatedTree?.props?.children?.length === 0) && (
+        <div style={{ padding: '10px' }}>There are no accessibility errors!</div>
+      )}
       <ComponentTree
         onAddComponent={props.onAddComponent}
         onCloneComponent={props.onCloneComponent}
