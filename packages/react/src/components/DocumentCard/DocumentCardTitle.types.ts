@@ -50,6 +50,20 @@ export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentC
    * Optional override class name
    */
   className?: string;
+
+  /**
+   * Implicit role prop passed by DocumentCard.
+   * Value is determined when DocumentCard recieves a role prop or an onClick prop.
+   * Otherwise, this is undefined.
+   */
+  role?: string;
+
+  /**
+   * Implicit tabIndex prop passed by DocumentCard.
+   * Value is determined when DocumentCard receives an onClick prop or an onClickHref prop.
+   * Otherwise, this is undefined.
+   */
+  tabIndex?: number;
 }
 
 /**
