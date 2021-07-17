@@ -1,7 +1,7 @@
 import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
-import { IStyle } from '../../Styling';
+import { IStyle, ScreenWidthMinLarge } from '../../Styling';
 
 const COMMAND_BAR_HEIGHT = 44;
 
@@ -27,14 +27,29 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         flexGrow: '1',
         display: 'flex',
         alignItems: 'stretch',
+        flexBasis: '33.3%',
+      },
+    ],
+    middleSet: [
+      'ms-CommandBar-middleCommand',
+      {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        flexGrow: '1',
+        [`@media (max-width: ${ScreenWidthMinLarge}px)`]: {
+          display: 'none',
+        },
       },
     ],
     secondarySet: [
       'ms-CommandBar-secondaryCommand',
       {
-        flexShrink: '0',
         display: 'flex',
         alignItems: 'stretch',
+        justifyContent: 'flex-end',
+        flexGrow: '1',
+        flexBasis: '33.3%',
       },
     ],
   };

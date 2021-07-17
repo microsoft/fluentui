@@ -35,6 +35,10 @@ export interface ICommandBarData {
    */
   overflowItems: ICommandBarItemProps[];
   /**
+   * Items being rendered on the center
+   */
+  middleItems: ICommandBarItemProps[] | undefined;
+  /**
    * Items being rendered on the far side
    */
   farItems: ICommandBarItemProps[] | undefined;
@@ -51,6 +55,7 @@ export interface ICommandBarData {
 export class CommandBarBase extends React.Component<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
+    middleItems: [],
     overflowItems: [],
   };
 
@@ -67,6 +72,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   public render(): JSX.Element {
     const {
       items,
+      middleItems,
       overflowItems,
       farItems,
       styles,
@@ -81,6 +87,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems: [...items],
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
+      middleItems,
       farItems,
       cacheKey: this._computeCacheKey({
         primaryItems: [...items],
@@ -134,6 +141,15 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
           overflowItems={data.overflowItems.length ? data.overflowItems : undefined}
           onRenderItem={this._onRenderItem}
           onRenderOverflowButton={this._onRenderOverflowButton}
+        />
+
+        {/*Middle Items */}
+        <OverflowSet
+          role="none"
+          className={css(this._classNames.middleSet)}
+          items={data.middleItems}
+          onRenderItem={this._onRenderItem}
+          onRenderOverflowButton={nullRender}
         />
 
         {/*Secondary Items*/}

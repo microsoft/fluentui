@@ -53,6 +53,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               {
                 align-items: stretch;
                 display: flex;
+                flex-basis: 33.3%;
                 flex-grow: 1;
                 flex-wrap: nowrap;
                 position: relative;
@@ -1345,6 +1346,23 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             </button>
           </div>
         </div>
+        <div
+          className=
+              ms-OverflowSet
+              ms-CommandBar-middleCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-grow: 1;
+                flex-wrap: nowrap;
+                justify-content: center;
+                position: relative;
+              }
+              @media (max-width: 640px){& {
+                display: none;
+              }
+          role="none"
+        />
       </div>
     </div>
   </div>
