@@ -90,16 +90,21 @@ packages/style-utilities/ @dzearing
 packages/style-utilities/src/interfaces/ @phkuo @dzearing
 packages/style-utilities/src/styles/ @phkuo @dzearing
 packages/theme/ @dzearing
-packages/react-provider/ @teams-prg
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @microsoft/cxe-red
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
-packages/make-styles/ @teams-prg
-packages/react-make-styles/ @teams-prg
+packages/make-styles/ @microsoft/teams-prg
+packages/react-make-styles/ @microsoft/teams-prg
 packages/react-aria/ @bsunderhus
-packages/babel-make-styles/ @teams-prg
-packages/jest-serializer-make-styles/ @teams-prg
+packages/babel-make-styles/ @microsoft/teams-prg
+packages/make-styles-webpack-loader/ @microsoft/teams-prg
+packages/jest-serializer-make-styles/ @microsoft/teams-prg
+packages/bundle-size/ @microsoft/teams-prg
+packages/react-shared-contexts/ @microsoft/teams-prg
+packages/react-context-selector/ @microsoft/teams-prg
+packages/react-tabster/ @microsoft/teams-prg
+packages/react-positioning/ @microsoft/teams-prg
 
 ### Fabric
 # common/
@@ -110,7 +115,7 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## Component packages
 packages/react-avatar/ @microsoft/cxe-red @behowell
-packages/react-menu/ @teams-prg
+packages/react-menu/ @microsoft/teams-prg
 packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
 packages/react-card/ @microsoft/cxe-red @khmakoto
@@ -127,7 +132,9 @@ packages/react-tabs/ @microsoft/cxe-red @behowell
 packages/react-toggle/ @microsoft/cxe-red @behowell
 packages/react-tooltip/ @microsoft/cxe-red @behowell
 packages/react-label/ @microsoft/cxe-red @sopranopillow
-packages/react-popover/ @teams-prg
+packages/react-portal/ @microsoft/teams-prg
+packages/react-popover/ @microsoft/teams-prg
+packages/react-provider/ @microsoft/teams-prg
 
 ## Components
 packages/react @microsoft/cxe-red
