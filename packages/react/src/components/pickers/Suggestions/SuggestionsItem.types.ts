@@ -55,6 +55,11 @@ export interface ISuggestionItemProps<T> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /**
+   *  Refers to the iconName for the remove item action
+   */
+  iconName?: string;
 }
 
 /**

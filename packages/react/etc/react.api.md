@@ -1560,6 +1560,7 @@ export interface IBasePickerProps<T> extends React_2.Props<any> {
     disabled?: boolean;
     enableSelectedSuggestionAlert?: boolean;
     getTextFromItem?: (item: T, currentValue?: string) => string;
+    iconName?: string;
     inputProps?: IInputProps;
     itemLimit?: number;
     onBlur?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
@@ -1632,7 +1633,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve' | 'iconName'> {
 }
 
 // @public (undocumented)
@@ -6599,6 +6600,7 @@ export interface IPickerItem {
 // @public
 export interface IPickerItemProps<T> extends React_2.AllHTMLAttributes<HTMLElement> {
     componentRef?: IRefObject<IPickerItem>;
+    iconName?: string;
     index: number;
     item: T;
     key?: string | number;
@@ -7726,6 +7728,7 @@ export interface IStickyState {
 export interface ISuggestionItemProps<T> {
     className?: string;
     componentRef?: IRefObject<ISuggestionsItem>;
+    iconName?: string;
     id?: string;
     isSelectedOverride?: boolean;
     onClick: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
@@ -7844,6 +7847,7 @@ export interface ISuggestionsProps<T> extends React_2.Props<any> {
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
     forceResolveText?: string;
+    iconName?: string;
     isLoading?: boolean;
     isMostRecentlyUsedVisible?: boolean;
     isResultsFooterVisible?: boolean;

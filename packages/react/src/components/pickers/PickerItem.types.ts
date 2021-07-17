@@ -41,4 +41,10 @@ export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement
 
   /** Aria-label for the picked item remove button. */
   removeButtonAriaLabel?: string;
+
+  /**
+   *  Refers to the iconName for the remove item action
+   *  @defaultvalue 'Cancel'
+   */
+  iconName?: string;
 }

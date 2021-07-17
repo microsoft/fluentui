@@ -235,6 +235,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Theme provided by styled() function.
    */
   theme?: ITheme;
+
+  /**
+   *  Refers to the iconName for the remove item action
+   *  @defaultvalue 'Cancel'
+   */
+  iconName?: string;
 }
 
 /**
@@ -263,6 +269,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
     | 'showForceResolve'
+    | 'iconName'
   > {}
 
 /**

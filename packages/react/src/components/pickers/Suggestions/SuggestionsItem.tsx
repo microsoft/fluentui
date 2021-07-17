@@ -32,6 +32,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       removeButtonAriaLabel,
       styles,
       theme,
+      iconName,
     } = this.props;
 
     // TODO
@@ -79,7 +80,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         </CommandButton>
         {this.props.showRemoveButton ? (
           <IconButton
-            iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+            iconProps={{ iconName, styles: { root: { fontSize: '12px' } } }}
             title={removeButtonAriaLabel}
             ariaLabel={removeButtonAriaLabel}
             onClick={onRemoveItem}

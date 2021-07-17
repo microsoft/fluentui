@@ -12,6 +12,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
   suggestionsContainerAriaLabel: 'Suggested contacts',
+  iconName: 'Delete',
 };
 
 const checkboxStyles = {
@@ -102,6 +103,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}
         selectionAriaLabel={'Selected contacts'}
+        iconName={'Delete'}
         removeButtonAriaLabel={'Remove'}
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
