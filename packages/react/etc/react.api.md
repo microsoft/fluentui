@@ -1434,6 +1434,8 @@ export interface IAutofillProps extends React_2.InputHTMLAttributes<HTMLInputEle
 export interface IAutofillState {
     // (undocumented)
     inputValue: string;
+    // (undocumented)
+    isComposing: boolean;
 }
 
 // @public (undocumented)
