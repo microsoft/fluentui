@@ -24,6 +24,7 @@ export * from './listbox-option';
 export * from './menu/';
 export * from './menu-item/';
 export * from './number-field/';
+export * from './presence-badge/';
 export * from './progress/';
 export * from './radio/';
 export * from './radio-group/';

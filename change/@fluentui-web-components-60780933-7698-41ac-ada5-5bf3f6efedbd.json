@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Initial presence-badge web component",
+  "packageName": "@fluentui/web-components",
+  "email": "brookdozer@gmail.com",
+  "dependentChangeType": "patch"
+}
