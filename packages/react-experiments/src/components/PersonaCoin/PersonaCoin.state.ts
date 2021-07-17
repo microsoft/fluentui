@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { ImageLoadState } from '@fluentui/react';
 import { IPersonaCoinViewProps, IPersonaCoinComponent } from './PersonaCoin.types';
 
@@ -9,16 +9,13 @@ export const usePersonaCoinState: IPersonaCoinComponent['state'] = props => {
 
   const { onPhotoLoadingStateChange } = props;
 
-  const _onPhotoLoadingStateChange = useCallback(
-    (newImageLoadState: ImageLoadState): void => {
-      if (onPhotoLoadingStateChange) {
-        onPhotoLoadingStateChange(newImageLoadState);
-      }
+  const _onPhotoLoadingStateChange = (newImageLoadState: ImageLoadState): void => {
+    if (onPhotoLoadingStateChange) {
+      onPhotoLoadingStateChange(newImageLoadState);
+    }
 
-      setIsPictureLoaded(newImageLoadState === ImageLoadState.loaded);
-    },
-    [onPhotoLoadingStateChange],
-  );
+    setIsPictureLoaded(newImageLoadState === ImageLoadState.loaded);
+  };
 
   const viewProps: IPersonaCoinViewProps = {
     ...props,

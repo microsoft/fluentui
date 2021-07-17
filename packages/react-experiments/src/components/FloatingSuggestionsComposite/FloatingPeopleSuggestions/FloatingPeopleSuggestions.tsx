@@ -6,12 +6,11 @@ import { IFloatingSuggestionOnRenderItemProps } from '../FloatingSuggestionsItem
 import { SuggestionItemNormal } from './FloatingPeopleSuggestionItems/SuggestionItemDefault';
 
 export const FloatingPeopleSuggestions = (props: IFloatingPeopleSuggestionsProps): JSX.Element => {
-  const renderSuggestionItem = React.useCallback(
-    (suggestionItemProps: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSX.Element => {
-      return SuggestionItemNormal({ ...suggestionItemProps.item });
-    },
-    [],
-  );
+  const renderSuggestionItem = (
+    suggestionItemProps: IFloatingSuggestionOnRenderItemProps<IPersonaProps>,
+  ): JSX.Element => {
+    return SuggestionItemNormal({ ...suggestionItemProps.item });
+  };
 
   return (
     <>

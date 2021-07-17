@@ -7,8 +7,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 ) => {
   const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems, replaceItem } = props;
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
-
-  const renderedItems = React.useMemo(() => items, [items]);
   const didMountRef = React.useRef(false);
 
   React.useEffect(() => {
@@ -33,40 +31,30 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     props.onItemsRemoved?.(itemsToRemove, indicesToRemove);
   };
 
-  const _replaceItem = React.useCallback(
-    (newItem: TItem | TItem[], index: number): void => {
-      // If the new item(s) are null or undefined, we don't want to add them,
-      // we will crash next time we try to render
-      if (newItem !== null && newItem !== undefined) {
-        const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+  const _replaceItem = (newItem: TItem | TItem[], index: number): void => {
+    // If the new item(s) are null or undefined, we don't want to add them,
+    // we will crash next time we try to render
+    if (newItem !== null && newItem !== undefined) {
+      const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
-        if (index >= 0) {
-          const newItems: TItem[] = [...items];
-          newItems.splice(index, 1, ...newItemsArray);
-          setItems(newItems);
-          replaceItem?.(newItem, index);
-        }
+      if (index >= 0) {
+        const newItems: TItem[] = [...items];
+        newItems.splice(index, 1, ...newItemsArray);
+        setItems(newItems);
+        replaceItem?.(newItem, index);
       }
-    },
-    [items, replaceItem],
-  );
+    }
+  };
 
-  const onRemoveItemCallbacks = React.useMemo(
-    () =>
-      // create callbacks ahead of time with memo.
-      // (hooks have to be called in the same order)
-      items.map((item: TItem, index: number) => () => removeItems([item], [index])),
-    // TODO: consider whether dependency on removeItems should be added
-    // (removeItems would likely need to be wrapped in useCallback)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [items],
-  );
+  const onRemoveItemCallbacks: (() => void)[] = (function generateTheRemoveItemCallbacks() {
+    return items.map((item: TItem, index: number) => () => removeItems([item], [index]));
+  })();
 
   const SelectedItem = props.onRenderItem;
   return (
     <>
       {SelectedItem &&
-        renderedItems.map((item: TItem, index: number) => (
+        items.map((item: TItem, index: number) => (
           <SelectedItem
             item={item}
             index={index}
@@ -76,6 +64,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             selected={props.focusedItemIndices?.includes(index)}
             removeButtonAriaLabel={props.removeButtonAriaLabel}
             onRemoveItem={onRemoveItemCallbacks[index]}
+            // eslint-disable-next-line react/jsx-no-bind
             onItemChange={_replaceItem}
             dragDropEvents={dragDropEvents}
             dragDropHelper={dragDropHelper}

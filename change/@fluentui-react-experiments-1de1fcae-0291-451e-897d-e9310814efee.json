@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove most of the memoization in UPP since it seems to be harming more than it helps",
+  "packageName": "@fluentui/react-experiments",
+  "email": "jaredi@microsoft.com",
+  "dependentChangeType": "patch"
+}

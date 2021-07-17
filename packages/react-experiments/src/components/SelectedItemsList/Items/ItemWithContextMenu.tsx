@@ -16,38 +16,33 @@ export const ItemWithContextMenu = <T extends any>(
 ): ItemCanDispatchTrigger<T> => {
   return React.memo(selectedItemProps => {
     const [isContextMenuOpen, setIsContextMenuOpen] = React.useState(false);
-    const openContextMenu = React.useCallback(() => {
+    const openContextMenu = () => {
       setIsContextMenuOpen(true);
-    }, [setIsContextMenuOpen]);
-    const closeContextMenu = React.useCallback(
-      e => {
-        e.preventDefault();
-        setIsContextMenuOpen(false);
-      },
-      [setIsContextMenuOpen],
-    );
-    const menuItems = React.useMemo(
-      () => itemWithContextMenuProps.menuItems(selectedItemProps.item, selectedItemProps.onTrigger),
-      // TODO: evaluate whether anything should be changed here based on warning:
-      //   "React Hook React.useMemo has an unnecessary dependency: 'itemWithContextMenuProps.menuItems'.
-      //   Either exclude it or remove the dependency array. Outer scope values like
-      //   'itemWithContextMenuProps.menuItems' aren't valid dependencies because mutating them
-      //   doesn't re-render the component."
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [selectedItemProps.item, selectedItemProps.onTrigger, itemWithContextMenuProps.menuItems],
-    );
+    };
+    const closeContextMenu = (e: any) => {
+      e.preventDefault();
+      setIsContextMenuOpen(false);
+    };
+
+    const { item, onTrigger } = selectedItemProps;
+    const menuItems = React.useMemo(() => itemWithContextMenuProps.menuItems(item, onTrigger), [item, onTrigger]);
 
     const containerRef = React.useRef<HTMLElement>(null);
     const ItemComponent = itemWithContextMenuProps.itemComponent;
 
     return (
       <span ref={containerRef}>
-        <ItemComponent {...selectedItemProps} onTrigger={openContextMenu} />
+        <ItemComponent
+          {...selectedItemProps}
+          // eslint-disable-next-line react/jsx-no-bind
+          onTrigger={openContextMenu}
+        />
         {isContextMenuOpen ? (
           <ContextualMenu
             items={menuItems}
             shouldFocusOnMount={true}
             target={containerRef.current}
+            // eslint-disable-next-line react/jsx-no-bind
             onDismiss={closeContextMenu}
             directionalHint={DirectionalHint.bottomLeftEdge}
           />

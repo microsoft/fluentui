@@ -61,35 +61,34 @@ export const EditableItem = <T extends unknown>(editableItemProps: EditableItemP
     const ItemComponent = editableItemProps.itemComponent;
     const EditingItemComponent = editableItemProps.editingItemComponent;
 
-    const onTrigger = React.useCallback(() => onEditingStarted(item, index), [index, item, onEditingStarted]);
+    const onTrigger = () => {
+      return onEditingStarted(item, index);
+    };
 
-    const onEditingComplete = React.useCallback(
-      (_oldItem: T, newItem: T) => {
-        onItemChange?.(newItem, index);
-        onEditingCompleted(item, index);
-      },
-      [index, item, onEditingCompleted, onItemChange],
-    );
+    const onEditingComplete = (_oldItem: T, newItem: T) => {
+      onItemChange?.(newItem, index);
+      onEditingCompleted(item, index);
+    };
 
-    const onDismiss = React.useCallback(() => {
+    const onDismiss = () => {
       onEditingDismissed?.(item, index);
-    }, [index, item, onEditingDismissed]);
+    };
 
-    const onItemClicked = React.useCallback(
-      (ev: React.MouseEvent<HTMLElement>) => {
-        onClick?.(ev, item, index);
-      },
-      [index, item, onClick],
-    );
+    const onItemClicked = (ev: React.MouseEvent<HTMLElement>) => {
+      onClick?.(ev, item, index);
+    };
 
     return isEditing ? (
       <EditingItemComponent
         item={selectedItemProps.item}
+        // eslint-disable-next-line react/jsx-no-bind
         onEditingComplete={onEditingComplete}
+        // eslint-disable-next-line react/jsx-no-bind
         onDismiss={onDismiss}
         createGenericItem={selectedItemProps.createGenericItem}
       />
     ) : (
+      // eslint-disable-next-line react/jsx-no-bind
       <ItemComponent {...selectedItemProps} onTrigger={onTrigger} onClick={onItemClicked} />
     );
   });

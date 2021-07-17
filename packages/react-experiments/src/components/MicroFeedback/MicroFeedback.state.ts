@@ -1,5 +1,5 @@
 import { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export type IMicroFeedbackState = Pick<
   IMicroFeedbackViewProps,
@@ -24,46 +24,43 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
   const [isFollowUpVisible, setIsFollowUpVisible] = useState(false);
   const [isThanksVisible, setIsThanksVisible] = useState(false);
 
-  const onCalloutDismiss = useCallback((): void => {
+  const onCalloutDismiss = (): void => {
     setIsFollowUpVisible(false);
-  }, []);
+  };
 
-  const onThanksDismiss = useCallback((): void => {
+  const onThanksDismiss = (): void => {
     clearTimeout(timerHandle);
     setIsThanksVisible(false);
-  }, [timerHandle]);
+  };
 
-  const processVote = useCallback(
-    (newVote: VoteType): void => {
-      // If the vote that is already selected is picked, then toggle off
-      const updatedVote: VoteType = vote === newVote ? 'no_vote' : newVote;
-      setIsFollowUpVisible(true);
-      setVote(updatedVote);
-      if (updatedVote !== 'no_vote' && sendFeedback) {
-        sendFeedback(updatedVote);
-      }
-    },
-    [sendFeedback, vote],
-  );
+  const processVote = (newVote: VoteType): void => {
+    // If the vote that is already selected is picked, then toggle off
+    const updatedVote: VoteType = vote === newVote ? 'no_vote' : newVote;
+    setIsFollowUpVisible(true);
+    setVote(updatedVote);
+    if (updatedVote !== 'no_vote' && sendFeedback) {
+      sendFeedback(updatedVote);
+    }
+  };
 
-  const onLikeVote = useCallback((): void => {
+  const onLikeVote = (): void => {
     processVote('like');
-  }, [processVote]);
+  };
 
-  const onDislikeVote = useCallback((): void => {
+  const onDislikeVote = (): void => {
     processVote('dislike');
-  }, [processVote]);
+  };
 
-  const hideThanksMessage = useCallback((): void => {
+  const hideThanksMessage = (): void => {
     setIsThanksVisible(false);
-  }, []);
+  };
 
-  const onThanksShow = useCallback((): void => {
+  const onThanksShow = (): void => {
     setIsThanksVisible(true);
 
     // Hide the Thanks message after 2 seconds
     setTimerHandle((setTimeout(hideThanksMessage, 2000) as unknown) as number);
-  }, [hideThanksMessage]);
+  };
 
   const viewProps: IMicroFeedbackViewProps = {
     ...props,

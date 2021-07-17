@@ -16,36 +16,28 @@ export const CopyableItem = <T extends any>(
   copyableItemProps: CopyableItemProps<T>,
 ): CopyableItemWrappedComponent<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
-    const onCopy = React.useCallback(
-      item => {
-        const copyText = copyableItemProps.getCopyItemText([item]);
-        const copyInput = document.createElement('input') as HTMLInputElement;
-        document.body.appendChild(copyInput);
+    const onCopy = (item: any) => {
+      const copyText = copyableItemProps.getCopyItemText([item]);
+      const copyInput = document.createElement('input') as HTMLInputElement;
+      document.body.appendChild(copyInput);
 
-        try {
-          // Try to copy the text directly to the clipboard
-          copyInput.value = copyText;
-          copyInput.select();
-          if (!document.execCommand('copy')) {
-            // The command failed. Fallback to the method below.
-            throw new Error();
-          }
-        } catch (err) {
-          // no op
-        } finally {
-          document.body.removeChild(copyInput);
+      try {
+        // Try to copy the text directly to the clipboard
+        copyInput.value = copyText;
+        copyInput.select();
+        if (!document.execCommand('copy')) {
+          // The command failed. Fallback to the method below.
+          throw new Error();
         }
-      },
-      // TODO: evaluate whether anything should be changed here based on warning:
-      //   "React Hook React.useCallback has an unnecessary dependency: 'copyableItemProps.getCopyItemText'.
-      //   Either exclude it or remove the dependency array. Outer scope values like
-      //   'copyableItemProps.getCopyItemText' aren't valid dependencies because mutating them
-      //   doesn't re-render the component."
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [copyableItemProps.getCopyItemText],
-    );
+      } catch (err) {
+        // no op
+      } finally {
+        document.body.removeChild(copyInput);
+      }
+    };
 
     const ItemComponent = copyableItemProps.itemComponent;
+    // eslint-disable-next-line react/jsx-no-bind
     return <ItemComponent {...selectedItemProps} onCopy={onCopy} />;
   });
 };

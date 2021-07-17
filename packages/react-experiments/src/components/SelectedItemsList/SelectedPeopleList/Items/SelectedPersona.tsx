@@ -60,97 +60,73 @@ const SelectedPersonaInner = React.memo(
 
     const rootRef = React.useRef<HTMLDivElement>(null);
 
-    React.useEffect(
-      () => {
-        const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
-          if (!newValue) {
-            if (dragDropEvents!.onDragLeave) {
-              dragDropEvents!.onDragLeave(item, event);
-            }
-          } else if (dragDropEvents!.onDragEnter) {
-            setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
+    React.useEffect(() => {
+      const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
+        if (!newValue) {
+          if (dragDropEvents!.onDragLeave) {
+            dragDropEvents!.onDragLeave(item, event);
           }
-
-          if (isDropping !== newValue) {
-            setIsDropping(newValue);
-          }
-        };
-
-        const dragDropOptions: IDragDropOptions = {
-          eventMap: eventsToRegister,
-          selectionIndex: index,
-          context: { data: item, index: index },
-          ...dragDropEvents,
-          updateDropState: _updateDroppingState,
-        };
-
-        const events = new EventGroup(this);
-
-        const subscription = dragDropHelper?.subscribe(rootRef.current as HTMLElement, events, dragDropOptions);
-
-        return () => {
-          subscription?.dispose();
-          events.dispose();
-        };
-      },
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- this is the only dependency which matters
-      [dragDropHelper],
-    );
-
-    const isDraggable = React.useMemo(
-      () => (dragDropEvents && dragDropEvents.canDrag ? !!dragDropEvents.canDrag!() : undefined),
-      [dragDropEvents],
-    );
-
-    const droppingClassName = React.useMemo(
-      () => (isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : ''),
-      [isDropping, droppingClassNames],
-    );
-
-    const onExpandClicked = React.useCallback(
-      ev => {
-        ev.stopPropagation();
-        ev.preventDefault();
-        if (onItemChange && getExpandedItems) {
-          getExpandedItems(item)
-            .then(value => {
-              onItemChange(value, index);
-            })
-            .catch(error => {
-              // No op
-            });
+        } else if (dragDropEvents!.onDragEnter) {
+          setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
         }
-      },
-      [onItemChange, getExpandedItems, item, index],
-    );
 
-    const onRemoveClicked = React.useCallback(
-      ev => {
-        ev.stopPropagation();
-        ev.preventDefault();
-        onRemoveItem && onRemoveItem();
-      },
-      [onRemoveItem],
-    );
+        if (isDropping !== newValue) {
+          setIsDropping(newValue);
+        }
+      };
 
-    const itemSize = React.useMemo(() => item?.size || DEFAULT_PERSONA_SIZE, [item]);
+      const dragDropOptions: IDragDropOptions = {
+        eventMap: eventsToRegister,
+        selectionIndex: index,
+        context: { data: item, index: index },
+        ...dragDropEvents,
+        updateDropState: _updateDroppingState,
+      };
 
-    const buttonSize = React.useMemo(
-      () => (itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32),
-      [itemSize],
-    );
+      const events = new EventGroup(this);
 
-    const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
-      () =>
-        getClassNames(styles, {
-          isSelected: selected || false,
-          isValid: isValid ? isValid(item) : true,
-          theme: theme!,
-          droppingClassName,
-          buttonSize,
-        }),
-      [selected, isValid, theme, buttonSize, item, styles, droppingClassName],
-    );
+      const subscription = dragDropHelper?.subscribe(rootRef.current as HTMLElement, events, dragDropOptions);
+
+      return () => {
+        subscription?.dispose();
+        events.dispose();
+      };
+    }, [dragDropHelper, dragDropEvents, index, isDropping, eventsToRegister, item]);
+
+    const isDraggable = dragDropEvents && dragDropEvents.canDrag ? !!dragDropEvents.canDrag!() : undefined;
+
+    const droppingClassName = isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
+
+    const onExpandClicked = (ev: any) => {
+      ev.stopPropagation();
+      ev.preventDefault();
+      if (onItemChange && getExpandedItems) {
+        getExpandedItems(item)
+          .then(value => {
+            onItemChange(value, index);
+          })
+          .catch(error => {
+            // No op
+          });
+      }
+    };
+
+    const onRemoveClicked = (ev: any) => {
+      ev.stopPropagation();
+      ev.preventDefault();
+      onRemoveItem && onRemoveItem();
+    };
+
+    const itemSize = item?.size || DEFAULT_PERSONA_SIZE;
+    const buttonSize = itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32;
+
+    const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = getClassNames(styles, {
+      isSelected: selected || false,
+      isValid: isValid ? isValid(item) : true,
+      theme: theme!,
+      droppingClassName,
+      buttonSize,
+    });
 
     return (
       <div
@@ -173,6 +149,7 @@ const SelectedPersonaInner = React.memo(
       >
         <div hidden={!canExpand || !canExpand(item) || !getExpandedItems}>
           <IconButton
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onExpandClicked}
             iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
             className={css('ms-PickerItem-removeButton', classNames.expandButton)}
@@ -188,6 +165,7 @@ const SelectedPersonaInner = React.memo(
             <Persona {...item} size={itemSize} styles={classNames.subComponentStyles.personaStyles} />
           </div>
           <IconButton
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onRemoveClicked}
             iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
             className={css('ms-PickerItem-removeButton', classNames.removeButton)}
