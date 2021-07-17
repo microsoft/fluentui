@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { JSONTreeElement } from '../types';
-import { ComponentListViewPanel } from '../ComponentTreePanel';
+import { Button } from '@fluentui/react-northstar/src';
+import { ComponentTree } from '../ComponentTree';
 
 export type NavigatorTabPanelProps = {
   jsonTree: JSONTreeElement;
@@ -17,15 +18,24 @@ export type NavigatorTabPanelProps = {
 
 export const NavigatorTabPanel: React.FunctionComponent<NavigatorTabPanelProps> = (props: NavigatorTabPanelProps) => {
   return (
-    <ComponentListViewPanel
-      jsonTree={props.jsonTree}
-      onAddComponent={props.onAddComponent}
-      onCloneComponent={props.onCloneComponent}
-      onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-      onMoveComponent={props.onMoveComponent}
-      onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-      onSelectComponent={props.onSelectComponent}
-      selectedComponent={props.selectedComponent}
-    />
+    <div>
+      {(!props.jsonTree?.props?.children || props.jsonTree?.props?.children?.length === 0) && (
+        <Button
+          text
+          content="Insert first component"
+          fluid
+          onClick={() => props.onOpenAddComponentDialog('', 'first')}
+        />
+      )}
+      <ComponentTree
+        onAddComponent={props.onAddComponent}
+        onCloneComponent={props.onCloneComponent}
+        onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+        onMoveComponent={props.onMoveComponent}
+        onSelectComponent={props.onSelectComponent}
+        selectedComponent={props.selectedComponent}
+        tree={props.jsonTree}
+      />
+    </div>
   );
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
-import { ComponentListViewPanel } from '../ComponentTreePanel';
+import { ComponentTree } from '../ComponentTree';
 
 export type AccessibilityTabPanelProps = {
   accessibilityErrors: AccessibilityError[];
@@ -39,15 +39,19 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
   } as JSONTreeElement;
 
   return (
-    <ComponentListViewPanel
-      jsonTree={updatedElement}
-      onAddComponent={props.onAddComponent}
-      onCloneComponent={props.onCloneComponent}
-      onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-      onMoveComponent={props.onMoveComponent}
-      onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-      onSelectComponent={props.onSelectComponent}
-      selectedComponent={props.selectedComponent}
-    />
+    <div>
+      {(!updatedElement || updatedElement?.props?.children?.length === 0) && (
+        <div>There are no accessibility errors!</div>
+      )}
+      <ComponentTree
+        onAddComponent={props.onAddComponent}
+        onCloneComponent={props.onCloneComponent}
+        onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+        onMoveComponent={props.onMoveComponent}
+        onSelectComponent={props.onSelectComponent}
+        selectedComponent={props.selectedComponent}
+        tree={updatedElement}
+      />
+    </div>
   );
 };
