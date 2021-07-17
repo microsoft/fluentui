@@ -59,6 +59,9 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
 
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselNavigationStylesProps = Required<
@@ -89,6 +92,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     vertical,
     thumbnails,
     styles,
+    disableClickableNav,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CarouselNavigation.handledProps, props);
@@ -116,13 +120,16 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     rtl: context.rtl,
   });
 
-  const handleItemOverrides = variables => predefinedProps => ({
-    onClick: (e, itemProps) => {
-      _.invoke(props, 'onItemClick', e, itemProps);
-      _.invoke(predefinedProps, 'onClick', e, itemProps);
-    },
-    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
-  });
+  const handleItemOverrides = (variables: any, disableClickableNav: boolean) => predefinedProps =>
+    disableClickableNav
+      ? undefined
+      : {
+          onClick: (e, itemProps) => {
+            _.invoke(props, 'onItemClick', e, itemProps);
+            _.invoke(predefinedProps, 'onClick', e, itemProps);
+          },
+          variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+        };
 
   const renderItems = () => {
     return _.map(items, (item, index) =>
@@ -137,7 +144,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
             vertical,
             thumbnails,
           }),
-        overrideProps: handleItemOverrides(variables),
+        overrideProps: handleItemOverrides(variables, disableClickableNav),
       }),
     );
   };
