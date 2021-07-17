@@ -64,7 +64,7 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
 }
 
 export function getInitialResponsiveMode() {
-  return _defaultMode || _lastMode || ResponsiveMode.large;
+  return _defaultMode ?? _lastMode ?? ResponsiveMode.large;
 }
 
 /**
