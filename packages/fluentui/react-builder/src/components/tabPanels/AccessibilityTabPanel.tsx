@@ -30,7 +30,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
     }
   }
 
-  const updatedElement = {
+  const updatedTree = {
     uuid: props.jsonTree.uuid,
     type: props.jsonTree.type,
     props: {
@@ -40,9 +40,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
 
   return (
     <div>
-      {(!updatedElement || updatedElement?.props?.children?.length === 0) && (
-        <div>There are no accessibility errors!</div>
-      )}
+      {(!updatedTree || updatedTree?.props?.children?.length === 0) && <div>There are no accessibility errors!</div>}
       <ComponentTree
         onAddComponent={props.onAddComponent}
         onCloneComponent={props.onCloneComponent}
@@ -50,7 +48,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
         onMoveComponent={props.onMoveComponent}
         onSelectComponent={props.onSelectComponent}
         selectedComponent={props.selectedComponent}
-        tree={updatedElement}
+        tree={updatedTree}
       />
     </div>
   );
