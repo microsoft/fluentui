@@ -291,4 +291,36 @@ describe('Autofill', () => {
       ['🆘', false],
     ]);
   });
+
+  it('allows changes to the (uncontrolled) input value', () => {
+    component = mount(<Autofill componentRef={autofillRef} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+
+    expect(autofill.value).toBe('hel');
+  });
+
+  it('allows changes to the input value when (defaultVisibleValue) prop is provided', () => {
+    component = mount(<Autofill componentRef={autofillRef} defaultVisibleValue={'hello'} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('test'));
+
+    expect(autofill.value).toBe('test');
+  });
+
+  it('does not allow changes to the input value when (value) prop is provided', () => {
+    component = mount(<Autofill componentRef={autofillRef} value={'hello'} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('123'));
+
+    expect(autofill.value).toBe('hello');
+  });
+
+  it('does not allow changes to the input value when deprecated (updateValueInWillReceiveProps) is provided', () => {
+    component = mount(<Autofill componentRef={autofillRef} updateValueInWillReceiveProps={() => 'test'} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('123'));
+
+    expect(autofill.value).toBe('test');
+  });
 });

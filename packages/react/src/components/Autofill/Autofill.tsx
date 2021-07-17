@@ -123,10 +123,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           );
         }
       }
-    } else if (this._inputElement.current) {
-      if (cursor !== null && !this._autoFillEnabled) {
-        this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
-      }
+    } else if (this._inputElement.current && cursor !== null) {
+      this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
     }
   }
 
@@ -154,7 +152,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         onInput={this._onInputChanged}
         onKeyDown={this._onKeyDown}
         onClick={this.props.onClick ? this.props.onClick : this._onClick}
-        data-lpignore={true}
+        data-lpignore
       />
     );
   }
@@ -203,8 +201,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   // Some examples of this are mobile text input and languages like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
-    const inputValue = this._getCurrentInputValue();
-    this._tryEnableAutofill(inputValue, this.value, false, true);
+    const currentInputValue = this._getCurrentInputValue();
+    this._tryEnableAutofill(currentInputValue, this.value, false, true);
     this._isComposing = false;
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
@@ -238,7 +236,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         case KeyCodes.left:
         case KeyCodes.right:
           if (this._autoFillEnabled) {
-            this.setState({ inputValue: this.props.suggestedDisplayValue || '' });
+            // eslint-disable-next-line deprecation/deprecation
+            if (this.props.value === undefined && this.props.updateValueInWillReceiveProps === undefined) {
+              this.setState({ inputValue: this.props.suggestedDisplayValue || '' });
+            }
+
             this._autoFillEnabled = false;
           }
           break;
@@ -322,11 +324,18 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
     // eslint-disable-next-line deprecation/deprecation
     const { onInputChange, onInputValueChange } = this.props;
+
+    // onInputChange is deprecated but will still need to support it until it is removed.
     if (onInputChange) {
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
+    // eslint-disable-next-line deprecation/deprecation
+    if (this.props.value === undefined && this.props.updateValueInWillReceiveProps === undefined) {
+      this.setState({ inputValue: newValue });
+    }
+
+    onInputValueChange?.(newValue, composing);
   };
 
   private _getDisplayValue(): string {
@@ -353,12 +362,12 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
  * Returns a string that should be used as the display value.
  * It evaluates this based on whether or not the suggested value starts with the input value
  * and whether or not autofill is enabled.
- * @param inputValue - the value that the input currently has.
+ * @param currentValue - the value that the input currently has.
  * @param suggestedDisplayValue - the possible full value
  */
-function _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
-  let displayValue = inputValue;
-  if (suggestedDisplayValue && inputValue && _doesTextStartWith(suggestedDisplayValue, displayValue)) {
+function _getDisplayValue(currentValue: string, suggestedDisplayValue?: string): string {
+  let displayValue = currentValue;
+  if (suggestedDisplayValue && currentValue && _doesTextStartWith(suggestedDisplayValue, displayValue)) {
     displayValue = suggestedDisplayValue;
   }
   return displayValue;
