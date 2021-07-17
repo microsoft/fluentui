@@ -13,6 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "test": "jest",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
