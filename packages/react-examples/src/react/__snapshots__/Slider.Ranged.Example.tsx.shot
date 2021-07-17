@@ -726,6 +726,7 @@ Array [
                 color: GrayText;
                 forced-color-adjust: none;
               }
+          htmlFor="Slider1"
         >
           300
         </label>
