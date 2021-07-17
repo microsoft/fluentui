@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Reducer, useImmerReducer } from 'use-immer';
 import { JSONTreeElement } from '../components/types';
 import { ComponentInfo } from '../componentInfo/types';
-import { debug, focusTreeTitle, getDefaultJSONTree } from './utils';
+import { focusTreeTitle, getDefaultJSONTree } from './utils';
 import {
   jsonTreeFindElement,
   resolveDrop,
@@ -15,6 +15,7 @@ import {
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderElementToJSX } from '../../../docs-components/src/index';
+import { AccessibilityError } from '../accessibility/types';
 
 export type JSONTreeOrigin = 'store' | 'url';
 
@@ -32,6 +33,7 @@ export type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
+  accessibilityErrors: Array<AccessibilityError>;
 };
 
 export type DesignerAction =
@@ -56,11 +58,14 @@ export type DesignerAction =
   | { type: 'REDO' }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
-  | { type: 'ADD_COMPONENT'; component: string; module: string };
+  | { type: 'DESIGNER_LOADED'; accessibilityErrors: AccessibilityError[] }
+  | { type: 'ADD_COMPONENT'; component: string; module: string }
+  | { type: 'PROP_UPDATED'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
-  debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
+  // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
   let treeChanged = false;
+  console.log(`type: ${action.type}`);
 
   switch (action.type) {
     case 'DRAG_START':
@@ -99,7 +104,14 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
+        false,
       );
+      /* if (draftState.accessibilityErrors) {
+        // if accessibility errors already exist, copy over any accessibility errors for the component
+         const elementAccessibilityErrors = draftState.accessibilityErrors.filter(
+          error => error.elementUuid === draftState.selectedJSONTreeElementUuid,
+        ).map(newErrors => newErrors.elementUuid = draftState.draggingElement.uuid);
+      } */
       break;
 
     case 'DRAG_MOVE':
@@ -109,6 +121,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
+        true,
       );
       jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
       treeChanged = true;
@@ -138,6 +151,8 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
       if (draftState.selectedJSONTreeElementUuid) {
         jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
+        deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
+
         draftState.selectedJSONTreeElementUuid = null;
         draftState.selectedComponentInfo = null;
         treeChanged = true;
@@ -154,6 +169,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
+        // draftState.accessibilityErrors[action.component.uuid] = runAxeOnElement(action.component.uuid);
         treeChanged = true;
       }
       break;
@@ -170,6 +186,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         delete component.props[action.propName];
         treeChanged = true;
       }
+
       break;
 
     case 'ENABLE_VIRTUAL_CURSOR':
@@ -188,6 +205,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
       draftState.jsonTree = getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
+      draftState.accessibilityErrors = [];
       treeChanged = true;
       break;
 
@@ -210,6 +228,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.selectedComponentInfo = null;
       draftState.jsonTree = action.jsonTree;
       draftState.codeError = null;
+
       break;
 
     case 'SOURCE_CODE_ERROR':
@@ -245,7 +264,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
     case 'ADD_COMPONENT': {
       const element = resolveDraggingElement(action.component, action.module);
-
       let parent: JSONTreeElement = undefined;
       let index = 0;
       const { where, uuid, parentUuid } = draftState.insertComponent;
@@ -274,6 +292,18 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       break;
     }
 
+    case 'PROP_UPDATED': {
+      deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
+      // add the accesibility errors for the component
+      draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
+      break;
+    }
+
+    case 'DESIGNER_LOADED': {
+      draftState.accessibilityErrors = action.accessibilityErrors;
+      break;
+    }
+
     default:
       throw new Error(`Invalid action ${action}`);
   }
@@ -282,7 +312,18 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     draftState.code = renderElementToJSX(renderJSONTreeToJSXElement(draftState.jsonTree));
     draftState.codeError = null;
   }
+
+  console.log(`Completed action: ${action.type}`);
 };
+
+function deleteAccessibilityErrorsForElement(draftState, componentUuid) {
+  if (draftState.accessibilityErrors) {
+    // if accessibility errors already exist, remove any accessibility errors for the component
+    draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
+      error => error.elementUuid !== componentUuid,
+    );
+  }
+}
 
 export function useDesignerState(): [DesignerState, React.Dispatch<DesignerAction>] {
   const [state, dispatch] = useImmerReducer(stateReducer, null, () => {
@@ -307,6 +348,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       history: [],
       redo: [],
       insertComponent: null,
+      accessibilityErrors: [],
     };
   });
 
