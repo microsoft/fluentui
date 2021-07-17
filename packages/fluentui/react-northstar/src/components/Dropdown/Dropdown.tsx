@@ -433,6 +433,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   const listRef = React.useRef<HTMLElement>();
   const selectedItemsRef = React.useRef<HTMLDivElement>();
   const containerRef = React.useRef<HTMLDivElement>();
+  const timeoutFocusTriggerButton = React.useRef<number>();
+  const timeoutScrollPosition = React.useRef<number>();
 
   const defaultTriggerButtonId = React.useMemo(() => _.uniqueId('dropdown-trigger-button-'), []);
 
@@ -884,14 +886,14 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }
 
         if (multiple) {
-          context.target?.defaultView.setTimeout(
+          timeoutScrollPosition.current = context.target?.defaultView.setTimeout(
             () => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight),
             0,
           );
         }
 
         // timeout because of NVDA, otherwise it narrates old button value/state
-        context.target?.defaultView.setTimeout(() => tryFocusTriggerButton(), 100);
+        timeoutFocusTriggerButton.current = context.target?.defaultView.setTimeout(() => tryFocusTriggerButton(), 100);
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
@@ -1514,6 +1516,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     return () => {
       clearStartingString.cancel();
       clearA11ySelectionMessage.cancel();
+      context.target?.defaultView.clearTimeout(timeoutFocusTriggerButton.current);
+      context.target?.defaultView.clearTimeout(timeoutScrollPosition.current);
     };
   }, [clearA11ySelectionMessage, clearStartingString]);
 
