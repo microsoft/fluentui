@@ -13,7 +13,7 @@ import { AccessibilityError } from '../accessibility/types';
 // import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
 import { Toolbar } from './Toolbar';
 import { Builder } from './Builder';
-import { runAxe } from '../hooks/useAxeOnElement';
+import { runAxe } from '../hooks/runAxe';
 // import { A11yValidationContextProvider } from './A11yValidationContext';
 
 const HEADER_HEIGHT = '3rem';
