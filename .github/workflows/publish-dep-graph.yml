@@ -1,0 +1,41 @@
+name: Publish dep-graph
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  publish-dep-graph:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node (v14.16.0)
+        uses: actions/setup-node@v1
+        with:
+          node-version: v14.16.0
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run nx dep-graph
+        run: yarn nx affected:dep-graph --base=origin/master --file=tmp/dep-graph/index.html
+
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.DEP_GRAPH_WEB_APP_TOKEN }}
+          action: 'upload'
+          app_location: 'tmp/dep-graph'
+          output_location: '${{ github.ref }}/dep-graph'
+          skip_app_build: true
