@@ -28,6 +28,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         role="presentation"
       >
         <div
+          aria-owns=""
           className=
               ms-BasePicker-text
               {
