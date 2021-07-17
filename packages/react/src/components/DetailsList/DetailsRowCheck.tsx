@@ -8,6 +8,7 @@ import {
 import { css, styled, classNamesFunction, composeRenderFunction, getNativeElementProps } from '../../Utilities';
 import { Check } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
+import { SelectionMode } from '../../Selection';
 import { ITheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
@@ -18,6 +19,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     canSelect = false,
     anySelected = false,
     selected = false,
+    selectionMode,
     isHeader = false,
     className,
     checkClassName,
@@ -52,10 +54,12 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
 
   const divProps = getNativeElementProps('div', buttonProps, ['aria-label', 'aria-labelledby', 'aria-describedby']);
 
+  const checkRole = selectionMode === SelectionMode.single ? 'radio' : 'checkbox';
+
   return canSelect ? (
     <div
       {...buttonProps}
-      role="checkbox"
+      role={checkRole}
       // eslint-disable-next-line deprecation/deprecation
       className={css(classNames.root, classNames.check)}
       aria-checked={selected}

@@ -3951,6 +3951,7 @@ export interface IDetailsRowCheckProps extends React_2.HTMLAttributes<HTMLElemen
     isVisible?: boolean;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     selected?: boolean;
+    selectionMode?: SelectionMode_2 | undefined;
     styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
     theme?: ITheme;
     useFastIcons?: boolean;
