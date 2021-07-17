@@ -98,4 +98,15 @@
   .sidebar-item.selected .sidebar-svg-icon {
     color: #ffffff !important;
   }
+
+  /*
+   Workaround to remove internal stories from sidebar
+   Storybook will eventually release this feature
+   https://github.com/storybookjs/storybook/issues/9209
+
+   Can moved from here to @fluentui/react-components after colocated storybook migration
+  */
+  [id*='internal'] {
+    display: none !important;
+  }
 </style>
