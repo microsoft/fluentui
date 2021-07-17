@@ -9,12 +9,9 @@ import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useMode } from '../hooks';
 import { AccessibilityError } from '../accessibility/types';
-//  import { useAxeOnElement } from '../hooks/useAxeOnElement';
-// import { A11yValidationContextProvider, useA11yValidationContext } from '../components/A11yValidationContext';
 import { Toolbar } from './Toolbar';
 import { Builder } from './Builder';
 import { runAxe } from '../hooks/runAxe';
-// import { A11yValidationContextProvider } from './A11yValidationContext';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -38,19 +35,6 @@ export const Designer: React.FunctionComponent = () => {
       writeTreeToStore(state.jsonTree);
     }
   }, [state.jsonTree, state.jsonTreeOrigin]);
-
-  // const selectedComponentAccessibilityErrors = state.accessibilityErrors.filter(x=>x.elementUuid === state.selectedJSONTreeElementUuid);
-  // const [validationErrors, runAxeAll] = useAxeOnElements();
-
-  /*
-  React.useEffect(() => {
-    if (state.selectedJSONTreeElementUuid) {
-      runAxeOnElement(state.selectedJSONTreeElementUuid);
-    }
-  }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
-  */
-
-  // const { validateAll, validationErrors } = useA11yValidationContext();
 
   const {
     activeTab,
