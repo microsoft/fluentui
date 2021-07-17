@@ -3,11 +3,6 @@ import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttributes<HTMLImageElement> {
   /**
-   * An alternative text for an image.
-   */
-  alt?: string;
-
-  /**
    * An image can appear with rectangular border.
    */
   bordered?: boolean;
@@ -31,11 +26,6 @@ export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttribute
    * An image can appear rounded.
    */
   rounded?: boolean;
-
-  /**
-   * An image can have source URL.
-   */
-  src?: string;
 }
 
 export interface ImageState extends ImageProps {
