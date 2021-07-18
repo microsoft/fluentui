@@ -25,7 +25,7 @@ export const TagItemBase = (props: ITagItemProps) => {
     onRemoveItem,
     removeButtonAriaLabel,
     title = typeof props.children === 'string' ? props.children : props.item.name,
-    iconName = 'Cancel',
+    removeButtonIconProps,
   } = props;
 
   const classNames = getClassNames(styles, {
@@ -55,7 +55,7 @@ export const TagItemBase = (props: ITagItemProps) => {
         id={itemId}
         onClick={onRemoveItem}
         {...disabledAttrs}
-        iconProps={{ iconName, styles: { root: { fontSize: '12px' } } }}
+        iconProps={{ ...(removeButtonIconProps ?? { iconName: 'Cancel' }), styles: { root: { fontSize: '12px' } } }}
         className={classNames.close}
         ariaLabel={removeButtonAriaLabel}
         aria-labelledby={`${itemId} ${itemId}-text`}

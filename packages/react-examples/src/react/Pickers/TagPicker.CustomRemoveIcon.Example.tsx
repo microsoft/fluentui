@@ -48,7 +48,7 @@ const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
 
 const getTextFromItem = (item: ITag) => item.name;
 
-export const TagPickerCustomIconExample: React.FunctionComponent = () => {
+export const TagPickerCustomRemoveIconExample: React.FunctionComponent = () => {
   const pickerId = useId('custom-icon-picker');
 
   return (
@@ -60,8 +60,7 @@ export const TagPickerCustomIconExample: React.FunctionComponent = () => {
         onResolveSuggestions={filterSuggestedTags}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
-        // this option tells the picker's callout to render a custom icon instead of the default 'Cancel'
-        iconName={'Delete'}
+        removeButtonIconProps={{ iconName: 'Delete' }}
         itemLimit={4}
         pickerCalloutProps={{ doNotLayer: true }}
         inputProps={{

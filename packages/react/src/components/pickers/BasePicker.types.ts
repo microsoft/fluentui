@@ -6,6 +6,7 @@ import { Autofill } from '../../Autofill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import { IIconProps } from '../Icon/Icon.types';
 
 /**
  * BasePicker component.
@@ -237,10 +238,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   theme?: ITheme;
 
   /**
-   *  Refers to the iconName for the remove item action
-   *  @defaultvalue 'Cancel'
+   *  Refers to the removeButtonIconProps for the remove item action
+   *  @defaultvalue {iconName:'Cancel'}
    */
-  iconName?: string;
+  removeButtonIconProps?: IIconProps;
 }
 
 /**
@@ -269,7 +270,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'suggestionsAvailableAlertText'
     | 'suggestionsContainerAriaLabel'
     | 'showForceResolve'
-    | 'iconName'
+    | 'removeButtonIconProps'
   > {}
 
 /**

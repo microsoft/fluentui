@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IIconProps } from '../../Icon/Icon.types';
 import { ISuggestionModel } from './Suggestions.types';
 
 /**
@@ -57,9 +58,10 @@ export interface ISuggestionItemProps<T> {
   theme?: ITheme;
 
   /**
-   *  Refers to the iconName for the remove item action
+   *  Refers to the removeButtonIconProps for the remove item action
+   *  @defaultvalue {iconName:'Cancel'}
    */
-  iconName?: string;
+  removeButtonIconProps?: IIconProps;
 }
 
 /**
