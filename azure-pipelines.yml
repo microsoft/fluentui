@@ -49,7 +49,7 @@ jobs:
       - script: |
           yarn danger ci
         displayName: danger
-        condition: variables.isPR
+        condition: eq(variables.isPR, true)
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
@@ -90,11 +90,6 @@ jobs:
           SourcePath: 'apps/pr-deploy-site/dist'
           storage: $(azureStorage)
 
-      # only run e2e tests when converged storybook is published by scoping to the converged suite package
-      - script: |
-          yarn e2e $(sinceArg) --scope @fluentui/react-components
-        displayName: Cypress E2E tests
-
       - task: GithubPRStatus@0
         displayName: 'Update PR deploy site github status'
         inputs:
@@ -104,6 +99,11 @@ jobs:
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
           # This MUST have a trailing slash, or the links to PR deploy site assets won't work
           githubTargetLink: $(deployUrl)/
+
+      # only run e2e tests when converged storybook is published by scoping to the converged suite package
+      - script: |
+          yarn e2e $(sinceArg) --scope @fluentui/react-components
+        displayName: Cypress E2E tests
 
       - template: .devops/templates/cleanup.yml
 

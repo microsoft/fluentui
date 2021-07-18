@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { Calendar, FocusTrapZone, Callout, DirectionalHint } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import {
+  Calendar,
+  FocusTrapZone,
+  Callout,
+  DirectionalHint,
+  defaultCalendarStrings,
+  DefaultButton,
+} from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
 
 export const CalendarButtonExample: React.FunctionComponent = () => {
@@ -43,6 +49,8 @@ export const CalendarButtonExample: React.FunctionComponent = () => {
               highlightCurrentMonth
               isDayPickerVisible
               showGoToToday
+              // Calendar uses English strings by default. For localized apps, you must override this prop.
+              strings={defaultCalendarStrings}
             />
           </FocusTrapZone>
         </Callout>

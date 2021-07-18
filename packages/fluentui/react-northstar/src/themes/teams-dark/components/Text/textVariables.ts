@@ -7,5 +7,4 @@ export const textVariables = (siteVariables): Partial<TextVariables> => ({
   errorColor: siteVariables.colors.red[300],
   importantColor: siteVariables.colors.red[300],
   successColor: siteVariables.colors.green[200],
-  timestampColor: siteVariables.colors.grey[400],
 });

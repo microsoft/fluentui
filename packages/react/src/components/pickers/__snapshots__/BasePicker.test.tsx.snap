@@ -24,6 +24,7 @@ exports[`BasePicker renders correctly 1`] = `
     role="presentation"
   >
     <div
+      aria-owns=""
       className="ms-BasePicker-text"
     >
       <input
@@ -83,6 +84,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
     role="presentation"
   >
     <div
+      aria-owns=""
       className="ms-BasePicker-text"
     >
       <input

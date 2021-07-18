@@ -1,10 +1,13 @@
 import { __styles } from '@fluentui/react-make-styles';
-import { flexStyles, gridStyles } from './mixins';
+import { flexStyles, gridStyles, typography } from './mixins';
 export const useStyles = __styles(
   {
     root: {
       mc9l5x: 'f22iagw',
       Beiy3e4: 'f1vx9l62',
+    },
+    header: {
+      Bhrd7zp: 'f16wzh4i',
     },
     icon: {
       mc9l5x: 'f22iagw',
@@ -21,6 +24,7 @@ export const useStyles = __styles(
     d: [
       '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
       '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
+      '.f16wzh4i{font-weight:bold;}',
       '.fe3e8s9{color:red;}',
       '.f13qh94s{display:grid;}',
       '.fz44487{grid-gap:10px;}',
