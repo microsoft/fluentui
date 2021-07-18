@@ -23,12 +23,12 @@ const [robinAvatar, robertAvatar] = [
 const items: ShorthandCollection<ChatItemProps> = [
   {
     gutter: <Avatar {...robertAvatar} />,
-    message: <Chat.Message content="Hello" author="Robert" timestamp="10:15 PM" mine />,
+    message: <Chat.Message content="Hello" author="Robert Tolbert" timestamp="10:15 PM" mine />,
     attached: 'top',
     key: 'message-id-1',
   },
   {
-    message: <Chat.Message content="I'm back!" author="Robert" timestamp="10:15 PM" mine />,
+    message: <Chat.Message content="I'm back!" author="Robert Tolbert" timestamp="10:15 PM" mine />,
     attached: true,
     key: 'message-id-2',
   },
@@ -36,7 +36,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="What do you think about goodFood.com?"
-        author="Robert"
+        author="Robert Tolbert"
         details={<EditIcon outline />}
         timestamp="10:16 PM"
         mine
@@ -56,7 +56,7 @@ const items: ShorthandCollection<ChatItemProps> = [
             {'!'}
           </>
         }
-        author="Robin"
+        author="Robin Counts"
         timestamp="10:20 PM"
         badge={{
           icon: <MentionIcon />,
@@ -70,23 +70,25 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-4',
   },
   {
-    message: <Chat.Message content="Looks good!" author="Robin" timestamp="10:21 PM" />,
+    message: <Chat.Message content="Looks good!" author="Robin Counts" timestamp="10:21 PM" />,
     attached: true,
     key: 'message-id-5',
   },
   {
-    message: <Chat.Message content="I also like great-food.com." author="Robin" timestamp="10:25 PM" />,
+    message: <Chat.Message content="I also like great-food.com." author="Robin Counts" timestamp="10:25 PM" />,
     attached: 'bottom',
     key: 'message-id-6',
   },
   {
     gutter: <Avatar {...robertAvatar} />,
-    message: <Chat.Message content="Would you like to grab lunch there?" author="Robert" timestamp="10:30 PM" mine />,
+    message: (
+      <Chat.Message content="Would you like to grab lunch there?" author="Robert Tolbert" timestamp="10:30 PM" mine />
+    ),
     key: 'message-id-7',
   },
   {
     gutter: <Avatar {...robinAvatar} />,
-    message: <Chat.Message content="Sure! Let's try it." author="Robin" timestamp="10:32 PM" />,
+    message: <Chat.Message content="Sure! Let's try it." author="Robin Counts" timestamp="10:32 PM" />,
     key: 'message-id-8',
   },
   {
@@ -98,7 +100,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Ok, let's go."
-        author="Robert"
+        author="Robert Tolbert"
         timestamp="11:15 PM"
         mine
         readStatus={{

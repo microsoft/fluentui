@@ -17,7 +17,7 @@ const items: ShorthandCollection<ChatItemProps> = [
             {'!'}
           </>
         }
-        author="Robin"
+        author="Robin Counts"
         timestamp="10:20"
         mine
         badge={{
@@ -32,7 +32,7 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     gutter: <Avatar {...timAvatar} />,
-    message: <Chat.Message content="Hey" author="Tim" timestamp="10:21" />,
+    message: <Chat.Message content="Hey" author="Tim Deboer" timestamp="10:21" />,
     key: 'message-id-2',
   },
   {
@@ -40,7 +40,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Please look into this as soon as possible"
-        author="Robin"
+        author="Robin Counts"
         timestamp="10:22"
         mine
         badge={{
