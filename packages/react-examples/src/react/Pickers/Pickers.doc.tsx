@@ -32,7 +32,7 @@ export const PickersPageProps: IDocPageProps = {
       view: <PickerCustomResultExample />,
     },
     {
-      title: 'Custom Icon Picker',
+      title: 'Custom Remove Icon',
       code: TagPickerCustomIconExampleCode,
       view: <TagPickerCustomIconExample />,
     },
