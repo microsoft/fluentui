@@ -76,6 +76,7 @@ export interface CheckboxProps
    */
   onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
 }
+
 /**
  * Data for the onChange event for checkbox.
  */
