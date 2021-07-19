@@ -2558,10 +2558,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@linaria/babel-preset@^3.0.0-beta.5":
-  version "3.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.5.tgz#34088faf49eb5408839c2975b1445ed99b87dd69"
-  integrity sha512-mPhf5voj4GkFyDYmllkh50McCW8GucJc+o/YvhP4+9N1lmDg0pp9WRERmV92do9WJ9kJvVAe5joVy9TNZJLnTQ==
+"@linaria/babel-preset@^3.0.0-beta.7":
+  version "3.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.7.tgz#015f4406ce11d6c78bc6dec58801dc5a500e1c0e"
+  integrity sha512-NE5f//T9ywXZA+W+Pw1YjWKdzskUpaV7GVkxXhkxLM2la1+S4xOoZR1rzW77bR1C9GFFwzZTeb8XP85whb2ZqQ==
   dependencies:
     "@babel/generator" ">=7"
     "@babel/plugin-syntax-dynamic-import" ">=7"
@@ -2569,54 +2569,40 @@
     "@linaria/core" "^3.0.0-beta.4"
     "@linaria/logger" "^3.0.0-beta.3"
     cosmiconfig "^5.1.0"
-    source-map "^0.6.1"
+    source-map "^0.7.3"
     stylis "^3.5.4"
 
-"@linaria/babel@^3.0.0-beta.0":
-  version "3.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@linaria/babel/-/babel-3.0.0-beta.0.tgz#60ee6eb011017f918c4ebfe3ec66a44b20b1e40e"
-  integrity sha512-IA2P9Es8iIfc/p12riN+hHVxrjIzkQ2xcdb2s8Ltszz21WN2I39WubDjk+DOUQAgLNoKH2HsgX0wWnW9zT4Bgw==
-  dependencies:
-    "@babel/generator" ">=7"
-    "@babel/plugin-syntax-dynamic-import" ">=7"
-    "@babel/template" ">=7"
-    "@linaria/core" "^3.0.0-beta.0"
-    "@linaria/logger" "^3.0.0-beta.0"
-    cosmiconfig "^5.1.0"
-    source-map "^0.6.1"
-    stylis "^3.5.4"
-
-"@linaria/core@^3.0.0-beta.0", "@linaria/core@^3.0.0-beta.4":
+"@linaria/core@^3.0.0-beta.4":
   version "3.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/@linaria/core/-/core-3.0.0-beta.4.tgz#ae878874773c15b189792e277771f68fef18019a"
   integrity sha512-NzxeMDxRt57nR6tLFZ8xIstp5ld9JQPIyp9+TKtQZhoX3oJuUru+S4vXPr1Gach6VaqKKKT5T6fmJgJl9MMprw==
 
-"@linaria/logger@^3.0.0-beta.0", "@linaria/logger@^3.0.0-beta.3":
+"@linaria/logger@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@linaria/logger/-/logger-3.0.0-beta.3.tgz#4bb8f0f36567cea7cac16a60fb3474fbfec491a7"
   integrity sha512-Z2k0RJuA4PffcZcwBN1By8FmcCvcFUe9GHc846B6hNP09zDVhHSFLKJN9NfXJCzJ/9PifOxSUKyOjLtpv3EhGA==
   dependencies:
     debug "^4.1.1"
 
-"@linaria/preeval@^3.0.0-beta.5":
-  version "3.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.5.tgz#1774f741fa310c00a6b15eede30aa4fd7579e06e"
-  integrity sha512-T4jaqBTL9vhL/AVE0RQj8H6JAqIfilpbh6JCnjiNqfnlVV4bBlvDMThzBrHGMgXGomlKw/qox4TuV+tN9W/1Ag==
+"@linaria/preeval@^3.0.0-beta.8":
+  version "3.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.8.tgz#b7c7fc7540e6deef731a94df4b65dc6bdf4197ae"
+  integrity sha512-zZcs9sMtpBh9KXvBmKCyocbcjUe5sZQbTHNe2VayfWTzPwNuMnvZ+qcs4nFrli4XKVOoIKIz7T1wmN4CC/X88Q==
   dependencies:
-    "@linaria/babel-preset" "^3.0.0-beta.5"
+    "@linaria/babel-preset" "^3.0.0-beta.7"
 
-"@linaria/shaker@^3.0.0-beta.5":
-  version "3.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@linaria/shaker/-/shaker-3.0.0-beta.5.tgz#9b85cb6323634a4f623f04e2e5bf4baec3e4aff8"
-  integrity sha512-5E2qLrEa2Aaj5dN9eyjg0kZdvZdQ1NAHPEBR1j/osXKRjPk9oMk97NLiislAXWHs2LlKdH0UZz1w1KcrwfBM8A==
+"@linaria/shaker@^3.0.0-beta.8":
+  version "3.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@linaria/shaker/-/shaker-3.0.0-beta.8.tgz#3114de281284638b4926638c4636b412104db9b8"
+  integrity sha512-8vMoJvndJODH7XAufluSDnrEtvP5EhL/HwiVD1icRF4YgMSHVCkzEI7qhmxoC7jD/jQPbJFdt3T/OGkZzKSjNQ==
   dependencies:
     "@babel/generator" ">=7"
     "@babel/plugin-transform-runtime" ">=7"
     "@babel/plugin-transform-template-literals" ">=7"
     "@babel/preset-env" ">=7"
-    "@linaria/babel-preset" "^3.0.0-beta.5"
+    "@linaria/babel-preset" "^3.0.0-beta.7"
     "@linaria/logger" "^3.0.0-beta.3"
-    "@linaria/preeval" "^3.0.0-beta.5"
+    "@linaria/preeval" "^3.0.0-beta.8"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
 
 "@mdx-js/loader@^1.5.1", "@mdx-js/loader@^1.5.5":
