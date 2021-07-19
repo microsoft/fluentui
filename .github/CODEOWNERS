@@ -122,11 +122,11 @@ packages/react-card/ @microsoft/cxe-red @khmakoto
 packages/react-checkbox/ @microsoft/cxe-red @khmakoto
 packages/react-components/ @layershifter @miroslavstastny
 packages/react-focus/ @microsoft/cxe-red @khmakoto
-packages/react-image/ @microsoft/@cxe-prg
-packages/react-text/ @microsoft/@cxe-prg
+packages/react-image/ @microsoft/cxe-prg
+packages/react-text/ @microsoft/cxe-prg
 packages/react-input/ @microsoft/cxe-red @ecraig12345
-packages/react-storybook/ @microsoft/@cxe-prg @ling1726 @layershifter
-packages/storybook/ @microsoft/@cxe-prg @ling1726 @layershifter
+packages/react-storybook/ @microsoft/cxe-prg @ling1726 @layershifter
+packages/storybook/ @microsoft/cxe-prg @ling1726 @layershifter
 packages/react-link/ @microsoft/cxe-red @khmakoto
 packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell
