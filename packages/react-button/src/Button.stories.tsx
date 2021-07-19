@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Button, ButtonProps } from '@fluentui/react-button';
-import { Playground } from '../Playground';
-import { PlaygroundProps, PropDefinition } from '../Playground.types';
+import { Button, ButtonProps } from './Button';
+import { Playground } from './Playground.stories';
+import { PlaygroundProps } from './Playground.types.stories';
+import { buttonBaseProps } from './buttonBaseProps.stories';
 
 // TODO: this is here while waiting for react-icons to merge
 const SVGIcon = () => (
@@ -101,29 +102,6 @@ export const Disabled = () => (
   </>
 );
 
-type ExampleProps = { iconOnly?: string };
-
-export const buttonBaseProps: PropDefinition<ButtonProps & ExampleProps>[] = [
-  { propName: 'block', propType: 'boolean' },
-  { propName: 'circular', propType: 'boolean' },
-  { propName: 'content', propType: 'string', defaultValue: 'This is a button', dependsOnProps: ['~iconOnly'] },
-  { propName: 'disabled', propType: 'boolean', dependsOnProps: ['~disabledFocusable'] },
-  { propName: 'disabledFocusable', propType: 'boolean', dependsOnProps: ['~disabled'] },
-  { propName: 'icon', propType: 'boolean' },
-  { propName: 'iconOnly', propType: 'boolean', dependsOnProps: ['icon'] },
-  {
-    propName: 'iconPosition',
-    propType: ['before', 'after'],
-    defaultValue: 'before',
-    dependsOnProps: ['icon', '~iconOnly'],
-  },
-  { propName: 'outline', propType: 'boolean', dependsOnProps: ['~primary', '~subtle', '~transparent'] },
-  { propName: 'primary', propType: 'boolean', dependsOnProps: ['~outline', '~subtle', '~transparent'] },
-  { propName: 'size', propType: ['small', 'medium', 'large'], defaultValue: 'medium' },
-  { propName: 'subtle', propType: 'boolean', dependsOnProps: ['~outline', '~primary', '~transparent'] },
-  { propName: 'transparent', propType: 'boolean', dependsOnProps: ['~outline', '~primary', '~subtle'] },
-];
-
 const buttonProps: PlaygroundProps<ButtonProps>['sections'] = [
   { sectionName: 'Button props', propList: buttonBaseProps },
 ];
@@ -133,3 +111,8 @@ export const ButtonPlayground = () => (
     <Button />
   </Playground>
 );
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+};

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { CompoundButton, CompoundButtonProps } from '@fluentui/react-button';
-import { buttonBaseProps } from '../Button/Button.stories';
-import { Playground } from '../Playground';
-import { PlaygroundProps, PropDefinition } from '../Playground.types';
+import { CompoundButton, CompoundButtonProps } from './CompoundButton';
+import { Playground } from './Playground.stories';
+import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
+import { buttonBaseProps } from './buttonBaseProps.stories';
 
 type ExampleProps = { iconOnly?: string };
 
@@ -25,3 +25,8 @@ export const CompoundButtonPlayground = () => (
     <CompoundButton />
   </Playground>
 );
+
+export default {
+  title: 'Components/CompoundButton',
+  component: CompoundButton,
+};

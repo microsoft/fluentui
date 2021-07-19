@@ -77,7 +77,7 @@
     "@fluentui/react-accordion": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-avatar": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-badge": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-button": { "implicitDependencies": [] },
+    "@fluentui/react-button": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-card": { "implicitDependencies": [] },
     "@fluentui/react-cards": { "implicitDependencies": [] },
     "@fluentui/react-charting": { "implicitDependencies": [] },
