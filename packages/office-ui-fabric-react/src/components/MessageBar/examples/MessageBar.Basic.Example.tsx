@@ -31,7 +31,7 @@ const choiceGroupStyles = {
 
 const DefaultExample = () => (
   <MessageBar>
-    Info/Default MessageBar.
+    Info/Default MessageBar.{' '}
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
@@ -45,7 +45,7 @@ const ErrorExample = (p: IExampleProps) => (
     onDismiss={p.resetChoice}
     dismissButtonAriaLabel="Close"
   >
-    Error MessageBar with single line, with dismiss button.
+    Error MessageBar with single line, with dismiss button.{' '}
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
@@ -82,7 +82,7 @@ const SevereExample = (p: IExampleProps) => (
       </div>
     }
   >
-    SevereWarning MessageBar with action buttons which defaults to multiline.
+    SevereWarning MessageBar with action buttons which defaults to multiline.{' '}
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
@@ -100,7 +100,7 @@ const SuccessExample = () => (
     messageBarType={MessageBarType.success}
     isMultiline={false}
   >
-    Success MessageBar with single line and action buttons.
+    Success MessageBar with single line and action buttons.{' '}
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
@@ -119,7 +119,7 @@ const WarningExample = (p: IExampleProps) => (
       </div>
     }
   >
-    Warning MessageBar content.
+    Warning MessageBar content.{' '}
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
@@ -143,7 +143,7 @@ const WarningExample2 = (p: IExampleProps) => (
     scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras
     faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse
     platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu
-    mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+    mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.{' '}
     <Link href="www.bing.com" target="_blank">
       Visit our website.
     </Link>
