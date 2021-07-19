@@ -2,6 +2,9 @@ import * as React from 'react';
 import { createApp } from './utilities/createApp';
 import { examplesOf } from './utilities/examplesOf';
 import { Markdown } from './index2';
+import { initializeIcons } from '@fluentui/react';
+
+initializeIcons();
 
 createApp(
   [

@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
-import { addDays, getDateRangeArray } from '@fluentui/date-time-utilities';
-import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
-import { mergeStyleSets } from '@fluentui/style-utilities';
+import {
+  DefaultButton,
+  addDays,
+  getDateRangeArray,
+  Calendar,
+  DateRangeType,
+  DayOfWeek,
+  mergeStyleSets,
+  defaultCalendarStrings,
+} from '@fluentui/react';
 
 const styles = mergeStyleSets({
   wrapper: { height: 360 },
@@ -59,6 +65,8 @@ export const CalendarInlineWeekSelectionExample: React.FunctionComponent = () =>
         onSelectDate={onSelectDate}
         value={selectedDate}
         firstDayOfWeek={firstDayOfWeek}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
       <div>
         <DefaultButton className={styles.button} onClick={goPrevious} text="Previous" />

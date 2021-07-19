@@ -79,6 +79,7 @@
     "@fluentui/react-badge": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-button": { "implicitDependencies": [] },
     "@fluentui/react-card": { "implicitDependencies": [] },
+    "@fluentui/react-cards": { "implicitDependencies": [] },
     "@fluentui/react-charting": { "implicitDependencies": [] },
     "@fluentui/react-checkbox": { "implicitDependencies": [] },
     "@fluentui/react-components": { "implicitDependencies": [] },

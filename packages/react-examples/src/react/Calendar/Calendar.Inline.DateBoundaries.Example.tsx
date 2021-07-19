@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { addMonths, addYears, addDays } from '@fluentui/date-time-utilities';
-import { Calendar } from '@fluentui/react';
+import { addMonths, addYears, addDays, Calendar, defaultCalendarStrings } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
 
 export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () => {
@@ -30,6 +29,8 @@ export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () =
         restrictedDates={restrictedDates}
         onSelectDate={onSelectDate}
         value={selectedDate}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
     </div>
   );
