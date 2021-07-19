@@ -363,7 +363,7 @@ We can simply use a css wildcard query selector:
 This means that `Internal` will be a reserved keyword in our stories which will determine visibility. This does not cause
 any conflicts with current stories, since this word is never used in any story name.
 
-This solution will only need to be applied `react-components` storybook since that is the storybook currently targeted for
+This solution will only need to be applied within `react-components` storybook configuration since that is the storybook currently targeted for
 public use. Individual component storybooks are only used for local development, so there is no need to hide internal stories from their nav trees.
 
 ### 8. how to properly annotate stories with TS metadata to get the best DX possible
