@@ -261,7 +261,7 @@ export const parameters = { controls: { expanded: true } };
 
 ### 5. how to author e2e suites for those stories
 
-> This section assumes that the storybook stories forms the core documentation of Fluent converged.
+> - This section assumes that the storybook stories forms the core documentation of Fluent converged.
 > This may change in the future so the measures proposed in this section might no longer be relevant
 > if this assumption is no longer true.
 
