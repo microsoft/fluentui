@@ -183,7 +183,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-provider/src"
     },
-    "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
+    "@fluentui/react-shared-contexts": {
+      "root": "packages/react-shared-contexts",
+      "projectType": "library",
+      "sourceRoot": "packages/react-shared-contexts/src"
+    },
     "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
     "@fluentui/react-tabster": {
