@@ -31,7 +31,7 @@ The verification of only allowing native elements to be rendered if this element
 
 ### [Empty Elements]
 
-The `Input` component is a good case example of that as [reported](https://github.com/microsoft/fluentui/pull/18642#issuecomment-871677964) by @ecraig12345, since the native element `input` is an [Empty Element], it cannot take any children, and still need to be rendered.
+The `Input` component is a good case example of that as [reported](https://github.com/microsoft/fluentui/pull/18642#issuecomment-871677964) by @ecraig12345, since the native element `input` is an [Empty Element], it cannot have any children, and still needs to be rendered.
 
 Right now for input case this is the solution to avoid `children = undefined` problem:
 
