@@ -262,7 +262,10 @@
           "@typescript-eslint/eslint-plugin",
           "@typescript-eslint/experimental-utils",
           "@typescript-eslint/parser",
+          "ajv",
           "chalk",
+          "cli-table3",
+          "del",
           "enhanced-resolve",
           "eslint-config-airbnb",
           "eslint-config-prettier",
@@ -275,10 +278,15 @@
           "eslint-plugin-react-hooks",
           "fs-extra",
           "glob",
+          "gzip-size",
           "jju",
+          "pretty-bytes",
           "tslib",
+          "terser",
           "terser-webpack-plugin",
-          "webpack-bundle-analyzer"
+          "webpack",
+          "webpack-bundle-analyzer",
+          "yargs"
         ]
       },
       {
@@ -337,18 +345,10 @@
       },
       {
         "packages": [
-          "@fluentui/bundle-size"
+          "@fluentui/react-conformance"
         ],
         "dependencies": [
-          "webpack",
-          "terser",
-          "pretty-bytes",
-          "yargs",
-          "del",
-          "chalk",
-          "cli-table3",
-          "ajv",
-          "gzip-size"
+          "chalk"
         ]
       }
     ]
