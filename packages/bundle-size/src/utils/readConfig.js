@@ -20,14 +20,15 @@ let cache;
  * @returns {Promise<Config>}
  */
 async function readConfig() {
-  if (cache) {
+  // don't use the cache in tests
+  if (cache && process.env.NODE_ENV !== 'test') {
     return cache;
   }
 
-  const configPath = await findUp(CONFIG_FILE_NAME);
+  const configPath = await findUp(CONFIG_FILE_NAME, { cwd: process.cwd() });
 
   if (!configPath) {
-    console.log(`no config file found: ${configPath}\nuse default config`);
+    console.log(`no config file found: ${configPath}\n -> fallback to default config`);
     cache = defaultConfig;
     return cache;
   }

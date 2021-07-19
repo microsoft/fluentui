@@ -25,8 +25,9 @@ module.exports = async function prepareFixture(fixture) {
     code: true,
 
     // This instance of Babel should ignore all user's configs and apply only our plugin
-    configFile: false,
-    babelrc: false,
+    configFile: false, // https://babeljs.io/docs/en/options#configfile
+    babelrc: false, // https://babeljs.io/docs/en/options#babelrc
+
     plugins: [
       // A Babel plugin that:
       // - reads metadata (name, threshold, etc.)
