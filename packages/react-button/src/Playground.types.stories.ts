@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 /** Type to get only the string keys of T. */
 type StringKeyOf<T> = { [K in keyof T]: K extends string ? K : never }[keyof T];
 
