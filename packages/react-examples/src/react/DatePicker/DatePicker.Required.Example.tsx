@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, mergeStyleSets } from '@fluentui/react';
+import { DatePicker, mergeStyleSets, defaultDatePickerStrings } from '@fluentui/react';
 
 const styles = mergeStyleSets({
   root: { selectors: { '> *': { marginBottom: 15 } } },
@@ -16,12 +16,15 @@ export const DatePickerRequiredExample: React.FunctionComponent = () => {
         placeholder="Select a date..."
         ariaLabel="Select a date"
         className={styles.control}
+        // DatePicker uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultDatePickerStrings}
       />
       <DatePicker
         isRequired
         placeholder="Date required with no label..."
         ariaLabel="Select a date"
         className={styles.control}
+        strings={defaultDatePickerStrings}
       />
     </div>
   );
