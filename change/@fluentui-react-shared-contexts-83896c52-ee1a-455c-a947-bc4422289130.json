@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "migrate to new DX",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

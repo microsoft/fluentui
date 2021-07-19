@@ -1,5 +1,20 @@
-let path = require('path');
-let { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-module.exports = createConfig({
-  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-});
+// @ts-check
+
+/**
+ * @type {jest.InitialOptions}
+ */
+module.exports = {
+  displayName: 'react-shared-contexts',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.json',
+      diagnostics: false,
+    },
+  },
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  coverageDirectory: './coverage',
+  setupFilesAfterEnv: ['./config/tests.js'],
+};

@@ -29,5 +29,6 @@ module.exports = {
     '<rootDir>/packages/react-slider',
     '<rootDir>/packages/make-styles-webpack-loader',
     '<rootDir>/packages/react-avatar',
+    '<rootDir>/packages/react-shared-contexts',
   ],
 };
