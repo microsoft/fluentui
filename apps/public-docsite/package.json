@@ -34,7 +34,7 @@
     "@fluentui/font-icons-mdl2": "^8.1.6",
     "@fluentui/public-docsite-setup": "^0.3.6",
     "@fluentui/react": "^8.23.5",
-    "@fluentui/react-docsite-components": "^8.2.39",
+    "@fluentui/react-docsite-components": "^8.3.0",
     "@fluentui/react-examples": "^8.34.4",
     "@fluentui/react-experiments": "^8.1.42",
     "@fluentui/react-file-type-icons": "^8.2.0",
