@@ -67,7 +67,6 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         onSelectComponent={props.onSelectComponent}
         onSwitchTab={props.onSwitchTab}
         selectedComponent={props.selectedComponent}
-        selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
       />
 
       <CanvasWindow

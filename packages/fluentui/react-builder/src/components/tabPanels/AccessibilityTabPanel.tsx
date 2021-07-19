@@ -1,142 +1,57 @@
-import * as _ from 'lodash';
 import * as React from 'react';
-import { jsonTreeFindElement } from '../../config';
 
-import { Text, Button, Accordion } from '@fluentui/react-northstar';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
-
-type AccessibilityTabProps = {
-  jsonTree: JSONTreeElement;
-  selectedComponent: JSONTreeElement;
-  elementUuid: string | number;
-  handleSelectedComponent: (elementUuid) => void;
-  accessibilityErrorsByElement: _.Dictionary<AccessibilityError[]>;
-};
-const AccesssibiltyTab: React.FunctionComponent<AccessibilityTabProps> = ({
-  jsonTree,
-  selectedComponent,
-  elementUuid,
-  handleSelectedComponent,
-  accessibilityErrorsByElement,
-}) => {
-  return (
-    <div>
-      <Button
-        text
-        onClick={handleSelectedComponent}
-        style={{
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '4px 4px',
-          background: '#FFFF',
-          ...(selectedComponent &&
-            selectedComponent.uuid === elementUuid && {
-              background: '#ffc65c',
-              color: '#444',
-            }),
-          width: '120%',
-        }}
-      >
-        {jsonTreeFindElement(jsonTree, elementUuid)}
-      </Button>
-      <Accordion
-        styles={{ padding: '.5rem' }}
-        panels={[
-          {
-            title: {
-              'aria-level': 4,
-              content: (
-                <Text>
-                  {accessibilityErrorsByElement[elementUuid].length}{' '}
-                  {accessibilityErrorsByElement[elementUuid].length > 1 ? 'Errors' : 'Error'}
-                </Text>
-              ),
-            },
-            content: accessibilityErrorsByElement[elementUuid].map(error => (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  marginBottom: '1rem',
-                  lineHeight: '1.5em',
-                }}
-              >
-                <div style={{ display: 'list-item', listStyleType: 'disc', listStylePosition: 'outside' }}>
-                  {error.message}
-                </div>
-                <Text size="smaller" weight="light">
-                  {`Severity: ${error.severity}`}
-                </Text>
-                <Text size="smaller" weight="light">
-                  {`Source: ${error.source}`}
-                </Text>
-              </div>
-            )),
-          },
-        ]}
-      />
-    </div>
-  );
-};
+import { ComponentTree } from '../ComponentTree';
 
 export type AccessibilityTabPanelProps = {
+  accessibilityErrors: AccessibilityError[];
   jsonTree: JSONTreeElement;
-  selectedComponent?: JSONTreeElement;
-  accessibilityErrors?: AccessibilityError[];
+  onAddComponent?: (uuid: string, where: string) => void;
+  onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
+  onDeleteSelectedComponent?: () => void;
+  onDragStart?: (info: any, e: any) => void;
+  onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
+  onOpenAddComponentDialog?: (uuid: string, where: string) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
+  selectedComponent?: JSONTreeElement;
 };
 
-export const AccessibiltyTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = ({
-  jsonTree: tree,
-  selectedComponent,
-  accessibilityErrors,
-  onSelectComponent,
-}) => {
-  const handleSelectComponent = React.useCallback(
-    (props: AccessibilityTabProps) => {
-      const element = jsonTreeFindElement(tree, props.elementUuid);
-      onSelectComponent?.(element);
-      // setElementDisplayName(element.displayName);
-    },
-    [onSelectComponent, tree],
-  );
+export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = (
+  props: AccessibilityTabPanelProps,
+) => {
+  const currentChildren = props.jsonTree?.props?.children;
+  const filteredChildren = [];
+  if (currentChildren) {
+    for (const child of currentChildren) {
+      if (props.accessibilityErrors.find(e => e.elementUuid === (child as JSONTreeElement).uuid)) {
+        filteredChildren.push(child);
+      }
+    }
+  }
 
-  // const [elementDisplayName, setElementDisplayName] = React.useState('');
-  const accessibilityErrorsByElement = _.groupBy(accessibilityErrors, error => error.elementUuid);
+  const updatedTree = {
+    uuid: props.jsonTree.uuid,
+    type: props.jsonTree.type,
+    props: {
+      children: filteredChildren,
+    },
+  } as JSONTreeElement;
+
   return (
-    <div
-      style={{
-        padding: '1em 0 0 1em',
-        minWidth: '22.85px',
-        maxWidth: '250px',
-        flexWrap: 'wrap',
-      }}
-    >
-      <div>
-        <Text size={'small'}>
-          To learn more about best practices for accessibility, visit
-          <a href="https://www.microsoft.com/en-us/accessibility/" target="_blank" rel="noopener noreferrer">
-            {' https://www.microsoft.com/en-us/accessibility/'}
-          </a>
-          <br />
-          <br />
-        </Text>
-      </div>
-      {_.isEmpty(accessibilityErrors) ? (
-        <Text weight={'bold'}>No accessibility errors automatically detected!</Text>
-      ) : (
-        // group the accesssibility errors (if they exist)
-        Object.keys(accessibilityErrorsByElement).map(elementUuid => (
-          <AccesssibiltyTab
-            jsonTree={tree}
-            selectedComponent={selectedComponent}
-            elementUuid={elementUuid}
-            handleSelectedComponent={handleSelectComponent}
-            accessibilityErrorsByElement={accessibilityErrorsByElement}
-          />
-        ))
+    <div>
+      {(!updatedTree || updatedTree?.props?.children?.length === 0) && (
+        <div style={{ padding: '10px' }}>There are no accessibility errors!</div>
       )}
+      <ComponentTree
+        onAddComponent={props.onAddComponent}
+        onCloneComponent={props.onCloneComponent}
+        onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+        onMoveComponent={props.onMoveComponent}
+        onSelectComponent={props.onSelectComponent}
+        selectedComponent={props.selectedComponent}
+        tree={updatedTree}
+      />
     </div>
   );
 };

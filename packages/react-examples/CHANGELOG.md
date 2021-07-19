@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Jul 2021 07:31:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Mon, 19 Jul 2021 07:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/react-docsite-components to v8.3.0 ([PR #18957](https://github.com/microsoft/fluentui/pull/18957) by elcraig@microsoft.com)
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/react-cards to v0.200.1 ([PR #18965](https://github.com/microsoft/fluentui/pull/18965) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-components to v9.0.0-alpha.80 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.61 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.51 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.57 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Fri, 16 Jul 2021 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.39 ([PR #18909](https://github.com/microsoft/fluentui/pull/18909) by ilrosen@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.127 ([PR #18909](https://github.com/microsoft/fluentui/pull/18909) by ilrosen@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.125 ([PR #18909](https://github.com/microsoft/fluentui/pull/18909) by ilrosen@microsoft.com)
 
 ## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
 

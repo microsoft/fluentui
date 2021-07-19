@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
-import { AccessibiltyTabPanel } from './tabPanels/AccessibilityTabPanel';
+import { AccessibilityTabPanel } from './tabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './tabPanels/NavigationTabPanel';
 import { NavBarItem } from './NavBarItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
@@ -24,7 +24,6 @@ export type NavigationPanelProps = {
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSwitchTab?: (tab: any) => void;
   selectedComponent?: JSONTreeElement;
-  selectedComponentAccessibilityErrors: AccessibilityError[];
 };
 
 export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
@@ -131,11 +130,17 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
         </div>
         {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
         {props.activeTab === 'accessibility' && (
-          <AccessibiltyTabPanel
-            jsonTree={props.jsonTree}
-            selectedComponent={props.selectedComponent}
+          <AccessibilityTabPanel
             accessibilityErrors={props.accessibilityErrors}
+            jsonTree={props.jsonTree}
+            onAddComponent={props.onAddComponent}
+            onCloneComponent={props.onCloneComponent}
+            onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+            onDragStart={props.onDragStart}
+            onOpenAddComponentDialog={props.onOpenAddComponentDialog}
+            onMoveComponent={props.onMoveComponent}
             onSelectComponent={props.onSelectComponent}
+            selectedComponent={props.selectedComponent}
           />
         )}
         {props.activeTab === 'nav' && (
@@ -149,7 +154,6 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
             onMoveComponent={props.onMoveComponent}
             onSelectComponent={props.onSelectComponent}
             selectedComponent={props.selectedComponent}
-            selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
           />
         )}
       </div>

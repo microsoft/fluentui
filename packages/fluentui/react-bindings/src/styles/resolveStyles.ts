@@ -210,8 +210,8 @@ export const resolveStyles = (
           }
 
           if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
-            resolvedStylesDebug[slotName] = (resolvedStyles[slotName] as any)['_debug'];
-            delete (resolvedStyles[slotName] as any)['_debug'];
+            resolvedStylesDebug[slotName] = (resolvedStyles[slotName] as any)?.['_debug'];
+            delete (resolvedStyles[slotName] as any)?.['_debug'];
           }
 
           if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
@@ -335,8 +335,8 @@ export const resolveStyles = (
         }
 
         if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
-          resolvedStylesDebug[slotName] = (target[slotName] as any)['_debug'];
-          delete (target[slotName] as any)['_debug'];
+          resolvedStylesDebug[slotName] = (target[slotName] as any)?.['_debug'];
+          delete (target[slotName] as any)?.['_debug'];
         }
 
         if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
