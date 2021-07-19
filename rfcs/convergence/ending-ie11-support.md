@@ -35,7 +35,7 @@ will no longer be needed as a hard dependency to emulate the missing features of
 ### Improved Theming
 
 Theming a web application is always a challenge and can easily lead to performance issues. Performance has been a challenge for the current
-versions of fluent that evaluated theme values with javascript. Fluent v9 uses CSS variables for its theming and styling solution. This means
+versions of fluent that evaluated theme values with javascript. Fluent v9 uses [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) for its theming and styling solution. This means
 that it does not need to have a different set of classes for each theme and css rules never change regardless of theme which is a
 big boost to performance.
 
