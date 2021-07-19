@@ -1,4 +1,6 @@
 import * as React from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/react-menu';
 import { MenuButton, MenuButtonProps } from './MenuButton';
 import { Playground } from './Playground.stories';
