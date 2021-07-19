@@ -1,6 +1,6 @@
 import { NodePath, PluginObj, PluginPass, TransformOptions, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
-import { Module } from '@linaria/babel';
+import { Module } from '@linaria/babel-preset';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
 import { UNHANDLED_CASE_ERROR } from './constants';

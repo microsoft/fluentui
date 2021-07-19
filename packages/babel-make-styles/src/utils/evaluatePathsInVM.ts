@@ -3,7 +3,7 @@ import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
 import { resolveProxyValues } from '@fluentui/make-styles';
-import { Module, StrictOptions } from '@linaria/babel';
+import { Module, StrictOptions } from '@linaria/babel-preset';
 import shakerEvaluator from '@linaria/shaker';
 
 import { astify } from './astify';
