@@ -265,7 +265,7 @@ export const parameters = { controls: { expanded: true } };
 > This may change in the future so the measures proposed in this section might no longer be relevant
 > if this assumption is no longer true.
 
-`react-menu` already has entire test suites dedicated to testing against storybook. Since each PR build will
+`react-menu` already has entire test suites dedicated to testing against storybook. Since each PR will build and
 deploy a storybook (storybook build for `react-components` package), the e2e suite (implemented with cypress) for converged components will execute against current PR deployed storybook instance. This
 includes the constraint that until a component is added to `react-components` it cannot be tested in CI.
 
