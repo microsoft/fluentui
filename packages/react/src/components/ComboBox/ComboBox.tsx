@@ -2160,6 +2160,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       customStylesForCurrentOption,
       this._isPendingOption(item),
       item.hidden,
+      this._isOptionSelected(item.index),
     );
   }
 
