@@ -40,7 +40,7 @@ that it does not need to have a different set of classes for each theme and css 
 big boost to performance.
 
 Our future theming system also uses the [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
-in a key step to create the CSS variables that map to theme values. 
+in a key step to create the CSS variables that map to theme values.
 
 Without these platform features missing in IE11, we would need to dedicate more time to another solution which would be also less performant for both IE11 and evergreen browser users.
 to dedicate more time to another solution for this.
@@ -64,6 +64,12 @@ IE11 will inevitably make it slower. By taking this stance in Fluent v9 we give 
 modernize their own products.
 
 ## Pros and Cons
+
+### Pros
+
+Already mentioned in previous chapters
+
+### Cons
 
 We understand that this might cause initial adoption headaches from our partners. However, they should also generally be targeting
 the same EOL date for IE11.
