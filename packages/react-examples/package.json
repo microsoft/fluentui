@@ -45,7 +45,7 @@
     "@fluentui/react-charting": "^5.3.11",
     "@fluentui/react-checkbox": "^9.0.0-alpha.11",
     "@fluentui/react-components": "^9.0.0-alpha.80",
-    "@fluentui/react-docsite-components": "^8.2.39",
+    "@fluentui/react-docsite-components": "^8.3.0",
     "@fluentui/react-experiments": "^8.1.42",
     "@fluentui/react-file-type-icons": "^8.2.0",
     "@fluentui/react-focus": "^8.1.8",
