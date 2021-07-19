@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 14 Jul 2021 07:28:19 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Jul 2021 07:32:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.23.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.5)
+
+Fri, 16 Jul 2021 07:32:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.4..@fluentui/react_v8.23.5)
+
+### Patches
+
+- Add aria-owns to wrapping element of comboboxes and pickers for better virtual cursor screen reader support ([PR #18959](https://github.com/microsoft/fluentui/pull/18959) by sarah.higley@microsoft.com)
+
+## [8.23.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.4)
+
+Fri, 16 Jul 2021 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.3..@fluentui/react_v8.23.4)
+
+### Patches
+
+- Apply getFocusStyle to TextField's `canRevealPassword` icon button ([PR #18909](https://github.com/microsoft/fluentui/pull/18909) by ilrosen@microsoft.com)
+
+## [8.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.3)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.2..@fluentui/react_v8.23.3)
+
+### Patches
+
+- Prevent tooltip from showing on tab switch for the focused element ([PR #18884](https://github.com/microsoft/fluentui/pull/18884) by behowell@microsoft.com)
 
 ## [8.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.2)
 

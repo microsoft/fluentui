@@ -104,14 +104,23 @@
       "projectType": "library",
       "sourceRoot": "packages/react-accordion/src"
     },
-    "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
+    "@fluentui/react-avatar": {
+      "root": "packages/react-avatar",
+      "projectType": "library",
+      "sourceRoot": "packages/react-avatar/src"
+    },
     "@fluentui/react-badge": {
       "root": "packages/react-badge",
       "projectType": "library",
       "sourceRoot": "packages/react-badge/src"
     },
-    "@fluentui/react-button": { "root": "packages/react-button", "projectType": "library" },
+    "@fluentui/react-button": {
+      "root": "packages/react-button",
+      "projectType": "library",
+      "sourceRoot": "packages/react-button/src"
+    },
     "@fluentui/react-card": { "root": "packages/react-card", "projectType": "library" },
+    "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
     "@fluentui/react-checkbox": { "root": "packages/react-checkbox", "projectType": "library" },
     "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
@@ -178,7 +187,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-provider/src"
     },
-    "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
+    "@fluentui/react-shared-contexts": {
+      "root": "packages/react-shared-contexts",
+      "projectType": "library",
+      "sourceRoot": "packages/react-shared-contexts/src"
+    },
     "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
     "@fluentui/react-tabster": {
