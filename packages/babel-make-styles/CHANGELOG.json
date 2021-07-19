@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "handle MemberExpression as a mixin",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Jul 2021 07:36:18 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.25",
       "version": "9.0.0-alpha.25",
