@@ -40,7 +40,9 @@ that it does not need to have a different set of classes for each theme and css 
 big boost to performance.
 
 Our future theming system also uses the [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
-in a key step to create the CSS variables that map to theme values. Without this feature that IE11 lacks, we would need
+in a key step to create the CSS variables that map to theme values. 
+
+Without these platform features missing in IE11, we would need to dedicate more time to another solution which would be also less performant for both IE11 and evergreen browser users.
 to dedicate more time to another solution for this.
 
 ### Maintenance Burden
