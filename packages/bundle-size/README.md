@@ -57,6 +57,8 @@ bundle-size.config.js
 
 ```
 
+#### Config API
+
 ```js
 const path = require('path');
 
