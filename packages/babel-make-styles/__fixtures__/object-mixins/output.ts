@@ -6,6 +6,9 @@ export const useStyles = __styles(
       mc9l5x: 'f22iagw',
       Beiy3e4: 'f1vx9l62',
     },
+    label: {
+      Bhrd7zp: 'f1du0uop',
+    },
     header: {
       Bhrd7zp: 'f16wzh4i',
     },
@@ -24,6 +27,7 @@ export const useStyles = __styles(
     d: [
       '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
       '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
+      '.f1du0uop{font-weight:var(--global-type-fontWeights-regular);}',
       '.f16wzh4i{font-weight:bold;}',
       '.fe3e8s9{color:red;}',
       '.f13qh94s{display:grid;}',
