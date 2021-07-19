@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix syncpack errors",
+  "packageName": "@fluentui/web-components",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}
