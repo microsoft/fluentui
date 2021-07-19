@@ -63,7 +63,23 @@ const expressionWrapperTpl = template.statement(`
   };
 `);
 
-const expressionTpl = template.expression(`%%wrapName%%(() => %%expression%%)`);
+/**
+ * Functions, call & member expressions should be wrapped with IIFE to ensure that "theme" object will be passed
+ * without collisions.
+ *
+ * @example
+ * {
+ *   label: foo(), // call expression
+ *   header: typography.header, // could be an object or a function
+ * }
+ *
+ * Outputs following template:
+ * @example
+ * wrap(() => typeof foo === 'function' ? foo(theme) : foo)
+ */
+export const expressionTpl = template.expression(
+  `%%wrapName%%(() => typeof %%expression%% === 'function' ? %%expression%%(%%themeVariableName%%) : %%expression%%)`,
+);
 const exportsPrevalTpl = template.statement(`exports.${EVAL_EXPORT_NAME} = %%expressions%%`);
 
 /**
@@ -96,7 +112,9 @@ function addPreval(
 
       expressionWrapperTpl({ wrapName }),
       exportsPrevalTpl({
-        expressions: t.arrayExpression(lazyDeps.map(expression => expressionTpl({ expression, wrapName }))),
+        expressions: t.arrayExpression(
+          lazyDeps.map(expression => expressionTpl({ expression, wrapName, themeVariableName })),
+        ),
       }),
     ],
     programNode.directives,
@@ -120,17 +138,6 @@ export function evaluatePathsInVM(
     // spreads ("...fooBar") can't be executed directly, so they are wrapped with an object ("{...fooBar}")
     if (nodePath.isSpreadElement()) {
       return t.objectExpression([nodePath.node as t.SpreadElement]);
-    }
-
-    // functions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
-    if (nodePath.isArrowFunctionExpression() || nodePath.isFunctionExpression()) {
-      return t.callExpression(nodePath.node as t.ArrowFunctionExpression, [t.identifier(themeVariableName)]);
-    }
-
-    // call expressions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
-    // TODO: right now this only for call expression that returns a function that takes "theme" object as argument
-    if (nodePath.isCallExpression()) {
-      return t.callExpression(nodePath.node as t.CallExpression, [t.identifier(themeVariableName)]);
     }
 
     return nodePath.node;
