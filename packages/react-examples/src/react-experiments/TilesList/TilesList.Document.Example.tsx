@@ -223,7 +223,7 @@ export class TilesListDocumentExample extends React.Component<
         invokeSelection={true}
         foreground={
           <img
-            src={`https://spoprod-a.akamaihd.net/files/odsp-next-prod_2018-04-06_20180406.004/odsp-media/images/itemtypes/${imgSize}/docx.png`}
+            src={`https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/item-types/${imgSize}/docx.png`}
             style={{
               display: 'block',
               width: `${imgSize}px`,
