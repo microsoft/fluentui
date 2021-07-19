@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Removed styling and updated examples",
+  "packageName": "office-ui-fabric-react",
+  "email": "tahsia@microsoft.com",
+  "commit": "0c71d8f636cff9ec1fb728c591b9ce476f714a59",
+  "dependentChangeType": "patch",
+  "date": "2021-07-19T07:42:30.421Z"
+}
