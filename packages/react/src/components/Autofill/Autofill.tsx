@@ -174,8 +174,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
     if (inel && inel.selectionStart !== this.value.length) {
       return {
-        start: inel.selectionStart || inel.value.length,
-        end: inel.selectionEnd || inel.value.length,
+        start: inel.selectionStart !== null ? inel.selectionStart : inel.value.length,
+        end: inel.selectionEnd !== null ? inel.selectionEnd : inel.value.length,
         dir: (inel.selectionDirection as 'forward') || 'backward' || 'none',
       };
     }
@@ -326,7 +326,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
+    this.setState({ inputValue: newValue });
+    onInputValueChange?.(newValue, composing);
   };
 
   private _getDisplayValue(): string {
