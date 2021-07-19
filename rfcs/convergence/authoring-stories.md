@@ -270,7 +270,7 @@ deploy a storybook, the cypress testing solution for converged components will t
 includes the constraint that until a component is added to `react-components` it cannot be tested in CI.
 
 The e2e testing solution for `react-menu` can be used for any converged component using storybook, and is also used by
-`react-accordion` and `react-popover`. The purposes of E2E tests currently is to run internaction tests against the browser.
+`react-accordion` and `react-popover`. The purposes of E2E tests currently is to run interaction tests against the browser.
 Visual regression tests are handled by screener in `app-vrtests` and is out of the scope of this RFC.
 
 We propose to write an NX workspace generator to setup the e2e testing folder structure and dependencies for each package. The process is quite simple currently but still needs to be done manually.
