@@ -153,10 +153,10 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         {
           backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
           textDecoration: extendedSemanticColors.listUnderline,
-          fontWeight: '400',
+          fontWeight: StyleConstants.fontWeightRegular,
           selectors: {
             '.ms-DetailsRow-cell': {
-              fontWeight: '400',
+              fontWeight: StyleConstants.fontWeightRegular,
             },
             '.ms-Check-circle': {
               backgroundColor: extendedSemanticColors.checkboxBackgroundChecked,
