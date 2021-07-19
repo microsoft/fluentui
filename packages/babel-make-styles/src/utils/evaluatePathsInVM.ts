@@ -72,8 +72,12 @@ const expressionWrapperTpl = template.statement(`
  *   label: foo(), // call expression
  *   header: typography.header, // could be an object or a function
  * }
+ *
+ * Outputs following template:
+ * @example
+ * wrap(() => typeof foo === 'function' ? foo(theme) : foo)
  */
-const expressionTpl = template.expression(
+export const expressionTpl = template.expression(
   `%%wrapName%%(() => typeof %%expression%% === 'function' ? %%expression%%(%%themeVariableName%%) : %%expression%%)`,
 );
 const exportsPrevalTpl = template.statement(`exports.${EVAL_EXPORT_NAME} = %%expressions%%`);
