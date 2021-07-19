@@ -15,7 +15,7 @@ This RFC proposes a solution for a recurring problem involving slots with no `ch
 
 `getSlots` is a method that iterates over `ObjectShorthandProps` (_`shorthands`_) declarations and converts them to something that can be rendered by React.
 
-In the case where one _shorthand_ declares a native element (e.g: `"div"`, `"input"`) a verification is made to decide if this declaration will be rendered into something or not (null rendering). This verification will only allow native elements to be rendered if this element presents `children` as property.
+In the case where one _shorthand_ declares a native element (e.g: `"div"`, `"input"`) it will only be rendered if this element has `children` as a property.
 
 ```tsx
 // react-utilities/src/compose/getSlots.ts
