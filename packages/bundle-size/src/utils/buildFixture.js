@@ -8,11 +8,13 @@ const webpack = require('webpack');
 const { hrToSeconds } = require('./helpers');
 const readConfig = require('./readConfig');
 
+/** @typedef {import("webpack").Configuration} WebpackConfiguration */
+
 /**
  * @param {string} fixturePath
  * @param {string} outputPath
  *
- * @return {import("webpack").Configuration}
+ * @return {WebpackConfiguration}
  */
 function createWebpackConfig(fixturePath, outputPath) {
   return {
@@ -48,7 +50,7 @@ function createWebpackConfig(fixturePath, outputPath) {
 }
 
 /**
- * @param {import("webpack").Configuration} webpackConfig
+ * @param {WebpackConfiguration} webpackConfig
  * @return {Promise<null>}
  */
 function webpackAsync(webpackConfig) {
@@ -103,7 +105,7 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
   const terserStartTime = process.hrtime();
   const terserOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.min.js');
 
-  const webpackOutput = (await fs.readFile(webpackOutputPath)).toString();
+  const webpackOutput = await fs.readFile(webpackOutputPath, 'utf8');
 
   const [terserOutput, terserOutputMinified] = await Promise.all([
     // Performs only dead-code elimination

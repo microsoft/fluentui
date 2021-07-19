@@ -292,7 +292,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           {selectionAriaLabel || comboLabel}
         </span>
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-          <div className={classNames.text}>
+          <div className={classNames.text} aria-owns={suggestionsAvailable}>
             {items.length > 0 && (
               <span
                 id={this._ariaMap.selectedItems}
@@ -1049,7 +1049,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
-          <div className={classNames.text}>
+          <div className={classNames.text} aria-owns={suggestionsAvailable || undefined}>
             <Autofill
               {...(inputProps as any)}
               className={classNames.input}

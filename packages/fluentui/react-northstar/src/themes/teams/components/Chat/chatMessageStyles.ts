@@ -85,11 +85,8 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
   },
 
   author: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const { props: p, variables: v } = componentStyleFunctionParam;
-    return {
-      fontWeight: v.authorFontWeight,
-      ...getChatMessageDensityStyles(p.density).author?.(componentStyleFunctionParam),
-    };
+    const { props: p } = componentStyleFunctionParam;
+    return getChatMessageDensityStyles(p.density).author?.(componentStyleFunctionParam);
   },
 
   compactBody: (componentStyleFunctionParam): ICSSInJSStyle => {
@@ -99,7 +96,10 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
 
   timestamp: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return getChatMessageDensityStyles(p.density).timestamp?.(componentStyleFunctionParam);
+    return {
+      display: 'inline-block',
+      ...getChatMessageDensityStyles(p.density).timestamp?.(componentStyleFunctionParam),
+    };
   },
 
   content: (componentStyleFunctionParam): ICSSInJSStyle => {

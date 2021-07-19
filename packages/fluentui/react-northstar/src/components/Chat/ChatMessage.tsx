@@ -16,6 +16,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  useMergedRefs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -286,9 +287,9 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
     enabled: hasActionMenu && positionActionMenu,
     modifiers,
-    popperRef,
 
     ...positioningProps,
+    popperRef: useMergedRefs(positioningProps?.popperRef, popperRef),
   });
 
   // `focused` state is used for show/hide actionMenu
@@ -491,7 +492,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ density, mine }),
+    defaultProps: () => ({ attached, density, mine }),
   });
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {
@@ -502,7 +503,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   if (density === 'compact') {
     const headerElement = createShorthand(ChatMessageHeader, header);
 
-    const bodyElement = Box.create(compactBody, {
+    const bodyElement = Box.create(compactBody || {}, {
       defaultProps: () =>
         getA11Props('compactBody', {
           className: chatMessageSlotClassNames.compactBody,
@@ -593,7 +594,6 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
-  compactBody: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };

@@ -71,7 +71,7 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
     element: targetDocument,
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
-    disabled: !state.open || !state.openOnContext,
+    disabled: !state.open || !state.openOnContext, // only close on scroll for context
   });
 
   return state;

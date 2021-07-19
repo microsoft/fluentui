@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Position, Alignment } from '@fluentui/react-positioning';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * Properties for the Tooltip component
  * {@docCategory Tooltip}
  */
-export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * The child is the element that triggers the Tooltip. It will have additional properties added,
    * including events and aria properties.
@@ -18,7 +18,7 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
   /**
    * The content displayed inside the tooltip.
    */
-  content: ShorthandProps<ComponentProps>;
+  content: ShorthandPropsCompat<ComponentPropsCompat>;
 
   /**
    * How to position the tooltip relative to the target element. This is a "best effort" placement,
@@ -123,7 +123,7 @@ export type TooltipDefaultedProps =
 /**
  * State used in rendering Tooltip
  */
-export interface TooltipState extends ComponentState<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
   /**
    * Ref to the root tooltip element.
    */

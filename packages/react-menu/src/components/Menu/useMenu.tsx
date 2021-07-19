@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { usePopperMouseTarget, usePopper } from '@fluentui/react-positioning';
-import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useControllableValue,
-  useId,
-  useOnClickOutside,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -15,11 +8,7 @@ import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
-
-export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandProps });
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 /**
  * Create the state required to render Menu.
@@ -29,78 +18,83 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  *
  * @param props - props from this instance of Menu
  * @param ref - reference to root HTMLElement of Menu
- * @param defaultProps - (optional) default prop values provided by the implementing type
  *
  * {@docCategory Menu }
  */
-export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState => {
+export const useMenu = (props: MenuProps): MenuState => {
   const triggerId = useId('menu');
-  const isSubmenu = useMenuContext(context => context.hasMenuContext);
+  const isSubmenu = useIsSubmenu();
+  const [contextTarget, setContextTarget] = usePopperMouseTarget();
 
-  const state = mergeProps(
-    {
-      menuPopup: { as: 'div' },
-      position: isSubmenu ? 'after' : 'below',
-      align: isSubmenu ? 'top' : 'start',
-      openOnHover: isSubmenu,
-      hoverDelay: 500,
-      triggerId,
-    },
-    defaultProps,
-    resolveShorthandProps(props, menuShorthandProps),
-  );
+  const popperState = {
+    position: isSubmenu ? 'after' : 'below',
+    align: isSubmenu ? 'top' : 'start',
+    coverTarget: props.coverTarget,
+    offset: props.offset,
+    contextTarget,
+    setContextTarget,
+    target: !props.target && props.openOnContext ? contextTarget : undefined,
+  } as const;
 
-  state.isSubmenu = isSubmenu;
-
-  // TODO Better way to narrow types ?
-  const children = React.Children.toArray(state.children) as React.ReactElement[];
+  const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   if (children.length !== 2 && process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
 
-  const [contextTarget, setContextTarget] = usePopperMouseTarget();
-  state.setContextTarget = setContextTarget;
-  state.contextTarget = contextTarget;
-
-  if (!state.target && state.openOnContext && state.contextTarget) {
-    state.target = state.contextTarget;
-  }
-
-  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper({
-    align: state.align,
-    position: state.position,
-    coverTarget: state.coverTarget,
-    offset: state.offset,
-    target: state.target,
-  });
-  state.menuPopoverRef = menuPopoverRef;
-  state.triggerRef = triggerRef;
-
-  children.forEach(child => {
+  const { menuTrigger, menuPopover } = children.reduce((acc, child) => {
     if (child.type === MenuTrigger) {
-      state.menuTrigger = child;
+      acc.menuTrigger = child;
     } else {
-      state.menuPopover = child;
+      acc.menuPopover = child;
     }
-  });
 
-  useMenuOpenState(state);
-  useMenuSelectableState(state);
+    return acc;
+  }, {} as Pick<MenuState, 'menuTrigger' | 'menuPopover'>);
+  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper(popperState);
 
-  return state;
+  const initialState = {
+    hoverDelay: 500,
+    triggerId,
+    isSubmenu: !!isSubmenu,
+    openOnHover: !!isSubmenu,
+    ...props,
+    ...popperState,
+    menuTrigger,
+    menuPopover,
+    triggerRef,
+    menuPopoverRef,
+  } as const;
+
+  // TODO Better way to narrow types ?
+
+  const [open, setOpen] = useMenuOpenState(initialState);
+  const [checkedValues, onCheckedValueChange] = useMenuSelectableState(initialState);
+
+  return {
+    ...initialState,
+    open,
+    setOpen,
+    checkedValues,
+    onCheckedValueChange,
+  };
 };
 
 /**
  * Adds appropriate state values and handlers for selectable items
  * i.e checkboxes and radios
  */
-const useMenuSelectableState = (state: MenuState) => {
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+const useMenuSelectableState = (
+  state: Pick<MenuState, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+) => {
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: state.checkedValues,
+    defaultState: state.defaultCheckedValues,
+    initialState: {},
+  });
   const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
-  state.checkedValues = checkedValues;
-  state.onCheckedValueChange = useEventCallback((e, name, checkedItems) => {
+  const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, name, checkedItems) => {
     if (onCheckedValueChangeOriginal) {
       onCheckedValueChangeOriginal(e, name, checkedItems);
     }
@@ -109,9 +103,14 @@ const useMenuSelectableState = (state: MenuState) => {
       return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
     });
   });
+
+  return [checkedValues, onCheckedValueChange] as const;
 };
 
-const useMenuOpenState = (state: MenuState) => {
+const useMenuOpenState = (
+  state: Pick<MenuState, 'onOpenChange' | 'setContextTarget' | 'triggerRef' | 'menuPopoverRef' | 'isSubmenu'> &
+    Pick<MenuProps, 'open' | 'defaultOpen'>,
+) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
@@ -122,8 +121,11 @@ const useMenuOpenState = (state: MenuState) => {
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
-  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
-  state.open = open !== undefined ? open : state.open;
+  const [open, setOpenState] = useControllableState({
+    state: state.open,
+    defaultState: state.defaultOpen,
+    initialState: false,
+  });
 
   const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
@@ -146,10 +148,10 @@ const useMenuOpenState = (state: MenuState) => {
       parentSetOpen(e, { ...data });
     }
 
-    setOpen(data.open);
+    setOpenState(data.open);
   });
 
-  state.setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+  const setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     clearTimeout(setOpenTimeout.current);
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
@@ -161,6 +163,9 @@ const useMenuOpenState = (state: MenuState) => {
         enteringTriggerRef.current = e.type === 'mouseenter' || e.type === 'mousemove';
       }
 
+      // FIXME leaking Node timeout type
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       setOpenTimeout.current = setTimeout(() => trySetOpen(e, data), state.hoverDelay);
     } else {
       trySetOpen(e, data);
@@ -169,10 +174,10 @@ const useMenuOpenState = (state: MenuState) => {
 
   useOnClickOutside({
     contains: elementContains,
-    disabled: !state.open,
+    disabled: !open,
     element: targetDocument,
     refs: [state.menuPopoverRef, state.triggerRef],
-    callback: e => state.setOpen(e, { open: false }),
+    callback: e => setOpen(e, { open: false }),
   });
   useOnMenuMouseEnter({
     element: targetDocument,
@@ -180,10 +185,10 @@ const useMenuOpenState = (state: MenuState) => {
       // When moving from a menu directly back to its trigger, this handler can close the menu
       // Explicitly check a flag to see if this situation happens
       if (!enteringTriggerRef.current) {
-        state.setOpen(e, { open: false });
+        setOpen(e, { open: false });
       }
     },
-    disabled: !state.open,
+    disabled: !open,
     refs: [state.menuPopoverRef],
   });
 
@@ -231,4 +236,6 @@ const useMenuOpenState = (state: MenuState) => {
     shouldHandleTabRef.current = false;
     pressedShiftRef.current = false;
   }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);
+
+  return [open ?? false, setOpen] as const;
 };

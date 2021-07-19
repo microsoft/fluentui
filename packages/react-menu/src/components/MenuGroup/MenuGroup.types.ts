@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory MenuGroup}
  */
-export type MenuGroupProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export interface MenuGroupProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {}
 
 /**
  * {@docCategory MenuGroup}
  */
-export interface MenuGroupState extends MenuGroupProps {
-  ref: React.MutableRefObject<HTMLElement>;
+export interface MenuGroupState extends ComponentState, React.HTMLAttributes<HTMLElement> {
+  ref: React.Ref<HTMLElement>;
 
   /**
    * id applied to the DOM element of `MenuGroupHeader`

@@ -1,3 +1,3 @@
-import { preset } from '@fluentui/scripts';
+const { preset } = require('@fluentui/scripts');
 
 preset();

@@ -107,7 +107,7 @@ const templates = {
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+      types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
   },
   jest: (options: { pkgName: string }) => stripIndents`
@@ -152,7 +152,11 @@ const templates = {
     preview: stripIndents`
       import * as rootPreview from '../../../.storybook/preview';
 
+      /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
+
+      /** @type {typeof rootPreview.parameters} */
+      export const parameters = { ...rootPreview.parameters };
     `,
     tsconfig: {
       extends: '../tsconfig.json',
@@ -274,6 +278,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   updateJson(tree, options.paths.packageJson, json => {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
+    delete json.scripts['test:watch'];
 
     json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
     json.scripts[
@@ -281,7 +286,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
       // eslint-disable-next-line @fluentui/max-len
     ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
     json.scripts.storybook = 'start-storybook';
-    json.scripts.start = 'storybook';
+    json.scripts.start = 'yarn storybook';
     json.scripts.test = 'jest';
 
     return json;

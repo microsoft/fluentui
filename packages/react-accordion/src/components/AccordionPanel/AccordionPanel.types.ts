@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
-export interface AccordionPanelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {}
+export type AccordionPanelSlots = {};
 
-export interface AccordionPanelState extends ComponentState<AccordionPanelProps> {
+export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots>, React.HTMLAttributes<HTMLElement> {}
+
+export interface AccordionPanelState extends ComponentState<AccordionPanelSlots>, React.HTMLAttributes<HTMLElement> {
   /**
    * Ref to the root slot
    */

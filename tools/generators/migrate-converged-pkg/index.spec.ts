@@ -118,7 +118,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           preserveConstEnums: true,
           target: 'ES5',
-          types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+          types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
@@ -141,6 +141,7 @@ describe('migrate-converged-pkg generator', () => {
         'jest',
         'custom-global',
         'inline-style-expand-shorthand',
+        'storybook__addons',
         '@testing-library/jest-dom',
         'foo-bar',
       ]);
@@ -304,7 +305,11 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "import * as rootPreview from '../../../.storybook/preview';
 
-        export const decorators = [...rootPreview.decorators];"
+        /** @type {typeof rootPreview.decorators} */
+        export const decorators = [...rootPreview.decorators];
+
+        /** @type {typeof rootPreview.parameters} */
+        export const parameters = { ...rootPreview.parameters };"
       `);
     });
 
@@ -516,6 +521,7 @@ describe('migrate-converged-pkg generator', () => {
           "start": "just-scripts dev:storybook",
           "start-test": "just-scripts jest-watch",
           "test": "just-scripts test",
+          "test:watch": "just-scripts jest-watch",
           "update-snapshots": "just-scripts jest -u",
         }
       `);
@@ -533,7 +539,7 @@ describe('migrate-converged-pkg generator', () => {
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
-        start: 'storybook',
+        start: 'yarn storybook',
         storybook: 'start-storybook',
         test: 'jest',
       });
@@ -675,6 +681,7 @@ function setupDummyPackage(
         start: 'just-scripts dev:storybook',
         'start-test': 'just-scripts jest-watch',
         test: 'just-scripts test',
+        'test:watch': 'just-scripts jest-watch',
         'update-snapshots': 'just-scripts jest -u',
       },
       dependencies: normalizedOptions.dependencies,
