@@ -27,7 +27,7 @@ if (typeof slot === 'string' && children === undefined) {
 
 ## Problem statement
 
-The verification of only allowing native elements to be rendered if this element present `children` as property breaks in some edge cases
+The verification of only allowing native elements to be rendered if a `children` property is provided breaks in some edge cases.
 
 ### [Empty Elements]
 
