@@ -1,13 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { TooltipState } from './Tooltip.types';
-import { Theme } from '@fluentui/react-theme';
-
-/**
- * The height of the triangle used for the arrow that points at the tooltip's target
- */
-export const arrowHeight = 6;
-
-export const tooltipBorderRadius = (theme: Theme) => theme.global.borderRadius.medium;
 
 /**
  * Styles for the tooltip
@@ -21,7 +13,7 @@ const useStyles = makeStyles({
     fontFamily: theme.global.type.fontFamilies.base,
     fontSize: theme.global.type.fontSizes.base[200],
     lineHeight: theme.global.type.lineHeights.base[200],
-    borderRadius: tooltipBorderRadius(theme),
+    borderRadius: theme.global.borderRadius.medium, // Update tooltipBorderRadius in useTooltip.tsx if this changes
 
     background: theme.alias.color.neutral.neutralForeground2, // TODO should be neutralBackgroundInverted
     color: theme.alias.color.neutral.neutralForegroundInverted,
@@ -43,8 +35,8 @@ const useStyles = makeStyles({
 
   arrow: theme => ({
     position: 'absolute',
-    width: `${Math.SQRT2 * arrowHeight}px`,
-    height: `${Math.SQRT2 * arrowHeight}px`,
+    width: '8.485px', //  width and height = arrowHeight * sqrt(2)
+    height: '8.485px', // Update arrowHeight in useTooltip.tsx if this changes
     background: 'inherit',
     visibility: 'hidden',
     zIndex: -1,

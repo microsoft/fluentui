@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Publish package",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "87ab56f142ad5f10d772ba339ea26d84600ac965",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add aria-owns to wrapping element of comboboxes and pickers for better virtual cursor screen reader support",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
