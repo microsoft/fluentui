@@ -13,5 +13,3 @@ const useStyles = makeStyles({
  * Text wrapper component for the Title 3 typography variant
  */
 export const Title3 = createWrapper({ useStyles, displayName: 'Title3' });
-
-Title3.displayName = 'Title3';
