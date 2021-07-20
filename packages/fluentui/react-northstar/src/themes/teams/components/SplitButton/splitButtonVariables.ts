@@ -75,8 +75,8 @@ export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButt
     toggleButtonBorderColor: siteVars.colorScheme.default.border,
     toggleButtonBoxShadow: siteVars.shadowLevel1,
 
-    toggleButtonColorHover: siteVars.colorScheme.brand.foregroundHover,
-    toggleButtonBackgroundColorHover: siteVars.colorScheme.default.backgroundHover2,
+    toggleButtonColorHover: siteVars.colorScheme.default.foregroundHover,
+    toggleButtonBackgroundColorHover: siteVars.colorScheme.default.backgroundHover1,
     toggleButtonBorderColorHover: siteVars.colorScheme.default.borderHover,
 
     toggleButtonColorActive: siteVars.colorScheme.default.foregroundPressed,

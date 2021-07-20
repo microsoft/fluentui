@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar } from '@fluentui/react';
+import { Calendar, defaultCalendarStrings } from '@fluentui/react';
 
 export const CalendarInlineSixWeeksExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -12,7 +12,14 @@ export const CalendarInlineSixWeeksExample: React.FunctionComponent = () => {
     <div style={{ height: '360px' }}>
       <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
 
-      <Calendar showSixWeeksByDefault showGoToToday onSelectDate={onSelectDate} value={selectedDate} />
+      <Calendar
+        showSixWeeksByDefault
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
+      />
     </div>
   );
 };

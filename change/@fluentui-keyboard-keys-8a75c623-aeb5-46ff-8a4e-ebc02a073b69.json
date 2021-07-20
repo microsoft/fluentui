@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Publish package",
+  "packageName": "@fluentui/keyboard-keys",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
