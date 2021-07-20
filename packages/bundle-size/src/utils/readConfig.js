@@ -19,7 +19,7 @@ let cache;
 /**
  * @returns {Promise<Config>}
  *
- * @param {Boolean} quiet
+ * @param {Boolean | undefined} quiet
  */
 async function readConfig(quiet) {
   // don't use the cache in tests
