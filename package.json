@@ -89,7 +89,6 @@
     "@storybook/addon-docs": "6.2.9",
     "@storybook/addon-essentials": "6.2.9",
     "@storybook/addon-knobs": "6.2.9",
-    "@storybook/addon-postcss": "2.0.0",
     "@storybook/addons": "6.2.9",
     "@storybook/channels": "6.2.9",
     "@storybook/core": "6.2.9",
