@@ -32,7 +32,18 @@ const CarouselClickableContentExample = () => {
   return (
     <>
       {clicked && <div className={selectors.HiddenContent}>First Hidden</div>}
-      <Carousel className={selectors.CarouselClass} ariaRoleDescription="carousel" items={carouselItems} />
+      <Carousel
+        navigation={{
+          'aria-label': 'people portraits',
+          items: carouselItems.map((item, index) => ({
+            key: item.id,
+            'aria-controls': item.id,
+          })),
+        }}
+        className={selectors.CarouselClass}
+        ariaRoleDescription="carousel"
+        items={carouselItems}
+      />
     </>
   );
 };
