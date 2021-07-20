@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jul 2021 22:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.13)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.12..@fluentui/react-aria_v9.0.0-alpha.13)
+
+### Changes
+
+- chore(react-aria): Replace keyboard-key with keyboard-keys ([PR #19016](https://github.com/microsoft/fluentui/pull/19016) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.12)
 
