@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as _ from 'lodash';
-import { ATTRIBUTE_NAME_ERROR_ID } from 'ability-attributes/dist/DevEnvTypes';
+import { ATTRIBUTE_NAME_ERROR_ID, ErrorReporter } from 'ability-attributes/dist/DevEnvTypes';
 import { setup } from 'ability-attributes/dist/DevEnv';
 import { AccessibilityError } from '../accessibility/types';
 
@@ -19,41 +18,44 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
   window,
   onErrorsChanged,
 }) => {
-  // const [errors, setErrors] = React.useState<AccessibilityError>();
+  const [errors, setErrors] = React.useState<AccessibilityError[]>();
   React.useMemo(() => {
     setup({
       enforceClasses: false,
       ignoreUnknownClasses: true,
       window,
-      errorReporter: {
-        dismiss(element: HTMLElement) {
-          console.log('dismiss - WHAT?!');
-        },
-        remove(element: HTMLElement) {
-          // console.log('remove', element);
-          const [builderId, errorId] = (element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? '').split(':');
-          element.removeAttribute(ATTRIBUTE_NAME_ERROR_ID);
-          // if (builderId && errorId) {
-          // setErrors(({ [builderId]: { [`${builderId}:${errorId}`]: __, ...errorsForBuilderId }, ...errors }) => ({
-          //  ...errors,
-          //  ...(!_.isEmpty(errorsForBuilderId) && { [builderId]: errorsForBuilderId }),
-          // }));
-          // }
-        },
-        report(element: HTMLElement, error: any /* AbilityAttributesError */) {
-          console.log('report', element, error);
-          const builderId = getBuilderId(element);
-
-          const errorId = element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? `${builderId}:${++_lastId}`;
-          element.setAttribute(ATTRIBUTE_NAME_ERROR_ID, errorId);
-
-          // setErrors(errors => ({ ...errors, [builderId]: { ...errors?.[builderId], [errorId]: error.message } }));
-        },
-        toggle() {
-          console.log('toggle - WHAT?!');
-        },
-      },
     });
+    const errorReporter: ErrorReporter = {
+      dismiss(element: HTMLElement) {
+        console.log('dismiss - WHAT?!');
+      },
+      remove(element: HTMLElement) {
+        console.log('remove', element);
+        const [builderId, errorId] = (element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? '').split(':');
+        element.removeAttribute(ATTRIBUTE_NAME_ERROR_ID);
+        if (builderId && errorId) {
+          console.log(builderId, errorId);
+        }
+        /* setErrors(({ [builderId]: { [`${builderId}:${errorId}`]: __, ...errorsForBuilderId }, ...errors }) => ({
+          ...errors,
+          ...(!_.isEmpty(errorsForBuilderId) && { [builderId]: errorsForBuilderId }),
+        }));
+         } */
+      },
+      report(element: HTMLElement, error: any /* AbilityAttributesError */) {
+        console.log('report', element, error);
+        const builderId = getBuilderId(element);
+
+        const errorId = element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? `${builderId}:${++_lastId}`;
+        element.setAttribute(ATTRIBUTE_NAME_ERROR_ID, errorId);
+
+        setErrors(errors => ({ ...errors, [builderId]: { ...errors?.[builderId], [errorId]: error.message } }));
+      },
+      toggle() {
+        console.log('toggle - WHAT?!');
+      },
+    };
+    return errorReporter;
   }, [window]);
 
   React.useMemo(() => {

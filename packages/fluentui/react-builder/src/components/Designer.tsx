@@ -235,14 +235,21 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement;
 
   const handlePropUpdate = React.useCallback(async () => {
-    const errors = await runAndEvaluateAxe(match => match && match[1] === selectedComponent.uuid);
-    dispatch({ type: 'PROP_UPDATED', component: selectedComponent, componentAccessibilityErrors: errors });
+    const axeErrors = await runAndEvaluateAxe(match => match && match[1] === selectedComponent.uuid);
+    dispatch({ type: 'PROP_UPDATED', component: selectedComponent, componentAccessibilityErrors: axeErrors });
   }, [dispatch, selectedComponent]);
 
   const handleDesignerLoaded = React.useCallback(async () => {
-    const errors = await runAndEvaluateAxe(match => match != null);
-    dispatch({ type: 'DESIGNER_LOADED', accessibilityErrors: errors });
+    const axeErrors = await runAndEvaluateAxe(match => match != null);
+    dispatch({ type: 'DESIGNER_LOADED', accessibilityErrors: axeErrors });
   }, [dispatch]);
+
+  const handleWindowAccessibilityErrors = React.useCallback(
+    (errors: AccessibilityError[]) => {
+      dispatch({ type: 'WINDOW_ERRORS_CHANGED', accessibilityErrors: errors });
+    },
+    [dispatch],
+  );
 
   const runAndEvaluateAxe = async (match: (match: RegExpMatchArray) => boolean) => {
     const { violations } = await runAxe();
@@ -265,7 +272,6 @@ export const Designer: React.FunctionComponent = () => {
     return errors;
   };
 
-  const runAndEvaluateAbilityAttributes = () => {};
   React.useEffect(() => {
     setTimeout(() => {
       handleDesignerLoaded();
@@ -404,6 +410,7 @@ export const Designer: React.FunctionComponent = () => {
         onPropChange={handlePropChange}
         onPropDelete={handlePropDelete}
         onPropUpdate={handlePropUpdate}
+        onWindowAccessibilityErrors={handleWindowAccessibilityErrors}
         onSelectComponent={handleSelectComponent}
         onSourceCodeChange={handleSourceCodeChange}
         onSourceCodeError={handleSourceCodeError}

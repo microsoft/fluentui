@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Reducer, useImmerReducer } from 'use-idfrrrmmer';
+import { Reducer, useImmerReducer } from 'use-immer';
 import { JSONTreeElement } from '../components/types';
 import { ComponentInfo } from '../componentInfo/types';
 import { focusTreeTitle, getDefaultJSONTree } from './utils';
@@ -60,6 +60,7 @@ export type DesignerAction =
   | { type: 'CLOSE_ADD_DIALOG' }
   | { type: 'DESIGNER_LOADED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'ADD_COMPONENT'; component: string; module: string }
+  | { type: 'WINDOW_ERRORS_CHANGED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'PROP_UPDATED'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
@@ -296,6 +297,11 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       // add the accesibility errors for the component
       draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
+      break;
+    }
+
+    case 'WINDOW_ERRORS_CHANGED': {
+      console.log(action.accessibilityErrors);
       break;
     }
 

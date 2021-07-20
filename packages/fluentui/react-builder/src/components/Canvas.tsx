@@ -30,6 +30,7 @@ export type CanvasProps = {
   onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onDeleteSelectedComponent?: () => void;
   onGoToParentComponent?: () => void;
+  onWindowAccessibilityErrors?: (errors: AccessibilityError[]) => void;
   renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   enabledVirtualCursor?: boolean;
   style?: React.CSSProperties;
@@ -61,6 +62,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   inUseMode,
   setHeaderMessage,
   selectedComponentAccessibilityErrors,
+  onWindowAccessibilityErrors,
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
@@ -387,7 +389,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
-            <AbilityAttributesValidator window={window} onErrorsChanged={onAccessibilityErrorsChanged} />
+            <AbilityAttributesValidator window={window} onErrorsChanged={onWindowAccessibilityErrors} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{

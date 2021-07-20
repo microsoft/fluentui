@@ -337,5 +337,7 @@
       }
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "ability-attributes": "0.0.8"
+  }
 }

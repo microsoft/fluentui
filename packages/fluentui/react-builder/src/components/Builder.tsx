@@ -42,6 +42,7 @@ export type BuilderProps = {
   onSourceCodeError: (code: any, error: any) => void;
   onSwitchTab?: (tab: any) => void;
   onSwitchToStore: () => void;
+  onWindowAccessibilityErrors: (errors: AccessibilityError[]) => void;
   selectedComponent: JSONTreeElement;
   selectedComponentAccessibilityErrors: AccessibilityError[];
   selectedComponentInfo: ComponentInfo;
@@ -85,6 +86,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         onSelectComponent={props.onSelectComponent}
         onSourceCodeChange={props.onSourceCodeChange}
         onSourceCodeError={props.onSourceCodeError}
+        onWindowAccessibilityErrors={props.onWindowAccessibilityErrors}
         selectedComponent={props.selectedComponent}
         selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
         showJSONTree={props.showJSONTree}
