@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.17)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.16..@fluentui/react-context-selector_v9.0.0-alpha.17)
+
+### Changes
+
+- feat(useHasParentContext): new hook to determine if a context provider exists as parent ([PR #18812](https://github.com/microsoft/fluentui/pull/18812) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.16)
 

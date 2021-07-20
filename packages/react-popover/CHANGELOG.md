@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jul 2021 07:36:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.18)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.17..@fluentui/react-popover_v9.0.0-alpha.18)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.17 ([PR #18812](https://github.com/microsoft/fluentui/pull/18812) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.17)
 

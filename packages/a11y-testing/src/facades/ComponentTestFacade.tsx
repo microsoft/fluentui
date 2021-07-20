@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Props, PropValue, TestFacade } from '../types';
 import { ReactWrapper, mount } from 'enzyme';
+import { Enter, Space, keyCodes } from '@fluentui/keyboard-keys';
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,18 +84,18 @@ export class ComponentTestFacade implements TestFacade {
 
   public pressSpaceKey(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 32 });
+      this.renderedComponent.simulate('keydown', { keyCode: keyCodes.Space, key: Space });
       return;
     }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32 });
+    this.renderedComponent.find(selector).simulate('keydown', { keyCode: keyCodes.Space, key: Space });
   }
 
   public pressEnterKey(selector: string) {
     if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 13 });
+      this.renderedComponent.simulate('keydown', { keyCode: keyCodes.Enter, key: Enter });
       return;
     }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13 });
+    this.renderedComponent.find(selector).simulate('keydown', { keyCode: keyCodes.Enter, key: Enter });
   }
 
   public forProps = (props: Props): TestFacade => {

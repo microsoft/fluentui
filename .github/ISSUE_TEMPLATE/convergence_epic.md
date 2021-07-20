@@ -10,6 +10,7 @@ completed as part of converging a component. More info can be found here: https:
 
 # Preparation:
 
+- [ ] Started prep
 - [ ] Open UI Research complete
   - [link to https://open-ui.org/]
 - [ ] Comparison on v8 and v0 complete
@@ -24,6 +25,7 @@ completed as part of converging a component. More info can be found here: https:
 
 [link to react-* package folder]
 
+- [ ] Started impl
 - [ ] Implement component
 - [ ] Add storybook stories
 - [ ] Using hooks
@@ -43,6 +45,7 @@ completed as part of converging a component. More info can be found here: https:
 
 # Validation
 
+- [ ] Started validating
 - [ ] Add and validate in UI Builder
 - [ ] Add and validate in docs site
 - [ ] Validate with token pipeline

@@ -384,6 +384,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
   class="ms-ComboBox-container "
 >
   <div
+    aria-owns="ComboBox0-list"
     class=
         ms-ComboBox
         is-open
@@ -505,8 +506,8 @@ exports[`ComboBox Renders correctly when open 1`] = `
     <input
       aria-activedescendant="ComboBox0-list3"
       aria-autocomplete="both"
+      aria-controls="ComboBox0-list"
       aria-expanded="true"
-      aria-owns="ComboBox0-list"
       autocapitalize="off"
       autocomplete="off"
       class=
@@ -1150,6 +1151,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
   class="ms-ComboBox-container "
 >
   <div
+    aria-owns="ComboBox0-list"
     class=
         ms-ComboBox
         is-open
@@ -1271,8 +1273,8 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
     <input
       aria-activedescendant="ComboBox0-list3"
       aria-autocomplete="both"
+      aria-controls="ComboBox0-list"
       aria-expanded="true"
-      aria-owns="ComboBox0-list"
       autocapitalize="off"
       autocomplete="off"
       class=

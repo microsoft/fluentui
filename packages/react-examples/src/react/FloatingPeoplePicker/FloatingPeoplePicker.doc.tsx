@@ -23,9 +23,6 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
       view: <FloatingPeoplePickerTypesSelectableFooterExample />,
     },
   ],
-  propertiesTablesSources: [
-    require('!raw-loader?esModule=false!@fluentui/react/src/components/FloatingPicker/BaseFloatingPicker.types.ts') as string,
-  ],
   overview: require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FloatingPeoplePicker/docs/FloatingPeoplePickerOverview.md') as string,
   bestPractices: require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FloatingPeoplePicker/docs/FloatingPeoplePickerBestPractices.md') as string,
   dos: require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FloatingPeoplePicker/docs/FloatingPeoplePickerDos.md') as string,

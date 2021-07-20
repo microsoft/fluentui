@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, ICalendarDayProps } from '@fluentui/react';
+import { Calendar, ICalendarDayProps, defaultCalendarStrings } from '@fluentui/react';
 
 const calendarDayProps: Partial<ICalendarDayProps> = {
   customDayCellRef: (element, date, classNames) => {
@@ -29,6 +29,8 @@ export const CalendarInlineCustomDayCellRefExample: React.FunctionComponent = ()
         calendarDayProps={calendarDayProps}
         onSelectDate={onSelectDate}
         value={selectedDate}
+        // Calendar uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultCalendarStrings}
       />
     </div>
   );

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Jul 2021 07:31:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.0)
+
+Mon, 19 Jul 2021 07:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.2.39..@fluentui/react-docsite-components_v8.3.0)
+
+### Minor changes
+
+- Delete unused styling files ([PR #18957](https://github.com/microsoft/fluentui/pull/18957) by elcraig@microsoft.com)
+
+## [8.2.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.2.39)
+
+Fri, 16 Jul 2021 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.2.38..@fluentui/react-docsite-components_v8.2.39)
+
+### Patches
+
+- Bump @fluentui/react to v8.23.4 ([PR #18909](https://github.com/microsoft/fluentui/pull/18909) by ilrosen@microsoft.com)
+
+## [8.2.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.2.38)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.2.37..@fluentui/react-docsite-components_v8.2.38)
+
+### Patches
+
+- Accessibility fixes for nav, feedback list, header, properties table ([PR #18928](https://github.com/microsoft/fluentui/pull/18928) by elcraig@microsoft.com)
+
+## [8.2.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.2.37)
+
+Wed, 14 Jul 2021 07:28:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.2.36..@fluentui/react-docsite-components_v8.2.37)
+
+### Patches
+
+- Bump @fluentui/react to v8.23.2 ([PR #18853](https://github.com/microsoft/fluentui/pull/18853) by makopch@microsoft.com)
 
 ## [8.2.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.2.36)
 

@@ -4,6 +4,7 @@
 
 ```ts
 
+import { ARIAButtonProps } from '@fluentui/react-aria';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
@@ -83,7 +84,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    button: React_2.ButtonHTMLAttributes<HTMLElement>;
+    button: ARIAButtonProps;
     expandIcon: AccordionHeaderExpandIconProps;
     icon: React_2.HTMLAttributes<HTMLElement>;
     children: React_2.HTMLAttributes<HTMLElement>;
