@@ -13,34 +13,21 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       height: StyleConstants.inputControlHeight,
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
-      color: semanticColors.buttonText,
       selectors: {
         // standard button
         '&.is-expanded': {
           color: semanticColors.buttonTextHovered,
           borderColor: semanticColors.inputBorderHovered,
         },
-        '&.ms-Button--primary.is-disabled': {
-          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-          color: semanticColors.primaryButtonTextDisabled,
-          border: `${StyleConstants.borderWidth} solid
-          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
-        },
         '&.ms-Button--primary': {
-          backgroundColor: semanticColors.primaryButtonBackground,
           height: StyleConstants.inputControlHeight,
           padding: '0px 16px',
-          color: semanticColors.primaryButtonText,
           border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
           selectors: {
             ':hover': {
-              backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-              color: semanticColors.primaryButtonTextHovered,
               borderColor: semanticColors.primaryButtonBackgroundHovered,
             },
             ':active': {
-              backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-              color: semanticColors.primaryButtonTextPressed,
               borderColor: semanticColors.primaryButtonBackgroundPressed,
             },
             ':focus': {
@@ -50,12 +37,11 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
             },
           },
         },
+        '&.ms-Button--primary.is-disabled': {
+          border: `${StyleConstants.borderWidth} solid
+          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+        },
       },
-    },
-    rootDisabled: {
-      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-      color: semanticColors.primaryButtonTextDisabled,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
       selectors: {
@@ -68,28 +54,21 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       fill: semanticColors.buttonTextHovered,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
     },
-    rootHovered: {
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
-    },
-    rootPressed: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonTextHovered,
-    },
     rootChecked: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
-      color: semanticColors.buttonTextHovered,
     },
     rootCheckedHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
     },
     rootCheckedPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       color: semanticColors.buttonTextHovered,
+    },
+    rootDisabled: {
+      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+      color: semanticColors.primaryButtonTextDisabled,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     splitButtonContainer: {
       selectors: {
