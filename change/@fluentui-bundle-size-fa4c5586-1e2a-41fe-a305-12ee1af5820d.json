@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(bundle-size): Allow custom webpack config, prepare publish",
+  "packageName": "@fluentui/bundle-size",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

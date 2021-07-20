@@ -24,6 +24,50 @@ export default {
 };
 ```
 
+### Configuration
+
+For custom advanced behavior of `bundle-size`, you can create a `bundle-size.config.js` in the root of your project directory (next to `package.json`).
+
+```
+my-proj/
+├─ src/
+├─ bundle-size.config.js
+├─ node_modules/
+├─ bundle-size/
+│  ├─ Fixture.fixture.js
+├─ package.json
+```
+
+A global configuration can also be used for monorepo scenarios
+
+```
+my-proj-a/
+├─ src/
+├─ node_modules/
+├─ bundle-size/
+│  ├─ Fixture.fixture.js
+├─ package.json
+my-proj-b/
+├─ src/
+├─ node_modules/
+├─ bundle-size/
+│  ├─ Fixture.fixture.js
+├─ package.json
+bundle-size.config.js
+
+```
+
+#### Config API
+
+```js
+module.exports = {
+  webpack: config => {
+    // customize config here
+    return config;
+  },
+};
+```
+
 ### Commands
 
 #### `compare-reports`
