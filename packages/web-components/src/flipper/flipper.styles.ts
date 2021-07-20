@@ -10,16 +10,15 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
+  controlCornerRadius,
+  designUnit,
   disabledOpacity,
   focusStrokeOuter,
+  focusStrokeWidth,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
-  strokeWidth,
 } from '../design-tokens';
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
@@ -28,8 +27,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
 ) =>
   css`
     ${display('inline-flex')} :host {
-      width: calc(${heightNumber} * 1px);
-      height: calc(${heightNumber} * 1px);
+      height: calc((${heightNumber} + ${designUnit}) * 1px);
       justify-content: center;
       align-items: center;
       margin: 0;
@@ -37,33 +35,25 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       fill: currentcolor;
       color: ${neutralForegroundRest};
       background: transparent;
-      border: none;
+      box-sizing: border-box;
+      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
       outline: none;
       padding: 0;
+      outline: none;
     }
 
     :host::before {
       content: '';
       opacity: 0.8;
       background: ${neutralFillStealthRest};
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      border-radius: 50%;
+      border-radius: inherit;
       position: absolute;
       top: 0;
       right: 0;
       left: 0;
       bottom: 0;
       transition: all 0.1s ease-in-out;
-    }
-
-    .next,
-    .previous {
-      position: relative;
-      ${
-        /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-      } width: 16px;
-      height: 16px;
     }
 
     :host(.disabled) {
@@ -77,21 +67,14 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
 
     :host(:hover)::before {
       background: ${neutralFillStealthHover};
-      border-color: ${neutralStrokeHover};
-    }
-
-    :host(:${focusVisible}) {
-      outline: none;
-    }
-
-    :host(:${focusVisible})::before {
-      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
-      border-color: ${focusStrokeOuter};
     }
 
     :host(:active)::before {
       background: ${neutralFillStealthActive};
-      border-color: ${neutralStrokeActive};
+    }
+
+    :host(:${focusVisible})::before {
+      border-color: ${focusStrokeOuter};
     }
 
     :host::-moz-focus-inner {

@@ -17,6 +17,7 @@ import {
   controlCornerRadius,
   designUnit,
   disabledOpacity,
+  fillColor,
   focusStrokeInner,
   focusStrokeOuter,
   focusStrokeWidth,
@@ -28,7 +29,6 @@ import {
   neutralFillRest,
   neutralFillStealthRest,
   neutralForegroundRest,
-  neutralLayerFloating,
   neutralStrokeActive,
   neutralStrokeHover,
   neutralStrokeRest,
@@ -65,6 +65,7 @@ export const selectStyles = (context, definition) =>
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
       box-sizing: border-box;
       color: ${neutralForegroundRest};
+      fill: currentcolor;
       font-family: ${bodyFont};
       height: calc(${heightNumber} * 1px);
       position: relative;
@@ -75,7 +76,7 @@ export const selectStyles = (context, definition) =>
 
     .listbox {
       ${elevation}
-      background: ${neutralLayerFloating};
+      background: ${fillColor};
       border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;
       display: inline-flex;
@@ -128,12 +129,12 @@ export const selectStyles = (context, definition) =>
       box-shadow: none;
     }
 
-    :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
+    /*:host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
       box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
       border-color: ${focusStrokeOuter};
       background: ${accentFillFocus};
       color: ${foregroundOnAccentFocus};
-    }
+    }*/
 
     :host([disabled]) {
       cursor: ${disabledCursor};
@@ -158,23 +159,11 @@ export const selectStyles = (context, definition) =>
     }
 
     :host([open][position='above']) .listbox {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+      bottom: calc((${heightNumber} + ${designUnit} * 2) * 1px);
     }
 
     :host([open][position='below']) .listbox {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-
-    :host([open][position='above']) .listbox {
-      border-bottom: 0;
-      bottom: calc(${heightNumber} * 1px);
-    }
-
-    :host([open][position='below']) .listbox {
-      border-top: 0;
-      top: calc(${heightNumber} * 1px);
+      top: calc((${heightNumber} + ${designUnit} * 2) * 1px);
     }
 
     .selected-value {
@@ -199,21 +188,19 @@ export const selectStyles = (context, definition) =>
       ${elevation}
     }
 
+    .start {
+      margin-inline-end: 11px;
+    }
+
     .end {
-      margin-inline-start: auto;
+      margin-inline-start: 11px;
     }
 
     .start,
     .end,
     .indicator,
-    .select-indicator,
     ::slotted(svg) {
-      ${`` /* Glyph size is temporary - replace when glyph-size var is added */}
-      fill: currentcolor;
-      height: 1em;
-      min-height: calc(${designUnit} * 4px);
-      min-width: calc(${designUnit} * 4px);
-      width: 1em;
+      display: flex;
     }
 
     ::slotted([role='option']) {

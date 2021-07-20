@@ -6,16 +6,17 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
 /**
  * @internal
  */
-export function neutralFillContrast(
+export function contrastSetRecipe(
   palette: Palette,
   reference: Swatch,
+  baseContrast: number,
   restDelta: number,
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
 ): InteractiveSwatchSet {
   const direction = directionByIsDark(reference);
-  const accessibleIndex = palette.closestIndexOf(palette.colorContrast(reference, 4.5));
+  const accessibleIndex = palette.closestIndexOf(palette.colorContrast(reference, baseContrast));
   const accessibleIndex2 = accessibleIndex + direction * Math.abs(restDelta - hoverDelta);
   const indexOneIsRest = direction === 1 ? restDelta < hoverDelta : direction * restDelta > direction * hoverDelta;
   let restIndex: number;

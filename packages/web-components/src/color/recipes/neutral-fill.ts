@@ -21,8 +21,7 @@ export function neutralFill(
   focusDelta: number,
 ): InteractiveSwatchSet {
   const referenceIndex = palette.closestIndexOf(reference);
-  const threshold = Math.max(restDelta, hoverDelta, activeDelta, focusDelta);
-  const direction = referenceIndex >= threshold ? -1 : 1;
+  const direction = -1;
 
   return {
     rest: palette.get(referenceIndex + direction * restDelta),

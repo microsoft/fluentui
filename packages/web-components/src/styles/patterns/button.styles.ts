@@ -29,6 +29,9 @@ import {
   neutralStrokeActive,
   neutralStrokeHover,
   neutralStrokeRest,
+  strokeControlActive,
+  strokeControlHover,
+  strokeControlRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -40,13 +43,16 @@ import {
 export const baseButtonStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
+      position: relative;
+      box-sizing: border-box;
       font-family: ${bodyFont};
       outline: none;
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
       height: calc(${heightNumber} * 1px);
       min-width: calc(${heightNumber} * 1px);
-      background-color: ${neutralFillRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${strokeControlRest};
+      border: calc(${strokeWidth} * 1px) solid transparent;
       color: ${neutralForegroundRest};
       border-radius: calc(${controlCornerRadius} * 1px);
       fill: currentcolor;
@@ -54,8 +60,7 @@ export const baseButtonStyles = (context, definition) =>
     }
 
     .control {
-      background: transparent;
-      height: inherit;
+      background: inherit;
       flex-grow: 1;
       box-sizing: border-box;
       display: inline-flex;
@@ -65,7 +70,7 @@ export const baseButtonStyles = (context, definition) =>
       white-space: nowrap;
       outline: none;
       text-decoration: none;
-      border: calc(${strokeWidth} * 1px) solid transparent;
+      border: none;
       color: inherit;
       border-radius: inherit;
       fill: inherit;
@@ -85,11 +90,13 @@ export const baseButtonStyles = (context, definition) =>
     }
 
     :host(:hover) {
-      background-color: ${neutralFillHover};
+      background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
+        border-box ${strokeControlHover};
     }
 
     :host(:active) {
-      background-color: ${neutralFillActive};
+      background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
+        border-box ${strokeControlActive};
     }
 
     .control:${focusVisible} {
@@ -108,15 +115,6 @@ export const baseButtonStyles = (context, definition) =>
     .start,
     .end {
       display: flex;
-      pointer-events: none;
-    }
-
-    ::slotted(svg) {
-      ${
-        /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-      } width: 16px;
-      height: 16px;
       pointer-events: none;
     }
 
@@ -282,8 +280,11 @@ export const HypertextStyles = css`
     border-bottom-color: ${accentForegroundActive};
   }
   :host([appearance="hypertext"]) .control:${focusVisible} {
-    border-bottom: calc(${focusStrokeWidth} * 1px) solid ${focusStrokeOuter};
+    border-bottom: calc(${focusStrokeWidth} * 1px) solid transparent;
     margin-bottom: calc(calc(${strokeWidth} - ${focusStrokeWidth}) * 1px);
+  }
+  :host([appearance="hypertext"]) .control:${focusVisible}::after {
+    border-radius: calc(${controlCornerRadius} * 1px);
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(
@@ -310,7 +311,6 @@ export const LightweightButtonStyles = css`
     height: initial;
     border: none;
     box-shadow: none;
-    border-radius: 0;
   }
 
   :host([appearance='lightweight']:hover) {
@@ -332,19 +332,15 @@ export const LightweightButtonStyles = css`
     position: absolute;
     top: calc(1em + 3px);
     width: 100%;
+    background: ${accentForegroundRest};
   }
 
   :host([appearance='lightweight']:hover) .content::before {
-    background: ${accentForegroundHover};
+    background: transparent;
   }
 
   :host([appearance='lightweight']:active) .content::before {
-    background: ${accentForegroundActive};
-  }
-
-  :host([appearance="lightweight"]) .control:${focusVisible} .content::before {
-    background: ${neutralForegroundRest};
-    height: calc(${focusStrokeWidth} * 1px);
+    background: transparent;
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(

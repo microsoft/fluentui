@@ -10,23 +10,20 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
-  accentFillActive,
-  accentFillFocus,
-  accentFillHover,
-  accentFillRest,
+  accentForegroundRest,
   bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  focusStrokeInner,
   focusStrokeOuter,
   focusStrokeWidth,
-  foregroundOnAccentActive,
-  foregroundOnAccentFocus,
-  foregroundOnAccentHover,
-  foregroundOnAccentRest,
   neutralFillActive,
   neutralFillHover,
+  neutralFillRest,
+  neutralFillStealthActive,
+  neutralFillStealthFocus,
+  neutralFillStealthHover,
+  neutralFillStealthRest,
   neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -38,7 +35,9 @@ export const optionStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('inline-flex')} :host {
+      position: relative;
       font-family: ${bodyFont};
+      background: ${neutralFillStealthRest};
       border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${focusStrokeWidth} * 1px) solid transparent;
       box-sizing: border-box;
@@ -57,36 +56,58 @@ export const optionStyles: (
       white-space: nowrap;
     }
 
-    :host(:${focusVisible}) {
-      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
-      border-color: ${focusStrokeOuter};
-      background: ${accentFillFocus};
-      color: ${foregroundOnAccentFocus};
-    }
-
-    :host([aria-selected='true']) {
-      background: ${accentFillRest};
-      color: ${foregroundOnAccentRest};
+    :host::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: calc((${heightNumber} / 4) - ${focusStrokeWidth} * 1px);
+      width: 3px;
+      height: calc((${heightNumber} / 2) * 1px);
+      background: transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host(:hover) {
-      background: ${accentFillHover};
-      color: ${foregroundOnAccentHover};
+      background: ${neutralFillStealthHover};
     }
 
     :host(:active) {
-      background: ${accentFillActive};
-      color: ${foregroundOnAccentActive};
+      background: ${neutralFillStealthActive};
+    }
+
+    :host(:active)::before {
+      background: ${accentForegroundRest};
+      height: calc(((${heightNumber} / 2) - 6) * 1px);
+    }
+
+    :host([aria-selected='true'])::before {
+      background: ${accentForegroundRest};
+    }
+
+    :host(:${focusVisible}) {
+      border-color: ${focusStrokeOuter};
+      background: ${neutralFillStealthFocus};
+    }
+
+    :host([aria-selected='true']) {
+      background: ${neutralFillRest};
+    }
+
+    :host([aria-selected='true']:hover) {
+      background: ${neutralFillHover};
+    }
+
+    :host([aria-selected='true']:active) {
+      background: ${neutralFillActive};
     }
 
     :host(:not([aria-selected='true']):hover) {
-      background: ${neutralFillHover};
-      color: ${neutralForegroundRest};
+      background: ${neutralFillStealthHover};
     }
 
     :host(:not([aria-selected='true']):active) {
-      background: ${neutralFillActive};
-      color: ${neutralForegroundRest};
+      background: ${neutralFillStealthActive};
     }
 
     :host([disabled]) {
@@ -109,12 +130,6 @@ export const optionStyles: (
     .end,
     ::slotted(svg) {
       display: flex;
-    }
-
-    ::slotted(svg) {
-      ${/* Glyph size and margin-left is temporary - replace when adaptive typography is figured out */ ''}
-      height: calc(${designUnit} * 4px);
-      width: calc(${designUnit} * 4px);
     }
 
     ::slotted([slot='end']) {

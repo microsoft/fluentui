@@ -1,6 +1,7 @@
 import { Palette } from '../palette';
 import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
+import { directionByIsDark } from '../utilities/direction-by-is-dark';
 
 /**
  * @internal
@@ -17,19 +18,8 @@ export function neutralFillStealth(
   fillActiveDelta: number,
   fillFocusDelta: number,
 ): InteractiveSwatchSet {
-  const swapThreshold = Math.max(
-    restDelta,
-    hoverDelta,
-    activeDelta,
-    focusDelta,
-    fillRestDelta,
-    fillHoverDelta,
-    fillActiveDelta,
-    fillFocusDelta,
-  );
-
   const referenceIndex = palette.closestIndexOf(reference);
-  const direction: 1 | -1 = referenceIndex >= swapThreshold ? -1 : 1;
+  const direction = directionByIsDark(reference);
 
   return {
     rest: palette.get(referenceIndex + direction * restDelta),

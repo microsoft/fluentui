@@ -1,26 +1,56 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   AccordionItemOptions,
+  DesignToken,
   display,
   ElementDefinitionContext,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import { Swatch } from '../../color/swatch';
 import {
-  accentFillRest,
   bodyFont,
+  controlCornerRadius,
   density,
   designUnit,
   focusStrokeOuter,
   focusStrokeWidth,
+  neutralFillLayerAltRest,
+  neutralFillLayerRecipe,
+  neutralFillLayerRest,
+  neutralFillStealthRecipe,
   neutralForegroundRest,
-  neutralStrokeDividerRest,
+  neutralStrokeRest,
   strokeWidth,
-  typeRampMinus1FontSize,
-  typeRampMinus1LineHeight,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
 } from '../../design-tokens';
 import { heightNumber } from '../../styles/size';
+
+const neutralFillStealthRestOnNeutralFillLayerRest = DesignToken.create<Swatch>(
+  'neutral-fill-stealth-rest-on-neutral-fill-layer-rest',
+).withDefault((target: HTMLElement) => {
+  const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
+  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target)).rest;
+});
+
+const neutralFillStealthHoverOnNeutralFillLayerRest = DesignToken.create<Swatch>(
+  'neutral-fill-stealth-hover-on-neutral-fill-layer-rest',
+).withDefault((target: HTMLElement) => {
+  const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
+  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target)).hover;
+});
+
+const neutralFillStealthActiveOnNeutralFillLayerRest = DesignToken.create<Swatch>(
+  'neutral-fill-stealth-active-on-neutral-fill-layer-rest',
+).withDefault((target: HTMLElement) => {
+  const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
+  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target)).active;
+});
 
 export const accordionItemStyles: (
   context: ElementDefinitionContext,
@@ -31,20 +61,25 @@ export const accordionItemStyles: (
       box-sizing: border-box;
       font-family: ${bodyFont};
       flex-direction: column;
-      font-size: ${typeRampMinus1FontSize};
-      line-height: ${typeRampMinus1LineHeight};
-      border-bottom: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      background: ${neutralFillLayerRest};
+      color: ${neutralForegroundRest};
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     .region {
       display: none;
       padding: calc((6 + (${designUnit} * 2 * ${density})) * 1px);
+      background: ${neutralFillLayerAltRest};
     }
 
     .heading {
       display: grid;
       position: relative;
-      grid-template-columns: auto 1fr auto calc(${heightNumber} * 1px);
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
       z-index: 2;
     }
 
@@ -58,14 +93,9 @@ export const accordionItemStyles: (
       padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
       text-align: left;
       height: calc(${heightNumber} * 1px);
-      color: ${neutralForegroundRest};
+      color: inherit;
       cursor: pointer;
       font-family: inherit;
-    }
-
-    .button:hover,
-    .button:active {
-      color: ${neutralForegroundRest};
     }
 
     .button::before {
@@ -87,6 +117,7 @@ export const accordionItemStyles: (
 
     :host(.expanded) .region {
       display: block;
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
     }
 
     .icon {
@@ -96,7 +127,20 @@ export const accordionItemStyles: (
       grid-column: 4;
       z-index: 2;
       pointer-events: none;
-      fill: ${accentFillRest};
+      background: ${neutralFillStealthRestOnNeutralFillLayerRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      fill: currentcolor;
+      width: calc(${heightNumber} * 1px);
+      height: calc(${heightNumber} * 1px);
+      margin: calc(${designUnit} * 2 * 1px);
+    }
+
+    .heading:hover .icon {
+      background: ${neutralFillStealthHoverOnNeutralFillLayerRest};
+    }
+
+    .heading:active .icon {
+      background: ${neutralFillStealthActiveOnNeutralFillLayerRest};
     }
 
     slot[name='collapsed-icon'] {

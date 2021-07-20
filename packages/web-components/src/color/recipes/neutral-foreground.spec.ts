@@ -8,13 +8,13 @@ describe('neutralForeground', (): void => {
 
   it('should return correct result with default design system values', (): void => {
     expect(
-      neutralForeground(neutralPalette, neutralPalette.get(88)).contrast(
+      neutralForeground(neutralPalette, neutralPalette.get(88), 14, 2, 4, 0).rest.contrast(
         neutralPalette.get(neutralPalette.swatches.length - 1),
       ),
     ).to.be.gte(14);
   });
 
   it('should return #FFFFFF with a dark background', (): void => {
-    expect(neutralForeground(neutralPalette, white).contrast(white)).to.be.gte(14);
+    expect(neutralForeground(neutralPalette, white, 14, 2, 4, 0).rest.contrast(white)).to.be.gte(14);
   });
 });

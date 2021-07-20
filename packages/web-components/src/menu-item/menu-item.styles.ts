@@ -37,7 +37,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       outline: none;
       box-sizing: border-box;
       height: calc(${heightNumber} * 1px);
-      grid-template-columns: minmax(42px, auto) 1fr minmax(42px, auto);
+      grid-template-columns: minmax(32px, auto) 1fr minmax(32px, auto);
       grid-template-rows: auto;
       justify-items: center;
       align-items: center;
@@ -54,7 +54,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host(.indent-0) {
-      grid-template-columns: auto 1fr minmax(42px, auto);
+      grid-template-columns: auto 1fr minmax(32px, auto);
     }
 
     :host(.indent-0) .content {
@@ -64,7 +64,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host(.indent-2) {
-      grid-template-columns: minmax(42px, auto) minmax(42px, auto) 1fr minmax(42px, auto) minmax(42px, auto);
+      grid-template-columns: minmax(32px, auto) minmax(32px, auto) 1fr minmax(32px, auto) minmax(32px, auto);
     }
 
     :host(.indent-2) .content {
@@ -95,7 +95,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       background: ${neutralFillStealthHover};
     }
 
-    :host([aria-checked='true']),
     :host(:active),
     :host(.expanded) {
       background: ${neutralFillStealthActive};
@@ -126,15 +125,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       justify-content: center;
     }
 
-    ::slotted(svg) {
-      ${
-        /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-      } width: 16px;
-      height: 16px;
-      display: flex;
-    }
-
     :host(:hover) .start,
     :host(:hover) .end,
     :host(:hover)::slotted(svg),
@@ -148,7 +138,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host(.indent-1[role='menuitemcheckbox']),
     :host(.indent-1[role='menuitemradio']) {
       display: grid;
-      grid-template-columns: minmax(42px, auto) auto 1fr minmax(42px, auto) minmax(42px, auto);
+      grid-template-columns: minmax(32px, auto) auto 1fr minmax(32px, auto) minmax(32px, auto);
       align-items: center;
       min-height: 32px;
     }
@@ -166,7 +156,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host([role='menuitemcheckbox']) .input-container,
     :host([role='menuitemradio']) .input-container {
       display: grid;
-      margin-inline-end: 10px;
     }
 
     :host([aria-haspopup='menu']) .content,
@@ -188,25 +177,14 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       align-items: center;
       justify-content: center;
       position: relative;
-      width: 20px;
-      height: 20px;
       box-sizing: border-box;
       outline: none;
-      margin-inline-start: 10px;
-    }
-
-    :host .checkbox {
-      border-radius: calc(${controlCornerRadius} * 1px);
-    }
-
-    :host .radio {
-      border-radius: 999px;
     }
 
     :host .checkbox-indicator,
     :host .radio-indicator,
-    ::slotted([slot='checkbox-indicator']),
-    ::slotted([slot='radio-indicator']) {
+    slot[name='checkbox-indicator'],
+    slot[name='radio-indicator'] {
       display: none;
     }
 
@@ -216,22 +194,10 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     }
 
     :host([aria-checked='true']) .checkbox-indicator,
-    :host([aria-checked='true']) ::slotted([slot='checkbox-indicator']) {
-      width: 100%;
-      height: 100%;
-      display: block;
-      fill: ${neutralForegroundRest};
-      pointer-events: none;
-    }
-
-    :host([aria-checked='true']) .radio-indicator {
-      display: block;
-      pointer-events: none;
-    }
-
-    :host([aria-checked='true']) ::slotted([slot='radio-indicator']) {
-      display: block;
-      pointer-events: none;
+    :host([aria-checked='true']) slot[name='checkbox-indicator'],
+    :host([aria-checked='true']) .radio-indicator,
+    :host([aria-checked='true']) slot[name='radio-indicator'] {
+      display: flex;
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

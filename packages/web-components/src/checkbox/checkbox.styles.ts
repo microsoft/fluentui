@@ -10,19 +10,24 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
+  accentFillActive,
+  accentFillHover,
+  accentFillRest,
   bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
   fillColor,
   focusStrokeOuter,
+  foregroundOnAccentRest,
   neutralFillInputActive,
+  neutralFillInputFocus,
   neutralFillInputHover,
   neutralFillInputRest,
   neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
+  strokeControlStrongActive,
+  strokeControlStrongHover,
+  strokeControlStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -51,7 +56,7 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       height: calc((${heightNumber} / 2 + ${designUnit}) * 1px);
       box-sizing: border-box;
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
+      border: calc(${strokeWidth} * 1px) solid ${strokeControlStrongRest};
       background: ${neutralFillInputRest};
       outline: none;
       cursor: pointer;
@@ -74,40 +79,57 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       line-height: ${typeRampBaseLineHeight};
     }
 
-    .checked-indicator {
+    slot[name='checked-indicator'],
+    slot[name='indeterminate-indicator'] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       height: 100%;
-      display: block;
       fill: ${neutralForegroundRest};
       opacity: 0;
       pointer-events: none;
     }
 
-    .indeterminate-indicator {
-      border-radius: calc((${controlCornerRadius} / 2) * 1px);
-      background: ${neutralForegroundRest};
+    slot[name='indeterminate-indicator'] {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50%;
-      height: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
+      top: 0;
     }
 
-    :host(:enabled) .control:hover {
+    :host(.checked) slot[name='checked-indicator'],
+    :host(.checked) slot[name='indeterminate-indicator'] {
+      fill: ${foregroundOnAccentRest};
+    }
+
+    :host(:enabled:hover) .control {
       background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeStrongHover};
+      border-color: ${strokeControlStrongHover};
     }
 
-    :host(:enabled) .control:active {
+    :host(:enabled:active) .control {
       background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeStrongActive};
+      border-color: ${strokeControlStrongActive};
     }
 
     :host(:${focusVisible}) .control {
-      box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
+      background: ${neutralFillInputFocus};
       border-color: ${focusStrokeOuter};
+    }
+
+    :host(.checked) .control {
+      background: ${accentFillRest};
+      border-color: transparent;
+    }
+
+    :host(.checked:enabled:hover) .control {
+      background: ${accentFillHover};
+      border-color: transparent;
+    }
+
+    :host(.checked:enabled:active) .control {
+      background: ${accentFillActive};
+      border-color: transparent;
     }
 
     :host(.disabled) .label,
@@ -117,8 +139,8 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       cursor: ${disabledCursor};
     }
 
-    :host(.checked:not(.indeterminate)) .checked-indicator,
-    :host(.indeterminate) .indeterminate-indicator {
+    :host(.checked:not(.indeterminate)) slot[name='checked-indicator'],
+    :host(.indeterminate) slot[name='indeterminate-indicator'] {
       opacity: 1;
     }
 
@@ -138,11 +160,11 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
           border-color: ${SystemColors.Highlight};
           background: ${SystemColors.Field};
         }
-        .checked-indicator {
+        slot[name='checked-indicator'] {
           fill: ${SystemColors.FieldText};
         }
-        .indeterminate-indicator {
-          background: ${SystemColors.FieldText};
+        slot[name='indeterminate-indicator'] {
+          fill: ${SystemColors.FieldText};
         }
         :host(:${focusVisible}) .control {
           border-color: ${SystemColors.Highlight};
@@ -159,17 +181,17 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
         .control:active {
           background: ${SystemColors.HighlightText};
         }
-        :host(.checked) .checked-indicator {
+        :host(.checked) slot[name='checked-indicator'] {
           fill: ${SystemColors.HighlightText};
         }
-        :host(.checked) .control:hover .checked-indicator {
+        :host(.checked) .control:hover slot[name='checked-indicator'] {
           fill: ${SystemColors.Highlight};
         }
-        :host(.checked) .indeterminate-indicator {
-          background: ${SystemColors.HighlightText};
+        :host(.checked) slot[name='indeterminate-indicator'] {
+          fill: ${SystemColors.HighlightText};
         }
-        :host(.checked) .control:hover .indeterminate-indicator {
-          background: ${SystemColors.Highlight};
+        :host(.checked) .control:hover slot[name='indeterminate-indicator'] {
+          fill: ${SystemColors.Highlight};
         }
         :host(.disabled) {
           opacity: 1;
@@ -179,13 +201,13 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
           border-color: ${SystemColors.GrayText};
           background: ${SystemColors.Field};
         }
-        :host(.disabled) .indeterminate-indicator,
-        :host(.checked.disabled) .control:hover .indeterminate-indicator {
+        :host(.disabled) slot[name='indeterminate-indicator'],
+        :host(.checked.disabled) .control:hover slot[name='indeterminate-indicator'] {
           forced-color-adjust: none;
-          background: ${SystemColors.GrayText};
+          fill: ${SystemColors.GrayText};
         }
-        :host(.disabled) .checked-indicator,
-        :host(.checked.disabled) .control:hover .checked-indicator {
+        :host(.disabled) slot[name='checked-indicator'],
+        :host(.checked.disabled) .control:hover slot[name='checked-indicator'] {
           forced-color-adjust: none;
           fill: ${SystemColors.GrayText};
         }

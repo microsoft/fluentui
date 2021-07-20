@@ -22,12 +22,13 @@ import {
   foregroundOnAccentHover,
   foregroundOnAccentRest,
   neutralFillInputActive,
+  neutralFillInputFocus,
   neutralFillInputHover,
   neutralFillInputRest,
   neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
+  strokeControlStrongActive,
+  strokeControlStrongHover,
+  strokeControlStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -74,23 +75,38 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
       background: ${neutralFillInputRest};
       border-radius: calc(${heightNumber} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
+      border: calc(${strokeWidth} * 1px) solid ${strokeControlStrongRest};
     }
 
-    :host(:enabled) .switch:hover {
+    :host(:enabled:hover) .switch {
       background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeStrongHover};
-      cursor: pointer;
+      border-color: ${strokeControlStrongHover};
     }
 
-    :host(:enabled) .switch:active {
+    :host(:enabled:active) .switch {
       background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeStrongActive};
+      border-color: ${strokeControlStrongActive};
     }
 
     :host(:${focusVisible}) .switch {
-      box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
+      background: ${neutralFillInputFocus};
       border-color: ${focusStrokeOuter};
+    }
+
+    :host(.checked) .switch {
+      background: ${accentFillRest};
+      border-color: transparent;
+    }
+
+    :host(.checked:enabled:hover) .switch {
+      background: ${accentFillHover};
+      border-color: transparent;
+    }
+
+    :host(.checked:enabled:active) .switch {
+      background: ${accentFillActive};
+      border-color: transparent;
     }
 
     .checked-indicator {

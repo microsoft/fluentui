@@ -18,9 +18,9 @@ export function neutralFillInput(
   const referenceIndex = palette.closestIndexOf(reference);
 
   return {
-    rest: palette.get(referenceIndex - direction * restDelta),
-    hover: palette.get(referenceIndex - direction * hoverDelta),
-    active: palette.get(referenceIndex - direction * activeDelta),
-    focus: palette.get(referenceIndex - direction * focusDelta),
+    rest: palette.get(referenceIndex + direction * restDelta),
+    hover: palette.get(referenceIndex + direction * hoverDelta),
+    active: palette.get(referenceIndex + direction * activeDelta),
+    focus: palette.get(referenceIndex + direction * focusDelta),
   };
 }

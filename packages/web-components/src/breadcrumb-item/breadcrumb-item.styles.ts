@@ -8,11 +8,12 @@ import {
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
-  accentForegroundActive,
-  accentForegroundHover,
-  accentForegroundRest,
   bodyFont,
+  controlCornerRadius,
+  focusStrokeOuter,
   focusStrokeWidth,
+  neutralForegroundActive,
+  neutralForegroundHover,
   neutralForegroundRest,
   strokeWidth,
   typeRampBaseFontSize,
@@ -33,90 +34,67 @@ export const breadcrumbItemStyles: (
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
       min-width: calc(${heightNumber} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       outline: none;
     }
 
     .listitem {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
+      border-radius: inherit;
     }
 
     .control {
+      position: relative;
       align-items: center;
       box-sizing: border-box;
-      color: ${accentForegroundRest};
+      color: ${neutralForegroundRest};
       cursor: pointer;
       display: flex;
       fill: inherit;
       outline: none;
       text-decoration: none;
       white-space: nowrap;
-  }
+      border-radius: inherit;
+    }
 
     .control:hover {
-        color: ${accentForegroundHover};
+      color: ${neutralForegroundHover};
     }
 
     .control:active {
-        color: ${accentForegroundActive};
+      color: ${neutralForegroundActive};
     }
 
-    .control .content {
-        position: relative;
-    }
-
-    .control .content::before {
-        content: "";
-        display: block;
-        height: calc(${strokeWidth} * 1px);
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: calc(1em + 4px);
-        width: 100%;
-    }
-
-    .control:hover .content::before {
-        background: ${accentForegroundHover};
-    }
-
-    .control:active .content::before {
-        background: ${accentForegroundActive};
-    }
-
-    .control:${focusVisible} .content::before {
-        background: ${neutralForegroundRest};
-        height: calc(${focusStrokeWidth} * 1px);
+    .control: ${focusVisible}::after {
+      content: '';
+      position: absolute;
+      inset: calc(${strokeWidth} * -1px);
+      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${focusStrokeOuter} inset;
+      border-radius: inherit;
     }
 
     :host(:not([href])),
-    :host([aria-current]) .control  {
-        font-weight: 600;
-        color: ${neutralForegroundRest};
-        fill: currentcolor;
-        cursor: default;
+    :host([aria-current]) .control {
+      color: ${neutralForegroundRest};
+      fill: currentcolor;
+      cursor: default;
     }
 
-    :host([aria-current]) .control:hover .content::before {
-      background: ${neutralForegroundRest};
-  }
-
     .start {
-        display: flex;
-        margin-inline-end: 6px;
+      display: flex;
+      margin-inline-end: 6px;
     }
 
     .end {
-        display: flex;
-        margin-inline-start: 6px;
+      display: flex;
+      margin-inline-start: 6px;
     }
 
     .separator {
       display: flex;
-      fill: ${neutralForegroundRest};
-      margin: 0 6px;
     }
-`.withBehaviors(
+  `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
         :host(:not([href])),
@@ -126,9 +104,8 @@ export const breadcrumbItemStyles: (
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
         }
-        .control:hover .content::before,
-        .control:${focusVisible} .content::before {
-          background: ${SystemColors.LinkText};
+        .separator {
+          fill: ${SystemColors.ButtonText};
         }
       `,
     ),

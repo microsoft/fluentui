@@ -10,18 +10,23 @@ import {
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
+  accentFillActive,
+  accentFillHover,
+  accentFillRest,
   bodyFont,
   designUnit,
   disabledOpacity,
   fillColor,
   focusStrokeOuter,
+  foregroundOnAccentRest,
   neutralFillInputActive,
+  neutralFillInputFocus,
   neutralFillInputHover,
   neutralFillInputRest,
   neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
+  strokeControlStrongActive,
+  strokeControlStrongHover,
+  strokeControlStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -54,7 +59,7 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       height: calc(var(--input-size) * 1px);
       box-sizing: border-box;
       border-radius: 50%;
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
+      border: calc(${strokeWidth} * 1px) solid ${strokeControlStrongRest};
       background: ${neutralFillInputRest};
       outline: none;
       cursor: pointer;
@@ -78,37 +83,54 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     .control,
-    .checked-indicator {
+    slot[name='checked-indicator'] {
       flex-shrink: 0;
     }
 
-    .checked-indicator {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      right: 5px;
-      bottom: 5px;
-      border-radius: 50%;
-      display: inline-block;
-      background: ${neutralForegroundRest};
-      fill: ${neutralForegroundRest};
+    slot[name='checked-indicator'] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      fill: ${foregroundOnAccentRest};
       opacity: 0;
       pointer-events: none;
     }
 
-    :host(:enabled) .control:hover {
+    :host(:enabled:hover) .control {
       background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeStrongHover};
+      border-color: ${strokeControlStrongHover};
     }
 
-    :host(:enabled) .control:active {
+    :host(:enabled:active) .control {
       background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeStrongActive};
+      border-color: ${strokeControlStrongActive};
+    }
+
+    :host(:enabled:active) slot[name='checked-indicator'] {
+      opacity: 1;
     }
 
     :host(:${focusVisible}) .control {
-      box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
+      background: ${neutralFillInputFocus};
       border-color: ${focusStrokeOuter};
+    }
+
+    :host(.checked) .control {
+      background: ${accentFillRest};
+      border-color: transparent;
+    }
+
+    :host(.checked:enabled:hover) .control {
+      background: ${accentFillHover};
+      border-color: transparent;
+    }
+
+    :host(.checked:enabled:active) .control {
+      background: ${accentFillActive};
+      border-color: transparent;
     }
 
     :host(.disabled) .label,
@@ -118,7 +140,7 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       cursor: ${disabledCursor};
     }
 
-    :host(.checked) .checked-indicator {
+    :host(.checked) slot[name='checked-indicator'] {
       opacity: 1;
     }
 
@@ -151,12 +173,10 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
           border-color: ${SystemColors.Highlight};
           background: ${SystemColors.Highlight};
         }
-        :host(.checked) .checked-indicator {
-          background: ${SystemColors.Highlight};
+        :host(.checked) slot[name='checked-indicator'] {
           fill: ${SystemColors.Highlight};
         }
-        :host(.checked) .control:hover .checked-indicator {
-          background: ${SystemColors.HighlightText};
+        :host(.checked) .control:hover slot[name='checked-indicator'] {
           fill: ${SystemColors.HighlightText};
         }
         :host(.disabled) {
@@ -172,10 +192,9 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
           background: ${SystemColors.Field};
           border-color: ${SystemColors.GrayText};
         }
-        :host(.disabled) .checked-indicator,
-        :host(.checked.disabled) .control:hover .checked-indicator {
+        :host(.disabled) slot[name='checked-indicator'],
+        :host(.checked.disabled) .control:hover slot[name='checked-indicator'] {
           fill: ${SystemColors.GrayText};
-          background: ${SystemColors.GrayText};
         }
       `,
     ),

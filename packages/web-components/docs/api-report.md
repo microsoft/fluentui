@@ -693,8 +693,39 @@ export const horizontalScrollStyles: (context: ElementDefinitionContext, definit
 // @internal (undocumented)
 export const HypertextStyles: ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "inputFilledForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const inputFilledForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "inputFilledStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const inputFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "inputForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const inputForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "inputStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const inputStateStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "inputStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const inputStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, rootSelector: string) => ElementStyles;
+
 // @public (undocumented)
 export type InteractiveColorRecipe = Recipe<InteractiveSwatchSet>;
+
+// @public (undocumented)
+export type InteractiveRecipe = Recipe<InteractiveSet>;
+
+// @public (undocumented)
+export type InteractiveSet = Record<"rest" | "hover" | "active" | "focus", string>;
 
 // @public (undocumented)
 export interface InteractiveSwatchSet {
@@ -841,6 +872,12 @@ export const neutralFillInverseRest: CSSDesignToken<Swatch>;
 export const neutralFillInverseRestDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
+export const neutralFillLayerAltRecipe: DesignToken<ColorRecipe>;
+
+// @public (undocumented)
+export const neutralFillLayerAltRest: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
 export const neutralFillLayerRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
@@ -949,7 +986,10 @@ export const neutralForegroundHint: CSSDesignToken<Swatch>;
 export const neutralForegroundHintRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
-export const neutralForegroundRecipe: DesignToken<ColorRecipe>;
+export const neutralForegroundHover: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralForegroundRecipe: DesignToken<InteractiveColorRecipe>;
 
 // @public (undocumented)
 export const neutralForegroundRest: CSSDesignToken<Swatch>;
