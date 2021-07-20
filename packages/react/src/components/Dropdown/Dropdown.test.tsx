@@ -413,19 +413,19 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('4');
     });
 
-    it('Shows correct tooltip with and without title prop specified', () => {
+    it('Shows correct tooltip only if title prop is specified', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
       const firstItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
-      expect(firstItemElement.getAttribute('title')).toEqual('1');
+      expect(firstItemElement.getAttribute('title')).toBeFalsy();
 
       const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       expect(secondItemElement.getAttribute('title')).toEqual('test');
 
       const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
-      expect(thirdItemElement.getAttribute('title')).toEqual('3');
+      expect(thirdItemElement.getAttribute('title')).toBeFalsy();
     });
 
     it('opens on focus if openOnKeyboardFocus is true', () => {
@@ -447,15 +447,22 @@ describe('Dropdown', () => {
       expect(secondItemElement).toBeTruthy();
     });
 
-    // Debatable whether this is desirable, but in the meantime, the test documents the behavior
-    it('uses item text as title attribute if no title provided', () => {
-      const options: IDropdownOption[] = [{ key: 'a', text: 'a' }];
-      wrapper = mount(<Dropdown options={options} />);
+    it('closes on blur when openOnKeyboardFocus is true', () => {
+      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      wrapper.find('.ms-Dropdown').simulate('focus');
 
-      const item = wrapper.find('.ms-Dropdown-item');
-      expect(item.getElements()[0].props.title).toBe('a');
+      let dropdownElement = document.querySelector('.ms-Dropdown-items') as HTMLElement;
+      expect(dropdownElement).toBeTruthy();
+
+      // blur, force the dropdown to close, then focus again
+      // the second focus is simulating the behavior of the Callout when closed
+      wrapper.find('.ms-Dropdown').simulate('blur');
+      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.escape });
+      wrapper.find('.ms-Dropdown').simulate('focus');
+
+      dropdownElement = document.querySelector('.ms-Dropdown-items') as HTMLElement;
+      expect(dropdownElement).toBeFalsy();
     });
 
     it('uses item title attribute if provided', () => {

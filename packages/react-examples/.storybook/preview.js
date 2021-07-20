@@ -21,7 +21,6 @@ const storyOrder = [
 ];
 
 addDecorator(withPerformance);
-addDecorator(withKeytipLayer);
 addCustomDecorators();
 
 addParameters({
@@ -65,6 +64,13 @@ function addCustomDecorators() {
 
   if (['react-button', 'react-components', 'react-tooltip'].includes(packageNamePlaceholder)) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
+  }
+
+  // add decorators to all stories except vNext react-components suite
+  // - this is needed so we don't creep v8 dependencies to vNext deps
+  // - `withKeytipLayer` is v8 dependency - including it to vNext suite was causing CI errors - `Cannot read property 'disableGlobalClassNames' of undefined `
+  if (packageNamePlaceholder !== 'react-components') {
+    customDecorators.add(withKeytipLayer);
   }
 
   customDecorators.forEach(decorator => addDecorator(decorator));

@@ -3,5 +3,5 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/re
 console.log(Menu, MenuTrigger, MenuList, MenuItem, MenuPopover);
 
 export default {
-  name: 'Menu - Default',
+  name: 'Menu (including children components)',
 };

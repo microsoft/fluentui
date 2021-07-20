@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Use caret version for yargs",
+  "packageName": "@fluentui/codemods",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
