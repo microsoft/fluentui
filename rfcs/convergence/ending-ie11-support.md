@@ -9,7 +9,7 @@ Fluent v9 will officially no longer support IE11.
 [Microsoft has officially announced a deadline to end IE11 support for M365 Apps](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666).
 This comes at a time where the market share of IE11 has [dropped to below 1%](https://caniuse.com/usage-table).
 
-One of the major goals of the convergence project in Fluent v9, is to address past drawbacks and issues with both Fabric v8 and Northstar v0 and
+One of the major goals of the convergence project in Fluent v9, is to address past drawbacks and issues with both `@fluentui/react` and `@fluentui/react-northstar` and
 improve the experience for web developers at Microsoft. This has given an opportunity for the team to take a step back, look at the
 fundamentals and rethink our support for IE11.
 
@@ -28,9 +28,11 @@ Until that deadline, users that require full support for IE11 can do so with the
 
 ### Reduced transpilation - (perf + bundlesize improvements)
 
-The possibility to use native ES2015/ES6 features without the risks to breaking browser compatibility, we can reduce the
-transpilation of IE11 features that results in more code. This can result in perf and bundle size gains, and tslib
-will no longer be needed as a hard dependency to emulate the missing features of modern javascript.
+The ability to use ES2015/ES6 features without the transpilation required for IE11 will result in perf and bundle size improvements,
+and tslib will no longer be needed as a dependency to emulate the missing features of modern javascript.
+
+It's possible that newer language features in the future might re-introduce tslib or extra transpilation. However since our support moves
+mainly to evergreen browsers, the risk of introducing unsupported language features will decrease.
 
 ### Improved Theming
 
@@ -48,7 +50,7 @@ to dedicate more time to another solution for this.
 ### Maintenance Burden
 
 The lack of support that IE11 offers for modern (ES2015) javascript has not stopped developers from using it. With EOL of IE11
-we no longer have to consider the language features used across the entire codebase, and figure out the the real support our
+we no longer have to consider the language features and built-in APIs used across the entire codebase, and figure out the the real support our
 transpiled code has for the browser. Since dropping support of IE11 is a breaking change, once we support it in a major version
 of Fluent, we can't drop support until the next major release.
 
