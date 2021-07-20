@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { DevEnv } from 'ability-attributes';
-import { AccessibilityError } from '../accessibility/types';
+import { AccessibilityError } from './types';
 
 export type AbilityAttributesValidatorProps = {
-  window: Window;
   onErrorsChanged: (errors: AccessibilityError[]) => void;
 };
 
@@ -14,11 +13,11 @@ const getBuilderId = el => {
 let _lastId = 0;
 
 export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttributesValidatorProps> = ({
-  window,
   onErrorsChanged,
 }) => {
   const attributeNameErrorId = DevEnv.ATTRIBUTE_NAME_ERROR_ID;
-
+  const window = document.getElementsByTagName('iframe')[0].ownerDocument.defaultView;
+  console.log(window);
   const [errors, setErrors] = React.useState<AccessibilityError[]>();
   React.useMemo(() => {
     DevEnv.setup({

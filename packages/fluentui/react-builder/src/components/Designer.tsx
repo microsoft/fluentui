@@ -246,6 +246,7 @@ export const Designer: React.FunctionComponent = () => {
 
   const handleWindowAccessibilityErrors = React.useCallback(
     (errors: AccessibilityError[]) => {
+      console.log(errors);
       dispatch({ type: 'WINDOW_ERRORS_CHANGED', accessibilityErrors: errors });
     },
     [dispatch],
