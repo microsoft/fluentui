@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Carousel, Button } from '@fluentui/react-northstar';
+import { Carousel, Button, carouselNavigationItemClassName } from '@fluentui/react-northstar';
 
 export const selectors = {
   CarouselClass: 'carousel',
   ItemButton: 'item-button',
   HiddenContent: 'hidden-content',
+  Navigation: carouselNavigationItemClassName,
+  second: 'second',
 };
 
 const CarouselClickableContentExample = () => {
@@ -19,6 +21,11 @@ const CarouselClickableContentExample = () => {
           <Button className={selectors.ItemButton} onClick={() => setClicked(true)} content="Test" />
         </div>
       ),
+    },
+    {
+      key: 'second',
+      id: 'second',
+      content: <div className={selectors.second}>second</div>,
     },
   ];
 
