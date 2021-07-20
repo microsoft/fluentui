@@ -25,7 +25,7 @@ async function setup(configContent, pwdNesting = 0) {
   return path.relative(packageDir.name, config.name);
 }
 
-describe('prepareFixture', () => {
+xdescribe('prepareFixture', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     jest.resetModules();
