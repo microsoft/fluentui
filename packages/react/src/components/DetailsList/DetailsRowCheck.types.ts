@@ -40,7 +40,7 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
   /**
    * Selection mode
    */
-  selectionMode?: SelectionMode | undefined;
+  selectionMode?: SelectionMode;
 
   /**
    * Is this in compact mode?
