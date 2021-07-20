@@ -6,73 +6,53 @@
 
 import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ForwardRefExoticComponent } from 'react';
 import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
 import * as React_2 from 'react';
+import { RefAttributes } from 'react';
 import { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 const body: MakeStylesStyleFunctionRule<Theme>;
 
+// Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point index.d.ts
+//
 // @public
-const Body_2: React_2.ForwardRefExoticComponent<BodyProps & React_2.RefAttributes<HTMLElement>>;
+const Body_2: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 export { Body_2 as Body }
 
 // @public
-export interface BodyProps extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
-export const Caption: React_2.ForwardRefExoticComponent<CaptionProps & React_2.RefAttributes<HTMLElement>>;
+export const Caption: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public
 const caption: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
-export interface CaptionProps extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
-export const Display: React_2.ForwardRefExoticComponent<DisplayProps & React_2.RefAttributes<HTMLElement>>;
+export const Display: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const display: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
-export interface DisplayProps extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
-export const Headline: React_2.ForwardRefExoticComponent<HeadlineProps & React_2.RefAttributes<HTMLElement>>;
+export const Headline: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const headline: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
-export interface HeadlineProps extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
-export const LargeTitle: React_2.ForwardRefExoticComponent<LargeTitleProps & React_2.RefAttributes<HTMLElement>>;
+export const LargeTitle: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const largeTitle: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
-export interface LargeTitleProps extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
 export const renderText: (state: TextState) => JSX.Element;
 
 // @public
-export const Subheadline: React_2.ForwardRefExoticComponent<SubheadlineProps & React_2.RefAttributes<HTMLElement>>;
+export const Subheadline: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const subheadline: MakeStylesStyleFunctionRule<Theme>;
-
-// @public
-export interface SubheadlineProps extends Omit<TextProps, 'font' | 'size'> {
-}
 
 // @public
 const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
@@ -102,34 +82,22 @@ export interface TextState extends ComponentStateCompat<TextProps, TextDefaulted
 }
 
 // @public
-export const Title1: React_2.ForwardRefExoticComponent<Title1Props & React_2.RefAttributes<HTMLElement>>;
+export const Title1: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const title1: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
-export interface Title1Props extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
-export const Title2: React_2.ForwardRefExoticComponent<Title2Props & React_2.RefAttributes<HTMLElement>>;
+export const Title2: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const title2: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
-export interface Title2Props extends Omit<TextProps, 'font' | 'size'> {
-}
-
-// @public
-export const Title3: React_2.ForwardRefExoticComponent<Title3Props & React_2.RefAttributes<HTMLElement>>;
+export const Title3: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 const title3: MakeStylesStyleFunctionRule<Theme>;
-
-// @public
-export interface Title3Props extends Omit<TextProps, 'font' | 'size'> {
-}
 
 declare namespace typographyStyles {
     export {

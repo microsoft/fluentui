@@ -1,8 +1,6 @@
-import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { HeadlineProps } from './Headline.types';
-import { renderText, useText, useTextStyles } from '../Text/index';
+import { makeStyles } from '@fluentui/react-make-styles';
 import { typographyStyles } from '../../index';
+import { createWrapper } from '../wrapper';
 
 /**
  * Styles for the root slot
@@ -14,14 +12,4 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Headline typography variant
  */
-export const Headline = React.forwardRef<HTMLElement, HeadlineProps>((props, ref) => {
-  const styles = useStyles();
-  const state = useText(props, ref);
-  useTextStyles(state);
-
-  state.className = mergeClasses(state.className, styles.root, props.className);
-
-  return renderText(state);
-});
-
-Headline.displayName = 'Headline';
+export const Headline = createWrapper({ useStyles, displayName: 'Headline' });

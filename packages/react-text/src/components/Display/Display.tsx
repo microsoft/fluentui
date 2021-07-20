@@ -1,8 +1,6 @@
-import * as React from 'react';
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { renderText, useText, useTextStyles } from '../Text/index';
+import { makeStyles } from '@fluentui/react-make-styles';
 import { typographyStyles } from '../../typographyStyles/index';
-import { DisplayProps } from './Display.types';
+import { createWrapper } from '../wrapper';
 
 /**
  * Styles for the root slot
@@ -14,14 +12,4 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Display typography variant
  */
-export const Display = React.forwardRef<HTMLElement, DisplayProps>((props, ref) => {
-  const styles = useStyles();
-  const state = useText(props, ref);
-  useTextStyles(state);
-
-  state.className = mergeClasses(state.className, styles.root, props.className);
-
-  return renderText(state);
-});
-
-Display.displayName = 'Display';
+export const Display = createWrapper({ useStyles, displayName: 'Display' });
