@@ -6,22 +6,45 @@ _@bsunderhus_
 
 ## Summary
 
+`null rendering` is the process of making a `slot` render nothing. This term will be used thoroughly in this RFC.
+
 This RFC proposes a solution for a recurring problem involving slots with no `children` property into 2 steps:
 
-1. `getSlots` should stop verifying null rendering by the existence of the property `children`
+1. `getSlots` should stop verifying null rendering (verifying if a slot should of not be rendered) by the existence of the property `children`
 2. Since some slots have default props, verification must be done on shorthand declaration to ensure that those slots will be null rendered (or not) even presenting default props
+
+The behavior for `null rendering` should be described as: receiving `null` should always make a slot `null render` (although in some cases this might even break the component), in the case of `undefined` that would only be true if the component is optional. The idea is to use `undefined` the same way as React does for props, where you can have a default case.
 
 ## Background
 
-`getSlots` is a method that iterates over `ObjectShorthandProps` (_`shorthands`_) declarations and converts them to something that can be rendered by React.
+`shorthand` is what is passed by component properties, they are referred by the type `ShorthandProps` and eventually converted to `ObjectShorthandProps` by `resolveShorthand` method.
+
+```tsx
+export type ShorthandProps<Props = {}> =
+  | React.ReactChild
+  | React.ReactNodeArray
+  | React.ReactPortal
+  | number
+  | null
+  | undefined
+  | ObjectShorthandProps<Props>;
+```
+
+`getSlots` is a method that iterates over `ObjectShorthandProps` (_shorthands_ that were converted during `resolveShorthand` method) declarations and converts them to something that can be rendered by React.
 
 In the case where one _shorthand_ declares a native element (e.g: `"div"`, `"input"`) it will only be rendered if this element has `children` as a property.
 
+This is done by `getSlots` method, which is invoke by the rendering function of a component
+
 ```tsx
 // react-utilities/src/compose/getSlots.ts
-// ....
-if (typeof slot === 'string' && children === undefined) {
-  slot = nullRender;
+
+function getSlots(state, slotNames) {
+  // ...
+  if (typeof slot === 'string' && children === undefined) {
+    slot = nullRender;
+  }
+  // ...
 }
 ```
 
@@ -39,11 +62,11 @@ Right now for input case this is the solution to avoid `children = undefined` pr
 export function Input(props) {
   const state = {
     components: {
-      input: 'input'
+      input: 'input',
     },
     input: resolveShorthand(props.input, {
-      children: React.Fragment // 🚨 getSlots requires children
-    })
+      children: React.Fragment, // 🚨 getSlots requires children
+    }),
   };
   const { slots, slotProps } = getSlots(state, ['input']);
   delete slotProps.input.children; // 🚨 input can't have children
@@ -55,8 +78,8 @@ export function Input(props) {
   );
 }
 ```
-[Live Example](https://stackblitz.com/edit/react-ts-wwguyp?file=Input.tsx)
 
+[Live Example](https://stackblitz.com/edit/react-ts-wwguyp?file=Input.tsx)
 
 ### Slot as a parent for other slots
 
@@ -64,18 +87,17 @@ This edge case has been seen in different converged components ([`CompoundButton
 
 The problem is that using a slot as parent for other slots means overriding `children` props, so `children` is not declared in the moment `resolveShorthand` is invoked but in the moment that the slot will be rendered.
 
-
 ```tsx
 export function Component(props) {
   const state = {
     components: {
       button: 'button',
-      icon: 'i'
+      icon: 'i',
     },
     button: resolveShorthand(props.button, {
-      children: React.Fragment // 🚨 getSlots requires children
+      children: React.Fragment, // 🚨 getSlots requires children
     }),
-    icon: resolveShorthand(props.icon)
+    icon: resolveShorthand(props.icon),
   };
 
   const { slots, slotProps } = getSlots(state, ['input']);
@@ -89,6 +111,7 @@ export function Component(props) {
   );
 }
 ```
+
 [Live Example](https://stackblitz.com/edit/react-ts-wwguyp?file=SlotAsParent.tsx)
 
 ### Native elements without children
@@ -108,10 +131,13 @@ By verifying if shorthand is `undefined` we can opt for null rendering without c
 
 ```tsx
 // react-utilities/src/compose/getSlots.ts
-// ....
-if (typedState[name] === undefined) {
-  slots[name] = nullRender;
-  continue;
+function getSlots(state, slotNames) {
+  // ...
+  if (state[name] === undefined) {
+    slots[name] = nullRender;
+    continue;
+  }
+  // ...
 }
 ```
 
@@ -173,10 +199,13 @@ This is very similar to Option 1 approach but without the downside of having und
 
 ```tsx
 // react-utilities/src/compose/getSlots.ts
-// ....
-if (typedState[name][nullRenderSymbol]) {
-  slots[name] = nullRender;
-  continue;
+function getSlots(state, slotNames) {
+  // ...
+  if (typedState[name][nullRenderSymbol]) {
+    slots[name] = nullRender;
+    continue;
+  }
+  // ...
 }
 ```
 
