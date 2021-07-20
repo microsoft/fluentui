@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useDropdownList } from './useDropdownList';
 import { DropdownListProps } from './DropdownList.types';
 import { renderDropdownList } from './renderDropdownList';
+import { useDropdownListStyles } from './useDropdownListStyles';
 
 /**
  * Define a styled DropdownList, using the `useDropdownList` hook.
@@ -12,6 +13,7 @@ export const DropdownList: React.FunctionComponent<
 > = React.forwardRef<HTMLElement, DropdownListProps>((props, ref) => {
   const state = useDropdownList(props, ref);
 
+  useDropdownListStyles(state);
   return renderDropdownList(state);
 });
 

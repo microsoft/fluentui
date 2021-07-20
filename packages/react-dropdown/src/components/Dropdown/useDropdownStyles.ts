@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { DropdownState } from './Dropdown.types';
 
 const useStyles = makeStyles({
@@ -12,6 +12,10 @@ const useStyles = makeStyles({
     paddingTop: '4px',
     paddingBottom: '4px',
   }),
+  disabled: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+  }),
 });
 
 /**
@@ -20,6 +24,11 @@ const useStyles = makeStyles({
  */
 export const useDropdownStyles = (state: DropdownState): DropdownState => {
   const styles = useStyles();
-  state.dropdownPopup.className = mergeClasses(styles.root, state.dropdownPopup.className);
+  state.className = mergeClasses(
+    styles.root,
+    state.disabled && styles.disabled,
+    // state.activeItem && styles.active,
+    state.className,
+  );
   return state;
 };

@@ -1,30 +1,19 @@
 import * as React from 'react';
-import { DescendantProvider, getSlots } from '@fluentui/react-utilities';
-import { DropdownListState } from './DropdownList.types';
-import { DropdownListProvider, dropdownDescendantContext } from '../../contexts/dropdownListContext';
+import { getSlots } from '@fluentui/react-utilities';
+import { DropdownListSlots, DropdownListState } from './DropdownList.types';
 
 /**
  * Function that renders the final JSX of the component
  */
 export const renderDropdownList = (state: DropdownListState) => {
-  const { slots, slotProps } = getSlots(state);
-  const { activeIndex, setActiveIndex, onCheckedValueChange, checkedValues } = state;
+  const { slots, slotProps } = getSlots<DropdownListSlots>(state, ['option']);
+  const { options, resolveOptionProps } = state;
 
   return (
-    <DropdownListProvider
-      value={{
-        activeIndex,
-        setActiveIndex,
-        'aria-activedescendant': state['aria-activedescendant'] || '',
-        onCheckedValueChange,
-        checkedValues,
-      }}
-    >
-      <slots.root {...slotProps.root}>
-        <DescendantProvider context={dropdownDescendantContext} set={state.setDescendants} items={state.descendants}>
-          {state.children}
-        </DescendantProvider>
-      </slots.root>
-    </DropdownListProvider>
+    <slots.root {...slotProps.root}>
+      {options.map((option, i) => {
+        return <slots.option key={`option-${i}`} {...slotProps.option} {...resolveOptionProps(option, i)} />;
+      })}
+    </slots.root>
   );
 };

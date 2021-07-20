@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps, Descendant } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
-import { DropdownListProps } from '../DropdownList/index';
+import { DropdownListCommons } from '../DropdownList/index';
 
 /**
  * Extends and drills down Dropdownlist props to simplify API
  * {@docCategory Dropdown }
  */
-export interface DropdownProps
-  extends DropdownListProps,
-    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
+export interface DropdownCommons extends DropdownListCommons {
   /**
    * Explicitly require children
    */
@@ -17,59 +15,54 @@ export interface DropdownProps
   children: React.ReactNode;
 
   /**
-   * Whether the popup is open
+   * Set the entire dropdown to a disabled state
    */
-  open?: boolean;
+  disabled?: boolean;
 
-  /**
-   * Call back when the component requests to change value
-   * The `open` value is used as a hint when directly controlling the component
-   */
-  onOpenChange?: (e: DropdownOpenEvents, data: DropdownOpenChangeData) => void;
-
-  /**
-   * Whether the popup is open by default
-   */
-  defaultOpen?: boolean;
-
-  /**
-   * Wrapper to style and add events for the popup
-   */
-  dropdownPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Wrapper to style and add events for the trigger
-   */
-  dropdownTrigger?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  idBase: string;
 
   /**
    * Root dropdown listboxes are rendered out of DOM order on `document.body`,
    * use this to render the listbox in DOM order
    */
   inline?: boolean;
+
+  /**
+   * Whether the popup is open
+   */
+  open: boolean;
+
+  /**
+   * Id for the DropdownTrigger element for the aria-controls relationship
+   */
+  triggerId: string;
+}
+
+export interface DropdownProps
+  extends ComponentProps,
+    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'>,
+    Partial<DropdownListCommons> {
+  /**
+   * Whether the popup is open by default
+   * @default false
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * Call back when the component requests to change value
+   * The `open` value is used as a hint when directly controlling the component
+   */
+  onOpenChange?: (e: DropdownOpenEvents, data: DropdownOpenChangeData) => void;
 }
 
 /**
  * {@docCategory Dropdown }
  */
-export interface DropdownState extends DropdownProps {
+export interface DropdownState extends DropdownCommons, ComponentState {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
-
-  activeIndex: number;
-  setActiveIndex: (update: React.SetStateAction<number>) => void;
-
-  /**
-   * Internal Context used by Dropdown, DropdownList, and DropdownOption communication
-   */
-  descendants: DropdownDescendant[];
-
-  /**
-   * Internal Context used by Dropdown, DropdownList, and DropdownOption communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<DropdownDescendant[]>>;
+  ref: React.RefObject<HTMLElement>;
 
   /**
    * Callback to open/close the popup
@@ -96,22 +89,10 @@ export interface DropdownState extends DropdownProps {
    */
   dropdownPopupRef: React.MutableRefObject<HTMLElement>;
 
-  idBase: string;
-
   /**
    * The ref for the DropdownTrigger, used for popup positioning
    */
   triggerRef: React.MutableRefObject<HTMLElement>;
-
-  /**
-   * Id for the DropdownTrigger element for the aria-controls relationship
-   */
-  triggerId: string;
-}
-
-// temp, will go somewhere else, maybe third context/type file
-interface DropdownDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  id: string;
 }
 
 /**

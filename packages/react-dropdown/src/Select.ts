@@ -1,1 +1,1 @@
-export * from './components/Combobox/index';
+export * from './components/Select/index';

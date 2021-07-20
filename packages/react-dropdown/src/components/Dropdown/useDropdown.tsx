@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
 import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
   useMergedRefs,
   useControllableValue,
   useId,
@@ -12,11 +10,6 @@ import {
 import { useFluent } from '@fluentui/react-provider';
 import { DropdownProps, DropdownState } from './Dropdown.types';
 
-export const dropdownShorthandProps: (keyof DropdownProps)[] = ['dropdownTrigger', 'dropdownPopup'];
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<DropdownState>({ deepMerge: dropdownShorthandProps });
-
 /**
  * Create the state required to render Dropdown.
  *
@@ -25,30 +18,19 @@ const mergeProps = makeMergePropsCompat<DropdownState>({ deepMerge: dropdownShor
  *
  * @param props - props from this instance of Dropdown
  * @param ref - reference to root HTMLElement of Dropdown
- * @param defaultProps - (optional) default prop values provided by the implementing type
  *
  * {@docCategory Dropdown }
  */
-export const useDropdown = (
-  props: DropdownProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: DropdownProps,
-): DropdownState => {
+export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLElement>): DropdownState => {
   const { targetDocument } = useFluent();
   const idBase = useId('dropdown-', props.id);
 
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      dropdownPopup: { as: 'div' },
-      position: 'below',
-      align: 'start',
-      idBase,
-      triggerId: idBase,
-    },
-    defaultProps,
-    resolveShorthandProps(props, dropdownShorthandProps),
-  );
+  const state: DropdownState = {
+    ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
+    ...props,
+    idBase,
+    triggerId: idBase,
+  };
 
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
@@ -59,10 +41,11 @@ export const useDropdown = (
     console.warn('Dropdown can only take one DropdownTrigger and one DropdownList as children');
   }
 
+  // TODO: default to inline
   const { targetRef: triggerRef, containerRef: dropdownPopupRef } = usePopper({
-    align: state.align,
-    position: state.position,
-    coverTarget: state.coverTarget,
+    align: props.align,
+    position: props.position,
+    coverTarget: props.coverTarget,
   });
   state.dropdownPopupRef = dropdownPopupRef;
   state.triggerRef = triggerRef;
@@ -70,7 +53,7 @@ export const useDropdown = (
     state.dropdownList = child;
   });
 
-  useDropdownOpenState(state);
+  useDropdownOpenState(state, !!props.defaultOpen);
   useOnClickOutside({
     disabled: state.open,
     element: targetDocument,
@@ -81,10 +64,10 @@ export const useDropdown = (
   return state;
 };
 
-const useDropdownOpenState = (state: DropdownState) => {
+const useDropdownOpenState = (state: DropdownState, defaultValue: boolean) => {
   const onOpenChange: DropdownState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
+  const [open, setOpen] = useControllableValue(state.open, defaultValue);
   state.open = open !== undefined ? open : state.open;
 
   state.setOpen = React.useCallback(

@@ -1,8 +1,11 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { DropdownOptionState } from './DropdownOption.types';
+import { DropdownListState } from './DropdownList.types';
 
 const useStyles = makeStyles({
   root: theme => ({
+    //
+  }),
+  option: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     paddingRight: '8px',
@@ -49,13 +52,13 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useDropdownOptionStyles = (state: DropdownOptionState) => {
+export const useDropdownListStyles = (state: DropdownListState) => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
     state['aria-disabled'] && styles.disabled,
-    state.activeItem && styles.active,
+    // state.activeItem && styles.active,
     state.className,
   );
-  state.content.className = mergeClasses(styles.content, state.content.className);
+  state.option.className = mergeClasses(styles.option, state.option.className);
 };

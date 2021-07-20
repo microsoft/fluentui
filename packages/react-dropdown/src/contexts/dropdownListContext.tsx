@@ -1,30 +1,19 @@
 import * as React from 'react';
-import { createDescendantContext, useDescendant } from '@fluentui/react-utilities';
 import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
-import { DropdownListProps, DropdownDescendant } from '../components/index';
+import { DropdownListProps } from '../components/index';
 
 const DropdownListContext = createContext<DropdownListContextValue>({
   activeIndex: 0,
   setActiveIndex: () => null,
-  'aria-activedescendant': '',
+  onSelectionChange: () => null,
 });
 
 /**
  * Context shared between DropdownList and its children components
  */
-export interface DropdownListContextValue extends Pick<DropdownListProps, 'checkedValues' | 'onCheckedValueChange'> {
+export interface DropdownListContextValue extends Pick<DropdownListProps, 'selectedValues' | 'onSelectionChange'> {
   activeIndex: number;
   setActiveIndex: (update: React.SetStateAction<number>) => void;
-  'aria-activedescendant': string;
-}
-
-export const dropdownDescendantContext = createDescendantContext<DropdownDescendant>('DropdownDescendantContext');
-
-/**
- * Registers an descendant in the listbox descendants context
- */
-export function useDropdownDescendant(dropdownDescendant: Omit<DropdownDescendant, 'index'>) {
-  return useDescendant<DropdownDescendant>(dropdownDescendant, dropdownDescendantContext);
 }
 
 export const DropdownListProvider = DropdownListContext.Provider;

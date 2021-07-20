@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, DropdownList, DropdownOption, DropdownProps, Select } from './index';
+import { Dropdown, DropdownList, DropdownProps, Select } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -23,13 +23,9 @@ const Container: React.FC = props => {
 export const Default = (props: Partial<DropdownProps>) => (
   <Container>
     <h2>Dropdown Example</h2>
-    <Dropdown {...props}>
+    <Dropdown {...props} options={['Apple', 'Pear', 'Raspberry']}>
       <Select>Select a Fruit</Select>
-      <DropdownList>
-        <DropdownOption>Apple</DropdownOption>
-        <DropdownOption>Pear</DropdownOption>
-        <DropdownOption>Raspberry</DropdownOption>
-      </DropdownList>
+      <DropdownList options={['Apple', 'Pear', 'Raspberry']} />
     </Dropdown>
   </Container>
 );

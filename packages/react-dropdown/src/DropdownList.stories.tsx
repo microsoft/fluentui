@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DropdownList, DropdownOption } from './index';
+import { DropdownList } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     minWidth: '128px',
     minHeight: '48px',
-    maxWidth: '300px',
+    maxWidth: '600px',
     width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
     paddingTop: '4px',
@@ -23,20 +23,44 @@ const Container: React.FC = props => {
 
 export const TextOnly = () => (
   <Container>
-    <DropdownList aria-label="choose a fruit">
-      <DropdownOption>Apple</DropdownOption>
-      <DropdownOption>Banana</DropdownOption>
-      <DropdownOption>Blueberry</DropdownOption>
-      <DropdownOption>Boysenberry</DropdownOption>
-      <DropdownOption>Cherry</DropdownOption>
-      <DropdownOption>Cranberry</DropdownOption>
-      <DropdownOption>Durian</DropdownOption>
-      <DropdownOption>Fig</DropdownOption>
-      <DropdownOption>Grape</DropdownOption>
-      <DropdownOption>Guava</DropdownOption>
-      <DropdownOption>Pear</DropdownOption>
-      <DropdownOption>Raspberry</DropdownOption>
-    </DropdownList>
+    <DropdownList
+      aria-label="choose a fruit"
+      options={[
+        'Apple',
+        'Banana',
+        'Blueberry',
+        'Boysenberry',
+        'Cherry',
+        'Cranberry',
+        'Durian',
+        'Fig',
+        'Grape',
+        'Guava',
+        'Pear',
+        'Raspberry',
+      ]}
+    ></DropdownList>
+
+    <DropdownList
+      aria-label="choose a fruit"
+      options={[
+        'Apple',
+        'Banana',
+        'Blueberry',
+        'Boysenberry',
+        'Cherry',
+        'Cranberry',
+        'Durian',
+        'Fig',
+        'Grape',
+        'Guava',
+        'Pear',
+        'Raspberry',
+      ]}
+      option={{
+        'aria-label': 'test',
+      }}
+    ></DropdownList>
   </Container>
 );
 

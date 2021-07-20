@@ -2,27 +2,18 @@ import * as React from 'react';
 import {
   DropdownActions,
   getDropdownActionFromKey,
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useControllableValue,
-  useDescendantsInit,
+  resolveShorthand,
   useEventCallback,
+  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { DropdownListProps, DropdownListState, DropdownDescendant } from './DropdownList.types';
+import { DropdownListProps, DropdownListState } from './DropdownList.types';
 import { useDropdownContext } from '../../contexts/dropdownContext';
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<DropdownListState>();
 
 /**
  * Returns the props and state required to render the component
  */
-export const useDropdownList = (
-  props: DropdownListProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: DropdownListProps,
-): DropdownListState => {
+export const useDropdownList = (props: DropdownListProps, ref: React.Ref<HTMLElement>): DropdownListState => {
   const dropdownContext = useDropdownContextSelectors();
 
   if (usingPropsAndDropdownContext(props, dropdownContext)) {
@@ -31,27 +22,48 @@ export const useDropdownList = (
     console.warn("You're using both DropdownList and Dropdown props, we recommend using Dropdown props if available");
   }
 
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      role: 'listbox',
-      tabIndex: 0,
-      'aria-labelledby': dropdownContext.triggerId,
-      ...(dropdownContext.hasDropdownContext && { ...dropdownContext }),
+  const {
+    options = dropdownContext.options || [],
+    renderOption = option => option,
+    getOptionValue = option => `${option}`,
+  } = props;
+  const idBase = useId('dropdown-list-', props.id);
+  const id = dropdownContext.idBase || idBase;
+
+  const state: DropdownListState = {
+    ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
+    role: 'listbox',
+    tabIndex: 0,
+    'aria-labelledby': dropdownContext.triggerId,
+    resolveOptionProps: () => ({}),
+    options: [],
+    ...(dropdownContext.hasDropdownContext && { ...dropdownContext }),
+    ...props,
+    components: {
+      root: 'div',
+      option: 'div',
     },
-    defaultProps,
-    resolveShorthandProps(props, []),
+    option: resolveShorthand(props.option, {
+      role: 'option',
+    }),
+  };
+
+  // default to pulling activeIndex from context
+  const [activeIndex, setActiveIndex] = dropdownContext.hasDropdownContext
+    ? [dropdownContext.activeIndex, dropdownContext.setActiveIndex]
+    : React.useState(0);
+  state['aria-activedescendant'] = `${id}-${activeIndex}`;
+
+  const getOptionState = React.useCallback(
+    (option: string | Object, index: number) => {
+      return resolveShorthand(props.option, {
+        id: `${id}-${index}`,
+        children: renderOption(option),
+      });
+    },
+    [activeIndex],
   );
-
-  const [descendants, setDescendants] = useDescendantsInit<DropdownDescendant>();
-  state.descendants = descendants;
-  state.setDescendants = setDescendants;
-
-  // TODO: should this actually be controllable?
-  const [activeIndex, setActiveIndex] = useControllableValue(state.activeIndex, 0);
-  state.activeIndex = activeIndex;
-  state.setActiveIndex = setActiveIndex;
-  state['aria-activedescendant'] = descendants[activeIndex]?.id || '';
+  state.resolveOptionProps = getOptionState;
 
   const [searchString, setSearchString] = React.useState('');
 
@@ -69,13 +81,13 @@ export const useDropdownList = (
       const currentSearch = searchString + character;
       setSearchString(currentSearch);
       // TODO: should probably make an in-React way to get the text of options
-      const descendantValues = descendants.map(descendant => descendant.element?.innerText || '');
-      const orderedValues = [...descendantValues.slice(activeIndex + 1), ...descendantValues.slice(0, activeIndex + 1)];
+      const optionValues = options.map(option => getOptionValue(option));
+      const orderedValues = [...optionValues.slice(activeIndex + 1), ...optionValues.slice(0, activeIndex + 1)];
 
       // find first full match, if it exists
       const firstMatch = findMatches(orderedValues, currentSearch)[0];
       if (firstMatch) {
-        return descendantValues.indexOf(firstMatch);
+        return optionValues.indexOf(firstMatch);
       }
 
       // if no full match, but the search string is all the same letter, cycle though first letter matches
@@ -84,13 +96,13 @@ export const useDropdownList = (
       const allSameLetter = (array: string[]) => array.every(letter => letter === array[0]);
       if (allSameLetter(currentSearch.split(''))) {
         const matches = findMatches(orderedValues, currentSearch[0]);
-        return descendantValues.indexOf(matches[0]);
+        return optionValues.indexOf(matches[0]);
       }
 
       // if none of the above, return -1
       return -1;
     },
-    [descendants, activeIndex, searchString],
+    [options, activeIndex, searchString],
   );
 
   /**
@@ -98,8 +110,10 @@ export const useDropdownList = (
    */
   state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(e, { open: true });
-    const max = descendants.length;
+    const max = options.length;
     let newIndex = activeIndex;
+
+    console.log('keydown, max is', max, 'current index is', newIndex);
 
     switch (action) {
       case DropdownActions.Next:
@@ -128,6 +142,7 @@ export const useDropdownList = (
     if (newIndex !== activeIndex) {
       // prevent default scroll/keyboard action if the index changed
       e.preventDefault();
+      console.log('update index to', newIndex);
       setActiveIndex(newIndex);
     }
   });
@@ -140,12 +155,18 @@ export const useDropdownList = (
  */
 const useDropdownContextSelectors = () => {
   const hasDropdownContext = useDropdownContext(context => context.hasDropdownContext);
+  const activeIndex = useDropdownContext(context => context.activeIndex);
+  const setActiveIndex = useDropdownContext(context => context.setActiveIndex);
   const triggerId = useDropdownContext(context => context.triggerId);
   const idBase = useDropdownContext(context => context.idBase);
+  const options = useDropdownContext(context => context.options);
 
   return {
+    activeIndex,
+    setActiveIndex,
     hasDropdownContext,
     idBase,
+    options,
     triggerId,
   };
 };
@@ -172,7 +193,14 @@ const usingPropsAndDropdownContext = (
 ) => {
   let isUsingPropsAndContext = false;
   for (const val in contextValue) {
-    if (props[val as keyof Omit<typeof contextValue, 'hasDropdownContext' | 'idBase' | 'triggerId'>]) {
+    if (
+      props[
+        val as keyof Omit<
+          typeof contextValue,
+          'hasDropdownContext' | 'idBase' | 'triggerId' | 'activeIndex' | 'setActiveIndex'
+        >
+      ]
+    ) {
       isUsingPropsAndContext = true;
     }
   }

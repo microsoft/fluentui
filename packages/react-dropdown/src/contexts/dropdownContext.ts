@@ -8,12 +8,12 @@ const DropdownContext = createContext<DropdownContextValue>({
   setOpen: () => false,
   activeIndex: 0,
   setActiveIndex: () => null,
-  'aria-activedescendant': '',
-  idBase: '',
-  hasDropdownContext: false,
-  triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
   dropdownPopupRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
+  hasDropdownContext: false,
+  idBase: '',
+  options: [],
   triggerId: '',
+  triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
 });
 
 /**
@@ -22,10 +22,10 @@ const DropdownContext = createContext<DropdownContextValue>({
  */
 export interface DropdownContextValue
   extends DropdownListProps,
-    Pick<DropdownState, 'triggerRef' | 'dropdownPopupRef' | 'setOpen' | 'setActiveIndex' | 'triggerId'> {
+    Pick<DropdownState, 'triggerRef' | 'dropdownPopupRef' | 'setOpen' | 'triggerId'> {
   open: boolean;
   activeIndex: number;
-  'aria-activedescendant': string;
+  setActiveIndex: () => null;
   hasDropdownContext: boolean;
   idBase: string;
   triggerId: string;
