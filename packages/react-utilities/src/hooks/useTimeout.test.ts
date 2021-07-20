@@ -5,10 +5,7 @@ describe('useTimeout', () => {
   jest.useFakeTimers();
 
   it('calls the underlying setTimeout/clearTimeout API', () => {
-    const { result } = renderHook(() => useTimeout());
-
-    const [setTestTimeout, clearTestTimeout] = result.current;
-
+    const [setTestTimeout, clearTestTimeout] = renderHook(() => useTimeout()).result.current;
     const callback = jest.fn();
 
     setTestTimeout(callback, 1000);
@@ -21,16 +18,12 @@ describe('useTimeout', () => {
     expect(clearTimeout).toHaveBeenCalledTimes(1);
   });
 
-  it('calls the callback after the timeout has elapsed', () => {
-    const { result } = renderHook(() => useTimeout());
-
-    const [setTestTimeout] = result.current;
-
+  it('calls the callback only after the timeout has elapsed', () => {
+    const [setTestTimeout] = renderHook(() => useTimeout()).result.current;
     const callback = jest.fn();
 
     setTestTimeout(callback, 1000);
 
-    // The callback function shouldn't be called until the timer is run
     expect(callback).not.toHaveBeenCalled();
 
     jest.runAllTimers();
@@ -39,10 +32,7 @@ describe('useTimeout', () => {
   });
 
   it('does not call the callback if clear is called', () => {
-    const { result } = renderHook(() => useTimeout());
-
-    const [setTestTimeout, clearTestTimeout] = result.current;
-
+    const [setTestTimeout, clearTestTimeout] = renderHook(() => useTimeout()).result.current;
     const callback = jest.fn();
 
     setTestTimeout(callback, 1000);
@@ -54,10 +44,7 @@ describe('useTimeout', () => {
   });
 
   it('clears the previous timeout if set is called again', () => {
-    const { result } = renderHook(() => useTimeout());
-
-    const [setTestTimeout] = result.current;
-
+    const [setTestTimeout] = renderHook(() => useTimeout()).result.current;
     const callbackA = jest.fn();
     const callbackB = jest.fn();
 
@@ -71,10 +58,7 @@ describe('useTimeout', () => {
   });
 
   it('allows another timeout to be set after the previous has run', () => {
-    const { result } = renderHook(() => useTimeout());
-
-    const [setTestTimeout] = result.current;
-
+    const [setTestTimeout] = renderHook(() => useTimeout()).result.current;
     const callbackA = jest.fn();
     const callbackB = jest.fn();
 
@@ -92,9 +76,7 @@ describe('useTimeout', () => {
 
   it('does not clear the timeout between renders', () => {
     const { result, rerender } = renderHook(() => useTimeout());
-
     const [setTestTimeout] = result.current;
-
     const callback = jest.fn();
 
     setTestTimeout(callback, 1000);
@@ -108,9 +90,7 @@ describe('useTimeout', () => {
 
   it('clears the timeout when the component is unmounted', () => {
     const { result, unmount } = renderHook(() => useTimeout());
-
     const [setTestTimeout] = result.current;
-
     const callback = jest.fn();
 
     setTestTimeout(callback, 1000);
@@ -124,7 +104,6 @@ describe('useTimeout', () => {
 
   it('returns the same functions every render', () => {
     const { result, rerender } = renderHook(() => useTimeout());
-
     const [setTestTimeout, clearTestTimeout] = result.current;
 
     rerender();
