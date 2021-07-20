@@ -1,4 +1,4 @@
-import { EvalCache, Module } from '@linaria/babel';
+import { EvalCache, Module } from '@linaria/babel-preset';
 import * as enhancedResolve from 'enhanced-resolve';
 import * as path from 'path';
 import * as webpack from 'webpack';
