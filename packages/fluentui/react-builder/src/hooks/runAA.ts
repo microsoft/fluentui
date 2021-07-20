@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ATTRIBUTE_NAME_ERROR_ID, ErrorReporter } from 'ability-attributes/dist/DevEnvTypes';
-import { setup } from 'ability-attributes/dist/DevEnv';
+import { DevEnv } from 'ability-attributes';
 import { AccessibilityError } from '../accessibility/types';
 
 export type AbilityAttributesValidatorProps = {
@@ -18,21 +17,23 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
   window,
   onErrorsChanged,
 }) => {
+  const attributeNameErrorId = DevEnv.ATTRIBUTE_NAME_ERROR_ID;
+
   const [errors, setErrors] = React.useState<AccessibilityError[]>();
   React.useMemo(() => {
-    setup({
+    DevEnv.setup({
       enforceClasses: false,
       ignoreUnknownClasses: true,
       window,
     });
-    const errorReporter: ErrorReporter = {
+    const errorReporter: DevEnv.ErrorReporter = {
       dismiss(element: HTMLElement) {
         console.log('dismiss - WHAT?!');
       },
       remove(element: HTMLElement) {
         console.log('remove', element);
-        const [builderId, errorId] = (element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? '').split(':');
-        element.removeAttribute(ATTRIBUTE_NAME_ERROR_ID);
+        const [builderId, errorId] = (element.getAttribute(attributeNameErrorId) ?? '').split(':');
+        element.removeAttribute(attributeNameErrorId);
         if (builderId && errorId) {
           console.log(builderId, errorId);
         }
@@ -46,8 +47,8 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
         console.log('report', element, error);
         const builderId = getBuilderId(element);
 
-        const errorId = element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? `${builderId}:${++_lastId}`;
-        element.setAttribute(ATTRIBUTE_NAME_ERROR_ID, errorId);
+        const errorId = element.getAttribute(attributeNameErrorId) ?? `${builderId}:${++_lastId}`;
+        element.setAttribute(attributeNameErrorId, errorId);
 
         setErrors(errors => ({ ...errors, [builderId]: { ...errors?.[builderId], [errorId]: error.message } }));
       },
@@ -56,7 +57,7 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
       },
     };
     return errorReporter;
-  }, [window]);
+  }, [window, attributeNameErrorId]);
 
   React.useMemo(() => {
     console.log('AbilityAttributesValidator - errors changed', errors);
