@@ -84,7 +84,7 @@ function webpackAsync(webpackConfig) {
 module.exports = async function buildFixture(preparedFixture, quiet) {
   const webpackStartTime = process.hrtime();
 
-  const config = await readConfig();
+  const config = await readConfig(quiet);
 
   const webpackOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.output.js');
   const webpackConfig = createWebpackConfig(preparedFixture.absolutePath, webpackOutputPath);

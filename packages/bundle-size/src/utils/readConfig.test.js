@@ -15,7 +15,7 @@ async function setup(configContent, pwdNesting = 0) {
   const config = tmp.fileSync({ dir: packageDir.name, name: 'bundle-size.config.js' });
 
   for (let i = 0; i < pwdNesting; i++) {
-    packageDir = tmp.dirSync({ dir: packageDir.name, prefix: 'nested' });
+    packageDir = tmp.dirSync({ dir: packageDir.name, prefix: 'nested', unsafeCleanup: true });
   }
   const spy = jest.spyOn(process, 'cwd');
   spy.mockReturnValue(packageDir.name);

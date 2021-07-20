@@ -60,8 +60,6 @@ bundle-size.config.js
 #### Config API
 
 ```js
-const path = require('path');
-
 module.exports = {
   webpack: config => {
     // customize config here
