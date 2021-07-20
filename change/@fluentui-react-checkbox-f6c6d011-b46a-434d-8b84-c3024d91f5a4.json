@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updating spec to reflect Checkbox implementation",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

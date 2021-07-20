@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing high constrast selected styling for combobox",
-  "packageName": "@fluentui/react",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

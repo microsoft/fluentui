@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(react-aria): Replace keyboard-key with keyboard-keys",
-  "packageName": "@fluentui/react-aria",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
