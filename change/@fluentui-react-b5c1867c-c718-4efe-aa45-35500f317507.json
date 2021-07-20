@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Removed left padding in MessageBar and fixed examples",
+  "comment": "Removed left padding for links in MessageBar and fixed examples",
   "packageName": "@fluentui/react",
   "email": "tahsia@microsoft.com",
   "dependentChangeType": "patch"
