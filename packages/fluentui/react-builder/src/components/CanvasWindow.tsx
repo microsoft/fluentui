@@ -33,6 +33,7 @@ export type CanvasWindowProps = {
   onSourceCodeError: (code: any, error: any) => void;
   onSelectComponent: (jsonTreeElement: any) => void;
   onSwitchToStore: () => void;
+  onWindowAccessibilityErrors: (errors: AccessibilityError[]) => void;
 };
 
 export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: CanvasWindowProps) => {
@@ -132,6 +133,7 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
               onMoveComponent={props.onMoveComponent}
               onDeleteSelectedComponent={props.onDeleteSelectedComponent}
               onGoToParentComponent={props.onGoToParentComponent}
+              onWindowAccessibilityErrors={props.onWindowAccessibilityErrors}
               enabledVirtualCursor={props.state.enabledVirtualCursor}
               role="main"
               inUseMode={mode === 'use'}
