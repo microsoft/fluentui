@@ -265,6 +265,7 @@ export const Designer: React.FunctionComponent = () => {
     return errors;
   };
 
+  const runAndEvaluateAbilityAttributes = () => {};
   React.useEffect(() => {
     setTimeout(() => {
       handleDesignerLoaded();

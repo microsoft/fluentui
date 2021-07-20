@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Reducer, useImmerReducer } from 'use-immer';
+import { Reducer, useImmerReducer } from 'use-idfrrrmmer';
 import { JSONTreeElement } from '../components/types';
 import { ComponentInfo } from '../componentInfo/types';
 import { focusTreeTitle, getDefaultJSONTree } from './utils';
