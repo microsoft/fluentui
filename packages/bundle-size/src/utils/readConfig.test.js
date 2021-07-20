@@ -32,7 +32,7 @@ describe('prepareFixture', () => {
   });
 
   it('should read config from package', async () => {
-    setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`);
+    await setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`);
 
     const config = await readConfig();
 
@@ -48,9 +48,9 @@ describe('prepareFixture', () => {
   it('should cache config', async () => {
     process.env.NODE_ENV = 'nottest';
 
-    setup(`module.exports = { webpack: (config) => config }`);
+    await setup(`module.exports = { webpack: (config) => config }`);
     const firstConfig = await readConfig();
-    setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`);
+    await setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`);
     const config = await readConfig();
 
     expect(firstConfig).toBe(config);
@@ -60,7 +60,7 @@ describe('prepareFixture', () => {
   });
 
   it.each([1, 2, 3])('should cache config for %i layers of nesting', async nesting => {
-    setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`, nesting);
+    await setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`, nesting);
     const config = await readConfig();
 
     expect(config.webpack({})).toEqual({ foo: 'bar' });
