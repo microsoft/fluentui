@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Disable readConfig tests to unblock CI",
-  "packageName": "@fluentui/bundle-size",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}
