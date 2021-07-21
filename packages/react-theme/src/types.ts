@@ -63,6 +63,7 @@ export type NeutralColorTokens = {
   neutralBackground5Pressed: string;
   neutralBackground5Selected: string;
   neutralBackground6: string;
+  neutralBackgroundInverted: string;
   subtleBackground: string;
   subtleBackgroundHover: string;
   subtleBackgroundPressed: string;
@@ -72,6 +73,8 @@ export type NeutralColorTokens = {
   transparentBackgroundPressed: string;
   transparentBackgroundSelected: string;
   neutralBackgroundDisabled: string;
+  neutralStencil1: string;
+  neutralStencil2: string;
   brandBackground: string;
   brandBackgroundHover: string;
   brandBackgroundPressed: string;

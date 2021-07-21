@@ -54,6 +54,7 @@ export const neutralColorTokens: NeutralColorTokens = {
   neutralBackground5Pressed: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
   neutralBackground5Selected: 'var(--global-palette-grey-98)', // #fafafa Global.Color.Grey.98
   neutralBackground6: 'var(--global-palette-grey-90)', // #e6e6e6 Global.Color.Grey.90
+  neutralBackgroundInverted: 'var(--global-palette-grey-38)', // #616161 Global.Color.Grey.38
   subtleBackground: 'transparent', // transparent undefined
   subtleBackgroundHover: 'var(--global-palette-grey-96)', // #f5f5f5 Global.Color.Grey.96
   subtleBackgroundPressed: 'var(--global-palette-grey-88)', // #e0e0e0 Global.Color.Grey.88
@@ -63,6 +64,8 @@ export const neutralColorTokens: NeutralColorTokens = {
   transparentBackgroundPressed: 'transparent', // transparent undefined
   transparentBackgroundSelected: 'transparent', // transparent undefined
   neutralBackgroundDisabled: 'var(--global-palette-grey-94)', // #f0f0f0 Global.Color.Grey.94
+  neutralStencil1: 'var(--global-palette-grey-90)', // #e6e6e6 Global.Color.Grey.90
+  neutralStencil2: 'var(--global-palette-grey-98)', // #fafafa Global.Color.Grey.98
   brandBackground: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
   brandBackgroundHover: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
   brandBackgroundPressed: 'var(--global-palette-brand-shade40)', // #004578 Global.Color.Brand.Shade.40
