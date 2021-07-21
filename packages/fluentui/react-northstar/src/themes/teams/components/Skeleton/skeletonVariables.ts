@@ -43,9 +43,9 @@ export interface SkeletonVariables {
 
 export const skeletonVariables = (siteVariables): SkeletonVariables => {
   return {
-    lineBackground: siteVariables.colorScheme.default.foreground5,
-    shapeBackground: siteVariables.colorScheme.default.foreground5,
-    animationBackground: siteVariables.colorScheme.default.foreground5,
+    lineBackground: siteVariables.colorScheme.default.foreground6,
+    shapeBackground: siteVariables.colorScheme.default.foreground6,
+    animationBackground: siteVariables.colorScheme.default.foreground6,
     animationBackgroundSecondary: siteVariables.colorScheme.default.foreground6,
     lineMargin: `0 0 ${pxToRem(2)} 0`,
     shapeMargin: `0 0 ${pxToRem(2)} 0`,
@@ -55,11 +55,11 @@ export const skeletonVariables = (siteVariables): SkeletonVariables => {
     buttonWidth: pxToRem(96),
     buttonSmallHeight: pxToRem(24),
     buttonSmallWidth: pxToRem(72),
-    buttonBackground: siteVariables.colorScheme.default.foreground5,
+    buttonBackground: siteVariables.colorScheme.default.foreground6,
     buttonCircularBorderRadius: pxToRem(999),
 
     // Skeleton Text
-    textBackground: siteVariables.colorScheme.default.foreground5,
+    textBackground: siteVariables.colorScheme.default.foreground6,
     textWidth: '100%',
     textSmallerHeight: pxToRem(14),
     textSmallHeight: pxToRem(16),
@@ -70,10 +70,10 @@ export const skeletonVariables = (siteVariables): SkeletonVariables => {
     // Skeleton Input
     inputHeight: pxToRem(32),
     inputWidth: pxToRem(154),
-    inputBackground: siteVariables.colorScheme.default.foreground5,
+    inputBackground: siteVariables.colorScheme.default.foreground6,
 
     // Skeleton Avatar
-    avatarBackground: siteVariables.colorScheme.default.foreground5,
+    avatarBackground: siteVariables.colorScheme.default.foreground6,
     avatarSmallest: pxToRem(20),
     avatarSmaller: pxToRem(24),
     avatarSmall: pxToRem(28),
