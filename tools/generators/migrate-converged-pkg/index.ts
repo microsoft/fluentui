@@ -97,9 +97,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES5',
+      target: 'ES2015',
       module: 'CommonJS',
-      lib: ['es5', 'dom'],
+      lib: ['ES2015', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
