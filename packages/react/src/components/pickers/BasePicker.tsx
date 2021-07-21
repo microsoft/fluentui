@@ -34,7 +34,7 @@ import { IPickerItemProps } from './PickerItem.types';
 import * as stylesImport from './BasePicker.scss';
 const legacyStyles: any = stylesImport;
 
-export interface IBasePickerState {
+export interface IBasePickerState<T> {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
@@ -45,6 +45,7 @@ export interface IBasePickerState {
   suggestionsLoading?: boolean;
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
+  selectionRemoved?: T;
 }
 
 /**
@@ -90,13 +91,12 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
  * {@docCategory Pickers}
  */
 export class BasePicker<T, P extends IBasePickerProps<T>>
-  extends React.Component<P, IBasePickerState>
+  extends React.Component<P, IBasePickerState<T>>
   implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
   protected suggestionElement = React.createRef<ISuggestions<T>>();
-
   protected selection: Selection;
   protected suggestionStore: SuggestionsController<T>;
   /**
@@ -143,6 +143,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       isFocused: false,
       isSearching: false,
       selectedIndices: [],
+      selectionRemoved: undefined,
     };
   }
 
@@ -155,7 +156,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
-  public componentDidUpdate(oldProps: P, oldState: IBasePickerState) {
+  public componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>) {
     if (this.state.items && this.state.items !== oldState.items) {
       const currentSelectedIndex = this.selection.getSelectedIndices()[0];
       this.selection.setItems(this.state.items);
@@ -287,7 +288,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         onFocus={this.onFocus}
         onBlur={this.onBlur}
       >
-        {this.getSuggestionsAlert(classNames.screenReaderText)}
+        {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
           {selectionAriaLabel || comboLabel}
         </span>
@@ -386,7 +387,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         index,
         key: item.key ? item.key : index,
         selected: selectedIndices!.indexOf(index) !== -1,
-        onRemoveItem: () => this.removeItem(item, true),
+        onRemoveItem: () => this.removeItem(item),
         disabled: disabled,
         onItemChange: this.onItemChange,
         removeButtonAriaLabel: removeButtonAriaLabel,
@@ -812,15 +813,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       const newItems: T[] = this.state.items.concat([processedItemObject]);
       this._updateSelectedItems(newItems);
     }
-    this.setState({ suggestedDisplayValue: '' });
+    this.setState({ suggestedDisplayValue: '', selectionRemoved: undefined });
   };
 
-  protected removeItem = (item: IPickerItemProps<T>, focusNextItem?: boolean): void => {
+  protected removeItem = (item: T): void => {
     const { items } = this.state;
     const index: number = items.indexOf(item);
 
     if (index >= 0) {
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
+      this.setState({ selectionRemoved: item });
       this._updateSelectedItems(newItems);
     }
   };
@@ -883,23 +885,29 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 
-  protected getSuggestionsAlert(suggestionAlertClassName: string = legacyStyles.screenReaderOnly) {
-    const currentIndex = this.suggestionStore.currentIndex;
-    if (this.props.enableSelectedSuggestionAlert) {
+  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly) {
+    const { enableSelectedSuggestionAlert, suggestionRemovedText = 'removed' } = this.props;
+    let selectedSuggestionAlertText = '';
+    let removedItemText = '';
+
+    if (enableSelectedSuggestionAlert) {
+      const currentIndex = this.suggestionStore.currentIndex;
       const selectedSuggestion =
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
-      const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
-      return (
-        <div
-          className={suggestionAlertClassName}
-          role="alert"
-          id={this._ariaMap.selectedSuggestionAlert}
-          aria-live="assertive"
-        >
-          {selectedSuggestionAlertText}{' '}
-        </div>
-      );
+      selectedSuggestionAlertText =
+        selectedSuggestion && selectedSuggestion.ariaLabel ? selectedSuggestion.ariaLabel : '';
     }
+
+    if (this.state.selectionRemoved) {
+      removedItemText = `${suggestionRemovedText} ${this._getTextFromItem(this.state.selectionRemoved, '')}`;
+    }
+
+    return (
+      <div className={alertClassName} id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
+        {`${selectedSuggestionAlertText} `}
+        {removedItemText}
+      </div>
+    );
   }
 
   /**
@@ -1048,7 +1056,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     return (
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
-          {this.getSuggestionsAlert(classNames.screenReaderText)}
+          {this.renderCustomAlert(classNames.screenReaderText)}
           <div className={classNames.text} aria-owns={suggestionsAvailable || undefined}>
             <Autofill
               {...(inputProps as any)}

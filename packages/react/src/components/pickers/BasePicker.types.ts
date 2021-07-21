@@ -174,6 +174,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   removeButtonAriaLabel?: string;
 
   /**
+   * The text that will be announced when a suggestion is removed. A default value is only provided for English.
+   * @default "removed"
+   */
+  suggestionRemovedText?: string;
+
+  /**
    * Optional aria-label that will be placed on the element that has the role "combobox"
    * attached. Additionally aria-labelled by will get added to the supporting input element contained
    * with in the combobox container
