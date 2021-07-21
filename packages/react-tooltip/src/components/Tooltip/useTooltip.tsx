@@ -87,6 +87,7 @@ export const useTooltip = (
     enabled: state.visible,
     position: state.position,
     align: state.align,
+    target: state.target,
     offset: [0, state.offset + (state.noArrow ? 0 : arrowHeight)],
     arrowPadding: theme?.global ? 2 * parseInt(tooltipBorderRadius(theme), 10) : 0,
   });
@@ -157,6 +158,7 @@ export const useTooltip = (
       if (ev.type === 'blur') {
         // Hide immediately when losing focus
         delay = 0;
+
         ignoreNextFocusEventRef.current = targetDocument?.activeElement === ev.target;
       }
 
@@ -184,13 +186,10 @@ export const useTooltip = (
     onBlur: useMergedCallbacks(childProps?.onBlur, onLeaveTrigger),
   };
 
-  // If the target prop is not provided, attach targetRef to the trigger element's ref prop.
-  // Otherwise, use the target prop directly.
+  // If the target prop is not provided, attach targetRef to the trigger element's ref prop
   const childTargetRef = useMergedRefs(childProps?.ref, targetRef);
   if (state.target === undefined) {
     triggerProps.ref = childTargetRef;
-  } else {
-    targetRef.current = state.target;
   }
 
   if (state.triggerAriaAttribute === 'label') {
