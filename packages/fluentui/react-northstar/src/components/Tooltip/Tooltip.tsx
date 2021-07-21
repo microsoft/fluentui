@@ -66,6 +66,9 @@ export interface TooltipProps
   /** Defines whether tooltip is displayed. */
   open?: boolean;
 
+  /** Defines wether tooltip is subtle  */
+  subtle?: boolean;
+
   /**
    * Event for request to change 'open' value.
    * @param event - React's original SyntheticEvent.
@@ -120,6 +123,7 @@ export const Tooltip: React.FC<TooltipProps> &
     unstable_disableTether,
     unstable_pinned,
     autoSize,
+    subtle,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -188,6 +192,7 @@ export const Tooltip: React.FC<TooltipProps> &
           placement: popperProps.placement,
           pointing,
           pointerRef: pointerTargetRef,
+          subtle,
         }),
       generateKey: false,
       overrideProps: getContentOverrideProps,
@@ -282,7 +287,7 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  pointing: true,
+  subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
 Tooltip.propTypes = {
@@ -291,6 +296,7 @@ Tooltip.propTypes = {
     content: false,
   }),
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
+  subtle: PropTypes.bool,
   children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,
