@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Source } from '@storybook/addon-docs';
 import { createRenderer } from 'react-test-renderer/shallow';
-import { CodeExample } from './utils';
+import { CodeExample } from './utils.stories';
 
 function mockMDXSourceCodeBlock(source: string) {
   return {

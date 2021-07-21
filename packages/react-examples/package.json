@@ -42,7 +42,6 @@
     "@fluentui/react": "^8.29.0",
     "@fluentui/react-cards": "^0.200.18",
     "@fluentui/react-charting": "^5.3.28",
-    "@fluentui/react-components": "^9.0.0-alpha.94",
     "@fluentui/react-docsite-components": "^8.3.17",
     "@fluentui/react-experiments": "^8.2.7",
     "@fluentui/react-file-type-icons": "^8.2.3",
