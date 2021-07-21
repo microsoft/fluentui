@@ -125,7 +125,7 @@ export const Designer: React.FunctionComponent = () => {
   );
 
   const handleSelectComponent = React.useCallback(
-    jsonTreeElement => {
+    (jsonTreeElement: JSONTreeElement) => {
       dispatch({
         type: 'SELECT_COMPONENT',
         component: jsonTreeElement,
@@ -271,6 +271,11 @@ export const Designer: React.FunctionComponent = () => {
     }, 1000);
   }, [handleDesignerLoaded]);
 
+  const selectedComponentAccessibilityErrors = React.useMemo(
+    () => (selectedComponent ? accessibilityErrors?.filter(x => x.elementUuid === selectedComponent.uuid) : []),
+    [selectedComponent, accessibilityErrors],
+  );
+
   const hotkeys = {
     'Ctrl+c': () => {
       if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
@@ -409,7 +414,7 @@ export const Designer: React.FunctionComponent = () => {
         onSwitchTab={handleSwitchTab}
         onSwitchToStore={handleSwitchToStore}
         selectedComponent={selectedComponent}
-        selectedComponentAccessibilityErrors={[]}
+        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
         selectedComponentInfo={selectedComponentInfo}
         selectedJSONTreeElement={selectedJSONTreeElement}
         showJSONTree={showJSONTree}
