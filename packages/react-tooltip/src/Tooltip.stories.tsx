@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Tooltip } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -165,4 +165,9 @@ export const OnlyIfTruncated = () => {
       <button onClick={() => setWide(w => !w)}>Toggle width</button>
     </>
   );
+};
+
+export default {
+  title: 'Components/Tooltip',
+  component: Tooltip,
 };

@@ -56,7 +56,6 @@
     "@fluentui/react-tabs": "^1.0.0-beta.128",
     "@fluentui/react-theme": "^9.0.0-alpha.17",
     "@fluentui/react-toggle": "^1.0.0-beta.126",
-    "@fluentui/react-tooltip": "^9.0.0-alpha.58",
     "@fluentui/react-utilities": "^9.0.0-alpha.33",
     "@fluentui/scheme-utilities": "^8.1.4",
     "@fluentui/style-utilities": "^8.2.0",

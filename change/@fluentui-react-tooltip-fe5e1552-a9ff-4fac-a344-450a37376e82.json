@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "react-tooltip migration to new DX",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "none"
+}
