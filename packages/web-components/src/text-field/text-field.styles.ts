@@ -135,6 +135,7 @@ export const textFieldStyles = (context, definition) =>
 
     .start,
     .end {
+      display: flex;
       margin: auto;
       fill: currentcolor;
     }
