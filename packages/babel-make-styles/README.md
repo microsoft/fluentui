@@ -95,7 +95,7 @@ const useStyles = __styles({
 
 ## Troubleshooting
 
-This section focuses mainly on troubleshooting this babel plugin in the [microsoft/fluenui repo](https://github.com/microsoft/fluentui).
+This section focuses mainly on troubleshooting this babel plugin in the [microsoft/fluentui](https://github.com/microsoft/fluentui) repo.
 However the concepts are not coupled to the repo setup.
 
 ### Linaria
