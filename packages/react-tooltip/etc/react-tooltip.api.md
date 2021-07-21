@@ -22,7 +22,7 @@ export interface OnVisibleChangeData {
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
+export const Tooltip: React_2.FunctionComponent<TooltipProps>;
 
 // @public
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
@@ -30,7 +30,9 @@ export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay
 // @public
 export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
     align?: Alignment;
-    children?: React_2.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
+    children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
     hideDelay?: number;
     noArrow?: boolean;
@@ -59,7 +61,9 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
 }
 
 // @public
-export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<never>, 'ref' | 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
+export type TooltipTriggerProps = {
+    ref?: React_2.Ref<never>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
 export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;

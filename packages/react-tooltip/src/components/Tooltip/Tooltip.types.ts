@@ -13,7 +13,10 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * Alternatively, children can be a render function that takes the props and adds
    * them to the appropriate elements.
    */
-  children?: React.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React.ReactNode) | null;
+  children?:
+    | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
+    | ((props: TooltipTriggerProps) => React.ReactNode)
+    | null;
 
   /**
    * The content displayed inside the tooltip.
@@ -107,16 +110,11 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
  * The properties that are added to the trigger of the Tooltip
  * {@docCategory Tooltip}
  */
-export type TooltipTriggerProps = Pick<
-  React.HTMLAttributes<HTMLElement> & React.RefAttributes<never>,
-  | 'ref'
-  | 'onPointerEnter'
-  | 'onPointerLeave'
-  | 'onFocus'
-  | 'onBlur'
-  | 'aria-describedby'
-  | 'aria-labelledby'
-  | 'aria-label'
+export type TooltipTriggerProps = {
+  ref?: React.Ref<never>;
+} & Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'
 >;
 
 /**

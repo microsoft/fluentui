@@ -86,7 +86,15 @@ export const useTooltip = (
   state.visible = visible;
   state.shouldRenderTooltip = visible;
 
-  const { targetRef, containerRef, arrowRef } = usePopper({
+  const {
+    targetRef,
+    containerRef,
+    arrowRef,
+  }: {
+    targetRef: React.MutableRefObject<unknown>;
+    containerRef: React.MutableRefObject<HTMLElement>;
+    arrowRef: React.MutableRefObject<HTMLDivElement>;
+  } = usePopper({
     enabled: state.visible,
     position: state.position,
     align: state.align,
@@ -179,18 +187,18 @@ export const useTooltip = (
   state.onPointerEnter = useMergedCallbacks(state.onPointerEnter, clearDelayTimeout);
   state.onPointerLeave = useMergedCallbacks(state.onPointerLeave, onLeaveTrigger);
 
-  const childProps = React.isValidElement(state.children) ? state.children.props : undefined;
+  const child = React.isValidElement(state.children) ? state.children : undefined;
 
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
-    onPointerEnter: useMergedCallbacks(childProps?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedCallbacks(childProps?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedCallbacks(childProps?.onFocus, onEnterTrigger),
-    onBlur: useMergedCallbacks(childProps?.onBlur, onLeaveTrigger),
+    onPointerEnter: useMergedCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
+    onPointerLeave: useMergedCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
+    onFocus: useMergedCallbacks(child?.props?.onFocus, onEnterTrigger),
+    onBlur: useMergedCallbacks(child?.props?.onBlur, onLeaveTrigger),
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childTargetRef = useMergedRefs(childProps?.ref, targetRef);
+  const childTargetRef = useMergedRefs(child?.ref, targetRef);
   if (state.target === undefined) {
     triggerProps.ref = childTargetRef;
   }
