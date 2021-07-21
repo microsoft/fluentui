@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
@@ -26,24 +27,24 @@ describe('Link', () => {
   });
 
   it('renders as a button if no href is provided', () => {
-    wrapper = mount(<Link>This is a link</Link>);
-    const button = wrapper.find('button');
-    const anchor = wrapper.find('a');
+    const component = renderer.create(<Link>This is a link</Link>);
+    const button = component.root.findAllByType('button');
+    const anchor = component.root.findAllByType('a');
     expect(button.length).toBe(1);
     expect(anchor.length).toBe(0);
 
-    const tree = button.debug();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders as an anchor when href is provided', () => {
-    wrapper = mount(<Link href="https://www.bing.com">This is a link</Link>);
-    const button = wrapper.find('button');
-    const anchor = wrapper.find('a');
+    const component = renderer.create(<Link href="https://www.bing.com">This is a link</Link>);
+    const button = component.root.findAllByType('button');
+    const anchor = component.root.findAllByType('a');
     expect(button.length).toBe(0);
     expect(anchor.length).toBe(1);
 
-    const tree = anchor.debug();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
