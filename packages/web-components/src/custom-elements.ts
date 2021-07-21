@@ -36,6 +36,7 @@ import { fluentTextField } from './text-field/index';
 import { fluentTooltip } from './tooltip/index';
 import { fluentTreeView } from './tree-view/index';
 import { fluentTreeItem } from './tree-item/index';
+import { Container } from '@microsoft/fast-foundation';
 
 export {
   fluentAccordion,
@@ -127,4 +128,19 @@ export const allComponents = {
   fluentTooltip,
   fluentTreeView,
   fluentTreeItem,
+  register(container?: Container) {
+      if (!container) {
+          // preserve backward compatibility with code that loops through
+          // the values of this object and calls them as funcs with no args
+          return;
+      }
+
+      for (const key in this) {
+          if (key === "register") {
+              continue;
+          }
+
+          this[key]().register(container);
+      }
+  },
 };
