@@ -326,8 +326,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    this.setState({ inputValue: newValue });
-    onInputValueChange?.(newValue, composing);
+    this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
   };
 
   private _getDisplayValue(): string {
