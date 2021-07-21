@@ -385,8 +385,10 @@ export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType |
 export function useSSRContext(): SSRContextValue;
 
 // @public
-export const videoProperties: Record<string, number>;
+export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
+// @public
+export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //
