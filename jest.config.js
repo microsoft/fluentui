@@ -32,5 +32,6 @@ module.exports = {
     '<rootDir>/packages/react-avatar',
     '<rootDir>/packages/react-shared-contexts',
     '<rootDir>/packages/react-tooltip',
+    '<rootDir>/packages/react-card',
   ],
 };

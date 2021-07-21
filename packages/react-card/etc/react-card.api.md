@@ -8,7 +8,7 @@ import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Card: React_2.FunctionComponent<CardProps>;
+export const Card: React_2.FunctionComponent<CardProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export const CardBody: React_2.FunctionComponent<CardSectionProps>;
@@ -85,7 +85,6 @@ export const useCardState: (draftState: CardState) => void;
 
 // @public (undocumented)
 export function useCardStyles(state: CardState): CardState;
-
 
 // (No @packageDocumentation comment for this package)
 
