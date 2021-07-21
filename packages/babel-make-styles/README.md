@@ -111,7 +111,9 @@ $ DEBUG=linaria\* LINARIA_LOG=debug yarn build
 
 Using Lage from the root of the repo
 
-> DEBUG=linaria\* LINARIA_LOG=debug yarn lage build --to <package-name>
+```sh
+$ DEBUG=linaria\* LINARIA_LOG=debug yarn lage build --to <package-name>
+```
 
 Using yarn workspace from the root of the repo
 
