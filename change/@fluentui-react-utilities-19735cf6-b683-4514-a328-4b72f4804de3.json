@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Move useTimeout into react-utilities and add tests",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
