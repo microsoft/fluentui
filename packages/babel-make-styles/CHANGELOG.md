@@ -1,8 +1,36 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Tue, 13 Jul 2021 07:35:36 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jul 2021 22:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.28)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.26..@fluentui/babel-make-styles_v9.0.0-alpha.28)
+
+### Changes
+
+- bump @linaria/babel-preset & @linaria/shaker ([PR #18992](https://github.com/microsoft/fluentui/pull/18992) by olfedias@microsoft.com)
+- fix handling of cases when MemberExpression is a function ([PR #18995](https://github.com/microsoft/fluentui/pull/18995) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.26)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.25..@fluentui/babel-make-styles_v9.0.0-alpha.26)
+
+### Changes
+
+- handle MemberExpression as a mixin ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.25)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.24..@fluentui/babel-make-styles_v9.0.0-alpha.25)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.49 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.24)
 

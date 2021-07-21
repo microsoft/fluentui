@@ -185,8 +185,10 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     ::slotted(svg) {
-      ${/* Glyph size is temporary -
-            replace when glyph-size var is added */ ''} width: 16px;
+      ${
+        /* Glyph size is temporary -
+            replace when glyph-size var is added */ ''
+      } width: 16px;
       height: 16px;
     }
 
