@@ -287,7 +287,6 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  pointing: false,
   subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
