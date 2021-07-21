@@ -133,7 +133,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 - _**Public**_
   ```jsx
-  <Slider label={label} markContainer={markContainer} />
+  <Slider label={label} marks={marks} />
   ```
 - _**Internal**_
 
