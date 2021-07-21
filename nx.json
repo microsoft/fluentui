@@ -107,7 +107,7 @@
     "@fluentui/react-positioning": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-provider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-shared-contexts": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-storybook": { "implicitDependencies": [] },
+    "@fluentui/react-storybook": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-tabs": { "implicitDependencies": [] },
     "@fluentui/react-tabster": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
