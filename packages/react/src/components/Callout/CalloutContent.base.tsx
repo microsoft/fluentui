@@ -228,8 +228,7 @@ function usePositions(
         setElementPositions(newElementPositions);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only update if onPositioned mutates
-    [onPositioned],
+    [elementPositions, onPositioned],
   );
 
   React.useEffect(
