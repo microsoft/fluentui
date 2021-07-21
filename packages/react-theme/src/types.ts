@@ -371,6 +371,8 @@ export type Greys =
   | 98
   | 100;
 
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
 // TODO: do we want to split theme for better tree shaking? (MUI)
 // But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
 export type Theme = {
@@ -393,6 +395,8 @@ export type Theme = {
     palette: GlobalSharedColors & {
       brand: BrandVariants; // Only the Theme brand, not all
       grey: Record<Greys, string>;
+      whiteAlpha: Record<AlphaColors, string>;
+      blackAlpha: Record<AlphaColors, string>;
     };
     type: {
       fontSizes: FontSizes;
