@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent, useTheme } from '@fluentui/react-shared-contexts';
+import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   makeMergeProps,
   onlyChild,
@@ -10,9 +10,9 @@ import {
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
+  useTimeout,
 } from '@fluentui/react-utilities';
 import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
 
 /**
  * Names of the shorthand properties in TooltipProps
@@ -21,6 +21,10 @@ import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
 export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
 const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandProps });
+
+// Style values that are required for popper to properly position the tooltip
+const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
+const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts if this changes
 
 /**
  * Create the state required to render Tooltip.
@@ -89,7 +93,7 @@ export const useTooltip = (
     align: state.align,
     target: state.target,
     offset: [0, state.offset + (state.noArrow ? 0 : arrowHeight)],
-    arrowPadding: theme?.global ? 2 * parseInt(tooltipBorderRadius(theme), 10) : 0,
+    arrowPadding: 2 * tooltipBorderRadius,
   });
 
   state.ref = useMergedRefs(state.ref, containerRef);
@@ -218,35 +222,6 @@ export const useTooltip = (
   }
 
   return state;
-};
-
-/**
- * Helper to manage a browser timeout.
- * Ensures that the timeout isn't set multiple times at once,
- * and is cleaned up when the component is unloaded.
- *
- * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
- */
-// TODO this could be moved to react-utilities as a general-purpose hook
-const useTimeout = () => {
-  const [timeout] = React.useState(() => ({
-    id: undefined as ReturnType<typeof setTimeout> | undefined,
-    set: (fn: () => void, delay: number) => {
-      timeout.clear();
-      timeout.id = setTimeout(fn, delay);
-    },
-    clear: () => {
-      if (timeout.id !== undefined) {
-        clearTimeout(timeout.id);
-        timeout.id = undefined;
-      }
-    },
-  }));
-
-  // Clean up the timeout when the component is unloaded
-  React.useEffect(() => timeout.clear, [timeout]);
-
-  return [timeout.set, timeout.clear] as const;
 };
 
 /**

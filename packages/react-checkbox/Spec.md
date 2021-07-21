@@ -101,19 +101,17 @@ Component props:
 ## Sample Code
 
 ```tsx
-<Checkbox>Example Checkbox</Checkbox>
+<Checkbox label="Example Checkbox" />
 
-<Checkbox>
-  <>Example Checkbox with <a href="https://www.microsoft.com">link</a></>
-</Checkbox>
+<Checkbox label={<>Example Checkbox with <a href="https://www.microsoft.com">link</a></>} />
 
-<Checkbox circular size="large">Circular Checkbox</Checkbox>
+<Checkbox label="Circular Checkbox" circular size="large" />
 
-<Checkbox onChange={onChangeFunction}>Controlled Checkbox</Checkbox>
+<Checkbox label="Controlled Checkbox" onChange={onChangeFunction} />
 
-<Checkbox checked="mixed">Mixed Checkbox</Checkbox>
+<Checkbox label="Mixed Checkbox" checked="mixed" />
 
-<Checkbox>{{ children: 'Custom Label', style: { color: 'red' }, required: true }}</Chekbox>
+<Checkbox label={{ children: 'Custom Label', style: { color: 'red' }, required: true }} />
 ```
 
 ## Variants
@@ -130,21 +128,23 @@ Component props:
 /**
  * Checkbox Props
  */
-export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface CheckboxProps
+  extends Omit<ComponentPropsCompat, 'children'>,
+    Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
   /**
-   * Children to be rendered as a Label.
+   * Label that will be rendered next to the input.
    */
-  children?: ShorthandProps<LabelProps>;
+  label?: ShorthandProps<LabelProps>;
 
   /**
-   * Icon to be displayed when the checkbox is in the checked state.
+   * Indicator to be rendered as the checkbox icon.
    */
-  checkmarkIcon?: React.ReactElement;
+  indicator?: ShorthandProps<ComponentPropsCompat>;
 
   /**
-   * Icon to be displayed when the checkbox is in the mixed state.
+   * Hidden input that handles the checkbox's functionality.
    */
-  mixedIcon?: React.ReactElement;
+  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & { ref: React.RefObject<HTMLInputElement> }>;
 
   /**
    * Disabled state of the checkbox.
@@ -208,19 +208,15 @@ export interface CheckboxOnChangeData {
 }
 ```
 
-Some feedback needed for props are:
-
-- `checked` will work similar to `aria-checked` and have `true`, `false`, and `mixed` options.
-- A `rootId` is needed since the input and label will share an id and `rootId` will be used for the root element.
-- To initially make the checkbox simple, both mixed and checked icons will be a `ReactElement` instead of a slot.
-- Based on feedback, `Checkbox` will now use children for the `Label`.
-
 ## Structure
+
+- The icon that will be used to represent the Checkbox's state is a slot to allow customization of the icons. This means that if a user were to customize the icons that will appear, the user will have to handle both icons based on the state.
+- The input element will be a slot to allow for customization.
 
 ### **Public**
 
-```tsx
-<Checkbox>Example Checkbox</Checkbox>
+```html
+<Checkbox label="Example Checkbox" />
 ```
 
 ### **Internal**
@@ -229,8 +225,8 @@ Some feedback needed for props are:
 <slots.root {...slotProps.root}>
   {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
   <div className={state.checkboxClassName}>
-    <div className={state.iconClassName}>{icon}</div>
-    <input {...inputProps} />
+    <slots.indicator {...slotProps.indicator} />
+    <slots.input {...slotProps.input} />
   </div>
   {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
 </slots.root>
@@ -240,15 +236,15 @@ Some feedback needed for props are:
 
 In this case, the label position is set to end as per default.
 
-```tsx
+```html
 <div {/* Root Element */}>
   <div {/* Checkbox */}>
-    <div {/* Icon */}>
-      ...Icon
+    <div {/* indicator */}>
+      ...indicator
     </div>
-    <input id="cbox-1" type="checkbox" aria-checked="..." aria-label="..." aria-labelledby="..." aria-disabled="..." aria-posinset="..." aria-setsize="..." />
+    <input id="cbox-1" ...props />
   </div>
-  <label for="cbox-1">
+  <label for="cbox-1" ...props>
     Example Checkbox
   </label>
 </div>
