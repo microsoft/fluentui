@@ -13,6 +13,7 @@ export const SymbolLock = 'SymbolLock';
 export const Hyper = 'Hyper';
 export const Super = 'Super';
 export const Enter = 'Enter';
+export const Space = ' ';
 export const Tab = 'Tab';
 export const ArrowDown = 'ArrowDown';
 export const ArrowLeft = 'ArrowLeft';

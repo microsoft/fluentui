@@ -1,8 +1,17 @@
 # Change Log - @fluentui/a11y-testing
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jul 2021 22:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/a11y-testing_v0.1.0)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/a11y-testing_v0.1.0..@fluentui/a11y-testing_v0.1.0)
+
+### Changes
+
+- Bump @fluentui/keyboard-keys to v9.0.0-alpha.1 ([PR #19016](https://github.com/microsoft/fluentui/pull/19016) by lingfan.gao@microsoft.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/a11y-testing_v0.1.0)
 

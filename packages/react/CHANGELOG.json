@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react_v8.23.6",
+      "version": "8.23.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating Combobox snapshot",
+            "author": "esteban.230@hotmail.com",
+            "commit": "553c7b3122a23b6f02acae2a83d58b8794ea62fb",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix openOnFocus bug with closing the dropdown, remove default tooltip text",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf8d7a43d6de92501cef58200aff21fb3d1590a5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fixing high constrast selected styling for combobox",
+            "author": "esteban.230@hotmail.com",
+            "commit": "dd99960e2415b1f3096f3e221701da7cdc8eac84",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Jul 2021 07:32:14 GMT",
       "tag": "@fluentui/react_v8.23.5",
       "version": "8.23.5",
