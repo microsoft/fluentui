@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update Popper to use options.target whenever it is defined (even if null)",
+  "packageName": "@fluentui/react-positioning",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
