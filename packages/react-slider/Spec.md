@@ -159,19 +159,19 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 ```jsx
     <div className="ms-Slider-root">
         // Label is up for discussion
-        <div className = "ms-Slider-label">
+        <div className="ms-Slider-label">
             {...label children}
         </div>
         <div className="ms-Slider-container">
-            <div className = "ms-Slider-rail" />
-            <div className = "ms-Slider-track" />
-            <div className = "ms-Slider-thumb" />
+            <div className="ms-Slider-rail" />
+            <div className="ms-Slider-track" />
+            <div className="ms-Slider-thumb" />
             <div className="ms-Slider-markContainer">
-                <div className="ms-Slider-mark"/>
-                <div className="ms-Slider-markLabel"/>
-            <div />
+                <div className="ms-Slider-mark" />
+                <div className="ms-Slider-markLabel" />
+            </div>
         </div>
-        <div className = "ms-Slider-valueLabel"/>
+        <div className="ms-Slider-valueLabel" />
     </div>
 ```
 
