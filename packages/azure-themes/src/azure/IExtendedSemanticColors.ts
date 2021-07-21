@@ -80,6 +80,10 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   listItemBackgroundHovered: string;
   listItemBackgroundSelected: string;
   listItemBackgroundSelectedHovered: string;
+  listLinkHovered: string;
+  listLinkRowHovered: string;
+  listLinkRowSelected: string;
+  listLinkRowSelectedHovered: string;
   linkBorderStyle: string;
   listText: string;
   listUnderline: string;
