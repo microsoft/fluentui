@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-// import { SliderState } from './Slider.types';
+import { SliderState } from './Slider.types';
 import { sliderShorthandProps } from './useSlider';
 
 /**
  * Render the final JSX of Slider
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const renderSlider = (state: any) => {
+export const renderSlider = (state: SliderState) => {
   const { slots, slotProps } = getSlots(state, sliderShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
-      {state.children}
+      <slots.rail {...slotProps.rail} />
+      <slots.track {...slotProps.track} />
+      <slots.thumb {...slotProps.thumb} />
     </slots.root>
   );
 };
