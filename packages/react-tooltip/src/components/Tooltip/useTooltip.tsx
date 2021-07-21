@@ -9,6 +9,7 @@ import {
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
+  useTimeout,
 } from '@fluentui/react-utilities';
 import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
@@ -205,35 +206,6 @@ export const useTooltip = (
   }
 
   return state;
-};
-
-/**
- * Helper to manage a browser timeout.
- * Ensures that the timeout isn't set multiple times at once,
- * and is cleaned up when the component is unloaded.
- *
- * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
- */
-// TODO this could be moved to react-utilities as a general-purpose hook
-const useTimeout = () => {
-  const [timeout] = React.useState(() => ({
-    id: undefined as ReturnType<typeof setTimeout> | undefined,
-    set: (fn: () => void, delay: number) => {
-      timeout.clear();
-      timeout.id = setTimeout(fn, delay);
-    },
-    clear: () => {
-      if (timeout.id !== undefined) {
-        clearTimeout(timeout.id);
-        timeout.id = undefined;
-      }
-    },
-  }));
-
-  // Clean up the timeout when the component is unloaded
-  React.useEffect(() => timeout.clear, [timeout]);
-
-  return [timeout.set, timeout.clear] as const;
 };
 
 /**
