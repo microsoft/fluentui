@@ -119,7 +119,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-button/src"
     },
-    "@fluentui/react-card": { "root": "packages/react-card", "projectType": "library" },
+    "@fluentui/react-card": {
+      "root": "packages/react-card",
+      "projectType": "library",
+      "sourceRoot": "packages/react-card/src"
+    },
     "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
     "@fluentui/react-checkbox": { "root": "packages/react-checkbox", "projectType": "library" },
