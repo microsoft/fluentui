@@ -113,7 +113,7 @@
     "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-theme": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-toggle": { "implicitDependencies": [] },
-    "@fluentui/react-tooltip": { "implicitDependencies": [] },
+    "@fluentui/react-tooltip": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-utilities": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-window-provider": { "implicitDependencies": [] },
     "@fluentui/scheme-utilities": { "implicitDependencies": [] },
