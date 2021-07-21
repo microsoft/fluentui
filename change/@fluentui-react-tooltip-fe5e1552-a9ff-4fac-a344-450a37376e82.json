@@ -1,7 +1,7 @@
 {
   "type": "none",
-  "comment": "add bundle size fixtures",
+  "comment": "react-tooltip migration to new DX",
   "packageName": "@fluentui/react-tooltip",
-  "email": "olfedias@microsoft.com",
+  "email": "tkrasniqi@microsoft.com",
   "dependentChangeType": "none"
 }

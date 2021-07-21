@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix tooltip styling broken by a change in makeStyles",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
