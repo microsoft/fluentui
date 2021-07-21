@@ -504,32 +504,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     isOpen && this.setState({ isOpen: false });
   };
 
-  /**
-   * componentWillReceiveProps handler for the auto fill component
-   * Checks/updates the input value to set, if needed
-   * @param defaultVisibleValue - the defaultVisibleValue that got passed
-   *  in to the auto fill's componentWillReceiveProps
-   * @returns - the updated value to set, if needed
-   */
-  private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
-    const comboBox = this._autofill.current;
-
-    if (!comboBox) {
-      return null;
-    }
-
-    if (comboBox.value === null || comboBox.value === undefined) {
-      return null;
-    }
-
-    const visibleValue = normalizeToString(this._currentVisibleValue);
-    if (comboBox.value !== visibleValue) {
-      return visibleValue;
-    }
-
-    return comboBox.value;
-  };
-
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
@@ -598,9 +572,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-disabled={disabled}
           aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
-          defaultVisibleValue={this._currentVisibleValue}
+          value={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
-          updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
           }

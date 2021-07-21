@@ -185,6 +185,7 @@ storiesOf('PeoplePicker', module).addStory('Normal with text', () => (
         onEmptyInputFocus={getPeople}
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}
+        resolveDelay={300}
         pickerSuggestionsProps={suggestionProps}
       />
     </Fabric>
