@@ -106,8 +106,6 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | ariaValueLabel | x                                                                                       | &check;                                                                               | The **Slider's** current value label to be read by the screen reader. |
 
-:::danger
-
 ## Migration
 
 <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
@@ -130,8 +128,6 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | valueFormat       | Custom formatter for the slider value. value                                                                                                           | Label will handle custom formats                                                             |
 | originFromZero    | Whether to attach the origin of slider to zero. Helpful when the range include negatives. @defaultvalue false                                          | Replaced with origin to allow for more control over the component.                           |
 | ranged            | Whether to render a **Ranged Slider**. Ranged Sliders display two `thumbs` that allow for lower and upper bounds to be easily selected.                | Ranged is enabled when a value or defaultValue pass an array with a left and right position. |
-
-:::
 
 ## Structure
 
