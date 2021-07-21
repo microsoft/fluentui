@@ -78,7 +78,5 @@ function overrideDefaultBabelLoader(rules) {
     throw new Error('storybook webpack rules changed');
   }
 
-  if (loader) {
-    loader.options.customize = customLoaderPath;
-  }
+  loader.options.customize = customLoaderPath;
 }
