@@ -44,7 +44,6 @@ export const useTooltip = (
   defaultProps?: TooltipProps,
 ): TooltipState => {
   const context = React.useContext(TooltipContext);
-  const theme = useTheme();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
