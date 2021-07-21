@@ -74,6 +74,7 @@ export const getOptionStyles = memoizeFunction(
     customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
     isPending?: boolean,
     isHidden?: boolean,
+    isSelected?: boolean,
   ): Partial<IComboBoxOptionStyles> => {
     const { palette, semanticColors } = theme;
 
@@ -123,6 +124,24 @@ export const getOptionStyles = memoizeFunction(
             },
           },
         },
+        isSelected
+          ? [
+              {
+                backgroundColor: 'transparent',
+                color: option.textSelectedColor,
+                selectors: {
+                  ':hover': [
+                    {
+                      backgroundColor: option.backgroundHoveredColor,
+                    },
+                    listOptionHighContrastStyles,
+                  ],
+                },
+              },
+              getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
+              listOptionHighContrastStyles,
+            ]
+          : [],
       ],
       rootHovered: {
         backgroundColor: option.backgroundHoveredColor,
@@ -131,22 +150,6 @@ export const getOptionStyles = memoizeFunction(
       rootFocused: {
         backgroundColor: option.backgroundHoveredColor,
       },
-      rootChecked: [
-        {
-          backgroundColor: 'transparent',
-          color: option.textSelectedColor,
-          selectors: {
-            ':hover': [
-              {
-                backgroundColor: option.backgroundHoveredColor,
-              },
-              listOptionHighContrastStyles,
-            ],
-          },
-        },
-        getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
-        listOptionHighContrastStyles,
-      ],
       rootDisabled: {
         color: option.textDisabledColor,
         cursor: 'default',

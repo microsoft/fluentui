@@ -1,8 +1,26 @@
 # Change Log - vr-tests
 
-This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jul 2021 22:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.23.6 ([PR #18984](https://github.com/microsoft/fluentui/pull/18984) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.28 ([PR #18998](https://github.com/microsoft/fluentui/pull/18998) by olfedias@microsoft.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.54 ([PR #18970](https://github.com/microsoft/fluentui/pull/18970) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.58 ([PR #18970](https://github.com/microsoft/fluentui/pull/18970) by olfedias@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.47 ([PR #18970](https://github.com/microsoft/fluentui/pull/18970) by olfedias@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.60 ([PR #18970](https://github.com/microsoft/fluentui/pull/18970) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.128 ([PR #18984](https://github.com/microsoft/fluentui/pull/18984) by sarah.higley@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

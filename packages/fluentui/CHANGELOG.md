@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix style debugging throw error in dev environment @yuanboxue-amber ([#18955](https://github.com/microsoft/fluentui/pull/18955))
 - Fix `ChatMessage` to pass `popperRef` from user to `usePopper` @yuanboxue-amber ([#18950](https://github.com/microsoft/fluentui/pull/18950))
 - Fix hover styles for Splitbutton Toggle button part @TanelVari ([#18976](https://github.com/microsoft/fluentui/pull/18976))
+- Fix `Carousel` navigation item click @chassunc ([#19019](https://github.com/microsoft/fluentui/pull/19019))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
