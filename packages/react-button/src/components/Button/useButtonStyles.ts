@@ -29,7 +29,7 @@ const useRootStyles = makeStyles({
     color: theme.alias.color.neutral.neutralForeground1,
 
     borderStyle: 'solid',
-    borderWidth: theme.global.strokeWidth.thin,
+    borderWidth: theme.global.strokeWidth.thick,
 
     boxShadow: theme.alias.shadow.shadow4,
     outline: 'none',
@@ -252,14 +252,15 @@ const useRootStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   base: createFocusIndicatorStyleRule(theme => ({
-    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+    borderColor: theme.alias.color.neutral.neutralForeground1,
     borderRadius: '4px',
   })),
   circular: createFocusIndicatorStyleRule(theme => ({
     borderRadius: theme.global.borderRadius.circular,
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralForegroundOnBrand}`,
+    borderWidth: theme.global.strokeWidth.thin,
+    borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
     boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralForeground1}`,
   })),
 });
