@@ -112,7 +112,7 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['dom'],
+          lib: ['ES2015', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',

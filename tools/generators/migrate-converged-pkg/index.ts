@@ -99,7 +99,7 @@ const templates = {
     compilerOptions: {
       target: 'ES2015',
       module: 'CommonJS',
-      lib: ['dom'],
+      lib: ['ES2015', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
