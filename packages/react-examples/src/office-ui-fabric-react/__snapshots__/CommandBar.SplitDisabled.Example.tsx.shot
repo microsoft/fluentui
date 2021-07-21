@@ -295,7 +295,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               text-align: center;
                             }
                         data-icon-name="Add"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -454,7 +453,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               color: GrayText;
                             }
                         data-icon-name="ChevronDown"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -711,7 +709,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               color: GrayText;
                             }
                         data-icon-name="Upload"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -887,7 +884,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                               color: GrayText;
                             }
                         data-icon-name="ChevronDown"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1062,7 +1058,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           color: GrayText;
                         }
                     data-icon-name="Share"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1257,7 +1252,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             color: GrayText;
                           }
                       data-icon-name="Download"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",
