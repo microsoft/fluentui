@@ -207,6 +207,11 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       classNames.innerText,
       {
         lineHeight: 16,
+        selectors: {
+          '& span a:last-child': {
+            paddingLeft: 4,
+          },
+        },
       },
       truncated && {
         overflow: 'visible',
