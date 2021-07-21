@@ -84,15 +84,15 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 ### Visual behavior props
 
-| Name                      | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                   |
-| ------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| label (Up for discussion) | x                                                                                       | &check;                                                                               | The description label of the **Slider**.                                                                      |
-| valueLabel                | x                                                                                       | &check;                                                                               | The current value or unique format to be shown for the **Slider's** `value label`.                            |
-| disabled                  | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled)                          |
-| vertical                  | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)                           |
-| marks                     | x                                                                                       | x                                                                                     | Whether the **Slider** will have marks to visibly display its steps. @default `false` (renders without marks) |
-| fluid (Up for discussion) | x                                                                                       | &check;                                                                               | A **Slider** can take the width of its container. @default `false` (width does not fill the container)        |
-| disabledFocusable         | X                                                                                       | X                                                                                     | A **Slider** can be disabled and focusable at the same time.                                                  |
+| Name              | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                   |
+| ----------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| label             | x                                                                                       | &check;                                                                               | The description label of the **Slider**.                                                                      |
+| valueLabel        | x                                                                                       | &check;                                                                               | The current value or unique format to be shown for the **Slider's** `value label`.                            |
+| disabled          | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled)                          |
+| vertical          | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)                           |
+| marks             | x                                                                                       | x                                                                                     | Whether the **Slider** will have marks to visibly display its steps. @default `false` (renders without marks) |
+| fluid             | x                                                                                       | &check;                                                                               | A **Slider** can take the width of its container. @default `false` (width does not fill the container)        |
+| disabledFocusable | X                                                                                       | X                                                                                     | A **Slider** can be disabled and focusable at the same time.                                                  |
 
 ### Event handlers props
 
@@ -100,7 +100,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | onChange | &check;                                                                                 | &check;                                                                               | Triggers a callback when the value has been changed. This will be called on every individual step. |
 
-### Accesibility props
+### Accessibility props
 
 | Name           | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="120"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/> | Description                                                           |
 | -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -225,12 +225,12 @@ _Explain how the component will behave in use, including:_
 
 ### Removing Fluid
 
-Having the `Slider` fit the width of the screen could be done by the user by applying custon styling to the `Slider`.
+Having the `Slider` fit the width of the screen could possibly be done by the user by applying custom styling to the `Slider`.
 
 ### RangedSlider Seperated
 
-It may be more readable and pottentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases.
+It may be more readable and potentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases.
 
 ### Removing Label and ValueLabel
 
-If there is a way to remove the Label and ValueLabel while preserving accessibility it could greatly benifit the render structure (Removes container, label, and valueLabel slots).
+If there is a way to remove the Label and ValueLabel while preserving accessibility it could greatly benefit the render structure (Removes container, label, and valueLabel slots).
