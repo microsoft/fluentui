@@ -142,13 +142,13 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
     {state.label && <slots.label {...slotProps.label} />}
     <slots.sliderContainer {...slotProps.sliderContainer}>
       <slots.rail {...slotProps.rail} />
-      <slots.track {...slotProps.track} />
-      <slots.thumb {...slotProps.thumb} />
         {state.marks && (
             <slots.markContainer {...slotProps.markContainer}>
               <slots.mark {...slotProps.mark} />
               {state.markLabel && <slots.markLabel {...slotProps.markLabel} />}
            </slots.markContainer>
+      <slots.track {...slotProps.track} />
+      <slots.thumb {...slotProps.thumb} />
     </slots.sliderContainer>
     {state.valueLabel && <slots.valueLabel {...slotProps.valueLabel} />}
   </slots.root>
@@ -164,12 +164,12 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
         </div>
         <div className="ms-Slider-container">
             <div className = "ms-Slider-rail" />
-            <div className = "ms-Slider-track" />
-            <div className = "ms-Slider-thumb" />
             <div className="ms-Slider-markContainer">
                 <div className="ms-Slider-mark"/>
                 <div className="ms-Slider-markLabel"/>
             <div />
+            <div className = "ms-Slider-track" />
+            <div className = "ms-Slider-thumb" />
         </div>
         <div className = "ms-Slider-valueLabel"/>
     </div>
@@ -183,7 +183,7 @@ _Explain how the component will behave in use, including:_
 
   - **Disabled**
     - When disabled, all touch and mouse events are ignored and the Slider's value never updates.
-    - Allows focus but is readonly. This helps quickly reveal information to blind users why the slider is disabled without needing to scan the entire page. `aria-disabled` is used instead of `disabled.`
+    - Allows focus but is read only. This helps quickly reveal information to blind users why the slider is disabled without needing to scan the entire page. `aria-disabled` is used instead of `disabled.`
   - **Focused**
     - Focus indicators only appear when keyboard tabbing/directional keystrokes and disappears when the mosue/touch interactions occur.
 
