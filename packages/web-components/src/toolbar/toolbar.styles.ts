@@ -1,0 +1,98 @@
+import { css, ElementStyles } from '@microsoft/fast-element';
+import {
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
+import {
+  fillColor,
+  focusStrokeWidth,
+  neutralStrokeDividerRest,
+  neutralStrokeFocus,
+  strokeWidth,
+} from '../design-tokens';
+
+export const toolbarStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition
+) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition
+) =>
+  css`
+      ${display("inline-flex")} :host {
+          --toolbar-item-gap: calc(
+              (var(--design-unit) + calc(var(--density) + 2)) * 1px
+          );
+          background: ${fillColor};
+          fill: currentcolor;
+          padding: var(--toolbar-item-gap);
+          border-bottom: 1px solid ${neutralStrokeDividerRest};
+          box-sizing: border-box;
+      }
+
+      :host(${focusVisible}) {
+          outline: calc(${strokeWidth} * 1px) solid ${neutralStrokeFocus};
+      }
+
+      .positioning-region {
+          align-items: center;
+          display: inline-flex;
+          flex-flow: row wrap;
+          justify-content: flex-start;
+          flex-grow: 1;
+      }
+
+      :host([orientation="vertical"]) {
+          border-inline-end: 1px solid ${neutralStrokeDividerRest};
+          border-bottom: none;
+      }
+
+      :host([orientation="vertical"]) .positioning-region {
+          flex-direction: column;
+          align-items: start;
+      }
+
+      ::slotted(:not([slot])) {
+          flex: 0 0 auto;
+          margin: 0 var(--toolbar-item-gap);
+      }
+
+      :host([orientation="vertical"]) ::slotted(:not([slot])) {
+          margin: var(--toolbar-item-gap) 0;
+      }
+
+      .start,
+      .end {
+          display: flex;
+          align-items: center;
+      }
+
+      .end {
+        margin-inline-start: auto;
+      }
+
+      .start__hidden,
+      .end__hidden {
+          display: none;
+      }
+
+      ::slotted(svg) {
+          ${/* Glyph size is temporary - replace when adaptive typography is figured out */ ""}
+          width: 16px;
+          height: 16px;
+      }
+  `.withBehaviors(
+      forcedColorsStylesheetBehavior(
+          css`
+          :host(:${focusVisible}) {
+              box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.Highlight};
+              color: ${SystemColors.ButtonText};
+              forced-color-adjust: none;
+          }
+      `
+      )
+  );
