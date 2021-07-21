@@ -198,7 +198,7 @@ const useStyles = makeStyles({
     verticalAlign: 'top',
     textAlign: 'center',
     borderRadius: 'inherit',
-    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.strokeAccessible} inset`,
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.transparentStroke} inset`,
   }),
 });
 

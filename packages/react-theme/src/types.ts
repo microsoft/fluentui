@@ -97,9 +97,9 @@ export type NeutralColorTokens = {
   compoundBrandStrokeHover: string;
   compoundBrandStrokePressed: string;
   neutralStrokeDisabled: string;
-  strokeAccessible: string;
-  strokeAccessibleInteractive: string;
-  strokeAccessibleDisabled: string;
+  transparentStroke: string;
+  transparentStrokeInteractive: string;
+  transparentStrokeDisabled: string;
   strokeFocus1: string;
   strokeFocus2: string;
   neutralShadowAmbient: string;

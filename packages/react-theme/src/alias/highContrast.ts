@@ -88,9 +88,9 @@ export const neutralColorTokens: NeutralColorTokens = {
   compoundBrandStrokeHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   compoundBrandStrokePressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralStrokeDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
-  strokeAccessible: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  strokeAccessibleInteractive: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  strokeAccessibleDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
+  transparentStroke: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
+  transparentStrokeInteractive: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
+  transparentStrokeDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
   strokeFocus1: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
   strokeFocus2: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined

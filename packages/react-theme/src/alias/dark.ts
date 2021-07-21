@@ -88,9 +88,9 @@ export const neutralColorTokens: NeutralColorTokens = {
   compoundBrandStrokeHover: 'var(--global-palette-brand-tint20)', // #3aa0f3 Global.Color.Brand.Tint.20
   compoundBrandStrokePressed: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
   neutralStrokeDisabled: 'var(--global-palette-grey-26)', // #424242 Global.Color.Grey.26
-  strokeAccessible: 'transparent', // transparent undefined
-  strokeAccessibleInteractive: 'transparent', // transparent undefined
-  strokeAccessibleDisabled: 'transparent', // transparent undefined
+  transparentStroke: 'transparent', // transparent undefined
+  transparentStrokeInteractive: 'transparent', // transparent undefined
+  transparentStrokeDisabled: 'transparent', // transparent undefined
   strokeFocus1: 'var(--global-color-black)', // #000000 Global.Color.Black
   strokeFocus2: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined

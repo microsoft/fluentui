@@ -148,7 +148,7 @@ const useStyles = makeStyles({
   rootFilledImportant: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralForeground1,
     color: theme.alias.color.neutral.neutralBackground1,
-    borderColor: theme.alias.color.neutral.strokeAccessible,
+    borderColor: theme.alias.color.neutral.transparentStroke,
   }),
   rootOutlineImportant: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
@@ -157,7 +157,7 @@ const useStyles = makeStyles({
   rootTintImportant: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralForeground3,
     color: theme.alias.color.neutral.neutralBackground1,
-    borderColor: theme.alias.color.neutral.strokeAccessible,
+    borderColor: theme.alias.color.neutral.transparentStroke,
   }),
   rootGhostImportant: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
@@ -165,7 +165,7 @@ const useStyles = makeStyles({
   rootFilledInformative: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground5,
     color: theme.alias.color.neutral.neutralForeground3,
-    borderColor: theme.alias.color.neutral.strokeAccessible,
+    borderColor: theme.alias.color.neutral.transparentStroke,
   }),
   rootOutlineInformative: theme => ({
     backgroundColor: theme.alias.color.darkOrange.background3,
@@ -183,7 +183,7 @@ const useStyles = makeStyles({
   rootFilledSubtle: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     color: theme.alias.color.neutral.neutralForeground1,
-    borderColor: theme.alias.color.neutral.strokeAccessible,
+    borderColor: theme.alias.color.neutral.transparentStroke,
   }),
   rootOutlineSubtle: theme => ({
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
