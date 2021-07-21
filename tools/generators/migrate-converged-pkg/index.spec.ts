@@ -112,13 +112,13 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['es5', 'dom'],
+          lib: ['ES2015', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'ES5',
-          types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+          target: 'ES2015',
+          types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
@@ -141,6 +141,7 @@ describe('migrate-converged-pkg generator', () => {
         'jest',
         'custom-global',
         'inline-style-expand-shorthand',
+        'storybook__addons',
         '@testing-library/jest-dom',
         'foo-bar',
       ]);
@@ -304,7 +305,11 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "import * as rootPreview from '../../../.storybook/preview';
 
-        export const decorators = [...rootPreview.decorators];"
+        /** @type {typeof rootPreview.decorators} */
+        export const decorators = [...rootPreview.decorators];
+
+        /** @type {typeof rootPreview.parameters} */
+        export const parameters = { ...rootPreview.parameters };"
       `);
     });
 

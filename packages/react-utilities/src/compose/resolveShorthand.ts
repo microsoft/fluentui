@@ -12,6 +12,9 @@ export function resolveShorthand<Props extends Record<string, any>>(
   value: ShorthandProps<Props>,
   defaultProps?: Props,
 ): ObjectShorthandProps<Props> {
+  if (value === null) {
+    return {} as ObjectShorthandProps<Props>;
+  }
   let resolvedShorthand: ObjectShorthandProps<Props> = {} as Props;
 
   if (typeof value === 'string' || typeof value === 'number' || isValidElement(value)) {

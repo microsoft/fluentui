@@ -55,7 +55,7 @@ We should use [controls](https://storybook.js.org/docs/react/essentials/controls
 
 **Why:**
 
-- while there are some limitations with using controls (they don't mirror the state in URL thus cannot be tested in e2e scenarios), using them is an industry standard in the open source world, also knobs will be deprecated in the next major storybook versions.
+- while there are some limitations with using controls (~~they don't mirror the state in URL thus cannot be tested in e2e scenarios~~, UPDATE: sync of url and controls was [added in 6.2.0](https://github.com/storybookjs/storybook/issues/13160)), using them is an industry standard in the open source world, also knobs will be deprecated in the next major storybook versions.
 
 ### 2. how to use `argTypes`
 

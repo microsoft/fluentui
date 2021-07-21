@@ -97,9 +97,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES5',
+      target: 'ES2015',
       module: 'CommonJS',
-      lib: ['es5', 'dom'],
+      lib: ['ES2015', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
@@ -107,7 +107,7 @@ const templates = {
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+      types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
   },
   jest: (options: { pkgName: string }) => stripIndents`
@@ -152,7 +152,11 @@ const templates = {
     preview: stripIndents`
       import * as rootPreview from '../../../.storybook/preview';
 
+      /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
+
+      /** @type {typeof rootPreview.parameters} */
+      export const parameters = { ...rootPreview.parameters };
     `,
     tsconfig: {
       extends: '../tsconfig.json',

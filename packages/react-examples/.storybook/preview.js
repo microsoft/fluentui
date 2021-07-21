@@ -23,7 +23,6 @@ const storyOrder = [
 
 addDecorator(withInfo);
 addDecorator(withPerformance);
-addDecorator(withKeytipLayer);
 addCustomDecorators();
 
 addParameters({
@@ -60,30 +59,20 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (['react-button', 'react-card', 'react-checkbox', 'react-tabs', 'react-toggle'].includes(packageNamePlaceholder)) {
+  if (['react-cards', 'react-checkbox', 'react-tabs', 'react-toggle'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }
 
-  if (
-    [
-      'react-avatar',
-      'react-badge',
-      'react-button',
-      'react-divider',
-      'react-image',
-      'react-label',
-      'react-link',
-      'react-accordion',
-      'react-menu',
-      'react-text',
-      'react-components',
-      'react-popover',
-      'react-portal',
-      'react-tooltip',
-    ].includes(packageNamePlaceholder)
-  ) {
+  if (['react-button', 'react-components', 'react-tooltip'].includes(packageNamePlaceholder)) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
+  }
+
+  // add decorators to all stories except vNext react-components suite
+  // - this is needed so we don't creep v8 dependencies to vNext deps
+  // - `withKeytipLayer` is v8 dependency - including it to vNext suite was causing CI errors - `Cannot read property 'disableGlobalClassNames' of undefined `
+  if (packageNamePlaceholder !== 'react-components') {
+    customDecorators.add(withKeytipLayer);
   }
 
   customDecorators.forEach(decorator => addDecorator(decorator));

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(babel-make-styles): Add some troubleshooting for linaria",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
