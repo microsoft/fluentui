@@ -312,7 +312,7 @@ export function usePopper(
     popperInstanceRef.current?.destroy();
     popperInstanceRef.current = null;
 
-    const target = options.target || targetRef.current;
+    const { target = targetRef.current } = options;
 
     let popperInstance: PopperInstance | null = null;
 
