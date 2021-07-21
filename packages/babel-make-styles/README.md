@@ -105,7 +105,9 @@ The plugin uses tools from [linaria](https://github.com/callstack/linaria) to ev
 
 Directly from the package
 
-> DEBUG=linaria\* LINARIA_LOG=debug yarn build
+```sh
+$ DEBUG=linaria\* LINARIA_LOG=debug yarn build
+```
 
 Using Lage from the root of the repo
 
