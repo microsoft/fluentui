@@ -28,7 +28,7 @@ export const neutralColorTokens: NeutralColorTokens = {
   brandForeground1: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
   brandForeground2: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
   neutralForegroundInverted: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundInvertedAccessible: 'var(--global-color-white)', // #ffffff Global.Color.White
+  neutralForegroundOnBrand: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralForegroundInvertedLink: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralForegroundInvertedLinkHover: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralForegroundInvertedLinkPressed: 'var(--global-color-white)', // #ffffff Global.Color.White

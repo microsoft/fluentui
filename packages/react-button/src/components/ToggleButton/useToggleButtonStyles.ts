@@ -42,14 +42,14 @@ const useRootStyles = makeStyles({
   checkedPrimary: theme => ({
     background: theme.alias.color.neutral.brandBackgroundSelected,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
     boxShadow: theme.alias.shadow.shadow2,
 
     ':hover': {
       background: theme.alias.color.neutral.brandBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
       boxShadow: theme.alias.shadow.shadow4,
     },
@@ -57,7 +57,7 @@ const useRootStyles = makeStyles({
     ':active': {
       background: theme.alias.color.neutral.brandBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
       boxShadow: theme.alias.shadow.shadow2,
     },

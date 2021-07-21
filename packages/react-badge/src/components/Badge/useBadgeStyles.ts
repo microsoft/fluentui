@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     backgroundColor: theme.alias.color.neutral.brandBackground,
     borderColor: theme.alias.color.neutral.brandBackground,
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
     fontWeight: theme.global.type.fontWeights.semibold,
     borderWidth: theme.global.strokeWidth.thin,
     borderStyle: 'solid',
@@ -79,7 +79,7 @@ const useStyles = makeStyles({
   }),
   rootFilledDanger: theme => ({
     backgroundColor: theme.alias.color.red.background3,
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
     borderColor: theme.alias.color.red.background3,
   }),
   rootOutlineDanger: theme => ({
@@ -96,7 +96,7 @@ const useStyles = makeStyles({
   }),
   rootFilledSevere: theme => ({
     backgroundColor: theme.alias.color.darkOrange.background3,
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
     borderColor: 'none',
   }),
   rootOutlineSevere: theme => ({
@@ -130,7 +130,7 @@ const useStyles = makeStyles({
   }),
   rootFilledSuccess: theme => ({
     backgroundColor: theme.alias.color.green.background3,
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
     borderColor: 'none',
   }),
   rootOutlineSuccess: theme => ({
@@ -186,8 +186,8 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.transparentStroke,
   }),
   rootOutlineSubtle: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-    borderColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
+    borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
   }),
   rootTintSubtle: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
@@ -195,7 +195,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.neutralStroke2,
   }),
   rootGhostSubtle: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
   }),
   icon: {
     display: 'flex',

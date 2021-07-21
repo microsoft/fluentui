@@ -28,7 +28,7 @@ export const neutralColorTokens: NeutralColorTokens = {
   brandForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
   brandForeground2: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
   neutralForegroundInverted: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
-  neutralForegroundInvertedAccessible: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
+  neutralForegroundOnBrand: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
   neutralForegroundInvertedLink: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
   neutralForegroundInvertedLinkHover: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
   neutralForegroundInvertedLinkPressed: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink

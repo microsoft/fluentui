@@ -37,7 +37,7 @@ export type NeutralColorTokens = {
   brandForeground1: string;
   brandForeground2: string;
   neutralForegroundInverted: string;
-  neutralForegroundInvertedAccessible: string;
+  neutralForegroundOnBrand: string;
   neutralForegroundInvertedLink: string;
   neutralForegroundInvertedLinkHover: string;
   neutralForegroundInvertedLinkPressed: string;
