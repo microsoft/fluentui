@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  Customizer as DeprecatedCustomizer,
-  TextField,
-  Stack,
-  Checkbox,
-  SearchBox,
-  Link,
-  Label,
-  Text,
-  ThemeProvider,
-} from '@fluentui/react';
+import { TextField, Stack, Checkbox, SearchBox, Link, Label, Text, ThemeProvider } from '@fluentui/react';
 import {
   AzureThemeLight,
   AzureThemeDark,
