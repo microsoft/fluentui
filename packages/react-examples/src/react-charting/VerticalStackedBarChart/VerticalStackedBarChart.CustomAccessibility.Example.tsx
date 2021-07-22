@@ -118,33 +118,6 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       },
     ];
 
-    const fourthChartPoints: IVSChartDataPoint[] = [
-      {
-        legend: 'Metadata1',
-        data: 88,
-        color: DefaultPalette.accent,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '88%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 4-1 of 4, 2020/04/30 40%' },
-      },
-      {
-        legend: 'Metadata2',
-        data: 22,
-        color: DefaultPalette.blueMid,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '22%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 4-2 of 4, 2020/04/30 40%' },
-      },
-      {
-        legend: 'Metadata3',
-        data: 30,
-        color: DefaultPalette.blueLight,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '30%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 4-3 of 4, 2020/04/30 40%' },
-      },
-    ];
-
     const data: IVerticalStackedChartProps[] = [
       {
         chartData: firstChartPoints,
