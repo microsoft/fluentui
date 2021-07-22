@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList contrast update, link control style update, dark theme background color ",
-  "packageName": "@fluentui/react-examples",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

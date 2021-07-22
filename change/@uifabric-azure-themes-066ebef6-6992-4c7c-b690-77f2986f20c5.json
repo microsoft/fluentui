@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Detailslist contrast update, link style update, dark theme background color ",
-  "packageName": "@uifabric/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

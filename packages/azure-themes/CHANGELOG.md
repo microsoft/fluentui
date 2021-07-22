@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 14 Jul 2021 12:23:18 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jul 2021 12:23:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.49](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.49)
+
+Thu, 22 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.48..@uifabric/azure-themes_v7.7.49)
+
+### Patches
+
+- Detailslist contrast update, link style update, dark theme background color  ([PR #18527](https://github.com/microsoft/fluentui/pull/18527) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.7.48](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.48)
 

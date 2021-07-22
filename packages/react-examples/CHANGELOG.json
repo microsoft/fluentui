@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 22 Jul 2021 12:23:18 GMT",
+      "tag": "@fluentui/react-examples_v0.14.18",
+      "version": "0.14.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList contrast update, link control style update, dark theme background color ",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "1ae704fdab64d9a4255fe15d9758fbb0652935a1",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Jul 2021 12:23:18 GMT",
       "tag": "@fluentui/react-examples_v0.14.17",
       "version": "0.14.17",
