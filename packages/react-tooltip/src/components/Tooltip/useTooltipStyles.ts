@@ -15,8 +15,8 @@ const useStyles = makeStyles({
     lineHeight: theme.global.type.lineHeights.base[200],
     borderRadius: theme.global.borderRadius.medium, // Update tooltipBorderRadius in useTooltip.tsx if this changes
 
-    background: theme.alias.color.neutral.neutralForeground2, // TODO should be neutralBackgroundInverted
-    color: theme.alias.color.neutral.neutralForegroundInverted,
+    background: theme.alias.color.neutral.neutralBackground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
     // TODO need to add versions of theme.alias.shadow.shadow8, etc. that work with filter
     filter:
@@ -28,9 +28,9 @@ const useStyles = makeStyles({
     display: 'block',
   },
 
-  subtle: theme => ({
-    background: theme.alias.color.neutral.neutralBackground1,
-    color: theme.alias.color.neutral.neutralForeground1,
+  inverted: theme => ({
+    background: theme.alias.color.neutral.neutralForeground2, // TODO should be neutralBackgroundInverted
+    color: theme.alias.color.neutral.neutralForegroundInverted,
   }),
 
   arrow: theme => ({
@@ -69,7 +69,7 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
 
   state.className = mergeClasses(
     styles.root,
-    state.subtle && styles.subtle,
+    state.inverted && styles.inverted,
     state.visible && styles.visible,
     state.className,
   );
