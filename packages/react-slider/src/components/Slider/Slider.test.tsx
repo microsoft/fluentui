@@ -302,16 +302,34 @@ describe('Slider', () => {
     });
   });
 
-  // it('correctly applies (aria-valuenow)', () => {
-  //   safeMount(<Slider />, component => {
-  //     const sliderRail = component.find('.ms-Slider-rail');
-  //     const sliderThumbAriaValue = component.find('.ms-Slider-thumb').prop('aria-valuenow');
+  it('correctly applies (aria-valuenow)', () => {
+    safeMount(<Slider defaultValue={3} />, component => {
+      const sliderRail = component.find('.ms-Slider-rail');
 
-  //     sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRail.simulate('keydown', { which: KeyCodes.right });
 
-  //     expect(sliderThumbAriaValue).toEqual('3');
-  //   });
-  // });
+      expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(4);
+
+      sliderRail.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 87, clientY: 32 });
+
+      expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(8.7);
+    });
+  });
+
+  it('correctly applies (aria-valuemax)', () => {
+    safeMount(<Slider max={3} />, component => {
+      expect(component.find('.ms-Slider-thumb').prop('aria-valuemax')).toEqual(3);
+    });
+  });
+
+  it('correctly applies (aria-valuemax)', () => {
+    safeMount(<Slider min={-1} />, component => {
+      expect(component.find('.ms-Slider-thumb').prop('aria-valuemin')).toEqual(-1);
+    });
+  });
 
   it('correctly handles (onKeyDown) callback', () => {
     const eventHandler = jest.fn();

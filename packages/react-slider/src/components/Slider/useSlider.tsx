@@ -222,7 +222,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     role: 'slider',
     'aria-valuemin': min,
     'aria-valuemax': max,
-    'aria-valuenow': Math.floor(currentValue),
+    'aria-valuenow': currentValue,
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
   };
 

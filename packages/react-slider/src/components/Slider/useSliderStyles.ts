@@ -36,7 +36,7 @@ const useRootStyles = makeStyles({
 
   focusWithin: theme => ({
     ':focus-within .ms-Slider-track': {
-      position: 'aboslute',
+      // position: 'absolute',
       background: '#0078D4',
 
       [HighContrastSelector]: {
