@@ -247,8 +247,8 @@ export const Designer: React.FunctionComponent = () => {
   const runAndEvaluateAxe = async (match: (match: RegExpMatchArray) => boolean) => {
     const { violations } = await runAxe();
     const errors = [];
-    violations.forEach(node => {
-      node.nodes.forEach(nodeResult => {
+    violations.forEach(({ nodes }) => {
+      nodes.forEach(nodeResult => {
         const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
         if (match(idMatch)) {
           const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);

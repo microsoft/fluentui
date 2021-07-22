@@ -11,27 +11,30 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
   const uuid = elementAccessibilityErrors[0].elementUuid;
 
-  const panels = [
-    {
-      key: `accessibility-errors-${uuid}`,
-      title: {
-        'aria-level': 4,
+  const panels = React.useMemo(
+    () => [
+      {
+        key: `accessibility-errors-${uuid}`,
+        title: {
+          'aria-level': 4,
+          content: (
+            <Text>
+              <ErrorIcon style={{ marginRight: '0.5rem' }} /> {numberAccessibilityErrors} Accessibility{' '}
+              {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
+            </Text>
+          ),
+        },
         content: (
-          <Text>
-            <ErrorIcon style={{ marginRight: '0.5rem' }} /> {numberAccessibilityErrors} Accessibility{' '}
-            {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
-          </Text>
+          <ul style={{ padding: '0rem 0.7rem' }}>
+            {elementAccessibilityErrors.map(error => (
+              <li>{error.message}</li>
+            ))}
+          </ul>
         ),
       },
-      content: (
-        <ul style={{ padding: '0rem 0.7rem' }}>
-          {elementAccessibilityErrors.map(error => (
-            <li>{error.message}</li>
-          ))}
-        </ul>
-      ),
-    },
-  ];
+    ],
+    [elementAccessibilityErrors, numberAccessibilityErrors, uuid],
+  );
 
   return (
     <div

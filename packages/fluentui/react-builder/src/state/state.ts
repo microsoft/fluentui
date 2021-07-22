@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Reducer, useImmerReducer } from 'use-immer';
 import { JSONTreeElement } from '../components/types';
 import { ComponentInfo } from '../componentInfo/types';
-import { focusTreeTitle, getDefaultJSONTree } from './utils';
+import { debug, focusTreeTitle, getDefaultJSONTree } from './utils';
 import {
   jsonTreeFindElement,
   resolveDrop,
@@ -63,9 +63,8 @@ export type DesignerAction =
   | { type: 'PROP_UPDATED'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
-  // debug(`stateReducer: ${action.type}`, { action, draftState: JSON.parse(JSON.stringify(draftState)) });
   let treeChanged = false;
-  console.log(`type: ${action.type}`);
+  debug(`type: ${action.type}`);
 
   switch (action.type) {
     case 'DRAG_START':
@@ -106,12 +105,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
         false,
       );
-      /* if (draftState.accessibilityErrors) {
-        // if accessibility errors already exist, copy over any accessibility errors for the component
-         const elementAccessibilityErrors = draftState.accessibilityErrors.filter(
-          error => error.elementUuid === draftState.selectedJSONTreeElementUuid,
-        ).map(newErrors => newErrors.elementUuid = draftState.draggingElement.uuid);
-      } */
       break;
 
     case 'DRAG_MOVE':
