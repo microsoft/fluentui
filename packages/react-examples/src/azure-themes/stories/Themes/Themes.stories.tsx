@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  Checkbox,
-  ICustomizerProps,
-  Label,
-  Link,
-  SearchBox,
-  Stack,
-  Text,
+  Customizer as DeprecatedCustomizer,
   TextField,
+  Stack,
+  Checkbox,
+  SearchBox,
+  Link,
+  Label,
+  Text,
   ThemeProvider,
 } from '@fluentui/react';
 import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
@@ -41,17 +41,9 @@ import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 
-const ThemeProviderAdapter: React.FunctionComponent<ICustomizerProps> = props => (
-  <ThemeProvider
-    applyTo="body"
-    theme={{
-      ...(props?.settings as any).theme,
-      components: props.scopedSettings,
-    }}
-  >
-    {props.children}
-  </ThemeProvider>
-);
+// Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
+const Customizer = DeprecatedCustomizer;
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -158,25 +150,33 @@ const Example = () => (
 );
 
 export const Light = () => (
-  <ThemeProviderAdapter {...AzureCustomizationsLight}>
-    <Example />
-  </ThemeProviderAdapter>
+  <Customizer {...AzureCustomizationsLight}>
+    <ThemeProvider applyTo="body">
+      <Example />
+    </ThemeProvider>
+  </Customizer>
 );
 
 export const Dark = () => (
-  <ThemeProviderAdapter {...AzureCustomizationsDark}>
-    <Example />
-  </ThemeProviderAdapter>
+  <Customizer {...AzureCustomizationsDark}>
+    <ThemeProvider applyTo="body">
+      <Example />
+    </ThemeProvider>
+  </Customizer>
 );
 
 export const HighContrastLight = () => (
-  <ThemeProviderAdapter {...AzureCustomizationsHighContrastLight}>
-    <Example />
-  </ThemeProviderAdapter>
+  <Customizer {...AzureCustomizationsHighContrastLight}>
+    <ThemeProvider applyTo="body">
+      <Example />
+    </ThemeProvider>
+  </Customizer>
 );
 
 export const HighContrastDark = () => (
-  <ThemeProviderAdapter {...AzureCustomizationsHighContrastDark}>
-    <Example />
-  </ThemeProviderAdapter>
+  <Customizer {...AzureCustomizationsHighContrastDark}>
+    <ThemeProvider applyTo="body">
+      <Example />
+    </ThemeProvider>
+  </Customizer>
 );
