@@ -16,14 +16,6 @@ const useRootStyles = makeStyles({
     alignItems: 'center',
   }),
 
-  vertical: theme => ({
-    flexDirection: 'column-reverse',
-    height: '120px',
-    width: '50px',
-    textAlign: 'center',
-    margin: '8px 0',
-  }),
-
   hover: theme => ({
     ':hover .ms-Slider-thumb ': {
       background: '#0078D4',
@@ -153,7 +145,7 @@ const useThumbStyles = makeStyles({
   }),
 
   disabled: theme => ({
-    // Still being worked on.
+    // Theme still being worked on.
     background: 'red',
     [HighContrastSelector]: {
       background: 'Highlight',
@@ -173,20 +165,6 @@ const useThumbStyles = makeStyles({
 });
 
 /**
- * Styles for the mark container
- */
-const useMarkContainerStyles = makeStyles({
-  markContainer: theme => ({}),
-});
-
-/**
- * Styles for the mark slot
- */
-const useMarkStyles = makeStyles({
-  mark: theme => ({}),
-});
-
-/**
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
@@ -195,7 +173,13 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const trackStyles = useTrackStyles();
   const thumbStyles = useThumbStyles();
 
-  state.className = mergeClasses(rootStyles.root, state.className);
+  state.className = mergeClasses(
+    rootStyles.root,
+    rootStyles.hover,
+    rootStyles.focusWithin,
+    rootStyles.activation,
+    state.className,
+  );
 
   state.rail.className = mergeClasses(railStyles.rail, state.rail.className);
 

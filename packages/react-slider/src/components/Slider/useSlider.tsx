@@ -15,6 +15,7 @@ import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
 import { clamp } from './utils/clamp';
 import { getPercent } from './utils/getPercent';
+import { getSlotStyles } from './utils/getSlotStyles';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
@@ -82,18 +83,22 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   /**
    * Calculates the `step` position based off of a `Mouse` or `Touch` event.
    */
-  const calculateSteps = (ev: DragChangeEvent): number => {
-    const currentBounds = railRef.current.getBoundingClientRect();
-    const size = currentBounds.left;
-    const position = currentBounds.width;
+  const calculateSteps = React.useCallback(
+    (ev: DragChangeEvent): number => {
+      const currentBounds = railRef.current.getBoundingClientRect();
+      const size = currentBounds.left;
+      const position = currentBounds.width;
 
-    const totalSteps = (max - min) / step;
-    const stepLength: number = size / totalSteps;
-    const thumbPosition = getPosition(ev);
-    const distance = thumbPosition - position;
+      console.log(size);
+      const totalSteps = (max - min) / step;
+      const stepLength: number = size / totalSteps;
+      const thumbPosition = getPosition(ev);
+      const distance = thumbPosition - position;
 
-    return distance / stepLength;
-  };
+      return distance / stepLength;
+    },
+    [max, min, step],
+  );
 
   const onDrag = (ev: DragChangeEvent): void => {
     updateValue(ev, min + step * calculateSteps(ev));
@@ -170,6 +175,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const valuePercent = getPercent(currentValue, min, max);
 
+  const getPositionStyles = getSlotStyles('left');
+  const getTrackStyles = getSlotStyles('width');
+
   const rootProps: Partial<SliderState> = {
     className: 'ms-Slider-root',
     onMouseDown: onThumbPressed,
@@ -184,12 +192,12 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-track',
-    style: { width: valuePercent },
+    style: getTrackStyles(valuePercent),
   };
 
   const thumbProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-thumb',
-    style: { width: valuePercent },
+    style: getPositionStyles(valuePercent),
     tabIndex: 0,
     role: 'slider',
     'aria-valuemin': min,
