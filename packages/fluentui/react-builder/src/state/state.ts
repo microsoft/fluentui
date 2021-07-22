@@ -105,6 +105,12 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
         false,
       );
+
+      cloneAccessibiltyErrorsForElement(
+        draftState,
+        draftState.selectedJSONTreeElementUuid,
+        draftState.draggingElement.uuid,
+      );
       break;
 
     case 'DRAG_MOVE':
@@ -162,7 +168,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
           editedComponent.props = {};
         }
         editedComponent.props[action.propName] = action.propValue;
-        // draftState.accessibilityErrors[action.component.uuid] = runAxeOnElement(action.component.uuid);
         treeChanged = true;
       }
       break;
@@ -315,6 +320,17 @@ function deleteAccessibilityErrorsForElement(draftState, componentUuid) {
     draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
       error => error.elementUuid !== componentUuid,
     );
+  }
+}
+
+function cloneAccessibiltyErrorsForElement(draftState, originalComponentUuid, newComponentUuid) {
+  if (draftState.accessibilityErrors) {
+    // find any elements which match the original componentUuid and replace their element UUID accordingly
+    // todo: add key values to accessibility error array
+    const accessibilityErrorsForNewElement = draftState.accessibilityErrors
+      .filter(error => error.elementUuid === originalComponentUuid)
+      .map(error => ({ ...error, elementUuid: newComponentUuid }));
+    draftState.accessibilityErrors.push(accessibilityErrorsForNewElement);
   }
 }
 
