@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/babel-make-styles",
-  "version": "9.0.0-alpha.26",
+  "version": "9.0.0-alpha.28",
   "description": "A Babel plugin that performs build time transforms for @fluentui/make-styles",
   "main": "lib/src/index.js",
   "typings": "lib/src/index.d.ts",

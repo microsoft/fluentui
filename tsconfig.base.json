@@ -43,7 +43,9 @@
       "@fluentui/keyboard-keys": ["packages/keyboard-keys/src/index.ts"],
       "@fluentui/react-slider": ["packages/react-slider/src/index.ts"],
       "@fluentui/make-styles-webpack-loader": ["packages/make-styles-webpack-loader/src/index.ts"],
-      "@fluentui/react-avatar": ["packages/react-avatar/src/index.ts"]
+      "@fluentui/react-avatar": ["packages/react-avatar/src/index.ts"],
+      "@fluentui/react-card": ["packages/react-card/src/index.ts"],
+      "@fluentui/utilities": ["packages/utilities/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

@@ -34,6 +34,7 @@ completed as part of converging a component. More info can be found here: https:
 - [ ] Respects API principles, shorthands and slots handling
 - [ ] No dependency on v0/v7
 - [ ] Add tests - Conformance, Unit, and VR
+  - [ ] Bundle size fixtures
   - [ ] Conformance tests
   - [ ] Unit tests
   - [ ] VR tests
