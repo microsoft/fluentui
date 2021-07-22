@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Change visual defaults for tooltip, and update API Replace `subtle` prop with `inverted`, and `noArrow` with `pointing`",
+  "comment": "Change visual defaults for tooltip. Replace `subtle` prop with `inverted`, and `noArrow` with `pointing`",
   "packageName": "@fluentui/react-tooltip",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
