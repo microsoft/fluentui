@@ -7,6 +7,13 @@ exports[`BasePicker renders correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    id="selected-suggestion-alert-id__0"
+  >
+     
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -67,6 +74,13 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    id="selected-suggestion-alert-id__0"
+  >
+     
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
