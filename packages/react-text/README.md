@@ -64,7 +64,8 @@ const Example = () => (
 
 As you can see, using the `Display` wrapper is a lot easier to read and provides a clearer visual of the page's layout.
 
-### TypographyStyles
+<!-- TODO: Confirm these are supposed to be exported/announced -->
+<!-- ## Typography styles
 
 Using FluentUI typography styles without using the text component:
 
@@ -80,9 +81,31 @@ const Test = () => {
 
   return <p className={styles.root}>I am styled like a display title</p>;
 };
-```
+``` -->
 
 <!-- TODO: Semantic elements / accessibility with as prop-->
+
+## Semantic elements
+
+By default, Text and all the typography wrappers render a `<span>` by default. You should use the `as` property to ensure your page has proper semantic elements such as heading or paragraph elements.
+
+```html
+<div>
+  <Headline as="h1">Headline</Headline>
+  <Subheadline as="h2">Subheadline</Subheadline>
+  <Text as="p">This is simple example</Text>
+</div>
+```
+
+This will result in the following DOM structure:
+
+```html
+<div>
+  <h1>Headline</h1>
+  <h2>Subheadline</h2>
+  <p>This is simple example</p>
+</div>
+```
 
 <!-- TODO: Point people to Storybook/API page -->
 <!-- TODO: Point people to MIGRATION.md -->
