@@ -330,7 +330,7 @@ function cloneAccessibiltyErrorsForElement(draftState, originalComponentUuid, ne
     const accessibilityErrorsForNewElement = draftState.accessibilityErrors
       .filter(error => error.elementUuid === originalComponentUuid)
       .map(error => ({ ...error, elementUuid: newComponentUuid }));
-    draftState.accessibilityErrors.push(accessibilityErrorsForNewElement);
+    draftState.accessibilityErrors = draftState.accessibilityErrors.concat(accessibilityErrorsForNewElement);
   }
 }
 

@@ -272,7 +272,7 @@ export const Designer: React.FunctionComponent = () => {
   }, [handleDesignerLoaded]);
 
   const selectedComponentAccessibilityErrors = React.useMemo(
-    () => (selectedComponent ? accessibilityErrors?.filter(x => x.elementUuid === selectedComponent.uuid) : []),
+    () => (selectedComponent ? accessibilityErrors?.filter(error => error.elementUuid === selectedComponent.uuid) : []),
     [selectedComponent, accessibilityErrors],
   );
 
