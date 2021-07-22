@@ -3,7 +3,7 @@
 exports[`Slider renders Slider correctly 1`] = `
 <div
   className="ms-Slider-root"
-  id="Slider22"
+  id="Slider1"
   onKeyDown={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}

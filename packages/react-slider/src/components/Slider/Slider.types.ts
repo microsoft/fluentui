@@ -7,6 +7,15 @@ import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from
 export type DragChangeEvent = React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent;
 
 /**
+ * Slider public API
+ */
+export interface Slider extends HTMLElement {
+  value: number | undefined;
+
+  focus: () => void;
+}
+
+/**
  * Slider Props
  */
 export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
@@ -93,5 +102,5 @@ export interface SliderState extends ComponentStateCompat<SliderProps, SliderSho
   /**
    * Ref to the root element
    */
-  ref: React.Ref<HTMLElement>;
+  ref: React.Ref<Slider>;
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
+import { useMount } from '@fluentui/react-hooks';
 import {
   getCode,
   ArrowDownKey,
@@ -12,7 +13,7 @@ import {
   EndKey,
 } from '@fluentui/keyboard-key';
 import { on } from '@fluentui/utilities';
-import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
+import { Slider, SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
 import { clamp } from './utils/clamp';
 import { getPercent } from './utils/getPercent';
 import { getSlotStyles } from './utils/getSlotStyles';
@@ -35,7 +36,7 @@ const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps
  * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
-  const { value, defaultValue = 0, min = 0, max = 10, step = 1, ariaValueText, onChange } = props;
+  const { as = 'div', value, defaultValue = 0, min = 0, max = 10, step = 1, ariaValueText, onChange } = props;
 
   const [currentValue, setCurrentValue] = useControllableValue(
     value,
@@ -163,15 +164,32 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     [currentValue, max, min, step, updateValue],
   );
 
-  React.useEffect(() => {
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      get value() {
+        return currentValue;
+      },
+      focus() {
+        if (thumbRef.current) {
+          thumbRef.current.focus();
+        }
+      },
+    }),
+    [currentValue, thumbRef],
+  );
+
+  // console.log(ref?.current?.value);
+
+  // If value is provided, ensure that is initially clamped onMount.
+  useMount(() => {
     if (value) {
       const clampedValue = clamp(value, min, max);
       if (clampedValue !== value) {
         setCurrentValue(clampedValue);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- Should only run on mount to clamp value
-  }, []);
+  });
 
   const valuePercent = getPercent(currentValue, min, max);
 
@@ -211,7 +229,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       ref,
-      as: 'div',
+      as: as,
       track: { as: 'div', children: null, ...trackProps },
       rail: { as: 'div', children: null, ...railProps },
       thumb: { as: 'div', children: null, ...thumbProps },
@@ -221,26 +239,5 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     resolveShorthandProps(props, sliderShorthandProps),
   );
 
-  useComponentRef(ref, currentValue, thumbRef);
-
   return state;
-};
-
-const useComponentRef = (ref: React.Ref<HTMLElement>, value: number, thumbRef: React.RefObject<HTMLInputElement>) => {
-  React.useImperativeHandle(
-    () => {
-      ref;
-    },
-    () => ({
-      get value() {
-        return value;
-      },
-      focus() {
-        if (thumbRef.current) {
-          thumbRef.current.focus();
-        }
-      },
-    }),
-    [thumbRef, value],
-  );
 };

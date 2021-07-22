@@ -45,6 +45,7 @@
     "@fluentui/style-utilities": "^8.2.0",
     "@fluentui/test-utilities": "^8.0.7",
     "@fluentui/utilities": "^8.2.1",
+    "@fluentui/react-hooks": "^8.2.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
