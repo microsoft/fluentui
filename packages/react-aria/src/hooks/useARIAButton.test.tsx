@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ARIAButtonProps, useARIAButton } from './useARIAButton';
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, screen, render } from '@testing-library/react';
 import { getSlots, ObjectShorthandProps } from '@fluentui/react-utilities';
@@ -55,7 +55,7 @@ describe('useARIAButton', () => {
     const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
-    fireEvent.keyUp(screen.getByTestId('div'), { keyCode: SpacebarKey });
+    fireEvent.keyUp(screen.getByTestId('div'), { key: Space });
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -64,7 +64,7 @@ describe('useARIAButton', () => {
     const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
-    fireEvent.keyDown(screen.getByTestId('div'), { keyCode: EnterKey });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: Enter });
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -90,7 +90,7 @@ describe('useARIAButton', () => {
         <slots.root data-testid="div" {...slotProps.root} />
       </div>,
     );
-    fireEvent.keyUp(screen.getByTestId('div'), { key: SpacebarKey });
+    fireEvent.keyUp(screen.getByTestId('div'), { key: Space });
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 
@@ -103,7 +103,7 @@ describe('useARIAButton', () => {
         <slots.root data-testid="div" {...slotProps.root} />
       </div>,
     );
-    fireEvent.keyDown(screen.getByTestId('div'), { key: EnterKey });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: Enter });
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 });

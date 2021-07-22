@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ObjectShorthandProps, resolveShorthand, ShorthandProps, useEventCallback } from '@fluentui/react-utilities';
-import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 
 function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   if (typeof disabled === 'string') {
@@ -42,43 +42,41 @@ export function useARIAButton(
   });
 
   const onKeyDownHandler: ARIAButtonProps['onKeyDown'] = useEventCallback(ev => {
-    const code = getCode(ev);
     if (typeof onKeyDown === 'function') {
       onKeyDown(ev);
     }
     if (ev.isDefaultPrevented()) {
       return;
     }
-    if (disabled && (code === EnterKey || code === SpacebarKey)) {
+    if (disabled && (ev.key === Enter || ev.key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
     }
-    if (code === SpacebarKey) {
+    if (ev.key === Space) {
       ev.preventDefault();
       return;
     }
     // If enter is pressed, activate the button
-    else if (code === EnterKey) {
+    else if (ev.key === Enter) {
       ev.preventDefault();
       ev.currentTarget.click();
     }
   });
 
   const onKeyupHandler: ARIAButtonProps['onKeyUp'] = useEventCallback(ev => {
-    const code = getCode(ev);
     if (typeof onKeyUp === 'function') {
       onKeyUp(ev);
     }
     if (ev.isDefaultPrevented()) {
       return;
     }
-    if (disabled && (code === EnterKey || code === SpacebarKey)) {
+    if (disabled && (ev.key === Enter || ev.key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
     }
-    if (code === SpacebarKey) {
+    if (ev.key === Space) {
       ev.preventDefault();
       ev.currentTarget.click();
     }
