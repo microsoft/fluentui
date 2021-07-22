@@ -31,7 +31,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles a (defaultValue) of zero', () => {
+  it('correctly applies the (defaultValue) prop', () => {
     let sliderRef: any;
 
     const SliderTestComponent = React.forwardRef((props, ref) => {
@@ -45,7 +45,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles a (value) of zero', () => {
+  it('correctly applies the (value) prop', () => {
     let sliderRef: any;
 
     const SliderTestComponent = React.forwardRef((props, ref) => {
