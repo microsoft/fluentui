@@ -8,6 +8,7 @@ import { IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -23,7 +24,13 @@ import {
   IModifiedCartesianChartProps,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, XAxisTypes, getTypeOfAxis, tooltipOfXAxislabels } from '../../utilities/index';
+import {
+  ChartTypes,
+  getAccessibleDataObject,
+  XAxisTypes,
+  getTypeOfAxis,
+  tooltipOfXAxislabels,
+} from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -56,6 +63,7 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
   activeXAxisDataPoint: number | string;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -144,6 +152,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       hoverXValue: this.state.hoverXValue,
       onDismiss: this._closeCallout,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -186,7 +195,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   /**
-   * This function tells us what to foucs either the whole stack as focusable item.
+   * This function tells us what to focus either the whole stack as focusable item.
    * or each individual item in the stack as focusable item. basically it depends
    * on the prop `isCalloutForStack` if it's false user can focus each individual bar
    * within the bar if it's true then user can focus whole bar as item.
@@ -535,6 +544,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
         yCalloutValue: point.yAxisCalloutData,
         dataPointCalloutProps: point,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -588,6 +598,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       hoverXValue: stack.xAxisPoint,
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
+      callOutAccessibilityData: stack.stackCallOutAccessibilityData,
     });
   }
 
