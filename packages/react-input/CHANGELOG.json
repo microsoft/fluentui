@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-input_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.34",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/react-input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Jul 2021 22:23:17 GMT",
       "tag": "@fluentui/react-input_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",
