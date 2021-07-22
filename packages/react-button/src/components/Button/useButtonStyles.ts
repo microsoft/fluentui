@@ -103,14 +103,14 @@ const useRootStyles = makeStyles({
   primary: theme => ({
     background: theme.alias.color.neutral.brandBackground,
     borderColor: 'transparent',
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
     boxShadow: theme.alias.shadow.shadow4,
 
     ':hover': {
       background: theme.alias.color.neutral.brandBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
       boxShadow: theme.alias.shadow.shadow4,
     },
@@ -118,7 +118,7 @@ const useRootStyles = makeStyles({
     ':active': {
       background: theme.alias.color.neutral.brandBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
       boxShadow: theme.alias.shadow.shadow2,
     },
@@ -259,7 +259,7 @@ const useRootFocusStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralForegroundInvertedAccessible}`,
+    border: `1px solid ${theme.alias.color.neutral.neutralForegroundOnBrand}`,
     boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralForeground1}`,
   })),
 });
