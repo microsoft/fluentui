@@ -128,34 +128,36 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
               : 'Navigator'}
           </Header>
         </div>
-        {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
-        {props.activeTab === 'accessibility' && (
-          <AccessibilityTabPanel
-            accessibilityErrors={props.accessibilityErrors}
-            jsonTree={props.jsonTree}
-            onAddComponent={props.onAddComponent}
-            onCloneComponent={props.onCloneComponent}
-            onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-            onDragStart={props.onDragStart}
-            onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-            onMoveComponent={props.onMoveComponent}
-            onSelectComponent={props.onSelectComponent}
-            selectedComponent={props.selectedComponent}
-          />
-        )}
-        {props.activeTab === 'nav' && (
-          <NavigatorTabPanel
-            jsonTree={props.jsonTree}
-            onAddComponent={props.onAddComponent}
-            onCloneComponent={props.onCloneComponent}
-            onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-            onDragStart={props.onDragStart}
-            onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-            onMoveComponent={props.onMoveComponent}
-            onSelectComponent={props.onSelectComponent}
-            selectedComponent={props.selectedComponent}
-          />
-        )}
+        <div style={{ maxWidth: '20vw' }}>
+          {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
+          {props.activeTab === 'accessibility' && (
+            <AccessibilityTabPanel
+              accessibilityErrors={props.accessibilityErrors}
+              jsonTree={props.jsonTree}
+              onAddComponent={props.onAddComponent}
+              onCloneComponent={props.onCloneComponent}
+              onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+              onDragStart={props.onDragStart}
+              onOpenAddComponentDialog={props.onOpenAddComponentDialog}
+              onMoveComponent={props.onMoveComponent}
+              onSelectComponent={props.onSelectComponent}
+              selectedComponent={props.selectedComponent}
+            />
+          )}
+          {props.activeTab === 'nav' && (
+            <NavigatorTabPanel
+              jsonTree={props.jsonTree}
+              onAddComponent={props.onAddComponent}
+              onCloneComponent={props.onCloneComponent}
+              onDeleteSelectedComponent={props.onDeleteSelectedComponent}
+              onDragStart={props.onDragStart}
+              onOpenAddComponentDialog={props.onOpenAddComponentDialog}
+              onMoveComponent={props.onMoveComponent}
+              onSelectComponent={props.onSelectComponent}
+              selectedComponent={props.selectedComponent}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

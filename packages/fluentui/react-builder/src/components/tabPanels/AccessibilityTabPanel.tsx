@@ -40,8 +40,21 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
 
   return (
     <div>
+      <div style={{ padding: '10px', wordWrap: 'break-word', fontWeight: 'lighter' }}>
+        To learn more about best practices for accessibility, visit{' '}
+        <a
+          aria-describedby="microsoft accessibility website"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.microsoft.com/en-us/accessibility"
+        >
+          https://www.microsoft.com/en-us/accessibility
+        </a>
+        .
+      </div>
+      <hr style={{ margin: 'auto', width: '75%' }} />
       {(!updatedTree || updatedTree?.props?.children?.length === 0) && (
-        <div style={{ padding: '10px' }}>There are no accessibility errors!</div>
+        <div style={{ padding: '10px' }}>No accessibility errors found.</div>
       )}
       <ComponentTree
         onAddComponent={props.onAddComponent}
