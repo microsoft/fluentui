@@ -22,7 +22,7 @@ export interface OnVisibleChangeData {
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.FunctionComponent<TooltipProps>;
+export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
