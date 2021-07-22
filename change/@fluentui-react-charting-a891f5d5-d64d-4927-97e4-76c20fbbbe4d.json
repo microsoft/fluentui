@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "aria label updated for callout",
+  "comment": "Accessibility change for HeatMap chart",
   "packageName": "@fluentui/react-charting",
   "email": "v-scharde@microsoft.com",
   "dependentChangeType": "patch"
