@@ -1,18 +1,25 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { InputState } from './Input.types';
+import { getSlots } from '@fluentui/react-utilities';
+import { InputSlots, InputState } from './Input.types';
 import { inputShorthandProps } from './useInput';
 
 /**
  * Render the final JSX of Input
  */
 export const renderInput = (state: InputState) => {
-  const { slots, slotProps } = getSlotsCompat(state, inputShorthandProps);
-
+  const { slots, slotProps } = getSlots<InputSlots>(state, inputShorthandProps);
+  delete slotProps.input.children;
+  delete slotProps.inputWrapper.children;
   return (
     <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
-      {state.children}
+      <slots.bookendBefore {...slotProps.bookendBefore} />
+      {/* TODO is wrapper needed? (for borders, focus styling, etc) */}
+      <slots.inputWrapper {...slotProps.inputWrapper}>
+        <slots.insideStart {...slotProps.insideStart} />
+        <slots.input {...slotProps.input} />
+        <slots.insideEnd {...slotProps.insideEnd} />
+      </slots.inputWrapper>
+      <slots.bookendAfter {...slotProps.bookendAfter} />
     </slots.root>
   );
 };
