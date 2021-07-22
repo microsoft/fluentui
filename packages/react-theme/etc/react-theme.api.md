@@ -5,9 +5,6 @@
 ```ts
 
 // @public (undocumented)
-export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
-
-// @public (undocumented)
 export type BackgroundColorTokens = {
     background: string;
     backgroundHover: string;
@@ -17,20 +14,6 @@ export type BackgroundColorTokens = {
 
 // @public (undocumented)
 export const black = "#000000";
-
-// @public (undocumented)
-export const blackAlpha: {
-    '5': string;
-    '10': string;
-    '20': string;
-    '30': string;
-    '40': string;
-    '50': string;
-    '60': string;
-    '70': string;
-    '80': string;
-    '90': string;
-};
 
 // @public (undocumented)
 export type BorderRadius = {
@@ -312,7 +295,7 @@ export type NeutralColorTokens = {
     brandForeground1: string;
     brandForeground2: string;
     neutralForegroundInverted: string;
-    neutralForegroundInvertedAccessible: string;
+    neutralForegroundOnBrand: string;
     neutralForegroundInvertedLink: string;
     neutralForegroundInvertedLinkHover: string;
     neutralForegroundInvertedLinkPressed: string;
@@ -338,6 +321,7 @@ export type NeutralColorTokens = {
     neutralBackground5Pressed: string;
     neutralBackground5Selected: string;
     neutralBackground6: string;
+    neutralBackgroundInverted: string;
     subtleBackground: string;
     subtleBackgroundHover: string;
     subtleBackgroundPressed: string;
@@ -347,6 +331,8 @@ export type NeutralColorTokens = {
     transparentBackgroundPressed: string;
     transparentBackgroundSelected: string;
     neutralBackgroundDisabled: string;
+    neutralStencil1: string;
+    neutralStencil2: string;
     brandBackground: string;
     brandBackgroundHover: string;
     brandBackgroundPressed: string;
@@ -372,9 +358,9 @@ export type NeutralColorTokens = {
     compoundBrandStrokeHover: string;
     compoundBrandStrokePressed: string;
     neutralStrokeDisabled: string;
-    strokeAccessible: string;
-    strokeAccessibleInteractive: string;
-    strokeAccessibleDisabled: string;
+    transparentStroke: string;
+    transparentStrokeInteractive: string;
+    transparentStrokeDisabled: string;
     strokeFocus1: string;
     strokeFocus2: string;
     neutralShadowAmbient: string;
@@ -475,8 +461,6 @@ export type Theme = {
         palette: GlobalSharedColors & {
             brand: BrandVariants;
             grey: Record<Greys, string>;
-            whiteAlpha: Record<AlphaColors, string>;
-            blackAlpha: Record<AlphaColors, string>;
         };
         type: {
             fontSizes: FontSizes;
@@ -518,20 +502,6 @@ export const webLightTheme: Theme;
 
 // @public (undocumented)
 export const white = "#ffffff";
-
-// @public (undocumented)
-export const whiteAlpha: {
-    '5': string;
-    '10': string;
-    '20': string;
-    '30': string;
-    '40': string;
-    '50': string;
-    '60': string;
-    '70': string;
-    '80': string;
-    '90': string;
-};
 
 // (No @packageDocumentation comment for this package)
 
