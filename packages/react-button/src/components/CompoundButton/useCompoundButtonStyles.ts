@@ -40,18 +40,18 @@ const useRootStyles = makeStyles({
   },
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        color: theme.alias.color.neutral.neutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        color: theme.alias.color.neutral.neutralForegroundOnBrand,
       },
     },
   }),

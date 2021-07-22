@@ -295,7 +295,7 @@ export type NeutralColorTokens = {
     brandForeground1: string;
     brandForeground2: string;
     neutralForegroundInverted: string;
-    neutralForegroundInvertedAccessible: string;
+    neutralForegroundOnBrand: string;
     neutralForegroundInvertedLink: string;
     neutralForegroundInvertedLinkHover: string;
     neutralForegroundInvertedLinkPressed: string;
@@ -321,6 +321,7 @@ export type NeutralColorTokens = {
     neutralBackground5Pressed: string;
     neutralBackground5Selected: string;
     neutralBackground6: string;
+    neutralBackgroundInverted: string;
     subtleBackground: string;
     subtleBackgroundHover: string;
     subtleBackgroundPressed: string;
@@ -330,6 +331,8 @@ export type NeutralColorTokens = {
     transparentBackgroundPressed: string;
     transparentBackgroundSelected: string;
     neutralBackgroundDisabled: string;
+    neutralStencil1: string;
+    neutralStencil2: string;
     brandBackground: string;
     brandBackgroundHover: string;
     brandBackgroundPressed: string;
@@ -355,9 +358,9 @@ export type NeutralColorTokens = {
     compoundBrandStrokeHover: string;
     compoundBrandStrokePressed: string;
     neutralStrokeDisabled: string;
-    strokeAccessible: string;
-    strokeAccessibleInteractive: string;
-    strokeAccessibleDisabled: string;
+    transparentStroke: string;
+    transparentStrokeInteractive: string;
+    transparentStrokeDisabled: string;
     strokeFocus1: string;
     strokeFocus2: string;
     neutralShadowAmbient: string;
@@ -499,7 +502,6 @@ export const webLightTheme: Theme;
 
 // @public (undocumented)
 export const white = "#ffffff";
-
 
 // (No @packageDocumentation comment for this package)
 
