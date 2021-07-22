@@ -752,6 +752,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
+            role="text"
           />
         );
       });
@@ -765,6 +766,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         onFocus: this._onStackFocus.bind(this, singleChartData, groupRef),
         onBlur: this._handleMouseOut,
         onClick: this._onClick.bind(this, singleChartData),
+        role: 'text',
       };
       return (
         <g
