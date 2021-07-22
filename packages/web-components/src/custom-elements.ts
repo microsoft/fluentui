@@ -1,6 +1,7 @@
 /**
  * Export all custom element definitions
  */
+import type { Container } from '@microsoft/fast-foundation';
 import { fluentAccordion, fluentAccordionItem } from './accordion/index';
 import { fluentAnchor } from './anchor/index';
 import { fluentAnchoredRegion } from './anchored-region/index';
@@ -36,7 +37,6 @@ import { fluentTextField } from './text-field/index';
 import { fluentTooltip } from './tooltip/index';
 import { fluentTreeView } from './tree-view/index';
 import { fluentTreeItem } from './tree-item/index';
-import { Container } from '@microsoft/fast-foundation';
 
 export {
   fluentAccordion,
