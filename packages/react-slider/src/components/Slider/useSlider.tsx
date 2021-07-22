@@ -43,7 +43,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     (ev: DragChangeEvent, val: number) => onChange?.(val, ev),
   );
 
-  const railRef = React.useRef(null);
+  const railRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
 
   /**
@@ -85,16 +85,14 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
    */
   const calculateSteps = React.useCallback(
     (ev: DragChangeEvent): number => {
-      const currentBounds = railRef.current.getBoundingClientRect();
-      const size = currentBounds.left;
-      const position = currentBounds.width;
+      const currentBounds = railRef?.current?.getBoundingClientRect();
+      const size = currentBounds?.width || 0;
+      const position = currentBounds?.left || 0;
 
-      console.log(size);
       const totalSteps = (max - min) / step;
       const stepLength: number = size / totalSteps;
       const thumbPosition = getPosition(ev);
       const distance = thumbPosition - position;
-
       return distance / stepLength;
     },
     [max, min, step],
