@@ -105,6 +105,7 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
           display: 'flex',
           flexDirection: 'column',
           minWidth: '22.85rem',
+          maxWidth: '25vw',
           transition: 'opacity 0.2s',
           ...(mode === 'use' && {
             pointerEvents: 'none',
@@ -128,7 +129,7 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
               : 'Navigator'}
           </Header>
         </div>
-        <div style={{ maxWidth: '20vw' }}>
+        <div>
           {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
           {props.activeTab === 'accessibility' && (
             <AccessibilityTabPanel

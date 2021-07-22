@@ -17,7 +17,7 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
 }) => {
   const attributeNameErrorId = DevEnv.ATTRIBUTE_NAME_ERROR_ID;
   const window = document.getElementsByTagName('iframe')[0].ownerDocument.defaultView;
-  console.log(window);
+
   const [errors, setErrors] = React.useState<AccessibilityError[]>();
   React.useMemo(() => {
     DevEnv.setup({

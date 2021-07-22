@@ -9,7 +9,6 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
 import { AccessibilityError } from '../accessibility/types';
-import { AbilityAttributesValidator } from '../accessibility/AbilityAttributesValidator';
 
 const pkg = require('../../package.json');
 
@@ -387,9 +386,8 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       id={iframeId}
     >
       <FrameContextConsumer>
-        {({ document, window }) => (
+        {({ document }) => (
           <>
-            <AbilityAttributesValidator onErrorsChanged={onWindowAccessibilityErrors} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
