@@ -5,6 +5,9 @@
 ```ts
 
 // @public (undocumented)
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
+// @public (undocumented)
 export type BackgroundColorTokens = {
     background: string;
     backgroundHover: string;
@@ -14,6 +17,20 @@ export type BackgroundColorTokens = {
 
 // @public (undocumented)
 export const black = "#000000";
+
+// @public (undocumented)
+export const blackAlpha: {
+    '5': string;
+    '10': string;
+    '20': string;
+    '30': string;
+    '40': string;
+    '50': string;
+    '60': string;
+    '70': string;
+    '80': string;
+    '90': string;
+};
 
 // @public (undocumented)
 export type BorderRadius = {
@@ -461,6 +478,8 @@ export type Theme = {
         palette: GlobalSharedColors & {
             brand: BrandVariants;
             grey: Record<Greys, string>;
+            whiteAlpha: Record<AlphaColors, string>;
+            blackAlpha: Record<AlphaColors, string>;
         };
         type: {
             fontSizes: FontSizes;
@@ -502,6 +521,20 @@ export const webLightTheme: Theme;
 
 // @public (undocumented)
 export const white = "#ffffff";
+
+// @public (undocumented)
+export const whiteAlpha: {
+    '5': string;
+    '10': string;
+    '20': string;
+    '30': string;
+    '40': string;
+    '50': string;
+    '60': string;
+    '70': string;
+    '80': string;
+    '90': string;
+};
 
 // (No @packageDocumentation comment for this package)
 
