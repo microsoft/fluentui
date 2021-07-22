@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.2)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.1..@fluentui/web-components_v1.2.2)
+
+### Patches
+
+- fluent-text-field: start/end display flex ([PR #18969](https://github.com/microsoft/fluentui/pull/18969) by fredrik.rasch@gmail.com)
 
 ## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.1)
 

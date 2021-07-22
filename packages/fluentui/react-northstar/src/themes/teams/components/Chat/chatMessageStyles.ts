@@ -38,7 +38,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     } = componentStyleFunctionParam;
     return {
       borderRadius: v.borderRadius,
-      color: v.color,
       display: 'inline-block',
       outline: 0,
       position: 'relative',
