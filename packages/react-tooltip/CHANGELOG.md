@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Tue, 20 Jul 2021 22:23:17 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.59)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.58..@fluentui/react-tooltip_v9.0.0-alpha.59)
+
+### Changes
+
+- Move useTimeout into react-utilities ([PR #19023](https://github.com/microsoft/fluentui/pull/19023) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.58)
 

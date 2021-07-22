@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fluent-text-field: start/end display flex",
-  "packageName": "@fluentui/web-components",
-  "email": "fredrik.rasch@gmail.com",
-  "dependentChangeType": "patch"
-}
