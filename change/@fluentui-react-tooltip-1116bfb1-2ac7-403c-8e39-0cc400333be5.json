@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Move useTimeout into react-utilities",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
