@@ -198,7 +198,7 @@ export const olProperties: Record<string, number>;
 export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
 
 // @public
-export const onlyChild: (child: React_2.ReactNode) => React_2.ReactElement;
+export const onlyChild: <P>(child: string | number | boolean | {} | React_2.ReactNodeArray | React_2.ReactPortal | React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | null | undefined) => React_2.ReactElement<P, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)>;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
@@ -385,8 +385,10 @@ export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType |
 export function useSSRContext(): SSRContextValue;
 
 // @public
-export const videoProperties: Record<string, number>;
+export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
+// @public
+export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
 //

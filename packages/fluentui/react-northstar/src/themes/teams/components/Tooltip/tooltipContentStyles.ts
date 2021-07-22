@@ -32,9 +32,9 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
     height: v.pointerHeight,
 
     ...getPointerStyles({
-      backgroundColor: v.backgroundColor,
+      backgroundColor: p.subtle ? v.subtleBackgroundColor : v.backgroundColor,
       borderSize: v.borderSize,
-      borderColor: 'transparent',
+      borderColor: p.subtle ? v.subtleBorderColor : 'transparent',
       gap: v.pointerGap,
       padding: v.pointerMargin,
       height: v.pointerHeight,
@@ -42,7 +42,7 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
 
       placement: p.basePlacement,
       rtl,
-      svg: pointerSvgUrl(v.backgroundColor),
+      svg: pointerSvgUrl(p.subtle ? v.subtleBackgroundColor : v.backgroundColor),
     }),
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -54,6 +54,14 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
     background: v.backgroundColor,
     borderRadius: v.borderRadius,
     boxShadow: v.boxShadow,
+
+    ...(p.subtle && {
+      background: v.subtleBackgroundColor,
+      color: v.subtleForegroundColor,
+      borderStyle: 'solid',
+      borderWidth: v.borderSize,
+      borderColor: v.subtleBorderColor,
+    }),
 
     ...(p.pointing && {
       pointerEvents: 'all',

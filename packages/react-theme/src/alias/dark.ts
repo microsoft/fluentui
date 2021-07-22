@@ -16,7 +16,7 @@ export const neutralColorTokens: NeutralColorTokens = {
   neutralForeground3BrandHover: 'var(--global-palette-brand-tint20)', // #3aa0f3 Global.Color.Brand.Tint.20
   neutralForeground3BrandPressed: 'var(--global-palette-brand-tint10)', // #2899f5 Global.Color.Brand.Tint.10
   neutralForeground3BrandSelected: 'var(--global-palette-brand-tint20)', // #3aa0f3 Global.Color.Brand.Tint.20
-  neutralForeground4: 'var(--global-palette-grey-52)', // #858585 Global.Color.Grey.52
+  neutralForeground4: 'var(--global-palette-grey-60)', // #999999 Global.Color.Grey.60
   neutralForegroundDisabled: 'var(--global-palette-grey-36)', // #5c5c5c Global.Color.Grey.36
   brandForegroundLink: 'var(--global-palette-brand-tint10)', // #2899f5 Global.Color.Brand.Tint.10
   brandForegroundLinkHover: 'var(--global-palette-brand-tint30)', // #6cb8f6 Global.Color.Brand.Tint.30
@@ -27,8 +27,8 @@ export const neutralColorTokens: NeutralColorTokens = {
   compoundBrandForeground1Pressed: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
   brandForeground1: 'var(--global-palette-brand-tint20)', // #3aa0f3 Global.Color.Brand.Tint.20
   brandForeground2: 'var(--global-palette-brand-tint30)', // #6cb8f6 Global.Color.Brand.Tint.30
-  neutralForegroundInverted: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralForegroundInvertedAccessible: 'var(--global-color-white)', // #ffffff Global.Color.White
+  neutralForegroundInverted: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
+  neutralForegroundOnBrand: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralForegroundInvertedLink: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralForegroundInvertedLinkHover: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralForegroundInvertedLinkPressed: 'var(--global-color-white)', // #ffffff Global.Color.White
@@ -54,6 +54,7 @@ export const neutralColorTokens: NeutralColorTokens = {
   neutralBackground5Pressed: 'var(--global-palette-grey-2)', // #050505 Global.Color.Grey.2
   neutralBackground5Selected: 'var(--global-palette-grey-6)', // #0f0f0f Global.Color.Grey.6
   neutralBackground6: 'var(--global-palette-grey-20)', // #333333 Global.Color.Grey.20
+  neutralBackgroundInverted: 'var(--global-color-white)', // #ffffff Global.Color.White
   subtleBackground: 'transparent', // transparent undefined
   subtleBackgroundHover: 'var(--global-palette-grey-22)', // #383838 Global.Color.Grey.22
   subtleBackgroundPressed: 'var(--global-palette-grey-18)', // #2e2e2e Global.Color.Grey.18
@@ -63,6 +64,8 @@ export const neutralColorTokens: NeutralColorTokens = {
   transparentBackgroundPressed: 'transparent', // transparent undefined
   transparentBackgroundSelected: 'transparent', // transparent undefined
   neutralBackgroundDisabled: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
+  neutralStencil1: 'var(--global-palette-grey-20)', // #333333 Global.Color.Grey.20
+  neutralStencil2: 'var(--global-palette-grey-34)', // #575757 Global.Color.Grey.34
   brandBackground: 'var(--global-palette-brand-shade10)', // #106ebe Global.Color.Brand.Shade.10
   brandBackgroundHover: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
   brandBackgroundPressed: 'var(--global-palette-brand-shade40)', // #004578 Global.Color.Brand.Shade.40
@@ -88,9 +91,9 @@ export const neutralColorTokens: NeutralColorTokens = {
   compoundBrandStrokeHover: 'var(--global-palette-brand-tint20)', // #3aa0f3 Global.Color.Brand.Tint.20
   compoundBrandStrokePressed: 'var(--global-palette-brand-primary)', // #106ebe Global.Color.Brand.Primary
   neutralStrokeDisabled: 'var(--global-palette-grey-26)', // #424242 Global.Color.Grey.26
-  strokeAccessible: 'transparent', // transparent undefined
-  strokeAccessibleInteractive: 'transparent', // transparent undefined
-  strokeAccessibleDisabled: 'transparent', // transparent undefined
+  transparentStroke: 'transparent', // transparent undefined
+  transparentStrokeInteractive: 'transparent', // transparent undefined
+  transparentStrokeDisabled: 'transparent', // transparent undefined
   strokeFocus1: 'var(--global-color-black)', // #000000 Global.Color.Black
   strokeFocus2: 'var(--global-color-white)', // #ffffff Global.Color.White
   neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
