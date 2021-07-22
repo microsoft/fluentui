@@ -41,18 +41,28 @@ const App = () => (
 );
 ```
 
-### Text wrappers
+## Typography wrappers
 
-<!-- TODO: Showcase the wrappers with the cool image -->
+![List of typography variants by sorted descending by size](./assets/typography-examples.png 'Typography wrapper list')
 
-Wrappers offer an easy way to use text according to the FluentUI Design System while also improving code readability.
-Wrappers types are: `Display`, `Title1`, `Title2` , `Title3`, `Headline`, `Subheadline`, `Body` and `Capton`.
+Wrappers offer an easy way to use text according to the Fluent Design System while also providing semantic code readability.
+
+Below is an example of the Display wrapper vs using the Text component:
 
 ```tsx
-import { Display } from '@fluentui/react-text';
+import { Text, Display } from '@fluentui/react-text';
 
-const Test = () => <Display bold>This text is a Display title.</Display>;
+const Example = () => (
+  <>
+    <Text size={1000} weight="semibold">
+      This text is styled like a Display variant.
+    </Text>
+    <Display>This text is also styled like a Display variant.</Display>
+  </>
+);
 ```
+
+As you can see, using the `Display` wrapper is a lot easier to read and provides a clearer visual of the page's layout.
 
 ### TypographyStyles
 
