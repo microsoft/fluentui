@@ -52,7 +52,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '5%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 1-2 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 1-2 of 4, 2020/04/30 5%' },
       },
       {
         legend: 'Metadata3',
@@ -60,7 +60,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '20%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 1-3 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 1-3 of 4, 2020/04/30 20%' },
       },
     ];
 
@@ -71,7 +71,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 30%' },
       },
       {
         legend: 'Metadata2',
@@ -79,7 +79,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '20%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 2-2 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 2-2 of 4, 2020/04/30 20%' },
       },
       {
         legend: 'Metadata3',
@@ -98,7 +98,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '44%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 44%' },
       },
       {
         legend: 'Metadata2',
@@ -106,7 +106,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '28%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 3-2 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 3-2 of 4, 2020/04/30 28%' },
       },
       {
         legend: 'Metadata3',
@@ -114,7 +114,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
-        callOutAccessibilityData: { ariaLabel: 'Bar series 3-3 of 4, 2020/04/30 40%' },
+        callOutAccessibilityData: { ariaLabel: 'Bar series 3-3 of 4, 2020/04/30 30%' },
       },
     ];
 
@@ -129,7 +129,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
-        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 1 0f 6' },
+        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 1 of 6' },
       },
       {
         chartData: secondChartPoints,
@@ -137,7 +137,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         ...(showLine && {
           lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magenta }],
         }),
-        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 2 0f 6' },
+        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 2 of 6' },
       },
       {
         chartData: thirdChartPoints,
@@ -148,7 +148,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
-        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 3 0f 6' },
+        stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 3 of 6' },
       },
     ];
 
