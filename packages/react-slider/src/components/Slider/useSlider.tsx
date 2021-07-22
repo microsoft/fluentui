@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useControllableValue } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
 import {
   getCode,
   ArrowDownKey,
@@ -44,7 +44,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   );
 
   const railRef = React.useRef<HTMLElement>(null);
+  const thumbRef = React.useRef(null);
   const disposables = React.useRef<(() => void)[]>([]);
+  const id = useId('Slider', props.id);
 
   /**
    * Updates the `currentValue` to the new `incomingValue` and clamps it.
@@ -181,6 +183,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     onMouseDown: onThumbPressed,
     onTouchStart: onThumbPressed,
     onKeyDown: onKeyDown,
+    id: id,
   };
 
   const railProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
@@ -193,9 +196,10 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     style: getTrackStyles(valuePercent),
   };
 
-  const thumbProps: React.HTMLAttributes<HTMLDivElement> = {
+  const thumbProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: 'ms-Slider-thumb',
     style: getPositionStyles(valuePercent),
+    ref: thumbRef,
     tabIndex: 0,
     role: 'slider',
     'aria-valuemin': min,
@@ -217,5 +221,26 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     resolveShorthandProps(props, sliderShorthandProps),
   );
 
+  useComponentRef(ref, currentValue, thumbRef);
+
   return state;
+};
+
+const useComponentRef = (ref: React.Ref<HTMLElement>, value: number, thumbRef: React.RefObject<HTMLInputElement>) => {
+  React.useImperativeHandle(
+    () => {
+      ref;
+    },
+    () => ({
+      get value() {
+        return value;
+      },
+      focus() {
+        if (thumbRef.current) {
+          thumbRef.current.focus();
+        }
+      },
+    }),
+    [thumbRef, value],
+  );
 };

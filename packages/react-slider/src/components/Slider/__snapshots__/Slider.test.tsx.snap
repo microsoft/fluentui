@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider renders Slider correctly 1`] = `
+<div
+  className="ms-Slider-root"
+  id="Slider22"
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+>
+  <div
+    className="ms-Slider-rail"
+  />
+  <div
+    className="ms-Slider-track"
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  />
+  <div
+    aria-valuemax={10}
+    aria-valuemin={0}
+    aria-valuenow={5}
+    aria-valuetext="5"
+    className="ms-Slider-thumb"
+    role="slider"
+    style={
+      Object {
+        "left": "50%",
+      }
+    }
+    tabIndex={0}
+  />
+</div>
+`;

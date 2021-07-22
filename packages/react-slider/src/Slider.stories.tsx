@@ -17,9 +17,21 @@ export const BasicSliderExample = (props: SliderProps) => {
 
 export const ControlledSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(0);
+  const asdfdafs = React.useRef(null);
   const sliderOnChange = (value: number) => setSliderValue(value);
 
-  return <Slider value={sliderValue} min={0} max={50} onChange={sliderOnChange} />;
+  return (
+    <Slider
+      value={sliderValue}
+      min={0}
+      max={50}
+      onClick={() => {
+        console.log(asdfdafs.current.value);
+      }}
+      onChange={sliderOnChange}
+      ref={asdfdafs}
+    />
+  );
 };
 
 export default {
