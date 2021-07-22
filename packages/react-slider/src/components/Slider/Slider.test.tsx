@@ -1,10 +1,9 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { safeCreate, safeMount } from '@fluentui/test-utilities';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
+import { act } from 'react-dom/test-utils';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('Slider', () => {
@@ -132,13 +131,13 @@ describe('Slider', () => {
       sliderRail.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 100, clientY: 0 });
+      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 110, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(10);
       expect(sliderRef.current!.value).toBe(10);
 
-      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 0, clientY: 0 });
+      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: -10, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(2);
       expect(onChange.mock.calls[1][0]).toEqual(0);
@@ -192,6 +191,137 @@ describe('Slider', () => {
       expect(sliderRef.current!.value).toBe(100);
 
       expect(onChange).toHaveBeenCalledTimes(10);
+    });
+  });
+
+  it('does not update when the controlled (value) prop is provided', () => {
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider value={50} min={0} max={100} ref={sliderRef} />;
+    };
+
+    safeMount(<SliderTestComponent />, component => {
+      const sliderRail = component.find('.ms-Slider-rail');
+
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+
+      expect(sliderRef.current.value).toEqual(50);
+    });
+  });
+
+  it('calls (onChange) with the correct value', () => {
+    const onChange = jest.fn();
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider value={50} min={0} max={100} onChange={onChange} ref={sliderRef} />;
+    };
+
+    safeMount(<SliderTestComponent />, component => {
+      const sliderRail = component.find('.ms-Slider-rail');
+
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+
+      expect(sliderRef.current.value).toEqual(50);
+      expect(onChange.mock.calls[2][0]).toEqual(51);
+    });
+  });
+
+  it('correctly handles a negative (step) prop', () => {
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider defaultValue={50} min={0} max={100} step={-3} ref={sliderRef} />;
+    };
+
+    safeMount(<SliderTestComponent />, component => {
+      const sliderRail = component.find('.ms-Slider-rail');
+
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      expect(sliderRef.current?.value).toEqual(47);
+    });
+  });
+
+  it('correctly handles a decimal (step) prop', () => {
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider defaultValue={50} min={0} max={100} step={0.001} ref={sliderRef} />;
+    };
+
+    safeMount(<SliderTestComponent />, component => {
+      const sliderRail = component.find('.ms-Slider-rail');
+
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      expect(sliderRef.current?.value).toEqual(50.001);
+    });
+  });
+
+  it('correctly handles (role) prop', () => {
+    safeMount(<Slider role="test" />, component => {
+      const sliderRole = component.find('.ms-Slider-root').prop('role');
+
+      expect(sliderRole).toEqual('test');
+    });
+  });
+
+  it('correctly applies Slider (role) to thumb', () => {
+    safeMount(<Slider />, component => {
+      const thumbRole = component.find('.ms-Slider-thumb').prop('role');
+
+      expect(thumbRole).toEqual('slider');
+    });
+  });
+
+  it('correctly applies (aria-valuetext)', () => {
+    safeMount(<Slider />, component => {
+      const sliderThumb = component.find('.ms-Slider-thumb').prop('aria-valuetext');
+
+      expect(sliderThumb).toEqual('0');
+    });
+
+    const values = ['small', 'medium', 'large'];
+    const selected = 1;
+    const getTextValue = (value: number) => values[value];
+
+    safeMount(<Slider value={selected} ariaValueText={getTextValue} />, component => {
+      const sliderThumb = component.find('.ms-Slider-thumb').prop('aria-valuetext');
+
+      expect(sliderThumb).toEqual(values[selected]);
+    });
+  });
+
+  // it('correctly applies (aria-valuenow)', () => {
+  //   safeMount(<Slider />, component => {
+  //     const sliderRail = component.find('.ms-Slider-rail');
+  //     const sliderThumbAriaValue = component.find('.ms-Slider-thumb').prop('aria-valuenow');
+
+  //     sliderRail.simulate('keydown', { which: KeyCodes.up });
+
+  //     expect(sliderThumbAriaValue).toEqual('3');
+  //   });
+  // });
+
+  it('correctly handles (onKeyDown) callback', () => {
+    const eventHandler = jest.fn();
+
+    safeMount(<Slider role="test" onKeyDown={eventHandler} />, component => {
+      const sliderRail = component.find('.ms-Slider-rail');
+
+      expect(eventHandler).toBeCalledTimes(0);
+      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      expect(eventHandler).toBeCalledTimes(1);
     });
   });
 });
