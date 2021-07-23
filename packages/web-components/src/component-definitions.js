@@ -74,6 +74,7 @@ import fluentTextAreaDefinition from './text-area/text-area.vscode.definition.js
 export { fluentTextAreaDefinition };
 import fluentTextFieldDefinition from './text-field/text-field.vscode.definition.json';
 export { fluentTextFieldDefinition };
+import fluentTooltipDefinition from './tooltip/tooltip.vscode.definition.json';
 export { fluentTooltipDefinition };
 import fluentTreeItemDefinition from './tree-item/tree-item.vscode.definition.json';
 export { fluentTreeItemDefinition };
