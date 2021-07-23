@@ -73,11 +73,14 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const updateValue = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (ev: any, incomingValue: number): void => {
-      ev.preventDefault();
-      ev.stopPropagation();
       setCurrentValue(clamp(incomingValue, min, max), ev);
+
+      if (currentValue !== min && currentValue !== max) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     },
-    [max, min, setCurrentValue],
+    [currentValue, max, min, setCurrentValue],
   );
 
   /**
