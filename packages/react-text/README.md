@@ -9,6 +9,8 @@ This package also exports wrappers which ensure your text follows the Fluent des
 
 To use the Text components in your application, you can start by installing the main package of Fluent UI components:
 
+<!-- TODO: Validate if FluentProvider works without theme. If not, which theme should we refer to -->
+
 ```sh
 npm install @fluentui/react-components
 ```
@@ -64,27 +66,6 @@ const Example = () => (
 
 As you can see, using the `Display` wrapper is a lot easier to read and provides a clearer visual of the page's layout.
 
-<!-- TODO: Confirm these are supposed to be exported/announced -->
-<!-- ## Typography styles
-
-Using FluentUI typography styles without using the text component:
-
-```tsx
-import { typogrpahyStyles } from '@fluentui/react-text';
-
-const useStyles = makeStyles({
-  root: typographyStyles.display,
-});
-
-const Test = () => {
-  const styles = useStyles();
-
-  return <p className={styles.root}>I am styled like a display title</p>;
-};
-``` -->
-
-<!-- TODO: Semantic elements / accessibility with as prop-->
-
 ## Semantic elements
 
 By default, Text and all the typography wrappers render a `<span>` by default. You should use the `as` property to ensure your page has proper semantic elements such as heading or paragraph elements.
@@ -107,8 +88,13 @@ This will result in the following DOM structure:
 </div>
 ```
 
-<!-- TODO: Point people to Storybook/API page -->
-<!-- TODO: Point people to MIGRATION.md -->
+## API
+
+For more information about the components, please refer to the [API documentation](https://aka.ms/fluentui-storybook).
+
+## Migration
+
+For migration information, have a look at the [migration guide](./MIGRATION.md).
 
 ## WIP 🚧
 
