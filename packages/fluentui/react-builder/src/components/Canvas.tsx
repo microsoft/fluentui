@@ -9,6 +9,7 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
 import { AccessibilityError } from '../accessibility/types';
+import { AbilityAttributesValidator } from '../accessibility/AbilityAttributesValidator';
 
 const pkg = require('../../package.json');
 
@@ -386,8 +387,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       id={iframeId}
     >
       <FrameContextConsumer>
-        {({ document }) => (
+        {({ document, window }) => (
           <>
+            <AbilityAttributesValidator window={window} onErrorsChanged={onWindowAccessibilityErrors} />;
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
@@ -404,7 +406,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 <div style={{ fontSize: '1.2rem', opacity: 0.5 }}>Drag n' Drop some components</div>
               </div>
             )}
-
             <DebugSelector
               active={isSelecting}
               key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}

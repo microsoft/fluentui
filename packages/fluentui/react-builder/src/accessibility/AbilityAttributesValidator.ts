@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { DevEnv } from 'ability-attributes';
+
+import { setup } from '../ability-attributes/DevEnv';
 import { AccessibilityError } from './types';
 
+export type AccessibilityErrors = Record<string, Record<string, string>>;
+
 export type AbilityAttributesValidatorProps = {
+  window: Window;
   onErrorsChanged: (errors: AccessibilityError[]) => void;
 };
 
@@ -10,57 +14,64 @@ const getBuilderId = el => {
   return el ? el.getAttribute('data-builder-id') ?? getBuilderId(el.parentElement) : undefined;
 };
 
-let _lastId = 0;
+// let _lastId = 0;
 
 export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttributesValidatorProps> = ({
+  window,
   onErrorsChanged,
 }) => {
-  const attributeNameErrorId = DevEnv.ATTRIBUTE_NAME_ERROR_ID;
-  const window = document.getElementsByTagName('iframe')[0].ownerDocument.defaultView;
+  const [errors, setErrors] = React.useState({});
 
-  const [errors, setErrors] = React.useState<AccessibilityError[]>();
   React.useMemo(() => {
-    DevEnv.setup({
+    setup({
       enforceClasses: false,
       ignoreUnknownClasses: true,
       window,
+      errorReporter: {
+        dismiss(element: HTMLElement) {
+          console.log('dismiss - WHAT?!');
+        },
+        remove(element: HTMLElement) {
+          console.log('remove', element);
+          // const [builderId, errorId] = (element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? '').split(':');
+          // element.removeAttribute(ATTRIBUTE_NAME_ERROR_ID);
+          /*
+          if (builderId && errorId) {
+            setErrors(({ [builderId]: { [`${builderId}:${errorId}`]: __, ...errorsForBuilderId }, ...errors }) => ({
+              ...errors,
+              ...(!_.isEmpty(errorsForBuilderId) && { [builderId]: errorsForBuilderId }),
+            }));
+          }
+          */
+        },
+        report(element: HTMLElement, error: any /* AbilityAttributesError */) {
+          // console.log('report', element, error);
+          const builderId = getBuilderId(element);
+
+          // const errorId = element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? `${builderId}:${++_lastId}`;
+          // element.setAttribute(ATTRIBUTE_NAME_ERROR_ID, errorId);
+
+          setErrors(errors => ({ ...errors, [builderId]: error.message }));
+        },
+        toggle() {
+          console.log('toggle - WHAT?!');
+        },
+      },
     });
-    const errorReporter: DevEnv.ErrorReporter = {
-      dismiss(element: HTMLElement) {
-        console.log('dismiss - WHAT?!');
-      },
-      remove(element: HTMLElement) {
-        console.log('remove', element);
-        const [builderId, errorId] = (element.getAttribute(attributeNameErrorId) ?? '').split(':');
-        element.removeAttribute(attributeNameErrorId);
-        if (builderId && errorId) {
-          console.log(builderId, errorId);
-        }
-        /* setErrors(({ [builderId]: { [`${builderId}:${errorId}`]: __, ...errorsForBuilderId }, ...errors }) => ({
-          ...errors,
-          ...(!_.isEmpty(errorsForBuilderId) && { [builderId]: errorsForBuilderId }),
-        }));
-         } */
-      },
-      report(element: HTMLElement, error: any /* AbilityAttributesError */) {
-        console.log('report', element, error);
-        const builderId = getBuilderId(element);
-
-        const errorId = element.getAttribute(attributeNameErrorId) ?? `${builderId}:${++_lastId}`;
-        element.setAttribute(attributeNameErrorId, errorId);
-
-        setErrors(errors => ({ ...errors, [builderId]: { ...errors?.[builderId], [errorId]: error.message } }));
-      },
-      toggle() {
-        console.log('toggle - WHAT?!');
-      },
-    };
-    return errorReporter;
-  }, [window, attributeNameErrorId]);
+  }, [window]);
 
   React.useMemo(() => {
     console.log('AbilityAttributesValidator - errors changed', errors);
-    onErrorsChanged(errors);
+    const accessibilityErrors = [];
+    Object.entries(errors).forEach(e => {
+      accessibilityErrors.push({
+        elementUuid: e[0],
+        source: 'AA',
+        message: e[1],
+      } as AccessibilityError);
+    });
+
+    onErrorsChanged(accessibilityErrors);
   }, [errors, onErrorsChanged]);
 
   return null;

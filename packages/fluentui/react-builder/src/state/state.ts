@@ -301,7 +301,12 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
     }
 
     case 'WINDOW_ERRORS_CHANGED': {
-      console.log(action.accessibilityErrors);
+      if (draftState.accessibilityErrors) {
+        draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
+          error => error.elementUuid !== draftState.selectedJSONTreeElementUuid && error.source !== 'AA',
+        );
+      }
+      draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.accessibilityErrors);
       break;
     }
 

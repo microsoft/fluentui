@@ -12,7 +12,6 @@ import { AccessibilityError } from '../accessibility/types';
 import { Toolbar } from './Toolbar';
 import { Builder } from './Builder';
 import { runAxe } from '../hooks/runAxe';
-import { AbilityAttributesValidator } from '../accessibility/AbilityAttributesValidator';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -336,7 +335,6 @@ export const Designer: React.FunctionComponent = () => {
         overflow: 'hidden',
       }}
     >
-      <AbilityAttributesValidator onErrorsChanged={handleWindowAccessibilityErrors} />;
       <DocumentTitle title={`Fluent UI Builder`} />
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
       {insertComponent && (
@@ -371,6 +369,7 @@ export const Designer: React.FunctionComponent = () => {
           </div>
         </>
       )}
+
       <Toolbar
         isExpanding={isExpanding}
         isSelecting={isSelecting}
