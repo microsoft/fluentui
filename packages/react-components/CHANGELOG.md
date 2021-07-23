@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.83)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.82..@fluentui/react-components_v9.0.0-alpha.83)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.60 ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.82)
 

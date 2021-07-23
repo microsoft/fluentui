@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react_v8.23.8",
+      "version": "8.23.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: add border color to selected date to fix contrast ratio.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc6cc7d73c8d61587e26cd19b3bc9db3abd077a6",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "DetailsList: use the radio role for single selection mode checks",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a5b02f9926703acf085370ae6ecbcc41782c5f5c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react_v8.23.7",
       "version": "8.23.7",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.23.7",
+  "version": "8.23.8",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

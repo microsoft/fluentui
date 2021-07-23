@@ -9,7 +9,7 @@ import { ButtonState } from './Button.types';
 export const useButtonState = (state: ButtonState): ButtonState => {
   const { as, children, disabled, disabledFocusable, icon, onClick, onKeyDown: onKeyDownCallback } = state;
 
-  const receivedChildren = !!children?.children;
+  const receivedChildren = !!children;
   const receivedIcon = !!icon?.children;
   state.iconOnly = receivedIcon && !receivedChildren;
 

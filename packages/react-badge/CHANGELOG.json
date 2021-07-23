@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update theme tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.60",
       "version": "9.0.0-alpha.60",
