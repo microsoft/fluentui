@@ -324,7 +324,7 @@ From accessibility point of view the main difference is in type of element used 
 - Fluent UI has `<input>` element with type="checkbox"
 - Fluent UI Northstar has `<div>` element with role="checkbox"
 
-  [Verification with screen reader](https://jurokapsiar.github.io/open-a11y/components/checkbox.research) doens't show any differences between these two approaches, everything was working as expected.
+  [Verification with screen reader](https://jurokapsiar.github.io/open-a11y/components/checkbox.research) doesn't show any differences between these two approaches, everything was working as expected.
 
 #### `Accessibility variants`:
 
