@@ -3,7 +3,7 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { InputProps, InputSlots, InputState } from './Input.types';
 
 /**
- * Array of all shorthand properties listed in InputShorthandPropsCompat
+ * Array of all shorthand properties listed as the keys of InputSlots
  */
 export const inputShorthandProps: (keyof InputSlots)[] = [
   'input',
