@@ -6,9 +6,6 @@ import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from
  */
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
-    // Temporarily declare children as a shorthand slot until #18471 is fixed
-    children?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
@@ -100,7 +97,7 @@ export type ButtonProps = ComponentPropsCompat &
 /**
  * {@docCategory Button}
  */
-export type ButtonShorthandPropsCompat = 'children' | 'icon';
+export type ButtonShorthandPropsCompat = 'icon';
 
 /**
  * {@docCategory Button}
