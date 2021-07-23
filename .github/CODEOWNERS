@@ -117,6 +117,7 @@ common/_common.scss @microsoft/cxe-red @phkuo
 ## Component packages
 packages/react-avatar/ @microsoft/cxe-red @behowell
 packages/react-menu/ @microsoft/teams-prg
+packages/react-accordion/ @microsoft/teams-prg
 packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
 packages/react-card/ @microsoft/cxe-red @khmakoto
