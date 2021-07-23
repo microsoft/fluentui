@@ -46,7 +46,9 @@ describe('AccordionHeader', () => {
         </AccordionItem>
       </Accordion>,
     );
-    component.root.findByType('button').props.onClick({ defaultPrevented: false });
+    renderer.act(() => {
+      component.root.findByType('button').props.onClick({ defaultPrevented: false });
+    });
     expect(mockClick).toBeCalledTimes(2);
   });
 
@@ -60,7 +62,9 @@ describe('AccordionHeader', () => {
         </AccordionItem>
       </Accordion>,
     );
-    component.root.findByType('button').props.onClick({ defaultPrevented: true });
+    renderer.act(() => {
+      component.root.findByType('button').props.onClick({ defaultPrevented: true });
+    });
     expect(mockClick).toBeCalledTimes(1);
   });
 });
