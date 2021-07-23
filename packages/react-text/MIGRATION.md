@@ -9,16 +9,22 @@ This Migration guide is a work in progress and is not yet ready for use.
 | Fabric (v8) | Northstar (v0) | Converged (vNext) |
 | ----------- | -------------- | ----------------- |
 | as          | as             | as                |
+| className   | className      | className         |
 | variant     | size           | size              |
 | block       | -              | block             |
 | nowrap      | -              | wrap              |
 | -           | align          | align             |
+| -           | content        | children          |
+| -           | styles         | styles            |
 | -           | truncated      | truncate          |
 | -           | weight         | weight            |
 | -           | -              | font              |
 | -           | -              | italic            |
 | -           | -              | strikethrough     |
 | -           | -              | underline         |
+
+> ⚠️ Note - Properties not in this table are considered deprecated.
+> You can find the migration guide below.
 
 ## Migration from v8 (Fabric)
 
@@ -34,7 +40,7 @@ This Migration guide is a work in progress and is not yet ready for use.
 
 <!-- size - But also from string to number. Add mapping table -->
 
-#### Size table
+<h4 id="size-table">Size table</h4>
 
 | Size token | font-size | line-height |
 | ---------- | --------- | ----------- |
@@ -76,13 +82,11 @@ The converged component does not support many of the v0 properties that had very
 
 <!-- size - But also from string to number. Add mapping table -->
 
-Refer to _Insert link here_
+Refer to the [Size Table](#size-table) above.
 
 ### a11y
 
-<!-- Who knows?? -->
-
-I guess the 'as' prop??
+<!-- Who knows?? I guess the 'as' prop?? -->
 
 ### align
 
