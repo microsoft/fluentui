@@ -60,7 +60,6 @@ export type DesignerAction =
   | { type: 'CLOSE_ADD_DIALOG' }
   | { type: 'DESIGNER_LOADED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'ADD_COMPONENT'; component: string; module: string }
-  | { type: 'WINDOW_ERRORS_CHANGED'; accessibilityErrors: AccessibilityError[] }
   | { type: 'PROP_UPDATED'; component: JSONTreeElement; componentAccessibilityErrors: AccessibilityError[] };
 
 export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState, action) => {
@@ -297,16 +296,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       deleteAccessibilityErrorsForElement(draftState, draftState.selectedJSONTreeElementUuid);
       // add the accesibility errors for the component
       draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.componentAccessibilityErrors);
-      break;
-    }
-
-    case 'WINDOW_ERRORS_CHANGED': {
-      if (draftState.accessibilityErrors) {
-        draftState.accessibilityErrors = draftState.accessibilityErrors.filter(
-          error => error.elementUuid !== draftState.selectedJSONTreeElementUuid && error.source !== 'AA',
-        );
-      }
-      draftState.accessibilityErrors = draftState.accessibilityErrors.concat(action.accessibilityErrors);
       break;
     }
 

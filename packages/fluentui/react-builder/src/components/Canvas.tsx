@@ -389,7 +389,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
-            <AbilityAttributesValidator window={window} onErrorsChanged={onWindowAccessibilityErrors} />;
+            <AbilityAttributesValidator window={window} onErrorsChanged={onWindowAccessibilityErrors} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{
