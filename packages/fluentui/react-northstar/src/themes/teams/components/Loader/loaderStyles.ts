@@ -66,7 +66,7 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
       ':before': {
         ...svgAnimation,
 
-        backgroundImage: p.secondary ? v.svgSecondaryContent : v.svgContent,
+        backgroundImage: p.secondary ? v.secondarySvgContent : v.svgContent,
         content: '" "',
         display: 'block',
         overflow: 'hidden',

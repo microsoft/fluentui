@@ -7,7 +7,7 @@ export interface LoaderVariables {
   containerWidths: Record<SizeValue, string>;
 
   svgContent: string;
-  svgSecondaryContent: string;
+  secondarySvgContent: string;
   svgHeights: Record<SizeValue, string>;
   svgTranslatePosition: Record<SizeValue, string>;
   svgWidths: Record<SizeValue, string>;
@@ -34,7 +34,7 @@ export const loaderVariables = (): LoaderVariables => ({
   },
 
   svgContent: loaderSvgDataUrl,
-  svgSecondaryContent: loaderSecondarySvgDataUrl,
+  secondarySvgContent: loaderSecondarySvgDataUrl,
   svgHeights: {
     smaller: pxToRem(1464),
     smallest: pxToRem(1464),
