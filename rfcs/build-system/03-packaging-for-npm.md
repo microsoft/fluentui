@@ -6,7 +6,7 @@ _List contributors to the proposal here: @hotell_
 
 ## Summary
 
-<!-- Explain the proposed change -->
+> #### 💡 NOTE: This proposal/guide applies only for vNext packages and libraries using new DX
 
 ## Problem statement
 
@@ -15,7 +15,7 @@ We ship lot of unnecessary stuff to our consumers:
 - story files
 - source files
 - various configurations and metadata
-- others
+- others...
 
 What we ship is driven by our current npm package setup, which looks like following:
 
@@ -84,6 +84,8 @@ total files:   518
 
 ## Detailed Design or Proposal
 
+> **💡 NOTE:** This proposal/guide applies only for vNext packages and libraries using new DX
+
 This is a living document that will describe various proposals that all aim to improve following common goals:
 
 - packaging size to npm registry
@@ -92,7 +94,7 @@ This is a living document that will describe various proposals that all aim to i
 - better security for consumers
 - better tree-shaking capabilities
 
-### 1. .npmignore cleanup
+### 1. `.npmignore` cleanup
 
 **`<package>/.npmignore`**
 
@@ -197,4 +199,4 @@ This approach significantly improves our current situation:
 
 ## Open Issues
 
-<!-- Optional section, but useful for first drafts. Use this section to track open issues on unanswered questions regarding the design or proposal.  -->
+- https://github.com/microsoft/fluentui/issues/19042
