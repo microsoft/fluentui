@@ -2,6 +2,21 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "react-popver: fix Default story issue caused by storybook migration",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5fcdb72150a4ab47e72e87be52cd7876e5d95ff1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",

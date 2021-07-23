@@ -29,11 +29,11 @@
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.26"
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.27"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.0.0-alpha.57",
-    "@fluentui/react-theme": "^9.0.0-alpha.17",
+    "@fluentui/react-provider": "^9.0.0-alpha.58",
+    "@fluentui/react-theme": "^9.0.0-alpha.18",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

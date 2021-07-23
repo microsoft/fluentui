@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change visual defaults for tooltip. Replace `subtle` prop with `inverted`, and `noArrow` with `pointing`",
+            "author": "behowell@microsoft.com",
+            "commit": "88d001eab596145d095a32d2911e9cf88648902e",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Replace onlyIfTruncated with onBeforeShow event. Add onShow/onHide events. Add TooltipImperativeApi to programatically show/hide tooltip.",
+            "author": "behowell@microsoft.com",
+            "commit": "d38109a7fd40e187aca862046219cf9a7ca66131",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.59",
       "version": "9.0.0-alpha.59",

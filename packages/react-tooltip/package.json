@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tooltip",
-  "version": "9.0.0-alpha.59",
+  "version": "9.0.0-alpha.60",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,9 +25,9 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.29",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.30",
     "@fluentui/eslint-plugin": "^1.3.2",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.26",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.27",
     "@fluentui/react-conformance": "^0.4.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -42,12 +42,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.50",
-    "@fluentui/react-portal": "^9.0.0-alpha.31",
-    "@fluentui/react-positioning": "^9.0.0-alpha.35",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.17",
-    "@fluentui/react-theme": "^9.0.0-alpha.17",
-    "@fluentui/react-utilities": "^9.0.0-alpha.34",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.51",
+    "@fluentui/react-portal": "^9.0.0-alpha.32",
+    "@fluentui/react-positioning": "^9.0.0-alpha.36",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.18",
+    "@fluentui/react-theme": "^9.0.0-alpha.18",
+    "@fluentui/react-utilities": "^9.0.0-alpha.35",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Handling children correctly and not as a slot.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
