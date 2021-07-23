@@ -23,13 +23,13 @@ export const popupContentVariables = (siteVars: any): PopupContentVariables => {
   return {
     borderColor: siteVars.colorScheme.default.border2,
     borderRadius: siteVars.borderRadiusMedium,
-    borderSize: '1px',
+    borderSize: '0',
 
     backgroundColor: siteVars.colorScheme.default.background,
     color: siteVars.colorScheme.default.foreground,
-    boxShadow: siteVars.shadowLevel3,
+    boxShadow: siteVars.shadow16,
 
-    padding: `${pxToRem(10)} ${pxToRem(14)}`,
+    padding: `${pxToRem(16)}`,
 
     pointerGap: pxToRem(5),
     pointerMargin: pxToRem(10),
