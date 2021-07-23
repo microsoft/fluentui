@@ -1,4 +1,5 @@
 import { createLightTheme } from '../../utils/createLightTheme';
 import { brandWeb } from '../../global/brandColors';
+import { Theme } from '../../types';
 
-export const webLightTheme = createLightTheme(brandWeb);
+export const webLightTheme: Theme = createLightTheme(brandWeb);

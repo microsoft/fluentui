@@ -31,17 +31,10 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   HTMLDivElement,
   ISearchBoxProps
 >((props, forwardedRef) => {
-  const { defaultValue = '' } = props;
-  const [hasFocus, setHasFocus] = React.useState(false);
-  const [uncastValue, setValue] = useControllableValue(props.value, defaultValue, props.onChange);
-  const value = String(uncastValue);
-  const rootElementRef = React.useRef<HTMLDivElement>(null);
-  const inputElementRef = React.useRef<HTMLInputElement>(null);
-  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
-  const id = useId(COMPONENT_NAME, props.id);
   const {
     ariaLabel,
     className,
+    defaultValue = '',
     disabled,
     underlined,
     styles,
@@ -52,6 +45,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     theme,
     clearButtonProps = defaultClearButtonProps,
     disableAnimation = false,
+    showIcon = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
     onEscape: customOnEscape,
@@ -59,7 +53,28 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     onKeyDown: customOnKeyDown,
     iconProps,
     role,
+    onChange,
+    // eslint-disable-next-line deprecation/deprecation
+    onChanged,
   } = props;
+
+  const [hasFocus, setHasFocus] = React.useState(false);
+  const [uncastValue, setValue] = useControllableValue(
+    props.value,
+    defaultValue,
+    React.useCallback(
+      (ev: React.ChangeEvent<HTMLInputElement> | undefined) => {
+        onChange?.(ev, ev?.target.value);
+        onChanged?.(ev?.target.value);
+      },
+      [onChange, onChanged],
+    ),
+  );
+  const value = String(uncastValue);
+  const rootElementRef = React.useRef<HTMLDivElement>(null);
+  const inputElementRef = React.useRef<HTMLInputElement>(null);
+  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
+  const id = useId(COMPONENT_NAME, props.id);
 
   const { onClick: customOnClearClick } = clearButtonProps;
 
@@ -71,6 +86,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disabled,
     hasInput: value.length > 0,
     disableAnimation,
+    showIcon,
   });
 
   const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(props, inputProperties, [

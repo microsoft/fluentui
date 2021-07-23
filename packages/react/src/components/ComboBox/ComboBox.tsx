@@ -269,6 +269,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       text: 'defaultSelectedKey',
       selectedKey: 'value',
       dropdownWidth: 'useComboBoxAsMenuWidth',
+      ariaLabel: 'label',
     });
 
     this._id = props.id || getId('ComboBox');
@@ -567,6 +568,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         ref={this._comboBoxWrapper}
         id={this._id + 'wrapper'}
         className={this._classNames.root}
+        aria-owns={isOpen ? this._id + '-list' : undefined}
       >
         <Autofill
           data-ktp-execute-target={true}
@@ -594,7 +596,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={this._getAriaActiveDescendantValue()}
           aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._id + '-list' : undefined}
+          aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
@@ -1289,14 +1291,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options } = props;
+    const { onRenderItem, options, label, ariaLabel } = props;
 
     const id = this._id;
     return (
       <div
         id={id + '-list'}
         className={this._classNames.optionsContainer}
-        aria-labelledby={id + '-label'}
+        aria-labelledby={label && id + '-label'}
+        aria-label={ariaLabel && !label ? ariaLabel : undefined}
         role="listbox"
       >
         {options.map(item => onRenderItem?.(item, this._onRenderItem))}
@@ -2158,6 +2161,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       customStylesForCurrentOption,
       this._isPendingOption(item),
       item.hidden,
+      this._isOptionSelected(item.index),
     );
   }
 

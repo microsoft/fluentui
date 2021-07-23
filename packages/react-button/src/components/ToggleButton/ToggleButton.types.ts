@@ -1,5 +1,5 @@
-import { ComponentState } from '@fluentui/react-utilities';
-import { ButtonDefaultedProps, ButtonProps, ButtonShorthandProps, ButtonState } from '../Button/Button.types';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ButtonDefaultedProps, ButtonProps, ButtonShorthandPropsCompat, ButtonState } from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
@@ -15,7 +15,7 @@ export interface ToggleButtonProps extends ButtonProps {
   checked?: boolean;
 
   /**
-   * Defines whether the `ToggleButton` is inititally in a checked state or not when rendered.
+   * Defines whether the `ToggleButton` is initially in a checked state or not when rendered.
    * Mutually exclusive to `checked`.
    * @default false
    */
@@ -25,7 +25,7 @@ export interface ToggleButtonProps extends ButtonProps {
 /**
  * {@docCategory Button}
  */
-export type ToggleButtonShorthandProps = ButtonShorthandProps;
+export type ToggleButtonShorthandPropsCompat = ButtonShorthandPropsCompat;
 
 /**
  * {@docCategory Button}
@@ -37,4 +37,4 @@ export type ToggleButtonDefaultedProps = ButtonDefaultedProps;
  */
 export interface ToggleButtonState
   extends ButtonState,
-    ComponentState<ToggleButtonProps, ToggleButtonShorthandProps, ToggleButtonDefaultedProps> {}
+    ComponentStateCompat<ToggleButtonProps, ToggleButtonShorthandPropsCompat, ToggleButtonDefaultedProps> {}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/webpack-utilities
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.3)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.1.2..@fluentui/webpack-utilities_v8.1.3)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.2)
 

@@ -807,10 +807,40 @@ describe('ComboBox', () => {
   });
 
   it('allows adding a custom aria-describedby id to the input', () => {
-    const customId = 'customAriaDescriptionId';
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={customId} />, wrapper => {
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={'customAriaDescriptionId'} />, wrapper => {
       const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-describedby')).toBe(customId);
+      expect(inputElement.getAttribute('aria-describedby')).toBe('customAriaDescriptionId');
+    });
+  });
+
+  it('correctly handles (aria-labelledby) when no label prop is provided', () => {
+    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={'customAriaLabel'} />, wrapper => {
+      const inputElement = wrapper.find('input').getDOMNode();
+
+      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
+    });
+  });
+
+  it('correctly handles (aria-labelledby) when label prop is provided', () => {
+    safeMount(
+      <ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />,
+      wrapper => {
+        const inputElement = wrapper.find('input').getDOMNode();
+
+        expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
+      },
+    );
+  });
+
+  it('sets ariaLabel on both the input and the dropdown list', () => {
+    safeMount(<ComboBox options={RENDER_OPTIONS} ariaLabel="customAriaLabel" persistMenu />, wrapper => {
+      const inputElement = wrapper.find('input').getDOMNode();
+      expect(inputElement.getAttribute('aria-label')).toBe('customAriaLabel');
+      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
+
+      const listElement = wrapper.find('.ms-ComboBox-optionsContainer').getDOMNode();
+      expect(listElement.getAttribute('aria-label')).toBe('customAriaLabel');
+      expect(listElement.getAttribute('aria-labelledby')).toBeNull();
     });
   });
 

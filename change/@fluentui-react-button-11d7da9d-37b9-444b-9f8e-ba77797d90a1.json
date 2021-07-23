@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Temporary typing fix for children prop",
-  "packageName": "@fluentui/react-button",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

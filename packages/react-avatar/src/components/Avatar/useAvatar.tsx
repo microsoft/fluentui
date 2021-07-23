@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandPropsCompat } from './Avatar.types';
 import {
   Person16Regular,
   Person20Regular,
@@ -15,9 +15,9 @@ import { PresenceBadge } from '@fluentui/react-badge';
 /**
  * Names of the shorthand properties in AvatarProps
  */
-export const avatarShorthandProps: AvatarShorthandProps[] = ['label', 'image', 'badge'];
+export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[] = ['label', 'image', 'badge'];
 
-const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
+const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandPropsCompat });
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
@@ -30,8 +30,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       getInitials,
       ref,
     },
-    defaultProps && resolveAvatarShorthandProps(defaultProps),
-    resolveAvatarShorthandProps(props),
+    defaultProps && resolveAvatarShorthandPropsCompat(defaultProps),
+    resolveAvatarShorthandPropsCompat(props),
   );
 
   const { size, badge, label } = state;
@@ -92,7 +92,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
  * Avatar treats shorthand for the image and badge props differently. Rather than the string being
  * the child of those slots, they translate to the image's src and the badge's status prop.
  */
-const resolveAvatarShorthandProps = (props: AvatarProps) => {
+const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
   let { image, badge } = props;
 
   if (typeof image === 'string') {
@@ -107,7 +107,7 @@ const resolveAvatarShorthandProps = (props: AvatarProps) => {
     props = { ...props, image, badge };
   }
 
-  return resolveShorthandProps(props, avatarShorthandProps);
+  return resolveShorthandProps(props, avatarShorthandPropsCompat);
 };
 
 const avatarColors: AvatarNamedColor[] = [

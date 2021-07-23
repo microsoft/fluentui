@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PopperOptions, PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Determines popover padding and arrow size
@@ -75,7 +75,7 @@ export type PopoverDefaultedProps = never;
 /**
  * Popover State
  */
-export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
+export interface PopoverState extends ComponentStateCompat<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
   /**
    * Open state of the Popover
    */

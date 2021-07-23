@@ -332,7 +332,7 @@ export interface ICalloutContentStyleProps {
   calloutMinWidth?: number;
 
   /**
-   * If true, a z-index should be set on the root element (since the Callout will not be rendered on a new layer). 
+   * If true, a z-index should be set on the root element (since the Callout will not be rendered on a new layer).
    */
   doNotLayer?: boolean;
 }

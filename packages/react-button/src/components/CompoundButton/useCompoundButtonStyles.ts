@@ -29,29 +29,38 @@ const useRootStyles = makeStyles({
       },
     },
   }),
-  small: {
+  small: theme => ({
     padding: buttonSpacing.medium,
-  },
-  medium: {
+
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
+  medium: theme => ({
     padding: buttonSpacing.large,
-  },
-  large: {
+
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
+  large: theme => ({
     padding: buttonSpacing.larger,
-  },
+
+    fontSize: theme.global.type.fontSizes.base[400],
+    lineHeight: theme.global.type.lineHeights.base[400],
+  }),
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        color: theme.alias.color.neutral.neutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        color: theme.alias.color.neutral.neutralForegroundOnBrand,
       },
     },
   }),
@@ -110,32 +119,23 @@ const useRootStyles = makeStyles({
 
 const useRootIconOnlyStyles = makeStyles({
   small: {
+    padding: buttonSpacing.smaller,
+
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
+    padding: buttonSpacing.small,
+
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
+    padding: buttonSpacing.medium,
+
     maxWidth: '56px',
     minWidth: '56px',
   },
-});
-
-const useChildrenStyles = makeStyles({
-  small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-  }),
 });
 
 const useIconStyles = makeStyles({
@@ -157,8 +157,7 @@ const useContentContainerStyles = makeStyles({
 const useSecondaryContentStyles = makeStyles({
   base: theme => ({
     lineHeight: '100%',
-    marginTop: buttonSpacing.smaller,
-
+    marginTop: '4px',
     fontWeight: theme.global.type.fontWeights.regular,
   }),
   small: theme => ({
@@ -175,7 +174,6 @@ const useSecondaryContentStyles = makeStyles({
 export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
-  const childrenStyles = useChildrenStyles();
   const iconStyles = useIconStyles();
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
@@ -186,14 +184,10 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     state.primary && rootStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    state.disabled && rootStyles.disabled,
+    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );
-
-  if (state.children) {
-    state.children.className = mergeClasses(childrenStyles[state.size], state.children.className);
-  }
 
   state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
 

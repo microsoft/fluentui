@@ -1,28 +1,30 @@
-import { customElement } from '@microsoft/fast-element';
-import { TreeViewTemplate as template, TreeView } from '@microsoft/fast-foundation';
-import { TreeViewStyles as styles } from './tree-view.styles';
+import { treeViewTemplate as template, TreeView } from '@microsoft/fast-foundation';
+import { treeViewStyles as styles } from './tree-view.styles';
 
 /**
- * The Fluent Tree View Custom Element. Implements {@link @microsoft/fast-foundation#TreeView},
- * {@link @microsoft/fast-foundation#TreeView}
+ * The Fluent tree view Custom Element. Implements, {@link @microsoft/fast-foundation#TreeView}
+ * {@link @microsoft/fast-foundation#treeViewTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-tree-view\>
+ *
  */
-@customElement({
-  name: 'fluent-tree-view',
+export const fluentTreeView = TreeView.compose({
+  baseName: 'tree-view',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentTreeView extends TreeView {}
+});
 
 /**
  * Styles for TreeView
  * @public
  */
-export const TreeViewStyles = styles;
+export const treeViewStyles = styles;
+
+/**
+ * Tree View base class
+ * @public
+ */
+export { TreeView };

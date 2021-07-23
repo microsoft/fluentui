@@ -1,28 +1,29 @@
-import { customElement } from '@microsoft/fast-element';
-import { Menu, MenuTemplate as template } from '@microsoft/fast-foundation';
-import { MenuStyles as styles } from './menu.styles';
+import { Menu, menuTemplate as template } from '@microsoft/fast-foundation';
+import { menuStyles as styles } from './menu.styles';
 
 /**
  * The Fluent Menu Element. Implements {@link @microsoft/fast-foundation#Menu},
- * {@link @microsoft/fast-foundation#MenuTemplate}
+ * {@link @microsoft/fast-foundation#menuTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-menu\>
  */
-@customElement({
-  name: 'fluent-menu',
+export const fluentMenu = Menu.compose({
+  baseName: 'menu',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentMenu extends Menu {}
+});
 
 /**
  * Styles for Menu
  * @public
  */
-export const MenuStyles = styles;
+export const menuStyles = styles;
+
+/**
+ * Base class for Menu
+ * @public
+ */
+export { Menu };

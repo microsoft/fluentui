@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Avatar ActiveAnimation story",
-  "packageName": "@fluentui/react-examples",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

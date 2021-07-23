@@ -58,10 +58,10 @@ export function getStyleBucketName(pseudo: string, media: string, support: strin
     return (
       pseudosMap[normalizedPseudo.slice(4, 8)] /* allows to avoid collisions between "focus-visible" & "focus" */ ||
       pseudosMap[normalizedPseudo.slice(3, 5)] ||
-      ''
+      'd'
     );
   }
 
   // Return default bucket
-  return '';
+  return 'd';
 }

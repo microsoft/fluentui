@@ -71,13 +71,13 @@ storiesOf('Accordion', module)
     </Accordion>
   ))
   .addStory('expandIconPosition="end"', () => (
-    <Accordion expandIconPosition="end" index={[0]}>
+    <Accordion index={[0]}>
       <AccordionItem>
-        <AccordionHeader>Opened</AccordionHeader>
+        <AccordionHeader expandIconPosition="end">Opened</AccordionHeader>
         <AccordionPanel>Visible Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
-        <AccordionHeader>Closed</AccordionHeader>
+        <AccordionHeader expandIconPosition="end">Closed</AccordionHeader>
         <AccordionPanel>Hidden Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>

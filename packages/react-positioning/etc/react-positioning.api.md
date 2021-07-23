@@ -75,6 +75,9 @@ export function usePopper(options?: PopperOptions): {
     arrowRef: React_2.MutableRefObject<any>;
 };
 
+// @public
+export const usePopperMouseTarget: (initialState?: PopperJs.VirtualElement | (() => PopperJs.VirtualElement) | undefined) => readonly [PopperJs.VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+
 
 // (No @packageDocumentation comment for this package)
 

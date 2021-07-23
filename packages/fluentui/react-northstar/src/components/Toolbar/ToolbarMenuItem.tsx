@@ -49,6 +49,7 @@ import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicat
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
 import { ToolbarMenuItemContent } from './ToolbarMenuItemContent';
+import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -523,6 +524,6 @@ ToolbarMenuItem.defaultProps = {
   as: 'button',
   accessibility: toolbarMenuItemBehavior,
   activeIndicator: {},
-  submenuIndicator: {},
+  submenuIndicator: <ChevronEndIcon outline />,
   wrapper: { as: 'li' },
 };

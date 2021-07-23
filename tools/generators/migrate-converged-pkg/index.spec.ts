@@ -8,6 +8,7 @@ import {
   readWorkspaceConfiguration,
   updateJson,
   logger,
+  updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson, stringUtils } from '@nrwl/workspace';
 
@@ -82,13 +83,17 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`tsconfig updates`, () => {
+    function getTsConfig(project: ReturnType<typeof readProjectConfiguration>) {
+      return readJson(tree, `${project.root}/tsconfig.json`);
+    }
+    function getBaseTsConfig() {
+      return readJson<TsConfig>(tree, `/tsconfig.base.json`);
+    }
+
     it('should update package local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      function getTsConfig() {
-        return readJson(tree, `${projectConfig.root}/tsconfig.json`);
-      }
 
-      let tsConfig = getTsConfig();
+      let tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -99,7 +104,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      tsConfig = getTsConfig();
+      tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -107,25 +112,43 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['es5', 'dom'],
-          module: 'commonjs',
+          lib: ['ES2015', 'dom'],
+          module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'es5',
-          types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+          target: 'ES2015',
+          types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
       });
     });
 
+    it('should update compilerOptions.types definition for local tsconfig.json', async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      updateJson(tree, `${projectConfig.root}/tsconfig.json`, (json: TsConfig) => {
+        json.compilerOptions.types = ['jest', '@testing-library/jest-dom', 'foo-bar'];
+        return json;
+      });
+
+      await generator(tree, options);
+
+      const tsConfig = getTsConfig(projectConfig);
+
+      expect(tsConfig.compilerOptions.types).toEqual([
+        'jest',
+        'custom-global',
+        'inline-style-expand-shorthand',
+        'storybook__addons',
+        '@testing-library/jest-dom',
+        'foo-bar',
+      ]);
+    });
+
     // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
-      function getBaseTsConfig() {
-        return readJson<TsConfig>(tree, `/tsconfig.base.json`);
-      }
-
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-utilities', dependencies: {} });
@@ -282,7 +305,11 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "import * as rootPreview from '../../../.storybook/preview';
 
-        export const decorators = [...rootPreview.decorators];"
+        /** @type {typeof rootPreview.decorators} */
+        export const decorators = [...rootPreview.decorators];
+
+        /** @type {typeof rootPreview.parameters} */
+        export const parameters = { ...rootPreview.parameters };"
       `);
     });
 
@@ -494,6 +521,7 @@ describe('migrate-converged-pkg generator', () => {
           "start": "just-scripts dev:storybook",
           "start-test": "just-scripts jest-watch",
           "test": "just-scripts test",
+          "test:watch": "just-scripts jest-watch",
           "update-snapshots": "just-scripts jest -u",
         }
       `);
@@ -505,16 +533,26 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${projectConfig.root}/src && yarn docs`,
+        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
-        start: 'storybook',
+        start: 'yarn storybook',
         storybook: 'start-storybook',
         test: 'jest',
       });
+    });
+
+    it(`should create api-extractor.json`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
     });
 
     it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
@@ -529,17 +567,42 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`nx workspace updates`, () => {
-    it(`should set project sourceRoot and add tags to nx.json`, async () => {
+    it(`should set project 'sourceRoot' in workspace.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(undefined);
-      expect(projectConfig.tags).toBe(undefined);
+
       await generator(tree, options);
 
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
+    });
+
+    it(`should set project 'vNext' and 'platform:web' tag in nx.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+      expect(projectConfig.tags).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
+    });
+
+    it(`should update project tags in nx.json if they already exist`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, tags: ['vNext'] });
+      projectConfig = readProjectConfiguration(tree, options.name);
+
       expect(projectConfig.tags).toEqual(['vNext']);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
     });
   });
 
@@ -582,7 +645,8 @@ describe('migrate-converged-pkg generator', () => {
 
 function setupDummyPackage(
   tree: Tree,
-  options: AssertedSchema & Partial<{ version: string; dependencies: Record<string, string> }>,
+  options: AssertedSchema &
+    Partial<{ version: string; dependencies: Record<string, string>; compilerOptions: TsConfig['compilerOptions'] }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
   const defaults = {
@@ -594,6 +658,7 @@ function setupDummyPackage(
       tslib: '^2.1.0',
       someThirdPartyDep: '^11.1.2',
     },
+    compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] },
   };
 
   const normalizedOptions = { ...defaults, ...options };
@@ -616,15 +681,13 @@ function setupDummyPackage(
         start: 'just-scripts dev:storybook',
         'start-test': 'just-scripts jest-watch',
         test: 'just-scripts test',
+        'test:watch': 'just-scripts jest-watch',
         'update-snapshots': 'just-scripts jest -u',
       },
       dependencies: normalizedOptions.dependencies,
     },
     tsConfig: {
-      compilerOptions: {
-        baseUrl: '.',
-        typeRoots: ['../../node_modules/@types', '../../typings'],
-      },
+      compilerOptions: normalizedOptions.compilerOptions,
     },
     jestConfig: stripIndents`
       const { createConfig } = require('@fluentui/scripts/jest/jest-resources');

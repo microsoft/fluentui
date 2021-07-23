@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add no-wrap style to accessibly hidden content to prevent broken screen reader speech output\"",
-  "packageName": "@fluentui/style-utilities",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

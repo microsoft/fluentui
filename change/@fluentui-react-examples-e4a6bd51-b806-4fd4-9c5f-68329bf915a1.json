@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Centralize Storybook story order",
-  "packageName": "@fluentui/react-examples",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "none"
-}

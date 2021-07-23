@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Checkbox Props
  */
-export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface CheckboxProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the checkboxShorthandProps array below
@@ -25,7 +25,8 @@ export type CheckboxDefaultedProps = never; // TODO add names of properties with
 /**
  * State used in rendering Checkbox
  */
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+export interface CheckboxState
+  extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
   /**
    * Ref to the root element
    */

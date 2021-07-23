@@ -77,7 +77,7 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   onHeaderSelect?: () => void;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: IDateFormatting;
 

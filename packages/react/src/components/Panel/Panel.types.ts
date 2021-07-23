@@ -37,7 +37,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * Whether the panel is displayed.
    * If true, will cause panel to stay open even if dismissed.
    * If false, will cause panel to stay hidden.
-   * If undefined, will allow the panel to control its own visility through open/dismiss methods.
+   * If undefined, will allow the panel to control its own visibility through open/dismiss methods.
    * @defaultvalue undefined
    */
   isOpen?: boolean;

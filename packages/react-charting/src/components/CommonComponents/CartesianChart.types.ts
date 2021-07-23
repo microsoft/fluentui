@@ -102,6 +102,11 @@ export interface ICartesianChartStyles {
   calloutContentY?: IStyle;
 
   /**
+   * styles for description message
+   */
+  descriptionMessage?: IStyle;
+
+  /**
    * styles for callout Date time container
    */
   calloutDateTimeContainer?: IStyle;
@@ -384,6 +389,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     color?: string;
     YValue?: string | number;
     XValue?: string;
+    descriptionMessage?: string;
   };
 
   /**

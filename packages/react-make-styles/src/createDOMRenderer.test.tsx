@@ -77,10 +77,11 @@ describe('createDOMRenderer', () => {
 
     const styleElementsAfterHydration = document.querySelectorAll<HTMLStyleElement>('style');
 
+    // We also would to ensure that new elements have not been inserted
+    expect(styleElementsBeforeHydration.length).toBe(styleElementsAfterHydration.length);
+
     insertRules.forEach(insertRule => {
       expect(insertRule).not.toHaveBeenCalled();
     });
-    // We also would to ensure that new elements have not been inserted
-    expect(styleElementsBeforeHydration.length).toBe(styleElementsAfterHydration.length);
   });
 });

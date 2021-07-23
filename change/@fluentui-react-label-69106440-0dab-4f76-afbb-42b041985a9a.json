@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix type of required prop after change to ShorthandProp type definition",
-  "packageName": "@fluentui/react-label",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

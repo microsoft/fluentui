@@ -136,7 +136,6 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
       <IconButton
         className={classNames.closeButton}
         iconProps={{ iconName: 'Cancel' }}
-        title={closeButtonAriaLabel}
         ariaLabel={closeButtonAriaLabel}
         onClick={onDismiss}
       />

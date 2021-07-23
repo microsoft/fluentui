@@ -1,5 +1,4 @@
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
-export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';
 export { dialogVariables as Dialog } from './components/Dialog/dialogVariables';
 export { dividerVariables as Divider } from './components/Divider/dividerVariables';

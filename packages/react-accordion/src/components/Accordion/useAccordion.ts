@@ -1,41 +1,100 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionState } from './Accordion.types';
-import { useCreateAccordionContextValue } from './useAccordionContext';
+import { useControllableState, useDescendantsInit, useEventCallback } from '@fluentui/react-utilities';
+import {
+  AccordionDescendant,
+  AccordionIndex,
+  AccordionProps,
+  AccordionState,
+  AccordionToggleData,
+  AccordionToggleEvent,
+} from './Accordion.types';
 
-/**
- * Const listing which props are shorthand props.
- */
-export const accordionShorthandProps = ['expandIcon', 'button', 'icon'] as const;
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
-
-/**
- * Returns the props and state required to render the component
- * @param props - Accordion properties
- * @param ref - reference to root HTMLElement of Accordion
- * @param defaultProps - default values for the properties of Accordion
- */
 export const useAccordion = (
-  props: AccordionProps,
+  { index, defaultIndex, multiple = false, collapsible = false, onToggle, navigable = false, ...rest }: AccordionProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: AccordionProps,
 ): AccordionState => {
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      collapsible: false,
-      multiple: false,
-      navigable: false,
-    },
-    defaultProps,
-    resolveShorthandProps(props, accordionShorthandProps),
-  );
+  const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
 
-  const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
-  state.context = context;
-  state.descendants = descendants;
-  state.setDescendants = setDescendants;
-  return state;
+  const [openItems, setOpenItems] = useControllableState({
+    state: React.useMemo(() => normalizeIndex(index), [index]),
+    defaultState: () => initializeUncontrolledOpenItems({ collapsible, defaultIndex, multiple }),
+    initialState: [],
+  });
+
+  const requestToggle = useEventCallback((ev: AccordionToggleEvent, data: AccordionToggleData) => {
+    if (descendants[data.index]?.disabled === true) {
+      return;
+    }
+    onToggle?.(ev, data);
+    setOpenItems(previousOpenItems =>
+      updateOpenItems(data.index, previousOpenItems, {
+        collapsible,
+        multiple,
+      }),
+    );
+  });
+
+  return {
+    ...rest,
+    ref,
+    multiple,
+    collapsible,
+    navigable,
+    openItems,
+    requestToggle,
+    descendants,
+    setDescendants,
+  };
 };
+
+/**
+ * Initial value for the uncontrolled case of the list of open indexes
+ */
+function initializeUncontrolledOpenItems({
+  defaultIndex,
+  multiple,
+  collapsible,
+}: Pick<AccordionProps, 'defaultIndex' | 'multiple' | 'collapsible'>): number[] {
+  if (defaultIndex !== undefined) {
+    if (Array.isArray(defaultIndex)) {
+      return multiple ? defaultIndex : [defaultIndex[0]];
+    }
+    return [defaultIndex];
+  }
+  return collapsible ? [] : [0];
+}
+
+/**
+ * Updates the list of open indexes based on an index that changes
+ * @param index - the index that will change
+ * @param previousOpenItems - list of current open indexes
+ * @param param2 - {multiple, collapsible}
+ */
+function updateOpenItems(
+  index: number,
+  previousOpenItems: number[],
+  { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
+) {
+  if (multiple) {
+    if (previousOpenItems.includes(index)) {
+      if (previousOpenItems.length > 1 || collapsible) {
+        return previousOpenItems.filter(i => i !== index);
+      }
+    } else {
+      return [...previousOpenItems, index].sort();
+    }
+  } else {
+    return previousOpenItems[0] === index && collapsible ? [] : [index];
+  }
+  return previousOpenItems;
+}
+
+/**
+ * Normalizes Accordion index into an array of indexes
+ */
+function normalizeIndex(index?: AccordionIndex): number[] | undefined {
+  if (index === undefined) {
+    return undefined;
+  }
+  return Array.isArray(index) ? index : [index];
+}

@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import TreeViewTemplate from './fixtures/tree-view.html';
-import { FluentTreeView } from './';
-
-// Prevent tree-shaking
-FluentTreeView;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Tree View',
 };
 
-export const TreeView = (): string => TreeViewTemplate;
+export const TreeView = () => TreeViewTemplate;

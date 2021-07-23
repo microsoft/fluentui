@@ -38,6 +38,7 @@ exports[`Component Examples renders TagPicker.Inline.Example.tsx correctly 1`] =
       role="presentation"
     >
       <div
+        aria-owns=""
         className=
             ms-BasePicker-text
             {
@@ -109,5 +110,12 @@ exports[`Component Examples renders TagPicker.Inline.Example.tsx correctly 1`] =
       </div>
     </div>
   </div>
+  <div
+    style={
+      Object {
+        "height": "10em",
+      }
+    }
+  />
 </div>
 `;

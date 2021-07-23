@@ -2,14 +2,13 @@ import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
-import { IChartDataPoint, IChartProps } from './index';
+import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
-
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   selectedLegendTitle: string;
@@ -22,6 +21,7 @@ export interface IStackedBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -98,38 +98,41 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetColor: targetData ? targetData.color : '',
       targetRatio,
     });
+
     return (
       <div className={this._classNames.root}>
-        <div className={this._classNames.chartTitle}>
-          {data!.chartTitle && (
-            <div>
-              <strong>{data!.chartTitle}</strong>
-            </div>
-          )}
-          {showRatio && (
-            <div>
-              <span className={this._classNames.ratioNumerator}>
-                {data!.chartData![0].data ? data!.chartData![0].data : 0}
-              </span>
-              {!this.props.hideDenominator && (
-                <span>
-                  /<span className={this._classNames.ratioDenominator}>{total}</span>
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <div className={this._classNames.chartTitle}>
+            {data!.chartTitle && (
+              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+                <strong>{data!.chartTitle}</strong>
+              </div>
+            )}
+            {showRatio && (
+              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+                <span className={this._classNames.ratioNumerator}>
+                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
                 </span>
-              )}
-            </div>
-          )}
-          {showNumber && (
-            <div>
-              <strong>{data!.chartData![0].data}</strong>
-            </div>
-          )}
-        </div>
-        {(benchmarkData || targetData) && (
-          <div className={this._classNames.benchmarkContainer}>
-            {benchmarkData && <div className={this._classNames.benchmark} />}
-            {targetData && <div className={this._classNames.target} />}
+                {!this.props.hideDenominator && (
+                  <span>
+                    /<span className={this._classNames.ratioDenominator}>{total}</span>
+                  </span>
+                )}
+              </div>
+            )}
+            {showNumber && (
+              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+                <strong>{data!.chartData![0].data}</strong>
+              </div>
+            )}
           </div>
-        )}
+          {(benchmarkData || targetData) && (
+            <div className={this._classNames.benchmarkContainer}>
+              {benchmarkData && <div className={this._classNames.benchmark} role="text" />}
+              {targetData && <div className={this._classNames.target} role="text" />}
+            </div>
+          )}
+        </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <svg className={this._classNames.chart}>
@@ -144,16 +147,19 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
                 {...this.props.calloutProps}
+                {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
               >
-                {this.props.onRenderCalloutPerDataPoint ? (
-                  this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-                ) : (
-                  <ChartHoverCard
-                    Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                    YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                    color={this.state.color}
-                  />
-                )}
+                <>
+                  {this.props.onRenderCalloutPerDataPoint ? (
+                    this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+                  ) : (
+                    <ChartHoverCard
+                      Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                      YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                      color={this.state.color}
+                    />
+                  )}
+                </>
               </Callout>
             </svg>
           </div>
@@ -306,6 +312,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             xCalloutValue: point.xAxisCalloutData!,
             yCalloutValue: point.yAxisCalloutData!,
             dataPointCalloutProps: point,
+            callOutAccessibilityData: point.callOutAccessibilityData!,
           });
         }
       });
@@ -395,6 +402,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
+        callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }
   }
@@ -413,5 +421,20 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAccessibleDataObject = (
+    accessibleData?: IAccessibilityProps,
+    role: string = 'text',
+    isDataFocusable: boolean = true,
+  ) => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': isDataFocusable,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
   };
 }

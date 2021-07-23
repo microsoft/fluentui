@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Added accessibility section to DetailsList best practices",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}

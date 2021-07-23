@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
-import Examples from './fixtures/text-area.html';
-import { FluentTextArea } from './';
-
-// Prevent tree-shaking
-FluentTextArea;
-FluentDesignSystemProvider;
+import TextAreaTemplate from './fixtures/text-area.html';
+import './index';
 
 export default {
   title: 'Text Area',
 };
 
-export const TextArea = (): string => Examples;
+export const TextArea = () => TextAreaTemplate;

@@ -22,13 +22,13 @@ Workspace Generator for migrating converged packages to new DX (stage 1)
 ## Usage
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg ...
+yarn nx workspace-generator migrate-converged-pkg ...
 ```
 
 Show what will be generated without writing to disk:
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg --dry-run
+yarn nx workspace-generator migrate-converged-pkg --dry-run
 ```
 
 ### Examples
@@ -36,7 +36,7 @@ yarn nx workspace-generate migrate-converged-pkg --dry-run
 Run migration on package named `@fluentui/example`
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg --name='@fluentui/example'
+yarn nx workspace-generator migrate-converged-pkg --name='@fluentui/example'
 ```
 
 Get migration stats for how many packages have been migrated yet.
@@ -44,7 +44,7 @@ Get migration stats for how many packages have been migrated yet.
 > No actual migration will happen.
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg --stats --no-interactive
+yarn nx workspace-generator migrate-converged-pkg --stats --no-interactive
 ```
 
 ## Options

@@ -1,13 +1,9 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/radio-group.html';
-import { FluentRadioGroup } from './';
 
-// Prevent tree-shaking
-FluentRadioGroup;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
-  title: 'RadioGroup',
+  title: 'Radio Group',
 };
 
-export const RadioGroup = (): string => Examples;
+export const RadioGroup = () => Examples;
