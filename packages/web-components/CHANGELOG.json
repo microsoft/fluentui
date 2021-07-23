@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/web-components_v1.2.3",
+      "version": "1.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove incorrectly added component definition for toolbar",
+            "author": "chhol@microsoft.com",
+            "commit": "77b27c34f19372fc17dd640ce97573d660b1b9df",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/web-components_v1.2.2",
       "version": "1.2.2",

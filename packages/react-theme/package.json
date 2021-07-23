@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.0.0-alpha.17",
+  "version": "9.0.0-alpha.18",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Replace onlyIfTruncated with onBeforeShow event. Add onShow/onHide events. Add TooltipImperativeApi to programatically show/hide tooltip.",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.64",
+      "version": "9.0.0-alpha.64",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix button jump effect on border disparities",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6d8fde315b1bcfe5948f7c309a3ddece1a71c8ff",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Update theme tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Handling children correctly and not as a slot.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e1a39cd66ca28991eac12f63e8129ff24fd4daa8",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.63",
       "version": "9.0.0-alpha.63",

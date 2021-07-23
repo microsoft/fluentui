@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-label",
-  "version": "9.0.0-alpha.19",
+  "version": "9.0.0-alpha.20",
   "description": "Label component for FluentUI library.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.2",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.26",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.27",
     "@fluentui/react-conformance": "^0.4.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -41,8 +41,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.50",
-    "@fluentui/react-utilities": "^9.0.0-alpha.34",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.51",
+    "@fluentui/react-utilities": "^9.0.0-alpha.35",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
