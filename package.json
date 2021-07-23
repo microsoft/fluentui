@@ -97,6 +97,7 @@
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "10.4.9",
     "@testing-library/react-hooks": "5.0.3",
+    "@types/babel__helper-plugin-utils": "7.10.0",
     "@types/copy-webpack-plugin": "6.4.0",
     "@types/enhanced-resolve": "3.0.7",
     "@types/express": "4.17.2",
