@@ -102,6 +102,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
+  setupNpmConfig(tree, options);
+
   updateNxWorkspace(tree, options);
 }
 
@@ -195,6 +197,35 @@ const templates = {
       include: ['../src/**/*', '*.js'],
     },
   },
+  npmIgnoreConfig: stripIndents`
+    .cache/
+    .storybook/
+    .vscode/
+    coverage/
+    src/
+    bundle-size/
+    config/
+    temp/
+    e2e/
+    node_modules/
+    __fixtures__
+    __tests__
+
+    *.log
+    *.yml
+    *.test.*
+    *.spec.*
+    *.stories.*
+    *.api.json
+
+    # config files
+    .git*
+    *rc.*
+    *config.*
+    .eslint*
+    .editorconfig
+    .prettierignore
+  `,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -219,6 +250,7 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
       rootTsconfig: '/tsconfig.base.json',
       rootJestPreset: '/jest.preset.js',
       rootJestConfig: '/jest.config.js',
+      npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
       storybook: {
         tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
         main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
@@ -351,6 +383,12 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
   });
+
+  return tree;
+}
+
+function setupNpmConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
 
   return tree;
 }
