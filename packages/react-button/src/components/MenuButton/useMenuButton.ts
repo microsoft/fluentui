@@ -6,7 +6,7 @@ import { useMenuButtonState } from './useMenuButtonState';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuButtonShorthandPropsCompat: MenuButtonShorthandPropsCompat[] = ['children', 'icon', 'menuIcon'];
+export const menuButtonShorthandPropsCompat: MenuButtonShorthandPropsCompat[] = ['icon', 'menuIcon'];
 
 const mergeProps = makeMergeProps<MenuButtonState>({ deepMerge: menuButtonShorthandPropsCompat });
 
