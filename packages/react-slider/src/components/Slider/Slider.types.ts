@@ -7,23 +7,9 @@ import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from
 export type DragChangeEvent = React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent;
 
 /**
- * Slider public API
- */
-export interface Slider extends HTMLElement {
-  value: number | undefined;
-
-  focus: () => void;
-}
-
-/**
  * Slider Props
  */
 export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /**
-   * The draggable icon used to select a given value from the **Slider**.
-   */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
   /**
    * The **Slider's** base. It is used to visibly display the min and max selectable values.
    */
@@ -33,6 +19,16 @@ export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<
    * The bar showing the current selected area adjacent to the **Slider's** thumb.
    */
   track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * The wrapper for the **Slider's** thumb.
+   */
+  thumbContainer?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * The draggable icon used to select a given value from the **Slider**.
+   */
+  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * CSS class name to attach to the root element.
@@ -88,12 +84,12 @@ export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<
 /**
  * Names of the shorthand properties in SliderProps
  */
-export type SliderShorthandProps = 'thumb' | 'rail' | 'track';
+export type SliderShorthandProps = 'rail' | 'track' | 'thumbContainer' | 'thumb';
 
 /**
  * Names of SliderProps that have a default value in useSlider
  */
-export type SliderDefaultedProps = 'thumb' | 'rail' | 'track';
+export type SliderDefaultedProps = 'rail' | 'track' | 'thumbContainer' | 'thumb';
 
 /**
  * State used in rendering Slider
@@ -102,5 +98,5 @@ export interface SliderState extends ComponentStateCompat<SliderProps, SliderSho
   /**
    * Ref to the root element
    */
-  ref: React.Ref<Slider>;
+  ref: React.Ref<HTMLElement>;
 }

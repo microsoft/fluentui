@@ -3,19 +3,13 @@ import { safeCreate, safeMount } from '@fluentui/test-utilities';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
-import { act } from 'react-dom/test-utils';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('Slider', () => {
   beforeEach(() => {
     resetIds();
   });
-
-  // isConformant({
-  //   Component: Slider,
-  //   displayName: 'Slider',
-  //   disabledTests: ['kebab-aria-attributes'],
-  // });
 
   it('renders Slider correctly', () => {
     safeCreate(<Slider defaultValue={5} />, component => {
@@ -24,13 +18,19 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles (id) prop', () => {
+  isConformant({
+    Component: Slider,
+    displayName: 'Slider',
+    disabledTests: ['kebab-aria-attributes'],
+  });
+
+  it('handles (id) prop', () => {
     safeMount(<Slider id="test_id" />, component => {
       expect(component.find('.ms-Slider-root').getDOMNode().id).toEqual('test_id');
     });
   });
 
-  it('correctly applies the (defaultValue) prop', () => {
+  it('applies the (defaultValue) prop', () => {
     let sliderRef: any;
 
     const SliderTestComponent = () => {
@@ -44,7 +44,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly applies the (value) prop', () => {
+  it('applies the (value) prop', () => {
     let sliderRef: any;
 
     const SliderTestComponent = () => {
@@ -58,7 +58,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles an initial (defaultValue) that is out of bounds', () => {
+  it('clamps an initial (defaultValue) that is out of bounds', () => {
     let sliderRef: any;
 
     const SliderTestComponent = () => {
@@ -72,21 +72,21 @@ describe('Slider', () => {
     });
   });
 
-  // it('correctly handles an initial (value) that is out of bounds', () => {
-  //   let sliderRef: any;
+  it('clamps an initial (value) that is out of bounds', () => {
+    let sliderRef: any;
 
-  //   const SliderTestComponent = () => {
-  //     sliderRef = React.useRef(null);
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
 
-  //     return <Slider value={-10} min={0} max={100} ref={sliderRef} />;
-  //   };
+      return <Slider value={-10} min={0} max={100} ref={sliderRef} />;
+    };
 
-  //   safeMount(<SliderTestComponent />, component => {
-  //     expect(sliderRef.current.value).toEqual(0);
-  //   });
-  // });
+    safeMount(<SliderTestComponent />, component => {
+      expect(sliderRef.current.value).toEqual(0);
+    });
+  });
 
-  it('correctly calls (onChange) when the mouse is moved', () => {
+  it('calls (onChange) when the mouse is moved', () => {
     let sliderRef: any;
     const onChange = jest.fn();
 
@@ -113,7 +113,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly slides to (min/max) and executes onChange', () => {
+  it('slides to (min/max) and executes onChange', () => {
     let sliderRef: any;
     const onChange = jest.fn();
 
@@ -145,7 +145,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles (keydown) events', () => {
+  it('handles (keydown) events', () => {
     let sliderRef: any;
     const onChange = jest.fn();
 
@@ -234,7 +234,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles a negative (step) prop', () => {
+  it('handles a negative (step) prop', () => {
     let sliderRef: any;
 
     const SliderTestComponent = () => {
@@ -251,7 +251,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles a decimal (step) prop', () => {
+  it('handles a decimal (step) prop', () => {
     let sliderRef: any;
 
     const SliderTestComponent = () => {
@@ -268,7 +268,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly handles (role) prop', () => {
+  it('handles (role) prop', () => {
     safeMount(<Slider role="test" />, component => {
       const sliderRole = component.find('.ms-Slider-root').prop('role');
 
@@ -276,7 +276,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly applies Slider (role) to thumb', () => {
+  it('applies Slider (role) to thumb', () => {
     safeMount(<Slider />, component => {
       const thumbRole = component.find('.ms-Slider-thumb').prop('role');
 
@@ -284,7 +284,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly applies (aria-valuetext)', () => {
+  it('applies (aria-valuetext)', () => {
     safeMount(<Slider />, component => {
       const sliderThumb = component.find('.ms-Slider-thumb').prop('aria-valuetext');
 
@@ -302,7 +302,7 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly applies (aria-valuenow)', () => {
+  it('applies (aria-valuenow)', () => {
     safeMount(<Slider defaultValue={3} />, component => {
       const sliderRail = component.find('.ms-Slider-rail');
 
@@ -319,19 +319,19 @@ describe('Slider', () => {
     });
   });
 
-  it('correctly applies (aria-valuemax)', () => {
+  it('applies (aria-valuemax)', () => {
     safeMount(<Slider max={3} />, component => {
       expect(component.find('.ms-Slider-thumb').prop('aria-valuemax')).toEqual(3);
     });
   });
 
-  it('correctly applies (aria-valuemax)', () => {
+  it('applies (aria-valuemin)', () => {
     safeMount(<Slider min={-1} />, component => {
       expect(component.find('.ms-Slider-thumb').prop('aria-valuemin')).toEqual(-1);
     });
   });
 
-  it('correctly handles (onKeyDown) callback', () => {
+  it('handles (onKeyDown) callback', () => {
     const eventHandler = jest.fn();
 
     safeMount(<Slider role="test" onKeyDown={eventHandler} />, component => {

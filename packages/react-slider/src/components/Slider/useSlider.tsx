@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
-import { useMount } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useId, useControllableValue } from '@fluentui/react-utilities';
 import {
   getCode,
   ArrowDownKey,
@@ -12,18 +11,22 @@ import {
   HomeKey,
   EndKey,
 } from '@fluentui/keyboard-key';
+import { useMount, useConst } from '@fluentui/react-hooks';
 import { on } from '@fluentui/utilities';
-import { Slider, SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
+import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
 import { clamp } from './utils/clamp';
 import { getPercent } from './utils/getPercent';
-import { getSlotStyles } from './utils/getSlotStyles';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = ['thumb', 'rail', 'track'];
+export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumbContainer', 'thumb'];
 
 const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
+
+interface SliderInternalState {
+  thumbSize: number;
+}
 
 /**
  * Create the state required to render Slider.
@@ -38,15 +41,20 @@ const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps
 export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
   const { as = 'div', value, defaultValue = 0, min = 0, max = 10, step = 1, ariaValueText, onChange } = props;
 
-  const [currentValue, setCurrentValue] = useControllableValue(
-    value,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [currentValue, setCurrentValue] = useControllableValue<any, any, any>(
+    value && clamp(value, min, max),
     clamp(defaultValue, min, max),
-    (ev: DragChangeEvent, val: number) => onChange?.(val, ev),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (ev: any, val: number) => onChange?.(val, ev),
   );
 
-  const railRef = React.useRef<HTMLElement>(null);
-  const thumbRef = React.useRef(null);
+  const railRef = React.useRef<HTMLDivElement>(null);
+  const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
+  const internalState = useConst<SliderInternalState>({
+    thumbSize: 20,
+  });
   const id = useId('Slider', props.id);
 
   /**
@@ -164,37 +172,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     [currentValue, max, min, step, updateValue],
   );
 
-  React.useImperativeHandle(
-    ref,
-    () => ({
-      get value() {
-        return currentValue;
-      },
-      focus() {
-        if (thumbRef.current) {
-          thumbRef.current.focus();
-        }
-      },
-    }),
-    [currentValue, thumbRef],
-  );
-
-  // console.log(ref?.current?.value);
-
-  // If value is provided, ensure that is initially clamped onMount.
-  useMount(() => {
-    if (value) {
-      const clampedValue = clamp(value, min, max);
-      if (clampedValue !== value) {
-        setCurrentValue(clampedValue);
-      }
-    }
-  });
-
   const valuePercent = getPercent(currentValue, min, max);
-
-  const getPositionStyles = getSlotStyles('left');
-  const getTrackStyles = getSlotStyles('width');
+  const positionStyles = { transform: `translateX(${valuePercent}%)` };
+  const trackStyles = { transform: `scaleX(.${valuePercent})` };
 
   const rootProps: Partial<SliderState> = {
     className: 'ms-Slider-root',
@@ -211,12 +191,12 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-track',
-    style: getTrackStyles(valuePercent),
+    style: trackStyles,
   };
 
   const thumbProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: 'ms-Slider-thumb',
-    style: getPositionStyles(valuePercent),
+    // style: positionStyles,
     ref: thumbRef,
     tabIndex: 0,
     role: 'slider',
@@ -226,12 +206,35 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
   };
 
+  useMount(() => {
+    internalState.thumbSize = thumbRef?.current!.getBoundingClientRect().width;
+  });
+
+  const thumbContainerProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+    className: 'ms-Slider-thumbContainer',
+    style: {
+      position: 'absolute',
+      // backgroundColor: 'red',
+      // opacity: '0.5',
+      left: internalState.thumbSize / 2,
+      right: internalState.thumbSize / 2,
+      // bottom: 0,
+      // height: 4,
+      transform: `translateX(${valuePercent}%)`,
+    },
+  };
+
   const state = mergeProps(
     {
       ref,
       as: as,
       track: { as: 'div', children: null, ...trackProps },
       rail: { as: 'div', children: null, ...railProps },
+      thumbContainer: {
+        as: 'div',
+        children: null,
+        ...thumbContainerProps,
+      },
       thumb: { as: 'div', children: null, ...thumbProps },
       ...rootProps,
     },
@@ -241,3 +244,18 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   return state;
 };
+
+// React.useImperativeHandle(
+//   ref,
+//   () => ({
+//     get value() {
+//       return currentValue;
+//     },
+//     focus() {
+//       if (thumbRef.current) {
+//         thumbRef.current.focus();
+//       }
+//     },
+//   }),
+//   [currentValue, thumbRef],
+// );

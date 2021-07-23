@@ -85,11 +85,6 @@ const useRailStyles = makeStyles({
       border: '1px solid WindowText',
     },
   }),
-
-  vertical: theme => ({
-    height: '120px',
-    width: '4px',
-  }),
 });
 
 /**
@@ -99,25 +94,8 @@ const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     height: '4px',
-    paddingRight: '2px', // Patches a minor gap between the rounded corners of the track and thumb
     background: '#606060',
     borderRadius: '4px 0px 0px 4px',
-
-    [HighContrastSelector]: {
-      background: 'Highlight',
-    },
-  }),
-
-  vertical: theme => ({
-    width: '4px',
-    borderRadius: '0px 0px 4px 4px',
-    paddingRight: '0px',
-    paddingTop: '3px', // Patches a minor gap between the rounded corners of the track and thumb
-  }),
-
-  disabled: theme => ({
-    // Still being worked on.
-    background: 'red',
 
     [HighContrastSelector]: {
       background: 'Highlight',
@@ -128,25 +106,27 @@ const useTrackStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
+const useThumbContainerStyles = makeStyles({
+  thumbContainer: theme => ({
+    // left: 10,
+    // right: 10,
+    // bottom: 0,
+  }),
+});
+
+/**
+ * Styles for the thumb slot
+ */
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
+    transformBox: 'fill-box',
     flex: '1',
     width: '20px',
     height: '20px',
     background: '#606060',
     borderRadius: '50%',
-    overflow: 'visible',
-    // Doesn't work on Safari
-
-    [HighContrastSelector]: {
-      background: 'Highlight',
-    },
-  }),
-
-  disabled: theme => ({
-    // Theme still being worked on.
-    background: 'red',
+    transform: 'translate(-50%, -50%)',
     [HighContrastSelector]: {
       background: 'Highlight',
     },
@@ -172,6 +152,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackStyles = useTrackStyles();
   const thumbStyles = useThumbStyles();
+  const thumbContainerStyles = useThumbContainerStyles();
 
   state.className = mergeClasses(
     rootStyles.root,
@@ -183,18 +164,11 @@ export const useSliderStyles = (state: SliderState): SliderState => {
 
   state.rail.className = mergeClasses(railStyles.rail, state.rail.className);
 
-  state.track.className = mergeClasses(
-    trackStyles.track,
+  state.track.className = mergeClasses(trackStyles.track, state.track.className);
 
-    state.track.className,
-  );
+  state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
 
-  state.thumb.className = mergeClasses(
-    thumbStyles.thumb,
-    thumbStyles.focusIndicator,
-
-    state.thumb.className,
-  );
+  state.thumbContainer.className = mergeClasses(thumbContainerStyles.thumbContainer, state.thumbContainer.className);
 
   return state;
 };
