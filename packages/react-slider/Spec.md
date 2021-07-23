@@ -10,7 +10,7 @@ https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen++is%3A+Compo
 
 ## Background
 
-The Slider component allows users to quickly select a value (or range) by dragging an icon across a bar. It is often used when setting values with a relaxed precision such as audio volume and screen brightness.
+The Slider component allows users to quickly select a value by dragging an icon across a bar. It is often used when setting values with a relaxed precision such as audio volume and screen brightness.
 
 ## Prior Art
 
@@ -32,11 +32,7 @@ https://open-ui.org/components/slider.research
 // Slider can be controlled
 <Slider value={3} />
 
-// The value can be an array for range slider scenarios
-<Slider value={[3, 2]} />
-<Slider defaultValue={[3, 2]} />
-
-// Marks can be a boolean (default marks)
+// Marks can be a Boolean (default marks)
 <Slider marks />
 
 // Marks can be a number array (specific marks)
@@ -75,8 +71,8 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 | Name         | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                                                                                  |
 | ------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| defaultValue | &check;                                                                                 | &check;                                                                               | For **Ranged Sliders** `defaultValue` accepts accepts an array for the `[leftThumb, rightThumb]`.                                                                            |
-| value        | &check;                                                                                 | &check;                                                                               | The current value of the `controlled` **Slider**. For **Ranged Sliders** `value` accepts accepts an array for the `[leftThumb, rightThumb]`.                                 |
+| defaultValue | &check;                                                                                 | &check;                                                                               |                                                                                                                                                                              |
+| value        | &check;                                                                                 | &check;                                                                               | The current value of the `controlled` **Slider**.                                                                                                                            |
 | origin       | x                                                                                       | x                                                                                     | The starting origin point for the **Slider**. @defaultValue (renders at 0)                                                                                                   |
 | min          | &check;                                                                                 | &check;                                                                               | The min value of the **Slider**.                                                                                                                                             |
 | max          | &check;                                                                                 | &check;                                                                               | The max value of the **Slider**.                                                                                                                                             |
@@ -117,17 +113,17 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
 
-| Name              | Description                                                                                                                                            | Reason                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| ariaLabel         | A description of the Slider for the benefit of screen readers.                                                                                         | Will be replaced by aria-label                                                               |
-| defaultLowerValue | The lower default value of the uncontrolled ranged slider.                                                                                             | defaultValue will accept an array for the left and right values in ranged scenarios.         |
-| lowerValue        | The lower value of the controlled ranged slider.                                                                                                       | Value will accept an array for the left and right values in ranged scenarios.                |
-| showValue         | Whether to show the value on the right of the Slider.                                                                                                  | Renamed to showValueLabel                                                                    |
-| onChanged         | Callback on mouse up, touch end, or after key presses have stopped.                                                                                    | Replaced with onChange                                                                       |
-| buttonProps       | Additional props for the actual `role="slider"` (slider box) element. (Note that this element is not actually a button in the current implementation.) | Personally not sure if it is essential but up for discussion                                 |
-| valueFormat       | Custom formatter for the slider value. value                                                                                                           | Label will handle custom formats                                                             |
-| originFromZero    | Whether to attach the origin of slider to zero. Helpful when the range include negatives. @defaultvalue false                                          | Replaced with origin to allow for more control over the component.                           |
-| ranged            | Whether to render a **Ranged Slider**. Ranged Sliders display two `thumbs` that allow for lower and upper bounds to be easily selected.                | Ranged is enabled when a value or defaultValue pass an array with a left and right position. |
+| Name              | Description                                                                                                                                            | Reason                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| ariaLabel         | A description of the Slider for the benefit of screen readers.                                                                                         | Will be replaced by aria-label                                                       |
+| defaultLowerValue | The lower default value of the uncontrolled ranged slider.                                                                                             | The Ranged Slider's defaultValue will accept an array for the left and right values. |
+| lowerValue        | The lower value of the controlled ranged slider.                                                                                                       | The Ranged Slider's value will accept an array for the left and right values.        |
+| showValue         | Whether to show the value on the right of the Slider.                                                                                                  | Renamed to showValueLabel                                                            |
+| onChanged         | Callback on mouse up, touch end, or after key presses have stopped.                                                                                    | Replaced with onChange                                                               |
+| buttonProps       | Additional props for the actual `role="slider"` (slider box) element. (Note that this element is not actually a button in the current implementation.) | Unsure if it is an essential API feature.                                            |
+| valueFormat       | Custom formatter for the slider value. value                                                                                                           | Label will handle custom formats                                                     |
+| originFromZero    | Whether to attach the origin of slider to zero. Helpful when the range include negatives. @defaultvalue false                                          | Replaced with origin to allow for more control over the component.                   |
+| ranged            | Whether to render a **Ranged Slider**. Ranged Sliders display two `thumbs` that allow for lower and upper bounds to be easily selected.                | Ranged will be separated into a different component.                                 |
 
 ## Structure
 
@@ -182,7 +178,7 @@ _Explain how the component will behave in use, including:_
 - _Component States_
 
   - **Disabled**
-    - When disabled, all touch and mouse events are ignored and the Slider's value never updates.
+    - When disabled, all touch and mouse events are ignored, and the Slider's value never updates.
     - Allows focus but is read only. This helps quickly reveal information to blind users why the slider is disabled without needing to scan the entire page. `aria-disabled` is used instead of `disabled.`
   - **Focused**
     - Focus indicators only appear when keyboard tabbing/directional keystrokes and disappears when the mosue/touch interactions occur.
