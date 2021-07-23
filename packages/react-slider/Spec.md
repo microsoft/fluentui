@@ -30,17 +30,17 @@ https://open-ui.org/components/slider.research
 <Slider defaultValue={3} />
 
 // Slider can be controlled
-<Slider value={ 3 } />
+<Slider value={3} />
 
 // The value can be an array for range slider scenarios
-<Slider value={ [3, 2] } />
-<Slider defaultValue={ [3, 2] } />
+<Slider value={[3, 2]} />
+<Slider defaultValue={[3, 2]} />
 
 // Marks can be a boolean (default marks)
 <Slider marks />
 
 // Marks can be a number array (specific marks)
-<Slider marks={ [ 2, 5 ] } />
+<Slider marks={[2, 5]} />
 
 // Marks can be an array of mark definitions
 <Slider
