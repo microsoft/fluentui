@@ -58,7 +58,7 @@ https://open-ui.org/components/slider.research
 
 - `vertical` displayed vertically.
 - `fluid` takes up the entire width of the container.
-- `disabled` read-only and doesn't update state.
+- `disabled` read-only and does not update state.
 
 ## API
 
