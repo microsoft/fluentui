@@ -16,6 +16,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
       margin: 0,
       padding: 0,
       color: v.color,
+      boxShadow: siteVariables.shadow16,
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
 
