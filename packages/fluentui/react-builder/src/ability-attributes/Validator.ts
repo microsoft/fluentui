@@ -25,7 +25,7 @@ interface HTMLElementWithValidatorId extends HTMLElement {
 
 type GetClass = (name: string) => AttributeSchemaClass | undefined;
 
-let _error: ErrorReporter;
+let _errorReporter: ErrorReporter;
 let _getClass: GetClass;
 let _jsConstraints: JSConstraints;
 let _assumeClass: AssumeClass;
@@ -110,7 +110,7 @@ function validate(element: HTMLElementWithValidatorId) {
       return;
     }
   } catch (e) {
-    error = e instanceof AbilityAttributesError ? e : new Errors.ValidationFailedError();
+    error = e;
   }
 
   if (!error && a && a.getConstraints) {
@@ -140,9 +140,9 @@ function validate(element: HTMLElementWithValidatorId) {
   }
 
   if (error) {
-    _error.report(element, error);
+    _errorReporter.report(element, error);
   } else {
-    _error.remove(element);
+    _errorReporter.remove(element);
   }
 }
 
@@ -160,7 +160,7 @@ function queryXPath(element: HTMLElement, xpath: string): boolean {
   try {
     return document.evaluate(xpath, element, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;
   } catch (e) {
-    _error.report(element, new Errors.XPathExpressionFailedError(xpath, e.message));
+    _errorReporter.report(element, new Errors.XPathExpressionFailedError(xpath, e.message));
     return true;
   }
 }
@@ -197,7 +197,7 @@ export function setup(
     return;
   }
 
-  _error = error;
+  _errorReporter = error;
   _getClass = getClass;
   _jsConstraints = jsConstraints;
   _enforceClasses = enforceClasses;
@@ -252,7 +252,7 @@ export function setup(
       _removeQueue = {};
       _validatorQueue = {};
 
-      toRemove.forEach(e => _error.remove(e));
+      toRemove.forEach(e => _errorReporter.remove(e));
       toValidate.filter(e => win.document.contains(e)).map(validate);
     }, 100);
 
