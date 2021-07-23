@@ -46,14 +46,18 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
   target?: HTMLElement | PopperVirtualElement | null;
 
   /**
-   * Color variant with a subtle look
+   * Color variant with inverted colors
+   *
+   * @defaultvalue false
    */
-  subtle?: boolean;
+  inverted?: boolean;
 
   /**
-   * Do not render an arrow pointing to the target element
+   * Render an arrow pointing to the target element
+   *
+   * @defaultvalue false
    */
-  noArrow?: boolean;
+  pointing?: boolean;
 
   /**
    * Distance between the tooltip and the target element, in pixels
