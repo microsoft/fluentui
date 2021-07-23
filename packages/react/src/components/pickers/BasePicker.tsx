@@ -4,6 +4,7 @@ import {
   KeyCodes,
   css,
   elementContains,
+  format,
   getId,
   classNamesFunction,
   styled,
@@ -885,26 +886,33 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 
-  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly) {
-    const { enableSelectedSuggestionAlert, suggestionRemovedText = 'removed' } = this.props;
-    let selectedSuggestionAlertText = '';
-    let removedItemText = '';
-
-    if (enableSelectedSuggestionAlert) {
-      const currentIndex = this.suggestionStore.currentIndex;
+  protected getSuggestionsAlert(suggestionAlertClassName: string = legacyStyles.screenReaderOnly) {
+    const currentIndex = this.suggestionStore.currentIndex;
+    if (this.props.enableSelectedSuggestionAlert) {
       const selectedSuggestion =
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
-      selectedSuggestionAlertText =
-        selectedSuggestion && selectedSuggestion.ariaLabel ? selectedSuggestion.ariaLabel : '';
+      const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+      // keeping the id/className here for legacy support
+      return (
+        <div id={this._ariaMap.selectedSuggestionAlert} className={suggestionAlertClassName}>
+          {`${selectedSuggestionAlertText} `}
+        </div>
+      );
     }
+  }
+
+  protected renderCustomAlert(alertClassName: string = legacyStyles.screenReaderOnly) {
+    const { suggestionRemovedText = 'removed {0}' } = this.props;
+    let removedItemText = '';
 
     if (this.state.selectionRemoved) {
-      removedItemText = `${suggestionRemovedText} ${this._getTextFromItem(this.state.selectionRemoved, '')}`;
+      const itemName = this._getTextFromItem(this.state.selectionRemoved, '');
+      removedItemText = format(suggestionRemovedText, itemName);
     }
 
     return (
       <div className={alertClassName} id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
-        {`${selectedSuggestionAlertText} `}
+        {this.getSuggestionsAlert(alertClassName)}
         {removedItemText}
       </div>
     );

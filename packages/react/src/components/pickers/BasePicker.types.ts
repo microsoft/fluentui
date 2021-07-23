@@ -175,7 +175,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * The text that will be announced when a suggestion is removed. A default value is only provided for English.
-   * @default "removed"
+   * @default "removed {0}"
    */
   suggestionRemovedText?: string;
 
