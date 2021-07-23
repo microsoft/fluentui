@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Migrate to useControllableState hook",
+  "packageName": "@fluentui/react-accordion",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
