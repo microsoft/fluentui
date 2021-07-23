@@ -1,5 +1,7 @@
 # @fluentui/react-text
 
+> WIP 🚧 - These are not production-ready components as we are still in a Beta phase.
+
 <!-- TODO: Add link to the new website -->
 
 The Text component exists to ensure consistency in your application's content by setting fixed sizes and other styles.
@@ -95,7 +97,3 @@ For more information about the components, please refer to the [API documentatio
 ## Migration
 
 For migration information, have a look at the [migration guide](./MIGRATION.md).
-
-## WIP 🚧
-
-These are not production-ready components as we are still in a Beta phase. This space is useful for testing new components whose APIs might change before final release.
