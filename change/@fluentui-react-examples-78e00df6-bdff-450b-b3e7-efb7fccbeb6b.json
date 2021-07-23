@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Avatar examples to fluent icons",
-  "packageName": "@fluentui/react-examples",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -27,7 +27,7 @@ export interface AvatarProps extends ComponentPropsCompat, React_2.HTMLAttribute
     badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     getInitials?: (name: string, isRtl: boolean) => string;
-    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    icon?: React_2.ReactElement;
     idForColor?: string;
     image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
     label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
@@ -58,7 +58,6 @@ export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>, defa
 
 // @public (undocumented)
 export const useAvatarStyles: (state: AvatarState) => AvatarState;
-
 
 // (No @packageDocumentation comment for this package)
 

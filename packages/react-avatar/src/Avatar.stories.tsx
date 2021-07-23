@@ -3,7 +3,7 @@ import { StoryExample } from './StoryExample.stories';
 import { AvatarExamples as examples } from './AvatarExamples.stories';
 import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from './index';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { People20Regular, PersonCall20Regular } from '@fluentui/react-icons';
+import { People20Regular, Guest20Regular, Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
 
 /**
  * Temporary workaround for Buttons
@@ -17,56 +17,73 @@ const Button: React.FC<{ value?: string | number; onClick: React.MouseEventHandl
   );
 };
 
-export const Basic = () => (
-  <>
-    <StoryExample title="Simple examples">
-      <Avatar />
-      <Avatar name={examples.name[0]} />
-      <Avatar size={40} icon={<Guest20Regular />} />
-      <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
-    </StoryExample>
-    <StoryExample title="Square">
-      <Avatar square name="Group" />
-      <Avatar square icon={<People20Regular />} />
-    </StoryExample>
-    <StoryExample title="Badges">
-      <Avatar name={examples.name[1]} badge="available" />
-      <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
-      <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
-    </StoryExample>
-    <StoryExample title="Size">
-      <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
-      <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
-      <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
-    </StoryExample>
-    <StoryExample title="Brand color">
-      <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
-      <Avatar color="brand" badge="available" />
-    </StoryExample>
-    <StoryExample title="Colorful">
-      <Avatar color="colorful" name={examples.name[13]} />
-      <Avatar color="colorful" name={examples.name[14]} />
-      <Avatar color="colorful" name={examples.name[15]} />
-      <Avatar color="colorful" name={examples.name[16]} />
-      <Avatar color="colorful" name={examples.name[17]} />
-      <Avatar color="colorful" idForColor={examples.name[18]} />
-      <Avatar color="colorful" idForColor={examples.name[19]} />
-      <Avatar color="colorful" idForColor={examples.name[20]} />
-      <Avatar color="colorful" idForColor={examples.name[21]} />
-      <Avatar color="colorful" idForColor={examples.name[22]} />
-    </StoryExample>
-    <StoryExample title="Active/inactive">
-      <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
-        <Avatar name={examples.name[7]} active="active" />
-        <Avatar image={examples.image[8]} active="active" activeDisplay="shadow" />
-        <Avatar image={examples.image[9]} active="active" activeDisplay="glow" />
-        <Avatar image={examples.image[10]} active="active" activeDisplay="ring-shadow" />
-        <Avatar image={examples.image[11]} active="active" activeDisplay="ring-glow" />
-        <Avatar image={examples.image[12]} active="inactive" />
-      </Stack>
-    </StoryExample>
-  </>
-);
+const useFlexStyles = makeStyles({
+  root: {},
+  stack: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  flex: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: '16px',
+  },
+});
+
+export const Basic = () => {
+  const styles = useFlexStyles();
+  return (
+    <>
+      <StoryExample title="Simple examples">
+        <Avatar />
+        <Avatar name={examples.name[0]} />
+        <Avatar size={40} icon={<Guest20Regular />} />
+        <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
+      </StoryExample>
+      <StoryExample title="Square">
+        <Avatar square name="Group" />
+        <Avatar square icon={<People20Regular />} />
+      </StoryExample>
+      <StoryExample title="Badges">
+        <Avatar name={examples.name[1]} badge="available" />
+        <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
+        <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
+      </StoryExample>
+      <StoryExample title="Size">
+        <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
+        <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
+        <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
+      </StoryExample>
+      <StoryExample title="Brand color">
+        <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
+        <Avatar color="brand" badge="available" />
+      </StoryExample>
+      <StoryExample title="Colorful">
+        <Avatar color="colorful" name={examples.name[13]} />
+        <Avatar color="colorful" name={examples.name[14]} />
+        <Avatar color="colorful" name={examples.name[15]} />
+        <Avatar color="colorful" name={examples.name[16]} />
+        <Avatar color="colorful" name={examples.name[17]} />
+        <Avatar color="colorful" idForColor={examples.name[18]} />
+        <Avatar color="colorful" idForColor={examples.name[19]} />
+        <Avatar color="colorful" idForColor={examples.name[20]} />
+        <Avatar color="colorful" idForColor={examples.name[21]} />
+        <Avatar color="colorful" idForColor={examples.name[22]} />
+      </StoryExample>
+      <StoryExample title="Active/inactive">
+        <div className={styles.flex}>
+          <Avatar name={examples.name[7]} active="active" />
+          <Avatar image={examples.image[8]} active="active" activeDisplay="shadow" />
+          <Avatar image={examples.image[9]} active="active" activeDisplay="glow" />
+          <Avatar image={examples.image[10]} active="active" activeDisplay="ring-shadow" />
+          <Avatar image={examples.image[11]} active="active" activeDisplay="ring-glow" />
+          <Avatar image={examples.image[12]} active="inactive" />
+        </div>
+      </StoryExample>
+    </>
+  );
+};
 
 export const AllSizes = () => (
   <>
@@ -155,7 +172,6 @@ export const ActiveAnimation = () => {
           size={size}
           active={active ? 'active' : 'inactive'}
           activeDisplay={activeDisplay}
-          name={examples.name[10]}
           name={display === 'label' ? examples.name[10] : undefined}
           image={display === 'image' ? examples.image[10] : undefined}
         />
@@ -229,32 +245,10 @@ const useRobotAvatarStyles = makeStyles({
   },
 });
 
-const useIconSizeStyles = makeStyles({
-  16: { width: '16px', height: '16px' },
-  20: { width: '20px', height: '20px' },
-  24: { width: '24px', height: '24px' },
-  32: { width: '32px', height: '32px' },
-  48: { width: '48px', height: '48px' },
-});
-
 const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
   const { size = 32 } = props;
-  const iconSizeStyles = useIconSizeStyles();
 
-  let icon;
-  if (size <= 24) {
-    icon = <Bot20Regular className={iconSizeStyles[16]} />;
-  } else if (size <= 40) {
-    icon = <Bot20Regular />;
-  } else if (size <= 48) {
-    icon = <Bot24Regular />;
-  } else if (size <= 56) {
-    icon = <Bot24Regular className={iconSizeStyles[28]} />;
-  } else if (size <= 72) {
-    icon = <Bot24Regular className={iconSizeStyles[32]} />;
-  } else {
-    icon = <Bot24Regular className={iconSizeStyles[48]} />;
-  }
+  const icon = size <= 40 ? <Bot20Regular /> : <Bot24Regular />;
 
   const state = useAvatar(props, ref, { icon });
   const styles = useRobotAvatarStyles();
@@ -272,12 +266,9 @@ export const RobotExample = () => {
   return (
     <StoryExample title="Robot Example">
       <div className={flexStyles.flex}>
-        <RobotAvatar size={20} />
         <RobotAvatar size={32} />
         <RobotAvatar size={48} />
         <RobotAvatar size={64} />
-        <RobotAvatar size={96} />
-        <RobotAvatar size={128} />
       </div>
     </StoryExample>
   );
