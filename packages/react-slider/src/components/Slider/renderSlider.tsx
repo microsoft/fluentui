@@ -13,7 +13,9 @@ export const renderSlider = (state: SliderState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.rail {...slotProps.rail} />
-      <slots.track {...slotProps.track} />
+      <slots.trackContainer {...slotProps.trackContainer}>
+        <slots.track {...slotProps.track} />
+      </slots.trackContainer>
       <slots.activeRail {...slotProps.activeRail} />
       {/* <div
         style={{

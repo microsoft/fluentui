@@ -27,7 +27,14 @@ import { observeResize } from './observeResize';
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumbContainer', 'thumb', 'activeRail'];
+export const sliderShorthandProps: SliderShorthandProps[] = [
+  'rail',
+  'trackContainer',
+  'track',
+  'thumbContainer',
+  'thumb',
+  'activeRail',
+];
 
 const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
 
@@ -185,15 +192,23 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   );
 
   const valuePercent = getPercent(currentValue, min, max);
+
   const positionStyles = {
     left: internalState.thumbSize / 2,
     right: internalState.thumbSize / 2,
   };
+
   const thumbStyles = {
     transform: `translateX(${valuePercent}%)`,
     ...positionStyles,
   };
-  const trackStyles = { width: `${valuePercent}%` };
+
+  const trackContainerStyles = {
+    transform: `scaleX(${valuePercent}%)`,
+    ...positionStyles,
+  };
+
+  // const trackStyles = { width: `${valuePercent}%` };
 
   const rootProps: Partial<SliderState> = {
     className: 'ms-Slider-root',
@@ -211,6 +226,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     className: 'ms-Slider-activeRail',
     ref: railRef,
     style: positionStyles,
+  };
+
+  const trackContainerProps: React.HTMLAttributes<HTMLDivElement> = {
+    className: 'ms-Slider-trackContainer',
+    style: trackContainerStyles,
   };
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
@@ -246,9 +266,10 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     {
       ref,
       as: as,
-      track: { as: 'div', children: null, ...trackProps },
       rail: { as: 'div', children: null, ...railProps },
       activeRail: { as: 'div', children: null, ...activeRailProps },
+      track: { as: 'div', children: null, ...trackProps },
+      trackContainer: { as: 'div', children: null, ...trackContainerProps },
       thumbContainer: {
         as: 'div',
         children: null,

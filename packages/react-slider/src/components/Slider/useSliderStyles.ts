@@ -102,7 +102,7 @@ const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     height: '4px',
-    minWidth: '20px',
+    minWidth: '10px',
     background: '#606060',
     borderRadius: '4px',
 
