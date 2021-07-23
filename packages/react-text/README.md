@@ -68,7 +68,7 @@ As you can see, using the `Display` wrapper is a lot easier to read and provides
 
 ## Semantic elements
 
-By default, Text and all the typography wrappers render a `<span>` by default. You should use the `as` property to ensure your page has proper semantic elements such as heading or paragraph elements.
+By default, Text and all the typography wrappers render a `<span>` element. You should use the `as` property to ensure your page has proper semantic elements such as heading or paragraph elements.
 
 ```html
 <div>
