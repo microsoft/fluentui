@@ -886,6 +886,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 
+  /** @deprecated use renderCustomAlert instead */
   protected getSuggestionsAlert(suggestionAlertClassName: string = legacyStyles.screenReaderOnly) {
     const currentIndex = this.suggestionStore.currentIndex;
     if (this.props.enableSelectedSuggestionAlert) {

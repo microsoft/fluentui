@@ -314,6 +314,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
+    // @deprecated (undocumented)
+    protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
     // (undocumented)
