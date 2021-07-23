@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
-import { Callout } from './Callout';
-import { CalloutContent } from './CalloutContent';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { safeCreate, safeMount } from '@fluentui/test-utilities';
-import { resetIds } from '../../Utilities';
+import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPopupRestoreFocusParams } from '../../Popup';
+import { resetIds } from '../../Utilities';
+import { Callout } from './Callout';
+import { ICalloutProps } from './Callout.types';
+import { CalloutContent } from './CalloutContent';
 
 describe('Callout', () => {
   beforeEach(() => {
@@ -232,55 +232,87 @@ describe('Callout', () => {
 
   it('calls (onPositioned) when the position updates after mount', () => {
     jest.useFakeTimers();
+    let threwException = false;
+    const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+
     let calloutRef: any;
     let currentPosition: any = undefined;
 
-    const onPositioned = (val: any) => {
+    const onPositioned = jest.fn((val: any) => {
       currentPosition = val;
-    };
+    });
 
-    const CalloutPositionTestComponent = React.forwardRef((props, ref) => {
-      const [parentWidth, setParentWidth] = React.useState(100);
+    const CalloutPositionTestComponent = React.forwardRef((props: ICalloutProps, ref) => {
+      const [width, setWidth] = React.useState(500);
+
+      // Mocking getBoundingClientRect here so that ResizeObserver within Callout picks up width change.
+      Element.prototype.getBoundingClientRect = jest.fn(() => ({
+        width: width,
+        height: 50,
+        top: 50,
+        left: 600 - width,
+        bottom: 100,
+        right: 600,
+        x: 600,
+        y: 50,
+        toJSON: () => null,
+      }));
 
       React.useImperativeHandle(ref, () => ({
-        setParentWidth: () => {
-          setParentWidth(500);
+        setWidth: () => {
+          setWidth(100);
+        },
+        getWidth: () => {
+          return width;
         },
       }));
 
-      return <Callout style={{ width: parentWidth }} target="#test" onPositioned={onPositioned} />;
+      return (
+        <Callout onPositioned={onPositioned} {...props}>
+          <div style={{ width }}>Child</div>
+        </Callout>
+      );
     });
 
     const TestWrapper = () => {
       calloutRef = React.useRef(null);
 
-      return <CalloutPositionTestComponent ref={calloutRef} />;
+      return (
+        <div style={{ width: 1000 }}>
+          <button id="test">target</button>
+          <CalloutPositionTestComponent ref={calloutRef} target="#test" />
+        </div>
+      );
     };
 
-    const DOM = require('react-dom');
-    DOM.createPortal = jest.fn(element => {
-      return element;
-    });
+    // In order to have eventlisteners that have been added to the window to be called the JSX needs
+    // to be rendered into the real dom rather than the testutil simulated dom.
+    try {
+      ReactTestUtils.act(() => {
+        ReactDOM.render<HTMLDivElement>(<TestWrapper />, realDom);
+      });
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
 
-    safeMount(<TestWrapper />, component => {
-      // Initial State:
-      expect(currentPosition).toBe(undefined);
+    expect(currentPosition).toBe(undefined);
 
+    ReactTestUtils.act(() => {
       jest.runAllTimers();
 
-      // Update width to trigger onPositioned:
-      ReactTestUtils.act(() => {
-        calloutRef.current.setParentWidth();
-      });
+      calloutRef.current.setWidth();
+    });
 
+    ReactTestUtils.act(() => {
       jest.runAllTimers();
 
-      // After Update:
-      ReactTestUtils.act(() => {
-        expect(currentPosition).toBe(1);
-      });
+      expect(calloutRef.current.getWidth()).toBe(100);
 
-      DOM.createPortal.mockClear();
+      expect(onPositioned).toHaveBeenCalledTimes(1);
+      expect(currentPosition).toBeDefined();
     });
+
+    Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   });
 });
