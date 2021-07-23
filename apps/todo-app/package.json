@@ -19,7 +19,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.23.7",
+    "@fluentui/react": "^8.23.8",
     "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.54)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.53..@fluentui/react-menu_v9.0.0-alpha.54)
+
+### Changes
+
+- Update theme tokens ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.53)
 

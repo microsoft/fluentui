@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.64)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.63..@fluentui/react-button_v9.0.0-alpha.64)
+
+### Changes
+
+- Fix button jump effect on border disparities ([PR #19035](https://github.com/microsoft/fluentui/pull/19035) by bsunderhus@microsoft.com)
+- Update theme tokens ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+- Button: Handling children correctly and not as a slot. ([PR #19085](https://github.com/microsoft/fluentui/pull/19085) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.63)
 

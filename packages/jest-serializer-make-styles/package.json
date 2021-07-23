@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/jest-serializer-make-styles",
-  "version": "9.0.0-alpha.26",
+  "version": "9.0.0-alpha.27",
   "description": "Jest serializer for make-styles.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.2",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.50",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.17",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.51",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.18",
     "@fluentui/scripts": "^1.0.0",
     "@types/jest": "24.9.1",
     "@types/react": "16.9.42",

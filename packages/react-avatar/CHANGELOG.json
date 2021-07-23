@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update theme tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react-avatar_v9.0.0-alpha.59",
       "version": "9.0.0-alpha.59",

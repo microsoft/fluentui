@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.20)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.19..@fluentui/react-popover_v9.0.0-alpha.20)
+
+### Changes
+
+- react-popver: fix Default story issue caused by storybook migration ([PR #18693](https://github.com/microsoft/fluentui/pull/18693) by tristan.watanabe@gmail.com)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.19)
 

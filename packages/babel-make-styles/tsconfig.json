@@ -12,6 +12,6 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node", "babel-helper-plugin-utils"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node"]
   }
 }

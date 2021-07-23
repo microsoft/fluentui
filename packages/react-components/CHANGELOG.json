@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.83",
+      "version": "9.0.0-alpha.83",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.60",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.82",
       "version": "9.0.0-alpha.82",

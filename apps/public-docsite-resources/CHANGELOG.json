@@ -2,6 +2,29 @@
   "name": "@fluentui/public-docsite-resources",
   "entries": [
     {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.8",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc6cc7d73c8d61587e26cd19b3bc9db3abd077a6",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "behowell@microsoft.com",
+            "commit": "d38109a7fd40e187aca862046219cf9a7ca66131",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/public-docsite-resources_v8.1.41",
       "version": "8.1.41",
