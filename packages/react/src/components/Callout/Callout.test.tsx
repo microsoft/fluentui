@@ -259,8 +259,8 @@ describe('Callout', () => {
       }));
 
       React.useImperativeHandle(ref, () => ({
-        setWidth: () => {
-          setWidth(100);
+        setWidth: (val: number) => {
+          setWidth(val);
         },
         getWidth: () => {
           return width;
@@ -296,12 +296,13 @@ describe('Callout', () => {
     }
     expect(threwException).toEqual(false);
 
+    // onPositioned is not called during the initial render
     expect(currentPosition).toBe(undefined);
 
     ReactTestUtils.act(() => {
       jest.runAllTimers();
 
-      calloutRef.current.setWidth();
+      calloutRef.current.setWidth(100);
     });
 
     ReactTestUtils.act(() => {
@@ -310,7 +311,22 @@ describe('Callout', () => {
       expect(calloutRef.current.getWidth()).toBe(100);
 
       expect(onPositioned).toHaveBeenCalledTimes(1);
+
+      // onPositioned is called after initial render and resize
       expect(currentPosition).toBeDefined();
+
+      // Beak is correctly positioned after resize
+      expect(currentPosition.beakPosition).toStrictEqual({
+        closestEdge: 2,
+        elementPosition: { right: 42, top: -8 },
+        targetEdge: 1,
+      });
+
+      // Callout element is correctly positioned after resize
+      expect(currentPosition.elementPosition).toStrictEqual({
+        right: -0,
+        top: 61.31370849898477,
+      });
     });
 
     Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;

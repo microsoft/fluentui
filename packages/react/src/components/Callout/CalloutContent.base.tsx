@@ -222,7 +222,7 @@ function usePositions(
         (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
       ) {
         if (elementPositions !== undefined) {
-          onPositioned?.(elementPositions);
+          onPositioned?.(newElementPositions);
         }
 
         setElementPositions(newElementPositions);
