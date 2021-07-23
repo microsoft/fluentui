@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove custom types for @babel/helper-plugin-utils",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
