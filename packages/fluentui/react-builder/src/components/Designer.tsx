@@ -29,6 +29,7 @@ export const Designer: React.FunctionComponent = () => {
   const [state, dispatch] = useDesignerState();
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState<AccessibilityError[]>();
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -44,8 +45,11 @@ export const Designer: React.FunctionComponent = () => {
     jsonTree,
     selectedJSONTreeElementUuid,
     showCode,
-    accessibilityErrors,
   } = state;
+
+  let { accessibilityErrors } = state;
+
+  accessibilityErrors = accessibilityErrors.concat(accessibilityAttributesErrors);
 
   const selectedJSONTreeElement = jsonTreeFindElement(jsonTree, selectedJSONTreeElementUuid);
   const selectedComponentInfo = selectedJSONTreeElement
@@ -244,13 +248,10 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'DESIGNER_LOADED', accessibilityErrors: axeErrors });
   }, [dispatch]);
 
-  const handleWindowAccessibilityErrors = React.useCallback(
-    (errors: AccessibilityError[]) => {
-      console.log(errors);
-      dispatch({ type: 'WINDOW_ERRORS_CHANGED', accessibilityErrors: errors });
-    },
-    [dispatch],
-  );
+  const handleWindowAccessibilityErrors = React.useCallback((errors: AccessibilityError[]) => {
+    setAccessibilityErrors(errors);
+    console.log(errors);
+  }, []);
 
   const runAndEvaluateAxe = async (match: (match: RegExpMatchArray) => boolean) => {
     const { violations } = await runAxe();
