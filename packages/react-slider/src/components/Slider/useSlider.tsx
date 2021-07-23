@@ -73,6 +73,8 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const updateValue = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (ev: any, incomingValue: number): void => {
+      ev.preventDefault();
+      ev.stopPropagation();
       setCurrentValue(clamp(incomingValue, min, max), ev);
     },
     [max, min, setCurrentValue],
@@ -180,7 +182,14 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   );
 
   const valuePercent = getPercent(currentValue, min, max);
-  const positionStyles = { transform: `translateX(${valuePercent}%)` };
+  const positionStyles = {
+    left: internalState.thumbSize / 2,
+    right: internalState.thumbSize / 2,
+  };
+  const thumbStyles = {
+    transform: `translateX(${valuePercent}%)`,
+    ...positionStyles,
+  };
   const trackStyles = { width: `${valuePercent}%` };
 
   const rootProps: Partial<SliderState> = {
@@ -198,19 +207,17 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const activeRailProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: 'ms-Slider-activeRail',
     ref: railRef,
-    style: {
-      position: 'absolute',
-      // backgroundColor: 'red',
-      // opacity: '0.5',
-      height: 4,
-      left: internalState.thumbSize / 2,
-      right: internalState.thumbSize / 2,
-    },
+    style: positionStyles,
   };
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-track',
     style: trackStyles,
+  };
+
+  const thumbContainerProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+    className: 'ms-Slider-thumbContainer',
+    style: thumbStyles,
   };
 
   const thumbProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
@@ -222,11 +229,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     'aria-valuemax': max,
     'aria-valuenow': currentValue,
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
-    style: {
-      // position: 'absolute',
-      // left: `${valuePercent}%`,
-      // transform: `translate(-${50}%, -${50 - internalState.thumbSize / 2}%)`,
-    },
   };
 
   const onThumbResize = () => {
@@ -236,13 +238,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   useIsomorphicLayoutEffect(() => {
     observeResize(thumbRef.current, onThumbResize);
   });
-
-  const thumbContainerProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-thumbContainer',
-    style: {
-      transform: `translateX(${valuePercent}%)`,
-    },
-  };
 
   const state = mergeProps(
     {
