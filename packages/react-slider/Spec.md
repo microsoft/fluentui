@@ -223,7 +223,7 @@ _Explain how the component will behave in use, including:_
 
 Having the `Slider` fit the width of the screen could possibly be done by the user by applying custom styling to the `Slider`.
 
-### RangedSlider Seperated
+### RangedSlider Separated
 
 It may be more readable and potentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases.
 
