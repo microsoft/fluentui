@@ -13,53 +13,50 @@ const useStyles = makeStyles({
 
   targetContainer: {
     display: 'inline-grid',
-    alignItems: 'center',
-    justifyItems: 'center',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateRows: 'repeat(5, 64px)',
     gap: '4px',
     margin: '16px 128px',
-  },
-
-  target: {
-    width: '48px',
-    height: '48px',
   },
 });
 
 export const Basic = () => {
   const styles = useStyles();
 
-  const targetRef = React.useRef<HTMLDivElement>(null);
+  const [exampleTarget, setExampleTarget] = React.useState<HTMLDivElement | null>(null);
 
   return (
     <>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
-        <Tooltip content="This is a default tooltip" triggerAriaAttribute="describedby">
+        <Tooltip content="Default tooltip">
           <button>Default</button>
         </Tooltip>
-        <Tooltip content="This is a subtle tooltip" subtle triggerAriaAttribute="describedby">
-          <button>Subtle</button>
+        <Tooltip content="Inverted tooltip" inverted>
+          <button>Inverted</button>
         </Tooltip>
-        <Tooltip content="This tooltip has no arrow" noArrow triggerAriaAttribute="describedby">
-          <button>No arrow</button>
+        <Tooltip content="Tooltip pointing to its target" pointing>
+          <button>Pointing</button>
         </Tooltip>
         <Tooltip
-          triggerAriaAttribute="describedby"
           content={
             <>
-              This <i>tooltip</i> has <u>formatted</u> content
+              <u>Formatted</u> <i>content</i>
             </>
           }
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="This tooltip targets the red square" targetRef={targetRef} triggerAriaAttribute="describedby">
+        <Tooltip content="Tooltip pointing to a custom target" target={exampleTarget} pointing>
           <button>
             Custom target:{' '}
-            <div ref={targetRef} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
+            <div
+              ref={setExampleTarget}
+              style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }}
+            />
           </button>
         </Tooltip>
-        <Tooltip content="The trigger button was rendered by a render function" triggerAriaAttribute="describedby">
+        <Tooltip content="Trigger button using a render function">
           {triggerProps => (
             <div>
               <button {...triggerProps}>Custom trigger</button>
@@ -99,57 +96,88 @@ export const Positioning = () => {
       <div>Each of these buttons places the tooltip in a different location relative to its trigger button.</div>
       <div className={styles.targetContainer}>
         <Tooltip content="above start" position="above" align="start">
-          <button className={styles.target} style={{ gridArea: '1 / 2' }} />
+          <button style={{ gridArea: '1 / 2' }}>above start</button>
         </Tooltip>
         <Tooltip content="above center" position="above" align="center">
-          <button className={styles.target} style={{ gridArea: '1 / 3' }} />
+          <button style={{ gridArea: '1 / 3' }}>above center</button>
         </Tooltip>
         <Tooltip content="above end" position="above" align="end">
-          <button className={styles.target} style={{ gridArea: '1 / 4' }} />
+          <button style={{ gridArea: '1 / 4' }}>above end</button>
         </Tooltip>
 
         <Tooltip content="before top" position="before" align="top">
-          <button className={styles.target} style={{ gridArea: '2 / 1' }} />
+          <button style={{ gridArea: '2 / 1' }}>before top</button>
         </Tooltip>
         <Tooltip content="before center" position="before" align="center">
-          <button className={styles.target} style={{ gridArea: '3 / 1' }} />
+          <button style={{ gridArea: '3 / 1' }}>before center</button>
         </Tooltip>
         <Tooltip content="before bottom" position="before" align="bottom">
-          <button className={styles.target} style={{ gridArea: '4 / 1' }} />
+          <button style={{ gridArea: '4 / 1' }}>before bottom</button>
         </Tooltip>
 
         <Tooltip content="after top" position="after" align="top">
-          <button className={styles.target} style={{ gridArea: '2 / 5' }} />
+          <button style={{ gridArea: '2 / 5' }}>after top</button>
         </Tooltip>
         <Tooltip content="after center" position="after" align="center">
-          <button className={styles.target} style={{ gridArea: '3 / 5' }} />
+          <button style={{ gridArea: '3 / 5' }}>after center</button>
         </Tooltip>
         <Tooltip content="after bottom" position="after" align="bottom">
-          <button className={styles.target} style={{ gridArea: '4 / 5' }} />
+          <button style={{ gridArea: '4 / 5' }}>after bottom</button>
         </Tooltip>
 
         <Tooltip content="below start" position="below" align="start">
-          <button className={styles.target} style={{ gridArea: '5 / 2' }} />
+          <button style={{ gridArea: '5 / 2' }}>below start</button>
         </Tooltip>
         <Tooltip content="below center" position="below" align="center">
-          <button className={styles.target} style={{ gridArea: '5 / 3' }} />
+          <button style={{ gridArea: '5 / 3' }}>below center</button>
         </Tooltip>
         <Tooltip content="below end" position="below" align="end">
-          <button className={styles.target} style={{ gridArea: '5 / 4' }} />
+          <button style={{ gridArea: '5 / 4' }}>below end</button>
         </Tooltip>
       </div>
     </>
   );
 };
 
-export const OnlyIfTruncated = () => {
-  const [wide, setWide] = React.useState(true);
-  const text = 'The tooltip will only show if the text is truncated.';
-
+export const ControlledTooltip = () => {
+  const [tooltipVisible, setTooltipVisible] = React.useState(false);
   return (
     <>
-      <Tooltip content={text} onlyIfTruncated>
+      <Tooltip content="The visibility of this tooltip is controlled by the parent component" visible={tooltipVisible}>
+        <button onClick={() => setTooltipVisible(v => !v)}>Toggle tooltip</button>
+      </Tooltip>
+    </>
+  );
+};
+
+export const OnlyIfTruncated = () => {
+  const textContainerRef = React.useRef<HTMLDivElement>(null);
+  const [tooltipVisible, setTooltipVisible] = React.useState(false);
+  const [wide, setWide] = React.useState(true);
+  const text = 'The tooltip only shows if the text is truncated';
+  return (
+    <>
+      <button onClick={() => setWide(w => !w)}>Toggle container width</button>
+      <Tooltip
+        content={text}
+        visible={tooltipVisible}
+        position="below"
+        onVisibleChange={(_ev, { visible }) => {
+          if (
+            visible &&
+            textContainerRef.current &&
+            textContainerRef.current.scrollWidth <= textContainerRef.current.clientWidth &&
+            textContainerRef.current.scrollHeight <= textContainerRef.current.clientHeight
+          ) {
+            // Don't show the tooltip if the textContainer's content is not truncated
+            visible = false;
+          }
+
+          setTooltipVisible(visible);
+        }}
+      >
         <div
+          ref={textContainerRef}
           tabIndex={0}
           style={{
             width: !wide ? '100px' : undefined,
@@ -162,7 +190,6 @@ export const OnlyIfTruncated = () => {
           {text}
         </div>
       </Tooltip>
-      <button onClick={() => setWide(w => !w)}>Toggle width</button>
     </>
   );
 };

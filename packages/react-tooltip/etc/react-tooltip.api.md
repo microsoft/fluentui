@@ -7,9 +7,16 @@
 import { Alignment } from '@fluentui/react-positioning';
 import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+
+// @public
+export interface OnVisibleChangeData {
+    // (undocumented)
+    visible: boolean;
+}
 
 // @public
 export const renderTooltip: (state: TooltipState) => JSX.Element;
@@ -23,17 +30,20 @@ export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay
 // @public
 export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
     align?: Alignment;
-    children: React_2.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React_2.ReactNode);
+    children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
     hideDelay?: number;
-    noArrow?: boolean;
+    inverted?: boolean;
     offset?: number;
-    onlyIfTruncated?: boolean;
+    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    pointing?: boolean;
     position?: Position;
     showDelay?: number;
-    subtle?: boolean;
-    targetRef?: React_2.RefObject<HTMLElement>;
+    target?: HTMLElement | PopperVirtualElement | null;
     triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+    visible?: boolean;
 }
 
 // @public
@@ -47,19 +57,19 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     ref: React_2.Ref<HTMLElement>;
-    shouldRenderTooltip: boolean;
-    readonly visible: boolean;
+    shouldRenderTooltip?: boolean;
 }
 
 // @public
-export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
+export type TooltipTriggerProps = {
+    ref?: React_2.Ref<never>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
 export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
-
 
 // (No @packageDocumentation comment for this package)
 
