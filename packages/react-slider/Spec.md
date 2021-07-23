@@ -225,7 +225,7 @@ Having the `Slider` fit the width of the screen could possibly be done by the us
 
 ### RangedSlider Separated
 
-It may be more readable and potentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases.
+It may be more readable and potentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases and accessibility concerns.
 
 ### Removing Label and ValueLabel
 
