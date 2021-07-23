@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "DetailsList: use the radio role for single selection mode checks",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
