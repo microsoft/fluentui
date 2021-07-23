@@ -116,7 +116,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     rtl: context.rtl,
   });
 
-  const handleItemOverrides = (variables: any) => predefinedProps => ({
+  const handleItemOverrides = variables => predefinedProps => ({
     onClick: (e, itemProps) => {
       _.invoke(props, 'onItemClick', e, itemProps);
       _.invoke(predefinedProps, 'onClick', e, itemProps);
