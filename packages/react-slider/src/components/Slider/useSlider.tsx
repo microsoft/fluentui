@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useId, useControllableValue } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  resolveShorthandProps,
+  useId,
+  useControllableValue,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import {
   getCode,
   ArrowDownKey,
@@ -11,16 +17,17 @@ import {
   HomeKey,
   EndKey,
 } from '@fluentui/keyboard-key';
-import { useMount, useConst } from '@fluentui/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
 import { clamp } from './utils/clamp';
 import { getPercent } from './utils/getPercent';
+import { observeResize } from './observeResize';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumbContainer', 'thumb'];
+export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumbContainer', 'thumb', 'activeRail'];
 
 const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
 
@@ -174,7 +181,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const valuePercent = getPercent(currentValue, min, max);
   const positionStyles = { transform: `translateX(${valuePercent}%)` };
-  const trackStyles = { transform: `scaleX(.${valuePercent})` };
+  const trackStyles = { width: `${valuePercent}%` };
 
   const rootProps: Partial<SliderState> = {
     className: 'ms-Slider-root',
@@ -184,9 +191,21 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     id: id,
   };
 
-  const railProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+  const railProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-rail',
+  };
+
+  const activeRailProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+    className: 'ms-Slider-activeRail',
     ref: railRef,
+    style: {
+      position: 'absolute',
+      // backgroundColor: 'red',
+      // opacity: '0.5',
+      height: 4,
+      left: internalState.thumbSize / 2,
+      right: internalState.thumbSize / 2,
+    },
   };
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
@@ -196,7 +215,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const thumbProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: 'ms-Slider-thumb',
-    // style: positionStyles,
     ref: thumbRef,
     tabIndex: 0,
     role: 'slider',
@@ -204,22 +222,24 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     'aria-valuemax': max,
     'aria-valuenow': currentValue,
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
+    style: {
+      // position: 'absolute',
+      // left: `${valuePercent}%`,
+      // transform: `translate(-${50}%, -${50 - internalState.thumbSize / 2}%)`,
+    },
   };
 
-  useMount(() => {
+  const onThumbResize = () => {
     internalState.thumbSize = thumbRef?.current!.getBoundingClientRect().width;
+  };
+
+  useIsomorphicLayoutEffect(() => {
+    observeResize(thumbRef.current, onThumbResize);
   });
 
   const thumbContainerProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: 'ms-Slider-thumbContainer',
     style: {
-      position: 'absolute',
-      // backgroundColor: 'red',
-      // opacity: '0.5',
-      left: internalState.thumbSize / 2,
-      right: internalState.thumbSize / 2,
-      // bottom: 0,
-      // height: 4,
       transform: `translateX(${valuePercent}%)`,
     },
   };
@@ -230,6 +250,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       as: as,
       track: { as: 'div', children: null, ...trackProps },
       rail: { as: 'div', children: null, ...railProps },
+      activeRail: { as: 'div', children: null, ...activeRailProps },
       thumbContainer: {
         as: 'div',
         children: null,

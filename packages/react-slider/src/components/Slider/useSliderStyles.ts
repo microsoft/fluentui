@@ -13,7 +13,6 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
     height: '25px',
     width: '280px',
-    alignItems: 'center',
   }),
 
   hover: theme => ({
@@ -95,7 +94,7 @@ const useTrackStyles = makeStyles({
     position: 'absolute',
     height: '4px',
     background: '#606060',
-    borderRadius: '4px 0px 0px 4px',
+    borderRadius: '4px',
 
     [HighContrastSelector]: {
       background: 'Highlight',
@@ -108,9 +107,8 @@ const useTrackStyles = makeStyles({
  */
 const useThumbContainerStyles = makeStyles({
   thumbContainer: theme => ({
-    // left: 10,
-    // right: 10,
-    // bottom: 0,
+    position: 'absolute',
+    // overflow: 'hidden',
   }),
 });
 
@@ -120,13 +118,12 @@ const useThumbContainerStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    transformBox: 'fill-box',
-    flex: '1',
     width: '20px',
     height: '20px',
     background: '#606060',
     borderRadius: '50%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%,-40%)',
+    top: '50%',
     [HighContrastSelector]: {
       background: 'Highlight',
     },

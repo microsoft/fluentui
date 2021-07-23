@@ -14,6 +14,7 @@ export const renderSlider = (state: SliderState) => {
     <slots.root {...slotProps.root}>
       <slots.rail {...slotProps.rail} />
       <slots.track {...slotProps.track} />
+      <slots.activeRail {...slotProps.activeRail} />
       {/* <div
         style={{
           position: 'absolute',
