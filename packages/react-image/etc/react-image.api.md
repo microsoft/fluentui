@@ -9,18 +9,15 @@ import * as React_2 from 'react';
 
 // @public (undocumented)
 const Image_2: React_2.FunctionComponent<ImageProps & React_2.RefAttributes<HTMLElement>>;
-
 export { Image_2 as Image }
 
 // @public (undocumented)
 export interface ImageProps extends ComponentPropsCompat, React_2.ImgHTMLAttributes<HTMLImageElement> {
-    alt?: string;
     bordered?: boolean;
     circular?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover';
     fluid?: boolean;
     rounded?: boolean;
-    src?: string;
 }
 
 // @public (undocumented)
@@ -37,7 +34,6 @@ export const useImage: (props: ImageProps, ref: React_2.Ref<HTMLElement>, defaul
 
 // @public (undocumented)
 export const useImageStyles: (state: ImageState) => void;
-
 
 // (No @packageDocumentation comment for this package)
 

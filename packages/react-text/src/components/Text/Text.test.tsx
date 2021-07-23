@@ -1,5 +1,3 @@
-// For non-exported types
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Text } from './Text';
@@ -110,7 +108,7 @@ describe('Text', () => {
     [800, 'hero', '800'],
     [900, 'hero', '900'],
     [1000, 'hero', '1000'],
-  ])('applies the %s token sizing styles', (sizeToken: any, expectedPrefix, expectedValue) => {
+  ] as const)('applies the %s token sizing styles', (sizeToken, expectedPrefix, expectedValue) => {
     const { getByText } = render(<Text size={sizeToken}>Test</Text>);
 
     const textElement = getByText('Test');
@@ -124,7 +122,7 @@ describe('Text', () => {
     ['base', 'base'],
     ['monospace', 'monospace'],
     ['numeric', 'numeric'],
-  ])('applies %s font', (input: any, expectedValue) => {
+  ] as const)('applies %s font', (input, expectedValue) => {
     const { getByText } = render(<Text font={input}>Test</Text>);
 
     const textElement = getByText('Test');
@@ -137,7 +135,7 @@ describe('Text', () => {
     ['regular', 'regular'],
     ['medium', 'medium'],
     ['semibold', 'semibold'],
-  ])('applies %s weight', (input: any, expectedValue) => {
+  ] as const)('applies %s weight', (input, expectedValue) => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
 
     const textElement = getByText('Test');
@@ -151,7 +149,7 @@ describe('Text', () => {
     ['center', 'center'],
     ['end', 'end'],
     ['justify', 'justify'],
-  ])('applies a %s alignment', (input: any, expectedValue) => {
+  ] as const)('applies a %s alignment', (input, expectedValue) => {
     const { getByText } = render(<Text align={input}>Test</Text>);
 
     const textElement = getByText('Test');

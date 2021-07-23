@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePopperMouseTarget, usePopper } from '@fluentui/react-positioning';
-import { useControllableValue, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
+import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -88,7 +88,11 @@ export const useMenu = (props: MenuProps): MenuState => {
 const useMenuSelectableState = (
   state: Pick<MenuState, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: state.checkedValues,
+    defaultState: state.defaultCheckedValues,
+    initialState: {},
+  });
   const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
   const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, name, checkedItems) => {
     if (onCheckedValueChangeOriginal) {
@@ -117,8 +121,11 @@ const useMenuOpenState = (
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
-  const [openState, setOpenState] = useControllableValue(state.open, state.defaultOpen);
-  const open = openState !== undefined ? openState : state.open;
+  const [open, setOpenState] = useControllableState({
+    state: state.open,
+    defaultState: state.defaultOpen,
+    initialState: false,
+  });
 
   const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;

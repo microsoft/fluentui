@@ -40,18 +40,18 @@ const useRootStyles = makeStyles({
   },
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      color: theme.alias.color.neutral.neutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        color: theme.alias.color.neutral.neutralForegroundOnBrand,
       },
     },
 
     ':active': {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        color: theme.alias.color.neutral.neutralForegroundOnBrand,
       },
     },
   }),
@@ -163,8 +163,7 @@ const useContentContainerStyles = makeStyles({
 const useSecondaryContentStyles = makeStyles({
   base: theme => ({
     lineHeight: '100%',
-    marginTop: buttonSpacing.smaller,
-
+    marginTop: '4px',
     fontWeight: theme.global.type.fontWeights.regular,
   }),
   small: theme => ({

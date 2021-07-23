@@ -23,7 +23,7 @@ export { createDOMRenderer }
 export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStaticStyles[]): () => void;
 
 // @public (undocumented)
-export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
+export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
 
 export { mergeClasses }
 

@@ -2,6 +2,115 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/web-components_v1.2.2",
+      "version": "1.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fluent-text-field: start/end display flex",
+            "author": "fredrik.rasch@gmail.com",
+            "commit": "530f7e50c0e63f07f53d537f412a336d0a86e455",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/web-components_v1.2.1",
+      "version": "1.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixe incorrect css selectors introduced by prettier formatting bug related to template literal interpolatin in css files",
+            "author": "chhol@microsoft.com",
+            "commit": "ac8bc50ba9fe3296e61e69b9aff3f6a9d1112c50",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "ensure component definitions are resolved and exported",
+            "author": "chhol@microsoft.com",
+            "commit": "8f056d3c57633bcf322e8fa4d5de4dd65e351fbc",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 00:35:31 GMT",
+      "tag": "@fluentui/web-components_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add single export object for easily registering all Fluent UI web components",
+            "author": "chhol@microsoft.com",
+            "commit": "874be4906a0177df3316e2a15a88dc699836bca9",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "create and export web component definitions for use with Monaco editor tooling",
+            "author": "chhol@microsoft.com",
+            "commit": "f5120ce31c3b16a74e32177ff00f864f397a399b",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixed ability to set palette base color on DSP",
+            "author": "47367562+bheston@users.noreply.github.com",
+            "commit": "445c04ac55f894b8265a38ddf31ff83979ba3854",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/web-components_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update fast-foundation version to fix design token typings",
+            "author": "chhol@microsoft.com",
+            "commit": "966a306ca3db42c6f2a71cfef8e2b6542e3a18b4",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/web-components_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add attribute to recreate the accent palette using design system provider",
+            "author": "chhol@microsoft.com",
+            "commit": "3d08290cc1852c60751ed8f28a4ebea56fb92af9",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "Added attribute to allow easy update to the neutral palette",
+            "author": "47367562+bheston@users.noreply.github.com",
+            "commit": "a63f33c38288c5be11443f648487db825b23ba7a",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update API Extractor for web-components and force TS resolution to 4.1.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "a84e6352e7a0a8ed79a75e9688b87d8890d5a241",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/web-components_v1.0.2",
       "version": "1.0.2",

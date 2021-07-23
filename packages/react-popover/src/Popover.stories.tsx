@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from './index';
+import { ArgTypes, Meta, Parameters } from '@storybook/react';
 
 const ExampleContent = () => {
   return (
@@ -27,23 +28,17 @@ export const Default = (props: PopoverProps) => (
     </PopoverSurface>
   </Popover>
 );
-
+// @FIXME - remove manually specified argTypes once `react-components` package will use new storybook setup(DX)
+// https://github.com/microsoft/fluentui/issues/18514
 Default.argTypes = {
-  open: {
-    defaultValue: false,
-    control: 'boolean',
-  },
-
   openOnContext: {
     defaultValue: false,
     control: 'boolean',
   },
-
   openOnHover: {
     defaultValue: false,
     control: 'boolean',
   },
-
   position: {
     type: { name: 'string', required: false },
     control: {
@@ -51,7 +46,6 @@ Default.argTypes = {
       options: ['above', 'below', 'before', 'after'],
     },
   },
-
   align: {
     type: { name: 'string', required: false },
     control: {
@@ -59,7 +53,6 @@ Default.argTypes = {
       options: ['top', 'bottom', 'start', 'end', 'center'],
     },
   },
-
   size: {
     type: { name: 'string', required: false },
     control: {
@@ -67,12 +60,16 @@ Default.argTypes = {
       options: ['small', 'medium', 'large'],
     },
   },
-
   trapFocus: {
     defaultValue: true,
     control: 'boolean',
   },
-};
+} as ArgTypes;
+Default.parameters = {
+  controls: {
+    disable: false,
+  },
+} as Parameters;
 
 export const AnchorToTarget = () => {
   const [target, setTarget] = React.useState<HTMLButtonElement | null>();
@@ -98,10 +95,10 @@ export const AnchorToTarget = () => {
 
 export const Controlled = () => {
   const [open, setOpen] = React.useState(false);
-  const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
+  const handleOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
   return (
-    <Popover open={open} onOpenChange={onOpenChange}>
+    <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger>
         <button>Controlled trigger</button>
       </PopoverTrigger>
@@ -115,6 +112,7 @@ export const Controlled = () => {
 export const WithCustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const [target, setTarget] = React.useState<HTMLElement | null>(null);
+
   const onClick = () => setOpen(s => !s);
   const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
@@ -206,4 +204,4 @@ export const InternalUpdateContent = () => {
 export default {
   title: 'Components/Popover',
   component: Popover,
-};
+} as Meta;

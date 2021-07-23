@@ -1,5 +1,6 @@
 import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
@@ -14,6 +15,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-controls' based on the property 'aria-controls' to 'root' slot.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
+ * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
 export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   attributes: {
@@ -29,6 +31,7 @@ export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
       'aria-describedby': props['aria-describedby'],
       'aria-controls': props['aria-controls'],
       'aria-disabled': props['disabled'],
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
     },
   },
 

@@ -79,7 +79,7 @@ export const accordionItemStyles: (
       cursor: pointer;
     }
 
-    .button: ${focusVisible}::before {
+    .button:${focusVisible}::before {
       outline: none;
       border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
@@ -134,7 +134,7 @@ export const accordionItemStyles: (
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
-        .button: ${focusVisible}::before {
+        .button:${focusVisible}::before {
           border-color: ${SystemColors.Highlight};
           box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${SystemColors.Highlight};
         }

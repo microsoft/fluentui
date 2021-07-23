@@ -24,7 +24,7 @@ export type CSSClasses = /* ltrClassName */ string | [ltrClassName: string, rtlC
 export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
 
 // @public (undocumented)
-export type CSSClassesMapBySlot<Slots extends string> = Record<Slots, CSSClassesMap>;
+export type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, CSSClassesMap>;
 
 // @public (undocumented)
 export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
@@ -87,7 +87,7 @@ export interface MakeStyles extends Omit<Properties, 'animationName'> {
 }
 
 // @public (undocumented)
-export function makeStyles<Slots extends string, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
+export function makeStyles<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
 
 // @public (undocumented)
 export interface MakeStylesOptions {
@@ -135,7 +135,7 @@ export function resolveProxyValues<T>(value: T): T;
 export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number): [CSSClassesMap, CSSRulesByBucket];
 
 // @public
-export function resolveStyleRulesForSlots<Slots extends string, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
+export function resolveStyleRulesForSlots<Slots extends string | number, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
 
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -157,7 +157,7 @@ export type StyleBucketName = 'd' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 'k
 export const styleBucketOrdering: StyleBucketName[];
 
 // @public (undocumented)
-export type StylesBySlots<Slots extends string, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+export type StylesBySlots<Slots extends string | number, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update prop merging mechanism",
-  "packageName": "@fluentui/react-aria",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

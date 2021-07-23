@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Jul 2021 22:32:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.3)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.4.2..@fluentui/react-conformance_v0.4.3)
+
+### Patches
+
+- Make tests work if repo is under a parent folder called src ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
 
 ## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.2)
 
