@@ -1,6 +1,6 @@
-import { GlobalSharedColors, ColorVariants } from '../types';
+import { GlobalSharedColors, ColorVariants, Greys, AlphaColors } from '../types';
 
-export const grey = {
+export const grey: Record<Greys, string> = {
   '0': '#000000',
   '2': '#050505',
   '4': '#0a0a0a',
@@ -58,7 +58,7 @@ export const white = '#ffffff';
 
 export const black = '#000000';
 
-export const whiteAlpha = {
+export const whiteAlpha: Record<AlphaColors, string> = {
   '5': 'rgba(255, 255, 255, 0.05)',
   '10': 'rgba(255, 255, 255, 0.1)',
   '20': 'rgba(255, 255, 255, 0.2)',
@@ -71,7 +71,7 @@ export const whiteAlpha = {
   '90': 'rgba(255, 255, 255, 0.9)',
 };
 
-export const blackAlpha = {
+export const blackAlpha: Record<AlphaColors, string> = {
   '5': 'rgba(0, 0, 0, 0.05)',
   '10': 'rgba(0, 0, 0, 0.1)',
   '20': 'rgba(0, 0, 0, 0.2)',
