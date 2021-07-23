@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { InputProps, InputShorthandProps, InputState } from './Input.types';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { InputProps, InputSlots, InputState } from './Input.types';
 
 /**
- * Array of all shorthand properties listed in InputShorthandProps
+ * Array of all shorthand properties listed as the keys of InputSlots
  */
-export const inputShorthandProps: InputShorthandProps[] = [
-  /* TODO add shorthand property names */
+export const inputShorthandProps: (keyof InputSlots)[] = [
+  'input',
+  'inputWrapper',
+  'bookendBefore',
+  'bookendAfter',
+  'insideStart',
+  'insideEnd',
 ];
-
-const mergeProps = makeMergeProps<InputState>({ deepMerge: inputShorthandProps });
 
 /**
  * Create the state required to render Input.
@@ -18,17 +21,21 @@ const mergeProps = makeMergeProps<InputState>({ deepMerge: inputShorthandProps }
  * before being passed to renderInput.
  *
  * @param props - props from this instance of Input
- * @param ref - reference to root HTMLElement of Input
- * @param defaultProps - (optional) default prop values provided by the implementing type
+ * @param ref - reference to root HTMLInputElement of Input
  */
-export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>, defaultProps?: InputProps): InputState => {
-  const state = mergeProps(
-    {
-      ref,
+export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
+  return {
+    ...props,
+    components: {
+      input: 'input',
     },
-    defaultProps && resolveShorthandProps(defaultProps, inputShorthandProps),
-    resolveShorthandProps(props, inputShorthandProps),
-  );
-
-  return state;
+    // temporarily must add fake children to prevent getSlots from substituting nullRender
+    input: resolveShorthand(props.input, { children: '😭' }),
+    inputWrapper: resolveShorthand(props.inputWrapper, { children: '😭' }),
+    bookendAfter: resolveShorthand(props.bookendAfter),
+    bookendBefore: resolveShorthand(props.bookendBefore),
+    insideEnd: resolveShorthand(props.insideEnd),
+    insideStart: resolveShorthand(props.insideStart),
+    ref,
+  };
 };
