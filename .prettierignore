@@ -48,6 +48,7 @@ gitignore
 *.jpg
 *.log
 *.png
+*.gif
 *.sh
 *.svg
 *.txt

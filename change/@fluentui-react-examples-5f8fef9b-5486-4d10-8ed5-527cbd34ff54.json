@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: replace class with className in mdx file",
+  "packageName": "@fluentui/react-examples",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

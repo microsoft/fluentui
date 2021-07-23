@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.64)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.63..@fluentui/react-button_v9.0.0-alpha.64)
+
+### Changes
+
+- Fix button jump effect on border disparities ([PR #19035](https://github.com/microsoft/fluentui/pull/19035) by bsunderhus@microsoft.com)
+- Update theme tokens ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+- Button: Handling children correctly and not as a slot. ([PR #19085](https://github.com/microsoft/fluentui/pull/19085) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.63)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.62..@fluentui/react-button_v9.0.0-alpha.63)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.29 ([PR #19038](https://github.com/microsoft/fluentui/pull/19038) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.62)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.61..@fluentui/react-button_v9.0.0-alpha.62)
+
+### Changes
+
+- Button: Migrate to new dx ([PR #18607](https://github.com/microsoft/fluentui/pull/18607) by tristan.watanabe@gmail.com)
 
 ## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.61)
 
