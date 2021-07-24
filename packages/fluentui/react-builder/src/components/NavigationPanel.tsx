@@ -41,6 +41,24 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
     alignItems: 'center',
   };
 
+  const accessibilityIcon =
+    props.accessibilityErrors.length !== 0 ? (
+      <>
+        {' '}
+        <AccessibilityIcon size="large" />
+        <Label
+          style={{ justifyContent: 'center', fontSize: '.2em', userSelect: 'none' }}
+          design={accessErrorLabelStyle}
+          color={'red'}
+          content={props.accessibilityErrors.length}
+          circular
+          fluid
+        />{' '}
+      </>
+    ) : (
+      <AccessibilityIcon size="large" outline />
+    );
+
   return (
     <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
       <Menu
@@ -73,23 +91,7 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
         <NavBarItem
           title="Accessibility"
           isSelected={props.activeTab === 'accessibility'}
-          icon={
-            props.accessibilityErrors.length !== 0 ? (
-              <>
-                {' '}
-                <AccessibilityIcon size="large" />
-                <Label
-                  design={accessErrorLabelStyle}
-                  color={'red'}
-                  content={props.accessibilityErrors.length}
-                  circular
-                  fluid
-                />{' '}
-              </>
-            ) : (
-              <AccessibilityIcon size="large" outline />
-            )
-          }
+          icon={accessibilityIcon}
           onClickHandler={() => props.onSwitchTab('accessibility')}
         />
 
