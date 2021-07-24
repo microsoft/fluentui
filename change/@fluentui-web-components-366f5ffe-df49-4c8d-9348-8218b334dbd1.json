@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(web-components): improve ergonomics of the fluent design system",
+  "packageName": "@fluentui/web-components",
+  "email": "roeisenb@microsoft.com",
+  "dependentChangeType": "patch"
+}
