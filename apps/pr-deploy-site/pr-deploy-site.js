@@ -38,7 +38,7 @@ var siteInfo = [
   },
   {
     package: '@fluentui/web-components',
-    link: './web-components',
+    link: './web-components/storybook/index.html',
     icon: 'Globe',
     title: 'web-components',
   },
