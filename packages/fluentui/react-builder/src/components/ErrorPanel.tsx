@@ -19,8 +19,9 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
 
   const errorPanelContent = (
     <List
+      styles={{ listStyleType: 'upper-roman' }}
       items={elementAccessibilityErrors.map(error => (
-        <div>
+        <div style={{ display: 'list-item', listStyle: 'outside' }}>
           {error.message}
           <br style={{ display: 'block', margin: '100vh' }} />
           <Label
