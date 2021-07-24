@@ -37,6 +37,12 @@ var siteInfo = [
     title: 'Converged (@fluentui/react-components)',
   },
   {
+    package: '@fluentui/web-components',
+    link: './web-components',
+    icon: 'Globe',
+    title: 'web-components',
+  },
+  {
     package: '@fluentui/react-experiments',
     link: './react-experiments/demo/index.html',
     icon: 'TestBeaker',
