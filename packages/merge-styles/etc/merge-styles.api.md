@@ -241,6 +241,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     hyphenateLimitZone?: ICSSRule | string;
     hyphens?: ICSSRule | string;
     justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | string;
+    justifyItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | 'legacy' | 'legacy left' | 'legacy right' | 'legacy center' | string;
     justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | string;
     left?: ICSSRule | ICSSPixelUnitRule;
     letterSpacing?: ICSSRule | string;
@@ -303,6 +304,9 @@ export interface IRawStyleBase extends IRawFontStyle {
     pauseBefore?: ICSSRule | string;
     perspective?: ICSSRule | string;
     perspectiveOrigin?: ICSSRule | string;
+    placeContent?: ICSSRule | 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | ICSSOverflowAndSelfPositionRule | string;
+    placeItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
+    placeSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
     pointerEvents?: ICSSRule | string;
     position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
     quotes?: ICSSRule | string;
@@ -446,17 +450,17 @@ export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | fa
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
-    TStyleSet1 | false | null | undefined,
-    TStyleSet2 | false | null | undefined,
-    TStyleSet3 | false | null | undefined
+TStyleSet1 | false | null | undefined,
+TStyleSet2 | false | null | undefined,
+TStyleSet3 | false | null | undefined
 ], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
-    TStyleSet1 | false | null | undefined,
-    TStyleSet2 | false | null | undefined,
-    TStyleSet3 | false | null | undefined,
-    TStyleSet4 | false | null | undefined
+TStyleSet1 | false | null | undefined,
+TStyleSet2 | false | null | undefined,
+TStyleSet3 | false | null | undefined,
+TStyleSet4 | false | null | undefined
 ], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
@@ -487,7 +491,6 @@ export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 //
 // @public @deprecated (undocumented)
 type Omit_2<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
-
 export { Omit_2 as Omit }
 
 // @public
@@ -512,8 +515,7 @@ export class Stylesheet {
     // (undocumented)
     resetKeys(): void;
     setConfig(config?: IStyleSheetConfig): void;
-    }
-
+}
 
 // Warnings were encountered during analysis:
 //
