@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "1.0.2",
+  "version": "1.2.3",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -31,8 +31,8 @@
     "prepare": "yarn clean && yarn build",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "prettier": "prettier --config ../../prettier.config.js --write 'src/**/(*.ts|*.html)'",
-    "prettier:diff": "prettier --config ../../prettier.config.js 'src/**/(*.ts|*.html)' --list-different",
+    "prettier": "prettier --config ../../prettier.config.js --write 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
+    "prettier:diff": "prettier --config ../../prettier.config.js 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore --list-different",
     "code-style": "npm run prettier && npm run lint",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -49,7 +49,6 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.7.1",
     "@storybook/html": "6.0.28",
     "@storybook/theming": "6.0.28",
     "@types/chai": "^4.2.11",
@@ -94,7 +93,7 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-element": "^1.4.0",
-    "@microsoft/fast-foundation": "^2.0.0",
+    "@microsoft/fast-foundation": "^2.5.0",
     "lodash-es": "^4.17.20",
     "tslib": "^1.13.0"
   }

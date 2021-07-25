@@ -64,6 +64,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
       role="presentation"
     >
       <div
+        aria-owns=""
         className=
             ms-BasePicker-text
             {

@@ -243,8 +243,7 @@ export const defaultTests: TestObject = {
     it(`is exported at top-level (exported-top-level)`, () => {
       try {
         const { displayName, componentPath, Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const indexFile = require(path.join(rootPath, 'src', 'index'));
+        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
 
         expect(indexFile[displayName]).toBe(Component);
       } catch (e) {
@@ -262,8 +261,7 @@ export const defaultTests: TestObject = {
     it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
       try {
         const { displayName, componentPath, Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const topLevelFile = require(path.join(rootPath, 'src', displayName));
+        const topLevelFile = require(path.join(getPackagePath(componentPath), 'src', displayName));
 
         expect(topLevelFile[displayName]).toBe(Component);
       } catch (e) {
@@ -461,3 +459,9 @@ export const defaultTests: TestObject = {
     });
   },
 };
+
+function getPackagePath(componentPath: string) {
+  // Use lastIndexOf in case anyone has all their repos under a folder called "src" (it happens)
+  const srcIndex = componentPath.replace(/\\/g, '/').lastIndexOf('/src/');
+  return componentPath.slice(0, srcIndex);
+}

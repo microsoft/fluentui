@@ -21,9 +21,6 @@ exports[`Tooltip renders a description tooltip content always 1`] = `
       id="tooltip-4"
       role="tooltip"
     >
-      <div
-        class=""
-      />
       Description tooltip
     </div>
   </div>
@@ -62,9 +59,6 @@ exports[`Tooltip renders the content of a nontrivial tooltip 1`] = `
       id="the-tooltip-id"
       role="tooltip"
     >
-      <div
-        class=""
-      />
       <span>
         This is a 
         <strong>
