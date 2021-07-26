@@ -13,8 +13,15 @@ import {
   memoizeFunction,
   warnDeprecations,
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ChartTypes, tooltipOfXAxislabels, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
 import {
+  ChartTypes,
+  getAccessibleDataObject,
+  tooltipOfXAxislabels,
+  XAxisTypes,
+  getTypeOfAxis,
+} from '../../utilities/index';
+import {
+  IAccessibilityProps,
   CartesianChart,
   ILegend,
   IGroupedVerticalBarChartData,
@@ -46,6 +53,7 @@ interface IGVSingleDataPoint {
 export interface IGroupedVerticalBarChartState extends IBasestate {
   titleForHoverCard: string;
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -127,6 +135,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
       ...this.props.calloutProps,
+      preventDismissOnLostFocus: true,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
     };
     const tickParams = {
       tickValues: this.props.tickValues!,
@@ -221,6 +231,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         xCalloutValue: pointData.xAxisCalloutData,
         yCalloutValue: pointData.yAxisCalloutData,
         dataPointCalloutProps: pointData,
+        callOutAccessibilityData: pointData.callOutAccessibilityData,
       });
     }
   };
@@ -243,6 +254,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             xCalloutValue: pointData.xAxisCalloutData,
             yCalloutValue: pointData.yAxisCalloutData,
             dataPointCalloutProps: pointData,
+            callOutAccessibilityData: pointData.callOutAccessibilityData,
           });
         }
       });
@@ -306,6 +318,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             onBlur={this._onBarLeave}
             onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
             aria-labelledby={`toolTip${this._calloutId}`}
+            role="text"
           />,
         );
     });
