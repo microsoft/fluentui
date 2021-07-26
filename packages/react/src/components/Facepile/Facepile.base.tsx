@@ -50,6 +50,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       overflowPersonas,
       showAddButton,
       ariaLabel,
+      showTooltip = false,
     } = this.props;
 
     const { _classNames } = this;
@@ -74,7 +75,11 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
           <ul className={_classNames.members} aria-label={ariaLabel}>
-            {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
+            {this._onRenderVisiblePersonas(
+              personasPrimary,
+              personasOverflow.length === 0 && personas.length === 1,
+              showTooltip,
+            )}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
         </div>
@@ -98,7 +103,11 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     );
   }
 
-  private _onRenderVisiblePersonas(personas: IFacepilePersona[], singlePersona: boolean): JSX.Element[] {
+  private _onRenderVisiblePersonas(
+    personas: IFacepilePersona[],
+    singlePersona: boolean,
+    showTooltip: boolean,
+  ): JSX.Element[] {
     const { onRenderPersona = this._getPersonaControl, onRenderPersonaCoin = this._getPersonaCoinControl } = this.props;
     return personas.map((persona: IFacepilePersona, index: number) => {
       const personaControl: JSX.Element | null = singlePersona
@@ -107,8 +116,8 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       return (
         <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
           {persona.onClick
-            ? this._getElementWithOnClickEvent(personaControl, persona, index)
-            : this._getElementWithoutOnClickEvent(personaControl, persona, index)}
+            ? this._getElementWithOnClickEvent(personaControl, persona, showTooltip, index)
+            : this._getElementWithoutOnClickEvent(personaControl, persona, showTooltip, index)}
         </li>
       );
     });
@@ -154,13 +163,14 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   private _getElementWithOnClickEvent(
     personaControl: JSX.Element | null,
     persona: IFacepilePersona,
+    showTooltip: boolean,
     index: number,
   ): JSX.Element {
     const { keytipProps } = persona;
     return (
       <FacepileButton
         {...getNativeProps(persona, buttonProperties)}
-        {...this._getElementProps(persona, index)}
+        {...this._getElementProps(persona, showTooltip, index)}
         keytipProps={keytipProps}
         // eslint-disable-next-line react/jsx-no-bind
         onClick={this._onPersonaClick.bind(this, persona)}
@@ -173,10 +183,11 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   private _getElementWithoutOnClickEvent(
     personaControl: JSX.Element | null,
     persona: IFacepilePersona,
+    showTooltip: boolean,
     index: number,
   ): JSX.Element {
     return (
-      <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, index)}>
+      <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, showTooltip, index)}>
         {personaControl}
       </div>
     );
@@ -184,6 +195,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
 
   private _getElementProps(
     persona: IFacepilePersona,
+    showTooltip: boolean,
     index: number,
   ): { key: React.Key; ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
     const { _classNames } = this;
@@ -192,7 +204,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       key: (persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,
       className: _classNames.itemButton,
-      title: persona.personaName,
+      title: showTooltip ? persona.personaName : undefined,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),
       onMouseOut: this._onPersonaMouseOut.bind(this, persona),
     };

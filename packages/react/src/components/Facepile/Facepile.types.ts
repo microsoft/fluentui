@@ -22,6 +22,12 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   componentRef?: IRefObject<IFacepile>;
 
   /**
+   * Whether the default Tooltip is shown using the title prop or a user defined Tooltip is shown
+   * @defaultvalue false
+   */
+  showTooltip?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
