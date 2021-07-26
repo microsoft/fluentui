@@ -21,11 +21,13 @@ import { CheckboxOptions } from '@microsoft/fast-foundation';
 import { Combobox as Combobox_2 } from '@microsoft/fast-foundation';
 import { ComboboxOptions } from '@microsoft/fast-foundation';
 import { Constructable } from '@microsoft/fast-element';
+import type { Container } from '@microsoft/fast-foundation';
 import { CSSDesignToken } from '@microsoft/fast-foundation';
 import { CSSDirective } from '@microsoft/fast-element';
 import { DataGrid } from '@microsoft/fast-foundation';
 import { DataGridCell } from '@microsoft/fast-foundation';
 import { DataGridRow } from '@microsoft/fast-foundation';
+import { DesignSystem } from '@microsoft/fast-foundation';
 import { DesignToken } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -201,6 +203,7 @@ export const allComponents: {
     fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
     fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TreeView>;
     fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
+    register(container?: Container | undefined): void;
 };
 
 // Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
@@ -1099,6 +1102,9 @@ export const progressRingStyles: (context: ElementDefinitionContext, definition:
 // @public
 export const progressStyles: (context: ElementDefinitionContext, definition: ProgressOptions) => ElementStyles;
 
+// @public
+export function provideFluentDesignSystem(element?: HTMLElement): DesignSystem;
+
 export { Radio }
 
 export { RadioGroup }
@@ -1322,12 +1328,12 @@ export const typeRampPlus6LineHeight: CSSDesignToken<string>;
 
 // Warnings were encountered during analysis:
 //
-// dist/dts/custom-elements.d.ts:47:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
-// dist/dts/custom-elements.d.ts:49:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
-// dist/dts/custom-elements.d.ts:52:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
-// dist/dts/custom-elements.d.ts:89:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:90:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:91:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/custom-elements.d.ts:48:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
+// dist/dts/custom-elements.d.ts:50:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
+// dist/dts/custom-elements.d.ts:53:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
+// dist/dts/custom-elements.d.ts:90:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
+// dist/dts/custom-elements.d.ts:91:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
+// dist/dts/custom-elements.d.ts:92:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

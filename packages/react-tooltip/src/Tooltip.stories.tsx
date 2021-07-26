@@ -29,30 +29,25 @@ export const Basic = () => {
     <>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
-        <Tooltip content="This is a default tooltip" triggerAriaAttribute="describedby">
+        <Tooltip content="Default tooltip">
           <button>Default</button>
         </Tooltip>
-        <Tooltip content="This is a subtle tooltip" subtle triggerAriaAttribute="describedby">
-          <button>Subtle</button>
+        <Tooltip content="Inverted tooltip" inverted>
+          <button>Inverted</button>
         </Tooltip>
-        <Tooltip content="This tooltip has no arrow" noArrow triggerAriaAttribute="describedby">
-          <button>No arrow</button>
+        <Tooltip content="Tooltip pointing to its target" pointing>
+          <button>Pointing</button>
         </Tooltip>
         <Tooltip
-          triggerAriaAttribute="describedby"
           content={
             <>
-              This <i>tooltip</i> has <u>formatted</u> content
+              <u>Formatted</u> <i>content</i>
             </>
           }
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip
-          content="This tooltip targets the red square"
-          target={exampleTarget}
-          triggerAriaAttribute="describedby"
-        >
+        <Tooltip content="Tooltip pointing to a custom target" target={exampleTarget} pointing>
           <button>
             Custom target:{' '}
             <div
@@ -61,7 +56,7 @@ export const Basic = () => {
             />
           </button>
         </Tooltip>
-        <Tooltip content="The trigger button was rendered by a render function" triggerAriaAttribute="describedby">
+        <Tooltip content="Trigger button using a render function">
           {triggerProps => (
             <div>
               <button {...triggerProps}>Custom trigger</button>
@@ -166,6 +161,7 @@ export const OnlyIfTruncated = () => {
       <Tooltip
         content={text}
         visible={tooltipVisible}
+        position="below"
         onVisibleChange={(_ev, { visible }) => {
           if (
             visible &&

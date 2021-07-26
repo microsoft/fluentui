@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem } from '../MenuItem/useMenuItem';
@@ -15,7 +16,14 @@ export const useMenuItemCheckbox = (
     persistOnClick: true,
   };
 
-  const state = useMenuItem({ ...checkboxProps, ...props }, ref) as MenuItemCheckboxState;
+  const state = useMenuItem(
+    {
+      ...checkboxProps,
+      ...props,
+      checkmark: resolveShorthand(props.checkmark, { children: <AcceptIcon /> }),
+    },
+    ref,
+  ) as MenuItemCheckboxState;
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
   const { onClick: onClickOriginal } = state;

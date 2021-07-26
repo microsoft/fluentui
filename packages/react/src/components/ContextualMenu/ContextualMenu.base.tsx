@@ -48,7 +48,7 @@ import {
 import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useMergedRefs } from '@fluentui/react-hooks';
+import { useTarget, usePrevious } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { IPopupRestoreFocusParams } from '../../Popup';
 import { MenuContext } from '../../utilities/MenuContext/index';
@@ -193,9 +193,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   IContextualMenuProps
 >((propsWithoutDefaults, forwardedRef) => {
   const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
-  const rootRef = React.useRef<HTMLDivElement>(null);
-
-  const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
+  const hostElement = React.useRef<HTMLDivElement>(null);
 
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
@@ -210,6 +208,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       {...props}
       hoisted={{
         hostElement,
+        forwardedRef,
         targetRef,
         targetWindow,
         expandedMenuItemKey,
@@ -230,6 +229,7 @@ ContextualMenuBase.displayName = 'ContextualMenuBase';
 interface IContextualMenuInternalProps extends IContextualMenuProps {
   hoisted: {
     hostElement: React.RefObject<HTMLDivElement>;
+    forwardedRef: React.Ref<HTMLDivElement>;
     targetRef: React.RefObject<Element | MouseEvent | Point | null>;
     targetWindow: Window | undefined;
     expandedMenuItemKey?: string;
@@ -368,7 +368,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
-      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement },
+      hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement, forwardedRef },
     } = this.props;
 
     this._classNames = getMenuClassNames
@@ -470,10 +470,11 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
               directionalHintFixed={directionalHintFixed}
               alignTargetEdge={alignTargetEdge}
               hidden={this.props.hidden || menuContext.hidden}
-              ref={hostElement}
+              ref={forwardedRef}
             >
               <div
                 style={contextMenuStyle}
+                ref={hostElement}
                 id={id}
                 className={this._classNames.container}
                 tabIndex={shouldFocusOnContainer ? 0 : -1}

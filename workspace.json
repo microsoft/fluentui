@@ -126,7 +126,11 @@
     },
     "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
-    "@fluentui/react-checkbox": { "root": "packages/react-checkbox", "projectType": "library" },
+    "@fluentui/react-checkbox": {
+      "root": "packages/react-checkbox",
+      "projectType": "library",
+      "sourceRoot": "packages/react-checkbox/src"
+    },
     "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
     "@fluentui/react-compose": { "root": "packages/react-compose", "projectType": "library" },
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },

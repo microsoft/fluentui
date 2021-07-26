@@ -127,7 +127,7 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked);
+      act(() => state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked));
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
@@ -165,7 +165,7 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true);
+      act(() => state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true));
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
