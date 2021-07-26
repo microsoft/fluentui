@@ -163,4 +163,19 @@ describe('MenuItemCheckbox', () => {
     // Assert
     expect(setOpen).toHaveBeenCalledTimes(0);
   });
+
+  it('should merge checkmark slot props', () => {
+    // Arrange
+    const className = 'foo';
+    const { container } = render(
+      <MenuItemCheckbox checkmark={{ className }} name="test" value="test">
+        Item
+      </MenuItemCheckbox>,
+    );
+
+    // Assert
+    const slot = container.querySelector(`.${className}`);
+    expect(slot).not.toBeNull();
+    expect(slot?.querySelector('svg')).not.toBeNull();
+  });
 });

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(Menu): merge `checkmark` slot for selectable menu items",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
