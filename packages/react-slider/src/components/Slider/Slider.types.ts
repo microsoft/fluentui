@@ -16,16 +16,6 @@ export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<
   rail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
-   * The area in which the **Slider's** rail allows for the thumb to be dragged.
-   */
-  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * The wrapper for the **Slider's** track.
-   */
-  trackContainer?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
    * The bar showing the current selected area adjacent to the **Slider's** thumb.
    */
   track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
@@ -39,6 +29,11 @@ export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<
    * The draggable icon used to select a given value from the **Slider**.
    */
   thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * The area in which the **Slider's** rail allows for the thumb to be dragged.
+   */
+  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * CSS class name to attach to the root element.
@@ -94,12 +89,12 @@ export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<
 /**
  * Names of the shorthand properties in SliderProps
  */
-export type SliderShorthandProps = 'rail' | 'activeRail' | 'trackContainer' | 'track' | 'thumbContainer' | 'thumb';
+export type SliderShorthandProps = 'rail' | 'activeRail' | 'track' | 'thumbContainer' | 'thumb';
 
 /**
  * Names of SliderProps that have a default value in useSlider
  */
-export type SliderDefaultedProps = 'rail' | 'activeRail' | 'trackContainer' | 'track' | 'thumbContainer' | 'thumb';
+export type SliderDefaultedProps = 'rail' | 'activeRail' | 'track' | 'thumbContainer' | 'thumb';
 
 /**
  * State used in rendering Slider

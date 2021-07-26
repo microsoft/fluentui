@@ -22,24 +22,17 @@ import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
 import { clamp } from './utils/clamp';
 import { getPercent } from './utils/getPercent';
-import { observeResize } from './observeResize';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = [
-  'rail',
-  'trackContainer',
-  'track',
-  'thumbContainer',
-  'thumb',
-  'activeRail',
-];
+export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumbContainer', 'thumb', 'activeRail'];
 
 const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
 
 interface SliderInternalState {
   thumbSize: number;
+  railSize: number;
 }
 
 /**
@@ -68,6 +61,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const disposables = React.useRef<(() => void)[]>([]);
   const internalState = useConst<SliderInternalState>({
     thumbSize: 20,
+    railSize: 280,
   });
   const id = useId('Slider', props.id);
 
@@ -203,16 +197,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     ...positionStyles,
   };
 
-  const trackContainerStyles = {
-    transform: 'scaleX(0.6)',
-    backgroundColor: 'red',
-    left: '10px',
-    right: '20px',
-    width: ' 10px',
-
-    // ...positionStyles,
-  };
-
   const trackStyles = { width: `${valuePercent}%` };
 
   const rootProps: Partial<SliderState> = {
@@ -231,11 +215,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     className: 'ms-Slider-activeRail',
     ref: railRef,
     style: positionStyles,
-  };
-
-  const trackContainerProps: React.HTMLAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-trackContainer',
-    style: trackContainerStyles,
   };
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
@@ -259,14 +238,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
   };
 
-  const onThumbResize = () => {
-    internalState.thumbSize = thumbRef?.current!.getBoundingClientRect().width;
-  };
-
-  useIsomorphicLayoutEffect(() => {
-    observeResize(thumbRef.current, onThumbResize);
-  });
-
   const state = mergeProps(
     {
       ref,
@@ -274,7 +245,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       rail: { as: 'div', children: null, ...railProps },
       activeRail: { as: 'div', children: null, ...activeRailProps },
       track: { as: 'div', children: null, ...trackProps },
-      trackContainer: { as: 'div', children: null, ...trackContainerProps },
       thumbContainer: {
         as: 'div',
         children: null,

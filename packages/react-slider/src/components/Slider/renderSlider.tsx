@@ -9,29 +9,14 @@ import { sliderShorthandProps } from './useSlider';
 export const renderSlider = (state: SliderState) => {
   const { slots, slotProps } = getSlotsCompat(state, sliderShorthandProps);
 
-  //     transform: translate(-50%, -50%); on thumb to center it on its container
   return (
     <slots.root {...slotProps.root}>
       <slots.rail {...slotProps.rail} />
-      <slots.trackContainer {...slotProps.trackContainer}>
-        <slots.track {...slotProps.track} />
-      </slots.trackContainer>
-      <slots.activeRail {...slotProps.activeRail} />
-      {/* <div
-        style={{
-          position: 'absolute',
-          backgroundColor: 'red',
-          opacity: '0.5',
-          left: 50,
-          right: 50,
-          top: 0,
-          bottom: 0,
-        }}
-      > */}
+      <slots.track {...slotProps.track} />
       <slots.thumbContainer {...slotProps.thumbContainer}>
         <slots.thumb {...slotProps.thumb} />
       </slots.thumbContainer>
-      {/* </div> */}
+      <slots.activeRail {...slotProps.activeRail} />
     </slots.root>
   );
 };

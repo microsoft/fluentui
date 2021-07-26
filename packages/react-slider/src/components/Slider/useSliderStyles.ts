@@ -8,11 +8,13 @@ import { SliderState } from './Slider.types';
  */
 const useRootStyles = makeStyles({
   root: theme => ({
-    userSelect: 'none',
     position: 'relative',
-    display: 'inline-flex',
-    height: '25px',
+    height: '20px',
     width: '280px',
+    overflow: 'hidden',
+    userSelect: 'none',
+    display: 'inline-flex',
+    backgroundColor: 'red',
   }),
 
   hover: theme => ({
@@ -35,7 +37,6 @@ const useRootStyles = makeStyles({
 
   focusWithin: theme => ({
     ':focus-within .ms-Slider-track': {
-      // position: 'absolute',
       background: '#0078D4',
 
       [HighContrastSelector]: {
@@ -76,31 +77,16 @@ const useRootStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: theme => ({
+    position: 'absolute',
     height: '4px',
     width: '100%',
+    top: '50%',
+    transform: 'translateY(-50%)',
     background: '#C8C8C8',
     borderRadius: '4px',
     [HighContrastSelector]: {
       border: '1px solid WindowText',
     },
-  }),
-});
-
-/**
- * Styles for the activeRail slot
- */
-const useActiveRailStyles = makeStyles({
-  activeRail: theme => ({
-    position: 'absolute',
-  }),
-});
-
-/**
- * Styles for the track container slot
- */
-const useTrackContainerStyles = makeStyles({
-  trackContainer: theme => ({
-    position: 'absolute',
   }),
 });
 
@@ -111,11 +97,11 @@ const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     height: '4px',
-    width: '5px',
+    top: '50%',
+    transform: 'translateY(-50%)',
     minWidth: '10px',
     background: '#606060',
     borderRadius: '4px',
-
     [HighContrastSelector]: {
       background: 'Highlight',
     },
@@ -128,6 +114,8 @@ const useTrackStyles = makeStyles({
 const useThumbContainerStyles = makeStyles({
   thumbContainer: theme => ({
     position: 'absolute',
+    backgroundColor: 'red',
+    top: '50%',
   }),
 });
 
@@ -141,7 +129,7 @@ const useThumbStyles = makeStyles({
     height: '20px',
     background: '#606060',
     borderRadius: '50%',
-    transform: 'translate(-50%,-40%)',
+    transform: 'translate(-50%,-50%)',
     top: '50%',
     [HighContrastSelector]: {
       background: 'Highlight',
@@ -161,13 +149,21 @@ const useThumbStyles = makeStyles({
 });
 
 /**
+ * Styles for the activeRail slot
+ */
+const useActiveRailStyles = makeStyles({
+  activeRail: theme => ({
+    position: 'absolute',
+  }),
+});
+
+/**
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const activeRailStyles = useActiveRailStyles();
-  const trackContainer = useTrackContainerStyles();
   const trackStyles = useTrackStyles();
   const thumbStyles = useThumbStyles();
   const thumbContainerStyles = useThumbContainerStyles();
@@ -181,16 +177,10 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   );
 
   state.rail.className = mergeClasses(railStyles.rail, state.rail.className);
-
-  state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
-
-  state.trackContainer = mergeClasses(trackStyles.trackContainer, state.trackContainer.className);
-
   state.track.className = mergeClasses(trackStyles.track, state.track.className);
-
   state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
-
   state.thumbContainer.className = mergeClasses(thumbContainerStyles.thumbContainer, state.thumbContainer.className);
+  state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
 
   return state;
 };
