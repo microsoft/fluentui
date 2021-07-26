@@ -2,10 +2,12 @@
   AXECore,
   AbilityAttributes
 } */
+// axe-core severity levels
+type errorSeverity = 'critical' | 'serious' | 'moderate' | 'minor';
 
 export type AccessibilityError = {
-  elementUuid: string | number;
+  elementUuid: string;
   source: string;
   message: string;
-  severity?: string;
+  severity?: errorSeverity;
 };

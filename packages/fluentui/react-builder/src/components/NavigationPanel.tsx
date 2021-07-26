@@ -20,7 +20,7 @@ export type NavigationPanelProps = {
   onDragStart?: (info: any, e: any) => void;
   onGoToParentComponent?: () => void;
   onOpenAddComponentDialog?: (uuid: string, where: string) => void;
-  onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
+  onMoveComponent?: (args: { clientX: number; clientY: number }) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSwitchTab?: (tab: any) => void;
   selectedComponent?: JSONTreeElement;

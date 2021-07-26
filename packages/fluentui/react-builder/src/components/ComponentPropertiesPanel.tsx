@@ -5,20 +5,17 @@ import { Description } from './Description';
 import { Knobs } from './Knobs';
 import { DesignerMode, JSONTreeElement } from './types';
 
+type onPropChangeArgs = {
+  jsonTreeElement: JSONTreeElement;
+  name: string;
+  value: number;
+};
 export type ComponentPropertiesPanelProps = {
-  accessibilityErrors: AccessibilityError[];
+  componentAccessibilityErrors: AccessibilityError[];
   mode: DesignerMode;
   onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
-  onPropChange: ({
-    jsonTreeElement,
-    name,
-    value,
-  }: {
-    jsonTreeElement: JSONTreeElement;
-    name: string;
-    value: number;
-  }) => void;
-  onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
+  onPropChange: (args: onPropChangeArgs) => void;
+  onPropDelete: (args: { jsonTreeElement: JSONTreeElement; name: string }) => void;
   selectedComponentInfo: ComponentInfo;
   selectedJSONTreeElement: JSONTreeElement;
 };
@@ -53,7 +50,7 @@ export const ComponentPropertiesPanel: React.FunctionComponent<ComponentProperti
             onPropDelete={props.onPropDelete}
             info={props.selectedComponentInfo}
             jsonTreeElement={props.selectedJSONTreeElement}
-            elementAccessibilityErrors={props.accessibilityErrors}
+            elementAccessibilityErrors={props.componentAccessibilityErrors}
             onPropUpdate={props.onPropUpdate}
           />
         )}

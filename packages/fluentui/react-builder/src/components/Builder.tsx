@@ -7,6 +7,11 @@ import { DesignerMode, JSONTreeElement } from './types';
 import { DesignerState } from '../state/state';
 import { ComponentInfo } from '../componentInfo/types';
 
+type onPropChangeArgs = {
+  jsonTreeElement: JSONTreeElement;
+  name: string;
+  value: number;
+};
 export type BuilderProps = {
   accessibilityErrors: AccessibilityError[];
   activeTab: string;
@@ -26,18 +31,10 @@ export type BuilderProps = {
   onKeyDown: (e: KeyboardEvent) => void;
   onMoveComponent: (e: MouseEvent) => void;
   onOpenAddComponentDialog?: (uuid: string, where: string) => void;
-  onPropChange: ({
-    jsonTreeElement,
-    name,
-    value,
-  }: {
-    jsonTreeElement: JSONTreeElement;
-    name: string;
-    value: number;
-  }) => void;
-  onPropDelete: ({ jsonTreeElement, name }: { jsonTreeElement: JSONTreeElement; name: string }) => void;
+  onPropChange: (args: onPropChangeArgs) => void;
+  onPropDelete: (args: { jsonTreeElement: JSONTreeElement; name: string }) => void;
   onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
-  onSelectComponent: (jsonTreeElement: any) => void;
+  onSelectComponent: (jsonTreeElement: JSONTreeElement) => void;
   onSourceCodeChange: (code: any, jsonTree: any) => void;
   onSourceCodeError: (code: any, error: any) => void;
   onSwitchTab?: (tab: any) => void;
@@ -95,11 +92,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
       />
 
       <ComponentPropertiesPanel
-        accessibilityErrors={
-          props.selectedComponent
-            ? props.accessibilityErrors?.filter(x => x.elementUuid === props.selectedComponent.uuid)
-            : []
-        }
+        componentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
         mode={props.mode}
         onPropUpdate={props.onPropUpdate}
         onPropChange={props.onPropChange}

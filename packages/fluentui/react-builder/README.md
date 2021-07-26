@@ -4,15 +4,16 @@
 
 ### Requirements
 
-Node JS: `npm install -g npm`
-Yarn: `npm install --global yarn`
+Node
+
+Yarn
 
 ### Getting Started
 
 #### Command line setup
 
 1. Clone the repository.
-2. From the root folder (/fluentui), run `yarn` to install required dependencies. This may take a while.
+2. From the root folder (fluentui), run `yarn` to install required dependencies. This may take a while.
 3. To build the project, run `yarn start:northstar`. Upon success, the builder can be found at `localhost:8080`. Happy building!
 
 ## Features

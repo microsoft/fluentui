@@ -129,7 +129,7 @@ export const Designer: React.FunctionComponent = () => {
   );
 
   const handleSelectComponent = React.useCallback(
-    jsonTreeElement => {
+    (jsonTreeElement: JSONTreeElement) => {
       dispatch({
         type: 'SELECT_COMPONENT',
         component: jsonTreeElement,
@@ -256,8 +256,8 @@ export const Designer: React.FunctionComponent = () => {
   const runAndEvaluateAxe = async (match: (match: RegExpMatchArray) => boolean) => {
     const { violations } = await runAxe();
     const errors = [];
-    violations.forEach(node => {
-      node.nodes.forEach(nodeResult => {
+    violations.forEach(({ nodes }) => {
+      nodes.forEach(nodeResult => {
         const idMatch = nodeResult.html.match(/data-builder-id=\"(.*?)\"/);
         if (match(idMatch)) {
           const results = nodeResult.all.concat(nodeResult.any, nodeResult.none);
@@ -279,6 +279,11 @@ export const Designer: React.FunctionComponent = () => {
       handleDesignerLoaded();
     }, 1000);
   }, [handleDesignerLoaded]);
+
+  const selectedComponentAccessibilityErrors = React.useMemo(
+    () => (selectedComponent ? accessibilityErrors?.filter(error => error.elementUuid === selectedComponent.uuid) : []),
+    [selectedComponent, accessibilityErrors],
+  );
 
   const hotkeys = {
     'Ctrl+c': () => {
@@ -418,7 +423,7 @@ export const Designer: React.FunctionComponent = () => {
         onSwitchTab={handleSwitchTab}
         onSwitchToStore={handleSwitchToStore}
         selectedComponent={selectedComponent}
-        selectedComponentAccessibilityErrors={[]}
+        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
         selectedComponentInfo={selectedComponentInfo}
         selectedJSONTreeElement={selectedJSONTreeElement}
         showJSONTree={showJSONTree}

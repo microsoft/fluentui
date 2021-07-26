@@ -10,41 +10,42 @@ export type ErrorPanelProps = {
 export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAccessibilityErrors }) => {
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
   const uuid = elementAccessibilityErrors[0].elementUuid;
-  const errorPanelTitle = (
-    <div style={{ display: 'flex', flexFlow: 'row nowrap', padding: '2px', marginLeft: '.05em' }}>
-      <ErrorIcon size="medium" style={{ marginRight: '0.5rem', alignSelf: 'center' }} />
-      {numberAccessibilityErrors} Accessibility {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
-    </div>
-  );
 
-  const errorPanelContent = (
-    <List
-      styles={{ listStyleType: 'upper-roman' }}
-      items={elementAccessibilityErrors.map(error => (
-        <div style={{ display: 'list-item', listStyle: 'outside' }}>
-          {error.message}
-          <br style={{ display: 'block', margin: '100vh' }} />
-          <Label
-            style={{ marginTop: '.33vh', marginBottom: '1vh', fontSize: '.25em', color: '#606060' }}
-            color={'grey'}
-            content={error.source}
-            fluid
-          />
-        </div>
-      ))}
-    />
-  );
-
-  const panels = [
-    {
-      key: `accessibility-errors-${uuid}`,
-      title: {
-        'aria-level': 4,
-        content: errorPanelTitle,
+  const panels = React.useMemo(() => {
+    const errorPanelTitle = (
+      <div style={{ display: 'flex', flexFlow: 'row nowrap', padding: '2px', marginLeft: '.05em' }}>
+        <ErrorIcon size="medium" style={{ marginRight: '0.5rem', alignSelf: 'center' }} />
+        {numberAccessibilityErrors} Accessibility {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
+      </div>
+    );
+    const errorPanelContent = (
+      <List
+        styles={{ listStyleType: 'upper-roman' }}
+        items={elementAccessibilityErrors.map(error => (
+          <div style={{ display: 'list-item', listStyle: 'outside' }}>
+            {error.message}
+            <br style={{ display: 'block', margin: '100vh' }} />
+            <Label
+              style={{ marginTop: '.33vh', marginBottom: '1vh', fontSize: '.25em', color: '#606060' }}
+              color={'grey'}
+              content={error.source}
+              fluid
+            />
+          </div>
+        ))}
+      />
+    );
+    return [
+      {
+        key: `accessibility-errors-${uuid}`,
+        title: {
+          'aria-level': 4,
+          content: errorPanelTitle,
+        },
+        content: errorPanelContent,
       },
-      content: errorPanelContent,
-    },
-  ];
+    ];
+  }, [elementAccessibilityErrors, numberAccessibilityErrors, uuid]);
 
   return (
     <div
