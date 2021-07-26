@@ -9,7 +9,9 @@ export type DragChangeEvent = React.MouseEvent | React.TouchEvent | MouseEvent |
 /**
  * Slider Props
  */
-export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export interface SliderProps
+  extends ComponentPropsCompat,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
   /**
    * The **Slider's** base. It is used to visibly display the min and max selectable values.
    */

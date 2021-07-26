@@ -8,13 +8,13 @@ import { SliderState } from './Slider.types';
  */
 const useRootStyles = makeStyles({
   root: theme => ({
+    '--slider-thumb-size': '20px',
     position: 'relative',
-    height: '30px',
+    height: 'var(--slider-thumb-size)',
     width: '280px',
     overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
-    '--slider-thumb-size': '20px',
   }),
 
   hover: theme => ({
@@ -122,8 +122,8 @@ const useThumbStyles = makeStyles({
     ':after': {
       content: '""',
       position: 'absolute',
-      width: '20px',
-      height: '20px',
+      width: 'var(--slider-thumb-size)',
+      height: 'var(--slider-thumb-size)',
       top: '50%',
       background: '#606060',
       borderRadius: '50%',

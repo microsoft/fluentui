@@ -6,8 +6,8 @@ import { Meta } from '@storybook/react';
 
 const useStyles = makeStyles({
   root: {
-    width: '100px',
-    backgroundColor: 'red',
+    width: '300px',
+    '--slider-thumb-size': '30px',
   },
 });
 
@@ -23,6 +23,8 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
+      <Label>Custom Styles</Label>
+      <Slider className={styles.root} />
     </div>
   );
 };

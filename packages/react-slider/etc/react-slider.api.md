@@ -4,34 +4,63 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export const renderSlider: (state: any) => JSX.Element;
+export const clamp: (value: number, min: number, max: number) => number;
+
+// @public
+export type DragChangeEvent = React_2.MouseEvent | React_2.TouchEvent | MouseEvent | TouchEvent;
+
+// @public
+export const getPercent: (value: number, min: number, max: number) => number;
+
+// @public
+export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
 export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type SliderDefaultedProps = never;
+export type SliderDefaultedProps = 'rail' | 'track' | 'thumb' | 'activeRail';
 
 // @public
-export interface SliderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+    activeRail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    ariaValueText?: (value: number) => string;
+    as?: React_2.ElementType;
+    className?: string;
+    defaultValue?: number;
+    max?: number;
+    min?: number;
+    onChange?: (value: number, ev?: DragChangeEvent) => void;
+    rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    snapToStep?: boolean;
+    step?: number;
+    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    value?: number;
 }
 
 // @public
-export type SliderShorthandProps = never;
+export type SliderShorthandProps = 'rail' | 'track' | 'thumb' | 'activeRail';
 
 // @public
 export const sliderShorthandProps: SliderShorthandProps[];
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => any;
+export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
 
 // @public
-export const useSliderStyles: (state: any) => any;
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => SliderState;
 
+// @public
+export const useSliderStyles: (state: SliderState) => SliderState;
 
 // (No @packageDocumentation comment for this package)
 
