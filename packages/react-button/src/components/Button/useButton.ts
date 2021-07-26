@@ -6,7 +6,7 @@ import { useButtonState } from './useButtonState';
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandPropsCompat: ButtonShorthandPropsCompat[] = ['children', 'icon'];
+export const buttonShorthandPropsCompat: ButtonShorthandPropsCompat[] = ['icon'];
 
 const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandPropsCompat });
 

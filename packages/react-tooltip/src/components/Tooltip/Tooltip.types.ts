@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Position, Alignment } from '@fluentui/react-positioning';
+import { Position, Alignment, PopperVirtualElement } from '@fluentui/react-positioning';
 import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
@@ -13,7 +13,10 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * Alternatively, children can be a render function that takes the props and adds
    * them to the appropriate elements.
    */
-  children: React.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React.ReactNode);
+  children?:
+    | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
+    | ((props: TooltipTriggerProps) => React.ReactNode)
+    | null;
 
   /**
    * The content displayed inside the tooltip.
@@ -36,14 +39,25 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
   align?: Alignment;
 
   /**
-   * Color variant with a subtle look
+   * Optional. The target element that the tooltip uses for positioning.
+   *
+   * By default, the target is the tooltip's child element.
    */
-  subtle?: boolean;
+  target?: HTMLElement | PopperVirtualElement | null;
 
   /**
-   * Do not render an arrow pointing to the target element
+   * Color variant with inverted colors
+   *
+   * @defaultvalue false
    */
-  noArrow?: boolean;
+  inverted?: boolean;
+
+  /**
+   * Render an arrow pointing to the target element
+   *
+   * @defaultvalue false
+   */
+  pointing?: boolean;
 
   /**
    * Distance between the tooltip and the target element, in pixels
@@ -51,6 +65,24 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * @defaultvalue 4
    */
   offset?: number;
+
+  /**
+   * Control the tooltip's visibility programatically.
+   *
+   * This can be used in conjunction with onVisibleChange to modify the tooltip's show and hide behavior.
+   *
+   * If not provided, the visibility will be controlled by the tooltip itself, based on hover and focus events on the
+   * trigger (child) element.
+   */
+  visible?: boolean;
+
+  /**
+   * Notification when the visibility of the tooltip is changing
+   */
+  onVisibleChange?: (
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
+    data: OnVisibleChangeData,
+  ) => void;
 
   /**
    * Specifies which aria attribute to set on the trigger element.
@@ -62,13 +94,6 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * @defaultvalue label
    */
   triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
-
-  /**
-   * Only show the tooltip if the target element's children are truncated (overflowing).
-   *
-   * @defaultvalue false
-   */
-  onlyIfTruncated?: boolean;
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -83,23 +108,25 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * @defaultvalue 250
    */
   hideDelay?: number;
-
-  /**
-   * A ref to an alternative element that the tooltip should be anchored to.
-   *
-   * @defaultvalue The child element (the element that triggered the tooltip).
-   */
-  targetRef?: React.RefObject<HTMLElement>;
 }
 
 /**
  * The properties that are added to the trigger of the Tooltip
  * {@docCategory Tooltip}
  */
-export type TooltipTriggerProps = Pick<
+export type TooltipTriggerProps = {
+  ref?: React.Ref<never>;
+} & Pick<
   React.HTMLAttributes<HTMLElement>,
   'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'
 >;
+
+/**
+ * Data for the Tooltip's onVisibleChange event.
+ */
+export interface OnVisibleChangeData {
+  visible: boolean;
+}
 
 /**
  * Names of the shorthand properties in TooltipProps
@@ -130,11 +157,6 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
   ref: React.Ref<HTMLElement>;
 
   /**
-   * Whether the tooltip is currently displayed.
-   */
-  readonly visible: boolean;
-
-  /**
    * Whether the tooltip should be rendered to the DOM.
    *
    * Normally the tooltip will only be rendered when visible. However, if
@@ -142,7 +164,7 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
    * always be rendered even when hidden so that those aria attributes
    * to always refer to a valid DOM element.
    */
-  shouldRenderTooltip: boolean;
+  shouldRenderTooltip?: boolean;
 
   /**
    * Ref to the arrow element
