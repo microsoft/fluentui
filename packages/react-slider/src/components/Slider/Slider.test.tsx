@@ -97,7 +97,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -124,7 +124,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -156,7 +156,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -204,7 +204,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       sliderRail.simulate('keydown', { which: KeyCodes.up });
 
@@ -223,7 +223,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       sliderRail.simulate('keydown', { which: KeyCodes.up });
       sliderRail.simulate('keydown', { which: KeyCodes.up });
@@ -244,7 +244,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       sliderRail.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current?.value).toEqual(47);
@@ -261,7 +261,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       sliderRail.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current?.value).toEqual(50.001);
@@ -304,7 +304,7 @@ describe('Slider', () => {
 
   it('applies (aria-valuenow)', () => {
     safeMount(<Slider defaultValue={3} />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       sliderRail.simulate('keydown', { which: KeyCodes.right });
 
@@ -315,7 +315,7 @@ describe('Slider', () => {
 
       sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 87, clientY: 32 });
 
-      expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(8.7);
+      expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(10);
     });
   });
 
@@ -335,7 +335,7 @@ describe('Slider', () => {
     const eventHandler = jest.fn();
 
     safeMount(<Slider role="test" onKeyDown={eventHandler} />, component => {
-      const sliderRail = component.find('.ms-Slider-rail');
+      const sliderRail = component.find('.ms-Slider-root');
 
       expect(eventHandler).toBeCalledTimes(0);
       sliderRail.simulate('keydown', { which: KeyCodes.up });

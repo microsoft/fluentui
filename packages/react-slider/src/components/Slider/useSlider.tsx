@@ -13,7 +13,7 @@ import {
 } from '@fluentui/keyboard-key';
 import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
-import { useMount } from '../../../../react-hooks/lib/useMount';
+import { useMount } from '@fluentui/react-hooks';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
@@ -267,6 +267,21 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   return state;
 };
 
+// React.useImperativeHandle(
+//   ref,
+//   () => ({
+//     get value() {
+//       return currentValue;
+//     },
+//     focus() {
+//       if (thumbRef.current) {
+//         thumbRef.current.focus();
+//       }
+//     },
+//   }),
+//   [currentValue, thumbRef],
+// );
+
 // if (theme.rtl !== undefined) {
 //   return theme.rtl;
 // }
@@ -287,18 +302,3 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
 // return !!_isRTL;
 // }
-
-// React.useImperativeHandle(
-//   ref,
-//   () => ({
-//     get value() {
-//       return currentValue;
-//     },
-//     focus() {
-//       if (thumbRef.current) {
-//         thumbRef.current.focus();
-//       }
-//     },
-//   }),
-//   [currentValue, thumbRef],
-// );
