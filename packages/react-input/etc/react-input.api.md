@@ -4,28 +4,36 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
 export const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public
-export type InputDefaultedProps = never;
-
-// @public
-export interface InputProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+// @public (undocumented)
+export interface InputCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> {
 }
 
 // @public
-export type InputShorthandProps = never;
+export interface InputProps extends ComponentProps<Partial<InputSlots>>, Partial<InputCommons> {
+}
 
 // @public
-export const inputShorthandProps: InputShorthandProps[];
+export const inputShorthandProps: (keyof InputSlots)[];
+
+// @public (undocumented)
+export type InputSlots = {
+    input: React_2.InputHTMLAttributes<HTMLInputElement>;
+    inputWrapper: React_2.HTMLAttributes<HTMLElement>;
+    bookendBefore: React_2.HTMLAttributes<HTMLElement>;
+    bookendAfter: React_2.HTMLAttributes<HTMLElement>;
+    insideStart: React_2.HTMLAttributes<HTMLElement>;
+    insideEnd: React_2.HTMLAttributes<HTMLElement>;
+};
 
 // @public
-export interface InputState extends ComponentStateCompat<InputProps, InputShorthandProps, InputDefaultedProps> {
+export interface InputState extends ComponentState<InputSlots>, InputCommons {
     ref: React_2.Ref<HTMLElement>;
 }
 
@@ -33,11 +41,10 @@ export interface InputState extends ComponentStateCompat<InputProps, InputShorth
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>, defaultProps?: InputProps | undefined) => InputState;
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;
-
 
 // (No @packageDocumentation comment for this package)
 

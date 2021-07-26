@@ -2,6 +2,144 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.31",
+            "author": "olfedias@microsoft.com",
+            "commit": "8c249a1c1a8dcc4b0d9877e5d5e8e6d126063788",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.33",
+            "author": "olfedias@microsoft.com",
+            "commit": "19db6cb57a237073b0bb50d07eb921b1ce2e0c61",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change visual defaults for tooltip. Replace `subtle` prop with `inverted`, and `noArrow` with `pointing`",
+            "author": "behowell@microsoft.com",
+            "commit": "88d001eab596145d095a32d2911e9cf88648902e",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Replace onlyIfTruncated with onBeforeShow event. Add onShow/onHide events. Add TooltipImperativeApi to programatically show/hide tooltip.",
+            "author": "behowell@microsoft.com",
+            "commit": "d38109a7fd40e187aca862046219cf9a7ca66131",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.59",
+      "version": "9.0.0-alpha.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move useTimeout into react-utilities",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "none": [
+          {
+            "comment": "react-tooltip migration to new DX",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "e2360defc46ab144907bcd01b12e76fe35c4edbf",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.58",
+      "version": "9.0.0-alpha.58",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix tooltip styling broken by a change in makeStyles",
+            "author": "behowell@microsoft.com",
+            "commit": "ebe7ee3a98fef921bad5fb998ff40a62a479bd79",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Sync babel-make-styles with published version",
+            "author": "elcraig@microsoft.com",
+            "commit": "d57f601738c32dfa1e651529d8edfec10a6b46b7",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "add bundle size fixtures",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.28",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.30",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.34",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.17",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.49",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.33",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Jul 2021 22:53:17 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.57",
       "version": "9.0.0-alpha.57",

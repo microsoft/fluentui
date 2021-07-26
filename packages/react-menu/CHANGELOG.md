@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.55)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.54..@fluentui/react-menu_v9.0.0-alpha.55)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.46 ([PR #18968](https://github.com/microsoft/fluentui/pull/18968) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.54)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.53..@fluentui/react-menu_v9.0.0-alpha.54)
+
+### Changes
+
+- Update theme tokens ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.53)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.52..@fluentui/react-menu_v9.0.0-alpha.53)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.29 ([PR #19038](https://github.com/microsoft/fluentui/pull/19038) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.52)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.51..@fluentui/react-menu_v9.0.0-alpha.52)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.28 ([PR #18998](https://github.com/microsoft/fluentui/pull/18998) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.51)
 

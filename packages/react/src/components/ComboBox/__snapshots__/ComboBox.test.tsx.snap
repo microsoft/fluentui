@@ -995,7 +995,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         border-width: 1px;
                         border: 1px solid transparent;
                         box-sizing: border-box;
-                        color: #201f1e;
+                        color: #000000;
                         cursor: pointer;
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
