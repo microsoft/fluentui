@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Enabling Callout to revaluate position after width and height modifications are made.",
-  "packageName": "@fluentui/react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}

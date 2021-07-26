@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix crash in ContextualMenu when Callout component is loaded asynchronously",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

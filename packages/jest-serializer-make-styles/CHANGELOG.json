@@ -2,6 +2,21 @@
   "name": "@fluentui/jest-serializer-make-styles",
   "entries": [
     {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.52",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "aa570c511fdcef015696f07182af8bb251311406",
+            "package": "@fluentui/jest-serializer-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jul 2021 07:38:19 GMT",
       "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.27",
       "version": "9.0.0-alpha.27",
