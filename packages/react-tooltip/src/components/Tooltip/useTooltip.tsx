@@ -99,7 +99,7 @@ export const useTooltip = (
     position: state.position,
     align: state.align,
     target: state.target,
-    offset: [0, state.offset + (state.noArrow ? 0 : arrowHeight)],
+    offset: [0, state.offset + (state.pointing ? arrowHeight : 0)],
     arrowPadding: 2 * tooltipBorderRadius,
   });
 

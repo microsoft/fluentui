@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-popver: fix Default story issue caused by storybook migration",
-  "packageName": "@fluentui/react-popover",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

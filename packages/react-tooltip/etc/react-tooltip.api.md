@@ -35,12 +35,12 @@ export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttribut
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
     hideDelay?: number;
-    noArrow?: boolean;
+    inverted?: boolean;
     offset?: number;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    pointing?: boolean;
     position?: Position;
     showDelay?: number;
-    subtle?: boolean;
     target?: HTMLElement | PopperVirtualElement | null;
     triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
     visible?: boolean;
