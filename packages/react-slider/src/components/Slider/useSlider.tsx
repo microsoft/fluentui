@@ -53,7 +53,17 @@ export const getPercent = (value: number, min: number, max: number) => {
  * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
-  const { as = 'div', value, defaultValue = 0, min = 0, max = 10, step = 1, ariaValueText, onChange } = props;
+  const {
+    as = 'div',
+    value,
+    defaultValue = 0,
+    min = 0,
+    max = 10,
+    step = 1,
+    snapToStep = false,
+    ariaValueText,
+    onChange,
+  } = props;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [currentValue, setCurrentValue] = useControllableValue<any, any, any>(
@@ -126,7 +136,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   );
 
   const onDrag = (ev: DragChangeEvent): void => {
-    updateValue(ev, min + step * calculateSteps(ev));
+    if (snapToStep || step !== 1) {
+      updateValue(ev, Math.round((min + step * calculateSteps(ev)) / step) * step);
+    } else {
+      updateValue(ev, min + step * calculateSteps(ev));
+    }
   };
 
   const onThumbReleased = (): void => {

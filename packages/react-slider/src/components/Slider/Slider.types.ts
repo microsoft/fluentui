@@ -71,6 +71,12 @@ export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<
   step?: number;
 
   /**
+   * Whether the thumb will snap to the closest value while moving the **Slider**.
+   * @default `false` (renders with smooth gliding)
+   */
+  snapToStep?: boolean;
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (value: number, ev?: DragChangeEvent) => void;
