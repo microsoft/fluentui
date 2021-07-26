@@ -41,7 +41,6 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.49",
     "@fluentui/react-utilities": "^9.0.0-alpha.33",
-    "@fluentui/react-icons-mdl2": "^1.1.6",
     "@fluentui/react-label": "^9.0.0-alpha.18",
     "@fluentui/react-tabster": "^9.0.0-alpha.43",
     "tslib": "^2.1.0"

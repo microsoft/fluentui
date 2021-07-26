@@ -2,13 +2,14 @@ import * as React from 'react';
 import {
   makeMergeProps,
   resolveShorthandProps,
-  useControllableValue,
+  useControllableState,
   useId,
   useIsomorphicLayoutEffect,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
-import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
 import { Label } from '@fluentui/react-label';
+import { DefaultCheckmarkIcon, DefaultMixedIcon } from './DefaultIcons';
 
 /**
  * Array of all shorthand properties listed in CheckboxShorthandProps
@@ -32,69 +33,75 @@ export const useCheckbox = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CheckboxProps,
 ): CheckboxState => {
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
-
-  const DefaultMixedIcon = () => (
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100%" height="100%" />
-    </svg>
-  );
-
-  const onChange = () => {
-    if (isChecked === 'mixed') {
-      setIsChecked(false);
-    } else {
-      setIsChecked(!isChecked);
-    }
-  };
-
   const state = mergeProps(
     {
       ref,
       id: useId('checkbox-'),
       size: 'medium',
-      labelPosition: 'end',
-      checked: isChecked ? isChecked : false,
+      labelPosition: 'after',
       label: {
         as: Label,
-        required: props.required,
-        disabled: props.disabled,
       },
       indicator: {
         as: 'div',
-        children: isChecked === 'mixed' ? <DefaultMixedIcon /> : <CheckMarkIcon />,
       },
       input: {
         as: 'input',
-        ref: React.useRef<HTMLInputElement>(null),
         type: 'checkbox',
-        checked: isChecked === true,
-        onChange: onChange,
         children: null,
-        disabled: !!props.disabled,
-        required: !!props.required,
-        'aria-disabled': props.disabled,
-        'aria-checked': isChecked === undefined ? false : isChecked,
       },
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
-  const inputRef = state.input.ref;
+  const [checked, setCheckedInternal] = useControllableState({
+    defaultState: props.defaultChecked,
+    state: props.checked,
+    initialState: false,
+  });
 
-  useComponentRef(ref, isChecked, inputRef);
+  const setChecked = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>, val: boolean | 'mixed') => {
+      const onChange = state.onChange;
+      onChange?.(ev, { checked: val });
+      setCheckedInternal(val);
+    },
+    [state.onChange, setCheckedInternal],
+  );
+  state.input.checked = checked === true;
+  state.checked = checked ? checked : false;
+  state.indicator.children = checked === 'mixed' ? <DefaultMixedIcon /> : <DefaultCheckmarkIcon />;
+
+  const userOnChange = state.input.onChange;
+  state.input.onChange = React.useCallback(
+    ev => {
+      userOnChange?.(ev);
+      setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
+    },
+    [userOnChange, setChecked],
+  );
+
+  if (state.disabled !== undefined) {
+    state.label.disabled = state.disabled;
+    state.input.disabled = state.disabled;
+  }
+
+  if (state.required !== undefined) {
+    state.label.required = state.required;
+    state.input.required = state.required;
+  }
 
   if (!state.label.htmlFor) {
     state.label.htmlFor = state.id;
   }
 
-  if (state.input) {
-    state.input.id = state.id;
-  }
+  state.input.id = state.id;
   state.id = state.rootId;
 
-  const isMixed = isChecked === 'mixed';
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  state.input.ref = useMergedRefs(state.input.ref, inputRef);
+  const isMixed = checked === 'mixed';
   useIsomorphicLayoutEffect(() => {
     if (inputRef.current) {
       inputRef.current.indeterminate = isMixed;
@@ -102,30 +109,4 @@ export const useCheckbox = (
   }, [isMixed]);
 
   return state;
-};
-
-const useComponentRef = (
-  ref: React.Ref<HTMLElement>,
-  isChecked: 'mixed' | boolean | undefined,
-  inputRef: React.RefObject<HTMLInputElement>,
-) => {
-  React.useImperativeHandle(
-    () => {
-      ref;
-    },
-    () => ({
-      get checked() {
-        return isChecked;
-      },
-      get indeterminate() {
-        return isChecked === 'mixed';
-      },
-      focus() {
-        if (inputRef.current) {
-          inputRef.current.focus();
-        }
-      },
-    }),
-    [inputRef, isChecked],
-  );
 };

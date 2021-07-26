@@ -28,16 +28,6 @@ const useStyles = makeStyles({
     }),
     { selector: 'focus-within' },
   ),
-
-  medium: {
-    width: '16px',
-    height: '16px',
-  },
-
-  large: {
-    width: '20px',
-    height: '20px',
-  },
 });
 
 const useInputStyle = makeStyles({
@@ -64,13 +54,23 @@ const useBoxStyles = makeStyles({
     borderRadius: theme.global.borderRadius.small,
   }),
 
+  medium: {
+    width: '16px',
+    height: '16px',
+  },
+
+  large: {
+    width: '20px',
+    height: '20px',
+  },
+
   // TODO: change marginLeft to Spacing horizontal M once it's added
-  start: theme => ({
+  before: theme => ({
     marginLeft: '12px',
   }),
 
   // TODO: change marginRight to Spacing horizontal M once it's added
-  end: theme => ({
+  after: theme => ({
     marginRight: '12px',
   }),
 
@@ -153,7 +153,7 @@ const useIndicatorStyles = makeStyles({
   // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
   checked: theme => ({
     opacity: 1,
-    color: theme.alias.color.neutral.neutralForegroundInverted,
+    fill: theme.alias.color.neutral.neutralForegroundInverted,
   }),
 
   mixed: theme => ({
@@ -191,22 +191,10 @@ const useLabelStyles = makeStyles({
 
   checked: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
-    ':hover': {
-      color: theme.alias.color.neutral.neutralForeground1,
-    },
-    ':active': {
-      color: theme.alias.color.neutral.neutralForeground1,
-    },
   }),
 
   mixed: theme => ({
-    color: theme.alias.color.neutral.neutralForeground3,
-    ':hover': {
-      color: theme.alias.color.neutral.neutralForeground3,
-    },
-    ':active': {
-      color: theme.alias.color.neutral.neutralForeground3,
-    },
+    color: theme.alias.color.neutral.neutralForeground1,
   }),
 });
 
@@ -215,31 +203,29 @@ const useLabelStyles = makeStyles({
  */
 export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const checkedState = state.checked === 'mixed' ? 'mixed' : state.checked ? 'checked' : 'unchecked';
+  const indicatorStyles = useIndicatorStyles();
+  const labelStyles = useLabelStyles();
+  const inputStyles = useInputStyle();
+  const boxStyles = useBoxStyles();
   const styles = useStyles();
 
   state.className = mergeClasses(styles.root, styles.focusIndictor, state.className);
 
-  const inputStyles = useInputStyle();
-
   state.input.className = mergeClasses(
-    styles[state.size],
+    boxStyles[state.size],
     inputStyles.input,
     state.disabled && inputStyles.disabled,
     state.input.className,
   );
 
-  const boxStyles = useBoxStyles();
-
   state.checkboxClassName = mergeClasses(
     boxStyles.box,
-    styles[state.size],
+    boxStyles[state.size],
     !!state.label.children && boxStyles[state.labelPosition],
     !state.disabled && boxStyles[checkedState],
     state.disabled && boxStyles.disabled,
     state.circular && boxStyles.circular,
   );
-
-  const indicatorStyles = useIndicatorStyles();
 
   state.indicator.className = mergeClasses(
     indicatorStyles[state.size],
@@ -248,8 +234,6 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
     !state.disabled && indicatorStyles[checkedState],
     state.indicator.className,
   );
-
-  const labelStyles = useLabelStyles();
 
   state.label.className = mergeClasses(
     labelStyles.label,

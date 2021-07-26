@@ -7,7 +7,7 @@ import { LabelProps } from '@fluentui/react-label';
  */
 export interface CheckboxProps
   extends Omit<ComponentPropsCompat, 'children'>,
-    Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
+    Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
   /**
    * Label that will be rendered next to the input.
    */
@@ -21,7 +21,7 @@ export interface CheckboxProps
   /**
    * Hidden input that handles the checkbox's functionality.
    */
-  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & { ref: React.RefObject<HTMLInputElement> }>;
+  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 
   /**
    * Disabled state of the checkbox.
@@ -56,10 +56,10 @@ export interface CheckboxProps
   size?: 'medium' | 'large';
 
   /**
-   * Determines whether the label should be positioned before (start) or after (end) the checkbox.
-   * @defaultvalue 'end'
+   * Determines whether the label should be positioned before or after the checkbox.
+   * @defaultvalue 'after'
    */
-  labelPosition?: 'start' | 'end';
+  labelPosition?: 'before' | 'after';
 
   /**
    * ID of the root element that wraps the checkbox and label.
@@ -74,14 +74,14 @@ export interface CheckboxProps
   /**
    * Callback to be called when the checked state value changes.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
+  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
 }
 
 /**
  * Data for the onChange event for checkbox.
  */
 export interface CheckboxOnChangeData {
-  checked?: 'mixed' | boolean;
+  checked: 'mixed' | boolean;
 }
 
 /**
@@ -92,7 +92,7 @@ export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
  */
-export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition' | 'checked';
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition';
 
 /**
  * State used in rendering Checkbox
