@@ -183,13 +183,14 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`jest config updates`, () => {
+    function getProjectJestConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      return tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
+    }
+
     it(`should setup new local jest config which extends from root `, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      function getJestConfig() {
-        return tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
-      }
 
-      let jestConfig = getJestConfig();
+      let jestConfig = getProjectJestConfig(projectConfig);
 
       expect(jestConfig).toMatchInlineSnapshot(`
         "const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
@@ -205,7 +206,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      jestConfig = getJestConfig();
+      jestConfig = getProjectJestConfig(projectConfig);
 
       expect(jestConfig).toMatchInlineSnapshot(`
         "// @ts-check
@@ -230,6 +231,70 @@ describe('migrate-converged-pkg generator', () => {
         snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
         };"
       `);
+    });
+
+    it(`should add 'snapshotSerializers' to jest.config.js only when needed`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      function removePkgDependenciesThatTriggerSnapshotSerializersAddition() {
+        const workspaceConfig = readWorkspaceConfiguration(tree);
+        const packagesThatTriggerAddingSnapshots = [`@${workspaceConfig.npmScope}/react-make-styles`];
+
+        updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+          packagesThatTriggerAddingSnapshots.forEach(pkgName => {
+            delete (json.dependencies ?? {})[pkgName];
+          });
+
+          return json;
+        });
+      }
+
+      removePkgDependenciesThatTriggerSnapshotSerializersAddition();
+
+      await generator(tree, options);
+
+      const jestConfig = getProjectJestConfig(projectConfig);
+
+      expect(jestConfig).not.toContain('snapshotSerializers');
+    });
+
+    it(`should create local ./config/tests.js file if missing that is used for "setupFilesAfterEnv"`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const jestSetupFilePath = `${projectConfig.root}/config/tests.js`;
+      function getJestSetupFile() {
+        return tree.read(jestSetupFilePath)?.toString('utf-8');
+      }
+
+      let content = getJestSetupFile();
+      expect(content).toMatchInlineSnapshot(`
+        "/** Jest test setup file. */
+
+        const { configure } = require('enzyme');
+        const Adapter = require('enzyme-adapter-react-16');
+
+        // Configure enzyme.
+        configure({ adapter: new Adapter() });"
+      `);
+
+      await generator(tree, options);
+
+      content = getJestSetupFile();
+      expect(content).toMatchInlineSnapshot(`
+        "/** Jest test setup file. */
+
+        const { configure } = require('enzyme');
+        const Adapter = require('enzyme-adapter-react-16');
+
+        // Configure enzyme.
+        configure({ adapter: new Adapter() });"
+      `);
+
+      tree.delete(jestSetupFilePath);
+      expect(tree.exists(jestSetupFilePath)).toBeFalsy();
+
+      await generator(tree, options);
+
+      content = getJestSetupFile();
+      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
     });
 
     it(`should add project to root jest.config.js`, async () => {
@@ -700,11 +765,21 @@ function setupDummyPackage(
 
       module.exports = config;
     `,
+    jestSetupFile: stripIndents`
+     /** Jest test setup file. */
+
+    const { configure } = require('enzyme');
+    const Adapter = require('enzyme-adapter-react-16');
+
+    // Configure enzyme.
+    configure({ adapter: new Adapter() });
+    `,
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
+  tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
 
   addProjectConfiguration(tree, pkgName, {
     root: paths.root,
