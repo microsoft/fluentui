@@ -36,6 +36,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix hover styles for Splitbutton Toggle button part @TanelVari ([#18976](https://github.com/microsoft/fluentui/pull/18976))
 - Fix `Carousel` navigation item click @chassunc ([#19019](https://github.com/microsoft/fluentui/pull/19019))
 - Fix `Skeleton` background colors @chassunc ([#19057](https://github.com/microsoft/fluentui/pull/19057))
+- Fix `Carousel` glitch in last slide @chassunc ([#19129](https://github.com/microsoft/fluentui/pull/19129))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
