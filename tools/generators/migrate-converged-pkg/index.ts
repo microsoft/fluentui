@@ -110,7 +110,10 @@ const templates = {
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
   },
-  jest: (options: { pkgName: string }) => stripIndents`
+  jestSetup: stripIndents`
+   /** Jest test setup file. */
+  `,
+  jest: (options: { pkgName: string; addSnapshotSerializers: boolean; testSetupFilePath: string }) => stripIndents`
       // @ts-check
 
       /**
@@ -129,8 +132,8 @@ const templates = {
           '^.+\\.tsx?$': 'ts-jest',
         },
         coverageDirectory: './coverage',
-        setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+        setupFilesAfterEnv: ['${options.testSetupFilePath}'],
+        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],` : ''}
       };
   `,
   storybook: {
@@ -395,7 +398,25 @@ function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedS
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.jestConfig, templates.jest({ pkgName: options.normalizedPkgName }));
+  const jestSetupFilePath = joinPathFragments(options.paths.configRoot, 'tests.js');
+  const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
+
+  const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  packageJson.dependencies = packageJson.dependencies ?? {};
+
+  const config = {
+    pkgName: options.normalizedPkgName,
+    addSnapshotSerializers: Object.keys(packageJson.dependencies).some(pkgDepName =>
+      packagesThatTriggerAddingSnapshots.includes(pkgDepName),
+    ),
+    testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
+  };
+
+  tree.write(options.paths.jestConfig, templates.jest(config));
+
+  if (!tree.exists(jestSetupFilePath)) {
+    tree.write(jestSetupFilePath, templates.jestSetup);
+  }
 
   return tree;
 }
