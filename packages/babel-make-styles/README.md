@@ -120,13 +120,11 @@ Using `yarn workspace` from the root of the repo
 ```sh
 $ DEBUG=linaria\* LINARIA_LOG=debug yarn workspace <package-name> build
 ```
-
 On Windows it's required to set environment variables via [`set`](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1) or you can use `cross-env`, for example:
 
 ```sh
 $ yarn cross-env DEBUG=linaria\* LINARIA_LOG=debug yarn workspace <package-name> build
 ```
-
 The debug output will include:
 
 - Transformed code
