@@ -51,7 +51,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         borderWidth,
         borderStyle: 'solid',
         borderColor: v.borderColor,
-        boxShadow: v.boxShadow,
+        ...(!p.flat && {
+          boxShadow: v.boxShadow,
+        }),
 
         ':hover': {
           color: v.colorHover,
@@ -131,7 +133,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           color: v.primaryColor,
           backgroundColor: v.primaryBackgroundColor,
           borderColor: v.primaryBorderColor,
-          boxShadow: v.primaryBoxShadow,
+          ...(!p.flat && {
+            boxShadow: v.primaryBoxShadow,
+          }),
 
           ...(!p.disabledFocusable && {
             ':active': {
