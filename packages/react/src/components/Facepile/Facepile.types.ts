@@ -23,7 +23,7 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
 
   /**
    * Whether the default Tooltip is shown using the title prop or a user defined Tooltip is shown
-   * @defaultvalue false
+   * @defaultvalue true
    */
   showTooltip?: boolean;
 

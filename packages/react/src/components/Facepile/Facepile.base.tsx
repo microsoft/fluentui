@@ -50,7 +50,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       overflowPersonas,
       showAddButton,
       ariaLabel,
-      showTooltip = false,
+      showTooltip = true,
     } = this.props;
 
     const { _classNames } = this;
