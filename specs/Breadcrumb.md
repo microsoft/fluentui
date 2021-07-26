@@ -85,6 +85,6 @@ const BreadcrumbDivider = () => <span aria-hidden="true">{children}</span>;
 
 The following is a set of keys that interact with the `Link` component:
 
-| Key   | Description                         |
-| ----- | ----------------------------------- |
+| Key   | Description                          |
+| ----- | ------------------------------------ |
 | `tab` | Navigates between breadcrumb items. |
