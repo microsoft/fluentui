@@ -11,7 +11,7 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
   const uuid = elementAccessibilityErrors[0].elementUuid;
   const errorPanelTitle = (
-    <div style={{ display: 'flex', flexFlow: 'row nowrap', padding: '2px' }}>
+    <div style={{ display: 'flex', flexFlow: 'row nowrap', padding: '2px', marginLeft: '.05em' }}>
       <ErrorIcon size="medium" style={{ marginRight: '0.5rem', alignSelf: 'center' }} />
       {numberAccessibilityErrors} Accessibility {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
     </div>
@@ -52,6 +52,7 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
         background: '#e3404022',
         marginTop: '1vh',
         padding: '.15em',
+        borderRadius: '.5em',
       }}
     >
       <Accordion panels={panels} />
