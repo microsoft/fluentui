@@ -80,12 +80,12 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const updateValue = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (ev: any, incomingValue: number): void => {
-      setCurrentValue(clamp(incomingValue, min, max), ev);
-
       if (currentValue !== min && currentValue !== max) {
         ev.preventDefault();
         ev.stopPropagation();
       }
+
+      setCurrentValue(clamp(incomingValue, min, max), ev);
     },
     [currentValue, max, min, setCurrentValue],
   );
@@ -204,11 +204,16 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   };
 
   const trackContainerStyles = {
-    transform: `scaleX(${valuePercent}%)`,
-    ...positionStyles,
+    transform: 'scaleX(0.6)',
+    backgroundColor: 'red',
+    left: '10px',
+    right: '20px',
+    width: ' 10px',
+
+    // ...positionStyles,
   };
 
-  // const trackStyles = { width: `${valuePercent}%` };
+  const trackStyles = { width: `${valuePercent}%` };
 
   const rootProps: Partial<SliderState> = {
     className: 'ms-Slider-root',

@@ -96,12 +96,22 @@ const useActiveRailStyles = makeStyles({
 });
 
 /**
+ * Styles for the track container slot
+ */
+const useTrackContainerStyles = makeStyles({
+  trackContainer: theme => ({
+    position: 'absolute',
+  }),
+});
+
+/**
  * Styles for the track slot
  */
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     height: '4px',
+    width: '5px',
     minWidth: '10px',
     background: '#606060',
     borderRadius: '4px',
@@ -157,6 +167,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const activeRailStyles = useActiveRailStyles();
+  const trackContainer = useTrackContainerStyles();
   const trackStyles = useTrackStyles();
   const thumbStyles = useThumbStyles();
   const thumbContainerStyles = useThumbContainerStyles();
@@ -172,6 +183,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.rail.className = mergeClasses(railStyles.rail, state.rail.className);
 
   state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
+
+  state.trackContainer = mergeClasses(trackStyles.trackContainer, state.trackContainer.className);
 
   state.track.className = mergeClasses(trackStyles.track, state.track.className);
 
