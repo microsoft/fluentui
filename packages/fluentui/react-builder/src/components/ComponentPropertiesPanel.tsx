@@ -32,7 +32,7 @@ export const ComponentPropertiesPanel: React.FunctionComponent<ComponentProperti
         role="complementary"
         aria-label="Component properties"
         style={{
-          width: '20vw',
+          width: '25vw',
           padding: '1rem',
           overflow: 'auto',
           transition: 'opacity 0.2s',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
-import { Accordion, List, Label, Header } from '@fluentui/react-northstar';
+import { Accordion, List, Label } from '@fluentui/react-northstar';
 import { AccessibilityError } from '../accessibility/types';
 
 export type ErrorPanelProps = {
@@ -11,10 +11,10 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
   const uuid = elementAccessibilityErrors[0].elementUuid;
   const errorPanelTitle = (
-    <Header style={{ fontWeight: 'lighter' }} as="h4">
-      <ErrorIcon style={{ marginRight: '0.5rem' }} /> {numberAccessibilityErrors} Accessibility{' '}
-      {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
-    </Header>
+    <div style={{ display: 'flex', flexFlow: 'row nowrap', padding: '2px' }}>
+      <ErrorIcon size="medium" style={{ marginRight: '0.5rem', alignSelf: 'center' }} />
+      {numberAccessibilityErrors} Accessibility {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
+    </div>
   );
 
   const errorPanelContent = (
@@ -50,8 +50,8 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
     <div
       style={{
         background: '#e3404022',
-        margin: '1vh',
-        padding: '.15vw',
+        marginTop: '1vh',
+        padding: '.15em',
       }}
     >
       <Accordion panels={panels} />
