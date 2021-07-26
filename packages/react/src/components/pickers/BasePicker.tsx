@@ -913,7 +913,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
     return (
       <div className={alertClassName} id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
-        {this.getSuggestionsAlert(alertClassName)}
+        {
+          // eslint-disable-next-line deprecation/deprecation
+          this.getSuggestionsAlert(alertClassName)
+        }
         {removedItemText}
       </div>
     );
