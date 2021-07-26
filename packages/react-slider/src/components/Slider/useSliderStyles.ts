@@ -53,7 +53,7 @@ const useRootStyles = makeStyles({
   }),
 
   activation: theme => ({
-    ':active .ms-Slider-thumb::after': {
+    ':active .ms-Slider-track': {
       background: '#005A9E',
 
       [HighContrastSelector]: {
@@ -61,7 +61,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':active .ms-Slider-track': {
+    ':active .ms-Slider-thumb::after': {
       background: '#005A9E',
 
       [HighContrastSelector]: {
@@ -83,6 +83,7 @@ const useRailStyles = makeStyles({
     transform: 'translateY(-50%)',
     background: '#C8C8C8',
     borderRadius: '4px',
+    pointerEvents: 'none',
     [HighContrastSelector]: {
       border: '1px solid WindowText',
     },
@@ -179,7 +180,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   );
 
   state.rail.className = railStyles.rail;
-  state.track.className = trackStyles.track;
+  state.track.className = mergeClasses(trackStyles.track, state.track.className);
   state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
   state.activeRail.className = activeRailStyles.activeRail;
 

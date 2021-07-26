@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 });
 
 export const BasicSliderExample = (props: SliderProps) => {
-  const [sliderValue, setSliderValue] = React.useState(0);
+  const [sliderValue, setSliderValue] = React.useState(-10);
   const sliderOnChange = (value: number) => setSliderValue(value);
 
   const styles = useStyles();
@@ -22,7 +22,7 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Basic Example</Label>
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} onChange={sliderOnChange} />
+      <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
     </div>
   );
 };

@@ -13,6 +13,7 @@ import {
 } from '@fluentui/keyboard-key';
 import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
+import { useMount } from '../../../../react-hooks/lib/useMount';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
@@ -187,6 +188,12 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     [currentValue, max, min, step, updateValue],
   );
 
+  useMount(() => {
+    if (value !== undefined) {
+      setCurrentValue(clamp(value, min, max));
+    }
+  });
+
   const valuePercent = getPercent(currentValue, min, max);
 
   const thumbStyles = {
@@ -234,9 +241,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       ref,
       as: as,
       rail: { as: 'div', children: null, ...railProps },
-      activeRail: { as: 'div', children: null, ...activeRailProps },
       track: { as: 'div', children: null, ...trackProps },
       thumb: { as: 'div', children: null, ...thumbProps },
+      activeRail: { as: 'div', children: null, ...activeRailProps },
       ...rootProps,
     },
     defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
@@ -245,6 +252,27 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   return state;
 };
+
+// if (theme.rtl !== undefined) {
+//   return theme.rtl;
+// }
+// if (_isRTL === undefined) {
+//   // Fabric supports persisting the RTL setting between page refreshes via session storage
+//   let savedRTL = getItem(RTL_LOCAL_STORAGE_KEY);
+//   if (savedRTL !== null) {
+//     _isRTL = savedRTL === '1';
+//     setRTL(_isRTL);
+//   }
+
+//   let doc = getDocument();
+//   if (_isRTL === undefined && doc) {
+//     _isRTL = ((doc.body && doc.body.getAttribute('dir')) || doc.documentElement.getAttribute('dir')) === 'rtl';
+//     mergeStylesSetRTL(_isRTL);
+//   }
+// }
+
+// return !!_isRTL;
+// }
 
 // React.useImperativeHandle(
 //   ref,
