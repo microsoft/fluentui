@@ -26,7 +26,7 @@ describe('migrate-converged-pkg generator', () => {
   const noop = () => {};
 
   let tree: Tree;
-  const options = { name: '@proj/react-dummy' };
+  const options = { name: '@proj/react-dummy' } as const;
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -702,6 +702,50 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
       expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (2):`);
+    });
+  });
+
+  describe(`--all`, () => {
+    beforeEach(() => {
+      setupDummyPackage(tree, { name: '@proj/react-foo', version: '9.0.22' });
+      setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
+      setupDummyPackage(tree, { name: '@proj/react-moo', version: '9.0.12' });
+      setupDummyPackage(tree, { name: '@proj/react-old', version: '8.0.1' });
+    });
+
+    it('should throw if --name && --all are both specified', async () => {
+      await expect(
+        generator(tree, {
+          ...options,
+          all: true,
+        }),
+      ).rejects.toMatchInlineSnapshot(`[Error: --name and --all are mutually exclusive]`);
+    });
+
+    it(`should run migration on all vNext packages in batch`, async () => {
+      const projects = [
+        options.name,
+        '@proj/react-examples',
+        '@proj/react-foo',
+        '@proj/react-bar',
+        '@proj/react-moo',
+        '@proj/react-old',
+      ] as const;
+
+      await generator(tree, { all: true });
+
+      const configs = projects.reduce((acc, projectName) => {
+        acc[projectName] = readProjectConfiguration(tree, projectName);
+
+        return acc;
+      }, {} as Record<typeof projects[number], ReturnType<typeof readProjectConfiguration>>);
+
+      expect(configs['@proj/react-foo'].sourceRoot).toBeDefined();
+      expect(configs['@proj/react-bar'].sourceRoot).toBeDefined();
+      expect(configs['@proj/react-moo'].sourceRoot).toBeDefined();
+      expect(configs['@proj/react-dummy'].sourceRoot).toBeDefined();
+      expect(configs['@proj/react-old'].sourceRoot).not.toBeDefined();
+      expect(configs['@proj/react-examples'].sourceRoot).not.toBeDefined();
     });
   });
 });
