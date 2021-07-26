@@ -43,14 +43,41 @@ type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
 
+  validateUserInput(tree, schema);
+
   if (schema.stats) {
     printStats(tree, schema);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
 
-  validateUserInput(tree, schema);
+  if (schema.all) {
+    runBatchMigration(tree, userLog);
+  } else {
+    runMigrationOnProject(tree, schema, userLog);
+  }
 
+  await formatFiles(tree);
+
+  return () => {
+    printUserLogs(userLog);
+  };
+}
+
+function runBatchMigration(tree: Tree, userLog: UserLog) {
+  const projects = getProjects(tree);
+
+  projects.forEach((project, projectName) => {
+    if (!isPackageConverged(tree, project)) {
+      userLog.push({ type: 'error', message: `${projectName} is not converged package. Skipping migration...` });
+      return;
+    }
+
+    runMigrationOnProject(tree, { name: projectName }, userLog);
+  });
+}
+
+function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
   // 1. update TsConfigs
@@ -73,12 +100,6 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   updateApiExtractorForLocalBuilds(tree, options);
 
   updateNxWorkspace(tree, options);
-
-  await formatFiles(tree);
-
-  return () => {
-    printUserLogs(userLog);
-  };
 }
 
 // ==== helpers ====
@@ -205,16 +226,30 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
 }
 
 function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema): asserts options is AssertedSchema {
-  if (!options.name) {
+  if (options.name && options.stats) {
+    throw new Error('--name and --stats are mutually exclusive');
+  }
+
+  if (options.name && options.all) {
+    throw new Error('--name and --all are mutually exclusive');
+  }
+
+  if (options.stats && options.all) {
+    throw new Error('--stats and --all are mutually exclusive');
+  }
+
+  if (!options.name && !(options.all || options.stats)) {
     throw new Error(`--name cannot be empty. Please provide name of the package.`);
   }
 
-  const projectConfig = readProjectConfiguration(tree, options.name);
+  if (options.name) {
+    const projectConfig = readProjectConfiguration(tree, options.name);
 
-  if (!isPackageConverged(tree, projectConfig)) {
-    throw new Error(
-      `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
-    );
+    if (!isPackageConverged(tree, projectConfig)) {
+      throw new Error(
+        `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+      );
+    }
   }
 }
 
