@@ -327,10 +327,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    if (this.props.onMenuDismissed) {
-      this.props.onMenuDismissed(this.props);
-    }
-
     this._events.dispose();
     this._async.dispose();
     this._mounted = false;
