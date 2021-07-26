@@ -21,8 +21,6 @@ export abstract class AbilityAttributesError extends Error {
 export abstract class ErrorReporter {
   abstract report(element: HTMLElement, error: AbilityAttributesError): void;
   abstract remove(element: HTMLElement): void;
-  abstract dismiss(element: HTMLElement): void;
-  abstract toggle(): void;
 }
 
 export type AssumptionSpecificity = { tag: boolean; attributes: number };

@@ -26,17 +26,11 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
       ignoreUnknownClasses: true,
       window,
       errorReporter: {
-        dismiss(element: HTMLElement) {
-          console.log('dismiss - WHAT?!');
-        },
         remove(element: HTMLElement) {
           console.log('remove', element);
         },
         report(element: HTMLElement, error: any /* AbilityAttributesError */) {
           setErrors(errors => ({ ...errors, [getBuilderId(element)]: error.message }));
-        },
-        toggle() {
-          console.log('toggle - WHAT?!');
         },
       },
     });

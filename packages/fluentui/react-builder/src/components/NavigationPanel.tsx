@@ -47,7 +47,13 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
         {' '}
         <AccessibilityIcon size="large" />
         <Label
-          style={{ justifyContent: 'center', fontSize: '.2em', userSelect: 'none' }}
+          style={{
+            justifyContent: 'center',
+            fontSize: '.2em',
+            userSelect: 'none',
+            MozUserSelect: '-moz-none',
+            WebkitUserSelect: 'none',
+          }}
           design={accessErrorLabelStyle}
           color={'red'}
           content={props.accessibilityErrors.length}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
-import { Text, Accordion, List, Label } from '@fluentui/react-northstar';
+import { Accordion, List, Label, Header } from '@fluentui/react-northstar';
 import { AccessibilityError } from '../accessibility/types';
 
 export type ErrorPanelProps = {
@@ -11,10 +11,10 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
   const uuid = elementAccessibilityErrors[0].elementUuid;
   const errorPanelTitle = (
-    <Text>
+    <Header style={{ fontWeight: 'lighter' }} as="h4">
       <ErrorIcon style={{ marginRight: '0.5rem' }} /> {numberAccessibilityErrors} Accessibility{' '}
       {numberAccessibilityErrors > 1 ? 'Errors' : 'Error'}
-    </Text>
+    </Header>
   );
 
   const errorPanelContent = (
@@ -25,7 +25,7 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
           {error.message}
           <br style={{ display: 'block', margin: '100vh' }} />
           <Label
-            style={{ marginTop: '.33vh', marginBottom: '1vh', fontSize: '.1em', color: '#606060' }}
+            style={{ marginTop: '.33vh', marginBottom: '1vh', fontSize: '.25em', color: '#606060' }}
             color={'grey'}
             content={error.source}
             fluid
