@@ -71,7 +71,7 @@ export class NarrationComputer {
 
   // Recursively traverses the DOM tree rooted at the given element to find all the parents which have the ariaActiveDescendantElement property set, and saves the found elements to the given parents array.
   findActiveDescendantsParents(element: IAriaElement, parents: IAriaElement[]) {
-    if (element != null && element.ariaActiveDescendantElement != null) {
+    if (element.ariaActiveDescendantElement != null) {
       // Begin if 1
       parents.push(element);
     } // End if 1
@@ -241,14 +241,8 @@ export class NarrationComputer {
   } // End getEnteredLandmarksAndGroups
 
   getCommonAncestor(element1: HTMLElement, element2: HTMLElement): HTMLElement {
-    if (element1 === null || element2 === null) {
-      return null;
-    }
     let parent1 = element1.parentElement;
     let parent2 = element2.parentElement;
-    if (parent1 === null || parent2 === null) {
-      return null;
-    }
     while (parent1 !== parent2 && parent1 !== element1.ownerDocument.body) {
       // Begin while 1
       while (parent2 !== element2.ownerDocument.body) {
