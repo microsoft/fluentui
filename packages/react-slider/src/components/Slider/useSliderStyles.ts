@@ -9,16 +9,16 @@ import { SliderState } from './Slider.types';
 const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
-    height: '20px',
+    height: '30px',
     width: '280px',
     overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
-    backgroundColor: 'red',
+    '--slider-thumb-size': '20px',
   }),
 
   hover: theme => ({
-    ':hover .ms-Slider-thumb ': {
+    ':hover .ms-Slider-track': {
       background: '#0078D4',
 
       [HighContrastSelector]: {
@@ -26,9 +26,8 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':hover .ms-Slider-track': {
+    ':hover .ms-Slider-thumb::after': {
       background: '#0078D4',
-
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -44,7 +43,7 @@ const useRootStyles = makeStyles({
       },
     },
 
-    ':focus-within .ms-Slider-thumb': {
+    ':focus-within .ms-Slider-thumb::after': {
       background: '#0078D4',
 
       [HighContrastSelector]: {
@@ -54,7 +53,7 @@ const useRootStyles = makeStyles({
   }),
 
   activation: theme => ({
-    ':active .ms-Slider-thumb': {
+    ':active .ms-Slider-thumb::after': {
       background: '#005A9E',
 
       [HighContrastSelector]: {
@@ -109,41 +108,43 @@ const useTrackStyles = makeStyles({
 });
 
 /**
- * Styles for the thumbContainer slot
- */
-const useThumbContainerStyles = makeStyles({
-  thumbContainer: theme => ({
-    position: 'absolute',
-    backgroundColor: 'red',
-    top: '50%',
-  }),
-});
-
-/**
  * Styles for the thumb slot
  */
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    width: '20px',
-    height: '20px',
-    background: '#606060',
-    borderRadius: '50%',
-    transform: 'translate(-50%,-50%)',
-    top: '50%',
-    [HighContrastSelector]: {
-      background: 'Highlight',
+    top: 0,
+    bottom: 0,
+    left: 'calc(var(--slider-thumb-size) / 2)',
+    right: 'calc(var(--slider-thumb-size) / 2)',
+
+    ':after': {
+      content: '""',
+      position: 'absolute',
+      width: '20px',
+      height: '20px',
+      top: '50%',
+      background: '#606060',
+      borderRadius: '50%',
+      boxSizing: 'border-box',
+      transform: 'translate(-50%,-50%)',
+      [HighContrastSelector]: {
+        background: 'Highlight',
+      },
     },
   }),
 
   focusIndicator: createFocusIndicatorStyleRule({
-    outline: 'none',
-    boxShadow: '0 0 0 1.5pt black',
-    border: '1px solid #FFFFFF',
+    ':after': {
+      outline: 'none',
+      boxSizing: 'border-box',
+      border: '1.7px solid black',
+      boxShadow: '0 0 0 .7pt white inset',
 
-    [HighContrastSelector]: {
-      background: 'GrayText',
-      border: '2px solid WindowText',
+      [HighContrastSelector]: {
+        background: 'GrayText',
+        border: '1.5px solid WindowText inset',
+      },
     },
   }),
 });
@@ -154,6 +155,8 @@ const useThumbStyles = makeStyles({
 const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
+    left: 'calc(var(--slider-thumb-size) / 2)',
+    right: 'calc(var(--slider-thumb-size) / 2)',
   }),
 });
 
@@ -166,7 +169,6 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const activeRailStyles = useActiveRailStyles();
   const trackStyles = useTrackStyles();
   const thumbStyles = useThumbStyles();
-  const thumbContainerStyles = useThumbContainerStyles();
 
   state.className = mergeClasses(
     rootStyles.root,
@@ -176,11 +178,10 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.className,
   );
 
-  state.rail.className = mergeClasses(railStyles.rail, state.rail.className);
-  state.track.className = mergeClasses(trackStyles.track, state.track.className);
+  state.rail.className = railStyles.rail;
+  state.track.className = trackStyles.track;
   state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
-  state.thumbContainer.className = mergeClasses(thumbContainerStyles.thumbContainer, state.thumbContainer.className);
-  state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
+  state.activeRail.className = activeRailStyles.activeRail;
 
   return state;
 };

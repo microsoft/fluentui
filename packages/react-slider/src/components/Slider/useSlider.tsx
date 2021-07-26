@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  makeMergeProps,
-  resolveShorthandProps,
-  useId,
-  useControllableValue,
-  useIsomorphicLayoutEffect,
-} from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useId, useControllableValue } from '@fluentui/react-utilities';
 import {
   getCode,
   ArrowDownKey,
@@ -17,7 +11,6 @@ import {
   HomeKey,
   EndKey,
 } from '@fluentui/keyboard-key';
-import { useConst } from '@fluentui/react-hooks';
 import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
 import { clamp } from './utils/clamp';
@@ -26,14 +19,9 @@ import { getPercent } from './utils/getPercent';
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumbContainer', 'thumb', 'activeRail'];
+export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumb', 'activeRail'];
 
 const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
-
-interface SliderInternalState {
-  thumbSize: number;
-  railSize: number;
-}
 
 /**
  * Create the state required to render Slider.
@@ -59,10 +47,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const internalState = useConst<SliderInternalState>({
-    thumbSize: 20,
-    railSize: 280,
-  });
   const id = useId('Slider', props.id);
 
   /**
@@ -187,14 +171,8 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const valuePercent = getPercent(currentValue, min, max);
 
-  const positionStyles = {
-    left: internalState.thumbSize / 2,
-    right: internalState.thumbSize / 2,
-  };
-
   const thumbStyles = {
     transform: `translateX(${valuePercent}%)`,
-    ...positionStyles,
   };
 
   const trackStyles = { width: `${valuePercent}%` };
@@ -214,17 +192,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const activeRailProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: 'ms-Slider-activeRail',
     ref: railRef,
-    style: positionStyles,
   };
 
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-track',
     style: trackStyles,
-  };
-
-  const thumbContainerProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-thumbContainer',
-    style: thumbStyles,
   };
 
   const thumbProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
@@ -236,6 +208,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     'aria-valuemax': max,
     'aria-valuenow': currentValue,
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
+    style: thumbStyles,
   };
 
   const state = mergeProps(
@@ -245,11 +218,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       rail: { as: 'div', children: null, ...railProps },
       activeRail: { as: 'div', children: null, ...activeRailProps },
       track: { as: 'div', children: null, ...trackProps },
-      thumbContainer: {
-        as: 'div',
-        children: null,
-        ...thumbContainerProps,
-      },
       thumb: { as: 'div', children: null, ...thumbProps },
       ...rootProps,
     },
