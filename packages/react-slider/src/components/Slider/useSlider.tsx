@@ -13,8 +13,6 @@ import {
 } from '@fluentui/keyboard-key';
 import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
-import { clamp } from './utils/clamp';
-import { getPercent } from './utils/getPercent';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
@@ -22,6 +20,26 @@ import { getPercent } from './utils/getPercent';
 export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumb', 'activeRail'];
 
 const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
+
+/**
+ * Validates that the `value` is a number and falls between the min and max.
+ *
+ * @param value - the value to be clamped
+ * @param min - the lowest valid value
+ * @param max - the highest valid value
+ */
+export const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
+
+/**
+ * Gets the current percent of specified value between a min and max
+ *
+ * @param value - the value to find the percent
+ * @param min - the lowest valid value
+ * @param max - the highest valid value
+ */
+export const getPercent = (value: number, min: number, max: number) => {
+  return max === min ? 0 : ((value - min) / (max - min)) * 100;
+};
 
 /**
  * Create the state required to render Slider.
