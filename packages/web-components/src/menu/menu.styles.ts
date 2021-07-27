@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { elevation } from '../styles/index';
+import { elevationShadowFlyout } from '../styles/index';
 import {
   controlCornerRadius,
   designUnit,
@@ -14,11 +14,10 @@ export const menuStyles: (context: ElementDefinitionContext, definition: Foundat
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
     css`
       ${display('block')} :host {
-        --elevation: 11;
         background: ${neutralLayerFloating};
         border: calc(${strokeWidth} * 1px) solid transparent;
         border-radius: ${layerCornerRadius};
-        ${elevation}
+        box-shadow: ${elevationShadowFlyout};
         margin: 0;
         border-radius: calc(${controlCornerRadius} * 1px);
         padding: calc(${designUnit} * 1px) 0;

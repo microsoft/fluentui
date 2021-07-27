@@ -253,8 +253,8 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
           background: ${SystemColors.HighlightText};
         }
 
-        :host([checked='true']) .checkbox,
-        :host([checked='true']) .radio {
+        :host([checked]) .checkbox,
+        :host([checked]) .radio {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.HighlightText};
         }
@@ -265,10 +265,10 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
             :host(:${focusVisible}) .expanded-toggle,
             :host(:${focusVisible}) .checkbox,
             :host(:${focusVisible}) .radio,
-            :host([checked="true"]:hover) .checkbox,
-            :host([checked="true"]:hover) .radio,
-            :host([checked="true"]:${focusVisible}) .checkbox,
-            :host([checked="true"]:${focusVisible}) .radio {
+            :host([checked]:hover) .checkbox,
+            :host([checked]:hover) .radio,
+            :host([checked]:${focusVisible}) .checkbox,
+            :host([checked]:${focusVisible}) .radio {
           border-color: ${SystemColors.HighlightText};
         }
 

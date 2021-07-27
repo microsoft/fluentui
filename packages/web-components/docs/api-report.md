@@ -44,7 +44,7 @@ import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundati
 import { HorizontalScrollOptions } from '@microsoft/fast-foundation';
 import { Listbox } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
-import { Menu } from '@microsoft/fast-foundation';
+import { Menu as Menu_2 } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
 import { MenuItemOptions } from '@microsoft/fast-foundation';
 import { NumberField as NumberField_2 } from '@microsoft/fast-foundation';
@@ -207,11 +207,6 @@ export const allComponents: {
     fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
     register(container?: Container | undefined, ...rest: any[]): void;
 };
-
-// Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated
-export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(0, 0, 0, calc(.11 * (2 - var(--background-luminance, 1))))";
 
 // Warning: (ae-internal-missing-underscore) The name "Anchor" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -437,11 +432,6 @@ export const dialogStyles: (context: ElementDefinitionContext, definition: Found
 // @public (undocumented)
 export const direction: CSSDesignToken<Direction>;
 
-// Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated (undocumented)
-export const directionalShadow = "0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))";
-
 // @public
 export class DirectionalStyleSheetBehavior implements Behavior {
     constructor(ltr: ElementStyles | null, rtl: ElementStyles | null);
@@ -466,12 +456,58 @@ export const elevatedCornerRadius: CSSDesignToken<number>;
 export const elevation: string;
 
 // @public (undocumented)
-export const fillColor: CSSDesignToken<Swatch>;
+export interface ElevationRecipe {
+    // (undocumented)
+    evaluate(element: HTMLElement, size: number, reference?: Swatch): string;
+}
 
-// Warning: (ae-internal-missing-underscore) The name "fillStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const fillStateStyles: (context: any, definition: any) => ElementStyles;
+// @public (undocumented)
+export const elevationShadowCardActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowCardActiveSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const elevationShadowCardFocus: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowCardFocusSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const elevationShadowCardHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowCardHoverSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const elevationShadowCardRest: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowCardRestSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const elevationShadowDialog: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowDialogSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const elevationShadowFlyout: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowFlyoutSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const elevationShadowRecipe: DesignToken<ElevationRecipe>;
+
+// @public (undocumented)
+export const elevationShadowTooltip: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const elevationShadowTooltipSize: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const fillColor: CSSDesignToken<Swatch>;
 
 export { Flipper }
 
@@ -725,7 +761,7 @@ export type InteractiveColorRecipe = Recipe<InteractiveSwatchSet>;
 export type InteractiveRecipe = Recipe<InteractiveSet>;
 
 // @public (undocumented)
-export type InteractiveSet = Record<"rest" | "hover" | "active" | "focus", string>;
+export type InteractiveSet = Record<'rest' | 'hover' | 'active' | 'focus', string>;
 
 // @public (undocumented)
 export interface InteractiveSwatchSet {
@@ -753,7 +789,11 @@ export { Listbox }
 // @public
 export const listboxStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
-export { Menu }
+// @public
+export class Menu extends Menu_2 {
+    // @internal (undocumented)
+    connectedCallback(): void;
+}
 
 export { MenuItem }
 
@@ -872,12 +912,21 @@ export const neutralFillInverseRest: CSSDesignToken<Swatch>;
 export const neutralFillInverseRestDelta: CSSDesignToken<number>;
 
 // @public (undocumented)
+export const neutralFillLayerActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
 export const neutralFillLayerAltRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
-export const neutralFillLayerAltRest: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+export const neutralFillLayerAltRest: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
+export const neutralFillLayerHover: CSSDesignToken<Swatch>;
+
+// @public @deprecated (undocumented)
+export const neutralFillLayerInteractiveRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public @deprecated (undocumented)
 export const neutralFillLayerRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
@@ -980,13 +1029,19 @@ export const neutralFocus: CSSDesignToken<Swatch>;
 export const neutralFocusInnerAccent: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
+export const neutralForegroundActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralForegroundFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
 export const neutralForegroundHint: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralForegroundHintRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
-export const neutralForegroundHover: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+export const neutralForegroundHover: CSSDesignToken<Swatch>;
 
 // @public (undocumented)
 export const neutralForegroundRecipe: DesignToken<InteractiveColorRecipe>;
@@ -1233,15 +1288,75 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
 // @public
 export enum StandardLuminance {
     // (undocumented)
-    DarkMode = 0.23,
+    DarkMode = 0.2,
     // (undocumented)
-    LightMode = 1
+    LightMode = 0.95
 }
 
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const StealthButtonStyles: ElementStyles;
+
+// @public (undocumented)
+export const strokeControlAccentActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlAccentFocus: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlAccentHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlAccentRecipe: DesignToken<InteractiveRecipe>;
+
+// @public (undocumented)
+export const strokeControlAccentRest: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlFocus: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlRecipe: DesignToken<InteractiveRecipe>;
+
+// @public (undocumented)
+export const strokeControlRest: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlStrongActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const strokeControlStrongFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const strokeControlStrongHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const strokeControlStrongRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const strokeControlStrongRest: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const strokeControlTextActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlTextFocus: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlTextHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeControlTextRecipe: DesignToken<InteractiveRecipe>;
+
+// @public (undocumented)
+export const strokeControlTextRest: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const strokeWidth: CSSDesignToken<number>;

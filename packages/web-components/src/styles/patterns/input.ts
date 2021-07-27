@@ -85,14 +85,9 @@ export const inputStyles: (
     visibility: hidden;
   }
 
-  :host(:hover:not([disabled])) ${rootSelector} {
+  :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
     background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
       border-box ${strokeControlTextHover};
-  }
-
-  :host(:active:not([disabled])) ${rootSelector} {
-    background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
-      border-box ${strokeControlTextActive};
   }
 
   :host([disabled]) ${rootSelector}, :host([readonly]) ${rootSelector}, :host([disabled]) .label,
@@ -119,6 +114,20 @@ export const inputStateStyles: (
   definition: FoundationElementDefinition,
   rootSelector: string,
 ) => css`
+  :host(:not([disabled]):active)::after {
+    left: 50%;
+    width: 40%;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  :host(:not([disabled]):focus-within)::after {
+    left: 0;
+    width: 100%;
+    transform: none;
+  }
+
   :host(:not([disabled]):active)::after,
   :host(:not([disabled]):focus-within:not(:active))::after {
     content: '';
@@ -130,19 +139,6 @@ export const inputStateStyles: (
     border-bottom-right-radius: calc(${controlCornerRadius} * 1px);
     z-index: 2;
     transition: all 300ms cubic-bezier(0.1, 0.9, 0.2, 1);
-  }
-
-  :host(:not([disabled]):active)::after {
-    left: 50%;
-    width: 40%;
-    transform: translateX(-50%);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  :host(:not([disabled]):focus-within:not(:active))::after {
-    left: 0;
-    width: 100%;
   }
 `;
 
@@ -158,22 +154,17 @@ export const inputFilledStyles: (
   definition: FoundationElementDefinition,
   rootSelector: string,
 ) => css`
-  :host([appearance='filled']) ${rootSelector} {
+  :host ${rootSelector} {
     background: ${neutralFillInputRest};
     border-color: transparent;
   }
 
-  :host([appearance='filled']:hover:not([disabled])) ${rootSelector} {
+  :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
     background: ${neutralFillInputHover};
     border-color: transparent;
   }
 
-  :host([appearance='filled']:active:not([disabled])) ${rootSelector} {
-    background: ${neutralFillInputActive};
-    border-color: transparent;
-  }
-
-  :host([appearance='filled']:focus-within:not([disabled])) ${rootSelector} {
+  :host(:focus-within:not([disabled])) ${rootSelector} {
     border-color: transparent;
     box-shadow: none;
   }
@@ -239,22 +230,22 @@ export const inputFilledForcedColorStyles: (
   definition: FoundationElementDefinition,
   rootSelector: string,
 ) => css`
-  :host([appearance='filled'])
+  :host
     ${rootSelector},
-    :host([appearance='filled']:hover:not([disabled]))
+    :host(:hover:not([disabled]))
     ${rootSelector},
-    :host([appearance='filled']:active:not([disabled]))
+    :host(:active:not([disabled]))
     ${rootSelector},
-    :host([appearance='filled']:focus-within:not([disabled]))
+    :host(:focus-within:not([disabled]))
     ${rootSelector} {
     background: ${SystemColors.Field};
     border-color: ${SystemColors.FieldText};
   }
-  :host([appearance='filled']:not([disabled]):active)::after,
-  :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+  :host(:not([disabled]):active)::after,
+  :host(:not([disabled]):focus-within:not(:active))::after {
     border-bottom-color: ${SystemColors.Highlight};
   }
-  :host([appearance='filled'][disabled]) ${rootSelector} {
+  :host([disabled]) ${rootSelector} {
     border-color: ${SystemColors.GrayText};
     background: ${SystemColors.Field};
   }

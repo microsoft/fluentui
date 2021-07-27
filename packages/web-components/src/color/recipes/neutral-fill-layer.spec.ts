@@ -10,7 +10,7 @@ describe('neutralFillLayer', (): void => {
   it('should be lighter or equal when the index of the fill color is lower than the offset index', (): void => {
     const delta = 3;
     for (let i: number = 0; i < delta; i++) {
-      const color = neutralFillLayer(neutralPalette, neutralPalette.get(i), delta);
+      const color = neutralFillLayer(neutralPalette, neutralPalette.get(i), delta).rest;
       const resolved = neutralPalette.get(i - delta);
 
       expect(color).to.equal(resolved);
@@ -21,7 +21,7 @@ describe('neutralFillLayer', (): void => {
 
     for (let i: number = delta; i < neutralPalette.swatches.length; i++) {
       expect(
-        neutralPalette.swatches.indexOf(neutralFillLayer(neutralPalette, neutralPalette.get(i), delta) as SwatchRGB),
+        neutralPalette.swatches.indexOf(neutralFillLayer(neutralPalette, neutralPalette.get(i), delta).rest as SwatchRGB),
       ).to.equal(i - 3);
     }
   });

@@ -109,13 +109,11 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       border-color: transparent;
     }
 
-    .checked-indicator {
+    slot[name='switch'] {
       position: absolute;
-      height: calc((${heightNumber} - (${designUnit} * 5.5)) * 1px);
-      width: calc((${heightNumber} - (${designUnit} * 5.5)) * 1px);
-      top: calc(${designUnit} * 1px);
-      background: ${neutralForegroundRest};
-      border-radius: 50%;
+      display: flex;
+      border: 1px solid transparent; /* Spacing included in the transform reference box */
+      fill: ${neutralForegroundRest};
       transition: all 0.2s ease-in-out;
     }
 
@@ -139,34 +137,33 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       cursor: pointer;
     }
 
-    ::slotted(*) {
-      ${
-        /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-      } margin-inline-start: calc(${designUnit} * 2px + 2px);
-    }
-
-    :host([aria-checked='true']) .checked-indicator {
-      background: ${foregroundOnAccentRest};
+    .status-message {
+      margin-inline-start: calc(${designUnit} * 2px + 2px);
     }
 
     :host([aria-checked='true']) .switch {
       background: ${accentFillRest};
     }
 
+    :host([aria-checked='true']) .switch slot[name='switch'] {
+      fill: ${foregroundOnAccentRest};
+      filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.15));
+    }
+
     :host([aria-checked='true']:enabled) .switch:hover {
       background: ${accentFillHover};
     }
 
-    :host([aria-checked='true']:enabled) .switch:hover .checked-indicator {
-      background: ${foregroundOnAccentHover};
+    :host([aria-checked='true']:enabled) .switch:hover slot[name='switch'] {
+      fill: ${foregroundOnAccentHover};
     }
 
     :host([aria-checked='true']:enabled) .switch:active {
       background: ${accentFillActive};
     }
 
-    :host([aria-checked='true']:enabled) .switch:active .checked-indicator {
-      background: ${foregroundOnAccentActive};
+    :host([aria-checked='true']:enabled) .switch:active slot[name='switch'] {
+      fill: ${foregroundOnAccentActive};
     }
 
     :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
@@ -192,28 +189,30 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
   `.withBehaviors(
     new DirectionalStyleSheetBehavior(
       css`
-        .checked-indicator {
-          left: calc(${designUnit} * 1px);
+        slot[name='switch'] {
+          left: 0;
         }
 
-        :host([aria-checked='true']) .checked-indicator {
-          left: calc((((${heightNumber} / 2) + ${designUnit}) + ${designUnit}) * 1px);
+        :host([aria-checked='true']) slot[name='switch'] {
+          left: 100%;
+          transform: translateX(-100%);
         }
       `,
       css`
-        .checked-indicator {
-          right: calc(${designUnit} * 1px);
+        slot[name='switch'] {
+          right: 0;
         }
 
-        :host([aria-checked='true']) .checked-indicator {
-          right: calc((((${heightNumber} / 2) + ${designUnit}) + ${designUnit}) * 1px);
+        :host([aria-checked='true']) slot[name='switch'] {
+          right: 100%;
+          transform: translateX(100%);
         }
       `,
     ),
     forcedColorsStylesheetBehavior(
       css`
-        .checked-indicator,
-        :host(:enabled) .switch:active .checked-indicator {
+        slot[name='switch'],
+        :host(:enabled) .switch:active slot[name='switch'] {
           forced-color-adjust: none;
           background: ${SystemColors.FieldText};
         }
@@ -235,10 +234,10 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.Highlight};
         }
-        :host(.checked) .checked-indicator {
+        :host(.checked) slot[name='switch'] {
           background: ${SystemColors.HighlightText};
         }
-        :host(.checked:enabled) .switch:hover .checked-indicator {
+        :host(.checked:enabled) .switch:hover slot[name='switch'] {
           background: ${SystemColors.Highlight};
         }
         :host(:${focusVisible}) .switch {
@@ -251,7 +250,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
         :host(.disabled) {
           opacity: 1;
         }
-        :host(.disabled) .checked-indicator {
+        :host(.disabled) slot[name='switch'] {
           background: ${SystemColors.GrayText};
         }
         :host(.disabled) .switch {

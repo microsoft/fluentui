@@ -118,6 +118,8 @@ export const accordionItemStyles: (
     :host(.expanded) .region {
       display: block;
       border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      border-bottom-left-radius: calc((${controlCornerRadius} - ${strokeWidth}) * 1px);
+      border-bottom-right-radius: calc((${controlCornerRadius} - ${strokeWidth}) * 1px);
     }
 
     .icon {

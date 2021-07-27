@@ -6,7 +6,7 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
 /**
  * @internal
  */
-export function gradientShadowStroke(
+export function underlineStroke(
   palette: Palette,
   reference: Swatch,
   restDelta: number,
@@ -14,7 +14,7 @@ export function gradientShadowStroke(
   activeDelta: number,
   focusDelta: number,
   shadowDelta: number,
-  shadowPercentage: number = 10,
+  width: string,
 ): InteractiveSet {
   const referenceIndex = palette.closestIndexOf(reference);
   const direction = directionByIsDark(reference);
@@ -24,16 +24,13 @@ export function gradientShadowStroke(
   const activeIndex = restIndex + direction * (activeDelta - restDelta);
   const focusIndex = restIndex + direction * (focusDelta - restDelta);
 
-  const startPosition = direction === -1 ? shadowPercentage : 100 - shadowPercentage;
+  const midPosition = `calc(100% - ${width})`;
 
   function gradientHelper(index: number, applyShadow: boolean): string {
     const color = palette.get(index);
     if (applyShadow) {
-      // Shadow is actually "highlight" on top in dark mode.
-      const shadowColor = palette.get(index + direction * shadowDelta);
-      const startColor = direction === -1 ? shadowColor : color;
-      const endColor = direction === -1 ? color : shadowColor;
-      return `linear-gradient(${startColor.toColorString()} ${startPosition}%, ${endColor.toColorString()})`;
+      const underlineColor = palette.get(index + direction * shadowDelta);
+      return `linear-gradient(${color.toColorString()} ${midPosition}, ${underlineColor.toColorString()} ${midPosition}, ${underlineColor.toColorString()})`;
     } else {
       return color.toColorString();
     }

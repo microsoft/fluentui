@@ -13,6 +13,7 @@ import {
   accentFillActive,
   accentFillHover,
   accentFillRest,
+  accentForegroundRest,
   controlCornerRadius,
   density,
   designUnit,
@@ -106,6 +107,13 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       background: ${neutralFillActive};
       border-color: ${neutralStrokeActive};
     }
+    .track-start {
+      background: ${accentForegroundRest};
+      position: absolute;
+      height: 100%;
+      left: 0;
+      border-radius: calc(${controlCornerRadius} * 1px);
+    }
     :host(.horizontal) .thumb-container {
       transform: translateX(calc(var(--thumb-size) * 0.5px)) translateY(calc(var(--thumb-translate) * 1px));
     }
@@ -140,6 +148,11 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       height: 100%;
       min-height: calc(${designUnit} * 60px);
       min-width: calc(${designUnit} * 20px);
+    }
+    :host(.vertical) .track-start {
+      height: auto;
+      width: 100%;
+      top: 0;
     }
     :host(.disabled),
     :host(.readonly) {

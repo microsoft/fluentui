@@ -6,14 +6,13 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { elevation } from '../styles';
-import { fillColor, layerCornerRadius, neutralForegroundRest } from '../design-tokens';
+import { fillColor, layerCornerRadius, neutralForegroundRest, neutralStrokeRest, strokeWidth } from '../design-tokens';
+import { elevationShadowCardActive, elevationShadowCardFocus, elevationShadowCardHover, elevationShadowCardRest } from '../styles';
 
 export const cardStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
     css`
       ${display('block')} :host {
-        --elevation: 4;
         display: block;
         contain: content;
         height: var(--card-height, 100%);
@@ -21,16 +20,21 @@ export const cardStyles: (context: ElementDefinitionContext, definition: Foundat
         box-sizing: border-box;
         background: ${fillColor};
         color: ${neutralForegroundRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         border-radius: calc(${layerCornerRadius} * 1px);
-        ${elevation}
+        box-shadow: ${elevationShadowCardRest};
       }
 
       :host(:hover) {
-        --elevation: 8;
+        box-shadow: ${elevationShadowCardHover};
+      }
+
+      :host(:active) {
+        box-shadow: ${elevationShadowCardActive};
       }
 
       :host(:focus-within) {
-        --elevation: 8;
+        box-shadow: ${elevationShadowCardFocus};
       }
 
       :host {

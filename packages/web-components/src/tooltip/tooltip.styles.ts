@@ -4,7 +4,7 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { elevation } from '../styles/index';
+import { elevationShadowTooltip } from '../styles/index';
 import {
   bodyFont,
   controlCornerRadius,
@@ -21,7 +21,6 @@ export const tooltipStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
-      --elevation: 11;
       position: relative;
       contain: layout;
       overflow: visible;
@@ -43,7 +42,7 @@ export const tooltipStyles: (
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
       white-space: nowrap;
-      ${elevation}
+      box-shadow: ${elevationShadowTooltip};
     }
 
     fluent-anchored-region {

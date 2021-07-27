@@ -8,30 +8,27 @@ import {
   SelectOptions,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { elevation } from '../styles/elevation';
+import { elevationShadowFlyout } from '../styles/elevation';
 import { heightNumber } from '../styles/size';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
-  accentFillFocus,
   bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
   fillColor,
-  focusStrokeInner,
   focusStrokeOuter,
   focusStrokeWidth,
-  foregroundOnAccentFocus,
+  neutralFillActive,
   neutralFillHover,
   neutralFillInputActive,
   neutralFillInputHover,
   neutralFillInputRest,
   neutralFillRest,
-  neutralFillStealthRest,
   neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
+  strokeControlActive,
+  strokeControlHover,
+  strokeControlRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -41,17 +38,22 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
   context: ElementDefinitionContext,
   definition: SelectOptions,
 ) => css`
-  :host([appearance='filled']) {
-    background: ${neutralFillRest};
+  :host {
+    background: ${neutralFillInputRest};
     border-color: transparent;
   }
 
-  :host([appearance='filled']:hover:not([disabled])) {
-    background: ${neutralFillHover};
+  :host(:not([disabled]):hover) {
+    background: ${neutralFillInputHover};
     border-color: transparent;
   }
 
-  :host([appearance="filled"]:${focusVisible}) {
+  :host(:not([disabled]):active) {
+    background: ${neutralFillInputActive};
+    border-color: transparent;
+  }
+
+  :host(:${focusVisible}) {
     border-color: ${focusStrokeOuter};
   }
 `;
@@ -59,10 +61,9 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
 export const selectStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-      --elevation: 14;
-      background: ${neutralFillInputRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${strokeControlRest};
+      border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
       box-sizing: border-box;
       color: ${neutralForegroundRest};
       fill: currentcolor;
@@ -74,8 +75,8 @@ export const selectStyles = (context, definition) =>
       vertical-align: top;
     }
 
-    .listbox {
-      ${elevation}
+    :host .listbox {
+      box-shadow: ${elevationShadowFlyout};
       background: ${fillColor};
       border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;
@@ -91,11 +92,11 @@ export const selectStyles = (context, definition) =>
       margin: 1px 0;
     }
 
-    .listbox[hidden] {
+    :host .listbox[hidden] {
       display: none;
     }
 
-    .control {
+    :host .control {
       align-items: center;
       box-sizing: border-box;
       cursor: pointer;
@@ -109,32 +110,20 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:not([disabled]):hover) {
-      background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeHover};
+      background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
+        border-box ${strokeControlHover};
     }
 
-    :host(:focus) {
-      outline: none;
+    :host(:not([disabled]):active) {
+      background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
+        border-box ${strokeControlActive};
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      border-color: ${focusStrokeOuter} !important;
       outline: none;
-      box-shadow: 0 0 0 1px inset ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px inset ${focusStrokeOuter} !important;
     }
-
-    :host([open]:${focusVisible}) {
-      border-color: ${neutralStrokeRest};
-      outline: none;
-      box-shadow: none;
-    }
-
-    /*:host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
-      border-color: ${focusStrokeOuter};
-      background: ${accentFillFocus};
-      color: ${foregroundOnAccentFocus};
-    }*/
 
     :host([disabled]) {
       cursor: ${disabledCursor};
@@ -144,18 +133,6 @@ export const selectStyles = (context, definition) =>
     :host([disabled]) .control {
       cursor: ${disabledCursor};
       user-select: none;
-    }
-
-    :host([disabled]:hover) {
-      background: ${neutralFillStealthRest};
-      color: ${neutralForegroundRest};
-      fill: currentcolor;
-    }
-
-    :host(:not([disabled])) .control:active {
-      background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeActive};
-      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host([open][position='above']) .listbox {
@@ -185,7 +162,6 @@ export const selectStyles = (context, definition) =>
     :host([open]) slot[name='listbox'] {
       display: flex;
       position: absolute;
-      ${elevation}
     }
 
     .start {

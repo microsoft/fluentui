@@ -45,7 +45,7 @@ export const buttonStyles: (
         :host([disabled]:active),
         :host([disabled]) .control,
         :host([disabled]) .control:hover,
-        :host([appearance='neutral'][disabled]:hover) .control {
+        :host([disabled]:hover) .control {
           forced-color-adjust: none;
           background-color: ${SystemColors.ButtonFace};
           border-color: ${SystemColors.GrayText};
@@ -57,9 +57,9 @@ export const buttonStyles: (
     appearanceBehavior(
       'accent',
       css`
-        :host([appearance='accent'][disabled]),
-        :host([appearance='accent'][disabled]:hover),
-        :host([appearance='accent'][disabled]:active) {
+        :host([disabled]),
+        :host([disabled]:hover),
+        :host([disabled]:active) {
           background: ${accentFillRest};
         }
 
@@ -67,8 +67,8 @@ export const buttonStyles: (
       `.withBehaviors(
         forcedColorsStylesheetBehavior(
           css`
-            :host([appearance='accent'][disabled]) .control,
-            :host([appearance='accent'][disabled]) .control:hover {
+            :host([disabled]) .control,
+            :host([disabled]) .control:hover {
               background: ${SystemColors.ButtonFace};
               border-color: ${SystemColors.GrayText};
               color: ${SystemColors.GrayText};
@@ -80,15 +80,15 @@ export const buttonStyles: (
     appearanceBehavior(
       'lightweight',
       css`
-        :host([appearance='lightweight'][disabled]:hover),
-        :host([appearance='lightweight'][disabled]:active) {
+        :host([disabled]:hover),
+        :host([disabled]:active) {
           background-color: transparent;
           color: ${accentForegroundRest};
         }
 
-        :host([appearance='lightweight'][disabled]) .content::before,
-        :host([appearance='lightweight'][disabled]:hover) .content::before,
-        :host([appearance='lightweight'][disabled]:active) .content::before {
+        :host([disabled]) .content::before,
+        :host([disabled]:hover) .content::before,
+        :host([disabled]:active) .content::before {
           background: transparent;
         }
 
@@ -96,12 +96,12 @@ export const buttonStyles: (
       `.withBehaviors(
         forcedColorsStylesheetBehavior(
           css`
-            :host([appearance='lightweight'][disabled]) .control {
+            :host([disabled]) .control {
               forced-color-adjust: none;
               color: ${SystemColors.GrayText};
             }
 
-            :host([appearance='lightweight'][disabled]) .control:hover .content::before {
+            :host([disabled]) .control:hover .content::before {
               background: none;
             }
           `,
@@ -111,8 +111,8 @@ export const buttonStyles: (
     appearanceBehavior(
       'outline',
       css`
-        :host([appearance='outline'][disabled]:hover),
-        :host([appearance='outline'][disabled]:active) {
+        :host([disabled]:hover),
+        :host([disabled]:active) {
           background: transparent;
           border-color: ${neutralStrokeRest};
         }
@@ -121,7 +121,7 @@ export const buttonStyles: (
       `.withBehaviors(
         forcedColorsStylesheetBehavior(
           css`
-            :host([appearance='outline'][disabled]) .control {
+            :host([disabled]) .control {
               border-color: ${SystemColors.GrayText};
             }
           `,
@@ -131,9 +131,9 @@ export const buttonStyles: (
     appearanceBehavior(
       'stealth',
       css`
-        :host([appearance='stealth'][disabled]),
-        :host([appearance='stealth'][disabled]:hover),
-        :host([appearance='stealth'][disabled]:active) {
+        :host([disabled]),
+        :host([disabled]:hover),
+        :host([disabled]:active) {
           background: ${neutralFillStealthRest};
         }
 
@@ -141,12 +141,12 @@ export const buttonStyles: (
       `.withBehaviors(
         forcedColorsStylesheetBehavior(
           css`
-            :host([appearance='stealth'][disabled]),
-            :host([appearance='stealth'][disabled]:hover) {
+            :host([disabled]),
+            :host([disabled]:hover) {
               background: ${SystemColors.ButtonFace};
             }
 
-            :host([appearance='stealth'][disabled]) .control {
+            :host([disabled]) .control {
               background: ${SystemColors.ButtonFace};
               border-color: transparent;
               color: ${SystemColors.GrayText};
