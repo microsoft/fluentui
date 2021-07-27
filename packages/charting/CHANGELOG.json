@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 27 Jul 2021 12:23:57 GMT",
+      "tag": "@uifabric/charting_v4.16.7",
+      "version": "4.16.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedVertical Chart accessibility change",
+            "author": "v-scharde@microsoft.com",
+            "commit": "22be22623283bc47f4cb2006130062a12b1a39ee",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Jul 2021 12:23:18 GMT",
       "tag": "@uifabric/charting_v4.16.6",
       "version": "4.16.6",

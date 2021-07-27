@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 27 Jul 2021 12:23:57 GMT",
+      "tag": "@fluentui/react-examples_v0.14.19",
+      "version": "0.14.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedVertical Chart accessibility change",
+            "author": "v-scharde@microsoft.com",
+            "commit": "22be22623283bc47f4cb2006130062a12b1a39ee",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 12:23:18 GMT",
       "tag": "@fluentui/react-examples_v0.14.18",
       "version": "0.14.18",

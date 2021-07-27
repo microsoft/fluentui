@@ -2,6 +2,21 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Tue, 27 Jul 2021 12:23:57 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.83",
+            "author": "v-scharde@microsoft.com",
+            "commit": "22be22623283bc47f4cb2006130062a12b1a39ee",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 12:23:18 GMT",
       "tag": "a11y-tests_v7.0.0",
       "version": "7.0.0",

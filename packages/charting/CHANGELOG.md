@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 14 Jul 2021 12:23:18 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jul 2021 12:23:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.7)
+
+Tue, 27 Jul 2021 12:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.6..@uifabric/charting_v4.16.7)
+
+### Patches
+
+- GroupedVertical Chart accessibility change ([PR #18933](https://github.com/microsoft/fluentui/pull/18933) by v-scharde@microsoft.com)
 
 ## [4.16.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.6)
 
