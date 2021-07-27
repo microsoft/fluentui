@@ -76,7 +76,7 @@ export interface SliderProps
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (value: number, ev?: DragChangeEvent) => void;
+  onChange?: (value: number, ev?: PointerEvent) => void;
 
   /**
    * The **Slider's** current value label to be read by the screen reader.

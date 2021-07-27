@@ -69,7 +69,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const [currentValue, setCurrentValue] = useControllableValue<any, any, any>(
     value && clamp(value, min, max),
     clamp(defaultValue, min, max),
-    (ev, val: number) => onChange?.(val, ev),
+    (ev, val) => onChange?.(val, ev),
   );
 
   const railRef = React.useRef<HTMLDivElement>(null);
@@ -105,7 +105,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       const position = currentBounds?.left || 0;
 
       const totalSteps = (max - min) / step;
-      const stepLength: number = size / totalSteps;
+      const stepLength = size / totalSteps;
       const thumbPosition = ev.clientX;
       const distance = thumbPosition - position;
       return distance / stepLength;
@@ -206,11 +206,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     className: 'ms-Slider-rail',
   };
 
-  const activeRailProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-activeRail',
-    ref: railRef,
-  };
-
   const trackProps: React.HTMLAttributes<HTMLDivElement> = {
     className: 'ms-Slider-track',
     style: trackStyles,
@@ -226,6 +221,11 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     'aria-valuenow': currentValue,
     'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
     style: thumbStyles,
+  };
+
+  const activeRailProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+    className: 'ms-Slider-activeRail',
+    ref: railRef,
   };
 
   const state = mergeProps(

@@ -48,7 +48,7 @@ const useRootStyles = makeStyles({
       background: '#0078D4',
 
       [HighContrastSelector]: {
-        background: 'GrayText',
+        background: 'Highlight',
       },
     },
   }),
@@ -84,8 +84,9 @@ const useRailStyles = makeStyles({
     transform: 'translateY(-50%)',
     background: '#C8C8C8',
     borderRadius: '4px',
-    // pointerEvents: 'none',
+    pointerEvents: 'none',
     [HighContrastSelector]: {
+      boxSizing: 'border-box',
       border: '1px solid WindowText',
     },
   }),
