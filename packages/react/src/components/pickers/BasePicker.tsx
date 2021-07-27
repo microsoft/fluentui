@@ -152,7 +152,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
   public componentDidMount(): void {
     this.selection.setItems(this.state.items);
-    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
+    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay || 300);
   }
 
   public componentDidUpdate(oldProps: P, oldState: IBasePickerState) {
