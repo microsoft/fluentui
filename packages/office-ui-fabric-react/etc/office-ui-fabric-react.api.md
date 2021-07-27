@@ -4940,6 +4940,7 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     personas: IFacepilePersona[];
     personaSize?: PersonaSize;
     showAddButton?: boolean;
+    showTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
     theme?: ITheme;
 }
