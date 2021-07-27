@@ -1,3 +1,5 @@
+import * as enquirer from 'enquirer';
+import * as yargsParser from 'yargs-parser';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -20,6 +22,18 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
 }
+
+jest.mock('enquirer', () => ({
+  prompt: () => ({
+    name: '@proj/react-dummy',
+  }),
+}));
+
+jest.mock('yargs-parser', () => {
+  const original = jest.requireActual('yargs-parser');
+
+  return jest.fn(original);
+});
 
 describe('migrate-converged-pkg generator', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -55,7 +69,7 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe('general', () => {
+  describe.only('general', () => {
     it(`should throw error if name is empty`, async () => {
       await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(
         `[Error: --name cannot be empty. Please provide name of the package.]`,
@@ -79,6 +93,38 @@ describe('migrate-converged-pkg generator', () => {
         // eslint-disable-next-line @fluentui/max-len
         `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
       );
+    });
+
+    it('should prompt for a name if neither "name" OR "all" OR "stats" are specified', async () => {
+      ((yargsParser as unknown) as jest.Mock).mockImplementation(() => {
+        return {
+          interactive: true,
+        };
+      });
+
+      const spy = jest.spyOn(enquirer, 'prompt');
+
+      await generator(tree, {});
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not prompt for a name if "all" OR "stats" is specified', async () => {
+      ((yargsParser as unknown) as jest.Mock).mockImplementation(() => {
+        return {
+          interactive: true,
+        };
+      });
+
+      const spy = jest.spyOn(enquirer, 'prompt');
+
+      await generator(tree, { stats: true });
+
+      expect(spy).toHaveBeenCalledTimes(0);
+
+      await generator(tree, { all: true });
+
+      expect(spy).toHaveBeenCalledTimes(0);
     });
   });
 

@@ -138,6 +138,7 @@
     "danger": "^6.0.5",
     "del": "6.0.0",
     "enhanced-resolve": "5.8.2",
+    "enquirer": "2.3.6",
     "eslint": "7.25.0",
     "eslint-plugin-es": "4.1.0",
     "eslint-plugin-import": "2.22.1",
@@ -202,7 +203,8 @@
     "webpack-hot-middleware": "2.25.0",
     "webpack-merge": "5.7.3",
     "workspace-tools": "0.12.3",
-    "yargs": "13.3.2"
+    "yargs": "13.3.2",
+    "yargs-parser": "13.1.2"
   },
   "license": "MIT",
   "workspaces": {

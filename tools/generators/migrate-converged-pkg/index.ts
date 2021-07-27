@@ -14,10 +14,11 @@ import {
   updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
-import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
+
 import * as path from 'path';
 
 import { PackageJson, TsConfig } from '../../types';
+import { parseArgs, prompt, updateJestConfig } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -43,18 +44,20 @@ type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
 
-  validateUserInput(tree, schema);
+  const validatedSchema = await validateSchema(tree, schema);
 
-  if (schema.stats) {
-    printStats(tree, schema);
+  if (hasSchemaFlag(validatedSchema, 'stats')) {
+    printStats(tree, validatedSchema);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
 
-  if (schema.all) {
+  if (hasSchemaFlag(validatedSchema, 'all')) {
     runBatchMigration(tree, userLog);
-  } else {
-    runMigrationOnProject(tree, schema, userLog);
+  }
+
+  if (hasSchemaFlag(validatedSchema, 'name')) {
+    runMigrationOnProject(tree, validatedSchema, userLog);
   }
 
   await formatFiles(tree);
@@ -225,32 +228,73 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
   };
 }
 
-function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema): asserts options is AssertedSchema {
-  if (options.name && options.stats) {
+/**
+ *
+ * narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
+ */
+function hasSchemaFlag<T extends MigrateConvergedPkgGeneratorSchema, K extends keyof T>(
+  schema: T,
+  flag: K,
+): schema is T & Record<K, NonNullable<T[K]>> {
+  return schema[flag] !== undefined;
+}
+
+async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
+  let newSchema = { ...schema };
+
+  if (newSchema.name && newSchema.stats) {
     throw new Error('--name and --stats are mutually exclusive');
   }
 
-  if (options.name && options.all) {
+  if (newSchema.name && newSchema.all) {
     throw new Error('--name and --all are mutually exclusive');
   }
 
-  if (options.stats && options.all) {
+  if (newSchema.stats && newSchema.all) {
     throw new Error('--stats and --all are mutually exclusive');
   }
 
-  if (!options.name && !(options.all || options.stats)) {
+  const shouldValidateNameInput = () => {
+    return !newSchema.name && !(newSchema.all || newSchema.stats);
+  };
+  const parsedArgs = parseArgs<MigrateConvergedPkgGeneratorSchema>(process.argv.slice(2));
+  const shouldTriggerPrompt = parsedArgs.interactive && shouldValidateNameInput();
+
+  // console.error(newSchema, parsedArgs);
+  if (shouldTriggerPrompt) {
+    const schemaPromptsResponse = await triggerDynamicPrompts();
+
+    newSchema = { ...newSchema, ...schemaPromptsResponse };
+  }
+
+  if (shouldValidateNameInput()) {
     throw new Error(`--name cannot be empty. Please provide name of the package.`);
   }
 
-  if (options.name) {
-    const projectConfig = readProjectConfiguration(tree, options.name);
+  if (newSchema.name) {
+    const projectConfig = readProjectConfiguration(tree, newSchema.name);
 
     if (!isPackageConverged(tree, projectConfig)) {
       throw new Error(
-        `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+        // eslint-disable-next-line @fluentui/max-len
+        `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
       );
     }
   }
+
+  return newSchema;
+}
+
+async function triggerDynamicPrompts() {
+  type PromptResponse = Required<Pick<MigrateConvergedPkgGeneratorSchema, 'name'>>;
+
+  return prompt<PromptResponse>([
+    {
+      message: 'Which converged package would you like migrate to new DX? (ex: @fluentui/react-menu)',
+      type: 'input',
+      name: 'name',
+    },
+  ]);
 }
 
 function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
