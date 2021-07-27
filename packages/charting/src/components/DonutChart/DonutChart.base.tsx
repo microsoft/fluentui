@@ -5,8 +5,9 @@ import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities'
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Pie } from './Pie/index';
-import { ChartHoverCard, ILegend, Legends } from '../../index';
+import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
+import { getAccessibleDataObject } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -24,6 +25,7 @@ export interface IDonutChartState {
   focusedArcId?: string;
   selectedLegend: string;
   dataPointCalloutProps?: IChartDataPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -134,6 +136,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
+          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
           {this.props.onRenderCalloutPerDataPoint ? (
             this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps!)
@@ -234,6 +237,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: data.yAxisCalloutData!,
       focusedArcId: id,
       dataPointCalloutProps: data,
+      callOutAccessibilityData: data.callOutAccessibilityData!,
     });
   };
 
@@ -249,6 +253,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       yCalloutValue: data.yAxisCalloutData!,
       activeLegend: data.legend,
       dataPointCalloutProps: data,
+      callOutAccessibilityData: data.callOutAccessibilityData!,
     });
   };
   private _onBlur = (): void => {
