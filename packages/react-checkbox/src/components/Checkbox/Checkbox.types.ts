@@ -9,7 +9,7 @@ export interface CheckboxProps
   extends Omit<ComponentPropsCompat, 'children'>,
     Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
   /**
-   * Label that will be rendered next to the input.
+   * Label that will be rendered next to the checkbox.
    */
   label?: ShorthandProps<LabelProps>;
 
