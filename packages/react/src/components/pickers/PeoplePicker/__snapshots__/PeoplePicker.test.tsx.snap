@@ -7,6 +7,30 @@ exports[`PeoplePicker renders correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -105,6 +129,30 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"

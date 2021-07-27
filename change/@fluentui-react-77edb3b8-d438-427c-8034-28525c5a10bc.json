@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add live region for BasePicker item removal, fix focused tag styles",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
