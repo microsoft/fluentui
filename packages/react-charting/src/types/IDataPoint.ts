@@ -218,6 +218,11 @@ export interface ILineChartDataPoint {
    * Whether to hide callout data for the point.
    */
   hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineChartGap {

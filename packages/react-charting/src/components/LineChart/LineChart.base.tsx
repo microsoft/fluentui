@@ -4,6 +4,7 @@ import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction, getId, find } from '@fluentui/react/lib/Utilities';
 import {
+  IAccessibilityProps,
   CartesianChart,
   IBasestate,
   IChildProps,
@@ -27,6 +28,7 @@ import {
   tooltipOfXAxislabels,
   Points,
   pointTypes,
+  getAccessibleDataObject,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -119,8 +121,10 @@ export interface ILineChartState extends IBasestate {
   dataPointCalloutProps?: ICustomizedCalloutData;
   // This value will be used as Customized callout props - For stack callout.
   stackCalloutProps?: ICustomizedCalloutData;
-  // active or hoverd point
+  // active or hovered point
   activePoint?: string;
+  // Callout Accessibility data
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
@@ -219,6 +223,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           ? this.props.getCalloutDescriptionMessage(this.state.stackCalloutProps)
           : undefined,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: tickValues,
@@ -489,9 +494,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const { activePoint } = this.state;
       const { theme } = this.props;
       if (this._points[i].data.length === 1) {
-        const x1 = this._points[i].data[0].x;
-        const y1 = this._points[i].data[0].y;
-        const xAxisCalloutData = this._points[i].data[0].xAxisCalloutData;
+        const pointData1 = this._points[i].data[0];
+        const x1 = pointData1.x;
+        const y1 = pointData1.y;
+        const xAxisCalloutData = pointData1.xAxisCalloutData;
+        const callOutAccessibilityData1 = pointData1.callOutAccessibilityData;
         const circleId = `${this._circleId}${i}`;
         pointsForLine.push(
           <circle
@@ -501,8 +508,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.palette.white : lineColor}
-            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
-            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
+            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
             onMouseOut={this._handleMouseOut}
             strokeWidth={activePoint === circleId ? 2 : 0}
             stroke={activePoint === circleId ? lineColor : ''}
@@ -521,11 +528,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const lineId = `${this._lineId}${i}${j}`;
         const borderId = `${this._borderId}${i}${j}`;
         const circleId = `${this._circleId}${i}${j}`;
-        const x1 = this._points[i].data[j - 1].x;
-        const y1 = this._points[i].data[j - 1].y;
-        const x2 = this._points[i].data[j].x;
-        const y2 = this._points[i].data[j].y;
-        const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
+        const pointData1 = this._points[i].data[j - 1];
+        const x1 = pointData1.x;
+        const y1 = pointData1.y;
+        const callOutAccessibilityData1 = pointData1.callOutAccessibilityData;
+        const pointData2 = this._points[i].data[j];
+        const x2 = pointData2.x;
+        const y2 = pointData2.y;
+        const callOutAccessibilityData2 = pointData2.callOutAccessibilityData;
+        const xAxisCalloutData = pointData1.xAxisCalloutData;
         let path = this._getPath(this._xAxisScale(x1), this._yAxisScale(y1), circleId, j, false, this._points[i].index);
         const strokeWidth =
           this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
@@ -564,8 +575,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 ref={(e: SVGLineElement | null) => {
                   this._refCallback(e!, lineId);
                 }}
-                onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
-                onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+                onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
+                onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
                 onMouseOut={this._handleMouseOut}
                 stroke={lineColor}
                 strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
@@ -582,11 +593,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               id={circleId}
               key={circleId}
               d={path}
-              data-is-focusable={i === 0 ? true : false}
-              onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
-              onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+              data-is-focusable={true}
+              onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
+              onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
               onMouseOut={this._handleMouseOut}
-              onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId)}
+              onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, callOutAccessibilityData1)}
               onBlur={this._handleMouseOut}
               onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
               visibility={hideNonActiveDots ? 'hidden' : 'visible'}
@@ -607,17 +618,31 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               true,
               this._points[i].index,
             );
-            const lastCirlceXCallout = this._points[i].data[j].xAxisCalloutData;
+            const lastCircleXCallout = this._points[i].data[j].xAxisCalloutData;
             pointsForLine.push(
               <path
                 id={lastCircleId}
                 key={lastCircleId}
                 d={path}
-                data-is-focusable={i === 0 ? true : false}
-                onMouseOver={this._handleHover.bind(this, x2, lastCirlceXCallout, lastCircleId)}
-                onMouseMove={this._handleHover.bind(this, x2, lastCirlceXCallout, lastCircleId)}
+                data-is-focusable={true}
+                onMouseOver={this._handleHover.bind(
+                  this,
+                  x2,
+                  lastCircleXCallout,
+                  lastCircleId,
+                  callOutAccessibilityData2,
+                )}
+                onMouseMove={this._handleHover.bind(
+                  this,
+                  x2,
+                  lastCircleXCallout,
+                  lastCircleId,
+                  callOutAccessibilityData2,
+                )}
                 onMouseOut={this._handleMouseOut}
-                onFocus={() => this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId)}
+                onFocus={() =>
+                  this._handleFocus(lineId, x2, lastCircleXCallout, lastCircleId, callOutAccessibilityData2)
+                }
                 onBlur={this._handleMouseOut}
                 onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
                 visibility={hideNonActiveDots ? 'hidden' : 'visible'}
@@ -759,9 +784,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _handleFocus = (
     lineId: string,
     x: number | Date,
-
     xAxisCalloutData: string | undefined,
     circleId: string,
+    callOutAccessibilityData: IAccessibilityProps | undefined,
   ) => {
     this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
@@ -784,6 +809,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             stackCalloutProps: found!,
             dataPointCalloutProps: found!,
             activePoint: circleId,
+            callOutAccessibilityData,
           });
         }
       });
@@ -798,6 +824,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     x: number | Date,
     xAxisCalloutData: string,
     circleId: string,
+    callOutAccessibilityData: IAccessibilityProps,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
@@ -819,6 +846,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         stackCalloutProps: found!,
         dataPointCalloutProps: found!,
         activePoint: circleId,
+        callOutAccessibilityData,
       });
     } else {
       this.setState({
