@@ -13,9 +13,6 @@ import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 export const clamp: (value: number, min: number, max: number) => number;
 
 // @public
-export type DragChangeEvent = React_2.MouseEvent | React_2.TouchEvent | MouseEvent | TouchEvent;
-
-// @public
 export const getPercent: (value: number, min: number, max: number) => number;
 
 // @public
@@ -36,7 +33,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     defaultValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number, ev?: DragChangeEvent) => void;
+    onChange?: (value: number, ev?: PointerEvent) => void;
     rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     snapToStep?: boolean;
     step?: number;

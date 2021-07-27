@@ -86,7 +86,7 @@ describe('Slider', () => {
     });
   });
 
-  it('calls (onChange) when the mouse is moved', () => {
+  it('calls (onChange) when dragged', () => {
     let sliderRef: any;
     const onChange = jest.fn();
 
@@ -104,7 +104,7 @@ describe('Slider', () => {
       sliderRail.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 0, clientY: 0 });
+      sliderRail.simulate('pointerdown', { type: 'pointermove', clientX: 0, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(0);
@@ -131,13 +131,13 @@ describe('Slider', () => {
       sliderRail.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 110, clientY: 0 });
+      sliderRail.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(10);
       expect(sliderRef.current!.value).toBe(10);
 
-      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: -10, clientY: 0 });
+      sliderRail.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(2);
       expect(onChange.mock.calls[1][0]).toEqual(0);
@@ -313,7 +313,7 @@ describe('Slider', () => {
       sliderRail.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('mousedown', { type: 'mousedown', clientX: 87, clientY: 32 });
+      sliderRail.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
 
       expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(10);
     });

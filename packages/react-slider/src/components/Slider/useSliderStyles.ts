@@ -9,6 +9,7 @@ import { SliderState } from './Slider.types';
 const useRootStyles = makeStyles({
   root: theme => ({
     '--slider-thumb-size': '20px',
+    '--slider-glide-time': '0s',
     position: 'relative',
     height: 'var(--slider-thumb-size)',
     width: '280px',
@@ -104,6 +105,7 @@ const useTrackStyles = makeStyles({
     minWidth: 'var(--slider-thumb-size)',
     background: '#606060',
     borderRadius: '4px',
+    transition: 'var(--slider-glide-time)',
     [HighContrastSelector]: {
       background: 'Highlight',
     },
@@ -120,7 +122,7 @@ const useThumbStyles = makeStyles({
     bottom: 0,
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
-
+    transition: 'var(--slider-glide-time)',
     ':after': {
       content: '""',
       position: 'absolute',

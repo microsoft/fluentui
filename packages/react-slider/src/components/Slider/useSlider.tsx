@@ -131,13 +131,10 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const onPointerDown = React.useCallback(
     (ev): void => {
-      ev.target.setPointerCapture(ev.pointerId);
-
       disposables.current.push(
         on(window, 'pointermove', onPointerMove, true),
         on(window, 'pointerup', onPointerUp, true),
       );
-
       onPointerMove(ev);
     },
     [onPointerMove],
@@ -228,6 +225,21 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     ref: railRef,
   };
 
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      get value() {
+        return currentValue;
+      },
+      focus() {
+        if (thumbRef.current) {
+          thumbRef.current.focus();
+        }
+      },
+    }),
+    [currentValue, thumbRef],
+  );
+
   const state = mergeProps(
     {
       ref,
@@ -244,21 +256,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   return state;
 };
-
-// React.useImperativeHandle(
-//   ref,
-//   () => ({
-//     get value() {
-//       return currentValue;
-//     },
-//     focus() {
-//       if (thumbRef.current) {
-//         thumbRef.current.focus();
-//       }
-//     },
-//   }),
-//   [currentValue, thumbRef],
-// );
 
 // if (theme.rtl !== undefined) {
 //   return theme.rtl;
