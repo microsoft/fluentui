@@ -18,6 +18,10 @@ export const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesPro
       boxShadow: v.smallBoxShadow,
     }),
 
+    ...(p.flat && {
+      boxShadow: 'none',
+    }),
+
     ':focus-visible': {
       borderRightWidth: 0,
 

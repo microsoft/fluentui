@@ -72,7 +72,7 @@ export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButt
     toggleButtonColor: siteVars.colorScheme.default.foreground,
     toggleButtonBackgroundColor: siteVars.colorScheme.default.background,
     toggleButtonBorderRadius: siteVars.borderRadiusMedium,
-    toggleButtonBorderColor: siteVars.colorScheme.default.border,
+    toggleButtonBorderColor: 'blue', // siteVars.colorScheme.default.border,
     toggleButtonBoxShadow: siteVars.shadowLevel1,
 
     toggleButtonColorHover: siteVars.colorScheme.default.foregroundHover,
@@ -91,7 +91,7 @@ export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButt
     toggleButtonPrimaryHoverColor: siteVars.colorScheme.brand.foregroundHover1,
     toggleButtonPrimaryColor: siteVars.colorScheme.brand.foreground4,
     toggleButtonPrimaryBackgroundColor: siteVars.colorScheme.brand.background,
-    toggleButtonPrimaryBorderColor: 'transparent',
+    toggleButtonPrimaryBorderColor: 'blue', // siteVars.colors.white, // not creating a color scheme for this because it isn't something we want to have reused
     toggleButtonPrimaryBoxShadow: siteVars.shadowLevel1Dark,
     toggleButtonPrimaryBackgroundColorActive: siteVars.colorScheme.brand.backgroundPressed,
     toggleButtonPrimaryBackgroundColorFocus: undefined,

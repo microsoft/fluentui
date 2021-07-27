@@ -19,6 +19,11 @@ const SplitButton = () => (
       description="small splitbutton"
       examplePath="components/SplitButton/Types/SplitButtonExampleSmall"
     />
+    <ComponentExample
+      title="Flat / Elevated"
+      description="A button can be elevated or flat."
+      examplePath="components/SplitButton/Types/SplitButtonExampleFlat"
+    />
   </ExampleSection>
 );
 

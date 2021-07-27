@@ -54,7 +54,9 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.toggleButtonBorderColor,
-      boxShadow: v.toggleButtonBoxShadow,
+      ...(!p.flat && {
+        boxShadow: v.toggleButtonBoxShadow,
+      }),
 
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
@@ -105,9 +107,11 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       ...(p.primary && {
         color: v.toggleButtonPrimaryColor,
         backgroundColor: v.toggleButtonPrimaryBackgroundColor,
-        borderColor: v.toggleButtonPrimaryBorderColor,
-        boxShadow: v.toggleButtonPrimaryBoxShadow,
         borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
+        borderColor: v.toggleButtonPrimaryBorderColor,
+        ...(!p.flat && {
+          boxShadow: v.toggleButtonPrimaryBoxShadow,
+        }),
 
         ':active': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorActive,
