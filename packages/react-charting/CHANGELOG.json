@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/react-charting_v5.3.16",
+      "version": "5.3.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Vertical stacked bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "20b6bb986b5a494a32077ab927ef61c3f139701c",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Accessibility change for HeatMap chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "0cf37bf2c081600e754bfa5dc6e0b5838aa8c1cd",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Donut chart custom accessibility change",
+            "author": "v-scharde@microsoft.com",
+            "commit": "c5d143b80d139886a601fbe7d67eb0a1a8ae49d1",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Jul 2021 07:37:30 GMT",
       "tag": "@fluentui/react-charting_v5.3.15",
       "version": "5.3.15",

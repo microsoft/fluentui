@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jul 2021 07:34:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.23.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.10)
+
+Tue, 27 Jul 2021 07:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.9..@fluentui/react_v8.23.10)
+
+### Patches
+
+- Fix bug where ContextualMenu's onMenuDismissed is called twice ([PR #19135](https://github.com/microsoft/fluentui/pull/19135) by behowell@microsoft.com)
 
 ## [8.23.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.9)
 

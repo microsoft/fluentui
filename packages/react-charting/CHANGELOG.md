@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jul 2021 07:34:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.16)
+
+Tue, 27 Jul 2021 07:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.15..@fluentui/react-charting_v5.3.16)
+
+### Patches
+
+- Accessibility change for Vertical stacked bar chart ([PR #19072](https://github.com/microsoft/fluentui/pull/19072) by v-scharde@microsoft.com)
+- Accessibility change for HeatMap chart ([PR #19059](https://github.com/microsoft/fluentui/pull/19059) by v-scharde@microsoft.com)
+- Donut chart custom accessibility change ([PR #18865](https://github.com/microsoft/fluentui/pull/18865) by v-scharde@microsoft.com)
 
 ## [5.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.15)
 
