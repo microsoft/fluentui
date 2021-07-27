@@ -42,6 +42,8 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.52",
     "@fluentui/react-utilities": "^9.0.0-alpha.35",
+    "@fluentui/react-label": "^9.0.0-alpha.21",
+    "@fluentui/react-tabster": "^9.0.0-alpha.46",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
