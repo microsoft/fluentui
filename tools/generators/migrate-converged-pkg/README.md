@@ -1,6 +1,6 @@
 # migrate-converged-pkg
 
-Workspace Generator for migrating converged packages to new DX (stage 1)
+Workspace Generator for migrating converged packages to new DX (stage 1)[https://github.com/microsoft/fluentui/issues/18579]
 
 <!-- toc -->
 
@@ -9,6 +9,7 @@ Workspace Generator for migrating converged packages to new DX (stage 1)
   - [Examples](#examples)
 - [Options](#options)
   - [`name`](#name)
+  - [`all`](#all)
   - [`stats`](#stats)
 
 <!-- tocstop -->
@@ -39,6 +40,12 @@ Run migration on package named `@fluentui/example`
 yarn nx workspace-generator migrate-converged-pkg --name='@fluentui/example'
 ```
 
+Run migration on all vNext packages
+
+```sh
+yarn nx workspace-generator migrate-converged-pkg --all
+```
+
 Get migration stats for how many packages have been migrated yet.
 
 > No actual migration will happen.
@@ -54,6 +61,14 @@ yarn nx workspace-generator migrate-converged-pkg --stats --no-interactive
 Type: `string`
 
 Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
+
+#### `all`
+
+Type: `boolean`
+
+Run batch migration on all vNext packages
+
+> TIP: Use it with `--no-interactive` option to disable prompts.
 
 #### `stats`
 

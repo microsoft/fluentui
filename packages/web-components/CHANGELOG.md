@@ -1,8 +1,35 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 16 Jul 2021 22:53:17 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.0)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.3..@fluentui/web-components_v1.3.0)
+
+### Minor changes
+
+- feat(web-components): improve ergonomics of the fluent design system ([PR #19056](https://github.com/microsoft/fluentui/pull/19056) by roeisenb@microsoft.com)
+
+## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.3)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.2..@fluentui/web-components_v1.2.3)
+
+### Patches
+
+- remove incorrectly added component definition for toolbar ([PR #19087](https://github.com/microsoft/fluentui/pull/19087) by chhol@microsoft.com)
+
+## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.2)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.1..@fluentui/web-components_v1.2.2)
+
+### Patches
+
+- fluent-text-field: start/end display flex ([PR #18969](https://github.com/microsoft/fluentui/pull/18969) by fredrik.rasch@gmail.com)
 
 ## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.1)
 

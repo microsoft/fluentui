@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableValue, useDescendantsInit, useEventCallback } from '@fluentui/react-utilities';
+import { useControllableState, useDescendantsInit, useEventCallback } from '@fluentui/react-utilities';
 import {
   AccordionDescendant,
   AccordionIndex,
@@ -14,12 +14,12 @@ export const useAccordion = (
   ref: React.Ref<HTMLElement>,
 ): AccordionState => {
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
-  const normalizedIndex = React.useMemo(() => normalizeIndex(index), [index]);
 
-  // TODO: fix typings in useControllableValue
-  const [openItems, setOpenItems] = useControllableValue<number[], HTMLElement>(normalizedIndex!, () =>
-    initializeUncontrolledOpenItems({ collapsible, defaultIndex, multiple }),
-  );
+  const [openItems, setOpenItems] = useControllableState({
+    state: React.useMemo(() => normalizeIndex(index), [index]),
+    defaultState: () => initializeUncontrolledOpenItems({ collapsible, defaultIndex, multiple }),
+    initialState: [],
+  });
 
   const requestToggle = useEventCallback((ev: AccordionToggleEvent, data: AccordionToggleData) => {
     if (descendants[data.index]?.disabled === true) {
@@ -92,7 +92,7 @@ function updateOpenItems(
 /**
  * Normalizes Accordion index into an array of indexes
  */
-function normalizeIndex(index?: AccordionIndex) {
+function normalizeIndex(index?: AccordionIndex): number[] | undefined {
   if (index === undefined) {
     return undefined;
   }
