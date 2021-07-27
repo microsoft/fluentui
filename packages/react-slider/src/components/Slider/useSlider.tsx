@@ -69,8 +69,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const [currentValue, setCurrentValue] = useControllableValue<any, any, any>(
     value && clamp(value, min, max),
     clamp(defaultValue, min, max),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (ev: any, val: number) => onChange?.(val, ev),
+    (ev, val: number) => onChange?.(val, ev),
   );
 
   const railRef = React.useRef<HTMLDivElement>(null);
@@ -85,8 +84,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
    * @param incomingValue
    */
   const updateValue = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (ev: any, incomingValue: number): void => {
+    (ev, incomingValue: number): void => {
       if (currentValue !== min && currentValue !== max) {
         ev.preventDefault();
         ev.stopPropagation();
@@ -101,7 +99,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
    * Calculates the `step` position based off of a `Mouse` or `Touch` event.
    */
   const calculateSteps = React.useCallback(
-    (ev: any): number => {
+    (ev): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
       const size = currentBounds?.width || 0;
       const position = currentBounds?.left || 0;
@@ -115,27 +113,35 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     [max, min, step],
   );
 
-  const onPointerMove = (ev: any): void => {
-    if (snapToStep || step !== 1) {
-      updateValue(ev, Math.round((min + step * calculateSteps(ev)) / step) * step);
-    } else {
-      updateValue(ev, min + step * calculateSteps(ev));
-    }
-  };
+  const onPointerMove = React.useCallback(
+    (ev): void => {
+      if (snapToStep || step !== 1) {
+        updateValue(ev, Math.round((min + step * calculateSteps(ev)) / step) * step);
+      } else {
+        updateValue(ev, min + step * calculateSteps(ev));
+      }
+    },
+    [calculateSteps, min, snapToStep, step, updateValue],
+  );
 
   const onPointerUp = (): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
   };
 
-  const onPointerDown = (ev): void => {
-    ev.target.setPointerCapture(ev.pointerId);
+  const onPointerDown = React.useCallback(
+    (ev): void => {
+      ev.target.setPointerCapture(ev.pointerId);
 
-    disposables.current.push(
-      on(window, 'pointermove', onPointerMove, true),
-      on(window, 'pointerup', onPointerUp, true),
-    );
-  };
+      disposables.current.push(
+        on(window, 'pointermove', onPointerMove, true),
+        on(window, 'pointerup', onPointerUp, true),
+      );
+
+      onPointerMove(ev);
+    },
+    [onPointerMove],
+  );
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent): void => {

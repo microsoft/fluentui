@@ -100,7 +100,7 @@ const useTrackStyles = makeStyles({
     height: '4px',
     top: '50%',
     transform: 'translateY(-50%)',
-    minWidth: '10px',
+    minWidth: 'var(--slider-thumb-size)',
     background: '#606060',
     borderRadius: '4px',
     [HighContrastSelector]: {

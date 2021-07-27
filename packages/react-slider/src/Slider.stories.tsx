@@ -5,14 +5,22 @@ import { Label } from '@fluentui/react';
 import { Meta } from '@storybook/react';
 
 const useStyles = makeStyles({
-  root: {
+  slider: {
     width: '300px',
     '--slider-thumb-size': '30px',
+
+    '& .ms-Slider-thumb::after': {
+      background: 'green',
+    },
+
+    '& .ms-Slider-track': {
+      background: 'green',
+    },
   },
 });
 
 export const BasicSliderExample = (props: SliderProps) => {
-  const [sliderValue, setSliderValue] = React.useState(10);
+  const [sliderValue, setSliderValue] = React.useState(20);
   const sliderOnChange = (value: number) => setSliderValue(value);
 
   const styles = useStyles();
@@ -24,7 +32,7 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
       <Label>Custom Styles</Label>
-      <Slider className={styles.root} />
+      <Slider defaultValue={4} className={styles.slider} />
     </div>
   );
 };
