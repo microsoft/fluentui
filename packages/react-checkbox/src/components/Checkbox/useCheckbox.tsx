@@ -99,8 +99,8 @@ export const useCheckbox = (
   state.input.id = state.id;
   state.id = state.rootId;
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  state.input.ref = useMergedRefs(state.input.ref, inputRef);
+  const inputRef = useMergedRefs(state.input.ref);
+  state.input.ref = inputRef;
   const isMixed = checked === 'mixed';
   useIsomorphicLayoutEffect(() => {
     if (inputRef.current) {
