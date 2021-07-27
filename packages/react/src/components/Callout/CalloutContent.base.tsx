@@ -25,11 +25,8 @@ import {
 } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
-import { observeResize } from '../../utilities/observeResize';
 import { AnimationClassNames } from '../../Styling';
 import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
-
-const COMPONENT_NAME = 'CalloutContentBase';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -37,6 +34,10 @@ const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.left]: AnimationClassNames.slideLeftIn10,
   [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
 };
+
+const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
+  disableCaching: true, // disabling caching because stylesProp.position mutates often
+});
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
@@ -61,12 +62,8 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 } as const;
 
-const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
-  disableCaching: true, // disabling caching because stylesProp.position mutates often
-});
-
 /**
- * (Hook) to return a function to lazily fetch the bounds of the target element for the callout.
+ * Returns a function to lazily fetch the bounds of the target element for the callout
  */
 function useBounds(
   { bounds, minPagePadding = DEFAULT_PROPS.minPagePadding, target }: ICalloutProps,
@@ -93,7 +90,6 @@ function useBounds(
       }
       cachedBounds.current = currentBounds;
     }
-
     return cachedBounds.current;
   }, [bounds, minPagePadding, target, targetRef, targetWindow]);
 
@@ -101,7 +97,7 @@ function useBounds(
 }
 
 /**
- * (Hook) to return the maximum available height for the Callout to render into.
+ * Returns the maximum available height for the Callout to render into
  */
 function useMaxHeight(
   { beakWidth, coverTarget, directionalHint, directionalHintFixed, gapSpace, isBeakVisible, hidden }: ICalloutProps,
@@ -151,8 +147,7 @@ function useMaxHeight(
 }
 
 /**
- * (Hook) to return the height offset of the callout element and updates it each frame to approach the configured
- * finalHeight.
+ * Returns the height offset of the callout element and updates it each frame to approach the configured finalHeight
  */
 function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
   const [heightOffset, setHeightOffset] = React.useState<number>(0);
@@ -193,7 +188,8 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
 }
 
 /**
- * (Hook) to find the current position of Callout. If Callout is resized then a new position is calculated.
+ * Get the position information for the callout. If the callout does not fit in the given orientation,
+ * a new position is calculated for the next frame, up to 5 attempts
  */
 function usePositions(
   props: ICalloutProps,
@@ -202,81 +198,70 @@ function usePositions(
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
 ) {
-  const { hidden, target, finalHeight, onPositioned } = props;
-  const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
+  const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
+  const positionAttempts = React.useRef(0);
   const async = useAsync();
+  const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
 
-  /**
-   * Sets the current position of Callout upon resize. Callout will resize when:
-   *
-   * 1. `elementPositions` is undefined (initial render)
-   * 2. `elementPositions` does not equal the `newElementPositions`
-   * 3. There is a two decimal place difference in position.
-   *
-   * @param newElementPositions The incoming positions for the Callout
-   */
-  const setCalloutPositions = React.useCallback(
-    (newElementPositions: ICalloutPositionedInfo) => {
-      if (
-        (elementPositions === undefined && newElementPositions) ||
-        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-      ) {
-        if (elementPositions !== undefined) {
-          onPositioned?.(newElementPositions);
-        }
+  React.useEffect(() => {
+    if (!hidden) {
+      const timerId = async.requestAnimationFrame(() => {
+        // If we expect a target element to position against, we need to wait until `targetRef.current`
+        // is resolved. Otherwise we can try to position.
+        const expectsTarget = !!target;
 
-        setElementPositions(newElementPositions);
-      }
-    },
-    [elementPositions, onPositioned],
-  );
+        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+          const currentProps: IPositionProps = {
+            ...props,
+            target: targetRef.current!,
+            bounds: getBounds(),
+          };
+          // If there is a finalHeight given then we assume that the user knows and will handle
+          // additional positioning adjustments so we should call positionCard
+          const newPositions: ICalloutPositionedInfo = finalHeight
+            ? positionCard(currentProps, hostElement.current, calloutElement.current, positions)
+            : positionCallout(currentProps, hostElement.current, calloutElement.current, positions);
 
-  React.useEffect(
-    () => {
-      if (!hidden && calloutElement.current) {
-        const timerId = async.requestAnimationFrame(() => {
-          // If we expect a target element to position against, `targetRef.current` should be defined.
-          // Once provided we can try to position the element.
-          const expectsTarget = !!target;
-
-          if (calloutElement.current) {
-            observeResize(calloutElement.current, () => {
-              if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-                const currentPositionProps: IPositionProps = {
-                  ...props,
-                  target: targetRef.current!,
-                  bounds: getBounds(),
-                };
-
-                // If there is a finalHeight given then we assume that the user knows and will handle
-                // additional positioning adjustments so we should call positionCard
-                const newElementPositions: ICalloutPositionedInfo = finalHeight
-                  ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
-                  : positionCallout(
-                      currentPositionProps,
-                      hostElement.current,
-                      calloutElement.current,
-                      elementPositions,
-                    );
-
-                setCalloutPositions(newElementPositions);
-              }
-            });
+          // Set the new position only when the positions are not exists or one of the new callout positions
+          // are different. The position should not change if the position is within 2 decimal places.
+          if (
+            (!positions && newPositions) ||
+            (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          ) {
+            // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+            // and we should stop trying to reposition to prevent a stack overflow.
+            positionAttempts.current++;
+            setPositions(newPositions);
+          } else if (positionAttempts.current > 0) {
+            // Only call the onPositioned callback if the callout has been re-positioned at least once.
+            positionAttempts.current = 0;
+            onPositioned?.(positions);
           }
-        }, calloutElement.current);
+        }
+      }, calloutElement.current);
 
-        return () => async.cancelAnimationFrame(timerId);
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [async, calloutElement, finalHeight, getBounds, hidden, hostElement, setCalloutPositions, target, targetRef],
-  );
+      return () => async.cancelAnimationFrame(timerId);
+    }
+  }, [
+    hidden,
+    directionalHint,
+    async,
+    calloutElement,
+    hostElement,
+    targetRef,
+    finalHeight,
+    getBounds,
+    onPositioned,
+    positions,
+    props,
+    target,
+  ]);
 
-  return elementPositions;
+  return positions;
 }
 
 /**
- * (Hook) to set up behavior to automatically focus the callout when it appears, if indicated by props.
+ * Hook to set up behavior to automatically focus the callout when it appears, if indicated by props.
  */
 function useAutoFocus(
   { hidden, setInitialFocus }: ICalloutProps,
@@ -298,7 +283,7 @@ function useAutoFocus(
 }
 
 /**
- * (Hook) to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
+ * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
  */
 function useDismissHandlers(
   {
@@ -435,6 +420,8 @@ function useDismissHandlers(
   return mouseDownHandlers;
 }
 
+const COMPONENT_NAME = 'CalloutContentBase';
+
 export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.memo(
   React.forwardRef<HTMLDivElement, ICalloutProps>((propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -565,15 +552,12 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       // Do not update when hidden.
       return true;
     }
+
     return shallowCompare(previousProps, nextProps);
   },
 );
+CalloutContentBase.displayName = COMPONENT_NAME;
 
-/**
- * (Utility) to find and return the current `Callout` Beak position.
- *
- * @param positions
- */
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPositionStyle: React.CSSProperties = {
     ...positions?.beakPosition?.elementPosition,
@@ -587,33 +571,19 @@ function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSPropertie
   return beakPositionStyle;
 }
 
-/**
- * (Utility) used to compare two different elementPositions to determine whether they are equal.
- *
- * @param prevElementPositions
- * @param newElementPosition
- */
-function arePositionsEqual(
-  prevElementPositions: ICalloutPositionedInfo,
-  newElementPosition: ICalloutPositionedInfo,
-): boolean {
+function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
   return (
-    comparePositions(prevElementPositions.elementPosition, newElementPosition.elementPosition) &&
-    comparePositions(prevElementPositions.beakPosition.elementPosition, newElementPosition.beakPosition.elementPosition)
+    comparePositions(positions.elementPosition, newPosition.elementPosition) &&
+    comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition)
   );
 }
 
-/**
- * (Utility) used in **arePositionsEqual** to compare two different elementPositions.
- *
- * @param prevElementPositions
- * @param newElementPositions
- */
-function comparePositions(prevElementPositions: IPosition, newElementPositions: IPosition): boolean {
-  for (const key in newElementPositions) {
-    if (newElementPositions.hasOwnProperty(key)) {
-      const oldPositionEdge = prevElementPositions[key];
-      const newPositionEdge = newElementPositions[key];
+function comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
+  for (const key in newPositions) {
+    if (newPositions.hasOwnProperty(key)) {
+      const oldPositionEdge = oldPositions[key];
+      const newPositionEdge = newPositions[key];
+
       if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
         if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
           return false;
@@ -625,5 +595,3 @@ function comparePositions(prevElementPositions: IPosition, newElementPositions: 
   }
   return true;
 }
-
-CalloutContentBase.displayName = COMPONENT_NAME;
