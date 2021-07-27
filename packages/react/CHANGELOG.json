@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/react_v8.23.10",
+      "version": "8.23.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where ContextualMenu's onMenuDismissed is called twice",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Jul 2021 07:37:30 GMT",
       "tag": "@fluentui/react_v8.23.9",
       "version": "8.23.9",

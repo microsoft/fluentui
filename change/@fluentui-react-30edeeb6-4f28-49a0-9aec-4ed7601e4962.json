@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix bug where ContextualMenu's onMenuDismissed is called twice",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
