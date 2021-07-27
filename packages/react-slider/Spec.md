@@ -145,6 +145,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
            </slots.markContainer>
       <slots.track {...slotProps.track} />
       <slots.thumb {...slotProps.thumb} />
+      <slots.activeRail {...slotProps.activeRail} />
     </slots.sliderContainer>
     {state.valueLabel && <slots.valueLabel {...slotProps.valueLabel} />}
   </slots.root>
@@ -166,6 +167,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
             </div>
             <div className="ms-Slider-track" />
             <div className="ms-Slider-thumb" />
+            <div className="ms-Slider-activeRail" />
         </div>
         <div className="ms-Slider-valueLabel" />
     </div>
