@@ -31,7 +31,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             }
         id="selected-suggestion-alert-id__0"
       >
-         
         
       </div>
       <span

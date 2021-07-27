@@ -41,7 +41,6 @@ exports[`Component Examples renders TagPicker.Inline.Example.tsx correctly 1`] =
           }
       id="selected-suggestion-alert-id__1"
     >
-       
       
     </div>
     <span

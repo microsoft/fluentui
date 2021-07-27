@@ -29,7 +29,6 @@ exports[`TagPicker renders correctly 1`] = `
         }
     id="selected-suggestion-alert-id__0"
   >
-     
     
   </div>
   <span
@@ -374,7 +373,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
         }
     id="selected-suggestion-alert-id__0"
   >
-     
     
   </div>
   <span

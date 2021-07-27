@@ -29,7 +29,6 @@ exports[`PeoplePicker renders correctly 1`] = `
         }
     id="selected-suggestion-alert-id__0"
   >
-     
     
   </div>
   <span
@@ -152,7 +151,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
         }
     id="selected-suggestion-alert-id__0"
   >
-     
     
   </div>
   <span
