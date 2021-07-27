@@ -12,7 +12,7 @@ import {
   EndKey,
 } from '@fluentui/keyboard-key';
 import { on } from '@fluentui/utilities';
-import { SliderProps, SliderShorthandProps, SliderState, DragChangeEvent } from './Slider.types';
+import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
 import { useMount } from '@fluentui/react-hooks';
 
 /**
@@ -98,44 +98,24 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   );
 
   /**
-   * Gets the current position of the `thumb` based on the cursor position.
-   */
-  const getPosition = (ev: DragChangeEvent): number => {
-    let currentPosition = 0;
-
-    switch (ev.type) {
-      case 'mousedown':
-      case 'mousemove':
-        currentPosition = (ev as MouseEvent).clientX;
-        break;
-      case 'touchstart':
-      case 'touchmove':
-        currentPosition = (ev as TouchEvent).touches[0].clientX;
-        break;
-    }
-
-    return currentPosition;
-  };
-
-  /**
    * Calculates the `step` position based off of a `Mouse` or `Touch` event.
    */
   const calculateSteps = React.useCallback(
-    (ev: DragChangeEvent): number => {
+    (ev: any): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
       const size = currentBounds?.width || 0;
       const position = currentBounds?.left || 0;
 
       const totalSteps = (max - min) / step;
       const stepLength: number = size / totalSteps;
-      const thumbPosition = getPosition(ev);
+      const thumbPosition = ev.clientX;
       const distance = thumbPosition - position;
       return distance / stepLength;
     },
     [max, min, step],
   );
 
-  const onDrag = (ev: DragChangeEvent): void => {
+  const onPointerMove = (ev: any): void => {
     if (snapToStep || step !== 1) {
       updateValue(ev, Math.round((min + step * calculateSteps(ev)) / step) * step);
     } else {
@@ -143,25 +123,18 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     }
   };
 
-  const onThumbReleased = (): void => {
+  const onPointerUp = (): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
   };
 
-  const onThumbPressed = (ev: React.MouseEvent | React.TouchEvent): void => {
-    if (ev.type === 'mousedown') {
-      disposables.current.push(
-        on(window, 'mousemove', onDrag as (ev: Event) => void, true),
-        on(window, 'mouseup', onThumbReleased, true),
-      );
-    } else if (ev.type === 'touchstart') {
-      disposables.current.push(
-        on(window, 'touchmove', onDrag as (ev: Event) => void, true),
-        on(window, 'touchend', onThumbReleased, true),
-      );
-    }
+  const onPointerDown = (ev): void => {
+    ev.target.setPointerCapture(ev.pointerId);
 
-    onDrag(ev);
+    disposables.current.push(
+      on(window, 'pointermove', onPointerMove, true),
+      on(window, 'pointerup', onPointerUp, true),
+    );
   };
 
   const onKeyDown = React.useCallback(
@@ -218,8 +191,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   const rootProps: Partial<SliderState> = {
     className: 'ms-Slider-root',
-    onMouseDown: onThumbPressed,
-    onTouchStart: onThumbPressed,
+    onPointerDown: onPointerDown,
     onKeyDown: onKeyDown,
     id: id,
   };

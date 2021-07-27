@@ -15,6 +15,7 @@ const useRootStyles = makeStyles({
     overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
+    touchAction: 'none',
   }),
 
   hover: theme => ({
@@ -83,7 +84,7 @@ const useRailStyles = makeStyles({
     transform: 'translateY(-50%)',
     background: '#C8C8C8',
     borderRadius: '4px',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
     [HighContrastSelector]: {
       border: '1px solid WindowText',
     },

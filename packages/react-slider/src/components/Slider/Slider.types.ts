@@ -2,11 +2,6 @@ import * as React from 'react';
 import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
- * The drag and change events used for Slider movement.
- */
-export type DragChangeEvent = React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent;
-
-/**
  * Slider Props
  */
 export interface SliderProps
