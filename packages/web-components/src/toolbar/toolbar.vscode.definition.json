@@ -4,44 +4,16 @@
     {
       "name": "fluent-toolbar",
       "title": "Toolbar",
-      "description": "The Fluent UI toolbar element",
+      "description": "The Fluent toolbar element",
       "attributes": [
         {
-          "name": "visible",
-          "title": "Visible",
-          "description": "Sets whether the toolbar is visible or not",
-          "type": "boolean",
-          "required": false
-        },
-        {
-          "name": "anchor",
-          "title": "Anchor ID",
-          "description": "The HTML ID of the element the toolbar is positioned relative to",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "delay",
-          "title": "Delay",
-          "description": "The delay in milliseconds before a toolbar is shown after a hover event",
-          "type": "number",
-          "default": 300,
-          "required": false
-        },
-        {
-          "name": "position",
-          "title": "Position",
-          "description": "Controls the placement of the toolbar relative to the configured 'Anchor ID'",
-          "values": [
-            { "name": "top" },
-            { "name": "right" },
-            { "name": "bottom" },
-            { "name": "left" },
-            { "name": "start" },
-            { "name": "end" }
-          ],
-          "type": "string",
-          "required": false
+          "name": "orientation",
+          "title": "Orientation",
+          "description": "The orientation of the toolbar",
+          "default": "horizontal",
+          "values": [{ "name": "horizontal" }, { "name": "vertical" }],
+          "required": false,
+          "type": "string"
         }
       ],
       "slots": [
@@ -49,6 +21,21 @@
           "name": "",
           "title": "Default slot",
           "description": "The toolbar content"
+        },
+        {
+          "name": "label",
+          "title": "Label slot",
+          "description": "The visual label for the toolbar"
+        },
+        {
+          "name": "start",
+          "title": "Start slot",
+          "description": "Contents of the start slot are positioned before the contents of the toolbar"
+        },
+        {
+          "name": "end",
+          "title": "End slot",
+          "description": "Contents of the end slot are positioned after the contents of the toolbar"
         }
       ]
     }
