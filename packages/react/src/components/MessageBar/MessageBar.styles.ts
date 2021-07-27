@@ -208,7 +208,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       {
         lineHeight: 16,
         selectors: {
-          '& span a': {
+          '& span a:last-child': {
             paddingLeft: 4,
           },
         },

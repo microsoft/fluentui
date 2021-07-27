@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jul 2021 07:34:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.5)
+
+Tue, 27 Jul 2021 07:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.4..@fluentui/react-docsite-components_v8.3.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.23.10 ([PR #19135](https://github.com/microsoft/fluentui/pull/19135) by behowell@microsoft.com)
+
+## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.4)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.3.3..@fluentui/react-docsite-components_v8.3.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.23.9 ([PR #19122](https://github.com/microsoft/fluentui/pull/19122) by behowell@microsoft.com)
 
 ## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.3.3)
 

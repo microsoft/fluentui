@@ -2,6 +2,48 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/react_v8.23.10",
+      "version": "8.23.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where ContextualMenu's onMenuDismissed is called twice",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react_v8.23.9",
+      "version": "8.23.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix crash in ContextualMenu when Callout component is loaded asynchronously",
+            "author": "behowell@microsoft.com",
+            "commit": "2d62b36cdc1330c6984882d48c7f0e25473ac1a1",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Enabling Callout to revaluate position after width and height modifications are made.",
+            "author": "czearing@outlook.com",
+            "commit": "2a77dde4527ed5d9f8ab5220c3653c9c9f1c1543",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Removed left padding for links in MessageBar and fixed examples",
+            "author": "tahsia@microsoft.com",
+            "commit": "9e2d5d87aa15e9f62184d7ff879c51ec4c3ddf62",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jul 2021 07:38:19 GMT",
       "tag": "@fluentui/react_v8.23.8",
       "version": "8.23.8",
