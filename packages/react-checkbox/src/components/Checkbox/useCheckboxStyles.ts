@@ -123,6 +123,7 @@ const useIndicatorStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fill: 'currentColor',
   },
 
   // TODO: Remove fontSize once checkbox uses react-icons
@@ -139,11 +140,9 @@ const useIndicatorStyles = makeStyles({
     height: '10px',
   },
 
-  // TODO: Remove fill once checkbox uses react-icons
   disabled: theme => ({
     opacity: 1,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
-    fill: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 
   unchecked: {
@@ -153,17 +152,17 @@ const useIndicatorStyles = makeStyles({
   // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
   checked: theme => ({
     opacity: 1,
-    fill: theme.alias.color.neutral.neutralForegroundInverted,
+    color: theme.alias.color.neutral.neutralForegroundInverted,
   }),
 
   mixed: theme => ({
     opacity: 1,
-    fill: theme.alias.color.neutral.compoundBrandForeground1,
+    color: theme.alias.color.neutral.compoundBrandForeground1,
     ':hover': {
-      fill: theme.alias.color.neutral.compoundBrandForeground1Hover,
+      color: theme.alias.color.neutral.compoundBrandForeground1Hover,
     },
     ':active': {
-      fill: theme.alias.color.neutral.compoundBrandForeground1Pressed,
+      color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
     },
   }),
 });
