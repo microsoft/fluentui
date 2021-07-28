@@ -42,6 +42,14 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     value?: number;
 }
 
+// @public (undocumented)
+export interface SliderPublicRef {
+    // (undocumented)
+    focus: () => void;
+    // (undocumented)
+    value: number | undefined;
+}
+
 // @public
 export type SliderShorthandProps = 'rail' | 'track' | 'thumb' | 'activeRail';
 
@@ -50,11 +58,11 @@ export const sliderShorthandProps: SliderShorthandProps[];
 
 // @public
 export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
-    ref: React_2.Ref<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement & SliderPublicRef>;
 }
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.RefObject<HTMLElement & SliderPublicRef>, defaultProps?: SliderProps | undefined) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;
