@@ -497,10 +497,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     }
 
     const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
-    const contentMaxHeight: number | undefined =
-      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
-        ? calloutMaxHeight!
-        : getContentMaxHeight!;
+    const contentMaxHeight: number | undefined = calloutMaxHeight || getContentMaxHeight;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
@@ -518,8 +515,8 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
 
     const overflowStyle: React.CSSProperties = {
-      ...style,
       maxHeight: contentMaxHeight,
+      ...style,
       ...(overflowYHidden && { overflowY: 'hidden' }),
     };
 
@@ -544,11 +541,11 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onRestoreFocus={props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
-            className={classNames.calloutMain}
             onDismiss={props.onDismiss}
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            className={classNames.calloutMain}
             onMouseDown={mouseDownOnPopup}
             onMouseUp={mouseUpOnPopup}
           >
