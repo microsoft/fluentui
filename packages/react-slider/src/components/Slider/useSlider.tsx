@@ -12,7 +12,7 @@ import {
   EndKey,
 } from '@fluentui/keyboard-key';
 import { on } from '@fluentui/utilities';
-import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
+import { SliderProps, SliderShorthandProps, SliderState, SliderPublicRef } from './Slider.types';
 import { useMount } from '@fluentui/react-hooks';
 
 /**
@@ -52,7 +52,11 @@ export const getPercent = (value: number, min: number, max: number) => {
  * @param ref - reference to root HTMLElement of Slider
  * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
+export const useSlider = (
+  props: SliderProps,
+  ref: React.RefObject<HTMLElement & SliderPublicRef>,
+  defaultProps?: SliderProps,
+): SliderState => {
   const {
     as = 'div',
     value,
@@ -178,6 +182,14 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     [currentValue, max, min, step, updateValue],
   );
 
+  React.useEffect(() => {
+    if (ref && ref.current) {
+      ref.current.value = currentValue;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref.current.focus = thumbRef?.current?.focus() as any;
+    }
+  }, [currentValue, ref]);
+
   useMount(() => {
     if (value !== undefined) {
       setCurrentValue(clamp(value, min, max));
@@ -225,21 +237,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
     ref: railRef,
   };
 
-  React.useImperativeHandle(
-    ref,
-    () => ({
-      get value() {
-        return currentValue;
-      },
-      focus() {
-        if (thumbRef.current) {
-          thumbRef.current.focus();
-        }
-      },
-    }),
-    [currentValue, thumbRef],
-  );
-
   const state = mergeProps(
     {
       ref,
@@ -256,24 +253,3 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
 
   return state;
 };
-
-// if (theme.rtl !== undefined) {
-//   return theme.rtl;
-// }
-// if (_isRTL === undefined) {
-//   // Fabric supports persisting the RTL setting between page refreshes via session storage
-//   let savedRTL = getItem(RTL_LOCAL_STORAGE_KEY);
-//   if (savedRTL !== null) {
-//     _isRTL = savedRTL === '1';
-//     setRTL(_isRTL);
-//   }
-
-//   let doc = getDocument();
-//   if (_isRTL === undefined && doc) {
-//     _isRTL = ((doc.body && doc.body.getAttribute('dir')) || doc.documentElement.getAttribute('dir')) === 'rtl';
-//     mergeStylesSetRTL(_isRTL);
-//   }
-// }
-
-// return !!_isRTL;
-// }

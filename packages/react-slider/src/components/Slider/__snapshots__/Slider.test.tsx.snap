@@ -5,8 +5,7 @@ exports[`Slider renders Slider correctly 1`] = `
   className="ms-Slider-root"
   id="Slider1"
   onKeyDown={[Function]}
-  onMouseDown={[Function]}
-  onTouchStart={[Function]}
+  onPointerDown={[Function]}
 >
   <div
     className=""

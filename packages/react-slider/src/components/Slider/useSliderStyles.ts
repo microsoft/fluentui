@@ -9,7 +9,6 @@ import { SliderState } from './Slider.types';
 const useRootStyles = makeStyles({
   root: theme => ({
     '--slider-thumb-size': '20px',
-    '--slider-glide-time': '0s',
     position: 'relative',
     height: 'var(--slider-thumb-size)',
     width: '280px',
@@ -22,7 +21,6 @@ const useRootStyles = makeStyles({
   hover: theme => ({
     ':hover .ms-Slider-track': {
       background: '#0078D4',
-
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -39,7 +37,6 @@ const useRootStyles = makeStyles({
   focusWithin: theme => ({
     ':focus-within .ms-Slider-track': {
       background: '#0078D4',
-
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -47,7 +44,6 @@ const useRootStyles = makeStyles({
 
     ':focus-within .ms-Slider-thumb::after': {
       background: '#0078D4',
-
       [HighContrastSelector]: {
         background: 'Highlight',
       },
@@ -57,7 +53,6 @@ const useRootStyles = makeStyles({
   activation: theme => ({
     ':active .ms-Slider-track': {
       background: '#005A9E',
-
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -65,7 +60,6 @@ const useRootStyles = makeStyles({
 
     ':active .ms-Slider-thumb::after': {
       background: '#005A9E',
-
       [HighContrastSelector]: {
         forcedColorAdjust: 'none',
       },
@@ -105,7 +99,6 @@ const useTrackStyles = makeStyles({
     minWidth: 'var(--slider-thumb-size)',
     background: '#606060',
     borderRadius: '4px',
-    transition: 'var(--slider-glide-time)',
     [HighContrastSelector]: {
       background: 'Highlight',
     },
@@ -122,7 +115,7 @@ const useThumbStyles = makeStyles({
     bottom: 0,
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
-    transition: 'var(--slider-glide-time)',
+
     ':after': {
       content: '""',
       position: 'absolute',
@@ -145,7 +138,6 @@ const useThumbStyles = makeStyles({
       boxSizing: 'border-box',
       border: '1.7px solid black',
       boxShadow: '0 0 0 .7pt white inset',
-
       [HighContrastSelector]: {
         background: 'GrayText',
         border: '1.5px solid WindowText inset',

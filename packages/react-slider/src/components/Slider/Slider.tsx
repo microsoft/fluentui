@@ -8,7 +8,7 @@ import { useSliderStyles } from './useSliderStyles';
  * Define a styled Slider, using the `useSlider` hook.
  * {@docCategory Slider}
  */
-export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref) => {
+export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref: any) => {
   const state = useSlider(props, ref);
 
   useSliderStyles(state);

@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
+export interface SliderPublicRef {
+  value: number | undefined;
+  focus: () => void;
+}
+
 /**
  * Slider Props
  */
@@ -101,5 +106,5 @@ export interface SliderState extends ComponentStateCompat<SliderProps, SliderSho
   /**
    * Ref to the root element
    */
-  ref: React.Ref<HTMLElement>;
+  ref: React.RefObject<HTMLElement & SliderPublicRef>;
 }
