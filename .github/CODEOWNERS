@@ -105,6 +105,7 @@ packages/react-shared-contexts/ @microsoft/teams-prg
 packages/react-context-selector/ @microsoft/teams-prg
 packages/react-tabster/ @microsoft/teams-prg
 packages/react-positioning/ @microsoft/teams-prg
+packages/react-theme/ @microsoft/teams-prg
 
 ### Fabric
 # common/
@@ -116,16 +117,18 @@ common/_common.scss @microsoft/cxe-red @phkuo
 ## Component packages
 packages/react-avatar/ @microsoft/cxe-red @behowell
 packages/react-menu/ @microsoft/teams-prg
+packages/react-accordion/ @microsoft/teams-prg
 packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
 packages/react-card/ @microsoft/cxe-red @khmakoto
 packages/react-checkbox/ @microsoft/cxe-red @khmakoto
-packages/react-components/ @layershifter @miroslavstastny
+packages/react-components/ @microsoft/teams-prg
 packages/react-focus/ @microsoft/cxe-red @khmakoto
-packages/react-image/ @cxe-prg
+packages/react-image/ @microsoft/cxe-prg
+packages/react-text/ @microsoft/cxe-prg
 packages/react-input/ @microsoft/cxe-red @ecraig12345
-packages/react-storybook/ @cxe-prg @ling1726 @layershifter
-packages/storybook/ @cxe-prg @ling1726 @layershifter
+packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
+packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-link/ @microsoft/cxe-red @khmakoto
 packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell

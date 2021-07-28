@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useFocusRects } from '@fluentui/utilities';
 import { useCardSection, CardSectionProps } from '../../CardSection';
 import { useCardFooterStyles } from './useCardFooterStyles';
 
@@ -8,7 +7,6 @@ export const CardFooter: React.FunctionComponent<CardSectionProps> = React.forwa
     const { render, state } = useCardSection(props, ref);
 
     useCardFooterStyles(state);
-    useFocusRects(state.ref);
 
     return render(state);
   },

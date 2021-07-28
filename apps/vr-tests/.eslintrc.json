@@ -4,6 +4,7 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/jsx-no-bind": "off",
-    "deprecation/deprecation": "off"
+    "deprecation/deprecation": "off",
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
   }
 }
