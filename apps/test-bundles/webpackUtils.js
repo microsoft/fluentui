@@ -98,63 +98,6 @@ function createFluentNorthstarFixtures() {
   });
 }
 
-/**
- * Webpack will remove any unused import as a dead code (tree shaking).
- * Thus we are creating temporary JS files with top-level component imports
- * and console logging them. This will ensure that the code is active
- * and that webpack bundles it correctly.
- */
-function createFluentConvergedFixtures() {
-  const packageName = '@fluentui/react-components';
-
-  // Imports definition is temporary manual, we should find a better way and automate it
-  const imports = [
-    // components
-    'Accordion',
-    'Avatar',
-    'Badge',
-    'Button',
-    'CompoundButton',
-    'Divider',
-    'Image',
-    'Link',
-    'Menu',
-    'MenuButton',
-    'Portal',
-    'ToggleButton',
-    'Tooltip',
-
-    // Provider-related
-    'FluentProvider',
-    'useFluent',
-
-    // themes
-    'teamsLightTheme',
-    'webLightTheme',
-
-    // makeStyles
-    'mergeClasses',
-    'makeStyles',
-    'makeStaticStyles',
-    '__styles',
-
-    // utils
-    // 'usePopper',
-  ];
-
-  imports.forEach(importName => {
-    const importStatement = `import { ${importName} } from '${packageName}'; console.log(${importName})`;
-    try {
-      const folderName = getFolderName(packageName);
-      const entryPath = path.join(FIXTURE_PATH, folderName, `${importName}.js`);
-
-      fs.outputFileSync(entryPath, importStatement, 'utf-8');
-    } catch (err) {
-      console.log(err);
-    }
-  });
-}
-
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
@@ -237,7 +180,6 @@ function getFolderName(packageName) {
 module.exports = {
   buildEntries,
   buildEntry,
-  createFluentConvergedFixtures,
   createFluentNorthstarFixtures,
   createFluentReactFixtures,
   createEntry,

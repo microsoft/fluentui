@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandPropsCompat } from './Avatar.types';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
 /**
  * Names of the shorthand properties in AvatarProps
  */
-export const avatarShorthandProps: AvatarShorthandProps[] = ['label', 'image', 'badge'];
+export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[] = ['label', 'image', 'badge'];
 
-const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
+const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandPropsCompat });
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
@@ -23,8 +23,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       getInitials,
       ref,
     },
-    defaultProps && resolveAvatarShorthandProps(defaultProps),
-    resolveAvatarShorthandProps(props),
+    defaultProps && resolveAvatarShorthandPropsCompat(defaultProps),
+    resolveAvatarShorthandPropsCompat(props),
   );
 
   // If a label was not provided, use the following priority:
@@ -75,13 +75,13 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
  * Avatar treats shorthand for the image and badge props differently. Rather than the string being
  * the child of those slots, they translate to the image's src and the badge's status prop.
  */
-const resolveAvatarShorthandProps = (props: AvatarProps) => {
+const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
   const image = typeof props.image === 'string' ? { src: props.image, children: null } : props.image;
   const badge = typeof props.badge === 'string' ? { status: props.badge, children: null } : props.badge;
   if (image !== props.image || badge !== props.badge) {
     props = { ...props, image, badge };
   }
-  return resolveShorthandProps(props, avatarShorthandProps);
+  return resolveShorthandProps(props, avatarShorthandPropsCompat);
 };
 
 const avatarColors: AvatarNamedColor[] = [

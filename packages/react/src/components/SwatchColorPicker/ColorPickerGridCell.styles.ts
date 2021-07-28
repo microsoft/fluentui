@@ -59,6 +59,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         border: 'none',
         height: height,
         width: width,
+        verticalAlign: 'top',
       },
       !circle && {
         selectors: {

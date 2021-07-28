@@ -67,6 +67,11 @@ export const TagPickerInlineExample: React.FunctionComponent = () => {
           id: pickerId,
         }}
       />
+      <div
+        // since this example is an inline picker, it needs some forced space below
+        // so when embedded in the docssite, the dropdown shows up
+        style={{ height: '10em' }}
+      />
     </div>
   );
 };

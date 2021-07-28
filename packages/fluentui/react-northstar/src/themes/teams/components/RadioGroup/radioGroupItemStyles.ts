@@ -84,5 +84,6 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
 
   label: (): ICSSInJSStyle => ({
     margin: `0 0 0 ${pxToRem(12)}`,
+    userSelect: 'none',
   }),
 };

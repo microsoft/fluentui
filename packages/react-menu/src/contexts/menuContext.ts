@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
 import { MenuListProps } from '../components/index';
 import { MenuState } from '../components/Menu/index';
 
-const MenuContext = createContext<MenuContextValue>({
+export const MenuContext: Context<MenuContextValue> = createContext<MenuContextValue>({
   open: false,
   setOpen: () => false,
   checkedValues: {},
   onCheckedValueChange: () => null,
   defaultCheckedValues: {},
-  hasMenuContext: false,
   isSubmenu: false,
   triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
   menuPopoverRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
@@ -42,7 +41,6 @@ export interface MenuContextValue
       | 'inline'
     > {
   open: boolean;
-  hasMenuContext: boolean;
   triggerId: string;
 }
 

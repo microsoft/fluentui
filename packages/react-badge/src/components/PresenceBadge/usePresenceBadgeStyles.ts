@@ -3,9 +3,13 @@ import { PresenceBadgeState } from './PresenceBadge.types';
 import { useBadgeStyles } from '../../Badge';
 
 const useStyles = makeStyles({
-  root: {
+  root: theme => ({
     padding: 0,
-  },
+    borderWidth: theme.global.strokeWidth.thick,
+  }),
+  thinBorder: theme => ({
+    borderWidth: theme.global.strokeWidth.thin,
+  }),
   statusBusy: theme => ({
     backgroundColor: theme.alias.color.red.background3,
     borderColor: theme.alias.color.red.background3,
@@ -58,6 +62,7 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadge
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && (state.status === 'busy' || state.status === 'doNotDisturb') && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
+    (state.size === 'smallest' || state.size === 'smaller') && styles.thinBorder,
     state.className,
   );
 

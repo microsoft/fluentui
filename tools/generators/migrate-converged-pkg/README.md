@@ -1,6 +1,6 @@
 # migrate-converged-pkg
 
-Workspace Generator for migrating converged packages to new DX (stage 1)
+Workspace Generator for migrating converged packages to new DX (stage 1)[https://github.com/microsoft/fluentui/issues/18579]
 
 <!-- toc -->
 
@@ -9,6 +9,7 @@ Workspace Generator for migrating converged packages to new DX (stage 1)
   - [Examples](#examples)
 - [Options](#options)
   - [`name`](#name)
+  - [`all`](#all)
   - [`stats`](#stats)
 
 <!-- tocstop -->
@@ -22,13 +23,13 @@ Workspace Generator for migrating converged packages to new DX (stage 1)
 ## Usage
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg ...
+yarn nx workspace-generator migrate-converged-pkg ...
 ```
 
 Show what will be generated without writing to disk:
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg --dry-run
+yarn nx workspace-generator migrate-converged-pkg --dry-run
 ```
 
 ### Examples
@@ -36,7 +37,13 @@ yarn nx workspace-generate migrate-converged-pkg --dry-run
 Run migration on package named `@fluentui/example`
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg --name='@fluentui/example'
+yarn nx workspace-generator migrate-converged-pkg --name='@fluentui/example'
+```
+
+Run migration on all vNext packages
+
+```sh
+yarn nx workspace-generator migrate-converged-pkg --all
 ```
 
 Get migration stats for how many packages have been migrated yet.
@@ -44,7 +51,7 @@ Get migration stats for how many packages have been migrated yet.
 > No actual migration will happen.
 
 ```sh
-yarn nx workspace-generate migrate-converged-pkg --stats --no-interactive
+yarn nx workspace-generator migrate-converged-pkg --stats --no-interactive
 ```
 
 ## Options
@@ -54,6 +61,14 @@ yarn nx workspace-generate migrate-converged-pkg --stats --no-interactive
 Type: `string`
 
 Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
+
+#### `all`
+
+Type: `boolean`
+
+Run batch migration on all vNext packages
+
+> TIP: Use it with `--no-interactive` option to disable prompts.
 
 #### `stats`
 

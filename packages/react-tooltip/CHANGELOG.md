@@ -1,8 +1,154 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.61)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.60..@fluentui/react-tooltip_v9.0.0-alpha.61)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.33 ([PR #18968](https://github.com/microsoft/fluentui/pull/18968) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.60)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.59..@fluentui/react-tooltip_v9.0.0-alpha.60)
+
+### Changes
+
+- Change visual defaults for tooltip. Replace `subtle` prop with `inverted`, and `noArrow` with `pointing` ([PR #19078](https://github.com/microsoft/fluentui/pull/19078) by behowell@microsoft.com)
+- Replace onlyIfTruncated with onBeforeShow event. Add onShow/onHide events. Add TooltipImperativeApi to programatically show/hide tooltip. ([PR #18610](https://github.com/microsoft/fluentui/pull/18610) by behowell@microsoft.com)
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.59)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.58..@fluentui/react-tooltip_v9.0.0-alpha.59)
+
+### Changes
+
+- Move useTimeout into react-utilities ([PR #19023](https://github.com/microsoft/fluentui/pull/19023) by behowell@microsoft.com)
+
+## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.58)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.57..@fluentui/react-tooltip_v9.0.0-alpha.58)
+
+### Changes
+
+- Fix tooltip styling broken by a change in makeStyles ([PR #18966](https://github.com/microsoft/fluentui/pull/18966) by behowell@microsoft.com)
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.57)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.56..@fluentui/react-tooltip_v9.0.0-alpha.57)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.26 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.56)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.55..@fluentui/react-tooltip_v9.0.0-alpha.56)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.25 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.55)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.54..@fluentui/react-tooltip_v9.0.0-alpha.55)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.29 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.54)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.53..@fluentui/react-tooltip_v9.0.0-alpha.54)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.24 ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.53)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.52..@fluentui/react-tooltip_v9.0.0-alpha.53)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.23 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.52)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.51..@fluentui/react-tooltip_v9.0.0-alpha.52)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.22 ([PR #18816](https://github.com/microsoft/fluentui/pull/18816) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.51)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.50..@fluentui/react-tooltip_v9.0.0-alpha.51)
+
+### Changes
+
+- Rename typings and getSlots to have the Compat Suffix ([PR #18796](https://github.com/microsoft/fluentui/pull/18796) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.50)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.49..@fluentui/react-tooltip_v9.0.0-alpha.50)
+
+### Changes
+
+- use react-shared-contexts instead of react-theme-provider ([PR #18710](https://github.com/microsoft/fluentui/pull/18710) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.49)
+
+Wed, 30 Jun 2021 07:38:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.48..@fluentui/react-tooltip_v9.0.0-alpha.49)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.46 ([PR #18695](https://github.com/microsoft/fluentui/pull/18695) by tristan.watanabe@gmail.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.48)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.47..@fluentui/react-tooltip_v9.0.0-alpha.48)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.45 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.47)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.46..@fluentui/react-tooltip_v9.0.0-alpha.47)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.44 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.46)
 

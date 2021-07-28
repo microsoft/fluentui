@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add prop to allow user defined Tooltip to be rendered without default Tooltip being rendered",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

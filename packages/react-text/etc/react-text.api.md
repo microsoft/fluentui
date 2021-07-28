@@ -4,36 +4,121 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ForwardRefExoticComponent } from 'react';
+import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
 import * as React_2 from 'react';
+import { RefAttributes } from 'react';
+import { Theme } from '@fluentui/react-theme';
+
+// @public (undocumented)
+const body: MakeStylesStyleFunctionRule<Theme>;
+
+// Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point index.d.ts
+//
+// @public
+const Body_2: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+export { Body_2 as Body }
+
+// @public
+export const Caption: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public
+const caption: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+export const Display: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+const display: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+export const Headline: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+const headline: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+export const LargeTitle: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+const largeTitle: MakeStylesStyleFunctionRule<Theme>;
 
 // @public
 export const renderText: (state: TextState) => JSX.Element;
 
 // @public
-const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
+export const Subheadline: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
+// @public (undocumented)
+const subheadline: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
 export { Text_2 as Text }
 
 // @public
 export type TextDefaultedProps = never;
 
 // @public
-export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface TextProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+    align?: 'start' | 'center' | 'end' | 'justify';
+    as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
+    block?: boolean;
+    font?: 'base' | 'monospace' | 'numeric';
+    italic?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    strikethrough?: boolean;
+    truncate?: boolean;
+    underline?: boolean;
+    weight?: 'regular' | 'medium' | 'semibold';
+    wrap?: boolean;
 }
 
 // @public
-export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
+export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
+
+// @public
+export const Title1: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+const title1: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+export const Title2: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+const title2: MakeStylesStyleFunctionRule<Theme>;
+
+// @public
+export const Title3: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+const title3: MakeStylesStyleFunctionRule<Theme>;
+
+declare namespace typographyStyles {
+    export {
+        caption,
+        body,
+        subheadline,
+        headline,
+        title3,
+        title2,
+        title1,
+        largeTitle,
+        display
+    }
+}
+export { typographyStyles }
 
 // @public
 export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
 // @public
 export const useTextStyles: (state: TextState) => TextState;
-
 
 // (No @packageDocumentation comment for this package)
 

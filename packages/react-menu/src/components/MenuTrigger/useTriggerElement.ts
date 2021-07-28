@@ -5,6 +5,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
 
 const noop = () => null;
 
@@ -19,7 +20,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   const triggerId = useMenuContext(context => context.triggerId);
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const isSubmenu = useIsSubmenu();
   const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(menuPopoverRef.current);

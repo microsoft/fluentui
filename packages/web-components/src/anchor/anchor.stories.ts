@@ -1,10 +1,5 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import AnchorTemplate from './fixtures/anchor.html';
-import { FluentAnchor } from './';
-
-// Prevent tree-shaking
-FluentAnchor;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Anchor',

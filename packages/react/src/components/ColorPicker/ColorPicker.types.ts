@@ -83,7 +83,7 @@ export interface IColorPickerProps {
   blueLabel?: string;
 
   /**
-   * Label for the alpha textfield.
+   * Label for the alpha text field.
    * @defaultvalue Alpha
    * @deprecated Use `strings`
    */

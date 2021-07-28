@@ -3,10 +3,12 @@ import { useControllableValue, useId } from '@fluentui/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
 import { CommandButton, IButton } from '../../Button';
 import { useOverflow } from '../../utilities/useOverflow';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { FocusZone, IFocusZone, FocusZoneDirection } from '../../FocusZone';
 import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
 import { Icon } from '../Icon/Icon';
-import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
+import { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { PivotItem } from './PivotItem';
+import { IPivotItemProps } from './PivotItem.types';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
@@ -65,7 +67,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneProps } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
@@ -244,9 +246,10 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       <div role="toolbar" {...divProps} ref={ref}>
         <FocusZone
           componentRef={focusZoneRef}
-          direction={FocusZoneDirection.horizontal}
-          className={classNames.root}
           role="tablist"
+          direction={FocusZoneDirection.horizontal}
+          {...focusZoneProps}
+          className={css(classNames.root, focusZoneProps?.className)}
         >
           {items}
           {overflowBehavior === 'menu' && (

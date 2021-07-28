@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { resolveShorthandProps } from './resolveShorthandProps';
-import { ShorthandProps } from './types';
+import { ShorthandPropsCompat } from './types';
 
 type TestProps = {
-  slotA?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  slotB?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  slotC?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  slotA?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  slotB?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  slotC?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
   notASlot?: string;
   alsoNotASlot?: number;
 };

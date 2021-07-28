@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
 import { PopoverSurfaceState } from './PopoverSurface.types';
 
@@ -7,7 +7,7 @@ import { PopoverSurfaceState } from './PopoverSurface.types';
  * Render the final JSX of PopoverSurface
  */
 export const renderPopoverSurface = (state: PopoverSurfaceState) => {
-  const { slots, slotProps } = getSlots(state);
+  const { slots, slotProps } = getSlotsCompat(state);
 
   // TODO should hidden Popovers be supported ?
   if (!state.open) {

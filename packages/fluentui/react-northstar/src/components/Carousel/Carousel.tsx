@@ -32,6 +32,7 @@ import {
   useUnhandledProps,
   useStateManager,
   mergeVariablesOverrides,
+  usePrevious,
 } from '@fluentui/react-bindings';
 import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
@@ -171,8 +172,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
       activeIndex: props.activeIndex,
     }),
   });
-
-  const { prevActiveIndex, ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
+  const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
+  const prevActiveIndex = usePrevious<number>(activeIndex);
 
   const itemRefs = React.useMemo<React.RefObject<HTMLElement>[]>(
     () => Array.from({ length: items?.length }, () => React.createRef()),
@@ -247,8 +248,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let nextActiveIndex = index;
-    const lastActiveIndex = state.activeIndex;
-
     if (index < 0) {
       if (!circular) {
         return;
@@ -263,7 +262,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
       nextActiveIndex = 0;
     }
 
-    actions.setIndexes(nextActiveIndex, lastActiveIndex);
+    actions.setIndexes(nextActiveIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex: index });
 
@@ -302,7 +301,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
               let slideToNext = prevActiveIndex < activeIndex;
-
               const initialMounting = prevActiveIndex === -1;
 
               if (circular && prevActiveIndex === items.length - 1 && activeIndex === 0) {
@@ -318,7 +316,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
                   unmountOnExit
                   visible={active}
                   name={
-                    initialMounting || !active
+                    initialMounting || !active || prevActiveIndex === index
                       ? ''
                       : slideToNext
                       ? 'carousel-slide-to-next-enter'

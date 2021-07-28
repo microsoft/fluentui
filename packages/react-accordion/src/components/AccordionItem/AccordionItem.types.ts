@@ -7,19 +7,25 @@ export interface AccordionItemContextValue {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 }
 
-export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export type AccordionItemSlots = {};
+
+export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
    */
-  disabled?: boolean;
+  disabled: boolean;
 }
 
-export interface AccordionItemState extends ComponentState<AccordionItemProps> {
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {}
+
+export interface AccordionItemState
+  extends ComponentState<AccordionItemSlots>,
+    AccordionItemCommons,
+    AccordionItemContextValue {
   /**
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  context: AccordionItemContextValue;
   /**
    * Internal Context used by AccordionHeader and AccordionPanel communication
    */

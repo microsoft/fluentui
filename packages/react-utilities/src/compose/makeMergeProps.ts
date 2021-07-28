@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { GenericDictionary } from './types';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type GenericDictionary = Record<string, any>;
 
 // TODO
 // css() function is temporary there, mergeClasses() should be used instead, but it's not possible now due possible

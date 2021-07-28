@@ -3,7 +3,7 @@ import { AccordionItem } from './AccordionItem';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { AccordionItemContext } from './useAccordionItemContext';
+import { AccordionItemContext } from './AccordionItemContext';
 import { DescendantProvider } from '@fluentui/react-utilities';
 import { accordionItemDescendantContext } from './useAccordionItem';
 

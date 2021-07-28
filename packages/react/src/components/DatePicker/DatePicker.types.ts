@@ -55,7 +55,7 @@ export interface IDatePickerProps
 
   /**
    * Pass textField props to textField component.
-   * Prop name is "textField" for compatiblity with upcoming slots work.
+   * Prop name is "textField" for compatibility with upcoming slots work.
    */
   textField?: ITextFieldProps;
 
@@ -214,7 +214,7 @@ export interface IDatePickerProps
   className?: string;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: IDateFormatting;
 

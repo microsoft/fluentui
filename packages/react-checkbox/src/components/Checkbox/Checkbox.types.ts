@@ -1,33 +1,111 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandProps } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 
 /**
  * Checkbox Props
  */
-export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the checkboxShorthandProps array below
-   * Any property that has a default value should be listed in CheckboxDefaultedProps as e.g. 'size' | 'icon'
+export interface CheckboxProps
+  extends Omit<ComponentPropsCompat, 'children'>,
+    Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
+  /**
+   * Label that will be rendered next to the checkbox.
    */
+  label?: ShorthandProps<LabelProps>;
+
+  /**
+   * Indicator to be rendered as the checkbox icon.
+   */
+  indicator?: ShorthandProps<ComponentPropsCompat>;
+
+  /**
+   * Hidden input that handles the checkbox's functionality.
+   */
+  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+
+  /**
+   * Disabled state of the checkbox.
+   */
+  disabled?: boolean;
+
+  /**
+   * Required state of the checkbox.
+   */
+  required?: boolean;
+
+  /**
+   * A checkbox can be rendered with a circular shape.
+   */
+  circular?: boolean;
+
+  /**
+   * A checkbox's state can be controlled.
+   * @defaultvalue false
+   */
+  checked?: 'mixed' | boolean;
+
+  /**
+   * Whether the checkbox should be rendered as checked by default.
+   */
+  defaultChecked?: 'mixed' | boolean;
+
+  /**
+   * Checkbox supports two different checkbox sizes.
+   * @defaultvalue 'medium'
+   */
+  size?: 'medium' | 'large';
+
+  /**
+   * Determines whether the label should be positioned before or after the checkbox.
+   * @defaultvalue 'after'
+   */
+  labelPosition?: 'before' | 'after';
+
+  /**
+   * ID of the root element that wraps the checkbox and label.
+   */
+  rootId?: string;
+
+  /**
+   * ID of the native element that represents the checkbox.
+   */
+  id?: string;
+
+  /**
+   * Callback to be called when the checked state value changes.
+   */
+  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+}
+
+/**
+ * Data for the onChange event for checkbox.
+ */
+export interface CheckboxOnChangeData {
+  checked: 'mixed' | boolean;
 }
 
 /**
  * Names of the shorthand properties in CheckboxProps
  */
-export type CheckboxShorthandProps = never; // TODO add shorthand property names
+export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
 
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
  */
-export type CheckboxDefaultedProps = never; // TODO add names of properties with default values
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition';
 
 /**
  * State used in rendering Checkbox
  */
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+export interface CheckboxState
+  extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
   /**
-   * Ref to the root element
+   * Ref to the root element.
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * CSS class for the checkbox element.
+   */
+  checkboxClassName?: string;
 }

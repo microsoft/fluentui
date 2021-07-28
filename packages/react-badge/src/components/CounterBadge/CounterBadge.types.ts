@@ -23,7 +23,7 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
   overflowCount?: number;
 
   /**
-   * Value diplayed by the Badge
+   * Value displayed by the Badge
    * @defaultvalue 0
    */
   count?: number;
@@ -52,7 +52,7 @@ export interface CounterBadgeState extends BadgeState {
   overflowCount: number;
 
   /**
-   * Value diplayed by the Badge
+   * Value displayed by the Badge
    * @defaultvalue 0
    */
   count: number;

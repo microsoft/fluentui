@@ -39,7 +39,6 @@ export const renderMenu = (state: MenuState) => {
         triggerId,
         menuPopoverRef,
         isSubmenu,
-        hasMenuContext: true,
         hasCheckmarks,
         hasIcons,
         persistOnItemClick,

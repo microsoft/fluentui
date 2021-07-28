@@ -59,6 +59,6 @@ export const CompactChatErrorState = () => (
       },
     }}
   >
-    <Chat compact items={items} />
+    <Chat density="compact" items={items} />
   </Provider>
 );
