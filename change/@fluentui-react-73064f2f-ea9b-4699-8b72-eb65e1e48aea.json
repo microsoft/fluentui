@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Exposed an optional iconName flag in Pickers - PeoplePicker, Suggestions and TagPicker. This change is backward compatible. Consumers will now be able to add the iconName(string) as a prop.",
+  "comment": "Exposed an optional removeButtonIconProps prop in PeoplePicker, Suggestions and TagPicker. This change is backward compatible.",
   "packageName": "@fluentui/react",
   "email": "shujathlive@gmail.com",
   "dependentChangeType": "patch"
