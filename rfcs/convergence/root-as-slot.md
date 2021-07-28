@@ -181,7 +181,7 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
 1. Treating `root` as a simple slot simplifies _Typings_
 2. Simplification of _Typings_ also comes with better inference performance
 3. References available on every _slot_
-4. Not using `getNativeElementProps` means possible performance improvement
+4. Not using `getNativeElementProps` for all slots means possible performance improvement
 
 ### Cons
 
