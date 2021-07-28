@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Callout: Allowing for user-set maxHeight to be respected.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
