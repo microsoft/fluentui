@@ -45,7 +45,7 @@ export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement
 
   /**
    *  Props for the icon used in the remove button.
-   *  @defaultvalue \{iconName:'Cancel'\}
+   *  @defaultvalue `{ iconName:'Cancel' }`
    */
   removeButtonIconProps?: IIconProps;
 }

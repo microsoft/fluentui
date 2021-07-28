@@ -245,7 +245,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    *  Props for the icon used in the item's remove button.
-   *  @defaultvalue \{iconName:'Cancel'\}
+   *  @defaultvalue `{ iconName:'Cancel' }`
    */
   removeButtonIconProps?: IIconProps;
 }

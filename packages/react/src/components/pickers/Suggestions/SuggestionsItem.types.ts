@@ -59,7 +59,7 @@ export interface ISuggestionItemProps<T> {
 
   /**
    *  Props for the icon used in the item's remove button.
-   *  @defaultvalue \{iconName:'Cancel'\}
+   *  @defaultvalue `{ iconName:'Cancel' }`
    */
   removeButtonIconProps?: IIconProps;
 }
