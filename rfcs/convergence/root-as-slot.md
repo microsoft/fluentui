@@ -186,11 +186,12 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
 ### Cons
 
 1. [Widening Types problem](#⚠️-Widening-types-problem-⚠️)
-2. Explicit of _slots_ declaration makes easier for developers to make mistakes
+2. Explicit _slots_ declaration makes easier for developers to make mistakes
 
-[1st rule of aria opt-out mechanism]: https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/first-rule-of-aria.md#detailed-proposal
-[do not support as prop for slots that render native dom elements]: https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/simplify-prop-merging.md#do-not-support-as-prop-for-slots-that-render-native-dom-elements
-[primary slot]: https://github.com/microsoft/fluentui/blob/91e25b8615a4a0ddb52b18ba5a51ffe21711bb7c/rfcs/convergence/native-element-props.md
+#### Possible mistakes
+
+- Since `root` becomes a regular slot, it might be possible developers forget to include it in the list of shorthands
+- Since typings become a responsibility of the developer, typing errors might be prone, e.g: bad usage of `Partial` or `Required` (this can be mitigated by forcing optional on props and required on state)
 
 #### ⚠️ [Widening types](https://www.typescriptlang.org/play#example/type-widening-and-narrowing) problem ⚠️
 
@@ -239,3 +240,9 @@ return {
   root: resolveShorthand(getNativeElementProps(state.components.root, props)),
 };
 ```
+
+> A possible good solution for this problem, instead of prop filtering with `getNativeElementProps` would be to add linting rules and conformance tests to ensure no custom properties are leaking into the DOM
+
+[1st rule of aria opt-out mechanism]: https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/first-rule-of-aria.md#detailed-proposal
+[do not support as prop for slots that render native dom elements]: https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/simplify-prop-merging.md#do-not-support-as-prop-for-slots-that-render-native-dom-elements
+[primary slot]: https://github.com/microsoft/fluentui/blob/91e25b8615a4a0ddb52b18ba5a51ffe21711bb7c/rfcs/convergence/native-element-props.md
