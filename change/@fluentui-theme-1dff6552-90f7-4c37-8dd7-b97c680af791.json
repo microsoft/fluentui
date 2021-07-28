@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added optional name property to ITheme type",
+  "packageName": "@fluentui/theme",
+  "email": "ashwin.gokhale98@gmail.com",
+  "dependentChangeType": "patch"
+}
