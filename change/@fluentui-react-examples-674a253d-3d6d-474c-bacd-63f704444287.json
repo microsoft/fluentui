@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "#14199 Minor change - Ability to override remove icons in Pickers (PeoplePicker, Suggestions and TagPicker)",
-  "packageName": "@fluentui/react-examples",
-  "email": "shujathlive@gmail.com",
-  "dependentChangeType": "patch"
-}
