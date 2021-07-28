@@ -1,7 +1,7 @@
 /**
  * Export all custom element definitions
  */
-import type { Container } from '@microsoft/fast-foundation';
+import { Container } from '@microsoft/fast-foundation';
 import { fluentAccordion, fluentAccordionItem } from './accordion/index';
 import { fluentAnchor } from './anchor/index';
 import { fluentAnchoredRegion } from './anchored-region/index';
@@ -129,18 +129,18 @@ export const allComponents = {
   fluentTreeView,
   fluentTreeItem,
   register(container?: Container) {
-      if (!container) {
-          // preserve backward compatibility with code that loops through
-          // the values of this object and calls them as funcs with no args
-          return;
+    if (!container) {
+      // preserve backward compatibility with code that loops through
+      // the values of this object and calls them as funcs with no args
+      return;
+    }
+
+    for (const key in this) {
+      if (key === 'register') {
+        continue;
       }
 
-      for (const key in this) {
-          if (key === "register") {
-              continue;
-          }
-
-          this[key]().register(container);
-      }
+      this[key]().register(container);
+    }
   },
 };
