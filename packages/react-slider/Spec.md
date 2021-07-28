@@ -96,12 +96,6 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | onChange | &check;                                                                                 | &check;                                                                               | Triggers a callback when the value has been changed. This will be called on every individual step. |
 
-### Accessibility props
-
-| Name           | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="120"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/> | Description                                                           |
-| -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ariaValueLabel | x                                                                                       | &check;                                                                               | The **Slider's** current value label to be read by the screen reader. |
-
 ## Migration
 
 <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
