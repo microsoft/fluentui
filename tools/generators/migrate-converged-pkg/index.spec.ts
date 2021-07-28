@@ -1,5 +1,4 @@
-import * as enquirer from 'enquirer';
-import * as yargsParser from 'yargs-parser';
+import * as Enquirer from 'enquirer';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -23,17 +22,15 @@ interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
 }
 
-jest.mock('enquirer', () => ({
-  prompt: () => ({
-    name: '@proj/react-dummy',
-  }),
-}));
-
-jest.mock('yargs-parser', () => {
-  const original = jest.requireActual('yargs-parser');
-
-  return jest.fn(original);
-});
+jest.mock(
+  'enquirer',
+  () =>
+    ({
+      prompt: async () => ({
+        name: '',
+      }),
+    } as Pick<Enquirer, 'prompt'>),
+);
 
 describe('migrate-converged-pkg generator', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -69,7 +66,7 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe.only('general', () => {
+  describe('general', () => {
     it(`should throw error if name is empty`, async () => {
       await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(
         `[Error: --name cannot be empty. Please provide name of the package.]`,
@@ -95,36 +92,34 @@ describe('migrate-converged-pkg generator', () => {
       );
     });
 
-    it('should prompt for a name if neither "name" OR "all" OR "stats" are specified', async () => {
-      ((yargsParser as unknown) as jest.Mock).mockImplementation(() => {
-        return {
-          interactive: true,
-        };
+    describe('prompts', () => {
+      function setup(config: { promptResponse: Pick<MigrateConvergedPkgGeneratorSchema, 'name'> }) {
+        const promptSpy = jest.spyOn(Enquirer, 'prompt').mockImplementation(async () => {
+          return { ...config.promptResponse };
+        });
+
+        return { promptSpy };
+      }
+
+      it('should prompt for a name if neither "name" OR "all" OR "stats" are specified', async () => {
+        const { promptSpy } = setup({ promptResponse: options });
+
+        await generator(tree, {});
+
+        expect(promptSpy).toHaveBeenCalledTimes(1);
       });
 
-      const spy = jest.spyOn(enquirer, 'prompt');
+      it('should not prompt for a name if "all" OR "stats" is specified', async () => {
+        const { promptSpy } = setup({ promptResponse: options });
 
-      await generator(tree, {});
+        await generator(tree, { stats: true });
 
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
+        expect(promptSpy).toHaveBeenCalledTimes(0);
 
-    it('should not prompt for a name if "all" OR "stats" is specified', async () => {
-      ((yargsParser as unknown) as jest.Mock).mockImplementation(() => {
-        return {
-          interactive: true,
-        };
+        await generator(tree, { all: true });
+
+        expect(promptSpy).toHaveBeenCalledTimes(0);
       });
-
-      const spy = jest.spyOn(enquirer, 'prompt');
-
-      await generator(tree, { stats: true });
-
-      expect(spy).toHaveBeenCalledTimes(0);
-
-      await generator(tree, { all: true });
-
-      expect(spy).toHaveBeenCalledTimes(0);
     });
   });
 

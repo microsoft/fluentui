@@ -18,7 +18,7 @@ import { serializeJson } from '@nrwl/workspace';
 import * as path from 'path';
 
 import { PackageJson, TsConfig } from '../../types';
-import { parseArgs, prompt, updateJestConfig } from '../../utils';
+import { arePromptsEnabled, prompt, updateJestConfig } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -257,8 +257,8 @@ async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSc
   const shouldValidateNameInput = () => {
     return !newSchema.name && !(newSchema.all || newSchema.stats);
   };
-  const parsedArgs = parseArgs<MigrateConvergedPkgGeneratorSchema>(process.argv.slice(2));
-  const shouldTriggerPrompt = parsedArgs.interactive && shouldValidateNameInput();
+
+  const shouldTriggerPrompt = arePromptsEnabled() && shouldValidateNameInput();
 
   // console.error(newSchema, parsedArgs);
   if (shouldTriggerPrompt) {
@@ -276,7 +276,6 @@ async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSc
 
     if (!isPackageConverged(tree, projectConfig)) {
       throw new Error(
-        // eslint-disable-next-line @fluentui/max-len
         `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
       );
     }
