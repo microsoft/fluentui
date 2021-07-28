@@ -40,14 +40,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-tabster": "^9.0.0-alpha.43",
-    "@fluentui/react": "^8.23.9",
-    "@fluentui/react-hooks": "^8.2.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.49",
-    "@fluentui/react-utilities": "^9.0.0-alpha.33",
-    "@fluentui/style-utilities": "^8.2.0",
-    "@fluentui/test-utilities": "^8.0.7",
-    "@fluentui/utilities": "^8.2.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.52",
+    "@fluentui/react-utilities": "^9.0.0-alpha.35",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

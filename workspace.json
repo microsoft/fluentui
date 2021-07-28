@@ -119,10 +119,18 @@
       "projectType": "library",
       "sourceRoot": "packages/react-button/src"
     },
-    "@fluentui/react-card": { "root": "packages/react-card", "projectType": "library" },
+    "@fluentui/react-card": {
+      "root": "packages/react-card",
+      "projectType": "library",
+      "sourceRoot": "packages/react-card/src"
+    },
     "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
-    "@fluentui/react-checkbox": { "root": "packages/react-checkbox", "projectType": "library" },
+    "@fluentui/react-checkbox": {
+      "root": "packages/react-checkbox",
+      "projectType": "library",
+      "sourceRoot": "packages/react-checkbox/src"
+    },
     "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
     "@fluentui/react-compose": { "root": "packages/react-compose", "projectType": "library" },
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },
@@ -192,7 +200,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-shared-contexts/src"
     },
-    "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
+    "@fluentui/react-storybook": {
+      "root": "packages/react-storybook",
+      "projectType": "library",
+      "sourceRoot": "packages/react-storybook/src"
+    },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
     "@fluentui/react-tabster": {
       "root": "packages/react-tabster",
@@ -210,7 +222,11 @@
       "sourceRoot": "packages/react-theme/src"
     },
     "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
-    "@fluentui/react-tooltip": { "root": "packages/react-tooltip", "projectType": "library" },
+    "@fluentui/react-tooltip": {
+      "root": "packages/react-tooltip",
+      "projectType": "library",
+      "sourceRoot": "packages/react-tooltip/src"
+    },
     "@fluentui/react-utilities": {
       "root": "packages/react-utilities",
       "projectType": "library",

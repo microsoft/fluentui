@@ -31,5 +31,8 @@ module.exports = {
     '<rootDir>/packages/make-styles-webpack-loader',
     '<rootDir>/packages/react-avatar',
     '<rootDir>/packages/react-shared-contexts',
+    '<rootDir>/packages/react-tooltip',
+    '<rootDir>/packages/react-card',
+    '<rootDir>/packages/react-checkbox',
   ],
 };

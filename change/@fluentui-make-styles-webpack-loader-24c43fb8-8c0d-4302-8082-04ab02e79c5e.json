@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bump @linaria/babel-preset & @linaria/shaker",
-  "packageName": "@fluentui/make-styles-webpack-loader",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

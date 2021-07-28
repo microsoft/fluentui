@@ -1,13 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { TooltipState } from './Tooltip.types';
-import { Theme } from '@fluentui/react-theme';
-
-/**
- * The height of the triangle used for the arrow that points at the tooltip's target
- */
-export const arrowHeight = 6;
-
-export const tooltipBorderRadius = (theme: Theme) => theme.global.borderRadius.medium;
 
 /**
  * Styles for the tooltip
@@ -21,10 +13,10 @@ const useStyles = makeStyles({
     fontFamily: theme.global.type.fontFamilies.base,
     fontSize: theme.global.type.fontSizes.base[200],
     lineHeight: theme.global.type.lineHeights.base[200],
-    borderRadius: tooltipBorderRadius(theme),
+    borderRadius: theme.global.borderRadius.medium, // Update tooltipBorderRadius in useTooltip.tsx if this changes
 
-    background: theme.alias.color.neutral.neutralForeground2, // TODO should be neutralBackgroundInverted
-    color: theme.alias.color.neutral.neutralForegroundInverted,
+    background: theme.alias.color.neutral.neutralBackground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
     // TODO need to add versions of theme.alias.shadow.shadow8, etc. that work with filter
     filter:
@@ -36,15 +28,15 @@ const useStyles = makeStyles({
     display: 'block',
   },
 
-  subtle: theme => ({
-    background: theme.alias.color.neutral.neutralBackground1,
-    color: theme.alias.color.neutral.neutralForeground1,
+  inverted: theme => ({
+    background: theme.alias.color.neutral.neutralForeground2, // TODO should be neutralBackgroundInverted
+    color: theme.alias.color.neutral.neutralForegroundInverted,
   }),
 
   arrow: theme => ({
     position: 'absolute',
-    width: `${Math.SQRT2 * arrowHeight}px`,
-    height: `${Math.SQRT2 * arrowHeight}px`,
+    width: '8.485px', //  width and height = arrowHeight * sqrt(2)
+    height: '8.485px', // Update arrowHeight in useTooltip.tsx if this changes
     background: 'inherit',
     visibility: 'hidden',
     zIndex: -1,
@@ -77,7 +69,7 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
 
   state.className = mergeClasses(
     styles.root,
-    state.subtle && styles.subtle,
+    state.inverted && styles.inverted,
     state.visible && styles.visible,
     state.className,
   );

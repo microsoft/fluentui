@@ -43,9 +43,12 @@ export interface TooltipContentProps extends UIComponentProps, ChildrenComponent
 
   /** A ref to a pointer element. */
   pointerRef?: React.Ref<HTMLDivElement>;
+
+  /** Defines wether tooltip is subtle  */
+  subtle?: boolean;
 }
 
-export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'pointing' | 'open'>> & {
+export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'pointing' | 'open' | 'subtle'>> & {
   basePlacement: PopperJs.BasePlacement;
 };
 
@@ -72,6 +75,7 @@ export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
     pointerRef,
     styles,
     variables,
+    subtle,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -84,6 +88,7 @@ export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
       basePlacement: getBasePlacement(placement, context.rtl),
       open,
       pointing,
+      subtle,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -140,6 +145,7 @@ TooltipContent.propTypes = {
   ]),
   pointing: PropTypes.bool,
   pointerRef: customPropTypes.ref,
+  subtle: PropTypes.bool,
 };
 TooltipContent.handledProps = Object.keys(TooltipContent.propTypes) as any;
 
