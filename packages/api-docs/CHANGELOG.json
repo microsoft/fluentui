@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.24.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jul 2021 07:34:27 GMT",
       "tag": "@fluentui/api-docs_v8.1.35",
       "version": "8.1.35",
