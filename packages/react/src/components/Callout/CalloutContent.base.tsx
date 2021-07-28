@@ -537,17 +537,17 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
           {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
             {...getNativeProps(props, ARIA_ROLE_ATTRIBUTES)}
-            ariaLabel={ariaLabel}
-            onRestoreFocus={props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
+            ariaLabel={ariaLabel}
             ariaLabelledBy={ariaLabelledBy}
+            className={classNames.calloutMain}
             onDismiss={props.onDismiss}
+            onMouseDown={mouseDownOnPopup}
+            onMouseUp={mouseUpOnPopup}
+            onRestoreFocus={props.onRestoreFocus}
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
-            className={classNames.calloutMain}
-            onMouseDown={mouseDownOnPopup}
-            onMouseUp={mouseUpOnPopup}
           >
             {children}
           </Popup>
