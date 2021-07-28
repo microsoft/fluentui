@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "@fluentui/react_v8.24.0",
+      "version": "8.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add live region for BasePicker item removal, fix focused tag styles",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jul 2021 07:34:27 GMT",
       "tag": "@fluentui/react_v8.23.10",
       "version": "8.23.10",
