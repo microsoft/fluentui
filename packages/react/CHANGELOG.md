@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jul 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.24.0)
+
+Wed, 28 Jul 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.10..@fluentui/react_v8.24.0)
+
+### Minor changes
+
+- Add live region for BasePicker item removal, fix focused tag styles ([PR #19080](https://github.com/microsoft/fluentui/pull/19080) by sarah.higley@microsoft.com)
+
+## [8.23.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.10)
+
+Tue, 27 Jul 2021 07:34:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.9..@fluentui/react_v8.23.10)
+
+### Patches
+
+- Fix bug where ContextualMenu's onMenuDismissed is called twice ([PR #19135](https://github.com/microsoft/fluentui/pull/19135) by behowell@microsoft.com)
+
+## [8.23.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.9)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.23.8..@fluentui/react_v8.23.9)
+
+### Patches
+
+- Fix crash in ContextualMenu when Callout component is loaded asynchronously ([PR #19122](https://github.com/microsoft/fluentui/pull/19122) by behowell@microsoft.com)
+- Enabling Callout to revaluate position after width and height modifications are made. ([PR #18887](https://github.com/microsoft/fluentui/pull/18887) by czearing@outlook.com)
+- Removed left padding for links in MessageBar and fixed examples ([PR #19009](https://github.com/microsoft/fluentui/pull/19009) by tahsia@microsoft.com)
 
 ## [8.23.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.23.8)
 
