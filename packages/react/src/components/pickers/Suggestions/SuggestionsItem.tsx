@@ -80,7 +80,8 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         </CommandButton>
         {this.props.showRemoveButton ? (
           <IconButton
-            iconProps={{ ...(removeButtonIconProps ?? { iconName: 'Cancel' }), styles: { root: { fontSize: '12px' } } }}
+            iconProps={removeButtonIconProps ?? { iconName: 'Cancel' }}
+            styles={{ icon: { fontSize: '12px' } }}
             title={removeButtonAriaLabel}
             ariaLabel={removeButtonAriaLabel}
             onClick={onRemoveItem}

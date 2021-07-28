@@ -61,7 +61,8 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
         id={itemId}
         onClick={onRemoveItem}
         disabled={disabled}
-        iconProps={{ ...(removeButtonIconProps ?? { iconName: 'Cancel' }), styles: { root: { fontSize: '12px' } } }}
+        iconProps={removeButtonIconProps ?? { iconName: 'Cancel' }}
+        styles={{ icon: { fontSize: '12px' } }}
         className={classNames.removeButton}
         ariaLabel={removeButtonAriaLabel}
         aria-labelledby={`${itemId} selectedItemPersona-${itemId}`}
