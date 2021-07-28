@@ -66,7 +66,7 @@ export const breadcrumbItemStyles: (
       color: ${neutralForegroundActive};
     }
 
-    .control: ${focusVisible}::after {
+    .control:${focusVisible}::after {
       content: '';
       position: absolute;
       inset: calc(${strokeWidth} * -1px);

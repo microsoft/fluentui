@@ -10,10 +10,12 @@ import {
   accentFillRest,
   bodyFont,
   controlCornerRadius,
+  focusStrokeWidth,
   neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
+import { heightNumber } from '../styles';
 
 export const tabsStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
@@ -30,7 +32,7 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
 
       .tablist {
         display: grid;
-        grid-template-rows: auto auto;
+        grid-template-rows: calc(${heightNumber} * 1px); auto;
         grid-template-columns: auto;
         position: relative;
         width: max-content;
@@ -95,6 +97,7 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
         grid-row: 1;
         width: 3px;
         height: 20px;
+        margin-inline-start: calc(${focusStrokeWidth} * 1px);
         border-radius: calc(${controlCornerRadius} * 1px);
         align-self: center;
         background: ${accentFillRest};

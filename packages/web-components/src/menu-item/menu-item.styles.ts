@@ -91,11 +91,11 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
 
-    :host(:hover) {
+    :host(:not([disabled]):hover) {
       background: ${neutralFillStealthHover};
     }
 
-    :host(:active),
+    :host(:not([disabled]):active),
     :host(.expanded) {
       background: ${neutralFillStealthActive};
       color: ${neutralForegroundRest};
@@ -104,12 +104,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host([disabled]) {
       cursor: ${disabledCursor};
       opacity: ${disabledOpacity};
-    }
-
-    :host([disabled]:hover) .start,
-    :host([disabled]:hover) .end,
-    :host([disabled]:hover)::slotted(svg) {
-      fill: currentcolor;
     }
 
     .content {
@@ -123,15 +117,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     .end {
       display: flex;
       justify-content: center;
-    }
-
-    :host(:hover) .start,
-    :host(:hover) .end,
-    :host(:hover)::slotted(svg),
-    :host(:active) .start,
-    :host(:active) .end,
-    :host(:active)::slotted(svg) {
-      fill: ${neutralForegroundRest};
     }
 
     :host(.indent-1[aria-haspopup='menu']),

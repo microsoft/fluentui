@@ -58,10 +58,13 @@ export const inputStyles: (
     border: calc(${strokeWidth} * 1px) solid transparent;
     border-radius: calc(${controlCornerRadius} * 1px);
     height: calc(${heightNumber} * 1px);
-    width: 100%;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+  }
+
+  .control {
+    width: 100%;
   }
 
   .control:hover,

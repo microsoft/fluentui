@@ -91,19 +91,19 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       margin: 4px;
       background: ${accentFillRest};
     }
-    .thumb-cursor:hover::after {
+    :host(:not(.disabled)) .thumb-cursor:hover::after {
       background: ${accentFillHover};
       margin: 3px;
     }
-    .thumb-cursor:active::after {
+    :host(:not(.disabled)) .thumb-cursor:active::after {
       background: ${accentFillActive};
       margin: 5px;
     }
-    .thumb-cursor:hover {
+    :host(:not(.disabled)) .thumb-cursor:hover {
       background: ${neutralFillHover};
       border-color: ${neutralStrokeHover};
     }
-    .thumb-cursor:active {
+    :host(:not(.disabled)) .thumb-cursor:active {
       background: ${neutralFillActive};
       border-color: ${neutralStrokeActive};
     }
@@ -169,8 +169,8 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
           border-color: ${SystemColors.FieldText};
           background: ${SystemColors.FieldText};
         }
-        .thumb-cursor:hover,
-        .thumb-cursor:active {
+        :host(:not(.disabled)) .thumb-cursor:hover,
+        :host(:not(.disabled)) .thumb-cursor:active {
           background: ${SystemColors.Highlight};
         }
         .track {

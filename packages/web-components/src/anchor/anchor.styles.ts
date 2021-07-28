@@ -17,9 +17,9 @@ export const anchorStyles: (
   css`
     ${baseButtonStyles(context, definition)}
   `.withBehaviors(
-    appearanceBehavior('accent', AccentButtonStyles),
-    appearanceBehavior('hypertext', HypertextStyles),
-    appearanceBehavior('lightweight', LightweightButtonStyles),
-    appearanceBehavior('outline', OutlineButtonStyles),
-    appearanceBehavior('stealth', StealthButtonStyles),
+    appearanceBehavior('accent', AccentButtonStyles(context, definition)),
+    appearanceBehavior('hypertext', HypertextStyles(context, definition)),
+    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition)),
+    appearanceBehavior('outline', OutlineButtonStyles(context, definition)),
+    appearanceBehavior('stealth', StealthButtonStyles(context, definition)),
   );

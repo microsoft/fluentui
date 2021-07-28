@@ -61,15 +61,15 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       cursor: ${disabledCursor};
     }
 
-    :host(:hover) {
+    :host(:not(.disabled):hover) {
       cursor: pointer;
     }
 
-    :host(:hover)::before {
+    :host(:not(.disabled):hover)::before {
       background: ${neutralFillStealthHover};
     }
 
-    :host(:active)::before {
+    :host(:not(.disabled):active)::before {
       background: ${neutralFillStealthActive};
     }
 
@@ -95,14 +95,14 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
           background: ${SystemColors.Canvas};
           border-color: ${SystemColors.ButtonText};
         }
-        :host(:hover)::before {
+        :host(:not(.disabled):hover)::before {
           forced-color-adjust: none;
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.ButtonText};
           opacity: 1;
         }
-        :host(:hover) .next,
-        :host(:hover) .previous {
+        :host(:not(.disabled):hover) .next,
+        :host(:not(.disabled):hover) .previous {
           forced-color-adjust: none;
           color: ${SystemColors.HighlightText};
           fill: currentcolor;

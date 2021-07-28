@@ -27,6 +27,7 @@ export const listboxStyles: (
       box-sizing: border-box;
       flex-direction: column;
       padding: calc(${designUnit} * 1px) 0;
+      outline: none;
     }
 
     :host(:focus-within:not([disabled])) {

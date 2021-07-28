@@ -9,8 +9,8 @@ import {
 import {
   accentFillRest,
   designUnit,
-  neutralFillRest,
   neutralForegroundHint,
+  strokeControlStrongRest,
   strokeWidth,
 } from '../../design-tokens';
 
@@ -22,15 +22,15 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
     ${display('flex')} :host {
       align-items: center;
       outline: none;
-      height: calc(${designUnit} * 1px);
+      height: calc((${strokeWidth} * 3) * 1px);
       margin: calc(${designUnit} * 1px) 0;
     }
 
     .progress {
-      background-color: ${neutralFillRest};
+      background-color: ${strokeControlStrongRest};
       border-radius: calc(${designUnit} * 1px);
       width: 100%;
-      height: 100%;
+      height: calc(${strokeWidth} * 1px);
       display: flex;
       align-items: center;
       position: relative;
@@ -39,13 +39,13 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
     .determinate {
       background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
-      height: 100%;
+      height: calc((${strokeWidth} * 3) * 1px);
       transition: all 0.2s ease-in-out;
       display: flex;
     }
 
     .indeterminate {
-      height: 100%;
+      height: calc((${strokeWidth} * 3) * 1px);
       border-radius: calc(${designUnit} * 1px);
       display: flex;
       width: 100%;

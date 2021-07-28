@@ -68,15 +68,15 @@ export const optionStyles: (
       border-radius: calc(${controlCornerRadius} * 1px);
     }
 
-    :host(:hover) {
+    :host(:not([disabled]):hover) {
       background: ${neutralFillStealthHover};
     }
 
-    :host(:active) {
+    :host(:not([disabled]):active) {
       background: ${neutralFillStealthActive};
     }
 
-    :host(:active)::before {
+    :host(:not([disabled]):active)::before {
       background: ${accentForegroundRest};
       height: calc(((${heightNumber} / 2) - 6) * 1px);
     }
@@ -94,29 +94,25 @@ export const optionStyles: (
       background: ${neutralFillRest};
     }
 
-    :host([aria-selected='true']:hover) {
+    :host(:not([disabled])[aria-selected='true']:hover) {
       background: ${neutralFillHover};
     }
 
-    :host([aria-selected='true']:active) {
+    :host(:not([disabled])[aria-selected='true']:active) {
       background: ${neutralFillActive};
     }
 
-    :host(:not([aria-selected='true']):hover) {
+    :host(:not([disabled]):not([aria-selected='true']):hover) {
       background: ${neutralFillStealthHover};
     }
 
-    :host(:not([aria-selected='true']):active) {
+    :host(:not([disabled]):not([aria-selected='true']):active) {
       background: ${neutralFillStealthActive};
     }
 
     :host([disabled]) {
       cursor: ${disabledCursor};
       opacity: ${disabledOpacity};
-    }
-
-    :host([disabled]:hover) {
-      background-color: inherit;
     }
 
     .content {

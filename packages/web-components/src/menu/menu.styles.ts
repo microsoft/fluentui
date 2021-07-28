@@ -27,13 +27,13 @@ export const menuStyles: (context: ElementDefinitionContext, definition: Foundat
 
       :host([slot='submenu']) {
         width: max-content;
-        margin: 0 calc(${designUnit} * 1px);
+        margin: 0 calc(${designUnit} * 2px);
       }
 
       ::slotted(hr) {
         box-sizing: content-box;
         height: 0;
-        margin: 0;
+        margin: calc(${designUnit} * 1px) 0;
         border: none;
         border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
       }

@@ -62,8 +62,10 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     :host(.disabled) .label,
     :host(.readonly) .label,
+    :host(.disabled) .switch,
     :host(.readonly) .switch,
-    :host(.disabled) .switch {
+    :host(.disabled) .status-message,
+    :host(.readonly) .status-message {
       cursor: ${disabledCursor};
     }
 
