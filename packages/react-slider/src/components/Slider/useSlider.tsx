@@ -90,8 +90,10 @@ export const useSlider = (
   const updateValue = React.useCallback(
     (ev, incomingValue: number): void => {
       if (currentValue !== min && currentValue !== max) {
-        ev.preventDefault();
         ev.stopPropagation();
+        if (ev.type === 'keydown') {
+          ev.preventDefault();
+        }
       }
 
       setCurrentValue(clamp(incomingValue, min, max), ev);
@@ -135,10 +137,16 @@ export const useSlider = (
 
   const onPointerDown = React.useCallback(
     (ev): void => {
+      const { currentTarget, pointerId } = ev;
+
+      currentTarget.setPointerCapture(pointerId);
+
       disposables.current.push(
-        on(window, 'pointermove', onPointerMove, true),
-        on(window, 'pointerup', onPointerUp, true),
+        on(currentTarget, 'pointermove', onPointerMove),
+        on(currentTarget, 'pointerup', onPointerUp),
+        () => currentTarget.releasePointerCapture(pointerId),
       );
+
       onPointerMove(ev);
     },
     [onPointerMove],
