@@ -52,7 +52,7 @@
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "run:published": "node ./scripts/monorepo/runPublished.js",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
-    "satisfied": "satisfied --skip-invalid --ignore \"angular|lit|sass|svelte|@testing-library|vue|web-components\"",
+    "satisfied": "satisfied --skip-invalid --ignore \"angular|lit|sass|@storybook/web-components|svelte|@testing-library|vue\"",
     "scrub": "node ./scripts/scrub.js",
     "start": "node scripts/start.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
