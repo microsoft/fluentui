@@ -230,13 +230,14 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
 
 /**
  *
- * narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
+ * Narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
+ * - also properly checks of truthiness of provided value
  */
 function hasSchemaFlag<T extends MigrateConvergedPkgGeneratorSchema, K extends keyof T>(
   schema: T,
   flag: K,
 ): schema is T & Record<K, NonNullable<T[K]>> {
-  return schema[flag] !== undefined;
+  return Boolean(schema[flag]);
 }
 
 async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {

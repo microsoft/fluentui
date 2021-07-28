@@ -67,29 +67,58 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe('general', () => {
-    it(`should throw error if name is empty`, async () => {
-      await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(
-        `[Error: --name cannot be empty. Please provide name of the package.]`,
-      );
-    });
-
-    it(`should throw error if provided name doesn't match existing package`, async () => {
-      await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
-        `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
-      );
-    });
-
-    it(`should throw error if user wants migrate non converged package`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      updateJson(tree, `${projectConfig.root}/package.json`, json => {
-        json.version = '8.0.0';
-        return json;
+    describe('schema validation', () => {
+      it('should throw if --name && --stats are both specified', async () => {
+        await expect(
+          generator(tree, {
+            ...options,
+            stats: true,
+          }),
+        ).rejects.toMatchInlineSnapshot(`[Error: --name and --stats are mutually exclusive]`);
       });
 
-      await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
-        // eslint-disable-next-line @fluentui/max-len
-        `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
-      );
+      it('should throw if --name && --all are both specified', async () => {
+        await expect(
+          generator(tree, {
+            ...options,
+            all: true,
+          }),
+        ).rejects.toMatchInlineSnapshot(`[Error: --name and --all are mutually exclusive]`);
+      });
+
+      it('should throw if --stats && --all are both specified', async () => {
+        await expect(
+          generator(tree, {
+            stats: true,
+            all: true,
+          }),
+        ).rejects.toMatchInlineSnapshot(`[Error: --stats and --all are mutually exclusive]`);
+      });
+
+      it(`should throw error if name is empty`, async () => {
+        await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(
+          `[Error: --name cannot be empty. Please provide name of the package.]`,
+        );
+      });
+
+      it(`should throw error if provided name doesn't match existing package`, async () => {
+        await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
+          `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
+        );
+      });
+
+      it(`should throw error if user wants migrate non converged package`, async () => {
+        const projectConfig = readProjectConfiguration(tree, options.name);
+        updateJson(tree, `${projectConfig.root}/package.json`, json => {
+          json.version = '8.0.0';
+          return json;
+        });
+
+        await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
+          // eslint-disable-next-line @fluentui/max-len
+          `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
+        );
+      });
     });
 
     describe('prompts', () => {
@@ -752,15 +781,6 @@ describe('migrate-converged-pkg generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
       setupDummyPackage(tree, { name: '@proj/react-moo', version: '9.0.12' });
       setupDummyPackage(tree, { name: '@proj/react-old', version: '8.0.1' });
-    });
-
-    it('should throw if --name && --all are both specified', async () => {
-      await expect(
-        generator(tree, {
-          ...options,
-          all: true,
-        }),
-      ).rejects.toMatchInlineSnapshot(`[Error: --name and --all are mutually exclusive]`);
     });
 
     it(`should run migration on all vNext packages in batch`, async () => {
