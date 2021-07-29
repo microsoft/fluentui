@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jul 2021 07:35:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.2.0)
+
+Thu, 29 Jul 2021 07:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.1.4..@fluentui/theme_v2.2.0)
+
+### Minor changes
+
+- Added optional name property to ITheme type ([PR #18028](https://github.com/microsoft/fluentui/pull/18028) by ashwin.gokhale98@gmail.com)
 
 ## [2.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.1.4)
 
