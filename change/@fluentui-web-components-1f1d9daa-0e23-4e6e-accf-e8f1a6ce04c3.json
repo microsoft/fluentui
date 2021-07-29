@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Hoist storybook dev deps to root",
-  "packageName": "@fluentui/web-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
