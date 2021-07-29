@@ -248,7 +248,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let nextActiveIndex = index;
-
     if (index < 0) {
       if (!circular) {
         return;
@@ -302,7 +301,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
               let slideToNext = prevActiveIndex < activeIndex;
-
               const initialMounting = prevActiveIndex === -1;
 
               if (circular && prevActiveIndex === items.length - 1 && activeIndex === 0) {
@@ -318,7 +316,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
                   unmountOnExit
                   visible={active}
                   name={
-                    initialMounting || !active
+                    initialMounting || !active || prevActiveIndex === index
                       ? ''
                       : slideToNext
                       ? 'carousel-slide-to-next-enter'

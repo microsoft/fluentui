@@ -24,6 +24,10 @@ const useRootStyles = makeStyles({
 
     maxWidth: '280px',
 
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+
     background: theme.alias.color.neutral.neutralBackground1,
     color: theme.alias.color.neutral.neutralForeground1,
 
@@ -31,7 +35,6 @@ const useRootStyles = makeStyles({
     borderStyle: 'solid',
     borderWidth: theme.global.strokeWidth.thin,
 
-    boxShadow: theme.alias.shadow.shadow4,
     outline: 'none',
 
     ':hover': {
@@ -39,7 +42,6 @@ const useRootStyles = makeStyles({
       borderColor: theme.alias.color.neutral.neutralStroke1Hover,
       color: theme.alias.color.neutral.neutralForeground1,
 
-      boxShadow: theme.alias.shadow.shadow4,
       cursor: 'pointer',
     },
 
@@ -48,7 +50,6 @@ const useRootStyles = makeStyles({
       borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
       color: theme.alias.color.neutral.neutralForeground1,
 
-      boxShadow: theme.alias.shadow.shadow2,
       outline: 'none',
     },
   }),
@@ -61,6 +62,10 @@ const useRootStyles = makeStyles({
     minWidth: '64px',
 
     borderRadius: theme.global.borderRadius.small,
+
+    fontSize: theme.global.type.fontSizes.base[200],
+    fontWeight: theme.global.type.fontWeights.regular,
+    lineHeight: theme.global.type.lineHeights.base[200],
   }),
   medium: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
@@ -71,6 +76,10 @@ const useRootStyles = makeStyles({
     minWidth: '96px',
 
     borderRadius: theme.global.borderRadius.medium,
+
+    fontSize: theme.global.type.fontSizes.base[300],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[300],
   }),
   large: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
@@ -81,6 +90,10 @@ const useRootStyles = makeStyles({
     minWidth: '96px',
 
     borderRadius: theme.global.borderRadius.medium,
+
+    fontSize: theme.global.type.fontSizes.base[400],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[400],
   }),
   block: {
     maxWidth: '100%',
@@ -105,22 +118,16 @@ const useRootStyles = makeStyles({
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForegroundOnBrand,
 
-    boxShadow: theme.alias.shadow.shadow4,
-
     ':hover': {
       background: theme.alias.color.neutral.brandBackgroundHover,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundOnBrand,
-
-      boxShadow: theme.alias.shadow.shadow4,
     },
 
     ':active': {
       background: theme.alias.color.neutral.brandBackgroundPressed,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundOnBrand,
-
-      boxShadow: theme.alias.shadow.shadow2,
     },
   }),
   subtle: theme => ({
@@ -128,22 +135,16 @@ const useRootStyles = makeStyles({
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForeground2,
 
-    boxShadow: 'none',
-
     ':hover': {
       background: theme.alias.color.neutral.subtleBackgroundHover,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForeground2BrandHover,
-
-      boxShadow: 'none',
     },
 
     ':active': {
       background: theme.alias.color.neutral.subtleBackgroundPressed,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForeground2BrandPressed,
-
-      boxShadow: 'none',
     },
   }),
   transparent: theme => ({
@@ -151,30 +152,22 @@ const useRootStyles = makeStyles({
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForeground2,
 
-    boxShadow: 'none',
-
     ':hover': {
       background: theme.alias.color.neutral.transparentBackgroundHover,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForeground2BrandHover,
-
-      boxShadow: 'none',
     },
 
     ':active': {
       background: theme.alias.color.neutral.transparentBackgroundPressed,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForeground2BrandPressed,
-
-      boxShadow: 'none',
     },
   }),
   disabled: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
-
-    boxShadow: 'none',
 
     cursor: 'not-allowed',
 
@@ -183,8 +176,6 @@ const useRootStyles = makeStyles({
       borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
 
-      boxShadow: 'none',
-
       cursor: 'not-allowed',
     },
 
@@ -192,8 +183,6 @@ const useRootStyles = makeStyles({
       background: theme.alias.color.neutral.neutralBackgroundDisabled,
       borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
-
-      boxShadow: 'none',
 
       cursor: 'not-allowed',
     },
@@ -288,29 +277,6 @@ const useRootIconOnlyStyles = makeStyles({
   },
 });
 
-const useChildrenStyles = makeStyles({
-  base: {
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-  },
-  small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    fontWeight: theme.global.type.fontWeights.regular,
-    lineHeight: theme.global.type.lineHeights.base[200],
-  }),
-  medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[400],
-  }),
-});
-
 const useIconStyles = makeStyles({
   base: {
     alignItems: 'center',
@@ -338,7 +304,6 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
   const rootFocusStyles = useRootFocusStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
-  const childrenStyles = useChildrenStyles();
   const iconStyles = useIconStyles();
 
   state.className = mergeClasses(
@@ -361,10 +326,6 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );
-
-  if (state.children) {
-    state.children.className = mergeClasses(childrenStyles.base, childrenStyles[state.size], state.children.className);
-  }
 
   state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
 
