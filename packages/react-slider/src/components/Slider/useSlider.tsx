@@ -179,7 +179,7 @@ export const useSlider = (
         updateValue(ev, currentValue + step);
         return;
       } else {
-        switch (getCode(ev)) {
+        switch (key) {
           case PageDownKey:
             updateValue(ev, currentValue - step * 10);
             break;

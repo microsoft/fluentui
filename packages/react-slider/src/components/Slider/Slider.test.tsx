@@ -7,6 +7,12 @@ import { isConformant } from '../../common/isConformant';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('Slider', () => {
+  isConformant({
+    Component: Slider,
+    displayName: 'Slider',
+    disabledTests: ['kebab-aria-attributes'],
+  });
+
   beforeEach(() => {
     resetIds();
   });
@@ -16,12 +22,6 @@ describe('Slider', () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
-  });
-
-  isConformant({
-    Component: Slider,
-    displayName: 'Slider',
-    disabledTests: ['kebab-aria-attributes'],
   });
 
   it('handles (id) prop', () => {
