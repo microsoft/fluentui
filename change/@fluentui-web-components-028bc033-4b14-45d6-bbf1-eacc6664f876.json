@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix border styles when control is active",
+  "packageName": "@fluentui/web-components",
+  "email": "corylaviska@microsoft.com",
+  "dependentChangeType": "patch"
+}
