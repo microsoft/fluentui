@@ -91,7 +91,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
   setStart();
   const {
     accessibilityComboboxProps,
-    accessibilityInputProps,
+    accessibilityInputProps: { 'aria-labelledby': ariaLabelledby, ...A11Yprops },
     inputRef,
     inline,
     placeholder,
@@ -103,7 +103,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
   } = props;
 
   const unhandledProps = useUnhandledProps(DropdownSearchInput.handledProps, props);
-
+  console.log('accessibilityInputProps', A11Yprops);
   const { styles: resolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
     className: dropdownSearchInputClassName,
     mapPropsToStyles: () => ({ inline }),
@@ -146,7 +146,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
         placeholder,
         onBlur: handleInputBlur,
         onKeyDown: handleInputKeyDown,
-        ...accessibilityInputProps,
+        ...A11Yprops,
         ...unhandledProps.input,
       }}
     />
