@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assign to milestone
-        uses: andrefcdias/add-to-milestone@v0.5
+        uses: andrefcdias/add-to-milestone@v1.0
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           use-expression: true
