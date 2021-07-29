@@ -61,6 +61,10 @@ describe('KeytipLayer', () => {
     });
   }
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   afterEach(() => {
     if (ktpLayer) {
       ktpLayer.unmount();
@@ -156,10 +160,6 @@ describe('KeytipLayer', () => {
 
     const onEnter = jest.fn();
     const onExit = jest.fn();
-
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
 
     describe('processTransitionInput', () => {
       describe('with a default layer', () => {
