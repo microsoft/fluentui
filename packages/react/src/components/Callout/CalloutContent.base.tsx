@@ -222,7 +222,6 @@ function usePositions(
         (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
       ) {
         onPositioned?.(newElementPositions);
-
         setElementPositions(newElementPositions);
       }
     },
