@@ -1159,6 +1159,9 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boo
 // @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
+// @public (undocumented)
+export const getCellText: (item: any, column: IColumn) => string;
+
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 
