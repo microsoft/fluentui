@@ -115,7 +115,7 @@ const useThumbStyles = makeStyles({
     bottom: 0,
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
-
+    outline: 'none',
     ':after': {
       content: '""',
       position: 'absolute',
@@ -125,6 +125,7 @@ const useThumbStyles = makeStyles({
       background: '#606060',
       borderRadius: '50%',
       boxSizing: 'border-box',
+      display: 'block',
       transform: 'translate(-50%,-50%)',
       [HighContrastSelector]: {
         background: 'Highlight',
