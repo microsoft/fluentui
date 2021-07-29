@@ -103,7 +103,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
   } = props;
 
   const unhandledProps = useUnhandledProps(DropdownSearchInput.handledProps, props);
-  delete accessibilityInputProps['aria-labelledby'];
+
   const { styles: resolvedStyles } = useStyles<DropdownSearchInputStylesProps>(DropdownSearchInput.displayName, {
     className: dropdownSearchInputClassName,
     mapPropsToStyles: () => ({ inline }),
