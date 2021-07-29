@@ -1,0 +1,13 @@
+name: Pull-Request Houskeeping 🧹
+on: [pull_request]
+
+jobs:
+  milestone-assignment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign to milestone
+        uses: andrefcdias/add-to-milestone@v0.5
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          use-expression: true
+          milestone: '* Project Cycle *'
