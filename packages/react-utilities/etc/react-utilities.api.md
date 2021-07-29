@@ -67,12 +67,6 @@ export type ComponentState<Record extends SlotPropsRecord = {}> = Pick<Component
 export type ComponentStateCompat<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;
 
 // @public (undocumented)
-export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React_2.Context<DescendantContextValue<DescendantType>>;
-
-// @public (undocumented)
-export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React_2.Context<ContextValueType>;
-
-// @public (undocumented)
 export interface DefaultComponentProps {
     // (undocumented)
     as?: keyof JSX.IntrinsicElements;
@@ -84,28 +78,27 @@ export interface DefaultComponentProps {
 export const defaultSSRContextValue: SSRContextValue;
 
 // @public (undocumented)
-export type Descendant<ElementType = HTMLElement> = {
-    element: SomeElement<ElementType> | null;
-    index: number;
+export type Descendant = {
+    id: string;
+    forceUpdate: () => void;
 };
 
 // @public (undocumented)
-export interface DescendantContextValue<DescendantType extends Descendant> {
-    // (undocumented)
-    descendants: DescendantType[];
-    // (undocumented)
-    registerDescendant(descendant: DescendantType): void;
-    // (undocumented)
-    unregisterDescendant(element: DescendantType['element']): void;
+export type Descendants = Record<string, Descendant>;
+
+// Warning: (ae-internal-missing-underscore) The name "DescendantsContext" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const DescendantsContext: React_2.Context<DescendantsContextValue | undefined>;
+
+// @public (undocumented)
+export interface DescendantsContextValue {
+    descendants: Descendants;
+    setDescendant: SetDescendant;
 }
 
 // @public (undocumented)
-export const DescendantProvider: <DescendantType extends Descendant<HTMLElement>>({ context: Ctx, children, items, set, }: {
-    context: React_2.Context<DescendantContextValue<DescendantType>>;
-    children: React_2.ReactNode;
-    items: DescendantType[];
-    set: React_2.Dispatch<React_2.SetStateAction<DescendantType[]>>;
-}) => JSX.Element;
+export const DescendantsProvider: React_2.Provider<DescendantsContextValue | undefined>;
 
 // @public
 export const divProperties: Record<string, number>;
@@ -229,6 +222,9 @@ export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof T
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
+export type SetDescendant = (descendant: Descendant) => number;
+
+// @public (undocumented)
 export type ShorthandProps<Props = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandProps<Props>;
 
 // @public (undocumented)
@@ -321,24 +317,7 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
 
 // @public
-export function useDescendant<DescendantType extends Descendant>(descendant: Omit<DescendantType, 'index'>, context: React_2.Context<DescendantContextValue<DescendantType>>, indexProp?: number): number;
-
-// @public
-export function useDescendantKeyDown<DescendantType extends Descendant, K extends keyof DescendantType = keyof DescendantType>(context: React_2.Context<DescendantContextValue<DescendantType>>, options: {
-    currentIndex: number | null | undefined;
-    key?: K | 'option';
-    filter?: (descendant: DescendantType) => boolean;
-    orientation?: 'vertical' | 'horizontal' | 'both';
-    rotate?: boolean;
-    rtl?: boolean;
-    callback(nextOption: DescendantType | DescendantType[K]): void;
-}): (event: React_2.KeyboardEvent) => void;
-
-// @public (undocumented)
-export function useDescendants<DescendantType extends Descendant>(ctx: React_2.Context<DescendantContextValue<DescendantType>>): DescendantType[];
-
-// @public (undocumented)
-export function useDescendantsInit<DescendantType extends Descendant>(): [DescendantType[], React_2.Dispatch<React_2.SetStateAction<DescendantType[]>>];
+export const useDescendants: () => readonly [Record<string, Descendant>, (descendant: Descendant) => number];
 
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
@@ -347,10 +326,10 @@ export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Ar
 export function useFirstMount(): boolean;
 
 // @public
-export function useForceUpdate(): () => void;
-
-// @public
 export function useId(prefix?: string, providedId?: string): string;
+
+// @public (undocumented)
+export function useIndex(providedID?: string): number;
 
 // @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
@@ -399,7 +378,6 @@ export const videoProperties: Record<string, number>;
 // Warnings were encountered during analysis:
 //
 // lib/compose/getSlots.d.ts:27:5 - (ae-forgotten-export) The symbol "UnionToIntersection" needs to be exported by the entry point index.d.ts
-// lib/descendants/descendants.d.ts:64:5 - (ae-forgotten-export) The symbol "SomeElement" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
