@@ -4,7 +4,7 @@ import { css } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
-const getCellText = (item: any, column: IColumn): string => {
+export const getCellText = (item: any, column: IColumn): string => {
   let value = item && column && column.fieldName ? item[column.fieldName] : '';
 
   if (value === null || value === undefined) {
