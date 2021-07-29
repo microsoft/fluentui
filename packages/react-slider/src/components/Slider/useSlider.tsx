@@ -89,7 +89,7 @@ export const useSlider = (
    */
   const updateValue = React.useCallback(
     (ev, incomingValue: number): void => {
-      if (currentValue !== min && currentValue !== max) {
+      if (incomingValue !== min && incomingValue !== max) {
         ev.stopPropagation();
         if (ev.type === 'keydown') {
           ev.preventDefault();
@@ -98,7 +98,7 @@ export const useSlider = (
 
       setCurrentValue(clamp(incomingValue, min, max), ev);
     },
-    [currentValue, max, min, setCurrentValue],
+    [max, min, setCurrentValue],
   );
 
   /**
