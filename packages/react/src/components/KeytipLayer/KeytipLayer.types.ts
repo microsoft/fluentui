@@ -48,8 +48,9 @@ export interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
 
   /**
    * Callback function triggered when keytip mode is entered
+   * @param transitionKey The key sequence that triggered keytip mode, if any.
    */
-  onEnterKeytipMode?: () => void;
+  onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
 
   /**
    * (Optional) Call to provide customized styling.
