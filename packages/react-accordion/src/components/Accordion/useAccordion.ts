@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useControllableState, useDescendantsInit, useEventCallback } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { useDescendants } from '@fluentui/react-utilities';
 import {
-  AccordionDescendant,
   AccordionIndex,
   AccordionProps,
   AccordionState,
@@ -13,7 +13,7 @@ export const useAccordion = (
   { index, defaultIndex, multiple = false, collapsible = false, onToggle, navigable = false, ...rest }: AccordionProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionState => {
-  const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
+  const [descendants, setDescendant] = useDescendants();
 
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeIndex(index), [index]),
@@ -22,9 +22,6 @@ export const useAccordion = (
   });
 
   const requestToggle = useEventCallback((ev: AccordionToggleEvent, data: AccordionToggleData) => {
-    if (descendants[data.index]?.disabled === true) {
-      return;
-    }
     onToggle?.(ev, data);
     setOpenItems(previousOpenItems =>
       updateOpenItems(data.index, previousOpenItems, {
@@ -43,7 +40,7 @@ export const useAccordion = (
     openItems,
     requestToggle,
     descendants,
-    setDescendants,
+    setDescendant,
   };
 };
 

@@ -9,8 +9,9 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { Descendant } from '@fluentui/react-utilities';
-import { DescendantContextValue } from '@fluentui/react-utilities';
+import { Descendants } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { SetDescendant } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: React_2.FunctionComponent<AccordionProps & React_2.RefAttributes<HTMLElement>>;
@@ -32,14 +33,6 @@ export interface AccordionContextValue {
     openItems: number[];
     requestToggle: AccordionToggleEventHandler;
 }
-
-// @public (undocumented)
-export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-    disabled: boolean;
-}
-
-// @public (undocumented)
-export const AccordionDescendantContext: React_2.Context<DescendantContextValue<AccordionDescendant<HTMLElement>>>;
 
 // @public
 export const AccordionHeader: React_2.FunctionComponent<AccordionHeaderProps & React_2.RefAttributes<HTMLElement>>;
@@ -120,15 +113,6 @@ export interface AccordionItemContextValue {
 }
 
 // @public (undocumented)
-export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-    // (undocumented)
-    id: string;
-}
-
-// @public (undocumented)
-export const accordionItemDescendantContext: React_2.Context<DescendantContextValue<AccordionItemDescendant<HTMLElement>>>;
-
-// @public (undocumented)
 export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
 }
 
@@ -140,9 +124,7 @@ export type AccordionItemSlots = {};
 
 // @public (undocumented)
 export interface AccordionItemState extends ComponentState<AccordionItemSlots>, AccordionItemCommons, AccordionItemContextValue {
-    descendants: AccordionItemDescendant[];
     ref: React_2.Ref<HTMLElement>;
-    setDescendants: React_2.Dispatch<React_2.SetStateAction<AccordionItemDescendant[]>>;
 }
 
 // @public
@@ -177,9 +159,11 @@ export type AccordionSlots = {};
 
 // @public (undocumented)
 export interface AccordionState extends ComponentState<AccordionSlots>, AccordionCommons, AccordionContextValue {
-    descendants: AccordionDescendant[];
+    // (undocumented)
+    descendants: Descendants;
     ref: React_2.Ref<HTMLElement>;
-    setDescendants: React_2.Dispatch<React_2.SetStateAction<AccordionDescendant[]>>;
+    // (undocumented)
+    setDescendant: SetDescendant;
 }
 
 // @public (undocumented)
@@ -193,9 +177,6 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 
 // @public (undocumented)
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-
-// @public (undocumented)
-export function createAccordionContextValue({ navigable, openItems, requestToggle, }: AccordionState): AccordionContextValue;
 
 // @public
 export const renderAccordion: (state: AccordionState) => JSX.Element;
@@ -212,8 +193,15 @@ export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element |
 // @public (undocumented)
 export const useAccordion: ({ index, defaultIndex, multiple, collapsible, onToggle, navigable, ...rest }: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
-// @public
-export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescendant, 'index'>): number;
+// @public (undocumented)
+export function useAccordionContextValue({ navigable, openItems, requestToggle, descendants, setDescendant, }: AccordionState): readonly [{
+    readonly navigable: boolean;
+    readonly openItems: number[];
+    readonly requestToggle: AccordionToggleEventHandler;
+}, {
+    descendants: Record<string, Descendant>;
+    setDescendant: SetDescendant;
+}];
 
 // @public
 export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
@@ -231,14 +219,10 @@ export const useAccordionItemContext: () => AccordionItemContextValue;
 export const useAccordionItemContextValue: ({ disabled, onHeaderClick, open }: AccordionItemState) => AccordionItemContextValue;
 
 // @public
-export function useAccordionItemDescendant(accordionDescendant: Omit<AccordionItemDescendant, 'index'>, index?: number): number;
-
-// @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
 
 // @public
 export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { Descendants, SetDescendant } from '@fluentui/react-utilities';
 
 export type AccordionIndex = number | number[];
 
@@ -57,18 +58,6 @@ export interface AccordionState extends ComponentState<AccordionSlots>, Accordio
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  descendants: AccordionDescendant[];
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
-}
-export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  /**
-   * Indicates is a determined AccordionItem descending the Accordion is or not disabled
-   */
-  disabled: boolean;
+  descendants: Descendants;
+  setDescendant: SetDescendant;
 }

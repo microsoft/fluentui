@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
@@ -26,16 +26,4 @@ export interface AccordionItemState
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  /**
-   * Internal Context used by AccordionHeader and AccordionPanel communication
-   */
-  descendants: AccordionItemDescendant[];
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
-}
-
-export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  id: string;
 }
