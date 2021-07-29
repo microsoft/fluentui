@@ -18,8 +18,32 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+- Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
+
 ### Fixes
 - Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
+- Wrap ChatMessage header elements correctly @Hirse ([#18837](https://github.com/microsoft/fluentui/pull/18837))
+- Align ChatMessageDetails color with ChatMessage header @Hirse ([#18840](https://github.com/microsoft/fluentui/pull/18840))
+- Fix Timestamp colors for dark and both v2 themes @Hirse ([#18841](https://github.com/microsoft/fluentui/pull/18841))
+- Fix compact hover background in dark themes @Hirse ([#18842](https://github.com/microsoft/fluentui/pull/18842))
+- Fix children conflict with compactBody in `ChatMessage` @chassunc ([#18874](https://github.com/microsoft/fluentui/pull/18874))
+- Fix `Tooltip` trigger order of props being spread @chassunc ([#18875](https://github.com/microsoft/fluentui/pull/18875))
+- Ensure wide content fits in compact ChatMessage @Hirse ([#18871](https://github.com/microsoft/fluentui/pull/18871))
+- Adding back data-is-focusable attribute for `menuitem` @kolaps33 ([#18934](https://github.com/microsoft/fluentui/pull/18934))
+- Fix style debugging throw error in dev environment @yuanboxue-amber ([#18955](https://github.com/microsoft/fluentui/pull/18955))
+- Fix `ChatMessage` to pass `popperRef` from user to `usePopper` @yuanboxue-amber ([#18950](https://github.com/microsoft/fluentui/pull/18950))
+- Fix hover styles for Splitbutton Toggle button part @TanelVari ([#18976](https://github.com/microsoft/fluentui/pull/18976))
+- Fix `Carousel` navigation item click @chassunc ([#19019](https://github.com/microsoft/fluentui/pull/19019))
+- Fix `Skeleton` background colors @chassunc ([#19057](https://github.com/microsoft/fluentui/pull/19057))
+- Fix `Carousel` glitch in last slide @chassunc ([#19129](https://github.com/microsoft/fluentui/pull/19129))
+- Fix `FormTextArea` required styles @chassunc ([#19164](https://github.com/microsoft/fluentui/pull/19164))
+- Fix `Button` icon only styles when disabledFocusable @chassunc ([#19180](https://github.com/microsoft/fluentui/pull/19180))
+- Fix `Dropdown` creating unnecessary `aria-labelledby` for `DropdownSearchInput` @chassunc ([#19182](https://github.com/microsoft/fluentui/pull/19182))
+
+### Features
+- Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
+- Add secondary styles for `Loader` @chassunc ([#19104](https://github.com/microsoft/fluentui/pull/19104))
 
 
 <!--------------------------------[ v0.57.0 ]------------------------------- -->

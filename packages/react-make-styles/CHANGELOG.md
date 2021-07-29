@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Fri, 02 Jul 2021 23:15:55 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.52)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.51..@fluentui/react-make-styles_v9.0.0-alpha.52)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.19 ([PR #19060](https://github.com/microsoft/fluentui/pull/19060) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.51)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.50..@fluentui/react-make-styles_v9.0.0-alpha.51)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.18 ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.50)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.49..@fluentui/react-make-styles_v9.0.0-alpha.50)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.34 ([PR #19023](https://github.com/microsoft/fluentui/pull/19023) by behowell@microsoft.com)
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.49)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.48..@fluentui/react-make-styles_v9.0.0-alpha.49)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.33 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.48)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.47..@fluentui/react-make-styles_v9.0.0-alpha.48)
+
+### Changes
+
+- Update makeStyles to have correct types when using numeric keys ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.47)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.46..@fluentui/react-make-styles_v9.0.0-alpha.47)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.32 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.46)
 

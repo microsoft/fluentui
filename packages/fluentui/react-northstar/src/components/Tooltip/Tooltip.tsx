@@ -6,6 +6,7 @@ import {
   useFluentContext,
   useTriggerElement,
   useUnhandledProps,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -65,6 +66,9 @@ export interface TooltipProps
   /** Defines whether tooltip is displayed. */
   open?: boolean;
 
+  /** Defines wether tooltip is subtle  */
+  subtle?: boolean;
+
   /**
    * Event for request to change 'open' value.
    * @param event - React's original SyntheticEvent.
@@ -119,6 +123,7 @@ export const Tooltip: React.FC<TooltipProps> &
     unstable_disableTether,
     unstable_pinned,
     autoSize,
+    subtle,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -127,9 +132,17 @@ export const Tooltip: React.FC<TooltipProps> &
 
     initialValue: false,
   });
+
   const triggerElement = useTriggerElement(props);
 
   const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
@@ -179,6 +192,7 @@ export const Tooltip: React.FC<TooltipProps> &
           placement: popperProps.placement,
           pointing,
           pointerRef: pointerTargetRef,
+          subtle,
         }),
       generateKey: false,
       overrideProps: getContentOverrideProps,
@@ -237,7 +251,7 @@ export const Tooltip: React.FC<TooltipProps> &
         <Ref innerRef={triggerRef}>
           {React.cloneElement(
             triggerElement,
-            getA11Props('trigger', { ...triggerElement.props, ...triggerProps, ...unhandledProps }),
+            getA11Props('trigger', { ...unhandledProps, ...triggerElement.props, ...triggerProps }),
           )}
         </Ref>
       )}
@@ -273,7 +287,7 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  pointing: true,
+  subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
 Tooltip.propTypes = {
@@ -282,6 +296,7 @@ Tooltip.propTypes = {
     content: false,
   }),
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
+  subtle: PropTypes.bool,
   children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,

@@ -58,6 +58,9 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
   compactBody: (): ICSSInJSStyle => ({
     display: 'flex',
     justifyContent: 'space-between',
+    '& > div': {
+      minWidth: 0,
+    },
   }),
 
   reactionGroup: (): ICSSInJSStyle => ({

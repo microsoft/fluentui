@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { MenuPopoverState } from './MenuPopover.types';
 import { Portal } from '@fluentui/react-portal';
 
@@ -7,7 +7,7 @@ import { Portal } from '@fluentui/react-portal';
  * Render the final JSX of MenuPopover
  */
 export const renderMenuPopover = (state: MenuPopoverState) => {
-  const { slots, slotProps } = getSlotsCompat(state);
+  const { slots, slotProps } = getSlots(state);
 
   if (state.inline) {
     return <slots.root {...slotProps.root}>{state.children}</slots.root>;

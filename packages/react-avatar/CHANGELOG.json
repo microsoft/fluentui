@@ -2,6 +2,214 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.31",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "aa570c511fdcef015696f07182af8bb251311406",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update theme tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.59",
+      "version": "9.0.0-alpha.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "84296aa8db9ddbf0250f24703fb304c360ff05e1",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.58",
+      "version": "9.0.0-alpha.58",
+      "comments": {
+        "none": [
+          {
+            "comment": "Sync babel-make-styles with published version",
+            "author": "elcraig@microsoft.com",
+            "commit": "d57f601738c32dfa1e651529d8edfec10a6b46b7",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "add bundle size fixtures",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.59",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.49",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.33",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.28",
+            "author": "olfedias@microsoft.com",
+            "commit": "eb109ce88fe81cc91338ece32be1f4e49b81a678",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.57",
+      "version": "9.0.0-alpha.57",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.26",
+            "author": "olfedias@microsoft.com",
+            "commit": "91e053b6cfb80ed71f99957fc1e6b92f67920ab3",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 00:35:31 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "none": [
+          {
+            "comment": "react-avatar: migration to new DX",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "bafb9f17e40291fef604725051aae526ba7345a6",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.33",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b60234948eacb8c6fa9d08ab8e98d963f583d475",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.55",
+      "version": "9.0.0-alpha.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "12b74625dec55bd1919f6370513043d87705e5ea",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.54",
+      "version": "9.0.0-alpha.54",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.24",
+            "author": "behowell@microsoft.com",
+            "commit": "8e5969e291bcafac21df12c9fb591bdd5654c613",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.53",
+      "version": "9.0.0-alpha.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.23",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Jul 2021 23:15:55 GMT",
       "tag": "@fluentui/react-avatar_v9.0.0-alpha.52",
       "version": "9.0.0-alpha.52",

@@ -2,7 +2,7 @@ import { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
 import { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
 import { CSSClassesMapBySlot, CSSRulesByBucket, MakeStylesOptions, StylesBySlots } from './types';
 
-export function makeStyles<Slots extends string, Tokens>(
+export function makeStyles<Slots extends string | number, Tokens>(
   stylesBySlots: StylesBySlots<Slots, Tokens>,
   unstable_cssPriority: number = 0,
 ) {

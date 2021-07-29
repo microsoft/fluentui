@@ -6,7 +6,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ['teams', 'teamsDark', 'teamsHighContrast', 'teamsV2', 'teamsDarkV2'],
   steps: [
     builder => builder.hover(selectors.message).snapshot('Hovers the first message'),
     builder => builder.click(selectors.message).snapshot('Focus the first message via mouse click'),

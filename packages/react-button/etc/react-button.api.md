@@ -17,10 +17,13 @@ export type ButtonDefaultedProps = 'icon' | 'size';
 
 // @public (undocumented)
 export type ButtonProps = ComponentPropsCompat & React_2.ButtonHTMLAttributes<HTMLElement> & {
-    children?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    block?: boolean;
+    circular?: boolean;
     disabled?: boolean;
+    disabledFocusable?: boolean;
     iconPosition?: 'before' | 'after';
+    outline?: boolean;
     primary?: boolean;
     size?: 'small' | 'medium' | 'large';
     subtle?: boolean;
@@ -28,7 +31,7 @@ export type ButtonProps = ComponentPropsCompat & React_2.ButtonHTMLAttributes<HT
 };
 
 // @public (undocumented)
-export type ButtonShorthandPropsCompat = 'children' | 'icon';
+export type ButtonShorthandPropsCompat = 'icon';
 
 // @public
 export const buttonShorthandPropsCompat: ButtonShorthandPropsCompat[];
@@ -100,9 +103,7 @@ export interface MenuButtonState extends Omit<ButtonState, 'iconPosition'>, Comp
 
 // @public
 const renderButton: (state: ButtonState) => JSX.Element;
-
 export { renderButton }
-
 export { renderButton as renderToggleButton }
 
 // @public
@@ -162,7 +163,6 @@ export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLEl
 
 // @public (undocumented)
 export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;
-
 
 // (No @packageDocumentation comment for this package)
 

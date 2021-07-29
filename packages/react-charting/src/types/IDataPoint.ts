@@ -388,6 +388,11 @@ export interface IVSChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IVerticalStackedChartProps {
@@ -410,6 +415,10 @@ export interface IVerticalStackedChartProps {
    * line data to render lines on stacked bar chart
    */
   lineData?: ILineDataInVerticalStackedBarChart[];
+  /**
+   * Accessibility data for Whole stack callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalStackedBarChart {
@@ -460,6 +469,11 @@ export interface IGVBarChartSeriesPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IGroupedVerticalBarChartData {
@@ -519,6 +533,10 @@ export interface IHeatMapChartDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IHeatMapChartData {

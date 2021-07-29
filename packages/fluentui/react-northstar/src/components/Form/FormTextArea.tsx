@@ -29,7 +29,10 @@ export const FormTextArea = compose<
   slots: {
     control: TextArea,
   },
-  slotProps: ({ errorMessage }) => ({
+  slotProps: ({ errorMessage, required }) => ({
+    label: {
+      required,
+    },
     control: {
       error: !!errorMessage,
     },

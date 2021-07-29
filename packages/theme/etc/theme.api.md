@@ -795,6 +795,7 @@ export interface Theme extends IScheme {
     components?: ComponentsStyles;
     // @internal
     id?: string;
+    name?: string;
     // @internal
     schemes?: {
         [P in ISchemeNames]?: IScheme;

@@ -14,7 +14,6 @@ export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     menuPopoverRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
     openOnContext: false,
     openOnHover: false,
-    hasMenuContext: false,
     isSubmenu: false,
     triggerId: 'id',
     ...options,

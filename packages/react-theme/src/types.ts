@@ -37,7 +37,7 @@ export type NeutralColorTokens = {
   brandForeground1: string;
   brandForeground2: string;
   neutralForegroundInverted: string;
-  neutralForegroundInvertedAccessible: string;
+  neutralForegroundOnBrand: string;
   neutralForegroundInvertedLink: string;
   neutralForegroundInvertedLinkHover: string;
   neutralForegroundInvertedLinkPressed: string;
@@ -63,6 +63,7 @@ export type NeutralColorTokens = {
   neutralBackground5Pressed: string;
   neutralBackground5Selected: string;
   neutralBackground6: string;
+  neutralBackgroundInverted: string;
   subtleBackground: string;
   subtleBackgroundHover: string;
   subtleBackgroundPressed: string;
@@ -72,6 +73,8 @@ export type NeutralColorTokens = {
   transparentBackgroundPressed: string;
   transparentBackgroundSelected: string;
   neutralBackgroundDisabled: string;
+  neutralStencil1: string;
+  neutralStencil2: string;
   brandBackground: string;
   brandBackgroundHover: string;
   brandBackgroundPressed: string;
@@ -97,9 +100,9 @@ export type NeutralColorTokens = {
   compoundBrandStrokeHover: string;
   compoundBrandStrokePressed: string;
   neutralStrokeDisabled: string;
-  strokeAccessible: string;
-  strokeAccessibleInteractive: string;
-  strokeAccessibleDisabled: string;
+  transparentStroke: string;
+  transparentStrokeInteractive: string;
+  transparentStrokeDisabled: string;
   strokeFocus1: string;
   strokeFocus2: string;
   neutralShadowAmbient: string;
@@ -371,6 +374,8 @@ export type Greys =
   | 98
   | 100;
 
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
 // TODO: do we want to split theme for better tree shaking? (MUI)
 // But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
 export type Theme = {
@@ -393,6 +398,8 @@ export type Theme = {
     palette: GlobalSharedColors & {
       brand: BrandVariants; // Only the Theme brand, not all
       grey: Record<Greys, string>;
+      whiteAlpha: Record<AlphaColors, string>;
+      blackAlpha: Record<AlphaColors, string>;
     };
     type: {
       fontSizes: FontSizes;

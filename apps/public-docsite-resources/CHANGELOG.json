@@ -2,6 +2,417 @@
   "name": "@fluentui/public-docsite-resources",
   "entries": [
     {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.25.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ef1a690b0e3a9b21da54540331a0a3be8108ef",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.24.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.10",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9b41d8e7d8b4c6856923da6a599d909fb366294f",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "aa570c511fdcef015696f07182af8bb251311406",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.9",
+            "author": "behowell@microsoft.com",
+            "commit": "2d62b36cdc1330c6984882d48c7f0e25473ac1a1",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.8",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc6cc7d73c8d61587e26cd19b3bc9db3abd077a6",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "behowell@microsoft.com",
+            "commit": "d38109a7fd40e187aca862046219cf9a7ca66131",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.41",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "ed20885c9edd64bc3429c6b580d610c59aa88ae7",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf8d7a43d6de92501cef58200aff21fb3d1590a5",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Jul 2021 07:31:56 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e34a034777dc7fd8fac297d77fcfeab7eef4d19",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "elcraig@microsoft.com",
+            "commit": "b20a263eadf0e233e9051d9b3d62e31fb92521c0",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 07:32:14 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.5",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2d09c451d74f72d248d805e875865ab5944661df",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 00:35:31 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "ilrosen@microsoft.com",
+            "commit": "581307da7a88ba9a2b74d5b213ab989729468f5f",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.4",
+            "author": "ilrosen@microsoft.com",
+            "commit": "581307da7a88ba9a2b74d5b213ab989729468f5f",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b60234948eacb8c6fa9d08ab8e98d963f583d475",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.2.38",
+            "author": "elcraig@microsoft.com",
+            "commit": "5bf5b8e682004069501664192082c22a7a6f51ac",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jul 2021 07:28:19 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.2",
+            "author": "makopch@microsoft.com",
+            "commit": "54d610936b6670ecfe3c1577ed779af25c27ef3e",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "makopch@microsoft.com",
+            "commit": "54d610936b6670ecfe3c1577ed779af25c27ef3e",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.1",
+            "author": "behowell@microsoft.com",
+            "commit": "035ba0498cee783b11b31dffa0cbf595b73d6ec8",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "andredias@microsoft.com",
+            "commit": "a84e6352e7a0a8ed79a75e9688b87d8890d5a241",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.41",
+      "version": "8.1.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jul 2021 07:33:23 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.40",
+      "version": "8.1.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.3",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b77307bb8ec2b07db583fda8367b73911598b4f6",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.40",
+      "version": "8.1.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/api-docs to v8.1.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.39",
+      "version": "8.1.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "6b7dca368ae9ce805f8c9663ebbb6018024f8b8b",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f945172f2b3904cf993a6a7f65a13bbe44f31fbe",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 07:32:54 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.1.38",
+      "version": "8.1.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.22.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "9babbdb459a85f5ec7640b35e921d17a675f7856",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "9babbdb459a85f5ec7640b35e921d17a675f7856",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Jul 2021 23:15:55 GMT",
       "tag": "@fluentui/public-docsite-resources_v8.1.37",
       "version": "8.1.37",

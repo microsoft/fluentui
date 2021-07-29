@@ -99,7 +99,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetRatio,
     });
 
-    const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
     return (
       <div className={this._classNames.root}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -111,7 +110,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <span className={this._classNames.ratioNumerator}>{chartDataVal}</span>
+                <span className={this._classNames.ratioNumerator}>
+                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
+                </span>
                 {!this.props.hideDenominator && (
                   <span>
                     /<span className={this._classNames.ratioDenominator}>{total}</span>

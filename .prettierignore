@@ -28,6 +28,7 @@ change
 __snapshots__
 
 # package specific files
+packages/web-components/src/**/*.styles.ts
 packages/web-components/**/*.spec.ts
 packages/web-components/src/default-palette.ts
 
@@ -47,6 +48,7 @@ gitignore
 *.jpg
 *.log
 *.png
+*.gif
 *.sh
 *.svg
 *.txt

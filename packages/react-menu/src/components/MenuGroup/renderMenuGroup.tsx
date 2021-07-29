@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { MenuGroupState } from './MenuGroup.types';
 import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
 
@@ -8,7 +8,7 @@ import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
  * slots to children.
  */
 export const renderMenuGroup = (state: MenuGroupState) => {
-  const { slots, slotProps } = getSlotsCompat(state);
+  const { slots, slotProps } = getSlots(state);
 
   return (
     // TODO introduce context selector pattern to avoid unnecessary rerenders

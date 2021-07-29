@@ -2,6 +2,51 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.1.7",
+      "version": "1.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.2.1",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react-icon-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.1.6",
+      "version": "1.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.2.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react-icon-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.1.5",
+      "version": "1.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-icon-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 07:35:16 GMT",
       "tag": "@fluentui/react-icon-provider_v1.1.4",
       "version": "1.1.4",

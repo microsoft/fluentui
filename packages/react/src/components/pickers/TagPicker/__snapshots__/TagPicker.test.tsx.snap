@@ -7,6 +7,30 @@ exports[`TagPicker renders correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -24,6 +48,7 @@ exports[`TagPicker renders correctly 1`] = `
     role="presentation"
   >
     <div
+      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -102,6 +127,10 @@ exports[`TagPicker renders correctly 1`] = `
               }
               &:hover .ms-TagItem-close {
                 color: #323130;
+              }
+              &:focus-within {
+                background: #0078d4;
+                color: #ffffff;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border: 1px solid WindowText;
@@ -193,8 +222,16 @@ exports[`TagPicker renders correctly 1`] = `
                   border-color: Highlight;
                   color: Highlight;
                 }
+                &:focus {
+                  background: #0078d4;
+                  color: #ffffff;
+                }
                 &:active {
                   background-color: #005a9e;
+                  color: #ffffff;
+                }
+                &:focus:hover {
+                  background: #005a9e;
                   color: #ffffff;
                 }
             data-is-focusable={true}
@@ -314,6 +351,30 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -331,6 +392,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
     role="presentation"
   >
     <div
+      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -409,6 +471,10 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               }
               &:hover .ms-TagItem-close {
                 color: #323130;
+              }
+              &:focus-within {
+                background: #0078d4;
+                color: #ffffff;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border: 1px solid WindowText;
@@ -500,8 +566,16 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   border-color: Highlight;
                   color: Highlight;
                 }
+                &:focus {
+                  background: #0078d4;
+                  color: #ffffff;
+                }
                 &:active {
                   background-color: #005a9e;
+                  color: #ffffff;
+                }
+                &:focus:hover {
+                  background: #005a9e;
                   color: #ffffff;
                 }
             data-is-focusable={true}

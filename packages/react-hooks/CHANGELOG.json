@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-hooks_v8.2.4",
+      "version": "8.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 07:35:16 GMT",
       "tag": "@fluentui/react-hooks_v8.2.3",
       "version": "8.2.3",
