@@ -265,15 +265,9 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       if (!style) {
         style = iframeDocument.createElement('style');
         style.id = 'builder-style';
-        // console.log('Canvas:effect created style', style);
 
         iframeDocument.body.appendChild(style);
-        // console.log('Canvas:effect appended style to body', iframeDocument.body);
       }
-
-      // style.innerHTML = ``;
-
-      // console.log('Canvas:effect calc styles');
       const elements = iframe.contentDocument.querySelectorAll(
         '[data-builder-id]:not([data-builder-id="builder-root"])',
       );
@@ -307,15 +301,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               ]
                 .filter(Boolean)
                 .join('\n');
-
-              // console.log(
-              //   element,
-              //   '\nHAS\n',
-              //   { isContainer, hasNoChildren, marginTop, marginRight, marginBottom, marginLeft },
-              //   '\nGETS\n',
-              //   properties,
-              // );
-
               return properties.length === 0 ? '' : `[data-builder-id="${builderId}"] {\n${properties}\n}`;
             })
             .filter(Boolean)
