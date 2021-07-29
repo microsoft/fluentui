@@ -2,6 +2,83 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.25.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ef1a690b0e3a9b21da54540331a0a3be8108ef",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.134",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "vr-tests"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.63",
+            "author": "elcraig@microsoft.com",
+            "commit": "593c44a49aa586c376cf8cc9a695b9109bd5e608",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.24.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.133",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.10",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.132",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Jul 2021 07:37:30 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",
