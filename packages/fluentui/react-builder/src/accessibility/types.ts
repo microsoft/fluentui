@@ -1,7 +1,3 @@
-/* enum ErrorSource {
-  AXECore,
-  AbilityAttributes
-} */
 // axe-core severity levels
 type errorSeverity = 'critical' | 'serious' | 'moderate' | 'minor';
 

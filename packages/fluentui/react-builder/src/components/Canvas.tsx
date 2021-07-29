@@ -387,7 +387,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       id={iframeId}
     >
       <FrameContextConsumer>
-        {({ document, window }) => (
+        {({ document }) => (
           <>
             <AbilityAttributesValidator window={window} onErrorsChanged={onWindowAccessibilityErrors} />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (

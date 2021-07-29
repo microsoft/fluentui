@@ -5,9 +5,11 @@
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
+    "@fluentui/accessibility": "^0.57.0",
     "@fluentui/code-sandbox": "^0.57.0",
     "@fluentui/docs-components": "^0.57.0",
     "@fluentui/react-component-event-listener": "^0.57.0",
+    "@fluentui/react-component-ref": "^0.57.0",
     "@fluentui/react-icons-northstar": "^0.57.0",
     "@fluentui/react-northstar": "^0.57.0",
     "axe-core": "3.5.0",
