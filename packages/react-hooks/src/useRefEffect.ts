@@ -35,31 +35,34 @@ export function useRefEffect<T>(callback: (value: T) => (() => void) | void, ini
     callback: (value: T) => (() => void) | void;
     cleanup?: (() => void) | void;
   };
-
-  const data = React.useRef<RefData>({
-    ref: Object.assign(
-      (value: T | null) => {
-        if (data.ref.current !== value) {
-          if (data.cleanup) {
-            data.cleanup();
-            data.cleanup = undefined;
+  const cleanup = React.useRef<RefData['cleanup']>();
+  const [ref] = React.useState(() => ({
+    // value
+    value: initial,
+    // last callback
+    callback,
+    // "memoized" public interface
+    facade: {
+      get current() {
+        return ref.value;
+      },
+      set current(value) {
+        if (ref.value !== value) {
+          if (cleanup.current) {
+            cleanup.current();
+            cleanup.current = undefined;
           }
 
-          data.ref.current = value;
+          ref.value = value;
 
           if (value !== null) {
-            data.cleanup = data.callback(value);
+            cleanup.current = ref.callback(value);
           }
         }
       },
-      {
-        current: initial,
-      },
-    ),
-    callback,
-  }).current;
+    },
+  }));
 
-  data.callback = callback;
-
-  return data.ref;
+  ref.callback = callback;
+  return (ref.facade as unknown) as RefCallback<T>;
 }
