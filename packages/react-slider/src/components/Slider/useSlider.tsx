@@ -139,7 +139,9 @@ export const useSlider = (
     (ev): void => {
       const { currentTarget, pointerId } = ev;
 
-      currentTarget.setPointerCapture(pointerId);
+      if (currentTarget.setPointerCapture) {
+        currentTarget.setPointerCapture(pointerId);
+      }
 
       disposables.current.push(
         on(currentTarget, 'pointermove', onPointerMove),
