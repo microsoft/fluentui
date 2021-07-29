@@ -1,5 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { HighContrastSelector } from '@fluentui/style-utilities';
+// TODO: Decide on high contrast implementation.
+// import { HighContrastSelector } from '@fluentui/style-utilities';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { SliderState } from './Slider.types';
 
@@ -21,48 +22,48 @@ const useRootStyles = makeStyles({
   hover: theme => ({
     ':hover .ms-Slider-track': {
       background: '#0078D4',
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
+      // [HighContrastSelector]: {
+      //   forcedColorAdjust: 'none',
+      // },
     },
 
     ':hover .ms-Slider-thumb::after': {
       background: '#0078D4',
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
+      // [HighContrastSelector]: {
+      //   forcedColorAdjust: 'none',
+      // },
     },
   }),
 
   focusWithin: theme => ({
     ':focus-within .ms-Slider-track': {
       background: '#0078D4',
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
+      // [HighContrastSelector]: {
+      //   forcedColorAdjust: 'none',
+      // },
     },
 
     ':focus-within .ms-Slider-thumb::after': {
       background: '#0078D4',
-      [HighContrastSelector]: {
-        background: 'Highlight',
-      },
+      // [HighContrastSelector]: {
+      //   background: 'Highlight',
+      // },
     },
   }),
 
   activation: theme => ({
     ':active .ms-Slider-track': {
       background: '#005A9E',
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
+      // [HighContrastSelector]: {
+      //   forcedColorAdjust: 'none',
+      // },
     },
 
     ':active .ms-Slider-thumb::after': {
       background: '#005A9E',
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
+      // [HighContrastSelector]: {
+      //   forcedColorAdjust: 'none',
+      // },
     },
   }),
 });
@@ -80,10 +81,10 @@ const useRailStyles = makeStyles({
     background: '#C8C8C8',
     borderRadius: '4px',
     pointerEvents: 'none',
-    [HighContrastSelector]: {
-      boxSizing: 'border-box',
-      border: '1px solid WindowText',
-    },
+    // [HighContrastSelector]: {
+    //   boxSizing: 'border-box',
+    //   border: '1px solid WindowText',
+    // },
   }),
 });
 
@@ -99,9 +100,9 @@ const useTrackStyles = makeStyles({
     minWidth: 'var(--slider-thumb-size)',
     background: '#606060',
     borderRadius: '4px',
-    [HighContrastSelector]: {
-      background: 'Highlight',
-    },
+    // [HighContrastSelector]: {
+    //   background: 'Highlight',
+    // },
   }),
 });
 
@@ -127,9 +128,9 @@ const useThumbStyles = makeStyles({
       boxSizing: 'border-box',
       display: 'block',
       transform: 'translate(-50%,-50%)',
-      [HighContrastSelector]: {
-        background: 'Highlight',
-      },
+      // [HighContrastSelector]: {
+      //   background: 'Highlight',
+      // },
     },
   }),
 
@@ -139,10 +140,10 @@ const useThumbStyles = makeStyles({
       boxSizing: 'border-box',
       border: '1.7px solid black',
       boxShadow: '0 0 0 .7pt white inset',
-      [HighContrastSelector]: {
-        background: 'GrayText',
-        border: '1.5px solid WindowText inset',
-      },
+      // [HighContrastSelector]: {
+      //   background: 'GrayText',
+      //   border: '1.5px solid WindowText inset',
+      // },
     },
   }),
 });
