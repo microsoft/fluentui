@@ -1,12 +1,12 @@
 name: Pull-Request Houskeeping 🧹
 on: [pull_request]
-permissions:
-  contents: read
-  pull-requests: write
 
 jobs:
   milestone-assignment:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Assign to milestone
         uses: andrefcdias/add-to-milestone@v1.0
