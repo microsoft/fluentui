@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Revert PR #18887",
+  "packageName": "@fluentui/react",
+  "email": "makopch@microsoft.com",
+  "dependentChangeType": "patch"
+}
