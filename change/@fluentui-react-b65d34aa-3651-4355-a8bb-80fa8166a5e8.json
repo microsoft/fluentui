@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "DetailsRowFields: export getCellText",
+  "packageName": "@fluentui/react",
+  "email": "jendowns@microsoft.com",
+  "dependentChangeType": "patch"
+}
