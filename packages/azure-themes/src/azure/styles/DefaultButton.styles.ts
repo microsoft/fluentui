@@ -54,10 +54,6 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       fill: semanticColors.buttonTextHovered,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
     },
-    rootPressed: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonTextHovered,
-    },
     rootChecked: {
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
     },
