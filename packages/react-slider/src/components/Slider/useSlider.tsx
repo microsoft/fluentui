@@ -11,9 +11,8 @@ import {
   HomeKey,
   EndKey,
 } from '@fluentui/keyboard-key';
-import { on } from '@fluentui/utilities';
 import { SliderProps, SliderShorthandProps, SliderState, SliderPublicRef } from './Slider.types';
-import { useMount } from '@fluentui/react-hooks';
+import { useMount } from '@fluentui/react-utilities';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
@@ -135,6 +134,11 @@ export const useSlider = (
     disposables.current = [];
   };
 
+  const on = (element: Element, eventName: string, callback: (ev: Event) => void) => {
+    element.addEventListener(eventName, callback);
+    return () => element.removeEventListener(eventName, callback);
+  };
+
   const onPointerDown = React.useCallback(
     (ev): void => {
       const { currentTarget, pointerId } = ev;
@@ -146,7 +150,9 @@ export const useSlider = (
       disposables.current.push(
         on(currentTarget, 'pointermove', onPointerMove),
         on(currentTarget, 'pointerup', onPointerUp),
-        () => currentTarget.releasePointerCapture(pointerId),
+        () => {
+          currentTarget.releasePointerCapture(pointerId);
+        },
       );
 
       onPointerMove(ev);

@@ -7,6 +7,7 @@ export * from './useFirstMount';
 export * from './useId';
 export * from './useIsomorphicLayoutEffect';
 export * from './useMergedRefs';
+export * from './useMount';
 export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
 export * from './usePrevious';

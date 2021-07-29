@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { Slider, SliderProps } from './index';
-import { Label } from '@fluentui/react';
+import { Label } from '@fluentui/react-label';
 import { Meta } from '@storybook/react';
 
 const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  },
   slider: {
     width: '300px',
     '--slider-thumb-size': '30px',
@@ -26,7 +31,7 @@ export const BasicSliderExample = (props: SliderProps) => {
   const styles = useStyles();
 
   return (
-    <div>
+    <div className={styles.root}>
       <Label>Basic Example</Label>
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
