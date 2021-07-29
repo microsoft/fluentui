@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Storing PositioningContainer's positions in a ref to enable Coachmark to follow the target element.",
+  "packageName": "@fluentui/react",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}
