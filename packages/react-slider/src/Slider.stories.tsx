@@ -8,7 +8,6 @@ const useStyles = makeStyles({
   slider: {
     width: '300px',
     '--slider-thumb-size': '30px',
-    '--slider-glide-time': '.1s',
 
     '& .ms-Slider-thumb::after': {
       background: 'green',
