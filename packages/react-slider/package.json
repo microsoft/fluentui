@@ -42,7 +42,6 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.52",
     "@fluentui/react-utilities": "^9.0.0-alpha.35",
-    "@fluentui/style-utilities": "^8.2.1",
     "@fluentui/test-utilities": "^8.0.7",
     "@fluentui/utilities": "^8.2.1",
     "tslib": "^2.1.0"

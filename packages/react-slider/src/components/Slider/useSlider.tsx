@@ -68,11 +68,16 @@ export const useSlider = (
     onChange,
   } = props;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [currentValue, setCurrentValue] = useControllableValue<any, any, any>(
-    value && clamp(value, min, max),
+  const [currentValue, setCurrentValue] = useControllableValue(
+    // TODO: Look into useControllableValue typings for fix
+    // When it is not cast, currentValue will assume that it can be undefined. This should not occur since
+    // defaultValue will always be provided as a value.
+    //
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- currentValue will assume it is undefined
+    value && (clamp(value, min, max) as any),
     clamp(defaultValue, min, max),
-    (ev, val) => onChange?.(val, ev),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- ev is not a SyntheticEvent
+    (ev: any, val) => onChange?.(val!, ev),
   );
 
   const railRef = React.useRef<HTMLDivElement>(null);
