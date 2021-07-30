@@ -86,11 +86,6 @@ export type Descendant = {
 // @public (undocumented)
 export type Descendants = Record<string, Descendant>;
 
-// Warning: (ae-internal-missing-underscore) The name "DescendantsContext" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const DescendantsContext: React_2.Context<DescendantsContextValue | undefined>;
-
 // @public (undocumented)
 export interface DescendantsContextValue {
     descendants: Descendants;
