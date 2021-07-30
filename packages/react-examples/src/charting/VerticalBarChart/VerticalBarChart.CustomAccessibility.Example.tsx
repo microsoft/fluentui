@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 interface IVerticalBarChartState {
