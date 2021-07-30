@@ -19,7 +19,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   ButtonBorderDisabled: HighContrastDarkSemanticColors.disabledButton.background,
   ButtonBorderFocus: HighContrastDarkSemanticColors.secondaryButton.focus.border,
   buttonText: HighContrastDarkSemanticColors.secondaryButton.rest.text,
-  buttonTextChecked: HighContrastDarkSemanticColors.secondaryButton.pressed.border,
+  buttonTextChecked: HighContrastDarkSemanticColors.secondaryButton.pressed.text,
   buttonTextCheckedHovered: HighContrastDarkSemanticColors.secondaryButton.hover.border,
   buttonTextDisabled: HighContrastDarkSemanticColors.disabledButton.text,
   buttonTextHovered: HighContrastDarkSemanticColors.secondaryButton.hover.color,
