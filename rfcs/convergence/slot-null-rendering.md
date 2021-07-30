@@ -235,7 +235,7 @@ export const CustomAccordionHeader = React.forwardRef<HTMLElement, AccordionHead
 });
 ```
 
-In cases where we simply want to ensure that the slot should be rendered even when `shorthand` is `undefined` than `{optional: false}` should be provided
+In cases where we simply want to ensure that the slot should be rendered even when `shorthand` is `undefined` then `{optional: false}` should be provided:
 
 ```ts
 export const useState = (props, ref) => {
