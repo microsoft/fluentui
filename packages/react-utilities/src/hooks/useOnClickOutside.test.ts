@@ -2,7 +2,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useOnClickOutside } from './useOnClickOutside';
 
 describe('useOnClickOutside', () => {
-  const supportedEvents = ['click', 'touchstart'];
+  beforeEach(() => {
+    jest.useRealTimers();
+  });
+
+  const supportedEvents = ['click', 'touchstart', 'fuiframefocus'];
 
   it.each(supportedEvents)('should add %s listener', event => {
     // Arrange
@@ -12,7 +16,7 @@ describe('useOnClickOutside', () => {
     renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [] }));
 
     // Assert
-    expect(element.addEventListener).toHaveBeenCalledTimes(2);
+    expect(element.addEventListener).toHaveBeenCalledTimes(3);
     expect(element.addEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 
@@ -25,7 +29,7 @@ describe('useOnClickOutside', () => {
     unmount();
 
     // Assert
-    expect(element.removeEventListener).toHaveBeenCalledTimes(2);
+    expect(element.removeEventListener).toHaveBeenCalledTimes(3);
     expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 
@@ -38,5 +42,21 @@ describe('useOnClickOutside', () => {
 
     // Assert
     expect(element.addEventListener).toHaveBeenCalledTimes(0);
+  });
+
+  it('should invoke callback when active eleemnt is an iframe', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const iframe = document.createElement('iframe');
+    const callback = jest.fn();
+    document.body.appendChild(iframe);
+    renderHook(() => useOnClickOutside({ element: document, callback, refs: [] }));
+
+    // Act
+    iframe.focus();
+    jest.runOnlyPendingTimers();
+
+    // Assert
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });
