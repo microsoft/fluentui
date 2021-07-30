@@ -209,7 +209,7 @@ function getSlots(state, slotNames) {
 }
 ```
 
-- Since some slots may have default props, verification must be done on shorthand declaration to ensure that those slots will be null rendered even presenting default props
+- Since some slots may have default props, verification must be done on shorthand declaration to ensure that those slots will be null rendered even when presented with default props
 
 ```diff
 export function resolveShorthand(
