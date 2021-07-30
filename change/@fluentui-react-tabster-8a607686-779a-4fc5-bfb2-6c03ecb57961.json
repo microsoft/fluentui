@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(react-tabster): Upgrade tabster to 1.0.0",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
