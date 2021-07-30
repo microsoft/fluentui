@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useId, useControllableValue } from '@fluentui/react-utilities';
+import { useId, useControllableValue, useMount } from '@fluentui/react-utilities';
 import {
   getCode,
   ArrowDownKey,
@@ -11,15 +11,7 @@ import {
   HomeKey,
   EndKey,
 } from '@fluentui/keyboard-key';
-import { SliderProps, SliderShorthandProps, SliderState, SliderPublicRef } from './Slider.types';
-import { useMount } from '@fluentui/react-utilities';
-
-/**
- * Array of all shorthand properties listed in SliderShorthandProps
- */
-export const sliderShorthandProps: SliderShorthandProps[] = ['rail', 'track', 'thumb', 'activeRail'];
-
-const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps });
+import { SliderState } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -28,7 +20,7 @@ const mergeProps = makeMergeProps<SliderState>({ deepMerge: sliderShorthandProps
  * @param min - the lowest valid value
  * @param max - the highest valid value
  */
-export const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
+const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
 
 /**
  * Gets the current percent of specified value between a min and max
@@ -37,25 +29,16 @@ export const clamp = (value: number, min: number, max: number): number => Math.m
  * @param min - the lowest valid value
  * @param max - the highest valid value
  */
-export const getPercent = (value: number, min: number, max: number) => {
+const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-/**
- * Create the state required to render Slider.
- *
- * The returned state can be modified with hooks such as useSliderStyles,
- * before being passed to renderSlider.
- *
- * @param props - props from this instance of Slider
- * @param ref - reference to root HTMLElement of Slider
- * @param defaultProps - (optional) default prop values provided by the implementing type
- */
-export const useSlider = (
-  props: SliderProps,
-  ref: React.RefObject<HTMLElement & SliderPublicRef>,
-  defaultProps?: SliderProps,
-): SliderState => {
+const on = (element: Element, eventName: string, callback: (ev: Event) => void) => {
+  element.addEventListener(eventName, callback);
+  return () => element.removeEventListener(eventName, callback);
+};
+
+export const useSliderState = (state: SliderState): SliderState => {
   const {
     as = 'div',
     value,
@@ -66,7 +49,9 @@ export const useSlider = (
     snapToStep = false,
     ariaValueText,
     onChange,
-  } = props;
+    onPointerDown: onPointerDownCallback,
+    onKeyDown: onKeyDownCallback,
+  } = state;
 
   const [currentValue, setCurrentValue] = useControllableValue(
     value && clamp(value, min, max),
@@ -78,7 +63,7 @@ export const useSlider = (
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const id = useId('Slider', props.id);
+  const id = useId('Slider', state.id);
 
   /**
    * Updates the `currentValue` to the new `incomingValue` and clamps it.
@@ -134,14 +119,11 @@ export const useSlider = (
     disposables.current = [];
   };
 
-  const on = (element: Element, eventName: string, callback: (ev: Event) => void) => {
-    element.addEventListener(eventName, callback);
-    return () => element.removeEventListener(eventName, callback);
-  };
-
   const onPointerDown = React.useCallback(
     (ev): void => {
       const { currentTarget, pointerId } = ev;
+
+      onPointerDownCallback?.(ev);
 
       if (currentTarget.setPointerCapture) {
         currentTarget.setPointerCapture(pointerId);
@@ -157,12 +139,14 @@ export const useSlider = (
 
       onPointerMove(ev);
     },
-    [onPointerMove],
+    [onPointerMove, onPointerDownCallback],
   );
 
   const onKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent): void => {
+    (ev: React.KeyboardEvent<HTMLDivElement>): void => {
       const key = getCode(ev);
+
+      onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
         if (key === ArrowDownKey || key === ArrowLeftKey) {
@@ -195,16 +179,16 @@ export const useSlider = (
         }
       }
     },
-    [currentValue, max, min, step, updateValue],
+    [currentValue, max, min, onKeyDownCallback, step, updateValue],
   );
 
   React.useEffect(() => {
-    if (ref && ref.current) {
-      ref.current.value = currentValue;
+    if (state.ref && state.ref.current) {
+      state.ref.current.value = currentValue;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref.current.focus = thumbRef?.current?.focus() as any;
+      state.ref.current.focus = thumbRef?.current?.focus() as any;
     }
-  }, [currentValue, ref]);
+  }, [currentValue, state.ref]);
 
   useMount(() => {
     if (value !== undefined) {
@@ -220,52 +204,33 @@ export const useSlider = (
 
   const trackStyles = { width: `${valuePercent}%` };
 
-  const rootProps: Partial<SliderState> = {
-    className: 'ms-Slider-root',
-    onPointerDown: onPointerDown,
-    onKeyDown: onKeyDown,
-    id: id,
-  };
+  // Root props
+  state.as = as;
+  state.onPointerDown = onPointerDown;
+  state.onKeyDown = onKeyDown;
+  state.id = id;
 
-  const railProps: React.HTMLAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-rail',
-  };
+  // Rail Props
+  state.rail.className = 'ms-Slider-rail';
 
-  const trackProps: React.HTMLAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-track',
-    style: trackStyles,
-  };
+  // Track Props
+  state.track.className = 'ms-Slider-track';
+  state.track.style = trackStyles;
 
-  const thumbProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-thumb',
-    ref: thumbRef,
-    tabIndex: 0,
-    role: 'slider',
-    'aria-valuemin': min,
-    'aria-valuemax': max,
-    'aria-valuenow': currentValue,
-    'aria-valuetext': ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString(),
-    style: thumbStyles,
-  };
+  // Thumb Props
+  state.thumb.className = 'ms-Slider-thumb';
+  state.thumb.ref = thumbRef;
+  state.thumb.tabIndex = 0;
+  state.thumb.role = 'slider';
+  state.thumb['aria-valuemin'] = min;
+  state.thumb['aria-valuemax'] = max;
+  state.thumb['aria-valuenow'] = currentValue;
+  state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  state.thumb.style = thumbStyles;
 
-  const activeRailProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
-    className: 'ms-Slider-activeRail',
-    ref: railRef,
-  };
-
-  const state = mergeProps(
-    {
-      ref,
-      as: as,
-      rail: { as: 'div', children: null, ...railProps },
-      track: { as: 'div', children: null, ...trackProps },
-      thumb: { as: 'div', children: null, ...thumbProps },
-      activeRail: { as: 'div', children: null, ...activeRailProps },
-      ...rootProps,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
-    resolveShorthandProps(props, sliderShorthandProps),
-  );
+  // Active Rail Props
+  state.activeRail.className = 'ms-Slider-activeRail';
+  state.activeRail.ref = railRef;
 
   return state;
 };

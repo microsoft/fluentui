@@ -25,12 +25,12 @@ export interface SliderProps
   /**
    * The draggable icon used to select a given value from the **Slider**.
    */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 
   /**
    * The area in which the **Slider's** rail allows for the thumb to be dragged.
    */
-  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>>;
 
   /**
    * CSS class name to attach to the root element.

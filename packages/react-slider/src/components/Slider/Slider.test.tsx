@@ -97,14 +97,14 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
-      sliderRail.getDOMNode().getBoundingClientRect = () =>
+      sliderRoot.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('pointerdown', { type: 'pointermove', clientX: 0, clientY: 0 });
+      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 0, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(0);
@@ -124,20 +124,20 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
-      sliderRail.getDOMNode().getBoundingClientRect = () =>
+      sliderRoot.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
+      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][0]).toEqual(10);
       expect(sliderRef.current!.value).toBe(10);
 
-      sliderRail.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
+      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
 
       expect(onChange).toHaveBeenCalledTimes(2);
       expect(onChange.mock.calls[1][0]).toEqual(0);
@@ -156,38 +156,38 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.down });
+      sliderRoot.simulate('keydown', { which: KeyCodes.down });
       expect(sliderRef.current!.value).toBe(49);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current!.value).toBe(50);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.left });
+      sliderRoot.simulate('keydown', { which: KeyCodes.left });
       expect(sliderRef.current!.value).toBe(49);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.right });
+      sliderRoot.simulate('keydown', { which: KeyCodes.right });
       expect(sliderRef.current!.value).toBe(50);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.pageUp });
+      sliderRoot.simulate('keydown', { which: KeyCodes.pageUp });
       expect(sliderRef.current!.value).toBe(60);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.pageDown });
+      sliderRoot.simulate('keydown', { which: KeyCodes.pageDown });
       expect(sliderRef.current!.value).toBe(50);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.home });
+      sliderRoot.simulate('keydown', { which: KeyCodes.home });
       expect(sliderRef.current!.value).toBe(0);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.end });
+      sliderRoot.simulate('keydown', { which: KeyCodes.end });
       expect(sliderRef.current!.value).toBe(100);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.left, shiftKey: true });
+      sliderRoot.simulate('keydown', { which: KeyCodes.left, shiftKey: true });
       expect(sliderRef.current!.value).toBe(90);
 
-      sliderRail.simulate('keydown', { which: KeyCodes.right, shiftKey: true });
+      sliderRoot.simulate('keydown', { which: KeyCodes.right, shiftKey: true });
       expect(sliderRef.current!.value).toBe(100);
 
       expect(onChange).toHaveBeenCalledTimes(10);
@@ -204,9 +204,9 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
 
       expect(sliderRef.current.value).toEqual(50);
     });
@@ -223,11 +223,11 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
 
       expect(sliderRef.current.value).toEqual(50);
       expect(onChange.mock.calls[2][0]).toEqual(51);
@@ -244,9 +244,9 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current?.value).toEqual(47);
     });
   });
@@ -261,9 +261,9 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current?.value).toEqual(50.001);
     });
   });
@@ -304,16 +304,16 @@ describe('Slider', () => {
 
   it('applies (aria-valuenow)', () => {
     safeMount(<Slider defaultValue={3} />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
-      sliderRail.simulate('keydown', { which: KeyCodes.right });
+      sliderRoot.simulate('keydown', { which: KeyCodes.right });
 
       expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(4);
 
-      sliderRail.getDOMNode().getBoundingClientRect = () =>
+      sliderRoot.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-      sliderRail.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
+      sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
 
       expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(10);
     });
@@ -331,14 +331,42 @@ describe('Slider', () => {
     });
   });
 
+  it('applies (focus) to the thumb', () => {
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider defaultValue={3} ref={sliderRef} />;
+    };
+
+    safeMount(<SliderTestComponent />, component => {
+      const sliderRoot = component.find('.ms-Slider-thumb').getDOMNode();
+      sliderRef.current.focus;
+      expect(document.activeElement).toEqual(sliderRoot);
+    });
+  });
+
   it('handles (onKeyDown) callback', () => {
     const eventHandler = jest.fn();
 
     safeMount(<Slider role="test" onKeyDown={eventHandler} />, component => {
-      const sliderRail = component.find('.ms-Slider-root');
+      const sliderRoot = component.find('.ms-Slider-root');
 
       expect(eventHandler).toBeCalledTimes(0);
-      sliderRail.simulate('keydown', { which: KeyCodes.up });
+      sliderRoot.simulate('keydown', { which: KeyCodes.up });
+      expect(eventHandler).toBeCalledTimes(1);
+    });
+  });
+
+  it('handles (onPointerDown) callback', () => {
+    const eventHandler = jest.fn();
+
+    safeMount(<Slider role="test" onPointerDown={eventHandler} />, component => {
+      const sliderRoot = component.find('.ms-Slider-root');
+
+      expect(eventHandler).toBeCalledTimes(0);
+      sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
       expect(eventHandler).toBeCalledTimes(1);
     });
   });

@@ -10,12 +10,6 @@ import * as React_2 from 'react';
 import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export const clamp: (value: number, min: number, max: number) => number;
-
-// @public
-export const getPercent: (value: number, min: number, max: number) => number;
-
-// @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
@@ -26,7 +20,7 @@ export type SliderDefaultedProps = 'rail' | 'track' | 'thumb' | 'activeRail';
 
 // @public
 export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
-    activeRail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    activeRail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
     ariaValueText?: (value: number) => string;
     as?: React_2.ElementType;
     className?: string;
@@ -37,7 +31,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     snapToStep?: boolean;
     step?: number;
-    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>>;
     track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     value?: number;
 }
