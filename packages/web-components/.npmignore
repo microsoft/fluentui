@@ -22,6 +22,9 @@ karma.conf.cjs
 api-extractor.json
 .mocharc.json
 
+# Storybook static site
+dist/storybook-static/
+
 # cache
 .rollupcache
 temp

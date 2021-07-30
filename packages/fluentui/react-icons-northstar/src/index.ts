@@ -5,6 +5,7 @@ export * from './utils/iconClassNames';
 
 // Icon components
 export { AcceptIcon } from './components/AcceptIcon';
+export { AccessibilityIcon } from './components/AccessibilityIcon';
 export { AddIcon } from './components/AddIcon';
 export { ApprovalsAppbarIcon } from './components/ApprovalsAppbarIcon';
 export { AppsIcon } from './components/AppsIcon';

@@ -62,7 +62,7 @@ function addCustomDecorators() {
     customDecorators.add(withStrictMode);
   }
 
-  if (['react-button', 'react-components', 'react-tooltip'].includes(packageNamePlaceholder)) {
+  if (['react-button', 'react-components', 'react-tooltip', 'react-checkbox'].includes(packageNamePlaceholder)) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
   }
 
