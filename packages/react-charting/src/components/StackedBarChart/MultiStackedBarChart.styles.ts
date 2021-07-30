@@ -37,12 +37,24 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       cursor: href ? 'pointer' : 'default',
       stroke: theme.palette.white,
       strokeWidth: 2,
+      selectors: {
+        '&:focus': {
+          stroke: theme.palette.black,
+          strokeWidth: '2px',
+        },
+      },
     },
     placeHolderOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: 'default',
       stroke: theme.palette.white,
       strokeWidth: '2',
+      selectors: {
+        '&:focus': {
+          stroke: theme.palette.black,
+          strokeWidth: '2px',
+        },
+      },
     },
     legendContainer: {
       marginTop: '5px',
