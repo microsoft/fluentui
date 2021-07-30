@@ -283,14 +283,14 @@ Components with complex API require many long stories, both for documentation an
 ### 8. location and naming convention
 
 1. Story files should be in the same folder as the component which they are targeting.
-2. Name of every .stories.tsx / .story.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation. For example:
+2. Name of every .stories.tsx / .story.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation, like this:
 
 ```tsx
 export const ButtonPrimary = (props: ButtonProps) => <Button {...props}>Text</Button>;
-Primary.args = {
+ButtonPrimary.args = {
   primary: true,
 };
-Primary.storyName = 'Better story name';
+ButtonPrimary.storyName = 'Better story name';
 ```
 
 ### 9. default story
