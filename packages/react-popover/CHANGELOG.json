@@ -2,6 +2,29 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add Babel plugins to build pipeline",
+            "author": "olfedias@microsoft.com",
+            "commit": "19db6cb57a237073b0bb50d07eb921b1ce2e0c61",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.31",
+            "author": "olfedias@microsoft.com",
+            "commit": "8c249a1c1a8dcc4b0d9877e5d5e8e6d126063788",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jul 2021 07:38:19 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.20",
       "version": "9.0.0-alpha.20",

@@ -2,6 +2,29 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "none": [
+          {
+            "comment": "remove custom types for @babel/helper-plugin-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "8c249a1c1a8dcc4b0d9877e5d5e8e6d126063788",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.19",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "aa570c511fdcef015696f07182af8bb251311406",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jul 2021 07:38:19 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.30",
       "version": "9.0.0-alpha.30",

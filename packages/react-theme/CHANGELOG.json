@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add global alpha tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "aa570c511fdcef015696f07182af8bb251311406",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jul 2021 07:38:19 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

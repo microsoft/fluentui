@@ -2,6 +2,151 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "@fluentui/react_v8.26.0",
+      "version": "8.26.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing onPositioned bug in Callout component.",
+            "author": "czearing@outlook.com",
+            "commit": "7231aa6ff058dc82b1d570dfadb77212459f2758",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "[KeytipLayer] Pass triggering key sequence to onEnterKeytipMode callback",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/react_v8.25.0",
+      "version": "8.25.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add prop to allow user defined Tooltip to be rendered without default Tooltip being rendered",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ef1a690b0e3a9b21da54540331a0a3be8108ef",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Callout: Allowing for user-set maxHeight to be respected.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "3aaf1116dfff045e57ff37822862bc73e317b521",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Storing PositioningContainer's positions in a ref to enable Coachmark to follow the target element.",
+            "author": "czearing@outlook.com",
+            "commit": "5d38750c8ffa181332513954fa7fc198378f10c4",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.2.0",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.2.1",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.13",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.7",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.7",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.9",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "@fluentui/react_v8.24.0",
+      "version": "8.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add live region for BasePicker item removal, fix focused tag styles",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/react_v8.23.10",
+      "version": "8.23.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where ContextualMenu's onMenuDismissed is called twice",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react_v8.23.9",
+      "version": "8.23.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix crash in ContextualMenu when Callout component is loaded asynchronously",
+            "author": "behowell@microsoft.com",
+            "commit": "2d62b36cdc1330c6984882d48c7f0e25473ac1a1",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Enabling Callout to revaluate position after width and height modifications are made.",
+            "author": "czearing@outlook.com",
+            "commit": "2a77dde4527ed5d9f8ab5220c3653c9c9f1c1543",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Removed left padding for links in MessageBar and fixed examples",
+            "author": "tahsia@microsoft.com",
+            "commit": "9e2d5d87aa15e9f62184d7ff879c51ec4c3ddf62",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Jul 2021 07:38:19 GMT",
       "tag": "@fluentui/react_v8.23.8",
       "version": "8.23.8",

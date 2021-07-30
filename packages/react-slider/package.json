@@ -40,7 +40,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.51",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.52",
     "@fluentui/react-utilities": "^9.0.0-alpha.35",
     "tslib": "^2.1.0"
   },

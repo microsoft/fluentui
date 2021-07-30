@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 23 Jul 2021 07:38:19 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jul 2021 07:35:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.1)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.0..@fluentui/web-components_v1.3.1)
+
+### Patches
+
+- fix border styles when control is active ([PR #19184](https://github.com/microsoft/fluentui/pull/19184) by corylaviska@microsoft.com)
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.0)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.3..@fluentui/web-components_v1.3.0)
+
+### Minor changes
+
+- feat(web-components): improve ergonomics of the fluent design system ([PR #19056](https://github.com/microsoft/fluentui/pull/19056) by roeisenb@microsoft.com)
 
 ## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.3)
 

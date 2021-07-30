@@ -1125,6 +1125,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             // https://github.com/facebook/react/issues/955#issuecomment-469352730
             setSearchQuery(e.target.value);
           },
+          'aria-labelledby': null,
         }),
       },
       // same story as above for getRootProps.

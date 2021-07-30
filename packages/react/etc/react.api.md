@@ -280,7 +280,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -297,7 +297,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(oldProps: P, oldState: IBasePickerState): void;
+    componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -314,7 +314,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
-    // (undocumented)
+    // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
@@ -353,11 +353,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // (undocumented)
     refocusSuggestions: (keyCode: KeyCodes) => void;
     // (undocumented)
-    protected removeItem: (item: IPickerItemProps<T>, focusNextItem?: boolean | undefined) => void;
+    protected removeItem: (item: T) => void;
     // (undocumented)
     protected removeItems: (itemsToRemove: any[]) => void;
     // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
     protected renderItems(): JSX.Element[];
     // (undocumented)
@@ -1589,11 +1591,12 @@ export interface IBasePickerProps<T> extends React_2.Props<any> {
     selectionAriaLabel?: string;
     selectionRole?: string;
     styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+    suggestionRemovedText?: string;
     theme?: ITheme;
 }
 
 // @public (undocumented)
-export interface IBasePickerState {
+export interface IBasePickerState<T> {
     // (undocumented)
     isFocused?: boolean;
     // (undocumented)
@@ -1608,6 +1611,8 @@ export interface IBasePickerState {
     moreSuggestionsAvailable?: boolean;
     // (undocumented)
     selectedIndices?: number[];
+    // (undocumented)
+    selectionRemoved?: T;
     // (undocumented)
     suggestedDisplayValue?: string;
     // (undocumented)
@@ -4919,6 +4924,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     personas: IFacepilePersona[];
     personaSize?: PersonaSize;
     showAddButton?: boolean;
+    showTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
     theme?: ITheme;
 }
@@ -5508,7 +5514,7 @@ export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer>
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
     keytipStartSequences?: IKeytipTransitionKey[];
-    onEnterKeytipMode?: () => void;
+    onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
     onExitKeytipMode?: (ev?: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>) => void;
     styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
