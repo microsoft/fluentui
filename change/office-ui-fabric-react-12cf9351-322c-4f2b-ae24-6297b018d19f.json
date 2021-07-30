@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add showTooltip prop to IFacepileProps to allow for user rendered tooltips",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
