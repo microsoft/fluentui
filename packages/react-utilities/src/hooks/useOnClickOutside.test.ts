@@ -44,7 +44,7 @@ describe('useOnClickOutside', () => {
     expect(element.addEventListener).toHaveBeenCalledTimes(0);
   });
 
-  it('should invoke callback when active eleemnt is an iframe', () => {
+  it('should invoke callback when active element is an iframe', () => {
     // Arrange
     jest.useFakeTimers();
     const iframe = document.createElement('iframe');
