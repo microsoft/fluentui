@@ -439,7 +439,12 @@ export const Popup: React.FC<PopupProps> &
 
             {context.target && (
               <>
-                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                <EventListener
+                  listener={handleDocumentClick(getRefs)}
+                  target={context.target}
+                  type="mousedown"
+                  capture
+                />
                 <EventListener
                   listener={handleDocumentClick(getRefs)}
                   target={context.target}
