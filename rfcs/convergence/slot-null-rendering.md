@@ -192,7 +192,7 @@ export const useState = (props, ref) => {
 ### Option 2: Symbol for null rendering
 
 This solves this problem by verifying if the shorthand has a special symbol or not.
-By verifying this symbol we can opt for null rendering without compromising the cases which native slots don't have children.
+By verifying this symbol we can opt for null rendering without compromising the cases in which native slots don't have children.
 This is very similar to Option 1 approach but without the downside of having undefined as part of `ObjectShorthandProps` interface.
 
 - `getSlots` should stop verifying null rendering by the existence of the property `children`, instead depending on the existence of the symbol
