@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "CherryPick: Accessibility change for Donut chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
