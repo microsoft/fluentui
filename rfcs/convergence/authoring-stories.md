@@ -295,11 +295,11 @@ ButtonPrimary.storyName = 'Better story name';
 
 ### 9. default story
 
-1. Every documented component must have a story called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). Ordering of stories will be set up, so this would be the first story in Storybook nav tree.
+Every documented component must have a story called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). Ordering of stories will be set up, so this would be the first story in Storybook nav tree.
 
 ### 10. design of stories
 
-1. Publicly visible stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when a button is necessary do demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
+Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when a button is necessary do demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
 
 ### 11. story code must be useful
 
