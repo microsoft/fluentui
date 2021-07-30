@@ -11,7 +11,7 @@ _@bsunderhus_
 This RFC proposes a solution for a recurring problem involving slots with no `children` property into 2 steps:
 
 1. `getSlots` should stop verifying null rendering (verifying if a slot should not be rendered) by the existence of the `children` property.
-2. Since some slots have default props, verification must be done on shorthand declaration to ensure that those slots will be null rendered (or not) even presenting default props
+2. Since some slots have default props, verification must be done on shorthand declaration to ensure that those slots will be null rendered (or not) even when presented with default props.
 
 The behavior for `null rendering` should be described as: receiving `null` should always make a slot `null render` (although in some cases this might even break the component), in the case of `undefined` that would only be true if the component is optional. The idea is to use `undefined` the same way as React does for props, where you can have a default case.
 
