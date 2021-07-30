@@ -1,4 +1,5 @@
-import { Types } from 'tabster';
+import { Types, getMover } from 'tabster';
+import { useTabster } from './useTabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 
 export interface UseArrowNavigationGroupOptions {
@@ -18,23 +19,24 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+  const tabster = useTabster();
+  if (tabster) {
+    getMover(tabster);
+  }
   return useTabsterAttributes({
-    focusable: {
-      mover: {
-        axis: axisToMoverAxis(options?.axis ?? 'vertical'),
-        navigationType: Types.MoverKeys.Arrows,
-        cyclic: !!options?.circular,
-      },
+    mover: {
+      cyclic: !!options?.circular,
+      direction: axisToMoverDirection(options?.axis ?? 'vertical'),
     },
   });
 };
 
-function axisToMoverAxis(axis: UseArrowNavigationGroupOptions['axis']) {
+function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']) {
   switch (axis) {
     case 'horizontal':
-      return Types.MoverAxis.Horizontal;
+      return Types.MoverDirections.Horizontal;
     case 'vertical':
     default:
-      return Types.MoverAxis.Vertical;
+      return Types.MoverDirections.Vertical;
   }
 }

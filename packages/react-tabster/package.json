@@ -39,7 +39,7 @@
     "keyborg": "^0.7.1",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.19",
     "@fluentui/react-utilities": "^9.0.0-alpha.35",
-    "tabster": "^0.7.4",
+    "tabster": "^1.0.0-alpha.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

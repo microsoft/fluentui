@@ -29,11 +29,11 @@ export interface UseArrowNavigationGroupOptions {
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
-    findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
-    findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
-    findPrevFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
+    findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
 };
 
 // @public
@@ -53,7 +53,6 @@ export interface UseModalAttributesOptions {
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
-
 
 // (No @packageDocumentation comment for this package)
 
