@@ -237,7 +237,7 @@ function usePositions(
           const expectsTarget = !!target;
 
           if (calloutElement.current) {
-            observeResize(calloutElement.current, () => {
+            const cleanupObserver = observeResize(calloutElement.current, () => {
               if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
                 const currentPositionProps: IPositionProps = {
                   ...props,
@@ -255,10 +255,11 @@ function usePositions(
                       calloutElement.current,
                       elementPositions,
                     );
-
                 setCalloutPositions(newElementPositions);
               }
             });
+
+            return () => cleanupObserver();
           }
         }, calloutElement.current);
 

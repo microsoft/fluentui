@@ -310,7 +310,7 @@ describe('Callout', () => {
 
       expect(calloutRef.current.getWidth()).toBe(100);
 
-      expect(onPositioned).toHaveBeenCalledTimes(2);
+      expect(onPositioned).toHaveBeenCalledTimes(1);
 
       // onPositioned is called after initial render and resize
       expect(currentPosition).toBeDefined();
