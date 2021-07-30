@@ -7,6 +7,7 @@ import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Ut
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -24,6 +25,7 @@ import {
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  getAccessibleDataObject,
   XAxisTypes,
   NumericAxis,
   StringAxis,
@@ -45,6 +47,7 @@ export interface IVerticalBarChartState extends IBasestate {
   acitveXdataPoint: number | string | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -117,6 +120,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -374,6 +378,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         acitveXdataPoint: point.x,
         YValueHover,
         hoverXValue,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -407,6 +412,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             acitveXdataPoint: point.x,
             YValueHover,
             hoverXValue,
+            callOutAccessibilityData: point.callOutAccessibilityData,
           });
         }
       });
@@ -477,7 +483,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           aria-labelledby={`toolTip${this._calloutId}`}
           aria-label="Vertical bar chart"
-          role="img"
+          role="text"
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
@@ -522,7 +528,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           height={Math.max(yBarScale(point.y), 0)}
           aria-labelledby={`toolTip${this._calloutId}`}
           aria-label="Vertical bar chart"
-          role="img"
+          role="text"
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
