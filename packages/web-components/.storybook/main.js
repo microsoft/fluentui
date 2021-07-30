@@ -5,6 +5,7 @@ module.exports = {
   core: {
     builder: 'webpack4',
   },
+  addons: ['@storybook/addon-essentials'],
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.ts$/,
