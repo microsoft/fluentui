@@ -38,6 +38,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Skeleton` background colors @chassunc ([#19057](https://github.com/microsoft/fluentui/pull/19057))
 - Fix `Carousel` glitch in last slide @chassunc ([#19129](https://github.com/microsoft/fluentui/pull/19129))
 - Fix `FormTextArea` required styles @chassunc ([#19164](https://github.com/microsoft/fluentui/pull/19164))
+- Fix error color for `Text` @chassunc ([#19203](https://github.com/microsoft/fluentui/pull/19203))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
