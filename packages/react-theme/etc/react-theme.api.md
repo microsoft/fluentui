@@ -5,6 +5,9 @@
 ```ts
 
 // @public (undocumented)
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
+// @public (undocumented)
 export type BackgroundColorTokens = {
     background: string;
     backgroundHover: string;
@@ -14,6 +17,9 @@ export type BackgroundColorTokens = {
 
 // @public (undocumented)
 export const black = "#000000";
+
+// @public (undocumented)
+export const blackAlpha: Record<AlphaColors, string>;
 
 // @public (undocumented)
 export type BorderRadius = {
@@ -176,59 +182,7 @@ export type GlobalSharedColors = {
 };
 
 // @public (undocumented)
-export const grey: {
-    '0': string;
-    '2': string;
-    '4': string;
-    '6': string;
-    '8': string;
-    '10': string;
-    '12': string;
-    '14': string;
-    '16': string;
-    '18': string;
-    '20': string;
-    '22': string;
-    '24': string;
-    '26': string;
-    '28': string;
-    '30': string;
-    '32': string;
-    '34': string;
-    '36': string;
-    '38': string;
-    '40': string;
-    '42': string;
-    '44': string;
-    '46': string;
-    '48': string;
-    '50': string;
-    '52': string;
-    '54': string;
-    '56': string;
-    '58': string;
-    '60': string;
-    '62': string;
-    '64': string;
-    '66': string;
-    '68': string;
-    '70': string;
-    '72': string;
-    '74': string;
-    '76': string;
-    '78': string;
-    '80': string;
-    '82': string;
-    '84': string;
-    '86': string;
-    '88': string;
-    '90': string;
-    '92': string;
-    '94': string;
-    '96': string;
-    '98': string;
-    '100': string;
-};
+export const grey: Record<Greys, string>;
 
 // @public (undocumented)
 export type Greys = 0 | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26 | 28 | 30 | 32 | 34 | 36 | 38 | 40 | 42 | 44 | 46 | 48 | 50 | 52 | 54 | 56 | 58 | 60 | 62 | 64 | 66 | 68 | 70 | 72 | 74 | 76 | 78 | 80 | 82 | 84 | 86 | 88 | 90 | 92 | 94 | 96 | 98 | 100;
@@ -461,6 +415,8 @@ export type Theme = {
         palette: GlobalSharedColors & {
             brand: BrandVariants;
             grey: Record<Greys, string>;
+            whiteAlpha: Record<AlphaColors, string>;
+            blackAlpha: Record<AlphaColors, string>;
         };
         type: {
             fontSizes: FontSizes;
@@ -502,6 +458,9 @@ export const webLightTheme: Theme;
 
 // @public (undocumented)
 export const white = "#ffffff";
+
+// @public (undocumented)
+export const whiteAlpha: Record<AlphaColors, string>;
 
 // (No @packageDocumentation comment for this package)
 

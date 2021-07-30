@@ -45,7 +45,7 @@
       "@fluentui/make-styles-webpack-loader": ["packages/make-styles-webpack-loader/src/index.ts"],
       "@fluentui/react-avatar": ["packages/react-avatar/src/index.ts"],
       "@fluentui/react-card": ["packages/react-card/src/index.ts"],
-      "@fluentui/utilities": ["packages/utilities/src/index.ts"]
+      "@fluentui/react-checkbox": ["packages/react-checkbox/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

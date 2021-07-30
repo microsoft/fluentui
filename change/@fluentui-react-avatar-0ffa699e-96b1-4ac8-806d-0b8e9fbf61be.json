@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update theme tokens",
-  "packageName": "@fluentui/react-avatar",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

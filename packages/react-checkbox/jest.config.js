@@ -1,9 +1,21 @@
-const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-const path = require('path');
+// @ts-check
 
-const config = createConfig({
-  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
+/**
+ * @type {jest.InitialOptions}
+ */
+module.exports = {
+  displayName: 'react-checkbox',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.json',
+      diagnostics: false,
+    },
+  },
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  coverageDirectory: './coverage',
+  setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
-});
-
-module.exports = config;
+};

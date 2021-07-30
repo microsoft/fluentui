@@ -296,6 +296,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       },
       loader: {
         role: undefined,
+        secondary: props.primary,
       },
     }),
 

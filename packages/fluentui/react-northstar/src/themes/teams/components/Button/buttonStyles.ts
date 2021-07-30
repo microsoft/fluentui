@@ -252,13 +252,14 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         minWidth: v.height,
         padding: 0,
 
-        ...(!p.inverted && {
-          ':hover': {
-            ...getIconFillOrOutlineStyles({ outline: false }),
-            color: v.textColorIconOnlyHover,
-            background: v.backgroundColorIconOnlyHover,
-          },
-        }),
+        ...(!p.inverted &&
+          !p.disabledFocusable && {
+            ':hover': {
+              ...getIconFillOrOutlineStyles({ outline: false }),
+              color: v.textColorIconOnlyHover,
+              background: v.backgroundColorIconOnlyHover,
+            },
+          }),
 
         ...(p.size === 'small' && {
           minWidth: v.sizeSmallHeight,

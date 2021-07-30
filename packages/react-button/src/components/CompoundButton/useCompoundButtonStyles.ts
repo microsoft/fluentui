@@ -29,15 +29,24 @@ const useRootStyles = makeStyles({
       },
     },
   }),
-  small: {
+  small: theme => ({
     padding: buttonSpacing.medium,
-  },
-  medium: {
+
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
+  medium: theme => ({
     padding: buttonSpacing.large,
-  },
-  large: {
+
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
+  large: theme => ({
     padding: buttonSpacing.larger,
-  },
+
+    fontSize: theme.global.type.fontSizes.base[400],
+    lineHeight: theme.global.type.lineHeights.base[400],
+  }),
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
       color: theme.alias.color.neutral.neutralForegroundOnBrand,
@@ -129,21 +138,6 @@ const useRootIconOnlyStyles = makeStyles({
   },
 });
 
-const useChildrenStyles = makeStyles({
-  small: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  medium: theme => ({
-    fontSize: theme.global.type.fontSizes.base[300],
-    lineHeight: theme.global.type.lineHeights.base[300],
-  }),
-  large: theme => ({
-    fontSize: theme.global.type.fontSizes.base[400],
-    lineHeight: theme.global.type.lineHeights.base[400],
-  }),
-});
-
 const useIconStyles = makeStyles({
   base: {
     fontSize: '40px',
@@ -180,7 +174,6 @@ const useSecondaryContentStyles = makeStyles({
 export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
-  const childrenStyles = useChildrenStyles();
   const iconStyles = useIconStyles();
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
@@ -195,10 +188,6 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );
-
-  if (state.children) {
-    state.children.className = mergeClasses(childrenStyles[state.size], state.children.className);
-  }
 
   state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
 
