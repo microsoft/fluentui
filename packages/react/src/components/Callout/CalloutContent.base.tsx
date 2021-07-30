@@ -204,70 +204,50 @@ function usePositions(
 ) {
   const { hidden, target, finalHeight, onPositioned } = props;
   const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
-  const async = useAsync();
-
-  /**
-   * Sets the current position of Callout upon resize. Callout will resize when:
-   *
-   * 1. `elementPositions` is undefined (initial render)
-   * 2. `elementPositions` does not equal the `newElementPositions`
-   * 3. There is a two decimal place difference in position.
-   *
-   * @param newElementPositions The incoming positions for the Callout
-   */
-  const setCalloutPositions = React.useCallback(
-    (newElementPositions: ICalloutPositionedInfo) => {
-      if (
-        (elementPositions === undefined && newElementPositions) ||
-        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-      ) {
-        onPositioned?.(newElementPositions);
-        setElementPositions(newElementPositions);
-      }
-    },
-    [elementPositions, onPositioned],
-  );
 
   React.useEffect(
     () => {
       if (!hidden && calloutElement.current) {
-        const timerId = async.requestAnimationFrame(() => {
-          // If we expect a target element to position against, `targetRef.current` should be defined.
-          // Once provided we can try to position the element.
-          const expectsTarget = !!target;
+        // If we expect a target element to position against, `targetRef.current` should be defined.
+        // Once provided we can try to position the element.
+        const expectsTarget = !!target;
 
-          if (calloutElement.current) {
-            const cleanupObserver = observeResize(calloutElement.current, () => {
-              if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-                const currentPositionProps: IPositionProps = {
-                  ...props,
-                  target: targetRef.current!,
-                  bounds: getBounds(),
-                };
+        if (calloutElement.current) {
+          const cleanupObserver = observeResize(calloutElement.current, () => {
+            if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+              const currentPositionProps: IPositionProps = {
+                ...props,
+                target: targetRef.current!,
+                bounds: getBounds(),
+              };
 
-                // If there is a finalHeight given then we assume that the user knows and will handle
-                // additional positioning adjustments so we should call positionCard
-                const newElementPositions: ICalloutPositionedInfo = finalHeight
-                  ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
-                  : positionCallout(
-                      currentPositionProps,
-                      hostElement.current,
-                      calloutElement.current,
-                      elementPositions,
-                    );
-                setCalloutPositions(newElementPositions);
+              // If there is a finalHeight given then we assume that the user knows and will handle
+              // additional positioning adjustments so we should call positionCard
+              const newElementPositions: ICalloutPositionedInfo = finalHeight
+                ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
+                : positionCallout(currentPositionProps, hostElement.current, calloutElement.current, elementPositions);
+
+              //Sets the current position of Callout upon resize. Callout will resize when:
+              //
+              // 1. `elementPositions` is undefined (initial render)
+              // 2. `elementPositions` does not equal the `newElementPositions`
+              // 3. There is a two decimal place difference in position.
+              if (
+                (elementPositions === undefined && newElementPositions) ||
+                (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
+              ) {
+                onPositioned?.(newElementPositions);
+                setElementPositions(newElementPositions);
               }
-            });
+            }
+          });
 
-            return () => cleanupObserver();
-          }
-        }, calloutElement.current);
-
-        return () => async.cancelAnimationFrame(timerId);
+          return () => cleanupObserver();
+        }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [async, calloutElement, finalHeight, getBounds, hidden, hostElement, setCalloutPositions, target, targetRef],
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- props should not be dep
+    [calloutElement, elementPositions, onPositioned, finalHeight, getBounds, hidden, hostElement, target, targetRef],
   );
 
   return elementPositions;
