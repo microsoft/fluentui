@@ -221,10 +221,7 @@ function usePositions(
         (elementPositions === undefined && newElementPositions) ||
         (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
       ) {
-        if (elementPositions !== undefined) {
-          onPositioned?.(newElementPositions);
-        }
-
+        onPositioned?.(newElementPositions);
         setElementPositions(newElementPositions);
       }
     },

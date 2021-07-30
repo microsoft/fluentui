@@ -153,15 +153,14 @@ export const selectStyles = (context, definition) =>
     :host(:not([disabled])) .control:active {
       background: ${neutralFillInputActive};
       border-color: ${neutralStrokeActive};
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
-    :host([open][position='above']) .listbox,
-    :host([open][position='below']) .control {
+    :host([open][position='above']) .listbox {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    :host([open][position='above']) .control,
     :host([open][position='below']) .listbox {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
