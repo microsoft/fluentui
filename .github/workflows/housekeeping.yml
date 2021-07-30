@@ -1,5 +1,5 @@
 name: Pull-Request Houskeeping 🧹
-on: [pull_request]
+on: [pull_request_target]
 
 jobs:
   milestone-assignment:
