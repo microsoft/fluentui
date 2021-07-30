@@ -242,7 +242,7 @@ function usePositions(
             }
           });
 
-          return () => cleanupObserver();
+          return cleanupObserver;
         }
       }
     },
