@@ -295,7 +295,7 @@ Primary.storyName = 'Better story name';
 
 ### 9. default story
 
-1. Every documented component must have a story called `Default`, which supports [Controls](https://storybook.js.org/docs/react/essentials/controls). This will be the first story in Storybook nav tree.
+1. Every documented component must have a story called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). Ordering of stories will be set up, so this would be the first story in Storybook nav tree.
 
 ### 10. design of stories
 
