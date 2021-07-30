@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/web-components_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Hoist storybook dev deps to root",
+            "author": "elcraig@microsoft.com",
+            "commit": "593c44a49aa586c376cf8cc9a695b9109bd5e608",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/web-components_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(web-components): improve ergonomics of the fluent design system",
+            "author": "roeisenb@microsoft.com",
+            "commit": "ba2a810520a9af270340d23412cf6c9a89101325",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/web-components_v1.2.3",
+      "version": "1.2.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove incorrectly added component definition for toolbar",
+            "author": "chhol@microsoft.com",
+            "commit": "77b27c34f19372fc17dd640ce97573d660b1b9df",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jul 2021 07:36:55 GMT",
       "tag": "@fluentui/web-components_v1.2.2",
       "version": "1.2.2",

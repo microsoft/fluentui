@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix button jump effect on border disparities",
-  "packageName": "@fluentui/react-button",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

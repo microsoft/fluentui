@@ -1,22 +1,17 @@
 {
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
   "compilerOptions": {
-    "baseUrl": ".",
+    "target": "ES2015",
+    "module": "CommonJS",
+    "lib": ["ES2015", "dom"],
     "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
+    "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "skipLibCheck": true,
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global"]
-  },
-  "include": ["src"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "storybook__addons"]
+  }
 }

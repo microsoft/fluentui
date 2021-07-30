@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem } from '../MenuItem/useMenuItem';
@@ -10,10 +11,16 @@ import { AcceptIcon } from '../../utils/DefaultIcons';
 export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>): MenuItemRadioState => {
   const radioProps = {
     role: 'menuitemradio',
-    checkmark: { children: <AcceptIcon /> },
   };
 
-  const state = useMenuItem({ ...radioProps, ...props }, ref) as MenuItemRadioState;
+  const state = useMenuItem(
+    {
+      ...radioProps,
+      ...props,
+      checkmark: resolveShorthand(props.checkmark, { children: <AcceptIcon /> }),
+    },
+    ref,
+  ) as MenuItemRadioState;
 
   const selectRadio = useMenuListContext(context => context.selectRadio);
   const { onClick: onClickOriginal } = state;

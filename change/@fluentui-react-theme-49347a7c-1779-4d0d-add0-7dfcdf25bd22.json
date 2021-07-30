@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update tokens",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

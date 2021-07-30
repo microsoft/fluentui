@@ -33,5 +33,6 @@ module.exports = {
     '<rootDir>/packages/react-shared-contexts',
     '<rootDir>/packages/react-tooltip',
     '<rootDir>/packages/react-card',
+    '<rootDir>/packages/react-checkbox',
   ],
 };
