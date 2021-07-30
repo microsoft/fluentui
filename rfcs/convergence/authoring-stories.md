@@ -2,7 +2,7 @@
 
 ---
 
-_List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andrefcdias
+_List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andrefcdias, @PeterDraex
 
 <!-- toc -->
 
@@ -15,8 +15,11 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
   - [4. should we render descriptions table in Canvas Control pane](#4-should-we-render-descriptions-table-in-canvas-control-pane)
   - [5. how to author e2e suites for those stories](#5-how-to-author-e2e-suites-for-those-stories)
   - [6. how to properly annotate stories with TS metadata to get the best DX possible](#6-how-to-properly-annotate-stories-with-ts-metadata-to-get-the-best-dx-possible)
-  - [7. how structure stories in the storybook nav tree](#7-how-structure-stories-in-the-storybook-nav-tree)
-  - [8. dissecting big story files into smaller ones](#8-dissecting-big-story-files-into-smaller-ones)
+  - [7. dissecting big story files into smaller ones](#7-dissecting-big-story-files-into-smaller-ones)
+  - [8. how structure stories in the storybook nav tree](#8-how-structure-stories-in-the-storybook-nav-tree)
+  - [9. default story](#9-default-story)
+  - [10. design of stories](#10-design-of-stories)
+  - [11. story code must be useful](#11-story-code-must-be-useful)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
 - [Open Issues](#open-issues)
@@ -267,11 +270,32 @@ TBA
 
 TBA
 
-### 7. how structure stories in the storybook nav tree
+### 7. dissecting big story files into smaller ones
 
-TBA
+Components with complex API require many long stories, both for documentation and for e2e testing. This creates long files with hundres of lines, which are hard to maintain. How can these files be dissected into smaller ones?
 
-### 8. dissecting big story files into smaller ones
+**Proposal:**
+
+1. Every component shall have at most one `.stories.tsx` file. This file has a default export with Storybook configuration for the docs page.
+2. If putting all stories into one file would make it too long, individual stories might be put into `.story.tsx` files as a named export, and then re-exported from `.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.story’;`
+3. If individual story files are employed, `.stories.tsx` file must not contain any stories.
+
+### 8. how structure stories in the storybook nav tree
+
+1. Story files should be in the same folder as the component which they are targeting.
+2. Name of every .stories.tsx / .story.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for the documentation.
+
+### 9. default story
+
+1. Every documented component must have a story which supports [Controls](https://storybook.js.org/docs/react/essentials/controls). This story must be called `Default`, so it would be first in the docs page.
+
+### 10. design of stories
+
+1. Publicly visible stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when button is necessary do demonstrate usage of a component, Fluent UI Button should be used instead of pure HTML button.
+
+### 11. story code must be useful
+
+Public stories should contain only code, which is useful for user to see after clicking on “Show code” in documentation. Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
 
 TBA
 
