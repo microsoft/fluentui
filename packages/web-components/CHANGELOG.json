@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "@fluentui/web-components_v1.3.1",
+      "version": "1.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix border styles when control is active",
+            "author": "corylaviska@microsoft.com",
+            "commit": "b0f4787d7d20447853191dcb59e848ff12615c46",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Jul 2021 07:35:37 GMT",
       "tag": "@fluentui/web-components_v1.3.0",
       "version": "1.3.0",
