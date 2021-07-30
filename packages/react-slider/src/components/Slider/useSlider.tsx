@@ -69,12 +69,7 @@ export const useSlider = (
   } = props;
 
   const [currentValue, setCurrentValue] = useControllableValue(
-    // TODO: Look into useControllableValue typings for fix
-    // When it is not cast, currentValue will assume that it can be undefined. This should not occur since
-    // defaultValue will always be provided as a value.
-    //
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- currentValue will assume it is undefined
-    value && (clamp(value, min, max) as any),
+    value && clamp(value, min, max),
     clamp(defaultValue, min, max),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- ev is not a SyntheticEvent
     (ev: any, val) => onChange?.(val!, ev),
@@ -171,25 +166,25 @@ export const useSlider = (
 
       if (ev.shiftKey) {
         if (key === ArrowDownKey || key === ArrowLeftKey) {
-          updateValue(ev, currentValue - step * 10);
+          updateValue(ev, currentValue! - step * 10);
           return;
         } else if (key === ArrowUpKey || key === ArrowRightKey) {
-          updateValue(ev, currentValue + step * 10);
+          updateValue(ev, currentValue! + step * 10);
           return;
         }
       } else if (key === ArrowDownKey || key === ArrowLeftKey) {
-        updateValue(ev, currentValue - step);
+        updateValue(ev, currentValue! - step);
         return;
       } else if (key === ArrowUpKey || key === ArrowRightKey) {
-        updateValue(ev, currentValue + step);
+        updateValue(ev, currentValue! + step);
         return;
       } else {
         switch (key) {
           case PageDownKey:
-            updateValue(ev, currentValue - step * 10);
+            updateValue(ev, currentValue! - step * 10);
             break;
           case PageUpKey:
-            updateValue(ev, currentValue + step * 10);
+            updateValue(ev, currentValue! + step * 10);
             break;
           case HomeKey:
             updateValue(ev, min);
@@ -217,7 +212,7 @@ export const useSlider = (
     }
   });
 
-  const valuePercent = getPercent(currentValue, min, max);
+  const valuePercent = getPercent(currentValue!, min, max);
 
   const thumbStyles = {
     transform: `translateX(${valuePercent}%)`,
@@ -249,7 +244,7 @@ export const useSlider = (
     'aria-valuemin': min,
     'aria-valuemax': max,
     'aria-valuenow': currentValue,
-    'aria-valuetext': ariaValueText ? ariaValueText(currentValue) : currentValue.toString(),
+    'aria-valuetext': ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString(),
     style: thumbStyles,
   };
 
