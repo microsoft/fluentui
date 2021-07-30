@@ -8,7 +8,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: Assign to milestone
+      - name: Assign to current milestone
         uses: andrefcdias/add-to-milestone@v1.0
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
