@@ -179,7 +179,8 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
             day.isSelected,
           );
 
-        const style = calculateRoundedStyles(classNames, above, below, left, right);
+        let style = calculateRoundedStyles(classNames, above, below, left, right);
+        style = style.concat(calculateBorderStyles(classNames, above, below, left, right));
 
         weekCornersStyled[weekIndex + '_' + dayIndex] = style;
       });
@@ -220,6 +221,31 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
       style = getRTL()
         ? style.concat(classNames.bottomLeftCornerDate + ' ')
         : style.concat(classNames.bottomRightCornerDate + ' ');
+    }
+
+    return style;
+  };
+
+  const calculateBorderStyles = (
+    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+    above: boolean,
+    below: boolean,
+    left: boolean,
+    right: boolean,
+  ): string => {
+    let style = '';
+
+    if (above) {
+      style = style.concat(classNames.datesAbove + ' ');
+    }
+    if (below) {
+      style = style.concat(classNames.datesBelow + ' ');
+    }
+    if (left) {
+      style = getRTL() ? style.concat(classNames.datesRight + ' ') : style.concat(classNames.datesLeft + ' ');
+    }
+    if (right) {
+      style = getRTL() ? style.concat(classNames.datesLeft + ' ') : style.concat(classNames.datesRight + ' ');
     }
 
     return style;
