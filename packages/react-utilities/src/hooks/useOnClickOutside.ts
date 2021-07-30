@@ -122,14 +122,11 @@ const useIFrameFocus = (
 ) => {
   const timeoutRef = React.useRef<number>();
 
-  const listener = React.useCallback(
-    (e: Event) => {
-      if (callback) {
-        callback(e);
-      }
-    },
-    [callback],
-  );
+  const listener = useEventCallback((e: Event) => {
+    if (callback) {
+      callback(e);
+    }
+  });
 
   // Adds listener to the custom iframe focus event
   React.useEffect(() => {
