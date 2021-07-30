@@ -19,6 +19,7 @@ export { menuItemWrapperVariables as MenuItemWrapper } from './components/Menu/m
 export { radioGroupItemVariables as RadioGroupItem } from './components/RadioGroup/radioGroupItemVariables';
 export { segmentVariables as Segment } from './components/Segment/segmentVariables';
 export { splitButtonVariables as SplitButton } from './components/SplitButton/splitButtonVariables';
+export { splitButtonToggleVariables as SplitButtonToggle } from './components/SplitButton/splitButtonToggleVariables';
 export { textVariables as Text } from './components/Text/textVariables';
 export { textAreaVariables as TextArea } from './components/TextArea/textAreaVariables';
 export { toolbarVariables as Toolbar } from './components/Toolbar/toolbarVariables';

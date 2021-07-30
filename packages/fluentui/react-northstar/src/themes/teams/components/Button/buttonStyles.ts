@@ -133,9 +133,6 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           color: v.primaryColor,
           backgroundColor: v.primaryBackgroundColor,
           borderColor: v.primaryBorderColor,
-          ...(!p.flat && {
-            boxShadow: v.primaryBoxShadow,
-          }),
 
           ...(!p.disabledFocusable && {
             ':active': {
@@ -156,6 +153,10 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
             backgroundColor: v.primaryBackgroundColorHover,
           },
         }),
+
+      ...(!(p.text || p.flat || p.size === 'small') && {
+        boxShadow: v.primaryBoxShadow,
+      }),
 
       ...(p.inverted && {
         backgroundColor: siteVariables.colorScheme.silver.background,

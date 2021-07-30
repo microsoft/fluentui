@@ -2,7 +2,6 @@ import { SplitButtonVariables } from '../../../teams/components/SplitButton/spli
 
 export const splitButtonVariables = (siteVars: any): Partial<SplitButtonVariables> => {
   return {
-    toggleButtonBorderColor: 'red', // test
-    toggleButtonPrimaryBorderColor: 'red', // siteVars.colors.default[800],
+    toggleButtonPrimaryBorderColor: siteVars.colors.grey[800],
   };
 };

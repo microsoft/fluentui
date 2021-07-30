@@ -17,6 +17,7 @@ export { menuItemIndicatorVariables as MenuItemIndicator } from './components/Me
 export { menuItemWrapperVariables as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { svgIconVariables as SvgIcon } from './components/SvgIcon/svgIconVariables';
 export { splitButtonVariables as SplitButton } from './components/SplitButton/splitButtonVariables';
+export { splitButtonToggleVariables as SplitButtonToggle } from './components/SplitButton/splitButtonToggleVariables';
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
 export { providerVariables as Provider } from './components/Provider/providerVariables';
 export { labelVariables as Label } from './components/Label/labelVariables';
