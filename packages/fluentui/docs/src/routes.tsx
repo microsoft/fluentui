@@ -57,6 +57,7 @@ import {
   RosterPrototype,
   SearchPagePrototype,
   TablePrototype,
+  TeamsContextualHelpPrototype,
   TextAreaAutoSize,
   VirtualizedStickyTreePrototype,
   VirtualizedTablePrototype,
@@ -108,6 +109,7 @@ const Routes = () => (
                 <Route exact path="/perf-tests" component={PerformanceTests} />
                 <Route exact path="/prototype-roster" component={RosterPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
+                <Route exact path="/prototype-teams-contextual-help" component={TeamsContextualHelpPrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-compact-chat" component={CompactChatPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
