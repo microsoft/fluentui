@@ -251,7 +251,7 @@ export const useState = (props, ref) => {
 
 ### Pros
 
-1. This takes the responsibility of deciding if a slot might be null rendered out of inner implementation of `getSlot` into the developers hand, by providing a optional way of declaring it
+1. This takes the responsibility of deciding if a slot might be null rendered out of the inner implementation of `getSlot` and into the developers' hands, by providing an optional way of declaring it.
 
 ### Cons
 
