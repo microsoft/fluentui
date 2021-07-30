@@ -160,6 +160,10 @@ export interface IBaseFloatingSuggestionsProps<T> {
    */
   onSuggestionsHidden?: () => void;
 
+  /**
+   * Gap space for the callout
+   * Will be set to 5 if this prop is not set
+   */
   gapSpace?: number;
 }
 
