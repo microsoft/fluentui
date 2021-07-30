@@ -246,7 +246,7 @@ function usePositions(
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- props should not be dep
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- props should not be a dependency
     [calloutElement, elementPositions, onPositioned, finalHeight, getBounds, hidden, hostElement, target, targetRef],
   );
 
