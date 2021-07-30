@@ -16,7 +16,7 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
   - [5. how to author e2e suites for those stories](#5-how-to-author-e2e-suites-for-those-stories)
   - [6. how to properly annotate stories with TS metadata to get the best DX possible](#6-how-to-properly-annotate-stories-with-ts-metadata-to-get-the-best-dx-possible)
   - [7. dissecting big story files into smaller ones](#7-dissecting-big-story-files-into-smaller-ones)
-  - [8. how structure stories in the storybook nav tree](#8-how-structure-stories-in-the-storybook-nav-tree)
+  - [8. location and naming convention](#8-location-and-naming-convention)
   - [9. default story](#9-default-story)
   - [10. design of stories](#10-design-of-stories)
   - [11. story code must be useful](#11-story-code-must-be-useful)
