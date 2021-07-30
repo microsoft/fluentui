@@ -276,28 +276,34 @@ Components with complex API require many long stories, both for documentation an
 
 **Proposal:**
 
-1. Every component shall have at most one `.stories.tsx` file. This file has a default export with Storybook configuration for the docs page.
+1. Every component can have at most one `.stories.tsx` file. This file has a default export with Storybook configuration for the docs page.
 2. If putting all stories into one file would make it too long, individual stories might be put into `.story.tsx` files as a named export, and then re-exported from `.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.story’;`
 3. If individual story files are employed, `.stories.tsx` file must not contain any stories.
 
-### 8. how structure stories in the storybook nav tree
+### 8. location and naming convention
 
 1. Story files should be in the same folder as the component which they are targeting.
-2. Name of every .stories.tsx / .story.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for the documentation.
+2. Name of every .stories.tsx / .story.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation. For example:
+
+```tsx
+export const ButtonPrimary = (props: ButtonProps) => <Button {...props}>Text</Button>;
+Primary.args = {
+  primary: true,
+};
+Primary.storyName = 'Better story name';
+```
 
 ### 9. default story
 
-1. Every documented component must have a story which supports [Controls](https://storybook.js.org/docs/react/essentials/controls). This story must be called `Default`, so it would be first in the docs page.
+1. Every documented component must have a story called `Default`, which supports [Controls](https://storybook.js.org/docs/react/essentials/controls). This will be the first story in Storybook nav tree.
 
 ### 10. design of stories
 
-1. Publicly visible stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when button is necessary do demonstrate usage of a component, Fluent UI Button should be used instead of pure HTML button.
+1. Publicly visible stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when a button is necessary do demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
 
 ### 11. story code must be useful
 
-Public stories should contain only code, which is useful for user to see after clicking on “Show code” in documentation. Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
-
-TBA
+Public stories should contain only code, which is useful for users to see after clicking on “Show code” in documentation. Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
 
 ### Pros and Cons
 
