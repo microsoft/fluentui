@@ -36,6 +36,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     selectedHeaderIndex,
     onSuggestionsShown,
     onSuggestionsHidden,
+    gapSpace,
   } = props;
 
   // Picker shown/hidden callback logic
@@ -68,7 +69,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
         <Callout
           className={classNames.callout}
           isBeakVisible={false}
-          gapSpace={5}
+          gapSpace={gapSpace || 5}
           target={targetElement}
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}

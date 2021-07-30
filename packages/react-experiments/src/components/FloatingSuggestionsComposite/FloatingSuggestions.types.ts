@@ -159,6 +159,8 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * A callback for when the floating suggestions are hidden (on dismiss or selection)
    */
   onSuggestionsHidden?: () => void;
+
+  gapSpace?: number;
 }
 
 export interface IBaseFloatingPickerHeaderFooterProps {
