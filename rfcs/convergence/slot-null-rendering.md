@@ -34,7 +34,7 @@ export type ShorthandProps<Props = {}> =
 
 In the case where one _shorthand_ declares a native element (e.g: `"div"`, `"input"`) it will only be rendered if this element has `children` as a property.
 
-This is done by `getSlots` method, which is invoke by the rendering function of a component
+This is done by `getSlots` method, which is invoked by the rendering function of a component.
 
 ```tsx
 // react-utilities/src/compose/getSlots.ts
