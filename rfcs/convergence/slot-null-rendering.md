@@ -116,7 +116,7 @@ export function Component(props) {
 
 ### Native elements without children
 
-e.g: An Icon that doesn't have children `<i class="icon"/>` (this cases is hypothetical, but quite possible, as we cannot verify it in converged components)
+e.g: An Icon that doesn't have children `<i class="icon"/>` (this case is hypothetical, but quite possible, as we cannot verify it in converged components).
 
 ## Detailed Design or Proposal
 
