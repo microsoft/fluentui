@@ -65,8 +65,6 @@ export const DescendantsProvider = DescendantsContext.Provider;
  * Forces a re-render, similar to `forceUpdate` in class components.
  */
 function useForceUpdate() {
-  const [, dispatch] = React.useState(Object.create(null));
-  return React.useCallback(() => {
-    dispatch(Object.create(null));
+  return React.useReducer(() => ({}), {})[1]
   }, []);
 }
