@@ -8,31 +8,31 @@ describe('Popup without `trigger`', () => {
   });
 
   it('Popup can be opened on button click', () => {
-    cy.clickOn(button);
+    cy.mouseDownOn(button);
     cy.visible(popupContent);
   });
 
   it('Popup can be closed on button click', () => {
-    cy.clickOn(button);
+    cy.mouseDownOn(button);
     cy.visible(popupContent);
 
-    cy.clickOn(button);
+    cy.mouseDownOn(button);
     cy.notExist(popupContent);
   });
 
   it('Popup can be closed on click outside', () => {
-    cy.clickOn(button);
+    cy.mouseDownOn(button);
     cy.visible(popupContent);
 
-    cy.clickOn('body');
+    cy.mouseDownOn('body');
     cy.notExist(popupContent);
   });
 
   it('Popup stays open on click inside', () => {
-    cy.clickOn(button);
+    cy.mouseDownOn(button);
     cy.visible(popupContent);
 
-    cy.clickOn(popupContent);
+    cy.mouseDownOn(popupContent);
     cy.visible(popupContent);
   });
 });
