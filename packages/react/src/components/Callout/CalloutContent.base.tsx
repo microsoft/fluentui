@@ -25,7 +25,6 @@ import {
 } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
-import { observeResize } from '../../utilities/observeResize';
 import { AnimationClassNames } from '../../Styling';
 import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
 
@@ -202,77 +201,65 @@ function usePositions(
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
 ) {
-  const { hidden, target, finalHeight, onPositioned } = props;
-  const [elementPositions, setElementPositions] = React.useState<ICalloutPositionedInfo>();
+  const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
+  const positionAttempts = React.useRef(0);
   const async = useAsync();
+  const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
 
-  /**
-   * Sets the current position of Callout upon resize. Callout will resize when:
-   *
-   * 1. `elementPositions` is undefined (initial render)
-   * 2. `elementPositions` does not equal the `newElementPositions`
-   * 3. There is a two decimal place difference in position.
-   *
-   * @param newElementPositions The incoming positions for the Callout
-   */
-  const setCalloutPositions = React.useCallback(
-    (newElementPositions: ICalloutPositionedInfo) => {
-      if (
-        (elementPositions === undefined && newElementPositions) ||
-        (elementPositions && newElementPositions && !arePositionsEqual(elementPositions, newElementPositions))
-      ) {
-        if (elementPositions !== undefined) {
-          onPositioned?.(newElementPositions);
-        }
+  React.useEffect(() => {
+    if (!hidden) {
+      const timerId = async.requestAnimationFrame(() => {
+        // If we expect a target element to position against, we need to wait until `targetRef.current`
+        // is resolved. Otherwise we can try to position.
+        const expectsTarget = !!target;
 
-        setElementPositions(newElementPositions);
-      }
-    },
-    [elementPositions, onPositioned],
-  );
-
-  React.useEffect(
-    () => {
-      if (!hidden && calloutElement.current) {
-        const timerId = async.requestAnimationFrame(() => {
-          // If we expect a target element to position against, `targetRef.current` should be defined.
-          // Once provided we can try to position the element.
-          const expectsTarget = !!target;
-
-          if (calloutElement.current) {
-            observeResize(calloutElement.current, () => {
-              if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
-                const currentPositionProps: IPositionProps = {
-                  ...props,
-                  target: targetRef.current!,
-                  bounds: getBounds(),
-                };
-
-                // If there is a finalHeight given then we assume that the user knows and will handle
-                // additional positioning adjustments so we should call positionCard
-                const newElementPositions: ICalloutPositionedInfo = finalHeight
-                  ? positionCard(currentPositionProps, hostElement.current, calloutElement.current, elementPositions)
-                  : positionCallout(
-                      currentPositionProps,
-                      hostElement.current,
-                      calloutElement.current,
-                      elementPositions,
-                    );
-
-                setCalloutPositions(newElementPositions);
-              }
-            });
+        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+          const currentProps: IPositionProps = {
+            ...props,
+            target: targetRef.current!,
+            bounds: getBounds(),
+          };
+          // If there is a finalHeight given then we assume that the user knows and will handle
+          // additional positioning adjustments so we should call positionCard
+          const newPositions: ICalloutPositionedInfo = finalHeight
+            ? positionCard(currentProps, hostElement.current, calloutElement.current, positions)
+            : positionCallout(currentProps, hostElement.current, calloutElement.current, positions);
+          // Set the new position only when the positions are not exists or one of the new callout positions
+          // are different. The position should not change if the position is within 2 decimal places.
+          if (
+            (!positions && newPositions) ||
+            (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          ) {
+            // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+            // and we should stop trying to reposition to prevent a stack overflow.
+            positionAttempts.current++;
+            setPositions(newPositions);
+          } else if (positionAttempts.current > 0) {
+            // Only call the onPositioned callback if the callout has been re-positioned at least once.
+            positionAttempts.current = 0;
+            onPositioned?.(positions);
           }
-        }, calloutElement.current);
+        }
+      }, calloutElement.current);
 
-        return () => async.cancelAnimationFrame(timerId);
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [async, calloutElement, finalHeight, getBounds, hidden, hostElement, setCalloutPositions, target, targetRef],
-  );
+      return () => async.cancelAnimationFrame(timerId);
+    }
+  }, [
+    hidden,
+    directionalHint,
+    async,
+    calloutElement,
+    hostElement,
+    targetRef,
+    finalHeight,
+    getBounds,
+    onPositioned,
+    positions,
+    props,
+    target,
+  ]);
 
-  return elementPositions;
+  return positions;
 }
 
 /**

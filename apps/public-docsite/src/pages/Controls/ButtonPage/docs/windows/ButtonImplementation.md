@@ -10,4 +10,4 @@
 
 ### Sample code
 
-[Github](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Button/ButtonFocusTest.tsx)
+[Github](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Button/ButtonFocusTest.tsx)
