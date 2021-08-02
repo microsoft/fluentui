@@ -175,7 +175,7 @@ export const Popup: React.FC<PopupProps> &
   const [isOpenedByRightClick, setIsOpenedByRightClick] = React.useState(false);
 
   const closeTimeoutId = React.useRef<number | undefined>();
-
+  const mouseDownEventRef = React.useRef<MouseEvent | null>();
   const popupContentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
@@ -230,6 +230,13 @@ export const Popup: React.FC<PopupProps> &
   });
 
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
+    const currentMouseDownEvent = mouseDownEventRef.current;
+    mouseDownEventRef.current = null;
+
+    if (currentMouseDownEvent && !isOutsidePopupElement(getRefs(), currentMouseDownEvent)) {
+      return;
+    }
+
     if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
       trySetOpen(false, e);
       rightClickReferenceObject.current = null;
@@ -239,6 +246,10 @@ export const Popup: React.FC<PopupProps> &
     if (isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
       trySetOpen(false, e);
     }
+  };
+
+  const handleMouseDown = (e: MouseEvent) => {
+    mouseDownEventRef.current = e;
   };
 
   const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
@@ -439,12 +450,8 @@ export const Popup: React.FC<PopupProps> &
 
             {context.target && (
               <>
-                <EventListener
-                  listener={handleDocumentClick(getRefs)}
-                  target={context.target}
-                  type="mousedown"
-                  capture
-                />
+                <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
+                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
                 <EventListener
                   listener={handleDocumentClick(getRefs)}
                   target={context.target}
