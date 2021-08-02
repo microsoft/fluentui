@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Source } from '@storybook/addon-docs/blocks';
+import { Source } from '@storybook/addon-docs';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useCodeComparisonStyles = makeStyles({
