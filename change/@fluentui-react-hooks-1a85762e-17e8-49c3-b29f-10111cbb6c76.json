@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(useRefEffet): Make IE11 friendly",
+  "packageName": "@fluentui/react-hooks",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
