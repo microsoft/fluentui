@@ -155,8 +155,8 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn build --to @fluentui/babel-make-styles --verbose --no-cache
-        displayName: build Babel plugin
+          yarn build --to @fluentui/make-styles-webpack-loader --verbose --no-cache
+        displayName: build Webpack loader
 
       - script: |
           yarn lage screener --to vr-tests --debug --verbose --no-cache

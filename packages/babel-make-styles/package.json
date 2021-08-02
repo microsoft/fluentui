@@ -34,7 +34,7 @@
     "@babel/traverse": "^7.12.13",
     "@fluentui/make-styles": "^9.0.0-alpha.28",
     "@linaria/babel-preset": "^3.0.0-beta.7",
-    "@linaria/shaker": "^3.0.0-beta.8",
+    "@linaria/shaker": "^3.0.0-beta.10",
     "tslib": "^2.1.0"
   },
   "beachball": {
