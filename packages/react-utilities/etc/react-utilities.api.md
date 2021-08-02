@@ -79,13 +79,10 @@ export interface DefaultComponentProps {
 export const defaultSSRContextValue: SSRContextValue;
 
 // @public (undocumented)
-export type Descendant = {
-    id: string;
-    forceUpdate: () => void;
-};
+export type Descendant = () => void;
 
 // @public (undocumented)
-export type Descendants = Record<string, Descendant>;
+export type Descendants = Descendant[];
 
 // @public (undocumented)
 export interface DescendantsContextValue {
@@ -313,7 +310,7 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
 
 // @public
-export const useDescendants: () => readonly [Record<string, Descendant>, (descendant: Descendant) => number];
+export const useDescendants: () => readonly [Descendants, (descendant: Descendant) => number];
 
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
@@ -328,7 +325,7 @@ export function useForceUpdate(): DispatchWithoutAction;
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public (undocumented)
-export function useIndex(providedID?: string): number;
+export function useIndex(): number;
 
 // @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;

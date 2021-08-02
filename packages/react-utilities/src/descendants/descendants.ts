@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useFirstMount, useIsomorphicLayoutEffect, useForceUpdate } from '../hooks/index';
 
 export type Descendant = () => void;
+export type Descendants = Descendant[];
 export type SetDescendant = (descendant: Descendant) => number;
 
 export interface DescendantsContextValue {
   /**
    * A record of descendants that have been registered by their id
    */
-  descendants: Descendant[];
+  descendants: Descendants;
   /**
    * add a descendant, if it hasn't been added before
    * @returns index of descendant
@@ -27,7 +28,7 @@ const DescendantsContext = React.createContext<DescendantsContextValue | undefin
  */
 export const useDescendants = () => {
   const isFirstMount = useFirstMount();
-  const descendants = React.useRef<Descendant[]>([]);
+  const descendants = React.useRef<Descendants>([]);
   const setDescendant = React.useCallback(
     (descendant: Descendant) => {
       const index = descendants.current.indexOf(descendant);
