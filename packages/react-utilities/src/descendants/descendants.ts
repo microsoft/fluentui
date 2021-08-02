@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { useId, useFirstMount, useIsomorphicLayoutEffect } from '../hooks/index';
+import { useFirstMount, useIsomorphicLayoutEffect, useForceUpdate } from '../hooks/index';
 
-export type Descendant = { id: string; forceUpdate: () => void };
-export type Descendants = Record<string, Descendant>;
+export type Descendant = () => void;
 export type SetDescendant = (descendant: Descendant) => number;
 
 export interface DescendantsContextValue {
   /**
    * A record of descendants that have been registered by their id
    */
-  descendants: Descendants;
+  descendants: Descendant[];
   /**
    * add a descendant, if it hasn't been added before
    * @returns index of descendant
@@ -28,21 +27,20 @@ const DescendantsContext = React.createContext<DescendantsContextValue | undefin
  */
 export const useDescendants = () => {
   const isFirstMount = useFirstMount();
-  const descendants = React.useRef<Descendants>({});
-  const order = React.useRef<string[]>([]);
-  const setDescendant = React.useCallback((descendant: Descendant) => {
-    descendants.current[descendant.id] = descendant;
-    const index = order.current.indexOf(descendant.id);
-    return index === -1 ? order.current.push(descendant.id) - 1 : index;
-  }, []);
+  const descendants = React.useRef<Descendant[]>([]);
+  const setDescendant = React.useCallback(
+    (descendant: Descendant) => {
+      const index = descendants.current.indexOf(descendant);
+      return index === -1 ? descendants.current.push(descendant) - 1 : index;
+    },
+    [descendants],
+  );
   useIsomorphicLayoutEffect(() => {
     if (!isFirstMount) {
-      order.current = [];
-      for (const key in descendants.current) {
-        if (descendants.current.hasOwnProperty(key)) {
-          descendants.current[key].forceUpdate();
-        }
+      for (const descendant of descendants.current) {
+        descendant();
       }
+      descendants.current = [];
     }
   });
   return [descendants.current, setDescendant] as const;
@@ -51,18 +49,19 @@ export const useDescendants = () => {
 /**
  * @returns index of the current item within its parent's descendants list
  */
-export function useIndex(providedID?: string) {
+export function useIndex() {
   const forceUpdate = useForceUpdate();
   const context = React.useContext(DescendantsContext);
-  const id = useId('descendant-', providedID);
-  return context ? context.setDescendant({ id, forceUpdate }) : -1;
+  const [index, setIndex] = React.useState(-1);
+  useIsomorphicLayoutEffect(() => {
+    if (context) {
+      const nextIndex = context.setDescendant(forceUpdate);
+      if (nextIndex !== index) {
+        setIndex(nextIndex);
+      }
+    }
+  });
+  return index;
 }
 
 export const DescendantsProvider = DescendantsContext.Provider;
-
-/**
- * Forces a re-render, similar to `forceUpdate` in class components.
- */
-function useForceUpdate() {
-  return React.useReducer(() => ({}), {})[1];
-}

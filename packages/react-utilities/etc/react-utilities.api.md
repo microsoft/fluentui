@@ -4,6 +4,7 @@
 
 ```ts
 
+import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
 // @public
@@ -319,6 +320,9 @@ export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Ar
 
 // @public
 export function useFirstMount(): boolean;
+
+// @public
+export function useForceUpdate(): DispatchWithoutAction;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
