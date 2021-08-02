@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Enable exhaustive-deps rule for useIsomorphicLayoutEffect",
+  "packageName": "@fluentui/react-theme",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
