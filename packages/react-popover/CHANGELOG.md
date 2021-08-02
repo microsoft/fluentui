@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.22)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.21..@fluentui/react-popover_v9.0.0-alpha.22)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.20 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.21)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.20..@fluentui/react-popover_v9.0.0-alpha.21)
+
+### Changes
+
+- add Babel plugins to build pipeline ([PR #18968](https://github.com/microsoft/fluentui/pull/18968) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.20)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.19..@fluentui/react-popover_v9.0.0-alpha.20)
+
+### Changes
+
+- react-popver: fix Default story issue caused by storybook migration ([PR #18693](https://github.com/microsoft/fluentui/pull/18693) by tristan.watanabe@gmail.com)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.19)
 

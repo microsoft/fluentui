@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 22 Jul 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.62)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.61..@fluentui/react-tooltip_v9.0.0-alpha.62)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.32 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.61)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.60..@fluentui/react-tooltip_v9.0.0-alpha.61)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.33 ([PR #18968](https://github.com/microsoft/fluentui/pull/18968) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.60)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.59..@fluentui/react-tooltip_v9.0.0-alpha.60)
+
+### Changes
+
+- Change visual defaults for tooltip. Replace `subtle` prop with `inverted`, and `noArrow` with `pointing` ([PR #19078](https://github.com/microsoft/fluentui/pull/19078) by behowell@microsoft.com)
+- Replace onlyIfTruncated with onBeforeShow event. Add onShow/onHide events. Add TooltipImperativeApi to programatically show/hide tooltip. ([PR #18610](https://github.com/microsoft/fluentui/pull/18610) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.59)
 
