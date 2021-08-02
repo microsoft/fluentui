@@ -12,14 +12,11 @@ import {
   controlCornerRadius,
   disabledOpacity,
   focusStrokeWidth,
-  neutralFillActive,
   neutralFillHover,
-  neutralFillInputActive,
   neutralFillInputHover,
   neutralFillInputRest,
   neutralFillRest,
   neutralForegroundRest,
-  strokeControlTextActive,
   strokeControlTextHover,
   strokeControlTextRest,
   strokeWidth,
@@ -45,6 +42,7 @@ export const inputStyles: (
     font-size: ${typeRampBaseFontSize};
     line-height: ${typeRampBaseLineHeight};
     color: ${neutralForegroundRest};
+    fill: currentcolor;
     outline: none;
     user-select: none;
     position: relative;
@@ -202,10 +200,6 @@ export const inputForcedColorStyles: (
   ::placeholder,
   ::-webkit-input-placeholder {
     color: ${SystemColors.FieldText};
-  }
-  .start,
-  .end {
-    fill: ${SystemColors.FieldText};
   }
   :host([disabled]) {
     opacity: 1;

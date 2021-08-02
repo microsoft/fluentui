@@ -60,7 +60,6 @@ export const textFieldStyles = (context, definition) =>
     .end {
       display: flex;
       margin: auto;
-      fill: currentcolor;
     }
 
     .start {

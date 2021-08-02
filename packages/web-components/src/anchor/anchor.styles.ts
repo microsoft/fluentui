@@ -10,16 +10,22 @@ import {
 } from '../styles/';
 import { appearanceBehavior } from '../utilities/behaviors';
 
+const interactivitySelector: string = '[href]';
+
 export const anchorStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
-    ${baseButtonStyles(context, definition)}
+    :host .control:not([href]) {
+      cursor: default;
+    }
+
+    ${baseButtonStyles(context, definition, interactivitySelector)}
   `.withBehaviors(
-    appearanceBehavior('accent', AccentButtonStyles(context, definition)),
-    appearanceBehavior('hypertext', HypertextStyles(context, definition)),
-    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition)),
-    appearanceBehavior('outline', OutlineButtonStyles(context, definition)),
-    appearanceBehavior('stealth', StealthButtonStyles(context, definition)),
+    appearanceBehavior('accent', AccentButtonStyles(context, definition, interactivitySelector)),
+    appearanceBehavior('hypertext', HypertextStyles(context, definition, interactivitySelector)),
+    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition, interactivitySelector)),
+    appearanceBehavior('outline', OutlineButtonStyles(context, definition, interactivitySelector)),
+    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector)),
   );

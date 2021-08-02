@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { controlCornerRadius, neutralFillRest } from '../design-tokens';
+import { controlCornerRadius, neutralFillInputHover, neutralFillInputRest, neutralFillRest } from '../design-tokens';
 
 export const skeletonStyles: (
   context: ElementDefinitionContext,
@@ -8,7 +8,7 @@ export const skeletonStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
-      --skeleton-fill-default: #e1dfdd;
+      --skeleton-fill-default: ${neutralFillInputRest};
       overflow: hidden;
       width: 100%;
       position: relative;
@@ -16,7 +16,7 @@ export const skeletonStyles: (
       --skeleton-animation-gradient-default: linear-gradient(
         270deg,
         var(--skeleton-fill, var(--skeleton-fill-default)) 0%,
-        #f3f2f1 51.13%,
+        ${neutralFillInputHover} 51.13%,
         var(--skeleton-fill, var(--skeleton-fill-default)) 100%
       );
       --skeleton-animation-timing-default: ease-in-out;

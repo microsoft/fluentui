@@ -100,12 +100,12 @@ export const baseButtonStyles = (
       line-height: 0;
     }
 
-    :host(${interactivitySelector}:hover) .control {
+    :host .control${interactivitySelector}:hover {
       background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
         border-box ${strokeControlHover};
     }
 
-    :host(${interactivitySelector}:active) .control {
+    :host .control${interactivitySelector}:active {
       background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
         border-box ${strokeControlActive};
     }
@@ -147,8 +147,7 @@ export const baseButtonStyles = (
           fill: currentcolor;
         }
 
-        :host(:not([disabled][href]):hover),
-        :host(${interactivitySelector}:hover) .control {
+        :host .control${interactivitySelector}:hover {
           forced-color-adjust: none;
           background-color: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
@@ -203,13 +202,13 @@ export const AccentButtonStyles = (
       color: ${foregroundOnAccentRest};
     }
 
-    :host(${interactivitySelector}:hover) .control {
+    :host .control${interactivitySelector}:hover {
       background: padding-box linear-gradient(${accentFillHover}, ${accentFillHover}),
         border-box ${strokeControlAccentHover};
       color: ${foregroundOnAccentHover};
     }
 
-    :host(${interactivitySelector}:active) .control {
+    :host .control${interactivitySelector}:active {
       background: padding-box linear-gradient(${accentFillActive}, ${accentFillActive}),
         border-box ${strokeControlAccentActive};
       color: ${foregroundOnAccentActive};
@@ -228,8 +227,8 @@ export const AccentButtonStyles = (
           color: ${SystemColors.HighlightText};
         }
 
-        :host .control:hover,
-        :host(${interactivitySelector}:active) .control:active {
+        :host .control${interactivitySelector}:hover,
+        :host .control${interactivitySelector}:active {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.Highlight};
           color: ${SystemColors.Highlight};
@@ -287,20 +286,20 @@ export const HypertextStyles = (
       line-height: 1;
       text-decoration: underline 1px;
     }
-    :host a.control:not(:link) {
+    :host .control:not([href]) {
       background-color: transparent;
-      cursor: default;
     }
-    :host .control:link,
-    :host .control:visited {
+    :host .control${interactivitySelector} {
       background: transparent;
       color: ${accentForegroundRest};
     }
-    :host .control:hover {
-      border-bottom-color: ${accentForegroundHover};
+    :host .control${interactivitySelector}:hover {
+      background: transparent;
+      color: ${accentForegroundHover};
     }
-    :host .control:active {
-      border-bottom-color: ${accentForegroundActive};
+    :host .control${interactivitySelector}:active {
+      background: transparent;
+      color: ${accentForegroundActive};
     }
     :host .control:${focusVisible} {
       box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${focusStrokeOuter} !important;
@@ -334,11 +333,11 @@ export const LightweightButtonStyles = (
       background: transparent !important;
     }
 
-    :host(${interactivitySelector}:hover) {
+    :host .control${interactivitySelector}:hover {
       color: ${accentForegroundHover};
     }
 
-    :host(${interactivitySelector}:active) {
+    :host .control${interactivitySelector}:active {
       color: ${accentForegroundActive};
     }
 
@@ -356,11 +355,8 @@ export const LightweightButtonStyles = (
       background: ${accentForegroundRest};
     }
 
-    :host(${interactivitySelector}:hover) .content::before {
-      background: transparent;
-    }
-
-    :host(${interactivitySelector}:active) .content::before {
+    :host .control${interactivitySelector}:hover .content::before,
+    :host .control${interactivitySelector}:active .content::before {
       background: transparent;
     }
   `.withBehaviors(
@@ -369,13 +365,15 @@ export const LightweightButtonStyles = (
         :host {
           color: ${SystemColors.ButtonText};
         }
-        :host .control:hover,
+        :host .control${interactivitySelector}:hover,
+        :host .control${interactivitySelector}:active,
         :host .control:${focusVisible} {
           forced-color-adjust: none;
           background: ${SystemColors.ButtonFace};
           color: ${SystemColors.Highlight};
         }
-        :host .control:hover .content::before,
+        :host .control${interactivitySelector}:hover .content::before,
+        :host .control${interactivitySelector}:active .content::before,
         :host .control:${focusVisible} .content::before {
           background: ${SystemColors.Highlight};
         }
@@ -409,11 +407,11 @@ export const OutlineButtonStyles = (
       border-color: ${neutralStrokeRest};
     }
 
-    :host(${interactivitySelector}:hover) .control {
+    :host .control${interactivitySelector}:hover {
       border-color: ${neutralStrokeHover};
     }
 
-    :host(${interactivitySelector}:active) .control {
+    :host .control${interactivitySelector}:active {
       border-color: ${neutralStrokeActive};
     }
   `.withBehaviors(
@@ -442,11 +440,11 @@ export const StealthButtonStyles = (
       background: ${neutralFillStealthRest};
     }
 
-    :host(${interactivitySelector}:hover) .control {
+    :host .control${interactivitySelector}:hover {
       background: ${neutralFillStealthHover};
     }
 
-    :host(${interactivitySelector}:active) .control {
+    :host .control${interactivitySelector}:active {
       background: ${neutralFillStealthActive};
     }
   `.withBehaviors(
@@ -461,14 +459,15 @@ export const StealthButtonStyles = (
           fill: currentcolor;
         }
 
-        :host(${interactivitySelector}:hover) .control {
+        :host .control${interactivitySelector}:hover,
+        :host .control${interactivitySelector}:active {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
           fill: currentcolor;
         }
 
-        :host(:${focusVisible}) .control {
+        :host .control:${focusVisible} {
           background: ${SystemColors.Highlight};
           box-shadow: 0 0 0 1px ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
