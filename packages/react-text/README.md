@@ -27,7 +27,7 @@ const App = () => (
 );
 ```
 
-Or by installing only the `react-text` package. Keep in mind you'll need to install the FluentProvider package as well:
+Or by installing only the `@fluentui/react-text` package. Keep in mind you'll need to install the FluentProvider package as well:
 
 ```sh
 npm install @fluentui/react-text
