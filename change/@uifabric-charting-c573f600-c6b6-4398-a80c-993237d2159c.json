@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Accessibility change for Vertical Bar chart",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

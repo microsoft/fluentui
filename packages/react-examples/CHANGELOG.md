@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 30 Jul 2021 12:24:50 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 12:25:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.21)
+
+Mon, 02 Aug 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.20..@fluentui/react-examples_v0.14.21)
+
+### Patches
+
+- Accessibility change for HeatMap chart ([PR #19171](https://github.com/microsoft/fluentui/pull/19171) by v-scharde@microsoft.com)
+- CherryPick: Accessibility change for Donut chart ([PR #19150](https://github.com/microsoft/fluentui/pull/19150) by v-scharde@microsoft.com)
+- Accessibility change for Vertical Bar chart ([PR #19173](https://github.com/microsoft/fluentui/pull/19173) by v-scharde@microsoft.com)
+- Accessibility change for Vertical stacked bar chart ([PR #19172](https://github.com/microsoft/fluentui/pull/19172) by v-scharde@microsoft.com)
 
 ## [0.14.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.20)
 

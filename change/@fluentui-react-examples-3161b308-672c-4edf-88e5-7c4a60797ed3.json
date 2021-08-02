@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Accessibility change for HeatMap chart",
-  "packageName": "@fluentui/react-examples",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

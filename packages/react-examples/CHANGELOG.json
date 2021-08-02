@@ -2,6 +2,39 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 02 Aug 2021 12:25:19 GMT",
+      "tag": "@fluentui/react-examples_v0.14.21",
+      "version": "0.14.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for HeatMap chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "12c61216c07a889b9e575900023e1e95e22cf6cf",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "CherryPick: Accessibility change for Donut chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "e851260024a6d8d525a5a171b72c242b3cdf0d5e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Accessibility change for Vertical Bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "349df87e8a43b60f6e73446171e683ab6cee5ba8",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Accessibility change for Vertical stacked bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8dc0201a4da50716e546cddf496f9843813466f2",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Jul 2021 12:24:50 GMT",
       "tag": "@fluentui/react-examples_v0.14.20",
       "version": "0.14.20",

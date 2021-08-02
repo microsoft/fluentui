@@ -1,8 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 30 Jul 2021 12:24:50 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 12:25:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.9)
+
+Mon, 02 Aug 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.8..@uifabric/charting_v4.16.9)
+
+### Patches
+
+- Accessibility change for Vertical stacked bar chart ([PR #19172](https://github.com/microsoft/fluentui/pull/19172) by v-scharde@microsoft.com)
+- CherryPick: Accessibility change for Donut chart ([PR #19150](https://github.com/microsoft/fluentui/pull/19150) by v-scharde@microsoft.com)
+- Accessibility change for HeatMap chart ([PR #19171](https://github.com/microsoft/fluentui/pull/19171) by v-scharde@microsoft.com)
+- Accessibility change for Vertical Bar chart ([PR #19173](https://github.com/microsoft/fluentui/pull/19173) by v-scharde@microsoft.com)
 
 ## [4.16.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.8)
 
