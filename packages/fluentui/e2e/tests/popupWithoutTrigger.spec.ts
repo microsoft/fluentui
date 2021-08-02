@@ -24,7 +24,7 @@ describe('Popup without `trigger`', () => {
     cy.clickOn(button);
     cy.visible(popupContent);
 
-    cy.mouseDownOn('body');
+    cy.clickOn('body');
     cy.notExist(popupContent);
   });
 
