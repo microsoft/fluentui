@@ -84,11 +84,8 @@ export type Descendant = {
 };
 
 // @public (undocumented)
-export type Descendants = Record<string, Descendant>;
-
-// @public (undocumented)
 export interface DescendantsContextValue {
-    descendants: Descendants;
+    descendants: Record<string, Descendant>;
     setDescendant: SetDescendant;
 }
 
