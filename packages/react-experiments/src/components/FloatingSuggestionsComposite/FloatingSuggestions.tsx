@@ -69,7 +69,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
         <Callout
           className={classNames.callout}
           isBeakVisible={false}
-          gapSpace={gapSpace || 5}
+          gapSpace={gapSpace ?? 5}
           target={targetElement}
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}
