@@ -1968,7 +1968,15 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   background-color: #edebe9!important;
+                }
+                &:after {
                   border: 1px solid #605e5c;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #edebe9!important;
@@ -4914,7 +4922,15 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   background-color: #edebe9!important;
+                }
+                &:after {
                   border: 1px solid #605e5c;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #edebe9!important;
