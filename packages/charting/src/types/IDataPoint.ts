@@ -1,4 +1,5 @@
 import { LegendShape } from '../components/Legends/Legends.types';
+import * as d3Sankey from 'd3-sankey';
 
 export interface IBasestate {
   _width?: number;
@@ -343,7 +344,32 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
+  SankeyChartData?: ISankeyChartData;
 }
+
+export interface ISankeyChartData {
+  nodes: SNode[];
+  links: SLink[];
+}
+
+interface ISNodeExtra {
+  nodeId: number | string;
+  name: string;
+  color: string;
+}
+
+interface ISLinkExtra {
+  source: number;
+  target: number;
+  value: number;
+}
+
+export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 export interface IAccessibilityProps {
   /**
