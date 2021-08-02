@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 29 Jul 2021 07:35:37 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.26.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.1)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.0..@fluentui/react_v8.26.1)
+
+### Patches
+
+- Temporarily reverting onPositioned bug fix. ([PR #19212](https://github.com/microsoft/fluentui/pull/19212) by czearing@outlook.com)
+
+## [8.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.0)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.25.0..@fluentui/react_v8.26.0)
+
+### Minor changes
+
+- [KeytipLayer] Pass triggering key sequence to onEnterKeytipMode callback ([PR #19195](https://github.com/microsoft/fluentui/pull/19195) by rezha@microsoft.com)
+
+### Patches
+
+- Fixing onPositioned bug in Callout component. ([PR #19194](https://github.com/microsoft/fluentui/pull/19194) by czearing@outlook.com)
 
 ## [8.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.25.0)
 

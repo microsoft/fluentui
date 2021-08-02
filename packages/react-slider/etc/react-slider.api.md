@@ -27,7 +27,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     defaultValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number, ev?: PointerEvent) => void;
+    onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
     rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     snapToStep?: boolean;
     step?: number;

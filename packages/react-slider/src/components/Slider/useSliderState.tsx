@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableValue, useMount } from '@fluentui/react-utilities';
+import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
 import {
   getCode,
   ArrowDownKey,
@@ -33,7 +33,8 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-const on = (element: Element, eventName: string, callback: (ev: Event) => void) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
   return () => element.removeEventListener(eventName, callback);
 };
@@ -53,16 +54,16 @@ export const useSliderState = (state: SliderState): SliderState => {
     onKeyDown: onKeyDownCallback,
   } = state;
 
-  const [currentValue, setCurrentValue] = useControllableValue(
-    value && clamp(value, min, max),
-    clamp(defaultValue, min, max),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- ev is not a SyntheticEvent
-    (ev: any, val) => onChange?.(val!, ev),
-  );
+  const [currentValue, setCurrentValue] = useControllableState({
+    state: value && clamp(value, min, max),
+    defaultState: clamp(defaultValue, min, max),
+    initialState: 0,
+  });
 
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
+  const onChangeCallback = React.useRef(onChange);
   const id = useId('Slider', state.id);
 
   /**
@@ -73,23 +74,29 @@ export const useSliderState = (state: SliderState): SliderState => {
    */
   const updateValue = React.useCallback(
     (ev, incomingValue: number): void => {
-      if (incomingValue !== min && incomingValue !== max) {
+      const clampedValue = clamp(incomingValue, min, max);
+
+      if (clampedValue !== min && clampedValue !== max) {
         ev.stopPropagation();
         if (ev.type === 'keydown') {
           ev.preventDefault();
         }
       }
 
-      setCurrentValue(clamp(incomingValue, min, max), ev);
+      if (onChange && onChangeCallback.current) {
+        onChangeCallback.current(clampedValue, ev);
+      }
+
+      setCurrentValue(clampedValue);
     },
-    [max, min, setCurrentValue],
+    [max, min, onChange, setCurrentValue],
   );
 
   /**
    * Calculates the `step` position based off of a `Mouse` or `Touch` event.
    */
   const calculateSteps = React.useCallback(
-    (ev): number => {
+    (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
       const size = currentBounds?.width || 0;
       const position = currentBounds?.left || 0;
@@ -104,7 +111,7 @@ export const useSliderState = (state: SliderState): SliderState => {
   );
 
   const onPointerMove = React.useCallback(
-    (ev): void => {
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
       if (snapToStep || step !== 1) {
         updateValue(ev, Math.round((min + step * calculateSteps(ev)) / step) * step);
       } else {
@@ -120,13 +127,13 @@ export const useSliderState = (state: SliderState): SliderState => {
   };
 
   const onPointerDown = React.useCallback(
-    (ev): void => {
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
       const { currentTarget, pointerId } = ev;
 
       onPointerDownCallback?.(ev);
 
-      if (currentTarget.setPointerCapture) {
-        currentTarget.setPointerCapture(pointerId);
+      if (currentTarget?.setPointerCapture) {
+        currentTarget?.setPointerCapture(pointerId);
       }
 
       disposables.current.push(
@@ -198,11 +205,9 @@ export const useSliderState = (state: SliderState): SliderState => {
 
   const valuePercent = getPercent(currentValue!, min, max);
 
-  const thumbStyles = {
-    transform: `translateX(${valuePercent}%)`,
-  };
+  const thumbStyles = { transform: `translateX(${valuePercent}%)`, ...state.thumb.style };
 
-  const trackStyles = { width: `${valuePercent}%` };
+  const trackStyles = { width: `${valuePercent}%`, ...state.track.style };
 
   // Root props
   state.as = as;

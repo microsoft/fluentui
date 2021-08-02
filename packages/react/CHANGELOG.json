@@ -2,6 +2,44 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react_v8.26.1",
+      "version": "8.26.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Temporarily reverting onPositioned bug fix.",
+            "author": "czearing@outlook.com",
+            "commit": "a122a999f7cd93d569870373a804ace33f082cf5",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "@fluentui/react_v8.26.0",
+      "version": "8.26.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing onPositioned bug in Callout component.",
+            "author": "czearing@outlook.com",
+            "commit": "7231aa6ff058dc82b1d570dfadb77212459f2758",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "[KeytipLayer] Pass triggering key sequence to onEnterKeytipMode callback",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Jul 2021 07:35:37 GMT",
       "tag": "@fluentui/react_v8.25.0",
       "version": "8.25.0",

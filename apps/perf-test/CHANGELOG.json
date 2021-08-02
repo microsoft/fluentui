@@ -2,6 +2,70 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.1",
+            "author": "czearing@outlook.com",
+            "commit": "a122a999f7cd93d569870373a804ace33f082cf5",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.136",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "01f28678ed1a89fb4d6985a4f0f06b8be658e536",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.62",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.66",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.60",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.0",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.135",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Jul 2021 07:35:37 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

@@ -5514,7 +5514,7 @@ export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer>
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
     keytipStartSequences?: IKeytipTransitionKey[];
-    onEnterKeytipMode?: () => void;
+    onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
     onExitKeytipMode?: (ev?: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>) => void;
     styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
