@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Temporarily reverting onPositioned bug fix.",
-  "packageName": "@fluentui/react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}
