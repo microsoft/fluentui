@@ -87,4 +87,4 @@ The following is a set of keys that interact with the `Link` component:
 
 | Key   | Description                          |
 | ----- | ------------------------------------ |
-| `tab` | Navigates beteween breadcrumb items. |
+| `tab` | Navigates between breadcrumb items. |

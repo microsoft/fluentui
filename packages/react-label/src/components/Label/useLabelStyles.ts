@@ -7,7 +7,6 @@ import { LabelState } from './Label.types';
 const useStyles = makeStyles({
   root: theme => ({
     fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[300],
     color: theme.alias.color.neutral.neutralForeground1,
   }),
 
@@ -17,20 +16,22 @@ const useStyles = makeStyles({
 
   required: theme => ({
     color: theme.alias.color.red.foreground3,
-    // TODO: Once spacing tokens are added, change this to Horizontal XS
-    paddingLeft: '4px',
+    paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
   }),
 
   small: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
+    lineHeight: theme.global.type.lineHeights.base[200],
   }),
 
   medium: theme => ({
     fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
   }),
 
   large: theme => ({
     fontSize: theme.global.type.fontSizes.base[400],
+    lineHeight: theme.global.type.lineHeights.base[400],
     fontWeight: theme.global.type.fontWeights.semibold,
   }),
 

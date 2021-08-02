@@ -1,8 +1,87 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jul 2021 07:35:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.1)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.0..@fluentui/web-components_v1.3.1)
+
+### Patches
+
+- fix border styles when control is active ([PR #19184](https://github.com/microsoft/fluentui/pull/19184) by corylaviska@microsoft.com)
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.0)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.3..@fluentui/web-components_v1.3.0)
+
+### Minor changes
+
+- feat(web-components): improve ergonomics of the fluent design system ([PR #19056](https://github.com/microsoft/fluentui/pull/19056) by roeisenb@microsoft.com)
+
+## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.3)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.2..@fluentui/web-components_v1.2.3)
+
+### Patches
+
+- remove incorrectly added component definition for toolbar ([PR #19087](https://github.com/microsoft/fluentui/pull/19087) by chhol@microsoft.com)
+
+## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.2)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.1..@fluentui/web-components_v1.2.2)
+
+### Patches
+
+- fluent-text-field: start/end display flex ([PR #18969](https://github.com/microsoft/fluentui/pull/18969) by fredrik.rasch@gmail.com)
+
+## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.1)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.0..@fluentui/web-components_v1.2.1)
+
+### Patches
+
+- fixe incorrect css selectors introduced by prettier formatting bug related to template literal interpolatin in css files ([PR #18982](https://github.com/microsoft/fluentui/pull/18982) by chhol@microsoft.com)
+- ensure component definitions are resolved and exported ([PR #18985](https://github.com/microsoft/fluentui/pull/18985) by chhol@microsoft.com)
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.0)
+
+Fri, 16 Jul 2021 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.1..@fluentui/web-components_v1.2.0)
+
+### Minor changes
+
+- add single export object for easily registering all Fluent UI web components ([PR #18962](https://github.com/microsoft/fluentui/pull/18962) by chhol@microsoft.com)
+- create and export web component definitions for use with Monaco editor tooling ([PR #18961](https://github.com/microsoft/fluentui/pull/18961) by chhol@microsoft.com)
+
+### Patches
+
+- Fixed ability to set palette base color on DSP ([PR #18958](https://github.com/microsoft/fluentui/pull/18958) by 47367562+bheston@users.noreply.github.com)
+
+## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.1)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.0..@fluentui/web-components_v1.1.1)
+
+### Patches
+
+- update fast-foundation version to fix design token typings ([PR #18948](https://github.com/microsoft/fluentui/pull/18948) by chhol@microsoft.com)
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.0)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.2..@fluentui/web-components_v1.1.0)
+
+### Minor changes
+
+- add attribute to recreate the accent palette using design system provider ([PR #18922](https://github.com/microsoft/fluentui/pull/18922) by chhol@microsoft.com)
+- Added attribute to allow easy update to the neutral palette ([PR #18910](https://github.com/microsoft/fluentui/pull/18910) by 47367562+bheston@users.noreply.github.com)
 
 ## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.2)
 

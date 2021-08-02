@@ -28,16 +28,14 @@ import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
 import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
 
+const COMPONENT_NAME = 'CalloutContentBase';
+
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
   [RectangleEdge.bottom]: AnimationClassNames.slideDownIn10,
   [RectangleEdge.left]: AnimationClassNames.slideLeftIn10,
   [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
 };
-
-const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
-  disableCaching: true, // disabling caching because stylesProp.position mutates often
-});
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
@@ -62,8 +60,12 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 } as const;
 
+const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
+  disableCaching: true, // disabling caching because stylesProp.position mutates often
+});
+
 /**
- * Returns a function to lazily fetch the bounds of the target element for the callout
+ * (Hook) to return a function to lazily fetch the bounds of the target element for the callout.
  */
 function useBounds(
   { bounds, minPagePadding = DEFAULT_PROPS.minPagePadding, target }: ICalloutProps,
@@ -90,6 +92,7 @@ function useBounds(
       }
       cachedBounds.current = currentBounds;
     }
+
     return cachedBounds.current;
   }, [bounds, minPagePadding, target, targetRef, targetWindow]);
 
@@ -97,7 +100,7 @@ function useBounds(
 }
 
 /**
- * Returns the maximum available height for the Callout to render into
+ * (Hook) to return the maximum available height for the Callout to render into.
  */
 function useMaxHeight(
   { beakWidth, coverTarget, directionalHint, directionalHintFixed, gapSpace, isBeakVisible, hidden }: ICalloutProps,
@@ -147,7 +150,8 @@ function useMaxHeight(
 }
 
 /**
- * Returns the height offset of the callout element and updates it each frame to approach the configured finalHeight
+ * (Hook) to return the height offset of the callout element and updates it each frame to approach the configured
+ * finalHeight.
  */
 function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
   const [heightOffset, setHeightOffset] = React.useState<number>(0);
@@ -188,8 +192,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
 }
 
 /**
- * Get the position information for the callout. If the callout does not fit in the given orientation,
- * a new position is calculated for the next frame, up to 5 attempts
+ * (Hook) to find the current position of Callout. If Callout is resized then a new position is calculated.
  */
 function usePositions(
   props: ICalloutProps,
@@ -221,7 +224,6 @@ function usePositions(
           const newPositions: ICalloutPositionedInfo = finalHeight
             ? positionCard(currentProps, hostElement.current, calloutElement.current, positions)
             : positionCallout(currentProps, hostElement.current, calloutElement.current, positions);
-
           // Set the new position only when the positions are not exists or one of the new callout positions
           // are different. The position should not change if the position is within 2 decimal places.
           if (
@@ -261,7 +263,7 @@ function usePositions(
 }
 
 /**
- * Hook to set up behavior to automatically focus the callout when it appears, if indicated by props.
+ * (Hook) to set up behavior to automatically focus the callout when it appears, if indicated by props.
  */
 function useAutoFocus(
   { hidden, setInitialFocus }: ICalloutProps,
@@ -283,7 +285,7 @@ function useAutoFocus(
 }
 
 /**
- * Hook to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
+ * (Hook) to set up various handlers to dismiss the popup when it loses focus or the window scrolls or similar cases.
  */
 function useDismissHandlers(
   {
@@ -420,8 +422,6 @@ function useDismissHandlers(
   return mouseDownHandlers;
 }
 
-const COMPONENT_NAME = 'CalloutContentBase';
-
 export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.memo(
   React.forwardRef<HTMLDivElement, ICalloutProps>((propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
@@ -484,10 +484,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     }
 
     const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
-    const contentMaxHeight: number | undefined =
-      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
-        ? calloutMaxHeight!
-        : getContentMaxHeight!;
+    const contentMaxHeight: number | undefined = calloutMaxHeight || getContentMaxHeight;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
@@ -505,8 +502,8 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
 
     const overflowStyle: React.CSSProperties = {
-      ...style,
       maxHeight: contentMaxHeight,
+      ...style,
       ...(overflowYHidden && { overflowY: 'hidden' }),
     };
 
@@ -527,17 +524,17 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
           {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
             {...getNativeProps(props, ARIA_ROLE_ATTRIBUTES)}
-            ariaLabel={ariaLabel}
-            onRestoreFocus={props.onRestoreFocus}
             ariaDescribedBy={ariaDescribedBy}
+            ariaLabel={ariaLabel}
             ariaLabelledBy={ariaLabelledBy}
             className={classNames.calloutMain}
             onDismiss={props.onDismiss}
+            onMouseDown={mouseDownOnPopup}
+            onMouseUp={mouseUpOnPopup}
+            onRestoreFocus={props.onRestoreFocus}
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
-            onMouseDown={mouseDownOnPopup}
-            onMouseUp={mouseUpOnPopup}
           >
             {children}
           </Popup>
@@ -552,12 +549,15 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       // Do not update when hidden.
       return true;
     }
-
     return shallowCompare(previousProps, nextProps);
   },
 );
-CalloutContentBase.displayName = COMPONENT_NAME;
 
+/**
+ * (Utility) to find and return the current `Callout` Beak position.
+ *
+ * @param positions
+ */
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPositionStyle: React.CSSProperties = {
     ...positions?.beakPosition?.elementPosition,
@@ -571,19 +571,33 @@ function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSPropertie
   return beakPositionStyle;
 }
 
-function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {
+/**
+ * (Utility) used to compare two different elementPositions to determine whether they are equal.
+ *
+ * @param prevElementPositions
+ * @param newElementPosition
+ */
+function arePositionsEqual(
+  prevElementPositions: ICalloutPositionedInfo,
+  newElementPosition: ICalloutPositionedInfo,
+): boolean {
   return (
-    comparePositions(positions.elementPosition, newPosition.elementPosition) &&
-    comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition)
+    comparePositions(prevElementPositions.elementPosition, newElementPosition.elementPosition) &&
+    comparePositions(prevElementPositions.beakPosition.elementPosition, newElementPosition.beakPosition.elementPosition)
   );
 }
 
-function comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
-  for (const key in newPositions) {
-    if (newPositions.hasOwnProperty(key)) {
-      const oldPositionEdge = oldPositions[key];
-      const newPositionEdge = newPositions[key];
-
+/**
+ * (Utility) used in **arePositionsEqual** to compare two different elementPositions.
+ *
+ * @param prevElementPositions
+ * @param newElementPositions
+ */
+function comparePositions(prevElementPositions: IPosition, newElementPositions: IPosition): boolean {
+  for (const key in newElementPositions) {
+    if (newElementPositions.hasOwnProperty(key)) {
+      const oldPositionEdge = prevElementPositions[key];
+      const newPositionEdge = newElementPositions[key];
       if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
         if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
           return false;
@@ -595,3 +609,5 @@ function comparePositions(oldPositions: IPosition, newPositions: IPosition): boo
   }
   return true;
 }
+
+CalloutContentBase.displayName = COMPONENT_NAME;

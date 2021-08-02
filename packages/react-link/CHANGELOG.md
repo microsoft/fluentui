@@ -1,8 +1,89 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 12 Jul 2021 07:33:23 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.64)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.63..@fluentui/react-link_v9.0.0-alpha.64)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.36 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.63)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.62..@fluentui/react-link_v9.0.0-alpha.63)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.46 ([PR #18968](https://github.com/microsoft/fluentui/pull/18968) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.62)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.61..@fluentui/react-link_v9.0.0-alpha.62)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.30 ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.61)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.60..@fluentui/react-link_v9.0.0-alpha.61)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.29 ([PR #19038](https://github.com/microsoft/fluentui/pull/19038) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.60)
+
+Tue, 20 Jul 2021 22:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.59..@fluentui/react-link_v9.0.0-alpha.60)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.28 ([PR #18998](https://github.com/microsoft/fluentui/pull/18998) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.59)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.58..@fluentui/react-link_v9.0.0-alpha.59)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.26 ([PR #18973](https://github.com/microsoft/fluentui/pull/18973) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.58)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.57..@fluentui/react-link_v9.0.0-alpha.58)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.33 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.57)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.56..@fluentui/react-link_v9.0.0-alpha.57)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.56)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.55..@fluentui/react-link_v9.0.0-alpha.56)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.24 ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.55)
 

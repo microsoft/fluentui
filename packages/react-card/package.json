@@ -18,13 +18,15 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start-test": "just-scripts jest-watch",
-    "start": "just-scripts dev:storybook",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start": "yarn storybook",
+    "test": "jest",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-card/src && yarn docs",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.2",
+    "@fluentui/react-conformance": "^0.4.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -39,9 +41,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.3",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.47",
-    "@fluentui/react-utilities": "^9.0.0-alpha.32",
-    "@fluentui/utilities": "^8.2.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.53",
+    "@fluentui/react-utilities": "^9.0.0-alpha.36",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -139,7 +139,7 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     openMenu(shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean): void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
@@ -280,7 +280,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -297,7 +297,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(oldProps: P, oldState: IBasePickerState): void;
+    componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -314,7 +314,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
-    // (undocumented)
+    // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
@@ -353,11 +353,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // (undocumented)
     refocusSuggestions: (keyCode: KeyCodes) => void;
     // (undocumented)
-    protected removeItem: (item: IPickerItemProps<T>, focusNextItem?: boolean | undefined) => void;
+    protected removeItem: (item: T) => void;
     // (undocumented)
     protected removeItems: (itemsToRemove: any[]) => void;
     // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
     protected renderItems(): JSX.Element[];
     // (undocumented)
@@ -384,7 +386,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void;
     // (undocumented)
     protected updateValue(updatedValue: string): void;
-    }
+}
 
 // @public (undocumented)
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
@@ -467,7 +469,7 @@ export class BreadcrumbBase extends React_2.Component<IBreadcrumbProps, any> {
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
@@ -583,7 +585,7 @@ export class ColorPickerBase extends React_2.Component<IColorPickerProps, IColor
     static defaultProps: Partial<IColorPickerProps>;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export const ColorPickerGridCell: React_2.FunctionComponent<IColorPickerGridCellProps>;
@@ -622,7 +624,7 @@ export class CommandBarBase extends React_2.Component<ICommandBarProps, {}> impl
     remeasure(): void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export class CommandBarButton extends React_2.Component<IButtonProps, {}> {
@@ -680,7 +682,7 @@ export class ContextualMenuItemBase extends React_2.Component<IContextualMenuIte
     openSubMenu: () => void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export enum ContextualMenuItemType {
@@ -780,7 +782,7 @@ export class DetailsColumnBase extends React_2.Component<IDetailsColumnProps> {
     componentWillUnmount(): void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export const DetailsHeader: React_2.FunctionComponent<IDetailsHeaderBaseProps>;
@@ -803,7 +805,7 @@ export class DetailsHeaderBase extends React_2.Component<IDetailsHeaderBaseProps
     focus(): boolean;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export const DetailsList: React_2.FunctionComponent<IDetailsListProps>;
@@ -839,7 +841,7 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     render(): JSX.Element;
     // (undocumented)
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
-    }
+}
 
 // @public (undocumented)
 export enum DetailsListLayoutMode {
@@ -870,7 +872,7 @@ export class DetailsRowBase extends React_2.Component<IDetailsRowBaseProps, IDet
     render(): JSX.Element;
     // (undocumented)
     shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean;
-    }
+}
 
 // @public (undocumented)
 export const DetailsRowCheck: React_2.FunctionComponent<IDetailsRowCheckProps>;
@@ -927,7 +929,7 @@ export class DialogFooterBase extends React_2.Component<IDialogFooterProps, {}> 
     constructor(props: IDialogFooterProps);
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export enum DialogType {
@@ -1124,7 +1126,7 @@ export class FacepileBase extends React_2.Component<IFacepileProps, {}> {
     protected onRenderAriaDescription(): "" | JSX.Element | undefined;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 export { FirstWeekOfYear }
 
@@ -1251,7 +1253,7 @@ export class GroupedListBase extends React_2.Component<IGroupedListProps, IGroup
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     toggleCollapseAll(allCollapsed: boolean): void;
-    }
+}
 
 // @public (undocumented)
 export class GroupedListSection extends React_2.Component<IGroupedListSectionProps, IGroupedListSectionState> {
@@ -1268,7 +1270,7 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
     forceUpdate(): void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
@@ -1311,7 +1313,7 @@ export class HoverCardBase extends React_2.Component<IHoverCardProps, IHoverCard
     dismiss: (withTimeOut?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export enum HoverCardType {
@@ -1589,11 +1591,12 @@ export interface IBasePickerProps<T> extends React_2.Props<any> {
     selectionAriaLabel?: string;
     selectionRole?: string;
     styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+    suggestionRemovedText?: string;
     theme?: ITheme;
 }
 
 // @public (undocumented)
-export interface IBasePickerState {
+export interface IBasePickerState<T> {
     // (undocumented)
     isFocused?: boolean;
     // (undocumented)
@@ -1608,6 +1611,8 @@ export interface IBasePickerState {
     moreSuggestionsAvailable?: boolean;
     // (undocumented)
     selectedIndices?: number[];
+    // (undocumented)
+    selectionRemoved?: T;
     // (undocumented)
     suggestedDisplayValue?: string;
     // (undocumented)
@@ -3951,6 +3956,7 @@ export interface IDetailsRowCheckProps extends React_2.HTMLAttributes<HTMLElemen
     isVisible?: boolean;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     selected?: boolean;
+    selectionMode?: SelectionMode_2;
     styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
     theme?: ITheme;
     useFastIcons?: boolean;
@@ -4918,6 +4924,7 @@ export interface IFacepileProps extends React_2.ClassAttributes<FacepileBase> {
     personas: IFacepilePersona[];
     personaSize?: PersonaSize;
     showAddButton?: boolean;
+    showTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;
     theme?: ITheme;
 }
@@ -5345,11 +5352,13 @@ export interface IHSV {
 // @public (undocumented)
 export interface IIconContent {
     // (undocumented)
-    children?: string;
+    children?: string | JSX.Element;
     // (undocumented)
     fontFamily?: string;
     // (undocumented)
     iconClassName?: string;
+    // (undocumented)
+    mergeImageProps?: boolean;
 }
 
 // @public (undocumented)
@@ -5505,7 +5514,7 @@ export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer>
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
     keytipStartSequences?: IKeytipTransitionKey[];
-    onEnterKeytipMode?: () => void;
+    onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
     onExitKeytipMode?: (ev?: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>) => void;
     styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
@@ -5792,7 +5801,6 @@ export interface IListState<T = any> {
 
 // @public (undocumented)
 const Image_2: React_2.FunctionComponent<IImageProps>;
-
 export { Image_2 as Image }
 
 // @public (undocumented)
@@ -8559,7 +8567,7 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     // (undocumented)
     render(): JSX.Element;
     showKeytips(ids: string[]): void;
-    }
+}
 
 // @public
 export class KeytipManager {
@@ -8671,7 +8679,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
-    }
+}
 
 // @public (undocumented)
 export const ListPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
@@ -8783,7 +8791,7 @@ export class NavBase extends React_2.Component<INavProps, INavState> implements 
     render(): JSX.Element | null;
     // (undocumented)
     get selectedKey(): string | undefined;
-    }
+}
 
 // @public (undocumented)
 export const NormalPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
@@ -8858,7 +8866,7 @@ export class PanelBase extends React_2.Component<IPanelProps, IPanelState> imple
     open(): void;
     // (undocumented)
     render(): JSX.Element | null;
-    }
+}
 
 // @public (undocumented)
 export enum PanelType {
@@ -9297,9 +9305,7 @@ enum SelectableOptionMenuItemType {
     // (undocumented)
     Normal = 0
 }
-
 export { SelectableOptionMenuItemType as DropdownMenuItemType }
-
 export { SelectableOptionMenuItemType }
 
 // @public (undocumented)
@@ -9347,7 +9353,7 @@ export class SelectionZone extends React_2.Component<ISelectionZoneProps, ISelec
     ignoreNextFocus: () => void;
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public (undocumented)
 export enum SemanticColorSlots {
@@ -9415,7 +9421,7 @@ export class ShimmeredDetailsListBase extends React_2.Component<IShimmeredDetail
     constructor(props: IShimmeredDetailsListProps);
     // (undocumented)
     render(): JSX.Element;
-    }
+}
 
 // @public
 export enum ShimmerElementsDefaultHeights {
@@ -9666,7 +9672,7 @@ export class SuggestionsControl<T> extends React_2.Component<ISuggestionsControl
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
     protected _suggestions: React_2.RefObject<SuggestionsCore<T>>;
-    }
+}
 
 // @public (undocumented)
 export class SuggestionsController<T> {
@@ -9732,7 +9738,7 @@ export class SuggestionsCore<T> extends React_2.Component<ISuggestionsCoreProps<
     protected _selectedElement: React_2.RefObject<HTMLDivElement>;
     // (undocumented)
     setSelectedSuggestion(index: number): void;
-    }
+}
 
 // @public (undocumented)
 export class SuggestionsHeaderFooterItem extends React_2.Component<ISuggestionsHeaderFooterItemProps, {}> {
@@ -9817,7 +9823,6 @@ export const TeachingBubbleContentBase: React_2.FunctionComponent<ITeachingBubbl
 
 // @public (undocumented)
 const Text_2: React_2.FunctionComponent<ITextProps>;
-
 export { Text_2 as Text }
 
 // @public (undocumented)
@@ -9850,7 +9855,7 @@ export class TextFieldBase extends React_2.Component<ITextFieldProps, ITextField
     setSelectionRange(start: number, end: number): void;
     setSelectionStart(value: number): void;
     get value(): string | undefined;
-    }
+}
 
 // @public (undocumented)
 export const TextStyles: ITextComponent['styles'];
@@ -9870,7 +9875,7 @@ export class ThemeGenerator {
     static getThemeForPowerShell(slotRules: IThemeRules): any;
     static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
-    }
+}
 
 // @public
 export const ThemeProvider: React_2.FunctionComponent<ThemeProviderProps>;
@@ -9932,7 +9937,7 @@ export class TooltipHostBase extends React_2.Component<ITooltipHostProps, IToolt
     render(): JSX.Element;
     // (undocumented)
     show: () => void;
-    }
+}
 
 // @public (undocumented)
 export enum TooltipOverflowMode {

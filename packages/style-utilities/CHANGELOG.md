@@ -1,8 +1,26 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jul 2021 07:35:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.2.1)
+
+Thu, 29 Jul 2021 07:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.2.0..@fluentui/style-utilities_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/theme to v2.2.0 ([PR #18028](https://github.com/microsoft/fluentui/pull/18028) by ashwin.gokhale98@gmail.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.2.0)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.1.5..@fluentui/style-utilities_v8.2.0)
+
+### Minor changes
+
+- Pass Icon 'title' as alt text for File Type Icons ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
 
 ## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.1.5)
 

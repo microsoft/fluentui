@@ -1,31 +1,35 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+
+export type InputSlots = {
+  /** The actual `<input>` element */
+  input: React.InputHTMLAttributes<HTMLInputElement>;
+  /**
+   * Wrapper element containing `insideStart`, `input`, and `insideEnd`. This is the element that
+   * visually appears to be the input and is used for borders, focus styling, etc.
+   */
+  inputWrapper: React.HTMLAttributes<HTMLElement>;
+  /** Element before the input field, visually separated from it */
+  bookendBefore: React.HTMLAttributes<HTMLElement>;
+  /** Element after the input field, visually separated from it */
+  bookendAfter: React.HTMLAttributes<HTMLElement>;
+  /** Element at the start of the input field, visually appearing to be inside of it */
+  insideStart: React.HTMLAttributes<HTMLElement>;
+  /** Element at the end of the input field, visually appearing to be inside of it */
+  insideEnd: React.HTMLAttributes<HTMLElement>;
+};
+
+export interface InputCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {}
 
 /**
  * Input Props
  */
-export interface InputProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the inputShorthandProps array below
-   * Any property that has a default value should be listed in InputDefaultedProps as e.g. 'size' | 'icon'
-   */
-}
-
-/**
- * Names of the shorthand properties in InputProps
- */
-export type InputShorthandProps = never; // TODO add shorthand property names
-
-/**
- * Names of InputProps that have a default value in useInput
- */
-export type InputDefaultedProps = never; // TODO add names of properties with default values
+export interface InputProps extends ComponentProps<Partial<InputSlots>>, Partial<InputCommons> {}
 
 /**
  * State used in rendering Input
  */
-export interface InputState extends ComponentStateCompat<InputProps, InputShorthandProps, InputDefaultedProps> {
+export interface InputState extends ComponentState<InputSlots>, InputCommons {
   /**
    * Ref to the root element
    */

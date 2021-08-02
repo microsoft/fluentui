@@ -11,5 +11,5 @@ import {
 console.log(Menu, MenuTrigger, MenuList, MenuItem, MenuItemCheckbox, MenuItemRadio, MenuPopover);
 
 export default {
-  name: 'Menu - Selectable',
+  name: 'Menu  (including selectable components)',
 };

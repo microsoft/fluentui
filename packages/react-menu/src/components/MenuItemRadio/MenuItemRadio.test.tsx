@@ -140,4 +140,19 @@ describe('MenuItemRadio', () => {
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
   });
+
+  it('should merge checkmark slot props', () => {
+    // Arrange
+    const className = 'foo';
+    const { container } = render(
+      <MenuItemRadio checkmark={{ className }} name="test" value="test">
+        Item
+      </MenuItemRadio>,
+    );
+
+    // Assert
+    const slot = container.querySelector(`.${className}`);
+    expect(slot).not.toBeNull();
+    expect(slot?.querySelector('svg')).not.toBeNull();
+  });
 });
