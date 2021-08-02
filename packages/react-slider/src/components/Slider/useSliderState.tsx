@@ -63,7 +63,7 @@ export const useSliderState = (state: SliderState): SliderState => {
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const id = useId('Slider', state.id);
+  const id = useId('slider-', state.id);
 
   /**
    * Updates the `currentValue` to the new `incomingValue` and clamps it.
