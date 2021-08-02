@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react-text';
 import { FluentProviderDecorator } from '../utilities/index';
 
-storiesOf('Text Converged', module)
+storiesOf('react-text Text', module)
   .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
@@ -111,7 +111,7 @@ storiesOf('Text Converged', module)
     </>
   ));
 
-storiesOf('Typography wrappers', module)
+storiesOf('react-text Typography wrappers', module)
   .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
