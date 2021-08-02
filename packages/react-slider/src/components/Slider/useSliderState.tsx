@@ -64,7 +64,7 @@ export const useSliderState = (state: SliderState): SliderState => {
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const onChangeCallback = React.useRef(onChange);
-  const id = useId('Slider', state.id);
+  const id = useId('slider-', state.id);
 
   /**
    * Updates the `currentValue` to the new `incomingValue` and clamps it.
@@ -197,6 +197,7 @@ export const useSliderState = (state: SliderState): SliderState => {
     }
   }, [currentValue, state.ref]);
 
+  // TODO: Investigate why this isn't updating the provided value
   useMount(() => {
     if (value !== undefined) {
       setCurrentValue(clamp(value, min, max));
