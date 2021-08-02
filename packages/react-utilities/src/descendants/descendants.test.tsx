@@ -31,7 +31,7 @@ describe('useDescendants', () => {
       );
     };
     const component = renderer.create(<ReverseTest />);
-    const [i0, i1, i2] = component.root.findAllByType(TestItem);
+    const [i0, i1, i2] = component.root.findAllByType(TestItem.type);
     const button = component.root.findByType('button');
     expect(i0.children.toString()).toBe('0');
     expect(i1.children.toString()).toBe('1');
@@ -56,7 +56,7 @@ describe('useDescendants', () => {
       );
     };
     const component = renderer.create(<AddTest />);
-    const [i0, i1, i2] = component.root.findAllByType(TestItem);
+    const [i0, i1, i2] = component.root.findAllByType(TestItem.type);
     const button = component.root.findByType('button');
     expect(i0.children.toString()).toBe('0');
     expect(i1.children.toString()).toBe('1');
@@ -64,7 +64,7 @@ describe('useDescendants', () => {
     renderer.act(() => {
       button.props.onClick();
     });
-    const [, , , i4] = component.root.findAllByType(TestItem);
+    const [, , , i4] = component.root.findAllByType(TestItem.type);
     expect(i0.children.toString()).toBe('0');
     expect(i1.children.toString()).toBe('1');
     expect(i2.children.toString()).toBe('2');
@@ -92,4 +92,4 @@ describe('useDescendants', () => {
   });
 });
 
-const TestItem: React.FC = () => <>{useIndex()}</>;
+const TestItem = React.memo(() => <>{useIndex()}</>);

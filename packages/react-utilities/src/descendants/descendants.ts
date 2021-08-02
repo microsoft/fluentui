@@ -2,14 +2,13 @@ import * as React from 'react';
 import { useId, useFirstMount, useIsomorphicLayoutEffect } from '../hooks/index';
 
 export type Descendant = { id: string; forceUpdate: () => void };
-export type Descendants = Record<string, Descendant>;
 export type SetDescendant = (descendant: Descendant) => number;
 
 export interface DescendantsContextValue {
   /**
    * A record of descendants that have been registered by their id
    */
-  descendants: Descendants;
+  descendants: Record<string, Descendant>;
   /**
    * add a descendant, if it hasn't been added before
    * @returns index of descendant
@@ -21,15 +20,14 @@ const DescendantsContext = React.createContext<DescendantsContextValue | undefin
 
 /**
  * hook to initialize descendants,
- * this hook ensures that although new descendants can be added,
- * no re-rendering will be triggered.
- * The only way to trigger a re-rendering is by updating the parent itself,
- * e.g: adding a new descendant, removing a descendant, re-ordering descendants, ...
+ * Adding descendants with setDescendant will not trigger re-renders.
+ * A component that wants to update its list of descendants should force
+ * itself to re-render to get the latest order of descendants
  * @returns the record of descendants and a function to add new descendants
  */
 export const useDescendants = () => {
   const isFirstMount = useFirstMount();
-  const descendants = React.useRef<Descendants>({});
+  const descendants = React.useRef<Record<string, Descendant>>({});
   const order = React.useRef<string[]>([]);
   const setDescendant = React.useCallback((descendant: Descendant) => {
     descendants.current[descendant.id] = descendant;
@@ -65,6 +63,5 @@ export const DescendantsProvider = DescendantsContext.Provider;
  * Forces a re-render, similar to `forceUpdate` in class components.
  */
 function useForceUpdate() {
-  return React.useReducer(() => ({}), {})[1]
-  }, []);
+  return React.useReducer(() => ({}), {})[1];
 }
