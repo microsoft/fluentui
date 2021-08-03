@@ -56,7 +56,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
 };
 
 const isPivotItem = (item: React.ReactNode): item is PivotItem => {
-  return ((item as React.ReactElement)?.type as React.ComponentType)?.name === PivotItem.name;
+  return !!item && ((item as React.ReactElement).type as React.ComponentType)?.name === PivotItem.name;
 };
 
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
