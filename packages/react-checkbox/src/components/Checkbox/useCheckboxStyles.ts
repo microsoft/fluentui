@@ -131,7 +131,6 @@ const useIndicatorStyles = makeStyles({
 
     ':hover': {
       borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
-      color: '#f1234',
     },
 
     ':active': {

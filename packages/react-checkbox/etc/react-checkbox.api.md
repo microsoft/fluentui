@@ -51,11 +51,11 @@ export interface CheckboxState extends ComponentState<CheckboxSlots>, CheckboxCo
     ref: React_2.Ref<HTMLElement>;
 }
 
-// @public
+// @public (undocumented)
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
 // @public
-export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CheckboxProps | undefined) => CheckboxState;
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>) => CheckboxState;
 
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
