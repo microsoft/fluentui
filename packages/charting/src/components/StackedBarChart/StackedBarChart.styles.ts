@@ -44,6 +44,12 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       cursor: href ? 'pointer' : 'default',
       stroke: theme.palette.white,
       strokeWidth: 2,
+      selectors: {
+        '&:focus': {
+          stroke: theme.palette.black,
+          strokeWidth: '2px',
+        },
+      },
     },
     ratioNumerator: {
       fontSize: FontSizes.small,
