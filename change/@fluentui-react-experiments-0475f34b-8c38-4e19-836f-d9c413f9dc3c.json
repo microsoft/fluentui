@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "FloatingSuggestionsComposite: Update target element type and add gap space prop",
+  "packageName": "@fluentui/react-experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch"
+}
