@@ -361,6 +361,9 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
+// @public
+export const useMount: (callback: () => void) => void;
+
 // @public (undocumented)
 export interface UseOnClickOrScrollOutsideOptions {
     callback: (ev: MouseEvent | TouchEvent) => void;
@@ -386,6 +389,9 @@ export function useSSRContext(): SSRContextValue;
 
 // @public
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+
+// @public
+export const useUnmount: (callback: () => void) => void;
 
 // @public
 export const videoProperties: Record<string, number>;
