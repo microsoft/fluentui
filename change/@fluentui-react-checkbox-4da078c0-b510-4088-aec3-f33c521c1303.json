@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactoring Checkbox, removing mergeProps, and fixing indicator styles.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
