@@ -50,7 +50,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Focus on the rendering performance and avoiding its degradation. They are currently covered by the [flamegrill](https://github.com/microsoft/Flamegrill) utility.
 
-- Bundle size
+- **Bundle size**
 
   Prevent regressions in the bundle size. Currently measured using our custom solution under `/packages/bundle-size`.
 
