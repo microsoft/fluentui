@@ -6,7 +6,7 @@ export type CheckboxSlots = {
   /**
    * Label that will be rendered next to the checkbox.
    */
-  label: LabelProps;
+  // label: LabelProps;
 
   /**
    * Hidden input that handles the checkbox's functionality.
@@ -19,7 +19,7 @@ export type CheckboxSlots = {
   indicator: React.HtmlHTMLAttributes<HTMLDivElement>;
 };
 
-export interface CheckboxCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
+export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
   /**
    * Disabled state of the checkbox.
    */
@@ -84,9 +84,7 @@ export interface CheckboxOnChangeData {
 /**
  * Checkbox Props
  */
-export interface CheckboxProps
-  extends Partial<Omit<ComponentProps<CheckboxSlots>, 'children'>>,
-    Partial<CheckboxCommons> {}
+export interface CheckboxProps extends ComponentProps<Partial<CheckboxSlots>>, Partial<CheckboxCommons> {}
 
 /**
  * State used in rendering Checkbox

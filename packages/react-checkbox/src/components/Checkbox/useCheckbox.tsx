@@ -5,6 +5,7 @@ import {
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { CheckboxProps, CheckboxState, CheckboxSlots } from './Checkbox.types';
@@ -13,7 +14,7 @@ import { DefaultCheckmarkIcon, DefaultMixedIcon } from './DefaultIcons';
 /**
  * Array of all shorthand properties listed as the keys of InputSlots
  */
-export const checkboxShorthandProps: (keyof CheckboxSlots)[] = ['label', 'indicator', 'input'];
+export const checkboxShorthandProps: (keyof CheckboxSlots)[] = ['indicator', 'input'];
 
 /**
  * Create the state required to render Checkbox.
@@ -24,27 +25,21 @@ export const checkboxShorthandProps: (keyof CheckboxSlots)[] = ['label', 'indica
  * @param props - props from this instance of Checkbox
  * @param ref - reference to root HTMLElement of Checkbox
  */
-export const useCheckbox = (
-  props: CheckboxProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CheckboxProps,
-): CheckboxState => {
+export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): CheckboxState => {
   const state: CheckboxState = {
-    ...props,
-
-    components: {
-      label: Label,
-      indicator: 'div',
-      input: 'input',
-    },
-
     ref,
-    as: 'div',
     id: useId('checkbox-'),
     size: 'medium',
     labelPosition: 'after',
 
-    label: resolveShorthand(props.label),
+    ...props,
+
+    components: {
+      root: props.children !== undefined ? Label : 'span',
+      indicator: 'div',
+      input: 'input',
+    },
+
     input: resolveShorthand(props.input, {
       type: 'checkbox',
       children: null,
@@ -66,31 +61,23 @@ export const useCheckbox = (
     },
     [state.onChange, setCheckedInternal],
   );
+
   state.input.checked = checked === true;
   state.checked = checked ? checked : false;
   state.indicator.children = checked === 'mixed' ? <DefaultMixedIcon /> : <DefaultCheckmarkIcon />;
 
   const userOnChange = state.input.onChange;
-  state.input.onChange = React.useCallback(
-    ev => {
-      userOnChange?.(ev);
-      setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
-    },
-    [userOnChange, setChecked],
-  );
+  state.input.onChange = useEventCallback(ev => {
+    userOnChange?.(ev);
+    setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
+  });
 
   if (state.disabled !== undefined) {
-    state.label.disabled = state.disabled;
     state.input.disabled = state.disabled;
   }
 
   if (state.required !== undefined) {
-    state.label.required = state.required;
     state.input.required = state.required;
-  }
-
-  if (!state.label.htmlFor) {
-    state.label.htmlFor = state.id;
   }
 
   state.input.id = state.id;

@@ -2,7 +2,7 @@
 
 exports[`Checkbox renders a default state 1`] = `
 <div>
-  <div
+  <label
     class=""
   >
     <div
@@ -27,13 +27,8 @@ exports[`Checkbox renders a default state 1`] = `
         type="checkbox"
       />
     </div>
-    <label
-      class=""
-      for="checkbox-1"
-    >
-      Default Checkbox
-    </label>
-  </div>
+    Default Checkbox
+  </label>
 </div>
 `;
 
@@ -42,7 +37,7 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <label
         class=""
       >
         <div
@@ -68,17 +63,12 @@ Object {
             type="checkbox"
           />
         </div>
-        <label
-          class=""
-          for="checkbox-1"
-        >
-          Default Checkbox
-        </label>
-      </div>
+        Default Checkbox
+      </label>
     </div>
   </body>,
   "container": <div>
-    <div
+    <label
       class=""
     >
       <div
@@ -104,13 +94,8 @@ Object {
           type="checkbox"
         />
       </div>
-      <label
-        class=""
-        for="checkbox-1"
-      >
-        Default Checkbox
-      </label>
-    </div>
+      Default Checkbox
+    </label>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -171,7 +156,7 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <label
         class=""
       >
         <div
@@ -182,7 +167,7 @@ Object {
           >
             <svg
               focusable="false"
-              viewBox="0 0 100 100"
+              viewBox="0 0 2048 2048"
               xmlns="http://www.w3.org/2000/svg"
             >
               <rect
@@ -197,17 +182,12 @@ Object {
             type="checkbox"
           />
         </div>
-        <label
-          class=""
-          for="checkbox-1"
-        >
-          Default Checkbox
-        </label>
-      </div>
+        Default Checkbox
+      </label>
     </div>
   </body>,
   "container": <div>
-    <div
+    <label
       class=""
     >
       <div
@@ -218,7 +198,7 @@ Object {
         >
           <svg
             focusable="false"
-            viewBox="0 0 100 100"
+            viewBox="0 0 2048 2048"
             xmlns="http://www.w3.org/2000/svg"
           >
             <rect
@@ -233,13 +213,8 @@ Object {
           type="checkbox"
         />
       </div>
-      <label
-        class=""
-        for="checkbox-1"
-      >
-        Default Checkbox
-      </label>
-    </div>
+      Default Checkbox
+    </label>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -300,7 +275,7 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <label
         class=""
       >
         <div
@@ -325,17 +300,12 @@ Object {
             type="checkbox"
           />
         </div>
-        <label
-          class=""
-          for="checkbox-1"
-        >
-          Default Checkbox
-        </label>
-      </div>
+        Default Checkbox
+      </label>
     </div>
   </body>,
   "container": <div>
-    <div
+    <label
       class=""
     >
       <div
@@ -360,13 +330,8 @@ Object {
           type="checkbox"
         />
       </div>
-      <label
-        class=""
-        for="checkbox-1"
-      >
-        Default Checkbox
-      </label>
-    </div>
+      Default Checkbox
+    </label>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

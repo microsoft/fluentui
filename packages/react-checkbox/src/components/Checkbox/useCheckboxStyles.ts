@@ -30,29 +30,13 @@ const useStyles = makeStyles({
   ),
 });
 
-const useInputStyle = makeStyles({
-  input: {
-    opacity: 0,
-    margin: 0,
-    padding: 0,
-    cursor: 'pointer',
-  },
-
-  disabled: {
-    cursor: 'default',
-  },
-});
-
 const useBoxStyles = makeStyles({
-  box: theme => ({
+  container: {
+    position: 'relative',
     display: 'flex',
-    flexShrink: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    boxSizing: 'border-box',
-    borderStyle: 'solid',
-    borderRadius: theme.global.borderRadius.small,
-  }),
+  },
 
   medium: {
     width: '16px',
@@ -73,6 +57,62 @@ const useBoxStyles = makeStyles({
   after: theme => ({
     marginRight: '12px',
   }),
+});
+
+const useInputStyles = makeStyles({
+  input: {
+    opacity: 0,
+    position: 'absolute',
+    margin: 0,
+    padding: 0,
+    cursor: 'pointer',
+  },
+
+  medium: {
+    width: '16px',
+    height: '16px',
+  },
+
+  large: {
+    width: '20px',
+    height: '20px',
+  },
+
+  disabled: {
+    cursor: 'default',
+  },
+});
+
+const useIndicatorStyles = makeStyles({
+  box: theme => ({
+    width: '100%',
+    height: '100%',
+    fill: 'currentColor',
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    boxSizing: 'border-box',
+    borderStyle: 'solid',
+    borderRadius: theme.global.borderRadius.small,
+  }),
+
+  // TODO: Remove fontSize once checkbox uses react-icons
+  medium: {
+    '> :first-child': {
+      width: '8px',
+      height: '8px',
+    },
+  },
+
+  // TODO: Remove fontSize once checkbox uses react-icons
+  large: {
+    '> :first-child': {
+      width: '10px',
+      height: '10px',
+    },
+  },
 
   circular: theme => ({
     borderRadius: theme.global.borderRadius.circular,
@@ -81,25 +121,34 @@ const useBoxStyles = makeStyles({
   disabled: theme => ({
     borderWidth: theme.global.strokeWidth.thin,
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 
   unchecked: theme => ({
     borderColor: theme.alias.color.neutral.neutralStrokeAccessible,
     borderWidth: theme.global.strokeWidth.thin,
+    color: 'transparent',
+
     ':hover': {
       borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+      color: '#f1234',
     },
+
     ':active': {
       borderColor: theme.alias.color.neutral.neutralStrokeAccessiblePressed,
     },
   }),
 
+  // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
   checked: theme => ({
     backgroundColor: theme.alias.color.neutral.compoundBrandBackground,
+    color: theme.alias.color.neutral.neutralForegroundInverted,
     borderWidth: 0,
+
     ':hover': {
       backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundHover,
     },
+
     ':active': {
       backgroundColor: theme.alias.color.neutral.compoundBrandBackgroundPressed,
     },
@@ -107,61 +156,16 @@ const useBoxStyles = makeStyles({
 
   mixed: theme => ({
     borderColor: theme.alias.color.neutral.compoundBrandStroke,
+    color: theme.alias.color.neutral.compoundBrandForeground1,
     borderWidth: theme.global.strokeWidth.thin,
+
     ':hover': {
       borderColor: theme.alias.color.neutral.compoundBrandStrokeHover,
-    },
-    ':active': {
-      borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
-    },
-  }),
-});
-
-const useIndicatorStyles = makeStyles({
-  indicator: {
-    position: 'absolute',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fill: 'currentColor',
-  },
-
-  // TODO: Remove fontSize once checkbox uses react-icons
-  medium: {
-    fontSize: '8px',
-    width: '8px',
-    height: '8px',
-  },
-
-  // TODO: Remove fontSize once checkbox uses react-icons
-  large: {
-    fontSize: '10px',
-    width: '10px',
-    height: '10px',
-  },
-
-  disabled: theme => ({
-    opacity: 1,
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-  }),
-
-  unchecked: {
-    opacity: 0,
-  },
-
-  // TODO: neutralForegroundInverted change to NeutralForegroundOnBrand once it's added
-  checked: theme => ({
-    opacity: 1,
-    color: theme.alias.color.neutral.neutralForegroundInverted,
-  }),
-
-  mixed: theme => ({
-    opacity: 1,
-    color: theme.alias.color.neutral.compoundBrandForeground1,
-    ':hover': {
       color: theme.alias.color.neutral.compoundBrandForeground1Hover,
     },
+
     ':active': {
+      borderColor: theme.alias.color.neutral.compoundBrandStrokePressed,
       color: theme.alias.color.neutral.compoundBrandForeground1Pressed,
     },
   }),
@@ -204,11 +208,18 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const checkedState = state.checked === 'mixed' ? 'mixed' : state.checked ? 'checked' : 'unchecked';
   const indicatorStyles = useIndicatorStyles();
   const labelStyles = useLabelStyles();
-  const inputStyles = useInputStyle();
+  const inputStyles = useInputStyles();
   const boxStyles = useBoxStyles();
   const styles = useStyles();
 
-  state.className = mergeClasses(styles.root, styles.focusIndictor, state.className);
+  state.className = mergeClasses(
+    styles.root,
+    styles.focusIndictor,
+    labelStyles.label,
+    !state.disabled && labelStyles[checkedState],
+    state.disabled && labelStyles.disabled,
+    state.className,
+  );
 
   state.input.className = mergeClasses(
     boxStyles[state.size],
@@ -218,26 +229,19 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   );
 
   state.checkboxClassName = mergeClasses(
-    boxStyles.box,
+    boxStyles.container,
     boxStyles[state.size],
-    !!state.label.children && boxStyles[state.labelPosition],
-    !state.disabled && boxStyles[checkedState],
-    state.disabled && boxStyles.disabled,
-    state.circular && boxStyles.circular,
+    !!state.children && boxStyles[state.labelPosition],
   );
 
   state.indicator.className = mergeClasses(
+    indicatorStyles.box,
+    boxStyles[state.size],
     indicatorStyles[state.size],
-    indicatorStyles.indicator,
-    state.disabled && indicatorStyles.disabled,
     !state.disabled && indicatorStyles[checkedState],
+    state.disabled && indicatorStyles.disabled,
+    state.circular && indicatorStyles.circular,
     state.indicator.className,
-  );
-
-  state.label.className = mergeClasses(
-    labelStyles.label,
-    !state.disabled && labelStyles[checkedState],
-    state.disabled && labelStyles.disabled,
   );
 
   return state;

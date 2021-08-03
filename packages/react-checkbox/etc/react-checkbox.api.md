@@ -13,7 +13,7 @@ import * as React_2 from 'react';
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface CheckboxCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
+export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
     checked?: 'mixed' | boolean;
     circular?: boolean;
     defaultChecked?: 'mixed' | boolean;
@@ -33,7 +33,7 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export interface CheckboxProps extends Partial<Omit<ComponentProps<CheckboxSlots>, 'children'>>, Partial<CheckboxCommons> {
+export interface CheckboxProps extends ComponentProps<Partial<CheckboxSlots>>, Partial<CheckboxCommons> {
 }
 
 // @public
@@ -41,7 +41,6 @@ export const checkboxShorthandProps: (keyof CheckboxSlots)[];
 
 // @public (undocumented)
 export type CheckboxSlots = {
-    label: LabelProps;
     input: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>;
     indicator: React_2.HtmlHTMLAttributes<HTMLDivElement>;
 };
