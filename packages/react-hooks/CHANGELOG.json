@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-hooks_v8.2.5",
+      "version": "8.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(useRefEffet): Make IE11 friendly",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "01f28678ed1a89fb4d6985a4f0f06b8be658e536",
+            "package": "@fluentui/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/react-hooks_v8.2.4",
       "version": "8.2.4",

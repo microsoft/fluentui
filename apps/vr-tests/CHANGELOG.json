@@ -2,6 +2,151 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.1",
+            "author": "czearing@outlook.com",
+            "commit": "a122a999f7cd93d569870373a804ace33f082cf5",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.136",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "01f28678ed1a89fb4d6985a4f0f06b8be658e536",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.58",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.62",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.66",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-card to v9.0.0-alpha.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.51",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.22",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.64",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.53",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.32",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.60",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.0",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.135",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.25.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "c0ef1a690b0e3a9b21da54540331a0a3be8108ef",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.134",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "vr-tests"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.63",
+            "author": "elcraig@microsoft.com",
+            "commit": "593c44a49aa586c376cf8cc9a695b9109bd5e608",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jul 2021 07:34:11 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

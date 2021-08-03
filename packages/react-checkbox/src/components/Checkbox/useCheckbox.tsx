@@ -90,7 +90,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
     if (inputRef.current) {
       inputRef.current.indeterminate = isMixed;
     }
-  }, [isMixed]);
+  }, [inputRef, isMixed]);
 
   return state;
 };

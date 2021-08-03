@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.60)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.59..@fluentui/react-provider_v9.0.0-alpha.60)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.29 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.59)
 
