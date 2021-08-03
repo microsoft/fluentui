@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Enable exhaustive-deps rule for useIsomorphicLayoutEffect",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

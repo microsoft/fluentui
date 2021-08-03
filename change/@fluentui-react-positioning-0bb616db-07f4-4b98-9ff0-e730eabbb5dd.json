@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix issues flagged by the exhaustive-deps rule in usePopper",
-  "packageName": "@fluentui/react-positioning",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
