@@ -161,6 +161,7 @@ The problem with this approach is that the shorthand signature now will carry wi
 ```ts
 export const CustomAccordionHeader = React.forwardRef<HTMLElement, AccordionHeaderProps>((props, ref) => {
   const state = useAccordionHeader(props, ref);
+  const iconName = React.useMemo(/* --- */);
 
   if (state.icon) {
     state.icon.onClick = () => {
@@ -169,6 +170,8 @@ export const CustomAccordionHeader = React.forwardRef<HTMLElement, AccordionHead
        * if this was a hook than it would need
        * to be declared before the conditional
        **/
+       // React hooks also cannot be used inside conditions
+       state.icon.name = iconName
     };
   }
 
