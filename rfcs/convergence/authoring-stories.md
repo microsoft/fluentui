@@ -306,23 +306,8 @@ Public stories should follow Fluent Design Language to give developers better fe
 
 #### story code should be useful
 
-Public stories should, only contain code, which is useful for users to see after clicking on “Show code” in documentation.
+Public stories should only contain code, which is useful for users to see after clicking on “Show code” in documentation.
 Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
-
-In cases when encapsulation via Decorator is not sufficient and the story needs to contain code which is not relevant to the user,
-visible code might be configured manually. However, since this will not work well together with live editing, it should be used sparingly.
-
-```tsx
-// DON’T DO THIS OFTEN
-export const ButtonPrimary = () => <span>irrelevant code</span>;
-ButtonPrimary.parameters = {
-  docs: {
-    source: {
-      code: 'relevant code',
-    },
-  },
-};
-```
 
 ### Pros and Cons
 
