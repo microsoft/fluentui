@@ -18,9 +18,9 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
   - [7. dissecting big story files into smaller ones](#7-dissecting-big-story-files-into-smaller-ones)
   - [8. location and naming convention](#8-location-and-naming-convention)
   - [9. UX of stories](#9-ux-of-stories)
-    - [default story](#default-story)
+    - [first story is called default](#first-story-is-called-default)
     - [appearence of stories](#appearence-of-stories)
-    - [story code must be useful](#story-code-must-be-useful)
+    - [story code should be useful](#story-code-should-be-useful)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
 - [Open Issues](#open-issues)
@@ -296,9 +296,9 @@ ButtonPrimary.storyName = 'Better story name';
 
 ### 9. UX of stories
 
-#### default story
+#### first story is called default
 
-The first story in every component must be called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls).
+The first story in every component must be called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). More details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one).
 
 #### appearence of stories
 
