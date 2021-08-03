@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 });
 
 export const BasicSliderExample = (props: SliderProps) => {
-  const [sliderValue, setSliderValue] = React.useState(-20);
+  const [sliderValue, setSliderValue] = React.useState(160);
   const sliderOnChange = (value: number) => setSliderValue(value);
 
   const styles = useStyles();

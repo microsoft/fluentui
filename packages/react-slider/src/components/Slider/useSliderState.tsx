@@ -73,7 +73,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
    * @param incomingValue
    */
   const updateValue = React.useCallback(
-    (ev, incomingValue: number): void => {
+    (incomingValue: number, ev): void => {
       const clampedValue = clamp(incomingValue, min, max);
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -113,9 +113,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       if (snapToStep || step !== 1) {
-        updateValue(ev, Math.round((min + step * calculateSteps(ev)) / step) * step);
+        updateValue(Math.round((min + step * calculateSteps(ev)) / step) * step, ev);
       } else {
-        updateValue(ev, min + step * calculateSteps(ev));
+        updateValue(min + step * calculateSteps(ev), ev);
       }
     },
     [calculateSteps, min, snapToStep, step, updateValue],
@@ -157,31 +157,31 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       if (ev.shiftKey) {
         if (key === ArrowDownKey || key === ArrowLeftKey) {
-          updateValue(ev, currentValue! - step * 10);
+          updateValue(currentValue! - step * 10, ev);
           return;
         } else if (key === ArrowUpKey || key === ArrowRightKey) {
-          updateValue(ev, currentValue! + step * 10);
+          updateValue(currentValue! + step * 10, ev);
           return;
         }
       } else if (key === ArrowDownKey || key === ArrowLeftKey) {
-        updateValue(ev, currentValue! - step);
+        updateValue(currentValue! - step, ev);
         return;
       } else if (key === ArrowUpKey || key === ArrowRightKey) {
-        updateValue(ev, currentValue! + step);
+        updateValue(currentValue! + step, ev);
         return;
       } else {
         switch (key) {
           case PageDownKey:
-            updateValue(ev, currentValue! - step * 10);
+            updateValue(currentValue! - step * 10, ev);
             break;
           case PageUpKey:
-            updateValue(ev, currentValue! + step * 10);
+            updateValue(currentValue! + step * 10, ev);
             break;
           case HomeKey:
-            updateValue(ev, min);
+            updateValue(min, ev);
             break;
           case EndKey:
-            updateValue(ev, max);
+            updateValue(max, ev);
             break;
         }
       }
@@ -196,10 +196,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     }
   }, [currentValue, state.ref]);
 
-  // TODO: Investigate why this isn't updating the provided value when using useControllableState
   useMount(() => {
-    if (value !== undefined) {
-      setCurrentValue(clamp(value, min, max));
+    // If the user passes an out of bounds controlled value, clamp and update their value.
+    if (value !== undefined && (value < min || value > max) && onChange && onChangeCallback.current) {
+      onChangeCallback.current(clamp(value, min, max));
     }
   });
 
