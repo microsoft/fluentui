@@ -8,7 +8,6 @@ import { ARIAButtonProps } from '@fluentui/react-aria';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
-import { Descendant } from '@fluentui/react-utilities';
 import { Descendants } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SetDescendant } from '@fluentui/react-utilities';
@@ -199,7 +198,7 @@ export function useAccordionContextValue({ navigable, openItems, requestToggle, 
     readonly openItems: number[];
     readonly requestToggle: AccordionToggleEventHandler;
 }, {
-    descendants: Record<string, Descendant>;
+    descendants: Descendants;
     setDescendant: SetDescendant;
 }];
 

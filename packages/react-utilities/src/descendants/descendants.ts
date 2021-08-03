@@ -54,6 +54,7 @@ export function useIndex() {
   const forceUpdate = useForceUpdate();
   const context = React.useContext(DescendantsContext);
   const [index, setIndex] = React.useState(-1);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useIsomorphicLayoutEffect(() => {
     if (context) {
       const nextIndex = context.setDescendant(forceUpdate);
