@@ -62,7 +62,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Prevent regressions in component styling. Covered currently with [Screener](https://screener.io/).
 
-- E2E
+- **E2E**
 
   Prevent regressions in user flows by testing interactions. We're currently using [Cypress](https://www.cypress.io/) for this.
 
