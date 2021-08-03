@@ -12,3 +12,4 @@ export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
 export * from './usePrevious';
 export * from './useTimeout';
+export * from './useUnmount';

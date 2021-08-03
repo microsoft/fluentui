@@ -391,6 +391,9 @@ export function useSSRContext(): SSRContextValue;
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 
 // @public
+export const useUnmount: (callback: () => void) => void;
+
+// @public
 export const videoProperties: Record<string, number>;
 
 // Warnings were encountered during analysis:
