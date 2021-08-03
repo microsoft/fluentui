@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '@fluentui/react/lib/Utilities';
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { SankeyChartBase } from './SankeyChart.base';
