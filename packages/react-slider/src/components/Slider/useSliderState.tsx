@@ -11,7 +11,7 @@ import {
   HomeKey,
   EndKey,
 } from '@fluentui/keyboard-key';
-import { SliderState } from './Slider.types';
+import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -39,7 +39,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
   return () => element.removeEventListener(eventName, callback);
 };
 
-export const useSliderState = (state: SliderState): SliderState => {
+export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | keyof SliderSlots | 'as' | 'ref'>) => {
   const {
     as = 'div',
     value,
@@ -197,7 +197,7 @@ export const useSliderState = (state: SliderState): SliderState => {
     }
   }, [currentValue, state.ref]);
 
-  // TODO: Investigate why this isn't updating the provided value
+  // TODO: Investigate why this isn't updating the provided value when using useControllableState
   useMount(() => {
     if (value !== undefined) {
       setCurrentValue(clamp(value, min, max));
@@ -217,11 +217,12 @@ export const useSliderState = (state: SliderState): SliderState => {
   state.id = id;
 
   // Rail Props
-  state.rail.className = 'ms-Slider-rail';
+  state.rail.children = null;
 
   // Track Props
   state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
+  state.track.children = null;
 
   // Thumb Props
   state.thumb.className = 'ms-Slider-thumb';
@@ -232,11 +233,12 @@ export const useSliderState = (state: SliderState): SliderState => {
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  state.thumb.children = null;
   state.thumb.style = thumbStyles;
 
   // Active Rail Props
-  state.activeRail.className = 'ms-Slider-activeRail';
   state.activeRail.ref = railRef;
+  state.activeRail.children = null;
 
   return state;
 };

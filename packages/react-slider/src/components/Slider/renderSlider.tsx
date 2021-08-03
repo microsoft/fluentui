@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { getSlotsCompat } from '@fluentui/react-utilities';
-import { SliderState } from './Slider.types';
+import { getSlots } from '@fluentui/react-utilities';
+import { SliderSlots, SliderState } from './Slider.types';
 import { sliderShorthandProps } from './useSlider';
 
 /**
  * Render the final JSX of Slider
  */
 export const renderSlider = (state: SliderState) => {
-  const { slots, slotProps } = getSlotsCompat(state, sliderShorthandProps);
+  const { slots, slotProps } = getSlots<SliderSlots>(state, sliderShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>

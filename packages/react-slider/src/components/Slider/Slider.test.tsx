@@ -26,7 +26,7 @@ describe('Slider', () => {
 
   it('handles (id) prop', () => {
     safeMount(<Slider id="test_id" />, component => {
-      expect(component.find('.ms-Slider-root').getDOMNode().id).toEqual('test_id');
+      expect(component.first().getDOMNode().id).toEqual('test_id');
     });
   });
 
@@ -97,7 +97,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -124,7 +124,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -156,7 +156,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -204,7 +204,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       sliderRoot.simulate('keydown', { which: KeyCodes.up });
 
@@ -223,7 +223,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       sliderRoot.simulate('keydown', { which: KeyCodes.up });
       sliderRoot.simulate('keydown', { which: KeyCodes.up });
@@ -244,7 +244,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       sliderRoot.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current?.value).toEqual(47);
@@ -261,7 +261,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       sliderRoot.simulate('keydown', { which: KeyCodes.up });
       expect(sliderRef.current?.value).toEqual(50.001);
@@ -270,7 +270,7 @@ describe('Slider', () => {
 
   it('handles (role) prop', () => {
     safeMount(<Slider role="test" />, component => {
-      const sliderRole = component.find('.ms-Slider-root').prop('role');
+      const sliderRole = component.first().prop('role');
 
       expect(sliderRole).toEqual('test');
     });
@@ -304,7 +304,7 @@ describe('Slider', () => {
 
   it('applies (aria-valuenow)', () => {
     safeMount(<Slider defaultValue={3} />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+      const sliderRoot = component.first();
 
       sliderRoot.simulate('keydown', { which: KeyCodes.right });
 
@@ -350,8 +350,8 @@ describe('Slider', () => {
   it('handles (onKeyDown) callback', () => {
     const eventHandler = jest.fn();
 
-    safeMount(<Slider role="test" onKeyDown={eventHandler} />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+    safeMount(<Slider onKeyDown={eventHandler} />, component => {
+      const sliderRoot = component.first();
 
       expect(eventHandler).toBeCalledTimes(0);
       sliderRoot.simulate('keydown', { which: KeyCodes.up });
@@ -362,8 +362,8 @@ describe('Slider', () => {
   it('handles (onPointerDown) callback', () => {
     const eventHandler = jest.fn();
 
-    safeMount(<Slider role="test" onPointerDown={eventHandler} />, component => {
-      const sliderRoot = component.find('.ms-Slider-root');
+    safeMount(<Slider onPointerDown={eventHandler} />, component => {
+      const sliderRoot = component.first();
 
       expect(eventHandler).toBeCalledTimes(0);
       sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });

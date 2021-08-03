@@ -4,10 +4,9 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
@@ -15,48 +14,46 @@ export const renderSlider: (state: SliderState) => JSX.Element;
 // @public
 export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public
-export type SliderDefaultedProps = 'rail' | 'track' | 'thumb' | 'activeRail';
-
-// @public
-export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
-    activeRail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
+// @public (undocumented)
+export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
     ariaValueText?: (value: number) => string;
-    as?: React_2.ElementType;
-    className?: string;
     defaultValue?: number;
     max?: number;
     min?: number;
     onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
-    rail?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     snapToStep?: boolean;
     step?: number;
-    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>>;
-    track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     value?: number;
 }
 
-// @public (undocumented)
+// @public
+export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {
+}
+
+// @public
 export interface SliderPublicRef {
-    // (undocumented)
     focus: () => void;
-    // (undocumented)
     value: number | undefined;
 }
 
 // @public
-export type SliderShorthandProps = 'rail' | 'track' | 'thumb' | 'activeRail';
+export const sliderShorthandProps: Array<keyof SliderSlots>;
 
 // @public
-export const sliderShorthandProps: SliderShorthandProps[];
+export type SliderSlots = {
+    rail: React_2.HTMLAttributes<HTMLElement>;
+    track: React_2.HTMLAttributes<HTMLElement>;
+    thumb: React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>;
+    activeRail: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
+};
 
 // @public
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
+export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
     ref: React_2.RefObject<HTMLElement & SliderPublicRef>;
 }
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.RefObject<HTMLElement & SliderPublicRef>, defaultProps?: SliderProps | undefined) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.RefObject<HTMLElement & SliderPublicRef>) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;

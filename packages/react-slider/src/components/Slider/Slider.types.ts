@@ -1,49 +1,47 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
+/**
+ * Slider ref
+ */
 export interface SliderPublicRef {
+  /**
+   * Gets the current value of the Slider.
+   */
   value: number | undefined;
+
+  /**
+   * Sets focus to the Slider's thumb.
+   */
   focus: () => void;
 }
 
 /**
- * Slider Props
+ * Names of the shorthand properties in SliderProps
  */
-export interface SliderProps
-  extends ComponentPropsCompat,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export type SliderSlots = {
   /**
    * The **Slider's** base. It is used to visibly display the min and max selectable values.
    */
-  rail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  rail: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The bar showing the current selected area adjacent to the **Slider's** thumb.
    */
-  track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  track: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The draggable icon used to select a given value from the **Slider**.
    */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
+  thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
 
   /**
    * The area in which the **Slider's** rail allows for the thumb to be dragged.
    */
-  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>>;
+  activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
+};
 
-  /**
-   * CSS class name to attach to the root element.
-   */
-  className?: string;
-
-  /**
-   * The root element type of this component.
-   *
-   * @default div
-   */
-  as?: React.ElementType;
-
+export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
    * The starting value for an `uncontrolled` **Slider**.
    * Mutually exclusive with `value` prop.
@@ -92,19 +90,14 @@ export interface SliderProps
 }
 
 /**
- * Names of the shorthand properties in SliderProps
+ * Slider Props
  */
-export type SliderShorthandProps = 'rail' | 'track' | 'thumb' | 'activeRail';
-
-/**
- * Names of SliderProps that have a default value in useSlider
- */
-export type SliderDefaultedProps = 'rail' | 'track' | 'thumb' | 'activeRail';
+export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {}
 
 /**
  * State used in rendering Slider
  */
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
+export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
   /**
    * Ref to the root element
    */
