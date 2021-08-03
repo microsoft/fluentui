@@ -45,7 +45,7 @@ Treating `root` as a slot means having to declare `root` _Typings_ together with
 
 > ⚠️ That doesn't mean `root` will be available in component's properties interface
 
-What we have right now:
+#### Before
 
 ```ts
 export type Slots = {
