@@ -388,14 +388,22 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [options.enabled, options.target]);
-  useIsomorphicLayoutEffect(() => {
-    if (!isFirstMount) {
-      popperInstanceRef.current?.setOptions(
-        resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
-      );
-    }
-  }, [resolvePopperOptions]);
+  }, [handlePopperUpdate, options.enabled, options.target]);
+  useIsomorphicLayoutEffect(
+    () => {
+      if (!isFirstMount) {
+        popperInstanceRef.current?.setOptions(
+          resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
+        );
+      }
+    },
+    // Missing deps:
+    // options.target - The useIsomorphicLayoutEffect before this will create a new popper instance if target changes
+    // isFirstMount - Should never change after mount
+    // arrowRef, containerRef, targetRef - Stable between renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [resolvePopperOptions],
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode

@@ -134,7 +134,12 @@ const config = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useIsomorphicLayoutEffect',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)

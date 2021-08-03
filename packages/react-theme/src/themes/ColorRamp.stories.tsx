@@ -6,7 +6,6 @@
 // @ts-nocheck
 
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { TinyColor } from '@ctrl/tinycolor';
 
@@ -35,6 +34,7 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
 
   cssVar.current = props.value?.match(/^var\((.+)\)$/)?.[1];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- intended to run every render
   useIsomorphicLayoutEffect(() => {
     const computedStyle = window.getComputedStyle(divRef.current);
     const elementColor = computedStyle.getPropertyValue('background-color');
