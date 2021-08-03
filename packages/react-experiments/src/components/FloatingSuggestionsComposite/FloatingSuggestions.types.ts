@@ -8,6 +8,7 @@ import {
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@fluentui/utilities';
 import { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import { Target } from '@fluentui/react-hooks';
 
 /**
  * FloatingSuggestions component props
@@ -67,7 +68,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Target element here callout should be mounted
    * Pass the element current value to position the callout
    */
-  targetElement: HTMLInputElement | undefined | null;
+  targetElement: HTMLInputElement | Target | undefined | null;
   /**
    * Callout width
    */
@@ -158,6 +159,12 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * A callback for when the floating suggestions are hidden (on dismiss or selection)
    */
   onSuggestionsHidden?: () => void;
+
+  /**
+   * Gap space for the callout
+   * Will be set to 5 if this prop is not set
+   */
+  gapSpace?: number;
 }
 
 export interface IBaseFloatingPickerHeaderFooterProps {

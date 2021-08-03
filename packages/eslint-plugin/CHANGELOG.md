@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.3)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.2..@fluentui/eslint-plugin_v1.3.3)
+
+### Patches
+
+- Enable exhaustive-deps rule for useIsomorphicLayoutEffect ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
 
 ## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.2)
 
