@@ -54,7 +54,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Prevent regressions in the bundle size. Currently measured using our custom solution under `/packages/bundle-size`.
 
-- Accessibility
+- **Accessibility**
 
   We do not automate accessibility testing as of the writing of this document.
 
