@@ -14,7 +14,7 @@ Main changes would be:
 2. Support references on every _slot_
 3. Supports Custom Elements on every _slot_
 4. Allows a restricted `as` prop on every slot
-5. stops using `getNativeElementProps` on every slot
+5. Stops using `getNativeElementProps` on every slot, will be used only for `root`
 
 ## Problem statement
 
