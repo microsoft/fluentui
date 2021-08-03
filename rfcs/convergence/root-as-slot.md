@@ -107,7 +107,7 @@ type ObjectShorthandProps<Props = {}, Ref = unknown, As extends keyof JSX.Intrin
 The case for `useARIAButton` is a good example of using this signature:
 
 ```ts
-export type ARIAButtonProps =
+export type ARIAButtonShorthandProps =
   | ObjectShorthandProps<JSX.IntrinsicElements['button'], HTMLButtonElement, /*as*/ 'button'>
   | ObjectShorthandProps<JSX.IntrinsicElements['div'], HTMLDivElement, /*as*/ 'div'>
   | ObjectShorthandProps<JSX.IntrinsicElements['span'], HTMLSpanElement, /*as*/ 'span'>
