@@ -33,7 +33,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   Stricly DOM structure consistency enforcing. This will guarantee we do not introduce breaking changes for users who expect a certain structure to be rendered by our components.
 
-  They are achieved with Jest's `expect(component).toMatchSnapshot()`.
+  They are achieved with Jest's `expect(component).toMatchInlineSnapshot(...)`. This is preferred over `.toMatchSnapshot` as it is immediately explicit what is expected from the test.
 
 - **Unit**
 
