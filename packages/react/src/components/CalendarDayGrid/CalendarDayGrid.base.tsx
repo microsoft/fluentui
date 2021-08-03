@@ -179,7 +179,7 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
             day.isSelected,
           );
 
-        let style = [];
+        const style = [];
         style.push(calculateRoundedStyles(classNames, above, below, left, right));
         style.push(calculateBorderStyles(classNames, above, below, left, right));
 
@@ -197,7 +197,7 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
     left: boolean,
     right: boolean,
   ): string => {
-    let style = [];
+    const style = [];
     const roundedTopLeft = !above && !left;
     const roundedTopRight = !above && !right;
     const roundedBottomLeft = !below && !left;
@@ -226,7 +226,7 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
     left: boolean,
     right: boolean,
   ): string => {
-    let style = [];
+    const style = [];
 
     if (!above) {
       style.push(classNames.datesAbove);
