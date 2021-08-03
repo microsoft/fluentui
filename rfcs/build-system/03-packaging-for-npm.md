@@ -146,7 +146,7 @@ total files:   250
 This approach significantly improves our current situation:
 
 - simpler `npmignore` configuration / better maintenance
-- only implementation is being shipped (no tests,stories)
+- only implementation is being shipped (no tests, stories)
 - **52% less files**
 - **21% smaller packed package size**
 
