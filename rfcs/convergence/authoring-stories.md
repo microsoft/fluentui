@@ -272,7 +272,7 @@ TBA
 
 ### 7. dissecting big story files into smaller ones
 
-Components with complex API require many long stories, both for documentation and for e2e testing. This creates long files with hundres of lines, which are hard to maintain. How can these files be dissected into smaller ones?
+Components with complex API require many long stories, both for documentation and for e2e testing. This creates big story files, which are hard to maintain. How can these files be dissected into smaller ones?
 
 **Proposal:**
 
