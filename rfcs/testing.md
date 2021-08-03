@@ -58,7 +58,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   We do not automate accessibility testing as of the writing of this document.
 
-- Visual Regression
+- **Visual Regression**
 
   Prevent regressions in component styling. Covered currently with [Screener](https://screener.io/).
 
