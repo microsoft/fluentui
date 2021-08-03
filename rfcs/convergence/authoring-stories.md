@@ -17,9 +17,10 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
   - [6. how to properly annotate stories with TS metadata to get the best DX possible](#6-how-to-properly-annotate-stories-with-ts-metadata-to-get-the-best-dx-possible)
   - [7. dissecting big story files into smaller ones](#7-dissecting-big-story-files-into-smaller-ones)
   - [8. location and naming convention](#8-location-and-naming-convention)
-  - [9. default story](#9-default-story)
-  - [10. design of stories](#10-design-of-stories)
-  - [11. story code must be useful](#11-story-code-must-be-useful)
+  - [9. UX of stories](#9-ux-of-stories)
+    - [default story](#default-story)
+    - [appearence of stories](#appearence-of-stories)
+    - [story code must be useful](#story-code-must-be-useful)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
 - [Open Issues](#open-issues)
@@ -293,17 +294,35 @@ ButtonPrimary.args = {
 ButtonPrimary.storyName = 'Better story name';
 ```
 
-### 9. default story
+### 9. UX of stories
 
-Every documented component must have a story called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). Ordering of stories will be set up, so this would be the first story in Storybook nav tree.
+#### default story
 
-### 10. design of stories
+The first story in every component must be called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls).
 
-Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when a button is necessary do demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
+#### appearence of stories
 
-### 11. story code must be useful
+Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when a button is necessary to demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
 
-Public stories should contain only code, which is useful for users to see after clicking on “Show code” in documentation. Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
+#### story code should be useful
+
+Public stories should, only contain code, which is useful for users to see after clicking on “Show code” in documentation.
+Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
+
+In cases when encapsulation via Decorator is not sufficient and the story needs to contain code which is not relevant to the user,
+visible code might be configured manually. However, since this will not work well together with live editing, it should be used sparingly.
+
+```tsx
+// DON’T DO THIS OFTEN
+export const ButtonPrimary = () => <span>irrelevant code</span>;
+ButtonPrimary.parameters = {
+  docs: {
+    source: {
+      code: 'relevant code',
+    },
+  },
+};
+```
 
 ### Pros and Cons
 
