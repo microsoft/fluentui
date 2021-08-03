@@ -132,7 +132,7 @@ const onChange = (ev: React.FormEvent, data: InputProps) => {
 - 👎 Mixing additional metadata about the change (such as index or virtualized selection information) runs the risk of overlapping on the parent's props (e.g. `index` prop of the parent vs `index` of the new selected item)
 - 👎 Slightly less efficient (copy all props over vs just set the `props` value)
 
-### Option C: stick with Northstar approach - second argument is the new value
+### Option C: stick with v7/v8 approach - second argument is the new value
 
 Example:
 
