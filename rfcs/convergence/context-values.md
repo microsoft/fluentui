@@ -6,7 +6,7 @@
 
 ## Summary
 
-This RFC affects converged components and proposes multiple options how to handle memoized context values for React Contexts.
+This RFC affects converged components and proposes multiple options detailing how to handle memoized context values for React Contexts.
 
 ## Background
 
@@ -24,7 +24,7 @@ function Baz(props) {
 }
 ```
 
-Currently few components (at least `Accordion`, `AccordionHeader`, `AccordionItem`) are defining a value for React Context on its state to use it in `render*` functions:
+Currently, a few components (at least `Accordion`, `AccordionHeader`, `AccordionItem`) are defining a value for React Context on its state to use it in `render*` functions:
 
 ```tsx
 // ⚠ simplified example
@@ -46,7 +46,7 @@ function useBazState(props) {
 }
 
 function renderBaz(state) {
-  // 👇 "value" is memoized, consumer components will not rerenders without need
+  // 👇 "value" is memoized, consumer components will not rerender without need
   return (
     <SampleContext.Provider value={state.contextValue}>
       <div />
@@ -62,7 +62,7 @@ The problem comes from multiple places:
 - (_design issue_) `contextValue` is not a part of `state`, it's useless from component's perspective
 - (_usage issue_) in a case of composition state mutations are not intuitive
 
-The last item is really serious problem as customers should be aware about our implementation details 🕵️‍
+The last item is a really serious problem as customers should be aware about our implementation details 🕵️‍
 
 ```tsx
 // 🛠 In this example I would like to override `size` based on a condition
