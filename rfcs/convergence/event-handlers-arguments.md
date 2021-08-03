@@ -42,8 +42,8 @@ We need to standardize event handlers across components and ensure that API is c
 ```tsx
 // ❌ Each component in this example has completely different signature for event handlers
 <>
-  <Menu onOpen={(ev: React.ClickEvent, newOpen: boolean) => {}} />
-  <Input onOpen={(ev: React.ClickEvent, data: { value: string }) => {}} />
+  <Checkbox onChange={(ev: React.FormEvent, newChecked: boolean) => {}} />
+  <Input onChange={(ev: React.FormEvent, data: { value: string }) => {}} />
 </>
 ```
 
@@ -92,15 +92,15 @@ const onChange = (ev: React.FormEvent, data: ChangeData<string, InputProps>) => 
 
 #### Pros
 
-👍 `value` is always predictable in the `value` prop
-👍 Parent component's current `props` are accessible and don't overlap other things in the `data` object
-👍 Future proof; data object is extendable without ever accidentally overriding a potentially needed prop `value`
-👍 Type safety is simple
+- 👍 `value` is always predictable in the `value` prop
+- 👍 Parent component's current `props` are accessible and don't overlap other things in the `data` object
+- 👍 Future proof; data object is extendable without ever accidentally overriding a potentially needed prop `value`
+- 👍 Type safety is simple
 
 #### Cons
 
-👎 `data.props.value` and `data.props.defaultValue` are accessible, leaving multiple ways to see value which might be confusing as they'll represent the current _props_ rather than the new value. But it _should be_ obvious that these are user inputs and not the new value. Could consider calling new value `newValue` to be clear, but that seems a bit unpredictable.
-👎 structure is deeply nested, for example `data.props.id`
+- 👎 `data.props.value` and `data.props.defaultValue` are accessible, leaving multiple ways to see value which might be confusing as they'll represent the current _props_ rather than the new value. But it _should be_ obvious that these are user inputs and not the new value. Could consider calling new value `newValue` to be clear, but that seems a bit unpredictable.
+- 👎 structure is deeply nested, for example `data.props.id`
 
 ### Option B: stick with Northstar approach - `data` is `{ ...props, value }`
 
@@ -124,13 +124,13 @@ const onChange = (ev: React.FormEvent, data: InputProps) => {
 
 #### Pros
 
-👍 Can access parent props mostly (unless it was overridden by some selection data)
-👍 One copy of `value` (`defaultValue` could still be there)
+- 👍 Can access parent props mostly (unless it was overridden by some selection data)
+- 👍 One copy of `value` (`defaultValue` could still be there)
 
 #### Cons
 
-👎 Mixing additional metadata about the change (such as index or virtualized selection information) runs the risk of overlapping on the parent's props (e.g. `index` prop of the parent vs `index` of the new selected item)
-👎 Slightly less efficient (copy all props over vs just set the `props` value)
+- 👎 Mixing additional metadata about the change (such as index or virtualized selection information) runs the risk of overlapping on the parent's props (e.g. `index` prop of the parent vs `index` of the new selected item)
+- 👎 Slightly less efficient (copy all props over vs just set the `props` value)
 
 ### Option C: stick with Northstar approach - second argument is the new value
 
@@ -155,10 +155,16 @@ const onChange = (ev: React.FormEvent, value: string) => {
 
 #### Pros
 
-👍 Main use case of getting new value is straightforward
-👍 No breaking changes with v7, less churn for customers
+- 👍 Main use case of getting new value is straightforward
+- 👍 No breaking changes with v7, less churn for customers
 
 #### Cons
 
-👎 Can't access `props` of parent component from callback, so to do things like sharing one callback implementation which maintains a form hash table requires accessing `ev.target.id` to know which component changed.
-👎 Adding additional information to the data like `index` or `key` is a breaking change.
+- 👎 Can't access `props` of parent component from callback, so to do things like sharing one callback implementation which maintains a form hash table requires accessing `ev.target.id` to know which component changed.
+- 👎 Adding additional information to the data like `index` or `key` is a breaking change. Infinitely expanding callback signatures (new optional params to avoid breaks) as new things are needed. For example, `/ComboBox/ComboBox.types.ts` in v8:
+
+```ts
+onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+```
+
+https://github.com/microsoft/fluentui/blob/16bf8194dc8df16b2e97f3021daf091f811bd0c3/packages/react/src/components/ComboBox/ComboBox.types.ts#L77
