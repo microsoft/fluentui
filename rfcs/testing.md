@@ -48,7 +48,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
 - **Performance**
 
-  Focus on the rendering performance and avoiding it's degradation. They are currently covered by the [flamegrill](https://github.com/microsoft/Flamegrill) utility.
+  Focus on the rendering performance and avoiding its degradation. They are currently covered by the [flamegrill](https://github.com/microsoft/Flamegrill) utility.
 
 - Bundle size
 
