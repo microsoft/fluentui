@@ -225,7 +225,10 @@ export const CustomSizes = () => (
 );
 
 const useRobotAvatarStyles = makeStyles({
-  root: { borderRadius: '0' },
+  root: {
+    background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+    borderRadius: '0',
+  },
   20: { width: '24px' },
   24: { width: '28px' },
   28: { width: '32px' },
@@ -239,10 +242,6 @@ const useRobotAvatarStyles = makeStyles({
   96: { width: '108px' },
   120: { width: '128px' },
   128: { width: '136px' },
-  label: {
-    background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-    borderRadius: '0',
-  },
 });
 
 const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
@@ -254,7 +253,6 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
   const styles = useRobotAvatarStyles();
 
   state.className = mergeClasses(styles.root, styles[state.size], state.className);
-  state.label.className = mergeClasses(styles.label, state.label.className);
 
   useAvatarStyles(state);
 

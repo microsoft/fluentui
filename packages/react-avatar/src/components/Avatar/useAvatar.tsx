@@ -15,7 +15,7 @@ import { PresenceBadge } from '@fluentui/react-badge';
 /**
  * Names of the shorthand properties in AvatarProps
  */
-export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[] = ['label', 'image', 'badge'];
+export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[] = ['label', 'image', 'badge', 'icon'];
 
 const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandPropsCompat });
 
@@ -24,6 +24,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     {
       as: 'span',
       label: { as: 'span' },
+      icon: { as: 'span' },
       size: 32,
       color: 'neutral',
       activeDisplay: 'ring',
@@ -34,7 +35,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     resolveAvatarShorthandPropsCompat(props),
   );
 
-  const { size, badge, label } = state;
+  const { size, badge, label, icon } = state;
 
   // If a label was not provided, use the initials and fall back to the icon if initials aren't available
   if (!label.children) {
@@ -42,22 +43,22 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     if (initials) {
       label.children = initials;
     } else {
-      if (!state.icon) {
+      state.showIcon = true;
+      if (!icon.children) {
         if (size <= 24) {
-          state.icon = <Person16Regular />;
+          icon.children = <Person16Regular />;
         } else if (size <= 40) {
-          state.icon = <Person20Regular />;
+          icon.children = <Person20Regular />;
         } else if (size <= 48) {
-          state.icon = <Person24Regular />;
+          icon.children = <Person24Regular />;
         } else if (size <= 56) {
-          state.icon = <Person28Regular />;
+          icon.children = <Person28Regular />;
         } else if (size <= 72) {
-          state.icon = <Person32Regular />;
+          icon.children = <Person32Regular />;
         } else {
-          state.icon = <Person48Regular />;
+          icon.children = <Person48Regular />;
         }
       }
-      label.children = state.icon;
     }
   }
 

@@ -58,6 +58,7 @@ const useStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     fontFamily: theme.global.type.fontFamilies.base,
     fontWeight: theme.global.type.fontWeights.semibold,
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.transparentStroke} inset`,
   }),
 
   textCaption2: theme => ({
@@ -170,7 +171,7 @@ const useStyles = makeStyles({
     verticalAlign: 'top',
   },
 
-  label: theme => ({
+  iconLabel: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -184,8 +185,7 @@ const useStyles = makeStyles({
     verticalAlign: 'center',
     textAlign: 'center',
     borderRadius: 'inherit',
-    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.transparentStroke} inset`,
-  }),
+  },
 });
 
 const useSizeStyles = makeStyles({
@@ -336,14 +336,15 @@ const useColorStyles = makeStyles({
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
-  const { size, square, color, active, activeDisplay } = state;
+  const { size, square, active, activeDisplay } = state;
+  // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
+  const color = state.color === 'colorful' ? 'darkRed' : state.color;
 
   const styles = useStyles();
-
-  const rootClasses = [styles.root];
-
   const sizeStyles = useSizeStyles();
-  rootClasses.push(sizeStyles[size]);
+  const colorStyles = useColorStyles();
+
+  const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2);
@@ -426,13 +427,13 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  const colorStyles = useColorStyles();
-  state.label.className = mergeClasses(
-    styles.label,
-    // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
-    colorStyles[color === 'colorful' ? 'darkRed' : color],
-    state.label.className,
-  );
+  if (state.label) {
+    state.label.className = mergeClasses(styles.iconLabel, state.label.className);
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(styles.iconLabel, state.icon.className);
+  }
 
   return state;
 };
