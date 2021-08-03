@@ -19,7 +19,7 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
   - [8. location and naming convention](#8-location-and-naming-convention)
   - [9. UX of stories](#9-ux-of-stories)
     - [first story is called default](#first-story-is-called-default)
-    - [appearence of stories](#appearence-of-stories)
+    - [appearance of stories](#appearance-of-stories)
     - [story code should be useful](#story-code-should-be-useful)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
