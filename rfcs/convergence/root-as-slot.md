@@ -122,7 +122,7 @@ export type ARIAButtonShorthandProps =
 
 The problem reported on [Widening Types](#⚠️-Widening-types-problem-⚠️), makes this a little bit controversial.
 
-Although types should be enough to ensure that only supported properties will be passed to a _slot_, [Widening Types problem](#⚠️-Widening-types-problem-⚠️) make it not so much true for `root` at least. Besides `root` is safe to say that `getNativeelementProps` is not necessary.
+Although types should be enough to ensure that only supported properties will be passed to a _slot_, [Widening Types problem](#⚠️-Widening-types-problem-⚠️) make it not so much true for `root` at least. Besides `root` is safe to say that `getNativeElementProps` is not necessary.
 
 ### Add references to all _slots_
 
