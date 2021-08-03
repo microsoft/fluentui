@@ -98,22 +98,6 @@ const useIndicatorStyles = makeStyles({
     borderRadius: theme.global.borderRadius.small,
   }),
 
-  // TODO: Remove fontSize once checkbox uses react-icons
-  medium: {
-    '> :first-child': {
-      width: '8px',
-      height: '8px',
-    },
-  },
-
-  // TODO: Remove fontSize once checkbox uses react-icons
-  large: {
-    '> :first-child': {
-      width: '10px',
-      height: '10px',
-    },
-  },
-
   circular: theme => ({
     borderRadius: theme.global.borderRadius.circular,
   }),
@@ -236,7 +220,6 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   state.indicator.className = mergeClasses(
     indicatorStyles.box,
     boxStyles[state.size],
-    indicatorStyles[state.size],
     !state.disabled && indicatorStyles[checkedState],
     state.disabled && indicatorStyles.disabled,
     state.circular && indicatorStyles.circular,

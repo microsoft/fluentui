@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { CheckboxProps, CheckboxState, CheckboxSlots } from './Checkbox.types';
-import { DefaultCheckmarkIcon, DefaultMixedIcon } from './DefaultIcons';
+import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
 
 /**
  * Array of all shorthand properties listed as the keys of InputSlots
@@ -64,7 +64,12 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
 
   state.input.checked = checked === true;
   state.checked = checked ? checked : false;
-  state.indicator.children = checked === 'mixed' ? <DefaultMixedIcon /> : <DefaultCheckmarkIcon />;
+
+  if (state.size === 'medium') {
+    state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
+  } else {
+    state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
+  }
 
   const userOnChange = state.input.onChange;
   state.input.onChange = useEventCallback(ev => {
