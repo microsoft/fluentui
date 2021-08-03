@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(useOnClickOutside): Handle clicks into an iframe",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 30 Jul 2021 07:35:22 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Aug 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.20)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.19..@fluentui/react-charting_v5.3.20)
+
+### Patches
+
+- Added role as a link for overflow legends message, so it will read like 7 more link collapsed ([PR #19199](https://github.com/microsoft/fluentui/pull/19199) by v-scharde@microsoft.com)
+- Border will be visible on rect focus ([PR #19202](https://github.com/microsoft/fluentui/pull/19202) by v-scharde@microsoft.com)
+- callout issue resolved by adding preventDismissOnLostFocus prop to callout props ([PR #19178](https://github.com/microsoft/fluentui/pull/19178) by v-scharde@microsoft.com)
+- Accessibility change for Vertical Bar chart ([PR #19074](https://github.com/microsoft/fluentui/pull/19074) by v-scharde@microsoft.com)
 
 ## [5.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.19)
 
