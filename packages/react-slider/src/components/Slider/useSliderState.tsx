@@ -192,8 +192,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   React.useEffect(() => {
     if (state.ref && state.ref.current) {
       state.ref.current.value = currentValue;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      state.ref.current.focus = thumbRef?.current?.focus() as any;
+      state.ref.current.focus = () => thumbRef?.current?.focus();
     }
   }, [currentValue, state.ref]);
 

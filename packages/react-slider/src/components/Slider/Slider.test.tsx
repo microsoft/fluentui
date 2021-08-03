@@ -24,6 +24,24 @@ describe('Slider', () => {
     });
   });
 
+  // TODO: Find why focus is null.
+  // it('renders (focus) correctly', () => {
+  //   let sliderRef: any;
+
+  //   const SliderTestComponent = () => {
+  //     sliderRef = React.useRef(null);
+
+  //     return <Slider defaultValue={3} ref={sliderRef} />;
+  //   };
+
+  //   safeCreate(<SliderTestComponent />, component => {
+  //     sliderRef.current.focus();
+
+  //     const tree = component.toJSON();
+  //     expect(tree).toMatchSnapshot();
+  //   });
+  // });
+
   it('handles (id) prop', () => {
     safeMount(<Slider id="test_id" />, component => {
       expect(component.first().getDOMNode().id).toEqual('test_id');
@@ -340,7 +358,7 @@ describe('Slider', () => {
 
     safeMount(<SliderTestComponent />, component => {
       const sliderRoot = component.find({ role: 'slider' }).getDOMNode();
-      sliderRef.current.focus;
+      sliderRef.current.focus();
       expect(document.activeElement).toEqual(sliderRoot);
     });
   });
