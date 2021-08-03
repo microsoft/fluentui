@@ -1628,10 +1628,10 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-icons@^1.1.135":
-  version "1.1.135"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-1.1.135.tgz#f37b41e6ec345fb81b4ed530b89782ad54f8e1e8"
-  integrity sha512-Gs1GeUjK05WMvhLjBTM5mk/9Mo5yQ706/EYhwGPzGdXbKiEvQ/JwJEYmCRsJoo4062w5ksDiUpUCGW3LSpm5oA==
+"@fluentui/react-icons@^1.1.136":
+  version "1.1.136"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-1.1.136.tgz#1e7aeb4911bb0a9a89e73dd4291c8ba14fb2eee5"
+  integrity sha512-bnkhaoDTqYhAm37NRCZpD/Mwn01i9R8ISesgqLyJ3Yo2pOJ+MtUafErCnmcRjaItQyQHWUrOAyFn16WnI7lFnw==
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
