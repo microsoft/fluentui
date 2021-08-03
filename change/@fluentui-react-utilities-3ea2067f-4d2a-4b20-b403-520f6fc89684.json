@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Copying useMount and useUnmount hooks into the react-utilities package.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}
