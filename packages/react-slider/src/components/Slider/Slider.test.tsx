@@ -278,15 +278,13 @@ describe('Slider', () => {
 
   it('applies Slider (role) to thumb', () => {
     safeMount(<Slider />, component => {
-      const thumbRole = component.find('.ms-Slider-thumb').prop('role');
-
-      expect(thumbRole).toEqual('slider');
+      expect(component.find({ role: 'slider' })).toBeTruthy();
     });
   });
 
-  it('applies (aria-valuetext)', () => {
+  it('applies (aria-valuetext) to the thumb', () => {
     safeMount(<Slider />, component => {
-      const sliderThumb = component.find('.ms-Slider-thumb').prop('aria-valuetext');
+      const sliderThumb = component.find({ role: 'slider' }).prop('aria-valuetext');
 
       expect(sliderThumb).toEqual('0');
     });
@@ -296,38 +294,38 @@ describe('Slider', () => {
     const getTextValue = (value: number) => values[value];
 
     safeMount(<Slider value={selected} ariaValueText={getTextValue} />, component => {
-      const sliderThumb = component.find('.ms-Slider-thumb').prop('aria-valuetext');
+      const sliderThumb = component.find({ role: 'slider' }).prop('aria-valuetext');
 
       expect(sliderThumb).toEqual(values[selected]);
     });
   });
 
-  it('applies (aria-valuenow)', () => {
+  it('applies (aria-valuenow) to the thumb', () => {
     safeMount(<Slider defaultValue={3} />, component => {
       const sliderRoot = component.first();
 
       sliderRoot.simulate('keydown', { which: KeyCodes.right });
 
-      expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(4);
+      expect(component.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(4);
 
       sliderRoot.getDOMNode().getBoundingClientRect = () =>
         ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
       sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
 
-      expect(component.find('.ms-Slider-thumb').prop('aria-valuenow')).toEqual(10);
+      expect(component.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(10);
     });
   });
 
-  it('applies (aria-valuemax)', () => {
+  it('applies (aria-valuemax) to the thumb', () => {
     safeMount(<Slider max={3} />, component => {
-      expect(component.find('.ms-Slider-thumb').prop('aria-valuemax')).toEqual(3);
+      expect(component.find({ role: 'slider' }).prop('aria-valuemax')).toEqual(3);
     });
   });
 
-  it('applies (aria-valuemin)', () => {
+  it('applies (aria-valuemin) to the thumb', () => {
     safeMount(<Slider min={-1} />, component => {
-      expect(component.find('.ms-Slider-thumb').prop('aria-valuemin')).toEqual(-1);
+      expect(component.find({ role: 'slider' }).prop('aria-valuemin')).toEqual(-1);
     });
   });
 
@@ -341,7 +339,7 @@ describe('Slider', () => {
     };
 
     safeMount(<SliderTestComponent />, component => {
-      const sliderRoot = component.find('.ms-Slider-thumb').getDOMNode();
+      const sliderRoot = component.find({ role: 'slider' }).getDOMNode();
       sliderRef.current.focus;
       expect(document.activeElement).toEqual(sliderRoot);
     });
