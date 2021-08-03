@@ -82,8 +82,6 @@ export const zIndexes: Record<string, number> = {
 //
 export const bodyPadding = 0;
 export const bodyMargin = 0;
-export const bodyFontFamily =
-  '-apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Web", Apple Color Emoji", "Segoe UI Emoji", "sans-serif';
 export const bodyFontSize = fontSizes.medium;
 export const bodyBackground = colors.white;
 export const bodyColor = colors.grey[750];
