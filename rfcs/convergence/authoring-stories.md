@@ -276,14 +276,14 @@ Components with complex API require many long stories, both for documentation an
 
 **Proposal:**
 
-1. Every component can have at most one `.stories.tsx` file. This file has a default export with Storybook configuration for the docs page.
-2. If putting all stories into one file would make it too long, individual stories might be put into `.story.tsx` files as a named export, and then re-exported from `.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.story’;`
+1. Every component can have at most one `.stories.tsx` file with default export which configures metadata about the component. This file must be called `Component.stories.tsx`, for example `Button.stories.tsx`.
+2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
 3. If individual story files are employed, `.stories.tsx` file must not contain any stories.
 
 ### 8. location and naming convention
 
 1. Story files should be in the same folder as the component which they are targeting.
-2. Name of every .stories.tsx / .story.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation, like this:
+2. Name of every .stories.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation, like this:
 
 ```tsx
 export const ButtonPrimary = (props: ButtonProps) => <Button {...props}>Text</Button>;
