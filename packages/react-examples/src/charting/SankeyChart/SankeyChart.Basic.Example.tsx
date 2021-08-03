@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { IChartProps, ISankeyChartProps, SankeyChart } from '@uifabric/charting';
 
-interface ILineChartBasicState {
+interface ISankeyChartBasicState {
   width: number;
   height: number;
 }
 
-export class SankeyChartBasicExample extends React.Component<{}, ILineChartBasicState> {
+export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBasicState> {
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
