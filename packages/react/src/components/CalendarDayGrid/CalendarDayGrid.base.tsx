@@ -179,10 +179,11 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
             day.isSelected,
           );
 
-        let style = calculateRoundedStyles(classNames, above, below, left, right);
-        style = style.concat(calculateBorderStyles(classNames, above, below, left, right));
+        let style = [];
+        style.push(calculateRoundedStyles(classNames, above, below, left, right));
+        style.push(calculateBorderStyles(classNames, above, below, left, right));
 
-        weekCornersStyled[weekIndex + '_' + dayIndex] = style;
+        weekCornersStyled[weekIndex + '_' + dayIndex] = style.join(' ');
       });
     });
 
@@ -196,34 +197,26 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
     left: boolean,
     right: boolean,
   ): string => {
-    let style = '';
+    let style = [];
     const roundedTopLeft = !above && !left;
     const roundedTopRight = !above && !right;
     const roundedBottomLeft = !below && !left;
     const roundedBottomRight = !below && !right;
 
     if (roundedTopLeft) {
-      style = getRTL()
-        ? style.concat(classNames.topRightCornerDate + ' ')
-        : style.concat(classNames.topLeftCornerDate + ' ');
+      style.push(getRTL() ? classNames.topRightCornerDate : classNames.topLeftCornerDate);
     }
     if (roundedTopRight) {
-      style = getRTL()
-        ? style.concat(classNames.topLeftCornerDate + ' ')
-        : style.concat(classNames.topRightCornerDate + ' ');
+      style.push(getRTL() ? classNames.topLeftCornerDate : classNames.topRightCornerDate);
     }
     if (roundedBottomLeft) {
-      style = getRTL()
-        ? style.concat(classNames.bottomRightCornerDate + ' ')
-        : style.concat(classNames.bottomLeftCornerDate + ' ');
+      style.push(getRTL() ? classNames.bottomRightCornerDate : classNames.bottomLeftCornerDate);
     }
     if (roundedBottomRight) {
-      style = getRTL()
-        ? style.concat(classNames.bottomLeftCornerDate + ' ')
-        : style.concat(classNames.bottomRightCornerDate + ' ');
+      style.push(getRTL() ? classNames.bottomLeftCornerDate : classNames.bottomRightCornerDate);
     }
 
-    return style;
+    return style.join(' ');
   };
 
   const calculateBorderStyles = (
@@ -233,22 +226,22 @@ function useWeekCornerStyles(props: ICalendarDayGridProps) {
     left: boolean,
     right: boolean,
   ): string => {
-    let style = '';
+    let style = [];
 
-    if (above) {
-      style = style.concat(classNames.datesAbove + ' ');
+    if (!above) {
+      style.push(classNames.datesAbove);
     }
-    if (below) {
-      style = style.concat(classNames.datesBelow + ' ');
+    if (!below) {
+      style.push(classNames.datesBelow);
     }
-    if (left) {
-      style = getRTL() ? style.concat(classNames.datesRight + ' ') : style.concat(classNames.datesLeft + ' ');
+    if (!left) {
+      style.push(getRTL() ? classNames.datesRight : classNames.datesLeft);
     }
-    if (right) {
-      style = getRTL() ? style.concat(classNames.datesLeft + ' ') : style.concat(classNames.datesRight + ' ');
+    if (!right) {
+      style.push(getRTL() ? classNames.datesLeft : classNames.datesRight);
     }
 
-    return style;
+    return style.join(' ');
   };
 
   const isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {

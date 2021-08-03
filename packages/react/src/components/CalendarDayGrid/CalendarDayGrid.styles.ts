@@ -150,14 +150,13 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.neutralLight + '!important',
         selectors: {
-          ['&:after']: {
+          '&:after': {
             content: '""',
             position: 'absolute',
             top: 0,
             bottom: 0,
             left: 0,
             right: 0,
-            border: `1px solid ${palette.neutralSecondary}`,
           },
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
@@ -296,23 +295,23 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       borderBottomLeftRadius: '2px',
     },
     datesAbove: {
-      ['&:after']: {
-        borderTop: 'none!important',
+      '&:after': {
+        borderTop: `1px solid ${palette.neutralSecondary}`,
       },
     },
     datesBelow: {
-      ['&:after']: {
-        borderBottom: 'none!important',
+      '&:after': {
+        borderBottom: `1px solid ${palette.neutralSecondary}`,
       },
     },
     datesLeft: {
-      ['&:after']: {
-        borderLeft: 'none!important',
+      '&:after': {
+        borderLeft: `1px solid ${palette.neutralSecondary}`,
       },
     },
     datesRight: {
-      ['&:after']: {
-        borderRight: 'none!important',
+      '&:after': {
+        borderRight: `1px solid ${palette.neutralSecondary}`,
       },
     },
   };

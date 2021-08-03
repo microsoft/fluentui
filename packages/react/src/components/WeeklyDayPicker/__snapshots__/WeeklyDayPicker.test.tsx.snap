@@ -1390,7 +1390,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
         >
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1448,6 +1448,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1519,7 +1531,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1577,6 +1589,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1648,7 +1672,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1706,6 +1730,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1777,7 +1813,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1835,6 +1871,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -1906,7 +1954,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -1966,11 +2013,22 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   background-color: #edebe9!important;
                 }
                 &:after {
-                  border: 1px solid #605e5c;
                   bottom: 0px;
                   content: "";
                   left: 0px;
@@ -2088,7 +2146,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2146,6 +2204,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -2213,7 +2283,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2271,6 +2341,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -4602,7 +4684,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
         >
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4660,6 +4742,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -4731,7 +4825,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4789,6 +4883,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
                 {
                   color: #605e5c;
@@ -4860,7 +4966,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -4920,11 +5025,22 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 {
                   border-bottom-right-radius: 2px;
                 }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
+                }
                 {
                   background-color: #edebe9!important;
                 }
                 &:after {
-                  border: 1px solid #605e5c;
                   bottom: 0px;
                   content: "";
                   left: 0px;
@@ -5042,7 +5158,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5100,6 +5216,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -5167,7 +5295,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5225,6 +5353,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -5292,7 +5432,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5350,6 +5490,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -5417,7 +5569,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             className=
-                
+
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5475,6 +5627,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   border-bottom-right-radius: 2px;
+                }
+                &:after {
+                  border-top: 1px solid #605e5c;
+                }
+                &:after {
+                  border-bottom: 1px solid #605e5c;
+                }
+                &:after {
+                  border-left: 1px solid #605e5c;
+                }
+                &:after {
+                  border-right: 1px solid #605e5c;
                 }
             onClick={[Function]}
             onMouseDown={[Function]}
