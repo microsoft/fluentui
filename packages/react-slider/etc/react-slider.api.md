@@ -43,6 +43,7 @@ export const sliderShorthandProps: Array<keyof SliderSlots>;
 export type SliderSlots = {
     rail: React_2.HTMLAttributes<HTMLElement>;
     track: React_2.HTMLAttributes<HTMLElement>;
+    thumbWrapper: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
     thumb: React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>;
     activeRail: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
 };

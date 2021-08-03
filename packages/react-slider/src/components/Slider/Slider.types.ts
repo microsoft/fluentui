@@ -31,6 +31,11 @@ export type SliderSlots = {
   track: React.HTMLAttributes<HTMLElement>;
 
   /**
+   * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
+   */
+  thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
+
+  /**
    * The draggable icon used to select a given value from the **Slider**.
    */
   thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;

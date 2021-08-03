@@ -6,7 +6,7 @@ import { useSliderState } from './useSliderState';
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: Array<keyof SliderSlots> = ['rail', 'track', 'thumb', 'activeRail'];
+export const sliderShorthandProps: Array<keyof SliderSlots> = ['rail', 'track', 'thumbWrapper', 'thumb', 'activeRail'];
 
 /**
  * Given user props, returns state and render function for a Slider.
@@ -17,6 +17,7 @@ export const useSlider = (props: SliderProps, ref: React.RefObject<HTMLElement &
     ...props,
     rail: resolveShorthand(props.rail),
     track: resolveShorthand(props.track),
+    thumbWrapper: resolveShorthand(props.thumbWrapper),
     thumb: resolveShorthand(props.thumb),
     activeRail: resolveShorthand(props.activeRail),
   };

@@ -19,19 +19,23 @@ exports[`Slider renders Slider correctly 1`] = `
     }
   />
   <div
-    aria-valuemax={10}
-    aria-valuemin={0}
-    aria-valuenow={5}
-    aria-valuetext="5"
-    className="ms-Slider-thumb"
-    role="slider"
+    className=""
     style={
       Object {
         "transform": "translateX(50%)",
       }
     }
-    tabIndex={0}
-  />
+  >
+    <div
+      aria-valuemax={10}
+      aria-valuemin={0}
+      aria-valuenow={5}
+      aria-valuetext="5"
+      className="ms-Slider-thumb"
+      role="slider"
+      tabIndex={0}
+    />
+  </div>
   <div
     className=""
   />

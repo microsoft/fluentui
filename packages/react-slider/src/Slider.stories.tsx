@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     width: '300px',
     '--slider-thumb-size': '30px',
 
-    '& .ms-Slider-thumb::after': {
+    '& .ms-Slider-thumb': {
       background: 'green',
     },
 

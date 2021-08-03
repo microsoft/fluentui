@@ -224,6 +224,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.style = trackStyles;
   state.track.children = null;
 
+  // Thumb Wrapper Props
+  state.thumbWrapper.style = thumbStyles;
+  state.thumbWrapper.children = null;
+
   // Thumb Props
   state.thumb.className = 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
@@ -234,7 +238,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
   state.thumb.children = null;
-  state.thumb.style = thumbStyles;
 
   // Active Rail Props
   state.activeRail.ref = railRef;
