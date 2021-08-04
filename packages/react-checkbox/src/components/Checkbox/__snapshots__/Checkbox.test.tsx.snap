@@ -9,7 +9,7 @@ exports[`Checkbox renders a default state 1`] = `
       class=""
     >
       <div
-        class="ms-checkbox-indicator"
+        class=""
       >
         <svg
           height="12"
@@ -45,7 +45,7 @@ Object {
           class=""
         >
           <div
-            class="ms-checkbox-indicator"
+            class=""
           >
             <svg
               height="12"
@@ -77,7 +77,7 @@ Object {
         class=""
       >
         <div
-          class="ms-checkbox-indicator"
+          class=""
         >
           <svg
             height="12"
@@ -166,7 +166,7 @@ Object {
           class=""
         >
           <div
-            class="ms-checkbox-indicator"
+            class=""
           >
             <svg
               focusable="false"
@@ -201,7 +201,7 @@ Object {
         class=""
       >
         <div
-          class="ms-checkbox-indicator"
+          class=""
         >
           <svg
             focusable="false"
@@ -293,7 +293,7 @@ Object {
           class=""
         >
           <div
-            class="ms-checkbox-indicator"
+            class=""
           >
             <svg
               height="12"
@@ -324,7 +324,7 @@ Object {
         class=""
       >
         <div
-          class="ms-checkbox-indicator"
+          class=""
         >
           <svg
             height="12"
