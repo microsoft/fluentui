@@ -300,7 +300,7 @@ ButtonPrimary.storyName = 'Better story name';
 
 The first story in every component must be called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). More details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one).
 
-#### appearence of stories
+#### appearance of stories
 
 Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilise. For example, when a button is necessary to demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
 
