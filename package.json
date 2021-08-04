@@ -173,6 +173,7 @@
     "glob": "7.1.6",
     "gulp": "^4.0.2",
     "gzip-size": "6.0.0",
+    "json-schema": "0.2.3",
     "html-webpack-plugin": "5.1.0",
     "clean-webpack-plugin": "3.0.0",
     "imports-loader": "1.2.0",
