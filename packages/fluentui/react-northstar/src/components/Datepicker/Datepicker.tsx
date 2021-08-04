@@ -247,6 +247,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     value: props.selectedDate,
     initialValue: undefined,
   });
+
   const [formattedDate, setFormattedDate] = React.useState<string>(valueFormatter(selectedDate));
 
   React.useEffect(() => {
