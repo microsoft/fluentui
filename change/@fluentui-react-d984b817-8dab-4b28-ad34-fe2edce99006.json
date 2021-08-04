@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "CommandButton items should use isSelected for aria-Selected",
+  "packageName": "@fluentui/react",
+  "email": "makopch@microsoft.com",
+  "dependentChangeType": "patch"
+}
