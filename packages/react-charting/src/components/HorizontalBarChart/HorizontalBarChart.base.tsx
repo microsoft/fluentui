@@ -132,6 +132,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           directionalHint={DirectionalHint.rightTopEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
           {...this._getAccessibleDataObject(this.state.callOutAccessibilityData)}
         >

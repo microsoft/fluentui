@@ -26,7 +26,7 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
 
 /**
  * A useState 'like' hook that allows optional user control
- * Useful for components which allow uncontrolled and controlled behaviours for users
+ * Useful for components which allow uncontrolled and controlled behaviour for users
  * @returns - https://reactjs.org/docs/hooks-state.html
  */
 export const useControllableState = <State>(

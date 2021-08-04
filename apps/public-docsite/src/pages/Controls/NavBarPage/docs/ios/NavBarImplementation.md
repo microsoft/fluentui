@@ -8,7 +8,7 @@
 
 [NavigationController](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Navigation/NavigationController.swift)
 
-[SearchBar](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/SearchBar.swift)
+[SearchBar](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Navigation/SearchBar.swift)
 
 ### Sample code
 

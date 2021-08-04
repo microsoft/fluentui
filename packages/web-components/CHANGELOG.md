@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 26 Jul 2021 07:37:30 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Aug 2021 07:34:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.2)
+
+Wed, 04 Aug 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.1..@fluentui/web-components_v1.3.2)
+
+### Patches
+
+- fix storybook startup issue for Windows ([PR #19236](https://github.com/microsoft/fluentui/pull/19236) by tristan.watanabe@gmail.com)
+
+## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.1)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.0..@fluentui/web-components_v1.3.1)
+
+### Patches
+
+- fix border styles when control is active ([PR #19184](https://github.com/microsoft/fluentui/pull/19184) by corylaviska@microsoft.com)
 
 ## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.0)
 
