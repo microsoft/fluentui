@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Initial update of Fluent visual styling",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
