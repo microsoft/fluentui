@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add badges to AvatarExamples",
+  "packageName": "@fluentui/example-data",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
