@@ -22,6 +22,7 @@
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-storybook-addon/src && yarn docs",
+    "pre:storybook": "yarn build",
     "storybook": "start-storybook"
   },
   "devDependencies": {
@@ -31,6 +32,8 @@
     "react": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/react-provider": "^9.0.0-alpha.59",
+    "@fluentui/react-theme": "^9.0.0-alpha.19",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
