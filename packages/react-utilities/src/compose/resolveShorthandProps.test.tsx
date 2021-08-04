@@ -41,7 +41,7 @@ describe('resolveShorthandProps', () => {
     expect(resolvedProps).toEqual({ slotA: undefined });
   });
 
-  it('resolves mutliple slots', () => {
+  it('resolves multiple slots', () => {
     const props: TestProps = {
       slotA: 'hello',
       slotB: <>world</>,

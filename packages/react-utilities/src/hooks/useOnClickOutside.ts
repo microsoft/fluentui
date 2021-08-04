@@ -30,7 +30,7 @@ export interface UseOnClickOrScrollOutsideOptions {
 }
 
 /**
- * Utility to perform checks where a click/touch event was made outside a compoent
+ * Utility to perform checks where a click/touch event was made outside a component
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled, contains: containsProp } = options;

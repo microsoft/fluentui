@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Aug 2021 07:34:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.2.0)
+
+Wed, 04 Aug 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.52..@fluentui/react-experiments_v8.2.0)
+
+### Minor changes
+
+- FloatingSuggestionsComposite: Update target element type and add gap space prop ([PR #19219](https://github.com/microsoft/fluentui/pull/19219) by elvonspa@microsoft.com)
 
 ## [8.1.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.52)
 
