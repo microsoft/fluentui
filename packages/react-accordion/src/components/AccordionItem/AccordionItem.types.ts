@@ -16,7 +16,11 @@ export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> 
   disabled: boolean;
 }
 
-export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {}
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
+  value: AccordionItemValue;
+}
+
+export type AccordionItemValue = unknown;
 
 export interface AccordionItemState
   extends ComponentState<AccordionItemSlots>,

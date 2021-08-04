@@ -78,21 +78,6 @@ export interface DefaultComponentProps {
 // @internal
 export const defaultSSRContextValue: SSRContextValue;
 
-// @public (undocumented)
-export type Descendant = () => void;
-
-// @public (undocumented)
-export type Descendants = Descendant[];
-
-// @public (undocumented)
-export interface DescendantsContextValue {
-    descendants: Descendants;
-    setDescendant: SetDescendant;
-}
-
-// @public (undocumented)
-export const DescendantsProvider: React_2.Provider<DescendantsContextValue | undefined>;
-
 // @public
 export const divProperties: Record<string, number>;
 
@@ -215,9 +200,6 @@ export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof T
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type SetDescendant = (descendant: Descendant) => number;
-
-// @public (undocumented)
 export type ShorthandProps<Props = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandProps<Props>;
 
 // @public (undocumented)
@@ -310,9 +292,6 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
 
 // @public
-export const useDescendants: () => readonly [Descendants, (descendant: Descendant) => number];
-
-// @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
 // @public
@@ -323,9 +302,6 @@ export function useForceUpdate(): DispatchWithoutAction;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
-
-// @public (undocumented)
-export function useIndex(): number;
 
 // @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;

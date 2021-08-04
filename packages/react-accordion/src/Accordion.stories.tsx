@@ -10,7 +10,7 @@ interface AccordionExampleProps
 
 export const AccordionExample = ({ icon, inline, size, expandIconPosition, ...props }: AccordionExampleProps) => {
   const items = [
-    <AccordionItem key="1">
+    <AccordionItem value="1" key="1">
       <AccordionHeader
         inline={inline}
         size={size}
@@ -24,7 +24,7 @@ export const AccordionExample = ({ icon, inline, size, expandIconPosition, ...pr
         <div>Accordion Panel 1</div>
       </AccordionPanel>
     </AccordionItem>,
-    <AccordionItem key="2">
+    <AccordionItem value="2" key="2">
       <AccordionHeader
         inline={inline}
         size={size}
@@ -38,7 +38,7 @@ export const AccordionExample = ({ icon, inline, size, expandIconPosition, ...pr
         <div>Accordion Panel 2</div>
       </AccordionPanel>
     </AccordionItem>,
-    <AccordionItem key="3">
+    <AccordionItem value="3" key="3">
       <AccordionHeader
         inline={inline}
         size={size}

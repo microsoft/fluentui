@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useIndex } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -17,7 +16,10 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = [];
  * @param ref - reference to root HTMLElement of AccordionItem
  * @param defaultProps - default values for the properties of AccordionItem
  */
-export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
+export const useAccordionItem = (
+  { value, ...props }: AccordionItemProps,
+  ref: React.Ref<HTMLElement>,
+): AccordionItemState => {
   // const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
@@ -25,13 +27,11 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
   });
   const disabled = props.disabled || false;
 
-  const index = useIndex();
-
   const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
-  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(index));
-  const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { index }), [
+  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(value));
+  const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { value }), [
     requestToggle,
-    index,
+    value,
   ]);
 
   return {

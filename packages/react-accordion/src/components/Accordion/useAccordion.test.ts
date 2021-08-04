@@ -7,9 +7,7 @@ describe('useAccordionContextValue', () => {
   const ref = createRef<HTMLElement>();
   it('should return Accordion internal Context', () => {
     const {
-      result: {
-        current: [context],
-      },
+      result: { current: context },
     } = renderHook(() => useAccordionContextValue(useAccordion({}, ref)));
     expect(context).toBeDefined();
     expect(context.openItems).toBeInstanceOf(Array);
@@ -18,44 +16,44 @@ describe('useAccordionContextValue', () => {
 
   describe('AccordionContextValue', () => {
     it('should respect accordion behavior', () => {
-      const { result } = renderHook(() => useAccordionContextValue(useAccordion({ defaultIndex: [0, 1, 2] }, ref)));
-      expect(result.current[0].openItems.length).toEqual(1);
-      expect(result.current[0].openItems.includes(0)).toBeTruthy();
-      act(() => result.current[0].requestToggle(undefined!, { index: 1 }));
-      expect(result.current[0].openItems.length).toEqual(1);
-      expect(result.current[0].openItems.includes(1)).toBeTruthy();
+      const { result } = renderHook(() => useAccordionContextValue(useAccordion({ defaultOpenItems: [0, 1, 2] }, ref)));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 1 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(1)).toBeTruthy();
     });
     it('should respect multiple behavior', () => {
       const { result } = renderHook(() => useAccordionContextValue(useAccordion({ multiple: true }, ref)));
-      expect(result.current[0].openItems.length).toEqual(1);
-      expect(result.current[0].openItems.includes(0)).toBeTruthy();
-      act(() => result.current[0].requestToggle(undefined!, { index: 1 }));
-      expect(result.current[0].openItems.length).toEqual(2);
-      expect(result.current[0].openItems.includes(0)).toBeTruthy();
-      expect(result.current[0].openItems.includes(1)).toBeTruthy();
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 1 }));
+      expect(result.current.openItems.length).toEqual(2);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      expect(result.current.openItems.includes(1)).toBeTruthy();
     });
     it('should respect collapsible behavior', () => {
       const { result } = renderHook(() => useAccordionContextValue(useAccordion({ collapsible: true }, ref)));
-      expect(result.current[0].openItems.length).toEqual(0);
-      act(() => result.current[0].requestToggle(undefined!, { index: 0 }));
-      expect(result.current[0].openItems.length).toEqual(1);
-      expect(result.current[0].openItems.includes(0)).toBeTruthy();
-      act(() => result.current[0].requestToggle(undefined!, { index: 1 }));
-      expect(result.current[0].openItems.length).toEqual(1);
-      expect(result.current[0].openItems.includes(1)).toBeTruthy();
+      expect(result.current.openItems.length).toEqual(0);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 1 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(1)).toBeTruthy();
     });
     it('should respect collapsible and multiple behavior', () => {
       const { result } = renderHook(() =>
         useAccordionContextValue(useAccordion({ multiple: true, collapsible: true }, ref)),
       );
-      expect(result.current[0].openItems.length).toEqual(0);
-      act(() => result.current[0].requestToggle(undefined!, { index: 0 }));
-      expect(result.current[0].openItems.length).toEqual(1);
-      expect(result.current[0].openItems.includes(0)).toBeTruthy();
-      act(() => result.current[0].requestToggle(undefined!, { index: 1 }));
-      expect(result.current[0].openItems.length).toEqual(2);
-      expect(result.current[0].openItems.includes(0)).toBeTruthy();
-      expect(result.current[0].openItems.includes(1)).toBeTruthy();
+      expect(result.current.openItems.length).toEqual(0);
+      act(() => result.current.requestToggle(undefined!, { value: 0 }));
+      expect(result.current.openItems.length).toEqual(1);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      act(() => result.current.requestToggle(undefined!, { value: 1 }));
+      expect(result.current.openItems.length).toEqual(2);
+      expect(result.current.openItems.includes(0)).toBeTruthy();
+      expect(result.current.openItems.includes(1)).toBeTruthy();
     });
   });
 });

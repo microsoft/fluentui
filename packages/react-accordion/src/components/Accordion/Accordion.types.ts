@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Descendants, SetDescendant } from '@fluentui/react-utilities';
-
-export type AccordionIndex = number | number[];
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
 
@@ -12,7 +11,7 @@ export interface AccordionContextValue {
   /**
    * The list of opened panels by index
    */
-  openItems: number[];
+  openItems: AccordionItemValue[];
   /**
    * Callback used by AccordionItem to request a change on it's own opened state
    */
@@ -37,18 +36,18 @@ export interface AccordionCommons extends React.HTMLAttributes<HTMLElement> {
 }
 
 export interface AccordionToggleData {
-  index: number;
+  value: AccordionItemValue;
 }
 
 export interface AccordionProps extends ComponentProps<AccordionSlots>, Partial<AccordionCommons> {
   /**
    * Controls the state of the panel
    */
-  index?: AccordionIndex;
+  openItems?: AccordionItemValue | AccordionItemValue[];
   /**
    * Default value for the uncontrolled state of the panel
    */
-  defaultIndex?: AccordionIndex;
+  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
   onToggle?: AccordionToggleEventHandler;
 }
 
@@ -57,6 +56,4 @@ export interface AccordionState extends ComponentState<AccordionSlots>, Accordio
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  descendants: Descendants;
-  setDescendant: SetDescendant;
 }

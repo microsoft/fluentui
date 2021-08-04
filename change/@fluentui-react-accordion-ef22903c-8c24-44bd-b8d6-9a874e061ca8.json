@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Updates accordion descendants",
+  "comment": "Removes descendants API in favor of explicit values",
   "packageName": "@fluentui/react-accordion",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
