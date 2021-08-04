@@ -293,6 +293,10 @@
       "root": "packages/make-styles-webpack-loader",
       "projectType": "library",
       "sourceRoot": "packages/make-styles-webpack-loader/src"
+    },
+    "@fluentui/react-storybook-addon": {
+      "root": "packages/react-storybook-addon",
+      "projectType": "library"
     }
   }
 }

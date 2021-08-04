@@ -133,6 +133,9 @@
     "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/keyboard-keys": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-slider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] }
+    "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
+    "@fluentui/react-storybook-addon": {
+      "implicitDependencies": []
+    }
   }
 }
