@@ -16,7 +16,7 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
   /**
    * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
    *
-   * @defaultvalue Person20Regular (the default icon's size depends on the Avatar's size)
+   * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
    */
   icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
