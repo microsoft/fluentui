@@ -1,16 +1,5 @@
 import * as React from 'react';
 import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
-import {
-  getCode,
-  ArrowDownKey,
-  ArrowUpKey,
-  ArrowLeftKey,
-  ArrowRightKey,
-  PageDownKey,
-  PageUpKey,
-  HomeKey,
-  EndKey,
-} from '@fluentui/keyboard-key';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -151,36 +140,34 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      const key = getCode(ev);
-
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
-        if (key === ArrowDownKey || key === ArrowLeftKey) {
+        if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
           updateValue(currentValue! - step * 10, ev);
           return;
-        } else if (key === ArrowUpKey || key === ArrowRightKey) {
+        } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
           updateValue(currentValue! + step * 10, ev);
           return;
         }
-      } else if (key === ArrowDownKey || key === ArrowLeftKey) {
+      } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
         updateValue(currentValue! - step, ev);
         return;
-      } else if (key === ArrowUpKey || key === ArrowRightKey) {
+      } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
         updateValue(currentValue! + step, ev);
         return;
       } else {
-        switch (key) {
-          case PageDownKey:
+        switch (ev.key) {
+          case 'PageDown':
             updateValue(currentValue! - step * 10, ev);
             break;
-          case PageUpKey:
+          case 'PageUp':
             updateValue(currentValue! + step * 10, ev);
             break;
-          case HomeKey:
+          case 'Home':
             updateValue(min, ev);
             break;
-          case EndKey:
+          case 'End':
             updateValue(max, ev);
             break;
         }
