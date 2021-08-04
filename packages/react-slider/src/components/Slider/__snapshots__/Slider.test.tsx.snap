@@ -3,7 +3,7 @@
 exports[`Slider renders Slider correctly 1`] = `
 <div
   className=""
-  id="slider-22"
+  id="slider-1"
   onKeyDown={[Function]}
   onPointerDown={[Function]}
 >

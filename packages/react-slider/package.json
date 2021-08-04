@@ -42,7 +42,6 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.54",
     "@fluentui/react-utilities": "^9.0.0-alpha.37",
     "@fluentui/react-label": "^9.0.0-alpha.23",
-    "@fluentui/utilities": "^8.2.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

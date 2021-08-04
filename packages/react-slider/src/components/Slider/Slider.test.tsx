@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { create } from 'react-test-renderer';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
 import { mount, ReactWrapper } from 'enzyme';
-import { resetIds } from '@fluentui/utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../common/isConformant';
 
@@ -16,8 +16,8 @@ describe('Slider', () => {
     disabledTests: ['kebab-aria-attributes'],
   });
 
-  beforeEach(() => {
-    resetIds();
+  afterEach(() => {
+    resetIdsForTests();
   });
 
   it('renders Slider correctly', () => {
