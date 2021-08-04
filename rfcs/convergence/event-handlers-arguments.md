@@ -60,46 +60,62 @@ Material UI follows a similar approach to v8 code: the second argument represent
 
 - Standardize on a `data` object where we provide the following minimum props:
 
-| Prop    | Description                                      |
-| ------- | ------------------------------------------------ |
-| `value` | new value for the data of the component          |
-| `props` | the original props given to the parent component |
+| Prop                               | Description                                      |
+| ---------------------------------- | ------------------------------------------------ |
+| `active`, `checked`, `value`, etc. | new value or state for the data of the component |
+| `props`                            | the original props given to the parent component |
 
 Example:
 
 ```tsx
-interface ChangeData<TValue, TProps> {
-  value: TValue;
-  props: TProps;
+interface InputOnChangeData {
+  value: string;
+  props: InputProps;
 }
 
-const onChange = (ev: React.FormEvent, data: ChangeData<string, InputProps>) => {
-  const { props, value } = data;
+interface CheckboxOnChangeData {
+  // 👇 The name "value" doesn't always make sense and could possibly be confusing in some cases. E.g. for "Checkbox",
+  //    the "onChange" event happens when the "checked" prop changes, not the "value" prop
+  checked: string;
+  props: InputProps;
+}
 
-  // I can access the new value
-  console.log(`The new value is ${value}`);
+function App() {
+  return (
+    <>
+      <Input
+        onChange={(ev: React.ChangeEvent, data: InputOnChangeData) => {
+          const { props, value } = data;
 
-  // I can still access the props of the parent component
-  console.log(`The input (#${props.id}) user's passed in props are ${JSON.stringify(props)}`);
+          // I can access the new value
+          console.log(`The new value is ${value}`);
 
-  // I can even access additional metadata specific to the change if needed
-  const { id } = props;
+          // I can still access the props of the parent component
+          console.log(`The input (#${props.id}) user's passed in props are ${JSON.stringify(props)}`);
 
-  // 😈 I can even access `props.value`
-  const valueFromProps = props.value;
-};
+          // I can even access additional metadata specific to the change if needed
+          const { id } = props;
+
+          // 😈 I can even access `props.value`
+          const valueFromProps = props.value;
+        }}
+      />
+      <Checkbox onChange={(ev: React.ChangeEvent, data: CheckboxOnChangeData) => console.log(data.checked)} />
+    </>
+  );
+}
 ```
 
 #### Pros
 
-- 👍 `value` is always predictable in the `value` prop
+- 👍 `value` (_or other meaningful property, for example `checked`_) is always predictable in the `value` prop
 - 👍 Parent component's current `props` are accessible and don't overlap other things in the `data` object
-- 👍 Future proof; data object is extendable without ever accidentally overriding a potentially needed prop `value`
+- 👍 Future proof; data object is extendable without ever accidentally overriding a potentially needed prop `[value]`
 - 👍 Type safety is simple
 
 #### Cons
 
-- 👎 `data.props.value` and `data.props.defaultValue` are accessible, leaving multiple ways to see value which might be confusing as they'll represent the current _props_ rather than the new value. But it _should be_ obvious that these are user inputs and not the new value. Could consider calling new value `newValue` to be clear, but that seems a bit unpredictable.
+- 👎 `data.props[value]` and `data.props[defaultValue]` are accessible, leaving multiple ways to see value which might be confusing as they'll represent the current _props_ rather than the new value. But it _should be_ obvious that these are user inputs and not the new value. Could consider calling new value `newValue` to be clear, but that seems a bit unpredictable.
 - 👎 structure is deeply nested, for example `data.props.id`
 
 ### Option B: stick with Northstar approach - `data` is `{ ...props, value }`
