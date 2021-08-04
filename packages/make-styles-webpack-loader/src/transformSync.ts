@@ -1,5 +1,5 @@
 import * as Babel from '@babel/core';
-import { default as babelPluginMakeStyles, BabelPluginOptions } from '@fluentui/babel-make-styles';
+import babelPluginMakeStyles, { BabelPluginOptions } from '@fluentui/babel-make-styles';
 
 export type TransformOptions = {
   filename: string;
