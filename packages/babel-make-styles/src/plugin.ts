@@ -2,8 +2,10 @@ import { NodePath, PluginObj, PluginPass, TransformOptions, types as t } from '@
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
+import Ajv from 'ajv';
 
 import { UNHANDLED_CASE_ERROR } from './constants';
+import { configSchema } from './schema';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
 
@@ -22,7 +24,7 @@ type AstStyleNode =
 
 export type BabelPluginOptions = {
   /** Defines set of modules and imports handled by a plugin. */
-  modules: { moduleSource: string; importName: string }[];
+  modules?: { moduleSource: string; importName: string }[];
 
   /**
    * If you need to specify custom Babel configuration, you can pass them here. These options will be used by the
@@ -30,6 +32,7 @@ export type BabelPluginOptions = {
    */
   babelOptions?: Pick<TransformOptions, 'plugins' | 'presets'>;
 };
+
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
   requireDeclarationPath?: NodePath<t.VariableDeclarator>;
@@ -90,7 +93,7 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
  */
 function isMakeStylesCallee(
   path: NodePath<t.Expression | t.V8IntrinsicIdentifier>,
-  modules: BabelPluginOptions['modules'],
+  modules: NonNullable<BabelPluginOptions['modules']>,
 ): path is NodePath<t.Identifier> {
   if (path.isIdentifier()) {
     return Boolean(modules.find(module => path.referencesImport(module.moduleSource, module.importName)));
@@ -102,7 +105,10 @@ function isMakeStylesCallee(
 /**
  * Checks if import statement import makeStyles().
  */
-function hasMakeStylesImport(path: NodePath<t.ImportDeclaration>, modules: BabelPluginOptions['modules']): boolean {
+function hasMakeStylesImport(
+  path: NodePath<t.ImportDeclaration>,
+  modules: NonNullable<BabelPluginOptions['modules']>,
+): boolean {
   return Boolean(modules.find(module => path.node.source.value === module.moduleSource));
 }
 
@@ -446,7 +452,7 @@ function dedupeCSSRules(cssRules: CSSRulesByBucket): CSSRulesByBucket {
 export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPluginState>>((api, options) => {
   api.assertVersion(7);
 
-  const pluginOptions: BabelPluginOptions = {
+  const pluginOptions: Required<BabelPluginOptions> = {
     babelOptions: {
       presets: ['@babel/preset-typescript'],
     },
@@ -457,6 +463,13 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
 
     ...options,
   };
+
+  const ajv = new Ajv();
+  const valid = ajv.validate(configSchema, pluginOptions);
+
+  if (!valid) {
+    throw new Error(`Validation failed for passed config: ${ajv.errorsText(ajv.errors)}`);
+  }
 
   return {
     name: '@fluentui/babel-make-styles',
@@ -511,7 +524,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions!);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions);
           }
 
           state.styleNodes?.forEach(styleNode => {

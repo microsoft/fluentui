@@ -5,33 +5,40 @@ import * as prettier from 'prettier';
 import * as webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
-async function compileSourceWithWebpack(entryPath: string, configOverrides: webpack.Configuration): Promise<string> {
-  const webpackConfig = merge(
-    {
-      context: __dirname,
-      entry: entryPath,
+import type { WebpackLoaderOptions } from './webpackLoader';
 
-      mode: 'development',
+type CompileOptions = {
+  loaderOptions?: WebpackLoaderOptions;
+  webpackConfig?: webpack.Configuration;
+};
 
-      output: {
-        path: path.resolve(__dirname),
-        filename: 'bundle.js',
-      },
+async function compileSourceWithWebpack(entryPath: string, options: CompileOptions): Promise<string> {
+  const defaultConfig: webpack.Configuration = {
+    context: __dirname,
+    entry: entryPath,
 
-      module: {
-        rules: [
-          {
-            test: /\.(ts|tsx|txt)$/,
-            include: path.dirname(entryPath),
-            use: {
-              loader: path.resolve(__dirname, './index.ts'),
-            },
-          },
-        ],
-      },
+    mode: 'development',
+
+    output: {
+      path: path.resolve(__dirname),
+      filename: 'bundle.js',
     },
-    configOverrides,
-  );
+
+    module: {
+      rules: [
+        {
+          test: /\.(ts|tsx|txt)$/,
+          include: path.dirname(entryPath),
+          use: {
+            loader: path.resolve(__dirname, './index.ts'),
+            options: options.loaderOptions,
+          },
+        },
+      ],
+    },
+  };
+
+  const webpackConfig = merge(defaultConfig, options.webpackConfig || {});
   const compiler = webpack(webpackConfig);
 
   compiler.outputFileSystem = createFsFromVolume(new Volume());
@@ -82,7 +89,7 @@ function fixLineEndings(value: string) {
  *
  * See https://webpack.js.org/contribute/writing-a-loader/#testing.
  */
-function testFixture(fixtureName: string, configOverrides: webpack.Configuration = {}) {
+function testFixture(fixtureName: string, options: CompileOptions = {}) {
   it(`"${fixtureName}" fixture`, async () => {
     const fixturePath = path.resolve(__dirname, '..', '__fixtures__', fixtureName);
 
@@ -128,7 +135,7 @@ function testFixture(fixtureName: string, configOverrides: webpack.Configuration
 
     try {
       result = fixLineEndings(
-        prettier.format(await compileSourceWithWebpack(inputPath, configOverrides), {
+        prettier.format(await compileSourceWithWebpack(inputPath, options), {
           ...require('../../../prettier.config.js'),
           parser: 'typescript',
         }),
@@ -161,15 +168,26 @@ describe('webpackLoader', () => {
 
   // Asserts that aliases are resolved properly in Babel plugin
   testFixture('webpack-aliases', {
-    resolve: {
-      alias: {
-        'non-existing-color-module': path.resolve(__dirname, '..', '__fixtures__', 'webpack-aliases', 'color.ts'),
+    webpackConfig: {
+      resolve: {
+        alias: {
+          'non-existing-color-module': path.resolve(__dirname, '..', '__fixtures__', 'webpack-aliases', 'color.ts'),
+        },
       },
     },
   });
 
   // Asserts handling errors from Babel plugin
   testFixture('error-argument-count');
+  // Asserts errors in loader's config
+  testFixture('error-config', {
+    loaderOptions: {
+      babelOptions: {
+        // @ts-expect-error
+        plugins: {},
+      },
+    },
+  });
   // Asserts errors in loader functionality
   testFixture('error-syntax');
 });
