@@ -2,7 +2,7 @@
 
 ---
 
-_@bsunderhus_
+_@bsunderhus @ling1726 @khmakoto @ecraig12345 @layershifter_
 
 ## Summary
 
@@ -170,8 +170,8 @@ export const CustomAccordionHeader = React.forwardRef<HTMLElement, AccordionHead
        * if this was a hook than it would need
        * to be declared before the conditional
        **/
-       // React hooks also cannot be used inside conditions
-       state.icon.name = iconName
+      // React hooks also cannot be used inside conditions
+      state.icon.name = iconName;
     };
   }
 
