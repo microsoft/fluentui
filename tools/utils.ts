@@ -10,7 +10,7 @@ import type * as Enquirer from 'enquirer';
  * @param questions
  */
 export async function prompt<T extends Record<string, unknown>>(questions: Parameters<Enquirer['prompt']>[0]) {
-  const EnquirerLazy = await await import('enquirer');
+  const EnquirerLazy = await import('enquirer');
 
   const response = await EnquirerLazy.prompt<T>(questions);
 

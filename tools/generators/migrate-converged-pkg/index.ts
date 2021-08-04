@@ -261,7 +261,6 @@ async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSc
 
   const shouldTriggerPrompt = arePromptsEnabled() && shouldValidateNameInput();
 
-  // console.error(newSchema, parsedArgs);
   if (shouldTriggerPrompt) {
     const schemaPromptsResponse = await triggerDynamicPrompts();
 
