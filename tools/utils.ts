@@ -24,7 +24,7 @@ export async function prompt<T extends Record<string, unknown>>(questions: Param
  *
  * This should be used if, and only if, you need to setup manual dynamic prompts within your generator.
  *
- * - prompts should be turned off whenever`--no-interactive` is used
+ * - prompts should be turned off whenever `--no-interactive` is used
  * - turning off prompts is usually what is expected when invoking generator via Nx Console
  * - within tests:
  *   - you should mock `enquirer` accordingly via `jest.mock('enquirer',()=>({ async prompt()=>{} }))`
