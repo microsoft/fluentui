@@ -166,6 +166,20 @@ describe('webpackLoader', () => {
   testFixture('object');
   testFixture('function');
 
+  // Integration fixtures for config functionality
+  testFixture('config-modules', {
+    loaderOptions: {
+      modules: [{ moduleSource: 'react-make-styles', importName: 'makeStyles' }],
+    },
+    webpackConfig: {
+      resolve: {
+        alias: {
+          'react-make-styles': '@fluentui/react-make-styles',
+        },
+      },
+    },
+  });
+
   // Asserts that aliases are resolved properly in Babel plugin
   testFixture('webpack-aliases', {
     webpackConfig: {

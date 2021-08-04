@@ -86,7 +86,7 @@ export function webpackLoader(
       enableSourceMaps: this.sourceMap || false,
       inputSourceMap: parseSourceMap(inputSourceMap),
 
-      // TODO: pass plugin options
+      pluginOptions: options,
     });
   } catch (err) {
     error = err;
