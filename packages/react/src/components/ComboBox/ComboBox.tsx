@@ -1376,8 +1376,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
-          // aria-selected should only be applied to checked items, not hovered items
-          aria-selected={isChecked ? 'true' : 'false'}
+          aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
