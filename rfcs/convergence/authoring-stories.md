@@ -304,6 +304,36 @@ The first story in every component must be called `Default`. This story must sup
 
 Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilize. For example, when a button is necessary to demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
 
+##### Do:
+
+```tsx
+import { Button } from '@fluentui/react-button';
+
+export const Default = (props: PopoverProps) => (
+  <Popover {...props}>
+    <PopoverTrigger>
+      <Button>Popover trigger</Button>
+    </PopoverTrigger>
+
+    <PopoverSurface>Content</PopoverSurface>
+  </Popover>
+);
+```
+
+##### Don’t:
+
+```tsx
+export const Default = (props: PopoverProps) => (
+  <Popover {...props}>
+    <PopoverTrigger>
+      <button>Popover trigger</button>
+    </PopoverTrigger>
+
+    <PopoverSurface>Content</PopoverSurface>
+  </Popover>
+);
+```
+
 #### story code should be useful
 
 Public stories should only contain code, which is useful for users to see after clicking on “Show code” in documentation.
