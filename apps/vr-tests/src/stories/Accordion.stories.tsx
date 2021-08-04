@@ -54,7 +54,7 @@ storiesOf('Accordion', module)
     <Accordion index={[0, 1, 2, 3]}>
       <AccordionItem>
         <AccordionHeader size="small">Small</AccordionHeader>
-        <AccordionPanel>Small Panel</AccordionPanel>
+        <AccordionPanel>Small Panel!</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader size="medium">Medium</AccordionHeader>
