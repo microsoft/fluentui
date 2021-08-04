@@ -494,11 +494,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const { activePoint } = this.state;
       const { theme } = this.props;
       if (this._points[i].data.length === 1) {
-        const firstPointData = this._points[i].data[0];
-        const x1 = firstPointData.x;
-        const y1 = firstPointData.y;
-        const xAxisCalloutData = firstPointData.xAxisCalloutData;
-        const xAxisCalloutAccessibilityData = firstPointData.xAxisCalloutAccessibilityData;
+        const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
         const circleId = `${this._circleId}${i}`;
         pointsForLine.push(
           <circle

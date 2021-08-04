@@ -229,9 +229,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       }
     }
 
-    const lineChartDataPoint = lineChartData![0].data[index as number];
-    const xAxisCalloutData = lineChartDataPoint.xAxisCalloutData;
-    const xAxisCalloutAccessibilityData = lineChartDataPoint.xAxisCalloutAccessibilityData;
+    const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
