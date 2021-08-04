@@ -296,7 +296,8 @@
     },
     "@fluentui/react-storybook-addon": {
       "root": "packages/react-storybook-addon",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/react-storybook-addon/src"
     }
   }
 }
