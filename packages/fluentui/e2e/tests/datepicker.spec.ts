@@ -92,7 +92,7 @@ describe('Datepicker', () => {
     cy.expectTextOf(datepickerCalendarCell(42), '2'); // which represents August 2, 2020, last cell in the grid
   });
 
-  it.only('Type in input works', () => {
+  it('Type in input works', () => {
     cy.get(datepickerInput)
       .focus()
       .clear()
