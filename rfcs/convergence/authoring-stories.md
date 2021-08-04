@@ -279,7 +279,7 @@ Components with complex API require many long stories, both for documentation an
 
 1. Every component can have at most one `.stories.tsx` file with default export which configures metadata about the component. This file must be called `Component.stories.tsx`, for example `Button.stories.tsx`.
 2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
-3. If individual story files are employed, `.stories.tsx` file must not contain any stories.
+3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories.
 
 ### 8. location and naming convention
 
