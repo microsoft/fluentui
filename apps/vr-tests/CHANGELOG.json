@@ -2,6 +2,89 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Wed, 04 Aug 2021 07:34:12 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-experiments to v8.2.0",
+            "author": "elvonspa@microsoft.com",
+            "commit": "cb3f228ef28403e2997c054f3545bf8fa5ee1988",
+            "package": "vr-tests"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.59",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.63",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.67",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-card to v9.0.0-alpha.0",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.52",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.23",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.65",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.54",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.33",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.61",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Aug 2021 07:39:30 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

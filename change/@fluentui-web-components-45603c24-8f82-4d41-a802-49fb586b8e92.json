@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix storybook startup issue for Windows",
-  "packageName": "@fluentui/web-components",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

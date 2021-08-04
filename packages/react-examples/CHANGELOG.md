@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Aug 2021 07:34:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
+
+Wed, 04 Aug 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.34.4..@fluentui/react-examples_v8.34.4)
+
+### Patches
+
+- Bump @fluentui/react-experiments to v8.2.0 ([PR #19219](https://github.com/microsoft/fluentui/pull/19219) by elvonspa@microsoft.com)
 
 ## [8.34.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.34.4)
 
