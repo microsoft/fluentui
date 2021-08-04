@@ -128,6 +128,7 @@ packages/react-image/ @microsoft/cxe-prg
 packages/react-text/ @microsoft/cxe-prg
 packages/react-input/ @microsoft/cxe-red @ecraig12345
 packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
+packages/react-storybook-addon/ @microsoft/cxe-prg
 packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-link/ @microsoft/cxe-red @khmakoto
 packages/react-slider/ @microsoft/cxe-red
