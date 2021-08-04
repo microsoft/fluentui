@@ -215,7 +215,6 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
     boxStyles[state.size],
     state.disabled && indicatorStyles.disabled,
     state.circular && indicatorStyles.circular,
-    'ms-checkbox-indicator',
     state.indicator.className,
   );
 
