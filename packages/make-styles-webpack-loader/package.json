@@ -29,7 +29,7 @@
     "@linaria/babel-preset": "^3.0.0-beta.7",
     "enhanced-resolve": "^5.8.2",
     "loader-utils": "^2.0.0",
-    "schema-utils": "^2.7.0",
+    "schema-utils": "^3.1.1",
     "tslib": "^2.1.0"
   },
   "beachball": {
