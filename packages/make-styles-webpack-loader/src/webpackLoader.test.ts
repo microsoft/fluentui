@@ -183,7 +183,7 @@ describe('webpackLoader', () => {
   testFixture('error-config', {
     loaderOptions: {
       babelOptions: {
-        // @ts-expect-error
+        // @ts-expect-error "plugins" should be an array, an object is passed to test schema
         plugins: {},
       },
     },
