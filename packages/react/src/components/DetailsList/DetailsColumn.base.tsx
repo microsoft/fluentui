@@ -119,6 +119,9 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           {...(!hasInnerButton && accNameDescription)}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
+          data-is-focusable={
+            !hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
+          }
           className={classNames.root}
           data-is-draggable={isDraggable}
           draggable={isDraggable}
@@ -146,12 +149,14 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                 <span
                   id={`${parentId}-${column.key}`}
                   className={classNames.cellTitle}
-                  data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
+                  data-is-focusable={
+                    hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
+                  }
                   role={hasInnerButton ? 'button' : undefined}
                   {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
-                  aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
+                  aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown ? 'menu' : undefined}
                   aria-expanded={
                     column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined
                   }
