@@ -65,10 +65,12 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
   state.input.checked = checked === true;
   state.checked = checked ? checked : false;
 
-  if (state.size === 'medium') {
-    state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
-  } else {
-    state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
+  if (!state.indicator.children) {
+    if (state.size === 'medium') {
+      state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
+    } else {
+      state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
+    }
   }
 
   const userOnChange = state.input.onChange;
