@@ -83,7 +83,7 @@ function useState({slot, ...props}: Props): State {
   // ...
   return {
     slot: resolveShorthand(slot)
-    root: getNativeElementProps('div', props),
+    root: getNativeElementProps(state.components.root, props),
   };
 }
 ```
