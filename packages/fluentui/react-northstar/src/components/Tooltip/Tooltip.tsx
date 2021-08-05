@@ -245,7 +245,9 @@ export const Tooltip: React.FC<TooltipProps> &
     },
   };
   let calculatedOffset = offset;
-  calculatedOffset ||= pointing ? [4, 4] : [0, 0];
+  if (!calculatedOffset) {
+    calculatedOffset = pointing ? [4, 4] : [0, 0];
+  }
 
   const element = (
     <>
