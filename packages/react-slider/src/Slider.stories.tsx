@@ -12,15 +12,8 @@ const useStyles = makeStyles({
   },
   slider: {
     width: '500px',
-    '--slider-thumb-size': '30px',
-
-    '& .ms-Slider-thumb': {
-      background: 'green',
-    },
-
-    '& .ms-Slider-track': {
-      background: 'green',
-    },
+    '--slider-thumb-size': '50px',
+    '--slider-color': 'green',
   },
 });
 

@@ -8,6 +8,7 @@ import { SliderState } from './Slider.types';
 const useRootStyles = makeStyles({
   root: theme => ({
     '--slider-thumb-size': '20px',
+    '--slider-color': '#005fb8',
     position: 'relative',
     height: 'var(--slider-thumb-size)',
     width: '280px',
@@ -52,7 +53,7 @@ const useTrackWrapperStyles = makeStyles({
       position: 'absolute',
       top: '50%',
       transform: 'translateY(-50%)',
-      background: '#005FB8',
+      background: 'var(--slider-color)',
       borderRadius: '99px',
       height: '4px',
       width: 'calc(var(--slider-thumb-size) / 2)',
@@ -70,7 +71,7 @@ const useTrackStyles = makeStyles({
     top: '50%',
     transform: 'translateY(-50%)',
     minWidth: 'calc(var(--slider-thumb-size) / 2)',
-    background: '#005FB8',
+    background: 'var(--slider-color)',
     borderRadius: '99px',
   }),
 });
@@ -94,34 +95,56 @@ const useThumbWrapperStyles = makeStyles({
  */
 const useThumbStyles = makeStyles({
   thumb: theme => ({
-    content: '""',
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
     top: '50%',
-    background: '#005FB8',
-    borderRadius: '999px',
-    boxSizing: 'border-box',
-    // TODO: borderImageSource: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0578) 50.02%, rgba(0, 0, 0, 0.1622) 95.45%)',
-    display: 'block',
-    border: 'calc(var(--slider-thumb-size) * .05) solid rgba(0, 0, 0,  0.1622)',
-    boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
-    backgroundClip: 'content-box; padding: 1px',
-    transform: 'translate(-50%,-50%)',
+    transform: 'translate(-50%, -50%)',
+
+    ':before': {
+      position: 'absolute',
+      width: 'var(--slider-thumb-size)',
+      height: 'var(--slider-thumb-size)',
+      content: "''",
+      background: 'var(--slider-color)',
+      borderRadius: '999px',
+      boxSizing: 'border-box',
+      border: 'calc(var(--slider-thumb-size) * .05) solid rgba(0, 0, 0,  0)',
+      backgroundClip: 'content-box; padding: 1px',
+      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
+    },
+
+    ':after': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      content: "''",
+      background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0578) 50.02%, rgba(0, 0, 0, 0.1622) 95.45%)',
+      borderRadius: '999px',
+      zIndex: '-1',
+    },
 
     ':hover': {
-      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .125) white inset',
+      ':before': {
+        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .125) white inset',
+      },
     },
 
     ':active': {
-      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .175) white inset',
+      ':before': {
+        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .175) white inset',
+      },
     },
   }),
 
   focusIndicator: createFocusIndicatorStyleRule({
-    outline: 'none',
-    boxSizing: 'border-box',
-    border: 'calc(var(--slider-thumb-size) * .05) solid black',
+    ':before': {
+      outline: 'none',
+      boxSizing: 'border-box',
+      border: 'calc(var(--slider-thumb-size) * .05) solid black',
+    },
   }),
 });
 
