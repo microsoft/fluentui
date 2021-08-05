@@ -13,7 +13,17 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@fluentui', '@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: [
+    '@fluentui',
+    '@typescript-eslint',
+    'deprecation',
+    'import',
+    'jest',
+    'jsdoc',
+    'jsx-a11y',
+    'react',
+    'react-hooks',
+  ],
   settings: {
     // Some config suggestions copied from https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
     'import/parsers': {
@@ -25,6 +35,14 @@ const config = {
         alwaysTryTypes: true,
         // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
         project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
+      },
+    },
+    jsdoc: {
+      ignoreInternal: true,
+      tagNamePreference: {
+        defaultvalue: 'defaultvalue',
+        defaultValue: 'defaultValue',
+        return: 'return',
       },
     },
   },
@@ -264,6 +282,8 @@ const config = {
     'import/named': 'off',
     'import/namespace': 'off',
     'import/no-named-as-default-member': 'off',
+
+    'jsdoc/check-tag-names': ['error', { definedTags: ['jest-environment'] }],
   },
 };
 
