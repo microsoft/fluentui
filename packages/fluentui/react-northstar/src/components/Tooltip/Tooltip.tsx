@@ -244,6 +244,8 @@ export const Tooltip: React.FC<TooltipProps> &
       _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
     },
   };
+  let calculatedOffset = offset;
+  calculatedOffset ||= pointing ? [4, 4] : [0, 0];
 
   const element = (
     <>
@@ -259,7 +261,7 @@ export const Tooltip: React.FC<TooltipProps> &
         <Popper
           align={align}
           flipBoundary={flipBoundary}
-          offset={offset}
+          offset={calculatedOffset}
           overflowBoundary={overflowBoundary}
           pointerTargetRef={pointerTargetRef}
           popperRef={popperRef}
