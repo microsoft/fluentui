@@ -111,7 +111,7 @@ const useThumbStyles = makeStyles({
       boxSizing: 'border-box',
       border: 'calc(var(--slider-thumb-size) * .05) solid rgba(0, 0, 0,  0)',
       backgroundClip: 'content-box; padding: 1px',
-      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
+      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .2) white inset',
     },
 
     ':after': {
@@ -128,13 +128,13 @@ const useThumbStyles = makeStyles({
 
     ':hover': {
       ':before': {
-        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .125) white inset',
+        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
       },
     },
 
     ':active': {
       ':before': {
-        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .175) white inset',
+        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .25) white inset',
       },
     },
   }),
