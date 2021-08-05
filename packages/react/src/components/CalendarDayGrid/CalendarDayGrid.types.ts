@@ -312,4 +312,13 @@ export interface ICalendarDayGridStyles {
   topLeftCornerDate?: IStyle;
   bottomRightCornerDate?: IStyle;
   bottomLeftCornerDate?: IStyle;
+
+  /**
+   * The styles to apply to days for focus borders. Can apply multiple if there are multiple focused days
+   * around the current focused date
+   */
+  datesAbove?: IStyle;
+  datesBelow?: IStyle;
+  datesLeft?: IStyle;
+  datesRight?: IStyle;
 }

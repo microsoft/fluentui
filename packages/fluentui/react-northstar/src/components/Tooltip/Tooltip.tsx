@@ -210,7 +210,7 @@ export const Tooltip: React.FC<TooltipProps> &
   };
 
   const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
-    clearTimeout(closeTimeoutId.current);
+    context.target.defaultView.clearTimeout(closeTimeoutId.current);
 
     if (newOpen) {
       trySetOpen(true, e);
