@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add role=none to fix CommandBar hierarchy, add optional group labels to primary/secondary command groups",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
