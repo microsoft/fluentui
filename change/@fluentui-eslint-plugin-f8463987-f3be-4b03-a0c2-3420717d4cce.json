@@ -3,5 +3,5 @@
   "comment": "Add eslint-plugin-jsdoc to check for jsdoc errors",
   "packageName": "@fluentui/eslint-plugin",
   "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
