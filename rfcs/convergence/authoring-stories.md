@@ -275,11 +275,78 @@ TBA
 
 Components with complex API require many long stories, both for documentation and for e2e testing. This creates big story files, which are hard to maintain. How can these files be dissected into smaller ones?
 
-**Proposal:**
+#### Proposal
 
 1. Every component can have at most one `.stories.tsx` file with default export which configures metadata about the component. This file must be called `Component.stories.tsx`, for example `Button.stories.tsx`.
 2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
-3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories.
+3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories besides the default export.
+
+
+##### Good Example 1 - single file
+
+Button.stories.tsx:
+```tsx
+import { Meta } from '@storybook/react';
+
+export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+
+export default {
+  title: 'Components/Button',
+  component: Button
+} as Meta;
+```
+
+##### Good Example 2 - multiple files
+
+Button.stories.tsx:
+```tsx
+import { Meta } from '@storybook/react';
+
+export * from "ButtonWithIcon.stories"
+export * from "ButtonDefault.stories"
+
+export default {
+  title: 'Components/Button',
+  component: Button
+} as Meta;
+```
+
+ButtonWithIcon.stories.tsx:
+```tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+```
+
+ButtonDefault.stories.tsx:
+```tsx
+export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
+ButtonDefault.storyName = "Default"
+```
+
+##### Bad example - multiple files
+
+ButtonDefault.stories.tsx:
+```tsx
+export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
+ButtonDefault.storyName = "Default"
+
+// don’t do this
+export default {
+  title: 'Components/Button',
+  component: Button
+} as Meta;
+```
+
+ButtonWithIcon.stories.tsx:
+```tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+
+// don’t do this
+export default {
+  title: 'Components/Button',
+  component: Button
+} as Meta;
+```
 
 ### 8. location and naming convention
 
@@ -296,9 +363,13 @@ ButtonPrimary.storyName = 'Better story name';
 
 ### 9. UX of stories
 
-#### first story is called default
+#### default story
 
-The first story in every component must be called `Default`. This story must support manipulation with [Controls](https://storybook.js.org/docs/react/essentials/controls). More details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one).
+Every component must have a story called `Default`, which:
+- must be the first story in the component - see examples in [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
+- must support auto generated [Controls](https://storybook.js.org/docs/react/essentials/controls) - more details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
+
+Under this story, there will be Controls table rendered.
 
 #### appearance of stories
 
