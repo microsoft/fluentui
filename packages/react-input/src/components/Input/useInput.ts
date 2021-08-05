@@ -30,8 +30,8 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputS
       input: 'input',
     },
     // temporarily must add fake children to prevent getSlots from substituting nullRender
-    input: resolveShorthand(props.input, { children: '😭' }),
-    inputWrapper: resolveShorthand(props.inputWrapper, { children: '😭' }),
+    input: resolveShorthand(props.input, { optional: false }),
+    inputWrapper: resolveShorthand(props.inputWrapper, { optional: false }),
     bookendAfter: resolveShorthand(props.bookendAfter),
     bookendBefore: resolveShorthand(props.bookendBefore),
     insideEnd: resolveShorthand(props.insideEnd),
