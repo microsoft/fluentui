@@ -23,12 +23,12 @@ export function resolveShorthand<Props extends Record<string, any>, Optional ext
     return undefined as Optional extends true ? ObjectShorthandProps<Props> | undefined : never;
   }
 
-  const resolvedShorthand = {} as ObjectShorthandProps<Props>;
+  let resolvedShorthand = {} as ObjectShorthandProps<Props>;
 
-  if (typeof value === 'string' || typeof value === 'number' || isValidElement(value)) {
+  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
     resolvedShorthand.children = value as Props['children'];
   } else if (typeof value === 'object') {
-    Object.assign(resolvedShorthand, value);
+    resolvedShorthand = value;
   }
 
   return (defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand) as Optional extends true
