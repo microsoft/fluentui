@@ -113,6 +113,10 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -140,6 +144,10 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -281,6 +289,10 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -308,6 +320,10 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -435,6 +451,10 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -462,6 +482,10 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -603,6 +627,10 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -630,6 +658,10 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -741,6 +773,10 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -768,6 +804,10 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -909,6 +949,10 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={false}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -936,6 +980,10 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={false}
             onBlur={[Function]}
@@ -1047,6 +1095,10 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
             data-is-focusable={true}
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1074,6 +1126,10 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
