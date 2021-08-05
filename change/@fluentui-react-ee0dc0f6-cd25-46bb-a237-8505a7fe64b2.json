@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix website and legacy demo in IE 11",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "improve calendar selection border by making an after element to not adjust cell spacing, and remove borders between selected days in contiguous ranges",
+  "packageName": "@fluentui/react",
+  "email": "lorejoh12@gmail.com",
+  "dependentChangeType": "patch"
+}
