@@ -26,7 +26,7 @@ There are disparities in how `root` is treated compared to _slots_. Some discuss
 4. There's no possible way of passing refs to slots but `root` does
 5. [Primary slot]
 
-Major differences between `root` 🌿 and _slots_ 🎰:
+Major differences between `root` (shown below as 🌿) and _slots_ (shown below as 🎰):
 
 1. References 🌿
 2. Custom Elements as base element 🎰
