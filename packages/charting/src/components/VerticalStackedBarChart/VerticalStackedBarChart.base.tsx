@@ -156,6 +156,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };

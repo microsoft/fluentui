@@ -119,6 +119,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
