@@ -6,7 +6,9 @@
 
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { ShorthandProps } from '@fluentui/react-utilities';
+import { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type ARIAButtonAsAnchorProps = React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -27,8 +29,19 @@ export type ARIAButtonAsElementProps = React_2.HTMLAttributes<HTMLElement> & {
 export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
 
 // @public
-export function useARIAButton(value: ShorthandProps<ARIAButtonProps>, defaultProps?: ARIAButtonProps): ObjectShorthandProps<ARIAButtonProps>;
-
+export function useARIAButton<Optional extends boolean = true>(value: ShorthandProps<ARIAButtonProps>, options?: ResolveShorthandOptions<ARIAButtonProps, Optional>): Optional extends true ? (React_2.ButtonHTMLAttributes<HTMLButtonElement> & {
+    as?: "button" | undefined;
+} & {
+    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<ARIAButtonProps> | null | undefined;
+}) | (React_2.HTMLAttributes<HTMLElement> & {
+    as: "div" | "span";
+} & {
+    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<ARIAButtonProps> | null | undefined;
+}) | (React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    as: "a";
+} & {
+    children?: string | number | boolean | {} | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | ShorthandRenderFunction<ARIAButtonProps> | null | undefined;
+}) | undefined : ObjectShorthandProps<ARIAButtonProps>;
 
 // (No @packageDocumentation comment for this package)
 
