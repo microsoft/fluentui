@@ -1,6 +1,6 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { MenuItemSelectableState } from './types';
-import { MenuItemSlots } from '../components';
+import { MenuItemSlots } from '../components/MenuItem/MenuItem.types';
 
 const useStyles = makeStyles({
   root: {
