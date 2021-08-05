@@ -6,6 +6,7 @@ import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line 
 import { IPalette } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
+  IAccessibilityProps,
   CartesianChart,
   IChartProps,
   ICustomizedCalloutData,
@@ -61,6 +62,7 @@ export interface IAreaChartState extends IBasestate {
   dataPointCalloutProps?: ICustomizedCalloutData;
   stackCalloutProps?: ICustomizedCalloutData;
   nearestCircleToHighlight: number | string | Date | null;
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -134,6 +136,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isBeakVisible: false,
       setInitialFocus: true,
       onDismiss: this._closeCallout,
+      'data-is-focusable': true,
+      xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
       ...this.props.calloutProps,
     };
     return (
@@ -224,7 +228,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           break;
       }
     }
-    const xAxisCalloutData = lineChartData![0].data[index as number].xAxisCalloutData;
+
+    const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -246,6 +251,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         YValueHover: found.values,
         dataPointCalloutProps: found!,
         hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+        xAxisCalloutAccessibilityData,
       });
     } else {
       this.setState({
