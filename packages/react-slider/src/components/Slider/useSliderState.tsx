@@ -206,6 +206,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.rail.children = null;
 
   // Track Props
+  state.trackWrapper.children = null;
+
+  // Track Props
   state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
   state.track.children = null;

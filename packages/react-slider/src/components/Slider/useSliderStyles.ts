@@ -1,6 +1,4 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-// TODO: Decide on high contrast implementation.
-// import { HighContrastSelector } from '@fluentui/style-utilities';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { SliderState } from './Slider.types';
 
@@ -18,54 +16,6 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
     touchAction: 'none',
   }),
-
-  hover: theme => ({
-    ':hover .ms-Slider-track': {
-      background: '#0078D4',
-      // [HighContrastSelector]: {
-      //   forcedColorAdjust: 'none',
-      // },
-    },
-
-    ':hover .ms-Slider-thumb': {
-      background: '#0078D4',
-      // [HighContrastSelector]: {
-      //   forcedColorAdjust: 'none',
-      // },
-    },
-  }),
-
-  focusWithin: theme => ({
-    ':focus-within .ms-Slider-track': {
-      background: '#0078D4',
-      // [HighContrastSelector]: {
-      //   forcedColorAdjust: 'none',
-      // },
-    },
-
-    ':focus-within .ms-Slider-thumb': {
-      background: '#0078D4',
-      // [HighContrastSelector]: {
-      //   background: 'Highlight',
-      // },
-    },
-  }),
-
-  activation: theme => ({
-    ':active .ms-Slider-track': {
-      background: '#005A9E',
-      // [HighContrastSelector]: {
-      //   forcedColorAdjust: 'none',
-      // },
-    },
-
-    ':active .ms-Slider-thumb': {
-      background: '#005A9E',
-      // [HighContrastSelector]: {
-      //   forcedColorAdjust: 'none',
-      // },
-    },
-  }),
 });
 
 /**
@@ -75,16 +25,38 @@ const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
     height: '4px',
-    width: '100%',
     top: '50%',
+    left: 'calc(var(--slider-thumb-size) * .05)',
+    right: 'calc(var(--slider-thumb-size) * .05)',
     transform: 'translateY(-50%)',
-    background: '#C8C8C8',
-    borderRadius: '4px',
+    background: '#8b8b8b',
+    borderRadius: '99px',
+    boxSizing: 'border-box',
+    border: '1px solid #626262',
     pointerEvents: 'none',
-    // [HighContrastSelector]: {
-    //   boxSizing: 'border-box',
-    //   border: '1px solid WindowText',
-    // },
+  }),
+});
+
+/**
+ * Styles for the trackWrapper slot
+ */
+const useTrackWrapperStyles = makeStyles({
+  trackWrapper: theme => ({
+    position: 'absolute',
+    top: '50%',
+    left: 'calc(var(--slider-thumb-size) * .05)',
+    right: 'calc(var(--slider-thumb-size) * .05)',
+    backgroundColor: 'green',
+    transform: 'translateY(-50%)',
+    '::after': {
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      background: '#005FB8',
+      borderRadius: '99px',
+      height: '4px',
+      width: 'calc(var(--slider-thumb-size) / 2)',
+    },
   }),
 });
 
@@ -97,12 +69,9 @@ const useTrackStyles = makeStyles({
     height: '4px',
     top: '50%',
     transform: 'translateY(-50%)',
-    minWidth: 'var(--slider-thumb-size)',
-    background: '#606060',
-    borderRadius: '4px',
-    // [HighContrastSelector]: {
-    //   background: 'Highlight',
-    // },
+    minWidth: 'calc(var(--slider-thumb-size) / 2)',
+    background: '#005FB8',
+    borderRadius: '99px',
   }),
 });
 
@@ -130,25 +99,29 @@ const useThumbStyles = makeStyles({
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
     top: '50%',
-    background: '#606060',
-    borderRadius: '50%',
+    background: '#005FB8',
+    borderRadius: '999px',
     boxSizing: 'border-box',
+    // TODO: borderImageSource: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0578) 50.02%, rgba(0, 0, 0, 0.1622) 95.45%)',
     display: 'block',
+    border: 'calc(var(--slider-thumb-size) * .05) solid rgba(0, 0, 0,  0.1622)',
+    boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
+    backgroundClip: 'content-box; padding: 1px',
     transform: 'translate(-50%,-50%)',
-    // [HighContrastSelector]: {
-    //   background: 'Highlight',
-    // },
+
+    ':hover': {
+      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .125) white inset',
+    },
+
+    ':active': {
+      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .175) white inset',
+    },
   }),
 
   focusIndicator: createFocusIndicatorStyleRule({
     outline: 'none',
     boxSizing: 'border-box',
-    border: '1.7px solid black',
-    boxShadow: '0 0 0 .7pt white inset',
-    // [HighContrastSelector]: {
-    //   background: 'GrayText',
-    //   border: '1.5px solid WindowText inset',
-    // },
+    border: 'calc(var(--slider-thumb-size) * .05) solid black',
   }),
 });
 
@@ -169,20 +142,15 @@ const useActiveRailStyles = makeStyles({
 export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
+  const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
 
-  state.className = mergeClasses(
-    rootStyles.root,
-    rootStyles.hover,
-    rootStyles.focusWithin,
-    rootStyles.activation,
-    state.className,
-  );
-
+  state.className = mergeClasses(rootStyles.root, state.className);
   state.rail.className = railStyles.rail;
+  state.trackWrapper.className = mergeClasses(trackWrapperStyles.trackWrapper, state.trackWrapper.className);
   state.track.className = mergeClasses(trackStyles.track, state.track.className);
   state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
   state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);

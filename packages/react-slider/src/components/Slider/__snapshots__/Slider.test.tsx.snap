@@ -11,13 +11,17 @@ exports[`Slider renders Slider correctly 1`] = `
     className=""
   />
   <div
-    className="ms-Slider-track"
-    style={
-      Object {
-        "width": "50%",
+    className=""
+  >
+    <div
+      className="ms-Slider-track"
+      style={
+        Object {
+          "width": "50%",
+        }
       }
-    }
-  />
+    />
+  </div>
   <div
     className=""
     style={

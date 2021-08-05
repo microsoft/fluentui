@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     gap: '10px',
   },
   slider: {
-    width: '300px',
+    width: '500px',
     '--slider-thumb-size': '30px',
 
     '& .ms-Slider-thumb': {

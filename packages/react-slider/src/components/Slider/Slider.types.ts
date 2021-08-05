@@ -26,6 +26,11 @@ export type SliderSlots = {
   rail: React.HTMLAttributes<HTMLElement>;
 
   /**
+   * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
+   */
+  trackWrapper: React.HTMLAttributes<HTMLElement>;
+
+  /**
    * The bar showing the current selected area adjacent to the **Slider's** thumb.
    */
   track: React.HTMLAttributes<HTMLElement>;
