@@ -10,17 +10,15 @@ export const useMenuItemCheckbox = (
   props: MenuItemCheckboxProps,
   ref: React.Ref<HTMLElement>,
 ): MenuItemCheckboxState => {
-  const checkboxProps = {
-    role: 'menuitemcheckbox',
-    checkmark: { children: <AcceptIcon /> },
-    persistOnClick: true,
-  };
-
   const state = useMenuItem(
     {
-      ...checkboxProps,
+      role: 'menuitemcheckbox',
+      persistOnClick: true,
       ...props,
-      checkmark: resolveShorthand(props.checkmark, { children: <AcceptIcon /> }),
+      checkmark: resolveShorthand(props.checkmark, {
+        defaultProps: { children: <AcceptIcon /> },
+        optional: false,
+      }),
     },
     ref,
   ) as MenuItemCheckboxState;

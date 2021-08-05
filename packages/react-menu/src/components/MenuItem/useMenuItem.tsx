@@ -53,12 +53,14 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
       secondaryContent: 'span',
     },
 
-    icon: resolveShorthand(props.icon, { children: hasIcons ? '' : undefined }),
-    checkmark: resolveShorthand(props.checkmark, { children: hasCheckmarks ? '' : undefined }),
+    icon: resolveShorthand(props.icon, { optional: !hasIcons }),
+    checkmark: resolveShorthand(props.checkmark, { optional: !hasCheckmarks }),
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
-      children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
+      defaultProps: {
+        children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
+      },
     }),
-    content: resolveShorthand(props.content, { children: props.children }),
+    content: resolveShorthand(props.content, { optional: false, defaultProps: { children: props.children } }),
     secondaryContent: resolveShorthand(props.secondaryContent),
   };
 

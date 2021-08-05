@@ -17,7 +17,10 @@ export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLE
     {
       ...radioProps,
       ...props,
-      checkmark: resolveShorthand(props.checkmark, { children: <AcceptIcon /> }),
+      checkmark: resolveShorthand(props.checkmark, {
+        defaultProps: { children: <AcceptIcon /> },
+        optional: false,
+      }),
     },
     ref,
   ) as MenuItemRadioState;
