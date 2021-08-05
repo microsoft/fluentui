@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added role as a link for overflow legends message, so it will read like 7 more link collapsed",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

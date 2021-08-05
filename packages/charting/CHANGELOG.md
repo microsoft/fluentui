@@ -1,8 +1,19 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 02 Aug 2021 12:25:19 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Aug 2021 12:22:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.10)
+
+Thu, 05 Aug 2021 12:22:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.9..@uifabric/charting_v4.16.10)
+
+### Patches
+
+- Added role as a link for overflow legends message, so it will read like 7 more link collapsed ([PR #19254](https://github.com/microsoft/fluentui/pull/19254) by v-scharde@microsoft.com)
+- callout issue resolved by adding preventDismissOnLostFocus prop to callout props ([PR #19255](https://github.com/microsoft/fluentui/pull/19255) by v-scharde@microsoft.com)
+- Border will be visible on rect focus ([PR #19229](https://github.com/microsoft/fluentui/pull/19229) by v-scharde@microsoft.com)
 
 ## [4.16.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.9)
 

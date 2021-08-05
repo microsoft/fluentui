@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "callout issue resolved by adding preventDismissOnLostFocus prop to callout props",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,33 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 05 Aug 2021 12:22:03 GMT",
+      "tag": "@uifabric/charting_v4.16.10",
+      "version": "4.16.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added role as a link for overflow legends message, so it will read like 7 more link collapsed",
+            "author": "v-scharde@microsoft.com",
+            "commit": "765647a5db1605744c5ec1de128ed2ffb5c43587",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "callout issue resolved by adding preventDismissOnLostFocus prop to callout props",
+            "author": "v-scharde@microsoft.com",
+            "commit": "b4660428f3983e26277eaa5ec4378bca83f4d361",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Border will be visible on rect focus",
+            "author": "v-scharde@microsoft.com",
+            "commit": "cec8c8fc3cdfbc2ddb7d3ff9e1dd61abe46f2316",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Aug 2021 12:25:19 GMT",
       "tag": "@uifabric/charting_v4.16.9",
       "version": "4.16.9",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Border will be visible on rect focus",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

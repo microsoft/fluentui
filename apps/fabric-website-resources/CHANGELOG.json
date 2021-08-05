@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Thu, 05 Aug 2021 12:22:03 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.86",
+      "version": "7.9.86",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.14.22",
+            "author": "v-scharde@microsoft.com",
+            "commit": "765647a5db1605744c5ec1de128ed2ffb5c43587",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Aug 2021 12:25:19 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.9.85",
       "version": "7.9.85",
