@@ -35,7 +35,7 @@ Major differences between `root` (shown below as 🌿) and _slots_ (shown below 
 
 ## Detailed Design or Proposal
 
-For the User of the component perspective there will be no changes in the signature.
+For the user of the component perspective there will be no changes in the signature.
 
 ### Converge `root` to a _slot_
 
