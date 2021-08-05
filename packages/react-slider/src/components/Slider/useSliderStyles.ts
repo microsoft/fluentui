@@ -103,6 +103,10 @@ const useThumbStyles = makeStyles({
 
     ':before': {
       position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
       width: 'var(--slider-thumb-size)',
       height: 'var(--slider-thumb-size)',
       content: "''",
