@@ -17,6 +17,9 @@ export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> 
 }
 
 export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
+  /**
+   * required value that identifies this item inside an Accordion component
+   */
   value: AccordionItemValue;
 }
 
