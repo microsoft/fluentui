@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
