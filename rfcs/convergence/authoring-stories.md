@@ -303,8 +303,8 @@ Button.stories.tsx:
 ```tsx
 import { Meta } from '@storybook/react';
 
-export * from "ButtonWithIcon.stories"
 export * from "ButtonDefault.stories"
+export * from "ButtonWithIcon.stories"
 
 export default {
   title: 'Components/Button',
@@ -312,15 +312,15 @@ export default {
 } as Meta;
 ```
 
-ButtonWithIcon.stories.tsx:
-```tsx
-export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
-```
-
 ButtonDefault.stories.tsx:
 ```tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
 ButtonDefault.storyName = "Default"
+```
+
+ButtonWithIcon.stories.tsx:
+```tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
 ##### Bad example - multiple files
