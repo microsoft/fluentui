@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add border and adjust padding to badge component",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch"
-}

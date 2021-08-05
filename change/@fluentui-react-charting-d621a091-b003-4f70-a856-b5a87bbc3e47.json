@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Accessibility change for Area Chart and Line chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
