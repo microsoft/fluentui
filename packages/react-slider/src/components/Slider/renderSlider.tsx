@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 // import { SliderState } from './Slider.types';
 import { sliderShorthandProps } from './useSlider';
 
@@ -8,7 +8,7 @@ import { sliderShorthandProps } from './useSlider';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const renderSlider = (state: any) => {
-  const { slots, slotProps } = getSlots(state, sliderShorthandProps);
+  const { slots, slotProps } = getSlotsCompat(state, sliderShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
