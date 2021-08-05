@@ -1,3 +1,0 @@
-- [Web PeoplePicker](#/controls/web/peoplepicker)
-- [Android PeoplePicker](#/controls/android/peoplepicker)
-- [Android PersonaChip](#/controls/android/chip)

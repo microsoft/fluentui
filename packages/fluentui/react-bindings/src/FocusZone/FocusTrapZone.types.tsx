@@ -15,7 +15,8 @@ export interface FocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>
   disabled?: boolean;
 
   /**
-   * Sets the HTMLElement to focus on when exiting the FocusTrapZone. By default, the target which triggered the FocusTrapZone will get focus.
+   * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
+   * @defaultvalue The `element.target` that triggered the FTZ.
    */
   elementToFocusOnDismiss?: HTMLElement;
 

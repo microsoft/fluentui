@@ -110,14 +110,13 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 background-color: #005a9e;
                 border-color: transparent;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 background-color: Highlight;
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 background-color: Highlight;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-is-focusable={true}
@@ -143,7 +142,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   transition: all 0.1s ease;
                   width: 12px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -275,10 +274,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -325,7 +323,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -338,7 +336,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -350,7 +348,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -362,7 +360,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField1"
@@ -458,10 +456,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -508,7 +505,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -521,7 +518,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -533,7 +530,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -545,7 +542,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField4"
@@ -646,7 +643,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                     display: block;
                   }
               data-automationid="DetailsHeader"
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -655,7 +652,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
             >
               <div
                 aria-colindex={1}
-                aria-labelledby="header7-check"
+                aria-labelledby="header8-check"
                 className=
                     ms-DetailsHeader-cell
                     ms-DetailsHeader-cellIsCheck
@@ -704,7 +701,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 >
                   <div
                     aria-checked={false}
-                    aria-describedby="header7-checkTooltip"
+                    aria-describedby="header8-checkTooltip"
                     aria-label="Toggle selection for all items"
                     className=
                         ms-DetailsRow-check
@@ -763,8 +760,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                     data-automationid="DetailsRowCheck"
                     data-is-focusable={true}
                     data-selection-toggle={true}
-                    id="header7-check"
+                    id="header8-check"
                     role="checkbox"
+                    tabIndex={-1}
                   >
                     <div
                       className=
@@ -833,11 +831,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               vertical-align: middle;
                               width: 18px;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               color: WindowText;
                             }
                         data-icon-name="CircleRing"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -877,11 +874,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                             &:hover {
                               opacity: 1;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
+                              forced-color-adjust: none;
                             }
                         data-icon-name="StatusCircleCheckmark"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -911,14 +908,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       padding-right: 0px;
                       padding-top: 0px;
                       position: absolute;
+                      white-space: nowrap;
                       width: 1px;
                     }
-                id="header7-checkTooltip"
+                id="header8-checkTooltip"
               >
                 Toggle selection for all items
               </label>
               <div
                 aria-colindex={2}
+                aria-labelledby="header8-thumbnail-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -998,7 +997,6 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header7-thumbnail-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1030,7 +1028,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           z-index: 1;
                         }
                     data-is-focusable={true}
-                    id="header7-thumbnail"
+                    id="header8-thumbnail"
                     onClick={[Function]}
                     onContextMenu={[Function]}
                   >
@@ -1044,7 +1042,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                             overflow: hidden;
                             text-overflow: ellipsis;
                           }
-                      id="header7-thumbnail-name"
+                      id="header8-thumbnail-name"
                     >
                       thumbnail
                     </span>
@@ -1116,22 +1114,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                     }
                 id="columnDropHint_1"
               >
-                <i
+                <div
                   aria-hidden={true}
                   className=
-                      ms-Icon
                       ms-DetailsHeader-dropHintCaretStyle
-                      {
-                        display: inline-block;
-                      }
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons-15";
-                        font-style: normal;
-                        font-weight: normal;
-                        speak: none;
-                      }
                       {
                         color: #0078d4;
                         display: none;
@@ -1142,18 +1128,35 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         top: -28px;
                         z-index: 10;
                       }
-                  data-icon-name="CircleShapeSolid"
                   data-is-focusable={false}
                   data-sizer-index={1}
                   role="presentation"
-                  style={
-                    Object {
-                      "fontFamily": "\\"FabricMDL2Icons-15\\"",
-                    }
-                  }
                 >
-                  
-                </i>
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Icon
+                        {
+                          display: inline-block;
+                        }
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          font-family: "FabricMDL2Icons-15";
+                          font-style: normal;
+                          font-weight: normal;
+                          speak: none;
+                        }
+                    data-icon-name="CircleShapeSolid"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons-15\\"",
+                      }
+                    }
+                  >
+                    
+                  </i>
+                </div>
                 <div
                   aria-hidden={true}
                   className=
@@ -1203,7 +1206,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       min-height: 1px;
                       min-width: 100%;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 onBlur={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -1226,413 +1229,6 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         className="ms-List-cell"
                         data-automationid="ListCell"
                         data-list-index={0}
-                        role="presentation"
-                      >
-                        <div
-                          aria-rowindex={1}
-                          aria-selected={false}
-                          className=
-                              ms-FocusZone
-                              ms-DetailsRow
-                              is-contentUnselectable
-                              &:focus {
-                                outline: none;
-                              }
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                animation-duration: 0.367s;
-                                animation-fill-mode: both;
-                                animation-name: keyframes from{opacity:0;}to{opacity:1;};
-                                animation-timing-function: cubic-bezier(.1,.25,.75,.9);
-                                background: #ffffff;
-                                border-bottom: 1px solid #f3f2f1;
-                                box-sizing: border-box;
-                                color: #605e5c;
-                                cursor: default;
-                                display: inline-flex;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                min-height: 42px;
-                                min-width: 100%;
-                                outline: transparent;
-                                padding-bottom: 0px;
-                                padding-left: 0px;
-                                padding-right: 0px;
-                                padding-top: 0px;
-                                position: relative;
-                                text-align: left;
-                                user-select: none;
-                                vertical-align: top;
-                                white-space: nowrap;
-                              }
-                              &::-moz-focus-inner {
-                                border: 0;
-                              }
-                              .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #605e5c;
-                                bottom: 1px;
-                                content: "";
-                                left: 1px;
-                                outline: 1px solid #ffffff;
-                                position: absolute;
-                                right: 1px;
-                                top: 1px;
-                                z-index: 1;
-                              }
-                              .ms-List-cell:first-child &:before {
-                                display: none;
-                              }
-                              &:hover {
-                                background: #f3f2f1;
-                                color: #323130;
-                              }
-                              &:hover .is-row-header {
-                                color: #201f1e;
-                              }
-                              &:hover .ms-DetailsRow-check {
-                                opacity: 1;
-                              }
-                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
-                                opacity: 1;
-                              }
-                          data-automationid="DetailsRow"
-                          data-focuszone-id="FocusZone10"
-                          data-is-draggable={true}
-                          data-is-focusable={true}
-                          data-item-index={0}
-                          data-selection-index={0}
-                          data-selection-touch-invoke={true}
-                          draggable={true}
-                          onFocus={[Function]}
-                          onKeyDown={[Function]}
-                          onMouseDownCapture={[Function]}
-                          role="row"
-                          style={
-                            Object {
-                              "minWidth": 100,
-                            }
-                          }
-                        >
-                          <div
-                            aria-colindex={1}
-                            className=
-                                ms-DetailsRow-cell
-                                ms-DetailsRow-cellCheck
-                                {
-                                  box-sizing: border-box;
-                                  display: inline-block;
-                                  flex-shrink: 0;
-                                  margin-top: -1px;
-                                  min-height: 42px;
-                                  outline: transparent;
-                                  overflow: hidden;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 1px;
-                                  position: relative;
-                                  text-overflow: ellipsis;
-                                  vertical-align: top;
-                                  white-space: nowrap;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #605e5c;
-                                  bottom: 0px;
-                                  content: "";
-                                  left: 0px;
-                                  outline: 1px solid #ffffff;
-                                  position: absolute;
-                                  right: 0px;
-                                  top: 0px;
-                                  z-index: 1;
-                                }
-                                & > button {
-                                  max-width: 100%;
-                                }
-                                & [data-is-focusable='true'] {
-                                  outline: transparent;
-                                  position: relative;
-                                }
-                                & [data-is-focusable='true']::-moz-focus-inner {
-                                  border: 0;
-                                }
-                            data-selection-toggle={true}
-                            role="gridcell"
-                          >
-                            <div
-                              aria-checked={false}
-                              aria-label="Row checkbox"
-                              className=
-                                  ms-DetailsRow-check
-                                  ms-Check-checkHost
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    background-color: transparent;
-                                    background: none;
-                                    border: none;
-                                    box-sizing: border-box;
-                                    cursor: default;
-                                    display: flex;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    height: 42px;
-                                    justify-content: center;
-                                    margin-bottom: 0px;
-                                    margin-left: 0px;
-                                    margin-right: 0px;
-                                    margin-top: 0px;
-                                    opacity: 0;
-                                    outline: transparent;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                    position: relative;
-                                    vertical-align: top;
-                                    width: 48px;
-                                  }
-                                  &::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #ffffff;
-                                    bottom: 1px;
-                                    content: "";
-                                    left: 1px;
-                                    outline: 1px solid #605e5c;
-                                    position: absolute;
-                                    right: 1px;
-                                    top: 1px;
-                                    z-index: 1;
-                                  }
-                              data-automationid="DetailsRowCheck"
-                              data-selection-toggle={true}
-                              role="checkbox"
-                            >
-                              <div
-                                className=
-                                    ms-Check
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 18px;
-                                      line-height: 1;
-                                      position: relative;
-                                      user-select: none;
-                                      vertical-align: top;
-                                      width: 18px;
-                                    }
-                                    &:before {
-                                      background: #ffffff;
-                                      border-radius: 50%;
-                                      bottom: 1px;
-                                      content: "";
-                                      left: 1px;
-                                      opacity: 1;
-                                      position: absolute;
-                                      right: 1px;
-                                      top: 1px;
-                                    }
-                                    .ms-Check-checkHost:hover & {
-                                      opacity: 1;
-                                    }
-                                    .ms-Check-checkHost:focus & {
-                                      opacity: 1;
-                                    }
-                                    &:hover {
-                                      opacity: 1;
-                                    }
-                                    &:focus {
-                                      opacity: 1;
-                                    }
-                              >
-                                <i
-                                  aria-hidden={true}
-                                  className=
-                                      ms-Icon
-                                      ms-Check-circle
-                                      {
-                                        display: inline-block;
-                                      }
-                                      {
-                                        -moz-osx-font-smoothing: grayscale;
-                                        -webkit-font-smoothing: antialiased;
-                                        font-family: "FabricMDL2Icons";
-                                        font-style: normal;
-                                        font-weight: normal;
-                                        speak: none;
-                                      }
-                                      {
-                                        color: #605e5c;
-                                        font-size: 18px;
-                                        height: 18px;
-                                        left: 0px;
-                                        position: absolute;
-                                        text-align: center;
-                                        top: 0px;
-                                        vertical-align: middle;
-                                        width: 18px;
-                                      }
-                                      @media screen and (-ms-high-contrast: active){& {
-                                        color: WindowText;
-                                      }
-                                  data-icon-name="CircleRing"
-                                  role="presentation"
-                                  style={
-                                    Object {
-                                      "fontFamily": "\\"FabricMDL2Icons\\"",
-                                    }
-                                  }
-                                >
-                                  
-                                </i>
-                                <i
-                                  aria-hidden={true}
-                                  className=
-                                      ms-Icon
-                                      ms-Check-check
-                                      {
-                                        display: inline-block;
-                                      }
-                                      {
-                                        -moz-osx-font-smoothing: grayscale;
-                                        -webkit-font-smoothing: antialiased;
-                                        font-family: "FabricMDL2Icons";
-                                        font-style: normal;
-                                        font-weight: normal;
-                                        speak: none;
-                                      }
-                                      {
-                                        color: #605e5c;
-                                        font-size: 16px;
-                                        height: 18px;
-                                        left: .5px;
-                                        opacity: 0;
-                                        position: absolute;
-                                        text-align: center;
-                                        top: 0px;
-                                        vertical-align: middle;
-                                        width: 18px;
-                                      }
-                                      &:hover {
-                                        opacity: 1;
-                                      }
-                                      @media screen and (-ms-high-contrast: active){& {
-                                        -ms-high-contrast-adjust: none;
-                                      }
-                                  data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
-                                  style={
-                                    Object {
-                                      "fontFamily": "\\"FabricMDL2Icons\\"",
-                                    }
-                                  }
-                                >
-                                  
-                                </i>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className=
-                                ms-DetailsRow-fields
-                                {
-                                  align-items: stretch;
-                                  display: flex;
-                                }
-                            data-automationid="DetailsRowFields"
-                            role="presentation"
-                          >
-                            <div
-                              aria-colindex={2}
-                              aria-readonly={true}
-                              className=
-                                  ms-DetailsRow-cell
-                                  {
-                                    box-sizing: border-box;
-                                    display: inline-block;
-                                    min-height: 42px;
-                                    outline: transparent;
-                                    overflow: hidden;
-                                    padding-bottom: 11px;
-                                    padding-left: 12px;
-                                    padding-top: 11px;
-                                    position: relative;
-                                    text-overflow: ellipsis;
-                                    vertical-align: top;
-                                    white-space: nowrap;
-                                  }
-                                  &::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #605e5c;
-                                    bottom: 0px;
-                                    content: "";
-                                    left: 0px;
-                                    outline: 1px solid #ffffff;
-                                    position: absolute;
-                                    right: 0px;
-                                    top: 0px;
-                                    z-index: 1;
-                                  }
-                                  & > button {
-                                    max-width: 100%;
-                                  }
-                                  & [data-is-focusable='true'] {
-                                    outline: transparent;
-                                    position: relative;
-                                  }
-                                  & [data-is-focusable='true']::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  {
-                                    padding-right: 8px;
-                                  }
-                              data-automation-key="thumbnail"
-                              data-automationid="DetailsRowCell"
-                              role="gridcell"
-                              style={
-                                Object {
-                                  "width": 120,
-                                }
-                              }
-                            >
-                              //placehold.it/150x150
-                            </div>
-                          </div>
-                          <span
-                            aria-checked={false}
-                            className=
-
-                                {
-                                  bottom: 0px;
-                                  display: none;
-                                  left: 0px;
-                                  position: absolute;
-                                  right: 0px;
-                                  top: -1px;
-                                }
-                            data-selection-toggle={true}
-                            role="checkbox"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="ms-List-cell"
-                        data-automationid="ListCell"
-                        data-list-index={1}
                         role="presentation"
                       >
                         <div
@@ -1704,14 +1300,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone11"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={1}
-                          data-selection-index={1}
+                          data-item-index={0}
+                          data-selection-index={0}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-0"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -1773,7 +1374,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-0-checkbox row7-0-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -1822,7 +1424,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-0-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -1891,11 +1495,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1935,11 +1538,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2016,7 +1619,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -2039,7 +1642,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={2}
+                        data-list-index={1}
                         role="presentation"
                       >
                         <div
@@ -2111,14 +1714,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone12"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={2}
-                          data-selection-index={2}
+                          data-item-index={1}
+                          data-selection-index={1}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-1"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -2180,7 +1788,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-1-checkbox row7-1-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -2229,7 +1838,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-1-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -2298,11 +1909,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2342,11 +1952,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2423,7 +2033,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -2446,7 +2056,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={3}
+                        data-list-index={2}
                         role="presentation"
                       >
                         <div
@@ -2518,14 +2128,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone13"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={3}
-                          data-selection-index={3}
+                          data-item-index={2}
+                          data-selection-index={2}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-2"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -2587,7 +2202,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-2-checkbox row7-2-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -2636,7 +2252,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-2-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -2705,11 +2323,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2749,11 +2366,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2830,7 +2447,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -2853,7 +2470,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={4}
+                        data-list-index={3}
                         role="presentation"
                       >
                         <div
@@ -2925,14 +2542,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone14"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={4}
-                          data-selection-index={4}
+                          data-item-index={3}
+                          data-selection-index={3}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-3"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -2994,7 +2616,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-3-checkbox row7-3-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -3043,7 +2666,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-3-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -3112,11 +2737,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3156,11 +2780,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3237,7 +2861,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -3260,7 +2884,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={5}
+                        data-list-index={4}
                         role="presentation"
                       >
                         <div
@@ -3332,14 +2956,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone15"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={5}
-                          data-selection-index={5}
+                          data-item-index={4}
+                          data-selection-index={4}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-4"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -3401,7 +3030,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-4-checkbox row7-4-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -3450,7 +3080,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-4-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -3519,11 +3151,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3563,11 +3194,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3644,7 +3275,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -3667,7 +3298,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={6}
+                        data-list-index={5}
                         role="presentation"
                       >
                         <div
@@ -3739,14 +3370,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone16"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={6}
-                          data-selection-index={6}
+                          data-item-index={5}
+                          data-selection-index={5}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-5"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -3808,7 +3444,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-5-checkbox row7-5-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -3857,7 +3494,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-5-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -3926,11 +3565,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3970,11 +3608,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4051,7 +3689,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -4074,7 +3712,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={7}
+                        data-list-index={6}
                         role="presentation"
                       >
                         <div
@@ -4146,14 +3784,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone17"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={7}
-                          data-selection-index={7}
+                          data-item-index={6}
+                          data-selection-index={6}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-6"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -4215,7 +3858,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-6-checkbox row7-6-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -4264,7 +3908,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-6-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -4333,11 +3979,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4377,11 +4022,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4458,7 +4103,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -4481,7 +4126,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={8}
+                        data-list-index={7}
                         role="presentation"
                       >
                         <div
@@ -4553,14 +4198,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone18"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={8}
-                          data-selection-index={8}
+                          data-item-index={7}
+                          data-selection-index={7}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-7"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -4622,7 +4272,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-7-checkbox row7-7-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -4671,7 +4322,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-7-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -4740,11 +4393,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4784,11 +4436,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4865,7 +4517,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span
@@ -4888,7 +4540,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       <div
                         className="ms-List-cell"
                         data-automationid="ListCell"
-                        data-list-index={9}
+                        data-list-index={8}
                         role="presentation"
                       >
                         <div
@@ -4960,14 +4612,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone19"
                           data-is-draggable={true}
                           data-is-focusable={true}
-                          data-item-index={9}
-                          data-selection-index={9}
+                          data-item-index={8}
+                          data-selection-index={8}
                           data-selection-touch-invoke={true}
                           draggable={true}
+                          id="row7-8"
                           onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseDownCapture={[Function]}
@@ -5029,7 +4686,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           >
                             <div
                               aria-checked={false}
-                              aria-label="Row checkbox"
+                              aria-label="select row"
+                              aria-labelledby="row7-8-checkbox row7-8-header"
                               className=
                                   ms-DetailsRow-check
                                   ms-Check-checkHost
@@ -5078,7 +4736,9 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                   }
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
+                              id="row7-8-checkbox"
                               role="checkbox"
+                              tabIndex={-1}
                             >
                               <div
                                 className=
@@ -5147,11 +4807,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                         vertical-align: middle;
                                         width: 18px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5191,11 +4850,11 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       &:hover {
                                         opacity: 1;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5272,7 +4931,421 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                 }
                               }
                             >
-                              //placehold.it/150x150
+                              //via.placeholder.com/150x150
+                            </div>
+                          </div>
+                          <span
+                            aria-checked={false}
+                            className=
+
+                                {
+                                  bottom: 0px;
+                                  display: none;
+                                  left: 0px;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: -1px;
+                                }
+                            data-selection-toggle={true}
+                            role="checkbox"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className="ms-List-cell"
+                        data-automationid="ListCell"
+                        data-list-index={9}
+                        role="presentation"
+                      >
+                        <div
+                          aria-rowindex={11}
+                          aria-selected={false}
+                          className=
+                              ms-FocusZone
+                              ms-DetailsRow
+                              is-contentUnselectable
+                              &:focus {
+                                outline: none;
+                              }
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                animation-duration: 0.367s;
+                                animation-fill-mode: both;
+                                animation-name: keyframes from{opacity:0;}to{opacity:1;};
+                                animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+                                background: #ffffff;
+                                border-bottom: 1px solid #f3f2f1;
+                                box-sizing: border-box;
+                                color: #605e5c;
+                                cursor: default;
+                                display: inline-flex;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                min-height: 42px;
+                                min-width: 100%;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 0px;
+                                position: relative;
+                                text-align: left;
+                                user-select: none;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                              .ms-List-cell:first-child &:before {
+                                display: none;
+                              }
+                              &:hover {
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
+                              }
+                              &:hover .ms-DetailsRow-check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                                opacity: 1;
+                              }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
+                          data-automationid="DetailsRow"
+                          data-focuszone-id="FocusZone20"
+                          data-is-draggable={true}
+                          data-is-focusable={true}
+                          data-item-index={9}
+                          data-selection-index={9}
+                          data-selection-touch-invoke={true}
+                          draggable={true}
+                          id="row7-9"
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onMouseDownCapture={[Function]}
+                          role="row"
+                          style={
+                            Object {
+                              "minWidth": 100,
+                            }
+                          }
+                        >
+                          <div
+                            aria-colindex={1}
+                            className=
+                                ms-DetailsRow-cell
+                                ms-DetailsRow-cellCheck
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  flex-shrink: 0;
+                                  margin-top: -1px;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 0px;
+                                  padding-left: 0px;
+                                  padding-right: 0px;
+                                  padding-top: 1px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                            data-selection-toggle={true}
+                            role="gridcell"
+                          >
+                            <div
+                              aria-checked={false}
+                              aria-label="select row"
+                              aria-labelledby="row7-9-checkbox row7-9-header"
+                              className=
+                                  ms-DetailsRow-check
+                                  ms-Check-checkHost
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    box-sizing: border-box;
+                                    cursor: default;
+                                    display: flex;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    height: 42px;
+                                    justify-content: center;
+                                    margin-bottom: 0px;
+                                    margin-left: 0px;
+                                    margin-right: 0px;
+                                    margin-top: 0px;
+                                    opacity: 0;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    vertical-align: top;
+                                    width: 48px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                              data-automationid="DetailsRowCheck"
+                              data-selection-toggle={true}
+                              id="row7-9-checkbox"
+                              role="checkbox"
+                              tabIndex={-1}
+                            >
+                              <div
+                                className=
+                                    ms-Check
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
+                                      height: 18px;
+                                      line-height: 1;
+                                      position: relative;
+                                      user-select: none;
+                                      vertical-align: top;
+                                      width: 18px;
+                                    }
+                                    &:before {
+                                      background: #ffffff;
+                                      border-radius: 50%;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      opacity: 1;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                    }
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
+                                      opacity: 1;
+                                    }
+                              >
+                                <i
+                                  aria-hidden={true}
+                                  className=
+                                      ms-Icon
+                                      ms-Check-circle
+                                      {
+                                        display: inline-block;
+                                      }
+                                      {
+                                        -moz-osx-font-smoothing: grayscale;
+                                        -webkit-font-smoothing: antialiased;
+                                        font-family: "FabricMDL2Icons";
+                                        font-style: normal;
+                                        font-weight: normal;
+                                        speak: none;
+                                      }
+                                      {
+                                        color: #605e5c;
+                                        font-size: 18px;
+                                        height: 18px;
+                                        left: 0px;
+                                        position: absolute;
+                                        text-align: center;
+                                        top: 0px;
+                                        vertical-align: middle;
+                                        width: 18px;
+                                      }
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                        color: WindowText;
+                                      }
+                                  data-icon-name="CircleRing"
+                                  style={
+                                    Object {
+                                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                                    }
+                                  }
+                                >
+                                  
+                                </i>
+                                <i
+                                  aria-hidden={true}
+                                  className=
+                                      ms-Icon
+                                      ms-Check-check
+                                      {
+                                        display: inline-block;
+                                      }
+                                      {
+                                        -moz-osx-font-smoothing: grayscale;
+                                        -webkit-font-smoothing: antialiased;
+                                        font-family: "FabricMDL2Icons";
+                                        font-style: normal;
+                                        font-weight: normal;
+                                        speak: none;
+                                      }
+                                      {
+                                        color: #605e5c;
+                                        font-size: 16px;
+                                        height: 18px;
+                                        left: .5px;
+                                        opacity: 0;
+                                        position: absolute;
+                                        text-align: center;
+                                        top: 0px;
+                                        vertical-align: middle;
+                                        width: 18px;
+                                      }
+                                      &:hover {
+                                        opacity: 1;
+                                      }
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                        -ms-high-contrast-adjust: none;
+                                        forced-color-adjust: none;
+                                      }
+                                  data-icon-name="StatusCircleCheckmark"
+                                  style={
+                                    Object {
+                                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                                    }
+                                  }
+                                >
+                                  
+                                </i>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            className=
+                                ms-DetailsRow-fields
+                                {
+                                  align-items: stretch;
+                                  display: flex;
+                                }
+                            data-automationid="DetailsRowFields"
+                            role="presentation"
+                          >
+                            <div
+                              aria-colindex={2}
+                              aria-readonly={true}
+                              className=
+                                  ms-DetailsRow-cell
+                                  {
+                                    box-sizing: border-box;
+                                    display: inline-block;
+                                    min-height: 42px;
+                                    outline: transparent;
+                                    overflow: hidden;
+                                    padding-bottom: 11px;
+                                    padding-left: 12px;
+                                    padding-top: 11px;
+                                    position: relative;
+                                    text-overflow: ellipsis;
+                                    vertical-align: top;
+                                    white-space: nowrap;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #605e5c;
+                                    bottom: 0px;
+                                    content: "";
+                                    left: 0px;
+                                    outline: 1px solid #ffffff;
+                                    position: absolute;
+                                    right: 0px;
+                                    top: 0px;
+                                    z-index: 1;
+                                  }
+                                  & > button {
+                                    max-width: 100%;
+                                  }
+                                  & [data-is-focusable='true'] {
+                                    outline: transparent;
+                                    position: relative;
+                                  }
+                                  & [data-is-focusable='true']::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  {
+                                    padding-right: 8px;
+                                  }
+                              data-automation-key="thumbnail"
+                              data-automationid="DetailsRowCell"
+                              role="gridcell"
+                              style={
+                                Object {
+                                  "width": 120,
+                                }
+                              }
+                            >
+                              //via.placeholder.com/150x150
                             </div>
                           </div>
                           <span

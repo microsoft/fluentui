@@ -100,6 +100,7 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}
+        selectionAriaLabel={'Selected contacts'}
         removeButtonAriaLabel={'Remove'}
         onItemSelected={onItemSelected}
         inputProps={{

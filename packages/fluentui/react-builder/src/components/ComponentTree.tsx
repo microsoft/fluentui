@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TreeItemProps, Tree, MenuButton, treeBehavior, treeAsListBehavior } from '@fluentui/react-northstar';
+import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
+import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from './types';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
@@ -57,11 +58,11 @@ const jsonTreeToTreeItems: (
   handleAddComponent,
   handleDeleteComponent,
 ) => {
+  // calculate number of accessibility errors
+  // todo: test, create function as class?
   if (typeof tree === 'string') {
     return {
-      id: Math.random()
-        .toString(36)
-        .slice(2),
+      id: Math.random().toString(36).slice(2),
       title: 'string',
     };
   }
@@ -89,6 +90,7 @@ const jsonTreeToTreeItems: (
         }),
       },
     },
+
     ...(selectedComponentId === tree.uuid && {
       renderItemTitle: (C, { content, ...props }) => {
         return (
@@ -208,7 +210,11 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
       onKeyDown={treeKeyDown}
       items={items}
       activeItemIds={activeItems}
-      styles={{ minHeight: '17rem', maxHeight: '17rem', overflowY: 'auto' }}
+      styles={{
+        minHeight: '17rem',
+        maxHeight: '57rem',
+        overflowY: 'auto',
+      }}
     />
   );
 };

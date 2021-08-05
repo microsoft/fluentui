@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Rating';
+export * from './components/Rating/index';

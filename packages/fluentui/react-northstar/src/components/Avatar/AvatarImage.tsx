@@ -11,7 +11,7 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
+import { UIComponentProps, commonPropTypes, createShorthandFactory, SizeValue } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { imageClassName } from '../Image/Image';
 
@@ -35,9 +35,12 @@ export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
 
   /** AvatarImage source URL. */
   src?: string;
+
+  /** Size multiplier. */
+  size?: SizeValue;
 }
 
-export type AvatarImageStylesProps = Pick<AvatarImageProps, 'avatar' | 'circular' | 'fluid'>;
+export type AvatarImageStylesProps = Pick<AvatarImageProps, 'avatar' | 'circular' | 'fluid' | 'size'>;
 export const avatarImageClassName = imageClassName;
 
 /**
@@ -60,6 +63,7 @@ export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
     fluid,
     styles,
     variables,
+    size,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -76,6 +80,7 @@ export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
       avatar,
       circular,
       fluid,
+      size,
     }),
     mapPropsToInlineStyles: () => ({
       className,

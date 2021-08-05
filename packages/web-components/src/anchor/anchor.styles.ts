@@ -1,59 +1,25 @@
-import { css } from '@microsoft/fast-element';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import {
   AccentButtonStyles,
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  accentForegroundActiveBehavior,
-  accentForegroundCutRestBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
-  BaseButtonStyles,
+  baseButtonStyles,
   HypertextStyles,
   LightweightButtonStyles,
-  neutralFillActiveBehavior,
-  neutralFillFocusBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
   OutlineButtonStyles,
   StealthButtonStyles,
 } from '../styles/';
+import { appearanceBehavior } from '../utilities/behaviors';
 
-export const AnchorStyles = css`
-    ${BaseButtonStyles}
-    ${AccentButtonStyles}
-    ${HypertextStyles}
-    ${LightweightButtonStyles}
-    ${OutlineButtonStyles}
-    ${StealthButtonStyles}
-`.withBehaviors(
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  accentForegroundActiveBehavior,
-  accentForegroundCutRestBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
-  neutralFillActiveBehavior,
-  neutralFillFocusBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-);
+export const anchorStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+  css`
+    ${baseButtonStyles(context, definition)}
+  `.withBehaviors(
+    appearanceBehavior('accent', AccentButtonStyles),
+    appearanceBehavior('hypertext', HypertextStyles),
+    appearanceBehavior('lightweight', LightweightButtonStyles),
+    appearanceBehavior('outline', OutlineButtonStyles),
+    appearanceBehavior('stealth', StealthButtonStyles),
+  );

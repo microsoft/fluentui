@@ -148,6 +148,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   opacity: 1;
                 }
                 &:hover:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:focus {
@@ -161,6 +162,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   opacity: 1;
                 }
                 &:focus:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:before {
@@ -184,14 +186,13 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){&:before {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                   background: Window;
                   border-color: Highlight;
-                }
-                @media screen and (forced-colors: active){&:before {
                   forced-color-adjust: none;
                 }
                 &:after {
+                  background: #0078d4;
                   border-color: #0078d4;
                   border-radius: 50%;
                   border-style: solid;
@@ -208,10 +209,8 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 10px;
                 }
-                @media screen and (-ms-high-contrast: active){&:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                   border-color: Highlight;
-                }
-                @media screen and (forced-colors: active){&:after {
                   forced-color-adjust: none;
                 }
             htmlFor="ChoiceGroup0-bar"

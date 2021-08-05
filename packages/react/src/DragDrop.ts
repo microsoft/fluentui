@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/DragDrop';
+export * from './utilities/dragdrop/index';

@@ -36,7 +36,7 @@ const themes = {
 };
 
 function useRendererFactory(): CreateRenderer {
-  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer : createFelaRenderer;
+  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer() : createFelaRenderer;
 
   React.useEffect(() => {
     (window as any).setFluentRenderer = (rendererName: 'fela' | 'emotion') => {

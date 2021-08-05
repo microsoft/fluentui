@@ -5,7 +5,7 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins } from '../../types/index';
+import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
@@ -48,6 +48,16 @@ export interface ICartesianChartStyleProps {
    * prop to check if the Page is in Rtl
    */
   isRtl?: boolean;
+
+  /**
+   * color of the line
+   */
+  lineColor?: string;
+
+  /**
+   * boolean flag which determines if shape is drawn in callout
+   */
+  toDrawShape?: boolean;
 }
 
 export interface ICartesianChartStyles {
@@ -92,6 +102,11 @@ export interface ICartesianChartStyles {
   calloutContentY?: IStyle;
 
   /**
+   * styles for description message
+   */
+  descriptionMessage?: IStyle;
+
+  /**
    * styles for callout Date time container
    */
   calloutDateTimeContainer?: IStyle;
@@ -122,6 +137,11 @@ export interface ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover?: IStyle;
+
+  /**
+   * styles set for the shape object in the callout
+   */
+  shapeStyles?: IStyle;
 }
 
 export interface ICartesianChartProps {
@@ -301,6 +321,11 @@ export interface ICartesianChartProps {
    * Callout customization props
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * props for the svg; use this to include aria-* or other attributes on the tag
+   */
+  svgProps?: React.SVGProps<SVGSVGElement>;
 }
 
 export interface IYValueHover {
@@ -308,7 +333,10 @@ export interface IYValueHover {
   y?: number;
   color?: string;
   data?: string | number;
+  shouldDrawBorderBottom?: boolean;
   yAxisCalloutData?: string | { [id: string]: number };
+  index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IChildProps {
@@ -362,6 +390,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     color?: string;
     YValue?: string | number;
     XValue?: string;
+    descriptionMessage?: string;
   };
 
   /**

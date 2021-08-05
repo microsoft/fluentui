@@ -36,8 +36,11 @@ export const naturalColors: TeamsNaturalColors = {
     200: '#E1DFDD', // light08
     250: '#C8C6C4', // light06, dark02
     300: '#B3B0AD', // dark03
+    340: '#999',
     350: '#979593', // light04
     400: '#8A8886', // dark04
+    430: '#707070',
+    440: '#666666',
     450: '#605E5C', // light03, dark06, $app-gray-20-theme-agnostic, old $message-highlight-color-darktheme
     500: '#484644', // light02, dark08
     550: '#3B3A39', // dark09
@@ -77,7 +80,7 @@ export const naturalColors: TeamsNaturalColors = {
   red: {
     50: '#FCF4F6', // app red 10
     100: '#F3D6D8', // postOrange[900] app red 08
-    200: '#F9526B', // new, error banner string
+    200: '#F75E75', // new, error banner string
     300: '#E73550', // merge old @app-red-dark-theme
     400: '#C4314B', // red[900], app red 06, siteVariables.red
     500: '#A72037', // app red 04
@@ -87,28 +90,28 @@ export const naturalColors: TeamsNaturalColors = {
     900: '#1E040A', // app red08 dark
   },
   green: {
-    50: undefined,
-    100: undefined,
+    50: '#E7F2DA',
+    100: '#BDDA9B',
     200: '#92C353', // lightGreen[900] old $app-green, available presence dark theme, siteVars.green
     300: '#6BB700', // new Available presence
     400: '#13A40E', // dual presence Available
     500: undefined,
     600: '#237B4B', // old $app-green-04, siteVariables.green04, green[900]
     700: undefined,
-    800: undefined,
-    900: undefined,
+    800: '#0D2E0D',
+    900: '#032003',
   },
   yellow: {
     50: undefined,
     100: '#FBF6D9', // old message highlight color
-    200: undefined,
+    200: '#F2E384',
     300: '#F9EC02', // old acc critical ufd icon color
     400: '#F8D22A', // old siteVariables.yellow, $app-yellow, yellow[900]
     500: '#FFB900', // old $bcast pre live color
     600: '#FFAA44', // new away presence
-    700: undefined,
-    800: undefined,
-    900: undefined,
+    700: '#835C00',
+    800: '#463100',
+    900: '#261A00',
   },
 };
 
@@ -124,7 +127,7 @@ export const primitiveColors: PrimitiveColors = {
 
 export const transparentColors: TeamsTransparentColors = {
   silver: {
-    100: undefined,
+    100: 'rgba(255,255,255,0.85)',
     200: 'rgba(255,255,255,0.75)',
     300: 'rgba(255,255,255,0.65)',
     400: 'rgba(255,255,255,0.5)',
@@ -151,7 +154,7 @@ export const transparentColors: TeamsTransparentColors = {
     300: 'rgba(37,36,35,0.2)',
     400: 'rgba(37,36,35,0.65)',
     500: 'rgba(41,40,40,0.9)',
-    600: undefined,
+    600: 'rgba(0,0,0,0.05)',
     700: 'rgba(0,0,0,0.5)',
     800: 'rgba(27,26,26,0.9)',
     900: 'rgba(0,0,0,0.8)',
@@ -221,6 +224,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground6: colors.grey[200],
     foreground7: colors.grey[750],
     foreground8: colors.grey[750],
+    foreground9: colors.grey[430],
 
     background: colors.white,
     background1: colors.grey[50],
@@ -228,11 +232,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background3: colors.grey[150],
     background4: colors.grey[100],
     background5: colors.grey[350],
+    background6: colors.grey[550],
 
     border: colors.grey[200], // buttons
     border1: colors.grey[150],
     border2: colors.grey[200],
     border3: colors.grey[150], // divider
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 10%
     shadowHover: colors.black, // opacity 10%
@@ -259,11 +265,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
 
     backgroundActive: colors.grey[100],
     backgroundActive1: colors.grey[150],
+    backgroundActive2: colors.grey[150],
 
     borderActive: colors.grey[200], // buttons
     borderActive1: colors.grey[150],
     borderActive2: colors.grey[200],
     borderActive3: colors.grey[150], // divider
+    borderActive4: colors.grey[400],
 
     foregroundFocus: colors.grey[750],
     foregroundFocus1: colors.grey[500],
@@ -324,6 +332,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foregroundPressed: colors.brand[800],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[800], // it's 900 on the button - 800 is same as hover
+    backgroundPressed1: colors.brand[100],
     borderPressed: colors.brand[300],
 
     foregroundActive: colors.brand[600],
@@ -433,6 +442,9 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground3: colors.white,
     background: colors.green[300],
     background1: colors.green[600],
+    background2: colors.green[50],
+    border: colors.green[100],
+    border1: colors.green[600],
   }),
   orange: createColorScheme({
     foreground: colors.orange[400],
@@ -452,11 +464,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground: colors.red[400],
     foreground1: colors.white,
     foreground2: colors.white,
+    foreground3: colors.red[300],
     background: colors.red[400],
     background1: colors.red[50],
     background2: colors.ruby[500],
     background3: colors.red[400],
     border: colors.red[100],
+    border1: colors.red[300],
 
     foregroundHover: colors.white,
     backgroundHover: colors.ruby[600],
@@ -470,9 +484,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground1: colors.grey[800],
     foreground2: colors.white,
     foreground3: colors.grey[750],
+    foreground4: colors.yellow[700],
     background: colors.yellow[600],
     background1: colors.yellow[100],
     background2: colors.yellow[500],
+    background3: colors.yellow[100],
+    border: colors.yellow[200],
+    border1: colors.yellow[700],
   }),
   silver: createColorScheme({
     foreground: colors.white,
@@ -492,6 +510,9 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background: colors.onyx[500],
     background1: colors.onyx[100],
     background2: colors.onyx[500],
+    background3: colors.onyx[400],
+    backgroundHover: colors.onyx[500],
+    backgroundPressed: colors.onyx[800],
     border: colors.onyx[800],
     border1: 'transparent',
     border2: colors.onyx[300],

@@ -4,53 +4,36 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ComponentProps } from '@fluentui/react-compose';
-import * as React from 'react';
-import { SlotProps } from '@fluentui/react-compose';
-
-// @public
-export const iconShorthandProps: never[];
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
 
 // @public (undocumented)
-export const Image: React.ForwardRefExoticComponent<ImageProps & React.RefAttributes<HTMLElement>>;
+const Image_2: React_2.FunctionComponent<ImageProps & React_2.RefAttributes<HTMLElement>>;
+export { Image_2 as Image }
 
 // @public (undocumented)
-export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {
-    alt?: string;
+export interface ImageProps extends ComponentPropsCompat, React_2.ImgHTMLAttributes<HTMLImageElement> {
     bordered?: boolean;
     circular?: boolean;
     fit?: 'none' | 'center' | 'contain' | 'cover';
     fluid?: boolean;
     rounded?: boolean;
-    src?: string;
-}
-
-// @public (undocumented)
-export type ImageSlotProps = SlotProps<ImageSlots, ImageProps, React.ImgHTMLAttributes<HTMLImageElement>>;
-
-// @public (undocumented)
-export interface ImageSlots extends BaseSlots {
 }
 
 // @public (undocumented)
 export interface ImageState extends ImageProps {
     // (undocumented)
-    imageRef?: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public
 export const renderImage: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: ImageState) => JSX.Element;
-};
+export const useImage: (props: ImageProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => ImageState;
 
 // @public (undocumented)
-export const useImageClasses: (state: Record<string, any>) => void;
-
+export const useImageStyles: (state: ImageState) => void;
 
 // (No @packageDocumentation comment for this package)
 

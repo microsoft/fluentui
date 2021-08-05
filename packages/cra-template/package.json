@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/cra-template",
-  "version": "0.1.0",
+  "version": "8.0.1",
   "description": "Create React App template for Fluent UI React",
   "repository": {
     "type": "git",
@@ -8,17 +8,12 @@
     "directory": "packages/cra-template"
   },
   "scripts": {
+    "lint": "eslint --ext .js,.ts,.tsx .",
     "test": "node -r @fluentui/scripts/babel/register scripts/test.ts"
   },
   "license": "MIT",
   "files": [
     "template",
     "template.json"
-  ],
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major"
-    ]
-  }
+  ]
 }

@@ -19,23 +19,25 @@ const ComponentPropValue: React.FunctionComponent<ComponentPropType> = props => 
     const componentName = parameters[0].name.replace('Props', '');
 
     const parentInfo = componentInfoContext.byDisplayName[componentName];
-    const linkName = _.kebabCase(parentInfo.parentDisplayName || componentName);
+    if (parentInfo) {
+      const linkName = _.kebabCase(parentInfo.parentDisplayName || componentName);
 
-    const kindParam = parameters[1] && parameters[1].name !== 'never';
-    const kindIsVisible = name === 'ShorthandCollection' && kindParam;
+      const kindParam = parameters[1] && parameters[1].name !== 'never';
+      const kindIsVisible = name === 'ShorthandCollection' && kindParam;
 
-    const showHash = parentInfo.parentDisplayName || _.size(getComponentGroup(componentName)) > 1;
-    const propsSection = showHash ? `#${_.kebabCase(componentName)}` : '';
+      const showHash = parentInfo.parentDisplayName || _.size(getComponentGroup(componentName)) > 1;
+      const propsSection = showHash ? `#${_.kebabCase(componentName)}` : '';
 
-    return (
-      <span>
-        {name}
-        {`<`}
-        <Link to={`/components/${linkName}/props${propsSection}`}>{parameters[0].name}</Link>
-        {kindIsVisible && <span>, {parameters[1].name}</span>}
-        {`>`}
-      </span>
-    );
+      return (
+        <span>
+          {name}
+          {`<`}
+          <Link to={`/components/${linkName}/props${propsSection}`}>{parameters[0].name}</Link>
+          {kindIsVisible && <span>, {parameters[1].name}</span>}
+          {`>`}
+        </span>
+      );
+    }
   }
 
   return <span>{name}</span>;

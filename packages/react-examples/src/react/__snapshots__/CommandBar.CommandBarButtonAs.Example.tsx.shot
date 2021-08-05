@@ -111,7 +111,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -124,14 +124,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -201,7 +201,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -291,7 +290,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -304,14 +303,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -381,7 +380,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -472,7 +470,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       top: 3px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;
@@ -485,14 +483,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       border: none;
                     }
                     &:hover {
                       background-color: #f3f2f1;
                       color: #201f1e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -562,7 +560,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                           text-align: center;
                         }
                     data-icon-name="Share"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -672,7 +669,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                           outline: transparent;
                           position: absolute;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           border: 1px solid WindowText;
                         }
                         &::-moz-focus-inner {
@@ -798,6 +795,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       display: block;
                                       fill: #0078d4;
                                     }
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      fill: windowtext;
+                                    }
                                 height={10}
                                 width={18}
                               >
@@ -820,7 +820,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
                                     visibility: hidden;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border: 2px solid WindowText;
                                   }
@@ -858,14 +858,12 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
-                                onBlur={[Function]}
-                                onFocus={[Function]}
+                                onBlurCapture={[Function]}
                                 onFocusCapture={[Function]}
                               >
                                 <div
                                   aria-hidden={true}
                                   data-is-visible={true}
-                                  onFocus={[Function]}
                                   style={
                                     Object {
                                       "pointerEvents": "none",
@@ -912,14 +910,12 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       tabIndex={-1}
                                     >
                                       <div
-                                        onBlur={[Function]}
-                                        onFocus={[Function]}
+                                        onBlurCapture={[Function]}
                                         onFocusCapture={[Function]}
                                       >
                                         <div
                                           aria-hidden={true}
                                           data-is-visible={true}
-                                          onFocus={[Function]}
                                           style={
                                             Object {
                                               "pointerEvents": "none",
@@ -960,6 +956,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                     margin-left: 0px;
                                                     margin-right: 0px;
                                                     margin-top: 0px;
+                                                    overflow-wrap: break-word;
                                                   }
                                               id="example-label1"
                                               role="heading"
@@ -1042,7 +1039,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   top: 2px;
                                                   z-index: 1;
                                                 }
-                                                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                                   bottom: -2px;
                                                   left: -2px;
                                                   outline-color: ButtonText;
@@ -1059,7 +1056,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                   background: #106ebe;
                                                   color: #ffffff;
                                                 }
-                                                @media screen and (-ms-high-contrast: active){&:hover {
+                                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                                   border-color: Highlight;
                                                   color: Highlight;
                                                 }
@@ -1078,7 +1075,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             onKeyUp={[Function]}
                                             onMouseDown={[Function]}
                                             onMouseUp={[Function]}
-                                            title="Close"
                                             type="button"
                                           >
                                             <span
@@ -1121,7 +1117,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                       text-align: center;
                                                     }
                                                 data-icon-name="Cancel"
-                                                role="presentation"
                                                 style={
                                                   Object {
                                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1136,7 +1131,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                         <div
                                           aria-hidden={true}
                                           data-is-visible={true}
-                                          onFocus={[Function]}
                                           style={
                                             Object {
                                               "pointerEvents": "none",
@@ -1152,7 +1146,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 <div
                                   aria-hidden={true}
                                   data-is-visible={true}
-                                  onFocus={[Function]}
                                   style={
                                     Object {
                                       "pointerEvents": "none",
@@ -1224,7 +1217,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -1237,14 +1230,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -1314,7 +1307,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Download"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",

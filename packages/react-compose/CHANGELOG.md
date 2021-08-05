@@ -1,8 +1,213 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.29)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.28..@fluentui/react-compose_v1.0.0-beta.29)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/utilities to v8.2.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [1.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.28)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.27..@fluentui/react-compose_v1.0.0-beta.28)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/utilities to v8.2.1 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [1.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.27)
+
+Mon, 28 Jun 2021 07:35:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.26..@fluentui/react-compose_v1.0.0-beta.27)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.0 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+
+## [1.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.26)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.25..@fluentui/react-compose_v1.0.0-beta.26)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/utilities to v8.1.2 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [1.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.25)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.24..@fluentui/react-compose_v1.0.0-beta.25)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.1.1 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [1.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.24)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.23..@fluentui/react-compose_v1.0.0-beta.24)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Changes
+
+- Upgrade typescript to 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [1.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.23)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.22..@fluentui/react-compose_v1.0.0-beta.23)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.22)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.21..@fluentui/react-compose_v1.0.0-beta.22)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+
+## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.21)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.20..@fluentui/react-compose_v1.0.0-beta.21)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [1.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.20)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.19..@fluentui/react-compose_v1.0.0-beta.20)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.19)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.18..@fluentui/react-compose_v1.0.0-beta.19)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [1.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.18)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.17..@fluentui/react-compose_v1.0.0-beta.18)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.17)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.16..@fluentui/react-compose_v1.0.0-beta.17)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.16)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.15..@fluentui/react-compose_v1.0.0-beta.16)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.15 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [1.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.15)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.14..@fluentui/react-compose_v1.0.0-beta.15)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.14)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.13..@fluentui/react-compose_v1.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [1.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.13)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.12..@fluentui/react-compose_v1.0.0-beta.13)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.12)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.11..@fluentui/react-compose_v1.0.0-beta.12)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.11)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.10..@fluentui/react-compose_v1.0.0-beta.11)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.10)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.7..@fluentui/react-compose_v1.0.0-beta.10)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.7)
 

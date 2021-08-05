@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
+import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -21,7 +23,15 @@ import {
   IYValueHover,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, XAxisTypes, NumericAxis, StringAxis, getTypeOfAxis } from '../../utilities/index';
+import {
+  ChartTypes,
+  getAccessibleDataObject,
+  XAxisTypes,
+  NumericAxis,
+  StringAxis,
+  getTypeOfAxis,
+  tooltipOfXAxislabels,
+} from '../../utilities/index';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -37,6 +47,7 @@ export interface IVerticalBarChartState extends IBasestate {
   activeXdataPoint: number | string | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -54,6 +65,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _xAxisLabels: string[];
   private _yMax: number;
   private _isHavingLine: boolean;
+  private _tooltipId: string;
   private _xAxisType: XAxisTypes;
 
   public constructor(props: IVerticalBarChartProps) {
@@ -74,8 +86,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
+    this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
-    this._xAxisType = getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes;
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
   }
 
   public render(): JSX.Element {
@@ -105,7 +121,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       legend: this.state.selectedLegendTitle,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -196,6 +215,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
             visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            onClick={item.point.lineData?.onClick}
           />
         );
       },
@@ -274,11 +294,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     yScale: NumericAxis,
     containerHeight: number,
     containerWidth: number,
+    xElement?: SVGElement | null,
   ) => {
     return (this._bars =
       this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth)
-        : this._createStringBars(containerHeight, containerWidth));
+        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
+        : this._createStringBars(containerHeight, containerWidth, xElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -294,9 +315,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * this._yMax);
     }
-    const colorScale = d3ScaleLinear<string>()
-      .domain(domainValues)
-      .range(this._colors);
+    const colorScale = d3ScaleLinear<string>().domain(domainValues).range(this._colors);
     return colorScale;
   }
 
@@ -340,7 +359,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _onBarHover(
     point: IVerticalBarChartDataPoint,
     color: string,
-    mouseEvent: React.MouseEvent<SVGPathElement>,
+    mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
     mouseEvent.persist();
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
@@ -361,6 +380,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         activeXdataPoint: point.x,
         YValueHover,
         hoverXValue,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -394,6 +414,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             activeXdataPoint: point.x,
             YValueHover,
             hoverXValue,
+            callOutAccessibilityData: point.callOutAccessibilityData,
           });
         }
       });
@@ -434,7 +455,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
   };
 
-  private _createNumericBars(containerHeight: number, containerWidth: number): JSX.Element[] {
+  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
     const colorScale = this._createColors();
@@ -455,13 +476,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           className={this._classNames.opacityChangeOnHover}
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
-          data-is-focusable={true}
+          data-is-focusable={!this.props.hideTooltip}
           height={Math.max(yBarScale(point.y), 0)}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
-          aria-labelledby={this._calloutId}
+          aria-label="Vertical bar chart"
+          role="text"
+          aria-labelledby={`toolTip${this._calloutId}`}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
@@ -469,10 +493,31 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         />
       );
     });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(xBarScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+    }
     return bars;
   }
 
-  private _createStringBars(containerHeight: number, containerWidth: number): JSX.Element[] {
+  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
@@ -483,22 +528,53 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
           height={Math.max(yBarScale(point.y), 0)}
-          aria-labelledby={this._calloutId}
+          aria-label="Vertical bar chart"
+          role="text"
+          aria-labelledby={`toolTip${this._calloutId}`}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
-          data-is-focusable={true}
+          data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}
         />
       );
     });
 
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(xBarScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+        showTooltip: this.props.showXAxisLablesTooltip,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+    }
     return bars;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 
   private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, css, Customizer, ICustomizations, ILinkProps } from '@fluentui/react';
+import { Async, css, mergeStyles, Customizer, ICustomizations, ILinkProps } from '@fluentui/react';
 import { slugify } from '../../utilities/index2';
 import { PageHeader } from '../PageHeader/index';
 import { Markdown } from '../Markdown/index';
@@ -19,6 +19,7 @@ import {
 } from './sections/index';
 import { IPageProps, IPageSectionProps } from './Page.types';
 import * as styles from './Page.module.scss';
+import { sideRailWidth } from '../../styles/constants';
 import { getLinkColors } from '../../utilities/getLinkColors';
 
 const SECTION_STAGGER_INTERVAL = 0.05;
@@ -104,18 +105,20 @@ export class Page extends React.Component<IPageProps, IPageState> {
           sectionWrapperClassName,
         )}
       >
-        {// Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
-        sections.map((section: IPageSectionProps, sectionIndex: number) => {
-          const { renderAs: SectionType = OtherPageSection, className, style, ...rest } = section;
-          return (
-            <SectionType
-              key={section.id || sectionIndex}
-              {...rest}
-              className={css(className, styles.section)}
-              style={{ transitionDelay: `${sectionIndex * SECTION_STAGGER_INTERVAL}s` }}
-            />
-          );
-        })}
+        {
+          // Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
+          sections.map((section: IPageSectionProps, sectionIndex: number) => {
+            const { renderAs: SectionType = OtherPageSection, className, style, ...rest } = section;
+            return (
+              <SectionType
+                key={section.id || sectionIndex}
+                {...rest}
+                className={css(className, styles.section)}
+                style={{ transitionDelay: `${sectionIndex * SECTION_STAGGER_INTERVAL}s` }}
+              />
+            );
+          })
+        }
       </div>
     );
   };
@@ -255,8 +258,23 @@ export class Page extends React.Component<IPageProps, IPageState> {
   };
 
   private _getPageHeader = (): JSX.Element | null => {
-    const { title, subTitle } = this.props;
-    return title ? <PageHeader pageTitle={title} pageSubTitle={subTitle} /> : null;
+    const { showSideRail, title, subTitle, versionSwitcherDefinition } = this.props;
+    return title ? (
+      <PageHeader
+        pageTitle={title}
+        pageSubTitle={subTitle}
+        versionSwitcherDefinition={versionSwitcherDefinition}
+        className={mergeStyles(
+          showSideRail
+            ? {
+                '@media only screen and (min-width: 1360px)': {
+                  width: `calc(100% - ${sideRailWidth}px)`,
+                },
+              }
+            : { width: '100%' },
+        )}
+      />
+    ) : null;
   };
 
   private _getSideRail = (sections: IPageSectionProps[]): JSX.Element | undefined => {

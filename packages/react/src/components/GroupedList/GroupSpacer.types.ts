@@ -6,16 +6,12 @@ import { IStyleFunctionOrObject } from '../../Utilities';
  */
 export interface IGroupSpacerProps {
   /**
-   * Theme from Higher Order Component
-   *
-   * @deprecated unused, to be removed in 7.0
+   * @deprecated Unused. Will be removed in \>= 7.0
    */
   theme?: ITheme;
 
   /**
-   * Style function to be passed in to override the themed or default styles
-   *
-   * @deprecated unused, to be removed in 7.0
+   * @deprecated Unused. Will be removed in \>= 7.0
    */
   // eslint-disable-next-line deprecation/deprecation
   styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
@@ -32,7 +28,7 @@ export interface IGroupSpacerProps {
 
 /**
  * {@docCategory GroupedList}
- * @deprecated unused, to be removed in 7.0. Use {@link IGroupSpacerProps.indentWidth}
+ * @deprecated Unused. Use `IGroupSpacerProps.indentWidth`. Will be removed in \>= 7.0.
  */
 export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>> & {
   width?: number;
@@ -40,7 +36,7 @@ export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>> 
 
 /**
  * {@docCategory GroupedList}
- * @deprecated unused, to be removed in 7.0.
+ * @deprecated Unused. Will be removed in \>= 7.0.
  */
 export interface IGroupSpacerStyles {
   root: IStyle;

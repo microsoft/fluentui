@@ -4,7 +4,7 @@ import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } fro
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
 import { ITooltipHostProps } from '../../Tooltip';
-import { IButtonProps } from '../../compat/Button';
+import { IButtonProps } from '../../Button';
 
 /**
  * {@docCategory Breadcrumb}
@@ -30,7 +30,7 @@ export interface IBreadcrumb {
  */
 export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
+   * Optional callback to access the `IBreadcrumb` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IBreadcrumb>;
@@ -92,7 +92,8 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   overflowAriaLabel?: string;
 
   /**
-   * Optional index where overflow items will be collapsed. Defaults to 0.
+   * Optional index where overflow items will be collapsed.
+   * @default 0
    */
   overflowIndex?: number;
 
@@ -113,9 +114,9 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * {@docCategory Breadcrumb}
  */
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Text to display to the user for the breadcrumb item.
+   * Text to display in the breadcrumb item.
    */
   text: string;
 
@@ -125,12 +126,13 @@ export interface IBreadcrumbItem {
   key: string;
 
   /**
-   * Callback issued when the breadcrumb item is selected.
+   * Callback for when the breadcrumb item is selected.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem) => void;
 
   /**
-   * Url to navigate to when this breadcrumb item is clicked.
+   * URL to navigate to when this breadcrumb item is clicked.
+   * If provided, the breadcrumb will be rendered as a link.
    */
   href?: string;
 

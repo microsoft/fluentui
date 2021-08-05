@@ -3,7 +3,7 @@ import { Avatar } from '@fluentui/react-northstar';
 
 const AvatarExampleShorthand = () => (
   <div>
-    <Avatar name="John Doe" />
+    <Avatar name="Cecil Folk" />
   </div>
 );
 

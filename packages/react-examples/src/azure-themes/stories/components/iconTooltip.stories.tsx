@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IIconProps, initializeIcons } from '@fluentui/react';
 import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { useId } from '@fluentui/react-hooks';
 
 export interface IButtonExampleProps {

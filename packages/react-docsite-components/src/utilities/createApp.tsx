@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App, IAppDefinition, IAppLink } from '../components/App/index';
 import { Router, Route } from './router/index';
-import { setBaseUrl } from '@fluentui/react/lib/Utilities';
 import { Fabric } from '@fluentui/react/lib/Fabric';
 
 import { ExampleGroup, IExample } from './examplesOf';
@@ -26,8 +25,6 @@ export function createApp(
   function _onLoad(): void {
     rootElement = document.createElement('div');
     document.body.appendChild(rootElement);
-
-    setBaseUrl('./dist/');
 
     const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
       group.examples.map(example => {

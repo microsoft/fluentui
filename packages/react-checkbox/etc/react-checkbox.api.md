@@ -4,79 +4,61 @@
 
 ```ts
 
-import { IIconProps } from '@fluentui/react-internal/lib/Icon';
-import { IRefObject } from '@fluentui/utilities';
-import { IRenderFunction } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ITheme } from '@fluentui/style-utilities';
-import * as React from 'react';
-
-// @public (undocumented)
-export const Checkbox: React.FunctionComponent<ICheckboxProps>;
-
-// @public (undocumented)
-export const CheckboxBase: React.FunctionComponent<ICheckboxProps>;
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
+import * as React_2 from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export interface ICheckbox {
-    checked: boolean;
-    focus: () => void;
-    indeterminate: boolean;
+export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition';
+
+// @public
+export interface CheckboxOnChangeData {
+    // (undocumented)
+    checked: 'mixed' | boolean;
 }
 
 // @public
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    ariaPositionInSet?: number;
-    ariaSetSize?: number;
-    boxSide?: 'start' | 'end';
-    checked?: boolean;
-    checkmarkIconProps?: IIconProps;
-    className?: string;
-    componentRef?: IRefObject<ICheckbox>;
-    defaultChecked?: boolean;
-    defaultIndeterminate?: boolean;
+export interface CheckboxProps extends Omit<ComponentPropsCompat, 'children'>, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
+    checked?: 'mixed' | boolean;
+    circular?: boolean;
+    defaultChecked?: 'mixed' | boolean;
     disabled?: boolean;
-    indeterminate?: boolean;
-    inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    label?: string;
-    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
-    onRenderLabel?: IRenderFunction<ICheckboxProps>;
-    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
-    theme?: ITheme;
+    id?: string;
+    indicator?: ShorthandProps<ComponentPropsCompat>;
+    input?: ShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
+    label?: ShorthandProps<LabelProps>;
+    labelPosition?: 'before' | 'after';
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    required?: boolean;
+    rootId?: string;
+    size?: 'medium' | 'large';
 }
 
-// @public (undocumented)
-export interface ICheckboxStyleProps {
-    // (undocumented)
-    checked?: boolean;
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    indeterminate?: boolean;
-    // (undocumented)
-    isUsingCustomLabelRender: boolean;
-    // (undocumented)
-    reversed?: boolean;
-    // (undocumented)
-    theme: ITheme;
+// @public
+export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
+
+// @public
+export const checkboxShorthandProps: CheckboxShorthandProps[];
+
+// @public
+export interface CheckboxState extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+    checkboxClassName?: string;
+    ref: React_2.Ref<HTMLElement>;
 }
 
-// @public (undocumented)
-export interface ICheckboxStyles {
-    checkbox?: IStyle;
-    checkmark?: IStyle;
-    input?: IStyle;
-    label?: IStyle;
-    root?: IStyle;
-    text?: IStyle;
-}
+// @public
+export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
+// @public
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CheckboxProps | undefined) => CheckboxState;
+
+// @public
+export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
 
 // (No @packageDocumentation comment for this package)
 

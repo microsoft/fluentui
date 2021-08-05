@@ -21,6 +21,11 @@ const Types = () => (
       examplePath="components/Datepicker/Types/DatepickerExampleNoInput"
     />
     <ComponentExample
+      title="Week selection"
+      description="The user can choose the entire week"
+      examplePath="components/Datepicker/Types/DatepickerExampleWeek"
+    />
+    <ComponentExample
       title="Localized Calendar"
       description="The dates can be localized."
       examplePath="components/Datepicker/Types/DatepickerExampleLocalizationStrings"

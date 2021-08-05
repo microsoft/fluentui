@@ -1,7 +1,17 @@
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, IComboBox, SelectableOptionMenuItemType } from '@fluentui/react/lib/index';
+import {
+  ComboBox,
+  IComboBoxOption,
+  SelectableOptionMenuItemType,
+  Toggle,
+  IComboBox,
+  IComboBoxStyles,
+  IStackTokens,
+  Stack,
+} from '@fluentui/react';
+import { useBoolean } from '@fluentui/react-hooks';
 
-const items: IComboBoxOption[] = [
+const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
@@ -16,28 +26,44 @@ const items: IComboBoxOption[] = [
   { key: 'I', text: 'Option I' },
   { key: 'J', text: 'Option J' },
 ];
+let newKey = 1;
+// Optional styling to make the example look nicer
+const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
+const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-const comboBoxStyle = { maxWidth: 300 };
-
-export const ComboBoxControlledExample: React.FC = () => {
+export const ComboBoxControlledExample: React.FunctionComponent = () => {
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>('C');
+  // Manually updating the options list is only necessary when allowFreeform is true
+  const [options, setOptions] = React.useState(INITIAL_OPTIONS);
+  const [allowFreeform, { toggle: toggleAllowFreeform }] = useBoolean(true);
 
   const onChange = React.useCallback(
-    (ev: React.FormEvent<IComboBox>, option?: IComboBoxOption): void => {
-      setSelectedKey(option?.key);
+    (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
+      let key = option?.key;
+      if (allowFreeform && !option && value) {
+        // If allowFreeform is true, the newly selected option might be something the user typed that
+        // doesn't exist in the options list yet. So there's extra work to manually add it.
+        key = `${newKey++}`;
+        setOptions(prevOptions => [...prevOptions, { key: key!, text: value }]);
+      }
+
+      setSelectedKey(key);
     },
-    [setSelectedKey],
+    [allowFreeform],
   );
 
   return (
-    <ComboBox
-      style={comboBoxStyle}
-      selectedKey={selectedKey}
-      label="Controlled single-select ComboBox (allowFreeform: T)"
-      allowFreeform
-      autoComplete="on"
-      options={items}
-      onChange={onChange}
-    />
+    <Stack horizontal tokens={stackTokens}>
+      <ComboBox
+        selectedKey={selectedKey}
+        label="Controlled single-select ComboBox"
+        autoComplete="on"
+        allowFreeform={allowFreeform}
+        options={options}
+        onChange={onChange}
+        styles={comboBoxStyles}
+      />
+      <Toggle label="Allow freeform" checked={allowFreeform} onChange={toggleAllowFreeform} />
+    </Stack>
   );
 };

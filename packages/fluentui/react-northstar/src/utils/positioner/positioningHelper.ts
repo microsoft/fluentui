@@ -49,19 +49,11 @@ const shouldAlignToCenter = (p: Position, a: Alignment) => {
  * | after    | center    |  right          |  left
  * | after    | bottom    |  right-end      |  left-end
  */
-export const getPlacement = ({
-  align,
-  position,
-  rtl,
-}: {
-  align: Alignment;
-  position: Position;
-  rtl: boolean;
-}): PopperJs.Placement => {
+export const getPlacement = (align: Alignment, position: Position, rtl: boolean): PopperJs.Placement => {
   const alignment: Alignment = shouldAlignToCenter(position, align) ? 'center' : align;
   const computedPosition = getPositionMap(rtl)[position];
-  const computedAlignmnent = getAlignmentMap(rtl)[alignment];
-  const stringifiedAlignment = computedAlignmnent && `-${computedAlignmnent}`;
+  const computedAlignment = getAlignmentMap(rtl)[alignment];
+  const stringifiedAlignment = computedAlignment && `-${computedAlignment}`;
 
   return `${computedPosition}${stringifiedAlignment}` as PopperJs.Placement;
 };

@@ -3,17 +3,15 @@ import { Dropdown } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const inputItems = [
-  'Bruce Wayne',
-  'Natasha Romanoff',
-  'Steven Strange',
-  'Alfred Pennyworth',
-  'Tony Stark',
-  'Thanos',
-  'Peter Parker',
-  'Steve Rogers',
-  'Black Widow',
-  'Groot',
-  'Star Lord',
+  'Robert Tolbert',
+  'Wanda Howard',
+  'Tim Deboer',
+  'Amanda Brady',
+  'Ashley McCarthy',
+  'Cameron Evans',
+  'Carlos Slattery',
+  'Carole Poland',
+  'Robin Counts',
 ];
 
 const DropdownExampleLoading = () => {

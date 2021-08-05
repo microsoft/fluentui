@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, Flex, Text } from '@fluentui/react-northstar';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];
+const inputItems = ['Robert Tolbert', 'Wanda Howard', 'Tim Deboer', 'Amanda Brady'];
 
 class DropdownExampleControlled extends React.Component {
   state = { open: false };

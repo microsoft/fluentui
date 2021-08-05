@@ -19,18 +19,18 @@ const itemRenderer = (Component, props) => <MenuButton contextMenu trigger={<Com
 
 const items3 = [
   {
-    key: 'irving',
-    content: <ActiveBarItem name="Irving Kuhic" />,
+    key: 'robert',
+    content: <ActiveBarItem name="Robert Tolbert" />,
     children: itemRenderer,
   },
   {
-    key: 'skyler',
-    content: <ActiveBarItem name="Skyler Parks" />,
+    key: 'celeste',
+    content: <ActiveBarItem name="Celeste Burton" />,
     children: itemRenderer,
   },
   {
-    key: 'dante',
-    content: <ActiveBarItem name="Dante Schneider" />,
+    key: 'cecil',
+    content: <ActiveBarItem name="Cecil Folk" />,
     children: itemRenderer,
   },
 ];

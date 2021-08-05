@@ -1,9 +1,10 @@
-import { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } from 'just-scripts';
+import { task, series, parallel, condition, option, argv, addResolvePath } from 'just-scripts';
 import { Arguments } from 'yargs-parser';
 
 import path from 'path';
 import fs from 'fs';
 
+import { babel } from './tasks/babel';
 import { clean } from './tasks/clean';
 import { copy } from './tasks/copy';
 import { jest as jestTask, jestWatch } from './tasks/jest';
@@ -11,7 +12,7 @@ import { sass } from './tasks/sass';
 import { ts } from './tasks/ts';
 import { eslint } from './tasks/eslint';
 import { webpack, webpackDevServer } from './tasks/webpack';
-import { verifyApiExtractor, updateApiExtractor } from './tasks/api-extractor';
+import { apiExtractor } from './tasks/api-extractor';
 import { lintImports } from './tasks/lint-imports';
 import { prettier } from './tasks/prettier';
 import { checkForModifiedFiles } from './tasks/check-for-modified-files';
@@ -20,10 +21,9 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { fluentuiLernaPublish } from './tasks/fluentui-publish';
-import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
+  babel: boolean;
   production: boolean;
   webpackConfig: string;
   commonjs: boolean;
@@ -59,19 +59,6 @@ function basicPreset() {
   option('package', { alias: 'p' });
 }
 
-/** Resolve whereas a storybook config + stories exist for a given path */
-function checkForStorybookExistence() {
-  const packageName = path.basename(process.cwd());
-
-  // Returns true if the current package has a storybook config or the examples package has a storybook config and
-  // contains a folder with the current package's name.
-  return (
-    !!resolveCwd('./.storybook/main.js') ||
-    (!!resolveCwd('../react-examples/.storybook/main.js') &&
-      fs.existsSync(path.join(findGitRoot(), `packages/react-examples/src/${packageName}`)))
-  );
-}
-
 export function preset() {
   basicPreset();
 
@@ -91,17 +78,14 @@ export function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer(getJustArgv()));
-  task('api-extractor:verify', verifyApiExtractor());
-  task('api-extractor:update', updateApiExtractor());
+  task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
-
-  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
-  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('babel:postprocess', babel);
 
   task('ts:compile', () => {
     const args = getJustArgv();
@@ -115,7 +99,13 @@ export function preset() {
         );
   });
 
-  task('ts', series('ts:compile', 'ts:postprocess'));
+  task('ts', () => {
+    return series(
+      'ts:compile',
+      'ts:postprocess',
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    );
+  });
 
   task(
     'test',
@@ -125,7 +115,6 @@ export function preset() {
   task('lint', parallel('lint-imports', 'eslint'));
 
   task('code-style', series('prettier', 'lint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
@@ -139,16 +128,13 @@ export function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => !getJustArgv().min),
+      condition('api-extractor', () => !getJustArgv().min),
     ),
   ).cached();
 
   task(
     'bundle',
-    parallel(
-      condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => checkForStorybookExistence()),
-    ),
+    condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
 }
 

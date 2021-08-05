@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { Dialog, DialogFooter, DialogType, IDialogContentProps } from '@fluentui/react/lib/Dialog';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { IModalProps } from '@fluentui/react/lib/Modal';

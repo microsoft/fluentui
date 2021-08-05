@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
-import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
 
-export const menuButtonShorthandProps = ['icon', 'content', 'menuIcon', 'menu'];
+/**
+ * Consts listing which props are shorthand props.
+ */
+export const menuButtonShorthandPropsCompat: MenuButtonShorthandPropsCompat[] = ['icon', 'menuIcon'];
 
-const mergeProps = makeMergeProps({ deepMerge: menuButtonShorthandProps });
+const mergeProps = makeMergeProps<MenuButtonState>({ deepMerge: menuButtonShorthandPropsCompat });
 
 /**
  * Redefine the component factory, reusing button factory.
@@ -17,16 +20,18 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
     {
       ref,
       as: 'button',
+      // Button slots
       icon: { as: 'span' },
-      content: { as: 'span', children: props.children },
+      // MenuButton slots
       menuIcon: { as: 'span' },
-      menu: { as: 'span' },
+      // Non-slot props
+      size: 'medium',
     },
-    defaultProps,
-    resolveShorthandProps(props, menuButtonShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, menuButtonShorthandPropsCompat),
+    resolveShorthandProps(props, menuButtonShorthandPropsCompat),
   ) as MenuButtonState;
 
   useMenuButtonState(state);
 
-  return state as MenuButtonState;
+  return state;
 };

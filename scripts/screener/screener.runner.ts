@@ -1,8 +1,18 @@
 import fetch from 'node-fetch';
 import { ScreenerRunnerConfig } from './screener.types';
 
-const SCREENER_ENDPOINT = 'https://screener.io/api/v2/projects';
-const SCREENER_PROXY_ENDPOINT = 'https://screener-proxy.vercel.app/api/ci';
+const environment = {
+  screener: {
+    /**
+     *  Screener API endpoint used to create the tasks.
+     **/
+    apiUri: process.env.SCREENER_ENDPOINT,
+    /**
+     *  Screener Proxy endpoint used to orchestrate the GitHub checks for Screener.
+     **/
+    proxyUri: process.env.SCREENER_PROXY_ENDPOINT,
+  },
+};
 
 function wait(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -32,7 +42,7 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
-  const response = await fetch(SCREENER_ENDPOINT, {
+  const response = await fetch(environment.screener.apiUri, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -71,7 +81,7 @@ async function scheduleScreenerBuild(
 async function notifyIntegration(commit: string, url: string) {
   const payload = { commit, url };
 
-  await fetch(SCREENER_PROXY_ENDPOINT, {
+  await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

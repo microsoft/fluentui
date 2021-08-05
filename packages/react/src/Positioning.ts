@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Positioning';
+export * from './utilities/positioning/index';

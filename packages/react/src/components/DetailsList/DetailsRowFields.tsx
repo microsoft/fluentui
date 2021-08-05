@@ -35,6 +35,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
     getCellValueKey,
     cellsByColumn,
     enableUpdateAnimations,
+    rowHeaderId,
   } = props;
 
   const cellValueKeysRef = React.useRef<{
@@ -80,6 +81,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
         return (
           <div
             key={key}
+            id={column.isRowHeader ? rowHeaderId : undefined}
             role={column.isRowHeader ? 'rowheader' : 'gridcell'}
             aria-readonly
             aria-colindex={columnIndex + columnStartIndex + 1}

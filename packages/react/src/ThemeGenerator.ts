@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ThemeGenerator';
+export * from './components/ThemeGenerator/index';

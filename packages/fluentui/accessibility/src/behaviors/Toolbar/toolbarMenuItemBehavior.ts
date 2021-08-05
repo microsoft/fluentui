@@ -1,5 +1,5 @@
-import { Accessibility, AccessibilityAttributes } from '../../types';
-import { menuItemBehavior } from '../Menu/menuItemBehavior';
+import { Accessibility } from '../../types';
+import { menuItemBehavior, MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
 
 /**
  * @description
@@ -9,7 +9,6 @@ import { menuItemBehavior } from '../Menu/menuItemBehavior';
  * Adds role 'presentation' to 'wrapper' slot.
  * Adds role 'menuitem' to 'root' slot.
  * Adds attribute 'tabIndex=0' to 'root' slot.
- * Adds attribute 'data-is-focusable=false' to 'root' slot if 'disabled' property is true. Sets the attribute to 'true' otherwise.
  * Adds attribute 'aria-label' based on the property 'aria-label' to 'root' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
@@ -26,11 +25,4 @@ export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps
   return menuItemBehavior({ ...props, vertical: true });
 };
 
-export type ToolbarMenuItemBehaviorProps = {
-  /** Indicated if menu item has submenu. TODO: fix types for all behaviours */
-  menu?: any;
-  /** Defines if submenu is opened. */
-  menuOpen?: boolean;
-  /** If a menu item can is currently unable to be interacted with. */
-  disabled?: boolean;
-} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;
+export type ToolbarMenuItemBehaviorProps = Omit<MenuItemBehaviorProps, 'vertical'>;

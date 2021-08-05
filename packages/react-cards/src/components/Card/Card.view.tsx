@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
@@ -10,6 +11,7 @@ import { ICardItemProps } from './CardItem/CardItem.types';
 import { CardSection } from './CardSection/CardSection';
 import { ICardSectionProps } from './CardSection/CardSection.types';
 
+/** @deprecated */
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
     root: Stack,

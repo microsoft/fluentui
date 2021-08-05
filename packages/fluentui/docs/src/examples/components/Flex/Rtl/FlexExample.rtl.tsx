@@ -5,7 +5,7 @@ const FlexExampleMediaCard = () => (
   <Flex gap="gap.medium" padding="padding.medium" debug>
     <Flex.Item size="size.medium">
       <div style={{ position: 'relative' }}>
-        <Image fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg" />
+        <Image fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg" />
       </div>
     </Flex.Item>
 

@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 
 /**
  * @description

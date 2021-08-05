@@ -7,6 +7,7 @@ import {
   getFocusStyle,
   getGlobalClassNames,
   FontWeights,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
@@ -104,9 +105,21 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     focusHoverBackground: neutralQuaternaryAlt,
   };
 
+  const rowHighContrastFocus = {
+    top: 2,
+    right: 2,
+    bottom: 2,
+    left: 2,
+  };
+
   // Selected row styles
   const selectedStyles: IStyle = [
-    getFocusStyle(theme, { inset: -1, borderColor: focusBorder, outlineColor: white }),
+    getFocusStyle(theme, {
+      inset: -1,
+      borderColor: focusBorder,
+      outlineColor: white,
+      highContrastStyle: rowHighContrastFocus,
+    }),
     classNames.isSelected,
     {
       color: colors.selectedMetaText,
@@ -196,7 +209,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
         [HighContrastSelector]: {
           background: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
           selectors: {
             a: {
               color: 'HighlightText',
@@ -261,7 +274,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
         [HighContrastSelector]: {
           background: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
           selectors: {
             a: {
               color: 'HighlightText',
@@ -316,6 +329,11 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
 
           [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1,
+          },
+
+          '.ms-GroupSpacer': {
+            flexShrink: 0,
+            flexGrow: 0,
           },
         },
       },

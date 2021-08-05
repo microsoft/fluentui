@@ -3,7 +3,6 @@
 exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctly 1`] = `
 <div>
   <div
-    aria-label=""
     className=
         ms-Rating-star
         ms-RatingStar-root
@@ -57,9 +56,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
+      role="textbox"
       tabIndex={0}
     >
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -108,7 +110,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-0"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -127,11 +129,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-1"
         >
-          Select 1 of 5 stars
+          1 of 5 stars
         </span>
         <div
           className=
@@ -182,7 +185,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   top: 0;
                   vertical-align: middle;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
@@ -197,6 +200,8 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -245,7 +250,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-1"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -264,11 +269,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-2"
         >
-          Select 2 of 5 stars
+          2 of 5 stars
         </span>
         <div
           className=
@@ -319,7 +325,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   top: 0;
                   vertical-align: middle;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
@@ -334,6 +340,8 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -382,7 +390,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-2"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -401,11 +409,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-3"
         >
-          Select 3 of 5 stars
+          3 of 5 stars
         </span>
         <div
           className=
@@ -456,7 +465,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   top: 0;
                   vertical-align: middle;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
@@ -471,6 +480,8 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -519,7 +530,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-3"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -538,11 +549,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-4"
         >
-          Select 4 of 5 stars
+          4 of 5 stars
         </span>
         <div
           className=
@@ -593,7 +605,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   top: 0;
                   vertical-align: middle;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
@@ -608,6 +620,8 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
+        aria-checked={true}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -657,7 +671,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-4"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -676,11 +690,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-5"
         >
-          Select 5 of 5 stars
+          5 of 5 stars
         </span>
         <div
           className=
@@ -731,7 +746,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   top: 0;
                   vertical-align: middle;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Highlight;
                 }
             data-icon-name="FavoriteStarFill"
@@ -791,7 +806,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -803,18 +818,19 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           position: relative;
           top: 0px;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
           border-color: WindowText;
           color: Window;
+          forced-color-adjust: none;
         }
         &:hover {
           background-color: #106ebe;
           border: 1px solid #106ebe;
           color: #ffffff;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           background-color: Highlight;
           border-color: Highlight;
           color: Window;
@@ -824,11 +840,12 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           border: 1px solid #005a9e;
           color: #ffffff;
         }
-        @media screen and (-ms-high-contrast: active){&:active {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
           border-color: WindowText;
           color: Window;
+          forced-color-adjust: none;
         }
     data-is-focusable={true}
     onClick={[Function]}

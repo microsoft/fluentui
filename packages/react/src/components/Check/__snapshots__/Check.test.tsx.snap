@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check renders Check (correctly) 1`] = `
+<div
+  className=
+      ms-Check
+      is-checked
+      test-className
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 18px;
+        line-height: 1;
+        position: relative;
+        user-select: none;
+        vertical-align: top;
+        width: 18px;
+      }
+      &:before {
+        background: #0078d4;
+        border-radius: 50%;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        opacity: 1;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+      }
+      .ms-Check-checkHost:hover & {
+        opacity: 1;
+      }
+      .ms-Check-checkHost:focus & {
+        opacity: 1;
+      }
+      &:hover {
+        opacity: 1;
+      }
+      &:focus {
+        opacity: 1;
+      }
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
+        background: Window;
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon
+        ms-Check-circle
+        {
+          display: inline-block;
+        }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
+          align-items: center;
+          color: #ffffff;
+          display: inline-flex;
+          font-size: 18px;
+          height: 18px;
+          justify-content: center;
+          left: 0px;
+          position: absolute;
+          text-align: center;
+          top: 0px;
+          vertical-align: middle;
+          width: 18px;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          color: WindowText;
+        }
+    data-icon-name="CircleRing"
+    style={
+      Object {
+        "fontFamily": "\\"FabricMDL2Icons\\"",
+      }
+    }
+  >
+    
+  </i>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon
+        ms-Check-check
+        {
+          display: inline-block;
+        }
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
+          align-items: center;
+          color: #ffffff;
+          display: inline-flex;
+          font-size: 16px;
+          font-weight: 900;
+          height: 18px;
+          justify-content: center;
+          left: .5px;
+          opacity: 1;
+          position: absolute;
+          text-align: center;
+          top: -1px;
+          vertical-align: middle;
+          width: 18px;
+        }
+        &:hover {
+          opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          -ms-high-contrast-adjust: none;
+          border: none;
+          color: WindowText;
+          forced-color-adjust: none;
+        }
+    data-icon-name="StatusCircleCheckmark"
+    style={
+      Object {
+        "fontFamily": "\\"FabricMDL2Icons\\"",
+      }
+    }
+  >
+    
+  </i>
+</div>
+`;

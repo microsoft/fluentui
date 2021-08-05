@@ -227,23 +227,23 @@ Provider.propTypes = {
   theme: PropTypes.shape({
     siteVariables: PropTypes.object,
     componentVariables: PropTypes.object,
-    componentStyles: PropTypes.object,
+    componentStyles: PropTypes.objectOf(PropTypes.any),
     fontFaces: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
+      PropTypes.exact({
+        name: PropTypes.string.isRequired,
         paths: PropTypes.arrayOf(PropTypes.string),
-        style: PropTypes.shape({
+        props: PropTypes.shape({
           fontStretch: PropTypes.string,
           fontStyle: PropTypes.string,
           fontVariant: PropTypes.string,
-          fontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-          localAlias: PropTypes.string,
+          fontWeight: PropTypes.number,
+          localAlias: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
           unicodeRange: PropTypes.string,
         }),
       }),
     ),
-    staticStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])),
-    animations: PropTypes.object,
+    staticStyles: PropTypes.array,
+    animations: PropTypes.objectOf(PropTypes.any),
   }),
   rtl: PropTypes.bool,
   disableAnimations: PropTypes.bool,

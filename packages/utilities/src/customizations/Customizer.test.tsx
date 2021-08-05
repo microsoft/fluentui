@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';

@@ -44,8 +44,8 @@ const rowsMembers = [
       {
         content: (
           <Flex gap="gap.medium" vAlign="center">
-            <Avatar name="John Doe (Software Developer)" status="success" />
-            <Text>John Doe</Text>
+            <Avatar name="Cecil Folk (Software Developer)" status="success" />
+            <Text>Cecil Folk</Text>
           </Flex>
         ),
         key: '1-2',

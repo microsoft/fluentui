@@ -180,10 +180,7 @@ export function _getImportIdentifiers(contents: string | undefined): IImportIden
   // Foo          for `import Foo from 'foo'`
   // { Foo, Bar } for `import { Foo, Bar } from 'foo'`
   const hadBracket = (contents || '').indexOf('{') !== -1;
-  contents = (contents || '')
-    .replace('{', '')
-    .replace('}', '')
-    .trim();
+  contents = (contents || '').replace('{', '').replace('}', '').trim();
 
   const items: IImportIdentifiers[] = [];
   IMPORT_ITEM_REGEX.lastIndex = 0;

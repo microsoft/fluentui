@@ -101,6 +101,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}
+        selectionAriaLabel={'Selected contacts'}
         removeButtonAriaLabel={'Remove'}
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),

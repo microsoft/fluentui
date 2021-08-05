@@ -7,12 +7,17 @@ import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
 import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
-import { IWithViewportProps, IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../../List';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
+import {
+  IDetailsColumnStyleProps,
+  IDetailsColumnProps,
+  IDetailsColumnStyles,
+  IDetailsColumnFilterIconProps,
+} from './DetailsColumn.types';
 
 export {
   IDetailsHeaderProps,
@@ -138,10 +143,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   isHeaderVisible?: boolean;
 
-  /** column defitions. If none are provided, default columns will be created based on the items' properties. */
+  /** Column definitions. If none are provided, default columns will be created based on the items' properties. */
   columns?: IColumn[];
 
-  /** Controls how the list contrains overflow. */
+  /** Controls how the list constrains overflow. */
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
@@ -245,11 +250,17 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Accessible label describing or summarizing the list. */
   ariaLabel?: string;
 
-  /** Accessible label for the check button. */
+  /** Accessible label for the row check button, e.g. "select row". */
   checkButtonAriaLabel?: string;
+
+  /** Accessible label for the group header check button, e.g. "select section". */
+  checkButtonGroupAriaLabel?: string;
 
   /** Accessible label for the grid within the list. */
   ariaLabelForGrid?: string;
+
+  /** An optional margin for proportional columns, to e.g. account for scrollbars when laying out width. */
+  flexMargin?: number;
 
   /**
    * Whether the role `application` should be applied to the list.
@@ -322,6 +333,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /** Role for the list. */
+  role?: string;
 }
 
 /**
@@ -340,6 +354,14 @@ export interface IColumn {
    */
   fieldName?: string;
 
+  /**
+   * If specified, the width of the column is a portion of the available space equal to this value divided by the sum
+   * of all proportional column widths in the list. For example, if there is a list with two proportional columns that
+   * have widths of 1 and 3, they will respectively occupy (1/4) = 25% and (3/4) = 75% of the remaining space. Note that
+   * this relies on viewport measures and will not work well with skipViewportMeasures.
+   */
+  flexGrow?: number;
+
   /** Class name to apply to the column cell within each row. */
   className?: string;
 
@@ -350,8 +372,18 @@ export interface IColumn {
   minWidth: number;
 
   /**
+   * If specified, the width of the column is a portion of the available space equal to this value divided by the sum
+   * of all proportional column widths in the list. For example, if there is a list with two proportional columns that
+   * have widths of 1 and 3, they will respectively occupy (1/4) = 25% and (2/4) = 75% of the remaining space. Note that
+   * this relies on viewport measures and will not work well with skipViewportMeasures.
+   */
+  targetWidthProportion?: number;
+
+  /**
    * Accessible label for the column. The column name will still be used as the primary label,
-   * but this text (if specified) will be read after the column name.
+   * but this text (if specified) will be used as the column description.
+   * WARNING: grid column descriptions are often ignored by screen readers, so any necessary information
+   * should go directly in the column content
    */
   ariaLabel?: string;
 
@@ -408,6 +440,12 @@ export interface IColumn {
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+
+  /** Custom renderer for filter icon. */
+  onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
+
+  /** Custom renderer for column header content, instead of the default text rendering. */
+  onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
 
   /** Whether the list is filtered by this column. If true, shows a filter icon next to this column's name. */
   isFiltered?: boolean;

@@ -33,7 +33,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPersonas.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPersonas.md') as string
                 }
               </Markdown>
               <ColorPalette colors={personaColors} />
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPersonasGroups.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsPersonasGroups.md') as string
                 }
               </Markdown>
               <ColorPalette colors={personaGroupColors} />

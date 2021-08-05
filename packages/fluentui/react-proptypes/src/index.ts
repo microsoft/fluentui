@@ -67,12 +67,7 @@ export const suggest = (suggestions: string[]) => {
   // way of looking up a value in the map, i.e. we can sort the words in the
   // incoming propValue and look that up without having to check all permutations.
   const suggestionsLookup: Record<string, boolean> = suggestions.reduce((acc: Record<string, boolean>, key: string) => {
-    acc[
-      key
-        .split(' ')
-        .sort()
-        .join(' ')
-    ] = true;
+    acc[key.split(' ').sort().join(' ')] = true;
     return acc;
   }, {});
 
@@ -85,10 +80,7 @@ export const suggest = (suggestions: string[]) => {
     // check if the words were correct but ordered differently.
     // Since we're matching for classNames we need to allow any word order
     // to pass validation, e.g. `left chevron` vs `chevron left`.
-    const propValueSorted = propValue
-      .split(' ')
-      .sort()
-      .join(' ');
+    const propValueSorted = propValue.split(' ').sort().join(' ');
     if (suggestionsLookup[propValueSorted]) return undefined;
 
     // find best suggestions
@@ -489,8 +481,8 @@ export const animation = PropTypes.oneOfType([
 // Heads Up!
 // Keep in sync with packages/react/src/themes/types.ts
 export const design = PropTypes.shape({
-  position: PropTypes.string,
-  display: PropTypes.string,
+  position: PropTypes.string as PropTypes.Requireable<any>,
+  display: PropTypes.string as PropTypes.Requireable<any>,
 
   top: PropTypes.string,
   right: PropTypes.string,

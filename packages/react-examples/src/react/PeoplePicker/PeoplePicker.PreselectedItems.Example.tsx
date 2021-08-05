@@ -98,6 +98,8 @@ export const PeoplePickerPreselectedItemsExample: React.FunctionComponent = () =
         className={'ms-PeoplePicker'}
         defaultSelectedItems={peopleList.slice(0, 3)}
         key={'list'}
+        selectionAriaLabel={'Selected contacts'}
+        removeButtonAriaLabel={'Remove'}
         pickerSuggestionsProps={suggestionProps}
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}

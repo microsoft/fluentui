@@ -26,7 +26,7 @@ task('bundle:package:commonjs', () =>
   src(componentsSrc)
     .pipe(sourcemaps.init())
     .pipe(babel())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.packageDist(packageName, 'commonjs'))),
 );
 
@@ -34,7 +34,7 @@ task('bundle:package:es', () =>
   src(componentsSrc)
     .pipe(sourcemaps.init())
     .pipe(babel({ caller: { useESModules: true } } as any))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.packageDist(packageName, 'es'))),
 );
 

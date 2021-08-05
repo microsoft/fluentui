@@ -3,23 +3,23 @@ import { Grid, Image, Button, Text, Label, gridBehavior, gridHorizontalBehavior 
 import * as _ from 'lodash';
 
 const imageNames = [
-  'ade',
-  'chris',
-  'christian',
-  'daniel',
-  'elliot',
-  'helen',
-  'jenny',
-  'joe',
-  'justen',
-  'laura',
-  'matt',
-  'nan',
-  'nom',
-  'stevie',
-  'steve',
-  'tom',
-  'veronika',
+  'WandaHoward',
+  'TimDeboer',
+  'RobinCounts',
+  'RobertTolbert',
+  'MonaKane',
+  'MiguelGarcia',
+  'MauricioAugust',
+  'LydiaBauer',
+  'KristinPatterson',
+  'KevinSturgis',
+  'KatriAthokas',
+  'KatLarsson',
+  'JohnieMcConnell',
+  'IsaacFielder',
+  'HenryBrill',
+  'ErikNason',
+  'ElviaAtkins',
 ];
 
 const imageButtonStyles = {
@@ -35,7 +35,7 @@ const renderImages = () => {
     <Image
       key={imageName}
       fluid
-      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`}
+      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`}
       data-is-focusable="true"
     />
   ));
@@ -44,7 +44,7 @@ const renderImages = () => {
 const renderImageButtons = () => {
   return _.map(imageNames, imageName => (
     <Button key={imageName} styles={imageButtonStyles} title={imageName}>
-      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/${imageName}.jpg`} />
+      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`} />
     </Button>
   ));
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { handleRef, RefProps } from './utils';
 
 export class RefForward extends React.Component<RefProps> {
-  currentNode: Node | null = null;
+  currentNode?: Node | null;
 
   handleRefOverride = (node: HTMLElement) => {
     const { children, innerRef } = this.props;

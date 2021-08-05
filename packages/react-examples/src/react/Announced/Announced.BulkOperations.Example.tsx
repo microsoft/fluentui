@@ -5,7 +5,7 @@ import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib
 import { Selection } from '@fluentui/react/lib/Selection';
 import { Text } from '@fluentui/react/lib/Text';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { createArray } from '@fluentui/react/lib/Utilities';
 
 interface IExampleItem {
@@ -65,6 +65,7 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
       />
     </Stack>
   );

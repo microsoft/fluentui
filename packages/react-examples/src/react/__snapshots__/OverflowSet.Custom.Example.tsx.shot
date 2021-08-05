@@ -33,7 +33,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -43,25 +43,24 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
       <input
         aria-checked="false"
-        aria-label="A Checkbox"
         checked={false}
         className=
 
@@ -74,8 +73,8 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         data-ktp-execute-target={true}
         id="checkbox-0"
@@ -129,10 +128,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-ktp-target={true}
@@ -152,9 +150,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -162,7 +161,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           </i>
         </div>
         <span
-          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -171,10 +169,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 line-height: 20px;
                 margin-left: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -192,9 +189,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar
@@ -237,7 +234,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             top: 3px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
             bottom: 4px;
             left: 4px;
@@ -250,14 +247,14 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border: none;
           }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -327,7 +324,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 text-align: center;
               }
           data-icon-name="Add"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -389,11 +385,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 margin-top: 0;
                 text-align: center;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -455,7 +450,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             top: 3px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
             bottom: 4px;
             left: 4px;
@@ -468,14 +463,14 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border: none;
           }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -545,7 +540,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 text-align: center;
               }
           data-icon-name="Upload"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -632,7 +626,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             top: 3px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
             bottom: 4px;
             left: 4px;
@@ -645,14 +639,14 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border: none;
           }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -722,7 +716,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 text-align: center;
               }
           data-icon-name="Share"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -768,10 +761,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label="More items"
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar
@@ -816,7 +809,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             top: 3px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
             bottom: 4px;
             left: 4px;
@@ -829,14 +822,14 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border: none;
           }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -905,11 +898,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 margin-top: 0;
                 text-align: center;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
               }
           data-icon-name="More"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",

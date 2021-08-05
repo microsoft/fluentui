@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { List, ScrollToMode, IList } from '@fluentui/react/lib/List';
 import { TextField } from '@fluentui/react/lib/TextField';

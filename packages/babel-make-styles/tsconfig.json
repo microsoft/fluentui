@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["__fixtures__/**/code.ts", "src"],
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "CommonJS",
+    "lib": ["ES2017", "DOM"],
+    "outDir": "dist",
+    "jsx": "react",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node"]
+  }
+}

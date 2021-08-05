@@ -6,12 +6,12 @@
 
 ### Source code
 
-[ShimmerView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Shimmer/ShimmerView.swift)
+[ShimmerView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Shimmer/ShimmerView.swift)
 
-[ShimmerLinesView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Shimmer/ShimmerLinesView.swift)
+[ShimmerLinesView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Shimmer/ShimmerLinesView.swift)
 
 ### Sample code
 
-[ShimmerView in Table View Cell demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewCellShimmerDemoController.swift)
+[ShimmerView in Table View Cell demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewCellShimmerDemoController.swift)
 
-[ShimmerLinesView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/ShimmerLinesViewDemoController.swift)
+[ShimmerLinesView demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/ShimmerLinesViewDemoController.swift)

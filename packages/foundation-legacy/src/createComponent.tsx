@@ -78,13 +78,13 @@ export function createComponent<
       componentProps.styles,
     );
 
-    const viewProps = {
+    const viewProps = ({
       ...componentProps,
       styles,
       tokens,
       _defaultStyles: styles,
       theme,
-    } as TViewProps & IDefaultSlotProps<any>;
+    } as unknown) as TViewProps & IDefaultSlotProps<any>;
 
     return view(viewProps);
   };

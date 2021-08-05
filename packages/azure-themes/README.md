@@ -7,24 +7,11 @@ The Azure themes require the following import statements:
 
 ```js
 import {
-  AzureThemeDark,
   AzureThemeLight,
-  AzureCustomizationsLight,
-  AzureCustomizationsDark,
-} from '@uifabric/azure-themes';
-```
-
-The theme may subsequently be set to either the Azure or Azure-Dark themes.
-
-In case of applying theme using `Customizer`:
-
-```jsx
-  import { Customizer } from '@fluentui/react';
-  const customizations = AzureCustomizationsDark; // or alternatively AzureCustomizationsLight
-
-  <Customizer {...customizations}>
-    <div>{child component}</div>
-  </Customizer>
+  AzureThemeDark,
+  AzureThemeHighContrastLight,
+  AzureThemeHighContrastDark,
+} from '@fluentui/azure-themes';
 ```
 
 In case of applying theme using `ThemeProvider`:

@@ -4,12 +4,14 @@
 
 ```ts
 
+import { ComponentWithAs } from '@fluentui/react-compose';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IComponentAs } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export interface IToggle {
@@ -17,10 +19,14 @@ export interface IToggle {
     focus: () => void;
 }
 
+// @public (undocumented)
+export interface IToggleOptions {
+}
+
 // @public
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
+export interface IToggleProps extends React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    as?: IComponentAs<React_2.HTMLAttributes<HTMLElement>> | React_2.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -32,13 +38,22 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     offText?: string;
     // @deprecated (undocumented)
     onAriaLabel?: string;
-    onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+    onChange?: (event: React_2.MouseEvent<HTMLElement>, checked?: boolean) => void;
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
     role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export type IToggleSlotProps = {
+    [key in keyof IToggleSlots]: IToggleProps[key];
+};
+
+// @public (undocumented)
+export interface IToggleSlots {
 }
 
 // @public
@@ -62,10 +77,13 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps>;
+export const Toggle: React_2.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.FunctionComponent<IToggleProps>;
+export const ToggleBase: ComponentWithAs<'div', IToggleProps>;
+
+// @public (undocumented)
+export const useToggle: (props: IToggleProps, ref: React_2.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 
 
 // (No @packageDocumentation comment for this package)

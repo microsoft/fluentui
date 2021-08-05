@@ -10,7 +10,7 @@ const insideGitRepo = fs.existsSync(config.paths.base('.git'));
 export default () =>
   through2.obj((file, enc, done) => {
     sh(`doctoc ${file.path} --github --maxlevel 4`)
-      .then<any>(() => runPrettier([file.path], false, true))
+      .then<any>(() => runPrettier([file.path]))
       .then<any>(() => insideGitRepo && sh(`git add ${file.path}`))
       .then(() => {
         done(null, file);

@@ -2,138 +2,676 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
-      "date": "Tue, 01 Dec 2020 12:38:05 GMT",
-      "tag": "@fluentui/react-cards_v1.0.0-beta.22",
-      "version": "1.0.0-beta.22",
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-cards_v0.200.12",
+      "version": "0.200.12",
       "comments": {
-        "prerelease": [
+        "patch": [
           {
-            "comment": "Card: Fixing styling after round of changes in theme.",
-            "author": "humbertomakotomorimoto@gmail.com",
-            "commit": "73da5f7dff44cd57a23c12f91c5210399a9f054e",
+            "comment": "Bump @fluentui/react to v8.27.0",
+            "author": "behowell@microsoft.com",
+            "commit": "c0e62e6319d0e35c3e630382e891d6bee2795ec0",
             "package": "@fluentui/react-cards"
           }
         ]
       }
     },
     {
-      "date": "Thu, 19 Nov 2020 12:28:32 GMT",
-      "tag": "@fluentui/react-cards_v1.0.0-beta.17",
-      "version": "1.0.0-beta.17",
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-cards_v0.200.11",
+      "version": "0.200.11",
       "comments": {
-        "prerelease": [
+        "patch": [
           {
-            "comment": "Adding borderStyle token to Card styles.",
-            "author": "humbertomakotomorimoto@gmail.com",
-            "commit": "cee44d393cb5f9ea25e9dc792bc46fb8124a2011",
+            "comment": "Bump @fluentui/react to v8.26.2",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
             "package": "@fluentui/react-cards"
           }
         ]
       }
     },
     {
-      "date": "Mon, 16 Nov 2020 12:31:52 GMT",
-      "tag": "@fluentui/react-cards_v1.0.0-beta.14",
-      "version": "1.0.0-beta.14",
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-cards_v0.200.10",
+      "version": "0.200.10",
       "comments": {
-        "prerelease": [
+        "patch": [
           {
-            "comment": "Avoid React.Children traversal for early return cases",
-            "author": "KevinTCoughlin@users.noreply.github.com",
-            "commit": "4a1eddf27492571a17d4934f34b613b33ee2fff4",
+            "comment": "Bump @fluentui/react to v8.26.1",
+            "author": "czearing@outlook.com",
+            "commit": "a122a999f7cd93d569870373a804ace33f082cf5",
             "package": "@fluentui/react-cards"
           }
         ]
       }
     },
     {
-      "date": "Fri, 23 Oct 2020 23:25:40 GMT",
-      "tag": "@fluentui/react-cards_v1.0.0-beta.1",
-      "version": "1.0.0-beta.1",
+      "date": "Fri, 30 Jul 2021 07:35:22 GMT",
+      "tag": "@fluentui/react-cards_v0.200.9",
+      "version": "0.200.9",
       "comments": {
-        "prerelease": [
+        "patch": [
           {
-            "comment": "Major bump react-compose package since it dependes on packages with new major.",
-            "author": "xgao@microsoft.com",
-            "commit": "302f8e93bc5bc9fd87d1c5a082713560f3bc4583",
+            "comment": "Bump @fluentui/react to v8.26.0",
+            "author": "rezha@microsoft.com",
+            "commit": "4be0412e53a7563614bd6303ab1242dc3bc27368",
             "package": "@fluentui/react-cards"
           }
         ]
       }
     },
     {
-      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
-      "tag": "@fluentui/react-cards_v1.0.0-beta.0",
-      "version": "1.0.0-beta.0",
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/react-cards_v0.200.8",
+      "version": "0.200.8",
       "comments": {
-        "prerelease": [
+        "patch": [
           {
-            "comment": "Rename @uifabric/react-cards to @fluentui/react-cards",
-            "author": "elcraig@microsoft.com",
-            "commit": "671b6254d923d13b3340d1e9417e4b42784c7285",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "rename @uifabric/foundation to @fluentui/foundation-legacy",
-            "author": "xgao@microsoft.com",
-            "commit": "ddb628724b27b6be3d430ea0a7b728ac9adfb8ec",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "comment": "Bump @fluentui/react to v8.25.0",
             "author": "ololubek@microsoft.com",
-            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
-            "author": "ololubek@microsoft.com",
-            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Rename office-ui-fabric-react package and update references",
-            "author": "elcraig@microsoft.com",
-            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Don't publish demo app; remove unused example-app-base dev dependency",
-            "author": "elcraig@microsoft.com",
-            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Remove unneeded dep on azure-themes",
-            "author": "elcraig@microsoft.com",
-            "commit": "dacc54122c2881a5b748cddbde337855351855c2",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Remove unneeded package dependencies.",
-            "author": "xgao@microsoft.com",
-            "commit": "9775badfc989f8820a437367a53f761cc3ca7512",
+            "commit": "c0ef1a690b0e3a9b21da54540331a0a3be8108ef",
             "package": "@fluentui/react-cards"
           }
-        ],
-        "none": [
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jul 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-cards_v0.200.7",
+      "version": "0.200.7",
+      "comments": {
+        "patch": [
           {
-            "comment": "Rename build-related packages",
-            "author": "elcraig@microsoft.com",
-            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "comment": "Bump @fluentui/react to v8.24.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "dd4b9d08ba552d05f57fdddd6234279db8582f45",
             "package": "@fluentui/react-cards"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 07:34:27 GMT",
+      "tag": "@fluentui/react-cards_v0.200.6",
+      "version": "0.200.6",
+      "comments": {
+        "patch": [
           {
-            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "comment": "Bump @fluentui/react to v8.23.10",
+            "author": "behowell@microsoft.com",
+            "commit": "e80bb05701a11190ea9c65ac81b35932a620a8cb",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-cards_v0.200.5",
+      "version": "0.200.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.9",
+            "author": "behowell@microsoft.com",
+            "commit": "2d62b36cdc1330c6984882d48c7f0e25473ac1a1",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-cards_v0.200.4",
+      "version": "0.200.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.8",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "fc6cc7d73c8d61587e26cd19b3bc9db3abd077a6",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-cards_v0.200.3",
+      "version": "0.200.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.7",
+            "author": "litong@microsoft.com",
+            "commit": "0088f43064b789f856c461f5574f2ca51fe19c4a",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-cards_v0.200.2",
+      "version": "0.200.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.23.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf8d7a43d6de92501cef58200aff21fb3d1590a5",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Jul 2021 22:53:17 GMT",
+      "tag": "@fluentui/react-cards_v0.200.1",
+      "version": "0.200.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Re-introduce legacy Card package for compatibility",
+            "author": "elcraig@microsoft.com",
+            "commit": "b20a263eadf0e233e9051d9b3d62e31fb92521c0",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@uifabric/react-cards_v0.115.53",
+      "version": "0.115.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.39",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@uifabric/react-cards_v0.115.52",
+      "version": "0.115.52",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.38",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 12:23:23 GMT",
+      "tag": "@uifabric/react-cards_v0.115.51",
+      "version": "0.115.51",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.37",
+            "author": "aidanmc95@gmail.com",
+            "commit": "ceb9df7c3bcade36477e866f46e2359df9f289c7",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 May 2021 12:24:41 GMT",
+      "tag": "@uifabric/react-cards_v0.115.50",
+      "version": "0.115.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.36",
+            "author": "aidanmc95@gmail.com",
+            "commit": "d09b94a417ed84d0424a3b89d77a426c32e199ee",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 12:26:09 GMT",
+      "tag": "@uifabric/react-cards_v0.115.49",
+      "version": "0.115.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.35",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "8358bf3d49e1dc5f9b506575857cf353d26d3b74",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@uifabric/react-cards_v0.115.48",
+      "version": "0.115.48",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.34",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@uifabric/react-cards_v0.115.47",
+      "version": "0.115.47",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.33",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "@uifabric/react-cards_v0.115.46",
+      "version": "0.115.46",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.32",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "@uifabric/react-cards_v0.115.45",
+      "version": "0.115.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.31",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 12:25:29 GMT",
+      "tag": "@uifabric/react-cards_v0.115.44",
+      "version": "0.115.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.30",
+            "author": "aidanmc95@gmail.com",
+            "commit": "98726611fb4ed0bc28803a26892b5d63e56e9330",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@uifabric/react-cards_v0.115.43",
+      "version": "0.115.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.29",
+            "author": "aidanmc95@gmail.com",
+            "commit": "f995d23c6f28fc027805fb3b056c76c321e36b13",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@uifabric/react-cards_v0.115.42",
+      "version": "0.115.42",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.28",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 00:28:37 GMT",
+      "tag": "@uifabric/react-cards_v0.115.41",
+      "version": "0.115.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "4d99c00687344058690f2d6023ad44c0f46a4f25",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@uifabric/react-cards_v0.115.40",
+      "version": "0.115.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.4",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb1249e8dae9722251b7ea99e3048c731a034ad7",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 12:22:15 GMT",
+      "tag": "@uifabric/react-cards_v0.115.39",
+      "version": "0.115.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.26",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "476201614b86164aa88d94cd017474233f0c5933",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 12:24:39 GMT",
+      "tag": "@uifabric/react-cards_v0.115.38",
+      "version": "0.115.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.25",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cac66f68697f3daa33fbbb4e3a5fa262b4a35e12",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Apr 2021 12:23:04 GMT",
+      "tag": "@uifabric/react-cards_v0.115.37",
+      "version": "0.115.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.24",
+            "author": "aidanmc95@gmail.com",
+            "commit": "101c07627b1b6dc9726af545897b5a6c8061397b",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Apr 2021 12:21:29 GMT",
+      "tag": "@uifabric/react-cards_v0.115.36",
+      "version": "0.115.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.23",
+            "author": "aidanmc95@gmail.com",
+            "commit": "414595286e41bff970b2e7e2005905f9a77d50f3",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Apr 2021 12:22:02 GMT",
+      "tag": "@uifabric/react-cards_v0.115.35",
+      "version": "0.115.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "c835d1fc6d05612a9bd5ec7185cda2c23131546a",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 12:21:50 GMT",
+      "tag": "@uifabric/react-cards_v0.115.34",
+      "version": "0.115.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "e671a7d590daaa1e568adcab40e5b6175deb88d4",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 12:24:28 GMT",
+      "tag": "@uifabric/react-cards_v0.115.33",
+      "version": "0.115.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.21",
+            "author": "aidanmc95@gmail.com",
+            "commit": "297d54356c3e6af3754933ffd28f0c6c277d40c5",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "@uifabric/react-cards_v0.115.32",
+      "version": "0.115.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.20",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Mar 2021 12:25:00 GMT",
+      "tag": "@uifabric/react-cards_v0.115.31",
+      "version": "0.115.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.19",
+            "author": "aidanmc95@gmail.com",
+            "commit": "a539ea1987ec41ded4a605efc7e766f51b3bd3de",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "@uifabric/react-cards_v0.115.30",
+      "version": "0.115.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.18",
+            "author": "mhdahman@microsoft.com",
+            "commit": "e4c63bbce6a94d8c250b7e53ceb7d13c20c85840",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@uifabric/react-cards_v0.115.29",
+      "version": "0.115.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.18.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 12:27:00 GMT",
+      "tag": "@uifabric/react-cards_v0.115.28",
+      "version": "0.115.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.17.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "011f008050a9d809edf32c949385b1809693c007",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 12:25:04 GMT",
+      "tag": "@uifabric/react-cards_v0.115.27",
+      "version": "0.115.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.16",
+            "author": "aidanmc95@gmail.com",
+            "commit": "537050154d6c683c52d5da2e1377b0bd643171b7",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 12:27:30 GMT",
+      "tag": "@uifabric/react-cards_v0.115.26",
+      "version": "0.115.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.15",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "@uifabric/react-cards_v0.115.25",
+      "version": "0.115.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.14",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 12:24:49 GMT",
+      "tag": "@uifabric/react-cards_v0.115.24",
+      "version": "0.115.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.13",
+            "author": "sareiff@microsoft.com",
+            "commit": "f42ad1819235008e7757d09a16e8f9c164a778da",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/react-cards_v0.115.18",
+      "version": "0.115.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecating Card.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a2a15adcff93e22af40fcce297fa937cd5a4f06b",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@uifabric/react-cards_v0.115.17",
+      "version": "0.115.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 12:21:51 GMT",
+      "tag": "@uifabric/react-cards_v0.114.0",
+      "version": "0.114.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove `next` folder.",
             "author": "xgao@microsoft.com",
-            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
-            "package": "@fluentui/react-cards"
-          },
-          {
-            "comment": "Fix imports in scss files to avoid requiring a build",
-            "author": "elcraig@microsoft.com",
-            "commit": "d2fedc85c81bb0e2d86495ec1e928604bf2260f4",
-            "package": "@fluentui/react-cards"
+            "commit": "94bf37f2e473626e3df403d4f868ccf20a997630",
+            "package": "@uifabric/react-cards"
           }
         ]
       }

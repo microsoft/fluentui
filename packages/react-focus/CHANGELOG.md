@@ -1,8 +1,282 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 26 Nov 2020 12:28:18 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.10)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.9..@fluentui/react-focus_v8.1.10)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [8.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.9)
+
+Thu, 29 Jul 2021 07:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.8..@fluentui/react-focus_v8.1.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.2.1 ([PR #18028](https://github.com/microsoft/fluentui/pull/18028) by ashwin.gokhale98@gmail.com)
+
+## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.8)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.7..@fluentui/react-focus_v8.1.8)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.7)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.6..@fluentui/react-focus_v8.1.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.2.0 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
+
+## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.6)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.5..@fluentui/react-focus_v8.1.6)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.1 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.5)
+
+Mon, 28 Jun 2021 07:35:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.4..@fluentui/react-focus_v8.1.5)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.0 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+
+## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.4)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.3..@fluentui/react-focus_v8.1.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.1.3 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.3)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.2..@fluentui/react-focus_v8.1.3)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.1.2 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.2)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.1..@fluentui/react-focus_v8.1.2)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.1.1 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.1)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.0..@fluentui/react-focus_v8.1.1)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.3.1 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.8..@fluentui/react-focus_v8.1.0)
+
+### Minor changes
+
+- Upgrade to ts 4.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.3.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/merge-styles to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-conformance to v0.3.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/set-version to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.8)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.7..@fluentui/react-focus_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.7)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.6..@fluentui/react-focus_v8.0.7)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.6)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.5..@fluentui/react-focus_v8.0.6)
+
+### Patches
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.5)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.4..@fluentui/react-focus_v8.0.5)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.2.15 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.4)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.3..@fluentui/react-focus_v8.0.4)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.4 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.3)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.2..@fluentui/react-focus_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.3 ([PR #17161](https://github.com/microsoft/fluentui/pull/17161) by martinhochel@microsoft.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.2)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.1..@fluentui/react-focus_v8.0.2)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.25..@fluentui/react-focus_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.25)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.24..@fluentui/react-focus_v8.0.0-beta.25)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.1 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.24)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.23..@fluentui/react-focus_v8.0.0-beta.24)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.23)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.22..@fluentui/react-focus_v8.0.0-beta.23)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.22)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.21..@fluentui/react-focus_v8.0.0-beta.22)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.21)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.20..@fluentui/react-focus_v8.0.0-beta.21)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.20)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.19..@fluentui/react-focus_v8.0.0-beta.20)
+
+### Changes
+
+- FocusZone: Removing FocusZone type from event callbacks. ([PR #16952](https://github.com/microsoft/fluentui/pull/16952) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.19)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.18..@fluentui/react-focus_v8.0.0-beta.19)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.18)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.16..@fluentui/react-focus_v8.0.0-beta.18)
+
+### Changes
+
+- FocusZone: Removing contextual RTL checks to get rid of react-theme-provider dependency from react-focus package. ([PR #16736](https://github.com/microsoft/fluentui/pull/16736) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.16)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.15..@fluentui/react-focus_v8.0.0-beta.16)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.15)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.12..@fluentui/react-focus_v8.0.0-beta.15)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.9)
 

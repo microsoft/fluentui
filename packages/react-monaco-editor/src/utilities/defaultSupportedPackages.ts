@@ -24,7 +24,7 @@ try {
   // Other packages' typings are copied into dist/types by a build step.
   // Load all of those typings dynamically (lazy-once puts them in a chunk together).
   typesContext = require.context(
-    '!raw-loader!@fluentui/react-monaco-editor/dist/types',
+    '!raw-loader?esModule=false!@fluentui/react-monaco-editor/dist/types',
     false,
     /.*\.d\.ts$/,
     'lazy-once',
@@ -36,11 +36,9 @@ if (typesContext) {
   typesContext.keys().forEach(dtsPath => {
     // The api-extractor .d.ts rollups use the package's unscoped name (such as "utilities")
     // as the filename.
-    // (example path: '!raw-loader!@fluentui/react-monaco-editor/dist/types/utilities.d.ts')
+    // (example path: '!raw-loader?esModule=false!@fluentui/react-monaco-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
-    const packageName = `${
-      ['react-focus', 'react'].indexOf(unscopedName) > -1 ? '@fluentui' : '@uifabric'
-    }/${unscopedName}`;
+    const packageName = `@fluentui/${unscopedName}`;
     const packageGroup =
       packageName === '@fluentui/example-data'
         ? exampleDataGroup
@@ -67,7 +65,7 @@ if (typesContext) {
     { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@fluentui/merge-styles', loadTypes },
     { packageName: '@fluentui/react', loadTypes },
-    { packageName: '@fluentui/react-date-time-utilities', loadTypes },
+    { packageName: '@fluentui/date-time-utilities', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@fluentui/utilities', loadTypes },

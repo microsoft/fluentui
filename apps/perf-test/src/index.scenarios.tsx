@@ -26,6 +26,7 @@ const scenario = queryParams.scenario ? (queryParams.scenario as string) : defau
 const renderType = queryParams.renderType;
 
 const PerfTestScenario = scenarios[scenario];
+const PerfTestDecorator = PerfTestScenario.decorator || 'div';
 
 if (renderType === 'virtual-rerender') {
   for (let i = 0; i < iterations - 1; i++) {
@@ -40,11 +41,11 @@ if (renderType === 'virtual-rerender') {
   // It'd be interesting to root cause why at some point.
   // ReactDOM.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
   ReactDOM.render(
-    <div>
+    <PerfTestDecorator>
       {Array.from({ length: iterations }, () => (
         <PerfTestScenario />
       ))}
-    </div>,
+    </PerfTestDecorator>,
     div,
     () => div.appendChild(renderFinishedMarker),
   );

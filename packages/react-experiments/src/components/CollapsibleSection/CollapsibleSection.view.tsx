@@ -25,6 +25,7 @@ export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = prop
         onClick={onClick}
         onKeyDown={onKeyDown}
         indent={indent}
+        aria-expanded={!props.collapsed}
       />
       {!collapsed && <Slots.body>{children}</Slots.body>}
     </Slots.root>

@@ -192,6 +192,7 @@ AlertDismissAction.propTypes = {
   warning: PropTypes.bool,
   info: PropTypes.bool,
   onClick: PropTypes.func,
+  success: PropTypes.bool,
 };
 
 AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as any;

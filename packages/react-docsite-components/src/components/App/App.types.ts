@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { IStyle, IStyleFunctionOrObject, Theme } from '@fluentui/react';
-import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
-import { INavLink, INavLinkGroup, INavStyleProps } from '@fluentui/react/lib/Nav';
-import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
+import {
+  INavLink,
+  INavLinkGroup,
+  INavStyleProps,
+  IPanelStyleProps,
+  IStyle,
+  IStyleFunctionOrObject,
+  IWithResponsiveModeState,
+  Theme,
+} from '@fluentui/react';
 import { IAppThemes } from '../../utilities/theme';
 import { IHeaderStyleProps } from '../Header/index';
 

@@ -12,7 +12,7 @@ import {
   Stack,
   IStackProps,
 } from '@fluentui/react';
-import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
 export const ModalBasicExample: React.FunctionComponent = () => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);

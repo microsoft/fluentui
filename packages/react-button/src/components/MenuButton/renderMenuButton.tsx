@@ -1,24 +1,20 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-compose/lib/next/index';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import { MenuButtonState } from './MenuButton.types';
-import { menuButtonShorthandProps } from './useMenuButton';
+import { menuButtonShorthandPropsCompat } from './useMenuButton';
 
 /**
- * Redefine the render function to add slots. Reuse the button structure but add
- * slots to children.
+ * Renders a MenuButton component by passing the state defined props to the appropriate slots.
  */
 export const renderMenuButton = (state: MenuButtonState) => {
-  const { slots, slotProps } = getSlots(state, menuButtonShorthandProps);
-  const { iconOnly, children } = state;
-
-  const contentVisible = !iconOnly && (children || slotProps.content?.children);
+  const { slots, slotProps } = getSlotsCompat(state, menuButtonShorthandPropsCompat);
+  const { children, iconOnly } = state;
 
   return (
     <slots.root {...slotProps.root}>
       <slots.icon {...slotProps.icon} />
-      {contentVisible && <slots.content {...slotProps.content} />}
+      {!iconOnly && children}
       {!iconOnly && <slots.menuIcon {...slotProps.menuIcon} />}
-      <slots.menu {...slotProps.menu} />
     </slots.root>
   );
 };

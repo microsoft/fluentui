@@ -25,7 +25,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
 
   _root: { current: HTMLElement | null } = { current: null };
 
-  _previouslyFocusedElementOutsideTrapZone: HTMLElement;
+  _previouslyFocusedElementOutsideTrapZone?: HTMLElement;
   _previouslyFocusedElementInTrapZone?: HTMLElement;
 
   _firstBumper = React.createRef<HTMLDivElement>();

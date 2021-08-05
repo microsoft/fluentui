@@ -1,66 +1,31 @@
 import * as React from 'react';
-import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@fluentui/utilities/lib/test';
-import { mount, ReactWrapper } from 'enzyme';
-
+import { render, RenderResult } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
+import { mount, ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { IRefObject, resetIds } from '@fluentui/utilities';
-import { ICheckbox } from './Checkbox.types';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
-let checkbox: ICheckbox | undefined;
-/** Use this as the componentRef when rendering a Checkbox. */
-const checkboxRef: IRefObject<ICheckbox> = (ref: ICheckbox | null) => {
-  checkbox = ref!;
-};
-
-const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
-  const [indeterminate, setIndeterminate] = React.useState(true);
-  const [checked, setChecked] = React.useState(false);
-  const onChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, newChecked?: boolean): void => {
-    // On first change, clear the indeterminate state and don't modify the checked state
-    indeterminate ? setIndeterminate(false) : setChecked(!!newChecked);
-  };
-
-  return <Checkbox indeterminate={indeterminate} checked={checked} onChange={onChange} componentRef={checkboxRef} />;
-};
+// TODO: add more tests here, and create visual regression tests in /apps/vr-tests
 
 describe('Checkbox', () => {
-  let renderedComponent: ReactTestRenderer | undefined;
   let component: ReactWrapper | undefined;
+  let renderedComponent: RenderResult | undefined;
+  let checkboxRef: React.RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
 
   beforeEach(() => {
-    resetIds();
+    resetIdsForTests();
   });
 
   afterEach(() => {
-    checkbox = undefined;
-    if (renderedComponent) {
-      renderedComponent.unmount();
-      renderedComponent = undefined;
-    }
+    checkboxRef = React.createRef<HTMLInputElement>();
     if (component) {
       component.unmount();
       component = undefined;
     }
-  });
-
-  it('renders unchecked correctly', () => {
-    renderedComponent = create(<Checkbox label="Standard checkbox" />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders checked correctly', () => {
-    renderedComponent = create(<Checkbox label="Standard checkbox" checked />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders indeterminate correctly', () => {
-    renderedComponent = create(<Checkbox label="Standard checkbox" indeterminate />);
-    const tree = renderedComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    if (renderedComponent) {
+      renderedComponent.unmount();
+      renderedComponent = undefined;
+    }
   });
 
   isConformant({
@@ -68,177 +33,114 @@ describe('Checkbox', () => {
     displayName: 'Checkbox',
   });
 
-  it('respects id prop', () => {
-    component = mount(<Checkbox label="Standard checkbox" ariaDescribedBy="descriptionID" id="my-checkbox" />);
-    expect(component.find('input').prop('id')).toEqual('my-checkbox');
+  it('renders a default state', () => {
+    renderedComponent = render(<Checkbox label="Default Checkbox" />);
+    expect(renderedComponent.container).toMatchSnapshot();
   });
 
-  it('defaults to unchecked non-indeterminate', () => {
-    component = mount(<Checkbox componentRef={checkboxRef} />);
+  it('renders unchecked correctly', () => {
+    renderedComponent = render(<Checkbox label="Default Checkbox" input={{ ref: checkboxRef }} />);
+    expect(renderedComponent).toMatchSnapshot();
+  });
+
+  it('renders checked correctly', () => {
+    renderedComponent = render(<Checkbox checked label="Default Checkbox" />);
+    expect(renderedComponent).toMatchSnapshot();
+  });
+
+  it('renders mixed correctly', () => {
+    renderedComponent = render(<Checkbox checked="mixed" label="Default Checkbox" />);
+    expect(renderedComponent).toMatchSnapshot();
+  });
+
+  it('respects id prop', () => {
+    component = mount(<Checkbox aria-describedby="descriptionID" id="checkbox" label="Default Checkbox" />);
+    expect(component.find('input').prop('id')).toEqual('checkbox');
+  });
+
+  it('defaults to unchecked non-mixed', () => {
+    component = mount(<Checkbox label="Default Checkbox" input={{ ref: checkboxRef }} />);
 
     const input = component.find('input');
     expect(input.prop('checked')).toBe(false);
-    // Mainly testing aria-checked because later in the indeterminate cases, it's the only way to
-    // tell from a rendered prop that the checkbox is indeterminate
-    expect(input.prop('aria-checked')).toBe('false');
-    expect(checkbox!.checked).toBe(false);
-    expect(checkbox!.indeterminate).toBe(false);
+    expect(checkboxRef.current?.checked).toBe(false);
   });
 
   it('respects defaultChecked prop', () => {
-    component = mount(<Checkbox defaultChecked componentRef={checkboxRef} />);
+    component = mount(<Checkbox defaultChecked input={{ ref: checkboxRef }} />);
 
-    const input = component.find('input');
+    let input = component.find('input');
     expect(input.prop('checked')).toBe(true);
-    expect(input.prop('aria-checked')).toBe('true');
-    expect(checkbox!.checked).toBe(true);
+    expect(checkboxRef.current?.checked).toBe(true);
+
+    component.unmount();
+    checkboxRef = React.createRef<HTMLInputElement>();
+    component = mount(<Checkbox defaultChecked="mixed" input={{ ref: checkboxRef }} />);
+
+    input = component.find('input');
+    expect(input.prop('checked')).toBe(false);
+    expect(checkboxRef.current?.checked).toBe(false);
   });
 
-  it('ignores defaultChecked updates', () => {
-    component = mount(<Checkbox defaultChecked componentRef={checkboxRef} />);
+  it('ignores defaulChecked updates', () => {
+    component = mount(<Checkbox defaultChecked input={{ ref: checkboxRef }} />);
     component.setProps({ defaultChecked: false });
     expect(component.find('input').prop('checked')).toBe(true);
-    expect(checkbox!.checked).toBe(true);
-    component.unmount();
+    expect(checkboxRef.current?.checked).toBe(true);
 
-    component = mount(<Checkbox componentRef={checkboxRef} />);
+    component.unmount();
+    checkboxRef = React.createRef<HTMLInputElement>();
+    component = mount(<Checkbox input={{ ref: checkboxRef }} />);
     component.setProps({ defaultChecked: true });
     expect(component.find('input').prop('checked')).toBe(false);
-    expect(checkbox!.checked).toBe(false);
+    expect(checkboxRef.current?.checked).toBe(false);
   });
 
   it('respects checked prop', () => {
-    component = mount(<Checkbox checked componentRef={checkboxRef} />);
+    component = mount(<Checkbox checked input={{ ref: checkboxRef }} />);
 
-    const input = component.find('input');
+    let input = component.find('input');
     expect(input.prop('checked')).toBe(true);
-    expect(input.prop('aria-checked')).toBe('true');
-    expect(checkbox!.checked).toBe(true);
+    expect(checkboxRef.current?.checked).toBe(true);
+
+    component.unmount();
+    checkboxRef = React.createRef<HTMLInputElement>();
+    component = mount(<Checkbox checked="mixed" input={{ ref: checkboxRef }} />);
+
+    input = component.find('input');
+    expect(input.prop('checked')).toBe(false);
+    expect(checkboxRef.current?.checked).toBe(false);
   });
 
   it('respects checked updates', () => {
-    component = mount(<Checkbox checked componentRef={checkboxRef} />);
-
+    component = mount(<Checkbox checked input={{ ref: checkboxRef }} />);
     component.setProps({ checked: false });
-    expect(component.find('input').prop('checked')).toBe(false);
-    expect(checkbox!.checked).toBe(false);
-  });
-
-  it('automatically updates on change when uncontrolled', () => {
-    const onChange = jest.fn();
-    component = mount(<Checkbox onChange={onChange} componentRef={checkboxRef} />);
-
-    component.find('input').simulate('change');
-
-    expect(component.find('input').prop('checked')).toBe(true);
-    expect(checkbox!.checked).toBe(true);
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  it('does not automatically update on change when controlled', () => {
-    const onChange = jest.fn();
-    component = mount(<Checkbox checked={false} onChange={onChange} componentRef={checkboxRef} />);
-
-    component.find('input').simulate('change');
-
-    // doesn't update automatically (but calls onChange)
-    expect(component.find('input').prop('checked')).toBe(false);
-    expect(checkbox!.checked).toBe(false);
-    expect(onChange).toHaveBeenCalledTimes(1);
-
-    // updates when props update
-    component.setProps({ checked: true });
-    expect(component.find('input').prop('checked')).toBe(true);
-    expect(checkbox!.checked).toBe(true);
-    // doesn't call onChange for props update
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-
-  it('respects defaultIndeterminate prop', () => {
-    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
-
-    expect(component.find('input').prop('aria-checked')).toBe('mixed');
-    expect(checkbox!.indeterminate).toEqual(true);
-  });
-
-  it('respects defaultIndeterminate prop when defaultChecked is true', () => {
-    component = mount(<Checkbox defaultIndeterminate defaultChecked componentRef={checkboxRef} />);
-
-    expect(component.find('input').prop('aria-checked')).toBe('mixed');
-    expect(checkbox!.indeterminate).toEqual(true);
-  });
-
-  it('ignores defaultIndeterminate updates', () => {
-    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
-    component.setProps({ defaultIndeterminate: false });
-    expect(component.find('input').prop('aria-checked')).toBe('mixed');
-    expect(checkbox!.indeterminate).toEqual(true);
-    component.unmount();
-
-    component = mount(<Checkbox componentRef={checkboxRef} />);
-    component.setProps({ defaultIndeterminate: true });
-    expect(component.find('input').prop('aria-checked')).toBe('false');
-    expect(checkbox!.indeterminate).toEqual(false);
-  });
-
-  it('removes uncontrolled indeterminate state', () => {
-    component = mount(<Checkbox defaultIndeterminate componentRef={checkboxRef} />);
 
     let input = component.find('input');
-    expect(input.prop('aria-checked')).toBe('mixed');
     expect(input.prop('checked')).toBe(false);
-    expect(checkbox!.indeterminate).toEqual(true);
+    expect(checkboxRef.current?.checked).toBe(false);
 
-    input.simulate('change');
-
-    // get an updated ReactWrapper for the input (otherwise it would be out of sync)
+    component.setProps({ checked: 'mixed' });
     input = component.find('input');
-    expect(input.prop('aria-checked')).toBe('false');
     expect(input.prop('checked')).toBe(false);
-    expect(checkbox!.indeterminate).toEqual(false);
+    expect(checkboxRef.current?.checked).toBe(false);
   });
 
-  it('renders with indeterminate when controlled', () => {
-    component = mount(<IndeterminateControlledCheckbox />);
-
+  it("doesn't remove controlled mixed when no onChange provided", () => {
+    component = mount(<Checkbox checked="mixed" input={{ ref: checkboxRef }} />);
     let input = component.find('input');
-    expect(checkbox!.indeterminate).toEqual(true);
-    expect(input.prop('aria-checked')).toBe('mixed');
-
-    input.simulate('change', { target: { checked: true } });
-
-    input = component.find('input');
-    expect(checkbox!.indeterminate).toEqual(false);
-    expect(input.prop('aria-checked')).toBe('false');
-  });
-
-  it('removes controlled indeterminate', () => {
-    component = mount(<IndeterminateControlledCheckbox />);
-
-    let input = component.find('input');
-    expect(checkbox!.indeterminate).toEqual(true);
-    expect(checkbox!.checked).toEqual(false);
-    expect(input.prop('aria-checked')).toBe('mixed');
+    expect(checkboxRef.current?.indeterminate).toEqual(true);
 
     input.simulate('change');
 
     input = component.find('input');
-    expect(checkbox!.indeterminate).toEqual(false);
-    expect(checkbox!.checked).toEqual(false);
-    expect(input.prop('aria-checked')).toBe('false');
+    expect(checkboxRef.current?.indeterminate).toEqual(true);
   });
 
-  it("doesn't remove controlled indeterminate when no onChange provided", () => {
-    component = mount(<Checkbox indeterminate={true} checked={false} componentRef={checkboxRef} />);
-
-    let input = component.find('input');
-    expect(checkbox!.indeterminate).toEqual(true);
-    expect(input.prop('aria-checked')).toBe('mixed');
-
-    input.simulate('change');
-
-    input = component.find('input');
-    expect(checkbox!.indeterminate).toEqual(true);
-    expect(input.prop('aria-checked')).toBe('mixed');
+  it('correctly sets indeterminate state through javascript', () => {
+    component = mount(<Checkbox defaultChecked="mixed" input={{ ref: checkboxRef }} />);
+    const input = component.find('input');
+    expect(input.prop('checked')).toBe(false);
+    expect(checkboxRef.current?.indeterminate).toEqual(true);
   });
 });

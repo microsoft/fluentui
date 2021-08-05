@@ -1,7 +1,7 @@
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IAppStyleProps, IAppStyles } from './App.types';
-import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from '@fluentui/react/lib/ResponsiveMode';
 
 const globalClassNames = {
   root: 'ms-App',

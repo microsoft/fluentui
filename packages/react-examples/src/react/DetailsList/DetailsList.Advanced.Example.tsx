@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react/lib/Link';
 import { TextField } from '@fluentui/react/lib/TextField';
+import { Text } from '@fluentui/react/lib/Text';
 import { CommandBar, ICommandBarStyles } from '@fluentui/react/lib/CommandBar';
 import { Announced } from '@fluentui/react/lib/Announced';
 import {
@@ -29,6 +30,14 @@ import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 const theme = getTheme();
 const headerDividerClass = 'DetailsListAdvancedExample-divider';
 const classNames = mergeStyleSets({
+  commandBarText: {
+    padding: '12px',
+  },
+  commandBarWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
   headerDivider: {
     display: 'inline-block',
     height: '100%',
@@ -161,19 +170,21 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className={classNames.root}>
-        <CommandBar
-          styles={commandBarStyles}
-          items={this._getCommandItems(
-            canResizeColumns,
-            checkboxVisibility,
-            constrainMode,
-            isHeaderVisible,
-            isLazyLoaded,
-            layoutMode,
-            selectionMode,
-          )}
-          farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
-        />
+        <div className={classNames.commandBarWrapper}>
+          <CommandBar
+            styles={commandBarStyles}
+            items={this._getCommandItems(
+              canResizeColumns,
+              checkboxVisibility,
+              constrainMode,
+              isHeaderVisible,
+              isLazyLoaded,
+              layoutMode,
+              selectionMode,
+            )}
+          />
+          <Text className={classNames.commandBarText}>{`${this.state.selectionCount} selected`}</Text>
+        </div>
         <Announced message={`${this.state.selectionCount} selected`} />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
@@ -203,7 +214,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForListHeader="Column headers. Click to sort."
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
-          checkButtonAriaLabel="Row checkbox"
+          checkButtonAriaLabel="select row"
           onRenderMissingItem={this._onRenderMissingItem}
         />
 

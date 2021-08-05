@@ -41,11 +41,9 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
             ms-BasePicker-text
             ms-UnifiedPicker-text
             {
-              align-items: center;
               border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
-              flex-wrap: wrap;
               flex: 1 1 auto;
               min-height: 32px;
               min-width: 180px;
@@ -59,63 +57,87 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
             }
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
+          aria-live="polite"
+          className=""
+          role="status"
+        />
+        <div
+          aria-multiselectable="true"
+          aria-orientation="horizontal"
           className=
-              ms-BasePicker-div
-              ms-UnifiedPicker-div
+              ms-UnifiedPicker-listDiv
+              ms-UnifiedPicker-listDiv
               {
-                display: flex;
+                display: inline-flex;
+                flex-wrap: wrap;
                 flex: 1 1 auto;
               }
-          onDragOver={[Function]}
-          onDrop={[Function]}
-          role="combobox"
+          role=""
         >
-          <input
-            aria-autocomplete="list"
-            autoCapitalize="off"
-            autoComplete="off"
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
             className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
+                ms-BasePicker-div
+                ms-UnifiedPicker-div
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  border: none;
                   display: flex;
-                  flex-grow: 1;
                   flex: 1 1 auto;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
                 }
-                &::-ms-clear {
-                  display: none;
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            role="combobox"
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    border: none;
+                    display: flex;
+                    flex-grow: 1;
+                    flex: 1 1 auto;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              style={
+                Object {
+                  "fontFamily": "inherit",
                 }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
-            value=""
-          />
+              }
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -171,11 +193,9 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             ms-BasePicker-text
             ms-UnifiedPicker-text
             {
-              align-items: center;
               border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
-              flex-wrap: wrap;
               flex: 1 1 auto;
               min-height: 32px;
               min-width: 180px;
@@ -189,10 +209,26 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             }
       >
         <div
-          role="list"
+          aria-live="polite"
+          className=""
+          role="status"
+        />
+        <div
+          aria-multiselectable="true"
+          aria-orientation="horizontal"
+          className=
+              ms-UnifiedPicker-listDiv
+              ms-UnifiedPicker-listDiv
+              {
+                display: inline-flex;
+                flex-wrap: wrap;
+                flex: 1 1 auto;
+              }
+          role="listbox"
         >
           <div
             aria-labelledby="selectedItemPersona-id__2"
+            aria-selected={false}
             className=
                 ms-PickerPersona-container
                 {
@@ -212,24 +248,24 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                 &:hover {
                   background: #deecf9;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   background: Highlight;
                   border: 1px solid ButtonText;
                   color: HighlightText;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
                   color: HighlightText;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
                   color: HighlightText;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background: ButtonFace;
                   border: 1px solid ButtonText;
                   color: ButtonText;
                 }
-                @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
                   color: ButtonText;
                 }
             data-is-draggable={true}
@@ -237,7 +273,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             data-is-sub-focuszone={true}
             data-selection-index={0}
             draggable={true}
-            role="listitem"
+            role="option"
           >
             <div
               hidden={true}
@@ -288,7 +324,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -300,7 +336,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: inherit;
                       color: inherit;
                     }
@@ -308,7 +344,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #c7e0f4;
                       color: #005a9e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       background: inherit;
                       border-color: Highlight;
                       color: inherit;
@@ -317,7 +353,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #106ebe;
                       color: #ffffff;
                     }
-                    @media screen and (-ms-high-contrast: active){&:active {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                       background: inherit;
                       color: inherit;
                     }
@@ -370,7 +406,6 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           text-align: center;
                         }
                     data-icon-name="Add"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -511,12 +546,13 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                             ms-Persona-presence
                             {
                               -ms-high-contrast-adjust: none;
-                              background-clip: content-box;
+                              background-clip: border-box;
                               background-color: #6BB700;
                               border-radius: 50%;
                               border: 2px solid #ffffff;
                               bottom: -2px;
                               box-sizing: content-box;
+                              forced-color-adjust: none;
                               height: 8px;
                               position: absolute;
                               right: -2px;
@@ -524,7 +560,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                               top: auto;
                               width: 8px;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               background-color: Highlight;
                               border-color: Window;
                             }
@@ -562,10 +598,10 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           &:hover {
                             color: #005a9e;
                           }
-                          @media screen and (-ms-high-contrast: active){&:hover {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                             color: inherit;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             color: inherit;
                           }
                       dir="auto"
@@ -721,7 +757,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -733,7 +769,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: inherit;
                       color: inherit;
                     }
@@ -741,7 +777,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #c7e0f4;
                       color: #005a9e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       background: inherit;
                       border-color: Highlight;
                       color: inherit;
@@ -750,7 +786,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #106ebe;
                       color: #ffffff;
                     }
-                    @media screen and (-ms-high-contrast: active){&:active {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                       background: inherit;
                       color: inherit;
                     }
@@ -803,7 +839,6 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           text-align: center;
                         }
                     data-icon-name="Cancel"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -817,65 +852,70 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
               </button>
             </div>
           </div>
-        </div>
-        <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
-          className=
-              ms-BasePicker-div
-              ms-UnifiedPicker-div
-              {
-                display: flex;
-                flex: 1 1 auto;
-              }
-          onDragOver={[Function]}
-          onDrop={[Function]}
-          role="combobox"
-        >
-          <input
-            aria-autocomplete="list"
-            autoCapitalize="off"
-            autoComplete="off"
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
             className=
-                ms-BasePicker-input
-                ms-UnifiedPicker-input
+                ms-BasePicker-div
+                ms-UnifiedPicker-div
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  border: none;
                   display: flex;
-                  flex-grow: 1;
                   flex: 1 1 auto;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 34px;
-                  margin-bottom: 1px;
-                  margin-left: 1px;
-                  margin-right: 1px;
-                  margin-top: 1px;
-                  outline: none;
-                  padding-bottom: 0px;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
                 }
-                &::-ms-clear {
-                  display: none;
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            role="combobox"
+          >
+            <input
+              aria-autocomplete="list"
+              autoCapitalize="off"
+              autoComplete="off"
+              className=
+                  ms-BasePicker-input
+                  ms-UnifiedPicker-input
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    border: none;
+                    display: flex;
+                    flex-grow: 1;
+                    flex: 1 1 auto;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 34px;
+                    margin-bottom: 1px;
+                    margin-left: 1px;
+                    margin-right: 1px;
+                    margin-top: 1px;
+                    outline: none;
+                    padding-bottom: 0px;
+                    padding-left: 6px;
+                    padding-right: 6px;
+                    padding-top: 0;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+              data-lpignore={true}
+              disabled={false}
+              onChange={[Function]}
+              onClick={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              onPaste={[Function]}
+              style={
+                Object {
+                  "fontFamily": "inherit",
                 }
-            data-lpignore={true}
-            disabled={false}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            onPaste={[Function]}
-            value=""
-          />
+              }
+              value=""
+            />
+          </div>
         </div>
       </div>
     </div>

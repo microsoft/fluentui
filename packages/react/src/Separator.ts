@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Separator';
+export * from './components/Separator/index';

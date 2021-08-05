@@ -13,7 +13,7 @@ import { Link } from '@fluentui/react/lib/Link';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Text, ITextStyles } from '@fluentui/react/lib/Text';
-import { ILinkToken } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ILinkToken } from '@fluentui/react/lib/common/DocPage.types';
 import { useConst } from '@fluentui/react-hooks';
 import {
   IApiInterfaceProperty,
@@ -31,6 +31,7 @@ export type IApiReferencesTableState = {};
 
 /** @internal */
 type IApiDetailsListProps = (IApiEnumDetailsListProps | IApiPropertyDetailsListProps | IApiMethodDetailsListProps) & {
+  ariaLabel?: string;
   tokenResolver: IApiReferencesTableProps['tokenResolver'];
 };
 /** Do not use directly */
@@ -127,7 +128,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   }
 
   private _renderTables(): JSX.Element | undefined {
-    const { properties, methods, tokenResolver } = this.props;
+    const { properties, methods, tokenResolver, title } = this.props;
 
     if (this._isClass) {
       // Render class members and methods tables
@@ -137,6 +138,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
             <Stack tokens={gapTokens.small}>
               <h4>Members</h4>
               <ApiDetailsList
+                ariaLabel={`${title} Members`}
                 itemKind="property"
                 items={properties as IApiInterfaceProperty[]}
                 tokenResolver={tokenResolver}
@@ -146,7 +148,12 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           {methods && methods.length > 0 && (
             <Stack tokens={gapTokens.small}>
               <h4>Methods</h4>
-              <ApiDetailsList itemKind="method" items={methods!} tokenResolver={tokenResolver} />
+              <ApiDetailsList
+                ariaLabel={`${title} Methods`}
+                itemKind="method"
+                items={methods!}
+                tokenResolver={tokenResolver}
+              />
             </Stack>
           )}
         </Stack>
@@ -156,9 +163,19 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     // Render enum or interface property tables
     // (the calling method already verified that at least one property is defined)
     return this._isEnum ? (
-      <ApiDetailsList itemKind="enum" items={properties as IApiEnumProperty[]} tokenResolver={tokenResolver} />
+      <ApiDetailsList
+        ariaLabel={title}
+        itemKind="enum"
+        items={properties as IApiEnumProperty[]}
+        tokenResolver={tokenResolver}
+      />
     ) : (
-      <ApiDetailsList itemKind="property" items={properties as IApiInterfaceProperty[]} tokenResolver={tokenResolver} />
+      <ApiDetailsList
+        ariaLabel={title}
+        itemKind="property"
+        items={properties as IApiInterfaceProperty[]}
+        tokenResolver={tokenResolver}
+      />
     );
   }
 
@@ -170,9 +187,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
       </Text>
-    ) : (
-      undefined
-    );
+    ) : undefined;
   }
 }
 
@@ -181,7 +196,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
  */
 const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo(props => {
   // Alphabetize the items and add a key to each one.
-  const { itemKind, items } = props;
+  const { itemKind, items, ariaLabel } = props;
   const processedItems: IApiEnumProperty[] | IApiInterfaceProperty[] | IMethod[] = useConst(() => {
     if (itemKind === 'enum') {
       return (items as IApiEnumProperty[])
@@ -208,6 +223,7 @@ const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo
   return (
     <DetailsList
       items={processedItems}
+      ariaLabelForGrid={ariaLabel}
       columns={columns}
       selectionMode={SelectionMode.none}
       layoutMode={DetailsListLayoutMode.justified}
@@ -352,7 +368,7 @@ function _renderLinkTokens(
 
       if (token.linkedPage && token.linkedPageGroup) {
         return (
-          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)}>
+          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)} underline>
             <code>{token.text}</code>
           </Link>
         );

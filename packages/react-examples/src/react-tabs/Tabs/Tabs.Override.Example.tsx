@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
-import { Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Tabs, TabItem } from '@fluentui/react-tabs';
 
 export const TabsOverrideExample = () => {
   const [selectedKey, setSelectedKey] = React.useState(0);

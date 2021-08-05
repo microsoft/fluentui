@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/accessibility';
 
 import { atMentionItems, AtMentionItem } from './dataMocks';
 import { insertTextAtCursorPosition } from './utils';
@@ -58,9 +58,11 @@ const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) 
   }
 };
 
-const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
-  children: (props: MentionsContainerProps) => React.ReactNode;
-}> = props => {
+const MentionsEditor: React.FunctionComponent<
+  MentionsContainerProps & {
+    children: (props: MentionsContainerProps) => React.ReactNode;
+  }
+> = props => {
   const { children, ...rest } = props;
   const contendEditableRef = React.useRef(null);
   const [state, dispatch] = React.useReducer(stateReducer, {

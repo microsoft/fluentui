@@ -3,24 +3,23 @@
 /**
  * @typedef {import("webpack").Configuration} WebpackConfig
  * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
- * @typedef {import("webpack").Entry} WebpackEntry
- * @typedef {import("webpack").Module} WebpackModule
- * @typedef {import("webpack").Output} WebpackOutput
+ * @typedef {import("webpack").ModuleOptions} WebpackModule
+ * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
 /** */
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const resolve = require('resolve');
 /** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const getResolveAlias = require('./getResolveAlias');
 const { findGitRoot } = require('../monorepo/index');
 
 // @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
+const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
+
 console.log(`Webpack version: ${webpackVersion}`);
 
 const gitRoot = findGitRoot();
@@ -31,59 +30,22 @@ const cssRule = {
   use: ['style-loader', 'css-loader'],
 };
 
-let isValidEnv = false;
-
-function validateEnv() {
-  if (!isValidEnv) {
-    try {
-      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11', { basedir: process.cwd() });
-      isValidEnv = !!resolvedPolyfill;
-    } catch (e) {
-      console.error('Please make sure the package "react-app-polyfill" is in the package.json dependencies');
-      process.exit(1);
-    }
-  }
-}
-
-function shouldPrepend(config) {
-  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-  const excludedProjects = ['perf-test', 'test-bundles'];
-  const exportedAsBundle =
-    config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
-  const hasReactAsDependency =
-    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
-    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
-  return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
-}
-
 /**
- * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
+ * As of webpack 5, you have to add the `es5` target for IE 11 compatibility.
+ * Otherwise it will output lambdas for smaller bundle size.
+ * https://webpack.js.org/migrate/5/#need-to-support-an-older-browser-like-ie-11
  */
-function createEntryWithPolyfill(entry, config) {
-  if (shouldPrepend(config) && entry) {
-    validateEnv();
-
-    const polyfill = 'react-app-polyfill/ie11';
-    if (typeof entry === 'string') {
-      return [polyfill, entry];
-    } else if (Array.isArray(entry)) {
-      return [polyfill, ...entry];
-    } else if (typeof entry === 'object') {
-      const newEntry = { ...entry };
-
-      Object.keys(entry).forEach(entryPoint => {
-        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
-      });
-
-      return newEntry;
-    }
-  }
-
-  return entry;
-}
+const target = ['web', 'es5'];
 
 module.exports = {
   webpack,
+
+  /** Get the list of node_modules directories where loaders should be resolved */
+  getResolveLoaderDirs: () => [
+    'node_modules',
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../../node_modules'),
+  ],
 
   /**
    * @param {string} bundleName - Name for the bundle file. Usually either the unscoped name, or
@@ -127,6 +89,7 @@ module.exports = {
               pathinfo: false,
             },
             module,
+            target,
             devtool,
             plugins: getPlugins(packageName, false),
           },
@@ -146,6 +109,7 @@ module.exports = {
             },
 
             module,
+            target,
             devtool: excludeSourceMaps ? undefined : devtool,
             plugins: getPlugins(packageName, true, profile),
           },
@@ -155,9 +119,12 @@ module.exports = {
     }
 
     for (let config of configs) {
-      config.entry = createEntryWithPolyfill(config.entry, config);
       config.resolveLoader = {
-        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')],
+        modules: [
+          'node_modules',
+          path.resolve(__dirname, '../node_modules'),
+          path.resolve(__dirname, '../../node_modules'),
+        ],
       };
     }
 
@@ -182,7 +149,7 @@ module.exports = {
       output,
       bundleName = path.basename(process.cwd()),
       entry = './lib/index.js',
-      isProduction = process.argv.indexOf('--production') > -1,
+      isProduction = process.argv.includes('--mode=production'),
       onlyProduction = false,
       customConfig = {},
     } = options;
@@ -205,16 +172,8 @@ module.exports = {
               : output,
 
           externals: {
-            react: {
-              commonjs: 'react',
-              amd: 'react',
-              root: 'React',
-            },
-            'react-dom': {
-              commonjs: 'react-dom',
-              amd: 'react-dom',
-              root: 'ReactDOM',
-            },
+            react: 'React',
+            'react-dom': 'ReactDOM',
           },
 
           resolve: {
@@ -236,18 +195,20 @@ module.exports = {
    */
   createServeConfig(customConfig, outputFolder = 'dist/demo') {
     const outputPath = path.join(process.cwd(), outputFolder);
-    const config = merge(
+    return merge(
       {
         devServer: {
-          inline: true,
+          // As of Webpack 5, this will open the browser at 127.0.0.1 by default
+          host: 'localhost',
           port: 4322,
-          contentBase: outputPath,
+          static: outputPath,
         },
 
         mode: 'development',
 
         output: {
           filename: `[name].js`,
+          libraryTarget: 'umd',
           path: outputPath,
         },
 
@@ -256,11 +217,7 @@ module.exports = {
         },
 
         resolveLoader: {
-          modules: [
-            'node_modules',
-            path.join(__dirname, '../node_modules'),
-            path.join(__dirname, '../../node_modules'),
-          ],
+          modules: module.exports.getResolveLoaderDirs(),
         },
 
         devtool: 'eval',
@@ -290,6 +247,7 @@ module.exports = {
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
                   options: {
+                    esModule: false,
                     modules: true,
                     importLoaders: 2,
                   },
@@ -297,8 +255,8 @@ module.exports = {
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function() {
-                      return [require('autoprefixer')];
+                    postcssOptions: {
+                      plugins: ['autoprefixer'],
                     },
                   },
                 },
@@ -311,22 +269,21 @@ module.exports = {
         },
 
         plugins: [
-          ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
-          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
-          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
+          ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
         ],
+
+        target,
       },
       customConfig,
     );
-
-    config.entry = createEntryWithPolyfill(config.entry, config);
-    return config;
   },
 
   /**
    * Create a serve config for a package with a legacy demo app in the examples package at
    * `packages/react-examples/src/some-package/demo/index.tsx`.
-   * Note that this assumes a base directory (for serving and output) of `dist/demo`.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo` and will
+   * include `react-app-polyfill/ie11` for IE 11 support.
    * @returns {WebpackServeConfig}
    */
   createLegacyDemoAppConfig() {
@@ -341,7 +298,7 @@ module.exports = {
 
     return module.exports.createServeConfig({
       entry: {
-        'demo-app': demoEntryInExamples,
+        'demo-app': ['react-app-polyfill/ie11', demoEntryInExamples],
       },
 
       output: {
@@ -358,6 +315,9 @@ module.exports = {
         // Use the aliases for react-examples since the examples and demo may depend on some things
         // that the package itself doesn't (and it will include the aliases for all the package's deps)
         alias: getResolveAlias(false /*useLib*/, reactExamples),
+        fallback: {
+          path: require.resolve('path-browserify'),
+        },
       },
     });
   },
@@ -365,8 +325,7 @@ module.exports = {
 
 function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-  const plugins = [];
+  const plugins = [new webpack.DefinePlugin(getDefaultEnvironmentVars(isProduction))];
 
   if (isProduction && profile) {
     plugins.push(

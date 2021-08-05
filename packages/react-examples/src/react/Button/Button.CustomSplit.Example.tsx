@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HighContrastSelector, Label, IContextualMenuProps, IIconProps } from '@fluentui/react';
-import { IButtonStyles, IconButton } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

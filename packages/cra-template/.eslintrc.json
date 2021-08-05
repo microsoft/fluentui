@@ -1,4 +1,20 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  "root": true,
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "../../tsconfig.json"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["template/**/*.{ts,tsx}"],
+      "rules": {
+        // the rule can't understand that the actual list of deps is in template.json
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }

@@ -9,7 +9,7 @@ import { DetailsRow, IColumn, Selection, SelectionMode, IDetailsRowStyles } from
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (100 + index!),
+  url: 'http://via.placeholder.com/100x' + (100 + index!),
 }));
 
 const COLUMNS: IColumn[] = [
@@ -75,5 +75,6 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
 };
 
 function _shouldEnterInnerZone(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  // eslint-disable-next-line deprecation/deprecation
   return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 }

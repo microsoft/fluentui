@@ -20,7 +20,7 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { CommandButton } from '../../compat/Button';
+import { CommandButton } from '../../Button';
 import {
   DropdownMenuItemType,
   IDropdownOption,
@@ -36,10 +36,7 @@ import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import {
-  ResponsiveMode,
-  IWithResponsiveModeState,
-} from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, IWithResponsiveModeState, useResponsiveMode } from '../../ResponsiveMode';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,
@@ -48,13 +45,13 @@ import {
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { getPropsWithDefaults } from '@fluentui/utilities';
-import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
+// eslint-disable-next-line deprecation/deprecation
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
     rootRef: React.Ref<HTMLDivElement>;
@@ -65,7 +62,7 @@ interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithRespo
 
 interface IDropdownState {
   isOpen: boolean;
-  /** Whether the root dropdown element has focus. */
+  /** Used to track whether focus is already within the Dropdown, for openOnFocus handling. */
   hasFocus: boolean;
   calloutRenderEdge?: RectangleEdge;
 }
@@ -167,7 +164,7 @@ export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwa
     const rootRef = React.useRef<HTMLDivElement>(null);
     const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
-    const responsiveMode = useResponsiveMode(rootRef);
+    const responsiveMode = useResponsiveMode(rootRef, props.responsiveMode);
     const [selectedIndices, setSelectedIndices] = useSelectedItemsState(props);
 
     return (
@@ -304,7 +301,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       theme,
       panelProps,
       calloutProps,
-      multiSelect,
       onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -332,20 +328,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? this._listId + selectedIndices[0]
       : undefined;
 
-    const ariaAttrs = multiSelect
-      ? {
-          role: 'button',
-        }
-      : // single select
-        {
-          role: 'listbox',
-          childRole: 'option',
-          ariaRequired: required,
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true,
-        };
-
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
@@ -363,7 +345,11 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
 
     return (
-      <div className={this._classNames.root} ref={this.props.hoisted.rootRef}>
+      <div
+        className={this._classNames.root}
+        ref={this.props.hoisted.rootRef}
+        aria-owns={isOpen ? this._listId : undefined}
+      >
         {onRenderLabel(this.props, this._onRenderLabel)}
         <div
           data-is-focusable={!disabled}
@@ -371,16 +357,16 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           ref={this._dropDown}
           id={id}
           tabIndex={disabled ? -1 : 0}
-          role={ariaAttrs.role}
+          role="combobox"
           aria-haspopup="listbox"
           aria-expanded={isOpen ? 'true' : 'false'}
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
           aria-activedescendant={ariaActiveDescendant}
-          aria-required={ariaAttrs.ariaRequired}
+          aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._listId : undefined}
+          aria-controls={isOpen ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
           onBlur={this._onDropdownBlur}
@@ -396,15 +382,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             aria-live="polite"
             aria-atomic={true}
             aria-invalid={hasErrorMessage}
-            role={ariaAttrs.childRole}
-            aria-setsize={ariaAttrs.ariaSetSize}
-            aria-posinset={ariaAttrs.ariaPosInSet}
-            aria-selected={ariaAttrs.ariaSelected}
           >
-            {// If option is selected render title, otherwise render the placeholder text
-            selectedOptions.length
-              ? onRenderTitle(selectedOptions, this._onRenderTitle)
-              : onRenderPlaceholder(props, this._onRenderPlaceholder)}
+            {
+              // If option is selected render title, otherwise render the placeholder text
+              selectedOptions.length
+                ? onRenderTitle(selectedOptions, this._onRenderTitle)
+                : onRenderPlaceholder(props, this._onRenderPlaceholder)
+            }
           </span>
           <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
         </div>
@@ -780,7 +764,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? this._classNames.dropdownItemDisabled
       : this._classNames.dropdownItem;
 
-    const { title = item.text } = item;
+    const { title } = item;
 
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
@@ -817,8 +801,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       <Checkbox
         id={this._listId + item.index}
         key={item.key}
-        data-index={item.index}
-        data-is-focusable={!item.disabled}
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
         inputProps={{
@@ -827,6 +809,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           onMouseLeave: this._onMouseItemLeave.bind(this, item),
           onMouseMove: this._onItemMouseMove.bind(this, item),
           role: 'option',
+          ...({
+            'data-index': item.index,
+            'data-is-focusable': !item.disabled,
+          } as any),
         }}
         label={item.text}
         title={title}
@@ -837,6 +823,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
         ariaSetSize={this._sizePosCache.optionSetSize}
+        ariaLabel={item.ariaLabel}
       />
     );
   };
@@ -967,13 +954,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       return;
     }
 
-    // hasFocus tracks whether the root element has focus so always update the state.
-    this.setState({ hasFocus: false });
-
     if (this.state.isOpen) {
-      // Do not onBlur when the callout is opened
+      // Do not call onBlur or update focus state when the callout is opened
       return;
     }
+
+    this.setState({ hasFocus: false });
+
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -1002,6 +989,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
     const isOpen = this.state.isOpen;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -1089,6 +1077,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         return;
       }
     }
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -1111,6 +1100,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    // eslint-disable-next-line deprecation/deprecation
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1138,6 +1128,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.up:
         if (containsExpandCollapseModifier) {
@@ -1217,19 +1208,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen } = this.state;
-    const {
-      multiSelect,
-      hoisted: { selectedIndices },
-    } = this.props;
-
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
-        // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
-        this._moveIndex(ev, 1, 0, -1);
-      }
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }

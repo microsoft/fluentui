@@ -1,5 +1,4 @@
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
-export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';
 export { dialogVariables as Dialog } from './components/Dialog/dialogVariables';
 export { dividerVariables as Divider } from './components/Divider/dividerVariables';
@@ -18,8 +17,6 @@ export { menuItemIndicatorVariables as MenuItemIndicator } from './components/Me
 export { menuItemWrapperVariables as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { svgIconVariables as SvgIcon } from './components/SvgIcon/svgIconVariables';
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
-export { alertVariables as Alert } from './components/Alert/alertVariables';
-export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 export { providerVariables as Provider } from './components/Provider/providerVariables';
 export { labelVariables as Label } from './components/Label/labelVariables';
 export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';

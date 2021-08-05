@@ -25,7 +25,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/ShimmerImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerImplementation.md') as string,
         },
       ];
   }

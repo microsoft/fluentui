@@ -38,13 +38,13 @@ Array [
             padding-right: 0;
             padding-top: 1px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: WindowText;
           }
           &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
           &:hover .ms-SearchBox-iconContainer {

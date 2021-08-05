@@ -1,7 +1,17 @@
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, IComboBox, SelectableOptionMenuItemType } from '@fluentui/react/lib/index';
+import {
+  ComboBox,
+  IComboBoxOption,
+  SelectableOptionMenuItemType,
+  Toggle,
+  IComboBox,
+  IComboBoxStyles,
+  IStackTokens,
+  Stack,
+} from '@fluentui/react';
+import { useBoolean } from '@fluentui/react-hooks';
 
-const items: IComboBoxOption[] = [
+const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
@@ -16,31 +26,49 @@ const items: IComboBoxOption[] = [
   { key: 'I', text: 'Option I' },
   { key: 'J', text: 'Option J' },
 ];
+let newKey = 1;
+// Optional styling to make the example look nicer
+const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
+const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-const comboBoxMultiStyle = { maxWidth: 300 };
-
-export const ComoBoxControlledMultiExample: React.FC = () => {
+export const ComboBoxControlledMultiExample: React.FunctionComponent = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>(['C', 'D']);
+  // Manually updating the options list is only necessary when allowFreeform is true
+  const [options, setOptions] = React.useState(INITIAL_OPTIONS);
+  const [allowFreeform, { toggle: toggleAllowFreeform }] = useBoolean(true);
 
   const onChange = React.useCallback(
-    (ev: React.FormEvent<IComboBox>, option?: IComboBoxOption): void => {
-      setSelectedKeys(
-        option?.selected ? [...selectedKeys, option.key as string] : selectedKeys.filter(key => key !== option?.key),
-      );
+    (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
+      let selected = option?.selected;
+      if (allowFreeform && !option && value) {
+        // If allowFreeform is true, the newly selected option might be something the user typed that
+        // doesn't exist in the options list yet. So there's extra work to manually add it.
+        selected = true;
+        option = { key: `${newKey++}`, text: value };
+        setOptions(prevOptions => [...prevOptions, option!]);
+      }
+
+      if (option) {
+        setSelectedKeys(prevSelectedKeys =>
+          selected ? [...prevSelectedKeys, option!.key as string] : prevSelectedKeys.filter(k => k !== option!.key),
+        );
+      }
     },
-    [selectedKeys],
+    [allowFreeform],
   );
 
   return (
-    <ComboBox
-      multiSelect
-      style={comboBoxMultiStyle}
-      selectedKey={selectedKeys}
-      label="Controlled multi-select ComboBox (allowFreeform: T)"
-      allowFreeform
-      autoComplete="on"
-      options={items}
-      onChange={onChange}
-    />
+    <Stack horizontal tokens={stackTokens}>
+      <ComboBox
+        multiSelect
+        selectedKey={selectedKeys}
+        label="Controlled multi-select ComboBox"
+        allowFreeform={allowFreeform}
+        options={options}
+        onChange={onChange}
+        styles={comboBoxStyles}
+      />
+      <Toggle label="Allow freeform" checked={allowFreeform} onChange={toggleAllowFreeform} />
+    </Stack>
   );
 };

@@ -23,6 +23,7 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
           text-overflow: ellipsis;
           white-space: nowrap;
         }
+    id="progress-indicator0-label"
   >
     Example title
   </div>
@@ -48,11 +49,13 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
             position: absolute;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-bottom: 1px solid WindowText;
           }
     />
     <div
+      aria-describedby="progress-indicator0-description"
+      aria-labelledby="progress-indicator0-label"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -65,10 +68,9 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
             transition: width .15s linear;
             width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background-color: highlight;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       role="progressbar"
@@ -88,6 +90,7 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
           font-size: 12px;
           line-height: 18px;
         }
+    id="progress-indicator0-description"
   >
     Example description
   </div>

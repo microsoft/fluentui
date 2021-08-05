@@ -45,7 +45,7 @@ export const attachmentVariables = (siteVariables: any): AttachmentVariables => 
   iconSpace: pxToRem(12),
   iconSize: pxToRem(32),
   borderColor: siteVariables.colorScheme.default.border3,
-  borderRadius: pxToRem(3),
+  borderRadius: siteVariables.borderRadiusMedium,
   backgroundColor: siteVariables.colorScheme.default.background4,
   backgroundColorHover: siteVariables.colorScheme.default.backgroundHover1,
   textColor: siteVariables.colorScheme.default.foreground,
@@ -77,5 +77,5 @@ export const attachmentVariables = (siteVariables: any): AttachmentVariables => 
   actionLoaderSize: pxToRem(20),
   actionLoaderSvgHeight: pxToRem(1220),
   actionLoaderSvgAnimationHeight: pxToRem(-1200),
-  actionFocusBorderRadius: pxToRem(3),
+  actionFocusBorderRadius: siteVariables.borderRadiusMedium,
 });

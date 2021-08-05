@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AccessibilityAttributes } from '../../types';
@@ -11,13 +11,13 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds role 'presentation' to 'wrapper' slot.
  * Adds role 'menuitem' to 'root' slot.
  * Adds attribute 'tabIndex=0' to 'root' slot.
- * Adds attribute 'data-is-focusable=false' to 'root' slot if 'disabled' property is true. Sets the attribute to 'true' otherwise.
  * Adds attribute 'aria-label' based on the property 'aria-label' to 'root' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
  * Adds attribute 'aria-expanded=true' based on the property 'menuOpen' if the component has 'hasMenu' property to 'root' slot.
  * Adds attribute 'aria-haspopup=true' to 'root' slot if 'hasMenu' property is set.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
+ * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper'.
  * Triggers 'closeAllMenusAndFocusNextParentItem' action with 'ArrowRight' on 'wrapper'.
@@ -39,7 +39,7 @@ export const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => (
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
       'aria-disabled': props.disabled,
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
     },
   },
 

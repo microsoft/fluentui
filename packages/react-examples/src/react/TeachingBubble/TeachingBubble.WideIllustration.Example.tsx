@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IImageProps } from '@fluentui/react/lib/Image';
-import { DefaultButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { useBoolean } from '@fluentui/react-hooks';
@@ -9,7 +9,7 @@ const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
 };
 
-const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
+const exampleImageProps: IImageProps = { src: 'http://via.placeholder.com/154x220', alt: 'Example placeholder image' };
 
 const CalloutProps = { directionalHint: DirectionalHint.bottomCenter };
 

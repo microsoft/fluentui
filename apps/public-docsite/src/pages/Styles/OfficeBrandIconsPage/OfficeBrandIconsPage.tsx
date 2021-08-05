@@ -37,7 +37,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsOverview.md') as string
                 }
               </Markdown>
               <MarkdownHeader as="h3">When should I use Office Brand icons?</MarkdownHeader>
@@ -51,11 +51,17 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       icon for the menu option that allows users create a new Word document.
                     </p>
                     <p>
-                      If you are looking for icons for command bars, navigation, status indicators, or similar, check
-                      out the <Link href="#/styles/web/icons">Fluent UI icons page</Link>. Alternatively, if you're
-                      looking for file type icons to represent digital content or to indicate to users that they are
-                      creating a new file of that type, check out the{' '}
-                      <Link href="#/styles/web/file-type-icons">Fluent UI file type icons page</Link>.
+                      If you're looking for icons for command bars, navigation, status indicators, or similar, check out
+                      the{' '}
+                      <Link href="#/styles/web/icons" underline>
+                        Fluent UI icons page
+                      </Link>
+                      . Alternatively, if you're looking for file type icons to represent digital content or to indicate
+                      to users that they are creating a new file of that type, check out the{' '}
+                      <Link href="#/styles/web/file-type-icons" underline>
+                        Fluent UI file type icons page
+                      </Link>
+                      .
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -97,7 +103,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsFormat.md') as string
+                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -151,7 +157,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
               }
             </Markdown>
           ),
@@ -162,7 +168,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
               }
             </Markdown>
           ),

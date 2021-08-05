@@ -1,19 +1,15 @@
 import * as React from 'react';
-import { TextField } from '@fluentui/react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
+  IDetailsListStyles,
   IDetailsHeaderProps,
-  Selection,
   ConstrainMode,
   IDetailsFooterProps,
   DetailsRow,
 } from '@fluentui/react/lib/DetailsList';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
-import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { IDetailsColumnRenderTooltipProps } from '@fluentui/react/lib/DetailsList';
@@ -28,23 +24,34 @@ export interface IScrollablePaneDetailsListExampleItem {
   test6: string;
 }
 
+const gridStyles: Partial<IDetailsListStyles> = {
+  root: {
+    overflowX: 'scroll',
+    selectors: {
+      '& [role=grid]': {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
+        height: '60vh',
+      },
+    },
+  },
+  headerWrapper: {
+    flex: '0 0 auto',
+  },
+  contentWrapper: {
+    flex: '1 1 auto',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+  },
+};
+
 const classNames = mergeStyleSets({
-  wrapper: {
-    height: '80vh',
-    position: 'relative',
-    backgroundColor: 'white',
-  },
-  filter: {
-    backgroundColor: 'white',
-    paddingBottom: 20,
-    maxWidth: 300,
-  },
   header: {
     margin: 0,
-    backgroundColor: 'white',
   },
   row: {
-    display: 'inline-block',
+    flex: '0 0 auto',
   },
 });
 
@@ -97,79 +104,47 @@ const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (props, defa
   const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = tooltipHostProps => (
     <TooltipHost {...tooltipHostProps} />
   );
-  return (
-    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced>
-      {defaultRender!({
-        ...props,
-        onRenderColumnHeaderTooltip,
-      })}
-    </Sticky>
-  );
+  return defaultRender!({
+    ...props,
+    onRenderColumnHeaderTooltip,
+  });
 };
 const onRenderDetailsFooter: IRenderFunction<IDetailsFooterProps> = (props, defaultRender) => {
   if (!props) {
     return null;
   }
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <div className={classNames.row}>
-        <DetailsRow
-          columns={props.columns}
-          item={footerItem}
-          itemIndex={-1}
-          selection={props.selection}
-          selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
-          rowWidth={props.rowWidth}
-        />
-      </div>
-    </Sticky>
+    <div className={classNames.row}>
+      <DetailsRow
+        columns={props.columns}
+        item={footerItem}
+        itemIndex={-1}
+        selection={props.selection}
+        selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
+        rowWidth={props.rowWidth}
+      />
+    </div>
   );
-};
-const hasText = (item: IScrollablePaneDetailsListExampleItem, text: string): boolean => {
-  return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
 };
 
 export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
-  const [items, setItems] = React.useState(allItems);
-  const [selection] = React.useState<Selection>(() => {
-    const s = new Selection();
-    s.setItems(items, true);
-    return s;
-  });
-  const onFilterChange = (ev: React.FormEvent<HTMLElement>, text: string) => {
-    setItems(text ? allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text)) : allItems);
-  };
   return (
-    <div className={classNames.wrapper}>
-      <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto}>
-        <Sticky stickyPosition={StickyPositionType.Header}>
-          <TextField
-            className={classNames.filter}
-            label="Filter by name:"
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={onFilterChange}
-          />
-        </Sticky>
-        <Sticky stickyPosition={StickyPositionType.Header}>
-          <h1 className={classNames.header}>Item list</h1>
-        </Sticky>
-        <MarqueeSelection selection={selection}>
-          <DetailsList
-            items={items}
-            columns={columns}
-            setKey="set"
-            layoutMode={DetailsListLayoutMode.fixedColumns}
-            constrainMode={ConstrainMode.unconstrained}
-            onRenderDetailsHeader={onRenderDetailsHeader}
-            onRenderDetailsFooter={onRenderDetailsFooter}
-            selection={selection}
-            selectionPreservedOnEmptyClick
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            onItemInvoked={onItemInvoked}
-          />
-        </MarqueeSelection>
-      </ScrollablePane>
+    <div>
+      <h1 className={classNames.header}>Item list</h1>
+      <DetailsList
+        items={allItems}
+        columns={columns}
+        setKey="set"
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        constrainMode={ConstrainMode.unconstrained}
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderDetailsFooter={onRenderDetailsFooter}
+        selectionPreservedOnEmptyClick
+        styles={gridStyles}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        onItemInvoked={onItemInvoked}
+      />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import {
+  IAccessibilityProps,
   CartesianChart,
   IChildProps,
   IModifiedCartesianChartProps,
@@ -13,7 +14,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import { ChartTypes, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -80,6 +81,10 @@ export interface IHeatMapChartState {
    * id to give to callout for accesiblity purpose
    */
   calloutId: string;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -109,8 +114,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   public constructor(props: IHeatMapChartProps) {
     super(props);
-    this._xAxisType = getTypeOfAxis(props.data[0].data[0].x, true) as XAxisTypes;
-    this._yAxisType = getTypeOfAxis(props.data[0].data[0].y, false) as YAxisType;
+    const { x, y } = this._getXandY();
+    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
+    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -173,6 +179,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       target: this.state.target,
       styles: this._classNames.subComponentStyles.calloutStyles,
       directionalHint: DirectionalHint.bottomLeftEdge,
+      onDismiss: this._closeCallout,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
+      preventDismissOnLostFocus: true,
     };
     const chartHoverProps: IModifiedCartesianChartProps['chartHoverProps'] = {
       ...(this.state.ratio && {
@@ -211,6 +220,19 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     );
   }
 
+  private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
+    let x: string | Date | number = '';
+    let y: string | Date | number = '';
+    this.props.data.forEach((item: IHeatMapChartData) => {
+      if (item.data && item.data.length > 0) {
+        x = item.data[0].x;
+        y = item.data[0].y;
+        return { x, y };
+      }
+    });
+    return { x, y };
+  };
+
   private _getOpacity = (legendTitle: string): string => {
     let shouldHighlight = true;
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -233,6 +255,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
       calloutId: id,
+      callOutAccessibilityData: data.callOutAccessibilityData,
     });
   };
 
@@ -247,6 +270,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
       calloutId: id,
+      callOutAccessibilityData: data.callOutAccessibilityData,
     });
   };
 
@@ -296,6 +320,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               fill={this._colorScale(dataPointObject.value)}
               width={this._xAxisScale.bandwidth()}
               height={this._yAxisScale.bandwidth()}
+              onClick={dataPointObject.onClick}
             />
             <text
               dominantBaseline={'middle'}
@@ -638,5 +663,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getFormattedLabelForYAxisDataPoint = (point: string): string => {
     const { yAxisStringFormatter } = this.props;
     return yAxisStringFormatter ? yAxisStringFormatter(point) : point;
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 }

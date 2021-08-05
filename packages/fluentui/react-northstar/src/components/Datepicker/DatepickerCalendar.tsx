@@ -61,6 +61,11 @@ export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICale
   calendarGridRow?: ShorthandValue<DatepickerCalendarGridRowProps>;
 
   /**
+   * The currently selected date range, currently only supports week.
+   */
+  selectedDateRange?: Date[];
+
+  /**
    * The currently selected date.
    */
   selectedDate?: Date;
@@ -110,6 +115,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
     calendarCellButton,
     calendarGrid,
     calendarGridRow,
+    dateRangeType,
     header,
     selectedDate,
     navigatedDate,
@@ -325,7 +331,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         }),
     });
 
-  const renderCellButton = (day: IDay) =>
+  const renderCellButton = (day: IDay, dateRange: IDay[]) =>
     createShorthand(DatepickerCalendarCellButton, calendarCellButton, {
       defaultProps: () =>
         getA11yProps('calendarCell', {
@@ -344,13 +350,17 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
         },
         onClick: e => {
-          _.invoke(props, 'onDateChange', e, { ...props, value: day });
+          _.invoke(props, 'onDateChange', e, {
+            ...props,
+            value: day,
+            selectedDateRange: dateRangeType !== DateRangeType.Day ? dateRange : [day],
+          });
           _.invoke(predefinedProps, 'onClick', e, predefinedProps);
         },
         ref: compareDates(gridNavigatedDate, day.originalDate) ? focusDateRef : null,
       }),
     });
-  const renderWeekRow = (week: IDay[]) => _.map(week, (day: IDay) => renderCell(day, renderCellButton(day)));
+  const renderWeekRow = (week: IDay[]) => _.map(week, (day: IDay) => renderCell(day, renderCellButton(day, week)));
 
   const element = (
     <ElementType
@@ -407,6 +417,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {
                           children: renderWeekRow(week),
+                          isRowSelectionActive: dateRangeType === DateRangeType.Week,
                           key: week[0].key,
                         }),
                     }),

@@ -1,16 +1,99 @@
-import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-compose';
-import { RecursivePartial } from '@fluentui/theme';
 import * as React from 'react';
+import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
-export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
-  /** A text can define its look via defined variants. */
-  variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
+/**
+ * Text Props
+ */
+export interface TextProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Wraps the text content on white spaces.
+   *
+   * @defaultValue true
+   */
+  wrap?: boolean;
 
-  tokens?: RecursivePartial<TextTokenSet>;
+  /**
+   * Truncate overflowing text for block displays.
+   *
+   * @defaultValue false
+   */
+  truncate?: boolean;
+
+  /**
+   * Applies a block display for the content.
+   *
+   * @defaultValue false
+   */
+  block?: boolean;
+
+  /**
+   * Applies the italic font style to the content.
+   *
+   * @defaultValue false
+   */
+  italic?: boolean;
+
+  /**
+   * Applies the underline text decoration to the content.
+   *
+   * @defaultValue false
+   */
+  underline?: boolean;
+
+  /**
+   * Applies the strikethrough text decoration to the content.
+   *
+   * @defaultValue false
+   */
+  strikethrough?: boolean;
+
+  /**
+   * Applies font size and line height based on the theme tokens.
+   *
+   * @defaultValue 300
+   */
+  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+
+  /**
+   * Applies the font family to the content.
+   *
+   * @defaultValue base
+   */
+  font?: 'base' | 'monospace' | 'numeric';
+
+  /**
+   * Applies font weight to the content.
+   *
+   * @defaultValue regular
+   */
+  weight?: 'regular' | 'medium' | 'semibold';
+
+  /**
+   * Aligns text based on the parent container.
+   *
+   * @defaultValue start
+   */
+  align?: 'start' | 'center' | 'end' | 'justify';
+
+  /**
+   * Component to be rendered as.
+   *
+   * @defaultValue span
+   */
+  as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
 }
 
-export interface TextSlots extends BaseSlots {}
+/**
+ * Names of TextProps that have a default value in useText
+ */
+export type TextDefaultedProps = never;
 
-export type TextSlotProps = SlotProps<TextSlots, TextProps, React.HTMLAttributes<HTMLSpanElement>>;
-
-export type TextTokenSet = {};
+/**
+ * State used in rendering Text
+ */
+export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+}

@@ -2,20 +2,20 @@ import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react-northstar';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const janeAvatar = {
-  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
+const robinAvatar = {
+  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    message: <Chat.Message content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+    message: <Chat.Message content="Hello" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
     contentPosition: 'end',
     attached: 'top',
     key: 'message-id-1',
   },
   {
-    message: <Chat.Message content="I'm back!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+    message: <Chat.Message content="I'm back!" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
     contentPosition: 'end',
     attached: true,
     key: 'message-id-2',
@@ -30,7 +30,7 @@ const items: ShorthandCollection<ChatItemProps> = [
             </div>
           ),
         }}
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
       />
@@ -40,19 +40,19 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-3',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
-    message: <Chat.Message content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    gutter: <Avatar {...robinAvatar} />,
+    message: <Chat.Message content="Hi" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
     attached: 'top',
     key: 'message-id-4',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
-    message: <Chat.Message content="Looks good!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    gutter: <Avatar {...robinAvatar} />,
+    message: <Chat.Message content="Looks good!" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
     attached: true,
     key: 'message-id-5',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
+    gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
         content={
@@ -60,7 +60,7 @@ const items: ShorthandCollection<ChatItemProps> = [
             I also like <a href="#">www.goodFood2.com</a>.
           </div>
         }
-        author="Jane Doe"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
       />
     ),
@@ -71,7 +71,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Would you like to grab lunch there?"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:16 PM"
         mine
       />
@@ -80,8 +80,8 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-7',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
-    message: <Chat.Message content="Sure! Let's try it." author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    gutter: <Avatar {...robinAvatar} />,
+    message: <Chat.Message content="Sure! Let's try it." author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
     key: 'message-id-8',
   },
   {
@@ -89,7 +89,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-9',
   },
   {
-    message: <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />,
+    message: <Chat.Message content="Ok, let's go." author="Cecil Folk" timestamp="Today, 11:15 PM" mine />,
     contentPosition: 'end',
     key: 'message-id-10',
   },

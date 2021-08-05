@@ -7,7 +7,7 @@ import { ReactionVariables } from './reactionVariables';
 const contentClassNameSelector = `& .${reactionSlotClassNames.content}`;
 
 export const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, ReactionVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     cursor: 'pointer',
     background: 'transparent',
     border: pxToRem(0),
@@ -37,7 +37,7 @@ export const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, Re
         borderWidth: '1px',
         borderStyle: 'solid',
         borderColor: v.borderColorFocus,
-        borderRadius: pxToRem(2),
+        borderRadius: siteVariables.borderRadiusMedium,
         boxShadow: `0px 0px 0px 1px ${v.boxShadowColor} inset`,
       },
     },

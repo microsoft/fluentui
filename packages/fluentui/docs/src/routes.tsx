@@ -11,7 +11,6 @@ import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 import * as Composition from './pages/Composition.mdx';
 import * as Debugging from './pages/Debugging.mdx';
 import * as Layout from './pages/Layout.mdx';
-import * as StylesOverrides from './pages/StylesOverrides.mdx';
 import Accessibility from './views/Accessibility';
 import Colors from './views/Colors';
 import ColorPalette from './views/ColorPalette';
@@ -21,7 +20,6 @@ import CategoryColorSchemes from './views/CategoryColorSchemes';
 import FAQ from './views/FAQ';
 import Performance from './views/Performance';
 import * as ShorthandProps from './pages/ShorthandProps.mdx';
-import * as ThemingSpecification from './pages/ThemingSpecification.mdx';
 import Introduction from './views/Introduction';
 import PageNotFound from './views/PageNotFound';
 import QuickStart from './views/QuickStart';
@@ -37,35 +35,36 @@ import PerformanceTests from './views/PerformanceTests';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
-  ChatPanePrototype,
+  AlertsPrototype,
+  AsyncShorthandPrototype,
   ChatMessagesPrototype,
+  ChatPanePrototype,
+  CompactChatPrototype,
+  CopyToClipboardPrototype,
   CustomScrollbarPrototype,
   CustomToolbarPrototype,
-  AsyncShorthandPrototype,
-  EmployeeCardPrototype,
-  MeetingOptionsPrototype,
-  ParticipantsListPrototype,
-  SearchPagePrototype,
-  MentionsPrototype,
   DropdownsPrototype,
-  PopupsPrototype,
-  AlertsPrototype,
   EditorToolbarPrototype,
-  HexagonalAvatarPrototype,
-  TablePrototype,
-  NestedPopupsAndDialogsPrototype,
+  EmployeeCardPrototype,
   FormValidationPrototype,
-  VirtualizedTreePrototype,
-  VirtualizedTablePrototype,
-  CopyToClipboardPrototype,
-  TextAreaAutoSize,
+  HexagonalAvatarPrototype,
+  MeetingOptionsPrototype,
+  MentionsPrototype,
   MenuList,
-  VirtualizedStickyTreePrototype,
+  NestedPopupsAndDialogsPrototype,
+  ParticipantsListPrototype,
+  PopupsPrototype,
   RosterPrototype,
+  SearchPagePrototype,
+  TablePrototype,
+  TextAreaAutoSize,
+  VirtualizedStickyTreePrototype,
+  VirtualizedTablePrototype,
+  VirtualizedTreePrototype,
 } from '@fluentui/react-northstar-prototypes';
 
-const ExternalExampleLayout = React.lazy(() =>
-  import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
+const ExternalExampleLayout = React.lazy(
+  () => import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
 );
 
 const _Builder = React.lazy(async () => ({
@@ -110,6 +109,7 @@ const Routes = () => (
                 <Route exact path="/prototype-roster" component={RosterPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
+                <Route exact path="/prototype-compact-chat" component={CompactChatPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
                 <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
                 <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
@@ -149,12 +149,6 @@ const Routes = () => (
                   <MarkdownPage page={ShorthandProps} />
                 </Route>
                 <Route exact path="/icon-viewer" component={IconViewer} />
-                <Route exact path="/theming-specification">
-                  <MarkdownPage page={ThemingSpecification} />
-                </Route>
-                <Route exact path="/styles-overrides">
-                  <MarkdownPage page={StylesOverrides} />
-                </Route>
                 <Route exact path="/integrate-custom-components" component={IntegrateCustomComponents} />
                 <Route exact path="/performance" component={Performance} />
                 <Route exact path="/composition">

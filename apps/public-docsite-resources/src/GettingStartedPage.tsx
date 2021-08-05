@@ -26,7 +26,7 @@ export const GettingStartedPage: React.FunctionComponent = () => {
         <h1>@fluentui/react</h1>
         <h3>A library of reusable, generic React components</h3>
       </div>
-      <Markdown>{require<string>('!raw-loader!./docs/GettingStartedOverview.md')}</Markdown>
+      <Markdown>{require<string>('!raw-loader?esModule=false!./docs/GettingStartedOverview.md')}</Markdown>
     </div>
   );
 };

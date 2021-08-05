@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Link } from '@fluentui/react/lib/Link';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';

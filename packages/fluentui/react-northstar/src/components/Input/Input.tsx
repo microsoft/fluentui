@@ -29,7 +29,7 @@ import {
   compose,
   ComponentWithAs,
 } from '@fluentui/react-bindings';
-import { ExclamationCircleIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
+import { ExclamationCircleIcon, CheckmarkCircleIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 import { InputLabel, InputLabelProps, LabelPosition } from './InputLabel';
 import { FormFieldBaseContext } from '../Form/utils/formFieldBaseContext';
 
@@ -268,7 +268,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
 
     const computeIcon = (): ShorthandValue<BoxProps> => {
       if (clearable && (value as string)?.length !== 0) {
-        return {};
+        return <CloseIcon outline />;
       }
       if (requiredAndSuccessful) {
         return successIndicator;
@@ -407,7 +407,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   label: customPropTypes.itemShorthand,
-  labelPosition: PropTypes.oneOf<LabelPosition>(['inside', 'inline']),
+  labelPosition: PropTypes.oneOf<LabelPosition>(['inline', 'above', 'inside']),
   icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   input: customPropTypes.itemShorthand,
@@ -431,7 +431,7 @@ Input.defaultProps = {
   wrapper: {},
   iconPosition: 'end',
   errorIndicator: <ExclamationCircleIcon />,
-  successIndicator: <PresenceAvailableIcon />,
+  successIndicator: <CheckmarkCircleIcon outline />,
 };
 
 Input.Label = InputLabel;

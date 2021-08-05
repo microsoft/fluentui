@@ -1,7 +1,7 @@
 export { getAccessibility as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
-export * from '@fluentui/react-compose';
+export * from './compose';
 
 export { AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
@@ -13,13 +13,19 @@ export * from './FocusZone/focusUtilities';
 
 export { useAccessibility } from './hooks/useAccessibility';
 export { useAutoControlled } from './hooks/useAutoControlled';
-export * from './hooks/useCSS';
+export { useCallbackRef } from './hooks/useCallbackRef';
 export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
+export { useDeepMemo } from './hooks/useDeepMemo';
+export { useEventCallback } from './hooks/useEventCallback';
+export { useFirstMount } from './hooks/useFirstMount';
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
+export { useMergedRefs } from './hooks/useMergedRefs';
 export { useStateManager } from './hooks/useStateManager';
 export * from './hooks/useStyles';
 export { useTriggerElement } from './hooks/useTriggerElement';
 export { useUnhandledProps } from './hooks/useUnhandledProps';
+export { usePrevious } from './hooks/usePrevious';
+export { useOnIFrameFocus } from './hooks/useOnIFrameFocus';
 
 export { RendererContext } from './renderer/RendererContext';
 
@@ -37,3 +43,8 @@ export { getUnhandledProps } from './utils/getUnhandledProps';
 export { mergeVariablesOverrides } from './utils/mergeVariablesOverrides';
 
 export * from './context';
+
+export { createContext } from './context-selector/createContext';
+export { useContextSelector } from './context-selector/useContextSelector';
+export { useContextSelectors } from './context-selector/useContextSelectors';
+export * from './context-selector/types';

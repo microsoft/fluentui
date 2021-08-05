@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Panel, IPanelProps } from '@fluentui/react/lib/Panel';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { SearchBox } from '@fluentui/react/lib/SearchBox';
@@ -22,9 +22,11 @@ export const PanelNavigationExample: React.FunctionComponent = () => {
           styles={searchboxStyles}
           ariaLabel="Sample search box. Does not actually search anything."
         />
-        {// This custom navigation still renders the close button (defaultRender).
-        // If you don't use defaultRender, be sure to provide some other way to close the panel.
-        defaultRender!(props)}
+        {
+          // This custom navigation still renders the close button (defaultRender).
+          // If you don't use defaultRender, be sure to provide some other way to close the panel.
+          defaultRender!(props)
+        }
       </>
     ),
     [],

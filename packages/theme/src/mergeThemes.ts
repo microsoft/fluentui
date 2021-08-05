@@ -1,6 +1,5 @@
 import { merge } from '@fluentui/utilities';
 import { IFontStyles, PartialTheme, Theme } from './types/index';
-import { getTokens } from './utilities/getTokens';
 import { getSemanticColors } from './utilities/makeSemanticColors';
 
 /**
@@ -29,12 +28,6 @@ export function mergeThemes(theme: Theme, partialTheme: PartialTheme = {}): Them
       );
     }
   }
-
-  if (partialTheme.stylesheets) {
-    mergedTheme.stylesheets = (theme.stylesheets || []).concat(partialTheme.stylesheets);
-  }
-
-  mergedTheme.tokens = getTokens(mergedTheme, partialTheme.tokens);
 
   return mergedTheme;
 }

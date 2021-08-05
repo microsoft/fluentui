@@ -7,6 +7,9 @@ import {
   ModOptions,
   RenameImportType,
   CodeModResult,
+  ModResult,
+  ModError,
+  NoOp,
 } from '../../types';
 import { findJsxTag, renameProp, getImportsByPath, repathImport, renameImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
@@ -54,7 +57,7 @@ export function createCodeMod(options: ModOptions, mod: (file: SourceFile) => Co
         /* Codemod body. */
         return mod(file);
       } catch (e) {
-        return Err({ error: e });
+        return Err<ModResult, ModError>({ error: e });
       }
     },
     version: options.version,
@@ -74,7 +77,7 @@ const _codeModMap: CodeModMapType = {
       if (res.ok) {
         return Ok({ logs: [res.value] });
       } else {
-        return Err({
+        return Err<ModResult, NoOp>({
           logs: [`unable to rename the prop ${mod.options.from.toRename} in all files.`],
         });
       }
@@ -92,7 +95,7 @@ const _codeModMap: CodeModMapType = {
         : mod.options.from.searchString;
       return getImportsByPath(file, searchString)
         .then(v => v.map(imp => repathImport(imp, mod.options.to.replacementValue)))
-        .chain(v => Ok({ logs: ['Successfully repathed imports'] }));
+        .chain(_ => Ok({ logs: ['Successfully repathed imports'] }));
     };
   },
   renameImport: (mod: RenameImportType) => {
@@ -110,7 +113,7 @@ const combineResults = (result: CodeModResult, result2: CodeModResult) => {
       },
       e => {
         if ('error' in e) {
-          return Err(e);
+          return Err<ModResult, ModError>(e);
         }
         return Ok({ logs: v.logs.concat(...e.logs) });
       },
@@ -129,8 +132,8 @@ const configMod: CodeMod = {
     if (!__configs) {
       __configs = getCodeModsFromJson();
       if (__configs === undefined || __configs.length === 0) {
-        return Err({
-          logs: ['failed to get any mods from json. Perhaps the file is missing or malformed?'],
+        return Err<ModResult, ModError>({
+          error: 'failed to get any mods from json. Perhaps the file is missing or malformed?',
         });
       }
     }
@@ -141,7 +144,7 @@ const configMod: CodeMod = {
       results.push(mod.run(file));
     }
     if (results.length === 0) {
-      return Err({ logs: ['No runabble mods were found in the config'] });
+      return Err<ModResult, NoOp>({ logs: ['No runabble mods were found in the config'] });
     }
 
     return results.reduce(combineResults);

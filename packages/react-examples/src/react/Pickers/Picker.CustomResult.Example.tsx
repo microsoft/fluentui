@@ -23,7 +23,7 @@ import {
   IInputProps,
   IBasePickerSuggestionsProps,
 } from '@fluentui/react/lib/Pickers';
-import { IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { IButtonProps } from '@fluentui/react/lib/Button';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@fluentui/react-hooks';
 
@@ -384,6 +384,8 @@ export const PickerCustomResultExample: React.FunctionComponent = () => {
         onRenderItem={SelectedDocumentItem}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
+        selectionAriaLabel="Selected documents"
+        selectionRole="group"
         disabled={isPickerDisabled}
         inputProps={inputProps}
       />

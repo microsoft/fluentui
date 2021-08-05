@@ -80,7 +80,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone1"
+          data-focuszone-id="FocusZone2"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -89,7 +89,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header0-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -195,8 +195,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header0-check"
+                id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -255,9 +256,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -265,11 +269,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -295,25 +298,28 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -356,7 +362,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone2"
+            data-focuszone-id="FocusZone3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -420,7 +426,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -429,8 +436,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -509,7 +514,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -559,7 +564,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -607,7 +612,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -616,8 +622,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -696,7 +700,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -746,7 +750,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -794,7 +798,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -803,8 +808,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -883,7 +886,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -933,7 +936,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -981,7 +984,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -990,8 +994,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1070,7 +1072,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1120,7 +1122,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1168,7 +1170,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1177,8 +1180,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1257,7 +1258,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1307,7 +1308,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1355,7 +1356,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1364,8 +1366,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1444,7 +1444,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1494,7 +1494,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1542,7 +1542,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1551,8 +1552,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1631,7 +1630,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1681,7 +1680,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1729,7 +1728,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1738,8 +1738,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1818,7 +1816,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1868,7 +1866,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1916,7 +1914,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1925,8 +1924,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -2005,7 +2002,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -2055,7 +2052,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -2103,7 +2100,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -2112,8 +2110,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -2192,7 +2188,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -2242,7 +2238,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }

@@ -13,11 +13,13 @@ const filledTokens: ICardSectionComponent['tokens'] = {
   margin: 0,
 };
 
+/** @deprecated */
 export const CardSectionTokens: ICardSectionComponent['tokens'] = (props, theme): ICardSectionTokenReturnType => [
   baseTokens,
   props.fill && filledTokens,
 ];
 
+/** @deprecated */
 export const CardSectionStyles: ICardSectionComponent['styles'] = (
   props,
   theme,

@@ -23,7 +23,7 @@ const defaultColor = 'transparent';
  * NOTE: the element where this is used needs to have relative positioning so that the
  * pseudo elements created on focus can be properly positioned.
  */
-export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
+export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' | ':focus-visible', ICSSInJSStyle> => {
   const sv = args.variables;
   const {
     borderWidth = sv.borderWidth,

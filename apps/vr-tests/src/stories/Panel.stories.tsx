@@ -81,7 +81,6 @@ storiesOf('Panel', module)
   ));
 
 storiesOf('Panel', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

@@ -5,7 +5,7 @@ import { IFocusZoneProps } from '../../FocusZone';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../DragDrop';
 import { ISelection, SelectionMode } from '../../Selection';
-import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IGroupHeaderProps } from './GroupHeader.types';
@@ -164,7 +164,6 @@ export interface IGroup {
   level?: number;
 
   /**
-   * Deprecated at 1.0.0, selection state will be controled by the selection store only.
    * @deprecated At 1.0.0, selection state wil be controlled by the selection store only.
    */
   isSelected?: boolean;
@@ -284,6 +283,18 @@ export interface IGroupDividerProps {
   /** Defines the number of columns a group header needs to span in the case of a grid or treegrid */
   ariaColSpan?: number;
 
+  /** Defines the number of items in the current set of listitems or treeitems */
+  ariaSetSize?: number;
+
+  /** Defines an element's number or position in the current set of listitems or treeitems */
+  ariaPosInSet?: number;
+
+  /** Defines the number of items in the current set of grid items */
+  ariaRowCount?: number;
+
+  /** Defines an element's number or position in the current set of grid items */
+  ariaRowIndex?: number;
+
   /**
    * Width corresponding to a single level.
    * This is multiplied by the groupLevel to get the full spacer width for the group.
@@ -294,8 +305,7 @@ export interface IGroupDividerProps {
   selected?: boolean;
 
   /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use `selected` instead.
-   * @deprecated Use `selected` instead.
+   * @deprecated Use `selected` instead. Deprecated at v.65.1.
    */
   isSelected?: boolean;
 

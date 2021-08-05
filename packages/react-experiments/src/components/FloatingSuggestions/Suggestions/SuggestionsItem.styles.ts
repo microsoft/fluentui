@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 export const SuggestionsItemGlobalClassNames = {
@@ -53,7 +53,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
               ':hover': {
                 background: 'Highlight',
                 color: 'HighlightText',
-                MsHighContrastAdjust: 'none',
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
@@ -73,7 +73,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },

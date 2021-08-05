@@ -1,6 +1,16 @@
 import * as React from 'react';
-import { Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup, IStackProps } from '@fluentui/react';
-import { MessageBarButton } from '@fluentui/react/lib/compat/Button';
+import {
+  Link,
+  Stack,
+  StackItem,
+  MessageBar,
+  MessageBarType,
+  ChoiceGroup,
+  IStackProps,
+  MessageBarButton,
+  Text,
+  IChoiceGroupStyles,
+} from '@fluentui/react';
 
 interface IExampleProps {
   resetChoice?: () => void;
@@ -14,17 +24,12 @@ const verticalStackProps: IStackProps = {
   styles: { root: { overflow: 'hidden', width: '100%' } },
   tokens: { childrenGap: 20 },
 };
-
-const choiceGroupStyles = {
-  label: {
-    maxWidth: 250,
-  },
-};
+const choiceGroupStyles: Partial<IChoiceGroupStyles> = { label: { maxWidth: 250 } };
 
 const DefaultExample = () => (
   <MessageBar>
-    Info/Default MessageBar.
-    <Link href="www.bing.com" target="_blank">
+    Info (default) MessageBar.
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -38,7 +43,7 @@ const ErrorExample = (p: IExampleProps) => (
     dismissButtonAriaLabel="Close"
   >
     Error MessageBar with single line, with dismiss button.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -75,7 +80,7 @@ const SevereExample = (p: IExampleProps) => (
     }
   >
     SevereWarning MessageBar with action buttons which defaults to multiline.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -93,7 +98,7 @@ const SuccessExample = () => (
     isMultiline={false}
   >
     Success MessageBar with single line and action buttons.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -112,7 +117,7 @@ const WarningExample = (p: IExampleProps) => (
     }
   >
     Warning MessageBar content.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -136,45 +141,21 @@ const WarningExample2 = (p: IExampleProps) => (
     faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse
     platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu
     mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
 );
 
 const choiceOptions = [
-  {
-    key: 'default',
-    text: 'Default',
-  },
-  {
-    key: 'error',
-    text: 'Error MessageBar',
-  },
-  {
-    key: 'blocked',
-    text: 'Blocked MessageBar',
-  },
-  {
-    key: 'severe',
-    text: 'SevereWarning MessageBar',
-  },
-  {
-    key: 'success',
-    text: 'Success MessageBar',
-  },
-  {
-    key: 'warning',
-    text: 'Warning MessageBar - single line',
-  },
-  {
-    key: 'warning2',
-    text: 'Warning MessageBar - multiline',
-  },
-  {
-    key: 'all',
-    text: 'Show All',
-  },
+  { key: 'all', text: 'Show all' },
+  { key: 'default', text: 'Info (default)' },
+  { key: 'error', text: 'Error' },
+  { key: 'blocked', text: 'Blocked' },
+  { key: 'severe', text: 'SevereWarning' },
+  { key: 'success', text: 'Success' },
+  { key: 'warning', text: 'Warning - single line' },
+  { key: 'warning2', text: 'Warning - multiline' },
 ];
 
 export const MessageBarBasicExample: React.FunctionComponent = () => {
@@ -184,32 +165,39 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
   const resetChoice = React.useCallback(() => setChoice(undefined), []);
 
   return (
-    <Stack {...horizontalStackProps}>
-      <StackItem disableShrink>
-        <ChoiceGroup
-          styles={choiceGroupStyles}
-          label="Select a MessageBar Example Below. To test in narrator, show one message at a time."
-          selectedKey={choice}
-          // eslint-disable-next-line react/jsx-no-bind
-          onChange={(e, v) => setChoice(v!.key)}
-          options={choiceOptions}
-        />
-      </StackItem>
-      <Stack {...verticalStackProps}>
-        {(choice === 'default' || showAll) && <DefaultExample />}
+    <div>
+      <Text block>
+        Because screen readers will immediately read any MessageBar(s) on page load, the examples are hidden by default.
+        Use the buttons below to choose an example to show.
+      </Text>
+      <br />
+      <Stack {...horizontalStackProps}>
+        <StackItem disableShrink>
+          <ChoiceGroup
+            styles={choiceGroupStyles}
+            label="Select a MessageBar example"
+            selectedKey={choice}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(e, v) => setChoice(v!.key)}
+            options={choiceOptions}
+          />
+        </StackItem>
+        <Stack {...verticalStackProps}>
+          {(choice === 'default' || showAll) && <DefaultExample />}
 
-        {(choice === 'error' || showAll) && <ErrorExample resetChoice={resetChoice} />}
+          {(choice === 'error' || showAll) && <ErrorExample resetChoice={resetChoice} />}
 
-        {(choice === 'blocked' || showAll) && <BlockedExample resetChoice={resetChoice} />}
+          {(choice === 'blocked' || showAll) && <BlockedExample resetChoice={resetChoice} />}
 
-        {(choice === 'severe' || showAll) && <SevereExample resetChoice={resetChoice} />}
+          {(choice === 'severe' || showAll) && <SevereExample resetChoice={resetChoice} />}
 
-        {(choice === 'success' || showAll) && <SuccessExample />}
+          {(choice === 'success' || showAll) && <SuccessExample />}
 
-        {(choice === 'warning' || showAll) && <WarningExample resetChoice={resetChoice} />}
+          {(choice === 'warning' || showAll) && <WarningExample resetChoice={resetChoice} />}
 
-        {(choice === 'warning2' || showAll) && <WarningExample2 resetChoice={resetChoice} />}
+          {(choice === 'warning2' || showAll) && <WarningExample2 resetChoice={resetChoice} />}
+        </Stack>
       </Stack>
-    </Stack>
+    </div>
   );
 };

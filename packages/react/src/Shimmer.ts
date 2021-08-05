@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Shimmer';
+export * from './components/Shimmer/index';

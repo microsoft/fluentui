@@ -6,12 +6,12 @@
 
 ### Source code
 
-[BadgeView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Badge%20Field/BadgeView.swift)
+[BadgeView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Badge%20Field/BadgeView.swift)
 
-[BadgeField](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Badge%20Field/BadgeField.swift)
+[BadgeField](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Badge%20Field/BadgeField.swift)
 
 ### Sample code
 
-[BadgeView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/BadgeViewDemoController.swift)
+[BadgeView demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/BadgeViewDemoController.swift)
 
-[BadgeField demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/BadgeFieldDemoController.swift)
+[BadgeField demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/BadgeFieldDemoController.swift)

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ProgressIndicator';
+export * from './components/ProgressIndicator/index';

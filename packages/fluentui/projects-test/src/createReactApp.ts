@@ -33,16 +33,6 @@ async function prepareApp(tmpDirectory: string, appName: string): Promise<string
   return appProjectPath;
 }
 
-async function fixTypescript(testAppPath: string) {
-  // TS 4.1 emits an import of `react/jsx-runtime` which doesn't exist in the types as of writing.
-  // Temporary workaround is to downgrade to 4.0.
-  await sh('yarn add typescript@~4.0.0', testAppPath);
-  // Also revert the change to the "jsx" tsconfig setting
-  const tsconfigPath = path.join(testAppPath, 'tsconfig.json');
-  const tsconfigContent = fs.readFileSync(tsconfigPath, 'utf8');
-  fs.writeFileSync(tsconfigPath, tsconfigContent.replace('react-jsx', 'react'));
-}
-
 /**
  * Tests the following scenario:
  *  - Create a new react test app
@@ -59,7 +49,6 @@ export async function createReactApp() {
   logger('STEP 1. Create test React project with TSX scripts..');
 
   const testAppPath = config.paths.withRootAt(await prepareApp(tmpDirectory, 'test-app'));
-  await fixTypescript(testAppPath());
   logger(`Test React project is successfully created: ${testAppPath()}`);
 
   logger('STEP 2. Add Fluent UI dependency to test project..');

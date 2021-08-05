@@ -1,7 +1,8 @@
-/* eslint-disable no-console */
 import sh from '@fluentui/scripts/gulp/sh'; // eslint-disable-line
-import tmp from 'tmp'; // eslint-disable-line
+import fs from 'fs';
+import tmp from 'tmp';
 import path from 'path';
+import semver from 'semver';
 
 // TODO this should ideally be merged with `packages/fluetui/project-tests/src/createReactApp.ts`
 
@@ -12,6 +13,20 @@ tmp.setGracefulCleanup();
 async function shEcho(cmd: string, cwd?: string) {
   console.log(`+ cd ${cwd ?? '.'} && ${cmd}`);
   await sh(cmd, cwd);
+}
+
+function verifyVersion() {
+  const templateJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../template.json'), 'utf8'));
+  const templateVersion = templateJson.package.dependencies['@fluentui/react'];
+  const reactPackageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../react/package.json'), 'utf8'));
+  const actualVersion = reactPackageJson.version;
+  if (!semver.satisfies(actualVersion, templateVersion)) {
+    console.error(
+      `@fluentui/react version ${reactPackageJson} does not satisfy template version range ${templateVersion}.`,
+    );
+    console.error('Please update the @fluentui/react version listed in cra-template/template.json.');
+    process.exit(1);
+  }
 }
 
 async function runE2ETest() {
@@ -28,4 +43,5 @@ async function runE2ETest() {
   }
 }
 
+verifyVersion();
 runE2ETest();

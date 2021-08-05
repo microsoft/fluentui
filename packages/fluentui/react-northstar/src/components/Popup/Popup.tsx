@@ -1,4 +1,11 @@
-import { Accessibility, popupBehavior, PopupBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  popupBehavior,
+  PopupBehaviorProps,
+  getCode,
+  keyboardKey,
+  SpacebarKey,
+} from '@fluentui/accessibility';
 import {
   AutoFocusZoneProps,
   FocusTrapZoneProps,
@@ -7,13 +14,13 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
-import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -29,11 +36,19 @@ import {
   setWhatInputSource,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
+import {
+  ALIGNMENTS,
+  POSITIONS,
+  createReferenceFromClick,
+  Popper,
+  PositioningProps,
+  PopperChildrenProps,
+  AutoSize,
+  AUTOSIZES,
+} from '../../utils/positioner';
 import { PopupContent, PopupContentProps } from './PopupContent';
 
 import { createShorthandFactory } from '../../utils/factories';
-import { createReferenceFromContextClick } from './createReferenceFromContextClick';
 import { isRightClick } from '../../utils/isRightClick';
 import { PortalInner } from '../Portal/PortalInner';
 import { Animation } from '../Animation/Animation';
@@ -98,7 +113,7 @@ export interface PopupProps
   target?: HTMLElement;
 
   /** Element to be rendered in-place where the popup is defined. */
-  trigger?: React.ReactNode;
+  trigger?: JSX.Element;
 
   /** Whether the trigger should be tabbable */
   tabbableTrigger?: boolean;
@@ -149,6 +164,7 @@ export const Popup: React.FC<PopupProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -159,13 +175,20 @@ export const Popup: React.FC<PopupProps> &
   const [isOpenedByRightClick, setIsOpenedByRightClick] = React.useState(false);
 
   const closeTimeoutId = React.useRef<number | undefined>();
-
+  const mouseDownEventRef = React.useRef<MouseEvent | null>();
   const popupContentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
   const triggerFocusableRef = React.useRef<HTMLElement>();
   const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
@@ -201,19 +224,32 @@ export const Popup: React.FC<PopupProps> &
       trapFocus,
       tabbableTrigger,
       trigger: trigger as any,
+      inline,
     }),
     rtl: context.rtl,
   });
 
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
+    const currentMouseDownEvent = mouseDownEventRef.current;
+    mouseDownEventRef.current = null;
+
+    if (currentMouseDownEvent && !isOutsidePopupElement(getRefs(), currentMouseDownEvent)) {
+      return;
+    }
+
     if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
       trySetOpen(false, e);
+      rightClickReferenceObject.current = null;
       return;
     }
 
     if (isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
       trySetOpen(false, e);
     }
+  };
+
+  const handleMouseDown = (e: MouseEvent) => {
+    mouseDownEventRef.current = e;
   };
 
   const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
@@ -392,6 +428,7 @@ export const Popup: React.FC<PopupProps> &
           pointerRef: pointerTargetRef,
           trapFocus,
           autoFocus,
+          autoSize,
           className: classes,
         }),
       overrideProps: getContentProps,
@@ -413,6 +450,7 @@ export const Popup: React.FC<PopupProps> &
 
             {context.target && (
               <>
+                <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
                 <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
                 <EventListener
                   listener={handleDocumentClick(getRefs)}
@@ -442,7 +480,10 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
-    trySetOpen(false, e);
+    // we only need to dismiss if the scroll happens outside the popup
+    if (!popupContentRef.current.contains(e.target as Node)) {
+      trySetOpen(false, e);
+    }
   };
 
   const trySetOpen = (
@@ -497,7 +538,7 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
-    rightClickReferenceObject.current = nativeEvent ? createReferenceFromContextClick(nativeEvent) : null;
+    rightClickReferenceObject.current = nativeEvent ? createReferenceFromClick(nativeEvent) : null;
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -542,24 +583,28 @@ export const Popup: React.FC<PopupProps> &
 
   const contentElement = (
     <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>
-      {({ classes }) => (
-        <Popper
-          pointerTargetRef={pointerTargetRef}
-          align={align}
-          flipBoundary={flipBoundary}
-          popperRef={popperRef}
-          position={position}
-          positionFixed={positionFixed}
-          offset={offset}
-          overflowBoundary={overflowBoundary}
-          rtl={context.rtl}
-          unstable_disableTether={unstable_disableTether}
-          unstable_pinned={unstable_pinned}
-          targetRef={rightClickReferenceObject.current || target || triggerRef}
-        >
-          {renderPopperChildren(classes)}
-        </Popper>
-      )}
+      {({ classes }) => {
+        const content = (
+          <Popper
+            pointerTargetRef={pointerTargetRef}
+            align={align}
+            flipBoundary={flipBoundary}
+            popperRef={popperRef}
+            position={position}
+            positionFixed={positionFixed}
+            offset={offset}
+            overflowBoundary={overflowBoundary}
+            rtl={context.rtl}
+            unstable_disableTether={unstable_disableTether}
+            unstable_pinned={unstable_pinned}
+            autoSize={autoSize}
+            targetRef={rightClickReferenceObject.current || target || triggerRef}
+          >
+            {renderPopperChildren(classes)}
+          </Popper>
+        );
+        return inline ? content : <PortalInner mountNode={mountNode}>{content}</PortalInner>;
+      }}
     </Animation>
   );
   const triggerElement = triggerNode && (
@@ -571,7 +616,7 @@ export const Popup: React.FC<PopupProps> &
   const element = (
     <>
       {triggerElement}
-      {inline ? contentElement : <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>}
+      {contentElement}
     </>
   );
   setEnd();
@@ -622,6 +667,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),

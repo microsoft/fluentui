@@ -7,7 +7,7 @@ const componentUrl =
 export const StylesPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    overview: require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/StylesPage/docs/web/StylesOverview.md') as string,
+    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/StylesPage/docs/web/StylesOverview.md') as string,
     componentUrl,
   },
 };

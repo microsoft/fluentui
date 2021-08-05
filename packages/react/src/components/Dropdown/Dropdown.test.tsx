@@ -24,6 +24,13 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '6', text: '6' },
 ];
 
+const RENDER_OPTIONS: IDropdownOption[] = [
+  { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
+  { key: '1', text: '1', selected: true },
+  { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
+  { key: '2', text: '2', title: 'test' },
+];
+
 describe('Dropdown', () => {
   let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;
@@ -41,6 +48,9 @@ describe('Dropdown', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
 
     document.body.innerHTML = '';
   });
@@ -51,10 +61,25 @@ describe('Dropdown', () => {
   });
 
   describe('single-select', () => {
-    it('Renders single-select Dropdown correctly', () => {
+    it('Renders correctly', () => {
       component = create(<Dropdown options={DEFAULT_OPTIONS} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('Renders correctly when open', () => {
+      // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      // There's intermittent variation (maybe measurement-related) on different computers,
+      // so use fake timers to make it more predictable even though we never advance the timers.
+      jest.useFakeTimers();
+
+      const ref = React.createRef<IDropdown>();
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
+      ref.current!.focus(true);
+      wrapper.update();
+      expect(wrapper.getDOMNode()).toMatchSnapshot();
     });
 
     it('Renders groups based on header start and divider end', () => {
@@ -309,16 +334,16 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('2');
     });
 
-    it('selects the first valid item on focus', () => {
+    it('does not select any item on focus', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
 
       wrapper.find('.ms-Dropdown').simulate('focus');
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1');
+      expect(titleElement.text()).toEqual('');
     });
 
-    it('can be programmatically focused when tabIndex=-1, and will select the first valid item', () => {
+    it('can be programmatically focused when tabIndex=-1, and will not automatically select an item', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
@@ -335,10 +360,10 @@ describe('Dropdown', () => {
 
       const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
       // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
-      expect(titleElement.innerHTML).toEqual('1');
+      expect(titleElement.innerHTML).toEqual('');
     });
 
-    it('opens and focuses/selects first selectable option when focus(true) is called', () => {
+    it('opens and does not automatically select an item when focus(true) is called', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
@@ -353,9 +378,8 @@ describe('Dropdown', () => {
       ReactTestUtils.act(() => {
         dropdown.current!.focus(true);
       });
-      const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
-      expect(firstDropdownItem).not.toBeNull();
-      expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
+      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.innerHTML).toEqual('');
     });
 
     it('selects the first valid item on Home keypress', () => {
@@ -389,19 +413,19 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('4');
     });
 
-    it('Shows correct tooltip with and without title prop specified', () => {
+    it('Shows correct tooltip only if title prop is specified', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
       const firstItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
-      expect(firstItemElement.getAttribute('title')).toEqual('1');
+      expect(firstItemElement.getAttribute('title')).toBeFalsy();
 
       const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       expect(secondItemElement.getAttribute('title')).toEqual('test');
 
       const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
-      expect(thirdItemElement.getAttribute('title')).toEqual('3');
+      expect(thirdItemElement.getAttribute('title')).toBeFalsy();
     });
 
     it('opens on focus if openOnKeyboardFocus is true', () => {
@@ -423,15 +447,22 @@ describe('Dropdown', () => {
       expect(secondItemElement).toBeTruthy();
     });
 
-    // Debatable whether this is desirable, but in the meantime, the test documents the behavior
-    it('uses item text as title attribute if no title provided', () => {
-      const options: IDropdownOption[] = [{ key: 'a', text: 'a' }];
-      wrapper = mount(<Dropdown options={options} />);
+    it('closes on blur when openOnKeyboardFocus is true', () => {
+      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      wrapper.find('.ms-Dropdown').simulate('focus');
 
-      const item = wrapper.find('.ms-Dropdown-item');
-      expect(item.getElements()[0].props.title).toBe('a');
+      let dropdownElement = document.querySelector('.ms-Dropdown-items') as HTMLElement;
+      expect(dropdownElement).toBeTruthy();
+
+      // blur, force the dropdown to close, then focus again
+      // the second focus is simulating the behavior of the Callout when closed
+      wrapper.find('.ms-Dropdown').simulate('blur');
+      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.escape });
+      wrapper.find('.ms-Dropdown').simulate('focus');
+
+      dropdownElement = document.querySelector('.ms-Dropdown-items') as HTMLElement;
+      expect(dropdownElement).toBeFalsy();
     });
 
     it('uses item title attribute if provided', () => {
@@ -457,13 +488,28 @@ describe('Dropdown', () => {
   });
 
   describe('multi-select', () => {
-    it('Renders multiselect Dropdown correctly', () => {
+    it('Renders correctly', () => {
       component = create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
-    it('Renders multiselect Dropdown correctly when options change', () => {
+    it('Renders correctly when open', () => {
+      // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      // There's intermittent variation (maybe measurement-related) on different computers,
+      // so use fake timers to make it more predictable even though we never advance the timers.
+      jest.useFakeTimers();
+
+      const ref = React.createRef<IDropdown>();
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
+      ref.current!.focus(true);
+      wrapper.update();
+      expect(wrapper.getDOMNode()).toMatchSnapshot();
+    });
+
+    it('Renders correctly when options change', () => {
       wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />);
       const titleElement = wrapper.find('.ms-Dropdown-title');
 

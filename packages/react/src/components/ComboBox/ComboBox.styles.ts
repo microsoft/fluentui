@@ -9,11 +9,11 @@ import {
   getPlaceholderStyles,
   hiddenContentStyle,
   getInputFocusStyle,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
-import { IButtonStyles } from '../../compat/Button';
+import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
 
 const ComboBoxHeight = 32;
@@ -52,7 +52,7 @@ const listOptionHighContrastStyles: IRawStyle = {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
-      MsHighContrastAdjust: 'none',
+      ...getHighContrastNoAdjustStyle(),
     },
   },
 };
@@ -62,7 +62,7 @@ const inputHighContrastStyles: IRawStyle = {
     [HighContrastSelector]: {
       color: 'WindowText',
       backgroundColor: 'Window',
-      MsHighContrastAdjust: 'none',
+      ...getHighContrastNoAdjustStyle(),
     },
   },
 };
@@ -74,6 +74,7 @@ export const getOptionStyles = memoizeFunction(
     customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
     isPending?: boolean,
     isHidden?: boolean,
+    isSelected?: boolean,
   ): Partial<IComboBoxOptionStyles> => {
     const { palette, semanticColors } = theme;
 
@@ -123,6 +124,24 @@ export const getOptionStyles = memoizeFunction(
             },
           },
         },
+        isSelected
+          ? [
+              {
+                backgroundColor: 'transparent',
+                color: option.textSelectedColor,
+                selectors: {
+                  ':hover': [
+                    {
+                      backgroundColor: option.backgroundHoveredColor,
+                    },
+                    listOptionHighContrastStyles,
+                  ],
+                },
+              },
+              getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
+              listOptionHighContrastStyles,
+            ]
+          : [],
       ],
       rootHovered: {
         backgroundColor: option.backgroundHoveredColor,
@@ -131,22 +150,6 @@ export const getOptionStyles = memoizeFunction(
       rootFocused: {
         backgroundColor: option.backgroundHoveredColor,
       },
-      rootChecked: [
-        {
-          backgroundColor: 'transparent',
-          color: option.textSelectedColor,
-          selectors: {
-            ':hover': [
-              {
-                backgroundColor: option.backgroundHoveredColor,
-              },
-              listOptionHighContrastStyles,
-            ],
-          },
-        },
-        getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
-        listOptionHighContrastStyles,
-      ],
       rootDisabled: {
         color: option.textDisabledColor,
         cursor: 'default',
@@ -190,7 +193,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     };
@@ -211,7 +214,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
             backgroundColor: 'ButtonFace',
             borderColor: 'ButtonText',
             color: 'ButtonText',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -307,7 +310,7 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
       backgroundColor: 'Window',
-      MsHighContrastAdjust: 'none',
+      ...getHighContrastNoAdjustStyle(),
       selectors: {
         ':after': {
           borderColor: 'Highlight',
@@ -383,7 +386,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'HighlightText',
             backgroundColor: 'Window',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
             selectors: {
               ':after': {
                 borderColor: 'Highlight',
@@ -492,8 +495,8 @@ export const getStyles = memoizeFunction(
           selectors: {
             [HighContrastSelector]: {
               color: 'GrayText',
+              ...getHighContrastNoAdjustStyle(),
             },
-            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
       ],

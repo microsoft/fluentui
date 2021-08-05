@@ -38,7 +38,6 @@ export interface IAzureSemanticColors {
     disabled: string;
     hyperlink: string;
     hyperlinkHovered: string;
-    hyperlinkBackgroundHovered: string;
     success: string;
     error: string;
     placeholder: string;
@@ -86,12 +85,16 @@ export interface IAzureSemanticColors {
       background: string;
       border: string;
     };
+    focus: {
+      border: string;
+    };
   };
   checkBox: {
     rest: {
       border: string;
       background: string;
       hover: string;
+      hoverText: string;
       focus: string;
       check: string;
     };
@@ -109,9 +112,11 @@ export interface IAzureSemanticColors {
   };
   controlOutlines: {
     rest: string;
+    background: string;
     disabled: string;
     hover: string;
     accent: string; // button in radio, check, et. al.
+    focus: string;
     error: string;
     dirty: string;
   };
@@ -119,6 +124,7 @@ export interface IAzureSemanticColors {
     circle: {
       hover: string;
     };
+    focus: string;
   };
   item: {
     hover: string;
@@ -136,6 +142,29 @@ export interface IAzureSemanticColors {
   };
   commandBar: {
     border: string;
+    button: {
+      root: {
+        color: string;
+      };
+      hover: {
+        background: string;
+        color: string;
+        icon: string;
+      };
+      disabled: {
+        color: string;
+      };
+      focus: {
+        borderColor: string;
+      };
+      selected: {
+        background: string;
+        icon: string;
+      };
+      selectedHover: {
+        background: string;
+      };
+    };
   };
   datePicker: {
     rest: {
@@ -148,6 +177,12 @@ export interface IAzureSemanticColors {
   };
   detailsRow: {
     border: string;
+    focus: string;
+    hoveredLink: string;
+    hoveredRowLink: string;
+    hoveredBackground: string;
+    selectedLink: string;
+    selectedHoveredLink: string;
   };
   radioButton: {
     circle: {
@@ -168,6 +203,7 @@ export interface IAzureSemanticColors {
   teachingBubble: {
     rest: {
       background: string;
+      border: string;
       text: string;
       secondaryBackround: string;
     };

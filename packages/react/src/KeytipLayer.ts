@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/KeytipLayer';
+export * from './components/KeytipLayer/index';

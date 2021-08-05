@@ -26,10 +26,8 @@
 
 - Titles should explain the panel content in clear, concise, and specific terms.
 - Keep the length of the title to one line, if possible.
-- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization] in the Microsoft Writing Style Guide.
+- Use sentence-style capitalization—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.
 - Don’t put a period at the end of the title.
-
-[capitalization]: https://docs.microsoft.com/style-guide/capitalization
 
 #### Button labels
 

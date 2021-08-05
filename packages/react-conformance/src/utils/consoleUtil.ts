@@ -8,12 +8,16 @@ let isDisabledOnce: boolean;
 /**
  * Enable console logging.
  */
-export const enable = () => Object.assign(console, original);
+export const enable = () => {
+  Object.assign(console, original);
+};
 
 /**
  * Disable console logging.
  */
-export const disable = () => Object.assign(console, disabled);
+export const disable = () => {
+  Object.assign(console, disabled);
+};
 
 /**
  * Silence the console for a single test.  It will be re-enabled after it().

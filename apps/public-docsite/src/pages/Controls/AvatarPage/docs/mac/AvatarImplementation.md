@@ -4,8 +4,8 @@
 
 ### Source Code
 
-[AvatarView.swift](https://github.com/microsoft/fluentui-apple/blob/master/macos/FluentUI/AvatarView.swift)
+[AvatarView.swift](https://github.com/microsoft/fluentui-apple/blob/main/macos/FluentUI/AvatarView/AvatarView.swift)
 
 ### Sample Code
 
-[TestAvatarViewController.swift](https://github.com/microsoft/fluentui-apple/blob/master/macos/FluentUITestApp/TestAvatarViewController.swift)
+[TestAvatarViewController.swift](https://github.com/microsoft/fluentui-apple/blob/main/macos/FluentUITestViewControllers/TestAvatarViewController.swift)

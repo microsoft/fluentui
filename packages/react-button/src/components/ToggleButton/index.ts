@@ -3,4 +3,4 @@ export * from './ToggleButton.types';
 export * from './renderToggleButton';
 export * from './useChecked';
 export * from './useToggleButton';
-export * from './useToggleButtonClasses';
+export { useToggleButtonStyles } from './useToggleButtonStyles';

@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';

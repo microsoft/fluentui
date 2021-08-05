@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+  This file is used for DEVELOPMENT PURPOSES ONLY.
+  See homepage.htm for the code used on the production site.
+-->
+<html lang="en-us">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no" />
+    <title>Fluent UI</title>
+    <link
+      href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+    <style type="text/css">
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+
+      .loading {
+        align-items: center;
+        background-color: #faf9f8;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+      }
+
+      /* Copied from UHF site */
+      a.m-skip-to-main {
+        left: -999px;
+        position: absolute;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        z-index: -2;
+      }
+
+      a.m-skip-to-main:focus {
+        border: 1px dashed #000;
+      }
+
+      a.m-skip-to-main:focus,
+      a.m-skip-to-main:active {
+        background: #e6e6e6;
+        color: #0067b8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 24px;
+        width: auto;
+        height: auto;
+        overflow: auto;
+        right: 0;
+        text-decoration: underline;
+        text-align: center;
+        z-index: 800;
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Copied from UHF site -->
+    <a id="uhfSkipToMain" class="m-skip-to-main" href="#mainContent" tabindex="0">Skip to main content</a>
+    <div id="main">
+      <div class="loading">
+        <img
+          class="loadingImage"
+          src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif"
+          alt="Loading"
+          width="32"
+          height="32"
+        />
+      </div>
+    </div>
+
+    <script type="text/javascript" src="loadSite.js"></script>
+  </body>
+</html>

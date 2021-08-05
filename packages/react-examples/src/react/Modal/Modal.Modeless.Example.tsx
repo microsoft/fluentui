@@ -10,7 +10,7 @@ import {
   ContextualMenu,
   IIconProps,
 } from '@fluentui/react';
-import { DefaultButton, IconButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';
 
 const dragOptions: IDragOptions = {
   moveMenuItemText: 'Move',

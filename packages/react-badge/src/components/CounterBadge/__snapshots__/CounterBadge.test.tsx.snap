@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CounterBadge renders a default state 1`] = `
+<div
+  aria-hidden={true}
+  className=""
+>
+  0
+</div>
+`;

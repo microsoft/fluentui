@@ -5,9 +5,14 @@ import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/s
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
 import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
 import { MenuItem, MenuItemProps } from 'src/components/Menu/MenuItem';
-import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
+import {
+  menuBehavior,
+  menuAsToolbarBehavior,
+  tabListBehavior,
+  tabBehavior,
+  SpacebarKey,
+} from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
-import { SpacebarKey } from '@fluentui/keyboard-key';
 
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
@@ -46,11 +51,7 @@ describe('Menu', () => {
       const items = getItems();
       const menuItems = mountWithProvider(<Menu items={items} />).find('MenuItem');
 
-      menuItems
-        .first()
-        .find('a')
-        .first()
-        .simulate('click');
+      menuItems.first().find('a').first().simulate('click');
       expect(items[0].onClick).toHaveBeenCalled();
     });
 
@@ -61,20 +62,11 @@ describe('Menu', () => {
 
       expect(menu.find('MenuItem').length).toBe(2);
 
-      menu
-        .find('MenuItem')
-        .find('a')
-        .at(1)
-        .simulate('click');
+      menu.find('MenuItem').find('a').at(1).simulate('click');
 
       expect(menu.find('MenuItem').length).toBe(4);
 
-      menu
-        .find('MenuItem')
-        .find('a')
-        .at(1)
-        .simulate('mouseenter')
-        .simulate('click');
+      menu.find('MenuItem').find('a').at(1).simulate('mouseenter').simulate('click');
 
       expect(menu.find('MenuItem').length).toBe(4);
     });
@@ -85,11 +77,7 @@ describe('Menu', () => {
 
       const menuItems = mountWithProvider(<Menu items={items} />).find('MenuItem');
 
-      menuItems
-        .first()
-        .find('a')
-        .first()
-        .simulate('click');
+      menuItems.first().find('a').first().simulate('click');
       expect(items[0].onClick).not.toHaveBeenCalled();
     });
 
@@ -103,38 +91,13 @@ describe('Menu', () => {
       const menu = mountWithProvider(<Menu items={getNestedItems()} />);
       const menuItems = menu.find('MenuItem');
 
-      menuItems
-        .at(1)
-        .find('a')
-        .first()
-        .simulate('keydown', { keyCode: SpacebarKey });
+      menuItems.at(1).find('a').first().simulate('keydown', { keyCode: SpacebarKey });
 
-      expect(
-        menuItems
-          .at(1)
-          .at(0)
-          .find('a')
-          .first()
-          .getDOMNode()
-          .getAttribute('aria-expanded'),
-      ).toBe('true');
+      expect(menuItems.at(1).at(0).find('a').first().getDOMNode().getAttribute('aria-expanded')).toBe('true');
 
-      menuItems
-        .at(1)
-        .at(0)
-        .find('a')
-        .first()
-        .simulate('keydown', { keyCode: SpacebarKey });
+      menuItems.at(1).at(0).find('a').first().simulate('keydown', { keyCode: SpacebarKey });
 
-      expect(
-        menuItems
-          .at(1)
-          .at(0)
-          .find('a')
-          .first()
-          .getDOMNode()
-          .getAttribute('aria-expanded'),
-      ).toBe('false');
+      expect(menuItems.at(1).at(0).find('a').first().getDOMNode().getAttribute('aria-expanded')).toBe('false');
     });
 
     describe('itemsCount and itemPosition', () => {
@@ -165,20 +128,17 @@ describe('Menu', () => {
     });
 
     describe('variables', () => {
-      function checkMergedVariables(menu: ReactWrapper): void {
-        expect(
-          (menu
-            .find('MenuItem')
-            .first()
-            .prop('variables') as Function)(),
-        ).toEqual(expect.objectContaining({ a: 'menu', b: 'overwritten', c: 'item' }));
+      function checkMergedVariables(menu: ReactWrapper, isFunction = false): void {
+        const menuVariables = menu.find('MenuItem').first().prop('variables');
+        const dividerVariables = menu.find('MenuDivider').first().prop('variables');
 
-        expect(
-          (menu
-            .find('MenuDivider')
-            .first()
-            .prop('variables') as Function)(),
-        ).toEqual(expect.objectContaining({ a: 'menu', b: 'overwrittenInDivider', c: 'divider' }));
+        expect(isFunction ? (menuVariables as Function)() : menuVariables).toEqual(
+          expect.objectContaining({ a: 'menu', b: 'overwritten', c: 'item' }),
+        );
+
+        expect(isFunction ? (dividerVariables as Function)() : dividerVariables).toEqual(
+          expect.objectContaining({ a: 'menu', b: 'overwrittenInDivider', c: 'divider' }),
+        );
       }
 
       it('are passed from Menu to MenuItem and MenuDivider and correctly merged', () => {
@@ -214,7 +174,7 @@ describe('Menu', () => {
           />,
         );
 
-        checkMergedVariables(menu);
+        checkMergedVariables(menu, true);
       });
     });
 
@@ -297,11 +257,7 @@ describe('Menu', () => {
           </Menu>,
         );
 
-        wrapper
-          .find('MenuItem')
-          .at(1)
-          .find('a')
-          .simulate('click');
+        wrapper.find('MenuItem').at(1).find('a').simulate('click');
 
         expect(onActiveIndexChange).toHaveBeenCalledWith(
           expect.objectContaining({ type: 'click' }),

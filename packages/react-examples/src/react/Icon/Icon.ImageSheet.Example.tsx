@@ -33,7 +33,7 @@ const classNames = mergeStyleSets({
     marginLeft: 65,
   },
   lockImage: {
-    width: -109,
+    left: -109,
     top: -5,
   },
 });
@@ -41,12 +41,15 @@ const classNames = mergeStyleSets({
 export const IconImageSheetExample: React.FunctionComponent = () => {
   // ImageIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here (adding the prop `iconType={IconType.image}`).
+  // Provide an alt attribute using imageProps.alt for screen reader users if the icon is not
+  // accompanied by text that conveys the same meaning.
   return (
     <div>
       <ImageIcon
         className={classNames.one}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'OneNote file',
           className: css(classNames.image, classNames.oneImage),
         }}
       />
@@ -54,13 +57,16 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         className={classNames.check}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'Printer ready',
           className: css(classNames.image, classNames.checkImage),
         }}
       />
       <ImageIcon
+        aria-label="Locked"
         className={classNames.lock}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'Locked',
           className: css(classNames.image, classNames.lockImage),
         }}
       />

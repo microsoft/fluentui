@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Callout, getTheme, mergeStyleSets, FontWeights, Text } from '@fluentui/react';
 import { useBoolean, useId } from '@fluentui/react-hooks';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export const CalloutCoverExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);

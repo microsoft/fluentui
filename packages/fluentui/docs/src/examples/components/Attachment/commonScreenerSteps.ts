@@ -11,11 +11,7 @@ const getScreenerSteps = (): ScreenerSteps => [
   (builder, keys) => builder.keys('body', keys.tab).snapshot('Focuses root'),
 
   builder => builder.hover(selectors.action).snapshot('Hovers action'),
-  (builder, keys) =>
-    builder
-      .keys('body', keys.tab)
-      .keys('body', keys.tab)
-      .snapshot('Focuses action'),
+  (builder, keys) => builder.keys('body', keys.tab).keys('body', keys.tab).snapshot('Focuses action'),
 ];
 
 export default getScreenerSteps;

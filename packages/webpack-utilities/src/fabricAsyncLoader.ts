@@ -29,7 +29,7 @@ function getMagicComments(options: loaderUtils.OptionObject): string {
  *
  * @param content the source code to be transformed
  */
-module.exports = function(content: string): string {
+module.exports = function (content: string): string {
   return content;
 };
 
@@ -41,7 +41,7 @@ module.exports = function(content: string): string {
  * @param remainingRequest the remaining requested module
  * @param previousRequest the remaining requested module
  */
-module.exports.pitch = function(remainingRequest: string, precedingRequest: string): string {
+module.exports.pitch = function (remainingRequest: string, precedingRequest: string): string {
   const options = loaderUtils.getOptions(this) || {};
   const moduleRequest = `!!${remainingRequest}`;
   const normalizedRequest = loaderUtils.stringifyRequest(this, moduleRequest);

@@ -1,19 +1,30 @@
 import { SRNC } from './SRNC-Definitions';
-import './SRNC-LandmarksAndGroups-Win_JAWS';
-import './SRNC-LandmarksAndGroups-Win_JAWS_VPC';
+import { register as registerLandmarksJaws } from './SRNC-LandmarksAndGroups-Win_JAWS';
+import { register as registerLandmarksJawsVpc } from './SRNC-LandmarksAndGroups-Win_JAWS_VPC';
 
-import './SRNC-ElementTypes-Win_JAWS';
-import './SRNC-ElementTypes-Win_JAWS_VPC';
+import { register as registerElementTypesJaws } from './SRNC-ElementTypes-Win_JAWS';
+import { register as registerElementTypesJawsVpc } from './SRNC-ElementTypes-Win_JAWS_VPC';
 
-import './SRNC-ElementStates-Win_JAWS';
+import { register as registerElementStatesJaws } from './SRNC-ElementStates-Win_JAWS';
 
-import './SRNC-Usages-Win_JAWS';
+import { register as registerUsagesJaws } from './SRNC-Usages-Win_JAWS';
 
-import './SRNC-StateRules-Win_JAWS';
-import './SRNC-StateRules-Win_JAWS_VPC';
+import { register as registerStateRulesJaws } from './SRNC-StateRules-Win_JAWS';
+import { register as registerStateRulesJawsVpc } from './SRNC-StateRules-Win_JAWS_VPC';
 
-import './SRNC-ReadingOrder-Win_JAWS';
-import './SRNC-ReadingOrder-Win_JAWS_VPC';
+import { register as registerReadingOrderJaws } from './SRNC-ReadingOrder-Win_JAWS';
+import { register as registerReadingOrderJawsVpc } from './SRNC-ReadingOrder-Win_JAWS_VPC';
+
+registerLandmarksJaws(SRNC);
+registerLandmarksJawsVpc(SRNC);
+registerElementTypesJaws(SRNC);
+registerElementTypesJawsVpc(SRNC);
+registerElementStatesJaws(SRNC);
+registerUsagesJaws(SRNC);
+registerStateRulesJaws(SRNC);
+registerStateRulesJawsVpc(SRNC);
+registerReadingOrderJaws(SRNC);
+registerReadingOrderJawsVpc(SRNC);
 
 export interface IAriaElement extends HTMLElement {
   ariaLabel: string | null;

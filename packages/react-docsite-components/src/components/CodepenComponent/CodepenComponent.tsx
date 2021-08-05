@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandButton } from '@fluentui/react/lib/compat/Button';
+import { CommandButton } from '@fluentui/react/lib/Button';
 import { IStyleFunction, classNamesFunction, styled } from '@fluentui/react/lib/Utilities';
 import { ICodepenProps, ICodepenStyleProps, ICodepenStyles } from './CodepenComponent.types';
 
@@ -42,11 +42,11 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
     // boilerplate for codepen API
     const htmlContent = [
       // load core Fabric bundle and hooks bundle
-      script('@fluentui/react@7/dist/fluentui-react.js'),
-      script('@fluentui/react-hooks@7/dist/react-hooks.js'),
+      script('@fluentui/react@8/dist/fluentui-react.js'),
+      script('@fluentui/react-hooks@8/dist/react-hooks.js'),
       // load example data bundle only if used
       jsContentStr.indexOf('window.FluentUIExampleData') !== -1
-        ? script('@fluentui/example-data@7/dist/example-data.js')
+        ? script('@fluentui/example-data@8/dist/example-data.js')
         : '',
       `<div id="${CONTENT_ID}"></div>`,
     ]
@@ -70,9 +70,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
     };
 
     // reformat the JSON string to take out the quotes so it'll work with the Codepen API
-    const JSONstring = JSON.stringify(valueData)
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&apos;');
+    const JSONstring = JSON.stringify(valueData).replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 
     // set the value and allow the form submit action to continue
     inputRef.current!.value = JSONstring;

@@ -7,8 +7,15 @@ import { classNamesFunction, getId, getRTL, memoizeFunction, warnDeprecations } 
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartTypes, tooltipOfXAxislabels, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
 import {
+  ChartTypes,
+  getAccessibleDataObject,
+  tooltipOfXAxislabels,
+  XAxisTypes,
+  getTypeOfAxis,
+} from '../../utilities/index';
+import {
+  IAccessibilityProps,
   CartesianChart,
   ILegend,
   IGroupedVerticalBarChartData,
@@ -40,6 +47,7 @@ interface IGVSingleDataPoint {
 export interface IGroupedVerticalBarChartState extends IBasestate {
   titleForHoverCard: string;
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -119,7 +127,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
       Legend: this.state.titleForHoverCard,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      onDismiss: this._closeCallout,
       ...this.props.calloutProps,
+      preventDismissOnLostFocus: true,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
     };
     const tickParams = {
       tickValues: this.props.tickValues!,
@@ -136,7 +147,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         xAxisType={this._isNumeric}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
-        xAxisPadding={this.props.xAxisTickPadding || 5}
+        tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{
           direction: FocusZoneDirection.horizontal,
@@ -199,7 +210,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return shouldHighlight ? '' : '0.1';
   };
 
-  private _onBarHover = (pointData: IGVBarChartSeriesPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void => {
+  private _onBarHover = (pointData: IGVBarChartSeriesPoint, mouseEvent: React.MouseEvent<SVGElement>): void => {
     mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
@@ -214,6 +225,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         xCalloutValue: pointData.xAxisCalloutData,
         yCalloutValue: pointData.yAxisCalloutData,
         dataPointCalloutProps: pointData,
+        callOutAccessibilityData: pointData.callOutAccessibilityData,
       });
     }
   };
@@ -236,6 +248,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             xCalloutValue: pointData.xAxisCalloutData,
             yCalloutValue: pointData.yAxisCalloutData,
             dataPointCalloutProps: pointData,
+            callOutAccessibilityData: pointData.callOutAccessibilityData,
           });
         }
       });
@@ -286,7 +299,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             width={widthOfBar}
             x={xScale1(datasetKey)!}
             y={Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0)}
-            data-is-focusable={true}
+            data-is-focusable={!this.props.hideTooltip}
             opacity={this._getOpacity(pointData.legend)}
             ref={(e: SVGRectElement | null) => {
               this._refCallback(e!, pointData.legend, refIndexNumber);
@@ -297,7 +310,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
             onMouseOut={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
             onBlur={this._onBarLeave}
-            onClick={this._redirectToUrl.bind(this, this.props.href!)}
+            onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
+            aria-labelledby={`toolTip${this._calloutId}`}
+            role="text"
           />,
         );
     });
@@ -369,6 +384,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .domain(this._keys)
       .range(this._isRtl ? [xScale0.bandwidth(), 0] : [0, xScale0.bandwidth()])
       .padding(0.05);
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 
   private _onLegendClick(customMessage: string): void {

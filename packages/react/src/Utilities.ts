@@ -1,1 +1,2 @@
-export * from '@fluentui/react-internal/lib/Utilities';
+import './version';
+export * from '@fluentui/utilities';

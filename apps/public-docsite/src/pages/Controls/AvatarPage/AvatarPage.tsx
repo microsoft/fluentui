@@ -25,7 +25,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/AvatarImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/ios/AvatarImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/ios/AvatarImplementation.md') as string,
         },
       ];
 
@@ -34,7 +34,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/AvatarImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/android/AvatarImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/android/AvatarImplementation.md') as string,
         },
       ];
     case 'mac':
@@ -42,7 +42,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/mac/AvatarImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/mac/AvatarImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/mac/AvatarImplementation.md') as string,
         },
       ];
   }

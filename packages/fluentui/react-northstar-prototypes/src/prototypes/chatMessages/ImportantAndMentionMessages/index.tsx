@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import { AcceptIcon, MentionIcon, RedbangIcon } from '@fluentui/react-icons-northstar';
 
-const janeAvatar = {
-  image: 'public/images/avatar/small/ade.jpg',
+const robinAvatar = {
+  image: 'public/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 
@@ -12,7 +12,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="This is important message"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
         badge={{ icon: <RedbangIcon /> }}
@@ -24,11 +24,11 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-1',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
+    gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
         content="This is another important message (see how the borders radius respect the grouped ones)"
-        author="Jane Doe"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         badge={{ icon: <RedbangIcon /> }}
         variables={{ isImportant: true }}
@@ -38,11 +38,11 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-2',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
+    gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
         content="This is mention message @John"
-        author="Jane Doe"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         badge={{ icon: <MentionIcon /> }}
         variables={{ hasMention: true }}
@@ -52,11 +52,11 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-3',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
+    gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
         content="This is another mention message @John with custom color"
-        author="Jane Doe"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         badge={{ icon: <MentionIcon /> }}
         variables={siteVars => ({
@@ -72,7 +72,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="The color for the important messages can also be changed!"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:16 PM"
         mine
         badge={{ icon: <RedbangIcon /> }}

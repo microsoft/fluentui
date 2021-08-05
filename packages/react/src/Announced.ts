@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Announced';
+export * from './components/Announced/index';

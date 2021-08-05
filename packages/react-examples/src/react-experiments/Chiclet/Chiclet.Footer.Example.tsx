@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@fluentui/react-experiments';
-import { IButtonProps, IconButton } from '@fluentui/react/lib/compat/Button';
+import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
 

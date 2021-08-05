@@ -5,6 +5,8 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useUnhandledProps,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -31,6 +33,8 @@ import {
   PopperChildrenProps,
   Alignment,
   Position,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
@@ -61,6 +65,9 @@ export interface TooltipProps
 
   /** Defines whether tooltip is displayed. */
   open?: boolean;
+
+  /** Defines wether tooltip is subtle  */
+  subtle?: boolean;
 
   /**
    * Event for request to change 'open' value.
@@ -115,6 +122,8 @@ export const Tooltip: React.FC<TooltipProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
+    subtle,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -123,7 +132,17 @@ export const Tooltip: React.FC<TooltipProps> &
 
     initialValue: false,
   });
+
   const triggerElement = useTriggerElement(props);
+
+  const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
@@ -173,6 +192,7 @@ export const Tooltip: React.FC<TooltipProps> &
           placement: popperProps.placement,
           pointing,
           pointerRef: pointerTargetRef,
+          subtle,
         }),
       generateKey: false,
       overrideProps: getContentOverrideProps,
@@ -190,7 +210,7 @@ export const Tooltip: React.FC<TooltipProps> &
   };
 
   const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
-    clearTimeout(closeTimeoutId.current);
+    context.target.defaultView.clearTimeout(closeTimeoutId.current);
 
     if (newOpen) {
       trySetOpen(true, e);
@@ -228,7 +248,12 @@ export const Tooltip: React.FC<TooltipProps> &
   const element = (
     <>
       {triggerElement && (
-        <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>
+        <Ref innerRef={triggerRef}>
+          {React.cloneElement(
+            triggerElement,
+            getA11Props('trigger', { ...unhandledProps, ...triggerElement.props, ...triggerProps }),
+          )}
+        </Ref>
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
@@ -245,6 +270,7 @@ export const Tooltip: React.FC<TooltipProps> &
           targetRef={target || triggerRef}
           children={renderPopperChildren}
           unstable_disableTether={unstable_disableTether}
+          autoSize={autoSize}
           unstable_pinned={unstable_pinned}
         />
       </PortalInner>
@@ -261,7 +287,7 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  pointing: true,
+  subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
 Tooltip.propTypes = {
@@ -270,6 +296,7 @@ Tooltip.propTypes = {
     content: false,
   }),
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
+  subtle: PropTypes.bool,
   children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,
@@ -288,6 +315,7 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,

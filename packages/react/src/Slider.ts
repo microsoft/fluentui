@@ -1,1 +1,1 @@
-export * from '@fluentui/react-slider/lib/Slider';
+export * from './components/Slider/index';

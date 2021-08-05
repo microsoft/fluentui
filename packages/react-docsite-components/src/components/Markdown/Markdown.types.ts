@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from '@fluentui/react';
 import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
 import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
@@ -8,7 +7,6 @@ import { MarkdownOptions } from 'markdown-to-jsx';
 
 export interface IMarkdownProps {
   className?: string;
-  children?: React.ReactNode;
 
   /**
    * If true, using a code block with language name `renderhtml` will render the contents as HTML.

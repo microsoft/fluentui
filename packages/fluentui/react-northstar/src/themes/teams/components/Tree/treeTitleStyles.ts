@@ -19,6 +19,7 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
       marginLeft: pxToRem(1 + (p.level - 1) * 10),
       paddingRight: v.paddingRight,
       paddingLeft: v.paddingLeft,
+      userSelect: 'none',
       ...(p.selectable && {
         display: 'flex',
         justifyContent: 'space-between',
@@ -27,7 +28,7 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
       ':focus': {
         ...(p.selectable && {
           [`> .${treeTitleSlotClassNames.indicator}`]: {
-            visibility: 'visible',
+            display: 'inline-block',
           },
         }),
         ...borderFocusStyles[':focus'],
@@ -37,21 +38,20 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
         ...(p.selectable && {
           background: v.hoverBackground,
           [`> .${treeTitleSlotClassNames.indicator}`]: {
-            visibility: 'visible',
+            display: 'inline-block',
           },
         }),
       },
       ...(p.showIndicator && {
         [`> .${treeTitleSlotClassNames.indicator}`]: {
-          visibility: 'visible',
+          display: 'inline-block',
         },
       }),
     };
   },
 
   selectionIndicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'inline-block',
-    visibility: 'hidden',
+    display: 'none',
     float: 'right',
     verticalAlign: 'middle',
     boxShadow: 'unset',

@@ -3,7 +3,7 @@ import { Provider, teamsTheme, Avatar } from '@fluentui/react-northstar';
 
 const AvatarDefaultBsize = () => (
   <Provider theme={teamsTheme}>
-    <Avatar name="John Doe" />
+    <Avatar name="Cecil Folk" />
   </Provider>
 );
 

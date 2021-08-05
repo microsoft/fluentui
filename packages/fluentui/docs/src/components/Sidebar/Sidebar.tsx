@@ -16,7 +16,7 @@ import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
-import { getCode } from '@fluentui/keyboard-key';
+import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
@@ -62,6 +62,11 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'chatMssages',
     title: { content: 'Chat Messages', as: NavLink, to: '/prototype-chat-messages' },
+    public: true,
+  },
+  {
+    id: 'compactChat',
+    title: { content: 'Compact Chat', as: NavLink, to: '/prototype-compact-chat' },
     public: true,
   },
   {
@@ -243,19 +248,6 @@ const baseTreeItems: TreeProps['items'] = [
           to: '/icon-viewer',
         },
       },
-      ...(process.env.NODE_ENV !== 'production'
-        ? [
-            {
-              id: 'theming-specification',
-              title: {
-                as: NavLink,
-                content: 'Theming Specification',
-                activeClassName: 'active',
-                to: '/theming-specification',
-              },
-            },
-          ]
-        : []),
     ],
   },
   {
@@ -312,15 +304,6 @@ const baseTreeItems: TreeProps['items'] = [
           as: NavLink,
           activeClassName: 'active',
           to: '/integrate-custom-components',
-        },
-      },
-      {
-        id: 'styles-overrides',
-        title: {
-          content: 'Styles overrides',
-          as: NavLink,
-          activeClassName: 'active',
-          to: '/styles-overrides',
         },
       },
       {
@@ -489,30 +472,32 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
         <VersionDropdown width={props.width} />
-        <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
-          {(active, onClick) => (
-            <Box
-              as="code"
-              onClick={onClick}
-              styles={{
-                display: 'block',
-                fontWeight: 'normal',
-                fontSize: '12px',
-                opacity: active ? 1 : 0.6,
-                color: active ? 'rgb(138, 255, 124)' : 'inherit',
-                marginTop: '10px',
-                cursor: 'pointer',
-                ...(!active && {
-                  ':hover': {
-                    opacity: 0.75,
-                  },
-                }),
-              }}
-            >
-              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
-            </Box>
-          )}
-        </CopyToClipboard>
+        {process.env.NIGHTLYRELEASEDATE ? null : (
+          <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
+            {(active, onClick) => (
+              <Box
+                as="code"
+                onClick={onClick}
+                styles={{
+                  display: 'block',
+                  fontWeight: 'normal',
+                  fontSize: '12px',
+                  opacity: active ? 1 : 0.6,
+                  color: active ? 'rgb(138, 255, 124)' : 'inherit',
+                  marginTop: '10px',
+                  cursor: 'pointer',
+                  ...(!active && {
+                    ':hover': {
+                      opacity: 0.75,
+                    },
+                  }),
+                }}
+              >
+                {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
+              </Box>
+            )}
+          </CopyToClipboard>
+        )}
       </Flex>
       <Flex column>
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>

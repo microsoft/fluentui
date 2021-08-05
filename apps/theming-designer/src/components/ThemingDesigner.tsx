@@ -12,7 +12,7 @@ import { createTheme, ITheme } from '@fluentui/react/lib/Styling';
 import { ThemeSlots } from './ThemeSlots';
 import { getColorFromString, IColor } from '@fluentui/react/lib/Color';
 import { Header } from './Header';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { isDark } from '@fluentui/react/lib/Color';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { Samples } from './Samples/index';

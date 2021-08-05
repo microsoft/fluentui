@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/react-northstar';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 
 const repliesButtonBehavior: Accessibility = () => ({
   keyActions: {

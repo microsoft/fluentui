@@ -3,7 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { ALIGNMENTS, POSITIONS } from '../../utils/positioner';
+import { ALIGNMENTS, POSITIONS, AUTOSIZES } from '../../utils/positioner';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
   UIComponentProps,
@@ -22,7 +22,7 @@ import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
 import { Ref } from '@fluentui/react-component-ref';
-import { PositioningProps } from '../../utils/positioner/types';
+import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
 import {
   ComponentWithAs,
@@ -128,6 +128,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     offset,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     className,
     design,
     styles,
@@ -230,6 +231,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
                 offset,
                 unstable_disableTether,
                 unstable_pinned,
+                autoSize,
               }),
             overrideProps: handleMenuButtonOverrides,
           },
@@ -305,6 +307,7 @@ SplitButton.propTypes = {
   ]),
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
 };
 
 SplitButton.defaultProps = {

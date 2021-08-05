@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { TogglePageProps } from '@fluentui/react-examples/lib/react-toggle/Toggle/Toggle.doc';
+import { TogglePageProps } from '@fluentui/react-examples/lib/react/Toggle/Toggle.doc';
 
 export const TogglePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

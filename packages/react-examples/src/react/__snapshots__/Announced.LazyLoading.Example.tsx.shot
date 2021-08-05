@@ -28,6 +28,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -82,7 +83,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -98,7 +99,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           background-color: #f3f2f1;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -176,6 +177,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      id="progress-indicator3-label"
     >
       Paused
     </div>
@@ -201,11 +203,12 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
               position: absolute;
               width: 100%;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-bottom: 1px solid WindowText;
             }
       />
       <div
+        aria-labelledby="progress-indicator3-label"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -218,10 +221,9 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
               transition: width .15s linear;
               width: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background-color: highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         role="progressbar"
@@ -240,7 +242,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

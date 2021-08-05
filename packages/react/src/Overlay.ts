@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Overlay';
+export * from './components/Overlay/index';

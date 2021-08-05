@@ -107,7 +107,7 @@ export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   menuBackground: undefined,
   menuBorder: undefined,
   menuBorderWidth: '1px',
-  menuBorderRadius: pxToRem(4),
+  menuBorderRadius: siteVars.borderRadiusMedium,
   menuBoxShadow: siteVars.shadowLevel3,
 
   menuItemForeground: undefined,

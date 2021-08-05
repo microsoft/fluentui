@@ -49,7 +49,7 @@ Array [
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -65,7 +65,7 @@ Array [
           background-color: #f3f2f1;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -168,7 +168,7 @@ Array [
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -184,7 +184,7 @@ Array [
           background-color: #f3f2f1;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -288,7 +288,7 @@ Array [
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -304,7 +304,7 @@ Array [
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }

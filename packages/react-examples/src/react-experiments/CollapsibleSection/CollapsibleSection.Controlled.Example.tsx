@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone, IStackTokens, Stack } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { CollapsibleSection } from '@fluentui/react-experiments/lib/CollapsibleSection';
 
 export interface ICollapsibleSectionControlledExampleState {

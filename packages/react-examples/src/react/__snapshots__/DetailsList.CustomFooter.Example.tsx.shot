@@ -79,7 +79,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone1"
+          data-focuszone-id="FocusZone2"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -88,7 +88,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header0-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -137,7 +137,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             >
               <div
                 aria-checked={false}
-                aria-describedby="header0-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -196,8 +195,9 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header0-check"
+                id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -256,9 +256,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -266,11 +269,10 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -296,25 +298,28 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -344,14 +349,16 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
-            id="header0-checkTooltip"
+            id="header1-checkTooltip"
           >
             Toggle selection for all items
           </label>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -431,7 +438,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -463,7 +469,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-column1"
+                id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -477,7 +483,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-column1-name"
+                  id="header1-column1-name"
                 >
                   Name
                 </span>
@@ -542,6 +548,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -621,7 +628,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -653,7 +659,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-column2"
+                id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -667,7 +673,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-column2-name"
+                  id="header1-column2-name"
                 >
                   Value
                 </span>
@@ -760,7 +766,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone2"
+            data-focuszone-id="FocusZone3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -786,7 +792,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={1}
+                      aria-rowindex={2}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -854,12 +860,17 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
                       data-selection-touch-invoke={true}
+                      id="row0-0"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -921,7 +932,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
+                          aria-labelledby="row0-0-checkbox row0-0-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -970,7 +982,9 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-0-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -1029,9 +1043,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1039,11 +1056,10 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1069,25 +1085,28 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1248,7 +1267,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={2}
+                      aria-rowindex={3}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -1316,12 +1335,17 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone6"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
                       data-selection-touch-invoke={true}
+                      id="row0-1"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1383,7 +1407,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
+                          aria-labelledby="row0-1-checkbox row0-1-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1432,7 +1457,9 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-1-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -1491,9 +1518,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1501,11 +1531,10 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1531,25 +1560,28 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1710,7 +1742,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={3}
+                      aria-rowindex={4}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -1778,12 +1810,17 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
                       data-selection-touch-invoke={true}
+                      id="row0-2"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1845,7 +1882,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
+                          aria-labelledby="row0-2-checkbox row0-2-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1894,7 +1932,9 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-2-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -1953,9 +1993,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1963,11 +2006,10 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1993,25 +2035,28 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2172,7 +2217,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={4}
+                      aria-rowindex={5}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -2240,12 +2285,17 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone8"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
                       data-selection-touch-invoke={true}
+                      id="row0-3"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2307,7 +2357,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
+                          aria-labelledby="row0-3-checkbox row0-3-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2356,7 +2407,9 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-3-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -2415,9 +2468,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2425,11 +2481,10 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2455,25 +2510,28 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2634,7 +2692,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={5}
+                      aria-rowindex={6}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -2702,12 +2760,17 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
                       data-selection-touch-invoke={true}
+                      id="row0-4"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2769,7 +2832,8 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
+                          aria-labelledby="row0-4-checkbox row0-4-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2818,7 +2882,9 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-4-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -2877,9 +2943,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2887,11 +2956,10 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2917,25 +2985,28 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3096,7 +3167,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         </div>
       </div>
       <div
-        aria-rowindex={0}
+        aria-rowindex={1}
         aria-selected={false}
         className=
             ms-FocusZone
@@ -3161,8 +3232,12 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
               opacity: 1;
             }
+            & .ms-GroupSpacer {
+              flex-grow: 0;
+              flex-shrink: 0;
+            }
         data-automationid="DetailsRow"
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         data-is-focusable={true}
         data-item-index={-1}
         data-selection-index={-1}

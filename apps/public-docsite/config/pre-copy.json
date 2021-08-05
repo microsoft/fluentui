@@ -1,6 +1,5 @@
 {
   "copyTo": {
-    "dist": ["./index.html"],
     "lib": ["./src/**/*.json"]
   }
 }

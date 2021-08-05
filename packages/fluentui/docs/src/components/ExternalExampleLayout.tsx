@@ -1,4 +1,11 @@
-import { Provider, teamsTheme, teamsHighContrastTheme, teamsDarkTheme } from '@fluentui/react-northstar';
+import {
+  Provider,
+  teamsDarkTheme,
+  teamsDarkV2Theme,
+  teamsHighContrastTheme,
+  teamsTheme,
+  teamsV2Theme,
+} from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';
@@ -20,8 +27,10 @@ type ExternalExampleLayoutProps = {
 
 const themes = {
   teams: teamsTheme,
+  teamsV2: teamsV2Theme,
   teamsHighContrast: teamsHighContrastTheme,
   teamsDark: teamsDarkTheme,
+  teamsDarkV2: teamsDarkV2Theme,
 };
 
 const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {

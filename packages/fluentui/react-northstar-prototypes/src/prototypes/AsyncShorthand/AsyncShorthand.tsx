@@ -78,7 +78,7 @@ class CustomChatMessage extends React.Component {
             '& .actions': { opacity: 1 },
           },
         }}
-        author="Jane Doe"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         content={
           <div>
@@ -115,7 +115,7 @@ class CustomChatMessage extends React.Component {
 
 const gutterContent = (
   <AsyncData
-    data="public/images/avatar/small/ade.jpg"
+    data="public/images/avatar/RobinCounts.jpg"
     render={data => (
       <Avatar
         image={data}

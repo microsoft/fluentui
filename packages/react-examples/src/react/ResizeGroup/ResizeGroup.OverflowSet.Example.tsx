@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBarButton } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton } from '@fluentui/react/lib/Button';
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
 import { OverflowSet, IOverflowSetStyles } from '@fluentui/react/lib/OverflowSet';
 import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';

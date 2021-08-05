@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Autofill';
+export * from './components/Autofill/index';

@@ -52,7 +52,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionAnimationPatterns.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionAnimationPatterns.md') as string
                 }
               </Markdown>
 
@@ -199,7 +199,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionBasicAnimations.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionBasicAnimations.md') as string
                 }
               </Markdown>
 

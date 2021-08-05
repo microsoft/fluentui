@@ -1,25 +1,33 @@
 import * as React from 'react';
-import { List, Status } from '@fluentui/react-northstar';
+import { List, Status, Box } from '@fluentui/react-northstar';
 import { ErrorIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
-    key: 'irving',
+    key: 'robert',
     media: <Status state="error" icon={<ErrorIcon />} />,
-    header: 'Irving Kuhic',
+    header: 'Robert Tolbert',
   },
   {
-    key: 'skyler',
+    key: 'celeste',
     media: <Status state="success" icon={<AcceptIcon />} />,
-    header: 'Skyler Parks',
+    header: 'Celeste Burton',
   },
   {
-    key: 'dante',
+    key: 'cecil',
     media: <Status />,
-    header: 'Dante Schneider',
+    header: 'Cecil Folk',
   },
 ];
 
-const ListExampleSelectable = () => <List selectable defaultSelectedIndex={0} items={items} horizontal />;
+const ListExampleSelectable = () => (
+  <Box
+    styles={({ theme: { siteVariables } }) => ({
+      backgroundColor: siteVariables.colorScheme.default.background4,
+    })}
+  >
+    <List selectable defaultSelectedIndex={0} items={items} horizontal />
+  </Box>
+);
 
 export default ListExampleSelectable;

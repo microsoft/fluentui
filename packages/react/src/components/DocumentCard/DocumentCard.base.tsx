@@ -98,6 +98,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._onAction(ev);
     }

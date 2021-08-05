@@ -46,7 +46,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     iconForegroundColor: semanticColors.bodySubtext,
     headerForegroundColor: semanticColors.bodyText,
     headerBackgroundColor: semanticColors.bodyBackground,
-    dropdownChevronForegroundColor: palette.neutralTertiary,
+    dropdownChevronForegroundColor: palette.neutralSecondary,
     resizerColor: palette.neutralTertiaryAlt,
   };
 

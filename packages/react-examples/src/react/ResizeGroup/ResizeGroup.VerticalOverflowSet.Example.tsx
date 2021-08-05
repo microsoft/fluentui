@@ -8,7 +8,7 @@ import {
   DirectionalHint,
   createArray,
 } from '@fluentui/react';
-import { CommandBarButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react/lib/Button';
 export interface IOverflowData {
   primary: IContextualMenuItem[];
   overflow: IContextualMenuItem[];

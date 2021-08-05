@@ -13,11 +13,19 @@ const filledTokens: ICardItemComponent['tokens'] = {
   margin: 0,
 };
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CardItemTokens: ICardItemComponent['tokens'] = (props, theme): ICardItemTokenReturnType => [
   baseTokens,
   props.fill && filledTokens,
 ];
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CardItemStyles: ICardItemComponent['styles'] = (props, theme, tokens): ICardItemStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

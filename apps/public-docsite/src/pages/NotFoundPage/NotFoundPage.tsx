@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, mergeStyles } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import {
   trackEvent,
   EventNames,
@@ -57,7 +57,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
           <p>The URL may be misspelled or the page you are looking for is no longer available.</p>
           <ul>
             <li>
-              <Link href="#/" onClick={ev => this._onInternalLinkClick(ev, '#/')}>
+              <Link href="#/" onClick={ev => this._onInternalLinkClick(ev, '#/')} underline>
                 Fluent UI Home
               </Link>
             </li>
@@ -78,7 +78,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
 
       return (
         <li>
-          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)}>
+          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)} underline>
             {title}
           </Link>
         </li>

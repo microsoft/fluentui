@@ -17,7 +17,9 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Surfaces: ['Popup', 'Dialog'],
+  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Content: [
     'Text',
     'Image',
@@ -38,10 +40,8 @@ export const COMPONENT_GROUP = {
     'Video',
     'Skeleton',
   ],
-  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Surfaces: ['Popup', 'Dialog'],
 };
 
 export const DRAGGING_ELEMENTS = {
@@ -123,12 +123,12 @@ export const DRAGGING_ELEMENTS = {
         {
           key: 'one',
           id: 'one',
-          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
         {
           key: 'two',
           id: 'two',
-          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
       ],
     } as FUI.CarouselProps,
@@ -140,16 +140,16 @@ export const DRAGGING_ELEMENTS = {
         {
           gutter: (
             <FUI.Avatar
-              image="public/images/avatar/small/ade.jpg"
+              image="public/images/avatar/RobinCounts.jpg"
               status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
             />
           ),
-          message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+          message: <FUI.Chat.Message content="Hi!" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
           attached: 'top',
           key: 'message-id-4',
         },
         {
-          message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+          message: <FUI.Chat.Message content="Hello!" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
           contentPosition: 'end',
           attached: true,
           key: 'message-id-2',
@@ -265,23 +265,23 @@ export const DRAGGING_ELEMENTS = {
     props: {
       items: [
         {
-          key: 'irving',
-          media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
-          header: 'Irving Kuhic',
+          key: 'robert',
+          media: <FUI.Image src="public/images/avatar/RobertTolbert.jpg" avatar />,
+          header: 'Robert Tolbert',
           headerMedia: '7:26:56 AM',
           content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
         },
         {
-          key: 'skyler',
-          media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
-          header: 'Skyler Parks',
+          key: 'celeste',
+          media: <FUI.Image src="public/images/avatar/CelesteBurton.jpg" avatar />,
+          header: 'Celeste Burton',
           headerMedia: '11:30:17 PM',
           content: 'Use the online FTP application to input the multi-byte application!',
         },
         {
-          key: 'dante',
-          media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
-          header: 'Dante Schneider',
+          key: 'cecil',
+          media: <FUI.Image src="public/images/avatar/CecilFolk.jpg" avatar />,
+          header: 'Cecil Folk',
           headerMedia: '5:22:40 PM',
           content: 'The GB pixel is down, navigate the virtual interface!',
         },
@@ -753,18 +753,18 @@ export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | numb
   return omitChildWithUuid(tree, uuid);
 };
 
-export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONTreeElement => {
+export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any, preserveUuid: boolean): JSONTreeElement => {
   const result = _.transform(element, (acc, value, key) => {
     if (_.isPlainObject(value)) {
-      acc[key] = jsonTreeCloneElement(tree, value);
+      acc[key] = jsonTreeCloneElement(tree, value, preserveUuid);
     } else if (Array.isArray(value)) {
-      acc[key] = jsonTreeCloneElement(tree, value);
+      acc[key] = jsonTreeCloneElement(tree, value, preserveUuid);
     } else {
       acc[key] = value;
     }
   }) as any;
 
-  if (_.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
+  if (!preserveUuid && _.isPlainObject(result) && result.$$typeof === 'Symbol(react.element)' && result.uuid) {
     result.uuid = getUUID();
   }
   return result;

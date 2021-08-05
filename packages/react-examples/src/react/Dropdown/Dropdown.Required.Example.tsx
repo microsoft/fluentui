@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown, IDropdown } from '@fluentui/react/lib/Dropdown';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 
 const dropdownStyles = { dropdown: { width: 300 } };

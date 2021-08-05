@@ -3,11 +3,13 @@ import {
   FocusZoneTabbableElements,
   IS_ENTER_DISABLED_ATTRIBUTE,
   IS_FOCUSABLE_ATTRIBUTE,
+  getCode,
+  keyboardKey,
+  SpacebarKey,
 } from '@fluentui/accessibility';
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
@@ -107,6 +109,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     isRtl: PropTypes.bool,
     preventFocusRestoration: PropTypes.bool,
     pagingSupportDisabled: PropTypes.bool,
+    shouldIgnoreNotFocusable: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -425,7 +428,12 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       stopFocusPropagation,
       shouldFocusInnerElementWhenReceivedFocus,
       defaultTabbableElement,
+      shouldIgnoreNotFocusable,
     } = this.props;
+
+    if (shouldIgnoreNotFocusable && ev.target?.dataset.isFocusable === 'false') {
+      return;
+    }
 
     let newActiveElement: HTMLElement | null | undefined;
     const isImmediateDescendant = this.isImmediateDescendantOfZone(ev.target as HTMLElement);

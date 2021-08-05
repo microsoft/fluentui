@@ -39,7 +39,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             padding-left: 4px;
             padding-right: 4px;
             padding-top: 0;
-            pointer-events: none;
             position: relative;
             text-align: center;
             text-decoration: none;
@@ -60,7 +59,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -128,11 +127,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-top: 0;
                 text-align: center;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
               }
           data-icon-name="Previous"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-1\\"",
@@ -170,7 +168,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             padding-left: 4px;
             padding-right: 4px;
             padding-top: 0;
-            pointer-events: none;
             position: relative;
             text-align: center;
             text-decoration: none;
@@ -191,7 +188,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -259,11 +256,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-top: 0;
                 text-align: center;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
               }
           data-icon-name="CaretSolidLeft"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -322,7 +318,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -352,7 +348,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -428,7 +424,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -458,7 +454,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -534,7 +530,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -564,7 +560,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -640,7 +636,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -670,7 +666,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -746,7 +742,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -776,7 +772,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -848,7 +844,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -864,7 +860,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #106ebe;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -922,7 +918,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="CaretSolidRight"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -989,7 +984,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1005,7 +1000,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1063,7 +1058,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="Next"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-1\\"",
@@ -1120,7 +1114,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           padding-left: 4px;
           padding-right: 4px;
           padding-top: 0;
-          pointer-events: none;
           position: relative;
           text-align: center;
           text-decoration: none;
@@ -1141,7 +1134,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1209,11 +1202,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-top: 0;
               text-align: center;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: GrayText;
             }
         data-icon-name="Previous"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-1\\"",
@@ -1251,7 +1243,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           padding-left: 4px;
           padding-right: 4px;
           padding-top: 0;
-          pointer-events: none;
           position: relative;
           text-align: center;
           text-decoration: none;
@@ -1272,7 +1263,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1340,11 +1331,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-top: 0;
               text-align: center;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: GrayText;
             }
         data-icon-name="CaretSolidLeft"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -1393,12 +1383,13 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
             border-color: Highlight;
           }
           &:after {
@@ -1423,43 +1414,46 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
             color: GrayText;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: GrayText;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: GrayText;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
             border-color: Highlight;
           }
           &:active {
             position: relative;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:active:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
             border-color: Highlight;
           }
           &:focus {
@@ -1468,17 +1462,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
             border-color: Highlight;
           }
           &:focus:after {
@@ -1520,28 +1516,29 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-clear {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-is-interactable={true}
         data-ktp-execute-target={true}
@@ -1560,6 +1557,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="1"
       />
@@ -1610,7 +1612,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1622,32 +1624,35 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
               border-color: ButtonText;
               color: ButtonText;
+              forced-color-adjust: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
+              forced-color-adjust: none;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
+              forced-color-adjust: none;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -1701,7 +1706,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1767,7 +1771,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1783,7 +1787,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           background-color: #f3f2f1;
           color: #106ebe;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -1840,7 +1844,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-align: center;
             }
         data-icon-name="CaretSolidRight"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -1895,7 +1898,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -1911,7 +1914,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           background-color: #f3f2f1;
           color: #106ebe;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -1968,7 +1971,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-align: center;
             }
         data-icon-name="Next"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-1\\"",

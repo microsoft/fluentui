@@ -3,16 +3,10 @@ import {
   ComboBox,
   IComboBoxOption,
   SelectableOptionMenuItemType,
-  Fabric,
-  mergeStyles,
-} from '@fluentui/react/lib/index';
-
-const wrapperClassName = mergeStyles({
-  selectors: {
-    '& > *': { marginBottom: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' },
-  },
-});
+  IComboBoxStyles,
+  Stack,
+  IStackTokens,
+} from '@fluentui/react';
 
 const fontMapping: { [fontName: string]: string } = {
   ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
@@ -23,18 +17,16 @@ const fontMapping: { [fontName: string]: string } = {
 
 const fonts = Object.keys(fontMapping);
 
-const ComboBoxCustomStyledExampleStyles = {
-  container: {
-    maxWidth: '300px',
-  },
+const customStyles: Partial<IComboBoxStyles> = {
+  // Note that this is actually the wrapper of the input and caret (doesn't include the label)
   root: {
+    maxWidth: '300px',
     backgroundColor: '#b4a0ff',
   },
   input: {
     backgroundColor: '#b4a0ff',
   },
 };
-
 const optionsWithCustomStyling: IComboBoxOption[] = fonts.map((fontName: string) => ({
   key: fontName,
   text: fontName,
@@ -46,10 +38,10 @@ const optionsWithCustomStyling: IComboBoxOption[] = fonts.map((fontName: string)
 }));
 
 const optionsForCustomRender: IComboBoxOption[] = [
-  { key: 'header1', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'header1', text: 'Theme fonts', itemType: SelectableOptionMenuItemType.Header },
   ...fonts.map((fontName: string) => ({ key: fontName, text: fontName })),
   { key: 'divider', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-  { key: 'header2', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'header2', text: 'Other options', itemType: SelectableOptionMenuItemType.Header },
 ];
 
 const onRenderOption = (item: IComboBoxOption) => {
@@ -70,21 +62,28 @@ const onRenderOption = (item: IComboBoxOption) => {
   }
 };
 
-export const ComboBoxCustomStyledExample: React.FC = () => (
-  <Fabric className={wrapperClassName}>
-    <ComboBox
-      defaultSelectedKey="Calibri"
-      label="Custom styled ComboBox"
-      options={optionsWithCustomStyling}
-      styles={ComboBoxCustomStyledExampleStyles}
-    />
-    <ComboBox
-      defaultSelectedKey="Calibri"
-      label={'ComboBox with custom option rendering (type the name of a font and the option will render in that font)'}
-      allowFreeform
-      autoComplete="on"
-      options={optionsForCustomRender}
-      onRenderOption={onRenderOption}
-    />
-  </Fabric>
-);
+// Basic styling to make the example look nicer
+const basicStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
+const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
+
+export const ComboBoxCustomStyledExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={stackTokens}>
+      <ComboBox
+        defaultSelectedKey="Calibri"
+        label="Custom styled ComboBox"
+        options={optionsWithCustomStyling}
+        styles={customStyles}
+      />
+      <ComboBox
+        defaultSelectedKey="Calibri"
+        label="ComboBox with custom option rendering (type the name of a font and the option will render in that font)"
+        allowFreeform
+        autoComplete="on"
+        options={optionsForCustomRender}
+        onRenderOption={onRenderOption}
+        styles={basicStyles}
+      />
+    </Stack>
+  );
+};

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/HoverCard';
+export * from './components/HoverCard/index';

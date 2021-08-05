@@ -7,6 +7,6 @@ export const datepickerCalendarGridStyles: ComponentSlotStylesPrepared<
   DatepickerVariables
 > = {
   root: (): ICSSInJSStyle => {
-    return { tableLayout: 'fixed' };
+    return { 'border-spacing': '0rem', tableLayout: 'fixed' };
   },
 };

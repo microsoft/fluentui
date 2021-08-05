@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ResizeGroup';
+export * from './components/ResizeGroup/index';

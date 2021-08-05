@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Label';
+export * from './components/Label/index';

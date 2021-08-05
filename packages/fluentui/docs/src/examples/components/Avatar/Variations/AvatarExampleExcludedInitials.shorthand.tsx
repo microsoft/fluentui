@@ -6,13 +6,13 @@ const status = { color: 'green', icon: <AcceptIcon />, title: 'Available' };
 
 const AvatarExampleExcludedInitialsShorthand = () => (
   <div>
-    <Avatar name="John Doe (Software Developer)" status={status} />
+    <Avatar name="Cecil Folk (Software Developer)" status={status} />
     &emsp;
-    <Avatar name="John Doe {Software Developer}" status={status} />
+    <Avatar name="Cecil Folk {Software Developer}" status={status} />
     &emsp;
-    <Avatar name="John Doe [Software Developer]" status={status} />
+    <Avatar name="Cecil Folk [Software Developer]" status={status} />
     &emsp;
-    <Avatar name="John A B Doe" status={status} />
+    <Avatar name="Cecil A B Folk" status={status} />
   </div>
 );
 

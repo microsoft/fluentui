@@ -1,4 +1,4 @@
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';

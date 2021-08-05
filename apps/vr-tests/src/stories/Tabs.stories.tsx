@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { Icon, Fabric } from '@fluentui/react';
-import { Tabs, TabItem, TabItemProps } from '@fluentui/react-tabs/lib/next';
+import { Tabs, TabItem, TabItemProps } from '@fluentui/react-tabs';
 
 storiesOf('Tabs', module)
   .addDecorator(FabricDecorator)

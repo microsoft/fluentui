@@ -10,9 +10,9 @@ import { MicroFeedbackExample } from './MicroFeedback.Example';
 import { MicroFeedbackCalloutExample } from './MicroFeedbackCallout.Example';
 import { MicroFeedbackStackExample } from './MicroFeedbackStack.Example';
 
-const MicroFeedbackExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedback.Example.tsx') as string;
-const MicroFeedbackCalloutExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedbackCallout.Example.tsx') as string;
-const MicroFeedbackStackExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedbackStack.Example.tsx') as string;
+const MicroFeedbackExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedback.Example.tsx') as string;
+const MicroFeedbackCalloutExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedbackCallout.Example.tsx') as string;
+const MicroFeedbackStackExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedbackStack.Example.tsx') as string;
 
 export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,9 +36,7 @@ export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, 
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader!@fluentui/react-experiments/src/components/MicroFeedback/MicroFeedback.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/MicroFeedback/MicroFeedback.types.ts'),
             ]}
           />
         }

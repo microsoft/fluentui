@@ -1,3 +1,0 @@
-- [Web Link](#/controls/web/link)
-- [macOS Link](#/controls/mac/link)
-- [Cross-platform Link](#/controls/cross/link)

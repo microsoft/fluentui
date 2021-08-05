@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { useId, useConst } from '@fluentui/react-hooks';
 

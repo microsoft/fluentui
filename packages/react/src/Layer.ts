@@ -1,1 +1,2 @@
-export * from '@fluentui/react-internal/lib/Layer';
+import './version';
+export * from './components/Layer/index';

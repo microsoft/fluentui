@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
-import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
+import { IButtonSlot, ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
-import { IButtonSlot } from '../Button/Button.types';
 import { IStackSlot, ITextSlot } from '@fluentui/react';
 
 export type IMicroFeedbackComponent = IComponent<

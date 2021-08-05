@@ -8,12 +8,12 @@
 
 ### Source code
 
-[PillButtonBar](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Pill%20Button%20Bar/PillButtonBar.swift)
+[PillButtonBar](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Pill%20Button%20Bar/PillButtonBar.swift)
 
-[PillButtonBarItem](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Pill%20Button%20Bar/PillButtonBar.swift)
+[PillButtonBarItem](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Pill%20Button%20Bar/PillButtonBar.swift)
 
-[PillButtonBarDelegate](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Pill%20Button%20Bar/PillButtonBar.swift)
+[PillButtonBarDelegate](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Pill%20Button%20Bar/PillButtonBar.swift)
 
 ### Sample code
 
-[PillButtonBar demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/PillButtonBarDemoController.swift)
+[PillButtonBar demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/PillButtonBarDemoController.swift)

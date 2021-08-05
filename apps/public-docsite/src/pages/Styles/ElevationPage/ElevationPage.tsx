@@ -31,7 +31,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationDepth.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationDepth.md') as string
                 }
               </Markdown>
               <div style={{ marginTop: 12 }}>{_renderDepthsTable()}</div>
@@ -41,7 +41,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
         },
       ];
 

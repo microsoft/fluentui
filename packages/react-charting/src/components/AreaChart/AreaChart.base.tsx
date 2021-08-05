@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { max as d3Max, bisector } from 'd3-array';
 import { clientPoint } from 'd3-selection';
+import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import { IPalette } from '@fluentui/react/lib/Styling';
-import { find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
+  IAccessibilityProps,
   CartesianChart,
   IChartProps,
   ICustomizedCalloutData,
@@ -14,11 +16,22 @@ import {
   ILineChartPoints,
   IChildProps,
   IMargins,
+  IAreaChartStyleProps,
+  IAreaChartStyles,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
-import { calloutData, getXAxisType, ChartTypes, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
+import {
+  calloutData,
+  getXAxisType,
+  ChartTypes,
+  XAxisTypes,
+  getTypeOfAxis,
+  tooltipOfXAxislabels,
+} from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+
+const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -49,6 +62,7 @@ export interface IAreaChartState extends IBasestate {
   dataPointCalloutProps?: ICustomizedCalloutData;
   stackCalloutProps?: ICustomizedCalloutData;
   nearestCircleToHighlight: number | string | Date | null;
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -70,6 +84,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
+  private _tooltipId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -94,6 +109,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._verticalLineId = getId('verticalLine_');
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
+    this._tooltipId = getId('AreaChartTooltipID');
   }
 
   public render(): JSX.Element {
@@ -119,6 +135,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       gapSpace: 15,
       isBeakVisible: false,
       setInitialFocus: true,
+      onDismiss: this._closeCallout,
+      'data-is-focusable': true,
+      xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
       ...this.props.calloutProps,
     };
     return (
@@ -209,26 +228,39 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           break;
       }
     }
-    const xAxisCalloutData = lineChartData![0].data[index as number].xAxisCalloutData;
+
+    const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleDateString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
       return element.x === modifiedXVal;
     });
-    this.setState({
-      refSelected: mouseEvent,
-      isCalloutVisible: true,
-      nearestCircleToHighlight:
-        axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight,
-      lineXValue: this._xAxisRectScale(pointToHighlight),
-      displayOfLine: InterceptVisibility.show,
-      isCircleClicked: false,
-      stackCalloutProps: found!,
-      YValueHover: found.values,
-      dataPointCalloutProps: found!,
-      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
-    });
+    const nearestCircleToHighlight =
+      axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
+    // if no points need to be called out then don't show vertical line and callout card
+    if (found) {
+      this.setState({
+        refSelected: mouseEvent,
+        isCalloutVisible: true,
+        nearestCircleToHighlight: nearestCircleToHighlight,
+        lineXValue: this._xAxisRectScale(pointToHighlight),
+        displayOfLine: InterceptVisibility.show,
+        isCircleClicked: false,
+        stackCalloutProps: found!,
+        YValueHover: found.values,
+        dataPointCalloutProps: found!,
+        hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+        xAxisCalloutAccessibilityData,
+      });
+    } else {
+      this.setState({
+        isCalloutVisible: false,
+        nearestCircleToHighlight: nearestCircleToHighlight,
+        displayOfLine: InterceptVisibility.hide,
+        isCircleClicked: false,
+      });
+    }
   };
   /**
    * just cleaning up the state which we have set in the mouse move event
@@ -333,9 +365,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
-    this._chart = this._drawGraph(containerHeight, xAxis, yAxis);
+  private _getGraphData = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xAxis: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yAxis: any,
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement | null,
+  ) => {
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
   };
 
   private _onLegendClick(customMessage: string): void {
@@ -462,7 +501,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _drawGraph = (containerHeight: number, xScale: any, yScale: any): JSX.Element[] => {
+  private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this.props.data.lineChartData!;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -530,7 +569,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 r={this._getCircleRadius(xDataPoint)}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this.state.isCalloutVisible ? 'visibility' : 'hidden'}
+                visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
@@ -556,6 +595,30 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         visibility={this.state.displayOfLine}
       />,
     );
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(xScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+    }
     return graph;
   };
 
@@ -568,5 +631,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     } else {
       return 0;
     }
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 }

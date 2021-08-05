@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/TextField';
+export * from './components/TextField/index';

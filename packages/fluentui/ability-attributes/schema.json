@@ -917,7 +917,7 @@
         }
       }
     },
-    "LoadingButton": {
+    "DisabledFocusableButton": {
       "inherits": "Button",
       "parameters": [
         {

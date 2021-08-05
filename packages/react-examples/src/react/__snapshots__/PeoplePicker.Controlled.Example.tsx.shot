@@ -6,98 +6,123 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
     <div
       className="ms-BasePicker ms-PeoplePicker"
       onBlur={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
     >
       <div
-        aria-expanded={false}
-        aria-haspopup="dialog"
+        aria-live="assertive"
         className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
+
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              white-space: nowrap;
+              width: 1px;
             }
-        data-focuszone-id="FocusZone1"
-        id="combobox-id__0"
-        onFocus={[Function]}
+        id="selected-suggestion-alert-id__0"
+      >
+        
+      </div>
+      <span
+        hidden={true}
+        id="selected-items-id__0-label"
+      >
+        Selected contacts
+      </span>
+      <div
+        className="ms-SelectionZone"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDoubleClick={[Function]}
+        onFocusCapture={[Function]}
         onKeyDown={[Function]}
+        onKeyDownCapture={[Function]}
+        onMouseDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="combobox"
+        role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
-          role="presentation"
+          aria-owns=""
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border-radius: 2px;
+                border: 1px solid #605e5c;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+                position: relative;
+              }
+              &:hover {
+                border-color: #323130;
+              }
         >
-          <div
+          <input
+            aria-autocomplete="both"
+            aria-controls=""
+            aria-expanded={false}
+            aria-haspopup="listbox"
+            aria-label="Contacts"
+            autoCapitalize="off"
+            autoComplete="off"
             className=
-                ms-BasePicker-text
+                ms-BasePicker-input
                 {
-                  align-items: center;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
-                  border: 1px solid #605e5c;
-                  box-sizing: border-box;
-                  display: flex;
-                  flex-wrap: wrap;
-                  min-height: 30px;
-                  min-width: 180px;
-                  position: relative;
+                  border: none;
+                  color: #323130;
+                  flex-grow: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 30px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
                 }
-                &:hover {
-                  border-color: #323130;
+                &::-ms-clear {
+                  display: none;
                 }
-          >
-            <input
-              aria-autocomplete="both"
-              aria-controls=" "
-              autoCapitalize="off"
-              autoComplete="off"
-              className=
-                  ms-BasePicker-input
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    align-self: flex-end;
-                    background-color: transparent;
-                    border-radius: 2px;
-                    border: none;
-                    color: #323130;
-                    flex-grow: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 30px;
-                    outline: none;
-                    padding-bottom: 0;
-                    padding-left: 6px;
-                    padding-right: 6px;
-                    padding-top: 0;
-                  }
-                  &::-ms-clear {
-                    display: none;
-                  }
-              data-lpignore={true}
-              disabled={false}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onClick={[Function]}
-              onCompositionEnd={[Function]}
-              onCompositionStart={[Function]}
-              onCompositionUpdate={[Function]}
-              onFocus={[Function]}
-              onInput={[Function]}
-              onKeyDown={[Function]}
-              role="textbox"
-              spellCheck={false}
-              value=""
-            />
-          </div>
+            data-lpignore={true}
+            disabled={false}
+            id="combobox-id__0"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onCompositionEnd={[Function]}
+            onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            role="combobox"
+            spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
+            value=""
+          />
         </div>
       </div>
     </div>
@@ -148,7 +173,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -164,7 +189,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -303,12 +328,13 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                       ms-Persona-presence
                       {
                         -ms-high-contrast-adjust: none;
-                        background-clip: content-box;
+                        background-clip: border-box;
                         background-color: #6BB700;
                         border-radius: 50%;
                         border: 2px solid #ffffff;
                         bottom: -2px;
                         box-sizing: content-box;
+                        forced-color-adjust: none;
                         height: 12px;
                         position: absolute;
                         right: -2px;
@@ -316,7 +342,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         top: auto;
                         width: 12px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         background-color: Highlight;
                         border-color: Window;
                       }
@@ -339,7 +365,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                           speak: none;
                           vertical-align: top;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: Window;
                         }
                     data-icon-name="SkypeCheck"
@@ -531,7 +557,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -547,7 +573,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -686,12 +712,13 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                       ms-Persona-presence
                       {
                         -ms-high-contrast-adjust: none;
-                        background-clip: content-box;
+                        background-clip: border-box;
                         background-color: #C43148;
                         border-radius: 50%;
                         border: 2px solid #ffffff;
                         bottom: -2px;
                         box-sizing: content-box;
+                        forced-color-adjust: none;
                         height: 12px;
                         position: absolute;
                         right: -2px;
@@ -699,7 +726,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         top: auto;
                         width: 12px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         background-color: WindowText;
                         border-color: Window;
                       }
@@ -718,7 +745,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                           vertical-align: top;
                           width: 1em;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: Window;
                         }
                     data-icon-name=""
@@ -908,7 +935,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -924,7 +951,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1063,12 +1090,13 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                       ms-Persona-presence
                       {
                         -ms-high-contrast-adjust: none;
-                        background-clip: content-box;
+                        background-clip: border-box;
                         background-color: #C50F1F;
                         border-radius: 50%;
                         border: 2px solid #ffffff;
                         bottom: -2px;
                         box-sizing: content-box;
+                        forced-color-adjust: none;
                         height: 12px;
                         position: absolute;
                         right: -2px;
@@ -1076,7 +1104,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         top: auto;
                         width: 12px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         background-color: WindowText;
                         border-color: Window;
                       }
@@ -1099,7 +1127,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                           speak: none;
                           vertical-align: top;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: Window;
                         }
                     data-icon-name="SkypeMinus"
@@ -1291,7 +1319,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1307,7 +1335,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1446,12 +1474,13 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                       ms-Persona-presence
                       {
                         -ms-high-contrast-adjust: none;
-                        background-clip: content-box;
+                        background-clip: border-box;
                         background-color: #ffffff;
                         border-radius: 50%;
                         border: 2px solid #ffffff;
                         bottom: -2px;
                         box-sizing: content-box;
+                        forced-color-adjust: none;
                         height: 12px;
                         position: absolute;
                         right: -2px;
@@ -1459,7 +1488,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         top: auto;
                         width: 12px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         background-color: WindowText;
                         border-color: Window;
                       }
@@ -1474,7 +1503,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         top: 0px;
                         width: 100%;
                       }
-                      @media screen and (-ms-high-contrast: active){&:before {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                         border-color: Window;
                         height: calc(100% - 2px);
                         left: 1px;
@@ -1497,7 +1526,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                           vertical-align: top;
                           width: 1em;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: Window;
                         }
                     data-icon-name=""
@@ -1687,7 +1716,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1703,7 +1732,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1842,12 +1871,13 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                       ms-Persona-presence
                       {
                         -ms-high-contrast-adjust: none;
-                        background-clip: content-box;
+                        background-clip: border-box;
                         background-color: #6BB700;
                         border-radius: 50%;
                         border: 2px solid #ffffff;
                         bottom: -2px;
                         box-sizing: content-box;
+                        forced-color-adjust: none;
                         height: 12px;
                         position: absolute;
                         right: -2px;
@@ -1855,7 +1885,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                         top: auto;
                         width: 12px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         background-color: Highlight;
                         border-color: Window;
                       }
@@ -1878,7 +1908,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                           speak: none;
                           vertical-align: top;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: Window;
                         }
                     data-icon-name="SkypeCheck"
@@ -2039,7 +2069,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         &:hover .ms-Checkbox-checkbox {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
@@ -2049,25 +2079,24 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
           color: #605e5c;
           opacity: 1;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
           color: WindowText;
         }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
           color: WindowText;
         }
   >
     <input
       aria-checked="false"
-      aria-label="Disable People Picker"
       checked={false}
       className=
 
@@ -2080,8 +2109,165 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             outline-offset: 2px;
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
+          }
+      data-ktp-execute-target={true}
+      id="checkbox-36"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      className=
+          ms-Checkbox-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: flex-start;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+            user-select: none;
+          }
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      htmlFor="checkbox-36"
+    >
+      <div
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-radius: 2px;
+              border: 1px solid #323130;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-right: 4px;
+              overflow: hidden;
+              position: relative;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              border-color: WindowText;
+              forced-color-adjust: none;
+            }
+        data-ktp-target={true}
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+                forced-color-adjust: none;
+              }
+          data-icon-name="CheckMark"
+        >
+          
+        </i>
+      </div>
+      <span
+        className=
+            ms-Checkbox-text
+            {
+              color: #323130;
+              font-size: 14px;
+              line-height: 20px;
+              margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+      >
+        Disable People Picker
+      </span>
+    </label>
+  </div>
+  <div
+    className=
+        ms-Checkbox
+        is-enabled
+        {
+          display: flex;
+          margin-top: 10px;
+          position: relative;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #323130;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #323130;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #605e5c;
+          opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
+        }
+  >
+    <input
+      aria-checked="false"
+      checked={false}
+      className=
+
+          {
+            background: none;
+            opacity: 0;
+            position: absolute;
+          }
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-37"
@@ -2134,10 +2320,9 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -2157,9 +2342,10 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                 opacity: 0;
                 speak: none;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 color: Window;
+                forced-color-adjust: none;
               }
           data-icon-name="CheckMark"
         >
@@ -2167,7 +2353,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -2176,170 +2361,9 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               line-height: 20px;
               margin-left: 4px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
-      >
-        Disable People Picker
-      </span>
-    </label>
-  </div>
-  <div
-    className=
-        ms-Checkbox
-        is-enabled
-        {
-          display: flex;
-          margin-top: 10px;
-          position: relative;
-        }
-        &:hover .ms-Checkbox-checkbox {
-          border-color: #323130;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          border-color: Highlight;
-        }
-        &:focus .ms-Checkbox-checkbox {
-          border-color: #323130;
-        }
-        &:hover .ms-Checkbox-checkmark {
-          color: #605e5c;
-          opacity: 1;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-          color: Highlight;
-        }
-        &:hover .ms-Checkbox-text {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
-          color: WindowText;
-        }
-        &:focus .ms-Checkbox-text {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
-          color: WindowText;
-        }
-  >
-    <input
-      aria-checked="false"
-      aria-label="Delay Suggestion Results"
-      checked={false}
-      className=
-
-          {
-            background: none;
-            opacity: 0;
-            position: absolute;
-          }
-          .ms-Fabric--isFocusVisible &:focus + label::before {
-            outline-offset: 2px;
-            outline: 1px solid #605e5c;
-          }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
-          }
-      data-ktp-execute-target={true}
-      id="checkbox-38"
-      onChange={[Function]}
-      type="checkbox"
-    />
-    <label
-      className=
-          ms-Checkbox-label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            align-items: flex-start;
-            cursor: pointer;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            position: relative;
-            user-select: none;
-          }
-          &::before {
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-          }
-      htmlFor="checkbox-38"
-    >
-      <div
-        className=
-            ms-Checkbox-checkbox
-            {
-              align-items: center;
-              border-radius: 2px;
-              border: 1px solid #323130;
-              box-sizing: border-box;
-              display: flex;
-              flex-shrink: 0;
-              height: 20px;
-              justify-content: center;
-              margin-right: 4px;
-              overflow: hidden;
-              position: relative;
-              transition-duration: 200ms;
-              transition-property: background, border, border-color;
-              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 20px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
-              forced-color-adjust: none;
-            }
-        data-ktp-target={true}
-      >
-        <i
-          aria-hidden={true}
-          className=
-              ms-Checkbox-checkmark
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #ffffff;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                opacity: 0;
-                speak: none;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                color: Window;
-              }
-          data-icon-name="CheckMark"
-        >
-          
-        </i>
-      </div>
-      <span
-        aria-hidden="true"
-        className=
-            ms-Checkbox-text
-            {
-              color: #323130;
-              font-size: 14px;
-              line-height: 20px;
-              margin-left: 4px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >

@@ -1,17 +1,17 @@
-import { useInlineTokens } from '@fluentui/react-theme-provider';
 import * as React from 'react';
-
-import { TextProps } from './Text.types';
 import { useText } from './useText';
-import { useTextClasses } from './useTextClasses';
+import { TextProps } from './Text.types';
+import { renderText } from './renderText';
+import { useTextStyles } from './useTextStyles';
 
+/**
+ * Typography and styling abstraction component used to ensure consistency of text.
+ */
 export const Text = React.forwardRef<HTMLElement, TextProps>((props, ref) => {
-  const { render, state } = useText(props, ref);
+  const state = useText(props, ref);
 
-  useTextClasses(state);
-  useInlineTokens(state, '--text');
-
-  return render(state);
+  useTextStyles(state);
+  return renderText(state);
 });
 
 Text.displayName = 'Text';

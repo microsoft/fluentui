@@ -33,12 +33,7 @@ describe('createSvgIcon', () => {
 
     const wrapper = mount(<TestIcon className="test-className" />);
 
-    expect(
-      wrapper
-        .find('span')
-        .props()
-        .className!.includes('test-className'),
-    ).toEqual(true);
+    expect(wrapper.find('span').props().className!.includes('test-className')).toEqual(true);
   });
 
   it('provides all props on the svg function', () => {

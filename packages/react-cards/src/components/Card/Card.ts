@@ -13,6 +13,10 @@ const CardStatics = {
   Section: CardSection,
 };
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const Card: React.FunctionComponent<ICardProps> & {
   Item: React.FunctionComponent<ICardItemProps>;
   Section: React.FunctionComponent<ICardSectionProps>;
@@ -23,4 +27,8 @@ export const Card: React.FunctionComponent<ICardProps> & {
   statics: CardStatics,
 });
 
+/**
+ * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
+ * future.
+ */
 export default Card;

@@ -1,133 +1,73 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Link}
  */
-export interface ILink {
-  /** Sets focus to the link. */
-  focus(): void;
-}
+export type LinkProps = ComponentPropsCompat &
+  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
+  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+    /**
+     * URL the link points to. If not provided, the link renders as a button (unless that behavior is
+     * overridden using `as`).
+     */
+    href?: string;
 
-/**
- * @deprecated No longer used.
- */
-export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-  // Shared
-  type?: string;
+    /**
+     * Click handler for the link.
+     */
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
 
-  // Anchor
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  download?: any;
-  href?: string;
-  hrefLang?: string;
-  media?: string;
-  rel?: string;
-  target?: string;
+    /**
+     * Relationship to the linked URL (can be a space-separated list).
+     * Most common values are `noreferrer` and/or `noopener`.
+     * This prop is only applied if `href` is set.
+     */
+    rel?: string;
 
-  // Button
-  autoFocus?: boolean;
-  disabled?: boolean;
-  form?: string;
-  formAction?: string;
-  formEncType?: string;
-  formMethod?: string;
-  formNoValidate?: boolean;
-  formTarget?: string;
-  name?: string;
-  value?: string | string[] | number;
+    /**
+     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
+     * `_self` (the current window/context), `_parent`, and `_top`.
+     * This prop is only applied if `href` is set.
+     */
+    target?: string;
 
-  /** Any other props for HTMLElements or a React component passed to `as` */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
+    /**
+     * Built-in HTML attribute with different behavior depending on how the link is rendered.
+     * If rendered as `<a>`, hints at the MIME type.
+     * If rendered as `<button>`, override the type of button (`button` is the default).
+     */
+    type?: string;
 
-/**
- * Link component props. All built-in props for `<a>` and `<button>` are supported (including
- * various event handlers) even if not listed below.
- * {@docCategory Link}
- */
-export interface ILinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
-    Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>,
-    React.RefAttributes<HTMLElement> {
-  /**
-   * Optional callback to access the ILink interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ILink>;
+    /**
+     * Whether the link is disabled.
+     * @default false
+     */
+    disabled?: boolean;
 
-  /**
-   * URL the link points to. If not provided, the link renders as a button (unless that behavior is
-   * overridden using `as`).
-   */
-  href?: string;
+    /**
+     * When set, allows the link to be focusable even when it has been disabled. This is used in scenarios where it is
+     * important to keep a consistent tab order for screen reader and keyboard users.
+     * @default false
+     */
+    disabledFocusable?: boolean;
 
-  /**
-   * Where to open the linked URL. Common values are `_blank` (a new tab or window),
-   * `_self` (the current window/context), `_parent`, and `_top`.
-   */
-  target?: string;
+    /**
+     * If true, changes styling when the link is being used alongside other text content.
+     * @default false
+     */
+    inline?: boolean;
 
-  /**
-   * Relationship to the linked URL (can be a space-separated list).
-   * Most common values are `noreferrer` and/or `noopener`.
-   */
-  rel?: string;
-
-  /**
-   * Click handler for the link.
-   */
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
-
-  /**
-   * Whether the link is disabled
-   */
-  disabled?: boolean;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
-   * A component type or primitive that is rendered as the type of the root element.
-   */
-  as?: React.ElementType;
-
-  /**
-   * Built-in HTML attribute with different behavior depending on how the link is rendered.
-   * If rendered as `<a>`, hints at the MIME type.
-   * If rendered as `<button>`, override the type of button (`button` is the default).
-   */
-  type?: string;
-
-  /** Any other props for elements or a React component passed to `as` */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
+    /**
+     * If true, changes the link styling to emphasize that it represents an alternative action.
+     * @default false
+     */
+    secondary?: boolean;
+  };
 
 /**
  * {@docCategory Link}
  */
-export interface ILinkStyleProps {
-  className?: string;
-  isButton?: boolean;
-  isDisabled?: boolean;
-  theme: ITheme;
-}
-
-/**
- * {@docCategory Link}
- */
-export interface ILinkStyles {
-  root: IStyle;
+export interface LinkState extends LinkProps {
+  ref: React.Ref<HTMLElement>;
 }

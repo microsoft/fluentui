@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Fabric';
+export * from './components/Fabric/index';

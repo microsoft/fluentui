@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const items: IContextualMenuItem[] = [
   {
@@ -306,7 +306,6 @@ storiesOf('ContextualMenu', module)
   ));
 
 storiesOf('ContextualMenu', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

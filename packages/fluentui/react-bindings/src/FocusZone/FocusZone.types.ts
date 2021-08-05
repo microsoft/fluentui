@@ -1,8 +1,6 @@
 import { FocusZoneDirection, FocusZoneProperties, FocusZoneTabbableElements } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import { FocusZone } from './FocusZone';
-
 /**
  * FocusZone component class interface.
  */
@@ -76,6 +74,11 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
    */
   shouldResetActiveElementWhenTabFromZone?: boolean;
+
+  /**
+   * If true elements containing data-is-focusable="false" will not be counted skipping onFocus event
+   */
+  shouldIgnoreNotFocusable?: boolean;
 
   /**
    * Determines whether the FocusZone will walk up the DOM trying to invoke click callbacks on focusable elements on
@@ -166,7 +169,7 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    * Callback called when "focus" event triggered in FocusZone.
    * @param event - React's original FocusEvent.
    */
-  onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.

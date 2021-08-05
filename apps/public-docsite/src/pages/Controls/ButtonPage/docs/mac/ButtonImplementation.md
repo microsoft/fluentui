@@ -4,8 +4,8 @@
 
 ### Source code
 
-[Button.swift](https://github.com/microsoft/fluentui-apple/blob/master/macos/FluentUI/Button.swift)
+[Button.swift](https://github.com/microsoft/fluentui-apple/blob/main/macos/FluentUI/Button/Button.swift)
 
 ### Sample code
 
-[TestButtonViewController.swift](https://github.com/microsoft/fluentui-apple/blob/master/macos/FluentUITestApp/TestButtonViewController.swift)
+[TestButtonViewController.swift](https://github.com/microsoft/fluentui-apple/blob/main/macos/FluentUITestViewControllers/TestButtonViewController.swift)

@@ -1,4 +1,4 @@
-import { Accessibility, dialogBehavior, DialogBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   FocusTrapZoneProps,
@@ -17,8 +17,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { lockBodyScroll, unlockBodyScroll } from './utils';
+
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import {
   UIComponentProps,
@@ -221,15 +221,16 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
   });
 
   React.useEffect(() => {
+    const target = contentRef?.current;
     if (open) {
-      lockBodyScroll(context.target);
+      disableBodyScroll(target);
     }
     return () => {
       if (open) {
-        unlockBodyScroll(context.target);
+        enableBodyScroll(target);
       }
     };
-  }, [context.target, open]);
+  }, [open]);
 
   const handleDialogCancel = (e: Event | React.SyntheticEvent) => {
     _.invoke(props, 'onCancel', e, { ...props, open: false });

@@ -4,7 +4,9 @@ import { LabelStylesProps } from '../../../../components/Label/Label';
 import { LabelVariables } from './labelVariables';
 
 export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
+    const { siteVariables } = theme;
+
     return {
       display: 'inline-flex',
       alignItems: 'center',
@@ -14,7 +16,7 @@ export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVar
       color: v.foreground,
       backgroundColor: v.background,
       fontSize: pxToRem(14),
-      borderRadius: pxToRem(3),
+      borderRadius: siteVariables.borderRadiusMedium,
       padding: v.padding,
 
       ...(p.hasImage &&

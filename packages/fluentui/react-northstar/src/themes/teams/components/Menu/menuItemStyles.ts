@@ -169,8 +169,7 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
         color: 'inherit',
 
         ...(iconOnly && {
-          borderRadius: '50%',
-          borderColor: v.iconOnlyColorFocus,
+          ...getBorderFocusStyles({ variables: siteVariables }),
           ...getIconFillOrOutlineStyles({ outline: false }),
         }),
 

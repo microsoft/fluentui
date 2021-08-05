@@ -1,5 +1,8 @@
 // @ts-check
+const path = require('path');
 const configHelpers = require('../utils/configHelpers');
+
+const gitRoot = configHelpers.findGitRoot();
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
@@ -8,8 +11,6 @@ const config = {
     'airbnb',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@fluentui', '@typescript-eslint', 'deprecation', 'import', 'jest', 'jsx-a11y', 'react', 'react-hooks'],
@@ -20,8 +21,10 @@ const config = {
     },
     'import/resolver': {
       typescript: {
-        alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory
-        directory: process.cwd(),
+        // always try to resolve types under `<root>@types` directory
+        alwaysTryTypes: true,
+        // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
+        project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
       },
     },
   },
@@ -57,7 +60,7 @@ const config = {
           '^(import|export) \\{ \\w+( as \\w+)? \\} from',
           '^import \\* as',
           '^\\s+(<path )?d=',
-          '!raw-loader!',
+          '!raw-loader',
           '\\bdata:image/',
         ],
         max: 120,
@@ -76,7 +79,7 @@ const config = {
     'dot-notation': 'error',
     eqeqeq: ['error', 'always'],
     'guard-for-in': 'error',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: [...configHelpers.devDependenciesFiles] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
     'jsx-a11y/tabindex-no-positive': 'error',
     'no-alert': 'error',
     'no-bitwise': 'error',
@@ -95,10 +98,23 @@ const config = {
         message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
       })),
     ],
+    '@fluentui/ban-imports': [
+      'error',
+      {
+        path: 'react',
+        names: ['useLayoutEffect'],
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
+      },
+    ],
     'no-restricted-properties': [
       'error',
       { object: 'describe', property: 'only', message: 'describe.only should only be used during test development' },
       { object: 'it', property: 'only', message: 'it.only should only be used during test development' },
+      {
+        object: 'React',
+        property: 'useLayoutEffect',
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
+      },
     ],
     'no-shadow': ['error', { hoist: 'all' }],
     'no-var': 'error',
@@ -118,11 +134,17 @@ const config = {
     ],
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useIsomorphicLayoutEffect',
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
 
     // airbnb or other config overrides (some temporary)
     // TODO: determine which rules we want to enable, and make needed changes (separate PR)
+    'arrow-body-style': 'off',
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'default-case': 'off',
@@ -203,6 +225,7 @@ const config = {
     'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
+    'react/require-default-props': 'off',
     'spaced-comment': 'off',
 
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)
@@ -245,12 +268,7 @@ const config = {
 };
 
 /**
- * By default, any logic in this file will be run every time the plugin is loaded (even if this
- * config is not used) due to it being included by necessity in the package index file.
- * These overrides include some more complex logic which should only run when requested, since it's
- * more costly and can cause build errors if run in a package it wasn't designed for.
- * If ESLint supported exporting a function from a config file, that would be an easy solution.
- * Since that's not supported, we work around it by defining overrides as a property with getter.
+ * Override definitions for `config`. See explanation at bottom of file for why/how this function is used.
  * @returns {import("eslint").Linter.ConfigOverride[]}
  */
 const getOverrides = () => [
@@ -296,6 +314,7 @@ const getOverrides = () => [
           ],
         },
       ],
+      '@typescript-eslint/no-shadow': 'error',
 
       // permanently disable due to using other rules which do the same thing
       camelcase: 'off', // redundant with @typescript-eslint/naming-convention
@@ -303,6 +322,7 @@ const getOverrides = () => [
       // permanently disable due to improper TS handling or unnecessary for TS
       // (and not covered by plugin:@typescript-eslint/eslint-recommended)
       'no-empty-function': 'off',
+      'no-shadow': 'off',
       'no-unused-vars': 'off',
       'react/jsx-filename-extension': 'off',
     },
@@ -343,8 +363,29 @@ const getOverrides = () => [
       'import/no-webpack-loader-syntax': 'off', // this is ok in docs
     },
   },
+  {
+    files: [...configHelpers.configFiles],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
+    files: [...configHelpers.devDependenciesFiles],
+    rules: {
+      'import/no-extraneous-dependencies': ['error', { packageDir: ['.', gitRoot] }],
+    },
+  },
 ];
 
+// Why use `defineProperty` for `overrides`?
+//
+// By default, any logic in this file will be run every time the plugin is loaded (even if this
+// config is not used) due to it being included by necessity in the package index file.
+// These overrides include some more complex logic which should only run when requested, since it's
+// more costly and can cause build errors if run in a package it wasn't designed for.
+// If ESLint supported exporting a function from a config file, that would be an easy solution.
+// Since that's not supported, we work around it by defining overrides as a property with getter.
+// @ts-ignore -- `overrides?` is declared in `eslint.Linter.Config` but our `config` object doesn't define it until now
 Object.defineProperty(config, 'overrides', {
   enumerable: true,
   get: getOverrides,

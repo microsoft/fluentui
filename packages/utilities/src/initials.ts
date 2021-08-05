@@ -4,9 +4,9 @@
 
 /**
  * Regular expression matching characters within various types of enclosures, including the enclosures themselves
- *  so for example, (xyz) [xyz] {xyz} all would be ignored
+ *  so for example, (xyz) [xyz] {xyz} <xyz> all would be ignored
  */
-const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{][^\)\]\}]*[\)\]\}]/g;
+const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{\<][^\)\]\}\>]*[\)\]\}\>]/g;
 
 /**
  * Regular expression matching special ASCII characters except space, plus some unicode special characters.

@@ -5,7 +5,7 @@ import { ButtonPageProps } from './ButtonPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
-import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
@@ -72,7 +72,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/ios/ButtonImplementation.md',
-            content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
+            content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
           },
         ];
 
@@ -81,7 +81,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/android/ButtonImplementation.md',
-            content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
+            content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
           },
         ];
       case 'windows':
@@ -96,7 +96,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/mac/ButtonImplementation.md',
-            content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
+            content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
           },
         ];
       case 'cross':

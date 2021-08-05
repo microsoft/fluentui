@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -12,7 +12,6 @@ import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
  * Adds role 'presentation' to 'wrapper' slot.
  * Adds role 'button' to 'root' slot.
  * Adds attribute 'tabIndex=0' to 'root' slot.
- * Adds attribute 'data-is-focusable=false' to 'root' slot if 'disabled' property is true. Sets the attribute to 'true' otherwise.
  * Adds attribute 'aria-label' based on the property 'aria-label' to 'root' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
@@ -22,6 +21,7 @@ import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper'.
  * Triggers 'openMenu' action with 'ArrowDown' on 'wrapper', when orientation is horizontal.
  * Triggers 'doNotNavigateNextParentItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
+ * Adds attribute 'data-is-focusable=true' to 'root' slot.
  */
 export const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
@@ -36,7 +36,7 @@ export const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProp
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
     },
   },
 

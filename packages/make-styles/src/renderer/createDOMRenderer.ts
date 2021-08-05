@@ -1,70 +1,66 @@
-import { MakeStylesRenderer } from '../types';
-import { RTL_PREFIX } from '../constants';
+import { MakeStylesRenderer, StyleBucketName } from '../types';
+import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
-interface MakeStylesDOMRenderer extends MakeStylesRenderer {
-  insertionCache: Record<string, true>;
-  index: number;
-
-  styleElement: HTMLStyleElement;
-}
-
-const renderers = new WeakMap<Document, MakeStylesDOMRenderer>();
 let lastIndex = 0;
 
-/* eslint-disable guard-for-in */
-
-export function createDOMRenderer(targetDocument: Document = document): MakeStylesDOMRenderer {
-  const value: MakeStylesDOMRenderer | undefined = renderers.get(targetDocument);
-
-  if (value) {
-    return value;
-  }
-
-  const styleElement = targetDocument.createElement('style');
-
-  styleElement.setAttribute('make-styles', 'RULE');
-  targetDocument.head.appendChild(styleElement);
-
-  const renderer: MakeStylesDOMRenderer = {
+/**
+ * Creates a new instances of a renderer.
+ *
+ * @public
+ */
+export function createDOMRenderer(
+  target: Document | undefined = typeof document === 'undefined' ? undefined : document,
+): MakeStylesRenderer {
+  const renderer: MakeStylesRenderer = {
     insertionCache: {},
-    index: 0,
-    styleElement,
+    styleElements: {},
 
     id: `d${lastIndex++}`,
-    insertDefinitions: function insertStyles(lookupTable, definitions, rtl): string {
-      let classes = '';
 
-      for (const propName in definitions) {
-        const definition = definitions[propName];
-        // className || css || rtlCSS
+    insertCSSRules(cssRules) {
+      // eslint-disable-next-line guard-for-in
+      for (const styleBucketName in cssRules) {
+        const cssRulesForBucket = cssRules[styleBucketName as StyleBucketName]!;
+        const sheet = target && getStyleSheetForBucket(styleBucketName as StyleBucketName, target, renderer);
 
-        const className = definition[0];
-        const rtlCSS = definition[2];
+        // This is a hot path in rendering styles: ".length" is cached in "l" var to avoid accesses the property
+        for (let i = 0, l = cssRulesForBucket.length; i < l; i++) {
+          const ruleCSS = cssRulesForBucket[i];
 
-        const ruleClassName = rtl ? (rtlCSS ? RTL_PREFIX + className : className) : className;
+          if (renderer.insertionCache[ruleCSS]) {
+            continue;
+          }
 
-        // Should be done always to return classes
-        classes += ' ' + ruleClassName; // adds useless empty string on beginning
+          renderer.insertionCache[ruleCSS] = styleBucketName as StyleBucketName;
 
-        if (renderer.insertionCache[ruleClassName]) {
-          continue;
+          if (sheet) {
+            try {
+              sheet.insertRule(ruleCSS, sheet.cssRules.length);
+            } catch (e) {
+              // We've disabled these warnings due to false-positive errors with browser prefixes
+              if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {
+                // eslint-disable-next-line no-console
+                console.error(`There was a problem inserting the following rule: "${ruleCSS}"`, e);
+              }
+            }
+          }
         }
-
-        const css = definition[1];
-        const ruleCSS = rtl ? rtlCSS || css : css;
-
-        renderer.insertionCache[ruleClassName] = true;
-        lookupTable[ruleClassName] = [propName, definition];
-
-        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
-        renderer.index++;
       }
-
-      return classes;
     },
   };
 
-  renderers.set(targetDocument, renderer);
-
   return renderer;
 }
+
+/**
+ * Suffixes to be ignored in case of error
+ */
+const ignoreSuffixes = [
+  '-moz-placeholder',
+  '-moz-focus-inner',
+  '-moz-focusring',
+  '-ms-input-placeholder',
+  '-moz-read-write',
+  '-moz-read-only',
+].join('|');
+const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);

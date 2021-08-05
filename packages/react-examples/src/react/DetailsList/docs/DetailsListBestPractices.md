@@ -7,9 +7,11 @@
 
 ### Content
 
-- Use sentence-style capitalization for column headers—only capitalize the first word. For more info, see [Capitalization] in the Microsoft Writing Style Guide.
+- Use sentence-style capitalization for column headers—only capitalize the first word. For more info, see [Capitalization](https://docs.microsoft.com/style-guide/capitalization) in the Microsoft Writing Style Guide.
 
-[capitalization]: https://docs.microsoft.com/style-guide/capitalization
+### Accessibility
+
+In addition to creating column headers, DetailsList also allows the manual definition of row headers. In the example below, the Name column has been specified as a row header using `isRowHeader: true`. When creating a DetailsList where one column is clearly the primary label for the row, it's best to use `isRowHeader` on that column to create a better screen reader experience navigating the table. For selectable DetailsLists, specifying a row header also gives the checkboxes a better accessible label.
 
 ### FAQ
 

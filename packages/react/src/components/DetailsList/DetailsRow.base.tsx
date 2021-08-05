@@ -52,7 +52,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _droppingClassNames: string;
   /** Whether this.props.onDidMount has been called */
   private _onDidMountCalled: boolean;
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
@@ -178,6 +178,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       dragDropEvents,
       item,
       itemIndex,
+      id,
+      flatIndexOffset = 2,
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
@@ -201,6 +203,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       groupNestingDepth,
       useFastIcons = true,
       cellStyleProps,
+      group,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -212,6 +215,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
+    const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
+    const ariaSetSize = group ? group.count : undefined;
 
     this._classNames = {
       ...this._classNames,
@@ -250,6 +255,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
+        rowHeaderId={`${id}-header`}
         cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
@@ -261,6 +267,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         cellStyleProps={cellStyleProps}
       />
     );
+
+    const defaultRole = 'row';
+    const role = this.props.role ? this.props.role : defaultRole;
 
     return (
       <FocusZone
@@ -275,15 +284,17 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         direction={FocusZoneDirection.horizontal}
         elementRef={this._root}
         componentRef={this._focusZone}
-        role="row"
+        role={role}
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={itemIndex + 1}
+        aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
+        aria-posinset={ariaPositionInSet}
+        aria-setsize={ariaSetSize}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
@@ -292,9 +303,12 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
+              id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
+              selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
+              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
               canSelect,
               compact,
               className: this._classNames.check,
@@ -321,6 +335,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           >
             <RowFields
               rowClassNames={this._rowClassNames}
+              rowHeaderId={`${id}-header`}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}

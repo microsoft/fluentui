@@ -65,9 +65,16 @@ export type PreventOverflowModifier = ModifierProps<
 >;
 
 export type PopperModifiers = (ArrowModifier | FlipModifier | OffsetModifier | PreventOverflowModifier)[];
+export type PopperModifiersFn = (
+  target: HTMLElement | PopperJs.VirtualElement,
+  container: HTMLElement,
+  arrow: HTMLElement | null,
+) => PopperModifiers;
 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
+
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
 export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement;
 
@@ -121,6 +128,14 @@ export interface PositioningProps {
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
   unstable_pinned?: boolean;
+
+  /**
+   * Applies max-height and max-width on popper to fit it within the available space in viewport.
+   * true enables this for both width and height when overflow happens. 'always' applies `max-height`/`max-width` regardless of overflow.
+   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
+   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
+   */
+  autoSize?: AutoSize;
 }
 
 export interface PopperProps extends PositioningProps {
@@ -135,7 +150,7 @@ export interface PopperProps extends PositioningProps {
   children: PopperChildrenFn | React.ReactElement;
 
   /**
-   * Enables events (resize, scroll).
+   * If false, delays Popper's creation.
    * @default true
    */
   enabled?: boolean;
@@ -144,7 +159,7 @@ export interface PopperProps extends PositioningProps {
    * List of modifiers used to modify the offsets before they are applied to the Popper box.
    * They provide most of the functionality of Popper.js.
    */
-  modifiers?: PopperModifiers;
+  modifiers?: PopperModifiers | PopperModifiersFn;
 
   /**
    * Array of conditions to be met in order to trigger a subsequent render to reposition the elements.
@@ -174,9 +189,8 @@ export interface PopperChildrenProps {
 
 export type PopperShorthandProps = PositioningProps;
 
-export type PopperPositionFix = {
-  patch: (popperInstance: PopperJsInstance) => void;
-  modifier: ModifierProps<'positionStyleFix', {}>;
+export type PopperOptions = Omit<PopperProps, 'children' | 'targetRef'> & {
+  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
 };
 
-export type PopperJsInstance = PopperJs.Instance & Partial<{ isFirstRun: boolean }>;
+export type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };

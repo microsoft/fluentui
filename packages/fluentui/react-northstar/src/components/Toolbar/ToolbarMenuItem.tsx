@@ -23,10 +23,10 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 import {
   createShorthand,
@@ -48,6 +48,8 @@ import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVari
 import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
+import { ToolbarMenuItemContent } from './ToolbarMenuItemContent';
+import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -177,7 +179,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
-        menu,
+        hasMenu: !!menu,
         active,
         menuOpen,
         disabled,
@@ -336,7 +338,9 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         ) : (
           <>
             {createShorthand(composeOptions.slots.icon, icon, { defaultProps: () => slotProps.icon })}
-            {content}
+            {createShorthand(composeOptions.slots.content, content, {
+              defaultProps: () => getA11yProps('content', slotProps.content),
+            })}
             {active &&
               createShorthand(composeOptions.slots.activeIndicator, activeIndicator, {
                 defaultProps: () => slotProps.activeIndicator,
@@ -443,6 +447,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       submenuIndicator: ToolbarMenuItemSubmenuIndicator,
       activeIndicator: ToolbarMenuItemActiveIndicator,
       popup: Popup,
+      content: ToolbarMenuItemContent,
     },
     slotProps: props => ({
       icon: {
@@ -457,6 +462,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       popup: {
         trapFocus: true,
       },
+      content: {},
     }),
 
     shorthandConfig: {
@@ -518,6 +524,6 @@ ToolbarMenuItem.defaultProps = {
   as: 'button',
   accessibility: toolbarMenuItemBehavior,
   activeIndicator: {},
-  submenuIndicator: {},
+  submenuIndicator: <ChevronEndIcon outline />,
   wrapper: { as: 'li' },
 };

@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PersonaPageProps } from './PersonaPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
-import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string
               }
             </Markdown>
           ),
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
               }
             </Markdown>
           ),

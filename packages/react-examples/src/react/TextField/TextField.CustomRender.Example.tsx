@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from '@fluentui/react/lib/TextField';
-import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';

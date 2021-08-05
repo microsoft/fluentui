@@ -1,2 +1,0 @@
-- [Web Shimmer](#/controls/web/shimmer)
-- [iOS Shimmer](#/controls/ios/shimmer)

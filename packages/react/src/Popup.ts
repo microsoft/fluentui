@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Popup';
+export * from './components/Popup/index';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Grid, Dropdown } from '@fluentui/react-northstar';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];
+const inputItems = ['Robert Tolbert', 'Wanda Howard', 'Tim Deboer', 'Amanda Brady'];
 
 const DropdownExamplePosition = () => (
   <Grid columns={1} variables={{ padding: '30px' }} styles={{ justifyItems: 'center' }}>

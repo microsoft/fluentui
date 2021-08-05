@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import Examples from './fixtures/slider-label.html';
-import { FluentSliderLabel } from './';
-
-// Prevent tree-shaking
-FluentSliderLabel;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
-  title: 'Slider label',
+  title: 'Slider Label',
 };
 
-export const SliderLabel = (): string => Examples;
+export const SliderLabel = () => Examples;

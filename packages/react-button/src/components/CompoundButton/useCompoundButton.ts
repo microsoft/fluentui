@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
+import { CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['icon', 'loader', 'content', 'contentContainer', 'secondaryContent'];
+export const compoundButtonShorthandPropsCompat: CompoundButtonShorthandPropsCompat[] = [
+  'contentContainer',
+  'icon',
+  'secondaryContent',
+];
 
-const mergeProps = makeMergeProps({
-  deepMerge: compoundButtonShorthandProps,
+const mergeProps = makeMergeProps<CompoundButtonState>({
+  deepMerge: compoundButtonShorthandPropsCompat,
 });
 
 /**
@@ -19,26 +23,24 @@ export const useCompoundButton = (
   props: CompoundButtonProps,
   ref: React.Ref<HTMLElement>,
   defaultProps?: CompoundButtonProps,
-) => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef();
+): CompoundButtonState => {
   const state = mergeProps(
     {
-      ref: resolvedRef,
+      ref,
       as: 'button',
+      // Slots inherited from Button
       icon: { as: 'span' },
-      content: { as: 'span', children: props.children },
+      // Slots exclusive to CompoundButton
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
-      loader: { as: 'span' },
+      // Non-slot props
+      size: 'medium',
     },
-    defaultProps,
-    resolveShorthandProps(props, compoundButtonShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
+    resolveShorthandProps(props, compoundButtonShorthandPropsCompat),
   );
 
   useButtonState(state);
 
-  return state as CompoundButtonState;
+  return state;
 };

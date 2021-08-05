@@ -1,3 +1,9 @@
-import '@storybook/addons';
-import '@storybook/addon-options/register';
-import '@storybook/addon-actions/register';
+import { addons } from '@storybook/addons';
+import { create } from '@storybook/theming';
+
+addons.setConfig({
+  theme: create({
+    base: 'light',
+    brandTitle: 'Fabric',
+  }),
+});

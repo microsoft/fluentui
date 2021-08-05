@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form } from '@fluentui/react-northstar';
+import { Form, FormDropdown, FormButton } from '@fluentui/react-northstar';
 
 const labelId = 'choose-friend-label';
 
@@ -9,14 +9,14 @@ const FormExample = () => (
       alert('Form submitted');
     }}
   >
-    <Form.Dropdown
+    <FormDropdown
       label={{ content: `Your best friend's name is:`, id: labelId }}
-      items={['John Doe', 'Dohn Joe', 'John Joe', 'Dohn Doe']}
+      items={['Cecil Folk', 'Folk Cecil', 'Cecil Folk', 'Folk Folk']}
       aria-labelledby={labelId}
       search={true}
       placeholder="Choose a friend"
     />
-    <Form.Button content="Submit" />
+    <FormButton content="Submit" />
   </Form>
 );
 

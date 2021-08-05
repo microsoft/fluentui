@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonProps, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonProps, IButtonStyles } from '@fluentui/react/lib/Button';
 import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IComponentAs } from '@fluentui/react/lib/Utilities';

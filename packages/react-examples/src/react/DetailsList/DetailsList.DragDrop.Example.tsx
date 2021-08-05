@@ -30,7 +30,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
 };
 const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
 
-export interface IDetailsListDragDropExampleState {
+interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
   columns: IColumn[];
   isColumnReorderEnabled: boolean;
@@ -103,7 +103,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
+            checkButtonAriaLabel="select row"
           />
         </MarqueeSelection>
       </div>

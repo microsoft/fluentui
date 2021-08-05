@@ -5,8 +5,8 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
-const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20201125.001/assets/item-types/';
-const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
+export const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20210115.001/assets/item-types/';
+export const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {
@@ -30,20 +30,20 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     // 1.5x is a special case where both SVGs and PNGs need a different image.
 
     fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_1.5x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_1.5x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
     fileTypeIcons[type + size + '_1.5x' + SVG_SUFFIX] = (
-      <img src={baseUrl + size + '_1.5x/' + type + '.svg'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_1.5x/' + type + '.svg'} height="100%" width="100%" alt="" />
     );
 
     fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_2x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_2x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
     fileTypeIcons[type + size + '_3x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_3x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_3x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
     fileTypeIcons[type + size + '_4x' + PNG_SUFFIX] = (
-      <img src={baseUrl + size + '_4x/' + type + '.png'} height="100%" width="100%" />
+      <img src={baseUrl + size + '_4x/' + type + '.png'} height="100%" width="100%" alt="" />
     );
   });
 
@@ -56,6 +56,7 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
         overflow: 'hidden',
       },
       icons: fileTypeIcons,
+      mergeImageProps: true,
     },
     options,
   );

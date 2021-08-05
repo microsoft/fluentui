@@ -40,6 +40,7 @@ import { TagPickerStyles } from './styles/TagPicker.styles';
 import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
+import { TooltipStyles } from './styles/Tooltip.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
@@ -186,6 +187,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     Toggle: {
       styles: ToggleStyles,
+    },
+    Tooltip: {
+      styles: TooltipStyles,
     },
   };
 };

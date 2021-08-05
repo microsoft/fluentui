@@ -4,7 +4,7 @@
 
 ```ts
 
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
 export const useDocument: () => Document | undefined;
@@ -13,10 +13,10 @@ export const useDocument: () => Document | undefined;
 export const useWindow: () => Window | undefined;
 
 // @public
-export const WindowContext: React.Context<WindowProviderProps>;
+export const WindowContext: React_2.Context<WindowProviderProps>;
 
 // @public
-export const WindowProvider: React.FunctionComponent<WindowProviderProps>;
+export const WindowProvider: React_2.FunctionComponent<WindowProviderProps>;
 
 // @public
 export type WindowProviderProps = {

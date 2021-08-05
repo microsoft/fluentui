@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Panel';
+export * from './components/Panel/index';

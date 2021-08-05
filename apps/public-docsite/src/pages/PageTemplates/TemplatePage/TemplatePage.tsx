@@ -79,7 +79,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
             <Markdown>
               {
                 // Use raw-loader to point the markdown file you want to use for the section.
-                require('!raw-loader!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateCustom.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateCustom.md') as string
               }
             </Markdown>
           ),

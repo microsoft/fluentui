@@ -77,10 +77,12 @@ export class EditorErrorBoundary extends React.Component<IEditorErrorBoundaryPro
     return (
       <>
         <EditorError error={error} />
-        {// If there was an error either transforming or rendering, reuse the most recent
-        // successfully-rendered children (especially important if the error is from rendering,
-        // because attempting to re-render bad children causes the page to crash)
-        error ? this._lastGoodChildren : this.props.children}
+        {
+          // If there was an error either transforming or rendering, reuse the most recent
+          // successfully-rendered children (especially important if the error is from rendering,
+          // because attempting to re-render bad children causes the page to crash)
+          error ? this._lastGoodChildren : this.props.children
+        }
       </>
     );
   }

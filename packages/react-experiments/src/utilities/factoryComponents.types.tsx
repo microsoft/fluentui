@@ -1,4 +1,5 @@
 import {
+  IButtonProps,
   ICalloutProps,
   IContextualMenuProps,
   IFontIconProps,
@@ -12,6 +13,7 @@ import { ISlotProp } from '@fluentui/foundation-legacy';
 
 // TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
 
+export type IButtonSlot = ISlotProp<IButtonProps>;
 export type ICalloutSlot = ISlotProp<ICalloutProps>;
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
 export type IFontIconSlot = ISlotProp<IFontIconProps, string>;

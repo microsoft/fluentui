@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Color';
+export * from './utilities/color/index';

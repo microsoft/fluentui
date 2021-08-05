@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import {
+  Avatar,
+  AvatarProps,
+  Chat,
+  Provider,
+  ReactionProps,
+  ShorthandCollection,
+  ICSSInJSStyle,
+} from '@fluentui/react-northstar';
 import { EmojiIcon, LikeIcon, AcceptIcon, MentionIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
@@ -7,8 +15,8 @@ const reactions: ShorthandCollection<ReactionProps> = [
   { key: 'smile', icon: <EmojiIcon />, content: 5 },
 ];
 
-const janeAvatar: AvatarProps = {
-  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
+const robinAvatar: AvatarProps = {
+  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 
@@ -23,7 +31,7 @@ const content = (
   </div>
 );
 
-const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
+const slotLabelStyles = (label, beforeStyles?, slotStyles?): ICSSInJSStyle => ({
   position: 'relative',
   border: '1px solid #000',
   padding: '12px',
@@ -58,8 +66,8 @@ const ChatMessageExampleStyled = () => (
         },
         ChatMessage: {
           root: { ...slotLabelStyles('chat-message-root'), backgroundColor: '#87CEFA' },
-          author: ({ props: { mine } }) => ({
-            ...(!mine && {
+          author: ({ props }) => ({
+            ...(!props.mine && {
               ...slotLabelStyles('author', {}, { display: 'inline-block' }),
               backgroundColor: '#E0FFFF',
             }),
@@ -99,7 +107,7 @@ const ChatMessageExampleStyled = () => (
             content: (
               <Chat.Message
                 content="Hey, do you know any restaurants with good food?"
-                author="John Doe"
+                author="Cecil Folk"
                 timestamp="Yesterday, 10:15 PM"
                 mine
                 badge={{ icon: <MentionIcon /> }}
@@ -113,11 +121,11 @@ const ChatMessageExampleStyled = () => (
         },
         {
           key: 'message-id-2',
-          gutter: <Avatar {...janeAvatar} />,
+          gutter: <Avatar {...robinAvatar} />,
           message: (
             <Chat.Message
               content={{ content }}
-              author="Jane Doe"
+              author="Robin Counts"
               timestamp="Yesterday, 10:15 PM"
               badge={{ icon: <ExclamationCircleIcon /> }}
               reactionGroup={reactions}

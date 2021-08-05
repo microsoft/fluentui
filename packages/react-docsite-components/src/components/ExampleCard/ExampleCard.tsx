@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandButton } from '@fluentui/react/lib/compat/Button';
+import { CommandButton } from '@fluentui/react/lib/Button';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { styled, Theme, ThemeProvider, classNamesFunction, css, warn, memoizeFunction } from '@fluentui/react';
 import { ISchemeNames, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -169,8 +169,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </EditorWrapper>
               ) : (
                 <ExamplePreview>
-                  {// Only use strict mode when not editing. Might have unpredictable results otherwise.
-                  this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children}
+                  {
+                    // Only use strict mode when not editing. Might have unpredictable results otherwise.
+                    this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children
+                  }
                 </ExamplePreview>
               )}
 

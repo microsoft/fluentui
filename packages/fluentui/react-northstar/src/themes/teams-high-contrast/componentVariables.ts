@@ -6,6 +6,7 @@ export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessa
 export { checkboxVariables as Checkbox } from './components/Checkbox/checkboxVariables';
 export { dialogVariables as Dialog } from './components/Dialog/dialogVariables';
 export { dividerVariables as Divider } from './components/Divider/dividerVariables';
+export { embedVariables as Embed } from './components/Embed/embedVariables';
 export { headerVariables as Header } from './components/Header/headerVariables';
 export { inputVariables as Input } from './components/Input/inputVariables';
 export { menuVariables as Menu } from './components/Menu/menuVariables';
@@ -33,8 +34,6 @@ export { toolbarMenuRadioGroupVariables as ToolbarMenuRadioGroup } from './compo
 export { toolbarMenuRadioGroupWrapperVariables as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperVariables';
 
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
-export { alertVariables as Alert } from './components/Alert/alertVariables';
-export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 export { providerVariables as Provider } from './components/Provider/providerVariables';
 export { dropdownVariables as Dropdown } from './components/Dropdown/dropdownVariables';
 export { dropdownItemVariables as DropdownItem } from './components/Dropdown/dropdownItemVariables';

@@ -20,6 +20,8 @@ import {
   ITextStyles,
 } from '@fluentui/react';
 
+/* eslint-disable deprecation/deprecation */
+
 export type FilledSectionKey = '0' | '1' | '2' | '3';
 
 export interface IExampleState {
@@ -129,7 +131,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
       minWidth: 0,
     };
 
-    // Debug card section definition
+    // Debug card esction definition
     const DebugCardSection = (props: { height: number; text: string }): JSX.Element => {
       const { height, text } = props;
 

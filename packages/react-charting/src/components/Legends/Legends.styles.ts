@@ -37,7 +37,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     rect: {
       selectors: {
         [HighContrastSelector]: {
-          backgroundImage: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
+          content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
           opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
         },
       },
@@ -48,11 +48,16 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       border: '1px solid',
       borderColor: props.borderColor ? props.borderColor : theme?.semanticColors.buttonBorder,
       opacity: props.colorOnSelectedState === palette.white ? '0.6' : props.opacity ? props.opacity : '',
-      backgroundImage: props.stripePattern
+      content: props.stripePattern
         ? // eslint-disable-next-line @fluentui/max-len
           `repeating-linear-gradient(135deg, transparent, transparent 3px, ${props.colorOnSelectedState} 1px, ${props.colorOnSelectedState} 4px)`
         : '',
     },
+    shape: [
+      {
+        marginRight: '8px',
+      },
+    ],
     triangle: {
       width: '0',
       height: '0',

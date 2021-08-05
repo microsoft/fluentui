@@ -4,76 +4,33 @@
 
 ```ts
 
-import { IRefObject } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ITheme } from '@fluentui/style-utilities';
-import * as React from 'react';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
 
-// @public (undocumented)
-export interface ISlider {
-    // (undocumented)
-    focus: () => void;
-    // (undocumented)
-    value: number | undefined;
+// @public
+export const renderSlider: (state: any) => JSX.Element;
+
+// @public
+export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type SliderDefaultedProps = never;
+
+// @public
+export interface SliderProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
-// @public (undocumented)
-export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React.RefAttributes<HTMLDivElement> {
-    ariaLabel?: string;
-    ariaValueText?: (value: number) => string;
-    buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
-    className?: string;
-    componentRef?: IRefObject<ISlider>;
-    defaultValue?: number;
-    disabled?: boolean;
-    label?: string;
-    max?: number;
-    min?: number;
-    onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-    originFromZero?: boolean;
-    showValue?: boolean;
-    snapToStep?: boolean;
-    step?: number;
-    styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
-    theme?: ITheme;
-    value?: number;
-    valueFormat?: (value: number) => string;
-    vertical?: boolean;
-}
+// @public
+export type SliderShorthandProps = never;
 
-// @public (undocumented)
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
-    showTransitions?: boolean;
-    showValue?: boolean;
-    titleLabelClassName?: string;
-};
+// @public
+export const sliderShorthandProps: SliderShorthandProps[];
 
-// @public (undocumented)
-export interface ISliderStyles {
-    activeSection: IStyle;
-    container: IStyle;
-    inactiveSection: IStyle;
-    line: IStyle;
-    lineContainer: IStyle;
-    root: IStyle;
-    slideBox: IStyle;
-    thumb: IStyle;
-    titleLabel: IStyle;
-    valueLabel: IStyle;
-    zeroTick: IStyle;
-}
+// @public
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => any;
 
-// @public (undocumented)
-export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-
-// @public (undocumented)
-export const Slider: React.FunctionComponent<ISliderProps>;
-
-// @public (undocumented)
-export const SliderBase: React.FunctionComponent<ISliderProps>;
-
+// @public
+export const useSliderStyles: (state: any) => any;
 
 // (No @packageDocumentation comment for this package)
 

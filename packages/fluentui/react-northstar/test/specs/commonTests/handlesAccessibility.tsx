@@ -1,6 +1,5 @@
-import { Accessibility, AriaRole } from '@fluentui/accessibility';
+import { Accessibility, AriaRole, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
 import { act } from 'react-dom/test-utils';
 
 import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';

@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { styled } from '@fluentui/utilities';
-import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { SliderBase } from './Slider.base';
-import { getStyles } from './Slider.styles';
+import { useSlider } from './useSlider';
+import { SliderProps } from './Slider.types';
+import { renderSlider } from './renderSlider';
+import { useSliderStyles } from './useSliderStyles';
 
-export const Slider: React.FunctionComponent<ISliderProps> = styled<ISliderProps, ISliderStyleProps, ISliderStyles>(
-  SliderBase,
-  getStyles,
-  undefined,
-  {
-    scope: 'Slider',
-  },
-);
+/**
+ * Slider component
+ */
+export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref) => {
+  const state = useSlider(props, ref);
+
+  useSliderStyles(state);
+  return renderSlider(state);
+});
+
+Slider.displayName = 'Slider';

@@ -30,6 +30,7 @@ export const PersonaAlternateExample: React.FunctionComponent = () => {
       />
       <Persona
         {...examplePersona}
+        secondaryText="Designer (Available)"
         size={PersonaSize.size32}
         presence={PersonaPresence.online}
         imageAlt="Annie Ried, status is available at 4 PM"

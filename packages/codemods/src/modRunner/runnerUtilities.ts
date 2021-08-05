@@ -1,4 +1,4 @@
-import { CodeMod, CodeModResult } from '../codeMods/types';
+import { CodeMod, CodeModResult, ModResult, ModError } from '../codeMods/types';
 import { Glob } from 'glob';
 import { Maybe, Nothing, Something } from '../helpers/maybe';
 import { Err, Result, Ok, partitionResults } from '../helpers/result';
@@ -27,7 +27,7 @@ export function runMods<T>(
         v => Ok({ logs: v.logs, modName: mod.name }),
         err => {
           if ('error' in err) {
-            return Err({ modName: mod.name, error: err.error });
+            return Err<RunResult, ErrorResult>({ modName: mod.name, error: err.error });
           }
 
           return Ok({ logs: ['Mod was a NoOp on this file'], modName: mod.name });
@@ -49,7 +49,7 @@ function runMod<T>(
   try {
     result = codeMod.run(file);
   } catch (e) {
-    result = Err({ error: e });
+    result = Err<ModResult, ModError>({ error: e });
   }
 
   if (loggingCallback) {

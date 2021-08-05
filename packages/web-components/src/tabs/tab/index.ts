@@ -1,28 +1,29 @@
-import { customElement } from '@microsoft/fast-element';
-import { Tab, TabTemplate as template } from '@microsoft/fast-foundation';
-import { TabStyles as styles } from './tab.styles';
+import { Tab, tabTemplate as template } from '@microsoft/fast-foundation';
+import { tabStyles as styles } from './tab.styles';
 
 /**
  * The Fluent Tab Custom Element. Implements {@link @microsoft/fast-foundation#Tab},
- * {@link @microsoft/fast-foundation#TabTemplate}
+ * {@link @microsoft/fast-foundation#tabTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-tab\>
  */
-@customElement({
-  name: 'fluent-tab',
+export const fluentTab = Tab.compose({
+  baseName: 'tab',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentTab extends Tab {}
+});
 
 /**
  * Styles for Tab
  * @public
  */
-export const TabStyles = styles;
+export const tabStyles = styles;
+
+/**
+ * Tab base class
+ * @public
+ */
+export { Tab };

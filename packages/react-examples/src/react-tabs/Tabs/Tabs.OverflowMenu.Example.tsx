@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Fabric, Icon, Label, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
-import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
 export const TabsOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);
@@ -10,7 +10,9 @@ export const TabsOverflowMenuExample: React.FunctionComponent = () => {
 
   return (
     <>
-      <Fabric dir={rtl ? 'rtl' : 'ltr'}>
+      <Fabric // eslint-disable-line deprecation/deprecation
+        dir={rtl ? 'rtl' : 'ltr'}
+      >
         <Tabs
           aria-label="Tabs Overflow Menu Example"
           tabFormat={tabs ? 'tabs' : 'links'}
@@ -41,6 +43,7 @@ export const TabsOverflowMenuExample: React.FunctionComponent = () => {
             <Label>Tab #8</Label>
           </TabItem>
         </Tabs>
+        {/* eslint-disable-next-line deprecation/deprecation */}
       </Fabric>
       <div style={{ background: '#EEE', marginTop: 10 }}>
         <Toggle label="overflow" offText="none" onText="menu" checked={overflow} onChange={toggleOverflow} />

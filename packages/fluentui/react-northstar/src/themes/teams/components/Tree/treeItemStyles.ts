@@ -12,7 +12,7 @@ export const treeItemStyles: ComponentSlotStylesPrepared<TreeItemStylesProps> = 
       ':focus': {
         ...(p.selectable && {
           [`& .${treeTitleSlotClassNames.indicator}`]: {
-            visibility: 'visible',
+            display: 'inline-block',
           },
         }),
         ...borderFocusStyles[':focus'],
@@ -21,7 +21,7 @@ export const treeItemStyles: ComponentSlotStylesPrepared<TreeItemStylesProps> = 
         outline: 0,
         ...(p.selectable && {
           [`& .${treeTitleSlotClassNames.indicator}`]: {
-            visibility: 'visible',
+            display: 'inline-block',
           },
         }),
         [`> .${treeTitleClassName}`]: {

@@ -151,12 +151,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #6BB700;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -165,7 +166,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Highlight;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -361,12 +362,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #6BB700;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -374,7 +376,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: Highlight;
                       border-color: Window;
                     }
@@ -493,12 +495,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #6BB700;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -506,7 +509,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: Highlight;
                       border-color: Window;
                     }
@@ -529,7 +532,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
@@ -650,12 +653,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #6BB700;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -663,7 +667,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: Highlight;
                       border-color: Window;
                     }
@@ -686,7 +690,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
@@ -818,12 +822,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #ffffff;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -832,7 +837,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -849,7 +854,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 0px;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                     border-color: Window;
                     height: calc(100% - 2px);
                     left: 1px;
@@ -1046,12 +1051,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -1059,7 +1065,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -1074,7 +1080,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -1196,12 +1202,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -1209,7 +1216,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -1224,7 +1231,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -1251,7 +1258,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
@@ -1372,12 +1379,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -1385,7 +1393,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -1400,7 +1408,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -1427,7 +1435,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeCheck"
@@ -1581,12 +1589,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #FFAA44;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -1595,7 +1604,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -1791,12 +1800,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #FFAA44;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -1804,7 +1814,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -1923,12 +1933,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #FFAA44;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -1936,7 +1947,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -1961,7 +1972,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeClock"
@@ -2082,12 +2093,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #FFAA44;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -2095,7 +2107,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -2120,7 +2132,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeClock"
@@ -2252,12 +2264,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #ffffff;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -2266,7 +2279,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -2283,7 +2296,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 0px;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                     border-color: Window;
                     height: calc(100% - 2px);
                     left: 1px;
@@ -2480,12 +2493,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -2493,7 +2507,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -2508,7 +2522,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -2630,12 +2644,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -2643,7 +2658,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -2658,7 +2673,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -2686,7 +2701,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
@@ -2807,12 +2822,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -2820,7 +2836,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -2835,7 +2851,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -2863,7 +2879,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
@@ -3017,12 +3033,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #C43148;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -3031,7 +3048,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -3227,12 +3244,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #C43148;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -3240,7 +3258,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -3359,12 +3377,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #C43148;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -3372,7 +3391,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -3391,7 +3410,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         vertical-align: top;
                         width: 1em;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name=""
@@ -3510,12 +3529,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #C43148;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -3523,7 +3543,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -3542,7 +3562,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         vertical-align: top;
                         width: 1em;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name=""
@@ -3672,12 +3692,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #ffffff;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -3686,7 +3707,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -3703,7 +3724,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 0px;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                     border-color: Window;
                     height: calc(100% - 2px);
                     left: 1px;
@@ -3900,12 +3921,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -3913,7 +3935,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -3928,7 +3950,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -4050,12 +4072,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -4063,7 +4086,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -4078,7 +4101,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -4101,7 +4124,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         vertical-align: top;
                         width: 1em;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name=""
@@ -4220,12 +4243,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -4233,7 +4257,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -4248,7 +4272,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -4271,7 +4295,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         vertical-align: top;
                         width: 1em;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name=""
@@ -4423,12 +4447,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #C50F1F;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -4437,7 +4462,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -4633,12 +4658,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #C50F1F;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -4646,7 +4672,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -4765,12 +4791,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #C50F1F;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -4778,7 +4805,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -4801,7 +4828,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
@@ -4922,12 +4949,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #C50F1F;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -4935,7 +4963,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -4958,7 +4986,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
@@ -5090,12 +5118,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #ffffff;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -5104,7 +5133,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -5121,7 +5150,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 0px;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                     border-color: Window;
                     height: calc(100% - 2px);
                     left: 1px;
@@ -5318,12 +5347,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -5331,7 +5361,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -5346,7 +5376,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -5468,12 +5498,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -5481,7 +5512,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -5496,7 +5527,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -5523,7 +5554,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
@@ -5644,12 +5675,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -5657,7 +5689,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -5672,7 +5704,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -5699,7 +5731,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeMinus"
@@ -5811,12 +5843,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               ms-Persona-presence
               {
                 -ms-high-contrast-adjust: none;
-                background-clip: content-box;
+                background-clip: border-box;
                 background-color: #ffffff;
                 border-radius: 50%;
                 border: 0px;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 8px;
                 left: 0px;
                 position: absolute;
@@ -5825,13 +5858,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 top: 7px;
                 width: 8px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: WindowText;
                 border-color: Window;
                 border: 1px solid WindowText;
                 top: 9px;
               }
-              @media screen and (-ms-high-contrast: active){&:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                 background-color: Window;
                 left: 2px;
                 width: calc(100% - 4px);
@@ -5847,7 +5880,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 top: 0px;
                 width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){&:before {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                 border-color: Window;
                 height: calc(100% - 2px);
                 left: 1px;
@@ -6044,12 +6077,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 ms-Persona-presence
                 {
                   -ms-high-contrast-adjust: none;
-                  background-clip: content-box;
+                  background-clip: border-box;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: 2px solid #ffffff;
                   bottom: -2px;
                   box-sizing: content-box;
+                  forced-color-adjust: none;
                   height: 8px;
                   position: absolute;
                   right: -2px;
@@ -6057,11 +6091,11 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: auto;
                   width: 8px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: WindowText;
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){&:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                   background-color: Window;
                   left: 2px;
                   width: calc(100% - 4px);
@@ -6077,7 +6111,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-                @media screen and (-ms-high-contrast: active){&:before {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                   border-color: Window;
                   height: calc(100% - 2px);
                   left: 1px;
@@ -6199,12 +6233,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 ms-Persona-presence
                 {
                   -ms-high-contrast-adjust: none;
-                  background-clip: content-box;
+                  background-clip: border-box;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: 2px solid #ffffff;
                   bottom: -2px;
                   box-sizing: content-box;
+                  forced-color-adjust: none;
                   height: 12px;
                   position: absolute;
                   right: -2px;
@@ -6212,7 +6247,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: auto;
                   width: 12px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: WindowText;
                   border-color: Window;
                 }
@@ -6226,7 +6261,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   transform: translateY(-50%) rotate(-45deg);
                   width: 100%;
                 }
-                @media screen and (-ms-high-contrast: active){&:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                   background-color: Window;
                   left: 2px;
                   width: calc(100% - 4px);
@@ -6242,7 +6277,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-                @media screen and (-ms-high-contrast: active){&:before {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                   border-color: Window;
                   height: calc(100% - 2px);
                   left: 1px;
@@ -6264,7 +6299,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     vertical-align: top;
                     width: 1em;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: Window;
                   }
               data-icon-name=""
@@ -6383,12 +6418,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 ms-Persona-presence
                 {
                   -ms-high-contrast-adjust: none;
-                  background-clip: content-box;
+                  background-clip: border-box;
                   background-color: #ffffff;
                   border-radius: 50%;
                   border: 2px solid #ffffff;
                   bottom: -2px;
                   box-sizing: content-box;
+                  forced-color-adjust: none;
                   height: 20px;
                   position: absolute;
                   right: -2px;
@@ -6396,7 +6432,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: auto;
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: WindowText;
                   border-color: Window;
                 }
@@ -6410,7 +6446,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   transform: translateY(-50%) rotate(-45deg);
                   width: 100%;
                 }
-                @media screen and (-ms-high-contrast: active){&:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                   background-color: Window;
                   left: 2px;
                   width: calc(100% - 4px);
@@ -6426,7 +6462,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-                @media screen and (-ms-high-contrast: active){&:before {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                   border-color: Window;
                   height: calc(100% - 2px);
                   left: 1px;
@@ -6448,7 +6484,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     vertical-align: top;
                     width: 1em;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: Window;
                   }
               data-icon-name=""
@@ -6598,12 +6634,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #ffffff;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -6612,7 +6649,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -6629,7 +6666,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 0px;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                     border-color: Window;
                     height: calc(100% - 2px);
                     left: 1px;
@@ -6826,12 +6863,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -6839,7 +6877,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -6854,7 +6892,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -6976,12 +7014,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -6989,7 +7028,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -7004,7 +7043,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -7027,7 +7066,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         vertical-align: top;
                         width: 1em;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name=""
@@ -7146,12 +7185,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -7159,7 +7199,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -7174,7 +7214,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -7197,7 +7237,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         vertical-align: top;
                         width: 1em;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name=""
@@ -7327,12 +7367,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #ffffff;
                     border-radius: 50%;
                     border: 0px;
                     bottom: -2px;
                     box-sizing: content-box;
+                    forced-color-adjust: none;
                     height: 8px;
                     left: 0px;
                     position: absolute;
@@ -7341,7 +7382,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 7px;
                     width: 8px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: WindowText;
                     border-color: Window;
                     border: 1px solid WindowText;
@@ -7358,7 +7399,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     top: 0px;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){&:before {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                     border-color: Window;
                     height: calc(100% - 2px);
                     left: 1px;
@@ -7555,12 +7596,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 8px;
                       position: absolute;
                       right: -2px;
@@ -7568,7 +7610,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -7583,7 +7625,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -7705,12 +7747,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 12px;
                       position: absolute;
                       right: -2px;
@@ -7718,7 +7761,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 12px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -7733,7 +7776,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -7760,7 +7803,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"
@@ -7881,12 +7924,13 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     ms-Persona-presence
                     {
                       -ms-high-contrast-adjust: none;
-                      background-clip: content-box;
+                      background-clip: border-box;
                       background-color: #ffffff;
                       border-radius: 50%;
                       border: 2px solid #ffffff;
                       bottom: -2px;
                       box-sizing: content-box;
+                      forced-color-adjust: none;
                       height: 20px;
                       position: absolute;
                       right: -2px;
@@ -7894,7 +7938,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: auto;
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: WindowText;
                       border-color: Window;
                     }
@@ -7909,7 +7953,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                       top: 0px;
                       width: 100%;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       border-color: Window;
                       height: calc(100% - 2px);
                       left: 1px;
@@ -7936,7 +7980,7 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                         speak: none;
                         vertical-align: top;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         color: Window;
                       }
                   data-icon-name="SkypeArrow"

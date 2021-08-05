@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { keytipMap } from '@fluentui/react-examples/lib/react/Keytip/KeytipSetup';
 import { IOverflowSetItemProps, OverflowSet, IOverflowSetStyles } from '@fluentui/react/lib/OverflowSet';
-import { CommandBarButton, DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton, DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
 const overflowSetStyles: Partial<IOverflowSetStyles> = { root: { marginBottom: 28 } };
 const commandBarButtonStyles: Partial<IButtonStyles> = { root: { padding: '10px' } };
@@ -41,6 +41,7 @@ const initialOverflowItems = [
       ...keytipMap.OverflowButton5,
       onExecute: (el: HTMLElement | null) => {
         if (el) {
+          el.focus();
           el.click();
         } else {
           console.log('first overflow item');
@@ -58,6 +59,7 @@ const initialOverflowItems = [
       ...keytipMap.OverflowButton6,
       onExecute: (el: HTMLElement | null) => {
         if (el) {
+          el.focus();
           el.click();
         } else {
           console.log('second overflow item');
@@ -93,11 +95,11 @@ export const KeytipsOverflowExample: React.FunctionComponent = () => {
     </CommandBarButton>
   );
 
-  const onRenderOverflowButton = (): JSX.Element => {
+  const onRenderOverflowButton = (newOverflowItems: any[]): JSX.Element => {
     return (
       <CommandBarButton
         menuIconProps={{ iconName: 'More' }}
-        menuProps={{ items: overflowItems! }}
+        menuProps={{ items: newOverflowItems, shouldFocusOnMount: false }}
         keytipProps={keytipMap.OverflowButton4}
       />
     );

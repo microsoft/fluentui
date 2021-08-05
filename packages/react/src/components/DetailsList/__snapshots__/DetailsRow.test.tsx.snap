@@ -79,7 +79,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone1"
+          data-focuszone-id="FocusZone2"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -88,7 +88,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header0-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -194,8 +194,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header0-check"
+                id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -254,9 +255,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -264,11 +268,10 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -294,25 +297,28 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -327,6 +333,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -406,7 +413,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -438,7 +444,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-key"
+                id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -452,7 +458,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-key-name"
+                  id="header1-key-name"
                 >
                   key
                 </span>
@@ -461,6 +467,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -540,7 +547,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -572,7 +578,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-name"
+                id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -586,7 +592,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-name-name"
+                  id="header1-name-name"
                 >
                   name
                 </span>
@@ -595,6 +601,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -674,7 +681,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -706,7 +712,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-value"
+                id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -720,7 +726,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-value-name"
+                  id="header1-value-name"
                 >
                   value
                 </span>
@@ -757,7 +763,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone2"
+            data-focuszone-id="FocusZone3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -916,7 +922,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone10"
+          data-focuszone-id="FocusZone14"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -925,7 +931,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header9-check"
+            aria-labelledby="header13-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -1031,8 +1037,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header9-check"
+                id="header13-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -1091,9 +1098,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -1101,11 +1111,10 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1131,25 +1140,28 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1164,6 +1176,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header13-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1243,7 +1256,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1275,7 +1287,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header9-key"
+                id="header13-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -1289,7 +1301,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header9-key-name"
+                  id="header13-key-name"
                 >
                   key
                 </span>
@@ -1298,6 +1310,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header13-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1377,7 +1390,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1409,7 +1421,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header9-name"
+                id="header13-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -1423,7 +1435,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header9-name-name"
+                  id="header13-name-name"
                 >
                   name
                 </span>
@@ -1432,6 +1444,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header13-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1511,7 +1524,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1543,7 +1555,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header9-value"
+                id="header13-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -1557,7 +1569,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header9-value-name"
+                  id="header13-value-name"
                 >
                   value
                 </span>
@@ -1594,7 +1606,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone11"
+            data-focuszone-id="FocusZone15"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1676,7 +1688,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
 exports[`DetailsRow renders details list row with checkbox visible always correctly 1`] = `
 <div
-  aria-rowindex={1}
+  aria-rowindex={2}
   aria-selected={false}
   className=
       ms-FocusZone
@@ -1741,8 +1753,12 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
         opacity: 1;
       }
+      & .ms-GroupSpacer {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
   data-automationid="DetailsRow"
-  data-focuszone-id="FocusZone12"
+  data-focuszone-id="FocusZone32"
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
@@ -1856,7 +1872,8 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
-      role="checkbox"
+      role="radio"
+      tabIndex={-1}
     >
       <div
         className=
@@ -1915,9 +1932,12 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 speak: none;
               }
               {
+                align-items: center;
                 color: #605e5c;
+                display: inline-flex;
                 font-size: 18px;
                 height: 18px;
+                justify-content: center;
                 left: 0px;
                 position: absolute;
                 text-align: center;
@@ -1925,11 +1945,10 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 vertical-align: middle;
                 width: 18px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: WindowText;
               }
           data-icon-name="CircleRing"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1955,25 +1974,28 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 speak: none;
               }
               {
+                align-items: center;
                 color: #605e5c;
+                display: inline-flex;
                 font-size: 16px;
                 height: 18px;
+                justify-content: center;
                 left: .5px;
                 opacity: 0;
                 position: absolute;
                 text-align: center;
-                top: 0px;
+                top: -1px;
                 vertical-align: middle;
                 width: 18px;
               }
               &:hover {
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
+                forced-color-adjust: none;
               }
           data-icon-name="StatusCircleCheckmark"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2264,7 +2286,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone4"
+          data-focuszone-id="FocusZone6"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -2273,7 +2295,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header3-check"
+            aria-labelledby="header5-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -2379,8 +2401,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header3-check"
+                id="header5-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -2439,9 +2462,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -2449,11 +2475,10 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2479,25 +2504,28 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2512,6 +2540,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header5-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2591,7 +2620,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2623,7 +2651,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header3-key"
+                id="header5-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -2637,7 +2665,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header3-key-name"
+                  id="header5-key-name"
                 >
                   key
                 </span>
@@ -2646,6 +2674,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header5-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2725,7 +2754,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2757,7 +2785,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header3-name"
+                id="header5-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -2771,7 +2799,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header3-name-name"
+                  id="header5-name-name"
                 >
                   name
                 </span>
@@ -2780,6 +2808,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header5-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2859,7 +2888,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2891,7 +2919,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header3-value"
+                id="header5-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -2905,7 +2933,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header3-value-name"
+                  id="header5-value-name"
                 >
                   value
                 </span>
@@ -2942,7 +2970,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone5"
+            data-focuszone-id="FocusZone7"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3101,7 +3129,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone7"
+          data-focuszone-id="FocusZone10"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3110,7 +3138,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header6-check"
+            aria-labelledby="header9-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -3216,8 +3244,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header6-check"
+                id="header9-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -3276,9 +3305,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -3286,11 +3318,10 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3316,25 +3347,28 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3349,6 +3383,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header9-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3428,7 +3463,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3460,7 +3494,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header6-key"
+                id="header9-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -3474,7 +3508,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header6-key-name"
+                  id="header9-key-name"
                 >
                   key
                 </span>
@@ -3483,6 +3517,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header9-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3562,7 +3597,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3594,7 +3628,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header6-name"
+                id="header9-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -3608,7 +3642,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header6-name-name"
+                  id="header9-name-name"
                 >
                   name
                 </span>
@@ -3617,6 +3651,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header9-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3696,7 +3731,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3728,7 +3762,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header6-value"
+                id="header9-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -3742,7 +3776,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header6-value-name"
+                  id="header9-value-name"
                 >
                   value
                 </span>
@@ -3779,7 +3813,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone8"
+            data-focuszone-id="FocusZone11"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}

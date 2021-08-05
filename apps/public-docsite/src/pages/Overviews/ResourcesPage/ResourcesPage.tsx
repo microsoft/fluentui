@@ -26,7 +26,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md') as string
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md') as string
           }
         </Markdown>
       ),
@@ -37,7 +37,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md') as string
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md') as string
           }
         </Markdown>
       ),
@@ -48,7 +48,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md') as string
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md') as string
           }
         </Markdown>
       ),
@@ -59,7 +59,7 @@ function _otherSections(): IPageSectionProps[] {
       content: (
         <Markdown>
           {
-            require('!raw-loader!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string
           }
         </Markdown>
       ),

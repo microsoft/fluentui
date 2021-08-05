@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ActivityItem';
+export * from './components/ActivityItem/index';

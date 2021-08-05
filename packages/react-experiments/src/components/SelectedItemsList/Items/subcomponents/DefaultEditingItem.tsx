@@ -7,7 +7,8 @@ import {
 import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
 import { useFloatingSuggestionItems } from '../../../UnifiedPicker/hooks/useFloatingSuggestionItems';
-
+import { getStyles } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsList/FloatingSuggestionsList.styles';
+import { getStyles as getFloatingSuggestionStyles } from '../../../FloatingSuggestionsComposite/FloatingSuggestions.styles';
 import * as styles from './DefaultEditingItem.scss';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
@@ -102,6 +103,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const {
     focusItemIndex,
+    setFocusItemIndex,
     suggestionItems,
     footerItemIndex,
     footerItems,
@@ -124,6 +126,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
       setInputValue(itemText);
       editingInput.current.focus();
     }
+    setFocusItemIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // We only want to run this once
 
@@ -150,15 +153,28 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const _onInputBlur = React.useCallback(
     (ev: React.FocusEvent<HTMLElement>): void => {
-      if (focusItemIndex >= 0) {
-        _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
-      } else if (createGenericItem) {
-        onEditingComplete(item, createGenericItem(inputValue));
+      if (editingFloatingPicker.current) {
+        const rootStyles = getStyles({}).root;
+        const floatingSuggestionsListClassName = '.' + (Array.isArray(rootStyles) ? rootStyles[0] : rootStyles);
+        const triggeredByRecipientPicker =
+          (ev.relatedTarget as HTMLElement)?.closest(floatingSuggestionsListClassName) !== null;
+        const calloutStyles = getFloatingSuggestionStyles({}).callout;
+        const footerClassName = '.' + (Array.isArray(calloutStyles) ? calloutStyles[0] : calloutStyles);
+        const triggeredByFooter = (ev.relatedTarget as HTMLElement)?.closest(footerClassName) !== null;
+
+        // We don't want to exit out if the user has clicked on anything in the picker
+        if (!triggeredByRecipientPicker && !triggeredByFooter) {
+          if (focusItemIndex >= 0) {
+            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+          } else if (createGenericItem) {
+            onEditingComplete(item, createGenericItem(inputValue));
+          }
+          // else, we come out of editing mode
+        }
       }
-      // else, we come out of editing mode
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- these are the only dependencies which matter
-    [suggestionItems, focusItemIndex, item, createGenericItem, inputValue, onEditingComplete],
+    [suggestionItems, focusItemIndex, item, createGenericItem, inputValue, onEditingComplete, editingFloatingPicker],
   );
 
   const _onInputChange = React.useCallback(
@@ -179,6 +195,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLInputElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
       const keyCode = ev.which;
       switch (keyCode) {
         case KeyCodes.backspace:

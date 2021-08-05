@@ -7,7 +7,6 @@ interface IHeatMapChartBasicExampleState {
 }
 
 export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartBasicExampleState> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
     this.state = {
@@ -40,68 +39,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
       {
         value: 100,
         legend: 'Execllent (0-200)',
-        data: [
-          {
-            x: xPoint[0],
-            y: yPoint[2],
-            value: 50,
-            rectText: 50,
-            ratio: [50, 2391],
-            descriptionMessage: 'a good day to start with in Texas with best air quality',
-          },
-          {
-            x: xPoint[4],
-            y: yPoint[1],
-            value: 25,
-            rectText: 25,
-            ratio: [25, 2479],
-            descriptionMessage: `Due to unexpected heavy rain, all the pollutants are washed
-            off and people of alaska are hoping for more of this days`,
-          },
-          {
-            x: xPoint[0],
-            y: yPoint[0],
-            value: 100,
-            rectText: 100,
-            ratio: [100, 2043],
-            descriptionMessage: 'on This day we have an excellent air quality clear sky',
-          },
-          {
-            x: xPoint[3],
-            y: yPoint[3],
-            value: 46,
-            rectText: 46,
-            ratio: [46, 2462],
-            descriptionMessage: 'Due to heavy rain today, pollutants got washed off and air quality increases',
-          },
-          {
-            x: xPoint[6],
-            y: yPoint[0],
-            value: 35,
-            rectText: 35,
-            ratio: [35, 2043],
-            descriptionMessage: `some miracle has happend. form 600 units to 35 units.weather professionals
-               are investigation on this miracle to get scientific explination `,
-          },
-          {
-            x: xPoint[0],
-            y: yPoint[4],
-            value: 60,
-            rectText: 60,
-            ratio: [60, 2486],
-            descriptionMessage: `A good Sunny Day to start the 1st day of week
-            and that too with a excellent air quality`,
-          },
-          {
-            x: xPoint[2],
-            y: yPoint[4],
-            value: 70,
-            rectText: 70,
-            ratio: [70, 2486],
-            descriptionMessage: `Nature is palying hide and seek with us, today
-            there is decrease of nearly 200% in air quality index`,
-          },
-        ],
+        data: [],
       },
       {
         value: 250,

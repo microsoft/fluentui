@@ -12,10 +12,10 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
     cursor: p.disabled ? 'default' : 'pointer',
   }),
   contentWrapper: ({ props: p }) => ({
-    display: ['grid', '-ms-grid'],
+    display: 'grid',
     gridTemplateColumns: 'auto',
     msGridColumns: 'auto',
-
+    userSelect: 'none',
     ...(p.content && {
       gridTemplateColumns: 'auto 1fr',
       msGridColumns: 'auto 1fr',
@@ -34,6 +34,7 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
     height: '100%',
     width: pxToRem(16),
     msGridColumn: '1',
+    marginRight: `${pxToRem(4)}`,
   }),
   content: () => ({
     alignItems: 'center',

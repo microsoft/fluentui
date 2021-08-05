@@ -5,7 +5,6 @@
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
       "@fluentui/a11y-testing": ["packages/a11y-testing/src/index"],
-      "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"],
       "@fluentui/set-version": ["packages/set-version/src"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"]

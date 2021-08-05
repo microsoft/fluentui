@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { ToggleButtonProps } from './ToggleButton.types';
-import { useToggleButton } from './useToggleButton';
 import { renderToggleButton } from './renderToggleButton';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
-import { useToggleButtonClasses } from './useToggleButtonClasses';
+import { useToggleButton } from './useToggleButton';
+import { useToggleButtonStyles } from './useToggleButtonStyles';
 
 /**
  * Define a styled ToggleButton, using the `useToggleButton` hook.
@@ -12,8 +11,7 @@ import { useToggleButtonClasses } from './useToggleButtonClasses';
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const state = useToggleButton(props, ref);
 
-  useToggleButtonClasses(state);
-  useInlineTokens(state, '--button');
+  useToggleButtonStyles(state);
 
   return renderToggleButton(state);
 });

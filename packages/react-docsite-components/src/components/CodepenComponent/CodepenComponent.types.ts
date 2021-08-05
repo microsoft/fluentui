@@ -1,5 +1,5 @@
 import { IComponentAs, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { IButtonProps } from '@fluentui/react/lib/Button';
 import { ITheme } from '@fluentui/react/lib/Styling';
 
 export interface ICodepenProps {

@@ -150,7 +150,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     lineHeightBase: siteVars.lineHeightMedium,
     horizontalPadding: `${pxToRem(14)} ${pxToRem(18)}`,
 
-    verticalBackgroundColor: siteVars.colors.white,
+    verticalBackgroundColor: siteVars.colorScheme.default.background,
     verticalItemPadding: `${pxToRem(7)} ${pxToRem(14)}`,
     verticalBoxShadow: siteVars.shadowLevel3,
     verticalDividerMargin: `${pxToRem(8)} 0`,

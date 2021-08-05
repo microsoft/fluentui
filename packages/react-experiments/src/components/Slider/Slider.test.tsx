@@ -9,6 +9,8 @@ import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes } from '../../Utilities';
 
+/* eslint-disable deprecation/deprecation */
+
 describe('Slider', () => {
   it('renders correctly', () => {
     const component = renderer.create(<Slider label="I am a slider" />);

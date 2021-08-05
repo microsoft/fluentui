@@ -44,9 +44,15 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A textarea can take the width of its container. */
   fluid?: boolean;
+
+  /** A text area can have error state. */
+  error?: boolean;
+
+  /** A text area can be required to be valid. */
+  required?: boolean;
 }
 
-export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
+export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled' | 'error'>>;
 
 export const textAreaClassName = 'ui-textarea';
 
@@ -67,7 +73,7 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
 
   setStart();
 
-  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables } = props;
+  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables, error } = props;
 
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
@@ -92,6 +98,7 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
       resize,
       fluid,
       disabled,
+      error,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -138,6 +145,7 @@ TextArea.propTypes = {
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
   fluid: PropTypes.bool,
+  error: PropTypes.bool,
   resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
 };
 

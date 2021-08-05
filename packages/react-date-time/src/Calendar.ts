@@ -1,1 +1,1 @@
-export * from './components/Calendar/index';
+export * from '@fluentui/react/lib/Calendar';

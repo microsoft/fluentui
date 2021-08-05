@@ -11,7 +11,7 @@ import {
   HighContrastSelectorWhite,
   getScreenSelector,
   ScreenWidthMinMedium,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -37,7 +37,7 @@ const DROPDOWN_ITEM_HEIGHT = 36;
 
 const highContrastAdjustMixin = {
   [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
-    MsHighContrastAdjust: 'none',
+    ...getHighContrastNoAdjustStyle(),
   },
 };
 
@@ -317,8 +317,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             border: '1px solid GrayText',
             color: 'GrayText',
             backgroundColor: 'Window',
+            ...getHighContrastNoAdjustStyle(),
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
     ],
@@ -340,7 +340,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
       disabled && {
         color: semanticColors.disabledText,
-        selectors: { [HighContrastSelector]: { color: 'GrayText' }, ...getEdgeChromiumNoHighContrastAdjustSelector() },
+        selectors: {
+          [HighContrastSelector]: { color: 'GrayText', ...getHighContrastNoAdjustStyle() },
+        },
       },
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
@@ -394,8 +396,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',
+            ...getHighContrastNoAdjustStyle(),
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
     ],
@@ -409,6 +411,13 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           alignSelf: 'stretch',
           padding: '0 8px',
           width: '100%',
+        },
+        input: {
+          selectors: {
+            [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+              outlineOffset: '0px',
+            },
+          },
         },
       },
       panel: {

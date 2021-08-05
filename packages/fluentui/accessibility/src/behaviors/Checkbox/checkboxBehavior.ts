@@ -1,4 +1,4 @@
-import { SpacebarKey } from '@fluentui/keyboard-key';
+import { SpacebarKey } from '../../keyboard-key';
 import { Accessibility } from '../../types';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-checked': !!props.checked,
+      'aria-checked': props.checked === 'mixed' ? 'mixed' : !!props.checked,
       'aria-disabled': props.disabled,
       role: 'checkbox',
       tabIndex: 0,
@@ -31,7 +31,7 @@ export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => (
 
 export type CheckboxBehaviorProps = {
   /** Whether or not item is checked. */
-  checked?: boolean;
+  checked?: boolean | 'mixed';
   /** If the checkbox is in disabled state. */
   disabled?: boolean;
 };

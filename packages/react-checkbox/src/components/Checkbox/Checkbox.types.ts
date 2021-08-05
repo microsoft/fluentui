@@ -1,59 +1,27 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { IIconProps } from '@fluentui/react-internal/lib/Icon';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandProps } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 
 /**
- * Checkbox class interface.
- * {@docCategory Checkbox}
+ * Checkbox Props
  */
-export interface ICheckbox {
-  /** Gets the current indeterminate state. */
-  indeterminate: boolean;
-
-  /** Gets the current checked state. */
-  checked: boolean;
-
-  /** Sets focus to the checkbox. */
-  focus: () => void;
-}
-
-/**
- * Checkbox properties.
- * {@docCategory Checkbox}
- */
-export interface ICheckboxProps
-  extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
-    React.RefAttributes<HTMLDivElement> {
+export interface CheckboxProps
+  extends Omit<ComponentPropsCompat, 'children'>,
+    Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
   /**
-   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Label that will be rendered next to the checkbox.
    */
-  componentRef?: IRefObject<ICheckbox>;
+  label?: ShorthandProps<LabelProps>;
 
   /**
-   * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
+   * Indicator to be rendered as the checkbox icon.
    */
-  className?: string;
+  indicator?: ShorthandProps<ComponentPropsCompat>;
 
   /**
-   * Checked state. Mutually exclusive to "defaultChecked". Use this if you control the checked state at a higher
-   * level and plan to pass in the correct value based on handling onChange events and re-rendering.
+   * Hidden input that handles the checkbox's functionality.
    */
-  checked?: boolean;
-
-  /**
-   * Default checked state. Mutually exclusive to "checked". Use this if you want an uncontrolled component, and
-   * want the Checkbox instance to maintain its own state.
-   */
-  defaultChecked?: boolean;
-
-  /**
-   * Label to display next to the checkbox.
-   */
-  label?: string;
+  input?: ShorthandProps<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 
   /**
    * Disabled state of the checkbox.
@@ -61,132 +29,83 @@ export interface ICheckboxProps
   disabled?: boolean;
 
   /**
-   * Callback that is called when the checked value has changed.
+   * Required state of the checkbox.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+  required?: boolean;
 
   /**
-   * Optional input props that will be mixed into the input element, *before* other props are applied. This allows
-   * you to extend the input element with additional attributes, such as data-automation-id needed for automation.
-   * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
-   * precedence over the later.
+   * A checkbox can be rendered with a circular shape.
    */
-  inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+  circular?: boolean;
 
   /**
-   * Allows you to set the checkbox to be at the before (start) or after (end) the label.
-   * @defaultvalue 'start'
+   * A checkbox's state can be controlled.
+   * @defaultvalue false
    */
-  boxSide?: 'start' | 'end';
+  checked?: 'mixed' | boolean;
 
   /**
-   * Theme provided by HOC.
+   * Whether the checkbox should be rendered as checked by default.
    */
-  theme?: ITheme;
+  defaultChecked?: 'mixed' | boolean;
 
   /**
-   * Accessible label for the checkbox.
+   * Checkbox supports two different checkbox sizes.
+   * @defaultvalue 'medium'
    */
-  ariaLabel?: string;
+  size?: 'medium' | 'large';
 
   /**
-   * ID for element that contains label information for the checkbox.
+   * Determines whether the label should be positioned before or after the checkbox.
+   * @defaultvalue 'after'
    */
-  ariaLabelledBy?: string;
+  labelPosition?: 'before' | 'after';
 
   /**
-   * ID for element that provides extended information for the checkbox.
+   * ID of the root element that wraps the checkbox and label.
    */
-  ariaDescribedBy?: string;
+  rootId?: string;
 
   /**
-   * The position in the parent set (if in a set) for aria-posinset.
+   * ID of the native element that represents the checkbox.
    */
-  ariaPositionInSet?: number;
+  id?: string;
 
   /**
-   * The total size of the parent set (if in a set) for aria-setsize.
+   * Callback to be called when the checked state value changes.
    */
-  ariaSetSize?: number;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
-
-  /**
-   * Custom render function for the label.
-   */
-  onRenderLabel?: IRenderFunction<ICheckboxProps>;
-
-  /**
-   * Custom icon props for the check mark rendered by the checkbox
-   */
-  checkmarkIconProps?: IIconProps;
-
-  /**
-   * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
-   * over checked or defaultChecked props given but does not affect checked state.
-   * This should not be a toggleable state. On load the checkbox will receive indeterminate visual state
-   * and after the first user click it should be removed by your supplied onChange callback
-   * function exposing the true state of the checkbox.
-   */
-  indeterminate?: boolean;
-
-  /**
-   * Optional uncontrolled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
-   * over checked or defaultChecked props given but does not affect checked state.
-   * This is not a toggleable state. On load the checkbox will receive indeterminate visual state
-   * and after the user's first click it will be removed exposing the true state of the checkbox.
-   */
-  defaultIndeterminate?: boolean;
+  onChange?: (ev: React.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
 }
 
 /**
- * {@docCategory Checkbox}
+ * Data for the onChange event for checkbox.
  */
-export interface ICheckboxStyleProps {
-  theme: ITheme;
-  className?: string;
-  disabled?: boolean;
-  checked?: boolean;
-  reversed?: boolean;
-  indeterminate?: boolean;
-  isUsingCustomLabelRender: boolean;
+export interface CheckboxOnChangeData {
+  checked: 'mixed' | boolean;
 }
 
 /**
- * {@docCategory Checkbox}
+ * Names of the shorthand properties in CheckboxProps
  */
-export interface ICheckboxStyles {
+export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
+
+/**
+ * Names of CheckboxProps that have a default value in useCheckbox
+ */
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition';
+
+/**
+ * State used in rendering Checkbox
+ */
+export interface CheckboxState
+  extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
   /**
-   * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
+   * Ref to the root element.
    */
-  root?: IStyle;
+  ref: React.Ref<HTMLElement>;
 
   /**
-   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
-   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   * CSS class for the checkbox element.
    */
-  input?: IStyle;
-
-  /**
-   * Style for the label part (contains the customized checkbox + text) when enabled.
-   */
-  label?: IStyle;
-
-  /**
-   * Style for checkbox in its default unchecked/enabled state.
-   */
-  checkbox?: IStyle;
-
-  /**
-   * Style for the checkmark in the default enabled/unchecked state.
-   */
-  checkmark?: IStyle;
-
-  /**
-   * Style for text appearing with the checkbox in its default enabled state.
-   */
-  text?: IStyle;
+  checkboxClassName?: string;
 }

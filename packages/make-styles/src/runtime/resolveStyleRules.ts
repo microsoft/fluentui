@@ -1,105 +1,209 @@
 import hashString from '@emotion/hash';
-import { convertProperty } from 'rtl-css-js/core';
-import { expand } from 'inline-style-expand-shorthand';
+import { convert, convertProperty } from 'rtl-css-js/core';
 
-import { HASH_PREFIX, RTL_PREFIX } from '../constants';
-import { MakeStyles, MakeStylesResolvedRule } from '../types';
-import { compileCSS } from './compileCSS';
-import { compileKeyframeRule } from './compileKeyframeRule';
+import { HASH_PREFIX } from '../constants';
+import { MakeStyles, CSSClassesMap, CSSRulesByBucket, StyleBucketName } from '../types';
+import { compileCSS, CompileCSSOptions } from './compileCSS';
+import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
+import { expandShorthand } from './expandShorthand';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
-import { isObject } from './utils/isObject';
 import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
+import { isObject } from './utils/isObject';
+import { getStyleBucketName } from './getStyleBucketName';
+import { hashClassName } from './utils/hashClassName';
+import { resolveProxyValues } from './createCSSVariablesProxy';
+import { hashPropertyKey } from './utils/hashPropertyKey';
 
-export function resolveStyleRules(
+function pushToClassesMap(
+  classesMap: CSSClassesMap,
+  propertyKey: string,
+  ltrClassname: string,
+  rtlClassname: string | undefined,
+) {
+  classesMap[propertyKey] = rtlClassname ? [ltrClassname!, rtlClassname] : ltrClassname;
+}
+
+function pushToCSSRules(
+  cssRulesByBucket: CSSRulesByBucket,
+  styleBucketName: StyleBucketName,
+  ltrCSS: string,
+  rtlCSS: string | undefined,
+) {
+  cssRulesByBucket[styleBucketName] = cssRulesByBucket[styleBucketName] || [];
+  cssRulesByBucket[styleBucketName]!.push(ltrCSS);
+
+  if (rtlCSS) {
+    cssRulesByBucket[styleBucketName]!.push(rtlCSS);
+  }
+}
+
+function resolveStyleRulesInner(
   styles: MakeStyles,
   unstable_cssPriority: number = 0,
   pseudo = '',
   media = '',
   support = '',
-  result: Record<string, MakeStylesResolvedRule> = {},
-): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles = (expand(styles) as unknown) as MakeStyles;
-  const properties = Object.keys(expandedStyles);
-
-  // TODO: => for-in loop
-  properties.forEach(property => {
-    const value = expandedStyles[property];
+  cssClassesMap: CSSClassesMap = {},
+  cssRulesByBucket: CSSRulesByBucket = {},
+  rtlValue?: string,
+): [CSSClassesMap, CSSRulesByBucket] {
+  // eslint-disable-next-line guard-for-in
+  for (const property in styles) {
+    const value = styles[property];
 
     // eslint-disable-next-line eqeqeq
     if (value == null) {
-      return;
-    } else if (typeof value === 'string' || typeof value === 'number') {
-      // uniq key based on property & selector, used for merging later
-      const key = pseudo + media + support + property;
+      continue;
+    }
 
-      // trimming of values is required to generate consistent hashes
-      const classNameHash = hashString(pseudo + media + support + property + value.toString().trim());
-      const className = HASH_PREFIX + classNameHash + (unstable_cssPriority === 0 ? '' : unstable_cssPriority);
+    if (typeof value === 'string' || typeof value === 'number') {
+      // uniq key based on a hash of property & selector, used for merging later
+      const key = hashPropertyKey(pseudo, media, support, property);
+      const className = hashClassName({
+        media,
+        value: value.toString(),
+        support,
+        pseudo,
+        property,
+        unstable_cssPriority,
+      });
 
-      const css = compileCSS({
+      const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
+      const flippedInRtl = rtlDefinition.key !== property || rtlDefinition.value !== value;
+
+      const rtlClassName = flippedInRtl
+        ? hashClassName({
+            value: rtlDefinition.value.toString(),
+            property: rtlDefinition.key,
+            pseudo,
+            media,
+            support,
+            unstable_cssPriority,
+          })
+        : undefined;
+      const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
+        ? {
+            rtlClassName,
+            rtlProperty: rtlDefinition.key,
+            rtlValue: rtlDefinition.value,
+          }
+        : undefined;
+
+      const styleBucketName = getStyleBucketName(pseudo, media, support);
+      const [ltrCSS, rtlCSS] = compileCSS({
         className,
         media,
         pseudo,
         property,
         support,
         value,
-        unstable_cssPriority
+        unstable_cssPriority,
+        ...rtlCompileOptions,
       });
 
-      const rtl = convertProperty(property, value);
-      const flippedInRtl = rtl.key !== property || rtl.value !== value;
+      pushToClassesMap(cssClassesMap, key, className, rtlClassName);
+      pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS);
+    } else if (property === 'animationName') {
+      const animationNames = Array.isArray(value) ? value : [value];
+      let keyframeCSS = '';
+      let keyframeRtlCSS = '';
 
-      if (flippedInRtl) {
-        const rtlCSS = compileCSS({
-          className: RTL_PREFIX + className,
-          media,
-          pseudo,
-          property: rtl.key,
-          support,
-          value: rtl.value,
-          unstable_cssPriority
-        });
+      const names = [];
+      const namesRtl = [];
 
-        // There is no sense to store RTL className as it's "r" + regular className
-        result[key] = [className, css, rtlCSS];
-      } else {
-        result[key] = [className, css];
+      for (const val of animationNames) {
+        const keyframe = compileKeyframeRule(val);
+        const name = HASH_PREFIX + hashString(keyframe);
+
+        keyframeCSS += compileKeyframesCSS(name, keyframe);
+        names.push(name);
+
+        const rtlKeyframe = compileKeyframeRule(convert(val));
+
+        if (keyframe !== rtlKeyframe) {
+          const nameRtl = HASH_PREFIX + hashString(rtlKeyframe);
+          keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
+          namesRtl.push(nameRtl);
+        } else {
+          namesRtl.push(name);
+        }
       }
+
+      const animationName = names.join(' ');
+      const animationNameRtl = namesRtl.join(' ');
+
+      pushToCSSRules(
+        cssRulesByBucket,
+        'k', // keyframes styles should be inserted into own bucket
+        keyframeCSS,
+        keyframeRtlCSS || undefined,
+      );
+      resolveStyleRulesInner(
+        { animationName },
+        unstable_cssPriority,
+        pseudo,
+        media,
+        support,
+        cssClassesMap,
+        cssRulesByBucket,
+        animationNameRtl,
+      );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
-        resolveStyleRules(
+        resolveStyleRulesInner(
           value,
           unstable_cssPriority,
           pseudo + normalizeNestedProperty(property),
           media,
           support,
-          result,
+          cssClassesMap,
+          cssRulesByBucket,
         );
       } else if (isMediaQuerySelector(property)) {
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
-        resolveStyleRules(value, unstable_cssPriority, pseudo, combinedMediaQuery, support, result);
+        resolveStyleRulesInner(
+          value,
+          unstable_cssPriority,
+          pseudo,
+          combinedMediaQuery,
+          support,
+          cssClassesMap,
+          cssRulesByBucket,
+        );
       } else if (isSupportQuerySelector(property)) {
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
-        resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
-      } else if (property === 'animationName') {
-        // TODO: support RTL!
-        const keyframe = compileKeyframeRule(value);
-        const animationName = HASH_PREFIX + hashString(keyframe);
-
-        // TODO call Stylis for prefixing
-        const keyframeCSS = `@keyframes ${animationName}{${keyframe}}`;
-
-        result[animationName] = [animationName, keyframeCSS /* rtlCSS */];
-
-        resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result);
+        resolveStyleRulesInner(
+          value,
+          unstable_cssPriority,
+          pseudo,
+          media,
+          combinedSupportQuery,
+          cssClassesMap,
+          cssRulesByBucket,
+        );
       }
     }
-  });
+  }
 
-  return result;
+  return [cssClassesMap, cssRulesByBucket];
+}
+
+/**
+ * Transforms input styles to classes maps & CSS rules.
+ *
+ * @internal
+ */
+export function resolveStyleRules(
+  styles: MakeStyles,
+  unstable_cssPriority: number = 0,
+): [CSSClassesMap, CSSRulesByBucket] {
+  // expandShorthand() and resolveProxyValues() are recursive functions and should be evaluated once for a style object
+  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
+
+  return resolveStyleRulesInner(expandedStyles, unstable_cssPriority);
 }

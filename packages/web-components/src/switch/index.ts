@@ -1,6 +1,5 @@
-import { customElement } from '@microsoft/fast-element';
-import { Switch, SwitchTemplate as template } from '@microsoft/fast-foundation';
-import { SwitchStyles as styles } from './switch.styles';
+import { Switch, SwitchOptions, switchTemplate as template } from '@microsoft/fast-foundation';
+import { switchStyles as styles } from './switch.styles';
 
 /**
  * The Fluent Switch Custom Element. Implements {@link @microsoft/fast-foundation#Switch},
@@ -11,18 +10,23 @@ import { SwitchStyles as styles } from './switch.styles';
  * @remarks
  * HTML Element: \<fluent-switch\>
  */
-@customElement({
-  name: 'fluent-switch',
+export const fluentSwitch = Switch.compose<SwitchOptions>({
+  baseName: 'switch',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentSwitch extends Switch {}
+  switch: `
+    <span class="checked-indicator" part="checked-indicator"></span>
+  `,
+});
 
 /**
  * Styles for Switch
  * @public
  */
-export const SwitchStyles = styles;
+export const switchStyles = styles;
+
+/**
+ * Switch Base class
+ * @public
+ */
+export { Switch };

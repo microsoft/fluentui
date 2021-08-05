@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(cra-template): boot up CRA template",
-  "packageName": "@fluentui/cra-template",
-  "email": "jakubkonka@microsoft.com",
-  "dependentChangeType": "patch"
-}

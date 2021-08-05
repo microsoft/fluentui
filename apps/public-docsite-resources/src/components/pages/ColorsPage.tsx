@@ -15,7 +15,7 @@ import {
   IThemeRules,
 } from '@fluentui/react/lib/ThemeGenerator';
 
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 
@@ -23,7 +23,7 @@ import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { TeachingBubbleBasicExample } from '@fluentui/react-examples/lib/react/TeachingBubble/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '@fluentui/react-examples/lib/react/TextField/TextField.Basic.Example';
-import { ToggleBasicExample } from '@fluentui/react-examples/lib/react-toggle/Toggle/Toggle.Basic.Example';
+import { ToggleBasicExample } from '@fluentui/react-examples/lib/react/Toggle/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '@fluentui/react-examples/lib/react/ProgressIndicator/ProgressIndicator.Basic.Example';
 
 export interface IColorsPageState {

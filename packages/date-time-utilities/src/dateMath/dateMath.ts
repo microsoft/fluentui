@@ -338,8 +338,8 @@ export function getDatePartHashValue(date: Date): number {
 }
 
 /**
- * Helper function for getWeekNumber.
- * Returns week number for a date
+ * Helper function for `getWeekNumber`.
+ * Returns week number for a date.
  * @param date - current selected date.
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @param numberOfFullDays - week settings.
@@ -372,8 +372,8 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
 }
 
 /**
- * Helper function for getWeekNumber.
- * Returns week number for a date
+ * Helper function for `getWeekNumber`.
+ * Returns week number for a date.
  * @param date - current selected date.
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @returns The week's number in the year.
@@ -387,8 +387,8 @@ function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number): number {
 }
 
 /**
- * Helper function for getWeekNumber.
- * Returns adjusted week day number when firstDayOfWeek is other than Sunday
+ * Helper function for `getWeekNumber`.
+ * Returns adjusted week day number when `firstDayOfWeek` is other than Sunday.
  * For Week Day Number comparison checks
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @param dateWeekDay - shifts number forward to 1 week in case passed as true
@@ -402,8 +402,8 @@ function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek): numbe
 }
 
 /**
- * Returns the day number for a date in a year
- * The number of days since January 1st in the particular year.
+ * Returns the day number for a date in a year:
+ * the number of days since January 1st in the particular year.
  * @param date - A date to find the day number for.
  * @returns The day's number in the year.
  */

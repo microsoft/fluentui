@@ -8,10 +8,11 @@ import {
   DividerProps,
   StatusProps,
   ShorthandValue,
+  BoxProps,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
 import {
   AcceptIcon,
@@ -84,7 +85,7 @@ function generateChatMsgProps(message: MessageData, fromUser: UserData): ChatIte
   };
 }
 
-function createMessageContent(message: MessageData): ShorthandValue<ChatMessageProps> {
+function createMessageContent(message: MessageData): ShorthandValue<BoxProps> {
   const messageId = `content-${message.id}`;
   return {
     id: message.withAttachment ? undefined : messageId,

@@ -15,7 +15,8 @@ export async function typings() {
   logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
 
   // Install dependencies, ensuring we specify the same TS version as our projects use
-  const tsVersion = fs.readJSONSync(config.paths.base('scripts', 'package.json')).dependencies.typescript;
+  const rootPkgJson: { devDependencies: Record<string, string> } = fs.readJSONSync(config.paths.base('package.json'));
+  const { typescript: tsVersion } = rootPkgJson.devDependencies;
 
   const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(' ');
   await sh(`yarn add ${dependencies}`, tmpDirectory);
@@ -32,6 +33,9 @@ export async function typings() {
   fs.copyFileSync(scaffoldPath('tsconfig.json'), path.resolve(tmpDirectory, 'tsconfig.json'));
   logger(`✔️ Source and configs were copied`);
 
+  await sh(`which yarn`);
+  await sh(`yarn --version`);
+  await sh(`yarn tsc --version`);
   await sh(`yarn tsc --noEmit`, tmpDirectory);
   logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
 }

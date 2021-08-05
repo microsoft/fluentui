@@ -13,7 +13,7 @@ import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup
 import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
-import { ALIGNMENTS, POSITIONS, PositioningProps } from '../../utils/positioner';
+import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 import {
   ComponentWithAs,
   useAccessibility,
@@ -23,6 +23,7 @@ import {
   useFluentContext,
   useAutoControlled,
   useStyles,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
@@ -138,6 +139,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   } = props;
 
@@ -145,6 +147,13 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     defaultValue: props.defaultOpen,
     value: props.open,
     initialValue: false,
+  });
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
   });
 
   const menuId = React.useRef<string>();
@@ -200,6 +209,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   };
 
@@ -235,6 +245,12 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
       if (!itemProps || !itemProps.menu) {
         // do not close if clicked on item with submenu
         handleOpenChange(e, false);
+      }
+    },
+    onKeyDown: (e: React.KeyboardEvent, itemProps: MenuItemProps) => {
+      _.invoke(predefinedProps, 'onKeyDown', e, itemProps);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.stopPropagation();
       }
     },
   });
@@ -332,6 +348,7 @@ MenuButton.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   menu: PropTypes.oneOfType([
     customPropTypes.itemShorthandWithoutJSX,
     PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),

@@ -1,24 +1,23 @@
 import * as React from 'react';
 import { ComboBoxBasicExample } from './ComboBox.Basic.Example';
+import { ComboBoxInlineExample } from './ComboBox.Inline.Example';
 import { ComboBoxTogglesExample } from './ComboBox.Toggles.Example';
 import { ComboBoxControlledExample } from './ComboBox.Controlled.Example';
+import { ComboBoxControlledMultiExample } from './ComboBox.ControlledMulti.Example';
 import { ComboBoxVirtualizedExample } from './ComboBox.Virtualized.Example';
 import { ComboBoxErrorHandlingExample } from './ComboBox.ErrorHandling.Example';
 import { ComboBoxCustomStyledExample } from './ComboBox.CustomStyled.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const ComboBoxBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ComboBox/ComboBox.Basic.Example.tsx') as string;
-
-const ComboBoxTogglesExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ComboBox/ComboBox.Toggles.Example.tsx') as string;
-
-const ComboBoxControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ComboBox/ComboBox.Controlled.Example.tsx') as string;
-
-const ComboBoxVirtualizedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ComboBox/ComboBox.Virtualized.Example.tsx') as string;
-
-const ComboBoxErrorHandlingExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ComboBox/ComboBox.ErrorHandling.Example.tsx') as string;
-
-const ComboBoxCustomStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ComboBox/ComboBox.CustomStyled.Example.tsx') as string;
+const ComboBoxBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Basic.Example.tsx') as string;
+const ComboBoxInlineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Inline.Example.tsx') as string;
+const ComboBoxTogglesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Toggles.Example.tsx') as string;
+const ComboBoxControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Controlled.Example.tsx') as string;
+const ComboBoxControlledMultiExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.ControlledMulti.Example.tsx') as string;
+const ComboBoxVirtualizedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Virtualized.Example.tsx') as string;
+const ComboBoxErrorHandlingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.ErrorHandling.Example.tsx') as string;
+const ComboBoxCustomStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.CustomStyled.Example.tsx') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
@@ -31,6 +30,11 @@ export const ComboBoxPageProps: IDocPageProps = {
       view: <ComboBoxBasicExample />,
     },
     {
+      title: 'ComboBox with inline dropdown',
+      code: ComboBoxInlineExampleCode,
+      view: <ComboBoxInlineExample />,
+    },
+    {
       title: 'ComboBox with toggleable autoComplete and allowFreeform',
       code: ComboBoxTogglesExampleCode,
       view: <ComboBoxTogglesExample />,
@@ -39,6 +43,11 @@ export const ComboBoxPageProps: IDocPageProps = {
       title: 'Controlled ComboBox',
       code: ComboBoxControlledExampleCode,
       view: <ComboBoxControlledExample />,
+    },
+    {
+      title: 'Controlled multi-select ComboBox',
+      code: ComboBoxControlledMultiExampleCode,
+      view: <ComboBoxControlledMultiExample />,
     },
     {
       title: 'VirtualizedComboBox',
@@ -56,10 +65,8 @@ export const ComboBoxPageProps: IDocPageProps = {
       view: <ComboBoxCustomStyledExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

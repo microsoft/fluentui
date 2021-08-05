@@ -5,7 +5,7 @@ import { Image } from '@fluentui/react/lib/Image';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { Text } from '@fluentui/react/lib/Text';
 import { Stack, IStackTokens, IStackStyles } from '@fluentui/react/lib/Stack';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean, useSetInterval, useConst } from '@fluentui/react-hooks';
@@ -48,7 +48,7 @@ export const AnnouncedLazyLoadingExample = () => {
     const width = 100;
     const height = 100;
     return createArray(PHOTO_COUNT, () => ({
-      url: `http://placehold.it/${width}x${height}`,
+      url: `http://via.placeholder.com/${width}x${height}`,
       width,
       height,
     }));

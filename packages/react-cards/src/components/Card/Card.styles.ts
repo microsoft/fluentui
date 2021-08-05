@@ -39,12 +39,14 @@ const clickableTokens: ICardComponent['tokens'] = (props, theme) => {
   };
 };
 
+/** @deprecated */
 export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [
   baseTokens,
   props.horizontal && horizontalTokens,
   props.onClick && clickableTokens,
 ];
 
+/** @deprecated */
 export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICardStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

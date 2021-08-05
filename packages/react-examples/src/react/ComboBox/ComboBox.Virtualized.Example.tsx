@@ -1,24 +1,26 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxStyles, VirtualizedComboBox, Fabric } from '@fluentui/react';
+import { IComboBoxOption, IComboBoxStyles, VirtualizedComboBox } from '@fluentui/react';
 
-const comboBoxOption: IComboBoxOption[] = Array.from({ length: 1000 }).map((x, i) => ({
-  key: `${i}`,
-  text: `Option ${i}`,
-}));
-
+const options: IComboBoxOption[] = [];
+for (let i = 0; i < 1000; i++) {
+  options.push({
+    key: `${i}`,
+    text: `Option ${i}`,
+  });
+}
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: '300px' } };
 
-export const ComboBoxVirtualizedExample: React.FC = () => (
-  <Fabric className="ms-ComboBoxExample">
+export const ComboBoxVirtualizedExample: React.FunctionComponent = () => {
+  return (
     <VirtualizedComboBox
-      styles={comboBoxStyles}
       defaultSelectedKey="547"
       label="Scaled/virtualized example with 1000 items"
       allowFreeform
       autoComplete="on"
-      options={comboBoxOption}
+      options={options}
       dropdownMaxWidth={200}
       useComboBoxAsMenuWidth
+      styles={comboBoxStyles}
     />
-  </Fabric>
-);
+  );
+};

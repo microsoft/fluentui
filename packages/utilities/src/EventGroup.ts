@@ -53,7 +53,7 @@ export class EventGroup {
   private _parent: any;
   private _eventRecords: IEventRecord[];
   private _id: number = EventGroup._uniqueId++;
-  private _isDisposed: boolean;
+  private _isDisposed!: boolean;
 
   /** For IE8, bubbleEvent is ignored here and must be dealt with by the handler.
    *  Events raised here by default have bubbling set to false and cancelable set to true.
@@ -80,6 +80,8 @@ export class EventGroup {
         target.fireEvent('on' + eventName, evObj);
       }
     } else {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore  -- FIXME: strictBindCallApply error - https://github.com/microsoft/fluentui/issues/17331
       while (target && retVal !== false) {
         let events = <IEventRecordsByName>target.__events__;
         let eventRecords = events ? events[eventName] : null;
@@ -89,6 +91,8 @@ export class EventGroup {
             if (eventRecords.hasOwnProperty(id)) {
               let eventRecordList = <IEventRecord[]>eventRecords[id];
 
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore  -- FIXME: strictBindCallApply error - https://github.com/microsoft/fluentui/issues/17331
               for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
                 let record = eventRecordList[listIndex];
 
@@ -206,6 +210,8 @@ export class EventGroup {
           let result;
           try {
             result = callback.apply(parent, args);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore  -- FIXME: strictBindCallApply error - https://github.com/microsoft/fluentui/issues/17331
             if (result === false && args[0]) {
               let e = args[0];
 

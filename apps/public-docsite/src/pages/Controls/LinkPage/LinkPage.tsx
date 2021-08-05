@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { LinkPageProps } from './LinkPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
-import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/mac/LinkImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/mac/LinkImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/mac/LinkImplementation.md') as string,
         },
       ];
     case 'cross':

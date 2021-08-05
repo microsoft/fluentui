@@ -4,7 +4,7 @@ import {
   IContextualMenuProps,
   IContextualMenuItemProps,
 } from '@fluentui/react/lib/ContextualMenu';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useConst } from '@fluentui/react-hooks';
 
 export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = () => {

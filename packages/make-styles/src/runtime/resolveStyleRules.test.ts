@@ -1,31 +1,18 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore No typings :(
-import * as prettier from 'prettier';
-
+import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStyleRules } from './resolveStyleRules';
-import { MakeStylesResolvedRule } from '../types';
-import { isObject } from './utils/isObject';
+import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
-expect.addSnapshotSerializer({
-  test(value) {
-    return isObject(value);
-  },
-  print(value: Record<string, MakeStylesResolvedRule>) {
-    return Object.keys(value).reduce((acc, property) => {
-      const rule: MakeStylesResolvedRule = value[property];
+expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
-      return prettier.format(acc + rule[1] + (rule[2] || ''), { parser: 'css' }).trim();
-    }, '');
-  },
-});
+function getFirstClassName([resolvedClassesForSlot]: [CSSClassesMap, CSSRulesByBucket]): string {
+  const className: CSSClasses = resolvedClassesForSlot[Object.keys(resolvedClassesForSlot)[0]];
+
+  return Array.isArray(className) ? className[0] : className;
+}
 
 describe('resolveStyleRules', () => {
   describe('classnames', () => {
-    it('generates unique classnames for preudo selectors', () => {
-      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
-      }
-
+    it('generates unique classnames for pseudo selectors', () => {
       const classnamesSet = new Set<string>();
 
       classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
@@ -143,7 +130,7 @@ describe('resolveStyleRules', () => {
         .fwiuce9 {
           padding-right: 5px;
         }
-        .rfwiuce9 {
+        .f15vdbe4 {
           padding-left: 5px;
         }
         .fdghr9 {
@@ -152,8 +139,73 @@ describe('resolveStyleRules', () => {
         .f15vdbe4 {
           padding-left: 5px;
         }
-        .rf15vdbe4 {
+        .fwiuce9 {
           padding-right: 5px;
+        }
+      `);
+    });
+
+    it('performs expansion of shorthands on nested objects', () => {
+      expect(resolveStyleRules({ outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
+        .fpvhumw {
+          outline-width: 1px;
+        }
+        .fmcm1e3:hover {
+          outline-width: 5px;
+        }
+      `);
+    });
+
+    it('shorthands and longhands work like in CSS', () => {
+      expect(
+        resolveStyleRules({
+          margin: '5px',
+          marginLeft: '10px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s40 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk {
+          margin-bottom: 5px;
+        }
+        .f1oou7ox {
+          margin-left: 10px;
+        }
+        .f1pxv85q {
+          margin-right: 10px;
+        }
+      `);
+
+      expect(
+        resolveStyleRules({
+          marginLeft: '10px',
+          margin: '5px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .fq02s40 {
+          margin-right: 5px;
+        }
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s40 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk {
+          margin-bottom: 5px;
         }
       `);
     });
@@ -161,6 +213,9 @@ describe('resolveStyleRules', () => {
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
         .f22iagw {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
           display: flex;
         }
       `);
@@ -185,10 +240,29 @@ describe('resolveStyleRules', () => {
         .f5b3q4t {
           left: 5px;
         }
-        .rf5b3q4t {
+        .flgfsvn {
           right: 5px;
         }
       `);
+    });
+
+    it('handles RTL @noflip', () => {
+      expect(resolveStyleRules({ left: '5px /* @noflip */' })).toMatchInlineSnapshot(`
+        .fm76jd0 {
+          left: 5px;
+        }
+      `);
+    });
+
+    it('RTL @noflip will generate a different className', () => {
+      const classnamesSet = new Set<string>();
+
+      // Definitions with @noflip cannot be reused to usual ones as expected RTL styles will be different
+
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px /* @noflip */' })));
+
+      expect(classnamesSet.size).toBe(2);
     });
 
     it('handles nested selectors', () => {
@@ -334,22 +408,94 @@ describe('resolveStyleRules', () => {
     it('handles :global selector', () => {
       expect(
         resolveStyleRules({
-          ':global(body)': { color: 'green' },
           ':global(body) &': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
-        body {
-          color: green;
-        }
         body .fm1e7ra {
           color: green;
         }
       `);
     });
+
+    it('handles :global selector', () => {
+      expect(
+        resolveStyleRules({
+          ':global(body)': {
+            ':focus': {
+              color: 'green',
+              ':hover': { color: 'blue' },
+              '& .foo': { color: 'yellow' },
+            },
+          },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .f192vvyd:focus {
+          color: green;
+        }
+        body .f1tz2pjr:focus:hover {
+          color: blue;
+        }
+        body .f1dl7obt:focus .foo {
+          color: yellow;
+        }
+      `);
+      expect(
+        resolveStyleRules({
+          ':global(body) :focus': { color: 'green' },
+          ':global(body) :focus:hover': { color: 'blue' },
+          ':global(body) :focus .foo': { color: 'yellow' },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .frou13r:focus {
+          color: green;
+        }
+        body .f1emv7y1:focus:hover {
+          color: blue;
+        }
+        body .f1g015sp:focus .foo {
+          color: yellow;
+        }
+      `);
+    });
+
+    // it.todo('supports :global as a nested selector', () => {
+    //   expect(
+    //     resolveStyleRules({
+    //       ':focus': { ':global(body)': { color: 'green' } },
+    //     }),
+    //   ).toMatchInlineSnapshot(`
+    //     body .fm1e7ra0:focus {
+    //       color: green;
+    //     }
+    //   `);
+    // });
   });
 
-  describe('experimental', () => {
-    it('allows to define keyframes', () => {
+  describe('keyframes', () => {
+    it('allows to define string as animationName', () => {
+      expect(
+        resolveStyleRules({
+          animationName: 'fade-in slide-out',
+          animationIterationCount: 'infinite',
+          animationDuration: '5s',
+        }),
+      ).toMatchInlineSnapshot(`
+        .fc59ano {
+          -webkit-animation-name: fade-in slide-out;
+          animation-name: fade-in slide-out;
+        }
+        .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+        }
+        .f1t9cprh {
+          -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+        }
+      `);
+    });
+
+    it('allows to define object as animationName', () => {
       expect(
         resolveStyleRules({
           animationName: {
@@ -364,26 +510,208 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
             transform: rotate(0deg);
           }
           to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
             transform: rotate(360deg);
           }
         }
-        .fkf6eed {
-          animation-name: f13owpa8;
+        @keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-webkit-keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        @keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        .f1g6ul6r {
+          -webkit-animation-name: f1q8eu9e;
+          animation-name: f1q8eu9e;
+        }
+        .f1fp4ujf {
+          -webkit-animation-name: f55c0se;
+          animation-name: f55c0se;
         }
         .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
         }
         .f1t9cprh {
+          -webkit-animation-duration: 5s;
           animation-duration: 5s;
         }
       `);
     });
 
+    it('allows to define array as animationName', () => {
+      expect(
+        resolveStyleRules({
+          animationName: [
+            {
+              from: {
+                transform: 'rotate(0deg)',
+              },
+              to: {
+                transform: 'rotate(360deg)',
+              },
+            },
+            {
+              from: {
+                opacity: 0,
+              },
+              to: {
+                opacity: 1,
+              },
+            },
+          ],
+          animationIterationCount: 'infinite',
+          animationDuration: '5s',
+        }),
+      ).toMatchInlineSnapshot(`
+        @-webkit-keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes f1q8eu9e {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-webkit-keyframes f5j8bii {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes f5j8bii {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @-webkit-keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        @keyframes f55c0se {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        .f1al5ov7 {
+          -webkit-animation-name: f1q8eu9e f5j8bii;
+          animation-name: f1q8eu9e f5j8bii;
+        }
+        .f1yfduy3 {
+          -webkit-animation-name: f55c0se f5j8bii;
+          animation-name: f55c0se f5j8bii;
+        }
+        .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+        }
+        .f1t9cprh {
+          -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+        }
+      `);
+    });
+  });
+
+  describe('output', () => {
+    it('contains less members for properties that do not depend on text direction', () => {
+      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })[0]).toEqual({
+        sj55zd: 'fe3e8s9',
+        uwmqm3: ['frdkuqy', 'f81rol6'],
+      });
+    });
+  });
+
+  describe('experimental', () => {
     it('allows to increase specificity', () => {
       expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
         .fe3e8s91.fe3e8s91 {
@@ -421,17 +749,13 @@ describe('resolveStyleRules', () => {
         .f5b3q4t1.f5b3q4t1 {
           left: 5px;
         }
-        .rf5b3q4t1.rf5b3q4t1 {
+        .flgfsvn1.flgfsvn1 {
           right: 5px;
         }
       `);
     });
 
     it('generates unique classnames with different specificity', () => {
-      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
-      }
-
       const classnamesSet = new Set<string>();
 
       classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));

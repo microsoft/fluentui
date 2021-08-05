@@ -101,6 +101,8 @@ import {
   breadcrumbBehavior,
   breadcrumbItemBehavior,
   breadcrumbDividerBehavior,
+  pillBehavior,
+  pillActionBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
@@ -206,5 +208,7 @@ testHelper.addBehavior('datepickerCalendarCellButtonBehavior', datepickerCalenda
 testHelper.addBehavior('breadcrumbBehavior', breadcrumbBehavior);
 testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);
 testHelper.addBehavior('breadcrumbDividerBehavior', breadcrumbDividerBehavior);
+testHelper.addBehavior('pillBehavior', pillBehavior);
+testHelper.addBehavior('pillActionBehavior', pillActionBehavior);
 
 testHelper.run(behaviorMenuItems);

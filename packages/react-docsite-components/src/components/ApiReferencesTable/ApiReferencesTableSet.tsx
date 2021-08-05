@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { ActionButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
 import { ApiReferencesTable, gapTokens } from './ApiReferencesTable';
@@ -9,7 +9,7 @@ import {
   IMethod,
   IApiReferencesTableSetProps,
 } from './ApiReferencesTableSet.types';
-import { ITableRowJson, IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ITableRowJson, IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
 import { getTokenResolver } from './tokenResolver';

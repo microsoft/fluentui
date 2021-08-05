@@ -1,1 +1,1 @@
-export * from '@fluentui/react-date-time/lib/WeeklyDayPicker';
+export * from './components/WeeklyDayPicker/index';

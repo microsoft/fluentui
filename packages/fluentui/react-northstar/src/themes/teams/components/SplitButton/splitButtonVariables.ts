@@ -56,7 +56,7 @@ export interface SplitButtonVariables {
 
 export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
   return {
-    borderRadius: siteVars.borderRadius,
+    borderRadius: siteVars.borderRadiusMedium,
     borderColor: siteVars.colorScheme.default.border,
     borderColorPrimary: siteVars.colors.brand[500],
     borderColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
@@ -71,12 +71,12 @@ export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButt
 
     toggleButtonColor: siteVars.colorScheme.default.foreground,
     toggleButtonBackgroundColor: siteVars.colorScheme.default.background,
-    toggleButtonBorderRadius: siteVars.borderRadius,
+    toggleButtonBorderRadius: siteVars.borderRadiusMedium,
     toggleButtonBorderColor: siteVars.colorScheme.default.border,
     toggleButtonBoxShadow: siteVars.shadowLevel1,
 
-    toggleButtonColorHover: siteVars.colorScheme.brand.foregroundHover,
-    toggleButtonBackgroundColorHover: siteVars.colorScheme.default.backgroundHover2,
+    toggleButtonColorHover: siteVars.colorScheme.default.foregroundHover,
+    toggleButtonBackgroundColorHover: siteVars.colorScheme.default.backgroundHover1,
     toggleButtonBorderColorHover: siteVars.colorScheme.default.borderHover,
 
     toggleButtonColorActive: siteVars.colorScheme.default.foregroundPressed,
@@ -101,7 +101,7 @@ export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButt
 
     toggleButtonIndicatorSize: pxToRem(16),
 
-    focusBorderRadius: siteVars.borderRadius,
+    focusBorderRadius: siteVars.borderRadiusMedium,
     focusBorderWidth: siteVars.borderWidth,
     focusInnerBorderColor: siteVars.focusInnerBorderColor,
     focusOuterBorderColor: siteVars.focusOuterBorderColor,

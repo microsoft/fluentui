@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuProps, Stack, IStackTokens } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -65,7 +65,6 @@ export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = 
       <DefaultButton
         text="Disabled"
         disabled
-        allowDisabledFocus
         split
         splitButtonAriaLabel="See 2 options"
         aria-roledescription="split button"

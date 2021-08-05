@@ -28,8 +28,7 @@ import {
   createMergedRef,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
-import { ThemeContext, Theme } from '@fluentui/react-theme-provider';
-import { getTheme } from '@fluentui/style-utilities';
+import { getTheme, ITheme } from '@fluentui/style-utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -253,36 +252,35 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     // the case the element was removed.
     this._evaluateFocusBeforeRender();
 
+    // Only support RTL defined in global theme, not contextual theme/RTL.
+    const theme: ITheme = getTheme();
+
     return (
-      <ThemeContext.Consumer>
-        {theme => (
-          <Tag
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
-            {...divProps}
-            {
-              // root props has been deprecated and should get removed.
-              // it needs to be marked as "any" since root props expects a div element, but really Tag can
-              // be any native element so typescript rightly flags this as a problem.
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              ...(rootProps as any)
-            }
-            // Once the getClassName correctly memoizes inputs this should
-            // be replaced so that className is passed to getRootClass and is included there so
-            // the class names will always be in the same order.
-            className={css(getRootClass(), className)}
-            // eslint-disable-next-line deprecation/deprecation
-            ref={this._mergedRef(this.props.elementRef, this._root)}
-            data-focuszone-id={this._id}
-            // eslint-disable-next-line react/jsx-no-bind
-            onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme || getTheme())}
-            onFocus={this._onFocus}
-            onMouseDownCapture={this._onMouseDown}
-          >
-            {this.props.children}
-          </Tag>
-        )}
-      </ThemeContext.Consumer>
+      <Tag
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        {...divProps}
+        {
+          // root props has been deprecated and should get removed.
+          // it needs to be marked as "any" since root props expects a div element, but really Tag can
+          // be any native element so typescript rightly flags this as a problem.
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ...(rootProps as any)
+        }
+        // Once the getClassName correctly memoizes inputs this should
+        // be replaced so that className is passed to getRootClass and is included there so
+        // the class names will always be in the same order.
+        className={css(getRootClass(), className)}
+        // eslint-disable-next-line deprecation/deprecation
+        ref={this._mergedRef(this.props.elementRef, this._root)}
+        data-focuszone-id={this._id}
+        // eslint-disable-next-line react/jsx-no-bind
+        onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => this._onKeyDown(ev, theme)}
+        onFocus={this._onFocus}
+        onMouseDownCapture={this._onMouseDown}
+      >
+        {this.props.children}
+      </Tag>
     );
   }
 
@@ -574,7 +572,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Handle the keystrokes.
    */
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: Theme): boolean | undefined => {
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: ITheme): boolean | undefined => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
@@ -631,7 +629,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props
+      // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props, deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.space:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
@@ -992,7 +990,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusLeft(theme: Theme): boolean {
+  private _moveFocusLeft(theme: ITheme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
@@ -1034,7 +1032,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusRight(theme: Theme): boolean {
+  private _moveFocusRight(theme: ITheme): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(

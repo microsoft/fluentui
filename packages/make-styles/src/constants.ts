@@ -1,8 +1,21 @@
-import { MakeStylesLookupEntry } from './types';
+import { LookupItem, SequenceHash } from './types';
 
-export const CAN_USE_CSS_VARIABLES = window.CSS && CSS.supports('color', 'var(--c)');
-
+/** @internal */
 export const HASH_PREFIX = 'f';
-export const RTL_PREFIX = 'r';
 
-export const DEFINITION_LOOKUP_TABLE: Record<string, MakeStylesLookupEntry> = {};
+/** @internal */
+export const SEQUENCE_HASH_LENGTH = 7;
+
+/** @internal */
+export const SEQUENCE_PREFIX = '__';
+
+/** @internal */
+export const DEFINITION_LOOKUP_TABLE: Record<SequenceHash, LookupItem> = {};
+
+// indexes for values in LookupItem tuple
+
+/** @internal */
+export const LOOKUP_DEFINITIONS_INDEX = 0;
+
+/** @internal */
+export const LOOKUP_DIR_INDEX = 1;

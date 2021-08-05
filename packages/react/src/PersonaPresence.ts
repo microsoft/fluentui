@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/PersonaPresence';
+export * from './components/Persona/PersonaPresence/index';

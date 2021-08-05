@@ -29,7 +29,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
+import { getBasePlacement, PopperChildrenProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 
 export interface PopupContentSlotClassNames {
   content: string;
@@ -67,10 +67,19 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
 
   /** Controls whether or not auto focus should be applied, using boolean or AutoFocusZoneProps type value. */
   autoFocus?: boolean | AutoFocusZoneProps;
+
+  /**
+   * Applies max-height and max-width on popper to fit it within the available space in viewport.
+   * true enables this for both width and height when overflow happens. 'always' applies `max-height`/`max-width` regardless of overflow.
+   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
+   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
+   */
+  autoSize?: AutoSize;
 }
 
 export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
   basePlacement: PopperJs.BasePlacement;
+  autoSize?: AutoSize;
 };
 
 export const popupContentClassName = 'ui-popup__content';
@@ -100,6 +109,7 @@ export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
     styles,
     trapFocus,
     variables,
+    autoSize,
   } = props;
 
   const getA11yProps = useAccessibility(accessibility, {
@@ -111,6 +121,7 @@ export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
+      autoSize,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -195,6 +206,7 @@ PopupContent.propTypes = {
   pointerRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
 };
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 

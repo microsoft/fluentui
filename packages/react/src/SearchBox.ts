@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/SearchBox';
+export * from './components/SearchBox/index';

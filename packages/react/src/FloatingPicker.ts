@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/FloatingPicker';
+export * from './components/FloatingPicker/index';

@@ -1,13 +1,86 @@
+import { composedParent, Card as FoundationCard, cardTemplate as template } from '@microsoft/fast-foundation';
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import {
-  designSystemProperty,
-  DesignSystemProvider,
-  designSystemProvider,
-  CardTemplate as template,
-} from '@microsoft/fast-foundation';
-import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
-import { CardStyles as styles } from './card.styles';
+import { fillColor, neutralFillLayerRecipe, neutralPalette } from '../design-tokens';
+import { Swatch, SwatchRGB } from '../color/swatch';
+import { PaletteRGB } from '../color/palette';
+import { cardStyles as styles } from './card.styles';
+
+/**
+ * @public
+ */
+export class Card extends FoundationCard {
+  /**
+   * Fill color for the card component. Sets context for the design system.
+   *
+   * Updates the neutral palette and sets the card to the source color. For tinting use neutral-palette-source instead.
+   * @public
+   * @remarks
+   * HTML Attribute: card-fill-color
+   */
+  @attr({
+    attribute: 'card-fill-color',
+    mode: 'fromView',
+  })
+  public cardFillColor: string;
+  private cardFillColorChanged(prev: string | void, next: string | void): void {
+    if (next) {
+      const parsedColor = parseColorHexRGB(next);
+
+      if (parsedColor !== null) {
+        this.neutralPaletteSource = next;
+        fillColor.setValueFor(this, SwatchRGB.create(parsedColor.r, parsedColor.g, parsedColor.b));
+      }
+    }
+  }
+
+  /**
+   * Neutral palette source color for the card component. Sets context for the design system.
+   *
+   * This allows for tinting the card while maintaining the light or dark context. For a fixed color use card-fill-color instead.
+   * @public
+   * @remarks
+   * HTML Attribute: neutral-palette-source
+   */
+  @attr({
+    attribute: 'neutral-palette-source',
+    mode: 'fromView',
+  })
+  public neutralPaletteSource: string;
+  private neutralPaletteSourceChanged(prev: string | void, next: string | void): void {
+    if (next) {
+      const color = parseColorHexRGB(next)!;
+      const swatch = SwatchRGB.create(color.r, color.g, color.b);
+      neutralPalette.setValueFor(this, PaletteRGB.create(swatch));
+    }
+  }
+
+  /**
+   * @internal
+   */
+  public handleChange(source: any, propertyName: string): void {
+    if (!this.cardFillColor) {
+      fillColor.setValueFor(
+        this,
+        (target: HTMLElement): Swatch =>
+          neutralFillLayerRecipe.getValueFor(target).evaluate(target, fillColor.getValueFor(source)),
+      );
+    }
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    const parent = composedParent(this);
+
+    if (parent) {
+      const parentNotifier: Notifier = Observable.getNotifier(parent);
+      parentNotifier.subscribe(this, 'fillColor');
+      parentNotifier.subscribe(this, 'neutralPalette');
+      this.handleChange(parent, 'fillColor');
+    }
+  }
+}
 
 /**
  * The Fluent Card Element. Implements {@link @microsoft/fast-foundation#Card},
@@ -18,82 +91,14 @@ import { CardStyles as styles } from './card.styles';
  * @remarks
  * HTML Element: \<fluent-card\>
  */
-@designSystemProvider({
-  name: 'fluent-card',
+export const fluentCard = Card.compose({
+  baseName: 'card',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentCard extends DesignSystemProvider
-  implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
-  /**
-   * Background color for the banner component. Sets context for the design system.
-   * @public
-   * @remarks
-   * HTML Attribute: background-color
-   */
-  @designSystemProperty({
-    attribute: 'background-color',
-    default: '#FFFFFF',
-  })
-  public backgroundColor: string;
-
-  /**
-   * Background color for the banner component. Sets context for the design system.
-   * @public
-   * @remarks
-   * HTML Attribute: background-color
-   */
-  @attr({
-    attribute: 'card-background-color',
-  })
-  public cardBackgroundColor: string;
-  private cardBackgroundColorChanged(prev: string | void, next: string | void): void {
-    if (next) {
-      const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
-
-      if (parsedColor !== null) {
-        this.neutralPalette = createColorPalette(parsedColor);
-        this.backgroundColor = this.cardBackgroundColor;
-      }
-    } else if (this.provider && this.provider.designSystem) {
-      this.handleChange(this.provider.designSystem as DesignSystem, 'backgroundColor');
-    }
-  }
-
-  /**
-   * Neutral pallette for the the design system provider.
-   * @internal
-   */
-  @designSystemProperty({
-    attribute: false,
-    default: createColorPalette(parseColorHexRGB('#FFFFFF')!),
-    cssCustomProperty: false,
-  })
-  public neutralPalette: string[];
-
-  /**
-   * @internal
-   */
-  public handleChange(source: DesignSystem, name: string): void {
-    if (!this.cardBackgroundColor) {
-      this.backgroundColor = neutralFillCard(source);
-    }
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    const parentDSNotifier: Notifier = Observable.getNotifier(this.provider?.designSystem);
-    parentDSNotifier.subscribe(this, 'backgroundColor');
-    parentDSNotifier.subscribe(this, 'neutralPalette');
-    this.handleChange(this.provider?.designSystem as DesignSystem, 'backgroundColor');
-  }
-}
+});
 
 /**
  * Styles for Card
  * @public
  */
-export const CardStyles = styles;
+export const cardStyles = styles;
