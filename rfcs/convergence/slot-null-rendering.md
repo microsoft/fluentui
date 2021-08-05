@@ -122,7 +122,7 @@ e.g: An Icon that doesn't have children `<i class="icon"/>` (this case is hypoth
 
 Both options here proposed by the end are equivalent, the only difference is the impact on `ObjectShorthandProps` interface
 
-### Option 1: Make `shorthands` optional
+### Resolution: Make `shorthands` optional
 
 This solves this problem by verifying if the shorthand is `undefined` or not.
 By verifying if shorthand is `undefined` we can opt for null rendering without compromising the cases which native slots don't have children
@@ -192,7 +192,22 @@ export const useState = (props, ref) => {
 };
 ```
 
-### Option 2: Symbol for null rendering
+## Pros and Cons
+
+### Pros
+
+1. This takes the responsibility of deciding if a slot might be null rendered out of the inner implementation of `getSlot` and into the developers' hands, by providing an optional way of declaring it.
+
+### Cons
+
+1. This takes the responsibility of deciding if a slot might be null rendered out of inner implementation of `getSlot` into the developers hand, by providing a optional way of declaring it
+
+[empty elements]: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
+[empty element]: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
+
+## Discarded Solutions
+
+### Symbol for null rendering
 
 This solves this problem by verifying if the shorthand has a special symbol or not.
 By verifying this symbol we can opt for null rendering without compromising the cases in which native slots don't have children.
@@ -249,16 +264,3 @@ export const useState = (props, ref) => {
   };
 };
 ```
-
-## Pros and Cons
-
-### Pros
-
-1. This takes the responsibility of deciding if a slot might be null rendered out of the inner implementation of `getSlot` and into the developers' hands, by providing an optional way of declaring it.
-
-### Cons
-
-1. This takes the responsibility of deciding if a slot might be null rendered out of inner implementation of `getSlot` into the developers hand, by providing a optional way of declaring it
-
-[empty elements]: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element
-[empty element]: https://developer.mozilla.org/en-US/docs/Glossary/Empty_element

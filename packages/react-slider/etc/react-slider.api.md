@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -17,7 +17,7 @@ export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.Ref
 export type SliderDefaultedProps = never;
 
 // @public
-export interface SliderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface SliderProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
@@ -31,7 +31,6 @@ export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defa
 
 // @public
 export const useSliderStyles: (state: any) => any;
-
 
 // (No @packageDocumentation comment for this package)
 
