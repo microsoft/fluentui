@@ -108,7 +108,6 @@ export interface AccordionItemContextValue {
 
 // @public (undocumented)
 export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
-    // (undocumented)
     value: AccordionItemValue;
 }
 
