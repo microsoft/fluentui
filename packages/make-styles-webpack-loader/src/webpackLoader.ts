@@ -12,6 +12,16 @@ export type WebpackLoaderOptions = BabelPluginOptions;
 
 type WebpackLoaderParams = Parameters<webpack.LoaderDefinitionFunction<WebpackLoaderOptions>>;
 
+export function shouldTransformSourceCode(
+  sourceCode: string,
+  modules: WebpackLoaderOptions['modules'] | undefined,
+): boolean {
+  // Fallback to "makeStyles" if options were not provided
+  const imports = modules ? modules.map(module => module.importName).join('|') : 'makeStyles';
+
+  return new RegExp(`\\b(${imports})`).test(sourceCode);
+}
+
 /**
  * Webpack can also pass sourcemaps as a string, Babel accepts only objects.
  * See https://github.com/babel/babel-loader/pull/889.
@@ -39,6 +49,12 @@ export function webpackLoader(
     name: '@fluentui/make-styles-webpack-loader',
     baseDataPath: 'options',
   });
+
+  // Early return to handle cases when makeStyles() calls are not present, allows to avoid expensive invocation of Babel
+  if (!shouldTransformSourceCode(sourceCode, options.modules)) {
+    this.callback(null, sourceCode, inputSourceMap);
+    return;
+  }
 
   EvalCache.clearForFile(this.resourcePath);
 
