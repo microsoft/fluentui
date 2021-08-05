@@ -117,6 +117,20 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   ariaLabel?: string;
 
   /**
+   * When using farItems, primaryGroupAriaLabel and secondaryGroupAriaLabel function as
+   * labels for each group that are exposed to screen reader users.
+   * This helps clarify when a screen reader user is entering or leaving each group.
+   */
+  primaryGroupAriaLabel?: string;
+
+  /**
+   * When using farItems, primaryGroupAriaLabel and secondaryGroupAriaLabel function as
+   * labels for each group that are exposed to screen reader users.
+   * This helps clarify when a screen reader user is entering or leaving each group.
+   */
+  secondaryGroupAriaLabel?: string;
+
+  /**
    * Customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
