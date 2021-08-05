@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 04 Aug 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.3)
+
+Thu, 05 Aug 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.2..@fluentui/web-components_v1.3.3)
+
+### Patches
+
+- add border and adjust padding to badge component ([PR #19268](https://github.com/microsoft/fluentui/pull/19268) by khamu@microsoft.com)
 
 ## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.2)
 
