@@ -122,7 +122,7 @@ e.g: An Icon that doesn't have children `<i class="icon"/>` (this case is hypoth
 
 Both options here proposed by the end are equivalent, the only difference is the impact on `ObjectShorthandProps` interface
 
-### Make `shorthands` optional
+### Resolution: Make `shorthands` optional
 
 This solves this problem by verifying if the shorthand is `undefined` or not.
 By verifying if shorthand is `undefined` we can opt for null rendering without compromising the cases which native slots don't have children
