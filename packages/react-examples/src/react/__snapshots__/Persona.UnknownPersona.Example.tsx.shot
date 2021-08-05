@@ -166,6 +166,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Maor Sharett
         </div>
@@ -194,6 +195,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -372,6 +374,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Kat Larrson
         </div>
@@ -400,6 +403,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -429,6 +433,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Unverified sender
         </div>

@@ -3158,7 +3158,9 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
+    primaryGroupAriaLabel?: string;
     resizeGroupAs?: IComponentAs<IResizeGroupProps>;
+    secondaryGroupAriaLabel?: string;
     shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
     theme?: ITheme;
