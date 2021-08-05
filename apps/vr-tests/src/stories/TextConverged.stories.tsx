@@ -15,115 +15,141 @@ import {
 } from '@fluentui/react-text';
 import { FluentProviderDecorator } from '../utilities/index';
 
+const ScreenerWrapper = (story: () => React.ReactNode) => (
+  <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <div className="testWrapper" style={{ width: '250px' }}>
+      {story()}
+    </div>
+  </Screener>
+);
+
 storiesOf('react-text Text', module)
+  .addDecorator(ScreenerWrapper)
   .addDecorator(FluentProviderDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      <div className="testWrapper" style={{ width: '50px' }}>
-        {story()}
-      </div>
-    </Screener>
-  ))
-  .addStory('Default', () => <Text>Hello, world</Text>)
-  .addStory('No wrap', () => <Text wrap={false}>Hello, world</Text>)
-  .addStory('Truncated', () => (
-    <Text block wrap={false} truncate>
-      Hello, world
-    </Text>
-  ))
-  .addStory('Italic', () => <Text italic>Hello, world</Text>)
-  .addStory('Underline', () => <Text underline>Hello, world</Text>)
-  .addStory('Strikethrough', () => <Text strikethrough>Hello, world</Text>)
-  .addStory('Sizes', () => (
+  .addStory('Default', () => (
     <>
-      <Text block size={100}>
-        100
-      </Text>
-      <Text block size={200}>
-        200
-      </Text>
-      <Text block size={300}>
-        300
-      </Text>
-      <Text block size={400}>
-        400
-      </Text>
-      <Text block size={500}>
-        500
-      </Text>
-      <Text block size={600}>
-        600
-      </Text>
-      <Text block size={700}>
-        700
-      </Text>
-      <Text block size={800}>
-        800
-      </Text>
-      <Text block size={900}>
-        900
-      </Text>
-      <Text block size={1000}>
-        1000
-      </Text>
-    </>
-  ))
-  .addStory('Fonts', () => (
-    <>
-      <Text block font="base">
-        Base
-      </Text>
-      <Text block font="monospace">
-        Monospace
-      </Text>
-      <Text block font="numeric">
-        Numeric
-      </Text>
-    </>
-  ))
-  .addStory('Weights', () => (
-    <>
-      <Text block weight="regular">
-        Regular
-      </Text>
-      <Text block weight="medium">
-        Medium
-      </Text>
-      <Text block weight="semibold">
-        Semibold
-      </Text>
-    </>
-  ))
-  .addStory('Alignments', () => (
-    <>
-      <Text block align="start">
-        Start
-      </Text>
-      <Text block align="center">
-        Center
-      </Text>
-      <Text block align="end">
-        End
-      </Text>
-      <Text block align="justify">
-        J u s t i f i e d element
-      </Text>
+      <p>
+        <Title3 block>Default</Title3>
+        <Text>Lorem ipsum dolor sit amet, nullam rhoncus tristique tellus in Portucale.</Text>
+      </p>
+      <p>
+        <Title3 block>No wrapping</Title3>
+        <Text block wrap={false}>
+          Lorem ipsum dolor sit amet, nullam rhoncus tristique tellus in Portucale.
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Truncate</Title3>
+        <Text block wrap={false} truncate>
+          Lorem ipsum dolor sit amet, nullam rhoncus tristique tellus in Portucale.
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Italic</Title3>
+        <Text block italic>
+          Hello, world
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Underline</Title3>
+        <Text block underline>
+          Hello, world
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Strikethrough</Title3>
+        <Text block strikethrough>
+          Hello, world
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Sizes</Title3>
+        <Text block size={100}>
+          100
+        </Text>
+        <Text block size={200}>
+          200
+        </Text>
+        <Text block size={300}>
+          300
+        </Text>
+        <Text block size={400}>
+          400
+        </Text>
+        <Text block size={500}>
+          500
+        </Text>
+        <Text block size={600}>
+          600
+        </Text>
+        <Text block size={700}>
+          700
+        </Text>
+        <Text block size={800}>
+          800
+        </Text>
+        <Text block size={900}>
+          900
+        </Text>
+        <Text block size={1000}>
+          1000
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Fonts</Title3>
+        <Text block font="base">
+          Base
+        </Text>
+        <Text block font="monospace">
+          Monospace
+        </Text>
+        <Text block font="numeric">
+          Numeric
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Weights</Title3>
+        <Text block weight="regular">
+          Regular
+        </Text>
+        <Text block weight="medium">
+          Medium
+        </Text>
+        <Text block weight="semibold">
+          Semibold
+        </Text>
+      </p>
+      <p>
+        <Title3 block>Alignments</Title3>
+        <Text block align="start">
+          Start
+        </Text>
+        <Text block align="center">
+          Center
+        </Text>
+        <Text block align="end">
+          End
+        </Text>
+        <Text block align="justify">
+          Justified lorem ipsum dolor sit amet, nullam rhoncus tristique tellus in Portucale.
+        </Text>
+      </p>
     </>
   ));
 
 storiesOf('react-text Typography wrappers', module)
+  .addDecorator(ScreenerWrapper)
   .addDecorator(FluentProviderDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      <div className="testWrapper">{story()}</div>
-    </Screener>
-  ))
-  .addStory('Display', () => <Display>Display</Display>)
-  .addStory('Large Title', () => <LargeTitle>LargeTitle</LargeTitle>)
-  .addStory('Title 1', () => <Title1>Title1</Title1>)
-  .addStory('Title 2', () => <Title2>Title2</Title2>)
-  .addStory('Title 3', () => <Title3>Title3</Title3>)
-  .addStory('Headline', () => <Headline>Headline</Headline>)
-  .addStory('Subheadline', () => <Subheadline>Subheadline</Subheadline>)
-  .addStory('Body', () => <Body>Body</Body>)
-  .addStory('Caption', () => <Caption>Caption</Caption>);
+  .addStory('Display', () => (
+    <>
+      <Display block>Display</Display>
+      <LargeTitle block>LargeTitle</LargeTitle>
+      <Title1 block>Title1</Title1>
+      <Title2 block>Title2</Title2>
+      <Title3 block>Title3</Title3>
+      <Headline block>Headline</Headline>
+      <Subheadline block>Subheadline</Subheadline>
+      <Body block>Body</Body>
+      <Caption block>Caption</Caption>
+    </>
+  ));
