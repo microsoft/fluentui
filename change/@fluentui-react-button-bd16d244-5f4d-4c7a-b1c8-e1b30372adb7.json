@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "React-button: fix children rending",
+  "packageName": "@fluentui/react-button",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch"
+}
