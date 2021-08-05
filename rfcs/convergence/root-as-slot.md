@@ -237,7 +237,7 @@ A easy solution would be to use `getNativeElementProps` to filter out properties
 // use*State hook
 return {
   // This filters out stateSpecificProperty ✅
-  root: resolveShorthand(getNativeElementProps(state.components.root, props)),
+  root: getNativeElementProps(state.components.root, props),
 };
 ```
 
