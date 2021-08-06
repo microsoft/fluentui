@@ -184,9 +184,14 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   }, [currentValue, state.ref]);
 
   useMount(() => {
-    // If the user passes an out of bounds controlled value, clamp and update their value.
+    // If the user passes an out of bounds controlled value, clamp and update their value onMount.
     if (value !== undefined && (value < min || value > max) && onChange && onChangeCallback.current) {
       onChangeCallback.current(clamp(value, min, max));
+
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.warn('It appears that a controlled Slider has received an unclamped value outside of the min/max.');
+      }
     }
   });
 

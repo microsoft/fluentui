@@ -100,6 +100,7 @@ const useThumbStyles = makeStyles({
     height: 'var(--slider-thumb-size)',
     top: '50%',
     transform: 'translate(-50%, -50%)',
+    outline: 'none',
 
     ':before': {
       position: 'absolute',
