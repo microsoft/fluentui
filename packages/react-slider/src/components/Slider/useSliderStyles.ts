@@ -78,6 +78,22 @@ const useThumbWrapperStyles = makeStyles({
     right: 'calc(var(--slider-thumb-size) / 2)',
     outline: 'none',
   }),
+
+  horizontal: theme => ({
+    ':before': {
+      left: 'calc(var(--slider-thumb-size) / 2)',
+      right: 'calc(var(--slider-thumb-size) / 2)',
+      top: '50%',
+    },
+  }),
+
+  vertical: theme => ({
+    top: 'calc(var(--slider-thumb-size) / 2)',
+    bottom: 'calc(var(--slider-thumb-size) / 2)',
+    ':after': {
+      left: '50%',
+    },
+  }),
 });
 
 /**
@@ -88,10 +104,10 @@ const useThumbStyles = makeStyles({
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
-    top: '50%',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
     borderRadius: '999px',
+    userSelect: 'none',
 
     ':before': {
       position: 'absolute',
@@ -135,6 +151,10 @@ const useThumbStyles = makeStyles({
     },
   }),
 
+  horizontal: theme => ({
+    top: '50%',
+  }),
+
   focusIndicator: createFocusIndicatorStyleRule({
     ':before': {
       outline: 'none',
@@ -150,8 +170,16 @@ const useThumbStyles = makeStyles({
 const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
+  }),
+
+  horizontal: theme => ({
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
+  }),
+
+  vertical: theme => ({
+    top: 'calc(var(--slider-thumb-size) / 2)',
+    bottom: 'calc(var(--slider-thumb-size) / 2)',
   }),
 });
 
@@ -167,13 +195,48 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
 
-  state.className = mergeClasses(rootStyles.root, state.className);
-  state.rail.className = railStyles.rail;
-  state.trackWrapper.className = mergeClasses(trackWrapperStyles.trackWrapper, state.trackWrapper.className);
-  state.track.className = mergeClasses(trackStyles.track, state.track.className);
-  state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
-  state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
-  state.activeRail.className = activeRailStyles.activeRail;
+  state.className = mergeClasses(
+    rootStyles.root,
+    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    state.className,
+  );
+
+  state.rail.className = mergeClasses(
+    railStyles.rail,
+    state.vertical ? railStyles.vertical : railStyles.horizontal,
+    state.rail.className,
+  );
+
+  state.trackWrapper.className = mergeClasses(
+    trackWrapperStyles.trackWrapper,
+    state.vertical ? trackWrapperStyles.vertical : trackWrapperStyles.horizontal,
+    state.trackWrapper.className,
+  );
+
+  state.track.className = mergeClasses(
+    trackStyles.track,
+    state.vertical ? trackStyles.vertical : trackStyles.horizontal,
+    state.track.className,
+  );
+
+  state.thumbWrapper.className = mergeClasses(
+    thumbWrapperStyles.thumbWrapper,
+    state.vertical ? thumbWrapperStyles.vertical : thumbWrapperStyles.horizontal,
+    state.thumbWrapper.className,
+  );
+
+  state.thumb.className = mergeClasses(
+    thumbStyles.thumb,
+    !state.vertical && thumbStyles.horizontal,
+    thumbStyles.focusIndicator,
+    state.thumb.className,
+  );
+
+  state.activeRail.className = mergeClasses(
+    activeRailStyles.activeRail,
+    state.vertical ? activeRailStyles.vertical : activeRailStyles.horizontal,
+    state.activeRail.className,
+  );
 
   return state;
 };

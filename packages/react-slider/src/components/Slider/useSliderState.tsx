@@ -38,6 +38,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     step = 1,
     ariaValueText,
     onChange,
+    vertical = false,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -80,22 +81,19 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     [max, min, onChange, setCurrentValue],
   );
 
-  /**
-   * Calculates the `step` position based off of a `Mouse` or `Touch` event.
-   */
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const size = currentBounds?.width || 0;
-      const position = currentBounds?.left || 0;
+      const size = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
+      const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
 
       const totalSteps = (max - min) / step;
       const stepLength = size / totalSteps;
-      const thumbPosition = ev.clientX;
-      const distance = thumbPosition - position;
+      const thumbPosition = vertical ? ev.clientY : ev.clientX;
+      const distance = vertical ? position - thumbPosition : thumbPosition - position;
       return distance / stepLength;
     },
-    [max, min, step],
+    [max, min, step, vertical],
   );
 
   const onPointerMove = React.useCallback(
@@ -193,9 +191,14 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const valuePercent = getPercent(currentValue!, min, max);
 
-  const thumbStyles = { transform: `translateX(${valuePercent}%)`, ...state.thumb.style };
+  const thumbStyles = {
+    transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
+    ...state.thumb.style,
+  };
 
-  const trackStyles = { width: `${valuePercent}%`, ...state.track.style };
+  const trackStyles = vertical
+    ? { height: `${valuePercent}%`, ...state.track.style }
+    : { width: `${valuePercent}%`, ...state.track.style };
 
   // Root props
   state.as = as;
