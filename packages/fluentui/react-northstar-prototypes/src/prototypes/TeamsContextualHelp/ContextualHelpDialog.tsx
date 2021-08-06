@@ -156,7 +156,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
   const panels = {
     chatsList: (
       <Box id="chatsList-tabpanel">
-        <Header as="h3" tabIndex={0} content="Contextual help for chats list" />
+        <Header as="h3" tabIndex={0} content="Help for chats list" />
         <Header as="h4" content="Navigation" />
         <List>
           <List.Item
@@ -172,7 +172,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
     ),
     messagesList: (
       <Box id="messagesList-tabpanel">
-        <Header as="h3" tabIndex={0} content="Contextual help for messages list" />
+        <Header as="h3" tabIndex={0} content="Help for messages list" />
         <Header as="h4" content="Navigation" />
         <List>
           <List.Item index={0} content="To move to the compose field, press Alt + Shift + C, or Ctrl + Shift + R." />
@@ -195,7 +195,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
     ),
     composeField: (
       <Box id="composeField-tabpanel">
-        <Header as="h3" tabIndex={0} content="Contextual help for message compose field" />
+        <Header as="h3" tabIndex={0} content="Help for message compose field" />
         <Header as="h4" content="Navigation" />
         <List>
           <List.Item index={0} content="To move to the messages list, press Escape." />
