@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.65)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.64..@fluentui/react-avatar_v9.0.0-alpha.65)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.34 ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
 
 ## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.64)
 
