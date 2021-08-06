@@ -101,6 +101,7 @@ const useThumbStyles = makeStyles({
     top: '50%',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
+    borderRadius: '999px',
 
     ':before': {
       position: 'absolute',

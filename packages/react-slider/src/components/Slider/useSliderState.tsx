@@ -117,21 +117,18 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      const { currentTarget, pointerId } = ev;
+      const { pointerId } = ev;
+      const target = ev.target as HTMLElement;
+
+      if (target.setPointerCapture) {
+        target.setPointerCapture(pointerId);
+      }
 
       onPointerDownCallback?.(ev);
 
-      if (currentTarget?.setPointerCapture) {
-        currentTarget?.setPointerCapture(pointerId);
-      }
-
-      disposables.current.push(
-        on(currentTarget, 'pointermove', onPointerMove),
-        on(currentTarget, 'pointerup', onPointerUp),
-        () => {
-          currentTarget.releasePointerCapture(pointerId);
-        },
-      );
+      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
+        target.releasePointerCapture(pointerId);
+      });
 
       onPointerMove(ev);
     },
