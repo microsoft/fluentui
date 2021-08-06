@@ -214,9 +214,8 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
     ),
     global: (
       <Box id="global-tabpanel">
-        <Text tabIndex={0}>Keyboard language is: English (United States).</Text>
-
-        <Header as="h3" content="Global keyboard shortcuts" />
+        <Header as="h3" tabIndex={0} content="Global keyboard shortcuts" />
+        <Text>Keyboard language is: English (United States).</Text>
         <Header as="h4" content="General" />
         <Table header={tableHeader} rows={generalTableRows} />
 
