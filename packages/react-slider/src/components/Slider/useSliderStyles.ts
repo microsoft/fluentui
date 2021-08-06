@@ -47,7 +47,6 @@ const useTrackWrapperStyles = makeStyles({
     top: '50%',
     left: 'calc(var(--slider-thumb-size) * .05)',
     right: 'calc(var(--slider-thumb-size) * .05)',
-    backgroundColor: 'green',
     transform: 'translateY(-50%)',
     '::after': {
       position: 'absolute',
