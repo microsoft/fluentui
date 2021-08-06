@@ -2024,6 +2024,13 @@ export interface ICalendarDayGridStyles {
     bottomLeftCornerDate?: IStyle;
     // (undocumented)
     bottomRightCornerDate?: IStyle;
+    datesAbove?: IStyle;
+    // (undocumented)
+    datesBelow?: IStyle;
+    // (undocumented)
+    datesLeft?: IStyle;
+    // (undocumented)
+    datesRight?: IStyle;
     dayButton?: IStyle;
     dayCell?: IStyle;
     dayIsToday?: IStyle;
@@ -5514,7 +5521,7 @@ export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer>
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];
     keytipStartSequences?: IKeytipTransitionKey[];
-    onEnterKeytipMode?: () => void;
+    onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
     onExitKeytipMode?: (ev?: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>) => void;
     styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * Slider Props
  */
-export interface SliderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface SliderProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the sliderShorthandProps array below

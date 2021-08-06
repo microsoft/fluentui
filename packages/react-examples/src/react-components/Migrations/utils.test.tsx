@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import * as React from 'react';
-import { Source } from '@storybook/addon-docs/blocks';
+import { Source } from '@storybook/addon-docs';
 import { createRenderer } from 'react-test-renderer/shallow';
 import { CodeExample } from './utils';
 
