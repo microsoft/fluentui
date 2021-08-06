@@ -9,6 +9,9 @@ export const CheckboxVariations = () => (
     <Checkbox required>Required Checkbox</Checkbox>
     <Checkbox size="large">Large Checkbox</Checkbox>
     <Checkbox />
+    <Checkbox disabled />
+    <Checkbox disabled defaultChecked="mixed" />
+    <Checkbox disabled defaultChecked={true} />
   </div>
 );
 

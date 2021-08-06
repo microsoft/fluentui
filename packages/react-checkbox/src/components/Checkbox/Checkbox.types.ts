@@ -4,21 +4,21 @@ import { LabelProps } from '@fluentui/react-label';
 
 export type CheckboxSlots = {
   /**
-   * Label that will be rendered next to the checkbox.
-   */
-  // label: LabelProps;
-
-  /**
    * Hidden input that handles the checkbox's functionality.
    */
   input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>;
 
   /**
-   * Indicator to be rendered as the checkbox icon.
+   * Renders the checkbox, with the checkmark icon as its child when checked.
    */
   indicator: React.HtmlHTMLAttributes<HTMLDivElement>;
 };
 
+/**
+ * TODO:
+ *  - Remove as from Omit. Currently it's needed since checkbox Commons shouldn't have as.
+ *  - Instead of extending LabelProps, extend LabelCommons once it's added.
+ */
 export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
   /**
    * Disabled state of the checkbox.
@@ -96,7 +96,7 @@ export interface CheckboxState extends ComponentState<CheckboxSlots>, CheckboxCo
   ref: React.Ref<HTMLElement>;
 
   /**
-   * CSS class for the checkbox element.
+   * CSS class for the container of the input element and indicator slot.
    */
-  checkboxClassName?: string;
+  containerClassName?: string;
 }

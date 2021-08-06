@@ -12,7 +12,7 @@ import { CheckboxProps, CheckboxState, CheckboxSlots } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
 
 /**
- * Array of all shorthand properties listed as the keys of InputSlots
+ * Array of all shorthand properties listed as the keys of CheckboxSlots
  */
 export const checkboxShorthandProps: (keyof CheckboxSlots)[] = ['indicator', 'input'];
 
