@@ -112,6 +112,9 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Shorthand for the paddle that navigates to the previous item. */
   paddlePrevious?: ShorthandValue<CarouselPaddleProps>;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
@@ -160,6 +163,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     design,
     styles,
     variables,
+    disableClickableNav,
   } = props;
 
   const ElementType = getElementType(props);
@@ -441,6 +445,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {
+            if (disableClickableNav) return;
+
             const { index } = itemProps;
 
             setActiveIndex(e, index, true);
