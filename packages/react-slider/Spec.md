@@ -221,6 +221,6 @@ It may be more readable and potentially better to split the `RangedSlider` and `
 
 If there is a way to remove the Label while preserving accessibility it could greatly benefit the render structure (Removes container and label).
 
-### Adding a HTML Range Slider for Accessibility
+### Adding a HTML input of type range for Accessibility
 
-Adding a hidden range slider can potentially assist in handling the Slider's accessibility behavior. It is currently being planned to be added once all API features have been fully implemented.
+Adding a hidden input of type range slider can potentially assist in handling the Slider's accessibility behavior. It is currently being planned to be added once all API features have been fully implemented.
