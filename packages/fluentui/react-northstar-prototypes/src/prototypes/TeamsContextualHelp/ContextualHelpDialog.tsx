@@ -156,7 +156,8 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
   const panels = {
     chatsList: (
       <Box id="chatsList-tabpanel">
-        <Header as="h3" content="Navigation" />
+        <Header as="h3" tabIndex={0} content="Contextual help for chats list" />
+        <Header as="h4" content="Navigation" />
         <List>
           <List.Item
             index={0}
@@ -171,13 +172,14 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
     ),
     messagesList: (
       <Box id="messagesList-tabpanel">
-        <Header as="h3" content="Navigation" />
+        <Header as="h3" tabIndex={0} content="Contextual help for messages list" />
+        <Header as="h4" content="Navigation" />
         <List>
           <List.Item index={0} content="To move to the compose field, press Alt + Shift + C, or Ctrl + Shift + R." />
           <List.Item index={1} content="To move to the chats list, press Escape, or Ctrl + L." />
         </List>
 
-        <Header as="h3" content="Interaction" />
+        <Header as="h4" content="Interaction" />
         <List>
           <List.Item
             index={0}
@@ -185,7 +187,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
           />
           <List.Item
             index={1}
-            content="To reply to a message, press Shift + 10, then select Reply using the Down or Up arrow keys, and confirm with Enter."
+            content="To reply to a message, press Shift + F10, then select Reply using the Down or Up arrow keys, and confirm with Enter."
           />
           <List.Item index={2} content="To copy a message, press Ctrl + C." />
         </List>
@@ -193,13 +195,14 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
     ),
     composeField: (
       <Box id="composeField-tabpanel">
-        <Header as="h3" content="Navigation" />
+        <Header as="h3" tabIndex={0} content="Contextual help for message compose field" />
+        <Header as="h4" content="Navigation" />
         <List>
           <List.Item index={0} content="To move to the messages list, press Escape." />
           <List.Item index={1} content="To move to the chats list, press Ctrl + L." />
         </List>
 
-        <Header as="h3" content="Interaction" />
+        <Header as="h4" content="Interaction" />
         <List>
           <List.Item
             index={0}
@@ -213,19 +216,20 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
       <Box id="global-tabpanel">
         <Text tabIndex={0}>Keyboard language is: English (United States).</Text>
 
-        <Header as="h3" content="General" />
+        <Header as="h3" content="Global keyboard shortcuts" />
+        <Header as="h4" content="General" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h3" content="Navigation" />
+        <Header as="h4" content="Navigation" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h3" content="Messaging" />
+        <Header as="h4" content="Messaging" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h3" content="Meetings, Calls and Calendar" />
+        <Header as="h4" content="Meetings, Calls and Calendar" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h3" content="Debug" />
+        <Header as="h4" content="Debug" />
         <Table header={tableHeader} rows={generalTableRows} />
       </Box>
     ),
@@ -236,14 +240,14 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
 
       <Dialog
-        trapFocus={{ firstFocusableSelector: '.first-focusable' }}
+        /* trapFocus={{ firstFocusableSelector: '.first-focusable' }} */
         open={dialogOpened}
         onOpen={() => {
           setDialogOpened(true);
           setPanel(defaultPanel);
         }}
         onCancel={() => setDialogOpened(false)}
-        header="Keyboard shortcuts"
+        header="Keyboard shortcuts contextual help"
         headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
         footer={{
           children: (Component, props) => (
@@ -287,6 +291,14 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
                 />
                 <Button
                   role="tab"
+                  tabIndex={panel === 'composeField' ? 0 : -1}
+                  aria-selected={panel === 'composeField' ? 'true' : 'false'}
+                  aria-controls="composeField-tabpanel"
+                  content="Message compose field"
+                  onClick={() => handleTabClick('composeField')}
+                />
+                <Button
+                  role="tab"
                   tabIndex={panel === 'global' ? 0 : -1}
                   aria-selected={panel === 'global' ? 'true' : 'false'}
                   aria-controls="global-tabpanel"
@@ -294,14 +306,6 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
                   onClick={() => handleTabClick('global')}
                 />
               </Box>
-              <Button
-                role="tab"
-                tabIndex={panel === 'composeField' ? 0 : -1}
-                aria-selected={panel === 'composeField' ? 'true' : 'false'}
-                aria-controls="composeField-tabpanel"
-                content="Message compose field"
-                onClick={() => handleTabClick('composeField')}
-              />
             </Box>
             <Box>{panels[panel]}</Box>
           </Box>
