@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Make-styles: Types.ts was updated in a way that's not compatible with typescript < v4 (named touples)",
+  "comment": "Make-styles: Types.ts was updated in a way that's not compatible with typescript < v4 (named tuples)",
   "packageName": "@fluentui/make-styles",
   "email": "jspurlin@microsoft.com",
   "dependentChangeType": "patch"
