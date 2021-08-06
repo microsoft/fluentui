@@ -152,7 +152,7 @@ type ObjectShorthandProps<Props = {}, Ref = unknown, As extends keyof JSX.Intrin
 
 All other _Typings_ would be adapted for the changes provided by `ObjectShorthandProps`.
 
-`getSlots` method would stop having special cases for `root` and only a simple `loop` around all provided `slots` would be enough.
+`getSlots` method would stop having special cases for `root` and only a simple loop around all provided `slots` would be enough.
 
 ```ts
 export function getSlots<R extends ObjectShorthandPropsRecord>(
