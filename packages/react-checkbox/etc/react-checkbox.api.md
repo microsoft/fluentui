@@ -12,7 +12,7 @@ import * as React_2 from 'react';
 // @public
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
+// @public
 export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
     checked?: 'mixed' | boolean;
     circular?: boolean;
@@ -47,7 +47,7 @@ export type CheckboxSlots = {
 
 // @public
 export interface CheckboxState extends ComponentState<CheckboxSlots>, CheckboxCommons {
-    checkboxClassName?: string;
+    containerClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }
 
