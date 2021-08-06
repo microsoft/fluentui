@@ -48,15 +48,6 @@ const useTrackWrapperStyles = makeStyles({
     left: 'calc(var(--slider-thumb-size) * .05)',
     right: 'calc(var(--slider-thumb-size) * .05)',
     transform: 'translateY(-50%)',
-    '::after': {
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      background: 'var(--slider-color)',
-      borderRadius: '99px',
-      height: '4px',
-      width: 'calc(var(--slider-thumb-size) / 2)',
-    },
   }),
 });
 
