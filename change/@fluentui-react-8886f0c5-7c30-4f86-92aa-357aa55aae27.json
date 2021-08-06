@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix Callout positioning bug when the target element has changed.",
+  "packageName": "@fluentui/react",
+  "email": "kinhln@microsoft.com",
+  "dependentChangeType": "patch"
+}
