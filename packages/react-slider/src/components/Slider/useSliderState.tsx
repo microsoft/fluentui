@@ -36,7 +36,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     min = 0,
     max = 10,
     step = 1,
-    snapToStep = false,
     ariaValueText,
     onChange,
     onPointerDown: onPointerDownCallback,
@@ -101,13 +100,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      if (snapToStep || step !== 1) {
+      if (step !== 1) {
         updateValue(Math.round((min + step * calculateSteps(ev)) / step) * step, ev);
       } else {
         updateValue(min + step * calculateSteps(ev), ev);
       }
     },
-    [calculateSteps, min, snapToStep, step, updateValue],
+    [calculateSteps, min, step, updateValue],
   );
 
   const onPointerUp = (): void => {
