@@ -8,6 +8,8 @@ const TeamsContextualHelp: React.FunctionComponent = () => {
       <Header as="h1" content="Teams Contextual Help Prototype" />
       <ContextualHelpDialog defaultPanel="chatsList" triggerText="Open chats list help" />
       <ContextualHelpDialog defaultPanel="messagesList" triggerText="Open messages list help" />
+      <ContextualHelpDialog defaultPanel="composeField" triggerText="Open message compose field help" />
+      <ContextualHelpDialog defaultPanel="global" triggerText="Open global keyboard shortcuts help" />
     </Provider>
   );
 }; // End TeamsContextualHelp

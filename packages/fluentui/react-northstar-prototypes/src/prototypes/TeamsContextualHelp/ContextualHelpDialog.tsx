@@ -1,15 +1,14 @@
 /*
 TODO:
-* How to automatically switch to the application mode when tabbing into tab?
  * Should we read the instruction message when navigated into tab list?
 */
 
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { Header, Button, Dialog, Box, Text, Table } from '@fluentui/react-northstar';
+import { Header, Button, Dialog, Box, Text, Table, List } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-const tablistInstruction = 'To navigate use the Left and Right arrow keys';
+const tablistInstruction = 'To navigate use the arrow keys';
 
 let timeout;
 const narrate = (message, priority = 'polite') => {
@@ -92,12 +91,14 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
       ) {
         case 'ArrowRight':
         case 'ArrowLeft':
+        case 'ArrowUp':
+        case 'ArrowDown':
           // Set tabindex="-1" on the previously focused tab
           tabs[focusedTabIndex].setAttribute('tabindex', '-1');
 
           // Compute and set the new focused item index
           setFocusedTabIndex(prevIndex => {
-            const tempIndex = prevIndex + (['ArrowRight'].includes(event.code) ? 1 : -1);
+            const tempIndex = prevIndex + (['ArrowRight', 'ArrowDown'].includes(event.code) ? 1 : -1);
             const newIndex = tempIndex >= tabs.length ? 0 : tempIndex < 0 ? tabs.length - 1 : tempIndex;
 
             // Set tabindex="0" on the newly focused tab and focus it
@@ -118,9 +119,8 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
     if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
       // Begin if 1
       // Narrate the instruction message
-      // const instruction = event.currentTarget.getAttribute('data-instruction');
-      // narrate(instruction);
-      narrate('');
+      const instruction = event.currentTarget.getAttribute('data-instruction');
+      narrate(instruction);
 
       // Determine and save the current tabs
       const newTabs = event.currentTarget.querySelectorAll('[role="tab"]');
@@ -154,9 +154,61 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
   const [dialogOpened, setDialogOpened] = React.useState(false);
 
   const panels = {
-    chatsList: <Text tabIndex={0}>This is the chats panel.</Text>,
-    messagesList: <Text tabIndex={0}>This is the messages panel.</Text>,
+    chatsList: (
+      <Box id="chatsList-tabpanel">
+        <Header as="h3" content="Navigation" />
+        <List>
+          <List.Item
+            index={0}
+            content="To move to the compose field, press Enter, or Alt + Shift + C, or Ctrl + Shift + R."
+          />
+          <List.Item
+            index={1}
+            content="To Move to the messages list for the currently selected chat, press Space bar."
+          />
+        </List>
+      </Box>
+    ),
+    messagesList: (
+      <Box id="messagesList-tabpanel">
+        <Header as="h3" content="Navigation" />
+        <List>
+          <List.Item index={0} content="To move to the compose field, press Alt + Shift + C, or Ctrl + Shift + R." />
+          <List.Item index={1} content="To move to the chats list, press Escape, or Ctrl + L." />
+        </List>
 
+        <Header as="h3" content="Interaction" />
+        <List>
+          <List.Item
+            index={0}
+            content="To react to a message, press Enter, then select the reaction (such as Like) using the Right or Left arrow keys.), and confirm with Enter."
+          />
+          <List.Item
+            index={1}
+            content="To reply to a message, press Shift + 10, then select Reply using the Down or Up arrow keys, and confirm with Enter."
+          />
+          <List.Item index={2} content="To copy a message, press Ctrl + C." />
+        </List>
+      </Box>
+    ),
+    composeField: (
+      <Box id="composeField-tabpanel">
+        <Header as="h3" content="Navigation" />
+        <List>
+          <List.Item index={0} content="To move to the messages list, press Escape." />
+          <List.Item index={1} content="To move to the chats list, press Ctrl + L." />
+        </List>
+
+        <Header as="h3" content="Interaction" />
+        <List>
+          <List.Item
+            index={0}
+            content="To attach a file, press Tab, then Right arrow key until you reach the Attach button, and confirm with Enter."
+          />
+          <List.Item index={1} content="" />
+        </List>
+      </Box>
+    ),
     global: (
       <Box id="global-tabpanel">
         <Text tabIndex={0}>Keyboard language is: English (United States).</Text>
@@ -211,7 +263,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
             <Box>
               <Box
                 role="tablist"
-                aria-label="Keyboard shortcuts context"
+                aria-label="Choose keyboard shortcuts help context"
                 data-instruction={tablistInstruction}
                 onFocus={handleTablistFocus}
                 onBlur={handleTablistBlur}
@@ -233,7 +285,23 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
                   content="Messages list"
                   onClick={() => handleTabClick('messagesList')}
                 />
+                <Button
+                  role="tab"
+                  tabIndex={panel === 'global' ? 0 : -1}
+                  aria-selected={panel === 'global' ? 'true' : 'false'}
+                  aria-controls="global-tabpanel"
+                  content="Global"
+                  onClick={() => handleTabClick('global')}
+                />
               </Box>
+              <Button
+                role="tab"
+                tabIndex={panel === 'composeField' ? 0 : -1}
+                aria-selected={panel === 'composeField' ? 'true' : 'false'}
+                aria-controls="composeField-tabpanel"
+                content="Message compose field"
+                onClick={() => handleTabClick('composeField')}
+              />
             </Box>
             <Box>{panels[panel]}</Box>
           </Box>
