@@ -100,6 +100,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g
@@ -276,6 +277,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g
@@ -438,6 +440,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g
@@ -614,6 +617,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g
@@ -760,6 +764,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g
@@ -936,6 +941,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g
@@ -1082,6 +1088,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
               margin-bottom: 12px;
               width: 100%;
             }
+        role="list"
       >
         <g>
           <g

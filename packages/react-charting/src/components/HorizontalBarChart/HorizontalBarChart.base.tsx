@@ -99,7 +99,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 </FocusZone>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <FocusZone direction={FocusZoneDirection.horizontal}>
-                  <svg className={this._classNames.chart}>
+                  <svg className={this._classNames.chart} role="list">
                     <g
                       id={keyVal}
                       key={keyVal}

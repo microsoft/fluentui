@@ -135,7 +135,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart}>
+            <svg className={this._classNames.chart} role="list">
               <g>{bars[0]}</g>
               <Callout
                 gapSpace={15}

@@ -113,12 +113,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
+    const { lineChartData, chartTitle } = this.props.data;
     const { colors, stackedInfo, calloutPoints } = this._createSet(this.props.data);
     this._calloutPoints = calloutPoints;
-    const isXAxisDateType = getXAxisType(this.props.data.lineChartData!);
+    const isXAxisDateType = getXAxisType(lineChartData!);
     this._colors = colors;
     this._stackedData = stackedInfo.stackedData;
-    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, this.props.data.lineChartData!);
+    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
 
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -143,7 +144,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return (
       <CartesianChart
         {...this.props}
-        points={this.props.data.lineChartData!}
+        chartTitle={chartTitle}
+        points={lineChartData!}
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}

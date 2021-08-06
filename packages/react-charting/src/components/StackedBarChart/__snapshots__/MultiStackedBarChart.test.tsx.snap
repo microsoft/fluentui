@@ -92,6 +92,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -237,6 +238,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -453,6 +455,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -594,6 +597,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -814,6 +818,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -959,6 +964,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -1113,6 +1119,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -1258,6 +1265,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -1657,6 +1665,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
@@ -1802,6 +1811,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   height: 16px;
                   width: 100%;
                 }
+            role="list"
           >
             <g
               aria-label="Multi stacked bar chart"
