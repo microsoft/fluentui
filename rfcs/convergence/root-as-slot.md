@@ -12,7 +12,7 @@ Main changes would be:
 
 1. `root` becomes a regular slot on component state
 2. Support references on every _slot_
-3. Supports Custom Elements on every _slot_
+3. Supports any React Element on every _slot_
 4. Allows a restricted `as` prop on every slot
 5. Stops using `getNativeElementProps` on every slot, will be used only for `root`
 
@@ -21,7 +21,7 @@ Main changes would be:
 There are disparities in how `root` is treated compared to _slots_. Some discussions have popped up due to these divergences between _slots_ and `root`:
 
 1. [Do not support as prop for slots that render native DOM elements] conflicts with [1st rule of ARIA opt-out mechanism]
-2. Support for Custom Elements on _slots_ but not for _root_
+2. Support for any React Elements on _slots_ but not for _root_
 3. Right now `Typings` for `root` aren't available as there's no way to split `root` from internal state.
 4. There's no possible way of passing refs to slots but `root` does
 5. [Primary slot]
@@ -29,7 +29,7 @@ There are disparities in how `root` is treated compared to _slots_. Some discuss
 Major differences between `root` (shown below as 🌿) and _slots_ (shown below as 🎰):
 
 1. References 🌿
-2. Custom Elements as base element 🎰
+2. any React Elements as base element 🎰
 3. `as` prop 🌿
 4. Well defined Types 🎰
 
@@ -193,6 +193,8 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
 - Since `root` becomes a regular slot, it might be possible developers forget to include it in the list of shorthands
 - Since typings become a responsibility of the developer, typing errors might be prone, e.g: bad usage of `Partial` or `Required` (this can be mitigated by forcing optional on props and required on state)
 
+> Both of these could be mitigated easily enough by good documentation and possibly also lint rules or danger checks.
+
 #### ⚠️ [Widening types](https://www.typescriptlang.org/play#example/type-widening-and-narrowing) problem ⚠️
 
 Since _Typings_ for `root` is a subset of the interface that declares the properties of a given component, widening mechanism from assigning types will ensure that `root` _Typings_ are compatible with props which is not necessarily true! This implicates in some conflicts on properties spreading through state and `root` slot.
@@ -240,8 +242,6 @@ return {
   root: getNativeElementProps(state.components.root, props),
 };
 ```
-
-> A possible good solution for this problem, instead of prop filtering with `getNativeElementProps` would be to add linting rules and conformance tests to ensure no custom properties are leaking into the DOM
 
 [1st rule of aria opt-out mechanism]: https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/first-rule-of-aria.md#detailed-proposal
 [do not support as prop for slots that render native dom elements]: https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/simplify-prop-merging.md#do-not-support-as-prop-for-slots-that-render-native-dom-elements
