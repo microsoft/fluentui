@@ -41,8 +41,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.54",
-    "@fluentui/react-utilities": "^9.0.0-alpha.37",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.55",
+    "@fluentui/react-utilities": "^9.0.0-alpha.38",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

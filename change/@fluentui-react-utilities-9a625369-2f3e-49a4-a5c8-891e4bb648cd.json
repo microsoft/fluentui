@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Deletes descendants API",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
