@@ -53,7 +53,6 @@ https://open-ui.org/components/slider.research
 ## Variants
 
 - `vertical` displayed vertically.
-- `fluid` takes up the entire width of the container.
 - `disabled` read-only and does not update state.
 
 ## API
@@ -77,18 +76,16 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | min          | &check;                                                                                 | &check;                                                                               | The min value of the **Slider**.                                                                                                                                             |
 | max          | &check;                                                                                 | &check;                                                                               | The max value of the **Slider**.                                                                                                                                             |
 | step         | &check;                                                                                 | &check;                                                                               | The number of steps that the **Slider's** `value` will increment upon change. When passing the string "marks" **Slider** will step to adjacent values from the `marks` prop. |
+| stepToMarks  | x                                                                                       | x                                                                                     | Whether the **Slider** should step to adjacent `marks`. If `true` and the `marks` prop is not provided, then `marks` will be set to `true`.                                  |
 
 ### Visual behavior props
 
-| Name              | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                   |
-| ----------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| label             | x                                                                                       | &check;                                                                               | The description label of the **Slider**.                                                                      |
-| valueLabel        | x                                                                                       | &check;                                                                               | The current value or unique format to be shown for the **Slider's** `value label`.                            |
-| disabled          | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled)                          |
-| vertical          | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)                           |
-| marks             | x                                                                                       | x                                                                                     | Whether the **Slider** will have marks to visibly display its steps. @default `false` (renders without marks) |
-| fluid             | x                                                                                       | &check;                                                                               | A **Slider** can take the width of its container. @default `false` (width does not fill the container)        |
-| disabledFocusable | X                                                                                       | X                                                                                     | A **Slider** can be disabled and focusable at the same time.                                                  |
+| Name     | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                   |
+| -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| label    | x                                                                                       | &check;                                                                               | The description label of the **Slider**.                                                                      |
+| disabled | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled)                          |
+| vertical | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)                           |
+| marks    | x                                                                                       | x                                                                                     | Whether the **Slider** will have marks to visibly display its steps. @default `false` (renders without marks) |
 
 ### Event handlers props
 
@@ -100,20 +97,23 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
 
-| Name                        | Description                                                                                         | Reason                       |
-| --------------------------- | --------------------------------------------------------------------------------------------------- | ---------------------------- |
-| inputRef                    | Ref for input DOM node.                                                                             | Replaced with ref.           |
-| getA11yValueMessageOnChange | Callback that creates custom accessibility message a screen reader narrates when the value changes. | Replaced with ariaValueLabel |
+| Name                        | Description                                                                                            | Reason                                 |
+| --------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| inputRef                    | Ref for input DOM node.                                                                                | Replaced with ref.                     |
+| getA11yValueMessageOnChange | Callback that creates custom accessibility message a screen reader narrates when the value changes.    | Replaced with ariaValueLabel           |
+| fluid                       | A **Slider** can take the width of its container. @default `false` (width does not fill the container) | Can be done by applying custom styles. |
 
 <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
 
 | Name              | Description                                                                                                                                            | Reason                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | ariaLabel         | A description of the Slider for the benefit of screen readers.                                                                                         | Will be replaced by aria-label                                                       |
+| valueLabel        | The current value or unique format to be shown for the **Slider's** `value label`.                                                                     | Not a core part of the Slider control. It can be implemented separately.             |
 | defaultLowerValue | The lower default value of the uncontrolled ranged slider.                                                                                             | The Ranged Slider's defaultValue will accept an array for the left and right values. |
 | lowerValue        | The lower value of the controlled ranged slider.                                                                                                       | The Ranged Slider's value will accept an array for the left and right values.        |
 | showValue         | Whether to show the value on the right of the Slider.                                                                                                  | Renamed to showValueLabel                                                            |
 | onChanged         | Callback on mouse up, touch end, or after key presses have stopped.                                                                                    | Replaced with onChange                                                               |
+| snapToStep        | Whether to decide that thumb will snap to closest value while moving the slider                                                                        | The control should keep a consistent visual behavior.                                |
 | buttonProps       | Additional props for the actual `role="slider"` (slider box) element. (Note that this element is not actually a button in the current implementation.) | Unsure if it is an essential API feature.                                            |
 | valueFormat       | Custom formatter for the slider value. value                                                                                                           | Label will handle custom formats                                                     |
 | originFromZero    | Whether to attach the origin of slider to zero. Helpful when the range include negatives. @defaultvalue false                                          | Replaced with origin to allow for more control over the component.                   |
@@ -123,7 +123,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 - _**Public**_
   ```jsx
-  <Slider label={label} marks={marks} />
+  <Slider defaultValue={3} marks={marks} />
   ```
 - _**Internal**_
 
@@ -132,16 +132,15 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
     {state.label && <slots.label {...slotProps.label} />}
     <slots.sliderContainer {...slotProps.sliderContainer}>
       <slots.rail {...slotProps.rail} />
-        {state.marks && (
-            <slots.markContainer {...slotProps.markContainer}>
-              <slots.mark {...slotProps.mark} />
-              {state.markLabel && <slots.markLabel {...slotProps.markLabel} />}
-           </slots.markContainer>
-      <slots.track {...slotProps.track} />
-      <slots.thumb {...slotProps.thumb} />
+      <slots.trackWrapper {...slotProps.trackWrapper}>
+        <slots.track {...slotProps.track} />
+      </slots.trackWrapper>
+      {state.marks && <slots.mark {...slotProps.mark} />}
+      <slots.thumbWrapper {...slotProps.thumbWrapper}>
+        <slots.thumb {...slotProps.thumb} />
+      </slots.thumbWrapper>
       <slots.activeRail {...slotProps.activeRail} />
     </slots.sliderContainer>
-    {state.valueLabel && <slots.valueLabel {...slotProps.valueLabel} />}
   </slots.root>
   ```
 
@@ -155,15 +154,18 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
         </div>
         <div className="ms-Slider-container">
             <div className="ms-Slider-rail" />
+            <div className="ms-Slider-trackWrapper">
+                <div className="ms-Slider-track" />
+            </div>
             <div className="ms-Slider-markContainer">
                 <div className="ms-Slider-mark" />
                 <div className="ms-Slider-markLabel" />
             </div>
-            <div className="ms-Slider-track" />
-            <div className="ms-Slider-thumb" />
+            <div className="thumbWrapper">
+                <div className="ms-Slider-thumb" />
+            </div>
             <div className="ms-Slider-activeRail" />
         </div>
-        <div className="ms-Slider-valueLabel" />
     </div>
 ```
 
@@ -175,9 +177,9 @@ _Explain how the component will behave in use, including:_
 
   - **Disabled**
     - When disabled, all touch and mouse events are ignored, and the Slider's value never updates.
-    - Allows focus but is read only. This helps quickly reveal information to blind users why the slider is disabled without needing to scan the entire page. `aria-disabled` is used instead of `disabled.`
+    - Does not allow focus and is read only.
   - **Focused**
-    - Focus indicators only appear when keyboard tabbing/directional keystrokes and disappears when the mosue/touch interactions occur.
+    - Focus indicators only appear when keyboard tabbing/directional keystrokes and disappears when the mouse/touch interactions occur.
 
 - _Interaction_
   - _Keyboard_
@@ -211,14 +213,14 @@ _Explain how the component will behave in use, including:_
 
 ## Topics for Discussion
 
-### Removing Fluid
-
-Having the `Slider` fit the width of the screen could possibly be done by the user by applying custom styling to the `Slider`.
-
 ### RangedSlider Separated
 
 It may be more readable and potentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases and accessibility concerns.
 
-### Removing Label and ValueLabel
+### Removing Label
 
-If there is a way to remove the Label and ValueLabel while preserving accessibility it could greatly benefit the render structure (Removes container, label, and valueLabel slots).
+If there is a way to remove the Label while preserving accessibility it could greatly benefit the render structure (Removes container and label).
+
+### Adding a HTML Range Slider for Accessibility
+
+Adding a hidden range slider can potentially assist in handling the Slider's accessibility behavior. It is currently being planned to be added once all API features have been fully implemented.
