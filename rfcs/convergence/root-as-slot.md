@@ -126,7 +126,7 @@ Although types should be enough to ensure that only supported properties will be
 
 ### Add references to all _slots_
 
-Right now _ref_ is not supported on _Typings_ for _slots_. This proposes that _ref_ should be part of the internal interface of `ObjectShorthandProps` to allow access of references to internal slots of a given component.
+Right now `ref` is not supported on _Typings_ for _slots_. This proposes that `ref` should be part of the internal interface of `ObjectShorthandProps` to allow access of references to internal slots of a given component.
 
 ```ts
 type ObjectShorthandProps<Props = {}, Ref = unknown, As extends keyof JSX.IntrinsicElements = never> = Props &
