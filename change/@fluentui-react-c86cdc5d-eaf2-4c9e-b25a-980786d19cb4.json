@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Pivot's isPivotItem check for IE11 compatibility",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.64)
+
+Thu, 05 Aug 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.63..@fluentui/react-avatar_v9.0.0-alpha.64)
+
+### Changes
+
+- Replace default person icon with Fluent version ([PR #18566](https://github.com/microsoft/fluentui/pull/18566) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.63)
 
