@@ -59,7 +59,7 @@ describe('Slider', () => {
     };
 
     render(<SliderTestComponent />);
-    expect(sliderRef.current!.value).toEqual(0);
+    expect(sliderRef.current.value).toEqual(0);
   });
 
   it('applies the (value) prop', () => {
@@ -72,7 +72,7 @@ describe('Slider', () => {
     };
 
     render(<SliderTestComponent />);
-    expect(sliderRef.current!.value).toEqual(0);
+    expect(sliderRef.current.value).toEqual(0);
   });
 
   it('clamps an initial (defaultValue) that is out of bounds', () => {
@@ -101,6 +101,32 @@ describe('Slider', () => {
     expect(sliderRef.current.value).toEqual(0);
   });
 
+  it('clamps provided controlled (value) that is out of bounds', () => {
+    let sliderRef: any;
+    let imperativeRef: any;
+
+    const SliderTestComponent = () => {
+      const [sliderValue, setSliderValue] = React.useState(-10);
+      sliderRef = React.useRef(null);
+      imperativeRef = React.useRef(null);
+
+      React.useImperativeHandle(imperativeRef, () => ({
+        getSliderValue: () => {
+          return sliderValue;
+        },
+      }));
+
+      const onChange = (value: number) => setSliderValue(value);
+
+      return <Slider value={sliderValue} min={0} max={100} onChange={onChange} ref={sliderRef} />;
+    };
+
+    render(<SliderTestComponent />);
+
+    expect(sliderRef.current.value).toEqual(0);
+    expect(imperativeRef.current.getSliderValue()).toEqual(0);
+  });
+
   it('calls (onChange) when dragged', () => {
     let sliderRef: any;
     const onChange = jest.fn();
@@ -119,7 +145,7 @@ describe('Slider', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[0][0]).toEqual(0);
-    expect(sliderRef.current!.value).toBe(0);
+    expect(sliderRef.current.value).toBe(0);
   });
 
   it('slides to (min/max) and executes onChange', () => {
@@ -143,13 +169,13 @@ describe('Slider', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[0][0]).toEqual(10);
-    expect(sliderRef.current!.value).toBe(10);
+    expect(sliderRef.current.value).toBe(10);
 
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(onChange.mock.calls[1][0]).toEqual(0);
-    expect(sliderRef.current!.value).toBe(0);
+    expect(sliderRef.current.value).toBe(0);
 
     wrapper.unmount();
   });
