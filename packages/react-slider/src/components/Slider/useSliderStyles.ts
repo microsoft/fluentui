@@ -10,12 +10,21 @@ const useRootStyles = makeStyles({
     '--slider-thumb-size': '20px',
     '--slider-color': '#005fb8',
     position: 'relative',
-    height: 'var(--slider-thumb-size)',
-    width: '280px',
     overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
     touchAction: 'none',
+  }),
+
+  horizontal: theme => ({
+    width: '280px',
+    height: 'var(--slider-thumb-size)',
+  }),
+
+  vertical: theme => ({
+    transform: 'scaleY(-1)',
+    width: 'var(--slider-thumb-size)',
+    height: '120px',
   }),
 });
 
@@ -25,16 +34,27 @@ const useRootStyles = makeStyles({
 const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    height: '4px',
-    top: '50%',
-    left: 'calc(var(--slider-thumb-size) * .05)',
-    right: 'calc(var(--slider-thumb-size) * .05)',
-    transform: 'translateY(-50%)',
     background: '#8b8b8b',
     borderRadius: '99px',
     boxSizing: 'border-box',
     border: '1px solid #626262',
     pointerEvents: 'none',
+  }),
+
+  horizontal: theme => ({
+    height: '4px',
+    top: '50%',
+    left: 'calc(var(--slider-thumb-size) * .05)',
+    right: 'calc(var(--slider-thumb-size) * .05)',
+    transform: 'translateY(-50%)',
+  }),
+
+  vertical: theme => ({
+    width: '4px',
+    left: '50%',
+    top: 'calc(var(--slider-thumb-size) * .05)',
+    bottom: 'calc(var(--slider-thumb-size) * .05)',
+    transform: 'translateX(-50%)',
   }),
 });
 
@@ -44,10 +64,18 @@ const useRailStyles = makeStyles({
 const useTrackWrapperStyles = makeStyles({
   trackWrapper: theme => ({
     position: 'absolute',
+  }),
+
+  horizontal: theme => ({
     top: '50%',
     left: 'calc(var(--slider-thumb-size) * .05)',
     right: 'calc(var(--slider-thumb-size) * .05)',
-    transform: 'translateY(-50%)',
+  }),
+
+  vertical: theme => ({
+    left: '50%',
+    top: 'calc(var(--slider-thumb-size) * .05)',
+    bottom: 'calc(var(--slider-thumb-size) * .05)',
   }),
 });
 
@@ -57,12 +85,22 @@ const useTrackWrapperStyles = makeStyles({
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
+    background: 'var(--slider-color)',
+    borderRadius: '99px',
+  }),
+
+  horizontal: theme => ({
     height: '4px',
     top: '50%',
     transform: 'translateY(-50%)',
     minWidth: 'calc(var(--slider-thumb-size) / 2)',
-    background: 'var(--slider-color)',
-    borderRadius: '99px',
+  }),
+
+  vertical: theme => ({
+    width: '4px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    minHeight: 'calc(var(--slider-thumb-size) / 2)',
   }),
 });
 
@@ -90,9 +128,6 @@ const useThumbWrapperStyles = makeStyles({
   vertical: theme => ({
     top: 'calc(var(--slider-thumb-size) / 2)',
     bottom: 'calc(var(--slider-thumb-size) / 2)',
-    ':after': {
-      left: '50%',
-    },
   }),
 });
 
