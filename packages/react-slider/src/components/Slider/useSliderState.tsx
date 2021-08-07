@@ -112,6 +112,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const onPointerUp = (): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
+    thumbRef.current!.focus();
   };
 
   const onPointerDown = React.useCallback(

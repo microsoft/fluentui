@@ -11,7 +11,7 @@ const useRootStyles = makeStyles({
     '--slider-color': '#005fb8',
     position: 'relative',
     height: 'var(--slider-thumb-size)',
-    width: '280px',
+    minWidth: '280px',
     overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
