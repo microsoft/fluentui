@@ -23,7 +23,7 @@ interface AccordionItemExampleProps {
 export const AccordionItemExample = (args: AccordionItemExampleProps) => {
   return (
     <Accordion onToggle={args.onToggle} collapsible>
-      <AccordionItem disabled={args.disabled}>
+      <AccordionItem value="1" disabled={args.disabled}>
         <AccordionHeader
           inline={args.inline}
           icon={args.icon ? <RocketIcon /> : undefined}

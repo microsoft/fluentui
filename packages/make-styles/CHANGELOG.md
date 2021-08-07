@@ -1,8 +1,17 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.30)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.29..@fluentui/make-styles_v9.0.0-alpha.30)
+
+### Changes
+
+- Make-styles: Types.ts was updated in a way that's not compatible with typescript < v4 (named tuples) ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.29)
 

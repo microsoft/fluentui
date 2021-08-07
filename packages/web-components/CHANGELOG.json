@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/web-components_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add border and adjust padding to badge component",
+            "author": "khamu@microsoft.com",
+            "commit": "23bd45d6f8088491cbb18bf2a4532d462bac8a98",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Aug 2021 07:34:12 GMT",
       "tag": "@fluentui/web-components_v1.3.2",
       "version": "1.3.2",
