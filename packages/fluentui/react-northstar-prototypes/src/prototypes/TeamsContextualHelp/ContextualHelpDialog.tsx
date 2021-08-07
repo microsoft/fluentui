@@ -1,7 +1,3 @@
-/*
-TODO:
-* How to implement aria-controls for the tabs?
-*/
 import * as React from 'react';
 import { Header, Button, Dialog, Box, Text, Table, List, Menu, tabListBehavior } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
