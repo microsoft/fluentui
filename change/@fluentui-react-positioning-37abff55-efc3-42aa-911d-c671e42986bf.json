@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "cleanup types, do not export PopperOptions",
+  "packageName": "@fluentui/react-positioning",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,95 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.62)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.61..@fluentui/react-provider_v9.0.0-alpha.62)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.31 ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.61)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.60..@fluentui/react-provider_v9.0.0-alpha.61)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.4 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.30 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.60)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.59..@fluentui/react-provider_v9.0.0-alpha.60)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.29 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.59)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.58..@fluentui/react-provider_v9.0.0-alpha.59)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.46 ([PR #18968](https://github.com/microsoft/fluentui/pull/18968) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.58)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.57..@fluentui/react-provider_v9.0.0-alpha.58)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.27 ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.57)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.56..@fluentui/react-provider_v9.0.0-alpha.57)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.26 ([PR #19023](https://github.com/microsoft/fluentui/pull/19023) by behowell@microsoft.com)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.56)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.55..@fluentui/react-provider_v9.0.0-alpha.56)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.25 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.55)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.54..@fluentui/react-provider_v9.0.0-alpha.55)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.3 ([PR #18925](https://github.com/microsoft/fluentui/pull/18925) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.54)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.53..@fluentui/react-provider_v9.0.0-alpha.54)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.24 ([PR #18560](https://github.com/microsoft/fluentui/pull/18560) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.53)
 

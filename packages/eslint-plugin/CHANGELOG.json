@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable exhaustive-deps rule for useIsomorphicLayoutEffect",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/eslint-plugin_v1.3.2",
       "version": "1.3.2",

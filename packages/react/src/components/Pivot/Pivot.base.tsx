@@ -6,7 +6,9 @@ import { useOverflow } from '../../utilities/useOverflow';
 import { FocusZone, IFocusZone, FocusZoneDirection } from '../../FocusZone';
 import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
 import { Icon } from '../Icon/Icon';
-import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
+import { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import { PivotItem } from './PivotItem';
+import { IPivotItemProps } from './PivotItem.types';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
@@ -54,7 +56,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
 };
 
 const isPivotItem = (item: React.ReactNode): item is PivotItem => {
-  return ((item as React.ReactElement)?.type as React.ComponentType)?.name === PivotItem.name;
+  return React.isValidElement(item) && (item.type as React.ComponentType)?.name === PivotItem.name;
 };
 
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(

@@ -14,6 +14,7 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -174,13 +175,20 @@ export const Popup: React.FC<PopupProps> &
   const [isOpenedByRightClick, setIsOpenedByRightClick] = React.useState(false);
 
   const closeTimeoutId = React.useRef<number | undefined>();
-
+  const mouseDownEventRef = React.useRef<MouseEvent | null>();
   const popupContentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
   const triggerFocusableRef = React.useRef<HTMLElement>();
   const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
+
+  useOnIFrameFocus(open, context.target, (e: Event) => {
+    setOpen(__ => {
+      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
+      return false;
+    });
+  });
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
@@ -222,6 +230,13 @@ export const Popup: React.FC<PopupProps> &
   });
 
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
+    const currentMouseDownEvent = mouseDownEventRef.current;
+    mouseDownEventRef.current = null;
+
+    if (currentMouseDownEvent && !isOutsidePopupElement(getRefs(), currentMouseDownEvent)) {
+      return;
+    }
+
     if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
       trySetOpen(false, e);
       rightClickReferenceObject.current = null;
@@ -231,6 +246,10 @@ export const Popup: React.FC<PopupProps> &
     if (isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
       trySetOpen(false, e);
     }
+  };
+
+  const handleMouseDown = (e: MouseEvent) => {
+    mouseDownEventRef.current = e;
   };
 
   const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
@@ -431,6 +450,7 @@ export const Popup: React.FC<PopupProps> &
 
             {context.target && (
               <>
+                <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
                 <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
                 <EventListener
                   listener={handleDocumentClick(getRefs)}

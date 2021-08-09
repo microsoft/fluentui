@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DescendantProvider, getSlots } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
-import { accordionItemShorthandProps, accordionItemDescendantContext } from './useAccordionItem';
+import { accordionItemShorthandProps } from './useAccordionItem';
 import { AccordionItemContext, useAccordionItemContextValue } from './AccordionItemContext';
 
 /**
@@ -16,15 +16,7 @@ export const renderAccordionItem = (state: AccordionItemState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <AccordionItemContext.Provider value={value}>
-        <DescendantProvider
-          context={accordionItemDescendantContext}
-          set={state.setDescendants}
-          items={state.descendants}
-        >
-          {state.children}
-        </DescendantProvider>
-      </AccordionItemContext.Provider>
+      <AccordionItemContext.Provider value={value}>{state.children}</AccordionItemContext.Provider>
     </slots.root>
   );
 };

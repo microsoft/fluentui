@@ -199,7 +199,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     } else if (transitionKeysContain(this.props.keytipStartSequences!, transitionKey) && !currKtp) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
       this._keyHandled = true;
-      this._enterKeytipMode();
+      this._enterKeytipMode(transitionKey);
       this._warnIfDuplicateKeytips();
     }
   }
@@ -287,7 +287,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   /**
    * Enters keytip mode for this layer
    */
-  private _enterKeytipMode(): void {
+  private _enterKeytipMode(transitionKey?: IKeytipTransitionKey): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
       if (this._keytipManager.delayUpdatingKeytipChange) {
         this._buildTree();
@@ -300,7 +300,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       this._setInKeytipMode(true /* inKeytipMode */);
 
       if (this.props.onEnterKeytipMode) {
-        this.props.onEnterKeytipMode();
+        this.props.onEnterKeytipMode(transitionKey);
       }
     }
   }

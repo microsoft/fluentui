@@ -1,0 +1,16 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "overrides": [
+    {
+      "files": "**/*.{ts,tsx}",
+      "rules": {
+        // The components in this package are all deprecated
+        "deprecation/deprecation": "off"
+      }
+    }
+  ]
+}

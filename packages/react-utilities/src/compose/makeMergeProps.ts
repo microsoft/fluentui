@@ -33,7 +33,7 @@ interface SerializableObject {
 type CssInput = string | SerializableObject | Dictionary | null | undefined | boolean;
 
 /**
- * Concatination helper, which can merge class names together. Skips over falsey values.
+ * Concatenation helper, which can merge class names together. Skips over falsey values.
  *
  * @public
  */

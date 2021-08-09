@@ -202,4 +202,19 @@ describe('makeStyles', () => {
       }
     `);
   });
+
+  it('handles numeric slot names', () => {
+    const computeClasses = makeStyles({
+      42: {
+        color: 'red',
+      },
+    });
+    expect(computeClasses({ dir: 'ltr', renderer })[42]).toEqual('__afhpfp0 fe3e8s9');
+
+    expect(renderer).toMatchInlineSnapshot(`
+      .fe3e8s9 {
+        color: red;
+      }
+    `);
+  });
 });

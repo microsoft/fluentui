@@ -2,6 +2,51 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.1.8",
+      "version": "1.1.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.2",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Jul 2021 07:35:37 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.1.7",
+      "version": "1.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-icon-provider to v1.1.7",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "4cde131df311f85971d5034ccc2b70bcf1da372f",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.1.6",
+      "version": "1.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-icon-provider to v1.1.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "c9c64e89dc89e1f2abd145d132bb0624c40bd4ed",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Jul 2021 07:39:31 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.1.5",
       "version": "1.1.5",
