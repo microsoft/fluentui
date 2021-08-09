@@ -38,6 +38,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               overflow: visible;
             }
       >
+        <title>
+          Stacked Bar chart example
+        </title>
         <g
           transform="translate(0, 0)"
         >
@@ -393,6 +396,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               overflow: visible;
             }
       >
+        <title>
+          Stacked Bar chart example
+        </title>
         <g
           transform="translate(0, 0)"
         >
@@ -748,6 +754,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               overflow: visible;
             }
       >
+        <title>
+          Stacked Bar chart example
+        </title>
         <g
           transform="translate(0, 0)"
         >
@@ -869,6 +878,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               overflow: visible;
             }
       >
+        <title>
+          Stacked Bar chart example
+        </title>
         <g
           transform="translate(0, 0)"
         >
@@ -1224,6 +1236,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               overflow: visible;
             }
       >
+        <title>
+          Stacked Bar chart example
+        </title>
         <g
           transform="translate(0, 0)"
         >
