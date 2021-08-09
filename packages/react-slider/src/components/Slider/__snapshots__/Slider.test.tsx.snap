@@ -17,6 +17,7 @@ exports[`Slider renders Slider correctly 1`] = `
       className="ms-Slider-track"
       style={
         Object {
+          "transition": "none",
           "width": "50%",
         }
       }
@@ -27,6 +28,7 @@ exports[`Slider renders Slider correctly 1`] = `
     style={
       Object {
         "transform": "translateX(50%)",
+        "transition": "none",
       }
     }
   >
