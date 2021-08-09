@@ -106,7 +106,7 @@ export const useCheckbox = (
     if (inputRef.current) {
       inputRef.current.indeterminate = isMixed;
     }
-  }, [isMixed]);
+  }, [inputRef, isMixed]);
 
   return state;
 };
