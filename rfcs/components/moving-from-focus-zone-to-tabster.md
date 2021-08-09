@@ -30,18 +30,14 @@ The most important behavior in these scenarios is navigating with the use of Arr
 - Left/Right
 - Up/Down
 - Left+Up/Right+Down
-
-> TODO Discuss: Should `Tab` also be an option?
-
-> TODO Discuss: Should `Home` `End` `PgUp` `PgDown` be built into this requirement or covered in components?
+- Tab can be used alongside arrow keys
+- Possibility of using Home/End keys to focus first/last elements respectively
 
 ### Grids
 
 The most common example of grid keyboarding would be the infamous [data grid](https://www.w3.org/TR/wai-aria-practices-1.1/examples/grid/dataGrids.html).
 
 Elements should be navigated with all arrow keys in a 2D grid, that **does not need to be perfectly aligned**.
-
-> TODO Discuss: Should `Home` `End` `PgUp` `PgDown` be built into this requirement or covered in components?
 
 ### Nested focusable items
 
@@ -51,7 +47,7 @@ Another common scenario are interactive cards where the card itself is focusable
 
 Nested focusable items should also be able to use list/grid focus behaviors.
 
-> TODO Discuss: Set some clear requirements here
+> TODO #19324
 
 ### Restoring lost focus
 
