@@ -22,6 +22,7 @@ export const FormButton = compose<'button', FormButtonProps, FormButtonStylesPro
     className: formButtonClassName,
     displayName: 'FormButton',
     overrideStyles: true,
+    slots: {},
   },
 );
 
