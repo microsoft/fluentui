@@ -1,9 +1,11 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import { Button, ButtonProps } from '../Button/Button';
-import { FormFieldBaseProps } from './utils/formFieldBase';
+import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 
-interface FormButtonOwnProps extends ButtonProps {}
+interface FormButtonOwnProps extends ButtonProps {
+  type: string;
+}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'
@@ -16,13 +18,15 @@ export const formButtonClassName = 'ui-form__button';
 /**
  * An FormButton renders a Button wrapped by FormField.
  */
-export const FormButton = compose<'button', FormButtonProps, FormButtonStylesProps, SelectedFormFieldCustomProps, {}>(
-  Button,
+export const FormButton = compose<'div', FormButtonProps, FormButtonStylesProps, SelectedFormFieldCustomProps, {}>(
+  _FormFieldBase,
   {
     className: formButtonClassName,
     displayName: 'FormButton',
     overrideStyles: true,
-    slots: {},
+    slots: {
+      control: Button,
+    },
   },
 );
 
