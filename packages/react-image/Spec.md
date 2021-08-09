@@ -10,7 +10,17 @@ Based on the OpenUI research and the Figma specification, Image seems to be one 
 
 - Are there any components would need to use Image?
 - Apart from styling, are there any other functionalities for Image?
+
+  **Conclusion**: Some potential features that Image can have are:
+
+  - fallback image placeholder when image fails to load
+  - onLoading callback when image fails to load
+  - styling helpers
+    These will be addressed on later iterations when needed
+
 - Is there any benefit of having Image as a component? (taking into consideration that it is css styling and we will need to maintain it over time.)
+
+  **Conclusion**: The image component will ensure correct styling and behaviour regardless of the Theme
 
 ## Prior Art
 
@@ -143,56 +153,6 @@ Sample code based on the proposed API:
 <img src="..." class="...">
 ```
 
-## Tech Sync follow-up: Placeholder Image fallback
-
-Currently the Design Spec for Image defines the default browser fallback when an image fails to load. However, during Tech Sync it was porposed as a desired feature for Image. Thus, the two ways we can implement this are:
-
-### - Using the `<figure>` tag
-
-Another way to achieve the fallback placeholder is using the `<figure>` tag which allows nested `<img>` elements.
-
-```jsx
-//Usage:
-  <Image>
-    <Img src=".." alt="..."/>
-    <PlaceholderImage src="..." alt="..."/>
-  </Image>
-
-
-// DOM:
-  <figure>
-    <img src="..." alt="..."/>
-    <img src="..." alt="..."/>
-  <figure>
-```
-
-<!-- #### Difference between `<img/>` and `<figure>` -->
-
-### - Using GlobalEventHandler.onError/onLoad
-
-It is possibe to use the [GlobalEventHandler.onError](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror#element.onerror) and/or [GlobalEventHandler.onLoad](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload) directly on the `<img>` tag in order to show a placeholder image for a load failure.
-
-_Note: The [onerror](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement#errors) is marked as depricated for HTMLImageElement, however there are no other documentation regarding the GlobalEventHandler or if it should be used or not._
-
-Using the onLoad/onError callbacks it is possible to change the `src` and `alt` values so that we would show either the image or the fallback image based on image load success/faliure. Since there is no design specification regarding the type of placeholder it should be, a prop would be added `placeholderImage` that would expect an `src` and an `alt` value from the user.
-
-Usage:
-
-```jsx
-<Image
-  alt="Amanda's avatar"
-  rounded
-  src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBradyaa.jpg"
-  //Because there is no design specificaion, assumtion is made that the placeholder will be provided by the user
-  placeholderImage={{
-    src: 'https://via.placeholder.com/150',
-    alt: 'Placeholder Image',
-  }}
-  height={200}
-  width={200}
-/>
-```
-
 <!-- ## Migration -->
 
 <!-- _Describe what will need to be done to upgrade from the existing implementations:_
@@ -202,7 +162,9 @@ Usage:
 
 ## Accessibility
 
-Images should always include the `alt` attribute along with a description of the content and function of the image to be accessible to screeen readers. Avoid using "image of", "picture of" etc. on the alt description. The images that are only decorative and do not have the structural relevance implied by the semantic element should use the `aria-hidden` which will imply that the image is decoration only.
+Images should include the `alt` attribute that includes a description of the image's content and function to be accessible to assistive technologies. The alt description should be concise and clearly communicate the meaning and purpose of the image on where it was included. Avoid using "image of", "picture of" etc. as it is redundant.
+
+The images that are only decorative and do not have the structural relevance implied by the semantic element should use the `alt=""` (null alt text) or `role="presentation"`/`role="none"` which will remove the semantic meaning of the element. In case the image is needed to be removed from the accessibility tree then `aria-hidden="true"` can be used.
 
 ### Relevant documents
 
