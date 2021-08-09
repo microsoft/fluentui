@@ -1,7 +1,7 @@
 import { STORY_RENDERED } from '@storybook/core-events';
 import addons from '@storybook/addons';
-import TextFieldTemplate from './fixtures/text-field.html';
-import './index';
+
+import { fluentTextField } from './index';
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
   if (name.toLowerCase().startsWith('text-field')) {
@@ -19,6 +19,89 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
 
 export default {
   title: 'Components/Text Field',
+  component: fluentTextField,
+  argTypes: {
+    appearance: {
+      defaultValue: 'outlined',
+      options: ['filled', 'outlined'],
+      control: { type: 'radio' },
+    },
+    autoFocus: {
+      description: 'Automatically focuses the control',
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      description: 'The text field should be submitted with the form but should not be editable',
+      control: { type: 'boolean' },
+    },
+    list: {
+      control: { type: 'text' },
+    },
+    maxlength: {
+      control: { type: 'number' },
+    },
+    name: {
+      control: { type: 'text' },
+    },
+    minlength: {
+      control: { type: 'number' },
+    },
+    pattern: {
+      description: `A regular expression the input's contents must match in order to be valid`,
+      control: { type: 'text' },
+    },
+    placeholder: {
+      description: 'An exemplar value to display in the input field whenever it is empty',
+      defaultValue: 'Placeholder',
+      control: { type: 'text' },
+    },
+    readonly: {
+      control: { type: 'boolean' },
+    },
+    required: {
+      control: { type: 'boolean' },
+    },
+    spellcheck: {
+      control: { type: 'boolean' },
+    },
+    type: {
+      options: ['text', 'email', 'password', 'tel', 'url'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
-export const TextField = () => TextFieldTemplate;
+const TextFieldTemplate = ({
+  appearance,
+  autoFocus,
+  disabled,
+  list,
+  maxlength,
+  name,
+  minlength,
+  pattern,
+  placeholder,
+  readonly,
+  required,
+  size,
+  spellcheck,
+  type,
+}) =>
+  `<fluent-text-field
+    appearance="${appearance}"
+    ${autoFocus ? 'autofocus' : ''}
+    ${disabled ? 'disabled' : ''}
+    list="${list}"
+    maxlength="${maxlength}"
+    name="${name}"
+    minlength="${minlength}"
+    pattern="${pattern}"
+    placeholder="${placeholder}"
+    ${readonly ? 'readonly' : ''}
+    ${required ? 'required' : ''}
+    spellcheck="${spellcheck}"
+    size="${size}"
+    type="${type}"
+  ></fluent-text-field>`;
+
+export const TextField = TextFieldTemplate.bind({});
