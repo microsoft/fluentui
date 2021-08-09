@@ -285,6 +285,7 @@ Components with complex API require many long stories, both for documentation an
 
 ```tsx
 @filename  Button.stories.tsx
+import { Button, ButtonProps } from './Button'; // the component
 import { Meta } from '@storybook/react';
 
 export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
@@ -300,6 +301,7 @@ export default {
 
 ```tsx
 @filename  Button.stories.tsx
+import { Button } from './Button'; // the component
 import { Meta } from '@storybook/react';
 
 export * from 'ButtonDefault.stories';
