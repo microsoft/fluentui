@@ -21,6 +21,7 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
     max?: number;
     min?: number;
     onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
+    snap?: boolean;
     step?: number;
     value?: number;
 }
