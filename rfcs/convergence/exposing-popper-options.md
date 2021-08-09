@@ -138,7 +138,7 @@ export interface ComponentWithPositionedSlotProps {
 
 #### Cons
 
-- Some components will not need all complex configuiration
+- Some components will not need all complex configuration
 - Encourage users to use complicated solutions to their problems
 - Adding configuration required only by a single component is expensive
 - Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
