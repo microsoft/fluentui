@@ -152,7 +152,7 @@ function setButtonActions(): void {
 }
 
 export default {
-  title: 'Anchored region',
+  title: 'Components/Anchored region',
 };
 
 export const base = () => AnchoreRegionTemplate;

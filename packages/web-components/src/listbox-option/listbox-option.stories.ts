@@ -2,7 +2,7 @@ import Examples from './fixtures/base.html';
 import './index';
 
 export default {
-  title: 'Listbox Option',
+  title: 'Components/Listbox Option',
 };
 
 export const ListboxOption = () => Examples;

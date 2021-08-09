@@ -33,7 +33,7 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
 });
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
 };
 
 export const Tooltip = () => TooltipTemplate;

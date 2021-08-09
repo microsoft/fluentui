@@ -2,7 +2,7 @@ import SkeletonTemplate from './fixtures/base.html';
 import './index';
 
 export default {
-  title: 'Skeleton',
+  title: 'Components/Skeleton',
 };
 
 export const Skeleton = () => SkeletonTemplate;

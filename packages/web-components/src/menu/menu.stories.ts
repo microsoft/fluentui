@@ -3,7 +3,7 @@ import '../menu-item';
 import './index';
 
 export default {
-  title: 'Menu',
+  title: 'Components/Menu',
 };
 
 export const Menu = () => MenuTemplate;

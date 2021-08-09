@@ -1,21 +1,26 @@
 import { fluentButton } from './index';
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: fluentButton,
   argTypes: {
     appearance: {
+      description: 'This controls the basic appearances',
       options: ['neutral', 'accent', 'lighweight', 'outline', 'stealth'],
-      control: { type: 'radio' },
+      control: { type: 'select' },
+      default: 'neutral',
+    },
+    disabled: {
+      control: { type: 'boolean' },
     },
   },
 };
 
-const ButtonTemplate = ({ appearance, label }) => `<fluent-button appearance="${appearance}">${label}</fluent-button>`;
+const ButtonTemplate = ({ appearance, disabled, label }) =>
+  `<fluent-button ${disabled ? 'disabled' : ''} appearance="${appearance}">${label}</fluent-button>`;
 
 export const Button = ButtonTemplate.bind({});
 
 Button.args = {
   label: 'Button',
-  appearance: 'accent',
 };

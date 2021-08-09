@@ -3,7 +3,7 @@ import '../listbox-option';
 import './index';
 
 export default {
-  title: 'Listbox',
+  title: 'Components/Listbox',
 };
 
 export const Listbox = () => Base;
