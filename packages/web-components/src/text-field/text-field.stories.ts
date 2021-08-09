@@ -18,7 +18,7 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
 });
 
 export default {
-  title: 'Text Field',
+  title: 'Components/Text Field',
 };
 
 export const TextField = () => TextFieldTemplate;

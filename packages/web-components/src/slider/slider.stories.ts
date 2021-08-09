@@ -18,7 +18,7 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
 });
 
 export default {
-  title: 'Slider',
+  title: 'Components/Slider',
 };
 
 export const Slider = () => Examples;

@@ -4,7 +4,7 @@ import '../listbox';
 import './index';
 
 export default {
-  title: 'Select',
+  title: 'Components/Select',
 };
 
 export const Select = () => Examples;

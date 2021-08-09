@@ -4,7 +4,7 @@ import Examples from './fixtures/base.html';
 import './index';
 
 export default {
-  title: 'Combobox',
+  title: 'Components/Combobox',
 };
 
 export const Combobox = () => Examples;

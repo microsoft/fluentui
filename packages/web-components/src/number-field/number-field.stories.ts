@@ -18,7 +18,7 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
 });
 
 export default {
-  title: 'Number Field',
+  title: 'Components/Number Field',
 };
 
 export const NumberField = () => NumberFieldTemplate;

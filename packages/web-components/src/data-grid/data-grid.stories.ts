@@ -89,7 +89,7 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
     if (headerCell) {
       headerCell.columnDefinition = {
         columnDataKey: 'name',
-        title: 'Name',
+        title: 'Components/Name',
       };
     }
 
@@ -394,7 +394,7 @@ const baseColumns: ColumnDefinition[] = [
 
 const templateColumns: ColumnDefinition[] = [
   {
-    title: 'RowID',
+    title: 'Components/RowID',
     columnDataKey: 'rowId',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -402,7 +402,7 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
   {
-    title: 'Column 1',
+    title: 'Components/Column 1',
     columnDataKey: 'item1',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -410,7 +410,7 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
   {
-    title: 'Column 2',
+    title: 'Components/Column 2',
     columnDataKey: 'item2',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -418,7 +418,7 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
   {
-    title: 'Column 3',
+    title: 'Components/Column 3',
     columnDataKey: 'item3',
     cellTemplate: buttonCellTemplate,
     cellFocusTargetCallback: getFocusTarget,
@@ -434,7 +434,7 @@ function getFocusTarget(cell: DataGridCell): HTMLElement {
 /* eslint-enable @typescript-eslint/ban-types */
 
 export default {
-  title: 'Data Grid',
+  title: 'Components/Data Grid',
 };
 
 export const dataGrid = () => DataGridTemplate;

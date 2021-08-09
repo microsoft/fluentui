@@ -2,7 +2,7 @@ import Examples from './fixtures/tabs.html';
 import './index';
 
 export default {
-  title: 'Tabs',
+  title: 'Components/Tabs',
 };
 
 export const Tabs = () => Examples;

@@ -3,7 +3,7 @@ import DialogFastButtonsTemplate from './fixtures/dialog-button-test.html';
 import './index';
 
 export default {
-  title: 'Dialog',
+  title: 'Components/Dialog',
 };
 
 export const Dialog = (): string => DialogTemplate;

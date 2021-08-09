@@ -2,7 +2,7 @@ import Examples from './fixtures/base.html';
 import './index';
 
 export default {
-  title: 'Accordion',
+  title: 'Components/Accordion',
 };
 
 export const Base = (): string => Examples;

@@ -2,7 +2,7 @@ import BadgeTemplate from './fixtures/badge.html';
 import './index';
 
 export default {
-  title: 'Badge',
+  title: 'Components/Badge',
 };
 
 export const Badge = (): string => BadgeTemplate;
