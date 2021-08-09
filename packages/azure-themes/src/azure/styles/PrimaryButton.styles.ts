@@ -9,22 +9,14 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      backgroundColor: semanticColors.primaryButtonBackground,
       height: StyleConstants.inputControlHeight,
       padding: '0px 16px',
-      color: semanticColors.primaryButtonText,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
-
       selectors: {
         '::after': {
           outlineColor: 'white !important',
         },
       },
-    },
-    rootDisabled: {
-      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-      color: semanticColors.primaryButtonTextDisabled,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
       selectors: {
@@ -36,19 +28,7 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.primaryButtonText,
       borderColor: extendedSemanticColors.primaryCompoundButtonBorder,
     },
-    rootHovered: {
-      backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-      color: semanticColors.primaryButtonTextHovered,
-      borderColor: semanticColors.primaryButtonBackgroundHovered,
-    },
-    rootPressed: {
-      backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed,
-      borderColor: semanticColors.primaryButtonBackgroundPressed,
-    },
     rootChecked: {
-      backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed,
       border: 'none',
     },
     rootCheckedHovered: {
@@ -58,6 +38,9 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     rootCheckedPressed: {
       backgroundColor: semanticColors.primaryButtonBackgroundPressed,
       color: semanticColors.primaryButtonTextPressed,
+    },
+    rootDisabled: {
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
   };
 };
