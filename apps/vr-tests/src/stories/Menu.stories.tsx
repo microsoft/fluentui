@@ -21,19 +21,14 @@ const rootTriggerId = 'rootTrigger';
 storiesOf('Menu - basic', module)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps()
-        .click(`#${rootTriggerId}`)
-        .snapshot('opened')
-        .hover('[role="menuitem"]')
-        .snapshot('hover menuitem')
-        .end()}
+      steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
     >
       {story()}
     </Screener>
   ))
   .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
-    <Menu>
+    <Menu open>
       <MenuTrigger>
         <button id={rootTriggerId}>Toggle menu</button>
       </MenuTrigger>
@@ -49,13 +44,9 @@ storiesOf('Menu - basic', module)
   ));
 
 storiesOf('Menu - secondary content', module)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().click(`#${rootTriggerId}`).snapshot('opened').end()}>
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener>{story()}</Screener>)
   .addStory('default', () => (
-    <Menu>
+    <Menu open>
       <MenuTrigger>
         <button id={rootTriggerId}>Toggle menu</button>
       </MenuTrigger>
@@ -75,13 +66,9 @@ storiesOf('Menu - secondary content', module)
   ));
 
 storiesOf('Menu - groups', module)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().click(`#${rootTriggerId}`).snapshot('opened').end()}>
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener>{story()}</Screener>)
   .addStory('default', () => (
-    <Menu>
+    <Menu open>
       <MenuTrigger>
         <button id={rootTriggerId}>Toggle menu</button>
       </MenuTrigger>
@@ -109,18 +96,13 @@ storiesOf('Menu - groups', module)
 storiesOf('Menu - selection', module)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps()
-        .click(`#${rootTriggerId}`)
-        .snapshot('opened')
-        .click('[role="menuitemcheckbox"]')
-        .snapshot('selected')
-        .end()}
+      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('default', () => (
-    <Menu>
+  .addStory('checkbox', () => (
+    <Menu open>
       <MenuTrigger>
         <button id={rootTriggerId}>Toggle menu</button>
       </MenuTrigger>
@@ -144,18 +126,13 @@ storiesOf('Menu - selection', module)
 storiesOf('Menu - selection groups', module)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps()
-        .click(`#${rootTriggerId}`)
-        .snapshot('opened')
-        .click('[role="menuitemcheckbox"]')
-        .snapshot('selected')
-        .end()}
+      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
     >
       {story()}
     </Screener>
   ))
   .addStory('default', () => (
-    <Menu>
+    <Menu open>
       <MenuTrigger>
         <button id={rootTriggerId}>Toggle menu</button>
       </MenuTrigger>
