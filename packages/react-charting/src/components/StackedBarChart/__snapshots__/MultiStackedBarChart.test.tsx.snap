@@ -92,8 +92,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
@@ -238,8 +240,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
@@ -455,8 +459,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout20"
@@ -597,8 +603,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout20"
@@ -818,8 +826,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout5"
@@ -964,8 +974,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout5"
@@ -1119,8 +1131,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout15"
@@ -1265,8 +1279,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout15"
@@ -1665,8 +1681,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout10"
@@ -1811,8 +1829,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   height: 16px;
                   width: 100%;
                 }
-            role="list"
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout10"
