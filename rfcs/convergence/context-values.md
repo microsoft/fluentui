@@ -112,11 +112,59 @@ function renderBaz(state) {
 
 The problem is this approach violates [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html) as we are calling `React.useMemo()` inside a function. Actually, it's the reason why `contextValue` is being declared in `use*State()` hooks.
 
-## Solutions
-
 It's clear that we would like to avoid having values for React Context in `state` objects and we don't want to violate Rules of Hooks 🤔
 
-_There is no recomended option yet._
+## Solution
+
+### Option 3: Modify render functions to accept context value
+
+Another option is to modify a signature of render functions to include context values as the second param and compute them inside component.
+
+```diff
+function FooComponent() {
+  const state = useFooState()
+
++ const barContextValue = React.useMemo(/* ... */)
++ const bazContextValue = React.useMemo(/* ... */)
+
+- return renderFoo(state)
++ return renderFoo(state, { bar: barContextValue, baz: bazContextValue })
+}
+
+// ---
+
+-function renderFoo(state) {
+-  return <SampleContext.Provider value={state.bazContextValue} />
++function renderFoo(state, contextValues) {
++  return <SampleContext.Provider value={contextValues.baz} />
+}
+```
+
+To improve experience for customers and ourselves we can extract creation of values in a separate hook:
+
+```tsx
+function useFooContextValues() {
+  const barContextValue = React.useMemo(/* ... */);
+  const bazContextValue = React.useMemo(/* ... */);
+
+  return { bar: bazContextValue, baz: bazContextValue };
+}
+
+function FooComponent() {
+  const state = useFooState();
+  const contextValues = useFooContextValues(state);
+
+  return renderFoo(state, contextValues);
+}
+
+function renderFoo(state, contextValues) {
+  return <SampleContext.Provider value={contextValues.baz} />;
+}
+```
+
+- 👎 we should call additional hooks in a component itself
+
+## Discarded solutions
 
 ### Option 1: Make `render` functions hooks
 
@@ -177,51 +225,3 @@ function useBazItem() {
 - 👎 Even if it's enough performant option, it will be anyway slower than `React.useContext()` as we are evaluating additional code during render cycles
 - 👎 (_potentially_) This implementation is tested with React's Concurrent mode, but still could cause issues with React 18
 - 👎 Sooner or later `useContextSelector` will be implemented in React's core ([facebook/react#20646](https://github.com/facebook/react/pull/20646)) and it could have different API than our implementation
-
-### Option 3: Modify render functions to accept context value
-
-Another option is to modify a signature of render functions to include context values as the second param and compute them inside component.
-
-```diff
-function FooComponent() {
-  const state = useFooState()
-
-+ const barContextValue = React.useMemo(/* ... */)
-+ const bazContextValue = React.useMemo(/* ... */)
-
-- return renderFoo(state)
-+ return renderFoo(state, { bar: barContextValue, baz: bazContextValue })
-}
-
-// ---
-
--function renderFoo(state) {
--  return <SampleContext.Provider value={state.bazContextValue} />
-+function renderFoo(state, contextValues) {
-+  return <SampleContext.Provider value={contextValues.baz} />
-}
-```
-
-To improve experience for customers and ourselves we can extract creation of values in a separate hook:
-
-```tsx
-function useFooContextValues() {
-  const barContextValue = React.useMemo(/* ... */);
-  const bazContextValue = React.useMemo(/* ... */);
-
-  return { bar: bazContextValue, baz: bazContextValue };
-}
-
-function FooComponent() {
-  const state = useFooState();
-  const contextValues = useFooContextValues(state);
-
-  return renderFoo(state, contextValues);
-}
-
-function renderFoo(state, contextValues) {
-  return <SampleContext.Provider value={contextValues.baz} />;
-}
-```
-
-- 👎 we should call additional hooks in a component itself
