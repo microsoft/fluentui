@@ -169,12 +169,12 @@ This change can be made in a non-breaking way by deprecating all existing config
 - Positioning capability is consistent across the library
 - Fixes to positioned elements through extra configuration can be used across the library
 - Configuring positioned elements is consistent across components and clear for users
-- If a better underlying library than `Popper` exists, we can replace it by implementing the `PositioniningProps`interface
-- Technically a new `placement`prop is a breaking API change, but can be done in a non-breaking way
+- If a better underlying library than `Popper.js` exists, we can replace it by implementing the `PositioniningProps` interface
+- Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
 
 #### Cons
 
-- Some components will not need all complex configuiration
+- Some components will not need all complex configuration
 - Encourage users to use complicated solutions to their problems
 - Adding configuration required only by a single component is expensive
 - Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
