@@ -43,6 +43,7 @@ storiesOf('Menu - basic', module)
 
 storiesOf('Menu - secondary content', module)
   .addDecorator(story => <Screener>{story()}</Screener>)
+  .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
@@ -65,6 +66,7 @@ storiesOf('Menu - secondary content', module)
 
 storiesOf('Menu - groups', module)
   .addDecorator(story => <Screener>{story()}</Screener>)
+  .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
@@ -99,6 +101,7 @@ storiesOf('Menu - selection', module)
       {story()}
     </Screener>
   ))
+  .addDecorator(FluentProviderDecorator)
   .addStory('checkbox', () => (
     <Menu open>
       <MenuTrigger>
@@ -129,6 +132,7 @@ storiesOf('Menu - selection groups', module)
       {story()}
     </Screener>
   ))
+  .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
