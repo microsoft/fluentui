@@ -281,7 +281,7 @@ Components with complex API require many long stories, both for documentation an
 2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
 3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories besides the default export.
 
-##### Good Example 1 - single file
+**Good Example 1 - single file**
 
 Button.stories.tsx:
 
@@ -297,7 +297,7 @@ export default {
 } as Meta;
 ```
 
-##### Good Example 2 - multiple files
+**Good Example 2 - multiple files**
 
 Button.stories.tsx:
 
@@ -326,7 +326,7 @@ ButtonWithIcon.stories.tsx:
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
-##### Bad example - multiple files
+**Bad example - multiple files**
 
 ButtonDefault.stories.tsx:
 
@@ -381,7 +381,7 @@ Storybook will render a Controls table under this story.
 
 Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilize. For example, when a button is necessary to demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
 
-##### Do:
+**Do:**
 
 ```tsx
 import { Button } from '@fluentui/react-button';
@@ -397,7 +397,7 @@ export const Default = (props: PopoverProps) => (
 );
 ```
 
-##### Don’t:
+**Don’t:**
 
 ```tsx
 export const Default = (props: PopoverProps) => (
