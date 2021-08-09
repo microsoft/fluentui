@@ -95,36 +95,72 @@ export interface MenuProps extends PositioningProps {}
 export interface PopoverProps extends PositioningProps {}
 ```
 
-### `positioning` configuration object
+### Shorhand `placement` configuration
 
 The next step to this proposal is to make sure that all components which use a positioned element should allow users
-to configure popper through a `positioning` configuration object:
+to configure popper through a `placement` prop that is behaves like a shorthand. The usage examples below will detail
+the usage of this shorthand.
 
 ```tsx
 import { PositioningProps } from '@fluentui/react-positioning';
 
 export interface TooltipProps {
-  positioning?: PositioningProps;
+  placement?: PositioningProps;
 }
 
 export interface MenuProps {
-  positioning?: PositioningProps;
+  placement?: PositioningProps;
 }
 
 export interface PopoverProps {
-  positioning?: PositioningProps;
+  placement?: PositioningProps;
 }
 ```
 
-Slots that use popper should use a similar pattern if a top level `positioning` option is not clear enough:
+Example usage:
+
+```tsx
+// Shorthand for `position` and `align` options
+<PositionedComponent placement="above-start">
+<PositionedComponent placemant={{position: 'above', align: 'start'}}>
+
+// Also allows more complex configuration
+<PositionedComponent placement={{position: 'above', align: 'start', autoSize: true}}>
+```
+
+Slots that use popper should use a similar pattern if a top level `placement` option is not clear enough:
 
 ```tsx
 import { PositioningProps } from '@fluentui/react-positioning';
 
 export interface ComponentWithPositionedSlotProps {
-  positionedSlot: React.HTMLAttributes<HTMLElement> & { positioning?: PositioningProps };
+  positionedSlot: React.HTMLAttributes<HTMLElement> & { placement?: PositioningProps };
 }
 ```
+
+This way we can safely configure `usePopper` internally with a simple object spread that does not require knowing what
+props are used by the component props:
+
+```tsx
+// Need to be aware of user props and make sure they are added to the hook usage
+usePopper({
+  align: state.align,
+  position: state.position,
+  target: state.target,
+  coverTarget: state.coverTarget,
+  offset: state.offset,
+});
+
+// Guaranteed to configure based on user props, and any component specific modifications after
+usePopper({
+  ...placement,
+  // add state specific overrides below
+  offset: state.modifiedOffset,
+});
+```
+
+This change can be made in a non-breaking way by deprecating all existing configuration props outside of the proposed
+`placement` prop and providing support until a specific release in the future (beta/initial release/next major).
 
 ### Pros and Cons
 
@@ -134,7 +170,7 @@ export interface ComponentWithPositionedSlotProps {
 - Fixes to positioned elements through extra configuration can be used across the library
 - Configuring positioned elements is consistent across components and clear for users
 - If a better underlying library than `Popper` exists, we can replace it by implementing the `PositioniningProps`interface
-- Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
+- Technically a new `placement`prop is a breaking API change, but can be done in a non-breaking way
 
 #### Cons
 
