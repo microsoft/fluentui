@@ -21,7 +21,7 @@ export interface SliderPublicRef {
  */
 export type SliderSlots = {
   /**
-   * The **Slider's** base. It is used to visibly display the min and max selectable values.
+   * The Slider's base. It is used to visibly display the min and max selectable values.
    */
   rail: React.HTMLAttributes<HTMLElement>;
 
@@ -31,7 +31,7 @@ export type SliderSlots = {
   trackWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
-   * The bar showing the current selected area adjacent to the **Slider's** thumb.
+   * The bar showing the current selected area adjacent to the Slider's thumb.
    */
   track: React.HTMLAttributes<HTMLElement>;
 
@@ -41,43 +41,44 @@ export type SliderSlots = {
   thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
 
   /**
-   * The draggable icon used to select a given value from the **Slider**.
+   * The draggable icon used to select a given value from the Slider.
+   * This is the element containing `role = 'slider'`.
    */
   thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
 
   /**
-   * The area in which the **Slider's** rail allows for the thumb to be dragged.
+   * The area in which the Slider's rail allows for the thumb to be dragged.
    */
   activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
 };
 
 export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
-   * The starting value for an `uncontrolled` **Slider**.
+   * The starting value for an `uncontrolled` Slider.
    * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
 
   /**
-   * The current value of the `controlled` **Slider**.
+   * The current value of the `controlled` Slider.
    * Mutually exclusive with `defaultValue` prop.
    */
   value?: number;
 
   /**
-   * The min value of the **Slider**.
+   * The min value of the Slider.
    * @default 0
    */
   min?: number;
 
   /**
-   * The max value of the **Slider**.
+   * The max value of the Slider.
    * @default 10
    */
   max?: number;
 
   /**
-   * The number of steps that the **Slider's** `value` will increment upon change.
+   * The number of steps that the Slider's `value` will increment upon change.
    * @default 1
    */
   step?: number;
@@ -88,7 +89,7 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
 
   /**
-   * The **Slider's** current value label to be read by the screen reader.
+   * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
 }

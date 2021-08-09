@@ -5,8 +5,7 @@ import { renderSlider } from './renderSlider';
 import { useSliderStyles } from './useSliderStyles';
 
 /**
- * Define a styled Slider, using the `useSlider` hook.
- * {@docCategory Slider}
+ * Define a styled Slider, using the `useSlider` hook
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref: any) => {

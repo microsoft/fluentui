@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
+import { useId, useControllableState } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -116,19 +116,26 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   };
 
   const onPointerDown = React.useCallback(
-    (ev: React.PointerEvent<HTMLDivElement>): void => {
-      const { pointerId } = ev;
-      const target = ev.target as HTMLElement;
+    (ev): void => {
+      const { pointerId, target } = ev;
 
-      if (target.setPointerCapture) {
-        target.setPointerCapture(pointerId);
-      }
-
+      target.setPointerCapture?.(pointerId);
       onPointerDownCallback?.(ev);
 
-      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture(pointerId);
-      });
+      // const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
+      //   element.addEventListener(eventName, callback);
+      //   return () => element.removeEventListener(eventName, callback);
+
+      disposables.current.push(
+        target.addEventListener('pointermove', onPointerMove),
+        target.addEventListener('pointerup', onPointerUp),
+
+        () => {
+          target.releasePointerCapture(pointerId);
+          target.removeEventListener('pointermove', onPointerMove);
+          target.removeEventListener('pointerup', onPointerUp);
+        },
+      );
 
       onPointerMove(ev);
     },
@@ -179,18 +186,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       state.ref.current.focus = () => thumbRef?.current?.focus();
     }
   }, [currentValue, state.ref]);
-
-  useMount(() => {
-    // If the user passes an out of bounds controlled value, clamp and update their value onMount.
-    if (value !== undefined && (value < min || value > max) && onChange && onChangeCallback.current) {
-      onChangeCallback.current(clamp(value, min, max));
-
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('It appears that a controlled Slider has received an unclamped value outside of the min/max.');
-      }
-    }
-  });
 
   const valuePercent = getPercent(currentValue!, min, max);
 
