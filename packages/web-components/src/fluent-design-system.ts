@@ -1,4 +1,4 @@
-import { DesignSystem } from "@microsoft/fast-foundation";
+import { DesignSystem } from '@microsoft/fast-foundation';
 
 /**
  * Provides a design system for the specified element either by returning one that was
@@ -8,5 +8,5 @@ import { DesignSystem } from "@microsoft/fast-foundation";
  * @public
  */
 export function provideFluentDesignSystem(element?: HTMLElement): DesignSystem {
-    return DesignSystem.getOrCreate(element).withPrefix("fluent");
+  return DesignSystem.getOrCreate(element).withPrefix('fluent');
 }

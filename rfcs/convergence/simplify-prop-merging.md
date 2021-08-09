@@ -198,43 +198,6 @@ const state = {
 
 The `as` prop is now a prop of the component being rendered in the slot and no longer defines what is rendered in the slot.
 
-### Do not support `as` prop for slots that render native DOM elements
-
-In the previous section, it should be noted that `fooSlot` does not use the `as` prop since it is an element that renders a native HTML element. We propose to enforce this.
-
-Enforcing this requirement will give type safety to our native HTML slots, and make sure consumers don't unknowingly dangerously spread DOM attributes.
-
-It is still possible to render different DOM elements, but this now has to be done explicitly without any type safety. It's also not easy to provide type safety easily in this case currently in Typescript.
-
-```tsx
-// ❌ Not a recommended solution
-// `components` can be exposed as a prop, but this breaks type safety
-<Component components={{ fooSlot: 'div' }} fooSlot={{ tabIndex: 0 }} />
-```
-
-```tsx
-// ✅ Recommended way
-// Can be done by creating component state variants
-const state = useComponent();
-state.components.fooSlot = 'div';
-
-// We have similar utilities for safe attributes for the native slot
-// Can be done but still not ideal
-state.fooSlot = filterNativeDivProps(state.fooSlot);
-```
-
-```tsx
-// ✅ Recommended way, let the consumer control everything 🚀
-// We return what would originally be rendered in the children render function
-<Component
-  fooSlot={{
-    children: (Component /* a real element type, for example "div" */, props /* a real type for props */) => (
-      <CustomComponent />
-    ),
-  }}
-/>
-```
-
 ### Retire mergeProps 🙊
 
 Since internally even the Fluent team is mutating state, there is no clear reason why we should prevent consumers from doing so with `defaultProps`. In fact even if consumers do use `defaultProps` there is still nothing that **stops** them from mutating state. We show in the following example, two ways of doing the exact same thing. Both options are currently equally possible and valid.
