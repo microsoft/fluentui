@@ -83,6 +83,12 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   step?: number;
 
   /**
+   * Whether to render the **Slider** vertically.
+   * @default `false` (renders horizontally)
+   */
+  vertical?: boolean;
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
