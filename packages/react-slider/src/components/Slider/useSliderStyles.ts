@@ -30,11 +30,18 @@ const useRailStyles = makeStyles({
     left: 'calc(var(--slider-thumb-size) * .05)',
     right: 'calc(var(--slider-thumb-size) * .05)',
     transform: 'translateY(-50%)',
-    background: '#8b8b8b',
     borderRadius: '99px',
     boxSizing: 'border-box',
-    border: '1px solid #626262',
     pointerEvents: 'none',
+  }),
+
+  enabled: theme => ({
+    background: '#8b8b8b',
+    border: '1px solid #626262',
+  }),
+
+  disabled: theme => ({
+    background: '#ababab',
   }),
 });
 
@@ -61,8 +68,15 @@ const useTrackStyles = makeStyles({
     top: '50%',
     transform: 'translateY(-50%)',
     minWidth: 'calc(var(--slider-thumb-size) / 2)',
-    background: 'var(--slider-color)',
     borderRadius: '99px',
+  }),
+
+  enabled: theme => ({
+    background: 'var(--slider-color)',
+  }),
+
+  disabled: theme => ({
+    background: '#868686',
   }),
 });
 
@@ -121,7 +135,17 @@ const useThumbStyles = makeStyles({
       borderRadius: '999px',
       zIndex: '-1',
     },
+  }),
 
+  focusIndicator: createFocusIndicatorStyleRule({
+    ':before': {
+      outline: 'none',
+      boxSizing: 'border-box',
+      border: 'calc(var(--slider-thumb-size) * .05) solid black',
+    },
+  }),
+
+  enabled: theme => ({
     ':hover': {
       ':before': {
         boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
@@ -135,11 +159,9 @@ const useThumbStyles = makeStyles({
     },
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule({
+  disabled: theme => ({
     ':before': {
-      outline: 'none',
-      boxSizing: 'border-box',
-      border: 'calc(var(--slider-thumb-size) * .05) solid black',
+      background: 'rgb(174,174,174)',
     },
   }),
 });
@@ -168,11 +190,24 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const activeRailStyles = useActiveRailStyles();
 
   state.className = mergeClasses(rootStyles.root, state.className);
-  state.rail.className = railStyles.rail;
+  state.rail.className = mergeClasses(
+    railStyles.rail,
+    state.disabled ? railStyles.disabled : railStyles.enabled,
+    state.rail.className,
+  );
   state.trackWrapper.className = mergeClasses(trackWrapperStyles.trackWrapper, state.trackWrapper.className);
-  state.track.className = mergeClasses(trackStyles.track, state.track.className);
+  state.track.className = mergeClasses(
+    trackStyles.track,
+    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.track.className,
+  );
   state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
-  state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
+  state.thumb.className = mergeClasses(
+    thumbStyles.thumb,
+    thumbStyles.focusIndicator,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
+    state.thumb.className,
+  );
   state.activeRail.className = activeRailStyles.activeRail;
 
   return state;

@@ -83,6 +83,13 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   step?: number;
 
   /**
+   *  Whether to render the **Slider** as disabled.
+   *
+   * @default `false` (renders enabled)
+   */
+  disabled?: boolean;
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
