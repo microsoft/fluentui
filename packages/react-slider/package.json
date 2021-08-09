@@ -30,7 +30,6 @@
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
@@ -40,6 +39,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-label": "^9.0.0-alpha.24",
     "@fluentui/react-make-styles": "^9.0.0-alpha.55",
     "@fluentui/react-utilities": "^9.0.0-alpha.38",
     "tslib": "^2.1.0"

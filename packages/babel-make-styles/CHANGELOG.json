@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Running prettier.",
+            "author": "czearing@outlook.com",
+            "commit": "c8aa3a59fbe9a59ca90077418d7c82de9f31ee13",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.34",
       "version": "9.0.0-alpha.34",
