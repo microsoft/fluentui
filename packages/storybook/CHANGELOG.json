@@ -2,6 +2,51 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.51",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-storybook to v9.0.0-alpha.0",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8a09087b4215a36a50b6d3478cd2b74155c9c630",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.50",
+            "author": "behowell@microsoft.com",
+            "commit": "c0e62e6319d0e35c3e630382e891d6bee2795ec0",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Aug 2021 07:34:12 GMT",
       "tag": "@fluentui/storybook_v1.0.0",
       "version": "1.0.0",

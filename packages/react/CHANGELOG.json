@@ -2,6 +2,56 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react_v8.27.1",
+      "version": "8.27.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Callout positioning bug when the target element has changed.",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/react_v8.27.0",
+      "version": "8.27.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "improve calendar selection border by making an after element to not adjust cell spacing, and remove borders between selected days in contiguous ranges",
+            "author": "lorejoh12@gmail.com",
+            "commit": "e5561d911ae300c9a20b4c78874d73093955838f",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix Pivot's isPivotItem check for IE11 compatibility",
+            "author": "behowell@microsoft.com",
+            "commit": "5369d330c7b0983efba35c6e945340506007c6c8",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix website and legacy demo in IE 11",
+            "author": "elcraig@microsoft.com",
+            "commit": "b84103743a020909225498ffc628915be0855eb8",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/example-data to v8.2.6",
+            "author": "behowell@microsoft.com",
+            "commit": "c0e62e6319d0e35c3e630382e891d6bee2795ec0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Aug 2021 07:39:30 GMT",
       "tag": "@fluentui/react_v8.26.2",
       "version": "8.26.2",

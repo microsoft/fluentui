@@ -12,8 +12,19 @@ import {
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
-import { PopperOptions } from './types';
+import { PositioningProps } from './types';
+
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
+
+interface PopperOptions extends PositioningProps {
+  /**
+   * If false, delays Popper's creation.
+   * @default true
+   */
+  enabled?: boolean;
+
+  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
+}
 
 //
 // Dev utils to detect if nodes have "autoFocus" props.
@@ -372,7 +383,7 @@ export function usePopper(
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
   React.useImperativeHandle(
-    options.containerRef,
+    options.popperRef,
     () => ({
       updatePosition: () => {
         popperInstanceRef.current?.update();

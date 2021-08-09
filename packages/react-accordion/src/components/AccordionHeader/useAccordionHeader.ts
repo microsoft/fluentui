@@ -1,12 +1,7 @@
 import * as React from 'react';
-import { useMergedRefs, useId, useDescendants, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { useMergedRefs, useId, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
-import {
-  useAccordionItemContext,
-  useAccordionItemDescendant,
-  accordionItemDescendantContext,
-  AccordionItemDescendant,
-} from '../AccordionItem/index';
+import { useAccordionItemContext } from '../AccordionItem/index';
 import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
 import { useARIAButton } from '@fluentui/react-aria';
 
@@ -29,21 +24,12 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
   const id = useId('accordion-header-', props.id);
-  const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const innerRef = React.useRef<HTMLElement>(null);
-
-  useAccordionItemDescendant(
-    {
-      element: innerRef.current,
-      id,
-    },
-    0,
-  );
 
   const buttonShorthand = useARIAButton(props.button, {
     id,
     disabled,
-    'aria-controls': panel?.id,
+    // 'aria-controls': panel?.id,
     children: React.Fragment,
   });
 
