@@ -7,7 +7,6 @@ import { CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButton
  * Consts listing which props are shorthand props.
  */
 export const compoundButtonShorthandPropsCompat: CompoundButtonShorthandPropsCompat[] = [
-  'children',
   'contentContainer',
   'icon',
   'secondaryContent',

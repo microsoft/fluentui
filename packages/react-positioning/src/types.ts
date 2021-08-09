@@ -23,9 +23,7 @@ export type PopperRefHandle = { updatePosition: () => void };
 export type PopperVirtualElement = PopperJs.VirtualElement;
 
 export interface PositioningProps {
-  /**
-   * Alignment for the component.
-   */
+  /** Alignment for the component. */
   align?: Alignment;
 
   /** The element which will define the boundaries of the popper position for the flip behavior. */
@@ -35,7 +33,7 @@ export interface PositioningProps {
   overflowBoundary?: Boundary;
 
   /** An imperative handle to Popper methods. */
-  containerRef?: React.Ref<PopperRefHandle>;
+  popperRef?: React.Ref<PopperRefHandle>;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
@@ -96,19 +94,4 @@ export interface PositioningProps {
    * Modifies position and alignment to cover the target
    */
   coverTarget?: boolean;
-}
-
-export interface PopperOptions extends PositioningProps {
-  /**
-   * If false, delays Popper's creation.
-   * @default true
-   */
-  enabled?: boolean;
-
-  /**
-   * Array of conditions to be met in order to trigger a subsequent render to reposition the elements.
-   */
-  positioningDependencies?: React.DependencyList;
-
-  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
 }

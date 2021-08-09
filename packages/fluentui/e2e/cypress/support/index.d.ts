@@ -31,6 +31,7 @@ declare namespace Cypress {
     nothingIsFocused(): Chainable<Element>;
     simulatePageMove(): Chainable<Element>;
     clickOn(selector: string): Chainable<Element>;
+    mouseDownOn(selector: string): Chainable<Element>;
     focusOn(selector: string): Chainable<Element>;
     hover(selector: string): Chainable<Element>;
     resizeViewport(width: number): Chainable<Element>;

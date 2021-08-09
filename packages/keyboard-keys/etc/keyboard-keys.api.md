@@ -700,7 +700,7 @@ declare namespace keyCodes {
         NonConvert_2 as NonConvert,
         Accept_2 as Accept,
         ModeChange_2 as ModeChange,
-        Space,
+        Space_2 as Space,
         PageUp_2 as PageUp,
         PageDown_2 as PageDown,
         End_2 as End,
@@ -1294,7 +1294,10 @@ export const Soft3 = "Soft3";
 export const Soft4 = "Soft4";
 
 // @public (undocumented)
-const Space = 32;
+export const Space = " ";
+
+// @public (undocumented)
+const Space_2 = 32;
 
 // @public (undocumented)
 export const SpeechCorrectionList = "SpeechCorrectionList";

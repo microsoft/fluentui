@@ -6,26 +6,48 @@
 
 import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = never;
+export type CheckboxDefaultedProps = 'label' | 'indicator' | 'input' | 'size' | 'labelPosition';
 
 // @public
-export interface CheckboxProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+export interface CheckboxOnChangeData {
+    // (undocumented)
+    checked: 'mixed' | boolean;
 }
 
 // @public
-export type CheckboxShorthandProps = never;
+export interface CheckboxProps extends Omit<ComponentPropsCompat, 'children'>, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked' | 'onChange'> {
+    checked?: 'mixed' | boolean;
+    circular?: boolean;
+    defaultChecked?: 'mixed' | boolean;
+    disabled?: boolean;
+    id?: string;
+    indicator?: ShorthandProps<ComponentPropsCompat>;
+    input?: ShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
+    label?: ShorthandProps<LabelProps>;
+    labelPosition?: 'before' | 'after';
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    required?: boolean;
+    rootId?: string;
+    size?: 'medium' | 'large';
+}
+
+// @public
+export type CheckboxShorthandProps = 'label' | 'indicator' | 'input';
 
 // @public
 export const checkboxShorthandProps: CheckboxShorthandProps[];
 
 // @public
 export interface CheckboxState extends ComponentStateCompat<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+    checkboxClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }
 
@@ -37,7 +59,6 @@ export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>, 
 
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
-
 
 // (No @packageDocumentation comment for this package)
 

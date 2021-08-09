@@ -229,6 +229,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
           selectedSuggestionIndex={selectedSuggestionIndex}
           selectedFooterIndex={selectedFooterIndex}
           selectedHeaderIndex={selectedHeaderIndex}
+          gapSpace={20}
         />
       </>
     );

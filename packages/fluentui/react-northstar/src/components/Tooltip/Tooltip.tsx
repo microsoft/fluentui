@@ -66,6 +66,9 @@ export interface TooltipProps
   /** Defines whether tooltip is displayed. */
   open?: boolean;
 
+  /** Defines wether tooltip is subtle  */
+  subtle?: boolean;
+
   /**
    * Event for request to change 'open' value.
    * @param event - React's original SyntheticEvent.
@@ -120,6 +123,7 @@ export const Tooltip: React.FC<TooltipProps> &
     unstable_disableTether,
     unstable_pinned,
     autoSize,
+    subtle,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -188,6 +192,7 @@ export const Tooltip: React.FC<TooltipProps> &
           placement: popperProps.placement,
           pointing,
           pointerRef: pointerTargetRef,
+          subtle,
         }),
       generateKey: false,
       overrideProps: getContentOverrideProps,
@@ -205,7 +210,7 @@ export const Tooltip: React.FC<TooltipProps> &
   };
 
   const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
-    clearTimeout(closeTimeoutId.current);
+    context.target.defaultView.clearTimeout(closeTimeoutId.current);
 
     if (newOpen) {
       trySetOpen(true, e);
@@ -239,6 +244,10 @@ export const Tooltip: React.FC<TooltipProps> &
       _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
     },
   };
+  let calculatedOffset = offset;
+  if (typeof calculatedOffset === 'undefined') {
+    calculatedOffset = pointing ? [4, 4] : [0, 0];
+  }
 
   const element = (
     <>
@@ -254,7 +263,7 @@ export const Tooltip: React.FC<TooltipProps> &
         <Popper
           align={align}
           flipBoundary={flipBoundary}
-          offset={offset}
+          offset={calculatedOffset}
           overflowBoundary={overflowBoundary}
           pointerTargetRef={pointerTargetRef}
           popperRef={popperRef}
@@ -282,7 +291,7 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  pointing: true,
+  subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
 Tooltip.propTypes = {
@@ -291,6 +300,7 @@ Tooltip.propTypes = {
     content: false,
   }),
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
+  subtle: PropTypes.bool,
   children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,

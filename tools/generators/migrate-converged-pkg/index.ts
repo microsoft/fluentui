@@ -14,10 +14,11 @@ import {
   updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
-import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
+
 import * as path from 'path';
 
 import { PackageJson, TsConfig } from '../../types';
+import { arePromptsEnabled, prompt, updateJestConfig } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -43,14 +44,43 @@ type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
 
-  if (schema.stats) {
-    printStats(tree, schema);
+  const validatedSchema = await validateSchema(tree, schema);
+
+  if (hasSchemaFlag(validatedSchema, 'stats')) {
+    printStats(tree, validatedSchema);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
 
-  validateUserInput(tree, schema);
+  if (hasSchemaFlag(validatedSchema, 'all')) {
+    runBatchMigration(tree, userLog);
+  }
 
+  if (hasSchemaFlag(validatedSchema, 'name')) {
+    runMigrationOnProject(tree, validatedSchema, userLog);
+  }
+
+  await formatFiles(tree);
+
+  return () => {
+    printUserLogs(userLog);
+  };
+}
+
+function runBatchMigration(tree: Tree, userLog: UserLog) {
+  const projects = getProjects(tree);
+
+  projects.forEach((project, projectName) => {
+    if (!isPackageConverged(tree, project)) {
+      userLog.push({ type: 'error', message: `${projectName} is not converged package. Skipping migration...` });
+      return;
+    }
+
+    runMigrationOnProject(tree, { name: projectName }, userLog);
+  });
+}
+
+function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
   // 1. update TsConfigs
@@ -73,12 +103,6 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   updateApiExtractorForLocalBuilds(tree, options);
 
   updateNxWorkspace(tree, options);
-
-  await formatFiles(tree);
-
-  return () => {
-    printUserLogs(userLog);
-  };
 }
 
 // ==== helpers ====
@@ -97,9 +121,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES5',
+      target: 'ES2015',
       module: 'CommonJS',
-      lib: ['es5', 'dom'],
+      lib: ['ES2015', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
@@ -110,7 +134,10 @@ const templates = {
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
   },
-  jest: (options: { pkgName: string }) => stripIndents`
+  jestSetup: stripIndents`
+   /** Jest test setup file. */
+  `,
+  jest: (options: { pkgName: string; addSnapshotSerializers: boolean; testSetupFilePath: string }) => stripIndents`
       // @ts-check
 
       /**
@@ -129,8 +156,8 @@ const templates = {
           '^.+\\.tsx?$': 'ts-jest',
         },
         coverageDirectory: './coverage',
-        setupFilesAfterEnv: ['./config/tests.js'],
-        snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
+        setupFilesAfterEnv: ['${options.testSetupFilePath}'],
+        ${options.addSnapshotSerializers ? `snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],` : ''}
       };
   `,
   storybook: {
@@ -201,18 +228,72 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
   };
 }
 
-function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema): asserts options is AssertedSchema {
-  if (!options.name) {
+/**
+ *
+ * Narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
+ * - also properly checks of truthiness of provided value
+ */
+function hasSchemaFlag<T extends MigrateConvergedPkgGeneratorSchema, K extends keyof T>(
+  schema: T,
+  flag: K,
+): schema is T & Record<K, NonNullable<T[K]>> {
+  return Boolean(schema[flag]);
+}
+
+async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
+  let newSchema = { ...schema };
+
+  if (newSchema.name && newSchema.stats) {
+    throw new Error('--name and --stats are mutually exclusive');
+  }
+
+  if (newSchema.name && newSchema.all) {
+    throw new Error('--name and --all are mutually exclusive');
+  }
+
+  if (newSchema.stats && newSchema.all) {
+    throw new Error('--stats and --all are mutually exclusive');
+  }
+
+  const shouldValidateNameInput = () => {
+    return !newSchema.name && !(newSchema.all || newSchema.stats);
+  };
+
+  const shouldTriggerPrompt = arePromptsEnabled() && shouldValidateNameInput();
+
+  if (shouldTriggerPrompt) {
+    const schemaPromptsResponse = await triggerDynamicPrompts();
+
+    newSchema = { ...newSchema, ...schemaPromptsResponse };
+  }
+
+  if (shouldValidateNameInput()) {
     throw new Error(`--name cannot be empty. Please provide name of the package.`);
   }
 
-  const projectConfig = readProjectConfiguration(tree, options.name);
+  if (newSchema.name) {
+    const projectConfig = readProjectConfiguration(tree, newSchema.name);
 
-  if (!isPackageConverged(tree, projectConfig)) {
-    throw new Error(
-      `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
-    );
+    if (!isPackageConverged(tree, projectConfig)) {
+      throw new Error(
+        `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+      );
+    }
   }
+
+  return newSchema;
+}
+
+async function triggerDynamicPrompts() {
+  type PromptResponse = Required<Pick<MigrateConvergedPkgGeneratorSchema, 'name'>>;
+
+  return prompt<PromptResponse>([
+    {
+      message: 'Which converged package would you like migrate to new DX? (ex: @fluentui/react-menu)',
+      type: 'input',
+      name: 'name',
+    },
+  ]);
 }
 
 function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
@@ -395,7 +476,25 @@ function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedS
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.jestConfig, templates.jest({ pkgName: options.normalizedPkgName }));
+  const jestSetupFilePath = joinPathFragments(options.paths.configRoot, 'tests.js');
+  const packagesThatTriggerAddingSnapshots = [`@${options.workspaceConfig.npmScope}/react-make-styles`];
+
+  const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  packageJson.dependencies = packageJson.dependencies ?? {};
+
+  const config = {
+    pkgName: options.normalizedPkgName,
+    addSnapshotSerializers: Object.keys(packageJson.dependencies).some(pkgDepName =>
+      packagesThatTriggerAddingSnapshots.includes(pkgDepName),
+    ),
+    testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
+  };
+
+  tree.write(options.paths.jestConfig, templates.jest(config));
+
+  if (!tree.exists(jestSetupFilePath)) {
+    tree.write(jestSetupFilePath, templates.jestSetup);
+  }
 
   return tree;
 }
