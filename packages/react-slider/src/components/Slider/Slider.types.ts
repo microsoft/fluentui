@@ -84,7 +84,7 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
 
   /**
    * Whether to render the **Slider** vertically.
-   * @default `false` (render horizontally)
+   * @default `false` (renders horizontally)
    */
   vertical?: boolean;
 
