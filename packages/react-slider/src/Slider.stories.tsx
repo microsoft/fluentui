@@ -9,8 +9,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
+    width: '400px',
   },
-  customSlider: {
+  slider: {
     width: '500px',
     '--slider-thumb-size': '50px',
     '--slider-color': 'green',
@@ -30,7 +31,7 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
       <Label>Custom Styles</Label>
-      <Slider defaultValue={4} className={styles.customSlider} />
+      <Slider defaultValue={4} className={styles.slider} />
       <Label>Disabled Example</Label>
       <Slider defaultValue={3} disabled />
     </div>
