@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
+import { useId, useControllableState, useMount, useBoolean } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -22,6 +22,24 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
+/**
+ * Finds the closest number that is divisible by a specified value.
+ *
+ * @param value the number to evaluate the closest value for.
+ * @param divisibleBy the number to check if divisible by.
+ */
+const findClosestValue = (value: number, divisibleBy: number) => {
+  const absoluteValue = Math.abs(value);
+  const absoluteDivisibleBy = Math.abs(divisibleBy);
+
+  const lowerValue = absoluteValue - (absoluteValue % absoluteDivisibleBy);
+  const upperValue = lowerValue + absoluteDivisibleBy;
+
+  return absoluteValue - lowerValue < upperValue - absoluteValue
+    ? lowerValue * Math.sign(value)
+    : upperValue * Math.sign(value);
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
@@ -38,10 +56,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     step = 1,
     ariaValueText,
     onChange,
+    snap = step !== 1 ? true : false,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
 
+  const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
+  const [renderedPosition, setRenderedPosition] = React.useState<number>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
     defaultState: clamp(defaultValue, min, max),
@@ -55,10 +76,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const id = useId('slider-', state.id);
 
   /**
-   * Updates the `currentValue` to the new `incomingValue` and clamps it.
+   * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
    *
-   * @param ev
    * @param incomingValue
+   * @param ev
    */
   const updateValue = React.useCallback(
     (incomingValue: number, ev): void => {
@@ -81,6 +102,20 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   );
 
   /**
+   * Updates the controlled `currentValue` and `renderedPosition` of the Slider.
+   *
+   * @param incomingValue
+   * @param ev
+   */
+  const updatePosition = React.useCallback(
+    (incomingValue: number, ev) => {
+      setRenderedPosition(clamp(incomingValue, min, max));
+      updateValue(incomingValue, ev);
+    },
+    [max, min, updateValue],
+  );
+
+  /**
    * Calculates the `step` position based off of a `Mouse` or `Touch` event.
    */
   const calculateSteps = React.useCallback(
@@ -100,20 +135,29 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      if (step !== 1) {
-        updateValue(Math.round((min + step * calculateSteps(ev)) / step) * step, ev);
-      } else {
-        updateValue(min + step * calculateSteps(ev), ev);
-      }
+      const position = min + step * calculateSteps(ev);
+      const currentStepPosition = Math.round(position / step) * step;
+
+      setRenderedPosition(clamp(position, min, max));
+      updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, min, step, updateValue],
+    [calculateSteps, max, min, step, updateValue],
   );
 
-  const onPointerUp = (): void => {
-    disposables.current.forEach(dispose => dispose());
-    disposables.current = [];
-    thumbRef.current!.focus();
-  };
+  const onPointerUp = React.useCallback(
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      disposables.current.forEach(dispose => dispose());
+      disposables.current = [];
+
+      showStepAnimation();
+      snap &&
+        setRenderedPosition(
+          clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
+        );
+      thumbRef.current!.focus();
+    },
+    [calculateSteps, max, min, showStepAnimation, snap, step],
+  );
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
@@ -124,6 +168,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         target.setPointerCapture(pointerId);
       }
 
+      hideStepAnimation();
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
@@ -132,45 +177,46 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       onPointerMove(ev);
     },
-    [onPointerMove, onPointerDownCallback],
+    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
   );
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      hideStepAnimation();
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
         if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-          updateValue(currentValue! - step * 10, ev);
+          updatePosition(currentValue! - step * 10, ev);
           return;
         } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-          updateValue(currentValue! + step * 10, ev);
+          updatePosition(currentValue! + step * 10, ev);
           return;
         }
       } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-        updateValue(currentValue! - step, ev);
+        updatePosition(currentValue! - step, ev);
         return;
       } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-        updateValue(currentValue! + step, ev);
+        updatePosition(currentValue! + step, ev);
         return;
       } else {
         switch (ev.key) {
           case 'PageDown':
-            updateValue(currentValue! - step * 10, ev);
+            updatePosition(currentValue! - step * 10, ev);
             break;
           case 'PageUp':
-            updateValue(currentValue! + step * 10, ev);
+            updatePosition(currentValue! + step * 10, ev);
             break;
           case 'Home':
-            updateValue(min, ev);
+            updatePosition(min, ev);
             break;
           case 'End':
-            updateValue(max, ev);
+            updatePosition(max, ev);
             break;
         }
       }
     },
-    [currentValue, max, min, onKeyDownCallback, step, updateValue],
+    [currentValue, hideStepAnimation, max, min, onKeyDownCallback, step, updatePosition],
   );
 
   React.useEffect(() => {
@@ -192,11 +238,22 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     }
   });
 
-  const valuePercent = getPercent(currentValue!, min, max);
+  const valuePercent = getPercent(renderedPosition!, min, max);
 
-  const thumbStyles = { transform: `translateX(${valuePercent}%)`, ...state.thumb.style };
+  // TODO: Awaiting animation time from design spec.
+  const animationTime = '0.1s';
 
-  const trackStyles = { width: `${valuePercent}%`, ...state.track.style };
+  const thumbStyles = {
+    transform: `translateX(${valuePercent}%)`,
+    transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
+    ...state.thumb.style,
+  };
+
+  const trackStyles = {
+    width: `${valuePercent}%`,
+    transition: stepAnimation ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime}` : 'none',
+    ...state.track.style,
+  };
 
   // Root props
   state.as = as;

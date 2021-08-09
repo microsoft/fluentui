@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
+    width: '400px',
   },
   slider: {
     width: '500px',
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 export const BasicSliderExample = (props: SliderProps) => {
-  const [sliderValue, setSliderValue] = React.useState(160);
+  const [sliderValue, setSliderValue] = React.useState(0);
   const sliderOnChange = (value: number) => setSliderValue(value);
 
   const styles = useStyles();
@@ -28,9 +29,11 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Basic Example</Label>
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
+      <Slider value={sliderValue} step={1} max={100} onChange={sliderOnChange} />
       <Label>Custom Styles</Label>
       <Slider defaultValue={4} className={styles.slider} />
+      <Label>Snapping Example</Label>
+      <Slider defaultValue={8} snap />
     </div>
   );
 };

@@ -83,6 +83,15 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   step?: number;
 
   /**
+   * Whether the `Slider's` thumb should snap to the closest value. Defaults to true when the `step`
+   * prop is not equal to one.
+   *
+   * @default false
+   *
+   */
+  snap?: boolean;
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
