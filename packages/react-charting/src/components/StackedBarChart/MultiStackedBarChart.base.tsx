@@ -230,7 +230,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart} role="list">
+            <svg className={this._classNames.chart}>
+              {data!.chartTitle && <title>{data!.chartTitle}</title>}
               {bars}
             </svg>
           </div>
