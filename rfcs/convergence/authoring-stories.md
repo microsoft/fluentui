@@ -284,7 +284,7 @@ Components with complex API require many long stories, both for documentation an
 **Good Example 1 - single file**
 
 ```tsx
-@filename  Button.stories.tsx
+// @filename Button.stories.tsx
 import { Button, ButtonProps } from './Button'; // the component
 import { Meta } from '@storybook/react';
 
@@ -300,7 +300,7 @@ export default {
 **Good Example 2 - multiple files**
 
 ```tsx
-@filename  Button.stories.tsx
+// @filename Button.stories.tsx
 import { Button } from './Button'; // the component
 import { Meta } from '@storybook/react';
 
@@ -315,20 +315,20 @@ export default {
 ```
 
 ```tsx
-@filename  ButtonDefault.stories.tsx
+// @filename ButtonDefault.stories.tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
 ButtonDefault.storyName = 'Default';
 ```
 
 ```tsx
-@filename  ButtonWithIcon.stories.tsx
+// @filename ButtonWithIcon.stories.tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
-**Bad example 1** - only Component.stories.tsx can have a default export
+**Bad example 1** - only `Component.stories.tsx` can have a default export
 
 ```tsx
-@filename  ButtonDefault.stories.tsx
+// @filename  ButtonDefault.stories.tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
 ButtonDefault.storyName = 'Default';
 
@@ -340,7 +340,7 @@ export default {
 ```
 
 ```tsx
-@filename  ButtonWithIcon.stories.tsx
+// @filename  ButtonWithIcon.stories.tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 
 // don’t do this
@@ -353,7 +353,7 @@ export default {
 **Bad example 2** - don’t mix re-exports with inline definition within the main story
 
 ```tsx
-@filename  Button.stories.tsx
+// @filename  Button.stories.tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
 ButtonDefault.storyName = 'Default';
 
@@ -366,7 +366,7 @@ export default {
 ```
 
 ```tsx
-@filename  ButtonWithIcon.stories.tsx
+// @filename  ButtonWithIcon.stories.tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
