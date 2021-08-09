@@ -14,6 +14,7 @@ import {
   MenuDivider,
 } from '@fluentui/react-menu';
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
+import { FluentProviderDecorator } from '../utilities/index';
 
 const rootTriggerId = 'rootTrigger';
 
@@ -30,6 +31,7 @@ storiesOf('Menu - basic', module)
       {story()}
     </Screener>
   ))
+  .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu>
       <MenuTrigger>
