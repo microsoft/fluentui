@@ -16,8 +16,6 @@ import {
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
 import { FluentProviderDecorator } from '../utilities/index';
 
-const rootTriggerId = 'rootTrigger';
-
 storiesOf('Menu - basic', module)
   .addDecorator(story => (
     <Screener
@@ -30,7 +28,7 @@ storiesOf('Menu - basic', module)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
-        <button id={rootTriggerId}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuPopover>
@@ -48,7 +46,7 @@ storiesOf('Menu - secondary content', module)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
-        <button id={rootTriggerId}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuPopover>
@@ -70,7 +68,7 @@ storiesOf('Menu - groups', module)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
-        <button id={rootTriggerId}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuPopover>
@@ -104,7 +102,7 @@ storiesOf('Menu - selection', module)
   .addStory('checkbox', () => (
     <Menu open>
       <MenuTrigger>
-        <button id={rootTriggerId}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuPopover>
@@ -134,7 +132,7 @@ storiesOf('Menu - selection groups', module)
   .addStory('default', () => (
     <Menu open>
       <MenuTrigger>
-        <button id={rootTriggerId}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuPopover>
