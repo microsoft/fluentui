@@ -304,6 +304,7 @@ export default {
 import { Button } from './Button'; // the component
 import { Meta } from '@storybook/react';
 
+// 💡 `Default` re-export needs to be always first !
 export * from 'ButtonDefault.stories';
 export * from 'ButtonWithIcon.stories';
 
@@ -368,7 +369,7 @@ ButtonPrimary.storyName = 'Better story name';
 
 Every component must have a story called `Default`, which:
 
-- must be the first story in the component - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
+- must be defined as first story inline or as first re-expored story when using multi-file pattern - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
 - must support auto generated [Controls](https://storybook.js.org/docs/react/essentials/controls) - more details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
 
 Storybook will render a Controls table under this story.
