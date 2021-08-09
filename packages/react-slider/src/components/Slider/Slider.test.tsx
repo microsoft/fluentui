@@ -25,6 +25,11 @@ describe('Slider', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('renders vertical Slider correctly', () => {
+    const component = create(<Slider defaultValue={5} vertical />);
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   // TODO: Find why focus is null.
   // it('renders (focus) correctly', () => {
   //   let sliderRef: any;
@@ -35,12 +40,12 @@ describe('Slider', () => {
   //     return <Slider defaultValue={3} ref={sliderRef} />;
   //   };
 
-  //   safeCreate(<SliderTestComponent />, component => {
-  //     sliderRef.current.focus();
+  //   const component = create(<SliderTestComponent />);
 
-  //     const tree = component.toJSON();
-  //     expect(tree).toMatchSnapshot();
-  //   });
+  //   sliderRef.current.focus();
+
+  //   const tree = component.toJSON();
+  //   expect(tree).toMatchSnapshot();
   // });
 
   it('handles (id) prop', () => {
