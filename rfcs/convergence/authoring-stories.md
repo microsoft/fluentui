@@ -325,7 +325,7 @@ ButtonDefault.storyName = 'Default';
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
-**Bad example - multiple files**
+**Bad example 1** - only Component.stories.tsx can have a default export
 
 ```tsx
 @filename  ButtonDefault.stories.tsx
@@ -348,6 +348,26 @@ export default {
   title: 'Components/Button',
   component: Button,
 } as Meta;
+```
+
+**Bad example 2** - don’t mix re-exports with inline definition within the main story
+
+```tsx
+@filename  Button.stories.tsx
+export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
+ButtonDefault.storyName = 'Default';
+
+export * from 'ButtonWithIcon.stories';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+```tsx
+@filename  ButtonWithIcon.stories.tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
 ### 8. location and naming convention
