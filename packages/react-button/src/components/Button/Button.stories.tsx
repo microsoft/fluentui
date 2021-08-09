@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Button, ButtonProps } from '../../Button';
 import { Meta } from '@storybook/react';
-
-// TODO: this is here while waiting for react-icons to merge
-import { CalendarIcon } from '../../tmp-icons.stories';
+import { CalendarMonth24Regular } from '@fluentui/react-icons';
 
 export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
 
@@ -31,11 +29,11 @@ Emphasis.parameters = {
 
 export const ButtonWithIcon = () => (
   <>
-    <Button icon={<CalendarIcon />}>Text</Button>
-    <Button icon={<CalendarIcon />} iconPosition="after">
+    <Button icon={<CalendarMonth24Regular />}>Text</Button>
+    <Button icon={<CalendarMonth24Regular />} iconPosition="after">
       Text
     </Button>
-    <Button icon={<CalendarIcon />} />
+    <Button icon={<CalendarMonth24Regular />} />
   </>
 );
 ButtonWithIcon.parameters = {
@@ -51,9 +49,9 @@ ButtonWithIcon.parameters = {
 export const CircularButton = () => (
   <>
     <Button circular>Button</Button>
-    <Button circular outline icon={<CalendarIcon />} />
-    <Button circular subtle icon={<CalendarIcon />} />
-    <Button circular transparent icon={<CalendarIcon />} />
+    <Button circular outline icon={<CalendarMonth24Regular />} />
+    <Button circular subtle icon={<CalendarMonth24Regular />} />
+    <Button circular transparent icon={<CalendarMonth24Regular />} />
   </>
 );
 CircularButton.parameters = {
@@ -69,24 +67,24 @@ export const ButtonSize = () => (
     <div>
       <h4>small</h4>
       <Button size="small">Text</Button>
-      <Button size="small" icon={<CalendarIcon />}>
+      <Button size="small" icon={<CalendarMonth24Regular />}>
         Text
       </Button>
-      <Button size="small" icon={<CalendarIcon />} />
+      <Button size="small" icon={<CalendarMonth24Regular />} />
     </div>
     <div>
       <h4>medium</h4>
       <Button>Text</Button>
-      <Button icon={<CalendarIcon />}>Text</Button>
-      <Button icon={<CalendarIcon />} />
+      <Button icon={<CalendarMonth24Regular />}>Text</Button>
+      <Button icon={<CalendarMonth24Regular />} />
     </div>
     <div>
       <h4>large</h4>
       <Button size="large">Text</Button>
-      <Button size="large" icon={<CalendarIcon />}>
+      <Button size="large" icon={<CalendarMonth24Regular />}>
         Text
       </Button>
-      <Button size="large" icon={<CalendarIcon />} />
+      <Button size="large" icon={<CalendarMonth24Regular />} />
     </div>
   </>
 );
@@ -119,10 +117,10 @@ export const DisabledButton = () => (
       <Button disabledFocusable>Disabled focusable</Button>
     </div>
     <div>
-      <Button primary icon={<CalendarIcon />}>
+      <Button primary icon={<CalendarMonth24Regular />}>
         Primary
       </Button>
-      <Button primary disabled icon={<CalendarIcon />}>
+      <Button primary disabled icon={<CalendarMonth24Regular />}>
         Primary disabled
       </Button>
       <Button primary disabledFocusable>
