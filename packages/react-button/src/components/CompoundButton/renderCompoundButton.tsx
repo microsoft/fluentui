@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import { CompoundButtonState } from './CompoundButton.types';
-import { compoundButtonShorthandProps } from './useCompoundButton';
+import { compoundButtonShorthandPropsCompat } from './useCompoundButton';
 
 /**
- * Define the render function. Given the state of a button, renders it.
+ * Renders a CompoundButton component by passing the state defined props to the appropriate slots.
  */
 export const renderCompoundButton = (state: CompoundButtonState) => {
-  const { slots, slotProps } = getSlots(state, compoundButtonShorthandProps);
-  const { /*loading,*/ iconPosition, iconOnly } = state;
+  const { slots, slotProps } = getSlotsCompat(state, compoundButtonShorthandPropsCompat);
+  const { children, iconOnly, iconPosition } = state;
 
   return (
     <slots.root {...slotProps.root}>
@@ -16,7 +16,7 @@ export const renderCompoundButton = (state: CompoundButtonState) => {
       {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
       {!iconOnly && (
         <slots.contentContainer {...slotProps.contentContainer}>
-          <slots.children {...slotProps.children} />
+          {children}
           <slots.secondaryContent {...slotProps.secondaryContent} />
         </slots.contentContainer>
       )}

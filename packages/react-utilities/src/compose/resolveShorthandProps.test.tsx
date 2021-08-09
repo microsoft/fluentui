@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { resolveShorthandProps } from './resolveShorthandProps';
-import { ShorthandProps } from './types';
+import { ShorthandPropsCompat } from './types';
 
 type TestProps = {
-  slotA?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  slotB?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  slotC?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  slotA?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  slotB?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  slotC?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
   notASlot?: string;
   alsoNotASlot?: number;
 };
@@ -27,13 +27,6 @@ describe('resolveShorthandProps', () => {
     expect(resolvedProps).toEqual({ slotA: { children: <div>hello</div> } });
   });
 
-  it('resolves false', () => {
-    const props: TestProps = { slotA: false };
-    const resolvedProps = resolveShorthandProps(props, testShorthandProps);
-
-    expect(resolvedProps).toEqual({ slotA: { children: false } });
-  });
-
   it('resolves a number', () => {
     const props: TestProps = { slotA: 42 };
     const resolvedProps = resolveShorthandProps(props, testShorthandProps);
@@ -48,7 +41,7 @@ describe('resolveShorthandProps', () => {
     expect(resolvedProps).toEqual({ slotA: undefined });
   });
 
-  it('resolves mutliple slots', () => {
+  it('resolves multiple slots', () => {
     const props: TestProps = {
       slotA: 'hello',
       slotB: <>world</>,

@@ -72,7 +72,8 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      result.current.setFocusByFirstCharacter?.(createEvent(current.textContent), current);
+      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      result.current.setFocusByFirstCharacter(createEvent(current.textContent), current);
 
       // Assert
       expect(menuitems[0].focus).toHaveBeenCalledTimes(1);
@@ -87,7 +88,8 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      result.current.setFocusByFirstCharacter?.(createEvent('d'), current);
+      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      result.current.setFocusByFirstCharacter(createEvent('d'), current);
 
       // Assert
       expect(menuitems[4].focus).toHaveBeenCalledTimes(1);
@@ -125,7 +127,7 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked);
+      act(() => state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked));
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
@@ -163,7 +165,7 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true);
+      act(() => state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true));
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);

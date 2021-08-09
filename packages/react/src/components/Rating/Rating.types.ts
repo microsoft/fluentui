@@ -16,6 +16,7 @@ export interface IRatingStarProps {
   classNames: IProcessedStyleSet<IRatingStyles>;
   icon: string;
   starNum?: number;
+  unselectedIcon?: string;
 }
 
 /**

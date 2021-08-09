@@ -4,29 +4,36 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type LabelDefaultedProps = never;
+export type LabelDefaultedProps = 'size';
 
 // @public
-export interface LabelProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentPropsCompat, React_2.LabelHTMLAttributes<HTMLLabelElement> {
+    disabled?: boolean;
+    required?: boolean | ShorthandPropsCompat<ComponentPropsCompat>;
+    size?: 'small' | 'medium' | 'large';
+    strong?: boolean;
 }
 
 // @public
-export type LabelShorthandProps = never;
+export type LabelShorthandProps = 'required';
 
 // @public
 export const labelShorthandProps: LabelShorthandProps[];
 
 // @public
-export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
+export interface LabelState extends ComponentStateCompat<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
+    required?: ObjectShorthandPropsCompat<ComponentPropsCompat>;
 }
 
 // @public

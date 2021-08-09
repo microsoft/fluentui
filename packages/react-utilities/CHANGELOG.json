@@ -2,6 +2,348 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 06 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Deletes descendants API",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "9ac8b044a6a524d6ce55f3f801ce0189a8087e85",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Aug 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.37",
+      "version": "9.0.0-alpha.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fixing various typos in the react-utilities package.",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.37",
+      "version": "9.0.0-alpha.37",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Copying useMount and useUnmount hooks into the react-utilities package.",
+            "author": "czearing@outlook.com",
+            "commit": "14dbbf7bb2b56ccf4974fcb8ad40b73ae9614326",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.4",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(useOnClickOutside): Handle clicks into an iframe",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.35",
+      "version": "9.0.0-alpha.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Improve type safety of the onlyChild function",
+            "author": "behowell@microsoft.com",
+            "commit": "d38109a7fd40e187aca862046219cf9a7ca66131",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move useTimeout into react-utilities and add tests",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "none": [
+          {
+            "comment": "add bundle size fixtures",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix bugs on getSlots to follow with RFC",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b60234948eacb8c6fa9d08ab8e98d963f583d475",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "feat(useControllableState): deprecate useControlledValue with new hook",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "57b43a4d07fbccd83fa03a3b7879813be920b91f",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add new prop mergin mechanism",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6c37a1cb5c312d4be8b239bfd9f6c9f28e9f0d24",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "chore(Menu): use capture event to handle outside click",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "3812a10a4152a2e27ac89b16259e312f42469570",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(react-utilities): Migrate DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4279e187f29c2dfa4d9244c615e92fdd29159b3b",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Rename typings and getSlots to have the Compat Suffix",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "c939e67b1840a9eb5f7706afcda8c14df8f18d33",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove boolean from ShorthandProps type",
+            "author": "behowell@microsoft.com",
+            "commit": "10b1e17acaa01675866f7a623be1a61b1478d7d7",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Moving onlyChild to @fluentui/react-utilities and adding tests.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1ca8c8f0c4eb633e6b34c0b6182c09103d4c7fcb",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix(react-utilities): explicitly provide context for setTimeout call",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jun 2021 07:31:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "none": [
+          {
+            "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "useOnScrollOutside hook to detect scroll outside a component",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "useOnClickOutside, workaround for facebook/react#20074",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "6ffca36c9537a1852d8ec26478b8b7aeb059e17c",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 May 2021 07:34:54 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

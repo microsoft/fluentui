@@ -1,77 +1,59 @@
 import * as React from 'react';
-import { ComponentProps, Descendant } from '@fluentui/react-utilities';
-import { AccordionHeaderProps } from '../AccordionHeader/AccordionHeader.types';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
-export type AccordionIndex = number | number[];
+export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
 
-/**
- * Common properties shared between Accordion and AccordionHeader through context
- */
-type AccordionHeaderCommonProps = Pick<
-  AccordionHeaderProps,
-  'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size' | 'inline'
->;
-export interface AccordionContextValue extends AccordionHeaderCommonProps {
+export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
+
+export interface AccordionContextValue {
   navigable: boolean;
   /**
    * The list of opened panels by index
    */
-  openItems: number[];
+  openItems: AccordionItemValue[];
   /**
    * Callback used by AccordionItem to request a change on it's own opened state
    */
-  requestToggle: NonNullable<AccordionProps['onToggle']>;
+  requestToggle: AccordionToggleEventHandler;
 }
 
-export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
+export type AccordionSlots = {};
+
+export interface AccordionCommons extends React.HTMLAttributes<HTMLElement> {
   /**
    * Indicates if keyboard navigation is available
    */
-  navigable?: boolean;
+  navigable: boolean;
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */
-  multiple?: boolean;
+  multiple: boolean;
   /**
    * Indicates if Accordion support multiple Panels closed at the same time
    */
-  collapsible?: boolean;
+  collapsible: boolean;
+}
+
+export interface AccordionToggleData {
+  value: AccordionItemValue;
+}
+
+export interface AccordionProps extends ComponentProps<AccordionSlots>, Partial<AccordionCommons> {
   /**
    * Controls the state of the panel
    */
-  index?: AccordionIndex;
+  openItems?: AccordionItemValue | AccordionItemValue[];
   /**
    * Default value for the uncontrolled state of the panel
    */
-  defaultIndex?: AccordionIndex;
-  onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
+  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
+  onToggle?: AccordionToggleEventHandler;
 }
 
-export interface AccordionState extends AccordionProps {
+export interface AccordionState extends ComponentState<AccordionSlots>, AccordionCommons, AccordionContextValue {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
-  navigable: boolean;
-  multiple: boolean;
-  collapsible: boolean;
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  context: AccordionContextValue;
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  descendants: AccordionDescendant[];
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
-}
-
-export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  /**
-   * Indicates is a determined AccordionItem descending the Accordion is or not disabled
-   */
-  disabled: boolean;
+  ref: React.Ref<HTMLElement>;
 }

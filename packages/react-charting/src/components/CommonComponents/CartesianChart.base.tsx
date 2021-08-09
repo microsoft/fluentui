@@ -13,6 +13,7 @@ import {
   ChartHoverCard,
   createNumericXAxis,
   createStringXAxis,
+  getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -168,6 +169,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createNumericXAxis(XAxisParams);
     }
 
+    /*
+     * To enable wrapping of x axis tick values or to disaply complete x axis tick values,
+     * we need to calculate how much space it needed to render the text.
+     * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
+     * Required space will be calculated first time chart rendering and if any width/height of chart updated.
+     * */
     if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
       const wrapLabelProps = {
         node: this.xAxisElement,
@@ -206,15 +213,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       className: this.props.className,
       isRtl: this._isRtl,
     });
+
     const svgDimensions = {
       width: this.state.containerWidth,
       height: this.state.containerHeight,
     };
+
     const children = this.props.children({
       ...this.state,
       xScale,
       yScale,
     });
+
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
       focusDirection = this.props.focusZoneDirection;
@@ -283,7 +293,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     );
   }
 
-  // TO DO: Write a common funtional component for Multi value callout and divide sub count method
+  // TO DO: Write a common functional component for Multi value callout and divide sub count method
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
@@ -293,7 +303,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           className={this._classNames.calloutDateTimeContainer}
           style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
         >
-          <div className={this._classNames.calloutContentX}>{calloutProps!.hoverXValue} </div>
+          <div
+            className={this._classNames.calloutContentX}
+            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData)}
+          >
+            {calloutProps!.hoverXValue}
+          </div>
         </div>
         <div
           className={this._classNames.calloutInfoContainer}
@@ -305,6 +320,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
+                  {...getAccessibleDataObject(yValue.callOutAccessibilityData)}
                   key={`callout-content-${index}`}
                   style={
                     yValueHoverSubCountsExists
@@ -327,6 +343,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 </div>
               );
             })}
+          {!!calloutProps.descriptionMessage && (
+            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          )}
         </div>
       </div>
     );
@@ -411,11 +430,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
   }
 
+  /**
+   * When screen resizes, along with screen, chart also auto adjusted.
+   * This method used to adjust height and width of the charts.
+   */
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
       let legendContainerHeight;
       if (this.props.hideLegend) {
+        // If there is no legend, need not to allocate some space from total chart space.
         legendContainerHeight = 0;
       } else {
         const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
@@ -441,6 +465,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     });
   }
 
+  // Call back to the chart.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getData = (xScale: any, yScale: any) => {
     this.props.getGraphData &&

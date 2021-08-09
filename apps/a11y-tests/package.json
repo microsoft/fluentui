@@ -12,11 +12,10 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@fluentui/react": "^8.14.15",
+    "@fluentui/react": "^8.27.1",
     "axe-core": "3.5.0",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
-    "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
     "puppeteer": "^1.13.0",
     "tslib": "^2.1.0",
@@ -24,13 +23,12 @@
     "react-dom": "16.8.6"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.0",
-    "@types/glob": "^7.1.1",
+    "@fluentui/eslint-plugin": "^1.3.3",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/sarif": "^2.1.1",
-    "@fluentui/font-icons-mdl2": "^8.1.1",
+    "@fluentui/font-icons-mdl2": "^8.1.8",
     "@fluentui/scripts": "^1.0.0"
   }
 }

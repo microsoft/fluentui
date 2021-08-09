@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+
 import { MentionIcon, RedbangIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
+import { Avatar, Chat, ChatItemProps, ShorthandCollection, Text } from '@fluentui/react-northstar';
 
 const robinAvatar = {
   image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
@@ -29,7 +30,13 @@ const items: ShorthandCollection<ChatItemProps> = [
     gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
-        content="Sure @Cecil. Let's schedule a meeting."
+        content={
+          <>
+            {'Sure '}
+            <Text atMention="me" content="Cecil" />
+            {". Let's schedule a meeting."}
+          </>
+        }
         author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         badge={{
@@ -38,11 +45,10 @@ const items: ShorthandCollection<ChatItemProps> = [
         variables={{ hasMention: true }}
       />
     ),
-    attached: 'top',
     key: 'message-id-2',
   },
 ];
 
-const ChatExample = () => <Chat items={items} />;
+const ChatMessageExampleBadge = () => <Chat items={items} />;
 
-export default ChatExample;
+export default ChatMessageExampleBadge;

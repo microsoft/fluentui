@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+import 'cypress-storybook/react';
 import { withPerformance } from 'storybook-addon-performance';
 import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
@@ -10,10 +10,17 @@ import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/s
  * @type {string}
  */
 const packageNamePlaceholder = 'PACKAGE_NAME';
+const storyOrder = [
+  'Concepts/Introduction',
+  'Concepts/Developer/Quick Start',
+  'Concepts/Developer/Styling Components',
+  'Concepts',
+  'Theme',
+  'Components',
+  'Migrations/Flex/Overview',
+];
 
-addDecorator(withInfo);
 addDecorator(withPerformance);
-addDecorator(withKeytipLayer);
 addCustomDecorators();
 
 addParameters({
@@ -27,7 +34,7 @@ configure(loadStories, module);
 export const parameters = {
   options: {
     storySort: {
-      order: ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Theme', 'Components'],
+      order: storyOrder,
     },
   },
 };
@@ -50,33 +57,20 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (
-    ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-      packageNamePlaceholder,
-    )
-  ) {
+  if (['react-cards', 'react-checkbox', 'react-tabs', 'react-toggle'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }
 
-  if (
-    [
-      'react-avatar',
-      'react-badge',
-      'react-button',
-      'react-divider',
-      'react-image',
-      'react-label',
-      'react-link',
-      'react-accordion',
-      'react-menu',
-      'react-text',
-      'react-components',
-      'react-portal',
-      'react-tooltip',
-    ].includes(packageNamePlaceholder)
-  ) {
+  if (['react-button', 'react-components', 'react-tooltip', 'react-checkbox'].includes(packageNamePlaceholder)) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
+  }
+
+  // add decorators to all stories except vNext react-components suite
+  // - this is needed so we don't creep v8 dependencies to vNext deps
+  // - `withKeytipLayer` is v8 dependency - including it to vNext suite was causing CI errors - `Cannot read property 'disableGlobalClassNames' of undefined `
+  if (packageNamePlaceholder !== 'react-components') {
+    customDecorators.add(withKeytipLayer);
   }
 
   customDecorators.forEach(decorator => addDecorator(decorator));
@@ -87,26 +81,18 @@ function addCustomDecorators() {
  * @param {string} storyName
  */
 function getStoryOrder(storyName) {
-  const order = [
-    'Concepts/Introduction',
-    'Concepts/Developer/Quick Start',
-    'Concepts/Developer/Styling Components',
-    'Concepts',
-    'Theme',
-    'Components',
-  ];
-  for (let i = 0; i < order.length; i++) {
-    if (storyName.startsWith(order[i])) {
+  for (let i = 0; i < storyOrder.length; i++) {
+    if (storyName.startsWith(storyOrder[i])) {
       return i;
     }
   }
-  return order.length;
+  return storyOrder.length;
 }
 
 /**
  * @typedef {{
- *   default: { title: string, id: string };
- *   [subStoryName: string]: React.FunctionComponent | { title: string, id: string };
+ *   default: { title: string };
+ *   [subStoryName: string]: React.FunctionComponent | { title: string };
  * }} Story
  */
 
@@ -194,13 +180,12 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  const { componentName, componentId } = generateComponentName(segments);
+  const componentName = generateComponentName(segments);
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
         title: 'Components/' + componentName,
-        id: 'Components/' + componentId,
       },
     });
   }
@@ -233,7 +218,7 @@ function generateStoriesFromExamples(key, stories, req) {
   /**
    *
    * @param {string[]} segments
-   * @returns {{componentName:string; componentId:string}}
+   * @returns {string} component name
    */
   function generateComponentName(segments) {
     /**
@@ -241,41 +226,16 @@ function generateStoriesFromExamples(key, stories, req) {
      */
     const isReactExamplesStory = segments.length === 3;
 
-    /**
-     * For @fluentui/react, don't include the package name in the sidebar
-     * ./package-name/ComponentName/ComponentName.Something.Example.tsx
-     */
-    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-    const isReactPackageStory = 'PACKAGE_NAME' === 'react';
-
     if (isReactExamplesStory) {
       // ./ComponentName/ComponentName.Something.Example.tsx
       //  ↓↓↓
       // [., ComponentName, ComponentName.Something.Example.tsx]
-      const componentName = segments[1];
-      const componentId = segments[1];
-
-      return { componentName, componentId };
+      return segments[1];
     }
 
-    if (isReactPackageStory) {
-      // ./package-name/ComponentName/ComponentName.Something.Example.tsx
-      //  ↓↓↓
-      // [., <package-name>, ComponentName, ComponentName.Something.Example.tsx]
-      const componentName = segments[1];
-      const componentId = segments[2];
-
-      return { componentName, componentId };
-    }
-
-    return {
-      componentName: `${segments[2]} (${segments[1]})`,
-      // Story URLs are generated based off the story name
-      // In the case of `react-components` a (package name) suffix is added to each story
-      // This results in a difference name and URL between individual storybooks and the react-components suite storybook
-      // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
-      // Use the id property in stories to ensure the same URL between individual and suite storybook
-      componentId: segments[2],
-    };
+    // .package-name/ComponentName/ComponentName.Something.Example.tsx
+    //  ↓↓↓
+    // [., package-name, ComponentName, ComponentName.Something.Example.tsx]
+    return segments[2];
   }
 }

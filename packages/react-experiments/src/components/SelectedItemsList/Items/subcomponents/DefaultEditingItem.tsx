@@ -7,7 +7,8 @@ import {
 import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
 import { useFloatingSuggestionItems } from '../../../UnifiedPicker/hooks/useFloatingSuggestionItems';
-
+import { getStyles } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsList/FloatingSuggestionsList.styles';
+import { getStyles as getFloatingSuggestionStyles } from '../../../FloatingSuggestionsComposite/FloatingSuggestions.styles';
 import * as styles from './DefaultEditingItem.scss';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
@@ -153,9 +154,16 @@ export const DefaultEditingItemInner = <TItem extends any>(
   const _onInputBlur = React.useCallback(
     (ev: React.FocusEvent<HTMLElement>): void => {
       if (editingFloatingPicker.current) {
-        const target = ev.relatedTarget as HTMLElement;
-        // We don't want to exit out if the user has clicked on a dropdown suggestion
-        if (target === null || target.className.indexOf('ms-FloatingSuggestionsItem-itemButton') === -1) {
+        const rootStyles = getStyles({}).root;
+        const floatingSuggestionsListClassName = '.' + (Array.isArray(rootStyles) ? rootStyles[0] : rootStyles);
+        const triggeredByRecipientPicker =
+          (ev.relatedTarget as HTMLElement)?.closest(floatingSuggestionsListClassName) !== null;
+        const calloutStyles = getFloatingSuggestionStyles({}).callout;
+        const footerClassName = '.' + (Array.isArray(calloutStyles) ? calloutStyles[0] : calloutStyles);
+        const triggeredByFooter = (ev.relatedTarget as HTMLElement)?.closest(footerClassName) !== null;
+
+        // We don't want to exit out if the user has clicked on anything in the picker
+        if (!triggeredByRecipientPicker && !triggeredByFooter) {
           if (focusItemIndex >= 0) {
             _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
           } else if (createGenericItem) {

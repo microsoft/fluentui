@@ -6,6 +6,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const LoaderTypesExamples = () => (
   <ExampleSection title="Types">
     <ComponentExample
+      title="Secondary"
+      description="Loaders can be secondary."
+      examplePath="components/Loader/Variations/LoaderExampleSecondary"
+    />
+    <ComponentExample
       title="Inline"
       description="Loaders can appear inline with content."
       examplePath="components/Loader/Variations/LoaderExampleInline"

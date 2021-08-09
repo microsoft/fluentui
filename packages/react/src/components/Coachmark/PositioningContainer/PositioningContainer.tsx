@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
+import { ZIndexes } from '../../../Styling';
 import { Layer } from '../../../Layer';
 
 // Utilites/Helpers
@@ -99,23 +100,38 @@ function usePositionState(
       const currentProps: IPositionProps = { ...props } as IPositionProps;
       currentProps!.bounds = getCachedBounds();
       currentProps!.target = targetRef.current!;
-      if (document.body.contains(currentProps!.target as Node)) {
-        currentProps!.gapSpace = offsetFromTarget;
-        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
-        // are different. The position should not change if the position is within 2 decimal places.
+      const { target } = currentProps;
+
+      if (target) {
+        // Check if the target is an Element or a MouseEvent and the document contains it
+        // or don't check anything else if the target is a Point or Rectangle
         if (
-          (!positions && newPositions) ||
-          (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          (!(target as Element).getBoundingClientRect && !(target as MouseEvent).preventDefault) ||
+          document.body.contains(target as Node)
         ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is
-          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
-          positionAttempts.current++;
-          setPositions(newPositions);
-          onPositioned?.(newPositions);
-        } else {
-          positionAttempts.current = 0;
-          onPositioned?.(newPositions);
+          currentProps!.gapSpace = offsetFromTarget;
+          const newPositions: IPositionedData = positionElement(
+            currentProps!,
+            hostElement,
+            positioningContainerElement,
+          );
+          // Set the new position only when the positions are not exists or one of the new positioningContainer
+          // positions are different. The position should not change if the position is within 2 decimal places.
+          if (
+            (!positions && newPositions) ||
+            (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          ) {
+            // We should not reposition the positioningContainer more than a few times, if it is then the content is
+            // likely resizing and we should stop trying to reposition to prevent a stack overflow.
+            positionAttempts.current++;
+            setPositions(newPositions);
+            onPositioned?.(newPositions);
+          } else {
+            positionAttempts.current = 0;
+            onPositioned?.(newPositions);
+          }
+        } else if (positions !== undefined) {
+          setPositions(undefined);
         }
       } else if (positions !== undefined) {
         setPositions(undefined);
@@ -193,35 +209,44 @@ function useAutoDismissEvents(
 ) {
   const async = useAsync();
 
-  const onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    if (onDismiss) {
-      onDismiss(ev);
-    } else {
-      updateAsyncPosition();
-    }
-  };
+  const onResize = React.useCallback(
+    (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+      if (onDismiss) {
+        onDismiss(ev);
+      } else {
+        updateAsyncPosition();
+      }
+    },
+    [onDismiss, updateAsyncPosition],
+  );
 
-  const dismissOnScroll = (ev: Event): void => {
-    if (positions && !preventDismissOnScroll) {
-      dismissOnLostFocus(ev);
-    }
-  };
+  const dismissOnLostFocus = React.useCallback(
+    (ev: Event): void => {
+      const target = ev.target as HTMLElement;
+      const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
 
-  const dismissOnLostFocus = (ev: Event): void => {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
+      if (
+        (!targetRef.current && clickedOutsideCallout) ||
+        (ev.target !== targetWindow &&
+          clickedOutsideCallout &&
+          ((targetRef.current as MouseEvent).stopPropagation ||
+            !targetRef.current ||
+            (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+      ) {
+        onResize(ev);
+      }
+    },
+    [onResize, positionedHost, targetRef, targetWindow],
+  );
 
-    if (
-      (!targetRef.current && clickedOutsideCallout) ||
-      (ev.target !== targetWindow &&
-        clickedOutsideCallout &&
-        ((targetRef.current as MouseEvent).stopPropagation ||
-          !targetRef.current ||
-          (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
-    ) {
-      onResize(ev);
-    }
-  };
+  const dismissOnScroll = React.useCallback(
+    (ev: Event): void => {
+      if (positions && !preventDismissOnScroll) {
+        dismissOnLostFocus(ev);
+      }
+    },
+    [dismissOnLostFocus, positions, preventDismissOnScroll],
+  );
 
   React.useEffect(() => {
     const events = new EventGroup({});
@@ -238,7 +263,7 @@ function useAutoDismissEvents(
 
     return () => events.dispose();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
-  }, []);
+  }, [dismissOnScroll]);
 }
 
 export function useHeightOffset(
@@ -320,7 +345,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     return null;
   }
 
-  const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
+  const { className, doNotLayer, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
 
   const styles = getClassNames();
 
@@ -341,6 +366,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
           className,
           directionalClassName,
           !!positioningContainerWidth && { width: positioningContainerWidth },
+          doNotLayer && { zIndex: ZIndexes.Layer },
         )}
         style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
         // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
@@ -357,7 +383,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     </div>
   );
 
-  return props.doNotLayer ? content : <Layer>{content}</Layer>;
+  return doNotLayer ? content : <Layer>{content}</Layer>;
 });
 PositioningContainer.displayName = 'PositioningContainer';
 

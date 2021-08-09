@@ -7,6 +7,7 @@ import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -24,6 +25,7 @@ import {
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  getAccessibleDataObject,
   XAxisTypes,
   NumericAxis,
   StringAxis,
@@ -45,6 +47,7 @@ export interface IVerticalBarChartState extends IBasestate {
   activeXdataPoint: number | string | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -119,7 +122,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -210,6 +215,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
             visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            onClick={item.point.lineData?.onClick}
           />
         );
       },
@@ -374,6 +380,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         activeXdataPoint: point.x,
         YValueHover,
         hoverXValue,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -407,6 +414,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             activeXdataPoint: point.x,
             YValueHover,
             hoverXValue,
+            callOutAccessibilityData: point.callOutAccessibilityData,
           });
         }
       });
@@ -473,9 +481,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           aria-label="Vertical bar chart"
-          role="img"
+          role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
@@ -520,11 +529,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           width={this._barWidth}
           height={Math.max(yBarScale(point.y), 0)}
           aria-label="Vertical bar chart"
-          role="img"
+          role="text"
           aria-labelledby={`toolTip${this._calloutId}`}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}

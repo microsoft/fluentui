@@ -106,7 +106,7 @@ task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pip
 task('build:docs:toc', () =>
   src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
     cacheNonCi(gulpDoctoc(), {
-      name: 'md-docs',
+      name: 'md-docs-v2',
     }),
   ),
 );

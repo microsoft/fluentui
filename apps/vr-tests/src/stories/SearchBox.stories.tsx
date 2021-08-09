@@ -42,4 +42,13 @@ storiesOf('SearchBox', module)
       </Fabric>
     ),
     { rtl: true },
+  )
+  .addStory(
+    'ShowIcon',
+    () => (
+      <Fabric className="testWrapper">
+        <SearchBox placeholder="Search" showIcon={true} defaultValue="Test" />
+      </Fabric>
+    ),
+    { rtl: true },
   );

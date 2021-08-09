@@ -15,6 +15,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
+      borderRadius: siteVariables.borderRadiusMedium,
       borderPadding: borderWidth,
       ...(p.circular && {
         borderPadding: pxToRem(4),
@@ -36,6 +37,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
       verticalAlign: 'middle',
       cursor: 'pointer',
       transition: faster,
+      userSelect: 'none',
 
       ...(p.size === 'small' && {
         padding: v.sizeSmallPadding,
@@ -196,7 +198,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         }),
 
         ':hover': {
+          color: v.tintedColorHover,
           backgroundColor: v.tintedBackgroundColorHover,
+          borderColor: v.tintedBorderColorHover,
         },
 
         ':focus': {
@@ -243,13 +247,14 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         minWidth: v.height,
         padding: 0,
 
-        ...(!p.inverted && {
-          ':hover': {
-            ...getIconFillOrOutlineStyles({ outline: false }),
-            color: v.textColorIconOnlyHover,
-            background: v.backgroundColorIconOnlyHover,
-          },
-        }),
+        ...(!p.inverted &&
+          !p.disabledFocusable && {
+            ':hover': {
+              ...getIconFillOrOutlineStyles({ outline: false }),
+              color: v.textColorIconOnlyHover,
+              background: v.backgroundColorIconOnlyHover,
+            },
+          }),
 
         ...(p.size === 'small' && {
           minWidth: v.sizeSmallHeight,

@@ -17,7 +17,7 @@ export const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariab
       width,
       padding,
       gridGap,
-      display: ['grid', '-ms-grid'],
+      display: 'grid',
       justifyContent: 'space-evenly',
 
       ...(rows && !columns && { gridAutoFlow: 'column' }),

@@ -1,8 +1,185 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.40)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.39..@fluentui/react-positioning_v9.0.0-alpha.40)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.38 ([PR #19189](https://github.com/microsoft/fluentui/pull/19189) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.39)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.38..@fluentui/react-positioning_v9.0.0-alpha.39)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+### Changes
+
+- Fix issues flagged by the exhaustive-deps rule in usePopper ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.38)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.37..@fluentui/react-positioning_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.36 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.37)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.36..@fluentui/react-positioning_v9.0.0-alpha.37)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.19 ([PR #19060](https://github.com/microsoft/fluentui/pull/19060) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.36)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.35..@fluentui/react-positioning_v9.0.0-alpha.36)
+
+### Changes
+
+- Update Popper to use options.target whenever it is defined (even if null) ([PR #18610](https://github.com/microsoft/fluentui/pull/18610) by behowell@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.35)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.34..@fluentui/react-positioning_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.34 ([PR #19023](https://github.com/microsoft/fluentui/pull/19023) by behowell@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.34)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.33..@fluentui/react-positioning_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.33 ([PR #18861](https://github.com/microsoft/fluentui/pull/18861) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.33)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.32..@fluentui/react-positioning_v9.0.0-alpha.33)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.32 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.32)
+
+Fri, 02 Jul 2021 23:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.31..@fluentui/react-positioning_v9.0.0-alpha.32)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.31 ([PR #18721](https://github.com/microsoft/fluentui/pull/18721) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.31)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.30..@fluentui/react-positioning_v9.0.0-alpha.31)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.16 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.30)
+
+Thu, 01 Jul 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.29..@fluentui/react-positioning_v9.0.0-alpha.30)
+
+### Changes
+
+- Fixing bug in start script of converged packages. ([PR #18768](https://github.com/microsoft/fluentui/pull/18768) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.29)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.28..@fluentui/react-positioning_v9.0.0-alpha.29)
+
+### Changes
+
+- feat(usePopperMouseTarget): Reusable hook to manage the state of a virtual popper element ([PR #18565](https://github.com/microsoft/fluentui/pull/18565) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.28)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.27..@fluentui/react-positioning_v9.0.0-alpha.28)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.29 ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.27)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.26..@fluentui/react-positioning_v9.0.0-alpha.27)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.28 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.26)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.25..@fluentui/react-positioning_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.14 ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.25)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.24..@fluentui/react-positioning_v9.0.0-alpha.25)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.13 ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.24)
+
+Fri, 28 May 2021 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.23..@fluentui/react-positioning_v9.0.0-alpha.24)
+
+### Changes
+
+- createTargetFromClick utility to anchor popper to mouse position ([PR #18312](https://github.com/microsoft/fluentui/pull/18312) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.23)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.22..@fluentui/react-positioning_v9.0.0-alpha.23)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.25 ([PR #18323](https://github.com/microsoft/fluentui/pull/18323) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.22)
 

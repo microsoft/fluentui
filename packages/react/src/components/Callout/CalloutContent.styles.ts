@@ -1,4 +1,4 @@
-import { HighContrastSelector, IRawStyle, focusClear, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, IRawStyle, focusClear, getGlobalClassNames, ZIndexes } from '../../Styling';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 
 function getBeakStyle(beakWidth?: number): IRawStyle {
@@ -26,6 +26,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     backgroundColor,
     calloutMaxWidth,
     calloutMinWidth,
+    doNotLayer,
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -44,6 +45,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       theme.fonts.medium,
       {
         position: 'absolute',
+        zIndex: doNotLayer ? ZIndexes.Layer : undefined,
         boxSizing: 'border-box',
         borderRadius: effects.roundedCorner2,
         boxShadow: effects.elevation16,

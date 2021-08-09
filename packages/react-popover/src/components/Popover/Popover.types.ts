@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PopperOptions } from '@fluentui/react-positioning';
+import { PositioningProps, PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Determines popover padding and arrow size
@@ -12,7 +12,7 @@ export type PopoverSize = 'small' | 'medium' | 'large';
  * Popover Props
  */
 export interface PopoverProps
-  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>,
+  extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>,
     Pick<PortalProps, 'mountNode'> {
   children: React.ReactNode;
   /**
@@ -23,10 +23,6 @@ export interface PopoverProps
    * Used to set the initial open state of the Popover in uncontrolled mode
    */
   defaultOpen?: boolean;
-  /**
-   * Uses a custom target HTML element to anchor the Popover
-   */
-  target?: HTMLElement | null;
   /**
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
@@ -59,6 +55,11 @@ export interface PopoverProps
    * Mutually exclusive with `brand`
    */
   inverted?: boolean;
+
+  /**
+   * Should trap focus
+   */
+  trapFocus?: boolean;
 }
 
 /**
@@ -74,7 +75,7 @@ export type PopoverDefaultedProps = never;
 /**
  * Popover State
  */
-export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
+export interface PopoverState extends ComponentStateCompat<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
   /**
    * Open state of the Popover
    */
@@ -88,13 +89,21 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
    */
   triggerRef: React.MutableRefObject<HTMLElement | null>;
   /**
-   * Ref of the PopoverContent
+   * Ref of the PopoverSurface
    */
   contentRef: React.MutableRefObject<HTMLElement | null>;
   /**
    * Ref of the pointing arrow
    */
   arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+  /**
+   * Anchors the popper to the mouse click for context events
+   */
+  contextTarget: PopperVirtualElement | undefined;
+  /**
+   * A callback to set the target of the popper to the mouse click for context events
+   */
+  setContextTarget: React.Dispatch<PopperVirtualElement | undefined>;
 
   size: NonNullable<PopoverProps['size']>;
 }

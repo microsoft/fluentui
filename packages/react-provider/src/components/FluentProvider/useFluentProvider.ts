@@ -1,7 +1,11 @@
-import * as React from 'react';
+import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
+import { mergeThemes } from '@fluentui/react-theme';
+import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import { makeMergePropsCompat, resolveShorthandProps, useConst, useMergedRefs } from '@fluentui/react-utilities';
+import * as React from 'react';
+
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useThemeStyleTag } from './useThemeStyleTag';
 
 export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
 
@@ -25,7 +29,7 @@ export const useFluentProvider = (
 ): FluentProviderState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref: useMergedRefs(ref, React.useRef(null), useKeyboardNavAttribute()),
       as: 'div',
       tooltipContext: useConst({}),
     },
@@ -34,6 +38,10 @@ export const useFluentProvider = (
   );
 
   const parentContext = useFluent();
+
+  const parentTheme = useTheme();
+  const mergedTheme = mergeThemes(parentTheme, state.theme ?? {});
+
   /**
    * TODO: add merge functions to "dir" merge,
    * nesting providers with the same "dir" should not add additional attributes to DOM
@@ -41,6 +49,13 @@ export const useFluentProvider = (
    */
   state.targetDocument = state.targetDocument ?? parentContext.targetDocument;
   state.dir = state.dir ?? parentContext.dir;
+
+  // useThemeStyleTag() should be called after .targetDocument will be defined
+  const themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
+
+  // mergeClasses() is not needed here because `themeClassName` is not from a `makeStyles` call
+  state.className = [state.className || '', themeClassName].filter(Boolean).join(' ');
+  state.theme = mergedTheme;
 
   return state;
 };

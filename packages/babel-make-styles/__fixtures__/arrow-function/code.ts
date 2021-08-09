@@ -6,5 +6,5 @@ export const useStyles = makeStyles({
     color: theme.alias.color.blue.border2,
     display: 'flex',
   }),
-  rootPrimary: theme => ({ color: theme.alias.color.brand.brandBackground }),
+  rootPrimary: theme => ({ color: theme.alias.color.neutral.brandBackground }),
 });

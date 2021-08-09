@@ -14,7 +14,7 @@ export const MenuContext: React_2.Context<MinimalMenuProps>;
 export type MinimalMenuProps = {
     hidden?: boolean;
     onDismiss?: () => void;
-    target?: React_2.Ref<HTMLElement | undefined>;
+    target?: React_2.Ref<HTMLElement>;
 };
 
 // @public (undocumented)

@@ -109,6 +109,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   preventDismissOnLostFocus?: boolean;
 
   /**
+   * If true then the callout will dismiss when the target element is clicked
+   * @defaultvalue false
+   */
+  dismissOnTargetClick?: boolean;
+
+  /**
    * If defined, then takes priority over `preventDismissOnLostFocus`, `preventDismissOnResize`,
    * and `preventDismissOnScroll`.
    * If it returns true, the callout will not dismiss for this event.
@@ -324,6 +330,11 @@ export interface ICalloutContentStyleProps {
    * Min width for callout including borders.
    */
   calloutMinWidth?: number;
+
+  /**
+   * If true, a z-index should be set on the root element (since the Callout will not be rendered on a new layer).
+   */
+  doNotLayer?: boolean;
 }
 
 /**

@@ -287,7 +287,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   private _getDefaultGroupItemLimit = (group: IGroup): number => {
-    return group.count;
+    return group.children && group.children.length > 0 ? group.children.length : group.count;
   };
 
   private _getGroupItemLimit = (group: IGroup): number => {

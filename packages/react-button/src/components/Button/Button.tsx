@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useButton } from './useButton';
-import { ButtonProps, ButtonStyleSelectors } from './Button.types';
+import { ButtonProps } from './Button.types';
 import { renderButton } from './renderButton';
 import { useButtonStyles } from './useButtonStyles';
 
@@ -14,19 +14,7 @@ export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<H
 >((props, ref) => {
   const state = useButton(props, ref);
 
-  const receivedChildren = !!state.children?.children;
-  const receivedIcon = !!state.icon?.children;
-
-  const styleSelectors: ButtonStyleSelectors = {
-    disabled: state.disabled,
-    iconOnly: receivedIcon && !receivedChildren,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useButtonStyles(state, styleSelectors);
+  useButtonStyles(state);
 
   return renderButton(state);
 });

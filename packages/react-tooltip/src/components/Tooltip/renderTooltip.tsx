@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import { TooltipState } from './Tooltip.types';
 import { tooltipShorthandProps } from './useTooltip';
 
@@ -9,7 +9,7 @@ import { tooltipShorthandProps } from './useTooltip';
  * {@docCategory Tooltip}
  */
 export const renderTooltip = (state: TooltipState) => {
-  const { slots, slotProps } = getSlots(state, tooltipShorthandProps);
+  const { slots, slotProps } = getSlotsCompat(state, tooltipShorthandProps);
 
   return (
     <>
@@ -17,7 +17,7 @@ export const renderTooltip = (state: TooltipState) => {
       {state.shouldRenderTooltip && (
         <Portal>
           <slots.root {...slotProps.root}>
-            {!state.noArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
+            {state.pointing && <div ref={state.arrowRef} className={state.arrowClassName} />}
             <slots.content {...slotProps.content} />
           </slots.root>
         </Portal>

@@ -59,12 +59,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -94,12 +94,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -414,12 +414,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               data-is-focusable={true}
               id="_Pie_10first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -449,12 +449,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               data-is-focusable={true}
               id="_Pie_10second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -769,12 +769,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_4first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -804,12 +804,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_4second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -890,12 +890,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_7first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -925,12 +925,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               data-is-focusable={true}
               id="_Pie_7second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -1245,12 +1245,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               data-is-focusable={true}
               id="_Pie_13first20000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=
@@ -1282,12 +1282,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               data-is-focusable={true}
               id="_Pie_13second39000"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
               opacity={1}
+              role="text"
             />
             <text
               className=

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "useOnClickOutside, workaround for facebook/react#20074",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

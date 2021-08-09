@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Avatar, AvatarProps, AvatarSizeValue } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
-import { ContactIcon, GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
+import { People20Regular, PersonCall20Regular } from '@fluentui/react-icons';
 import { AvatarExamples as examples } from '@fluentui/example-data';
 
 import { FluentProviderDecorator } from '../utilities/index';
@@ -89,23 +89,21 @@ storiesOf('Avatar', module)
       <Avatar name="First Last" />
       <Avatar name="Three Word Name" />
       <Avatar name="One" />
-      <Avatar name="(111)-555-1234" icon={<TelemarketerIcon />} />
-      <Avatar icon={<GroupIcon />} square />
-      <Avatar name="Group" icon={<GroupIcon />} square />
-      <Avatar image={examples.image[14]} badge="warning" />
-      <Avatar name={examples.name[7]} image={examples.image[7]} badge="success" />
+      <Avatar name="(111)-555-1234" icon={<PersonCall20Regular />} />
+      <Avatar icon={<People20Regular />} square />
+      <Avatar name="Group" icon={<People20Regular />} square />
+      <Avatar image={examples.image[14]} badge="away" />
+      <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
     </>
   ))
   .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => (
-    <AvatarList icon={<GroupIcon />} badge="warning" square />
-  ))
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="error" />)
+  .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" square />)
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
   .addStory('size+inactive+badge', () => (
-    <AvatarList images={examples.image} active="inactive" badge="info" />
+    <AvatarList images={examples.image} active="inactive" badge="offline" />
   ))
   .addStory('size+active+badge', () => (
-    <AvatarList images={examples.image} active="active" badge="success" />
+    <AvatarList images={examples.image} active="active" badge="available" />
   ))
   .addStory('size+active+shadow', () => (
     <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
@@ -121,11 +119,9 @@ storiesOf('Avatar', module)
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
-    <AvatarCustomSizeList names={examples.name} badge="success" />
+    <AvatarCustomSizeList names={examples.name} badge="available" />
   ))
-  .addStory('customSize+icon+active', () => (
-    <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
-  ))
+  .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
   .addStory('color', () => (
     <Stack tokens={{ childrenGap: 24 }}>
       <Stack wrap horizontal tokens={{ childrenGap: 8 }}>

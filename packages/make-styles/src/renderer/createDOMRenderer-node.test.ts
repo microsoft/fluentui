@@ -4,7 +4,7 @@
 
 // 👆 this is intentionally to test in SSR like environment
 
-import { MakeStylesReducedDefinitions } from '../types';
+import { CSSRulesByBucket } from '../types';
 import { createDOMRenderer } from './createDOMRenderer';
 
 describe('createDOMRenderer', () => {
@@ -12,12 +12,12 @@ describe('createDOMRenderer', () => {
     expect(typeof document).toBe('undefined');
   });
 
-  it('should return classes even without a document', () => {
+  it('should not throw when document does not exist', () => {
     const renderer = createDOMRenderer(undefined);
-    const definitions: MakeStylesReducedDefinitions = {
-      color: ['', 'foo', '.foo { color: red }'],
+    const cssRules: CSSRulesByBucket = {
+      d: ['.foo { color: red }'],
     };
 
-    expect(renderer.insertDefinitions('ltr', definitions)).toBe('foo');
+    expect(() => renderer.insertCSSRules(cssRules)).not.toThrow();
   });
 });

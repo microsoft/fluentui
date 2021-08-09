@@ -1,207 +1,109 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * {@docCategory Slider}
+ * Slider ref
  */
-export interface ISlider {
+export interface SliderPublicRef {
+  /**
+   * Gets the current value of the Slider.
+   */
   value: number | undefined;
 
+  /**
+   * Sets focus to the Slider's thumb.
+   */
   focus: () => void;
 }
 
 /**
- * {@docCategory Slider}
+ * Names of the shorthand properties in SliderProps
  */
-export interface ISliderProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
-    React.RefAttributes<HTMLDivElement> {
+export type SliderSlots = {
   /**
-   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * The **Slider's** base. It is used to visibly display the min and max selectable values.
    */
-  componentRef?: IRefObject<ISlider>;
+  rail: React.HTMLAttributes<HTMLElement>;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+  trackWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
-   * Theme provided by High-Order Component.
+   * The bar showing the current selected area adjacent to the **Slider's** thumb.
    */
-  theme?: ITheme;
+  track: React.HTMLAttributes<HTMLElement>;
 
   /**
-   * Description label of the Slider
+   * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
-  label?: string;
+  thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
 
   /**
-   * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
-   * This value is mutually exclusive to value. Use one or the other.
+   * The draggable icon used to select a given value from the **Slider**.
+   */
+  thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+
+  /**
+   * The area in which the **Slider's** rail allows for the thumb to be dragged.
+   */
+  activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
+};
+
+export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  /**
+   * The starting value for an `uncontrolled` **Slider**.
+   * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
 
   /**
-   * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
-   * This value is mutually exclusive to defaultValue. Use one or the other.
+   * The current value of the `controlled` **Slider**.
+   * Mutually exclusive with `defaultValue` prop.
    */
   value?: number;
 
   /**
-   * The min value of the Slider
-   * @defaultvalue 0
+   * The min value of the **Slider**.
+   * @default 0
    */
   min?: number;
 
   /**
-   * The max value of the Slider
-   * @defaultvalue 10
+   * The max value of the **Slider**.
+   * @default 10
    */
   max?: number;
 
   /**
-   * The difference between the two adjacent values of the Slider
-   * @defaultvalue 1
+   * The number of steps that the **Slider's** `value` will increment upon change.
+   * @default 1
    */
   step?: number;
 
   /**
-   * Whether to show the value on the right of the Slider.
-   * @defaultvalue true
+   * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  showValue?: boolean;
+  onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
 
   /**
-   * Callback when the value has been changed
-   */
-  onChange?: (value: number) => void;
-
-  /**
-   * Callback on mouse up or touch end
-   */
-  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-
-  /**
-   * A description of the Slider for the benefit of screen readers.
-   */
-  ariaLabel?: string;
-
-  /**
-   * A text description of the Slider number value for the benefit of screen readers.
-   * This should be used when the Slider number value is not accurately represented by a number.
+   * The **Slider's** current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
-  /**
-   * Whether to render the slider vertically.
-   * @default `false` (render horizontally)
-   */
-  vertical?: boolean;
-
-  /**
-   * Whether to render the Slider as disabled.
-   * @defaultvalue false
-   */
-  disabled?: boolean;
-
-  /**
-   * Whether to decide that thumb will snap to closest value while moving the slider
-   * @defaultvalue false
-   */
-  snapToStep?: boolean;
-
-  /**
-   * Class name to attach to the slider root element.
-   */
-  className?: string;
-
-  /**
-   * Additional props on the thumb button within the slider.
-   */
-  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
-
-  /**
-   * Custom formatter for the slider value.
-   */
-  valueFormat?: (value: number) => string;
-
-  /**
-   * Whether to attach the origin of slider to zero. Helpful when the range include negatives.
-   * @defaultvalue false
-   */
-  originFromZero?: boolean;
 }
 
 /**
- * {@docCategory Slider}
+ * Slider Props
  */
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
-  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
-    showTransitions?: boolean;
-    showValue?: boolean;
-    titleLabelClassName?: string;
-  };
+export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {}
 
 /**
- * {@docCategory Slider}
+ * State used in rendering Slider
  */
-export interface ISliderStyles {
+export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
   /**
-   * Style set for the root element.
+   * Ref to the root element
    */
-  root: IStyle;
-
-  /**
-   * Style set for the title label above the slider.
-   */
-  titleLabel: IStyle;
-
-  /**
-   * Style set for the container of the slider.
-   */
-  container: IStyle;
-
-  /**
-   * Style set for the actual box containting interactive elements of the slider.
-   */
-  slideBox: IStyle;
-
-  /**
-   * Style set for element that contains all the lines.
-   */
-  line: IStyle;
-
-  /**
-   * Style set for thumb of the slider.
-   */
-  thumb: IStyle;
-
-  /**
-   * Style set for both active and inactive sections of the line.
-   */
-  lineContainer: IStyle;
-
-  /**
-   * Style set for active portion of the line.
-   */
-  activeSection: IStyle;
-
-  /**
-   * Style set for inactive portion of the line.
-   */
-  inactiveSection: IStyle;
-
-  /**
-   * Style set for value label on right/below of the slider.
-   */
-  valueLabel: IStyle;
-
-  /**
-   * Style set for tick on 0 on number line. This element only shows up when originFromZero prop is true.
-   */
-  zeroTick: IStyle;
+  ref: React.RefObject<HTMLElement & SliderPublicRef>;
 }

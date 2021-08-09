@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+
 import { AcceptIcon, TranslationIcon } from '@fluentui/react-icons-northstar';
+import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
@@ -26,17 +27,12 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-1',
   },
   {
+    attached: 'top',
     contentPosition: 'end',
-    gutter: (
-      <Avatar
-        image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg"
-        status={{ color: 'green', icon: <AcceptIcon /> }}
-      />
-    ),
     message: (
       <Chat.Message
         content="Hi"
-        author="Robin Counts"
+        author="Tim Deboer"
         timestamp="Yesterday, 10:15 PM"
         details={
           <>
@@ -47,6 +43,20 @@ const items: ShorthandCollection<ChatItemProps> = [
       />
     ),
     key: 'message-id-2',
+  },
+  {
+    attached: 'bottom',
+    contentPosition: 'end',
+    message: (
+      <Chat.Message
+        author="Tim Deboer"
+        content="How are you doing?"
+        details={<>Edited</>}
+        mine
+        timestamp="Yesterday, 10:16 PM"
+      />
+    ),
+    key: 'message-id-3',
   },
 ];
 

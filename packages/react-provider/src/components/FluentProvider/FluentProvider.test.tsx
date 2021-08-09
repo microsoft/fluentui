@@ -5,14 +5,13 @@ import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 describe('FluentProvider', () => {
   isConformant({
     disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
-    helperComponents: [ProviderContext.Provider, ThemeProvider],
+    helperComponents: [ProviderContext.Provider],
   });
 
   let wrapper: ReactWrapper | undefined;

@@ -1,17 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
+  "include": ["src"],
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "module": "CommonJS",
     "lib": ["ES2015", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
+    "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
-    "strict": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global"]
-  },
-  "include": ["src"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "storybook__addons"]
+  }
 }

@@ -13,11 +13,11 @@ describe('getStyleSheetForBucket', () => {
     const target = createFakeDocument();
     const renderer = createDOMRenderer();
 
-    getStyleSheetForBucket('', target, renderer);
+    getStyleSheetForBucket('d', target, renderer);
     getStyleSheetForBucket('h', target, renderer);
 
     expect(target.head.innerHTML).toMatchInlineSnapshot(
-      `"<style data-make-styles-bucket=\\"default\\"></style><style data-make-styles-bucket=\\"h\\"></style>"`,
+      `"<style data-make-styles-bucket=\\"d\\"></style><style data-make-styles-bucket=\\"h\\"></style>"`,
     );
   });
 });

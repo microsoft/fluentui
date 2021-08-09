@@ -5,7 +5,7 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins } from '../../types/index';
+import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
@@ -100,6 +100,11 @@ export interface ICartesianChartStyles {
    * styles for callout y-content
    */
   calloutContentY?: IStyle;
+
+  /**
+   * styles for description message
+   */
+  descriptionMessage?: IStyle;
 
   /**
    * styles for callout Date time container
@@ -331,6 +336,7 @@ export interface IYValueHover {
   shouldDrawBorderBottom?: boolean;
   yAxisCalloutData?: string | { [id: string]: number };
   index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IChildProps {
@@ -384,6 +390,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     color?: string;
     YValue?: string | number;
     XValue?: string;
+    descriptionMessage?: string;
   };
 
   /**

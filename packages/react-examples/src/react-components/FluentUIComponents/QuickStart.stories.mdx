@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Concepts/Developer/Quick Start" />
 
@@ -26,7 +26,7 @@ import App from './App';
 ReactDOM.render(
   <FluentProvider theme={teamsLightTheme}>
     <App />
-  </Provider>,
+  </FluentProvider>,
   document.getElementById('root'),
 );
 ```

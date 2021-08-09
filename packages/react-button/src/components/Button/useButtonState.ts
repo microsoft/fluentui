@@ -7,7 +7,11 @@ import { ButtonState } from './Button.types';
  * @param state - Button draft state to mutate.
  */
 export const useButtonState = (state: ButtonState): ButtonState => {
-  const { as, disabled, /*disabledFocusable,*/ onClick, onKeyDown: onKeyDownCallback } = state;
+  const { as, children, disabled, disabledFocusable, icon, onClick, onKeyDown: onKeyDownCallback } = state;
+
+  const receivedChildren = !!children;
+  const receivedIcon = !!icon?.children;
+  state.iconOnly = receivedIcon && !receivedChildren;
 
   const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     onKeyDownCallback?.(ev);
@@ -27,7 +31,7 @@ export const useButtonState = (state: ButtonState): ButtonState => {
     // Add 'role=button' and 'tabIndex=0' for all non-button elements.
     if (as !== 'button') {
       state.role = 'button';
-      state.tabIndex = disabled /*&& !disabledFocusable*/ ? undefined : 0;
+      state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
 
       // Add keydown event handler for all other non-anchor elements.
       if (as !== 'a') {
@@ -39,12 +43,12 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   else {
     state.onKeyDown = onNonAnchorOrButtonKeyDown;
     state.role = 'button';
-    state.tabIndex = disabled /*&& !disabledFocusable*/ ? undefined : 0;
+    state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
   }
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
   state.onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    if (disabled) {
+    if (disabled || disabledFocusable) {
       ev.preventDefault();
     } else {
       onClick?.(ev);
@@ -55,7 +59,7 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   const { onKeyDown } = state;
   state.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     const keyCode = getCode(ev);
-    if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    if ((disabled || disabledFocusable) && (keyCode === EnterKey || keyCode === SpacebarKey)) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {
@@ -64,8 +68,8 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   };
 
   // Set the aria-disabled and disabled props correctly.
-  state['aria-disabled'] = disabled /*|| disabledFocusable*/;
-  state.disabled = as === 'button' ? disabled /* && !disabledFocusable*/ : undefined;
+  state.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
+  state['aria-disabled'] = disabled && !state.disabled;
 
   return state;
 };

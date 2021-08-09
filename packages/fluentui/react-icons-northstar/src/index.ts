@@ -5,6 +5,7 @@ export * from './utils/iconClassNames';
 
 // Icon components
 export { AcceptIcon } from './components/AcceptIcon';
+export { AccessibilityIcon } from './components/AccessibilityIcon';
 export { AddIcon } from './components/AddIcon';
 export { ApprovalsAppbarIcon } from './components/ApprovalsAppbarIcon';
 export { AppsIcon } from './components/AppsIcon';
@@ -75,6 +76,7 @@ export { ContactCardIcon } from './components/ContactCardIcon';
 export { ContactGroupCallIcon } from './components/ContactGroupCallIcon';
 export { ContactGroupIcon } from './components/ContactGroupIcon';
 export { ContentIcon } from './components/ContentIcon';
+export { ContentViewGalleryIcon } from './components/ContentViewGalleryIcon';
 export { CustomerHubIcon } from './components/CustomerHubIcon';
 export { DoorArrowLeftIcon } from './components/DoorArrowLeftIcon';
 export { DownloadIcon } from './components/DownloadIcon';

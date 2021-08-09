@@ -1,8 +1,86 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.20)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.19..@fluentui/react-shared-contexts_v9.0.0-alpha.20)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.8 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.19)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.18..@fluentui/react-shared-contexts_v9.0.0-alpha.19)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.19 ([PR #19060](https://github.com/microsoft/fluentui/pull/19060) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.18)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.17..@fluentui/react-shared-contexts_v9.0.0-alpha.18)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.18 ([PR #19041](https://github.com/microsoft/fluentui/pull/19041) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.17)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.16..@fluentui/react-shared-contexts_v9.0.0-alpha.17)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.2 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.7 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.16)
+
+Fri, 02 Jul 2021 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.15..@fluentui/react-shared-contexts_v9.0.0-alpha.16)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.16 ([PR #18655](https://github.com/microsoft/fluentui/pull/18655) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.15)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.14..@fluentui/react-shared-contexts_v9.0.0-alpha.15)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.6 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.14)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.13..@fluentui/react-shared-contexts_v9.0.0-alpha.14)
+
+### Changes
+
+- Modifying MinimalMenuProps target prop to only be React.Ref<HTMLElement> instead of React.Ref<HTMLElement | undefined>. ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.13)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-alpha.12..@fluentui/react-shared-contexts_v9.0.0-alpha.13)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.14 ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.12)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "throw when is used inside a React component",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

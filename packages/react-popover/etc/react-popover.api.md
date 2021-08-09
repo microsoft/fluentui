@@ -4,12 +4,13 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { PopperOptions } from '@fluentui/react-positioning';
+import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
+import { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -25,39 +26,18 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTM
 // @public
 export const Popover: React_2.FC<PopoverProps>;
 
-// @public
-export const PopoverContent: React_2.ForwardRefExoticComponent<PopoverContentProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public
-export type PopoverContentDefaultedProps = never;
-
-// @public
-export interface PopoverContentProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
-}
-
-// @public
-export type PopoverContentShorthandProps = never;
-
-// @public
-export interface PopoverContentState extends ComponentState<PopoverContentProps, PopoverContentShorthandProps, PopoverContentDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
-    arrowClassName?: string;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
-}
-
 // @public (undocumented)
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
 }
 
 // @public
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
@@ -69,7 +49,7 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
     openOnContext?: boolean;
     openOnHover?: boolean;
     size?: PopoverSize;
-    target?: HTMLElement | null;
+    trapFocus?: boolean;
 }
 
 // @public
@@ -79,14 +59,37 @@ export type PopoverShorthandProps = never;
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
+export interface PopoverState extends ComponentStateCompat<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
+    contextTarget: PopperVirtualElement | undefined;
     open: boolean;
+    setContextTarget: React_2.Dispatch<PopperVirtualElement | undefined>;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     // (undocumented)
     size: NonNullable<PopoverProps['size']>;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
+}
+
+// @public
+export const PopoverSurface: React_2.ForwardRefExoticComponent<PopoverSurfaceProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type PopoverSurfaceDefaultedProps = never;
+
+// @public
+export interface PopoverSurfaceProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export type PopoverSurfaceShorthandProps = never;
+
+// @public
+export interface PopoverSurfaceState extends ComponentStateCompat<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
+    arrowClassName?: string;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    // (undocumented)
+    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public
@@ -106,7 +109,7 @@ export interface PopoverTriggerState extends PopoverTriggerProps {
 export const renderPopover: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverContent: (state: PopoverContentState) => JSX.Element | null;
+export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
@@ -114,18 +117,17 @@ export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
 // @public
 export const usePopover: (props: PopoverProps, defaultProps?: PopoverProps | undefined) => PopoverState;
 
-// @public
-export const usePopoverContent: (props: PopoverContentProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverContentProps | undefined) => PopoverContentState;
-
-// @public
-export const usePopoverContentStyles: (state: PopoverContentState) => PopoverContentState;
-
 // @public (undocumented)
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
-export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverSurfaceProps | undefined) => PopoverSurfaceState;
 
+// @public
+export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
+
+// @public
+export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutside } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  useControllableValue,
+  useEventCallback,
+  useOnClickOutside,
+  useOnScrollOutside,
+} from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { usePopper } from '@fluentui/react-positioning';
+import { usePopper, PopperVirtualElement, createVirtualElementFromClick } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
-import { arrowHeights } from '../PopoverContent/index';
+import { arrowHeights } from '../PopoverSurface/index';
 import { getOffsetWithArrow } from './getOffsetWithArrow';
 
 /**
@@ -33,6 +39,8 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
       children: null,
       position: 'above',
       align: 'center',
+      setContextTarget: () => null,
+      contextTarget: undefined,
     },
     defaultProps,
     props,
@@ -42,6 +50,10 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
   if (state.coverTarget) {
     state.noArrow = true;
   }
+
+  const [contextTarget, setContextTarget] = React.useState<PopperVirtualElement>();
+  state.setContextTarget = setContextTarget;
+  state.contextTarget = contextTarget;
 
   useOpenState(state);
   usePopoverRefs(state);
@@ -53,6 +65,13 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
     disabled: !state.open,
+  });
+  useOnScrollOutside({
+    contains: elementContains,
+    element: targetDocument,
+    callback: ev => state.setOpen(ev, false),
+    refs: [state.triggerRef, state.contentRef],
+    disabled: !state.open || !state.openOnContext, // only close on scroll for context
   });
 
   return state;
@@ -67,9 +86,19 @@ function useOpenState(state: PopoverState): PopoverState {
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   state.open = open !== undefined ? open : state.open;
+  const setContextTarget = state.setContextTarget;
 
   state.setOpen = React.useCallback(
     (e, shouldOpen) => {
+      if (shouldOpen && e.type === 'contextmenu') {
+        const virtualElement = createVirtualElementFromClick((e as React.MouseEvent).nativeEvent);
+        setContextTarget(virtualElement);
+      }
+
+      if (!shouldOpen) {
+        setContextTarget(undefined);
+      }
+
       setOpen(prevOpen => {
         // More than one event (mouse, focus, keyboard) can request the Popover to close
         // We assume the first event is the correct one
@@ -80,7 +109,7 @@ function useOpenState(state: PopoverState): PopoverState {
         return shouldOpen;
       });
     },
-    [setOpen, onOpenChange],
+    [setOpen, onOpenChange, setContextTarget],
   );
 
   return state;
@@ -93,6 +122,10 @@ function useOpenState(state: PopoverState): PopoverState {
 function usePopoverRefs(state: PopoverState): PopoverState {
   if (!state.noArrow) {
     state.offset = getOffsetWithArrow(state.offset, arrowHeights[state.size]);
+  }
+
+  if (!state.target && state.openOnContext && state.contextTarget) {
+    state.target = state.contextTarget;
   }
 
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper({

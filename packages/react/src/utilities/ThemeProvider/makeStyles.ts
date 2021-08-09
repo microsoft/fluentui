@@ -45,7 +45,7 @@ export type UseStylesOptions = {
  * @param styleOrFunction - Either a css javascript object, or a function which takes in `ITheme`
  * and returns a css javascript object.
  */
-export function makeStyles<TStyleSet extends { [key: string]: IStyle }>(
+export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
 ): (options?: UseStylesOptions) => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.

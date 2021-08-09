@@ -11,11 +11,24 @@ export interface MenuTriggerProps {
 }
 
 /**
+ * Props that are passed to the child of the MenuTrigger when cloned to ensure correct behaviour for the Menu
+ */
+export interface MenuTriggerChildProps
+  extends Required<
+    Pick<
+      React.HTMLAttributes<HTMLElement>,
+      | 'onClick'
+      | 'onMouseEnter'
+      | 'onMouseLeave'
+      | 'onContextMenu'
+      | 'onKeyDown'
+      | 'aria-haspopup'
+      | 'aria-expanded'
+      | 'id'
+    >
+  > {}
+
+/**
  * {@docCategory MenuTrigger }
  */
-export interface MenuTriggerState extends MenuTriggerProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export interface MenuTriggerState extends MenuTriggerProps {}

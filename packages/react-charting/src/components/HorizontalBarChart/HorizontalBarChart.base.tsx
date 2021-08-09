@@ -2,6 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, find, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import {
+  IAccessibilityProps,
   IChartProps,
   IHorizontalBarChartProps,
   IHorizontalBarChartStyleProps,
@@ -25,6 +26,7 @@ export interface IHorizontalBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -59,34 +61,44 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
-        <div className={this._classNames.root}>
-          {data!.map((points: IChartProps, index: number) => {
-            if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
-              datapoint = points.chartData![0].horizontalBarChartdata!.x;
-            } else {
-              datapoint = 0;
-            }
-            points.chartData![1] = {
-              legend: '',
-              horizontalBarChartdata: {
-                x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
-                y: points.chartData![0].horizontalBarChartdata!.y,
-              },
-              color: palette.neutralTertiaryAlt,
-            };
+      <div className={this._classNames.root}>
+        {data!.map((points: IChartProps, index: number) => {
+          if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
+            datapoint = points.chartData![0].horizontalBarChartdata!.x;
+          } else {
+            datapoint = 0;
+          }
+          points.chartData![1] = {
+            legend: '',
+            horizontalBarChartdata: {
+              x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
+              y: points.chartData![0].horizontalBarChartdata!.y,
+            },
+            color: palette.neutralTertiaryAlt,
+          };
 
-            const chartDataText = this._getChartDataText(points!);
-            const bars = this._createBars(points!, palette);
-            const keyVal = this._uniqLineText + '_' + index;
-            return (
-              <div key={index} className={this._classNames.items}>
-                <div className={this._classNames.items}>
+          const chartDataText = this._getChartDataText(points!);
+          const bars = this._createBars(points!, palette);
+          const keyVal = this._uniqLineText + '_' + index;
+
+          return (
+            <div key={index} className={this._classNames.items}>
+              <div className={this._classNames.items}>
+                <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
-                    {points!.chartTitle && <div className={this._classNames.chartDataText}>{points!.chartTitle}</div>}
+                    {points!.chartTitle && (
+                      <div
+                        className={this._classNames.chartDataText}
+                        {...this._getAccessibleDataObject(points!.chartTitleAccessibilityData)}
+                      >
+                        {points!.chartTitle}
+                      </div>
+                    )}
                     {chartDataText}
                   </div>
-                  {points!.chartData![0].data && this._createBenchmark(points!)}
+                </FocusZone>
+                {points!.chartData![0].data && this._createBenchmark(points!)}
+                <FocusZone direction={FocusZoneDirection.horizontal}>
                   <svg className={this._classNames.chart}>
                     <g
                       id={keyVal}
@@ -94,26 +106,37 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       ref={(e: SVGGElement) => {
                         this._refCallback(e, points!.chartData![0].legend);
                       }}
+                      // NOTE: points.chartData![0] contains current data value
+                      onClick={() => {
+                        const p = points!.chartData![0];
+                        if (p && p.onClick) {
+                          p.onClick();
+                        }
+                      }}
                       className={this._classNames.barWrapper}
                     >
                       {bars}
                     </g>
                   </svg>
-                </div>
+                </FocusZone>
               </div>
-            );
-          })}
-          <Callout
-            target={this.state.refSelected}
-            coverTarget={true}
-            isBeakVisible={false}
-            gapSpace={30}
-            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-            directionalHint={DirectionalHint.rightTopEdge}
-            id={this._calloutId}
-            onDismiss={this._closeCallout}
-            {...this.props.calloutProps!}
-          >
+            </div>
+          );
+        })}
+        <Callout
+          target={this.state.refSelected}
+          coverTarget={true}
+          isBeakVisible={false}
+          gapSpace={30}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.rightTopEdge}
+          id={this._calloutId}
+          onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
+          {...this.props.calloutProps!}
+          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData)}
+        >
+          <>
             {this.props.onRenderCalloutPerHorizontalBar ? (
               this.props.onRenderCalloutPerHorizontalBar(this.state.barCalloutProps)
             ) : (
@@ -123,9 +146,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 color={this.state.lineColor}
               />
             )}
-          </Callout>
-        </div>
-      </FocusZone>
+          </>
+        </Callout>
+      </div>
     );
   }
 
@@ -148,6 +171,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         barCalloutProps: point,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -176,29 +200,44 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   };
 
   private _getChartDataText = (data: IChartProps) => {
-    return this.props.barChartCustomData ? this.props.barChartCustomData(data) : this._getDefaultTextData(data);
+    return this.props.barChartCustomData ? (
+      <div data-is-focusable={true} role="text">
+        {this.props.barChartCustomData(data)}
+      </div>
+    ) : (
+      this._getDefaultTextData(data)
+    );
   };
 
   private _getDefaultTextData(data: IChartProps): JSX.Element {
     const chartDataMode = this.props.chartDataMode || 'default';
-    const x = data!.chartData![0].horizontalBarChartdata!.x;
-    const y = data!.chartData![0].horizontalBarChartdata!.y;
+    const chartData: IChartDataPoint = data!.chartData![0];
+    const x = chartData.horizontalBarChartdata!.x;
+    const y = chartData.horizontalBarChartdata!.y;
 
+    const accessibilityData = this._getAccessibleDataObject(data.chartDataAccessibilityData!);
     switch (chartDataMode) {
       case 'default':
+        const chartDataText: string = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return (
-          <div className={this._classNames.chartDataText}>{x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
+          <div className={this._classNames.chartDataText} {...accessibilityData}>
+            {chartDataText}
+          </div>
         );
       case 'fraction':
         return (
-          <div>
+          <div {...accessibilityData}>
             <span className={this._classNames.chartDataText}>{x}</span>
             <span className={this._classNames.chartDataTextDenominator}>{'/' + y}</span>
           </div>
         );
       case 'percentage':
-        const dataRatio = Math.round((x / y) * 100);
-        return <div className={this._classNames.chartDataText}>{dataRatio + '%'}</div>;
+        const dataRatioPercentage = `${Math.round((x / y) * 100)}%`;
+        return (
+          <div className={this._classNames.chartDataText} {...accessibilityData}>
+            {dataRatioPercentage}
+          </div>
+        );
     }
   }
 
@@ -226,6 +265,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
     let prevPosition = 0;
     let value = 0;
+
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
@@ -281,5 +321,16 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAccessibleDataObject = (accessibleData?: IAccessibilityProps, role: string = 'text') => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': true,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
   };
 }
