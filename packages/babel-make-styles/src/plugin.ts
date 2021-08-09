@@ -1,13 +1,13 @@
-import { NodePath, PluginObj, PluginPass, TransformOptions, types as t } from '@babel/core';
+import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
-import Ajv from 'ajv';
 
-import { UNHANDLED_CASE_ERROR } from './constants';
-import { configSchema } from './schema';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
+import { UNHANDLED_CASE_ERROR } from './constants';
+import { BabelPluginOptions } from './types';
+import { validateOptions } from './validateOptions';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
@@ -21,17 +21,6 @@ type AstStyleNode =
   | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
-
-export type BabelPluginOptions = {
-  /** Defines set of modules and imports handled by a plugin. */
-  modules?: { moduleSource: string; importName: string }[];
-
-  /**
-   * If you need to specify custom Babel configuration, you can pass them here. These options will be used by the
-   * plugin when parsing and evaluating modules.
-   */
-  babelOptions?: Pick<TransformOptions, 'plugins' | 'presets'>;
-};
 
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
@@ -464,12 +453,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
     ...options,
   };
 
-  const ajv = new Ajv();
-  const valid = ajv.validate(configSchema, pluginOptions);
-
-  if (!valid) {
-    throw new Error(`Validation failed for passed config: ${ajv.errorsText(ajv.errors)}`);
-  }
+  validateOptions(pluginOptions);
 
   return {
     name: '@fluentui/babel-make-styles',
