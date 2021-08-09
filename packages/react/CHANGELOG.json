@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react_v8.27.1",
+      "version": "8.27.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Callout positioning bug when the target element has changed.",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Aug 2021 07:34:24 GMT",
       "tag": "@fluentui/react_v8.27.0",
       "version": "8.27.0",

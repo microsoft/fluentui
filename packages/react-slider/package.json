@@ -39,6 +39,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-label": "^9.0.0-alpha.24",
     "@fluentui/react-make-styles": "^9.0.0-alpha.55",
     "@fluentui/react-utilities": "^9.0.0-alpha.38",
     "@fluentui/react-label": "^9.0.0-alpha.24",

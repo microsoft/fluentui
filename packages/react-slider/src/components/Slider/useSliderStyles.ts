@@ -15,16 +15,15 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
     touchAction: 'none',
   }),
-
   horizontal: theme => ({
-    width: '280px',
+    minWidth: '280px',
     height: 'var(--slider-thumb-size)',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
     width: 'var(--slider-thumb-size)',
-    height: '120px',
+    minHeight: '120px',
   }),
 });
 
