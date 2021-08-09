@@ -56,7 +56,55 @@ Material UI follows a similar approach to v8 code: the second argument represent
 
 ## Detailed Design or Proposal
 
-### Option A (recommended):
+### Option A1:
+
+_The same as "Option A", but without access to `props`, see sample interfaces below._
+
+- First param: an event (React.SyntheticEvent or DOM) or `null` (when an event object is missing)
+- Second param: a `data` object where we provide minimum properties
+
+```tsx
+interface InputOnChangeData {
+  value: string;
+  // other metadata can be included on demand
+}
+
+interface CheckboxOnChangeData {
+  // 👇 The name "value" doesn't always make sense and could possibly be confusing in some cases. E.g. for "Checkbox",
+  //    the "onChange" event happens when the "checked" prop changes, not the "value" prop
+  checked: string;
+}
+
+function App() {
+  return (
+    <>
+      <Input
+        onChange={(ev: React.ChangeEvent, data: InputOnChangeData) => {
+          const { value } = data;
+
+          // I can access the new value
+          console.log(`The new value is ${value}`);
+        }}
+      />
+      <Checkbox onChange={(ev: React.ChangeEvent, data: CheckboxOnChangeData) => console.log(data.checked)} />
+    </>
+  );
+}
+```
+
+#### Pros
+
+- 👍 `value` (_or other meaningful property, for example `checked`_) is always predictable in the `value` prop
+- 👍 Future proof; `data` object is extendable without ever accidentally overriding a potentially needed prop `[value]`
+- 👍 Type safety is simple
+
+#### Cons
+
+- 👎 `props` are not accessible, but we can reconsider this decision later
+
+## Discarded solutions
+
+### Option A:
 
 - Standardize on a `data` object where we provide the following minimum props:
 
@@ -77,7 +125,7 @@ interface CheckboxOnChangeData {
   // 👇 The name "value" doesn't always make sense and could possibly be confusing in some cases. E.g. for "Checkbox",
   //    the "onChange" event happens when the "checked" prop changes, not the "value" prop
   checked: string;
-  props: InputProps;
+  props: CheckboxProps;
 }
 
 function App() {
