@@ -283,9 +283,8 @@ Components with complex API require many long stories, both for documentation an
 
 **Good Example 1 - single file**
 
-Button.stories.tsx:
-
 ```tsx
+@filename  Button.stories.tsx
 import { Meta } from '@storybook/react';
 
 export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
@@ -299,9 +298,8 @@ export default {
 
 **Good Example 2 - multiple files**
 
-Button.stories.tsx:
-
 ```tsx
+@filename  Button.stories.tsx
 import { Meta } from '@storybook/react';
 
 export * from 'ButtonDefault.stories';
@@ -313,24 +311,21 @@ export default {
 } as Meta;
 ```
 
-ButtonDefault.stories.tsx:
-
 ```tsx
+@filename  ButtonDefault.stories.tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
 ButtonDefault.storyName = 'Default';
 ```
 
-ButtonWithIcon.stories.tsx:
-
 ```tsx
+@filename  ButtonWithIcon.stories.tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
 **Bad example - multiple files**
 
-ButtonDefault.stories.tsx:
-
 ```tsx
+@filename  ButtonDefault.stories.tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
 ButtonDefault.storyName = 'Default';
 
@@ -341,9 +336,8 @@ export default {
 } as Meta;
 ```
 
-ButtonWithIcon.stories.tsx:
-
 ```tsx
+@filename  ButtonWithIcon.stories.tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 
 // don’t do this
