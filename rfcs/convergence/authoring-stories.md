@@ -281,10 +281,10 @@ Components with complex API require many long stories, both for documentation an
 2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
 3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories besides the default export.
 
-
 ##### Good Example 1 - single file
 
 Button.stories.tsx:
+
 ```tsx
 import { Meta } from '@storybook/react';
 
@@ -293,32 +293,35 @@ export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button
 
 export default {
   title: 'Components/Button',
-  component: Button
+  component: Button,
 } as Meta;
 ```
 
 ##### Good Example 2 - multiple files
 
 Button.stories.tsx:
+
 ```tsx
 import { Meta } from '@storybook/react';
 
-export * from "ButtonDefault.stories"
-export * from "ButtonWithIcon.stories"
+export * from 'ButtonDefault.stories';
+export * from 'ButtonWithIcon.stories';
 
 export default {
   title: 'Components/Button',
-  component: Button
+  component: Button,
 } as Meta;
 ```
 
 ButtonDefault.stories.tsx:
+
 ```tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
-ButtonDefault.storyName = "Default"
+ButtonDefault.storyName = 'Default';
 ```
 
 ButtonWithIcon.stories.tsx:
+
 ```tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
@@ -326,25 +329,27 @@ export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button
 ##### Bad example - multiple files
 
 ButtonDefault.stories.tsx:
+
 ```tsx
 export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
-ButtonDefault.storyName = "Default"
+ButtonDefault.storyName = 'Default';
 
 // don’t do this
 export default {
   title: 'Components/Button',
-  component: Button
+  component: Button,
 } as Meta;
 ```
 
 ButtonWithIcon.stories.tsx:
+
 ```tsx
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 
 // don’t do this
 export default {
   title: 'Components/Button',
-  component: Button
+  component: Button,
 } as Meta;
 ```
 
@@ -366,6 +371,7 @@ ButtonPrimary.storyName = 'Better story name';
 #### default story
 
 Every component must have a story called `Default`, which:
+
 - must be the first story in the component - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
 - must support auto generated [Controls](https://storybook.js.org/docs/react/essentials/controls) - more details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
 
