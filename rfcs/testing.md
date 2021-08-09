@@ -29,7 +29,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
   These can be achieved simply through the `isConformant` function generated when creating a converged component.
 
-- **Snapshot**
+- **DOM Snapshot**
 
   Stricly DOM structure consistency enforcing. This will guarantee we do not introduce breaking changes for users who expect a certain structure to be rendered by our components.
 
