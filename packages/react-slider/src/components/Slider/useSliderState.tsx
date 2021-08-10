@@ -116,8 +116,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   };
 
   const onPointerDown = React.useCallback(
-    (ev): void => {
-      const { pointerId, target } = ev;
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      const { pointerId } = ev;
+      const target = ev.target as HTMLElement;
+
       target.setPointerCapture?.(pointerId);
       onPointerDownCallback?.(ev);
 

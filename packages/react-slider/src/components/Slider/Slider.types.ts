@@ -54,13 +54,13 @@ export type SliderSlots = {
 
 export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
-   * The starting value for an `uncontrolled` Slider.
+   * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
 
   /**
-   * The current value of the `controlled` Slider.
+   * The current value of the controlled Slider.
    * Mutually exclusive with `defaultValue` prop.
    */
   value?: number;
