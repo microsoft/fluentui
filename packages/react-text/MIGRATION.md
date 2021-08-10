@@ -636,21 +636,18 @@ const MyComponent = () => {
 
 <!-- TODO: Figure out origin and replacement for this -->
 
-### weight - 🚧 WIP 🚧
+### weight
 
-Usage and name of the `weight` property remain the same, but the values have been reduced.
-Find below the old and new values:
+The name and the usage of the `weight` property remain the same. However, the allowed values have changed:
 
-<!-- TODO: Figure out if it's a direct match -->
-
-| Old Value   | New Value  |
-| ----------- | ---------- |
-| `light`     | `-`        |
-| `semilight` | `-`        |
-| `regular`   | `regular`  |
-| `-`         | `medium`   |
-| `semibold`  | `semibold` |
-| `bold`      | `-`        |
+| Northstar   | Absolute | Fluent UI  |
+| ----------- | -------- | ---------- |
+| `light`     | 200      | -          |
+| `semilight` | 300      | -          |
+| `regular`   | 400      | `regular`  |
+| -           | 500      | `medium`   |
+| `semibold`  | 600      | `semibold` |
+| `bold`      | 700      | -          |
 
 ### className
 
