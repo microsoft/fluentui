@@ -2,6 +2,29 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "457a8e6375eaecbad5de43740e91d6e4bc040388",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.63",
+            "author": "olfedias@microsoft.com",
+            "commit": "457a8e6375eaecbad5de43740e91d6e4bc040388",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Aug 2021 07:35:14 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

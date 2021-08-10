@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 09 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.52](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.52)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.51..@fluentui/azure-themes_v8.1.52)
+
+### Patches
+
+- Fixed azure theme disabled primary button hover style ([PR #19015](https://github.com/microsoft/fluentui/pull/19015) by 67673432+q-xg@users.noreply.github.com)
 
 ## [8.1.51](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.51)
 
