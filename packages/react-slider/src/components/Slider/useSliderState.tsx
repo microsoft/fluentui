@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState } from '@fluentui/react-utilities';
+import { useId, useControllableState, useUnmount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -186,6 +186,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       state.ref.current.focus = () => thumbRef?.current?.focus();
     }
   }, [currentValue, state.ref]);
+
+  useUnmount(() => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
+  });
 
   const valuePercent = getPercent(currentValue!, min, max);
 
