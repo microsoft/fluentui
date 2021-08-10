@@ -4,26 +4,51 @@ import { IKeytipProps } from '../../Keytip';
 import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst } from '@fluentui/react-hooks';
 
+const unregisteredKeytipID = 'keytipToBeRegistered';
+
+const keytipHasBeenRegistered = (id: string) => {
+  return id.indexOf(unregisteredKeytipID) === -1;
+};
+
+const registerPersistedKeytip = (
+  keytip: IKeytipProps,
+  keytipManager: KeytipManager,
+  persistedKeytips: { [uniqueID: string]: IKeytipProps },
+  oldKeytipId: string,
+) => {
+  const uniqueID = keytipManager.register(keytip, true);
+  // Update map
+  persistedKeytips[uniqueID] = keytip;
+  delete persistedKeytips[oldKeytipId];
+};
+
 const useKeytipRegistrations = (
   persistedKeytips: { [uniqueID: string]: IKeytipProps },
   keytipManager: KeytipManager,
 ) => {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     Object.keys(persistedKeytips).forEach((keytipId: string) => {
       const keytip = persistedKeytips[keytipId];
-      const uniqueID = keytipManager.register(keytip!, true);
-      // Update map
-      persistedKeytips[uniqueID] = keytip;
-      delete persistedKeytips[keytipId];
+      if (keytipHasBeenRegistered(keytipId)) {
+        // Keytip has been registered, update
+        keytipManager.update(keytip, keytipId);
+      } else {
+        // Keytip hasn't been registered, register it
+        registerPersistedKeytip(keytip, keytipManager, persistedKeytips, keytipId);
+      }
     });
+  });
+
+  // Mount/Unmount
+  React.useLayoutEffect(() => {
     return () => {
-      // Delete all persisted keytips saved
+      // Unregister and delete all persisted keytips saved on unmount
       Object.keys(persistedKeytips).forEach((uniqueID: string) => {
         keytipManager.unregister(persistedKeytips[uniqueID]!, uniqueID, true);
         delete persistedKeytips[uniqueID];
       });
     };
-  }, [persistedKeytips, keytipManager]);
+  }, []);
 };
 
 export const OverflowButton = (props: IOverflowSetProps) => {
@@ -77,7 +102,7 @@ export const OverflowButton = (props: IOverflowSetProps) => {
 
           // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
           // uniqueID will get updated on register
-          persistedKeytips[persistedKeytip.content] = persistedKeytip;
+          persistedKeytips[unregisteredKeytipID + persistedKeytip.content] = persistedKeytip;
 
           // Add the overflow sequence to this item
           const newOverflowItem = {
