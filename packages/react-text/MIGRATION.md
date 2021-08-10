@@ -121,7 +121,7 @@ This property was deprecated. Below is a simple example on how to achieve the sa
 
 #### atMention / atMention={true}
 
-##### teamsTheme
+##### **teamsTheme**
 
 Northstar design tokens:
 
@@ -141,7 +141,7 @@ const MyComponent = () => {
 }
 ```
 
-##### teamsDarkTheme
+##### **teamsDarkTheme**
 
 Northstar design tokens:
 
@@ -161,7 +161,7 @@ const MyComponent = () => {
 }
 ```
 
-##### teamsHighContrastTheme
+##### **teamsHighContrastTheme**
 
 Northstar design tokens:
 
@@ -183,7 +183,7 @@ const MyComponent = () => {
 
 #### atMention="me"
 
-##### teamsTheme
+##### **teamsTheme**
 
 Northstar design tokens:
 
@@ -205,7 +205,7 @@ const MyComponent = () => {
 }
 ```
 
-##### teamsDarkTheme
+##### **teamsDarkTheme**
 
 Northstar design tokens:
 
@@ -227,7 +227,7 @@ const MyComponent = () => {
 }
 ```
 
-##### teamsHighContrastTheme
+##### **teamsHighContrastTheme**
 
 Northstar design tokens:
 
@@ -292,7 +292,7 @@ The Northstar theme tokens used here are:
 
 - Color: `siteVariables.colors.grey[250]`
 
-#### teamsTheme
+#### **teamsTheme**
 
 Northstar design tokens:
 
@@ -312,7 +312,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsDarkTheme
+#### **teamsDarkTheme**
 
 Northstar design tokens:
 
@@ -332,7 +332,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsHighContrastTheme
+#### **teamsHighContrastTheme**
 
 Northstar design tokens:
 
@@ -356,7 +356,7 @@ const MyComponent = () => {
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-#### teamsTheme
+#### **teamsTheme**
 
 Northstar design tokens:
 
@@ -376,7 +376,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsDarkTheme
+#### **teamsDarkTheme**
 
 Northstar design tokens:
 
@@ -396,7 +396,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsHighContrastTheme
+#### **teamsHighContrastTheme**
 
 Northstar design tokens:
 
@@ -420,7 +420,7 @@ const MyComponent = () => {
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-#### teamsTheme
+#### **teamsTheme**
 
 Northstar design tokens:
 
@@ -442,7 +442,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsDarkTheme
+#### **teamsDarkTheme**
 
 Northstar design tokens:
 
@@ -464,7 +464,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsHighContrastTheme
+#### **teamsHighContrastTheme**
 
 Northstar design tokens:
 
@@ -490,7 +490,7 @@ const MyComponent = () => {
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-#### teamsTheme
+#### **teamsTheme**
 
 Northstar design tokens:
 
@@ -510,7 +510,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsDarkTheme
+#### **teamsDarkTheme**
 
 Northstar design tokens:
 
@@ -530,7 +530,7 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsHighContrastTheme
+#### **teamsHighContrastTheme**
 
 Northstar design tokens:
 
@@ -572,11 +572,11 @@ const MyComponent = () => {
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-The Northstar theme tokens used here are:
+#### **teamsTheme**
+
+Northstar design tokens:
 
 - Color: `siteVariables.colorScheme.default.foreground1`
-
-#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
@@ -592,12 +592,36 @@ const MyComponent = () => {
 }
 ```
 
-#### teamsDarkTheme
+#### **teamsDarkTheme**
+
+Northstar design tokens:
+
+- Color: `siteVariables.colorScheme.default.foreground1`
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
      color: rgb(138, 136, 134)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### **teamsHighContrastTheme**
+
+Northstar design tokens:
+
+- Color: `siteVariables.colors.white`
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(255, 255, 255)
   },
 })
 
