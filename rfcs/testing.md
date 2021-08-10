@@ -37,7 +37,7 @@ To start, this is the proposal for defining the goals of each testing layer.
 
 - **Unit**
 
-  Focus on testing the behaviour or functionality. We should use them to guarantee the outcome, wheter this is a styling, behaviour or functionality change.
+  Focus on testing the behaviour or functionality. We should use them to guarantee the outcome, whether this is a styling, behaviour or functionality change.
   We should try to focus on behaviour, when possible, but mainly on the expected results for the code.
 
   These are all the additional unit tests defined in your `*.test.ts[x]` file.
