@@ -120,9 +120,26 @@ export interface PopoverProps {
 Example usage:
 
 ```tsx
+type PlacementShorthand =
+  | 'above'
+  | 'above-start'
+  | 'above-end'
+  | 'below'
+  | 'below-start'
+  | 'below-end'
+  | 'before'
+  | 'before-top'
+  | 'before-bottom'
+  | 'after'
+  | 'after-top'
+  | 'after-bottom';
+
 // Shorthand for `position` and `align` options
 <PositionedComponent placement="above-start">
 <PositionedComponent placemant={{position: 'above', align: 'start'}}>
+
+<PositionedComponent placement="above">
+<PositionedComponent placemant={{position: 'above'}}>
 
 // Also allows more complex configuration
 <PositionedComponent placement={{position: 'above', align: 'start', autoSize: true}}>
@@ -142,6 +159,7 @@ This way we can safely configure `usePopper` internally with a simple object spr
 props are used by the component props:
 
 ```tsx
+// � Existing usage
 // Need to be aware of user props and make sure they are added to the hook usage
 usePopper({
   align: state.align,
@@ -151,6 +169,7 @@ usePopper({
   offset: state.offset,
 });
 
+// � Proposed usage
 // Guaranteed to configure based on user props, and any component specific modifications after
 usePopper({
   ...placement,
