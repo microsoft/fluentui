@@ -21,6 +21,7 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
     - [first story is called default](#first-story-is-called-default)
     - [appearance of stories](#appearance-of-stories)
     - [story code should be useful](#story-code-should-be-useful)
+  - [10. Internal stories for testing](#10-internal-stories-for-testing)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
 - [Open Issues](#open-issues)
@@ -427,6 +428,48 @@ export const Default = (props: PopoverProps) => (
   </Popover>
 );
 ```
+
+### 10. Internal stories for testing
+
+As mentioned in for E2E testing, we should ensure maximum coverage for all publicly viewable stories by our consumers.
+For more complex scenarios that need to be tested we should make sure that stories exist for E2E tests but should not be
+easily accessible publicly.
+
+Storybook has proposed a feature for this in [storybookjs/storybook#9209](https://github.com/storybookjs/storybook/issues/9209)
+which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page. As stated in the issue,
+we can workaround before the release of this feature by modifying `manager-head.html` and set `display:none`for all
+stories with a specific DOM `id` attribute. Storybook uses the `id` attribute for each link in the nav tree, and sets
+the value to the story id.
+
+We propose to use an extra filename extension and naming convention for internal stories:
+
+```ts
+// MenuTabstops.internal.stories.tsx
+// Deep link /story/components-menu--tabstops-internal
+// Does not appear in the sidebar or docs page
+export const TabstopsInternal = () => {
+  // story
+};
+```
+
+The filename extension `.internal.` is used for IDE searchability and codebase readability.
+
+The naming convention of the story simply adds the `Internal` keyword to the Pascal case story name. This will match the
+filename. More importantly the generated id will contain `menu-tabstops-internal`.
+
+We can simply use a css wildcard query selector:
+
+```css
+[id*='internal'] {
+  display: none;
+}
+```
+
+This means that `Internal` will be a reserved keyword in our stories which will determine visibility. This does not cause
+any conflicts with current stories, since this word is never used in any story name.
+
+This solution will only need to be applied within `react-components` storybook configuration since that is the storybook currently targeted for
+public use. Individual component storybooks are only used for local development, so there is no need to hide internal stories from their nav trees.
 
 #### story code should be useful
 
