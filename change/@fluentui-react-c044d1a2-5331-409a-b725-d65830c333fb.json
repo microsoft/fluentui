@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Keytip fixes to handle multiple parents and children - OverflowButton keytip fixes for correctly registering persisted keytips",
+  "packageName": "@fluentui/react",
+  "email": "keyou@microsoft.com",
+  "dependentChangeType": "patch"
+}
