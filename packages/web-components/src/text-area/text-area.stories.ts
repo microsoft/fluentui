@@ -2,7 +2,6 @@ import { fluentTextArea } from './index';
 
 export default {
   title: 'Components/Text Area',
-  title: 'Text Area',
   component: fluentTextArea,
   argTypes: {
     appearance: {
