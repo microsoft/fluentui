@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This guide is a reference for upgrading from Fabric or Northstar into our converged library.
+This guide is a reference for upgrading from v7 (Fabric) or v0 (Northstar) into v9 (Fluent UI / converged).
 
 ## Property mapping
 
@@ -11,22 +11,22 @@ Below you'll find a table with the relations between the properties of Fabric/No
 > ⚠️ Note - Properties not in this table are considered deprecated.
 > You can find the full migration guide below.
 
-| Fabric (v8) | Northstar (v0) | Converged (vNext) | Good to go? |
-| ----------- | -------------- | ----------------- | ----------- |
-| as          | as             | as                | ✔️          |
-| className   | className      | className         | ✔️          |
-| variant     | size           | size              | ⚠️          |
-| block       | -              | block             | ✔️          |
-| nowrap      | -              | wrap              | ⚠️          |
-| -           | align          | align             | ✔️          |
-| -           | content        | children          | ⚠️          |
-| -           | styles         | styles            | ✔️          |
-| -           | truncated      | truncate          | ⚠️          |
-| -           | weight         | weight            | ⚠️          |
-| -           | -              | font              | -           |
-| -           | -              | italic            | -           |
-| -           | -              | strikethrough     | -           |
-| -           | -              | underline         | -           |
+| v8 (Fabric) | v0 (Northstar) | v9 (Fluent UI) | Good to go? |
+| ----------- | -------------- | -------------- | ----------- |
+| as          | as             | as             | ✔️          |
+| className   | className      | className      | ✔️          |
+| variant     | size           | size           | ⚠️          |
+| block       | -              | block          | ✔️          |
+| nowrap      | -              | wrap           | ⚠️          |
+| -           | align          | align          | ✔️          |
+| -           | content        | children       | ⚠️          |
+| -           | styles         | styles         | ✔️          |
+| -           | truncated      | truncate       | ⚠️          |
+| -           | weight         | weight         | ⚠️          |
+| -           | -              | font           | -           |
+| -           | -              | italic         | -           |
+| -           | -              | strikethrough  | -           |
+| -           | -              | underline      | -           |
 
 ---
 
@@ -81,8 +81,8 @@ You can use them with Text as such:
 
 ## Migration from v0 (Northstar)
 
-> ⚠️ Note - Teams specific functionality will only be partially covered in this guide.
-> Given that most properties depend on Teams design tokens and there is yet no relationship table created for Teams <-> Fluent tokens, only absolute values will be provided.
+> ⚠️ Note - The Teams specific functionality will only be partially covered in this guide.
+> Given that most properties depend on Teams design tokens and there is yet no relationship table created for Teams to Fluent UI tokens, only the absolute values and Northstar token names will be provided.
 
 ### as
 
@@ -117,7 +117,7 @@ _This property suffered no changes and can be left as is._
 
 ### atMention [DEPRECATED]
 
-This property was deprecated. Below is a simple example on how to achieve the same result:
+This property was deprecated. Below are examples on how to achieve the same results:
 
 #### atMention / atMention={true}
 
@@ -632,9 +632,33 @@ const MyComponent = () => {
 }
 ```
 
-### variables [DEPRECATED] - 🚧 WIP 🚧
+### variables [DEPRECATED]
 
-<!-- TODO: Figure out origin and replacement for this -->
+For v9, this feature is no longer supported. An alternative, is to apply styles through `make-styles`. Below is an example of a migration:
+
+#### v0 (Northstar) implementation
+
+```
+const MyComponent = () => {
+  return <Text disabled variables={{ disabledColor: 'red' }} />
+}
+```
+
+#### v9 (Fluent UI) implementation
+
+```
+const useStyles = makeStyles(theme => ({
+  red: {
+     color: 'red'
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
 
 ### weight
 
@@ -655,7 +679,7 @@ _This property suffered no changes and can be left as is._
 
 ### styles
 
-_This property suffered no changes and can be used as is left we highly recommend that you migrate to the `make-styles` styling solution_
+_This property suffered no changes and can be used as is left we highly recommend that you migrate to a `make-styles` styling solution_
 
 ---
 
