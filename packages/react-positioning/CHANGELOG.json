@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "cleanup types, do not export PopperOptions",
+            "author": "olfedias@microsoft.com",
+            "commit": "57a2bc1f8a6ec7859bf4a3509696681d39602561",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.40",
       "version": "9.0.0-alpha.40",

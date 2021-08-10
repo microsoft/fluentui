@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: export useTheme() hook",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

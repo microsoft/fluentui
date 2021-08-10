@@ -5,7 +5,6 @@ const useStyles = makeStyles({
   root: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     minWidth: '128px',
-    minHeight: '48px',
     maxWidth: '300px',
     width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,

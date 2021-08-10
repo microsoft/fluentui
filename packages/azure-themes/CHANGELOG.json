@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.52",
+      "version": "8.1.52",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed azure theme disabled primary button hover style",
+            "author": "67673432+q-xg@users.noreply.github.com",
+            "commit": "1831fd4a9009d6db90e0f4c9df74065d46689632",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/azure-themes_v8.1.51",
       "version": "8.1.51",
