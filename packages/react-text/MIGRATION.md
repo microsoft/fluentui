@@ -414,17 +414,36 @@ const MyComponent = () => {
 }
 ```
 
-### timestamp [DEPRECATED] - 🚧 WIP 🚧
+### timestamp [DEPRECATED]
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-<!-- TODO: Validate what's the matching color here for Fluent -->
-<!-- siteVariables.colorScheme.default.foreground1 -->
+The Northstar theme tokens used here are:
+
+- Color: `siteVariables.colorScheme.default.foreground1`
+
+#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
+     color: rgb(72, 70, 68)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(138, 136, 134)
   },
 })
 
