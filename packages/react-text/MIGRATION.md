@@ -121,7 +121,7 @@ This property was deprecated. Below is a simple example on how to achieve the sa
 
 #### atMention / atMention={true}
 
-The Northstar tokens used here are:
+The Northstar theme tokens used here are:
 
 - Color: `siteVariables.colors.brand[600]`
 
@@ -159,7 +159,7 @@ const MyComponent = () => {
 
 #### atMention="me"
 
-The Northstar tokens used here are:
+The Northstar theme tokens used here are:
 
 - Color: `siteVariables.colors.orange[400]`
 - Font weight: `siteVariables.fontWeightBold`
@@ -237,7 +237,7 @@ Or the common and recomended way:
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-The Northstar tokens used here are:
+The Northstar theme tokens used here are:
 
 - Color: `siteVariables.colors.grey[250]`
 
@@ -273,17 +273,36 @@ const MyComponent = () => {
 }
 ```
 
-### error [DEPRECATED] - 🚧 WIP 🚧
+### error [DEPRECATED]
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-<!-- TODO: Validate what's the matching color here for Fluent -->
-<!-- siteVariables.colorScheme.red.foreground -->
+The Northstar theme tokens used here are:
+
+- Color: `siteVariables.colorScheme.red.foreground`
+
+#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
+     color: rgb(196, 49, 75)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(231, 53, 80)
   },
 })
 
