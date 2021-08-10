@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.63",
+      "version": "9.0.0-alpha.63",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix: export useTheme() hook",
+            "author": "olfedias@microsoft.com",
+            "commit": "457a8e6375eaecbad5de43740e91d6e4bc040388",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-alpha.62",
       "version": "9.0.0-alpha.62",

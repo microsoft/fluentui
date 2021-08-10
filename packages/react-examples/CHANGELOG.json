@@ -2,6 +2,43 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.52",
+            "author": "67673432+q-xg@users.noreply.github.com",
+            "commit": "1831fd4a9009d6db90e0f4c9df74065d46689632",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "457a8e6375eaecbad5de43740e91d6e4bc040388",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.60",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0dc58c42d031bf4fe17090ffa08c7c70c4b882d7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.90",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0dc58c42d031bf4fe17090ffa08c7c70c4b882d7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",

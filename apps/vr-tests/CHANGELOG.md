@@ -1,8 +1,21 @@
 # Change Log - vr-tests
 
-This log was last generated on Mon, 09 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19249](https://github.com/microsoft/fluentui/pull/19249) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-provider to v9.0.0-alpha.63 ([PR #19249](https://github.com/microsoft/fluentui/pull/19249) by olfedias@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

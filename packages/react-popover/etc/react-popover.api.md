@@ -8,9 +8,9 @@ import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { PopperOptions } from '@fluentui/react-positioning';
 import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
+import { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -37,7 +37,7 @@ export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpe
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
@@ -128,7 +128,6 @@ export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSur
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
-
 
 // (No @packageDocumentation comment for this package)
 
