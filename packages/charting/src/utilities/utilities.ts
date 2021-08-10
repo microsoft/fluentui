@@ -302,6 +302,7 @@ type DataPoint = {
   color: string;
   yAxisCalloutData: string;
   index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 };
 
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
@@ -311,6 +312,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
     x: number | Date | string;
     color: string;
     yAxisCalloutData?: string | { [id: string]: number };
+    callOutAccessibilityData?: IAccessibilityProps;
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
@@ -326,7 +328,14 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   combinedResult.forEach((e1: DataPoint, index: number) => {
     e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
     const filteredValues = [
-      { legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData, index: e1.index },
+      {
+        legend: e1.legend,
+        y: e1.y,
+        color: e1.color,
+        yAxisCalloutData: e1.yAxisCalloutData,
+        callOutAccessibilityData: e1.callOutAccessibilityData,
+        index: e1.index,
+      },
     ];
     combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
       e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
@@ -336,6 +345,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           y: e2.y,
           color: e2.color,
           yAxisCalloutData: e2.yAxisCalloutData,
+          callOutAccessibilityData: e2.callOutAccessibilityData,
           index: e2.index,
         });
       }
