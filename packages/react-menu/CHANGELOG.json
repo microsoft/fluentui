@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(MenuPopover): Remove min-height value",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0dc58c42d031bf4fe17090ffa08c7c70c4b882d7",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.59",
       "version": "9.0.0-alpha.59",

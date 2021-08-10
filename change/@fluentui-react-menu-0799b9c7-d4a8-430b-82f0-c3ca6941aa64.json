@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(MenuPopover): Remove min-height value",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
