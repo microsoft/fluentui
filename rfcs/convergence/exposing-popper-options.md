@@ -63,7 +63,7 @@ There are other popper options that are used in some components but not others, 
 
 - `coverTarget` - allows the positioned element to cover the target
 
-There are also additional options that are not used by any converge component that might be used in the future like:
+There are also additional options that are not used by any converged component that might be used in the future like:
 
 - `autoSize` - Allows the positioned element to change size based on viewport size
 - `flipBoundary` - Determines what bounds to use to flip the positioning
