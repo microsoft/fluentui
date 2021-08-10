@@ -121,7 +121,9 @@ This property was deprecated. Below is a simple example on how to achieve the sa
 
 #### atMention / atMention={true}
 
-The Northstar token used here is: siteVariables.colors.brand[600]
+The Northstar tokens used here are:
+
+- Color: `siteVariables.colors.brand[600]`
 
 ##### teamsTheme
 
@@ -159,8 +161,8 @@ const MyComponent = () => {
 
 The Northstar tokens used here are:
 
-- Color: siteVariables.colors.orange[400]
-- Font weight: siteVariables.fontWeightBold
+- Color: `siteVariables.colors.orange[400]`
+- Font weight: `siteVariables.fontWeightBold`
 
 ##### teamsTheme
 
@@ -231,17 +233,36 @@ Or the common and recomended way:
 <Text>Hello World!</Text>
 ```
 
-### disabled [DEPRECATED] - 🚧 WIP 🚧
+### disabled [DEPRECATED]
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-<!-- TODO: Validate what's the matching color here for Fluent -->
-<!-- siteVariables.colors.grey[250] -->
+The Northstar tokens used here are:
+
+- Color: `siteVariables.colors.grey[250]`
+
+#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
+     color: rgb(200, 198, 196)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(96, 94, 92)
   },
 })
 
