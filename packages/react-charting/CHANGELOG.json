@@ -2,6 +2,36 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-charting_v5.3.23",
+      "version": "5.3.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.1",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-charting_v5.3.22",
+      "version": "5.3.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Area Chart and Line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "067f67564edd9845389079e02e525e06e0a9aba6",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Aug 2021 07:39:30 GMT",
       "tag": "@fluentui/react-charting_v5.3.21",
       "version": "5.3.21",

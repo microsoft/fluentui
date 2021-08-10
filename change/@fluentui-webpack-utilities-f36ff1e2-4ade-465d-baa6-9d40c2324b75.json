@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bump loader-utils to 2.0.0",
+  "packageName": "@fluentui/webpack-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

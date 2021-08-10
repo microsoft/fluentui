@@ -7,8 +7,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const FIXTURE_PATH = 'temp/fixtures/';
 
-function createWebpackConfig(entries) {
+function createWebpackConfig(entries, packageName) {
   return Object.keys(entries).map(entryName => {
+    /** @type {BundleAnalyzerPlugin.Options} */
     let anaylizerPluginOptions = {
       analyzerMode: 'static',
       reportFilename: entryName + '.stats.html',
@@ -29,7 +30,7 @@ function createWebpackConfig(entries) {
           modules: true,
 
           builtAt: false,
-          outputPath: false,
+          .../** @type {*} */ ({ outputPath: false }),
           namedChunkGroups: false,
           logging: false,
           children: false,
@@ -45,7 +46,7 @@ function createWebpackConfig(entries) {
       };
     }
 
-    return resources.createConfig(
+    const config = resources.createConfig(
       entryName,
       true,
       {
@@ -69,6 +70,11 @@ function createWebpackConfig(entries) {
       true,
       true,
     )[0];
+    if (packageName === '@fluentui/react-northstar') {
+      // This is used most of the configs for IE 11 compat, which northstar doesn't need
+      delete config.target;
+    }
+    return config;
   });
 }
 
