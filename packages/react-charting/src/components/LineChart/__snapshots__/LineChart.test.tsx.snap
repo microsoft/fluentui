@@ -39,6 +39,9 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
@@ -353,6 +356,9 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
@@ -647,6 +653,9 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
@@ -817,6 +826,9 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
@@ -1131,6 +1143,9 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
@@ -1445,6 +1460,9 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
@@ -1759,6 +1777,9 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        LineChart
+      </title>
       <g
         className=
 
