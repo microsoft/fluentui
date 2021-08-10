@@ -36,7 +36,7 @@ export const BasicSliderExample = (props: SliderProps) => {
   );
 };
 
-export const RangedSliderExample = (props: SliderProps) => {
+export const VerticalSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
   const sliderOnChange = (value: number) => setSliderValue(value);
 
