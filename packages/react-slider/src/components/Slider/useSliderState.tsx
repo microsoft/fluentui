@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
-import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import { SliderSlots, SliderState, SliderCommon, markLabel } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -210,16 +210,25 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     }
 
     // 2. We receive an array of numbers: mark for every value in array.
-    else if (Array.isArray(marks) && marks.length > 0) {
+    else if (Array.isArray(marks) && typeof marks[0] === 'number' && marks.length > 0) {
       return [...Array(marks.length)].map((val, index) => getPercent(min + marks[index], min, max));
     }
 
     // 3. We receive an array of objects with numbers and strings:
     // mark and label for every value + string in each object
-    //  else if () {
-
-    //  }
+    else if (Array.isArray(marks) && typeof marks[0] === 'markLabel') {
+    }
   };
+
+  // const getMarkPercent = () => {
+  //   switch (typeof marks) {
+  //     case 'boolean': {
+  //       return [...Array(Math.floor((max - min) / step) + 1)].map((val, index) =>
+  //         getPercent(min + step * index, min, max),
+  //       );
+  //     }
+  //   }
+  // };
 
   const marksPercent = marks ? getMarkPercent() : undefined;
 

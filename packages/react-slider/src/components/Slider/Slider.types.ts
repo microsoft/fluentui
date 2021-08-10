@@ -16,6 +16,8 @@ export interface SliderPublicRef {
   focus: () => void;
 }
 
+export type markLabel = { label: string; value: number };
+
 /**
  * Names of the shorthand properties in SliderProps
  */
@@ -92,9 +94,9 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    *
    * 1. `Boolean`: If true marks are visible.
    * 2. `Number[]`: Marks will be displayed at each provided number.
-   * 3. `Number[] {value: number, label: string}`: Marks are shown at the value location and display the custom label.
+   * 3. `{label: string, value: number}[]`: Marks are shown at the value location and display the custom label.
    */
-  marks?: boolean | number[]; // TODO the label should be a slot instead of a string
+  marks?: boolean | number[] | markLabel[]; // TODO the label should be a slot
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
