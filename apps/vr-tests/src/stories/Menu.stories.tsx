@@ -41,8 +41,14 @@ storiesOf('react-menu Menu - basic', module)
     </Menu>
   ));
 
-storiesOf('Menu - secondary content', module)
-  .addDecorator(story => <Screener>{story()}</Screener>)
+storiesOf('react-menu Menu - secondary content', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
+    >
+      {story()}
+    </Screener>
+  ))
   .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu open>
@@ -64,7 +70,7 @@ storiesOf('Menu - secondary content', module)
     </Menu>
   ));
 
-storiesOf('Menu - groups', module)
+storiesOf('react-menu Menu - groups', module)
   .addDecorator(story => <Screener>{story()}</Screener>)
   .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
@@ -93,7 +99,7 @@ storiesOf('Menu - groups', module)
     </Menu>
   ));
 
-storiesOf('Menu - selection', module)
+storiesOf('react-menu Menu - selection', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
@@ -124,7 +130,7 @@ storiesOf('Menu - selection', module)
     </Menu>
   ));
 
-storiesOf('Menu - selection groups', module)
+storiesOf('react-menu Menu - selection groups', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
