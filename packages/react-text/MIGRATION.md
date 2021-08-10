@@ -356,17 +356,36 @@ const MyComponent = () => {
 }
 ```
 
-### success [DEPRECATED] - 🚧 WIP 🚧
+### success [DEPRECATED]
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-<!-- TODO: Validate what's the matching color here for Fluent -->
-<!-- siteVariables.colors.green[600] -->
+The Northstar theme tokens used here are:
+
+- Color: `siteVariables.colors.green[600]`
+
+#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
+     color: rgb(35, 123, 75)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(146, 195, 83)
   },
 })
 
