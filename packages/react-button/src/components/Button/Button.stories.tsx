@@ -63,24 +63,26 @@ CircularButton.parameters = {
 };
 
 export const ButtonSize = () => {
+  const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
+  const headerStyles: React.CSSProperties = { width: '100%', margin: 0 };
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
-        <h4 style={{ width: '100%', margin: 0 }}>small</h4>
+      <div style={groupStyles}>
+        <h4 style={headerStyles}>small</h4>
         <Button size="small">Text</Button>
         <Button size="small" icon={<CalendarMonth24Regular />}>
           Text
         </Button>
         <Button size="small" icon={<CalendarMonth24Regular />} />
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
-        <h4 style={{ width: '100%', margin: 0 }}>medium</h4>
+      <div style={groupStyles}>
+        <h4 style={headerStyles}>medium</h4>
         <Button>Text</Button>
         <Button icon={<CalendarMonth24Regular />}>Text</Button>
         <Button icon={<CalendarMonth24Regular />} />
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
-        <h4 style={{ width: '100%', margin: 0 }}>large</h4>
+      <div style={groupStyles}>
+        <h4 style={headerStyles}>large</h4>
         <Button size="large">Text</Button>
         <Button size="large" icon={<CalendarMonth24Regular />}>
           Text
@@ -111,26 +113,30 @@ BlockButton.parameters = {
   },
 };
 
-export const DisabledButton = () => (
-  <>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em' }}>
-      <Button>Default</Button>
-      <Button disabled>Disabled</Button>
-      <Button disabledFocusable>Disabled focusable</Button>
-    </div>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em' }}>
-      <Button primary icon={<CalendarMonth24Regular />}>
-        Primary
-      </Button>
-      <Button primary disabled icon={<CalendarMonth24Regular />}>
-        Primary disabled
-      </Button>
-      <Button primary disabledFocusable>
-        Primary disabled focusable
-      </Button>
-    </div>
-  </>
-);
+export const DisabledButton = () => {
+  const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
+
+  return (
+    <>
+      <div style={groupStyles}>
+        <Button>Default</Button>
+        <Button disabled>Disabled</Button>
+        <Button disabledFocusable>Disabled focusable</Button>
+      </div>
+      <div style={groupStyles}>
+        <Button primary icon={<CalendarMonth24Regular />}>
+          Primary
+        </Button>
+        <Button primary disabled icon={<CalendarMonth24Regular />}>
+          Primary disabled
+        </Button>
+        <Button primary disabledFocusable>
+          Primary disabled focusable
+        </Button>
+      </div>
+    </>
+  );
+};
 DisabledButton.parameters = {
   docs: {
     description: {
