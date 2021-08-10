@@ -36,6 +36,11 @@ export type SliderSlots = {
   track: React.HTMLAttributes<HTMLElement>;
 
   /**
+   * The visible marks showing potential steps on the **Slider**.
+   */
+  mark: React.HTMLAttributes<HTMLElement>;
+
+  /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
   thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
@@ -81,6 +86,15 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    * @default 1
    */
   step?: number;
+
+  /**
+   * When enabled, small marks are displayed across the **Sliders** , showing potential steps.
+   *
+   * 1. `Boolean`: If true marks are visible.
+   * 2. `Number[]`: Marks will be displayed at each provided number.
+   * 3. `Number[] {value: number, label: string}`: Marks are shown at the value location and display the custom label.
+   */
+  marks?: boolean | number[]; // TODO the label should be a slot instead of a string
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.

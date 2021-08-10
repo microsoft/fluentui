@@ -38,6 +38,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     step = 1,
     ariaValueText,
     onChange,
+    marks,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -198,6 +199,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const trackStyles = { width: `${valuePercent}%`, ...state.track.style };
 
+  const marksPercent =
+    marks !== undefined
+      ? Array.isArray(marks)
+        ? [...Array(Math.floor((max - min) / step) + 1)].map((val, index) => getPercent(min + step * index, min, max))
+        : [...Array(Math.floor((max - min) / step) + 1)].map((val, index) => getPercent(min + step * index, min, max))
+      : undefined;
+
   // Root props
   state.as = as;
   state.onPointerDown = onPointerDown;
@@ -214,6 +222,21 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
   state.track.children = null;
+
+  // Mark props
+  state.mark.className = state.mark.className || 'ms-Slider-markContainer';
+  state.mark.children =
+    marks && marksPercent
+      ? marksPercent.map((percent, index) => (
+          <span
+            className="ms-Slider-mark"
+            key={`mark-${index}`}
+            style={{
+              left: percent + '%',
+            }}
+          />
+        ))
+      : null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;

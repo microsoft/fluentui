@@ -35,6 +35,24 @@ export const BasicSliderExample = (props: SliderProps) => {
   );
 };
 
+export const MarkedSliderExample = (props: SliderProps) => {
+  const [sliderValue, setSliderValue] = React.useState(160);
+  const sliderOnChange = (value: number) => setSliderValue(value);
+
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <Label>Basic Example</Label>
+      <Slider marks step={2} />
+      <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
+      <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} marks />
+      <Label>Custom Styles</Label>
+      <Slider defaultValue={4} className={styles.slider} marks step={2} />
+    </div>
+  );
+};
+
 export default {
   title: 'Components/Slider',
   component: Slider,

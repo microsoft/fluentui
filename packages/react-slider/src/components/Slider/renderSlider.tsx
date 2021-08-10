@@ -15,6 +15,7 @@ export const renderSlider = (state: SliderState) => {
       <slots.trackWrapper {...slotProps.trackWrapper}>
         <slots.track {...slotProps.track} />
       </slots.trackWrapper>
+      {state.marks && <slots.mark {...slotProps.mark} />}
       <slots.thumbWrapper {...slotProps.thumbWrapper}>
         <slots.thumb {...slotProps.thumb} />
       </slots.thumbWrapper>

@@ -67,6 +67,28 @@ const useTrackStyles = makeStyles({
 });
 
 /**
+ * Styles for the mark slot
+ */
+const useMarkStyles = makeStyles({
+  mark: theme => ({
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 'calc(var(--slider-thumb-size) / 2)',
+    right: 'calc(var(--slider-thumb-size) / 2)',
+    outline: 'none',
+
+    '& .ms-Slider-mark': {
+      position: 'absolute',
+      bottom: '0',
+      width: '1px',
+      height: '4px',
+      background: '#626262',
+    },
+  }),
+});
+
+/**
  * Styles for the thumb slot
  */
 const useThumbWrapperStyles = makeStyles({
@@ -74,6 +96,7 @@ const useThumbWrapperStyles = makeStyles({
     position: 'absolute',
     top: 0,
     bottom: 0,
+    content: "''",
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
     outline: 'none',
@@ -163,6 +186,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
+  const markStyles = useMarkStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
@@ -171,6 +195,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.rail.className = railStyles.rail;
   state.trackWrapper.className = mergeClasses(trackWrapperStyles.trackWrapper, state.trackWrapper.className);
   state.track.className = mergeClasses(trackStyles.track, state.track.className);
+  state.mark.className = mergeClasses(markStyles.mark, markStyles.mark, state.mark.className);
   state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
   state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
   state.activeRail.className = activeRailStyles.activeRail;
