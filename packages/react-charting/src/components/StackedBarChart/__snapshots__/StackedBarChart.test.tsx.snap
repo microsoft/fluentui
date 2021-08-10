@@ -1202,7 +1202,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1255,7 +1255,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1344,7 +1343,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
