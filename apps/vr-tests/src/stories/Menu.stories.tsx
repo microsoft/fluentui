@@ -33,7 +33,7 @@ storiesOf('react-menu Menu - basic', module)
 
       <MenuPopover>
         <MenuList>
-          <MenuItem icon={<Cut20Regular />}>Cut </MenuItem>
+          <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
           <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
           <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
         </MenuList>
