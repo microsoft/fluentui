@@ -4,7 +4,7 @@ import { Button, ButtonProps } from '../Button/Button';
 import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormButtonOwnProps extends ButtonProps {
-  type: string;
+  type?: string;
 }
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
