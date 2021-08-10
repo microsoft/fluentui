@@ -1,11 +1,16 @@
+import { configSchema, BabelPluginOptions } from '@fluentui/babel-make-styles';
 import { EvalCache, Module } from '@linaria/babel-preset';
 import * as enhancedResolve from 'enhanced-resolve';
+import { getOptions } from 'loader-utils';
 import * as path from 'path';
+import { validate } from 'schema-utils';
 import * as webpack from 'webpack';
 
 import { transformSync, TransformResult, TransformOptions } from './transformSync';
 
-type WebpackLoaderParams = Parameters<webpack.LoaderDefinitionFunction<never>>;
+export type WebpackLoaderOptions = BabelPluginOptions;
+
+type WebpackLoaderParams = Parameters<webpack.LoaderDefinitionFunction<WebpackLoaderOptions>>;
 
 /**
  * Webpack can also pass sourcemaps as a string, Babel accepts only objects.
@@ -28,6 +33,13 @@ export function webpackLoader(
   sourceCode: WebpackLoaderParams[0],
   inputSourceMap: WebpackLoaderParams[1],
 ) {
+  const options = getOptions(this) as WebpackLoaderOptions;
+
+  validate(configSchema, options, {
+    name: '@fluentui/make-styles-webpack-loader',
+    baseDataPath: 'options',
+  });
+
   EvalCache.clearForFile(this.resourcePath);
 
   const resolveOptionsDefaults: webpack.ResolveOptions = {
@@ -74,7 +86,7 @@ export function webpackLoader(
       enableSourceMaps: this.sourceMap || false,
       inputSourceMap: parseSourceMap(inputSourceMap),
 
-      // TODO: pass plugin options
+      pluginOptions: options,
     });
   } catch (err) {
     error = err;
