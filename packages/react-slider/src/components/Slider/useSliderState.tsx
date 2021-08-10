@@ -99,19 +99,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     [max, min, step],
   );
 
-  /**
-   * Calculates the `step` position based off a given array of steps.
-   */
-  const calculateCustomSteps = (incomingSteps: number[]): number[] => {
-    const stepPosition: number[] = [];
-
-    for (let i = 0; i < incomingSteps.length; i++) {
-      stepPosition.push(getPercent(min + incomingSteps[i], min, max));
-    }
-
-    return stepPosition;
-  };
-
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       if (step !== 1) {
@@ -212,12 +199,29 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const trackStyles = { width: `${valuePercent}%`, ...state.track.style };
 
-  const marksPercent =
-    marks !== undefined
-      ? Array.isArray(marks) && marks.length > 0
-        ? calculateCustomSteps(marks)
-        : [...Array(Math.floor((max - min) / step) + 1)].map((val, index) => getPercent(min + step * index, min, max))
-      : undefined;
+  const getMarkPercent = () => {
+    // There are three cases:
+
+    // 1. We receive a boolean: mark for every step.
+    if (typeof marks === 'boolean' && marks === true) {
+      return [...Array(Math.floor((max - min) / step) + 1)].map((val, index) =>
+        getPercent(min + step * index, min, max),
+      );
+    }
+
+    // 2. We receive an array of numbers: mark for every value in array.
+    else if (Array.isArray(marks) && marks.length > 0) {
+      return [...Array(marks.length)].map((val, index) => getPercent(min + marks[index], min, max));
+    }
+
+    // 3. We receive an array of objects with numbers and strings:
+    // mark and label for every value + string in each object
+    //  else if () {
+
+    //  }
+  };
+
+  const marksPercent = marks ? getMarkPercent() : undefined;
 
   // Root props
   state.as = as;
