@@ -3150,6 +3150,7 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     componentRef?: IRefObject<ICommandBar>;
     dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
+    farItemsGroupAriaLabel?: string;
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
@@ -3160,7 +3161,6 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     overflowItems?: ICommandBarItemProps[];
     primaryGroupAriaLabel?: string;
     resizeGroupAs?: IComponentAs<IResizeGroupProps>;
-    secondaryGroupAriaLabel?: string;
     shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
     theme?: ITheme;
@@ -8336,6 +8336,7 @@ export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement
     id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
+    // @deprecated
     setAriaDescribedBy?: boolean;
     styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
     theme?: ITheme;

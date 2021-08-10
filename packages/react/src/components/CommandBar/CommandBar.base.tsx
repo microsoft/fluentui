@@ -118,7 +118,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   }
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
-    const { ariaLabel, primaryGroupAriaLabel, secondaryGroupAriaLabel } = this.props;
+    const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
     const hasSecondSet = data.farItems && data.farItems.length > 0;
 
     return (
@@ -144,7 +144,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         {hasSecondSet && (
           <OverflowSet
             role="group"
-            aria-label={secondaryGroupAriaLabel}
+            aria-label={farItemsGroupAriaLabel}
             className={css(this._classNames.secondarySet)}
             items={data.farItems}
             onRenderItem={this._onRenderItem}

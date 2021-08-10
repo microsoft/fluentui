@@ -14,7 +14,7 @@ export const CommandBarBasicExample: React.FunctionComponent = () => {
         farItems={_farItems}
         ariaLabel="Inbox actions"
         primaryGroupAriaLabel="Email actions"
-        secondaryGroupAriaLabel="More actions"
+        farItemsGroupAriaLabel="More actions"
       />
     </div>
   );
