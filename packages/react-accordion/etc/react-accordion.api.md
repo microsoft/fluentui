@@ -211,6 +211,9 @@ export function useAccordionContextValues(state: AccordionState): AccordionConte
 // @public
 export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
+// @public (undocumented)
+export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues;
+
 // @public
 export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
 
@@ -219,6 +222,9 @@ export const useAccordionItem: ({ value, ...props }: AccordionItemProps, ref: Re
 
 // @public (undocumented)
 export const useAccordionItemContext: () => AccordionItemContextValue;
+
+// @public (undocumented)
+export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
 
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
