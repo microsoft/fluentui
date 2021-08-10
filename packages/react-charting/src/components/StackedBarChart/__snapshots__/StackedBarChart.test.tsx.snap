@@ -1211,6 +1211,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first Lorem ipsum dolor sit amet"
@@ -1300,6 +1301,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Winter is coming"

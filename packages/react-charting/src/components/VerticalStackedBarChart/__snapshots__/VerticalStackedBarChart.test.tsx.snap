@@ -157,6 +157,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -246,6 +247,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -477,6 +479,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Metadata1"
@@ -566,6 +569,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Metadata2"
@@ -914,6 +918,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1003,6 +1008,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1251,6 +1257,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1340,6 +1347,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1588,6 +1596,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1677,6 +1686,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1925,6 +1935,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -2014,6 +2025,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -2262,6 +2274,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -2351,6 +2364,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"

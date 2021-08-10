@@ -224,6 +224,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -522,6 +523,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="metaData1"
@@ -1004,6 +1006,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1319,6 +1322,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1634,6 +1638,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1949,6 +1954,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
