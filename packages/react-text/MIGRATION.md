@@ -356,11 +356,11 @@ const MyComponent = () => {
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-The Northstar theme tokens used here are:
+#### teamsTheme
+
+Northstar design tokens:
 
 - Color: `siteVariables.colorScheme.red.foreground`
-
-#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
@@ -378,10 +378,34 @@ const MyComponent = () => {
 
 #### teamsDarkTheme
 
+Northstar design tokens:
+
+- Color: `siteVariables.colors.red[300]`
+
 ```
 const useStyles = makeStyles(theme => ({
   root: {
      color: rgb(231, 53, 80)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsHighContrastTheme
+
+Northstar design tokens:
+
+- Color: `siteVariables.red`
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(255, 0, 0)
   },
 })
 
