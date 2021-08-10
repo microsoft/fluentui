@@ -4,7 +4,7 @@
 
 ## Summary
 
-In the v9 library, we have invested in [Popper.js](https://popper.js.org/) as the tool to managed positioned elements.
+In the v9 library, we have invested in [Popper.js](https://popper.js.org/) as the tool to manage positioned elements.
 The `usePopper` utility in `@fluentui/react-positioning` contains multiple configuration options for popper and custom
 popper modifiers that can be used in different scenarios. These configuration options were mainly taken from v0 from
 the different requirements for positioned elements in Teams.
