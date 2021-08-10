@@ -81,6 +81,9 @@ You can use them with Text as such:
 
 ## Migration from v0 (Northstar)
 
+> ⚠️ Note - Teams specific functionality will only be partially covered in this guide.
+> Given that most properties depend on Teams design tokens and there is yet no relationship table created for Teams <-> Fluent tokens, only absolute values will be provided.
+
 ### as
 
 _This property suffered no changes and can be left as is._
@@ -112,20 +115,36 @@ Sizes are now represented with tokens that you can define on the Theme. Refer to
 
 _This property suffered no changes and can be left as is._
 
-### atMention [DEPRECATED] - 🚧 WIP 🚧
+### atMention [DEPRECATED]
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-<!-- TODO: Validate what's the matching color here for Fluent -->
-
 #### atMention / atMention={true}
 
-<!-- siteVariables.colors.brand[600] -->
+The Northstar token used here is: siteVariables.colors.brand[600]
+
+##### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
+     color: rgb(98, 100, 167)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+##### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(166, 167, 220)
   },
 })
 
@@ -138,14 +157,35 @@ const MyComponent = () => {
 
 #### atMention="me"
 
-<!-- siteVariables.colors.orange[400] -->
-<!-- siteVariables.fontWeightBold -->
+The Northstar tokens used here are:
+
+- Color: siteVariables.colors.orange[400]
+- Font weight: siteVariables.fontWeightBold
+
+##### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
-     fontWeight:
+     color: rgb(204, 74, 49)
+     fontWeight: 700
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+##### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(233, 117, 72)
+     fontWeight: 700
   },
 })
 
