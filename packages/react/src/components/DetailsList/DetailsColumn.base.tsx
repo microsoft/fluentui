@@ -119,6 +119,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           {...(!hasInnerButton && accNameDescription)}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
+          // when the column is not disabled and has no inner button, this node should be in the focus order
           data-is-focusable={
             !hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
           }
@@ -149,6 +150,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                 <span
                   id={`${parentId}-${column.key}`}
                   className={classNames.cellTitle}
+                  // this node should only be focusable when it is a button
                   data-is-focusable={
                     hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
                   }
