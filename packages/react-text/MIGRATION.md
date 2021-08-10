@@ -121,11 +121,11 @@ This property was deprecated. Below is a simple example on how to achieve the sa
 
 #### atMention / atMention={true}
 
-The Northstar theme tokens used here are:
+##### teamsTheme
+
+Northstar design tokens:
 
 - Color: `siteVariables.colors.brand[600]`
-
-##### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
@@ -143,6 +143,10 @@ const MyComponent = () => {
 
 ##### teamsDarkTheme
 
+Northstar design tokens:
+
+- Color: `siteVariables.colors.brand[400]`
+
 ```
 const useStyles = makeStyles(theme => ({
   root: {
@@ -157,14 +161,34 @@ const MyComponent = () => {
 }
 ```
 
+##### teamsHighContrastTheme
+
+Northstar design tokens:
+
+- Color: `siteVariables.accessibleYellow`
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(255, 255, 1)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
 #### atMention="me"
 
-The Northstar theme tokens used here are:
+##### teamsTheme
+
+Northstar design tokens:
 
 - Color: `siteVariables.colors.orange[400]`
 - Font weight: `siteVariables.fontWeightBold`
-
-##### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
@@ -183,10 +207,37 @@ const MyComponent = () => {
 
 ##### teamsDarkTheme
 
+Northstar design tokens:
+
+- Color: `siteVariables.colors.orange[300]`
+- Font weight: `siteVariables.fontWeightBold`
+
 ```
 const useStyles = makeStyles(theme => ({
   root: {
      color: rgb(233, 117, 72),
+     fontWeight: 700
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+##### teamsHighContrastTheme
+
+Northstar design tokens:
+
+- Color: `siteVariables.accessibleYellow`
+- Font weight: `siteVariables.fontWeightBold`
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(255, 255, 1),
      fontWeight: 700
   },
 })
