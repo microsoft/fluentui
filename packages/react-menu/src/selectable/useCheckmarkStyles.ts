@@ -7,7 +7,6 @@ const useStyles = makeStyles({
   root: {
     width: '16px',
     height: '16px',
-    marginRight: '8px',
     visibility: 'hidden',
   },
   rootChecked: {

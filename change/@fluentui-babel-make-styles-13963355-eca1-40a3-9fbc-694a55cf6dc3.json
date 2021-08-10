@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "use PositioningProps type",
-  "packageName": "@fluentui/react-popover",
+  "comment": "add config validation",
+  "packageName": "@fluentui/babel-make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix(MenuPopover): Remove min-height value",
+  "comment": "feat(Menu): Use react-icons for checkmarks and stories",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
