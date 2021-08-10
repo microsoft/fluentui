@@ -53,7 +53,7 @@ storiesOf('Menu - secondary content', module)
       <MenuPopover>
         <MenuList>
           <MenuItem icon={<Cut20Regular />} secondaryContent="Ctrl+X">
-            Cut{' '}
+            Cut
           </MenuItem>
           <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
           <MenuItem icon={<ClipboardPaste20Regular />} secondaryContent="Ctrl+P">
