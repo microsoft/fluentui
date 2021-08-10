@@ -62,32 +62,34 @@ CircularButton.parameters = {
   },
 };
 
-export const ButtonSize = () => (
-  <>
-    <div>
-      <h4>small</h4>
-      <Button size="small">Text</Button>
-      <Button size="small" icon={<CalendarMonth24Regular />}>
-        Text
-      </Button>
-      <Button size="small" icon={<CalendarMonth24Regular />} />
-    </div>
-    <div>
-      <h4>medium</h4>
-      <Button>Text</Button>
-      <Button icon={<CalendarMonth24Regular />}>Text</Button>
-      <Button icon={<CalendarMonth24Regular />} />
-    </div>
-    <div>
-      <h4>large</h4>
-      <Button size="large">Text</Button>
-      <Button size="large" icon={<CalendarMonth24Regular />}>
-        Text
-      </Button>
-      <Button size="large" icon={<CalendarMonth24Regular />} />
-    </div>
-  </>
-);
+export const ButtonSize = () => {
+  return (
+    <>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
+        <h4 style={{ width: '100%', margin: 0 }}>small</h4>
+        <Button size="small">Text</Button>
+        <Button size="small" icon={<CalendarMonth24Regular />}>
+          Text
+        </Button>
+        <Button size="small" icon={<CalendarMonth24Regular />} />
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
+        <h4 style={{ width: '100%', margin: 0 }}>medium</h4>
+        <Button>Text</Button>
+        <Button icon={<CalendarMonth24Regular />}>Text</Button>
+        <Button icon={<CalendarMonth24Regular />} />
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1em' }}>
+        <h4 style={{ width: '100%', margin: 0 }}>large</h4>
+        <Button size="large">Text</Button>
+        <Button size="large" icon={<CalendarMonth24Regular />}>
+          Text
+        </Button>
+        <Button size="large" icon={<CalendarMonth24Regular />} />
+      </div>
+    </>
+  );
+};
 ButtonSize.parameters = {
   docs: {
     description: {
@@ -111,12 +113,12 @@ BlockButton.parameters = {
 
 export const DisabledButton = () => (
   <>
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em' }}>
       <Button>Default</Button>
       <Button disabled>Disabled</Button>
       <Button disabledFocusable>Disabled focusable</Button>
     </div>
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em' }}>
       <Button primary icon={<CalendarMonth24Regular />}>
         Primary
       </Button>
