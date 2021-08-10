@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 12:26:07 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.87",
+      "version": "7.9.87",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.51",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "f118e3da49924321c6aa48f1536d20a9444e8561",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Aug 2021 12:22:03 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.9.86",
       "version": "7.9.86",

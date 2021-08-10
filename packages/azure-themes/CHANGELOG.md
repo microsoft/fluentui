@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 30 Jul 2021 12:24:50 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 12:26:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.51](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.51)
+
+Tue, 10 Aug 2021 12:26:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.50..@uifabric/azure-themes_v7.7.51)
+
+### Patches
+
+- Cherry pick of disabled primary button fix from #19015 ([PR #19193](https://github.com/microsoft/fluentui/pull/19193) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.7.50](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.50)
 

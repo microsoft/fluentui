@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherry pick of disabled primary button fix from #19015",
-  "packageName": "@uifabric/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

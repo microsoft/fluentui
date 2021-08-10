@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 05 Aug 2021 12:22:03 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 12:26:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.87](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.87)
+
+Tue, 10 Aug 2021 12:26:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.9.86..@uifabric/fabric-website-resources_v7.9.87)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.51 ([PR #19193](https://github.com/microsoft/fluentui/pull/19193) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.9.86](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.86)
 

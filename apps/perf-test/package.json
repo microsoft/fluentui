@@ -26,7 +26,7 @@
   "dependencies": {
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/example-app-base": "^7.19.23",
-    "@uifabric/experiments": "^7.39.43",
+    "@uifabric/experiments": "^7.39.44",
     "@microsoft/load-themed-styles": "^1.10.26",
     "office-ui-fabric-react": "^7.174.0",
     "querystring": "^0.2.0",
