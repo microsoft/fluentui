@@ -26,6 +26,7 @@ const useKeytipRegistrations = (
   persistedKeytips: { [uniqueID: string]: IKeytipProps },
   keytipManager: KeytipManager,
 ) => {
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     Object.keys(persistedKeytips).forEach((keytipId: string) => {
       const keytip = persistedKeytips[keytipId];
@@ -40,6 +41,7 @@ const useKeytipRegistrations = (
   });
 
   // Mount/Unmount
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     return () => {
       // Unregister and delete all persisted keytips saved on unmount
@@ -48,6 +50,7 @@ const useKeytipRegistrations = (
         delete persistedKeytips[uniqueID];
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
