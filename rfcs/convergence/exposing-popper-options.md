@@ -189,7 +189,7 @@ This way we can safely configure `usePopper` internally with a simple object spr
 props are used by the component props:
 
 ```tsx
-// � Existing usage
+// 👎 Existing usage
 // Need to be aware of user props and make sure they are added to the hook usage
 usePopper({
   align: state.align,
@@ -199,7 +199,7 @@ usePopper({
   offset: state.offset,
 });
 
-// � Proposed usage
+// 👍 Proposed usage
 // Guaranteed to configure based on user props, and any component specific modifications after
 // However adds some extra logic to use shorthand correctly
 const popperOptions = resolvePopperOptions(placement, { offset: state.modifiedOffset });
