@@ -77,19 +77,10 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   max?: number;
 
   /**
-   * The number of steps that the **Slider's** `value` will increment upon change.
-   * @default 1
+   * The number of steps that the **Slider's** `value` will increment upon change. When provided, the Slider
+   * will snap to the closest available value.
    */
   step?: number;
-
-  /**
-   * Whether the `Slider's` thumb should snap to the closest value. Defaults to true when the `step`
-   * prop is not equal to one.
-   *
-   * @default false
-   *
-   */
-  snap?: boolean;
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.

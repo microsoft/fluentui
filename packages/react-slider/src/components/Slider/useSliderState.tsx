@@ -53,10 +53,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     defaultValue = 0,
     min = 0,
     max = 10,
-    step = 1,
+    step: stepIncrement = 1,
     ariaValueText,
     onChange,
-    snap = step !== 1 ? true : false,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -124,24 +123,24 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       const size = currentBounds?.width || 0;
       const position = currentBounds?.left || 0;
 
-      const totalSteps = (max - min) / step;
+      const totalSteps = (max - min) / stepIncrement;
       const stepLength = size / totalSteps;
       const thumbPosition = ev.clientX;
       const distance = thumbPosition - position;
       return distance / stepLength;
     },
-    [max, min, step],
+    [max, min, stepIncrement],
   );
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      const position = min + step * calculateSteps(ev);
-      const currentStepPosition = Math.round(position / step) * step;
+      const position = min + stepIncrement * calculateSteps(ev);
+      const currentStepPosition = Math.round(position / stepIncrement) * stepIncrement;
 
       setRenderedPosition(clamp(position, min, max));
       updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, max, min, step, updateValue],
+    [calculateSteps, max, min, stepIncrement, updateValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -150,13 +149,20 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       disposables.current = [];
 
       showStepAnimation();
-      snap &&
+      state.step &&
         setRenderedPosition(
-          clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
+          clamp(
+            findClosestValue(
+              Math.round((min + stepIncrement * calculateSteps(ev)) / stepIncrement) * stepIncrement,
+              stepIncrement,
+            ),
+            min,
+            max,
+          ),
         );
       thumbRef.current!.focus();
     },
-    [calculateSteps, max, min, showStepAnimation, snap, step],
+    [calculateSteps, max, min, showStepAnimation, state.step, stepIncrement],
   );
 
   const onPointerDown = React.useCallback(
@@ -187,25 +193,25 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       if (ev.shiftKey) {
         if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-          updatePosition(currentValue! - step * 10, ev);
+          updatePosition(currentValue! - stepIncrement * 10, ev);
           return;
         } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-          updatePosition(currentValue! + step * 10, ev);
+          updatePosition(currentValue! + stepIncrement * 10, ev);
           return;
         }
       } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-        updatePosition(currentValue! - step, ev);
+        updatePosition(currentValue! - stepIncrement, ev);
         return;
       } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-        updatePosition(currentValue! + step, ev);
+        updatePosition(currentValue! + stepIncrement, ev);
         return;
       } else {
         switch (ev.key) {
           case 'PageDown':
-            updatePosition(currentValue! - step * 10, ev);
+            updatePosition(currentValue! - stepIncrement * 10, ev);
             break;
           case 'PageUp':
-            updatePosition(currentValue! + step * 10, ev);
+            updatePosition(currentValue! + stepIncrement * 10, ev);
             break;
           case 'Home':
             updatePosition(min, ev);
@@ -216,7 +222,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
     },
-    [currentValue, hideStepAnimation, max, min, onKeyDownCallback, step, updatePosition],
+    [currentValue, hideStepAnimation, max, min, onKeyDownCallback, stepIncrement, updatePosition],
   );
 
   React.useEffect(() => {

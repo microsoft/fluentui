@@ -29,11 +29,11 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Basic Example</Label>
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={10} snap={false} onChange={sliderOnChange} />
+      <Slider value={sliderValue} min={10} max={200} onChange={sliderOnChange} />
       <Label>Custom Styles</Label>
       <Slider defaultValue={4} className={styles.slider} />
       <Label>Snapping Example</Label>
-      <Slider defaultValue={8} snap />
+      <Slider defaultValue={8} step={1} />
     </div>
   );
 };
