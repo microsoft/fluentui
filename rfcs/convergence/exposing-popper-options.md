@@ -85,16 +85,6 @@ then all components should do so equally.
 We can achieve this with an agreement that the current `PositioningProps` would be supported by all v9 components, while
 internal popper options can still belong to `PopperOptions` type in the `react-positioning` package.
 
-```tsx
-import { PositioningProps } from '@fluentui/react-positioning';
-
-export interface TooltipProps extends PositioningProps {}
-
-export interface MenuProps extends PositioningProps {}
-
-export interface PopoverProps extends PositioningProps {}
-```
-
 ### Shorthand `placement` configuration
 
 The next step to this proposal is to make sure that all components which use a positioned element should allow users
