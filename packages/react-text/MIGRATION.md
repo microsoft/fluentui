@@ -294,6 +294,10 @@ The Northstar theme tokens used here are:
 
 #### teamsTheme
 
+Northstar design tokens:
+
+- Color: `siteVariables.colors.grey[250]`
+
 ```
 const useStyles = makeStyles(theme => ({
   root: {
@@ -310,10 +314,34 @@ const MyComponent = () => {
 
 #### teamsDarkTheme
 
+Northstar design tokens:
+
+- Color: `siteVariables.colors.grey[450]`
+
 ```
 const useStyles = makeStyles(theme => ({
   root: {
      color: rgb(96, 94, 92)
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsHighContrastTheme
+
+Northstar design tokens:
+
+- Color: `siteVariables.accessibleGreen`
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(63, 242, 63)
   },
 })
 
