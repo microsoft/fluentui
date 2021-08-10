@@ -429,6 +429,11 @@ export const Default = (props: PopoverProps) => (
 );
 ```
 
+#### story code should be useful
+
+Public stories should only contain code, which is useful for users to see after clicking on “Show code” in documentation.
+Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
+
 ### 10. Internal stories for testing
 
 As mentioned in for E2E testing, we should ensure maximum coverage for all publicly viewable stories by our consumers.
@@ -470,11 +475,6 @@ any conflicts with current stories, since this word is never used in any story n
 
 This solution will only need to be applied within `react-components` storybook configuration since that is the storybook currently targeted for
 public use. Individual component storybooks are only used for local development, so there is no need to hide internal stories from their nav trees.
-
-#### story code should be useful
-
-Public stories should only contain code, which is useful for users to see after clicking on “Show code” in documentation.
-Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
 
 ### Pros and Cons
 
