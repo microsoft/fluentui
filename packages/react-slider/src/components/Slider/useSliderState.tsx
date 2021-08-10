@@ -99,6 +99,19 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     [max, min, step],
   );
 
+  /**
+   * Calculates the `step` position based off a given array of steps.
+   */
+  const calculateCustomSteps = (incomingSteps: number[]): number[] => {
+    const stepPosition: number[] = [];
+
+    for (let i = 0; i < incomingSteps.length; i++) {
+      stepPosition.push(getPercent(min + incomingSteps[i], min, max));
+    }
+
+    return stepPosition;
+  };
+
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       if (step !== 1) {
@@ -201,8 +214,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const marksPercent =
     marks !== undefined
-      ? Array.isArray(marks)
-        ? [...Array(Math.floor((max - min) / step) + 1)].map((val, index) => getPercent(min + step * index, min, max))
+      ? Array.isArray(marks) && marks.length > 0
+        ? calculateCustomSteps(marks)
         : [...Array(Math.floor((max - min) / step) + 1)].map((val, index) => getPercent(min + step * index, min, max))
       : undefined;
 
