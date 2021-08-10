@@ -48,7 +48,6 @@ exports[`Checkbox renders checked correctly 1`] = `
       }
 >
   <input
-    aria-checked="true"
     checked={true}
     className=
 
@@ -216,7 +215,6 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
       }
 >
   <input
-    aria-checked="mixed"
     checked={false}
     className=
 
@@ -395,7 +393,6 @@ exports[`Checkbox renders unchecked correctly 1`] = `
       }
 >
   <input
-    aria-checked="false"
     checked={false}
     className=
 

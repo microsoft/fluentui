@@ -77,12 +77,6 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
 
     const onRenderLabel = props.onRenderLabel || defaultLabelRenderer;
 
-    const ariaChecked: React.InputHTMLAttributes<HTMLInputElement>['aria-checked'] = isIndeterminate
-      ? 'mixed'
-      : isChecked
-      ? 'true'
-      : 'false';
-
     const mergedInputProps: React.InputHTMLAttributes<HTMLInputElement> = {
       className: classNames.input,
       type: 'checkbox' as React.InputHTMLAttributes<HTMLInputElement>['type'],
@@ -100,7 +94,6 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       'aria-describedby': ariaDescribedBy,
       'aria-posinset': ariaPositionInSet,
       'aria-setsize': ariaSetSize,
-      'aria-checked': ariaChecked,
     };
 
     return (

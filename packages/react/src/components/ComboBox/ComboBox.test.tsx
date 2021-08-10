@@ -210,6 +210,16 @@ describe('ComboBox', () => {
     });
   });
 
+  it('Applies correct attributes to the selected option', () => {
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="2" />, wrapper => {
+      // open combobox to check options list
+      wrapper.find('button').simulate('click');
+
+      const options = wrapper.find(BUTTON_OPTION);
+      expect(options.at(1).prop('aria-selected')).toEqual('true');
+    });
+  });
+
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} placeholder={placeholder} />, container => {

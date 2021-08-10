@@ -1516,7 +1516,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 
@@ -1673,7 +1672,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 

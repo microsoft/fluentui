@@ -2096,7 +2096,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 
@@ -2253,7 +2252,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
         }
   >
     <input
-      aria-checked="false"
       checked={false}
       className=
 
