@@ -4,6 +4,40 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+
+// @public
+export const Card: React_2.ForwardRefExoticComponent<CardProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type CardDefaultedProps = never;
+
+// @public
+export interface CardProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export type CardShorthandProps = never;
+
+// @public
+export const cardShorthandProps: CardShorthandProps[];
+
+// @public
+export interface CardState extends CardProps, ComponentState {
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
+export const renderCard: (state: CardState) => JSX.Element;
+
+// @public
+export const useCard: (props: CardProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => CardState;
+
+// @public
+export const useCardStyles: (state: CardState) => CardState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
