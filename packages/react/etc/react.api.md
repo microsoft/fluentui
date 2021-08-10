@@ -2024,6 +2024,13 @@ export interface ICalendarDayGridStyles {
     bottomLeftCornerDate?: IStyle;
     // (undocumented)
     bottomRightCornerDate?: IStyle;
+    datesAbove?: IStyle;
+    // (undocumented)
+    datesBelow?: IStyle;
+    // (undocumented)
+    datesLeft?: IStyle;
+    // (undocumented)
+    datesRight?: IStyle;
     dayButton?: IStyle;
     dayCell?: IStyle;
     dayIsToday?: IStyle;

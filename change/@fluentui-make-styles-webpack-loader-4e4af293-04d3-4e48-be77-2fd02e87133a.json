@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add support for loader options",
+  "packageName": "@fluentui/make-styles-webpack-loader",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
