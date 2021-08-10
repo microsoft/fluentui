@@ -32,7 +32,7 @@ function reactComponentsChangelog(fromVersion, toVersion) {
 
   dependencyNames.forEach(packageName => {
     const dirName = packageName.replace('@fluentui/', '');
-    const changelogJSON = require(`../../packages/${dirName}/CHANGELOG.json`);
+    const changelogJSON = require(`../packages/${dirName}/CHANGELOG.json`);
 
     const changelogEntries = changelogJSON.entries
       //
