@@ -165,8 +165,9 @@ function testFixture(fixtureName: string, options: CompileOptions = {}) {
 describe('shouldTransformSourceCode', () => {
   it('handles defaults', () => {
     expect(shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-make-styles"`, undefined)).toBe(true);
-
     expect(shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-components"`, undefined)).toBe(true);
+
+    expect(shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, undefined)).toBe(false);
   });
 
   it('handles options', () => {
@@ -175,12 +176,17 @@ describe('shouldTransformSourceCode', () => {
         { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
       ]),
     ).toBe(true);
-
     expect(
       shouldTransformSourceCode(`import { createStyles } from "make-styles"`, [
         { moduleSource: 'make-styles', importName: 'createStyles' },
       ]),
     ).toBe(true);
+
+    expect(
+      shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, [
+        { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
+      ]),
+    ).toBe(false);
   });
 });
 
