@@ -6,10 +6,10 @@ This guide is a reference for upgrading from v7 (Fabric) or v0 (Northstar) into 
 
 ## Property mapping
 
-Below you'll find a table with the relations between the properties of Fabric/Northstar and the converged version of Text to make it clear for you which property to use with the new version.
+Below you'll find a table with the relations between the properties of Fabric/Northstar and the converged version of Text to make it clear for you which properties require changes or are deprecated with the new version.
 
 > ⚠️ Note - Properties not in this table are considered deprecated.
-> You can find the full migration guide below.
+> You can find how to migrate them below.
 
 | v8 (Fabric) | v0 (Northstar) | v9 (Fluent UI) | Good to go? |
 | ----------- | -------------- | -------------- | ----------- |
@@ -23,10 +23,6 @@ Below you'll find a table with the relations between the properties of Fabric/No
 | -           | styles         | styles         | ✔️          |
 | -           | truncated      | truncate       | ⚠️          |
 | -           | weight         | weight         | ⚠️          |
-| -           | -              | font           | -           |
-| -           | -              | italic         | -           |
-| -           | -              | strikethrough  | -           |
-| -           | -              | underline      | -           |
 
 ---
 
@@ -54,27 +50,27 @@ The `nowrap` property was changed to `wrap` and it is `true` by default. You can
 
 ### variant
 
-Variants are now represented with tokens that you can define on the Theme. These are the token sizes for the default theme:
+Variants are now represented with tokens that you can override on a theme level. These are the token sizes for the default theme:
 
-<h4 id="size-table">Size token table</h4>
+<h4 id="size-table">Fluent UI size tokens</h4>
 
-| Size token | font-size | line-height |
-| ---------- | --------- | ----------- |
-| 100        | 10px      | 14px        |
-| 200        | 12px      | 16px        |
-| 300        | 14px      | 20px        |
-| 400        | 16px      | 22px        |
-| 500        | 20px      | 28px        |
-| 600        | 24px      | 32px        |
-| 700        | 28px      | 36px        |
-| 800        | 32px      | 40px        |
-| 900        | 40px      | 52px        |
-| 1000       | 68px      | 92px        |
+| Token | font-size | line-height |
+| ----- | --------- | ----------- |
+| 100   | 10px      | 14px        |
+| 200   | 12px      | 16px        |
+| 300   | 14px      | 20px        |
+| 400   | 16px      | 22px        |
+| 500   | 20px      | 28px        |
+| 600   | 24px      | 32px        |
+| 700   | 28px      | 36px        |
+| 800   | 32px      | 40px        |
+| 900   | 40px      | 52px        |
+| 1000  | 68px      | 92px        |
 
 You can use them with Text as such:
 
 ```
-<Text size={300}>Not wrapped</Text>
+<Text size={300}>Text</Text>
 ```
 
 ---
@@ -98,7 +94,7 @@ To achieve the same result with the new `truncate` property, you'll need to do t
 
 This is due to `truncate` changing the CSS property `text-overflow` to `ellipsis`.
 Since `text-overflow` doesn't force an overflow to occur, properties `overflow` and `white-space` also need to be set. These two are set by the `wrap` property when set as `false`.
-Finally, `block` is required as `Text` is displayed as `inline` by default.
+Finally, `block` is required as `Text` is now displayed as `inline` by default and without it the container will grow according to the content.
 
 _Read more about the CSS props:_
 
@@ -109,7 +105,13 @@ _Read more about the CSS props:_
 
 ### size
 
-Sizes are now represented with tokens that you can define on the Theme. Refer to the [Size Table](#size-table) above for more information about the absolute values for the tokens..
+While the name remains the same, the values are now represented with integer tokens that you can override on a theme level. Please refer to the [Fluent UI size table](#size-table) above for more information about the absolute values for the tokens.
+
+You can use them with Text as such:
+
+```
+<Text size={300}>Text</Text>
+```
 
 ### align
 
@@ -117,9 +119,9 @@ _This property suffered no changes and can be left as is._
 
 ### atMention [DEPRECATED]
 
-This property was deprecated. Below are examples on how to achieve the same results:
+This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
-#### atMention / atMention={true}
+#### Using `atMention` / `atMention={true}`
 
 ##### **teamsTheme**
 
@@ -130,7 +132,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(98, 100, 167)
+     color: 'rgb(98, 100, 167)'
   },
 })
 
@@ -150,7 +152,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(166, 167, 220)
+     color: 'rgb(166, 167, 220)'
   },
 })
 
@@ -170,7 +172,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(255, 255, 1)
+     color: 'rgb(255, 255, 1)'
   },
 })
 
@@ -181,7 +183,7 @@ const MyComponent = () => {
 }
 ```
 
-#### atMention="me"
+#### Using `atMention="me"`
 
 ##### **teamsTheme**
 
@@ -193,7 +195,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(204, 74, 49),
+     color: 'rgb(204, 74, 49)',
      fontWeight: 700
   },
 })
@@ -215,7 +217,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(233, 117, 72),
+     color: 'rgb(233, 117, 72)',
      fontWeight: 700
   },
 })
@@ -237,7 +239,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(255, 255, 1),
+     color: 'rgb(255, 255, 1)',
      fontWeight: 700
   },
 })
@@ -286,11 +288,7 @@ Or the common and recomended way:
 
 ### disabled [DEPRECATED]
 
-This property was deprecated. Below is a simple example on how to achieve the same result:
-
-The Northstar theme tokens used here are:
-
-- Color: `siteVariables.colors.grey[250]`
+This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
 #### **teamsTheme**
 
@@ -301,7 +299,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(200, 198, 196)
+     color: 'rgb(200, 198, 196)'
   },
 })
 
@@ -321,7 +319,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(96, 94, 92)
+     color: 'rgb(96, 94, 92)'
   },
 })
 
@@ -341,7 +339,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(63, 242, 63)
+     color: 'rgb(63, 242, 63)'
   },
 })
 
@@ -354,7 +352,7 @@ const MyComponent = () => {
 
 ### error [DEPRECATED]
 
-This property was deprecated. Below is a simple example on how to achieve the same result:
+This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
 #### **teamsTheme**
 
@@ -365,7 +363,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(196, 49, 75)
+     color: 'rgb(196, 49, 75)'
   },
 })
 
@@ -385,7 +383,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(231, 53, 80)
+     color: 'rgb(231, 53, 80)'
   },
 })
 
@@ -405,7 +403,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(255, 0, 0)
+     color: 'rgb(255, 0, 0)'
   },
 })
 
@@ -418,7 +416,7 @@ const MyComponent = () => {
 
 ### important [DEPRECATED]
 
-This property was deprecated. Below is a simple example on how to achieve the same result:
+This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
 #### **teamsTheme**
 
@@ -430,7 +428,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(196, 49, 75),
+     color: 'rgb(196, 49, 75)',
      fontWeight: 700
   },
 })
@@ -452,7 +450,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(231, 53, 80),
+     color: 'rgb(231, 53, 80)',
      fontWeight: 700
   },
 })
@@ -474,7 +472,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(255, 0, 0),
+     color: 'rgb(255, 0, 0)',
      fontWeight: 700
   },
 })
@@ -488,7 +486,7 @@ const MyComponent = () => {
 
 ### success [DEPRECATED]
 
-This property was deprecated. Below is a simple example on how to achieve the same result:
+This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
 #### **teamsTheme**
 
@@ -499,7 +497,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(35, 123, 75)
+     color: 'rgb(35, 123, 75)'
   },
 })
 
@@ -519,7 +517,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(146, 195, 83)
+     color: 'rgb(146, 195, 83)'
   },
 })
 
@@ -539,7 +537,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(146, 195, 83)
+     color: 'rgb(146, 195, 83)'
   },
 })
 
@@ -552,7 +550,7 @@ const MyComponent = () => {
 
 ### temporary [DEPRECATED]
 
-This property was deprecated. Below is a simple example on how to achieve the same result:
+This property was deprecated. Given that this property depends on the applied style, you can find below examples on how to achieve the same results in the default, dark and high contrast themes:
 
 ```
 const useStyles = makeStyles(theme => ({
@@ -581,7 +579,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(72, 70, 68)
+     color: 'rgb(72, 70, 68)'
   },
 })
 
@@ -601,7 +599,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(138, 136, 134)
+     color: 'rgb(138, 136, 134)'
   },
 })
 
@@ -621,7 +619,7 @@ Northstar design tokens:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(255, 255, 255)
+     color: 'rgb(255, 255, 255)'
   },
 })
 
@@ -634,7 +632,7 @@ const MyComponent = () => {
 
 ### variables [DEPRECATED]
 
-For v9, this feature is no longer supported. An alternative, is to apply styles through `make-styles`. Below is an example of a migration:
+For v9, this feature is no longer supported. The alternative is to apply styles through `make-styles`. Below is an example of a migration:
 
 #### v0 (Northstar) implementation
 
@@ -662,16 +660,16 @@ const MyComponent = () => {
 
 ### weight
 
-The name and the usage of the `weight` property remain the same. However, the allowed values have changed:
+The name and the usage of the `weight` property remains the same. However, the allowed values have changed:
 
-| Northstar   | Absolute | Fluent UI  |
-| ----------- | -------- | ---------- |
-| `light`     | 200      | -          |
-| `semilight` | 300      | -          |
-| `regular`   | 400      | `regular`  |
-| -           | 500      | `medium`   |
-| `semibold`  | 600      | `semibold` |
-| `bold`      | 700      | -          |
+| Northstar   | Computated value | Fluent UI  |
+| ----------- | ---------------- | ---------- |
+| `light`     | 200              | -          |
+| `semilight` | 300              | -          |
+| `regular`   | 400              | `regular`  |
+| -           | 500              | `medium`   |
+| `semibold`  | 600              | `semibold` |
+| `bold`      | 700              | -          |
 
 ### className
 
@@ -679,10 +677,4 @@ _This property suffered no changes and can be left as is._
 
 ### styles
 
-_This property suffered no changes and can be used as is left we highly recommend that you migrate to a `make-styles` styling solution_
-
----
-
-## Examples
-
-<!-- TODO: But what are we to do? -->
+_This property suffered no changes and can be used as is. However, we highly recommend that you migrate to a `make-styles` styling solution for performance reasons._
