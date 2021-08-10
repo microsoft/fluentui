@@ -101,32 +101,6 @@ describe('Slider', () => {
     expect(sliderRef.current.value).toEqual(0);
   });
 
-  it('clamps provided controlled (value) that is out of bounds', () => {
-    let sliderRef: any;
-    let imperativeRef: any;
-
-    const SliderTestComponent = () => {
-      const [sliderValue, setSliderValue] = React.useState(-10);
-      sliderRef = React.useRef(null);
-      imperativeRef = React.useRef(null);
-
-      React.useImperativeHandle(imperativeRef, () => ({
-        getSliderValue: () => {
-          return sliderValue;
-        },
-      }));
-
-      const onChange = (value: number) => setSliderValue(value);
-
-      return <Slider value={sliderValue} min={0} max={100} onChange={onChange} ref={sliderRef} />;
-    };
-
-    render(<SliderTestComponent />);
-
-    expect(sliderRef.current.value).toEqual(0);
-    expect(imperativeRef.current.getSliderValue()).toEqual(0);
-  });
-
   it('calls (onChange) when dragged', () => {
     let sliderRef: any;
     const onChange = jest.fn();

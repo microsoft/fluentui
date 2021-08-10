@@ -122,7 +122,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture(pointerId);
+        target.releasePointerCapture?.(pointerId);
       });
 
       onPointerMove(ev);
