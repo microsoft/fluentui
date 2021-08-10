@@ -105,10 +105,6 @@ The usage examples below will detail the usage of this shorthand.
 
 ```tsx
 // @fluentui/react-positioning
-export interface PositionedComponent {
-  placement: PositioningShorthand;
-}
-
 export type PositioningShorthandValue =
   | 'above'
   | 'above-start'
@@ -152,13 +148,19 @@ export function parseStringShorthand(shorthand) {
 ```
 
 ```tsx
-import { PositionedComponent } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 
-export interface TooltipProps extends PositioninedComponent {}
+export interface TooltipProps extends PositioninedComponent {
+  placement: PositioningShorthand;
+}
 
-export interface MenuProps extends PositioninedComponent {}
+export interface MenuProps extends PositioninedComponent {
+  placement: PositioningShorthand;
+}
 
-export interface PopoverProps extends PositioninedComponent {}
+export interface PopoverProps extends PositioninedComponent {
+  placement: PositioningShorthand;
+}
 ```
 
 Example usage:
