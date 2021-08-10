@@ -16,7 +16,7 @@ import {
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
 import { FluentProviderDecorator } from '../utilities/index';
 
-storiesOf('Menu - basic', module)
+storiesOf('react-menu Menu - basic', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
