@@ -169,7 +169,7 @@ The Northstar theme tokens used here are:
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(204, 74, 49)
+     color: rgb(204, 74, 49),
      fontWeight: 700
   },
 })
@@ -186,7 +186,7 @@ const MyComponent = () => {
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color: rgb(233, 117, 72)
+     color: rgb(233, 117, 72),
      fontWeight: 700
   },
 })
@@ -313,19 +313,39 @@ const MyComponent = () => {
 }
 ```
 
-### important [DEPRECATED] - 🚧 WIP 🚧
+### important [DEPRECATED]
 
 This property was deprecated. Below is a simple example on how to achieve the same result:
 
-<!-- TODO: Validate what's the matching color here for Fluent -->
-<!-- siteVariables.colors.red[400] -->
-<!-- siteVariables.fontWeightBold -->
+The Northstar theme tokens used here are:
+
+- Color: `siteVariables.colors.red[400]`
+- Font weight: `siteVariables.fontWeightBold`
+
+#### teamsTheme
 
 ```
 const useStyles = makeStyles(theme => ({
   root: {
-     color:
-     fontWeight:
+     color: rgb(196, 49, 75),
+     fontWeight: 700
+  },
+})
+
+const MyComponent = () => {
+    const styles = useStyles()
+
+    return <Text className={styles.root}>{...}</Text>
+}
+```
+
+#### teamsDarkTheme
+
+```
+const useStyles = makeStyles(theme => ({
+  root: {
+     color: rgb(231, 53, 80),
+     fontWeight: 700
   },
 })
 
