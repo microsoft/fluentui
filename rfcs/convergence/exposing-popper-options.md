@@ -222,6 +222,7 @@ This change can be made in a non-breaking way by deprecating all existing config
 #### Cons
 
 - Some components will not need all complex configuration
+- Adds extra code to resolve shorthand
 - Encourage users to use complicated solutions to their problems
 - Adding configuration required only by a single component is expensive
 - Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
