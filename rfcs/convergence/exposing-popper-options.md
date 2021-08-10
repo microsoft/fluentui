@@ -88,7 +88,7 @@ internal popper options can still belong to `PopperOptions` type in the `react-p
 ### Shorthand `placement` configuration
 
 The next step to this proposal is to make sure that all components which use a positioned element should allow users
-to configure popper through a `placement` prop that is behaves like a shorthand. An extra helper will be required to resolve
+to configure popper through a `placement` prop that behaves like a shorthand. An extra helper will be required to resolve
 shorthand to full popper configuration internally, but the external API for `placement` is very clean for users.
 
 The usage examples below will detail the usage of this shorthand.
