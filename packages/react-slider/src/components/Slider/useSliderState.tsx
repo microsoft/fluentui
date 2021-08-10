@@ -118,24 +118,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const onPointerDown = React.useCallback(
     (ev): void => {
       const { pointerId, target } = ev;
-
       target.setPointerCapture?.(pointerId);
       onPointerDownCallback?.(ev);
 
-      // const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
-      //   element.addEventListener(eventName, callback);
-      //   return () => element.removeEventListener(eventName, callback);
-
-      disposables.current.push(
-        target.addEventListener('pointermove', onPointerMove),
-        target.addEventListener('pointerup', onPointerUp),
-
-        () => {
-          target.releasePointerCapture(pointerId);
-          target.removeEventListener('pointermove', onPointerMove);
-          target.removeEventListener('pointerup', onPointerUp);
-        },
-      );
+      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
+        target.releasePointerCapture(pointerId);
+      });
 
       onPointerMove(ev);
     },
@@ -211,7 +199,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.trackWrapper.children = null;
 
   // Track Props
-  state.track.className = 'ms-Slider-track';
+  state.track.className = state.track.className || 'ms-Slider-track';
   state.track.style = trackStyles;
   state.track.children = null;
 
@@ -220,7 +208,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumbWrapper.children = null;
 
   // Thumb Props
-  state.thumb.className = 'ms-Slider-thumb';
+  state.thumb.className = state.thumb.className || 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = 0;
   state.thumb.role = 'slider';
