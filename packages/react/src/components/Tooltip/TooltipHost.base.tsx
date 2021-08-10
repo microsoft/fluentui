@@ -70,6 +70,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       directionalHintForRTL,
       hostClassName: className,
       id,
+      // eslint-disable-next-line deprecation/deprecation
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
