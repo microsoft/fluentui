@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix error color for `Text` @chassunc ([#19203](https://github.com/microsoft/fluentui/pull/19203))
 - Fix `Tooltip` flickering in multi-window use case @yuanboxue-amber ([#19235](https://github.com/microsoft/fluentui/pull/19235))
 - Fix `Datepicker` input @yuanboxue-amber ([#19261](https://github.com/microsoft/fluentui/pull/19261))
+- Fix `Dialog` styles border radius changed @bcalvery ([#19328](https://github.com/microsoft/fluentui/pull/19328))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
