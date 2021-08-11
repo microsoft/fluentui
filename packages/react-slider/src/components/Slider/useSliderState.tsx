@@ -56,6 +56,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     step: stepIncrement = 1,
     ariaValueText,
     onChange,
+    vertical = false,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -120,16 +121,16 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const size = currentBounds?.width || 0;
-      const position = currentBounds?.left || 0;
+      const size = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
+      const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
 
       const totalSteps = (max - min) / stepIncrement;
       const stepLength = size / totalSteps;
-      const thumbPosition = ev.clientX;
-      const distance = thumbPosition - position;
+      const thumbPosition = vertical ? ev.clientY : ev.clientX;
+      const distance = vertical ? position - thumbPosition : thumbPosition - position;
       return distance / stepLength;
     },
-    [max, min, stepIncrement],
+    [max, min, stepIncrement, vertical],
   );
 
   const onPointerMove = React.useCallback(
@@ -250,16 +251,26 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const animationTime = '0.1s';
 
   const thumbStyles = {
-    transform: `translateX(${valuePercent}%)`,
+    transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.thumb.style,
   };
 
-  const trackStyles = {
-    width: `${valuePercent}%`,
-    transition: stepAnimation ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime}` : 'none',
-    ...state.track.style,
-  };
+  const trackStyles = vertical
+    ? {
+        height: `${valuePercent}%`,
+        transition: stepAnimation
+          ? `transform ease-in-out ${animationTime}, height ease-in-out ${animationTime}`
+          : 'none',
+        ...state.track.style,
+      }
+    : {
+        width: `${valuePercent}%`,
+        transition: stepAnimation
+          ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime}`
+          : 'none',
+        ...state.track.style,
+      };
 
   // Root props
   state.as = as;
