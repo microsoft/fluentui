@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 10 Aug 2021 07:33:28 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.91)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.90..@fluentui/react-components_v9.0.0-alpha.91)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.61 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.90)
 
