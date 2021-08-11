@@ -146,7 +146,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   // { onChange: (data: MouseEvent | KeyboardEvent) => void }
   //                    ^
   if (ts.isUnionTypeNode(type)) {
-    return type.types.map(type => parseArgumentType(type)) as ArgumentValue[];
+    return type.types.map(typeFromUnion => parseArgumentType(typeFromUnion)) as ArgumentValue[];
   }
 
   // Handles a case when a node is a literal
@@ -161,6 +161,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   //                    ^
   // { onChange: (data: string) => void }
   //                    ^
+  // eslint-disable-next-line no-bitwise
   if (type.kind & ts.SyntaxKind.IsKeyword) {
     return fromKeywordNodeToValue(type);
   }
@@ -219,6 +220,8 @@ export function getCallbackArguments(
     if (ts.isInterfaceDeclaration(statement)) {
       return statement.name.escapedText === typeName;
     }
+
+    return false;
   }) as ts.InterfaceDeclaration | undefined;
 
   if (!propertiesDeclaration) {
@@ -231,6 +234,8 @@ export function getCallbackArguments(
         return member.name.escapedText === propertyName;
       }
     }
+
+    return false;
   }) as ts.PropertySignature | undefined;
 
   if (!propertySignature) {

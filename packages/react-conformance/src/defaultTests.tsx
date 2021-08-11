@@ -338,7 +338,7 @@ export const defaultTests: TestObject = {
 
   /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
   'consistent-callback-args': (componentInfo, testInfo, tsProgram) => {
-    it.only('has consistent custom callback arguments (consistent-callback-args)', () => {
+    it('has consistent custom callback arguments (consistent-callback-args)', () => {
       const { testOptions = {} } = testInfo;
 
       const propNames = Object.keys(componentInfo.props);

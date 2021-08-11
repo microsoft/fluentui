@@ -2,24 +2,27 @@
  * @jest-environment node
  */
 
-import { DirectoryJSON, fs, vol } from 'memfs';
+import { DirectoryJSON, fs as memFS, vol } from 'memfs';
 import * as realFS from 'fs';
 import * as ts from 'typescript';
 
 import { getCallbackArguments } from './getCallbackArguments';
 
+/**
+ * Creates a CompilerHost that reads files from memfs.
+ */
 function createCompilerHost(): ts.CompilerHost {
   const originalHost = ts.createCompilerHost({});
 
   function fileExists(fileName: string): boolean {
-    return fs.existsSync(fileName) || realFS.existsSync(fileName);
+    return memFS.existsSync(fileName) || realFS.existsSync(fileName);
   }
 
   function getSourceFile(fileName: string, languageVersion: ts.ScriptTarget) {
     let sourceText;
 
-    if (fs.existsSync(fileName)) {
-      sourceText = fs.readFileSync(fileName, 'utf8') as string;
+    if (memFS.existsSync(fileName)) {
+      sourceText = memFS.readFileSync(fileName, 'utf8') as string;
     } else if (realFS.existsSync(fileName)) {
       sourceText = realFS.readFileSync(fileName, 'utf8') as string;
     }
@@ -169,10 +172,11 @@ describe('getCallbackArguments', () => {
         './Accordion.types.ts': 'export interface AccordionProps { onToggle: (e: null) => void; }',
       });
 
-      expect(() =>
-        getCallbackArguments(program, 'Button.types.ts', 'AccordionProps', 'onToggle'),
-      ).toThrowErrorMatchingInlineSnapshot(
-        `"A file (Button.types.ts) was not found in TS program, this looks like an invocation problem, check your params"`,
+      expect(() => getCallbackArguments(program, 'Button.types.ts', 'AccordionProps', 'onToggle')).toThrowError(
+        [
+          'A file (Button.types.ts) was not found in TS program, this looks like an invocation problem,',
+          'check your params',
+        ].join(' '),
       );
     });
 
