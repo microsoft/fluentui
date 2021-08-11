@@ -85,11 +85,14 @@ then all components should do so equally.
 We can achieve this with an agreement that the current `PositioningProps` would be supported by all v9 components, while
 internal popper options can still belong to `PopperOptions` type in the `react-positioning` package.
 
-### Shorthand `placement` configuration
+### Shorthand `positioning` configuration
 
 The next step to this proposal is to make sure that all components which use a positioned element should allow users
-to configure popper through a `placement` prop that behaves like a shorthand. An extra helper will be required to resolve
-shorthand to full popper configuration internally, but the external API for `placement` is very clean for users.
+to configure popper through a `positioning` prop that behaves like a shorthand. An extra helper will be required to resolve
+shorthand to full popper configuration internally, but the external API for `positioning` is very clean for users.
+
+Shorthand _should not_ but used for the `usePopper` hook or any of the internals in `react-positioning` it is intended
+syntax for component developers to simplify the positioning options for end users.
 
 The usage examples below will detail the usage of this shorthand.
 
@@ -111,18 +114,16 @@ export type PositioningShorthandValue =
 
 export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
-export function resolvePopperOptions(shorthand: PositioningShorthand, config: PositioningProps) {
+export function resolvePositioningShorthand(shorthand: PositioningShorthand) {
   if (typeof shorthand === 'object') {
     return {
       ...shorthand,
-      ...config,
     };
   }
 
   if (typeof shorthand === 'string') {
     return {
       ...parseStringShorthand(shorthand),
-      ...config,
     };
   }
 
@@ -140,16 +141,16 @@ export function parseStringShorthand(shorthand) {
 ```tsx
 import { PositioningShorthand } from '@fluentui/react-positioning';
 
-export interface TooltipProps extends PositioninedComponent {
-  placement: PositioningShorthand;
+export interface TooltipProps {
+  positioning: PositioningShorthand;
 }
 
-export interface MenuProps extends PositioninedComponent {
-  placement: PositioningShorthand;
+export interface MenuProps {
+  positioning: PositioningShorthand;
 }
 
-export interface PopoverProps extends PositioninedComponent {
-  placement: PositioningShorthand;
+export interface PopoverProps {
+  positioning: PositioningShorthand;
 }
 ```
 
@@ -157,23 +158,23 @@ Example usage:
 
 ```tsx
 // Shorthand for `position` and `align` options
-<PositionedComponent placement="above-start">
-<PositionedComponent placement={{position: 'above', align: 'start'}}>
+<PositionedComponent positioning="above-start">
+<PositionedComponent positioning={{position: 'above', align: 'start'}}>
 
-<PositionedComponent placement="above">
-<PositionedComponent placement={{position: 'above'}}>
+<PositionedComponent positioning="above">
+<PositionedComponent positioning={{position: 'above'}}>
 
 // Also allows more complex configuration
-<PositionedComponent placement={{position: 'above', align: 'start', autoSize: true}}>
+<PositionedComponent positioning={{position: 'above', align: 'start', autoSize: true}}>
 ```
 
-Slots that use popper should use a similar pattern if a top level `placement` option is not clear enough:
+Slots that use popper should use a similar pattern if a top level `positioning` option is not clear enough:
 
 ```tsx
 import { PositioningProps } from '@fluentui/react-positioning';
 
 export interface ComponentWithPositionedSlotProps {
-  positionedSlot: React.HTMLAttributes<HTMLElement> & { placement?: PlacementShorthand };
+  positionedSlot: React.HTMLAttributes<HTMLElement> & { positioning?: PositioningShorthand };
 }
 ```
 
@@ -194,12 +195,13 @@ usePopper({
 // 👍 Proposed usage
 // Guaranteed to configure based on user props, and any component specific modifications after
 // However adds some extra logic to use shorthand correctly
-const popperOptions = resolvePopperOptions(placement, { offset: state.modifiedOffset });
+const popperOptions = resolvePositioningShorthand(state.positioning);
+popperOptions.offset = state.offset;
 usePopper(popperOptions);
 ```
 
 This change can be made in a non-breaking way by deprecating all existing configuration props outside of the proposed
-`placement` prop and providing support until a specific release in the future (beta/initial release/next major).
+`positioning` prop and providing support until a specific release in the future (beta/initial release/next major).
 
 ### Pros and Cons
 
@@ -209,7 +211,7 @@ This change can be made in a non-breaking way by deprecating all existing config
 - Fixes to positioned elements through extra configuration can be used across the library
 - Configuring positioned elements is consistent across components and clear for users
 - If a better underlying library than `Popper.js` exists, we can replace it by implementing the `PositioniningProps` interface
-- Technically a new `placement`prop is a breaking API change, but can be done in a non-breaking way
+- Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
 
 #### Cons
 
@@ -217,7 +219,7 @@ This change can be made in a non-breaking way by deprecating all existing config
 - Adds extra code to resolve shorthand
 - Encourage users to use complicated solutions to their problems
 - Adding configuration required only by a single component is expensive
-- Technically a new `placement`prop is a breaking API change, but can be done in a non-breaking way
+- Technically a new `positioning`prop is a breaking API change, but can be done in a non-breaking way
 
 ## Discarded Solutions
 
