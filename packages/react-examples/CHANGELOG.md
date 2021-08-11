@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 10 Aug 2021 12:26:07 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Aug 2021 12:23:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.24)
+
+Wed, 11 Aug 2021 12:23:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.23..@fluentui/react-examples_v0.14.24)
+
+### Patches
+
+- Accessibility change for Area chart and line chart ([PR #19288](https://github.com/microsoft/fluentui/pull/19288) by v-scharde@microsoft.com)
 
 ## [0.14.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.23)
 

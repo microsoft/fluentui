@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 11 Aug 2021 12:23:07 GMT",
+      "tag": "@fluentui/react-examples_v0.14.24",
+      "version": "0.14.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Area chart and line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "3d906f1eafff5e30084c62a061a36917a441f819",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Aug 2021 12:26:07 GMT",
       "tag": "@fluentui/react-examples_v0.14.23",
       "version": "0.14.23",

@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 11 Aug 2021 12:23:07 GMT",
+      "tag": "@uifabric/charting_v4.16.11",
+      "version": "4.16.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Area chart and line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "3d906f1eafff5e30084c62a061a36917a441f819",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Aug 2021 12:22:03 GMT",
       "tag": "@uifabric/charting_v4.16.10",
       "version": "4.16.10",
