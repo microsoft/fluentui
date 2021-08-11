@@ -63,8 +63,5 @@ task(
 
 task(
   'bundle:package:no-umd',
-  series(
-    'bundle:package:clean',
-    parallel('copy:readme', 'bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types'),
-  ),
+  series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types')),
 );
