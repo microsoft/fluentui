@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add test for callback arguments",
+  "packageName": "@fluentui/react-conformance",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
