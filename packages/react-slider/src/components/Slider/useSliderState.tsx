@@ -205,6 +205,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     ? { height: `${valuePercent}%`, ...state.track.style }
     : { width: `${valuePercent}%`, ...state.track.style };
 
+  /**
+   * Gets the current percentage position for the marks.
+   */
   const getMarkPercent = (): number[] => {
     const percentArray = [];
     // There are three cases:
@@ -218,12 +221,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       for (let i = 0; i < marks.length; i++) {
         // 2. We receive an array with numbers: mark for every value in array.
         if (typeof marks[i] === 'number') {
-          percentArray.push(getPercent(min + marks[i], min, max));
+          percentArray.push(getPercent(min + (marks[i] as number), min, max));
         }
+
         // 3. We receive an array with objects containing numbers and strings:
         // mark and label for every value + string in each object
-        else if (typeof marks[i] === 'object') {
-          console.log('test');
+        else if (typeof marks[i] === 'object' && marks[i]?.value) {
+          percentArray.push(getPercent(min + marks[i].value, min, max));
         }
       }
     }
@@ -231,7 +235,52 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     return percentArray;
   };
 
-  const marksPercent = marks ? getMarkPercent() : undefined;
+  /**
+   * Renders the marks
+   */
+  const renderMarks = () => {
+    const marksPercent = getMarkPercent();
+    const marksChildren: JSX.Element[] = [];
+    for (let i = 0; i < marksPercent.length; i++) {
+      marksChildren.push(
+        <div key={`markContainer-${i}`}>
+          <span
+            className="ms-Slider-mark"
+            key={`mark-${i}`}
+            style={
+              vertical
+                ? {
+                    top: marksPercent[i] + '%',
+                  }
+                : {
+                    left: marksPercent[i] + '%',
+                  }
+            }
+          />
+          {typeof marks[i] === 'object' && marks[i]?.label && (
+            <div
+              className="ms-Slider-label"
+              key={`markLabel-${i}`}
+              style={
+                vertical
+                  ? {
+                      top: marksPercent[i] + '%',
+                    }
+                  : {
+                      left: marksPercent[i] + '%',
+                    }
+              }
+            >
+              {marks[i].label}
+            </div>
+          )}
+        </div>,
+      );
+    }
+
+    return marksChildren;
+  };
+
   // Root props
   state.as = as;
   state.onPointerDown = onPointerDown;
@@ -251,20 +300,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   // Mark props
   state.mark.className = state.mark.className || 'ms-Slider-markContainer';
-  state.mark.children =
-    marks && marksPercent
-      ? marksPercent.map((percent, index) => {
-          return (
-            <span
-              className="ms-Slider-mark"
-              key={`mark-${index}`}
-              style={{
-                left: percent + '%',
-              }}
-            />
-          );
-        })
-      : null;
+  state.mark.children = marks ? renderMarks() : null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;

@@ -110,18 +110,43 @@ const useTrackStyles = makeStyles({
 const useMarkStyles = makeStyles({
   mark: theme => ({
     position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 'calc(var(--slider-thumb-size) / 2)',
-    right: 'calc(var(--slider-thumb-size) / 2)',
     outline: 'none',
 
     '& .ms-Slider-mark': {
       position: 'absolute',
+      background: '#626262',
+    },
+
+    '& .ms-Slider-label': {
+      position: 'relative',
+
+      top: '10px',
+    },
+  }),
+
+  horizontal: theme => ({
+    top: 0,
+    bottom: 0,
+    left: 'calc(var(--slider-thumb-size) / 2)',
+    right: 'calc(var(--slider-thumb-size) / 2)',
+
+    '& .ms-Slider-mark': {
       bottom: '0',
       width: '1px',
       height: '4px',
-      background: '#626262',
+    },
+  }),
+
+  vertical: theme => ({
+    left: 0,
+    right: 0,
+    top: 'calc(var(--slider-thumb-size) / 2)',
+    bottom: 'calc(var(--slider-thumb-size) / 2)',
+
+    '& .ms-Slider-mark': {
+      bottom: '0',
+      height: '1px',
+      width: '4px',
     },
   }),
 });
@@ -271,7 +296,12 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.track.className,
   );
 
-  state.mark.className = mergeClasses(markStyles.mark, markStyles.mark, state.mark.className);
+  state.mark.className = mergeClasses(
+    markStyles.mark,
+    markStyles.mark,
+    state.vertical ? markStyles.vertical : markStyles.horizontal,
+    state.mark.className,
+  );
 
   state.thumbWrapper.className = mergeClasses(
     thumbWrapperStyles.thumbWrapper,

@@ -50,6 +50,8 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} marks />
       <Label>Custom Marked Steps</Label>
       <Slider marks={[1, 4, 5, 8]} />
+      <Label>Mark Labels</Label>
+      <Slider marks={[2, { value: 8, label: 'hello' }]} />
       <Label>Vertical Marks</Label>
       <Slider marks vertical />
     </div>
