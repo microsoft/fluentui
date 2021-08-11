@@ -6,6 +6,7 @@ const useStyles = makeStyles({
     fontSize: theme.global.type.fontSizes.base[200],
     color: theme.alias.color.neutral.neutralForeground3,
     paddingLeft: '12px',
+    paddingRight: '12px',
     fontWeight: theme.global.type.fontWeights.semibold,
     height: '32px',
     display: 'flex',
