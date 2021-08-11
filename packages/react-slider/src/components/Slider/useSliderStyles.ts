@@ -10,7 +10,7 @@ const useRootStyles = makeStyles({
     '--slider-thumb-size': '20px',
     '--slider-color': '#005fb8',
     position: 'relative',
-    overflow: 'hidden',
+    // overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
     touchAction: 'none',
@@ -18,7 +18,7 @@ const useRootStyles = makeStyles({
 
   horizontal: theme => ({
     minWidth: '280px',
-    height: 'var(--slider-thumb-size)',
+    minHeight: 'var(--slider-thumb-size)',
   }),
 
   vertical: theme => ({
@@ -159,7 +159,8 @@ const useMarkStyles = makeStyles({
     },
 
     '& .ms-Slider-label': {
-      transform: 'translate(-50%, 50%)',
+      transform: 'translate(-50%)',
+      top: '10px',
     },
   }),
 
