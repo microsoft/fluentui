@@ -80,6 +80,15 @@ describe('getCallbackArguments', () => {
       expect(type).toMatchObject({ a: 'String', b: 'Number', c: 'Boolean', d: undefined });
     });
 
+    it('handles arrays', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './Accordion.types.ts': 'export interface AccordionProps { onToggle: (data: string[]) => void; }',
+      });
+      const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
+
+      expect(type).toMatchObject({ data: 'Array' });
+    });
+
     it('handles simple type reference as a param', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': 'export interface AccordionProps { onToggle: (e: Event) => void; }',

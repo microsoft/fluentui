@@ -146,6 +146,13 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
     }
   }
 
+  // Handles a case when a node is an array
+  // { onChange: (data: string[] }
+  //                    ^
+  if (ts.isArrayTypeNode(type)) {
+    return 'Array';
+  }
+
   // Handles a case when a node is a union of types
   // { onChange: (data: MouseEvent | KeyboardEvent) => void }
   //                    ^
