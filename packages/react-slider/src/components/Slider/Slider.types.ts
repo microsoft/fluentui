@@ -38,7 +38,7 @@ export type SliderSlots = {
   /**
    * The container holding the marks and mark labels for the **Slider**.
    */
-  markContainer: React.HTMLAttributes<HTMLElement>;
+  marksContainer: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.

@@ -122,8 +122,8 @@ const useTrackStyles = makeStyles({
 /**
  * Styles for the mark slot
  */
-const useMarkContainerStyles = makeStyles({
-  markContainer: theme => ({
+const useMarksContainerStyles = makeStyles({
+  marksContainer: theme => ({
     position: 'absolute',
     outline: 'none',
 
@@ -299,7 +299,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
-  const markContainerStyles = useMarkContainerStyles();
+  const marksContainerStyles = useMarksContainerStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
@@ -330,10 +330,10 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.track.className,
   );
 
-  state.markContainer.className = mergeClasses(
-    markContainerStyles.markContainer,
-    state.vertical ? markContainerStyles.vertical : markContainerStyles.horizontal,
-    state.markContainer.className,
+  state.marksContainer.className = mergeClasses(
+    marksContainerStyles.marksContainer,
+    state.vertical ? marksContainerStyles.vertical : marksContainerStyles.horizontal,
+    state.marksContainer.className,
   );
 
   state.thumbWrapper.className = mergeClasses(
