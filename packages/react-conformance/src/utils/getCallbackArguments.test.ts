@@ -71,12 +71,13 @@ describe('getCallbackArguments', () => {
 
     it('handles primitives as a param', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
-        './Accordion.types.ts':
-          'export interface AccordionProps { onToggle: (a: string, b: number, c: boolean) => void; }',
+        './Accordion.types.ts': `export interface AccordionProps {
+          onToggle: (a: string, b: number, c: boolean, d: undefined) => void;
+        }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ a: 'String', b: 'Number', c: 'Boolean' });
+      expect(type).toMatchObject({ a: 'String', b: 'Number', c: 'Boolean', d: undefined });
     });
 
     it('handles simple type reference as a param', async () => {

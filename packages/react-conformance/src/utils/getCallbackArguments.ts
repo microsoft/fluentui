@@ -3,7 +3,7 @@ import * as ts from 'typescript';
 // ---
 
 type ArgumentName = string;
-type ArgumentPrimitiveValue = null | boolean | string;
+type ArgumentPrimitiveValue = null | boolean | string | undefined;
 type ArgumentValue = ArgumentPrimitiveValue | Record<string, ArgumentPrimitiveValue>;
 
 // ---
@@ -24,7 +24,7 @@ function escapeIdentifier(node: ts.Identifier): string {
 /**
  * Converts AST node that has "*Keyword" kind to a primitive value.
  */
-function fromKeywordNodeToValue(node: ts.Node): null | string {
+function fromKeywordNodeToValue(node: ts.Node): null | string | undefined {
   if (node.kind === ts.SyntaxKind.BooleanKeyword) {
     return 'Boolean';
   }
@@ -35,6 +35,10 @@ function fromKeywordNodeToValue(node: ts.Node): null | string {
 
   if (node.kind === ts.SyntaxKind.StringKeyword) {
     return 'String';
+  }
+
+  if (node.kind === ts.SyntaxKind.UndefinedKeyword) {
+    return undefined;
   }
 
   throw new Error(
