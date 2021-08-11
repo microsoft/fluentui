@@ -8033,7 +8033,6 @@ export interface ITeachingBubbleProps extends React_2.RefAttributes<HTMLDivEleme
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
-    headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
     headline?: string;
     illustrationImage?: IImageProps;
     isWide?: boolean;

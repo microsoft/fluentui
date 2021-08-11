@@ -125,12 +125,6 @@ export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement
    * Defines the element id referencing the element containing the description for the TeachingBubble.
    */
   ariaDescribedBy?: string;
-
-  /**
-   * Sets the heading level used by the TeachingBubble headline, if headline is provided
-   * @defaultvalue 3
-   */
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 /**
