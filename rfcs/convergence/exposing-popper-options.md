@@ -131,6 +131,7 @@ export function resolvePositioningShorthand(shorthand: PositioningShorthand) {
 }
 
 export function parseStringShorthand(shorthand) {
+  // Some way to parse string to the position and align props
   return {
     position,
     align,
