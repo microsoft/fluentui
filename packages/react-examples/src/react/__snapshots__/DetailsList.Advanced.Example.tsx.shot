@@ -82,6 +82,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   className=
@@ -261,6 +262,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   className=
@@ -440,6 +442,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-controls={null}
