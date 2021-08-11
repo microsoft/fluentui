@@ -25,6 +25,11 @@ describe('Slider', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('renders (disabled) Slider correctly', () => {
+    const component = create(<Slider defaultValue={5} disabled />);
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   it('renders vertical Slider correctly', () => {
     const component = create(<Slider defaultValue={5} vertical />);
     expect(component.toJSON()).toMatchSnapshot();
@@ -381,6 +386,44 @@ describe('Slider', () => {
     const sliderThumb = screen.getByRole('slider');
     sliderRef.current.focus();
     expect(document.activeElement).toEqual(sliderThumb);
+  });
+
+  it('does not allow (focus) on disabled Slider', () => {
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider defaultValue={3} ref={sliderRef} data-testid="test" disabled />;
+    };
+
+    render(<SliderTestComponent />);
+
+    expect(document.activeElement).toEqual(document.body);
+
+    sliderRef.current.focus();
+    expect(document.activeElement).toEqual(document.body);
+  });
+
+  it('does not allow (change) on disabled Slider', () => {
+    const eventHandler = jest.fn();
+    let sliderRef: any;
+
+    const SliderTestComponent = () => {
+      sliderRef = React.useRef(null);
+
+      return <Slider defaultValue={5} onChange={eventHandler} ref={sliderRef} data-testid="test" disabled />;
+    };
+
+    render(<SliderTestComponent />);
+
+    const sliderRoot = screen.getByTestId('test');
+
+    expect(eventHandler).toBeCalledTimes(0);
+
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+    expect(eventHandler).toBeCalledTimes(0);
+    expect(sliderRef.current.value).toBe(5);
   });
 
   it('handles (onKeyDown) callback', () => {

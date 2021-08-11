@@ -83,6 +83,13 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   step?: number;
 
   /**
+   *  Whether to render the **Slider** as disabled.
+   *
+   * @default `false` (renders enabled)
+   */
+  disabled?: boolean;
+
+  /**
    * Whether to render the **Slider** vertically.
    * @default `false` (renders horizontally)
    */

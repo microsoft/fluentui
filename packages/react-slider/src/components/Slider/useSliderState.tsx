@@ -36,6 +36,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     min = 0,
     max = 10,
     step = 1,
+    disabled = false,
     ariaValueText,
     onChange,
     vertical = false,
@@ -219,9 +220,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   // Root props
   state.as = as;
-  state.onPointerDown = onPointerDown;
-  state.onKeyDown = onKeyDown;
   state.id = id;
+  if (!disabled) {
+    state.onPointerDown = onPointerDown;
+    state.onKeyDown = onKeyDown;
+  }
 
   // Rail Props
   state.rail.children = null;
@@ -241,12 +244,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   // Thumb Props
   state.thumb.className = 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
-  state.thumb.tabIndex = 0;
+  state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
   state.thumb['aria-valuemin'] = min;
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  disabled && (state.thumb['aria-disabled'] = true);
   state.thumb.children = null;
 
   // Active Rail Props

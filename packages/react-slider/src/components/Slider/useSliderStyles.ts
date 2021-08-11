@@ -34,11 +34,18 @@ const useRootStyles = makeStyles({
 const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    background: '#8b8b8b',
     borderRadius: '99px',
     boxSizing: 'border-box',
-    border: '1px solid #626262',
     pointerEvents: 'none',
+  }),
+
+  enabled: theme => ({
+    background: '#8b8b8b',
+    border: '1px solid #626262',
+  }),
+
+  disabled: theme => ({
+    background: '#ababab',
   }),
 
   horizontal: theme => ({
@@ -101,6 +108,14 @@ const useTrackStyles = makeStyles({
     left: '50%',
     transform: 'translateX(-50%)',
     minHeight: 'calc(var(--slider-thumb-size) / 2)',
+  }),
+
+  enabled: theme => ({
+    background: 'var(--slider-color)',
+  }),
+
+  disabled: theme => ({
+    background: '#868686',
   }),
 });
 
@@ -166,7 +181,17 @@ const useThumbStyles = makeStyles({
       borderRadius: '999px',
       zIndex: '-1',
     },
+  }),
 
+  focusIndicator: createFocusIndicatorStyleRule({
+    ':before': {
+      outline: 'none',
+      boxSizing: 'border-box',
+      border: 'calc(var(--slider-thumb-size) * .05) solid black',
+    },
+  }),
+
+  enabled: theme => ({
     ':hover': {
       ':before': {
         boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
@@ -180,11 +205,9 @@ const useThumbStyles = makeStyles({
     },
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule({
+  disabled: theme => ({
     ':before': {
-      outline: 'none',
-      boxSizing: 'border-box',
-      border: 'calc(var(--slider-thumb-size) * .05) solid black',
+      background: 'rgb(174,174,174)',
     },
   }),
 
@@ -233,6 +256,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.rail.className = mergeClasses(
     railStyles.rail,
     state.vertical ? railStyles.vertical : railStyles.horizontal,
+    state.disabled ? railStyles.disabled : railStyles.enabled,
     state.rail.className,
   );
 
@@ -245,6 +269,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.track.className = mergeClasses(
     trackStyles.track,
     state.vertical ? trackStyles.vertical : trackStyles.horizontal,
+    state.disabled ? trackStyles.disabled : trackStyles.enabled,
     state.track.className,
   );
 
@@ -258,6 +283,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
     thumbStyles.focusIndicator,
+    state.disabled ? thumbStyles.disabled : thumbStyles.enabled,
     state.thumb.className,
   );
 

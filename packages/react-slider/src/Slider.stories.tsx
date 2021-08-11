@@ -32,6 +32,8 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
       <Label>Custom Styles</Label>
       <Slider defaultValue={4} className={styles.slider} />
+      <Label>Disabled Example</Label>
+      <Slider defaultValue={3} disabled />
       <Label>Origin Example</Label>
       <Slider defaultValue={8} origin={3} />
     </div>
@@ -50,6 +52,8 @@ export const VerticalSliderExample = (props: SliderProps) => {
       <Slider defaultValue={3} vertical />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} vertical />
+      <Label>Disabled Example</Label>
+      <Slider defaultValue={8} disabled vertical />
       <Label>Origin Example</Label>
       <Slider defaultValue={8} origin={3} vertical />
     </div>
