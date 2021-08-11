@@ -30,6 +30,16 @@ describe('Slider', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('renders Slider with origin correctly', () => {
+    const component = create(
+      <>
+        <Slider defaultValue={5} origin={2} />
+        <Slider defaultValue={5} origin={2} vertical />
+      </>,
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   // TODO: Find why focus is null.
   // it('renders (focus) correctly', () => {
   //   let sliderRef: any;
