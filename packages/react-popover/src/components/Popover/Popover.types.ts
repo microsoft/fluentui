@@ -9,7 +9,7 @@ import { ComponentStateCompat } from '@fluentui/react-utilities';
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 /**
- * All these props are deperecated in favour of the {@see positioning} prop
+ * All these props are deperecated in favour of the @see positioning prop
  */
 interface DeprecatedPositioningProps {
   /**
