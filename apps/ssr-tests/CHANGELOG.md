@@ -1,8 +1,17 @@
 # Change Log - ssr-tests
 
-This log was last generated on Mon, 09 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.1.41 ([PR #19249](https://github.com/microsoft/fluentui/pull/19249) by olfedias@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
 

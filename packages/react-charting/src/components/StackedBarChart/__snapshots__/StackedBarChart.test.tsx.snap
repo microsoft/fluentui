@@ -101,6 +101,9 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -277,6 +280,9 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -439,6 +445,9 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -615,6 +624,9 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -761,6 +773,9 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -937,6 +952,9 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -1083,6 +1101,9 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
               width: 100%;
             }
       >
+        <title>
+          Stacked bar chart 2nd example
+        </title>
         <g>
           <g
             aria-label="Stacked bar chart"
@@ -1202,7 +1223,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1255,7 +1276,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1344,7 +1364,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

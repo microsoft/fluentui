@@ -30,7 +30,7 @@
     "@storybook/addon-knobs": "6.3.0",
     "@storybook/addon-essentials": "6.3.6",
     "@storybook/addons": "6.3.6",
-    "@fluentui/azure-themes": "^8.1.51",
+    "@fluentui/azure-themes": "^8.1.52",
     "@fluentui/theme-samples": "^8.1.51",
     "tslib": "^2.1.0"
   },
