@@ -3,14 +3,14 @@ import { PositioningProps, PositioningShorthand } from '@fluentui/react-position
 import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
- * All these props are deperecated in favour of the {@see positioning} prop
+ * All these props are deperecated in favour of the @see positioning prop
  */
 interface DeprecatedPositioningProps {
   /**
    * How to position the tooltip relative to the target element. This is a "best effort" placement,
    * but the tooltip may be flipped to the other side if there is not enough room.
    *
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    * @defaultvalue above
    */
   position?: PositioningProps['position'];
@@ -18,7 +18,7 @@ interface DeprecatedPositioningProps {
   /**
    * How to align the tooltip along the edge of the target element.
    *
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    * @defaultvalue center
    */
   align?: PositioningProps['align'];
@@ -26,7 +26,7 @@ interface DeprecatedPositioningProps {
   /**
    * Distance between the tooltip and the target element, in pixels
    *
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    * @defaultvalue 4
    */
   offset?: number;
@@ -35,7 +35,7 @@ interface DeprecatedPositioningProps {
    * Optional. The target element that the tooltip uses for positioning.
    *
    * By default, the target is the tooltip's child element.
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    */
   target?: PositioningProps['target'];
 }

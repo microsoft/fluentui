@@ -48,31 +48,31 @@ interface MenuCommons extends MenuListProps {
 }
 
 /**
- * All these props are deperecated in favour of the {@see positioning} prop
+ * All these props are deperecated in favour of the @see positioning prop
  */
 interface DeprecatedPositioningProps {
   /**
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    */
   position?: PositioningProps['position'];
 
   /**
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    */
   align?: PositioningProps['align'];
 
   /**
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    */
   offset?: PositioningProps['offset'];
 
   /**
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    */
   target?: PositioningProps['target'];
 
   /**
-   * @deprecated - use the {@see positioning} prop
+   * @deprecated - use the @see positioning prop
    */
   coverTarget?: PositioningProps['coverTarget'];
 }
