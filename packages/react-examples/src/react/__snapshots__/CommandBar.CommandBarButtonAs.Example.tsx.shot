@@ -946,6 +946,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 }
                                           >
                                             <p
+                                              aria-level={3}
                                               className=
                                                   ms-TeachingBubble-headline
                                                   {

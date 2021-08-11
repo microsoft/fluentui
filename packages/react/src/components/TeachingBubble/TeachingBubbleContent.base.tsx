@@ -50,6 +50,7 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
     isWide,
     styles,
     theme,
+    headingLevel = 3,
     ariaDescribedBy,
     ariaLabelledBy,
     footerContent: customFooterContent,
@@ -100,7 +101,7 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
     headerContent = (
       <div className={classNames.header}>
-        <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
+        <HeaderWrapperAs role="heading" aria-level={headingLevel} className={classNames.headline} id={ariaLabelledBy}>
           {headline}
         </HeaderWrapperAs>
       </div>
