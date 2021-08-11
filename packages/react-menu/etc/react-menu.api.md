@@ -10,6 +10,7 @@ import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
@@ -193,11 +194,14 @@ export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inlin
     ref: React_2.Ref<HTMLElement>;
 }
 
+// Warning: (ae-forgotten-export) The symbol "DeprecatedPositioningProps" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export interface MenuProps extends Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'>, Partial<MenuCommons>, ComponentProps {
+export interface MenuProps extends DeprecatedPositioningProps, Partial<MenuCommons>, ComponentProps {
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    // (undocumented)
+    positioning?: PositioningShorthand;
 }
 
 // @public (undocumented)
@@ -327,7 +331,6 @@ export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext: () => boolean;
-
 
 // (No @packageDocumentation comment for this package)
 

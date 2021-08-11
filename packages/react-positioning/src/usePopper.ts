@@ -24,6 +24,26 @@ interface PopperOptions extends PositioningProps {
   enabled?: boolean;
 
   onStateUpdate?: (state: Partial<PopperJs.State>) => void;
+
+  /**
+   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
+   * @default false
+   */
+  positionFixed?: boolean;
+
+  /**
+   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
+   * "all" enables this behavior for all axis.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_disableTether?: boolean | 'all';
+
+  /**
+   * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
+   * `position` props, regardless of the size of the component, the reference element or the viewport.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_pinned?: boolean;
 }
 
 //

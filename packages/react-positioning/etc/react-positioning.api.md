@@ -54,11 +54,17 @@ export interface PositioningProps {
     overflowBoundary?: Boundary;
     popperRef?: React_2.Ref<PopperRefHandle>;
     position?: Position;
-    positionFixed?: boolean;
     target?: HTMLElement | PopperVirtualElement | null;
-    unstable_disableTether?: boolean | 'all';
-    unstable_pinned?: boolean;
 }
+
+// @public (undocumented)
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+
+// @public (undocumented)
+export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
+
+// @public (undocumented)
+export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): PositioningProps;
 
 // Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
 //

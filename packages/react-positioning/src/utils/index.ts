@@ -3,4 +3,5 @@ export * from './getBoundary';
 export * from './getReactFiberFromNode';
 export * from './getScrollParent';
 export * from './positioningHelper';
+export * from './resolvePositioningShorthand';
 export * from './useCallbackRef';

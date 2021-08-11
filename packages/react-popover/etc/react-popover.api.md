@@ -11,6 +11,7 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -36,8 +37,10 @@ export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpe
 // @public
 export type PopoverDefaultedProps = never;
 
+// Warning: (ae-forgotten-export) The symbol "DeprecatedPositioningProps" needs to be exported by the entry point index.d.ts
+//
 // @public
-export interface PopoverProps extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends DeprecatedPositioningProps, Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
@@ -48,6 +51,8 @@ export interface PopoverProps extends Pick<PositioningProps, 'position' | 'align
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
+    // (undocumented)
+    positioning?: PositioningShorthand;
     size?: PopoverSize;
     trapFocus?: boolean;
 }

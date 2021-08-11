@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePopperMouseTarget, usePopper } from '@fluentui/react-positioning';
+import { usePopperMouseTarget, usePopper, resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
@@ -27,14 +27,19 @@ export const useMenu = (props: MenuProps): MenuState => {
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
 
   const popperState = {
-    position: isSubmenu ? 'after' : 'below',
-    align: isSubmenu ? 'top' : 'start',
-    coverTarget: props.coverTarget,
-    offset: props.offset,
     contextTarget,
     setContextTarget,
-    target: !props.target && props.openOnContext ? contextTarget : undefined,
-  } as const;
+    position: isSubmenu ? ('after' as const) : ('below' as const),
+    align: isSubmenu ? ('top' as const) : ('start' as const),
+    // eslint-disable-next-line deprecation/deprecation
+    coverTarget: props.coverTarget,
+    // eslint-disable-next-line deprecation/deprecation
+    offset: props.offset,
+    // eslint-disable-next-line deprecation/deprecation
+    target: props.target,
+    ...resolvePositioningShorthand(props.positioning),
+  };
+  popperState.target = !popperState.target && props.openOnContext ? contextTarget : undefined;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

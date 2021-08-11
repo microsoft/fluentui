@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PositioningProps, PopperVirtualElement } from '@fluentui/react-positioning';
+import { PositioningProps, PopperVirtualElement, PositioningShorthand } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
 
@@ -9,11 +9,39 @@ import { ComponentStateCompat } from '@fluentui/react-utilities';
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 /**
+ * All these props are deperecated in favour of the {@see positioning} prop
+ */
+interface DeprecatedPositioningProps {
+  /**
+   * @deprecated - use the {@see positioning} prop
+   */
+  position?: PositioningProps['position'];
+
+  /**
+   * @deprecated - use the {@see positioning} prop
+   */
+  align?: PositioningProps['align'];
+
+  /**
+   * @deprecated - use the {@see positioning} prop
+   */
+  offset?: PositioningProps['offset'];
+
+  /**
+   * @deprecated - use the {@see positioning} prop
+   */
+  target?: PositioningProps['target'];
+
+  /**
+   * @deprecated - use the {@see positioning} prop
+   */
+  coverTarget?: PositioningProps['coverTarget'];
+}
+
+/**
  * Popover Props
  */
-export interface PopoverProps
-  extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>,
-    Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends DeprecatedPositioningProps, Pick<PortalProps, 'mountNode'> {
   children: React.ReactNode;
   /**
    * Controls the opening of the Popover
@@ -60,6 +88,8 @@ export interface PopoverProps
    * Should trap focus
    */
   trapFocus?: boolean;
+
+  positioning?: PositioningShorthand;
 }
 
 /**

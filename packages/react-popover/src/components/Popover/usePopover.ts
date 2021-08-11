@@ -7,7 +7,12 @@ import {
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { usePopper, PopperVirtualElement, createVirtualElementFromClick } from '@fluentui/react-positioning';
+import {
+  usePopper,
+  PopperVirtualElement,
+  createVirtualElementFromClick,
+  resolvePositioningShorthand,
+} from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
 import { arrowHeights } from '../PopoverSurface/index';
@@ -41,15 +46,14 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
       align: 'center',
       setContextTarget: () => null,
       contextTarget: undefined,
+      positioning: {
+        position: 'above',
+        align: 'center',
+      },
     },
     defaultProps,
     props,
   );
-
-  // no reason to render arrow when covering the target
-  if (state.coverTarget) {
-    state.noArrow = true;
-  }
 
   const [contextTarget, setContextTarget] = React.useState<PopperVirtualElement>();
   state.setContextTarget = setContextTarget;
@@ -120,22 +124,25 @@ function useOpenState(state: PopoverState): PopoverState {
  * @param state Popover state
  */
 function usePopoverRefs(state: PopoverState): PopoverState {
-  if (!state.noArrow) {
-    state.offset = getOffsetWithArrow(state.offset, arrowHeights[state.size]);
-  }
-
-  if (!state.target && state.openOnContext && state.contextTarget) {
-    state.target = state.contextTarget;
-  }
-
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper({
-    align: state.align,
-    position: state.position,
-    target: state.target,
+  const popperOptions = {
+    // eslint-disable-next-line deprecation/deprecation
     coverTarget: state.coverTarget,
-    offset: state.offset,
-    arrowPadding: arrowHeights[state.size],
-  });
+    // eslint-disable-next-line deprecation/deprecation
+    target: state.target,
+    ...resolvePositioningShorthand(state.positioning),
+  };
+
+  popperOptions.target = !popperOptions.target && state.openOnContext ? state.contextTarget : undefined;
+  if (!state.noArrow) {
+    popperOptions.offset = getOffsetWithArrow(popperOptions.offset, arrowHeights[state.size]);
+  }
+
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
+
+  // no reason to render arrow when covering the target
+  if (popperOptions.coverTarget) {
+    state.noArrow = true;
+  }
 
   state.contentRef = contentRef;
   state.triggerRef = triggerRef;

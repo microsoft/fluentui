@@ -1,12 +1,53 @@
 import * as React from 'react';
-import { Position, Alignment, PopperVirtualElement } from '@fluentui/react-positioning';
+import { PositioningProps, PositioningShorthand } from '@fluentui/react-positioning';
 import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+
+/**
+ * All these props are deperecated in favour of the {@see positioning} prop
+ */
+interface DeprecatedPositioningProps {
+  /**
+   * How to position the tooltip relative to the target element. This is a "best effort" placement,
+   * but the tooltip may be flipped to the other side if there is not enough room.
+   *
+   * @deprecated - use the {@see positioning} prop
+   * @defaultvalue above
+   */
+  position?: PositioningProps['position'];
+
+  /**
+   * How to align the tooltip along the edge of the target element.
+   *
+   * @deprecated - use the {@see positioning} prop
+   * @defaultvalue center
+   */
+  align?: PositioningProps['align'];
+
+  /**
+   * Distance between the tooltip and the target element, in pixels
+   *
+   * @deprecated - use the {@see positioning} prop
+   * @defaultvalue 4
+   */
+  offset?: number;
+
+  /**
+   * Optional. The target element that the tooltip uses for positioning.
+   *
+   * By default, the target is the tooltip's child element.
+   * @deprecated - use the {@see positioning} prop
+   */
+  target?: PositioningProps['target'];
+}
 
 /**
  * Properties for the Tooltip component
  * {@docCategory Tooltip}
  */
-export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export interface TooltipProps
+  extends ComponentPropsCompat,
+    React.HTMLAttributes<HTMLElement>,
+    DeprecatedPositioningProps {
   /**
    * The child is the element that triggers the Tooltip. It will have additional properties added,
    * including events and aria properties.
@@ -24,28 +65,6 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
   content: ShorthandPropsCompat<ComponentPropsCompat>;
 
   /**
-   * How to position the tooltip relative to the target element. This is a "best effort" placement,
-   * but the tooltip may be flipped to the other side if there is not enough room.
-   *
-   * @defaultvalue above
-   */
-  position?: Position;
-
-  /**
-   * How to align the tooltip along the edge of the target element.
-   *
-   * @defaultvalue center
-   */
-  align?: Alignment;
-
-  /**
-   * Optional. The target element that the tooltip uses for positioning.
-   *
-   * By default, the target is the tooltip's child element.
-   */
-  target?: HTMLElement | PopperVirtualElement | null;
-
-  /**
    * Color variant with inverted colors
    *
    * @defaultvalue false
@@ -58,13 +77,6 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * @defaultvalue false
    */
   pointing?: boolean;
-
-  /**
-   * Distance between the tooltip and the target element, in pixels
-   *
-   * @defaultvalue 4
-   */
-  offset?: number;
 
   /**
    * Control the tooltip's visibility programatically.
@@ -175,4 +187,6 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
    * CSS class for the arrow element
    */
   arrowClassName?: string;
+
+  positioning: PositioningShorthand;
 }

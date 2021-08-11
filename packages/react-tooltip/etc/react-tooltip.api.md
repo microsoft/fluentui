@@ -4,11 +4,10 @@
 
 ```ts
 
-import { Alignment } from '@fluentui/react-positioning';
 import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
-import { PopperVirtualElement } from '@fluentui/react-positioning';
-import { Position } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
@@ -27,21 +26,19 @@ export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.R
 // @public
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 
+// Warning: (ae-forgotten-export) The symbol "DeprecatedPositioningProps" needs to be exported by the entry point index.d.ts
+//
 // @public
-export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    align?: Alignment;
+export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement>, DeprecatedPositioningProps {
     children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
     hideDelay?: number;
     inverted?: boolean;
-    offset?: number;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     pointing?: boolean;
-    position?: Position;
     showDelay?: number;
-    target?: HTMLElement | PopperVirtualElement | null;
     triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
     visible?: boolean;
 }
@@ -56,6 +53,8 @@ export const tooltipShorthandProps: TooltipShorthandProps[];
 export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
+    // (undocumented)
+    positioning: PositioningShorthand;
     ref: React_2.Ref<HTMLElement>;
     shouldRenderTooltip?: boolean;
 }
