@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Menu): Use react-icons for checkmarks and stories",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2e534aa9790b435b941353bc1b3c74b76facd07c",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Aug 2021 07:33:28 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.60",
       "version": "9.0.0-alpha.60",
