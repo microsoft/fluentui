@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useFluentProvider } from './useFluentProvider';
 import { useFluentProviderContextValues } from './useFluentProviderContextValues';
 
-describe('useAccordionContextValues', () => {
+describe('useFluentProviderContextValues', () => {
   it('should return a value for "provider"', () => {
     const { result } = renderHook(() => {
       const state = useFluentProvider({}, React.createRef());
