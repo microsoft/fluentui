@@ -114,7 +114,7 @@ export type PositioningShorthandValue =
 
 export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
-export function resolvePositioningShorthand(shorthand: PositioningShorthand) {
+export function resolvePositioningShorthand(shorthand: PositioningShorthand): PositioningProps {
   if (typeof shorthand === 'string') {
     return {
       ...parseStringShorthand(shorthand),
@@ -124,7 +124,7 @@ export function resolvePositioningShorthand(shorthand: PositioningShorthand) {
   return shorthand;
 }
 
-export function parseStringShorthand(shorthand) {
+function parseStringShorthand(shorthand) {
   // Some way to parse string to the position and align props
   return {
     position,
