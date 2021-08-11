@@ -1269,7 +1269,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     // need to call this again here to get the correct scroll parent dimensions
     // when the callout is first opened
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this._scrollIntoView();
     }, 0);
 
