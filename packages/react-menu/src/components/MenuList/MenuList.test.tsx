@@ -12,6 +12,9 @@ describe('MenuList', () => {
     Component: MenuList,
     displayName: 'MenuList',
     helperComponents: [MenuListProvider],
+    testOptions: {
+      'consistent-callback-args': { ignoreProps: ['onCheckedValueChange'] },
+    },
   });
 
   let wrapper: ReactWrapper | undefined;
