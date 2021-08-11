@@ -205,39 +205,33 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     ? { height: `${valuePercent}%`, ...state.track.style }
     : { width: `${valuePercent}%`, ...state.track.style };
 
-  const getMarkPercent = () => {
+  const getMarkPercent = (): number[] => {
+    const percentArray = [];
     // There are three cases:
 
     // 1. We receive a boolean: mark for every step.
     if (typeof marks === 'boolean' && marks === true) {
-      return [...Array(Math.floor((max - min) / step) + 1)].map((val, index) =>
-        getPercent(min + step * index, min, max),
-      );
+      for (let i = 0; i < (max - min) / step + 1; i++) {
+        percentArray.push(getPercent(min + step * i, min, max));
+      }
+    } else if (Array.isArray(marks) && marks.length > 0) {
+      for (let i = 0; i < marks.length; i++) {
+        // 2. We receive an array with numbers: mark for every value in array.
+        if (typeof marks[i] === 'number') {
+          percentArray.push(getPercent(min + marks[i], min, max));
+        }
+        // 3. We receive an array with objects containing numbers and strings:
+        // mark and label for every value + string in each object
+        else if (typeof marks[i] === 'object') {
+          console.log('test');
+        }
+      }
     }
 
-    // 2. We receive an array of numbers: mark for every value in array.
-    else if (Array.isArray(marks) && typeof marks[0] === 'number' && marks.length > 0) {
-      return [...Array(marks.length)].map((val, index) => getPercent(min + marks[index], min, max));
-    }
-
-    // 3. We receive an array of objects with numbers and strings:
-    // mark and label for every value + string in each object
-    else if (Array.isArray(marks) && typeof marks[0] === 'markLabel') {
-    }
+    return percentArray;
   };
 
-  // const getMarkPercent = () => {
-  //   switch (typeof marks) {
-  //     case 'boolean': {
-  //       return [...Array(Math.floor((max - min) / step) + 1)].map((val, index) =>
-  //         getPercent(min + step * index, min, max),
-  //       );
-  //     }
-  //   }
-  // };
-
   const marksPercent = marks ? getMarkPercent() : undefined;
-
   // Root props
   state.as = as;
   state.onPointerDown = onPointerDown;
@@ -259,15 +253,17 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.mark.className = state.mark.className || 'ms-Slider-markContainer';
   state.mark.children =
     marks && marksPercent
-      ? marksPercent.map((percent, index) => (
-          <span
-            className="ms-Slider-mark"
-            key={`mark-${index}`}
-            style={{
-              left: percent + '%',
-            }}
-          />
-        ))
+      ? marksPercent.map((percent, index) => {
+          return (
+            <span
+              className="ms-Slider-mark"
+              key={`mark-${index}`}
+              style={{
+                left: percent + '%',
+              }}
+            />
+          );
+        })
       : null;
 
   // Thumb Wrapper Props
