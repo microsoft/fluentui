@@ -24,7 +24,7 @@ function createCompilerHost(): ts.CompilerHost {
     if (memFS.existsSync(fileName)) {
       sourceText = memFS.readFileSync(fileName, 'utf8') as string;
     } else if (realFS.existsSync(fileName)) {
-      sourceText = realFS.readFileSync(fileName, 'utf8') as string;
+      sourceText = realFS.readFileSync(fileName, 'utf8');
     }
 
     return sourceText === undefined ? undefined : ts.createSourceFile(fileName, sourceText, languageVersion);
