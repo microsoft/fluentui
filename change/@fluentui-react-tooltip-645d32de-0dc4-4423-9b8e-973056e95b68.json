@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(positioning): Use unified positioning options for components",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
