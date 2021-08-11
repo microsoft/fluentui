@@ -115,9 +115,9 @@ const backgroundStyles = css`
   forcedColorsStylesheetBehavior(
     css`
       :host {
-        background-color: ${SystemColors.ButtonFace};
+        background-color: ${SystemColors.Canvas};
         box-shadow: 0 0 0 1px ${SystemColors.CanvasText};
-        color: ${SystemColors.ButtonText};
+        color: ${SystemColors.CanvasText};
       }
     `,
   ),
