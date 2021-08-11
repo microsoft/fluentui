@@ -12,7 +12,7 @@ const useRootStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     userSelect: 'none',
-    display: 'inline-flex',
+    display: 'inline-grid',
     touchAction: 'none',
   }),
 
@@ -125,8 +125,7 @@ const useTrackStyles = makeStyles({
 const useMarkStyles = makeStyles({
   mark: theme => ({
     position: 'absolute',
-    // background: 'green',
-    outline: 'none',
+    // outline: 'none',
 
     '& .ms-Slider-markItemContainer': {
       position: 'absolute',
