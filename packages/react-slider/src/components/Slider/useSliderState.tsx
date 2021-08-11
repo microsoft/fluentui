@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount, useBoolean } from '@fluentui/react-utilities';
+import { useBoolean, useControllableState, useId, useMount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
