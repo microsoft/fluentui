@@ -55,7 +55,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Label>Mark Labels</Label>
       <Slider marks={[2, { value: 8, label: 'hello' }]} />
       <Label>Vertical Marks</Label>
-      <Slider marks vertical />
+      <Slider marks vertical step={2} />
     </div>
   );
 };

@@ -110,7 +110,12 @@ const useTrackStyles = makeStyles({
 const useMarkStyles = makeStyles({
   mark: theme => ({
     position: 'absolute',
+    // background: 'green',
     outline: 'none',
+
+    '& .ms-Slider-markItemContainer': {
+      position: 'absolute',
+    },
 
     '& .ms-Slider-mark': {
       position: 'absolute',
@@ -118,33 +123,36 @@ const useMarkStyles = makeStyles({
     },
 
     '& .ms-Slider-label': {
-      position: 'relative',
-
-      top: '10px',
+      position: 'absolute',
     },
   }),
 
   horizontal: theme => ({
-    top: 0,
-    bottom: 0,
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
+    top: '0px',
+    bottom: '0px',
 
     '& .ms-Slider-mark': {
-      bottom: '0',
       width: '1px',
       height: '4px',
+    },
+
+    '& .ms-Slider-markItemContainer': {
+      width: '1px',
+      height: '4px',
+    },
+
+    '& .ms-Slider-label': {
+      transform: 'translate(-50%, 50%)',
     },
   }),
 
   vertical: theme => ({
-    left: 0,
-    right: 0,
     top: 'calc(var(--slider-thumb-size) / 2)',
     bottom: 'calc(var(--slider-thumb-size) / 2)',
 
     '& .ms-Slider-mark': {
-      bottom: '0',
       height: '1px',
       width: '4px',
     },
