@@ -6009,7 +6009,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     isModeless?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React_2.MouseEvent<HTMLButtonElement>) => any;
+    onDismiss?: (ev?: React_2.MouseEvent<HTMLButtonElement | HTMLElement>) => any;
     onDismissed?: () => any;
     // @deprecated
     onLayerDidMount?: () => void;
@@ -6224,8 +6224,6 @@ export interface IOverlayProps extends React_2.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
-    // (undocumented)
-    onClick?: () => void;
     styles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
     theme?: ITheme;
 }
