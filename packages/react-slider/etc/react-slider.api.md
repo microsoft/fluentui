@@ -18,6 +18,7 @@ export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.Ref
 export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
+    disabled?: boolean;
     max?: number;
     min?: number;
     onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
