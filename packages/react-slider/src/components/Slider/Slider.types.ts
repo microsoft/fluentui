@@ -36,9 +36,9 @@ export type SliderSlots = {
   track: React.HTMLAttributes<HTMLElement>;
 
   /**
-   * The visible marks showing potential steps on the **Slider**.
+   * The container holding the marks and mark labels for the **Slider**.
    */
-  mark: React.HTMLAttributes<HTMLElement>;
+  markContainer: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
@@ -105,7 +105,7 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    *
    * 1. `Boolean`: If true marks are visible.
    * 2. `Number[]`: Marks will be displayed at each provided number.
-   * 3. `{label: string, value: number}[]`: Marks are shown at the value location and display the custom label.
+   * 3. `number | {label: string, value: number}[]`: Marks are shown at the value location and display the custom label.
    */
   marks?: boolean | number[] | (number | { value: number; label: string | JSX.Element })[];
 

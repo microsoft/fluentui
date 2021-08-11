@@ -304,8 +304,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.children = null;
 
   // Mark props
-  state.mark.className = state.mark.className || 'ms-Slider-markContainer';
-  state.mark.children = marks ? renderMarks() : null;
+  // state.marksContainer.className = state.markContainer.className || 'ms-Slider-marksContainer';
+  state.marksContainer.children = marks ? renderMarks() : null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
