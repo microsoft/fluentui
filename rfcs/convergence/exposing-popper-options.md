@@ -115,19 +115,13 @@ export type PositioningShorthandValue =
 export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 export function resolvePositioningShorthand(shorthand: PositioningShorthand) {
-  if (typeof shorthand === 'object') {
-    return {
-      ...shorthand,
-    };
-  }
-
   if (typeof shorthand === 'string') {
     return {
       ...parseStringShorthand(shorthand),
     };
   }
 
-  return config;
+  return shorthand;
 }
 
 export function parseStringShorthand(shorthand) {
