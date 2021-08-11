@@ -12,7 +12,6 @@ export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) =
     triggerRef: { current: null },
     contentRef: { current: null },
     arrowRef: { current: null },
-    target: undefined,
     openOnContext: false,
     openOnHover: false,
     size: 'medium',

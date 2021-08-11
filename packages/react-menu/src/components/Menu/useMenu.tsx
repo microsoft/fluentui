@@ -27,16 +27,8 @@ export const useMenu = (props: MenuProps): MenuState => {
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
 
   const popperState = {
-    contextTarget,
-    setContextTarget,
     position: isSubmenu ? ('after' as const) : ('below' as const),
     align: isSubmenu ? ('top' as const) : ('start' as const),
-    // eslint-disable-next-line deprecation/deprecation
-    coverTarget: props.coverTarget,
-    // eslint-disable-next-line deprecation/deprecation
-    offset: props.offset,
-    // eslint-disable-next-line deprecation/deprecation
-    target: props.target,
     ...resolvePositioningShorthand(props.positioning),
   };
   popperState.target = !popperState.target && props.openOnContext ? contextTarget : undefined;
@@ -64,8 +56,9 @@ export const useMenu = (props: MenuProps): MenuState => {
     triggerId,
     isSubmenu: !!isSubmenu,
     openOnHover: !!isSubmenu,
+    contextTarget,
+    setContextTarget,
     ...props,
-    ...popperState,
     menuTrigger,
     menuPopover,
     triggerRef,

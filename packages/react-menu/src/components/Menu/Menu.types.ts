@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { PositioningProps, usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
+import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
 import { MenuListProps } from '../MenuList/index';
 
 interface MenuCommons extends MenuListProps {
@@ -48,40 +48,10 @@ interface MenuCommons extends MenuListProps {
 }
 
 /**
- * All these props are deperecated in favour of the @see positioning prop
- */
-interface DeprecatedPositioningProps {
-  /**
-   * @deprecated - use the @see positioning prop
-   */
-  position?: PositioningProps['position'];
-
-  /**
-   * @deprecated - use the @see positioning prop
-   */
-  align?: PositioningProps['align'];
-
-  /**
-   * @deprecated - use the @see positioning prop
-   */
-  offset?: PositioningProps['offset'];
-
-  /**
-   * @deprecated - use the @see positioning prop
-   */
-  target?: PositioningProps['target'];
-
-  /**
-   * @deprecated - use the @see positioning prop
-   */
-  coverTarget?: PositioningProps['coverTarget'];
-}
-
-/**
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps extends DeprecatedPositioningProps, Partial<MenuCommons>, ComponentProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
   /**
    * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
    * Alternatively can only contain {@link MenuPopover} if using a custom `target`.

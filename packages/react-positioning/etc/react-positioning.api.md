@@ -19,6 +19,9 @@ export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
 
+// @public
+export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
+
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 

@@ -12,11 +12,11 @@ import {
   PopperVirtualElement,
   createVirtualElementFromClick,
   resolvePositioningShorthand,
+  mergeArrowOffset,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
 import { arrowHeights } from '../PopoverSurface/index';
-import { getOffsetWithArrow } from './getOffsetWithArrow';
 
 /**
  * Names of the shorthand properties in PopoverProps
@@ -42,14 +42,8 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
       contentRef: { current: null },
       arrowRef: { current: null },
       children: null,
-      position: 'above',
-      align: 'center',
       setContextTarget: () => null,
       contextTarget: undefined,
-      positioning: {
-        position: 'above',
-        align: 'center',
-      },
     },
     defaultProps,
     props,
@@ -125,16 +119,14 @@ function useOpenState(state: PopoverState): PopoverState {
  */
 function usePopoverRefs(state: PopoverState): PopoverState {
   const popperOptions = {
-    // eslint-disable-next-line deprecation/deprecation
-    coverTarget: state.coverTarget,
-    // eslint-disable-next-line deprecation/deprecation
-    target: state.target,
+    position: 'above' as const,
+    align: 'center' as const,
     ...resolvePositioningShorthand(state.positioning),
   };
 
   popperOptions.target = !popperOptions.target && state.openOnContext ? state.contextTarget : undefined;
   if (!state.noArrow) {
-    popperOptions.offset = getOffsetWithArrow(popperOptions.offset, arrowHeights[state.size]);
+    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
   }
 
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);

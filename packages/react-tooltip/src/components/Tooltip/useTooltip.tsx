@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePopper, resolvePositioningShorthand } from '@fluentui/react-positioning';
+import { usePopper, resolvePositioningShorthand, mergeArrowOffset } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   makeMergeProps,
@@ -57,9 +57,6 @@ export const useTooltip = (
       },
       id: useId('tooltip-'),
       role: 'tooltip',
-      position: 'above',
-      align: 'center',
-      offset: 4,
       showDelay: 250,
       hideDelay: 250,
       triggerAriaAttribute: 'label',
@@ -92,33 +89,11 @@ export const useTooltip = (
 
   const popperOptions = {
     enabled: state.visible,
-    // eslint-disable-next-line deprecation/deprecation
-    position: state.position,
-    // eslint-disable-next-line deprecation/deprecation
-    align: state.align,
-    // eslint-disable-next-line deprecation/deprecation
-    target: state.target,
     arrowPadding: 2 * tooltipBorderRadius,
-    // eslint-disable-next-line deprecation/deprecation
-    offset: [0, state.offset],
     ...resolvePositioningShorthand(state.positioning),
   };
 
-  if (typeof popperOptions.offset === 'object') {
-    const offsetY = popperOptions.offset[1] ?? 0;
-    popperOptions.offset = [0, offsetY + (state.pointing ? arrowHeight : 0)];
-  } else if (typeof popperOptions.offset === 'function') {
-    const userOffsetFn = popperOptions.offset;
-    popperOptions.offset = offsetParams => {
-      const offset = userOffsetFn(offsetParams);
-      if (offset[1] === null || offset[1] === undefined) {
-        offset[1] = 0;
-      }
-
-      offset[1] += state.pointing ? arrowHeight : 0;
-      return offset;
-    };
-  }
+  popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
 
   const {
     targetRef,
@@ -128,18 +103,7 @@ export const useTooltip = (
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper({
-    enabled: state.visible,
-    // eslint-disable-next-line deprecation/deprecation
-    position: state.position,
-    // eslint-disable-next-line deprecation/deprecation
-    align: state.align,
-    // eslint-disable-next-line deprecation/deprecation
-    target: state.target,
-    // eslint-disable-next-line deprecation/deprecation
-    offset: [0, state.offset + (state.pointing ? arrowHeight : 0)],
-    arrowPadding: 2 * tooltipBorderRadius,
-  });
+  } = usePopper(popperOptions);
 
   state.ref = useMergedRefs(state.ref, containerRef);
   state.arrowRef = arrowRef;
