@@ -17,7 +17,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "bundle:storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
+    "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/local-codepen.js",
