@@ -40,6 +40,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     onChange,
     marks,
     vertical = false,
+    origin,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -196,14 +197,26 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const valuePercent = getPercent(currentValue!, min, max);
 
+  const originPercent = origin ? getPercent(origin, min, max) : 0;
+
   const thumbStyles = {
     transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
     ...state.thumb.style,
   };
 
   const trackStyles = vertical
-    ? { height: `${valuePercent}%`, ...state.track.style }
-    : { width: `${valuePercent}%`, ...state.track.style };
+    ? {
+        top: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+        height: origin
+          ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+          : `${valuePercent}%`,
+        ...state.track.style,
+      }
+    : {
+        left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+        width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
+        ...state.track.style,
+      };
 
   /**
    * Gets the current percentage position for the marks.

@@ -103,6 +103,12 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   marks?: boolean | number[] | { label: string; value: number }[]; // TODO the label should be a slot
 
   /**
+   * The starting origin point for the Slider.
+   * @default min
+   */
+  origin?: number;
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
