@@ -21,25 +21,25 @@ describe('Slider', () => {
   });
 
   it('renders Slider correctly', () => {
-    const component = create(<Slider defaultValue={5} />);
+    const component = create(<Slider defaultValue={5} min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders (disabled) Slider correctly', () => {
-    const component = create(<Slider defaultValue={5} disabled />);
+    const component = create(<Slider defaultValue={5} disabled min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders vertical Slider correctly', () => {
-    const component = create(<Slider defaultValue={5} vertical />);
+    const component = create(<Slider defaultValue={5} vertical min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders Slider with origin correctly', () => {
     const component = create(
       <>
-        <Slider defaultValue={5} origin={2} />
-        <Slider defaultValue={5} origin={2} vertical />
+        <Slider defaultValue={5} origin={2} min={0} max={10} />
+        <Slider defaultValue={5} origin={2} vertical min={0} max={10} />
       </>,
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -188,8 +188,8 @@ describe('Slider', () => {
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0][0]).toEqual(10);
-    expect(sliderRef.current.value).toBe(10);
+    expect(onChange.mock.calls[0][0]).toEqual(100);
+    expect(sliderRef.current.value).toBe(100);
 
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
 
@@ -359,7 +359,7 @@ describe('Slider', () => {
 
     sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
 
-    expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(10);
+    expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(100);
     wrapper.unmount();
   });
 
