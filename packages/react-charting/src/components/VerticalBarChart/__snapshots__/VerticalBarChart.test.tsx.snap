@@ -160,6 +160,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -248,6 +249,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -336,6 +338,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -569,6 +572,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="First"
@@ -657,6 +661,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Second"
@@ -745,6 +750,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Third"
@@ -1098,6 +1104,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -1186,6 +1193,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -1274,6 +1282,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -1524,6 +1533,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -1612,6 +1622,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -1700,6 +1711,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -1950,6 +1962,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -2038,6 +2051,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -2126,6 +2140,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"
@@ -2376,6 +2391,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="First"
@@ -2464,6 +2480,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Second"
@@ -2552,6 +2569,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Third"

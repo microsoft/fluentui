@@ -1406,6 +1406,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Debit card numbers (EU and USA)"
@@ -1494,6 +1495,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Passport numbers (USA)"
