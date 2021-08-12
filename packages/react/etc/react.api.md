@@ -8544,6 +8544,8 @@ export namespace KeytipEvents {
     const // (undocumented)
     PERSISTED_KEYTIP_REMOVED = "persistedKeytipRemoved";
     const // (undocumented)
+    PERSISTED_KEYTIP_UPDATED = "persistedKeytipUpdated";
+    const // (undocumented)
     PERSISTED_KEYTIP_EXECUTE = "persistedKeytipExecute";
     const // (undocumented)
     ENTER_KEYTIP_MODE = "enterKeytipMode";
@@ -8605,7 +8607,7 @@ export class KeytipManager {
     // (undocumented)
     shouldEnterKeytipMode: boolean;
     unregister(keytipToRemove: IKeytipProps, uniqueID: string, persisted?: boolean): void;
-    update(keytipProps: IKeytipProps, uniqueID: string): void;
+    update(keytipProps: IKeytipProps, uniqueID: string, persisted?: boolean): void;
 }
 
 // @public (undocumented)

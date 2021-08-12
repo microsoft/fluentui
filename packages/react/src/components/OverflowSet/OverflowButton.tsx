@@ -33,7 +33,7 @@ const useKeytipRegistrations = (
         if (oldKeytip && (keytip !== oldKeytip.keytip || keytip.disabled !== oldKeytip.keytip.disabled)) {
           // Keytip was found and it's been changed, update
           const uniqueID = oldKeytip.uniqueID;
-          keytipManager.update(keytip, uniqueID);
+          keytipManager.update(keytip, uniqueID, true);
           registeredPersistedKeytips[keytip.content] = { uniqueID, keytip };
         } else if (!oldKeytip) {
           // Keytip was not found, register it
@@ -45,20 +45,19 @@ const useKeytipRegistrations = (
 
   // Mount/Unmount
   React.useEffect(() => {
-    for (const keytip of Object.keys(keytipsToRegisterOrUpdate)) {
+    for (const keytipContent of Object.keys(keytipsToRegisterOrUpdate)) {
       // Register on Mount
-      registerPersistedKeytip(keytipsToRegisterOrUpdate[keytip], keytipManager, registeredPersistedKeytips);
+      registerPersistedKeytip(keytipsToRegisterOrUpdate[keytipContent], keytipManager, registeredPersistedKeytips);
     }
     return () => {
       // Unregister and delete all persisted keytips saved on unmount
-      // TODO: not sure if we should register prev or curr
-      Object.keys(registeredPersistedKeytips).forEach((key: string) => {
+      for (const keytipContent of Object.keys(registeredPersistedKeytips)) {
         keytipManager.unregister(
-          registeredPersistedKeytips[key].keytip,
-          registeredPersistedKeytips[key].uniqueID,
+          registeredPersistedKeytips[keytipContent].keytip,
+          registeredPersistedKeytips[keytipContent].uniqueID,
           true,
         );
-      });
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -126,31 +125,6 @@ export const OverflowButton = (props: IOverflowSetProps) => {
 
         if (keytip) {
           // Create persisted keytip
-          /*
-          const persistedKeytip: IKeytipProps = {
-            content: keytip.content,
-            keySequences: keytip.keySequences,
-            disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
-            hasDynamicChildren: keytip.hasDynamicChildren,
-            hasMenu: keytip.hasMenu,
-          };
-
-          if (keytip.hasDynamicChildren || getSubMenuForItem(overflowItem)) {
-            // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
-            persistedKeytip.onExecute = keytipManager.menuExecute.bind(
-              keytipManager,
-              keytipSequences,
-              overflowItem?.keytipProps?.keySequences,
-            );
-          } else {
-            // If the keytip doesn't have a submenu, just execute the original function
-            persistedKeytip.onExecute = keytip.onExecute;
-          }
-
-          // Add this persisted keytip to our internal list, use a temporary uniqueID (its content)
-          // uniqueID will get updated on register
-          */
-
           keytipsToRegisterOrUpdate[keytip.content] = createPersistedKeytip(
             keytip,
             overflowItem,
@@ -158,7 +132,6 @@ export const OverflowButton = (props: IOverflowSetProps) => {
             keytipSequences,
             getSubMenuForItem(overflowItem),
           );
-          // persistedKeytips[unregisteredKeytipID + persistedKeytip.content] = persistedKeytip;
 
           // Add the overflow sequence to this item
           const newOverflowItem = {

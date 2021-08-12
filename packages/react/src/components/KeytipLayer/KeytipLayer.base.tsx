@@ -103,6 +103,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._events.on(this._keytipManager, KeytipEvents.KEYTIP_UPDATED, this._onKeytipUpdated);
     this._events.on(this._keytipManager, KeytipEvents.KEYTIP_REMOVED, this._onKeytipRemoved);
     this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_ADDED, this._onPersistedKeytipAdded);
+    this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_UPDATED, this._onPersistedKeytipUpdated);
     this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_REMOVED, this._onPersistedKeytipRemoved);
     this._events.on(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
   }
@@ -545,6 +546,10 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     const keytipProps = eventArgs.keytip;
     const uniqueID = eventArgs.uniqueID;
     this._keytipTree.addNode(keytipProps, uniqueID, true);
+  };
+
+  private _onPersistedKeytipUpdated = (eventArgs: any) => {
+    this._keytipTree.updateNode(eventArgs.keytip, eventArgs.uniqueID);
   };
 
   private _onPersistedKeytipRemoved = (eventArgs: any) => {

@@ -88,23 +88,26 @@ export class KeytipManager {
    * @param keytipProps - Keytip to update
    * @param uniqueID - Unique ID of this keytip
    */
-  public update(keytipProps: IKeytipProps, uniqueID: string): void {
+  public update(keytipProps: IKeytipProps, uniqueID: string, persisted: boolean = false): void {
     const newKeytipProps = this.addParentOverflow(keytipProps);
     const uniqueKeytip = this._getUniqueKtp(newKeytipProps, uniqueID);
-    const oldKeyTip = this.keytips[uniqueID];
+    const keytipsObj = persisted ? this.persistedKeytips : this.keytips;
+    const oldKeyTip = keytipsObj[uniqueID];
     if (oldKeyTip) {
       // Update everything except 'visible'
       uniqueKeytip.keytip.visible = oldKeyTip.keytip.visible;
-      // Update keytip in this.keytips
-      this.keytips[uniqueID] = uniqueKeytip;
+      // Update keytip
+      keytipsObj[uniqueID] = uniqueKeytip;
 
       // Update the sequence to be up to date
-      delete this.sequenceMapping[oldKeyTip.keytip.keySequences.toString()];
-      this.sequenceMapping[uniqueKeytip.keytip.keySequences.toString()] = uniqueKeytip.keytip;
+      if (!persisted) {
+        delete this.sequenceMapping[oldKeyTip.keytip.keySequences.toString()];
+        this.sequenceMapping[uniqueKeytip.keytip.keySequences.toString()] = uniqueKeytip.keytip;
+      }
 
       // Raise event only if we are currently in keytip mode
       if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
-        EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
+        EventGroup.raise(this, persisted ? KeytipEvents.PERSISTED_KEYTIP_UPDATED : KeytipEvents.KEYTIP_UPDATED, {
           keytip: uniqueKeytip.keytip,
           uniqueID: uniqueKeytip.uniqueID,
         });
