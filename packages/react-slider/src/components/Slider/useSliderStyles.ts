@@ -150,10 +150,9 @@ const useTrackStyles = makeStyles({
 const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
     display: 'grid',
-    justifyItems: 'end',
     outline: 'none',
-
     // background: 'green',
+
     '& .ms-Slider-mark': {
       background: '#626262',
     },
@@ -167,11 +166,12 @@ const useMarksContainerStyles = makeStyles({
     marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
+    justifyItems: 'end',
 
     '& .ms-Slider-markItemContainer': {
       display: 'flex',
       flexDirection: 'column',
-      transform: 'translate(50%)',
+      transform: 'translateX(50%)',
       alignItems: 'center',
     },
 
@@ -185,6 +185,7 @@ const useMarksContainerStyles = makeStyles({
     marginTop: 'calc(var(--slider-thumb-size) / 2)',
     marginBottom: 'calc(var(--slider-thumb-size) / 2)',
     marginLeft: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    justifyItems: 'start',
 
     '& .ms-Slider-markItemContainer': {
       display: 'flex',
@@ -199,6 +200,8 @@ const useMarksContainerStyles = makeStyles({
     },
 
     '& .ms-Slider-label': {
+      // position: 'absolute',
+      marginLeft: '4px',
       transform: 'scaleY(-1)',
     },
   }),

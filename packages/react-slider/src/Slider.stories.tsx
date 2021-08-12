@@ -58,10 +58,9 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Slider
         step={2}
         marks={[
-          2,
           {
             value: 2,
-            mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
+            mark: <div style={{ width: '1px', height: '8px', background: 'green' }} />,
             label: 'hello',
           },
           {
@@ -75,7 +74,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
           },
           {
             value: 8,
-            mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
+            mark: <div style={{ width: '1px', height: '8px', background: 'green' }} />,
             label: 'hello',
           },
           10,

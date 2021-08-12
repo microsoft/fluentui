@@ -282,16 +282,18 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     const marksChildren: JSX.Element[] = [];
 
     for (let i = 0; i < marksPercent.length; i++) {
+      const marksItem = marks[i];
+
       marksChildren.push(
         <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
-          {typeof marks[i] === 'object' && marks[i]?.mark ? (
-            marks[i].mark
+          {typeof marksItem === 'object' && marksItem.mark ? (
+            marksItem.mark
           ) : (
             <div className="ms-Slider-mark" key={`mark-${i}`} />
           )}
-          {typeof marks[i] === 'object' && marks[i]?.label && (
+          {typeof marksItem === 'object' && marksItem.label && (
             <div className="ms-Slider-label" key={`markLabel-${i}`}>
-              {marks[i].label}
+              {marksItem.label}
             </div>
           )}
         </div>,
