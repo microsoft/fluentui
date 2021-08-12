@@ -198,7 +198,6 @@ export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inlin
 // @public
 export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
     children: [JSX.Element, JSX.Element] | JSX.Element;
-    // (undocumented)
     positioning?: PositioningShorthand;
 }
 

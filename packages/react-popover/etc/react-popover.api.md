@@ -48,7 +48,6 @@ export interface PopoverProps extends Pick<PortalProps, 'mountNode'> {
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
-    // (undocumented)
     positioning?: PositioningShorthand;
     size?: PopoverSize;
     trapFocus?: boolean;
