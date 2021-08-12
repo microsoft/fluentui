@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Legends will be focusable in browser mode",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
