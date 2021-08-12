@@ -349,11 +349,21 @@ export const defaultTests: TestObject = {
           const propInfo = componentInfo.props[propName];
 
           if (!propInfo.declarations) {
-            throw new Error(/* TODO */);
+            throw new Error(
+              [
+                `Definition for "${propName}" does not have ".declarations".`,
+                'Please report a bug if this happens',
+              ].join(' '),
+            );
           }
 
           if (propInfo.declarations.length !== 1) {
-            throw new Error(/* TODO */);
+            throw new Error(
+              [
+                `Definition for "${propName}" has multiple elements in ".declarations".`,
+                'Please report a bug if this happens',
+              ].join(' '),
+            );
           }
 
           const rootFileName = propInfo.declarations[0].fileName;
