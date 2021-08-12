@@ -112,7 +112,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -132,7 +132,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -152,7 +152,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -208,7 +208,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -261,7 +261,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -350,7 +349,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -439,7 +437,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -598,7 +595,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -618,7 +615,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -638,7 +635,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -677,7 +674,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               justify-content: unset;
               position: relative;
             }
-        role="listbox"
+        role="group"
       >
         <div
           className=
@@ -730,7 +727,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -819,7 +815,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -908,7 +903,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -1064,7 +1058,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -1084,7 +1078,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -1104,7 +1098,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -1227,7 +1221,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -1247,7 +1241,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -1267,7 +1261,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -1323,7 +1317,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1376,7 +1370,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1465,7 +1458,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1554,7 +1546,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1713,7 +1704,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -1733,7 +1724,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -1753,7 +1744,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -1809,7 +1800,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1862,7 +1853,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1951,7 +1941,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2040,7 +2029,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2199,7 +2187,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -2219,7 +2207,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -2239,7 +2227,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -2295,7 +2283,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2348,7 +2336,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2437,7 +2424,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2526,7 +2512,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2685,7 +2670,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={56}
           y={-24}
@@ -2705,7 +2690,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={8.30769230769231}
           y={20}
@@ -2725,7 +2710,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
-          role="img"
+          role="text"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -2781,7 +2766,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2834,7 +2819,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2923,7 +2907,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3012,7 +2995,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

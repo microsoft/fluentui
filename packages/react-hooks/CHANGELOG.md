@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Mon, 28 Jun 2021 07:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.2.6)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.2.5..@fluentui/react-hooks_v8.2.6)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [8.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.2.5)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.2.4..@fluentui/react-hooks_v8.2.5)
+
+### Patches
+
+- fix(useRefEffet): Make IE11 friendly ([PR #19186](https://github.com/microsoft/fluentui/pull/19186) by lingfan.gao@microsoft.com)
+
+## [8.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.2.4)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.2.3..@fluentui/react-hooks_v8.2.4)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.1 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.2.3)
 

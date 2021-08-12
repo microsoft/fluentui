@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Image } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
+import { ArgTypes, Meta, Parameters } from '@storybook/react';
+
+import { Image, ImageProps } from './index';
 
 /**
  * Temporary Stack until there's one in its own package.
@@ -30,6 +32,27 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
 
   return <div {...rest} className={horizontal ? hStack : vStack} />;
 };
+
+export const Default = (props: ImageProps) => {
+  return <Image {...props} />;
+};
+Default.argTypes = {
+  alt: {
+    control: 'text',
+    defaultValue: 'Image placeholder',
+    description: `description of the image, which isn't mandatory but is incredibly useful for accessibility`,
+  },
+  src: {
+    control: 'text',
+    defaultValue: 'https://via.placeholder.com/300x300',
+    description: 'path to the image you want to display',
+  },
+} as ArgTypes;
+Default.parameters = {
+  controls: {
+    disable: false,
+  },
+} as Parameters;
 
 export const ImageAppearanceShape = () => (
   <Stack horizontal>
@@ -185,4 +208,4 @@ export const ImageFluid = () => (
 export default {
   title: 'Components/Image',
   component: Image,
-};
+} as Meta;

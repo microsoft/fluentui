@@ -1,38 +1,146 @@
 /**
  * Export all custom element definitions
  */
-export { fluentAccordion, fluentAccordionItem } from './accordion/index';
-export { fluentAnchor } from './anchor/index';
-export { fluentAnchoredRegion } from './anchored-region/index';
-export { fluentBadge } from './badge/index';
-export { fluentBreadcrumb } from './breadcrumb/index';
-export { fluentBreadcrumbItem } from './breadcrumb-item/index';
-export { fluentButton } from './button/index';
-export { fluentCard } from './card/index';
-export { fluentCheckbox } from './checkbox/index';
-export { fluentCombobox } from './combobox/index';
-export { fluentDataGrid, fluentDataGridCell, fluentDataGridRow } from './data-grid/index';
-export { fluentDesignSystemProvider } from './design-system-provider/index';
-export { fluentDialog } from './dialog/index';
-export { fluentDivider } from './divider/index';
-export { fluentFlipper } from './flipper/index';
-export { fluentHorizontalScroll } from './horizontal-scroll/index';
-export { fluentListbox } from './listbox/index';
-export { fluentOption } from './listbox-option/index';
-export { fluentMenu } from './menu/index';
-export { fluentMenuItem } from './menu-item/index';
-export { fluentNumberField } from './number-field/index';
-export { fluentProgress, fluentProgressRing } from './progress/index';
-export { fluentRadio } from './radio/index';
-export { fluentRadioGroup } from './radio-group/index';
-export { fluentSelect } from './select/index';
-export { fluentSkeleton } from './skeleton/index';
-export { fluentSlider } from './slider/index';
-export { fluentSliderLabel } from './slider-label/index';
-export { fluentSwitch } from './switch/index';
-export { fluentTabs, fluentTab, fluentTabPanel } from './tabs/index';
-export { fluentTextArea } from './text-area/index';
-export { fluentTextField } from './text-field/index';
-export { fluentTooltip } from './tooltip/index';
-export { fluentTreeView } from './tree-view/index';
-export { fluentTreeItem } from './tree-item/index';
+import type { Container } from '@microsoft/fast-foundation';
+import { fluentAccordion, fluentAccordionItem } from './accordion/index';
+import { fluentAnchor } from './anchor/index';
+import { fluentAnchoredRegion } from './anchored-region/index';
+import { fluentBadge } from './badge/index';
+import { fluentBreadcrumb } from './breadcrumb/index';
+import { fluentBreadcrumbItem } from './breadcrumb-item/index';
+import { fluentButton } from './button/index';
+import { fluentCard } from './card/index';
+import { fluentCheckbox } from './checkbox/index';
+import { fluentCombobox } from './combobox/index';
+import { fluentDataGrid, fluentDataGridCell, fluentDataGridRow } from './data-grid/index';
+import { fluentDesignSystemProvider } from './design-system-provider/index';
+import { fluentDialog } from './dialog/index';
+import { fluentDivider } from './divider/index';
+import { fluentFlipper } from './flipper/index';
+import { fluentHorizontalScroll } from './horizontal-scroll/index';
+import { fluentListbox } from './listbox/index';
+import { fluentOption } from './listbox-option/index';
+import { fluentMenu } from './menu/index';
+import { fluentMenuItem } from './menu-item/index';
+import { fluentNumberField } from './number-field/index';
+import { fluentProgress, fluentProgressRing } from './progress/index';
+import { fluentRadio } from './radio/index';
+import { fluentRadioGroup } from './radio-group/index';
+import { fluentSelect } from './select/index';
+import { fluentSkeleton } from './skeleton/index';
+import { fluentSlider } from './slider/index';
+import { fluentSliderLabel } from './slider-label/index';
+import { fluentSwitch } from './switch/index';
+import { fluentTab, fluentTabPanel, fluentTabs } from './tabs/index';
+import { fluentTextArea } from './text-area/index';
+import { fluentTextField } from './text-field/index';
+import { fluentTooltip } from './tooltip/index';
+import { fluentTreeView } from './tree-view/index';
+import { fluentTreeItem } from './tree-item/index';
+
+export {
+  fluentAccordion,
+  fluentAccordionItem,
+  fluentAnchor,
+  fluentAnchoredRegion,
+  fluentBadge,
+  fluentBreadcrumb,
+  fluentBreadcrumbItem,
+  fluentButton,
+  fluentCard,
+  fluentCheckbox,
+  fluentCombobox,
+  fluentDataGrid,
+  fluentDataGridCell,
+  fluentDataGridRow,
+  fluentDesignSystemProvider,
+  fluentDialog,
+  fluentDivider,
+  fluentFlipper,
+  fluentHorizontalScroll,
+  fluentListbox,
+  fluentOption,
+  fluentMenu,
+  fluentMenuItem,
+  fluentNumberField,
+  fluentProgress,
+  fluentProgressRing,
+  fluentRadio,
+  fluentRadioGroup,
+  fluentSelect,
+  fluentSkeleton,
+  fluentSlider,
+  fluentSliderLabel,
+  fluentSwitch,
+  fluentTabs,
+  fluentTab,
+  fluentTabPanel,
+  fluentTextArea,
+  fluentTextField,
+  fluentTooltip,
+  fluentTreeView,
+  fluentTreeItem,
+};
+
+/**
+ * All Fluent UI Web Components
+ * @public
+ */
+export const allComponents = {
+  fluentAccordion,
+  fluentAccordionItem,
+  fluentAnchor,
+  fluentAnchoredRegion,
+  fluentBadge,
+  fluentBreadcrumb,
+  fluentBreadcrumbItem,
+  fluentButton,
+  fluentCard,
+  fluentCheckbox,
+  fluentCombobox,
+  fluentDataGrid,
+  fluentDataGridCell,
+  fluentDataGridRow,
+  fluentDesignSystemProvider,
+  fluentDialog,
+  fluentDivider,
+  fluentFlipper,
+  fluentHorizontalScroll,
+  fluentListbox,
+  fluentOption,
+  fluentMenu,
+  fluentMenuItem,
+  fluentNumberField,
+  fluentProgress,
+  fluentProgressRing,
+  fluentRadio,
+  fluentRadioGroup,
+  fluentSelect,
+  fluentSkeleton,
+  fluentSlider,
+  fluentSliderLabel,
+  fluentSwitch,
+  fluentTabs,
+  fluentTab,
+  fluentTabPanel,
+  fluentTextArea,
+  fluentTextField,
+  fluentTooltip,
+  fluentTreeView,
+  fluentTreeItem,
+  register(container?: Container) {
+    if (!container) {
+      // preserve backward compatibility with code that loops through
+      // the values of this object and calls them as funcs with no args
+      return;
+    }
+
+    for (const key in this) {
+      if (key === 'register') {
+        continue;
+      }
+
+      this[key]().register(container);
+    }
+  },
+};

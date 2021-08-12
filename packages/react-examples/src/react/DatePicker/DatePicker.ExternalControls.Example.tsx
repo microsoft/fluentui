@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, addDays, mergeStyleSets } from '@fluentui/react';
+import { DatePicker, addDays, mergeStyleSets, defaultDatePickerStrings } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const styles = mergeStyleSets({
@@ -25,6 +25,8 @@ export const DatePickerExternalControlsExample = () => {
         onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
         placeholder="Select a date..."
         ariaLabel="Select a date"
+        // DatePicker uses English strings by default. For localized apps, you must override this prop.
+        strings={defaultDatePickerStrings}
       />
       <div>
         <DefaultButton className={styles.button} onClick={goPrevious} text="Previous" />

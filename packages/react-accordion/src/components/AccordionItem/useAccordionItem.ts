@@ -1,29 +1,14 @@
 import * as React from 'react';
-import {
-  makeMergeProps,
-  resolveShorthandProps,
-  createDescendantContext,
-  useDescendant,
-  useDescendantsInit,
-  DescendantContextValue,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
-import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
-import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
+import { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import { AccordionContext } from '../Accordion/useAccordionContext';
+import { AccordionContext } from '../Accordion/AccordionContext';
+import { AccordionToggleEvent } from '../Accordion/Accordion.types';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
-export const accordionItemShorthandPropsCompat = [];
-
-export const accordionItemDescendantContext: React.Context<
-  DescendantContextValue<AccordionItemDescendant<HTMLElement>>
-> = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
-
-const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandPropsCompat });
+export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = [];
 
 /**
  * Returns the props and state required to render the component
@@ -32,41 +17,29 @@ const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItem
  * @param defaultProps - default values for the properties of AccordionItem
  */
 export const useAccordionItem = (
-  props: AccordionItemProps,
+  { value, ...props }: AccordionItemProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: AccordionItemProps,
 ): AccordionItemState => {
-  const innerRef = React.useRef<HTMLElement>(null);
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, innerRef),
-      context: undefined!,
-      descendants: undefined!,
-      setDescendants: undefined!,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, accordionItemShorthandPropsCompat),
-    resolveShorthandProps(props, accordionItemShorthandPropsCompat),
-  );
-  const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
-  state.descendants = descendants;
-  state.setDescendants = setDescendants;
-  state.context = useCreateAccordionItemContextValue(state, innerRef);
+  // const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},
   });
-  if (navigable) {
-    Object.assign(state, tabsterAttributes);
-  }
-  return state;
-};
+  const disabled = props.disabled || false;
 
-/**
- * Registers an descendant in the accordion descendants context
- */
-export function useAccordionItemDescendant(
-  accordionDescendant: Omit<AccordionItemDescendant, 'index'>,
-  index?: number,
-) {
-  return useDescendant<AccordionItemDescendant>(accordionDescendant, accordionItemDescendantContext, index);
-}
+  const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
+  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(value));
+  const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { value }), [
+    requestToggle,
+    value,
+  ]);
+
+  return {
+    ...props,
+    ref,
+    open,
+    onHeaderClick: onAccordionHeaderClick,
+    disabled,
+    ...(navigable ? tabsterAttributes : {}),
+  };
+};

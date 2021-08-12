@@ -1,8 +1,26 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Mon, 28 Jun 2021 07:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.2.2)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.2.1..@fluentui/utilities_v8.2.2)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.1.4 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.2.1)
+
+Fri, 09 Jul 2021 07:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.2.0..@fluentui/utilities_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.1.3 ([PR #18808](https://github.com/microsoft/fluentui/pull/18808) by martinhochel@microsoft.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.2.0)
 

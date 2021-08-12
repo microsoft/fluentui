@@ -112,6 +112,9 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Shorthand for the paddle that navigates to the previous item. */
   paddlePrevious?: ShorthandValue<CarouselPaddleProps>;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselStylesProps = { isFromKeyboard: boolean; shouldFocusContainer: boolean };
@@ -160,6 +163,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     design,
     styles,
     variables,
+    disableClickableNav,
   } = props;
 
   const ElementType = getElementType(props);
@@ -248,7 +252,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let nextActiveIndex = index;
-
     if (index < 0) {
       if (!circular) {
         return;
@@ -302,7 +305,6 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
               const itemRef = itemRefs[index];
               const active = activeIndex === index;
               let slideToNext = prevActiveIndex < activeIndex;
-
               const initialMounting = prevActiveIndex === -1;
 
               if (circular && prevActiveIndex === items.length - 1 && activeIndex === 0) {
@@ -318,7 +320,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
                   unmountOnExit
                   visible={active}
                   name={
-                    initialMounting || !active
+                    initialMounting || !active || prevActiveIndex === index
                       ? ''
                       : slideToNext
                       ? 'carousel-slide-to-next-enter'
@@ -443,6 +445,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
         }),
         overrideProps: (predefinedProps: CarouselNavigationItemProps) => ({
           onItemClick: (e: React.SyntheticEvent, itemProps: CarouselNavigationItemProps) => {
+            if (disableClickableNav) return;
+
             const { index } = itemProps;
 
             setActiveIndex(e, index, true);

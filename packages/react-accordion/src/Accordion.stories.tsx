@@ -1,39 +1,65 @@
 import * as React from 'react';
+import { RocketIcon } from './icons.stories';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from './index';
 import { ArgType } from '@storybook/addons';
-import { RocketIcon } from './icons.stories';
+import { AccordionHeaderProps } from './components/AccordionHeader/AccordionHeader.types';
 
-export const AccordionExample = (props: AccordionProps) => {
+interface AccordionExampleProps
+  extends AccordionProps,
+    Pick<AccordionHeaderProps, 'icon' | 'inline' | 'size' | 'expandIconPosition'> {}
+
+export const AccordionExample = ({ icon, inline, size, expandIconPosition, ...props }: AccordionExampleProps) => {
+  const items = [
+    <AccordionItem value="1" key="1">
+      <AccordionHeader
+        inline={inline}
+        size={size}
+        expandIconPosition={expandIconPosition}
+        icon={icon ? <RocketIcon /> : undefined}
+      >
+        Accordion Header 1
+      </AccordionHeader>
+      <AccordionPanel>
+        <button onClick={() => setShuffledItems(shuffle(items))}>shuffle</button>
+        <div>Accordion Panel 1</div>
+      </AccordionPanel>
+    </AccordionItem>,
+    <AccordionItem value="2" key="2">
+      <AccordionHeader
+        inline={inline}
+        size={size}
+        expandIconPosition={expandIconPosition}
+        icon={icon ? <RocketIcon /> : undefined}
+      >
+        Accordion Header 2
+      </AccordionHeader>
+      <AccordionPanel>
+        <button onClick={() => setShuffledItems(shuffle(items))}>shuffle</button>
+        <div>Accordion Panel 2</div>
+      </AccordionPanel>
+    </AccordionItem>,
+    <AccordionItem value="3" key="3">
+      <AccordionHeader
+        inline={inline}
+        size={size}
+        expandIconPosition={expandIconPosition}
+        icon={icon ? <RocketIcon /> : undefined}
+      >
+        Accordion Header 3
+      </AccordionHeader>
+      <AccordionPanel>
+        <button onClick={() => setShuffledItems(shuffle(items))}>shuffle</button>
+        <div>Accordion Panel 3</div>
+      </AccordionPanel>
+    </AccordionItem>,
+  ];
+
+  const [shuffledItems, setShuffledItems] = React.useState(items);
+
   return (
-    <Accordion {...props} icon={props.icon ? <RocketIcon /> : undefined}>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header 1</AccordionHeader>
-        <AccordionPanel>
-          <div>
-            <button>Button 1</button>
-          </div>
-          <div>Accordion Panel 1</div>
-        </AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header 2</AccordionHeader>
-        <AccordionPanel>
-          <div>
-            <button>Button 2</button>
-          </div>
-          <div>Accordion Panel 2</div>
-        </AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header 3</AccordionHeader>
-        <AccordionPanel>
-          <div>
-            <button>Button 3</button>
-          </div>
-          <div>Accordion Panel 3</div>
-        </AccordionPanel>
-      </AccordionItem>
-    </Accordion>
+    <>
+      <Accordion {...props}>{shuffledItems}</Accordion>
+    </>
   );
 };
 AccordionExample.argTypes = {
@@ -68,6 +94,15 @@ AccordionExample.argTypes = {
       options: ['small', 'medium', 'large', 'extra-large'],
     },
   },
+  as: {
+    control: false,
+  },
+  index: {
+    control: false,
+  },
+  defaultIndex: {
+    control: false,
+  },
   expandIconPosition: {
     defaultValue: 'start',
     control: {
@@ -75,9 +110,27 @@ AccordionExample.argTypes = {
       options: ['start', 'end'],
     },
   },
-} as { [K in keyof AccordionProps]: ArgType };
+} as { [K in keyof (AccordionProps | AccordionHeaderProps)]: ArgType };
 
 export default {
   title: 'Components/Accordion',
   component: Accordion,
 };
+
+function shuffle<T>(array: T[]) {
+  let currentIndex = array.length;
+  let randomIndex: number;
+  const nextArray: T[] = Array.from(array);
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [nextArray[currentIndex], nextArray[randomIndex]] = [nextArray[randomIndex], nextArray[currentIndex]];
+  }
+
+  return nextArray;
+}

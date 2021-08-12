@@ -93,6 +93,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   width: 100%;
                 }
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
@@ -103,6 +106,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -130,6 +137,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -230,6 +241,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   width: 100%;
                 }
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
@@ -240,6 +254,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -267,6 +285,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -336,7 +358,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             />
           </div>
         </div>
@@ -438,6 +460,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   width: 100%;
                 }
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout20"
@@ -448,6 +473,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -475,6 +504,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -571,6 +604,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   width: 100%;
                 }
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout20"
@@ -581,6 +617,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -608,6 +648,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -677,7 +721,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             />
           </div>
         </div>
@@ -783,6 +827,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   width: 100%;
                 }
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout5"
@@ -793,6 +840,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -820,6 +871,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -920,6 +975,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   width: 100%;
                 }
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout5"
@@ -930,6 +988,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -957,6 +1019,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1066,6 +1132,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   width: 100%;
                 }
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout15"
@@ -1076,6 +1145,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1103,6 +1176,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1203,6 +1280,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   width: 100%;
                 }
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout15"
@@ -1213,6 +1293,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1240,6 +1324,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1309,7 +1397,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1362,7 +1450,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1451,7 +1538,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1594,6 +1680,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   width: 100%;
                 }
           >
+            <title>
+              Monitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout10"
@@ -1604,6 +1693,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1631,6 +1724,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1731,6 +1828,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   width: 100%;
                 }
           >
+            <title>
+              Unmonitored
+            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout10"
@@ -1741,6 +1841,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1768,6 +1872,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1837,7 +1945,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             />
           </div>
         </div>

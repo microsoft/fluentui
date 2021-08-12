@@ -62,7 +62,7 @@ interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithRespo
 
 interface IDropdownState {
   isOpen: boolean;
-  /** Whether the root dropdown element has focus. */
+  /** Used to track whether focus is already within the Dropdown, for openOnFocus handling. */
   hasFocus: boolean;
   calloutRenderEdge?: RectangleEdge;
 }
@@ -345,7 +345,11 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
 
     return (
-      <div className={this._classNames.root} ref={this.props.hoisted.rootRef}>
+      <div
+        className={this._classNames.root}
+        ref={this.props.hoisted.rootRef}
+        aria-owns={isOpen ? this._listId : undefined}
+      >
         {onRenderLabel(this.props, this._onRenderLabel)}
         <div
           data-is-focusable={!disabled}
@@ -760,7 +764,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? this._classNames.dropdownItemDisabled
       : this._classNames.dropdownItem;
 
-    const { title = item.text } = item;
+    const { title } = item;
 
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
@@ -950,13 +954,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       return;
     }
 
-    // hasFocus tracks whether the root element has focus so always update the state.
-    this.setState({ hasFocus: false });
-
     if (this.state.isOpen) {
-      // Do not onBlur when the callout is opened
+      // Do not call onBlur or update focus state when the callout is opened
       return;
     }
+
+    this.setState({ hasFocus: false });
+
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }

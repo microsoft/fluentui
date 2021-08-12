@@ -1,11 +1,13 @@
-import { NodePath, PluginObj, PluginPass, TransformOptions, types as t } from '@babel/core';
+import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
-import { Module } from '@linaria/babel';
+import { Module } from '@linaria/babel-preset';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
-import { UNHANDLED_CASE_ERROR } from './constants';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
+import { UNHANDLED_CASE_ERROR } from './constants';
+import { BabelPluginOptions } from './types';
+import { validateOptions } from './validateOptions';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
@@ -16,19 +18,10 @@ type AstStyleNode =
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
   | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
+  | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
-export type BabelPluginOptions = {
-  /** Defines set of modules and imports handled by a plugin. */
-  modules: { moduleSource: string; importName: string }[];
-
-  /**
-   * If you need to specify custom Babel configuration, you can pass them here. These options will be used by the
-   * plugin when parsing and evaluating modules.
-   */
-  babelOptions?: Pick<TransformOptions, 'plugins' | 'presets'>;
-};
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
   requireDeclarationPath?: NodePath<t.VariableDeclarator>;
@@ -89,7 +82,7 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
  */
 function isMakeStylesCallee(
   path: NodePath<t.Expression | t.V8IntrinsicIdentifier>,
-  modules: BabelPluginOptions['modules'],
+  modules: NonNullable<BabelPluginOptions['modules']>,
 ): path is NodePath<t.Identifier> {
   if (path.isIdentifier()) {
     return Boolean(modules.find(module => path.referencesImport(module.moduleSource, module.importName)));
@@ -101,7 +94,10 @@ function isMakeStylesCallee(
 /**
  * Checks if import statement import makeStyles().
  */
-function hasMakeStylesImport(path: NodePath<t.ImportDeclaration>, modules: BabelPluginOptions['modules']): boolean {
+function hasMakeStylesImport(
+  path: NodePath<t.ImportDeclaration>,
+  modules: NonNullable<BabelPluginOptions['modules']>,
+): boolean {
   return Boolean(modules.find(module => path.node.source.value === module.moduleSource));
 }
 
@@ -398,11 +394,28 @@ function processDefinitions(
         return;
       }
 
+      /**
+       * A scenario when slots styles are represented by a function call.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: display() })
+       *    makeStyles({ root: typography.display() })
+       */
       if (stylesPath.isCallExpression()) {
-        state.styleNodes?.push({
-          kind: 'LAZY_EXPRESSION_CALL',
-          nodePath: stylesPath,
-        });
+        state.styleNodes?.push({ kind: 'LAZY_EXPRESSION_CALL', nodePath: stylesPath });
+        return;
+      }
+
+      /**
+       * A scenario when slots styles are represented by an object.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: typography.display })
+       */
+      if (stylesPath.isMemberExpression()) {
+        state.styleNodes?.push({ kind: 'LAZY_MEMBER', nodePath: stylesPath });
         return;
       }
     }
@@ -428,7 +441,7 @@ function dedupeCSSRules(cssRules: CSSRulesByBucket): CSSRulesByBucket {
 export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPluginState>>((api, options) => {
   api.assertVersion(7);
 
-  const pluginOptions: BabelPluginOptions = {
+  const pluginOptions: Required<BabelPluginOptions> = {
     babelOptions: {
       presets: ['@babel/preset-typescript'],
     },
@@ -439,6 +452,8 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
 
     ...options,
   };
+
+  validateOptions(pluginOptions);
 
   return {
     name: '@fluentui/babel-make-styles',
@@ -465,6 +480,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               if (
                 styleNode.kind === 'LAZY_IDENTIFIER' ||
                 styleNode.kind === 'LAZY_FUNCTION' ||
+                styleNode.kind === 'LAZY_MEMBER' ||
                 styleNode.kind === 'LAZY_EXPRESSION_CALL'
               ) {
                 return [...acc, styleNode.nodePath];
@@ -492,7 +508,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions!);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions);
           }
 
           state.styleNodes?.forEach(styleNode => {

@@ -6,10 +6,10 @@ It's also deployed during CI builds for [`master`](https://fluentuipr.z22.web.co
 
 ## How to add a new package to the site
 
-These steps cover the most common scenario, a component package with a storybook-based demo site with its examples in `react-examples`. In these steps, we'll call the new package `@fluentui/react-notbutton` (substitute the real name).
+In these steps, we'll call the new package `@fluentui/react-notbutton` (substitute the real name).
 
-1. Ensure the package has examples under `packages/react-examples/src/react-notbutton`
-2. In `packages/react-notbutton/package.json`, add an entry to `scripts` like this:
+1. Ensure the package has storybook configured
+2. In `packages/react-notbutton/package.json`, add `bundle:storybook` entry to `scripts`, most commonly:
    ```
    "bundle:storybook": "just-scripts storybook:build"
    ```

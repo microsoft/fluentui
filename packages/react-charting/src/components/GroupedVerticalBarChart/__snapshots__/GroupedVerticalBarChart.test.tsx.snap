@@ -116,6 +116,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -136,6 +137,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -156,6 +158,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -180,6 +183,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -200,6 +204,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -220,6 +225,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -276,7 +282,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -329,7 +335,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -418,7 +423,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -507,7 +511,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -670,6 +673,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -690,6 +694,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -710,6 +715,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -734,6 +740,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -754,6 +761,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -774,6 +782,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -813,7 +822,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               justify-content: unset;
               position: relative;
             }
-        role="listbox"
+        role="group"
       >
         <div
           className=
@@ -866,7 +875,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -955,7 +963,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -1044,7 +1051,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -1204,6 +1210,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -1224,6 +1231,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -1244,6 +1252,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -1268,6 +1277,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -1288,6 +1298,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -1308,6 +1319,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -1435,6 +1447,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -1455,6 +1468,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -1475,6 +1489,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -1499,6 +1514,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -1519,6 +1535,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -1539,6 +1556,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -1595,7 +1613,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1648,7 +1666,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1737,7 +1754,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1826,7 +1842,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1989,6 +2004,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -2009,6 +2025,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -2029,6 +2046,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -2053,6 +2071,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -2073,6 +2092,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -2093,6 +2113,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -2149,7 +2170,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2202,7 +2223,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2291,7 +2311,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2380,7 +2399,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2543,6 +2561,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -2563,6 +2582,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -2583,6 +2603,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -2607,6 +2628,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -2627,6 +2649,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -2647,6 +2670,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -2703,7 +2727,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2756,7 +2780,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2845,7 +2868,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2934,7 +2956,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3097,6 +3118,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={5.333333333333329}
@@ -3117,6 +3139,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={0}
@@ -3137,6 +3160,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -3161,6 +3185,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={0.3825136612021858}
             y={0}
@@ -3181,6 +3206,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={8.0327868852459}
             y={20}
@@ -3201,6 +3227,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity=""
+            role="text"
             width={7.267759562841528}
             x={15.683060109289613}
             y={0}
@@ -3257,7 +3284,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -3310,7 +3337,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3399,7 +3425,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3488,7 +3513,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

@@ -57,7 +57,7 @@ export const useLinkState = (state: LinkState): LinkState => {
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
   state.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
-    if (disabled) {
+    if (disabled || disabledFocusable) {
       ev.preventDefault();
     } else {
       onClick?.(ev);
@@ -68,7 +68,7 @@ export const useLinkState = (state: LinkState): LinkState => {
   const { onKeyDown } = state;
   state.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     const keyCode = getCode(ev);
-    if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    if ((disabled || disabledFocusable) && (keyCode === EnterKey || keyCode === SpacebarKey)) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {

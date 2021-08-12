@@ -99,7 +99,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetRatio,
     });
 
-    const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
     return (
       <div className={this._classNames.root}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -111,7 +110,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             )}
             {showRatio && (
               <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <span className={this._classNames.ratioNumerator}>{chartDataVal}</span>
+                <span className={this._classNames.ratioNumerator}>
+                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
+                </span>
                 {!this.props.hideDenominator && (
                   <span>
                     /<span className={this._classNames.ratioDenominator}>{total}</span>
@@ -135,6 +136,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <svg className={this._classNames.chart}>
+              {data!.chartTitle && <title>{data!.chartTitle}</title>}
               <g>{bars[0]}</g>
               <Callout
                 gapSpace={15}
@@ -145,6 +147,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 directionalHint={DirectionalHint.topRightEdge}
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
+                preventDismissOnLostFocus={true}
                 {...this.props.calloutProps}
                 {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
               >

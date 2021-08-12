@@ -6,9 +6,6 @@ import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from
  */
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
-    // Temporarily declare children as a shorthand slot until #18471 is fixed
-    children?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
@@ -21,17 +18,17 @@ export type ButtonProps = ComponentPropsCompat &
     //  */
     // loader?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 
-    // /**
-    //  * A button can fill the width of its container.
-    //  * @default false
-    //  */
-    // block?: boolean;
+    /**
+     * A button can fill the width of its container.
+     * @default false
+     */
+    block?: boolean;
 
-    // /**
-    //  * A button can have completely rounded corners.
-    //  * @default false
-    //  */
-    // circular?: boolean;
+    /**
+     * A button can have completely rounded corners.
+     * @default false
+     */
+    circular?: boolean;
 
     /**
      * A button can show that it cannot be interacted with.
@@ -39,12 +36,13 @@ export type ButtonProps = ComponentPropsCompat &
      */
     disabled?: boolean;
 
-    // /**
-    //  * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
-    //  * is important to keep a consistent tab order for screen reader and keyboard users.
-    //  * @default false
-    //  */
-    // disabledFocusable?: boolean;
+    /**
+     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
+     * is important to keep a consistent tab order for screen reader and keyboard users. The primary example of this
+     * pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.
+     * @default false
+     */
+    disabledFocusable?: boolean;
 
     /**
      * A button can format its icon to appear before or after its content.
@@ -59,13 +57,13 @@ export type ButtonProps = ComponentPropsCompat &
     //  */
     // loading?: boolean;
 
-    // /**
-    //  * A button can be styled such that it has no background styling and is just emphasized through the styling of
-    //  * its content and borders.
-    //  * Mutually exclusive with `primary`, `subtle` and `transparent`.
-    //  * @default false
-    //  */
-    // outline?: boolean;
+    /**
+     * A button can be styled such that it has no background styling and is just emphasized through the styling of
+     * its content and borders.
+     * Mutually exclusive with `primary`, `subtle` and `transparent`.
+     * @default false
+     */
+    outline?: boolean;
 
     /**
      * A button can be styled to emphasize that it represents the primary action.
@@ -99,7 +97,7 @@ export type ButtonProps = ComponentPropsCompat &
 /**
  * {@docCategory Button}
  */
-export type ButtonShorthandPropsCompat = 'children' | 'icon';
+export type ButtonShorthandPropsCompat = 'icon';
 
 /**
  * {@docCategory Button}

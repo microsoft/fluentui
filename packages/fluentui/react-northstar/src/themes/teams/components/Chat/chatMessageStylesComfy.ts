@@ -78,7 +78,6 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
 
   timestamp: ({ props: p, variables: v }) => ({
     marginBottom: v.headerMarginBottom,
-    ...(p.mine && { color: v.timestampColorMine }),
     ...((p.attached === 'bottom' || p.attached === true) &&
       !p.hasReactionGroup &&
       (screenReaderContainerStyles as ICSSInJSStyle)),

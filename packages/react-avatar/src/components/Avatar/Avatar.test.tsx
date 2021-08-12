@@ -72,7 +72,7 @@ describe('Avatar', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('prioritizes icon over initials', () => {
+  it('prioritizes initials over icon', () => {
     const component = renderer.create(<Avatar name="First Last" icon={<span className="icon" />} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
