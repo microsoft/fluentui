@@ -58,6 +58,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Slider
         step={2}
         marks={[
+          2,
           {
             value: 2,
             mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
@@ -81,8 +82,26 @@ export const MarkedSliderExample = (props: SliderProps) => {
         ]}
       />
       <Label>Vertical Marks</Label>
-      <Slider marks vertical step={2} min={0} max={20} />
-      <Slider marks={[4, 10, 20]} vertical step={2} min={0} max={20} />
+      <Slider marks vertical step={1} min={0} max={5} />
+      <Slider
+        marks={[
+          4,
+          {
+            value: 6,
+            label: (
+              <img
+                src="https://www.fillster.com/images/pictures/8i.jpg"
+                style={{ width: '100px', height: '100px', paddingTop: '8px' }}
+              />
+            ),
+          },
+          20,
+        ]}
+        vertical
+        step={2}
+        min={0}
+        max={20}
+      />
     </div>
   );
 };

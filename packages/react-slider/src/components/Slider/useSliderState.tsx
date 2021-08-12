@@ -215,15 +215,17 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       }
     } else if (Array.isArray(marks) && marks.length > 0) {
       for (let i = 0; i < marks.length; i++) {
+        const marksItem = marks[i];
+
         // 2. We receive an array with numbers: mark for every value in array.
-        if (typeof marks[i] === 'number') {
-          percentArray.push(getPercent(min + (marks[i] as number), min, max));
+        if (typeof marksItem === 'number') {
+          percentArray.push(getPercent(min + marksItem, min, max));
         }
 
         // 3. We receive an array with objects containing numbers and strings:
-        // mark and label for every value + string in each object
-        else if (typeof marks[i] === 'object' && marks[i]?.value) {
-          percentArray.push(getPercent(min + marks[i].value, min, max));
+        // mark and label for every value + string in each object.
+        else if (marksItem.value) {
+          percentArray.push(getPercent(min + marksItem.value, min, max));
         }
       }
     }

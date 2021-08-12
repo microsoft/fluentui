@@ -152,13 +152,13 @@ const useMarksContainerStyles = makeStyles({
     display: 'grid',
     justifyItems: 'end',
     outline: 'none',
+
     // background: 'green',
     '& .ms-Slider-mark': {
       background: '#626262',
     },
 
     '& .ms-Slider-label': {
-      transform: 'translate(-50%)',
       padding: '2px',
     },
   }),
@@ -169,7 +169,10 @@ const useMarksContainerStyles = makeStyles({
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
 
     '& .ms-Slider-markItemContainer': {
-      transform: 'translate(100%)',
+      display: 'flex',
+      flexDirection: 'column',
+      transform: 'translate(50%)',
+      alignItems: 'center',
     },
 
     '& .ms-Slider-mark': {
@@ -181,7 +184,11 @@ const useMarksContainerStyles = makeStyles({
   vertical: theme => ({
     marginTop: 'calc(var(--slider-thumb-size) / 2)',
     marginBottom: 'calc(var(--slider-thumb-size) / 2)',
-    marginLeft: '(var(--slider-thumb-size) * .25) )',
+    marginLeft: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+
+    '& .ms-Slider-markItemContainer': {
+      transform: 'translateY(100%)',
+    },
 
     '& .ms-Slider-mark': {
       height: '1px',
