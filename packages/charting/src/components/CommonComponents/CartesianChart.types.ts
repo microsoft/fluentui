@@ -351,6 +351,11 @@ export interface IChildProps {
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
+   * Define the chart title
+   */
+  chartTitle?: string;
+
+  /**
    * Only used for Area chart
    * Value used to draw y axis of that chart.
    */

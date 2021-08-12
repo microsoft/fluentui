@@ -194,8 +194,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public render(): JSX.Element {
-    const { tickValues, tickFormat, eventAnnotationProps, legendProps } = this.props;
-    this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+    const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
+    this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
@@ -233,6 +233,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return (
       <CartesianChart
         {...this.props}
+        chartTitle={data.chartTitle}
         points={points}
         chartType={ChartTypes.LineChart}
         isCalloutForStack

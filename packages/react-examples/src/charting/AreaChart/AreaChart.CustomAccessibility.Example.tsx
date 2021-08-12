@@ -138,7 +138,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
     ];
 
     const chartData = {
-      chartTitle: 'Area chart multiple example',
+      chartTitle: 'Area chart Custom Accessibility example',
       lineChartData: chartPoints,
     };
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
