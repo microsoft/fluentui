@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopperOptions, PopperVirtualElement } from '@fluentui/react-positioning';
+import { PositioningProps, PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export type PopoverSize = 'small' | 'medium' | 'large';
  * Popover Props
  */
 export interface PopoverProps
-  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>,
+  extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>,
     Pick<PortalProps, 'mountNode'> {
   children: React.ReactNode;
   /**

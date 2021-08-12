@@ -39,6 +39,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -224,7 +227,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -277,7 +280,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -363,6 +365,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -531,7 +536,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               justify-content: unset;
               position: relative;
             }
-        role="listbox"
+        role="group"
       >
         <div
           className=
@@ -584,7 +589,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -667,6 +671,9 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -846,6 +853,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -1031,7 +1041,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1084,7 +1094,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1170,6 +1179,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -1355,7 +1367,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1408,7 +1420,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1494,6 +1505,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -1679,7 +1693,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1732,7 +1746,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1818,6 +1831,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       }
       width={0}
     >
+      <title>
+        AreaChart
+      </title>
       <g
         className=
 
@@ -2003,7 +2019,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2056,7 +2072,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

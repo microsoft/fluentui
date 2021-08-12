@@ -136,6 +136,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <svg className={this._classNames.chart}>
+              {data!.chartTitle && <title>{data!.chartTitle}</title>}
               <g>{bars[0]}</g>
               <Callout
                 gapSpace={15}
@@ -146,6 +147,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 directionalHint={DirectionalHint.topRightEdge}
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
+                preventDismissOnLostFocus={true}
                 {...this.props.calloutProps}
                 {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
               >

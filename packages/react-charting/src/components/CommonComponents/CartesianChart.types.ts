@@ -5,7 +5,7 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins } from '../../types/index';
+import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
@@ -336,6 +336,7 @@ export interface IYValueHover {
   shouldDrawBorderBottom?: boolean;
   yAxisCalloutData?: string | { [id: string]: number };
   index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IChildProps {
@@ -349,6 +350,11 @@ export interface IChildProps {
 
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  /**
+   * Define the chart title
+   */
+  chartTitle?: string;
+
   /**
    * Only used for Area chart
    * Value used to draw y axis of that chart.

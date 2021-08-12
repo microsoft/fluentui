@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 29 Jul 2021 07:35:37 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.24)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.23..@fluentui/react-charting_v5.3.24)
+
+### Patches
+
+- Legends will be focusable in browser mode ([PR #19318](https://github.com/microsoft/fluentui/pull/19318) by v-scharde@microsoft.com)
+- Chart title added for Area and Line chart ([PR #19293](https://github.com/microsoft/fluentui/pull/19293) by v-scharde@microsoft.com)
+
+## [5.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.23)
+
+Mon, 09 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.22..@fluentui/react-charting_v5.3.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.27.1 ([PR #19228](https://github.com/microsoft/fluentui/pull/19228) by kinhln@microsoft.com)
+
+## [5.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.22)
+
+Thu, 05 Aug 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.21..@fluentui/react-charting_v5.3.22)
+
+### Patches
+
+- Accessibility change for Area Chart and Line chart ([PR #19245](https://github.com/microsoft/fluentui/pull/19245) by v-scharde@microsoft.com)
+
+## [5.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.21)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.20..@fluentui/react-charting_v5.3.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.26.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [5.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.20)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.19..@fluentui/react-charting_v5.3.20)
+
+### Patches
+
+- Added role as a link for overflow legends message, so it will read like 7 more link collapsed ([PR #19199](https://github.com/microsoft/fluentui/pull/19199) by v-scharde@microsoft.com)
+- Border will be visible on rect focus ([PR #19202](https://github.com/microsoft/fluentui/pull/19202) by v-scharde@microsoft.com)
+- callout issue resolved by adding preventDismissOnLostFocus prop to callout props ([PR #19178](https://github.com/microsoft/fluentui/pull/19178) by v-scharde@microsoft.com)
+- Accessibility change for Vertical Bar chart ([PR #19074](https://github.com/microsoft/fluentui/pull/19074) by v-scharde@microsoft.com)
+
+## [5.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.19)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.18..@fluentui/react-charting_v5.3.19)
+
+### Patches
+
+- Bump @fluentui/react to v8.26.0 ([PR #19195](https://github.com/microsoft/fluentui/pull/19195) by rezha@microsoft.com)
 
 ## [5.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.18)
 

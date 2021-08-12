@@ -1,8 +1,92 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Thu, 29 Jul 2021 07:35:37 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.53 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.52 ([PR #19015](https://github.com/microsoft/fluentui/pull/19015) by 67673432+q-xg@users.noreply.github.com)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19249](https://github.com/microsoft/fluentui/pull/19249) by olfedias@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 09 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.51 ([PR #19228](https://github.com/microsoft/fluentui/pull/19228) by kinhln@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 05 Aug 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.50 ([PR #18566](https://github.com/microsoft/fluentui/pull/18566) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.49 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.48 ([PR #19212](https://github.com/microsoft/fluentui/pull/19212) by czearing@outlook.com)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19204](https://github.com/microsoft/fluentui/pull/19204) by lingfan.gao@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.47 ([PR #19195](https://github.com/microsoft/fluentui/pull/19195) by rezha@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
 
