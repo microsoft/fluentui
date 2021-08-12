@@ -40,9 +40,13 @@ const config = {
     jsdoc: {
       ignoreInternal: true,
       tagNamePreference: {
+        // Allow any of @default, @defaultvalue, @defaultValue until we settle on a preferred one
+        default: 'default',
         defaultvalue: 'defaultvalue',
         defaultValue: 'defaultValue',
+        // Allow either @return or @returns until we settle on a preferred one
         return: 'return',
+        returns: 'returns',
       },
     },
   },
@@ -283,7 +287,13 @@ const config = {
     'import/namespace': 'off',
     'import/no-named-as-default-member': 'off',
 
-    'jsdoc/check-tag-names': ['error', { definedTags: ['jest-environment'] }],
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        // Allow TSDoc tags @remarks and @defaultValue
+        definedTags: ['remarks', 'defaultValue'],
+      },
+    ],
   },
 };
 

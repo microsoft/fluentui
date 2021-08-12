@@ -1,9 +1,6 @@
 import * as yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
 
-// This file uses the non-standard jsdoc tag @remarks
-/* eslint jsdoc/check-tag-names: ['error', { definedTags: ['remarks'] }] */
-
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
  *
