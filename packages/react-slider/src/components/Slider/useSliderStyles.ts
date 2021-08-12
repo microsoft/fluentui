@@ -10,7 +10,7 @@ const useRootStyles = makeStyles({
     '--slider-thumb-size': '20px',
     '--slider-color': '#005fb8',
     position: 'relative',
-    // overflow: 'hidden',
+    overflow: 'hidden',
     userSelect: 'none',
     // display: 'inline-flex',
     touchAction: 'none',
@@ -161,6 +161,7 @@ const useMarksContainerStyles = makeStyles({
 
     '& .ms-Slider-label': {
       transform: 'translate(-50%)',
+      padding: '2px',
     },
   }),
 

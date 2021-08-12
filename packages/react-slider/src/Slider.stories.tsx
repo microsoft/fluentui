@@ -56,18 +56,19 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Slider marks={[1, 4, 5, 8]} />
       <Label>Mark Labels</Label>
       <Slider
+        step={2}
         marks={[
-          10,
+          {
+            value: 2,
+            mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
+            label: 'helloooooo',
+          },
           {
             value: 9,
-            label: (
-              <img
-                src="https://s3.amazonaws.com/freecodecamp/relaxing-cat.jpg"
-                alt="The cute kitten looking up hella cute"
-                style={{ width: '100px', height: '100px' }}
-              />
-            ),
+            mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
+            label: 'hello',
           },
+          10,
         ]}
       />
       <Label>Vertical Marks</Label>
