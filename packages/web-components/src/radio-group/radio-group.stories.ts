@@ -13,8 +13,11 @@ export default {
   },
 };
 
-const RadioGroupTemplate = ({ disabled, required }) =>
-  `<fluent-radio-group ${disabled ? 'disabled' : ''} ${required ? 'required' : ''} >
+const RadioGroupTemplate = ({ disabled, required }) => `
+  <fluent-radio-group 
+    ${disabled ? 'disabled' : ''} 
+    ${required ? 'required' : ''} 
+  >
     <fluent-radio>Apples</fluent-radio>
     <fluent-radio>Bananas</fluent-radio>
   </fluent-radio-group>`;

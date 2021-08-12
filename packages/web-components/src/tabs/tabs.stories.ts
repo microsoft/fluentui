@@ -16,9 +16,9 @@ export default {
 
 const TabsTemplate = ({ activeId, activeIndicator, orientation }) => `
 <fluent-tabs
-  orientation="${orientation}"
-  activeIndicator="${activeIndicator}"
-  activeId="${activeId}"
+  ${orientation ? `orientation="${orientation}"` : ''}
+  ${activeIndicator ? `activeIndicator="${activeIndicator}"` : ''}
+  ${activeId ? `activeId="${activeId}"` : ''}
 >
   <fluent-tab id="TabOne">Tab one</fluent-tab>
   <fluent-tab id="TabTwo">Tab two</fluent-tab>

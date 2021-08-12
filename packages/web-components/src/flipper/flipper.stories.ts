@@ -13,7 +13,10 @@ export default {
 };
 
 const FlipperTemplate = ({ direction, disabled, content }) =>
-  `<fluent-flipper ${disabled ? 'disabled' : ''} direction="${direction}"></fluent-flipper>`;
+  `<fluent-flipper 
+    ${disabled ? 'disabled' : ''} 
+    ${direction ? `direction="${direction}"` : ''}
+  ></fluent-flipper>`;
 
 export const Flipper = FlipperTemplate.bind({});
 

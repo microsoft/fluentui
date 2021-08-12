@@ -17,10 +17,13 @@ export default {
   },
 };
 
-const RadioTemplate = ({ checked, disabled, required }) =>
-  `<fluent-radio ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''} ${
-    required ? 'required' : ''
-  } ></fluent-radio>`;
+const RadioTemplate = ({ checked, disabled, required }) => `
+  <fluent-radio 
+    ${checked ? 'checked' : ''} 
+    ${disabled ? 'disabled' : ''} 
+    ${required ? 'required' : ''} 
+  ></fluent-radio>
+`;
 
 export const Radio = RadioTemplate.bind({});
 

@@ -10,7 +10,11 @@ export default {
   },
 };
 
-const ProgressRingTemplate = ({ paused }) => `<fluent-progress-ring paused="${paused}"></fluent-progress-ring>`;
+const ProgressRingTemplate = ({ paused }) => `
+  <fluent-progress-ring 
+    ${paused ? `paused="${paused}"` : ''}
+  ></fluent-progress-ring>
+`;
 
 export const ProgressRing = ProgressRingTemplate.bind({});
 

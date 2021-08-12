@@ -61,7 +61,7 @@ const numberFieldTemplate = ({
   value,
 }) => `
   <fluent-number-field
-    appearance="${appearance}"
+    ${appearance ? `appearance="${appearance}"` : ''}
     ${autoFocus ? 'autofocus' : ''}
     ${disabled ? 'disabled' : ''}
     ${hideStep ? 'hide-step' : ''}

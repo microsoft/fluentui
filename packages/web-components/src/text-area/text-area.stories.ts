@@ -29,12 +29,12 @@ export default {
 
 const TextAreaTemplate = ({ appearance, autoFocus, disabled, placeholder, readonly, resize, required }) => `
 <fluent-text-area
-  appearance="${appearance}"
+  ${appearance ? `appearance="${appearance}"` : ''}
   ${autoFocus ? 'autofocus' : ''}
   ${disabled ? 'disabled' : ''}
-  placeholder="${placeholder}"
+  ${placeholder ? `placeholder="${placeholder}"` : ''}
   ${readonly ? 'readonly' : ''}
-  resize="${resize}"
+  ${resize ? `resize="${resize}"` : ''}
   ${required ? 'required' : ''}
 ></fluent-text-area>`;
 

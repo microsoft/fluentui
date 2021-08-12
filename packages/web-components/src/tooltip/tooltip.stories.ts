@@ -12,7 +12,12 @@ export default {
 };
 
 const TooltipTemplate = ({ label, position }) => `
-  <fluent-tooltip anchor="button" position="${position}">${label}</fluent-tooltip>
+  <fluent-tooltip 
+    anchor="button" 
+    ${position ? `position="${position}"` : ''}
+  >
+    ${label}
+  </fluent-tooltip>
   <fluent-button id="button">Reveal Tooltip</fluent-button>
 `;
 

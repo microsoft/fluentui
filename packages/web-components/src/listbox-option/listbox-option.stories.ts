@@ -20,7 +20,7 @@ const listBoxTemplate = ({ disabled, label, selected, value }) => `
   <fluent-option 
     ${disabled ? 'disabled' : ''}
     ${selected ? 'selected' : ''}
-    value="${value}"
+    ${value ? `value="${value}"` : ''}
   >${label}</fluent-option>
 `;
 

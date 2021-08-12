@@ -16,12 +16,16 @@ export default {
 };
 
 const SelectTemplate = ({ disabled, position }) => `
-<fluent-select ${disabled ? 'disabled' : ''} position="${position}">
-  <fluent-option>Option One</fluent-option>
-  <fluent-option>Option Two</fluent-option>
-  <fluent-option>Option Three</fluent-option>
-  <fluent-option>Option Four</fluent-option>
-</fluent-select>`;
+  <fluent-select 
+    ${disabled ? 'disabled' : ''} 
+    ${position ? `position="${position}"` : ''}
+  >
+    <fluent-option>Option One</fluent-option>
+    <fluent-option>Option Two</fluent-option>
+    <fluent-option>Option Three</fluent-option>
+    <fluent-option>Option Four</fluent-option>
+  </fluent-select>
+`;
 
 export const Select = SelectTemplate.bind({});
 Select.args = {

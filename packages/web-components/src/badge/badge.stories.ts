@@ -11,7 +11,10 @@ export default {
   },
 };
 
-const BadgeTemplate = ({ appearance, label }) => `<fluent-badge appearance="${appearance}">${label}</fluent-badge>`;
+const BadgeTemplate = ({ appearance, label }) => `
+  <fluent-badge 
+    ${appearance ? `appearance="${appearance}"` : ''}
+  >${label}</fluent-badge>`;
 
 export const Badge = BadgeTemplate.bind({});
 

@@ -6,8 +6,8 @@ export default {
   argTypes: {
     appearance: {
       description: 'This controls the basic appearances',
-      options: ['neutral', 'accent', 'lighweight', 'outline', 'stealth'],
       control: { type: 'select' },
+      options: ['neutral', 'accent', 'lighweight', 'outline', 'stealth'],
       default: 'neutral',
     },
     disabled: {
@@ -17,10 +17,18 @@ export default {
 };
 
 const ButtonTemplate = ({ appearance, disabled, label }) =>
-  `<fluent-button ${disabled ? 'disabled' : ''} appearance="${appearance}">${label}</fluent-button>`;
+  `
+    <fluent-button 
+      ${disabled ? 'disabled' : ''} 
+      ${appearance ? `appearance="${appearance}"` : ''}
+    >
+      ${label}
+    </fluent-button>
+  `;
 
 export const Button = ButtonTemplate.bind({});
 
 Button.args = {
   label: 'Button',
+  appearance: 'neutral',
 };

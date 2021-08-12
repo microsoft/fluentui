@@ -5,7 +5,7 @@ export default {
   component: fluentCombobox,
   argTypes: {
     appearance: {
-      options: ['filled'],
+      options: ['filled', 'outline'],
       control: { type: 'radio' },
     },
     autocomplete: {
@@ -24,10 +24,10 @@ export default {
 
 const ComboboxTemplate = ({ appearance, autocomplete, position, required }) => `
   <fluent-combobox
-    appearance="${appearance}"
-    autocomplete="${autocomplete}"
+    ${appearance ? `appearance="${appearance}"` : ''}
+    ${appearance ? `autocomplete="${autocomplete}"` : ''}
     ${required ? 'required' : ''}
-    position="${position}"
+    ${position ? `position="${position}"` : ''}
   >
     <fluent-option>Please Please Me</fluent-option>
     <fluent-option>With The Beatles</fluent-option>
@@ -49,5 +49,5 @@ export const Combobox = ComboboxTemplate.bind({});
 
 Combobox.args = {
   value: 'Christopher Eccleston',
-  appearance: 'accent',
+  appearance: 'outline',
 };

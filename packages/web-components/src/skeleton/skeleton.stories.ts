@@ -15,9 +15,11 @@ export default {
 };
 
 const SkeletonTemplate = ({ shape, shimmer }) => `
-<fluent-skeleton shape="${shape}" ${
-  shimmer ? 'shimmer' : ''
-} style="border-radius: 4px; margin-top: 10px; height: 10px" width: 100px"></fluent-skeleton>
+  <fluent-skeleton 
+    ${shape ? `shape="${shape}"` : ''}
+    ${shimmer ? 'shimmer' : ''} 
+    style="border-radius: 4px; margin-top: 10px; height: 10px" width: 100px"
+  ></fluent-skeleton>
 `;
 
 export const Skeleton = SkeletonTemplate.bind({});

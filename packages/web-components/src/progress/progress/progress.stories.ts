@@ -10,7 +10,12 @@ export default {
   },
 };
 
-const ProgressTemplate = ({ paused, value }) => `<fluent-progress paused="${paused}" value=${value}></fluent-progress>`;
+const ProgressTemplate = ({ paused, value }) => `
+  <fluent-progress 
+    ${paused ? `paused="${paused}"` : ''}
+    ${value ? `value=${value}` : ''}
+  ></fluent-progress>
+`;
 
 export const Progress = ProgressTemplate.bind({});
 

@@ -11,7 +11,13 @@ export default {
   },
 };
 
-const AnchorTemplate = ({ appearance, label }) => `<fluent-anchor appearance="${appearance}">${label}</fluent-anchor>`;
+const AnchorTemplate = ({ appearance, label }) => `
+  <fluent-anchor 
+    ${appearance ? `appearance="${appearance}"` : ''}
+  >
+    ${label}
+  </fluent-anchor>
+`;
 
 export const Anchor = AnchorTemplate.bind({});
 
