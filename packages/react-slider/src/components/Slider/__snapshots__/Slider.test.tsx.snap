@@ -100,6 +100,713 @@ exports[`Slider renders Slider correctly 1`] = `
 </div>
 `;
 
+exports[`Slider renders Slider with custom marks correctly 1`] = `
+Array [
+  <div
+    className=""
+    id="slider-1"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateColumns": "10% 20% 40% 10% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          style={
+            Object {
+              "background": "red",
+              "height": "2px",
+              "width": "2px",
+            }
+          }
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "left": 0,
+              "width": "50%",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateX(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+  <div
+    className=""
+    id="slider-2"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateRows": "10% 20% 40% 10% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          style={
+            Object {
+              "background": "red",
+              "height": "2px",
+              "width": "2px",
+            }
+          }
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "height": "50%",
+              "top": 0,
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateY(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Slider renders Slider with mark labels correctly 1`] = `
+Array [
+  <div
+    className=""
+    id="slider-1"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateColumns": "20% 10% 40% 10% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+        <div
+          className="ms-Slider-label"
+        >
+          <div
+            className="Test"
+          >
+            Hello
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "left": 0,
+              "width": "50%",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateX(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+  <div
+    className=""
+    id="slider-2"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateRows": "20% 10% 60% -10% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+        <div
+          className="ms-Slider-label"
+        >
+          Hello
+        </div>
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "height": "50%",
+              "top": 0,
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateY(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Slider renders Slider with marks correctly 1`] = `
+Array [
+  <div
+    className=""
+    id="slider-1"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateColumns": "0% 30% 30% 30% 30% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "left": 0,
+              "width": "50%",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateX(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+  <div
+    className=""
+    id="slider-2"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateColumns": "10% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "left": 0,
+              "width": "50%",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateX(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+  <div
+    className=""
+    id="slider-3"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateColumns": "10% 20% 40% 10% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "left": 0,
+              "width": "50%",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateX(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+  <div
+    className=""
+    id="slider-4"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "gridTemplateRows": "50% -30% 70% 90% ",
+        }
+      }
+    >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "height": "50%",
+              "top": 0,
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateY(50%)",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+]
+`;
+
 exports[`Slider renders Slider with origin correctly 1`] = `
 Array [
   <div

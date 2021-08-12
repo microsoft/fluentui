@@ -45,6 +45,45 @@ describe('Slider', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('renders Slider with marks correctly', () => {
+    const component = create(
+      <>
+        <Slider defaultValue={5} marks={true} step={3} />
+        <Slider defaultValue={5} marks={[1]} />
+        <Slider defaultValue={5} marks={[1, 3, 7, 8]} />
+        <Slider defaultValue={5} marks={[5, 2, 9, 18]} vertical />
+      </>,
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders Slider with custom marks correctly', () => {
+    const component = create(
+      <>
+        <Slider
+          defaultValue={5}
+          marks={[1, { value: 3, mark: <div style={{ width: '2px', height: '2px', background: 'red' }} /> }, 7, 8]}
+        />
+        <Slider
+          defaultValue={5}
+          marks={[1, { value: 3, mark: <div style={{ width: '2px', height: '2px', background: 'red' }} /> }, 7, 8]}
+          vertical
+        />
+      </>,
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders Slider with mark labels correctly', () => {
+    const component = create(
+      <>
+        <Slider defaultValue={5} marks={[2, { value: 3, label: <div className="Test">Hello</div> }, 7, 8]} />
+        <Slider defaultValue={5} marks={[2, { value: 3, label: 'Hello' }, 9, 8]} vertical />
+      </>,
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   // TODO: Find why focus is null.
   // it('renders (focus) correctly', () => {
   //   let sliderRef: any;
