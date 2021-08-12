@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Aug 2021 07:34:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.1)
+
+Thu, 12 Aug 2021 07:34:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.0..@fluentui/react-text_v9.0.0-alpha.1)
+
+### Changes
+
+- Initial release ([PR #19363](https://github.com/microsoft/fluentui/pull/19363) by andredias@microsoft.com)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.0)
 

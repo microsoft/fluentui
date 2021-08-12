@@ -2,6 +2,29 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.34.4",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",

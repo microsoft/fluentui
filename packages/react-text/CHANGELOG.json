@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Initial release",
+            "author": "andredias@microsoft.com",
+            "commit": "d65c09077575d1a42ae9beb9ddd8a7b94452e13b",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/react-text_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

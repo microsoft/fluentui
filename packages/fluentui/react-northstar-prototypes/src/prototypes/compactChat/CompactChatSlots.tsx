@@ -90,7 +90,7 @@ export const CompactChatSlots = () => (
           gutter: <Avatar image={robinAvatar.image} status={{ color: robinAvatar.status.color }} />,
           message: (
             <Chat.Message
-              author="Robin"
+              author="Robin Counts"
               badge={{ icon: <RedbangIcon /> }}
               content="The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
               details="Edited"
@@ -115,7 +115,7 @@ export const CompactChatSlots = () => (
           gutter: <Avatar {...robinAvatar} />,
           message: (
             <Chat.Message
-              author="Robin"
+              author="Robin Counts"
               badge={{ icon: <RedbangIcon /> }}
               content="The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
               details={<EditIcon outline />}

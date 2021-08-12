@@ -105,9 +105,12 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
 
   /**
    * Whether or not to mark the TooltipHost root element as described by the tooltip.
-   * If not specified, the caller should pass an `id` to the TooltipHost (to be passed through to
-   * the Tooltip) and mark the appropriate element as `aria-describedby` the `id`.
+   * Since this applies aria-describedby to a generic <div>, the description will not be
+   * read by screen readers. Instead, the caller should pass an `id` to the TooltipHost
+   * (to be passed through to the Tooltip) and mark the appropriate element as `aria-describedby`
+   * with the `id`.
    * @defaultvalue true
+   * @deprecated use aria-describedby on the appropriate element instead
    */
   setAriaDescribedBy?: boolean;
 
