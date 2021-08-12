@@ -3,7 +3,6 @@ import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IKeytipProps } from '../../Keytip';
 import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst, usePrevious } from '@fluentui/react-hooks';
-import { memoizeFunction } from '../../../../utilities/lib/memoize';
 
 const registerPersistedKeytips = (
   keytipsToRegister: IKeytipProps[],
@@ -56,38 +55,6 @@ const useKeytipRegistrations = (
   }, []);
 };
 
-const createPersistedKeytip = memoizeFunction(
-  (
-    keytip: IKeytipProps,
-    overflowItem: IOverflowSetItemProps,
-    keytipManager: KeytipManager,
-    keytipSequences?: string[],
-    subMenuForItem?: boolean | any[],
-  ): IKeytipProps => {
-    const persistedKeytip: IKeytipProps = {
-      content: keytip.content,
-      keySequences: keytip.keySequences,
-      disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
-      hasDynamicChildren: keytip.hasDynamicChildren,
-      hasMenu: keytip.hasMenu,
-    };
-
-    if (keytip.hasDynamicChildren || subMenuForItem) {
-      // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
-      persistedKeytip.onExecute = keytipManager.menuExecute.bind(
-        keytipManager,
-        keytipSequences,
-        overflowItem?.keytipProps?.keySequences,
-      );
-    } else {
-      // If the keytip doesn't have a submenu, just execute the original function
-      persistedKeytip.onExecute = keytip.onExecute;
-    }
-
-    return persistedKeytip;
-  },
-);
-
 export const OverflowButton = (props: IOverflowSetProps) => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
   const { className, overflowItems, keytipSequences, itemSubMenuProvider, onRenderOverflowButton } = props;
@@ -118,15 +85,27 @@ export const OverflowButton = (props: IOverflowSetProps) => {
 
         if (keytip) {
           // Create persisted keytip
-          keytipsToRegister.push(
-            createPersistedKeytip(
-              keytip,
-              overflowItem,
+          const persistedKeytip: IKeytipProps = {
+            content: keytip.content,
+            keySequences: keytip.keySequences,
+            disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
+            hasDynamicChildren: keytip.hasDynamicChildren,
+            hasMenu: keytip.hasMenu,
+          };
+
+          if (keytip.hasDynamicChildren || getSubMenuForItem(overflowItem)) {
+            // If the keytip has a submenu or children nodes, change onExecute to persistedKeytipExecute
+            persistedKeytip.onExecute = keytipManager.menuExecute.bind(
               keytipManager,
               keytipSequences,
-              getSubMenuForItem(overflowItem),
-            ),
-          );
+              overflowItem?.keytipProps?.keySequences,
+            );
+          } else {
+            // If the keytip doesn't have a submenu, just execute the original function
+            persistedKeytip.onExecute = keytip.onExecute;
+          }
+
+          keytipsToRegister.push(persistedKeytip);
 
           // Add the overflow sequence to this item
           const newOverflowItem = {
