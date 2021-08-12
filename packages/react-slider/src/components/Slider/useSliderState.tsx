@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import { background } from '@storybook/theming';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -222,8 +223,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   /**
    * Gets the current percentage position for the marks.
    */
-  const getMarkPercent = (): number[] => {
-    const percentArray = [];
+  const getMarkPercent = (): string[] => {
+    const percentArray: number[] = [];
+    const result: string[] = [];
     // There are three cases:
 
     // 1. We receive a boolean: mark for every step.
@@ -246,7 +248,14 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       }
     }
 
-    return percentArray;
+    // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
+    let prevPercent = 0;
+    for (let i = 0; i < percentArray.length; i++) {
+      result.push(percentArray[i] - prevPercent + '% ');
+      prevPercent = percentArray[i];
+    }
+
+    return result;
   };
 
   /**
@@ -261,15 +270,15 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         <div
           className="ms-Slider-markItemContainer"
           key={`markItemContainer-${i}`}
-          style={
-            vertical
-              ? {
-                  top: marksPercent[i] + '%',
-                }
-              : {
-                  left: marksPercent[i] + '%',
-                }
-          }
+          // style={
+          //   vertical
+          //     ? {
+          //         top: marksPercent[i] + '%',
+          //       }
+          //     : {
+          //         left: marksPercent[i] + '%',
+          //       }
+          // }
         >
           <span className="ms-Slider-mark" key={`mark-${i}`} />
           {typeof marks[i] === 'object' && marks[i]?.label && (
@@ -292,6 +301,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     state.onKeyDown = onKeyDown;
   }
 
+  // Slider Wrapper Props
+  state.sliderWrapper.children = null;
+
   // Rail Props
   state.rail.children = null;
 
@@ -303,8 +315,15 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.style = trackStyles;
   state.track.children = null;
 
+  const marksContainerStyles = {
+    gridTemplateColumns: getMarkPercent().join(''),
+    ...state.marksContainer.style,
+  };
+
+  console.log(getMarkPercent().join(''));
   // Mark props
   state.marksContainer.children = marks ? renderMarks() : null;
+  state.marksContainer.style = marks ? marksContainerStyles : null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;

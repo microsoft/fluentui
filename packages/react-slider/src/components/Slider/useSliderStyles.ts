@@ -18,13 +18,35 @@ const useRootStyles = makeStyles({
 
   horizontal: theme => ({
     minWidth: '280px',
-    minHeight: 'var(--slider-thumb-size)',
+    // minHeight: 'var(--slider-thumb-size)',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
-    width: 'var(--slider-thumb-size)',
+    minWidth: 'var(--slider-thumb-size)',
     minHeight: '120px',
+  }),
+});
+
+/**
+ * Styles for the slider wrapper slot
+ */
+const useSliderWrapper = makeStyles({
+  sliderWrapper: theme => ({
+    position: 'absolute',
+    overflow: 'hidden',
+  }),
+
+  horizontal: theme => ({
+    left: 'calc(var(--slider-thumb-size) * .05)',
+    right: 'calc(var(--slider-thumb-size) * .05)',
+    minHeight: 'var(--slider-thumb-size)',
+  }),
+
+  vertical: theme => ({
+    top: 'calc(var(--slider-thumb-size) * .05)',
+    bottom: 'calc(var(--slider-thumb-size) * .05)',
+    minWidth: 'var(--slider-thumb-size)',
   }),
 });
 
@@ -124,55 +146,61 @@ const useTrackStyles = makeStyles({
  */
 const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
-    position: 'absolute',
-    outline: 'none',
+    display: 'grid',
+    justifyItems: 'start',
+    // outline: 'none',
+    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .05))',
+    marginLeft: 'calc(var(--slider-thumb-size) / 2)',
+    marginRight: 'calc(var(--slider-thumb-size) / 2)',
+    background: 'rgba(0, 255, 0, 0.4)',
 
     '& .ms-Slider-markItemContainer': {
-      position: 'absolute',
+      // position: 'absolute',
     },
 
     '& .ms-Slider-mark': {
-      position: 'absolute',
-      background: '#626262',
+      boxSizing: 'border-box',
+      border: '1px solid #626262',
+      // background: '#626262',
     },
 
     '& .ms-Slider-label': {
-      position: 'absolute',
+      // position: 'absolute',
     },
   }),
 
-  horizontal: theme => ({
-    left: 'calc(var(--slider-thumb-size) / 2)',
-    right: 'calc(var(--slider-thumb-size) / 2)',
-    top: '0px',
-    bottom: '0px',
+  // horizontal: theme => ({
+  //   left: 'calc(var(--slider-thumb-size) / 2)',
+  //   right: 'calc(var(--slider-thumb-size) / 2)',
+  //   top: '0px',
+  //   bottom: '0px',
 
-    '& .ms-Slider-mark': {
-      width: '1px',
-      height: '4px',
-    },
+  //   '& .ms-Slider-mark': {
+  //     width: '1px',
+  //     height: '4px',
+  //   },
 
-    '& .ms-Slider-markItemContainer': {
-      width: '1px',
-      height: '4px',
-      bottom: '0px',
-    },
+  //   '& .ms-Slider-markItemContainer': {
+  //     width: '1px',
+  //     height: '4px',
+  //     bottom: '0px',
+  //   },
 
-    '& .ms-Slider-label': {
-      transform: 'translate(-50%)',
-      top: '10px',
-    },
-  }),
+  //   '& .ms-Slider-label': {
+  //     transform: 'translate(-50%)',
+  //     top: '10px',
+  //   },
+  // }),
 
-  vertical: theme => ({
-    top: 'calc(var(--slider-thumb-size) / 2)',
-    bottom: 'calc(var(--slider-thumb-size) / 2)',
+  // vertical: theme => ({
+  //   top: 'calc(var(--slider-thumb-size) / 2)',
+  //   bottom: 'calc(var(--slider-thumb-size) / 2)',
 
-    '& .ms-Slider-mark': {
-      height: '1px',
-      width: '4px',
-    },
-  }),
+  //   '& .ms-Slider-mark': {
+  //     height: '1px',
+  //     width: '4px',
+  //   },
+  // }),
 });
 
 /**
@@ -296,6 +324,7 @@ const useActiveRailStyles = makeStyles({
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
+  const sliderWrapperStyles = useSliderWrapper();
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
@@ -315,6 +344,12 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.vertical ? railStyles.vertical : railStyles.horizontal,
     state.disabled ? railStyles.disabled : railStyles.enabled,
     state.rail.className,
+  );
+
+  state.sliderWrapper.className = mergeClasses(
+    sliderWrapperStyles.sliderWrapper,
+    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
+    state.sliderWrapper.className,
   );
 
   state.trackWrapper.className = mergeClasses(
