@@ -52,7 +52,7 @@
     "simulant": "^0.2.2"
   },
   "files": [
-    "dist",
+    "dist"
   ],
   "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar",
   "jsnext:main": "dist/es/index.js",
