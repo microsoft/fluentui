@@ -59,6 +59,9 @@ export interface PopoverProps extends Pick<PortalProps, 'mountNode'> {
    */
   trapFocus?: boolean;
 
+  /**
+   * Configures the position of the Popover
+   */
   positioning?: PositioningShorthand;
 }
 

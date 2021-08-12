@@ -58,6 +58,9 @@ export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
 
+  /**
+   * Configures the positioned menu
+   */
   positioning?: PositioningShorthand;
 }
 
