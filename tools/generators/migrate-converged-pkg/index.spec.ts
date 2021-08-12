@@ -701,6 +701,87 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`npm config setup`, () => {
+    it(`should update .npmignore config`, async () => {
+      function getNpmIgnoreConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+        return tree.read(`${projectConfig.root}/.npmignore`)?.toString('utf-8');
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+
+      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
+        "*.api.json
+        *.config.js
+        *.log
+        *.nuspec
+        *.test.*
+        *.yml
+        .editorconfig
+        .eslintrc*
+        .eslintcache
+        .gitattributes
+        .gitignore
+        .vscode
+        coverage
+        dist/storybook
+        dist/*.stats.html
+        dist/*.stats.json
+        dist/demo
+        fabric-test*
+        gulpfile.js
+        images
+        index.html
+        jsconfig.json
+        node_modules
+        results
+        src/**/*
+        !src/**/examples/*.tsx
+        !src/**/docs/**/*.md
+        !src/**/*.types.ts
+        temp
+        tsconfig.json
+        tsd.json
+        tslint.json
+        typings
+        visualtests"
+      `);
+
+      await generator(tree, options);
+
+      npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+
+      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
+        ".cache/
+        .storybook/
+        .vscode/
+        coverage/
+        src/
+        bundle-size/
+        config/
+        temp/
+        e2e/
+        node_modules/
+        __fixtures__
+        __tests__
+
+        *.log
+        *.yml
+        *.test.*
+        *.spec.*
+        *.stories.*
+        *.api.json
+
+        # config files
+        .git*
+        *rc.*
+        *config.*
+        .eslint*
+        .editorconfig
+        .prettierignore"
+      `);
+    });
+  });
+
   describe(`nx workspace updates`, () => {
     it(`should set project 'sourceRoot' in workspace.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
@@ -879,12 +960,49 @@ function setupDummyPackage(
     // Configure enzyme.
     configure({ adapter: new Adapter() });
     `,
+    npmConfig: stripIndents`
+      *.api.json
+      *.config.js
+      *.log
+      *.nuspec
+      *.test.*
+      *.yml
+      .editorconfig
+      .eslintrc*
+      .eslintcache
+      .gitattributes
+      .gitignore
+      .vscode
+      coverage
+      dist/storybook
+      dist/*.stats.html
+      dist/*.stats.json
+      dist/demo
+      fabric-test*
+      gulpfile.js
+      images
+      index.html
+      jsconfig.json
+      node_modules
+      results
+      src/**/*
+      !src/**/examples/*.tsx
+      !src/**/docs/**/*.md
+      !src/**/*.types.ts
+      temp
+      tsconfig.json
+      tsd.json
+      tslint.json
+      typings
+      visualtests
+    `,
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
+  tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
 
   addProjectConfiguration(tree, pkgName, {
     root: paths.root,

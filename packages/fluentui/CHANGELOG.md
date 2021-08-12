@@ -42,10 +42,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Button` icon only styles when disabledFocusable @chassunc ([#19180](https://github.com/microsoft/fluentui/pull/19180))
 - Fix `Dropdown` creating unnecessary `aria-labelledby` for `DropdownSearchInput` @chassunc ([#19182](https://github.com/microsoft/fluentui/pull/19182))
 - Fix error color for `Text` @chassunc ([#19203](https://github.com/microsoft/fluentui/pull/19203))
+- Fix `Tooltip` flickering in multi-window use case @yuanboxue-amber ([#19235](https://github.com/microsoft/fluentui/pull/19235))
+- Fix `Datepicker` input @yuanboxue-amber ([#19261](https://github.com/microsoft/fluentui/pull/19261))
+- Fix `Dialog` styles border radius changed @bcalvery ([#19328](https://github.com/microsoft/fluentui/pull/19328))
+- Fix `Card` HC styles on hover @chassunc ([#19382](https://github.com/microsoft/fluentui/pull/19382))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
 - Add secondary styles for `Loader` @chassunc ([#19104](https://github.com/microsoft/fluentui/pull/19104))
+
+### Documentation
+- Align author name in compact chat with design spec @Hirse ([#18988](https://github.com/microsoft/fluentui/pull/18988))
 
 
 <!--------------------------------[ v0.57.0 ]------------------------------- -->

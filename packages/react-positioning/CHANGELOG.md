@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Aug 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.41)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.40..@fluentui/react-positioning_v9.0.0-alpha.41)
+
+### Changes
+
+- cleanup types, do not export PopperOptions ([PR #19230](https://github.com/microsoft/fluentui/pull/19230) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.40)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.39..@fluentui/react-positioning_v9.0.0-alpha.40)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.38 ([PR #19189](https://github.com/microsoft/fluentui/pull/19189) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.39)
 

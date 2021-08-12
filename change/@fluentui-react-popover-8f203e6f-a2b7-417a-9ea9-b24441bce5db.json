@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(PopoverTrigger): Retain original child ref",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.20)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.19..@fluentui/react-checkbox_v9.0.0-alpha.20)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-alpha.25 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.19)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.18..@fluentui/react-checkbox_v9.0.0-alpha.19)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-alpha.24 ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.18)
 

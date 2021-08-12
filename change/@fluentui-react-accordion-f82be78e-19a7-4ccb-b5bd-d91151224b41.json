@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(Accordion): implement useContextValues() pattern",
+  "packageName": "@fluentui/react-accordion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

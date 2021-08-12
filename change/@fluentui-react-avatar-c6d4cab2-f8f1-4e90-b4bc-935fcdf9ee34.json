@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Replace default person icon with Fluent version",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

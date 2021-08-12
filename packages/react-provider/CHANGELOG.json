@@ -2,6 +2,36 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.63",
+      "version": "9.0.0-alpha.63",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix: export useTheme() hook",
+            "author": "olfedias@microsoft.com",
+            "commit": "457a8e6375eaecbad5de43740e91d6e4bc040388",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.62",
+      "version": "9.0.0-alpha.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.31",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8a09087b4215a36a50b6d3478cd2b74155c9c630",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Aug 2021 07:34:12 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-alpha.61",
       "version": "9.0.0-alpha.61",
