@@ -360,7 +360,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             />
           </div>
         </div>
@@ -725,7 +725,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             />
           </div>
         </div>
@@ -1397,7 +1397,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1450,7 +1450,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1539,7 +1538,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1949,7 +1947,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             />
           </div>
         </div>

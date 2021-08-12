@@ -232,7 +232,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -285,7 +285,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -547,7 +546,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="listbox"
+        role="group"
       >
         <div
           className=
@@ -600,7 +599,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -1055,7 +1053,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1108,7 +1106,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1387,7 +1384,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1440,7 +1437,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1719,7 +1715,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1772,7 +1768,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2051,7 +2046,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2104,7 +2099,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

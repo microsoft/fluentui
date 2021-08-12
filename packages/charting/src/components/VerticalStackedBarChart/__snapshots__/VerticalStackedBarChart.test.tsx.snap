@@ -156,7 +156,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -209,7 +209,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -298,7 +297,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -484,7 +482,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="listbox"
+        role="group"
       >
         <div
           className=
@@ -537,7 +535,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -626,7 +623,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -929,7 +925,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -982,7 +978,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1071,7 +1066,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1274,7 +1268,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1327,7 +1321,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1416,7 +1409,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1619,7 +1611,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1672,7 +1664,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1761,7 +1752,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1964,7 +1954,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2017,7 +2007,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2106,7 +2095,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2309,7 +2297,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2362,7 +2350,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2451,7 +2438,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
