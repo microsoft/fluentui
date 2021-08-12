@@ -383,8 +383,7 @@ ButtonPrimary.args = {
 };
 ButtonPrimary.storyName = 'Better story name';
 ```
-3. If the internal story is broken out into its own file, then the file should mirror the name of the story, which will include the `Internal` keyword for
-IDE search.
+3. If an internal story is broken out into its own file, then the file should mirror the name of the story, which will include the `Internal` keyword and a `.internal.stories` suffix for easier IDE search.
 
 ### 9. UX of stories
 
@@ -451,7 +450,7 @@ the value to the story id.
 We propose to use an extra filename extension and naming convention for internal stories:
 
 ```ts
-// MenuTabstopsInternal.stories.tsx
+// MenuTabstopsInternal.internal.stories.tsx
 // Deep link /story/components-menu--tabstops-internal
 // Does not appear in the sidebar or docs page
 export const TabstopsInternal = () => {
