@@ -125,7 +125,7 @@ export const OverflowButton = (props: IOverflowSetProps) => {
       currentOverflowItems = overflowItems!;
     }
     return currentOverflowItems;
-  }, [overflowItems, itemSubMenuProvider, keytipManager, keytipSequences, keytipsToRegister]);
+  }, [overflowItems, getSubMenuForItem, keytipManager, keytipSequences, keytipsToRegister]);
 
   useKeytipRegistrations(persistedKeytips, keytipsToRegister, keytipManager);
 
