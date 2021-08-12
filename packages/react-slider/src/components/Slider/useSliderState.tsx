@@ -249,10 +249,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     }
 
     // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
-    let prevPercent = 0;
-    for (let i = 0; i < percentArray.length; i++) {
-      result.push(percentArray[i] - prevPercent + '% ');
-      prevPercent = percentArray[i];
+    if (percentArray.length > 0) {
+      result.push(percentArray[0] + '% ');
+      let prevPercent = percentArray[0];
+      for (let i = 1; i < percentArray.length; i++) {
+        result.push(percentArray[i] - prevPercent + '% ');
+        prevPercent = percentArray[i];
+      }
     }
 
     return result;
@@ -267,26 +270,26 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
     for (let i = 0; i < marksPercent.length; i++) {
       marksChildren.push(
-        <div
-          className="ms-Slider-markItemContainer"
-          key={`markItemContainer-${i}`}
-          // style={
-          //   vertical
-          //     ? {
-          //         top: marksPercent[i] + '%',
-          //       }
-          //     : {
-          //         left: marksPercent[i] + '%',
-          //       }
-          // }
-        >
-          <span className="ms-Slider-mark" key={`mark-${i}`} />
-          {typeof marks[i] === 'object' && marks[i]?.label && (
+        // <div
+        //   className="ms-Slider-markItemContainer"
+        //   key={`markItemContainer-${i}`}
+        // style={
+        //   vertical
+        //     ? {
+        //         top: marksPercent[i] + '%',
+        //       }
+        //     : {
+        //         left: marksPercent[i] + '%',
+        //       }
+        // }
+        // >
+        <span className="ms-Slider-mark" key={`mark-${i}`} />,
+        /* {typeof marks[i] === 'object' && marks[i]?.label && (
             <div className="ms-Slider-label" key={`markLabel-${i}`}>
               {marks[i].label}
             </div>
           )}
-        </div>,
+        </div>, */
       );
     }
 
@@ -320,7 +323,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     ...state.marksContainer.style,
   };
 
-  console.log(getMarkPercent().join(''));
   // Mark props
   state.marksContainer.children = marks ? renderMarks() : null;
   state.marksContainer.style = marks ? marksContainerStyles : null;

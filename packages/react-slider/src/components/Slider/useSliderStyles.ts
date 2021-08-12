@@ -10,20 +10,20 @@ const useRootStyles = makeStyles({
     '--slider-thumb-size': '20px',
     '--slider-color': '#005fb8',
     position: 'relative',
-    // overflow: 'hidden',
+    overflow: 'hidden',
     userSelect: 'none',
-    display: 'inline-flex',
+    // display: 'inline-flex',
     touchAction: 'none',
   }),
 
   horizontal: theme => ({
     minWidth: '280px',
-    // minHeight: 'var(--slider-thumb-size)',
+    height: 'var(--slider-thumb-size)',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
-    minWidth: 'var(--slider-thumb-size)',
+    width: 'var(--slider-thumb-size)',
     minHeight: '120px',
   }),
 });
@@ -147,7 +147,7 @@ const useTrackStyles = makeStyles({
 const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
     display: 'grid',
-    justifyItems: 'start',
+    justifyItems: 'end',
     // outline: 'none',
     marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .05))',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',

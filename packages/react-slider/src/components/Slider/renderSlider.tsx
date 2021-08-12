@@ -11,7 +11,6 @@ export const renderSlider = (state: SliderState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {state.marks && <slots.marksContainer {...slotProps.marksContainer} />}
       <slots.sliderWrapper {...slotProps.sliderWrapper}>
         <slots.rail {...slotProps.rail} />
         <slots.trackWrapper {...slotProps.trackWrapper}>
@@ -22,6 +21,7 @@ export const renderSlider = (state: SliderState) => {
         </slots.thumbWrapper>
         <slots.activeRail {...slotProps.activeRail} />
       </slots.sliderWrapper>
+      {state.marks && <slots.marksContainer {...slotProps.marksContainer} />}
     </slots.root>
   );
 };
