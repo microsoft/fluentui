@@ -21,7 +21,19 @@ const AnchorTemplate = ({ appearance, label }) => `
 
 export const Anchor = AnchorTemplate.bind({});
 
+const example = `
+<fluent-anchor href="#">Anchor</fluent-anchor>
+`;
+
 Anchor.args = {
   label: 'Achor',
   appearance: 'neutral',
+};
+
+Anchor.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
 };

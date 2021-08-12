@@ -105,3 +105,15 @@ const TextFieldTemplate = ({
   ></fluent-text-field>`;
 
 export const TextField = TextFieldTemplate.bind({});
+
+const example = `
+<fluent-text-field></fluent-text-field>
+`;
+
+TextField.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

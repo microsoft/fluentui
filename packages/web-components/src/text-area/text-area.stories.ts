@@ -43,3 +43,15 @@ export const TextArea = TextAreaTemplate.bind({});
 TextArea.args = {
   placeholder: '',
 };
+
+const example = `
+<fluent-text-area></fluent-text-area>
+`;
+
+TextArea.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

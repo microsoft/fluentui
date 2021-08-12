@@ -45,3 +45,22 @@ const TreeViewTemplate = ({ disabled, renderCollapsedNodes }) => `
 </fluent-tree-view>`;
 
 export const TreeView = TreeViewTemplate.bind({});
+
+const example = `
+<fluent-tree-view>
+  <fluent-tree-item selected>Daisy</fluent-tree-item>
+  <fluent-tree-item>Sunflower</fluent-tree-item>
+  <fluent-tree-item>Rose</fluent-tree-item>
+  <fluent-divider></fluent-divider>
+  <fluent-tree-item>Petunia</fluent-tree-item>
+  <fluent-tree-item>Tulip</fluent-tree-item>
+</fluent-tree-view>
+`;
+
+TreeView.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

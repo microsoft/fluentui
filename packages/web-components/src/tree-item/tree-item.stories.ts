@@ -24,3 +24,15 @@ export const TreeItem = TreeItemTemplate.bind({});
 TreeItem.args = {
   label: 'Tree Item',
 };
+
+const example = `
+<fluent-tree-item>Tree item</fluent-tree-item>
+`;
+
+TreeItem.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

@@ -24,3 +24,15 @@ Flipper.args = {
   disabled: false,
   direction: 'next',
 };
+
+const example = `
+<fluent-flipper direction="previous"></fluent-flipper>
+`;
+
+Flipper.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

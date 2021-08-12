@@ -22,3 +22,11 @@ Badge.args = {
   label: 'Badge',
   appearance: 'accent',
 };
+
+Badge.parameters = {
+  docs: {
+    source: {
+      code: `<fluent-badge appearance="neutral">Text</fluent-badge>`,
+    },
+  },
+};

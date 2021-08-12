@@ -22,3 +22,15 @@ export const Progress = ProgressTemplate.bind({});
 Progress.args = {
   value: 50,
 };
+
+const example = `
+<fluent-progress min="0" max="100" value="75"></fluent-progress>
+`;
+
+Progress.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

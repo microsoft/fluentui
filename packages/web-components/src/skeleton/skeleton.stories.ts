@@ -23,7 +23,20 @@ const SkeletonTemplate = ({ shape, shimmer }) => `
 `;
 
 export const Skeleton = SkeletonTemplate.bind({});
+
 Skeleton.args = {
   shape: 'rect',
   shimmer: false,
+};
+
+const example = `
+<fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px" shape="rect"></fluent-skeleton>
+`;
+
+Skeleton.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
 };

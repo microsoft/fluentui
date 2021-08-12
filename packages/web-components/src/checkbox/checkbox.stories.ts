@@ -47,3 +47,15 @@ Checkbox.args = {
   disabled: false,
   required: false,
 };
+
+const example = `
+<fluent-checkbox>Checkbox</fluent-checkbox>
+`;
+
+Checkbox.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

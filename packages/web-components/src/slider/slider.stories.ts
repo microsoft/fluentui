@@ -27,3 +27,15 @@ export const Slider = SliderTemplate.bind({});
 Slider.args = {
   orientation: 'horizontal',
 };
+
+const example = `
+<fluent-slider></fluent-slider>
+`;
+
+Slider.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

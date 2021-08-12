@@ -35,3 +35,23 @@ Tabs.args = {
   activeIndicator: true,
   orientation: 'vertical',
 };
+
+const example = `
+<fluent-tabs id="myTab" activeId="TabTwo">
+  <fluent-tab id="TabOne">Tab one</fluent-tab>
+  <fluent-tab id="TabTwo">Tab two</fluent-tab>
+  <fluent-tab id="TabThree">Tab three</fluent-tab>
+  <fluent-tab-panel id="TabPanelOne"> Tab one content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel id="TabPanelTwo"> Tab two content. This is for testing. </fluent-tab-panel>
+  <fluent-tab-panel id="TabPanelThree"> Tab three content. This is for testing. </fluent-tab-panel>
+  <div>Testing</div>
+</fluent-tabs>
+`;
+
+Tabs.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

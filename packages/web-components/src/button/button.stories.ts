@@ -32,3 +32,15 @@ Button.args = {
   label: 'Button',
   appearance: 'neutral',
 };
+
+const example = `
+<fluent-button>Button</fluent-button>
+`;
+
+Button.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

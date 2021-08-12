@@ -27,4 +27,14 @@ const RadioTemplate = ({ checked, disabled, required }) => `
 
 export const Radio = RadioTemplate.bind({});
 
-// export const Radio = () => Examples;
+const example = `
+<fluent-radio></fluent-radio>
+`;
+
+Radio.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

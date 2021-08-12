@@ -32,3 +32,15 @@ SliderLabel.args = {
   hideMark: false,
   label: 'Label',
 };
+
+const example = `
+<fluent-slider-label> basic </fluent-slider-label>
+`;
+
+SliderLabel.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

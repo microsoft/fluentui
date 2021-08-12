@@ -26,3 +26,15 @@ export const Tooltip = TooltipTemplate.bind({});
 Tooltip.args = {
   label: `I'm helping!`,
 };
+
+const example = `
+<fluent-tooltip anchor="anchor-default"> Helpful text is helpful </fluent-tooltip>
+`;
+
+Tooltip.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};
