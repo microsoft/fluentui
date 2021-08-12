@@ -8,9 +8,9 @@ import { useFluentProviderContextValues } from './useFluentProviderContextValues
 
 export const FluentProvider = React.forwardRef<HTMLElement, FluentProviderProps>((props, ref) => {
   const state = useFluentProvider(props, ref);
-  const contextValues = useFluentProviderContextValues(state);
-
   useFluentProviderStyles(state);
+
+  const contextValues = useFluentProviderContextValues(state);
 
   return renderFluentProvider(state, contextValues);
 });
