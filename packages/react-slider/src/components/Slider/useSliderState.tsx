@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
-import { background } from '@storybook/theming';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.

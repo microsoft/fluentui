@@ -11,20 +11,22 @@ const useRootStyles = makeStyles({
     '--slider-color': '#005fb8',
     position: 'relative',
     overflow: 'hidden',
+    display: 'inline-flex',
     userSelect: 'none',
-    display: 'inline',
     touchAction: 'none',
   }),
 
   horizontal: theme => ({
     minWidth: '280px',
     minHeight: 'var(--slider-thumb-size)',
+    flexDirection: 'column',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
     minWidth: 'var(--slider-thumb-size)',
     minHeight: '120px',
+    flexDirection: 'row',
   }),
 });
 
@@ -150,11 +152,7 @@ const useMarksContainerStyles = makeStyles({
     display: 'grid',
     justifyItems: 'end',
     outline: 'none',
-
-    '& .ms-Slider-markItemContainer': {
-      transform: 'translate(100%)',
-    },
-
+    // background: 'green',
     '& .ms-Slider-mark': {
       background: '#626262',
     },
@@ -170,6 +168,10 @@ const useMarksContainerStyles = makeStyles({
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
 
+    '& .ms-Slider-markItemContainer': {
+      transform: 'translate(100%)',
+    },
+
     '& .ms-Slider-mark': {
       height: '4px',
       width: '1px',
@@ -179,7 +181,7 @@ const useMarksContainerStyles = makeStyles({
   vertical: theme => ({
     marginTop: 'calc(var(--slider-thumb-size) / 2)',
     marginBottom: 'calc(var(--slider-thumb-size) / 2)',
-    marginRight: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    marginLeft: '(var(--slider-thumb-size) * .25) )',
 
     '& .ms-Slider-mark': {
       height: '1px',

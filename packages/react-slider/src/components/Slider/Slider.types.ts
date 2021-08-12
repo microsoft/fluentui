@@ -106,7 +106,8 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   vertical?: boolean;
 
   /**
-   * When enabled, small marks are displayed across the **Sliders** , showing potential steps.
+   * When enabled, small marks are displayed across the **Sliders** , showing potential steps. Any provided mark values
+   * must be in numerical order.
    *
    * 1. `Boolean`: If true marks are visible.
    * 2. `Number[]`: Marks will be displayed at each provided number.
