@@ -349,6 +349,8 @@ NestedSubmenusControlled.parameters = {
   layout: 'padded',
 };
 
+export { TabstopsInternal, IframeClickDismissInternal } from './Menu.internal.stories';
+
 export default {
   title: 'Components/Menu',
   component: Menu,

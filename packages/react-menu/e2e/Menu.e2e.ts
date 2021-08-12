@@ -4,6 +4,8 @@ const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';
 const nestedMenuControlledStory = 'NestedSubmenusControlled';
+const tabstopsInternalStory = 'TabstopsInternal';
+const iframeClickDismissInternalStory = 'IframeClickDismissInternal';
 
 const menuStoriesTitle = 'Components/Menu';
 
@@ -367,5 +369,24 @@ describe('Menu', () => {
           .should('not.exist');
       });
     });
+  });
+
+  it('should continue tab order if tab is pressed within the menu', () => {
+    cy.loadStory(menuStoriesTitle, tabstopsInternalStory).get('button').first().click().realPress('Tab');
+    cy.realPress('{enter}');
+    cy.get(menuItemSelector).first().should('be.focused').realPress('Tab');
+    cy.get('button').eq(2).should('be.focused');
+  });
+
+  it('should dismiss if an iframe is clicked', () => {
+    cy.loadStory(menuStoriesTitle, iframeClickDismissInternalStory)
+      .get(menuTriggerSelector)
+      .click()
+      .get(menuSelector)
+      .should('exist')
+      .get('iframe')
+      .click('center')
+      .get(menuSelector)
+      .should('not.exist');
   });
 });

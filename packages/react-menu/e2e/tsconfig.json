@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["cypress", "cypress-storybook/cypress"],
+    "types": ["cypress", "cypress-storybook/cypress", "cypress-real-events"],
     "lib": ["es2015", "dom"]
   },
   "include": ["."]
