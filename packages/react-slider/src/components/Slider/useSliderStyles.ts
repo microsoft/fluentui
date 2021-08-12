@@ -37,8 +37,9 @@ const useSliderWrapper = makeStyles({
   }),
 
   horizontal: theme => ({
-    left: 'calc(var(--slider-thumb-size) * .05)',
-    right: 'calc(var(--slider-thumb-size) * .05)',
+    left: '0px',
+    right: '0px',
+    top: '0px',
     minHeight: 'var(--slider-thumb-size)',
   }),
 
@@ -148,27 +149,25 @@ const useMarksContainerStyles = makeStyles({
     display: 'grid',
     justifyItems: 'end',
     outline: 'none',
-    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .05))',
+    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) +  (var(--slider-thumb-size) * .05))',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
-    background: 'rgba(0, 255, 0, 0.4)',
+    // background: 'rgba(0, 255, 0, 0.4)',
 
     '& .ms-Slider-markItemContainer': {
       // position: 'absolute',
+      transform: 'translate(50%)',
     },
 
     '& .ms-Slider-mark': {
-      // boxSizing: 'border-box',
-      // border: '1px solid #626262',
-      position: 'relative',
       width: '1px',
       height: '4px',
       background: '#626262',
     },
 
     '& .ms-Slider-label': {
-      paddingTop: '10px',
-      transform: 'translate(-50%)',
+      // paddingTop: '10px',
+      // transform: 'translate(-50%)',
       // position: 'absolute',
     },
   }),

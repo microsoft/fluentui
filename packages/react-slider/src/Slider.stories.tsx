@@ -57,8 +57,9 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Label>Mark Labels</Label>
       <Slider
         marks={[
+          10,
           {
-            value: 8,
+            value: 9,
             label: (
               <img
                 src="https://s3.amazonaws.com/freecodecamp/relaxing-cat.jpg"
