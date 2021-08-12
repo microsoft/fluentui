@@ -149,7 +149,7 @@ const useMarksContainerStyles = makeStyles({
     display: 'grid',
     justifyItems: 'end',
     outline: 'none',
-    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) +  (var(--slider-thumb-size) * .05))',
+    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
     // background: 'rgba(0, 255, 0, 0.4)',
@@ -166,9 +166,7 @@ const useMarksContainerStyles = makeStyles({
     },
 
     '& .ms-Slider-label': {
-      // paddingTop: '10px',
-      // transform: 'translate(-50%)',
-      // position: 'absolute',
+      transform: 'translate(-50%)',
     },
   }),
 
