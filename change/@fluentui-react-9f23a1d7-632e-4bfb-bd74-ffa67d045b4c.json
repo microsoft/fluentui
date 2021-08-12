@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add headingLevel prop to TeachingBubble",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
