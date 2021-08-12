@@ -33,14 +33,6 @@ export type OffsetFunctionParam = {
 };
 
 // @public (undocumented)
-export interface PopperOptions extends PositioningProps {
-    enabled?: boolean;
-    // (undocumented)
-    onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-    positioningDependencies?: React_2.DependencyList;
-}
-
-// @public (undocumented)
 export type PopperRefHandle = {
     updatePosition: () => void;
 };
@@ -56,11 +48,11 @@ export interface PositioningProps {
     align?: Alignment;
     arrowPadding?: number;
     autoSize?: AutoSize;
-    containerRef?: React_2.Ref<PopperRefHandle>;
     coverTarget?: boolean;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
+    popperRef?: React_2.Ref<PopperRefHandle>;
     position?: Position;
     positionFixed?: boolean;
     target?: HTMLElement | PopperVirtualElement | null;
@@ -68,6 +60,8 @@ export interface PositioningProps {
     unstable_pinned?: boolean;
 }
 
+// Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function usePopper(options?: PopperOptions): {
     targetRef: React_2.MutableRefObject<any>;
@@ -77,7 +71,6 @@ export function usePopper(options?: PopperOptions): {
 
 // @public
 export const usePopperMouseTarget: (initialState?: PopperJs.VirtualElement | (() => PopperJs.VirtualElement) | undefined) => readonly [PopperJs.VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
-
 
 // (No @packageDocumentation comment for this package)
 

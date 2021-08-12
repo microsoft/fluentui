@@ -2,6 +2,128 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/react-charting_v5.3.25",
+      "version": "5.3.25",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshots updates for tooltip change",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f773a1bc4e1aaea6e6145e3a8c04eaefb5ac9bde",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-charting_v5.3.24",
+      "version": "5.3.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Legends will be focusable in browser mode",
+            "author": "v-scharde@microsoft.com",
+            "commit": "9f64484413468fd47dfa75efdb1a526bc8748333",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Chart title added for Area and Line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "1f31459994791525f065b24dabc0c55baacf2f8f",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-charting_v5.3.23",
+      "version": "5.3.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.1",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-charting_v5.3.22",
+      "version": "5.3.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Area Chart and Line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "067f67564edd9845389079e02e525e06e0a9aba6",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-charting_v5.3.21",
+      "version": "5.3.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.2",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-charting_v5.3.20",
+      "version": "5.3.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added role as a link for overflow legends message, so it will read like 7 more link collapsed",
+            "author": "v-scharde@microsoft.com",
+            "commit": "26c3544db7ccc206a3f1d5537e5e17908dc69c54",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Border will be visible on rect focus",
+            "author": "v-scharde@microsoft.com",
+            "commit": "3a261e0f27446d00326166a4e62cf7cc1d534a79",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "callout issue resolved by adding preventDismissOnLostFocus prop to callout props",
+            "author": "v-scharde@microsoft.com",
+            "commit": "61726b1a36535206c5926b385abc7578d5b71770",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Accessibility change for Vertical Bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f6c8a11840890ef7a5d87dbb61a64618947e8635",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Jul 2021 07:35:22 GMT",
       "tag": "@fluentui/react-charting_v5.3.19",
       "version": "5.3.19",

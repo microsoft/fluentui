@@ -2024,6 +2024,13 @@ export interface ICalendarDayGridStyles {
     bottomLeftCornerDate?: IStyle;
     // (undocumented)
     bottomRightCornerDate?: IStyle;
+    datesAbove?: IStyle;
+    // (undocumented)
+    datesBelow?: IStyle;
+    // (undocumented)
+    datesLeft?: IStyle;
+    // (undocumented)
+    datesRight?: IStyle;
     dayButton?: IStyle;
     dayCell?: IStyle;
     dayIsToday?: IStyle;
@@ -3150,6 +3157,7 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     componentRef?: IRefObject<ICommandBar>;
     dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
+    farItemsGroupAriaLabel?: string;
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
@@ -3158,6 +3166,7 @@ export interface ICommandBarProps extends React_2.HTMLAttributes<HTMLDivElement>
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
+    primaryGroupAriaLabel?: string;
     resizeGroupAs?: IComponentAs<IResizeGroupProps>;
     shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
@@ -6002,7 +6011,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     isModeless?: boolean;
     isOpen?: boolean;
     layerProps?: ILayerProps;
-    onDismiss?: (ev?: React_2.MouseEvent<HTMLButtonElement>) => any;
+    onDismiss?: (ev?: React_2.MouseEvent<HTMLButtonElement | HTMLElement>) => any;
     onDismissed?: () => any;
     // @deprecated
     onLayerDidMount?: () => void;
@@ -6217,8 +6226,6 @@ export interface IOverlayProps extends React_2.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
-    // (undocumented)
-    onClick?: () => void;
     styles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
     theme?: ITheme;
 }
@@ -8334,6 +8341,7 @@ export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement
     id?: string;
     onTooltipToggle?(isTooltipVisible: boolean): void;
     overflowMode?: TooltipOverflowMode;
+    // @deprecated
     setAriaDescribedBy?: boolean;
     styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
     theme?: ITheme;

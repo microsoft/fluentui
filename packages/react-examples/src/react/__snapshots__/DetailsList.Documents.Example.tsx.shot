@@ -1914,6 +1914,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -2374,6 +2375,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -2834,6 +2836,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -3294,6 +3297,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -3754,6 +3758,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -4214,6 +4219,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -4674,6 +4680,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5134,6 +5141,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5594,6 +5602,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -6054,6 +6063,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"

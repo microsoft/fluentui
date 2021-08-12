@@ -166,7 +166,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     justify-content: center;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -175,6 +175,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -219,7 +220,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -264,6 +264,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -308,7 +309,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -521,7 +521,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     justify-content: center;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -530,6 +530,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -574,7 +575,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -619,6 +619,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -663,7 +664,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -997,7 +997,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: center;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1006,6 +1006,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -1050,7 +1051,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1095,6 +1095,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -1139,7 +1140,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1356,7 +1356,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     justify-content: center;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1365,6 +1365,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first"
@@ -1409,7 +1410,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1454,6 +1454,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="second"
@@ -1498,7 +1499,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

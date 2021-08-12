@@ -2,6 +2,96 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/react-cards_v0.200.15",
+      "version": "0.200.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-cards_v0.200.14",
+      "version": "0.200.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.2",
+            "author": "olfedias@microsoft.com",
+            "commit": "954ba1d43684df75942a18c0ef05dc99187729ff",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-cards_v0.200.13",
+      "version": "0.200.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.1",
+            "author": "kinhln@microsoft.com",
+            "commit": "4d150e69ac2c7e7620e3b5e356d21d5e4a39256a",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-cards_v0.200.12",
+      "version": "0.200.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.27.0",
+            "author": "behowell@microsoft.com",
+            "commit": "c0e62e6319d0e35c3e630382e891d6bee2795ec0",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-cards_v0.200.11",
+      "version": "0.200.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.2",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-cards_v0.200.10",
+      "version": "0.200.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.26.1",
+            "author": "czearing@outlook.com",
+            "commit": "a122a999f7cd93d569870373a804ace33f082cf5",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Jul 2021 07:35:22 GMT",
       "tag": "@fluentui/react-cards_v0.200.9",
       "version": "0.200.9",

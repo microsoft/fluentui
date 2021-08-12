@@ -18,7 +18,7 @@ Workspace Generator for migrating converged packages to new DX (stage 1)[https:/
 
 - this generator will migrate existing stories for your package from `react-examples` to your migrated package
 - migrated stories source will be transformed (replacing absolute imports and adding required default export)
-- if your original stories (within react-examples) used non converged packages/tools (like old icons, css/scss for styling), you'll need to manually accommodate that for your migrated stories.
+- if your original stories (within react-examples) used non converged packages/tools (like old icons, css/scss for styling), you'll need to manually refactor your stories to remove any non converged dependencies.
 
 ## Usage
 
@@ -51,7 +51,7 @@ Get migration stats for how many packages have been migrated yet.
 > No actual migration will happen.
 
 ```sh
-yarn nx workspace-generator migrate-converged-pkg --stats --no-interactive
+yarn nx workspace-generator migrate-converged-pkg --stats
 ```
 
 ## Options
@@ -62,18 +62,16 @@ Type: `string`
 
 Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
 
+> NOTE: will trigger CLI prompt if you didn't provide this option
+
 #### `all`
 
 Type: `boolean`
 
 Run batch migration on all vNext packages
 
-> TIP: Use it with `--no-interactive` option to disable prompts.
-
 #### `stats`
 
 Type: `boolean`
 
 Get stats for migration progress.
-
-> TIP: Use it with `--no-interactive` option to disable prompts.

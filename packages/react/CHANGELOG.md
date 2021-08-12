@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 30 Jul 2021 07:35:22 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Aug 2021 07:34:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.28.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.28.0)
+
+Thu, 12 Aug 2021 07:34:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.2..@fluentui/react_v8.28.0)
+
+### Minor changes
+
+- Update Overlay to use more accurate React.HTMLAttribute typings for onClick ([PR #19350](https://github.com/microsoft/fluentui/pull/19350) by sarah.higley@microsoft.com)
+
+### Patches
+
+- Add role=none to fix CommandBar hierarchy, add optional group labels to primary/secondary command groups ([PR #19280](https://github.com/microsoft/fluentui/pull/19280) by sarah.higley@microsoft.com)
+
+## [8.27.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.2)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.1..@fluentui/react_v8.27.2)
+
+### Patches
+
+- Bump @fluentui/webpack-utilities to v8.1.5 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [8.27.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.1)
+
+Mon, 09 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.0..@fluentui/react_v8.27.1)
+
+### Patches
+
+- Fix Callout positioning bug when the target element has changed. ([PR #19228](https://github.com/microsoft/fluentui/pull/19228) by kinhln@microsoft.com)
+
+## [8.27.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.0)
+
+Thu, 05 Aug 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.2..@fluentui/react_v8.27.0)
+
+### Minor changes
+
+- improve calendar selection border by making an after element to not adjust cell spacing, and remove borders between selected days in contiguous ranges ([PR #19211](https://github.com/microsoft/fluentui/pull/19211) by lorejoh12@gmail.com)
+
+### Patches
+
+- Fix Pivot's isPivotItem check for IE11 compatibility ([PR #19238](https://github.com/microsoft/fluentui/pull/19238) by behowell@microsoft.com)
+- Fix website and legacy demo in IE 11 ([PR #19237](https://github.com/microsoft/fluentui/pull/19237) by elcraig@microsoft.com)
+- Bump @fluentui/example-data to v8.2.6 ([PR #18566](https://github.com/microsoft/fluentui/pull/18566) by behowell@microsoft.com)
+
+## [8.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.2)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.1..@fluentui/react_v8.26.2)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.2.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [8.26.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.1)
+
+Mon, 02 Aug 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.26.0..@fluentui/react_v8.26.1)
+
+### Patches
+
+- Temporarily reverting onPositioned bug fix. ([PR #19212](https://github.com/microsoft/fluentui/pull/19212) by czearing@outlook.com)
 
 ## [8.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.26.0)
 
