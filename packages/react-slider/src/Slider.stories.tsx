@@ -61,10 +61,14 @@ export const MarkedSliderExample = (props: SliderProps) => {
           {
             value: 2,
             mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
-            label: 'helloooooo',
+            label: 'hello',
           },
           {
-            value: 9,
+            value: 4,
+            label: 'hello',
+          },
+          {
+            value: 8,
             mark: <div className="hello" style={{ width: '1px', height: '8px', background: 'green' }} />,
             label: 'hello',
           },

@@ -12,7 +12,7 @@ const useRootStyles = makeStyles({
     position: 'relative',
     overflow: 'hidden',
     userSelect: 'none',
-    // display: 'inline-flex',
+    display: 'inline',
     touchAction: 'none',
   }),
 
@@ -152,7 +152,7 @@ const useMarksContainerStyles = makeStyles({
     outline: 'none',
 
     '& .ms-Slider-markItemContainer': {
-      transform: 'translate(50%)',
+      transform: 'translate(100%)',
     },
 
     '& .ms-Slider-mark': {
