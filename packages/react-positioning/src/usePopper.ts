@@ -37,13 +37,6 @@ interface PopperOptions extends PositioningProps {
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   unstable_disableTether?: boolean | 'all';
-
-  /**
-   * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
-   * `position` props, regardless of the size of the component, the reference element or the viewport.
-   */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_pinned?: boolean;
 }
 
 //
@@ -91,8 +84,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     overflowBoundary,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_pinned,
+    pinned,
   } = options;
 
   const isRtl = useFluent().dir === 'rtl';
@@ -153,12 +145,12 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         { name: 'flip', options: { flipVariations: true } },
 
         /**
-         * unstable_pinned disables the flip modifier by setting flip.enabled to false; this
+         * pinned disables the flip modifier by setting flip.enabled to false; this
          * disables automatic repositioning of the popper box; it will always be placed according to
          * the values of `align` and `position` props, regardless of the size of the component, the
          * reference element or the viewport.
          */
-        unstable_pinned && { name: 'flip', enabled: false },
+        pinned && { name: 'flip', enabled: false },
 
         /**
          * When the popper box is placed in the context of a scrollable element, we need to set
@@ -300,7 +292,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       placement,
       strategy,
       unstable_disableTether,
-      unstable_pinned,
+      pinned,
 
       // These can be skipped from deps as they will not ever change
       handleStateUpdate,

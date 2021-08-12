@@ -55,6 +55,7 @@ export interface PositioningProps {
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
+    pinned?: boolean;
     popperRef?: React_2.Ref<PopperRefHandle>;
     position?: Position;
     target?: HTMLElement | PopperVirtualElement | null;

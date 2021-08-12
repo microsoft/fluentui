@@ -74,6 +74,12 @@ export interface PositioningProps {
    * Modifies position and alignment to cover the target
    */
   coverTarget?: boolean;
+
+  /**
+   * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
+   * `position` props, regardless of the size of the component, the reference element or the viewport.
+   */
+  pinned?: boolean;
 }
 
 export type PositioningShorthandValue =
