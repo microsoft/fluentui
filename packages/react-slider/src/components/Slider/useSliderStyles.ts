@@ -10,7 +10,7 @@ const useRootStyles = makeStyles({
     '--slider-thumb-size': '20px',
     '--slider-color': '#005fb8',
     position: 'relative',
-    overflow: 'hidden',
+    // overflow: 'hidden',
     userSelect: 'none',
     // display: 'inline-flex',
     touchAction: 'none',
@@ -34,7 +34,6 @@ const useRootStyles = makeStyles({
 const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
-    overflow: 'hidden',
   }),
 
   horizontal: theme => ({
@@ -148,7 +147,7 @@ const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
     display: 'grid',
     justifyItems: 'end',
-    // outline: 'none',
+    outline: 'none',
     marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .05))',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
@@ -159,12 +158,17 @@ const useMarksContainerStyles = makeStyles({
     },
 
     '& .ms-Slider-mark': {
-      boxSizing: 'border-box',
-      border: '1px solid #626262',
-      // background: '#626262',
+      // boxSizing: 'border-box',
+      // border: '1px solid #626262',
+      position: 'relative',
+      width: '1px',
+      height: '4px',
+      background: '#626262',
     },
 
     '& .ms-Slider-label': {
+      paddingTop: '10px',
+      transform: 'translate(-50%)',
       // position: 'absolute',
     },
   }),
