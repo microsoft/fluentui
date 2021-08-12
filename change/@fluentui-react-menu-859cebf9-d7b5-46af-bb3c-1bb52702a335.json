@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "disable test for MenuList",
+  "comment": "disable 'consistent-callback-args' test",
   "packageName": "@fluentui/react-menu",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "none"
