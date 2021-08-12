@@ -617,6 +617,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onKeyDown={[Function]}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
+                        role="none"
                       >
                         Annie Lindqvist
                       </div>
@@ -646,6 +647,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onKeyDown={[Function]}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
+                        role="none"
                       >
                         Designer
                       </div>
@@ -675,6 +677,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onKeyDown={[Function]}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
+                        role="none"
                       >
                         In a meeting
                       </div>
@@ -704,6 +707,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         onKeyDown={[Function]}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
+                        role="none"
                       >
                         Available at 4:00pm
                       </div>

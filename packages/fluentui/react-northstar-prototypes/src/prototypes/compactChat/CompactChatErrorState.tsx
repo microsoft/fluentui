@@ -30,7 +30,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Failed Message"
-        author="Robin"
+        author="Robin Counts"
         mine
         timestamp="11:21"
         header={error}
@@ -52,6 +52,7 @@ export const CompactChatErrorState = () => (
               borderColor: siteVariables.colorScheme.red.border,
               '&:hover': {
                 backgroundColor: siteVariables.colorScheme.red.background1,
+                borderColor: siteVariables.colorScheme.red.border,
               },
             }),
           }),

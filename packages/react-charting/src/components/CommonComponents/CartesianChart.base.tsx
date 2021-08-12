@@ -242,6 +242,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
           <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }} {...svgProps}>
+            {this.props.chartTitle && <title>{this.props.chartTitle}</title>}
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;
