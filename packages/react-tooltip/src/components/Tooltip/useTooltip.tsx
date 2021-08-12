@@ -60,10 +60,6 @@ export const useTooltip = (
       showDelay: 250,
       hideDelay: 250,
       triggerAriaAttribute: 'label',
-      positioning: {
-        position: 'above',
-        align: 'center',
-      },
     },
     defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
     resolveShorthandProps(props, tooltipShorthandProps),
@@ -90,6 +86,8 @@ export const useTooltip = (
   const popperOptions = {
     enabled: state.visible,
     arrowPadding: 2 * tooltipBorderRadius,
+    position: 'above' as const,
+    align: 'center' as const,
     ...resolvePositioningShorthand(state.positioning),
   };
 
