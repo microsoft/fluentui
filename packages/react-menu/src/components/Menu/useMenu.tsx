@@ -17,7 +17,6 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  * before being passed to renderMenu.
  *
  * @param props - props from this instance of Menu
- * @param ref - reference to root HTMLElement of Menu
  *
  * {@docCategory Menu }
  */

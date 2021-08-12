@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useMenu } from './useMenu';
+import { useMenuContextValues } from './useMenuContextValues';
 import { MenuProps } from './Menu.types';
 import { renderMenu } from './renderMenu';
 
@@ -9,8 +10,9 @@ import { renderMenu } from './renderMenu';
  */
 export const Menu: React.FC<MenuProps> = props => {
   const state = useMenu(props);
+  const contextValues = useMenuContextValues(state);
 
-  return renderMenu(state);
+  return renderMenu(state, contextValues);
 };
 
 Menu.displayName = 'Menu';
