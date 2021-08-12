@@ -201,25 +201,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const originPercent = origin ? getPercent(origin, min, max) : 0;
 
-  const thumbStyles = {
-    transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
-    ...state.thumb.style,
-  };
-
-  const trackStyles = vertical
-    ? {
-        top: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-        height: origin
-          ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-          : `${valuePercent}%`,
-        ...state.track.style,
-      }
-    : {
-        left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-        width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
-        ...state.track.style,
-      };
-
   /**
    * Gets the current percentage position for the marks.
    */
@@ -260,6 +241,37 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
     return result;
   };
+
+  const thumbStyles = {
+    transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
+    ...state.thumb.style,
+  };
+
+  const trackStyles = vertical
+    ? {
+        top: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+        height: origin
+          ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+          : `${valuePercent}%`,
+        ...state.track.style,
+      }
+    : {
+        left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+        width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
+        ...state.track.style,
+      };
+
+  const marksContainerStyles = marks
+    ? vertical
+      ? {
+          gridTemplateRows: getMarkPercent().join(''),
+          ...state.marksContainer.style,
+        }
+      : {
+          gridTemplateColumns: getMarkPercent().join(''),
+          ...state.marksContainer.style,
+        }
+    : {};
 
   /**
    * Renders the marks
@@ -306,13 +318,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.style = trackStyles;
   state.track.children = null;
 
-  const marksContainerStyles = {
-    gridTemplateColumns: getMarkPercent().join(''),
-    ...state.marksContainer.style,
-  };
-
   // Mark props
-  state.marksContainer.children = marks ? renderMarks() : null;
+  state.marksContainer.children = marks ? renderMarks() : undefined;
   state.marksContainer.style = marks ? marksContainerStyles : null;
 
   // Thumb Wrapper Props

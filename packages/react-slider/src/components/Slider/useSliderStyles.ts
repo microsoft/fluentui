@@ -18,12 +18,12 @@ const useRootStyles = makeStyles({
 
   horizontal: theme => ({
     minWidth: '280px',
-    height: 'var(--slider-thumb-size)',
+    minHeight: 'var(--slider-thumb-size)',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
-    width: 'var(--slider-thumb-size)',
+    minWidth: 'var(--slider-thumb-size)',
     minHeight: '120px',
   }),
 });
@@ -44,8 +44,9 @@ const useSliderWrapper = makeStyles({
   }),
 
   vertical: theme => ({
-    top: 'calc(var(--slider-thumb-size) * .05)',
-    bottom: 'calc(var(--slider-thumb-size) * .05)',
+    top: '0px',
+    bottom: '0px',
+    left: '0px',
     minWidth: 'var(--slider-thumb-size)',
   }),
 });
@@ -149,19 +150,12 @@ const useMarksContainerStyles = makeStyles({
     display: 'grid',
     justifyItems: 'end',
     outline: 'none',
-    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
-    marginLeft: 'calc(var(--slider-thumb-size) / 2)',
-    marginRight: 'calc(var(--slider-thumb-size) / 2)',
-    // background: 'rgba(0, 255, 0, 0.4)',
 
     '& .ms-Slider-markItemContainer': {
-      // position: 'absolute',
       transform: 'translate(50%)',
     },
 
     '& .ms-Slider-mark': {
-      width: '1px',
-      height: '4px',
       background: '#626262',
     },
 
@@ -170,38 +164,27 @@ const useMarksContainerStyles = makeStyles({
     },
   }),
 
-  // horizontal: theme => ({
-  //   left: 'calc(var(--slider-thumb-size) / 2)',
-  //   right: 'calc(var(--slider-thumb-size) / 2)',
-  //   top: '0px',
-  //   bottom: '0px',
+  horizontal: theme => ({
+    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    marginLeft: 'calc(var(--slider-thumb-size) / 2)',
+    marginRight: 'calc(var(--slider-thumb-size) / 2)',
 
-  //   '& .ms-Slider-mark': {
-  //     width: '1px',
-  //     height: '4px',
-  //   },
+    '& .ms-Slider-mark': {
+      height: '4px',
+      width: '1px',
+    },
+  }),
 
-  //   '& .ms-Slider-markItemContainer': {
-  //     width: '1px',
-  //     height: '4px',
-  //     bottom: '0px',
-  //   },
+  vertical: theme => ({
+    marginTop: 'calc(var(--slider-thumb-size) / 2)',
+    marginBottom: 'calc(var(--slider-thumb-size) / 2)',
+    marginRight: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
 
-  //   '& .ms-Slider-label': {
-  //     transform: 'translate(-50%)',
-  //     top: '10px',
-  //   },
-  // }),
-
-  // vertical: theme => ({
-  //   top: 'calc(var(--slider-thumb-size) / 2)',
-  //   bottom: 'calc(var(--slider-thumb-size) / 2)',
-
-  //   '& .ms-Slider-mark': {
-  //     height: '1px',
-  //     width: '4px',
-  //   },
-  // }),
+    '& .ms-Slider-mark': {
+      height: '1px',
+      width: '4px',
+    },
+  }),
 });
 
 /**
