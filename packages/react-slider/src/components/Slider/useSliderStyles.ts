@@ -151,7 +151,6 @@ const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
     display: 'grid',
     outline: 'none',
-    // background: 'green',
 
     '& .ms-Slider-mark': {
       background: '#626262',
@@ -192,6 +191,8 @@ const useMarksContainerStyles = makeStyles({
       flexDirection: 'row',
       transform: 'translateY(50%)',
       alignItems: 'center',
+      maxWidth: '100%',
+      maxHeight: '100%',
     },
 
     '& .ms-Slider-mark': {
@@ -200,7 +201,6 @@ const useMarksContainerStyles = makeStyles({
     },
 
     '& .ms-Slider-label': {
-      // position: 'absolute',
       marginLeft: '4px',
       transform: 'scaleY(-1)',
     },
