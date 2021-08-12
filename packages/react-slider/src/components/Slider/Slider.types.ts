@@ -72,7 +72,7 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
 
   /**
    * The max value of the **Slider**.
-   * @default 10
+   * @default 100
    */
   max?: number;
 
@@ -81,6 +81,13 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    * will snap to the closest available value.
    */
   step?: number;
+
+  /**
+   * The number of increments that the Slider's value will change by during a key press.
+   *
+   * @default `step` or 1
+   */
+  keyIncrement?: number;
 
   /**
    *  Whether to render the **Slider** as disabled.
