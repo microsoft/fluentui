@@ -1,25 +1,28 @@
 import * as React from 'react';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { Checkmark16Filled } from '@fluentui/react-icons';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuItem, menuItemShorthandPropsCompat } from '../MenuItem/useMenuItem';
-import { AcceptIcon } from '../../utils/DefaultIcons';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const menuItemCheckboxShorthandPropsCompat = [...menuItemShorthandPropsCompat] as const;
+import { useMenuItem } from '../MenuItem/useMenuItem';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (
   props: MenuItemCheckboxProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuItemCheckboxProps,
 ): MenuItemCheckboxState => {
-  const state = useMenuItem(props, ref, {
+  const checkboxProps = {
     role: 'menuitemcheckbox',
-    checkmark: { as: 'span', children: <AcceptIcon /> },
     persistOnClick: true,
-  }) as MenuItemCheckboxState;
+  };
+
+  const state = useMenuItem(
+    {
+      ...checkboxProps,
+      ...props,
+      checkmark: resolveShorthand(props.checkmark, { children: <Checkmark16Filled /> }),
+    },
+    ref,
+  ) as MenuItemCheckboxState;
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
   const { onClick: onClickOriginal } = state;

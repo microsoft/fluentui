@@ -1,27 +1,26 @@
 import * as React from 'react';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { Checkmark16Filled } from '@fluentui/react-icons';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
-import { useMenuItem, menuItemShorthandPropsCompat } from '../MenuItem/useMenuItem';
-import { AcceptIcon } from '../../utils/DefaultIcons';
-
-/**
- * Consts listing which props are shorthand props.
- */
-export const menuItemRadioShorthandPropsCompat = [...menuItemShorthandPropsCompat] as const;
+import { useMenuItem } from '../MenuItem/useMenuItem';
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.
  */
-export const useMenuItemRadio = (
-  props: MenuItemRadioProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuItemRadioProps,
-): MenuItemRadioState => {
-  const state = useMenuItem(props, ref, {
+export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>): MenuItemRadioState => {
+  const radioProps = {
     role: 'menuitemradio',
-    checkmark: { as: 'span', children: <AcceptIcon /> },
-    ...defaultProps,
-  }) as MenuItemRadioState;
+  };
+
+  const state = useMenuItem(
+    {
+      ...radioProps,
+      ...props,
+      checkmark: resolveShorthand(props.checkmark, { children: <Checkmark16Filled /> }),
+    },
+    ref,
+  ) as MenuItemRadioState;
 
   const selectRadio = useMenuListContext(context => context.selectRadio);
   const { onClick: onClickOriginal } = state;
