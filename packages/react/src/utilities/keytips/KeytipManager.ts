@@ -95,7 +95,7 @@ export class KeytipManager {
     if (oldKeyTip) {
       // Update everything except 'visible'
       uniqueKeytip.keytip.visible = oldKeyTip.keytip.visible;
-      // Update keytip
+      // Update keytip in this.keytips
       this.keytips[uniqueID] = uniqueKeytip;
 
       // Update the sequence to be up to date
