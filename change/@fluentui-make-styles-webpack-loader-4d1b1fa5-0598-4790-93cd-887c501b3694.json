@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "perf: early return on files without makeStyles() calls",
-  "packageName": "@fluentui/make-styles-webpack-loader",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
