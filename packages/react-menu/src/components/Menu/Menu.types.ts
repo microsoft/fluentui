@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
 import { MenuListProps } from '../MenuList/index';
+import { MenuContextValue } from '../../contexts/menuContext';
 
 interface MenuCommons extends MenuListProps {
   /**
@@ -124,6 +125,10 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
    * indicates whether the request for the open state was bubbled from a nested menu
    */
   bubble?: boolean;
+}
+
+export interface MenuContextValues {
+  menu: MenuContextValue;
 }
 
 /**

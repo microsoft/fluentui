@@ -152,6 +152,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Kat Larrson
         </div>
@@ -181,6 +182,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -210,6 +212,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -239,6 +242,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -375,6 +379,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Annie
         </div>
@@ -404,6 +409,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -433,6 +439,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -462,6 +469,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -598,6 +606,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Annie Lind
         </div>
@@ -627,6 +636,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -656,6 +666,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -685,6 +696,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -821,6 +833,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Annie Boyl Lind
         </div>
@@ -850,6 +863,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -879,6 +893,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -908,6 +923,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -1044,6 +1060,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           David (The man) Goff
         </div>
@@ -1073,6 +1090,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -1102,6 +1120,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -1131,6 +1150,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -1267,6 +1287,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           David Goff [The man]
         </div>
@@ -1296,6 +1317,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -1325,6 +1347,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -1354,6 +1377,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -1490,6 +1514,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           David (The man) Goff &lt;David.Goff@example.com&gt;
         </div>
@@ -1519,6 +1544,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -1548,6 +1574,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -1577,6 +1604,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -1713,6 +1741,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Annie Boyl Carrie Lindqvist
         </div>
@@ -1741,6 +1770,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -1770,6 +1800,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -1799,6 +1830,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -1949,6 +1981,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           +1 (111) 123-4567 X4567
         </div>
@@ -1977,6 +2010,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -2006,6 +2040,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -2035,6 +2070,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -2171,6 +2207,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           +1 (555) 123-4567 X4567
         </div>
@@ -2199,6 +2236,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -2228,6 +2266,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -2257,6 +2296,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -2407,6 +2447,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           宋智洋
         </div>
@@ -2435,6 +2476,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -2464,6 +2506,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -2493,6 +2536,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -2643,6 +2687,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           남궁 성종
         </div>
@@ -2671,6 +2716,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -2700,6 +2746,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -2729,6 +2776,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -2879,6 +2927,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           خسرو رحیمی
         </div>
@@ -2907,6 +2956,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -2936,6 +2986,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -2965,6 +3016,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -3101,6 +3153,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Maor Sharett
         </div>
@@ -3129,6 +3182,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -3158,6 +3212,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -3187,6 +3242,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -3323,6 +3379,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Maor Sharett
         </div>
@@ -3351,6 +3408,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -3380,6 +3438,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -3409,6 +3468,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>
@@ -3563,6 +3623,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Maor Sharett
         </div>
@@ -3591,6 +3652,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Designer
         </div>
@@ -3620,6 +3682,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -3649,6 +3712,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>

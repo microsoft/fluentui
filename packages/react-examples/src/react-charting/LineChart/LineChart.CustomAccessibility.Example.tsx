@@ -147,7 +147,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
     ];
 
     const data: IChartProps = {
-      chartTitle: 'Line Chart',
+      chartTitle: 'Line Chart Custom Accessibility Example',
       lineChartData: points,
     };
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };

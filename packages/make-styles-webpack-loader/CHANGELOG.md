@@ -1,8 +1,18 @@
 # Change Log - @fluentui/make-styles-webpack-loader
 
-This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.8)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.7..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.8)
+
+### Changes
+
+- perf: early return on files without makeStyles() calls ([PR #19276](https://github.com/microsoft/fluentui/pull/19276) by olfedias@microsoft.com)
+- add support for loader options ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.7)
 

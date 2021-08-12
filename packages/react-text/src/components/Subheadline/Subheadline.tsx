@@ -1,5 +1,5 @@
 import { makeStyles } from '@fluentui/react-make-styles';
-import { typographyStyles } from '../../index';
+import { typographyStyles } from '../../typographyStyles/index';
 import { createWrapper } from '../wrapper';
 
 /**

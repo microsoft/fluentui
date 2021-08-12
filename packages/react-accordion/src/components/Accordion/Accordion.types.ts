@@ -18,6 +18,10 @@ export interface AccordionContextValue {
   requestToggle: AccordionToggleEventHandler;
 }
 
+export interface AccordionContextValues {
+  accordion: AccordionContextValue;
+}
+
 export type AccordionSlots = {};
 
 export interface AccordionCommons extends React.HTMLAttributes<HTMLElement> {
