@@ -75,6 +75,7 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
 
       // active styles
       ...(active && {
+        background: v.backgroundColorActive,
         color: v.wrapperColorActive,
 
         ...(!underlined &&
@@ -140,7 +141,6 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         }),
 
         ...(vertical && {
-          color: v.wrapperColorHover,
           background: v.backgroundColorHover || colors.backgroundHover,
         }),
 
