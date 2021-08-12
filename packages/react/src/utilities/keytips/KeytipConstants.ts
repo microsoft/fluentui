@@ -14,7 +14,6 @@ export namespace KeytipEvents {
   export const KEYTIP_UPDATED = 'keytipUpdated';
   export const PERSISTED_KEYTIP_ADDED = 'persistedKeytipAdded';
   export const PERSISTED_KEYTIP_REMOVED = 'persistedKeytipRemoved';
-  export const PERSISTED_KEYTIP_UPDATED = 'persistedKeytipUpdated';
   export const PERSISTED_KEYTIP_EXECUTE = 'persistedKeytipExecute';
   export const ENTER_KEYTIP_MODE = 'enterKeytipMode';
   export const EXIT_KEYTIP_MODE = 'exitKeytipMode';

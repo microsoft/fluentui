@@ -5,19 +5,31 @@ import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst, usePrevious } from '@fluentui/react-hooks';
 import { memoizeFunction } from '../../../../utilities/lib/memoize';
 
-const registerPersistedKeytip = (
-  keytip: IKeytipProps,
+const registerPersistedKeytips = (
+  keytipsToRegister: IKeytipProps[],
   keytipManager: KeytipManager,
-  registeredPersistedKeytips: { [content: string]: { uniqueID: string; keytip: IKeytipProps } },
+  registeredPersistedKeytips: { [uniqueID: string]: IKeytipProps },
 ) => {
-  const uniqueID = keytipManager.register(keytip, true);
-  // Update map
-  registeredPersistedKeytips[keytip.content] = { uniqueID, keytip };
+  for (const keytip of keytipsToRegister) {
+    const uniqueID = keytipManager.register(keytip, true);
+    // Update map
+    registeredPersistedKeytips[uniqueID] = keytip;
+  }
+};
+
+const unregisterPersistedKeytips = (
+  keytipManager: KeytipManager,
+  registeredPersistedKeytips: { [uniqueID: string]: IKeytipProps },
+) => {
+  for (const uniqueID of Object.keys(registeredPersistedKeytips)) {
+    keytipManager.unregister(registeredPersistedKeytips[uniqueID], uniqueID, true);
+    delete registeredPersistedKeytips[uniqueID];
+  }
 };
 
 const useKeytipRegistrations = (
-  registeredPersistedKeytips: { [content: string]: { uniqueID: string; keytip: IKeytipProps } },
-  keytipsToRegisterOrUpdate: { [content: string]: IKeytipProps },
+  registeredPersistedKeytips: { [uniqueID: string]: IKeytipProps },
+  keytipsToRegister: IKeytipProps[],
   keytipManager: KeytipManager,
 ) => {
   const prevPersistedKeytips = usePrevious(registeredPersistedKeytips);
@@ -25,39 +37,20 @@ const useKeytipRegistrations = (
   // Update
   React.useEffect(() => {
     if (prevPersistedKeytips) {
-      // Only run update after mount, which means that prevPersistedKeytips is defined
-      for (const keytipContent of Object.keys(keytipsToRegisterOrUpdate)) {
-        // Find the previous keytip if it exists
-        const keytip = keytipsToRegisterOrUpdate[keytipContent];
-        const oldKeytip = prevPersistedKeytips[keytipContent];
-        if (oldKeytip && (keytip !== oldKeytip.keytip || keytip.disabled !== oldKeytip.keytip.disabled)) {
-          // Keytip was found and it's been changed, update
-          const uniqueID = oldKeytip.uniqueID;
-          keytipManager.update(keytip, uniqueID, true);
-          registeredPersistedKeytips[keytip.content] = { uniqueID, keytip };
-        } else if (!oldKeytip) {
-          // Keytip was not found, register it
-          registerPersistedKeytip(keytip, keytipManager, registeredPersistedKeytips);
-        }
-      }
+      // Unregister old keytips
+      unregisterPersistedKeytips(keytipManager, prevPersistedKeytips);
+      // Register new keytips
+      registerPersistedKeytips(keytipsToRegister, keytipManager, registeredPersistedKeytips);
     }
   });
 
   // Mount/Unmount
   React.useEffect(() => {
-    for (const keytipContent of Object.keys(keytipsToRegisterOrUpdate)) {
-      // Register on Mount
-      registerPersistedKeytip(keytipsToRegisterOrUpdate[keytipContent], keytipManager, registeredPersistedKeytips);
-    }
+    // Register on mount
+    registerPersistedKeytips(keytipsToRegister, keytipManager, registeredPersistedKeytips);
     return () => {
-      // Unregister and delete all persisted keytips saved on unmount
-      for (const keytipContent of Object.keys(registeredPersistedKeytips)) {
-        keytipManager.unregister(
-          registeredPersistedKeytips[keytipContent].keytip,
-          registeredPersistedKeytips[keytipContent].uniqueID,
-          true,
-        );
-      }
+      // Unregister on unmount
+      unregisterPersistedKeytips(keytipManager, registeredPersistedKeytips);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -98,8 +91,8 @@ const createPersistedKeytip = memoizeFunction(
 export const OverflowButton = (props: IOverflowSetProps) => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
   const { className, overflowItems, keytipSequences, itemSubMenuProvider, onRenderOverflowButton } = props;
-  const keytipsToRegisterOrUpdate = useConst<{ [content: string]: IKeytipProps }>({});
-  const persistedKeytips = useConst<{ [content: string]: { uniqueID: string; keytip: IKeytipProps } }>({});
+  const keytipsToRegister = useConst<IKeytipProps[]>([]);
+  const persistedKeytips = useConst<{ [uniqueID: string]: IKeytipProps }>({});
 
   // Gets the subMenu for an overflow item
   const getSubMenuForItem = React.useCallback(
@@ -125,12 +118,14 @@ export const OverflowButton = (props: IOverflowSetProps) => {
 
         if (keytip) {
           // Create persisted keytip
-          keytipsToRegisterOrUpdate[keytip.content] = createPersistedKeytip(
-            keytip,
-            overflowItem,
-            keytipManager,
-            keytipSequences,
-            getSubMenuForItem(overflowItem),
+          keytipsToRegister.push(
+            createPersistedKeytip(
+              keytip,
+              overflowItem,
+              keytipManager,
+              keytipSequences,
+              getSubMenuForItem(overflowItem),
+            ),
           );
 
           // Add the overflow sequence to this item
@@ -151,9 +146,9 @@ export const OverflowButton = (props: IOverflowSetProps) => {
       currentOverflowItems = overflowItems!;
     }
     return currentOverflowItems;
-  }, [overflowItems, itemSubMenuProvider, keytipManager, keytipSequences, keytipsToRegisterOrUpdate]);
+  }, [overflowItems, itemSubMenuProvider, keytipManager, keytipSequences, keytipsToRegister]);
 
-  useKeytipRegistrations(persistedKeytips, keytipsToRegisterOrUpdate, keytipManager);
+  useKeytipRegistrations(persistedKeytips, keytipsToRegister, keytipManager);
 
   return <div className={className}>{onRenderOverflowButton(newOverflowItems)}</div>;
 };
