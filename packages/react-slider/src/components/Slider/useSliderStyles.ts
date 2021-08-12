@@ -187,12 +187,19 @@ const useMarksContainerStyles = makeStyles({
     marginLeft: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
 
     '& .ms-Slider-markItemContainer': {
-      transform: 'translateY(100%)',
+      display: 'flex',
+      flexDirection: 'row',
+      transform: 'translateY(50%)',
+      alignItems: 'center',
     },
 
     '& .ms-Slider-mark': {
       height: '1px',
       width: '4px',
+    },
+
+    '& .ms-Slider-label': {
+      transform: 'scaleY(-1)',
     },
   }),
 });
