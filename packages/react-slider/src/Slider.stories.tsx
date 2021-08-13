@@ -51,15 +51,13 @@ export const VerticalSliderExample = (props: SliderProps) => {
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <Slider defaultValue={3} vertical />
+      <Slider vertical />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} vertical />
       <Label>Disabled Example</Label>
-      <Slider defaultValue={8} disabled vertical />
+      <Slider defaultValue={50} disabled vertical />
       <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} vertical />
-      <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} vertical />
+      <Slider defaultValue={40} origin={60} vertical />
     </div>
   );
 };
