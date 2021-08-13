@@ -7,7 +7,7 @@ import { selectStyles as styles } from './select.styles';
  * Select appearances
  * @public
  */
-export type SelectAppearance = 'filled' | 'outline';
+export type SelectAppearance = 'filled' | 'outline' | 'stealth';
 
 /**
  * The Fluent select class

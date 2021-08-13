@@ -25,6 +25,9 @@ import {
   neutralFillInputHover,
   neutralFillInputRest,
   neutralFillRest,
+  neutralFillStealthActive,
+  neutralFillStealthHover,
+  neutralFillStealthRest,
   neutralForegroundRest,
   strokeControlActive,
   strokeControlHover,
@@ -52,9 +55,25 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
     background: ${neutralFillInputActive};
     border-color: transparent;
   }
+`;
 
-  :host(:${focusVisible}) {
-    border-color: ${focusStrokeOuter};
+export const selectStealthStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: SelectOptions,
+) => css`
+  :host {
+    background: ${neutralFillStealthRest};
+    border-color: transparent;
+  }
+
+  :host(:not([disabled]):hover) {
+    background: ${neutralFillStealthHover};
+    border-color: transparent;
+  }
+
+  :host(:not([disabled]):active) {
+    background: ${neutralFillStealthActive};
+    border-color: transparent;
   }
 `;
 
@@ -120,9 +139,9 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter} !important;
+      border-color: ${focusStrokeOuter};
       outline: none;
-      box-shadow: 0 0 0 1px inset ${focusStrokeOuter} !important;
+      box-shadow: 0 0 0 1px inset ${focusStrokeOuter};
     }
 
     :host([disabled]) {
@@ -184,6 +203,7 @@ export const selectStyles = (context, definition) =>
     }
   `.withBehaviors(
     appearanceBehavior('filled', selectFilledStyles(context, definition)),
+    appearanceBehavior('stealth', selectStealthStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
         :host([disabled]) {
