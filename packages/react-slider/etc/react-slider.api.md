@@ -19,7 +19,7 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
     disabled?: boolean;
-    keyIncrement?: number;
+    keyboardStep?: number;
     max?: number;
     min?: number;
     onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
