@@ -77,7 +77,48 @@ Card goes for a more structural and generic approach to a card component and is 
 
 ## API Proposal
 
-...
+### Components
+
+| Component  | Purpose                                                                  |
+| ---------- | ------------------------------------------------------------------------ |
+| Card       | Wrapper for the main content of a card.                                  |
+| CardHeader | Optional header slot for the card.                                       |
+| CardBody   | Main slot of the Card                                                    |
+| CardFooter | Optional footer slot for the card. (non-applicable for horizontal cards) |
+
+### Card
+
+| Property       | Values                                              | Default    | Purpose                                                                          |
+| -------------- | --------------------------------------------------- | ---------- | -------------------------------------------------------------------------------- |
+| orientation    | `vertical`, `horizontal`                            | `vertical` | Orientation of the card                                                          |
+| size           | `smallest`, `smaller`, `small`, `medium`, `large`   | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
+| scale          | 🚧                                                  |            |                                                                                  |
+| interactive    | boolean                                             | false      | Allows the card itself to be clickable                                           |
+| appearance     | `filled`, `filled-alternative`, `outline`, `subtle` | `filled`   | Define the appearance of the card                                                |
+| selectable 🚧  | boolean                                             |            |                                                                                  |
+| expandable 🚧  | boolean                                             |            |                                                                                  |
+| contextMenu 🚧 |                                                     |            |                                                                                  |
+| disabled       | boolean                                             | false      | Makes the card disabled                                                          |
+
+### CardHeader
+
+| Property | Values | Default | Purpose |
+| -------- | ------ | ------- | ------- |
+|          |        |         |         |
+
+## Anatomy
+
+You can find below a visual representation of how the Card component will organize it's content.
+
+![visual anatomy of the Card component](./assets/anatomy.png)
+
+Label:
+
+1. Card
+2. container
+3. CardHeader
+4. CardBody
+5. CardFooter
 
 ## Sample Code
 
