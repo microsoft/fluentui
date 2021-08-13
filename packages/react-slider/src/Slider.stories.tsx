@@ -16,6 +16,10 @@ const useStyles = makeStyles({
     '--slider-thumb-size': '50px',
     '--slider-color': 'green',
   },
+  verticalWrapper: {
+    display: 'flex',
+    gap: '10px',
+  },
 });
 
 export const BasicSliderExample = (props: SliderProps) => {
@@ -41,20 +45,13 @@ export const BasicSliderExample = (props: SliderProps) => {
 };
 
 export const MarkedSliderExample = (props: SliderProps) => {
-  const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (value: number) => setSliderValue(value);
-
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <Slider marks step={2} />
-      <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} marks />
-      <Label>Custom Marked Steps</Label>
-      <Slider step={2} marks={[{ value: 0, label: 'hello' }, 2, 4, 6, 8, 10]} />
-      <Label>Mark Labels</Label>
+      <Slider marks={true} />
+      <Label>Custom Marks</Label>
       <Slider
         step={2}
         marks={[
@@ -62,43 +59,55 @@ export const MarkedSliderExample = (props: SliderProps) => {
           {
             value: 2,
             mark: <div style={{ width: '1px', height: '8px', background: 'green' }} />,
-            label: 'hello',
-          },
-          {
-            value: 4,
-            label: (
-              <img
-                src="https://www.fillster.com/images/pictures/8i.jpg"
-                style={{ width: '100px', height: '100px', paddingTop: '8px' }}
-              />
-            ),
-          },
-          {
-            value: 8,
-            mark: <div style={{ width: '1px', height: '8px', background: 'green' }} />,
-            label: 'hello',
           },
           10,
         ]}
       />
-      <Label>Vertical Marks</Label>
-      <Slider marks vertical step={2} />
+      <Label>Custom Mark Label</Label>
       <Slider
         marks={[
-          4,
+          3,
           {
-            value: 6,
+            value: 4,
             label: (
-              <img src="https://www.fillster.com/images/pictures/8i.jpg" style={{ width: '20px', height: '20px' }} />
+              <div
+                style={{
+                  width: '20px',
+                  height: '20px',
+                  background: 'red',
+                }}
+              />
             ),
           },
-          20,
+          8,
+          10,
         ]}
-        vertical
-        step={2}
-        min={0}
-        max={20}
       />
+      <Label>Vertical Marks</Label>
+      <div className={styles.verticalWrapper}>
+        <Slider vertical marks />
+        <Slider vertical marks={[2, 4, 7, 8, 10]} />
+        <Slider
+          vertical
+          marks={[
+            3,
+            {
+              value: 6,
+              label: (
+                <div
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                    background: 'red',
+                  }}
+                />
+              ),
+            },
+            8,
+            10,
+          ]}
+        />
+      </div>
     </div>
   );
 };
