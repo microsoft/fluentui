@@ -16,7 +16,7 @@ export function __styles<Slots extends string>(
   const getStyles = vanillaStyles(classesMapBySlot, cssRules);
 
   return function useClasses(): Record<Slots, string> {
-    const { dir = 'ltr' } = useFluent();
+    const { dir } = useFluent();
     const renderer = useRenderer();
 
     return getStyles({ dir, renderer });

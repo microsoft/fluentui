@@ -30,7 +30,7 @@ export function makeStyles<Slots extends string | number>(stylesBySlots: Record<
   }
 
   return function useClasses(): Record<Slots, string> {
-    const { dir = 'ltr' } = useFluent();
+    const { dir } = useFluent();
 
     const renderer = useRenderer();
     const options: MakeStylesOptions = {
