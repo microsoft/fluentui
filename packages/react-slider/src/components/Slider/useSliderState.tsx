@@ -54,7 +54,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     min = 0,
     max = 100,
     step = 1,
-    keyIncrement = state.step || 1,
+    keyboardStep = state.step || 1,
     disabled = false,
     ariaValueText,
     onChange,
@@ -189,25 +189,25 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       if (ev.shiftKey) {
         if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-          updatePosition(currentValue! - keyIncrement * 10, ev);
+          updatePosition(currentValue! - keyboardStep * 10, ev);
           return;
         } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-          updatePosition(currentValue! + keyIncrement * 10, ev);
+          updatePosition(currentValue! + keyboardStep * 10, ev);
           return;
         }
       } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-        updatePosition(currentValue! - keyIncrement, ev);
+        updatePosition(currentValue! - keyboardStep, ev);
         return;
       } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-        updatePosition(currentValue! + keyIncrement, ev);
+        updatePosition(currentValue! + keyboardStep, ev);
         return;
       } else {
         switch (ev.key) {
           case 'PageDown':
-            updatePosition(currentValue! - keyIncrement * 10, ev);
+            updatePosition(currentValue! - keyboardStep * 10, ev);
             break;
           case 'PageUp':
-            updatePosition(currentValue! + keyIncrement * 10, ev);
+            updatePosition(currentValue! + keyboardStep * 10, ev);
             break;
           case 'Home':
             updatePosition(min, ev);
@@ -218,7 +218,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
     },
-    [currentValue, hideStepAnimation, keyIncrement, max, min, onKeyDownCallback, updatePosition],
+    [currentValue, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
   React.useEffect(() => {

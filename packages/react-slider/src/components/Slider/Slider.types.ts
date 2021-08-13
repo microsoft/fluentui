@@ -83,11 +83,13 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   step?: number;
 
   /**
-   * The number of increments that the Slider's value will change by during a key press.
+   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
+   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
+   * snapping values.
    *
    * @default `step` or 1
    */
-  keyIncrement?: number;
+  keyboardStep?: number;
 
   /**
    *  Whether to render the **Slider** as disabled.
