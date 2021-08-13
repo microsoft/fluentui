@@ -89,6 +89,14 @@ const TextFieldTemplate = ({
 
 export const TextField = TextFieldTemplate.bind({});
 
+TextField.args = {
+  placeholder: '',
+  autoFocus: false,
+  disabled: false,
+  readonly: false,
+  required: false,
+};
+
 const example = `
 <fluent-text-field></fluent-text-field>
 `;

@@ -18,8 +18,8 @@ export default {
 
 const ButtonTemplate = ({ appearance, disabled, label }) =>
   `
-    <fluent-button 
-      ${disabled ? 'disabled' : ''} 
+    <fluent-button
+      ${disabled ? 'disabled' : ''}
       ${appearance ? `appearance="${appearance}"` : ''}
     >
       ${label}
@@ -30,6 +30,7 @@ export const Button = ButtonTemplate.bind({});
 
 Button.args = {
   label: 'Button',
+  disabled: false,
   appearance: 'neutral',
 };
 

@@ -42,6 +42,10 @@ export const TextArea = TextAreaTemplate.bind({});
 
 TextArea.args = {
   placeholder: '',
+  autoFocus: false,
+  disabled: false,
+  readonly: false,
+  required: false,
 };
 
 const example = `

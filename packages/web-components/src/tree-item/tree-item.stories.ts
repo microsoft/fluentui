@@ -23,6 +23,8 @@ export const TreeItem = TreeItemTemplate.bind({});
 
 TreeItem.args = {
   label: 'Tree Item',
+  disabled: false,
+  selected: false,
 };
 
 const example = `
