@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.32",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Aug 2021 07:34:46 GMT",
       "tag": "@fluentui/react-text_v9.0.0-alpha.1",
       "version": "9.0.0-alpha.1",

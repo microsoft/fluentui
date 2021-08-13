@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "create type for ThemeClassNameContext value and export it",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

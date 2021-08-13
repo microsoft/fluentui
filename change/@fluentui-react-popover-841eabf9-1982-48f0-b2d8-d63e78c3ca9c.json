@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix(PopoverTrigger): Retain original child ref",
+  "comment": "feat(Menu): replace align, position, coverTarget, offset props with single `positioning` shorthand prop",
   "packageName": "@fluentui/react-popover",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

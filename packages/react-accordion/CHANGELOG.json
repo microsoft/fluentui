@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.62",
+      "version": "9.0.0-alpha.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore(Accordion): implement useContextValues() pattern",
+            "author": "olfedias@microsoft.com",
+            "commit": "4206575d51e8ae49fdd4f2b6aa2eb30a9b253a18",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.61",
       "version": "9.0.0-alpha.61",
