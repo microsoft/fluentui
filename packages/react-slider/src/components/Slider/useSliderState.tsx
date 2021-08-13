@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
+import { useId, useControllableState, useMount, useMergedRefs } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -49,7 +49,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = React.useRef<HTMLDivElement>(null);
+  const thumbRef = useMergedRefs(state.ref, React.useRef<HTMLElement>(null));
   const disposables = React.useRef<(() => void)[]>([]);
   const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
@@ -109,11 +109,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     [calculateSteps, min, step, updateValue],
   );
 
-  const onPointerUp = (): void => {
+  const onPointerUp = React.useCallback((): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
     thumbRef.current!.focus();
-  };
+  }, [thumbRef]);
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
@@ -132,7 +132,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       onPointerMove(ev);
     },
-    [onPointerMove, onPointerDownCallback],
+    [onPointerDownCallback, onPointerMove, onPointerUp],
   );
 
   const onKeyDown = React.useCallback(
@@ -172,13 +172,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     },
     [currentValue, max, min, onKeyDownCallback, step, updateValue],
   );
-
-  React.useEffect(() => {
-    if (state.ref && state.ref.current) {
-      state.ref.current.value = currentValue;
-      state.ref.current.focus = () => thumbRef?.current?.focus();
-    }
-  }, [currentValue, state.ref]);
 
   useMount(() => {
     // If the user passes an out of bounds controlled value, clamp and update their value onMount.

@@ -30,12 +30,6 @@ export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Parti
 }
 
 // @public
-export interface SliderPublicRef {
-    focus: () => void;
-    value: number | undefined;
-}
-
-// @public
 export const sliderShorthandProps: Array<keyof SliderSlots>;
 
 // @public
@@ -50,11 +44,11 @@ export type SliderSlots = {
 
 // @public
 export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
-    ref: React_2.RefObject<HTMLElement & SliderPublicRef>;
+    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.RefObject<HTMLElement & SliderPublicRef>) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;

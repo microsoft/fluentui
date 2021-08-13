@@ -2,21 +2,6 @@ import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * Slider ref
- */
-export interface SliderPublicRef {
-  /**
-   * Gets the current value of the Slider.
-   */
-  value: number | undefined;
-
-  /**
-   * Sets focus to the Slider's thumb.
-   */
-  focus: () => void;
-}
-
-/**
  * Names of the shorthand properties in SliderProps
  */
 export type SliderSlots = {
@@ -43,7 +28,7 @@ export type SliderSlots = {
   /**
    * The draggable icon used to select a given value from the **Slider**.
    */
-  thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  thumb: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
 
   /**
    * The area in which the **Slider's** rail allows for the thumb to be dragged.
@@ -105,5 +90,5 @@ export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
   /**
    * Ref to the root element
    */
-  ref: React.RefObject<HTMLElement & SliderPublicRef>;
+  ref: React.Ref<HTMLElement>;
 }
