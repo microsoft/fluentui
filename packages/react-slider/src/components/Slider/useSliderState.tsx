@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount, useMergedRefs } from '@fluentui/react-utilities';
+import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -52,7 +52,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = useMergedRefs(state.ref, React.useRef<HTMLElement>(null));
+  const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
@@ -112,11 +112,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     [calculateSteps, min, step, updateValue],
   );
 
-  const onPointerUp = React.useCallback((): void => {
+  const onPointerUp = (): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
     thumbRef.current!.focus();
-  }, [thumbRef]);
+  };
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
@@ -135,7 +135,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       onPointerMove(ev);
     },
-    [onPointerDownCallback, onPointerMove, onPointerUp],
+    [onPointerDownCallback, onPointerMove],
   );
 
   const onKeyDown = React.useCallback(
