@@ -86,6 +86,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
         <div style={rootStyle}>
           <GroupedVerticalBarChart
+            chartTitle="Grouped Vertical Bar chart truncated example"
             data={data}
             height={this.state.height}
             width={this.state.width}
