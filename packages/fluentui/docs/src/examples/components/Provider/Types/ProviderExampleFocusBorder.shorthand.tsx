@@ -17,7 +17,7 @@ const ProviderExampleFocusBorderShorthand = () => (
   <Provider theme={customTheme}>
     <div>
       <p>Focus indicator should be overridden as described in custom theme:</p>
-      <Button id="focus-button" content="Overridden focus styles" />
+      <Button content="Overridden focus styles" />
     </div>
   </Provider>
 );
