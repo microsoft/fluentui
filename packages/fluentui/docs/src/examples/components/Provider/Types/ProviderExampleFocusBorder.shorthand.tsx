@@ -16,7 +16,7 @@ const customTheme = {
 const ProviderExampleFocusBorderShorthand = () => (
   <Provider theme={customTheme}>
     <div>
-      <p id="text-focus">Focus indicator should be overridden as described in custom theme:</p>
+      <p>Focus indicator should be overridden as described in custom theme:</p>
       <Button content="Overridden focus styles" />
     </div>
   </Provider>
