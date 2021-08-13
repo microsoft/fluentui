@@ -26,7 +26,7 @@ const example = `
 `;
 
 Anchor.args = {
-  label: 'Achor',
+  label: 'Anchor',
   appearance: 'neutral',
 };
 

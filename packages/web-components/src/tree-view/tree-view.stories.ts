@@ -46,6 +46,11 @@ const TreeViewTemplate = ({ disabled, renderCollapsedNodes }) => `
 
 export const TreeView = TreeViewTemplate.bind({});
 
+TreeView.args = {
+  disabled: false,
+  renderCollapsedNodes: false,
+};
+
 const example = `
 <fluent-tree-view>
   <fluent-tree-item selected>Daisy</fluent-tree-item>

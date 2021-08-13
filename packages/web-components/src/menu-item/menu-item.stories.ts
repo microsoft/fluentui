@@ -14,13 +14,18 @@ export default {
 };
 
 const MenuItemTemplate = ({ checked, disabled }) => `
-  <fluent-menu-item 
+  <fluent-menu-item
     ${checked ? `checked="${checked}"` : ''}
     ${disabled ? 'disabled' : ''}
   >Menu item 1</fluent-menu-item>
 `;
 
 export const MenuItem = MenuItemTemplate.bind({});
+
+MenuItem.args = {
+  disabled: false,
+  checked: false,
+};
 
 const example = `
 <fluent-menu-item>Menu item</fluent-menu-item>

@@ -11,7 +11,7 @@ export default {
 };
 
 const ProgressTemplate = ({ paused, value }) => `
-  <fluent-progress 
+  <fluent-progress
     ${paused ? `paused="${paused}"` : ''}
     ${value ? `value=${value}` : ''}
   ></fluent-progress>
@@ -21,6 +21,7 @@ export const Progress = ProgressTemplate.bind({});
 
 Progress.args = {
   value: 50,
+  paused: false,
 };
 
 const example = `

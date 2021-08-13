@@ -81,7 +81,12 @@ const NumberFieldTemplate = ({
 export const NumberField = NumberFieldTemplate.bind({});
 
 NumberField.args = {
-  placeholder: '',
+  placeholder: 'type a number',
+  autoFocus: false,
+  disabled: false,
+  hideStep: false,
+  readonly: false,
+  required: false,
 };
 
 const example = `

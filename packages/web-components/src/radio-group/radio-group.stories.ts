@@ -14,15 +14,20 @@ export default {
 };
 
 const RadioGroupTemplate = ({ disabled, required }) => `
-  <fluent-radio-group 
-    ${disabled ? 'disabled' : ''} 
-    ${required ? 'required' : ''} 
+  <fluent-radio-group
+    ${disabled ? 'disabled' : ''}
+    ${required ? 'required' : ''}
   >
     <fluent-radio>Apples</fluent-radio>
     <fluent-radio>Bananas</fluent-radio>
   </fluent-radio-group>`;
 
 export const RadioGroup = RadioGroupTemplate.bind({});
+
+RadioGroup.args = {
+  disabled: false,
+  required: false,
+};
 
 const example = `
 <fluent-radio-group name="numbers">
