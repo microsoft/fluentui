@@ -47,7 +47,7 @@ export const useFluentProvider = (
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
   state.targetDocument = state.targetDocument ?? parentContext.targetDocument;
-  state.dir = state.dir ?? parentContext.dir;
+  state.dir = state.dir ?? parentContext.dir ?? document.dir;
 
   // useThemeStyleTag() should be called after .targetDocument will be defined
   const themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
