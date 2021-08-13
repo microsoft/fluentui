@@ -11,7 +11,7 @@ const shorthandLookup: Record<PositioningShorthandValue, Pick<PositioningProps, 
   before: { position: 'before', align: 'center' },
   'before-top': { position: 'before', align: 'top' },
   'before-bottom': { position: 'before', align: 'bottom' },
-  after: { position: 'before', align: 'center' },
+  after: { position: 'after', align: 'center' },
   'after-top': { position: 'after', align: 'top' },
   'after-bottom': { position: 'after', align: 'bottom' },
 };

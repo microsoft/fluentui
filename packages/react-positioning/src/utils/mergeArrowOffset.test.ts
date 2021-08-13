@@ -1,7 +1,7 @@
 import { Offset } from '../types';
 import { mergeArrowOffset } from './mergeArrowOffset';
 
-describe('getOffsetWitArrow', () => {
+describe('mergeArrowOffset', () => {
   it.each([null, undefined])('should return arrow offset when user offset is %s', userOffset => {
     expect(mergeArrowOffset(userOffset, 1)).toEqual([0, 1]);
   });

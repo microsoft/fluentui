@@ -121,20 +121,20 @@ function usePopoverRefs(state: PopoverState): PopoverState {
   const popperOptions = {
     position: 'above' as const,
     align: 'center' as const,
+    target: state.openOnContext ? state.contextTarget : undefined,
     ...resolvePositioningShorthand(state.positioning),
   };
-
-  popperOptions.target = !popperOptions.target && state.openOnContext ? state.contextTarget : undefined;
-  if (!state.noArrow) {
-    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
-  }
-
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
 
   // no reason to render arrow when covering the target
   if (popperOptions.coverTarget) {
     state.noArrow = true;
   }
+
+  if (!state.noArrow) {
+    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
+  }
+
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
 
   state.contentRef = contentRef;
   state.triggerRef = triggerRef;

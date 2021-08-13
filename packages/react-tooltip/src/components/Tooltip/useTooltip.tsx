@@ -88,6 +88,7 @@ export const useTooltip = (
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
     align: 'center' as const,
+    offset: [0, 4] as [number, number],
     ...resolvePositioningShorthand(state.positioning),
   };
 

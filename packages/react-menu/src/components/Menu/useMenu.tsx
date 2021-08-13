@@ -29,9 +29,9 @@ export const useMenu = (props: MenuProps): MenuState => {
   const popperState = {
     position: isSubmenu ? ('after' as const) : ('below' as const),
     align: isSubmenu ? ('top' as const) : ('start' as const),
+    target: props.openOnContext ? contextTarget : undefined,
     ...resolvePositioningShorthand(props.positioning),
   };
-  popperState.target = !popperState.target && props.openOnContext ? contextTarget : undefined;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
