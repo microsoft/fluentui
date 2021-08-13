@@ -55,7 +55,7 @@ export const VerticalSliderExample = (props: SliderProps) => {
       <Label>Disabled Example</Label>
       <Slider defaultValue={8} disabled vertical />
       <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} vertical />
+      <Slider defaultValue={8} origin={6} vertical />
     </div>
   );
 };

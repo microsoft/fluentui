@@ -93,7 +93,6 @@ const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     background: 'var(--slider-color)',
-    borderRadius: '99px',
   }),
 
   horizontal: theme => ({

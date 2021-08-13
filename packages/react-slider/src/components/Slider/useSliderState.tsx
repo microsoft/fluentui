@@ -200,11 +200,19 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         height: origin
           ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
           : `${valuePercent}%`,
+        borderRadius:
+          origin && origin !== (max || min)
+            ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
+            : '99px',
         ...state.track.style,
       }
     : {
         left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
         width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
+        borderRadius:
+          origin && origin !== (max || min)
+            ? `${originPercent > valuePercent ? '99px 0px 0px 99px' : '0px 99px 99px 0px'}`
+            : '99px',
         ...state.track.style,
       };
 
@@ -223,7 +231,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.trackWrapper.children = null;
 
   // Track Props
-  state.track.className = state.track.className || 'ms-Slider-track';
   state.track.style = trackStyles;
   state.track.children = null;
 
@@ -232,7 +239,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumbWrapper.children = null;
 
   // Thumb Props
-  state.thumb.className = state.thumb.className || 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
