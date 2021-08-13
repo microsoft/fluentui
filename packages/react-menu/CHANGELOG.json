@@ -2,6 +2,42 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.62",
+      "version": "9.0.0-alpha.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore(Menu): implement useContextValues() pattern",
+            "author": "olfedias@microsoft.com",
+            "commit": "f3f4b63ccf7e73ab2d55a6f8df59afc27e63add6",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "fix(MenuTrigger): Retain original child ref",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe61d5e33c259da94b08e72c96d0a0963528e1fd",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Menu): Use react-icons for checkmarks and stories",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2e534aa9790b435b941353bc1b3c74b76facd07c",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Aug 2021 07:33:28 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.60",
       "version": "9.0.0-alpha.60",

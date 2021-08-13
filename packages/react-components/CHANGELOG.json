@@ -2,6 +2,36 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.92",
+      "version": "9.0.0-alpha.92",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.62",
+            "author": "olfedias@microsoft.com",
+            "commit": "4206575d51e8ae49fdd4f2b6aa2eb30a9b253a18",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.91",
+      "version": "9.0.0-alpha.91",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.61",
+            "author": "olfedias@microsoft.com",
+            "commit": "954ba1d43684df75942a18c0ef05dc99187729ff",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Aug 2021 07:33:28 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.90",
       "version": "9.0.0-alpha.90",

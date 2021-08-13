@@ -100,7 +100,7 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
     headerContent = (
       <div className={classNames.header}>
-        <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
+        <HeaderWrapperAs role="heading" aria-level={3} className={classNames.headline} id={ariaLabelledBy}>
           {headline}
         </HeaderWrapperAs>
       </div>

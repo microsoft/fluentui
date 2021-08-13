@@ -106,6 +106,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           directionalHint={DirectionalHint.topRightEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
           {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
         >
@@ -165,6 +166,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         shouldHighlight: shouldHighlight,
         href: href,
       });
+
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
 
       return (
         <g
@@ -230,7 +235,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart}>{bars}</svg>
+            <svg className={this._classNames.chart}>
+              {data!.chartTitle && <title>{data!.chartTitle}</title>}
+              {bars}
+            </svg>
           </div>
         </FocusZone>
       </div>

@@ -88,7 +88,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
   /**
    * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | HTMLElement>) => any;
 
   /**
    * A callback function which is called after the Modal is dismissed and the animation is complete.

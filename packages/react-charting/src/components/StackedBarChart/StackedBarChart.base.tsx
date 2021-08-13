@@ -136,6 +136,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <svg className={this._classNames.chart}>
+              {data!.chartTitle && <title>{data!.chartTitle}</title>}
               <g>{bars[0]}</g>
               <Callout
                 gapSpace={15}
@@ -247,6 +248,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         shouldHighlight: shouldHighlight,
         href: this.props.href!,
       });
+
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
+
       return (
         <g
           key={index}

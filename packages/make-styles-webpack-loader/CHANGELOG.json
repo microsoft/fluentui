@@ -2,6 +2,42 @@
   "name": "@fluentui/make-styles-webpack-loader",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/make-styles-webpack-loader_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.36",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/make-styles-webpack-loader"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/make-styles-webpack-loader_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "perf: early return on files without makeStyles() calls",
+            "author": "olfedias@microsoft.com",
+            "commit": "8b76e8db72ec27dfe880e39fbc4d4fe49ada7331",
+            "package": "@fluentui/make-styles-webpack-loader"
+          },
+          {
+            "comment": "add support for loader options",
+            "author": "olfedias@microsoft.com",
+            "commit": "954ba1d43684df75942a18c0ef05dc99187729ff",
+            "package": "@fluentui/make-styles-webpack-loader"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/make-styles-webpack-loader_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",

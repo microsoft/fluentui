@@ -116,7 +116,7 @@ describe('Slider', () => {
     let totalCalls = 0;
 
     const SliderTestComponent = () => {
-      const [currentValue, setCurrentValue] = React.useState(50);
+      const [currentValue, setCurrentValue] = React.useState(5);
       sliderRef = React.useRef(null);
 
       const onChange = (incomingValue: number) => {

@@ -26,7 +26,7 @@ describe('Popover', () => {
 
   it('Should not render arrow if `coverTarget` is set to true', () => {
     // Act
-    const { result } = renderHook(() => usePopover({ coverTarget: true, children: null }));
+    const { result } = renderHook(() => usePopover({ positioning: { coverTarget: true }, children: null }));
 
     // Assert
     expect(result.current.noArrow).toBe(true);

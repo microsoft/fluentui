@@ -8,12 +8,12 @@ import { robinAvatar, timAvatar } from './compactAvatars';
 const items: ShorthandCollection<ChatItemProps> = [
   {
     gutter: <Avatar {...robinAvatar} />,
-    message: <Chat.Message content="Old read message" author="Robin" timestamp="10:15" mine />,
+    message: <Chat.Message content="Old read message" author="Robin Counts" timestamp="10:15" mine />,
     key: 'message-id-1',
   },
   {
     gutter: <Avatar {...timAvatar} />,
-    message: <Chat.Message content="Old reply" author="Tim" timestamp="10:16" />,
+    message: <Chat.Message content="Old reply" author="Tim Deboer" timestamp="10:16" />,
     key: 'message-id-2',
   },
   {
@@ -21,7 +21,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Most recent read message spanning multiple lines. The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
-        author="Robin"
+        author="Robin Counts"
         timestamp="10:17"
         mine
         readStatus={{
@@ -37,7 +37,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Sent message"
-        author="Robin"
+        author="Robin Counts"
         timestamp="10:21"
         mine
         readStatus={{

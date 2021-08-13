@@ -33,7 +33,7 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public render(): JSX.Element {
     // const getClassNames = classNamesFunction<IPieProps, IPieStyles>();
-    const { pie, colors, data, width, height } = this.props;
+    const { pie, colors, data, width, height, chartTitle } = this.props;
 
     this.colors = scale.scaleOrdinal().range(colors!);
 
@@ -42,6 +42,7 @@ export class Pie extends React.Component<IPieProps, {}> {
 
     return (
       <svg width={width} height={height}>
+        {chartTitle && <title>{chartTitle}</title>}
         <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>
       </svg>
     );
