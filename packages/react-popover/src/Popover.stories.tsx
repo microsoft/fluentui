@@ -77,7 +77,7 @@ export const AnchorToTarget = () => {
   return (
     <>
       <div>
-        <Popover target={target}>
+        <Popover positioning={{ target }}>
           <PopoverTrigger>
             <button>Popover trigger</button>
           </PopoverTrigger>
@@ -121,7 +121,7 @@ export const WithCustomTrigger = () => {
       <button aria-haspopup ref={setTarget} onClick={onClick}>
         Custom trigger
       </button>
-      <Popover target={target} open={open} onOpenChange={onOpenChange}>
+      <Popover positioning={{ target }} open={open} onOpenChange={onOpenChange}>
         <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>

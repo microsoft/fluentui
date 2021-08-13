@@ -9,7 +9,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
-import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
@@ -214,8 +214,9 @@ export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inlin
 // Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export interface MenuProps extends Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'>, Partial<MenuCommons>, ComponentProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    positioning?: PositioningShorthand;
 }
 
 // @public (undocumented)

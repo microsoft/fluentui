@@ -19,6 +19,9 @@ export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
 
+// @public
+export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
+
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 
@@ -52,13 +55,20 @@ export interface PositioningProps {
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
+    pinned?: boolean;
     popperRef?: React_2.Ref<PopperRefHandle>;
     position?: Position;
-    positionFixed?: boolean;
     target?: HTMLElement | PopperVirtualElement | null;
-    unstable_disableTether?: boolean | 'all';
-    unstable_pinned?: boolean;
 }
+
+// @public (undocumented)
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+
+// @public (undocumented)
+export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
+
+// @public (undocumented)
+export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
 //
