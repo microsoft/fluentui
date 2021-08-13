@@ -10,20 +10,20 @@ const prettierBin = getPrettierBinary();
 const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
 
-const prettierSupportedFileExtensions = [
-  'js',
-  'jsx',
-  'ts',
-  'tsx',
-  'json',
-  'html',
-  'yml',
-  'css',
-  'scss',
-  'less',
-  'md',
-  'mdx',
-];
+const prettierSupportedFileExtensionsByContext = {
+  js: ['js', 'jsx', 'ts', 'tsx'],
+  stylesheets: ['css', 'scss', 'less'],
+  markdown: ['md', 'mdx'],
+  others: ['html', 'json', 'yml'],
+};
+
+const prettierSupportedFileExtensions = Object.values(prettierSupportedFileExtensionsByContext).reduce(
+  (acc, current) => {
+    acc.push(...current);
+    return acc;
+  },
+  [],
+);
 
 function getPrettierBinary() {
   const prettierPath = path.dirname(require.resolve('prettier'));
@@ -99,4 +99,4 @@ function runPrettierForFolder(folderPath, config = {}) {
   return runPrettier([sourcePath], { runAsync, logErrorsOnly: true, check });
 }
 
-module.exports = { runPrettierForFolder, runPrettier };
+module.exports = { runPrettierForFolder, runPrettier, prettierSupportedFileExtensionsByContext };

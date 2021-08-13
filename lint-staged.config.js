@@ -1,5 +1,7 @@
 // @ts-check
 
+const { prettierSupportedFileExtensionsByContext } = require('@fluentui/scripts/prettier');
+
 const commands = {
   format: 'prettier --write',
   /**
@@ -13,6 +15,10 @@ const commands = {
 
 // https://www.npmjs.com/package/lint-staged
 module.exports = {
-  '**/*.{js,jsx,ts,tsx,json,html,yml,css,scss,md,mdx}': [commands.format],
-  '**/*.{js,jsx,ts,tsx}': [commands.lint],
+  [`**/*.{${
+    (prettierSupportedFileExtensionsByContext.stylesheets,
+    prettierSupportedFileExtensionsByContext.markdown,
+    prettierSupportedFileExtensionsByContext.others)
+  }}`]: [commands.format],
+  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [commands.format, commands.lint],
 };
