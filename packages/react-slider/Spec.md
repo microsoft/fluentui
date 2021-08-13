@@ -130,17 +130,17 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
   ```jsx
   <slots.root {...slotProps.root}>
     {state.label && <slots.label {...slotProps.label} />}
-    <slots.sliderContainer {...slotProps.sliderContainer}>
+    {state.marks && <slots.marksContainer {...slotProps.marksContainer} />}
+    <slots.sliderWrapper {...slotProps.sliderWrapper}>
       <slots.rail {...slotProps.rail} />
       <slots.trackWrapper {...slotProps.trackWrapper}>
         <slots.track {...slotProps.track} />
       </slots.trackWrapper>
-      {state.marks && <slots.mark {...slotProps.mark} />}
       <slots.thumbWrapper {...slotProps.thumbWrapper}>
         <slots.thumb {...slotProps.thumb} />
       </slots.thumbWrapper>
       <slots.activeRail {...slotProps.activeRail} />
-    </slots.sliderContainer>
+    </slots.sliderWrapper>
   </slots.root>
   ```
 
@@ -152,14 +152,16 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
         <div className="ms-Slider-label">
             {...label children}
         </div>
-        <div className="ms-Slider-container">
+        <div className = "ms-Slider-markContainer">
+            <div className="ms-Slider-markItemContainer">
+                <div className="ms-Slider-mark" />
+                <div className="ms-Slider-markLabel" />
+            </div>
+        </div>
+        <div className="ms-Slider-wrapper">
             <div className="ms-Slider-rail" />
             <div className="ms-Slider-trackWrapper">
                 <div className="ms-Slider-track" />
-            </div>
-            <div className="ms-Slider-markContainer">
-                <div className="ms-Slider-mark" />
-                <div className="ms-Slider-markLabel" />
             </div>
             <div className="thumbWrapper">
                 <div className="ms-Slider-thumb" />
