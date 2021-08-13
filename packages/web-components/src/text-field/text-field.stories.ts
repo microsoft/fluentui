@@ -88,20 +88,32 @@ const TextFieldTemplate = ({
   type,
 }) =>
   `<fluent-text-field
-    appearance="${appearance}"
+    ${appearance ? `appearance="${appearance}"` : ''}
     ${autoFocus ? 'autofocus' : ''}
     ${disabled ? 'disabled' : ''}
-    list="${list}"
-    maxlength="${maxlength}"
-    name="${name}"
-    minlength="${minlength}"
-    pattern="${pattern}"
-    placeholder="${placeholder}"
+    ${list ? `list="${list}"` : ''}
+    ${maxlength ? `maxlength="${maxlength}"` : ''}
+    ${name ? `name="${name}"` : ''}
+    ${minlength ? `minlength="${minlength}"` : ''}
+    ${pattern ? `pattern="${pattern}"` : ''}
+    ${placeholder ? `placeholder="${placeholder}"` : ''}
     ${readonly ? 'readonly' : ''}
     ${required ? 'required' : ''}
-    spellcheck="${spellcheck}"
-    size="${size}"
-    type="${type}"
+    ${spellcheck ? `spellcheck="${spellcheck}"` : ''}
+    ${size ? `size="${size}"` : ''}
+    ${type ? `type="${type}"` : ''}
   ></fluent-text-field>`;
 
 export const TextField = TextFieldTemplate.bind({});
+
+const example = `
+<fluent-text-field></fluent-text-field>
+`;
+
+TextField.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

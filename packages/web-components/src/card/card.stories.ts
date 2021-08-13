@@ -6,3 +6,15 @@ export default {
 };
 
 export const Card = (): string => CardTemplate;
+
+const example = `
+<fluent-card>Card Content</fluent-card>
+`;
+
+Card.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

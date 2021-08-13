@@ -45,7 +45,7 @@ export default {
   },
 };
 
-const numberFieldTemplate = ({
+const NumberFieldTemplate = ({
   appearance,
   autoFocus,
   disabled,
@@ -61,7 +61,7 @@ const numberFieldTemplate = ({
   value,
 }) => `
   <fluent-number-field
-    appearance="${appearance}"
+    ${appearance ? `appearance="${appearance}"` : ''}
     ${autoFocus ? 'autofocus' : ''}
     ${disabled ? 'disabled' : ''}
     ${hideStep ? 'hide-step' : ''}
@@ -78,10 +78,20 @@ const numberFieldTemplate = ({
   </fluent-number-field>
 `;
 
-export const NumberField = numberFieldTemplate.bind({});
-
-// export const NumberField = () => NumberFieldTemplate;
+export const NumberField = NumberFieldTemplate.bind({});
 
 NumberField.args = {
   placeholder: '',
+};
+
+const example = `
+<fluent-number-field></fluent-number-field>
+`;
+
+NumberField.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
 };

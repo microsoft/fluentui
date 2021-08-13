@@ -438,3 +438,15 @@ export default {
 };
 
 export const dataGrid = () => DataGridTemplate;
+
+const example = `
+<fluent-data-grid id="defaultGrid" style="max-height: 400px; overflow-y: auto"></fluent-data-grid>
+`;
+
+dataGrid.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};

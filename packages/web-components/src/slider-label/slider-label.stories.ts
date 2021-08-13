@@ -16,16 +16,31 @@ export default {
   },
 };
 
-const SliderLabelTemplate = ({ disabled, hideMark, label, orientation, position }) =>
-  `<fluent-slider-label
+const SliderLabelTemplate = ({ disabled, hideMark, label, orientation, position }) => `
+  <fluent-slider-label
     ${disabled ? 'disabled' : ''}
-    hide-mark="${hideMark}"
-    position="${position}"
-  >${label}</fluent-slider-label>`;
+    ${hideMark ? `hide-mark="${hideMark}"` : ''}
+    ${position ? `position="${position}"` : ''}
+  >
+    ${label}
+  </fluent-slider-label>
+`;
 
 export const SliderLabel = SliderLabelTemplate.bind({});
 
 SliderLabel.args = {
   hideMark: false,
   label: 'Label',
+};
+
+const example = `
+<fluent-slider-label> basic </fluent-slider-label>
+`;
+
+SliderLabel.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
 };

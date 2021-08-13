@@ -11,11 +11,22 @@ export default {
   },
 };
 
-const BadgeTemplate = ({ appearance, label }) => `<fluent-badge appearance="${appearance}">${label}</fluent-badge>`;
+const BadgeTemplate = ({ appearance, label }) => `
+  <fluent-badge 
+    ${appearance ? `appearance="${appearance}"` : ''}
+  >${label}</fluent-badge>`;
 
 export const Badge = BadgeTemplate.bind({});
 
 Badge.args = {
   label: 'Badge',
   appearance: 'accent',
+};
+
+Badge.parameters = {
+  docs: {
+    source: {
+      code: `<fluent-badge appearance="neutral">Text</fluent-badge>`,
+    },
+  },
 };
