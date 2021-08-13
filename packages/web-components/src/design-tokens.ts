@@ -669,7 +669,6 @@ export const neutralFillStealthFocus = create<Swatch>('neutral-fill-stealth-focu
 );
 
 // Neutral Fill Strong
-// TODO: none of these are actually used, do we need them?
 /** @public */
 export const neutralFillStrongRecipe = create<InteractiveColorRecipe>({
   name: 'neutral-fill-strong-recipe',

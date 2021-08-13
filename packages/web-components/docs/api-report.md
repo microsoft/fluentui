@@ -78,7 +78,7 @@ import { ViewTemplate } from '@microsoft/fast-element';
 // Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const AccentButtonStyles: ElementStyles;
+export const AccentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const accentFillActive: CSSDesignToken<Swatch>;
@@ -249,7 +249,7 @@ export const badgeStyles: (context: ElementDefinitionContext, definition: Founda
 // Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const baseButtonStyles: (context: any, definition: any) => ElementStyles;
+export const baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const baseHeightMultiplier: CSSDesignToken<number>;
@@ -727,7 +727,7 @@ export const horizontalScrollStyles: (context: ElementDefinitionContext, definit
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const HypertextStyles: ElementStyles;
+export const HypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "inputFilledForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -782,7 +782,7 @@ export const layerCornerRadius: CSSDesignToken<number>;
 // Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const LightweightButtonStyles: ElementStyles;
+export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
 
 export { Listbox }
 
@@ -1194,7 +1194,7 @@ export const OptionStyles: (context: ElementDefinitionContext, definition: Found
 // Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const OutlineButtonStyles: ElementStyles;
+export const OutlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
 
 // @public @deprecated (undocumented)
 export const outlineWidth: CSSDesignToken<number>;
@@ -1296,7 +1296,7 @@ export enum StandardLuminance {
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const StealthButtonStyles: ElementStyles;
+export const StealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector?: string) => ElementStyles;
 
 // @public (undocumented)
 export const strokeControlAccentActive: CSSDesignToken<string>;

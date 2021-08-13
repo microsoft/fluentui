@@ -18,7 +18,7 @@ import {
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRest,
-  neutralForegroundRest,
+  neutralFillStrongRest,
 } from '../design-tokens';
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
@@ -31,29 +31,14 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       justify-content: center;
       align-items: center;
       margin: 0;
-      position: relative;
       fill: currentcolor;
-      color: ${neutralForegroundRest};
-      background: transparent;
+      color: ${neutralFillStrongRest};
+      background: ${neutralFillStealthRest};
       box-sizing: border-box;
       border: calc(${focusStrokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);
       outline: none;
       padding: 0;
-      outline: none;
-    }
-
-    :host::before {
-      content: '';
-      opacity: 0.8;
-      background: ${neutralFillStealthRest};
-      border-radius: inherit;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      transition: all 0.1s ease-in-out;
     }
 
     :host(.disabled) {
@@ -65,15 +50,15 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       cursor: pointer;
     }
 
-    :host(:not(.disabled):hover)::before {
+    :host(:not(.disabled):hover) {
       background: ${neutralFillStealthHover};
     }
 
-    :host(:not(.disabled):active)::before {
+    :host(:not(.disabled):active) {
       background: ${neutralFillStealthActive};
     }
 
-    :host(:${focusVisible})::before {
+    :host(:${focusVisible}) {
       border-color: ${focusStrokeOuter};
     }
 
@@ -91,11 +76,11 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
         }
-        :host::before {
+        :host {
           background: ${SystemColors.Canvas};
           border-color: ${SystemColors.ButtonText};
         }
-        :host(:not(.disabled):hover)::before {
+        :host(:not(.disabled):hover) {
           forced-color-adjust: none;
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.ButtonText};
@@ -110,8 +95,8 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
         :host(.disabled) {
           opacity: 1;
         }
-        :host(.disabled)::before,
-        :host(.disabled:hover)::before,
+        :host(.disabled),
+        :host(.disabled:hover),
         :host(.disabled) .next,
         :host(.disabled) .previous,
         :host(.disabled:hover) .next,
@@ -122,7 +107,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
           color: ${SystemColors.GrayText};
           fill: ${SystemColors.GrayText};
         }
-        :host(:${focusVisible})::before {
+        :host(:${focusVisible}) {
           forced-color-adjust: none;
           border-color: ${SystemColors.Highlight};
           box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};

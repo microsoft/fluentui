@@ -152,13 +152,8 @@ class PaletteRGBImpl implements Palette<SwatchRGB> {
    * @returns
    */
   private static maxRelativeLuminance(lum: number, palette: ColorRGBA64[]): ColorRGBA64 {
-    const referenceLength: number = palette.length;
-    for (let i: number = 0; i < referenceLength; i++) {
-      if (rgbToRelativeLuminance(palette[i]) <= lum) {
-        return palette[i];
-      }
-    }
-    return palette[referenceLength - 1];
+    const color = palette.find(clr => rgbToRelativeLuminance(clr) <= lum);
+    return color || palette[palette.length - 1];
   }
 
   /**
@@ -234,10 +229,12 @@ class PaletteRGBImpl implements Palette<SwatchRGB> {
     const targetPalette: ColorRGBA64[] = [];
     targetPalette.push(referencePalette[0]);
 
+    const steppedLum = (lum: number) => (lum + 0.05) / stepContrast - 0.05;
+
     let lum: number = 1;
     do {
-      lum = (lum + 0.05) / stepContrast - 0.05;
-      const peekLum = (lum + 0.05) / stepContrast - 0.05;
+      lum = steppedLum(lum);
+      const peekLum = steppedLum(lum);
       // TODO: average the drop to black
       if (peekLum < 0) {
         lum = 0;

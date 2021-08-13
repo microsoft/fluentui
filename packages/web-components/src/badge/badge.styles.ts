@@ -12,7 +12,6 @@ import {
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
 } from '../design-tokens';
-import { heightNumber } from "../styles/index";
 
 export const badgeStyles: (
   context: ElementDefinitionContext,
@@ -50,12 +49,9 @@ export const badgeStyles: (
 
     :host([circular]) .control {
       border-radius: 100px;
-      padding: 0 calc(${designUnit} * 1px);
-      height: calc((${heightNumber} - (${designUnit} * 3)) * 1px);
-      min-width: calc((${heightNumber} - (${designUnit} * 3)) * 1px);
+      min-width: calc(${typeRampMinus1LineHeight} - calc(${designUnit} * 1px));
       display: flex;
       align-items: center;
       justify-content: center;
-      box-sizing: border-box;
     }
   `;
