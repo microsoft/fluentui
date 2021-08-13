@@ -102,7 +102,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
-  setupNpmConfig(tree, options);
+  setupNpmIgnoreConfig(tree, options);
+  setupBabel(tree, options);
 
   updateNxWorkspace(tree, options);
 }
@@ -135,6 +136,11 @@ const templates = {
       preserveConstEnums: true,
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
+  },
+  babelConfig: (options: { extraPlugins: Array<string> }) => {
+    return {
+      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    };
   },
   jestSetup: stripIndents`
    /** Jest test setup file. */
@@ -246,6 +252,7 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
       configRoot: joinPathFragments(projectConfig.root, 'config'),
       packageJson: joinPathFragments(projectConfig.root, 'package.json'),
       tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
+      babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
       jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
       rootTsconfig: '/tsconfig.base.json',
       rootJestPreset: '/jest.preset.js',
@@ -387,7 +394,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function setupNpmConfig(tree: Tree, options: NormalizedSchema) {
+function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
 
   return tree;
@@ -580,6 +587,23 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 
     return json;
   });
+}
+
+function setupBabel(tree: Tree, options: NormalizedSchema) {
+  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
+  const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  pkgJson.dependencies = pkgJson.dependencies || {};
+
+  const shouldAddMakeStylesPlugin =
+    pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
+    pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`];
+  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
+
+  const config = templates.babelConfig({ extraPlugins });
+
+  tree.write(options.paths.babelConfig, serializeJson(config));
+
+  return tree;
 }
 
 function printUserLogs(logs: UserLog) {

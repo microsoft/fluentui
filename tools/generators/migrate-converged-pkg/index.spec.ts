@@ -782,6 +782,75 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`babel config setup`, () => {
+    function getBabelConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
+      return readJson(tree, babelConfigPath);
+    }
+
+    it(`should setup .babelrc.json`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      await generator(tree, options);
+
+      let babelConfig = getBabelConfig(projectConfig);
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+
+      tree.delete(`${projectConfig.root}/.babelrc.json`);
+
+      await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+    });
+
+    it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
+      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const currentProjectNpmScope = `@${workspaceConfig.npmScope}`;
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+        if (json.dependencies) {
+          delete json.dependencies[`${currentProjectNpmScope}/react-make-styles`];
+          delete json.dependencies[`${currentProjectNpmScope}/make-styles`];
+        }
+
+        return json;
+      });
+
+      let babelConfig = getBabelConfig(projectConfig);
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+
+      await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+
+      expect(babelConfig).toEqual({
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      });
+    });
+  });
+
   describe(`nx workspace updates`, () => {
     it(`should set project 'sourceRoot' in workspace.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
@@ -996,10 +1065,14 @@ function setupDummyPackage(
       typings
       visualtests
     `,
+    babelConfig: {
+      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    },
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
+  tree.write(`${paths.root}/.babelrc.json`, serializeJson(templates.babelConfig));
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
