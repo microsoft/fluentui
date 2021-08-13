@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating to reflect changes in ProviderContext types.",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

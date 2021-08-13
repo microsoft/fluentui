@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Make FluentProvider listen to document.dir changes if no dir is specified in it or any parent FluentProvider.",
+  "packageName": "@fluentui/react-provider",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

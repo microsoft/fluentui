@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Setting initial dir in ProviderContext as undefined so FluentProvider can listen to document.dir changes.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
