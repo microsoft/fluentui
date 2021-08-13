@@ -269,8 +269,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
         transition: stepAnimation
           ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime} ${
-              origin && ', left ease-in-out ' + animationTime
-            }}`
+              origin ? ', left ease-in-out ' + animationTime : ''
+            }`
           : 'none',
         ...state.track.style,
       };
