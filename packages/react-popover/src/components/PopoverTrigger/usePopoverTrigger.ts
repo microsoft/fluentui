@@ -90,7 +90,7 @@ export const usePopoverTrigger = (
     onKeyDown,
     onMouseLeave,
     onContextMenu,
-    ref: useMergedRefs(child.props.ref, triggerRef),
+    ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
     ...triggerAttributes,
   });
 

@@ -60,7 +60,7 @@ export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = React
       {overflowSide === 'start' && showOverflow && <OverflowButton {...props} className={classNames.overflowButton} />}
       {items &&
         items.map((item, i) => (
-          <div className={classNames.item} key={item.key}>
+          <div className={classNames.item} key={item.key} role="none">
             {onRenderItem(item)}
           </div>
         ))}

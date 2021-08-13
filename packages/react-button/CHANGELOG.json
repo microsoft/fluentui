@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.70",
+      "version": "9.0.0-alpha.70",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding font family styles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "669af99bc4859a13a2f599202d310e889c6c5e85",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.69",
       "version": "9.0.0-alpha.69",
