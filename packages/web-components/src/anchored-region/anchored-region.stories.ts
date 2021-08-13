@@ -9,7 +9,7 @@ let scalingViewportPreviousXValue: number = 250;
 let scalingViewportPreviousYValue: number = 250;
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('anchored-region')) {
+  if (name.toLowerCase().startsWith('components-anchored-region')) {
     scrollViewports();
     setButtonActions();
 

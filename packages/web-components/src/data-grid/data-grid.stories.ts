@@ -48,7 +48,7 @@ const customHeaderCellItemTemplate = html`
 `;
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('data-grid')) {
+  if (name.toLowerCase().startsWith('components-data-grid')) {
     defaultGridElement = document.getElementById('defaultGrid') as DataGrid;
     reset();
 
