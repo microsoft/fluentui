@@ -10,10 +10,10 @@ const useRootStyles = makeStyles({
     '--slider-thumb-size': '20px',
     '--slider-color': '#005fb8',
     position: 'relative',
-    overflow: 'hidden',
     display: 'inline-flex',
     userSelect: 'none',
     touchAction: 'none',
+    verticalAlign: 'bottom',
   }),
 
   horizontal: theme => ({
@@ -36,6 +36,7 @@ const useRootStyles = makeStyles({
 const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
+    overflow: 'hidden',
   }),
 
   horizontal: theme => ({
