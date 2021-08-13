@@ -22,7 +22,7 @@ export const ProviderContext: React_2.Context<ProviderContextValue>;
 
 // @public (undocumented)
 export interface ProviderContextValue {
-    dir?: 'ltr' | 'rtl';
+    dir: 'ltr' | 'rtl';
     targetDocument?: Document;
 }
 
