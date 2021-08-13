@@ -213,6 +213,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -325,6 +326,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1010,6 +1012,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1301,6 +1304,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1417,6 +1421,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {

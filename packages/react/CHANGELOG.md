@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.28.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.28.1)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.28.0..@fluentui/react_v8.28.1)
+
+### Patches
+
+- Keytip fixes to handle multiple parents and children - OverflowButton keytip fixes for correctly registering persisted keytips ([PR #19351](https://github.com/microsoft/fluentui/pull/19351) by keyou@microsoft.com)
+- Add aria-level to the TeachingBubble heading ([PR #19374](https://github.com/microsoft/fluentui/pull/19374) by sarah.higley@microsoft.com)
+
+## [8.28.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.28.0)
+
+Thu, 12 Aug 2021 07:34:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.27.2..@fluentui/react_v8.28.0)
+
+### Minor changes
+
+- Update Overlay to use more accurate React.HTMLAttribute typings for onClick ([PR #19350](https://github.com/microsoft/fluentui/pull/19350) by sarah.higley@microsoft.com)
+
+### Patches
+
+- Add role=none to fix CommandBar hierarchy, add optional group labels to primary/secondary command groups ([PR #19280](https://github.com/microsoft/fluentui/pull/19280) by sarah.higley@microsoft.com)
 
 ## [8.27.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.27.2)
 

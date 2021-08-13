@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update Overlay to use more accurate React.HTMLAttribute typings for onClick",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
