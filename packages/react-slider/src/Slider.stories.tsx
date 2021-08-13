@@ -79,6 +79,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
               />
             ),
           },
+          { value: 5, label: '5 oz' },
           8,
           10,
         ]}

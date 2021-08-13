@@ -159,6 +159,7 @@ const useMarksContainerStyles = makeStyles({
 
     '& .ms-Slider-label': {
       padding: '2px',
+      fontSize: '12px',
     },
   }),
 

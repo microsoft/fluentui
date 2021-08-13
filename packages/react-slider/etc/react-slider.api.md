@@ -19,6 +19,11 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
     disabled?: boolean;
+    marks?: boolean | number[] | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
     max?: number;
     min?: number;
     onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
@@ -44,8 +49,10 @@ export const sliderShorthandProps: Array<keyof SliderSlots>;
 // @public
 export type SliderSlots = {
     rail: React_2.HTMLAttributes<HTMLElement>;
+    sliderWrapper: React_2.HTMLAttributes<HTMLElement>;
     trackWrapper: React_2.HTMLAttributes<HTMLElement>;
     track: React_2.HTMLAttributes<HTMLElement>;
+    marksContainer: React_2.HTMLAttributes<HTMLElement>;
     thumbWrapper: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
     thumb: React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>;
     activeRail: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
