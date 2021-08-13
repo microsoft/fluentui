@@ -1,5 +1,4 @@
 import { buttonClassName } from '@fluentui/react-northstar';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
