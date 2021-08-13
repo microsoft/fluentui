@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat(Tooltip): replace react-positioning prop with single `positioning` shorthand prop",
+  "comment": "feat(Tooltipyy): replace react-positioning prop with single `positioning` shorthand prop",
   "packageName": "@fluentui/react-tooltip",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

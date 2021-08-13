@@ -68,7 +68,7 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
 
 // @public (undocumented)
-export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): PositioningProps;
+export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
 //

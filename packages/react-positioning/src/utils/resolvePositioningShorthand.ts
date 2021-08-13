@@ -16,16 +16,16 @@ const shorthandLookup: Record<PositioningShorthandValue, Pick<PositioningProps, 
   'after-bottom': { position: 'after', align: 'bottom' },
 };
 
-export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): PositioningProps {
+export function resolvePositioningShorthand(
+  shorthand: PositioningShorthand | undefined | null,
+): Readonly<PositioningProps> {
   if (shorthand === undefined || shorthand === null) {
     return {};
   }
 
   if (typeof shorthand === 'string') {
-    return {
-      ...shorthandLookup[shorthand],
-    };
+    shorthandLookup[shorthand];
   }
 
-  return shorthand;
+  return shorthand as Readonly<PositioningProps>;
 }
