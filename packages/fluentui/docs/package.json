@@ -20,7 +20,6 @@
     "@fluentui/react-northstar-prototypes": "^0.57.0",
     "@fluentui/react-northstar-styles-renderer": "^0.57.0",
     "@fluentui/react-telemetry": "^0.57.0",
-    "@fluentui/scripts": "^1.0.0",
     "@fluentui/styles": "^0.57.0",
     "@mdx-js/react": "^1.5.5",
     "@types/semver": "^5.5.0",
@@ -52,6 +51,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
     "@types/faker": "^4.1.3",
