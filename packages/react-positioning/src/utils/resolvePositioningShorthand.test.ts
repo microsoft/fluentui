@@ -16,7 +16,6 @@ describe('resolvePositioningShorthand', () => {
     ['after-top', { position: 'after', align: 'top' }],
     ['after-bottom', { position: 'after', align: 'bottom' }],
   ])("should parse '%s' shorthand", (shorthand, expected) => {
-    console.log(resolvePositioningShorthand('above'));
     expect(resolvePositioningShorthand(shorthand)).toEqual(expected);
   });
 });
