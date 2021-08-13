@@ -111,7 +111,8 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    *
    * 1. `Boolean`: If true marks are visible.
    * 2. `number[]`: Marks will be displayed at each provided number.
-   * 3. `number | {label: string, value: number}[]`: Marks are shown at the value location and display the custom label.
+   * 3. `{value: number; label?: string | JSX.Element; mark?: JSX.Element}[]`:
+   *     A mark is shown at the value location and displays any provided custom labels and marks.
    */
   marks?: boolean | number[] | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[];
 
