@@ -24,7 +24,7 @@ export function resolvePositioningShorthand(
   }
 
   if (typeof shorthand === 'string') {
-    shorthandLookup[shorthand];
+    return shorthandLookup[shorthand];
   }
 
   return shorthand as Readonly<PositioningProps>;
