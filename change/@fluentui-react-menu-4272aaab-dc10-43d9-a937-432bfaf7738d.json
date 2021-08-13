@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat(positioning): Use unified positioning options for components",
+  "comment": "feat(Menu): replace react-positioning prop with single `positioning` shorthand prop",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
