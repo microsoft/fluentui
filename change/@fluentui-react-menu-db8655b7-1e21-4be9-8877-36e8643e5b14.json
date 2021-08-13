@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(MenuTrigger): Retain original child ref",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

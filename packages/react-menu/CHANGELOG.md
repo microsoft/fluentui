@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.62)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.61..@fluentui/react-menu_v9.0.0-alpha.62)
+
+### Changes
+
+- chore(Menu): implement useContextValues() pattern ([PR #19342](https://github.com/microsoft/fluentui/pull/19342) by olfedias@microsoft.com)
+- fix(MenuTrigger): Retain original child ref ([PR #19375](https://github.com/microsoft/fluentui/pull/19375) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.61)
 

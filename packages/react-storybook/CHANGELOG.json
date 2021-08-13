@@ -2,6 +2,21 @@
   "name": "@fluentui/react-storybook",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.64",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Aug 2021 07:33:28 GMT",
       "tag": "@fluentui/react-storybook_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(Menu): implement useContextValues() pattern",
-  "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

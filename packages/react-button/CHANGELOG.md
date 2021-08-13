@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.70)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.69..@fluentui/react-button_v9.0.0-alpha.70)
+
+### Changes
+
+- Button: Adding font family styles. ([PR #19353](https://github.com/microsoft/fluentui/pull/19353) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.69)
 
