@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.65)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.64..@fluentui/react-image_v9.0.0-alpha.65)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.32 ([PR #19341](https://github.com/microsoft/fluentui/pull/19341) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.64)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.63..@fluentui/react-image_v9.0.0-alpha.64)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.35 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.63)
 

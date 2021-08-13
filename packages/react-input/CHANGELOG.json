@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-input_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.32",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-input"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/react-input_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

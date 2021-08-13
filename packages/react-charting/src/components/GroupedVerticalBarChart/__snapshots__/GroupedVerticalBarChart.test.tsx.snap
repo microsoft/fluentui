@@ -282,7 +282,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -291,6 +291,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -335,7 +336,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -380,6 +380,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -424,7 +425,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -469,6 +469,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -513,7 +514,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -825,7 +825,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               justify-content: unset;
               position: relative;
             }
-        role="listbox"
+        role="group"
       >
         <div
           className=
@@ -834,6 +834,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData1"
@@ -878,7 +879,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -923,6 +923,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData2"
@@ -967,7 +968,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -1012,6 +1012,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="MetaData3"
@@ -1056,7 +1057,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="option"
           >
             <div
               className=
@@ -1619,7 +1619,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -1628,6 +1628,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -1672,7 +1673,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1717,6 +1717,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -1761,7 +1762,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -1806,6 +1806,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -1850,7 +1851,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2179,7 +2179,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2188,6 +2188,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -2232,7 +2233,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2277,6 +2277,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -2321,7 +2322,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2366,6 +2366,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -2410,7 +2411,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2739,7 +2739,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -2748,6 +2748,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -2792,7 +2793,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2837,6 +2837,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -2881,7 +2882,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -2926,6 +2926,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -2970,7 +2971,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3299,7 +3299,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="listbox"
+              role="group"
             >
               <div
                 className=
@@ -3308,6 +3308,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData1"
@@ -3352,7 +3353,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3397,6 +3397,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData2"
@@ -3441,7 +3442,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=
@@ -3486,6 +3486,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="MetaData3"
@@ -3530,7 +3531,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
-                  role="option"
                 >
                   <div
                     className=

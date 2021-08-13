@@ -35,6 +35,8 @@ const useRootStyles = makeStyles({
     borderStyle: 'solid',
     borderWidth: theme.global.strokeWidth.thin,
 
+    fontFamily: theme.global.type.fontFamilies.base,
+
     outline: 'none',
 
     ':hover': {

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.64)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.63..@fluentui/react-provider_v9.0.0-alpha.64)
+
+### Changes
+
+- chore(FluentProvider): implement useContextValues() pattern ([PR #19341](https://github.com/microsoft/fluentui/pull/19341) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.63)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.62..@fluentui/react-provider_v9.0.0-alpha.63)
+
+### Changes
+
+- fix: export useTheme() hook ([PR #19249](https://github.com/microsoft/fluentui/pull/19249) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.62)
 

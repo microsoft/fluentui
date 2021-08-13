@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use PositioningProps type",
-  "packageName": "@fluentui/react-popover",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

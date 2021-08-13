@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.27)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.26..@fluentui/react-popover_v9.0.0-alpha.27)
+
+### Changes
+
+- fix(PopoverTrigger): Retain original child ref ([PR #19375](https://github.com/microsoft/fluentui/pull/19375) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.26)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.25..@fluentui/react-popover_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.35 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.25)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.24..@fluentui/react-popover_v9.0.0-alpha.25)
+
+### Changes
+
+- use PositioningProps type ([PR #19230](https://github.com/microsoft/fluentui/pull/19230) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.24)
 

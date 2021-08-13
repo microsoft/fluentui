@@ -118,16 +118,20 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   }
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
+    const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
+    const hasSecondSet = data.farItems && data.farItems.length > 0;
+
     return (
       <FocusZone
         className={css(this._classNames.root)}
         direction={FocusZoneDirection.horizontal}
         role={'menubar'}
-        aria-label={this.props.ariaLabel}
+        aria-label={ariaLabel}
       >
         {/*Primary Items*/}
         <OverflowSet
-          role="none"
+          role={hasSecondSet ? 'group' : 'none'}
+          aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           items={data.primaryItems}
@@ -137,9 +141,10 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         />
 
         {/*Secondary Items*/}
-        {data.farItems && data.farItems.length > 0 && (
+        {hasSecondSet && (
           <OverflowSet
-            role="none"
+            role="group"
+            aria-label={farItemsGroupAriaLabel}
             className={css(this._classNames.secondarySet)}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
@@ -172,7 +177,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     if (item.iconOnly && (itemText !== undefined || item.tooltipHostProps)) {
       return (
-        <TooltipHost content={itemText} {...item.tooltipHostProps}>
+        <TooltipHost role="none" content={itemText} setAriaDescribedBy={false} {...item.tooltipHostProps}>
           {this._commandButton(item, commandButtonProps)}
         </TooltipHost>
       );
