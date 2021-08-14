@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs';
 
 ## Installation
 
-To install the components using NPM:
+To install the component packages using NPM:
 
 ```shell
 npm install --save @fluentui/web-components
@@ -16,15 +16,10 @@ Or with yarn:
 yarn add @fluentui/web-components
 ```
 
-To use a Web Component as a custom element in HTML, the custom element must be registered. Importing the necessary component definition into your JavaScript bundle and registering it with a `DesignSystem` will register the custom element with the platform. Here's how to do that for `@microsoft/fast-components`:
+## Registering & using the web components
 
-```js
-import { fastButton, provideFASTDesignSystem } from '@microsoft/fast-components';
-
-provideFASTDesignSystem().register(fastButton());
-```
-
-The same pattern is used for `@fluentui/web-components`:
+To use a Fluent UI Web Component as a custom element in HTML, the custom element must be registered.
+Importing the component definition into your JavaScript bundle and registering it with a `DesignSystem` will register the custom element with the platform:
 
 ```js
 import { fluentButton, provideFluentDesignSystem } from '@fluentui/web-components';
@@ -35,18 +30,14 @@ provideFluentDesignSystem().register(fluentButton());
 As a shortcut, if you wish to easily register all available components, rather than registering each one, you can use the following pattern with either design system:
 
 ```js
-import { allComponents, provideFASTDesignSystem } from '@microsoft/fast-components';
+import { allComponents, provideFluentDesignSystem } from '@fluentui/web-components';
 
 provideFASTDesignSystem().register(allComponents);
 ```
 
-:::note
-When working with a tree-shaking supporting bundler such as Webpack or Rollup, you will want to import and register the individual components. This will ensure that any unused components are tree-shaken out of your builds.
-:::
+> When working with a tree-shaking supporting bundler such as Webpack or Rollup, you will want to import and register the individual components. This will ensure that any unused components are tree-shaken out of your builds.
 
-:::tip
-Looking for a setup that integrates with a particular front-end framework or bundler? Check out [our integration docs](/docs/integrations/introduction).
-:::
+> Looking to integrate with a front-end framework or bundler? Check out [the integration docs](?path=/story/integrations-introduction--page).
 
 ### From CDN
 
@@ -56,7 +47,7 @@ A pre-bundled script that contains all APIs needed to use the components is avai
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script type="module" src="https://unpkg.com/@microsoft/fast-components"></script>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
   </head>
   <!-- ... -->
 </html>
@@ -64,17 +55,13 @@ A pre-bundled script that contains all APIs needed to use the components is avai
 
 If you are Fluent Web Components (or FAST components) from the CDN, there is no need to register the components. The CDN script includes code that automatically sets up the design system and registers all the components.
 
-:::important
-The above CDN location points to the latest release of `@microsoft/fast-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
-:::
+> The above CDN location points to the latest release of `@fluentui/web-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
 
-:::note
 For simplicity, examples throughout the documentation will assume the library has been installed from NPM, but you can always replace the import location with the CDN URL.
-:::
 
 ## Add components
 
-With the components registered, add any component to the HTML. That's it! For a comprehensive list of all elements, see the [Components](/docs/components) section.
+With the components registered, add any component to the HTML.
 
 ```html
 <!-- ... -->
