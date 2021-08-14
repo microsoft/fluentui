@@ -10,7 +10,6 @@ export const parameters = {
     disable: true,
     expanded: true,
   },
-  viewMode: 'docs',
   docs: {
     source: {
       excludeDecorators: true,
