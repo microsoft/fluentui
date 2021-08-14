@@ -7,7 +7,7 @@ export const decorators = [withFluentProvider, withStrictMode];
 /** @type {import('@storybook/react').Parameters} */
 export const parameters = {
   controls: {
-    hideNoControlsWarning: true,
+    disabled: true,
     expanded: true,
   },
   viewMode: 'docs',
