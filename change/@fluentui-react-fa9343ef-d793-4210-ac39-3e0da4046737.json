@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix DetailsList columnheader focus target when it does not contain a button; remove aria-haspopup when false",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
