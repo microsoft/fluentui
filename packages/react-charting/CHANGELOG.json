@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-charting_v5.3.27",
+      "version": "5.3.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chart title added for remaining charts, title will describe the chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2df484bdb2cc43642f804707824a44a6ef627135",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Chart element will not render when data value is zero",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2f7f78e4264486b1cb142ec31b4bb3a06141eb37",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Aug 2021 07:36:34 GMT",
       "tag": "@fluentui/react-charting_v5.3.26",
       "version": "5.3.26",

@@ -2,6 +2,47 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-charting to v5.3.27",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2df484bdb2cc43642f804707824a44a6ef627135",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.143",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f700ae31aceafa040df5ac61e094a1f73c2dd6c7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.141",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f700ae31aceafa040df5ac61e094a1f73c2dd6c7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.63",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9a29ba46e28735f7e10d06627a90931ec5a250c8",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.93",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9a29ba46e28735f7e10d06627a90931ec5a250c8",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Aug 2021 07:36:34 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",
