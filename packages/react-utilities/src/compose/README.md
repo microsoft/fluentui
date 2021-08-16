@@ -201,6 +201,60 @@ function renderButton(state, contextValues) {
 
 _See [RFC: Context values](../../../../rfcs/convergence/context-values.md) for details._
 
+### Usage of context selectors
+
+There are multiple cases when usage of [context selectors approach](https://github.com/dai-shi/use-context-selector) is
+preferable.
+
+#### list-like component scenario
+
+A parent component handles state and it contains an "id" of active item, children components should be updated only
+when they should.
+
+```ts
+// ❌ Will produce a re-renders always when a context value changes for *every* item
+const open = React.useContext(ListContext).activeId === props.id;
+// ✅ Will produce a re-render only when a result of selector changes for this item
+const open = useContextSelector(ListContext, context => context.activeId === props.id);
+```
+
+#### trigger-like component scenario
+
+A parent component handles state and it passes down properties for `trigger` and some other components, as these
+properties are independent from each they ideally should have separate conditions for update.
+
+```ts
+// ❌ Will produce a re-renders always when a context value changes for subscriber
+const open = React.useContext(MenuContext).open;
+// ✅ Will produce a re-render only when a result of selector changes for this component
+const open = useContextSelector(ListContext, context => context.open);
+```
+
+_This could be also solved via multiple React contexts: a separate one for `trigger` and a separate for other components._
+
+Memoization of context values is not required with context selectors, but it still recommended to follow `useContext*Values()` pattern:
+
+```tsx
+function Menu(props) {
+  const state = useMenuState();
+  const contextValues = useMenuContextValues();
+
+  return renderButton(state, contextValues);
+}
+
+function useMenuContextValues(state) {
+  const { foo } = state;
+  // Memoization of context values is not required with context selectors
+  const sample = { foo };
+
+  return { sample };
+}
+
+function renderMenu(state, contextValues) {
+  return <SampleContext.Provider value={contextValues.sample} />;
+}
+```
+
 ## API reference
 
 ### getSlots(state: Record<string, any>, slotNames: string[])
