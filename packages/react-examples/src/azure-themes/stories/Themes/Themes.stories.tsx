@@ -30,6 +30,7 @@ import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
+import { SliderBasicExample } from '../components/slider.stories';
 
 // Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
 // eslint-disable-next-line deprecation/deprecation
@@ -37,6 +38,7 @@ import { TooltipBasicExample } from '../components/tooltip.stories';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      <SliderBasicExample />
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />

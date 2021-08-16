@@ -22,10 +22,10 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
     ],
     inactiveSection: [
       !disabled && {
-        background: semanticColors.controlOutlineDisabled,
+        background: 'rgb(222, 236, 249)', //semanticColors.controlOutlineDisabled,
       },
       disabled && {
-        background: semanticColors.disabledBodyText,
+        background: 'rgb(222, 236, 249)', //semanticColors.disabledBodyText,
       },
     ],
     slideBox: [
@@ -34,15 +34,17 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
           '.ms-Slider-thumb': [
             {
               borderColor: semanticColors.controlAccent,
-              height: SLIDER_DIAMETER,
+              //height: SLIDER_DIAMETER,
               width: SLIDER_DIAMETER,
             },
-            vertical && {
-              marginLeft: SLIDER_OFFSET,
-            },
-            !vertical && {
-              marginTop: SLIDER_OFFSET,
-            },
+            vertical &&
+              {
+                //marginLeft: SLIDER_OFFSET,
+              },
+            !vertical &&
+              {
+                //marginTop: SLIDER_OFFSET,
+              },
           ],
         },
       },
@@ -51,15 +53,17 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
           '.ms-Slider-thumb': [
             {
               borderColor: semanticColors.disabledBodyText,
-              height: SLIDER_DIAMETER,
+              //height: SLIDER_DIAMETER,
               width: SLIDER_DIAMETER,
             },
-            vertical && {
-              marginLeft: SLIDER_OFFSET,
-            },
-            !vertical && {
-              marginTop: SLIDER_OFFSET,
-            },
+            vertical &&
+              {
+                //marginLeft: SLIDER_OFFSET,
+              },
+            !vertical &&
+              {
+                //marginTop: SLIDER_OFFSET,
+              },
           ],
         },
       },
@@ -68,12 +72,12 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
       !vertical && {
         selectors: {
           '.ms-Slider-active': {
-            height: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS,
+            //height: SLIDER_BOX_DIMENSION,
+            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
           },
           '.ms-Slider-inactive': {
-            height: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS,
+            //height: SLIDER_BOX_DIMENSION,
+            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
           },
         },
       },
@@ -81,11 +85,11 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
         selectors: {
           '.ms-Slider-active': {
             width: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS,
+            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
           },
           '.ms-Slider-inactive': {
             width: SLIDER_BOX_DIMENSION,
-            borderRadius: SLIDER_BORDER_RADIUS,
+            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
           },
         },
       },
