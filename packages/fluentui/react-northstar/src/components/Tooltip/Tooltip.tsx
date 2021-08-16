@@ -311,6 +311,8 @@ Tooltip.propTypes = {
     as: false,
     content: false,
   }),
+  openDelay: PropTypes.number,
+  dismissOnContentMouseEnter: PropTypes.bool,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   subtle: PropTypes.bool,
   children: PropTypes.element,
