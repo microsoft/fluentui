@@ -9,6 +9,7 @@ import { CollapseAllVisibility, IGroup } from '../GroupedList/GroupedList.types'
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -218,6 +219,10 @@ export interface IDetailsRowBaseProps
    * the correct aria-posinset and aria-setsize values.
    */
   group?: IGroup;
+  /**
+   * Properties to pass to the rows focus zone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

@@ -204,6 +204,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       useFastIcons = true,
       cellStyleProps,
       group,
+      focusZoneProps,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -217,6 +218,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
     const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
     const ariaSetSize = group ? group.count : undefined;
+    const focusZoneDirection = focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.horizontal;
 
     this._classNames = {
       ...this._classNames,
@@ -281,7 +283,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               draggable: isDraggable,
             }
           : {})}
-        direction={FocusZoneDirection.horizontal}
+        {...focusZoneProps}
+        direction={focusZoneDirection}
         elementRef={this._root}
         componentRef={this._focusZone}
         role={role}
