@@ -79,50 +79,131 @@ Card goes for a more structural and generic approach to a card component and is 
 
 ### Components
 
-| Component  | Purpose                                                                  |
-| ---------- | ------------------------------------------------------------------------ |
-| Card       | Wrapper for the main content of a card.                                  |
-| CardHeader | Optional header slot for the card.                                       |
-| CardBody   | Main slot of the Card                                                    |
-| CardFooter | Optional footer slot for the card. (non-applicable for horizontal cards) |
+| Component   | Purpose                                                                  |
+| ----------- | ------------------------------------------------------------------------ |
+| Card        | Wrapper for the main content of a card.                                  |
+| CardHeader  | Optional header slot for the card.                                       |
+| CardBody    | Main slot of the Card                                                    |
+| CardPreview | Previewing the document/article presented in the card through an image   |
+| CardFooter  | Optional footer slot for the card. (non-applicable for horizontal cards) |
 
 ### Card
 
-| Property       | Values                                              | Default    | Purpose                                                                          |
-| -------------- | --------------------------------------------------- | ---------- | -------------------------------------------------------------------------------- |
-| orientation    | `vertical`, `horizontal`                            | `vertical` | Orientation of the card                                                          |
-| size           | `smallest`, `smaller`, `small`, `medium`, `large`   | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
-| scale          | 🚧                                                  |            |                                                                                  |
-| interactive    | boolean                                             | false      | Allows the card itself to be clickable                                           |
-| appearance     | `filled`, `filled-alternative`, `outline`, `subtle` | `filled`   | Define the appearance of the card                                                |
-| selectable 🚧  | boolean                                             |            |                                                                                  |
-| expandable 🚧  | boolean                                             |            |                                                                                  |
-| contextMenu 🚧 |                                                     |            |                                                                                  |
-| disabled       | boolean                                             | false      | Makes the card disabled                                                          |
+#### Anatomy
+
+![visual anatomy of the Card component](./assets/Card.png)
+
+#### API
+
+| Property    | Values                                                                               | Default    | Purpose                                                                                   |
+| ----------- | ------------------------------------------------------------------------------------ | ---------- | ----------------------------------------------------------------------------------------- |
+| orientation | `vertical`, `horizontal`                                                             | `vertical` | Orientation of the card                                                                   |
+| size        | `smallest`, `smaller`, `small`, `medium`, `large`                                    | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card          |
+| scale       | `fixed`, `auto-width`, `auto-height`, `auto`, `fluid-width`, `fluid-height`, `fluid` | `auto`     | Manages how the card handles it's scaling depending on the content                        |
+| onClick     | function                                                                             | undefined  | Function to call when clicking the card. Makes the card assume the interactive appearance |
+| appearance  | `filled`, `filled-alternative`, `outline`, `subtle`                                  | `filled`   | Define the appearance of the card                                                         |
+| selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area                      |
+| selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                         |
+| expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                                |
+| context     | _slot_                                                                               | undefined  | Slot for the context menu, when right-clicking the card                                   |
+| disabled    | boolean                                                                              | false      | Makes the card disabled                                                                   |
+
+#### `scale` property
+
+- `fixed`: Size of the card is fixed.
+- `auto-width`: `width` is set to `fit-content`.
+- `auto-height`: `height` is set to `fit-content`.
+- `auto`: `width` and `height` are set to `fit-content`.
+- `fluid-width`: `width` is set to `100%`.
+- `fluid-height`: `height` is set to `100%`.
+- `fluid`: `width` and `height` are set to `100%`.
 
 ### CardHeader
 
-| Property | Values | Default | Purpose |
-| -------- | ------ | ------- | ------- |
-|          |        |         |         |
+#### Anatomy
 
-## Anatomy
+![visual anatomy of the Card component](./assets/CardHeader.png)
 
-You can find below a visual representation of how the Card component will organize it's content.
+#### API
 
-![visual anatomy of the Card component](./assets/anatomy.png)
+| Property    | Values | Default   | Purpose                                           |
+| ----------- | ------ | --------- | ------------------------------------------------- |
+| image       | _slot_ | undefined | Logo or image to better contextualize the content |
+| title       | _slot_ | undefined | Main title of the card                            |
+| description | _slot_ | undefined | Further description of the content                |
 
-Label:
+### CardBody
 
-1. Card
-2. container
-3. CardHeader
-4. CardBody
-5. CardFooter
+This component has no custom props and only ensures the proper positioning of content and itself within the card.
+
+### CardPreview
+
+#### API
+
+| Property | Values | Default   | Purpose                                                  |
+| -------- | ------ | --------- | -------------------------------------------------------- |
+| src      | string | undefined | Source of the media to be displayed on the `img` element |
+| alt      | string | undefined | Alternative text to describe the media presented         |
+
+### CardFooter
+
+This component has no custom props and only ensures the proper positioning of content and itself within the card.
 
 ## Sample Code
 
-...
+### Compact
+
+```jsx
+<Card orientation="horizontal">
+  <CardHeader image={<img src="powerpoint.png" />} title="Team offsite 2020" description="Onedrive > Files" />
+</Card>
+```
+
+### App
+
+```jsx
+<Card>
+  <CardHeader image={<img src="app_logo.png" />} title="App Name" description="Developer" />
+  <CardBody>
+    Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+  </CardBody>
+</Card>
+```
+
+### Task
+
+```jsx
+<Card>
+  <CardHeader title="Alert in Teams when a new document is uploaded in channel" description="By Microsoft" />
+  <CardFooter>
+    <span>Automated</span>
+    <span>3290 uses</span>
+  </CardFooter>
+</Card>
+```
+
+### Image
+
+```jsx
+<Card>
+  <CardPreview src="monkey.png" alt="image of monkey" />
+  <CardBody>
+    <div>
+      <span>Length</span>
+      <span>4.6-39.6 IN</span>
+      <span>11.7-100.6 cm</span>
+    </div>
+    <div>
+      <span>Diet</span>
+      <span>Omnivore</span>
+      <span>nuts, fruits, eggs</span>
+    </div>
+  </CardBody>
+  <CardFooter>
+    <Button>Share</Button>
+  </CardFooter>
+</Card>
+```
 
 ## Behaviours
 
