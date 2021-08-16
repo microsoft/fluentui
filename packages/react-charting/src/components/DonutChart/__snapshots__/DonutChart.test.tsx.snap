@@ -169,7 +169,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     justify-content: center;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -223,6 +223,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -312,6 +313,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -527,7 +529,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     justify-content: center;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -581,6 +583,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -670,6 +673,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1009,7 +1013,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: center;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1063,6 +1067,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1152,6 +1157,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1371,7 +1377,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     justify-content: center;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1425,6 +1431,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1514,6 +1521,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=

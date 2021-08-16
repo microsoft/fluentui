@@ -358,7 +358,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             />
           </div>
         </div>
@@ -721,7 +721,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             />
           </div>
         </div>
@@ -1397,7 +1397,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1451,6 +1451,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1540,6 +1541,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1947,7 +1949,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             />
           </div>
         </div>
