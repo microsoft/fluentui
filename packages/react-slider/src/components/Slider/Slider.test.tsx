@@ -77,13 +77,33 @@ describe('Slider', () => {
   });
 
   it('clamps an initial (defaultValue) that is out of bounds', () => {
-    render(<Slider defaultValue={-10} min={0} max={100} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual('0');
+    let internalValue;
+
+    const onChange = (incomingValue: number) => {
+      internalValue = incomingValue;
+    };
+
+    render(<Slider defaultValue={-10} min={0} max={100} onChange={onChange} data-testid="test" />);
+    const sliderRoot = screen.getByTestId('test');
+
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
+
+    expect(internalValue).toEqual(0);
   });
 
   it('clamps an initial (value) that is out of bounds', () => {
-    render(<Slider value={-10} min={0} max={100} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual('0');
+    let internalValue;
+
+    const onChange = (incomingValue: number) => {
+      internalValue = incomingValue;
+    };
+
+    render(<Slider value={-10} min={0} max={100} onChange={onChange} data-testid="test" />);
+    const sliderRoot = screen.getByTestId('test');
+
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
+
+    expect(internalValue).toEqual(0);
   });
 
   it('calls (onChange) when pointerDown', () => {
