@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expose FocusZoneProps on the details list and detials list row.",
+  "packageName": "@fluentui/react",
+  "email": "richard@einfinity.co.uk",
+  "dependentChangeType": "patch"
+}
