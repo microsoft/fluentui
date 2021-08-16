@@ -122,7 +122,7 @@ Card goes for a more structural and generic approach to a card component and is 
 
 #### Anatomy
 
-![visual anatomy of the Card component](./assets/CardHeader.png)
+![visual anatomy of the CardHeader component](./assets/CardHeader.png)
 
 #### API
 
@@ -138,12 +138,15 @@ This component has no custom props and only ensures the proper positioning of co
 
 ### CardPreview
 
+![visual anatomy of the CardPreview component](./assets/CardPreview.png)
+
 #### API
 
 | Property | Values | Default   | Purpose                                                  |
 | -------- | ------ | --------- | -------------------------------------------------------- |
 | src      | string | undefined | Source of the media to be displayed on the `img` element |
 | alt      | string | undefined | Alternative text to describe the media presented         |
+| logo     | _slot_ | undefined | A logo/file type to add over the image preview           |
 
 ### CardFooter
 
@@ -207,8 +210,194 @@ This component has no custom props and only ensures the proper positioning of co
 
 ## Behaviours
 
-...
+### Mouse
 
-## Accesibility
+#### Selectable cards
 
-...
+![Visual interaction of selectable cards using the mouse](./assets/selectable-interaction-mouse.png)
+
+Clicking the card surface can toggle the checkbox state to `selected`. Note that checkboxes are composed together as an additional component and are not provided by default.
+
+1. Rest Default state is `unselected`
+2. Hover cursor style changes to `pointer`, background color and elevation follows interactive styling to show visual feedback
+3. Pressed cursor does not change background color and elevation follows interactive styling to show visual feedback for pressed state.
+4. MouseUp Card and Checkbox are both in selected state, clicking again toggles components to unselected state
+
+### Non-interactive cards
+
+![Visual interaction of non-interactive cards using the mouse](./assets/non-interactive-interaction-mouse.png)
+
+Cards that have multiple actionable child components within them cannot be clickable. We preserve the use of `EnterKey` for moving focus to actionable controls inside the card, therefore the card surface cannot be used to set the state of the card but is reliant on the checkbox or similar inputs to set the card state.
+
+Mouse interaction
+
+- OnMouseEnter / Hover cursor style stays at default, rest state stays persistent no visual feedback is applied to the card surface
+- Hover & onClick (Checkbox) Hover state & pressed state applies to checkbox component
+- MouseUp (Checkbox) Card and Checkbox are both in selected state, clicking again toggles components to unselected state
+
+### Context menu
+
+![Visual interaction of the context menu on cards using the mouse](./assets/context-interaction-mouse.png)
+
+A context menu can be triggered by right clicking the surface or through an action in the card.
+
+1.Rest
+
+2. RightClick [LongPress]
+   Right click anywhere on card surface invokes content menu
+3. Show
+   Context menu appears close to cursor location on card
+4. Hide/Dismiss
+   Clicking or tapping anywhere outside of menu to dismiss
+
+#### Disabled
+
+![Visual interaction of disabled cards using the mouse](./assets/disabled.png)
+
+1 Unselected disabled
+
+1. Label: Selectable Card
+2. Role: Group
+3. State: Disabled, unselected
+
+2 Selected disabled
+
+1. Label: Selectable Card
+2. Role: Group
+3. State: Disabled, selected
+
+### Keyboard
+
+#### Selectable cards
+
+![Visual interaction of selectable cards using the keyboard](./assets/selectable-interaction-keyboard.png)
+
+1. Rest Default state is ‘unselected’
+2. Focus Focus rectangle is shown on card
+3. Focus Use spacebar to toggle state (selected/unselected)
+
+### Non-interactive cards
+
+![Visual interaction of non-interactive cards using the keyboard](./assets/non-interactive-interaction-keyboard.png)
+
+Keyboard interaction
+
+1. Focus Initial focus is set on card, to access items within the card use EnterKey or Spacebar
+2. Focus-Inside Focus moves to first actionable item in the card. Use ArrowKeys or TabKey to move focus to child elements within the card. To exit card use EscKey, to move focus back to card [parent]
+3. Checkbox-Focus Depending on your tab order of items within the card, the number of keystrokes will vary. Once focus is set on the checkbox by default it will be set to unselected
+4. SpaceBar or EnterKey will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
+
+### Context menu
+
+![Visual interaction of the context menu on cards using the keyboard](./assets/context-interaction-keyboard.png)
+
+1. Rest
+2. OnFocus - Focus rect. is set on card. Use shiftKey and press F10 to invoke context menu
+
+   `aria-haspopup="menu"`
+
+   `aria-expanded="false"`
+
+3. ShowSet focus on context menu
+
+   `aria-expanded="true"`
+
+4. Hide/Dismiss - Use EscKey to hide/dismiss
+
+   `aria-expanded="false"`
+
+## Accessibility
+
+> ⚠️ Note: All other accessibility information, not covered in this section, is provided throughout the spec.
+
+Each card is of `role="group"`.
+
+### Narrator guidance
+
+#### Selectable cards
+
+![Visual interaction of keyboard usage with selectable cards](./assets/selectable-narrator.png)
+
+1 Focus + unselected
+
+1. Label: Select this card
+2. Role: Group
+3. State: Focus + unselected
+4. Helper text: Use enterKey or spacebar to toggle state to selected
+
+2 Focus + selected
+
+1. Label: Unselect this card
+2. Role: Group
+3. State: Focus + selected
+4. Helper text: Use enterKey or spacebar to toggle state to unselected
+
+#### Non-interactive cards
+
+![Visual interaction of keyboard usage with non-interactive cards](./assets/non-interactive-narrator.png)
+
+1 Focus + unselected
+
+1. Label: App Card
+2. Role: Group
+3. State: Focus
+4. Helper text: Use enterKey to access controls within the card
+
+2 Focus (inside)
+
+1. Label: Open App
+2. Role: Button
+3. State: Focus
+4. Helper text: Use enterkey to open app in new window
+
+3 Focus Checkbox unselected
+
+1. Label: Share App
+2. Role: Button
+3. State: Focus
+4. Helper text: Use enter key to open share dialog
+
+4 Focus Checkbox selected
+
+1. Label: Select card
+2. Role: Checkbox
+3. State: Unselected
+4. Helper text: Use spacebar or enter key to select this item
+
+#### Disabled
+
+![Two disabled cards. One is unselected and one is selected](./assets/disabled-narrator.png)
+
+1 Unselected disabled
+
+1. Label: Selectable Card
+2. Role: Group
+3. State: Disabled, unselected
+
+2 Selected disabled
+
+1. Label: Selectable Card
+2. Role: Group
+3. State: Disabled, selected
+
+#### Context menu
+
+![Context menu opening and closing](./assets/context-narrator.png)
+
+RightClick / ShiftKey + F10
+
+1. OnFocus
+
+   `aria-haspopup="true"`
+
+   `aria-expanded="false"`
+
+   `aria-controls="menu"`
+
+2. Opening
+
+   `aria-expanded="true"` - Indicates popup menu is open.
+
+3. Closing
+
+   `aria-expanded="false"` - Indicates popup menu is closed
