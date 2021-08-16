@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Chart title added for Area and Line chart",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

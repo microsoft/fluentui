@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 11 Aug 2021 12:23:07 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 12:23:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.25)
+
+Mon, 16 Aug 2021 12:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.24..@fluentui/react-examples_v0.14.25)
+
+### Patches
+
+- Chart title added for Area and Line chart ([PR #19383](https://github.com/microsoft/fluentui/pull/19383) by v-scharde@microsoft.com)
 
 ## [0.14.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.24)
 

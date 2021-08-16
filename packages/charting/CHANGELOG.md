@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 11 Aug 2021 12:23:07 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 12:23:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.12](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.12)
+
+Mon, 16 Aug 2021 12:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.11..@uifabric/charting_v4.16.12)
+
+### Patches
+
+- Chart title added for Area and Line chart ([PR #19383](https://github.com/microsoft/fluentui/pull/19383) by v-scharde@microsoft.com)
 
 ## [4.16.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.11)
 

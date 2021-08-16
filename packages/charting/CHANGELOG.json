@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 16 Aug 2021 12:23:39 GMT",
+      "tag": "@uifabric/charting_v4.16.12",
+      "version": "4.16.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chart title added for Area and Line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f66ffd490ae90f493f3ac6d4b1a065157eb952b2",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 12:23:07 GMT",
       "tag": "@uifabric/charting_v4.16.11",
       "version": "4.16.11",
