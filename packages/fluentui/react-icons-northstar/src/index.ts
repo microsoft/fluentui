@@ -8,6 +8,7 @@ export { AcceptIcon } from './components/AcceptIcon';
 export { AccessibilityIcon } from './components/AccessibilityIcon';
 export { AddIcon } from './components/AddIcon';
 export { ApprovalsAppbarIcon } from './components/ApprovalsAppbarIcon';
+export { AppFolderIcon } from './components/AppFolderIcon';
 export { AppsIcon } from './components/AppsIcon';
 export { ArchiveIcon } from './components/ArchiveIcon';
 export { ArrowDownIcon } from './components/ArrowDownIcon';
