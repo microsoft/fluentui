@@ -133,7 +133,6 @@ packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-link/ @microsoft/cxe-red @khmakoto
 packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell
-packages/react-toggle/ @microsoft/cxe-red @behowell
 packages/react-tooltip/ @microsoft/cxe-red @behowell
 packages/react-label/ @microsoft/cxe-red @sopranopillow
 packages/react-portal/ @microsoft/teams-prg
