@@ -121,32 +121,6 @@ describe('Slider', () => {
     expect(sliderRef.current.value).toEqual(0);
   });
 
-  it('clamps provided controlled (value) that is out of bounds', () => {
-    let sliderRef: any;
-    let imperativeRef: any;
-
-    const SliderTestComponent = () => {
-      const [sliderValue, setSliderValue] = React.useState(-10);
-      sliderRef = React.useRef(null);
-      imperativeRef = React.useRef(null);
-
-      React.useImperativeHandle(imperativeRef, () => ({
-        getSliderValue: () => {
-          return sliderValue;
-        },
-      }));
-
-      const onChange = (value: number) => setSliderValue(value);
-
-      return <Slider value={sliderValue} min={0} max={100} onChange={onChange} ref={sliderRef} />;
-    };
-
-    render(<SliderTestComponent />);
-
-    expect(sliderRef.current.value).toEqual(0);
-    expect(imperativeRef.current.getSliderValue()).toEqual(0);
-  });
-
   it('calls (onChange) when dragged', () => {
     let sliderRef: any;
     const onChange = jest.fn();
@@ -164,7 +138,6 @@ describe('Slider', () => {
     fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0][0]).toEqual(0);
     expect(sliderRef.current.value).toBe(0);
   });
 
@@ -188,13 +161,11 @@ describe('Slider', () => {
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0][0]).toEqual(10);
     expect(sliderRef.current.value).toBe(10);
 
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(2);
-    expect(onChange.mock.calls[1][0]).toEqual(0);
     expect(sliderRef.current.value).toBe(0);
 
     wrapper.unmount();
@@ -266,8 +237,10 @@ describe('Slider', () => {
   });
 
   it('calls (onChange) with the correct value', () => {
-    const onChange = jest.fn();
     let sliderRef: any;
+    let incomingValue;
+
+    const onChange = (ev: React.PointerEvent<HTMLDivElement>, data: { value: number }) => (incomingValue = data.value);
 
     const SliderTestComponent = () => {
       sliderRef = React.useRef(null);
@@ -284,7 +257,7 @@ describe('Slider', () => {
     fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
 
     expect(sliderRef.current.value).toEqual(50);
-    expect(onChange.mock.calls[2][0]).toEqual(51);
+    expect(incomingValue).toEqual(51);
   });
 
   it('handles a negative (step) prop', () => {

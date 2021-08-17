@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
+import { useId, useControllableState } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -57,6 +57,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
 
+  onChangeCallback.current = onChange;
+
   /**
    * Updates the `currentValue` to the new `incomingValue` and clamps it.
    *
@@ -74,13 +76,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
 
-      if (onChange && onChangeCallback.current) {
-        onChangeCallback.current(clampedValue, ev);
+      if (onChangeCallback.current) {
+        onChangeCallback.current(ev, { value: clampedValue });
       }
 
       setCurrentValue(clampedValue);
     },
-    [max, min, onChange, setCurrentValue],
+    [max, min, setCurrentValue],
   );
 
   /**
@@ -182,18 +184,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       state.ref.current.focus = () => thumbRef?.current?.focus();
     }
   }, [currentValue, state.ref]);
-
-  useMount(() => {
-    // If the user passes an out of bounds controlled value, clamp and update their value onMount.
-    if (value !== undefined && (value < min || value > max) && onChange && onChangeCallback.current) {
-      onChangeCallback.current(clamp(value, min, max));
-
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('It appears that a controlled Slider has received an unclamped value outside of the min/max.');
-      }
-    }
-  });
 
   const valuePercent = getPercent(currentValue!, min, max);
 
