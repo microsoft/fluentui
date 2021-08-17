@@ -301,7 +301,8 @@
     },
     "@fluentui/react-switch": {
       "root": "packages/react-switch",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/react-switch/src"
     }
   }
 }
