@@ -134,6 +134,9 @@
     "@fluentui/keyboard-keys": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-slider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
-    "@fluentui/react-storybook-addon": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] }
+    "@fluentui/react-storybook-addon": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
+    "@fluentui/react-switch": {
+      "implicitDependencies": []
+    }
   }
 }

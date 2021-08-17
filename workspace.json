@@ -298,6 +298,10 @@
       "root": "packages/react-storybook-addon",
       "projectType": "library",
       "sourceRoot": "packages/react-storybook-addon/src"
+    },
+    "@fluentui/react-switch": {
+      "root": "packages/react-switch",
+      "projectType": "library"
     }
   }
 }
