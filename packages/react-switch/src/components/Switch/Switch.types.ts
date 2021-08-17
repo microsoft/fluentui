@@ -2,30 +2,21 @@ import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * Switch Props
- */
-export interface SwitchProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the switchShorthandProps array below
-   * Any property that has a default value should be listed in SwitchDefaultedProps as e.g. 'size' | 'icon'
-   */
-}
-
-/**
  * Names of the shorthand properties in SwitchProps
  */
-export type SwitchShorthandProps = never; // TODO add shorthand property names
+export type SwitchSlots = {};
+
+export interface SwitchCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {}
 
 /**
- * Names of SwitchProps that have a default value in useSwitch
+ * Switch Props
  */
-export type SwitchDefaultedProps = never; // TODO add names of properties with default values
+export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Partial<SwitchCommon> {}
 
 /**
  * State used in rendering Switch
  */
-export interface SwitchState extends ComponentState<SwitchProps, SwitchShorthandProps, SwitchDefaultedProps> {
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
   /**
    * Ref to the root element
    */

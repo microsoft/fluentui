@@ -5,11 +5,7 @@ import { SwitchState } from './Switch.types';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: theme => ({
-    // TODO Add default styles for the root element
-  }),
-
-  // TODO add additional classes for different states and/or slots
+  root: theme => ({}),
 });
 
 /**
@@ -18,9 +14,6 @@ const useStyles = makeStyles({
 export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const styles = useStyles();
   state.className = mergeClasses(styles.root, state.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };
