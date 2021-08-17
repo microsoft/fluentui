@@ -57,4 +57,57 @@ describe('PopoverTrigger', () => {
     // Assert
     expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('true');
   });
+
+  it('should retain original child callback ref', () => {
+    // Arrange
+    const ref = jest.fn();
+    render(
+      <PopoverTrigger>
+        <button ref={ref}>Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(ref).toHaveBeenCalledTimes(1);
+    expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        <button
+          aria-haspopup="true"
+          data-tabster="{\\"deloser\\":{}}"
+        >
+          Trigger
+        </button>,
+      ]
+    `);
+  });
+
+  it('should retain original child ref', () => {
+    // Arrange
+    const cb = jest.fn();
+    const TestComponent = () => {
+      const ref = React.useRef(null);
+      React.useEffect(() => {
+        cb(ref.current);
+      }, []);
+      return (
+        <PopoverTrigger>
+          <button ref={ref}>Trigger</button>
+        </PopoverTrigger>
+      );
+    };
+    render(<TestComponent />);
+
+    // Assert
+    expect(cb).toHaveBeenCalledTimes(1);
+    expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        <button
+          aria-haspopup="true"
+          data-tabster="{\\"deloser\\":{}}"
+        >
+          Trigger
+        </button>,
+      ]
+    `);
+  });
 });

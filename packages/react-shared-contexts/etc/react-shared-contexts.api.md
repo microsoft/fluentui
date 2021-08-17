@@ -30,6 +30,9 @@ export interface ProviderContextValue {
 export const ThemeClassNameContext: React_2.Context<string>;
 
 // @public (undocumented)
+export type ThemeClassNameContextValue = string;
+
+// @public (undocumented)
 export const ThemeContext: React_2.Context<ThemeContextValue>;
 
 // @public (undocumented)
@@ -56,8 +59,7 @@ export const useMenuContext: () => MinimalMenuProps;
 export function useTheme(): ThemeContextValue;
 
 // @public (undocumented)
-export function useThemeClassName(): string;
-
+export function useThemeClassName(): ThemeClassNameContextValue;
 
 // (No @packageDocumentation comment for this package)
 

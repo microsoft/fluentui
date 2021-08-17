@@ -1,7 +1,7 @@
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { mergeThemes } from '@fluentui/react-theme';
 import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
-import { makeMergePropsCompat, resolveShorthandProps, useConst, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
@@ -31,7 +31,6 @@ export const useFluentProvider = (
     {
       ref: useMergedRefs(ref, React.useRef(null), useKeyboardNavAttribute()),
       as: 'div',
-      tooltipContext: useConst({}),
     },
     defaultProps,
     resolveShorthandProps(props, fluentProviderShorthandProps),

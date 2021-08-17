@@ -221,6 +221,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Execllent (0-200)"
@@ -532,6 +533,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Execllent (0-200)"
@@ -620,6 +622,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Nasty"
@@ -1098,6 +1101,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Execllent (0-200)"
@@ -1409,6 +1413,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Execllent (0-200)"

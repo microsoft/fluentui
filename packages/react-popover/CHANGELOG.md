@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.28)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.27..@fluentui/react-popover_v9.0.0-alpha.28)
+
+### Changes
+
+- feat(Menu): replace align, position, coverTarget, offset props with single `positioning` shorthand prop ([PR #19364](https://github.com/microsoft/fluentui/pull/19364) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.27)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.26..@fluentui/react-popover_v9.0.0-alpha.27)
+
+### Changes
+
+- fix(PopoverTrigger): Retain original child ref ([PR #19375](https://github.com/microsoft/fluentui/pull/19375) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.26)
 

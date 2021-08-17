@@ -11,7 +11,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Edited message"
-        author="Robin"
+        author="Robin Counts"
         timestamp="10:20"
         mine
         details={<Tooltip trigger={<EditIcon outline />} content="Edited" />}
@@ -24,7 +24,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Edited and translated message"
-        author="Tim"
+        author="Tim Deboer"
         timestamp="10:22"
         details={
           <>
