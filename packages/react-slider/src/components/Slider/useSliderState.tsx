@@ -73,10 +73,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
 
-      if (onChange) {
-        onChange(ev, { value: clampedValue });
-      }
-
+      onChange?.(ev, { value: clampedValue });
       setCurrentValue(clampedValue);
     },
   );
