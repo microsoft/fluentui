@@ -1,0 +1,27 @@
+.cache/
+.storybook/
+.vscode/
+coverage/
+src/
+bundle-size/
+config/
+temp/
+e2e/
+node_modules/
+__fixtures__
+__tests__
+
+*.log
+*.yml
+*.test.*
+*.spec.*
+*.stories.*
+*.api.json
+
+# config files
+.git*
+*rc.*
+*config.*
+.eslint*
+.editorconfig
+.prettierignore

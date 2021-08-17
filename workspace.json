@@ -221,7 +221,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-theme/src"
     },
-    "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": {
       "root": "packages/react-tooltip",
       "projectType": "library",
@@ -298,6 +297,11 @@
       "root": "packages/react-storybook-addon",
       "projectType": "library",
       "sourceRoot": "packages/react-storybook-addon/src"
+    },
+    "@fluentui/react-switch": {
+      "root": "packages/react-switch",
+      "projectType": "library",
+      "sourceRoot": "packages/react-switch/src"
     }
   }
 }
