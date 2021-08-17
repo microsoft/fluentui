@@ -87,9 +87,8 @@ export interface TooltipProps
   /** Element to be rendered in-place where the tooltip is defined. */
   trigger?: JSX.Element;
 
-  dismissOnContentMouseEnter?: boolean;
-
-  openDelay?: number;
+  /** Delay in ms for the mouse enter event, before the tooltip will be open. */
+  mouseEnterDelay?: number;
 }
 
 export const tooltipClassName = 'ui-tooltip';
@@ -128,8 +127,7 @@ export const Tooltip: React.FC<TooltipProps> &
     unstable_pinned,
     autoSize,
     subtle,
-    dismissOnContentMouseEnter,
-    openDelay,
+    mouseEnterDelay,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -181,9 +179,7 @@ export const Tooltip: React.FC<TooltipProps> &
     predefinedProps: TooltipContentProps,
   ): TooltipContentProps & Pick<React.DOMAttributes<HTMLDivElement>, 'onMouseEnter' | 'onMouseLeave'> => ({
     onMouseEnter: (e: React.MouseEvent) => {
-      if (!dismissOnContentMouseEnter) {
-        setTooltipOpen(true, e);
-      }
+      setTooltipOpen(true, e);
       _.invoke(predefinedProps, 'onMouseEnter', e);
     },
     onMouseLeave: (e: React.MouseEvent) => {
@@ -222,9 +218,13 @@ export const Tooltip: React.FC<TooltipProps> &
     context.target.defaultView.clearTimeout(openTimeoutId.current);
 
     if (newOpen) {
-      openTimeoutId.current = context.target.defaultView.setTimeout(() => {
+      if (mouseEnterDelay === 0) {
+        openTimeoutId.current = context.target.defaultView.setTimeout(() => {
+          trySetOpen(true, e);
+        }, mouseEnterDelay);
+      } else {
         trySetOpen(true, e);
-      }, openDelay);
+      }
     } else {
       closeTimeoutId.current = context.target.defaultView.setTimeout(() => {
         trySetOpen(false, e);
@@ -302,7 +302,7 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  openDelay: 0,
+  mouseEnterDelay: 0,
   subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
@@ -311,8 +311,7 @@ Tooltip.propTypes = {
     as: false,
     content: false,
   }),
-  openDelay: PropTypes.number,
-  dismissOnContentMouseEnter: PropTypes.bool,
+  mouseEnterDelay: PropTypes.number,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   subtle: PropTypes.bool,
   children: PropTypes.element,
