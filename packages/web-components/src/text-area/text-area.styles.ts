@@ -11,8 +11,10 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
+  bodyFont,
   controlCornerRadius,
   designUnit,
+  disabledOpacity,
   focusStrokeOuter,
   neutralFillHover,
   neutralFillInputHover,
@@ -65,7 +67,7 @@ export const textAreaFilledStyles: (
 export const textAreaStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-      font-family: var(--body-font);
+      font-family: ${bodyFont};
       outline: none;
       user-select: none;
       position: relative;
@@ -139,7 +141,7 @@ export const textAreaStyles = (context, definition) =>
       cursor: ${disabledCursor};
     }
     :host([disabled]) {
-      opacity: var(--disabled-opacity);
+      opacity: ${disabledOpacity};
     }
   `.withBehaviors(
     appearanceBehavior('filled', textAreaFilledStyles(context, definition)),
