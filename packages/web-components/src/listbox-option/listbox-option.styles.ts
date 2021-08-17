@@ -86,7 +86,7 @@ export const optionStyles: (
 
     :host(:not([aria-selected="true"]):active) {
         background: ${neutralFillActive};
-        color: ${neutralForegroundRest}};
+        color: ${neutralForegroundRest};
     }
 
     :host([disabled]) {
