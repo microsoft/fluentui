@@ -11,6 +11,7 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
+  controlCornerRadius,
   designUnit,
   focusStrokeOuter,
   neutralFillHover,
@@ -77,7 +78,7 @@ export const textAreaStyles = (context, definition) =>
       position: relative;
       color: ${neutralForegroundRest};
       background: ${neutralFillInputRest};
-      border-radius: calc(var(--corner-radius) * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
       height: calc(${heightNumber} * 2px);
       font: inherit;
