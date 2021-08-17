@@ -42,12 +42,9 @@ export const fontWeights: FontWeights = {
 
 export const fontFamilies: FontFamilies = {
   base:
-    // eslint-disable-next-line @fluentui/max-len
-    "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+    "-apple-system, 'Segoe UI', BlinkMacSystemFont,  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Web', sans-serif",
   monospace: "Consolas, 'Courier New', Courier, monospace",
-  numeric:
-    // eslint-disable-next-line @fluentui/max-len
-    "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+  numeric: "-apple-system, 'Segoe UI', BlinkMacSystemFont, 'Segoe UI Web', sans-serif",
 };
 
 export const textAlignments: TextAlignments = {
