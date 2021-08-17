@@ -1633,18 +1633,6 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-1.1.136.tgz#1e7aeb4911bb0a9a89e73dd4291c8ba14fb2eee5"
   integrity sha512-bnkhaoDTqYhAm37NRCZpD/Mwn01i9R8ISesgqLyJ3Yo2pOJ+MtUafErCnmcRjaItQyQHWUrOAyFn16WnI7lFnw==
 
-"@fluentui/react-toggle@^1.0.0-beta.141":
-  version "1.0.0-beta.141"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-toggle/-/react-toggle-1.0.0-beta.141.tgz#03f6de5cc4dcaeecaf2520c63d57d4efbdbbb6c9"
-  integrity sha512-AOaTxjwf95qj8TEyfzIH2AA2rjXqgG37YwU6nYEDMVECjBpJMKbcNONPzm78mgGb53asKB6wld3n5P+DN0hy7A==
-  dependencies:
-    "@fluentui/react" "^8.28.2"
-    "@fluentui/react-compose" "^1.0.0-beta.29"
-    "@fluentui/react-hooks" "^8.2.6"
-    "@fluentui/style-utilities" "^8.2.2"
-    "@fluentui/utilities" "^8.2.2"
-    tslib "^2.1.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

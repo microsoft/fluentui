@@ -221,7 +221,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-theme/src"
     },
-    "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": {
       "root": "packages/react-tooltip",
       "projectType": "library",
