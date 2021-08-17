@@ -40,9 +40,6 @@ export const getFocusedStyles = ({
     }),
 
     ...(vertical && {
-      // border: `solid 1px ${v.borderColorFocus}`,
-      // outline: `solid 1px ${v.outlineColorFocus}`,
-      // margin: pxToRem(1),
       background: v.verticalBackgroundColorFocus,
       color: v.colorFocus || colors.foregroundFocus,
 
