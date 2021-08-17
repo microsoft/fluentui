@@ -240,7 +240,10 @@ describe('Slider', () => {
     let sliderRef: any;
     let incomingValue;
 
-    const onChange = (ev: React.PointerEvent<HTMLDivElement>, data: { value: number }) => (incomingValue = data.value);
+    const onChange = (
+      ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+      data: { value: number },
+    ) => (incomingValue = data.value);
 
     const SliderTestComponent = () => {
       sliderRef = React.useRef(null);

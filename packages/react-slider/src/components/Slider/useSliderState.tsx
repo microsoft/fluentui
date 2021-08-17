@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState } from '@fluentui/react-utilities';
+import { useId, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -54,10 +54,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
-
-  onChangeCallback.current = onChange;
 
   /**
    * Updates the `currentValue` to the new `incomingValue` and clamps it.
@@ -65,8 +62,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
    * @param ev
    * @param incomingValue
    */
-  const updateValue = React.useCallback(
-    (incomingValue: number, ev): void => {
+  const updateValue = useEventCallback(
+    (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -76,13 +73,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
 
-      if (onChangeCallback.current) {
-        onChangeCallback.current(ev, { value: clampedValue });
+      if (onChange) {
+        onChange(ev, { value: clampedValue });
       }
 
       setCurrentValue(clampedValue);
     },
-    [max, min, setCurrentValue],
   );
 
   /**

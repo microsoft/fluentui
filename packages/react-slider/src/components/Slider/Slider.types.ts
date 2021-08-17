@@ -104,7 +104,10 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (ev: React.PointerEvent<HTMLDivElement>, data: { value: number }) => void;
+  onChange?: (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => void;
 
   /**
    * The **Slider's** current value label to be read by the screen reader.
