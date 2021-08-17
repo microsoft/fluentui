@@ -218,7 +218,7 @@ export const Tooltip: React.FC<TooltipProps> &
     context.target.defaultView.clearTimeout(openTimeoutId.current);
 
     if (newOpen) {
-      if (mouseEnterDelay === 0) {
+      if (mouseEnterDelay !== 0) {
         openTimeoutId.current = context.target.defaultView.setTimeout(() => {
           trySetOpen(true, e);
         }, mouseEnterDelay);
