@@ -4,15 +4,15 @@ import {
   getGlobalClassNames,
   getInputFocusStyle,
   HighContrastSelector,
-  IStyle,
   normalize,
   getPlaceholderStyles,
   IconFontSizes,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { ILabelStyles, ILabelStyleProps } from '../../Label';
-import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IStyle } from '../../Styling';
+import type { ILabelStyles, ILabelStyleProps } from '../../Label';
+import type { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 const globalClassNames = {
   root: 'ms-TextField',

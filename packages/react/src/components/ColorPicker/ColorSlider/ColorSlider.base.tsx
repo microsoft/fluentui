@@ -8,9 +8,9 @@ import {
   warnDeprecations,
   warn,
 } from '../../../Utilities';
-import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 import { clamp } from '../../../utilities/color/clamp';
 import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/consts';
+import type { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autofill, IAutofill } from '../../Autofill';
+import { Autofill } from '../../Autofill';
 import {
   initializeComponentRef,
   css,
@@ -19,24 +19,27 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
-  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
-import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
-import {
+import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
+import { Label } from '../../Label';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
+import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IAutofill } from '../../Autofill';
+import type { IRenderFunction } from '../../Utilities';
+import type { IComboBoxClassNames } from './ComboBox.classNames';
+import type {
   IComboBoxOption,
   IComboBoxOptionStyles,
   IComboBoxProps,
   IOnRenderComboBoxLabelProps,
   IComboBox,
 } from './ComboBox.types';
-import { Label } from '../../Label';
-import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
-import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../Button';
-import { ICalloutProps } from '../../Callout';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IButtonStyles } from '../../Button';
+import type { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {
   /** The open state */

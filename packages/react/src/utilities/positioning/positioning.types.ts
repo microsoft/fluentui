@@ -1,8 +1,7 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle, Point } from '../../Utilities';
+import type { IRectangle, Point } from '../../Utilities';
 
 // eslint-disable-next-line deprecation/deprecation
-export { Point, IPoint } from '../../Utilities';
 
 export enum RectangleEdge {
   top = 1,
@@ -124,3 +123,5 @@ export interface IRelativePositions {
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }
+
+export type { Point, IPoint } from '../../Utilities';

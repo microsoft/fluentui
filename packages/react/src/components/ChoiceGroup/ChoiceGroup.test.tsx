@@ -4,10 +4,10 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption, IChoiceGroup, IChoiceGroupProps } from './ChoiceGroup.types';
 import { merge, resetIds } from '../../Utilities';
 import { mountAttached } from '../../common/testUtilities';
 import { isConformant } from '../../common/isConformant';
+import type { IChoiceGroupOption, IChoiceGroup, IChoiceGroupProps } from './ChoiceGroup.types';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,

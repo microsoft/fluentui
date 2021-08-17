@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { DocumentCardLocationBase } from './DocumentCardLocation.base';
 import { getStyles } from './DocumentCardLocation.styles';
-import {
+import type {
   IDocumentCardLocationProps,
   IDocumentCardLocationStyleProps,
   IDocumentCardLocationStyles,

@@ -4,10 +4,10 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPopupRestoreFocusParams } from '../../Popup';
 import { resetIds } from '../../Utilities';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
+import type { IPopupRestoreFocusParams } from '../../Popup';
 
 describe('Callout', () => {
   beforeEach(() => {

@@ -4,17 +4,19 @@ import {
   Async,
   EventGroup,
   AutoScroll,
-  Point,
-  IRectangle,
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
   getRTL,
   initializeComponentRef,
 } from '../../Utilities';
-
-import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
 import {} from '@fluentui/utilities';
+import type { Point, IRectangle } from '../../Utilities';
+import type {
+  IMarqueeSelectionProps,
+  IMarqueeSelectionStyleProps,
+  IMarqueeSelectionStyles,
+} from './MarqueeSelection.types';
 
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
