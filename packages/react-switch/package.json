@@ -19,7 +19,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-switch/src && yarn docs",
     "storybook": "start-storybook"
