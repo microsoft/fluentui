@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "\u0016",
+  "comment": "Moving type-based imports/exports to use \"import type\" and \"export type\" to enable isolatedModules.",
   "packageName": "@fluentui/style-utilities",
   "email": "dzearing@hotmail.com",
   "dependentChangeType": "patch"
