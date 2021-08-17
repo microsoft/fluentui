@@ -57,7 +57,7 @@ function addCustomDecorators() {
    */
   const customDecorators = new Set();
 
-  if (packageNamePlaceholder === 'react-cards') {
+  if (['react-cards', 'react-checkbox', 'react-tabs'].includes(packageNamePlaceholder)) {
     initializeIcons();
     customDecorators.add(withStrictMode);
   }
