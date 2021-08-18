@@ -28,28 +28,28 @@ export type SwitchSlots = {
 
 export interface SwitchCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
-   * The initial value of the Switch.
-   * If `true` then the Switch will be enabled.
+   * The starting value for a uncontrolled Switch. If `true` then the Switch will be enabled.
+   * Mutually exclusive with `checked` prop.
    *
    * @default false
    */
   defaultChecked?: boolean;
 
   /**
-   * The value of the Switch.
-   * If `true` then the Switch will be enabled.
+   * The current value for a controlled Switch. If `true` then the Switch will be enabled.
+   * Mutually exclusive with `defaultChecked` prop.
    */
   checked?: boolean;
 
   /**
-   * Whether the Switch should be disabled
+   * Whether the Switch should be disabled.
    *
    * @default false
    */
   disabled?: boolean;
 
   /**
-   * Callback to be called when the checked state value changes.
+   * Callback to be called when the `checked` value changes.
    */
   onChange?: (
     ev: React.ChangeEvent<HTMLInputElement>,
