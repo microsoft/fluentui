@@ -10,8 +10,7 @@ import { KeytipManager, ktpTargetFromId } from '../../Keytips';
 import { OverflowSet } from './OverflowSet';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-import type { IKeytipProps } from '../../Keytip';
-import type { IUniqueKeytip } from '../../Keytips';
+import type { IKeytipProps, IUniqueKeytip } from '../../Keytips';
 import type { IOverflowSetItemProps } from './OverflowSet.types';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
