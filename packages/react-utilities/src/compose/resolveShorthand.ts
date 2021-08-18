@@ -19,7 +19,7 @@ export function resolveShorthand<Props extends Record<string, any>, Required ext
   options?: ResolveShorthandOptions<Props, Required>,
 ): Required extends false ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props> {
   const { required = false, defaultProps } = options || {};
-  if (value === null || (value === undefined && required)) {
+  if (value === null || (value === undefined && !required)) {
     return undefined as Required extends false ? ObjectShorthandProps<Props> | undefined : never;
   }
 
