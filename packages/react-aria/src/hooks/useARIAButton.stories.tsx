@@ -15,7 +15,7 @@ interface DefaultArgs {
 export const Default = (args: DefaultArgs) => {
   const state: State = {
     button: {
-      ...useARIAButton({ as: 'button', onClick: args.onClick }, { optional: false }),
+      ...useARIAButton({ as: 'button', onClick: args.onClick }, { required: true }),
       children: React.Fragment,
     },
   };
@@ -36,7 +36,7 @@ export const Anchor = (args: DefaultArgs) => {
         args.onClick(ev);
       },
     },
-    { optional: false },
+    { required: true },
   );
   const { slots, slotProps } = getSlots(props, []);
   return (
@@ -47,13 +47,13 @@ export const Anchor = (args: DefaultArgs) => {
 };
 
 export const Span = (args: DefaultArgs) => {
-  const props = useARIAButton({ as: 'span', onClick: args.onClick }, { optional: false });
+  const props = useARIAButton({ as: 'span', onClick: args.onClick }, { required: true });
   const { slots, slotProps } = getSlots(props, []);
   return <slots.root {...slotProps.root}>this is a span</slots.root>;
 };
 
 export const Div = (args: DefaultArgs) => {
-  const props = useARIAButton({ as: 'div', onClick: args.onClick }, { optional: false });
+  const props = useARIAButton({ as: 'div', onClick: args.onClick }, { required: true });
   const { slots, slotProps } = getSlots(props, []);
   return <slots.root {...slotProps.root}>this is a div</slots.root>;
 };

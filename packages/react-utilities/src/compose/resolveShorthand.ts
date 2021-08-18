@@ -2,8 +2,8 @@ import { isValidElement } from 'react';
 import { ObjectShorthandProps, ShorthandProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface ResolveShorthandOptions<Props extends Record<string, any>, Optional extends boolean = true> {
-  optional?: Optional;
+export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
+  required?: Required;
   defaultProps?: Props;
 }
 
@@ -14,13 +14,13 @@ export interface ResolveShorthandOptions<Props extends Record<string, any>, Opti
  * @param defaultProps - base properties to be merged with the end ObjectShorthandProps
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function resolveShorthand<Props extends Record<string, any>, Optional extends boolean = true>(
+export function resolveShorthand<Props extends Record<string, any>, Required extends boolean = false>(
   value: ShorthandProps<Props>,
-  options?: ResolveShorthandOptions<Props, Optional>,
-): Optional extends true ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props> {
-  const { optional = true, defaultProps } = options || {};
-  if (value === null || (value === undefined && optional)) {
-    return undefined as Optional extends true ? ObjectShorthandProps<Props> | undefined : never;
+  options?: ResolveShorthandOptions<Props, Required>,
+): Required extends false ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props> {
+  const { required = false, defaultProps } = options || {};
+  if (value === null || (value === undefined && required)) {
+    return undefined as Required extends false ? ObjectShorthandProps<Props> | undefined : never;
   }
 
   let resolvedShorthand = {} as ObjectShorthandProps<Props>;
@@ -31,7 +31,7 @@ export function resolveShorthand<Props extends Record<string, any>, Optional ext
     resolvedShorthand = value;
   }
 
-  return (defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand) as Optional extends true
+  return (defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand) as Required extends false
     ? never
     : ObjectShorthandProps<Props>;
 }

@@ -19,7 +19,7 @@ export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLE
       ...props,
       checkmark: resolveShorthand(props.checkmark, {
         defaultProps: { children: <Checkmark16Filled /> },
-        optional: false,
+        required: true,
       }),
     },
     ref,

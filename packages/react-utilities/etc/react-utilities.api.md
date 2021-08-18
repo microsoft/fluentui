@@ -191,14 +191,14 @@ export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> & {
 };
 
 // @public
-export function resolveShorthand<Props extends Record<string, any>, Optional extends boolean = true>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Optional>): Optional extends true ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props>;
+export function resolveShorthand<Props extends Record<string, any>, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props>;
 
 // @public (undocumented)
-export interface ResolveShorthandOptions<Props extends Record<string, any>, Optional extends boolean = true> {
+export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
     // (undocumented)
     defaultProps?: Props;
     // (undocumented)
-    optional?: Optional;
+    required?: Required;
 }
 
 // @public

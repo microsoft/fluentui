@@ -17,7 +17,7 @@ export const useMenuItemCheckbox = (
       ...props,
       checkmark: resolveShorthand(props.checkmark, {
         defaultProps: { children: <Checkmark16Filled /> },
-        optional: false,
+        required: true,
       }),
     },
     ref,

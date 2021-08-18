@@ -43,7 +43,7 @@ describe('useARIAButton', () => {
 
   it('should emit click events on Click', () => {
     const handleClick = jest.fn();
-    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }, { optional: false }));
+    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }, { required: true }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
     fireEvent.click(screen.getByTestId('div'));
@@ -52,7 +52,7 @@ describe('useARIAButton', () => {
 
   it('should emit click events on SpaceBar', () => {
     const handleClick = jest.fn();
-    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }, { optional: false }));
+    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }, { required: true }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
     fireEvent.keyUp(screen.getByTestId('div'), { key: Space });
@@ -61,7 +61,7 @@ describe('useARIAButton', () => {
 
   it('should emit click events on Enter', () => {
     const handleClick = jest.fn();
-    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }, { optional: false }));
+    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }, { required: true }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
     fireEvent.keyDown(screen.getByTestId('div'), { key: Enter });
@@ -71,7 +71,7 @@ describe('useARIAButton', () => {
   it('should prevent default and stop propagation on disabled while clicking', () => {
     const handleClick = jest.fn();
     const { result } = renderHook(() =>
-      useARIAButton({ as: 'div', 'aria-disabled': true, onClick: handleClick }, { optional: false }),
+      useARIAButton({ as: 'div', 'aria-disabled': true, onClick: handleClick }, { required: true }),
     );
     const { slots, slotProps } = getSlots(result.current, []);
     render(
@@ -86,7 +86,7 @@ describe('useARIAButton', () => {
   it('should prevent default and stop propagation on disabled while pressing SpaceBar', () => {
     const handleClick = jest.fn();
     const { result } = renderHook(() =>
-      useARIAButton({ as: 'div', 'aria-disabled': true, onClick: handleClick }, { optional: false }),
+      useARIAButton({ as: 'div', 'aria-disabled': true, onClick: handleClick }, { required: true }),
     );
     const { slots, slotProps } = getSlots(result.current, []);
     render(
@@ -101,7 +101,7 @@ describe('useARIAButton', () => {
   it('should prevent default and stop propagation on disabled while pressing Enter', () => {
     const handleClick = jest.fn();
     const { result } = renderHook(() =>
-      useARIAButton({ as: 'div', 'aria-disabled': true, onClick: handleClick }, { optional: false }),
+      useARIAButton({ as: 'div', 'aria-disabled': true, onClick: handleClick }, { required: true }),
     );
     const { slots, slotProps } = getSlots(result.current, []);
     render(

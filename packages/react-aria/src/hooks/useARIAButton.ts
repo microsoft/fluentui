@@ -26,10 +26,10 @@ export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required
  */
-export function useARIAButton<Optional extends boolean = true>(
+export function useARIAButton<Required extends boolean = false>(
   value: ShorthandProps<ARIAButtonProps>,
-  options?: ResolveShorthandOptions<ARIAButtonProps, Optional>,
-) {
+  options?: ResolveShorthandOptions<ARIAButtonProps, Required>,
+): Required extends false ? ObjectShorthandProps<ARIAButtonProps> | undefined : ObjectShorthandProps<ARIAButtonProps> {
   const shorthand = resolveShorthand(value, options);
 
   const { onClick, onKeyDown, onKeyUp, ['aria-disabled']: ariaDisabled } = (shorthand ||
