@@ -2,62 +2,137 @@
 
 ## Background
 
-_Description and use cases of this component_
+Previously called Toggle in FluentUI and Checkbox in northstar, the Switch component
+introduces a quick way of switching between Boolean values by pressing the thumb.
 
 ## Prior Art
 
-_Include background research done for this component_
+Upon investigating other component libraries, it was decided to:
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+1. Change the name to Switch
+
+Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen`, and `Fast`) Switch appears to be a more prominently used name.
+
+2. Remove Label
+
+With a form component in the works, Label is no longer necessary for the Switch component. The API is drastically simplified by this change.
+
+[Open UI](https://open-ui.org/components/switch)
+[Epic Issue](https://github.com/microsoft/fluentui/issues/19409)
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
-
-## Variants
-
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+```jsx=
+<Switch checked />
+<Switch checked disabled/>
+<Switch checked onChange={onChange}/>
+```
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+| Name           | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="100"/> | Description                                                                 |
+| -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| checked        | &check;                                                                                 | &check;                                                                               | The value of the Switch. If `true` then the Switch will be enabled.         |
+| defaultChecked | &check;                                                                                 | &check;                                                                               | The default value of the Switch. If `true` then the Switch will be enabled. |
+| disabled       | &check;                                                                                 | &check;                                                                               | Whether the Switch should be disabaled                                      |
+| onChange       | &check;                                                                                 | &check;                                                                               | Callback to be called when the checked state value changes.                 |
+
+## Migration
+
+<img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
+
+| Name          | Description                                                | Reason                                                             |
+| ------------- | ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| indicator     | A checkbox's indicator icon can be customized.             | Toggle will have a slot for the thumb.                             |
+| label         | A checkbox can render a label next to its indicator.       | Toggle's label will be handled by the form component.              |
+| labelPosition | A checkbox's label can be rendered in different positions. | Toggle's label will be handled by the form component.              |
+| onClick       | Called after a checkbox is clicked.                        | The native input element handles onClick.                          |
+| toggle        | A checkbox can be formatted to show an "on or off" choice. | Toggle is separated from checkbox due to vast styling differences. |
+
+<img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
+
+| Name         | Description                                                                                     | Reason                                                |
+| ------------ | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| componentRef | Optional callback to access the IToggle interface.                                              | Not used in converged components                      |
+| label        | A label for the toggle.                                                                         | Toggle's label will be handled by the form component. |
+| onText       | Text to display when toggle is ON.                                                              | Toggle's label will be handled by the form component. |
+| offText      | Text to display when toggle is OFF.                                                             | Toggle's label will be handled by the form component. |
+| ariaLabel    | Text for screen-reader to announce as the name of the toggle.                                   | Toggle has a hidden input element.                    |
+| onAriaLabel  | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                                            |
+| offAriaLabel | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                                            |
+| inlineLabel  | Whether the label (not the onText/offText) should be positioned inline with the toggle control. | Toggle's label will be handled by the form component. |
+| onChanged    | @deprecated Use `onChange` instead.                                                             | deprecated                                            |
+| theme        | Theme provided by HOC.                                                                          | Not used in converged components                      |
+| styles       | Optional styles for the component.                                                              | Not used in converged components                      |
+| role         | Whether to use the 'switch' role (ARIA 1.1) or the 'checkbox' role (ARIA 1.0).                  | Toggle has a hidden input element.                    |
 
 ## Structure
 
 - _**Public**_
+
+```jsx=
+<Switch checked={true}/>
+```
+
 - _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
 
-## Migration
+```jsx=
+<slots.root {...slotProps.root}>
+  <slots.rail {...slotProps.rail} />
+  <slots.track {...slotProps.track} />
+  <slots.thumbWrapper {...slotProps.thumbWrapper}>
+    <slots.thumb {...slotProps.thumb} />
+  </slots.thumbWrapper>
+  <input type="checkbox" />
+</slots.root>;
+```
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+- \_**DOM**
 
-- _Migration from v8_
-- _Migration from v0_
+```jsx=
+<div className="ms-switch-root">
+  <div className="ms-switch-rail" />
+  <div className="ms-switch-track" />
+  <div className="ms-switch-thumbWrapper">
+    <div className="ms-switch-thumb" />
+  </div>
+  <input type="checkbox" />
+</div>;
+```
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### Component States
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+- **Disabled**
+  - When disabled, all events are ignored, and the Switch's value never updates.
+  - Does not allow focus.
+- **Checked**
+  - Toggle is off when the “thumb” is indicated on the left.
+  - Toggle is on when the thumb is indicated on the right.
+  - This is switched in RTL.
+  - When switching toggles on and off, the on state should change using the checked state appearance styles.
+
+### Hover
+
+The cursor changes to the hand icon. The outline of the toggle and thumb should also darken. This helps reinforce that the area is interactive.
+
+### Keyboard
+
+Since the toggle is an interactive component, it must be focusable and keyboard accessible.
+The expected keyboard shortcut for activating a toggle is the Spacebar.
+
+1. Use spacebar to toggle off
+2. Use spacebar to toggle on
+
+### Cursor
+
+Clicking triggers toggling the state change. The thumb animates from right to left [on > off] and left to right [off > on]
+
+### Touch
+
+Touch follows the same behavior as the cursor.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+Accessibility will be handled by the hidden `<input type="checkbox" />` element and follows the same pattern.
