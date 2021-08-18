@@ -334,7 +334,7 @@ function useDismissHandlers(
     };
 
     const dismissOnResize = (ev: Event) => {
-      if (!preventDismissOnResize) {
+      if (!preventDismissOnResize && !(preventDismissOnEvent && preventDismissOnEvent(ev))) {
         onDismiss?.(ev);
       }
     };
@@ -364,6 +364,9 @@ function useDismissHandlers(
             dismissOnTargetClick ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
       ) {
+        if (preventDismissOnEvent && preventDismissOnEvent(ev)) {
+          return;
+        }
         onDismiss?.(ev);
       }
     };
