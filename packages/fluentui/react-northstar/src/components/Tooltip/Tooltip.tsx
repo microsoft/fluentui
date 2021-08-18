@@ -87,9 +87,8 @@ export interface TooltipProps
   /** Element to be rendered in-place where the tooltip is defined. */
   trigger?: JSX.Element;
 
+  /* Tooltip can close when mouse hover content */
   dismissOnContentMouseEnter?: boolean;
-
-  openDelay?: number;
 }
 
 export const tooltipClassName = 'ui-tooltip';
@@ -129,7 +128,6 @@ export const Tooltip: React.FC<TooltipProps> &
     autoSize,
     subtle,
     dismissOnContentMouseEnter,
-    openDelay,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -154,7 +152,6 @@ export const Tooltip: React.FC<TooltipProps> &
   const triggerRef = React.useRef<HTMLElement>();
 
   const closeTimeoutId = React.useRef<number>();
-  const openTimeoutId = React.useRef<number>();
   // TODO: Consider `getOrGenerateIdFromShorthand()` as hook and make it SSR safe
   const contentId = React.useRef<string>();
   contentId.current = getOrGenerateIdFromShorthand('tooltip-content-', content, contentId.current);
@@ -219,12 +216,9 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
     context.target.defaultView.clearTimeout(closeTimeoutId.current);
-    context.target.defaultView.clearTimeout(openTimeoutId.current);
 
     if (newOpen) {
-      openTimeoutId.current = context.target.defaultView.setTimeout(() => {
-        trySetOpen(true, e);
-      }, openDelay);
+      trySetOpen(true, e);
     } else {
       closeTimeoutId.current = context.target.defaultView.setTimeout(() => {
         trySetOpen(false, e);
@@ -302,7 +296,6 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
-  openDelay: 0,
   subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
@@ -311,7 +304,6 @@ Tooltip.propTypes = {
     as: false,
     content: false,
   }),
-  openDelay: PropTypes.number,
   dismissOnContentMouseEnter: PropTypes.bool,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   subtle: PropTypes.bool,
