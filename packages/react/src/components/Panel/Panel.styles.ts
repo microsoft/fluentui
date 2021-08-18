@@ -1,4 +1,4 @@
-import { IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
+import { PanelType } from './Panel.types';
 import {
   AnimationClassNames,
   AnimationVariables,
@@ -9,9 +9,10 @@ import {
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile,
-  IStyle,
   IconFontSizes,
 } from '../../Styling';
+import type { IPanelStyleProps, IPanelStyles } from './Panel.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Panel',

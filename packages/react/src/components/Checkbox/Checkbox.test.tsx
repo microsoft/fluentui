@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { Checkbox } from './Checkbox';
 import { isConformant } from '../../common/isConformant';
-import { IRefObject, resetIds } from '@fluentui/utilities';
-import { ICheckbox } from './Checkbox.types';
+import { resetIds } from '@fluentui/utilities';
+import type { ReactTestRenderer } from 'react-test-renderer';
+import type { IRefObject } from '@fluentui/utilities';
+import type { ICheckbox } from './Checkbox.types';
 
 let checkbox: ICheckbox | undefined;
 /** Use this as the componentRef when rendering a Checkbox. */

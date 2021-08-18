@@ -3,11 +3,11 @@ import {
   keyframes,
   noWrap,
   getGlobalClassNames,
-  IRawStyle,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL, memoizeFunction } from '../../Utilities';
-import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
+import type { IRawStyle } from '../../Styling';
+import type { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 const GlobalClassNames = {
   root: 'ms-ProgressIndicator',

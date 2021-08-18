@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Moving type-based imports/exports to use \"import type\" and \"export type\" to enable isolatedModules.",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch"
+}

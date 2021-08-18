@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
-import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 import { useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
+import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 

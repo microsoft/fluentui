@@ -2,9 +2,11 @@ import * as React from 'react';
 import { ActionButton } from '../../Button';
 import { buttonStyles } from './Nav.styles';
 import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
-import {
+import { composeComponentAs, composeRenderFunction } from '@fluentui/utilities';
+import type { IFocusZone } from '../../FocusZone';
+import type {
   INav,
   INavLink,
   INavLinkGroup,
@@ -13,7 +15,6 @@ import {
   INavStyles,
   IRenderGroupHeaderProps,
 } from './Nav.types';
-import { composeComponentAs, composeRenderFunction } from '@fluentui/utilities';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;

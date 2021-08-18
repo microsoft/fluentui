@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates react-aria on slot null rendering",
+  "packageName": "@fluentui/react-aria",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

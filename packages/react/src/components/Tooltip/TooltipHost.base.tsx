@@ -12,15 +12,10 @@ import {
   classNamesFunction,
   KeyCodes,
 } from '../../Utilities';
-import {
-  ITooltipHostProps,
-  TooltipOverflowMode,
-  ITooltipHostStyles,
-  ITooltipHostStyleProps,
-  ITooltipHost,
-} from './TooltipHost.types';
+import { TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
+import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 
 export interface ITooltipHostState {
   isAriaPlaceholderRendered: boolean;

@@ -1,9 +1,5 @@
-/**
- * Functions used by Stack components to simplify style-related computations
- */
-
-import { ITheme } from '../../Styling';
-import { IStackProps } from './Stack.types';
+import type { ITheme } from '../../Styling';
+import type { IStackProps } from './Stack.types';
 
 // Helper function that converts a themed spacing key (if given) to the corresponding themed spacing value.
 const _getThemedSpacing = (space: string, theme: ITheme): string => {

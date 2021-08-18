@@ -46,7 +46,8 @@
       "@fluentui/react-avatar": ["packages/react-avatar/src/index.ts"],
       "@fluentui/react-card": ["packages/react-card/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-checkbox/src/index.ts"],
-      "@fluentui/react-storybook-addon": ["packages/react-storybook-addon/src/index.ts"]
+      "@fluentui/react-storybook-addon": ["packages/react-storybook-addon/src/index.ts"],
+      "@fluentui/react-switch": ["packages/react-switch/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

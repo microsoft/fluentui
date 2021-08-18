@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { ILayerProps } from '../../Layer';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IOverlayProps } from '../../Overlay';
 import { ResponsiveMode } from '../../ResponsiveMode';
+import type { IStyle, ITheme } from '../../Styling';
+import type { ILayerProps } from '../../Layer';
+import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
+import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IOverlayProps } from '../../Overlay';
 
 export interface IDragOptions {
   /**

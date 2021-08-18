@@ -1,4 +1,5 @@
-import { IDropdownOption, DropdownMenuItemType } from '../Dropdown.types';
+import { DropdownMenuItemType } from '../Dropdown.types';
+import type { IDropdownOption } from '../Dropdown.types';
 
 /**
  * A utility class to cache size and position in cache.

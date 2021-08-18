@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { ResizeGroup } from './ResizeGroup';
-import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
+import { getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
+import type { IResizeGroupState } from './ResizeGroup.base';
 
 interface ITestScalingData {
   scalingIndex: number;

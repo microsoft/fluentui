@@ -11,18 +11,13 @@ import {
   EventGroup,
   Async,
 } from '../../Utilities';
-import {
-  IHoverCardProps,
-  IHoverCardStyles,
-  IHoverCardStyleProps,
-  OpenCardMode,
-  HoverCardType,
-  IHoverCard,
-} from './HoverCard.types';
+import { OpenCardMode, HoverCardType } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
-import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
+import { ExpandingCardMode } from './ExpandingCard.types';
 import { PlainCard } from './PlainCard/PlainCard';
-import { IPlainCardProps } from './PlainCard/PlainCard.types';
+import type { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, IHoverCard } from './HoverCard.types';
+import type { IExpandingCardProps } from './ExpandingCard.types';
+import type { IPlainCardProps } from './PlainCard/PlainCard.types';
 
 const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 

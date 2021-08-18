@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
 import { ButtonGridBase } from './ButtonGrid.base';
-import { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 import { getStyles } from './ButtonGrid.styles';
+import type { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 
 export const ButtonGrid: React.FunctionComponent<IButtonGridProps> = styled<
   IButtonGridProps,

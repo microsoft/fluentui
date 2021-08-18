@@ -6,6 +6,7 @@
 
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
@@ -27,8 +28,7 @@ export type ARIAButtonAsElementProps = React_2.HTMLAttributes<HTMLElement> & {
 export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
 
 // @public
-export function useARIAButton(value: ShorthandProps<ARIAButtonProps>, defaultProps?: ARIAButtonProps): ObjectShorthandProps<ARIAButtonProps>;
-
+export function useARIAButton<Required extends boolean = false>(value: ShorthandProps<ARIAButtonProps>, options?: ResolveShorthandOptions<ARIAButtonProps, Required>): Required extends false ? ObjectShorthandProps<ARIAButtonProps> | undefined : ObjectShorthandProps<ARIAButtonProps>;
 
 // (No @packageDocumentation comment for this package)
 

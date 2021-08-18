@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { IProcessedStyleSet, ITheme } from '../../Styling';
 import { composeRenderFunction, classNamesFunction, getId, getRTL, getRTLSafeKeyCode, KeyCodes } from '../../Utilities';
 import { SelectionMode } from '../../Selection';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
-import {
+import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
+import type { IProcessedStyleSet, ITheme } from '../../Styling';
+import type {
   IGroupHeaderStyleProps,
   IGroupHeaderStyles,
   IGroupHeaderProps,
   IGroupHeaderCheckboxProps,
 } from './GroupHeader.types';
-import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 

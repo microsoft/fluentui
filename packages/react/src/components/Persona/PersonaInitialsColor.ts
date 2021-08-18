@@ -1,4 +1,5 @@
-import { PersonaInitialsColor, IPersonaProps } from './Persona.types';
+import { PersonaInitialsColor } from './Persona.types';
+import type { IPersonaProps } from './Persona.types';
 
 /**
  * Following colors are considered reserved and can only be set with overrides, so they are excluded from this set:

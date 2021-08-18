@@ -8,7 +8,7 @@ import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'w
 
 const readConfig: (pth: string) => PackageInfo = require('./read-config').readConfig;
 const writeConfig: (pth: string, newValue: any) => void = require('./write-config');
-const { runPrettier } = require('./prettier/prettier-helpers');
+const { runPrettier } = require('./prettier');
 
 const gitRoot = findGitRoot(process.cwd());
 /**
