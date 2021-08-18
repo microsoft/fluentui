@@ -12,7 +12,6 @@ import { Swatch } from '../../color/swatch';
 import {
   bodyFont,
   controlCornerRadius,
-  density,
   designUnit,
   focusStrokeOuter,
   focusStrokeWidth,
@@ -71,7 +70,7 @@ export const accordionItemStyles: (
 
     .region {
       display: none;
-      padding: calc((6 + (${designUnit} * 2 * ${density})) * 1px);
+      padding: calc(${designUnit} * 2 * 1px);
       background: ${neutralFillLayerAltRest};
     }
 
@@ -90,7 +89,7 @@ export const accordionItemStyles: (
       grid-column: 2;
       grid-row: 1;
       outline: none;
-      padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
+      padding: 0 calc(${designUnit} * 2 * 1px);
       text-align: left;
       height: calc(${heightNumber} * 1px);
       color: inherit;
@@ -170,7 +169,7 @@ export const accordionItemStyles: (
     .start {
       display: flex;
       align-items: center;
-      padding-inline-start: calc(${designUnit} * 1px);
+      padding-inline-start: calc(${designUnit} * 2 * 1px);
       justify-content: center;
       grid-column: 1;
       z-index: 2;

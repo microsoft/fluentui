@@ -10,6 +10,6 @@ export function baseLayerLuminanceSwatch(luminance: number): Swatch {
  * @public
  */
 export enum StandardLuminance {
-  LightMode = 0.95,
+  LightMode = 0.97,
   DarkMode = 0.2,
 }
