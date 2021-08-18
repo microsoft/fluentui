@@ -10,13 +10,14 @@ const thumbClassName = 'ms-Switch-thumb';
  */
 const useRootStyles = makeStyles({
   root: theme => ({
-    '--slider-thumb-size': '14px',
+    '--switch-thumb-size': '14px',
+    '--switch-thumb-offset': '.7',
+
     position: 'relative',
     display: 'inline-block',
     width: '40px',
     height: '20px',
     userSelect: 'none',
-    overflow: 'hidden',
     touchAction: 'none',
     verticalAlign: 'bottom',
   }),
@@ -36,6 +37,23 @@ const useRootStyles = makeStyles({
       background: '#004578',
     },
   }),
+
+  focusIndictor: createFocusIndicatorStyleRule(
+    theme => ({
+      ':after': {
+        content: "''",
+        position: 'absolute',
+        top: '-8px',
+        right: '-8px',
+        bottom: '-8px',
+        left: '-8px',
+        boxSizing: 'border-box',
+        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
+        borderRadius: '4px',
+      },
+    }),
+    { selector: 'focus-within' },
+  ),
 });
 
 /**
@@ -77,8 +95,10 @@ const useTrackStyles = makeStyles({
 const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
-    left: 'calc(var(--slider-thumb-size) * .7)',
-    right: 'calc(var(--slider-thumb-size) * .7)',
+    top: '0',
+    bottom: '0',
+    left: 'calc(var(--switch-thumb-size) * var(--switch-thumb-offset))',
+    right: 'calc(var(--switch-thumb-size) * var(--switch-thumb-offset))',
     height: '100%',
     transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
   }),
@@ -98,8 +118,8 @@ const useThumbWrapperStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    width: 'var(--slider-thumb-size)',
-    height: 'var(--slider-thumb-size)',
+    width: 'var(--switch-thumb-size)',
+    height: 'var(--switch-thumb-size)',
     borderRadius: '999px',
     top: '50%',
     transform: 'translate(-50%, -50%)',
@@ -154,6 +174,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
 
   state.className = mergeClasses(
     rootStyles.root,
+    rootStyles.focusIndictor,
     !state.disabled && (state.input.checked ? rootStyles.checked : rootStyles.unchecked),
     state.className,
   );
