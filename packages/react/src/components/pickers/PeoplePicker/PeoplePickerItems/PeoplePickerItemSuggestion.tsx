@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-import { classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles } from '../../../../Persona';
-import {
+import { classNamesFunction, styled } from '../../../../Utilities';
+import { Persona, PersonaSize } from '../../../../Persona';
+import { getStyles } from './PeoplePickerItemSuggestion.styles';
+import type { IStyleFunctionOrObject } from '../../../../Utilities';
+import type { IPersonaStyleProps, IPersonaStyles } from '../../../../Persona';
+import type {
   IPeoplePickerItemSuggestionProps,
   IPeoplePickerItemSuggestionStyleProps,
   IPeoplePickerItemSuggestionStyles,
 } from './PeoplePickerItem.types';
-import { getStyles } from './PeoplePickerItemSuggestion.styles';
 
 const getClassNames = classNamesFunction<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>();
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { ResponsiveMode } from '../../ResponsiveMode';
 import { RectangleEdge } from '../../Positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
-import { ILabelStyleProps, ILabelStyles } from '../../Label';
-import { IPanelStyleProps, IPanelStyles } from '../../Panel';
+import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
+import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
+import type { ILabelStyleProps, ILabelStyles } from '../../Label';
+import type { IPanelStyleProps, IPanelStyles } from '../../Panel';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../SelectableOption';
 
