@@ -48,7 +48,7 @@ jobs:
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
-          # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables test
+          # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
           BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
 
       - template: .devops/templates/cleanup.yml
