@@ -156,11 +156,6 @@ const useMarksContainerStyles = makeStyles({
     '& .ms-Slider-mark': {
       background: '#626262',
     },
-
-    '& .ms-Slider-label': {
-      padding: '2px',
-      fontSize: '12px',
-    },
   }),
 
   horizontal: theme => ({
@@ -200,11 +195,6 @@ const useMarksContainerStyles = makeStyles({
     '& .ms-Slider-mark': {
       height: '1px',
       width: '4px',
-    },
-
-    '& .ms-Slider-label': {
-      marginLeft: '4px',
-      transform: 'scaleY(-1)',
     },
   }),
 });
