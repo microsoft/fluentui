@@ -221,12 +221,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         if (typeof marksItem === 'number') {
           percentArray.push(getPercent(min + marksItem, min, max));
         }
-
-        // 3. We receive an array with objects containing numbers and strings:
-        // mark and label for every value + string in each object.
-        else {
-          percentArray.push(getPercent(min + marksItem.value, min, max));
-        }
       }
     }
 
@@ -282,20 +276,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     const marksChildren: JSX.Element[] = [];
 
     for (let i = 0; i < marksPercent.length; i++) {
-      const marksItem = typeof marks === 'boolean' ? null : marks![i];
-
       marksChildren.push(
         <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
-          {marksItem && typeof marksItem === 'object' && marksItem.mark ? (
-            marksItem.mark
-          ) : (
-            <div className="ms-Slider-mark" key={`mark-${i}`} />
-          )}
-          {marksItem !== (undefined || null) && typeof marksItem === 'object' && marksItem.label && (
-            <div className="ms-Slider-label" key={`markLabel-${i}`}>
-              {marksItem.label}
-            </div>
-          )}
+          <div className="ms-Slider-mark" key={`mark-${i}`} />
         </div>,
       );
     }
