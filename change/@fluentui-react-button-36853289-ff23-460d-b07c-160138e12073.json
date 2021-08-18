@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update hc focus styling for vNext button",
-  "packageName": "@fluentui/react-button",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
