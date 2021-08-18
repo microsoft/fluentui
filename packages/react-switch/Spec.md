@@ -34,7 +34,7 @@ With a form component in the works, Label is no longer necessary for the Switch 
 | -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | checked        | &check;                                                                                 | &check;                                                                               | The value of the Switch. If `true` then the Switch will be enabled.         |
 | defaultChecked | &check;                                                                                 | &check;                                                                               | The default value of the Switch. If `true` then the Switch will be enabled. |
-| disabled       | &check;                                                                                 | &check;                                                                               | Whether the Switch should be disabaled                                      |
+| disabled       | &check;                                                                                 | &check;                                                                               | Whether the Switch should be disabled                                       |
 | onChange       | &check;                                                                                 | &check;                                                                               | Callback to be called when the checked state value changes.                 |
 
 ## Migration
