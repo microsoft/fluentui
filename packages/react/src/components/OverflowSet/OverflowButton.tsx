@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
-import { IKeytipProps } from '../../Keytip';
-import { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 import { useConst, usePrevious } from '@fluentui/react-hooks';
+import type { IKeytipProps } from '../../Keytip';
+import type { IOverflowSetItemProps, IOverflowSetProps } from './OverflowSet.types';
 
 const registerPersistedKeytips = (
   keytipsToRegister: IKeytipProps[],

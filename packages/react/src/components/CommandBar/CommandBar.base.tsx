@@ -3,25 +3,28 @@ import {
   classNamesFunction,
   css,
   nullRender,
-  IComponentAs,
   getNativeProps,
   divProperties,
   composeComponentAs,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { OverflowSet } from '../../OverflowSet';
+import { ResizeGroup } from '../../ResizeGroup';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { CommandBarButton } from '../../Button';
+import { TooltipHost } from '../../Tooltip';
+import { getCommandButtonStyles } from './CommandBar.styles';
+import type { IComponentAs } from '../../Utilities';
+import type {
   ICommandBar,
   ICommandBarItemProps,
   ICommandBarProps,
   ICommandBarStyleProps,
   ICommandBarStyles,
 } from './CommandBar.types';
-import { IOverflowSet, OverflowSet } from '../../OverflowSet';
-import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandBarButton, IButtonProps } from '../../Button';
-import { TooltipHost } from '../../Tooltip';
-import { getCommandButtonStyles } from './CommandBar.styles';
+import type { IOverflowSet } from '../../OverflowSet';
+import type { IResizeGroup } from '../../ResizeGroup';
+import type { IButtonProps } from '../../Button';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 

@@ -226,7 +226,6 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
     containerStyles[state.size],
     !!state.children && containerStyles[state.labelPosition],
   );
-
   state.indicator.className = mergeClasses(
     indicatorStyles.box,
     containerStyles[state.size],

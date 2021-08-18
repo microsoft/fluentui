@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DialogContentBase } from './DialogContent.base';
-import { IButtonProps } from '../../Button';
 import { ResponsiveMode } from '../../ResponsiveMode';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IButtonProps } from '../../Button';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Dialog}

@@ -13,6 +13,7 @@ import { appearanceBehavior } from '../utilities/behaviors';
 import {
   bodyFont,
   controlCornerRadius,
+  designUnit,
   disabledOpacity,
   focusStrokeOuter,
   neutralFillHover,
@@ -105,7 +106,7 @@ export const textFieldStyles = (context, definition) =>
       margin-top: auto;
       margin-bottom: auto;
       border: none;
-      padding: 0 calc(var(--design-unit) * 2px + 1px);
+      padding: 0 calc(${designUnit} * 2px + 1px);
       color: ${neutralForegroundRest};
       font-family: inherit;
       font-size: ${typeRampBaseFontSize};
