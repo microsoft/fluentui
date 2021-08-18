@@ -89,6 +89,9 @@ export interface TooltipProps
 
   /* Tooltip can close when mouse hover content */
   dismissOnContentMouseEnter?: boolean;
+
+  /** Delay in ms for the mouse enter event, before the tooltip will be open. */
+  mouseEnterDelay?: number;
 }
 
 export const tooltipClassName = 'ui-tooltip';
@@ -128,6 +131,7 @@ export const Tooltip: React.FC<TooltipProps> &
     autoSize,
     subtle,
     dismissOnContentMouseEnter,
+    mouseEnterDelay,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -152,6 +156,7 @@ export const Tooltip: React.FC<TooltipProps> &
   const triggerRef = React.useRef<HTMLElement>();
 
   const closeTimeoutId = React.useRef<number>();
+  const openTimeoutId = React.useRef<number>();
   // TODO: Consider `getOrGenerateIdFromShorthand()` as hook and make it SSR safe
   const contentId = React.useRef<string>();
   contentId.current = getOrGenerateIdFromShorthand('tooltip-content-', content, contentId.current);
@@ -216,9 +221,16 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
     context.target.defaultView.clearTimeout(closeTimeoutId.current);
+    context.target.defaultView.clearTimeout(openTimeoutId.current);
 
     if (newOpen) {
-      trySetOpen(true, e);
+      if (mouseEnterDelay !== 0) {
+        openTimeoutId.current = context.target.defaultView.setTimeout(() => {
+          trySetOpen(true, e);
+        }, mouseEnterDelay);
+      } else {
+        trySetOpen(true, e);
+      }
     } else {
       closeTimeoutId.current = context.target.defaultView.setTimeout(() => {
         trySetOpen(false, e);
@@ -296,6 +308,7 @@ Tooltip.defaultProps = {
   align: 'center',
   position: 'above',
   mouseLeaveDelay: 10,
+  mouseEnterDelay: 0,
   subtle: true,
   accessibility: tooltipAsLabelBehavior,
 };
@@ -305,6 +318,7 @@ Tooltip.propTypes = {
     content: false,
   }),
   dismissOnContentMouseEnter: PropTypes.bool,
+  mouseEnterDelay: PropTypes.number,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   subtle: PropTypes.bool,
   children: PropTypes.element,

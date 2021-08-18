@@ -118,8 +118,9 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   private _isMouseEventOnScrollbar(ev: MouseEvent): boolean {
     const targetElement = ev.target as HTMLElement;
     const targetScrollbarWidth = targetElement.offsetWidth - targetElement.clientWidth;
+    const targetScrollbarHeight = targetElement.offsetHeight - targetElement.clientHeight;
 
-    if (targetScrollbarWidth) {
+    if (targetScrollbarWidth || targetScrollbarHeight) {
       const targetRect = targetElement.getBoundingClientRect();
 
       // Check vertical scroll
