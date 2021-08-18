@@ -151,7 +151,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     horizontalPadding: `${pxToRem(14)} ${pxToRem(18)}`,
 
     verticalBackgroundColor: siteVars.colorScheme.default.background,
-    verticalItemPadding: `${pxToRem(8)} ${pxToRem(12)}`,
+    verticalItemPadding: `${pxToRem(7)} ${pxToRem(12)}`,
     verticalBoxShadow: siteVars.shadow16,
     verticalDividerMargin: `${pxToRem(8)} 0`,
     verticalItemBorderWidth: pxToRem(2),
@@ -176,7 +176,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     underlinedWrapperBackgroundHover: 'transparent',
 
     dividerHeight: pxToRem(1),
-    borderWidth: pxToRem(0),
+    borderWidth: '0',
     menuZIndex: siteVars.zIndexes.overlay,
     beakZIndex: siteVars.zIndexes.menuItem,
 
