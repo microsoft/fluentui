@@ -8,9 +8,9 @@ import {
 } from '@microsoft/fast-foundation';
 import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
+    designUnit,
   fillColor,
   focusStrokeWidth,
-  neutralStrokeDividerRest,
   neutralStrokeFocus,
   strokeWidth,
 } from '../design-tokens';
@@ -24,13 +24,10 @@ export const toolbarStyles: (
 ) =>
   css`
       ${display("inline-flex")} :host {
-          --toolbar-item-gap: calc(
-              (var(--design-unit) + calc(var(--density) + 2)) * 1px
-          );
+          --toolbar-item-gap: calc(${designUnit} * 1px);
           background: ${fillColor};
           fill: currentcolor;
           padding: var(--toolbar-item-gap);
-          border-bottom: 1px solid ${neutralStrokeDividerRest};
           box-sizing: border-box;
       }
 
@@ -44,11 +41,6 @@ export const toolbarStyles: (
           flex-flow: row wrap;
           justify-content: flex-start;
           flex-grow: 1;
-      }
-
-      :host([orientation="vertical"]) {
-          border-inline-end: 1px solid ${neutralStrokeDividerRest};
-          border-bottom: none;
       }
 
       :host([orientation="vertical"]) .positioning-region {
