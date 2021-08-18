@@ -60,7 +60,7 @@ export interface SwitchCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   onChange?: (
     ev: React.ChangeEvent<HTMLInputElement>,
     data: {
-      value: boolean;
+      checked: boolean;
     },
   ) => void;
 }

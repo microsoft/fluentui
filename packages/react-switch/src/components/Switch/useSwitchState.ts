@@ -11,10 +11,21 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
     initialState: false,
   });
 
+  const setChecked = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>, incomingValue: boolean) => {
+      onChange?.(ev, { checked: incomingValue });
+      setInternalValue(incomingValue);
+    },
+    [onChange, setInternalValue],
+  );
+
+  const userOnChange = state.input.onChange;
+
   const onInputChange = useEventCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(ev, { value: ev.target.checked });
-    setInternalValue(ev.target.checked);
-    inputRef?.current?.focus();
+    ev.stopPropagation();
+    userOnChange?.(ev);
+    setChecked(ev, ev.currentTarget.checked);
+    // inputRef?.current?.focus();
   });
 
   // Input Props

@@ -44,9 +44,10 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const styles = useStyles();
   const [switchValue, setSwitchValue] = React.useState(false);
 
-  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { value: boolean }) =>
-    setSwitchValue(data.value);
-
+  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => {
+    console.log('hello');
+    setSwitchValue(data.checked);
+  };
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
@@ -66,8 +67,8 @@ export const BasicSwitchExample = (props: SwitchProps) => {
 export const CustomSwitchExample = (props: SwitchProps) => {
   const [switchValue, setSwitchValue] = React.useState(false);
 
-  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { value: boolean }) =>
-    setSwitchValue(data.value);
+  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) =>
+    setSwitchValue(data.checked);
 
   const styles = useStyles();
   const iosStyles = useIosStyles();

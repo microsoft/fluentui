@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch renders a basic Switch 1`] = `
+<div>
+  <div
+    class=""
+    id="toggle-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        class=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class=""
+    id="toggle-2"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        checked=""
+        class=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Switch renders a disabled Switch 1`] = `
+<div>
+  <div
+    class=""
+    id="toggle-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        class=""
+        disabled=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class=""
+    id="toggle-2"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        checked=""
+        class=""
+        disabled=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Switch renders a labeled Switch 1`] = `
+<div>
+  <label
+    class=""
+    id="toggle-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        class=""
+        type="checkbox"
+      />
+    </div>
+    Hello
+  </label>
+</div>
+`;
