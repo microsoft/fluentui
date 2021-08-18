@@ -51,6 +51,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
 - Add secondary styles for `Loader` @chassunc ([#19104](https://github.com/microsoft/fluentui/pull/19104))
 - Add additional properties(`focusInnerBorderWidth`, `focusOuterBorderWidth`, `focusBorderRadius`) to `getBorderFocusStyles` @annabratseiko ([#19319](https://github.com/microsoft/fluentui/pull/19319))
+- Allow `Tooltip` to configure a delay to open on mouse enter trigger @chassunc ([#19405](https://github.com/microsoft/fluentui/pull/19405))
 
 ### Documentation
 - Align author name in compact chat with design spec @Hirse ([#18988](https://github.com/microsoft/fluentui/pull/18988))
