@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-    width: '400px',
   },
 });
 
@@ -55,7 +54,8 @@ export const BasicSwitchExample = (props: SwitchProps) => {
       <Label>Controlled Example</Label>
       <Switch checked={switchValue} onChange={switchOnChange} />
       <Label>Disabled Example</Label>
-      <Switch disabled />
+      <Switch disabled defaultChecked={true} />
+      <Switch disabled defaultChecked={false} />
       <Switch className={styles.root} labelPosition="before">
         Label Example
       </Switch>

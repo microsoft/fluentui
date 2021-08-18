@@ -12,11 +12,8 @@ const useRootStyles = makeStyles({
   root: theme => ({
     '--switch-thumb-size': '14px',
     '--switch-thumb-offset': '.7',
-
     position: 'relative',
     display: 'inline-block',
-    minWidth: '40px',
-    minHeight: '20px',
     userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
@@ -24,7 +21,7 @@ const useRootStyles = makeStyles({
 
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
-      background: '#424242',
+      background: theme.alias.color.neutral.neutralStrokeAccessible,
     },
 
     ':hover .ms-Switch-track': {
@@ -49,7 +46,7 @@ const useRootStyles = makeStyles({
         left: '-8px',
         boxSizing: 'border-box',
         border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: '4px',
+        borderRadius: theme.global.borderRadius.medium,
       },
     }),
     { selector: 'focus-within' },
@@ -78,22 +75,22 @@ const useTrackStyles = makeStyles({
   }),
 
   unchecked: theme => ({
-    background: 'white',
-    border: `1px solid #605e5c`,
+    background: theme.alias.color.neutral.neutralBackground1,
+    border: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
   }),
 
   checked: theme => ({
-    background: '#0078d4',
-    border: '0px',
+    background: '#0078d4', // TODO: Should be brandBackgroundInteractive
+    border: 'none',
   }),
 
   disabledUnchecked: theme => ({
-    border: `1px solid #c8c6c4`,
+    border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
   }),
 
   disabledChecked: theme => ({
     border: '0px',
-    background: '#c8c6c4',
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
   }),
 });
 
@@ -125,27 +122,29 @@ const useThumbWrapperStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
+    boxSizing: 'border-box',
     width: 'var(--switch-thumb-size)',
     height: 'var(--switch-thumb-size)',
-    borderRadius: '999px',
+    borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
   }),
 
   unchecked: theme => ({
-    background: '#605e5c',
+    background: theme.alias.color.neutral.neutralStrokeAccessible,
   }),
 
   checked: theme => ({
-    background: 'white',
+    background: theme.alias.color.neutral.neutralBackground1,
   }),
 
   disabledUnchecked: theme => ({
-    background: '#c8c6c4',
+    border: `1px solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
+    background: theme.alias.color.neutral.neutralBackground1,
   }),
 
   disabledChecked: theme => ({
-    background: '#f3f2f1',
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 });
 
@@ -187,10 +186,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     state.className,
   );
 
-  state.containerClassName = mergeClasses(
-    containerStyles.container,
-    // !!state.children && containerStyles[state.labelPosition],
-  );
+  state.containerClassName = mergeClasses(containerStyles.container);
 
   state.track.className = mergeClasses(
     trackClassName,
@@ -202,7 +198,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
 
   state.thumbWrapper.className = mergeClasses(
     thumbWrapperStyles.thumbWrapper,
-    !state.disabled && (state.input.checked ? thumbWrapperStyles.checked : thumbWrapperStyles.unchecked),
+    state.input.checked ? thumbWrapperStyles.checked : thumbWrapperStyles.unchecked,
     state.thumbWrapper.className,
   );
 
