@@ -2,6 +2,65 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react_v8.28.2",
+      "version": "8.28.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList columnheader focus target when it does not contain a button; remove aria-haspopup when false",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f700ae31aceafa040df5ac61e094a1f73c2dd6c7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react_v8.28.1",
+      "version": "8.28.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Keytip fixes to handle multiple parents and children - OverflowButton keytip fixes for correctly registering persisted keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "aad82f693eaf0c95e8b8ab6961d4b4d46d79d57f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add aria-level to the TeachingBubble heading",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "55babc27987f92716147367ba35338f88a4566be",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/react_v8.28.0",
+      "version": "8.28.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update Overlay to use more accurate React.HTMLAttribute typings for onClick",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add role=none to fix CommandBar hierarchy, add optional group labels to primary/secondary command groups",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f773a1bc4e1aaea6e6145e3a8c04eaefb5ac9bde",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/react_v8.27.2",
       "version": "8.27.2",

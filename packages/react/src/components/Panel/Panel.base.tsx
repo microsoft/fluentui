@@ -3,7 +3,6 @@ import { IconButton } from '../../Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
-import { IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
   allowOverscrollOnElement,
@@ -20,7 +19,9 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
+import { PanelType } from './Panel.types';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 const COMPONENT_NAME = 'Panel';

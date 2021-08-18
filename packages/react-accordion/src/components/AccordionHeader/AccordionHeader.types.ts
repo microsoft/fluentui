@@ -13,6 +13,10 @@ export interface AccordionHeaderContextValue {
   size: AccordionHeaderSize;
 }
 
+export interface AccordionHeaderContextValues {
+  accordionHeader: AccordionHeaderContextValue;
+}
+
 export type AccordionHeaderSlots = {
   /**
    * The component to be used as button in heading
@@ -25,7 +29,7 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon: React.HTMLAttributes<HTMLElement>;
+  icon?: React.HTMLAttributes<HTMLElement>;
   children: React.HTMLAttributes<HTMLElement>;
 };
 

@@ -1,28 +1,20 @@
 import * as React from 'react';
 
-import {
-  initializeComponentRef,
-  KeyCodes,
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  css,
-  styled,
-} from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IButton } from '../../../Button';
-import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { initializeComponentRef, KeyCodes, classNamesFunction, css, styled } from '../../../Utilities';
+import { CommandButton } from '../../../Button';
+import { Spinner } from '../../../Spinner';
 import { Announced } from '../../../Announced';
-import {
-  ISuggestionsProps,
-  SuggestionActionType,
-  ISuggestionsStyleProps,
-  ISuggestionsStyles,
-} from './Suggestions.types';
+import { SuggestionActionType } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
-import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
-
 import * as stylesImport from './Suggestions.scss';
+import type { IStyleFunctionOrObject } from '../../../Utilities';
+import type { IProcessedStyleSet } from '../../../Styling';
+import type { IButton } from '../../../Button';
+import type { ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import type { ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import type { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+
 const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();

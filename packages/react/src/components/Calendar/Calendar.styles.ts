@@ -1,5 +1,5 @@
-import { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 import { normalize, FontSizes, getFocusStyle } from '@fluentui/style-utilities';
+import type { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { className, theme, isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = props;

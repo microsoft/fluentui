@@ -416,6 +416,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="name"
             draggable={false}
             role="columnheader"
@@ -438,7 +439,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -469,7 +469,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}

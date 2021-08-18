@@ -1,17 +1,17 @@
-import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import {
   FontSizes,
   FontWeights,
   getFocusStyle,
   getGlobalClassNames,
   AnimationStyles,
-  IRawStyle,
   keyframes,
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
+import type { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
+import type { IRawStyle } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',

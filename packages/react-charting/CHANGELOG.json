@@ -2,6 +2,65 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-charting_v5.3.27",
+      "version": "5.3.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chart title added for remaining charts, title will describe the chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2df484bdb2cc43642f804707824a44a6ef627135",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Chart element will not render when data value is zero",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2f7f78e4264486b1cb142ec31b4bb3a06141eb37",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-charting_v5.3.26",
+      "version": "5.3.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.1",
+            "author": "keyou@microsoft.com",
+            "commit": "aad82f693eaf0c95e8b8ab6961d4b4d46d79d57f",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Aug 2021 07:34:46 GMT",
+      "tag": "@fluentui/react-charting_v5.3.25",
+      "version": "5.3.25",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshots updates for tooltip change",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f773a1bc4e1aaea6e6145e3a8c04eaefb5ac9bde",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fb73c0df8c9bca3c0630c096924d68563199a88b",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/react-charting_v5.3.24",
       "version": "5.3.24",

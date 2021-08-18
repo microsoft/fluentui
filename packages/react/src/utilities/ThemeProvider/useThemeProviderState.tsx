@@ -1,8 +1,10 @@
-import { mergeThemes, PartialTheme, Theme } from '@fluentui/theme';
+import { mergeThemes } from '@fluentui/theme';
 import * as React from 'react';
-import { ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from './useTheme';
-import { getId, ICustomizerContext } from '@fluentui/utilities';
+import { getId } from '@fluentui/utilities';
+import type { PartialTheme, Theme } from '@fluentui/theme';
+import type { ThemeProviderState } from './ThemeProvider.types';
+import type { ICustomizerContext } from '@fluentui/utilities';
 
 const themeToIdMap = new Map<Object, string>();
 

@@ -2,6 +2,36 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Wed, 18 Aug 2021 07:33:54 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "none": [
+          {
+            "comment": "style: fix formatting violations in repo",
+            "author": "martinhochel@microsoft.com",
+            "commit": "5dfa622011b10aaab3ab1fb3fc2e5f77c8a13166",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.56",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Aug 2021 07:34:54 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.35",
       "version": "9.0.0-alpha.35",

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import type { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
+import type { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 

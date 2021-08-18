@@ -34,32 +34,36 @@ describe('Checkbox', () => {
   });
 
   it('renders a default state', () => {
-    renderedComponent = render(<Checkbox label="Default Checkbox" />);
+    renderedComponent = render(<Checkbox>Default Checkbox</Checkbox>);
     expect(renderedComponent.container).toMatchSnapshot();
   });
 
   it('renders unchecked correctly', () => {
-    renderedComponent = render(<Checkbox label="Default Checkbox" input={{ ref: checkboxRef }} />);
+    renderedComponent = render(<Checkbox input={{ ref: checkboxRef }}>Default Checkbox</Checkbox>);
     expect(renderedComponent).toMatchSnapshot();
   });
 
   it('renders checked correctly', () => {
-    renderedComponent = render(<Checkbox checked label="Default Checkbox" />);
+    renderedComponent = render(<Checkbox checked>Default Checkbox</Checkbox>);
     expect(renderedComponent).toMatchSnapshot();
   });
 
   it('renders mixed correctly', () => {
-    renderedComponent = render(<Checkbox checked="mixed" label="Default Checkbox" />);
+    renderedComponent = render(<Checkbox checked="mixed">Default Checkbox</Checkbox>);
     expect(renderedComponent).toMatchSnapshot();
   });
 
   it('respects id prop', () => {
-    component = mount(<Checkbox aria-describedby="descriptionID" id="checkbox" label="Default Checkbox" />);
+    component = mount(
+      <Checkbox aria-describedby="descriptionID" id="checkbox">
+        Default Checkbox
+      </Checkbox>,
+    );
     expect(component.find('input').prop('id')).toEqual('checkbox');
   });
 
   it('defaults to unchecked non-mixed', () => {
-    component = mount(<Checkbox label="Default Checkbox" input={{ ref: checkboxRef }} />);
+    component = mount(<Checkbox input={{ ref: checkboxRef }}>Default Checkbox</Checkbox>);
 
     const input = component.find('input');
     expect(input.prop('checked')).toBe(false);
