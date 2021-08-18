@@ -8,7 +8,6 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
@@ -133,11 +132,11 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    icon: React_2.HTMLAttributes<HTMLElement>;
-    checkmark: React_2.HTMLAttributes<HTMLElement>;
-    submenuIndicator: React_2.HTMLAttributes<HTMLElement>;
+    icon?: React_2.HTMLAttributes<HTMLElement>;
+    checkmark?: React_2.HTMLAttributes<HTMLElement>;
+    submenuIndicator?: React_2.HTMLAttributes<HTMLElement>;
     content: React_2.HTMLAttributes<HTMLElement>;
-    secondaryContent: React_2.HTMLAttributes<HTMLElement>;
+    secondaryContent?: React_2.HTMLAttributes<HTMLElement>;
 };
 
 // @public
@@ -292,9 +291,7 @@ export interface UninitializedMenuListState extends Omit<MenuListState, 'setFocu
 }
 
 // @public
-export const useCheckmarkStyles: (state: MenuItemSelectableState & {
-    checkmark: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-}) => void;
+export const useCheckmarkStyles: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;
 
 // @public
 export const useMenu: (props: MenuProps) => MenuState;

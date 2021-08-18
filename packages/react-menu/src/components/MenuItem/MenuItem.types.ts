@@ -5,18 +5,18 @@ export type MenuItemSlots = {
   /**
    * Icon slot rendered before children content
    */
-  icon: React.HTMLAttributes<HTMLElement>;
+  icon?: React.HTMLAttributes<HTMLElement>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark: React.HTMLAttributes<HTMLElement>;
+  checkmark?: React.HTMLAttributes<HTMLElement>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator: React.HTMLAttributes<HTMLElement>;
+  submenuIndicator?: React.HTMLAttributes<HTMLElement>;
 
   /**
    * Component children are placed in this slot
@@ -27,7 +27,7 @@ export type MenuItemSlots = {
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent: React.HTMLAttributes<HTMLElement>;
+  secondaryContent?: React.HTMLAttributes<HTMLElement>;
 };
 
 interface MenuItemCommons {
