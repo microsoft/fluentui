@@ -10,7 +10,6 @@ import {
   getRTL,
   initializeComponentRef,
 } from '../../Utilities';
-import {} from '@fluentui/utilities';
 import type { Point, IRectangle } from '../../Utilities';
 import type {
   IMarqueeSelectionProps,
