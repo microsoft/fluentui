@@ -4,7 +4,7 @@
 
 ## Summary
 
-Instead of always applying native props and `ref` to the root, update `makeMergeProps` to allow setting a different "primary" slot where these props should be applied. This option should be used sparingly: for input components and possibly a few other cases (options for exact criteria discussed below).
+Instead of always applying native props and `ref` to the root, allow setting a different "primary" slot where these props should be applied. This option should be used sparingly: for input components and possibly a few other cases (options for exact criteria discussed below).
 
 Also explicitly expose the `root` slot for all components. This will allow passing native props to the root if needed for the "special case" components discussed above, and provide consistency across the library.
 
@@ -51,7 +51,7 @@ To the degree possible, we'd like inputs to work nicely with 3rd-party form libr
 
 ## Detailed Design or Proposal
 
-Add a notion of "primary" slot (open to suggestions for the name) where top-level native props and `ref` are applied. This would default to `root` but could be customized with a new option for `makeMergeProps`.
+Add a notion of "primary" slot (open to suggestions for the name) where top-level native props and `ref` are applied. This would default to `root` but could be customized (need to work with @bsunderhus to determine implementation approach).
 
 To facilitate passing props to the actual root element when it's not the "primary" slot, explicitly expose the `root` slot in props (possibly with type constraints to prevent passing problematic things). This would be done in all components for consistency.
 
@@ -87,36 +87,7 @@ If someone really wanted to, they could still pass props explicitly on the `inpu
 
 ### Code updates
 
-I'm not especially familiar with this code, but this is roughly what might need to be updated/added from a typing perspective. There would of course also be corresponding implementation updates. (Feedback welcome from those more familiar with the area.)
-
-`MergePropsOptions` would be updated roughly as follows. (`TSlots` doesn't affect the `makeMergeProps` return type and could be optional to avoid the requirement of updating all existing usage.)
-
-```tsx
-type MergePropsOptions<TState, TSlots = {}> = {
-  /** Apply top-level native props and the `ref` to this slot instead of `root` */
-  primarySlot?: keyof TSlots;
-  // ... existing options
-};
-
-// Usage example in Checkbox:
-type CheckboxSlots = ComponentSlots & {
-  // ... existing slots
-};
-```
-
-Add shared typing for the `root` slot. One way might be with a `ComponentSlots` that should be combined with each component's slots type, something like this (could potentially constrain `TRootProps` further).
-
-```ts
-type ComponentSlots<TRootProps = React.HTMLAttributes<HTMLElement>> = {
-  root: TRootProps;
-};
-
-// Usage example in Checkbox:
-const mergeProps = makeMergeProps<CheckboxState, CheckboxSlots>({
-  primarySlot: 'input',
-  // ... existing options
-});
-```
+TODO: Need to work with @bsunderhus to figure out a non-`mergeProps` version
 
 ### Pros and Cons
 
