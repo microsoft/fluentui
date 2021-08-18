@@ -246,7 +246,7 @@ const useRootFocusStyles = makeStyles({
     borderColor: 'transparent',
     boxShadow: `
       ${theme.alias.shadow.shadow4},
-      0 0 0 2px ${theme.alias.color.neutral.neutralBackground1Hover}
+      0 0 0 2px ${theme.alias.color.neutral.neutralStrokeAccessiblePressed}
     `,
   })),
   circular: createFocusIndicatorStyleRule(theme => ({
@@ -254,7 +254,7 @@ const useRootFocusStyles = makeStyles({
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
-    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralBackground1Hover}`,
+    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralStrokeAccessiblePressed}`,
   })),
 });
 
