@@ -31,6 +31,12 @@ export interface AccordionContextValue {
     requestToggle: AccordionToggleEventHandler;
 }
 
+// @public (undocumented)
+export interface AccordionContextValues {
+    // (undocumented)
+    accordion: AccordionContextValue;
+}
+
 // @public
 export const AccordionHeader: React_2.FunctionComponent<AccordionHeaderProps & React_2.RefAttributes<HTMLElement>>;
 
@@ -51,6 +57,12 @@ export interface AccordionHeaderContextValue {
     open: boolean;
     // (undocumented)
     size: AccordionHeaderSize;
+}
+
+// @public (undocumented)
+export interface AccordionHeaderContextValues {
+    // (undocumented)
+    accordionHeader: AccordionHeaderContextValue;
 }
 
 // @public (undocumented)
@@ -104,6 +116,12 @@ export interface AccordionItemContextValue {
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
     // (undocumented)
     open: boolean;
+}
+
+// @public (undocumented)
+export interface AccordionItemContextValues {
+    // (undocumented)
+    accordionItem: AccordionItemContextValue;
 }
 
 // @public (undocumented)
@@ -173,13 +191,13 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
 // @public
-export const renderAccordion: (state: AccordionState) => JSX.Element;
+export const renderAccordion: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionHeader: (state: AccordionHeaderState) => JSX.Element;
+export const renderAccordionHeader: (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionItem: (state: AccordionItemState) => JSX.Element;
+export const renderAccordionItem: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
 export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
@@ -188,14 +206,13 @@ export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element |
 export const useAccordion: ({ openItems: controlledOpenItems, defaultOpenItems, multiple, collapsible, onToggle, navigable, ...rest }: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)
-export function useAccordionContextValue({ navigable, openItems, requestToggle }: AccordionState): {
-    readonly navigable: boolean;
-    readonly openItems: unknown[];
-    readonly requestToggle: AccordionToggleEventHandler;
-};
+export function useAccordionContextValues(state: AccordionState): AccordionContextValues;
 
 // @public
 export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+
+// @public (undocumented)
+export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues;
 
 // @public
 export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
@@ -207,7 +224,7 @@ export const useAccordionItem: ({ value, ...props }: AccordionItemProps, ref: Re
 export const useAccordionItemContext: () => AccordionItemContextValue;
 
 // @public (undocumented)
-export const useAccordionItemContextValue: ({ disabled, onHeaderClick, open }: AccordionItemState) => AccordionItemContextValue;
+export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues;
 
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;

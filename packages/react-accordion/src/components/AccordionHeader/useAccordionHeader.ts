@@ -19,7 +19,6 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
  * Returns the props and state required to render the component
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
- * @param defaultProps - default values for the properties of AccordionHeader
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();

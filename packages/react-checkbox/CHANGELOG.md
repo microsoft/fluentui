@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Aug 2021 07:34:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.22)
+
+Tue, 17 Aug 2021 07:34:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.21..@fluentui/react-checkbox_v9.0.0-alpha.22)
+
+### Changes
+
+- Refactoring Checkbox, removing mergeProps, and fixing indicator styles. ([PR #19225](https://github.com/microsoft/fluentui/pull/19225) by esteban.230@hotmail.com)
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.21)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.20..@fluentui/react-checkbox_v9.0.0-alpha.21)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.32 ([PR #19341](https://github.com/microsoft/fluentui/pull/19341) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.20)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.19..@fluentui/react-checkbox_v9.0.0-alpha.20)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-alpha.25 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.19)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.18..@fluentui/react-checkbox_v9.0.0-alpha.19)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-alpha.24 ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.18)
 

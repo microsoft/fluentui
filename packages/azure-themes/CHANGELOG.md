@@ -1,8 +1,62 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.56](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.56)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.55..@fluentui/azure-themes_v8.1.56)
+
+### Patches
+
+- Bump @fluentui/react to v8.28.2 ([PR #19243](https://github.com/microsoft/fluentui/pull/19243) by sarah.higley@microsoft.com)
+
+## [8.1.55](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.55)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.54..@fluentui/azure-themes_v8.1.55)
+
+### Patches
+
+- Bump @fluentui/react to v8.28.1 ([PR #19351](https://github.com/microsoft/fluentui/pull/19351) by keyou@microsoft.com)
+
+## [8.1.54](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.54)
+
+Thu, 12 Aug 2021 07:34:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.53..@fluentui/azure-themes_v8.1.54)
+
+### Patches
+
+- Bump @fluentui/react to v8.28.0 ([PR #19350](https://github.com/microsoft/fluentui/pull/19350) by sarah.higley@microsoft.com)
+
+## [8.1.53](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.53)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.52..@fluentui/azure-themes_v8.1.53)
+
+### Patches
+
+- Bump @fluentui/react to v8.27.2 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [8.1.52](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.52)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.51..@fluentui/azure-themes_v8.1.52)
+
+### Patches
+
+- Fixed azure theme disabled primary button hover style ([PR #19015](https://github.com/microsoft/fluentui/pull/19015) by 67673432+q-xg@users.noreply.github.com)
+
+## [8.1.51](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.51)
+
+Mon, 09 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.50..@fluentui/azure-themes_v8.1.51)
+
+### Patches
+
+- Bump @fluentui/react to v8.27.1 ([PR #19228](https://github.com/microsoft/fluentui/pull/19228) by kinhln@microsoft.com)
 
 ## [8.1.50](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.50)
 

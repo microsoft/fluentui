@@ -13,6 +13,10 @@ export interface AccordionHeaderContextValue {
   size: AccordionHeaderSize;
 }
 
+export interface AccordionHeaderContextValues {
+  accordionHeader: AccordionHeaderContextValue;
+}
+
 export type AccordionHeaderSlots = {
   /**
    * The component to be used as button in heading

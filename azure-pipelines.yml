@@ -36,14 +36,13 @@ jobs:
           yarn nx workspace-lint
         displayName: nx:workspace-lint
 
-      # TODO: re-enable after web-components updates prettier
-      # - script: |
-      #     if [[ -n "$(targetBranch)" ]]; then
-      #       yarn format --since $(targetBranch) --check
-      #     else
-      #       yarn format --all --check
-      #     fi
-      #   displayName: check formatting
+      - script: |
+          if [[ -n "$(targetBranch)" ]]; then
+            yarn format --since $(targetBranch) --check
+          else
+            yarn format --all --check
+          fi
+        displayName: check formatting
 
       ## Danger.js checks for Fluent UI N*
       - script: |

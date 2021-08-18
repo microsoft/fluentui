@@ -14,7 +14,6 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = [];
  * Returns the props and state required to render the component
  * @param props - AccordionItem properties
  * @param ref - reference to root HTMLElement of AccordionItem
- * @param defaultProps - default values for the properties of AccordionItem
  */
 export const useAccordionItem = (
   { value, ...props }: AccordionItemProps,

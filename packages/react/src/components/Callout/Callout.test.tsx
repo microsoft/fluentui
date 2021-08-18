@@ -166,6 +166,41 @@ describe('Callout', () => {
     });
   });
 
+  it('prevents dismiss when preventDismissOnEvent is passed', () => {
+    jest.useFakeTimers();
+    let threwException = false;
+    const onDismiss = jest.fn();
+    const preventAllDismiss = () => true;
+
+    try {
+      ReactTestUtils.act(() => {
+        ReactDOM.render<HTMLDivElement>(
+          <div>
+            <button id="focustarget"> button </button>
+            <Callout target="#target" preventDismissOnEvent={preventAllDismiss} onDismiss={onDismiss}>
+              <div>Content</div>
+            </Callout>
+          </div>,
+          realDom,
+        );
+      });
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
+
+    ReactTestUtils.act(() => {
+      const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
+
+      // Move focus
+      jest.runAllTimers();
+
+      focusTarget.focus();
+
+      expect(onDismiss.mock.calls.length).toEqual(0);
+    });
+  });
+
   it('will correctly return focus to element that spawned it', () => {
     jest.useFakeTimers();
 

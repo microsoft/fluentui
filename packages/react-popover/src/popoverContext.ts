@@ -7,7 +7,6 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   triggerRef: { current: null },
   contentRef: { current: null },
   arrowRef: { current: null },
-  target: undefined,
   openOnContext: false,
   openOnHover: false,
   size: 'medium',
@@ -24,7 +23,6 @@ export interface PopoverContextValue
     | 'setOpen'
     | 'triggerRef'
     | 'contentRef'
-    | 'target'
     | 'openOnHover'
     | 'openOnContext'
     | 'mountNode'

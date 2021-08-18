@@ -8,7 +8,8 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { PositioningProps } from '@fluentui/react-positioning';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
@@ -24,6 +25,12 @@ export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOn
     open: boolean;
     // (undocumented)
     triggerId: string;
+}
+
+// @public (undocumented)
+export interface MenuContextValues {
+    // (undocumented)
+    menu: MenuContextValue;
 }
 
 // @public
@@ -48,6 +55,12 @@ export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
 // @public
 export interface MenuGroupContextValue {
     headerId: string;
+}
+
+// @public (undocumented)
+export interface MenuGroupContextValues {
+    // (undocumented)
+    menuGroup: MenuGroupContextValue;
 }
 
 // @public
@@ -151,6 +164,12 @@ export interface MenuListContextValue extends Pick<MenuListProps, 'checkedValues
     toggleCheckbox?: SelectableHandler;
 }
 
+// @public (undocumented)
+export interface MenuListContextValues {
+    // (undocumented)
+    menuList: MenuListContextValue;
+}
+
 // Warning: (ae-forgotten-export) The symbol "MenuListCommons" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -195,8 +214,9 @@ export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inlin
 // Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export interface MenuProps extends Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'>, Partial<MenuCommons>, ComponentProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    positioning?: PositioningShorthand;
 }
 
 // @public (undocumented)
@@ -235,13 +255,13 @@ export interface MenuTriggerState extends MenuTriggerProps {
 }
 
 // @public
-export const renderMenu: (state: MenuState) => JSX.Element;
+export const renderMenu: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
 
 // @public
 export const renderMenuDivider: (state: MenuDividerState) => JSX.Element;
 
 // @public
-export const renderMenuGroup: (state: MenuGroupState) => JSX.Element;
+export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
 
 // @public
 export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSX.Element;
@@ -256,7 +276,7 @@ export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSX.Eleme
 export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 
 // @public
-export const renderMenuList: (state: MenuListState) => JSX.Element;
+export const renderMenuList: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
 
 // @public
 export const renderMenuPopover: (state: MenuPopoverState) => JSX.Element;
@@ -280,6 +300,9 @@ export const useMenu: (props: MenuProps) => MenuState;
 // @public (undocumented)
 export const useMenuContext: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
 
+// @public (undocumented)
+export function useMenuContextValues(state: MenuState): MenuContextValues;
+
 // @public
 export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
 
@@ -291,6 +314,9 @@ export function useMenuGroup(props: MenuGroupProps, ref: React_2.Ref<HTMLElement
 
 // @public (undocumented)
 export const useMenuGroupContext: () => MenuGroupContextValue;
+
+// @public (undocumented)
+export function useMenuGroupContextValues(state: MenuGroupState): MenuGroupContextValues;
 
 // @public
 export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>): MenuGroupHeaderState;
@@ -315,6 +341,9 @@ export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) 
 
 // @public (undocumented)
 export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
+
+// @public (undocumented)
+export function useMenuListContextValues(state: MenuListState): MenuListContextValues;
 
 // @public
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;

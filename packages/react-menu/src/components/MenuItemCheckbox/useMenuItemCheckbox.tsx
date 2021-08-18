@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
+import { Checkmark16Filled } from '@fluentui/react-icons';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem } from '../MenuItem/useMenuItem';
-import { AcceptIcon } from '../../utils/DefaultIcons';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (
@@ -16,7 +16,7 @@ export const useMenuItemCheckbox = (
       persistOnClick: true,
       ...props,
       checkmark: resolveShorthand(props.checkmark, {
-        defaultProps: { children: <AcceptIcon /> },
+        defaultProps: { children: <Checkmark16Filled /> },
         optional: false,
       }),
     },

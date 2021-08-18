@@ -26,7 +26,7 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
+import { useMergedRefs, useAsync, useConst, useTarget, Target } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -203,6 +203,7 @@ function usePositions(
 ) {
   const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
   const positionAttempts = React.useRef(0);
+  const previousTarget = React.useRef<Target>();
   const async = useAsync();
   const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
 
@@ -219,11 +220,14 @@ function usePositions(
             target: targetRef.current!,
             bounds: getBounds(),
           };
+
+          const previousPositions = previousTarget.current === target ? positions : undefined;
+
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, calloutElement.current, positions)
-            : positionCallout(currentProps, hostElement.current, calloutElement.current, positions);
+            ? positionCard(currentProps, hostElement.current, calloutElement.current, previousPositions)
+            : positionCallout(currentProps, hostElement.current, calloutElement.current, previousPositions);
           // Set the new position only when the positions are not exists or one of the new callout positions
           // are different. The position should not change if the position is within 2 decimal places.
           if (
@@ -258,6 +262,8 @@ function usePositions(
     props,
     target,
   ]);
+
+  previousTarget.current = target;
 
   return positions;
 }
@@ -328,7 +334,7 @@ function useDismissHandlers(
     };
 
     const dismissOnResize = (ev: Event) => {
-      if (!preventDismissOnResize) {
+      if (!preventDismissOnResize && !(preventDismissOnEvent && preventDismissOnEvent(ev))) {
         onDismiss?.(ev);
       }
     };
@@ -358,6 +364,9 @@ function useDismissHandlers(
             dismissOnTargetClick ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
       ) {
+        if (preventDismissOnEvent && preventDismissOnEvent(ev)) {
+          return;
+        }
         onDismiss?.(ev);
       }
     };

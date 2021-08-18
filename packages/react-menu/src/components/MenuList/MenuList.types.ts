@@ -57,6 +57,10 @@ export interface MenuListState extends ComponentState, MenuListCommons {
   selectRadio: SelectableHandler;
 }
 
+export interface MenuListContextValues {
+  menuList: MenuListContextValue;
+}
+
 export interface UninitializedMenuListState
   extends Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'>,
     Partial<Pick<MenuListState, 'checkedValues'>> {}

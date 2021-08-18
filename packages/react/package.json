@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.27.0",
+  "version": "8.28.2",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,7 +38,7 @@
     "@fluentui/react-conformance": "^0.4.4",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.8",
-    "@fluentui/webpack-utilities": "^8.1.4",
+    "@fluentui/webpack-utilities": "^8.1.5",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",

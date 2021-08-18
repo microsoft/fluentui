@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.63)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.62..@fluentui/react-menu_v9.0.0-alpha.63)
+
+### Changes
+
+- feat(Menu): replace align, position, coverTarget props with single `positioning` shorthand prop ([PR #19364](https://github.com/microsoft/fluentui/pull/19364) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.62)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.61..@fluentui/react-menu_v9.0.0-alpha.62)
+
+### Changes
+
+- chore(Menu): implement useContextValues() pattern ([PR #19342](https://github.com/microsoft/fluentui/pull/19342) by olfedias@microsoft.com)
+- fix(MenuTrigger): Retain original child ref ([PR #19375](https://github.com/microsoft/fluentui/pull/19375) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.61)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.60..@fluentui/react-menu_v9.0.0-alpha.61)
+
+### Changes
+
+- feat(Menu): Use react-icons for checkmarks and stories ([PR #19313](https://github.com/microsoft/fluentui/pull/19313) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.60)
+
+Tue, 10 Aug 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.59..@fluentui/react-menu_v9.0.0-alpha.60)
+
+### Changes
+
+- fix(MenuPopover): Remove min-height value ([PR #19322](https://github.com/microsoft/fluentui/pull/19322) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.59)
+
+Fri, 06 Aug 2021 07:35:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.58..@fluentui/react-menu_v9.0.0-alpha.59)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.34 ([PR #19281](https://github.com/microsoft/fluentui/pull/19281) by jspurlin@microsoft.com)
 
 ## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.58)
 
