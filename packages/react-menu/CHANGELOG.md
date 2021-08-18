@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.63)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.62..@fluentui/react-menu_v9.0.0-alpha.63)
+
+### Changes
+
+- feat(Menu): replace align, position, coverTarget props with single `positioning` shorthand prop ([PR #19364](https://github.com/microsoft/fluentui/pull/19364) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.62)
 
