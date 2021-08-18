@@ -52,9 +52,8 @@ import type { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import type { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import type { IFocusZone, IFocusZoneProps } from '../../FocusZone';
 import type { IObjectWithKey, ISelection } from '../../Selection';
-import type { IGroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
+import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from '../../GroupedList';
 import type { IListProps } from '../../List';
-import type { IGroup } from '../GroupedList/index';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
