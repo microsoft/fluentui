@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "check preventDismissOnEvent before dismissing the callout for all dismiss triggers",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

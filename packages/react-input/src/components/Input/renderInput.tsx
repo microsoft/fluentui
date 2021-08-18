@@ -8,8 +8,6 @@ import { inputShorthandProps } from './useInput';
  */
 export const renderInput = (state: InputState) => {
   const { slots, slotProps } = getSlots<InputSlots>(state, inputShorthandProps);
-  delete slotProps.input.children;
-  delete slotProps.inputWrapper.children;
   return (
     <slots.root {...slotProps.root}>
       <slots.bookendBefore {...slotProps.bookendBefore} />

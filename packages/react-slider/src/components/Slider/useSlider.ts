@@ -24,14 +24,14 @@ export const useSlider = (props: SliderProps, ref: React.RefObject<HTMLElement &
   const state: SliderState = {
     ref,
     ...props,
-    sliderWrapper: resolveShorthand(props.sliderWrapper),
-    rail: resolveShorthand(props.rail),
-    trackWrapper: resolveShorthand(props.trackWrapper),
-    track: resolveShorthand(props.track),
-    marksContainer: resolveShorthand(props.marksContainer),
-    thumbWrapper: resolveShorthand(props.thumbWrapper),
-    thumb: resolveShorthand(props.thumb),
-    activeRail: resolveShorthand(props.activeRail),
+    sliderWrapper: resolveShorthand(props.sliderWrapper, { required: true }),
+    rail: resolveShorthand(props.rail, { required: true }),
+    trackWrapper: resolveShorthand(props.trackWrapper, { required: true }),
+    track: resolveShorthand(props.track, { required: true }),
+    marksContainer: resolveShorthand(props.marksContainer, { required: true }),
+    thumbWrapper: resolveShorthand(props.thumbWrapper, { required: true }),
+    thumb: resolveShorthand(props.thumb, { required: true }),
+    activeRail: resolveShorthand(props.activeRail, { required: true }),
   };
 
   useSliderState(state);

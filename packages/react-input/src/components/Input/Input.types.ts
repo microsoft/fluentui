@@ -10,13 +10,13 @@ export type InputSlots = {
    */
   inputWrapper: React.HTMLAttributes<HTMLElement>;
   /** Element before the input field, visually separated from it */
-  bookendBefore: React.HTMLAttributes<HTMLElement>;
+  bookendBefore?: React.HTMLAttributes<HTMLElement>;
   /** Element after the input field, visually separated from it */
-  bookendAfter: React.HTMLAttributes<HTMLElement>;
+  bookendAfter?: React.HTMLAttributes<HTMLElement>;
   /** Element at the start of the input field, visually appearing to be inside of it */
-  insideStart: React.HTMLAttributes<HTMLElement>;
+  insideStart?: React.HTMLAttributes<HTMLElement>;
   /** Element at the end of the input field, visually appearing to be inside of it */
-  insideEnd: React.HTMLAttributes<HTMLElement>;
+  insideEnd?: React.HTMLAttributes<HTMLElement>;
 };
 
 export interface InputCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {}

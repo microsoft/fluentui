@@ -24,7 +24,10 @@ const useStyles = makeStyles({
 
 export const BasicSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (value: number) => setSliderValue(value);
+  const sliderOnChange = (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => setSliderValue(data.value);
 
   const styles = useStyles();
 
@@ -64,7 +67,10 @@ export const MarkedSliderExample = (props: SliderProps) => {
 
 export const VerticalSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (value: number) => setSliderValue(value);
+  const sliderOnChange = (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => setSliderValue(data.value);
 
   const styles = useStyles();
 
