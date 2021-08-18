@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Updates react-menu on slot nul rendering",
+  "comment": "Updates react-menu on slot null rendering",
   "packageName": "@fluentui/react-menu",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
