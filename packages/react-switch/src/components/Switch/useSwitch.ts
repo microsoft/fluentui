@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 import { useSwitchState } from './useSwitchState';
 
@@ -14,8 +15,11 @@ export const sliderShorthandProps: Array<keyof SwitchSlots> = ['track', 'thumbWr
 export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
   const state: SwitchState = {
     ref,
+    id: useId('toggle-'),
+    labelPosition: 'after',
     ...props,
     components: {
+      root: props.children !== undefined ? Label : 'div',
       input: 'input',
     },
     track: resolveShorthand(props.track, { required: true }),

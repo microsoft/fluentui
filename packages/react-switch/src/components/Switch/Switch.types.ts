@@ -49,6 +49,12 @@ export interface SwitchCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   disabled?: boolean;
 
   /**
+   * Determines whether the label should be positioned before or after the Toggle.
+   * @default 'after'
+   */
+  labelPosition: 'before' | 'after';
+
+  /**
    * Callback to be called when the `checked` value changes.
    */
   onChange?: (
@@ -72,4 +78,9 @@ export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * CSS class for the container of the input element and indicator slot.
+   */
+  containerClassName?: string;
 }

@@ -15,8 +15,8 @@ const useRootStyles = makeStyles({
 
     position: 'relative',
     display: 'inline-block',
-    width: '40px',
-    height: '20px',
+    minWidth: '40px',
+    minHeight: '20px',
     userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
@@ -56,14 +56,22 @@ const useRootStyles = makeStyles({
   ),
 });
 
+const useContainerStyles = makeStyles({
+  container: {
+    position: 'relative',
+    width: '40px',
+    height: '20px',
+  },
+});
+
 /**
  * Styles for the track slot
  */
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    width: '100%',
-    height: '100%',
+    width: '40px',
+    height: '20px',
     boxSizing: 'border-box',
     borderRadius: '999px',
     transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
@@ -99,7 +107,6 @@ const useThumbWrapperStyles = makeStyles({
     bottom: '0',
     left: 'calc(var(--switch-thumb-size) * var(--switch-thumb-offset))',
     right: 'calc(var(--switch-thumb-size) * var(--switch-thumb-offset))',
-    height: '100%',
     transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
   }),
 
@@ -167,6 +174,7 @@ const useInputStyle = makeStyles({
  */
 export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const rootStyles = useRootStyles();
+  const containerStyles = useContainerStyles();
   const trackStyles = useTrackStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
@@ -177,6 +185,11 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     rootStyles.focusIndictor,
     !state.disabled && (state.input.checked ? rootStyles.checked : rootStyles.unchecked),
     state.className,
+  );
+
+  state.containerClassName = mergeClasses(
+    containerStyles.container,
+    // !!state.children && containerStyles[state.labelPosition],
   );
 
   state.track.className = mergeClasses(
