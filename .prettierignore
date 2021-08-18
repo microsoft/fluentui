@@ -24,7 +24,6 @@ change
 __snapshots__
 
 # package specific files
-*.hbs
 apps/vr-tests/dndSim.js
 packages/monaco-editor/esm
 packages/monaco-editor/monaco-typescript.d.ts
@@ -37,3 +36,6 @@ packages/fluentui/ability-attributes/src/schema.ts
 packages/web-components/src/**/*.styles.ts
 packages/web-components/**/*.spec.ts
 packages/web-components/src/default-palette.ts
+
+# template files which actually follow a different language's formatting
+*.hbs

@@ -15,10 +15,10 @@ const commands = {
 
 // https://www.npmjs.com/package/lint-staged
 module.exports = {
-  [`**/*.{${
-    (prettierSupportedFileExtensionsByContext.stylesheets,
+  [`**/*.{${[].concat(
+    prettierSupportedFileExtensionsByContext.stylesheets,
     prettierSupportedFileExtensionsByContext.markdown,
-    prettierSupportedFileExtensionsByContext.others)
-  }}`]: [commands.format],
+    prettierSupportedFileExtensionsByContext.others,
+  )}}`]: [commands.format],
   [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [commands.format, commands.lint],
 };
