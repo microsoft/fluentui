@@ -209,20 +209,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     state.onKeyDown = onKeyDown;
   }
 
-  // Rail Props
-  state.rail.children = null;
-
-  // Track Props
-  state.trackWrapper.children = null;
-
   // Track Props
   state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
-  state.track.children = null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
-  state.thumbWrapper.children = null;
 
   // Thumb Props
   state.thumb.className = 'ms-Slider-thumb';
@@ -234,11 +226,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
   disabled && (state.thumb['aria-disabled'] = true);
-  state.thumb.children = null;
 
   // Active Rail Props
   state.activeRail.ref = railRef;
-  state.activeRail.children = null;
 
   return state;
 };
