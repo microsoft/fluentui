@@ -1288,7 +1288,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1377,7 +1376,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

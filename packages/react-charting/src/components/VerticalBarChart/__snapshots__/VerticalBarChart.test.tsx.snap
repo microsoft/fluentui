@@ -216,7 +216,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -305,7 +304,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -394,7 +392,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -628,7 +625,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -717,7 +713,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -806,7 +801,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1160,7 +1154,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1249,7 +1242,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1338,7 +1330,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1589,7 +1580,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1678,7 +1668,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1767,7 +1756,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2018,7 +2006,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2107,7 +2094,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2196,7 +2182,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2447,7 +2432,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2536,7 +2520,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2625,7 +2608,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
