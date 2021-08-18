@@ -1,12 +1,21 @@
 import * as React from 'react';
 import { PositioningShorthand } from '@fluentui/react-positioning';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * Properties for the Tooltip component
- * {@docCategory Tooltip}
+ * Slot properties for Tooltip
  */
-export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type TooltipSlots = {
+  /**
+   * The content displayed inside the tooltip.
+   */
+  content: React.HTMLAttributes<HTMLElement>;
+};
+
+/**
+ * Properties and state for Tooltip
+ */
+export interface TooltipCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
   /**
    * The child is the element that triggers the Tooltip. It will have additional properties added,
    * including events and aria properties.
@@ -17,11 +26,6 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
     | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
     | ((props: TooltipTriggerProps) => React.ReactNode)
     | null;
-
-  /**
-   * The content displayed inside the tooltip.
-   */
-  content: ShorthandPropsCompat<ComponentPropsCompat>;
 
   /**
    * Color variant with inverted colors
@@ -36,6 +40,13 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * @defaultvalue false
    */
   pointing?: boolean;
+
+  /**
+   * Configure the positioning of the tooltip
+   *
+   * @defaultvalue above
+   */
+  positioning?: PositioningShorthand;
 
   /**
    * Control the tooltip's visibility programatically.
@@ -64,26 +75,21 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    *
    * @defaultvalue label
    */
-  triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+  triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
    *
    * @defaultvalue 250
    */
-  showDelay?: number;
+  showDelay: number;
 
   /**
    * Delay before the tooltip is hidden, in milliseconds.
    *
    * @defaultvalue 250
    */
-  hideDelay?: number;
-
-  /**
-   * Configure the positioning of the tooltip
-   */
-  positioning?: PositioningShorthand;
+  hideDelay: number;
 }
 
 /**
@@ -105,21 +111,14 @@ export interface OnVisibleChangeData {
 }
 
 /**
- * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
+ * Properties for Tooltip
  */
-export type TooltipShorthandProps = 'content';
-
-/**
- * Names of TooltipProps that have a default value in useTooltip
- * {@docCategory Tooltip}
- */
-export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+export interface TooltipProps extends ComponentProps<TooltipSlots>, Partial<TooltipCommons> {}
 
 /**
  * State used in rendering Tooltip
  */
-export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+export interface TooltipState extends ComponentState<TooltipSlots>, TooltipCommons {
   /**
    * Ref to the root tooltip element.
    */

@@ -4,11 +4,10 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export interface OnVisibleChangeData {
@@ -23,32 +22,31 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
-
-// @public
-export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+export interface TooltipCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> {
     children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
-    content: ShorthandPropsCompat<ComponentPropsCompat>;
-    hideDelay?: number;
+    hideDelay: number;
     inverted?: boolean;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     pointing?: boolean;
     positioning?: PositioningShorthand;
-    showDelay?: number;
-    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+    showDelay: number;
+    triggerAriaAttribute: 'label' | 'labelledby' | 'describedby' | null;
     visible?: boolean;
 }
 
 // @public
-export type TooltipShorthandProps = 'content';
+export interface TooltipProps extends ComponentProps<TooltipSlots>, Partial<TooltipCommons> {
+}
 
 // @public
-export const tooltipShorthandProps: TooltipShorthandProps[];
+export type TooltipSlots = {
+    content: React_2.HTMLAttributes<HTMLElement>;
+};
 
 // @public
-export interface TooltipState extends ComponentStateCompat<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+export interface TooltipState extends ComponentState<TooltipSlots>, TooltipCommons {
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     ref: React_2.Ref<HTMLElement>;
@@ -61,7 +59,7 @@ export type TooltipTriggerProps = {
 } & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
+export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>) => TooltipState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;

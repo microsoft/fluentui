@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { usePopper, resolvePositioningShorthand, mergeArrowOffset } from '@fluentui/react-positioning';
+import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
-  makeMergeProps,
   onlyChild,
-  resolveShorthandProps,
+  resolveShorthand,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
@@ -12,15 +11,7 @@ import {
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
-
-/**
- * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
- */
-export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
-
-const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandProps });
+import { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
 // Style values that are required for popper to properly position the tooltip
 const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes
@@ -38,50 +29,50 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  *
  * {@docCategory Tooltip}
  */
-export const useTooltip = (
-  props: TooltipProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: TooltipProps,
-): TooltipState => {
+export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
-  const state = mergeProps(
-    {
-      ref,
-      children: props.children,
-      content: {
-        as: React.Fragment,
-      },
-      id: useId('tooltip-'),
-      role: 'tooltip',
-      showDelay: 250,
-      hideDelay: 250,
-      triggerAriaAttribute: 'label',
-    },
-    defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
-    resolveShorthandProps(props, tooltipShorthandProps),
-  );
-
-  const [visible, setVisibleInternal] = useControllableState({ state: state.visible, initialState: false });
+  const { onVisibleChange } = props;
+  const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
   const setVisible = React.useCallback(
     (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
         if (newVisible !== oldVisible) {
-          const onVisibleChange = state.onVisibleChange; // Workaround for bug in react-exhaustive-deps lint rule
           onVisibleChange?.(ev, { visible: newVisible });
         }
         return newVisible;
       });
     },
-    [clearDelayTimeout, setVisibleInternal, state.onVisibleChange],
+    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  state.visible = visible;
-  state.shouldRenderTooltip = visible;
+  const state: TooltipState = {
+    // Default values
+    id: useId('tooltip-', props.id),
+    role: 'tooltip',
+    showDelay: 250,
+    hideDelay: 250,
+    triggerAriaAttribute: 'label',
+    shouldRenderTooltip: visible,
+
+    // User-provided props
+    ...props,
+    ref,
+
+    // Controlled state values
+    visible,
+
+    // Slots
+    components: {
+      root: 'div',
+      content: React.Fragment,
+    },
+    content: resolveShorthand(props.content),
+  };
 
   const popperOptions = {
     enabled: state.visible,
