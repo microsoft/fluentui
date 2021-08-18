@@ -10,7 +10,7 @@ Also explicitly expose the `root` slot for all components. This will allow passi
 
 ## Problem statement
 
-For most components, it makes sense to apply native props (and `ref`) to the root element. Currently there's an implicit `root` slot which always gets native element props passed to the component, and is not explicitly exposed via the API.
+For most components, it makes sense to apply native props (and `ref`) to the root element. Currently the `root` slot always gets native element props passed to the component, and is not explicitly exposed via the API.
 
 The input components are a little unique because the actual `<input>` _cannot_ be the root element of the component, since we need various wrappers for styling (and `<input>` can't have children). However, users may expect that some or all native props passed to the root of the component would be applied to the `<input>` itself. This may also be a requirement for certain 3rd-party form libraries.
 
@@ -38,7 +38,20 @@ Or an `<Input/>` is roughly like this:
 </div>
 ```
 
+So to specify a value, you'd have to use slot props:
+
+```tsx
+<Input input={{ id: 'foo', value: 'stuff' }} />
+```
+
 The question of where to apply the top-level `ref` has similar considerations and should likely follow the same pattern as native props.
+
+### Principles for any solution
+
+The chosen solution needs to adhere to the following principles (thanks @levithomason):
+
+- User needs to retain access to any part of DOM at any time (can't make a piece of DOM that's unable to receive props)
+- Consider what the user expects when using the component
 
 ### For inputs: 3rd-party form validation libraries
 
@@ -220,10 +233,11 @@ Given this, and an implementation which uses a list of special props (including 
 - Not clear what happens if a prop may be needed in multiple places
   - Example: if top-level `className` or `id` is passed to the `input`, what happens if they also want to give the root a `className` or `id`?
 - Inconsistent between components (reduces API clarity)
+- It's a breaking change if you want to modify where a prop is applied
 
-### Option 3
+### Option 3 *(currently reconsidering)*: Use input as `root` and add `wrapper` slot for root DOM element
 
-> **Reason discarded:** This is similar to the proposed solution and might be worth reconsidering since in some ways it provides slightly better API consistency.
+> This is similar to the proposed solution and might be worth reconsidering since in some ways it provides slightly better API consistency. We're currently reconsidering it.
 
 Let the native input element be the "root" slot, but use a `wrapper` slot as the actual root DOM element. This is roughly what the component would look like internally:
 
@@ -269,6 +283,7 @@ Which would give you roughly this:
 - Inconsistent between components, potentially leading to confusion
 - Might be unclear which components implement this special handling
 - Inconsistent what "root" means
+- The name `wrapper` is already being used for slots in some components, with a different meaning (would probably need to change this)
 
 ### Option 4: Publish an input wrapper for styling, user passes `<input>` as a child
 
