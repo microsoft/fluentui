@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandPropsCompat } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor } from './Avatar.types';
 import {
   Person16Regular,
   Person20Regular,

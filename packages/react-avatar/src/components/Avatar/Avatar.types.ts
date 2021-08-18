@@ -1,31 +1,33 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 import { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
 
-export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type AvatarSlots = {
   /**
    * The Avatar's image.
    */
-  image?: ShorthandPropsCompat<React.ImgHTMLAttributes<HTMLImageElement>>;
+  image: React.ImgHTMLAttributes<HTMLImageElement>;
 
   /**
    * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
    */
-  label?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  label: React.HTMLAttributes<HTMLElement>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
    *
    * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  icon: React.HTMLAttributes<HTMLElement>;
 
   /**
    * Badge to show the avatar's presence status.
    * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
    */
-  badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
+  badge: PresenceBadgeProps;
+};
 
+export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
   /**
    * The name used for displaying the initials of the avatar if the image is not provided
    */
@@ -34,7 +36,7 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
   /**
    * Custom method for generating the initials from the name property, which is shown if no image is provided.
    */
-  getInitials?: (name: string, isRtl: boolean) => string;
+  getInitials: (name: string, isRtl: boolean) => string;
 
   /**
    * Size of the avatar in pixels.
@@ -49,7 +51,7 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
    *
    * @defaultvalue 32
    */
-  size?: AvatarSizeValue;
+  size: AvatarSizeValue;
 
   /**
    * The avatar can have a square shape.
@@ -71,7 +73,7 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
    *
    * @defaultvalue ring
    */
-  activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+  activeDisplay: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
   /**
    * The color when displaying either an icon or initials.
@@ -82,7 +84,7 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
    *
    * @defaultvalue neutral
    */
-  color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+  color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
 
   /**
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
@@ -134,17 +136,20 @@ export type AvatarNamedColor =
   | 'anchor';
 
 /**
- * Names of the shorthand properties in AvatarProps
+ * Properties for Avatar
  */
-export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
+export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
+  /**
+   * Badge to show the avatar's presence status.
+   * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
+   */
+  badge?: PresenceBadgeStatus | Exclude<ShorthandProps<PresenceBadgeProps>, 'string'>;
+}
 
 /**
- * Names of AvatarProps that have a default value in useAvatar
+ * State used in rendering Avatar
  */
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
-
-export interface AvatarState
-  extends ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> {
+export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons {
   /**
    * Ref to the root element
    */
