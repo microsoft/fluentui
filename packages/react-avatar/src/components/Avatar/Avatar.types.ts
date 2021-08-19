@@ -137,7 +137,7 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Partial<AvatarCommons> {
+export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
   /**
    * Badge to show the avatar's presence status.
    * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.

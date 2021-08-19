@@ -30,7 +30,7 @@ export interface AvatarCommons extends Omit<React_2.HTMLAttributes<HTMLElement>,
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
-export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Partial<AvatarCommons> {
+export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
     badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps>;
     image?: string | ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>>;
 }
