@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-    // width: '100px',
   },
 });
 
