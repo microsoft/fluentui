@@ -4,8 +4,6 @@ import * as path from 'path';
 import jju from 'jju';
 import { apiExtractorVerifyTask, task, series, resolveCwd, logger, TscTaskOptions, condition } from 'just-scripts';
 
-const noop = () => {};
-
 const apiExtractorConfigs = glob
   .sync(path.join(process.cwd(), 'config/api-extractor*.json'))
   .map(configPath => [configPath, configPath.replace(/.*\bapi-extractor(?:\.(.*))?\.json$/, '$1') || 'default'])
@@ -26,15 +24,15 @@ export function apiExtractor() {
 
           const shouldExecOverrideTasks = () => overrideApi !== null;
 
-          const cleanupOverrides = overrideApi ? () => overrideApi.resetConfig() : () => noop;
-
           task('api-extractor:override-config', () => {
             if (overrideApi) {
               overrideApi.overrideConfig();
             }
           });
           task('api-extractor:cleanup-override-config', () => {
-            cleanupOverrides();
+            if (overrideApi) {
+              overrideApi.resetConfig();
+            }
           });
 
           const taskName = `api-extractor:${configName}`;
