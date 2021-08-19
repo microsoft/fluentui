@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix horizontal scrollbar detection in MarqueeSelection",
-  "packageName": "office-ui-fabric-react",
-  "email": "sebastian.oettl@microsoft.com",
-  "dependentChangeType": "patch"
-}

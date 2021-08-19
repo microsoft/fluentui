@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Jul 2021 12:24:50 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.174.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.174.1)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.174.0..office-ui-fabric-react_v7.174.1)
+
+### Patches
+
+- Fix horizontal scrollbar detection in MarqueeSelection ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
 
 ## [7.174.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.174.0)
 

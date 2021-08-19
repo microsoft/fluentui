@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 12:24:13 GMT",
+      "tag": "office-ui-fabric-react_v7.174.1",
+      "version": "7.174.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix horizontal scrollbar detection in MarqueeSelection",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "fa84410fc41f6f601905a7c4d73532dafeae0474",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Jul 2021 12:24:50 GMT",
       "tag": "office-ui-fabric-react_v7.174.0",
       "version": "7.174.0",

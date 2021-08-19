@@ -1,8 +1,17 @@
 # Change Log - codesandbox-react-template
 
-This log was last generated on Fri, 30 Jul 2021 12:24:50 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/codesandbox-react-template_v7.0.0)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/codesandbox-react-template_v7.0.0..codesandbox-react-template_v7.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v7.174.1 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/codesandbox-react-template_v7.0.0)
 
