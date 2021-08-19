@@ -15,6 +15,6 @@ describe('Tooltip', () => {
 
     cy.hover(content);
 
-    cy.wait(15).notExist(content);
+    cy.notExist(content);
   });
 });
