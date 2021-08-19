@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing arrowing in weekly day picker component not staying in correct column",
+  "packageName": "@fluentui/react",
+  "email": "lorejoh12@gmail.com",
+  "dependentChangeType": "patch"
+}
