@@ -102,11 +102,13 @@ export type PopoverState = PopoverCommons &
 
 /**
  * Data attached to open/close events
+ * {@docCategory Popover}
  */
 export type OnOpenChangeData = { open: boolean };
 
 /**
  * The supported events that will trigger open/close of the menu
+ * {@docCategory Popover}
  */
 export type OpenPopoverEvents =
   | MouseEvent

@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+/**
+ * {@docCategory Menu}
+ */
 export type SelectableHandler = (
   e: React.MouseEvent | React.KeyboardEvent,
   name: string,

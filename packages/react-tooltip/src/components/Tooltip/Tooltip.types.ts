@@ -112,6 +112,7 @@ export type TooltipTriggerProps = {
 
 /**
  * Data for the Tooltip's onVisibleChange event.
+ * {@docCategory Tooltip}
  */
 export type OnVisibleChangeData = {
   visible: boolean;

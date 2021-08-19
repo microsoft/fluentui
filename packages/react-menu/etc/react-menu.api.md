@@ -328,9 +328,6 @@ export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;
 
-// @public (undocumented)
-export type UninitializedMenuListState = Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'> & Partial<Pick<MenuListState, 'checkedValues'>>;
-
 // @public
 export const useCheckmarkStyles: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;
 

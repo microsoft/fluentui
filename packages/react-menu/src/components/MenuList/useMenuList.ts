@@ -9,7 +9,13 @@ import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabste
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
-import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
+import type { MenuListProps, MenuListState } from './MenuList.types';
+
+type UninitializedMenuListState = Omit<
+  MenuListState,
+  'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'
+> &
+  Partial<Pick<MenuListState, 'checkedValues'>>;
 
 /**
  * Returns the props and state required to render the component

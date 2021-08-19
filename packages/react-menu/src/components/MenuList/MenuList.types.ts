@@ -69,9 +69,3 @@ export type MenuListState = ComponentState<MenuListSlots> &
 export type MenuListContextValues = {
   menuList: MenuListContextValue;
 };
-
-export type UninitializedMenuListState = Omit<
-  MenuListState,
-  'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'
-> &
-  Partial<Pick<MenuListState, 'checkedValues'>>;
