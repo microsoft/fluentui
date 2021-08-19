@@ -56,6 +56,14 @@ jobs:
           yarn buildci --no-cache $(sinceArg)
         displayName: build, test, lint
 
+      # TEMPORARY for testing purposes
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: packages/react-components/dist/api
+          artifactName: page-json-converged
+          publishLocation: Container
+        displayName: 'Publish artifact: page-json-converged (API docs)'
+
       - template: .devops/templates/cleanup.yml
 
   - job: DeployE2E

@@ -23,6 +23,7 @@
   "dependencies": {
     "@microsoft/api-extractor-model": "7.13.3",
     "@microsoft/tsdoc": "0.13.2",
-    "fs-extra": "^8.1.0"
+    "fs-extra": "^8.1.0",
+    "tslib": "^2.1.0"
   }
 }

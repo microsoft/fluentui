@@ -12,6 +12,8 @@ module.exports = {
     test: ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
+    // TODO: figure out how to actually integrate this
+    'generate-json': ['^build'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
   },
 

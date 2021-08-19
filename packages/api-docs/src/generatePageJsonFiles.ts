@@ -47,13 +47,14 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
   }
 
   // Generate the page data
-  const pageJsonByName = generatePageJson(apiModel, pageGroups, fallbackGroup);
+  const [pageJsonByName, warnings] = generatePageJson(apiModel, options);
 
   // Warn if any requested page names didn't correspond to a docCategory found in the API info
   const requestedPages = ([] as string[]).concat(...Object.values(pageGroups));
   for (const pageName of requestedPages) {
     if (!pageJsonByName.has(pageName)) {
-      console.warn('Warning: no API items found for expected @docCategory ' + pageName);
+      const categoryType = options.inferDocCategoryByPrefix ? 'prefix or @docCategory' : '@docCategory';
+      warnings.push(`No API items found for expected ${categoryType} "${pageName}"`);
     }
   }
 
@@ -64,5 +65,18 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
     console.log('Writing ' + pageJsonPath);
     const json = min ? JSON.stringify(pageJson) : JSON.stringify(pageJson, null, 2);
     fse.writeFileSync(pageJsonPath, json);
+  }
+
+  // Log issues
+  if (warnings.length) {
+    const log = options.strict ? console.error : console.warn;
+    log(
+      '\nEncountered the following possible issues while generating API files:' +
+        warnings.map(msg => `\n- ${msg}`).join(''),
+    );
+
+    if (options.strict) {
+      throw new Error('Encountered issues while generated API files (see logs above for details)');
+    }
   }
 }

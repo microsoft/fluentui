@@ -10,12 +10,30 @@ export interface IPageJsonOptions {
   /** If true, the generated files won't be pretty-formatted */
   min?: boolean;
   /**
-   * List of allowed page names (`@docCategory` tag values) grouped by any desired criteria,
-   * such as package name.
+   * List of allowed page names (`@docCategory` tag values, or component name prefixes if
+   * `inferDocCategoryByPrefix` is true) grouped by any desired criteria, such as package name.
    */
-  pageGroups?: PageGroups;
+  pageGroups: PageGroups;
   /**
-   * Group for any page names (`@docCategory` tag values) not listed in `pageGroups`.
+   * If true, interpret the list of page names from `pageGroups` as prefixes for type names,
+   * and group things matching that prefix onto a page. This is an alternative to specifying
+   * `@docCategory` everywhere (though if that's present, it will still be used as an override).
+   *
+   * Example: if this is true and one of the `pageGroups` includes "Button", `ButtonProps` will
+   * automatically go on the "Button" page.
+   */
+  inferDocCategoryByPrefix?: boolean;
+  /**
+   * For the given list of *unscoped* package names, group any uncategorized API items into a
+   * single page for that package.
+   */
+  includeExtraItemsForPackages?: string[];
+  /**
+   * If true, fail instead of warning about potential error conditions.
+   */
+  strict?: boolean;
+  /**
+   * Group for any page names not listed in `pageGroups`.
    * If unspecified, unlisted pages will go under the root.
    */
   fallbackGroup?: string;

@@ -17,6 +17,7 @@
     "chromatic": "npx chromatic@5.6.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "generate-json": "just-scripts generate-json",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -28,6 +29,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@fluentui/api-docs": "^8.2.0",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-storybook-addon": "9.0.0-beta.0",
     "@fluentui/scripts": "^1.0.0",
