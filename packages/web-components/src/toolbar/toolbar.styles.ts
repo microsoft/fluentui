@@ -29,6 +29,7 @@ export const toolbarStyles: (
           fill: currentcolor;
           padding: var(--toolbar-item-gap);
           box-sizing: border-box;
+          align-items: center;
       }
 
       :host(${focusVisible}) {
@@ -56,6 +57,11 @@ export const toolbarStyles: (
       :host([orientation="vertical"]) ::slotted(:not([slot])) {
           margin: var(--toolbar-item-gap) 0;
       }
+
+      :host([orientation="vertical"]) {
+        display: inline-flex;
+        flex-direction: column;
+    }
 
       .start,
       .end {

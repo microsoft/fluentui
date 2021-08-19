@@ -9,7 +9,12 @@
 </svg>
 <style>
   fluent-radio-group {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  fluent-radio {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 </style>
 
@@ -133,9 +138,9 @@
   </fluent-toolbar>
 </fluent-design-system-provider>
 
-<h2>Toolbar with slotted label</h2>
+<h2>Toolbar with slotted span label</h2>
 <fluent-toolbar id="toolbar-slotted-label">
-  <label slot="label">Slotted label</label>
+  <span slot="label">Span Label</span>
   <button>One</button>
   <button>Two</button>
   <button>Three</button>
@@ -158,6 +163,7 @@
 
 <h2>Vertical orientation</h2>
 <fluent-toolbar id="toolbar-vertical-orientation" orientation="vertical">
+  <span slot="label">Span Label</span>
   <button>One</button>
   <button>Two</button>
   <button>Three</button>
@@ -195,6 +201,7 @@
 </fluent-toolbar>
 
 <fluent-toolbar id="toolbar-first-two-disabled" orientation="vertical">
+  <span slot="label">Span Label</span>
   <fluent-checkbox disabled>One</fluent-checkbox>
   <fluent-checkbox disabled>Two</fluent-checkbox>
   <fluent-checkbox>Three</fluent-checkbox>
