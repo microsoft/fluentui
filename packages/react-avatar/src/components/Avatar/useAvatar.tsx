@@ -90,13 +90,13 @@ const getDefaultIcon = (size: AvatarSizeValue) => {
 const getBadgeSize = (size: AvatarSizeValue) => {
   if (size <= 24) {
     return 'smallest';
-  } else if (size <= 28) {
+  } else if (size <= 36) {
     return 'smaller';
-  } else if (size <= 52) {
+  } else if (size <= 48) {
     return 'small';
-  } else if (size <= 72) {
+  } else if (size <= 56) {
     return 'medium';
-  } else if (size <= 96) {
+  } else if (size <= 72) {
     return 'large';
   } else {
     return 'larger';
