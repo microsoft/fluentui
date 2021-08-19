@@ -117,6 +117,9 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       className,
       showFullMonth,
       weeksToShow,
+      // unused, but extract from calendarDayGridProps to avoid override
+      onSelectDate,
+      onNavigateDate,
       ...calendarDayGridProps
     } = this.props;
 

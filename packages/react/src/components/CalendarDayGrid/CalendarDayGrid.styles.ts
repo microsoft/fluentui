@@ -54,9 +54,9 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
   let rowAnimationStyle: IRawStyle = {};
   if (animateBackwards !== undefined) {
     if (animationDirection === AnimationDirection.Horizontal) {
-      rowAnimationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+      rowAnimationStyle = animateBackwards ? AnimationStyles.slideRightIn10 : AnimationStyles.slideLeftIn10;
     } else {
-      rowAnimationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+      rowAnimationStyle = animateBackwards ? AnimationStyles.slideDownIn10 : AnimationStyles.slideUpIn10;
     }
   }
 
@@ -64,8 +64,8 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
   let lastTransitionRowAnimationStyle: IRawStyle = {};
   if (animateBackwards !== undefined) {
     if (animationDirection !== AnimationDirection.Horizontal) {
-      firstTransitionRowAnimationStyle = animateBackwards ? { animationName: '' } : AnimationStyles.slideUpOut20;
-      lastTransitionRowAnimationStyle = animateBackwards ? AnimationStyles.slideDownOut20 : { animationName: '' };
+      firstTransitionRowAnimationStyle = animateBackwards ? { animationName: '' } : AnimationStyles.slideUpOut10;
+      lastTransitionRowAnimationStyle = animateBackwards ? AnimationStyles.slideDownOut10 : { animationName: '' };
     }
   }
 
