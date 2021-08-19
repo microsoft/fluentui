@@ -249,7 +249,7 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
 
   const icon = size <= 40 ? <Bot20Regular /> : <Bot24Regular />;
 
-  const state = useAvatar(props, ref, { icon });
+  const state = useAvatar({ icon, ...props }, ref);
   const styles = useRobotAvatarStyles();
 
   state.className = mergeClasses(styles.root, styles[state.size], state.className);

@@ -4,58 +4,57 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: React_2.ForwardRefExoticComponent<AvatarProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
-
-// @public
-export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
-
 // @public (undocumented)
-export interface AvatarProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+export interface AvatarCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> {
     active?: 'active' | 'inactive' | 'unset';
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
-    badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-    getInitials?: (name: string, isRtl: boolean) => string;
-    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    activeDisplay: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+    getInitials: (name: string, isRtl: boolean) => string;
     idForColor?: string;
-    image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
-    label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     name?: string;
-    size?: AvatarSizeValue;
+    size: AvatarSizeValue;
     square?: boolean;
 }
 
 // @public
-export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
+export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
-export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[];
+export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Partial<AvatarCommons> {
+    badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps> | null;
+}
 
 // @public
 export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
-export interface AvatarState extends ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> {
+export type AvatarSlots = {
+    image: React_2.ImgHTMLAttributes<HTMLImageElement>;
+    label: React_2.HTMLAttributes<HTMLElement>;
+    icon: React_2.HTMLAttributes<HTMLElement>;
+    badge: PresenceBadgeProps;
+};
+
+// @public
+export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons {
     ref: React_2.Ref<HTMLElement>;
-    showIcon?: boolean;
 }
 
 // @public (undocumented)
 export const renderAvatar: (state: AvatarState) => JSX.Element;
 
 // @public (undocumented)
-export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>, defaultProps?: AvatarProps | undefined) => AvatarState;
+export const useAvatar: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public (undocumented)
 export const useAvatarStyles: (state: AvatarState) => AvatarState;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
 
 export type AvatarSlots = {
@@ -22,7 +22,6 @@ export type AvatarSlots = {
 
   /**
    * Badge to show the avatar's presence status.
-   * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
    */
   badge: PresenceBadgeProps;
 };
@@ -138,12 +137,12 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
+export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Partial<AvatarCommons> {
   /**
    * Badge to show the avatar's presence status.
    * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
    */
-  badge?: PresenceBadgeStatus | Exclude<ShorthandProps<PresenceBadgeProps>, 'string'>;
+  badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps> | null;
 }
 
 /**
@@ -154,9 +153,4 @@ export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons 
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
-
-  /**
-   * True if the avatar has no label/initials and should render an icon
-   */
-  showIcon?: boolean;
 }

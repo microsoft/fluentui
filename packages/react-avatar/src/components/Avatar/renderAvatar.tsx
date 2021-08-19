@@ -7,8 +7,8 @@ export const renderAvatar = (state: AvatarState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.label {...slotProps.label} />
-      {state.showIcon && <slots.icon {...slotProps.icon} />}
+      {/* The icon is only rendered when there is no label text */}
+      {slotProps.label.children ? <slots.label {...slotProps.label} /> : <slots.icon {...slotProps.icon} />}
       <slots.image {...slotProps.image} />
       <slots.badge {...slotProps.badge} />
     </slots.root>
