@@ -41,9 +41,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-label": "^9.0.0-alpha.26",
+    "@fluentui/react-label": "^9.0.0-alpha.27",
     "@fluentui/react-make-styles": "^9.0.0-alpha.57",
-    "@fluentui/react-tabster": "^9.0.0-alpha.50",
+    "@fluentui/react-tabster": "^9.0.0-alpha.51",
     "@fluentui/react-utilities": "^9.0.0-alpha.39",
     "tslib": "^2.1.0"
   },

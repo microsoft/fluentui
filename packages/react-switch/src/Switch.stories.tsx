@@ -26,7 +26,7 @@ const useIosStyles = makeStyles({
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: '#c8c6c4',
+      borderColor: '#4cd964',
     },
   },
 
@@ -58,6 +58,7 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => {
     setSwitchValue(data.checked);
   };
+
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
