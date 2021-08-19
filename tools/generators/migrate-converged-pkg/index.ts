@@ -593,6 +593,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
   pkgJson.dependencies = pkgJson.dependencies || {};
+  pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddMakeStylesPlugin =
     pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
@@ -601,7 +602,14 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
 
   const config = templates.babelConfig({ extraPlugins });
 
+  if (shouldAddMakeStylesPlugin) {
+    pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`] = '*';
+  } else {
+    delete pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`];
+  }
+
   tree.write(options.paths.babelConfig, serializeJson(config));
+  writeJson(tree, options.paths.packageJson, pkgJson);
 
   return tree;
 }
