@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useId, useMount } from '@fluentui/react-utilities';
+import { useBoolean, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -75,7 +75,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
 
   /**
@@ -84,8 +83,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
    * @param incomingValue
    * @param ev
    */
-  const updateValue = React.useCallback(
-    (incomingValue: number, ev): void => {
+  const updateValue = useEventCallback(
+    (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -95,13 +94,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
 
-      if (onChange && onChangeCallback.current) {
-        onChangeCallback.current(clampedValue, ev);
-      }
-
+      onChange?.(ev, { value: clampedValue });
       setCurrentValue(clampedValue);
     },
-    [max, min, onChange, setCurrentValue],
   );
 
   /**
@@ -228,18 +223,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     }
   }, [currentValue, state.ref]);
 
-  useMount(() => {
-    // If the user passes an out of bounds controlled value, clamp and update their value onMount.
-    if (value !== undefined && (value < min || value > max) && onChange && onChangeCallback.current) {
-      onChangeCallback.current(clamp(value, min, max));
-
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('It appears that a controlled Slider has received an unclamped value outside of the min/max.');
-      }
-    }
-  });
-
   const valuePercent = getPercent(renderedPosition!, min, max);
 
   // TODO: Awaiting animation time from design spec.
@@ -283,20 +266,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     state.onKeyDown = onKeyDown;
   }
 
-  // Rail Props
-  state.rail.children = null;
-
-  // Track Props
-  state.trackWrapper.children = null;
-
   // Track Props
   state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
-  state.track.children = null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
-  state.thumbWrapper.children = null;
 
   // Thumb Props
   state.thumb.className = 'ms-Slider-thumb';
@@ -308,11 +283,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
   disabled && (state.thumb['aria-disabled'] = true);
-  state.thumb.children = null;
 
   // Active Rail Props
   state.activeRail.ref = railRef;
-  state.activeRail.children = null;
 
   return state;
 };

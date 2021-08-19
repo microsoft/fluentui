@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.27)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.26..@fluentui/react-charting_v5.3.27)
+
+### Patches
+
+- Chart title added for remaining charts, title will describe the chart ([PR #19356](https://github.com/microsoft/fluentui/pull/19356) by v-scharde@microsoft.com)
+- Chart element will not render when data value is zero ([PR #19381](https://github.com/microsoft/fluentui/pull/19381) by v-scharde@microsoft.com)
 
 ## [5.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.26)
 

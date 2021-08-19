@@ -10,29 +10,26 @@ import {
   styled,
   initializeComponentRef,
 } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { Callout } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Suggestions } from './Suggestions/Suggestions';
-import {
+import { getStyles as suggestionsStyles } from './Suggestions/Suggestions.styles';
+import { SuggestionsController } from './Suggestions/SuggestionsController';
+import { ValidationState } from './BasePicker.types';
+import { Autofill } from '../Autofill/index';
+import * as stylesImport from './BasePicker.scss';
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   ISuggestions,
   ISuggestionsProps,
   ISuggestionsStyleProps,
   ISuggestionsStyles,
 } from './Suggestions/Suggestions.types';
-import { getStyles as suggestionsStyles } from './Suggestions/Suggestions.styles';
-import { SuggestionsController } from './Suggestions/SuggestionsController';
-import {
-  IBasePicker,
-  IBasePickerProps,
-  ValidationState,
-  IBasePickerStyleProps,
-  IBasePickerStyles,
-} from './BasePicker.types';
-import { IAutofill, Autofill } from '../Autofill/index';
-import { IPickerItemProps } from './PickerItem.types';
-import * as stylesImport from './BasePicker.scss';
+import type { IBasePicker, IBasePickerProps, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import type { IAutofill } from '../Autofill/index';
+import type { IPickerItemProps } from './PickerItem.types';
+
 const legacyStyles: any = stylesImport;
 
 export interface IBasePickerState<T> {

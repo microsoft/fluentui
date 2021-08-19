@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { css, findIndex } from '@fluentui/utilities';
 import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
-import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
-import { IDayInfo } from './CalendarDayGrid.base';
+import type { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
+import type { IDayInfo } from './CalendarDayGrid.base';
 
 export interface ICalendarDayMonthHeaderRowProps extends ICalendarDayGridProps {
   weeks: IDayInfo[][];

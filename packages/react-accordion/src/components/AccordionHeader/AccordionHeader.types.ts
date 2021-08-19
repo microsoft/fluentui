@@ -29,7 +29,7 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon: React.HTMLAttributes<HTMLElement>;
+  icon?: React.HTMLAttributes<HTMLElement>;
   children: React.HTMLAttributes<HTMLElement>;
 };
 

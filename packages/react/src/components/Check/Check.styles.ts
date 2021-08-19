@@ -1,12 +1,7 @@
-import { ICheckStyleProps, ICheckStyles } from './Check.types';
-import {
-  HighContrastSelector,
-  IStyle,
-  getGlobalClassNames,
-  IconFontSizes,
-  getHighContrastNoAdjustStyle,
-} from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames, IconFontSizes, getHighContrastNoAdjustStyle } from '../../Styling';
 import { getRTL } from '../../Utilities';
+import type { ICheckStyleProps, ICheckStyles } from './Check.types';
+import type { IStyle } from '../../Styling';
 
 export const CheckGlobalClassNames = {
   root: 'ms-Check',

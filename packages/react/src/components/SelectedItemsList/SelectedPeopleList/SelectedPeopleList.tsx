@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
-import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
-import { IPersonaProps } from '../../../Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { SelectedItemWithContextMenu } from './Items/SelectedItemWithContextMenu';
-import { IRenderFunction } from '../../../Utilities';
-import { IContextualMenuItem } from '../../../ContextualMenu';
-import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem } from './Items/EditingItem';
+import type { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
+import type { IPersonaProps } from '../../../Persona';
+import type { IRenderFunction } from '../../../Utilities';
+import type { IContextualMenuItem } from '../../../ContextualMenu';
+import type { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 
 /**
  * {@docCategory SelectedPeopleList}

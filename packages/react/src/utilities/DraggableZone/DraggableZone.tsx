@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
 import { getClassNames } from './DraggableZone.styles';
 import { on } from '../../Utilities';
+import type { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
 
 export interface IDraggableZoneState {
   isDragging: boolean;

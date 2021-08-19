@@ -1,16 +1,9 @@
-import {
-  IRawStyle,
-  ITheme,
-  concatStyleSets,
-  HighContrastSelector,
-  IconFontSizes,
-  getInputFocusStyle,
-} from '../../Styling';
-import { IButtonStyles } from '../../Button';
-
-import { ISpinButtonStyles, ISpinButtonStyleProps } from './SpinButton.types';
+import { concatStyleSets, HighContrastSelector, IconFontSizes, getInputFocusStyle } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 import { Position } from '../../Positioning';
+import type { IRawStyle, ITheme } from '../../Styling';
+import type { IButtonStyles } from '../../Button';
+import type { ISpinButtonStyles, ISpinButtonStyleProps } from './SpinButton.types';
 
 const ARROW_BUTTON_WIDTH = 23;
 const ARROW_BUTTON_ICON_SIZE = 8;

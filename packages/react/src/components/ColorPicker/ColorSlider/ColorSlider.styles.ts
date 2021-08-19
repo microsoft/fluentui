@@ -1,5 +1,5 @@
-import { IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 import { IsFocusVisibleClassName } from '../../../Utilities';
+import type { IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const hueStyle = {
   background: `linear-gradient(${[
