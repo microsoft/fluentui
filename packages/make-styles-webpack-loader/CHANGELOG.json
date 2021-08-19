@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles-webpack-loader",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/make-styles-webpack-loader_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.37",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/make-styles-webpack-loader"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Aug 2021 07:33:54 GMT",
       "tag": "@fluentui/make-styles-webpack-loader_v9.0.0-alpha.9",
       "version": "9.0.0-alpha.9",

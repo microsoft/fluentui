@@ -88,7 +88,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderSlots = {
     button: ARIAButtonProps;
     expandIcon: AccordionHeaderExpandIconProps;
-    icon: React_2.HTMLAttributes<HTMLElement>;
+    icon?: React_2.HTMLAttributes<HTMLElement>;
     children: React_2.HTMLAttributes<HTMLElement>;
 };
 

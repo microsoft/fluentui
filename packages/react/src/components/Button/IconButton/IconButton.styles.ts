@@ -1,8 +1,9 @@
-import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, HighContrastSelector } from '../../../Styling';
+import { concatStyleSets, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import type { IButtonStyles } from '../Button.types';
+import type { ITheme } from '../../../Styling';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {

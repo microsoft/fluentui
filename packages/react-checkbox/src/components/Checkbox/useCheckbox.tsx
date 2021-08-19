@@ -41,10 +41,13 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
     },
 
     input: resolveShorthand(props.input, {
-      type: 'checkbox',
-      children: null,
+      required: true,
+      defaultProps: {
+        type: 'checkbox',
+        children: null,
+      },
     }),
-    indicator: resolveShorthand(props.indicator),
+    indicator: resolveShorthand(props.indicator, { required: true }),
   };
 
   const [checked, setCheckedInternal] = useControllableState({

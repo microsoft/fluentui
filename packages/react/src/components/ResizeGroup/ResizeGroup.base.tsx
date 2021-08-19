@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Async, divProperties, getNativeProps } from '../../Utilities';
-import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
+import { ResizeGroupDirection } from './ResizeGroup.types';
 import { useConst, useMergedRefs, useAsync, useOnEvent, useWarnings } from '@fluentui/react-hooks';
 import { useWindow } from '../../WindowProvider';
+import type { IResizeGroupProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
 

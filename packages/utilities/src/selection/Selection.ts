@@ -1,5 +1,6 @@
-import { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionMode } from './Selection.types';
+import { SELECTION_CHANGE, SelectionMode } from './Selection.types';
 import { EventGroup } from '../EventGroup';
+import type { IObjectWithKey, ISelection } from './Selection.types';
 
 /**
  * {@docCategory Selection}

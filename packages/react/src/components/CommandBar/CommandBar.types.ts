@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IContextualMenuItem } from '../../ContextualMenu';
-import { IButtonStyles, IButtonProps } from '../../Button';
-import { ICommandBarData } from './CommandBar.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
-import { ITooltipHostProps } from '../../Tooltip';
-import { IResizeGroupProps } from '../ResizeGroup/ResizeGroup.types';
+import type { IContextualMenuItem } from '../../ContextualMenu';
+import type { IButtonStyles, IButtonProps } from '../../Button';
+import type { ICommandBarData } from './CommandBar.base';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import type { ITooltipHostProps } from '../../Tooltip';
+import type { IResizeGroupProps } from '../ResizeGroup/ResizeGroup.types';
 
 /**
  * {@docCategory CommandBar}

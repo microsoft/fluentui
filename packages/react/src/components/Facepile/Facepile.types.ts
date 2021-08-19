@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../../Button';
-import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
-import { IKeytipProps } from '../../Keytip';
+import { PersonaInitialsColor, PersonaSize } from '../../Persona';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IButtonProps } from '../../Button';
+import type { IPersonaSharedProps } from '../../Persona';
+import type { IKeytipProps } from '../../Keytip';
 
 /**
  * {@docCategory Facepile}

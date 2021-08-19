@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps } from './BaseComponent.types';
 import { extendComponent } from './extendComponent';
+import type { IBaseProps } from './BaseComponent.types';
 
 /**
  * Helper to manage componentRef resolution. Internally appends logic to

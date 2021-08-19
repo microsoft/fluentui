@@ -4,24 +4,22 @@ import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { safeMount } from '@fluentui/test-utilities';
 import { KeyCodes } from '@fluentui/utilities';
-import { IDragDropEvents } from '../../DragDrop';
-import { IGroup } from '../../GroupedList';
 import { SelectionMode, Selection, SelectionZone } from '../../Selection';
 import { getTheme } from '../../Styling';
-import { EventGroup, IRenderFunction } from '../../Utilities';
-import { IDetailsColumnProps } from './DetailsColumn';
-import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
+import { EventGroup } from '../../Utilities';
+import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
-import {
-  CheckboxVisibility,
-  DetailsListLayoutMode,
-  IColumn,
-  IDetailsGroupDividerProps,
-  IDetailsList,
-} from './DetailsList.types';
-import { DetailsRow, IDetailsRowProps } from './DetailsRow';
+import { CheckboxVisibility, DetailsListLayoutMode } from './DetailsList.types';
+import { DetailsRow } from './DetailsRow';
 import { DetailsRowCheck } from './DetailsRowCheck';
+import type { IDragDropEvents } from '../../DragDrop';
+import type { IGroup } from '../../GroupedList';
+import type { IRenderFunction } from '../../Utilities';
+import type { IDetailsColumnProps } from './DetailsColumn';
+import type { IDetailsHeaderProps } from './DetailsHeader';
+import type { IColumn, IDetailsGroupDividerProps, IDetailsList } from './DetailsList.types';
+import type { IDetailsRowProps } from './DetailsRow';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
