@@ -23,7 +23,6 @@ const Usage = () => (
     <ComponentExample
       title="Dismiss Tooltip on hover content"
       description="A toopltip can be configured to dismiss on hover content."
-      examplePath="components/Tooltip/Usage/TooltipExampleDismissOnContentMouseEnter"
     />
   </ExampleSection>
 );
