@@ -7,13 +7,13 @@ import {
   getLastTabbable,
   getNextElement,
   focusAsync,
-  IRefObject,
   modalize,
   on,
 } from '../../Utilities';
-import { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
 import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
+import type { IRefObject } from '../../Utilities';
+import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
 
 interface IFocusTrapZoneInternalState {
   disposeFocusHandler: (() => void) | undefined;

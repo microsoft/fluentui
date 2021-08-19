@@ -1,14 +1,16 @@
 import { Meta } from '@storybook/addon-docs';
-import { CodeComparison, CodeExample } from './utils';
+import { CodeComparison, CodeExample } from './utils.stories';
 
-<Meta title="Migrations/Flex/Stack.Item" />
+<Meta title="Migrations/Flex/Flex.Item" />
 
-# @fluentui/react - Stack.Item
+# @fluentui/react-northstar - Flex.Item
 
 ## Default state
 
+By default, Flex.Item applies no styles to the items so consider the following render scenario for all props:
+
 <CodeComparison>
-  <CodeExample title="Render">
+  <CodeExample>
 
 ```jsx
 <div className={styles.root}>
@@ -17,23 +19,6 @@ import { CodeComparison, CodeExample } from './utils';
 ```
 
   </CodeExample>
-  <CodeExample title="make-styles">
-
-    ```js
-    makeStyles({
-      root: {...}, // Flex container
-      item: {
-        height: 'auto',
-        width: 'auto',
-        flexShrink: 1,
-      },
-    })
-    ```
-
-  </CodeExample>
-</CodeComparison>
-
-<CodeComparison>
   <CodeExample>
 
     ```html
@@ -43,26 +28,7 @@ import { CodeComparison, CodeExample } from './utils';
     ```
 
   </CodeExample>
-  <CodeExample>
-
-    ```css
-    .flex-item {
-      height: auto;
-      width: auto;
-      flex-shrink: 1;
-    }
-    ```
-
-  </CodeExample>
 </CodeComparison>
-
-MDN documentation:
-
-- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
-- [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
-- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
-
----
 
 ---
 
@@ -75,8 +41,8 @@ _`center` is used below as an example value_
 
     ```js
     makeStyles({
-      root: {
-        alignSelf: 'center'
+      item: {
+        alignSelf: 'center',
       },
     })
     ```
@@ -86,7 +52,7 @@ _`center` is used below as an example value_
 
     ```css
     .flex-item {
-      align-self: center;
+        align-self: center;
     }
     ```
 
@@ -105,45 +71,16 @@ This is just an override to apply the class name to the rendered node.
 
 ---
 
-## disableShrink
-
-<CodeComparison>
-  <CodeExample>
-
-    ```js
-    makeStyles({
-      root: {
-        flexShrink: 0,
-      },
-    })
-    ```
-
-  </CodeExample>
-  <CodeExample>
-
-    ```css
-    .flex-item {
-      flex-shrink: 0;
-    }
-    ```
-
-  </CodeExample>
-</CodeComparison>
-
-MDN documentation:
-
-- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
-
----
-
 ## grow
 
+Using it as a `boolean` will result in a `1` value.
+
 <CodeComparison>
   <CodeExample>
 
     ```js
     makeStyles({
-      root: {
+      item: {
         flexGrow: 1,
       },
     })
@@ -154,7 +91,7 @@ MDN documentation:
 
     ```css
     .flex-item {
-      flex-grow: 1;
+        flex-grow: 1;
     }
     ```
 
@@ -167,9 +104,11 @@ MDN documentation:
 
 ---
 
-## order
+## push
 
-_`1` is used below as an example value_
+`push` will result in a `margin-left: auto` for `row` based layouts and `margin-top: auto` for `column` based layouts.
+
+Example usage for a `column` layout with `push`:
 
 <CodeComparison>
   <CodeExample>
@@ -177,7 +116,10 @@ _`1` is used below as an example value_
     ```js
     makeStyles({
       root: {
-        order: 1,
+        flexDirection: 'column',
+      },
+      item: {
+        marginTop: 'auto',
       },
     })
     ```
@@ -186,8 +128,11 @@ _`1` is used below as an example value_
   <CodeExample>
 
     ```css
+    .flex {
+      flex-direction: column;
+    }
     .flex-item {
-        order: 1;
+      margin-top: auto;
     }
     ```
 
@@ -196,20 +141,21 @@ _`1` is used below as an example value_
 
 MDN documentation:
 
-- [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order)
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
 
 ---
 
 ## shrink
 
-_`1` is used below as an example value_
+Using it as a `boolean` will result in a `1` value.
 
 <CodeComparison>
   <CodeExample>
 
     ```js
     makeStyles({
-      root: {
+      item: {
         flexShrink: 1,
       },
     })
@@ -233,15 +179,17 @@ MDN documentation:
 
 ---
 
-## verticalFill
+## size
+
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
 
     ```js
     makeStyles({
-      root: {
-        height: "100%",
+      item: {
+        flexBasis: '10px',
       },
     })
     ```
@@ -251,7 +199,7 @@ MDN documentation:
 
     ```css
     .flex-item {
-      height: 100%;
+      flex-basis: 10px;
     }
     ```
 
@@ -260,4 +208,10 @@ MDN documentation:
 
 MDN documentation:
 
-- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+- [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis)
+
+---
+
+## styles
+
+Override to apply the different styles to the rendered node. Refrain from using this for `make-styles` implementations and use `make-styles` directly.

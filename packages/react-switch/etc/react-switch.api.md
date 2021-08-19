@@ -12,9 +12,6 @@ import * as React_2 from 'react';
 export const renderSwitch: (state: SwitchState) => JSX.Element;
 
 // @public
-export const sliderShorthandProps: Array<keyof SwitchSlots>;
-
-// @public
 export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -24,7 +21,7 @@ export interface SwitchCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
     disabled?: boolean;
     labelPosition: 'before' | 'after';
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: {
-        value: boolean;
+        checked: boolean;
     }) => void;
 }
 
@@ -33,9 +30,12 @@ export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Parti
 }
 
 // @public
+export const switchShorthandProps: Array<keyof SwitchSlots>;
+
+// @public
 export type SwitchSlots = {
     track: React_2.HTMLAttributes<HTMLElement>;
-    thumbWrapper: React_2.HTMLAttributes<HTMLElement>;
+    thumbContainer: React_2.HTMLAttributes<HTMLElement>;
     thumb: React_2.HTMLAttributes<HTMLElement>;
     input: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>;
 };

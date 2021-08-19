@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { classNamesFunction, KeyCodes, Async, initializeComponentRef } from '../../Utilities';
-import {
-  ExpandingCardMode,
-  IExpandingCardProps,
-  IExpandingCardStyles,
-  IExpandingCardStyleProps,
-} from './ExpandingCard.types';
+import { ExpandingCardMode } from './ExpandingCard.types';
 import { CardCallout } from './CardCallout/CardCallout';
+import type { IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
 const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
 

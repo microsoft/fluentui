@@ -1,6 +1,8 @@
-import { IPersonaStyleProps, IPersonaStyles, PersonaPresence, PersonaSize } from './Persona.types';
-import { FontWeights, IStyle, normalize, noWrap, getGlobalClassNames } from '../../Styling';
+import { PersonaPresence, PersonaSize } from './Persona.types';
+import { FontWeights, normalize, noWrap, getGlobalClassNames } from '../../Styling';
 import { personaSize, presenceBoolean, sizeBoolean } from './PersonaConsts';
+import type { IPersonaStyleProps, IPersonaStyles } from './Persona.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Persona',
