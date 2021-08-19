@@ -7,7 +7,7 @@ import { useSwitchState } from './useSwitchState';
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: Array<keyof SwitchSlots> = ['track', 'thumb', 'input'];
+export const sliderShorthandProps: Array<keyof SwitchSlots> = ['track', 'thumbContainer', 'thumb', 'input'];
 
 /**
  * Given user props, returns state and render function for a Switch.
@@ -23,6 +23,7 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): Swit
       input: 'input',
     },
     track: resolveShorthand(props.track, { required: true }),
+    thumbContainer: resolveShorthand(props.thumbContainer, { required: true }),
     thumb: resolveShorthand(props.thumb, { required: true }),
     input: resolveShorthand(props.input, { required: true }),
   };

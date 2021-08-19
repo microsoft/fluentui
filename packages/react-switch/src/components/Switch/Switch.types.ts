@@ -11,6 +11,11 @@ export type SwitchSlots = {
   track: React.HTMLAttributes<HTMLElement>;
 
   /**
+   * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
+   */
+  thumbContainer: React.HTMLAttributes<HTMLElement>;
+
+  /**
    * The circular icon indicating the status of the Switch.
    */
   thumb: React.HTMLAttributes<HTMLElement>;
@@ -78,9 +83,4 @@ export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
    * CSS class for the container of the input element, track, and rail, slot.
    */
   containerClassName?: string;
-
-  /**
-   * CSS class for the container of the thumb element.
-   */
-  thumbContainerClassName?: string;
 }

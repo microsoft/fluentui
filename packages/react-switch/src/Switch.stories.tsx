@@ -9,13 +9,15 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
+    // width: '100px',
   },
 });
 
 const useIosStyles = makeStyles({
   root: {
-    '--switch-thumb-size': '26px',
-    '--switch-thumb-offset': '.58',
+    '--switch-thumb-height': '26px',
+    '--switch-thumb-width': '26px',
+    '--switch-thumb-offset': '.56',
     '--switch-track-width': '50px',
     '--switch-track-height': '30px',
 
@@ -35,10 +37,11 @@ const useIosStyles = makeStyles({
   thumb: {
     background: 'white',
     boxShadow: `
-    0px 3px 8px 0px rgba(0, 0, 0, 0.15),
-    0px 3px 1px 0px rgba(0, 0, 0, 0.06)
-  `,
+      0px 3px 8px 0px rgba(0, 0, 0, 0.15),
+      0px 3px 1px 0px rgba(0, 0, 0, 0.06)
+    `,
   },
+
   track: {
     background: '#4cd964',
     border: 'none',
@@ -81,6 +84,7 @@ export const CustomSwitchExample = (props: SwitchProps) => {
     <div className={styles.root}>
       <Label>iOS Example</Label>
       <Switch
+        defaultChecked={true}
         className={iosStyles.root}
         track={{ className: iosStyles.track }}
         thumb={{ className: iosStyles.thumb }}

@@ -14,9 +14,9 @@ export const renderSwitch = (state: SwitchState) => {
       {state.labelPosition === 'before' && state.children}
       <div className={state.containerClassName}>
         <slots.track {...slotProps.track} />
-        <div className={state.thumbContainerClassName}>
+        <slots.thumbContainer {...slotProps.thumbContainer}>
           <slots.thumb {...slotProps.thumb} />
-        </div>
+        </slots.thumbContainer>
         <slots.input {...slotProps.input} />
       </div>
       {state.labelPosition === 'after' && state.children}
