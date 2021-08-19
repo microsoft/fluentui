@@ -3,8 +3,8 @@
 exports[`Switch renders a basic Switch 1`] = `
 <div>
   <div
-    class=""
-    id="toggle-1"
+    class="ms-Switch-root"
+    id="switch-1"
   >
     <div
       class=""
@@ -14,6 +14,7 @@ exports[`Switch renders a basic Switch 1`] = `
       />
       <div
         class=""
+        style="transform: translate(0%);"
       >
         <div
           class="ms-Switch-thumb"
@@ -26,8 +27,8 @@ exports[`Switch renders a basic Switch 1`] = `
     </div>
   </div>
   <div
-    class=""
-    id="toggle-2"
+    class="ms-Switch-root checked"
+    id="switch-2"
   >
     <div
       class=""
@@ -37,6 +38,7 @@ exports[`Switch renders a basic Switch 1`] = `
       />
       <div
         class=""
+        style="transform: translate(100%);"
       >
         <div
           class="ms-Switch-thumb"
@@ -55,8 +57,8 @@ exports[`Switch renders a basic Switch 1`] = `
 exports[`Switch renders a disabled Switch 1`] = `
 <div>
   <div
-    class=""
-    id="toggle-1"
+    class="ms-Switch-root"
+    id="switch-1"
   >
     <div
       class=""
@@ -66,6 +68,7 @@ exports[`Switch renders a disabled Switch 1`] = `
       />
       <div
         class=""
+        style="transform: translate(0%);"
       >
         <div
           class="ms-Switch-thumb"
@@ -79,8 +82,8 @@ exports[`Switch renders a disabled Switch 1`] = `
     </div>
   </div>
   <div
-    class=""
-    id="toggle-2"
+    class="ms-Switch-root checked"
+    id="switch-2"
   >
     <div
       class=""
@@ -90,6 +93,7 @@ exports[`Switch renders a disabled Switch 1`] = `
       />
       <div
         class=""
+        style="transform: translate(100%);"
       >
         <div
           class="ms-Switch-thumb"
@@ -109,8 +113,8 @@ exports[`Switch renders a disabled Switch 1`] = `
 exports[`Switch renders a labeled Switch 1`] = `
 <div>
   <label
-    class=""
-    id="toggle-1"
+    class="ms-Switch-root"
+    id="switch-1"
   >
     <div
       class=""
@@ -120,6 +124,7 @@ exports[`Switch renders a labeled Switch 1`] = `
       />
       <div
         class=""
+        style="transform: translate(0%);"
       >
         <div
           class="ms-Switch-thumb"

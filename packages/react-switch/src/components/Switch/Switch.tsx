@@ -5,7 +5,7 @@ import { renderSwitch } from './renderSwitch';
 import { useSwitchStyles } from './useSwitchStyles';
 
 /**
- * Switch component
+ * Define a styled Switch, using the `useSwitch` hook.
  */
 export const Switch = React.forwardRef<HTMLElement, SwitchProps>((props, ref) => {
   const state = useSwitch(props, ref);

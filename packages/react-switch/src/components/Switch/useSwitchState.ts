@@ -37,8 +37,5 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
   // thumbContainer Props
   state.thumbContainer.style = { transform: internalValue ? 'translate(100%)' : 'translate(0%)' };
 
-  // Thumb Props
-  state.thumb.className = 'ms-Switch-thumb' + state.thumb.className;
-
   return state;
 };
