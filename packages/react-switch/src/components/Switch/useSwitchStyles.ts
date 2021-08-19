@@ -12,6 +12,9 @@ const useRootStyles = makeStyles({
   root: theme => ({
     '--switch-thumb-size': '14px',
     '--switch-thumb-offset': '.7',
+    '--switch-track-width': '40px',
+    '--switch-track-height': '20px',
+
     position: 'relative',
     display: 'inline-block',
     userSelect: 'none',
@@ -56,8 +59,8 @@ const useRootStyles = makeStyles({
 const useContainerStyles = makeStyles({
   container: {
     position: 'relative',
-    width: '40px',
-    height: '20px',
+    width: 'var(--switch-track-width)',
+    height: 'var(--switch-track-height)',
   },
 });
 
@@ -67,8 +70,8 @@ const useContainerStyles = makeStyles({
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    width: '40px',
-    height: '20px',
+    width: '100%',
+    height: '100%',
     boxSizing: 'border-box',
     borderRadius: '999px',
     transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
@@ -198,10 +201,10 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     state.track.className,
   );
 
-  state.thumbWrapper.className = mergeClasses(
+  state.thumbContainerClassName = mergeClasses(
     thumbWrapperStyles.thumbWrapper,
     state.input.checked ? thumbWrapperStyles.checked : thumbWrapperStyles.unchecked,
-    state.thumbWrapper.className,
+    state.thumbContainerClassName,
   );
 
   state.thumb.className = mergeClasses(

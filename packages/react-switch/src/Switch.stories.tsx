@@ -14,10 +14,10 @@ const useStyles = makeStyles({
 
 const useIosStyles = makeStyles({
   root: {
-    width: '51px',
-    height: '31px',
-    '--switch-thumb-size': '27px',
-    '--switch-thumb-offset': '.55',
+    '--switch-thumb-size': '26px',
+    '--switch-thumb-offset': '.58',
+    '--switch-track-width': '50px',
+    '--switch-track-height': '30px',
 
     ':hover .ms-Switch-thumb': {
       background: 'white',
@@ -31,12 +31,17 @@ const useIosStyles = makeStyles({
       borderColor: '#c8c6c4',
     },
   },
+
   thumb: {
     background: 'white',
+    boxShadow: `
+    0px 3px 8px 0px rgba(0, 0, 0, 0.15),
+    0px 3px 1px 0px rgba(0, 0, 0, 0.06)
+  `,
   },
   track: {
     background: '#4cd964',
-    border: '2px solid #c8c6c4',
+    border: 'none',
   },
 });
 
@@ -45,7 +50,6 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const [switchValue, setSwitchValue] = React.useState(false);
 
   const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => {
-    console.log('hello');
     setSwitchValue(data.checked);
   };
   return (
