@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 
 /**
  * Text wrapper component for the Title 1 typography variant
+ * {@docCategory Text}
  */
 export const Title1: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,

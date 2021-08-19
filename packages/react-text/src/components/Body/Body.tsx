@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 
 /**
  * Text wrapper component for the Body typography variant
+ * {@docCategory Text}
  */
 export const Body: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,

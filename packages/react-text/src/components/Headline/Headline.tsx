@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 
 /**
  * Text wrapper component for the Headline typography variant
+ * {@docCategory Text}
  */
 export const Headline: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,

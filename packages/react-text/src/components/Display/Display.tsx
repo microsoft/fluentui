@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 
 /**
  * Text wrapper component for the Display typography variant
+ * {@docCategory Text}
  */
 export const Display: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
