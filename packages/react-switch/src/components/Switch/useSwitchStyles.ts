@@ -203,7 +203,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
 
   state.thumbContainer.className = mergeClasses(
     thumbContainerStyles.thumbContainer,
-    !state.disabled && (state.input.checked ? thumbContainerStyles.checked : thumbContainerStyles.unchecked),
+    state.input.checked ? thumbContainerStyles.checked : thumbContainerStyles.unchecked,
     state.thumbContainer.className,
   );
 
