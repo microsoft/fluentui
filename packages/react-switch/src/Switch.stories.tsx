@@ -14,9 +14,6 @@ const useStyles = makeStyles({
 
 const useIosStyles = makeStyles({
   root: {
-    '--switch-thumb-height': '26px',
-    '--switch-thumb-width': '26px',
-    '--switch-thumb-offset': '.56',
     '--switch-track-width': '50px',
     '--switch-track-height': '30px',
 
@@ -33,7 +30,14 @@ const useIosStyles = makeStyles({
     },
   },
 
+  thumbContainer: {
+    left: 'calc(26px * .56)',
+    right: 'calc(26px * .56)',
+  },
+
   thumb: {
+    width: '26px',
+    height: '26px',
     background: 'white',
     boxShadow: `
       0px 3px 8px 0px rgba(0, 0, 0, 0.15),
@@ -86,6 +90,7 @@ export const CustomSwitchExample = (props: SwitchProps) => {
         defaultChecked={true}
         className={iosStyles.root}
         track={{ className: iosStyles.track }}
+        thumbContainer={{ className: iosStyles.thumbContainer }}
         thumb={{ className: iosStyles.thumb }}
       />
 

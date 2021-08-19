@@ -10,9 +10,6 @@ const thumbClassName = 'ms-Switch-thumb';
  */
 const useRootStyles = makeStyles({
   root: theme => ({
-    '--switch-thumb-width': '14px',
-    '--switch-thumb-height': '14px',
-    '--switch-thumb-offset': '.7',
     '--switch-track-width': '40px',
     '--switch-track-height': '20px',
 
@@ -107,17 +104,9 @@ const useThumbContainerStyles = makeStyles({
     position: 'absolute',
     top: '0',
     bottom: '0',
-    left: 'calc(var(--switch-thumb-width) * var(--switch-thumb-offset))',
-    right: 'calc(var(--switch-thumb-width) * var(--switch-thumb-offset))',
+    left: 'calc(14px * .7)',
+    right: 'calc(14px * .7)',
     transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
-  }),
-
-  unchecked: theme => ({
-    transform: 'translate(0%)',
-  }),
-
-  checked: theme => ({
-    transform: 'translate(100%)',
   }),
 });
 
@@ -127,8 +116,8 @@ const useThumbContainerStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    width: 'var(--switch-thumb-width)',
-    height: 'var(--switch-thumb-height)',
+    width: '14px',
+    height: '14px',
     boxSizing: 'border-box',
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
@@ -201,11 +190,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     state.track.className,
   );
 
-  state.thumbContainer.className = mergeClasses(
-    thumbContainerStyles.thumbContainer,
-    state.input.checked ? thumbContainerStyles.checked : thumbContainerStyles.unchecked,
-    state.thumbContainer.className,
-  );
+  state.thumbContainer.className = mergeClasses(thumbContainerStyles.thumbContainer, state.thumbContainer.className);
 
   state.thumb.className = mergeClasses(
     thumbClassName,

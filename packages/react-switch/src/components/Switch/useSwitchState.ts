@@ -34,5 +34,8 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
   state.input.disabled = disabled;
   state.input.ref = inputRef;
 
+  // thumbContainer Props
+  state.thumbContainer.style = { transform: internalValue ? 'translate(0%)' : 'translate(100%)' };
+
   return state;
 };
