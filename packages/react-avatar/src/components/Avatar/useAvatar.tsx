@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
+import { AvatarNamedColor, AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
 import {
   Person16Regular,
   Person20Regular,
@@ -16,15 +16,22 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
   const { size = 32 } = props;
+  let { color = 'neutral' } = props;
+
+  // Resolve 'colorful' to a specific color name
+  if (color === 'colorful') {
+    color = avatarColors[getHashCode(props.idForColor ?? props.name ?? '') % avatarColors.length];
+  }
 
   const state: AvatarState = {
     size,
-    color: 'neutral',
     activeDisplay: 'ring',
     getInitials,
     ref,
 
     ...props,
+
+    color,
 
     components: {
       root: 'span',
@@ -36,7 +43,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 
     label: resolveShorthand(props.label),
 
-    // The icon will be resolved below if there is no label text
+    // The icon will be resolved below, only if there is no label text
     icon: undefined,
 
     // If a string is provided for image, it is the img's src property rather than its children
@@ -94,4 +101,48 @@ const getBadgeSize = (size: AvatarSizeValue) => {
   } else {
     return 'larger';
   }
+};
+
+const avatarColors: AvatarNamedColor[] = [
+  'darkRed',
+  'cranberry',
+  'red',
+  'pumpkin',
+  'peach',
+  'marigold',
+  'gold',
+  'brass',
+  'brown',
+  'forest',
+  'seafoam',
+  'darkGreen',
+  'lightTeal',
+  'teal',
+  'steel',
+  'blue',
+  'royalBlue',
+  'cornflower',
+  'navy',
+  'lavender',
+  'purple',
+  'grape',
+  'lilac',
+  'pink',
+  'magenta',
+  'plum',
+  'beige',
+  'mink',
+  'platinum',
+  'anchor',
+];
+
+const getHashCode = (str: string): number => {
+  let hashCode = 0;
+  for (let len: number = str.length - 1; len >= 0; len--) {
+    const ch = str.charCodeAt(len);
+    const shift = len % 8;
+    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+  }
+
+  return hashCode;
 };

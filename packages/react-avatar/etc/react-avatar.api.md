@@ -48,6 +48,7 @@ export type AvatarSlots = {
 
 // @public
 export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons {
+    color: Exclude<AvatarCommons['color'], 'colorful'>;
     ref: React_2.Ref<HTMLElement>;
 }
 

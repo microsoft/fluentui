@@ -159,4 +159,9 @@ export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons 
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * The Avatar's color, with `'colorful'` resolved to a named color
+   */
+  color: Exclude<AvatarCommons['color'], 'colorful'>;
 }

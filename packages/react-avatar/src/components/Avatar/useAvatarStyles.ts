@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { AvatarNamedColor, AvatarState } from './Avatar.types';
+import { AvatarState } from './Avatar.types';
 
 //
 // TODO: All animation constants should go to theme or globals?
@@ -335,60 +335,8 @@ const useColorStyles = makeStyles({
   }),
 });
 
-const avatarColors: AvatarNamedColor[] = [
-  'darkRed',
-  'cranberry',
-  'red',
-  'pumpkin',
-  'peach',
-  'marigold',
-  'gold',
-  'brass',
-  'brown',
-  'forest',
-  'seafoam',
-  'darkGreen',
-  'lightTeal',
-  'teal',
-  'steel',
-  'blue',
-  'royalBlue',
-  'cornflower',
-  'navy',
-  'lavender',
-  'purple',
-  'grape',
-  'lilac',
-  'pink',
-  'magenta',
-  'plum',
-  'beige',
-  'mink',
-  'platinum',
-  'anchor',
-];
-
-/**
- * Picks a color name based on a hash of the key
- */
-const getColorfulColor = (key: string) => {
-  let hashCode = 0;
-  for (let len: number = key.length - 1; len >= 0; len--) {
-    const ch = key.charCodeAt(len);
-    const shift = len % 8;
-    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
-  }
-
-  return avatarColors[hashCode % avatarColors.length];
-};
-
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
-  const { size, square, active, activeDisplay } = state;
-
-  let { color } = state;
-  if (color === 'colorful') {
-    color = getColorfulColor(state.idForColor ?? state.name ?? '');
-  }
+  const { size, square, active, activeDisplay, color } = state;
 
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
