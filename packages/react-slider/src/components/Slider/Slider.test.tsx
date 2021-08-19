@@ -51,6 +51,11 @@ describe('Slider', () => {
     expect(sliderRoot.getAttribute('id')).toEqual('test_id');
   });
 
+  it('applies the (defaultValue) prop', () => {
+    render(<Slider defaultValue={10} min={0} max={100} />);
+    expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
+  });
+
   it('applies the (value) prop', () => {
     render(<Slider value={10} min={0} max={100} />);
     expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
