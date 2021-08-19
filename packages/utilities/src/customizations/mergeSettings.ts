@@ -1,4 +1,4 @@
-import { ISettings, ISettingsFunction } from './Customizations';
+import type { ISettings, ISettingsFunction } from './Customizations';
 
 /**
  * Merge new and old settings, giving priority to new settings.

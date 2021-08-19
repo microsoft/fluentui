@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { ISearchBoxProps } from './SearchBox.types';
 import { isConformant } from '../../common/isConformant';
+import type { ReactTestRenderer } from 'react-test-renderer';
+import type { ISearchBoxProps } from './SearchBox.types';
 
 describe('SearchBox', () => {
   let component: ReactTestRenderer | undefined;

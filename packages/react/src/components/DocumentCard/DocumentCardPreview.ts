@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { DocumentCardPreviewBase } from './DocumentCardPreview.base';
 import { getStyles } from './DocumentCardPreview.styles';
-import {
+import type {
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
   IDocumentCardPreviewStyles,

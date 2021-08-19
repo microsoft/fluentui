@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { classNamesFunction, useFocusRects } from '@fluentui/utilities';
-import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
+import type { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 

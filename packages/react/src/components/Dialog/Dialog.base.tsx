@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { warnDeprecations, classNamesFunction, getId } from '../../Utilities';
-import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
-import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { Modal, IModalProps, IDragOptions } from '../../Modal';
-import { ILayerProps } from '../../Layer';
+import { DialogType } from './DialogContent.types';
+import { Modal } from '../../Modal';
 import { withResponsiveMode } from '../../ResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 
 import { DialogContent } from './DialogContent';
+import type { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
+import type { IDialogContentProps } from './DialogContent.types';
+import type { IModalProps, IDragOptions } from '../../Modal';
+import type { ILayerProps } from '../../Layer';
 
 const DefaultModalProps: IModalProps = {
   isDarkOverlay: false,

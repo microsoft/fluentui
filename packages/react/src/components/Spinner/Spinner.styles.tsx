@@ -1,4 +1,4 @@
-import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize } from './Spinner.types';
+import { SpinnerSize } from './Spinner.types';
 import {
   hiddenContentStyle,
   keyframes,
@@ -7,6 +7,7 @@ import {
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
+import type { ISpinnerStyleProps, ISpinnerStyles } from './Spinner.types';
 
 const GlobalClassNames = {
   root: 'ms-Spinner',

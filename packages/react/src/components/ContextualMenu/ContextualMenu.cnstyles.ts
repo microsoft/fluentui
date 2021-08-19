@@ -2,15 +2,14 @@ import {
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  IRawStyle,
-  ITheme,
   getScreenSelector,
   ScreenWidthMaxMedium,
   IconFontSizes,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
+import type { IRawStyle, ITheme } from '../../Styling';
+import type { IMenuItemStyles } from './ContextualMenu.types';
 
 export const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
 

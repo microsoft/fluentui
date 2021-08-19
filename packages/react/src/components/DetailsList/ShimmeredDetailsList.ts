@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { ShimmeredDetailsListBase } from './ShimmeredDetailsList.base';
 import { getStyles } from './ShimmeredDetailsList.styles';
-import {
+import type {
   IShimmeredDetailsListProps,
   IShimmeredDetailsListStyleProps,
   IShimmeredDetailsListStyles,

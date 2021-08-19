@@ -12,9 +12,10 @@ import {
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
-import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
+import { KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from '../../Positioning';
 import { useAsync, useControllableValue, useWarnings, useId, usePrevious } from '@fluentui/react-hooks';
+import type { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles } from './SpinButton.types';
 
 interface ISpinButtonInternalState {
   spinningByMouse?: boolean;
