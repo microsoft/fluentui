@@ -60,44 +60,35 @@ describe('Switch', () => {
   //   expect(screen.getByRole('checkbox').getAttribute('checked')).toEqual(true);
   // });
 
-  // it('does not update when the controlled (value) prop is provided', () => {
-  //   let sliderRef: any;
+  it('does not update when the controlled (checked) prop is provided', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    const eventHandler = jest.fn();
 
-  //   const SliderTestComponent = () => {
-  //     sliderRef = React.useRef(null);
+    render(<Switch checked={false} onChange={eventHandler} input={{ ref: inputRef }} />);
+    const inputElement = screen.getByRole('checkbox');
 
-  //     return <Slider value={50} min={0} max={100} ref={sliderRef} data-testid="test" />;
-  //   };
+    fireEvent.click(inputElement);
 
-  //   render(<SliderTestComponent />);
-
-  //   const sliderRoot = screen.getByTestId('test');
-
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-  //   expect(sliderRef.current!.value).toBe(50);
-  // });
+    expect(eventHandler).toBeCalledTimes(1);
+    expect(eventHandler.mock.calls[0][1]).toEqual({ checked: true });
+    expect(inputRef.current?.checked).toEqual(false);
+  });
 
   it('calls (onChange) with the correct value', () => {
     const eventHandler = jest.fn();
-    let switchRef: any;
 
-    const SwitchTestComponent = () => {
-      switchRef = React.useRef(null);
-
-      return <Switch checked={true} onChange={eventHandler} ref={switchRef} data-testid="test" />;
-    };
-
-    render(<SwitchTestComponent />);
+    render(<Switch onChange={eventHandler} />);
 
     const input = screen.getByRole('checkbox');
 
+    expect(eventHandler).toBeCalledTimes(0);
+
     fireEvent.click(input);
     fireEvent.click(input);
     fireEvent.click(input);
 
-    // expect(switchRef.current.value).toEqual(50);
     expect(eventHandler).toBeCalledTimes(3);
-    expect(eventHandler.mock.calls[2][1]).toEqual({ value: 51 });
+    expect(eventHandler.mock.calls[2][1]).toEqual({ checked: true });
   });
 
   it('does not allow (change) on a disabled Switch', () => {
