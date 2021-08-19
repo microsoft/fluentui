@@ -300,7 +300,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -618,7 +617,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     border: 1px solid;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1132,7 +1130,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1467,7 +1464,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1802,7 +1798,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2137,7 +2132,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

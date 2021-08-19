@@ -221,7 +221,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -310,7 +309,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -549,7 +547,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     border: 1px solid;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -638,7 +635,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     border: 1px solid;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -994,7 +990,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1083,7 +1078,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1339,7 +1333,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1428,7 +1421,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1684,7 +1676,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1773,7 +1764,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2029,7 +2019,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2118,7 +2107,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2374,7 +2362,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2463,7 +2450,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           border: 1px solid;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
