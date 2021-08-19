@@ -201,29 +201,31 @@ const templates = {
     .cache/
     .storybook/
     .vscode/
-    coverage/
-    src/
     bundle-size/
     config/
-    temp/
+    coverage/
     e2e/
+    etc/
     node_modules/
+    src/
+    temp/
     __fixtures__
+    __mocks__
     __tests__
 
+    *.api.json
     *.log
-    *.yml
-    *.test.*
     *.spec.*
     *.stories.*
-    *.api.json
+    *.test.*
+    *.yml
 
     # config files
-    .git*
-    *rc.*
     *config.*
-    .eslint*
+    *rc.*
     .editorconfig
+    .eslint*
+    .git*
     .prettierignore
   `,
 };
