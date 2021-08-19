@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/web-components_v1.3.4",
+      "version": "1.3.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ensure card foreground color responds to fill color changes",
+            "author": "chhol@microsoft.com",
+            "commit": "22316c6a87239b6646c98f8f7f603bb069d55bad",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "fix various style bugs and design token uses",
+            "author": "corylaviska@microsoft.com",
+            "commit": "efcc1419197ddee42260c0503a571d693098fa54",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Aug 2021 07:33:54 GMT",
       "tag": "@fluentui/web-components_v1.3.3",
       "version": "1.3.3",

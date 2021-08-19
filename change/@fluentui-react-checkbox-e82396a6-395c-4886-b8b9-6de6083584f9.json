@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates react-checkbox on slot null rendering",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
