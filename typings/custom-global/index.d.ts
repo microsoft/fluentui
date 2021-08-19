@@ -5,6 +5,10 @@ declare module '*.scss' {
   const styles: { [className: string]: string };
   export default styles;
 }
+declare module '*.svg' {
+  const svgPath: string;
+  export default svgPath;
+}
 
 // These declarations are meant to represent the parts of Map/WeakMap/Set that exist in IE 11.
 // Therefore, some functionality (such as constructor parameters) is intentionally missing.
