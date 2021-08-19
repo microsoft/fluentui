@@ -54,9 +54,24 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     if (initials) {
       state.label = { ...state.label, children: initials };
     } else {
+      let defaultIcon;
+      if (size <= 24) {
+        defaultIcon = <Person16Regular />;
+      } else if (size <= 40) {
+        defaultIcon = <Person20Regular />;
+      } else if (size <= 48) {
+        defaultIcon = <Person24Regular />;
+      } else if (size <= 56) {
+        defaultIcon = <Person28Regular />;
+      } else if (size <= 72) {
+        defaultIcon = <Person32Regular />;
+      } else {
+        defaultIcon = <Person48Regular />;
+      }
+
       state.icon = resolveShorthand(props.icon, {
         required: true,
-        defaultProps: { children: getDefaultIcon(state.size) },
+        defaultProps: { children: defaultIcon },
       });
     }
   }
@@ -65,33 +80,17 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 };
 
 const getBadgeSize = (size: AvatarSizeValue) => {
-  if (size <= 24) {
-    return 'smallest';
-  } else if (size <= 28) {
-    return 'smaller';
-  } else if (size <= 52) {
-    return 'small';
-  } else if (size <= 72) {
-    return 'medium';
-  } else if (size <= 96) {
-    return 'large';
-  } else {
+  if (size >= 96) {
     return 'larger';
-  }
-};
-
-const getDefaultIcon = (size: AvatarSizeValue) => {
-  if (size <= 24) {
-    return <Person16Regular />;
-  } else if (size <= 40) {
-    return <Person20Regular />;
-  } else if (size <= 48) {
-    return <Person24Regular />;
-  } else if (size <= 56) {
-    return <Person28Regular />;
-  } else if (size <= 72) {
-    return <Person32Regular />;
+  } else if (size >= 64) {
+    return 'large';
+  } else if (size >= 56) {
+    return 'medium';
+  } else if (size >= 40) {
+    return 'small';
+  } else if (size >= 28) {
+    return 'smaller';
   } else {
-    return <Person48Regular />;
+    return 'smallest';
   }
 };
