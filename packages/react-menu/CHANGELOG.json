@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.64",
+      "version": "9.0.0-alpha.64",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updates react-menu on slot null rendering",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Aug 2021 07:33:54 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.63",
       "version": "9.0.0-alpha.63",
