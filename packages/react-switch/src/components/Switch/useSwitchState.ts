@@ -35,7 +35,7 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
   state.input.ref = inputRef;
 
   // thumbContainer Props
-  state.thumbContainer.style = { transform: internalValue ? 'translate(0%)' : 'translate(100%)' };
+  state.thumbContainer.style = { transform: internalValue ? 'translate(100%)' : 'translate(0%)' };
 
   return state;
 };
