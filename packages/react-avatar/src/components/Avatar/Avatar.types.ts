@@ -142,13 +142,13 @@ export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Parti
    * Badge to show the avatar's presence status.
    * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
    */
-  badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps> | null;
+  badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps>;
 
   /**
    * The Avatar's image.
    * Can either be the URL of the image, or the props of the img tag
    */
-  image?: string | ObjectShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>> | null;
+  image?: string | ObjectShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>>;
 }
 
 /**
