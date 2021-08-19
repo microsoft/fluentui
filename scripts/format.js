@@ -4,7 +4,7 @@
 // It only handles certain cases that prettier doesn't support as well/at all natively.
 
 const { execSync } = require('child_process');
-const { runPrettier, runPrettierForFolder } = require('./prettier/prettier-helpers');
+const { runPrettier, runPrettierForFolder } = require('./prettier');
 const { findGitRoot } = require('./monorepo');
 
 const parsedArgs = parseArgs();

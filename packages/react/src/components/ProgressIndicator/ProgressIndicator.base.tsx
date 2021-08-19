@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction, getId } from '../../Utilities';
-import {
+import type {
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles,

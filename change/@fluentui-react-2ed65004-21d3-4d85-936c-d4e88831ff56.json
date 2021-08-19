@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix horizontal scrollbar detection in MarqueeSelection",
+  "packageName": "@fluentui/react",
+  "email": "sebastian.oettl@microsoft.com",
+  "dependentChangeType": "patch"
+}

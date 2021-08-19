@@ -14,7 +14,7 @@ export const MenuItem = React.forwardRef<HTMLElement, MenuItemProps>((props, ref
   const state = useMenuItem(props, ref);
 
   useMenuItemStyles(state);
-  useCheckmarkStyles((state as unknown) as MenuItemCheckboxState);
+  useCheckmarkStyles(state as MenuItemCheckboxState);
   return renderMenuItem(state);
 });
 

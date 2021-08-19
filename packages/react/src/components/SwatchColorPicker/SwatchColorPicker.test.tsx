@@ -2,11 +2,11 @@ import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
-import { ISwatchColorPickerProps } from './SwatchColorPicker.types';
-import { IColorCellProps } from './ColorPickerGridCell.types';
 import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 import { expectNodes, findNodes } from '../../common/testUtilities';
+import type { ISwatchColorPickerProps } from './SwatchColorPicker.types';
+import type { IColorCellProps } from './ColorPickerGridCell.types';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },

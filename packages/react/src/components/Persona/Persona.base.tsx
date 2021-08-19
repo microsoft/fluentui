@@ -1,23 +1,12 @@
 import * as React from 'react';
-import {
-  classNamesFunction,
-  divProperties,
-  getNativeProps,
-  IRenderFunction,
-  getPropsWithDefaults,
-} from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps, getPropsWithDefaults } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
-import {
-  IPersonaProps,
-  IPersonaStyleProps,
-  IPersonaStyles,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaSize,
-  IPersonaCoinProps,
-} from './Persona.types';
+import { PersonaPresence as PersonaPresenceEnum, PersonaSize } from './Persona.types';
 import { useWarnings, useMergedRefs } from '@fluentui/react-hooks';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import type { IRenderFunction } from '../../Utilities';
+import type { IPersonaProps, IPersonaStyleProps, IPersonaStyles, IPersonaCoinProps } from './Persona.types';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 

@@ -1,14 +1,8 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import {
-  ICalendarStrings,
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType,
-  IDateFormatting,
-} from '@fluentui/date-time-utilities';
-import { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
-import { IDayGridOptions } from '@fluentui/date-time-utilities';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { ICalendarStrings, IDateFormatting, IDayGridOptions } from '@fluentui/date-time-utilities';
+import type { IStyle, ITheme, IProcessedStyleSet } from '@fluentui/style-utilities';
 
 /**
  * {@docCategory Calendar}
