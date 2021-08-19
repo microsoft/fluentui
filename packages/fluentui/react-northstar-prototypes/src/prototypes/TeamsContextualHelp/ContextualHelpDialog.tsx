@@ -1,13 +1,6 @@
 import * as React from 'react';
-import { Header, Button, Dialog, Box, Text, Table, List, Menu, tabListBehavior } from '@fluentui/react-northstar';
+import { Header, Button, Dialog, Text, Table, List, Accordion, Menu } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
-
-const tabItems = [
-  { key: 'chatsList', content: 'Chats list' },
-  { key: 'messagesList', content: 'Messages list' },
-  { key: 'composeField', content: 'Message compose field' },
-  { key: 'global', content: 'Global shortcuts' },
-];
 
 const tableHeader = {
   items: ['Action', 'Keys'],
@@ -48,95 +41,125 @@ const generalTableRows = [
   },
 ]; // End generalTableRows
 
+const panels = [
+  {
+    key: 'chatsList',
+    title: 'Chats list',
+    content: (
+      <>
+        <Header as="h4" content="Navigation" />
+        <List>
+          <List.Item
+            index={0}
+            content="To move to the compose field, press Enter, or Alt + Shift + C, or Ctrl + Shift + R."
+          />
+          <List.Item
+            index={1}
+            content="To Move to the messages list for the currently selected chat, press Space bar."
+          />
+        </List>
+      </>
+    ),
+  },
+  {
+    key: 'messagesList',
+    title: 'Messages list',
+    content: (
+      <>
+        <Header as="h4" content="Navigation" />
+        <List>
+          <List.Item index={0} content="To move to the compose field, press Alt + Shift + C, or Ctrl + Shift + R." />
+          <List.Item index={1} content="To move to the chats list, press Escape, or Ctrl + L." />
+        </List>
+
+        <Header as="h4" content="Interaction" />
+        <List>
+          <List.Item
+            index={0}
+            content="To react to a message, press Enter, then select the reaction (such as Like) using the Right or Left arrow keys.), and confirm with Enter."
+          />
+          <List.Item
+            index={1}
+            content="To reply to a message, press Shift + F10, then select Reply using the Down or Up arrow keys, and confirm with Enter."
+          />
+          <List.Item index={2} content="To copy a message, press Ctrl + C." />
+        </List>
+      </>
+    ),
+  },
+  {
+    key: 'composeField',
+    title: 'Message compose field',
+    content: (
+      <>
+        <Header as="h4" content="Navigation" />
+        <List>
+          <List.Item index={0} content="To move to the messages list, press Escape." />
+          <List.Item index={1} content="To move to the chats list, press Ctrl + L." />
+        </List>
+
+        <Header as="h4" content="Interaction" />
+        <List>
+          <List.Item
+            index={0}
+            content="To attach a file, press Tab, then Right arrow key until you reach the Attach button, and confirm with Enter."
+          />
+          <List.Item index={1} content="" />
+        </List>
+      </>
+    ),
+  },
+  {
+    key: 'global',
+    title: 'Global keyboard shortcuts',
+    content: (
+      <>
+        <Text>Keyboard language is: English (United States).</Text>
+        <Header as="h4" content="General" />
+        <Table header={tableHeader} rows={generalTableRows} />
+
+        <Header as="h4" content="Navigation" />
+        <Table header={tableHeader} rows={generalTableRows} />
+
+        <Header as="h4" content="Messaging" />
+        <Table header={tableHeader} rows={generalTableRows} />
+
+        <Header as="h4" content="Meetings, Calls and Calendar" />
+        <Table header={tableHeader} rows={generalTableRows} />
+
+        <Header as="h4" content="Debug" />
+        <Table header={tableHeader} rows={generalTableRows} />
+      </>
+    ),
+  },
+]; // End panels
+
+const menuItems = [
+  { key: 'chatsList', content: 'Chats list' },
+  { key: 'messagesList', content: 'Messages list' },
+  { key: 'composeField', content: 'Message compose field' },
+  { key: 'global', content: 'Global keyboard shortcuts' },
+]; // End menuItems
+
 interface ContextualHelpDialogProps {
-  defaultPanel: number;
+  defaultPanelIndex: number;
   triggerText: string;
 }
 
 const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> = (props: ContextualHelpDialogProps) => {
-  const { defaultPanel, triggerText } = props;
+  const { defaultPanelIndex, triggerText } = props;
 
-  const [panel, setPanel] = React.useState(defaultPanel);
+  //const [panelIndex, setPanelIndex] = React.useState(defaultPanelIndex);
   const [dialogOpened, setDialogOpened] = React.useState(false);
-
-  const panels = [
-    <Box id="chatsList-tabpanel">
-      <Header as="h3" tabIndex={0} content="Help for chats list" />
-      <Header as="h4" content="Navigation" />
-      <List>
-        <List.Item
-          index={0}
-          content="To move to the compose field, press Enter, or Alt + Shift + C, or Ctrl + Shift + R."
-        />
-        <List.Item index={1} content="To Move to the messages list for the currently selected chat, press Space bar." />
-      </List>
-    </Box>,
-    <Box id="messagesList-tabpanel">
-      <Header as="h3" tabIndex={0} content="Help for messages list" />
-      <Header as="h4" content="Navigation" />
-      <List>
-        <List.Item index={0} content="To move to the compose field, press Alt + Shift + C, or Ctrl + Shift + R." />
-        <List.Item index={1} content="To move to the chats list, press Escape, or Ctrl + L." />
-      </List>
-
-      <Header as="h4" content="Interaction" />
-      <List>
-        <List.Item
-          index={0}
-          content="To react to a message, press Enter, then select the reaction (such as Like) using the Right or Left arrow keys.), and confirm with Enter."
-        />
-        <List.Item
-          index={1}
-          content="To reply to a message, press Shift + F10, then select Reply using the Down or Up arrow keys, and confirm with Enter."
-        />
-        <List.Item index={2} content="To copy a message, press Ctrl + C." />
-      </List>
-    </Box>,
-    <Box id="composeField-tabpanel">
-      <Header as="h3" tabIndex={0} content="Help for message compose field" />
-      <Header as="h4" content="Navigation" />
-      <List>
-        <List.Item index={0} content="To move to the messages list, press Escape." />
-        <List.Item index={1} content="To move to the chats list, press Ctrl + L." />
-      </List>
-
-      <Header as="h4" content="Interaction" />
-      <List>
-        <List.Item
-          index={0}
-          content="To attach a file, press Tab, then Right arrow key until you reach the Attach button, and confirm with Enter."
-        />
-        <List.Item index={1} content="" />
-      </List>
-    </Box>,
-    <Box id="global-tabpanel">
-      <Header as="h3" tabIndex={0} content="Global keyboard shortcuts" />
-      <Text>Keyboard language is: English (United States).</Text>
-      <Header as="h4" content="General" />
-      <Table header={tableHeader} rows={generalTableRows} />
-
-      <Header as="h4" content="Navigation" />
-      <Table header={tableHeader} rows={generalTableRows} />
-
-      <Header as="h4" content="Messaging" />
-      <Table header={tableHeader} rows={generalTableRows} />
-
-      <Header as="h4" content="Meetings, Calls and Calendar" />
-      <Table header={tableHeader} rows={generalTableRows} />
-
-      <Header as="h4" content="Debug" />
-      <Table header={tableHeader} rows={generalTableRows} />
-    </Box>,
-  ];
 
   return (
     <>
       <Dialog
-        /* trapFocus={{ firstFocusableSelector: '.first-focusable' }} */
+        trapFocus={{ firstFocusableSelector: '[data-aa-class="AccordionTitle__content]"' }}
         open={dialogOpened}
         onOpen={() => {
           setDialogOpened(true);
-          setPanel(defaultPanel);
+          //setPanelIndex(defaultPanelIndex);
         }}
         onCancel={() => setDialogOpened(false)}
         header="Keyboard shortcuts help"
@@ -144,6 +167,16 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
         footer={{
           children: (Component, props) => (
             <>
+              <Menu
+                defaultActiveIndex={defaultPanelIndex}
+                items={menuItems}
+                primary
+                underlined
+                aria-label="Choose keyboard shortcuts help context"
+                onItemClick={(event, props) => {
+                  //setPanelIndex(props.index);
+                }}
+              />
               <Text as="a" href="">
                 See shortcuts for all platforms
               </Text>
@@ -156,19 +189,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
         trigger={<Button content={triggerText} />}
         content={
           <>
-            <Menu
-              defaultActiveIndex={defaultPanel}
-              items={tabItems}
-              primary
-              underlined
-              accessibility={tabListBehavior}
-              aria-label="Choose keyboard shortcuts help context"
-              onItemClick={(event, props) => {
-                setPanel(props.index);
-              }}
-            />
-
-            <Box>{panels[panel]}</Box>
+            <Accordion exclusive={true} defaultActiveIndex={defaultPanelIndex} panels={panels} />
           </>
         }
       />
