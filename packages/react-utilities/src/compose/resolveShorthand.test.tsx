@@ -34,7 +34,13 @@ describe('resolveShorthandProps', () => {
 
   it('resolves undefined without creating a child element', () => {
     const props: TestProps = { slotA: undefined };
-    const resolvedProps = resolveShorthand(props.slotA);
+    const resolvedProps = resolveShorthand(props.slotA, { required: false });
+
+    expect(resolvedProps).toEqual(undefined);
+  });
+  it('resolves to empty object creating a child element', () => {
+    const props: TestProps = { slotA: undefined };
+    const resolvedProps = resolveShorthand(props.slotA, { required: true });
 
     expect(resolvedProps).toEqual({});
   });

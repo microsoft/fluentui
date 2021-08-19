@@ -1,4 +1,6 @@
-import { ISettingsMap, warn } from './warn';
+import { warn } from './warn';
+import type { ISettingsMap } from './warn';
+
 /**
  * Warns when two props which are mutually exclusive are both being used.
  *

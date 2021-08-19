@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import { ReactWrapper } from 'enzyme';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
-import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate, safeMount } from '@fluentui/test-utilities';
 import { useKeytipRef } from '../../Keytips';
 import { Autofill } from '../../Autofill';
+import type { IComboBox, IComboBoxOption } from './ComboBox.types';
 
 const OPTION_SELECTOR = '.ms-ComboBox-option';
 const CHECKBOX_OPTION = OPTION_SELECTOR + ' > input';

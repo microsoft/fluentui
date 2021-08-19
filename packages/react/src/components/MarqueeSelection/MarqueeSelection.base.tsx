@@ -4,17 +4,18 @@ import {
   Async,
   EventGroup,
   AutoScroll,
-  Point,
-  IRectangle,
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
   getRTL,
   initializeComponentRef,
 } from '../../Utilities';
-
-import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
-import {} from '@fluentui/utilities';
+import type { Point, IRectangle } from '../../Utilities';
+import type {
+  IMarqueeSelectionProps,
+  IMarqueeSelectionStyleProps,
+  IMarqueeSelectionStyles,
+} from './MarqueeSelection.types';
 
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
@@ -118,8 +119,9 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   private _isMouseEventOnScrollbar(ev: MouseEvent): boolean {
     const targetElement = ev.target as HTMLElement;
     const targetScrollbarWidth = targetElement.offsetWidth - targetElement.clientWidth;
+    const targetScrollbarHeight = targetElement.offsetHeight - targetElement.clientHeight;
 
-    if (targetScrollbarWidth) {
+    if (targetScrollbarWidth || targetScrollbarHeight) {
       const targetRect = targetElement.getBoundingClientRect();
 
       // Check vertical scroll

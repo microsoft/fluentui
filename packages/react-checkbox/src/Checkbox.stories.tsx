@@ -3,20 +3,24 @@ import { Checkbox } from './index';
 
 export const CheckboxVariations = () => (
   <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
-    <Checkbox label="Simple Checkbox" />
-    <Checkbox label="Circular Checkbox" circular />
-    <Checkbox label="Checkbox with label positioned before" labelPosition="before" />
-    <Checkbox label="Required Checkbox" required />
-    <Checkbox label="Large Checkbox" size="large" />
+    <Checkbox>Simple Checkbox</Checkbox>
+    <Checkbox circular>Circular Checkbox</Checkbox>
+    <Checkbox labelPosition="before">Checkbox with label positioned before</Checkbox>
+    <Checkbox required>Required Checkbox</Checkbox>
+    <Checkbox size="large">Large Checkbox</Checkbox>
+    <Checkbox />
+    <Checkbox disabled />
+    <Checkbox disabled defaultChecked="mixed" />
+    <Checkbox disabled defaultChecked={true} />
   </div>
 );
 
 export const CheckboxStates = () => (
   <div style={{ display: 'flex', gap: '14px', flexDirection: 'column' }}>
-    <Checkbox label="Unchecked Checkbox" />
-    <Checkbox label="Checked Checkbox" defaultChecked />
-    <Checkbox label="Mixed Checkbox" defaultChecked="mixed" />
-    <Checkbox label="Disabled Checkbox" disabled />
+    <Checkbox>Unchecked Checkbox</Checkbox>
+    <Checkbox defaultChecked>Checked Checkbox</Checkbox>
+    <Checkbox defaultChecked="mixed">Mixed Checkbox</Checkbox>
+    <Checkbox disabled>Disabled Checkbox</Checkbox>
   </div>
 );
 

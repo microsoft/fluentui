@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {
+import type {
   IComponentStyles,
   IHTMLSlot,
   ISlotProp,
@@ -7,7 +7,7 @@ import {
   IStyleableComponentProps,
   ISlottableProps,
 } from '@fluentui/foundation-legacy';
-import { IFontStyles } from '../../Styling';
+import type { IFontStyles } from '../../Styling';
 
 /**
  * {@docCategory Text}

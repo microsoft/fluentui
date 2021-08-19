@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { Icon, FontIcon } from '../../Icon';
-import { IProcessedStyleSet } from '../../Styling';
-import {
-  initializeComponentRef,
-  EventGroup,
-  Async,
-  IDisposable,
-  classNamesFunction,
-  composeRenderFunction,
-} from '../../Utilities';
+import { initializeComponentRef, EventGroup, Async, classNamesFunction, composeRenderFunction } from '../../Utilities';
 import { ColumnActionsMode } from './DetailsList.types';
-import { IDragDropOptions } from '../../DragDrop';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IDisposable } from '../../Utilities';
+import type { IDragDropOptions } from '../../DragDrop';
+import type {
   IDetailsColumnStyleProps,
   IDetailsColumnProps,
   IDetailsColumnStyles,
