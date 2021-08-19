@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header, Button, Dialog, Text, Table, List, Accordion, Menu } from '@fluentui/react-northstar';
+import { Header, Button, Dialog, Text, Table, List, Accordion } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 const tableHeader = {
@@ -134,13 +134,6 @@ const panels = [
   },
 ]; // End panels
 
-const menuItems = [
-  { key: 'chatsList', content: 'Chats list' },
-  { key: 'messagesList', content: 'Messages list' },
-  { key: 'composeField', content: 'Message compose field' },
-  { key: 'global', content: 'Global keyboard shortcuts' },
-]; // End menuItems
-
 interface ContextualHelpDialogProps {
   defaultPanelIndex: number;
   triggerText: string;
@@ -167,16 +160,6 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
         footer={{
           children: (Component, props) => (
             <>
-              <Menu
-                defaultActiveIndex={defaultPanelIndex}
-                items={menuItems}
-                primary
-                underlined
-                aria-label="Choose keyboard shortcuts help context"
-                onItemClick={(event, props) => {
-                  //setPanelIndex(props.index);
-                }}
-              />
               <Text as="a" href="">
                 See shortcuts for all platforms
               </Text>
