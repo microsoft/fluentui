@@ -87,6 +87,9 @@ export interface TooltipProps
   /** Element to be rendered in-place where the tooltip is defined. */
   trigger?: JSX.Element;
 
+  /* Tooltip can close when mouse hover content */
+  dismissOnContentMouseEnter?: boolean;
+
   /** Delay in ms for the mouse enter event, before the tooltip will be open. */
   mouseEnterDelay?: number;
 }
@@ -127,6 +130,7 @@ export const Tooltip: React.FC<TooltipProps> &
     unstable_pinned,
     autoSize,
     subtle,
+    dismissOnContentMouseEnter,
     mouseEnterDelay,
   } = props;
 
@@ -179,7 +183,9 @@ export const Tooltip: React.FC<TooltipProps> &
     predefinedProps: TooltipContentProps,
   ): TooltipContentProps & Pick<React.DOMAttributes<HTMLDivElement>, 'onMouseEnter' | 'onMouseLeave'> => ({
     onMouseEnter: (e: React.MouseEvent) => {
-      setTooltipOpen(true, e);
+      if (!dismissOnContentMouseEnter) {
+        setTooltipOpen(true, e);
+      }
       _.invoke(predefinedProps, 'onMouseEnter', e);
     },
     onMouseLeave: (e: React.MouseEvent) => {
@@ -311,6 +317,7 @@ Tooltip.propTypes = {
     as: false,
     content: false,
   }),
+  dismissOnContentMouseEnter: PropTypes.bool,
   mouseEnterDelay: PropTypes.number,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   subtle: PropTypes.bool,
