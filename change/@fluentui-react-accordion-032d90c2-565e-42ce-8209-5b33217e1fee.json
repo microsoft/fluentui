@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates react-accordion on slot null rendering",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 07:41:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.4)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.3..@fluentui/web-components_v1.3.4)
+
+### Patches
+
+- ensure card foreground color responds to fill color changes ([PR #19439](https://github.com/microsoft/fluentui/pull/19439) by chhol@microsoft.com)
+- fix various style bugs and design token uses ([PR #19418](https://github.com/microsoft/fluentui/pull/19418) by corylaviska@microsoft.com)
 
 ## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.3)
 
