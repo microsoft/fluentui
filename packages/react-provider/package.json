@@ -25,6 +25,7 @@
     "start": "yarn storybook"
   },
   "devDependencies": {
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.37",
     "@fluentui/eslint-plugin": "^1.4.0",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.34",
     "@fluentui/react-conformance": "^0.4.4",
