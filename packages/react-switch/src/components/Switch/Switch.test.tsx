@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Switch } from './Switch';
-import { Label } from '@fluentui/react-label';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
