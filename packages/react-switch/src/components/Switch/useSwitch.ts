@@ -15,7 +15,7 @@ export const switchShorthandProps: Array<keyof SwitchSlots> = ['track', 'thumbCo
 export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
   const state: SwitchState = {
     ref,
-    id: useId('toggle-'),
+    id: useId('switch-'),
     labelPosition: 'after',
     ...props,
     components: {

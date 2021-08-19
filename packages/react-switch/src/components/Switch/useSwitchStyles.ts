@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { SwitchState } from './Switch.types';
 
+const rootClassName = 'ms-Switch-root';
 const trackClassName = 'ms-Switch-track';
 const thumbClassName = 'ms-Switch-thumb';
 
@@ -174,6 +175,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const inputStyles = useInputStyle();
 
   state.className = mergeClasses(
+    rootClassName + (state.input.checked ? ' checked' : ''),
     rootStyles.root,
     rootStyles.focusIndictor,
     !state.disabled && (state.input.checked ? rootStyles.checked : rootStyles.unchecked),

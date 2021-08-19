@@ -26,7 +26,18 @@ const useIosStyles = makeStyles({
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: '#4cd964',
+      borderColor: 'none',
+    },
+
+    '&.checked': {
+      ':hover .ms-Switch-track': {
+        background: '#4cd964',
+      },
+
+      '& .ms-Switch-track': {
+        background: '#4cd964',
+        border: 'none',
+      },
     },
   },
 
@@ -36,8 +47,8 @@ const useIosStyles = makeStyles({
   },
 
   thumb: {
-    width: '26px',
-    height: '26px',
+    width: '27px',
+    height: '27px',
     background: 'white',
     boxShadow: `
       0px 3px 8px 0px rgba(0, 0, 0, 0.15),
@@ -46,8 +57,8 @@ const useIosStyles = makeStyles({
   },
 
   track: {
-    background: '#4cd964',
-    border: 'none',
+    background: 'white',
+    border: '1px solid #e0e0e0',
   },
 });
 
