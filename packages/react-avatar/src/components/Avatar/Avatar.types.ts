@@ -6,24 +6,24 @@ export type AvatarSlots = {
   /**
    * The Avatar's image.
    */
-  image: React.ImgHTMLAttributes<HTMLImageElement>;
+  image?: React.ImgHTMLAttributes<HTMLImageElement>;
 
   /**
    * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
    */
-  label: React.HTMLAttributes<HTMLElement>;
+  label?: React.HTMLAttributes<HTMLElement>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
    *
    * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
    */
-  icon: React.HTMLAttributes<HTMLElement>;
+  icon?: React.HTMLAttributes<HTMLElement>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge: PresenceBadgeProps;
+  badge?: PresenceBadgeProps;
 };
 
 export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
@@ -143,6 +143,12 @@ export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Parti
    * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
    */
   badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps> | null;
+
+  /**
+   * The Avatar's image.
+   * Can either be the URL of the image, or the props of the img tag
+   */
+  image?: string | ObjectShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>> | null;
 }
 
 /**

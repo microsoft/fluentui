@@ -468,10 +468,22 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   }
 
   state.className = mergeClasses(...rootClasses, state.className);
-  state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
-  state.image.className = mergeClasses(styles.image, state.image.className);
-  state.label.className = mergeClasses(styles.iconLabel, state.label.className);
-  state.icon.className = mergeClasses(styles.iconLabel, state.icon.className);
+
+  if (state.badge) {
+    state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
+  }
+
+  if (state.image) {
+    state.image.className = mergeClasses(styles.image, state.image.className);
+  }
+
+  if (state.label) {
+    state.label.className = mergeClasses(styles.iconLabel, state.label.className);
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(styles.iconLabel, state.icon.className);
+  }
 
   return state;
 };

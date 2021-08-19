@@ -32,6 +32,7 @@ export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'pe
 // @public
 export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Partial<AvatarCommons> {
     badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps> | null;
+    image?: string | ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>> | null;
 }
 
 // @public
@@ -39,10 +40,10 @@ export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 
 
 // @public (undocumented)
 export type AvatarSlots = {
-    image: React_2.ImgHTMLAttributes<HTMLImageElement>;
-    label: React_2.HTMLAttributes<HTMLElement>;
-    icon: React_2.HTMLAttributes<HTMLElement>;
-    badge: PresenceBadgeProps;
+    image?: React_2.ImgHTMLAttributes<HTMLImageElement>;
+    label?: React_2.HTMLAttributes<HTMLElement>;
+    icon?: React_2.HTMLAttributes<HTMLElement>;
+    badge?: PresenceBadgeProps;
 };
 
 // @public
