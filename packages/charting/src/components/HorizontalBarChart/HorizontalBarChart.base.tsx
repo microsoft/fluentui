@@ -302,6 +302,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         value = 1;
       }
       startingPoint.push(prevPosition);
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
       return (
         <rect
           key={index}

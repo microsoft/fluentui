@@ -748,7 +748,9 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-
+        if (barHeight < 1) {
+          return <React.Fragment key={index + indexNumber}> </React.Fragment>;
+        }
         return (
           <rect
             key={index + indexNumber + `${shouldFocusWholeStack}`}
