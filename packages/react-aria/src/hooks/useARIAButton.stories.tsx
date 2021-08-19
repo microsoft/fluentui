@@ -15,7 +15,7 @@ interface DefaultArgs {
 export const Default = (args: DefaultArgs) => {
   const state: State = {
     button: {
-      ...useARIAButton({ as: 'button', onClick: args.onClick }),
+      ...useARIAButton({ as: 'button', onClick: args.onClick }, { required: true }),
       children: React.Fragment,
     },
   };
@@ -28,13 +28,16 @@ export const Default = (args: DefaultArgs) => {
 };
 
 export const Anchor = (args: DefaultArgs) => {
-  const props = useARIAButton({
-    as: 'a',
-    onClick: ev => {
-      ev.preventDefault();
-      args.onClick(ev);
+  const props = useARIAButton(
+    {
+      as: 'a',
+      onClick: ev => {
+        ev.preventDefault();
+        args.onClick(ev);
+      },
     },
-  });
+    { required: true },
+  );
   const { slots, slotProps } = getSlots(props, []);
   return (
     <slots.root href="/" {...slotProps.root}>
@@ -44,13 +47,13 @@ export const Anchor = (args: DefaultArgs) => {
 };
 
 export const Span = (args: DefaultArgs) => {
-  const props = useARIAButton({ as: 'span', onClick: args.onClick });
+  const props = useARIAButton({ as: 'span', onClick: args.onClick }, { required: true });
   const { slots, slotProps } = getSlots(props, []);
   return <slots.root {...slotProps.root}>this is a span</slots.root>;
 };
 
 export const Div = (args: DefaultArgs) => {
-  const props = useARIAButton({ as: 'div', onClick: args.onClick });
+  const props = useARIAButton({ as: 'div', onClick: args.onClick }, { required: true });
   const { slots, slotProps } = getSlots(props, []);
   return <slots.root {...slotProps.root}>this is a div</slots.root>;
 };

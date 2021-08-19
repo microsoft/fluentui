@@ -1,6 +1,6 @@
-import { IRGB } from './interfaces';
 import { MAX_COLOR_ALPHA, MAX_COLOR_RGB } from './consts';
 import { clamp } from './clamp';
+import type { IRGB } from './interfaces';
 
 /** Corrects an RGB color to fall within the valid range.  */
 export function correctRGB(color: IRGB): IRGB {

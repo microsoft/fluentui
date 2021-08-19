@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Aug 2021 07:34:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.22)
+
+Tue, 17 Aug 2021 07:34:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.0.0-alpha.21..@fluentui/react-checkbox_v9.0.0-alpha.22)
+
+### Changes
+
+- Refactoring Checkbox, removing mergeProps, and fixing indicator styles. ([PR #19225](https://github.com/microsoft/fluentui/pull/19225) by esteban.230@hotmail.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.0.0-alpha.21)
 

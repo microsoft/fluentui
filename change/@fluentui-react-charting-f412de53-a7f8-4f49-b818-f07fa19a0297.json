@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Chart element will not render when data value is zero",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

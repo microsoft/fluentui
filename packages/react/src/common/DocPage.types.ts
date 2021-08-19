@@ -1,5 +1,5 @@
-import { IStyleFunctionOrObject } from '../Utilities';
-import { ITheme, IStyle } from '../Styling';
+import type { IStyleFunctionOrObject } from '../Utilities';
+import type { ITheme, IStyle } from '../Styling';
 
 export interface IExample {
   /** Title of the example */

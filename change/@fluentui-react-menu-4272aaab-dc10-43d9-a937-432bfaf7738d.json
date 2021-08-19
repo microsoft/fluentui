@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Menu): replace align, position, coverTarget props with single `positioning` shorthand prop",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -92,10 +92,10 @@ export function getNativeProps<T extends Record<string, any>>(props: Record<stri
 
 // @public
 export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>, slotNames?: string[]): {
-    readonly slots: { [K in keyof SlotProps]: React_2.ElementType<SlotProps[K]>; } & {
+    readonly slots: { [K in keyof SlotProps]-?: React_2.ElementType<SlotProps[K]>; } & {
         readonly root: React_2.ElementType<any>;
     };
-    readonly slotProps: { [Key in keyof SlotProps]: UnionToIntersection<SlotProps[Key]>; } & {
+    readonly slotProps: { [Key in keyof SlotProps]-?: UnionToIntersection<NonNullable<SlotProps[Key]>>; } & {
         readonly root: any;
     };
 };
@@ -191,7 +191,15 @@ export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> & {
 };
 
 // @public
-export function resolveShorthand<Props extends Record<string, any>>(value: ShorthandProps<Props>, defaultProps?: Props): ObjectShorthandProps<Props>;
+export function resolveShorthand<Props extends Record<string, any>, Required extends boolean = false>(value: ShorthandProps<Props>, options?: ResolveShorthandOptions<Props, Required>): Required extends false ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props>;
+
+// @public (undocumented)
+export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
+    // (undocumented)
+    defaultProps?: Props;
+    // (undocumented)
+    required?: Required;
+}
 
 // @public
 export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandPropsCompat<TProps, TShorthandPropNames>;

@@ -138,7 +138,7 @@ describe('Slider', () => {
     fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0][0]).toEqual(0);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
     expect(sliderRef.current.value).toBe(0);
   });
 
@@ -162,13 +162,13 @@ describe('Slider', () => {
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0][0]).toEqual(10);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 10 });
     expect(sliderRef.current.value).toBe(10);
 
     sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
 
     expect(onChange).toHaveBeenCalledTimes(2);
-    expect(onChange.mock.calls[1][0]).toEqual(0);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
     expect(sliderRef.current.value).toBe(0);
 
     wrapper.unmount();
@@ -258,7 +258,7 @@ describe('Slider', () => {
     fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
 
     expect(sliderRef.current.value).toEqual(50);
-    expect(onChange.mock.calls[2][0]).toEqual(51);
+    expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
   });
 
   it('handles a negative (step) prop', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId, useControllableState, useUnmount } from '@fluentui/react-utilities';
+import { useId, useControllableState, useEventCallback, useUnmount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -54,7 +54,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const railRef = React.useRef<HTMLDivElement>(null);
   const thumbRef = React.useRef<HTMLDivElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
 
   /**
@@ -63,8 +62,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
    * @param ev
    * @param incomingValue
    */
-  const updateValue = React.useCallback(
-    (incomingValue: number, ev): void => {
+  const updateValue = useEventCallback(
+    (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -74,13 +73,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
 
-      if (onChange && onChangeCallback.current) {
-        onChangeCallback.current(clampedValue, ev);
-      }
-
+      onChange?.(ev, { value: clampedValue });
       setCurrentValue(clampedValue);
     },
-    [max, min, onChange, setCurrentValue],
   );
 
   /**
@@ -224,19 +219,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     state.onKeyDown = onKeyDown;
   }
 
-  // Rail Props
-  state.rail.children = null;
-
-  // Track Props
-  state.trackWrapper.children = null;
-
   // Track Props
   state.track.style = trackStyles;
-  state.track.children = null;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
-  state.thumbWrapper.children = null;
 
   // Thumb Props
   state.thumb.ref = thumbRef;
@@ -247,11 +234,9 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
   disabled && (state.thumb['aria-disabled'] = true);
-  state.thumb.children = null;
 
   // Active Rail Props
   state.activeRail.ref = railRef;
-  state.activeRail.children = null;
 
   return state;
 };
