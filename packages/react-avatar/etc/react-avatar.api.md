@@ -31,8 +31,8 @@ export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'pe
 
 // @public
 export interface AvatarProps extends ComponentProps<Partial<AvatarSlots>>, Partial<AvatarCommons> {
-    badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps> | null;
-    image?: string | ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>> | null;
+    badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps>;
+    image?: string | ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>>;
 }
 
 // @public

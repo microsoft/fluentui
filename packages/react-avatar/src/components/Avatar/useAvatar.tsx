@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarState } from './Avatar.types';
+import { AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
 import {
   Person16Regular,
   Person20Regular,
@@ -19,11 +19,11 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 
   const state: AvatarState = {
     size,
-    activeDisplay: 'ring',
     color: 'neutral',
+    activeDisplay: 'ring',
     getInitials,
-
     ref,
+
     ...props,
 
     components: {
@@ -33,58 +33,66 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
       image: 'img',
       badge: PresenceBadge,
     },
+
     label: resolveShorthand(props.label),
-    // The icon will be added later if there is no label text
+
+    // The icon will be defined below if there is no label text
     icon: undefined,
-    // If a string is provided for badge, it is the PresenceBadge's status property rather than its children
-    badge: resolveShorthand(typeof props.badge === 'string' ? { status: props.badge } : props.badge, {
-      defaultProps: {
-        size:
-          size <= 24
-            ? 'smallest'
-            : size <= 28
-            ? 'smaller'
-            : size <= 52
-            ? 'small'
-            : size <= 72
-            ? 'medium'
-            : size <= 96
-            ? 'large'
-            : 'larger',
-      },
-    }),
+
     // If a string is provided for image, it is the img's src property rather than its children
     image: resolveShorthand(typeof props.image === 'string' ? { src: props.image } : props.image),
+
+    // If a string is provided for badge, it is the PresenceBadge's status property rather than its children
+    badge: resolveShorthand(typeof props.badge === 'string' ? { status: props.badge } : props.badge, {
+      defaultProps: { size: getBadgeSize(size) },
+    }),
   };
 
+  // If a label was not provided, use the initials and fall back to the icon if initials aren't available
   if (!state.label?.children) {
-    // Default the label to the initials, if not provided
-    const initials = state.getInitials(state.name ?? '', dir === 'rtl');
+    const initials = state.getInitials(state.name || '', dir === 'rtl');
     if (initials) {
       state.label = { ...state.label, children: initials };
     } else {
       // If there is no label or initials, show the icon
       state.icon = resolveShorthand(props.icon, {
         required: true,
-        defaultProps: {
-          children:
-            size <= 24 ? (
-              <Person16Regular />
-            ) : size <= 40 ? (
-              <Person20Regular />
-            ) : size <= 48 ? (
-              <Person24Regular />
-            ) : size <= 56 ? (
-              <Person28Regular />
-            ) : size <= 72 ? (
-              <Person32Regular />
-            ) : (
-              <Person48Regular />
-            ),
-        },
+        defaultProps: { children: getDefaultIcon(state.size) },
       });
     }
   }
 
   return state;
+};
+
+const getBadgeSize = (size: AvatarSizeValue) => {
+  if (size <= 24) {
+    return 'smallest';
+  } else if (size <= 28) {
+    return 'smaller';
+  } else if (size <= 52) {
+    return 'small';
+  } else if (size <= 72) {
+    return 'medium';
+  } else if (size <= 96) {
+    return 'large';
+  } else {
+    return 'larger';
+  }
+};
+
+const getDefaultIcon = (size: AvatarSizeValue) => {
+  if (size <= 24) {
+    return <Person16Regular />;
+  } else if (size <= 40) {
+    return <Person20Regular />;
+  } else if (size <= 48) {
+    return <Person24Regular />;
+  } else if (size <= 56) {
+    return <Person28Regular />;
+  } else if (size <= 72) {
+    return <Person32Regular />;
+  } else {
+    return <Person48Regular />;
+  }
 };
