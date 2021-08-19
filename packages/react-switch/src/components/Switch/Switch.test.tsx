@@ -108,10 +108,10 @@ describe('Switch', () => {
     const eventHandler = jest.fn();
 
     render(<Switch onKeyDown={eventHandler} data-testid="test" />);
-    const sliderRoot = screen.getByTestId('test');
+    const switchRoot = screen.getByTestId('test');
 
     expect(eventHandler).toBeCalledTimes(0);
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+    fireEvent.keyDown(switchRoot, { key: 'ArrowUp' });
     expect(eventHandler).toBeCalledTimes(1);
   });
 
@@ -119,10 +119,10 @@ describe('Switch', () => {
     const eventHandler = jest.fn();
 
     render(<Switch onClick={eventHandler} data-testid="test" />);
-    const sliderRoot = screen.getByTestId('test');
+    const switchRoot = screen.getByTestId('test');
 
     expect(eventHandler).toBeCalledTimes(0);
-    fireEvent.click(sliderRoot);
+    fireEvent.click(switchRoot);
     expect(eventHandler).toBeCalledTimes(1);
   });
 

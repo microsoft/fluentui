@@ -5,9 +5,9 @@ import { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 import { useSwitchState } from './useSwitchState';
 
 /**
- * Array of all shorthand properties listed in SliderShorthandProps
+ * Array of all shorthand properties listed in switchShorthandProps
  */
-export const sliderShorthandProps: Array<keyof SwitchSlots> = ['track', 'thumbContainer', 'thumb', 'input'];
+export const switchShorthandProps: Array<keyof SwitchSlots> = ['track', 'thumbContainer', 'thumb', 'input'];
 
 /**
  * Given user props, returns state and render function for a Switch.
