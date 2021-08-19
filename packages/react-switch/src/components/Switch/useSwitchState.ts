@@ -25,7 +25,6 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
     ev.stopPropagation();
     userOnChange?.(ev);
     setChecked(ev, ev.currentTarget.checked);
-    // inputRef?.current?.focus();
   });
 
   // Input Props

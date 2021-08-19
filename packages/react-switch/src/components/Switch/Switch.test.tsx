@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Switch } from './Switch';
+import { Label } from '@fluentui/react-label';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('Switch', () => {
   beforeEach(() => {
@@ -50,15 +49,17 @@ describe('Switch', () => {
     expect(switchRoot.getAttribute('id')).toEqual('test_id');
   });
 
-  // it('applies the (defaultChecked) prop', () => {
-  //   render(<Switch defaultChecked={true} />);
-  //   expect(screen.getByRole('checkbox').getAttribute('checked')).toEqual(true);
-  // });
+  it('applies the (defaultChecked) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Switch defaultChecked={true} input={{ ref: inputRef }} />);
+    expect(inputRef.current?.checked).toEqual(true);
+  });
 
-  // it('applies the (checked) prop', () => {
-  //   render(<Switch checked={true} />);
-  //   expect(screen.getByRole('checkbox').getAttribute('checked')).toEqual(true);
-  // });
+  it('applies the (checked) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Switch checked={true} input={{ ref: inputRef }} />);
+    expect(inputRef.current?.checked).toEqual(true);
+  });
 
   it('does not update when the controlled (checked) prop is provided', () => {
     const inputRef = React.createRef<HTMLInputElement>();
@@ -92,23 +93,16 @@ describe('Switch', () => {
   });
 
   it('does not allow (change) on a disabled Switch', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
     const eventHandler = jest.fn();
-    let switchRef: any;
 
-    const SwitchTestComponent = () => {
-      switchRef = React.useRef(null);
-
-      return <Switch defaultChecked onChange={eventHandler} ref={switchRef} data-testid="test" disabled />;
-    };
-
-    render(<SwitchTestComponent />);
-
+    render(<Switch defaultChecked onChange={eventHandler} input={{ ref: inputRef }} data-testid="test" disabled />);
     const switchRoot = screen.getByTestId('test');
 
     expect(eventHandler).toBeCalledTimes(0);
     fireEvent.click(switchRoot);
     expect(eventHandler).toBeCalledTimes(0);
-    // expect(switchRef.current.value).toEqual(true);
+    expect(inputRef?.current?.checked).toEqual(true);
   });
 
   it('handles (onKeyDown) callback', () => {
@@ -134,18 +128,12 @@ describe('Switch', () => {
   });
 
   it('does not allow (focus) on disabled Switch', () => {
-    let switchRef: any;
+    const switchRef = React.createRef<HTMLInputElement>();
 
-    const SwitchTestComponent = () => {
-      switchRef = React.useRef(null);
-
-      return <Switch ref={switchRef} data-testid="test" disabled />;
-    };
-
-    render(<SwitchTestComponent />);
+    render(<Switch ref={switchRef} data-testid="test" disabled />);
 
     expect(document.activeElement).toEqual(document.body);
-    switchRef.current.focus();
+    switchRef?.current?.focus();
     expect(document.activeElement).toEqual(document.body);
   });
 });
