@@ -36,7 +36,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 
     label: resolveShorthand(props.label),
 
-    // The icon will be defined below if there is no label text
+    // The icon will be resolved below if there is no label text
     icon: undefined,
 
     // If a string is provided for image, it is the img's src property rather than its children
@@ -54,7 +54,6 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
     if (initials) {
       state.label = { ...state.label, children: initials };
     } else {
-      // If there is no label or initials, show the icon
       state.icon = resolveShorthand(props.icon, {
         required: true,
         defaultProps: { children: getDefaultIcon(state.size) },
