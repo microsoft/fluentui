@@ -108,6 +108,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
         <div style={rootStyle}>
           <GroupedVerticalBarChart
+            chartTitle="Grouped Vertical Bar chart styled example"
             data={data}
             width={this.state.width}
             height={this.state.height}

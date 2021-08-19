@@ -37,10 +37,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   }
 
   public render(): JSX.Element {
-    const chartTitle = 'Stacked Bar chart example';
-
     const data: IChartProps = {
-      chartTitle: chartTitle,
+      chartTitle: 'Donut chart dynamic example',
       chartData: this.state.dynamicData,
     };
     return (
