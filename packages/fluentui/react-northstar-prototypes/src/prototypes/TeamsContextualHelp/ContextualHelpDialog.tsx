@@ -155,7 +155,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
   return (
     <>
       <Dialog
-        trapFocus={{ firstFocusableSelector: '[data-aa-class="AccordionTitle__content]"' }}
+        trapFocus={{ firstFocusableSelector: '[data-aa-class="AccordionTitle__content"]' }}
         open={dialogOpened}
         onOpen={() => {
           setDialogOpened(true);
