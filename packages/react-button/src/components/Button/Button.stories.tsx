@@ -170,7 +170,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMdx + '\n' + bestPracticesMdx,
+        component: [descriptionMdx, bestPracticesMdx].join('\n'),
       },
     },
   },
