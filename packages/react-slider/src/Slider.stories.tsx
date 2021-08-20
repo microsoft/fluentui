@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   slider: {
     width: '500px',
     '--slider-thumb-size': '50px',
-    '--slider-color': 'green',
+    '--slider-rail-size': '8px',
   },
 });
 
@@ -33,8 +33,6 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
-      <Label>Custom Styles</Label>
-      <Slider defaultValue={4} className={styles.slider} />
       <Label>Disabled Example</Label>
       <Slider defaultValue={3} disabled />
       <Label>Origin Example</Label>
@@ -62,6 +60,17 @@ export const VerticalSliderExample = (props: SliderProps) => {
       <Slider defaultValue={8} disabled vertical />
       <Label>Origin Example</Label>
       <Slider defaultValue={8} origin={3} vertical />
+    </div>
+  );
+};
+
+export const CustomSliderExample = (props: SliderProps) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <Label>Custom Styles</Label>
+      <Slider defaultValue={4} className={styles.slider} />
     </div>
   );
 };

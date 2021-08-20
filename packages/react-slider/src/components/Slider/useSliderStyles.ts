@@ -11,7 +11,7 @@ const trackClassName = 'ms-Slider-track';
 const useRootStyles = makeStyles({
   root: theme => ({
     '--slider-thumb-size': '20px',
-    '--slider-track-size': '4px',
+    '--slider-rail-size': '4px',
 
     position: 'relative',
     userSelect: 'none',
@@ -87,7 +87,7 @@ const useRailStyles = makeStyles({
   }),
 
   horizontal: theme => ({
-    height: '4px',
+    height: 'var(--slider-rail-size)',
     top: '50%',
     left: 'calc(var(--slider-thumb-size) * .5)',
     right: 'calc(var(--slider-thumb-size) * .5)',
@@ -95,7 +95,7 @@ const useRailStyles = makeStyles({
   }),
 
   vertical: theme => ({
-    width: '4px',
+    width: 'var(--slider-rail-size)',
     left: '50%',
     top: 'calc(var(--slider-thumb-size) * .5)',
     bottom: 'calc(var(--slider-thumb-size) * .5)',
@@ -134,14 +134,14 @@ const useTrackStyles = makeStyles({
   }),
 
   horizontal: theme => ({
-    height: 'var(--slider-track-size)',
+    height: 'var(--slider-rail-size)',
     top: '50%',
     transform: 'translateY(-50%)',
     minWidth: 'calc(var(--slider-thumb-size) / 2)',
   }),
 
   vertical: theme => ({
-    width: 'var(--slider-track-size)',
+    width: 'var(--slider-rail-size)',
     left: '50%',
     transform: 'translateX(-50%)',
     minHeight: 'calc(var(--slider-thumb-size) / 2)',
