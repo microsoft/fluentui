@@ -144,14 +144,14 @@ const useTrackStyles = makeStyles({
     height: 'var(--slider-rail-size)',
     top: '50%',
     transform: 'translateY(-50%)',
-    minWidth: 'calc(var(--slider-thumb-size) / 2)',
+    minWidth: 'calc(var(--slider-thumb-size) / 4)',
   }),
 
   vertical: theme => ({
     width: 'var(--slider-rail-size)',
     left: '50%',
     transform: 'translateX(-50%)',
-    minHeight: 'calc(var(--slider-thumb-size) / 2)',
+    minHeight: 'calc(var(--slider-thumb-size) / 4)',
   }),
 
   enabled: theme => ({
@@ -202,8 +202,19 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
-    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
     backgroundClip: 'content-box; padding: 1px',
+
+    ':before': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      borderRadius: theme.global.borderRadius.circular,
+      boxSizing: 'border-box',
+      content: "''",
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
+    },
   }),
 
   enabled: theme => ({
@@ -211,7 +222,8 @@ const useThumbStyles = makeStyles({
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralStrokeDisabled,
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
   }),
 
   horizontal: theme => ({
