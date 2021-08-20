@@ -216,7 +216,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.trackWrapper.children = null;
 
   // Track Props
-  state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
   state.track.children = null;
 
@@ -225,7 +224,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.thumbWrapper.children = null;
 
   // Thumb Props
-  state.thumb.className = 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
