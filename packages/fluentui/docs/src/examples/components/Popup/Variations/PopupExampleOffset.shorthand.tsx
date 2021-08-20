@@ -24,11 +24,11 @@ const PopupExampleOffset = () => (
         />
       }
       content={
-        <p>
+        <div>
           The popup is rendered at above-start
           <br />
           corner of the trigger.
-        </p>
+        </div>
       }
     />
   </Grid>
