@@ -78,6 +78,7 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
 
   const userOnChange = state.input.onChange;
   state.input.onChange = useEventCallback(ev => {
+    ev.stopPropagation();
     userOnChange?.(ev);
     setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
   });
