@@ -1,7 +1,7 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Update jest-environment comment formatting to fix lint error",
   "packageName": "@fluentui/react-portal",
   "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
