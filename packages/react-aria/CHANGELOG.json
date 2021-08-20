@@ -2,6 +2,36 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updates react-aria on slot null rendering",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.32",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/react-aria_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",

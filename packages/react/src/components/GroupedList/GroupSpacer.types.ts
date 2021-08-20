@@ -1,5 +1,5 @@
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory GroupedList}

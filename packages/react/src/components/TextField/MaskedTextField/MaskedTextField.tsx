@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
-import { IMaskedTextFieldProps, IMaskedTextField } from '../TextField.types';
-import { KeyCodes, IRefObject } from '../../../Utilities';
+import { KeyCodes } from '../../../Utilities';
 import {
   clearNext,
   clearPrev,
@@ -10,11 +9,13 @@ import {
   getLeftFormatIndex,
   getMaskDisplay,
   getRightFormatIndex,
-  IMaskValue,
   insertString,
   parseMask,
 } from './inputMask';
 import { useConst } from '@fluentui/react-hooks';
+import type { IMaskedTextFieldProps, IMaskedTextField } from '../TextField.types';
+import type { IRefObject } from '../../../Utilities';
+import type { IMaskValue } from './inputMask';
 
 interface IMaskedTextFieldInternalState {
   maskCharData: IMaskValue[];

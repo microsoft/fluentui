@@ -2,6 +2,51 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.44",
+      "version": "9.0.0-alpha.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.39",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.43",
+      "version": "9.0.0-alpha.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(positioning): implement shorthand positioning option and shorthand parsing utility",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9a29ba46e28735f7e10d06627a90931ec5a250c8",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.21",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Aug 2021 07:33:28 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.41",
       "version": "9.0.0-alpha.41",

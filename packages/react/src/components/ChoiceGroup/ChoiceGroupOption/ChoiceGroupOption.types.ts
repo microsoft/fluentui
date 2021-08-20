@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../../Styling';
-import { IRefObject } from '../../../Utilities';
-import { IChoiceGroupOption } from '../ChoiceGroup.types';
+import type { ITheme, IStyle } from '../../../Styling';
+import type { IRefObject } from '../../../Utilities';
+import type { IChoiceGroupOption } from '../ChoiceGroup.types';
 
 /**
  * {@docCategory ChoiceGroup}

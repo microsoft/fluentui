@@ -122,7 +122,7 @@ packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
 packages/react-card/ @microsoft/cxe-prg
 packages/react-checkbox/ @microsoft/cxe-red @khmakoto
-packages/react-components/ @microsoft/teams-prg
+packages/react-components/ @microsoft/teams-prg @microsoft/cxe-prg @microsoft/cxe-red
 packages/react-focus/ @microsoft/cxe-red @khmakoto
 packages/react-image/ @microsoft/cxe-prg
 packages/react-text/ @microsoft/cxe-prg
@@ -133,8 +133,8 @@ packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-link/ @microsoft/cxe-red @khmakoto
 packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell
-packages/react-toggle/ @microsoft/cxe-red @behowell
 packages/react-tooltip/ @microsoft/cxe-red @behowell
+packages/react-switch/ @microsoft/cxe-red @behowell @czearing
 packages/react-label/ @microsoft/cxe-red @sopranopillow
 packages/react-portal/ @microsoft/teams-prg
 packages/react-popover/ @microsoft/teams-prg

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ICalendarProps, ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 import {
   DayOfWeek,
   FirstWeekOfYear,
@@ -11,8 +10,6 @@ import {
 } from '@fluentui/date-time-utilities';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
-import { ICalendarDay } from './CalendarDay/CalendarDay.types';
-import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
 import {
   css,
   KeyCodes,
@@ -25,6 +22,9 @@ import {
 } from '@fluentui/utilities';
 import { useControllableValue } from '@fluentui/react-hooks';
 import { defaultCalendarNavigationIcons } from './defaults';
+import type { ICalendarProps, ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
+import type { ICalendarDay } from './CalendarDay/CalendarDay.types';
+import type { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
 
 const MIN_SIZE_FORCE_OVERLAY = 440;
 

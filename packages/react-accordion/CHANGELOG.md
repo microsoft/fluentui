@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 11 Aug 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 07:41:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.63)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.62..@fluentui/react-accordion_v9.0.0-alpha.63)
+
+### Changes
+
+- Updates react-accordion on slot null rendering ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.62)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.61..@fluentui/react-accordion_v9.0.0-alpha.62)
+
+### Changes
+
+- chore(Accordion): implement useContextValues() pattern ([PR #19339](https://github.com/microsoft/fluentui/pull/19339) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.61)
 

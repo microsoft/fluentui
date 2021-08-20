@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
-import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
-import { DetailsListLayoutMode, IColumn, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
+import { SelectAllVisibility } from './DetailsHeader.types';
+import { DetailsListLayoutMode, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { getTheme } from '../../Styling';
+import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
+import type { IColumn } from './DetailsList.types';
 
 const _items: {}[] = [];
 const _selection = new Selection();

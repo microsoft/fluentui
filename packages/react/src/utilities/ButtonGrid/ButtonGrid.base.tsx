@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 import { useId } from '@fluentui/react-hooks';
+import type { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 
 const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
 

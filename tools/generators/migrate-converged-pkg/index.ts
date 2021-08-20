@@ -123,9 +123,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES2015',
+      target: 'ES2020',
       module: 'CommonJS',
-      lib: ['ES2015', 'dom'],
+      lib: ['ES2020', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
@@ -201,29 +201,31 @@ const templates = {
     .cache/
     .storybook/
     .vscode/
-    coverage/
-    src/
     bundle-size/
     config/
-    temp/
+    coverage/
     e2e/
+    etc/
     node_modules/
+    src/
+    temp/
     __fixtures__
+    __mocks__
     __tests__
 
+    *.api.json
     *.log
-    *.yml
-    *.test.*
     *.spec.*
     *.stories.*
-    *.api.json
+    *.test.*
+    *.yml
 
     # config files
-    .git*
-    *rc.*
     *config.*
-    .eslint*
+    *rc.*
     .editorconfig
+    .eslint*
+    .git*
     .prettierignore
   `,
 };

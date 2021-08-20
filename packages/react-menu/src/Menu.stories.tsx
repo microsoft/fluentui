@@ -165,7 +165,7 @@ export const CustomTarget = () => {
       <button ref={setTarget} onClick={() => setOpen(s => !s)}>
         Custom Target
       </button>
-      <Menu open={open} onOpenChange={onOpenChange} target={target}>
+      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
         <MenuPopover>
           <MenuList>
             <MenuItem>New </MenuItem>

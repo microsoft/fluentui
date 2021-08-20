@@ -248,6 +248,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         shouldHighlight: shouldHighlight,
         href: this.props.href!,
       });
+
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
+
       return (
         <g
           key={index}

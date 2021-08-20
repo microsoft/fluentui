@@ -182,12 +182,12 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['ES2015', 'dom'],
+          lib: ['ES2020', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'ES2015',
+          target: 'ES2020',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
         extends: '../../tsconfig.base.json',
@@ -754,29 +754,31 @@ describe('migrate-converged-pkg generator', () => {
         ".cache/
         .storybook/
         .vscode/
-        coverage/
-        src/
         bundle-size/
         config/
-        temp/
+        coverage/
         e2e/
+        etc/
         node_modules/
+        src/
+        temp/
         __fixtures__
+        __mocks__
         __tests__
 
+        *.api.json
         *.log
-        *.yml
-        *.test.*
         *.spec.*
         *.stories.*
-        *.api.json
+        *.test.*
+        *.yml
 
         # config files
-        .git*
-        *rc.*
         *config.*
-        .eslint*
+        *rc.*
         .editorconfig
+        .eslint*
+        .git*
         .prettierignore"
       `);
     });

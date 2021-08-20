@@ -2,6 +2,51 @@
   "name": "todo-app",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f700ae31aceafa040df5ac61e094a1f73c2dd6c7",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.28.1",
+            "author": "keyou@microsoft.com",
+            "commit": "aad82f693eaf0c95e8b8ab6961d4b4d46d79d57f",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Aug 2021 07:34:46 GMT",
       "tag": "todo-app_v1.0.0",
       "version": "1.0.0",
