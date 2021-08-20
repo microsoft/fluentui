@@ -129,7 +129,7 @@ Card goes for a more structural and generic approach to a card component and is 
 | Property    | Values | Default   | Purpose                                           |
 | ----------- | ------ | --------- | ------------------------------------------------- |
 | image       | _slot_ | undefined | Logo or image to better contextualize the content |
-| title       | _slot_ | undefined | Main title of the card                            |
+| header      | _slot_ | undefined | Header of the card                                |
 | description | _slot_ | undefined | Further description of the content                |
 
 ### CardBody
@@ -158,7 +158,7 @@ This component has no custom props and only ensures the proper positioning of co
 
 ```jsx
 <Card orientation="horizontal">
-  <CardHeader image={<img src="powerpoint.png" />} title="Team offsite 2020" description="Onedrive > Files" />
+  <CardHeader image={<img src="powerpoint.png" />} header="Team offsite 2020" description="Onedrive > Files" />
 </Card>
 ```
 
@@ -166,7 +166,7 @@ This component has no custom props and only ensures the proper positioning of co
 
 ```jsx
 <Card>
-  <CardHeader image={<img src="app_logo.png" />} title="App Name" description="Developer" />
+  <CardHeader image={<img src="app_logo.png" />} header="App Name" description="Developer" />
   <CardBody>
     Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
   </CardBody>
@@ -177,7 +177,7 @@ This component has no custom props and only ensures the proper positioning of co
 
 ```jsx
 <Card>
-  <CardHeader title="Alert in Teams when a new document is uploaded in channel" description="By Microsoft" />
+  <CardHeader header="Alert in Teams when a new document is uploaded in channel" description="By Microsoft" />
   <CardFooter>
     <span>Automated</span>
     <span>3290 uses</span>
