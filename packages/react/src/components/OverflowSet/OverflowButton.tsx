@@ -76,8 +76,8 @@ export const OverflowButton = (props: IOverflowSetProps) => {
     [itemSubMenuProvider],
   );
 
-  const { newOverflowItems, keytipsToRegister } = React.useMemo(() => {
-    const keytipsToRegister: IKeytipProps[] = [];
+  const { modifiedOverflowItems, keytipsToRegister } = React.useMemo(() => {
+    const newKeytipsToRegister: IKeytipProps[] = [];
     let newOverflowItems: IOverflowSetItemProps[] | undefined = [];
 
     if (keytipSequences) {
@@ -106,7 +106,7 @@ export const OverflowButton = (props: IOverflowSetProps) => {
             persistedKeytip.onExecute = keytip.onExecute;
           }
 
-          keytipsToRegister.push(persistedKeytip);
+          newKeytipsToRegister.push(persistedKeytip);
 
           // Add the overflow sequence to this item
           const newOverflowItem = {
@@ -125,10 +125,10 @@ export const OverflowButton = (props: IOverflowSetProps) => {
     } else {
       newOverflowItems = overflowItems!;
     }
-    return { newOverflowItems, keytipsToRegister };
+    return { modifiedOverflowItems: newOverflowItems, keytipsToRegister: newKeytipsToRegister };
   }, [overflowItems, getSubMenuForItem, keytipManager, keytipSequences]);
 
   useKeytipRegistrations(persistedKeytips, keytipsToRegister, keytipManager);
 
-  return <div className={className}>{onRenderOverflowButton(newOverflowItems)}</div>;
+  return <div className={className}>{onRenderOverflowButton(modifiedOverflowItems)}</div>;
 };
