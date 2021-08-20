@@ -1,6 +1,8 @@
 import { pxToRem } from '../../../../utils';
 
 export interface PopupContentVariables {
+  autoSizeBorderColor: string;
+
   borderColor: string;
   borderRadius: string;
   borderSize: string;
@@ -21,6 +23,8 @@ export interface PopupContentVariables {
 
 export const popupContentVariables = (siteVars: any): PopupContentVariables => {
   return {
+    autoSizeBorderColor: siteVars.colorScheme.default.border2,
+
     borderColor: siteVars.colorScheme.default.borderTransparent,
     borderRadius: siteVars.borderRadiusMedium,
     borderSize: '1px',
