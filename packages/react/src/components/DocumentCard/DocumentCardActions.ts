@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '../../Utilities';
 import { DocumentCardActionsBase } from './DocumentCardActions.base';
 import { getStyles } from './DocumentCardActions.styles';
-import {
+import type {
   IDocumentCardActionsProps,
   IDocumentCardActionsStyleProps,
   IDocumentCardActionsStyles,

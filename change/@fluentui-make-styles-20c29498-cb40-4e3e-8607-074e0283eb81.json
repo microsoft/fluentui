@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update jest-environment comment formatting to fix lint error",
+  "packageName": "@fluentui/make-styles",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update .npmignore",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

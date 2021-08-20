@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Calendar } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
-import { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
@@ -13,6 +12,7 @@ import * as renderer from 'react-test-renderer';
 import * as ReactDOM from 'react-dom';
 import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
 import { isConformant } from '../../common/isConformant';
+import type { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
 
 describe('DatePicker', () => {
   beforeEach(() => {

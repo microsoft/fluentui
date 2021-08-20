@@ -3,7 +3,8 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../../common/isConformant';
 
-import { SelectedPeopleList, IExtendedPersonaProps } from './SelectedPeopleList';
+import { SelectedPeopleList } from './SelectedPeopleList';
+import type { IExtendedPersonaProps } from './SelectedPeopleList';
 
 describe('SelectedPeopleList', () => {
   describe('Element keying behavior', () => {

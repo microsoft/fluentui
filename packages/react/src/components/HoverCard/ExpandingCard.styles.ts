@@ -1,5 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
-import { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
+import type { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
 const GlobalClassNames = {
   root: 'ms-ExpandingCard-root',
