@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update .npmignore",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

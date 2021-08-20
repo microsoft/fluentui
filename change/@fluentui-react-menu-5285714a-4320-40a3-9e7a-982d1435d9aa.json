@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update .npmignore",
-  "packageName": "@fluentui/react-menu",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
