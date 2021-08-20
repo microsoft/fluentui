@@ -57,7 +57,7 @@ const useRootStyles = makeStyles({
     },
   }),
 
-  focusIndictor: createFocusIndicatorStyleRule(
+  focusIndicator: createFocusIndicatorStyleRule(
     theme => ({
       ':after': {
         content: "''",
@@ -292,7 +292,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     rootStyles[state.size],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     !state.disabled && rootStyles.enabled,
-    rootStyles.focusIndictor,
+    rootStyles.focusIndicator,
     state.className,
   );
 
