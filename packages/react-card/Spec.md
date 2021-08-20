@@ -230,7 +230,7 @@ Clicking the card surface can toggle the checkbox state to `selected`. Note that
 
    Cursor does not change background color and elevation follows interactive styling to show visual feedback for pressed state.
 
-4. Click
+4. onClick
 
    Card and Checkbox are both in selected state, clicking again toggles components to unselected state
 
@@ -242,9 +242,17 @@ Cards that have multiple actionable child components within them cannot be click
 
 Mouse interaction
 
-- OnMouseEnter / Hover cursor style stays at default, rest state stays persistent no visual feedback is applied to the card surface
-- Hover & onClick (Checkbox) Hover state & pressed state applies to checkbox component
-- MouseUp (Checkbox) Card and Checkbox are both in selected state, clicking again toggles components to unselected state
+- OnMouseEnter / Hover
+
+  Cursor style stays at default, rest state stays persistent no visual feedback is applied to the card surface
+
+- Hover & onClick (Checkbox)
+
+  Hover state & pressed state applies to checkbox component
+
+- onClick
+
+  (Checkbox) Card and Checkbox are both in selected state, clicking again toggles components to unselected state
 
 ### Context menu
 
