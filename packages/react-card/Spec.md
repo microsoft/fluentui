@@ -218,10 +218,21 @@ This component has no custom props and only ensures the proper positioning of co
 
 Clicking the card surface can toggle the checkbox state to `selected`. Note that checkboxes are composed together as an additional component and are not provided by default.
 
-1. Rest Default state is `unselected`
-2. Hover cursor style changes to `pointer`, background color and elevation follows interactive styling to show visual feedback
-3. Pressed cursor does not change background color and elevation follows interactive styling to show visual feedback for pressed state.
-4. MouseUp Card and Checkbox are both in selected state, clicking again toggles components to unselected state
+1. Rest
+
+   Default state is `unselected`
+
+2. Hover
+
+   Cursor style changes to `pointer`, background color and elevation follows interactive styling to show visual feedback
+
+3. Pressed
+
+   Cursor does not change background color and elevation follows interactive styling to show visual feedback for pressed state.
+
+4. Click
+
+   Card and Checkbox are both in selected state, clicking again toggles components to unselected state
 
 ### Non-interactive cards
 
