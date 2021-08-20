@@ -71,7 +71,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
       root: 'div',
       content: React.Fragment,
     },
-    content: resolveShorthand(props.content),
+    content: resolveShorthand(props.content, { required: true }),
   };
 
   const popperOptions = {
