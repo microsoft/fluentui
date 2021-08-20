@@ -58,7 +58,7 @@ const useKeytipRegistrations = (
 export const OverflowButton = (props: IOverflowSetProps) => {
   const keytipManager: KeytipManager = KeytipManager.getInstance();
   const { className, overflowItems, keytipSequences, itemSubMenuProvider, onRenderOverflowButton } = props;
-  const keytipsToRegister = useConst<IKeytipProps[]>([]);
+  const keytipsToRegister: IKeytipProps[] = [];
   const persistedKeytips = useConst<{ [uniqueID: string]: IKeytipProps }>({});
 
   // Gets the subMenu for an overflow item
