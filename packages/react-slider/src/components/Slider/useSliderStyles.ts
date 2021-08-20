@@ -14,6 +14,7 @@ const useRootStyles = makeStyles({
     userSelect: 'none',
     display: 'inline-flex',
     touchAction: 'none',
+    verticalAlign: 'bottom',
   }),
 
   small: {
@@ -72,6 +73,30 @@ const useRootStyles = makeStyles({
     }),
     { selector: 'focus-within' },
   ),
+});
+
+/**
+ * Styles for the slider wrapper slot
+ */
+const useSliderWrapper = makeStyles({
+  sliderWrapper: theme => ({
+    position: 'absolute',
+    overflow: 'hidden',
+  }),
+
+  horizontal: theme => ({
+    left: '0px',
+    right: '0px',
+    top: '0px',
+    minHeight: 'var(--slider-thumb-size)',
+  }),
+
+  vertical: theme => ({
+    top: '0px',
+    bottom: '0px',
+    left: '0px',
+    minWidth: 'var(--slider-thumb-size)',
+  }),
 });
 
 /**
@@ -255,6 +280,7 @@ const useActiveRailStyles = makeStyles({
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
+  const sliderWrapperStyles = useSliderWrapper();
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
@@ -269,6 +295,12 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     !state.disabled && rootStyles.enabled,
     rootStyles.focusIndictor,
     state.className,
+  );
+
+  state.sliderWrapper.className = mergeClasses(
+    sliderWrapperStyles.sliderWrapper,
+    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
+    state.sliderWrapper.className,
   );
 
   state.rail.className = mergeClasses(
