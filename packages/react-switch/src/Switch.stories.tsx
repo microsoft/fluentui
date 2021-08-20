@@ -98,6 +98,61 @@ const useIosStyles = makeStyles({
   },
 });
 
+const useMaterialStyles = makeStyles({
+  root: {
+    ':hover .ms-Switch-thumb': {
+      background: 'white',
+    },
+
+    ':hover .ms-Switch-track': {
+      background: '#9f9f9f',
+    },
+
+    '&.checked': {
+      '& .ms-Switch-thumb': {
+        background: '#f50057',
+      },
+
+      ':hover .ms-Switch-thumb': {
+        background: '#f50057',
+      },
+
+      '& .ms-Switch-track': {
+        background: '#fa80ab',
+        border: 'none',
+      },
+
+      ':hover .ms-Switch-track': {
+        background: '#fa80ab',
+        border: 'none',
+      },
+    },
+  },
+
+  switchWrapper: {
+    width: '34px',
+    height: '14px',
+  },
+
+  thumbWrapper: {
+    transition: 'transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    left: 'calc(20px * .4)',
+    right: 'calc(20px * .4)',
+  },
+
+  thumb: {
+    width: '20px',
+    height: '20px',
+    background: 'white',
+    boxShadow: '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
+  },
+
+  track: {
+    background: '#9f9f9f',
+    border: 'none',
+  },
+});
+
 export const BasicSwitchExample = (props: SwitchProps) => {
   const styles = useStyles();
   const [switchValue, setSwitchValue] = React.useState(false);
@@ -131,7 +186,7 @@ export const CustomSwitchExample = (props: SwitchProps) => {
   const styles = useStyles();
   const teamsStyles = useTeamsStyles();
   const iosStyles = useIosStyles();
-
+  const materialStyles = useMaterialStyles();
   return (
     <div className={styles.root}>
       <Label>Teams Example</Label>
@@ -150,7 +205,15 @@ export const CustomSwitchExample = (props: SwitchProps) => {
         thumbWrapper={{ className: iosStyles.thumbWrapper }}
         thumb={{ className: iosStyles.thumb }}
       />
-
+      <Label>Material UI Example</Label>
+      <Switch
+        defaultChecked={true}
+        className={materialStyles.root}
+        switchWrapper={{ className: materialStyles.switchWrapper }}
+        track={{ className: materialStyles.track }}
+        thumbWrapper={{ className: materialStyles.thumbWrapper }}
+        thumb={{ className: materialStyles.thumb }}
+      />
       <Label>On/Off Example</Label>
       <Switch checked={switchValue} onChange={switchOnChange}>
         {switchValue ? 'On' : 'Off'}
