@@ -227,7 +227,6 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
-    backgroundClip: 'content-box; padding: 1px',
 
     ':before': {
       position: 'absolute',
