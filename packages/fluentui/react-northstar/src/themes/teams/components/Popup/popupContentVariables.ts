@@ -21,9 +21,9 @@ export interface PopupContentVariables {
 
 export const popupContentVariables = (siteVars: any): PopupContentVariables => {
   return {
-    borderColor: siteVars.colorScheme.default.border2,
+    borderColor: 'red',
     borderRadius: siteVars.borderRadiusMedium,
-    borderSize: '0',
+    borderSize: '4px',
 
     backgroundColor: siteVars.colorScheme.default.background,
     color: siteVars.colorScheme.default.foreground,
