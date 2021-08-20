@@ -423,7 +423,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   overflow-y: auto;
                   position: relative;
                 }
-            style="outline: none;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class=
@@ -1442,7 +1442,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                   overflow-y: auto;
                   position: relative;
                 }
-            style="outline: none;"
+            style="outline: none; max-height: 100%;"
           >
             <div
               class=

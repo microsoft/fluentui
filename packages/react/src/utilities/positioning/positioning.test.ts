@@ -139,8 +139,9 @@ describe('Callout Positioning', () => {
       beakWidth: 0,
     };
 
+    // should align as close to the bottom left as possible
     const validateBottomLeft: ITestValidation = {
-      callout: new Rectangle(8, 208, 100, 300),
+      callout: new Rectangle(100, 300, 100, 300),
       beak: null,
     };
 
@@ -223,6 +224,7 @@ describe('Callout Positioning', () => {
       alignmentEdge: RectangleEdge.left,
     };
     const bounds = new Rectangle(0, 500, 0, 500);
+    const target = new Rectangle(0, 100, 0, 100);
 
     // Normal positioning should target the alignment edge and the opposite of the target edge.
     // In this case, that's left (alignment) and bottom (opposite of target)
@@ -257,7 +259,11 @@ describe('Callout Positioning', () => {
     // With bounds introduced, the alignment should apply to the beak as well, aligning it to
     // the edge closest to bounds
     // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
-    const finalizedBeakPosition = __positioningTestPackage._finalizeBeakPosition(pos, beakPos, bounds);
+    const finalizedBeakPosition = __positioningTestPackage._finalizeBeakPosition(
+      { ...pos, targetRectangle: target },
+      beakPos,
+      bounds,
+    );
     expect(finalizedBeakPosition.elementPosition.right).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.bottom).toBeDefined();
     expect(finalizedBeakPosition.elementPosition.left).toBeUndefined();
