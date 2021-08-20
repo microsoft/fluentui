@@ -260,7 +260,7 @@ Mouse interaction
 
 A context menu can be triggered by right clicking the surface or through an action in the card.
 
-1.Rest
+1. Rest
 
 2. RightClick [LongPress]
    Right click anywhere on card surface invokes content menu
