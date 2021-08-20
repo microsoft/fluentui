@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update .npmignore",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

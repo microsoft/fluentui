@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update .npmignore",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

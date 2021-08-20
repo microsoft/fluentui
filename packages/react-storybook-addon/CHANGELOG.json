@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-storybook-addon",
+  "entries": [
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-storybook-addon_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-storybook-addon"
+          }
+        ]
+      }
+    }
+  ]
+}
