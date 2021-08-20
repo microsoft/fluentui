@@ -261,29 +261,40 @@ Mouse interaction
 A context menu can be triggered by right clicking the surface or through an action in the card.
 
 1. Rest
+   <<<<<<< HEAD
+   =======
+
+   Default state
+
+   > > > > > > > Fix formatting issues
 
 2. RightClick [LongPress]
+
    Right click anywhere on card surface invokes content menu
+
 3. Show
+
    Context menu appears close to cursor location on card
+
 4. Hide/Dismiss
+
    Clicking or tapping anywhere outside of menu to dismiss
 
 #### Disabled
 
 ![Visual interaction of disabled cards using the mouse](./assets/disabled.png)
 
-1 Unselected disabled
+1. Unselected disabled
 
-1. Label: Selectable Card
-2. Role: Group
-3. State: Disabled, unselected
+   - Label: Selectable Card
+   - Role: Group
+   - State: Disabled, unselected
 
-2 Selected disabled
+2. Selected disabled
 
-1. Label: Selectable Card
-2. Role: Group
-3. State: Disabled, selected
+   - Label: Selectable Card
+   - Role: Group
+   - State: Disabled, selected
 
 ### Keyboard
 
@@ -301,27 +312,45 @@ A context menu can be triggered by right clicking the surface or through an acti
 
 Keyboard interaction
 
-1. Focus Initial focus is set on card, to access items within the card use EnterKey or Spacebar
-2. Focus-Inside Focus moves to first actionable item in the card. Use ArrowKeys or TabKey to move focus to child elements within the card. To exit card use EscKey, to move focus back to card [parent]
-3. Checkbox-Focus Depending on your tab order of items within the card, the number of keystrokes will vary. Once focus is set on the checkbox by default it will be set to unselected
-4. SpaceBar or EnterKey while focused on the Checkbox will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
+1. Focus
+
+   Initial focus is set on card, to access items within the card use EnterKey or Spacebar
+
+2. Focus-Inside
+
+   Focus moves to first actionable item in the card. Use ArrowKeys or TabKey to move focus to child elements within the card. To exit card use EscKey, to move focus back to card [parent]
+
+3. Checkbox-Focus
+
+   Depending on your tab order of items within the card, the number of keystrokes will vary. Once focus is set on the checkbox by default it will be set to unselected
+
+4. SpaceBar or EnterKey, while focused on the Checkbox, will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
 
 ### Context menu
 
 ![Visual interaction of the context menu on cards using the keyboard](./assets/context-interaction-keyboard.png)
 
 1. Rest
-2. OnFocus - Focus rect. is set on card. Use shiftKey and press F10 to invoke context menu
+
+   Default state
+
+2. OnFocus
+
+   Focus rect. is set on card. Use shiftKey and press F10 to invoke context menu
 
    `aria-haspopup="menu"`
 
    `aria-expanded="false"`
 
-3. ShowSet focus on context menu
+3. ShowSet
+
+   Focus on context menu
 
    `aria-expanded="true"`
 
-4. Hide/Dismiss - Use EscKey to hide/dismiss
+4. Hide/Dismiss
+
+   Use EscKey to hide/dismiss
 
    `aria-expanded="false"`
 
