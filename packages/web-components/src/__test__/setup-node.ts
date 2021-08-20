@@ -23,3 +23,6 @@ if (!window.matchMedia) {
       };
     };
 }
+
+// In order to build under isolated modules, files without imports must at least export an empty namespace.
+export {};
