@@ -16,10 +16,15 @@ const useTeamsStyles = makeStyles({
   root: {
     ':hover .ms-Switch-thumb': {
       background: 'white',
+      border: '1px solid #424242',
     },
 
     '&.checked': {
       '& .ms-Switch-thumb': {
+        border: 'none',
+      },
+
+      ':hover .ms-Switch-thumb': {
         border: 'none',
       },
 
@@ -37,12 +42,12 @@ const useTeamsStyles = makeStyles({
 
   thumb: {
     background: 'white',
-    border: '1px solid #4c4a48',
+    border: '1px solid #616161',
   },
 
   track: {
     background: 'white',
-    border: '1px solid #4c4a48',
+    border: '1px solid #616161',
   },
 });
 
