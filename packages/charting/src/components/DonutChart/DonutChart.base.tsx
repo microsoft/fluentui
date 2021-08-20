@@ -103,8 +103,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
         <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
           <div>
-            <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
-              {data?.chartTitle && <title>{data?.chartTitle}</title>}
+            <svg
+              className={this._classNames.chart}
+              aria-label={data?.chartTitle}
+              ref={(node: SVGElement | null) => this._setViewBox(node)}
+            >
               <Pie
                 width={this.state._width!}
                 height={this.state._height!}
