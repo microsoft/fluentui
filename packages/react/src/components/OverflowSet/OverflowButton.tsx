@@ -123,7 +123,7 @@ export const OverflowButton = (props: IOverflowSetProps) => {
         }
       });
     } else {
-      newOverflowItems = overflowItems!;
+      newOverflowItems = overflowItems;
     }
     return { modifiedOverflowItems: newOverflowItems, keytipsToRegister: newKeytipsToRegister };
   }, [overflowItems, getSubMenuForItem, keytipManager, keytipSequences]);
