@@ -21,6 +21,7 @@ export const sliderShorthandProps: Array<keyof SliderSlots> = [
 export const useSlider = (props: SliderProps, ref: React.RefObject<HTMLElement & SliderPublicRef>): SliderState => {
   const state: SliderState = {
     ref,
+    size: 'medium',
     ...props,
     rail: resolveShorthand(props.rail, { required: true }),
     trackWrapper: resolveShorthand(props.trackWrapper, { required: true }),

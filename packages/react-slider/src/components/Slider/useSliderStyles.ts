@@ -10,14 +10,21 @@ const trackClassName = 'ms-Slider-track';
  */
 const useRootStyles = makeStyles({
   root: theme => ({
-    '--slider-thumb-size': '20px',
-    '--slider-rail-size': '4px',
-
     position: 'relative',
     userSelect: 'none',
     display: 'inline-flex',
     touchAction: 'none',
   }),
+
+  small: {
+    '--slider-thumb-size': '10px',
+    '--slider-rail-size': '2px',
+  },
+
+  medium: {
+    '--slider-thumb-size': '20px',
+    '--slider-rail-size': '4px',
+  },
 
   horizontal: theme => ({
     minWidth: '120px',
@@ -245,6 +252,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
 
   state.className = mergeClasses(
     rootStyles.root,
+    rootStyles[state.size],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     !state.disabled && rootStyles.enabled,
     rootStyles.focusIndictor,

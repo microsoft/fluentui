@@ -25,6 +25,7 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
         value: number;
     }) => void;
     origin?: number;
+    size: 'small' | 'medium';
     step?: number;
     value?: number;
     vertical?: boolean;

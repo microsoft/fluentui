@@ -102,6 +102,12 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   origin?: number;
 
   /**
+   * The size of the Slider.
+   * @default 'medium'
+   */
+  size: 'small' | 'medium';
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (

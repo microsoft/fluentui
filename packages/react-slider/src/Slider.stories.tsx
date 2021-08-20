@@ -71,6 +71,8 @@ export const CustomSliderExample = (props: SliderProps) => {
     <div className={styles.root}>
       <Label>Custom Styles</Label>
       <Slider defaultValue={4} className={styles.slider} />
+      <Label>Size Example</Label>
+      <Slider defaultValue={2} size={'small'} />
     </div>
   );
 };
