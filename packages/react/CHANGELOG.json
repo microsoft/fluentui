@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react_v8.29.0",
+      "version": "8.29.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.2.2",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 07:41:35 GMT",
       "tag": "@fluentui/react_v8.29.0",
       "version": "8.29.0",

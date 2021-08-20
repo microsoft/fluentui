@@ -14,7 +14,7 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.3",
+    "@fluentui/eslint-plugin": "^1.4.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0"

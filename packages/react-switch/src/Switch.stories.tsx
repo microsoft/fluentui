@@ -12,11 +12,42 @@ const useStyles = makeStyles({
   },
 });
 
+const useTeamsStyles = makeStyles({
+  root: {
+    ':hover .ms-Switch-thumb': {
+      background: 'white',
+    },
+
+    '&.checked': {
+      '& .ms-Switch-thumb': {
+        border: 'none',
+      },
+
+      '& .ms-Switch-track': {
+        background: '#6264a7',
+        border: 'none',
+      },
+
+      ':hover .ms-Switch-track': {
+        background: '#5e60a1',
+        border: 'none',
+      },
+    },
+  },
+
+  thumb: {
+    background: 'white',
+    border: '1px solid #4c4a48',
+  },
+
+  track: {
+    background: 'white',
+    border: '1px solid #4c4a48',
+  },
+});
+
 const useIosStyles = makeStyles({
   root: {
-    '--switch-track-width': '50px',
-    '--switch-track-height': '30px',
-
     ':hover .ms-Switch-thumb': {
       background: 'white',
     },
@@ -41,7 +72,12 @@ const useIosStyles = makeStyles({
     },
   },
 
-  thumbContainer: {
+  switchWrapper: {
+    width: '50px',
+    height: '30px',
+  },
+
+  thumbWrapper: {
     left: 'calc(26px * .56)',
     right: 'calc(26px * .56)',
   },
@@ -93,16 +129,25 @@ export const CustomSwitchExample = (props: SwitchProps) => {
     setSwitchValue(data.checked);
 
   const styles = useStyles();
+  const teamsStyles = useTeamsStyles();
   const iosStyles = useIosStyles();
 
   return (
     <div className={styles.root}>
+      <Label>Teams Example</Label>
+      <Switch
+        defaultChecked={true}
+        className={teamsStyles.root}
+        track={{ className: teamsStyles.track }}
+        thumb={{ className: teamsStyles.thumb }}
+      />
       <Label>iOS Example</Label>
       <Switch
         defaultChecked={true}
         className={iosStyles.root}
+        switchWrapper={{ className: iosStyles.switchWrapper }}
         track={{ className: iosStyles.track }}
-        thumbContainer={{ className: iosStyles.thumbContainer }}
+        thumbWrapper={{ className: iosStyles.thumbWrapper }}
         thumb={{ className: iosStyles.thumb }}
       />
 

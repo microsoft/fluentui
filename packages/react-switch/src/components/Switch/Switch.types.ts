@@ -6,6 +6,11 @@ import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
  */
 export type SwitchSlots = {
   /**
+   * The wrapper around the Switch. It is used to specify the size of the Switch.
+   */
+  switchWrapper: React.HTMLAttributes<HTMLElement>;
+
+  /**
    * The bar indicating the status of the Switch.
    */
   track: React.HTMLAttributes<HTMLElement>;
@@ -13,7 +18,7 @@ export type SwitchSlots = {
   /**
    * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
    */
-  thumbContainer: React.HTMLAttributes<HTMLElement>;
+  thumbWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The circular icon indicating the status of the Switch.
@@ -78,9 +83,4 @@ export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
-
-  /**
-   * CSS class for the container of the input element, track, and rail, slot.
-   */
-  containerClassName?: string;
 }

@@ -12,13 +12,13 @@ export const renderSwitch = (state: SwitchState) => {
   return (
     <slots.root {...slotProps.root}>
       {state.labelPosition === 'before' && state.children}
-      <div className={state.containerClassName}>
+      <slots.switchWrapper {...slotProps.switchWrapper}>
         <slots.track {...slotProps.track} />
-        <slots.thumbContainer {...slotProps.thumbContainer}>
+        <slots.thumbWrapper {...slotProps.thumbWrapper}>
           <slots.thumb {...slotProps.thumb} />
-        </slots.thumbContainer>
+        </slots.thumbWrapper>
         <slots.input {...slotProps.input} />
-      </div>
+      </slots.switchWrapper>
       {state.labelPosition === 'after' && state.children}
     </slots.root>
   );

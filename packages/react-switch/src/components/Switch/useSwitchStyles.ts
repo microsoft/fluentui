@@ -55,8 +55,8 @@ const useRootStyles = makeStyles({
   ),
 });
 
-const useContainerStyles = makeStyles({
-  container: {
+const useSwitchWrapper = makeStyles({
+  switchWrapper: {
     position: 'relative',
     width: 'var(--switch-track-width)',
     height: 'var(--switch-track-height)',
@@ -100,8 +100,8 @@ const useTrackStyles = makeStyles({
 /**
  * Styles for the thumb wrapper slot
  */
-const useThumbContainerStyles = makeStyles({
-  thumbContainer: theme => ({
+const useThumbWrapperStyles = makeStyles({
+  thumbWrapper: theme => ({
     position: 'absolute',
     top: '0',
     bottom: '0',
@@ -168,9 +168,9 @@ const useInputStyle = makeStyles({
  */
 export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const rootStyles = useRootStyles();
-  const containerStyles = useContainerStyles();
+  const switchWrapperStyles = useSwitchWrapper();
   const trackStyles = useTrackStyles();
-  const thumbContainerStyles = useThumbContainerStyles();
+  const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyle();
 
@@ -182,7 +182,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     state.className,
   );
 
-  state.containerClassName = mergeClasses(containerStyles.container);
+  state.switchWrapper.className = mergeClasses(switchWrapperStyles.switchWrapper, state.switchWrapper.className);
 
   state.track.className = mergeClasses(
     trackClassName,
@@ -192,7 +192,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     state.track.className,
   );
 
-  state.thumbContainer.className = mergeClasses(thumbContainerStyles.thumbContainer, state.thumbContainer.className);
+  state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
 
   state.thumb.className = mergeClasses(
     thumbClassName,

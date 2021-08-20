@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 19 Aug 2021 07:41:35 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.5)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.4..@fluentui/web-components_v1.3.5)
+
+### Patches
+
+- update background to Canvas and color to CanvasText ([PR #19368](https://github.com/microsoft/fluentui/pull/19368) by khamu@microsoft.com)
 
 ## [1.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.4)
 

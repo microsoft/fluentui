@@ -34,15 +34,15 @@ export const switchShorthandProps: Array<keyof SwitchSlots>;
 
 // @public
 export type SwitchSlots = {
+    switchWrapper: React_2.HTMLAttributes<HTMLElement>;
     track: React_2.HTMLAttributes<HTMLElement>;
-    thumbContainer: React_2.HTMLAttributes<HTMLElement>;
+    thumbWrapper: React_2.HTMLAttributes<HTMLElement>;
     thumb: React_2.HTMLAttributes<HTMLElement>;
     input: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>;
 };
 
 // @public
 export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
-    containerClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }
 
