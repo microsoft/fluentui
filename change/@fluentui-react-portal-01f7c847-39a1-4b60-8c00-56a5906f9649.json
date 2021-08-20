@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update .npmignore",
-  "packageName": "@fluentui/react-portal",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
