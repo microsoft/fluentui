@@ -2,10 +2,8 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles';
@@ -27,6 +25,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const textFieldFilledStyles: (
   context: ElementDefinitionContext,

@@ -1,8 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  AccordionItemOptions,
   display,
-  ElementDefinitionContext,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
@@ -21,6 +19,7 @@ import {
   typeRampMinus1LineHeight,
 } from '../../design-tokens';
 import { heightNumber } from '../../styles/size';
+import type { AccordionItemOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 
 export const accordionItemStyles: (
   context: ElementDefinitionContext,

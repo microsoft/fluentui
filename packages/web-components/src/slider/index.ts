@@ -1,5 +1,6 @@
-import { Slider, SliderOptions, sliderTemplate as template } from '@microsoft/fast-foundation';
+import { Slider, sliderTemplate as template } from '@microsoft/fast-foundation';
 import { sliderStyles as styles } from './slider.styles';
+import type { SliderOptions } from '@microsoft/fast-foundation';
 
 /**
  * The Fluent Slider Custom Element. Implements {@link @microsoft/fast-foundation#(Slider:class)},

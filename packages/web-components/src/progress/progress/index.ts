@@ -1,5 +1,6 @@
-import { BaseProgress as Progress, ProgressOptions, progressTemplate as template } from '@microsoft/fast-foundation';
+import { BaseProgress as Progress, progressTemplate as template } from '@microsoft/fast-foundation';
 import { progressStyles as styles } from './progress.styles';
+import type { ProgressOptions } from '@microsoft/fast-foundation';
 
 /**
  * The Fluent Progress Element. Implements {@link @microsoft/fast-foundation#BaseProgress},

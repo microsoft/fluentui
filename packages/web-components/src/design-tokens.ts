@@ -1,7 +1,6 @@
 import { DesignToken } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
-import { Palette, PaletteRGB } from './color/palette';
-import { Swatch } from './color/swatch';
+import { PaletteRGB } from './color/palette';
 import { accentFill as accentFillAlgorithm } from './color/recipes/accent-fill';
 import { accentForeground as accentForegroundAlgorithm } from './color/recipes/accent-foreground';
 import { foregroundOnAccent as foregroundOnAccentAlgorithm } from './color/recipes/foreground-on-accent';
@@ -27,7 +26,9 @@ import { neutralLayer4 as neutralLayer4Algorithm } from './color/recipes/neutral
 import { neutralStroke as neutralStrokeAlgorithm } from './color/recipes/neutral-stroke';
 import { accentBase, middleGrey } from './color/utilities/color-constants';
 import { StandardLuminance } from './color/utilities/base-layer-luminance';
-import { InteractiveSwatchSet } from './color/recipe';
+import type { Palette } from './color/palette';
+import type { Swatch } from './color/swatch';
+import type { InteractiveSwatchSet } from './color/recipe';
 
 /** @public */
 export interface Recipe<T> {

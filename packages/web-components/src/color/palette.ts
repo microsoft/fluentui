@@ -1,8 +1,10 @@
 import { clamp, ColorRGBA64, ComponentStateColorPalette, parseColorHexRGB } from '@microsoft/fast-colors';
-import { Swatch, SwatchRGB } from './swatch';
+import { SwatchRGB } from './swatch';
 import { binarySearch } from './utilities/binary-search';
 import { directionByIsDark } from './utilities/direction-by-is-dark';
-import { contrast, RelativeLuminance } from './utilities/relative-luminance';
+import { contrast } from './utilities/relative-luminance';
+import type { Swatch } from './swatch';
+import type { RelativeLuminance } from './utilities/relative-luminance';
 
 /**
  * A collection of {@link Swatch} instances

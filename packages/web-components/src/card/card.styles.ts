@@ -1,13 +1,12 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   display,
-  ElementDefinitionContext,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles';
 import { fillColor, layerCornerRadius, neutralForegroundRest } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const cardStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>

@@ -3,10 +3,8 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  RadioOptions,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
@@ -26,6 +24,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
+import type { ElementDefinitionContext, RadioOptions } from "@microsoft/fast-foundation";
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
   context: ElementDefinitionContext,

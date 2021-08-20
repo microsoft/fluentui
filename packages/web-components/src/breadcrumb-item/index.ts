@@ -1,5 +1,6 @@
-import { BreadcrumbItem, BreadcrumbItemOptions, breadcrumbItemTemplate as template } from '@microsoft/fast-foundation';
+import { BreadcrumbItem, breadcrumbItemTemplate as template } from '@microsoft/fast-foundation';
 import { breadcrumbItemStyles as styles } from './breadcrumb-item.styles';
+import type { BreadcrumbItemOptions } from '@microsoft/fast-foundation';
 
 /**
  * The Fluent BreadcrumbItem Element. Implements {@link @microsoft/fast-foundation#BreadcrumbItem},

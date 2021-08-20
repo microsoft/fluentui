@@ -1,6 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, HorizontalScrollOptions } from '@microsoft/fast-foundation';
+import { display } from '@microsoft/fast-foundation';
 import { DirectionalStyleSheetBehavior } from '../styles';
+import type { ElementDefinitionContext, HorizontalScrollOptions } from "@microsoft/fast-foundation";
 
 const ltrActionsStyles = css`
   .scroll-prev {

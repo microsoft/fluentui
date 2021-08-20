@@ -1,5 +1,5 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { display } from '@microsoft/fast-foundation';
 import {
   bodyFont,
   neutralForegroundRest,
@@ -8,6 +8,7 @@ import {
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
 } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const accordionStyles: (
   context: ElementDefinitionContext,

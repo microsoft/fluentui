@@ -42,8 +42,10 @@ export * from './tree-view/';
 // export styles and utils
 export * from './design-tokens';
 export * from './styles';
-export { Palette, PaletteRGB } from './color/palette';
-export { InteractiveSwatchSet } from './color/recipe';
-export { Swatch, SwatchRGB } from './color/swatch';
+export { PaletteRGB } from './color/palette';
+export { SwatchRGB } from './color/swatch';
 export { isDark } from './color/utilities/is-dark';
 export { StandardLuminance } from './color/utilities/base-layer-luminance';
+export type { Palette } from './color/palette';
+export type { InteractiveSwatchSet } from './color/recipe';
+export type { Swatch } from './color/swatch';

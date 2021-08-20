@@ -1,5 +1,6 @@
 import { ColorRGBA64, rgbToRelativeLuminance } from '@microsoft/fast-colors';
-import { contrast, RelativeLuminance } from './utilities/relative-luminance';
+import { contrast } from './utilities/relative-luminance';
+import type { RelativeLuminance } from './utilities/relative-luminance';
 
 /**
  * Represents a color in a {@link Palette}

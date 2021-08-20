@@ -1,8 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  BreadcrumbItemOptions,
   display,
-  ElementDefinitionContext,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
@@ -19,6 +17,7 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 import { heightNumber } from '../styles/index';
+import type { BreadcrumbItemOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 
 export const breadcrumbItemStyles: (
   context: ElementDefinitionContext,

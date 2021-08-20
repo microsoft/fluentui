@@ -3,10 +3,8 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  SwitchOptions,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
 import {
@@ -32,6 +30,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
+import type { ElementDefinitionContext, SwitchOptions } from "@microsoft/fast-foundation";
 
 export const switchStyles: (context: ElementDefinitionContext, defintiion: SwitchOptions) => ElementStyles = (
   context: ElementDefinitionContext,

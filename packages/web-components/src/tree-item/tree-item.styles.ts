@@ -3,10 +3,8 @@ import {
   DesignToken,
   disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  TreeItemOptions,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
@@ -31,7 +29,8 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import { Swatch } from '../color/swatch';
+import type { ElementDefinitionContext, TreeItemOptions } from "@microsoft/fast-foundation";
+import type { Swatch } from "../color/swatch";
 
 const ltr = css`
   .expand-collapse-glyph {

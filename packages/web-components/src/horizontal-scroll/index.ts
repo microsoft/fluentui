@@ -1,10 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import {
   HorizontalScroll as FoundationHorizontalScroll,
-  HorizontalScrollOptions,
   horizontalScrollTemplate as template,
 } from '@microsoft/fast-foundation';
 import { ActionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
+import type { HorizontalScrollOptions } from '@microsoft/fast-foundation';
 
 /**
  * @internal

@@ -1,23 +1,9 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import {
-  attr,
-  css,
-  html,
-  nullableNumberConverter,
-  Observable,
-  observable,
-  ValueConverter,
-} from '@microsoft/fast-element';
-import {
-  DesignToken,
-  DesignTokenValue,
-  display,
-  forcedColorsStylesheetBehavior,
-  FoundationElement,
-} from '@microsoft/fast-foundation';
+import { attr, css, html, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
+import { DesignToken, display, forcedColorsStylesheetBehavior, FoundationElement } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
-import { Palette, PaletteRGB } from '../color/palette';
-import { Swatch, SwatchRGB } from '../color/swatch';
+import { PaletteRGB } from '../color/palette';
+import { SwatchRGB } from '../color/swatch';
 import {
   accentFillActiveDelta,
   accentFillFocusDelta,
@@ -81,6 +67,10 @@ import {
   typeRampPlus6FontSize,
   typeRampPlus6LineHeight,
 } from '../design-tokens';
+import type { ValueConverter } from '@microsoft/fast-element';
+import type { DesignTokenValue } from '@microsoft/fast-foundation';
+import type { Palette } from '../color/palette';
+import type { Swatch } from '../color/swatch';
 
 /**
  * A {@link ValueConverter} that converts to and from `Swatch` values.

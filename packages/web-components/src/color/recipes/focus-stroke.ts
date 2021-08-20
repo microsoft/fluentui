@@ -1,6 +1,6 @@
-import { Palette } from '../palette';
-import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
+import type { Palette } from '../palette';
+import type { Swatch } from '../swatch';
 
 /**
  * @internal

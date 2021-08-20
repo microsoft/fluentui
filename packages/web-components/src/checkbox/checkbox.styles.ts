@@ -1,9 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  CheckboxOptions,
   disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
@@ -27,6 +25,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
+import type { CheckboxOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 
 export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles = (
   context: ElementDefinitionContext,

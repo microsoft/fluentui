@@ -3,10 +3,8 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   disabledCursor,
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  SliderOptions,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
@@ -21,6 +19,7 @@ import {
   neutralStrokeHover,
   neutralStrokeRest,
 } from '../design-tokens';
+import type { ElementDefinitionContext, SliderOptions } from "@microsoft/fast-foundation";
 
 export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles = (
   context: ElementDefinitionContext,

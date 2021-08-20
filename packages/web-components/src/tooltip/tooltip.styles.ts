@@ -1,8 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  ElementDefinitionContext,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
@@ -14,6 +12,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const tooltipStyles: (
   context: ElementDefinitionContext,

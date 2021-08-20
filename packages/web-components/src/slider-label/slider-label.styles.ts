@@ -2,12 +2,11 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   display,
-  ElementDefinitionContext,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import { bodyFont, designUnit, disabledOpacity, neutralStrokeRest } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const sliderLabelStyles: (
   context: ElementDefinitionContext,

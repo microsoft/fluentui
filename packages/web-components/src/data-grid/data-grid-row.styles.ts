@@ -1,10 +1,9 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
-  ElementDefinitionContext,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { neutralFillRest, neutralStrokeDividerRest, strokeWidth } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const dataGridRowStyles: (
   context: ElementDefinitionContext,

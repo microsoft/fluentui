@@ -1,6 +1,6 @@
-import { Swatch } from '../swatch';
-import { Palette } from '../palette';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
+import type { Swatch } from '../swatch';
+import type { Palette } from '../palette';
 
 /**
  * The neutralDivider color recipe

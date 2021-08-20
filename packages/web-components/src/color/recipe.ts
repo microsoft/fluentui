@@ -1,4 +1,4 @@
-import { Swatch } from './swatch';
+import type { Swatch } from './swatch';
 
 /** @public */
 export interface InteractiveSwatchSet {

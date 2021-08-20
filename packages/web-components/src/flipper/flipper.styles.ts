@@ -2,8 +2,6 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   disabledCursor,
   display,
-  ElementDefinitionContext,
-  FlipperOptions,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
@@ -21,6 +19,7 @@ import {
   neutralStrokeRest,
   strokeWidth,
 } from '../design-tokens';
+import type { ElementDefinitionContext, FlipperOptions } from "@microsoft/fast-foundation";
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
   context: ElementDefinitionContext,

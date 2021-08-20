@@ -1,6 +1,6 @@
-import { Palette } from '../palette';
-import { Swatch } from '../swatch';
 import { baseLayerLuminanceSwatch } from '../utilities/base-layer-luminance';
+import type { Palette } from '../palette';
+import type { Swatch } from '../swatch';
 
 /**
  * @internal

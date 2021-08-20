@@ -1,5 +1,6 @@
-import { treeItemTemplate as template, TreeItem, TreeItemOptions } from '@microsoft/fast-foundation';
+import { treeItemTemplate as template, TreeItem } from '@microsoft/fast-foundation';
 import { treeItemStyles as styles } from './tree-item.styles';
+import type { TreeItemOptions } from '@microsoft/fast-foundation';
 
 /**
  * The Fluent tree item Custom Element. Implements, {@link @microsoft/fast-foundation#TreeItem}

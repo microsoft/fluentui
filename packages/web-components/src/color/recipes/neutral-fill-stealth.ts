@@ -1,6 +1,6 @@
-import { Palette } from '../palette';
-import { InteractiveSwatchSet } from '../recipe';
-import { Swatch } from '../swatch';
+import type { Palette } from '../palette';
+import type { InteractiveSwatchSet } from '../recipe';
+import type { Swatch } from '../swatch';
 
 /**
  * @internal

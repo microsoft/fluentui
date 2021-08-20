@@ -1,10 +1,8 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   display,
-  ElementDefinitionContext,
   focusVisible,
-  forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
@@ -16,6 +14,7 @@ import {
   neutralStrokeRest,
   strokeWidth,
 } from '../design-tokens';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const listboxStyles: (
   context: ElementDefinitionContext,
