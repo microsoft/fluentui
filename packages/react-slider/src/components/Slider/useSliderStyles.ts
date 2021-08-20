@@ -11,15 +11,12 @@ const trackClassName = 'ms-Slider-track';
 const useRootStyles = makeStyles({
   root: theme => ({
     '--slider-thumb-size': '20px',
+    '--slider-track-size': '4px',
+
     position: 'relative',
-    overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
     touchAction: 'none',
-
-    ':active': {
-      boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .25) ${theme.alias.color.neutral.neutralBackground1} inset`,
-    },
   }),
 
   horizontal: theme => ({
@@ -42,7 +39,32 @@ const useRootStyles = makeStyles({
         background: theme.alias.color.neutral.brandBackgroundHover,
       },
     },
+    ':active': {
+      '& .ms-Slider-thumb': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
+      '& .ms-Slider-track': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
+    },
   }),
+
+  focusIndictor: createFocusIndicatorStyleRule(
+    theme => ({
+      ':after': {
+        content: "''",
+        position: 'absolute',
+        top: '-6px',
+        right: '-6px',
+        bottom: '-6px',
+        left: '-6px',
+        boxSizing: 'border-box',
+        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
+        borderRadius: theme.global.borderRadius.medium,
+      },
+    }),
+    { selector: 'focus-within' },
+  ),
 });
 
 /**
@@ -112,14 +134,14 @@ const useTrackStyles = makeStyles({
   }),
 
   horizontal: theme => ({
-    height: '4px',
+    height: 'var(--slider-track-size)',
     top: '50%',
     transform: 'translateY(-50%)',
     minWidth: 'calc(var(--slider-thumb-size) / 2)',
   }),
 
   vertical: theme => ({
-    width: '4px',
+    width: 'var(--slider-track-size)',
     left: '50%',
     transform: 'translateX(-50%)',
     minHeight: 'calc(var(--slider-thumb-size) / 2)',
@@ -177,11 +199,6 @@ const useThumbStyles = makeStyles({
     backgroundClip: 'content-box; padding: 1px',
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule({
-    boxSizing: 'border-box',
-    border: 'calc(var(--slider-thumb-size) * .05) solid black',
-  }),
-
   enabled: theme => ({
     background: theme.alias.color.neutral.brandBackground,
   }),
@@ -230,6 +247,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     rootStyles.root,
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     !state.disabled && rootStyles.enabled,
+    rootStyles.focusIndictor,
     state.className,
   );
 
@@ -265,7 +283,6 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
     state.disabled ? trackStyles.disabled : trackStyles.enabled,
-    thumbStyles.focusIndicator,
     state.thumb.className,
   );
 
