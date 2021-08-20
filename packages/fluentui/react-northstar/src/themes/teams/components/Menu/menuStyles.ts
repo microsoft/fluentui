@@ -23,8 +23,9 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
       ...(vertical && {
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
-        padding: `${pxToRem(8)} 0`,
+        borderColor: v.verticalBorderColor,
         boxShadow: v.verticalBoxShadow,
+        padding: `${pxToRem(8)} 0`,
         ...(!fluid && !submenu && { width: 'fit-content' }),
         ...(iconOnly && {
           display: 'inline-block',

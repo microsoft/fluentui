@@ -62,6 +62,7 @@ export interface MenuVariables {
   verticalItemBorderColor: string;
   verticalPointingBorderColor: string;
   verticalBackgroundColorFocus: string;
+  verticalBorderColor: string;
 
   pointingIndicatorBackgroundColor: string;
 
@@ -158,6 +159,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
     verticalBackgroundColorFocus: undefined,
+    verticalBorderColor: siteVars.colorScheme.default.borderTransparent,
 
     activeUnderlinedColor: undefined,
     activeUnderlinedPrimaryColor: siteVars.colors.brand[600],
@@ -176,7 +178,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     underlinedWrapperBackgroundHover: 'transparent',
 
     dividerHeight: pxToRem(1),
-    borderWidth: '0',
+    borderWidth: pxToRem(1),
     menuZIndex: siteVars.zIndexes.overlay,
     beakZIndex: siteVars.zIndexes.menuItem,
 
