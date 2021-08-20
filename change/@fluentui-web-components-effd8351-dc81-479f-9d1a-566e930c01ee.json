@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updating Typescript type-only imports/exports to use import/export type syntax.",
+  "packageName": "@fluentui/web-components",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch"
+}
