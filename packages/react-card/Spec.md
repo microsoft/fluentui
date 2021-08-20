@@ -105,7 +105,7 @@ Card goes for a more structural and generic approach to a card component and is 
 | selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area                      |
 | selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                         |
 | expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                                |
-| context     | _slot_                                                                               | undefined  | Slot for the context menu, when right-clicking the card                                   |
+| contextMenu | _slot_                                                                               | undefined  | Slot for the context menu, when right-clicking the card                                   |
 | disabled    | boolean                                                                              | false      | Makes the card disabled                                                                   |
 
 #### `scale` property
