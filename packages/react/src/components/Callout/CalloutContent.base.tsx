@@ -12,7 +12,6 @@ import {
 } from '../../Utilities';
 import {
   positionCallout,
-  getMaxHeight,
   RectangleEdge,
   positionCard,
   getBoundsFromTargetWindow,
@@ -95,98 +94,6 @@ function useBounds(
   }, [bounds, minPagePadding, target, targetRef, targetWindow]);
 
   return getBounds;
-}
-
-/**
- * (Hook) to return the maximum available height for the Callout to render into.
- */
-function useMaxHeight(
-  { beakWidth, coverTarget, directionalHint, directionalHintFixed, gapSpace, isBeakVisible, hidden }: ICalloutProps,
-  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
-  getBounds: () => IRectangle | undefined,
-) {
-  const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
-  const async = useAsync();
-
-  // Updating targetRef won't re-render the component, but it's recalculated (if needed) with every render
-  // If it mutates, we want to re-run the effect
-  const currentTarget = targetRef.current;
-
-  React.useEffect(() => {
-    if (!maxHeight && !hidden) {
-      if (directionalHintFixed && currentTarget) {
-        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
-        // overlap with the target.
-        const totalGap: number = (gapSpace ?? 0) + (isBeakVisible && beakWidth ? beakWidth : 0);
-        async.requestAnimationFrame(() => {
-          if (targetRef.current) {
-            setMaxHeight(getMaxHeight(targetRef.current, directionalHint!, totalGap, getBounds(), coverTarget));
-          }
-        });
-      } else {
-        setMaxHeight(getBounds()?.height);
-      }
-    } else if (hidden) {
-      setMaxHeight(undefined);
-    }
-  }, [
-    targetRef,
-    currentTarget,
-    gapSpace,
-    beakWidth,
-    getBounds,
-    hidden,
-    async,
-    coverTarget,
-    directionalHint,
-    directionalHintFixed,
-    isBeakVisible,
-    maxHeight,
-  ]);
-
-  return maxHeight;
-}
-
-/**
- * (Hook) to return the height offset of the callout element and updates it each frame to approach the configured
- * finalHeight.
- */
-function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
-  const [heightOffset, setHeightOffset] = React.useState<number>(0);
-  const async = useAsync();
-  const setHeightOffsetTimer = React.useRef<number | undefined>();
-
-  const setHeightOffsetEveryFrame = React.useCallback((): void => {
-    if (calloutElement.current && finalHeight) {
-      setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
-        const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
-
-        if (!calloutMainElem) {
-          return;
-        }
-
-        const cardScrollHeight: number = calloutMainElem.scrollHeight;
-        const cardCurrHeight: number = calloutMainElem.offsetHeight;
-        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
-
-        setHeightOffset(currentHeightOffset => currentHeightOffset + scrollDiff);
-
-        if (calloutMainElem.offsetHeight < finalHeight) {
-          setHeightOffsetEveryFrame();
-        } else {
-          async.cancelAnimationFrame(setHeightOffsetTimer.current!, calloutElement.current);
-        }
-      }, calloutElement.current);
-    }
-  }, [async, calloutElement, finalHeight]);
-
-  React.useEffect(() => {
-    if (!hidden) {
-      setHeightOffsetEveryFrame();
-    }
-  }, [finalHeight, hidden, setHeightOffsetEveryFrame]);
-
-  return heightOffset;
 }
 
 /**
@@ -465,8 +372,6 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 
     const [targetRef, targetWindow] = useTarget(props.target, calloutElement);
     const getBounds = useBounds(props, targetRef, targetWindow);
-    const maxHeight = useMaxHeight(props, targetRef, getBounds);
-    const heightOffset = useHeightOffset(props, calloutElement);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
@@ -490,8 +395,6 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       return null;
     }
 
-    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
-    const contentMaxHeight: number | undefined = calloutMaxHeight || getContentMaxHeight;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
@@ -509,7 +412,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
 
     const overflowStyle: React.CSSProperties = {
-      maxHeight: contentMaxHeight,
+      maxHeight: calloutMaxHeight ? calloutMaxHeight : '100%',
       ...style,
       ...(overflowYHidden && { overflowY: 'hidden' }),
     };
@@ -568,6 +471,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPositionStyle: React.CSSProperties = {
     ...positions?.beakPosition?.elementPosition,
+    display: positions?.beakPosition?.hideBeak ? 'none' : undefined,
   };
 
   if (!beakPositionStyle.top && !beakPositionStyle.bottom && !beakPositionStyle.left && !beakPositionStyle.right) {

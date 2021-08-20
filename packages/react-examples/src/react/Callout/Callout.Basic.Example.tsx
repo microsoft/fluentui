@@ -11,12 +11,14 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
 
   return (
     <>
+      <div style={{ padding: '150px 0' }}></div>
       <DefaultButton
         id={buttonId}
         onClick={toggleIsCalloutVisible}
         text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
         className={styles.button}
       />
+      <div style={{ padding: '250px 0' }}></div>
       {isCalloutVisible && (
         <Callout
           className={styles.callout}
@@ -26,6 +28,7 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           gapSpace={0}
           target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
+          alignTargetEdge={true}
           setInitialFocus
         >
           <Text block variant="xLarge" className={styles.title} id={labelId}>
@@ -50,6 +53,7 @@ const styles = mergeStyleSets({
   },
   callout: {
     width: 320,
+    maxWidth: '90%',
     padding: '20px 24px',
   },
   title: {

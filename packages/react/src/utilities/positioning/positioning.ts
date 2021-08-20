@@ -53,6 +53,7 @@ export interface IElementPosition {
   elementRectangle: Rectangle;
   targetEdge: RectangleEdge;
   alignmentEdge: RectangleEdge | undefined;
+  forcedInBounds?: boolean;
 }
 
 export interface IElementPositionInfo extends IElementPosition {
@@ -155,12 +156,15 @@ function _getRelativeEdgeDifference(rect: Rectangle, hostRect: Rectangle, edge: 
 /**
  * Moves the edge of a rectangle to the value given. It only moves the edge in a linear direction based on that edge.
  * For example, if it's a bottom edge it will only change y coordinates.
+ * if maintainSize is set to false, it will only adjust the specified edge value
  */
-function _moveEdge(rect: Rectangle, edge: RectangleEdge, newValue: number): Rectangle {
+function _moveEdge(rect: Rectangle, edge: RectangleEdge, newValue: number, maintainSize = true): Rectangle {
   const difference = _getEdgeValue(rect, edge) - newValue;
-  rect = _setEdgeValue(rect, edge, newValue);
-  rect = _setEdgeValue(rect, edge * -1, _getEdgeValue(rect, edge * -1) - difference);
-  return rect;
+  let returnRect = _setEdgeValue(rect, edge, newValue);
+  if (maintainSize) {
+    returnRect = _setEdgeValue(rect, edge * -1, _getEdgeValue(rect, edge * -1) - difference);
+  }
+  return returnRect;
 }
 
 /**
@@ -194,6 +198,20 @@ function _isEdgeInBounds(rect: Rectangle, bounds: Rectangle, edge: RectangleEdge
 }
 
 /**
+ * Returns a measure of how much a rectangle is out of bounds for a given alignment
+ * A value of 0 means the rectangle is entirely in bounds
+ */
+function _getOutOfBoundsDegree(rect: Rectangle, bounds: Rectangle) {
+  const breakingEdges = _getOutOfBoundsEdges(rect, bounds);
+  let total = 0;
+  for (let edge of breakingEdges) {
+    total += _getRelativeEdgeDifference(rect, bounds, edge) ** 2;
+  }
+
+  return total;
+}
+
+/**
  * Attempts to move the rectangle through various sides of the target to find a place to fit.
  * If no fit is found, the original position should be returned.
  */
@@ -218,10 +236,24 @@ function _flipToFit(
   let currentEstimate = rect;
   let currentEdge = positionData.targetEdge;
   let currentAlignment = positionData.alignmentEdge;
+
+  // keep track of least bad option, in case no sides fit
+  let oobDegree;
+  let bestEdge = currentEdge;
+  let bestAlignment = currentAlignment;
+
   // Keep switching sides until one is found with enough space.
   // If all sides don't fit then return the unmodified element.
   for (let i = 0; i < 4; i++) {
     if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
+      // update least-bad edges
+      const currentOOBDegree = _getOutOfBoundsDegree(currentEstimate, bounding);
+      if (!oobDegree || currentOOBDegree < oobDegree) {
+        oobDegree = currentOOBDegree;
+        bestEdge = currentEdge;
+        bestAlignment = currentAlignment;
+      }
+
       directions.splice(directions.indexOf(currentEdge), 1);
       if (directions.length > 0) {
         if (directions.indexOf(currentEdge * -1) > -1) {
@@ -245,10 +277,13 @@ function _flipToFit(
       };
     }
   }
+
+  // nothing fit, use least-bad option
+  currentEstimate = _estimatePosition(rect, target, { targetEdge: bestEdge, alignmentEdge: bestAlignment }, gap);
   return {
-    elementRectangle: rect,
-    targetEdge: positionData.targetEdge,
-    alignmentEdge: positionData.alignmentEdge,
+    elementRectangle: currentEstimate,
+    targetEdge: bestEdge,
+    alignmentEdge: bestAlignment,
   };
 }
 
@@ -339,7 +374,16 @@ function _alignOutOfBoundsEdges(
   bounding: Rectangle,
 ) {
   for (const direction of outOfBoundsEdges) {
-    elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+    let edgeAttempt = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+    const inBounds = _isEdgeInBounds(edgeAttempt, bounding, direction * -1);
+    // const outOfBounds = _getOutOfBoundsEdges(edgeAttempt, bounding);
+    // only update estimate if the attempt didn't break out of the opposite bounding edge
+    if (!inBounds) {
+      edgeAttempt = _moveEdge(edgeAttempt, direction * -1, _getEdgeValue(bounding, direction * -1), false);
+      elementEstimate.forcedInBounds = true;
+    }
+
+    elementEstimate.elementRectangle = edgeAttempt;
   }
 
   return elementEstimate;
@@ -368,12 +412,17 @@ function _estimatePosition(
   gap: number = 0,
   coverTarget?: boolean,
 ): Rectangle {
-  let estimatedElementPosition: Rectangle;
+  let estimatedElementPosition = new Rectangle(
+    elementToPosition.left,
+    elementToPosition.right,
+    elementToPosition.top,
+    elementToPosition.bottom,
+  );
   const { alignmentEdge, targetEdge } = positionData;
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   estimatedElementPosition = coverTarget
-    ? _alignEdges(elementToPosition, target, targetEdge, gap)
-    : _alignOppositeEdges(elementToPosition, target, targetEdge, gap);
+    ? _alignEdges(estimatedElementPosition, target, targetEdge, gap)
+    : _alignOppositeEdges(estimatedElementPosition, target, targetEdge, gap);
   // if no alignment edge is provided it's supposed to be centered.
   if (!alignmentEdge) {
     const targetMiddlePoint = _getCenterValue(target, targetEdge);
@@ -438,19 +487,32 @@ function _finalizeElementPosition(
   alignmentEdge?: RectangleEdge,
   coverTarget?: boolean,
   doNotFinalizeReturnEdge?: boolean,
+  forceWithinnBounds?: boolean,
 ): IPartialIRectangle {
   const returnValue: IPartialIRectangle = {};
 
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
-  const elementEdgeString = RectangleEdge[elementEdge];
   let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
   if (!doNotFinalizeReturnEdge) {
     returnEdge = _finalizeReturnEdge(elementRectangle, returnEdge, bounds);
   }
 
-  returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
+  returnValue[RectangleEdge[elementEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
+
+  if (forceWithinnBounds) {
+    returnValue[RectangleEdge[elementEdge * -1]] = _getRelativeEdgeDifference(
+      elementRectangle,
+      hostRect,
+      elementEdge * -1,
+    );
+    returnValue[RectangleEdge[returnEdge * -1]] = _getRelativeEdgeDifference(
+      elementRectangle,
+      hostRect,
+      returnEdge * -1,
+    );
+  }
 
   return returnValue;
 }
@@ -549,7 +611,7 @@ function _positionElementWithinBounds(
     };
   } else {
     return _adjustFitWithinBounds(
-      elementToPosition,
+      estimatedElementPosition,
       target,
       bounding,
       positionData,
@@ -561,7 +623,7 @@ function _positionElementWithinBounds(
 }
 
 function _finalizeBeakPosition(
-  elementPosition: IElementPosition,
+  elementPosition: IElementPositionInfo,
   positionedBeak: Rectangle,
   bounds?: Rectangle,
 ): ICalloutBeakPositionedInfo {
@@ -580,6 +642,14 @@ function _finalizeBeakPosition(
     bounds,
   );
 
+  // only show the beak if the callout is not fully covering the target
+  const beakEdgeDifference = _getRelativeEdgeDifference(
+    elementPosition.elementRectangle,
+    elementPosition.targetRectangle,
+    targetEdge,
+  );
+  const showBeak = beakEdgeDifference > Math.abs(_getEdgeValue(positionedBeak, targetEdge));
+
   returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualElement, returnEdge);
 
@@ -587,6 +657,7 @@ function _finalizeBeakPosition(
     elementPosition: { ...returnValue },
     closestEdge: getClosestEdge(elementPosition.targetEdge, positionedBeak, actualElement),
     targetEdge: targetEdge,
+    hideBeak: !showBeak,
   };
 }
 
@@ -745,6 +816,7 @@ function _finalizePositionData(
     positionedElement.alignmentEdge,
     coverTarget,
     doNotFinalizeReturnEdge,
+    positionedElement.forcedInBounds,
   );
   return {
     elementPosition: finalizedElement,
@@ -791,12 +863,14 @@ function _positionCallout(
     boundingRect,
     previousPositions,
   );
+
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
   const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(
     positionedElement,
     beakPositioned,
     boundingRect,
   );
+
   return {
     ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget, doNotFinalizeReturnEdge),
     beakPosition: finalizedBeakPosition,
