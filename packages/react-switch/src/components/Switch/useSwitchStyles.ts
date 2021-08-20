@@ -123,7 +123,6 @@ const useThumbStyles = makeStyles({
     boxSizing: 'border-box',
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
-    transform: 'translate(-50%, -50%)',
   }),
 
   unchecked: theme => ({

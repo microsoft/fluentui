@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { SwitchSlots, SwitchState, SwitchCommon } from './Switch.types';
 
 export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | keyof SwitchSlots | 'as' | 'ref'>) => {
   const { defaultChecked = false, checked, disabled = false, onChange } = state;
+  const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
   const [internalValue, setInternalValue] = useControllableState({
     defaultState: defaultChecked,
@@ -27,6 +29,22 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
     setChecked(ev, ev.currentTarget.checked);
   });
 
+  const thumbWrapperStyles = {
+    transform:
+      dir === 'rtl'
+        ? internalValue
+          ? 'translate(0%)'
+          : 'translate(100%)'
+        : internalValue
+        ? 'translate(100%)'
+        : 'translate(0%)',
+  };
+
+  const thumbStyles = {
+    transform: dir === 'rtl' ? 'translate(-100%, -50%)' : 'translate(-50%, -50%)',
+    ...state.thumb.style,
+  };
+
   // Input Props
   state.input.type = 'checkbox';
   state.input.onChange = onInputChange;
@@ -35,7 +53,8 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
   state.input.ref = inputRef;
 
   // thumbContainer Props
-  state.thumbWrapper.style = { transform: internalValue ? 'translate(100%)' : 'translate(0%)' };
+  state.thumbWrapper.style = thumbWrapperStyles;
+  state.thumb.style = thumbStyles;
 
   return state;
 };
