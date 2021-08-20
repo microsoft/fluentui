@@ -8,7 +8,6 @@ import { SliderState } from './Slider.types';
 const useRootStyles = makeStyles({
   root: theme => ({
     '--slider-thumb-size': '20px',
-    '--slider-color': '#005fb8',
     position: 'relative',
     overflow: 'hidden',
     userSelect: 'none',
@@ -40,12 +39,11 @@ const useRailStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: '#8b8b8b',
-    border: '1px solid #626262',
+    background: theme.alias.color.neutral.neutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: '#ababab',
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
   }),
 
   horizontal: theme => ({
@@ -92,7 +90,6 @@ const useTrackWrapperStyles = makeStyles({
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    background: 'var(--slider-color)',
     borderRadius: '99px',
   }),
 
@@ -111,11 +108,11 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: 'var(--slider-color)',
+    background: theme.alias.color.neutral.brandBackground,
   }),
 
   disabled: theme => ({
-    background: '#868686',
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 });
 
@@ -147,68 +144,39 @@ const useThumbWrapperStyles = makeStyles({
 const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
-    width: 'var(--slider-thumb-size)',
-    height: 'var(--slider-thumb-size)',
+    width: '20px',
+    height: '20px',
+    top: '0px',
+    left: '0px',
+    bottom: '0px',
+    right: '0px',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
     borderRadius: '999px',
-
-    ':before': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      width: 'var(--slider-thumb-size)',
-      height: 'var(--slider-thumb-size)',
-      content: "''",
-      background: 'var(--slider-color)',
-      borderRadius: '999px',
-      boxSizing: 'border-box',
-      border: 'calc(var(--slider-thumb-size) * .05) solid rgba(0, 0, 0,  0)',
-      backgroundClip: 'content-box; padding: 1px',
-      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .2) white inset',
-    },
-
-    ':after': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      content: "''",
-      background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0578) 50.02%, rgba(0, 0, 0, 0.1622) 95.45%)',
-      borderRadius: '999px',
-      zIndex: '-1',
-    },
+    background: theme.alias.color.neutral.brandBackground,
+    boxSizing: 'border-box',
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    border: `1px solid ${theme.alias.color.neutral.neutralStroke1}`,
+    backgroundClip: 'content-box; padding: 1px',
   }),
 
   focusIndicator: createFocusIndicatorStyleRule({
-    ':before': {
-      outline: 'none',
-      boxSizing: 'border-box',
-      border: 'calc(var(--slider-thumb-size) * .05) solid black',
-    },
+    boxSizing: 'border-box',
+    border: 'calc(var(--slider-thumb-size) * .05) solid black',
   }),
 
   enabled: theme => ({
     ':hover': {
-      ':before': {
-        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
-      },
+      boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .15) ${theme.alias.color.neutral.neutralBackground1} inset`,
     },
 
     ':active': {
-      ':before': {
-        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .25) white inset',
-      },
+      boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .25) ${theme.alias.color.neutral.neutralBackground1} inset`,
     },
   }),
 
   disabled: theme => ({
-    ':before': {
-      background: 'rgb(174,174,174)',
-    },
+    background: theme.alias.color.neutral.neutralStrokeDisabled,
   }),
 
   horizontal: theme => ({
