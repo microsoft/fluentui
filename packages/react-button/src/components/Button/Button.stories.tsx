@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Button, ButtonProps } from '../../Button';
 import { Meta } from '@storybook/react';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import descriptionMdx from './ButtonDescription.md';
+import bestPracticesMdx from './ButtonBestPractices.md';
 
 export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
 
@@ -165,6 +167,13 @@ ButtonWithLongText.parameters = {
 export default {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: descriptionMdx + '\n' + bestPracticesMdx,
+      },
+    },
+  },
   decorators: [
     Story => (
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
