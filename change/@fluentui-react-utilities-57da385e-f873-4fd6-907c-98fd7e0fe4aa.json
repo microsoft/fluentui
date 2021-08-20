@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Slot null rendering refactor",
+  "comment": "Update .npmignore",
   "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
+  "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import { Async, EventGroup, classNamesFunction } from '../../Utilities';
-import {
+import { initializeComponentRef } from '@fluentui/utilities';
+import type {
   IDocumentCardTitleProps,
   IDocumentCardTitleStyleProps,
   IDocumentCardTitleStyles,
 } from './DocumentCardTitle.types';
-import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef } from '@fluentui/utilities';
+import type { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 

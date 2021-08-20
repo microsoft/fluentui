@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update background to Canvas and color to CanvasText",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch"
+}

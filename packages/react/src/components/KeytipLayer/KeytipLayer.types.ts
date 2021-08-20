@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle } from '../../Styling';
-import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle } from '../../Styling';
+import type { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
 /**
  * {@docCategory Keytips}

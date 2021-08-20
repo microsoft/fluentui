@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   IDocumentCardLocationProps,
   IDocumentCardLocationStyleProps,
   IDocumentCardLocationStyles,

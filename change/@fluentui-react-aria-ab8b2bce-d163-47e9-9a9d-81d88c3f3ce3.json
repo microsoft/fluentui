@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Updates react-aria on slot null rendering",
+  "comment": "Update .npmignore",
   "packageName": "@fluentui/react-aria",
-  "email": "bsunderhus@microsoft.com",
+  "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }

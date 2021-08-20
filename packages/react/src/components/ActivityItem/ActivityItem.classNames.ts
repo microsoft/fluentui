@@ -1,7 +1,7 @@
 import { mergeStyles } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
-import { IActivityItemStyles } from './ActivityItem.types';
-import { IPersonaProps } from '../../Persona';
+import type { IActivityItemStyles } from './ActivityItem.types';
+import type { IPersonaProps } from '../../Persona';
 
 export interface IActivityItemClassNames {
   root?: string;

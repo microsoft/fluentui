@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Updates react-accordion on slot null rendering",
+  "comment": "Update .npmignore",
   "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
+  "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }

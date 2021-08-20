@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { IVerticalDividerProps, IVerticalDividerPropsStyles, IVerticalDividerStyles } from './VerticalDivider.types';
 import { classNamesFunction } from '../../Utilities';
+import type {
+  IVerticalDividerProps,
+  IVerticalDividerPropsStyles,
+  IVerticalDividerStyles,
+} from './VerticalDivider.types';
+
 const getClassNames = classNamesFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles>();
 
 export const VerticalDividerBase: React.FunctionComponent<IVerticalDividerProps> = React.forwardRef<

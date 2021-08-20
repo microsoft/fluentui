@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix default styling for button on focus",
+            "author": "ololubek@microsoft.com",
+            "commit": "b94c509dfdb919a254199db9cdb7cdaeb01026df",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Aug 2021 07:33:54 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.71",
       "version": "9.0.0-alpha.71",
