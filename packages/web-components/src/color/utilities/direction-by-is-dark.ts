@@ -1,5 +1,5 @@
-import { isDark } from './is-dark';
 import type { Swatch } from '../swatch';
+import { isDark } from './is-dark';
 
 /**
  * @internal

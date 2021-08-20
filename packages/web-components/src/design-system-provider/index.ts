@@ -2,6 +2,8 @@ import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { attr, css, html, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import { DesignToken, display, forcedColorsStylesheetBehavior, FoundationElement } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
+import type { ValueConverter } from '@microsoft/fast-element';
+import type { DesignTokenValue } from '@microsoft/fast-foundation';
 import { PaletteRGB } from '../color/palette';
 import { SwatchRGB } from '../color/swatch';
 import {
@@ -67,8 +69,6 @@ import {
   typeRampPlus6FontSize,
   typeRampPlus6LineHeight,
 } from '../design-tokens';
-import type { ValueConverter } from '@microsoft/fast-element';
-import type { DesignTokenValue } from '@microsoft/fast-foundation';
 import type { Palette } from '../color/palette';
 import type { Swatch } from '../color/swatch';
 

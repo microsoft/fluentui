@@ -6,6 +6,7 @@ import {
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { CheckboxOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 import { heightNumber } from '../styles';
 import {
   bodyFont,
@@ -25,7 +26,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { CheckboxOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 
 export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles = (
   context: ElementDefinitionContext,

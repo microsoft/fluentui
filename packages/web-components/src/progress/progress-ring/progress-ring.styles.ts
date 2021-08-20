@@ -4,9 +4,9 @@ import {
   display,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, ProgressRingOptions } from "@microsoft/fast-foundation";
 import { heightNumber } from '../../styles';
 import { accentForegroundRest, neutralFillRest, neutralForegroundHint } from '../../design-tokens';
-import type { ElementDefinitionContext, ProgressRingOptions } from "@microsoft/fast-foundation";
 
 export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles =
   (context: ElementDefinitionContext, definition: ProgressRingOptions) =>

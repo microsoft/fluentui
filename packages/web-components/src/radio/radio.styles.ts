@@ -6,6 +6,7 @@ import {
   focusVisible,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, RadioOptions } from "@microsoft/fast-foundation";
 import { heightNumber } from '../styles';
 import {
   bodyFont,
@@ -24,7 +25,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, RadioOptions } from "@microsoft/fast-foundation";
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
   context: ElementDefinitionContext,

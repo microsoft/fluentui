@@ -1,6 +1,6 @@
-import { neutralLayer2Index } from './neutral-layer-2';
 import type { Palette } from '../palette';
 import type { Swatch } from '../swatch';
+import { neutralLayer2Index } from './neutral-layer-2';
 
 /**
  * @internal

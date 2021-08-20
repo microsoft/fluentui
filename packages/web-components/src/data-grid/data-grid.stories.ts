@@ -3,9 +3,9 @@ import { Button, DataGrid, DataGridCell, DataGridRow } from '@microsoft/fast-fou
 import { GenerateHeaderOptions } from '@microsoft/fast-foundation/dist/esm/data-grid/data-grid.options';
 import addons from '@storybook/addons';
 import { STORY_RENDERED } from '@storybook/core-events';
+import type { ColumnDefinition } from '@microsoft/fast-foundation';
 import DataGridTemplate from './fixtures/base.html';
 import './index';
-import type { ColumnDefinition } from '@microsoft/fast-foundation';
 
 /* eslint-disable @typescript-eslint/ban-types */
 let defaultGridElement: DataGrid | null = null;

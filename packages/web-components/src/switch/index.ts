@@ -1,6 +1,6 @@
 import { Switch, switchTemplate as template } from '@microsoft/fast-foundation';
-import { switchStyles as styles } from './switch.styles';
 import type { SwitchOptions } from '@microsoft/fast-foundation';
+import { switchStyles as styles } from './switch.styles';
 
 /**
  * The Fluent Switch Custom Element. Implements {@link @microsoft/fast-foundation#Switch},

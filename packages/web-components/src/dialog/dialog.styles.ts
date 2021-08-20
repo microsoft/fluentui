@@ -1,7 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import { elevation } from '../styles';
 import { fillColor, layerCornerRadius, strokeWidth } from '../design-tokens';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const dialogStyles: (
   context: ElementDefinitionContext,

@@ -4,9 +4,9 @@ import {
   display,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import { heightNumber } from '../styles';
 import { bodyFont, designUnit, disabledOpacity, neutralStrokeRest } from '../design-tokens';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const sliderLabelStyles: (
   context: ElementDefinitionContext,

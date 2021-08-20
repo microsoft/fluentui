@@ -6,6 +6,7 @@ import {
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { ElementDefinitionContext, FlipperOptions } from "@microsoft/fast-foundation";
 import { heightNumber } from '../styles';
 import {
   disabledOpacity,
@@ -19,7 +20,6 @@ import {
   neutralStrokeRest,
   strokeWidth,
 } from '../design-tokens';
-import type { ElementDefinitionContext, FlipperOptions } from "@microsoft/fast-foundation";
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
   context: ElementDefinitionContext,

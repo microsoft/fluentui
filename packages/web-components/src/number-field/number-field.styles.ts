@@ -6,6 +6,7 @@ import {
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { ElementDefinitionContext, NumberFieldOptions } from "@microsoft/fast-foundation";
 import { fillStateStyles, heightNumber } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
@@ -27,7 +28,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, NumberFieldOptions } from "@microsoft/fast-foundation";
 
 export const numberFieldFilledStyles: (
   context: ElementDefinitionContext,

@@ -6,6 +6,7 @@ import {
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import { heightNumber } from '../styles/size';
 import {
   accentFillActive,
@@ -29,7 +30,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const optionStyles: (
   context: ElementDefinitionContext,

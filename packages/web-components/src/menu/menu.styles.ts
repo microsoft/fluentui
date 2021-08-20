@@ -1,5 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import { elevation } from '../styles/index';
 import {
   controlCornerRadius,
@@ -9,7 +10,6 @@ import {
   neutralStrokeDividerRest,
   strokeWidth,
 } from '../design-tokens';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>

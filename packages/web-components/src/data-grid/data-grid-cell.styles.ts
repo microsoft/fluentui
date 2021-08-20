@@ -4,6 +4,7 @@ import {
   focusVisible,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import {
   bodyFont,
   controlCornerRadius,
@@ -14,7 +15,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,

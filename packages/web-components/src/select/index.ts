@@ -1,7 +1,7 @@
 import { attr } from '@microsoft/fast-element';
 import { Select as FoundationSelect, selectTemplate as template } from '@microsoft/fast-foundation';
-import { selectStyles as styles } from './select.styles';
 import type { SelectOptions } from '@microsoft/fast-foundation';
+import { selectStyles as styles } from './select.styles';
 
 /**
  * Select appearances

@@ -4,6 +4,7 @@ import {
   display,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, ProgressOptions } from "@microsoft/fast-foundation";
 import {
   accentForegroundRest,
   designUnit,
@@ -11,7 +12,6 @@ import {
   neutralForegroundHint,
   strokeWidth,
 } from '../../design-tokens';
-import type { ElementDefinitionContext, ProgressOptions } from "@microsoft/fast-foundation";
 
 export const progressStyles: (context: ElementDefinitionContext, definition: ProgressOptions) => ElementStyles = (
   context: ElementDefinitionContext,

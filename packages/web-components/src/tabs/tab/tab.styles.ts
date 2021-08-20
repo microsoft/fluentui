@@ -5,6 +5,7 @@ import {
   focusVisible,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import { heightNumber } from '../../styles';
 import {
   bodyFont,
@@ -18,7 +19,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../../design-tokens';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>

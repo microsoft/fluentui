@@ -1,4 +1,5 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
+import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 import {
   AccentButtonStyles,
   baseButtonStyles,
@@ -8,7 +9,6 @@ import {
   StealthButtonStyles,
 } from '../styles/';
 import { appearanceBehavior } from '../utilities/behaviors';
-import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
 
 export const anchorStyles: (
   context: ElementDefinitionContext,

@@ -3,8 +3,8 @@ import {
   HorizontalScroll as FoundationHorizontalScroll,
   horizontalScrollTemplate as template,
 } from '@microsoft/fast-foundation';
-import { ActionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
 import type { HorizontalScrollOptions } from '@microsoft/fast-foundation';
+import { ActionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
 
 /**
  * @internal

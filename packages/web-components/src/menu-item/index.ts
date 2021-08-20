@@ -1,6 +1,6 @@
 import { MenuItem, menuItemTemplate as template } from '@microsoft/fast-foundation';
-import { menuItemStyles as styles } from './menu-item.styles';
 import type { MenuItemOptions } from '@microsoft/fast-foundation';
+import { menuItemStyles as styles } from './menu-item.styles';
 
 /**
  * The Fluent Menu Item Element. Implements {@link @microsoft/fast-foundation#MenuItem},

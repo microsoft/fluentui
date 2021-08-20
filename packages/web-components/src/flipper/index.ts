@@ -1,6 +1,6 @@
 import { Flipper, flipperTemplate as template } from '@microsoft/fast-foundation';
-import { flipperStyles as styles } from './flipper.styles';
 import type { FlipperOptions } from '@microsoft/fast-foundation';
+import { flipperStyles as styles } from './flipper.styles';
 
 /**
  * The Fluent Flipper Element. Implements {@link @microsoft/fast-foundation#Flipper},

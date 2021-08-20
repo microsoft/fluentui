@@ -7,6 +7,7 @@ import {
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { ElementDefinitionContext, TreeItemOptions } from "@microsoft/fast-foundation";
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   accentForegroundRest,
@@ -29,7 +30,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, TreeItemOptions } from "@microsoft/fast-foundation";
 import type { Swatch } from "../color/swatch";
 
 const ltr = css`

@@ -1,7 +1,7 @@
 import { attr } from '@microsoft/fast-element';
 import { Anchor as FoundationAnchor, anchorTemplate as template } from '@microsoft/fast-foundation';
-import { anchorStyles as styles } from './anchor.styles';
 import type { ButtonAppearance } from '../button';
+import { anchorStyles as styles } from './anchor.styles';
 
 /**
  * Types of anchor appearance.

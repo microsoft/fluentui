@@ -1,6 +1,6 @@
 import { AccordionItem, accordionItemTemplate as template } from '@microsoft/fast-foundation';
-import { accordionItemStyles as styles } from './accordion-item.styles';
 import type { AccordionItemOptions } from '@microsoft/fast-foundation';
+import { accordionItemStyles as styles } from './accordion-item.styles';
 
 /**
  * The Fluent Accordion Item Element. Implements {@link @microsoft/fast-foundation#AccordionItem},

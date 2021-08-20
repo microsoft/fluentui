@@ -5,6 +5,7 @@ import {
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { AccordionItemOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 import {
   accentFillRest,
   bodyFont,
@@ -19,7 +20,6 @@ import {
   typeRampMinus1LineHeight,
 } from '../../design-tokens';
 import { heightNumber } from '../../styles/size';
-import type { AccordionItemOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 
 export const accordionItemStyles: (
   context: ElementDefinitionContext,

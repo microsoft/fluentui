@@ -6,6 +6,7 @@ import {
   focusVisible,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, SwitchOptions } from "@microsoft/fast-foundation";
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
 import {
   accentFillActive,
@@ -30,7 +31,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, SwitchOptions } from "@microsoft/fast-foundation";
 
 export const switchStyles: (context: ElementDefinitionContext, defintiion: SwitchOptions) => ElementStyles = (
   context: ElementDefinitionContext,

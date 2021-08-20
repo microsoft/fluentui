@@ -1,12 +1,12 @@
 import { composedParent, Card as FoundationCard, cardTemplate as template } from '@microsoft/fast-foundation';
 import { attr, Observable } from '@microsoft/fast-element';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
+import type { Notifier } from '@microsoft/fast-element';
 import { fillColor, neutralFillLayerRecipe, neutralPalette } from '../design-tokens';
 import { SwatchRGB } from '../color/swatch';
 import { PaletteRGB } from '../color/palette';
-import { cardStyles as styles } from './card.styles';
-import type { Notifier } from '@microsoft/fast-element';
 import type { Swatch } from '../color/swatch';
+import { cardStyles as styles } from './card.styles';
 
 /**
  * @public

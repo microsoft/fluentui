@@ -6,6 +6,7 @@ import {
   focusVisible,
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
+import type { ElementDefinitionContext, SliderOptions } from "@microsoft/fast-foundation";
 import { heightNumber } from '../styles';
 import {
   controlCornerRadius,
@@ -19,7 +20,6 @@ import {
   neutralStrokeHover,
   neutralStrokeRest,
 } from '../design-tokens';
-import type { ElementDefinitionContext, SliderOptions } from "@microsoft/fast-foundation";
 
 export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles = (
   context: ElementDefinitionContext,

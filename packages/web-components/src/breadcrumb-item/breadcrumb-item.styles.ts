@@ -5,6 +5,7 @@ import {
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { BreadcrumbItemOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 import {
   accentForegroundActive,
   accentForegroundHover,
@@ -17,7 +18,6 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 import { heightNumber } from '../styles/index';
-import type { BreadcrumbItemOptions, ElementDefinitionContext } from "@microsoft/fast-foundation";
 
 export const breadcrumbItemStyles: (
   context: ElementDefinitionContext,

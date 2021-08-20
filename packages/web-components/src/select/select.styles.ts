@@ -6,6 +6,7 @@ import {
   forcedColorsStylesheetBehavior
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import type { ElementDefinitionContext, SelectOptions } from "@microsoft/fast-foundation";
 import { elevation } from '../styles/elevation';
 import { heightNumber } from '../styles/size';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -34,7 +35,6 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import type { ElementDefinitionContext, SelectOptions } from "@microsoft/fast-foundation";
 
 export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,

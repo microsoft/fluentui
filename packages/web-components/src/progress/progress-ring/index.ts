@@ -1,6 +1,6 @@
 import { BaseProgress as ProgressRing, progressRingTemplate as template } from '@microsoft/fast-foundation';
-import { progressRingStyles as styles } from './progress-ring.styles';
 import type { ProgressRingOptions } from '@microsoft/fast-foundation';
+import { progressRingStyles as styles } from './progress-ring.styles';
 
 /**
  * The Fluent Progress Ring Element. Implements {@link @microsoft/fast-foundation#BaseProgress},

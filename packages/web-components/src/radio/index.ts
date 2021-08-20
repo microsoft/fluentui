@@ -1,6 +1,6 @@
 import { Radio, radioTemplate as template } from '@microsoft/fast-foundation';
-import { radioStyles as styles } from './radio.styles';
 import type { RadioOptions } from '@microsoft/fast-foundation';
+import { radioStyles as styles } from './radio.styles';
 
 /**
  * The Fluent Radio Element. Implements {@link @microsoft/fast-foundation#Radio},

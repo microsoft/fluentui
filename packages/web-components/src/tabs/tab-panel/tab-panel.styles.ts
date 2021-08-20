@@ -1,7 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { bodyFont, density, designUnit, typeRampMinus1FontSize, typeRampMinus1LineHeight } from '../../design-tokens';
 import type { ElementDefinitionContext, FoundationElementDefinition } from "@microsoft/fast-foundation";
+import { bodyFont, density, designUnit, typeRampMinus1FontSize, typeRampMinus1LineHeight } from '../../design-tokens';
 
 export const tabPanelStyles: (
   context: ElementDefinitionContext,
