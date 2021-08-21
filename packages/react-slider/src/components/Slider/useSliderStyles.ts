@@ -28,7 +28,7 @@ const useRootStyles = makeStyles({
   },
 
   horizontal: theme => ({
-    minWidth: '1200px',
+    minWidth: '120px',
     minHeight: 'var(--slider-thumb-size)',
     flexDirection: 'column',
   }),

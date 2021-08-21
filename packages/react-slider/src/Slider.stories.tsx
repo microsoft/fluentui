@@ -53,13 +53,13 @@ export const MarkedSliderExample = (props: SliderProps) => {
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <Slider marks={true} />
+      <Slider marks={true} max={10} />
       <Label>Custom Mark Values</Label>
-      <Slider marks={[3, 4, 8, 10]} />
+      <Slider marks={[3, 4, 8, 10]} max={10} />
       <Label>Vertical Marks</Label>
       <div className={styles.verticalWrapper}>
-        <Slider vertical marks />
-        <Slider vertical marks={[2, 4, 7, 8, 10]} />
+        <Slider vertical marks max={10} />
+        <Slider vertical marks={[2, 4, 7, 8, 10]} max={10} />
       </div>
     </div>
   );
