@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Use a simple array instead of a const for keytips to register",
+  "packageName": "@fluentui/react",
+  "email": "keyou@microsoft.com",
+  "dependentChangeType": "patch"
+}
