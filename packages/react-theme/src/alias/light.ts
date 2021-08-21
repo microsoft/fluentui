@@ -1,4 +1,4 @@
-import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
+import type { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
 
 export const neutralColorTokens: NeutralColorTokens = {
   neutralForeground1: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
