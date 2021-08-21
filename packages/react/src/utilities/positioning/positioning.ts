@@ -198,13 +198,14 @@ function _isEdgeInBounds(rect: Rectangle, bounds: Rectangle, edge: RectangleEdge
 }
 
 /**
- * Returns a measure of how much a rectangle is out of bounds for a given alignment
+ * Returns a measure of how much a rectangle is out of bounds for a given alignment;
+ * this can be used to compare which rectangle is more or less out of bounds.
  * A value of 0 means the rectangle is entirely in bounds
  */
 function _getOutOfBoundsDegree(rect: Rectangle, bounds: Rectangle) {
   const breakingEdges = _getOutOfBoundsEdges(rect, bounds);
   let total = 0;
-  for (let edge of breakingEdges) {
+  for (const edge of breakingEdges) {
     total += _getRelativeEdgeDifference(rect, bounds, edge) ** 2;
   }
 
@@ -376,7 +377,6 @@ function _alignOutOfBoundsEdges(
   for (const direction of outOfBoundsEdges) {
     let edgeAttempt = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
     const inBounds = _isEdgeInBounds(edgeAttempt, bounding, direction * -1);
-    // const outOfBounds = _getOutOfBoundsEdges(edgeAttempt, bounding);
     // only update estimate if the attempt didn't break out of the opposite bounding edge
     if (!inBounds) {
       edgeAttempt = _moveEdge(edgeAttempt, direction * -1, _getEdgeValue(bounding, direction * -1), false);
@@ -501,6 +501,7 @@ function _finalizeElementPosition(
   returnValue[RectangleEdge[elementEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
 
+  // if the positioned element will still overflow, return all four edges with in-bounds values
   if (forceWithinnBounds) {
     returnValue[RectangleEdge[elementEdge * -1]] = _getRelativeEdgeDifference(
       elementRectangle,
