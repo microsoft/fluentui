@@ -12,7 +12,7 @@ import {
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import type { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
 /**
  * Names of the shorthand properties in TooltipProps

@@ -4,11 +4,11 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export interface OnVisibleChangeData {
