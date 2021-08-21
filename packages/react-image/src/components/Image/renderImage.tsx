@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { ImageState } from './Image.types';
+import type { ImageState } from './Image.types';
 
 /**
  * Define the render function.

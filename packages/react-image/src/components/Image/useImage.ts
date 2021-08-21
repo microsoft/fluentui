@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { ImageProps, ImageState } from './Image.types';
+import type { ImageProps, ImageState } from './Image.types';
 
 const mergeProps = makeMergeProps<ImageState>();
 
