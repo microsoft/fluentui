@@ -39,6 +39,23 @@ const useRootStyles = makeStyles({
     minHeight: '120px',
     flexDirection: 'row',
   }),
+
+  focusIndicator: createFocusIndicatorStyleRule(
+    theme => ({
+      ':after': {
+        content: "''",
+        position: 'absolute',
+        top: '-6px',
+        right: '-6px',
+        bottom: '-6px',
+        left: '-6px',
+        boxSizing: 'border-box',
+        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
+        borderRadius: theme.global.borderRadius.medium,
+      },
+    }),
+    { selector: 'focus-within' },
+  ),
 });
 
 /**
@@ -82,23 +99,6 @@ const useSliderWrapper = makeStyles({
       },
     },
   }),
-
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      ':after': {
-        content: "''",
-        position: 'absolute',
-        top: '-6px',
-        right: '-6px',
-        bottom: '-6px',
-        left: '-6px',
-        boxSizing: 'border-box',
-        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: theme.global.borderRadius.medium,
-      },
-    }),
-    { selector: 'focus-within' },
-  ),
 });
 
 /**
@@ -348,6 +348,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     rootStyles.root,
     rootStyles[state.size],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    rootStyles.focusIndicator,
     state.className,
   );
 
