@@ -4,14 +4,14 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { PartialTheme } from '@fluentui/react-theme';
-import { ProviderContextValue } from '@fluentui/react-shared-contexts';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { PartialTheme } from '@fluentui/react-theme';
+import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-theme';
-import { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
-import { ThemeContextValue } from '@fluentui/react-shared-contexts';
-import { TooltipContextType } from '@fluentui/react-shared-contexts';
+import type { Theme } from '@fluentui/react-theme';
+import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
+import type { ThemeContextValue } from '@fluentui/react-shared-contexts';
+import type { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
