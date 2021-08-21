@@ -29,12 +29,13 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 
 ## API
 
-| Name           | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="100"/> | Description                                                                 |
-| -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------- | ------- | ------- | ----------------------------------------------------------------------------- |
-| checked        | &check;                                                                                 | &check;                                                                               | The value of the Switch. If `true` then the Switch will be enabled.         |
-| defaultChecked | &check;                                                                                 | &check;                                                                               | The default value of the Switch. If `true` then the Switch will be enabled. |
-| disabled       | &check;                                                                                 | &check;                                                                               | Whether the Switch should be disabled                                       | labelPosition | &check; | &check; | Determines whether the label should be positioned before or after the Switch. |
-| onChange       | &check;                                                                                 | &check;                                                                               | Callback to be called when the checked state value changes.                 |
+| Name           | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="100"/> | Description                                                                   |
+| -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| checked        | &check;                                                                                 | &check;                                                                               | The value of the Switch. If `true` then the Switch will be enabled.           |
+| defaultChecked | &check;                                                                                 | &check;                                                                               | The default value of the Switch. If `true` then the Switch will be enabled.   |
+| disabled       | &check;                                                                                 | &check;                                                                               | Whether the Switch should be disabled.                                        |
+| labelPosition  | &check;                                                                                 | &check;                                                                               | Determines whether the label should be positioned before or after the Switch. |
+| onChange       | &check;                                                                                 | &check;                                                                               | Callback to be called when the checked state value changes.                   |
 
 ## Migration
 
@@ -76,12 +77,16 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 
 ```jsx=
 <slots.root {...slotProps.root}>
-  <slots.rail {...slotProps.rail} />
-  <slots.track {...slotProps.track} />
-  <slots.thumbWrapper {...slotProps.thumbWrapper}>
-    <slots.thumb {...slotProps.thumb} />
-  </slots.thumbWrapper>
-  <input type="checkbox" />
+  {state.labelPosition === 'before' && state.children}
+  <slots.switchWrapper {...slotProps.switchWrapper}>
+    <slots.rail {...slotProps.rail} />
+    <slots.track {...slotProps.track} />
+    <slots.thumbWrapper {...slotProps.thumbWrapper}>
+     <slots.thumb {...slotProps.thumb} />
+    </slots.thumbWrapper>
+    <input type="checkbox" />
+  </slots.switchWrapper>
+  {state.labelPosition === 'after' && state.children}
 </slots.root>;
 ```
 
@@ -89,12 +94,14 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 
 ```jsx=
 <div className="ms-switch-root">
-  <div className="ms-switch-rail" />
-  <div className="ms-switch-track" />
-  <div className="ms-switch-thumbWrapper">
-    <div className="ms-switch-thumb" />
+  <div className = "ms-switch-switchContainer">
+    <div className="ms-switch-rail" />
+    <div className="ms-switch-track" />
+    <div className="ms-switch-thumbWrapper">
+      <div className="ms-switch-thumb" />
+    </div>
+    <input type="checkbox" />
   </div>
-  <input type="checkbox" />
 </div>;
 ```
 
@@ -106,22 +113,22 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
   - When disabled, all events are ignored, and the Switch's value never updates.
   - Does not allow focus.
 - **Checked**
-  - Toggle is off when the “thumb” is indicated on the left.
-  - Toggle is on when the thumb is indicated on the right.
+  - Switch is off when the “thumb” is indicated on the left.
+  - Switch is on when the thumb is indicated on the right.
   - This is switched in RTL.
-  - When switching toggles on and off, the on state should change using the checked state appearance styles.
+  - When toggling switches on and off, the on state should change using the checked state appearance styles.
 
 ### Hover
 
-The cursor changes to the hand icon. The outline of the toggle and thumb should also darken. This helps reinforce that the area is interactive.
+The cursor changes to the hand icon. The outline of the Switch and thumb should also darken. This helps reinforce that the area is interactive.
 
 ### Keyboard
 
-Since the toggle is an interactive component, it must be focusable and keyboard accessible.
-The expected keyboard shortcut for activating a toggle is the Spacebar.
+Since the Switch is an interactive component, it must be focusable and keyboard accessible.
+The expected keyboard shortcut for activating a Switch is the spacebar key.
 
-1. Use spacebar to toggle off
-2. Use spacebar to toggle on
+1. Use spacebar to switch off
+2. Use spacebar to switch on
 
 ### Cursor
 
