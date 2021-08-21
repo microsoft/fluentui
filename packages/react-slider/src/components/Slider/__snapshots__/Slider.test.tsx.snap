@@ -17,6 +17,7 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
         Object {
           "borderRadius": "99px",
           "left": 0,
+          "transition": "none",
           "width": "50%",
         }
       }
@@ -27,6 +28,7 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
     style={
       Object {
         "transform": "translateX(50%)",
+        "transition": "none",
       }
     }
   >
@@ -65,6 +67,7 @@ exports[`Slider renders Slider correctly 1`] = `
         Object {
           "borderRadius": "99px",
           "left": 0,
+          "transition": "none",
           "width": "50%",
         }
       }
@@ -75,6 +78,7 @@ exports[`Slider renders Slider correctly 1`] = `
     style={
       Object {
         "transform": "translateX(50%)",
+        "transition": "none",
       }
     }
   >
@@ -114,6 +118,7 @@ Array [
           Object {
             "borderRadius": "0px 99px 99px 0px",
             "left": "20%",
+            "transition": "none",
             "width": "30%",
           }
         }
@@ -124,6 +129,7 @@ Array [
       style={
         Object {
           "transform": "translateX(50%)",
+          "transition": "none",
         }
       }
     >
@@ -160,6 +166,7 @@ Array [
             "borderRadius": "0px 0px 99px 99px",
             "height": "30%",
             "top": "20%",
+            "transition": "none",
           }
         }
       />
@@ -169,6 +176,7 @@ Array [
       style={
         Object {
           "transform": "translateY(50%)",
+          "transition": "none",
         }
       }
     >
@@ -209,6 +217,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
           "borderRadius": "99px",
           "height": "50%",
           "top": 0,
+          "transition": "none",
         }
       }
     />
@@ -218,6 +227,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
     style={
       Object {
         "transform": "translateY(50%)",
+        "transition": "none",
       }
     }
   >

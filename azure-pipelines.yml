@@ -75,6 +75,10 @@ jobs:
           yarn bundle --no-cache $(sinceArg)
         displayName: bundle
 
+      - script: |
+          yarn lage build-storybook --no-cache $(sinceArg) --scope @fluentui/react-components
+        displayName: build react-components storybook
+
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
           yarn workspace @fluentui/pr-deploy-site generate:site

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 18 Aug 2021 07:33:54 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.73)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.72..@fluentui/react-button_v9.0.0-alpha.73)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.72)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.71..@fluentui/react-button_v9.0.0-alpha.72)
+
+### Changes
+
+- fix default styling for button on focus ([PR #19440](https://github.com/microsoft/fluentui/pull/19440) by ololubek@microsoft.com)
 
 ## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.71)
 

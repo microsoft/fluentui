@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.52)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.51..@fluentui/react-tabster_v9.0.0-alpha.52)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.51)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.50..@fluentui/react-tabster_v9.0.0-alpha.51)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.57 ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.50)
 
