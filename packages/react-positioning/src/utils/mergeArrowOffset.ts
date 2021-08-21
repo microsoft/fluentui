@@ -1,4 +1,4 @@
-import { Offset } from '../types';
+import type { Offset } from '../types';
 
 /**
  * Generally when adding an arrow to popper, it's necessary to offset the position of the popper by the

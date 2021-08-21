@@ -1,5 +1,5 @@
 import { isVirtualElement, getVirtualParent, getParent, setVirtualParent, elementContains } from '.';
-import { VirtualElement } from './types';
+import type { VirtualElement } from './types';
 
 const createTestElements = (n: number = 2) => {
   const elements: HTMLElement[] = [];
