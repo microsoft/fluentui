@@ -119,11 +119,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const size = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
+      const sliderSize = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
       const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
 
       const totalSteps = (max - min) / step;
-      const stepLength = size / totalSteps;
+      const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
       const distance = vertical ? position - thumbPosition : thumbPosition - position;
       return distance / stepLength;
@@ -242,6 +242,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         height: origin
           ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
           : `${valuePercent}%`,
+        borderRadius:
+          origin && origin !== (max || min)
+            ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
+            : '99px',
         transition: stepAnimation
           ? `transform ease-in-out ${animationTime}, height ease-in-out ${animationTime}`
           : 'none',
@@ -250,6 +254,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     : {
         left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
         width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
+        borderRadius:
+          origin && origin !== (max || min)
+            ? `${originPercent > valuePercent ? '99px 0px 0px 99px' : '0px 99px 99px 0px'}`
+            : '99px',
         transition: stepAnimation
           ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime} ${
               origin ? ', left ease-in-out ' + animationTime : ''
@@ -267,14 +275,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   }
 
   // Track Props
-  state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
 
   // Thumb Props
-  state.thumb.className = 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';

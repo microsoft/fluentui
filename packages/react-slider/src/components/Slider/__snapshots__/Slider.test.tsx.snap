@@ -7,43 +7,48 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
 >
   <div
     className=""
-  />
-  <div
-    className=""
   >
     <div
-      className="ms-Slider-track"
+      className=""
+    />
+    <div
+      className=""
+    >
+      <div
+        className="ms-Slider-track"
+        style={
+          Object {
+            "borderRadius": "99px",
+            "left": 0,
+            "transition": "none",
+            "width": "50%",
+          }
+        }
+      />
+    </div>
+    <div
+      className=""
       style={
         Object {
-          "left": 0,
+          "transform": "translateX(50%)",
           "transition": "none",
-          "width": "50%",
         }
       }
-    />
-  </div>
-  <div
-    className=""
-    style={
-      Object {
-        "transform": "translateX(50%)",
-        "transition": "none",
-      }
-    }
-  >
+    >
+      <div
+        aria-disabled={true}
+        aria-valuemax={10}
+        aria-valuemin={0}
+        aria-valuenow={5}
+        aria-valuetext="5"
+        className="ms-Slider-thumb"
+        role="slider"
+      />
+    </div>
     <div
-      aria-disabled={true}
-      aria-valuemax={10}
-      aria-valuemin={0}
-      aria-valuenow={5}
-      aria-valuetext="5"
-      className="ms-Slider-thumb"
-      role="slider"
+      className=""
     />
   </div>
-  <div
-    className=""
-  />
 </div>
 `;
 
@@ -56,53 +61,6 @@ exports[`Slider renders Slider correctly 1`] = `
 >
   <div
     className=""
-  />
-  <div
-    className=""
-  >
-    <div
-      className="ms-Slider-track"
-      style={
-        Object {
-          "left": 0,
-          "transition": "none",
-          "width": "50%",
-        }
-      }
-    />
-  </div>
-  <div
-    className=""
-    style={
-      Object {
-        "transform": "translateX(50%)",
-        "transition": "none",
-      }
-    }
-  >
-    <div
-      aria-valuemax={10}
-      aria-valuemin={0}
-      aria-valuenow={5}
-      aria-valuetext="5"
-      className="ms-Slider-thumb"
-      role="slider"
-      tabIndex={0}
-    />
-  </div>
-  <div
-    className=""
-  />
-</div>
-`;
-
-exports[`Slider renders Slider with origin correctly 1`] = `
-Array [
-  <div
-    className=""
-    id="slider-1"
-    onKeyDown={[Function]}
-    onPointerDown={[Function]}
   >
     <div
       className=""
@@ -114,9 +72,10 @@ Array [
         className="ms-Slider-track"
         style={
           Object {
-            "left": "20%",
+            "borderRadius": "99px",
+            "left": 0,
             "transition": "none",
-            "width": "30%",
+            "width": "50%",
           }
         }
       />
@@ -143,12 +102,126 @@ Array [
     <div
       className=""
     />
+  </div>
+</div>
+`;
+
+exports[`Slider renders Slider with origin correctly 1`] = `
+Array [
+  <div
+    className=""
+    id="slider-1"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
+  >
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "borderRadius": "0px 99px 99px 0px",
+              "left": "20%",
+              "transition": "none",
+              "width": "30%",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateX(50%)",
+            "transition": "none",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
   </div>,
   <div
     className=""
     id="slider-2"
     onKeyDown={[Function]}
     onPointerDown={[Function]}
+  >
+    <div
+      className=""
+    >
+      <div
+        className=""
+      />
+      <div
+        className=""
+      >
+        <div
+          className="ms-Slider-track"
+          style={
+            Object {
+              "borderRadius": "0px 0px 99px 99px",
+              "height": "30%",
+              "top": "20%",
+              "transition": "none",
+            }
+          }
+        />
+      </div>
+      <div
+        className=""
+        style={
+          Object {
+            "transform": "translateY(50%)",
+            "transition": "none",
+          }
+        }
+      >
+        <div
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={5}
+          aria-valuetext="5"
+          className="ms-Slider-thumb"
+          role="slider"
+          tabIndex={0}
+        />
+      </div>
+      <div
+        className=""
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`Slider renders vertical Slider correctly 1`] = `
+<div
+  className=""
+  id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
+>
+  <div
+    className=""
   >
     <div
       className=""
@@ -160,8 +233,9 @@ Array [
         className="ms-Slider-track"
         style={
           Object {
-            "height": "30%",
-            "top": "20%",
+            "borderRadius": "99px",
+            "height": "50%",
+            "top": 0,
             "transition": "none",
           }
         }
@@ -189,55 +263,6 @@ Array [
     <div
       className=""
     />
-  </div>,
-]
-`;
-
-exports[`Slider renders vertical Slider correctly 1`] = `
-<div
-  className=""
-  id="slider-1"
-  onKeyDown={[Function]}
-  onPointerDown={[Function]}
->
-  <div
-    className=""
-  />
-  <div
-    className=""
-  >
-    <div
-      className="ms-Slider-track"
-      style={
-        Object {
-          "height": "50%",
-          "top": 0,
-          "transition": "none",
-        }
-      }
-    />
   </div>
-  <div
-    className=""
-    style={
-      Object {
-        "transform": "translateY(50%)",
-        "transition": "none",
-      }
-    }
-  >
-    <div
-      aria-valuemax={10}
-      aria-valuemin={0}
-      aria-valuenow={5}
-      aria-valuetext="5"
-      className="ms-Slider-thumb"
-      role="slider"
-      tabIndex={0}
-    />
-  </div>
-  <div
-    className=""
-  />
 </div>
 `;
