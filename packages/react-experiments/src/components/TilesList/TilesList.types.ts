@@ -133,8 +133,6 @@ export interface ITilesGridSegment<TItem> {
   isPlaceholder?: boolean;
 }
 
-export { ISize as ITileSize };
-
 export interface ITilesListProps<TItem>
   extends IBaseProps,
     React.Props<TilesList<TItem>>, // eslint-disable-line deprecation/deprecation
@@ -173,3 +171,5 @@ export interface ITilesListProps<TItem>
    */
   onRenderRoot?: IRenderFunction<ITilesListRootProps<TItem>>;
 }
+
+export type { ISize as ITileSize };
