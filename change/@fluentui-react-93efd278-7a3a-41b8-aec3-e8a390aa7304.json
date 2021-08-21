@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "fix: Callback to update container scroll position on text height update",
+  "comment": "TextField: Add callback to update container scroll position on text height update",
   "packageName": "@fluentui/react",
   "email": "mevilapa@microsoft.com",
   "dependentChangeType": "patch"
