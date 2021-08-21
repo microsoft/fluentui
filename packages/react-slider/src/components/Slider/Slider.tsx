@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useSlider } from './useSlider';
-import { SliderProps } from './Slider.types';
 import { renderSlider } from './renderSlider';
 import { useSliderStyles } from './useSliderStyles';
+import type { SliderProps } from './Slider.types';
 
 /**
  * Define a styled Slider, using the `useSlider` hook.

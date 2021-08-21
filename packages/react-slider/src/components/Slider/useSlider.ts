@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { SliderProps, SliderSlots, SliderState, SliderPublicRef } from './Slider.types';
 import { useSliderState } from './useSliderState';
+import type { SliderProps, SliderSlots, SliderState, SliderPublicRef } from './Slider.types';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
