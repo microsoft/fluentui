@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
+import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
 
 /**
  * Given user props, returns state and render function for a MenuDivider.

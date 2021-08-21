@@ -4,11 +4,11 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { Context } from '@fluentui/react-context-selector';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { Context } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
 

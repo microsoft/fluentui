@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import { menuItemSlots } from './useMenuItem';
+import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 
 /**
  * Function that renders the final JSX of the component

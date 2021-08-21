@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useMenu } from './useMenu';
 import { useMenuContextValues } from './useMenuContextValues';
-import { MenuProps } from './Menu.types';
 import { renderMenu } from './renderMenu';
+import type { MenuProps } from './Menu.types';
 
 /**
  * Wrapper component that manages state for a popup MenuList and a MenuTrigger

@@ -5,7 +5,8 @@ import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider, MenuListContextValue } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
 
 describe('MenuItemRadio', () => {
   isConformant({
