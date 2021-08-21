@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix various style bugs and design token uses",
-  "packageName": "@fluentui/web-components",
-  "email": "corylaviska@microsoft.com",
-  "dependentChangeType": "patch"
-}
