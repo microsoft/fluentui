@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles-webpack-loader",
-  "version": "9.0.0-alpha.9",
+  "version": "9.0.0-alpha.11",
   "description": "A Webpack for makeStyles",
   "main": "lib/src/index.js",
   "typings": "lib/src/index.d.ts",
@@ -20,12 +20,12 @@
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/make-styles-webpack-loader/src && yarn docs"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.3",
+    "@fluentui/eslint-plugin": "^1.4.0",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.36",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.38",
     "@linaria/babel-preset": "^3.0.0-beta.7",
     "enhanced-resolve": "^5.8.2",
     "loader-utils": "^2.0.0",

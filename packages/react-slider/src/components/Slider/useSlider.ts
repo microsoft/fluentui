@@ -22,12 +22,12 @@ export const useSlider = (props: SliderProps, ref: React.RefObject<HTMLElement &
   const state: SliderState = {
     ref,
     ...props,
-    rail: resolveShorthand(props.rail),
-    trackWrapper: resolveShorthand(props.trackWrapper),
-    track: resolveShorthand(props.track),
-    thumbWrapper: resolveShorthand(props.thumbWrapper),
-    thumb: resolveShorthand(props.thumb),
-    activeRail: resolveShorthand(props.activeRail),
+    rail: resolveShorthand(props.rail, { required: true }),
+    trackWrapper: resolveShorthand(props.trackWrapper, { required: true }),
+    track: resolveShorthand(props.track, { required: true }),
+    thumbWrapper: resolveShorthand(props.thumbWrapper, { required: true }),
+    thumb: resolveShorthand(props.thumb, { required: true }),
+    activeRail: resolveShorthand(props.activeRail, { required: true }),
   };
 
   useSliderState(state);

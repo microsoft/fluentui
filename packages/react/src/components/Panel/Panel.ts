@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 import { PanelBase } from './Panel.base';
 import { getStyles } from './Panel.styles';
+import type { IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 
 /**
  * Panel description

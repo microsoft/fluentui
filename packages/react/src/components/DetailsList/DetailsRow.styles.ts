@@ -1,15 +1,15 @@
-import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import {
   AnimationClassNames,
   AnimationStyles,
   HighContrastSelector,
-  IStyle,
   getFocusStyle,
   getGlobalClassNames,
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import type { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
+import type { IStyle } from '../../Styling';
 
 export const DetailsRowGlobalClassNames = {
   root: 'ms-DetailsRow',

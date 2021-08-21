@@ -1,7 +1,7 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
-import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getRTL } from '../../../Utilities';
+import type { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const GlobalClassNames = {
   root: 'ms-TagItem',

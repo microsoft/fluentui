@@ -1,32 +1,19 @@
 import * as React from 'react';
-import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
 import { ZIndexes } from '../../../Styling';
 import { Layer } from '../../../Layer';
 
 // Utilites/Helpers
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import {
-  Point,
-  IRectangle,
-  css,
-  elementContains,
-  focusFirstChild,
-  EventGroup,
-  getPropsWithDefaults,
-} from '../../../Utilities';
+import { css, elementContains, focusFirstChild, EventGroup, getPropsWithDefaults } from '../../../Utilities';
 
-import {
-  getMaxHeight,
-  positionElement,
-  IPositionedData,
-  IPositionProps,
-  IPosition,
-  RectangleEdge,
-} from '../../../Positioning';
+import { getMaxHeight, positionElement, RectangleEdge } from '../../../Positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 import { useMergedRefs, useAsync, useTarget } from '@fluentui/react-hooks';
+import type { IPositioningContainerProps } from './PositioningContainer.types';
+import type { Point, IRectangle } from '../../../Utilities';
+import type { IPositionedData, IPositionProps, IPosition } from '../../../Positioning';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 

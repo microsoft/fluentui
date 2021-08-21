@@ -82,7 +82,7 @@
     "@fluentui/react-cards": { "implicitDependencies": [] },
     "@fluentui/react-charting": { "implicitDependencies": [] },
     "@fluentui/react-checkbox": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-components": { "implicitDependencies": [] },
+    "@fluentui/react-components": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-compose": { "implicitDependencies": [] },
     "@fluentui/react-conformance": { "implicitDependencies": [] },
     "@fluentui/react-context-selector": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },

@@ -46,8 +46,16 @@ describe('getSlots', () => {
     });
   });
 
-  it('returns null for primitive slots with no children', () => {
-    expect(getSlots({ as: 'div', icon: { as: 'span' } } as ComponentState<{ icon: {} }>, ['icon'])).toEqual({
+  it('returns null for undefined slots', () => {
+    expect(
+      getSlots(
+        {
+          as: 'div',
+          icon: undefined,
+        },
+        ['icon'],
+      ),
+    ).toEqual({
       slots: { root: 'div', icon: nullRender },
       slotProps: { root: {} },
     });

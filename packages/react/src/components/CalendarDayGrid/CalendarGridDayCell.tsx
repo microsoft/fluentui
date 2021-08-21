@@ -1,15 +1,9 @@
 import * as React from 'react';
 import { KeyCodes, css, getRTLSafeKeyCode } from '@fluentui/utilities';
-import {
-  addDays,
-  addWeeks,
-  compareDates,
-  findAvailableDate,
-  IAvailableDateOptions,
-  DateRangeType,
-} from '@fluentui/date-time-utilities';
-import { IDayInfo } from './CalendarDayGrid.base';
-import { ICalendarGridRowProps } from './CalendarGridRow';
+import { addDays, addWeeks, compareDates, findAvailableDate, DateRangeType } from '@fluentui/date-time-utilities';
+import type { IAvailableDateOptions } from '@fluentui/date-time-utilities';
+import type { IDayInfo } from './CalendarDayGrid.base';
+import type { ICalendarGridRowProps } from './CalendarGridRow';
 
 export interface ICalendarGridDayCellProps extends ICalendarGridRowProps {
   day: IDayInfo;

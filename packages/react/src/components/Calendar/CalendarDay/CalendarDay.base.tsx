@@ -2,11 +2,11 @@ import * as React from 'react';
 import { KeyCodes, css, classNamesFunction, format } from '@fluentui/utilities';
 import { Icon } from '../../../Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
-import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { CalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid';
-import { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 import { useId } from '@fluentui/react-hooks';
+import type { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
+import type { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 

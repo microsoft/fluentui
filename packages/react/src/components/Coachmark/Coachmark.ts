@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { ICoachmarkProps, ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 import { getStyles } from './Coachmark.styles';
 import { CoachmarkBase } from './Coachmark.base';
+import type { ICoachmarkProps, ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 
 export const Coachmark: React.FunctionComponent<ICoachmarkProps> = styled<
   ICoachmarkProps,

@@ -1,4 +1,4 @@
-import { IRawStyle } from '../MergeStyles';
+import type { IRawStyle } from '../MergeStyles';
 
 export const HighContrastSelector = '@media screen and (-ms-high-contrast: active), (forced-colors: active)';
 export const HighContrastSelectorWhite =

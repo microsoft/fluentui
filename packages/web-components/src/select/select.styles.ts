@@ -19,6 +19,7 @@ import {
   disabledOpacity,
   focusStrokeInner,
   focusStrokeOuter,
+  focusStrokeWidth,
   foregroundOnAccentFocus,
   neutralFillHover,
   neutralFillInputActive,
@@ -128,7 +129,7 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-      box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${focusStrokeInner};
+      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
       border-color: ${focusStrokeOuter};
       background: ${accentFillFocus};
       color: ${foregroundOnAccentFocus};
@@ -261,7 +262,7 @@ export const selectStyles = (context, definition) =>
         :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
           background: ${SystemColors.Highlight};
           border-color: ${SystemColors.ButtonText};
-          box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
+          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${SystemColors.HighlightText};
           color: ${SystemColors.HighlightText};
           fill: currentcolor;
         }
