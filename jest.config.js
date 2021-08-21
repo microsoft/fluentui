@@ -34,6 +34,7 @@ module.exports = {
     '<rootDir>/packages/react-tooltip',
     '<rootDir>/packages/react-card',
     '<rootDir>/packages/react-checkbox',
+    '<rootDir>/packages/react-components',
     '<rootDir>/packages/react-storybook-addon',
     '<rootDir>/packages/react-switch',
   ],

@@ -82,15 +82,24 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
 
   /**
    * The max value of the **Slider**.
-   * @default 10
+   * @default 100
    */
   max?: number;
 
   /**
-   * The number of steps that the **Slider's** `value` will increment upon change.
-   * @default 1
+   * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
+   * will snap to the closest available value.
    */
   step?: number;
+
+  /**
+   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
+   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
+   * snapping values.
+   *
+   * @default `step` or 1
+   */
+  keyboardStep?: number;
 
   /**
    *  Whether to render the **Slider** as disabled.
@@ -119,6 +128,12 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    * @default min
    */
   origin?: number;
+
+  /**
+   * The size of the Slider.
+   * @default 'medium'
+   */
+  size: 'small' | 'medium';
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.

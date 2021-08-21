@@ -19,6 +19,7 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
     disabled?: boolean;
+    keyboardStep?: number;
     marks?: boolean | number[];
     max?: number;
     min?: number;
@@ -26,6 +27,7 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
         value: number;
     }) => void;
     origin?: number;
+    size: 'small' | 'medium';
     step?: number;
     value?: number;
     vertical?: boolean;

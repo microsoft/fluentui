@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix default styling for button on focus",
-  "packageName": "@fluentui/react-button",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

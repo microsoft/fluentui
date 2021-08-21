@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Aug 2021 07:39:30 GMT",
       "tag": "@fluentui/date-time-utilities_v8.2.2",
       "version": "8.2.2",

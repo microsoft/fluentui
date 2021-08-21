@@ -18,7 +18,9 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
         className="ms-Slider-track"
         style={
           Object {
+            "borderRadius": "99px",
             "left": 0,
+            "transition": "none",
             "width": "50%",
           }
         }
@@ -29,6 +31,7 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
       style={
         Object {
           "transform": "translateX(50%)",
+          "transition": "none",
         }
       }
     >
@@ -69,7 +72,9 @@ exports[`Slider renders Slider correctly 1`] = `
         className="ms-Slider-track"
         style={
           Object {
+            "borderRadius": "99px",
             "left": 0,
+            "transition": "none",
             "width": "50%",
           }
         }
@@ -80,6 +85,7 @@ exports[`Slider renders Slider correctly 1`] = `
       style={
         Object {
           "transform": "translateX(50%)",
+          "transition": "none",
         }
       }
     >
@@ -112,10 +118,220 @@ Array [
       className=""
       style={
         Object {
-          "gridTemplateColumns": "0% 30% 30% 30% 30% ",
+          "gridTemplateColumns": "0% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 2.999999999999993% 3.000000000000007% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% 3% ",
         }
       }
     >
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
+      <div
+        className="ms-Slider-markItemContainer"
+      >
+        <div
+          className="ms-Slider-mark"
+        />
+      </div>
       <div
         className="ms-Slider-markItemContainer"
       >
@@ -165,8 +381,10 @@ Array [
           className="ms-Slider-track"
           style={
             Object {
+              "borderRadius": "99px",
               "left": 0,
-              "width": "50%",
+              "transition": "none",
+              "width": "5%",
             }
           }
         />
@@ -175,12 +393,13 @@ Array [
         className=""
         style={
           Object {
-            "transform": "translateX(50%)",
+            "transform": "translateX(5%)",
+            "transition": "none",
           }
         }
       >
         <div
-          aria-valuemax={10}
+          aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={5}
           aria-valuetext="5"
@@ -204,7 +423,7 @@ Array [
       className=""
       style={
         Object {
-          "gridTemplateColumns": "10% ",
+          "gridTemplateColumns": "1% ",
         }
       }
     >
@@ -229,8 +448,10 @@ Array [
           className="ms-Slider-track"
           style={
             Object {
+              "borderRadius": "99px",
               "left": 0,
-              "width": "50%",
+              "transition": "none",
+              "width": "5%",
             }
           }
         />
@@ -239,12 +460,13 @@ Array [
         className=""
         style={
           Object {
-            "transform": "translateX(50%)",
+            "transform": "translateX(5%)",
+            "transition": "none",
           }
         }
       >
         <div
-          aria-valuemax={10}
+          aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={5}
           aria-valuetext="5"
@@ -268,7 +490,7 @@ Array [
       className=""
       style={
         Object {
-          "gridTemplateColumns": "10% 20% 40% 10% ",
+          "gridTemplateColumns": "1% 2% 4.000000000000001% 0.9999999999999991% ",
         }
       }
     >
@@ -314,8 +536,10 @@ Array [
           className="ms-Slider-track"
           style={
             Object {
+              "borderRadius": "99px",
               "left": 0,
-              "width": "50%",
+              "transition": "none",
+              "width": "5%",
             }
           }
         />
@@ -324,12 +548,13 @@ Array [
         className=""
         style={
           Object {
-            "transform": "translateX(50%)",
+            "transform": "translateX(5%)",
+            "transition": "none",
           }
         }
       >
         <div
-          aria-valuemax={10}
+          aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={5}
           aria-valuetext="5"
@@ -353,7 +578,7 @@ Array [
       className=""
       style={
         Object {
-          "gridTemplateRows": "50% -30% 70% 90% ",
+          "gridTemplateRows": "5% -3% 7% 9% ",
         }
       }
     >
@@ -399,8 +624,10 @@ Array [
           className="ms-Slider-track"
           style={
             Object {
-              "height": "50%",
+              "borderRadius": "99px",
+              "height": "5%",
               "top": 0,
+              "transition": "none",
             }
           }
         />
@@ -409,12 +636,13 @@ Array [
         className=""
         style={
           Object {
-            "transform": "translateY(50%)",
+            "transform": "translateY(5%)",
+            "transition": "none",
           }
         }
       >
         <div
-          aria-valuemax={10}
+          aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={5}
           aria-valuetext="5"
@@ -452,7 +680,9 @@ Array [
           className="ms-Slider-track"
           style={
             Object {
+              "borderRadius": "0px 99px 99px 0px",
               "left": "20%",
+              "transition": "none",
               "width": "30%",
             }
           }
@@ -463,6 +693,7 @@ Array [
         style={
           Object {
             "transform": "translateX(50%)",
+            "transition": "none",
           }
         }
       >
@@ -500,8 +731,10 @@ Array [
           className="ms-Slider-track"
           style={
             Object {
+              "borderRadius": "0px 0px 99px 99px",
               "height": "30%",
               "top": "20%",
+              "transition": "none",
             }
           }
         />
@@ -511,6 +744,7 @@ Array [
         style={
           Object {
             "transform": "translateY(50%)",
+            "transition": "none",
           }
         }
       >
@@ -552,8 +786,10 @@ exports[`Slider renders vertical Slider correctly 1`] = `
         className="ms-Slider-track"
         style={
           Object {
+            "borderRadius": "99px",
             "height": "50%",
             "top": 0,
+            "transition": "none",
           }
         }
       />
@@ -563,6 +799,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
       style={
         Object {
           "transform": "translateY(50%)",
+          "transition": "none",
         }
       }
     >
