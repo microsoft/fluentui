@@ -119,11 +119,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const size = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
+      const sliderSize = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
       const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
 
       const totalSteps = (max - min) / step;
-      const stepLength = size / totalSteps;
+      const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
       const distance = vertical ? position - thumbPosition : thumbPosition - position;
       return distance / stepLength;

@@ -26,6 +26,11 @@ export type SliderSlots = {
   rail: React.HTMLAttributes<HTMLElement>;
 
   /**
+   * The wrapper around the Slider component.
+   */
+  sliderWrapper: React.HTMLAttributes<HTMLElement>;
+
+  /**
    * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
   trackWrapper: React.HTMLAttributes<HTMLElement>;
@@ -111,6 +116,12 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
    * @default min
    */
   origin?: number;
+
+  /**
+   * The size of the Slider.
+   * @default 'medium'
+   */
+  size: 'small' | 'medium';
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.

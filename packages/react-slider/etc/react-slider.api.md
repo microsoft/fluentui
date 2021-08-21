@@ -26,6 +26,7 @@ export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
         value: number;
     }) => void;
     origin?: number;
+    size: 'small' | 'medium';
     step?: number;
     value?: number;
     vertical?: boolean;
@@ -47,6 +48,7 @@ export const sliderShorthandProps: Array<keyof SliderSlots>;
 // @public
 export type SliderSlots = {
     rail: React_2.HTMLAttributes<HTMLElement>;
+    sliderWrapper: React_2.HTMLAttributes<HTMLElement>;
     trackWrapper: React_2.HTMLAttributes<HTMLElement>;
     track: React_2.HTMLAttributes<HTMLElement>;
     thumbWrapper: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
