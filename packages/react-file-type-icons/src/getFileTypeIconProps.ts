@@ -1,5 +1,6 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
-import { FileIconType, FileIconTypeInput } from './FileIconType';
+import { FileIconType } from './FileIconType';
+import type { FileIconTypeInput } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 

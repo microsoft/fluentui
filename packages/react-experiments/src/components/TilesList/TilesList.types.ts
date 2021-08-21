@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import { TilesList } from './TilesList';
-import { IFocusZone } from '@fluentui/react/lib/FocusZone';
-import { IListProps } from '@fluentui/react/lib/List';
-import { IRenderFunction } from '@fluentui/utilities';
+import type { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
+import type { IFocusZone } from '@fluentui/react/lib/FocusZone';
+import type { IListProps } from '@fluentui/react/lib/List';
+import type { IRenderFunction } from '@fluentui/utilities';
 
 export interface ITilesGridItemCellProps<TItem> {
   item: TItem;
