@@ -1,14 +1,14 @@
-import { TabsStyleProps, TabsStyles } from './Tabs.types';
 import {
   AnimationVariables,
   getGlobalClassNames,
   HighContrastSelector,
-  IStyle,
   normalize,
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import type { TabsStyleProps, TabsStyles } from './Tabs.types';
+import type { IStyle } from '@fluentui/style-utilities';
 
 const globalClassNames = {
   count: 'ms-Tabs-count',
