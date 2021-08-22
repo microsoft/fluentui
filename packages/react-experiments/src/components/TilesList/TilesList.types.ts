@@ -61,7 +61,7 @@ export interface ITilesGridItem<TItem> {
   onRenderCell?: (props: ITilesGridItemCellProps<TItem>) => JSX.Element | null;
 }
 
-export const enum TilesGridMode {
+export enum TilesGridMode {
   /**
    * Every item in the grid gets its own row.
    */
