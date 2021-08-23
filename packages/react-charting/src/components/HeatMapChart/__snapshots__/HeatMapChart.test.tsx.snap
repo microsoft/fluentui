@@ -277,7 +277,6 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -589,7 +588,6 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -678,7 +676,6 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1157,7 +1154,6 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1469,7 +1465,6 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
