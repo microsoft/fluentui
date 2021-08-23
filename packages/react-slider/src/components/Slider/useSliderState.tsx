@@ -73,7 +73,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = React.useRef<HTMLDivElement>(null);
+  const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
 
@@ -215,13 +215,6 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     },
     [currentValue, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
-
-  React.useEffect(() => {
-    if (state.ref && state.ref.current) {
-      state.ref.current.value = currentValue;
-      state.ref.current.focus = () => thumbRef?.current?.focus();
-    }
-  }, [currentValue, state.ref]);
 
   const valuePercent = getPercent(renderedPosition!, min, max);
 
