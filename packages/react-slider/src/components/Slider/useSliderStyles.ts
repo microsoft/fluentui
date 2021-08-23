@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import type { SliderState } from './Slider.types';
+import { SliderState } from './Slider.types';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -20,11 +20,13 @@ const useRootStyles = makeStyles({
   small: {
     '--slider-thumb-size': '10px',
     '--slider-rail-size': '2px',
+    '--slider-mark-size': '2px',
   },
 
   medium: {
     '--slider-thumb-size': '20px',
     '--slider-rail-size': '4px',
+    '--slider-mark-size': '4px',
   },
 
   horizontal: theme => ({
@@ -195,16 +197,23 @@ const useTrackStyles = makeStyles({
  */
 const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
+    position: 'relative',
     display: 'grid',
     outline: 'none',
-
+    zIndex: '1',
+    whiteSpace: 'nowrap',
     '& .ms-Slider-mark': {
-      background: '#626262',
+      // TODO: theme neutralStrokeOnBrand
+      background: 'white',
+    },
+
+    '& .first, .last': {
+      opacity: '0',
     },
   }),
 
   horizontal: theme => ({
-    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    marginTop: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
     justifyItems: 'end',
@@ -225,7 +234,7 @@ const useMarksContainerStyles = makeStyles({
   vertical: theme => ({
     marginTop: 'calc(var(--slider-thumb-size) / 2)',
     marginBottom: 'calc(var(--slider-thumb-size) / 2)',
-    marginLeft: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     justifyItems: 'start',
 
     '& .ms-Slider-markItemContainer': {
@@ -239,7 +248,7 @@ const useMarksContainerStyles = makeStyles({
 
     '& .ms-Slider-mark': {
       height: '1px',
-      width: '4px',
+      width: 'var(--slider-mark-size)',
     },
   }),
 });
@@ -251,6 +260,7 @@ const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
+    zIndex: '2',
   }),
 
   horizontal: theme => ({
@@ -347,8 +357,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.className = mergeClasses(
     rootStyles.root,
     rootStyles[state.size],
-    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     rootStyles.focusIndicator,
+    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.className,
   );
 
