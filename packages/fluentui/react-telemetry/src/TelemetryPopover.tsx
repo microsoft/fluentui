@@ -1,5 +1,5 @@
 import { useEventListener } from '@fluentui/react-component-event-listener';
-import { ProviderContextPrepared, Telemetry, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
+import { Telemetry, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -7,6 +7,7 @@ import * as styles from './styles';
 import { TelemetryTable } from './TelemetryTable';
 import { useTelemetryState } from './useTelemetryState';
 import { TelemetryPerfFlags } from './TelemetryPerfFlags';
+import type { ProviderContextPrepared } from '@fluentui/react-bindings';
 
 export type TelemetryPopoverProps = {
   mountNode?: HTMLElement;

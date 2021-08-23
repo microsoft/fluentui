@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { ComponentPerfStats, Telemetry } from '@fluentui/react-bindings';
+import { Telemetry } from '@fluentui/react-bindings';
+import type { ComponentPerfStats } from '@fluentui/react-bindings';
 
 export type TelemetryDataItem = ComponentPerfStats & {
   componentName: string;

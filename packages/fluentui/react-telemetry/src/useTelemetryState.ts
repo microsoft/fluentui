@@ -1,5 +1,6 @@
-import { defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
+import { defaultPerformanceFlags } from '@fluentui/react-bindings';
 import * as React from 'react';
+import type { StylesContextPerformance } from '@fluentui/react-bindings';
 
 export type TelemetryPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 export type TelemetryTabs = 'telemetry' | 'performance-flags';

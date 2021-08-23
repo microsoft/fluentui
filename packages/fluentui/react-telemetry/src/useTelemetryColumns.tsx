@@ -1,9 +1,8 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { CellProps, Column, FilterProps, HeaderProps, UseFiltersColumnProps } from 'react-table';
-
 import * as styles from './styles';
-import { TelemetryDataTotals } from './useTelemetryData';
+import type { CellProps, Column, FilterProps, HeaderProps, UseFiltersColumnProps } from 'react-table';
+import type { TelemetryDataTotals } from './useTelemetryData';
 
 export type CellAlign = 'left' | 'right' | 'center';
 

@@ -7,7 +7,8 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "isolatedModules": true
   },
   "include": ["src", "test"],
   "references": [

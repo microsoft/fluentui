@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { TelemetryPosition } from './useTelemetryState';
-import { CellAlign } from './useTelemetryColumns';
+import type { TelemetryPosition } from './useTelemetryState';
+import type { CellAlign } from './useTelemetryColumns';
 
 type CellColor = { backgroundColor: string; color: string };
 

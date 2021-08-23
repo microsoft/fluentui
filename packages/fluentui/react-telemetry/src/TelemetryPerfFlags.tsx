@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { defaultPerformanceFlags, StylesContextPerformance } from '@fluentui/react-bindings';
+import { defaultPerformanceFlags } from '@fluentui/react-bindings';
 
 import * as styles from './styles';
+import type { StylesContextPerformance } from '@fluentui/react-bindings';
 
 type TelemetryPerfFlagsProps = {
   flags: StylesContextPerformance;

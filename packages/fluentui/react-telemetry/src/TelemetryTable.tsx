@@ -1,25 +1,24 @@
 import { Telemetry } from '@fluentui/react-bindings';
 import * as React from 'react';
-import {
+import { useFilters, usePagination, useSortBy, useTable } from 'react-table';
+
+import * as styles from './styles';
+import { useIntervalUpdate } from './useIntervalUpdate';
+import { useTelemetryColumns } from './useTelemetryColumns';
+import { useTelemetryData } from './useTelemetryData';
+import type {
   Cell,
   HeaderGroup,
   Row,
   TableOptions,
   TableState,
-  useFilters,
   UseFiltersColumnProps,
-  usePagination,
-  useSortBy,
   UseSortByColumnProps,
   UseSortByState,
-  useTable,
 } from 'react-table';
-
-import * as styles from './styles';
-import { useIntervalUpdate } from './useIntervalUpdate';
-import { useTelemetryColumns, CellAlign } from './useTelemetryColumns';
-import { TelemetryDataTotals, useTelemetryData } from './useTelemetryData';
-import { TelemetryState, TelemetryTableExpandNames } from './useTelemetryState';
+import type { CellAlign } from './useTelemetryColumns';
+import type { TelemetryDataTotals } from './useTelemetryData';
+import type { TelemetryState, TelemetryTableExpandNames } from './useTelemetryState';
 
 type TelemetryTableProps = {
   telemetry: Telemetry;
