@@ -1,6 +1,6 @@
-import { IAvailableDateOptions } from './dateGrid.types';
 import * as DateGrid from './findAvailableDate';
 import { MonthOfYear } from '../dateValues/dateValues';
+import type { IAvailableDateOptions } from './dateGrid.types';
 
 describe('findAvailableDate', () => {
   const defaultOptions: IAvailableDateOptions = {

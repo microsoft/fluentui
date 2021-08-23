@@ -1,8 +1,7 @@
 import { DateRangeType, DayOfWeek, FirstWeekOfYear } from '../dateValues/dateValues';
 import { addDays, compareDates } from '../dateMath/dateMath';
-import { IDayGridOptions } from './dateGrid.types';
 import * as DateGrid from './getDayGrid';
-import { IDay } from './dateGrid.types';
+import type { IDayGridOptions, IDay } from './dateGrid.types';
 
 describe('getDayGrid', () => {
   const defaultDate = new Date('Apr 1 2016');

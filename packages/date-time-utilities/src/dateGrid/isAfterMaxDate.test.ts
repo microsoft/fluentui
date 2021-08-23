@@ -1,6 +1,6 @@
-import { IRestrictedDatesOptions } from './dateGrid.types';
 import * as DateGrid from './isAfterMaxDate';
 import { MonthOfYear } from '../dateValues/dateValues';
+import type { IRestrictedDatesOptions } from './dateGrid.types';
 
 describe('isAfterMaxDate', () => {
   const date = new Date(2016, MonthOfYear.April, 3);

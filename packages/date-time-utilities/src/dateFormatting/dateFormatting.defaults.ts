@@ -1,4 +1,4 @@
-import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
+import type { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
 
 /**
  * Format date to a day string representation

@@ -1,6 +1,6 @@
 import * as DateGrid from './isBeforeMinDate';
-import { IRestrictedDatesOptions } from './dateGrid.types';
 import { MonthOfYear } from '../dateValues/dateValues';
+import type { IRestrictedDatesOptions } from './dateGrid.types';
 
 describe('isBeforeMinDate', () => {
   const date = new Date(2016, MonthOfYear.April, 3);
