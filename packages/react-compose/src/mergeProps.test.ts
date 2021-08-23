@@ -1,6 +1,6 @@
 import { mergeProps } from './mergeProps';
 import { defaultComposeOptions } from './defaultComposeOptions';
-import { ComposePreparedOptions } from './types';
+import type { ComposePreparedOptions } from './types';
 
 const nullRenderer = () => null;
 

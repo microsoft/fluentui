@@ -1,8 +1,7 @@
 import * as React from 'react';
-
-import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
 import { wasComposedPreviously } from './wasComposedPreviously';
 import { mergeComposeOptions } from './mergeComposeOptions';
+import type { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
 
 function compose<
   TElementType extends keyof JSX.IntrinsicElements,

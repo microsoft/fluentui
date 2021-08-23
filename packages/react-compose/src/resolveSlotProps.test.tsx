@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveSlotProps, NullRender } from './resolveSlotProps';
 import { defaultComposeOptions } from './defaultComposeOptions';
-import { ComposePreparedOptions } from './types';
+import type { ComposePreparedOptions } from './types';
 
 const nullRenderer = () => null;
 

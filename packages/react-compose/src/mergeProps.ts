@@ -1,6 +1,6 @@
-import { ComposePreparedOptions, MergePropsResult, GenericDictionary } from './types';
 import { resolveClasses } from './resolveClasses';
 import { resolveSlotProps } from './resolveSlotProps';
+import type { ComposePreparedOptions, MergePropsResult, GenericDictionary } from './types';
 
 /**
  * Merge props takes in state and compose options, and resolves slots and slotProps.

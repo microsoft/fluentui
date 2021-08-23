@@ -1,5 +1,6 @@
-import { ComposePreparedOptions, ClassDictionary, GenericDictionary, MergePropsResult } from './types';
 import { appendClasses } from './appendClasses';
+import type { ComposePreparedOptions, ClassDictionary, GenericDictionary, MergePropsResult } from './types';
+
 /**
  * Helper utility which takes in a classes array from compose options, resolves functions,
  * merges them into a final result, and distributes classnames to slotProps within the given

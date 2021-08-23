@@ -1,5 +1,5 @@
-import { SlotProp } from './types';
 import * as React from 'react';
+import type { SlotProp } from './types';
 
 /**
  * Merge props for a slot to a slot prop.

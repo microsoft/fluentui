@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 import compose from './compose';
 import { mergeProps } from './mergeProps';
-import { ComposePreparedOptions } from './types';
+import type { ComposePreparedOptions } from './types';
 
 describe('compose', () => {
   interface ToggleProps extends React.AllHTMLAttributes<{}> {

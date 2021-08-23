@@ -1,5 +1,5 @@
-import { GenericDictionary, ClassDictionary } from './types';
 import { appendClasses } from './appendClasses';
+import type { GenericDictionary, ClassDictionary } from './types';
 
 /**
  * `createClassResolver` is a factory function which creates a state to classmap resolver for
