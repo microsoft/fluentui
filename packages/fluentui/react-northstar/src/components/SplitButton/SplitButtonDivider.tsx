@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { Accessibility } from '@fluentui/accessibility';
 import {
   useTelemetry,
@@ -29,9 +30,12 @@ export interface SplitButtonDividerProps
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<never>;
+
+  /** A split button divider can be formatted to show different levels of emphasis. */
+  primary?: boolean;
 }
 
-export type SplitButtonDividerStylesProps = never;
+export type SplitButtonDividerStylesProps = Required<Pick<SplitButtonDividerProps, 'primary'>>;
 
 export const SplitButtonDividerClassName = 'ui-splitButtonDivider';
 
@@ -45,6 +49,7 @@ export const SplitButtonDivider: ComponentWithAs<'div', SplitButtonDividerProps>
   setStart();
   const { className, design, styles, variables, accessibility } = props;
   const ElementType = getElementType(props);
+  const { primary } = props;
   const unhandledProps = useUnhandledProps(SplitButtonDivider.handledProps, props);
   const getA11yProps = useAccessibility<never>(accessibility, {
     debugName: SplitButtonDivider.displayName,
@@ -52,6 +57,9 @@ export const SplitButtonDivider: ComponentWithAs<'div', SplitButtonDividerProps>
   });
   const { classes } = useStyles<SplitButtonDividerStylesProps>(SplitButtonDivider.displayName, {
     className: SplitButtonDividerClassName,
+    mapPropsToStyles: () => ({
+      primary,
+    }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -77,6 +85,7 @@ SplitButtonDivider.displayName = 'SplitButtonDivider';
 
 SplitButtonDivider.propTypes = {
   ...commonPropTypes.createCommon(),
+  primary: PropTypes.bool,
 };
 
 SplitButtonDivider.handledProps = Object.keys(SplitButtonDivider.propTypes) as any;

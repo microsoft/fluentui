@@ -20,6 +20,9 @@ export const splitButtonDividerStyles: ComponentSlotStylesPrepared<
         height: '100%',
         zIndex: 1,
         background: variables.dividerColor,
+        ...(props.primary && {
+          background: variables.dividerPrimaryColor,
+        }),
       },
     };
   },

@@ -14,6 +14,7 @@ export interface SplitButtonVariables {
   minWidth: string;
   boxShadow: string;
   dividerColor: string;
+  dividerPrimaryColor: string;
   toggleButtonHeight: string;
 
   toggleButtonColor: string;
@@ -69,7 +70,8 @@ export const splitButtonVariables = (siteVars: SiteVariablesPrepared): SplitButt
     minWidth: '0',
     boxShadow: siteVars.shadowLevel1,
     toggleButtonHeight: pxToRem(32),
-    dividerColor: 'rgb(0 0 0 / 25%)',
+    dividerColor: '#000000',
+    dividerPrimaryColor: siteVars.colorScheme.default.backgroundFocus,
     toggleButtonColor: siteVars.colorScheme.default.foreground,
     toggleButtonBackgroundColor: siteVars.colorScheme.default.background,
     toggleButtonBorderRadius: siteVars.borderRadiusMedium,
