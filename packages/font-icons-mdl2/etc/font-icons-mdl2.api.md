@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IIconOptions } from '@fluentui/style-utilities';
+import type { IIconOptions } from '@fluentui/style-utilities';
 
 // @public @deprecated (undocumented)
 export const enum IconNames {
@@ -3614,7 +3614,6 @@ export const enum IconNames {
 
 // @public (undocumented)
 export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
-
 
 // (No @packageDocumentation comment for this package)
 

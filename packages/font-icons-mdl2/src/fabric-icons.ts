@@ -1,6 +1,7 @@
 // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fluentui-assets-license
 
-import { IIconOptions, IIconSubset, registerIcons } from '@fluentui/style-utilities';
+import { registerIcons } from '@fluentui/style-utilities';
+import type { IIconOptions, IIconSubset } from '@fluentui/style-utilities';
 
 export function initializeIcons(baseUrl: string = '', options?: IIconOptions): void {
   const subset: IIconSubset = {

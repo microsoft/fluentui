@@ -1,4 +1,5 @@
-import { IconNames, IconNamesInput } from './IconNames';
+import { IconNames } from './IconNames';
+import type { IconNamesInput } from './IconNames';
 
 // eslint-disable-next-line deprecation/deprecation
 declare const allIconNamesValues: IconNames;

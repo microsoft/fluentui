@@ -13,7 +13,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "preserveConstEnums": false,
-    "types": []
+    "types": [],
+    "isolatedModules": true
   },
   "include": ["src"]
 }
