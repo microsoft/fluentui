@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useFluentContext, useStyles, getUnhandledProps } from '@fluentui/react-bindings';
-
-import { SvgIconCreateFnParams, SvgIconProps } from './types';
+import type { SvgIconCreateFnParams, SvgIconProps } from './types';
 
 export const svgIconClassName = 'ui-icon';
 export const svgIconDisplayName = 'SvgIcon';
