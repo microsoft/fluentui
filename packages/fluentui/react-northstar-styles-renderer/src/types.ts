@@ -1,5 +1,5 @@
-import { ICSSInJSStyle, FontFace } from '@fluentui/styles';
 import * as React from 'react';
+import type { ICSSInJSStyle, FontFace } from '@fluentui/styles';
 
 export type RendererParam = {
   direction: 'ltr' | 'rtl';
