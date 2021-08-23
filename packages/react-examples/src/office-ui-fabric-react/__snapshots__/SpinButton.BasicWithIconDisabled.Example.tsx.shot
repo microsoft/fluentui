@@ -228,7 +228,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                pointer-events: none;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
@@ -373,7 +372,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                pointer-events: none;
                 position: relative;
                 text-align: center;
                 text-decoration: none;

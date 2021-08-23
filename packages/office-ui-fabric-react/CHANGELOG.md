@@ -1,8 +1,204 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.174.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.174.1)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.174.0..office-ui-fabric-react_v7.174.1)
+
+### Patches
+
+- Fix horizontal scrollbar detection in MarqueeSelection ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [7.174.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.174.0)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.173.1..office-ui-fabric-react_v7.174.0)
+
+### Minor changes
+
+- Add showTooltip prop to IFacepileProps to allow for user rendered tooltips ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.173.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.173.1)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.173.0..office-ui-fabric-react_v7.173.1)
+
+### Patches
+
+- Set id correctly on header item when title is an IContextualMenuItem ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+- ComboBox: Propagate ariaLabel to the dropdown list element ([PR #18891](https://github.com/microsoft/fluentui/pull/18891) by behowell@microsoft.com)
+
+## [7.173.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.173.0)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.4..office-ui-fabric-react_v7.173.0)
+
+### Minor changes
+
+- Added focusZoneProps to the Pivot component to have ability be more customized ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+### Patches
+
+- Cherrypick: Fix resizing of justified columns for constrained viewport widths ([PR #18612](https://github.com/microsoft/fluentui/pull/18612) by sasyedah@microsoft.com)
+
+## [7.172.4](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.4)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.3..office-ui-fabric-react_v7.172.4)
+
+### Patches
+
+- Button: Remove pointer-events: 'none' from disabled styles. ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [7.172.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.3)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.2..office-ui-fabric-react_v7.172.3)
+
+### Patches
+
+- Fixing a bug within the V7 ComboBox which caused aria-labeledby to be added to list even when label was absent. ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [7.172.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.2)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.1..office-ui-fabric-react_v7.172.2)
+
+### Patches
+
+- Reset position of CalloutContent control if the target prop has changed. ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [7.172.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.1)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.172.0..office-ui-fabric-react_v7.172.1)
+
+### Patches
+
+- Cherrypick HC Coachmark Beak styling to v7 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.172.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.0)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.171.0..office-ui-fabric-react_v7.172.0)
+
+### Minor changes
+
+- Rating: specifies when a rating's button is selected/not selected to improve a11y experience ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+- allow custom filter icons for the details header ([PR #18603](https://github.com/microsoft/fluentui/pull/18603) by khhuynh@microsoft.com)
+
+## [7.171.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.171.0)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.3..office-ui-fabric-react_v7.171.0)
+
+### Minor changes
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.170.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.3)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.2..office-ui-fabric-react_v7.170.3)
+
+### Patches
+
+- "Fix a11y bug for DatePicker day cell: Ensures ARIA attributes are allowed for an element's role" ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.170.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.2)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.1..office-ui-fabric-react_v7.170.2)
+
+### Patches
+
+- applying package updates ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [7.170.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.1)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.0..office-ui-fabric-react_v7.170.1)
+
+### Patches
+
+- Remove aria-label from Combobox options when no ariaLabel prop is defined ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+- DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input. ([PR #18163](https://github.com/microsoft/fluentui/pull/18163) by tristan.watanabe@gmail.com)
+
+## [7.170.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.0)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.169.0..office-ui-fabric-react_v7.170.0)
+
+### Minor changes
+
+- support proportional columns in detailslist, allow custom rendering of header cells ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.169.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.169.0)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.168.2..office-ui-fabric-react_v7.169.0)
+
+### Minor changes
+
+- Add support to Slider, to allow selecting a lower and upper bound of a range ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.168.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.168.2)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.168.1..office-ui-fabric-react_v7.168.2)
+
+### Patches
+
+- cherrypick hidden panel on dismiss bug to v7 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+- DetailsList: Adding support for customized role. ([PR #17957](https://github.com/microsoft/fluentui/pull/17957) by vishgup@microsoft.com)
+
+## [7.168.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.168.1)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.168.0..office-ui-fabric-react_v7.168.1)
+
+### Patches
+
+- ContextualMenu: focused div when menu is opened now has role = menu ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+- Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus ([PR #17856](https://github.com/microsoft/fluentui/pull/17856) by tristan.watanabe@gmail.com)
+- TeachingBubble: Keyboard focus now properly visible on buttons ([PR #17709](https://github.com/microsoft/fluentui/pull/17709) by tristan.watanabe@gmail.com)
+
+## [7.168.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.168.0)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.167.0..office-ui-fabric-react_v7.168.0)
+
+### Minor changes
+
+- ContextualMenu: Making IMenuItemStyles and IContextualMenuItemStyles optional instead of required. ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Setting focus visibility to true in scenarios where it should be supported. ([PR #17833](https://github.com/microsoft/fluentui/pull/17833) by Humberto.Morimoto@microsoft.com)
+
+## [7.167.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.167.0)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.166.2..office-ui-fabric-react_v7.167.0)
+
+### Minor changes
+
+- DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row. ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.166.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.2)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.166.1..office-ui-fabric-react_v7.166.2)
+
+### Patches
+
+- BasePicker: added high contrast styling to sass file when picker is disabled ([PR #17247](https://github.com/microsoft/fluentui/pull/17247) by tristan.watanabe@gmail.com)
+- Pickers SuggestionsItems: remove button now visible after receiving keyboard focus ([PR #17457](https://github.com/microsoft/fluentui/pull/17457) by tristan.watanabe@gmail.com)
+- VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid valuesd ([PR #17627](https://github.com/microsoft/fluentui/pull/17627) by tristan.watanabe@gmail.com)
 
 ## [7.166.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.1)
 

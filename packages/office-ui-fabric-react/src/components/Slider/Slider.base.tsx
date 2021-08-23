@@ -17,7 +17,9 @@ import { Label } from '../../Label';
 
 export interface ISliderState {
   value?: number;
+  lowerValue?: number;
   renderedValue?: number;
+  renderedLowerValue?: number;
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
@@ -40,8 +42,10 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   private _disposables: (() => void)[] = [];
   private _sliderLine = React.createRef<HTMLDivElement>();
   private _thumb = React.createRef<HTMLSpanElement>();
+  private _lowerValueThumb = React.createRef<HTMLSpanElement>();
   private _id: string;
   private _onKeyDownTimer = -1;
+  private _isAdjustingLowerValue = false;
 
   constructor(props: ISliderProps) {
     super(props);
@@ -53,14 +57,29 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       value: 'defaultValue',
     });
 
+    if (props.ranged) {
+      warnMutuallyExclusive(COMPONENT_NAME, this.props, {
+        lowerValue: 'defaultLowerValue',
+      });
+    }
+
     this._id = getId('Slider');
 
     const value =
       props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
+    const lowerValue =
+      props.lowerValue !== undefined
+        ? props.lowerValue
+        : props.defaultLowerValue !== undefined
+        ? props.defaultLowerValue
+        : props.min;
+
     this.state = {
       value: value,
+      lowerValue: lowerValue,
       renderedValue: undefined,
+      renderedLowerValue: undefined,
     };
   }
 
@@ -80,29 +99,92 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       showValue,
       buttonProps,
       vertical,
-      valueFormat,
       styles,
       theme,
       originFromZero,
+      ranged,
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
-    const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
-    const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
+    const renderedLowerValue = this.renderedLowerValue;
+    const thumbOffsetPercent: number = this._getPercent(renderedValue);
+    const lowerThumbOffsetPercent: number = this._getPercent(renderedLowerValue);
+    const originValue = originFromZero ? 0 : min;
+
+    const originPercent = this._getPercent(originValue);
+    const activeSectionWidth = ranged
+      ? thumbOffsetPercent - lowerThumbOffsetPercent
+      : Math.abs(originPercent - thumbOffsetPercent);
+    const topSectionWidth = Math.min(100 - thumbOffsetPercent, 100 - originPercent);
+    const bottomSectionWidth = ranged ? lowerThumbOffsetPercent : Math.min(thumbOffsetPercent, originPercent);
+
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
+    const onFocusProp: {} = disabled ? {} : { onFocus: this._onThumbFocus };
+
     const classNames = getClassNames(styles, {
       className,
+      ranged,
       disabled,
       vertical,
-      showTransitions: renderedValue === value,
+      showTransitions: renderedValue === value || (ranged && renderedLowerValue === this.lowerValue),
       showValue,
       theme: theme!,
     });
     const divButtonProps = buttonProps
       ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
+      : undefined;
+
+    const sliderProps = {
+      'aria-disabled': disabled,
+      role: 'slider',
+      tabIndex: disabled ? undefined : 0,
+      'data-is-focusable': !disabled,
+    };
+
+    const sliderBoxProps = {
+      id: this._id,
+      className: css(classNames.slideBox, buttonProps!.className),
+      ...onMouseDownProp,
+      ...onTouchStartProp,
+      ...onKeyDownProp,
+      ...divButtonProps,
+      ...(!ranged && {
+        ...sliderProps,
+        'aria-valuemin': min,
+        'aria-valuemax': max,
+        'aria-valuenow': value,
+        'aria-valuetext': this._getAriaValueText(value),
+        'aria-label': ariaLabel || label,
+      }),
+    };
+
+    const thumbProps = ranged
+      ? {
+          ...sliderProps,
+          ...onFocusProp,
+          id: `max-${this._id}`,
+          'aria-valuemin': this.lowerValue,
+          'aria-valuemax': max,
+          'aria-valuenow': value,
+          'aria-valuetext': this._getAriaValueText(value),
+          'aria-label': `max ${ariaLabel || label}`,
+        }
+      : undefined;
+
+    const lowerValueThumbProps = ranged
+      ? {
+          ...sliderProps,
+          ...onFocusProp,
+          id: `min-${this._id}`,
+          'aria-valuemin': min,
+          'aria-valuemax': value,
+          'aria-valuenow': this.lowerValue,
+          'aria-valuetext': this._getAriaValueText(this.lowerValue),
+          'aria-label': `min ${ariaLabel || label}`,
+        }
       : undefined;
 
     return (
@@ -113,67 +195,52 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
           </Label>
         )}
         <div className={classNames.container}>
-          <div
-            id={this._id}
-            aria-valuenow={value}
-            aria-valuemin={min}
-            aria-valuemax={max}
-            aria-valuetext={this._getAriaValueText(value)}
-            aria-label={ariaLabel || label}
-            aria-disabled={disabled}
-            {...onMouseDownProp}
-            {...onTouchStartProp}
-            {...onKeyDownProp}
-            {...divButtonProps}
-            className={css(classNames.slideBox, buttonProps!.className)}
-            role="slider"
-            tabIndex={disabled ? undefined : 0}
-            data-is-focusable={!disabled}
-          >
+          {ranged && showValue && (
+            <Label className={classNames.valueLabel} disabled={disabled}>
+              {this._getValueLabel(vertical ? this.value! : this.lowerValue!)}
+            </Label>
+          )}
+          <div {...sliderBoxProps}>
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
                 <span
                   className={css(classNames.zeroTick)}
-                  style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                  style={this._getStyleUsingOffsetPercent(vertical, originPercent)}
+                />
+              )}
+              {ranged && (
+                <span
+                  ref={this._lowerValueThumb}
+                  className={classNames.thumb}
+                  style={this._getStyleUsingOffsetPercent(vertical, lowerThumbOffsetPercent)}
+                  {...lowerValueThumbProps}
                 />
               )}
               <span
                 ref={this._thumb}
                 className={classNames.thumb}
                 style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+                {...thumbProps}
               />
-              {originFromZero ? (
-                <>
-                  <span
-                    className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
-                  />
-                  <span
-                    className={css(classNames.lineContainer, classNames.activeSection)}
-                    style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' }}
-                  />
-                  <span
-                    className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
-                  />
-                </>
-              ) : (
-                <>
-                  <span
-                    className={css(classNames.lineContainer, classNames.activeSection)}
-                    style={{ [lengthString]: thumbOffsetPercent + '%' }}
-                  />
-                  <span
-                    className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
-                  />
-                </>
+              {(ranged || originFromZero) && (
+                <span
+                  className={css(classNames.lineContainer, classNames.inactiveSection)}
+                  style={{ [lengthString]: bottomSectionWidth + '%' }}
+                />
               )}
+              <span
+                className={css(classNames.lineContainer, classNames.activeSection)}
+                style={{ [lengthString]: activeSectionWidth + '%' }}
+              />
+              <span
+                className={css(classNames.lineContainer, classNames.inactiveSection)}
+                style={{ [lengthString]: topSectionWidth + '%' }}
+              />
             </div>
           </div>
           {showValue && (
             <Label className={classNames.valueLabel} disabled={disabled}>
-              {valueFormat ? valueFormat(value!) : value}
+              {this._getValueLabel(ranged && vertical ? this.lowerValue! : this.value!)}
             </Label>
           )}
         </div>
@@ -185,6 +252,12 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   public focus(): void {
     if (this._thumb.current) {
       this._thumb.current.focus();
+    }
+  }
+
+  public get range(): [number, number] | undefined {
+    if (this.props.ranged) {
+      return [this.lowerValue!, this.value!];
     }
   }
 
@@ -204,6 +277,32 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     return renderedValue;
   }
 
+  public get lowerValue(): number | undefined {
+    const { lowerValue = this.state.lowerValue, ranged } = this.props;
+    if (!ranged || this.props.min === undefined || this.props.max === undefined || lowerValue === undefined) {
+      return undefined;
+    } else {
+      return Math.max(this.props.min, Math.min(this.props.max, lowerValue));
+    }
+  }
+
+  private get renderedLowerValue(): number | undefined {
+    // renderedLowerValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // Fall back to `lowerValue`.
+    const { renderedLowerValue = this.lowerValue } = this.state;
+    return renderedLowerValue;
+  }
+
+  private _getPercent(value: number | undefined) {
+    const { min, max } = this.props;
+    return max === min ? 0 : ((value! - min!) / (max! - min!)) * 100;
+  }
+
+  private _getValueLabel(value: number) {
+    const { valueFormat } = this.props;
+    return valueFormat ? valueFormat(value) : value;
+  }
+
   private _getAriaValueText = (value: number | undefined): string | undefined => {
     const { ariaValueText } = this.props;
     if (value !== undefined) {
@@ -219,22 +318,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     };
   }
 
-  private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
-    if (event.type === 'mousedown') {
-      this._disposables.push(
-        on(window, 'mousemove', this._onMouseMoveOrTouchMove, true),
-        on(window, 'mouseup', this._onMouseUpOrTouchEnd, true),
-      );
-    } else if (event.type === 'touchstart') {
-      this._disposables.push(
-        on(window, 'touchmove', this._onMouseMoveOrTouchMove, true),
-        on(window, 'touchend', this._onMouseUpOrTouchEnd, true),
-      );
-    }
-    this._onMouseMoveOrTouchMove(event, true);
-  };
-
-  private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
+  private _calculateCurrentSteps = (event: MouseEvent | TouchEvent): number | undefined => {
     if (!this._sliderLine.current) {
       return;
     }
@@ -256,6 +340,47 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       distance = sliderPositionRect.bottom - bottom!;
       currentSteps = distance / stepLength;
     }
+
+    return currentSteps;
+  };
+
+  private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
+    const { ranged, min, step } = this.props;
+    if (ranged) {
+      const currentSteps = this._calculateCurrentSteps(event);
+      const newRenderedValue = min! + step! * currentSteps!;
+
+      if (
+        newRenderedValue <= (this.state.lowerValue as number) ||
+        newRenderedValue - (this.state.lowerValue as number) <= (this.state.value as number) - newRenderedValue
+      ) {
+        this._isAdjustingLowerValue = true;
+      } else {
+        this._isAdjustingLowerValue = false;
+      }
+    }
+    if (event.type === 'mousedown') {
+      this._disposables.push(
+        on(window, 'mousemove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'mouseup', this._onMouseUpOrTouchEnd, true),
+      );
+    } else if (event.type === 'touchstart') {
+      this._disposables.push(
+        on(window, 'touchmove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'touchend', this._onMouseUpOrTouchEnd, true),
+      );
+    }
+    this._onMouseMoveOrTouchMove(event, true);
+  };
+
+  private _onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
+    if (!this._sliderLine.current) {
+      return;
+    }
+
+    const { max, min, step } = this.props;
+    const steps: number = (max! - min!) / step!;
+    const currentSteps = this._calculateCurrentSteps(event);
 
     let currentValue: number | undefined;
     let renderedValue: number | undefined;
@@ -294,8 +419,29 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
     return currentPosition;
   }
+
+  private _setValueState(roundedValue: number, renderedValue: number) {
+    const isAdjustingLowerValue = this._isAdjustingLowerValue;
+    const valueChanged = roundedValue !== (isAdjustingLowerValue ? this.state.lowerValue : this.state.value);
+    this.setState(
+      {
+        [isAdjustingLowerValue ? 'lowerValue' : 'value']: roundedValue,
+        [isAdjustingLowerValue ? 'renderedLowerValue' : 'renderedValue']: renderedValue,
+      },
+      () => {
+        const { lowerValue, value } = this.state;
+        if (valueChanged && this.props.onChange) {
+          this.props.onChange(
+            isAdjustingLowerValue ? lowerValue! : value!,
+            this.props.ranged ? [lowerValue!, value!] : undefined,
+          );
+        }
+      },
+    );
+  }
+
   private _updateValue(value: number, renderedValue: number): void {
-    const { step, snapToStep } = this.props;
+    const { step, snapToStep, ranged, originFromZero } = this.props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -305,29 +451,26 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
-    const valueChanged = roundedValue !== this.state.value;
 
     if (snapToStep) {
       renderedValue = roundedValue;
     }
 
-    this.setState(
-      {
-        value: roundedValue,
-        renderedValue,
-      },
-      () => {
-        if (valueChanged && this.props.onChange) {
-          this.props.onChange(this.state.value as number);
-        }
-      },
-    );
+    const shouldAdjustLowerThumb =
+      this._isAdjustingLowerValue && (originFromZero ? roundedValue <= 0 : roundedValue <= this.renderedValue!);
+    const shouldAdjustUpperThumb =
+      !this._isAdjustingLowerValue && (originFromZero ? roundedValue >= 0 : roundedValue >= this.renderedLowerValue!);
+
+    if (!ranged || shouldAdjustLowerThumb || shouldAdjustUpperThumb) {
+      this._setValueState(roundedValue, renderedValue);
+    }
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
       renderedValue: undefined,
+      renderedLowerValue: undefined,
     });
 
     if (this.props.onChanged) {
@@ -343,7 +486,12 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
-    let { value = this.state.value } = this.props;
+    let value: number | undefined;
+    if (this._isAdjustingLowerValue) {
+      value = this.props.lowerValue || this.state.lowerValue;
+    } else {
+      value = this.props.value || this.state.value;
+    }
     const { max, min, step } = this.props;
 
     let diff: number | undefined = 0;
@@ -388,7 +536,12 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     // Disable renderedValue override.
     this.setState({
       renderedValue: undefined,
+      renderedLowerValue: undefined,
     });
+  };
+
+  private _onThumbFocus = (event: MouseEvent | TouchEvent): void => {
+    this._isAdjustingLowerValue = event.target === this._lowerValueThumb.current;
   };
 
   private _clearOnKeyDownTimer = (): void => {

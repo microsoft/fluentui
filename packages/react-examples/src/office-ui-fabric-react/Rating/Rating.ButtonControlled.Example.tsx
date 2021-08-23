@@ -23,7 +23,7 @@ export const RatingButtonControlledExample: React.FunctionComponent = () => {
         allowZeroStars
         // eslint-disable-next-line react/jsx-no-bind
         getAriaLabel={getRatingAriaLabel}
-        ariaLabelFormat={'Select {0} of {1} stars'}
+        ariaLabelFormat={'{0} of {1} stars'}
       />
       <PrimaryButton
         text={'Click to change rating to ' + (5 - currentRating)}

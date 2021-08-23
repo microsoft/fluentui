@@ -1,8 +1,94 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 07 Apr 2021 12:24:39 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jul 2021 12:24:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.174.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.174.0)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.173.0..@fluentui/react_v7.174.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.0 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.173.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.173.0)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.172.0..@fluentui/react_v7.173.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.0 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [7.172.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.172.0)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.171.0..@fluentui/react_v7.172.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.171.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.171.0)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.170.2..@fluentui/react_v7.171.0)
+
+### Patches
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.170.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.170.2)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.170.0..@fluentui/react_v7.170.2)
+
+### Patches
+
+- ContextualMenu: focused div when menu is opened now has role = menu ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by tristan.watanabe@gmail.com)
+
+## [7.170.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.170.0)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.169.0..@fluentui/react_v7.170.0)
+
+### Minor changes
+
+- Added proportional column behavior to the DetailsList component and enabled custom components in cell headers. ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.169.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.169.0)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.168.0..@fluentui/react_v7.169.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.168.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.168.0)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.167.0..@fluentui/react_v7.168.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [7.167.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.167.0)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.166.0..@fluentui/react_v7.167.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
 
 ## [7.166.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.166.0)
 

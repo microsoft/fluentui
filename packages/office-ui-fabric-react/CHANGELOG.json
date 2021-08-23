@@ -2,6 +2,370 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 12:24:13 GMT",
+      "tag": "office-ui-fabric-react_v7.174.1",
+      "version": "7.174.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix horizontal scrollbar detection in MarqueeSelection",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "fa84410fc41f6f601905a7c4d73532dafeae0474",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 12:24:50 GMT",
+      "tag": "office-ui-fabric-react_v7.174.0",
+      "version": "7.174.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add showTooltip prop to IFacepileProps to allow for user rendered tooltips",
+            "author": "ololubek@microsoft.com",
+            "commit": "fa1e5ef37ba6665568f1eb41045ced91c0f4f485",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jul 2021 12:23:18 GMT",
+      "tag": "office-ui-fabric-react_v7.173.1",
+      "version": "7.173.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set id correctly on header item when title is an IContextualMenuItem",
+            "author": "makopch@microsoft.com",
+            "commit": "83b8a259c0d0c0e4643fcd2cac514b2a32c08bd2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "ComboBox: Propagate ariaLabel to the dropdown list element",
+            "author": "behowell@microsoft.com",
+            "commit": "54f41cd6ba45ae18b9293f7a41df1b1cdad3da3b",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "office-ui-fabric-react_v7.173.0",
+      "version": "7.173.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added focusZoneProps to the Pivot component to have ability be more customized",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "f6aae9ce315b703e7dbf6f75fb9a996249e5dcc0",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Cherrypick: Fix resizing of justified columns for constrained viewport widths",
+            "author": "sasyedah@microsoft.com",
+            "commit": "6e0f04a47a5d4efb391abb5eb83d839af94716f2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 12:26:48 GMT",
+      "tag": "office-ui-fabric-react_v7.172.4",
+      "version": "7.172.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Remove pointer-events: 'none' from disabled styles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2b352893a2a3af326dedbc9b54f865013469c782",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 12:23:05 GMT",
+      "tag": "office-ui-fabric-react_v7.172.3",
+      "version": "7.172.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing a bug within the V7 ComboBox which caused aria-labeledby to be added to list even when label was absent.",
+            "author": "czearing@outlook.com",
+            "commit": "9a421d950aaf3dd76e1e57bdf94d570fc670171e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Jul 2021 12:25:05 GMT",
+      "tag": "office-ui-fabric-react_v7.172.2",
+      "version": "7.172.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Reset position of CalloutContent control if the target prop has changed.",
+            "author": "kinhln@microsoft.com",
+            "commit": "4bc101e57a9415fa11761b9519d4097a93bfcad0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "office-ui-fabric-react_v7.172.1",
+      "version": "7.172.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherrypick HC Coachmark Beak styling to v7",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "office-ui-fabric-react_v7.172.0",
+      "version": "7.172.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rating: specifies when a rating's button is selected/not selected to improve a11y experience",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "allow custom filter icons for the details header",
+            "author": "khhuynh@microsoft.com",
+            "commit": "0f03e971163c40b46d4392bb0a559318168daaaa",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "office-ui-fabric-react_v7.171.0",
+      "version": "7.171.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "office-ui-fabric-react_v7.170.3",
+      "version": "7.170.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"Fix a11y bug for DatePicker day cell: Ensures ARIA attributes are allowed for an element's role\"",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "office-ui-fabric-react_v7.170.2",
+      "version": "7.170.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "applying package updates",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 12:26:09 GMT",
+      "tag": "office-ui-fabric-react_v7.170.1",
+      "version": "7.170.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove aria-label from Combobox options when no ariaLabel prop is defined",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "8358bf3d49e1dc5f9b506575857cf353d26d3b74",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "b68748404fc31e4692005ffacacb3096bb4660d6",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "office-ui-fabric-react_v7.170.0",
+      "version": "7.170.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "support proportional columns in detailslist, allow custom rendering of header cells",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "office-ui-fabric-react_v7.169.0",
+      "version": "7.169.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support to Slider, to allow selecting a lower and upper bound of a range",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "office-ui-fabric-react_v7.168.2",
+      "version": "7.168.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cherrypick hidden panel on dismiss bug to v7",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsList: Adding support for customized role.",
+            "author": "vishgup@microsoft.com",
+            "commit": "238ebfe4e3dfdcb959394856f614b57b7aaaa205",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "office-ui-fabric-react_v7.168.1",
+      "version": "7.168.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "b716308553b0aceaab62c99ffc6183b11857f61a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "TeachingBubble: Keyboard focus now properly visible on buttons",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "69e66dbf3ba3f68f661b9b8215589dcc88a0714b",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "office-ui-fabric-react_v7.168.0",
+      "version": "7.168.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ContextualMenu: Making IMenuItemStyles and IContextualMenuItemStyles optional instead of required.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "407cff735d4f21fffcce2da68b70cc70a0ef3315",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Setting focus visibility to true in scenarios where it should be supported.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "aea66dd457c6f697e215ec1e1e0e29e3f034ac58",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "office-ui-fabric-react_v7.167.0",
+      "version": "7.167.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "office-ui-fabric-react_v7.166.2",
+      "version": "7.166.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BasePicker: added high contrast styling to sass file when picker is disabled",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d2dd7fa5ee08769435f7dc3209f1ed166f7d404e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pickers SuggestionsItems: remove button now visible after receiving keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "e8573afaaa3d91d68182778b8f096432693d4161",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid valuesd",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "03318508f18d4d6cbddd4f9604b815c76f40cc75",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "office-ui-fabric-react_v7.166.1",
       "version": "7.166.1",

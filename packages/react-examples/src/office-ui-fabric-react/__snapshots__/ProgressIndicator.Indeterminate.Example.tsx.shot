@@ -23,6 +23,7 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           text-overflow: ellipsis;
           white-space: nowrap;
         }
+    id="progress-indicator0-label"
   >
     Example title
   </div>
@@ -53,6 +54,8 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           }
     />
     <div
+      aria-describedby="progress-indicator0-description"
+      aria-labelledby="progress-indicator0-label"
       className=
           ms-ProgressIndicator-progressBar
           {
@@ -88,6 +91,7 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           font-size: 12px;
           line-height: 18px;
         }
+    id="progress-indicator0-description"
   >
     Example description
   </div>

@@ -603,7 +603,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           padding-left: 4px;
                           padding-right: 4px;
                           padding-top: 0;
-                          pointer-events: none;
                           position: relative;
                           text-align: center;
                           text-decoration: none;
@@ -955,7 +954,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       padding-left: 4px;
                       padding-right: 4px;
                       padding-top: 0;
-                      pointer-events: none;
                       position: relative;
                       text-align: center;
                       text-decoration: none;
@@ -1151,7 +1149,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         padding-left: 4px;
                         padding-right: 4px;
                         padding-top: 0;
-                        pointer-events: none;
                         position: relative;
                         text-align: center;
                         text-decoration: none;

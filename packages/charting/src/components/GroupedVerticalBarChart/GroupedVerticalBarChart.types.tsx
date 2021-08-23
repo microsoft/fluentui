@@ -10,6 +10,10 @@ import {
 
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+  /**
    * Data to render in the chart.
    */
   data: IGroupedVerticalBarChartData[];

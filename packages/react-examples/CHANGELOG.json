@@ -2,6 +2,712 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 12:24:13 GMT",
+      "tag": "@fluentui/react-examples_v0.14.26",
+      "version": "0.14.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.52",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "fa84410fc41f6f601905a7c4d73532dafeae0474",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Aug 2021 12:23:39 GMT",
+      "tag": "@fluentui/react-examples_v0.14.25",
+      "version": "0.14.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chart title added for Area and Line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f66ffd490ae90f493f3ac6d4b1a065157eb952b2",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 12:23:07 GMT",
+      "tag": "@fluentui/react-examples_v0.14.24",
+      "version": "0.14.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Area chart and line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "3d906f1eafff5e30084c62a061a36917a441f819",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Aug 2021 12:26:07 GMT",
+      "tag": "@fluentui/react-examples_v0.14.23",
+      "version": "0.14.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.44",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "f118e3da49924321c6aa48f1536d20a9444e8561",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 12:22:03 GMT",
+      "tag": "@fluentui/react-examples_v0.14.22",
+      "version": "0.14.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.16.10",
+            "author": "v-scharde@microsoft.com",
+            "commit": "765647a5db1605744c5ec1de128ed2ffb5c43587",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 12:25:19 GMT",
+      "tag": "@fluentui/react-examples_v0.14.21",
+      "version": "0.14.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for HeatMap chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "12c61216c07a889b9e575900023e1e95e22cf6cf",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "CherryPick: Accessibility change for Donut chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "e851260024a6d8d525a5a171b72c242b3cdf0d5e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Accessibility change for Vertical Bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "349df87e8a43b60f6e73446171e683ab6cee5ba8",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Accessibility change for Vertical stacked bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8dc0201a4da50716e546cddf496f9843813466f2",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 12:24:50 GMT",
+      "tag": "@fluentui/react-examples_v0.14.20",
+      "version": "0.14.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.51",
+            "author": "ololubek@microsoft.com",
+            "commit": "fa1e5ef37ba6665568f1eb41045ced91c0f4f485",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 12:23:57 GMT",
+      "tag": "@fluentui/react-examples_v0.14.19",
+      "version": "0.14.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedVertical Chart accessibility change",
+            "author": "v-scharde@microsoft.com",
+            "commit": "22be22623283bc47f4cb2006130062a12b1a39ee",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 12:23:18 GMT",
+      "tag": "@fluentui/react-examples_v0.14.18",
+      "version": "0.14.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList contrast update, link control style update, dark theme background color ",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "1ae704fdab64d9a4255fe15d9758fbb0652935a1",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jul 2021 12:23:18 GMT",
+      "tag": "@fluentui/react-examples_v0.14.17",
+      "version": "0.14.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.50",
+            "author": "makopch@microsoft.com",
+            "commit": "83b8a259c0d0c0e4643fcd2cac514b2a32c08bd2",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jul 2021 12:21:23 GMT",
+      "tag": "@fluentui/react-examples_v0.14.16",
+      "version": "0.14.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.16.5",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2a125e1eede531af4e60ed7924dc70724bd21c89",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "@fluentui/react-examples_v0.14.15",
+      "version": "0.14.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherrypick: Fix resizing of justified columns for constrained viewport widths",
+            "author": "sasyedah@microsoft.com",
+            "commit": "6e0f04a47a5d4efb391abb5eb83d839af94716f2",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 12:26:48 GMT",
+      "tag": "@fluentui/react-examples_v0.14.14",
+      "version": "0.14.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Remove pointer-events: 'none' from disabled styles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2b352893a2a3af326dedbc9b54f865013469c782",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 12:23:05 GMT",
+      "tag": "@fluentui/react-examples_v0.14.13",
+      "version": "0.14.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.47",
+            "author": "czearing@outlook.com",
+            "commit": "9a421d950aaf3dd76e1e57bdf94d570fc670171e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Jul 2021 12:25:05 GMT",
+      "tag": "@fluentui/react-examples_v0.14.12",
+      "version": "0.14.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.46",
+            "author": "kinhln@microsoft.com",
+            "commit": "4bc101e57a9415fa11761b9519d4097a93bfcad0",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@fluentui/react-examples_v0.14.11",
+      "version": "0.14.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add features to Line Chart (gaps, borders, line properties, etc.) (#18665)",
+            "author": "nojittip@microsoft.com",
+            "commit": "b52f00209018559732fec523c876521cf978bc8b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is",
+            "author": "v-scharde@microsoft.com",
+            "commit": "5024353a97c3d120050441c6e32f203cecfadc3c",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f6011e9ca2736a0223fbebce74f974d5949926e3",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "@fluentui/react-examples_v0.14.10",
+      "version": "0.14.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.45",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@fluentui/react-examples_v0.14.9",
+      "version": "0.14.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Rating: updated examples to reflect addition of ariaLabel prop",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@fluentui/react-examples_v0.14.8",
+      "version": "0.14.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jun 2021 12:24:51 GMT",
+      "tag": "@fluentui/react-examples_v0.14.7",
+      "version": "0.14.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.29",
+            "author": "v-jasha@microsoft.com",
+            "commit": "b193fa7eab73154b5024c8a3cae2438b474f64d4",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@fluentui/react-examples_v0.14.6",
+      "version": "0.14.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.42",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@fluentui/react-examples_v0.14.5",
+      "version": "0.14.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.41",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 May 2021 12:23:20 GMT",
+      "tag": "@fluentui/react-examples_v0.14.4",
+      "version": "0.14.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.26",
+            "author": "email not defined",
+            "commit": "f66977c1ffcd6ce617704670d80f8caa31040f02",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 12:23:23 GMT",
+      "tag": "@fluentui/react-examples_v0.14.3",
+      "version": "0.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.30",
+            "author": "aidanmc95@gmail.com",
+            "commit": "ceb9df7c3bcade36477e866f46e2359df9f289c7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 May 2021 12:24:41 GMT",
+      "tag": "@fluentui/react-examples_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.29",
+            "author": "aidanmc95@gmail.com",
+            "commit": "d09b94a417ed84d0424a3b89d77a426c32e199ee",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 12:26:09 GMT",
+      "tag": "@fluentui/react-examples_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.40",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "8358bf3d49e1dc5f9b506575857cf353d26d3b74",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@fluentui/react-examples_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.39",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.34",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.27",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/react-cards to v0.115.48",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v0.6.44",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/charting to v4.15.24",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/date-time to v7.19.42",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.11",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/mdl2-theme to v0.4.36",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.2.36",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@fluentui/react-examples_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support to Slider, to allow selecting a lower and upper bound of a range",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.23",
+            "author": "v-jasha@microsoft.com",
+            "commit": "15497787f5cc0591a4ae08d9e2424c05d94cbe39",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.169.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.38",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.33",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.26",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/react-cards to v0.115.47",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v0.6.43",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/date-time to v7.19.41",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.10",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/mdl2-theme to v0.4.35",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.2.35",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "@fluentui/react-examples_v0.12.30",
+      "version": "0.12.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.37",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "@fluentui/react-examples_v0.12.29",
+      "version": "0.12.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.36",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 12:23:03 GMT",
+      "tag": "@fluentui/react-examples_v0.12.28",
+      "version": "0.12.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.20",
+            "author": "v-jasha@microsoft.com",
+            "commit": "004bd3b23d1b340898d41097dc1c5c9ac9f54577",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 12:25:29 GMT",
+      "tag": "@fluentui/react-examples_v0.12.27",
+      "version": "0.12.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.23",
+            "author": "aidanmc95@gmail.com",
+            "commit": "98726611fb4ed0bc28803a26892b5d63e56e9330",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@fluentui/react-examples_v0.12.26",
+      "version": "0.12.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.22",
+            "author": "aidanmc95@gmail.com",
+            "commit": "f995d23c6f28fc027805fb3b056c76c321e36b13",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-examples_v0.12.25",
+      "version": "0.12.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 00:28:37 GMT",
+      "tag": "@fluentui/react-examples_v0.12.24",
+      "version": "0.12.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.17",
+            "author": "elcraig@microsoft.com",
+            "commit": "4d99c00687344058690f2d6023ad44c0f46a4f25",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@fluentui/react-examples_v0.12.23",
+      "version": "0.12.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.16",
+            "author": "v-jasha@microsoft.com",
+            "commit": "3d9960bd39d7987fd11120944690172be9a932d7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@fluentui/react-examples_v0.12.22",
       "version": "0.12.22",

@@ -153,6 +153,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
         </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            chartTitle="Vertical stacked bar chart styled example"
             data={data}
             {...this.state}
             yAxisTickCount={10}

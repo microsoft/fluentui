@@ -70,7 +70,6 @@ export const getStyles = memoizeFunction(
           borderColor: disabledBackground,
           color: disabledText,
           cursor: 'default',
-          pointerEvents: 'none',
           selectors: {
             ':hover': noOutline,
             ':focus': noOutline,

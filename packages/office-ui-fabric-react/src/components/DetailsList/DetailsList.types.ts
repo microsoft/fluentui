@@ -12,7 +12,12 @@ import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
+import {
+  IDetailsColumnStyleProps,
+  IDetailsColumnProps,
+  IDetailsColumnStyles,
+  IDetailsColumnFilterIconProps,
+} from './DetailsColumn.types';
 
 export {
   IDetailsHeaderProps,
@@ -251,6 +256,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Accessible label for the grid within the list. */
   ariaLabelForGrid?: string;
 
+  /** An optional margin for proportional columns, to e.g. account for scrollbars when laying out width. */
+  flexMargin?: number;
+
   /**
    * Whether the role `application` should be applied to the list.
    * @defaultvalue false
@@ -322,6 +330,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /** Role for the list. */
+  role?: string;
 }
 
 /**
@@ -340,6 +351,14 @@ export interface IColumn {
    */
   fieldName?: string;
 
+  /**
+   * If specified, the width of the column is a portion of the available space equal to this value divided by the sum
+   * of all proportional column widths in the list. For example, if there is a list with two proportional columns that
+   * have widths of 1 and 3, they will respectively occupy (1/4) = 25% and (3/4) = 75% of the remaining space. Note that
+   * this relies on viewport measures and will not work well with skipViewportMeasures.
+   */
+  flexGrow?: number;
+
   /** Class name to apply to the column cell within each row. */
   className?: string;
 
@@ -348,6 +367,14 @@ export interface IColumn {
 
   /** Minimum width for the column. */
   minWidth: number;
+
+  /**
+   * If specified, the width of the column is a portion of the available space equal to this value divided by the sum
+   * of all proportional column widths in the list. For example, if there is a list with two proportional columns that
+   * have widths of 1 and 3, they will respectively occupy (1/4) = 25% and (2/4) = 75% of the remaining space. Note that
+   * this relies on viewport measures and will not work well with skipViewportMeasures.
+   */
+  targetWidthProportion?: number;
 
   /**
    * Accessible label for the column. The column name will still be used as the primary label,
@@ -408,6 +435,12 @@ export interface IColumn {
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+
+  /** Custom renderer for filter icon. */
+  onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
+
+  /** Custom renderer for column header content, instead of the default text rendering. */
+  onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
 
   /** Whether the list is filtered by this column. If true, shows a filter icon next to this column's name. */
   isFiltered?: boolean;

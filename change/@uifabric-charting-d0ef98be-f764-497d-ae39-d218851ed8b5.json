@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Chart element will not render when data value is zero",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}

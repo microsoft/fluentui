@@ -261,10 +261,11 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     &:focus {
                       outline: 0px;
                     }
-                id="id__132-menu"
+                id="id__127-menu"
                 onFocusCapture={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                role="menu"
                 tabIndex={-1}
               >
                 <div
@@ -285,7 +286,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         font-weight: 400;
                         min-width: 180px;
                       }
-                  data-focuszone-id="FocusZone136"
+                  data-focuszone-id="FocusZone131"
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}
@@ -307,7 +308,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         }
                     onKeyDown={[Function]}
                     onKeyUp={[Function]}
-                    role="menu"
+                    role="presentation"
                   >
                     <li
                       className=

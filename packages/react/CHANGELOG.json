@@ -2,6 +2,155 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 30 Jul 2021 12:24:50 GMT",
+      "tag": "@fluentui/react_v7.174.0",
+      "version": "7.174.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.174.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "fa1e5ef37ba6665568f1eb41045ced91c0f4f485",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "@fluentui/react_v7.173.0",
+      "version": "7.173.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.173.0",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "f6aae9ce315b703e7dbf6f75fb9a996249e5dcc0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@fluentui/react_v7.172.0",
+      "version": "7.172.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@fluentui/react_v7.171.0",
+      "version": "7.171.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.171.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@fluentui/react_v7.170.2",
+      "version": "7.170.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@fluentui/react_v7.170.0",
+      "version": "7.170.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@fluentui/react_v7.169.0",
+      "version": "7.169.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.169.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@fluentui/react_v7.168.0",
+      "version": "7.168.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "407cff735d4f21fffcce2da68b70cc70a0ef3315",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@fluentui/react_v7.167.0",
+      "version": "7.167.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.167.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Apr 2021 12:24:39 GMT",
       "tag": "@fluentui/react_v7.166.0",
       "version": "7.166.0",

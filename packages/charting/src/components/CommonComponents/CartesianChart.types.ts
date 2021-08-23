@@ -5,7 +5,7 @@ import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IMargins } from '../../types/index';
+import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 
 export interface ICartesianChartStyleProps {
@@ -100,6 +100,11 @@ export interface ICartesianChartStyles {
    * styles for callout y-content
    */
   calloutContentY?: IStyle;
+
+  /**
+   * styles for description message
+   */
+  descriptionMessage?: IStyle;
 
   /**
    * styles for callout Date time container
@@ -253,6 +258,7 @@ export interface ICartesianChartProps {
    * @default 10
    */
   tickPadding?: number;
+
   /**
    * Url that the data-viz needs to redirect to upon clicking on it
    */
@@ -330,6 +336,7 @@ export interface IYValueHover {
   shouldDrawBorderBottom?: boolean;
   yAxisCalloutData?: string | { [id: string]: number };
   index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IChildProps {
@@ -343,6 +350,11 @@ export interface IChildProps {
 
 // Only used for Cartesian chart base
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+  /**
+   * Define the chart title
+   */
+  chartTitle?: string;
+
   /**
    * Only used for Area chart
    * Value used to draw y axis of that chart.
@@ -383,6 +395,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     color?: string;
     YValue?: string | number;
     XValue?: string;
+    descriptionMessage?: string;
   };
 
   /**
@@ -437,15 +450,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   datasetForXAxisDomain?: string[];
 
+  /** Own callout design */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customizedCallout?: any;
+
   /**
    * if the data points for the y-axis is of type string, then we need to give this
    * prop to construct the y-axis
    */
   stringDatasetForYAxisDomain?: string[];
-
-  /** Own callout design */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customizedCallout?: any;
 
   /**
    * Focus zone direction to the chart

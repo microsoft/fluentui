@@ -7,6 +7,7 @@ import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Ut
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import {
+  IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
   IBasestate,
@@ -24,6 +25,7 @@ import {
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ChartTypes,
+  getAccessibleDataObject,
   XAxisTypes,
   NumericAxis,
   StringAxis,
@@ -45,6 +47,7 @@ export interface IVerticalBarChartState extends IBasestate {
   acitveXdataPoint: number | string | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -115,7 +118,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       legend: this.state.selectedLegendTitle,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
+      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -206,6 +212,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             fill={this.props.theme!.palette.white}
             strokeWidth={3}
             visibility={this.state.acitveXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            onClick={item.point.lineData?.onClick}
           />
         );
       },
@@ -372,6 +379,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         acitveXdataPoint: point.x,
         YValueHover,
         hoverXValue,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -405,6 +413,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             acitveXdataPoint: point.x,
             YValueHover,
             hoverXValue,
+            callOutAccessibilityData: point.callOutAccessibilityData,
           });
         }
       });
@@ -459,6 +468,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         legendColor: this.state.color,
         shouldHighlight: shouldHighlight,
       });
+      const barHeight: number = Math.max(yBarScale(point.y), 0);
+      if (barHeight < 1) {
+        return <React.Fragment key={point.x}> </React.Fragment>;
+      }
       return (
         <rect
           key={point.x}
@@ -467,12 +480,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
           data-is-focusable={!this.props.hideTooltip}
-          height={Math.max(yBarScale(point.y), 0)}
+          height={barHeight}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
+          onClick={point.onClick}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label="Vertical bar chart"
+          role="text"
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
@@ -508,20 +524,27 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
+      const barHeight: number = Math.max(yBarScale(point.y), 0);
+      if (barHeight < 1) {
+        return <React.Fragment key={point.x}> </React.Fragment>;
+      }
       return (
         <rect
           key={point.x}
           x={xBarScale(index)}
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
-          height={Math.max(yBarScale(point.y), 0)}
+          height={barHeight}
           aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label="Vertical bar chart"
+          role="text"
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
+          onClick={point.onClick}
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}
@@ -552,6 +575,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
     return bars;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 
   private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {

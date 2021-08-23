@@ -8,11 +8,12 @@ import {
   classNamesFunction,
   warn,
   initializeComponentRef,
+  css,
 } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.types';
 import { PivotLinkSize } from './Pivot.types';
@@ -94,6 +95,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   }
 
   public render(): JSX.Element {
+    const { focusZoneProps } = this.props;
     const linkCollection = this._getPivotLinks(this.props);
     const selectedKey = this._getSelectedKey(linkCollection);
 
@@ -103,10 +105,10 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
 
     return (
       <div role="toolbar" {...divProps}>
-        {this._renderPivotLinks(linkCollection, selectedKey)}
+        {this._renderPivotLinks(linkCollection, selectedKey, focusZoneProps)}
         {selectedKey &&
           linkCollection.links.map(
-            link =>
+            (link) =>
               (link.alwaysRender === true || selectedKey === link.itemKey) &&
               this._renderPivotItem(linkCollection, link.itemKey, selectedKey === link.itemKey),
           )}
@@ -136,15 +138,20 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders the set of links to route between pivots
    */
-  private _renderPivotLinks(linkCollection: PivotLinkCollection, selectedKey: string | null | undefined): JSX.Element {
-    const items = linkCollection.links.map(l => this._renderPivotLink(linkCollection, l, selectedKey));
+  private _renderPivotLinks(
+    linkCollection: PivotLinkCollection,
+    selectedKey: string | null | undefined,
+    focusZoneProps: IFocusZoneProps | undefined,
+  ): JSX.Element {
+    const items = linkCollection.links.map((l) => this._renderPivotLink(linkCollection, l, selectedKey));
 
     return (
       <FocusZone
-        className={this._classNames.root}
         role="tablist"
         componentRef={this._focusZone}
         direction={FocusZoneDirection.horizontal}
+        {...focusZoneProps}
+        className={css(this._classNames.root, focusZoneProps?.className)}
       >
         {items}
       </FocusZone>

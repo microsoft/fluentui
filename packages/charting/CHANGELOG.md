@@ -1,8 +1,298 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.13)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.12..@uifabric/charting_v4.16.13)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.1 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [4.16.12](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.12)
+
+Mon, 16 Aug 2021 12:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.11..@uifabric/charting_v4.16.12)
+
+### Patches
+
+- Chart title added for Area and Line chart ([PR #19383](https://github.com/microsoft/fluentui/pull/19383) by v-scharde@microsoft.com)
+
+## [4.16.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.11)
+
+Wed, 11 Aug 2021 12:23:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.10..@uifabric/charting_v4.16.11)
+
+### Patches
+
+- Accessibility change for Area chart and line chart ([PR #19288](https://github.com/microsoft/fluentui/pull/19288) by v-scharde@microsoft.com)
+
+## [4.16.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.10)
+
+Thu, 05 Aug 2021 12:22:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.9..@uifabric/charting_v4.16.10)
+
+### Patches
+
+- Added role as a link for overflow legends message, so it will read like 7 more link collapsed ([PR #19254](https://github.com/microsoft/fluentui/pull/19254) by v-scharde@microsoft.com)
+- callout issue resolved by adding preventDismissOnLostFocus prop to callout props ([PR #19255](https://github.com/microsoft/fluentui/pull/19255) by v-scharde@microsoft.com)
+- Border will be visible on rect focus ([PR #19229](https://github.com/microsoft/fluentui/pull/19229) by v-scharde@microsoft.com)
+
+## [4.16.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.9)
+
+Mon, 02 Aug 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.8..@uifabric/charting_v4.16.9)
+
+### Patches
+
+- Accessibility change for Vertical stacked bar chart ([PR #19172](https://github.com/microsoft/fluentui/pull/19172) by v-scharde@microsoft.com)
+- CherryPick: Accessibility change for Donut chart ([PR #19150](https://github.com/microsoft/fluentui/pull/19150) by v-scharde@microsoft.com)
+- Accessibility change for HeatMap chart ([PR #19171](https://github.com/microsoft/fluentui/pull/19171) by v-scharde@microsoft.com)
+- Accessibility change for Vertical Bar chart ([PR #19173](https://github.com/microsoft/fluentui/pull/19173) by v-scharde@microsoft.com)
+
+## [4.16.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.8)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.7..@uifabric/charting_v4.16.8)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.0 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [4.16.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.7)
+
+Tue, 27 Jul 2021 12:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.6..@uifabric/charting_v4.16.7)
+
+### Patches
+
+- GroupedVertical Chart accessibility change ([PR #18933](https://github.com/microsoft/fluentui/pull/18933) by v-scharde@microsoft.com)
+
+## [4.16.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.6)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.5..@uifabric/charting_v4.16.6)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.1 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [4.16.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.5)
+
+Mon, 12 Jul 2021 12:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.4..@uifabric/charting_v4.16.5)
+
+### Patches
+
+- Cherry pick-Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty ([PR #18859](https://github.com/microsoft/fluentui/pull/18859) by v-scharde@microsoft.com)
+
+## [4.16.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.4)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.3..@uifabric/charting_v4.16.4)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.0 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [4.16.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.3)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.2..@uifabric/charting_v4.16.3)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.4 ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [4.16.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.2)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.1..@uifabric/charting_v4.16.2)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.3 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [4.16.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.1)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.0..@uifabric/charting_v4.16.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.2 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [4.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.0)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.32..@uifabric/charting_v4.16.0)
+
+### Minor changes
+
+- Add features to Line Chart (gaps, borders, line properties, etc.) (#18665) ([PR #18726](https://github.com/microsoft/fluentui/pull/18726) by nojittip@microsoft.com)
+
+### Patches
+
+- Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card ([PR #18727](https://github.com/microsoft/fluentui/pull/18727) by v-scharde@microsoft.com)
+- Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is ([PR #18731](https://github.com/microsoft/fluentui/pull/18731) by v-scharde@microsoft.com)
+- Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut. ([PR #18735](https://github.com/microsoft/fluentui/pull/18735) by v-scharde@microsoft.com)
+
+## [4.15.32](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.32)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.31..@uifabric/charting_v4.15.32)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.1 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [4.15.31](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.31)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.30..@uifabric/charting_v4.15.31)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [4.15.30](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.30)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.29..@uifabric/charting_v4.15.30)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [4.15.29](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.29)
+
+Fri, 11 Jun 2021 12:24:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.28..@uifabric/charting_v4.15.29)
+
+### Patches
+
+- Cherry-pick of 18369 - Adding onClick handler to chart data points ([PR #18511](https://github.com/microsoft/fluentui/pull/18511) by v-jasha@microsoft.com)
+
+## [4.15.28](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.28)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.27..@uifabric/charting_v4.15.28)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.3 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [4.15.27](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.27)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.26..@uifabric/charting_v4.15.27)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.2 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [4.15.26](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.26)
+
+Tue, 25 May 2021 12:23:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.25..@uifabric/charting_v4.15.26)
+
+### Patches
+
+- CherryPick#18279 - accessibility issues ([PR #18295](https://github.com/microsoft/fluentui/pull/18295) by email not defined)
+
+## [4.15.25](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.25)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.24..@uifabric/charting_v4.15.25)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [4.15.24](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.24)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.23..@uifabric/charting_v4.15.24)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [4.15.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.23)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.22..@uifabric/charting_v4.15.23)
+
+### Patches
+
+- cherry-pick of #17978 - added aria-label to the legends ([PR #17980](https://github.com/microsoft/fluentui/pull/17980) by v-jasha@microsoft.com)
+
+## [4.15.22](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.22)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.21..@uifabric/charting_v4.15.22)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [4.15.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.21)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.20..@uifabric/charting_v4.15.21)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [4.15.20](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.20)
+
+Thu, 22 Apr 2021 12:23:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.19..@uifabric/charting_v4.15.20)
+
+### Patches
+
+- CherryPick of PR#17643 and PR#17744 ([PR #17864](https://github.com/microsoft/fluentui/pull/17864) by v-jasha@microsoft.com)
+
+## [4.15.19](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.19)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.18..@uifabric/charting_v4.15.19)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [4.15.18](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.18)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.17..@uifabric/charting_v4.15.18)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [4.15.17](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.17)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.16..@uifabric/charting_v4.15.17)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.5 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [4.15.16](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.16)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.15..@uifabric/charting_v4.15.16)
+
+### Patches
+
+- Cherry pick of PR17571 ([PR #17636](https://github.com/microsoft/fluentui/pull/17636) by v-jasha@microsoft.com)
 
 ## [4.15.15](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.15)
 

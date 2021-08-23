@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Rename Fabric component usage in export to codepen",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

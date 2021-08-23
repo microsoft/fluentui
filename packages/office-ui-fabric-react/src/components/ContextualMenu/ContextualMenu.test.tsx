@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes, IRenderFunction } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import * as renderer from 'react-test-renderer';
 // Have to import this separately for mock purposes
@@ -9,7 +9,7 @@ import * as Utilities from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
-import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
+import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { DefaultButton, IButton } from '../../Button';
 
@@ -484,35 +484,6 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.is-expanded')).toBeTruthy();
   });
 
-  it('sets the correct aria-owns attribute for the submenu', () => {
-    const submenuId = 'testSubmenuId';
-    const items: IContextualMenuItem[] = [
-      {
-        text: 'TestText 1',
-        key: 'TestKey1',
-        subMenuProps: {
-          id: submenuId,
-          items: [
-            {
-              text: 'SubmenuText 1',
-              key: 'SubmenuKey1',
-              className: 'SubMenuClass',
-            },
-          ],
-        },
-      },
-    ];
-
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-
-    const parentMenuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-    ReactTestUtils.Simulate.click(parentMenuItem);
-    const childMenu = document.getElementById(submenuId);
-
-    expect(childMenu!.id).toBe(submenuId);
-    expect(parentMenuItem.getAttribute('aria-owns')).toBe(submenuId);
-  });
-
   it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {
@@ -926,8 +897,10 @@ describe('ContextualMenu', () => {
       // Mock createPortal to capture its component hierarchy in snapshot output.
       const ReactDOM = require('react-dom');
       const createPortal = ReactDOM.createPortal;
-      ReactDOM.createPortal = jest.fn(element => {
-        return element;
+      ReactTestUtils.act(() => {
+        ReactDOM.createPortal = jest.fn(element => {
+          return element;
+        });
       });
       const buttonRef = React.createRef<IButton>();
       const component = renderer.create(
@@ -1271,45 +1244,21 @@ describe('ContextualMenu', () => {
   });
 
   describe('onRenderMenuList function tests', () => {
-    it('List has default role as menu.', () => {
+    it('List has default role as presentation.', () => {
       const items: IContextualMenuItem[] = [
         {
           text: 'TestText 1',
           key: 'TestKey1',
         },
       ];
-
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-
-      const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
-
-      expect(internalList).toBeTruthy();
-      expect(internalList.getAttribute('role')).toEqual('menu');
-    });
-
-    it('List applies role that is set by custom onRenderMenuList function.', () => {
-      const items: IContextualMenuItem[] = [
-        {
-          text: 'TestText 1',
-          key: 'TestKey1',
-        },
-      ];
-
-      const onRenderMenuList: IRenderFunction<IContextualMenuListProps> = (props, defaultRender) => {
-        if (props) {
-          props.role = 'grid';
-        }
-        return defaultRender?.(props) ?? null;
-      };
-
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-        <ContextualMenu items={items} onRenderMenuList={onRenderMenuList} />,
-      );
+      ReactTestUtils.act(() => {
+        ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+      });
 
       const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
 
       expect(internalList).toBeTruthy();
-      expect(internalList.getAttribute('role')).toEqual('grid');
+      expect(internalList.getAttribute('role')).toEqual('presentation');
     });
   });
 

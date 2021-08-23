@@ -54,8 +54,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onMouseLeave={this._hoverOff}
           onBlur={this._onBlur}
           opacity={opacity}
-          onClick={this._redirectToUrl.bind(this, href)}
+          onClick={href ? this._redirectToUrl.bind(this, href) : this.props.data?.data.onClick}
           aria-labelledby={this.props.calloutId}
+          role="text"
         />
         <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
           {this.props.valueInsideDonut!}

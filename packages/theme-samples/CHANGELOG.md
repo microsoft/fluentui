@@ -1,8 +1,188 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.49](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.49)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.48..@uifabric/theme-samples_v7.2.49)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.1 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [7.2.48](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.48)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.47..@uifabric/theme-samples_v7.2.48)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.0 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.2.47](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.47)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.46..@uifabric/theme-samples_v7.2.47)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.1 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [7.2.46](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.46)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.45..@uifabric/theme-samples_v7.2.46)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.0 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [7.2.45](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.45)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.44..@uifabric/theme-samples_v7.2.45)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.4 ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [7.2.44](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.44)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.43..@uifabric/theme-samples_v7.2.44)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.3 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [7.2.43](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.43)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.42..@uifabric/theme-samples_v7.2.43)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.2 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [7.2.42](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.42)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.41..@uifabric/theme-samples_v7.2.42)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.1 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.2.41](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.41)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.40..@uifabric/theme-samples_v7.2.41)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.2.40](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.40)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.39..@uifabric/theme-samples_v7.2.40)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.39)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.38..@uifabric/theme-samples_v7.2.39)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.3 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.2.38](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.38)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.37..@uifabric/theme-samples_v7.2.38)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.2 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [7.2.37](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.37)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.36..@uifabric/theme-samples_v7.2.37)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [7.2.36](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.36)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.35..@uifabric/theme-samples_v7.2.36)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.2.35](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.35)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.34..@uifabric/theme-samples_v7.2.35)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.2.34](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.34)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.33..@uifabric/theme-samples_v7.2.34)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.2.33](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.33)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.32..@uifabric/theme-samples_v7.2.33)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.2.32](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.32)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.31..@uifabric/theme-samples_v7.2.32)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [7.2.31](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.31)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.30..@uifabric/theme-samples_v7.2.31)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.2.30](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.30)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.2.29..@uifabric/theme-samples_v7.2.30)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.166.2 ([PR #17247](https://github.com/microsoft/fluentui/pull/17247) by tristan.watanabe@gmail.com)
 
 ## [7.2.29](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.2.29)
 

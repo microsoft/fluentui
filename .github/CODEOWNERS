@@ -15,130 +15,145 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
-#### Build stuff
-scripts/ @dzearing @ecraig12345 @xugao
-package.json @ecraig12345 @dzearing @xugao
-yarn.lock @ecraig12345 @dzearing @xugao
-*.config.js @ecraig12345
-*.sh @ecraig12345
-*.yml @ecraig12345
-tsconfig.json @ecraig12345
-lerna.json @ecraig12345
-LICENSE @ecraig12345
-.git* @ecraig12345
-.codesandbox @ecraig12345
-.eslintrc.* @ecraig12345
-.npmrc @ecraig12345
-.npmignore @ecraig12345
-sizeauditor.json @aftab-hassan @ecraig12345
+###### Build Section ######
+#### Repo-wide build files - Note these will only be applied if another rule below does not apply
+*.sh @microsoft/fluentui-react-build
+*.yml @microsoft/fluentui-react-build
+
+#### Build folders
+/.codesandbox/ @microsoft/fluentui-react-build
+/.github/ @microsoft/fluentui-react-build
+/.githooks/ @microsoft/fluentui-react-build
+/scripts/ @microsoft/fluentui-react-build
+
+#### Root Build files
+/.eslintrc.* @microsoft/fluentui-react-build
+/.gitattributes @microsoft/fluentui-react-build
+/.gitignore @microsoft/fluentui-react-build
+/.npmrc @microsoft/fluentui-react-build
+/.npmignore @microsoft/fluentui-react-build
+/lerna.json @microsoft/fluentui-react-build
+/package.json @microsoft/fluentui-react-build
+/sizeauditor.json @microsoft/fluentui-react-build
+/tsconfig.json @microsoft/fluentui-react-build
+/yarn.lock @microsoft/fluentui-react-build
+/*.config.js @microsoft/fluentui-react-build
+
+#### Meta and License stuff
+/LICENSE @microsoft/fluentui-react-build
+/.github/CODEOWNERS @microsoft/fluentui-react-build
+
 
 #### Apps
 # component-demo/
 fabric-website/ @ecraig12345
-fabric-website-resources/ @ecraig12345
-perf-test/ @JasonGore @xugao
+fabric-website-resources/ @ecraig12345 @JustSlone
+perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
-Controls/web.tsx @Vitalius1 @natalieethell @ecraig12345
 
 #### Packages
-packages/react-button/ @dzearing @khmakoto
+packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 packages/charting/ @Raghurk
-packages/date-time @lorejoh12 @evlevy @pompomon
-packages/date-time-utilities @lorejoh12 @evlevy @pompomon
-packages/eslint-plugin/ @ecraig12345
+packages/date-time @lorejoh12 @evlevy
+packages/date-time-utilities @lorejoh12 @evlevy
+packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/example-app-base/ @ecraig12345
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
-packages/foundation/ @dzearing @khmakoto
+packages/file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/foundation/ @microsoft/cxe-red @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 packages/merge-styles/ @dzearing
 packages/monaco-editor/ @ecraig12345
-packages/react-hooks/ @ecraig12345
+packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
+packages/react-cards/ @khmakoto
+packages/react-focus/ @microsoft/cxe-red @khmakoto
+packages/react-hooks/ @microsoft/cxe-red @ecraig12345
+packages/react-stylesheets/ @dzearing
+packages/react-theme-provider/ @dzearing
 packages/styling/ @dzearing
-packages/styling/src/interfaces/ @phkuo @xugao
-packages/styling/src/styles/ @phkuo @xugao
-packages/theme/ @dzearing @xugao
-packages/react-theme-provider/ @dzearing @xugao
-packages/react-stylesheets/ @dzearing @xugao
+packages/styling/src/interfaces/ @phkuo @dzearing
+packages/styling/src/styles/ @phkuo @dzearing
+packages/theme/ @dzearing
 # packages/utilities/
-packages/utilities/positioning/ @joschect
-packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
+packages/utilities/positioning/ @dzearing
 
-### Fabric
+### FluentUI
 # common/
-common/_semanticSlots.scss  @phkuo
-common/_themeOverrides.scss @phkuo
-common/_common.scss @phkuo
+common/_semanticSlots.scss @microsoft/cxe-red @phkuo
+common/_themeOverrides.scss @microsoft/cxe-red @phkuo
+common/_common.scss @microsoft/cxe-red @phkuo
 
 ## Components
-packages/office-ui-fabric-react/src/components/ActivityItem/ @xugao
-packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
-packages/office-ui-fabric-react/src/components/Breadcrumb/ @xugao
-packages/office-ui-fabric-react/src/components/Button/ @khmakoto
+packages/office-ui-fabric-react/src/components/ActivityItem/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/Announced/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/Breadcrumb/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/Button/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh12 @pompomon
-packages/office-ui-fabric-react/src/components/Callout/ @joschect
-packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
-packages/office-ui-fabric-react/src/components/Check/ @dzearing @xugao
-packages/office-ui-fabric-react/src/components/Checkbox/ @khmakoto @xugao
-packages/office-ui-fabric-react/src/components/ChoiceGroup/ @ecraig12345
+packages/office-ui-fabric-react/src/components/Callout/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Check/ @microsoft/cxe-red @ThomasMichon @khmakoto
+packages/office-ui-fabric-react/src/components/Checkbox/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/ChoiceGroup/ @microsoft/cxe-red @ecraig12345
 packages/office-ui-fabric-react/src/components/Coachmark/ @leddie24
-packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
-packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
-packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
-packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
+packages/office-ui-fabric-react/src/components/ColorPicker/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/ComboBox/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/CommandBar/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/ContextualMenu/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
-packages/office-ui-fabric-react/src/components/DetailsList/ @dzearing
-packages/office-ui-fabric-react/src/components/Dialog/ @joschect
+packages/office-ui-fabric-react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/Dialog/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
-packages/office-ui-fabric-react/src/components/Dropdown/ @joschect
+packages/office-ui-fabric-react/src/components/Dropdown/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Fabric/ @dzearing
-packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe
-packages/office-ui-fabric-react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
-packages/office-ui-fabric-react/src/components/FocusTrapZone/ @khmakoto
-packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
-packages/react-focus/src/components/FocusZone/ @khmakoto
-packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @dzearing
-packages/office-ui-fabric-react/src/components/HoverCard/  @Jahnp @Vitalius1
-packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
+packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/FolderCover/ @microsoft/cxe-red @ThomasMichon @bigbadcapers
+packages/office-ui-fabric-react/src/components/FocusTrapZone/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/FocusZone/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/GroupedList/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/HoverCard/ @microsoft/cxe-red @Jahnp @Vitalius1
+packages/office-ui-fabric-react/src/components/Icon/ @microsoft/cxe-red @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing
-packages/office-ui-fabric-react/src/components/Label/ @khmakoto
-packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon
-packages/office-ui-fabric-react/src/components/Link/ @khmakoto
-packages/office-ui-fabric-react/src/components/List/ @dzearing
-packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
-packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
-packages/office-ui-fabric-react/src/components/Modal/ @joschect
-packages/office-ui-fabric-react/src/components/Nav/ @ecraig12345
-packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/Overlay/ @xugao
-packages/office-ui-fabric-react/src/components/Pagination/ @caradong
-packages/office-ui-fabric-react/src/components/Panel/ @xugao
+packages/office-ui-fabric-react/src/components/Label/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/Layer/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/Link/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/List/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/MarqueeSelection/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/MessageBar/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/Modal/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Nav/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/OverflowSet/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Overlay/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/Panel/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/Persona/ @markionium @mtennoe
 packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
-packages/office-ui-fabric-react/src/components/pickers/  @joschect
-packages/office-ui-fabric-react/src/components/Pivot/ @behowell
-packages/office-ui-fabric-react/src/components/Popup/ @joschect
-packages/office-ui-fabric-react/src/components/ProgressIndicator/ @xugao
-packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
-packages/office-ui-fabric-react/src/components/ResizeGroup/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/SearchBox/ @ecraig12345
-packages/office-ui-fabric-react/src/components/Separator/ @natalieethell
-packages/office-ui-fabric-react/src/components/Shimmer/ @Vitalius1
-packages/office-ui-fabric-react/src/components/Signals/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/Slider/ @joschect
-packages/office-ui-fabric-react/src/components/SpinButton/ @khmakoto
-packages/office-ui-fabric-react/src/components/Spinner/ @xugao
-packages/office-ui-fabric-react/src/components/Stack/  @khmakoto
-packages/office-ui-fabric-react/src/components/SwatchColorPicker/ @ecraig12345
-packages/office-ui-fabric-react/src/components/TeachingBubble/ @micahgodbolt
-packages/office-ui-fabric-react/src/components/Text/ @natalieethell
-packages/office-ui-fabric-react/src/components/TextField/ @ecraig12345
+packages/office-ui-fabric-react/src/components/pickers/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Pivot/ @microsoft/cxe-red @behowell
+packages/office-ui-fabric-react/src/components/Popup/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/ProgressIndicator/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Rating/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/ResizeGroup/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/SearchBox/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/Separator/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Shimmer/ @microsoft/cxe-red @Vitalius1
+packages/office-ui-fabric-react/src/components/Slider/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/SpinButton/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/Spinner/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Stack/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/SwatchColorPicker/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/TeachingBubble/ @microsoft/cxe-red
+packages/office-ui-fabric-react/src/components/Text/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/TextField/ @microsoft/cxe-red @ecraig12345
+packages/office-ui-fabric-react/src/components/Toggle/ @microsoft/cxe-red @khmakoto
+packages/office-ui-fabric-react/src/components/Tooltip/ @microsoft/cxe-red @behowell
+
+## Theming and styling
 packages/office-ui-fabric-react/src/components/Theme/ @dzearing
+
+## Experiments
+packages/office-ui-fabric-react/src/components/Pagination/ @caradong
+packages/office-ui-fabric-react/src/components/Signals/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/Toggle/ @xugao
-packages/office-ui-fabric-react/src/components/Tooltip/ @micahgodbolt
 packages/experiments/src/components/Toggle/ @khmakoto

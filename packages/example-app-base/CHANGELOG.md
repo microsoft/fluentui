@@ -1,8 +1,197 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.24](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.24)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.23..@uifabric/example-app-base_v7.19.24)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.1 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [7.19.23](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.23)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.22..@uifabric/example-app-base_v7.19.23)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.0 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.19.22](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.22)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.21..@uifabric/example-app-base_v7.19.22)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.1 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [7.19.21](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.21)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.20..@uifabric/example-app-base_v7.19.21)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.0 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [7.19.20](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.20)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.19..@uifabric/example-app-base_v7.19.20)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.4 ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [7.19.19](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.19)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.18..@uifabric/example-app-base_v7.19.19)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.3 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [7.19.18](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.18)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.17..@uifabric/example-app-base_v7.19.18)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.2 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [7.19.17](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.17)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.16..@uifabric/example-app-base_v7.19.17)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.1 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.19.16](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.16)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.15..@uifabric/example-app-base_v7.19.16)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.19.15](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.15)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.14..@uifabric/example-app-base_v7.19.15)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.19.14](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.14)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.13..@uifabric/example-app-base_v7.19.14)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.3 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.19.13](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.13)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.12..@uifabric/example-app-base_v7.19.13)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.2 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [7.19.12](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.12)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.11..@uifabric/example-app-base_v7.19.12)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [7.19.11](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.11)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.10..@uifabric/example-app-base_v7.19.11)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.19.10](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.10)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.9..@uifabric/example-app-base_v7.19.10)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.19.9](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.9)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.8..@uifabric/example-app-base_v7.19.9)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.19.8](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.8)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.7..@uifabric/example-app-base_v7.19.8)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.19.7](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.7)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.6..@uifabric/example-app-base_v7.19.7)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [7.19.6](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.6)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.5..@uifabric/example-app-base_v7.19.6)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.19.5](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.5)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.4..@uifabric/example-app-base_v7.19.5)
+
+### Patches
+
+- Update @fluentui/public-docsite-setup dep ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [7.19.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.4)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.3..@uifabric/example-app-base_v7.19.4)
+
+### Patches
+
+- Bump @uifabric/tsx-editor to v0.14.31 ([PR #17740](https://github.com/microsoft/fluentui/pull/17740) by elcraig@microsoft.com)
 
 ## [7.19.3](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.3)
 

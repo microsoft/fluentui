@@ -1,8 +1,197 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.55](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.55)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.54..@uifabric/date-time_v7.19.55)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.1 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [7.19.54](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.54)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.53..@uifabric/date-time_v7.19.54)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.0 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.19.53](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.53)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.52..@uifabric/date-time_v7.19.53)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.1 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [7.19.52](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.52)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.51..@uifabric/date-time_v7.19.52)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.0 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [7.19.51](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.51)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.50..@uifabric/date-time_v7.19.51)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.4 ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [7.19.50](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.50)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.49..@uifabric/date-time_v7.19.50)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.3 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [7.19.49](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.49)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.48..@uifabric/date-time_v7.19.49)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.2 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [7.19.48](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.48)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.47..@uifabric/date-time_v7.19.48)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.1 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.19.47](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.47)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.46..@uifabric/date-time_v7.19.47)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.19.46](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.46)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.45..@uifabric/date-time_v7.19.46)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.19.45](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.45)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.44..@uifabric/date-time_v7.19.45)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.3 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.19.44](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.44)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.43..@uifabric/date-time_v7.19.44)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.2 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [7.19.43](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.43)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.42..@uifabric/date-time_v7.19.43)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [7.19.42](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.42)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.41..@uifabric/date-time_v7.19.42)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.19.41](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.41)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.40..@uifabric/date-time_v7.19.41)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.19.40](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.40)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.39..@uifabric/date-time_v7.19.40)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.19.39](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.39)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.38..@uifabric/date-time_v7.19.39)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.19.38](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.38)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.37..@uifabric/date-time_v7.19.38)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [7.19.37](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.37)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.36..@uifabric/date-time_v7.19.37)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.19.36](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.36)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.35..@uifabric/date-time_v7.19.36)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.5 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [7.19.35](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.35)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.34..@uifabric/date-time_v7.19.35)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.4 ([PR #17740](https://github.com/microsoft/fluentui/pull/17740) by elcraig@microsoft.com)
 
 ## [7.19.34](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.34)
 

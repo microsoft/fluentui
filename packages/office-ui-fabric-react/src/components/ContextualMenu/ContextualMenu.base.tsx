@@ -359,8 +359,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
           hidden={this.props.hidden}
         >
           <div
-            aria-label={ariaLabel}
-            aria-labelledby={labelElementId}
             style={contextMenuStyle}
             ref={(host: HTMLDivElement) => (this._host = host)}
             id={id}
@@ -369,6 +367,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             onKeyDown={this._onMenuKeyDown}
             onKeyUp={this._onKeyUp}
             onFocusCapture={this._onMenuFocusCapture}
+            aria-label={ariaLabel}
+            aria-labelledby={labelElementId}
+            role={'menu'}
           >
             {title && <div className={this._classNames.title}> {title} </div>}
             {items && items.length ? (
@@ -380,11 +381,13 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               >
                 {onRenderMenuList(
                   {
+                    ariaLabel,
                     items,
                     totalItemCount,
                     hasCheckmarks,
                     hasIcons,
                     defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                    labelElementId,
                   },
                   this._onRenderMenuList,
                 )}
@@ -491,9 +494,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
-    const { items, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
+    const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
+
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={role ?? 'menu'}>
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={'presentation'}>
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -643,8 +647,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         };
         ariaLabellledby = id;
       } else {
-        headerContextualMenuItem = sectionProps.title;
-        ariaLabellledby = this._id + sectionProps.title.text?.replace(/\s/g, '');
+        const id = sectionProps.title.id || this._id + sectionProps.title.key.replace(/\s/g, '');
+        headerContextualMenuItem = { ...sectionProps.title, id };
+        ariaLabellledby = id;
       }
 
       if (headerContextualMenuItem) {
@@ -666,7 +671,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div {...groupProps}>
-            <ul className={this._classNames.list} role="menu">
+            <ul className={this._classNames.list} role="presentation">
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
@@ -826,7 +831,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         executeItemClick={this._executeItemClick}
         onItemClick={this._onAnchorClick}
         onItemKeyDown={this._onItemKeyDown}
-        getSubMenuId={this._getSubMenuId}
         expandedMenuItemKey={expandedMenuItemKey}
         openSubMenu={this._onItemSubMenuExpand}
         dismissSubMenu={this._onSubMenuDismiss}
@@ -866,7 +870,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
         onItemClick={this._onItemClick}
         onItemClickBase={this._onItemClickBase}
         onItemKeyDown={this._onItemKeyDown}
-        getSubMenuId={this._getSubMenuId}
         expandedMenuItemKey={expandedMenuItemKey}
         openSubMenu={this._onItemSubMenuExpand}
         dismissSubMenu={this._onSubMenuDismiss}
@@ -1380,16 +1383,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       this._targetWindow = getWindow(currentElement)!;
     }
   }
-
-  private _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    let { subMenuId } = this.state;
-
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
-    return subMenuId;
-  };
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
     this._cancelSubMenuTimer();

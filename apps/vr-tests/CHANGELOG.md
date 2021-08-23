@@ -1,8 +1,251 @@
 # Change Log - vr-tests
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.1 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Tue, 10 Aug 2021 12:26:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.44 ([PR #19193](https://github.com/microsoft/fluentui/pull/19193) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.174.0 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Thu, 22 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.42 ([PR #18527](https://github.com/microsoft/fluentui/pull/18527) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.1 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.173.0 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.39 ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.3 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.2 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.36 ([PR #18684](https://github.com/microsoft/fluentui/pull/18684) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.1 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.3 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.2 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 19 May 2021 12:23:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.30 ([PR #18129](https://github.com/microsoft/fluentui/pull/18129) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Tue, 18 May 2021 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.29 ([PR #18177](https://github.com/microsoft/fluentui/pull/18177) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Mon, 19 Apr 2021 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.23 ([PR #17818](https://github.com/microsoft/fluentui/pull/17818) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.22 ([PR #17768](https://github.com/microsoft/fluentui/pull/17768) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/date-time to v7.19.36 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/date-time to v7.19.35 ([PR #17740](https://github.com/microsoft/fluentui/pull/17740) by elcraig@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
 

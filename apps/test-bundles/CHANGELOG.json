@@ -2,6 +2,306 @@
   "name": "test-bundles",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 12:24:13 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.174.1",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "fa84410fc41f6f601905a7c4d73532dafeae0474",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 12:24:50 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.174.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "fa1e5ef37ba6665568f1eb41045ced91c0f4f485",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jul 2021 12:23:18 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.173.1",
+            "author": "makopch@microsoft.com",
+            "commit": "83b8a259c0d0c0e4643fcd2cac514b2a32c08bd2",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.173.0",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "f6aae9ce315b703e7dbf6f75fb9a996249e5dcc0",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 12:26:48 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.4",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2b352893a2a3af326dedbc9b54f865013469c782",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 12:23:05 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.3",
+            "author": "czearing@outlook.com",
+            "commit": "9a421d950aaf3dd76e1e57bdf94d570fc670171e",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Jul 2021 12:25:05 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.2",
+            "author": "kinhln@microsoft.com",
+            "commit": "4bc101e57a9415fa11761b9519d4097a93bfcad0",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.1",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.171.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.3",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.2",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 12:26:09 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "8358bf3d49e1dc5f9b506575857cf353d26d3b74",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.169.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.2",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "407cff735d4f21fffcce2da68b70cc70a0ef3315",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.167.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "test-bundles_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.166.2",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d2dd7fa5ee08769435f7dc3209f1ed166f7d404e",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "test-bundles_v7.0.0",
       "version": "7.0.0",

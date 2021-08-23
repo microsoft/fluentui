@@ -36,6 +36,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   choiceGroupContainerBorder: string;
   choiceGroupContainerBorderStyle: string;
   choiceGroupUncheckedDotHover: string;
+  choiceGroupFocusBorder: string;
   commandBarButtonAfterColor: string;
   commandBarButtonBackgroundHover: string;
   commandBarButtonBackgroundSelected: string;
@@ -79,6 +80,10 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   listItemBackgroundHovered: string;
   listItemBackgroundSelected: string;
   listItemBackgroundSelectedHovered: string;
+  listLinkHovered: string;
+  listLinkRowHovered: string;
+  listLinkRowSelected: string;
+  listLinkRowSelectedHovered: string;
   linkBorderStyle: string;
   listText: string;
   listUnderline: string;
@@ -105,6 +110,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   radioButtonThumbUncheckedDisabled: string;
   radioButtonThumbCheckedDisabled: string;
   rowBorder: string;
+  rowFocus: string;
   statusDefaultBackground: string;
   statusDefaultBorder: string;
   statusErrorBackground: string;

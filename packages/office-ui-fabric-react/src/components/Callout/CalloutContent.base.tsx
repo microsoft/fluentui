@@ -600,7 +600,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   // Whether or not the current positions should be reset
   private _didPositionPropsChange(newProps: ICalloutProps, oldProps: ICalloutProps): boolean {
     return (
-      (!newProps.hidden && newProps.hidden !== oldProps.hidden) || newProps.directionalHint !== oldProps.directionalHint
+      (!newProps.hidden && newProps.hidden !== oldProps.hidden) ||
+      newProps.directionalHint !== oldProps.directionalHint ||
+      newProps.target !== oldProps.target
     );
   }
 

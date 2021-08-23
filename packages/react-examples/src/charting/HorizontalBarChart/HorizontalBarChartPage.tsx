@@ -5,11 +5,12 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 import { HorizontalBarChartBasicExample } from './HorizontalBarChart.Basic.Example';
 import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.CustomCallout.Example';
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
+import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
 
 const HorizontalBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
 const HorizontalBarChartCustomCalloutExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/HorizontalBarChart/HorizontalBarChart.CustomCallout.Example.tsx') as string;
 const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
-
+const HorizontalBarChartCustomAccessibilityExampleCode = require('!raw-loader!@fluentui/react-examples/src/charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -26,6 +27,12 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             </ExampleCard>
             <ExampleCard title="HorizontalBarChart with benchmark" code={HorizontalBarChartBenchmarkExampleCode}>
               <HorizontalBarChartBenchmarkExample />
+            </ExampleCard>
+            <ExampleCard
+              title="HorizontalBarChart Custom Accessibility"
+              code={HorizontalBarChartCustomAccessibilityExampleCode}
+            >
+              <HorizontalBarChartCustomAccessibilityExample />
             </ExampleCard>
           </div>
         }

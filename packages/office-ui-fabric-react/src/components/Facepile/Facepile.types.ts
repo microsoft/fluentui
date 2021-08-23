@@ -22,6 +22,13 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   componentRef?: IRefObject<IFacepile>;
 
   /**
+   * Whether the default tooltip (the persona name) is shown using the `title` prop.
+   * Set this to false if you'd like to display a custom tooltip, for example using a custom renderer and TooltipHost
+   * @defaultvalue true
+   */
+  showTooltip?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IFacepileStyleProps, IFacepileStyles>;

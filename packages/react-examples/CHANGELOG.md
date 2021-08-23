@@ -1,8 +1,365 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.26)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.25..@fluentui/react-examples_v0.14.26)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.52 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [0.14.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.25)
+
+Mon, 16 Aug 2021 12:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.24..@fluentui/react-examples_v0.14.25)
+
+### Patches
+
+- Chart title added for Area and Line chart ([PR #19383](https://github.com/microsoft/fluentui/pull/19383) by v-scharde@microsoft.com)
+
+## [0.14.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.24)
+
+Wed, 11 Aug 2021 12:23:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.23..@fluentui/react-examples_v0.14.24)
+
+### Patches
+
+- Accessibility change for Area chart and line chart ([PR #19288](https://github.com/microsoft/fluentui/pull/19288) by v-scharde@microsoft.com)
+
+## [0.14.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.23)
+
+Tue, 10 Aug 2021 12:26:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.22..@fluentui/react-examples_v0.14.23)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.44 ([PR #19193](https://github.com/microsoft/fluentui/pull/19193) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [0.14.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.22)
+
+Thu, 05 Aug 2021 12:22:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.21..@fluentui/react-examples_v0.14.22)
+
+### Patches
+
+- Bump @uifabric/charting to v4.16.10 ([PR #19254](https://github.com/microsoft/fluentui/pull/19254) by v-scharde@microsoft.com)
+
+## [0.14.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.21)
+
+Mon, 02 Aug 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.20..@fluentui/react-examples_v0.14.21)
+
+### Patches
+
+- Accessibility change for HeatMap chart ([PR #19171](https://github.com/microsoft/fluentui/pull/19171) by v-scharde@microsoft.com)
+- CherryPick: Accessibility change for Donut chart ([PR #19150](https://github.com/microsoft/fluentui/pull/19150) by v-scharde@microsoft.com)
+- Accessibility change for Vertical Bar chart ([PR #19173](https://github.com/microsoft/fluentui/pull/19173) by v-scharde@microsoft.com)
+- Accessibility change for Vertical stacked bar chart ([PR #19172](https://github.com/microsoft/fluentui/pull/19172) by v-scharde@microsoft.com)
+
+## [0.14.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.20)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.19..@fluentui/react-examples_v0.14.20)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.51 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [0.14.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.19)
+
+Tue, 27 Jul 2021 12:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.18..@fluentui/react-examples_v0.14.19)
+
+### Patches
+
+- GroupedVertical Chart accessibility change ([PR #18933](https://github.com/microsoft/fluentui/pull/18933) by v-scharde@microsoft.com)
+
+## [0.14.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.18)
+
+Thu, 22 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.17..@fluentui/react-examples_v0.14.18)
+
+### Patches
+
+- DetailsList contrast update, link control style update, dark theme background color  ([PR #18527](https://github.com/microsoft/fluentui/pull/18527) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [0.14.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.17)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.16..@fluentui/react-examples_v0.14.17)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.50 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [0.14.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.16)
+
+Mon, 12 Jul 2021 12:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.15..@fluentui/react-examples_v0.14.16)
+
+### Patches
+
+- Bump @uifabric/charting to v4.16.5 ([PR #18859](https://github.com/microsoft/fluentui/pull/18859) by v-scharde@microsoft.com)
+
+## [0.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.15)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.14..@fluentui/react-examples_v0.14.15)
+
+### Patches
+
+- Cherrypick: Fix resizing of justified columns for constrained viewport widths ([PR #18612](https://github.com/microsoft/fluentui/pull/18612) by sasyedah@microsoft.com)
+
+## [0.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.14)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.13..@fluentui/react-examples_v0.14.14)
+
+### Patches
+
+- Button: Remove pointer-events: 'none' from disabled styles. ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [0.14.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.13)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.12..@fluentui/react-examples_v0.14.13)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.47 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [0.14.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.12)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.11..@fluentui/react-examples_v0.14.12)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.46 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [0.14.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.11)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.10..@fluentui/react-examples_v0.14.11)
+
+### Patches
+
+- Add features to Line Chart (gaps, borders, line properties, etc.) (#18665) ([PR #18726](https://github.com/microsoft/fluentui/pull/18726) by nojittip@microsoft.com)
+- Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is ([PR #18731](https://github.com/microsoft/fluentui/pull/18731) by v-scharde@microsoft.com)
+- Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut. ([PR #18735](https://github.com/microsoft/fluentui/pull/18735) by v-scharde@microsoft.com)
+
+## [0.14.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.10)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.9..@fluentui/react-examples_v0.14.10)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.45 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [0.14.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.9)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.8..@fluentui/react-examples_v0.14.9)
+
+### Patches
+
+- Rating: updated examples to reflect addition of ariaLabel prop ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [0.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.8)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.7..@fluentui/react-examples_v0.14.8)
+
+### Patches
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [0.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.7)
+
+Fri, 11 Jun 2021 12:24:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.6..@fluentui/react-examples_v0.14.7)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.29 ([PR #18511](https://github.com/microsoft/fluentui/pull/18511) by v-jasha@microsoft.com)
+
+## [0.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.6)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.5..@fluentui/react-examples_v0.14.6)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.42 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [0.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.5)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.4..@fluentui/react-examples_v0.14.5)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.41 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [0.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.4)
+
+Tue, 25 May 2021 12:23:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.3..@fluentui/react-examples_v0.14.4)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.26 ([PR #18295](https://github.com/microsoft/fluentui/pull/18295) by email not defined)
+
+## [0.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.3)
+
+Wed, 19 May 2021 12:23:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.2..@fluentui/react-examples_v0.14.3)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.30 ([PR #18129](https://github.com/microsoft/fluentui/pull/18129) by aidanmc95@gmail.com)
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.2)
+
+Tue, 18 May 2021 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.1..@fluentui/react-examples_v0.14.2)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.29 ([PR #18177](https://github.com/microsoft/fluentui/pull/18177) by aidanmc95@gmail.com)
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.1)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.0..@fluentui/react-examples_v0.14.1)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.40 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.0)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.13.0..@fluentui/react-examples_v0.14.0)
+
+### Minor changes
+
+- Added proportional column behavior to the DetailsList component and enabled custom components in cell headers. ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/api-docs to v7.6.39 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/azure-themes to v7.7.34 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/experiments to v7.39.27 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/react-cards to v0.115.48 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @fluentui/storybook to v0.6.44 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/charting to v4.15.24 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/date-time to v7.19.42 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/example-app-base to v7.19.11 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/mdl2-theme to v0.4.36 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+- Bump @uifabric/theme-samples to v7.2.36 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.13.0)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.30..@fluentui/react-examples_v0.13.0)
+
+### Minor changes
+
+- Add support to Slider, to allow selecting a lower and upper bound of a range ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.23 ([PR #17980](https://github.com/microsoft/fluentui/pull/17980) by v-jasha@microsoft.com)
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/api-docs to v7.6.38 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/azure-themes to v7.7.33 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/experiments to v7.39.26 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/react-cards to v0.115.47 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @fluentui/storybook to v0.6.43 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/date-time to v7.19.41 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/example-app-base to v7.19.10 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/mdl2-theme to v0.4.35 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/theme-samples to v7.2.35 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [0.12.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.30)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.29..@fluentui/react-examples_v0.12.30)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.37 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [0.12.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.29)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.28..@fluentui/react-examples_v0.12.29)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.36 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [0.12.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.28)
+
+Thu, 22 Apr 2021 12:23:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.27..@fluentui/react-examples_v0.12.28)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.20 ([PR #17864](https://github.com/microsoft/fluentui/pull/17864) by v-jasha@microsoft.com)
+
+## [0.12.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.27)
+
+Mon, 19 Apr 2021 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.26..@fluentui/react-examples_v0.12.27)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.23 ([PR #17818](https://github.com/microsoft/fluentui/pull/17818) by aidanmc95@gmail.com)
+
+## [0.12.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.26)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.25..@fluentui/react-examples_v0.12.26)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.22 ([PR #17768](https://github.com/microsoft/fluentui/pull/17768) by aidanmc95@gmail.com)
+
+## [0.12.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.25)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.24..@fluentui/react-examples_v0.12.25)
+
+### Patches
+
+- DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row. ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [0.12.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.24)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.23..@fluentui/react-examples_v0.12.24)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.17 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [0.12.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.23)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.22..@fluentui/react-examples_v0.12.23)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.16 ([PR #17636](https://github.com/microsoft/fluentui/pull/17636) by v-jasha@microsoft.com)
 
 ## [0.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.22)
 

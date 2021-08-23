@@ -172,82 +172,82 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
   /**
    * Style for the root element.
    */
-  root: IStyle;
+  root?: IStyle;
 
   /**
    * Styles for a menu item that is an anchor link.
    */
-  item: IStyle;
+  item?: IStyle;
 
   /**
    * Styles for a divider item of a ContextualMenu.
    */
-  divider: IStyle;
+  divider?: IStyle;
 
   /**
    * Styles for the content inside the button/link of the menuItem.
    */
-  linkContent: IStyle;
+  linkContent?: IStyle;
 
   /**
    * Styles for a menu item that is an anchor link.
    */
-  anchorLink: IStyle;
+  anchorLink?: IStyle;
 
   /**
    * Styles for the icon element of a menu item.
    */
-  icon: IStyle;
+  icon?: IStyle;
 
   /**
    * Default icon color style for known icons.
    */
-  iconColor: IStyle;
+  iconColor?: IStyle;
 
   /**
    * Default style for checkmark icons.
    */
-  checkmarkIcon: IStyle;
+  checkmarkIcon?: IStyle;
 
   /**
    * Styles for the submenu icon of a menu item.
    */
-  subMenuIcon: IStyle;
+  subMenuIcon?: IStyle;
 
   /**
    * Styles for the label of a menu item.
    */
-  label: IStyle;
+  label?: IStyle;
 
   /**
    * Styles for the secondary text of a menu item.
    */
-  secondaryText: IStyle;
+  secondaryText?: IStyle;
 
   /**
    * Styles for the container of a split menu item.
    */
-  splitContainer: IStyle;
+  splitContainer?: IStyle;
 
   /**
    * Styles for the primary portion of a split menu item.
    */
-  splitPrimary: IStyle;
+  splitPrimary?: IStyle;
 
   /**
    * Styles for the menu portion of a split menu item.
    */
-  splitMenu: IStyle;
+  splitMenu?: IStyle;
 
   /**
    * Styles for a menu item that is a link.
    */
-  linkContentMenu: IStyle;
+  linkContentMenu?: IStyle;
 
   /**
    * Styles for hidden screen reader text.
    */
-  screenReaderText: IStyle;
+  screenReaderText?: IStyle;
 }
 
 export interface IContextualMenuItemRenderFunctions {

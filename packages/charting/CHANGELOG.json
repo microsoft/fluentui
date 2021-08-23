@@ -2,6 +2,521 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 19 Aug 2021 12:24:13 GMT",
+      "tag": "@uifabric/charting_v4.16.13",
+      "version": "4.16.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.174.1",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "fa84410fc41f6f601905a7c4d73532dafeae0474",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Aug 2021 12:23:39 GMT",
+      "tag": "@uifabric/charting_v4.16.12",
+      "version": "4.16.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chart title added for Area and Line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f66ffd490ae90f493f3ac6d4b1a065157eb952b2",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 12:23:07 GMT",
+      "tag": "@uifabric/charting_v4.16.11",
+      "version": "4.16.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Area chart and line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "3d906f1eafff5e30084c62a061a36917a441f819",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Aug 2021 12:22:03 GMT",
+      "tag": "@uifabric/charting_v4.16.10",
+      "version": "4.16.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added role as a link for overflow legends message, so it will read like 7 more link collapsed",
+            "author": "v-scharde@microsoft.com",
+            "commit": "765647a5db1605744c5ec1de128ed2ffb5c43587",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "callout issue resolved by adding preventDismissOnLostFocus prop to callout props",
+            "author": "v-scharde@microsoft.com",
+            "commit": "b4660428f3983e26277eaa5ec4378bca83f4d361",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Border will be visible on rect focus",
+            "author": "v-scharde@microsoft.com",
+            "commit": "cec8c8fc3cdfbc2ddb7d3ff9e1dd61abe46f2316",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 12:25:19 GMT",
+      "tag": "@uifabric/charting_v4.16.9",
+      "version": "4.16.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility change for Vertical stacked bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8dc0201a4da50716e546cddf496f9843813466f2",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "CherryPick: Accessibility change for Donut chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "e851260024a6d8d525a5a171b72c242b3cdf0d5e",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Accessibility change for HeatMap chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "12c61216c07a889b9e575900023e1e95e22cf6cf",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Accessibility change for Vertical Bar chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "349df87e8a43b60f6e73446171e683ab6cee5ba8",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jul 2021 12:24:50 GMT",
+      "tag": "@uifabric/charting_v4.16.8",
+      "version": "4.16.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.174.0",
+            "author": "ololubek@microsoft.com",
+            "commit": "fa1e5ef37ba6665568f1eb41045ced91c0f4f485",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jul 2021 12:23:57 GMT",
+      "tag": "@uifabric/charting_v4.16.7",
+      "version": "4.16.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedVertical Chart accessibility change",
+            "author": "v-scharde@microsoft.com",
+            "commit": "22be22623283bc47f4cb2006130062a12b1a39ee",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jul 2021 12:23:18 GMT",
+      "tag": "@uifabric/charting_v4.16.6",
+      "version": "4.16.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.173.1",
+            "author": "makopch@microsoft.com",
+            "commit": "83b8a259c0d0c0e4643fcd2cac514b2a32c08bd2",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jul 2021 12:21:23 GMT",
+      "tag": "@uifabric/charting_v4.16.5",
+      "version": "4.16.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry pick-Stacked Bar and Multi Stacked Bar chart: fixed when chart data is empty",
+            "author": "v-scharde@microsoft.com",
+            "commit": "2a125e1eede531af4e60ed7924dc70724bd21c89",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 12:22:25 GMT",
+      "tag": "@uifabric/charting_v4.16.4",
+      "version": "4.16.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.173.0",
+            "author": "nikolenkoanton92@gmail.com",
+            "commit": "f6aae9ce315b703e7dbf6f75fb9a996249e5dcc0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 12:26:48 GMT",
+      "tag": "@uifabric/charting_v4.16.3",
+      "version": "4.16.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.4",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2b352893a2a3af326dedbc9b54f865013469c782",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Jul 2021 12:23:05 GMT",
+      "tag": "@uifabric/charting_v4.16.2",
+      "version": "4.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.3",
+            "author": "czearing@outlook.com",
+            "commit": "9a421d950aaf3dd76e1e57bdf94d570fc670171e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Jul 2021 12:25:05 GMT",
+      "tag": "@uifabric/charting_v4.16.1",
+      "version": "4.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.2",
+            "author": "kinhln@microsoft.com",
+            "commit": "4bc101e57a9415fa11761b9519d4097a93bfcad0",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@uifabric/charting_v4.16.0",
+      "version": "4.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add features to Line Chart (gaps, borders, line properties, etc.) (#18665)",
+            "author": "nojittip@microsoft.com",
+            "commit": "b52f00209018559732fec523c876521cf978bc8b",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card",
+            "author": "v-scharde@microsoft.com",
+            "commit": "1cf83bac6ea54bc8fb4b4b1c98cdef561346f858",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is",
+            "author": "v-scharde@microsoft.com",
+            "commit": "5024353a97c3d120050441c6e32f203cecfadc3c",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f6011e9ca2736a0223fbebce74f974d5949926e3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "@uifabric/charting_v4.15.32",
+      "version": "4.15.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.1",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "@uifabric/charting_v4.15.31",
+      "version": "4.15.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.172.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 12:24:53 GMT",
+      "tag": "@uifabric/charting_v4.15.30",
+      "version": "4.15.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.171.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "09a98a231db37148bb0a16b81b20d9ccd11ade39",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jun 2021 12:24:51 GMT",
+      "tag": "@uifabric/charting_v4.15.29",
+      "version": "4.15.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry-pick of 18369 - Adding onClick handler to chart data points",
+            "author": "v-jasha@microsoft.com",
+            "commit": "b193fa7eab73154b5024c8a3cae2438b474f64d4",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "@uifabric/charting_v4.15.28",
+      "version": "4.15.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.3",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@uifabric/charting_v4.15.27",
+      "version": "4.15.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.2",
+            "author": "rongqizhou@microsoft.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 May 2021 12:23:20 GMT",
+      "tag": "@uifabric/charting_v4.15.26",
+      "version": "4.15.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CherryPick#18279 - accessibility issues",
+            "author": "email not defined",
+            "commit": "f66977c1ffcd6ce617704670d80f8caa31040f02",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 12:26:09 GMT",
+      "tag": "@uifabric/charting_v4.15.25",
+      "version": "4.15.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "8358bf3d49e1dc5f9b506575857cf353d26d3b74",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@uifabric/charting_v4.15.24",
+      "version": "4.15.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@uifabric/charting_v4.15.23",
+      "version": "4.15.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cherry-pick of #17978 - added aria-label to the legends",
+            "author": "v-jasha@microsoft.com",
+            "commit": "15497787f5cc0591a4ae08d9e2424c05d94cbe39",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "@uifabric/charting_v4.15.22",
+      "version": "4.15.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.2",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "@uifabric/charting_v4.15.21",
+      "version": "4.15.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 12:23:03 GMT",
+      "tag": "@uifabric/charting_v4.15.20",
+      "version": "4.15.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CherryPick of PR#17643 and PR#17744",
+            "author": "v-jasha@microsoft.com",
+            "commit": "004bd3b23d1b340898d41097dc1c5c9ac9f54577",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@uifabric/charting_v4.15.19",
+      "version": "4.15.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "407cff735d4f21fffcce2da68b70cc70a0ef3315",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@uifabric/charting_v4.15.18",
+      "version": "4.15.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.167.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 00:28:37 GMT",
+      "tag": "@uifabric/charting_v4.15.17",
+      "version": "4.15.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "4d99c00687344058690f2d6023ad44c0f46a4f25",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@uifabric/charting_v4.15.16",
+      "version": "4.15.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry pick of PR17571",
+            "author": "v-jasha@microsoft.com",
+            "commit": "3d9960bd39d7987fd11120944690172be9a932d7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@uifabric/charting_v4.15.15",
       "version": "4.15.15",

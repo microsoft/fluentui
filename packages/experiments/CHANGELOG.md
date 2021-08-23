@@ -1,8 +1,251 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.45](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.45)
+
+Thu, 19 Aug 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.44..@uifabric/experiments_v7.39.45)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.52 ([PR #19431](https://github.com/microsoft/fluentui/pull/19431) by sebastian.oettl@microsoft.com)
+
+## [7.39.44](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.44)
+
+Tue, 10 Aug 2021 12:26:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.43..@uifabric/experiments_v7.39.44)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.51 ([PR #19193](https://github.com/microsoft/fluentui/pull/19193) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.39.43](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.43)
+
+Fri, 30 Jul 2021 12:24:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.42..@uifabric/experiments_v7.39.43)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.50 ([PR #19140](https://github.com/microsoft/fluentui/pull/19140) by ololubek@microsoft.com)
+
+## [7.39.42](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.42)
+
+Thu, 22 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.41..@uifabric/experiments_v7.39.42)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.49 ([PR #18527](https://github.com/microsoft/fluentui/pull/18527) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.39.41](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.41)
+
+Wed, 14 Jul 2021 12:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.40..@uifabric/experiments_v7.39.41)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.48 ([PR #18852](https://github.com/microsoft/fluentui/pull/18852) by makopch@microsoft.com)
+
+## [7.39.40](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.40)
+
+Fri, 09 Jul 2021 12:22:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.39..@uifabric/experiments_v7.39.40)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.47 ([PR #18820](https://github.com/microsoft/fluentui/pull/18820) by nikolenkoanton92@gmail.com)
+
+## [7.39.39](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.39)
+
+Thu, 08 Jul 2021 12:26:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.38..@uifabric/experiments_v7.39.39)
+
+### Patches
+
+- Updating snapshots. ([PR #18851](https://github.com/microsoft/fluentui/pull/18851) by Humberto.Morimoto@microsoft.com)
+
+## [7.39.38](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.38)
+
+Wed, 07 Jul 2021 12:23:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.37..@uifabric/experiments_v7.39.38)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.45 ([PR #18824](https://github.com/microsoft/fluentui/pull/18824) by czearing@outlook.com)
+
+## [7.39.37](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.37)
+
+Mon, 05 Jul 2021 12:25:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.36..@uifabric/experiments_v7.39.37)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.44 ([PR #18803](https://github.com/microsoft/fluentui/pull/18803) by kinhln@microsoft.com)
+
+## [7.39.36](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.36)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.35..@uifabric/experiments_v7.39.36)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.43 ([PR #18684](https://github.com/microsoft/fluentui/pull/18684) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [7.39.35](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.35)
+
+Tue, 22 Jun 2021 17:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.34..@uifabric/experiments_v7.39.35)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.42 ([PR #18635](https://github.com/microsoft/fluentui/pull/18635) by ololubek@microsoft.com)
+
+## [7.39.34](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.34)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.33..@uifabric/experiments_v7.39.34)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.41 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+
+## [7.39.33](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.33)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.32..@uifabric/experiments_v7.39.33)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.40 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+
+## [7.39.32](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.32)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.31..@uifabric/experiments_v7.39.32)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.39 ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
+
+## [7.39.31](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.31)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.30..@uifabric/experiments_v7.39.31)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.38 ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by rongqizhou@microsoft.com)
+
+## [7.39.30](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.30)
+
+Wed, 19 May 2021 12:23:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.29..@uifabric/experiments_v7.39.30)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.37 ([PR #18129](https://github.com/microsoft/fluentui/pull/18129) by aidanmc95@gmail.com)
+
+## [7.39.29](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.29)
+
+Tue, 18 May 2021 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.28..@uifabric/experiments_v7.39.29)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.36 ([PR #18177](https://github.com/microsoft/fluentui/pull/18177) by aidanmc95@gmail.com)
+
+## [7.39.28](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.28)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.27..@uifabric/experiments_v7.39.28)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.35 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [7.39.27](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.27)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.26..@uifabric/experiments_v7.39.27)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.34 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.39.26](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.26)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.25..@uifabric/experiments_v7.39.26)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.33 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.39.25](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.25)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.24..@uifabric/experiments_v7.39.25)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.32 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.39.24](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.24)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.23..@uifabric/experiments_v7.39.24)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.31 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.39.23](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.23)
+
+Mon, 19 Apr 2021 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.22..@uifabric/experiments_v7.39.23)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.30 ([PR #17818](https://github.com/microsoft/fluentui/pull/17818) by aidanmc95@gmail.com)
+
+## [7.39.22](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.22)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.21..@uifabric/experiments_v7.39.22)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.29 ([PR #17768](https://github.com/microsoft/fluentui/pull/17768) by aidanmc95@gmail.com)
+
+## [7.39.21](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.21)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.20..@uifabric/experiments_v7.39.21)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.28 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.39.20](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.20)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.19..@uifabric/experiments_v7.39.20)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.5 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [7.39.19](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.19)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.18..@uifabric/experiments_v7.39.19)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.4 ([PR #17740](https://github.com/microsoft/fluentui/pull/17740) by elcraig@microsoft.com)
 
 ## [7.39.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.18)
 

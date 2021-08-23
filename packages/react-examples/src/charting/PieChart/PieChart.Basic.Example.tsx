@@ -14,6 +14,6 @@ export class PieChartBasicExample extends React.Component<IPieChartProps, {}> {
       { y: 25, x: 'C' },
     ];
     const colors = [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green];
-    return <PieChart data={points} chartTitle="Pie Chart" colors={colors} />;
+    return <PieChart data={points} chartTitle="Pie Chart basic example" colors={colors} />;
   }
 }

@@ -348,7 +348,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                             ? this._onDayMouseUp(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
-                        role={'gridcell'}
+                        role={'presentation'}
                       >
                         <button
                           key={day.key + 'button'}
@@ -368,6 +368,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
                           type="button"
+                          role={'gridcell'}
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
                         </button>

@@ -32,11 +32,6 @@ export interface ILineChartProps extends ICartesianChartProps {
    */
   eventAnnotationProps?: IEventsAnnotationProps;
 
-  /*
-   * Color fill bars for the chart,
-   */
-  colorFillBars?: IColorFillBarsProps[];
-
   /**
    * Define a custom callout renderer for a data point
    */
@@ -46,6 +41,16 @@ export interface ILineChartProps extends ICartesianChartProps {
    * Define a custom callout renderer for a stack; default is to render per data point
    */
   onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
+   * Callback for getting callout description message
+   */
+  getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+
+  /*
+   * Color fill bars for the chart,
+   */
+  colorFillBars?: IColorFillBarsProps[];
 
   /**
    * if this is set to true, then for each line there will be a unique shape assigned to the point,

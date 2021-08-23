@@ -21,7 +21,8 @@ import { SelectionMode, Selection, SelectionZone } from '../../utilities/selecti
 import { getTheme } from '../../Styling';
 import { KeyCodes } from '@uifabric/utilities';
 import { IGroup } from '../../GroupedList';
-import { IDetailsRowProps } from './DetailsRow';
+import { DetailsRow, IDetailsRowProps } from './DetailsRow';
+import { DetailsRowCheck } from './DetailsRowCheck';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -123,6 +124,113 @@ describe('DetailsList', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders a single proportional column with correct width', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    safeMount(
+      <DetailsList
+        className="list"
+        items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
+        columns={[
+          { fieldName: 'a', key: 'col1', minWidth: 101, name: 'column 1' },
+          { fieldName: 'b', key: 'col2', minWidth: 102, name: 'column 2', flexGrow: 1 },
+          { fieldName: 'c', key: 'col3', minWidth: 103, name: 'column 3' },
+        ]}
+        componentRef={ref => (component = ref)}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        flexMargin={-640}
+        skipViewportMeasures={false}
+        onShouldVirtualize={() => false}
+      />,
+      () => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
+        setTimeout(() => {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
+          elements.forEach((element: Element) => {
+            const itemKey = element.getAttribute('aria-colindex')!;
+            expect(itemKey).toBeDefined();
+
+            if (itemKey === '1') {
+              return;
+            }
+
+            const style = element.getAttribute('style')!;
+            expect(style).toBeDefined();
+
+            const width = style.match(/(?<=width: )\d+/g)!;
+            expect(width).toBeDefined();
+            expect(width[0]).toBeDefined();
+
+            if (itemKey === '2') {
+              expect(width[0]).toBe('121');
+            } else if (itemKey === '3') {
+              expect(width[0]).toBe('348');
+            } else if (itemKey === '4') {
+              expect(width[0]).toBe('123');
+            } else {
+              fail('Unexpected itemKey.');
+            }
+          });
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
+    );
+  });
+
+  it('renders proportional columns with proper width ratios', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    safeMount(
+      <DetailsList
+        className="list"
+        items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
+        columns={[
+          { fieldName: 'a', key: 'col1', minWidth: 100, name: 'column 1', flexGrow: 0.8 },
+          { fieldName: 'b', key: 'col2', minWidth: 100, name: 'column 2', flexGrow: 0.5 },
+        ]}
+        componentRef={ref => (component = ref)}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        flexMargin={-640}
+        skipViewportMeasures={false}
+        onShouldVirtualize={() => false}
+      />,
+      () => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
+        setTimeout(() => {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
+          elements.forEach((element: Element) => {
+            const itemKey = element.getAttribute('aria-colindex')!;
+            expect(itemKey).toBeDefined();
+
+            if (itemKey === '1') {
+              return;
+            }
+
+            const style = element.getAttribute('style')!;
+            expect(style).toBeDefined();
+
+            const width = style.match(/(?<=width: )\d+/g)!;
+            expect(width).toBeDefined();
+            expect(width[0]).toBeDefined();
+
+            if (itemKey === '2') {
+              expect(width[0]).toBe('336');
+            } else if (itemKey === '3') {
+              expect(width[0]).toBe('255');
+            } else {
+              fail('Unexpected itemKey.');
+            }
+          });
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
+    );
   });
 
   it('renders List in compact mode correctly', () => {
@@ -450,7 +558,7 @@ describe('DetailsList', () => {
         onRenderDetailsHeader={onRenderDetailsHeader}
       />,
       () => {
-        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
+        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(4);
       },
     );
   });
@@ -744,5 +852,56 @@ describe('DetailsList', () => {
     );
 
     expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
+    const container = document.createElement('div');
+    const columns = [
+      {
+        key: 'column1',
+        name: 'Name',
+        fieldName: 'name',
+        minWidth: 100,
+        maxWidth: 200,
+        isResizable: true,
+        isRowHeader: true,
+      },
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
+    ];
+    const items = mockData(1);
+
+    ReactDOM.render(
+      <DetailsListBase
+        items={mockData(1)}
+        columns={columns}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
+      />,
+      container,
+    );
+
+    const checkbox = container.querySelector('div[role="checkbox"][aria-label="select row"]') as HTMLElement;
+    const rowHeaderId = checkbox?.getAttribute('aria-labelledby')?.split(' ')[1];
+
+    expect(container.querySelector(`#${rowHeaderId}`)!.textContent).toEqual(items[0].name);
+  });
+
+  it('has an aria-labelledby checkboxId that matches the id of the checkbox', () => {
+    const component = renderer.create(
+      <DetailsList
+        items={mockData(5)}
+        columns={mockData(5, true)}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
+      />,
+    );
+
+    const detailsRowSource = component.root.findAllByType(DetailsRow)[0];
+    const detailsRowCheckSource = detailsRowSource.findByType(DetailsRowCheck).props;
+    const checkboxId = detailsRowCheckSource.id;
+
+    expect(checkboxId).toEqual(detailsRowCheckSource[`aria-labelledby`].split(' ')[0]);
   });
 });

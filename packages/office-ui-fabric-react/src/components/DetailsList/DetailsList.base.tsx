@@ -46,7 +46,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction } from '@uifabric/utilities';
+import { composeRenderFunction, getId } from '@uifabric/utilities';
 import { useConst } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
@@ -178,6 +178,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRenderDefaultRow,
     selectionZoneRef,
   } = props;
+
+  const defaultRole = 'grid';
+  const role = props.role ? props.role : defaultRole;
+
+  const rowId = getId('row');
 
   const groupNestingDepth = getGroupNestingDepth(groups);
 
@@ -404,11 +409,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
-      role: 'rowgroup',
+      role: role === defaultRole ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
     };
-  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader]);
+  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, role]);
 
   const sumColumnWidths = useConst(() =>
     memoizeFunction((columns: IColumn[]) => {
@@ -432,12 +437,15 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
 
+      const rowRole = role === defaultRole ? undefined : 'presentation';
+
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
+        id: `${rowId}-${index}`,
         selectionMode,
         selection,
         onDidMount: onRowDidMount,
@@ -461,6 +469,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         enableUpdateAnimations,
         rowWidth,
         useFastIcons,
+        role: rowRole,
       };
 
       if (!item) {
@@ -478,6 +487,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       adjustedColumns,
       selectionMode,
       selection,
+      rowId,
       onRowDidMount,
       onRowWillUnmount,
       onRenderItemColumn,
@@ -502,6 +512,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderMissingItem,
       props.onRenderRow,
       rowWidth,
+      role,
     ],
   );
 
@@ -609,7 +620,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     >
       <FocusRects />
       <div
-        role="grid"
+        role={role}
         aria-label={ariaLabelForGrid}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
@@ -1101,23 +1112,14 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     let adjustedColumns: IColumn[];
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
-      adjustedColumns = this._getFixedColumns(newColumns);
+      adjustedColumns = this._getFixedColumns(newColumns, viewportWidth, newProps);
 
       // Preserve adjusted column calculated widths.
       adjustedColumns.forEach(column => {
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
-      if (resizingColumnIndex !== undefined) {
-        adjustedColumns = this._getJustifiedColumnsAfterResize(
-          newColumns,
-          viewportWidth,
-          newProps,
-          resizingColumnIndex,
-        );
-      } else {
-        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
-      }
+      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
 
       adjustedColumns.forEach(column => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
@@ -1128,68 +1130,108 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
-  private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
+  private _getFixedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
+    const { selectionMode = this._selection.mode, checkboxVisibility, flexMargin, skipViewportMeasures } = this.props;
+    let remainingWidth = viewportWidth - (flexMargin || 0);
+    let sumProportionalWidth = 0;
+
+    newColumns.forEach((col: IColumn) => {
+      if (skipViewportMeasures || !col.flexGrow) {
+        remainingWidth -= col.maxWidth || col.minWidth || MIN_COLUMN_WIDTH;
+      } else {
+        remainingWidth -= col.minWidth || MIN_COLUMN_WIDTH;
+        sumProportionalWidth += col.flexGrow;
+      }
+
+      remainingWidth -= getPaddedWidth(col, props, true);
+    });
+
+    const rowCheckWidth =
+      selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
+    const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
+    remainingWidth -= rowCheckWidth + groupExpandWidth;
+
+    let widthFraction = remainingWidth / sumProportionalWidth;
+
+    // Shrinks proportional columns to their max width and adds the remaining width to distribute to other columns.
+    if (!skipViewportMeasures) {
+      newColumns.forEach((column: IColumn) => {
+        const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
+
+        if (newColumn.flexGrow && newColumn.maxWidth) {
+          const fullWidth = newColumn.flexGrow * widthFraction + newColumn.minWidth;
+          const shrinkWidth = fullWidth - newColumn.maxWidth;
+
+          if (shrinkWidth > 0) {
+            remainingWidth += shrinkWidth;
+            sumProportionalWidth -= (shrinkWidth / (fullWidth - newColumn.minWidth)) * newColumn.flexGrow;
+          }
+        }
+      });
+    }
+
+    widthFraction = remainingWidth > 0 ? remainingWidth / sumProportionalWidth : 0;
+
     return newColumns.map(column => {
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
+      // Delay computation until viewport width is available.
+      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0) {
+        return newColumn;
+      }
+
       if (!newColumn.calculatedWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+        if (!skipViewportMeasures && newColumn.flexGrow) {
+          // Assigns the proportion of the remaining extra width after all columns have met minimum widths.
+          newColumn.calculatedWidth = newColumn.minWidth + newColumn.flexGrow * widthFraction;
+          newColumn.calculatedWidth = Math.min(newColumn.calculatedWidth, newColumn.maxWidth || Number.MAX_VALUE);
+        } else {
+          newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+        }
       }
 
       return newColumn;
     });
   }
 
-  private _getJustifiedColumnsAfterResize(
-    newColumns: IColumn[],
-    viewportWidth: number,
-    props: IDetailsListProps,
-    resizingColumnIndex: number,
-  ): IColumn[] {
-    const fixedColumns = newColumns.slice(0, resizingColumnIndex);
-    fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
-
-    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0, props), 0);
-
-    const remainingColumns = newColumns.slice(resizingColumnIndex);
-    const remainingWidth = viewportWidth - fixedWidth;
-
-    return [
-      ...fixedColumns,
-      ...this._getJustifiedColumns(remainingColumns, remainingWidth, props, resizingColumnIndex),
-    ];
-  }
-
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(
-    newColumns: IColumn[],
-    viewportWidth: number,
-    props: IDetailsListProps,
-    firstIndex: number,
-  ): IColumn[] {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
     const { selectionMode = this._selection.mode, checkboxVisibility } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
+    let minimumWidth = 0;
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
-      const newColumn = {
+      const baseColumn = {
         ...column,
         calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH,
+      };
+
+      const newColumn = {
+        ...baseColumn,
         ...this._columnOverrides[column.key],
       };
 
-      const isFirst = i + firstIndex === 0;
-      totalWidth += getPaddedWidth(newColumn, isFirst, props);
+      // eslint-disable-next-line deprecation/deprecation
+      if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
+        minimumWidth += getPaddedWidth(baseColumn, props);
+      }
+
+      totalWidth += getPaddedWidth(newColumn, props);
 
       return newColumn;
     });
 
+    if (minimumWidth > availableWidth) {
+      return adjustedColumns;
+    }
+
     let lastIndex = adjustedColumns.length - 1;
 
     // Shrink or remove collapsable columns.
-    while (lastIndex > 0 && totalWidth > availableWidth) {
+    while (lastIndex >= 0 && totalWidth > availableWidth) {
       const column = adjustedColumns[lastIndex];
 
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
@@ -1201,7 +1243,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth -= originalWidth - column.calculatedWidth;
       } else {
-        totalWidth -= getPaddedWidth(column, false, props);
+        totalWidth -= getPaddedWidth(column, props);
         adjustedColumns.splice(lastIndex, 1);
       }
       lastIndex--;
@@ -1380,11 +1422,11 @@ export function buildColumns(
   return columns;
 }
 
-function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListProps): number {
+function getPaddedWidth(column: IColumn, props: IDetailsListProps, paddingOnly?: true): number {
   const { cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
 
   return (
-    column.calculatedWidth! +
+    (paddingOnly ? 0 : column.calculatedWidth!) +
     cellStyleProps.cellLeftPadding +
     cellStyleProps.cellRightPadding +
     (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)

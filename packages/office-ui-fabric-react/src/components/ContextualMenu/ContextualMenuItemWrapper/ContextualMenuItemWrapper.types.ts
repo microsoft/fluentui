@@ -112,7 +112,9 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
 
   /**
    * Callback to get the subMenu ID for an IContextualMenuItem.
+   * @deprecated ID relationship between a menu button and menu isn't necessary
    */
+  // eslint-disable-next-line deprecation/deprecation
   getSubMenuId?: (item: IContextualMenuItem) => string | undefined;
 
   /**
