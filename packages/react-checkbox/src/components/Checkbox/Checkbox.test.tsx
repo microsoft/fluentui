@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { render, RenderResult, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
 import { mount, ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import type { RenderResult } from '@testing-library/react';
 
 // TODO: add more tests here, and create visual regression tests in /apps/vr-tests
 

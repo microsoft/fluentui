@@ -8,8 +8,8 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { CheckboxProps, CheckboxState, CheckboxSlots } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
+import type { CheckboxProps, CheckboxState, CheckboxSlots } from './Checkbox.types';
 
 /**
  * Array of all shorthand properties listed as the keys of CheckboxSlots

@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { CheckboxState } from './Checkbox.types';
+import type { CheckboxState } from './Checkbox.types';
 
 /**
  * Styles for the root slot

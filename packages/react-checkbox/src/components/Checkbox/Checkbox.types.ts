@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { LabelProps } from '@fluentui/react-label';
 
 export type CheckboxSlots = {
   /**

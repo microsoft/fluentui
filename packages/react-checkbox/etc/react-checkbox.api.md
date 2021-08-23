@@ -4,9 +4,9 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { LabelProps } from '@fluentui/react-label';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
 
 // @public
