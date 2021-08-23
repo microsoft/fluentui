@@ -1,6 +1,6 @@
-import { Rule } from './../../types';
 import { BehaviorRule } from './../../rules/rules';
 import { buttonBehaviorDefinition } from './buttonBehaviorDefinition';
+import type { Rule } from './../../types';
 
 export const toggleButtonBehaviorDefinition: Rule[] = [
   BehaviorRule.root()

@@ -1,5 +1,5 @@
-import { Rule } from './../../types';
 import { BehaviorRule } from './../../rules/rules';
+import type { Rule } from './../../types';
 
 export const buttonAccessibilityBehaviorDefinition: Rule[] = [
   BehaviorRule.root()

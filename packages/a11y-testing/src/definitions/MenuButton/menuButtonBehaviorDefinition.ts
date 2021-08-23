@@ -1,5 +1,5 @@
-import { Rule } from './../../types';
 import { BehaviorRule } from './../../rules/rules';
+import type { Rule } from './../../types';
 
 const triggerNotTabbable: Rule[] = [
   BehaviorRule.slot('trigger').forProps({ tabbableTrigger: true }).hasAttribute('tabIndex', '0'),

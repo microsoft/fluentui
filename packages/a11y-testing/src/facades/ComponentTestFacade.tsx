@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Props, PropValue, TestFacade } from '../types';
 import { ReactWrapper, mount } from 'enzyme';
 import { Enter, Space, keyCodes } from '@fluentui/keyboard-keys';
+import type { Props, PropValue, TestFacade } from '../types';
 
 export class ComponentTestFacade implements TestFacade {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

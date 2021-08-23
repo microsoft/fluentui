@@ -1,6 +1,6 @@
-import { Props, TestFacade } from '../types';
-import { Rule } from './../types';
 import { SlotRule } from './../rules/rules';
+import type { Props, TestFacade } from '../types';
+import type { Rule } from './../types';
 
 export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade): void => {
   const slot = rule.getData();

@@ -1,4 +1,4 @@
-import { Props, PropValue, Rule, Slot } from '../types';
+import type { Props, PropValue, Rule, Slot } from '../types';
 
 export class SlotRule implements Rule {
   private data: Slot;
