@@ -1,4 +1,4 @@
-import { StyleBucketName } from '../types';
+import type { StyleBucketName } from '../types';
 
 /**
  * Maps the long pseudo name to the short pseudo name. Pseudos that match here will be ordered, everything else will

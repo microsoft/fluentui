@@ -1,4 +1,5 @@
-import { compileCSS, CompileCSSOptions } from './compileCSS';
+import { compileCSS } from './compileCSS';
+import type { CompileCSSOptions } from './compileCSS';
 
 const defaultOptions: Pick<
   CompileCSSOptions,

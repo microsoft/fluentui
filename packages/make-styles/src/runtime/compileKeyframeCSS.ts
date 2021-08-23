@@ -1,6 +1,6 @@
-import { MakeStyles } from '../types';
 import { compile, middleware, serialize, stringify, prefixer } from 'stylis';
 import { cssifyObject } from './utils/cssifyObject';
+import type { MakeStyles } from '../types';
 
 export function compileKeyframeRule(frames: MakeStyles): string {
   let css: string = '';

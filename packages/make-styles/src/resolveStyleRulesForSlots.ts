@@ -1,6 +1,6 @@
 import { createCSSVariablesProxy } from './runtime/createCSSVariablesProxy';
 import { resolveStyleRules } from './runtime/resolveStyleRules';
-import {
+import type {
   CSSClassesMapBySlot,
   CSSRulesByBucket,
   MakeStyles,

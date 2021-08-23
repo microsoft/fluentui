@@ -1,5 +1,5 @@
 import { resolveStaticStyleRules } from './runtime/resolveStaticStyleRules';
-import { MakeStaticStylesOptions, MakeStaticStyles } from './types';
+import type { MakeStaticStylesOptions, MakeStaticStyles } from './types';
 
 /**
  * Register static css.

@@ -1,5 +1,5 @@
-import { MakeStylesRenderer, StyleBucketName } from '../types';
 import { getStyleSheetForBucket } from './getStyleSheetForBucket';
+import type { MakeStylesRenderer, StyleBucketName } from '../types';
 
 let lastIndex = 0;
 

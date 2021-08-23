@@ -7,7 +7,7 @@ import {
 } from './constants';
 import { hashSequence } from './runtime/utils/hashSequence';
 import { reduceToClassName } from './runtime/reduceToClassNameForSlots';
-import { CSSClassesMap } from './types';
+import type { CSSClassesMap } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
 const mergeClassesCachedResults: Record<string, string> = {};

@@ -1,4 +1,4 @@
-import { MakeStylesRenderer, StyleBucketName } from '../types';
+import type { MakeStylesRenderer, StyleBucketName } from '../types';
 
 /**
  * Ordered style buckets using their short pseudo name.

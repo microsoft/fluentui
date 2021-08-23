@@ -1,4 +1,4 @@
-import { Properties as CSSProperties } from 'csstype';
+import type { Properties as CSSProperties } from 'csstype';
 
 export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
   // TODO Questionable: how else would users target their own children?

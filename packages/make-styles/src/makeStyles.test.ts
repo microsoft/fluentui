@@ -1,7 +1,7 @@
 import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
 import { makeStyles } from './makeStyles';
-import { MakeStylesRenderer } from './types';
+import type { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 

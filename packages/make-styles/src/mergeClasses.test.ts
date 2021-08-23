@@ -1,8 +1,8 @@
 import { mergeClasses } from './mergeClasses';
 import { makeStyles } from './makeStyles';
 import { createDOMRenderer } from './renderer/createDOMRenderer';
-import { MakeStylesOptions } from './types';
 import { SEQUENCE_PREFIX } from './constants';
+import type { MakeStylesOptions } from './types';
 
 const options: MakeStylesOptions = {
   dir: 'ltr',

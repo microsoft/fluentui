@@ -4,7 +4,7 @@
 
 ```ts
 
-import { Properties } from 'csstype';
+import type { Properties } from 'csstype';
 
 // @internal
 export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;

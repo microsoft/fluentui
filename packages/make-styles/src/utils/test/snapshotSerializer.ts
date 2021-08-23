@@ -1,7 +1,7 @@
 import * as prettier from 'prettier';
 
 import { resolveStyleRules } from '../../runtime/resolveStyleRules';
-import { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../../types';
+import type { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../../types';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

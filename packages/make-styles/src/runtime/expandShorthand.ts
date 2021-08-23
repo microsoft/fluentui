@@ -1,5 +1,5 @@
 import { expandProperty } from 'inline-style-expand-shorthand';
-import { MakeStyles } from '../types';
+import type { MakeStyles } from '../types';
 
 /**
  * A function that expands longhand properties ("margin", "padding") to their shorthand versions ("margin-left", etc.).

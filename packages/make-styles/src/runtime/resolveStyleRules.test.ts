@@ -1,6 +1,6 @@
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStyleRules } from './resolveStyleRules';
-import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
+import type { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 

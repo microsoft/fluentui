@@ -1,5 +1,5 @@
 import hash from '@emotion/hash';
-import { PropertyHash } from '../../types';
+import type { PropertyHash } from '../../types';
 
 export function hashPropertyKey(pseudo: string, media: string, support: string, property: string): PropertyHash {
   // uniq key based on property & selector, used for merging later

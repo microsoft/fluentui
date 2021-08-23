@@ -1,5 +1,5 @@
-import { MakeStyles } from '../../types';
 import { hyphenateProperty } from './hyphenateProperty';
+import type { MakeStyles } from '../../types';
 
 export function cssifyObject(style: MakeStyles) {
   let css = '';

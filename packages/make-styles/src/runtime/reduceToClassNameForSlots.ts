@@ -1,6 +1,6 @@
 import { DEFINITION_LOOKUP_TABLE } from '../constants';
 import { hashSequence } from './utils/hashSequence';
-import { CSSClassesMapBySlot, CSSClassesMap, CSSClasses } from '../types';
+import type { CSSClassesMapBySlot, CSSClassesMap, CSSClasses } from '../types';
 
 /**
  * Reduces a classname map for slot to a classname string. Uses classnames according to text directions.

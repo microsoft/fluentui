@@ -1,6 +1,6 @@
-import { MakeStaticStyles, CSSRulesByBucket } from '../types';
 import { compileStaticCSS } from './compileStaticCSS';
 import { compileCSSRules } from './compileCSS';
+import type { MakeStaticStyles, CSSRulesByBucket } from '../types';
 
 export function resolveStaticStyleRules(styles: MakeStaticStyles, result: CSSRulesByBucket = {}): CSSRulesByBucket {
   if (typeof styles === 'string') {

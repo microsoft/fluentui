@@ -3,9 +3,8 @@
  */
 
 // 👆 this is intentionally to test in SSR like environment
-
-import { CSSRulesByBucket } from '../types';
 import { createDOMRenderer } from './createDOMRenderer';
+import type { CSSRulesByBucket } from '../types';
 
 describe('createDOMRenderer', () => {
   it('"document" should not be defined', () => {

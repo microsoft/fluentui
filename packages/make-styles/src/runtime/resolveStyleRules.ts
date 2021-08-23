@@ -2,8 +2,7 @@ import hashString from '@emotion/hash';
 import { convert, convertProperty } from 'rtl-css-js/core';
 
 import { HASH_PREFIX } from '../constants';
-import { MakeStyles, CSSClassesMap, CSSRulesByBucket, StyleBucketName } from '../types';
-import { compileCSS, CompileCSSOptions } from './compileCSS';
+import { compileCSS } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { expandShorthand } from './expandShorthand';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
@@ -16,6 +15,8 @@ import { getStyleBucketName } from './getStyleBucketName';
 import { hashClassName } from './utils/hashClassName';
 import { resolveProxyValues } from './createCSSVariablesProxy';
 import { hashPropertyKey } from './utils/hashPropertyKey';
+import type { MakeStyles, CSSClassesMap, CSSRulesByBucket, StyleBucketName } from '../types';
+import type { CompileCSSOptions } from './compileCSS';
 
 function pushToClassesMap(
   classesMap: CSSClassesMap,

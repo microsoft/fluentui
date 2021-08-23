@@ -1,4 +1,4 @@
-import { LookupItem, SequenceHash } from './types';
+import type { LookupItem, SequenceHash } from './types';
 
 /** @internal */
 export const HASH_PREFIX = 'f';

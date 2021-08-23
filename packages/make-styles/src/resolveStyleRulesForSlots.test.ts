@@ -1,5 +1,5 @@
 import { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
-import { StylesBySlots } from './types';
+import type { StylesBySlots } from './types';
 
 describe('resolveStyleRulesForSlots', () => {
   it('returns classnames and CSS rules to apply', () => {

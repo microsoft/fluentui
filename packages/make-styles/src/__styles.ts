@@ -1,5 +1,5 @@
 import { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
-import { MakeStylesOptions, CSSClassesMapBySlot, CSSRulesByBucket } from './types';
+import type { MakeStylesOptions, CSSClassesMapBySlot, CSSRulesByBucket } from './types';
 
 /**
  * A version of makeStyles() that accepts build output as an input and skips all runtime transforms.
