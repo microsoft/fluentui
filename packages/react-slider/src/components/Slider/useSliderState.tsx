@@ -337,13 +337,16 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       marksChildren.push(
         <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
-          {marksValue[i] !== 0 &&
-            marksValue[i] !== 100 &&
-            (marksItem && typeof marksItem === 'object' && marksItem.mark ? (
-              marksItem.mark
-            ) : (
-              <div className="ms-Slider-mark" key={`mark-${i}`} />
-            ))}
+          {marksItem && typeof marksItem === 'object' && marksItem.mark ? (
+            marksItem.mark
+          ) : (
+            <div
+              className={`ms-Slider-mark ${
+                (marksValue[i] === 0 && 'first') || (marksValue[i] === 100 && 'last') || ''
+              }`}
+              key={`mark-${i}`}
+            />
+          )}
           {marksItem !== (undefined || null) &&
             typeof marksItem === 'object' &&
             marksItem.label &&

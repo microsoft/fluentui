@@ -207,6 +207,10 @@ const useMarksContainerStyles = makeStyles({
       background: 'white',
     },
 
+    '& .first, .last': {
+      opacity: '0',
+    },
+
     '& .ms-Slider-label': {
       padding: '2px',
       fontSize: '12px',

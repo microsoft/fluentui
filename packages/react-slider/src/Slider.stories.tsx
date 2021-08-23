@@ -71,6 +71,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Slider
         max={10}
         marks={[
+          { value: 0, label: '0 oz' },
           { value: 2, label: '2 oz' },
           {
             value: 4,
@@ -84,8 +85,10 @@ export const MarkedSliderExample = (props: SliderProps) => {
               />
             ),
           },
-          8,
+          { value: 8, label: '8 oz' },
+          { value: 10, label: '10 oz' },
         ]}
+        ariaValueText={value => value + 'ounces'}
       />
       <Label>Disabled Mark Label</Label>
       <Slider
@@ -96,6 +99,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
           { value: 5, label: '5 oz' },
           { value: 8, label: '8 oz' },
         ]}
+        ariaValueText={value => value + 'ounces'}
       />
       <Label>Vertical Marks</Label>
       <div className={styles.verticalWrapper}>
@@ -156,9 +160,9 @@ export const CustomSliderExample = (props: SliderProps) => {
   return (
     <div className={styles.root}>
       <Label>Custom Styles</Label>
-      <Slider defaultValue={4} className={styles.slider} />
+      <Slider defaultValue={4} className={styles.slider} max={10} />
       <Label>Size Example</Label>
-      <Slider defaultValue={2} size={'small'} />
+      <Slider defaultValue={2} size={'small'} marks max={10} />
     </div>
   );
 };
