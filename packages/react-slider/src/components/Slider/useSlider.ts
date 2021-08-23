@@ -27,7 +27,6 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       ref,
-      size: 'medium',
       sliderWrapper: { as: 'div', children: null },
       rail: { as: 'div', children: null },
       trackWrapper: { as: 'div', children: null },
