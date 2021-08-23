@@ -227,18 +227,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const originPercent = origin ? getPercent(origin, min, max) : 0;
 
-  /**
-   * Gets the current percentage position for the marks.
-   */
-  const getMarkPercent = (): string[] => {
-    const percentArray: number[] = [];
-    const result: string[] = [];
-    // There are three cases:
+  const getMarkValues = React.useCallback((): number[] => {
+    const markValues: number[] = [];
 
     // 1. We receive a boolean: mark for every step.
     if (typeof marks === 'boolean' && marks === true) {
       for (let i = 0; i < (max - min) / step + 1; i++) {
-        percentArray.push(getPercent(min + step * i, min, max));
+        markValues.push(getPercent(min + step * i, min, max));
       }
     } else if (Array.isArray(marks) && marks.length > 0) {
       for (let i = 0; i < marks.length; i++) {
@@ -246,29 +241,39 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
         // 2. We receive an array with numbers: mark for every value in array.
         if (typeof marksItem === 'number') {
-          percentArray.push(getPercent(min + marksItem, min, max));
+          markValues.push(getPercent(min + marksItem, min, max));
         }
 
         // 3. We receive an array with objects containing numbers and strings:
         // mark and label for every value + string in each object.
         else {
-          percentArray.push(getPercent(min + marksItem.value, min, max));
+          markValues.push(getPercent(min + marksItem.value, min, max));
         }
       }
     }
 
+    return markValues;
+  }, [marks, max, min, step]);
+
+  /**
+   * Gets the current percentage position for the marks.
+   */
+  const getMarkPercent = React.useCallback((): string[] => {
+    const valueArray: number[] = getMarkValues();
+    const result: string[] = [];
+
     // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
-    if (percentArray.length > 0) {
-      result.push(percentArray[0] + '% ');
-      let prevPercent = percentArray[0];
-      for (let i = 1; i < percentArray.length; i++) {
-        result.push(percentArray[i] - prevPercent + '% ');
-        prevPercent = percentArray[i];
+    if (valueArray.length > 0) {
+      result.push(valueArray[0] + '% ');
+      let prevPercent = valueArray[0];
+      for (let i = 1; i < valueArray.length; i++) {
+        result.push(valueArray[i] - prevPercent + '% ');
+        prevPercent = valueArray[i];
       }
     }
 
     return result;
-  };
+  }, [getMarkValues]);
 
   const thumbStyles = {
     transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
@@ -323,6 +328,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
    */
   const renderMarks = () => {
     const marksPercent = getMarkPercent();
+    const marksValue = getMarkValues();
     const marksChildren: JSX.Element[] = [];
 
     for (let i = 0; i < marksPercent.length; i++) {
@@ -330,11 +336,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       marksChildren.push(
         <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
-          {marksItem && typeof marksItem === 'object' && marksItem.mark ? (
-            marksItem.mark
-          ) : (
-            <div className="ms-Slider-mark" key={`mark-${i}`} />
-          )}
+          {marksValue[i] !== 0 &&
+            marksValue[i] !== 100 &&
+            (marksItem && typeof marksItem === 'object' && marksItem.mark ? (
+              marksItem.mark
+            ) : (
+              <div className="ms-Slider-mark" key={`mark-${i}`} />
+            ))}
           {marksItem !== (undefined || null) && typeof marksItem === 'object' && marksItem.label && (
             <div className="ms-Slider-label" key={`markLabel-${i}`}>
               {marksItem.label}
