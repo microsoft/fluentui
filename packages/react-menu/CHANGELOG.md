@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.65)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.64..@fluentui/react-menu_v9.0.0-alpha.65)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.64)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.63..@fluentui/react-menu_v9.0.0-alpha.64)
+
+### Changes
+
+- Updates react-menu on slot null rendering ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.63)
 

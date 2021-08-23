@@ -8,6 +8,7 @@ import { useSliderState } from './useSliderState';
  */
 export const sliderShorthandProps: Array<keyof SliderSlots> = [
   'rail',
+  'sliderWrapper',
   'trackWrapper',
   'track',
   'thumbWrapper',
@@ -21,13 +22,15 @@ export const sliderShorthandProps: Array<keyof SliderSlots> = [
 export const useSlider = (props: SliderProps, ref: React.RefObject<HTMLElement & SliderPublicRef>): SliderState => {
   const state: SliderState = {
     ref,
+    size: 'medium',
     ...props,
-    rail: resolveShorthand(props.rail),
-    trackWrapper: resolveShorthand(props.trackWrapper),
-    track: resolveShorthand(props.track),
-    thumbWrapper: resolveShorthand(props.thumbWrapper),
-    thumb: resolveShorthand(props.thumb),
-    activeRail: resolveShorthand(props.activeRail),
+    sliderWrapper: resolveShorthand(props.sliderWrapper, { required: true }),
+    rail: resolveShorthand(props.rail, { required: true }),
+    trackWrapper: resolveShorthand(props.trackWrapper, { required: true }),
+    track: resolveShorthand(props.track, { required: true }),
+    thumbWrapper: resolveShorthand(props.thumbWrapper, { required: true }),
+    thumb: resolveShorthand(props.thumb, { required: true }),
+    activeRail: resolveShorthand(props.activeRail, { required: true }),
   };
 
   useSliderState(state);

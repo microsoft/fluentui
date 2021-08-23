@@ -26,10 +26,12 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const innerRef = React.useRef<HTMLElement>(null);
 
   const buttonShorthand = useARIAButton(props.button, {
-    id,
-    disabled,
-    // 'aria-controls': panel?.id,
-    children: React.Fragment,
+    required: true,
+    defaultProps: {
+      id,
+      disabled,
+      // 'aria-controls': panel?.id,
+    },
   });
 
   return {
@@ -48,7 +50,10 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     },
     icon: resolveShorthand(props.icon),
     expandIcon: resolveShorthand(props.expandIcon, {
-      'aria-hidden': true,
+      required: true,
+      defaultProps: {
+        'aria-hidden': true,
+      },
     }),
     button: {
       ...buttonShorthand,
@@ -59,6 +64,6 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
         }
       }),
     },
-    children: resolveShorthand(props.children),
+    children: resolveShorthand(props.children, { required: true }),
   };
 };
