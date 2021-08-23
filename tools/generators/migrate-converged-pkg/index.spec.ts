@@ -754,31 +754,129 @@ describe('migrate-converged-pkg generator', () => {
         ".cache/
         .storybook/
         .vscode/
-        coverage/
-        src/
         bundle-size/
         config/
-        temp/
+        coverage/
         e2e/
+        etc/
         node_modules/
+        src/
+        temp/
         __fixtures__
+        __mocks__
         __tests__
 
+        *.api.json
         *.log
-        *.yml
-        *.test.*
         *.spec.*
         *.stories.*
-        *.api.json
+        *.test.*
+        *.yml
 
         # config files
-        .git*
-        *rc.*
         *config.*
-        .eslint*
+        *rc.*
         .editorconfig
+        .eslint*
+        .git*
         .prettierignore"
       `);
+    });
+  });
+
+  describe(`babel config setup`, () => {
+    const getScopedPkgName = (pkgName: string) => {
+      const workspaceConfig = readWorkspaceConfiguration(tree);
+
+      return `@${workspaceConfig.npmScope}/${pkgName}`;
+    };
+
+    function getBabelConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
+      return readJson(tree, babelConfigPath);
+    }
+    function getPackageJson(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      const packageJsonPath = `${projectConfig.root}/package.json`;
+      return readJson<PackageJson>(tree, packageJsonPath);
+    }
+
+    it(`should setup .babelrc.json`, async () => {
+      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      let packageJson = getPackageJson(projectConfig);
+      let devDeps = packageJson.devDependencies || {};
+      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
+
+      await generator(tree, options);
+
+      let babelConfig = getBabelConfig(projectConfig);
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+
+      tree.delete(`${projectConfig.root}/.babelrc.json`);
+
+      await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+      packageJson = getPackageJson(projectConfig);
+      devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe('*');
+    });
+
+    it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+
+      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+        if (json.dependencies) {
+          delete json.dependencies[getScopedPkgName('react-make-styles')];
+          delete json.dependencies[getScopedPkgName('make-styles')];
+        }
+
+        json.devDependencies = json.devDependencies || {};
+        json.devDependencies[babelMakeStylesPkg] = '*';
+
+        return json;
+      });
+
+      let babelConfig = getBabelConfig(projectConfig);
+      let packageJson = getPackageJson(projectConfig);
+      let devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe('*');
+
+      await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+      packageJson = getPackageJson(projectConfig);
+      devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
     });
   });
 
@@ -996,10 +1094,14 @@ function setupDummyPackage(
       typings
       visualtests
     `,
+    babelConfig: {
+      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    },
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
+  tree.write(`${paths.root}/.babelrc.json`, serializeJson(templates.babelConfig));
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
