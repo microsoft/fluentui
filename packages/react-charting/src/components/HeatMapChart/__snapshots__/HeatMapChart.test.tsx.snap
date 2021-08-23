@@ -212,7 +212,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -266,6 +266,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -523,7 +524,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -577,6 +578,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -665,6 +667,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1089,7 +1092,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1143,6 +1146,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1400,7 +1404,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1454,6 +1458,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=

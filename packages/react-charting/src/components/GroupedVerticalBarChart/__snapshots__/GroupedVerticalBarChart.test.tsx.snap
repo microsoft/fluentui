@@ -282,7 +282,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -336,6 +336,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -424,6 +425,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -512,6 +514,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -822,7 +825,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               justify-content: unset;
               position: relative;
             }
-        role="group"
+        role="listbox"
       >
         <div
           className=
@@ -876,6 +879,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
+            role="option"
           >
             <div
               className=
@@ -964,6 +968,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
+            role="option"
           >
             <div
               className=
@@ -1052,6 +1057,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
+            role="option"
           >
             <div
               className=
@@ -1613,7 +1619,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1667,6 +1673,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1755,6 +1762,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1843,6 +1851,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2170,7 +2179,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -2224,6 +2233,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2312,6 +2322,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2400,6 +2411,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2727,7 +2739,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -2781,6 +2793,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2869,6 +2882,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2957,6 +2971,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -3284,7 +3299,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -3338,6 +3353,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -3426,6 +3442,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -3514,6 +3531,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=

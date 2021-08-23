@@ -216,7 +216,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -270,6 +270,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -514,7 +515,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               justify-content: unset;
               position: relative;
             }
-        role="group"
+        role="listbox"
       >
         <div
           className=
@@ -568,6 +569,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
+            role="option"
           >
             <div
               className=
@@ -997,7 +999,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1051,6 +1053,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1312,7 +1315,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1366,6 +1369,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1627,7 +1631,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1681,6 +1685,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1942,7 +1947,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1996,6 +2001,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
