@@ -114,7 +114,7 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -403,19 +403,22 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+  /* eslint-disable @fluentui/max-len */
+  const scripts = {
+    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
+    'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'start-storybook',
+    start: 'yarn storybook',
+    test: 'jest',
+  };
+  /* eslint-enable @fluentui/max-len */
+
   updateJson(tree, options.paths.packageJson, json => {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
 
-    json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
-    json.scripts[
-      'build:local'
-      // eslint-disable-next-line @fluentui/max-len
-    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
-    json.scripts.storybook = 'start-storybook';
-    json.scripts.start = 'yarn storybook';
-    json.scripts.test = 'jest';
+    Object.assign(json.scripts, scripts);
 
     return json;
   });
