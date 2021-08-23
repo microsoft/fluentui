@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updating eslint max-len rule exclusion for imports/exports.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "none"
+}

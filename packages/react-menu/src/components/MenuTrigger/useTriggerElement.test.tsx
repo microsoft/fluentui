@@ -3,8 +3,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import { render, fireEvent } from '@testing-library/react';
 import { keyboardKey } from '@fluentui/keyboard-key';
 import { useTriggerElement } from './useTriggerElement';
-import { MenuContextValue, useMenuContext } from '../../contexts/menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
 import { MenuItem } from '../MenuItem/index';
+import type { MenuContextValue } from '../../contexts/menuContext';
 
 jest.mock('../../contexts/menuContext');
 

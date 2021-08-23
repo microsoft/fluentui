@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { InputSlots, InputState } from './Input.types';
 import { inputShorthandProps } from './useInput';
+import type { InputSlots, InputState } from './Input.types';
 
 /**
  * Render the final JSX of Input

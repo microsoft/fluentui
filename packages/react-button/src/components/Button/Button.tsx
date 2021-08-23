@@ -5,8 +5,7 @@ import { useButtonStyles } from './useButtonStyles';
 import type { ButtonProps } from './Button.types';
 
 /**
- * Define a styled Button, using the `useButton` hook.
- * {@docCategory Button}
+ * Buttons give people a way to trigger an action.
  */
 export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
   HTMLElement,
@@ -18,5 +17,4 @@ export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<H
 
   return renderButton(state);
 });
-
 Button.displayName = 'Button';

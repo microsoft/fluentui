@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
-import { LinkState } from './Link.types';
+import type { LinkState } from './Link.types';
 
 /**
  * The useLink hook processes the Link draft state.

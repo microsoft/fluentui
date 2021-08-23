@@ -11,8 +11,7 @@ import {
 } from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
-
-import { PositioningProps } from './types';
+import type { PositioningProps } from './types';
 
 type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 

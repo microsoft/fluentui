@@ -10,4 +10,9 @@ export const parameters = {
     disable: true,
     expanded: true,
   },
+  docs: {
+    source: {
+      excludeDecorators: true,
+    },
+  },
 };

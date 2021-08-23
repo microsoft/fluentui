@@ -3,8 +3,8 @@ import {
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSuffix,
   DEFAULT_ICON_SIZE,
-  IFileTypeIconOptions,
 } from './getFileTypeIconProps';
+import type { IFileTypeIconOptions } from './getFileTypeIconProps';
 
 /**
  * Given the `fileTypeIconOptions`, this function returns the DOM element for the `FileTypeIcon`

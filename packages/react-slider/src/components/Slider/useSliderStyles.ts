@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { SliderState } from './Slider.types';
+import type { SliderState } from './Slider.types';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';

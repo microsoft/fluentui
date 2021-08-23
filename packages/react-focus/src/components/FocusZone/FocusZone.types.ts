@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRefObject, Point } from '@fluentui/utilities';
+import type { IRefObject, Point } from '@fluentui/utilities';
 
 /**
  * FocusZone component class interface.

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { PartialTheme, Theme } from '@fluentui/react-theme';
-import {
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { PartialTheme, Theme } from '@fluentui/react-theme';
+import type {
   ProviderContextValue,
   TooltipContextType,
   ThemeContextValue,

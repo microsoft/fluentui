@@ -1,6 +1,6 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { MenuItemState } from './MenuItem.types';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import type { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule(),
