@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { ArgTypes, Meta, Parameters } from '@storybook/react';
-
-import { Image, ImageProps } from './index';
+import { Image } from './index';
+import type { ArgTypes, Meta, Parameters } from '@storybook/react';
+import type { ImageProps } from './index';
 
 /**
  * Temporary Stack until there's one in its own package.

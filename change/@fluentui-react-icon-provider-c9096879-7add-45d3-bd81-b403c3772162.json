@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updating TypeScript type-only imports/exports to use import/export syntax.",
+  "packageName": "@fluentui/react-icon-provider",
+  "email": "dzearing@hotmail.com",
+  "dependentChangeType": "patch"
+}

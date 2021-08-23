@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 import { useSwitchState } from './useSwitchState';
+import type { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 
 /**
  * Array of all shorthand properties listed in SwitchShorthandProps
