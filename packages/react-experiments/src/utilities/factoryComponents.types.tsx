@@ -1,4 +1,5 @@
-import {
+import { PersonaPresence } from '@fluentui/react';
+import type {
   IButtonProps,
   ICalloutProps,
   IContextualMenuProps,
@@ -7,9 +8,8 @@ import {
   ILabelProps,
   IListProps,
   IPersonaPresenceProps,
-  PersonaPresence,
 } from '@fluentui/react';
-import { ISlotProp } from '@fluentui/foundation-legacy';
+import type { ISlotProp } from '@fluentui/foundation-legacy';
 
 // TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
 
