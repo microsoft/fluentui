@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { mergeCss } from '@fluentui/merge-styles';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { getRTL, memoizeFunction } from '@fluentui/utilities';
 import { assign } from './utilities';
-import { IFactoryOptions } from './IComponent';
-import {
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IFactoryOptions } from './IComponent';
+import type {
   ISlottableReactType,
   ISlot,
   ISlots,

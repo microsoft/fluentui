@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISlotProp } from './ISlots';
+import type { ISlotProp } from './ISlots';
 
 /**
  * Generic slot definition allowing common HTML attributes. Applicable for most intrinsic slots. Please note certain

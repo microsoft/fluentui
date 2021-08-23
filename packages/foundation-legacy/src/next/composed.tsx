@@ -1,19 +1,26 @@
 import * as React from 'react';
 import { mergeStyles } from '@fluentui/merge-styles';
-import { concatStyleSets, IStyleSet, ITheme } from '@fluentui/style-utilities';
-import { Customizations, CustomizerContext, ICustomizerContext } from '@fluentui/utilities';
+import { concatStyleSets } from '@fluentui/style-utilities';
+import { Customizations, CustomizerContext } from '@fluentui/utilities';
 import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
-import {
+import type { IStyleSet, ITheme } from '@fluentui/style-utilities';
+import type { ICustomizerContext } from '@fluentui/utilities';
+import type {
   ICustomizationProps,
   IStyleableComponentProps,
   IStylesFunctionOrObject,
   IToken,
   ITokenFunction,
 } from '../IComponent';
-import { IComponentOptions, IPartialSlotComponent, IRecompositionComponentOptions, ISlotComponent } from './IComponent';
-import { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotCreator, ISlotDefinition } from '../ISlots';
-import { IFoundationComponent } from './ISlots';
+import type {
+  IComponentOptions,
+  IPartialSlotComponent,
+  IRecompositionComponentOptions,
+  ISlotComponent,
+} from './IComponent';
+import type { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotCreator, ISlotDefinition } from '../ISlots';
+import type { IFoundationComponent } from './ISlots';
 
 interface IClassNamesMapNode {
   className?: string;

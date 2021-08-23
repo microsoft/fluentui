@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IStyleableComponentProps } from './IComponent';
 import { createComponent } from './createComponent';
+import type { IStyleableComponentProps } from './IComponent';
 
 describe('createComponent', () => {
   interface ITestTokens {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyleSet } from '@fluentui/style-utilities';
-import { ISlottableProps, ValidProps } from '../ISlots';
-import { IComponentOptions } from './IComponent';
+import type { IStyleSet } from '@fluentui/style-utilities';
+import type { ISlottableProps, ValidProps } from '../ISlots';
+import type { IComponentOptions } from './IComponent';
 
 /**
  * Signature of components created using composed.

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IComponentStyles } from './IComponent';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IComponentStyles } from './IComponent';
 
 /**
  * Signature of components that have component factories.

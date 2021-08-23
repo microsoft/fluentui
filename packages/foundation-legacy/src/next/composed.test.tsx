@@ -1,11 +1,11 @@
 /** @jsx withSlots */
 import * as renderer from 'react-test-renderer';
 import { composed, resolveSlots } from './composed';
-import { IComponentStyles } from '../IComponent';
-import { IComponent, IComponentOptions, IRecompositionComponentOptions } from './IComponent';
-import { IHTMLElementSlot, IHTMLSlot } from '../IHTMLSlots';
 import { withSlots } from '../slots';
-import { ISlotDefinition } from '../ISlots';
+import type { IComponentStyles } from '../IComponent';
+import type { IComponent, IComponentOptions, IRecompositionComponentOptions } from './IComponent';
+import type { IHTMLElementSlot, IHTMLSlot } from '../IHTMLSlots';
+import type { ISlotDefinition } from '../ISlots';
 
 describe('composed', () => {
   type ITestComponent = IComponent<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots>;

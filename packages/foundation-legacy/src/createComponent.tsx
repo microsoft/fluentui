@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { concatStyleSets, IStyleSet, ITheme } from '@fluentui/style-utilities';
-import { Customizations, CustomizerContext, ICustomizerContext } from '@fluentui/utilities';
+import { concatStyleSets } from '@fluentui/style-utilities';
+import { Customizations, CustomizerContext } from '@fluentui/utilities';
 import { createFactory } from './slots';
 import { assign } from './utilities';
-
-import {
+import type { IStyleSet, ITheme } from '@fluentui/style-utilities';
+import type { ICustomizerContext } from '@fluentui/utilities';
+import type {
   IComponentOptions,
   ICustomizationProps,
   IStyleableComponentProps,
@@ -13,7 +14,7 @@ import {
   ITokenFunction,
   IViewComponent,
 } from './IComponent';
-import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
+import type { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.

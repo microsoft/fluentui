@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IStyleSet, ITheme } from '@fluentui/style-utilities';
+import type { IStyle, IStyleSet, ITheme } from '@fluentui/style-utilities';
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.
 //        Effect is that mistyped property keys on returned style objects will not generate errors.

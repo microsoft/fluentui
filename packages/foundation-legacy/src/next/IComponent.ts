@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyleSet } from '@fluentui/style-utilities';
-import { IComponentOptions as IOldComponentOptions } from '../IComponent';
-import { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
+import type { IStyleSet } from '@fluentui/style-utilities';
+import type { IComponentOptions as IOldComponentOptions } from '../IComponent';
+import type { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
 
 /**
  * Defines the contract for view components.

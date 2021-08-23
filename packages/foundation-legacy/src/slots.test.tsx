@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { withSlots, createFactory, getSlots } from './slots';
-import { IHTMLElementSlot, IHTMLSlot } from './IHTMLSlots';
-import {
+import type { IHTMLElementSlot, IHTMLSlot } from './IHTMLSlots';
+import type {
   ExtractProps,
   ExtractShorthand,
   IProcessedSlotProps,
