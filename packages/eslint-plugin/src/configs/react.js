@@ -79,8 +79,7 @@ const config = {
         ignorePatterns: [
           'require(<.*?>)?\\(',
           'https?:\\/\\/',
-          '^(import|export) \\{ \\w+( as \\w+)? \\} from',
-          '^import \\* as',
+          '^(import|export)',
           '^\\s+(<path )?d=',
           '!raw-loader',
           '\\bdata:image/',
