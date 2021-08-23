@@ -114,10 +114,11 @@ describe('migrate-converged-pkg generator', () => {
           return json;
         });
 
+        /* eslint-disable @fluentui/max-len */
         await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
-          // eslint-disable-next-line @fluentui/max-len
           `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
         );
+        /* eslint-enable @fluentui/max-len */
       });
     });
 
@@ -425,11 +426,14 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "const rootMain = require('../../../.storybook/main');
 
-        module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
+        module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
         const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+        // add your own webpack tweaks if needed
 
         return localConfig;
         },
