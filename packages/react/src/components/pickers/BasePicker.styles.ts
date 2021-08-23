@@ -1,5 +1,5 @@
 import { getGlobalClassNames, getInputFocusStyle, hiddenContentStyle, HighContrastSelector } from '../../Styling';
-import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import type { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',

@@ -2,10 +2,11 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { ColorPicker } from './ColorPicker';
-import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
-import { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
+import { ColorPickerBase } from './ColorPicker.base';
 import { ColorSliderBase } from './ColorSlider/ColorSlider.base';
 import { setWarningCallback } from '../../Utilities';
+import type { IColorPickerState } from './ColorPicker.base';
+import type { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
 
 describe('ColorPicker', () => {
   let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;

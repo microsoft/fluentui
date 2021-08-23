@@ -2,6 +2,113 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 23 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react_v8.29.1",
+      "version": "8.29.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use a simple array instead of a const for keytips to register",
+            "author": "keyou@microsoft.com",
+            "commit": "0d9443614ded375ef210549eeb3ab3e3bba965ed",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react_v8.29.0",
+      "version": "8.29.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.2.2",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react_v8.29.0",
+      "version": "8.29.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix horizontal scrollbar detection in MarqueeSelection",
+            "author": "sebastian.oettl@microsoft.com",
+            "commit": "e38c755d64b99d5a8d25f2bf16fcbc2e93e4a028",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "check preventDismissOnEvent before dismissing the callout for all dismiss triggers",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "ea5c79d3248707e82eb368c0fe1f40dcd0c5d79a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.15",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.9",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.9",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.11",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.2.7",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.2.2",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Moving type-based imports/exports to use \"import type\" and \"export type\" to enable isolatedModules.",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Aug 2021 07:36:39 GMT",
       "tag": "@fluentui/react_v8.28.2",
       "version": "8.28.2",

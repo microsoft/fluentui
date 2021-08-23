@@ -1,5 +1,5 @@
-import { ICalloutProps } from './Callout.types';
-import { IFocusTrapZoneProps } from '../../FocusTrapZone';
+import type { ICalloutProps } from './Callout.types';
+import type { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
 /**
  * {@docCategory Callout}

@@ -2,6 +2,51 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Mon, 23 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/theme-samples_v8.1.57",
+      "version": "8.1.57",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.1",
+            "author": "keyou@microsoft.com",
+            "commit": "0d9443614ded375ef210549eeb3ab3e3bba965ed",
+            "package": "@fluentui/theme-samples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/theme-samples_v8.1.56",
+      "version": "8.1.56",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/theme-samples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/theme-samples_v8.1.56",
+      "version": "8.1.56",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/theme-samples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Aug 2021 07:36:39 GMT",
       "tag": "@fluentui/theme-samples_v8.1.55",
       "version": "8.1.55",

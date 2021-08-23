@@ -131,7 +131,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-checkbox/src"
     },
-    "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
+    "@fluentui/react-components": {
+      "root": "packages/react-components",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/src"
+    },
     "@fluentui/react-compose": { "root": "packages/react-compose", "projectType": "library" },
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },
     "@fluentui/react-context-selector": {

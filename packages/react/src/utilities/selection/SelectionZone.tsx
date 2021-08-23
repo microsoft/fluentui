@@ -13,7 +13,8 @@ import {
   initializeComponentRef,
   FocusRects,
 } from '../../Utilities';
-import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
+import { SelectionMode } from './interfaces';
+import type { ISelection, IObjectWithKey } from './interfaces';
 
 // Selection definitions:
 //

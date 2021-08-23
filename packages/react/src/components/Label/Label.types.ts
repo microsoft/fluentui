@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Label}

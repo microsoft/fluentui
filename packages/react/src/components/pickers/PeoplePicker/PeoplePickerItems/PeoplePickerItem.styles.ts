@@ -2,11 +2,11 @@ import {
   getGlobalClassNames,
   getFocusStyle,
   HighContrastSelector,
-  IStyle,
   getHighContrastNoAdjustStyle,
 } from '../../../../Styling';
 import { ButtonGlobalClassNames } from '../../../Button/BaseButton.classNames';
-import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
+import type { IStyle } from '../../../../Styling';
+import type { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
 const GlobalClassNames = {
   root: 'ms-PickerPersona-container',

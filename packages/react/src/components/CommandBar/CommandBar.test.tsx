@@ -3,9 +3,9 @@ import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
-import { IContextualMenuItem } from '../../ContextualMenu';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
+import type { IContextualMenuItem } from '../../ContextualMenu';
 
 describe('CommandBar', () => {
   beforeEach(() => {

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   slider: {
     width: '500px',
     '--slider-thumb-size': '50px',
-    '--slider-color': 'green',
+    '--slider-rail-size': '8px',
   },
   verticalWrapper: {
     display: 'flex',
@@ -24,7 +24,10 @@ const useStyles = makeStyles({
 
 export const BasicSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (value: number) => setSliderValue(value);
+  const sliderOnChange = (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => setSliderValue(data.value);
 
   const styles = useStyles();
 
@@ -33,13 +36,13 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Basic Example</Label>
       <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} />
-      <Label>Custom Styles</Label>
-      <Slider defaultValue={4} className={styles.slider} />
+      <Slider value={sliderValue} min={10} max={200} step={1} keyboardStep={2} onChange={sliderOnChange} />
+      <Label>Snapping Example</Label>
+      <Slider defaultValue={5} step={5} min={0} max={10} />
       <Label>Disabled Example</Label>
-      <Slider defaultValue={3} disabled />
+      <Slider defaultValue={30} disabled />
       <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} />
+      <Slider defaultValue={8} origin={3} min={0} max={10} />
     </div>
   );
 };
@@ -50,10 +53,11 @@ export const MarkedSliderExample = (props: SliderProps) => {
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <Slider marks={true} />
+      <Slider marks={true} max={10} />
       <Label>Custom Marks</Label>
       <Slider
         step={2}
+        max={10}
         marks={[
           0,
           {
@@ -65,6 +69,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
       />
       <Label>Custom Mark Label</Label>
       <Slider
+        max={10}
         marks={[
           3,
           {
@@ -86,10 +91,11 @@ export const MarkedSliderExample = (props: SliderProps) => {
       />
       <Label>Vertical Marks</Label>
       <div className={styles.verticalWrapper}>
-        <Slider vertical marks />
-        <Slider vertical marks={[2, 4, 7, 8, 10]} />
+        <Slider vertical max={10} marks />
+        <Slider vertical max={10} marks={[2, 4, 7, 8, 10]} />
         <Slider
           vertical
+          max={10}
           marks={[
             3,
             {
@@ -115,19 +121,36 @@ export const MarkedSliderExample = (props: SliderProps) => {
 
 export const VerticalSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
-  const sliderOnChange = (value: number) => setSliderValue(value);
+  const sliderOnChange = (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => setSliderValue(data.value);
 
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Slider defaultValue={3} vertical />
+      <Label>Basic Example</Label>
+      <Slider vertical />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} vertical />
       <Label>Disabled Example</Label>
-      <Slider defaultValue={8} disabled vertical />
+      <Slider defaultValue={50} disabled vertical />
       <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} vertical />
+      <Slider defaultValue={40} origin={60} vertical />
+    </div>
+  );
+};
+
+export const CustomSliderExample = (props: SliderProps) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <Label>Custom Styles</Label>
+      <Slider defaultValue={4} className={styles.slider} />
+      <Label>Size Example</Label>
+      <Slider defaultValue={2} size={'small'} />
     </div>
   );
 };

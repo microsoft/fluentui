@@ -2,21 +2,6 @@ import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * Slider ref
- */
-export interface SliderPublicRef {
-  /**
-   * Gets the current value of the Slider.
-   */
-  value: number | undefined;
-
-  /**
-   * Sets focus to the Slider's thumb.
-   */
-  focus: () => void;
-}
-
-/**
  * Names of the shorthand properties in SliderProps
  */
 export type SliderSlots = {
@@ -53,7 +38,7 @@ export type SliderSlots = {
   /**
    * The draggable icon used to select a given value from the **Slider**.
    */
-  thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  thumb: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
 
   /**
    * The area in which the **Slider's** rail allows for the thumb to be dragged.
@@ -82,15 +67,24 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
 
   /**
    * The max value of the **Slider**.
-   * @default 10
+   * @default 100
    */
   max?: number;
 
   /**
-   * The number of steps that the **Slider's** `value` will increment upon change.
-   * @default 1
+   * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
+   * will snap to the closest available value.
    */
   step?: number;
+
+  /**
+   * The number of steps that the Slider's value will change by during a key press. When provided, the `keyboardSteps`
+   * will be separated from the pointer `steps` allowing for the value to go outside of pointer related
+   * snapping values.
+   *
+   * @default `step` or 1
+   */
+  keyboardStep?: number;
 
   /**
    *  Whether to render the **Slider** as disabled.
@@ -123,9 +117,18 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   origin?: number;
 
   /**
+   * The size of the Slider.
+   * @default 'medium'
+   */
+  size: 'small' | 'medium';
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
-  onChange?: (value: number, ev?: React.PointerEvent<HTMLDivElement>) => void;
+  onChange?: (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: number },
+  ) => void;
 
   /**
    * The **Slider's** current value label to be read by the screen reader.
@@ -145,5 +148,5 @@ export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
   /**
    * Ref to the root element
    */
-  ref: React.RefObject<HTMLElement & SliderPublicRef>;
+  ref: React.Ref<HTMLElement>;
 }
