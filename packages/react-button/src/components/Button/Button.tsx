@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useButton } from './useButton';
-import { ButtonProps } from './Button.types';
 import { renderButton } from './renderButton';
 import { useButtonStyles } from './useButtonStyles';
+import type { ButtonProps } from './Button.types';
 
 /**
  * Define a styled Button, using the `useButton` hook.
