@@ -393,9 +393,84 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`storybook updates`, () => {
-    it(`should setup local storybook`, async () => {
+    function setup(_config?: Partial<{ createDummyStories: boolean }>) {
+      const defaults = { createDummyStories: true };
+      const config = { ...defaults, ..._config };
+
+      const workspaceConfig = readWorkspaceConfiguration(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
+      const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
+      const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
+      const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
+
+      const paths = {
+        reactExamples: {
+          // eslint-disable-next-line @fluentui/max-len
+          //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
+          storyFileOne: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
+            normalizedProjectName,
+          )}/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
+          // eslint-disable-next-line @fluentui/max-len
+          // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
+          storyFileTwo: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
+            normalizedProjectName,
+          )}Other/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
+        },
+      };
+
+      if (config.createDummyStories) {
+        tree.write(
+          paths.reactExamples.storyFileOne,
+          stripIndents`
+         import * as Implementation from '${options.name}';
+         export const Foo = (props: FooProps) => { return <div>Foo</div>; }
+        `,
+        );
+
+        tree.write(
+          paths.reactExamples.storyFileTwo,
+          stripIndents`
+         import * as Implementation from '${options.name}';
+         export const FooOther = (props: FooPropsOther) => { return <div>FooOther</div>; }
+        `,
+        );
+      }
+
+      function getMovedStoriesData() {
+        const movedStoriesExportNames = {
+          storyOne: `${stringUtils.classify(normalizedProjectName)}`,
+          storyTwo: `${stringUtils.classify(normalizedProjectName)}Other`,
+        };
+        const movedStoriesFileNames = {
+          storyOne: `${movedStoriesExportNames.storyOne}.stories.tsx`,
+          storyTwo: `${movedStoriesExportNames.storyTwo}.stories.tsx`,
+        };
+        const movedStoriesPaths = {
+          storyOne: `${projectConfig.root}/src/${movedStoriesFileNames.storyOne}`,
+          storyTwo: `${projectConfig.root}/src/${movedStoriesFileNames.storyTwo}`,
+        };
+
+        const movedStoriesContent = {
+          storyOne: tree.read(movedStoriesPaths.storyOne)?.toString('utf-8'),
+          storyTwo: tree.read(movedStoriesPaths.storyTwo)?.toString('utf-8'),
+        };
+
+        return { movedStoriesPaths, movedStoriesExportNames, movedStoriesFileNames, movedStoriesContent };
+      }
+
+      return {
+        projectConfig,
+        reactExamplesConfig,
+        workspaceConfig,
+        normalizedProjectName,
+        pathToStoriesWithinReactExamples,
+        getMovedStoriesData,
+        projectStorybookConfigPath,
+      };
+    }
+    it(`should setup package storybook when needed`, async () => {
+      const { projectStorybookConfigPath } = setup();
 
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
 
@@ -452,75 +527,38 @@ describe('migrate-converged-pkg generator', () => {
       `);
     });
 
-    function setup() {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
-      const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
-      const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
+    it(`should remove unused existing storybook setup`, async () => {
+      const { projectStorybookConfigPath, projectConfig } = setup({ createDummyStories: false });
 
-      const paths = {
-        reactExamples: {
-          // eslint-disable-next-line @fluentui/max-len
-          //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
-          storyFileOne: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
-            normalizedProjectName,
-          )}/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
-          // eslint-disable-next-line @fluentui/max-len
-          // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
-          storyFileTwo: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
-            normalizedProjectName,
-          )}Other/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
-        },
-      };
+      const mainJsFilePath = `${projectStorybookConfigPath}/main.js`;
+      const packageJsonPath = `${projectConfig.root}/package.json`;
 
-      tree.write(
-        paths.reactExamples.storyFileOne,
-        stripIndents`
-         import * as Implementation from '${options.name}';
-         export const Foo = (props: FooProps) => { return <div>Foo</div>; }
-        `,
-      );
+      let pkgJson: PackageJson = readJson(tree, packageJsonPath);
 
-      tree.write(
-        paths.reactExamples.storyFileTwo,
-        stripIndents`
-         import * as Implementation from '${options.name}';
-         export const FooOther = (props: FooPropsOther) => { return <div>FooOther</div>; }
-        `,
-      );
+      tree.write(mainJsFilePath, 'module.exports = {}');
 
-      function getMovedStoriesData() {
-        const movedStoriesExportNames = {
-          storyOne: `${stringUtils.classify(normalizedProjectName)}`,
-          storyTwo: `${stringUtils.classify(normalizedProjectName)}Other`,
-        };
-        const movedStoriesFileNames = {
-          storyOne: `${movedStoriesExportNames.storyOne}.stories.tsx`,
-          storyTwo: `${movedStoriesExportNames.storyTwo}.stories.tsx`,
-        };
-        const movedStoriesPaths = {
-          storyOne: `${projectConfig.root}/src/${movedStoriesFileNames.storyOne}`,
-          storyTwo: `${projectConfig.root}/src/${movedStoriesFileNames.storyTwo}`,
-        };
+      updateJson(tree, packageJsonPath, (json: PackageJson) => {
+        json.scripts = json.scripts || {};
 
-        const movedStoriesContent = {
-          storyOne: tree.read(movedStoriesPaths.storyOne)?.toString('utf-8'),
-          storyTwo: tree.read(movedStoriesPaths.storyTwo)?.toString('utf-8'),
-        };
+        Object.assign(json.scripts, {
+          start: 'echo "hello"',
+          storybook: 'echo "hello"',
+          'build-storybook': 'echo "hello"',
+        });
+        return json;
+      });
 
-        return { movedStoriesPaths, movedStoriesExportNames, movedStoriesFileNames, movedStoriesContent };
-      }
+      pkgJson = readJson(tree, packageJsonPath);
 
-      return {
-        projectConfig,
-        reactExamplesConfig,
-        workspaceConfig,
-        normalizedProjectName,
-        pathToStoriesWithinReactExamples,
-        getMovedStoriesData,
-      };
-    }
+      expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
+      expect(tree.exists(mainJsFilePath)).toBeTruthy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(mainJsFilePath)).toBeFalsy();
+      expect(Object.keys(pkgJson.scripts || [])).not.toContain(['start', 'storybook', 'build-storybook']);
+      expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
+    });
 
     it(`should work if there are no package stories in react-examples`, async () => {
       const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');

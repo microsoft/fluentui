@@ -91,16 +91,16 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateLocalJestConfig(tree, options);
   updateRootJestConfig(tree, options);
 
-  // 3. setup storybook
-  setupStorybook(tree, options);
-
-  // 4. move stories to package
+  // move stories to package
   moveStorybookFromReactExamples(tree, options, userLog);
   removeMigratedPackageFromReactExamples(tree, options, userLog);
 
-  // 5. update package npm scripts
+  // update package npm scripts
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
+
+  // setup storybook
+  setupStorybook(tree, options);
 
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
@@ -264,6 +264,7 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
       rootJestConfig: '/jest.config.js',
       npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
       storybook: {
+        rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
         tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
         main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
         preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
@@ -434,11 +435,54 @@ function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema)
 }
 
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
-  tree.write(options.paths.storybook.main, templates.storybook.main);
-  tree.write(options.paths.storybook.preview, templates.storybook.preview);
+  const sbAction = shouldSetupStorybook(tree, options);
+
+  if (sbAction === 'init') {
+    tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
+    tree.write(options.paths.storybook.main, templates.storybook.main);
+    tree.write(options.paths.storybook.preview, templates.storybook.preview);
+  }
+
+  if (sbAction === 'remove') {
+    tree.delete(options.paths.storybook.rootFolder);
+    updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+      json.scripts = json.scripts || {};
+
+      delete json.scripts['start'];
+      delete json.scripts['storybook'];
+      delete json.scripts['build-storybook'];
+
+      return json;
+    });
+  }
 
   return tree;
+}
+
+function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
+  const hasStorybookConfig = tree.exists(options.paths.storybook.main);
+  let hasStories = false;
+
+  visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
+    if (treePath.includes('.stories.')) {
+      hasStories = true;
+      return;
+    }
+  });
+
+  const tags = options.projectConfig.tags || [];
+  const hasTags = tags.includes('vNext') && tags.includes('platform:web');
+
+  const shouldInit = hasStories || hasTags;
+  const shouldDelete = !shouldInit && hasStorybookConfig;
+
+  if (shouldInit) {
+    return 'init';
+  }
+
+  if (shouldDelete) {
+    return 'remove';
+  }
 }
 
 function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
