@@ -1,10 +1,9 @@
-import { IsConformantOptions } from './types';
-
 import { EOL } from 'os';
 import * as _ from 'lodash';
 import * as path from 'path';
 
 import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
+import type { IsConformantOptions } from './types';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 

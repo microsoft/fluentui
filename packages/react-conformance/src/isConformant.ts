@@ -1,9 +1,8 @@
 import * as fs from 'fs';
-
-import { IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 import { getComponentDoc } from './utils/getComponentDoc';
+import type { IsConformantOptions } from './types';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);

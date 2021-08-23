@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ComponentDoc } from 'react-docgen-typescript';
 import { defaultTests } from './defaultTests';
-import { mount, ComponentType } from 'enzyme';
+import { mount } from 'enzyme';
+import type { ComponentDoc } from 'react-docgen-typescript';
+import type { ComponentType } from 'enzyme';
 
 export type Tests = keyof typeof defaultTests;
 

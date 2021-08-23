@@ -1,6 +1,4 @@
-import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
-import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
@@ -10,6 +8,8 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 import consoleUtil from './utils/consoleUtil';
+import type { TestObject, IsConformantOptions } from './types';
+import type { ComponentDoc } from 'react-docgen-typescript';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 

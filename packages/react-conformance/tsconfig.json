@@ -15,7 +15,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

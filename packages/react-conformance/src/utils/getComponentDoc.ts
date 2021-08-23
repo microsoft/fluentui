@@ -2,7 +2,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as ts from 'typescript';
 
-import { ComponentDoc, FileParser, withCompilerOptions } from 'react-docgen-typescript';
+import { withCompilerOptions } from 'react-docgen-typescript';
+import type { ComponentDoc, FileParser } from 'react-docgen-typescript';
 
 let program: ts.Program;
 let parser: FileParser;
