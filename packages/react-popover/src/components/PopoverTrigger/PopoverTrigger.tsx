@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePopoverTrigger } from './usePopoverTrigger';
-import { PopoverTriggerProps } from './PopoverTrigger.types';
 import { renderPopoverTrigger } from './renderPopoverTrigger';
+import type { PopoverTriggerProps } from './PopoverTrigger.types';
 
 /**
  * PopoverTrigger component

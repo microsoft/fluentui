@@ -4,11 +4,11 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
-import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAttributes<HTMLElement>>;
@@ -44,7 +44,6 @@ export const useLabel: (props: LabelProps, ref: React_2.Ref<HTMLElement>, defaul
 
 // @public
 export const useLabelStyles: (state: LabelState) => LabelState;
-
 
 // (No @packageDocumentation comment for this package)
 
