@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { BadgeProps, BadgeState } from './Badge.types';
+import type { BadgeProps, BadgeState } from './Badge.types';
 
 /**
  * Consts listing which props are shorthand props.
