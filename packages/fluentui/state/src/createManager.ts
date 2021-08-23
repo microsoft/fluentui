@@ -1,4 +1,4 @@
-import { AnyActions, EnhancedAction, Manager, ManagerConfig } from './types';
+import type { AnyActions, EnhancedAction, Manager, ManagerConfig } from './types';
 
 export const createManager = <State, Actions extends AnyActions>(
   config: ManagerConfig<State, Actions>,
