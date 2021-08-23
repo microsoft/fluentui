@@ -1,48 +1,45 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * Names of the shorthand properties in SliderProps
- */
-export type SliderSlots = {
+export interface SliderProps
+  extends ComponentPropsCompat,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail: React.HTMLAttributes<HTMLElement>;
+  rail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * The wrapper around the Slider component.
    */
-  sliderWrapper: React.HTMLAttributes<HTMLElement>;
+  sliderWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  trackWrapper: React.HTMLAttributes<HTMLElement>;
+  trackWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * The bar showing the current selected area adjacent to the Slider's thumb.
    */
-  track: React.HTMLAttributes<HTMLElement>;
+  track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
-  thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
+  thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
+  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
   /**
    * The area in which the Slider's rail allows for the thumb to be dragged.
    */
-  activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
-};
+  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
-export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -123,14 +120,33 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
 }
 
 /**
- * Slider Props
+ * Names of the shorthand properties in SliderProps
  */
-export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {}
+export type SliderShorthandProps =
+  | 'rail'
+  | 'sliderWrapper'
+  | 'trackWrapper'
+  | 'track'
+  | 'thumbWrapper'
+  | 'thumb'
+  | 'activeRail';
+
+/**
+ * Names of SliderProps that have a default value in useSlider
+ */
+export type SliderDefaultedProps =
+  | 'rail'
+  | 'sliderWrapper'
+  | 'trackWrapper'
+  | 'track'
+  | 'thumbWrapper'
+  | 'thumb'
+  | 'activeRail';
 
 /**
  * State used in rendering Slider
  */
-export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
+export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
   /**
    * Ref to the root element
    */

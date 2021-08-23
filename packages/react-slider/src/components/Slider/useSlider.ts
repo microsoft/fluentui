@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
-import type { SliderProps, SliderSlots, SliderState } from './Slider.types';
+import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: Array<keyof SliderSlots> = [
+export const sliderShorthandProps: SliderShorthandProps[] = [
   'rail',
   'sliderWrapper',
   'trackWrapper',
@@ -19,19 +19,26 @@ export const sliderShorthandProps: Array<keyof SliderSlots> = [
 /**
  * Given user props, returns state and render function for a Slider.
  */
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
-  const state: SliderState = {
-    ref,
-    size: 'medium',
-    ...props,
-    sliderWrapper: resolveShorthand(props.sliderWrapper, { required: true }),
-    rail: resolveShorthand(props.rail, { required: true }),
-    trackWrapper: resolveShorthand(props.trackWrapper, { required: true }),
-    track: resolveShorthand(props.track, { required: true }),
-    thumbWrapper: resolveShorthand(props.thumbWrapper, { required: true }),
-    thumb: resolveShorthand(props.thumb, { required: true }),
-    activeRail: resolveShorthand(props.activeRail, { required: true }),
-  };
+export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
+  const mergeProps = makeMergeProps<SliderState>({
+    deepMerge: sliderShorthandProps,
+  });
+
+  const state = mergeProps(
+    {
+      ref,
+      size: 'medium',
+      sliderWrapper: { as: 'div', children: null },
+      rail: { as: 'div', children: null },
+      trackWrapper: { as: 'div', children: null },
+      track: { as: 'div', children: null },
+      thumbWrapper: { as: 'div', children: null },
+      thumb: { as: 'div', children: null },
+      activeRail: { as: 'div', children: null },
+    },
+    defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
+    resolveShorthandProps(props, sliderShorthandProps),
+  );
 
   useSliderState(state);
 

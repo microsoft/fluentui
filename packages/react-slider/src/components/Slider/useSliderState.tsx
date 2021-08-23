@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
-import type { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import type { SliderState } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -46,7 +46,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
   return () => element.removeEventListener(eventName, callback);
 };
 
-export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | keyof SliderSlots | 'as' | 'ref'>) => {
+export const useSliderState = (state: SliderState) => {
   const {
     as = 'div',
     value,
