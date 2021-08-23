@@ -65,6 +65,7 @@ export class VerticalBarChartCustomAccessibilityExample extends React.Component<
         />
         <div style={{ width: '800px', height: '400px' }}>
           <VerticalBarChart
+            chartTitle="Vertical bar chart custom accessibility example "
             data={points}
             width={800}
             height={400}
