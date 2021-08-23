@@ -1,4 +1,5 @@
-import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@fluentui/make-styles';
+import { DEFINITION_LOOKUP_TABLE } from '@fluentui/make-styles';
+import type { CSSClasses } from '@fluentui/make-styles';
 
 export function print(val: string) {
   const regexParts: string[] = [];
