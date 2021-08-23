@@ -12,6 +12,7 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "node"],
+    "isolatedModules": true
   }
 }

@@ -1,4 +1,4 @@
-import { configSchema, BabelPluginOptions } from '@fluentui/babel-make-styles';
+import { configSchema } from '@fluentui/babel-make-styles';
 import { EvalCache, Module } from '@linaria/babel-preset';
 import * as enhancedResolve from 'enhanced-resolve';
 import { getOptions } from 'loader-utils';
@@ -6,7 +6,9 @@ import * as path from 'path';
 import { validate } from 'schema-utils';
 import * as webpack from 'webpack';
 
-import { transformSync, TransformResult, TransformOptions } from './transformSync';
+import { transformSync } from './transformSync';
+import type { BabelPluginOptions } from '@fluentui/babel-make-styles';
+import type { TransformResult, TransformOptions } from './transformSync';
 
 export type WebpackLoaderOptions = BabelPluginOptions;
 
