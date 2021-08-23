@@ -93,6 +93,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Label>Disabled Mark Label</Label>
       <Slider
         disabled
+        defaultValue={3}
         max={10}
         marks={[
           { value: 2, label: '2 oz' },
