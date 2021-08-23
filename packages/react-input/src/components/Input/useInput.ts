@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { InputProps, InputSlots, InputState } from './Input.types';
+import type { InputProps, InputSlots, InputState } from './Input.types';
 
 /**
  * Array of all shorthand properties listed as the keys of InputSlots
@@ -30,8 +30,8 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputS
       input: 'input',
     },
     // temporarily must add fake children to prevent getSlots from substituting nullRender
-    input: resolveShorthand(props.input, { children: '😭' }),
-    inputWrapper: resolveShorthand(props.inputWrapper, { children: '😭' }),
+    input: resolveShorthand(props.input, { required: true }),
+    inputWrapper: resolveShorthand(props.inputWrapper, { required: true }),
     bookendAfter: resolveShorthand(props.bookendAfter),
     bookendBefore: resolveShorthand(props.bookendBefore),
     insideEnd: resolveShorthand(props.insideEnd),

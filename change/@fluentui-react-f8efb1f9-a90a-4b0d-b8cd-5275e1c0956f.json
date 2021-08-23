@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "[KeytipLayer] Pass triggering key sequence to onEnterKeytipMode callback",
-  "packageName": "@fluentui/react",
-  "email": "rezha@microsoft.com",
-  "dependentChangeType": "patch"
-}

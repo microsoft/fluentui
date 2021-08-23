@@ -151,6 +151,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData),
     };
@@ -740,7 +741,9 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-
+        if (barHeight < 1) {
+          return <React.Fragment key={index + indexNumber}> </React.Fragment>;
+        }
         return (
           <rect
             key={index + indexNumber}

@@ -14,10 +14,11 @@ import {
   updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
-import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
+
 import * as path from 'path';
 
 import { PackageJson, TsConfig } from '../../types';
+import { arePromptsEnabled, prompt, updateJestConfig } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -43,18 +44,20 @@ type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
 
-  validateUserInput(tree, schema);
+  const validatedSchema = await validateSchema(tree, schema);
 
-  if (schema.stats) {
-    printStats(tree, schema);
+  if (hasSchemaFlag(validatedSchema, 'stats')) {
+    printStats(tree, validatedSchema);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     return () => {};
   }
 
-  if (schema.all) {
+  if (hasSchemaFlag(validatedSchema, 'all')) {
     runBatchMigration(tree, userLog);
-  } else {
-    runMigrationOnProject(tree, schema, userLog);
+  }
+
+  if (hasSchemaFlag(validatedSchema, 'name')) {
+    runMigrationOnProject(tree, validatedSchema, userLog);
   }
 
   await formatFiles(tree);
@@ -99,6 +102,9 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
+  setupNpmIgnoreConfig(tree, options);
+  setupBabel(tree, options);
+
   updateNxWorkspace(tree, options);
 }
 
@@ -118,9 +124,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES2015',
+      target: 'ES2020',
       module: 'CommonJS',
-      lib: ['ES2015', 'dom'],
+      lib: ['ES2020', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
@@ -130,6 +136,11 @@ const templates = {
       preserveConstEnums: true,
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
+  },
+  babelConfig: (options: { extraPlugins: Array<string> }) => {
+    return {
+      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    };
   },
   jestSetup: stripIndents`
    /** Jest test setup file. */
@@ -192,6 +203,37 @@ const templates = {
       include: ['../src/**/*', '*.js'],
     },
   },
+  npmIgnoreConfig: stripIndents`
+    .cache/
+    .storybook/
+    .vscode/
+    bundle-size/
+    config/
+    coverage/
+    e2e/
+    etc/
+    node_modules/
+    src/
+    temp/
+    __fixtures__
+    __mocks__
+    __tests__
+
+    *.api.json
+    *.log
+    *.spec.*
+    *.stories.*
+    *.test.*
+    *.yml
+
+    # config files
+    *config.*
+    *rc.*
+    .editorconfig
+    .eslint*
+    .git*
+    .prettierignore
+  `,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -212,10 +254,12 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
       configRoot: joinPathFragments(projectConfig.root, 'config'),
       packageJson: joinPathFragments(projectConfig.root, 'package.json'),
       tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
+      babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
       jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
       rootTsconfig: '/tsconfig.base.json',
       rootJestPreset: '/jest.preset.js',
       rootJestConfig: '/jest.config.js',
+      npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
       storybook: {
         tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
         main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
@@ -225,32 +269,72 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
   };
 }
 
-function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema): asserts options is AssertedSchema {
-  if (options.name && options.stats) {
+/**
+ *
+ * Narrows down Schema definition to true runtime shape after {@link validateSchema} is executed
+ * - also properly checks of truthiness of provided value
+ */
+function hasSchemaFlag<T extends MigrateConvergedPkgGeneratorSchema, K extends keyof T>(
+  schema: T,
+  flag: K,
+): schema is T & Record<K, NonNullable<T[K]>> {
+  return Boolean(schema[flag]);
+}
+
+async function validateSchema(tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
+  let newSchema = { ...schema };
+
+  if (newSchema.name && newSchema.stats) {
     throw new Error('--name and --stats are mutually exclusive');
   }
 
-  if (options.name && options.all) {
+  if (newSchema.name && newSchema.all) {
     throw new Error('--name and --all are mutually exclusive');
   }
 
-  if (options.stats && options.all) {
+  if (newSchema.stats && newSchema.all) {
     throw new Error('--stats and --all are mutually exclusive');
   }
 
-  if (!options.name && !(options.all || options.stats)) {
+  const shouldValidateNameInput = () => {
+    return !newSchema.name && !(newSchema.all || newSchema.stats);
+  };
+
+  const shouldTriggerPrompt = arePromptsEnabled() && shouldValidateNameInput();
+
+  if (shouldTriggerPrompt) {
+    const schemaPromptsResponse = await triggerDynamicPrompts();
+
+    newSchema = { ...newSchema, ...schemaPromptsResponse };
+  }
+
+  if (shouldValidateNameInput()) {
     throw new Error(`--name cannot be empty. Please provide name of the package.`);
   }
 
-  if (options.name) {
-    const projectConfig = readProjectConfiguration(tree, options.name);
+  if (newSchema.name) {
+    const projectConfig = readProjectConfiguration(tree, newSchema.name);
 
     if (!isPackageConverged(tree, projectConfig)) {
       throw new Error(
-        `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+        `${newSchema.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
       );
     }
   }
+
+  return newSchema;
+}
+
+async function triggerDynamicPrompts() {
+  type PromptResponse = Required<Pick<MigrateConvergedPkgGeneratorSchema, 'name'>>;
+
+  return prompt<PromptResponse>([
+    {
+      message: 'Which converged package would you like migrate to new DX? (ex: @fluentui/react-menu)',
+      type: 'input',
+      name: 'name',
+    },
+  ]);
 }
 
 function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
@@ -308,6 +392,12 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
   });
+
+  return tree;
+}
+
+function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
 
   return tree;
 }
@@ -499,6 +589,31 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 
     return json;
   });
+}
+
+function setupBabel(tree: Tree, options: NormalizedSchema) {
+  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
+  const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  pkgJson.dependencies = pkgJson.dependencies || {};
+  pkgJson.devDependencies = pkgJson.devDependencies || {};
+
+  const shouldAddMakeStylesPlugin =
+    pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
+    pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`];
+  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
+
+  const config = templates.babelConfig({ extraPlugins });
+
+  if (shouldAddMakeStylesPlugin) {
+    pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`] = '*';
+  } else {
+    delete pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`];
+  }
+
+  tree.write(options.paths.babelConfig, serializeJson(config));
+  writeJson(tree, options.paths.packageJson, pkgJson);
+
+  return tree;
 }
 
 function printUserLogs(logs: UserLog) {

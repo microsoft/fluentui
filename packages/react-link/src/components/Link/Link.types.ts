@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Link}

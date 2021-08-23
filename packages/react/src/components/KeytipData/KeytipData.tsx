@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IRenderComponent } from '../../Utilities';
 import { DATAKTP_TARGET, DATAKTP_EXECUTE_TARGET } from '../../utilities/keytips/index';
-import { IKeytipDataProps } from './KeytipData.types';
 import { useKeytipData } from './useKeytipData';
+import type { IRenderComponent } from '../../Utilities';
+import type { IKeytipDataProps } from './KeytipData.types';
 
 /**
  * A small element to help the target component correctly read out its aria-describedby for its Keytip

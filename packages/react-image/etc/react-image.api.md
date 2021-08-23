@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)

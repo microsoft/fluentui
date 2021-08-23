@@ -6,7 +6,8 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
+import type { ShadowLevelTokens } from '../index';
 
 export default {
   title: 'Theme/Alias/Shadows',

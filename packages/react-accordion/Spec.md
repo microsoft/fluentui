@@ -48,14 +48,14 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
    */
   collapsible?: boolean;
   /**
-   * Index indicating the panels that are opened
+   * value indicating the items that are opened
    * If used, the component will be in controlled mode
    */
-  index?: number | number[];
+  openItems?: AccordionItemValue | AccordionItemValue[];
   /**
    * Index indicating the panels that are opened
    */
-  defaultIndex?: number | number[];
+  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
   /**
    * Size of spacing in the heading
    */
@@ -80,7 +80,7 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
    * Indicates if the AccordionHeader should be inline-block
    */
   inline?: boolean;
-  onToggle?(index: number): void;
+  onToggle?(event: AccordionToggleEvent, data: AccordionToggleData): void;
 }
 ```
 
@@ -94,6 +94,10 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
    * Disables opening/closing of panel inside the item
    */
   disabled?: boolean;
+  /**
+   * required value that identifies this item inside an Accordion component
+   */
+  value: AccordionItemValue;
 }
 ```
 

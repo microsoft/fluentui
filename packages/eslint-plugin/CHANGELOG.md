@@ -1,8 +1,26 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.0)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.3..@fluentui/eslint-plugin_v1.4.0)
+
+### Minor changes
+
+- Add eslint-plugin-jsdoc to check for jsdoc errors ([PR #19271](https://github.com/microsoft/fluentui/pull/19271) by behowell@microsoft.com)
+
+## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.3)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.3.2..@fluentui/eslint-plugin_v1.3.3)
+
+### Patches
+
+- Enable exhaustive-deps rule for useIsomorphicLayoutEffect ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
 
 ## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.2)
 

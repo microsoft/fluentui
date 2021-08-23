@@ -1,50 +1,14 @@
 import * as React from 'react';
-import { MenuState } from './Menu.types';
 import { MenuProvider } from '../../contexts/menuContext';
+import type { MenuContextValues, MenuState } from './Menu.types';
 
 /**
  * Render the final JSX of Menu
  * {@docCategory Menu }
  */
-export const renderMenu = (state: MenuState) => {
-  const {
-    open,
-    setOpen,
-    onCheckedValueChange,
-    checkedValues,
-    defaultCheckedValues,
-    openOnHover,
-    openOnContext,
-    triggerRef,
-    triggerId,
-    menuPopoverRef,
-    isSubmenu,
-    hasCheckmarks,
-    hasIcons,
-    persistOnItemClick,
-    inline,
-  } = state;
-
+export const renderMenu = (state: MenuState, contextValues: MenuContextValues) => {
   return (
-    <MenuProvider
-      value={{
-        open,
-        setOpen,
-        onCheckedValueChange,
-        checkedValues,
-        defaultCheckedValues,
-        triggerRef,
-        openOnHover,
-        openOnContext,
-        triggerId,
-        menuPopoverRef,
-        isSubmenu,
-        hasCheckmarks,
-        hasIcons,
-        persistOnItemClick,
-        inline,
-      }}
-    >
+    <MenuProvider value={contextValues.menu}>
       {state.menuTrigger}
       {state.open && state.menuPopover}
     </MenuProvider>

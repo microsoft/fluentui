@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Title tag for svg removed, so tooltip will not be shown on chart hover",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}

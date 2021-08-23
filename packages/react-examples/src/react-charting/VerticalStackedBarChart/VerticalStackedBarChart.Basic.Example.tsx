@@ -212,11 +212,11 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         />
         <div style={rootStyle}>
           <VerticalStackedBarChart
+            chartTitle="Vertical stacked bar chart basic example"
             barGapMax={this.state.barGapMax}
             data={data}
             height={this.state.height}
             width={this.state.width}
-            chartLabel="Card title"
             legendProps={{
               allowFocusOnLegends: true,
             }}

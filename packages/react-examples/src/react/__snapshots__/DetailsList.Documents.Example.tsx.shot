@@ -728,7 +728,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               >
                 <span
                   aria-describedby="header6-column1-tooltip"
-                  aria-haspopup={false}
                   aria-label="File Type"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -763,7 +762,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column1"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -948,7 +947,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               >
                 <span
                   aria-describedby="header6-column2-tooltip"
-                  aria-haspopup={false}
                   aria-labelledby="header6-column2-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -980,7 +978,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column2"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1193,7 +1191,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-haspopup={false}
                   aria-labelledby="header6-column3-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1225,7 +1222,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column3"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1384,7 +1381,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-haspopup={false}
                   aria-labelledby="header6-column4-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1416,7 +1412,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column4"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1575,7 +1571,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-haspopup={false}
                   aria-labelledby="header6-column5-name"
                   className=
                       ms-DetailsHeader-cellTitle
@@ -1607,7 +1602,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable="true"
                   id="header6-column5"
                   onClick={[Function]}
                   onContextMenu={[Function]}
@@ -1914,6 +1909,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -2374,6 +2370,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -2834,6 +2831,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -3294,6 +3292,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -3754,6 +3753,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -4214,6 +4214,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -4674,6 +4675,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5134,6 +5136,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -5594,6 +5597,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"
@@ -6054,6 +6058,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               onKeyDown={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
+                              role="none"
                             >
                               <img
                                 alt="accdb file icon"

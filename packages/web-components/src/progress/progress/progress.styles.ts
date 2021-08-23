@@ -78,7 +78,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
     :host(.paused) .indeterminate-indicator-1,
     :host(.paused) .indeterminate-indicator-2 {
       animation-play-state: paused;
-      background-color: $[neutralFillRest};
+      background-color: ${neutralFillRest};
     }
 
     :host(.paused) .determinate {

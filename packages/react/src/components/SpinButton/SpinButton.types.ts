@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Position } from '../../Positioning';
-import { IButtonStyles } from '../../Button';
-import { IIconProps } from '../../Icon';
-import { ITheme, IStyle } from '../../Styling';
-import { IKeytipProps } from '../../Keytip';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../../Button';
+import type { IButtonStyles, IButtonProps } from '../../Button';
+import type { IIconProps } from '../../Icon';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IKeytipProps } from '../../Keytip';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory SpinButton}

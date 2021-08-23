@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing onPositioned bug in Callout component.",
-  "packageName": "@fluentui/react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}

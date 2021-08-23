@@ -1,12 +1,7 @@
 import * as React from 'react';
-import { useMergedRefs, useId, useDescendants, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { useMergedRefs, useId, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
-import {
-  useAccordionItemContext,
-  useAccordionItemDescendant,
-  accordionItemDescendantContext,
-  AccordionItemDescendant,
-} from '../AccordionItem/index';
+import { useAccordionItemContext } from '../AccordionItem/index';
 import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
 import { useARIAButton } from '@fluentui/react-aria';
 
@@ -24,27 +19,19 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
  * Returns the props and state required to render the component
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
- * @param defaultProps - default values for the properties of AccordionHeader
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
   const id = useId('accordion-header-', props.id);
-  const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const innerRef = React.useRef<HTMLElement>(null);
 
-  useAccordionItemDescendant(
-    {
-      element: innerRef.current,
-      id,
-    },
-    0,
-  );
-
   const buttonShorthand = useARIAButton(props.button, {
-    id,
-    disabled,
-    'aria-controls': panel?.id,
-    children: React.Fragment,
+    required: true,
+    defaultProps: {
+      id,
+      disabled,
+      // 'aria-controls': panel?.id,
+    },
   });
 
   return {
@@ -63,7 +50,10 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     },
     icon: resolveShorthand(props.icon),
     expandIcon: resolveShorthand(props.expandIcon, {
-      'aria-hidden': true,
+      required: true,
+      defaultProps: {
+        'aria-hidden': true,
+      },
     }),
     button: {
       ...buttonShorthand,
@@ -74,6 +64,6 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
         }
       }),
     },
-    children: resolveShorthand(props.children),
+    children: resolveShorthand(props.children, { required: true }),
   };
 };

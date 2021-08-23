@@ -3,10 +3,10 @@ jest.mock('../../utilities/contextualMenu');
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ContextualMenuItemBase } from './ContextualMenuItem.base';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
-import { IContextualMenuItem } from './ContextualMenu.types';
-import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
+import type { IContextualMenuItemProps } from './ContextualMenuItem.types';
+import type { IContextualMenuItem } from './ContextualMenu.types';
+import type { IMenuItemClassNames } from './ContextualMenu.classNames';
 
 describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {

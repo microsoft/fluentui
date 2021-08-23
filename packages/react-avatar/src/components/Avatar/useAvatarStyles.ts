@@ -49,14 +49,6 @@ const animations = {
   nullEasing: animationLines.linear,
 };
 
-const iconSize = {
-  small: '12px',
-  medium: '16px',
-  large: '24px',
-  larger: '40px',
-  largest: '48px',
-};
-
 const useStyles = makeStyles({
   root: theme => ({
     display: 'inline-block',
@@ -66,6 +58,7 @@ const useStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     fontFamily: theme.global.type.fontFamilies.base,
     fontWeight: theme.global.type.fontWeights.semibold,
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.transparentStroke} inset`,
   }),
 
   textCaption2: theme => ({
@@ -82,13 +75,6 @@ const useStyles = makeStyles({
   squareMedium: theme => ({ borderRadius: theme.global.borderRadius.medium }),
   squareLarge: theme => ({ borderRadius: theme.global.borderRadius.large }),
   squareXLarge: theme => ({ borderRadius: theme.global.borderRadius.xLarge }),
-
-  icon: { fontWeight: 'initial' },
-  iconSizeLessThan28: { fontSize: iconSize.small },
-  iconSizeGreaterEqualThan28: { fontSize: iconSize.medium },
-  iconSizeGreaterEqualThan48: { fontSize: iconSize.large },
-  iconSizeGreaterEqualThan96: { fontSize: iconSize.larger },
-  iconSizeGreaterEqualThan120: { fontSize: iconSize.largest },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
@@ -185,21 +171,21 @@ const useStyles = makeStyles({
     verticalAlign: 'top',
   },
 
-  label: theme => ({
+  iconLabel: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
+    lineHeight: 1,
 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    verticalAlign: 'top',
+    verticalAlign: 'center',
     textAlign: 'center',
     borderRadius: 'inherit',
-    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.transparentStroke} inset`,
-  }),
+  },
 });
 
 const useSizeStyles = makeStyles({
@@ -350,14 +336,15 @@ const useColorStyles = makeStyles({
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
-  const { size, square, color, active, activeDisplay } = state;
+  const { size, square, active, activeDisplay } = state;
+  // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
+  const color = state.color === 'colorful' ? 'darkRed' : state.color;
 
   const styles = useStyles();
+  const sizeStyles = useSizeStyles();
+  const colorStyles = useColorStyles();
 
-  const rootClasses = [styles.root];
-
-  const sizeClasses = useSizeStyles();
-  rootClasses.push(sizeClasses[size]);
+  const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2);
@@ -430,16 +417,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.className = mergeClasses(
-    ...rootClasses,
-    state.icon !== undefined && styles.icon,
-    state.icon !== undefined && size < 28 && styles.iconSizeLessThan28,
-    state.icon !== undefined && size >= 28 && styles.iconSizeGreaterEqualThan28,
-    state.icon !== undefined && size >= 48 && styles.iconSizeGreaterEqualThan48,
-    state.icon !== undefined && size >= 96 && styles.iconSizeGreaterEqualThan96,
-    state.icon !== undefined && size >= 120 && styles.iconSizeGreaterEqualThan120,
-    state.className,
-  );
+  state.className = mergeClasses(...rootClasses, state.className);
 
   if (state.badge) {
     state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
@@ -449,13 +427,13 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  const colorClasses = useColorStyles();
-  state.label.className = mergeClasses(
-    styles.label,
-    // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
-    colorClasses[color === 'colorful' ? 'darkRed' : color],
-    state.label.className,
-  );
+  if (state.label) {
+    state.label.className = mergeClasses(styles.iconLabel, state.label.className);
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(styles.iconLabel, state.icon.className);
+  }
 
   return state;
 };

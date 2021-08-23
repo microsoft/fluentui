@@ -1,4 +1,4 @@
-import { IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
+import type { IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 
 export function getStyles(props: IShimmerTileStyleProps): IShimmerTileStyles {
   return {

@@ -11,13 +11,13 @@ import {
   DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
 import { Icon } from '../../../Icon';
-import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@fluentui/utilities';
-import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { usePrevious } from '@fluentui/react-hooks';
 import { defaultCalendarNavigationIcons } from '../defaults';
+import type { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
+import type { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 
 const MONTHS_PER_ROW = 4;
 

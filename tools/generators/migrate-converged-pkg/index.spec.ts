@@ -1,3 +1,4 @@
+import * as Enquirer from 'enquirer';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -20,6 +21,16 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
 }
+
+jest.mock(
+  'enquirer',
+  () =>
+    ({
+      prompt: async () => ({
+        name: '',
+      }),
+    } as Pick<Enquirer, 'prompt'>),
+);
 
 describe('migrate-converged-pkg generator', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -56,29 +67,88 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe('general', () => {
-    it(`should throw error if name is empty`, async () => {
-      await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(
-        `[Error: --name cannot be empty. Please provide name of the package.]`,
-      );
-    });
-
-    it(`should throw error if provided name doesn't match existing package`, async () => {
-      await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
-        `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
-      );
-    });
-
-    it(`should throw error if user wants migrate non converged package`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      updateJson(tree, `${projectConfig.root}/package.json`, json => {
-        json.version = '8.0.0';
-        return json;
+    describe('schema validation', () => {
+      it('should throw if --name && --stats are both specified', async () => {
+        await expect(
+          generator(tree, {
+            ...options,
+            stats: true,
+          }),
+        ).rejects.toMatchInlineSnapshot(`[Error: --name and --stats are mutually exclusive]`);
       });
 
-      await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
-        // eslint-disable-next-line @fluentui/max-len
-        `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
-      );
+      it('should throw if --name && --all are both specified', async () => {
+        await expect(
+          generator(tree, {
+            ...options,
+            all: true,
+          }),
+        ).rejects.toMatchInlineSnapshot(`[Error: --name and --all are mutually exclusive]`);
+      });
+
+      it('should throw if --stats && --all are both specified', async () => {
+        await expect(
+          generator(tree, {
+            stats: true,
+            all: true,
+          }),
+        ).rejects.toMatchInlineSnapshot(`[Error: --stats and --all are mutually exclusive]`);
+      });
+
+      it(`should throw error if name is empty`, async () => {
+        await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(
+          `[Error: --name cannot be empty. Please provide name of the package.]`,
+        );
+      });
+
+      it(`should throw error if provided name doesn't match existing package`, async () => {
+        await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
+          `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
+        );
+      });
+
+      it(`should throw error if user wants migrate non converged package`, async () => {
+        const projectConfig = readProjectConfiguration(tree, options.name);
+        updateJson(tree, `${projectConfig.root}/package.json`, json => {
+          json.version = '8.0.0';
+          return json;
+        });
+
+        await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
+          // eslint-disable-next-line @fluentui/max-len
+          `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
+        );
+      });
+    });
+
+    describe('prompts', () => {
+      function setup(config: { promptResponse: Pick<MigrateConvergedPkgGeneratorSchema, 'name'> }) {
+        const promptSpy = jest.spyOn(Enquirer, 'prompt').mockImplementation(async () => {
+          return { ...config.promptResponse };
+        });
+
+        return { promptSpy };
+      }
+
+      it('should prompt for a name if neither "name" OR "all" OR "stats" are specified', async () => {
+        const { promptSpy } = setup({ promptResponse: options });
+
+        await generator(tree, {});
+
+        expect(promptSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should not prompt for a name if "all" OR "stats" is specified', async () => {
+        const { promptSpy } = setup({ promptResponse: options });
+
+        await generator(tree, { stats: true });
+
+        expect(promptSpy).toHaveBeenCalledTimes(0);
+
+        await generator(tree, { all: true });
+
+        expect(promptSpy).toHaveBeenCalledTimes(0);
+      });
     });
   });
 
@@ -112,12 +182,12 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['ES2015', 'dom'],
+          lib: ['ES2020', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'ES2015',
+          target: 'ES2020',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
         },
         extends: '../../tsconfig.base.json',
@@ -631,6 +701,185 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`npm config setup`, () => {
+    it(`should update .npmignore config`, async () => {
+      function getNpmIgnoreConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+        return tree.read(`${projectConfig.root}/.npmignore`)?.toString('utf-8');
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+
+      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
+        "*.api.json
+        *.config.js
+        *.log
+        *.nuspec
+        *.test.*
+        *.yml
+        .editorconfig
+        .eslintrc*
+        .eslintcache
+        .gitattributes
+        .gitignore
+        .vscode
+        coverage
+        dist/storybook
+        dist/*.stats.html
+        dist/*.stats.json
+        dist/demo
+        fabric-test*
+        gulpfile.js
+        images
+        index.html
+        jsconfig.json
+        node_modules
+        results
+        src/**/*
+        !src/**/examples/*.tsx
+        !src/**/docs/**/*.md
+        !src/**/*.types.ts
+        temp
+        tsconfig.json
+        tsd.json
+        tslint.json
+        typings
+        visualtests"
+      `);
+
+      await generator(tree, options);
+
+      npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+
+      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
+        ".cache/
+        .storybook/
+        .vscode/
+        bundle-size/
+        config/
+        coverage/
+        e2e/
+        etc/
+        node_modules/
+        src/
+        temp/
+        __fixtures__
+        __mocks__
+        __tests__
+
+        *.api.json
+        *.log
+        *.spec.*
+        *.stories.*
+        *.test.*
+        *.yml
+
+        # config files
+        *config.*
+        *rc.*
+        .editorconfig
+        .eslint*
+        .git*
+        .prettierignore"
+      `);
+    });
+  });
+
+  describe(`babel config setup`, () => {
+    const getScopedPkgName = (pkgName: string) => {
+      const workspaceConfig = readWorkspaceConfiguration(tree);
+
+      return `@${workspaceConfig.npmScope}/${pkgName}`;
+    };
+
+    function getBabelConfig(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
+      return readJson(tree, babelConfigPath);
+    }
+    function getPackageJson(projectConfig: ReturnType<typeof readProjectConfiguration>) {
+      const packageJsonPath = `${projectConfig.root}/package.json`;
+      return readJson<PackageJson>(tree, packageJsonPath);
+    }
+
+    it(`should setup .babelrc.json`, async () => {
+      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      let packageJson = getPackageJson(projectConfig);
+      let devDeps = packageJson.devDependencies || {};
+      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
+
+      await generator(tree, options);
+
+      let babelConfig = getBabelConfig(projectConfig);
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+
+      tree.delete(`${projectConfig.root}/.babelrc.json`);
+
+      await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+      packageJson = getPackageJson(projectConfig);
+      devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe('*');
+    });
+
+    it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const babelMakeStylesPkg = getScopedPkgName('babel-make-styles');
+
+      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+        if (json.dependencies) {
+          delete json.dependencies[getScopedPkgName('react-make-styles')];
+          delete json.dependencies[getScopedPkgName('make-styles')];
+        }
+
+        json.devDependencies = json.devDependencies || {};
+        json.devDependencies[babelMakeStylesPkg] = '*';
+
+        return json;
+      });
+
+      let babelConfig = getBabelConfig(projectConfig);
+      let packageJson = getPackageJson(projectConfig);
+      let devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: [
+          'module:@fluentui/babel-make-styles',
+          'annotate-pure-calls',
+          '@babel/transform-react-pure-annotations',
+        ],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe('*');
+
+      await generator(tree, options);
+
+      babelConfig = getBabelConfig(projectConfig);
+      packageJson = getPackageJson(projectConfig);
+      devDeps = packageJson.devDependencies || {};
+
+      expect(babelConfig).toEqual({
+        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      });
+      expect(devDeps[babelMakeStylesPkg]).toBe(undefined);
+    });
+  });
+
   describe(`nx workspace updates`, () => {
     it(`should set project 'sourceRoot' in workspace.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
@@ -711,15 +960,6 @@ describe('migrate-converged-pkg generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
       setupDummyPackage(tree, { name: '@proj/react-moo', version: '9.0.12' });
       setupDummyPackage(tree, { name: '@proj/react-old', version: '8.0.1' });
-    });
-
-    it('should throw if --name && --all are both specified', async () => {
-      await expect(
-        generator(tree, {
-          ...options,
-          all: true,
-        }),
-      ).rejects.toMatchInlineSnapshot(`[Error: --name and --all are mutually exclusive]`);
     });
 
     it(`should run migration on all vNext packages in batch`, async () => {
@@ -818,12 +1058,53 @@ function setupDummyPackage(
     // Configure enzyme.
     configure({ adapter: new Adapter() });
     `,
+    npmConfig: stripIndents`
+      *.api.json
+      *.config.js
+      *.log
+      *.nuspec
+      *.test.*
+      *.yml
+      .editorconfig
+      .eslintrc*
+      .eslintcache
+      .gitattributes
+      .gitignore
+      .vscode
+      coverage
+      dist/storybook
+      dist/*.stats.html
+      dist/*.stats.json
+      dist/demo
+      fabric-test*
+      gulpfile.js
+      images
+      index.html
+      jsconfig.json
+      node_modules
+      results
+      src/**/*
+      !src/**/examples/*.tsx
+      !src/**/docs/**/*.md
+      !src/**/*.types.ts
+      temp
+      tsconfig.json
+      tsd.json
+      tslint.json
+      typings
+      visualtests
+    `,
+    babelConfig: {
+      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    },
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${paths.root}/tsconfig.json`, serializeJson(templates.tsConfig));
+  tree.write(`${paths.root}/.babelrc.json`, serializeJson(templates.babelConfig));
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
+  tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
 
   addProjectConfiguration(tree, pkgName, {
     root: paths.root,

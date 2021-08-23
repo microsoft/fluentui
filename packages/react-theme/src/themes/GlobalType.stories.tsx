@@ -6,7 +6,8 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { FontFamilies, FontSizes, LineHeights, FontWeights, TextAlignments, teamsLightTheme } from '../index';
+import { teamsLightTheme } from '../index';
+import type { FontFamilies, FontSizes, LineHeights, FontWeights, TextAlignments } from '../index';
 
 export default {
   title: 'Theme/Global/Type',

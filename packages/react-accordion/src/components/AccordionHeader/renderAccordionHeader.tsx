@@ -1,21 +1,18 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
+
+import { AccordionHeaderState, AccordionHeaderSlots, AccordionHeaderContextValues } from './AccordionHeader.types';
 import { accordionHeaderShorthandProps } from './useAccordionHeader';
-import { AccordionHeaderContext, useAccordionHeaderContextValue } from './AccordionHeaderContext';
+import { AccordionHeaderContext } from './AccordionHeaderContext';
 
 /**
  * Function that renders the final JSX of the component
  */
-export const renderAccordionHeader = (state: AccordionHeaderState) => {
+export const renderAccordionHeader = (state: AccordionHeaderState, contextValues: AccordionHeaderContextValues) => {
   const { slots, slotProps } = getSlots<AccordionHeaderSlots>(state, accordionHeaderShorthandProps);
 
-  // TODO: either render function should be a hook or this hook should not be called here
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = useAccordionHeaderContextValue(state);
-
   return (
-    <AccordionHeaderContext.Provider value={value}>
+    <AccordionHeaderContext.Provider value={contextValues.accordionHeader}>
       <slots.root {...slotProps.root}>
         <slots.button {...slotProps.button}>
           {state.expandIconPosition === 'start' && <slots.expandIcon {...slotProps.expandIcon} />}

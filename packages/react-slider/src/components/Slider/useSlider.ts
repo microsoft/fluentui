@@ -1,36 +1,39 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { SliderProps, SliderShorthandProps } from './Slider.types';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { useSliderState } from './useSliderState';
+import type { SliderProps, SliderSlots, SliderState } from './Slider.types';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = [
-  /* TODO add shorthand property names */
+export const sliderShorthandProps: Array<keyof SliderSlots> = [
+  'rail',
+  'sliderWrapper',
+  'trackWrapper',
+  'track',
+  'thumbWrapper',
+  'thumb',
+  'activeRail',
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mergeProps = makeMergeProps<any>({ deepMerge: sliderShorthandProps });
-
 /**
- * Create the state required to render Slider.
- *
- * The returned state can be modified with hooks such as useSliderStyles,
- * before being passed to renderSlider.
- *
- * @param props - props from this instance of Slider
- * @param ref - reference to root HTMLElement of Slider
- * @param defaultProps - (optional) default prop values provided by the implementing type
+ * Given user props, returns state and render function for a Slider.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): any => {
-  const state = mergeProps(
-    {
-      ref,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
-    resolveShorthandProps(props, sliderShorthandProps),
-  );
+export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
+  const state: SliderState = {
+    ref,
+    size: 'medium',
+    ...props,
+    sliderWrapper: resolveShorthand(props.sliderWrapper, { required: true }),
+    rail: resolveShorthand(props.rail, { required: true }),
+    trackWrapper: resolveShorthand(props.trackWrapper, { required: true }),
+    track: resolveShorthand(props.track, { required: true }),
+    thumbWrapper: resolveShorthand(props.thumbWrapper, { required: true }),
+    thumb: resolveShorthand(props.thumb, { required: true }),
+    activeRail: resolveShorthand(props.activeRail, { required: true }),
+  };
+
+  useSliderState(state);
 
   return state;
 };
