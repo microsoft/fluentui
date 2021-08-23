@@ -212,6 +212,22 @@ This component has no custom props and only ensures the proper positioning of co
 
 ### Mouse
 
+### Interactive cards
+
+![Visual interaction of interactive cards using the mouse](./assets/interactive-interaction-mouse.png)
+
+The card surface can be used as a clickable target
+
+1. Rest
+
+2. OnHover
+
+   Cursor style changes to pointer, background color & elevation values change to show card is an actionable element
+
+3. OnClick
+
+   Executes action assigned to card i.e. “Open file, Open link in browser etc...”
+
 #### Selectable cards
 
 ![Visual interaction of selectable cards using the mouse](./assets/selectable-interaction-mouse.png)
@@ -261,12 +277,8 @@ Mouse interaction
 A context menu can be triggered by right clicking the surface or through an action in the card.
 
 1. Rest
-   <<<<<<< HEAD
-   =======
 
    Default state
-
-   > > > > > > > Fix formatting issues
 
 2. RightClick [LongPress]
 
@@ -297,6 +309,16 @@ A context menu can be triggered by right clicking the surface or through an acti
    - State: Disabled, selected
 
 ### Keyboard
+
+### Interactive cards
+
+![Visual interaction of interactive cards using the keyboard](./assets/interactive-interaction-keyboard.png)
+
+1. Rest
+
+2. Keyboard interaction
+
+   EnterKey Perfoms action on card “Open file, Open link in browser etc...”
 
 #### Selectable cards
 
@@ -361,6 +383,15 @@ Keyboard interaction
 Each card is of `role="group"`.
 
 ### Narrator guidance
+
+### Interactive cards
+
+![A card with the number 1 over it](./assets/interactive-narrator.png)
+
+1. Label: App Card
+2. Role: Group
+3. State: Focus
+4. Helper text: Use enterKey to perform action
 
 #### Selectable cards
 
