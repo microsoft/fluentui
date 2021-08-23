@@ -17,3 +17,4 @@ export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<H
 
   return renderButton(state);
 });
+Button.displayName = 'Button';
