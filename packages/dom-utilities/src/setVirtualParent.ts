@@ -1,4 +1,5 @@
-import { IVirtualElement } from './IVirtualElement';
+import type { IVirtualElement } from './IVirtualElement';
+
 /**
  * Sets the virtual parent of an element.
  * Pass `undefined` as the `parent` to clear the virtual parent.
