@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { registerIcons, IIconOptions } from '@fluentui/style-utilities';
+import { registerIcons } from '@fluentui/style-utilities';
 import { FileTypeIconMap } from './FileTypeIconMap';
+import type { IIconOptions } from '@fluentui/style-utilities';
 
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';

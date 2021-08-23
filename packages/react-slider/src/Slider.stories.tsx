@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Slider, SliderProps } from './index';
+import { Slider } from './index';
 import { Label } from '@fluentui/react-label';
-import { Meta } from '@storybook/react';
+import type { SliderProps } from './index';
+import type { Meta } from '@storybook/react';
 
 const useStyles = makeStyles({
   root: {

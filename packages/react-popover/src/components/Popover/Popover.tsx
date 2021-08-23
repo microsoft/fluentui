@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePopover } from './usePopover';
-import { PopoverProps } from './Popover.types';
 import { renderPopover } from './renderPopover';
+import type { PopoverProps } from './Popover.types';
 
 /**
  * Popover component

@@ -5,7 +5,7 @@
 ```ts
 
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 export const MenuContext: React_2.Context<MinimalMenuProps>;

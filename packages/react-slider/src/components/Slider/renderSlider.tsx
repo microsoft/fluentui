@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { SliderSlots, SliderState } from './Slider.types';
 import { sliderShorthandProps } from './useSlider';
+import type { SliderSlots, SliderState } from './Slider.types';
 
 /**
  * Render the final JSX of Slider

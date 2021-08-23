@@ -1,4 +1,4 @@
-import { MenuListContextValues, MenuListState } from './MenuList.types';
+import type { MenuListContextValues, MenuListState } from './MenuList.types';
 
 export function useMenuListContextValues(state: MenuListState): MenuListContextValues {
   const {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useMenuGroupHeader } from './useMenuGroupHeader';
-import { MenuGroupHeaderProps } from './MenuGroupHeader.types';
 import { useMenuGroupHeaderStyles } from './useMenuGroupHeaderStyles';
 import { renderMenuGroupHeader } from './renderMenuGroupHeader';
+import type { MenuGroupHeaderProps } from './MenuGroupHeader.types';
 
 /**
  * Define a styled MenuGroupHeader, using the `useMenuGroupHeader` hook.

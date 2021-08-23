@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useInput } from './useInput';
-import { InputProps } from './Input.types';
 import { renderInput } from './renderInput';
 import { useInputStyles } from './useInputStyles';
+import type { InputProps } from './Input.types';
 
 /**
  * Input component

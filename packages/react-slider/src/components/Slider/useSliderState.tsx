@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
-import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import type { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.

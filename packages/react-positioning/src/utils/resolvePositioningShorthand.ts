@@ -1,4 +1,4 @@
-import { PositioningShorthand, PositioningShorthandValue, PositioningProps } from '../types';
+import type { PositioningShorthand, PositioningShorthandValue, PositioningProps } from '../types';
 
 // Look up table for shorthand to avoid parsing strings
 const shorthandLookup: Record<PositioningShorthandValue, Pick<PositioningProps, 'position' | 'align'>> = {
