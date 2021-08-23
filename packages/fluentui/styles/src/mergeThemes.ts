@@ -1,7 +1,12 @@
 import * as _ from 'lodash';
 
 import { callable } from './callable';
-import {
+import { isEnabled as isDebugEnabled } from './debugEnabled';
+import { deepmerge } from './deepmerge';
+import { objectKeyToValues } from './objectKeysToValues';
+import { toCompactArray } from './toCompactArray';
+import { withDebugId } from './withDebugId';
+import type {
   ComponentSlotStyle,
   ComponentSlotStylesInput,
   ComponentSlotStylesPrepared,
@@ -19,12 +24,6 @@ import {
   ThemeInput,
   ThemePrepared,
 } from './types';
-
-import { isEnabled as isDebugEnabled } from './debugEnabled';
-import { deepmerge } from './deepmerge';
-import { objectKeyToValues } from './objectKeysToValues';
-import { toCompactArray } from './toCompactArray';
-import { withDebugId } from './withDebugId';
 
 export const emptyTheme: ThemePrepared = {
   siteVariables: {
