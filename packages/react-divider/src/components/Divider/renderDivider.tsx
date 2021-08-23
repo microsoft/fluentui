@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { DividerState } from './Divider.types';
 import { dividerShorthandProps } from './useDivider';
+import type { DividerState } from './Divider.types';
 
 /**
  * Function that renders the final JSX of the component

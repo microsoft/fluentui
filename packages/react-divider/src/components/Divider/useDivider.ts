@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { DividerProps, DividerState } from './Divider.types';
+import type { DividerProps, DividerState } from './Divider.types';
 
 /**
  * Consts listing which props are shorthand props.

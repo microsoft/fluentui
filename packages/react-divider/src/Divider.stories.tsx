@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from './tmp-icons.stories';
-import { Divider, DividerProps } from './index';
+import { Divider } from './index';
+import type { DividerProps } from './index';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 interface DividerStoryProps {

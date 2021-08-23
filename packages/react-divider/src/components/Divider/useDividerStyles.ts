@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { DividerState } from './Divider.types';
+import type { DividerState } from './Divider.types';
 
 const useStylesOverride = makeStyles({
   root: tokens => ({

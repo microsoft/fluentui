@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DividerProps } from './Divider.types';
 import { renderDivider } from './renderDivider';
 import { useDivider } from './useDivider';
 import { useDividerStyles } from './useDividerStyles';
+import type { DividerProps } from './Divider.types';
 
 /**
  * Define a styled Divider, using the `useDivider` and `useDividerStyles` hooks.
