@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
+import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -162,15 +162,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
-      if (target.setPointerCapture) {
-        target.setPointerCapture(pointerId);
-      }
+      target.setPointerCapture?.(pointerId);
 
       hideStepAnimation();
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture(pointerId);
+        target.releasePointerCapture?.(pointerId);
       });
 
       onPointerMove(ev);
@@ -216,6 +214,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     },
     [currentValue, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
+
+  useUnmount(() => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
+  });
 
   const valuePercent = getPercent(renderedPosition!, min, max);
 
