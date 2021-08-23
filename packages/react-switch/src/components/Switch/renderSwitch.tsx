@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { SwitchSlots, SwitchState } from './Switch.types';
 import { switchShorthandProps } from './useSwitch';
+import type { SwitchSlots, SwitchState } from './Switch.types';
 
 /**
  * Render the final JSX of Switch

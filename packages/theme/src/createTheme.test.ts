@@ -1,6 +1,6 @@
-import { IRawStyle } from '@fluentui/merge-styles';
 import { createTheme } from './createTheme';
 import { DefaultFontStyles } from './fonts/index';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 describe('createTheme', () => {
   it('create default theme', () => {

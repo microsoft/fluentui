@@ -2,26 +2,11 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * Slider ref
- */
-export interface SliderPublicRef {
-  /**
-   * Gets the current value of the Slider.
-   */
-  value: number | undefined;
-
-  /**
-   * Sets focus to the Slider's thumb.
-   */
-  focus: () => void;
-}
-
-/**
  * Names of the shorthand properties in SliderProps
  */
 export type SliderSlots = {
   /**
-   * The **Slider's** base. It is used to visibly display the min and max selectable values.
+   * The Slider's base. It is used to visibly display the min and max selectable values.
    */
   rail: React.HTMLAttributes<HTMLElement>;
 
@@ -36,7 +21,7 @@ export type SliderSlots = {
   trackWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
-   * The bar showing the current selected area adjacent to the **Slider's** thumb.
+   * The bar showing the current selected area adjacent to the Slider's thumb.
    */
   track: React.HTMLAttributes<HTMLElement>;
 
@@ -46,37 +31,38 @@ export type SliderSlots = {
   thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
 
   /**
-   * The draggable icon used to select a given value from the **Slider**.
+   * The draggable icon used to select a given value from the Slider.
+   * This is the element containing `role = 'slider'`.
    */
-  thumb: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  thumb: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
 
   /**
-   * The area in which the **Slider's** rail allows for the thumb to be dragged.
+   * The area in which the Slider's rail allows for the thumb to be dragged.
    */
   activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement>;
 };
 
 export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
-   * The starting value for an `uncontrolled` **Slider**.
+   * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
 
   /**
-   * The current value of the `controlled` **Slider**.
+   * The current value of the controlled Slider.
    * Mutually exclusive with `defaultValue` prop.
    */
   value?: number;
 
   /**
-   * The min value of the **Slider**.
+   * The min value of the Slider.
    * @default 0
    */
   min?: number;
 
   /**
-   * The max value of the **Slider**.
+   * The max value of the Slider.
    * @default 100
    */
   max?: number;
@@ -84,6 +70,7 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
    * will snap to the closest available value.
+   * @default 1
    */
   step?: number;
 
@@ -130,7 +117,7 @@ export interface SliderCommon extends Omit<React.HTMLAttributes<HTMLDivElement>,
   ) => void;
 
   /**
-   * The **Slider's** current value label to be read by the screen reader.
+   * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
 }
@@ -147,5 +134,5 @@ export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
   /**
    * Ref to the root element
    */
-  ref: React.RefObject<HTMLElement & SliderPublicRef>;
+  ref: React.Ref<HTMLElement>;
 }

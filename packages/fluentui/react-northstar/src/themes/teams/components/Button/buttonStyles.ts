@@ -113,7 +113,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           color: v.textColorHover,
           ...getIconFillOrOutlineStyles({ outline: false }),
         },
-
+        ':active': {
+          color: siteVariables.colorScheme.brand.backgroundPressed,
+        },
         ':focus': {
           boxShadow: 'none',
           ...borderFocusStyles[':focus'],
