@@ -1,9 +1,4 @@
-import {
-  Accessibility,
-  toolbarMenuBehavior,
-  toolbarMenuItemCheckboxBehavior,
-  ToolbarMenuBehaviorProps,
-} from '@fluentui/accessibility';
+import { toolbarMenuBehavior, toolbarMenuItemCheckboxBehavior } from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
@@ -20,24 +15,19 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  createShorthand,
-  commonPropTypes,
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-} from '../../utils';
-
-import { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
-
-import { ToolbarMenuRadioGroup, ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import { createShorthand, commonPropTypes, childrenExist } from '../../utils';
+import { ToolbarMenuRadioGroup } from './ToolbarMenuRadioGroup';
 import { ToolbarMenuDivider } from './ToolbarMenuDivider';
-import { ToolbarMenuItem, ToolbarMenuItemProps } from './ToolbarMenuItem';
-import { BoxProps } from '../Box/Box';
+import { ToolbarMenuItem } from './ToolbarMenuItem';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import { ToolbarDividerProps } from './ToolbarDivider';
-import { ToolbarItemProps } from './ToolbarItem';
+import type { Accessibility, ToolbarMenuBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
+import type { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import type { ToolbarMenuItemProps } from './ToolbarMenuItem';
+import type { BoxProps } from '../Box/Box';
+import type { ToolbarDividerProps } from './ToolbarDivider';
+import type { ToolbarItemProps } from './ToolbarItem';
 
 export type ToolbarMenuItemShorthandKinds = {
   divider: ToolbarDividerProps;

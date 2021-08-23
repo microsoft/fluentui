@@ -1,22 +1,7 @@
-import {
-  Accessibility,
-  datepickerBehavior,
-  DatepickerBehaviorProps,
-  AccessibilityAttributes,
-} from '@fluentui/accessibility';
-import {
-  DateRangeType,
-  DayOfWeek,
-  FirstWeekOfYear,
-  DEFAULT_CALENDAR_STRINGS,
-  IDayGridOptions,
-  ICalendarStrings,
-  IDatepickerOptions,
-  IRestrictedDatesOptions,
-} from '../../utils/date-time-utilities';
+import { datepickerBehavior } from '@fluentui/accessibility';
+import { DateRangeType, DayOfWeek, FirstWeekOfYear, DEFAULT_CALENDAR_STRINGS } from '../../utils/date-time-utilities';
 
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -32,12 +17,11 @@ import { handleRef } from '@fluentui/react-component-ref';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
+import { commonPropTypes, createShorthand, createShorthandFactory } from '../../utils';
 import { Button } from '../Button/Button';
-import { Input, InputProps } from '../Input/Input';
-import { Popup, PopupProps } from '../Popup/Popup';
-import { DatepickerCalendar, DatepickerCalendarProps } from './DatepickerCalendar';
+import { Input } from '../Input/Input';
+import { Popup } from '../Popup/Popup';
+import { DatepickerCalendar } from './DatepickerCalendar';
 import { DatepickerCalendarCell } from './DatepickerCalendarCell';
 import { DatepickerCalendarCellButton } from './DatepickerCalendarCellButton';
 import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
@@ -47,6 +31,19 @@ import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
 import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
 import { format } from '@uifabric/utilities';
+import type { Accessibility, DatepickerBehaviorProps, AccessibilityAttributes } from '@fluentui/accessibility';
+import type {
+  IDayGridOptions,
+  ICalendarStrings,
+  IDatepickerOptions,
+  IRestrictedDatesOptions,
+} from '../../utils/date-time-utilities';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import type { UIComponentProps } from '../../utils';
+import type { InputProps } from '../Input/Input';
+import type { PopupProps } from '../Popup/Popup';
+import type { DatepickerCalendarProps } from './DatepickerCalendar';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */

@@ -1,5 +1,5 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
 import * as PopperJs from '@popperjs/core';
+import type { ICSSInJSStyle } from '@fluentui/styles';
 
 type GetContainerStylesOptions = {
   padding: string;

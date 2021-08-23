@@ -1,7 +1,8 @@
 import * as PropTypes from 'prop-types';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { SkeletonShapeProps, SkeletonShapeStylesProps, SkeletonShape } from './SkeletonShape';
+import { SkeletonShape } from './SkeletonShape';
+import type { SkeletonShapeProps, SkeletonShapeStylesProps } from './SkeletonShape';
 
 export interface SkeletonInputOwnProps {
   /** A skeleton input can fill the width of its container. */

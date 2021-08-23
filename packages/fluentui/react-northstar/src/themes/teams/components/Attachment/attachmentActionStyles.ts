@@ -1,11 +1,10 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { AttachmentActionStylesProps } from '../../../../components/Attachment/AttachmentAction';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AttachmentActionStylesProps } from '../../../../components/Attachment/AttachmentAction';
+import type { AttachmentVariables } from './attachmentVariables';
 
 export const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {

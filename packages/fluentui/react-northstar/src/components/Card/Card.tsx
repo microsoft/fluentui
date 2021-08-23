@@ -1,6 +1,5 @@
-import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
+import { cardBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -13,8 +12,7 @@ import * as CustomPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
 import { CardBody } from './CardBody';
 import { CardColumn } from './CardColumn';
 import { CardFooter } from './CardFooter';
@@ -22,6 +20,10 @@ import { CardHeader } from './CardHeader';
 import { CardPreview } from './CardPreview';
 import { CardTopControls } from './CardTopControls';
 import { CardExpandableBox } from './CardExpandableBox';
+import type { Accessibility, CardBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { SizeValue, UIComponentProps } from '../../utils';
 
 export interface CardProps extends UIComponentProps {
   /**

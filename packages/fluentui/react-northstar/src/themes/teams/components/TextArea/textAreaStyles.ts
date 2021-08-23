@@ -1,7 +1,7 @@
-import { TextAreaVariables } from './textAreaVariables';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TextAreaStylesProps } from '../../../../components/TextArea/TextArea';
 import { pxToRem } from '../../../../utils';
+import type { TextAreaVariables } from './textAreaVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { TextAreaStylesProps } from '../../../../components/TextArea/TextArea';
 
 export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, TextAreaVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

@@ -1,4 +1,4 @@
-import { Accessibility, menuItemBehavior, MenuItemBehaviorProps, submenuBehavior } from '@fluentui/accessibility';
+import { menuItemBehavior, submenuBehavior } from '@fluentui/accessibility';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import {
   focusAsync,
@@ -10,7 +10,6 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  ForwardRefWithAs,
   useContextSelectors,
   useOnIFrameFocus,
 } from '@fluentui/react-bindings';
@@ -24,23 +23,35 @@ import {
   childrenExist,
   createShorthand,
   doesNodeContainClick,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
   commonPropTypes,
   isFromKeyboard as isEventFromKeyboard,
   setWhatInputSource,
 } from '../../utils';
-import { Menu, MenuProps, MenuShorthandKinds } from './Menu';
-import { MenuItemIcon, MenuItemIconProps } from './MenuItemIcon';
-import { MenuItemContent, MenuItemContentProps } from './MenuItemContent';
-import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
-import { MenuItemWrapper, MenuItemWrapperProps } from './MenuItemWrapper';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
-import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
+import { Menu } from './Menu';
+import { MenuItemIcon } from './MenuItemIcon';
+import { MenuItemContent } from './MenuItemContent';
+import { MenuItemIndicator } from './MenuItemIndicator';
+import { MenuItemWrapper } from './MenuItemWrapper';
+import { Popper, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
-import { MenuContext, MenuItemSubscribedValue } from './menuContext';
+import { MenuContext } from './menuContext';
 import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
+import type { Accessibility, MenuItemBehaviorProps } from '@fluentui/accessibility';
+import type { ForwardRefWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { MenuProps, MenuShorthandKinds } from './Menu';
+import type { MenuItemIconProps } from './MenuItemIcon';
+import type { MenuItemContentProps } from './MenuItemContent';
+import type { MenuItemIndicatorProps } from './MenuItemIndicator';
+import type { MenuItemWrapperProps } from './MenuItemWrapper';
+import type {
+  ComponentEventHandler,
+  ShorthandValue,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { PopperShorthandProps } from '../../utils/positioner';
+import type { MenuItemSubscribedValue } from './menuContext';
 
 export interface MenuItemSlotClassNames {
   submenu: string;

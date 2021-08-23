@@ -1,10 +1,9 @@
-import { ComponentSlotStyle, ComponentVariablesInput } from '@fluentui/styles';
-import { ComponentDesignProp } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ReactChildren } from '../types';
+import type { ComponentSlotStyle, ComponentVariablesInput } from '@fluentui/styles';
+import type { ComponentDesignProp } from '@fluentui/react-bindings';
+import type { ReactChildren } from '../types';
 
 export interface StyledComponentProps<P = any, V = any> {
   /** Additional CSS styles to apply to the component instance.  */

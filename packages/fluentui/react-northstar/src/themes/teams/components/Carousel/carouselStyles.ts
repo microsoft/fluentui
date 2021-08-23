@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
-import { CarouselStylesProps } from '../../../../components/Carousel/Carousel';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { CarouselVariables } from './carouselVariables';
+import type { CarouselStylesProps } from '../../../../components/Carousel/Carousel';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CarouselVariables } from './carouselVariables';
 
 export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, CarouselVariables> = {
   root: (): ICSSInJSStyle => ({

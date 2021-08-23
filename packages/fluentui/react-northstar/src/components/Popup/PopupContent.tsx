@@ -1,10 +1,6 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   AutoFocusZone,
-  AutoFocusZoneProps,
   FocusTrapZone,
-  FocusTrapZoneProps,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -18,18 +14,13 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-} from '../../utils';
-import { getBasePlacement, PopperChildrenProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
+import { getBasePlacement, AUTOSIZES } from '../../utils/positioner';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs, AutoFocusZoneProps, FocusTrapZoneProps } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { PopperChildrenProps, AutoSize } from '../../utils/positioner';
 
 export interface PopupContentSlotClassNames {
   content: string;

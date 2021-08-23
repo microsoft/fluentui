@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TextVariables } from './textVariables';
-import { TextStylesProps } from '../../../../components/Text/Text';
 import { getColorSchemeKey } from '../../colors';
 import { translateAlignProp } from '../../../../styles/translateAlignProp';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { TextVariables } from './textVariables';
+import type { TextStylesProps } from '../../../../components/Text/Text';
 
 export const textStyles: ComponentSlotStylesPrepared<TextStylesProps, TextVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

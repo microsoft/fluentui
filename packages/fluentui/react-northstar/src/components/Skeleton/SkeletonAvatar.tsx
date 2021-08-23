@@ -1,7 +1,9 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { compose } from '@fluentui/react-bindings';
-import { commonPropTypes, SizeValue } from '../../utils';
-import { SkeletonShapeProps, SkeletonShapeStylesProps, SkeletonShape } from './SkeletonShape';
+import { commonPropTypes } from '../../utils';
+import { SkeletonShape } from './SkeletonShape';
+import type { SizeValue } from '../../utils';
+import type { SkeletonShapeProps, SkeletonShapeStylesProps } from './SkeletonShape';
 
 export interface SkeletonAvatarOwnProps {
   /** A skeleton avatar can be sized. */

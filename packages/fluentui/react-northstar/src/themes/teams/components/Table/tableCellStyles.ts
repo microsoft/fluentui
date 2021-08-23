@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TableVariables } from './tableVariables';
-import { TableCellStylesProps } from '../../../../components/Table/TableCell';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { TableVariables } from './tableVariables';
+import type { TableCellStylesProps } from '../../../../components/Table/TableCell';
 
 export const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TableVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {

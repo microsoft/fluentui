@@ -1,5 +1,5 @@
-import { ObjectShorthandValue } from '../../../types';
-import { TreeItemProps } from '../TreeItem';
+import type { ObjectShorthandValue } from '../../../types';
+import type { TreeItemProps } from '../TreeItem';
 
 export interface FlatTreeItem {
   /**

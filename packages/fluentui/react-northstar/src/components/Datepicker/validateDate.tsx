@@ -1,4 +1,5 @@
-import { isRestrictedDate, IRestrictedDatesOptions, ICalendarStrings } from '../../utils/date-time-utilities';
+import { isRestrictedDate } from '../../utils/date-time-utilities';
+import type { IRestrictedDatesOptions, ICalendarStrings } from '../../utils/date-time-utilities';
 
 export const validateDate = (
   futureSelectedDate: Date,

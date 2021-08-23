@@ -1,23 +1,11 @@
-import { Accessibility, ButtonGroupBehaviorProps, buttonGroupBehavior } from '@fluentui/accessibility';
+import { buttonGroupBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
-
-import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory, createShorthand } from '../../utils';
+import { Button } from './Button';
 import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthandFactory,
-  createShorthand,
-} from '../../utils';
-import { Button, ButtonProps } from './Button';
-import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useUnhandledProps,
@@ -25,6 +13,11 @@ import {
   useStyles,
   useFluentContext,
 } from '@fluentui/react-bindings';
+import type { Accessibility, ButtonGroupBehaviorProps } from '@fluentui/accessibility';
+import type { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { ButtonProps } from './Button';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

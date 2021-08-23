@@ -2,8 +2,9 @@ import { compose } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 
 import { commonPropTypes } from '../../utils';
-import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
-import { ChatDensity } from './chatDensityContext';
+import { Box } from '../Box/Box';
+import type { BoxProps, BoxStylesProps } from '../Box/Box';
+import type { ChatDensity } from './chatDensityContext';
 
 export interface ChatMessageDetailsOwnProps {
   /** Controls messages's relation to other chat messages. */

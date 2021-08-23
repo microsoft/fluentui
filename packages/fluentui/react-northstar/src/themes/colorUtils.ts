@@ -1,4 +1,4 @@
-import { ColorSchemeMapping, ColorScheme, ColorSchemeMappingOverrides, ComponentAreaName } from './types';
+import type { ColorSchemeMapping, ColorScheme, ColorSchemeMappingOverrides, ComponentAreaName } from './types';
 
 export const extendColorScheme = (
   colorScheme: ColorSchemeMapping,

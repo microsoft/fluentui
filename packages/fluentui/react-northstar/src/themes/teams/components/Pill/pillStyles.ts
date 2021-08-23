@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { PillStylesProps } from '../../../../components/Pill/Pill';
-import { PillVariables } from './pillVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { PillStylesProps } from '../../../../components/Pill/Pill';
+import type { PillVariables } from './pillVariables';
 
 export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {

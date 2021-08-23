@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { Datepicker, DatepickerProps } from '../Datepicker/Datepicker';
-import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
+import { Datepicker } from '../Datepicker/Datepicker';
+import { _FormFieldBase } from './utils/formFieldBase';
+import type { DatepickerProps } from '../Datepicker/Datepicker';
+import type { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormDatepickerOwnProps extends Omit<DatepickerProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<

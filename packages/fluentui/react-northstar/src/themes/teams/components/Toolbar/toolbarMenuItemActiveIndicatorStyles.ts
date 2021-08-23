@@ -1,9 +1,9 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import { pxToRem } from '../../../../utils';
-import { ToolbarMenuItemActiveIndicatorStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemActiveIndicator';
-import { ToolbarVariables } from './toolbarVariables';
 import { activeIndicatorUrl } from './activeIndicatorUrl';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { ToolbarMenuItemActiveIndicatorStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemActiveIndicator';
+import type { ToolbarVariables } from './toolbarVariables';
 
 export const toolbarMenuItemActiveIndicatorStyles: ComponentSlotStylesPrepared<
   ToolbarMenuItemActiveIndicatorStylesProps,

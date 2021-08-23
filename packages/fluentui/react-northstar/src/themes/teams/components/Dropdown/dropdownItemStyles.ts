@@ -1,9 +1,10 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DropdownVariables } from './dropdownVariables';
-import { DropdownItemProps, dropdownItemSlotClassNames } from '../../../../components/Dropdown/DropdownItem';
+import { dropdownItemSlotClassNames } from '../../../../components/Dropdown/DropdownItem';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
 import { checkableIndicatorUrl } from './checkableIndicatorUrl';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DropdownVariables } from './dropdownVariables';
+import type { DropdownItemProps } from '../../../../components/Dropdown/DropdownItem';
 
 export type DropdownItemStylesProps = Pick<DropdownItemProps, 'selected' | 'active' | 'isFromKeyboard'> & {
   hasContent?: boolean;

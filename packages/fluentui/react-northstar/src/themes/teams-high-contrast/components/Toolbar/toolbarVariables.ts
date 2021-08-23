@@ -1,5 +1,6 @@
-import { toolbarColorAreas, ToolbarVariables } from '../../../teams/components/Toolbar/toolbarVariables';
+import { toolbarColorAreas } from '../../../teams/components/Toolbar/toolbarVariables';
 import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import type { ToolbarVariables } from '../../../teams/components/Toolbar/toolbarVariables';
 
 export const toolbarVariables = (siteVars: any): Partial<ToolbarVariables> => ({
   colorScheme: pickValuesFromColorScheme(

@@ -1,8 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { ChatMessageReadStatusStylesProps } from '../../../../components/Chat/ChatMessageReadStatus';
 import { screenReaderContainerStyles } from '../../../../utils';
-import { ChatMessageReadStatusVariables } from './chatMessageReadStatusVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ChatMessageReadStatusStylesProps } from '../../../../components/Chat/ChatMessageReadStatus';
+import type { ChatMessageReadStatusVariables } from './chatMessageReadStatusVariables';
 
 export const chatMessageReadStatusStyles: ComponentSlotStylesPrepared<
   ChatMessageReadStatusStylesProps,

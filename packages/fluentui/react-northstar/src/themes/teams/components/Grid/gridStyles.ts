@@ -1,6 +1,6 @@
-import { GridVariables } from './gridVariables';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { GridStylesProps } from '../../../../components/Grid/Grid';
+import type { GridVariables } from './gridVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { GridStylesProps } from '../../../../components/Grid/Grid';
 
 const getCSSTemplateValue = (template: string | number): string => {
   const templateAsNumber = Number(template);

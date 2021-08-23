@@ -1,4 +1,4 @@
-import { TeamsCategoryColors, TeamsCategoryColorSchemeMapping } from './types';
+import type { TeamsCategoryColors, TeamsCategoryColorSchemeMapping } from './types';
 
 export const categoryColors: TeamsCategoryColors = {
   redDark: {

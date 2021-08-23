@@ -4,16 +4,11 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { Input } from '../Input/Input';
-import {
-  ComponentWithAs,
-  useFluentContext,
-  useTelemetry,
-  useStyles,
-  useUnhandledProps,
-} from '@fluentui/react-bindings';
+import { useFluentContext, useTelemetry, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps } from '../../utils/commonPropInterfaces';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
   input: string;

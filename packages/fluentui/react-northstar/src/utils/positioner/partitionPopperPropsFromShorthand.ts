@@ -1,5 +1,5 @@
-import { ObjectShorthandValue, ShorthandValue } from '../../types';
-import { PopperShorthandProps } from './types';
+import type { ObjectShorthandValue, ShorthandValue } from '../../types';
+import type { PopperShorthandProps } from './types';
 
 export function partitionPopperPropsFromShorthand<P>(
   value: ShorthandValue<P & { popper?: PopperShorthandProps }>,

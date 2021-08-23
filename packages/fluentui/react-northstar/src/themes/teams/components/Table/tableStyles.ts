@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TableVariables } from './tableVariables';
-import { TableStylesProps } from '../../../../components/Table/Table';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { TableVariables } from './tableVariables';
+import type { TableStylesProps } from '../../../../components/Table/Table';
 
 export const tableStyles: ComponentSlotStylesPrepared<TableStylesProps, TableVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => {

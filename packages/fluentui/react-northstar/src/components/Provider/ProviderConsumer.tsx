@@ -1,7 +1,7 @@
 import { useFluentContext } from '@fluentui/react-bindings';
-import { ThemePrepared } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import type { ThemePrepared } from '@fluentui/styles';
 
 export interface ProviderConsumerProps {
   /**

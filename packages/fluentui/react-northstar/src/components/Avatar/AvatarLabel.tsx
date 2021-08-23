@@ -1,6 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -12,18 +10,12 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  SizeValue,
-} from '../../utils';
-
-import { FluentComponentStaticProps } from '../../types';
+import { childrenExist, commonPropTypes, rtlTextContainer } from '../../utils';
 import { labelClassName } from '../Label/Label';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps, SizeValue } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface AvatarLabelProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

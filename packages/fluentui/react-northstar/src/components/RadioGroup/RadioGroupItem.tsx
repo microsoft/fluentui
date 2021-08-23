@@ -1,20 +1,12 @@
-import { Accessibility, radioGroupItemBehavior, RadioGroupItemBehaviorProps } from '@fluentui/accessibility';
+import { radioGroupItemBehavior } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
+import { createShorthandFactory, commonPropTypes, shouldPreventDefaultOnKeyDown } from '../../utils';
+import { Box } from '../Box/Box';
 import {
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  shouldPreventDefaultOnKeyDown,
-} from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
-import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
-import {
-  ComponentWithAs,
   useAutoControlled,
   getElementType,
   useAccessibility,
@@ -24,6 +16,11 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { RadioButtonIcon } from '@fluentui/react-icons-northstar';
+import type { Accessibility, RadioGroupItemBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface RadioGroupItemSlotClassNames {
   indicator: string;

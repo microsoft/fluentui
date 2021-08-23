@@ -1,5 +1,5 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ProviderVariables } from './providerVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ProviderVariables } from './providerVariables';
 
 export const providerStyles: ComponentSlotStylesPrepared<never, ProviderVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({

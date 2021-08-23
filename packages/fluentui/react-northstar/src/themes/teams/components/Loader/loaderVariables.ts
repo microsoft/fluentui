@@ -1,6 +1,7 @@
-import { pxToRem, SizeValue } from '../../../../utils';
+import { pxToRem } from '../../../../utils';
 import { loaderSvgDataUrl } from './loaderSvgDataUrl';
 import { loaderSecondarySvgDataUrl } from './loaderSecondarySvgDataUrl';
+import type { SizeValue } from '../../../../utils';
 
 export interface LoaderVariables {
   containerHeights: Record<SizeValue, string>;

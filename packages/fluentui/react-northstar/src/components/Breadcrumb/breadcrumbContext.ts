@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SizeValue } from '../../utils';
+import type { SizeValue } from '../../utils';
 
 export type BreadcrumbSizeValues = Exclude<SizeValue, 'larger' | 'largest'>;
 

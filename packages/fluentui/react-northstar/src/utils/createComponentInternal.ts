@@ -1,10 +1,13 @@
-import { AccessibilityActionHandlers, useFluentContext } from '@fluentui/react-bindings';
+import { useFluentContext } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as _ from 'lodash';
 
-import { renderComponent, RenderResultConfig } from './renderComponent';
-import { createShorthandFactory, ShorthandFactory } from './factories';
-import { ObjectOf } from '../types';
+import { renderComponent } from './renderComponent';
+import { createShorthandFactory } from './factories';
+import type { AccessibilityActionHandlers } from '@fluentui/react-bindings';
+import type { RenderResultConfig } from './renderComponent';
+import type { ShorthandFactory } from './factories';
+import type { ObjectOf } from '../types';
 
 export interface CreateComponentConfig<P> {
   displayName: string;

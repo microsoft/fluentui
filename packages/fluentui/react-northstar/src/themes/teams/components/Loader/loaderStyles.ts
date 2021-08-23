@@ -1,9 +1,9 @@
-import { ComponentSlotStylesPrepared, ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
-import { FlexDirectionProperty } from 'csstype';
-import { LoaderStylesProps } from '../../../../components/Loader/Loader';
-import { LoaderVariables } from './loaderVariables';
 import { pxToRem } from '../../../../utils';
-import { ObjectOf } from '../../../../types';
+import type { ComponentSlotStylesPrepared, ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import type { FlexDirectionProperty } from 'csstype';
+import type { LoaderStylesProps } from '../../../../components/Loader/Loader';
+import type { LoaderVariables } from './loaderVariables';
+import type { ObjectOf } from '../../../../types';
 
 const rootFlexDirections: ObjectOf<FlexDirectionProperty> = {
   above: 'column-reverse',

@@ -1,6 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -12,13 +10,19 @@ import {
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
-import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
-import { AvatarImage, AvatarImageProps } from './AvatarImage';
-import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
-import { AvatarLabel, AvatarLabelProps } from './AvatarLabel';
+import { createShorthandFactory, commonPropTypes, createShorthand } from '../../utils';
+import { AvatarStatus } from './AvatarStatus';
+import { AvatarImage } from './AvatarImage';
+import { AvatarIcon } from './AvatarIcon';
+import { AvatarLabel } from './AvatarLabel';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps, SizeValue } from '../../utils';
+import type { AvatarStatusProps } from './AvatarStatus';
+import type { AvatarImageProps } from './AvatarImage';
+import type { AvatarIconProps } from './AvatarIcon';
+import type { AvatarLabelProps } from './AvatarLabel';
 
 export interface AvatarProps extends UIComponentProps {
   /**

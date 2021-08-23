@@ -1,4 +1,4 @@
-import { AvatarVariables } from '../../../teams/components/Avatar/avatarVariables';
+import type { AvatarVariables } from '../../../teams/components/Avatar/avatarVariables';
 
 export const avatarVariables = (siteVariables: any): Partial<AvatarVariables> => ({
   avatarBorderColor: siteVariables.colors.white,

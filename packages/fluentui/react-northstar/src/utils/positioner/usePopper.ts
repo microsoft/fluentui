@@ -13,7 +13,7 @@ import { isBrowser } from '../isBrowser';
 import { getBoundary } from './getBoundary';
 import { getScrollParent } from './getScrollParent';
 import { applyRtlToOffset, getPlacement } from './positioningHelper';
-import { PopperInstance, PopperOptions } from './types';
+import type { PopperInstance, PopperOptions } from './types';
 
 //
 // Dev utils to detect if nodes have "autoFocus" props.

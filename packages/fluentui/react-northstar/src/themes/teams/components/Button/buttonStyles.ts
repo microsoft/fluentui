@@ -1,12 +1,12 @@
 import * as _ from 'lodash';
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { loaderSlotClassNames } from '../../../../components/Loader/Loader';
-import { ButtonStylesProps } from '../../../../components/Button/Button';
-import { ButtonVariables } from './buttonVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { faster, ultraFast } from '../../animations/durations';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ButtonStylesProps } from '../../../../components/Button/Button';
+import type { ButtonVariables } from './buttonVariables';
 
 export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {

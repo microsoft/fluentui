@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { CardVariables } from './cardVariables';
-import { CardPreviewStylesProps } from '../../../../components/Card/CardPreview';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CardVariables } from './cardVariables';
+import type { CardPreviewStylesProps } from '../../../../components/Card/CardPreview';
 
 export const cardPreviewStyles: ComponentSlotStylesPrepared<CardPreviewStylesProps, CardVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

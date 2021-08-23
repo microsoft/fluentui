@@ -3,21 +3,38 @@ import {
   useAutoControlled,
   useStyles,
   useUnhandledProps,
-  ComponentWithAs,
   useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
+import { indicatorBehavior, getCode, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
 import computeScrollIntoView from 'compute-scroll-into-view';
-
-import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
-import Downshift, {
+import Downshift from 'downshift';
+import { commonPropTypes, isFromKeyboard as detectIsFromKeyboard, createShorthand } from '../../utils';
+import { List } from '../List/List';
+import { DropdownItem } from './DropdownItem';
+import { DropdownSelectedItem } from './DropdownSelectedItem';
+import { DropdownSearchInput } from './DropdownSearchInput';
+import { Button } from '../Button/Button';
+import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
+import { Box } from '../Box/Box';
+import { Portal } from '../Portal/Portal';
+import { ALIGNMENTS, POSITIONS, Popper, partitionPopperPropsFromShorthand, AUTOSIZES } from '../../utils/positioner';
+import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { AccessibilityAttributes } from '@fluentui/accessibility';
+import type {
+  ShorthandRenderFunction,
+  ShorthandValue,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+} from '../../types';
+import type {
   DownshiftState,
   StateChangeOptions,
   A11yStatusMessageOptions,
@@ -28,31 +45,14 @@ import Downshift, {
   GetItemPropsOptions,
   ControllerStateAndHelpers,
 } from 'downshift';
-import {
-  commonPropTypes,
-  UIComponentProps,
-  isFromKeyboard as detectIsFromKeyboard,
-  createShorthand,
-} from '../../utils';
-import { List, ListProps } from '../List/List';
-import { DropdownItem, DropdownItemProps } from './DropdownItem';
-import { DropdownSelectedItem, DropdownSelectedItemProps } from './DropdownSelectedItem';
-import { DropdownSearchInput, DropdownSearchInputProps } from './DropdownSearchInput';
-import { Button, ButtonProps } from '../Button/Button';
-import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import { Box, BoxProps } from '../Box/Box';
-import { Portal } from '../Portal/Portal';
-import {
-  ALIGNMENTS,
-  POSITIONS,
-  Popper,
-  PositioningProps,
-  PopperShorthandProps,
-  partitionPopperPropsFromShorthand,
-  AutoSize,
-  AUTOSIZES,
-} from '../../utils/positioner';
-import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
+import type { UIComponentProps } from '../../utils';
+import type { ListProps } from '../List/List';
+import type { DropdownItemProps } from './DropdownItem';
+import type { DropdownSelectedItemProps } from './DropdownSelectedItem';
+import type { DropdownSearchInputProps } from './DropdownSearchInput';
+import type { ButtonProps } from '../Button/Button';
+import type { BoxProps } from '../Box/Box';
+import type { PositioningProps, PopperShorthandProps, AutoSize } from '../../utils/positioner';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 

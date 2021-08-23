@@ -1,9 +1,4 @@
-import {
-  Accessibility,
-  toolbarMenuItemBehavior,
-  ToolbarMenuItemBehaviorProps,
-  indicatorBehavior,
-} from '@fluentui/accessibility';
+import { toolbarMenuItemBehavior, indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as _ from 'lodash';
 import cx from 'classnames';
@@ -26,30 +21,31 @@ import {
   useContextSelectors,
 } from '@fluentui/react-bindings';
 
-import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 
-import {
-  createShorthand,
-  ChildrenComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-  UIComponentProps,
-  childrenExist,
-  doesNodeContainClick,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
-import { partitionPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
+import { createShorthand, commonPropTypes, childrenExist, doesNodeContainClick } from '../../utils';
+import { partitionPopperPropsFromShorthand, Popper } from '../../utils/positioner';
 
-import { Box, BoxProps } from '../Box/Box';
-import { Popup, PopupProps } from '../Popup/Popup';
-import { ToolbarMenu, ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
-import { ToolbarMenuItemIcon, ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
+import { Box } from '../Box/Box';
+import { Popup } from '../Popup/Popup';
+import { ToolbarMenu } from './ToolbarMenu';
+import { ToolbarMenuItemIcon } from './ToolbarMenuItemIcon';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
-import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
+import { ToolbarMenuContext } from './toolbarMenuContext';
 import { ToolbarMenuItemContent } from './ToolbarMenuItemContent';
 import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
+import type { Accessibility, ToolbarMenuItemBehaviorProps } from '@fluentui/accessibility';
+import type { GetRefs, NodeRef } from '@fluentui/react-component-nesting-registry';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
+import type { PopperShorthandProps } from '../../utils/positioner';
+import type { BoxProps } from '../Box/Box';
+import type { PopupProps } from '../Popup/Popup';
+import type { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
+import type { ToolbarMenuItemIconProps } from './ToolbarMenuItemIcon';
+import type { ToolbarItemSubscribedValue } from './toolbarMenuContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

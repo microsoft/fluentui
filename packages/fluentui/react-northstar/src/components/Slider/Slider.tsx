@@ -1,6 +1,5 @@
-import { Accessibility, sliderBehavior, SliderBehaviorProps } from '@fluentui/accessibility';
+import { sliderBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -17,17 +16,14 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  ChildrenComponentProps,
-  commonPropTypes,
-  partitionHTMLProps,
-  UIComponentProps,
-  setWhatInputSource,
-  createShorthandFactory,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import { Box, BoxProps } from '../Box/Box';
+import { commonPropTypes, partitionHTMLProps, setWhatInputSource, createShorthandFactory } from '../../utils';
+import { Box } from '../Box/Box';
+import type { Accessibility, SliderBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ChildrenComponentProps, UIComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
+import type { BoxProps } from '../Box/Box';
 
 const processInputValues = (
   p: Pick<SliderProps, 'min' | 'max'> & { value: string },

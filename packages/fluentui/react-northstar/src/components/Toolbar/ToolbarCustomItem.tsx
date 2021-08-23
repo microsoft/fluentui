@@ -1,4 +1,4 @@
-import { Accessibility, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import { IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
@@ -12,16 +12,11 @@ import {
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ComponentEventHandler } from '../../types';
-import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  UIComponentProps,
-  childrenExist,
-  commonPropTypes,
-} from '../../utils';
+import { childrenExist, commonPropTypes } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentEventHandler } from '../../types';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
 
 export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

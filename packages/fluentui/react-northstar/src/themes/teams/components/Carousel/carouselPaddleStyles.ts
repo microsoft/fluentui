@@ -1,15 +1,13 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import {
-  CarouselPaddleStylesProps,
-  carouselPaddleSlotClassNames,
-} from '../../../../components/Carousel/CarouselPaddle';
-import { CarouselVariables } from './carouselVariables';
+import { carouselPaddleSlotClassNames } from '../../../../components/Carousel/CarouselPaddle';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { paddleIndicatorUrl } from './paddleIndicatorUrl';
 
 import { faster, ultraFast } from '../../animations/durations';
 import { pxToRem } from '../../../../utils';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CarouselPaddleStylesProps } from '../../../../components/Carousel/CarouselPaddle';
+import type { CarouselVariables } from './carouselVariables';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {

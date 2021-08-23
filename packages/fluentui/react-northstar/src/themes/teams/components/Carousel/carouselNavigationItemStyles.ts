@@ -1,12 +1,10 @@
 import { pxToRem } from '../../../../utils';
-import {
-  CarouselNavigationItemStylesProps,
-  carouselNavigationItemSlotClassNames,
-} from '../../../../components/Carousel/CarouselNavigationItem';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { CarouselNavigationVariables } from './carouselNavigationVariables';
+import { carouselNavigationItemSlotClassNames } from '../../../../components/Carousel/CarouselNavigationItem';
 import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
+import type { CarouselNavigationItemStylesProps } from '../../../../components/Carousel/CarouselNavigationItem';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CarouselNavigationVariables } from './carouselNavigationVariables';
 
 export const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
   CarouselNavigationItemStylesProps,

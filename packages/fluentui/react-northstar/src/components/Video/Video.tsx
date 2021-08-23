@@ -2,11 +2,9 @@ import { Ref } from '@fluentui/react-component-ref';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Accessibility, VideoBehaviorProps, videoBehavior } from '@fluentui/accessibility';
-import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { videoBehavior } from '@fluentui/accessibility';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
 import {
-  ComponentWithAs,
   getElementType,
   useStyles,
   useFluentContext,
@@ -14,6 +12,10 @@ import {
   useTelemetry,
   useAccessibility,
 } from '@fluentui/react-bindings';
+import type { Accessibility, VideoBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface VideoProps extends UIComponentProps {
   /**

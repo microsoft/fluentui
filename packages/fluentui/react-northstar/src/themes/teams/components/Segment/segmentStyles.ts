@@ -1,7 +1,7 @@
-import { SegmentStylesProps } from '../../../../components/Segment/Segment';
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { SegmentVariables } from './segmentVariables';
 import { getColorScheme } from '../../colors';
+import type { SegmentStylesProps } from '../../../../components/Segment/Segment';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { SegmentVariables } from './segmentVariables';
 
 export const segmentStyles: ComponentSlotStylesPrepared<SegmentStylesProps, SegmentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

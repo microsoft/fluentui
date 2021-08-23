@@ -1,5 +1,6 @@
 import { ForwardRef } from 'react-is';
-import { getReactFiberFromNode, Fiber } from '../../utils/getReactFiberFromNode';
+import { getReactFiberFromNode } from '../../utils/getReactFiberFromNode';
+import type { Fiber } from '../../utils/getReactFiberFromNode';
 
 const isDOMNode = e => e && typeof e.tagName === 'string' && e.nodeType === Node.ELEMENT_NODE;
 

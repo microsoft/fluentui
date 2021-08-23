@@ -1,6 +1,5 @@
-import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
+import { tabListBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useTelemetry,
   mergeVariablesOverrides,
   getElementType,
@@ -14,16 +13,13 @@ import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 
-import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-} from '../../utils';
-import { ShorthandCollection, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
+import { CarouselNavigationItem } from './CarouselNavigationItem';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ShorthandCollection, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { CarouselNavigationItemProps } from './CarouselNavigationItem';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
   /**

@@ -1,9 +1,9 @@
 import { addDays, compareDates, getDateRangeArray, isInDateRangeArray } from '../dateMath/dateMath';
 import { DAYS_IN_WEEK } from '../dateValues/dateValues';
-import { IDay, IDayGridOptions } from './dateGrid.types';
 import { getDateRangeTypeToUse } from './getDateRangeTypeToUse';
 import { getBoundedDateRange } from './getBoundedDateRange';
 import { isRestrictedDate } from './isRestrictedDate';
+import type { IDay, IDayGridOptions } from './dateGrid.types';
 
 /**
  * Generates a grid of days, given the `options`.

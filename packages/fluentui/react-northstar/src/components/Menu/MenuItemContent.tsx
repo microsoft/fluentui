@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  ForwardRefWithAs,
   useFluentContext,
   useTelemetry,
   useStyles,
@@ -11,16 +10,13 @@ import {
   useContextSelectors,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import {
-  ChildrenComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-  rtlTextContainer,
-  UIComponentProps,
-} from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
-import { Accessibility } from '@fluentui/accessibility';
-import { MenuContext, MenuItemSubscribedValue } from './menuContext';
+import { commonPropTypes, rtlTextContainer } from '../../utils';
+import { MenuContext } from './menuContext';
+import type { ForwardRefWithAs } from '@fluentui/react-bindings';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { MenuItemSubscribedValue } from './menuContext';
 
 export interface MenuItemContentProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /**

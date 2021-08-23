@@ -1,6 +1,4 @@
-import { Accessibility, GridBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -12,15 +10,11 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-  rtlTextContainer,
-} from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { childrenExist, commonPropTypes, rtlTextContainer } from '../../utils';
+import type { Accessibility, GridBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface GridProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

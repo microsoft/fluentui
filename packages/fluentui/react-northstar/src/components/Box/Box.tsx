@@ -1,6 +1,5 @@
 import {
   compose,
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,19 +7,12 @@ import {
   useTelemetry,
   useFluentContext,
 } from '@fluentui/react-bindings';
-import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  createShorthandFactory,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  UIComponentProps,
-  ShorthandFactory,
-} from '../../utils';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ContentComponentProps, ChildrenComponentProps, UIComponentProps, ShorthandFactory } from '../../utils';
 
 export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

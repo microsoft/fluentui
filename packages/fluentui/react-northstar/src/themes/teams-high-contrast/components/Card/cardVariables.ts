@@ -1,4 +1,4 @@
-import { CardVariables } from '../../../teams/components/Card/cardVariables';
+import type { CardVariables } from '../../../teams/components/Card/cardVariables';
 
 export const cardVariables = (siteVars: any): Partial<CardVariables> => {
   return {

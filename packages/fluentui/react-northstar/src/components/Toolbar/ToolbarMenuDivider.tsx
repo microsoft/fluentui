@@ -1,4 +1,4 @@
-import { Accessibility, toolbarMenuDividerBehavior, ToolbarMenuDividerBehaviorProps } from '@fluentui/accessibility';
+import { toolbarMenuDividerBehavior } from '@fluentui/accessibility';
 import {
   getElementType,
   mergeVariablesOverrides,
@@ -8,12 +8,14 @@ import {
   useFluentContext,
   useTelemetry,
   compose,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import { ChildrenComponentProps, ContentComponentProps, UIComponentProps, commonPropTypes } from '../../utils';
+import { commonPropTypes } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
+import type { Accessibility, ToolbarMenuDividerBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
 
 export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

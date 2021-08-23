@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { Dropdown, DropdownProps } from '../Dropdown/Dropdown';
-import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
+import { Dropdown } from '../Dropdown/Dropdown';
+import { _FormFieldBase } from './utils/formFieldBase';
+import type { DropdownProps } from '../Dropdown/Dropdown';
+import type { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormDropdownOwnProps extends DropdownProps {}
 type SelectedFormFieldCustomProps = Omit<

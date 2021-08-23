@@ -1,5 +1,5 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { RadioGroupStylesProps } from '../../../../components/RadioGroup/RadioGroup';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { RadioGroupStylesProps } from '../../../../components/RadioGroup/RadioGroup';
 
 export const radioGroupStyles: ComponentSlotStylesPrepared<RadioGroupStylesProps> = {
   root: ({ props: p }): ICSSInJSStyle => ({

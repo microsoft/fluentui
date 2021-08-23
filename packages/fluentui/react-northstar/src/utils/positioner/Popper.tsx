@@ -4,8 +4,8 @@ import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
 import { getPlacement } from './positioningHelper';
-import { PopperChildrenFn, PopperProps, PopperRefHandle } from './types';
 import { usePopper } from './usePopper';
+import type { PopperChildrenFn, PopperProps, PopperRefHandle } from './types';
 
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.

@@ -1,8 +1,10 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { compose } from '@fluentui/react-bindings';
-import { commonPropTypes, SizeValue } from '../../utils';
-import { SkeletonShapeProps, SkeletonShapeStylesProps, SkeletonShape } from './SkeletonShape';
+import { commonPropTypes } from '../../utils';
+import { SkeletonShape } from './SkeletonShape';
+import type { SizeValue } from '../../utils';
+import type { SkeletonShapeProps, SkeletonShapeStylesProps } from './SkeletonShape';
 
 export interface SkeletonButtonOwnProps {
   /** A skeleton button can be sized. */

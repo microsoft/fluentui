@@ -1,6 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -13,21 +11,16 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  ColorComponentProps,
-  rtlTextContainer,
-} from '../../utils';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 
-import { Image, ImageProps } from '../Image/Image';
-import { Box, BoxProps } from '../Box/Box';
-
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Image } from '../Image/Image';
+import { Box } from '../Box/Box';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps, ColorComponentProps } from '../../utils';
+import type { ImageProps } from '../Image/Image';
+import type { BoxProps } from '../Box/Box';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface LabelProps
   extends UIComponentProps,

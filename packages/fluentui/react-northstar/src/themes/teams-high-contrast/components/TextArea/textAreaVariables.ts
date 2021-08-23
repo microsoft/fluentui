@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { TextAreaVariables } from '../../../teams/components/TextArea/textAreaVariables';
+import type { TextAreaVariables } from '../../../teams/components/TextArea/textAreaVariables';
 
 export const textAreaVariables = (siteVars: any): Partial<TextAreaVariables> => {
   return {

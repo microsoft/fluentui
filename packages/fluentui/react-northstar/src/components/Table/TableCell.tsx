@@ -1,19 +1,11 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { Accessibility, tableCellBehavior, TableCellBehaviorProps } from '@fluentui/accessibility';
+import { tableCellBehavior } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
+import { childrenExist, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  childrenExist,
-  ChildrenComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-  createShorthandFactory,
-  UIComponentProps,
-} from '../../utils';
-import {
-  ComponentWithAs,
   useTelemetry,
   useStyles,
   useFluentContext,
@@ -22,8 +14,12 @@ import {
   useAccessibility,
 } from '@fluentui/react-bindings';
 
-import { Box, BoxProps } from '../Box/Box';
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Box } from '../Box/Box';
+import type { Accessibility, TableCellBehaviorProps } from '@fluentui/accessibility';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { BoxProps } from '../Box/Box';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableCellProps
   extends UIComponentProps,

@@ -1,4 +1,4 @@
-import { ReactionVariables } from '../../../teams/components/Reaction/reactionVariables';
+import type { ReactionVariables } from '../../../teams/components/Reaction/reactionVariables';
 
 export const reactionVariables = (siteVars: any): Partial<ReactionVariables> => ({
   meReactingColor: siteVars.colors.brand[400],

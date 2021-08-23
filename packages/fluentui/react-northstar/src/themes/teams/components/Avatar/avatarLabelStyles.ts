@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { AvatarVariables } from './avatarVariables';
-import { pxToRem, SizeValue } from '../../../../utils';
-import { AvatarLabelStylesProps } from '../../../../components/Avatar/AvatarLabel';
+import { pxToRem } from '../../../../utils';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AvatarVariables } from './avatarVariables';
+import type { SizeValue } from '../../../../utils';
+import type { AvatarLabelStylesProps } from '../../../../components/Avatar/AvatarLabel';
 
 const sizeToPxValue: Record<SizeValue, number> = {
   smallest: 20,

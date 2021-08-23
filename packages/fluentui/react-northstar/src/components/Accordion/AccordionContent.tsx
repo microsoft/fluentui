@@ -1,21 +1,10 @@
-import { accordionContentBehavior, Accessibility, AccordionContentBehaviorProps } from '@fluentui/accessibility';
+import { accordionContentBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-} from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-
-import {
-  ComponentWithAs,
   useTelemetry,
   useFluentContext,
   getElementType,
@@ -23,6 +12,10 @@ import {
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, AccordionContentBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface AccordionContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

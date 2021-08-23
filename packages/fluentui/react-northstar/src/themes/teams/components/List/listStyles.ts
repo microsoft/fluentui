@@ -1,6 +1,6 @@
 import { debugRoot } from '../../../../styles/debugStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ListStylesProps } from '../../../../components/List/List';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ListStylesProps } from '../../../../components/List/List';
 
 export const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
   root: ({ props: p }): ICSSInJSStyle => ({

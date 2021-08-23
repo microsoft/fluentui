@@ -1,13 +1,15 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { isNil } from 'lodash';
 
-import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
-import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
+import { chatMessageSlotClassNames } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { chatMessageStylesComfy } from './chatMessageStylesComfy';
 import { chatMessageStylesCompact } from './chatMessageStylesCompact';
-import { ChatMessageVariables } from './chatMessageVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ChatDensity } from '../../../../components/Chat/chatDensityContext';
+import type { ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import type { ChatMessageVariables } from './chatMessageVariables';
 
 const displayActionMenu = (overlayZIndex: ICSSInJSStyle['zIndex']): ICSSInJSStyle => ({
   // we need higher zIndex for the action menu in order to be displayed above the focus border of the chat message

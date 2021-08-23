@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DropdownSearchInputStylesProps } from '../../../../components/Dropdown/DropdownSearchInput';
-import { DropdownVariables } from './dropdownVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DropdownSearchInputStylesProps } from '../../../../components/Dropdown/DropdownSearchInput';
+import type { DropdownVariables } from './dropdownVariables';
 
 export const dropdownSearchInputStyles: ComponentSlotStylesPrepared<
   DropdownSearchInputStylesProps,

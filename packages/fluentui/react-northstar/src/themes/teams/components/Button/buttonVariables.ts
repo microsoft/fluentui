@@ -1,6 +1,5 @@
-import { FontWeightProperty } from 'csstype';
-
 import { pxToRem } from '../../../../utils';
+import type { FontWeightProperty } from 'csstype';
 
 export interface ButtonVariables {
   padding: string;

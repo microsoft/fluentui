@@ -1,7 +1,8 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import * as PropTypes from 'prop-types';
+import type { BoxProps } from '../Box/Box';
 
 export type LabelPosition = 'inline' | 'above' | 'inside';
 

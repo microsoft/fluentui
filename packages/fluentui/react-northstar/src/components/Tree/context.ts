@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { FlatTreeItem } from './hooks/flattenTree';
+import type { FlatTreeItem } from './hooks/flattenTree';
 
 export interface TreeRenderContextValue {
   getItemById: (id: string) => FlatTreeItem & { [key: string]: any };

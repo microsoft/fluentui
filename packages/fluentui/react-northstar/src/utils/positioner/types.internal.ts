@@ -1,4 +1,4 @@
-import { Alignment, Position, AutoSize } from './types';
+import type { Alignment, Position, AutoSize } from './types';
 
 export const ALIGNMENTS: Alignment[] = ['top', 'bottom', 'start', 'end', 'center'];
 export const POSITIONS: Position[] = ['above', 'below', 'before', 'after'];

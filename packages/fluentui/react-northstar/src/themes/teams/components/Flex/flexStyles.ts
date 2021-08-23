@@ -1,8 +1,7 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { FlexStylesProps } from '../../../../components/Flex/Flex';
-
 import { toFlexAlignment } from './utils';
-import { FlexVariables } from './flexVariables';
+import type { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { FlexStylesProps } from '../../../../components/Flex/Flex';
+import type { FlexVariables } from './flexVariables';
 
 export const flexStyles: ComponentSlotStylesPrepared<FlexStylesProps, FlexVariables> = {
   root: ({ props: p, variables: v }) => ({

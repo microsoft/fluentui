@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { useTree, UseTreeResult, UseTreeOptions } from './useTree';
-import { ShorthandValue } from '../../../types';
-import { TreeItemProps } from '../TreeItem';
+import { useTree } from './useTree';
+import type { UseTreeResult, UseTreeOptions } from './useTree';
+import type { ShorthandValue } from '../../../types';
+import type { TreeItemProps } from '../TreeItem';
 
 export interface UseVirtualTreeOptions extends Omit<UseTreeOptions, 'selectedItemIds' | 'defaultSelectedItemIds'> {
   /**

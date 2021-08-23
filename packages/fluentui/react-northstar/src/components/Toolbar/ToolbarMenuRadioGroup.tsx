@@ -1,9 +1,4 @@
-import {
-  Accessibility,
-  toolbarMenuRadioGroupBehavior,
-  toolbarMenuItemRadioBehavior,
-  ToolbarMenuRadioGroupBehaviorProps,
-} from '@fluentui/accessibility';
+import { toolbarMenuRadioGroupBehavior, toolbarMenuItemRadioBehavior } from '@fluentui/accessibility';
 import {
   compose,
   mergeVariablesOverrides,
@@ -19,17 +14,15 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  createShorthand,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  UIComponentProps,
-  commonPropTypes,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
-import { ToolbarMenuItem, ToolbarMenuItemProps } from './ToolbarMenuItem';
-import { ToolbarMenuRadioGroupWrapper, ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
+import { createShorthand, commonPropTypes } from '../../utils';
+import { ToolbarMenuItem } from './ToolbarMenuItem';
+import { ToolbarMenuRadioGroupWrapper } from './ToolbarMenuRadioGroupWrapper';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
+import type { Accessibility, ToolbarMenuRadioGroupBehaviorProps } from '@fluentui/accessibility';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandCollection, ShorthandValue } from '../../types';
+import type { ToolbarMenuItemProps } from './ToolbarMenuItem';
+import type { ToolbarMenuRadioGroupWrapperProps } from './ToolbarMenuRadioGroupWrapper';
 
 export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

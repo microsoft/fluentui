@@ -1,4 +1,4 @@
-import { Extendable } from '@fluentui/styles';
+import type { Extendable } from '@fluentui/styles';
 
 // Themes go through 3 phases.
 // 1. Input - (from the user), variable and style objects/functions, some values optional

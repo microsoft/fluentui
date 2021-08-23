@@ -1,7 +1,6 @@
-import { ShorthandConfig } from '@fluentui/react-bindings';
 import * as React from 'react';
-
-import { ShorthandFactory } from './utils/factories';
+import type { ShorthandConfig } from '@fluentui/react-bindings';
+import type { ShorthandFactory } from './utils/factories';
 
 // ========================================================
 // Utilities

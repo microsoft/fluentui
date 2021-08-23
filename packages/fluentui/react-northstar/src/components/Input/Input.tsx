@@ -1,4 +1,4 @@
-import { Accessibility, inputBehavior, InputBehaviorProps } from '@fluentui/accessibility';
+import { inputBehavior } from '@fluentui/accessibility';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
@@ -7,17 +7,12 @@ import * as _ from 'lodash';
 
 import {
   partitionHTMLProps,
-  UIComponentProps,
-  ChildrenComponentProps,
   commonPropTypes,
   createShorthandFactory,
-  ShorthandFactory,
   createShorthand,
   getOrGenerateIdFromShorthand,
 } from '../../utils';
-import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import { ShorthandValue, ComponentEventHandler } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import {
   useAutoControlled,
   getElementType,
@@ -27,11 +22,17 @@ import {
   useStyles,
   useAccessibility,
   compose,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import { ExclamationCircleIcon, CheckmarkCircleIcon, CloseIcon } from '@fluentui/react-icons-northstar';
-import { InputLabel, InputLabelProps, LabelPosition } from './InputLabel';
+import { InputLabel } from './InputLabel';
 import { FormFieldBaseContext } from '../Form/utils/formFieldBaseContext';
+import type { Accessibility, InputBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ShorthandFactory } from '../../utils';
+import type { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
+import type { ShorthandValue, ComponentEventHandler } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { InputLabelProps, LabelPosition } from './InputLabel';
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
   /**

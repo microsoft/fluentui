@@ -1,8 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
 import { pxToRem } from '../../../../utils';
-import { ChatItemVariables } from './chatItemVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
+import type { ChatItemVariables } from './chatItemVariables';
 
 export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({

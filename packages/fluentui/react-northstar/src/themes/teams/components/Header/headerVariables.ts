@@ -1,7 +1,7 @@
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
 import { pickValuesFromColorScheme } from '../../../colorUtils';
 import { stringLiteralsArray } from '../../../../utils';
+import type { ItemType } from '../../../types';
+import type { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const headerColorAreas = stringLiteralsArray('foreground');
 export type HeaderColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof headerColorAreas>>;

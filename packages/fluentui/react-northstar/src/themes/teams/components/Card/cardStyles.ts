@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { CardVariables } from './cardVariables';
-import { CardStylesProps } from '../../../../components/Card/Card';
 import { cardExpandableBoxClassName } from '../../../../components/Card/CardExpandableBox';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CardVariables } from './cardVariables';
+import type { CardStylesProps } from '../../../../components/Card/Card';
 
 export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {

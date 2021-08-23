@@ -1,9 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { MenuDividerStylesProps } from '../../../../components/Menu/MenuDivider';
 import { getColorScheme } from '../../colors';
 import { verticalPillsBottomMargin, horizontalPillsRightMargin, verticalPointingBottomMargin } from './menuItemStyles';
-import { MenuVariables } from './menuVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { MenuDividerStylesProps } from '../../../../components/Menu/MenuDivider';
+import type { MenuVariables } from './menuVariables';
 
 export const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

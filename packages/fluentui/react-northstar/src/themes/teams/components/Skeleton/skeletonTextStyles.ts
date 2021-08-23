@@ -1,6 +1,6 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { SkeletonTextStylesProps } from '../../../../components/Skeleton/SkeletonText';
-import { SkeletonVariables } from './skeletonVariables';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { SkeletonTextStylesProps } from '../../../../components/Skeleton/SkeletonText';
+import type { SkeletonVariables } from './skeletonVariables';
 
 export const skeletonTextStyles: ComponentSlotStylesPrepared<SkeletonTextStylesProps, SkeletonVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

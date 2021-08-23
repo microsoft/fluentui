@@ -1,29 +1,22 @@
-import { AccessibilityAttributes } from '@fluentui/accessibility';
-import {
-  AccessibilityHandlerProps,
-  FocusTrapZone,
-  FocusTrapZoneProps,
-  useFluentContext,
-  useTelemetry,
-  useAutoControlled,
-} from '@fluentui/react-bindings';
+import { FocusTrapZone, useFluentContext, useTelemetry, useAutoControlled } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
-import { FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   doesNodeContainClick,
-  ChildrenComponentProps,
   commonPropTypes,
-  ContentComponentProps,
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
 import { PortalInner } from './PortalInner';
+import type { AccessibilityAttributes } from '@fluentui/accessibility';
+import type { AccessibilityHandlerProps, FocusTrapZoneProps } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ChildrenComponentProps, ContentComponentProps } from '../../utils';
 
 export type TriggerAccessibility = {
   attributes?: AccessibilityAttributes;

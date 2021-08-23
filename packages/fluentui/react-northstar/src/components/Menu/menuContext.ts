@@ -1,8 +1,8 @@
 import { createContext } from '@fluentui/react-bindings';
-import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
-import { Accessibility } from '@fluentui/accessibility';
-import { MenuItemProps } from './MenuItem';
+import type { ComponentVariablesInput } from '@fluentui/styles';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { MenuItemProps } from './MenuItem';
 
 export type MenuContextValue = {
   activeIndex: number;

@@ -1,4 +1,3 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   mergeVariablesOverrides,
@@ -11,8 +10,10 @@ import {
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import { ChildrenComponentProps, ContentComponentProps, UIComponentProps, commonPropTypes } from '../../utils';
+import { commonPropTypes } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
 
 export interface ToolbarDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

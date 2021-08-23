@@ -1,5 +1,5 @@
-import { LabelVariables } from '../../../teams/components/Label/labelVariables';
-import { SiteVariablesPrepared } from '@fluentui/styles';
+import type { LabelVariables } from '../../../teams/components/Label/labelVariables';
+import type { SiteVariablesPrepared } from '@fluentui/styles';
 
 export const labelVariables = (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
   return {

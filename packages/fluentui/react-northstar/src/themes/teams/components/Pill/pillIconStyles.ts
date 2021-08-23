@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { PillIconStylesProps } from '../../../../components/Pill/PillIcon';
-import { PillVariables } from './pillVariables';
 import { svgIconClassName } from '@fluentui/react-icons-northstar';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { PillIconStylesProps } from '../../../../components/Pill/PillIcon';
+import type { PillVariables } from './pillVariables';
 
 export const pillIconStyles: ComponentSlotStylesPrepared<PillIconStylesProps, PillVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

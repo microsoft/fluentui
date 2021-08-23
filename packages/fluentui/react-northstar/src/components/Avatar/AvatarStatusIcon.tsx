@@ -6,12 +6,13 @@ import {
   useAccessibility,
   getElementType,
   useUnhandledProps,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes, UIComponentProps, createShorthandFactory } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
-import { Accessibility } from '@fluentui/accessibility';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { Accessibility } from '@fluentui/accessibility';
 
 export interface AvatarStatusIconProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */

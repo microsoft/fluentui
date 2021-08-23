@@ -1,4 +1,4 @@
-import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/accessibility';
+import { menuBehavior } from '@fluentui/accessibility';
 import {
   getElementType,
   mergeVariablesOverrides,
@@ -8,35 +8,41 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
-  ShorthandConfig,
-  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   createShorthand,
   createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
   commonPropTypes,
   getKindProp,
   rtlTextContainer,
-  ShorthandFactory,
 } from '../../utils';
-import { MenuItem, MenuItemProps } from './MenuItem';
-import { MenuDivider, MenuDividerProps } from './MenuDivider';
+import { MenuItem } from './MenuItem';
+import { MenuDivider } from './MenuDivider';
 import { MenuItemIcon } from './MenuItemIcon';
 import { MenuItemContent } from './MenuItemContent';
-import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
+import { MenuItemIndicator } from './MenuItemIndicator';
 import { MenuItemWrapper } from './MenuItemWrapper';
-import { MenuContextProvider, MenuContextValue } from './menuContext';
+import { MenuContextProvider } from './menuContext';
 import { Ref } from '@fluentui/react-component-ref';
+import type { Accessibility, MenuBehaviorProps } from '@fluentui/accessibility';
+import type { ShorthandConfig, ForwardRefWithAs } from '@fluentui/react-bindings';
+import type {
+  ShorthandCollection,
+  ShorthandValue,
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { UIComponentProps, ChildrenComponentProps, ShorthandFactory } from '../../utils';
+import type { MenuItemProps } from './MenuItem';
+import type { MenuDividerProps } from './MenuDivider';
+import type { MenuItemIndicatorProps } from './MenuItemIndicator';
+import type { MenuContextValue } from './menuContext';
 
 export type MenuShorthandKinds = {
   divider: MenuDividerProps;

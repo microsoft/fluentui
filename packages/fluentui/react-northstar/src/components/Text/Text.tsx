@@ -2,23 +2,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  ColorComponentProps,
-  rtlTextContainer,
-  SizeValue,
-  AlignValue,
-} from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
-
-import { FluentComponentStaticProps } from '../../types';
-import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -26,6 +11,17 @@ import {
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
+import type {
+  UIComponentProps,
+  ContentComponentProps,
+  ChildrenComponentProps,
+  ColorComponentProps,
+  SizeValue,
+  AlignValue,
+} from '../../utils';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface TextProps
   extends UIComponentProps,

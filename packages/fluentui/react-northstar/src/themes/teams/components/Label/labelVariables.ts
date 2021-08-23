@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { SiteVariablesPrepared } from '@fluentui/styles';
+import type { SiteVariablesPrepared } from '@fluentui/styles';
 
 export interface LabelVariables {
   circularRadius: string;

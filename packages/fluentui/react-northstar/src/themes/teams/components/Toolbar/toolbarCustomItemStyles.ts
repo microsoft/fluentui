@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ToolbarCustomItemStylesProps } from '../../../../components/Toolbar/ToolbarCustomItem';
-import { ToolbarVariables } from './toolbarVariables';
 import { getColorScheme } from '../../colors';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ToolbarCustomItemStylesProps } from '../../../../components/Toolbar/ToolbarCustomItem';
+import type { ToolbarVariables } from './toolbarVariables';
 
 export const toolbarCustomItemStyles: ComponentSlotStylesPrepared<ToolbarCustomItemStylesProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {

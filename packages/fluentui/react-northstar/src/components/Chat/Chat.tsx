@@ -1,6 +1,5 @@
-import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
+import { chatBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -12,22 +11,19 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { FluentComponentStaticProps, ShorthandCollection } from '../../types';
-import {
-  ChildrenComponentProps,
-  childrenExist,
-  commonPropTypes,
-  createShorthandFactory,
-  rtlTextContainer,
-  UIComponentProps,
-} from '../../utils';
-import { ChatDensity, ChatDensityContextProvider, defaultChatDensity } from './chatDensityContext';
-import { ChatItem, ChatItemProps } from './ChatItem';
+import { childrenExist, commonPropTypes, createShorthandFactory, rtlTextContainer } from '../../utils';
+import { ChatDensityContextProvider, defaultChatDensity } from './chatDensityContext';
+import { ChatItem } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
 import { ChatMessageHeader } from './ChatMessageHeader';
 import { ChatMessageReadStatus } from './ChatMessageReadStatus';
+import type { Accessibility, ChatBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps, ShorthandCollection } from '../../types';
+import type { ChildrenComponentProps, UIComponentProps } from '../../utils';
+import type { ChatDensity } from './chatDensityContext';
+import type { ChatItemProps } from './ChatItem';
 
 export interface ChatSlotClassNames {
   item: string;

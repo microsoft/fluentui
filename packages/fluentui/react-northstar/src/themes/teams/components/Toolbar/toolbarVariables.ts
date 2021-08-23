@@ -1,7 +1,7 @@
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
 import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
+import type { ItemType } from '../../../types';
+import type { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const toolbarColorAreas = stringLiteralsArray(
   'foreground1',

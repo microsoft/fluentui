@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ButtonGroupStylesProps } from '../../../../components/Button/ButtonGroup';
-import { ButtonVariables } from './buttonVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ButtonGroupStylesProps } from '../../../../components/Button/ButtonGroup';
+import type { ButtonVariables } from './buttonVariables';
 
 const commonButtonsStyles = (circular: boolean) => (circular ? { marginRight: pxToRem(8) } : { borderRadius: 0 });
 

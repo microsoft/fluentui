@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Accessibility, pillActionBehavior, PillActionBehaviorProps } from '@fluentui/accessibility';
+import { pillActionBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -9,17 +8,12 @@ import {
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
-import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  SizeValue,
-} from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { childrenExist, commonPropTypes, rtlTextContainer } from '../../utils';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
+import type { Accessibility, PillActionBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps, SizeValue } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface PillActionProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

@@ -1,4 +1,4 @@
-import { TextVariables } from '../../../teams/components/Text/textVariables';
+import type { TextVariables } from '../../../teams/components/Text/textVariables';
 
 export const textVariables = (siteVariables): Partial<TextVariables> => ({
   atMentionMeColor: siteVariables.colors.orange[300],

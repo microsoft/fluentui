@@ -1,14 +1,5 @@
+import { popupBehavior, getCode, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 import {
-  Accessibility,
-  popupBehavior,
-  PopupBehaviorProps,
-  getCode,
-  keyboardKey,
-  SpacebarKey,
-} from '@fluentui/accessibility';
-import {
-  AutoFocusZoneProps,
-  FocusTrapZoneProps,
   useAccessibility,
   useAutoControlled,
   useTelemetry,
@@ -17,7 +8,7 @@ import {
   useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
@@ -26,32 +17,21 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { elementContains, setVirtualParent } from '@fluentui/dom-utilities';
 
-import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  StyledComponentProps,
-  commonPropTypes,
-  isFromKeyboard,
-  doesNodeContainClick,
-  setWhatInputSource,
-} from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import {
-  ALIGNMENTS,
-  POSITIONS,
-  createReferenceFromClick,
-  Popper,
-  PositioningProps,
-  PopperChildrenProps,
-  AutoSize,
-  AUTOSIZES,
-} from '../../utils/positioner';
-import { PopupContent, PopupContentProps } from './PopupContent';
+import { commonPropTypes, isFromKeyboard, doesNodeContainClick, setWhatInputSource } from '../../utils';
+import { ALIGNMENTS, POSITIONS, createReferenceFromClick, Popper, AUTOSIZES } from '../../utils/positioner';
+import { PopupContent } from './PopupContent';
 
 import { createShorthandFactory } from '../../utils/factories';
 import { isRightClick } from '../../utils/isRightClick';
 import { PortalInner } from '../Portal/PortalInner';
 import { Animation } from '../Animation/Animation';
+import type { Accessibility, PopupBehaviorProps } from '@fluentui/accessibility';
+import type { AutoFocusZoneProps, FocusTrapZoneProps } from '@fluentui/react-bindings';
+import type { NodeRef } from '@fluentui/react-component-nesting-registry';
+import type { ChildrenComponentProps, ContentComponentProps, StyledComponentProps } from '../../utils';
+import type { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import type { PositioningProps, PopperChildrenProps, AutoSize } from '../../utils/positioner';
+import type { PopupContentProps } from './PopupContent';
 
 export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';

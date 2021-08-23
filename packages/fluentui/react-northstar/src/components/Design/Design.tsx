@@ -1,11 +1,11 @@
-import { ComponentDesignProp, useFluentContext } from '@fluentui/react-bindings';
-import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
+import { useFluentContext } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { ICSSInJSStyle } from '@fluentui/styles';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-
-import { ReactChildren } from '../../types';
+import type { ComponentDesignProp } from '@fluentui/react-bindings';
+import type { RendererParam } from '@fluentui/react-northstar-styles-renderer';
+import type { ICSSInJSStyle } from '@fluentui/styles';
+import type { ReactChildren } from '../../types';
 
 export type DesignProps = {
   /** A render function that receives the generated className as its only argument */

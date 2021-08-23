@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
-import { Slider, SliderProps } from '../Slider/Slider';
+import { _FormFieldBase } from './utils/formFieldBase';
+import { Slider } from '../Slider/Slider';
+import type { FormFieldBaseProps } from './utils/formFieldBase';
+import type { SliderProps } from '../Slider/Slider';
 
 interface FormSliderOwnProps extends Omit<SliderProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<

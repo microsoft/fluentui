@@ -1,6 +1,5 @@
-import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorProps } from '@fluentui/accessibility';
+import { imageBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -11,9 +10,12 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { UIComponentProps, commonPropTypes, createShorthandFactory, SizeValue } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
 import { imageClassName } from '../Image/Image';
+import type { Accessibility, AccessibilityAttributes, ImageBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, SizeValue } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
   /** Alternative text. */

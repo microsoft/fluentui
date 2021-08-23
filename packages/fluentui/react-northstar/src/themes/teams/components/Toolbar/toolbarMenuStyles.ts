@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
-import { ToolbarMenuStylesProps } from '../../../../components/Toolbar/ToolbarMenu';
-import { ToolbarVariables } from './toolbarVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ToolbarMenuStylesProps } from '../../../../components/Toolbar/ToolbarMenu';
+import type { ToolbarVariables } from './toolbarVariables';
 
 export const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesProps, ToolbarVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => {

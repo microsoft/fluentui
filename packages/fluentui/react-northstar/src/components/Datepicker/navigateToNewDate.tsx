@@ -1,13 +1,12 @@
 import {
   addMonths,
-  IAvailableDateOptions,
-  IRestrictedDatesOptions,
   findAvailableDate,
   addDays,
   addWeeks,
   isAfterMaxDate,
   isBeforeMinDate,
 } from '../../utils/date-time-utilities';
+import type { IAvailableDateOptions, IRestrictedDatesOptions } from '../../utils/date-time-utilities';
 
 export type NavigationKind = 'Month' | 'Week' | 'Day';
 

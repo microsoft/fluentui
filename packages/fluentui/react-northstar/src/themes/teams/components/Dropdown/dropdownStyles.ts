@@ -1,8 +1,9 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { dropdownSlotClassNames, DropdownStylesProps } from '../../../../components/Dropdown/Dropdown';
-import { DropdownVariables } from './dropdownVariables';
+import { dropdownSlotClassNames } from '../../../../components/Dropdown/Dropdown';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DropdownStylesProps } from '../../../../components/Dropdown/Dropdown';
+import type { DropdownVariables } from './dropdownVariables';
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',

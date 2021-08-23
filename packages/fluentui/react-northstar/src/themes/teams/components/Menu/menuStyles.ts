@@ -1,8 +1,8 @@
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { MenuStylesProps } from '../../../../components/Menu/Menu';
-import { MenuVariables } from './menuVariables';
 import { getColorScheme } from '../../colors';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { MenuStylesProps } from '../../../../components/Menu/Menu';
+import type { MenuVariables } from './menuVariables';
 
 export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {

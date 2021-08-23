@@ -1,4 +1,4 @@
-import { DialogVariables } from '../../../teams/components/Dialog/dialogVariables';
+import type { DialogVariables } from '../../../teams/components/Dialog/dialogVariables';
 
 export const dialogVariables = (siteVars: any): Partial<DialogVariables> => {
   return {

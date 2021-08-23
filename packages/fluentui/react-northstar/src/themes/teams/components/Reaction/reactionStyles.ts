@@ -1,8 +1,9 @@
-import { FontWeightProperty } from 'csstype';
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { ReactionStylesProps, reactionSlotClassNames } from '../../../../components/Reaction/Reaction';
+import { reactionSlotClassNames } from '../../../../components/Reaction/Reaction';
 import { pxToRem } from '../../../../utils';
-import { ReactionVariables } from './reactionVariables';
+import type { FontWeightProperty } from 'csstype';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { ReactionStylesProps } from '../../../../components/Reaction/Reaction';
+import type { ReactionVariables } from './reactionVariables';
 
 const contentClassNameSelector = `& .${reactionSlotClassNames.content}`;
 

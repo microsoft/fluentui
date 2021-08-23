@@ -1,7 +1,7 @@
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
 import { pickValuesFromColorScheme } from '../../../colorUtils';
 import { stringLiteralsArray, pxToRem } from '../../../../utils';
+import type { ItemType } from '../../../types';
+import type { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const formFieldColorAreas = stringLiteralsArray('foreground', 'background');
 

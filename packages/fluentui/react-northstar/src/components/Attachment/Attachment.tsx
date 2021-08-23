@@ -1,6 +1,5 @@
-import { Accessibility, attachmentBehavior, AttachmentBehaviorProps } from '@fluentui/accessibility';
+import { attachmentBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   compose,
   getElementType,
   mergeVariablesOverrides,
@@ -14,21 +13,21 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ComponentEventHandler, ShorthandValue } from '../../types';
-import {
-  createShorthandFactory,
-  commonPropTypes,
-  UIComponentProps,
-  ChildrenComponentProps,
-  createShorthand,
-  ShorthandFactory,
-} from '../../utils';
-import { AttachmentAction, AttachmentActionProps } from './AttachmentAction';
-import { AttachmentBody, AttachmentBodyProps } from './AttachmentBody';
-import { AttachmentDescription, AttachmentDescriptionProps } from './AttachmentDescription';
-import { AttachmentHeader, AttachmentHeaderProps } from './AttachmentHeader';
-import { AttachmentIcon, AttachmentIconProps } from './AttachmentIcon';
+import { createShorthandFactory, commonPropTypes, createShorthand } from '../../utils';
+import { AttachmentAction } from './AttachmentAction';
+import { AttachmentBody } from './AttachmentBody';
+import { AttachmentDescription } from './AttachmentDescription';
+import { AttachmentHeader } from './AttachmentHeader';
+import { AttachmentIcon } from './AttachmentIcon';
+import type { Accessibility, AttachmentBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, ShorthandValue } from '../../types';
+import type { UIComponentProps, ChildrenComponentProps, ShorthandFactory } from '../../utils';
+import type { AttachmentActionProps } from './AttachmentAction';
+import type { AttachmentBodyProps } from './AttachmentBody';
+import type { AttachmentDescriptionProps } from './AttachmentDescription';
+import type { AttachmentHeaderProps } from './AttachmentHeader';
+import type { AttachmentIconProps } from './AttachmentIcon';
 
 export interface AttachmentProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

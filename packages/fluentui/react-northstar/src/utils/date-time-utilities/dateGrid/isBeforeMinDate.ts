@@ -1,5 +1,5 @@
-import { IRestrictedDatesOptions } from './dateGrid.types';
 import { compareDatePart } from '../dateMath/dateMath';
+import type { IRestrictedDatesOptions } from './dateGrid.types';
 
 /**
  * Checks if `date` happens earlier than min date

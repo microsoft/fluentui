@@ -1,6 +1,6 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { InputLabelStylesProps } from '../../../../components/Input/InputLabel';
-import { InputLabelVariables } from './inputLabelVariables';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { InputLabelStylesProps } from '../../../../components/Input/InputLabel';
+import type { InputLabelVariables } from './inputLabelVariables';
 
 export const inputLabelStyles: ComponentSlotStylesPrepared<InputLabelStylesProps, InputLabelVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

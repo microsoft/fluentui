@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DatepickerVariables } from './datepickerVariables';
-import { DatepickerCalendarCellStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCell';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DatepickerVariables } from './datepickerVariables';
+import type { DatepickerCalendarCellStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCell';
 
 export const datepickerCalendarCellStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarCellStylesProps,

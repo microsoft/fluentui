@@ -1,4 +1,4 @@
-import { Accessibility, toolbarItemBehavior, ToolbarItemBehaviorProps } from '@fluentui/accessibility';
+import { toolbarItemBehavior } from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
@@ -12,32 +12,33 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  createShorthand,
-  doesNodeContainClick,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  childrenExist,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
-import { partitionPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
+import { createShorthand, doesNodeContainClick, commonPropTypes, childrenExist } from '../../utils';
+import { partitionPopperPropsFromShorthand, Popper } from '../../utils/positioner';
 
-import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
-import { Popup, PopupProps } from '../Popup/Popup';
-import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
-import { ToolbarItemShorthandKinds } from './Toolbar';
+import { ToolbarMenu } from './ToolbarMenu';
+import { Popup } from '../Popup/Popup';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
-import { ToolbarItemWrapper, ToolbarItemWrapperProps } from './ToolbarItemWrapper';
-import { ToolbarItemIcon, ToolbarItemIconProps } from './ToolbarItemIcon';
-import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
+import { ToolbarItemWrapper } from './ToolbarItemWrapper';
+import { ToolbarItemIcon } from './ToolbarItemIcon';
+import { ToolbarMenuContext } from './toolbarMenuContext';
+import type { Accessibility, ToolbarItemBehaviorProps } from '@fluentui/accessibility';
+import type { GetRefs, NodeRef } from '@fluentui/react-component-nesting-registry';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../../types';
+import type { PopperShorthandProps } from '../../utils/positioner';
+import type { ToolbarMenuProps } from './ToolbarMenu';
+import type { PopupProps } from '../Popup/Popup';
+import type { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
+import type { ToolbarItemShorthandKinds } from './Toolbar';
+import type { ToolbarItemWrapperProps } from './ToolbarItemWrapper';
+import type { ToolbarItemIconProps } from './ToolbarItemIcon';
+import type { ToolbarItemSubscribedValue } from './toolbarMenuContext';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */

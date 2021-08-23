@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { ShorthandValue } from '../types';
+import type { ShorthandValue } from '../types';
 
 export const getOrGenerateIdFromShorthand = <P extends Record<string, any>>(
   prefix: string,

@@ -1,28 +1,14 @@
-import {
-  Accessibility,
-  dropdownSelectedItemBehavior,
-  DropdownSelectedItemBehaviorProps,
-  getCode,
-  keyboardKey,
-} from '@fluentui/accessibility';
+import { dropdownSelectedItemBehavior, getCode, keyboardKey } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  ComponentKeyboardEventHandler,
-  FluentComponentStaticProps,
-} from '../../types';
-import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import { Image, ImageProps } from '../Image/Image';
-import { Box, BoxProps } from '../Box/Box';
+import { Image } from '../Image/Image';
+import { Box } from '../Box/Box';
 import {
-  ComponentWithAs,
   useUnhandledProps,
   useStyles,
   useFluentContext,
@@ -30,6 +16,17 @@ import {
   getElementType,
   useAccessibility,
 } from '@fluentui/react-bindings';
+import type { Accessibility, DropdownSelectedItemBehaviorProps } from '@fluentui/accessibility';
+import type {
+  ComponentEventHandler,
+  ShorthandValue,
+  ComponentKeyboardEventHandler,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { UIComponentProps } from '../../utils/commonPropInterfaces';
+import type { ImageProps } from '../Image/Image';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface DropdownSelectedItemSlotClassNames {
   header: string;

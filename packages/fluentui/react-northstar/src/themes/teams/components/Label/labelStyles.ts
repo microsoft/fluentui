@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { LabelStylesProps } from '../../../../components/Label/Label';
-import { LabelVariables } from './labelVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { LabelStylesProps } from '../../../../components/Label/Label';
+import type { LabelVariables } from './labelVariables';
 
 export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {

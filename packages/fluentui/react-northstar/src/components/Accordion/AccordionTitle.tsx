@@ -1,23 +1,13 @@
-import { accordionTitleBehavior, Accessibility, AccordionTitleBehaviorProps } from '@fluentui/accessibility';
+import { accordionTitleBehavior } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
+import { Box } from '../Box/Box';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
-import {
-  ComponentWithAs,
   getElementType,
   useTelemetry,
   useFluentContext,
@@ -25,6 +15,11 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, AccordionTitleBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface AccordionTitleSlotClassNames {
   contentWrapper: string;

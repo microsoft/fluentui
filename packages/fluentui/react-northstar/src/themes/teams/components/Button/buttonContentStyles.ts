@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { ButtonVariables } from './buttonVariables';
-import { ButtonContentStylesProps } from '../../../../components/Button/ButtonContent';
+import type { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { ButtonVariables } from './buttonVariables';
+import type { ButtonContentStylesProps } from '../../../../components/Button/ButtonContent';
 
 export const buttonContentStyles: ComponentSlotStylesPrepared<ButtonContentStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v }) => ({

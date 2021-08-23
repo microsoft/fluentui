@@ -1,14 +1,12 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import {
-  AlertDismissActionStylesProps,
-  alertDismissActionSlotClassNames,
-} from '../../../../components/Alert/AlertDismissAction';
-import { AlertVariables } from './alertVariables';
+import { alertDismissActionSlotClassNames } from '../../../../components/Alert/AlertDismissAction';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { dismissIndicatorUrl } from './dismissIndicatorUrl';
 import { getIntentColorsFromProps } from './alertStyles';
 import { faster } from '../../animations/durations';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AlertDismissActionStylesProps } from '../../../../components/Alert/AlertDismissAction';
+import type { AlertVariables } from './alertVariables';
 
 const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
   return {

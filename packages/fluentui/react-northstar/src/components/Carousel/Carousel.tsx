@@ -1,5 +1,5 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { Accessibility, carouselBehavior, CarouselBehaviorProps } from '@fluentui/accessibility';
+import { carouselBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -8,22 +8,18 @@ import { Ref } from '@fluentui/react-component-ref';
 import { Animation } from '../Animation/Animation';
 
 import {
-  UIComponentProps,
   createShorthandFactory,
   commonPropTypes,
   childrenExist,
-  ChildrenComponentProps,
   isFromKeyboard as isEventFromKeyboard,
   createShorthand,
 } from '../../utils';
-import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { CarouselItem, CarouselItemProps } from './CarouselItem';
+import { CarouselItem } from './CarouselItem';
 import { Text } from '../Text/Text';
-import { CarouselNavigation, CarouselNavigationProps } from './CarouselNavigation';
-import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselNavigationItem';
-import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
+import { CarouselNavigation } from './CarouselNavigation';
+import { CarouselNavigationItem } from './CarouselNavigationItem';
+import { CarouselPaddle } from './CarouselPaddle';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
@@ -34,8 +30,22 @@ import {
   mergeVariablesOverrides,
   usePrevious,
 } from '@fluentui/react-bindings';
-import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
+import { createCarouselManager } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
+import type { Accessibility, CarouselBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type {
+  ShorthandCollection,
+  ShorthandValue,
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { CarouselItemProps } from './CarouselItem';
+import type { CarouselNavigationProps } from './CarouselNavigation';
+import type { CarouselNavigationItemProps } from './CarouselNavigationItem';
+import type { CarouselPaddleProps } from './CarouselPaddle';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { CarouselState, CarouselActions } from '@fluentui/state';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;

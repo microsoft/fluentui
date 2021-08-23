@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { ListItemHeaderMediaStylesProps } from '../../../../components/List/ListItemHeaderMedia';
-import { ListItemVariables } from './listItemVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ListItemHeaderMediaStylesProps } from '../../../../components/List/ListItemHeaderMedia';
+import type { ListItemVariables } from './listItemVariables';
 
 export const listItemHeaderMediaStyles: ComponentSlotStylesPrepared<
   ListItemHeaderMediaStylesProps,

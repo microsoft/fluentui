@@ -1,35 +1,29 @@
-import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
+import { buttonBehavior } from '@fluentui/accessibility';
 import {
   compose,
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
   useUnhandledProps,
-  ShorthandConfig,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  ShorthandFactory,
-  createShorthand,
-} from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
-import { Loader, LoaderProps } from '../Loader/Loader';
-import { ComponentEventHandler, ShorthandValue } from '../../types';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer, createShorthand } from '../../utils';
+import { Box } from '../Box/Box';
+import { Loader } from '../Loader/Loader';
 import { ButtonGroup } from './ButtonGroup';
-import { ButtonContent, ButtonContentProps } from './ButtonContent';
+import { ButtonContent } from './ButtonContent';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps, ShorthandFactory } from '../../utils';
+import type { BoxProps } from '../Box/Box';
+import type { LoaderProps } from '../Loader/Loader';
+import type { ComponentEventHandler, ShorthandValue } from '../../types';
+import type { ButtonContentProps } from './ButtonContent';
 
 export interface ButtonProps
   extends UIComponentProps,

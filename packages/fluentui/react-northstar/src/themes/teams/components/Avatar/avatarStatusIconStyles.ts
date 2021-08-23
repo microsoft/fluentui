@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { AvatarStatusStylesProps } from '../../../../components/Avatar/AvatarStatus';
-import { AvatarVariables } from './avatarVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AvatarStatusStylesProps } from '../../../../components/Avatar/AvatarStatus';
+import type { AvatarVariables } from './avatarVariables';
 
 export const avatarStatusIconStyles: ComponentSlotStylesPrepared<AvatarStatusStylesProps, AvatarVariables> = {
   root: ({ props: { state }, variables: v }): ICSSInJSStyle => ({

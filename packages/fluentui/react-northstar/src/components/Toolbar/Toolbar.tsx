@@ -1,12 +1,5 @@
+import { toolbarBehavior, toggleButtonBehavior, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import {
-  Accessibility,
-  toolbarBehavior,
-  ToolbarBehaviorProps,
-  toggleButtonBehavior,
-  IS_FOCUSABLE_ATTRIBUTE,
-} from '@fluentui/accessibility';
-import {
-  ComponentWithAs,
   compose,
   getElementType,
   getFirstFocusable,
@@ -23,26 +16,16 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ComponentEventHandler, ShorthandCollection, ShorthandValue, ObjectShorthandValue } from '../../types';
-import {
-  childrenExist,
-  createShorthand,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  ColorComponentProps,
-} from '../../utils';
-import { ToolbarCustomItem, ToolbarCustomItemProps } from './ToolbarCustomItem';
-import { ToolbarDivider, ToolbarDividerProps } from './ToolbarDivider';
-import { ToolbarItem, ToolbarItemProps } from './ToolbarItem';
+import { childrenExist, createShorthand, commonPropTypes } from '../../utils';
+import { ToolbarCustomItem } from './ToolbarCustomItem';
+import { ToolbarDivider } from './ToolbarDivider';
+import { ToolbarItem } from './ToolbarItem';
 import { ToolbarItemWrapper } from './ToolbarItemWrapper';
 import { ToolbarItemIcon } from './ToolbarItemIcon';
-import { ToolbarMenu, ToolbarMenuProps } from './ToolbarMenu';
+import { ToolbarMenu } from './ToolbarMenu';
 import { ToolbarMenuDivider } from './ToolbarMenuDivider';
 import { ToolbarMenuItem } from './ToolbarMenuItem';
-import { ToolbarMenuRadioGroup, ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import { ToolbarMenuRadioGroup } from './ToolbarMenuRadioGroup';
 import { ToolbarMenuRadioGroupWrapper } from './ToolbarMenuRadioGroupWrapper';
 import { ToolbarRadioGroup } from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -50,8 +33,18 @@ import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicat
 import { ToolbarMenuItemIcon } from './ToolbarMenuItemIcon';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarMenuContextProvider } from './toolbarMenuContext';
-import { PopperShorthandProps } from '../../utils/positioner';
-import { BoxProps, Box } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { Accessibility, ToolbarBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, ShorthandCollection, ShorthandValue, ObjectShorthandValue } from '../../types';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps, ColorComponentProps } from '../../utils';
+import type { ToolbarCustomItemProps } from './ToolbarCustomItem';
+import type { ToolbarDividerProps } from './ToolbarDivider';
+import type { ToolbarItemProps } from './ToolbarItem';
+import type { ToolbarMenuProps } from './ToolbarMenu';
+import type { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
+import type { PopperShorthandProps } from '../../utils/positioner';
+import type { BoxProps } from '../Box/Box';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;

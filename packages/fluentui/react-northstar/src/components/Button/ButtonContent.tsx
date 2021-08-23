@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { commonPropTypes, SizeValue } from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
+import { commonPropTypes } from '../../utils';
+import { Box } from '../Box/Box';
+import type { SizeValue } from '../../utils';
+import type { BoxProps } from '../Box/Box';
 
 interface ButtonContentOwnProps {
   size?: SizeValue;

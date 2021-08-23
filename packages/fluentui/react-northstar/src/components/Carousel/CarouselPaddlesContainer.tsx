@@ -6,17 +6,12 @@ import {
   useAccessibility,
   getElementType,
   useUnhandledProps,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
-import {
-  commonPropTypes,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  childrenExist,
-} from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
-import { Accessibility } from '@fluentui/accessibility';
+import { commonPropTypes, childrenExist } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { Accessibility } from '@fluentui/accessibility';
 
 export interface CarouselPaddlesContainerProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

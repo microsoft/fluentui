@@ -1,10 +1,9 @@
-import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluentui/accessibility';
+import { formFieldBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { UIComponentProps, commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
-import { ShorthandValue } from '../../../types';
-import { Box, BoxProps } from '../../Box/Box';
+import { commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
+import { Box } from '../../Box/Box';
 import {
   getElementType,
   useUnhandledProps,
@@ -14,9 +13,16 @@ import {
   compose,
   useStyles,
 } from '@fluentui/react-bindings';
-import { FormLabel, FormLabelProps } from '../FormLabel';
-import { FormMessage, FormMessageProps } from '../FormMessage';
-import { FormFieldBaseValue, FormFieldBaseProvider } from './formFieldBaseContext';
+import { FormLabel } from '../FormLabel';
+import { FormMessage } from '../FormMessage';
+import { FormFieldBaseProvider } from './formFieldBaseContext';
+import type { Accessibility, FormFieldBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps } from '../../../utils';
+import type { ShorthandValue } from '../../../types';
+import type { BoxProps } from '../../Box/Box';
+import type { FormLabelProps } from '../FormLabel';
+import type { FormMessageProps } from '../FormMessage';
+import type { FormFieldBaseValue } from './formFieldBaseContext';
 
 export interface FormFieldBaseProps extends UIComponentProps {
   /**

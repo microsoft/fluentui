@@ -1,13 +1,15 @@
 import * as PropTypes from 'prop-types';
-import { compose, ComponentWithAs } from '@fluentui/react-bindings';
+import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import { SkeletonLine } from './SkeletonLine';
 import { SkeletonShape } from './SkeletonShape';
 import { SkeletonButton } from './SkeletonButton';
 import { SkeletonText } from './SkeletonText';
 import { SkeletonInput } from './SkeletonInput';
 import { SkeletonAvatar } from './SkeletonAvatar';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { BoxProps, BoxStylesProps } from '../Box/Box';
 
 export interface SkeletonOwnProps {
   /**

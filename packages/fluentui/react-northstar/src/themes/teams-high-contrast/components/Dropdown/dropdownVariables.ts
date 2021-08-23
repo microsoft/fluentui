@@ -1,5 +1,5 @@
-import { DropdownVariables } from '../../../teams/components/Dropdown/dropdownVariables';
 import { pxToRem } from '../../../../utils';
+import type { DropdownVariables } from '../../../teams/components/Dropdown/dropdownVariables';
 
 export const dropdownVariables = (siteVars): Partial<DropdownVariables> => ({
   borderColor: siteVars.colorScheme.default.border,

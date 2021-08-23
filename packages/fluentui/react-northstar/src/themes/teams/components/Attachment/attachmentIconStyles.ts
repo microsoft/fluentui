@@ -1,8 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { svgIconClassName } from '@fluentui/react-icons-northstar';
-
-import { AttachmentIconStylesProps } from '../../../../components/Attachment/AttachmentIcon';
-import { AttachmentVariables } from './attachmentVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AttachmentIconStylesProps } from '../../../../components/Attachment/AttachmentIcon';
+import type { AttachmentVariables } from './attachmentVariables';
 
 export const attachmentIconStyles: ComponentSlotStylesPrepared<AttachmentIconStylesProps, AttachmentVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({

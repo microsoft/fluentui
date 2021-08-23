@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { CarouselVariables } from './carouselVariables';
-import { CarouselPaddlesContainerStylesProps } from '../../../../components/Carousel/CarouselPaddlesContainer';
 import { pxToRem } from '../../../../utils';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CarouselVariables } from './carouselVariables';
+import type { CarouselPaddlesContainerStylesProps } from '../../../../components/Carousel/CarouselPaddlesContainer';
 
 export const carouselPaddlesContainerStyles: ComponentSlotStylesPrepared<
   CarouselPaddlesContainerStylesProps,

@@ -1,4 +1,4 @@
-import { IDateGridStrings } from './dateFormatting.types';
+import type { IDateGridStrings } from './dateFormatting.types';
 
 /**
  * Format date to a month-year string

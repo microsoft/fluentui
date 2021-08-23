@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { MenuButtonProps } from '../../../../components/MenuButton/MenuButton';
 import { popupContentSlotClassNames } from '../../../../components/Popup/PopupContent';
+import type { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { MenuButtonProps } from '../../../../components/MenuButton/MenuButton';
 
 export const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
   root: () => ({

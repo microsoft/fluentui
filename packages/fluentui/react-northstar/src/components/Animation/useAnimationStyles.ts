@@ -1,13 +1,12 @@
 import {
-  ComponentAnimationProp,
   unstable_getStyles as getStyles,
   unstable_createAnimationStyles as createAnimationStyles,
   useFluentContext,
 } from '@fluentui/react-bindings';
-import { ThemePrepared } from '@fluentui/styles';
-
 import * as _ from 'lodash';
-import { AnimationProps } from './Animation';
+import type { ComponentAnimationProp } from '@fluentui/react-bindings';
+import type { ThemePrepared } from '@fluentui/styles';
+import type { AnimationProps } from './Animation';
 
 type UseAnimationStylesResult = {
   className: string;

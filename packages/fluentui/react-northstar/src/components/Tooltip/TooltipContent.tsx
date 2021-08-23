@@ -1,6 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -13,18 +11,14 @@ import * as PopperJs from '@popperjs/core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-} from '../../utils';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 
-import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
-import { FluentComponentStaticProps } from '../../types';
+import { getBasePlacement } from '../../utils/positioner';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { PopperChildrenProps } from '../../utils/positioner';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface TooltipContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

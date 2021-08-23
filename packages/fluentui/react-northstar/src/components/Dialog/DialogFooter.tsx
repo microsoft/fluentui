@@ -1,17 +1,7 @@
 import * as React from 'react';
 
+import { createShorthandFactory, commonPropTypes, childrenExist } from '../../utils';
 import {
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  childrenExist,
-} from '../../utils';
-
-import { FluentComponentStaticProps } from '../../types';
-import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useUnhandledProps,
@@ -19,7 +9,10 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
-import { Accessibility } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { Accessibility } from '@fluentui/accessibility';
 
 export interface DialogFooterProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

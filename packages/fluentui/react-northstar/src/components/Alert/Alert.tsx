@@ -1,25 +1,16 @@
-import { Accessibility, alertBehavior, AlertBehaviorProps } from '@fluentui/accessibility';
+import { alertBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  UIComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  childrenExist,
-  createShorthandFactory,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
-import { ButtonProps } from '../Button/Button';
-import { Text, TextProps } from '../Text/Text';
+import { commonPropTypes, childrenExist, createShorthandFactory } from '../../utils';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
 
-import { ButtonGroup, ButtonGroupProps } from '../Button/ButtonGroup';
-import { AlertDismissAction, AlertDismissActionProps } from './AlertDismissAction';
+import { ButtonGroup } from '../Button/ButtonGroup';
+import { AlertDismissAction } from './AlertDismissAction';
 import {
-  ComponentWithAs,
   useAccessibility,
   getElementType,
   useStyles,
@@ -28,6 +19,20 @@ import {
   useUnhandledProps,
   useAutoControlled,
 } from '@fluentui/react-bindings';
+import type { Accessibility, AlertBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ContentComponentProps } from '../../utils';
+import type {
+  ComponentEventHandler,
+  ShorthandValue,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ButtonProps } from '../Button/Button';
+import type { TextProps } from '../Text/Text';
+import type { ButtonGroupProps } from '../Button/ButtonGroup';
+import type { AlertDismissActionProps } from './AlertDismissAction';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface AlertSlotClassNames {
   content: string;

@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { Button, ButtonProps } from '../Button/Button';
-import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
+import { Button } from '../Button/Button';
+import { _FormFieldBase } from './utils/formFieldBase';
+import type { ButtonProps } from '../Button/Button';
+import type { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormButtonOwnProps extends ButtonProps {}
 type SelectedFormFieldCustomProps = Omit<

@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { FluentComponentStaticProps } from '../../types';
-import { Accessibility } from '@fluentui/accessibility';
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useTelemetry,
   useStyles,
   getElementType,
@@ -12,6 +9,10 @@ import {
   useAccessibility,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
+import type { FluentComponentStaticProps } from '../../types';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps {
   /**

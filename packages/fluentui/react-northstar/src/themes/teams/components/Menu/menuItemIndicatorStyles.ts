@@ -1,8 +1,8 @@
 import { pxToRem } from '../../../../utils';
-import { MenuVariables } from './menuVariables';
-import { MenuItemIndicatorStylesProps } from '../../../../components/Menu/MenuItemIndicator';
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { submenuIndicatorDirection } from './submenuIndicatorDirection';
+import type { MenuVariables } from './menuVariables';
+import type { MenuItemIndicatorStylesProps } from '../../../../components/Menu/MenuItemIndicator';
+import type { ComponentSlotStylesPrepared } from '@fluentui/styles';
 
 export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }) => {

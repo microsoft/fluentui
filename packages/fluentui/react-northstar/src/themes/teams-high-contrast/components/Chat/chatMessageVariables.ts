@@ -1,4 +1,4 @@
-import { ChatMessageVariables } from '../../../teams/components/Chat/chatMessageVariables';
+import type { ChatMessageVariables } from '../../../teams/components/Chat/chatMessageVariables';
 
 export const chatMessageVariables = (siteVars: any): Partial<ChatMessageVariables> => ({
   border: `solid ${siteVars.borderWidth} ${siteVars.colorScheme.default.border}`,

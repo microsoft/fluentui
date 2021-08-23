@@ -1,6 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -10,9 +8,11 @@ import {
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { FluentComponentStaticProps } from '../../types';
-import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ChildrenComponentProps, UIComponentProps } from '../../utils';
 
 export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProps {
   /**

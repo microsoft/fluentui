@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { HeaderStylesProps } from '../../../../components/Header/Header';
-import { HeaderVariables } from './headerVariables';
 import { translateAlignProp } from '../../../../styles/translateAlignProp';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { HeaderStylesProps } from '../../../../components/Header/Header';
+import type { HeaderVariables } from './headerVariables';
 
 export const headerStyles: ComponentSlotStylesPrepared<HeaderStylesProps, HeaderVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

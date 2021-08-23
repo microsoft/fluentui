@@ -1,10 +1,11 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
-import { EmbedStylesProps, embedSlotClassNames } from '../../../../components/Embed/Embed';
-import { EmbedVariables } from './embedVariables';
+import { embedSlotClassNames } from '../../../../components/Embed/Embed';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { playIndicatorUrl } from './playIndicatorUrl';
 import { pauseIndicatorUrl } from './pauseIndicatorUrl';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { EmbedStylesProps } from '../../../../components/Embed/Embed';
+import type { EmbedVariables } from './embedVariables';
 
 export const embedStyles: ComponentSlotStylesPrepared<EmbedStylesProps, EmbedVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {

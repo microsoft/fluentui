@@ -1,6 +1,5 @@
-import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentui/accessibility';
+import { checkboxBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -15,11 +14,16 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { createShorthandFactory, ChildrenComponentProps, commonPropTypes, UIComponentProps } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
-import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import type { Accessibility, CheckboxBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ChildrenComponentProps, UIComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { TextProps } from '../Text/Text';
+import type { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 
 export interface CheckboxSlotClassNames {
   label: string;

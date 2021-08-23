@@ -1,7 +1,9 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { compose } from '@fluentui/react-bindings';
-import { commonPropTypes, SizeValue } from '../../utils';
-import { SkeletonLineProps, SkeletonLine, SkeletonLineStylesProps } from './SkeletonLine';
+import { commonPropTypes } from '../../utils';
+import { SkeletonLine } from './SkeletonLine';
+import type { SizeValue } from '../../utils';
+import type { SkeletonLineProps, SkeletonLineStylesProps } from './SkeletonLine';
 
 export interface SkeletonTextOwnProps {
   /** A skeleton text can be sized. */

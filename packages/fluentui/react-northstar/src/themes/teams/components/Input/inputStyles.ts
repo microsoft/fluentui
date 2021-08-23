@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { InputStylesProps } from '../../../../components/Input/Input';
-import { InputVariables } from './inputVariables';
-import { PositionProperty } from 'csstype';
 import { pxToRem } from '../../../../utils';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { InputStylesProps } from '../../../../components/Input/Input';
+import type { InputVariables } from './inputVariables';
+import type { PositionProperty } from 'csstype';
 
 export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

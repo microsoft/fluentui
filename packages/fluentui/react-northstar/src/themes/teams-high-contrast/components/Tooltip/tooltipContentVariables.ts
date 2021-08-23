@@ -1,4 +1,4 @@
-import { TooltipContentVariables } from '../../../teams/components/Tooltip/tooltipContentVariables';
+import type { TooltipContentVariables } from '../../../teams/components/Tooltip/tooltipContentVariables';
 
 export const tooltipContentVariables = (siteVars): Partial<TooltipContentVariables> => ({
   boxShadow: undefined,

@@ -1,11 +1,9 @@
-import { Accessibility, textAreaBehavior, TextAreaBehaviorProps } from '@fluentui/accessibility';
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import { textAreaBehavior } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useAutoControlled,
   getElementType,
   useTelemetry,
@@ -14,6 +12,10 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, TextAreaBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

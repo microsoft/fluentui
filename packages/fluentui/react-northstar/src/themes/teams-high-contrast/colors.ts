@@ -1,7 +1,7 @@
 import { colors } from '../teams/siteVariables';
-import { TeamsCategoryColorSchemeMapping } from '../teams/types';
-import { ColorSchemeMapping } from '../../themes/types';
 import { createColorScheme as createEmptyColorScheme } from '../teams/colors';
+import type { TeamsCategoryColorSchemeMapping } from '../teams/types';
+import type { ColorSchemeMapping } from '../../themes/types';
 
 export const accessibleYellow = '#ffff01';
 export const accessibleGreen = '#3ff23f'; // always disabled color in high contrast

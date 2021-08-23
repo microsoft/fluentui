@@ -1,4 +1,4 @@
-import {
+import type {
   ColorPalette,
   PrimitiveColors,
   ColorSchemeMapping,
@@ -7,7 +7,7 @@ import {
   StrictColorSchemeMapping,
   StrictColorScheme,
 } from '../types';
-import { TeamsColorNames, TeamsContextualColors, TeamsNaturalColors, TeamsTransparentColors } from './types';
+import type { TeamsColorNames, TeamsContextualColors, TeamsNaturalColors, TeamsTransparentColors } from './types';
 
 export const contextualColors: TeamsContextualColors = {
   brand: {

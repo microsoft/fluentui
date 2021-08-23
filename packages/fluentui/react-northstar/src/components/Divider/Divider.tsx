@@ -1,4 +1,3 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
   useTelemetry,
   useAccessibility,
@@ -6,25 +5,16 @@ import {
   useFluentContext,
   useUnhandledProps,
   useStyles,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ColorComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthand,
-} from '../../utils';
-
-import { FluentComponentStaticProps } from '../../types';
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer, createShorthand } from '../../utils';
 import { DividerContent } from './DividerContent';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ColorComponentProps, ContentComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface DividerProps
   extends UIComponentProps,

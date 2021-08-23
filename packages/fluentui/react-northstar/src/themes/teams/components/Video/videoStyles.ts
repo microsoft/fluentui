@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { VideoStylesProps } from '../../../../components/Video/Video';
-import { VideoVariables } from './videoVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { VideoStylesProps } from '../../../../components/Video/Video';
+import type { VideoVariables } from './videoVariables';
 
 export const videoStyles: ComponentSlotStylesPrepared<VideoStylesProps, VideoVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({

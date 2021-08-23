@@ -1,11 +1,14 @@
-import { ComponentSlotClasses, useStyles, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
-import { ComponentSlotStylesPrepared, ComponentSlotStylesResolved, mergeStyles } from '@fluentui/styles';
+import { useStyles, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
+import { mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
+import { commonPropTypes } from '../../utils';
+import type { ComponentSlotClasses } from '@fluentui/react-bindings';
+import type { ComponentSlotStylesPrepared, ComponentSlotStylesResolved } from '@fluentui/styles';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
 
 type ChildrenFunction = (params: { styles: ComponentSlotStylesPrepared; classes: string }) => React.ReactElement;
 

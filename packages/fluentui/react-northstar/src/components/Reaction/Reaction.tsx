@@ -1,22 +1,10 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthandFactory,
-  ContentComponentProps,
-} from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
-
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
+import { Box } from '../Box/Box';
 import { ReactionGroup } from './ReactionGroup';
 import {
-  ComponentWithAs,
   useTelemetry,
   useFluentContext,
   getElementType,
@@ -24,6 +12,11 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface ReactionSlotClassNames {
   icon: string;

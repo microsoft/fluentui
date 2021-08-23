@@ -1,17 +1,15 @@
-import { Accessibility, embedBehavior, EmbedBehaviorProps } from '@fluentui/accessibility';
+import { embedBehavior } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
-import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { Image } from '../Image/Image';
-import { Video, VideoProps } from '../Video/Video';
-import { Box, BoxProps } from '../Box/Box';
-import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { Video } from '../Video/Video';
+import { Box } from '../Box/Box';
 import { Ref } from '@fluentui/react-component-ref';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -20,6 +18,12 @@ import {
   useTelemetry,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, EmbedBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps } from '../../utils';
+import type { VideoProps } from '../Video/Video';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface EmbedSlotClassNames {
   control: string;

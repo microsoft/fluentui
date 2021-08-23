@@ -1,6 +1,5 @@
-import { Accessibility, treeItemBehavior, TreeItemBehaviorProps } from '@fluentui/accessibility';
+import { treeItemBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -18,12 +17,15 @@ import {
   childrenExist,
   createShorthandFactory,
   commonPropTypes,
-  UIComponentProps,
-  ChildrenComponentProps,
   rtlTextContainer,
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
-import {
+import { TreeTitle } from './TreeTitle';
+import { TreeContext } from './context';
+import type { Accessibility, TreeItemBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type {
   ComponentEventHandler,
   ShorthandRenderFunction,
   ShorthandValue,
@@ -31,9 +33,8 @@ import {
   FluentComponentStaticProps,
   ComponentKeyboardEventHandler,
 } from '../../types';
-import { TreeTitle, TreeTitleProps } from './TreeTitle';
-import { BoxProps } from '../Box/Box';
-import { TreeContext } from './context';
+import type { TreeTitleProps } from './TreeTitle';
+import type { BoxProps } from '../Box/Box';
 
 export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

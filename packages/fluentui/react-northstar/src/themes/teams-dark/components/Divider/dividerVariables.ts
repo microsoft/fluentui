@@ -1,5 +1,6 @@
-import { DividerVariables, dividerColorAreas } from '../../../teams/components/Divider/dividerVariables';
+import { dividerColorAreas } from '../../../teams/components/Divider/dividerVariables';
 import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import type { DividerVariables } from '../../../teams/components/Divider/dividerVariables';
 
 export const dividerVariables = (siteVars: any): Partial<DividerVariables> => ({
   colorScheme: pickValuesFromColorScheme(

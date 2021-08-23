@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { ItemLayoutStylesProps } from '../../../../components/ItemLayout/ItemLayout';
-import { ItemLayoutVariables } from './itemLayoutVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ItemLayoutStylesProps } from '../../../../components/ItemLayout/ItemLayout';
+import type { ItemLayoutVariables } from './itemLayoutVariables';
 
 export const itemLayoutStyles: ComponentSlotStylesPrepared<ItemLayoutStylesProps, ItemLayoutVariables> = {
   root: ({ variables }): ICSSInJSStyle => {

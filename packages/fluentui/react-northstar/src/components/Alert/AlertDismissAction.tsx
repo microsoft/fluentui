@@ -1,21 +1,10 @@
-import { Accessibility, buttonBehavior, ButtonBehaviorProps } from '@fluentui/accessibility';
+import { buttonBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  ContentComponentProps,
-} from '../../utils';
-
-import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -23,7 +12,12 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { Accessibility, ButtonBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { BoxProps } from '../Box/Box';
 
 export interface AlertDismissActionProps
   extends UIComponentProps,

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useAutoControlled } from '@fluentui/react-bindings';
-import { ObjectShorthandCollection } from '../../../types';
-import { TreeItemProps } from '../TreeItem';
-import { FlatTreeItem, flattenTree, FlatTree } from './flattenTree';
+import { flattenTree } from './flattenTree';
 import * as _ from 'lodash';
+import type { ObjectShorthandCollection } from '../../../types';
+import type { TreeItemProps } from '../TreeItem';
+import type { FlatTreeItem, FlatTree } from './flattenTree';
 
 export type GetItemById = (id: string) => FlatTreeItem;
 

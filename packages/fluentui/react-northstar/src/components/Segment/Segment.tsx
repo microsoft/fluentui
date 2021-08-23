@@ -1,21 +1,8 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
+import { Box } from '../Box/Box';
 import {
-  childrenExist,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  ColorComponentProps,
-  createShorthandFactory,
-} from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
-
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
-import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useAccessibility,
@@ -23,6 +10,11 @@ import {
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps, ColorComponentProps } from '../../utils';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface SegmentProps
   extends UIComponentProps<SegmentProps>,

@@ -1,7 +1,7 @@
-import { BreadcrumbLinkStylesProps } from '../../../../components/Breadcrumb/BreadcrumbLink';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { BreadcrumbVariables } from './breadcrumbVariables';
+import type { BreadcrumbLinkStylesProps } from '../../../../components/Breadcrumb/BreadcrumbLink';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { BreadcrumbVariables } from './breadcrumbVariables';
 
 export const breadcrumbLinkStyles: ComponentSlotStylesPrepared<BreadcrumbLinkStylesProps, BreadcrumbVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {

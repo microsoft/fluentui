@@ -2,22 +2,11 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import { Accessibility, tabBehavior, TabBehaviorProps } from '@fluentui/accessibility';
+import { tabBehavior } from '@fluentui/accessibility';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
+import { Box } from '../Box/Box';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  ContentComponentProps,
-  ChildrenComponentProps,
-} from '../../utils';
-
-import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
-import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useFluentContext,
@@ -25,6 +14,11 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, TabBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;

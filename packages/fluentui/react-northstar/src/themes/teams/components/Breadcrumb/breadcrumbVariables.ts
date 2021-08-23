@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { FontWeightProperty } from 'csstype';
+import type { FontWeightProperty } from 'csstype';
 
 export interface BreadcrumbVariables {
   dividerMargin?: string;

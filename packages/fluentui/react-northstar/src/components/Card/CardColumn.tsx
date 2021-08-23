@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { FluentComponentStaticProps } from '../../types';
-import { Accessibility } from '@fluentui/accessibility';
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useTelemetry,
   useStyles,
   getElementType,
@@ -11,6 +8,10 @@ import {
   useAccessibility,
   useFluentContext,
 } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps } from '../../types';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface CardColumnProps extends UIComponentProps, ChildrenComponentProps {
   /**

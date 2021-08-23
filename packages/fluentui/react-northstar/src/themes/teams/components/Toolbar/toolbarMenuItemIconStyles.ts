@@ -1,8 +1,7 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-
 import { pxToRem } from '../../../../utils';
-import { ToolbarMenuItemIconStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemIcon';
-import { ToolbarVariables } from './toolbarVariables';
+import type { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { ToolbarMenuItemIconStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemIcon';
+import type { ToolbarVariables } from './toolbarVariables';
 
 export const toolbarMenuItemIconStyles: ComponentSlotStylesPrepared<
   ToolbarMenuItemIconStylesProps,

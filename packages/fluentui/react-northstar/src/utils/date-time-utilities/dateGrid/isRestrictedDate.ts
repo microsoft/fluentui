@@ -1,7 +1,7 @@
-import { IRestrictedDatesOptions } from './dateGrid.types';
 import { compareDates } from '../dateMath/dateMath';
 import { isBeforeMinDate } from './isBeforeMinDate';
 import { isAfterMaxDate } from './isAfterMaxDate';
+import type { IRestrictedDatesOptions } from './dateGrid.types';
 
 /**
  * Checks if `date` falls into the restricted `options`

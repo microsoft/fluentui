@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { ChatMessageDetailsStylesProps } from '../../../../components/Chat/ChatMessageDetails';
-import { ChatMessageDetailsVariables } from './chatMessageDetailsVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ChatMessageDetailsStylesProps } from '../../../../components/Chat/ChatMessageDetails';
+import type { ChatMessageDetailsVariables } from './chatMessageDetailsVariables';
 
 export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
   ChatMessageDetailsStylesProps,

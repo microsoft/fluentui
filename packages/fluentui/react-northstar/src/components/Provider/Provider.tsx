@@ -1,22 +1,32 @@
 import * as _ from 'lodash';
 import {
-  ComponentWithAs,
   defaultContextValue,
   getElementType,
   useUnhandledProps,
-  StylesContextPerformanceInput,
   RendererContext,
-  ProviderContextInput,
-  ProviderContextPrepared,
   Telemetry,
   useFluentContext,
   unstable_getStyles,
   useIsomorphicLayoutEffect,
   Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
-import { Renderer } from '@fluentui/react-northstar-styles-renderer';
-import {
-  mergeSiteVariables,
+import { mergeSiteVariables } from '@fluentui/styles';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+
+import { setUpWhatInput, tryCleanupWhatInput } from '../../utils';
+
+import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
+import { ProviderConsumer } from './ProviderConsumer';
+import { usePortalBox, PortalBoxContext } from './usePortalBox';
+import type {
+  ComponentWithAs,
+  StylesContextPerformanceInput,
+  ProviderContextInput,
+  ProviderContextPrepared,
+} from '@fluentui/react-bindings';
+import type { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import type {
   StaticStyleObject,
   StaticStyle,
   StaticStyleFunction,
@@ -24,14 +34,7 @@ import {
   ThemeInput,
   SiteVariablesPrepared,
 } from '@fluentui/styles';
-import * as PropTypes from 'prop-types';
-import * as React from 'react';
-
-import { ChildrenComponentProps, setUpWhatInput, tryCleanupWhatInput, UIComponentProps } from '../../utils';
-
-import { mergeProviderContexts } from '../../utils/mergeProviderContexts';
-import { ProviderConsumer } from './ProviderConsumer';
-import { usePortalBox, PortalBoxContext } from './usePortalBox';
+import type { ChildrenComponentProps, UIComponentProps } from '../../utils';
 
 export interface ProviderProps extends ChildrenComponentProps, UIComponentProps {
   rtl?: boolean;

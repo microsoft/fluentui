@@ -1,6 +1,5 @@
-import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/accessibility';
+import { treeBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useTelemetry,
   useUnhandledProps,
   getElementType,
@@ -11,24 +10,23 @@ import {
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { TreeItem, TreeItemProps } from './TreeItem';
-import { TreeTitle, TreeTitleProps } from './TreeTitle';
-import {
-  childrenExist,
-  commonPropTypes,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  rtlTextContainer,
-} from '../../utils';
-import {
+import { TreeItem } from './TreeItem';
+import { TreeTitle } from './TreeTitle';
+import { childrenExist, commonPropTypes, createShorthandFactory, rtlTextContainer } from '../../utils';
+import { useTree } from './hooks/useTree';
+import { TreeContext } from './context';
+import type { Accessibility, TreeBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { TreeItemProps } from './TreeItem';
+import type { TreeTitleProps } from './TreeTitle';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type {
   ComponentEventHandler,
   ObjectShorthandCollection,
   FluentComponentStaticProps,
   ShorthandRenderFunction,
 } from '../../types';
-import { useTree } from './hooks/useTree';
-import { TreeContext, TreeRenderContextValue } from './context';
+import type { TreeRenderContextValue } from './context';
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

@@ -1,6 +1,6 @@
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
-import { TeamsSchemeMappingWithAreas } from '../../types';
-import { ItemType } from '../../../types';
+import type { TeamsSchemeMappingWithAreas } from '../../types';
+import type { ItemType } from '../../../types';
 
 export const labelColorAreas = stringLiteralsArray('foreground', 'background');
 export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof labelColorAreas>>;

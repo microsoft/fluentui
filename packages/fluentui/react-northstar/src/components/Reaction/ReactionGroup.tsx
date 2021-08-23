@@ -1,21 +1,9 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as _ from 'lodash';
-
-import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
+import { Reaction } from './Reaction';
 import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthandFactory,
-} from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
-import { Reaction, ReactionProps } from './Reaction';
-import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -23,6 +11,11 @@ import {
   useTelemetry,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ReactionProps } from './Reaction';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface ReactionGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

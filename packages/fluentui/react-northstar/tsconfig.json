@@ -10,7 +10,8 @@
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"],
       "@fluentui/a11y-testing": ["packages/a11y-testing/src/index"]
-    }
+    },
+    "isolatedModules": true
   },
   "include": ["src", "test"],
   "references": [

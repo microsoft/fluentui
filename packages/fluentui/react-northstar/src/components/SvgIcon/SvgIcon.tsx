@@ -1,20 +1,9 @@
-import {
-  ComponentWithAs,
-  getElementType,
-  getUnhandledProps,
-  useStyles,
-  useFluentContext,
-  useTelemetry,
-} from '@fluentui/react-bindings';
-import {
-  SvgIconProps,
-  svgIconClassName,
-  svgIconDisplayName,
-  svgIconHandledProps,
-  SvgIconChildrenFn,
-} from '@fluentui/react-icons-northstar';
+import { getElementType, getUnhandledProps, useStyles, useFluentContext, useTelemetry } from '@fluentui/react-bindings';
+import { svgIconClassName, svgIconDisplayName, svgIconHandledProps } from '@fluentui/react-icons-northstar';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { SvgIconProps, SvgIconChildrenFn } from '@fluentui/react-icons-northstar';
 
 export type SvgIconStylesProps = Required<
   Pick<SvgIconProps, 'bordered' | 'circular' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'>

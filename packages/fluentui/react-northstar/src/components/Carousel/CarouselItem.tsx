@@ -1,20 +1,11 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { carouselItemBehavior, CarouselItemBehaviorProps, Accessibility } from '@fluentui/accessibility';
+import { carouselItemBehavior } from '@fluentui/accessibility';
 
-import {
-  commonPropTypes,
-  UIComponentProps,
-  childrenExist,
-  createShorthandFactory,
-  ContentComponentProps,
-  ChildrenComponentProps,
-} from '../../utils';
+import { commonPropTypes, childrenExist, createShorthandFactory } from '../../utils';
 
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import { FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   useFluentContext,
@@ -22,6 +13,10 @@ import {
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { CarouselItemBehaviorProps, Accessibility } from '@fluentui/accessibility';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface CarouselItemSlotClassNames {
   itemPositionText: string;

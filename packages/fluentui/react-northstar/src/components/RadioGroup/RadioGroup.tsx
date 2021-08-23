@@ -1,22 +1,13 @@
 // TODO:
 // vertical - padding variable?
-import { Accessibility, radioGroupBehavior, RadioGroupBehaviorProps } from '@fluentui/accessibility';
+import { radioGroupBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
+import { RadioGroupItem } from './RadioGroupItem';
 import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthandFactory,
-} from '../../utils';
-import { RadioGroupItem, RadioGroupItemProps } from './RadioGroupItem';
-import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
-import {
-  ComponentWithAs,
   useAutoControlled,
   useTelemetry,
   useFluentContext,
@@ -25,6 +16,11 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, RadioGroupBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { RadioGroupItemProps } from './RadioGroupItem';
+import type { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

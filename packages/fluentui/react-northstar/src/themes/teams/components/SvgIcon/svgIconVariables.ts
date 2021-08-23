@@ -1,7 +1,7 @@
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
 import { pickValuesFromColorScheme } from '../../../colorUtils';
+import type { ItemType } from '../../../types';
+import type { TeamsSchemeMappingWithAreas } from '../../types';
 
 export type IconSizeModifier = 'x' | 'xx';
 export const iconColorAreas = stringLiteralsArray('foreground');

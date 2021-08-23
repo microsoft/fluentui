@@ -1,6 +1,5 @@
-import { Accessibility, listBehavior, ListBehaviorProps } from '@fluentui/accessibility';
+import { listBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -13,24 +12,26 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ComponentEventHandler, ShorthandCollection, ReactChildren, FluentComponentStaticProps } from '../../types';
-import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthandFactory,
-} from '../../utils';
-import { ListContextProvider, ListContextValue } from './listContext';
-import { ListItem, ListItemProps } from './ListItem';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
+import { ListContextProvider } from './listContext';
+import { ListItem } from './ListItem';
 import { ListItemContent } from './ListItemContent';
 import { ListItemContentMedia } from './ListItemContentMedia';
 import { ListItemEndMedia } from './ListItemEndMedia';
 import { ListItemHeader } from './ListItemHeader';
 import { ListItemHeaderMedia } from './ListItemHeaderMedia';
 import { ListItemMedia } from './ListItemMedia';
+import type { Accessibility, ListBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type {
+  ComponentEventHandler,
+  ShorthandCollection,
+  ReactChildren,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ListContextValue } from './listContext';
+import type { ListItemProps } from './ListItem';
 
 export interface ListProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

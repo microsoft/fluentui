@@ -1,20 +1,7 @@
-import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  ColorComponentProps,
-  rtlTextContainer,
-} from '../../utils';
-
-import { FluentComponentStaticProps } from '../../types';
-import {
-  ComponentWithAs,
   useTelemetry,
   useFluentContext,
   getElementType,
@@ -22,6 +9,10 @@ import {
   useAccessibility,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps, ColorComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface HeaderDescriptionProps
   extends UIComponentProps,

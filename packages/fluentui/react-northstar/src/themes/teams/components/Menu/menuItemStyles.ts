@@ -1,11 +1,12 @@
 import { pxToRem } from '../../../../utils';
-import { StrictColorScheme, ItemType } from '../../../types';
-import { MenuVariables, menuColorAreas } from './menuVariables';
-import { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
+import { menuColorAreas } from './menuVariables';
 import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { StrictColorScheme, ItemType } from '../../../types';
+import type { MenuVariables } from './menuVariables';
+import type { MenuItemStylesProps } from '../../../../components/Menu/MenuItem';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);

@@ -1,5 +1,5 @@
-import { InputVariables } from '../../../teams/components/Input/inputVariables';
 import { pxToRem } from '../../../../utils';
+import type { InputVariables } from '../../../teams/components/Input/inputVariables';
 
 export const inputVariables = (siteVars: any): Partial<InputVariables> => {
   return {

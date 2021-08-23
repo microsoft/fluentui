@@ -1,5 +1,5 @@
-import { SiteVariablesPrepared } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
+import type { SiteVariablesPrepared } from '@fluentui/styles';
 
 export interface SplitButtonVariables {
   borderRadius: string;

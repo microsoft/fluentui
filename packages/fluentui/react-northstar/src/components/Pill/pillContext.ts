@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accessibility, PillBehaviorProps } from '@fluentui/accessibility';
+import type { Accessibility, PillBehaviorProps } from '@fluentui/accessibility';
 
 export type PillsContextValue = {
   pillBehavior: Accessibility<PillBehaviorProps>;

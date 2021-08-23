@@ -1,8 +1,8 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import { pxToRem } from '../../../../utils';
-import { ToolbarMenuItemSubmenuIndicatorStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemSubmenuIndicator';
-import { ToolbarVariables } from './toolbarVariables';
+import type { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { ToolbarMenuItemSubmenuIndicatorStylesProps } from '../../../../components/Toolbar/ToolbarMenuItemSubmenuIndicator';
+import type { ToolbarVariables } from './toolbarVariables';
 
 export const toolbarMenuItemSubmenuIndicatorStyles: ComponentSlotStylesPrepared<
   ToolbarMenuItemSubmenuIndicatorStylesProps,

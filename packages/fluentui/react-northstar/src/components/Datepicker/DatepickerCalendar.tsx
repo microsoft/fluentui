@@ -1,16 +1,11 @@
-import { Accessibility, datepickerCalendarBehavior, DatepickerCalendarBehaviorProps } from '@fluentui/accessibility';
+import { datepickerCalendarBehavior } from '@fluentui/accessibility';
 import {
   DateRangeType,
   DayOfWeek,
   DAYS_IN_WEEK,
   FirstWeekOfYear,
   getDayGrid,
-  IDay,
   DEFAULT_CALENDAR_STRINGS,
-  ICalendarStrings,
-  IDayGridOptions,
-  IDateGridStrings,
-  IRestrictedDatesOptions,
   compareDates,
   compareDatePart,
   getMonthStart,
@@ -19,7 +14,6 @@ import {
   getEndDateOfWeek,
 } from '../../utils/date-time-utilities';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -31,15 +25,31 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { commonPropTypes, createShorthand, UIComponentProps } from '../../utils';
-import { DatepickerCalendarGrid, DatepickerCalendarGridProps } from './DatepickerCalendarGrid';
-import { DatepickerCalendarGridRow, DatepickerCalendarGridRowProps } from './DatepickerCalendarGridRow';
-import { DatepickerCalendarHeader, DatepickerCalendarHeaderProps } from './DatepickerCalendarHeader';
-import { DatepickerCalendarCellProps, DatepickerCalendarCell } from './DatepickerCalendarCell';
-import { DatepickerCalendarCellButtonProps, DatepickerCalendarCellButton } from './DatepickerCalendarCellButton';
-import { DatepickerCalendarHeaderCellProps, DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
+import { commonPropTypes, createShorthand } from '../../utils';
+import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
+import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
+import { DatepickerCalendarHeader } from './DatepickerCalendarHeader';
+import { DatepickerCalendarCell } from './DatepickerCalendarCell';
+import { DatepickerCalendarCellButton } from './DatepickerCalendarCellButton';
+import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { navigateToNewDate, contstraintNavigatedDate } from './navigateToNewDate';
+import type { Accessibility, DatepickerCalendarBehaviorProps } from '@fluentui/accessibility';
+import type {
+  IDay,
+  ICalendarStrings,
+  IDayGridOptions,
+  IDateGridStrings,
+  IRestrictedDatesOptions,
+} from '../../utils/date-time-utilities';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
+import type { UIComponentProps } from '../../utils';
+import type { DatepickerCalendarGridProps } from './DatepickerCalendarGrid';
+import type { DatepickerCalendarGridRowProps } from './DatepickerCalendarGridRow';
+import type { DatepickerCalendarHeaderProps } from './DatepickerCalendarHeader';
+import type { DatepickerCalendarCellProps } from './DatepickerCalendarCell';
+import type { DatepickerCalendarCellButtonProps } from './DatepickerCalendarCellButton';
+import type { DatepickerCalendarHeaderCellProps } from './DatepickerCalendarHeaderCell';
 
 export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDayGridOptions> {
   /** Calendar can have header. */

@@ -1,6 +1,7 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { BoxProps, Box } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { BoxProps } from '../Box/Box';
 
 export type DatepickerCalendarGridRowProps = {
   isRowSelectionActive?: boolean;

@@ -1,9 +1,4 @@
-import {
-  Accessibility,
-  toolbarRadioGroupBehavior,
-  toolbarRadioGroupItemBehavior,
-  ToolbarRadioGroupBehaviorProps,
-} from '@fluentui/accessibility';
+import { toolbarRadioGroupBehavior, toolbarRadioGroupItemBehavior } from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
@@ -20,18 +15,15 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  createShorthand,
-  UIComponentProps,
-  childrenExist,
-  commonPropTypes,
-} from '../../utils';
-import { ShorthandCollection } from '../../types';
-import { ToolbarDivider, ToolbarDividerProps } from './ToolbarDivider';
-import { ToolbarItem, ToolbarItemProps } from './ToolbarItem';
+import { createShorthand, childrenExist, commonPropTypes } from '../../utils';
+import { ToolbarDivider } from './ToolbarDivider';
+import { ToolbarItem } from './ToolbarItem';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
+import type { Accessibility, ToolbarRadioGroupBehaviorProps } from '@fluentui/accessibility';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { ShorthandCollection } from '../../types';
+import type { ToolbarDividerProps } from './ToolbarDivider';
+import type { ToolbarItemProps } from './ToolbarItem';
 
 export type ToolbarRadioGroupItemShorthandKinds = {
   divider: ToolbarDividerProps;

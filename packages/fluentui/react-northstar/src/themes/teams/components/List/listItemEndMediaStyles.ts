@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-
-import { ListItemEndMediaStylesProps } from '../../../../components/List/ListItemEndMedia';
-import { ListItemVariables } from './listItemVariables';
+import type { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import type { ListItemEndMediaStylesProps } from '../../../../components/List/ListItemEndMedia';
+import type { ListItemVariables } from './listItemVariables';
 
 export const listItemEndMediaStyles: ComponentSlotStylesPrepared<ListItemEndMediaStylesProps, ListItemVariables> = {
   root: ({ props: p }) => ({

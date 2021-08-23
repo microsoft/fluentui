@@ -1,4 +1,4 @@
-import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
+import { tooltipAsLabelBehavior } from '@fluentui/accessibility';
 import {
   useAccessibility,
   useAutoControlled,
@@ -15,29 +15,20 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  StyledComponentProps,
   commonPropTypes,
   isFromKeyboard,
   setWhatInputSource,
   getOrGenerateIdFromShorthand,
   createShorthandFactory,
 } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import {
-  ALIGNMENTS,
-  POSITIONS,
-  Popper,
-  PositioningProps,
-  PopperChildrenProps,
-  Alignment,
-  Position,
-  AutoSize,
-  AUTOSIZES,
-} from '../../utils/positioner';
+import { ALIGNMENTS, POSITIONS, Popper, AUTOSIZES } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
-import { TooltipContent, TooltipContentProps } from './TooltipContent';
+import { TooltipContent } from './TooltipContent';
+import type { Accessibility, TooltipBehaviorProps } from '@fluentui/accessibility';
+import type { ChildrenComponentProps, ContentComponentProps, StyledComponentProps } from '../../utils';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { PositioningProps, PopperChildrenProps, Alignment, Position, AutoSize } from '../../utils/positioner';
+import type { TooltipContentProps } from './TooltipContent';
 
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,

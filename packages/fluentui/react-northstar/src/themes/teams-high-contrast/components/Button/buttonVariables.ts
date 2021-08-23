@@ -1,4 +1,4 @@
-import { ButtonVariables } from '../../../teams/components/Button/buttonVariables';
+import type { ButtonVariables } from '../../../teams/components/Button/buttonVariables';
 
 export const buttonVariables = (siteVars: any): Partial<ButtonVariables> => {
   return {

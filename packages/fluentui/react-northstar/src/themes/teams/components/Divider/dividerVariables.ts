@@ -1,8 +1,8 @@
-import { FontWeightProperty } from 'csstype';
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
 import { pickValuesFromColorScheme } from '../../../colorUtils';
+import type { FontWeightProperty } from 'csstype';
+import type { ItemType } from '../../../types';
+import type { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const dividerColorAreas = stringLiteralsArray('foreground');
 export type DividerColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof dividerColorAreas>>;

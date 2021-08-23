@@ -1,6 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -11,19 +9,16 @@ import {
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { FluentComponentStaticProps, ShorthandValue } from '../../types';
-import {
-  ChildrenComponentProps,
-  childrenExist,
-  commonPropTypes,
-  createShorthandFactory,
-  rtlTextContainer,
-  UIComponentProps,
-} from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
-import { ChatDensity, useChatDensityContext } from './chatDensityContext';
+import { childrenExist, commonPropTypes, createShorthandFactory, rtlTextContainer } from '../../utils';
+import { Box } from '../Box/Box';
+import { useChatDensityContext } from './chatDensityContext';
 import { ChatItemContextProvider } from './chatItemContext';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps, ShorthandValue } from '../../types';
+import type { ChildrenComponentProps, UIComponentProps } from '../../utils';
+import type { BoxProps } from '../Box/Box';
+import type { ChatDensity } from './chatDensityContext';
 
 export interface ChatItemSlotClassNames {
   message: string;

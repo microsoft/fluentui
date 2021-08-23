@@ -1,25 +1,13 @@
-import {
-  ComponentWithAs,
-  ComponentSlotClasses,
-  useStyles,
-  useFluentContext,
-  useTelemetry,
-  useUnhandledProps,
-} from '@fluentui/react-bindings';
+import { useStyles, useFluentContext, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import {
-  createShorthandFactory,
-  pxToRem,
-  UIComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-  rtlTextContainer,
-} from '../../utils';
+import { createShorthandFactory, pxToRem, commonPropTypes, rtlTextContainer } from '../../utils';
 import { Layout } from '../Layout/Layout';
-import { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs, ComponentSlotClasses } from '@fluentui/react-bindings';
+import type { UIComponentProps, ContentComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface ItemLayoutSlotClassNames {
   header: string;

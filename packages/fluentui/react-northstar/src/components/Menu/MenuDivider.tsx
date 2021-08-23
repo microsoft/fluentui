@@ -1,6 +1,5 @@
-import { Accessibility, MenuDividerBehaviorProps, menuDividerBehavior } from '@fluentui/accessibility';
+import { menuDividerBehavior } from '@fluentui/accessibility';
 import {
-  ForwardRefWithAs,
   getElementType,
   mergeVariablesOverrides,
   useFluentContext,
@@ -13,17 +12,13 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  childrenExist,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  rtlTextContainer,
-} from '../../utils';
-import { MenuContext, MenuDividerSubscribedValue } from './menuContext';
-import { FluentComponentStaticProps } from '../../types';
+import { createShorthandFactory, commonPropTypes, childrenExist, rtlTextContainer } from '../../utils';
+import { MenuContext } from './menuContext';
+import type { Accessibility, MenuDividerBehaviorProps } from '@fluentui/accessibility';
+import type { ForwardRefWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { MenuDividerSubscribedValue } from './menuContext';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface MenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */

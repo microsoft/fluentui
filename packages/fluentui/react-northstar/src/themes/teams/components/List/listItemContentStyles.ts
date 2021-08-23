@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { ListItemContentStylesProps } from '../../../../components/List/ListItemContent';
-import { ListItemVariables } from './listItemVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ListItemContentStylesProps } from '../../../../components/List/ListItemContent';
+import type { ListItemVariables } from './listItemVariables';
 
 export const listItemContentStyles: ComponentSlotStylesPrepared<ListItemContentStylesProps, ListItemVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TooltipContentStylesProps } from '../../../../components/Tooltip/TooltipContent';
-import { TooltipContentVariables } from './tooltipContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
 import { pointerSvgUrl } from '../../pointerSvgUrl';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { TooltipContentStylesProps } from '../../../../components/Tooltip/TooltipContent';
+import type { TooltipContentVariables } from './tooltipContentVariables';
 
 export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

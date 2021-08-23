@@ -1,8 +1,8 @@
-import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
 import { formatDay } from './formatDay';
 import { formatYear } from './formatYear';
 import { formatMonthDayYear } from './formatMonthDayYear';
 import { formatMonthYear } from './formatMonthYear';
+import type { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
 
 export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
   months: [

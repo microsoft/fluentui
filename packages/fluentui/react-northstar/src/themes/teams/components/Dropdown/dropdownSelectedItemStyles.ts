@@ -1,12 +1,10 @@
-import {
-  DropdownSelectedItemStylesProps,
-  dropdownSelectedItemSlotClassNames,
-} from '../../../../components/Dropdown/DropdownSelectedItem';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DropdownVariables } from './dropdownVariables';
+import { dropdownSelectedItemSlotClassNames } from '../../../../components/Dropdown/DropdownSelectedItem';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
+import type { DropdownSelectedItemStylesProps } from '../../../../components/Dropdown/DropdownSelectedItem';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DropdownVariables } from './dropdownVariables';
 
 export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
   DropdownSelectedItemStylesProps,

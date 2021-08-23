@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ToolbarVariables } from './toolbarVariables';
-import { ToolbarStylesProps } from '../../../../components/Toolbar/Toolbar';
 import { pxToRem } from '../../../../utils/index';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ToolbarVariables } from './toolbarVariables';
+import type { ToolbarStylesProps } from '../../../../components/Toolbar/Toolbar';
 
 export const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, ToolbarVariables> = {
   root: (): ICSSInJSStyle => ({

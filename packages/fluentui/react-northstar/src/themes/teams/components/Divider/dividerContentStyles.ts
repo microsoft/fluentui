@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { pxToRem } from '../../../../utils';
-import { DividerContentStylesProps } from '../../../../components/Divider/DividerContent';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DividerContentStylesProps } from '../../../../components/Divider/DividerContent';
 
 export const dividerContentStyles: ComponentSlotStylesPrepared<DividerContentStylesProps> = {
   root: (): ICSSInJSStyle => ({

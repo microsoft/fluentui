@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
-import { Input, InputProps } from '../Input/Input';
-import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
+import { Input } from '../Input/Input';
+import { _FormFieldBase } from './utils/formFieldBase';
 import { commonPropTypes } from '../../utils';
+import type { InputProps } from '../Input/Input';
+import type { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormInputOwnProps extends Omit<InputProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<

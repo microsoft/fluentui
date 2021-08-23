@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Accessibility, PillGroupBehavior, PillGroupBehaviorProps } from '@fluentui/accessibility';
+import { PillGroupBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -9,16 +8,13 @@ import {
   useStyles,
   useTelemetry,
 } from '@fluentui/react-bindings';
-import {
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-} from '../../utils';
-
-import { FluentComponentStaticProps } from '../../types';
-import { PillsContextProvider, PillsContextValue } from './pillContext';
+import { commonPropTypes, rtlTextContainer } from '../../utils';
+import { PillsContextProvider } from './pillContext';
+import type { Accessibility, PillGroupBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { PillsContextValue } from './pillContext';
 
 export interface PillGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**

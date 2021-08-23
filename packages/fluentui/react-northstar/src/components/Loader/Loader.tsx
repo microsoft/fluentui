@@ -1,8 +1,6 @@
-import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/accessibility';
+import { loaderBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
-  ComponentWithAs,
-  ShorthandConfig,
   useTelemetry,
   useFluentContext,
   getElementType,
@@ -12,16 +10,15 @@ import {
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import {
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  SizeValue,
-  getOrGenerateIdFromShorthand,
-} from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import { createShorthandFactory, commonPropTypes, getOrGenerateIdFromShorthand } from '../../utils';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import type { Accessibility, LoaderBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs, ShorthandConfig } from '@fluentui/react-bindings';
+import type { UIComponentProps, SizeValue } from '../../utils';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { TextProps } from '../Text/Text';
 
 export interface LoaderSlotClassNames {
   indicator: string;

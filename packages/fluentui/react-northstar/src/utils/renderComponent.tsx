@@ -1,29 +1,30 @@
 import {
-  AccessibilityActionHandlers,
-  ComponentSlotClasses,
   FocusZone,
   getElementType,
   deprecated_getTelemetry as getTelemetry,
   getUnhandledProps,
-  ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
-  ProviderContextPrepared,
 } from '@fluentui/react-bindings';
 import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
-import {
-  emptyTheme,
+import { emptyTheme } from '@fluentui/styles';
+import * as _ from 'lodash';
+import * as React from 'react';
+import { logProviderMissingWarning } from './providerMissingHandler';
+import type {
+  AccessibilityActionHandlers,
+  ComponentSlotClasses,
+  ReactAccessibilityBehavior,
+  ProviderContextPrepared,
+} from '@fluentui/react-bindings';
+import type {
   ComponentSlotStylesResolved,
   ComponentVariablesObject,
   DebugData,
   PropsWithVarsAndStyles,
   ThemePrepared,
 } from '@fluentui/styles';
-import * as _ from 'lodash';
-import * as React from 'react';
-
-import { Props } from '../types';
-import { logProviderMissingWarning } from './providerMissingHandler';
+import type { Props } from '../types';
 
 export interface RenderResultConfig<P> {
   ElementType: React.ElementType<P>;

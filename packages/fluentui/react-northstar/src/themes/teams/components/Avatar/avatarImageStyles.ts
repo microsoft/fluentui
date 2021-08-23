@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { AvatarImageStylesProps } from '../../../../components/Avatar/AvatarImage';
-import { AvatarVariables } from './avatarVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AvatarImageStylesProps } from '../../../../components/Avatar/AvatarImage';
+import type { AvatarVariables } from './avatarVariables';
 
 export const avatarImageStyles: ComponentSlotStylesPrepared<AvatarImageStylesProps, AvatarVariables> = {
   root: ({ variables: v, props: p }): ICSSInJSStyle => ({

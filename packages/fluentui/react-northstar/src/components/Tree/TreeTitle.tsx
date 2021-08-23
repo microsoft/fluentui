@@ -1,6 +1,5 @@
-import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluentui/accessibility';
+import { treeTitleBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,8 +7,7 @@ import {
   useFluentContext,
   useTelemetry,
 } from '@fluentui/react-bindings';
-import { Box, BoxProps } from '../Box/Box';
-import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
+import { Box } from '../Box/Box';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -19,14 +17,16 @@ import {
   childrenExist,
   createShorthandFactory,
   commonPropTypes,
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
   rtlTextContainer,
   shouldPreventDefaultOnKeyDown,
 } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 import { TreeContext } from './context';
+import type { Accessibility, TreeTitleBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { BoxProps } from '../Box/Box';
+import type { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps } from '../../utils';
+import type { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
 
 export interface TreeTitleSlotClassNames {
   indicator: string;

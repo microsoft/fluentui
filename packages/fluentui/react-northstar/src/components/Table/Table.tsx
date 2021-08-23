@@ -1,6 +1,5 @@
-import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
+import { tableBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useTelemetry,
   mergeVariablesOverrides,
@@ -13,17 +12,14 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import * as React from 'react';
-import {
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  childrenExist,
-  createShorthandFactory,
-} from '../../utils';
-import { TableRow, TableRowProps } from './TableRow';
+import { commonPropTypes, childrenExist, createShorthandFactory } from '../../utils';
+import { TableRow } from './TableRow';
 import { TableCell } from './TableCell';
-
-import { ShorthandCollection, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { Accessibility, TableBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { TableRowProps } from './TableRow';
+import type { ShorthandCollection, ShorthandValue, FluentComponentStaticProps } from '../../types';
 
 export interface TableSlotClassNames {
   header: string;

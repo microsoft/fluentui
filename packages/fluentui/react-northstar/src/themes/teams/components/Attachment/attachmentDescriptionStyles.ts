@@ -1,7 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { AttachmentDescriptionStylesProps } from '../../../../components/Attachment/AttachmentDescription';
-import { AttachmentVariables } from './attachmentVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AttachmentDescriptionStylesProps } from '../../../../components/Attachment/AttachmentDescription';
+import type { AttachmentVariables } from './attachmentVariables';
 
 export const attachmentDescriptionStyles: ComponentSlotStylesPrepared<
   AttachmentDescriptionStylesProps,

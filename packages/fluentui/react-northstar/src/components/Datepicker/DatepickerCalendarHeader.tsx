@@ -1,14 +1,9 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 
+import { datepickerCalendarHeaderBehavior } from '@fluentui/accessibility';
+import { DEFAULT_CALENDAR_STRINGS } from '../../utils/date-time-utilities';
 import {
-  Accessibility,
-  datepickerCalendarHeaderBehavior,
-  DatepickerCalendarHeaderBehaviorProps,
-} from '@fluentui/accessibility';
-import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '../../utils/date-time-utilities';
-import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -18,16 +13,16 @@ import {
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
-import { FluentComponentStaticProps, ShorthandValue, ComponentEventHandler } from '../../types';
-import {
-  commonPropTypes,
-  ContentComponentProps,
-  createShorthand,
-  createShorthandFactory,
-  UIComponentProps,
-} from '../../utils';
-import { DatepickerCalendarHeaderAction, DatepickerCalendarHeaderActionProps } from './DatepickerCalendarHeaderAction';
-import { Text, TextProps } from '../Text/Text';
+import { commonPropTypes, createShorthand, createShorthandFactory } from '../../utils';
+import { DatepickerCalendarHeaderAction } from './DatepickerCalendarHeaderAction';
+import { Text } from '../Text/Text';
+import type { Accessibility, DatepickerCalendarHeaderBehaviorProps } from '@fluentui/accessibility';
+import type { ICalendarStrings } from '../../utils/date-time-utilities';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps, ShorthandValue, ComponentEventHandler } from '../../types';
+import type { ContentComponentProps, UIComponentProps } from '../../utils';
+import type { DatepickerCalendarHeaderActionProps } from './DatepickerCalendarHeaderAction';
+import type { TextProps } from '../Text/Text';
 
 export interface DatepickerCalendarHeaderProps
   extends UIComponentProps,

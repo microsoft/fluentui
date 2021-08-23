@@ -1,11 +1,10 @@
-import { IAvailableDateOptions } from './dateGrid.types';
-
 import { isRestrictedDate } from './isRestrictedDate';
 
 import { isAfterMaxDate } from './isAfterMaxDate';
 
 import { isBeforeMinDate } from './isBeforeMinDate';
 import { compareDatePart, addDays } from '../dateMath/dateMath';
+import type { IAvailableDateOptions } from './dateGrid.types';
 
 /**
  * Returns closest available date given the restriction `options`, or undefined otherwise

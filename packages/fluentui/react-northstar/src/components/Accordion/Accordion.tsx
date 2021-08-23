@@ -1,30 +1,14 @@
-import { Accessibility, accordionBehavior, AccordionBehaviorProps } from '@fluentui/accessibility';
+import { accordionBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthand,
-  createShorthandFactory,
-} from '../../utils';
-import { AccordionTitle, AccordionTitleProps } from './AccordionTitle';
-import { AccordionContent, AccordionContentProps } from './AccordionContent';
-
-import {
-  ComponentEventHandler,
-  ShorthandValue,
-  ShorthandRenderFunction,
-  FluentComponentStaticProps,
-} from '../../types';
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthand, createShorthandFactory } from '../../utils';
+import { AccordionTitle } from './AccordionTitle';
+import { AccordionContent } from './AccordionContent';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
-  ComponentWithAs,
   useAutoControlled,
   useAccessibility,
   useTelemetry,
@@ -33,6 +17,17 @@ import {
   getElementType,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, AccordionBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { AccordionTitleProps } from './AccordionTitle';
+import type { AccordionContentProps } from './AccordionContent';
+import type {
+  ComponentEventHandler,
+  ShorthandValue,
+  ShorthandRenderFunction,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface AccordionSlotClassNames {
   content: string;

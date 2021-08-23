@@ -1,6 +1,6 @@
 import { createContext } from '@fluentui/react-bindings';
-import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
+import type { ComponentVariablesInput } from '@fluentui/styles';
 
 export type ListContextValue = {
   debug: boolean;

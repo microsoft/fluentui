@@ -1,31 +1,20 @@
-import { Accessibility, splitButtonBehavior, SplitButtonBehaviorProps } from '@fluentui/accessibility';
+import { splitButtonBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 import { ALIGNMENTS, POSITIONS, AUTOSIZES } from '../../utils/positioner';
-import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
-  UIComponentProps,
-  ChildrenComponentProps,
-  ContentComponentProps,
   isFromKeyboard as checkIsFromKeyboard,
   commonPropTypes,
-  SizeValue,
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import { SplitButtonToggle, SplitButtonToggleProps } from './SplitButtonToggle';
-import { Button, ButtonProps } from '../Button/Button';
-import { MenuButton, MenuButtonProps } from '../MenuButton/MenuButton';
-import { MenuProps } from '../Menu/Menu';
-import { MenuItemProps } from '../Menu/MenuItem';
-import { PopupProps } from '../Popup/Popup';
+import { SplitButtonToggle } from './SplitButtonToggle';
+import { Button } from '../Button/Button';
+import { MenuButton } from '../MenuButton/MenuButton';
 import { Ref } from '@fluentui/react-component-ref';
-import { PositioningProps, AutoSize } from '../../utils/positioner/types';
-
 import {
-  ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useAccessibility,
@@ -34,6 +23,22 @@ import {
   useUnhandledProps,
   useStyles,
 } from '@fluentui/react-bindings';
+import type { Accessibility, SplitButtonBehaviorProps } from '@fluentui/accessibility';
+import type {
+  ComponentEventHandler,
+  ShorthandValue,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps, SizeValue } from '../../utils';
+import type { SplitButtonToggleProps } from './SplitButtonToggle';
+import type { ButtonProps } from '../Button/Button';
+import type { MenuButtonProps } from '../MenuButton/MenuButton';
+import type { MenuProps } from '../Menu/Menu';
+import type { MenuItemProps } from '../Menu/MenuItem';
+import type { PopupProps } from '../Popup/Popup';
+import type { PositioningProps, AutoSize } from '../../utils/positioner/types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface SplitButtonProps
   extends UIComponentProps,

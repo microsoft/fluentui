@@ -1,8 +1,7 @@
-import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluentui/accessibility';
+import { formFieldBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { commonPropTypes } from '../../utils';
 import {
   getElementType,
   useUnhandledProps,
@@ -11,6 +10,9 @@ import {
   useStyles,
   useAccessibility,
 } from '@fluentui/react-bindings';
+import type { Accessibility, FormFieldBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponentProps {
   /**

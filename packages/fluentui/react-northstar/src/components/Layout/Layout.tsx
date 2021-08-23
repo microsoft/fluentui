@@ -1,12 +1,9 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { UIComponentProps, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useStyles,
   getElementType,
   useFluentContext,
@@ -14,6 +11,10 @@ import {
   useAccessibility,
   useTelemetry,
 } from '@fluentui/react-bindings';
+import type { ICSSInJSStyle } from '@fluentui/styles';
+import type { UIComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface LayoutSlotClassNames {
   start: string;

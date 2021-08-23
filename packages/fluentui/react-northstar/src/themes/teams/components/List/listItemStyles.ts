@@ -1,14 +1,13 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
-import { ListItemStylesProps } from '../../../../components/List/ListItem';
 import { listItemContentClassName } from '../../../../components/List/ListItemContent';
 import { listItemContentMediaClassName } from '../../../../components/List/ListItemContentMedia';
 import { listItemEndMediaClassName } from '../../../../components/List/ListItemEndMedia';
 import { listItemHeaderClassName } from '../../../../components/List/ListItemHeader';
 import { listItemHeaderMediaClassName } from '../../../../components/List/ListItemHeaderMedia';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { ListItemVariables } from './listItemVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ListItemStylesProps } from '../../../../components/List/ListItem';
+import type { ListItemVariables } from './listItemVariables';
 
 const selectableHoverStyle = (p: ListItemStylesProps, v): ICSSInJSStyle => ({
   background: v.selectableFocusHoverBackgroundColor,

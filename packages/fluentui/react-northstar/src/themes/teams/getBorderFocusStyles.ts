@@ -1,5 +1,5 @@
-import { ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
 import * as React from 'react';
+import type { ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
 
 type CSSBorderStyles = Pick<React.CSSProperties, 'borderWidth' | 'borderRadius'>;
 type BorderPadding = Record<'top' | 'bottom' | 'left' | 'right', string>;

@@ -1,23 +1,11 @@
-import { Accessibility, buttonBehavior, ButtonBehaviorProps } from '@fluentui/accessibility';
+import { buttonBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
+import { childrenExist, createShorthandFactory, commonPropTypes, rtlTextContainer } from '../../utils';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  ContentComponentProps,
-  SizeValue,
-} from '../../utils';
-
-import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -25,6 +13,10 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
+import type { Accessibility, ButtonBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps, ContentComponentProps, SizeValue } from '../../utils';
+import type { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface SplitButtonToggleProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

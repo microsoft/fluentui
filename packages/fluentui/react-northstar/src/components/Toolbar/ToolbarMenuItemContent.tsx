@@ -1,7 +1,8 @@
 import { compose } from '@fluentui/react-bindings';
 
 import { commonPropTypes } from '../../utils';
-import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
+import { Box } from '../Box/Box';
+import type { BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface ToolbarMenuItemContentOwnProps {}
 export interface ToolbarMenuItemContentProps extends ToolbarMenuItemContentOwnProps, BoxProps {}

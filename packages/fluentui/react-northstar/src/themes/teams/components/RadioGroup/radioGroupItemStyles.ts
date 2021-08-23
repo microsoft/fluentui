@@ -1,11 +1,9 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import {
-  RadioGroupItemStylesProps,
-  radioGroupItemSlotClassNames,
-} from '../../../../components/RadioGroup/RadioGroupItem';
-import { RadioGroupItemVariables } from './radioGroupItemVariables';
+import { radioGroupItemSlotClassNames } from '../../../../components/RadioGroup/RadioGroupItem';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { RadioGroupItemStylesProps } from '../../../../components/RadioGroup/RadioGroupItem';
+import type { RadioGroupItemVariables } from './radioGroupItemVariables';
 
 const restHoverFocusTextColor = textColor => ({
   color: textColor,

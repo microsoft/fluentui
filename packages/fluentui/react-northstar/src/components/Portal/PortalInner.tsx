@@ -2,10 +2,11 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { isBrowser, ChildrenComponentProps, commonPropTypes } from '../../utils';
+import { isBrowser, commonPropTypes } from '../../utils';
 import { PortalBoxContext } from '../Provider/usePortalBox';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
+import type { ChildrenComponentProps } from '../../utils';
 
 export interface PortalInnerProps extends ChildrenComponentProps {
   /** Existing element the portal should be bound to. */

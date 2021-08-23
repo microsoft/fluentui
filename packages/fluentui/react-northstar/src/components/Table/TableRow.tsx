@@ -1,6 +1,5 @@
-import { Accessibility, tableRowBehavior, GridRowBehaviorProps } from '@fluentui/accessibility';
+import { tableRowBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
@@ -15,9 +14,13 @@ import * as _ from 'lodash';
 
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { FluentComponentStaticProps, ShorthandCollection } from '../../types';
-import { childrenExist, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import { TableCell, TableCellProps } from './TableCell';
+import { childrenExist, commonPropTypes, createShorthandFactory } from '../../utils';
+import { TableCell } from './TableCell';
+import type { Accessibility, GridRowBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { FluentComponentStaticProps, ShorthandCollection } from '../../types';
+import type { UIComponentProps } from '../../utils';
+import type { TableCellProps } from './TableCell';
 
 export interface TableRowProps extends UIComponentProps {
   /**

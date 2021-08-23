@@ -1,7 +1,8 @@
-import { SliderVariables } from './sliderVariables';
-import { SliderStylesProps, sliderSlotClassNames } from '../../../../components/Slider/Slider';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { sliderSlotClassNames } from '../../../../components/Slider/Slider';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { SliderVariables } from './sliderVariables';
+import type { SliderStylesProps } from '../../../../components/Slider/Slider';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 const selectors = {
   WEBKIT_THUMB: '::-webkit-slider-thumb',

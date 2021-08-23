@@ -1,17 +1,12 @@
-import {
-  ComponentWithAs,
-  getElementType,
-  useUnhandledProps,
-  useFluentContext,
-  useStyles,
-  useTelemetry,
-} from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
+import { commonPropTypes } from '../../utils';
 import { FlexItem } from './FlexItem';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
 
 export interface FlexProps extends UIComponentProps, ChildrenComponentProps {
   /** Defines if container should be inline element. */

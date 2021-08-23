@@ -1,13 +1,10 @@
 import {
-  Accessibility,
   chatMessageBehavior,
-  ChatMessageBehaviorProps,
   IS_FOCUSABLE_ATTRIBUTE,
   keyboardKey,
   menuAsToolbarBehavior,
 } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useAutoControlled,
@@ -24,8 +21,30 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
 import {
+  childrenExist,
+  commonPropTypes,
+  createShorthand,
+  createShorthandFactory,
+  getOrGenerateIdFromShorthand,
+  rtlTextContainer,
+} from '../../utils';
+import { getScrollParent, partitionPopperPropsFromShorthand, usePopper } from '../../utils/positioner';
+import { Box } from '../Box/Box';
+import { Flex } from '../Flex/Flex';
+import { Label } from '../Label/Label';
+import { Menu } from '../Menu/Menu';
+import { PortalInner } from '../Portal/PortalInner';
+import { Reaction } from '../Reaction/Reaction';
+import { Text } from '../Text/Text';
+import { useChatDensityContext } from './chatDensityContext';
+import { ChatItemContext } from './chatItemContext';
+import { ChatMessageDetails } from './ChatMessageDetails';
+import { ChatMessageHeader } from './ChatMessageHeader';
+import { ChatMessageReadStatus } from './ChatMessageReadStatus';
+import type { Accessibility, ChatMessageBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type {
   ComponentEventHandler,
   ComponentKeyboardEventHandler,
   FluentComponentStaticProps,
@@ -33,39 +52,19 @@ import {
   ShorthandCollection,
   ShorthandValue,
 } from '../../types';
-import {
-  ChildrenComponentProps,
-  childrenExist,
-  commonPropTypes,
-  ContentComponentProps,
-  createShorthand,
-  createShorthandFactory,
-  getOrGenerateIdFromShorthand,
-  rtlTextContainer,
-  UIComponentProps,
-} from '../../utils';
-import {
-  getScrollParent,
-  partitionPopperPropsFromShorthand,
-  PopperModifiersFn,
-  PopperRefHandle,
-  PopperShorthandProps,
-  usePopper,
-} from '../../utils/positioner';
-import { Box, BoxProps } from '../Box/Box';
-import { Flex } from '../Flex/Flex';
-import { Label, LabelProps } from '../Label/Label';
-import { Menu, MenuProps } from '../Menu/Menu';
-import { MenuItemProps } from '../Menu/MenuItem';
-import { PortalInner } from '../Portal/PortalInner';
-import { Reaction, ReactionProps } from '../Reaction/Reaction';
-import { ReactionGroupProps } from '../Reaction/ReactionGroup';
-import { Text, TextProps } from '../Text/Text';
-import { ChatDensity, useChatDensityContext } from './chatDensityContext';
-import { ChatItemContext } from './chatItemContext';
-import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
-import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
-import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { PopperModifiersFn, PopperRefHandle, PopperShorthandProps } from '../../utils/positioner';
+import type { BoxProps } from '../Box/Box';
+import type { LabelProps } from '../Label/Label';
+import type { MenuProps } from '../Menu/Menu';
+import type { MenuItemProps } from '../Menu/MenuItem';
+import type { ReactionProps } from '../Reaction/Reaction';
+import type { ReactionGroupProps } from '../Reaction/ReactionGroup';
+import type { TextProps } from '../Text/Text';
+import type { ChatDensity } from './chatDensityContext';
+import type { ChatMessageDetailsProps } from './ChatMessageDetails';
+import type { ChatMessageHeaderProps } from './ChatMessageHeader';
+import type { ChatMessageReadStatusProps } from './ChatMessageReadStatus';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;

@@ -4,21 +4,17 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import {
-  ComponentWithAs,
-  getElementType,
-  useUnhandledProps,
-  useFluentContext,
-  useStyles,
-  useTelemetry,
-} from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useFluentContext, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import cx from 'classnames';
 
 import { createShorthandFactory, commonPropTypes } from '../../utils';
-import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import { Image, ImageProps } from '../Image/Image';
-import { Box, BoxProps } from '../Box/Box';
+import { Image } from '../Image/Image';
+import { Box } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps } from '../../utils/commonPropInterfaces';
+import type { ImageProps } from '../Image/Image';
+import type { BoxProps } from '../Box/Box';
 
 export interface DropdownItemSlotClassNames {
   content: string;

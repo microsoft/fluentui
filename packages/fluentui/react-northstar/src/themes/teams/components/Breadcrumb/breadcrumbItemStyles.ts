@@ -1,6 +1,6 @@
-import { BreadcrumbItemStylesProps } from '../../../../components/Breadcrumb/BreadcrumbItem';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { BreadcrumbVariables } from './breadcrumbVariables';
+import type { BreadcrumbItemStylesProps } from '../../../../components/Breadcrumb/BreadcrumbItem';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { BreadcrumbVariables } from './breadcrumbVariables';
 
 export const breadcrumbItemStyles: ComponentSlotStylesPrepared<BreadcrumbItemStylesProps, BreadcrumbVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

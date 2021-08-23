@@ -1,7 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
-import { TextArea, TextAreaProps } from '../TextArea/TextArea';
-import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
+import { TextArea } from '../TextArea/TextArea';
+import { _FormFieldBase } from './utils/formFieldBase';
 import { commonPropTypes } from '../../utils';
+import type { TextAreaProps } from '../TextArea/TextArea';
+import type { FormFieldBaseProps } from './utils/formFieldBase';
 
 interface FormTextAreaOwnProps extends Omit<TextAreaProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<

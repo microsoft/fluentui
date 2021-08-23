@@ -1,4 +1,4 @@
-import { DatepickerVariables } from '../../../teams/components/Datepicker/datepickerVariables';
+import type { DatepickerVariables } from '../../../teams/components/Datepicker/datepickerVariables';
 
 export const datepickerCalendarCellVariables = (siteVars: any): Partial<DatepickerVariables> => {
   return {

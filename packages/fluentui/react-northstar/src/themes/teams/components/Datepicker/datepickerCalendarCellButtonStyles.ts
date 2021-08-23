@@ -1,7 +1,7 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DatepickerVariables } from './datepickerVariables';
-import { DatepickerCalendarCellButtonStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCellButton';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DatepickerVariables } from './datepickerVariables';
+import type { DatepickerCalendarCellButtonStylesProps } from '../../../../components/Datepicker/DatepickerCalendarCellButton';
 
 export const datepickerCalendarCellButtonStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarCellButtonStylesProps,

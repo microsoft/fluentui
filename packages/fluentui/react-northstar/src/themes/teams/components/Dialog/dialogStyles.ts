@@ -1,6 +1,6 @@
-import { DialogStylesProps } from '../../../../components/Dialog/Dialog';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DialogVariables } from './dialogVariables';
+import type { DialogStylesProps } from '../../../../components/Dialog/Dialog';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { DialogVariables } from './dialogVariables';
 
 export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, DialogVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({

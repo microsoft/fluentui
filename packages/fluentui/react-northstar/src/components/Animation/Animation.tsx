@@ -11,9 +11,10 @@ import * as React from 'react';
 
 import { Transition } from 'react-transition-group';
 
-import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../utils';
-import { ComponentEventHandler } from '../../types';
+import { childrenExist, commonPropTypes } from '../../utils';
 import { useAnimationStyles } from './useAnimationStyles';
+import type { ChildrenComponentProps } from '../../utils';
+import type { ComponentEventHandler } from '../../types';
 
 export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
 

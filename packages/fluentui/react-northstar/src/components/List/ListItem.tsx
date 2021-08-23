@@ -1,6 +1,5 @@
-import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility';
+import { listItemBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -13,22 +12,25 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
-import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
-import {
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  ContentComponentProps,
-  createShorthand,
-} from '../../utils';
-import { ListContext, ListContextSubscribedValue } from './listContext';
-import { ListItemContent, ListItemContentProps } from './ListItemContent';
-import { ListItemContentMedia, ListItemContentMediaProps } from './ListItemContentMedia';
-import { ListItemEndMedia, ListItemEndMediaProps } from './ListItemEndMedia';
-import { ListItemHeader, ListItemHeaderProps } from './ListItemHeader';
-import { ListItemHeaderMedia, ListItemHeaderMediaProps } from './ListItemHeaderMedia';
-import { ListItemMedia, ListItemMediaProps } from './ListItemMedia';
+import { createShorthandFactory, commonPropTypes, createShorthand } from '../../utils';
+import { ListContext } from './listContext';
+import { ListItemContent } from './ListItemContent';
+import { ListItemContentMedia } from './ListItemContentMedia';
+import { ListItemEndMedia } from './ListItemEndMedia';
+import { ListItemHeader } from './ListItemHeader';
+import { ListItemHeaderMedia } from './ListItemHeaderMedia';
+import { ListItemMedia } from './ListItemMedia';
+import type { Accessibility, ListItemBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
+import type { UIComponentProps, ContentComponentProps } from '../../utils';
+import type { ListContextSubscribedValue } from './listContext';
+import type { ListItemContentProps } from './ListItemContent';
+import type { ListItemContentMediaProps } from './ListItemContentMedia';
+import type { ListItemEndMediaProps } from './ListItemEndMedia';
+import type { ListItemHeaderProps } from './ListItemHeader';
+import type { ListItemHeaderMediaProps } from './ListItemHeaderMedia';
+import type { ListItemMediaProps } from './ListItemMedia';
 
 export interface ListItemSlotClassNames {
   headerWrapper: string;

@@ -1,11 +1,10 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { svgIconClassName } from '@fluentui/react-icons-northstar';
-
-import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
 import { attachmentActionClassName } from '../../../../components/Attachment/AttachmentAction';
-import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
+import type { AttachmentVariables } from './attachmentVariables';
 
 export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {

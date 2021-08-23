@@ -1,7 +1,5 @@
-import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
+import { dialogBehavior, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
-  FocusTrapZoneProps,
   useAutoControlled,
   useTelemetry,
   useAccessibility,
@@ -21,22 +19,28 @@ import * as React from 'react';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import {
-  UIComponentProps,
   commonPropTypes,
-  ContentComponentProps,
   doesNodeContainClick,
   getOrGenerateIdFromShorthand,
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Button, ButtonProps } from '../Button/Button';
+import { Button } from '../Button/Button';
 import { ButtonGroup } from '../Button/ButtonGroup';
-import { Box, BoxProps } from '../Box/Box';
-import { Header, HeaderProps } from '../Header/Header';
-import { Portal, TriggerAccessibility } from '../Portal/Portal';
+import { Box } from '../Box/Box';
+import { Header } from '../Header/Header';
+import { Portal } from '../Portal/Portal';
 import { Flex } from '../Flex/Flex';
-import { DialogFooter, DialogFooterProps } from './DialogFooter';
+import { DialogFooter } from './DialogFooter';
+import type { Accessibility, DialogBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs, FocusTrapZoneProps } from '@fluentui/react-bindings';
+import type { UIComponentProps, ContentComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { ButtonProps } from '../Button/Button';
+import type { BoxProps } from '../Box/Box';
+import type { HeaderProps } from '../Header/Header';
+import type { TriggerAccessibility } from '../Portal/Portal';
+import type { DialogFooterProps } from './DialogFooter';
 
 export interface DialogSlotClassNames {
   header: string;

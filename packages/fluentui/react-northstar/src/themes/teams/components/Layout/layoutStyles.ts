@@ -1,6 +1,6 @@
 import { debugRoot, debugArea, debugGap } from '../../../../styles/debugStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { LayoutStylesProps } from '../../../../components/Layout/Layout';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { LayoutStylesProps } from '../../../../components/Layout/Layout';
 
 const countTrue = items => items.filter(Boolean).length;
 

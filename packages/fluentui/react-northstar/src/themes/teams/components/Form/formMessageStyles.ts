@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { FormMessageStylesProps } from '../../../../components/Form/FormMessage';
-import { FormMessageVariables } from './formMessageVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { FormMessageStylesProps } from '../../../../components/Form/FormMessage';
+import type { FormMessageVariables } from './formMessageVariables';
 
 export const formMessageStyles: ComponentSlotStylesPrepared<FormMessageStylesProps, FormMessageVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({

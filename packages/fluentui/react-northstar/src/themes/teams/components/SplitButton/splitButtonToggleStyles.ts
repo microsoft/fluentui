@@ -1,9 +1,9 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { SplitButtonToggleStylesProps } from '../../../../components/SplitButton/SplitButtonToggle';
-import { SplitButtonVariables } from './splitButtonVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { toggleIndicatorUrl } from './toggleIndicatorUrl';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { SplitButtonToggleStylesProps } from '../../../../components/SplitButton/SplitButtonToggle';
+import type { SplitButtonVariables } from './splitButtonVariables';
 
 const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
   return {

@@ -3,7 +3,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
-import { Button, ButtonProps, ButtonStylesProps } from '../Button/Button';
+import { Button } from '../Button/Button';
+import type { ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 export interface AttachmentActionOwnProps {}
 export interface AttachmentActionProps extends AttachmentActionOwnProps, ButtonProps {

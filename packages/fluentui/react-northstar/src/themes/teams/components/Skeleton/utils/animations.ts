@@ -1,11 +1,11 @@
 import { pulse, wave } from './keyframes';
-import { ICSSInJSStyle } from '@fluentui/styles';
 import { skeletonLineClassName } from '../../../../../components/Skeleton/SkeletonLine';
 import { skeletonShapeClassName } from '../../../../../components/Skeleton/SkeletonShape';
 import { skeletonButtonClassName } from '../../../../../components/Skeleton/SkeletonButton';
 import { skeletonInputClassName } from '../../../../../components/Skeleton/SkeletonInput';
 import { skeletonAvatarClassName } from '../../../../../components/Skeleton/SkeletonAvatar';
 import { skeletonTextClassName } from '../../../../../components/Skeleton/SkeletonText';
+import type { ICSSInJSStyle } from '@fluentui/styles';
 
 const waveStyles = (primaryColor: string, secondoryColor: string) => ({
   position: 'static',

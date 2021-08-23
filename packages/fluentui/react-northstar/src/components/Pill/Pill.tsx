@@ -2,13 +2,9 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import { Accessibility, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
-import { UIComponentProps, ContentComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } from '../../types';
-import { BoxProps } from '../Box/Box';
-
+import { pillBehavior } from '@fluentui/accessibility';
+import { commonPropTypes, createShorthand } from '../../utils';
 import {
-  ComponentWithAs,
   useAccessibility,
   getElementType,
   useStyles,
@@ -18,11 +14,19 @@ import {
   useAutoControlled,
 } from '@fluentui/react-bindings';
 import { PillContent } from './PillContent';
-import { PillActionProps, PillAction } from './PillAction';
+import { PillAction } from './PillAction';
 import { usePillContext } from './pillContext';
-import { PillImageProps, PillImage } from './PillImage';
-import { PillIcon, PillIconProps } from './PillIcon';
+import { PillImage } from './PillImage';
+import { PillIcon } from './PillIcon';
 import { CheckmarkCircleIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
+import type { Accessibility, PillBehaviorProps } from '@fluentui/accessibility';
+import type { UIComponentProps, ContentComponentProps, SizeValue } from '../../utils';
+import type { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } from '../../types';
+import type { BoxProps } from '../Box/Box';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { PillActionProps } from './PillAction';
+import type { PillImageProps } from './PillImage';
+import type { PillIconProps } from './PillIcon';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**

@@ -9,23 +9,18 @@ import {
   useUnhandledProps,
   getElementType,
   childrenExist,
-  ShorthandConfig,
-  ComponentWithAs,
 } from '@fluentui/react-bindings';
-import {
-  commonPropTypes,
-  UIComponentProps,
-  ContentComponentProps,
-  ChildrenComponentProps,
-  ShorthandFactory,
-  createShorthandFactory,
-} from '../../utils';
-import { Accessibility, breadcrumbBehavior, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
+import { commonPropTypes, createShorthandFactory } from '../../utils';
+import { breadcrumbBehavior } from '@fluentui/accessibility';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import { BreadcrumbDivider } from './BreadcrumbDivider';
 import { BreadcrumbLink } from './BreadcrumbLink';
-import { BreadcrumbContext, BreadcrumbSizeValues } from './breadcrumbContext';
+import { BreadcrumbContext } from './breadcrumbContext';
 import { Ref } from '@fluentui/react-component-ref';
+import type { ShorthandConfig, ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, ContentComponentProps, ChildrenComponentProps, ShorthandFactory } from '../../utils';
+import type { Accessibility, BreadcrumbBehaviorProps } from '@fluentui/accessibility';
+import type { BreadcrumbSizeValues } from './breadcrumbContext';
 
 export interface BreadcrumbProps
   extends UIComponentProps<BreadcrumbProps>,

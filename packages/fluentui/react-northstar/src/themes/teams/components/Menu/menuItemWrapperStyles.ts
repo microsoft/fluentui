@@ -1,10 +1,7 @@
 import { pxToRem } from '../../../../utils';
-import { MenuVariables } from './menuVariables';
-import { MenuItemWrapperStylesProps } from '../../../../components/Menu/MenuItemWrapper';
 import { menuItemClassName } from '../../../../components/Menu/MenuItem';
 import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
 import { getColorScheme } from '../../colors';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { submenuIndicatorDirection } from './submenuIndicatorDirection';
 import {
   horizontalPillsRightMargin,
@@ -12,6 +9,9 @@ import {
   pointingBeak,
   getFocusedStyles,
 } from './menuItemStyles';
+import type { MenuVariables } from './menuVariables';
+import type { MenuItemWrapperStylesProps } from '../../../../components/Menu/MenuItemWrapper';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesProps, MenuVariables> = {
   root: ({ props, variables: v }): ICSSInJSStyle => {

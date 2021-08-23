@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  ForwardRefWithAs,
   useFluentContext,
   useTelemetry,
   useStyles,
@@ -9,10 +8,13 @@ import {
   useUnhandledProps,
   childrenExist,
 } from '@fluentui/react-bindings';
-import { Accessibility, indicatorBehavior, IndicatorBehaviorProps } from '@fluentui/accessibility';
+import { indicatorBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
-import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { commonPropTypes } from '../../utils';
+import type { ForwardRefWithAs } from '@fluentui/react-bindings';
+import type { Accessibility, IndicatorBehaviorProps } from '@fluentui/accessibility';
+import type { ChildrenComponentProps, ContentComponentProps, UIComponentProps } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface MenuItemIndicatorProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */

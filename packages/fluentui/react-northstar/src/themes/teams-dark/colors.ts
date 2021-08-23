@@ -1,7 +1,7 @@
 import { categoryColors, colors } from '../teams/siteVariables';
-import { TeamsCategoryColorSchemeMapping } from '../teams/types';
-import { ColorSchemeMapping } from '../../themes/types';
 import { createColorScheme } from '../teams/colors';
+import type { TeamsCategoryColorSchemeMapping } from '../teams/types';
+import type { ColorSchemeMapping } from '../../themes/types';
 
 export const colorScheme: ColorSchemeMapping = {
   default: createColorScheme({

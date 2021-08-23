@@ -1,6 +1,5 @@
 import { pxToRem } from '../../../../utils';
-
-import { FlexItemProps } from '../../../../components/Flex/FlexItem';
+import type { FlexItemProps } from '../../../../components/Flex/FlexItem';
 
 type SizeValues = Record<FlexItemProps['size'], string>;
 

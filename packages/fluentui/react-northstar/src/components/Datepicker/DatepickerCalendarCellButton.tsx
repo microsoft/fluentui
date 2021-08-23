@@ -1,8 +1,4 @@
-import {
-  Accessibility,
-  datepickerCalendarCellButtonBehavior,
-  DatepickerCalendarCellButtonBehaviorProps,
-} from '@fluentui/accessibility';
+import { datepickerCalendarCellButtonBehavior } from '@fluentui/accessibility';
 import {
   getElementType,
   useAccessibility,
@@ -15,8 +11,10 @@ import {
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ComponentEventHandler, ComponentKeyboardEventHandler } from '../../types';
-import { commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
+import { commonPropTypes } from '../../utils';
+import type { Accessibility, DatepickerCalendarCellButtonBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentEventHandler, ComponentKeyboardEventHandler } from '../../types';
+import type { ContentComponentProps, UIComponentProps } from '../../utils';
 
 export interface DatepickerCalendarCellButtonProps extends UIComponentProps, ContentComponentProps {
   /**

@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { FlexProps } from '../../../../components/Flex/Flex';
+import type { FlexProps } from '../../../../components/Flex/Flex';
 
 type GapValues = Record<FlexProps['gap'], string>;
 type PaddingValues = Record<FlexProps['padding'], string>;

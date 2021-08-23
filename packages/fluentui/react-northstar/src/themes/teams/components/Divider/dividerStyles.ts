@@ -1,10 +1,11 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import * as _ from 'lodash';
 
 import { pxToRem } from '../../../../utils';
-import { StrictColorScheme, ItemType } from '../../../types';
-import { DividerVariables, dividerColorAreas } from './dividerVariables';
-import { DividerStylesProps } from '../../../../components/Divider/Divider';
+import { dividerColorAreas } from './dividerVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { StrictColorScheme, ItemType } from '../../../types';
+import type { DividerVariables } from './dividerVariables';
+import type { DividerStylesProps } from '../../../../components/Divider/Divider';
 
 const beforeAndAfter = (
   size: number,

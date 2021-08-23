@@ -1,5 +1,6 @@
-import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables';
+import { menuColorAreas } from '../../../teams/components/Menu/menuVariables';
 import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import type { MenuVariables } from '../../../teams/components/Menu/menuVariables';
 
 export const menuVariables = (siteVars: any): Partial<MenuVariables> => ({
   colorScheme: pickValuesFromColorScheme(

@@ -1,21 +1,11 @@
-import { Accessibility } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 
+import { childrenExist, commonPropTypes, rtlTextContainer, createShorthandFactory } from '../../utils';
+import { FormField } from './FormField';
 import {
-  childrenExist,
-  UIComponentProps,
-  ChildrenComponentProps,
-  commonPropTypes,
-  rtlTextContainer,
-  createShorthandFactory,
-} from '../../utils';
-import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
-import { FormField, FormFieldProps } from './FormField';
-import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useUnhandledProps,
@@ -23,6 +13,11 @@ import {
   useFluentContext,
   useAccessibility,
 } from '@fluentui/react-bindings';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { UIComponentProps, ChildrenComponentProps } from '../../utils';
+import type { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import type { FormFieldProps } from './FormField';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
   /**

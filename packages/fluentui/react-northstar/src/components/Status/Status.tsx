@@ -1,6 +1,5 @@
-import { Accessibility, statusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
+import { statusBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -12,9 +11,13 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
-import { Box, BoxProps } from '../Box/Box';
+import { createShorthandFactory, commonPropTypes } from '../../utils';
+import { Box } from '../Box/Box';
+import type { Accessibility, StatusBehaviorProps } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, SizeValue } from '../../utils';
+import type { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import type { BoxProps } from '../Box/Box';
 
 export interface StatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */

@@ -1,8 +1,8 @@
-import { CarouselNavigationStylesProps } from '../../../../components/Carousel/CarouselNavigation';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { pxToRem } from '../../../../utils';
 import { getColorScheme } from '../../colors';
+import type { CarouselNavigationStylesProps } from '../../../../components/Carousel/CarouselNavigation';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { CarouselNavigationVariables } from './carouselNavigationVariables';
 
 export const carouselNavigationStyles: ComponentSlotStylesPrepared<
   CarouselNavigationStylesProps,

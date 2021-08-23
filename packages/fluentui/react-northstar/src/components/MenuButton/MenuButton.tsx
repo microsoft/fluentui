@@ -1,21 +1,17 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import { Accessibility, menuButtonBehavior, MenuButtonBehaviorProps } from '@fluentui/accessibility';
+import { menuButtonBehavior } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
-import { commonPropTypes, StyledComponentProps, getOrGenerateIdFromShorthand } from '../../utils';
-import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
-
+import { commonPropTypes, getOrGenerateIdFromShorthand } from '../../utils';
 import { createShorthandFactory } from '../../utils/factories';
-import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
-import { Menu, MenuProps } from '../Menu/Menu';
-import { MenuItemProps } from '../Menu/MenuItem';
+import { Popup } from '../Popup/Popup';
+import { Menu } from '../Menu/Menu';
 import { focusMenuItem } from './focusUtils';
-import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
+import { ALIGNMENTS, POSITIONS, AUTOSIZES } from '../../utils/positioner';
 import {
-  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   getElementType,
@@ -25,6 +21,19 @@ import {
   useStyles,
   useOnIFrameFocus,
 } from '@fluentui/react-bindings';
+import type { Accessibility, MenuButtonBehaviorProps } from '@fluentui/accessibility';
+import type { StyledComponentProps } from '../../utils';
+import type {
+  ShorthandValue,
+  ComponentEventHandler,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+} from '../../types';
+import type { PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup';
+import type { MenuProps } from '../Menu/Menu';
+import type { MenuItemProps } from '../Menu/MenuItem';
+import type { PositioningProps, AutoSize } from '../../utils/positioner';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
   menu: string;

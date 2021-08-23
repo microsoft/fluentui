@@ -1,13 +1,13 @@
-import {
+import { mergeThemes } from '@fluentui/styles';
+
+import { isBrowser } from './isBrowser';
+import type {
   ProviderContextPrepared,
   ProviderContextInput,
   StylesContextPerformance,
   StylesContextPerformanceInput,
 } from '@fluentui/react-bindings';
-import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
-import { mergeThemes } from '@fluentui/styles';
-
-import { isBrowser } from './isBrowser';
+import type { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
 
 const defaultDocument = { document: 'document' };
 const registeredRenderers = new WeakMap<Document | typeof defaultDocument, Renderer>();

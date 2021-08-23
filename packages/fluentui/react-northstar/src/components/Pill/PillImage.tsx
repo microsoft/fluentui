@@ -1,6 +1,5 @@
-import { Accessibility, pillImageBehavior } from '@fluentui/accessibility';
+import { pillImageBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -10,8 +9,11 @@ import {
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import { UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
-import { FluentComponentStaticProps } from '../../types';
+import { commonPropTypes } from '../../utils';
+import type { Accessibility } from '@fluentui/accessibility';
+import type { ComponentWithAs } from '@fluentui/react-bindings';
+import type { UIComponentProps, SizeValue } from '../../utils';
+import type { FluentComponentStaticProps } from '../../types';
 
 export interface PillImageProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */

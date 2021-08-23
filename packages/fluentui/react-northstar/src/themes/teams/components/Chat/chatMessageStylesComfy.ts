@@ -1,9 +1,9 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-
-import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { chatMessageSlotClassNames } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
-import { ChatMessageVariables } from './chatMessageVariables';
+import type { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import type { ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import type { ChatMessageVariables } from './chatMessageVariables';
 
 /** ChatMessage styles specific for the default/comfy density. */
 export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
