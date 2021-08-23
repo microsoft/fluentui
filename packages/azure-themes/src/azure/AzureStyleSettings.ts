@@ -1,4 +1,3 @@
-import { ITheme } from '@fluentui/react';
 import { ActionButtonStyles } from './styles/ActionButton.styles';
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
@@ -41,6 +40,7 @@ import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 import { TooltipStyles } from './styles/Tooltip.styles';
+import type { ITheme } from '@fluentui/react';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+

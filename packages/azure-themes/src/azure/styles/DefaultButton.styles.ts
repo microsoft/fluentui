@@ -1,7 +1,7 @@
-import { IButtonStyles } from '@fluentui/react/lib/Button';
 import * as StyleConstants from '../Constants';
-import { ITheme } from '@fluentui/react/lib/Styling';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IButtonStyles } from '@fluentui/react/lib/Button';
+import type { ITheme } from '@fluentui/react/lib/Styling';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;

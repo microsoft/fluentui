@@ -1,4 +1,4 @@
-import { IAzureSemanticColors } from './IAzureSemanticColors';
+import type { IAzureSemanticColors } from './IAzureSemanticColors';
 
 export namespace BaseColors {
   export const BLUE_F0F6FF = '#F0F6FF';

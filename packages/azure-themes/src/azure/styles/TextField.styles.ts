@@ -1,6 +1,6 @@
-import { ITextFieldStyleProps, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ITextFieldStyleProps, ITextFieldStyles } from '@fluentui/react/lib/TextField';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;

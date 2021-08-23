@@ -1,5 +1,5 @@
-import { IDocumentCardStyles, IDocumentCardStyleProps } from '@fluentui/react/lib/DocumentCard';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IDocumentCardStyles, IDocumentCardStyleProps } from '@fluentui/react/lib/DocumentCard';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DocumentCardStyles = (props: IDocumentCardStyleProps): Partial<IDocumentCardStyles> => {
   const { theme } = props;

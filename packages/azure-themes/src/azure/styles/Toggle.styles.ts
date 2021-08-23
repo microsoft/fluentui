@@ -1,5 +1,5 @@
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;

@@ -1,5 +1,5 @@
-import { ILabelStyleProps, ILabelStyles } from '@fluentui/react/lib/Label';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ILabelStyleProps, ILabelStyles } from '@fluentui/react/lib/Label';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
   const { theme, disabled } = props;

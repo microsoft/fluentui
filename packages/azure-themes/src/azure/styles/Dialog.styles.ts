@@ -1,12 +1,12 @@
-import {
+import { FontSizes } from '../AzureType';
+import { BaseColors } from '../AzureColors';
+import type {
   IDialogContentStyleProps,
   IDialogContentStyles,
   IDialogFooterStyleProps,
   IDialogFooterStyles,
 } from '@fluentui/react/lib/Dialog';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { FontSizes } from '../AzureType';
-import { BaseColors } from '../AzureColors';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
   const { theme, isLargeHeader } = props;

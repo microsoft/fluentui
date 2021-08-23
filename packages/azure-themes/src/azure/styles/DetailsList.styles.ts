@@ -1,13 +1,13 @@
-import { ICheckStyleProps, ICheckStyles } from '@fluentui/react/lib/Check';
-import {
+import { FontSizes } from '../AzureType';
+import * as StyleConstants from '../Constants';
+import type { ICheckStyleProps, ICheckStyles } from '@fluentui/react/lib/Check';
+import type {
   IDetailsRowStyleProps,
   IDetailsRowStyles,
   IDetailsListStyleProps,
   IDetailsListStyles,
 } from '@fluentui/react/lib/DetailsList';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { FontSizes } from '../AzureType';
-import * as StyleConstants from '../Constants';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;

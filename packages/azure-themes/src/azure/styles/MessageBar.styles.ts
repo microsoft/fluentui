@@ -1,6 +1,7 @@
-import { IStyle } from '@fluentui/react';
-import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from '@fluentui/react/lib/MessageBar';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import { MessageBarType } from '@fluentui/react/lib/MessageBar';
+import type { IStyle } from '@fluentui/react';
+import type { IMessageBarStyleProps, IMessageBarStyles } from '@fluentui/react/lib/MessageBar';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 const generateBaseStyle = (backgroundColor: string, textColor: string): IStyle => {
   return {

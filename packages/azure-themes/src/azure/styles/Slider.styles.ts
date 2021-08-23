@@ -1,6 +1,6 @@
-import { ISliderStyleProps, ISliderStyles } from '@fluentui/react/lib/Slider';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ISliderStyleProps, ISliderStyles } from '@fluentui/react/lib/Slider';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 const SLIDER_BOX_DIMENSION: number = 8;
 const SLIDER_DIAMETER: number = 16;

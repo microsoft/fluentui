@@ -1,7 +1,7 @@
-import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from '@fluentui/react/lib/TeachingBubble';
 import { Depths } from '../AzureDepths';
 import { FontSizes } from '../AzureType';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from '@fluentui/react/lib/TeachingBubble';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
   const { theme } = props;

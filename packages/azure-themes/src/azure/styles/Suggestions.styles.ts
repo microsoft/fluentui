@@ -1,5 +1,5 @@
-import { ISuggestionsStyleProps, ISuggestionsStyles } from '@fluentui/react/lib/Pickers';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ISuggestionsStyleProps, ISuggestionsStyles } from '@fluentui/react/lib/Pickers';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const SuggestionsStyles = (props: ISuggestionsStyleProps): Partial<ISuggestionsStyles> => {
   const { theme } = props;

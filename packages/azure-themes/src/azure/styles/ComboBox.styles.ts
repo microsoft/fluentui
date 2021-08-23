@@ -1,8 +1,8 @@
-import { ITheme } from '@fluentui/react/lib/Styling';
 import { Depths } from '../AzureDepths';
-import { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ITheme } from '@fluentui/react/lib/Styling';
+import type { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
   const { semanticColors } = theme;

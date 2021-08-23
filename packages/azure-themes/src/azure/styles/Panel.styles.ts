@@ -1,6 +1,6 @@
-import { IPanelStyles, IPanelStyleProps } from '@fluentui/react';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
+import type { IPanelStyles, IPanelStyleProps } from '@fluentui/react';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
   const { theme } = props;

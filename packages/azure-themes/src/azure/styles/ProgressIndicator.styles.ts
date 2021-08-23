@@ -1,4 +1,4 @@
-import { IProgressIndicatorStyles, IProgressIndicatorStyleProps } from '@fluentui/react/lib/ProgressIndicator';
+import type { IProgressIndicatorStyles, IProgressIndicatorStyleProps } from '@fluentui/react/lib/ProgressIndicator';
 
 export const ProgressIndicatorStyles = (props: IProgressIndicatorStyleProps): Partial<IProgressIndicatorStyles> => {
   const { theme } = props;

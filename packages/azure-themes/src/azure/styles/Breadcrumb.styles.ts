@@ -1,5 +1,5 @@
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from '@fluentui/react/lib/Breadcrumb';
 import { FontWeights } from '@fluentui/react/lib/Styling';
+import type { IBreadcrumbStyleProps, IBreadcrumbStyles } from '@fluentui/react/lib/Breadcrumb';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcrumbStyles> => {
   const { theme } = props;

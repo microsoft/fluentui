@@ -1,6 +1,6 @@
-import { ISearchBoxStyleProps, ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ISearchBoxStyleProps, ISearchBoxStyles } from '@fluentui/react/lib/SearchBox';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
   const { theme, hasFocus } = props;

@@ -1,5 +1,5 @@
-import { IOverlayStyleProps, IOverlayStyles } from '@fluentui/react/lib/Overlay';
 import { CommonSemanticColors } from '../AzureColors';
+import type { IOverlayStyleProps, IOverlayStyles } from '@fluentui/react/lib/Overlay';
 
 export const OverlayStyles = (props: IOverlayStyleProps): Partial<IOverlayStyles> => {
   const { isDark } = props;

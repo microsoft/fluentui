@@ -1,12 +1,12 @@
-import {
+import { Depths } from '../AzureDepths';
+import * as StyleConstants from '../Constants';
+import type {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
   IContextualMenuItemStyles,
 } from '@fluentui/react/lib/ContextualMenu';
-import { Depths } from '../AzureDepths';
-import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;

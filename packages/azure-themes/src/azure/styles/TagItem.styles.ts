@@ -1,6 +1,6 @@
-import { ITagItemStyleProps, ITagItemStyles } from '@fluentui/react/lib/Pickers';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { transparent } from '../Constants';
+import type { ITagItemStyleProps, ITagItemStyles } from '@fluentui/react/lib/Pickers';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles> => {
   const { theme, selected } = props;

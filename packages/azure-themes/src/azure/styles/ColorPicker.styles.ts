@@ -1,4 +1,5 @@
-import {
+import { Depths } from '../AzureDepths';
+import type {
   IColorPickerStyleProps,
   IColorPickerStyles,
   IColorRectangleStyleProps,
@@ -6,8 +7,7 @@ import {
   IColorSliderStyleProps,
   IColorSliderStyles,
 } from '@fluentui/react/lib/ColorPicker';
-import { Depths } from '../AzureDepths';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColorPickerStyles> => {
   return {

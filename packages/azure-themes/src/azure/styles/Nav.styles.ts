@@ -1,5 +1,5 @@
-import { INavStyleProps, INavStyles } from '@fluentui/react/lib/Nav';
 import { borderNone } from '../Constants';
+import type { INavStyleProps, INavStyles } from '@fluentui/react/lib/Nav';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
   const { theme } = props;

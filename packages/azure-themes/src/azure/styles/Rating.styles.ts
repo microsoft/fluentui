@@ -1,5 +1,5 @@
-import { IRatingStyleProps, IRatingStyles } from '@fluentui/react/lib/Rating';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IRatingStyleProps, IRatingStyles } from '@fluentui/react/lib/Rating';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> => {
   const { disabled, readOnly, theme } = props;

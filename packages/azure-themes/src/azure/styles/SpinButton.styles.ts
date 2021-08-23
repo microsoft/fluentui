@@ -1,5 +1,5 @@
-import { ISpinButtonStyleProps, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
-import { IStyleFunction } from '@fluentui/react/lib/Utilities';
+import type { ISpinButtonStyleProps, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+import type { IStyleFunction } from '@fluentui/react/lib/Utilities';
 
 export const SpinButtonStyles: IStyleFunction<ISpinButtonStyleProps, ISpinButtonStyles> = (
   props: ISpinButtonStyleProps,

@@ -1,6 +1,6 @@
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from '@fluentui/react/lib/ChoiceGroup';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import * as StyleConstants from '../Constants';
+import type { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from '@fluentui/react/lib/ChoiceGroup';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
   const { checked, disabled, theme, hasIcon, hasImage } = props;

@@ -1,5 +1,5 @@
-import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from '@fluentui/react/lib/SwatchColorPicker';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from '@fluentui/react/lib/SwatchColorPicker';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const ColorPickerGridCellStyles = (
   props: IColorPickerGridCellStyleProps,

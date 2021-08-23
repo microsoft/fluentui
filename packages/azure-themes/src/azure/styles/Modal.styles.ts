@@ -1,6 +1,6 @@
-import { IModalStyles, IModalStyleProps } from '@fluentui/react';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
+import type { IModalStyles, IModalStyleProps } from '@fluentui/react';
 
 export const ModalStyles = (props: IModalStyleProps): Partial<IModalStyles> => {
   const { theme } = props;

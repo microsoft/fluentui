@@ -1,6 +1,6 @@
-import { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/react/lib/Callout';
 import { Depths } from '../AzureDepths';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/react/lib/Callout';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<ICalloutContentStyles> => {
   const { theme } = props;

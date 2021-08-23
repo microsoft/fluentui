@@ -1,7 +1,7 @@
-import { IDropdownStyleProps, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { Depths } from '../AzureDepths';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IDropdownStyleProps, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
   const { disabled, theme, hasError, isOpen } = props;

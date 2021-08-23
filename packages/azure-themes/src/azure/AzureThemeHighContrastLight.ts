@@ -1,9 +1,10 @@
-import { createTheme, Theme } from '@fluentui/react';
+import { createTheme } from '@fluentui/react';
 import { CommonSemanticColors, HighContrastLightSemanticColors } from './AzureColors';
-import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
 import { AzureStyleSettings } from './AzureStyleSettings';
+import type { Theme } from '@fluentui/react';
+import type { IExtendedSemanticColors } from './IExtendedSemanticColors';
 
 const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: HighContrastLightSemanticColors.background,

@@ -1,6 +1,6 @@
-import { IBasePickerStyles, IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IBasePickerStyles, IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TagPickerStyles = (props: IBasePickerStyleProps): Partial<IBasePickerStyles> => {
   const { theme } = props;

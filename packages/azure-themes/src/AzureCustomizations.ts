@@ -1,8 +1,8 @@
-import { ICustomizations } from '@fluentui/react';
 import { AzureThemeDark } from './azure/AzureThemeDark';
 import { AzureThemeLight } from './azure/AzureThemeLight';
 import { AzureThemeHighContrastLight } from './azure/AzureThemeHighContrastLight';
 import { AzureThemeHighContrastDark } from './azure/AzureThemeHighContrastDark';
+import type { ICustomizations } from '@fluentui/react';
 
 const { components: darkScopedSettings, ...darkThemeSettings } = AzureThemeDark;
 const { components: lightScopedSettings, ...lightThemeSettings } = AzureThemeLight;

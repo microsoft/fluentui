@@ -1,4 +1,4 @@
-import { ISemanticColors } from '@fluentui/react';
+import type { ISemanticColors } from '@fluentui/react';
 
 export interface IExtendedSemanticColors extends ISemanticColors {
   checkboxBorderChecked: string;

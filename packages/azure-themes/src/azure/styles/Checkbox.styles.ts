@@ -1,7 +1,7 @@
-import { ICheckboxStyleProps, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
 import * as StyleConstants from '../Constants';
+import type { ICheckboxStyleProps, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme, indeterminate } = props;

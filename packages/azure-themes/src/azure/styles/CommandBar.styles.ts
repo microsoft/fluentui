@@ -1,6 +1,6 @@
-import { ICommandBarStyleProps, ICommandBarStyles } from '@fluentui/react/lib/CommandBar';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ICommandBarStyleProps, ICommandBarStyles } from '@fluentui/react/lib/CommandBar';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CommandBarStyles = (props: ICommandBarStyleProps): Partial<ICommandBarStyles> => {
   const { theme } = props;

@@ -1,7 +1,7 @@
 import * as StyleConstants from '../Constants';
-import { IDatePickerStyles, IDatePickerStyleProps } from '@fluentui/react/lib/DatePicker';
 import { BaseColors } from '../AzureColors';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IDatePickerStyles, IDatePickerStyleProps } from '@fluentui/react/lib/DatePicker';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   const { disabled, theme } = props;

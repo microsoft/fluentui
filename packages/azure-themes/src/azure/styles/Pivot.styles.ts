@@ -1,6 +1,6 @@
-import { IPivotStyleProps, IPivotStyles } from '@fluentui/react/lib/Pivot';
 import * as StyleConstants from '../Constants';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { IPivotStyleProps, IPivotStyles } from '@fluentui/react/lib/Pivot';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
   const { theme, linkFormat, linkSize } = props;

@@ -1,4 +1,4 @@
-import { ISuggestionItemProps, ISuggestionsItemStyles, ITagPickerProps } from '@fluentui/react/lib/Pickers';
+import type { ISuggestionItemProps, ISuggestionsItemStyles, ITagPickerProps } from '@fluentui/react/lib/Pickers';
 
 export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps>): Partial<ISuggestionsItemStyles> => {
   const { theme } = props;

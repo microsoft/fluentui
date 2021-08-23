@@ -1,5 +1,5 @@
-import { ILinkStyleProps, ILinkStyles } from '@fluentui/react/lib/Link';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import type { ILinkStyleProps, ILinkStyles } from '@fluentui/react/lib/Link';
+import type { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {
   const { isDisabled, theme } = props;
