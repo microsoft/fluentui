@@ -169,7 +169,6 @@ const templates = {
       };
   `,
   storybook: {
-    /* eslint-disable @fluentui/max-len */
     main: stripIndents`
       const rootMain = require('../../../.storybook/main');
 
@@ -186,7 +185,6 @@ const templates = {
         },
       });
     `,
-    /* eslint-enable @fluentui/max-len */
     preview: stripIndents`
       import * as rootPreview from '../../../.storybook/preview';
 
@@ -448,8 +446,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
     updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
       json.scripts = json.scripts || {};
 
-      delete json.scripts['start'];
-      delete json.scripts['storybook'];
+      delete json.scripts.start;
+      delete json.scripts.storybook;
       delete json.scripts['build-storybook'];
 
       return json;
