@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '@fluentui/react/lib/Styling';
-import { ICardItemComponent, ICardItemStylesReturnType, ICardItemTokenReturnType } from './CardItem.types';
+import type { ICardItemComponent, ICardItemStylesReturnType, ICardItemTokenReturnType } from './CardItem.types';
 
 const GlobalClassNames = {
   root: 'ms-CardItem',

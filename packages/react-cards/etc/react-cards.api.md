@@ -4,18 +4,18 @@
 
 ```ts
 
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
-import { IComponent } from '@fluentui/foundation-legacy';
-import { IComponentStyles } from '@fluentui/foundation-legacy';
-import { ISlotProp } from '@fluentui/foundation-legacy';
-import { IStackItemProps } from '@fluentui/react/lib/Stack';
-import { IStackItemSlots } from '@fluentui/react/lib/Stack';
-import { IStackItemTokens } from '@fluentui/react/lib/Stack';
-import { IStackProps } from '@fluentui/react/lib/Stack';
-import { IStackSlot } from '@fluentui/react/lib/Stack';
-import { IStackSlots } from '@fluentui/react/lib/Stack';
-import { IStackTokens } from '@fluentui/react/lib/Stack';
-import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import type { IBaseProps } from '@fluentui/react/lib/Utilities';
+import type { IComponent } from '@fluentui/foundation-legacy';
+import type { IComponentStyles } from '@fluentui/foundation-legacy';
+import type { ISlotProp } from '@fluentui/foundation-legacy';
+import type { IStackItemProps } from '@fluentui/react/lib/Stack';
+import type { IStackItemSlots } from '@fluentui/react/lib/Stack';
+import type { IStackItemTokens } from '@fluentui/react/lib/Stack';
+import type { IStackProps } from '@fluentui/react/lib/Stack';
+import type { IStackSlot } from '@fluentui/react/lib/Stack';
+import type { IStackSlots } from '@fluentui/react/lib/Stack';
+import type { IStackTokens } from '@fluentui/react/lib/Stack';
+import type { IStyleableComponentProps } from '@fluentui/foundation-legacy';
 import * as React_2 from 'react';
 
 // @public @deprecated (undocumented)

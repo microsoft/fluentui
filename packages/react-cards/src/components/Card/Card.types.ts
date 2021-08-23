@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStackSlot, IStackTokens } from '@fluentui/react/lib/Stack';
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import type { IStackSlot, IStackTokens } from '@fluentui/react/lib/Stack';
+import type { IBaseProps } from '@fluentui/react/lib/Utilities';
+import type { IComponent, IComponentStyles, IStyleableComponentProps } from '@fluentui/foundation-legacy';
 
 /**
  * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the

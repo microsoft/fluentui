@@ -1,6 +1,6 @@
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
-import { IStackItemProps, IStackItemSlots, IStackItemTokens } from '@fluentui/react/lib/Stack';
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
+import type { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import type { IStackItemProps, IStackItemSlots, IStackItemTokens } from '@fluentui/react/lib/Stack';
+import type { IBaseProps } from '@fluentui/react/lib/Utilities';
 
 /**
  * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the

@@ -1,5 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
+import type { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
 
 const GlobalClassNames = {
   root: 'ms-Card',

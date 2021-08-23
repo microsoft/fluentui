@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createComponent } from '@fluentui/foundation-legacy';
 import { CardSectionStyles as styles, CardSectionTokens as tokens } from './CardSection.styles';
-import { ICardSectionProps } from './CardSection.types';
 import { CardSectionView } from './CardSection.view';
+import type { ICardSectionProps } from './CardSection.types';
 
 /**
  * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the

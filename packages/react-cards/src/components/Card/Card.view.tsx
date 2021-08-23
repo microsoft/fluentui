@@ -2,14 +2,14 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
-import { Stack, IStackComponent } from '@fluentui/react/lib/Stack';
+import { Stack } from '@fluentui/react/lib/Stack';
 import { getNativeProps, htmlElementProperties, warn, KeyCodes } from '@fluentui/react/lib/Utilities';
-
-import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
 import { CardItem } from './CardItem/CardItem';
-import { ICardItemProps } from './CardItem/CardItem.types';
 import { CardSection } from './CardSection/CardSection';
-import { ICardSectionProps } from './CardSection/CardSection.types';
+import type { IStackComponent } from '@fluentui/react/lib/Stack';
+import type { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
+import type { ICardItemProps } from './CardItem/CardItem.types';
+import type { ICardSectionProps } from './CardSection/CardSection.types';
 
 /** @deprecated */
 export const CardView: ICardComponent['view'] = props => {

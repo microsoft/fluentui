@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { Stack } from '@fluentui/react/lib/Stack';
-import { ICardSectionComponent, ICardSectionProps, ICardSectionSlots } from './CardSection.types';
+import type { ICardSectionComponent, ICardSectionProps, ICardSectionSlots } from './CardSection.types';
 
 /** @deprecated */
 export const CardSectionView: ICardSectionComponent['view'] = props => {

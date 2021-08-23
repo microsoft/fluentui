@@ -1,5 +1,9 @@
 import { getGlobalClassNames } from '@fluentui/react/lib/Styling';
-import { ICardSectionComponent, ICardSectionStylesReturnType, ICardSectionTokenReturnType } from './CardSection.types';
+import type {
+  ICardSectionComponent,
+  ICardSectionStylesReturnType,
+  ICardSectionTokenReturnType,
+} from './CardSection.types';
 
 const GlobalClassNames = {
   root: 'ms-CardSection',
