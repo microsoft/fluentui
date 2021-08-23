@@ -4,10 +4,10 @@
 
 ```ts
 
-import { ARIAButtonProps } from '@fluentui/react-aria';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { Context } from '@fluentui/react-context-selector';
+import type { ARIAButtonProps } from '@fluentui/react-aria';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { Context } from '@fluentui/react-context-selector';
 import * as React_2 from 'react';
 
 // @public

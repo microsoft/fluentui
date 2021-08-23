@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAccordionHeaderContext } from './AccordionHeaderContext';
-import { AccordionHeaderContextValue } from './AccordionHeader.types';
+import type { AccordionHeaderContextValue } from './AccordionHeader.types';
 
 export type AccordionHeaderExpandIconProps = React.HTMLAttributes<HTMLSpanElement>;
 

@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { AccordionProps } from './Accordion.types';
 import { renderAccordion } from './renderAccordion';
 import { useAccordion } from './useAccordion';
 import { useAccordionContextValues } from './useAccordionContextValues';
+import type { AccordionProps } from './Accordion.types';
 
 /**
  * Define a styled Accordion, using the `useAccordion` and `useAccordionStyles` hooks.
