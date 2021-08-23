@@ -1,5 +1,5 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
 import { isStyleObject } from './utils';
+import type { ICSSInJSStyle } from '@fluentui/styles';
 
 const animationProps: (keyof ICSSInJSStyle)[] = [
   'animation',

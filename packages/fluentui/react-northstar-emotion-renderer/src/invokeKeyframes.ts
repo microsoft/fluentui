@@ -1,8 +1,7 @@
 import { serializeStyles } from '@emotion/serialize';
-import { EmotionCache } from '@emotion/utils';
-import { AnimationKeyFrame, AnimationName, ICSSInJSStyle } from '@fluentui/styles';
-
 import { isStyleObject } from './utils';
+import type { EmotionCache } from '@emotion/utils';
+import type { AnimationKeyFrame, AnimationName, ICSSInJSStyle } from '@fluentui/styles';
 
 // This code is taken from @emotion/core:
 // https://github.com/emotion-js/emotion/blob/a076e7fa5f78fec6515671b78801cfc9d6cf1316/packages/core/src/keyframes.js#L11

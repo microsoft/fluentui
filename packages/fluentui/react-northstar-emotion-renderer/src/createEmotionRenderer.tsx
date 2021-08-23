@@ -1,14 +1,7 @@
-import createCache, { StylisPlugin } from '@emotion/cache';
-import { CSSObject, serializeStyles } from '@emotion/serialize';
+import createCache from '@emotion/cache';
+import { serializeStyles } from '@emotion/serialize';
 import { StyleSheet } from '@emotion/sheet';
-import { EmotionCache, insertStyles } from '@emotion/utils';
-import {
-  CreateRenderer,
-  Renderer,
-  RendererRenderGlobal,
-  RendererRenderFont,
-  RendererRenderRule,
-} from '@fluentui/react-northstar-styles-renderer';
+import { insertStyles } from '@emotion/utils';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import * as React from 'react';
@@ -17,6 +10,16 @@ import { disableAnimations } from './disableAnimations';
 import { focusVisiblePlugin } from './focusVisiblePlugin';
 import { generateFontSource, getFontLocals, toCSSString } from './fontUtils';
 import { invokeKeyframes } from './invokeKeyframes';
+import type { StylisPlugin } from '@emotion/cache';
+import type { CSSObject } from '@emotion/serialize';
+import type { EmotionCache } from '@emotion/utils';
+import type {
+  CreateRenderer,
+  Renderer,
+  RendererRenderGlobal,
+  RendererRenderFont,
+  RendererRenderRule,
+} from '@fluentui/react-northstar-styles-renderer';
 
 export type CreateEmotionRendererOptions = {
   nonce?: string;

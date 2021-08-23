@@ -1,4 +1,5 @@
-import { Middleware, RULESET } from 'stylis';
+import { RULESET } from 'stylis';
+import type { Middleware } from 'stylis';
 
 type MiddlewareParams = Parameters<Middleware>;
 
