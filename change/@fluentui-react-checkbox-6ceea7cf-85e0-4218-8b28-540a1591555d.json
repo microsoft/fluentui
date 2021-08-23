@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Adding stopPropagation to the input change event.",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none"
-}
