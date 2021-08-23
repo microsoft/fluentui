@@ -59,19 +59,19 @@ export const MarkedSliderExample = (props: SliderProps) => {
         step={2}
         max={10}
         marks={[
-          0,
           {
             value: 2,
-            mark: <div style={{ width: '1px', height: '8px', background: 'green' }} />,
+            mark: <div style={{ width: '1px', height: '8px', background: 'green', marginTop: '-2px' }} />,
           },
-          10,
+          6,
+          8,
         ]}
       />
       <Label>Custom Mark Label</Label>
       <Slider
         max={10}
         marks={[
-          3,
+          { value: 2, label: '2 oz' },
           {
             value: 4,
             label: (
@@ -84,9 +84,17 @@ export const MarkedSliderExample = (props: SliderProps) => {
               />
             ),
           },
-          { value: 5, label: '5 oz' },
           8,
-          10,
+        ]}
+      />
+      <Label>Disabled Mark Label</Label>
+      <Slider
+        disabled
+        max={10}
+        marks={[
+          { value: 2, label: '2 oz' },
+          { value: 5, label: '5 oz' },
+          { value: 8, label: '8 oz' },
         ]}
       />
       <Label>Vertical Marks</Label>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
 /**
@@ -135,12 +136,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = min + step * calculateSteps(ev);
-      const currentStepPosition = state.step ? Math.round(position / step) * step : position;
+      const currentStepPosition = Math.round(position / step) * step;
 
       setRenderedPosition(clamp(position, min, max));
       currentValue !== currentStepPosition && updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, currentValue, max, min, state.step, step, updateValue],
+    [calculateSteps, currentValue, max, min, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -343,11 +344,18 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
             ) : (
               <div className="ms-Slider-mark" key={`mark-${i}`} />
             ))}
-          {marksItem !== (undefined || null) && typeof marksItem === 'object' && marksItem.label && (
-            <div className="ms-Slider-label" key={`markLabel-${i}`}>
-              {marksItem.label}
-            </div>
-          )}
+          {marksItem !== (undefined || null) &&
+            typeof marksItem === 'object' &&
+            marksItem.label &&
+            (typeof marksItem.label === 'string' ? (
+              <Label className="ms-Slider-label" key={`markLabel-${i}`} disabled={disabled}>
+                {marksItem.label}
+              </Label>
+            ) : (
+              <div className="ms-Slider-label" key={`markLabel-${i}`}>
+                {marksItem.label}
+              </div>
+            ))}
         </div>,
       );
     }

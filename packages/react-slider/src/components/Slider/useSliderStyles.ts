@@ -20,11 +20,13 @@ const useRootStyles = makeStyles({
   small: {
     '--slider-thumb-size': '10px',
     '--slider-rail-size': '2px',
+    '--slider-mark-size': '2px',
   },
 
   medium: {
     '--slider-thumb-size': '20px',
     '--slider-rail-size': '4px',
+    '--slider-mark-size': '4px',
   },
 
   horizontal: theme => ({
@@ -195,11 +197,14 @@ const useTrackStyles = makeStyles({
  */
 const useMarksContainerStyles = makeStyles({
   marksContainer: theme => ({
+    position: 'relative',
     display: 'grid',
     outline: 'none',
+    zIndex: '1',
 
     '& .ms-Slider-mark': {
-      background: '#626262',
+      // TODO: theme neutralStrokeOnBrand
+      background: 'white',
     },
 
     '& .ms-Slider-label': {
@@ -209,7 +214,7 @@ const useMarksContainerStyles = makeStyles({
   }),
 
   horizontal: theme => ({
-    marginTop: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    marginTop: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     marginLeft: 'calc(var(--slider-thumb-size) / 2)',
     marginRight: 'calc(var(--slider-thumb-size) / 2)',
     justifyItems: 'end',
@@ -225,12 +230,16 @@ const useMarksContainerStyles = makeStyles({
       height: '4px',
       width: '1px',
     },
+
+    '& .ms-Slider-label': {
+      paddingTop: 'calc(var(--slider-thumb-size) /2 )',
+    },
   }),
 
   vertical: theme => ({
     marginTop: 'calc(var(--slider-thumb-size) / 2)',
     marginBottom: 'calc(var(--slider-thumb-size) / 2)',
-    marginLeft: 'calc(var(--slider-thumb-size) - (var(--slider-thumb-size) * .25) )',
+    marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
     justifyItems: 'start',
 
     '& .ms-Slider-markItemContainer': {
@@ -244,11 +253,11 @@ const useMarksContainerStyles = makeStyles({
 
     '& .ms-Slider-mark': {
       height: '1px',
-      width: '4px',
+      width: 'var(--slider-mark-size)',
     },
 
     '& .ms-Slider-label': {
-      marginLeft: '4px',
+      paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
       transform: 'scaleY(-1)',
     },
   }),
@@ -261,6 +270,7 @@ const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
+    zIndex: '2',
   }),
 
   horizontal: theme => ({
