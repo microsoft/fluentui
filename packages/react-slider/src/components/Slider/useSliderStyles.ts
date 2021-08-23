@@ -201,7 +201,7 @@ const useMarksContainerStyles = makeStyles({
     display: 'grid',
     outline: 'none',
     zIndex: '1',
-
+    whiteSpace: 'nowrap',
     '& .ms-Slider-mark': {
       // TODO: theme neutralStrokeOnBrand
       background: 'white',

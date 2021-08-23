@@ -109,7 +109,7 @@ export const MarkedSliderExample = (props: SliderProps) => {
           vertical
           max={10}
           marks={[
-            3,
+            { value: 2, label: '2 oz' },
             {
               value: 6,
               label: (
@@ -122,9 +122,9 @@ export const MarkedSliderExample = (props: SliderProps) => {
                 />
               ),
             },
-            8,
-            10,
+            { value: 8, label: '8 oz' },
           ]}
+          ariaValueText={value => value + 'ounces'}
         />
       </div>
     </div>
