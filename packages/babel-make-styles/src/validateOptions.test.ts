@@ -1,5 +1,5 @@
 import { validateOptions } from './validateOptions';
-import { BabelPluginOptions } from './types';
+import type { BabelPluginOptions } from './types';
 
 describe('validateOptions', () => {
   it('passes on valid options', () => {

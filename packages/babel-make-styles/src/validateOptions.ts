@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 
 import { configSchema } from './schema';
-import { BabelPluginOptions } from './types';
+import type { BabelPluginOptions } from './types';
 
 const ajv = new Ajv();
 

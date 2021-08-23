@@ -1,4 +1,4 @@
-import { TransformOptions } from '@babel/core';
+import type { TransformOptions } from '@babel/core';
 
 export type BabelPluginOptions = {
   /** Defines set of modules and imports handled by a plugin. */

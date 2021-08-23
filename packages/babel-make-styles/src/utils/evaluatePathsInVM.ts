@@ -1,12 +1,14 @@
-import { NodePath, TransformOptions, types as t } from '@babel/core';
+import { NodePath, types as t } from '@babel/core';
 import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
 import { resolveProxyValues } from '@fluentui/make-styles';
-import { Module, StrictOptions } from '@linaria/babel-preset';
+import { Module } from '@linaria/babel-preset';
 import shakerEvaluator from '@linaria/shaker';
 
 import { astify } from './astify';
+import type { TransformOptions } from '@babel/core';
+import type { StrictOptions } from '@linaria/babel-preset';
 
 const EVAL_EXPORT_NAME = '__mkPreval';
 

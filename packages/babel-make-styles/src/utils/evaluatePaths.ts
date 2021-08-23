@@ -1,5 +1,6 @@
-import { NodePath, TransformOptions, types as t } from '@babel/core';
+import { NodePath, types as t } from '@babel/core';
 import { evaluatePathsInVM } from './evaluatePathsInVM';
+import type { TransformOptions } from '@babel/core';
 
 /**
  * Checks if passed paths can be evaluated by Babel, if no - fallbacks to Node evaluation.

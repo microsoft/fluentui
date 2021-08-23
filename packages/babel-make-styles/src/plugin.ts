@@ -1,13 +1,15 @@
-import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
+import { NodePath, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
-import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
+import { resolveStyleRulesForSlots } from '@fluentui/make-styles';
 
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
 import { UNHANDLED_CASE_ERROR } from './constants';
-import { BabelPluginOptions } from './types';
 import { validateOptions } from './validateOptions';
+import type { PluginObj, PluginPass } from '@babel/core';
+import type { CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
+import type { BabelPluginOptions } from './types';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
