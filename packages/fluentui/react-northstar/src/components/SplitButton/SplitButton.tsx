@@ -242,10 +242,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
           SplitButtonDivider,
           {},
           {
-            defaultProps: () =>
-              getA11yProps('divider', {
-                vertical: true,
-              }),
+            defaultProps: () => getA11yProps('divider', {}),
           },
         )}
         {SplitButtonToggle.create(toggleButton, {

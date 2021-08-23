@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Accessibility } from '@fluentui/accessibility';
 import {
   useTelemetry,
@@ -78,7 +77,6 @@ SplitButtonDivider.displayName = 'SplitButtonDivider';
 
 SplitButtonDivider.propTypes = {
   ...commonPropTypes.createCommon(),
-  vertical: PropTypes.bool,
 };
 
 SplitButtonDivider.handledProps = Object.keys(SplitButtonDivider.propTypes) as any;
