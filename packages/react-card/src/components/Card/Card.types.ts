@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Card Props
  */
-export interface CardProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface CardProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the cardShorthandProps array below
@@ -25,7 +25,7 @@ export type CardDefaultedProps = never; // TODO add names of properties with def
 /**
  * State used in rendering Card
  */
-export interface CardState extends CardProps, ComponentState {
+export interface CardState extends CardProps, ComponentStateCompat<CardProps, CardShorthandProps, CardDefaultedProps> {
   /**
    * Ref to the root element
    */
