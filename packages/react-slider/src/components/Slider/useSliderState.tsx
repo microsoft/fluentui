@@ -127,25 +127,17 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
       // TODO switch to RTL
       if (dir === 'ltr') {
-        position = currentBounds!.left;
+        position = currentBounds!.right;
       } else if (vertical) {
         position = currentBounds!.bottom;
       } else {
-        position = currentBounds!.right;
+        position = currentBounds!.left;
       }
 
       const totalSteps = (max - min) / step;
       const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
-      let distance;
-      // sliderPositionRect.right - left
-      if (dir === 'ltr') {
-        distance = thumbPosition - position;
-      } else if (vertical) {
-        distance = position - thumbPosition;
-      } else {
-        distance = thumbPosition - position;
-      }
+      const distance = dir === 'ltr' || vertical ? position - thumbPosition : thumbPosition - position;
 
       return distance / stepLength;
     },
@@ -248,7 +240,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const originPercent = origin ? getPercent(origin, min, max) : 0;
 
   const thumbStyles = {
-    transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
+    transform: vertical
+      ? `translateY(${valuePercent}%)`
+      : dir === 'ltr'
+      ? `translate(calc(${-valuePercent}% - (-5%)), -50%)`
+      : `translateX(${valuePercent}%) translate(-50%, -50%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.thumb.style,
   };
@@ -269,11 +265,15 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         ...state.track.style,
       }
     : {
-        left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+        [dir === 'ltr' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
         width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
         borderRadius:
           origin && origin !== (max || min)
-            ? `${originPercent > valuePercent ? '99px 0px 0px 99px' : '0px 99px 99px 0px'}`
+            ? `${
+                (dir === 'ltr' ? valuePercent > originPercent : originPercent > valuePercent)
+                  ? '99px 0px 0px 99px'
+                  : '0px 99px 99px 0px'
+              }`
             : '99px',
         transition: stepAnimation
           ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime} ${
