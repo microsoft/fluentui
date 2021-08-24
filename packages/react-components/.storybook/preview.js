@@ -16,7 +16,7 @@ export const parameters = {
        */
       order: [
         'Concepts',
-        ['Introduction', 'Developer', ['Quick Start', 'Styling Components']],
+        ['Introduction', 'Developer', ['Quick Start', 'Migrating from v8', 'Styling Components']],
         'Theme',
         'Components',
         'Migrations',
