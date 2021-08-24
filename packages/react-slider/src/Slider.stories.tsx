@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '10px',
     width: '400px',
-    // direction: 'rtl',
+    direction: 'ltr',
   },
   slider: {
     width: '500px',
