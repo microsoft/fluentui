@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds suppot for root as slot",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

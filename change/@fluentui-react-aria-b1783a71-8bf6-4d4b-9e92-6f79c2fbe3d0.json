@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates react-aria to use root as slot",
+  "packageName": "@fluentui/react-aria",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
