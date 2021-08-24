@@ -18,8 +18,6 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
   const { open } = useAccordionItemContext();
   return {
     open,
-    // TODO: this is a hack for conformance problems
-    ...props,
     root: getNativeElementProps('div', {
       ref,
       role: 'region',

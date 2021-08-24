@@ -3,12 +3,9 @@ import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { AccordionPanelProps } from './AccordionPanel.types';
 
 describe('AccordionPanel', () => {
   isConformant({
-    // TODO: this is a hack for conformance problems
-    requiredProps: { open: true } as AccordionPanelProps,
     Component: AccordionPanel,
     displayName: 'AccordionPanel',
   });
