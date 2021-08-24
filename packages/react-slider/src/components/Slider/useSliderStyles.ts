@@ -42,6 +42,25 @@ const useRootStyles = makeStyles({
     flexDirection: 'row',
   }),
 
+  enabled: theme => ({
+    ':hover': {
+      '& .ms-Slider-thumb': {
+        background: theme.alias.color.neutral.brandBackgroundHover,
+      },
+      '& .ms-Slider-track': {
+        background: theme.alias.color.neutral.brandBackgroundHover,
+      },
+    },
+    ':active': {
+      '& .ms-Slider-thumb': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
+      '& .ms-Slider-track': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
+    },
+  }),
+
   focusIndicator: createFocusIndicatorStyleRule(
     theme => ({
       ':after': {
@@ -81,25 +100,6 @@ const useSliderWrapper = makeStyles({
     bottom: '0px',
     left: '0px',
     minWidth: 'var(--slider-thumb-size)',
-  }),
-
-  enabled: theme => ({
-    ':hover': {
-      '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
-      },
-      '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
-      },
-    },
-    ':active': {
-      '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
-      },
-      '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
-      },
-    },
   }),
 });
 
@@ -360,6 +360,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     // TODO: Remove once compat is reverted
     rootStyles[state.size || 'medium'],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    !state.disabled && rootStyles.enabled,
     state.className,
   );
 
