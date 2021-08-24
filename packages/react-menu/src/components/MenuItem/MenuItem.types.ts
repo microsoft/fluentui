@@ -1,9 +1,5 @@
 import * as React from 'react';
-<<<<<<< HEAD
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-=======
 import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
->>>>>>> Updates react-menu to use root as slot
 
 export type MenuItemSlots = {
   root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;

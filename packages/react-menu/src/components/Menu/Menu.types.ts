@@ -1,16 +1,8 @@
 import * as React from 'react';
-<<<<<<< HEAD
-import { usePopperMouseTarget } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { MenuListProps } from '../MenuList/index';
-import type { MenuContextValue } from '../../contexts/menuContext';
-=======
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
 import { MenuListCommons } from '../MenuList/index';
 import { MenuContextValue } from '../../contexts/menuContext';
->>>>>>> Updates react-menu to use root as slot
 
 interface MenuCommons extends MenuListCommons {
   /**

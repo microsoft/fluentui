@@ -1,11 +1,6 @@
 import * as React from 'react';
-<<<<<<< HEAD
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import type { MenuGroupContextValue } from '../../contexts/menuGroupContext';
-=======
 import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 import { MenuGroupContextValue } from '../../contexts/menuGroupContext';
->>>>>>> Updates react-menu to use root as slot
 
 export type MenuGroupSlots = {
   root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
