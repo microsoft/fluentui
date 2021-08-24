@@ -125,11 +125,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
       let position;
 
-      // TODO switch to RTL
-      if (dir === 'ltr') {
-        position = currentBounds!.right;
-      } else if (vertical) {
+      if (vertical) {
         position = currentBounds!.bottom;
+      } else if (dir === 'rtl') {
+        position = currentBounds!.right;
       } else {
         position = currentBounds!.left;
       }
@@ -137,7 +136,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       const totalSteps = (max - min) / step;
       const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
-      const distance = dir === 'ltr' || vertical ? position - thumbPosition : thumbPosition - position;
+      const distance = dir === 'rtl' || vertical ? position - thumbPosition : thumbPosition - position;
 
       return distance / stepLength;
     },
@@ -239,14 +238,18 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const originPercent = origin ? getPercent(origin, min, max) : 0;
 
-  const thumbStyles = {
+  const thumbWrapperStyles = {
     transform: vertical
       ? `translateY(${valuePercent}%)`
-      : dir === 'ltr'
+      : dir === 'rtl'
       ? `translateX(${-valuePercent}%)`
       : `translateX(${valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.thumb.style,
+  };
+
+  const thumbStyles = {
+    transform: dir === 'rtl' ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
   };
 
   const trackStyles = vertical
@@ -265,12 +268,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         ...state.track.style,
       }
     : {
-        [dir === 'ltr' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+        [dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
         width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
         borderRadius:
           origin && origin !== (max || min)
             ? `${
-                (dir === 'ltr' ? valuePercent > originPercent : originPercent > valuePercent)
+                (dir === 'rtl' ? valuePercent > originPercent : originPercent > valuePercent)
                   ? '99px 0px 0px 99px'
                   : '0px 99px 99px 0px'
               }`
@@ -295,12 +298,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.style = trackStyles;
 
   // Thumb Wrapper Props
-  state.thumbWrapper.style = thumbStyles;
+  state.thumbWrapper.style = thumbWrapperStyles;
 
   // Thumb Props
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
+  state.thumb.style = thumbStyles;
   state.thumb['aria-valuemin'] = min;
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
