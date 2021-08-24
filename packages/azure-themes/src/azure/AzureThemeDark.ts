@@ -113,6 +113,10 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   iconButtonFill: DarkSemanticColors.primaryButton.rest.background,
   iconButtonFillHovered: DarkSemanticColors.primaryButton.hover.background,
   labelText: DarkSemanticColors.text.label,
+  sliderActiveBackground: DarkSemanticColors.slider.activeBackground,
+  sliderInActiveHover: DarkSemanticColors.slider.inactiveBackgroundHovered,
+  sliderActiveHover: DarkSemanticColors.slider.activeBackgroundHovered,
+
   statusDefaultBackground: DarkSemanticColors.statusBar.background.default,
   statusDefaultBorder: DarkSemanticColors.statusBar.border.default,
   statusErrorBackground: DarkSemanticColors.statusBar.background.error,

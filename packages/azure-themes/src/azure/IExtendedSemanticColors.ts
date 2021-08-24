@@ -111,6 +111,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   radioButtonThumbCheckedDisabled: string;
   rowBorder: string;
   rowFocus: string;
+  sliderActiveBackground: string;
+  sliderInActiveHover: string;
+  sliderActiveHover: string;
   statusDefaultBackground: string;
   statusDefaultBorder: string;
   statusErrorBackground: string;

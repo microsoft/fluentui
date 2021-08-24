@@ -4,48 +4,52 @@ import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 const SLIDER_BOX_DIMENSION: number = 8;
 const SLIDER_DIAMETER: number = 16;
-const SLIDER_OFFSET: number = 2;
-const SLIDER_BORDER_RADIUS: number = 0;
+const SLIDER_BORDER_RADIUS: number = 10;
 
 export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> => {
   const { disabled, theme, vertical } = props;
-  const semanticColors = theme.semanticColors as IExtendedSemanticColors;
+  const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
+    root: {
+      selectors: {
+        ':not(.ms-Slider-disabled) .ms-Slider-container:hover .ms-Slider-inactive': {
+          backgroundColor: extendedSemanticColors.sliderInActiveHover,
+        },
+        ':not(.ms-Slider-disabled).ms-Slider-container:hover .ms-Slider-active': {
+          backgroundColor: extendedSemanticColors.sliderActiveHover,
+        },
+        ':not(.ms-Slider-disabled) .ms-Slider-container:hover .ms-Slider-thumb': {
+          borderColor: extendedSemanticColors.sliderActiveHover,
+        },
+      },
+    },
+    // left side of bar
     activeSection: [
       !disabled && {
-        backgroundColor: semanticColors.controlAccent,
+        backgroundColor: extendedSemanticColors.sliderActiveBackground,
       },
       disabled && {
         background: semanticColors.disabledBodyText,
       },
     ],
+    // right side of bar
     inactiveSection: [
       !disabled && {
-        background: 'rgb(222, 236, 249)', //semanticColors.controlOutlineDisabled,
+        background: extendedSemanticColors.controlOutlineDisabled,
       },
       disabled && {
-        background: 'rgb(222, 236, 249)', //semanticColors.disabledBodyText,
+        background: semanticColors.disabledBodyText,
       },
     ],
     slideBox: [
       !disabled && {
         selectors: {
-          '.ms-Slider-thumb': [
-            {
-              borderColor: semanticColors.controlAccent,
-              //height: SLIDER_DIAMETER,
-              width: SLIDER_DIAMETER,
-            },
-            vertical &&
-              {
-                //marginLeft: SLIDER_OFFSET,
-              },
-            !vertical &&
-              {
-                //marginTop: SLIDER_OFFSET,
-              },
-          ],
+          '.ms-Slider-thumb': {
+            borderColor: extendedSemanticColors.sliderActiveBackground,
+            width: SLIDER_DIAMETER,
+          },
         },
       },
       disabled && {
@@ -53,17 +57,8 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
           '.ms-Slider-thumb': [
             {
               borderColor: semanticColors.disabledBodyText,
-              //height: SLIDER_DIAMETER,
               width: SLIDER_DIAMETER,
             },
-            vertical &&
-              {
-                //marginLeft: SLIDER_OFFSET,
-              },
-            !vertical &&
-              {
-                //marginTop: SLIDER_OFFSET,
-              },
           ],
         },
       },
@@ -72,12 +67,10 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
       !vertical && {
         selectors: {
           '.ms-Slider-active': {
-            //height: SLIDER_BOX_DIMENSION,
-            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
+            borderRadius: SLIDER_BORDER_RADIUS,
           },
           '.ms-Slider-inactive': {
-            //height: SLIDER_BOX_DIMENSION,
-            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
+            borderRadius: SLIDER_BORDER_RADIUS,
           },
         },
       },
@@ -85,11 +78,11 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
         selectors: {
           '.ms-Slider-active': {
             width: SLIDER_BOX_DIMENSION,
-            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
+            borderRadius: SLIDER_BORDER_RADIUS,
           },
           '.ms-Slider-inactive': {
             width: SLIDER_BOX_DIMENSION,
-            borderRadius: '10px', //SLIDER_BORDER_RADIUS,
+            borderRadius: SLIDER_BORDER_RADIUS,
           },
         },
       },
@@ -103,6 +96,7 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
         selectors: {
           '&.ms-Slider-value': {
             color: semanticColors.bodyText,
+            borderRadius: StyleConstants.borderRadius,
           },
         },
       },

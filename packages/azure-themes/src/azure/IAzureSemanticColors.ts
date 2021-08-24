@@ -211,4 +211,9 @@ export interface IAzureSemanticColors {
       primaryButtonBackground: string;
     };
   };
+  slider: {
+    activeBackground: string;
+    activeBackgroundHovered: string;
+    inactiveBackgroundHovered: string;
+  };
 }

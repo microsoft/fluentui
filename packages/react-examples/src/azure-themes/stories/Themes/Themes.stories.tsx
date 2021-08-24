@@ -38,7 +38,6 @@ import { SliderBasicExample } from '../components/slider.stories';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
-      <SliderBasicExample />
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
@@ -80,6 +79,11 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Slider</Label>
+      <SliderBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
