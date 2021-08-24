@@ -135,6 +135,6 @@
     "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
     "@fluentui/react-storybook-addon": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-switch": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-conformance-make-styles": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] }
+    "@fluentui/react-conformance-make-styles": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] }
   }
 }
