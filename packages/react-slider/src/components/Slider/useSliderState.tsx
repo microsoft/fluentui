@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
 import type { SliderSlots, SliderState, SliderCommon } from './Slider.types';
 
@@ -64,6 +65,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     onKeyDown: onKeyDownCallback,
   } = state;
 
+  const { dir } = useFluent();
+
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<number>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
@@ -119,16 +122,34 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const sliderSize = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
-      const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
+      const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
+      let position;
+
+      // TODO switch to RTL
+      if (dir === 'ltr') {
+        position = currentBounds!.left;
+      } else if (vertical) {
+        position = currentBounds!.bottom;
+      } else {
+        position = currentBounds!.right;
+      }
 
       const totalSteps = (max - min) / step;
       const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
-      const distance = vertical ? position - thumbPosition : thumbPosition - position;
+      let distance;
+      // sliderPositionRect.right - left
+      if (dir === 'ltr') {
+        distance = thumbPosition - position;
+      } else if (vertical) {
+        distance = position - thumbPosition;
+      } else {
+        distance = thumbPosition - position;
+      }
+
       return distance / stepLength;
     },
-    [max, min, step, vertical],
+    [dir, max, min, step, vertical],
   );
 
   const onPointerMove = React.useCallback(
