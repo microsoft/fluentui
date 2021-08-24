@@ -58,6 +58,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   // Render
   public render(): JSX.Element {
     const {
+      as = 'div',
       calloutProps,
       children,
       content,
@@ -77,6 +78,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       className,
     });
 
+    const Container = as;
     const { isAriaPlaceholderRendered, isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
     const isContentPresent = !!(
@@ -87,7 +89,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
     return (
-      <div
+      <Container
         className={this._classNames.root}
         ref={this._tooltipHost}
         {...{ onFocusCapture: this._onTooltipFocus }}
@@ -123,7 +125,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
             {content}
           </div>
         )}
-      </div>
+      </Container>
     );
   }
 

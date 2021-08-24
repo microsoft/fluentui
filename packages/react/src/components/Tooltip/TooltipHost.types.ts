@@ -140,6 +140,13 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;
+
+  /**
+   * Optional prop to choose the HTML tag to render the tooltip container as
+   *
+   * @default div
+   */
+  as?: 'div' | 'span';
 }
 
 /**

@@ -8329,6 +8329,7 @@ export interface ITooltipHost {
 
 // @public
 export interface ITooltipHostProps extends React_2.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
+    as?: 'div' | 'span';
     calloutProps?: ICalloutProps;
     className?: string;
     closeDelay?: number;

@@ -109,4 +109,10 @@ describe('TooltipHost', () => {
     expect(onTooltipToggleCalled).toEqual(true);
     expect(calloutPropsBefore).toEqual(calloutProps);
   });
+
+  it('renders container with expected element type', () => {
+    const component = mount(<TooltipHost as="span" />);
+
+    expect(component.childAt(0).getDOMNode().tagName).toBe('span');
+  });
 });
