@@ -219,7 +219,7 @@ export const useAccordion: ({ openItems: controlledOpenItems, defaultOpenItems, 
 export function useAccordionContextValues(state: AccordionState): AccordionContextValues;
 
 // @public
-export const useAccordionHeader: ({ id, icon, button, children, expandIcon, inline, size, expandIconPosition, ...props }: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
+export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<HTMLElement>) => AccordionHeaderState;
 
 // @public (undocumented)
 export function useAccordionHeaderContextValues(state: AccordionHeaderState): AccordionHeaderContextValues;
@@ -228,7 +228,7 @@ export function useAccordionHeaderContextValues(state: AccordionHeaderState): Ac
 export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
 
 // @public
-export const useAccordionItem: ({ value, disabled, ...props }: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
+export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>) => AccordionItemState;
 
 // @public (undocumented)
 export const useAccordionItemContext: () => AccordionItemContextValue;

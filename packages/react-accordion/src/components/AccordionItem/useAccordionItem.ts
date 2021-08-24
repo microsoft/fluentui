@@ -4,7 +4,7 @@ import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { AccordionToggleEvent } from '../Accordion/Accordion.types';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 
 /**
  * Const listing which props are shorthand props.
@@ -16,10 +16,8 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = ['ro
  * @param props - AccordionItem properties
  * @param ref - reference to root HTMLElement of AccordionItem
  */
-export const useAccordionItem = (
-  { value, disabled = false, ...props }: AccordionItemProps,
-  ref: React.Ref<HTMLElement>,
-): AccordionItemState => {
+export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
+  const { value, disabled = false, ...rest } = props;
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},
@@ -33,17 +31,13 @@ export const useAccordionItem = (
   ]);
 
   return {
-    ...props,
     open,
     disabled,
     onHeaderClick: onAccordionHeaderClick,
-    ...(navigable ? tabsterAttributes : {}),
-    root: resolveShorthand(props, {
-      required: true,
-      defaultProps: {
-        ref: ref,
-        ...(navigable ? tabsterAttributes : {}),
-      },
+    root: getNativeElementProps('div', {
+      ref: ref,
+      ...(navigable ? tabsterAttributes : {}),
+      ...rest,
     }),
   };
 };

@@ -21,9 +21,8 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
  */
-export const useAccordionHeader = (
-  {
-    id,
+export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
+  const {
     icon,
     button,
     children,
@@ -31,16 +30,13 @@ export const useAccordionHeader = (
     inline = false,
     size = 'medium',
     expandIconPosition = 'start',
-    ...props
-  }: AccordionHeaderProps,
-  ref: React.Ref<HTMLElement>,
-): AccordionHeaderState => {
+    ...rest
+  } = props;
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
 
   const buttonShorthand = useARIAButton(button, {
     required: true,
     defaultProps: {
-      id,
       disabled,
     },
   });
@@ -48,9 +44,9 @@ export const useAccordionHeader = (
   return {
     disabled,
     open,
-    size: size,
-    inline: inline,
-    expandIconPosition: expandIconPosition,
+    size,
+    inline,
+    expandIconPosition,
     components: {
       root: 'div',
       button: 'button',
@@ -59,7 +55,7 @@ export const useAccordionHeader = (
     root: getNativeElementProps('div', {
       ref,
       role: 'heading',
-      ...props,
+      ...rest,
     }),
     icon: resolveShorthand(icon),
     expandIcon: resolveShorthand(expandIcon, {

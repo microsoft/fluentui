@@ -16,6 +16,5 @@ export function useMenuGroup(props: MenuGroupProps, ref: React.Ref<HTMLElement>)
       ...props,
     }),
     headerId: headerId,
-    ...props,
   };
 }

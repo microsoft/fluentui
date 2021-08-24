@@ -38,7 +38,7 @@ export interface InputState extends ComponentState<InputSlots> {
 export const renderInput: (state: InputState) => JSX.Element;
 
 // @public
-export const useInput: ({ input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, ...rest }: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>) => InputState;
 
 // @public
 export const useInputStyles: (state: InputState) => InputState;

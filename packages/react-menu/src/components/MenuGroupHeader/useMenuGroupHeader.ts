@@ -15,7 +15,5 @@ export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React.Ref<H
       id,
       ...props,
     }),
-    id,
-    ...props,
   };
 }

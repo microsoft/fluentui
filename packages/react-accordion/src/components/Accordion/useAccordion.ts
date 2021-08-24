@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
-import { useControllableState, useEventCallback, resolveShorthand } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, getNativeElementProps } from '@fluentui/react-utilities';
 import {
   AccordionProps,
   AccordionSlots,
@@ -45,11 +45,9 @@ export const useAccordion = (
     navigable,
     openItems,
     requestToggle,
-    root: resolveShorthand(rest, {
-      required: true,
-      defaultProps: {
-        ref,
-      },
+    root: getNativeElementProps('div', {
+      ...rest,
+      ref,
     }),
   };
 };

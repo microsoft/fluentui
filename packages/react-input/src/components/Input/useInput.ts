@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { InputProps, InputSlots, InputState } from './Input.types';
 
 /**
@@ -24,10 +24,8 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
  * @param props - props from this instance of Input
  * @param ref - reference to root HTMLInputElement of Input
  */
-export const useInput = (
-  { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, ...rest }: InputProps,
-  ref: React.Ref<HTMLElement>,
-): InputState => {
+export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
+  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, ...rest } = props;
   return {
     components: {
       input: 'input',
@@ -39,11 +37,9 @@ export const useInput = (
     bookendBefore: resolveShorthand(bookendBefore),
     insideEnd: resolveShorthand(insideEnd),
     insideStart: resolveShorthand(insideStart),
-    root: resolveShorthand(rest, {
-      required: true,
-      defaultProps: {
-        ref,
-      },
+    root: getNativeElementProps('div', {
+      ref,
+      ...rest,
     }),
   };
 };

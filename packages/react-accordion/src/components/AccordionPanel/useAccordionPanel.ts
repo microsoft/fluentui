@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 import { useAccordionItemContext } from '../AccordionItem/index';
 
@@ -20,13 +20,10 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
     open,
     // TODO: this is a hack for conformance problems
     ...props,
-    root: resolveShorthand(props, {
-      required: true,
-      defaultProps: {
-        ref,
-        role: 'region',
-        ...props,
-      },
+    root: getNativeElementProps('div', {
+      ref,
+      role: 'region',
+      ...props,
     }),
   };
 };

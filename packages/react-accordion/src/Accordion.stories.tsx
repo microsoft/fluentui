@@ -64,10 +64,6 @@ AccordionExample.argTypes = {
     defaultValue: false,
     control: 'boolean',
   },
-  // circular: {
-  //   defaultValue: false,
-  //   control: 'boolean',
-  // },
   multiple: {
     defaultValue: false,
     control: 'boolean',
