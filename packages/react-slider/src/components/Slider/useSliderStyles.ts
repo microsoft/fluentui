@@ -275,6 +275,20 @@ const useActiveRailStyles = makeStyles({
 });
 
 /**
+ * Styles for the Input slot
+ */
+const useInputStyles = makeStyles({
+  input: {
+    // opacity: 0,
+    position: 'absolute',
+    margin: 0,
+    padding: 0,
+    width: '100%',
+    height: '100%',
+  },
+});
+
+/**
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
@@ -286,6 +300,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
+  const inputStyles = useInputStyles();
 
   state.className = mergeClasses(
     rootStyles.root,
@@ -343,6 +358,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.vertical ? activeRailStyles.vertical : activeRailStyles.horizontal,
     state.activeRail.className,
   );
+
+  state.input.className = mergeClasses(inputStyles.input, state.input.className);
 
   return state;
 };

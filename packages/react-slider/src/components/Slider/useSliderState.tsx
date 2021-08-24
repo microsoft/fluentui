@@ -278,16 +278,24 @@ export const useSliderState = (state: SliderState) => {
 
   // Thumb Props
   state.thumb.ref = thumbRef;
-  state.thumb.tabIndex = disabled ? undefined : 0;
-  state.thumb.role = 'slider';
-  state.thumb['aria-valuemin'] = min;
-  state.thumb['aria-valuemax'] = max;
-  state.thumb['aria-valuenow'] = currentValue;
-  state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
-  disabled && (state.thumb['aria-disabled'] = true);
+  // state.thumb.tabIndex = disabled ? undefined : 0;
+  // state.thumb.role = 'slider';
+  // state.thumb['aria-valuemin'] = min;
+  // state.thumb['aria-valuemax'] = max;
+  // state.thumb['aria-valuenow'] = currentValue;
+  // state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  // disabled && (state.thumb['aria-disabled'] = true);
 
   // Active Rail Props
   state.activeRail.ref = railRef;
+
+  const inputRef = React.useRef(null);
+  // Input Props
+  state.input.ref = inputRef;
+  state.input.value = currentValue;
+  state.input.min = min;
+  state.input.max = max;
+  state.input.disabled = disabled;
 
   return state;
 };

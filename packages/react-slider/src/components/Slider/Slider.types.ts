@@ -41,6 +41,11 @@ export interface SliderProps
   activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
   /**
+   * The hidden input for the Slider.
+   */
+  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+
+  /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
    */
@@ -129,7 +134,8 @@ export type SliderShorthandProps =
   | 'track'
   | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail';
+  | 'activeRail'
+  | 'input';
 
 /**
  * Names of SliderProps that have a default value in useSlider
@@ -141,7 +147,8 @@ export type SliderDefaultedProps =
   | 'track'
   | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail';
+  | 'activeRail'
+  | 'input';
 
 /**
  * State used in rendering Slider
