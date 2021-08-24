@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 23 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.30)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.29..@fluentui/react-charting_v5.3.30)
+
+### Patches
+
+- opacity removed for unselected legends border, opacity was causing accessibility luminosity ratio issue ([PR #19436](https://github.com/microsoft/fluentui/pull/19436) by v-scharde@microsoft.com)
+- Reverting: Legends will be focusable in browser mode ([PR #19406](https://github.com/microsoft/fluentui/pull/19406) by v-scharde@microsoft.com)
+- Title tag for svg removed, so tooltip will not be shown on chart hover ([PR #19464](https://github.com/microsoft/fluentui/pull/19464) by v-scharde@microsoft.com)
 
 ## [5.3.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.29)
 

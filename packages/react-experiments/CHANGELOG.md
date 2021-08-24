@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 23 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.3.0)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.2.8..@fluentui/react-experiments_v8.3.0)
+
+### Minor changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19475](https://github.com/microsoft/fluentui/pull/19475) by dzearing@hotmail.com)
 
 ## [8.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.2.8)
 

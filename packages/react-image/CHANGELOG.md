@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.68)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.67..@fluentui/react-image_v9.0.0-alpha.68)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19474](https://github.com/microsoft/fluentui/pull/19474) by dzearing@hotmail.com)
 
 ## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.67)
 

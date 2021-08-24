@@ -1,18 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
-
-export type CheckboxSlots = {
-  /**
-   * Hidden input that handles the checkbox's functionality.
-   */
-  input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>;
-
-  /**
-   * Renders the checkbox, with the checkmark icon as its child when checked.
-   */
-  indicator: React.HtmlHTMLAttributes<HTMLDivElement>;
-};
 
 /**
  * TODO:
@@ -84,12 +72,23 @@ export interface CheckboxOnChangeData {
 /**
  * Checkbox Props
  */
-export interface CheckboxProps extends ComponentProps<Partial<CheckboxSlots>>, Partial<CheckboxCommons> {}
+export interface CheckboxProps extends ComponentPropsCompat, Partial<CheckboxCommons> {
+  /**
+   * Hidden input that handles the checkbox's functionality.
+   */
+  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+
+  /**
+   * Renders the checkbox, with the checkmark icon as its child when checked.
+   */
+  indicator?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
+}
 
 /**
  * State used in rendering Checkbox
  */
-export interface CheckboxState extends ComponentState<CheckboxSlots>, CheckboxCommons {
+export interface CheckboxState
+  extends ComponentStateCompat<CheckboxProps, 'input' | 'indicator', 'size' | 'labelPosition' | 'input' | 'indicator'> {
   /**
    * Ref to the root element.
    */
