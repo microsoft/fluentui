@@ -12,6 +12,7 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
   'bookendAfter',
   'insideStart',
   'insideEnd',
+  'root',
 ];
 
 /**
@@ -23,19 +24,26 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
  * @param props - props from this instance of Input
  * @param ref - reference to root HTMLInputElement of Input
  */
-export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
+export const useInput = (
+  { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, ...rest }: InputProps,
+  ref: React.Ref<HTMLElement>,
+): InputState => {
   return {
-    ...props,
     components: {
       input: 'input',
     },
     // temporarily must add fake children to prevent getSlots from substituting nullRender
-    input: resolveShorthand(props.input, { required: true }),
-    inputWrapper: resolveShorthand(props.inputWrapper, { required: true }),
-    bookendAfter: resolveShorthand(props.bookendAfter),
-    bookendBefore: resolveShorthand(props.bookendBefore),
-    insideEnd: resolveShorthand(props.insideEnd),
-    insideStart: resolveShorthand(props.insideStart),
-    ref,
+    input: resolveShorthand(input, { required: true }),
+    inputWrapper: resolveShorthand(inputWrapper, { required: true }),
+    bookendAfter: resolveShorthand(bookendAfter),
+    bookendBefore: resolveShorthand(bookendBefore),
+    insideEnd: resolveShorthand(insideEnd),
+    insideStart: resolveShorthand(insideStart),
+    root: resolveShorthand(rest, {
+      required: true,
+      defaultProps: {
+        ref,
+      },
+    }),
   };
 };
