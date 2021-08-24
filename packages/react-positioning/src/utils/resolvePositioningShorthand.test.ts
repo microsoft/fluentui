@@ -1,5 +1,5 @@
 import { resolvePositioningShorthand } from './resolvePositioningShorthand';
-import { PositioningShorthandValue, PositioningProps } from '../types';
+import type { PositioningShorthandValue, PositioningProps } from '../types';
 
 describe('resolvePositioningShorthand', () => {
   it.each<[PositioningShorthandValue, Pick<PositioningProps, 'position' | 'align'>]>([

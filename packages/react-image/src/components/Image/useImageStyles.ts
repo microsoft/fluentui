@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { ImageState } from './Image.types';
+import type { ImageState } from './Image.types';
 
 const useStyles = makeStyles({
   root: theme => ({

@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { MenuPopoverState } from './MenuPopover.types';
+import type { MenuPopoverState } from './MenuPopover.types';
 
 const useStyles = makeStyles({
   root: theme => ({

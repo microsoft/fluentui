@@ -123,7 +123,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { overflowProps, allowFocusOnLegends = true } = this.props;
     return (
       <OverflowSet
-        {...(allowFocusOnLegends && { 'aria-label': 'Legends' })}
+        {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}
@@ -377,6 +377,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       <button
         {...(allowFocusOnLegends && {
           'aria-selected': this.state.selectedLegend === legend.title,
+          role: 'option',
           'aria-label': legend.title,
           'aria-setsize': data['aria-setsize'],
           'aria-posinset': data['aria-posinset'],
@@ -403,8 +404,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     legend: ILegend,
     color: string,
   ): React.ReactNode | string {
-    const { theme } = this.props;
-    const { palette } = theme!;
     const svgParentProps: React.SVGAttributes<SVGElement> = {
       className: classNames.shape,
     };
@@ -412,7 +411,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       fill: color,
       strokeWidth: 2,
       stroke: legend.color,
-      opacity: color === palette.white ? 0.6 : legend.opacity ? legend.opacity : '',
     };
     return (
       <Shape

@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import { ObjectShorthandProps, ShorthandProps } from './types';
+import type { ObjectShorthandProps, ShorthandProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {

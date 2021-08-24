@@ -3,14 +3,8 @@ import { create } from 'react-test-renderer';
 
 import { people } from '@fluentui/example-data';
 import { mount } from 'enzyme';
-import {
-  SelectedPeopleList,
-  ISelectedPeopleList,
-  SelectedPersona,
-  ItemWithContextMenu,
-  TriggerOnContextMenu,
-  ItemCanDispatchTrigger,
-} from '../index';
+import { SelectedPeopleList, SelectedPersona, ItemWithContextMenu, TriggerOnContextMenu } from '../index';
+import type { ISelectedPeopleList, ItemCanDispatchTrigger } from '../index';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
