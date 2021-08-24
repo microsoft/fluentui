@@ -25,6 +25,7 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
+    "@fluentui/react-menu": "^9.0.0-alpha.66",
     "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/babel-make-styles": "^9.0.0-alpha.38",
     "@fluentui/eslint-plugin": "^1.4.1",
