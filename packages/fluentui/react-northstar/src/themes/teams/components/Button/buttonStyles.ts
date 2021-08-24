@@ -39,6 +39,15 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
       transition: faster,
       userSelect: 'none',
 
+      ...(!(p.text || p.flat || p.size === 'small') && {
+        ...(p.primary && {
+          boxShadow: v.primaryBoxShadow,
+        }),
+        ...(!p.primary && {
+          boxShadow: v.boxShadow,
+        }),
+      }),
+
       ...(p.size === 'small' && {
         padding: v.sizeSmallPadding,
         height: v.sizeSmallHeight,
@@ -51,9 +60,6 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         borderWidth,
         borderStyle: 'solid',
         borderColor: v.borderColor,
-        ...(!p.flat && {
-          boxShadow: v.boxShadow,
-        }),
 
         ':hover': {
           color: v.colorHover,
@@ -83,10 +89,6 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
             borderColor: v.borderColorHover,
           },
         },
-
-        ...(p.size === 'small' && {
-          boxShadow: 'none',
-        }),
       }),
 
       // circular button defaults
@@ -155,10 +157,6 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
             backgroundColor: v.primaryBackgroundColorHover,
           },
         }),
-
-      ...(!(p.text || p.flat || p.size === 'small') && {
-        boxShadow: v.primaryBoxShadow,
-      }),
 
       ...(p.inverted && {
         backgroundColor: siteVariables.colorScheme.silver.background,
