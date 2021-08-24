@@ -893,7 +893,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
     });
 
-    it(`should set project 'vNext' and 'platform:web' tag in nx.json`, async () => {
+    it(`should set project 'vNext' and 'platform:web' tag in nx.json if its a web package`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
       expect(projectConfig.tags).toBe(undefined);
 
@@ -902,6 +902,23 @@ describe('migrate-converged-pkg generator', () => {
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
+    });
+
+    it(`should set project 'platform:node' tag in nx.json if its a node package`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+      expect(projectConfig.tags).toBe(undefined);
+
+      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+        json.scripts = json.scripts || {};
+        json.scripts.build = 'just-scripts build --commonjs';
+        return json;
+      });
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:node']);
     });
 
     it(`should update project tags in nx.json if they already exist`, async () => {

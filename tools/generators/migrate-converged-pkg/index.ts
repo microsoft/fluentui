@@ -382,15 +382,42 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
 }
 
+function getPackageType(tree: Tree, options: NormalizedSchema) {
+  const tags = options.projectConfig.tags || [];
+
+  const pkgJson: PackageJson = readJson(tree, options.paths.packageJson);
+  const scripts = pkgJson.scripts || {};
+  const isNode =
+    tags.includes('platform:node') ||
+    Boolean(pkgJson.bin) ||
+    (scripts.build && scripts.build === 'just-scripts build --commonjs');
+  const isWeb = tags.includes('platform:web') || !isNode;
+
+  if (isNode) {
+    return 'node';
+  }
+
+  if (isWeb) {
+    return 'web';
+  }
+
+  throw new Error('Unable to determine type of package (web or node)');
+}
+
 function uniqueArray<T extends unknown>(value: T[]) {
   return Array.from(new Set(value));
 }
 
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+  const packageType = getPackageType(tree, options);
+  const tags = {
+    web: 'platform:web',
+    node: 'platform:node',
+  };
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
   });
 
   return tree;
