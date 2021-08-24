@@ -36,17 +36,21 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
       }
     >
       <div
-        aria-disabled={true}
-        aria-valuemax={10}
-        aria-valuemin={0}
-        aria-valuenow={5}
-        aria-valuetext="5"
         className="ms-Slider-thumb"
-        role="slider"
       />
     </div>
     <div
       className=""
+    />
+    <input
+      className=""
+      disabled={true}
+      max={10}
+      min={0}
+      onChange={[Function]}
+      step={1}
+      type="range"
+      value={5}
     />
   </div>
 </div>
@@ -56,11 +60,11 @@ exports[`Slider renders Slider correctly 1`] = `
 <div
   className=""
   id="slider-1"
-  onKeyDown={[Function]}
-  onPointerDown={[Function]}
 >
   <div
     className=""
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
   >
     <div
       className=""
@@ -90,17 +94,21 @@ exports[`Slider renders Slider correctly 1`] = `
       }
     >
       <div
-        aria-valuemax={10}
-        aria-valuemin={0}
-        aria-valuenow={5}
-        aria-valuetext="5"
         className="ms-Slider-thumb"
-        role="slider"
-        tabIndex={0}
       />
     </div>
     <div
       className=""
+    />
+    <input
+      className=""
+      disabled={false}
+      max={10}
+      min={0}
+      onChange={[Function]}
+      step={1}
+      type="range"
+      value={5}
     />
   </div>
 </div>
@@ -111,11 +119,11 @@ Array [
   <div
     className=""
     id="slider-1"
-    onKeyDown={[Function]}
-    onPointerDown={[Function]}
   >
     <div
       className=""
+      onKeyDown={[Function]}
+      onPointerDown={[Function]}
     >
       <div
         className=""
@@ -145,28 +153,32 @@ Array [
         }
       >
         <div
-          aria-valuemax={10}
-          aria-valuemin={0}
-          aria-valuenow={5}
-          aria-valuetext="5"
           className="ms-Slider-thumb"
-          role="slider"
-          tabIndex={0}
         />
       </div>
       <div
         className=""
+      />
+      <input
+        className=""
+        disabled={false}
+        max={10}
+        min={0}
+        onChange={[Function]}
+        step={1}
+        type="range"
+        value={5}
       />
     </div>
   </div>,
   <div
     className=""
     id="slider-2"
-    onKeyDown={[Function]}
-    onPointerDown={[Function]}
   >
     <div
       className=""
+      onKeyDown={[Function]}
+      onPointerDown={[Function]}
     >
       <div
         className=""
@@ -196,17 +208,21 @@ Array [
         }
       >
         <div
-          aria-valuemax={10}
-          aria-valuemin={0}
-          aria-valuenow={5}
-          aria-valuetext="5"
           className="ms-Slider-thumb"
-          role="slider"
-          tabIndex={0}
         />
       </div>
       <div
         className=""
+      />
+      <input
+        className=""
+        disabled={false}
+        max={10}
+        min={0}
+        onChange={[Function]}
+        step={1}
+        type="range"
+        value={5}
       />
     </div>
   </div>,
@@ -217,11 +233,11 @@ exports[`Slider renders vertical Slider correctly 1`] = `
 <div
   className=""
   id="slider-1"
-  onKeyDown={[Function]}
-  onPointerDown={[Function]}
 >
   <div
     className=""
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
   >
     <div
       className=""
@@ -251,17 +267,21 @@ exports[`Slider renders vertical Slider correctly 1`] = `
       }
     >
       <div
-        aria-valuemax={10}
-        aria-valuemin={0}
-        aria-valuenow={5}
-        aria-valuetext="5"
         className="ms-Slider-thumb"
-        role="slider"
-        tabIndex={0}
       />
     </div>
     <div
       className=""
+    />
+    <input
+      className=""
+      disabled={false}
+      max={10}
+      min={0}
+      onChange={[Function]}
+      step={1}
+      type="range"
+      value={5}
     />
   </div>
 </div>

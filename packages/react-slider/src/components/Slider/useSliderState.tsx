@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import {
+  useBoolean,
+  useControllableState,
+  useEventCallback,
+  useId,
+  useUnmount,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { SliderState } from './Slider.types';
 
 /**
@@ -286,11 +293,11 @@ export const useSliderState = (state: SliderState) => {
   state.activeRail.ref = railRef;
 
   // Input Props
-  state.input.ref = inputRef;
+  state.input.ref = useMergedRefs(state.input.ref, inputRef);
   state.input.value = currentValue;
   state.input.min = min;
   state.input.max = max;
-  state.input['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  ariaValueText && (state.input['aria-valuetext'] = ariaValueText(currentValue!));
   state.input.disabled = disabled;
   state.input.step = step;
   state.input.onChange = onInputChange;
