@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -18,21 +18,22 @@ export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.Ref
 export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
+    disabled?: boolean;
+    keyboardStep?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number, ev?: React_2.PointerEvent<HTMLDivElement>) => void;
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: number;
+    }) => void;
+    origin?: number;
+    size: 'small' | 'medium';
     step?: number;
     value?: number;
+    vertical?: boolean;
 }
 
 // @public
 export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {
-}
-
-// @public
-export interface SliderPublicRef {
-    focus: () => void;
-    value: number | undefined;
 }
 
 // @public
@@ -41,20 +42,21 @@ export const sliderShorthandProps: Array<keyof SliderSlots>;
 // @public
 export type SliderSlots = {
     rail: React_2.HTMLAttributes<HTMLElement>;
+    sliderWrapper: React_2.HTMLAttributes<HTMLElement>;
     trackWrapper: React_2.HTMLAttributes<HTMLElement>;
     track: React_2.HTMLAttributes<HTMLElement>;
     thumbWrapper: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
-    thumb: React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>;
+    thumb: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>;
     activeRail: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
 };
 
 // @public
 export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
-    ref: React_2.RefObject<HTMLElement & SliderPublicRef>;
+    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.RefObject<HTMLElement & SliderPublicRef>) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;

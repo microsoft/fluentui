@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
+import type { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
 
 /**
  * Array of all shorthand properties listed in LabelShorthandProps

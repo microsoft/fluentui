@@ -7,6 +7,10 @@ export interface AccordionItemContextValue {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 }
 
+export interface AccordionItemContextValues {
+  accordionItem: AccordionItemContextValue;
+}
+
 export type AccordionItemSlots = {};
 
 export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> {

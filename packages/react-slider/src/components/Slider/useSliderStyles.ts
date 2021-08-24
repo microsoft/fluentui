@@ -1,21 +1,101 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { SliderState } from './Slider.types';
+import type { SliderState } from './Slider.types';
+
+const thumbClassName = 'ms-Slider-thumb';
+const trackClassName = 'ms-Slider-track';
 
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
   root: theme => ({
-    '--slider-thumb-size': '20px',
-    '--slider-color': '#005fb8',
     position: 'relative',
-    height: 'var(--slider-thumb-size)',
-    minWidth: '280px',
-    overflow: 'hidden',
     userSelect: 'none',
     display: 'inline-flex',
     touchAction: 'none',
+    verticalAlign: 'bottom',
+  }),
+
+  small: {
+    '--slider-thumb-size': '10px',
+    '--slider-rail-size': '2px',
+  },
+
+  medium: {
+    '--slider-thumb-size': '20px',
+    '--slider-rail-size': '4px',
+  },
+
+  horizontal: theme => ({
+    minWidth: '120px',
+    height: 'var(--slider-thumb-size)',
+  }),
+
+  vertical: theme => ({
+    transform: 'scaleY(-1)',
+    width: 'var(--slider-thumb-size)',
+    minHeight: '120px',
+  }),
+
+  enabled: theme => ({
+    ':hover': {
+      '& .ms-Slider-thumb': {
+        background: theme.alias.color.neutral.brandBackgroundHover,
+      },
+      '& .ms-Slider-track': {
+        background: theme.alias.color.neutral.brandBackgroundHover,
+      },
+    },
+    ':active': {
+      '& .ms-Slider-thumb': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
+      '& .ms-Slider-track': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
+    },
+  }),
+
+  focusIndicator: createFocusIndicatorStyleRule(
+    theme => ({
+      ':after': {
+        content: "''",
+        position: 'absolute',
+        top: '-6px',
+        right: '-6px',
+        bottom: '-6px',
+        left: '-6px',
+        boxSizing: 'border-box',
+        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
+        borderRadius: theme.global.borderRadius.medium,
+      },
+    }),
+    { selector: 'focus-within' },
+  ),
+});
+
+/**
+ * Styles for the slider wrapper slot
+ */
+const useSliderWrapper = makeStyles({
+  sliderWrapper: theme => ({
+    position: 'absolute',
+    overflow: 'hidden',
+  }),
+
+  horizontal: theme => ({
+    left: '0px',
+    right: '0px',
+    top: '0px',
+    minHeight: 'var(--slider-thumb-size)',
+  }),
+
+  vertical: theme => ({
+    top: '0px',
+    bottom: '0px',
+    left: '0px',
+    minWidth: 'var(--slider-thumb-size)',
   }),
 });
 
@@ -25,16 +105,33 @@ const useRootStyles = makeStyles({
 const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    height: '4px',
-    top: '50%',
-    left: 'calc(var(--slider-thumb-size) * .05)',
-    right: 'calc(var(--slider-thumb-size) * .05)',
-    transform: 'translateY(-50%)',
-    background: '#8b8b8b',
-    borderRadius: '99px',
+    borderRadius: theme.global.borderRadius.xLarge,
     boxSizing: 'border-box',
-    border: '1px solid #626262',
     pointerEvents: 'none',
+  }),
+
+  enabled: theme => ({
+    background: theme.alias.color.neutral.neutralStrokeAccessible,
+  }),
+
+  disabled: theme => ({
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+  }),
+
+  horizontal: theme => ({
+    height: 'var(--slider-rail-size)',
+    top: '50%',
+    left: 'calc(var(--slider-thumb-size) * .5)',
+    right: 'calc(var(--slider-thumb-size) * .5)',
+    transform: 'translateY(-50%)',
+  }),
+
+  vertical: theme => ({
+    width: 'var(--slider-rail-size)',
+    left: '50%',
+    top: 'calc(var(--slider-thumb-size) * .5)',
+    bottom: 'calc(var(--slider-thumb-size) * .5)',
+    transform: 'translateX(-50%)',
   }),
 });
 
@@ -44,10 +141,18 @@ const useRailStyles = makeStyles({
 const useTrackWrapperStyles = makeStyles({
   trackWrapper: theme => ({
     position: 'absolute',
+  }),
+
+  horizontal: theme => ({
     top: '50%',
-    left: 'calc(var(--slider-thumb-size) * .05)',
-    right: 'calc(var(--slider-thumb-size) * .05)',
-    transform: 'translateY(-50%)',
+    left: 'calc(var(--slider-thumb-size) * .5)',
+    right: 'calc(var(--slider-thumb-size) * .5)',
+  }),
+
+  vertical: theme => ({
+    left: '50%',
+    top: 'calc(var(--slider-thumb-size) * .5)',
+    bottom: 'calc(var(--slider-thumb-size) * .5)',
   }),
 });
 
@@ -57,12 +162,29 @@ const useTrackWrapperStyles = makeStyles({
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    height: '4px',
+    borderRadius: theme.global.borderRadius.xLarge,
+  }),
+
+  horizontal: theme => ({
+    height: 'var(--slider-rail-size)',
     top: '50%',
     transform: 'translateY(-50%)',
-    minWidth: 'calc(var(--slider-thumb-size) / 2)',
-    background: 'var(--slider-color)',
-    borderRadius: '99px',
+    minWidth: 'calc(var(--slider-thumb-size) / 4)',
+  }),
+
+  vertical: theme => ({
+    width: 'var(--slider-rail-size)',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    minHeight: 'calc(var(--slider-thumb-size) / 4)',
+  }),
+
+  enabled: theme => ({
+    background: theme.alias.color.neutral.brandBackground,
+  }),
+
+  disabled: theme => ({
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 });
 
@@ -72,11 +194,19 @@ const useTrackStyles = makeStyles({
 const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
-    top: 0,
-    bottom: 0,
+    outline: 'none',
+  }),
+
+  horizontal: theme => ({
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
-    outline: 'none',
+    top: '50%',
+  }),
+
+  vertical: theme => ({
+    top: 'calc(var(--slider-thumb-size) / 2)',
+    bottom: 'calc(var(--slider-thumb-size) / 2)',
+    left: '50%',
   }),
 });
 
@@ -88,10 +218,15 @@ const useThumbStyles = makeStyles({
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
     height: 'var(--slider-thumb-size)',
-    top: '50%',
+    top: '0px',
+    left: '0px',
+    bottom: '0px',
+    right: '0px',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
-    borderRadius: '999px',
+    borderRadius: theme.global.borderRadius.circular,
+    boxSizing: 'border-box',
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
 
     ':before': {
       position: 'absolute',
@@ -99,48 +234,24 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      width: 'var(--slider-thumb-size)',
-      height: 'var(--slider-thumb-size)',
-      content: "''",
-      background: 'var(--slider-color)',
-      borderRadius: '999px',
+      borderRadius: theme.global.borderRadius.circular,
       boxSizing: 'border-box',
-      border: 'calc(var(--slider-thumb-size) * .05) solid rgba(0, 0, 0,  0)',
-      backgroundClip: 'content-box; padding: 1px',
-      boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .2) white inset',
-    },
-
-    ':after': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
       content: "''",
-      background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.0578) 50.02%, rgba(0, 0, 0, 0.1622) 95.45%)',
-      borderRadius: '999px',
-      zIndex: '-1',
-    },
-
-    ':hover': {
-      ':before': {
-        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .15) white inset',
-      },
-    },
-
-    ':active': {
-      ':before': {
-        boxShadow: '0 0 0 calc(var(--slider-thumb-size) * .25) white inset',
-      },
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
     },
   }),
 
-  focusIndicator: createFocusIndicatorStyleRule({
-    ':before': {
-      outline: 'none',
-      boxSizing: 'border-box',
-      border: 'calc(var(--slider-thumb-size) * .05) solid black',
-    },
+  enabled: theme => ({
+    background: theme.alias.color.neutral.brandBackground,
+  }),
+
+  disabled: theme => ({
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
+  }),
+
+  horizontal: theme => ({
+    top: '50%',
   }),
 });
 
@@ -150,8 +261,16 @@ const useThumbStyles = makeStyles({
 const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
+  }),
+
+  horizontal: theme => ({
     left: 'calc(var(--slider-thumb-size) / 2)',
     right: 'calc(var(--slider-thumb-size) / 2)',
+  }),
+
+  vertical: theme => ({
+    top: 'calc(var(--slider-thumb-size) / 2)',
+    bottom: 'calc(var(--slider-thumb-size) / 2)',
   }),
 });
 
@@ -160,6 +279,7 @@ const useActiveRailStyles = makeStyles({
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
   const rootStyles = useRootStyles();
+  const sliderWrapperStyles = useSliderWrapper();
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
@@ -167,13 +287,61 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
 
-  state.className = mergeClasses(rootStyles.root, state.className);
-  state.rail.className = railStyles.rail;
-  state.trackWrapper.className = mergeClasses(trackWrapperStyles.trackWrapper, state.trackWrapper.className);
-  state.track.className = mergeClasses(trackStyles.track, state.track.className);
-  state.thumbWrapper.className = mergeClasses(thumbWrapperStyles.thumbWrapper, state.thumbWrapper.className);
-  state.thumb.className = mergeClasses(thumbStyles.thumb, thumbStyles.focusIndicator, state.thumb.className);
-  state.activeRail.className = activeRailStyles.activeRail;
+  state.className = mergeClasses(
+    rootStyles.root,
+    rootStyles[state.size],
+    state.vertical ? rootStyles.vertical : rootStyles.horizontal,
+    !state.disabled && rootStyles.enabled,
+    rootStyles.focusIndicator,
+    state.className,
+  );
+
+  state.sliderWrapper.className = mergeClasses(
+    sliderWrapperStyles.sliderWrapper,
+    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
+    state.sliderWrapper.className,
+  );
+
+  state.rail.className = mergeClasses(
+    railStyles.rail,
+    state.vertical ? railStyles.vertical : railStyles.horizontal,
+    state.disabled ? railStyles.disabled : railStyles.enabled,
+    state.rail.className,
+  );
+
+  state.trackWrapper.className = mergeClasses(
+    trackWrapperStyles.trackWrapper,
+    state.vertical ? trackWrapperStyles.vertical : trackWrapperStyles.horizontal,
+    state.trackWrapper.className,
+  );
+
+  state.track.className = mergeClasses(
+    trackClassName,
+    trackStyles.track,
+    state.vertical ? trackStyles.vertical : trackStyles.horizontal,
+    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.track.className,
+  );
+
+  state.thumbWrapper.className = mergeClasses(
+    thumbWrapperStyles.thumbWrapper,
+    state.vertical ? thumbWrapperStyles.vertical : thumbWrapperStyles.horizontal,
+    state.thumbWrapper.className,
+  );
+
+  state.thumb.className = mergeClasses(
+    thumbClassName,
+    thumbStyles.thumb,
+    !state.vertical && thumbStyles.horizontal,
+    state.disabled ? trackStyles.disabled : trackStyles.enabled,
+    state.thumb.className,
+  );
+
+  state.activeRail.className = mergeClasses(
+    activeRailStyles.activeRail,
+    state.vertical ? activeRailStyles.vertical : activeRailStyles.horizontal,
+    state.activeRail.className,
+  );
 
   return state;
 };

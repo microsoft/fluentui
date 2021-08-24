@@ -1,5 +1,5 @@
-import { AccordionContextValue, AccordionState } from './Accordion.types';
 import { createContext, Context } from '@fluentui/react-context-selector';
+import { AccordionContextValue } from './Accordion.types';
 
 export const AccordionContext: Context<AccordionContextValue> = createContext<AccordionContextValue>({
   openItems: [],
@@ -8,11 +8,3 @@ export const AccordionContext: Context<AccordionContextValue> = createContext<Ac
     /* noop */
   },
 });
-
-export function useAccordionContextValue({ navigable, openItems, requestToggle }: AccordionState) {
-  return {
-    navigable,
-    openItems,
-    requestToggle,
-  } as const;
-}

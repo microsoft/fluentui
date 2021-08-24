@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { usePopperMouseTarget, usePopper } from '@fluentui/react-positioning';
+import { usePopperMouseTarget, usePopper, resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 
 /**
  * Create the state required to render Menu.
@@ -17,7 +17,6 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
  * before being passed to renderMenu.
  *
  * @param props - props from this instance of Menu
- * @param ref - reference to root HTMLElement of Menu
  *
  * {@docCategory Menu }
  */
@@ -27,14 +26,11 @@ export const useMenu = (props: MenuProps): MenuState => {
   const [contextTarget, setContextTarget] = usePopperMouseTarget();
 
   const popperState = {
-    position: isSubmenu ? 'after' : 'below',
-    align: isSubmenu ? 'top' : 'start',
-    coverTarget: props.coverTarget,
-    offset: props.offset,
-    contextTarget,
-    setContextTarget,
-    target: !props.target && props.openOnContext ? contextTarget : undefined,
-  } as const;
+    position: isSubmenu ? ('after' as const) : ('below' as const),
+    align: isSubmenu ? ('top' as const) : ('start' as const),
+    target: props.openOnContext ? contextTarget : undefined,
+    ...resolvePositioningShorthand(props.positioning),
+  };
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -59,8 +55,9 @@ export const useMenu = (props: MenuProps): MenuState => {
     triggerId,
     isSubmenu: !!isSubmenu,
     openOnHover: !!isSubmenu,
+    contextTarget,
+    setContextTarget,
     ...props,
-    ...popperState,
     menuTrigger,
     menuPopover,
     triggerRef,

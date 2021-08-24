@@ -1,5 +1,5 @@
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
-import { Alignment, Position, OffsetFunction, OffsetFunctionParam } from '../types';
+import type { Alignment, Position, OffsetFunction, OffsetFunctionParam } from '../types';
 
 describe('getPlacement', () => {
   it.each([

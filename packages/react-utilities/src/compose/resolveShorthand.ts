@@ -1,5 +1,11 @@
 import { isValidElement } from 'react';
-import { ObjectShorthandProps, ShorthandProps } from './types';
+import type { ObjectShorthandProps, ShorthandProps } from './types';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
+  required?: Required;
+  defaultProps?: Props;
+}
 
 /**
  * Resolves ShorthandProps into ObjectShorthandProps, to ensure normalization of the signature
@@ -8,23 +14,24 @@ import { ObjectShorthandProps, ShorthandProps } from './types';
  * @param defaultProps - base properties to be merged with the end ObjectShorthandProps
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function resolveShorthand<Props extends Record<string, any>>(
+export function resolveShorthand<Props extends Record<string, any>, Required extends boolean = false>(
   value: ShorthandProps<Props>,
-  defaultProps?: Props,
-): ObjectShorthandProps<Props> {
-  if (value === null) {
-    return {} as ObjectShorthandProps<Props>;
+  options?: ResolveShorthandOptions<Props, Required>,
+): Required extends false ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props> {
+  const { required = false, defaultProps } = options || {};
+  if (value === null || (value === undefined && !required)) {
+    return undefined as Required extends false ? ObjectShorthandProps<Props> | undefined : never;
   }
-  let resolvedShorthand: ObjectShorthandProps<Props> = {} as Props;
 
-  if (typeof value === 'string' || typeof value === 'number' || isValidElement(value)) {
-    resolvedShorthand = { children: value } as ObjectShorthandProps<Props>;
-  } else if (isObjectShorthandProps(value)) {
+  let resolvedShorthand = {} as ObjectShorthandProps<Props>;
+
+  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
+    resolvedShorthand.children = value as Props['children'];
+  } else if (typeof value === 'object') {
     resolvedShorthand = value;
   }
-  return defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand;
-}
 
-function isObjectShorthandProps<Props>(value: ShorthandProps<Props>): value is ObjectShorthandProps<Props> {
-  return typeof value === 'object';
+  return (defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand) as Required extends false
+    ? never
+    : ObjectShorthandProps<Props>;
 }

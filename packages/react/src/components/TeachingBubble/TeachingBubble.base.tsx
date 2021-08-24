@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import {
+import { Callout } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { useMergedRefs } from '@fluentui/react-hooks';
+import type {
   ITeachingBubble,
   ITeachingBubbleProps,
   ITeachingBubbleStyleProps,
   ITeachingBubbleStyles,
   ITeachingBubbleSubComponentStyles,
 } from './TeachingBubble.types';
-import { Callout, ICalloutProps } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import type { ICalloutProps } from '../../Callout';
 
 const COMPONENT_NAME = 'TeachingBubble';
 const defaultCalloutProps: ICalloutProps = {

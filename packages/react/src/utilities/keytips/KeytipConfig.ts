@@ -1,4 +1,4 @@
-import { IKeytipProps } from '../../Keytip';
+import type { IKeytipProps } from '../../Keytip';
 
 export interface IKeytipConfig {
   keytips: IKeytipConfigItem[];

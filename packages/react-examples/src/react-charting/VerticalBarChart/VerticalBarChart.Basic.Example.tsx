@@ -159,11 +159,11 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         />
         <div style={rootStyle}>
           <VerticalBarChart
+            chartTitle="Vertical bar chart basic example "
             data={points}
             width={this.state.width}
             useSingleColor={this.state.useSingleColor}
             height={this.state.height}
-            chartLabel={'Basic Chart with Numeric Axes'}
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
             {...(this.state.isCalloutselected && {

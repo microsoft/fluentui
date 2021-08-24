@@ -5,7 +5,7 @@
 ```ts
 
 import type { MakeStylesStyleRule } from '@fluentui/make-styles';
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
 import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
@@ -53,7 +53,6 @@ export interface UseModalAttributesOptions {
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -31,6 +31,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -224,6 +225,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -280,7 +282,6 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -346,6 +347,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -522,6 +524,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="metaData1"
@@ -578,7 +581,6 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -641,6 +643,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -811,6 +814,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -1004,6 +1008,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1060,7 +1065,6 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1126,6 +1130,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -1319,6 +1324,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1375,7 +1381,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1441,6 +1446,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -1634,6 +1640,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -1690,7 +1697,6 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1756,6 +1762,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="LineChart"
       height={0}
       style={
         Object {
@@ -1949,6 +1956,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="metaData1"
@@ -2005,7 +2013,6 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

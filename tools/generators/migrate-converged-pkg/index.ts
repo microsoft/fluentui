@@ -102,6 +102,9 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
 
+  setupNpmIgnoreConfig(tree, options);
+  setupBabel(tree, options);
+
   updateNxWorkspace(tree, options);
 }
 
@@ -121,9 +124,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES2015',
+      target: 'ES2020',
       module: 'CommonJS',
-      lib: ['ES2015', 'dom'],
+      lib: ['ES2020', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
@@ -133,6 +136,11 @@ const templates = {
       preserveConstEnums: true,
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
     } as TsConfig['compilerOptions'],
+  },
+  babelConfig: (options: { extraPlugins: Array<string> }) => {
+    return {
+      plugins: [...options.extraPlugins, 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    };
   },
   jestSetup: stripIndents`
    /** Jest test setup file. */
@@ -195,6 +203,37 @@ const templates = {
       include: ['../src/**/*', '*.js'],
     },
   },
+  npmIgnoreConfig: stripIndents`
+    .cache/
+    .storybook/
+    .vscode/
+    bundle-size/
+    config/
+    coverage/
+    e2e/
+    etc/
+    node_modules/
+    src/
+    temp/
+    __fixtures__
+    __mocks__
+    __tests__
+
+    *.api.json
+    *.log
+    *.spec.*
+    *.stories.*
+    *.test.*
+    *.yml
+
+    # config files
+    *config.*
+    *rc.*
+    .editorconfig
+    .eslint*
+    .git*
+    .prettierignore
+  `,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -215,10 +254,12 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
       configRoot: joinPathFragments(projectConfig.root, 'config'),
       packageJson: joinPathFragments(projectConfig.root, 'package.json'),
       tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
+      babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
       jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
       rootTsconfig: '/tsconfig.base.json',
       rootJestPreset: '/jest.preset.js',
       rootJestConfig: '/jest.config.js',
+      npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
       storybook: {
         tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
         main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
@@ -351,6 +392,12 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
     tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
   });
+
+  return tree;
+}
+
+function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
 
   return tree;
 }
@@ -542,6 +589,31 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 
     return json;
   });
+}
+
+function setupBabel(tree: Tree, options: NormalizedSchema) {
+  const currentProjectNpmScope = `@${options.workspaceConfig.npmScope}`;
+  const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
+  pkgJson.dependencies = pkgJson.dependencies || {};
+  pkgJson.devDependencies = pkgJson.devDependencies || {};
+
+  const shouldAddMakeStylesPlugin =
+    pkgJson.dependencies[`${currentProjectNpmScope}/react-make-styles`] ||
+    pkgJson.dependencies[`${currentProjectNpmScope}/make-styles`];
+  const extraPlugins = shouldAddMakeStylesPlugin ? ['module:@fluentui/babel-make-styles'] : [];
+
+  const config = templates.babelConfig({ extraPlugins });
+
+  if (shouldAddMakeStylesPlugin) {
+    pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`] = '*';
+  } else {
+    delete pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`];
+  }
+
+  tree.write(options.paths.babelConfig, serializeJson(config));
+  writeJson(tree, options.paths.packageJson, pkgJson);
+
+  return tree;
 }
 
 function printUserLogs(logs: UserLog) {

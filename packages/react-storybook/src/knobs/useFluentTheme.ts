@@ -5,9 +5,9 @@ import {
   teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  Theme,
 } from '@fluentui/react-theme';
 import { select } from '@storybook/addon-knobs';
+import type { Theme } from '@fluentui/react-theme';
 
 const themeSelectorLabel = 'Theme';
 

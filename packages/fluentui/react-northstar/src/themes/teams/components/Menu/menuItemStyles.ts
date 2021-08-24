@@ -40,11 +40,10 @@ export const getFocusedStyles = ({
     }),
 
     ...(vertical && {
-      border: `solid 1px ${v.borderColorFocus}`,
-      outline: `solid 1px ${v.outlineColorFocus}`,
-      margin: pxToRem(1),
       background: v.verticalBackgroundColorFocus,
       color: v.colorFocus || colors.foregroundFocus,
+      border: `${pxToRem(1)} solid transparent`,
+      padding: pxToRem(1),
 
       ...(primary && { color: v.color }),
 
@@ -183,7 +182,7 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
-        ...(underlined && {
+        ...((underlined || vertical) && {
           ...getBorderFocusStyles({ variables: siteVariables }),
           ':focus-visible': {
             ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],

@@ -6,6 +6,7 @@ import * as webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
 import type { WebpackLoaderOptions } from './webpackLoader';
+import { shouldTransformSourceCode } from './webpackLoader';
 
 type CompileOptions = {
   loaderOptions?: WebpackLoaderOptions;
@@ -160,6 +161,34 @@ function testFixture(fixtureName: string, options: CompileOptions = {}) {
     }
   });
 }
+
+describe('shouldTransformSourceCode', () => {
+  it('handles defaults', () => {
+    expect(shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-make-styles"`, undefined)).toBe(true);
+    expect(shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-components"`, undefined)).toBe(true);
+
+    expect(shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, undefined)).toBe(false);
+  });
+
+  it('handles options', () => {
+    expect(
+      shouldTransformSourceCode(`import { makeStyles } from "@fluentui/react-make-styles"`, [
+        { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
+      ]),
+    ).toBe(true);
+    expect(
+      shouldTransformSourceCode(`import { createStyles } from "make-styles"`, [
+        { moduleSource: 'make-styles', importName: 'createStyles' },
+      ]),
+    ).toBe(true);
+
+    expect(
+      shouldTransformSourceCode(`import { Button } from "@fluentui/react"`, [
+        { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
+      ]),
+    ).toBe(false);
+  });
+});
 
 describe('webpackLoader', () => {
   // Integration fixtures for base functionality, all scenarios are tested in "babel-make-styles"

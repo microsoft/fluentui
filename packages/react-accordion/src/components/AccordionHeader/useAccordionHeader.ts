@@ -19,7 +19,6 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
  * Returns the props and state required to render the component
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
- * @param defaultProps - default values for the properties of AccordionHeader
  */
 export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
@@ -27,10 +26,12 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const innerRef = React.useRef<HTMLElement>(null);
 
   const buttonShorthand = useARIAButton(props.button, {
-    id,
-    disabled,
-    // 'aria-controls': panel?.id,
-    children: React.Fragment,
+    required: true,
+    defaultProps: {
+      id,
+      disabled,
+      // 'aria-controls': panel?.id,
+    },
   });
 
   return {
@@ -49,7 +50,10 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     },
     icon: resolveShorthand(props.icon),
     expandIcon: resolveShorthand(props.expandIcon, {
-      'aria-hidden': true,
+      required: true,
+      defaultProps: {
+        'aria-hidden': true,
+      },
     }),
     button: {
       ...buttonShorthand,
@@ -60,6 +64,6 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
         }
       }),
     },
-    children: resolveShorthand(props.children),
+    children: resolveShorthand(props.children, { required: true }),
   };
 };

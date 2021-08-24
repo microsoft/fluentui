@@ -8,16 +8,19 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
-  MenuItemCheckboxProps,
-  MenuItemRadioProps,
-  MenuListProps,
   Menu,
   MenuPopover,
   MenuTrigger,
 } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
-import { CutIcon, PasteIcon, EditIcon } from './tmp-icons.stories';
+import {
+  Cut20Regular as CutIcon,
+  ClipboardPaste20Regular as PasteIcon,
+  Edit20Regular as EditIcon,
+  Image20Regular,
+} from '@fluentui/react-icons';
+import type { MenuItemCheckboxProps, MenuItemRadioProps, MenuListProps } from './index';
 
 const useStyles = makeStyles({
   container: theme => ({
@@ -127,7 +130,7 @@ export const CheckboxItems = (props: { defaultCheckedValues?: MenuListProps['def
   return (
     <Container>
       <MenuList defaultCheckedValues={props.defaultCheckedValues}>
-        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+        <MenuItemCheckbox icon={<Image20Regular />} name="edit" value="cut">
           Cut
         </MenuItemCheckbox>
         <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">

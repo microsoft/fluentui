@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from './index';
-import { ArgTypes, Meta, Parameters } from '@storybook/react';
+import { Popover, PopoverTrigger, PopoverSurface } from './index';
+import type { PopoverProps } from './index';
+import type { ArgTypes, Meta, Parameters } from '@storybook/react';
 
 const ExampleContent = () => {
   return (
@@ -77,7 +78,7 @@ export const AnchorToTarget = () => {
   return (
     <>
       <div>
-        <Popover target={target}>
+        <Popover positioning={{ target }}>
           <PopoverTrigger>
             <button>Popover trigger</button>
           </PopoverTrigger>
@@ -121,7 +122,7 @@ export const WithCustomTrigger = () => {
       <button aria-haspopup ref={setTarget} onClick={onClick}>
         Custom trigger
       </button>
-      <Popover target={target} open={open} onOpenChange={onOpenChange}>
+      <Popover positioning={{ target }} open={open} onOpenChange={onOpenChange}>
         <PopoverSurface>
           <ExampleContent />
         </PopoverSurface>
