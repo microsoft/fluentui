@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "TooltipHost: Add optional as prop",
+  "packageName": "@fluentui/react",
+  "email": "sanghan.dev@protonmail.com",
+  "dependentChangeType": "patch"
+}
