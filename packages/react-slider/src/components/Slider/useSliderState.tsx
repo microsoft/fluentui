@@ -41,6 +41,23 @@ const findClosestValue = (value: number, divisibleBy: number) => {
     : upperValue * Math.sign(value);
 };
 
+/**
+ * Finds and swaps a provided key for it's right to left format.
+ */
+const rtlKey = (key: string) => {
+  switch (key) {
+    case 'ArrowLeft': {
+      return 'ArrowRight';
+    }
+
+    case 'ArrowRight': {
+      return 'ArrowLeft';
+    }
+  }
+
+  return key;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
@@ -79,6 +96,11 @@ export const useSliderState = (state: SliderState) => {
   const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
+
+  /**
+   * If the page is in right to left format the given key will be swapped
+   */
+  const getRTLSafeKey = React.useCallback((key: string) => (dir === 'rtl' ? rtlKey(key) : key), [dir]);
 
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
@@ -193,17 +215,17 @@ export const useSliderState = (state: SliderState) => {
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
-        if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
+        if (ev.key === 'ArrowDown' || ev.key === getRTLSafeKey('ArrowLeft')) {
           updatePosition(currentValue! - keyboardStep * 10, ev);
           return;
-        } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
+        } else if (ev.key === 'ArrowUp' || ev.key === getRTLSafeKey('ArrowRight')) {
           updatePosition(currentValue! + keyboardStep * 10, ev);
           return;
         }
-      } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
+      } else if (ev.key === 'ArrowDown' || ev.key === getRTLSafeKey('ArrowLeft')) {
         updatePosition(currentValue! - keyboardStep, ev);
         return;
-      } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
+      } else if (ev.key === 'ArrowUp' || ev.key === getRTLSafeKey('ArrowRight')) {
         updatePosition(currentValue! + keyboardStep, ev);
         return;
       } else {
@@ -223,7 +245,7 @@ export const useSliderState = (state: SliderState) => {
         }
       }
     },
-    [currentValue, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
+    [currentValue, getRTLSafeKey, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
   useUnmount(() => {
