@@ -245,46 +245,32 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       ? `translateX(${-valuePercent}%)`
       : `translateX(${valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
-    ...state.thumb.style,
+    ...state.thumbWrapper.style,
   };
 
   const thumbStyles = {
     transform: dir === 'rtl' ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
+    ...state.thumb.style,
   };
 
-  const trackStyles = vertical
-    ? {
-        top: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-        height: origin
-          ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-          : `${valuePercent}%`,
-        borderRadius:
-          origin && origin !== (max || min)
-            ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
-            : '99px',
-        transition: stepAnimation
-          ? `transform ease-in-out ${animationTime}, height ease-in-out ${animationTime}`
-          : 'none',
-        ...state.track.style,
-      }
-    : {
-        [dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-        width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
-        borderRadius:
-          origin && origin !== (max || min)
-            ? `${
-                (dir === 'rtl' ? valuePercent > originPercent : originPercent > valuePercent)
-                  ? '99px 0px 0px 99px'
-                  : '0px 99px 99px 0px'
-              }`
-            : '99px',
-        transition: stepAnimation
-          ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime} ${
-              origin ? ', left ease-in-out ' + animationTime : ''
-            }`
-          : 'none',
-        ...state.track.style,
-      };
+  const trackStyles = {
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']: origin
+      ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+      : `${valuePercent}%`,
+    borderRadius:
+      origin && origin !== (max || min)
+        ? vertical
+          ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
+          : (dir === 'rtl' ? valuePercent > originPercent : originPercent > valuePercent)
+          ? '99px 0px 0px 99px'
+          : '0px 99px 99px 0px'
+        : '99px',
+    transition: stepAnimation
+      ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
+      : 'none',
+    ...state.track.style,
+  };
 
   // Root props
   state.as = as;
