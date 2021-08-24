@@ -18,16 +18,16 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.2.2",
     "@fluentui/merge-styles": "^8.1.4",
     "@fluentui/react": "^8.29.1",
-    "@fluentui/react-focus": "^8.1.11",
+    "@fluentui/react-focus": "^8.2.0",
     "@fluentui/style-utilities": "^8.3.0",
-    "@fluentui/theme": "^2.2.2",
+    "@fluentui/theme": "^2.3.0",
     "@fluentui/utilities": "^8.3.0",
     "@microsoft/api-extractor-model": "7.13.3",
     "@microsoft/tsdoc": "0.13.2",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 19 Aug 2021 07:41:35 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.3.0)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.2.2..@fluentui/theme_v2.3.0)
+
+### Minor changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
 
 ## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.2.2)
 

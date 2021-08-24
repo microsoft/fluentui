@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Reverting: Legends will be focusable in browser mode",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

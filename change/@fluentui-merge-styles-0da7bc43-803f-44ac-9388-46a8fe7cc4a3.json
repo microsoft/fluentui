@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "getVendorSettings.js file was leading to app crash if userAgent was null. Have added a null check for userAgent",
+  "packageName": "@fluentui/merge-styles",
+  "email": "arujain@microsoft.com",
+  "dependentChangeType": "patch"
+}

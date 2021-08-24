@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/utilities_v8.3.0",
       "version": "8.3.0",

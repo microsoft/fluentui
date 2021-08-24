@@ -356,7 +356,6 @@ export const useSliderStyles = (state: SliderState): SliderState => {
 
   state.className = mergeClasses(
     rootStyles.root,
-    rootStyles[state.size],
     rootStyles.focusIndicator,
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.className,
