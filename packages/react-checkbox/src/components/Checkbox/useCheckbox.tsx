@@ -1,20 +1,23 @@
 import * as React from 'react';
 import {
-  resolveShorthand,
+  resolveShorthandProps,
+  makeMergeProps,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
-import { CheckboxProps, CheckboxState, CheckboxSlots } from './Checkbox.types';
+import { CheckboxProps, CheckboxState } from './Checkbox.types';
 import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
+import { Label } from '@fluentui/react-label';
 
 /**
  * Array of all shorthand properties listed as the keys of CheckboxSlots
  */
-export const checkboxShorthandProps: (keyof CheckboxSlots)[] = ['indicator', 'input'];
+export const checkboxShorthandProps = ['indicator', 'input'] as const;
+
+const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandProps });
 
 /**
  * Create the state required to render Checkbox.
@@ -26,29 +29,24 @@ export const checkboxShorthandProps: (keyof CheckboxSlots)[] = ['indicator', 'in
  * @param ref - reference to root HTMLElement of Checkbox
  */
 export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): CheckboxState => {
-  const state: CheckboxState = {
-    ref,
-    id: useId('checkbox-'),
-    size: 'medium',
-    labelPosition: 'after',
-
-    ...props,
-
-    components: {
-      root: props.children !== undefined ? Label : 'span',
-      indicator: 'div',
-      input: 'input',
-    },
-
-    input: resolveShorthand(props.input, {
-      required: true,
-      defaultProps: {
+  const state: CheckboxState = mergeProps(
+    {
+      ref,
+      as: props.children !== undefined ? Label : 'span',
+      id: useId('checkbox-'),
+      size: 'medium',
+      labelPosition: 'after',
+      input: {
+        as: 'input',
         type: 'checkbox',
         children: null,
       },
-    }),
-    indicator: resolveShorthand(props.indicator, { required: true }),
-  };
+      indicator: {
+        as: 'div',
+      },
+    },
+    resolveShorthandProps(props, checkboxShorthandProps),
+  );
 
   const [checked, setCheckedInternal] = useControllableState({
     defaultState: props.defaultChecked,
