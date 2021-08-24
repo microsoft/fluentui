@@ -148,9 +148,11 @@ describe('Slider', () => {
 
   it('does not update when the controlled (value) prop is provided', () => {
     const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider value={50} min={0} max={100} sliderWrapper={{ role: 'test' }} input={{ ref: inputRef }} />);
+    const { container } = render(
+      <Slider value={50} min={0} max={100} sliderWrapper={{ className: 'test' }} input={{ ref: inputRef }} />,
+    );
 
-    const sliderWrapper = screen.getByRole('test');
+    const sliderWrapper = container.querySelector('test')!;
 
     fireEvent.keyDown(sliderWrapper, { key: 'ArrowUp' });
     expect(inputRef.current?.value).toBe('50');
@@ -159,9 +161,11 @@ describe('Slider', () => {
   it('calls (onChange) with the correct value', () => {
     const onChange = jest.fn();
 
-    render(<Slider value={50} min={0} max={100} onChange={onChange} sliderWrapper={{ role: 'test' }} />);
+    const { container } = render(
+      <Slider value={50} min={0} max={100} onChange={onChange} sliderWrapper={{ className: 'test' }} />,
+    );
 
-    const sliderWrapper = screen.getByRole('test');
+    const sliderWrapper = container.querySelector('.test')!;
 
     fireEvent.keyDown(sliderWrapper, { key: 'ArrowUp' });
     fireEvent.keyDown(sliderWrapper, { key: 'ArrowUp' });
@@ -173,9 +177,11 @@ describe('Slider', () => {
   it('handles a negative (step) prop', () => {
     const onChange = jest.fn();
 
-    render(<Slider value={50} min={0} max={100} step={-3} onChange={onChange} sliderWrapper={{ role: 'test' }} />);
+    const { container } = render(
+      <Slider value={50} min={0} max={100} step={-3} onChange={onChange} sliderWrapper={{ className: 'test' }} />,
+    );
 
-    const sliderWrapper = screen.getByRole('test');
+    const sliderWrapper = container.querySelector('.test')!;
 
     fireEvent.keyDown(sliderWrapper, { key: 'ArrowUp' });
     expect(onChange.mock.calls[0][1]).toEqual({ value: 47 });
@@ -183,12 +189,13 @@ describe('Slider', () => {
 
   it('handles a decimal (step) prop', () => {
     const onChange = jest.fn();
+    // expect(container.querySelector('.test')?.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
 
     render(
       <Slider defaultValue={50} min={0} max={100} step={0.001} onChange={onChange} sliderWrapper={{ role: 'test' }} />,
     );
 
-    const sliderWrapper = screen.getByRole('test');
+    const sliderWrapper = screen.getByRole('.test');
 
     fireEvent.keyDown(sliderWrapper, { key: 'ArrowUp' });
     expect(onChange.mock.calls[0][1]).toEqual({ value: 50.001 });
@@ -198,11 +205,6 @@ describe('Slider', () => {
     render(<Slider role="test" data-testid="test" />);
     const sliderRoot = screen.getByTestId('test');
     expect(sliderRoot.getAttribute('role')).toEqual('test');
-  });
-
-  it('applies (aria-valuetext)', () => {
-    const { container } = render(<Slider defaultValue={3} input={{ className: 'test' }} />);
-    expect(container.querySelector('.test')?.getAttribute('aria-valuetext')).toEqual('3');
   });
 
   it('applies (ariaValueText)', () => {
@@ -217,49 +219,12 @@ describe('Slider', () => {
     expect(container.querySelector('.test')?.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
   });
 
-  it('applies (aria-valuenow)', () => {
-    const wrapper: ReactWrapper = mount(<Slider defaultValue={3} />);
-    const sliderRoot = wrapper.first();
-
-    sliderRoot.simulate('keydown', { key: 'ArrowRight' });
-
-    expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(4);
-
-    sliderRoot.getDOMNode().getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
-
-    sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
-
-    expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(100);
-    wrapper.unmount();
+  it('applies (focus) to the hidden input', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider defaultValue={3} input={{ ref: inputRef }} />);
+    inputRef?.current?.focus();
+    expect(document.activeElement).toEqual(inputRef.current);
   });
-
-  it('applies (aria-valuemax)', () => {
-    const { container } = render(<Slider max={3} input={{ className: 'test' }} />);
-    expect(container.querySelector('.test')?.getAttribute('aria-valuemax')).toEqual('3');
-  });
-
-  it('applies (aria-valuemin)', () => {
-    const { container } = render(<Slider min={-1} input={{ className: 'test' }} />);
-    expect(container.querySelector('.test')?.getAttribute('aria-valuemin')).toEqual('-1');
-  });
-
-  // TODO: Apply ref to a hidden input element and update this test
-  //
-  // it('applies (focus) to the thumb', () => {
-  //   let sliderRef: any;
-
-  //   const SliderTestComponent = () => {
-  //     sliderRef = React.useRef(null);
-
-  //     return <Slider defaultValue={3} ref={sliderRef} />;
-  //   };
-
-  //   render(<SliderTestComponent />);
-  //   const sliderThumb = screen.getByRole('slider');
-  //   sliderRef.current.focus();
-  //   expect(document.activeElement).toEqual(sliderThumb);
-  // });
 
   it('does not allow (focus) on disabled Slider', () => {
     let sliderRef: any;
