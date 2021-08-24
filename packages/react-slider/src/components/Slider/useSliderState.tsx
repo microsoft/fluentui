@@ -241,9 +241,7 @@ export const useSliderState = (state: SliderState) => {
   const thumbWrapperStyles = {
     transform: vertical
       ? `translateY(${valuePercent}%)`
-      : dir === 'rtl'
-      ? `translateX(${-valuePercent}%)`
-      : `translateX(${valuePercent}%)`,
+      : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.thumbWrapper.style,
   };
