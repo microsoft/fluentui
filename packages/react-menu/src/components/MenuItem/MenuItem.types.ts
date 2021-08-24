@@ -1,7 +1,12 @@
 import * as React from 'react';
+<<<<<<< HEAD
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+=======
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+>>>>>>> Updates react-menu to use root as slot
 
 export type MenuItemSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
   /**
    * Icon slot rendered before children content
    */
@@ -47,17 +52,6 @@ interface MenuItemCommons {
   persistOnClick?: boolean;
 }
 
-export interface MenuItemProps
-  extends ComponentProps<Partial<MenuItemSlots>>,
-    React.HTMLAttributes<HTMLElement>,
-    MenuItemCommons {}
+export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, MenuItemCommons {}
 
-export interface MenuItemState
-  extends ComponentState<MenuItemSlots>,
-    React.HTMLAttributes<HTMLElement>,
-    MenuItemCommons {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export interface MenuItemState extends ComponentState<MenuItemSlots>, MenuItemCommons {}

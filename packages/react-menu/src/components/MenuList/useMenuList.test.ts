@@ -72,7 +72,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent(current.textContent), current);
 
       // Assert
@@ -88,7 +88,7 @@ describe('useMenuList', () => {
 
       // Act
       const { result } = renderHook(() => useMenuList({}, null));
-      (result.current.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
+      (result.current.root.ref as React.RefCallback<HTMLElement>)?.(document.createElement('div'));
       result.current.setFocusByFirstCharacter(createEvent('d'), current);
 
       // Assert

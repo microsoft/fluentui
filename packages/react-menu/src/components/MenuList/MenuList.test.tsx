@@ -12,6 +12,7 @@ describe('MenuList', () => {
     Component: MenuList,
     displayName: 'MenuList',
     helperComponents: [MenuListProvider],
+    skipAsPropTests: true,
   });
 
   let wrapper: ReactWrapper | undefined;

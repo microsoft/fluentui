@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
+<<<<<<< HEAD
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+=======
+import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
+>>>>>>> Updates react-menu to use root as slot
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent } from '@fluentui/react-shared-contexts';
@@ -90,7 +95,10 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
   return {
     ...state,
-    onKeyDown,
-    onMouseEnter,
+    root: getNativeElementProps('div', {
+      ...state,
+      onKeyDown,
+      onMouseEnter,
+    }),
   };
 };

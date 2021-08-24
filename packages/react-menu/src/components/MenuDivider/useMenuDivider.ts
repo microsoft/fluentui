@@ -1,3 +1,4 @@
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
 
@@ -6,9 +7,12 @@ import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
  */
 export const useMenuDivider = (props: MenuDividerProps, ref: React.Ref<HTMLElement>): MenuDividerState => {
   return {
-    ref,
-    role: 'presentation',
-    'aria-hidden': true,
+    root: getNativeElementProps('div', {
+      ref,
+      role: 'presentation',
+      'aria-hidden': true,
+      ...props,
+    }),
     ...props,
   };
 };
