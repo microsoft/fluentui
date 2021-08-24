@@ -41,18 +41,18 @@ const useRootStyles = makeStyles({
   enabled: theme => ({
     ':hover': {
       '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+        background: '#106ebe',
       },
       '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundHover,
+        background: '#106ebe',
       },
     },
     ':active': {
       '& .ms-Slider-thumb': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+        background: '#005a9e',
       },
       '& .ms-Slider-track': {
-        background: theme.alias.color.neutral.brandBackgroundPressed,
+        background: '#005a9e',
       },
     },
   }),
@@ -67,8 +67,8 @@ const useRootStyles = makeStyles({
         bottom: '-6px',
         left: '-6px',
         boxSizing: 'border-box',
-        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
-        borderRadius: theme.global.borderRadius.medium,
+        border: `1px solid #242424`,
+        borderRadius: '6px',
       },
     }),
     { selector: 'focus-within' },
@@ -82,6 +82,8 @@ const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
     overflow: 'hidden',
+    touchAction: 'none',
+    // pointerEvents: "none"
   }),
 
   horizontal: theme => ({
@@ -105,17 +107,17 @@ const useSliderWrapper = makeStyles({
 const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
+    borderRadius: '999px',
     boxSizing: 'border-box',
     pointerEvents: 'none',
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.neutralStrokeAccessible,
+    background: '#616161',
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    background: '#f0f0f0',
   }),
 
   horizontal: theme => ({
@@ -162,7 +164,7 @@ const useTrackWrapperStyles = makeStyles({
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    borderRadius: theme.global.borderRadius.xLarge,
+    borderRadius: '999px',
   }),
 
   horizontal: theme => ({
@@ -180,11 +182,11 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: '#106ebe',
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: '#bdbdbd',
   }),
 });
 
@@ -224,9 +226,9 @@ const useThumbStyles = makeStyles({
     right: '0px',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: '50%',
     boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) #ffffff inset`,
 
     ':before': {
       position: 'absolute',
@@ -234,20 +236,20 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: theme.global.borderRadius.circular,
+      borderRadius: '50%',
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
+      border: `calc(var(--slider-thumb-size) * .05) solid #d1d1d1`,
     },
   }),
 
   enabled: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
+    background: '#106ebe',
   }),
 
   disabled: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
-    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
+    background: '#bdbdbd',
+    border: `calc(var(--slider-thumb-size) * .05) solid "#bdbdbd"`,
   }),
 
   horizontal: theme => ({
@@ -279,12 +281,14 @@ const useActiveRailStyles = makeStyles({
  */
 const useInputStyles = makeStyles({
   input: {
-    // opacity: 0,
+    opacity: 0,
     position: 'absolute',
-    margin: 0,
     padding: 0,
+    margin: 0,
     width: '100%',
     height: '100%',
+    touchAction: 'none',
+    pointerEvents: 'none',
   },
 });
 

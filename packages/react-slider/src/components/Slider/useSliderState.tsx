@@ -72,8 +72,8 @@ export const useSliderState = (state: SliderState) => {
     initialState: 0,
   });
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
 
@@ -131,6 +131,10 @@ export const useSliderState = (state: SliderState) => {
     [max, min, step, vertical],
   );
 
+  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    updatePosition(Number(ev.target.value), ev);
+  };
+
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = min + step * calculateSteps(ev);
@@ -151,7 +155,7 @@ export const useSliderState = (state: SliderState) => {
       setRenderedPosition(
         clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
       );
-      thumbRef.current!.focus();
+      inputRef.current!.focus();
     },
     [calculateSteps, max, min, showStepAnimation, step],
   );
@@ -265,9 +269,11 @@ export const useSliderState = (state: SliderState) => {
   // Root props
   state.as = as;
   state.id = id;
+
+  // Slider Wrapper
   if (!disabled) {
-    state.onPointerDown = onPointerDown;
-    state.onKeyDown = onKeyDown;
+    state.sliderWrapper.onPointerDown = onPointerDown;
+    state.sliderWrapper.onKeyDown = onKeyDown;
   }
 
   // Track Props
@@ -276,26 +282,18 @@ export const useSliderState = (state: SliderState) => {
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
 
-  // Thumb Props
-  state.thumb.ref = thumbRef;
-  // state.thumb.tabIndex = disabled ? undefined : 0;
-  // state.thumb.role = 'slider';
-  // state.thumb['aria-valuemin'] = min;
-  // state.thumb['aria-valuemax'] = max;
-  // state.thumb['aria-valuenow'] = currentValue;
-  // state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
-  // disabled && (state.thumb['aria-disabled'] = true);
-
   // Active Rail Props
   state.activeRail.ref = railRef;
 
-  const inputRef = React.useRef(null);
   // Input Props
   state.input.ref = inputRef;
   state.input.value = currentValue;
   state.input.min = min;
   state.input.max = max;
+  state.input['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
   state.input.disabled = disabled;
+  state.input.step = step;
+  state.input.onChange = onInputChange;
 
   return state;
 };
