@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 12:22:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.27)
+
+Tue, 24 Aug 2021 12:22:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.26..@fluentui/react-examples_v0.14.27)
+
+### Patches
+
+- Chart title added for remaining charts, title will describe the chart ([PR #19450](https://github.com/microsoft/fluentui/pull/19450) by v-scharde@microsoft.com)
 
 ## [0.14.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.26)
 

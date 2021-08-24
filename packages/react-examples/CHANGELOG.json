@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 24 Aug 2021 12:22:56 GMT",
+      "tag": "@fluentui/react-examples_v0.14.27",
+      "version": "0.14.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chart title added for remaining charts, title will describe the chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f4d74a443ab26fae88783208f7d00fcd1f95fcd1",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 12:24:13 GMT",
       "tag": "@fluentui/react-examples_v0.14.26",
       "version": "0.14.26",

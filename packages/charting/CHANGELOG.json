@@ -2,6 +2,33 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 24 Aug 2021 12:22:56 GMT",
+      "tag": "@uifabric/charting_v4.16.14",
+      "version": "4.16.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "opacity removed for unselected legends border, opacity was causing accessibility luminosity ratio issue",
+            "author": "v-scharde@microsoft.com",
+            "commit": "c9c585abd9c7a0fb80777e0a970c1ebe1ff31890",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Chart element will not render when data value is zero",
+            "author": "v-scharde@microsoft.com",
+            "commit": "7fa81036f27425d7f073309c4ab5dfb85056552a",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Chart title added for remaining charts, title will describe the chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f4d74a443ab26fae88783208f7d00fcd1f95fcd1",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 12:24:13 GMT",
       "tag": "@uifabric/charting_v4.16.13",
       "version": "4.16.13",

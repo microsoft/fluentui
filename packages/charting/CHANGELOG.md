@@ -1,8 +1,19 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 12:22:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.14)
+
+Tue, 24 Aug 2021 12:22:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.16.13..@uifabric/charting_v4.16.14)
+
+### Patches
+
+- opacity removed for unselected legends border, opacity was causing accessibility luminosity ratio issue ([PR #19452](https://github.com/microsoft/fluentui/pull/19452) by v-scharde@microsoft.com)
+- Chart element will not render when data value is zero ([PR #19451](https://github.com/microsoft/fluentui/pull/19451) by v-scharde@microsoft.com)
+- Chart title added for remaining charts, title will describe the chart ([PR #19450](https://github.com/microsoft/fluentui/pull/19450) by v-scharde@microsoft.com)
 
 ## [4.16.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.13)
 
