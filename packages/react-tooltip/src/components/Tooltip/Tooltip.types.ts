@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { PositioningShorthand } from '@fluentui/react-positioning';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * Properties for the Tooltip component

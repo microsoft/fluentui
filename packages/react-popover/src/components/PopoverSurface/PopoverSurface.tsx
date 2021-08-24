@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { usePopoverSurface } from './usePopoverSurface';
-import { PopoverSurfaceProps } from './PopoverSurface.types';
 import { renderPopoverSurface } from './renderPopoverSurface';
 import { usePopoverSurfaceStyles } from './usePopoverSurfaceStyles';
+import type { PopoverSurfaceProps } from './PopoverSurface.types';
 
 /**
  * PopoverSurface component renders react children in a positioned box

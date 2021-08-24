@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from './index';
-import { ArgTypes, Meta, Parameters } from '@storybook/react';
+import { Popover, PopoverTrigger, PopoverSurface } from './index';
+import type { PopoverProps } from './index';
+import type { ArgTypes, Meta, Parameters } from '@storybook/react';
 
 const ExampleContent = () => {
   return (

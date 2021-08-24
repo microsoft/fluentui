@@ -6,12 +6,12 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
 import { ChevronRightIcon, ChevronLeftIcon } from '../../utils/DefaultIcons';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuContext } from '../../contexts/menuContext';
+import type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
 
 /**
  * Consts listing which props are shorthand props.

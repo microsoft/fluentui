@@ -1,5 +1,5 @@
-import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
-import { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
+import type { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
+import type { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
 
 /**
  * {@docCategory MenuItemCheckbox}

@@ -1,7 +1,7 @@
 import * as PopperJs from '@popperjs/core';
 
 import { getScrollParent } from './getScrollParent';
-import { Boundary } from '../types';
+import type { Boundary } from '../types';
 
 /**
  * Allows to mimic a behavior from V1 of Popper and accept `window` and `scrollParent` as strings.

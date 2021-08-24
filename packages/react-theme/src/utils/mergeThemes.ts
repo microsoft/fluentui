@@ -1,4 +1,4 @@
-import { PartialTheme, Theme } from '../types';
+import type { PartialTheme, Theme } from '../types';
 
 // TODO
 // We should consider removal merge() function from this file, ideally it should not be required

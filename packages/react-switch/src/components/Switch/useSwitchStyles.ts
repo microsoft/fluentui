@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { SwitchState } from './Switch.types';
+import type { SwitchState } from './Switch.types';
 
 /**
  * Styles for the root slot
