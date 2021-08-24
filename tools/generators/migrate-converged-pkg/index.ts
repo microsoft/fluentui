@@ -134,7 +134,7 @@ const templates = {
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
+      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
     } as TsConfig['compilerOptions'],
   },
   babelConfig: (options: { extraPlugins: Array<string> }) => {
@@ -439,6 +439,15 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
     tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
     tree.write(options.paths.storybook.main, templates.storybook.main);
     tree.write(options.paths.storybook.preview, templates.storybook.preview);
+
+    updateJson(tree, options.paths.tsconfig, (json: TsConfig) => {
+      json.compilerOptions.types = json.compilerOptions.types || [];
+
+      json.compilerOptions.types.push('storybook__addons');
+      json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
+
+      return json;
+    });
   }
 
   if (sbAction === 'remove') {
@@ -449,6 +458,16 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       delete json.scripts.start;
       delete json.scripts.storybook;
       delete json.scripts['build-storybook'];
+
+      return json;
+    });
+
+    updateJson(tree, options.paths.tsconfig, (json: TsConfig) => {
+      json.compilerOptions.types = json.compilerOptions.types || [];
+
+      json.compilerOptions.types = json.compilerOptions.types.filter(
+        typeReference => typeReference !== 'storybook__addons',
+      );
 
       return json;
     });

@@ -189,7 +189,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           preserveConstEnums: true,
           target: 'ES2020',
-          types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
+          types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
@@ -212,7 +212,6 @@ describe('migrate-converged-pkg generator', () => {
         'jest',
         'custom-global',
         'inline-style-expand-shorthand',
-        'storybook__addons',
         '@testing-library/jest-dom',
         'foo-bar',
       ]);
@@ -470,7 +469,7 @@ describe('migrate-converged-pkg generator', () => {
       };
     }
     it(`should setup package storybook when needed`, async () => {
-      const { projectStorybookConfigPath } = setup();
+      const { projectStorybookConfigPath, projectConfig } = setup();
 
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
 
@@ -523,6 +522,10 @@ describe('migrate-converged-pkg generator', () => {
         /** @type {typeof rootPreview.parameters} */
         export const parameters = { ...rootPreview.parameters };"
       `);
+
+      expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).toContain(
+        'storybook__addons',
+      );
     });
 
     it(`should remove unused existing storybook setup`, async () => {
@@ -556,6 +559,9 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.exists(mainJsFilePath)).toBeFalsy();
       expect(Object.keys(pkgJson.scripts || [])).not.toContain(['start', 'storybook', 'build-storybook']);
       expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
+      expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).not.toContain(
+        'storybook__addons',
+      );
     });
 
     it(`should work if there are no package stories in react-examples`, async () => {
