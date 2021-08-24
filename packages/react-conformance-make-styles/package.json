@@ -22,12 +22,20 @@
     "start": "yarn storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/react-conformance": "^0.4.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.58",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
     "tslib": "^2.1.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }
