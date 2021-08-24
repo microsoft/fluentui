@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import type { ObjectShorthandProps, ShorthandProps } from './types';
+import { DefaultObjectShorthandProps, ShorthandProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
@@ -13,17 +13,16 @@ export interface ResolveShorthandOptions<Props extends Record<string, any>, Requ
  * @param value - the base ShorthandProps
  * @param defaultProps - base properties to be merged with the end ObjectShorthandProps
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function resolveShorthand<Props extends Record<string, any>, Required extends boolean = false>(
+export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(
   value: ShorthandProps<Props>,
   options?: ResolveShorthandOptions<Props, Required>,
-): Required extends false ? ObjectShorthandProps<Props> | undefined : ObjectShorthandProps<Props> {
+): Required extends false ? Props | undefined : Props {
   const { required = false, defaultProps } = options || {};
   if (value === null || (value === undefined && !required)) {
-    return undefined as Required extends false ? ObjectShorthandProps<Props> | undefined : never;
+    return undefined as Required extends false ? Props | undefined : never;
   }
 
-  let resolvedShorthand = {} as ObjectShorthandProps<Props>;
+  let resolvedShorthand = {} as Props;
 
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
     resolvedShorthand.children = value as Props['children'];
@@ -33,5 +32,5 @@ export function resolveShorthand<Props extends Record<string, any>, Required ext
 
   return (defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand) as Required extends false
     ? never
-    : ObjectShorthandProps<Props>;
+    : Props;
 }
