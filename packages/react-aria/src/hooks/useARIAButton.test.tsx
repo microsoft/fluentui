@@ -9,7 +9,7 @@ describe('useARIAButton', () => {
   it('should return by default shorthand props for a button', () => {
     const shorthand: ARIAButtonShorthandProps = { as: 'button' };
     renderHook(() => useARIAButton(shorthand));
-    expect(shorthand.as).toBe(undefined);
+    expect(shorthand.as).toBe('button');
     expect(shorthand.disabled).toBeUndefined();
     expect(shorthand['aria-disabled']).toBeUndefined();
     expect(shorthand.role).toBeUndefined();
