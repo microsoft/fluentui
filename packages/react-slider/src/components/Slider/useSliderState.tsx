@@ -243,8 +243,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     transform: vertical
       ? `translateY(${valuePercent}%)`
       : dir === 'ltr'
-      ? `translate(calc(${-valuePercent}% - (-5%)), -50%)`
-      : `translateX(${valuePercent}%) translate(-50%, -50%)`,
+      ? `translateX(${-valuePercent}%)`
+      : `translateX(${valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.thumb.style,
   };

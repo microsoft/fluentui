@@ -222,7 +222,7 @@ const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-100%, -50%)',
     outline: 'none',
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
