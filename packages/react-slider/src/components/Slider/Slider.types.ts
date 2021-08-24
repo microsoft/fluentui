@@ -25,7 +25,7 @@ export interface SliderProps
   track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
-   * The container holding the marks and mark labels for the Slider.
+   * The wrapper holding the marks and mark labels for the Slider.
    */
   marksWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 

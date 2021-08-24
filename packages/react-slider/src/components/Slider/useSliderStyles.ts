@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { SliderState } from './Slider.types';
+import type { SliderState } from './Slider.types';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -357,6 +357,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.className = mergeClasses(
     rootStyles.root,
     rootStyles.focusIndicator,
+    // TODO: Remove once compat is reverted
+    rootStyles[state.size || 'medium'],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.className,
   );
