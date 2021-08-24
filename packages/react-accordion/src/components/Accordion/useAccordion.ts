@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
 import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import { useControllableState, useEventCallback, resolveShorthand } from '@fluentui/react-utilities';
+import {
+  AccordionProps,
+  AccordionSlots,
+  AccordionState,
+  AccordionToggleData,
+  AccordionToggleEvent,
+} from './Accordion.types';
+
+export const accordionShorthandProps: Array<keyof AccordionSlots> = ['root'];
 
 export const useAccordion = (
   {
@@ -32,13 +40,17 @@ export const useAccordion = (
   });
 
   return {
-    ...rest,
-    ref,
     multiple,
     collapsible,
     navigable,
     openItems,
     requestToggle,
+    root: resolveShorthand(rest, {
+      required: true,
+      defaultProps: {
+        ref,
+      },
+    }),
   };
 };
 

@@ -6,6 +6,7 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
+    skipAsPropTests: true,
   };
 
   baseIsConformant(defaultOptions, testInfo);

@@ -8,5 +8,5 @@ import { accordionPanelShorthandProps } from './useAccordionPanel';
  */
 export const renderAccordionPanel = (state: AccordionPanelState) => {
   const { slots, slotProps } = getSlots<AccordionPanelSlots>(state, accordionPanelShorthandProps);
-  return state.open ? <slots.root {...slotProps.root}>{state.children}</slots.root> : null;
+  return state.open ? <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root> : null;
 };

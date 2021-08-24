@@ -7,7 +7,7 @@ import { AccordionPanelProps } from './AccordionPanel.types';
 
 describe('AccordionPanel', () => {
   isConformant({
-    // hack: this is usually provided through context
+    // TODO: this is a hack for conformance problems
     requiredProps: { open: true } as AccordionPanelProps,
     Component: AccordionPanel,
     displayName: 'AccordionPanel',

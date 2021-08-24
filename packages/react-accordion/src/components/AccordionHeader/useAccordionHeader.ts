@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs, useId, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
 import { useAccordionItemContext } from '../AccordionItem/index';
 import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
@@ -9,6 +9,7 @@ import { useARIAButton } from '@fluentui/react-aria';
  * Const listing which props are shorthand props.
  */
 export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = [
+  'root',
   'icon',
   'button',
   'children',
@@ -20,36 +21,48 @@ export const accordionHeaderShorthandProps: Array<keyof AccordionHeaderSlots> = 
  * @param props - AccordionHeader properties
  * @param ref - reference to root HTMLElement of AccordionHeader
  */
-export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>): AccordionHeaderState => {
+export const useAccordionHeader = (
+  {
+    id,
+    icon,
+    button,
+    children,
+    expandIcon,
+    inline = false,
+    size = 'medium',
+    expandIconPosition = 'start',
+    ...props
+  }: AccordionHeaderProps,
+  ref: React.Ref<HTMLElement>,
+): AccordionHeaderState => {
   const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
-  const id = useId('accordion-header-', props.id);
-  const innerRef = React.useRef<HTMLElement>(null);
 
-  const buttonShorthand = useARIAButton(props.button, {
+  const buttonShorthand = useARIAButton(button, {
     required: true,
     defaultProps: {
       id,
       disabled,
-      // 'aria-controls': panel?.id,
     },
   });
 
   return {
-    ...props,
     disabled,
     open,
-    ref: useMergedRefs(ref, innerRef),
-    size: props.size || 'medium',
-    inline: props.inline || false,
-    role: props.role || 'heading',
-    expandIconPosition: props.expandIconPosition || 'start',
+    size: size,
+    inline: inline,
+    expandIconPosition: expandIconPosition,
     components: {
       root: 'div',
       button: 'button',
       expandIcon: AccordionHeaderExpandIcon,
     },
-    icon: resolveShorthand(props.icon),
-    expandIcon: resolveShorthand(props.expandIcon, {
+    root: getNativeElementProps('div', {
+      ref,
+      role: 'heading',
+      ...props,
+    }),
+    icon: resolveShorthand(icon),
+    expandIcon: resolveShorthand(expandIcon, {
       required: true,
       defaultProps: {
         'aria-hidden': true,
@@ -64,6 +77,8 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
         }
       }),
     },
-    children: resolveShorthand(props.children, { required: true }),
+    children: resolveShorthand(children as AccordionHeaderSlots['children'], {
+      required: true,
+    }),
   };
 };

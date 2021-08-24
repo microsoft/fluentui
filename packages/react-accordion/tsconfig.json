@@ -11,6 +11,7 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
+    "strict": true,
     "types": ["jest", "custom-global", "inline-style-expand-shorthand"]
   },
   "include": ["src"]

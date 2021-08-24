@@ -88,11 +88,11 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,
-    state.className,
+    state.root.className,
   );
 
   state.button.className = mergeClasses(

@@ -1,7 +1,8 @@
-import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { getSlots } from '@fluentui/react-utilities';
 
-import { AccordionState, AccordionSlots, AccordionContextValues } from './Accordion.types';
+import { AccordionContextValues } from './Accordion.types';
+import { AccordionState, AccordionSlots } from './Accordion.types';
 import { AccordionContext } from './AccordionContext';
 
 /**
@@ -12,7 +13,7 @@ export const renderAccordion = (state: AccordionState, contextValues: AccordionC
 
   return (
     <slots.root {...slotProps.root}>
-      <AccordionContext.Provider value={contextValues.accordion}>{state.children}</AccordionContext.Provider>
+      <AccordionContext.Provider value={contextValues.accordion}>{slotProps.root.children}</AccordionContext.Provider>
     </slots.root>
   );
 };
