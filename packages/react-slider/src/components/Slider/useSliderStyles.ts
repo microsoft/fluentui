@@ -222,7 +222,6 @@ const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    transform: 'translate(50%, -50%)',
     outline: 'none',
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
@@ -289,7 +288,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
 
   state.className = mergeClasses(
     rootStyles.root,
-    rootStyles[state.size],
+    // TODO: Remove once compat is reverted
+    rootStyles[state.size || 'medium'],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     !state.disabled && rootStyles.enabled,
     rootStyles.focusIndicator,

@@ -1,22 +1,17 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-
-/**
- * Names of the shorthand properties in SwitchProps
- */
-export type SwitchSlots = {};
+import type { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
 export interface SwitchCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {}
 
 /**
  * Switch Props
  */
-export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Partial<SwitchCommon> {}
+export interface SwitchProps extends ComponentPropsCompat, Partial<SwitchCommon> {}
 
 /**
  * State used in rendering Switch
  */
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
+export interface SwitchState extends ComponentStateCompat<SwitchProps> {
   /**
    * Ref to the root element
    */

@@ -23,7 +23,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6"
   },

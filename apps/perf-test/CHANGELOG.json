@@ -2,6 +2,21 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Aug 2021 07:35:43 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",
