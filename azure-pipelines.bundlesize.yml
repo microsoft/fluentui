@@ -15,7 +15,7 @@ jobs:
   - job: bundlesize
     workspace:
       clean: all
-    pool: '1ES-Host-Ubuntu'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -57,7 +57,7 @@ jobs:
     workspace:
       clean: all
     timeoutInMinutes: 75
-    pool: '1ES-Host-Ubuntu'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -95,7 +95,7 @@ jobs:
     workspace:
       clean: all
     timeoutInMinutes: 75
-    pool: '1ES-Host-Ubuntu'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
