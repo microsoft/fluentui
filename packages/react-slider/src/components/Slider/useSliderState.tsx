@@ -305,15 +305,15 @@ export const useSliderState = (state: SliderState) => {
         ...state.track.style,
       };
 
-  const marksContainerStyles = marks
+  const marksWrapperStyles = marks
     ? vertical
       ? {
           gridTemplateRows: getMarkPercent().join(''),
-          ...state.marksContainer.style,
+          ...state.marksWrapper.style,
         }
       : {
           gridTemplateColumns: getMarkPercent().join(''),
-          ...state.marksContainer.style,
+          ...state.marksWrapper.style,
         }
     : {};
 
@@ -347,21 +347,12 @@ export const useSliderState = (state: SliderState) => {
     state.onKeyDown = onKeyDown;
   }
 
-  // Slider Wrapper Props
-  state.sliderWrapper.children = null;
-
-  // Rail Props
-  state.rail.children = null;
-
-  // Track Props
-  state.trackWrapper.children = null;
-
   // Track Props
   state.track.style = trackStyles;
 
   // Mark props
-  state.marksContainer.children = marks ? renderMarks() : undefined;
-  state.marksContainer.style = marksContainerStyles;
+  state.marksWrapper.children = marks ? renderMarks() : undefined;
+  state.marksWrapper.style = marksWrapperStyles;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
