@@ -144,7 +144,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   /**
    * Optional prop to choose the HTML tag to render the tooltip container as
    *
-   * @default div
+   * @defaultvalue 'div'
    */
   as?: 'div' | 'span';
 }
