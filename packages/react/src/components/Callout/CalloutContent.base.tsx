@@ -244,7 +244,12 @@ function usePositions(
         }
       }, calloutElement.current);
 
-      return () => async.cancelAnimationFrame(timerId);
+      previousTarget.current = target;
+
+      return () => {
+        async.cancelAnimationFrame(timerId);
+        previousTarget.current = undefined;
+      };
     }
   }, [
     hidden,
@@ -260,8 +265,6 @@ function usePositions(
     props,
     target,
   ]);
-
-  previousTarget.current = target;
 
   return positions;
 }
