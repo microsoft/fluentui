@@ -1,4 +1,7 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
   "include": ["__fixtures__/**/code.ts"]
 }
