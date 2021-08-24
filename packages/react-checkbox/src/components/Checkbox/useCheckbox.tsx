@@ -41,7 +41,9 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): 
         type: 'checkbox',
         children: null,
       },
-      indicator: {},
+      indicator: {
+        as: 'div',
+      },
     },
     resolveShorthandProps(props, checkboxShorthandProps),
   );
