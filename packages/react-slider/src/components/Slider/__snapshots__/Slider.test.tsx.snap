@@ -43,11 +43,6 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
         aria-valuetext="5"
         className="ms-Slider-thumb"
         role="slider"
-        style={
-          Object {
-            "transform": "translate(-50%, -50%)",
-          }
-        }
       />
     </div>
     <div
@@ -101,11 +96,6 @@ exports[`Slider renders Slider correctly 1`] = `
         aria-valuetext="5"
         className="ms-Slider-thumb"
         role="slider"
-        style={
-          Object {
-            "transform": "translate(-50%, -50%)",
-          }
-        }
         tabIndex={0}
       />
     </div>
@@ -161,11 +151,6 @@ Array [
           aria-valuetext="5"
           className="ms-Slider-thumb"
           role="slider"
-          style={
-            Object {
-              "transform": "translate(-50%, -50%)",
-            }
-          }
           tabIndex={0}
         />
       </div>
@@ -217,11 +202,6 @@ Array [
           aria-valuetext="5"
           className="ms-Slider-thumb"
           role="slider"
-          style={
-            Object {
-              "transform": "translate(-50%, -50%)",
-            }
-          }
           tabIndex={0}
         />
       </div>
@@ -277,11 +257,6 @@ exports[`Slider renders vertical Slider correctly 1`] = `
         aria-valuetext="5"
         className="ms-Slider-thumb"
         role="slider"
-        style={
-          Object {
-            "transform": "translate(-50%, -50%)",
-          }
-        }
         tabIndex={0}
       />
     </div>
