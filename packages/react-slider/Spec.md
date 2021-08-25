@@ -23,6 +23,9 @@ https://open-ui.org/components/slider.research
 
 **Marks**: Amongst other component libraries marks/ticks/notches are used to help visibly differ the current location of the thumb. Marks are also used to create custom steps through providing an array of values to jump too.
 
+**Ranged Slider**
+Since the `RangedSlider` and `Slider` have very different use cases and accessibility concerns they are planned to be separated into different components.
+
 ## Sample Code
 
 ```jsx=
@@ -82,7 +85,6 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 | Name     | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="200"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="200"/> | Description                                                                                                   |
 | -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| label    | x                                                                                       | &check;                                                                               | The description label of the **Slider**.                                                                      |
 | disabled | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** as disabled. @defaultvalue `false` (render enabled)                          |
 | vertical | &check;                                                                                 | &check;                                                                               | Whether to render the **Slider** vertically. @default `false` (render horizontally)                           |
 | marks    | x                                                                                       | x                                                                                     | Whether the **Slider** will have marks to visibly display its steps. @default `false` (renders without marks) |
@@ -98,11 +100,12 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
 <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
 
-| Name                        | Description                                                                                            | Reason                                 |
-| --------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- |
-| inputRef                    | Ref for input DOM node.                                                                                | Replaced with ref.                     |
-| getA11yValueMessageOnChange | Callback that creates custom accessibility message a screen reader narrates when the value changes.    | Replaced with ariaValueLabel           |
-| fluid                       | A **Slider** can take the width of its container. @default `false` (width does not fill the container) | Can be done by applying custom styles. |
+| Name                        | Description                                                                                            | Reason                                                               |
+| --------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| inputRef                    | Ref for input DOM node.                                                                                | Replaced with ref.                                                   |
+| getA11yValueMessageOnChange | Callback that creates custom accessibility message a screen reader narrates when the value changes.    | Replaced with ariaValueLabel                                         |
+| fluid                       | A **Slider** can take the width of its container. @default `false` (width does not fill the container) | Can be done by applying custom styles.                               |
+| label                       | The description label of the **Slider**.                                                               | Can be handled by a form component and is a rare use case for Slider |
 
 <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
 
@@ -119,6 +122,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | valueFormat       | Custom formatter for the slider value. value                                                                                                           | Label will handle custom formats                                                     |
 | originFromZero    | Whether to attach the origin of slider to zero. Helpful when the range include negatives. @defaultvalue false                                          | Replaced with origin to allow for more control over the component.                   |
 | ranged            | Whether to render a **Ranged Slider**. Ranged Sliders display two `thumbs` that allow for lower and upper bounds to be easily selected.                | Ranged will be separated into a different component.                                 |
+| label             | The description label of the **Slider**.                                                                                                               | Can be handled by a form component and is a rare use case for Slider                 |
 
 ## Structure
 
@@ -130,7 +134,6 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 
   ```jsx
   <slots.root {...slotProps.root}>
-    {state.label && <slots.label {...slotProps.label} />}
     {state.marks && <slots.marksContainer {...slotProps.marksContainer} />}
     <slots.sliderWrapper {...slotProps.sliderWrapper}>
       <slots.rail {...slotProps.rail} />
@@ -141,6 +144,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
         <slots.thumb {...slotProps.thumb} />
       </slots.thumbWrapper>
       <slots.activeRail {...slotProps.activeRail} />
+      <slots.input {...slotProps.input} />
     </slots.sliderWrapper>
   </slots.root>
   ```
@@ -148,28 +152,25 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 - _**DOM** - how the component will be rendered as HTML elements_
 
 ```jsx
-    <div className="ms-Slider-root">
-        // Label is up for discussion
-        <div className="ms-Slider-label">
-            {...label children}
-        </div>
-        <div className = "ms-Slider-markContainer">
-            <div className="ms-Slider-markItemContainer">
-                <div className="ms-Slider-mark" />
-                <div className="ms-Slider-markLabel" />
-            </div>
-        </div>
-        <div className="ms-Slider-wrapper">
-            <div className="ms-Slider-rail" />
-            <div className="ms-Slider-trackWrapper">
-                <div className="ms-Slider-track" />
-            </div>
-            <div className="thumbWrapper">
-                <div className="ms-Slider-thumb" />
-            </div>
-            <div className="ms-Slider-activeRail" />
-        </div>
+<div className="ms-Slider-root">
+  <div className="ms-Slider-markContainer">
+    <div className="ms-Slider-markItemContainer">
+      <div className="ms-Slider-mark" />
+      <div className="ms-Slider-markLabel" />
     </div>
+  </div>
+  <div className="ms-Slider-wrapper">
+    <div className="ms-Slider-rail" />
+    <div className="ms-Slider-trackWrapper">
+      <div className="ms-Slider-track" />
+    </div>
+    <div className="thumbWrapper">
+      <div className="ms-Slider-thumb" />
+    </div>
+    <div className="ms-Slider-activeRail" />
+    <div className="ms-Slider-input" />
+  </div>
+</div>
 ```
 
 ## Behaviors
@@ -213,17 +214,3 @@ _Explain how the component will behave in use, including:_
 ## Accessibility
 
 `Slider` design pattern: [W3 Slider](https://www.w3.org/TR/wai-aria-1.1/#slider)
-
-## Topics for Discussion
-
-### RangedSlider Separated
-
-It may be more readable and potentially better to split the `RangedSlider` and `Slider` components apart from each other as they have very different use cases and accessibility concerns.
-
-### Removing Label
-
-If there is a way to remove the Label while preserving accessibility it could greatly benefit the render structure (Removes container and label).
-
-### Adding a HTML input of type range for Accessibility
-
-Adding a hidden input of type range slider can potentially assist in handling the Slider's accessibility behavior. It is currently being planned to be added once all API features have been fully implemented.
