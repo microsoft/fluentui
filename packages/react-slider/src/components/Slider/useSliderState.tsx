@@ -220,14 +220,16 @@ export const useSliderState = (state: SliderState) => {
     disposables.current = [];
   });
 
-  const valuePercent = getPercent(renderedPosition!, min, max);
-
   // TODO: Awaiting animation time from design spec.
   const animationTime = '0.1s';
 
-  const originPercent = origin ? getPercent(origin, min, max) : 0;
+  const valuePercent = getPercent(renderedPosition!, min, max);
 
-  const getMarkValues = React.useCallback((): number[] => {
+  const originPercent = React.useMemo(() => {
+    return origin ? getPercent(origin, min, max) : 0;
+  }, [max, min, origin]);
+
+  const getMarkValues = React.useMemo((): number[] => {
     const markValues: number[] = [];
 
     // 1. We receive a boolean: mark for every step.
@@ -252,8 +254,8 @@ export const useSliderState = (state: SliderState) => {
   /**
    * Gets the current percentage position for the marks.
    */
-  const getMarkPercent = React.useCallback((): string[] => {
-    const valueArray: number[] = getMarkValues();
+  const getMarkPercent = React.useMemo((): string[] => {
+    const valueArray: number[] = getMarkValues;
     const result: string[] = [];
 
     // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
@@ -308,11 +310,11 @@ export const useSliderState = (state: SliderState) => {
   const marksWrapperStyles = marks
     ? vertical
       ? {
-          gridTemplateRows: getMarkPercent().join(''),
+          gridTemplateRows: getMarkPercent.join(''),
           ...state.marksWrapper.style,
         }
       : {
-          gridTemplateColumns: getMarkPercent().join(''),
+          gridTemplateColumns: getMarkPercent.join(''),
           ...state.marksWrapper.style,
         }
     : {};
@@ -321,8 +323,8 @@ export const useSliderState = (state: SliderState) => {
    * Renders the marks
    */
   const renderMarks = () => {
-    const marksPercent = getMarkPercent();
-    const marksValue = getMarkValues();
+    const marksPercent = getMarkPercent;
+    const marksValue = getMarkValues;
     const marksChildren: JSX.Element[] = [];
 
     for (let i = 0; i < marksPercent.length; i++) {
