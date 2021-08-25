@@ -10,6 +10,10 @@ declare global {
 
 type MergeClassesParams = Parameters<typeof mergeClasses>;
 
+/**
+ * Custom Jest matcher that implements a check to ensure that passed classes is properly declared in mergeClasses()
+ * calls.
+ */
 export const toContainClassNameLastInCalls: jest.CustomMatcher = (
   result: jest.Mock<{}, MergeClassesParams>['mock']['calls'],
   className: string,
