@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fixing some High Contrast styles on hover and pressed states.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

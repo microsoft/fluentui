@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "FluentProvider: Adding ability to auto style correctly when in High Contrast mode.",
+  "packageName": "@fluentui/react-provider",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
