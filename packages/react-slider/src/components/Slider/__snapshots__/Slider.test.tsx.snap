@@ -52,6 +52,222 @@ exports[`Slider renders (disabled) Slider correctly 1`] = `
 </div>
 `;
 
+exports[`Slider renders (horizontal) Slider with origin at (max) correctly 1`] = `
+<div
+  className=""
+  id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
+>
+  <div
+    className=""
+  >
+    <div
+      className=""
+    />
+    <div
+      className=""
+    >
+      <div
+        className="ms-Slider-track"
+        style={
+          Object {
+            "borderRadius": "99px",
+            "left": "50%",
+            "transition": "none",
+            "width": "50%",
+          }
+        }
+      />
+    </div>
+    <div
+      className=""
+      style={
+        Object {
+          "transform": "translateX(50%)",
+          "transition": "none",
+        }
+      }
+    >
+      <div
+        aria-valuemax={10}
+        aria-valuemin={0}
+        aria-valuenow={5}
+        aria-valuetext="5"
+        className="ms-Slider-thumb"
+        role="slider"
+        tabIndex={0}
+      />
+    </div>
+    <div
+      className=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders (horizontal) Slider with origin at (min) correctly 1`] = `
+<div
+  className=""
+  id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
+>
+  <div
+    className=""
+  >
+    <div
+      className=""
+    />
+    <div
+      className=""
+    >
+      <div
+        className="ms-Slider-track"
+        style={
+          Object {
+            "borderRadius": "99px",
+            "left": 0,
+            "transition": "none",
+            "width": "50%",
+          }
+        }
+      />
+    </div>
+    <div
+      className=""
+      style={
+        Object {
+          "transform": "translateX(50%)",
+          "transition": "none",
+        }
+      }
+    >
+      <div
+        aria-valuemax={10}
+        aria-valuemin={0}
+        aria-valuenow={5}
+        aria-valuetext="5"
+        className="ms-Slider-thumb"
+        role="slider"
+        tabIndex={0}
+      />
+    </div>
+    <div
+      className=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders (vertical) Slider with origin at (max) correctly 1`] = `
+<div
+  className=""
+  id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
+>
+  <div
+    className=""
+  >
+    <div
+      className=""
+    />
+    <div
+      className=""
+    >
+      <div
+        className="ms-Slider-track"
+        style={
+          Object {
+            "borderRadius": "99px",
+            "height": "50%",
+            "top": "50%",
+            "transition": "none",
+          }
+        }
+      />
+    </div>
+    <div
+      className=""
+      style={
+        Object {
+          "transform": "translateY(50%)",
+          "transition": "none",
+        }
+      }
+    >
+      <div
+        aria-valuemax={10}
+        aria-valuemin={0}
+        aria-valuenow={5}
+        aria-valuetext="5"
+        className="ms-Slider-thumb"
+        role="slider"
+        tabIndex={0}
+      />
+    </div>
+    <div
+      className=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders (vertical) Slider with origin at (min) correctly 1`] = `
+<div
+  className=""
+  id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
+>
+  <div
+    className=""
+  >
+    <div
+      className=""
+    />
+    <div
+      className=""
+    >
+      <div
+        className="ms-Slider-track"
+        style={
+          Object {
+            "borderRadius": "99px",
+            "height": "50%",
+            "top": 0,
+            "transition": "none",
+          }
+        }
+      />
+    </div>
+    <div
+      className=""
+      style={
+        Object {
+          "transform": "translateY(50%)",
+          "transition": "none",
+        }
+      }
+    >
+      <div
+        aria-valuemax={10}
+        aria-valuemin={0}
+        aria-valuenow={5}
+        aria-valuetext="5"
+        className="ms-Slider-thumb"
+        role="slider"
+        tabIndex={0}
+      />
+    </div>
+    <div
+      className=""
+    />
+  </div>
+</div>
+`;
+
 exports[`Slider renders Slider correctly 1`] = `
 <div
   className=""

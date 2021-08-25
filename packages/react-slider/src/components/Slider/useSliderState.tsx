@@ -246,6 +246,20 @@ export const useSliderState = (state: SliderState) => {
     [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
+  const getTrackBorderRadius = () => {
+    if (origin && origin !== (max || min)) {
+      if (vertical) {
+        return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
+      } else {
+        return (dir === 'rtl' ? valuePercent > originPercent : valuePercent < originPercent)
+          ? '99px 0px 0px 99px'
+          : '0px 99px 99px 0px';
+      }
+    }
+
+    return '99px';
+  };
+
   useUnmount(() => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
@@ -271,14 +285,7 @@ export const useSliderState = (state: SliderState) => {
     [vertical ? 'height' : 'width']: origin
       ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
       : `${valuePercent}%`,
-    borderRadius:
-      origin && origin !== (max || min)
-        ? vertical
-          ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
-          : (dir === 'rtl' ? valuePercent > originPercent : originPercent > valuePercent)
-          ? '99px 0px 0px 99px'
-          : '0px 99px 99px 0px'
-        : '99px',
+    borderRadius: getTrackBorderRadius(),
     transition: stepAnimation
       ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
       : 'none',
