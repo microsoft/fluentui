@@ -69,7 +69,7 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
 
     // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
-  }, [hcMediaQuery, styleTagId, theme]);
+  }, [styleTagId, theme]);
   const previousCssRule = usePrevious(cssRule);
 
   if (styleTag && previousCssRule !== cssRule) {
