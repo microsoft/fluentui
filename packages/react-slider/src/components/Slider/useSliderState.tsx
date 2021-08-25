@@ -45,13 +45,15 @@ const findClosestValue = (value: number, divisibleBy: number) => {
  * Finds and swaps a provided key for it's right to left format.
  */
 const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
-  switch (key) {
-    case 'ArrowLeft': {
-      return 'ArrowRight';
-    }
+  if (dir === 'rtl') {
+    switch (key) {
+      case 'ArrowLeft': {
+        return 'ArrowRight';
+      }
 
-    case 'ArrowRight': {
-      return 'ArrowLeft';
+      case 'ArrowRight': {
+        return 'ArrowLeft';
+      }
     }
   }
 
