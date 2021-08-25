@@ -1,7 +1,11 @@
 import * as Fluent from '../src/index-rollup';
 import webcomponentsTheme from './theme';
+import { toggleBgMode, toggleLtr } from '../public/switches';
 
 Fluent;
+
+document.getElementById('luminance-switch').addEventListener('change', () => toggleBgMode(), false);
+document.getElementById('ltr-switch').addEventListener('change', () => toggleLtr(), false);
 
 export const parameters = {
   layout: 'fullscreen',

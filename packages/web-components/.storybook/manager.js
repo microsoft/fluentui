@@ -2,6 +2,9 @@ import { addons } from '@storybook/addons';
 import webcomponentsTheme from './theme';
 
 addons.setConfig({
+  previewTabs: {
+    canvas: { hidden: true },
+  },
   enableShortcuts: false,
   sidebar: {
     showRoots: true,
