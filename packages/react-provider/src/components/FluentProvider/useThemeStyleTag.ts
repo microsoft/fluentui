@@ -3,6 +3,28 @@ import { themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
 
+const hcMediaQuery = window.matchMedia('screen and (-ms-high-contrast: active), (forced-colors: active)');
+const globalHcColorTokens = [
+  '--global-color-hcButtonFace',
+  '--global-color-hcButtonText',
+  '--global-color-hcCanvas',
+  '--global-color-hcCanvasText',
+  '--global-color-hcDisabled',
+  '--global-color-hcHighlight',
+  '--global-color-hcHighlightText',
+  '--global-color-hcHyperlink',
+];
+const globalHcColorTokensToValuesMapping: { [key: string]: string } = {
+  '--global-color-hcButtonFace': 'ButtonFace',
+  '--global-color-hcButtonText': 'ButtonText',
+  '--global-color-hcCanvas': 'Canvas',
+  '--global-color-hcCanvasText': 'CanvasText',
+  '--global-color-hcDisabled': 'GrayText',
+  '--global-color-hcHighlight': 'Highlight',
+  '--global-color-hcHighlightText': 'HighlightText',
+  '--global-color-hcHyperlink': 'LinkText',
+};
+
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
  *
@@ -25,14 +47,28 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
 
   const cssRule = React.useMemo(() => {
     const cssVars = themeToCSSVariables(theme);
-    const cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
-      cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
+    let cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
+      if (hcMediaQuery.matches) {
+        if (globalHcColorTokens.includes(cssVar)) {
+          cssVarRule += `${cssVar}: ${globalHcColorTokensToValuesMapping[cssVar]}; `;
+        } else if (cssVar.includes('highContrast')) {
+          cssVarRule += `${cssVar.replace('highContrast', 'neutral')}: ${cssVars[cssVar]}; `;
+        } else if (!cssVar.includes('neutral')) {
+          cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
+        }
+      } else if (!cssVar.includes('highContrast')) {
+        cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
+      }
       return cssVarRule;
     }, '');
 
+    if (hcMediaQuery.matches) {
+      cssVarsAsString += 'forced-color-adjust: none;';
+    }
+
     // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
-  }, [theme, styleTagId]);
+  }, [styleTagId, theme]);
   const previousCssRule = usePrevious(cssRule);
 
   if (styleTag && previousCssRule !== cssRule) {

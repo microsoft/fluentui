@@ -413,6 +413,7 @@ export type Theme = {
   };
   alias: {
     color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
+      highContrast: NeutralColorTokens;
       neutral: NeutralColorTokens;
     };
     shadow: ShadowLevelTokens;

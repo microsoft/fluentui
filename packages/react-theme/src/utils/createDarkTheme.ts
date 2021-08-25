@@ -1,5 +1,6 @@
 import { createShadowLevelTokens } from './shadows';
 import { generateSharedColorTokens, neutralColorTokens } from '../alias/dark';
+import { neutralColorTokens as highContrastColorTokens } from '../alias/highContrast';
 import { createGlobalTheme } from '../global/utils';
 import type { BrandVariants, Theme } from '../types';
 
@@ -10,6 +11,7 @@ export const createDarkTheme: (brand: BrandVariants) => Theme = brand => {
     alias: {
       color: {
         ...generateSharedColorTokens(global.palette),
+        highContrast: highContrastColorTokens,
         neutral: neutralColorTokens,
       } as Theme['alias']['color'],
       shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
