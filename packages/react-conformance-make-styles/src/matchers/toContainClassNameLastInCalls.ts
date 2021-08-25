@@ -11,7 +11,7 @@ declare global {
 type MergeClassesParams = Parameters<typeof mergeClasses>;
 
 export const toContainClassNameLastInCalls: jest.CustomMatcher = (
-  result: jest.Mock<any, MergeClassesParams>['mock']['calls'],
+  result: jest.Mock<{}, MergeClassesParams>['mock']['calls'],
   className: string,
 ) => {
   let hasCallsWithClassName: boolean = false;

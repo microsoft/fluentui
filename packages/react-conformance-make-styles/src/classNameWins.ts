@@ -1,5 +1,5 @@
 import { IsConformantOptions, ConformanceTest } from '@fluentui/react-conformance';
-import './matchers';
+import './matchers/index';
 
 const mergeClasses = jest.fn();
 
@@ -55,6 +55,7 @@ export const classNameWins: ConformanceTest = (componentInfo, testInfo) => {
     // React should be imported after "jest.resetModules()" as otherwise we will will get two copies: one from this
     // test, a second from a component itself.
     // https://github.com/facebook/jest/issues/8987#issuecomment-584898030
+    /* eslint-disable @fluentui/no-global-react */
     const React = await import('react');
     const ReactDOM = await import('react-dom');
 
