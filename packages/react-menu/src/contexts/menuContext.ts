@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
-import { MenuListProps } from '../components/index';
-import { MenuState } from '../components/Menu/index';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector, Context } from '@fluentui/react-context-selector';
+import type { MenuListProps } from '../components/index';
+import type { MenuState } from '../components/Menu/index';
 
 export const MenuContext: Context<MenuContextValue> = createContext<MenuContextValue>({
   open: false,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ProviderContextValue } from './ProviderContext.types';
+import type { ProviderContextValue } from './ProviderContext.types';
 
 export const ProviderContext = React.createContext<ProviderContextValue>({
   targetDocument: typeof document === 'object' ? document : undefined,

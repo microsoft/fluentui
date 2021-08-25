@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { TooltipState } from './Tooltip.types';
+import type { TooltipState } from './Tooltip.types';
 
 /**
  * Styles for the tooltip

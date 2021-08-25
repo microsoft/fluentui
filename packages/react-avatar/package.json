@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@fluentui/babel-make-styles": "^9.0.0-alpha.38",
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.34",
     "@fluentui/react-conformance": "^0.4.4",
     "@fluentui/scripts": "^1.0.0",
@@ -45,9 +45,9 @@
   "dependencies": {
     "@fluentui/react-badge": "^9.0.0-alpha.69",
     "@fluentui/react-icons": "^1.1.136",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.58",
-    "@fluentui/react-theme": "^9.0.0-alpha.21",
-    "@fluentui/react-utilities": "^9.0.0-alpha.40",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
+    "@fluentui/react-theme": "^9.0.0-alpha.22",
+    "@fluentui/react-utilities": "^9.0.0-alpha.41",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

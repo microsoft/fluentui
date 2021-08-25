@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { MenuState } from '../Menu/Menu.types';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { MenuState } from '../Menu/Menu.types';
 
 /**
  * MenuPopover Props

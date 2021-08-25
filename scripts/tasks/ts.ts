@@ -25,27 +25,30 @@ const useTsBuildInfo =
 
 /**
  *
- * Explicitly set `baseUrl` to current package root for packages (converged packages) that use TS path aliases.
- * > - This is a temporary workaround for current way of building packages.
+ * Explicitly set `baseUrl,rootDir` to current package root for packages (converged packages) that use TS path aliases.
+ * > - This is a temporary workaround for current way of building packages via lage and just scripts.
  * > - Without setting baseUrl we would get all aliased packages build within outDir
+ * > - Without setting rootDir we would get output dir mapping following path from monorepo root
  */
-function backportTsAliasedPackages(options: TscTaskOptions) {
+function prepareTsTaskConfig(options: TscTaskOptions) {
   const tsConfigFilePath = resolveCwd('./tsconfig.json');
   const tsConfig: TsConfig = jju.parse(fs.readFileSync(tsConfigFilePath, 'utf-8'));
 
-  const normalizedOptions = { ...options };
-
   if (tsConfig.extends) {
-    logger.info(`package is using TS path aliases. Overriding baseUrl to package root.`);
+    logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
+
+    const normalizedOptions = { ...options };
     normalizedOptions.baseUrl = '.';
+    normalizedOptions.rootDir = './src';
+
+    return normalizedOptions;
   }
 
-  return normalizedOptions;
+  return options;
 }
 
 function getExtraTscParams(args: JustArgs) {
   return {
-    pretty: true, // use readable error message formatting (turn off for individual scenarios if needed)
     target: 'es5',
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),
@@ -59,7 +62,7 @@ function getJustArgv(): JustArgs {
 export const ts = {
   commonjs: () => {
     const extraOptions = getExtraTscParams(getJustArgv());
-    const options = backportTsAliasedPackages({
+    const options = prepareTsTaskConfig({
       ...extraOptions,
       outDir: 'lib-commonjs',
       module: 'commonjs',
@@ -70,7 +73,7 @@ export const ts = {
   },
   esm: () => {
     const extraOptions = getExtraTscParams(getJustArgv());
-    const options = backportTsAliasedPackages({
+    const options = prepareTsTaskConfig({
       ...extraOptions,
       outDir: 'lib',
       module: 'esnext',
@@ -81,7 +84,7 @@ export const ts = {
   },
   amd: () => {
     const extraOptions = getExtraTscParams(getJustArgv());
-    const options = backportTsAliasedPackages({
+    const options = prepareTsTaskConfig({
       ...extraOptions,
       outDir: 'lib-amd',
       module: 'amd',
@@ -93,7 +96,7 @@ export const ts = {
   commonjsOnly: () => {
     const extraOptions = getExtraTscParams(getJustArgv());
     // Use default tsbuildinfo for this variant (since it's the only variant)
-    const options = backportTsAliasedPackages({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
+    const options = prepareTsTaskConfig({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
 
     return tscTask(options);
   },

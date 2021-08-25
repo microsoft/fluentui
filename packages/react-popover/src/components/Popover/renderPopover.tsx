@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PopoverContext } from '../../popoverContext';
-import { PopoverState } from './Popover.types';
+import type { PopoverState } from './Popover.types';
 
 /**
  * Render the final JSX of Popover

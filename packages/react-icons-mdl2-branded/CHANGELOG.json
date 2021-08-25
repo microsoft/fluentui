@@ -2,6 +2,36 @@
   "name": "@fluentui/react-icons-mdl2-branded",
   "entries": [
     {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.1.10",
+      "version": "1.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.2.1",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/react-icons-mdl2-branded"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.1.9",
+      "version": "1.1.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.2.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-icons-mdl2-branded"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/react-icons-mdl2-branded_v1.1.9",
       "version": "1.1.9",

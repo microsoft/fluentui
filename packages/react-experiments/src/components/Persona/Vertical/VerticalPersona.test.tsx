@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import * as TextHelpers from '../../../utilities/textHelpers';
-
-import { IVerticalPersonaComponent } from './VerticalPersona.types';
 import { VerticalPersona } from './VerticalPersona';
+import type { IVerticalPersonaComponent } from './VerticalPersona.types';
 
 const testVerticalPersonaStyles: IVerticalPersonaComponent['styles'] = {
   root: 'test-cn-root',

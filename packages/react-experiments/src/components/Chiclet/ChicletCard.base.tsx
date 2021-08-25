@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, classNamesFunction } from '../../Utilities';
-import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 import { mergeStyles } from '../../Styling';
+import type { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 

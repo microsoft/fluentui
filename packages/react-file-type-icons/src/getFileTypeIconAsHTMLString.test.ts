@@ -1,6 +1,7 @@
 import { ICON_SIZES, DEFAULT_BASE_URL } from './initializeFileTypeIcons';
-import { DEFAULT_ICON_SIZE, FileTypeIconSize } from './getFileTypeIconProps';
+import { DEFAULT_ICON_SIZE } from './getFileTypeIconProps';
 import { getFileTypeIconAsHTMLString } from './getFileTypeIconAsHTMLString';
+import type { FileTypeIconSize } from './getFileTypeIconProps';
 
 // Currently this test file only covers the default device pixel ratio, i.e 1
 const getExpectedHTMLElement = (iconSize: FileTypeIconSize, suffix: string, expectedExt: string) => {

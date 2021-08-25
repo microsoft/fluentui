@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { MenuDividerState } from './MenuDivider.types';
+import type { MenuDividerState } from './MenuDivider.types';
 
 /**
  * Redefine the render function to add slots. Reuse the menudivider structure but add

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.1)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.4.0..@fluentui/eslint-plugin_v1.4.1)
+
+### Patches
+
+- Updating eslint max-len rule exclusion for imports/exports. ([PR #19475](https://github.com/microsoft/fluentui/pull/19475) by dzearing@hotmail.com)
 
 ## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.4.0)
 

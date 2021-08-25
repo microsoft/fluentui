@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { TabItem } from './TabItem';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Tabs}

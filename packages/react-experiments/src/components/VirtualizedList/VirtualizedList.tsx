@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IVirtualizedListProps } from './VirtualizedList.types';
-import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
-import { IObjectWithKey } from '@fluentui/react/lib/Selection';
+import { ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { getParent, css, initializeComponentRef, EventGroup } from '@fluentui/react/lib/Utilities';
+import type { IVirtualizedListProps } from './VirtualizedList.types';
+import type { IScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
+import type { IObjectWithKey } from '@fluentui/react/lib/Selection';
 
 interface IRange {
   /** Start of range */

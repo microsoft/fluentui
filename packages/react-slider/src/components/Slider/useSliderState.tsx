@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
-import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import type { SliderState } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -46,7 +46,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
   return () => element.removeEventListener(eventName, callback);
 };
 
-export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | keyof SliderSlots | 'as' | 'ref'>) => {
+export const useSliderState = (state: SliderState) => {
   const {
     as = 'div',
     value,
@@ -73,7 +73,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = React.useRef<HTMLDivElement>(null);
+  const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
 
@@ -119,11 +119,11 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const size = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
+      const sliderSize = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
       const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
 
       const totalSteps = (max - min) / step;
-      const stepLength = size / totalSteps;
+      const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
       const distance = vertical ? position - thumbPosition : thumbPosition - position;
       return distance / stepLength;
@@ -161,15 +161,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
-      if (target.setPointerCapture) {
-        target.setPointerCapture(pointerId);
-      }
+      target.setPointerCapture?.(pointerId);
 
       hideStepAnimation();
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture(pointerId);
+        target.releasePointerCapture?.(pointerId);
       });
 
       onPointerMove(ev);
@@ -216,12 +214,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     [currentValue, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
-  React.useEffect(() => {
-    if (state.ref && state.ref.current) {
-      state.ref.current.value = currentValue;
-      state.ref.current.focus = () => thumbRef?.current?.focus();
-    }
-  }, [currentValue, state.ref]);
+  useUnmount(() => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
+  });
 
   const valuePercent = getPercent(renderedPosition!, min, max);
 
@@ -242,6 +238,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         height: origin
           ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
           : `${valuePercent}%`,
+        borderRadius:
+          origin && origin !== (max || min)
+            ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
+            : '99px',
         transition: stepAnimation
           ? `transform ease-in-out ${animationTime}, height ease-in-out ${animationTime}`
           : 'none',
@@ -250,6 +250,10 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     : {
         left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
         width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
+        borderRadius:
+          origin && origin !== (max || min)
+            ? `${originPercent > valuePercent ? '99px 0px 0px 99px' : '0px 99px 99px 0px'}`
+            : '99px',
         transition: stepAnimation
           ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime} ${
               origin ? ', left ease-in-out ' + animationTime : ''
@@ -267,14 +271,12 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   }
 
   // Track Props
-  state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbStyles;
 
   // Thumb Props
-  state.thumb.className = 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
