@@ -3,7 +3,8 @@ import { themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
 
-const hcMediaQuery = window.matchMedia('screen and (-ms-high-contrast: active), (forced-colors: active)');
+const hcMediaQuery =
+  window && window.matchMedia && window.matchMedia('screen and (-ms-high-contrast: active), (forced-colors: active)');
 const globalHcColorTokens = [
   '--global-color-hcButtonFace',
   '--global-color-hcButtonText',
@@ -48,7 +49,7 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   const cssRule = React.useMemo(() => {
     const cssVars = themeToCSSVariables(theme);
     let cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
-      if (hcMediaQuery.matches) {
+      if (hcMediaQuery && hcMediaQuery.matches) {
         if (globalHcColorTokens.includes(cssVar)) {
           cssVarRule += `${cssVar}: ${globalHcColorTokensToValuesMapping[cssVar]}; `;
         } else if (cssVar.includes('highContrast')) {
@@ -62,13 +63,13 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
       return cssVarRule;
     }, '');
 
-    if (hcMediaQuery.matches) {
+    if (hcMediaQuery && hcMediaQuery.matches) {
       cssVarsAsString += 'forced-color-adjust: none;';
     }
 
     // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
-  }, [styleTagId, theme]);
+  }, [hcMediaQuery, styleTagId, theme]);
   const previousCssRule = usePrevious(cssRule);
 
   if (styleTag && previousCssRule !== cssRule) {
