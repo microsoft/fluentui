@@ -323,8 +323,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     while (tempArr.length) {
       const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
       const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-        (point: ILineChartDataPoint) =>
-          (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
+        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDataset: any = {};
