@@ -7,7 +7,6 @@ export function isConformant<TProps = {}>(
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
     skipAsPropTests: true,
-    // disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   };
 
   baseIsConformant(defaultOptions, testInfo);
