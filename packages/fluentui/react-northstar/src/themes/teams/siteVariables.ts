@@ -26,12 +26,12 @@ export const shadowLevel3 = '0 .8rem 1rem -.2rem rgba(0, 0, 0, .1)';
 export const shadowLevel4 = '0 1.6rem 1.8rem -.4rem rgba(0, 0, 0, .1)';
 export const shadowLevel1Dark = '0 .2rem .4rem -.075rem rgba(0, 0, 0, .25)';
 
-export const shadow2 = '0 0 2px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .14)';
-export const shadow4 = '0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .14)';
-export const shadow8 = '0 0 2px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .14)';
-export const shadow16 = '0 0 2px rgba(0, 0, 0, .12), 0 6px 16px rgba(0, 0, 0, .14)';
-export const shadow28 = '0 0 8px rgba(0, 0, 0, .12), 0 14px 28px rgba(0, 0, 0, .14)';
-export const shadow64 = '0 0 8px rgba(0, 0, 0, .12), 0 32px 64px rgba(0, 0, 0, .14)';
+export const shadow2 = `0 0 2px ${colors.shadow.shadowAmbient}, 0 1px 2px ${colors.shadow.shadowKey}`;
+export const shadow4 = `0 0 2px ${colors.shadow.shadowAmbient}, 0 2px 4px ${colors.shadow.shadowKey}`;
+export const shadow8 = `0 0 2px ${colors.shadow.shadowAmbient}, 0 4px 8px ${colors.shadow.shadowKey}`;
+export const shadow16 = `0 0 2px ${colors.shadow.shadowAmbient}, 0 6px 16px ${colors.shadow.shadowKey}`;
+export const shadow28 = `0 0 8px ${colors.shadow.shadowAmbientDarker}, 0 14px 28px ${colors.shadow.shadowKeyDarker}`;
+export const shadow64 = `0 0 8px ${colors.shadow.shadowAmbientDarker}, 0 32px 64px ${colors.shadow.shadowKeyDarker}`;
 
 //
 // FONT SIZES

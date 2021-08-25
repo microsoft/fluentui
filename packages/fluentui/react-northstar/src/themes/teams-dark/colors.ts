@@ -86,6 +86,12 @@ export const colorScheme: ColorSchemeMapping = {
 
     borderDisabled: colors.grey[550],
   }),
+  shadow: createColorScheme({
+    shadowAmbient: 'rgba(0, 0, 0, 0.24)',
+    shadowKey: 'rgba(0, 0, 0, 0.28)',
+    shadowAmbientDarker: 'rgba(0, 0, 0, 0.40)',
+    shadowKeyDarker: 'rgba (0, 0, 0, 0.48)',
+  }),
   brand: createColorScheme({
     foreground: colors.brand[400],
     foreground1: colors.brand[400],

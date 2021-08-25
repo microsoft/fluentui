@@ -296,6 +296,12 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
 
     borderDisabled: colors.grey[150],
   }),
+  shadow: createColorScheme({
+    shadowAmbient: 'rgba(0, 0, 0, 0.12)',
+    shadowKey: 'rgba(0, 0, 0, 0.14)',
+    shadowAmbientDarker: 'rgba(0, 0, 0, 0.20)',
+    shadowKeyDarker: 'rgba(0, 0, 0, 0.24)',
+  }),
   brand: createColorScheme({
     foreground: colors.brand[600],
     foreground1: colors.brand[600],
@@ -529,6 +535,7 @@ colorScheme.grey = colorScheme.default;
 
 export const availableColors = [
   'default',
+  'shadow',
   'black',
   'white',
   'brand',

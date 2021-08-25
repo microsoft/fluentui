@@ -41,6 +41,7 @@ export type ColorVariants = Extendable<
  * A type for a predefined natural colors.
  */
 type NaturalColorsStrict = Partial<{
+  shadow: ColorVariants;
   blue: ColorVariants;
   green: ColorVariants;
   grey: ColorVariants;
