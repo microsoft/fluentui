@@ -114,10 +114,11 @@ describe('migrate-converged-pkg generator', () => {
           return json;
         });
 
+        /* eslint-disable @fluentui/max-len */
         await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
-          // eslint-disable-next-line @fluentui/max-len
           `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
         );
+        /* eslint-enable @fluentui/max-len */
       });
     });
 
@@ -188,7 +189,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           preserveConstEnums: true,
           target: 'ES2020',
-          types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
+          types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
@@ -211,7 +212,6 @@ describe('migrate-converged-pkg generator', () => {
         'jest',
         'custom-global',
         'inline-style-expand-shorthand',
-        'storybook__addons',
         '@testing-library/jest-dom',
         'foo-bar',
       ]);
@@ -392,68 +392,16 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`storybook updates`, () => {
-    it(`should setup local storybook`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
+    function setup(_config?: Partial<{ createDummyStories: boolean }>) {
+      const defaults = { createDummyStories: true };
+      const config = { ...defaults, ..._config };
 
-      expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
-      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot(`
-        Object {
-          "compilerOptions": Object {
-            "allowJs": true,
-            "checkJs": true,
-          },
-          "exclude": Array [
-            "../**/*.test.ts",
-            "../**/*.test.js",
-            "../**/*.test.tsx",
-            "../**/*.test.jsx",
-          ],
-          "extends": "../tsconfig.json",
-          "include": Array [
-            "../src/**/*",
-            "*.js",
-          ],
-        }
-      `);
-
-      /* eslint-disable @fluentui/max-len */
-      expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "const rootMain = require('../../../.storybook/main');
-
-        module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
-        addons: [...rootMain.addons],
-        webpackFinal: (config, options) => {
-        const localConfig = { ...rootMain.webpackFinal(config, options) };
-
-        return localConfig;
-        },
-        });"
-      `);
-      /* eslint-enable @fluentui/max-len */
-
-      expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../.storybook/preview';
-
-        /** @type {typeof rootPreview.decorators} */
-        export const decorators = [...rootPreview.decorators];
-
-        /** @type {typeof rootPreview.parameters} */
-        export const parameters = { ...rootPreview.parameters };"
-      `);
-    });
-
-    function setup() {
       const workspaceConfig = readWorkspaceConfiguration(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
       const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
+      const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
 
       const paths = {
         reactExamples: {
@@ -470,21 +418,23 @@ describe('migrate-converged-pkg generator', () => {
         },
       };
 
-      tree.write(
-        paths.reactExamples.storyFileOne,
-        stripIndents`
+      if (config.createDummyStories) {
+        tree.write(
+          paths.reactExamples.storyFileOne,
+          stripIndents`
          import * as Implementation from '${options.name}';
          export const Foo = (props: FooProps) => { return <div>Foo</div>; }
         `,
-      );
+        );
 
-      tree.write(
-        paths.reactExamples.storyFileTwo,
-        stripIndents`
+        tree.write(
+          paths.reactExamples.storyFileTwo,
+          stripIndents`
          import * as Implementation from '${options.name}';
          export const FooOther = (props: FooPropsOther) => { return <div>FooOther</div>; }
         `,
-      );
+        );
+      }
 
       function getMovedStoriesData() {
         const movedStoriesExportNames = {
@@ -515,8 +465,104 @@ describe('migrate-converged-pkg generator', () => {
         normalizedProjectName,
         pathToStoriesWithinReactExamples,
         getMovedStoriesData,
+        projectStorybookConfigPath,
       };
     }
+    it(`should setup package storybook when needed`, async () => {
+      const { projectStorybookConfigPath, projectConfig } = setup();
+
+      expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
+      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot(`
+        Object {
+          "compilerOptions": Object {
+            "allowJs": true,
+            "checkJs": true,
+          },
+          "exclude": Array [
+            "../**/*.test.ts",
+            "../**/*.test.js",
+            "../**/*.test.tsx",
+            "../**/*.test.jsx",
+          ],
+          "extends": "../tsconfig.json",
+          "include": Array [
+            "../src/**/*",
+            "*.js",
+          ],
+        }
+      `);
+
+      expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "const rootMain = require('../../../.storybook/main');
+
+        module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        ...rootMain,
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        addons: [...rootMain.addons],
+        webpackFinal: (config, options) => {
+        const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+        // add your own webpack tweaks if needed
+
+        return localConfig;
+        },
+        });"
+      `);
+
+      expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "import * as rootPreview from '../../../.storybook/preview';
+
+        /** @type {typeof rootPreview.decorators} */
+        export const decorators = [...rootPreview.decorators];
+
+        /** @type {typeof rootPreview.parameters} */
+        export const parameters = { ...rootPreview.parameters };"
+      `);
+
+      expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).toContain(
+        'storybook__addons',
+      );
+    });
+
+    it(`should remove unused existing storybook setup`, async () => {
+      const { projectStorybookConfigPath, projectConfig } = setup({ createDummyStories: false });
+
+      const mainJsFilePath = `${projectStorybookConfigPath}/main.js`;
+      const packageJsonPath = `${projectConfig.root}/package.json`;
+
+      let pkgJson: PackageJson = readJson(tree, packageJsonPath);
+
+      tree.write(mainJsFilePath, 'module.exports = {}');
+
+      updateJson(tree, packageJsonPath, (json: PackageJson) => {
+        json.scripts = json.scripts || {};
+
+        Object.assign(json.scripts, {
+          start: 'echo "hello"',
+          storybook: 'echo "hello"',
+          'build-storybook': 'echo "hello"',
+        });
+        return json;
+      });
+
+      pkgJson = readJson(tree, packageJsonPath);
+
+      expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
+      expect(tree.exists(mainJsFilePath)).toBeTruthy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(mainJsFilePath)).toBeFalsy();
+      expect(Object.keys(pkgJson.scripts || [])).not.toContain(['start', 'storybook', 'build-storybook']);
+      expect(tree.exists(projectStorybookConfigPath)).toBeFalsy();
+      expect(readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`).compilerOptions.types).not.toContain(
+        'storybook__addons',
+      );
+    });
 
     it(`should work if there are no package stories in react-examples`, async () => {
       const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
