@@ -329,7 +329,9 @@ export const useSliderState = (state: SliderState) => {
       marksChildren.push(
         <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
           <div
-            className={`ms-Slider-mark ${(marksValue[i] === 0 && 'first') || (marksValue[i] === 100 && 'last') || ''}`}
+            className={`ms-Slider-mark ${
+              (marksValue[i] === 0 && 'firstMark') || (marksValue[i] === 100 && 'lastMark') || ''
+            }`}
             key={`mark-${i}`}
           />
         </div>,

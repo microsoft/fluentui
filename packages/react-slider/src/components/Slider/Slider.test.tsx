@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { create } from 'react-test-renderer';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
 import { mount, ReactWrapper } from 'enzyme';
@@ -20,307 +19,314 @@ describe('Slider', () => {
     resetIdsForTests();
   });
 
-  it('renders Slider correctly', () => {
-    const component = create(<Slider defaultValue={5} min={0} max={10} />);
-    expect(component.toJSON()).toMatchSnapshot();
+  describe('Snapshot Tests', () => {
+    it('renders (horizontal) Slider correctly', () => {
+      const { container } = render(<Slider defaultValue={5} min={0} max={10} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders (vertical) Slider correctly', () => {
+      const { container } = render(<Slider defaultValue={5} vertical min={0} max={10} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders (disabled) Slider correctly', () => {
+      const { container } = render(<Slider defaultValue={5} disabled min={0} max={10} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders (horizontal origin) Slider correctly', () => {
+      const { container } = render(<Slider defaultValue={5} origin={2} min={0} max={10} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders (vertical origin) Slider correctly', () => {
+      const { container } = render(<Slider defaultValue={5} origin={2} vertical min={0} max={10} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders Slider with (marks) correctly', () => {
+      const { container } = render(<Slider defaultValue={5} marks={true} step={3} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders (horizontal) Slider with (custom marks) correctly', () => {
+      const { container } = render(<Slider defaultValue={5} marks={[1, 3, 7, 8]} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders (vertical) Slider with (custom marks) correctly', () => {
+      const { container } = render(<Slider defaultValue={5} marks={[2, 5, 9, 18]} vertical />);
+      expect(container).toMatchSnapshot();
+    });
   });
 
-  it('renders (disabled) Slider correctly', () => {
-    const component = create(<Slider defaultValue={5} disabled min={0} max={10} />);
-    expect(component.toJSON()).toMatchSnapshot();
-  });
-
-  it('renders vertical Slider correctly', () => {
-    const component = create(<Slider defaultValue={5} vertical min={0} max={10} />);
-    expect(component.toJSON()).toMatchSnapshot();
-  });
-
-  it('renders Slider with origin correctly', () => {
-    const component = create(
-      <>
-        <Slider defaultValue={5} origin={2} min={0} max={10} />
-        <Slider defaultValue={5} origin={2} vertical min={0} max={10} />
-      </>,
-    );
-    expect(component.toJSON()).toMatchSnapshot();
-  });
+  describe('Unit Tests', () => {
+    it('handles (id) prop', () => {
+      render(<Slider id="test_id" data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
+      expect(sliderRoot.getAttribute('id')).toEqual('test_id');
+    });
 
-  it('renders Slider with marks correctly', () => {
-    const component = create(
-      <>
-        <Slider defaultValue={5} marks={true} step={3} />
-        <Slider defaultValue={5} marks={[1]} />
-        <Slider defaultValue={5} marks={[1, 3, 7, 8]} />
-        <Slider defaultValue={5} marks={[5, 2, 9, 18]} vertical />
-      </>,
-    );
-    expect(component.toJSON()).toMatchSnapshot();
-  });
+    it('applies the (defaultValue) prop', () => {
+      render(<Slider defaultValue={10} min={0} max={100} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
+    });
 
-  it('handles (id) prop', () => {
-    render(<Slider id="test_id" data-testid="test" />);
-    const sliderRoot = screen.getByTestId('test');
-    expect(sliderRoot.getAttribute('id')).toEqual('test_id');
-  });
+    it('applies the (value) prop', () => {
+      render(<Slider value={10} min={0} max={100} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
+    });
 
-  it('applies the (defaultValue) prop', () => {
-    render(<Slider defaultValue={10} min={0} max={100} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
-  });
+    it('clamps an initial (defaultValue) that is out of bounds', () => {
+      render(<Slider defaultValue={-10} min={0} max={100} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('0');
+    });
 
-  it('applies the (value) prop', () => {
-    render(<Slider value={10} min={0} max={100} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
-  });
+    it('calls (onChange) when pointerDown', () => {
+      const onChange = jest.fn();
 
-  it('clamps an initial (defaultValue) that is out of bounds', () => {
-    render(<Slider defaultValue={-10} min={0} max={100} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('0');
-  });
+      render(<Slider defaultValue={5} onChange={onChange} data-testid="test" />);
 
-  it('calls (onChange) when pointerDown', () => {
-    const onChange = jest.fn();
+      const sliderRoot = screen.getByTestId('test');
 
-    render(<Slider defaultValue={5} onChange={onChange} data-testid="test" />);
+      expect(onChange).toBeCalledTimes(0);
 
-    const sliderRoot = screen.getByTestId('test');
+      fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
+    });
 
-    expect(onChange).toBeCalledTimes(0);
+    it('slides to (min/max) and executes onChange', () => {
+      const onChange = jest.fn();
 
-    fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
-    expect(onChange).toBeCalledTimes(1);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
-  });
+      const wrapper: ReactWrapper = mount(<Slider onChange={onChange} />);
+      const sliderRoot = wrapper.first();
 
-  it('slides to (min/max) and executes onChange', () => {
-    const onChange = jest.fn();
+      expect(onChange).toBeCalledTimes(0);
 
-    const wrapper: ReactWrapper = mount(<Slider onChange={onChange} />);
-    const sliderRoot = wrapper.first();
+      sliderRoot.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    expect(onChange).toBeCalledTimes(0);
+      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
 
-    sliderRoot.getDOMNode().getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
+      expect(onChange).toBeCalledTimes(2);
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
 
-    sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
-    expect(onChange).toBeCalledTimes(1);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
+      wrapper.unmount();
+    });
 
-    sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
-    expect(onChange).toBeCalledTimes(2);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
+    it('handles (keydown) events', () => {
+      const onChange = jest.fn();
 
-    wrapper.unmount();
-  });
+      render(<Slider defaultValue={50} min={0} max={100} onChange={onChange} data-testid="test" />);
 
-  it('handles (keydown) events', () => {
-    const onChange = jest.fn();
+      const sliderRoot = screen.getByTestId('test');
+      expect(onChange).toBeCalledTimes(0);
 
-    render(<Slider defaultValue={50} min={0} max={100} onChange={onChange} data-testid="test" />);
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 49 });
 
-    const sliderRoot = screen.getByTestId('test');
-    expect(onChange).toBeCalledTimes(0);
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 50 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 49 });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
+      expect(onChange.mock.calls[2][1]).toEqual({ value: 49 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 50 });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowRight' });
+      expect(onChange.mock.calls[3][1]).toEqual({ value: 50 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: 49 });
+      fireEvent.keyDown(sliderRoot, { key: 'PageUp' });
+      expect(onChange.mock.calls[4][1]).toEqual({ value: 60 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowRight' });
-    expect(onChange.mock.calls[3][1]).toEqual({ value: 50 });
+      fireEvent.keyDown(sliderRoot, { key: 'PageDown' });
+      expect(onChange.mock.calls[5][1]).toEqual({ value: 50 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'PageUp' });
-    expect(onChange.mock.calls[4][1]).toEqual({ value: 60 });
+      fireEvent.keyDown(sliderRoot, { key: 'Home' });
+      expect(onChange.mock.calls[6][1]).toEqual({ value: 0 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'PageDown' });
-    expect(onChange.mock.calls[5][1]).toEqual({ value: 50 });
+      fireEvent.keyDown(sliderRoot, { key: 'End' });
+      expect(onChange.mock.calls[7][1]).toEqual({ value: 100 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'Home' });
-    expect(onChange.mock.calls[6][1]).toEqual({ value: 0 });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft', shiftKey: true });
+      expect(onChange.mock.calls[8][1]).toEqual({ value: 90 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'End' });
-    expect(onChange.mock.calls[7][1]).toEqual({ value: 100 });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowRight', shiftKey: true });
+      expect(onChange.mock.calls[9][1]).toEqual({ value: 100 });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft', shiftKey: true });
-    expect(onChange.mock.calls[8][1]).toEqual({ value: 90 });
+      expect(onChange).toBeCalledTimes(10);
+    });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowRight', shiftKey: true });
-    expect(onChange.mock.calls[9][1]).toEqual({ value: 100 });
+    it('does not update when the controlled (value) prop is provided', () => {
+      render(<Slider value={50} min={0} max={100} data-testid="test" />);
 
-    expect(onChange).toBeCalledTimes(10);
-  });
+      const sliderRoot = screen.getByTestId('test');
 
-  it('does not update when the controlled (value) prop is provided', () => {
-    render(<Slider value={50} min={0} max={100} data-testid="test" />);
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('50');
+    });
 
-    const sliderRoot = screen.getByTestId('test');
+    it('calls (onChange) with the correct value', () => {
+      const onChange = jest.fn();
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('50');
-  });
+      render(<Slider value={50} min={0} max={100} onChange={onChange} data-testid="test" />);
 
-  it('calls (onChange) with the correct value', () => {
-    const onChange = jest.fn();
+      const sliderRoot = screen.getByTestId('test');
 
-    render(<Slider value={50} min={0} max={100} onChange={onChange} data-testid="test" />);
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
 
-    const sliderRoot = screen.getByTestId('test');
+      expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
+    });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+    it('handles a negative (step) prop', () => {
+      const onChange = jest.fn();
 
-    expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
-  });
+      render(<Slider value={50} min={0} max={100} step={-3} onChange={onChange} data-testid="test" />);
 
-  it('handles a negative (step) prop', () => {
-    const onChange = jest.fn();
+      const sliderRoot = screen.getByTestId('test');
 
-    render(<Slider value={50} min={0} max={100} step={-3} onChange={onChange} data-testid="test" />);
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 47 });
+    });
 
-    const sliderRoot = screen.getByTestId('test');
+    it('handles a decimal (step) prop', () => {
+      const onChange = jest.fn();
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 47 });
-  });
+      render(<Slider defaultValue={50} min={0} max={100} step={0.001} onChange={onChange} data-testid="test" />);
 
-  it('handles a decimal (step) prop', () => {
-    const onChange = jest.fn();
+      const sliderRoot = screen.getByTestId('test');
 
-    render(<Slider defaultValue={50} min={0} max={100} step={0.001} onChange={onChange} data-testid="test" />);
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 50.001 });
+    });
 
-    const sliderRoot = screen.getByTestId('test');
+    it('handles (role) prop', () => {
+      render(<Slider role="test" data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
+      expect(sliderRoot.getAttribute('role')).toEqual('test');
+    });
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 50.001 });
-  });
+    it('applies Slider (role) to thumb', () => {
+      render(<Slider />);
+      expect(screen.getByRole('slider')).toBeTruthy();
+    });
 
-  it('handles (role) prop', () => {
-    render(<Slider role="test" data-testid="test" />);
-    const sliderRoot = screen.getByTestId('test');
-    expect(sliderRoot.getAttribute('role')).toEqual('test');
-  });
+    it('applies (aria-valuetext) correctly', () => {
+      render(<Slider defaultValue={3} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual('3');
+    });
 
-  it('applies Slider (role) to thumb', () => {
-    render(<Slider />);
-    expect(screen.getByRole('slider')).toBeTruthy();
-  });
+    it('applies (aria-valuetext) to the thumb', () => {
+      const values = ['small', 'medium', 'large'];
+      const selected = 1;
+      const getTextValue = (value: number) => values[value];
 
-  it('applies (aria-valuetext) correctly', () => {
-    render(<Slider defaultValue={3} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual('3');
-  });
+      render(<Slider value={selected} ariaValueText={getTextValue} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(values[selected]);
+    });
 
-  it('applies (aria-valuetext) to the thumb', () => {
-    const values = ['small', 'medium', 'large'];
-    const selected = 1;
-    const getTextValue = (value: number) => values[value];
+    it('applies (aria-valuenow) to the thumb', () => {
+      const wrapper: ReactWrapper = mount(<Slider defaultValue={3} />);
+      const sliderRoot = wrapper.first();
 
-    render(<Slider value={selected} ariaValueText={getTextValue} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(values[selected]);
-  });
+      sliderRoot.simulate('keydown', { key: 'ArrowRight' });
 
-  it('applies (aria-valuenow) to the thumb', () => {
-    const wrapper: ReactWrapper = mount(<Slider defaultValue={3} />);
-    const sliderRoot = wrapper.first();
+      expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(4);
 
-    sliderRoot.simulate('keydown', { key: 'ArrowRight' });
+      sliderRoot.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(4);
+      sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
 
-    sliderRoot.getDOMNode().getBoundingClientRect = () =>
-      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+      expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(100);
+      wrapper.unmount();
+    });
 
-    sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
+    it('applies (aria-valuemax) to the thumb', () => {
+      render(<Slider max={3} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuemax')).toEqual('3');
+    });
 
-    expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(100);
-    wrapper.unmount();
-  });
+    it('applies (aria-valuemin) to the thumb', () => {
+      render(<Slider min={-1} />);
+      expect(screen.getByRole('slider').getAttribute('aria-valuemin')).toEqual('-1');
+    });
 
-  it('applies (aria-valuemax) to the thumb', () => {
-    render(<Slider max={3} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuemax')).toEqual('3');
-  });
+    // TODO: Apply ref to a hidden input element and update this test
+    //
+    // it('applies (focus) to the thumb', () => {
+    //   let sliderRef: any;
 
-  it('applies (aria-valuemin) to the thumb', () => {
-    render(<Slider min={-1} />);
-    expect(screen.getByRole('slider').getAttribute('aria-valuemin')).toEqual('-1');
-  });
+    //   const SliderTestComponent = () => {
+    //     sliderRef = React.useRef(null);
 
-  // TODO: Apply ref to a hidden input element and update this test
-  //
-  // it('applies (focus) to the thumb', () => {
-  //   let sliderRef: any;
+    //     return <Slider defaultValue={3} ref={sliderRef} />;
+    //   };
 
-  //   const SliderTestComponent = () => {
-  //     sliderRef = React.useRef(null);
+    //   render(<SliderTestComponent />);
+    //   const sliderThumb = screen.getByRole('slider');
+    //   sliderRef.current.focus();
+    //   expect(document.activeElement).toEqual(sliderThumb);
+    // });
 
-  //     return <Slider defaultValue={3} ref={sliderRef} />;
-  //   };
+    it('does not allow (focus) on disabled Slider', () => {
+      let sliderRef: any;
 
-  //   render(<SliderTestComponent />);
-  //   const sliderThumb = screen.getByRole('slider');
-  //   sliderRef.current.focus();
-  //   expect(document.activeElement).toEqual(sliderThumb);
-  // });
+      const SliderTestComponent = () => {
+        sliderRef = React.useRef(null);
 
-  it('does not allow (focus) on disabled Slider', () => {
-    let sliderRef: any;
+        return <Slider defaultValue={3} ref={sliderRef} data-testid="test" disabled />;
+      };
 
-    const SliderTestComponent = () => {
-      sliderRef = React.useRef(null);
+      render(<SliderTestComponent />);
 
-      return <Slider defaultValue={3} ref={sliderRef} data-testid="test" disabled />;
-    };
+      expect(document.activeElement).toEqual(document.body);
 
-    render(<SliderTestComponent />);
+      sliderRef.current.focus();
+      expect(document.activeElement).toEqual(document.body);
+    });
 
-    expect(document.activeElement).toEqual(document.body);
+    it('does not allow (change) on disabled Slider', () => {
+      const eventHandler = jest.fn();
 
-    sliderRef.current.focus();
-    expect(document.activeElement).toEqual(document.body);
-  });
+      render(<Slider onChange={eventHandler} data-testid="test" disabled />);
 
-  it('does not allow (change) on disabled Slider', () => {
-    const eventHandler = jest.fn();
+      const sliderRoot = screen.getByTestId('test');
 
-    render(<Slider onChange={eventHandler} data-testid="test" disabled />);
+      expect(eventHandler).toBeCalledTimes(0);
 
-    const sliderRoot = screen.getByTestId('test');
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(eventHandler).toBeCalledTimes(0);
+    });
 
-    expect(eventHandler).toBeCalledTimes(0);
+    it('handles (onKeyDown) callback', () => {
+      const eventHandler = jest.fn();
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    expect(eventHandler).toBeCalledTimes(0);
-  });
+      render(<Slider onKeyDown={eventHandler} data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
 
-  it('handles (onKeyDown) callback', () => {
-    const eventHandler = jest.fn();
+      expect(eventHandler).toBeCalledTimes(0);
 
-    render(<Slider onKeyDown={eventHandler} data-testid="test" />);
-    const sliderRoot = screen.getByTestId('test');
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(eventHandler).toBeCalledTimes(1);
+    });
 
-    expect(eventHandler).toBeCalledTimes(0);
+    it('handles (onPointerDown) callback', () => {
+      const eventHandler = jest.fn();
 
-    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-    expect(eventHandler).toBeCalledTimes(1);
-  });
+      const wrapper: ReactWrapper = mount(<Slider onPointerDown={eventHandler} />);
+      const sliderRoot = wrapper.first();
 
-  it('handles (onPointerDown) callback', () => {
-    const eventHandler = jest.fn();
+      expect(eventHandler).toBeCalledTimes(0);
+      sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
+      expect(eventHandler).toBeCalledTimes(1);
 
-    const wrapper: ReactWrapper = mount(<Slider onPointerDown={eventHandler} />);
-    const sliderRoot = wrapper.first();
-
-    expect(eventHandler).toBeCalledTimes(0);
-    sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
-    expect(eventHandler).toBeCalledTimes(1);
-
-    wrapper.unmount();
+      wrapper.unmount();
+    });
   });
 });

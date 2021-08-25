@@ -207,7 +207,7 @@ const useMarksWrapperStyles = makeStyles({
       background: 'white',
     },
 
-    '& .first, .last': {
+    '& .firstMark, .lastMark': {
       opacity: '0',
     },
   }),

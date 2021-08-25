@@ -99,11 +99,10 @@ export interface SliderProps
   vertical?: boolean;
 
   /**
-   * When enabled, small marks are displayed across the Sliders, showing potential steps. Any provided mark values
-   * must be in numerical order.
+   * When enabled, small marks are displayed across the Slider, showing potential steps.
    *
-   * 1. `Boolean`: If true marks are visible.
-   * 2. `number[]`: Marks will be displayed at each provided number.
+   * - If `true`, marks are visible at each `step`.
+   * - If `number[]`, marks will be displayed at each number. Numbers must be in ascending order.
    */
   marks?: boolean | number[];
 
