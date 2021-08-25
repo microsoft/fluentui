@@ -186,7 +186,7 @@ describe('Slider', () => {
     expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
   });
 
-  it('(horizontal) origin (border-radius) is calculated correctly', () => {
+  it('correctly calculates the (horizontal) origin (border-radius)', () => {
     const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
 
     const sliderRoot = screen.getByTestId('test');
@@ -199,7 +199,7 @@ describe('Slider', () => {
     expect(sliderTrack?.getAttribute('style')).toContain('99px 0px 0px 99px');
   });
 
-  it('(vertical) origin (border-radius) is calculated correctly', () => {
+  it('correctly calculates the (vertical) origin (border-radius)', () => {
     const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
 
     const sliderRoot = screen.getByTestId('test');
