@@ -78,8 +78,8 @@ export const useSliderState = (state: SliderState) => {
     initialState: 0,
   });
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
 
