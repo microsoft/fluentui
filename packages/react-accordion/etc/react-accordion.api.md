@@ -213,7 +213,7 @@ export const renderAccordionItem: (state: AccordionItemState, contextValues: Acc
 export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
 
 // @public (undocumented)
-export const useAccordion: ({ openItems: controlledOpenItems, defaultOpenItems, multiple, collapsible, onToggle, navigable, ...rest }: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
+export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public (undocumented)
 export function useAccordionContextValues(state: AccordionState): AccordionContextValues;
