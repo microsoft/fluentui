@@ -9,18 +9,30 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  */
 
 /**
- *  @typedef {{check:boolean; checkOptions: Record<string,unknown>; reactDocgen: string | boolean; reactDocgenTypescriptOptions: Record<string,unknown>}} StorybookTsConfig
+ *  @typedef {{
+ *    check:boolean;
+ *    checkOptions: Record<string,unknown>;
+ *    reactDocgen: string | boolean;
+ *    reactDocgenTypescriptOptions: Record<string,unknown>
+ *  }} StorybookTsConfig
  */
 
 /**
- * @typedef {{stories: string[] ; addons: string[]; typescript: StorybookTsConfig; babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>; webpackFinal: StorybookWebpackConfig}} StorybookConfig
+ *  @typedef {{
+ *    stories: string[];
+ *    addons: string[];
+ *    typescript: StorybookTsConfig;
+ *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
+ *    webpackFinal: StorybookWebpackConfig;
+ *    core: {builder:'webpack5'};
+ * }} StorybookConfig
  */
 
 /**
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
 
-module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFinal'>} */ ({
+module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   stories: [],
   addons: [
     '@storybook/addon-essentials',
