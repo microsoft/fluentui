@@ -4,9 +4,9 @@
 
 ## Summary
 
-Instead of always applying native props and `ref` to the root, allow setting a different "primary" slot where these props should be applied. This option should be used sparingly: for input components and possibly a few other cases (options for exact criteria discussed below).
+For certain components, it's necessary to apply top-level native props to an element besides the actual DOM root. This RFC proposes two possible mechanisms for handling this.
 
-Also explicitly expose the `root` slot for all components. This will allow passing native props to the root if needed for the "special case" components discussed above, and provide consistency across the library.
+Whichever option is chosen, it should be used very sparingly to avoid confusion. The most obvious case is for input components (options for exact criteria discussed below).
 
 ## Problem statement
 
@@ -14,28 +14,28 @@ For most components, it makes sense to apply native props (and `ref`) to the roo
 
 The input components are a little unique because the actual `<input>` _cannot_ be the root element of the component, since we need various wrappers for styling (and `<input>` can't have children). However, users may expect that some or all native props passed to the root of the component would be applied to the `<input>` itself. This may also be a requirement for certain 3rd-party form libraries.
 
-For example, rendering a `<Checkbox/>` actually does this:
+For example, rendering a `<Checkbox/>` actually does this _(before the RFC is implemented)_:
 
 ```tsx
-<div>
-  <div ... /> {/* checkmark */}
-  <input type="checkbox" />
-  <label {...slotProps.label} />
-</div>
+<slots.root>
+  <slots.checkmark {/* visual checkmark */} />
+  <slots.input {/* actual input */}>
+  {children /*label*/}
+</slots.root>
 ```
 
-Or an `<Input/>` is roughly like this:
+Or an `<Input/>` is roughly like this _(again pre-RFC)_:
 
 ```tsx
-<div>
-  {/* optional bookend before slot */}
-  <div> {/* wrapper visually styled as an input (maybe, TBD) */}
-    {/* optional start slot */}
-    <input type="text" .../>
-    {/* optional end slot */}
-  </div>
-  {/* optional bookend after slot */}
-</div>
+<slots.root>
+  <slots.bookendBefore />
+  <slots.inputWrapper {/* visually styled as the input */}>
+    <slots.insideStart />
+    <slots.input /> {/* actual input element */}
+    <slots.insideEnd />
+  </slots.inputWrapper>
+  <slots.bookendAfter />
+</slots.root>
 ```
 
 So to specify a value, you'd have to use slot props:
@@ -64,15 +64,21 @@ To the degree possible, we'd like inputs to work nicely with 3rd-party form libr
 
 ## Detailed Design or Proposal
 
+### Option A: allow setting a different "primary" slot; explicitly expose `root` _(formerly the proposed solution)_
+
+<!-- Instead of always applying native props and `ref` to the root, allow setting a different "primary" slot where these props should be applied. This option should be used sparingly: for input components and possibly a few other cases (options for exact criteria discussed below).
+
+Also explicitly expose the `root` slot for all components. This will allow passing native props to the root if needed for the "special case" components discussed above, and provide consistency across the library. -->
+
 Add a notion of "primary" slot (open to suggestions for the name) where top-level native props and `ref` are applied. This would default to `root` but could be customized (need to work with @bsunderhus to determine implementation approach).
 
 To facilitate passing props to the actual root element when it's not the "primary" slot, explicitly expose the `root` slot in props (possibly with type constraints to prevent passing problematic things). This would be done in all components for consistency.
 
 In the interest of consistency/clarity, customizing the "primary" slot would be discouraged unless a component falls under certain special categories: definitely input components (`Input`, `Checkbox`, etc), and see "Open Issues" below for discussion of other possibilities.
 
-### Example: Checkbox
+#### Example: Checkbox
 
-Suppose `Checkbox` has an `input` slot which has been set as "primary." (Possible APIs for setting this up discussed later.) If the user does this:
+Suppose `Checkbox` sets its `input` slot as "primary." If the user does this:
 
 ```tsx
 <Checkbox name="foo" checked root={{ id: 'bar' }} ref={ref}>
@@ -98,11 +104,9 @@ If someone really wanted to, they could still pass props explicitly on the `inpu
 </Checkbox>
 ```
 
-### Code updates
+#### Code updates
 
 TODO: Need to work with @bsunderhus to figure out a non-`mergeProps` version
-
-### Pros and Cons
 
 #### Pros
 
@@ -113,7 +117,78 @@ TODO: Need to work with @bsunderhus to figure out a non-`mergeProps` version
 
 #### Cons
 
-- Potentially confusing due to inconsistency between components about where native props are applied. This could be somewhat mitigated by having a clear, coherent (and documented!) definition of which components which fall under this special case.
+- Inconsistent between components, potentially leading to confusion about where native props are applied. This could be somewhat mitigated by having a clear, coherent (and documented!) definition of which components which fall under this special case.
+- Potential confusion about whether top-level or slot props take precedence for the primary slot. This could also be addressed by documentation.
+
+#### Open question: should top-level `className` and `style` always be applied to the root?
+
+In a discussion about this topic, it was proposed that since `className` and `style` are commonly used for layout, it would be most intuitive for users if the top-level `className` and `style` are applied to the actual root DOM element (even if top-level native props were applied to a different element).
+
+For example, suppose this Checkbox is in a flex or grid CSS layout where _styling must be applied to the DOM root_, and CSS class `foo` defines this styling.
+
+```tsx
+<Checkbox name="foo" checked className="foo">
+  sample
+</Checkbox>
+```
+
+If we go with applying `className` to the root, you'd get roughly this HTML:
+
+```html
+<div class="foo">
+  <label>sample</label>
+  <input type="checkbox" name="foo" checked />
+</div>
+```
+
+The real question here is, how important is this scenario to users? Is that worth introducing the behavior inconsistency?
+
+### Option B: Use input as `root` and add `wrapper` slot for root DOM element _(formerly discarded option 3)_
+
+Use the native input element as the `root` slot, and use a `wrapper` slot (standardized name) as the actual root DOM element. This is roughly what the component would look like internally:
+
+```tsx
+<slots.wrapper>
+  <slots.root {...slotProps.root} /> {/* input element */}
+  <slots.label {...slotProps.label} />
+</slots.wrapper>
+```
+
+So doing this would give the desired HTML as shown at the top of the "Discarded Solutions" section:
+
+```tsx
+<Checkbox name="foo" checked>
+  sample
+</Checkbox>
+```
+
+And if you wanted to apply props to the wrapper element, you could use slot props:
+
+```tsx
+<Checkbox name="foo" checked className="foo" wrapper={{ className: 'bar' }}>
+  sample
+</Checkbox>
+```
+
+Which would give you roughly this:
+
+```html
+<div class="bar">
+  <input type="checkbox" name="foo" checked className="foo" />
+  <label>sample</label>
+</div>
+```
+
+#### Pros
+
+- For the individual component, more obvious which props go where, and a more intuitive API
+- Allows any valid prop to be applied to the root and/or the input (not just one or the other)
+
+#### Cons
+
+- Inconsistent between components, potentially leading to confusion about where native props are applied. This could be somewhat mitigated by having a clear, coherent (and documented!) definition of which components which fall under this special case.
+- Inconsistent what `root` means (it's weird to call something "root" which isn't actually at the root). However since `root` is not exposed in the public API in this proposal,
+- The name `wrapper` is already being used for slots in some components, with a different meaning (would probably need to change this)
 
 ## Open Issues
 
@@ -134,31 +209,6 @@ The following definitions have also been discussed. Feel free to comment with fe
   - Example from v8 (not sure if this applies to converged): Modal's actual React root element is usually a Layer, but from a user standpoint it makes a lot more sense to apply top-level props to the modal _content's_ root element.
 - For interactive controls, props are passed to the **interative element**
   - Need examples here too
-
-### Should top-level `className` always be applied to the root?
-
-In a discussion about this topic, it was proposed that since `className` is very commonly used for layout, it would be most intuitive for users if the top-level `className` was applied to the actual root DOM element (even if top-level native props were applied to a different element).
-
-For example, suppose this Checkbox is in a flex or grid CSS layout where styling must be applied to the root element, and CSS class `foo` defines this styling.
-
-```tsx
-<Checkbox name="foo" checked className="foo">
-  sample
-</Checkbox>
-```
-
-If we go with applying `className` to the root, you'd get roughly this HTML:
-
-```html
-<div class="foo">
-  <label>sample</label>
-  <input type="checkbox" name="foo" checked />
-</div>
-```
-
-The real question here is, how important is this scenario to users? Is that worth introducing the behavior inconsistency?
-
-###
 
 ## Discarded Solutions
 
@@ -234,56 +284,6 @@ Given this, and an implementation which uses a list of special props (including 
   - Example: if top-level `className` or `id` is passed to the `input`, what happens if they also want to give the root a `className` or `id`?
 - Inconsistent between components (reduces API clarity)
 - It's a breaking change if you want to modify where a prop is applied
-
-### Option 3 *(currently reconsidering)*: Use input as `root` and add `wrapper` slot for root DOM element
-
-> This is similar to the proposed solution and might be worth reconsidering since in some ways it provides slightly better API consistency. We're currently reconsidering it.
-
-Let the native input element be the "root" slot, but use a `wrapper` slot as the actual root DOM element. This is roughly what the component would look like internally:
-
-```tsx
-<slots.wrapper>
-  <slots.root {...slotProps.root} /> {/* input element */}
-  <slots.label {...slotProps.label} />
-</slots.wrapper>
-```
-
-So doing this would give the desired HTML as shown at the top of the "Discarded Solutions" section:
-
-```tsx
-<Checkbox name="foo" checked>
-  sample
-</Checkbox>
-```
-
-And if you wanted to apply props to the wrapper element, you could use slot props:
-
-```tsx
-<Checkbox name="foo" checked className="foo" wrapper={{ className: 'bar' }}>
-  sample
-</Checkbox>
-```
-
-Which would give you roughly this:
-
-```html
-<div class="bar">
-  <input type="checkbox" name="foo" checked className="foo" />
-  <label>sample</label>
-</div>
-```
-
-#### Pros
-
-- For the individual component, more obvious which props go where, and a more intuitive API
-- Allows any valid prop to be applied to the root and/or the input (not just one or the other)
-
-#### Cons
-
-- Inconsistent between components, potentially leading to confusion
-- Might be unclear which components implement this special handling
-- Inconsistent what "root" means
-- The name `wrapper` is already being used for slots in some components, with a different meaning (would probably need to change this)
 
 ### Option 4: Publish an input wrapper for styling, user passes `<input>` as a child
 
