@@ -256,7 +256,6 @@ export const useSliderState = (state: SliderState) => {
           : '0px 99px 99px 0px';
       }
     }
-
     return '99px';
   };
 
