@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
-import { ISelection } from '@fluentui/react/lib/Selection';
+import type { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
+import type { ISelection } from '@fluentui/react/lib/Selection';
 
 export type TileSize = keyof {
   small: 'small';

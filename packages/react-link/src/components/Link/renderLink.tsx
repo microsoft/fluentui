@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { LinkState } from './Link.types';
 import { linkShorthandProps } from './useLink';
+import type { LinkState } from './Link.types';
 
 /**
  * Defines the render function. Given the state of a Link, renders it.

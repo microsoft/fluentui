@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Mon, 23 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.2.1)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.2.0..@fluentui/react-monaco-editor_v1.2.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.2 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.2.0)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.1.57..@fluentui/react-monaco-editor_v1.2.0)
+
+### Minor changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19473](https://github.com/microsoft/fluentui/pull/19473) by dzearing@hotmail.com)
 
 ## [1.1.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.1.57)
 

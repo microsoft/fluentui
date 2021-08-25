@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.53)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.52..@fluentui/react-tabster_v9.0.0-alpha.53)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
 
 ## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.52)
 

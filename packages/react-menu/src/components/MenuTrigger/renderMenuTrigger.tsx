@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MenuTriggerState } from './MenuTrigger.types';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
+import type { MenuTriggerState } from './MenuTrigger.types';
 
 /**
  * Render the final JSX of MenuTrigger

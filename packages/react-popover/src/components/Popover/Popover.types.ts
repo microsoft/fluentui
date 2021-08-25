@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PopperVirtualElement, PositioningShorthand } from '@fluentui/react-positioning';
-import { PortalProps } from '@fluentui/react-portal';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { PopperVirtualElement, PositioningShorthand } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Determines popover padding and arrow size
