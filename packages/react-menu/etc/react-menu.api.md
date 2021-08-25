@@ -230,7 +230,8 @@ export type MenuPopoverSlots = {
 };
 
 // @public
-export interface MenuPopoverState extends ComponentState<MenuPopoverSlots>, Pick<MenuState, 'inline'> {
+export interface MenuPopoverState extends ComponentState<MenuPopoverSlots> {
+    inline: boolean;
 }
 
 // Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts

@@ -55,14 +55,13 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
   const inline = useMenuContext(context => context.inline) ?? false;
 
-  const state = {
+  const rootProps = {
     ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
     role: 'presentation',
-    inline,
     ...props,
   };
 
-  const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
+  const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
@@ -91,7 +90,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   return {
     inline,
     root: getNativeElementProps('div', {
-      ...state,
+      ...rootProps,
       onKeyDown,
       onMouseEnter,
     }),
