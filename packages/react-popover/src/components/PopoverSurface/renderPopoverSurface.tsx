@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
-import { PopoverSurfaceState } from './PopoverSurface.types';
+import type { PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
  * Render the final JSX of PopoverSurface

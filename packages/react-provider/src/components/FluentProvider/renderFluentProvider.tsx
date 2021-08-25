@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
 import { ProviderContext, TooltipContext, ThemeContext, ThemeClassNameContext } from '@fluentui/react-shared-contexts';
 import { getSlotsCompat } from '@fluentui/react-utilities';
+import type { FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
 
 /**
  * Render the final JSX of FluentProvider

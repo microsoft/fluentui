@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.3.0)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.2.3..@fluentui/react-file-type-icons_v8.3.0)
+
+### Minor changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19475](https://github.com/microsoft/fluentui/pull/19475) by dzearing@hotmail.com)
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.2.3)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.2.2..@fluentui/react-file-type-icons_v8.2.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
 
 ## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.2.2)
 

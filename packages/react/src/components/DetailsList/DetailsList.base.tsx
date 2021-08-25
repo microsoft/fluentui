@@ -7,7 +7,6 @@ import {
   KeyCodes,
   elementContains,
   getRTLSafeKeyCode,
-  IRenderFunction,
   classNamesFunction,
   memoizeFunction,
 } from '../../Utilities';
@@ -16,30 +15,18 @@ import {
   ColumnActionsMode,
   ConstrainMode,
   DetailsListLayoutMode,
-  IColumn,
-  IDetailsList,
-  IDetailsListProps,
-  IDetailsListStyles,
-  IDetailsListStyleProps,
   ColumnDragEndLocation,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
-import {
-  IDetailsHeader,
-  SelectAllVisibility,
-  IDetailsHeaderProps,
-  IColumnReorderHeaderProps,
-} from '../DetailsList/DetailsHeader.types';
-import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import { SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
-import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../Selection';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 
 import { DragDropHelper } from '../../DragDrop';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { List, IListProps, ScrollToMode } from '../../List';
+import { GroupedList } from '../../GroupedList';
+import { List, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -48,7 +35,25 @@ import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
-import { IGroup } from '../GroupedList/index';
+import type { IRenderFunction } from '../../Utilities';
+import type {
+  IColumn,
+  IDetailsList,
+  IDetailsListProps,
+  IDetailsListStyles,
+  IDetailsListStyleProps,
+} from '../DetailsList/DetailsList.types';
+import type {
+  IDetailsHeader,
+  IDetailsHeaderProps,
+  IColumnReorderHeaderProps,
+} from '../DetailsList/DetailsHeader.types';
+import type { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
+import type { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
+import type { IFocusZone, IFocusZoneProps } from '../../FocusZone';
+import type { IObjectWithKey, ISelection } from '../../Selection';
+import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from '../../GroupedList';
+import type { IListProps } from '../../List';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 

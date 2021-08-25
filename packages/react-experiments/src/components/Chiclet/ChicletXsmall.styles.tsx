@@ -1,5 +1,5 @@
 import { normalize, getGlobalClassNames, FontWeights } from '../../Styling';
-import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
+import type { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 const GlobalClassNames = {
   root: 'ms-ChicletXsmall',

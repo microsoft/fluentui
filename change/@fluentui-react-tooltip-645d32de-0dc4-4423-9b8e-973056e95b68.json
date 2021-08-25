@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Tooltip): replace align, position, coverTarget, offset props with single `positioning` shorthand prop",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

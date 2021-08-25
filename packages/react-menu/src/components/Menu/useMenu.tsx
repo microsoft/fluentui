@@ -4,11 +4,11 @@ import { useControllableState, useId, useOnClickOutside, useEventCallback } from
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 
 /**
  * Create the state required to render Menu.

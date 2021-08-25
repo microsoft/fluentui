@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@fluentui/merge-styles';
+import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
+import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;

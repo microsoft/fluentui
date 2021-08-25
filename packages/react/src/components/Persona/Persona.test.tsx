@@ -2,12 +2,14 @@ import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
-import { setRTL, IRenderFunction } from '../../Utilities';
+import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
-import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from './index';
+import { PersonaPresence, PersonaSize } from './index';
 import { isConformant } from '../../common/isConformant';
+import type { IRenderFunction } from '../../Utilities';
+import type { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps } from './index';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

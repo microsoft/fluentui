@@ -2,11 +2,12 @@ import * as React from 'react';
 import { IconButton } from '@fluentui/react/lib/Button';
 import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
-import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
-import { ComboBox, IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
+import { ComboBox } from '@fluentui/react/lib/ComboBox';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
-import { IProcessedStyleSet } from '../../Styling';
 import { DirectionalHint } from '@fluentui/react/lib/common/DirectionalHint';
+import type { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
+import type { IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
+import type { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
 

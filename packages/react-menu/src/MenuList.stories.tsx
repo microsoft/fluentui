@@ -8,9 +8,6 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
-  MenuItemCheckboxProps,
-  MenuItemRadioProps,
-  MenuListProps,
   Menu,
   MenuPopover,
   MenuTrigger,
@@ -23,6 +20,7 @@ import {
   Edit20Regular as EditIcon,
   Image20Regular,
 } from '@fluentui/react-icons';
+import type { MenuItemCheckboxProps, MenuItemRadioProps, MenuListProps } from './index';
 
 const useStyles = makeStyles({
   container: theme => ({

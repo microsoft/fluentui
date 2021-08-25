@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -15,7 +15,7 @@ export const Card: React_2.ForwardRefExoticComponent<CardProps & React_2.RefAttr
 export type CardDefaultedProps = never;
 
 // @public
-export interface CardProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface CardProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
@@ -25,7 +25,7 @@ export type CardShorthandProps = never;
 export const cardShorthandProps: CardShorthandProps[];
 
 // @public
-export interface CardState extends CardProps, ComponentState {
+export interface CardState extends CardProps, ComponentStateCompat<CardProps, CardShorthandProps, CardDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

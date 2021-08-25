@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useText } from './useText';
-import { TextProps } from './Text.types';
 import { renderText } from './renderText';
 import { useTextStyles } from './useTextStyles';
+import type { TextProps } from './Text.types';
 
 /**
  * Typography and styling abstraction component used to ensure consistency of text.

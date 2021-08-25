@@ -10,6 +10,7 @@ import {
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
+  bodyFont,
   designUnit,
   disabledOpacity,
   fillColor,
@@ -22,6 +23,8 @@ import {
   neutralStrokeHover,
   neutralStrokeRest,
   strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
 } from '../design-tokens';
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
@@ -63,15 +66,15 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     .label {
-      font-family: var(--body-font);
+      font-family: ${bodyFont};
       color: ${neutralForegroundRest};
       ${
         /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
       } padding-inline-start: calc(${designUnit} * 2px + 2px);
       margin-inline-end: calc(${designUnit} * 2px + 2px);
       cursor: pointer;
-      font-size: var(--type-ramp-base-font-size);
-      line-height: var(--type-ramp-base-line-height);
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
     }
 
     .control,

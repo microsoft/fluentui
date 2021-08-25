@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useFocusRects, classNamesFunction } from '@fluentui/utilities';
 import { Icon } from '../Icon/Icon';
-import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import type { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 

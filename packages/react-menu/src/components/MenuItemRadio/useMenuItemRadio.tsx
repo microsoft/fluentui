@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
-import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem } from '../MenuItem/useMenuItem';
+import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.
@@ -17,7 +17,10 @@ export const useMenuItemRadio = (props: MenuItemRadioProps, ref: React.Ref<HTMLE
     {
       ...radioProps,
       ...props,
-      checkmark: resolveShorthand(props.checkmark, { children: <Checkmark16Filled /> }),
+      checkmark: resolveShorthand(props.checkmark, {
+        defaultProps: { children: <Checkmark16Filled /> },
+        required: true,
+      }),
     },
     ref,
   ) as MenuItemRadioState;

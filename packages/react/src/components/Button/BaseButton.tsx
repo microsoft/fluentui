@@ -18,20 +18,20 @@ import {
   Async,
   EventGroup,
   FocusRects,
-  IRenderFunction,
   KeyCodes,
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.types';
-import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
-import {
-  getSplitButtonClassNames as getBaseSplitButtonClassNames,
-  ISplitButtonClassNames,
-} from './SplitButton/SplitButton.classNames';
+import { ContextualMenu } from '../../ContextualMenu';
+import { getBaseButtonClassNames } from './BaseButton.classNames';
+import { getSplitButtonClassNames as getBaseSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
-import { IKeytipProps } from '../../Keytip';
+import type { IRenderFunction } from '../../Utilities';
+import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IButtonProps, IButton } from './Button.types';
+import type { IButtonClassNames } from './BaseButton.classNames';
+import type { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import type { IKeytipProps } from '../../Keytip';
 
 /**
  * {@docCategory Button}

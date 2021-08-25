@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 
 /**
  * Create the state required to render MenuPopover.

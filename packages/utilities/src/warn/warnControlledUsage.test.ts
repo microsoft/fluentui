@@ -1,5 +1,6 @@
 import { setWarningCallback } from './warn';
-import { warnControlledUsage, resetControlledWarnings, IWarnControlledUsageParams } from './warnControlledUsage';
+import { warnControlledUsage, resetControlledWarnings } from './warnControlledUsage';
+import type { IWarnControlledUsageParams } from './warnControlledUsage';
 
 const warningCallback = jest.fn();
 

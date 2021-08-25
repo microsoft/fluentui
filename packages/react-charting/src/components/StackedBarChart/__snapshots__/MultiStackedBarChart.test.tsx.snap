@@ -86,6 +86,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -93,9 +94,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   width: 100%;
                 }
           >
-            <title>
-              Monitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
@@ -234,6 +232,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -241,9 +240,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   width: 100%;
                 }
           >
-            <title>
-              Unmonitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
@@ -358,7 +354,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             />
           </div>
         </div>
@@ -453,6 +449,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -460,9 +457,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   width: 100%;
                 }
           >
-            <title>
-              Monitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout20"
@@ -597,6 +591,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -604,9 +599,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   width: 100%;
                 }
           >
-            <title>
-              Unmonitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout20"
@@ -721,7 +713,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             />
           </div>
         </div>
@@ -820,6 +812,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -827,9 +820,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   width: 100%;
                 }
           >
-            <title>
-              Monitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout5"
@@ -968,6 +958,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -975,9 +966,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   width: 100%;
                 }
           >
-            <title>
-              Unmonitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout5"
@@ -1125,6 +1113,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -1132,9 +1121,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   width: 100%;
                 }
           >
-            <title>
-              Monitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout15"
@@ -1273,6 +1259,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -1280,9 +1267,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   width: 100%;
                 }
           >
-            <title>
-              Unmonitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout15"
@@ -1397,7 +1381,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1451,6 +1435,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1462,7 +1447,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1540,6 +1524,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1551,7 +1536,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1675,6 +1659,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -1682,9 +1667,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   width: 100%;
                 }
           >
-            <title>
-              Monitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout10"
@@ -1823,6 +1805,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -1830,9 +1813,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   width: 100%;
                 }
           >
-            <title>
-              Unmonitored
-            </title>
             <g
               aria-label="Multi stacked bar chart"
               aria-labelledby="callout10"
@@ -1947,7 +1927,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             />
           </div>
         </div>

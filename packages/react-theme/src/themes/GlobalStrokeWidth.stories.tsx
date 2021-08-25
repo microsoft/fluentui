@@ -6,7 +6,8 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { StrokeWidths, teamsLightTheme } from '../index';
+import { teamsLightTheme } from '../index';
+import type { StrokeWidths } from '../index';
 
 export default {
   title: 'Theme/Global/Stroke Width',

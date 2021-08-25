@@ -1,6 +1,5 @@
 import {
   HighContrastSelector,
-  IRawStyle,
   ScreenWidthMaxMedium,
   ScreenWidthMaxSmall,
   ScreenWidthMinMedium,
@@ -10,8 +9,9 @@ import {
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import type { IRawStyle } from '../../Styling';
+import type { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
 const GlobalClassNames = {
   root: 'ms-Breadcrumb',

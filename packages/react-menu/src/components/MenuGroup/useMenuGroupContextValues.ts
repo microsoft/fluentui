@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuGroupContextValues, MenuGroupState } from './MenuGroup.types';
+import type { MenuGroupContextValues, MenuGroupState } from './MenuGroup.types';
 
 export function useMenuGroupContextValues(state: MenuGroupState): MenuGroupContextValues {
   const { headerId } = state;
