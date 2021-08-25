@@ -66,11 +66,7 @@ To the degree possible, we'd like inputs to work nicely with 3rd-party form libr
 
 ### Option A: allow setting a different "primary" slot; explicitly expose `root` _(formerly the proposed solution)_
 
-<!-- Instead of always applying native props and `ref` to the root, allow setting a different "primary" slot where these props should be applied. This option should be used sparingly: for input components and possibly a few other cases (options for exact criteria discussed below).
-
-Also explicitly expose the `root` slot for all components. This will allow passing native props to the root if needed for the "special case" components discussed above, and provide consistency across the library. -->
-
-Add a notion of "primary" slot (open to suggestions for the name) where top-level native props and `ref` are applied. This would default to `root` but could be customized (need to work with @bsunderhus to determine implementation approach).
+Allow setting a different "primary" slot (open to suggestions for the name) where top-level native props and `ref` are applied. This would default to `root` but could be customized (need to work with @bsunderhus to determine implementation approach).
 
 To facilitate passing props to the actual root element when it's not the "primary" slot, explicitly expose the `root` slot in props (possibly with type constraints to prevent passing problematic things). This would be done in all components for consistency.
 
