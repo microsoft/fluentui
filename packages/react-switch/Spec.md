@@ -90,7 +90,7 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 </slots.root>;
 ```
 
-- \_**DOM**
+- _**DOM**_
 
 ```jsx=
 <div className="ms-switch-root">
@@ -127,8 +127,8 @@ The cursor changes to the hand icon. The outline of the Switch and thumb should 
 Since the Switch is an interactive component, it must be focusable and keyboard accessible.
 The expected keyboard shortcut for activating a Switch is the spacebar key.
 
-1. Use spacebar to switch off
-2. Use spacebar to switch on
+1. Use the spacebar to switch off
+2. Use the spacebar to switch on
 
 ### Cursor
 
