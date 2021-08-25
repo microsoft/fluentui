@@ -114,7 +114,7 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -384,15 +384,42 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
 }
 
+function getPackageType(tree: Tree, options: NormalizedSchema) {
+  const tags = options.projectConfig.tags || [];
+
+  const pkgJson: PackageJson = readJson(tree, options.paths.packageJson);
+  const scripts = pkgJson.scripts || {};
+  const isNode =
+    tags.includes('platform:node') ||
+    Boolean(pkgJson.bin) ||
+    (scripts.build && scripts.build === 'just-scripts build --commonjs');
+  const isWeb = tags.includes('platform:web') || !isNode;
+
+  if (isNode) {
+    return 'node';
+  }
+
+  if (isWeb) {
+    return 'web';
+  }
+
+  throw new Error('Unable to determine type of package (web or node)');
+}
+
 function uniqueArray<T extends unknown>(value: T[]) {
   return Array.from(new Set(value));
 }
 
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+  const packageType = getPackageType(tree, options);
+  const tags = {
+    web: 'platform:web',
+    node: 'platform:node',
+  };
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
   });
 
   return tree;
@@ -405,19 +432,22 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+  /* eslint-disable @fluentui/max-len */
+  const scripts = {
+    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
+    'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'start-storybook',
+    start: 'yarn storybook',
+    test: 'jest',
+  };
+  /* eslint-enable @fluentui/max-len */
+
   updateJson(tree, options.paths.packageJson, json => {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
 
-    json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
-    json.scripts[
-      'build:local'
-      // eslint-disable-next-line @fluentui/max-len
-    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
-    json.scripts.storybook = 'start-storybook';
-    json.scripts.start = 'yarn storybook';
-    json.scripts.test = 'jest';
+    Object.assign(json.scripts, scripts);
 
     return json;
   });

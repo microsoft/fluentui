@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build --commonjs",
     "lint": "just-scripts lint",
     "test": "jest",
     "just": "just-scripts",
