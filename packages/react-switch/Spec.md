@@ -112,6 +112,7 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 - **Disabled**
   - When disabled, all events are ignored, and the Switch's value never updates.
   - Does not allow focus.
+  - The cursor changes to `not-allowed`.
 - **Checked**
   - Switch is off when the “thumb” is indicated on the left.
   - Switch is on when the thumb is indicated on the right.
