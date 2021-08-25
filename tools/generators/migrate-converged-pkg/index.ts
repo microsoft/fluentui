@@ -91,16 +91,16 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   updateLocalJestConfig(tree, options);
   updateRootJestConfig(tree, options);
 
-  // 3. setup storybook
-  setupStorybook(tree, options);
-
-  // 4. move stories to package
+  // move stories to package
   moveStorybookFromReactExamples(tree, options, userLog);
   removeMigratedPackageFromReactExamples(tree, options, userLog);
 
-  // 5. update package npm scripts
+  // update package npm scripts
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
+
+  // setup storybook
+  setupStorybook(tree, options);
 
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
@@ -114,7 +114,7 @@ const templates = {
   apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
+    mainEntryPointFilePath: '<projectFolder>/dist/packages/<unscopedPackageName>/src/index.d.ts',
   },
   apiExtractor: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
@@ -134,7 +134,7 @@ const templates = {
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand', 'storybook__addons'],
+      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
     } as TsConfig['compilerOptions'],
   },
   babelConfig: (options: { extraPlugins: Array<string> }) => {
@@ -169,21 +169,22 @@ const templates = {
       };
   `,
   storybook: {
-    /* eslint-disable @fluentui/max-len */
     main: stripIndents`
       const rootMain = require('../../../.storybook/main');
 
-      module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
+      module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
           const localConfig = { ...rootMain.webpackFinal(config, options) };
 
+          // add your own webpack tweaks if needed
+
           return localConfig;
         },
       });
     `,
-    /* eslint-enable @fluentui/max-len */
     preview: stripIndents`
       import * as rootPreview from '../../../.storybook/preview';
 
@@ -261,6 +262,7 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
       rootJestConfig: '/jest.config.js',
       npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
       storybook: {
+        rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
         tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
         main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
         preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
@@ -382,15 +384,42 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
 }
 
+function getPackageType(tree: Tree, options: NormalizedSchema) {
+  const tags = options.projectConfig.tags || [];
+
+  const pkgJson: PackageJson = readJson(tree, options.paths.packageJson);
+  const scripts = pkgJson.scripts || {};
+  const isNode =
+    tags.includes('platform:node') ||
+    Boolean(pkgJson.bin) ||
+    (scripts.build && scripts.build === 'just-scripts build --commonjs');
+  const isWeb = tags.includes('platform:web') || !isNode;
+
+  if (isNode) {
+    return 'node';
+  }
+
+  if (isWeb) {
+    return 'web';
+  }
+
+  throw new Error('Unable to determine type of package (web or node)');
+}
+
 function uniqueArray<T extends unknown>(value: T[]) {
   return Array.from(new Set(value));
 }
 
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+  const packageType = getPackageType(tree, options);
+  const tags = {
+    web: 'platform:web',
+    node: 'platform:node',
+  };
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', tags[packageType]]),
   });
 
   return tree;
@@ -403,19 +432,22 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+  /* eslint-disable @fluentui/max-len */
+  const scripts = {
+    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
+    'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${options.normalizedPkgName}/src && yarn docs`,
+    storybook: 'start-storybook',
+    start: 'yarn storybook',
+    test: 'jest',
+  };
+  /* eslint-enable @fluentui/max-len */
+
   updateJson(tree, options.paths.packageJson, json => {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
 
-    json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
-    json.scripts[
-      'build:local'
-      // eslint-disable-next-line @fluentui/max-len
-    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
-    json.scripts.storybook = 'start-storybook';
-    json.scripts.start = 'yarn storybook';
-    json.scripts.test = 'jest';
+    Object.assign(json.scripts, scripts);
 
     return json;
   });
@@ -431,11 +463,73 @@ function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema)
 }
 
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
-  tree.write(options.paths.storybook.main, templates.storybook.main);
-  tree.write(options.paths.storybook.preview, templates.storybook.preview);
+  const sbAction = shouldSetupStorybook(tree, options);
+
+  if (sbAction === 'init') {
+    tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
+    tree.write(options.paths.storybook.main, templates.storybook.main);
+    tree.write(options.paths.storybook.preview, templates.storybook.preview);
+
+    updateJson(tree, options.paths.tsconfig, (json: TsConfig) => {
+      json.compilerOptions.types = json.compilerOptions.types || [];
+
+      json.compilerOptions.types.push('storybook__addons');
+      json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
+
+      return json;
+    });
+  }
+
+  if (sbAction === 'remove') {
+    tree.delete(options.paths.storybook.rootFolder);
+    updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+      json.scripts = json.scripts || {};
+
+      delete json.scripts.start;
+      delete json.scripts.storybook;
+      delete json.scripts['build-storybook'];
+
+      return json;
+    });
+
+    updateJson(tree, options.paths.tsconfig, (json: TsConfig) => {
+      json.compilerOptions.types = json.compilerOptions.types || [];
+
+      json.compilerOptions.types = json.compilerOptions.types.filter(
+        typeReference => typeReference !== 'storybook__addons',
+      );
+
+      return json;
+    });
+  }
 
   return tree;
+}
+
+function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
+  const hasStorybookConfig = tree.exists(options.paths.storybook.main);
+  let hasStories = false;
+
+  visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
+    if (treePath.includes('.stories.')) {
+      hasStories = true;
+      return;
+    }
+  });
+
+  const tags = options.projectConfig.tags || [];
+  const hasTags = tags.includes('vNext') && tags.includes('platform:web');
+
+  const shouldInit = hasStories || hasTags;
+  const shouldDelete = !shouldInit && hasStorybookConfig;
+
+  if (shouldInit) {
+    return 'init';
+  }
+
+  if (shouldDelete) {
+    return 'remove';
+  }
 }
 
 function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {

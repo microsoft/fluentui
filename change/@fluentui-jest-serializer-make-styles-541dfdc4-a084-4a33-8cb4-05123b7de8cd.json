@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refactor: unify babel-make-styles and make-styles-webpack-loader packages build output",
+  "packageName": "@fluentui/jest-serializer-make-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
