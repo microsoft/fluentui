@@ -11,18 +11,15 @@ import {
 
 export const accordionShorthandProps: Array<keyof AccordionSlots> = ['root'];
 
-export const useAccordion = (
-  {
+export const useAccordion = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
+  const {
     openItems: controlledOpenItems,
     defaultOpenItems,
     multiple = false,
     collapsible = false,
     onToggle,
     navigable = false,
-    ...rest
-  }: AccordionProps,
-  ref: React.Ref<HTMLElement>,
-): AccordionState => {
+  } = props;
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenItems), [controlledOpenItems]),
     defaultState: () => initializeUncontrolledOpenItems({ collapsible, defaultOpenItems, multiple }),
@@ -46,7 +43,7 @@ export const useAccordion = (
     openItems,
     requestToggle,
     root: getNativeElementProps('div', {
-      ...rest,
+      ...props,
       ref,
     }),
   };

@@ -53,12 +53,12 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     () => clearTimeout(throttleDispatchTimerRef.current);
   }, []);
 
-  const inline = useMenuContext(context => context.inline);
+  const inline = useMenuContext(context => context.inline) ?? false;
 
   const state = {
     ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
     role: 'presentation',
-    inline: inline ?? false,
+    inline,
     ...props,
   };
 
@@ -89,7 +89,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   });
 
   return {
-    ...state,
+    inline,
     root: getNativeElementProps('div', {
       ...state,
       onKeyDown,

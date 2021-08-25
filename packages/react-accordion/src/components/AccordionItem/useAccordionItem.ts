@@ -17,7 +17,7 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots> = ['ro
  * @param ref - reference to root HTMLElement of AccordionItem
  */
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
-  const { value, disabled = false, ...rest } = props;
+  const { value, disabled = false } = props;
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const tabsterAttributes = useTabsterAttributes({
     groupper: {},
@@ -37,7 +37,7 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
     root: getNativeElementProps('div', {
       ref: ref,
       ...(navigable ? tabsterAttributes : {}),
-      ...rest,
+      ...props,
     }),
   };
 };

@@ -25,7 +25,7 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
  * @param ref - reference to root HTMLInputElement of Input
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
-  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, ...rest } = props;
+  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart } = props;
   return {
     components: {
       input: 'input',
@@ -39,7 +39,7 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputS
     insideStart: resolveShorthand(insideStart),
     root: getNativeElementProps('div', {
       ref,
-      ...rest,
+      ...props,
     }),
   };
 };
