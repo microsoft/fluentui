@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { Link } from './components/Link/Link';
-import { LinkProps } from './components/Link/Link.types';
+import type { LinkProps } from './components/Link/Link.types';
 
 const useStyles = makeStyles({
   innerFlexStyles: {

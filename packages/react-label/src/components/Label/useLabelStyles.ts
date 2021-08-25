@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { LabelState } from './Label.types';
+import type { LabelState } from './Label.types';
 
 /**
  * Styles for the label

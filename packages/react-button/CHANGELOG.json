@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.73",
+      "version": "9.0.0-alpha.73",
+      "comments": {
+        "none": [
+          {
+            "comment": "Button docs",
+            "author": "peter@draxler.ml",
+            "commit": "035204943d15cadaa01f60d2fae628b6f7e77448",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.73",
       "version": "9.0.0-alpha.73",

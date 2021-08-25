@@ -1,4 +1,4 @@
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];

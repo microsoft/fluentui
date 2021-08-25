@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { SwitchState } from './Switch.types';
+import type { SwitchState } from './Switch.types';
 
 const rootClassName = 'ms-Switch-root';
 const trackClassName = 'ms-Switch-track';

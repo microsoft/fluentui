@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useSwitch } from './useSwitch';
-import { SwitchProps } from './Switch.types';
 import { renderSwitch } from './renderSwitch';
 import { useSwitchStyles } from './useSwitchStyles';
+import type { SwitchProps } from './Switch.types';
 
 /**
  * Define a styled Switch, using the `useSwitch` hook.

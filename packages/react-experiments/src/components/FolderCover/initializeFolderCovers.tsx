@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { registerIcons, IIconOptions } from '@fluentui/style-utilities';
+import { registerIcons } from '@fluentui/style-utilities';
+import type { IIconOptions } from '@fluentui/style-utilities';
 
 const ASSET_CDN_BASE_URL =
   'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20200708.002/office-ui-fabric-react-assets/foldericons';

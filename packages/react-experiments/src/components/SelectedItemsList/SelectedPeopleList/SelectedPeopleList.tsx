@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { SelectedItemsList } from '../SelectedItemsList';
 import { SelectedPersona } from './Items/SelectedPersona';
-import { ISelectedItemsListProps, ISelectedItemsList, BaseSelectedItem } from '../SelectedItemsList.types';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import type { ISelectedItemsListProps, ISelectedItemsList, BaseSelectedItem } from '../SelectedItemsList.types';
+import type { IPersonaProps } from '@fluentui/react/lib/Persona';
 
 export type ISelectedPeopleListProps<
   TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps

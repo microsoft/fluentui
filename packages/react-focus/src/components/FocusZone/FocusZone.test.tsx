@@ -6,8 +6,9 @@ import { getCode, EnterKey } from '@fluentui/keyboard-key';
 import { setRTL, KeyCodes } from '@fluentui/utilities';
 import { resetIds } from '@fluentui/utilities';
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 import { isConformant } from '../../common/isConformant';
+import type { IFocusZone } from './FocusZone.types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

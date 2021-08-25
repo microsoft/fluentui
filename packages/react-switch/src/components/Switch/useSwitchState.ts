@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { SwitchSlots, SwitchState, SwitchCommon } from './Switch.types';
+import type { SwitchSlots, SwitchState, SwitchCommon } from './Switch.types';
 
 export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | keyof SwitchSlots | 'as' | 'ref'>) => {
   const { defaultChecked = false, checked, disabled = false, onChange } = state;

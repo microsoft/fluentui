@@ -1,6 +1,6 @@
-import { IFontWeight, IRawStyle } from '@fluentui/merge-styles';
-import { IFontStyles } from '../types/IFontStyles';
 import { FontSizes, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './FluentFonts';
+import type { IFontWeight, IRawStyle } from '@fluentui/merge-styles';
+import type { IFontStyles } from '../types/IFontStyles';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
 const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;

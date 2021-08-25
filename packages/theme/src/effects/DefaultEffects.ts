@@ -1,5 +1,5 @@
-import { IEffects } from '../types/index';
 import { Depths } from './FluentDepths';
+import type { IEffects } from '../types/index';
 
 export const DefaultEffects: IEffects = {
   elevation4: Depths.depth4,

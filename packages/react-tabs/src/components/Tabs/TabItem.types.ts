@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IKeytipProps } from '@fluentui/react';
-import { IButtonProps } from '@fluentui/react/lib/Button';
-import { IRefObject, IRenderFunction } from '@fluentui/utilities';
+import type { IKeytipProps } from '@fluentui/react';
+import type { IButtonProps } from '@fluentui/react/lib/Button';
+import type { IRefObject, IRenderFunction } from '@fluentui/utilities';
 
 /**
  * {@docCategory Tabs}

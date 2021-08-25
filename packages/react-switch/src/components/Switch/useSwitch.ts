@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 import { useSwitchState } from './useSwitchState';
+import type { SwitchSlots, SwitchProps, SwitchState } from './Switch.types';
 
 /**
  * Array of all shorthand properties listed in switchShorthandProps

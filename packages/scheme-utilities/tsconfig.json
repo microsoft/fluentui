@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "isolatedModules": true
   },
   "include": ["src"]
 }
