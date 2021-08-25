@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 23 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.147](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.147)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.146..@fluentui/react-tabs_v1.0.0-beta.147)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.2 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+- Bump @fluentui/utilities to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+- Bump @fluentui/react-hooks to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+- Bump @fluentui/style-utilities to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [1.0.0-beta.146](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.146)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.145..@fluentui/react-tabs_v1.0.0-beta.146)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
 
 ## [1.0.0-beta.145](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.145)
 
