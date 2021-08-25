@@ -60,11 +60,11 @@ exports[`Slider renders Slider correctly 1`] = `
 <div
   className=""
   id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
 >
   <div
     className=""
-    onKeyDown={[Function]}
-    onPointerDown={[Function]}
   >
     <div
       className=""
@@ -119,11 +119,11 @@ Array [
   <div
     className=""
     id="slider-1"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
   >
     <div
       className=""
-      onKeyDown={[Function]}
-      onPointerDown={[Function]}
     >
       <div
         className=""
@@ -174,11 +174,11 @@ Array [
   <div
     className=""
     id="slider-2"
+    onKeyDown={[Function]}
+    onPointerDown={[Function]}
   >
     <div
       className=""
-      onKeyDown={[Function]}
-      onPointerDown={[Function]}
     >
       <div
         className=""
@@ -233,11 +233,11 @@ exports[`Slider renders vertical Slider correctly 1`] = `
 <div
   className=""
   id="slider-1"
+  onKeyDown={[Function]}
+  onPointerDown={[Function]}
 >
   <div
     className=""
-    onKeyDown={[Function]}
-    onPointerDown={[Function]}
   >
     <div
       className=""

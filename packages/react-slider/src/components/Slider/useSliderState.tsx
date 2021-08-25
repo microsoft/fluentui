@@ -55,7 +55,6 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
 
 export const useSliderState = (state: SliderState) => {
   const {
-    as = 'div',
     value,
     defaultValue = 0,
     min = 0,
@@ -274,13 +273,10 @@ export const useSliderState = (state: SliderState) => {
       };
 
   // Root props
-  state.as = as;
   state.id = id;
-
-  // Slider Wrapper
   if (!disabled) {
-    state.sliderWrapper.onPointerDown = onPointerDown;
-    state.sliderWrapper.onKeyDown = onKeyDown;
+    state.onPointerDown = onPointerDown;
+    state.onKeyDown = onKeyDown;
   }
 
   // Track Props
