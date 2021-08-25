@@ -45,22 +45,22 @@ describe('Slider', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('renders (horizontal) Slider with origin at (min) correctly', () => {
+  it('renders (horizontal) Slider with (origin at min) correctly', () => {
     const component = create(<Slider defaultValue={5} origin={0} min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('renders (vertical) Slider with origin at (min) correctly', () => {
+  it('renders (vertical) Slider with (origin at min) correctly', () => {
     const component = create(<Slider defaultValue={5} origin={0} vertical min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('renders (horizontal) Slider with origin at (max) correctly', () => {
+  it('renders (horizontal) Slider with (origin at max) correctly', () => {
     const component = create(<Slider defaultValue={5} origin={10} min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('renders (vertical) Slider with origin at (max) correctly', () => {
+  it('renders (vertical) Slider with (origin at max) correctly', () => {
     const component = create(<Slider defaultValue={5} origin={10} vertical min={0} max={10} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
