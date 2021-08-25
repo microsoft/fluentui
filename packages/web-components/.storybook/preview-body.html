@@ -1,2 +1,12 @@
-<!-- <fluent-switch>RTL</fluent-switch>
-<fluent-switch>Light mode</fluent-switch> -->
+<div id="switches-container">
+  <fluent-badge appearance="lightweight">Direction:</fluent-badge>
+  <fluent-switch id="ltr-switch">
+    <span slot="checked-message">RTL</span>
+    <span slot="unchecked-message">LTR</span>
+  </fluent-switch>
+  <fluent-badge appearance="lightweight">Light/Dark mode:</fluent-badge>
+  <fluent-switch id="luminance-switch">
+    <span slot="checked-message">Dark</span>
+    <span slot="unchecked-message">Light</span>
+  </fluent-switch>
+</div>

@@ -31,7 +31,7 @@ export const Button = ButtonTemplate.bind({});
 Button.args = {
   label: 'Button',
   disabled: false,
-  appearance: 'neutral',
+  appearance: 'accent',
 };
 
 const example = `
