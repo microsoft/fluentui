@@ -1,5 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SliderState } from './Slider.types';
 
 const thumbClassName = 'ms-Slider-thumb';
@@ -252,6 +253,14 @@ const useThumbStyles = makeStyles({
   horizontal: theme => ({
     top: '50%',
   }),
+
+  ltr: theme => ({
+    transform: 'translate(-50%, -50%)',
+  }),
+
+  rtl: theme => ({
+    transform: 'translate(50%, -50%)',
+  }),
 });
 
 /**
@@ -277,6 +286,7 @@ const useActiveRailStyles = makeStyles({
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
+  const { dir } = useFluent();
   const rootStyles = useRootStyles();
   const sliderWrapperStyles = useSliderWrapper();
   const railStyles = useRailStyles();
@@ -332,6 +342,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.thumb.className = mergeClasses(
     thumbClassName,
     thumbStyles.thumb,
+    dir === 'ltr' ? thumbStyles.ltr : thumbStyles.rtl,
     !state.vertical && thumbStyles.horizontal,
     state.disabled ? trackStyles.disabled : trackStyles.enabled,
     state.thumb.className,

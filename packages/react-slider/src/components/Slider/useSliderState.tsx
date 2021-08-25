@@ -44,7 +44,7 @@ const findClosestValue = (value: number, divisibleBy: number) => {
 /**
  * Finds and swaps a provided key for it's right to left format.
  */
-const rtlKey = (key: string) => {
+const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
   switch (key) {
     case 'ArrowLeft': {
       return 'ArrowRight';
@@ -96,11 +96,6 @@ export const useSliderState = (state: SliderState) => {
   const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
-
-  /**
-   * If the page is in right to left format the given key will be swapped
-   */
-  const getRTLSafeKey = React.useCallback((key: string) => (dir === 'rtl' ? rtlKey(key) : key), [dir]);
 
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
@@ -211,25 +206,26 @@ export const useSliderState = (state: SliderState) => {
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      const normalizedKey = getRTLSafeKey(ev.key, dir);
       hideStepAnimation();
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
-        if (ev.key === 'ArrowDown' || ev.key === getRTLSafeKey('ArrowLeft')) {
+        if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
           updatePosition(currentValue! - keyboardStep * 10, ev);
           return;
-        } else if (ev.key === 'ArrowUp' || ev.key === getRTLSafeKey('ArrowRight')) {
+        } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
           updatePosition(currentValue! + keyboardStep * 10, ev);
           return;
         }
-      } else if (ev.key === 'ArrowDown' || ev.key === getRTLSafeKey('ArrowLeft')) {
+      } else if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
         updatePosition(currentValue! - keyboardStep, ev);
         return;
-      } else if (ev.key === 'ArrowUp' || ev.key === getRTLSafeKey('ArrowRight')) {
+      } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
         updatePosition(currentValue! + keyboardStep, ev);
         return;
       } else {
-        switch (ev.key) {
+        switch (normalizedKey) {
           case 'PageDown':
             updatePosition(currentValue! - keyboardStep * 10, ev);
             break;
@@ -245,7 +241,7 @@ export const useSliderState = (state: SliderState) => {
         }
       }
     },
-    [currentValue, getRTLSafeKey, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
   useUnmount(() => {
@@ -266,11 +262,6 @@ export const useSliderState = (state: SliderState) => {
       : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.thumbWrapper.style,
-  };
-
-  const thumbStyles = {
-    transform: dir === 'rtl' ? 'translate(50%, -50%)' : 'translate(-50%, -50%)',
-    ...state.thumb.style,
   };
 
   const trackStyles = {
@@ -310,7 +301,6 @@ export const useSliderState = (state: SliderState) => {
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
-  state.thumb.style = thumbStyles;
   state.thumb['aria-valuemin'] = min;
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
