@@ -41,18 +41,18 @@ const useRootStyles = makeStyles({
   enabled: theme => ({
     ':hover': {
       '& .ms-Slider-thumb': {
-        background: '#106ebe',
+        background: theme.alias.color.neutral.brandBackgroundHover,
       },
       '& .ms-Slider-track': {
-        background: '#106ebe',
+        background: theme.alias.color.neutral.brandBackgroundHover,
       },
     },
     ':active': {
       '& .ms-Slider-thumb': {
-        background: '#005a9e',
+        background: theme.alias.color.neutral.brandBackgroundPressed,
       },
       '& .ms-Slider-track': {
-        background: '#005a9e',
+        background: theme.alias.color.neutral.brandBackgroundPressed,
       },
     },
   }),
@@ -67,8 +67,8 @@ const useRootStyles = makeStyles({
         bottom: '-6px',
         left: '-6px',
         boxSizing: 'border-box',
-        border: `1px solid #242424`,
-        borderRadius: '6px',
+        border: `1px solid ${theme.alias.color.neutral.neutralForeground1}`,
+        borderRadius: theme.global.borderRadius.medium,
       },
     }),
     { selector: 'focus-within' },
@@ -82,8 +82,6 @@ const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
     overflow: 'hidden',
-    touchAction: 'none',
-    // pointerEvents: "none"
   }),
 
   horizontal: theme => ({
@@ -107,17 +105,17 @@ const useSliderWrapper = makeStyles({
 const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
-    borderRadius: '999px',
+    borderRadius: theme.global.borderRadius.xLarge,
     boxSizing: 'border-box',
     pointerEvents: 'none',
   }),
 
   enabled: theme => ({
-    background: '#616161',
+    background: theme.alias.color.neutral.neutralStrokeAccessible,
   }),
 
   disabled: theme => ({
-    background: '#f0f0f0',
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
   }),
 
   horizontal: theme => ({
@@ -164,7 +162,7 @@ const useTrackWrapperStyles = makeStyles({
 const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
-    borderRadius: '999px',
+    borderRadius: theme.global.borderRadius.xLarge,
   }),
 
   horizontal: theme => ({
@@ -182,11 +180,11 @@ const useTrackStyles = makeStyles({
   }),
 
   enabled: theme => ({
-    background: '#106ebe',
+    background: theme.alias.color.neutral.brandBackground,
   }),
 
   disabled: theme => ({
-    background: '#bdbdbd',
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 });
 
@@ -226,9 +224,9 @@ const useThumbStyles = makeStyles({
     right: '0px',
     transform: 'translate(-50%, -50%)',
     outline: 'none',
-    borderRadius: '50%',
+    borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
-    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) #ffffff inset`,
+    boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
 
     ':before': {
       position: 'absolute',
@@ -236,20 +234,20 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: '50%',
+      borderRadius: theme.global.borderRadius.circular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(--slider-thumb-size) * .05) solid #d1d1d1`,
+      border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralStroke1}`,
     },
   }),
 
   enabled: theme => ({
-    background: '#106ebe',
+    background: theme.alias.color.neutral.brandBackground,
   }),
 
   disabled: theme => ({
-    background: '#bdbdbd',
-    border: `calc(var(--slider-thumb-size) * .05) solid "#bdbdbd"`,
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    border: `calc(var(--slider-thumb-size) * .05) solid ${theme.alias.color.neutral.neutralBackgroundDisabled}`,
   }),
 
   horizontal: theme => ({
