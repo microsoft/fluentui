@@ -16532,11 +16532,6 @@ karma@^5.0.4:
     ua-parser-js "0.7.21"
     yargs "^15.3.1"
 
-keyborg@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-0.7.1.tgz#6ee90d616a472e6b028a33b2fcb26f419e203eab"
-  integrity sha512-6qap3S5enGXdpjLQ6Q6bIjmTpewc8Ur+zYWJstinWDHtDe8eF6hqxpC/e7MA8g1TS1yk6sEopokq/ZnFBSLZ7w==
-
 keyborg@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.0.0.tgz#2c1bd78a1d5b9357345f6cd3c1b661c21303f56e"
