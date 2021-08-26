@@ -90,7 +90,7 @@ Here's a summary of the 4 options that are detailed below:
 
 ### Option 4. Add a `status` prop to Avatar
 
-In this case, the `badge` slot would work the same as option 2, but adds a new `status` prop to Avatar:
+In this case, the `badge` slot would work the same as option 3, but adds a new `status` prop to Avatar:
 
 ```jsx
 <Avatar status="away" />
