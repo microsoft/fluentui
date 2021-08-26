@@ -6,7 +6,6 @@ import {
   divProperties,
   getNativeProps,
   shallowCompare,
-  warnDeprecations,
   Async,
   assign,
   classNamesFunction,
@@ -34,7 +33,7 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync } from '@fluentui/react-hooks';
+import { useTarget, usePrevious, useAsync, useWarnings } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -196,6 +195,14 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const hostElement = React.useRef<HTMLDivElement>(null);
   const asyncTracker = useAsync();
 
+  useWarnings({
+    name: COMPONENT_NAME,
+    props,
+    deprecations: {
+      getMenuClassNames: 'styles',
+    },
+  });
+
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
@@ -265,10 +272,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     super(props);
 
     initializeComponentRef(this);
-
-    warnDeprecations(COMPONENT_NAME, props, {
-      getMenuClassNames: 'styles',
-    });
 
     this.state = {
       contextualMenuItems: undefined,
