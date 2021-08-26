@@ -804,6 +804,46 @@ describe('ComboBox', () => {
     });
   });
 
+  it('in multiSelect mode, selectAll selects all options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
+    });
+  });
+
+  it('in multiSelect mode, modifying option selection updates selectAll', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+      // un-check one option
+      options.at(1).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3']);
+
+      // re-check option
+      options.at(1).simulate('change');
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3', '1', 'selectAll']);
+    });
+  });
+
   it('invokes optional onItemClick callback on option select', () => {
     const onItemClickMock = jest.fn();
     safeMount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, wrapper => {
