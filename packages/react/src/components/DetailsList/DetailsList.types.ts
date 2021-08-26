@@ -339,7 +339,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   role?: string;
 
   /**
-   * Properties to pass through to the focus.
+   * Properties to pass through to the FocusZone.
    */
   focusZoneProps?: IFocusZoneProps;
 }
