@@ -34,7 +34,7 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious } from '@fluentui/react-hooks';
+import { useTarget, usePrevious, useAsync } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -194,6 +194,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 >((propsWithoutDefaults, forwardedRef) => {
   const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
   const hostElement = React.useRef<HTMLDivElement>(null);
+  const asyncTracker = useAsync();
 
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
@@ -219,6 +220,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         shouldUpdateFocusOnMouseEvent,
         gotMouseMove,
         onMenuFocusCapture,
+        asyncTracker,
       }}
       responsiveMode={responsiveMode}
     />
@@ -240,11 +242,11 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     openSubMenu(submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean): void;
     closeSubMenu(): void;
     onMenuFocusCapture(): void;
+    asyncTracker: Async;
   };
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
-  private _async: Async;
   private _id: string;
   private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
@@ -262,7 +264,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   constructor(props: IContextualMenuInternalProps) {
     super(props);
 
-    this._async = new Async(this);
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
@@ -325,7 +326,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    this._async.dispose();
     this._mounted = false;
   }
 
@@ -1016,13 +1016,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
    */
   private _onScroll = (): void => {
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
-      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this.props.hoisted.asyncTracker.clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => {
+    this._scrollIdleTimeoutId = this.props.hoisted.asyncTracker.setTimeout(() => {
       this._isScrollIdle = true;
     }, NavigationIdleDelay);
   };
@@ -1069,7 +1069,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
 
     if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
+      this.props.hoisted.asyncTracker.clearTimeout(this._enterTimerId);
       this._enterTimerId = undefined;
     }
 
@@ -1110,7 +1110,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
 
     if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
+      this.props.hoisted.asyncTracker.clearTimeout(this._enterTimerId);
       this._enterTimerId = undefined;
     }
 
@@ -1123,13 +1123,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
       ev.stopPropagation();
-      this._enterTimerId = this._async.setTimeout(() => {
+      this._enterTimerId = this.props.hoisted.asyncTracker.setTimeout(() => {
         targetElement.focus();
         openSubMenu(item, targetElement, true);
         this._enterTimerId = undefined;
       }, timeoutDuration);
     } else {
-      this._enterTimerId = this._async.setTimeout(() => {
+      this._enterTimerId = this.props.hoisted.asyncTracker.setTimeout(() => {
         this._onSubMenuDismiss(ev);
         targetElement.focus();
         this._enterTimerId = undefined;
@@ -1228,7 +1228,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   // do new upcoming behavior
   private _cancelSubMenuTimer = () => {
     if (this._enterTimerId !== undefined) {
-      this._async.clearTimeout(this._enterTimerId);
+      this.props.hoisted.asyncTracker.clearTimeout(this._enterTimerId);
       this._enterTimerId = undefined;
     }
   };
