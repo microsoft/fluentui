@@ -11,7 +11,7 @@
 // uses that to determine which files to load for the rest of the site.
 //
 import { BUNDLE_NAME, MANIFEST_NAME_FORMAT } from './constants';
-import type { SiteGlobals, ManifestVariant } from './types';
+import { SiteGlobals, ManifestVariant } from './types';
 
 declare const window: Window & SiteGlobals;
 
