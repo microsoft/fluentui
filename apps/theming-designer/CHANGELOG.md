@@ -1,8 +1,17 @@
 # Change Log - theming-designer
 
-This log was last generated on Mon, 23 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v1.0.0..theming-designer_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.1.5 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v1.0.0)
 

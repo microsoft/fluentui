@@ -2,6 +2,41 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.67",
+      "version": "9.0.0-alpha.67",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.68",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.40",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.66",
       "version": "9.0.0-alpha.66",

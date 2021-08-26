@@ -2,6 +2,44 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.30",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Reverting to compat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0d31d8113e15846d88a40c034bebcb39b12f2382",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

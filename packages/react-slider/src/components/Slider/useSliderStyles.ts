@@ -222,11 +222,11 @@ const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    transform: 'translate(-50%, -50%)',
     outline: 'none',
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    transform: 'translate(-50%, -50%)',
 
     ':before': {
       position: 'absolute',

@@ -2,6 +2,21 @@
   "name": "@fluentui/jest-serializer-merge-styles",
   "entries": [
     {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/jest-serializer-merge-styles_v8.0.10",
+      "version": "8.0.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.1.5",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/jest-serializer-merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/jest-serializer-merge-styles_v8.0.9",
       "version": "8.0.9",
