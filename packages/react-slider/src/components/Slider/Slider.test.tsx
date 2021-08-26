@@ -209,6 +209,36 @@ describe('Slider', () => {
       expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
     });
 
+    it('correctly calculates marks for (each step)', () => {
+      const { container } = render(
+        <Slider step={2} max={10} marks={true} marksWrapper={{ className: 'test-class' }} />,
+      );
+      const sliderWrapper = container.querySelector('.test-class');
+      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 20% 20% 20% 20% 20%');
+    });
+
+    it('correctly calculates marks for (custom values)', () => {
+      const { container } = render(
+        <Slider step={2} max={10} marks={[1, 4, 7, 9]} marksWrapper={{ className: 'test-class' }} />,
+      );
+      const sliderWrapper = container.querySelector('.test-class');
+      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 10% 30% 30% 20%');
+    });
+
+    it('correctly calculates marks position at a (single custom value)', () => {
+      const { container } = render(<Slider step={2} max={10} marks={[4]} marksWrapper={{ className: 'test-class' }} />);
+      const sliderWrapper = container.querySelector('.test-class');
+      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 40%');
+    });
+
+    it('correctly defines the (first and last) marks', () => {
+      const { container } = render(<Slider max={10} marks={[0, 10]} marksWrapper={{ className: 'test-class' }} />);
+      const sliderWrapper = container.querySelector('.test-class');
+      expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 100%');
+      expect(container.querySelector('.firstMark')).toBeTruthy();
+      expect(container.querySelector('.lastMark')).toBeTruthy;
+    });
+
     it('correctly calculates the origin (border-radius) when given (min) as the origin', () => {
       const { container } = render(<Slider origin={0} min={0} vertical />);
       const sliderTrack = container.querySelector('.ms-Slider-track');
