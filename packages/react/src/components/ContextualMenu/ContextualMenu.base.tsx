@@ -847,7 +847,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // Take note if we are processing an alt (option) or meta (command) keydown.
     // See comment in _shouldHandleKeyUp for reasoning.
-    this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
+    this._lastKeyDownWasAltOrMeta = _isAltOrMeta(ev);
 
     // On Mac, pressing escape dismisses all levels of native context menus
     // eslint-disable-next-line deprecation/deprecation
@@ -881,18 +881,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
    * closing any open context menus. There is not a similar behavior on Macs.
    */
   private _shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
+    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && _isAltOrMeta(ev);
     this._lastKeyDownWasAltOrMeta = false;
     return !!keyPressIsAltOrMetaAlone && !(isIOS() || isMac());
   };
-
-  /**
-   * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
-   */
-  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
-    // eslint-disable-next-line deprecation/deprecation
-    return ev.which === KeyCodes.alt || ev.key === 'Meta';
-  }
 
   /**
    * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
@@ -1258,4 +1250,12 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
     this._cancelSubMenuTimer();
   };
+}
+
+/**
+ * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
+ */
+function _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  // eslint-disable-next-line deprecation/deprecation
+  return ev.which === KeyCodes.alt || ev.key === 'Meta';
 }
