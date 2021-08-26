@@ -25,7 +25,7 @@ import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import { Label } from '../../Label';
-import { SelectableOptionMenuItemType, SelectAllState, getAllSelectedOptions } from '../../SelectableOption';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IAutofill } from '../../Autofill';

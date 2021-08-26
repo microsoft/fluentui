@@ -9317,7 +9317,9 @@ enum SelectableOptionMenuItemType {
     // (undocumented)
     Header = 2,
     // (undocumented)
-    Normal = 0
+    Normal = 0,
+    // (undocumented)
+    SelectAll = 3
 }
 export { SelectableOptionMenuItemType as DropdownMenuItemType }
 export { SelectableOptionMenuItemType }
