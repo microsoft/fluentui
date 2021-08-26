@@ -1,49 +1,29 @@
-const onlySpace = /^\s+$/g;
-const spaceBetforeTagClose = /\s+(>)/g;
-const spaceBetweenTags = /(>)\s+(<)/g;
-const spaceBetweenAttrs = /(["'\w])(?!\s*>)\s+/g;
-const openEnded = /(?:[^="'\w])?(["'\w])\s*$/g;
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef */
 
+/**
+ * Reduces extra spaces in HTML tagged templates.
+ *
+ * @param {string} data - the fragment value
+ * @returns string
+ */
 export function transformHTMLFragment(data) {
-  // if the chunk is only space, collapse and return it
-  if (data.match(onlySpace)) {
-    return data.replace(onlySpace, ' ');
-  }
-
-  // remove space before tag close
-  data = data.replace(spaceBetforeTagClose, '$1');
-
-  // remove space between tags
-  data = data.replace(spaceBetweenTags, '$1$2');
-
-  // remove space between attributes
-  data = data.replace(spaceBetweenAttrs, '$1 ');
-
-  if (data.match(openEnded)) {
-    return data.trimStart();
-  }
-
-  return data.trim();
+  data = data.replace(/\s*([<>])\s*/g, '$1'); // remove spaces before and after angle brackets
+  return data.replace(/\s{2,}/g, ' '); // Collapse all sequences to 1 space
 }
 
-const newlines = /\n/g;
-const separators = /\s*([\{\};])\s*/g;
-const lastProp = /;\s*(\})/g;
-const extraSpaces = /\s\s+/g;
-const endingSpaces = / ?\s+$/g;
-
+/**
+ * Reduces extra spaces in CSS tagged templates.
+ *
+ * Breakdown of this regex:
+ *   (?:\s*\/\*(?:.|\s)+?\*\/\s*)  Remove comments (non-capturing)
+ *   (?:;)\s+(?=\})  Remove semicolons and spaces followed by property list end (non-capturing)
+ *   \s+(?=\{)  Remove spaces before property list start (non-capturing)
+ *   (?<=:)\s+  Remove spaces after property declarations (non-capturing)
+ *   \s*([{};,])\s*  Remove extra spaces before and after braces, semicolons, and commas (captures)
+ *
+ * @param {string} data - the fragment value
+ * @returns string
+ */
 export function transformCSSFragment(data) {
-  // newlines
-  data = data.replace(newlines, '');
-
-  // Remove extra space, but not too much
-  data = data.replace(separators, '$1');
-
-  // Remove semicolons followed by property list end
-  data = data.replace(lastProp, '$1');
-
-  // space might be between property values or between selectors
-  data = data.replace(endingSpaces, ' ');
-
-  return data.replace(extraSpaces, ' ');
+  return data.replace(/(?:\s*\/\*(?:.|\s)+?\*\/\s*)|(?:;)\s+(?=\})|\s+(?=\{)|(?<=:)\s+|\s*([{};,])\s*/g, '$1');
 }
