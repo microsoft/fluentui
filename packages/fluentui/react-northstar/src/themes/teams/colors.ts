@@ -205,6 +205,11 @@ export const createColorScheme = (customValues = {}) => {
     borderPressed: undefined,
     shadowPressed: undefined,
 
+    shadowAmbient: undefined,
+    shadowAmbientDarker: undefined,
+    shadowKey: undefined,
+    shadowKeyDarker: undefined,
+
     foregroundDisabled: undefined,
     backgroundDisabled: undefined,
     borderDisabled: undefined,
