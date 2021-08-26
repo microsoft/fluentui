@@ -39,6 +39,7 @@ const useRootStyles = makeStyles({
   }),
 
   enabled: theme => ({
+    cursor: 'grab',
     ':hover': {
       '& .ms-Slider-thumb': {
         background: theme.alias.color.neutral.brandBackgroundHover,
@@ -48,6 +49,7 @@ const useRootStyles = makeStyles({
       },
     },
     ':active': {
+      cursor: 'grabbing',
       '& .ms-Slider-thumb': {
         background: theme.alias.color.neutral.brandBackgroundPressed,
       },
@@ -55,6 +57,10 @@ const useRootStyles = makeStyles({
         background: theme.alias.color.neutral.brandBackgroundPressed,
       },
     },
+  }),
+
+  disabled: theme => ({
+    cursor: 'not-allowed',
   }),
 
   focusIndicator: createFocusIndicatorStyleRule(
@@ -286,17 +292,7 @@ const useInputStyles = makeStyles({
     width: '100%',
     height: '100%',
     touchAction: 'none',
-  },
-
-  enabled: {
-    cursor: 'grab',
-    ':active': {
-      cursor: 'grabbing',
-    },
-  },
-
-  disabled: {
-    cursor: 'not-allowed',
+    pointerEvents: 'none',
   },
 });
 
@@ -319,7 +315,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     // TODO: Remove once compat is reverted
     rootStyles[state.size || 'medium'],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
-    !state.disabled && rootStyles.enabled,
+    state.disabled ? rootStyles.disabled : rootStyles.enabled,
     rootStyles.focusIndicator,
     state.className,
   );
@@ -371,11 +367,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.activeRail.className,
   );
 
-  state.input.className = mergeClasses(
-    inputStyles.input,
-    state.disabled ? inputStyles.disabled : inputStyles.enabled,
-    state.input.className,
-  );
+  state.input.className = mergeClasses(inputStyles.input, state.input.className);
 
   return state;
 };
