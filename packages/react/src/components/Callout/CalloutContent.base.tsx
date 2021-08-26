@@ -10,12 +10,7 @@ import {
   shallowCompare,
   getPropsWithDefaults,
 } from '../../Utilities';
-import {
-  positionCallout,
-  RectangleEdge,
-  positionCard,
-  getBoundsFromTargetWindow,
-} from '../../Positioning';
+import { positionCallout, RectangleEdge, positionCard, getBoundsFromTargetWindow } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
