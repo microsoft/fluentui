@@ -141,4 +141,18 @@ describe('Switch', () => {
       expect(document.activeElement).toEqual(document.body);
     });
   });
+
+  describe('Accessibility Tests', () => {
+    it('renders the input slot (as input)', () => {
+      render(<Switch input={{ className: 'test' }} />);
+      const inputElement = screen.getByRole('checkbox');
+      expect(inputElement.tagName).toEqual('INPUT');
+    });
+
+    it('provides the input slot with a type of (checkbox)', () => {
+      const { container } = render(<Switch input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.getAttribute('type')).toEqual('checkbox');
+    });
+  });
 });

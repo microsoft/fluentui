@@ -160,7 +160,7 @@ const useInputStyle = makeStyles({
   },
 
   disabled: {
-    cursor: 'default',
+    cursor: 'not-allowed',
   },
 });
 
