@@ -1001,9 +1001,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         changedOptions[index] = option;
 
         // handle select all updates (only one select all option is supported)
-        const selectAllOption = changedOptions.filter(
-          option => option.itemType === SelectableOptionMenuItemType.SelectAll,
-        )[0];
+        const selectAllOption = changedOptions.filter(o => o.itemType === SelectableOptionMenuItemType.SelectAll)[0];
         if (selectAllOption) {
           // start with selectAll index not included in selected indices
           const selectAllIndex = changedOptions.indexOf(selectAllOption);
@@ -1061,7 +1059,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // update state if not controlled
     if (!selectedKey && selectedKey !== null) {
       // update both selected indices and all options' selected prop
-      const selectedIndices = pendingState ? currentOptions.map((option, index) => index) : [];
+      const selectedIndices = pendingState ? currentOptions.map((option, i) => i) : [];
       const changedOptions = currentOptions.map(option => ({ ...option, selected: pendingState }));
 
       hoisted.setSelectedIndices(selectedIndices);
