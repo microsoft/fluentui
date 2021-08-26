@@ -188,7 +188,13 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
   React.useLayoutEffect(() => {
     if (!hidden) {
       previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
-    } else {
+    } else if (previousActiveElement.current) {
+      tryFocusPreviousActiveElement({
+        originalElement: previousActiveElement.current,
+        containsFocus: true,
+        documentContainsFocus: getDocument()?.hasFocus() || false,
+      });
+
       previousActiveElement.current = undefined;
     }
   }, [hidden]);
@@ -308,15 +314,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
 
     return !shallowCompare(this.props, newProps);
-  }
-
-  public getSnapshotBeforeUpdate(prevProps: IContextualMenuInternalProps): null {
-    if (this._isHidden(prevProps) !== this._isHidden(this.props)) {
-      if (this._isHidden(this.props)) {
-        this._onMenuClosed();
-      }
-    }
-    return null;
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
@@ -504,23 +501,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     } else {
       return null;
     }
-  }
-
-  private _onMenuClosed() {
-    this.props.hoisted.tryFocusPreviousActiveElement?.({
-      originalElement: this.props.hoisted.previousActiveElementRef.current,
-      containsFocus: true,
-      documentContainsFocus: getDocument()?.hasFocus() || false,
-    });
-  }
-
-  /**
-   * Return whether the contextual menu is hidden.
-   * Undefined value for hidden is equivalent to hidden being false.
-   * @param props - Props for the component
-   */
-  private _isHidden(props: IContextualMenuProps) {
-    return !!props.hidden;
   }
 
   /**
