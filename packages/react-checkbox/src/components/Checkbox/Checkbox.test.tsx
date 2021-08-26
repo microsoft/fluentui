@@ -166,9 +166,9 @@ describe('Checkbox', () => {
 
   describe('Accessibility Tests', () => {
     it('renders the input slot (as input)', () => {
-      render(<Checkbox input={{ className: 'test' }} />);
-      const inputElement = screen.getByRole('checkbox');
-      expect(inputElement.tagName).toEqual('INPUT');
+      const { container } = render(<Checkbox input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.tagName).toEqual('INPUT');
     });
 
     it('provides the input slot with a type of (checkbox)', () => {
