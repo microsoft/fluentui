@@ -1,34 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch renders a basic Switch 1`] = `
+exports[`Switch Snapshot Tests renders a basic Switch (checked) 1`] = `
 <div>
   <div
-    class="ms-Switch-root"
-    id="switch-1"
-  >
-    <div
-      class=""
-    >
-      <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(0%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        class=""
-        type="checkbox"
-      />
-    </div>
-  </div>
-  <div
     class="ms-Switch-root checked"
-    id="switch-2"
+    id="switch-1"
   >
     <div
       class=""
@@ -54,9 +30,97 @@ exports[`Switch renders a basic Switch 1`] = `
 </div>
 `;
 
-exports[`Switch renders a disabled Switch 1`] = `
+exports[`Switch Snapshot Tests renders a basic Switch (unchecked) 1`] = `
 <div>
   <div
+    class="ms-Switch-root"
+    id="switch-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+        style="transform: translate(0%);"
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        class=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Switch Snapshot Tests renders a disabled Switch (checked) 1`] = `
+<div>
+  <div
+    class="ms-Switch-root checked"
+    id="switch-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+        style="transform: translate(100%);"
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        checked=""
+        class=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Switch Snapshot Tests renders a disabled Switch (unchecked) 1`] = `
+<div>
+  <div
+    class="ms-Switch-root"
+    id="switch-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ms-Switch-track"
+      />
+      <div
+        class=""
+        style="transform: translate(0%);"
+      >
+        <div
+          class="ms-Switch-thumb"
+        />
+      </div>
+      <input
+        class=""
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Switch Snapshot Tests renders a disabled labeled Switch 1`] = `
+<div>
+  <label
     class="ms-Switch-root"
     id="switch-1"
   >
@@ -80,37 +144,12 @@ exports[`Switch renders a disabled Switch 1`] = `
         type="checkbox"
       />
     </div>
-  </div>
-  <div
-    class="ms-Switch-root checked"
-    id="switch-2"
-  >
-    <div
-      class=""
-    >
-      <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(100%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        checked=""
-        class=""
-        disabled=""
-        type="checkbox"
-      />
-    </div>
-  </div>
+    Hello
+  </label>
 </div>
 `;
 
-exports[`Switch renders a labeled Switch 1`] = `
+exports[`Switch Snapshot Tests renders a labeled Switch 1`] = `
 <div>
   <label
     class="ms-Switch-root"
