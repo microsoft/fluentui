@@ -53,14 +53,38 @@ describe('Slider', () => {
 
   it('applies the (defaultValue) prop', () => {
     const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider defaultValue={10} min={0} max={100} input={{ ref: inputRef }} />);
+    render(<Slider defaultValue={10} input={{ ref: inputRef }} />);
     expect(inputRef.current?.value).toEqual('10');
   });
 
   it('applies the (value) prop', () => {
     const inputRef = React.createRef<HTMLInputElement>();
-    render(<Slider value={10} min={0} max={100} input={{ ref: inputRef }} />);
+    render(<Slider value={10} input={{ ref: inputRef }} />);
     expect(inputRef.current?.value).toEqual('10');
+  });
+
+  it('applies the (disabled) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider disabled={true} input={{ ref: inputRef }} />);
+    expect(inputRef.current?.disabled).toEqual(true);
+  });
+
+  it('applies the (min) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider min={11} disabled={true} input={{ ref: inputRef }} />);
+    expect(inputRef.current?.min).toEqual('11');
+  });
+
+  it('applies the (max) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider max={11} disabled={true} input={{ ref: inputRef }} />);
+    expect(inputRef.current?.max).toEqual('11');
+  });
+
+  it('applies the (step) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    render(<Slider step={11} disabled={true} input={{ ref: inputRef }} />);
+    expect(inputRef.current?.step).toEqual('11');
   });
 
   it('clamps an initial (defaultValue) that is out of bounds', () => {
