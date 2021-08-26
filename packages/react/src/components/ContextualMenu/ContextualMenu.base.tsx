@@ -183,6 +183,19 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
+function usePreviousActiveElement({ hidden }: IContextualMenuProps, targetWindow: Window | undefined) {
+  const previousActiveElement = React.useRef<undefined | HTMLElement>();
+  React.useLayoutEffect(() => {
+    if (!hidden) {
+      previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
+    } else {
+      previousActiveElement.current = undefined;
+    }
+  }, [hidden]);
+
+  return previousActiveElement;
+}
+
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
   HTMLDivElement,
   IContextualMenuProps
@@ -202,6 +215,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   });
 
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
+  const previousActiveElementRef = usePreviousActiveElement(props, targetWindow);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
@@ -228,6 +242,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         asyncTracker,
         subMenuId,
         menuId,
+        previousActiveElementRef,
       }}
       responsiveMode={responsiveMode}
     />
@@ -252,11 +267,11 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     asyncTracker: Async;
     subMenuId: string;
     menuId: string;
+    previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
   };
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
-  private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
   private _isScrollIdle: boolean = false;
   private _scrollIdleTimeoutId: number | undefined;
@@ -287,15 +302,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   }
 
   public getSnapshotBeforeUpdate(prevProps: IContextualMenuInternalProps): null {
-    const { hoisted } = this.props;
-
     if (this._isHidden(prevProps) !== this._isHidden(this.props)) {
       if (this._isHidden(this.props)) {
         this._onMenuClosed();
-      } else {
-        this._previousActiveElement = hoisted.targetWindow
-          ? (hoisted.targetWindow.document.activeElement as HTMLElement)
-          : undefined;
       }
     }
     return null;
@@ -303,14 +312,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount(): void {
-    const { hidden, hoisted } = this.props;
-
-    if (!hidden) {
-      this._previousActiveElement = hoisted.targetWindow
-        ? (hoisted.targetWindow.document.activeElement as HTMLElement)
-        : undefined;
-    }
-
     this._mounted = true;
   }
 
@@ -499,17 +500,17 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
     if (this.props.onRestoreFocus) {
       this.props.onRestoreFocus(options);
-    } else if (options && options.documentContainsFocus && this._previousActiveElement) {
+    } else if (options && options.documentContainsFocus) {
       // Make sure that the focus method actually exists
       // In some cases the object might exist but not be a real element.
       // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-      this._previousActiveElement.focus?.();
+      this.props.hoisted.previousActiveElementRef.current?.focus?.();
     }
   };
 
   private _onMenuClosed() {
     this._tryFocusPreviousActiveElement?.({
-      originalElement: this._previousActiveElement,
+      originalElement: this.props.hoisted.previousActiveElementRef.current,
       containsFocus: true,
       documentContainsFocus: getDocument()?.hasFocus() || false,
     });
