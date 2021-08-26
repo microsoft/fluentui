@@ -4,11 +4,13 @@
 
 ```ts
 
+import { EvalRule } from '@linaria/babel-preset';
+import { Evaluator } from '@linaria/babel-preset';
 import type { JSONSchema7 } from 'json-schema';
 import { NodePath } from '@babel/core';
 import { PluginObj } from '@babel/core';
 import { PluginPass } from '@babel/core';
-import { TransformOptions } from '@babel/core';
+import type { TransformOptions } from '@babel/core';
 import { types } from '@babel/core';
 
 // @public (undocumented)
@@ -18,10 +20,15 @@ export type BabelPluginOptions = {
         importName: string;
     }[];
     babelOptions?: Pick<TransformOptions, 'plugins' | 'presets'>;
+    evaluationRules?: EvalRule[];
 };
 
 // @public (undocumented)
 export const configSchema: JSONSchema7;
+
+export { EvalRule }
+
+export { Evaluator }
 
 // Warning: (ae-forgotten-export) The symbol "BabelPluginState" needs to be exported by the entry point index.d.ts
 //

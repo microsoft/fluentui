@@ -37,5 +37,6 @@ module.exports = {
     '<rootDir>/packages/react-components',
     '<rootDir>/packages/react-storybook-addon',
     '<rootDir>/packages/react-switch',
+    '<rootDir>/packages/react-conformance-make-styles',
   ],
 };
