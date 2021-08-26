@@ -55,7 +55,6 @@ const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualM
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
 export interface IContextualMenuState {
-  contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: Element;
   positions?: any;
   slideDirectionalClassName?: string;
@@ -257,7 +256,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
   };
 }
 
-class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
+class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
   private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
   private _isScrollIdle: boolean;
@@ -276,10 +275,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     initializeComponentRef(this);
 
-    this.state = {
-      contextualMenuItems: undefined,
-    };
-
     this._isScrollIdle = true;
   }
 
@@ -297,7 +292,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return false;
     }
 
-    return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
+    return !shallowCompare(this.props, newProps);
   }
 
   public getSnapshotBeforeUpdate(prevProps: IContextualMenuInternalProps): null {
