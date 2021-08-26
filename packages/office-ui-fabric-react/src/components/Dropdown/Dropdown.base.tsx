@@ -287,7 +287,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               ref={this._dropDown}
               id={id}
               tabIndex={disabled ? -1 : 0}
-              role="combobox"
+              role="listbox"
               aria-haspopup="listbox"
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
