@@ -235,6 +235,7 @@ export type TeamsNaturalColors = {
   red: ColorVariants;
   yellow: ColorVariants;
   pink: ColorVariants;
+  shadow: ColorVariants;
 };
 
 export type TeamsTransparentColors = {
