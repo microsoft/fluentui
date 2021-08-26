@@ -11,7 +11,6 @@ import {
   classNamesFunction,
   css,
   getFirstFocusable,
-  getId,
   getLastFocusable,
   getRTL,
   KeyCodes,
@@ -33,7 +32,7 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync, useWarnings } from '@fluentui/react-hooks';
+import { useTarget, usePrevious, useAsync, useWarnings, useId } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -60,7 +59,6 @@ export interface IContextualMenuState {
   contextualMenuTarget?: Element;
   positions?: any;
   slideDirectionalClassName?: string;
-  subMenuId?: string;
   submenuDirection?: DirectionalHint;
 }
 
@@ -194,6 +192,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
   const hostElement = React.useRef<HTMLDivElement>(null);
   const asyncTracker = useAsync();
+  const subMenuId = useId(COMPONENT_NAME, props.id);
+  const menuId = useId(COMPONENT_NAME, props.id);
 
   useWarnings({
     name: COMPONENT_NAME,
@@ -228,6 +228,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         gotMouseMove,
         onMenuFocusCapture,
         asyncTracker,
+        subMenuId,
+        menuId,
       }}
       responsiveMode={responsiveMode}
     />
@@ -250,11 +252,12 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     closeSubMenu(): void;
     onMenuFocusCapture(): void;
     asyncTracker: Async;
+    subMenuId: string;
+    menuId: string;
   };
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
-  private _id: string;
   private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
   private _isScrollIdle: boolean;
@@ -275,10 +278,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     this.state = {
       contextualMenuItems: undefined,
-      subMenuId: getId('ContextualMenu'),
     };
 
-    this._id = props.id || getId('ContextualMenu');
     this._isScrollIdle = true;
   }
 
@@ -713,7 +714,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       if (typeof sectionProps.title === 'string') {
         // Since title is a user-facing string, it needs to be stripped
         // of whitespace in order to build a valid element ID
-        const id = this._id + sectionProps.title.replace(/\s/g, '');
+        const id = this.props.hoisted.menuId + sectionProps.title.replace(/\s/g, '');
         headerContextualMenuItem = {
           key: `section-${sectionProps.title}-title`,
           itemType: ContextualMenuItemType.Header,
@@ -722,7 +723,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         };
         ariaLabellledby = id;
       } else {
-        const id = sectionProps.title.id || this._id + sectionProps.title.key.replace(/\s/g, '');
+        const id = sectionProps.title.id || this.props.hoisted.menuId + sectionProps.title.key.replace(/\s/g, '');
         headerContextualMenuItem = { ...sectionProps.title, id };
         ariaLabellledby = id;
       }
@@ -1247,7 +1248,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         target: submenuTarget,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
-        id: this.state.subMenuId,
+        id: this.props.hoisted.subMenuId,
         shouldFocusOnMount: true,
         shouldFocusOnContainer: expandedByMouseClick,
         directionalHint: getRTL(this.props.theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
