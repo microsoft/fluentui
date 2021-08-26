@@ -10,6 +10,11 @@ declare module '*.svg' {
   export default svgPath;
 }
 
+/**
+ * Generic typings for Markdown files.
+ */
+declare module '*.md';
+
 // These declarations are meant to represent the parts of Map/WeakMap/Set that exist in IE 11.
 // Therefore, some functionality (such as constructor parameters) is intentionally missing.
 

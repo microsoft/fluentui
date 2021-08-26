@@ -1,6 +1,6 @@
 import { merge } from '@fluentui/utilities';
-import { IFontStyles, PartialTheme, Theme } from './types/index';
 import { getSemanticColors } from './utilities/makeSemanticColors';
+import type { IFontStyles, PartialTheme, Theme } from './types/index';
 
 /**
  * Merge a partial/full theme into a full theme and returns a merged full theme.

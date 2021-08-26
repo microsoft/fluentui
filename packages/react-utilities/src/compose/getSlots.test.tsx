@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
 import { nullRender } from './nullRender';
-import { ComponentState } from './types';
+import type { ComponentState } from './types';
 
 describe('getSlots', () => {
   const Foo = (props: { id?: string }) => <div />;

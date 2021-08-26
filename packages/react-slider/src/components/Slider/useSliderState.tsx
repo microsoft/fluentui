@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useBoolean, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
-import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import type { SliderState } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -40,13 +41,32 @@ const findClosestValue = (value: number, divisibleBy: number) => {
     : upperValue * Math.sign(value);
 };
 
+/**
+ * Finds and swaps a provided key for it's right to left format.
+ */
+const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
+  if (dir === 'rtl') {
+    switch (key) {
+      case 'ArrowLeft': {
+        return 'ArrowRight';
+      }
+
+      case 'ArrowRight': {
+        return 'ArrowLeft';
+      }
+    }
+  }
+
+  return key;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
   return () => element.removeEventListener(eventName, callback);
 };
 
-export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | keyof SliderSlots | 'as' | 'ref'>) => {
+export const useSliderState = (state: SliderState) => {
   const {
     as = 'div',
     value,
@@ -63,6 +83,8 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
+
+  const { dir } = useFluent();
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<number>(value ? value : defaultValue);
@@ -119,16 +141,25 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const sliderSize = vertical ? currentBounds?.height || 0 : currentBounds?.width || 0;
-      const position = vertical ? currentBounds?.bottom || 0 : currentBounds?.left || 0;
+      const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
+      let position;
+
+      if (vertical) {
+        position = currentBounds!.bottom;
+      } else if (dir === 'rtl') {
+        position = currentBounds!.right;
+      } else {
+        position = currentBounds!.left;
+      }
 
       const totalSteps = (max - min) / step;
       const stepLength = sliderSize / totalSteps;
       const thumbPosition = vertical ? ev.clientY : ev.clientX;
-      const distance = vertical ? position - thumbPosition : thumbPosition - position;
+      const distance = dir === 'rtl' || vertical ? position - thumbPosition : thumbPosition - position;
+
       return distance / stepLength;
     },
-    [max, min, step, vertical],
+    [dir, max, min, step, vertical],
   );
 
   const onPointerMove = React.useCallback(
@@ -161,15 +192,13 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
-      if (target.setPointerCapture) {
-        target.setPointerCapture(pointerId);
-      }
+      target.setPointerCapture?.(pointerId);
 
       hideStepAnimation();
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture(pointerId);
+        target.releasePointerCapture?.(pointerId);
       });
 
       onPointerMove(ev);
@@ -179,25 +208,26 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      const normalizedKey = getRTLSafeKey(ev.key, dir);
       hideStepAnimation();
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
-        if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
+        if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
           updatePosition(currentValue! - keyboardStep * 10, ev);
           return;
-        } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
+        } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
           updatePosition(currentValue! + keyboardStep * 10, ev);
           return;
         }
-      } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
+      } else if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
         updatePosition(currentValue! - keyboardStep, ev);
         return;
-      } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
+      } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
         updatePosition(currentValue! + keyboardStep, ev);
         return;
       } else {
-        switch (ev.key) {
+        switch (normalizedKey) {
           case 'PageDown':
             updatePosition(currentValue! - keyboardStep * 10, ev);
             break;
@@ -213,8 +243,26 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
     },
-    [currentValue, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
+
+  const getTrackBorderRadius = () => {
+    if (origin && origin !== (max || min)) {
+      if (vertical) {
+        return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
+      } else {
+        return (dir === 'rtl' ? valuePercent > originPercent : valuePercent < originPercent)
+          ? '99px 0px 0px 99px'
+          : '0px 99px 99px 0px';
+      }
+    }
+    return '99px';
+  };
+
+  useUnmount(() => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
+  });
 
   const valuePercent = getPercent(renderedPosition!, min, max);
 
@@ -223,41 +271,25 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
 
   const originPercent = origin ? getPercent(origin, min, max) : 0;
 
-  const thumbStyles = {
-    transform: vertical ? `translateY(${valuePercent}%)` : `translateX(${valuePercent}%)`,
+  const thumbWrapperStyles = {
+    transform: vertical
+      ? `translateY(${valuePercent}%)`
+      : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
-    ...state.thumb.style,
+    ...state.thumbWrapper.style,
   };
 
-  const trackStyles = vertical
-    ? {
-        top: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-        height: origin
-          ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-          : `${valuePercent}%`,
-        borderRadius:
-          origin && origin !== (max || min)
-            ? `${originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px'}`
-            : '99px',
-        transition: stepAnimation
-          ? `transform ease-in-out ${animationTime}, height ease-in-out ${animationTime}`
-          : 'none',
-        ...state.track.style,
-      }
-    : {
-        left: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-        width: origin ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%` : `${valuePercent}%`,
-        borderRadius:
-          origin && origin !== (max || min)
-            ? `${originPercent > valuePercent ? '99px 0px 0px 99px' : '0px 99px 99px 0px'}`
-            : '99px',
-        transition: stepAnimation
-          ? `transform ease-in-out ${animationTime}, width ease-in-out ${animationTime} ${
-              origin ? ', left ease-in-out ' + animationTime : ''
-            }`
-          : 'none',
-        ...state.track.style,
-      };
+  const trackStyles = {
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']: origin
+      ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+      : `${valuePercent}%`,
+    borderRadius: getTrackBorderRadius(),
+    transition: stepAnimation
+      ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
+      : 'none',
+    ...state.track.style,
+  };
 
   // Root props
   state.as = as;
@@ -271,7 +303,7 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   state.track.style = trackStyles;
 
   // Thumb Wrapper Props
-  state.thumbWrapper.style = thumbStyles;
+  state.thumbWrapper.style = thumbWrapperStyles;
 
   // Thumb Props
   state.thumb.ref = thumbRef;

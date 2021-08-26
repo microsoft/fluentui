@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { InputSlots, InputState } from './Input.types';
+import type { InputSlots, InputState } from './Input.types';
 
 /**
  * Styles for the root slot

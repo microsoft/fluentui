@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-make-styles';
-import { renderText, TextProps, useText, useTextStyles } from '../Text';
+import { renderText, useText, useTextStyles } from '../Text';
+import type { TextProps } from '../Text';
 
 export interface Props extends Omit<TextProps, 'font' | 'size'> {}
 

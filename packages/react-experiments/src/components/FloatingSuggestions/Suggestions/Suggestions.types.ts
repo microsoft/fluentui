@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
-import { ISuggestionItemProps } from './SuggestionsItem.types';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import type { ISuggestionItemProps } from './SuggestionsItem.types';
+import type { IPersonaProps } from '@fluentui/react/lib/Persona';
+import type { IRefObject } from '@fluentui/react/lib/Utilities';
 
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**

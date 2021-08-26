@@ -10,6 +10,7 @@ export const configSchema: JSONSchema7 = {
       type: 'array',
       items: {
         type: 'object',
+        required: ['moduleSource', 'importName'],
         properties: {
           moduleSource: {
             type: 'string',
@@ -28,6 +29,19 @@ export const configSchema: JSONSchema7 = {
         },
         presets: {
           type: 'array',
+        },
+      },
+    },
+    evaluationRules: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['action'],
+        properties: {
+          action: {
+            anyOf: [{}, { type: 'string' }, { const: 'ignore' }],
+          },
+          test: {},
         },
       },
     },

@@ -1,4 +1,4 @@
-import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
+import type { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
 
 export const neutralColorTokens: NeutralColorTokens = {
   neutralForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText

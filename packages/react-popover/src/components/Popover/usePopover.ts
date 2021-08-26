@@ -9,14 +9,14 @@ import {
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   usePopper,
-  PopperVirtualElement,
   createVirtualElementFromClick,
   resolvePositioningShorthand,
   mergeArrowOffset,
 } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
-import { PopoverProps, PopoverState } from './Popover.types';
 import { arrowHeights } from '../PopoverSurface/index';
+import type { PopperVirtualElement } from '@fluentui/react-positioning';
+import type { PopoverProps, PopoverState } from './Popover.types';
 
 /**
  * Names of the shorthand properties in PopoverProps
