@@ -286,7 +286,17 @@ const useInputStyles = makeStyles({
     width: '100%',
     height: '100%',
     touchAction: 'none',
-    pointerEvents: 'none',
+  },
+
+  enabled: {
+    cursor: 'grab',
+    ':active': {
+      cursor: 'grabbing',
+    },
+  },
+
+  disabled: {
+    cursor: 'not-allowed',
   },
 });
 
@@ -361,7 +371,11 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.activeRail.className,
   );
 
-  state.input.className = mergeClasses(inputStyles.input, state.input.className);
+  state.input.className = mergeClasses(
+    inputStyles.input,
+    state.disabled ? inputStyles.disabled : inputStyles.enabled,
+    state.input.className,
+  );
 
   return state;
 };
