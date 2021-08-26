@@ -192,6 +192,18 @@ describe('Slider', () => {
     expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
   });
 
+  it('correctly calculates the origin (border-radius) when given (min) as the origin', () => {
+    const { container } = render(<Slider origin={0} min={0} vertical />);
+    const sliderTrack = container.querySelector('.ms-Slider-track');
+    expect(sliderTrack?.getAttribute('style')).toContain('99px');
+  });
+
+  it('correctly calculates the origin (border-radius) when given (max) as the origin', () => {
+    const { container } = render(<Slider origin={100} max={100} vertical />);
+    const sliderTrack = container.querySelector('.ms-Slider-track');
+    expect(sliderTrack?.getAttribute('style')).toContain('99px');
+  });
+
   it('handles a negative (step) prop', () => {
     const onChange = jest.fn();
 
