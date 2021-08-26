@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(Combobox): add select all functionality",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
