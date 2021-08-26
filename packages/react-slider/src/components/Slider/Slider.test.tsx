@@ -183,13 +183,50 @@ describe('Slider', () => {
       expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
     });
 
+    it('correctly calculates the (horizontal) origin (border-radius)', () => {
+      const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
+
+      const sliderRoot = screen.getByTestId('test');
+      const sliderTrack = container.querySelector('.ms-Slider-track');
+
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(sliderTrack?.getAttribute('style')).toContain('0px 99px 99px 0px');
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+      expect(sliderTrack?.getAttribute('style')).toContain('99px 0px 0px 99px');
+    });
+
+    it('correctly calculates the (vertical) origin (border-radius)', () => {
+      const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
+
+      const sliderRoot = screen.getByTestId('test');
+      const sliderTrack = container.querySelector('.ms-Slider-track');
+
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(sliderTrack?.getAttribute('style')).toContain('0px 0px 99px 99px');
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+      expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
+    });
+
+    it('correctly calculates the origin (border-radius) when given (min) as the origin', () => {
+      const { container } = render(<Slider origin={0} min={0} vertical />);
+      const sliderTrack = container.querySelector('.ms-Slider-track');
+      expect(sliderTrack?.getAttribute('style')).toContain('99px');
+    });
+
+    it('correctly calculates the origin (border-radius) when given (max) as the origin', () => {
+      const { container } = render(<Slider origin={100} max={100} vertical />);
+      const sliderTrack = container.querySelector('.ms-Slider-track');
+      expect(sliderTrack?.getAttribute('style')).toContain('99px');
+    });
+
     it('handles a negative (step) prop', () => {
       const onChange = jest.fn();
 
       render(<Slider value={50} min={0} max={100} step={-3} onChange={onChange} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
-
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(onChange.mock.calls[0][1]).toEqual({ value: 47 });
     });

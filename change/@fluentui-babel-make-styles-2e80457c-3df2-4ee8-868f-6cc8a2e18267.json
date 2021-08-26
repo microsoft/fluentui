@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor: unify babel-make-styles and make-styles-webpack-loader packages build output",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
