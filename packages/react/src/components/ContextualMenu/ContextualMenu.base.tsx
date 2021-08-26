@@ -816,31 +816,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         this.dismiss,
       );
     }
-    if (item.href) {
-      return this._renderAnchorMenuItem(
-        item,
-        classNames,
-        index,
-        focusableElementIndex,
-        totalItemCount,
-        hasCheckmarks,
-        hasIcons,
-      );
-    }
 
-    if (item.split && hasSubmenu(item)) {
-      return this._renderSplitButton(
-        item,
-        classNames,
-        index,
-        focusableElementIndex,
-        totalItemCount,
-        hasCheckmarks,
-        hasIcons,
-      );
-    }
+    const {
+      contextualMenuItemAs,
+      hoisted: { expandedMenuItemKey, openSubMenu },
+    } = this.props;
 
-    return this._renderButtonItem(
+    const commonProps = {
       item,
       classNames,
       index,
@@ -848,6 +830,36 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       totalItemCount,
       hasCheckmarks,
       hasIcons,
+      contextualMenuItemAs,
+      onItemMouseEnter: this._onItemMouseEnterBase,
+      onItemMouseLeave: this._onMouseItemLeave,
+      onItemMouseMove: this._onItemMouseMoveBase,
+      onItemMouseDown: this._onItemMouseDown,
+      executeItemClick: this._executeItemClick,
+      onItemKeyDown: this._onItemKeyDown,
+      expandedMenuItemKey,
+      openSubMenu,
+      dismissSubMenu: this._onSubMenuDismiss,
+      dismissMenu: this.dismiss,
+    } as const;
+
+    if (item.href) {
+      return <ContextualMenuAnchor {...commonProps} onItemClick={this._onAnchorClick} />;
+    }
+
+    if (item.split && hasSubmenu(item)) {
+      return (
+        <ContextualMenuSplitButton
+          {...commonProps}
+          onItemClick={this._onItemClick}
+          onItemClickBase={this._onItemClickBase}
+          onTap={this._onPointerAndTouchEvent}
+        />
+      );
+    }
+
+    return (
+      <ContextualMenuButton {...commonProps} onItemClick={this._onItemClick} onItemClickBase={this._onItemClickBase} />
     );
   }
 
@@ -875,128 +887,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
           {...itemProps}
         />
       </div>
-    );
-  }
-
-  private _renderAnchorMenuItem(
-    item: IContextualMenuItem,
-    // eslint-disable-next-line deprecation/deprecation
-    classNames: IMenuItemClassNames,
-    index: number,
-    focusableElementIndex: number,
-    totalItemCount: number,
-    hasCheckmarks: boolean,
-    hasIcons: boolean,
-  ): React.ReactNode {
-    const {
-      contextualMenuItemAs,
-      hoisted: { expandedMenuItemKey, openSubMenu },
-    } = this.props;
-    return (
-      <ContextualMenuAnchor
-        item={item}
-        classNames={classNames}
-        index={index}
-        focusableElementIndex={focusableElementIndex}
-        totalItemCount={totalItemCount}
-        hasCheckmarks={hasCheckmarks}
-        hasIcons={hasIcons}
-        contextualMenuItemAs={contextualMenuItemAs}
-        onItemMouseEnter={this._onItemMouseEnterBase}
-        onItemMouseLeave={this._onMouseItemLeave}
-        onItemMouseMove={this._onItemMouseMoveBase}
-        onItemMouseDown={this._onItemMouseDown}
-        executeItemClick={this._executeItemClick}
-        onItemClick={this._onAnchorClick}
-        onItemKeyDown={this._onItemKeyDown}
-        expandedMenuItemKey={expandedMenuItemKey}
-        openSubMenu={openSubMenu}
-        dismissSubMenu={this._onSubMenuDismiss}
-        dismissMenu={this.dismiss}
-      />
-    );
-  }
-
-  private _renderButtonItem(
-    item: IContextualMenuItem,
-    // eslint-disable-next-line deprecation/deprecation
-    classNames: IMenuItemClassNames,
-    index: number,
-    focusableElementIndex: number,
-    totalItemCount: number,
-    hasCheckmarks?: boolean,
-    hasIcons?: boolean,
-  ) {
-    const {
-      contextualMenuItemAs,
-      hoisted: { expandedMenuItemKey, openSubMenu },
-    } = this.props;
-
-    return (
-      <ContextualMenuButton
-        item={item}
-        classNames={classNames}
-        index={index}
-        focusableElementIndex={focusableElementIndex}
-        totalItemCount={totalItemCount}
-        hasCheckmarks={hasCheckmarks}
-        hasIcons={hasIcons}
-        contextualMenuItemAs={contextualMenuItemAs}
-        onItemMouseEnter={this._onItemMouseEnterBase}
-        onItemMouseLeave={this._onMouseItemLeave}
-        onItemMouseMove={this._onItemMouseMoveBase}
-        onItemMouseDown={this._onItemMouseDown}
-        executeItemClick={this._executeItemClick}
-        onItemClick={this._onItemClick}
-        onItemClickBase={this._onItemClickBase}
-        onItemKeyDown={this._onItemKeyDown}
-        expandedMenuItemKey={expandedMenuItemKey}
-        openSubMenu={openSubMenu}
-        dismissSubMenu={this._onSubMenuDismiss}
-        dismissMenu={this.dismiss}
-      />
-    );
-  }
-
-  private _renderSplitButton(
-    item: IContextualMenuItem,
-    // eslint-disable-next-line deprecation/deprecation
-    classNames: IMenuItemClassNames,
-    index: number,
-    focusableElementIndex: number,
-    totalItemCount: number,
-    hasCheckmarks?: boolean,
-    hasIcons?: boolean,
-  ): JSX.Element {
-    const {
-      contextualMenuItemAs,
-      hoisted: { expandedMenuItemKey, openSubMenu },
-    } = this.props;
-
-    return (
-      <ContextualMenuSplitButton
-        item={item}
-        classNames={classNames}
-        index={index}
-        focusableElementIndex={focusableElementIndex}
-        totalItemCount={totalItemCount}
-        hasCheckmarks={hasCheckmarks}
-        hasIcons={hasIcons}
-        contextualMenuItemAs={contextualMenuItemAs}
-        onItemMouseEnter={this._onItemMouseEnterBase}
-        onItemMouseLeave={this._onMouseItemLeave}
-        onItemMouseMove={this._onItemMouseMoveBase}
-        onItemMouseDown={this._onItemMouseDown}
-        executeItemClick={this._executeItemClick}
-        onItemClick={this._onItemClick}
-        onItemClickBase={this._onItemClickBase}
-        onItemKeyDown={this._onItemKeyDown}
-        openSubMenu={openSubMenu}
-        dismissSubMenu={this._onSubMenuDismiss}
-        dismissMenu={this.dismiss}
-        expandedMenuItemKey={expandedMenuItemKey}
-        onTap={this._onPointerAndTouchEvent}
-      />
     );
   }
 
