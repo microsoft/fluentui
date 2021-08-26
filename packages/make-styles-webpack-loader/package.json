@@ -1,31 +1,32 @@
 {
   "name": "@fluentui/make-styles-webpack-loader",
-  "version": "9.0.0-alpha.10",
+  "version": "9.0.0-alpha.12",
   "description": "A Webpack for makeStyles",
-  "main": "lib/src/index.js",
-  "typings": "lib/src/index.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build --commonjs",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/make-styles-webpack-loader/src && yarn docs"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/make-styles-webpack-loader/src && yarn docs",
+    "type-check": "tsc -p ./tsconfig.spec.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.3",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.37",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.39",
     "@linaria/babel-preset": "^3.0.0-beta.7",
     "enhanced-resolve": "^5.8.2",
     "loader-utils": "^2.0.0",

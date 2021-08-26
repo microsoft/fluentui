@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
+import type { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
 
 /**
  * Given user props, returns state and render function for a MenuGroup.

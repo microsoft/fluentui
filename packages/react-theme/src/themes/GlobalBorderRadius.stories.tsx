@@ -6,7 +6,8 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { teamsLightTheme, BorderRadius as BorderRadiusType } from '../index';
+import { teamsLightTheme } from '../index';
+import type { BorderRadius as BorderRadiusType } from '../index';
 
 export default {
   title: 'Theme/Global/Border Radius',

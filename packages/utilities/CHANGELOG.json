@@ -2,6 +2,51 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/utilities_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.10",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/dom-utilities to v2.1.4",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 07:41:35 GMT",
       "tag": "@fluentui/utilities_v8.3.0",
       "version": "8.3.0",

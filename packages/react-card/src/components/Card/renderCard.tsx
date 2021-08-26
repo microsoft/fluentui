@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlotsCompat } from '@fluentui/react-utilities';
 import { CardState } from './Card.types';
 import { cardShorthandProps } from './useCard';
 
@@ -7,7 +7,7 @@ import { cardShorthandProps } from './useCard';
  * Render the final JSX of Card
  */
 export const renderCard = (state: CardState) => {
-  const { slots, slotProps } = getSlots(state, cardShorthandProps);
+  const { slots, slotProps } = getSlotsCompat(state, cardShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>

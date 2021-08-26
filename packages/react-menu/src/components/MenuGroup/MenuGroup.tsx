@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useMenuGroup } from './useMenuGroup';
-import { MenuGroupProps } from './MenuGroup.types';
 import { renderMenuGroup } from './renderMenuGroup';
 import { useMenuGroupContextValues } from './useMenuGroupContextValues';
+import type { MenuGroupProps } from './MenuGroup.types';
 
 /**
  * Define a styled MenuGroup, using the `useMenuGroup` hook.

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
-import { MenuListProps } from '../MenuList/index';
-import { MenuContextValue } from '../../contexts/menuContext';
+import { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { MenuListProps } from '../MenuList/index';
+import type { MenuContextValue } from '../../contexts/menuContext';
 
 interface MenuCommons extends MenuListProps {
   /**

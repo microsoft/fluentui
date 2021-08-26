@@ -2,6 +2,77 @@
   "name": "@fluentui/scheme-utilities",
   "entries": [
     {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/theme to v2.3.1",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/scheme-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/scheme-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/scheme-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.1.7",
+      "version": "8.1.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/theme to v2.2.2",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 07:41:35 GMT",
       "tag": "@fluentui/scheme-utilities_v8.1.7",
       "version": "8.1.7",

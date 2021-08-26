@@ -82,7 +82,7 @@
     "@fluentui/react-cards": { "implicitDependencies": [] },
     "@fluentui/react-charting": { "implicitDependencies": [] },
     "@fluentui/react-checkbox": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-components": { "implicitDependencies": [] },
+    "@fluentui/react-components": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-compose": { "implicitDependencies": [] },
     "@fluentui/react-conformance": { "implicitDependencies": [] },
     "@fluentui/react-context-selector": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
@@ -134,6 +134,7 @@
     "@fluentui/react-slider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/make-styles-webpack-loader": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
     "@fluentui/react-storybook-addon": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-switch": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] }
+    "@fluentui/react-switch": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
+    "@fluentui/react-conformance-make-styles": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] }
   }
 }

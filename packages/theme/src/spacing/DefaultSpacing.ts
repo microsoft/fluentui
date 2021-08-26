@@ -1,4 +1,4 @@
-import { ISpacing } from '../types/index';
+import type { ISpacing } from '../types/index';
 
 export const DefaultSpacing: ISpacing = {
   s2: '4px',

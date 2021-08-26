@@ -5,7 +5,7 @@ import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
-import { PopoverSurfaceProps } from './PopoverSurface.types';
+import type { PopoverSurfaceProps } from './PopoverSurface.types';
 
 jest.mock('../../popoverContext');
 

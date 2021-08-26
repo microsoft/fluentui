@@ -1,11 +1,11 @@
-import { IRawStyle } from '@fluentui/merge-styles';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { IPalette } from './IPalette';
-import { IFontStyles } from './IFontStyles';
-import { ISemanticColors } from './ISemanticColors';
-import { ISpacing } from './ISpacing';
-import { IEffects } from './IEffects';
-import { IScheme, ISchemeNames } from './IScheme';
+import type { IRawStyle } from '@fluentui/merge-styles';
+import type { IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IPalette } from './IPalette';
+import type { IFontStyles } from './IFontStyles';
+import type { ISemanticColors } from './ISemanticColors';
+import type { ISpacing } from './ISpacing';
+import type { IEffects } from './IEffects';
+import type { IScheme, ISchemeNames } from './IScheme';
 
 /**
  * {@docCategory Theme}

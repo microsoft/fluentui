@@ -1,8 +1,7 @@
 import { useId, usePrevious } from '@fluentui/react-utilities';
 import { themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
-
-import { FluentProviderState } from './FluentProvider.types';
+import type { FluentProviderState } from './FluentProvider.types';
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
