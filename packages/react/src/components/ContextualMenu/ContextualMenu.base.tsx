@@ -8,7 +8,6 @@ import {
   shallowCompare,
   warnDeprecations,
   Async,
-  EventGroup,
   assign,
   classNamesFunction,
   css,
@@ -246,7 +245,6 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, IContextualMenuState> {
   private _async: Async;
-  private _events: EventGroup;
   private _id: string;
   private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
@@ -265,7 +263,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     super(props);
 
     this._async = new Async(this);
-    this._events = new EventGroup(this);
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
@@ -328,7 +325,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    this._events.dispose();
     this._async.dispose();
     this._mounted = false;
   }
