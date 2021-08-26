@@ -393,7 +393,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       className: this._classNames.root,
       isCircularNavigation: true,
       handleTabKey: FocusZoneTabbableElements.all,
-      direction: this._getFocusZoneDirection(),
+      direction: this.props.focusZoneProps?.direction ?? FocusZoneDirection.vertical,
     };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
@@ -501,17 +501,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     } else {
       return null;
     }
-  }
-
-  /**
-   * Gets the focusZoneDirection by using the arrowDirection if specified,
-   * the direction specified in the focusZoneProps, or defaults to FocusZoneDirection.vertical
-   */
-  private _getFocusZoneDirection() {
-    const { focusZoneProps } = this.props;
-    return focusZoneProps && focusZoneProps.direction !== undefined
-      ? focusZoneProps.direction
-      : FocusZoneDirection.vertical;
   }
 
   private _onRenderSubMenu(
