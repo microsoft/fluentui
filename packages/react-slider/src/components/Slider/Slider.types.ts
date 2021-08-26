@@ -128,27 +128,27 @@ export interface SliderProps
  * Names of the shorthand properties in SliderProps
  */
 export type SliderShorthandProps =
+  | 'activeRail'
+  | 'input'
   | 'rail'
   | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail'
-  | 'input';
+  | 'thumbWrapper'
+  | 'track'
+  | 'trackWrapper';
 
 /**
  * Names of SliderProps that have a default value in useSlider
  */
 export type SliderDefaultedProps =
+  | 'activeRail'
+  | 'input'
   | 'rail'
   | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail'
-  | 'input';
+  | 'thumbWrapper'
+  | 'track'
+  | 'trackWrapper';
 
 /**
  * State used in rendering Slider

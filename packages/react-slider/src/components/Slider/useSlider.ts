@@ -7,14 +7,14 @@ import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
  * Array of all shorthand properties listed in SliderShorthandProps
  */
 export const sliderShorthandProps: SliderShorthandProps[] = [
-  'rail',
-  'sliderWrapper',
-  'trackWrapper',
-  'track',
-  'thumbWrapper',
-  'thumb',
   'activeRail',
   'input',
+  'rail',
+  'sliderWrapper',
+  'thumb',
+  'thumbWrapper',
+  'track',
+  'trackWrapper',
 ];
 
 /**
