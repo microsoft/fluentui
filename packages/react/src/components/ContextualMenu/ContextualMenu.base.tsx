@@ -223,6 +223,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   useVisibility(props, targetWindow);
 
+  const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
+
   return (
     <ContextualMenuInternal
       {...props}
@@ -243,6 +245,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         subMenuId,
         menuId,
         previousActiveElementRef,
+        dismiss,
       }}
       responsiveMode={responsiveMode}
     />
@@ -268,6 +271,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     subMenuId: string;
     menuId: string;
     previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
+    dismiss: (ev?: any, dismissAll?: boolean) => void;
   };
 }
 
@@ -283,14 +287,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // eslint-disable-next-line deprecation/deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
-
-  public dismiss = (ev?: any, dismissAll?: boolean) => {
-    const { onDismiss } = this.props;
-
-    if (onDismiss) {
-      onDismiss(ev, dismissAll);
-    }
-  };
 
   public shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
@@ -800,7 +796,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     if (item.onRender) {
       return item.onRender(
         { 'aria-posinset': focusableElementIndex + 1, 'aria-setsize': totalItemCount, ...item },
-        this.dismiss,
+        this.props.hoisted.dismiss,
       );
     }
 
@@ -827,7 +823,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       expandedMenuItemKey,
       openSubMenu,
       dismissSubMenu: this._onSubMenuDismiss,
-      dismissMenu: this.dismiss,
+      dismissMenu: this.props.hoisted.dismiss,
     } as const;
 
     if (item.href) {
@@ -944,7 +940,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     let handled = false;
 
     if (shouldHandleKey(ev)) {
-      this.dismiss(ev, dismissAllMenus);
+      this.props.hoisted.dismiss(ev, dismissAllMenus);
       ev.preventDefault();
       ev.stopPropagation();
       handled = true;
@@ -1198,7 +1194,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
 
     if (dismiss || !ev.defaultPrevented) {
-      this.dismiss(ev, true);
+      this.props.hoisted.dismiss(ev, true);
     }
   };
 
@@ -1282,7 +1278,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
    */
   private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
     if (dismissAll) {
-      this.dismiss(ev, dismissAll);
+      this.props.hoisted.dismiss(ev, dismissAll);
     } else if (this._mounted) {
       this.props.hoisted.closeSubMenu();
     }
