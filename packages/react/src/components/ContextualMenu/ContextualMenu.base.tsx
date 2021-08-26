@@ -242,6 +242,32 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
 
+  /**
+   * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
+   * if so, stops event propagation and dismisses menu(s).
+   * @param ev - The keyboard event.
+   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
+   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
+   * Only does anything if `shouldHandleKey` returns true.
+   * @returns Whether the event was handled.
+   */
+  const keyHandler = (
+    ev: React.KeyboardEvent<HTMLElement>,
+    shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
+    dismissAllMenus?: boolean,
+  ): boolean => {
+    let handled = false;
+
+    if (shouldHandleKey(ev)) {
+      dismiss(ev, dismissAllMenus);
+      ev.preventDefault();
+      ev.stopPropagation();
+      handled = true;
+    }
+
+    return handled;
+  };
+
   return (
     <ContextualMenuInternal
       {...props}
@@ -264,6 +290,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         previousActiveElementRef,
         dismiss,
         tryFocusPreviousActiveElement,
+        keyHandler,
       }}
       responsiveMode={responsiveMode}
     />
@@ -291,6 +318,11 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
     dismiss: (ev?: any, dismissAll?: boolean) => void;
     tryFocusPreviousActiveElement: (options: IPopupRestoreFocusParams) => void;
+    keyHandler: (
+      ev: React.KeyboardEvent<HTMLElement>,
+      shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
+      dismissAllMenus?: boolean,
+    ) => boolean;
   };
 }
 
@@ -853,7 +885,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     // eslint-disable-next-line deprecation/deprecation
     const dismissAllMenus = ev.which === KeyCodes.escape && (isMac() || isIOS());
 
-    return this._keyHandler(ev, this._shouldHandleKeyDown, dismissAllMenus);
+    return this.props.hoisted.keyHandler(ev, this._shouldHandleKeyDown, dismissAllMenus);
   };
 
   private _shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
@@ -867,7 +899,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   };
 
   private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    return this._keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
+    return this.props.hoisted.keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
   };
 
   /**
@@ -884,32 +916,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && _isAltOrMeta(ev);
     this._lastKeyDownWasAltOrMeta = false;
     return !!keyPressIsAltOrMetaAlone && !(isIOS() || isMac());
-  };
-
-  /**
-   * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
-   * if so, stops event propagation and dismisses menu(s).
-   * @param ev - The keyboard event.
-   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
-   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
-   * Only does anything if `shouldHandleKey` returns true.
-   * @returns Whether the event was handled.
-   */
-  private _keyHandler = (
-    ev: React.KeyboardEvent<HTMLElement>,
-    shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
-    dismissAllMenus?: boolean,
-  ): boolean => {
-    let handled = false;
-
-    if (shouldHandleKey(ev)) {
-      this.props.hoisted.dismiss(ev, dismissAllMenus);
-      ev.preventDefault();
-      ev.stopPropagation();
-      handled = true;
-    }
-
-    return handled;
   };
 
   /**
