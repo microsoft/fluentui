@@ -8,11 +8,14 @@ import {
   initializeComponentRef,
 } from '../../../../Utilities';
 import { FloatingPeoplePicker } from '../../../../FloatingPicker';
-import { IExtendedPersonaProps } from '../SelectedPeopleList';
-import { IPeoplePickerItemState } from './ExtendedSelectedItem';
-import { IEditingSelectedPeopleItemProps } from './EditingItem.types';
 import { getStyles } from './EditingItem.styles';
-import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
+import type { IExtendedPersonaProps } from '../SelectedPeopleList';
+import type { IPeoplePickerItemState } from './ExtendedSelectedItem';
+import type {
+  IEditingSelectedPeopleItemProps,
+  IEditingSelectedPeopleItemStyles,
+  IEditingSelectedPeopleItemStylesProps,
+} from './EditingItem.types';
 
 export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;

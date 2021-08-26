@@ -12,18 +12,16 @@ import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
 import { Icon } from '../../../Icon';
 import { Image, ImageFit, ImageLoadState } from '../../../Image';
-import {
+import { PersonaInitialsColor, PersonaPresence as PersonaPresenceEnum, PersonaSize } from '../Persona.types';
+import { getPersonaInitialsColor } from '../PersonaInitialsColor';
+import { sizeToPixels } from '../PersonaConsts';
+import { useWarnings } from '@fluentui/react-hooks';
+import type {
   IPersonaCoinProps,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
   IPersonaPresenceProps,
-  PersonaInitialsColor,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaSize,
 } from '../Persona.types';
-import { getPersonaInitialsColor } from '../PersonaInitialsColor';
-import { sizeToPixels } from '../PersonaConsts';
-import { useWarnings } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.

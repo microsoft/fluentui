@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.71)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.70..@fluentui/react-tooltip_v9.0.0-alpha.71)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
+
+## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.70)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.69..@fluentui/react-tooltip_v9.0.0-alpha.70)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.69)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.68..@fluentui/react-tooltip_v9.0.0-alpha.69)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.37 ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.68)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.67..@fluentui/react-tooltip_v9.0.0-alpha.68)
+
+### Changes
+
+- feat(Tooltip): replace align, position, coverTarget, offset props with single `positioning` shorthand prop ([PR #19364](https://github.com/microsoft/fluentui/pull/19364) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.67)
 

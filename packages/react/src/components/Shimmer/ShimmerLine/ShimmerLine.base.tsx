@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../../Utilities';
-import { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
+import type { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 

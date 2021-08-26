@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { LinkProps, LinkState } from './Link.types';
 import { useLinkState } from './useLinkState';
+import type { LinkProps, LinkState } from './Link.types';
 
 /**
  * Consts listing which props are shorthand props.

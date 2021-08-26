@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(positioning): implement shorthand positioning option and shorthand parsing utility",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

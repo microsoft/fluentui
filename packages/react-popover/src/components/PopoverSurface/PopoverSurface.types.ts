@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
-import { PopoverContextValue } from '../../popoverContext';
+import type { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
+import type { PopoverContextValue } from '../../popoverContext';
 
 /**
  * PopoverSurface Props

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
-import { IIconProps } from '../Icon/Icon.types';
-import { IButtonProps } from '../../Button';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import type { IIconProps } from '../Icon/Icon.types';
+import type { IButtonProps } from '../../Button';
 
 /**
  * {@doccategory Nav}

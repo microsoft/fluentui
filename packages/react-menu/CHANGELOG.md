@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.66)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.65..@fluentui/react-menu_v9.0.0-alpha.66)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19473](https://github.com/microsoft/fluentui/pull/19473) by dzearing@hotmail.com)
+
+## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.65)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.64..@fluentui/react-menu_v9.0.0-alpha.65)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.64)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.63..@fluentui/react-menu_v9.0.0-alpha.64)
+
+### Changes
+
+- Updates react-menu on slot null rendering ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.63)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.62..@fluentui/react-menu_v9.0.0-alpha.63)
+
+### Changes
+
+- feat(Menu): replace align, position, coverTarget props with single `positioning` shorthand prop ([PR #19364](https://github.com/microsoft/fluentui/pull/19364) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.62)
 

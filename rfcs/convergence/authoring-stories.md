@@ -383,6 +383,7 @@ ButtonPrimary.args = {
 };
 ButtonPrimary.storyName = 'Better story name';
 ```
+
 3. If an internal story is broken out into its own file, then the file should mirror the name of the story, which will include the `Internal` keyword and a `.internal.stories` suffix for easier IDE search.
 
 ### 9. UX of stories

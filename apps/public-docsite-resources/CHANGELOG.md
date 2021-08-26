@@ -1,8 +1,44 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Fri, 13 Aug 2021 07:36:34 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.1.35 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 23 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.1 ([PR #19467](https://github.com/microsoft/fluentui/pull/19467) by keyou@microsoft.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Mon, 16 Aug 2021 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.34.4 ([PR #19364](https://github.com/microsoft/fluentui/pull/19364) by lingfan.gao@microsoft.com)
 
 ## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
 

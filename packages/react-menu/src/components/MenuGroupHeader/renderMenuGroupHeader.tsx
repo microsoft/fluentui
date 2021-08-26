@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { MenuGroupHeaderState } from './MenuGroupHeader.types';
+import type { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 /**
  * Redefine the render function to add slots. Reuse the menugroupheader structure but add

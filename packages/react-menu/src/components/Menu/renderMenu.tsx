@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MenuContextValues, MenuState } from './Menu.types';
 import { MenuProvider } from '../../contexts/menuContext';
+import type { MenuContextValues, MenuState } from './Menu.types';
 
 /**
  * Render the final JSX of Menu

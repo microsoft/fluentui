@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 import {
   KeyCodes,
   css,
@@ -22,13 +22,15 @@ import {
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  Point,
   getWindow,
   findScrollableParent,
   createMergedRef,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
-import { getTheme, ITheme } from '@fluentui/style-utilities';
+import { getTheme } from '@fluentui/style-utilities';
+import type { IFocusZone, IFocusZoneProps } from './FocusZone.types';
+import type { Point } from '@fluentui/utilities';
+import type { ITheme } from '@fluentui/style-utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';

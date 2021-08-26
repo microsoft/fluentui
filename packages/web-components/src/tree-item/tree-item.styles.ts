@@ -19,6 +19,7 @@ import {
   designUnit,
   disabledOpacity,
   focusStrokeOuter,
+  focusStrokeWidth,
   neutralFillRecipe,
   neutralFillRest,
   neutralFillStealthActive,
@@ -40,7 +41,7 @@ const ltr = css`
     left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    left: calc(var(--focus-outline-width) * 1px);
+    left: calc(${focusStrokeWidth} * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
     transform: rotate(45deg);
@@ -55,7 +56,7 @@ const rtl = css`
     right: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    right: calc(var(--focus-outline-width) * 1px);
+    right: calc(${focusStrokeWidth} * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
     transform: rotate(135deg);

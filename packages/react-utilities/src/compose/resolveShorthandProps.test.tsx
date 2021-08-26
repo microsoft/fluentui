@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { resolveShorthandProps } from './resolveShorthandProps';
-import { ShorthandPropsCompat } from './types';
+import type { ShorthandPropsCompat } from './types';
 
 type TestProps = {
   slotA?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
