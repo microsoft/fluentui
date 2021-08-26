@@ -16,14 +16,14 @@ E.g. with `<Avatar badge="away" />`, the badge slot renders `<PresenceBadge stat
 
 Here's a summary of the 4 options that are detailed below:
 
-0. `<Avatar badge="away" />`
-1. `<Avatar badge={{ status: 'away' }} />`
-2. `<Avatar badge={<PresenceBadge status="away" size="smaller" />} />`
-3. `<Avatar status="away" />`
+1. `<Avatar badge="away" />`
+2. `<Avatar badge={{ status: 'away' }} />`
+3. `<Avatar badge={<PresenceBadge status="away" size="smaller" />} />`
+4. `<Avatar status="away" />`
 
 ---
 
-### Option 0. (CURRENT) Shorthand is the `status` of the `PresenceBadge`
+### Option 1. (CURRENT) Shorthand is the `status` of the `PresenceBadge`
 
 ```jsx
 <Avatar badge="away" />
@@ -45,7 +45,7 @@ Here's a summary of the 4 options that are detailed below:
 
 ---
 
-### Option 1. The badge slot is a `PresenceBadge` with normal shorthand syntax
+### Option 2. The badge slot is a `PresenceBadge` with normal shorthand syntax
 
 ```jsx
 <Avatar badge={{ status: 'away' }} />
@@ -64,7 +64,7 @@ Here's a summary of the 4 options that are detailed below:
 
 ---
 
-### Option 2. The badge slot is a `<span>` that can contain anything
+### Option 3. The badge slot is a `<span>` that can contain anything
 
 ```jsx
 <Avatar badge={<PresenceBadge status="away" size="smaller" />} />
@@ -88,7 +88,7 @@ Here's a summary of the 4 options that are detailed below:
 
 ---
 
-### Option 3. Add a `status` prop to Avatar
+### Option 4. Add a `status` prop to Avatar
 
 In this case, the `badge` slot would work the same as option 2, but adds a new `status` prop to Avatar:
 
