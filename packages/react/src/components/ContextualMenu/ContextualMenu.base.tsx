@@ -17,7 +17,6 @@ import {
   shouldWrapFocus,
   isIOS,
   isMac,
-  initializeComponentRef,
   memoizeFunction,
   getPropsWithDefaults,
   getDocument,
@@ -259,7 +258,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
   private _previousActiveElement: HTMLElement | undefined;
   private _enterTimerId: number | undefined;
-  private _isScrollIdle: boolean;
+  private _isScrollIdle: boolean = false;
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
@@ -269,14 +268,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   // eslint-disable-next-line deprecation/deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
-
-  constructor(props: IContextualMenuInternalProps) {
-    super(props);
-
-    initializeComponentRef(this);
-
-    this._isScrollIdle = true;
-  }
 
   public dismiss = (ev?: any, dismissAll?: boolean) => {
     const { onDismiss } = this.props;
