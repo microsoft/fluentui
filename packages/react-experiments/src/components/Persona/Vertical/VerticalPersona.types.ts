@@ -1,7 +1,7 @@
-import { IStyle, IFontWeight } from '@fluentui/style-utilities';
-import { IComponent, IHTMLSlot, IStyleableComponentProps } from '@fluentui/foundation-legacy';
-import { ITextSlot } from '@fluentui/react';
-import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
+import type { IStyle, IFontWeight } from '@fluentui/style-utilities';
+import type { IComponent, IHTMLSlot, IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import type { ITextSlot } from '@fluentui/react';
+import type { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
 export type IVerticalPersonaComponent = IComponent<
   IVerticalPersonaProps,

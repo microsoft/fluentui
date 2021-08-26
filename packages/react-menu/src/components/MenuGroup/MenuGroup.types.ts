@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { MenuGroupContextValue } from '../../contexts/menuGroupContext';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 /**
  * {@docCategory MenuGroup}

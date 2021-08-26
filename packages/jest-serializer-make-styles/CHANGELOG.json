@@ -2,6 +2,36 @@
   "name": "@fluentui/jest-serializer-make-styles",
   "entries": [
     {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: unify babel-make-styles and make-styles-webpack-loader packages build output",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/jest-serializer-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/jest-serializer-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.34",
       "version": "9.0.0-alpha.34",

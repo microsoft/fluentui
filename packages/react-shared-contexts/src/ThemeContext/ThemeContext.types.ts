@@ -1,3 +1,3 @@
-import { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 
 export interface ThemeContextValue extends Theme {}

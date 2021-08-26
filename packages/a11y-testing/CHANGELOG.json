@@ -2,6 +2,21 @@
   "name": "@fluentui/a11y-testing",
   "entries": [
     {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/a11y-testing_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/a11y-testing"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/a11y-testing_v0.1.0",
       "version": "0.1.0",

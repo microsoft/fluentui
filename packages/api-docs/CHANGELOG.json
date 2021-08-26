@@ -2,6 +2,51 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.1.5",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.1",
+            "author": "keyou@microsoft.com",
+            "commit": "0d9443614ded375ef210549eeb3ab3e3bba965ed",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/api-docs_v8.1.35",
       "version": "8.1.35",

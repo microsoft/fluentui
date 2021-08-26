@@ -3,9 +3,9 @@ import { getCode, ArrowRightKey, ArrowDownKey, ArrowLeftKey } from '@fluentui/ke
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
-import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 
 const noop = () => null;
 

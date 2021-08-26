@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { css, initializeComponentRef } from '@fluentui/react/lib/Utilities';
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import { SuggestionsItem } from './SuggestionsItem';
-import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import type { ISuggestionsCoreProps } from './Suggestions.types';
+
 const styles: any = stylesImport;
 
 /**

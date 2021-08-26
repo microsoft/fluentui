@@ -1,4 +1,4 @@
-import { StrokeWidths } from '../types';
+import type { StrokeWidths } from '../types';
 
 export const strokeWidths: StrokeWidths = {
   thin: '1px',

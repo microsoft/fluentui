@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Fri, 20 Aug 2021 07:37:28 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Aug 2021 07:35:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.68)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.67..@fluentui/react-provider_v9.0.0-alpha.68)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.39 ([PR #19486](https://github.com/microsoft/fluentui/pull/19486) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.67)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.66..@fluentui/react-provider_v9.0.0-alpha.67)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19473](https://github.com/microsoft/fluentui/pull/19473) by dzearing@hotmail.com)
 
 ## [9.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.66)
 
