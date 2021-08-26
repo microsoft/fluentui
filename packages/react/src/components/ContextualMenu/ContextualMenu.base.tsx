@@ -213,6 +213,104 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
   return [previousActiveElement, tryFocusPreviousActiveElement] as const;
 }
 
+function getKeyHandlers(
+  {
+    theme,
+    isSubMenu,
+    focusZoneProps: { checkForNoWrap, direction: focusZoneDirection = FocusZoneDirection.vertical } = {},
+  }: IContextualMenuProps,
+  dismiss: (ev?: any, dismissAll?: boolean | undefined) => void | undefined,
+) {
+  /** True if the most recent keydown event was for alt (option) or meta (command). */
+  const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>();
+
+  /**
+   * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
+   * if so, stops event propagation and dismisses menu(s).
+   * @param ev - The keyboard event.
+   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
+   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
+   * Only does anything if `shouldHandleKey` returns true.
+   * @returns Whether the event was handled.
+   */
+  const keyHandler = (
+    ev: React.KeyboardEvent<HTMLElement>,
+    shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
+    dismissAllMenus?: boolean,
+  ): boolean => {
+    let handled = false;
+
+    if (shouldHandleKey(ev)) {
+      dismiss(ev, dismissAllMenus);
+      ev.preventDefault();
+      ev.stopPropagation();
+      handled = true;
+    }
+
+    return handled;
+  };
+
+  /**
+   * Checks if the submenu should be closed
+   */
+  const shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    const submenuCloseKey = getRTL(theme) ? KeyCodes.right : KeyCodes.left;
+
+    // eslint-disable-next-line deprecation/deprecation
+    if (ev.which !== submenuCloseKey || !isSubMenu) {
+      return false;
+    }
+
+    return !!(
+      focusZoneDirection === FocusZoneDirection.vertical ||
+      (checkForNoWrap && !shouldWrapFocus(ev.target as HTMLElement, 'data-no-horizontal-wrap'))
+    );
+  };
+
+  const shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    return (
+      // eslint-disable-next-line deprecation/deprecation
+      ev.which === KeyCodes.escape ||
+      shouldCloseSubMenu(ev) ||
+      // eslint-disable-next-line deprecation/deprecation
+      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
+    );
+  };
+
+  const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    // Take note if we are processing an alt (option) or meta (command) keydown.
+    // See comment in shouldHandleKeyUp for reasoning.
+    lastKeyDownWasAltOrMeta.current = _isAltOrMeta(ev);
+
+    // On Mac, pressing escape dismisses all levels of native context menus
+    // eslint-disable-next-line deprecation/deprecation
+    const dismissAllMenus = ev.which === KeyCodes.escape && (isMac() || isIOS());
+
+    return keyHandler(ev, shouldHandleKeyDown, dismissAllMenus);
+  };
+  /**
+   * We close the menu on key up only if ALL of the following are true:
+   * - Most recent key down was alt or meta (command)
+   * - The alt/meta key down was NOT followed by some other key (such as down/up arrow to
+   *   expand/collapse the menu)
+   * - We're not on a Mac (or iOS)
+   *
+   * This is because on Windows, pressing alt moves focus to the application menu bar or similar,
+   * closing any open context menus. There is not a similar behavior on Macs.
+   */
+  const shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
+    const keyPressIsAltOrMetaAlone = lastKeyDownWasAltOrMeta.current && _isAltOrMeta(ev);
+    lastKeyDownWasAltOrMeta.current = false;
+    return !!keyPressIsAltOrMetaAlone && !(isIOS() || isMac());
+  };
+
+  const onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+    return keyHandler(ev, shouldHandleKeyUp, true /* dismissAllMenus */);
+  };
+
+  return [onKeyDown, onKeyUp] as const;
+}
+
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
   HTMLDivElement,
   IContextualMenuProps
@@ -242,31 +340,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
 
-  /**
-   * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
-   * if so, stops event propagation and dismisses menu(s).
-   * @param ev - The keyboard event.
-   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
-   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
-   * Only does anything if `shouldHandleKey` returns true.
-   * @returns Whether the event was handled.
-   */
-  const keyHandler = (
-    ev: React.KeyboardEvent<HTMLElement>,
-    shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
-    dismissAllMenus?: boolean,
-  ): boolean => {
-    let handled = false;
-
-    if (shouldHandleKey(ev)) {
-      dismiss(ev, dismissAllMenus);
-      ev.preventDefault();
-      ev.stopPropagation();
-      handled = true;
-    }
-
-    return handled;
-  };
+  const [onKeyDown, onKeyUp] = getKeyHandlers(props, dismiss);
 
   return (
     <ContextualMenuInternal
@@ -290,7 +364,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         previousActiveElementRef,
         dismiss,
         tryFocusPreviousActiveElement,
-        keyHandler,
+        onKeyDown,
+        onKeyUp,
       }}
       responsiveMode={responsiveMode}
     />
@@ -318,11 +393,8 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
     dismiss: (ev?: any, dismissAll?: boolean) => void;
     tryFocusPreviousActiveElement: (options: IPopupRestoreFocusParams) => void;
-    keyHandler: (
-      ev: React.KeyboardEvent<HTMLElement>,
-      shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
-      dismissAllMenus?: boolean,
-    ) => boolean;
+    onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    onKeyUp: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
   };
 }
 
@@ -330,8 +402,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _enterTimerId: number | undefined;
   private _isScrollIdle: boolean = false;
   private _scrollIdleTimeoutId: number | undefined;
-  /** True if the most recent keydown event was for alt (option) or meta (command). */
-  private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _mounted = false;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
@@ -501,7 +571,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 className={this._classNames.container}
                 tabIndex={shouldFocusOnContainer ? 0 : -1}
                 onKeyDown={this._onMenuKeyDown}
-                onKeyUp={this._onKeyUp}
+                onKeyUp={this.props.hoisted.onKeyUp}
                 onFocusCapture={onMenuFocusCapture}
                 aria-label={ariaLabel}
                 aria-labelledby={labelElementId}
@@ -553,7 +623,12 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
 
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={'presentation'}>
+      <ul
+        className={this._classNames.list}
+        onKeyDown={this.props.hoisted.onKeyDown}
+        onKeyUp={this.props.hoisted.onKeyUp}
+        role={'presentation'}
+      >
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -876,70 +951,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     );
   }
 
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    // Take note if we are processing an alt (option) or meta (command) keydown.
-    // See comment in _shouldHandleKeyUp for reasoning.
-    this._lastKeyDownWasAltOrMeta = _isAltOrMeta(ev);
-
-    // On Mac, pressing escape dismisses all levels of native context menus
-    // eslint-disable-next-line deprecation/deprecation
-    const dismissAllMenus = ev.which === KeyCodes.escape && (isMac() || isIOS());
-
-    return this.props.hoisted.keyHandler(ev, this._shouldHandleKeyDown, dismissAllMenus);
-  };
-
-  private _shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    return (
-      // eslint-disable-next-line deprecation/deprecation
-      ev.which === KeyCodes.escape ||
-      this._shouldCloseSubMenu(ev) ||
-      // eslint-disable-next-line deprecation/deprecation
-      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
-    );
-  };
-
-  private _onKeyUp = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    return this.props.hoisted.keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
-  };
-
-  /**
-   * We close the menu on key up only if ALL of the following are true:
-   * - Most recent key down was alt or meta (command)
-   * - The alt/meta key down was NOT followed by some other key (such as down/up arrow to
-   *   expand/collapse the menu)
-   * - We're not on a Mac (or iOS)
-   *
-   * This is because on Windows, pressing alt moves focus to the application menu bar or similar,
-   * closing any open context menus. There is not a similar behavior on Macs.
-   */
-  private _shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && _isAltOrMeta(ev);
-    this._lastKeyDownWasAltOrMeta = false;
-    return !!keyPressIsAltOrMetaAlone && !(isIOS() || isMac());
-  };
-
-  /**
-   * Checks if the submenu should be closed
-   */
-  private _shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    const submenuCloseKey = getRTL(this.props.theme) ? KeyCodes.right : KeyCodes.left;
-
-    // eslint-disable-next-line deprecation/deprecation
-    if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
-      return false;
-    }
-
-    return (
-      this._adjustedFocusZoneProps.direction === FocusZoneDirection.vertical ||
-      (!!this._adjustedFocusZoneProps.checkForNoWrap &&
-        !shouldWrapFocus(ev.target as HTMLElement, 'data-no-horizontal-wrap'))
-    );
-  };
-
   private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     // Mark as handled if onKeyDown returns true (for handling collapse cases)
     // or if we are attempting to expand a submenu
-    const handled = this._onKeyDown(ev);
+    const handled = this.props.hoisted.onKeyDown(ev);
     const { hostElement } = this.props.hoisted;
 
     if (handled || !hostElement.current) {
