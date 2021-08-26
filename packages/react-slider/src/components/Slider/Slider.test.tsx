@@ -196,6 +196,18 @@ describe('Slider', () => {
     expect(inputRef.current?.value).toBe('0.001');
   });
 
+  it('handles a negative (step) prop', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+
+    render(<Slider defaultValue={20} step={-3} onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
+    const sliderRoot = screen.getByTestId('test');
+
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 17 });
+    expect(inputRef.current?.value).toBe('17');
+  });
+
   it('handles (role) prop', () => {
     render(<Slider role="test" data-testid="test" />);
     const sliderRoot = screen.getByTestId('test');
