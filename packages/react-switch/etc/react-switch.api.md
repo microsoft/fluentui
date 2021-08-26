@@ -4,8 +4,8 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -19,17 +19,14 @@ export interface SwitchCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement
 }
 
 // @public
-export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Partial<SwitchCommon> {
+export interface SwitchProps extends ComponentPropsCompat, Partial<SwitchCommon> {
 }
 
 // @public
-export const switchShorthandProps: Array<keyof SwitchSlots>;
+export const switchShorthandProps: readonly [];
 
 // @public
-export type SwitchSlots = {};
-
-// @public
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
+export interface SwitchState extends ComponentStateCompat<SwitchProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

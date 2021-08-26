@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import { CheckboxState, CheckboxSlots } from './Checkbox.types';
+import { getSlotsCompat } from '@fluentui/react-utilities';
+import { CheckboxState } from './Checkbox.types';
 import { checkboxShorthandProps } from './useCheckbox';
 
 export const renderCheckbox = (state: CheckboxState) => {
-  const { slots, slotProps } = getSlots<CheckboxSlots>(state, checkboxShorthandProps);
+  const { slots, slotProps } = getSlotsCompat(state, checkboxShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>

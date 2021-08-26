@@ -21,6 +21,7 @@ import { MenuButton, MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
+import { SplitButtonDivider } from './SplitButtonDivider';
 import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
@@ -245,6 +246,16 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
           },
         )}
 
+        {createShorthand(
+          SplitButtonDivider,
+          {},
+          {
+            defaultProps: () =>
+              getA11yProps('divider', {
+                primary,
+              }),
+          },
+        )}
         {SplitButtonToggle.create(toggleButton, {
           defaultProps: () =>
             getA11yProps('toggleButton', {

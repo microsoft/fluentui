@@ -54,13 +54,14 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.toggleButtonBorderColor,
-      boxShadow: v.toggleButtonBoxShadow,
-      ...(p.flat && {
-        boxShadow: 'none',
-      }),
-
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+      borderLeftColor: 'transparent',
+
+      boxShadow: p.primary ? v.toggleButtonPrimaryBoxShadow : v.toggleButtonBoxShadow,
+      ...((p.flat || p.size === 'small' || p.disabled) && {
+        boxShadow: 'none',
+      }),
 
       ...getIconFillOrOutlineStyles({ outline: true }),
 
@@ -110,10 +111,6 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
         backgroundColor: v.toggleButtonPrimaryBackgroundColor,
         borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
         borderColor: v.toggleButtonPrimaryBorderColor,
-        boxShadow: v.toggleButtonPrimaryBoxShadow,
-        ...(p.flat && {
-          boxShadow: 'none',
-        }),
 
         ':active': {
           backgroundColor: v.toggleButtonPrimaryBackgroundColorActive,
@@ -151,7 +148,6 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<
         height: v.smallDimension,
         width: v.smallDimension,
         minWidth: v.smallMinWidth,
-        boxShadow: v.smallBoxShadow,
       }),
     };
   },

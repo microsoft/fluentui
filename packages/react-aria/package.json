@@ -24,7 +24,7 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.34",
     "@fluentui/react-conformance": "^0.4.4",
     "@fluentui/scripts": "^1.0.0",
@@ -41,8 +41,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.0-alpha.3",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.58",
-    "@fluentui/react-utilities": "^9.0.0-alpha.40",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
+    "@fluentui/react-utilities": "^9.0.0-alpha.41",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

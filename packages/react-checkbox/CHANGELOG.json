@@ -2,6 +2,36 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Reverting to compat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0d31d8113e15846d88a40c034bebcb39b12f2382",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.29",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Aug 2021 07:35:43 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

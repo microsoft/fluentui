@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 19 Aug 2021 07:41:35 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.2.1)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.2.0..@fluentui/react-focus_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.10 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.2.0)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.1.11..@fluentui/react-focus_v8.2.0)
+
+### Minor changes
+
+- Updating TypeScript type-only imports/exports to use import/export syntax. ([PR #19474](https://github.com/microsoft/fluentui/pull/19474) by dzearing@hotmail.com)
 
 ## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.1.11)
 

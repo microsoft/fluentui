@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.1.5)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.1.4..@fluentui/merge-styles_v8.1.5)
+
+### Patches
+
+- getVendorSettings.js file was leading to app crash if userAgent was null. Have added a null check for userAgent ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.1.4)
 

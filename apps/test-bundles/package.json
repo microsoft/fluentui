@@ -11,7 +11,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0",
     "parallel-webpack": "^2.6.0"
   }

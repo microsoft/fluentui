@@ -23,3 +23,4 @@ export { providerVariables as Provider } from './components/Provider/providerVar
 export { labelVariables as Label } from './components/Label/labelVariables';
 export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';
 export { datepickerCalendarCellButtonVariables as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonVariables';
+export { splitButtonVariables as SplitButtonDivider } from './components/SplitButton/splitButtonVariables';

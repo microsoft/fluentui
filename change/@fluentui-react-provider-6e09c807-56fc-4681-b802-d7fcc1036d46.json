@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(react-provider): properly specify babel-make-styles dependency",
-  "packageName": "@fluentui/react-provider",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
