@@ -41,8 +41,8 @@ storiesOf('react-image Image', module)
         <Image
           src={imageUrl}
           alt="Amanda's avatar boredered and rounded"
-          height={150}
-          width={150}
+          height={200}
+          width={200}
           bordered
           rounded
         />
@@ -51,8 +51,8 @@ storiesOf('react-image Image', module)
         <Image
           src={imageUrl}
           alt="Amanda's avatar boredered and circular"
-          height={150}
-          width={150}
+          height={200}
+          width={200}
           bordered
           circular
         />
