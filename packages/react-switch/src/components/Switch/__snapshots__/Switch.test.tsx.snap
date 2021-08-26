@@ -18,7 +18,6 @@ exports[`Switch renders a basic Switch 1`] = `
       >
         <div
           class="ms-Switch-thumb"
-          style="transform: translate(-50%, -50%);"
         />
       </div>
       <input
@@ -43,7 +42,6 @@ exports[`Switch renders a basic Switch 1`] = `
       >
         <div
           class="ms-Switch-thumb"
-          style="transform: translate(-50%, -50%);"
         />
       </div>
       <input
@@ -74,7 +72,6 @@ exports[`Switch renders a disabled Switch 1`] = `
       >
         <div
           class="ms-Switch-thumb"
-          style="transform: translate(-50%, -50%);"
         />
       </div>
       <input
@@ -100,7 +97,6 @@ exports[`Switch renders a disabled Switch 1`] = `
       >
         <div
           class="ms-Switch-thumb"
-          style="transform: translate(-50%, -50%);"
         />
       </div>
       <input
@@ -132,7 +128,6 @@ exports[`Switch renders a labeled Switch 1`] = `
       >
         <div
           class="ms-Switch-thumb"
-          style="transform: translate(-50%, -50%);"
         />
       </div>
       <input

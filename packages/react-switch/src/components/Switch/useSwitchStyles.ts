@@ -74,7 +74,7 @@ const useTrackStyles = makeStyles({
     height: '100%',
     boxSizing: 'border-box',
     borderRadius: '999px',
-    transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1) border .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
   }),
 
   unchecked: theme => ({
@@ -123,6 +123,7 @@ const useThumbStyles = makeStyles({
     boxSizing: 'border-box',
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
+    transform: 'translate(-50%, -50%)',
   }),
 
   unchecked: theme => ({

@@ -33,16 +33,11 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
     transform:
       dir === 'rtl'
         ? internalValue
-          ? 'translate(0%)'
-          : 'translate(100%)'
+          ? 'translate(-100%)'
+          : 'translate(0%)'
         : internalValue
         ? 'translate(100%)'
         : 'translate(0%)',
-  };
-
-  const thumbStyles = {
-    transform: dir === 'rtl' ? 'translate(-100%, -50%)' : 'translate(-50%, -50%)',
-    ...state.thumb.style,
   };
 
   // Input Props
@@ -54,7 +49,6 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
 
   // thumbContainer Props
   state.thumbWrapper.style = thumbWrapperStyles;
-  state.thumb.style = thumbStyles;
 
   return state;
 };
