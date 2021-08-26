@@ -183,7 +183,7 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
-function usePreviousActiveElement({ hidden }: IContextualMenuProps, targetWindow: Window | undefined) {
+function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuProps, targetWindow: Window | undefined) {
   const previousActiveElement = React.useRef<undefined | HTMLElement>();
   React.useLayoutEffect(() => {
     if (!hidden) {
@@ -193,7 +193,18 @@ function usePreviousActiveElement({ hidden }: IContextualMenuProps, targetWindow
     }
   }, [hidden]);
 
-  return previousActiveElement;
+  const tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
+    if (onRestoreFocus) {
+      onRestoreFocus(options);
+    } else if (options?.documentContainsFocus) {
+      // Make sure that the focus method actually exists
+      // In some cases the object might exist but not be a real element.
+      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+      previousActiveElement.current?.focus?.();
+    }
+  };
+
+  return [previousActiveElement, tryFocusPreviousActiveElement] as const;
 }
 
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
@@ -215,7 +226,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   });
 
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
-  const previousActiveElementRef = usePreviousActiveElement(props, targetWindow);
+  const [previousActiveElementRef, tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
@@ -246,6 +257,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         menuId,
         previousActiveElementRef,
         dismiss,
+        tryFocusPreviousActiveElement,
       }}
       responsiveMode={responsiveMode}
     />
@@ -272,6 +284,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     menuId: string;
     previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
     dismiss: (ev?: any, dismissAll?: boolean) => void;
+    tryFocusPreviousActiveElement: (options: IPopupRestoreFocusParams) => void;
   };
 }
 
@@ -432,7 +445,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
           {menuContext => (
             <Callout
               styles={calloutStyles}
-              onRestoreFocus={this._tryFocusPreviousActiveElement}
+              onRestoreFocus={this.props.hoisted.tryFocusPreviousActiveElement}
               {...calloutProps}
               target={target || (menuContext.target as IContextualMenuProps['target'])}
               isBeakVisible={isBeakVisible}
@@ -493,19 +506,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
   }
 
-  private _tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
-    if (this.props.onRestoreFocus) {
-      this.props.onRestoreFocus(options);
-    } else if (options && options.documentContainsFocus) {
-      // Make sure that the focus method actually exists
-      // In some cases the object might exist but not be a real element.
-      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-      this.props.hoisted.previousActiveElementRef.current?.focus?.();
-    }
-  };
-
   private _onMenuClosed() {
-    this._tryFocusPreviousActiveElement?.({
+    this.props.hoisted.tryFocusPreviousActiveElement?.({
       originalElement: this.props.hoisted.previousActiveElementRef.current,
       containsFocus: true,
       documentContainsFocus: getDocument()?.hasFocus() || false,
