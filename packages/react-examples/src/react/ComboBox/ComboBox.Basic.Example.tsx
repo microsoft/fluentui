@@ -10,7 +10,6 @@ import {
 } from '@fluentui/react';
 
 const options: IComboBoxOption[] = [
-  { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
