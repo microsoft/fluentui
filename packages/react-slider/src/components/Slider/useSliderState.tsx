@@ -274,13 +274,13 @@ export const useSliderState = (state: SliderState) => {
     return origin ? getPercent(origin, min, max) : 0;
   }, [max, min, origin]);
 
-  const getMarkValues = React.useMemo((): number[] => {
-    const markValues: number[] = [];
+  const markValues = React.useMemo((): number[] => {
+    const valueArray: number[] = [];
 
     // 1. We receive a boolean: mark for every step.
     if (typeof marks === 'boolean' && marks === true) {
       for (let i = 0; i < (max - min) / step + 1; i++) {
-        markValues.push(getPercent(min + step * i, min, max));
+        valueArray.push(getPercent(min + step * i, min, max));
       }
     } else if (Array.isArray(marks) && marks.length > 0) {
       for (let i = 0; i < marks.length; i++) {
@@ -288,19 +288,19 @@ export const useSliderState = (state: SliderState) => {
 
         // 2. We receive an array with numbers: mark for every value in array.
         if (typeof marksItem === 'number') {
-          markValues.push(getPercent(min + marksItem, min, max));
+          valueArray.push(getPercent(min + marksItem, min, max));
         }
       }
     }
 
-    return markValues;
+    return valueArray;
   }, [marks, max, min, step]);
 
   /**
    * Gets the current percentage position for the marks.
    */
-  const getMarkPercent = React.useMemo((): string[] => {
-    const valueArray: number[] = getMarkValues;
+  const markPercent = React.useMemo((): string[] => {
+    const valueArray: number[] = markValues;
     const result: string[] = [];
 
     // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
@@ -314,7 +314,7 @@ export const useSliderState = (state: SliderState) => {
     }
 
     return result;
-  }, [getMarkValues]);
+  }, [markValues]);
 
   const thumbWrapperStyles = {
     transform: vertical
@@ -337,23 +337,18 @@ export const useSliderState = (state: SliderState) => {
   };
 
   const marksWrapperStyles = marks
-    ? vertical
-      ? {
-          gridTemplateRows: getMarkPercent.join(''),
-          ...state.marksWrapper.style,
-        }
-      : {
-          gridTemplateColumns: getMarkPercent.join(''),
-          ...state.marksWrapper.style,
-        }
+    ? {
+        [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: markPercent.join(''),
+        ...state.marksWrapper.style,
+      }
     : {};
 
   /**
    * Renders the marks
    */
   const renderMarks = () => {
-    const marksPercent = getMarkPercent;
-    const marksValue = getMarkValues;
+    const marksPercent = markPercent;
+    const marksValue = markValues;
     const marksChildren: JSX.Element[] = [];
 
     for (let i = 0; i < marksPercent.length; i++) {

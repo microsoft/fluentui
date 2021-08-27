@@ -20,70 +20,70 @@ describe('Slider', () => {
   });
 
   describe('Snapshot Tests', () => {
-    it('renders (horizontal) Slider correctly', () => {
+    it('renders horizontal Slider correctly', () => {
       const { container } = render(<Slider defaultValue={5} min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders (vertical) Slider correctly', () => {
+    it('renders vertical Slider correctly', () => {
       const { container } = render(<Slider defaultValue={5} vertical min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders (disabled) Slider correctly', () => {
+    it('renders disabled Slider correctly', () => {
       const { container } = render(<Slider defaultValue={5} disabled min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders (horizontal origin) Slider correctly', () => {
+    it('renders horizontal origin Slider correctly', () => {
       const { container } = render(<Slider defaultValue={5} origin={2} min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders (vertical origin) Slider correctly', () => {
+    it('renders vertical origin Slider correctly', () => {
       const { container } = render(<Slider defaultValue={5} origin={2} vertical min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders Slider with (marks) correctly', () => {
+    it('renders Slider with marks correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={true} step={3} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders (horizontal) Slider with (custom marks) correctly', () => {
+    it('renders horizontal Slider with (custom marks) correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={[1, 3, 7, 8]} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders (vertical) Slider with (custom marks) correctly', () => {
+    it('renders vertical Slider with (custom marks) correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={[2, 5, 9, 18]} vertical />);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('Unit Tests', () => {
-    it('handles (id) prop', () => {
+    it('handles id prop', () => {
       render(<Slider id="test_id" data-testid="test" />);
       const sliderRoot = screen.getByTestId('test');
       expect(sliderRoot.getAttribute('id')).toEqual('test_id');
     });
 
-    it('applies the (defaultValue) prop', () => {
+    it('applies the defaultValue prop', () => {
       render(<Slider defaultValue={10} min={0} max={100} />);
       expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
     });
 
-    it('applies the (value) prop', () => {
+    it('applies the value prop', () => {
       render(<Slider value={10} min={0} max={100} />);
       expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
     });
 
-    it('clamps an initial (defaultValue) that is out of bounds', () => {
+    it('clamps an initial defaultValue that is out of bounds', () => {
       render(<Slider defaultValue={-10} min={0} max={100} />);
       expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('0');
     });
 
-    it('calls (onChange) when pointerDown', () => {
+    it('calls onChange when pointerDown', () => {
       const onChange = jest.fn();
 
       render(<Slider defaultValue={5} onChange={onChange} data-testid="test" />);
@@ -97,7 +97,7 @@ describe('Slider', () => {
       expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
     });
 
-    it('slides to (min/max) and executes onChange', () => {
+    it('slides to min/max and executes onChange', () => {
       const onChange = jest.fn();
 
       const wrapper: ReactWrapper = mount(<Slider onChange={onChange} />);
@@ -119,7 +119,7 @@ describe('Slider', () => {
       wrapper.unmount();
     });
 
-    it('handles (keydown) events', () => {
+    it('handles keydown events', () => {
       const onChange = jest.fn();
 
       render(<Slider defaultValue={50} min={0} max={100} onChange={onChange} data-testid="test" />);
@@ -160,7 +160,7 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(10);
     });
 
-    it('does not update when the controlled (value) prop is provided', () => {
+    it('does not update when the controlled value prop is provided', () => {
       render(<Slider value={50} min={0} max={100} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
@@ -169,7 +169,7 @@ describe('Slider', () => {
       expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('50');
     });
 
-    it('calls (onChange) with the correct value', () => {
+    it('calls onChange with the correct value', () => {
       const onChange = jest.fn();
 
       render(<Slider value={50} min={0} max={100} onChange={onChange} data-testid="test" />);
@@ -183,7 +183,7 @@ describe('Slider', () => {
       expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
     });
 
-    it('correctly calculates the (horizontal) origin (border-radius)', () => {
+    it('correctly calculates the horizontal origin border-radius', () => {
       const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
@@ -196,7 +196,7 @@ describe('Slider', () => {
       expect(sliderTrack?.getAttribute('style')).toContain('99px 0px 0px 99px');
     });
 
-    it('correctly calculates the (vertical) origin (border-radius)', () => {
+    it('correctly calculates the vertical origin border-radius', () => {
       const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
@@ -209,7 +209,7 @@ describe('Slider', () => {
       expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
     });
 
-    it('correctly calculates marks for (each step)', () => {
+    it('correctly calculates marks for each step', () => {
       const { container } = render(
         <Slider step={2} max={10} marks={true} marksWrapper={{ className: 'test-class' }} />,
       );
@@ -217,7 +217,7 @@ describe('Slider', () => {
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 20% 20% 20% 20% 20%');
     });
 
-    it('correctly calculates marks for (custom values)', () => {
+    it('correctly calculates marks for custom values', () => {
       const { container } = render(
         <Slider step={2} max={10} marks={[1, 4, 7, 9]} marksWrapper={{ className: 'test-class' }} />,
       );
@@ -225,13 +225,13 @@ describe('Slider', () => {
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 10% 30% 30% 20%');
     });
 
-    it('correctly calculates marks position at a (single custom value)', () => {
+    it('correctly calculates marks position at a single custom value', () => {
       const { container } = render(<Slider step={2} max={10} marks={[4]} marksWrapper={{ className: 'test-class' }} />);
       const sliderWrapper = container.querySelector('.test-class');
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 40%');
     });
 
-    it('correctly defines the (first and last) marks', () => {
+    it('correctly defines the first and last marks', () => {
       const { container } = render(<Slider max={10} marks={[0, 10]} marksWrapper={{ className: 'test-class' }} />);
       const sliderWrapper = container.querySelector('.test-class');
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 100%');
@@ -239,19 +239,19 @@ describe('Slider', () => {
       expect(container.querySelector('.lastMark')).toBeTruthy;
     });
 
-    it('correctly calculates the origin (border-radius) when given (min) as the origin', () => {
+    it('correctly calculates the origin border-radius when given min as the origin', () => {
       const { container } = render(<Slider origin={0} min={0} vertical />);
       const sliderTrack = container.querySelector('.ms-Slider-track');
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 
-    it('correctly calculates the origin (border-radius) when given (max) as the origin', () => {
+    it('correctly calculates the origin border-radius when given max as the origin', () => {
       const { container } = render(<Slider origin={100} max={100} vertical />);
       const sliderTrack = container.querySelector('.ms-Slider-track');
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 
-    it('handles a negative (step) prop', () => {
+    it('handles a negative step prop', () => {
       const onChange = jest.fn();
 
       render(<Slider value={50} min={0} max={100} step={-3} onChange={onChange} data-testid="test" />);
@@ -261,7 +261,7 @@ describe('Slider', () => {
       expect(onChange.mock.calls[0][1]).toEqual({ value: 47 });
     });
 
-    it('handles a decimal (step) prop', () => {
+    it('handles a decimal step prop', () => {
       const onChange = jest.fn();
 
       render(<Slider defaultValue={50} min={0} max={100} step={0.001} onChange={onChange} data-testid="test" />);
@@ -272,23 +272,23 @@ describe('Slider', () => {
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50.001 });
     });
 
-    it('handles (role) prop', () => {
+    it('handles role prop', () => {
       render(<Slider role="test" data-testid="test" />);
       const sliderRoot = screen.getByTestId('test');
       expect(sliderRoot.getAttribute('role')).toEqual('test');
     });
 
-    it('applies Slider (role) to thumb', () => {
+    it('applies Slider role to thumb', () => {
       render(<Slider />);
       expect(screen.getByRole('slider')).toBeTruthy();
     });
 
-    it('applies (aria-valuetext) correctly', () => {
+    it('applies aria-valuetext correctly', () => {
       render(<Slider defaultValue={3} />);
       expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual('3');
     });
 
-    it('applies (aria-valuetext) to the thumb', () => {
+    it('applies aria-valuetext to the thumb', () => {
       const values = ['small', 'medium', 'large'];
       const selected = 1;
       const getTextValue = (value: number) => values[value];
@@ -297,7 +297,7 @@ describe('Slider', () => {
       expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(values[selected]);
     });
 
-    it('applies (aria-valuenow) to the thumb', () => {
+    it('applies aria-valuenow to the thumb', () => {
       const wrapper: ReactWrapper = mount(<Slider defaultValue={3} />);
       const sliderRoot = wrapper.first();
 
@@ -314,12 +314,12 @@ describe('Slider', () => {
       wrapper.unmount();
     });
 
-    it('applies (aria-valuemax) to the thumb', () => {
+    it('applies aria-valuemax to the thumb', () => {
       render(<Slider max={3} />);
       expect(screen.getByRole('slider').getAttribute('aria-valuemax')).toEqual('3');
     });
 
-    it('applies (aria-valuemin) to the thumb', () => {
+    it('applies aria-valuemin to the thumb', () => {
       render(<Slider min={-1} />);
       expect(screen.getByRole('slider').getAttribute('aria-valuemin')).toEqual('-1');
     });
@@ -341,7 +341,7 @@ describe('Slider', () => {
     //   expect(document.activeElement).toEqual(sliderThumb);
     // });
 
-    it('does not allow (focus) on disabled Slider', () => {
+    it('does not allow focus on disabled Slider', () => {
       let sliderRef: any;
 
       const SliderTestComponent = () => {
@@ -358,7 +358,7 @@ describe('Slider', () => {
       expect(document.activeElement).toEqual(document.body);
     });
 
-    it('does not allow (change) on disabled Slider', () => {
+    it('does not allow change on disabled Slider', () => {
       const eventHandler = jest.fn();
 
       render(<Slider onChange={eventHandler} data-testid="test" disabled />);
@@ -371,7 +371,7 @@ describe('Slider', () => {
       expect(eventHandler).toBeCalledTimes(0);
     });
 
-    it('handles (onKeyDown) callback', () => {
+    it('handles onKeyDown callback', () => {
       const eventHandler = jest.fn();
 
       render(<Slider onKeyDown={eventHandler} data-testid="test" />);
@@ -383,7 +383,7 @@ describe('Slider', () => {
       expect(eventHandler).toBeCalledTimes(1);
     });
 
-    it('handles (onPointerDown) callback', () => {
+    it('handles onPointerDown callback', () => {
       const eventHandler = jest.fn();
 
       const wrapper: ReactWrapper = mount(<Slider onPointerDown={eventHandler} />);
