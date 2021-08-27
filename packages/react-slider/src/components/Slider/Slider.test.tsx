@@ -97,10 +97,14 @@ describe('Slider', () => {
       ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
     wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
-
     expect(onChange).toBeCalledTimes(1);
     expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
     expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 25, clientY: 0 });
+    expect(onChange).toBeCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 30 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(25%)');
   });
 
   it('slides to (min/max) and executes onChange', () => {
