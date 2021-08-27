@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "update dependencies",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
