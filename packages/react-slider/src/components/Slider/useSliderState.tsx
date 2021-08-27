@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import { mergeClasses } from '@fluentui/react-make-styles';
 import type { SliderState } from './Slider.types';
 
 /**
@@ -350,14 +351,14 @@ export const useSliderState = (state: SliderState) => {
     const marksPercent = markPercent;
     const marksValue = markValues;
     const marksChildren: JSX.Element[] = [];
-
     for (let i = 0; i < marksPercent.length; i++) {
       marksChildren.push(
         <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
           <div
-            className={`ms-Slider-mark ${
-              (marksValue[i] === 0 && 'firstMark') || (marksValue[i] === 100 && 'lastMark') || ''
-            }`}
+            className={mergeClasses(
+              'ms-Slider-mark',
+              (marksValue[i] === 0 && 'firstMark') || (marksValue[i] === 100 && 'lastMark') || '',
+            )}
             key={`mark-${i}`}
           />
         </div>,

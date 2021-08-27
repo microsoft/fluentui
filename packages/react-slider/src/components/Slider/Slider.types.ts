@@ -102,7 +102,7 @@ export interface SliderProps
    * When enabled, small marks are displayed across the Slider, showing potential steps.
    *
    * - If `true`, marks are visible at each `step`.
-   * - If `number[]`, marks will be displayed at each number. Numbers must be in ascending order.
+   * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
    */
   marks?: boolean | number[];
 
