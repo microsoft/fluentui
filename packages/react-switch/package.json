@@ -39,7 +39,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-label": "^9.0.0-alpha.30",
+    "@fluentui/react-label": "^9.0.0-alpha.31",
     "@fluentui/react-make-styles": "^9.0.0-alpha.59",
     "@fluentui/react-tabster": "^9.0.0-alpha.53",
     "@fluentui/react-utilities": "^9.0.0-alpha.41",

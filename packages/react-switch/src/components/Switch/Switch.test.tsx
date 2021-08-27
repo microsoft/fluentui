@@ -15,22 +15,22 @@ describe('Switch', () => {
   });
 
   describe('Snapshot Tests', () => {
-    it('renders a basic Switch (unchecked)', () => {
+    it('renders a basic Switch unchecked', () => {
       const { container } = render(<Switch defaultChecked={false} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders a basic Switch (checked)', () => {
+    it('renders a basic Switch checked', () => {
       const { container } = render(<Switch defaultChecked />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders a disabled Switch (unchecked)', () => {
+    it('renders a disabled Switch unchecked', () => {
       const { container } = render(<Switch defaultChecked={false} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders a disabled Switch (checked)', () => {
+    it('renders a disabled Switch checked', () => {
       const { container } = render(<Switch defaultChecked={true} />);
       expect(container).toMatchSnapshot();
     });
@@ -47,25 +47,25 @@ describe('Switch', () => {
   });
 
   describe('Unit Tests', () => {
-    it('handles (id) prop', () => {
+    it('handles id prop', () => {
       render(<Switch id="test_id" data-testid="test" />);
       const switchRoot = screen.getByTestId('test');
       expect(switchRoot.getAttribute('id')).toEqual('test_id');
     });
 
-    it('applies the (defaultChecked) prop', () => {
+    it('applies the defaultChecked prop', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       render(<Switch defaultChecked={true} input={{ ref: inputRef }} />);
       expect(inputRef.current?.checked).toEqual(true);
     });
 
-    it('applies the (checked) prop', () => {
+    it('applies the checked prop', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       render(<Switch checked={true} input={{ ref: inputRef }} />);
       expect(inputRef.current?.checked).toEqual(true);
     });
 
-    it('does not update when the controlled (checked) prop is provided', () => {
+    it('does not update when the controlled checked prop is provided', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       const eventHandler = jest.fn();
 
@@ -79,7 +79,7 @@ describe('Switch', () => {
       expect(inputRef.current?.checked).toEqual(false);
     });
 
-    it('calls (onChange) with the correct value', () => {
+    it('calls onChange with the correct value', () => {
       const eventHandler = jest.fn();
 
       render(<Switch onChange={eventHandler} />);
@@ -96,7 +96,7 @@ describe('Switch', () => {
       expect(eventHandler.mock.calls[2][1]).toEqual({ checked: true });
     });
 
-    it('does not allow (change) on a disabled Switch', () => {
+    it('does not allow change on a disabled Switch', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       const eventHandler = jest.fn();
 
@@ -109,7 +109,7 @@ describe('Switch', () => {
       expect(inputRef?.current?.checked).toEqual(true);
     });
 
-    it('handles (onKeyDown) callback', () => {
+    it('handles onKeyDown callback', () => {
       const eventHandler = jest.fn();
 
       render(<Switch onKeyDown={eventHandler} data-testid="test" />);
@@ -120,7 +120,7 @@ describe('Switch', () => {
       expect(eventHandler).toBeCalledTimes(1);
     });
 
-    it('handles (onClick) callback', () => {
+    it('handles onClick callback', () => {
       const eventHandler = jest.fn();
 
       render(<Switch onClick={eventHandler} data-testid="test" />);
@@ -131,7 +131,7 @@ describe('Switch', () => {
       expect(eventHandler).toBeCalledTimes(1);
     });
 
-    it('does not allow (focus) on disabled Switch', () => {
+    it('does not allow focus on disabled Switch', () => {
       const switchRef = React.createRef<HTMLInputElement>();
 
       render(<Switch ref={switchRef} data-testid="test" disabled />);
@@ -143,13 +143,13 @@ describe('Switch', () => {
   });
 
   describe('Accessibility Tests', () => {
-    it('renders the input slot (as input)', () => {
+    it('renders the input slot as input', () => {
       const { container } = render(<Switch input={{ className: 'test' }} />);
       const inputElement = container.querySelector('.test');
       expect(inputElement?.tagName).toEqual('INPUT');
     });
 
-    it('provides the input slot with a type of (checkbox)', () => {
+    it('provides the input slot with a type of checkbox', () => {
       const { container } = render(<Switch input={{ className: 'test' }} />);
       const inputElement = container.querySelector('.test');
       expect(inputElement?.getAttribute('type')).toEqual('checkbox');
