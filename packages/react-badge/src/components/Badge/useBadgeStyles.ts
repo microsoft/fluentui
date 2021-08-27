@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { BadgeState } from './Badge.types';
+import type { BadgeState } from './Badge.types';
 
 const useStyles = makeStyles({
   root: theme => ({

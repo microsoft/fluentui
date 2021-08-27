@@ -4,10 +4,10 @@ import { create } from '@fluentui/utilities/lib/test';
 import { ReactWrapper, mount } from 'enzyme';
 
 import { SpinButton } from './SpinButton';
-import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent } from '../../common/testUtilities';
 import { isConformant } from '../../common/isConformant';
+import type { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 
 describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;

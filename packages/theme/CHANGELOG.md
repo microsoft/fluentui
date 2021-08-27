@@ -1,8 +1,53 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.3.1)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.3.0..@fluentui/theme_v2.3.1)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.3.0)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.2.2..@fluentui/theme_v2.3.0)
+
+### Minor changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
+
+## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.2.2)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.2.1..@fluentui/theme_v2.2.2)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
+
+## [2.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.2.1)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.2.0..@fluentui/theme_v2.2.1)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.2.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.2.0)
+
+Thu, 29 Jul 2021 07:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.1.4..@fluentui/theme_v2.2.0)
+
+### Minor changes
+
+- Added optional name property to ITheme type ([PR #18028](https://github.com/microsoft/fluentui/pull/18028) by ashwin.gokhale98@gmail.com)
 
 ## [2.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.1.4)
 

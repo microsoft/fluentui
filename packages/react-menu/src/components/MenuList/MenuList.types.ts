@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { MenuListContextValue } from '../../contexts/menuListContext';
-import { SelectableHandler } from '../../selectable/index';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
+import type { SelectableHandler } from '../../selectable/index';
 
 interface MenuListCommons extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -55,6 +55,10 @@ export interface MenuListState extends ComponentState, MenuListCommons {
    * Selects a radio item, will de-select the currently selected ratio item
    */
   selectRadio: SelectableHandler;
+}
+
+export interface MenuListContextValues {
+  menuList: MenuListContextValue;
 }
 
 export interface UninitializedMenuListState

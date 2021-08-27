@@ -93,6 +93,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -112,6 +113,10 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -140,6 +145,10 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -261,6 +270,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -280,6 +290,10 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -308,6 +322,10 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -415,6 +433,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -434,6 +453,10 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -462,6 +485,10 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -583,6 +610,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -602,6 +630,10 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -630,6 +662,10 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -721,6 +757,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -740,6 +777,10 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -768,6 +809,10 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -889,6 +934,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -908,6 +954,10 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={false}
             onBlur={[Function]}
@@ -936,6 +986,10 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={false}
             onBlur={[Function]}
@@ -1027,6 +1081,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
   >
     <div>
       <svg
+        aria-label="Stacked bar chart 2nd example"
         className=
 
             {
@@ -1046,6 +1101,10 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -1074,6 +1133,10 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   opacity: ;
                   stroke-width: 2px;
                   stroke: #ffffff;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
                 }
             data-is-focusable={true}
             onBlur={[Function]}
@@ -1155,6 +1218,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="first Lorem ipsum dolor sit amet"
@@ -1211,7 +1275,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1244,6 +1307,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Winter is coming"
@@ -1300,7 +1364,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

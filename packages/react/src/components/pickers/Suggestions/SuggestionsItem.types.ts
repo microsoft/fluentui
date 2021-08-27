@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import type { IStyle, ITheme } from '../../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import type { ISuggestionModel } from './Suggestions.types';
 import { IIconProps } from '../../Icon/Icon.types';
-import { ISuggestionModel } from './Suggestions.types';
-
 /**
  * SuggestionItem component.
  * {@docCategory Pickers}

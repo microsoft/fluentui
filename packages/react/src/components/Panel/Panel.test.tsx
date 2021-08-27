@@ -4,10 +4,10 @@ import { mount } from 'enzyme';
 
 import { Panel } from './Panel';
 import { PanelBase } from './Panel.base';
-import { IPanel } from './Panel.types';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
+import type { IPanel } from './Panel.types';
 
 let div: HTMLElement;
 

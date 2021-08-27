@@ -5,8 +5,9 @@ import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
 
 jest.mock('../../contexts/menuContext');
 

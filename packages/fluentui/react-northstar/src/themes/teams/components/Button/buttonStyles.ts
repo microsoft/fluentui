@@ -113,7 +113,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           color: v.textColorHover,
           ...getIconFillOrOutlineStyles({ outline: false }),
         },
-
+        ':active': {
+          color: siteVariables.colorScheme.brand.backgroundPressed,
+        },
         ':focus': {
           boxShadow: 'none',
           ...borderFocusStyles[':focus'],
@@ -247,13 +249,14 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         minWidth: v.height,
         padding: 0,
 
-        ...(!p.inverted && {
-          ':hover': {
-            ...getIconFillOrOutlineStyles({ outline: false }),
-            color: v.textColorIconOnlyHover,
-            background: v.backgroundColorIconOnlyHover,
-          },
-        }),
+        ...(!p.inverted &&
+          !p.disabledFocusable && {
+            ':hover': {
+              ...getIconFillOrOutlineStyles({ outline: false }),
+              color: v.textColorIconOnlyHover,
+              background: v.backgroundColorIconOnlyHover,
+            },
+          }),
 
         ...(p.size === 'small' && {
           minWidth: v.sizeSmallHeight,

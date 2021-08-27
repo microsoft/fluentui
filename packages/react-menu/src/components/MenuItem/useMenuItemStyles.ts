@@ -1,19 +1,20 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { MenuItemState } from './MenuItem.types';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import type { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule(),
   root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    paddingRight: '8px',
-    paddingLeft: '12px',
+    paddingRight: '10px',
+    paddingLeft: '10px',
     height: '32px',
     display: 'flex',
     alignItems: 'center',
     fontSize: theme.global.type.fontSizes.base[300],
     cursor: 'pointer',
+    gap: '4px',
 
     ':hover': {
       backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
@@ -28,11 +29,14 @@ const useStyles = makeStyles({
     userSelect: 'none',
   }),
   content: {
-    marginRight: '8px',
+    paddingLeft: '2px',
+    paddingRight: '2px',
     backgroundColor: 'transparent',
     flexGrow: 1,
   },
   secondaryContent: theme => ({
+    paddingLeft: '2px',
+    paddingRight: '2px',
     color: theme.alias.color.neutral.neutralForeground3,
     ':hover': {
       color: theme.alias.color.neutral.neutralForeground3Hover,
@@ -46,7 +50,6 @@ const useStyles = makeStyles({
   icon: {
     width: '20px',
     height: '20px',
-    marginRight: '8px',
   },
   submenuIndicator: {
     width: '20px',

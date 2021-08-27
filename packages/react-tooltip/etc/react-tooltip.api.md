@@ -4,13 +4,11 @@
 
 ```ts
 
-import { Alignment } from '@fluentui/react-positioning';
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
-import { PopperVirtualElement } from '@fluentui/react-positioning';
-import { Position } from '@fluentui/react-positioning';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export interface OnVisibleChangeData {
@@ -25,23 +23,20 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 
 // @public
 export interface TooltipProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    align?: Alignment;
     children?: (React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: TooltipTriggerProps) => React_2.ReactNode) | null;
     content: ShorthandPropsCompat<ComponentPropsCompat>;
     hideDelay?: number;
     inverted?: boolean;
-    offset?: number;
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     pointing?: boolean;
-    position?: Position;
+    positioning?: PositioningShorthand;
     showDelay?: number;
-    target?: HTMLElement | PopperVirtualElement | null;
     triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
     visible?: boolean;
 }

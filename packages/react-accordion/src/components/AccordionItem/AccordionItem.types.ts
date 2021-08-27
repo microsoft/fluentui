@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
   disabled: boolean;
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
+}
+
+export interface AccordionItemContextValues {
+  accordionItem: AccordionItemContextValue;
 }
 
 export type AccordionItemSlots = {};
@@ -16,7 +20,14 @@ export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> 
   disabled: boolean;
 }
 
-export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {}
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
+  /**
+   * required value that identifies this item inside an Accordion component
+   */
+  value: AccordionItemValue;
+}
+
+export type AccordionItemValue = unknown;
 
 export interface AccordionItemState
   extends ComponentState<AccordionItemSlots>,
@@ -26,16 +37,4 @@ export interface AccordionItemState
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  /**
-   * Internal Context used by AccordionHeader and AccordionPanel communication
-   */
-  descendants: AccordionItemDescendant[];
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
-}
-
-export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  id: string;
 }

@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { PartialTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';
 import { useFluentProvider } from './useFluentProvider';
+import type { PartialTheme } from '@fluentui/react-theme';
 
 describe('useFluentProvider', () => {
   it('should merge themes', () => {

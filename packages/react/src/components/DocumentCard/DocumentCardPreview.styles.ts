@@ -1,6 +1,6 @@
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
-import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
+import type { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
 
 export const DocumentCardPreviewGlobalClassNames = {
   root: 'ms-DocumentCardPreview',

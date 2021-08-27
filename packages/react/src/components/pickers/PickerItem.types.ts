@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IRefObject } from '../../Utilities';
+import type { IRefObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-
 /**
  * PickerItem component.
  * {@docCategory Pickers}

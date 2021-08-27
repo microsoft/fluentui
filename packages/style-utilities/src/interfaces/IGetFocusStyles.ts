@@ -1,4 +1,4 @@
-import { IRawStyle } from '@fluentui/merge-styles';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 export interface IGetFocusStylesOptions {
   /**

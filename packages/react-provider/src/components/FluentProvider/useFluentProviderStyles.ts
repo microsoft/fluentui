@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { FluentProviderState } from './FluentProvider.types';
+import type { FluentProviderState } from './FluentProvider.types';
 
 const useStyles = makeStyles({
   root: theme => ({

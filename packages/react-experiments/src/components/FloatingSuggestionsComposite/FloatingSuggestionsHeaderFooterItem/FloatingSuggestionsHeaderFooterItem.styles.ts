@@ -4,7 +4,7 @@ import {
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
-import {
+import type {
   IFloatingSuggestionHeaderFooterItemStylesProps,
   IFloatingSuggestionHeaderFooterItemStyles,
 } from './FloatingSuggestionsHeaderFooterItem.types';

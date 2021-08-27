@@ -4,11 +4,10 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPopupRestoreFocusParams } from '../../Popup';
 import { resetIds } from '../../Utilities';
 import { Callout } from './Callout';
-import { ICalloutProps } from './Callout.types';
 import { CalloutContent } from './CalloutContent';
+import type { IPopupRestoreFocusParams } from '../../Popup';
 
 describe('Callout', () => {
   beforeEach(() => {
@@ -167,6 +166,41 @@ describe('Callout', () => {
     });
   });
 
+  it('prevents dismiss when preventDismissOnEvent is passed', () => {
+    jest.useFakeTimers();
+    let threwException = false;
+    const onDismiss = jest.fn();
+    const preventAllDismiss = () => true;
+
+    try {
+      ReactTestUtils.act(() => {
+        ReactDOM.render<HTMLDivElement>(
+          <div>
+            <button id="focustarget"> button </button>
+            <Callout target="#target" preventDismissOnEvent={preventAllDismiss} onDismiss={onDismiss}>
+              <div>Content</div>
+            </Callout>
+          </div>,
+          realDom,
+        );
+      });
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).toEqual(false);
+
+    ReactTestUtils.act(() => {
+      const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
+
+      // Move focus
+      jest.runAllTimers();
+
+      focusTarget.focus();
+
+      expect(onDismiss.mock.calls.length).toEqual(0);
+    });
+  });
+
   it('will correctly return focus to element that spawned it', () => {
     jest.useFakeTimers();
 
@@ -228,107 +262,5 @@ describe('Callout', () => {
     // Just to make sure that both elements are not undefined
     expect(previousFocusElement).not.toBeFalsy();
     expect(previousFocusElement).toEqual(focusedElement);
-  });
-
-  it('calls (onPositioned) when the position updates after mount', () => {
-    jest.useFakeTimers();
-    let threwException = false;
-    const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
-
-    let calloutRef: any;
-    let currentPosition: any = undefined;
-
-    const onPositioned = jest.fn((val: any) => {
-      currentPosition = val;
-    });
-
-    const CalloutPositionTestComponent = React.forwardRef((props: ICalloutProps, ref) => {
-      const [width, setWidth] = React.useState(500);
-
-      // Mocking getBoundingClientRect here so that ResizeObserver within Callout picks up width change.
-      Element.prototype.getBoundingClientRect = jest.fn(() => ({
-        width: width,
-        height: 50,
-        top: 50,
-        left: 600 - width,
-        bottom: 100,
-        right: 600,
-        x: 600,
-        y: 50,
-        toJSON: () => null,
-      }));
-
-      React.useImperativeHandle(ref, () => ({
-        setWidth: (val: number) => {
-          setWidth(val);
-        },
-        getWidth: () => {
-          return width;
-        },
-      }));
-
-      return (
-        <Callout onPositioned={onPositioned} {...props}>
-          <div style={{ width }}>Child</div>
-        </Callout>
-      );
-    });
-
-    const TestWrapper = () => {
-      calloutRef = React.useRef(null);
-
-      return (
-        <div style={{ width: 1000 }}>
-          <button id="test">target</button>
-          <CalloutPositionTestComponent ref={calloutRef} target="#test" />
-        </div>
-      );
-    };
-
-    // In order to have eventlisteners that have been added to the window to be called the JSX needs
-    // to be rendered into the real dom rather than the testutil simulated dom.
-    try {
-      ReactTestUtils.act(() => {
-        ReactDOM.render<HTMLDivElement>(<TestWrapper />, realDom);
-      });
-    } catch (e) {
-      threwException = true;
-    }
-    expect(threwException).toEqual(false);
-
-    // onPositioned is not called during the initial render
-    expect(currentPosition).toBe(undefined);
-
-    ReactTestUtils.act(() => {
-      jest.runAllTimers();
-
-      calloutRef.current.setWidth(100);
-    });
-
-    ReactTestUtils.act(() => {
-      jest.runAllTimers();
-
-      expect(calloutRef.current.getWidth()).toBe(100);
-
-      expect(onPositioned).toHaveBeenCalledTimes(1);
-
-      // onPositioned is called after initial render and resize
-      expect(currentPosition).toBeDefined();
-
-      // Beak is correctly positioned after resize
-      expect(currentPosition.beakPosition).toStrictEqual({
-        closestEdge: 2,
-        elementPosition: { right: 42, top: -8 },
-        targetEdge: 1,
-      });
-
-      // Callout element is correctly positioned after resize
-      expect(currentPosition.elementPosition).toStrictEqual({
-        right: -0,
-        top: 61.31370849898477,
-      });
-    });
-
-    Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   });
 });

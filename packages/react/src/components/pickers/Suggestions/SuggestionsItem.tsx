@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { classNamesFunction, css, initializeComponentRef } from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IconButton } from '../../../Button';
-import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
-
 import * as stylesImport from './Suggestions.scss';
+import type { IProcessedStyleSet } from '../../../Styling';
+import type { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+
 const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsItemStyleProps, ISuggestionsItemStyles>();

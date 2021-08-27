@@ -2,9 +2,9 @@ import * as React from 'react';
 import { useMergedRefs, useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
+import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
 
 /**
  * Returns the props and state required to render the component

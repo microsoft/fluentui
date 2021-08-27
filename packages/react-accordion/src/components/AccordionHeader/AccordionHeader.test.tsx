@@ -39,8 +39,8 @@ describe('AccordionHeader', () => {
   it('should invoke click and toggle', () => {
     const mockClick = jest.fn();
     const component = renderer.create(
-      <Accordion index={0} onToggle={mockClick}>
-        <AccordionItem>
+      <Accordion openItems={0} onToggle={mockClick}>
+        <AccordionItem value={0}>
           <AccordionHeader button={{ onClick: mockClick }}>Header</AccordionHeader>
           <AccordionPanel>Panel</AccordionPanel>
         </AccordionItem>
@@ -55,8 +55,8 @@ describe('AccordionHeader', () => {
   it('should invoke click and prevent toggle', () => {
     const mockClick = jest.fn();
     const component = renderer.create(
-      <Accordion index={0} onToggle={mockClick}>
-        <AccordionItem>
+      <Accordion openItems={0} onToggle={mockClick}>
+        <AccordionItem value={0}>
           <AccordionHeader button={{ onClick: mockClick }}>Header</AccordionHeader>
           <AccordionPanel>Panel</AccordionPanel>
         </AccordionItem>

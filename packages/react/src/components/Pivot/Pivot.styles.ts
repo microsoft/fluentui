@@ -1,14 +1,14 @@
-import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import {
   AnimationVariables,
   getGlobalClassNames,
   HighContrastSelector,
-  IStyle,
   normalize,
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import type { IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import type { IStyle } from '@fluentui/style-utilities';
 
 const globalClassNames = {
   count: 'ms-Pivot-count',

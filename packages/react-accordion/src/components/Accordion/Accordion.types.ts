@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Descendant } from '@fluentui/react-utilities';
-
-export type AccordionIndex = number | number[];
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
 
@@ -12,11 +11,15 @@ export interface AccordionContextValue {
   /**
    * The list of opened panels by index
    */
-  openItems: number[];
+  openItems: AccordionItemValue[];
   /**
    * Callback used by AccordionItem to request a change on it's own opened state
    */
   requestToggle: AccordionToggleEventHandler;
+}
+
+export interface AccordionContextValues {
+  accordion: AccordionContextValue;
 }
 
 export type AccordionSlots = {};
@@ -37,18 +40,18 @@ export interface AccordionCommons extends React.HTMLAttributes<HTMLElement> {
 }
 
 export interface AccordionToggleData {
-  index: number;
+  value: AccordionItemValue;
 }
 
 export interface AccordionProps extends ComponentProps<AccordionSlots>, Partial<AccordionCommons> {
   /**
    * Controls the state of the panel
    */
-  index?: AccordionIndex;
+  openItems?: AccordionItemValue | AccordionItemValue[];
   /**
    * Default value for the uncontrolled state of the panel
    */
-  defaultIndex?: AccordionIndex;
+  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
   onToggle?: AccordionToggleEventHandler;
 }
 
@@ -57,18 +60,4 @@ export interface AccordionState extends ComponentState<AccordionSlots>, Accordio
    * Ref to the root slot
    */
   ref: React.Ref<HTMLElement>;
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  descendants: AccordionDescendant[];
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
-}
-export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  /**
-   * Indicates is a determined AccordionItem descending the Accordion is or not disabled
-   */
-  disabled: boolean;
 }

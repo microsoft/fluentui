@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -26,10 +26,10 @@ export const inputShorthandProps: (keyof InputSlots)[];
 export type InputSlots = {
     input: React_2.InputHTMLAttributes<HTMLInputElement>;
     inputWrapper: React_2.HTMLAttributes<HTMLElement>;
-    bookendBefore: React_2.HTMLAttributes<HTMLElement>;
-    bookendAfter: React_2.HTMLAttributes<HTMLElement>;
-    insideStart: React_2.HTMLAttributes<HTMLElement>;
-    insideEnd: React_2.HTMLAttributes<HTMLElement>;
+    bookendBefore?: React_2.HTMLAttributes<HTMLElement>;
+    bookendAfter?: React_2.HTMLAttributes<HTMLElement>;
+    insideStart?: React_2.HTMLAttributes<HTMLElement>;
+    insideEnd?: React_2.HTMLAttributes<HTMLElement>;
 };
 
 // @public

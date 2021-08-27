@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
-import { ARIAButtonProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
+import type { ARIAButtonProps } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
@@ -11,6 +11,10 @@ export interface AccordionHeaderContextValue {
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   size: AccordionHeaderSize;
+}
+
+export interface AccordionHeaderContextValues {
+  accordionHeader: AccordionHeaderContextValue;
 }
 
 export type AccordionHeaderSlots = {
@@ -25,7 +29,7 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon: React.HTMLAttributes<HTMLElement>;
+  icon?: React.HTMLAttributes<HTMLElement>;
   children: React.HTMLAttributes<HTMLElement>;
 };
 

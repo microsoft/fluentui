@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IImageProps } from '../Image/Image.types';
-import { IStyle, ITheme } from '../../Styling';
-import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
+import type { IImageProps } from '../Image/Image.types';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`

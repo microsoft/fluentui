@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { PopoverSize } from '../Popover/Popover.types';
-import { PopoverSurfaceState } from './PopoverSurface.types';
+import type { PopoverSize } from '../Popover/Popover.types';
+import type { PopoverSurfaceState } from './PopoverSurface.types';
 
 export const arrowHeights: Record<PopoverSize, number> = {
   small: 6,

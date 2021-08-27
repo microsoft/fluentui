@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ObjectShorthandProps, resolveShorthand, ShorthandProps, useEventCallback } from '@fluentui/react-utilities';
 import { Enter, Space } from '@fluentui/keyboard-keys';
+import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
 
 function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   if (typeof disabled === 'string') {
@@ -20,15 +21,18 @@ export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required
  */
-export function useARIAButton(
+export function useARIAButton<Required extends boolean = false>(
   value: ShorthandProps<ARIAButtonProps>,
-  defaultProps?: ARIAButtonProps,
-): ObjectShorthandProps<ARIAButtonProps> {
-  const shorthand = resolveShorthand(value, defaultProps);
+  options?: ResolveShorthandOptions<ARIAButtonProps, Required>,
+): Required extends false ? ObjectShorthandProps<ARIAButtonProps> | undefined : ObjectShorthandProps<ARIAButtonProps> {
+  const shorthand = resolveShorthand(value, options);
 
-  const { onClick, onKeyDown, onKeyUp, ['aria-disabled']: ariaDisabled } = shorthand;
+  const { onClick, onKeyDown, onKeyUp, ['aria-disabled']: ariaDisabled } = (shorthand ||
+    {}) as ObjectShorthandProps<ARIAButtonProps>;
 
-  const disabled = mergeARIADisabled((shorthand.as === 'button' ? shorthand.disabled : undefined) ?? ariaDisabled);
+  const disabled = mergeARIADisabled(
+    (shorthand && shorthand.as === 'button' ? shorthand.disabled : undefined) ?? ariaDisabled,
+  );
 
   const onClickHandler: ARIAButtonProps['onClick'] = useEventCallback(ev => {
     if (disabled) {
@@ -82,26 +86,29 @@ export function useARIAButton(
     }
   });
 
-  if (shorthand.as === 'button' || shorthand.as === undefined) {
-    return shorthand; // there's nothing to be done if as prop === 'button' or undefined
-  }
+  if (shorthand) {
+    if (shorthand.as === 'button' || shorthand.as === undefined) {
+      return shorthand; // there's nothing to be done if as prop === 'button' or undefined
+    }
 
-  if (!shorthand.hasOwnProperty('role')) {
-    shorthand.role = 'button';
-  }
-  if (!shorthand.hasOwnProperty('aria-disabled')) {
-    shorthand['aria-disabled'] = disabled;
-  }
+    if (!shorthand.hasOwnProperty('role')) {
+      shorthand.role = 'button';
+    }
+    if (!shorthand.hasOwnProperty('aria-disabled')) {
+      shorthand['aria-disabled'] = disabled;
+    }
 
-  shorthand.onClick = onClickHandler;
-  shorthand.onKeyDown = onKeyDownHandler;
-  shorthand.onKeyUp = onKeyupHandler;
+    shorthand.onClick = onClickHandler;
+    shorthand.onKeyDown = onKeyDownHandler;
+    shorthand.onKeyUp = onKeyupHandler;
 
-  // Add keydown event handler for all other non-anchor elements.
-  if (shorthand.as !== 'a') {
-    if (!shorthand.hasOwnProperty('tabIndex')) {
-      shorthand.tabIndex = disabled ? undefined : 0;
+    // Add keydown event handler for all other non-anchor elements.
+    if (shorthand.as !== 'a') {
+      if (!shorthand.hasOwnProperty('tabIndex')) {
+        shorthand.tabIndex = disabled ? undefined : 0;
+      }
     }
   }
+
   return shorthand;
 }
