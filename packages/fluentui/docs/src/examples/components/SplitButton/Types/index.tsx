@@ -20,7 +20,7 @@ const SplitButton = () => (
       examplePath="components/SplitButton/Types/SplitButtonExampleSmall"
     />
     <ComponentExample
-      title="Flat / Elevated"
+      title="Flat or Elevated"
       description="A button can be elevated or flat."
       examplePath="components/SplitButton/Types/SplitButtonExampleFlat"
     />
