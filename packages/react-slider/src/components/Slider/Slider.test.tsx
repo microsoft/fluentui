@@ -80,24 +80,55 @@ describe('Slider', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
   });
 
+  it('slides to the correct position when dragged in-between steps', () => {
+    const onChange = jest.fn();
+    const wrapper: ReactWrapper = mount(
+      <Slider
+        step={10}
+        thumbWrapper={{ className: 'thumb-wrapper' }}
+        activeRail={{ className: 'active-rail' }}
+        onChange={onChange}
+      />,
+    );
+
+    const activeRail = wrapper.find('.active-rail');
+
+    activeRail.getDOMNode().getBoundingClientRect = () =>
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
+
+    expect(onChange).toBeCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+  });
+
   it('slides to (min/max) and executes onChange', () => {
     const onChange = jest.fn();
 
-    const wrapper: ReactWrapper = mount(<Slider onChange={onChange} />);
-    const sliderRoot = wrapper.first();
+    const wrapper: ReactWrapper = mount(
+      <Slider
+        onChange={onChange}
+        activeRail={{ className: 'active-rail' }}
+        thumbWrapper={{ className: 'thumb-wrapper' }}
+      />,
+    );
+    const activeRail = wrapper.find('.active-rail');
 
     expect(onChange).toBeCalledTimes(0);
 
-    sliderRoot.getDOMNode().getBoundingClientRect = () =>
+    activeRail.getDOMNode().getBoundingClientRect = () =>
       ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
     expect(onChange).toBeCalledTimes(1);
     expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(100%)');
 
-    sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
     expect(onChange).toBeCalledTimes(2);
     expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(0%)');
 
     wrapper.unmount();
   });
