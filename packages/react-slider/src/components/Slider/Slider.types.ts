@@ -71,7 +71,7 @@ export interface SliderProps
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value.
+   * will snap to the closest available value. This must be a positive value.
    * @default 1
    */
   step?: number;
