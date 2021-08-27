@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 import { nullRender } from './nullRender';
 import { getNativeElementProps } from '../utils/getNativeElementProps';
 import { omit } from '../utils/omit';
+import type { ComponentState, ShorthandRenderFunction, SlotPropsRecord } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getRootSlot<SlotProps extends SlotPropsRecord = {}>(state: ComponentState<any>) {
@@ -50,7 +49,7 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
    */
   const typedSlotNames = slotNames as Array<keyof SlotProps> | undefined;
 
-  type Slots = { [K in keyof SlotProps]: React.ElementType<SlotProps[K]> };
+  type Slots = { [K in keyof SlotProps]-?: React.ElementType<SlotProps[K]> };
 
   const slots = {} as Slots;
 
@@ -58,17 +57,13 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
 
   if (typedSlotNames) {
     for (const name of typedSlotNames) {
-      const { children, ...rest } = typedState[name];
-
-      const slot = (typedState.components?.[name] || 'div') as Slots[typeof name];
-
-      // TODO: rethink null rendering scenario. This fails in some cases, e.g: CompoundButton, AccordionHeader, Input
-      if (typeof slot === 'string' && children === undefined) {
+      if (typedState[name] === undefined) {
         slots[name] = nullRender;
         continue;
-      } else {
-        slots[name] = slot;
       }
+      const { children, ...rest } = typedState[name];
+
+      slots[name] = (typedState.components?.[name] || 'div') as Slots[typeof name];
 
       if (typeof children === 'function') {
         const render = children as ShorthandRenderFunction<SlotProps[keyof SlotProps]>;
@@ -86,7 +81,7 @@ export function getSlots<SlotProps extends SlotPropsRecord = {}>(state: Componen
   const [root, rootProps] = getRootSlot(state);
 
   const typedSlotProps = slotProps as {
-    [Key in keyof SlotProps]: UnionToIntersection<SlotProps[Key]>;
+    [Key in keyof SlotProps]-?: UnionToIntersection<NonNullable<SlotProps[Key]>>;
   };
 
   return {

@@ -1,20 +1,21 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
   resolveShorthandProps,
+  makeMergeProps,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  useEventCallback,
 } from '@fluentui/react-utilities';
-import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
+import { CheckboxProps, CheckboxState } from './Checkbox.types';
+import { Mixed12Regular, Mixed16Regular, Checkmark12Regular, Checkmark16Regular } from './DefaultIcons';
 import { Label } from '@fluentui/react-label';
-import { DefaultCheckmarkIcon, DefaultMixedIcon } from './DefaultIcons';
 
 /**
- * Array of all shorthand properties listed in CheckboxShorthandProps
+ * Array of all shorthand properties listed as the keys of CheckboxSlots
  */
-export const checkboxShorthandProps: CheckboxShorthandProps[] = ['label', 'indicator', 'input'];
+export const checkboxShorthandProps = ['indicator', 'input'] as const;
 
 const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandProps });
 
@@ -26,32 +27,24 @@ const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandP
  *
  * @param props - props from this instance of Checkbox
  * @param ref - reference to root HTMLElement of Checkbox
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useCheckbox = (
-  props: CheckboxProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CheckboxProps,
-): CheckboxState => {
-  const state = mergeProps(
+export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLElement>): CheckboxState => {
+  const state: CheckboxState = mergeProps(
     {
       ref,
+      as: props.children !== undefined ? Label : 'span',
       id: useId('checkbox-'),
       size: 'medium',
       labelPosition: 'after',
-      label: {
-        as: Label,
-      },
-      indicator: {
-        as: 'div',
-      },
       input: {
         as: 'input',
         type: 'checkbox',
         children: null,
       },
+      indicator: {
+        as: 'div',
+      },
     },
-    defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
@@ -69,31 +62,31 @@ export const useCheckbox = (
     },
     [state.onChange, setCheckedInternal],
   );
+
   state.input.checked = checked === true;
   state.checked = checked ? checked : false;
-  state.indicator.children = checked === 'mixed' ? <DefaultMixedIcon /> : <DefaultCheckmarkIcon />;
+
+  if (!state.indicator.children) {
+    if (state.size === 'medium') {
+      state.indicator.children = checked === 'mixed' ? <Mixed12Regular /> : <Checkmark12Regular />;
+    } else {
+      state.indicator.children = checked === 'mixed' ? <Mixed16Regular /> : <Checkmark16Regular />;
+    }
+  }
 
   const userOnChange = state.input.onChange;
-  state.input.onChange = React.useCallback(
-    ev => {
-      userOnChange?.(ev);
-      setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
-    },
-    [userOnChange, setChecked],
-  );
+  state.input.onChange = useEventCallback(ev => {
+    ev.stopPropagation();
+    userOnChange?.(ev);
+    setChecked(ev, ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked);
+  });
 
   if (state.disabled !== undefined) {
-    state.label.disabled = state.disabled;
     state.input.disabled = state.disabled;
   }
 
   if (state.required !== undefined) {
-    state.label.required = state.required;
     state.input.required = state.required;
-  }
-
-  if (!state.label.htmlFor) {
-    state.label.htmlFor = state.id;
   }
 
   state.input.id = state.id;

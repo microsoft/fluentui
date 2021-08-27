@@ -131,7 +131,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-checkbox/src"
     },
-    "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
+    "@fluentui/react-components": {
+      "root": "packages/react-components",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/src"
+    },
     "@fluentui/react-compose": { "root": "packages/react-compose", "projectType": "library" },
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },
     "@fluentui/react-context-selector": {
@@ -221,7 +225,6 @@
       "projectType": "library",
       "sourceRoot": "packages/react-theme/src"
     },
-    "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": {
       "root": "packages/react-tooltip",
       "projectType": "library",
@@ -298,6 +301,16 @@
       "root": "packages/react-storybook-addon",
       "projectType": "library",
       "sourceRoot": "packages/react-storybook-addon/src"
+    },
+    "@fluentui/react-switch": {
+      "root": "packages/react-switch",
+      "projectType": "library",
+      "sourceRoot": "packages/react-switch/src"
+    },
+    "@fluentui/react-conformance-make-styles": {
+      "root": "packages/react-conformance-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-conformance-make-styles/src"
     }
   }
 }

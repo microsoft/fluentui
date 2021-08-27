@@ -66,6 +66,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -245,6 +246,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -424,6 +426,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <div>
               <button
@@ -946,6 +949,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 }
                                           >
                                             <p
+                                              aria-level={3}
                                               className=
                                                   ms-TeachingBubble-headline
                                                   {
@@ -1172,6 +1176,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=

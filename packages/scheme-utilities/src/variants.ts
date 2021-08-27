@@ -1,5 +1,6 @@
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { VariantThemeType } from './variantThemeType';
+import type { IPalette, ISemanticColors, ITheme, IPartialTheme } from '@fluentui/theme';
 
 function makeThemeFromPartials(
   originalTheme: ITheme,

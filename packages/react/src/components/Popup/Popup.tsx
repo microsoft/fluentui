@@ -7,9 +7,9 @@ import {
   getNativeProps,
   getWindow,
 } from '../../Utilities';
-import { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 import { useWindow } from '@fluentui/react-window-provider';
+import type { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const async = useAsync();

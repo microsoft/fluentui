@@ -324,6 +324,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="thumbnail"
                 draggable={false}
                 role="columnheader"
@@ -346,7 +347,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -380,7 +380,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-thumbnail"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -513,6 +512,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="key"
                 draggable={false}
                 role="columnheader"
@@ -535,7 +535,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -566,7 +565,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-key"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -647,6 +645,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="name"
                 draggable={false}
                 role="columnheader"
@@ -669,7 +668,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -700,7 +698,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-name"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -781,6 +778,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="description"
                 draggable={false}
                 role="columnheader"
@@ -803,7 +801,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -834,7 +831,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-description"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -915,6 +911,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="color"
                 draggable={false}
                 role="columnheader"
@@ -937,7 +934,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -968,7 +964,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-color"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -1049,6 +1044,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="shape"
                 draggable={false}
                 role="columnheader"
@@ -1071,7 +1067,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1102,7 +1097,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-shape"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -1183,6 +1177,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="location"
                 draggable={false}
                 role="columnheader"
@@ -1205,7 +1200,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1236,7 +1230,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-location"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -1317,6 +1310,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="width"
                 draggable={false}
                 role="columnheader"
@@ -1339,7 +1333,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1370,7 +1363,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-width"
                     onClick={[Function]}
                     onContextMenu={[Function]}
@@ -1451,6 +1443,7 @@ Array [
                     }
                 data-automationid="ColumnsHeaderColumn"
                 data-is-draggable={false}
+                data-is-focusable="true"
                 data-item-key="height"
                 draggable={false}
                 role="columnheader"
@@ -1473,7 +1466,6 @@ Array [
                       }
                 >
                   <span
-                    aria-haspopup={false}
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1504,7 +1496,6 @@ Array [
                           top: 1px;
                           z-index: 1;
                         }
-                    data-is-focusable={true}
                     id="header2-height"
                     onClick={[Function]}
                     onContextMenu={[Function]}

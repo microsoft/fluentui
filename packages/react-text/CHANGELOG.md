@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Aug 2021 07:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.7)
+
+Fri, 27 Aug 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.6..@fluentui/react-text_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.40 ([PR #19462](https://github.com/microsoft/fluentui/pull/19462) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.6)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.5..@fluentui/react-text_v9.0.0-alpha.6)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.39 ([PR #19486](https://github.com/microsoft/fluentui/pull/19486) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.5)
+
+Tue, 24 Aug 2021 07:34:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.4..@fluentui/react-text_v9.0.0-alpha.5)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19471](https://github.com/microsoft/fluentui/pull/19471) by dzearing@hotmail.com)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.4)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.3..@fluentui/react-text_v9.0.0-alpha.4)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.3)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.2..@fluentui/react-text_v9.0.0-alpha.3)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.37 ([PR #19273](https://github.com/microsoft/fluentui/pull/19273) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.2)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.1..@fluentui/react-text_v9.0.0-alpha.2)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.32 ([PR #19341](https://github.com/microsoft/fluentui/pull/19341) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.1)
+
+Thu, 12 Aug 2021 07:34:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.0..@fluentui/react-text_v9.0.0-alpha.1)
+
+### Changes
+
+- Initial release ([PR #19363](https://github.com/microsoft/fluentui/pull/19363) by andredias@microsoft.com)
+
+## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.0)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.0.0-alpha.0..@fluentui/react-text_v9.0.0-alpha.0)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.35 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.0.0-alpha.0)
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 /**
  * {@docCategory MenuGroup}
@@ -16,4 +17,8 @@ export interface MenuGroupState extends ComponentState, React.HTMLAttributes<HTM
    * id applied to the DOM element of `MenuGroupHeader`
    */
   headerId: string;
+}
+
+export interface MenuGroupContextValues {
+  menuGroup: MenuGroupContextValue;
 }

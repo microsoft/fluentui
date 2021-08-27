@@ -100,6 +100,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <svg className={this._classNames.chart}>
+                    {points!.chartTitle && <title>{points!.chartTitle}</title>}
                     <g
                       id={keyVal}
                       key={keyVal}
@@ -279,6 +280,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         value = 1;
       }
       startingPoint.push(prevPosition);
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
       return (
         <rect
           key={index}

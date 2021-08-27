@@ -1,3 +1,2 @@
-export { ISignalProps } from './Signal';
-
-export { ISignalFieldProps } from './SignalField';
+export type { ISignalProps } from './Signal';
+export type { ISignalFieldProps } from './SignalField';

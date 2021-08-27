@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, htmlElementProperties } from '../../../Utilities';
-import { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackItem.types';
 import { StackItemStyles as styles } from './StackItem.styles';
+import type { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackItem.types';
 
 const StackItemView: IStackItemComponent['view'] = props => {
   const { children } = props;

@@ -1,8 +1,8 @@
 import { Customizations, getWindow } from '@fluentui/utilities';
-import { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { IRawStyle } from '@fluentui/merge-styles';
 import { createTheme } from '@fluentui/theme/lib/createTheme';
+import type { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 export { createTheme } from '@fluentui/theme/lib/createTheme';
 

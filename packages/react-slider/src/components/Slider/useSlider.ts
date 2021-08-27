@@ -1,36 +1,45 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { SliderProps, SliderShorthandProps } from './Slider.types';
+import { useSliderState } from './useSliderState';
+import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
 export const sliderShorthandProps: SliderShorthandProps[] = [
-  /* TODO add shorthand property names */
+  'rail',
+  'sliderWrapper',
+  'trackWrapper',
+  'track',
+  'thumbWrapper',
+  'thumb',
+  'activeRail',
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const mergeProps = makeMergeProps<any>({ deepMerge: sliderShorthandProps });
-
 /**
- * Create the state required to render Slider.
- *
- * The returned state can be modified with hooks such as useSliderStyles,
- * before being passed to renderSlider.
- *
- * @param props - props from this instance of Slider
- * @param ref - reference to root HTMLElement of Slider
- * @param defaultProps - (optional) default prop values provided by the implementing type
+ * Given user props, returns state and render function for a Slider.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): any => {
+export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
+  const mergeProps = makeMergeProps<SliderState>({
+    deepMerge: sliderShorthandProps,
+  });
+
   const state = mergeProps(
     {
       ref,
+      sliderWrapper: { as: 'div', children: null },
+      rail: { as: 'div', children: null },
+      trackWrapper: { as: 'div', children: null },
+      track: { as: 'div', children: null },
+      thumbWrapper: { as: 'div', children: null },
+      thumb: { as: 'div', children: null },
+      activeRail: { as: 'div', children: null },
     },
     defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
     resolveShorthandProps(props, sliderShorthandProps),
   );
+
+  useSliderState(state);
 
   return state;
 };
