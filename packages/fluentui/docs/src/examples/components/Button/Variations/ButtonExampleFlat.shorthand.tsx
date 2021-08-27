@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Text, Flex } from '@fluentui/react-northstar';
 
-const ButtonExampleFluid = () => (
+const ButtonExampleFlat = () => (
   <>
     <Flex gap="gap.small" padding="padding.medium" vAlign="center">
       <Button content="Elevated" />
