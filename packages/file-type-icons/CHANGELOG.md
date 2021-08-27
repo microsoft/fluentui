@@ -1,8 +1,21 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.7.0)
+
+Fri, 27 Aug 2021 12:24:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.6.30..@uifabric/file-type-icons_v7.7.0)
+
+### Minor changes
+
+- Bump @uifabric/styling to v7.19.1 ([PR #18923](https://github.com/microsoft/fluentui/pull/18923) by tmichon@microsoft.com)
+
+### Patches
+
+- Pass Icon 'title' as alt text for File Type Icons ([PR #18923](https://github.com/microsoft/fluentui/pull/18923) by tmichon@microsoft.com)
 
 ## [7.6.30](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.6.30)
 

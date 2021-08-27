@@ -2,6 +2,29 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 27 Aug 2021 12:24:10 GMT",
+      "tag": "@uifabric/fabric-website_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.15.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "f0cae03cfc5fdd749e228c75a9d6961e5b2a510b",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.7.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "f0cae03cfc5fdd749e228c75a9d6961e5b2a510b",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 12:22:56 GMT",
       "tag": "@uifabric/fabric-website_v7.16.92",
       "version": "7.16.92",

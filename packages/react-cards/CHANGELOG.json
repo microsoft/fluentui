@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Fri, 27 Aug 2021 12:24:10 GMT",
+      "tag": "@uifabric/react-cards_v0.116.0",
+      "version": "0.116.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.7.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "f0cae03cfc5fdd749e228c75a9d6961e5b2a510b",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 12:24:13 GMT",
       "tag": "@uifabric/react-cards_v0.115.66",
       "version": "0.115.66",

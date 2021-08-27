@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.175.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.175.0)
+
+Fri, 27 Aug 2021 12:24:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.174.1..office-ui-fabric-react_v7.175.0)
+
+### Minor changes
+
+- Bump @uifabric/foundation to v7.10.0 ([PR #18923](https://github.com/microsoft/fluentui/pull/18923) by tmichon@microsoft.com)
+
+### Patches
+
+- Pass Icon 'title' as alt text for File Type Icons ([PR #18923](https://github.com/microsoft/fluentui/pull/18923) by tmichon@microsoft.com)
 
 ## [7.174.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.174.1)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update snapshots",
-  "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
