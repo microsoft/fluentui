@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { AccordionPanelState } from './AccordionPanel.types';
+import type { AccordionPanelState } from './AccordionPanel.types';
 
 /**
  * Styles for the root slot

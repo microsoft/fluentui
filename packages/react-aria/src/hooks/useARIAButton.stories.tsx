@@ -1,6 +1,8 @@
-import { ComponentState, getSlots } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ARIAButtonAsElementProps, ARIAButtonProps, useARIAButton } from './useARIAButton';
+import { useARIAButton } from './useARIAButton';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ARIAButtonAsElementProps, ARIAButtonProps } from './useARIAButton';
 
 type Slots = {
   button: ARIAButtonProps;

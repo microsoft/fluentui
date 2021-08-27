@@ -4,10 +4,10 @@
 
 ```ts
 
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { ResolveShorthandOptions } from '@fluentui/react-utilities';
-import { ShorthandProps } from '@fluentui/react-utilities';
+import type { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import type { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type ARIAButtonAsAnchorProps = React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
