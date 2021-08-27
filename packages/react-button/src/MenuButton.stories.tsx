@@ -2,8 +2,8 @@ import * as React from 'react';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuTrigger } from '@fluentui/react-menu';
-import type { MenuProps } from '@fluentui/react-menu';
 // @ts-ignore
+import type { MenuProps } from '@fluentui/react-menu';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 
 import { MenuButton } from './MenuButton';
