@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SplitButton, Text, Flex } from '@fluentui/react-northstar';
 
-const ButtonExampleFluid = () => (
+const SplitButtonExampleFlat = () => (
   <>
     <Flex gap="gap.small" padding="padding.medium" vAlign="center">
       <SplitButton
