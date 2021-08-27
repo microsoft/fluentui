@@ -284,14 +284,8 @@ export const useSliderState = (state: SliderState) => {
         valueArray.push(getPercent(min + step * i, min, max));
       }
     } else if (Array.isArray(marks) && marks.length > 0) {
-      for (let i = 0; i < marks.length; i++) {
-        const marksItem = marks[i];
-
-        // 2. We receive an array with numbers: mark for every value in array.
-        if (typeof marksItem === 'number') {
-          valueArray.push(getPercent(min + marksItem, min, max));
-        }
-      }
+      // 2. We receive an array with numbers: mark for every value in array.
+      return marks.map(marksItem => getPercent(min + marksItem, min, max));
     }
 
     return valueArray;
