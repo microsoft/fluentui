@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ChevronDownIcon } from './DefaultIcons';
-import { MenuButtonProps } from './MenuButton.types';
 import { renderMenuButton } from './renderMenuButton';
 import { useMenuButton } from './useMenuButton';
 import { useMenuButtonStyles } from './useMenuButtonStyles';
+import type { MenuButtonProps } from './MenuButton.types';
 
 /**
  * Define a styled MenuButton, using the `useMenuButton` hook.

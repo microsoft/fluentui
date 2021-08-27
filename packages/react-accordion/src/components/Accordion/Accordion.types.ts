@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccordionItemContextValue, AccordionItemContextValues, AccordionItemState } from './AccordionItem.types';
+import type { AccordionItemContextValue, AccordionItemContextValues, AccordionItemState } from './AccordionItem.types';
 
 export function useAccordionItemContextValues(state: AccordionItemState): AccordionItemContextValues {
   const { disabled, onHeaderClick, open } = state;

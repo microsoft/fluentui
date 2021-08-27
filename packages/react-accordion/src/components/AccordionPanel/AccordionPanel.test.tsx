@@ -3,7 +3,7 @@ import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { AccordionPanelProps } from './AccordionPanel.types';
+import type { AccordionPanelProps } from './AccordionPanel.types';
 
 describe('AccordionPanel', () => {
   isConformant({

@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import { ButtonDefaultedProps, ButtonProps, ButtonShorthandPropsCompat, ButtonState } from '../Button/Button.types';
+import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type {
+  ButtonDefaultedProps,
+  ButtonProps,
+  ButtonShorthandPropsCompat,
+  ButtonState,
+} from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
