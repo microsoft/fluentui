@@ -69,7 +69,7 @@ export const useSliderState = (state: SliderState) => {
   const { dir } = useFluent();
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
-  const [renderedPosition, setRenderedPosition] = React.useState<number | null>(value ? value : defaultValue);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
     defaultState: clamp(defaultValue, min, max),
@@ -154,8 +154,8 @@ export const useSliderState = (state: SliderState) => {
       disposables.current.forEach(dispose => dispose());
       disposables.current = [];
       showStepAnimation();
-      // When null, the position fallbacks to the currentValue state.
-      setRenderedPosition(null);
+      // When undefined, the position fallbacks to the currentValue state.
+      setRenderedPosition(undefined);
       thumbRef.current!.focus();
     },
     [showStepAnimation],
@@ -238,7 +238,7 @@ export const useSliderState = (state: SliderState) => {
     disposables.current = [];
   });
 
-  const valuePercent = getPercent(renderedPosition ? renderedPosition : currentValue, min, max);
+  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
   // TODO: Awaiting animation time from design spec.
   const animationTime = '0.1s';
