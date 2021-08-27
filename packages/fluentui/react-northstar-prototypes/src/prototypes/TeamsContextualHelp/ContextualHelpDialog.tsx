@@ -44,10 +44,13 @@ const generalTableRows = [
 const panels = [
   {
     key: 'chatsList',
-    title: 'Chats list',
+    title: {
+      as: 'h2',
+      content: 'Chats list',
+    },
     content: (
       <>
-        <Header as="h4" content="Navigation" />
+        <Header as="h3" content="Navigation" />
         <List>
           <List.Item
             index={0}
@@ -63,16 +66,19 @@ const panels = [
   },
   {
     key: 'messagesList',
-    title: 'Messages list',
+    title: {
+      as: 'h2',
+      content: 'Messages list',
+    },
     content: (
       <>
-        <Header as="h4" content="Navigation" />
+        <Header as="h3" content="Navigation" />
         <List>
           <List.Item index={0} content="To move to the compose field, press Alt + Shift + C, or Ctrl + Shift + R." />
           <List.Item index={1} content="To move to the chats list, press Escape, or Ctrl + L." />
         </List>
 
-        <Header as="h4" content="Interaction" />
+        <Header as="h3" content="Interaction" />
         <List>
           <List.Item
             index={0}
@@ -89,16 +95,19 @@ const panels = [
   },
   {
     key: 'composeField',
-    title: 'Message compose field',
+    title: {
+      as: 'h2',
+      content: 'Message compose field',
+    },
     content: (
       <>
-        <Header as="h4" content="Navigation" />
+        <Header as="h3" content="Navigation" />
         <List>
           <List.Item index={0} content="To move to the messages list, press Escape." />
           <List.Item index={1} content="To move to the chats list, press Ctrl + L." />
         </List>
 
-        <Header as="h4" content="Interaction" />
+        <Header as="h3" content="Interaction" />
         <List>
           <List.Item
             index={0}
@@ -111,23 +120,26 @@ const panels = [
   },
   {
     key: 'global',
-    title: 'Global keyboard shortcuts',
+    title: {
+      as: 'h2',
+      content: 'Global keyboard shortcuts',
+    },
     content: (
       <>
         <Text>Keyboard language is: English (United States).</Text>
-        <Header as="h4" content="General" />
+        <Header as="h3" content="General" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h4" content="Navigation" />
+        <Header as="h3" content="Navigation" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h4" content="Messaging" />
+        <Header as="h3" content="Messaging" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h4" content="Meetings, Calls and Calendar" />
+        <Header as="h3" content="Meetings, Calls and Calendar" />
         <Table header={tableHeader} rows={generalTableRows} />
 
-        <Header as="h4" content="Debug" />
+        <Header as="h3" content="Debug" />
         <Table header={tableHeader} rows={generalTableRows} />
       </>
     ),
@@ -155,7 +167,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
           //setPanelIndex(defaultPanelIndex);
         }}
         onCancel={() => setDialogOpened(false)}
-        header="Keyboard shortcuts help"
+        header={<h1>Keyboard shortcuts help</h1>}
         headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
         footer={{
           children: (Component, props) => (
@@ -172,7 +184,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
         trigger={<Button content={triggerText} />}
         content={
           <>
-            <Accordion exclusive={true} defaultActiveIndex={defaultPanelIndex} panels={panels} />
+            <Accordion panels={panels} defaultActiveIndex={defaultPanelIndex} exclusive={true} />
           </>
         }
       />
