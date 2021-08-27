@@ -345,6 +345,30 @@ function useKeyHandlers(
   return [onKeyDown, onKeyUp, onMenuKeyDown] as const;
 }
 
+function useScrollHandler(asyncTracker: Async) {
+  const isScrollIdle = React.useRef<boolean>(false);
+  const scrollIdleTimeoutId = React.useRef<number | undefined>();
+
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
+  const onScroll = (): void => {
+    if (!isScrollIdle.current && scrollIdleTimeoutId.current !== undefined) {
+      asyncTracker.clearTimeout(scrollIdleTimeoutId.current);
+      scrollIdleTimeoutId.current = undefined;
+    } else {
+      isScrollIdle.current = false;
+    }
+
+    scrollIdleTimeoutId.current = asyncTracker.setTimeout(() => {
+      isScrollIdle.current = true;
+    }, NavigationIdleDelay);
+  };
+
+  return [onScroll, isScrollIdle] as const;
+}
+
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
   HTMLDivElement,
   IContextualMenuProps
@@ -367,6 +391,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const [previousActiveElementRef, tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
+  const [onScroll, isScrollIdle] = useScrollHandler(asyncTracker);
 
   const responsiveMode = useResponsiveMode(hostElement, props.responsiveMode);
 
@@ -401,6 +426,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         onKeyDown,
         onKeyUp,
         onMenuKeyDown,
+        onScroll,
+        isScrollIdle,
       }}
       responsiveMode={responsiveMode}
     />
@@ -431,13 +458,13 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     onKeyUp: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     onMenuKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => void;
+    onScroll: () => void;
+    isScrollIdle: React.RefObject<boolean>;
   };
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
   private _enterTimerId: number | undefined;
-  private _isScrollIdle: boolean = false;
-  private _scrollIdleTimeoutId: number | undefined;
   private _mounted = false;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
@@ -593,7 +620,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
               className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
               setInitialFocus={shouldFocusOnMount}
               onDismiss={this.props.onDismiss || menuContext.onDismiss}
-              onScroll={this._onScroll}
+              onScroll={this.props.hoisted.onScroll}
               bounds={bounds}
               directionalHintFixed={directionalHintFixed}
               alignTargetEdge={alignTargetEdge}
@@ -987,23 +1014,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     );
   }
 
-  /**
-   * Scroll handler for the callout to make sure the mouse events
-   * for updating focus are not interacting during scroll
-   */
-  private _onScroll = (): void => {
-    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
-      this.props.hoisted.asyncTracker.clearTimeout(this._scrollIdleTimeoutId);
-      this._scrollIdleTimeoutId = undefined;
-    } else {
-      this._isScrollIdle = false;
-    }
-
-    this._scrollIdleTimeoutId = this.props.hoisted.asyncTracker.setTimeout(() => {
-      this._isScrollIdle = true;
-    }, NavigationIdleDelay);
-  };
-
   private _onItemMouseEnterBase = (item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void => {
     if (this._shouldIgnoreMouseEvent()) {
       return;
@@ -1024,7 +1034,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
 
     if (
-      !this._isScrollIdle ||
+      !this.props.hoisted.isScrollIdle ||
       this._enterTimerId !== undefined ||
       targetElement === (targetWindow?.document.activeElement as HTMLElement)
     ) {
@@ -1035,7 +1045,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   };
 
   private _shouldIgnoreMouseEvent(): boolean {
-    return !this._isScrollIdle || !this.props.hoisted.gotMouseMove.current;
+    return !this.props.hoisted.isScrollIdle || !this.props.hoisted.gotMouseMove.current;
   }
 
   private _onMouseItemLeave = (item: any, ev: React.MouseEvent<HTMLElement>): void => {
