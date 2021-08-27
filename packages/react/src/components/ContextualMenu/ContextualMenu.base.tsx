@@ -185,6 +185,22 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
 
 function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuProps, targetWindow: Window | undefined) {
   const previousActiveElement = React.useRef<undefined | HTMLElement>();
+
+  const tryFocusPreviousActiveElement = React.useCallback(
+    (options: IPopupRestoreFocusParams) => {
+      if (onRestoreFocus) {
+        onRestoreFocus(options);
+      } else if (options?.documentContainsFocus) {
+        // Make sure that the focus method actually exists
+        // In some cases the object might exist but not be a real element.
+        // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
+        previousActiveElement.current?.focus?.();
+      }
+    },
+    [onRestoreFocus],
+  );
+
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     if (!hidden) {
       previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
@@ -197,29 +213,18 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
 
       previousActiveElement.current = undefined;
     }
-  }, [hidden]);
-
-  const tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
-    if (onRestoreFocus) {
-      onRestoreFocus(options);
-    } else if (options?.documentContainsFocus) {
-      // Make sure that the focus method actually exists
-      // In some cases the object might exist but not be a real element.
-      // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-      previousActiveElement.current?.focus?.();
-    }
-  };
-
+  }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
   return [previousActiveElement, tryFocusPreviousActiveElement] as const;
 }
 
-function getKeyHandlers(
+function useKeyHandlers(
   {
     theme,
     isSubMenu,
     focusZoneProps: { checkForNoWrap, direction: focusZoneDirection = FocusZoneDirection.vertical } = {},
   }: IContextualMenuProps,
   dismiss: (ev?: any, dismissAll?: boolean | undefined) => void | undefined,
+  hostElement: React.RefObject<HTMLDivElement>,
 ) {
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>();
@@ -308,7 +313,36 @@ function getKeyHandlers(
     return keyHandler(ev, shouldHandleKeyUp, true /* dismissAllMenus */);
   };
 
-  return [onKeyDown, onKeyUp] as const;
+  const onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    // Mark as handled if onKeyDown returns true (for handling collapse cases)
+    // or if we are attempting to expand a submenu
+    const handled = onKeyDown(ev);
+
+    if (handled || !hostElement.current) {
+      return;
+    }
+
+    // If we have a modifier key being pressed, we do not want to move focus.
+    // Otherwise, handle up and down keys.
+    const hasModifier = !!(ev.altKey || ev.metaKey);
+    // eslint-disable-next-line deprecation/deprecation
+    const isUp = ev.which === KeyCodes.up;
+    // eslint-disable-next-line deprecation/deprecation
+    const isDown = ev.which === KeyCodes.down;
+    if (!hasModifier && (isUp || isDown)) {
+      const elementToFocus = isUp
+        ? getLastFocusable(hostElement.current, hostElement.current.lastChild as HTMLElement, true)
+        : getFirstFocusable(hostElement.current, hostElement.current.firstChild as HTMLElement, true);
+
+      if (elementToFocus) {
+        elementToFocus.focus();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    }
+  };
+
+  return [onKeyDown, onKeyUp, onMenuKeyDown] as const;
 }
 
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
@@ -340,7 +374,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
 
-  const [onKeyDown, onKeyUp] = getKeyHandlers(props, dismiss);
+  const [onKeyDown, onKeyUp, onMenuKeyDown] = useKeyHandlers(props, dismiss, hostElement);
 
   return (
     <ContextualMenuInternal
@@ -366,6 +400,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         tryFocusPreviousActiveElement,
         onKeyDown,
         onKeyUp,
+        onMenuKeyDown,
       }}
       responsiveMode={responsiveMode}
     />
@@ -395,6 +430,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     tryFocusPreviousActiveElement: (options: IPopupRestoreFocusParams) => void;
     onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     onKeyUp: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    onMenuKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => void;
   };
 }
 
@@ -570,7 +606,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 id={id}
                 className={this._classNames.container}
                 tabIndex={shouldFocusOnContainer ? 0 : -1}
-                onKeyDown={this._onMenuKeyDown}
+                onKeyDown={this.props.hoisted.onMenuKeyDown}
                 onKeyUp={this.props.hoisted.onKeyUp}
                 onFocusCapture={onMenuFocusCapture}
                 aria-label={ariaLabel}
@@ -950,36 +986,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       </div>
     );
   }
-
-  private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // Mark as handled if onKeyDown returns true (for handling collapse cases)
-    // or if we are attempting to expand a submenu
-    const handled = this.props.hoisted.onKeyDown(ev);
-    const { hostElement } = this.props.hoisted;
-
-    if (handled || !hostElement.current) {
-      return;
-    }
-
-    // If we have a modifier key being pressed, we do not want to move focus.
-    // Otherwise, handle up and down keys.
-    const hasModifier = !!(ev.altKey || ev.metaKey);
-    // eslint-disable-next-line deprecation/deprecation
-    const isUp = ev.which === KeyCodes.up;
-    // eslint-disable-next-line deprecation/deprecation
-    const isDown = ev.which === KeyCodes.down;
-    if (!hasModifier && (isUp || isDown)) {
-      const elementToFocus = isUp
-        ? getLastFocusable(hostElement.current, hostElement.current.lastChild as HTMLElement, true)
-        : getFirstFocusable(hostElement.current, hostElement.current.firstChild as HTMLElement, true);
-
-      if (elementToFocus) {
-        elementToFocus.focus();
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
-    }
-  };
 
   /**
    * Scroll handler for the callout to make sure the mouse events
