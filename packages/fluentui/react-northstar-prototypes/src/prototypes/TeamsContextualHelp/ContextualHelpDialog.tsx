@@ -183,7 +183,6 @@ interface ContextualHelpDialogProps {
 const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> = (props: ContextualHelpDialogProps) => {
   const { defaultPanelIndex, triggerText } = props;
 
-  //const [panelIndex, setPanelIndex] = React.useState(defaultPanelIndex);
   const [dialogOpened, setDialogOpened] = React.useState(false);
 
   return (
@@ -193,7 +192,6 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
         open={dialogOpened}
         onOpen={() => {
           setDialogOpened(true);
-          //setPanelIndex(defaultPanelIndex);
         }}
         onCancel={() => setDialogOpened(false)}
         header={<h1>Keyboard shortcuts help</h1>}
