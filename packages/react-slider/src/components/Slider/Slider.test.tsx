@@ -107,6 +107,35 @@ describe('Slider', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
   });
 
+  it('clamps to the correct value when dragged in-between steps', () => {
+    const inputRef = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+    const wrapper: ReactWrapper = mount(
+      <Slider
+        step={50}
+        thumbWrapper={{ className: 'thumb-wrapper' }}
+        activeRail={{ className: 'active-rail' }}
+        input={{ ref: inputRef }}
+        onChange={onChange}
+      />,
+    );
+
+    const activeRail = wrapper.find('.active-rail');
+
+    activeRail.getDOMNode().getBoundingClientRect = () =>
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 30, clientY: 0 }, { type: 'pointerup' });
+    expect(onChange).toBeCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
+    expect(inputRef.current?.value).toEqual('50');
+
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 80, clientY: 0 }, { type: 'pointerup' });
+    expect(onChange).toBeCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 100 });
+    expect(inputRef.current?.value).toEqual('100');
+  });
+
   it('slides to (min/max) and executes onChange', () => {
     const inputRef = React.createRef<HTMLInputElement>();
     const onChange = jest.fn();
