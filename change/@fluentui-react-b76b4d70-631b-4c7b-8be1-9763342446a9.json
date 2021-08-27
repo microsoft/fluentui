@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "forcing showMonthPickerAsOverlay to true when screen is less than a certain size",
-  "packageName": "@fluentui/react",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch"
-}

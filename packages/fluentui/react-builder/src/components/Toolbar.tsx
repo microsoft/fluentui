@@ -82,9 +82,10 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           items={[
             {
               key: 'mode',
-              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())}</b>,
+              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())} Mode</b>,
               active: menuOpen,
               menuOpen,
+
               onMenuOpenChange: (_, { menuOpen }) => setMenuOpen(menuOpen),
               menu: {
                 items: [
@@ -123,7 +124,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               key: 'undo',
               // kind: 'toggle',
               disabled: !canUndo,
-              title: 'Undo',
+              title: 'Undo [ctrl+z]',
               onClick: () => {
                 onUndo();
               },
@@ -133,7 +134,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               key: 'redo',
               // kind: 'toggle',
               disabled: !canRedo,
-              title: 'Redo',
+              title: 'Redo [ctrl+shift+z]',
               onClick: () => {
                 onRedo();
               },

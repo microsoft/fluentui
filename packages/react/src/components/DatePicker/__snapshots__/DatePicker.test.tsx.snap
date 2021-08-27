@@ -22,9 +22,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
         padding-top: 0px;
       }
 >
-  <div
-    aria-haspopup="true"
-  >
+  <div>
     <div
       className=
           ms-TextField
@@ -92,6 +90,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           <input
             aria-describedby="TextFieldDescription3"
             aria-expanded={false}
+            aria-haspopup="dialog"
             aria-invalid={false}
             className=
                 ms-TextField-field

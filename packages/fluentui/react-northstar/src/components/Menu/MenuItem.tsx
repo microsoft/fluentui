@@ -12,6 +12,7 @@ import {
   useStyles,
   ForwardRefWithAs,
   useContextSelectors,
+  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -39,6 +40,7 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentCompo
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
+import { ChevronEndIcon } from '@fluentui/react-icons-northstar';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -230,6 +232,13 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     defaultValue: props.defaultMenuOpen,
     value: props.menuOpen,
     initialValue: false,
+  });
+
+  useOnIFrameFocus(menuOpen, context.target, (e: Event) => {
+    setMenuOpen(__ => {
+      _.invoke(props, 'onMenuOpenChange', e, { ...props, ...{ menuOpen: false } });
+      return false;
+    });
   });
 
   const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
@@ -619,5 +628,5 @@ MenuItem.shorthandConfig = {
 MenuItem.defaultProps = {
   as: 'a',
   wrapper: {},
-  indicator: {},
+  indicator: <ChevronEndIcon outline />,
 };

@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, css, KeyCodes, getRTL, initializeComponentRef } from '@fluentui/utilities';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
-import { IWeeklyDayPickerProps, IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
-import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import {
   compareDatePart,
   getStartDateOfWeek,
@@ -18,6 +15,13 @@ import {
 } from '@fluentui/date-time-utilities';
 import { Icon } from '../../Icon';
 import { defaultWeeklyDayPickerStrings, defaultWeeklyDayPickerNavigationIcons } from './defaults';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
+import type {
+  IWeeklyDayPickerProps,
+  IWeeklyDayPickerStyleProps,
+  IWeeklyDayPickerStyles,
+} from './WeeklyDayPicker.types';
+import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
 

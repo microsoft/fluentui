@@ -496,7 +496,7 @@ describe('mergeThemes', () => {
       const buttonRootStyles = merged.componentStyles.Button.root({
         variables: buttonVariables,
       } as any);
-      expect(buttonRootStyles._debug).toBe(undefined);
+      expect((buttonRootStyles as any)._debug).toBe(undefined);
     });
 
     test('contain debugId', () => {

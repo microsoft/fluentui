@@ -1,6 +1,7 @@
-import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector, IRawStyle, getHighContrastNoAdjustStyle } from '../../Styling';
+import { HighContrastSelector, getHighContrastNoAdjustStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import type { IButtonStyles } from './Button.types';
+import type { ITheme, IRawStyle } from '../../Styling';
 
 const splitButtonDividerBaseStyles = (): IRawStyle => {
   return {

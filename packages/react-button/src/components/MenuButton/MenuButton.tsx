@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ChevronDownIcon } from './DefaultIcons';
-import { MenuButtonProps, MenuButtonStyleSelectors } from './MenuButton.types';
 import { renderMenuButton } from './renderMenuButton';
 import { useMenuButton } from './useMenuButton';
 import { useMenuButtonStyles } from './useMenuButtonStyles';
+import type { MenuButtonProps } from './MenuButton.types';
 
 /**
  * Define a styled MenuButton, using the `useMenuButton` hook.
@@ -17,17 +17,7 @@ export const MenuButton: React.FunctionComponent<MenuButtonProps & React.RefAttr
     menuIcon: { as: ChevronDownIcon },
   });
 
-  const styleSelectors: MenuButtonStyleSelectors = {
-    disabled: state.disabled,
-    // expanded: state.expanded,
-    iconOnly: state.iconOnly,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useMenuButtonStyles(state, styleSelectors);
+  useMenuButtonStyles(state);
 
   return renderMenuButton(state);
 });

@@ -3,17 +3,21 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import * as renderer from 'react-test-renderer';
-
-import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
-
 import { CalloutContent } from '../Callout/CalloutContent';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
-import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { DefaultButton, IButton } from '../../Button';
+import { ContextualMenuItemType } from './ContextualMenu.types';
+import { DefaultButton } from '../../Button';
 import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import type {
+  IContextualMenuProps,
+  IContextualMenuStyles,
+  IContextualMenu,
+  IContextualMenuItem,
+} from './ContextualMenu.types';
+import type { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import type { IButton } from '../../Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -692,6 +696,7 @@ describe('ContextualMenu', () => {
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
           key: 'Section1',
+          title: 'TestTitle',
           topDivider: true,
           bottomDivider: true,
           items: [
@@ -712,6 +717,7 @@ describe('ContextualMenu', () => {
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
           key: 'Section1',
+          title: { key: 'title1', text: 'TestTitle' },
           items: [
             {
               text: 'TestText 5',
@@ -731,7 +737,7 @@ describe('ContextualMenu', () => {
     });
 
     const menuItems = document.querySelectorAll('li');
-    expect(menuItems.length).toEqual(8);
+    expect(menuItems.length).toEqual(10);
   });
 
   describe('with links', () => {

@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import type {
+  ComponentPropsCompat,
+  ComponentStateCompat,
+  ObjectShorthandPropsCompat,
+  ShorthandPropsCompat,
+} from '@fluentui/react-utilities';
 
 /**
  * Label Props
  * {@docCategory Label}
  */
-export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends ComponentPropsCompat, React.LabelHTMLAttributes<HTMLLabelElement> {
   /**
    * Renders the label as disabled
    * @defaultvalue false
@@ -17,7 +22,7 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
    * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
    * @defaultvalue false
    */
-  required?: boolean | ShorthandProps<ComponentProps>;
+  required?: boolean | ShorthandPropsCompat<ComponentPropsCompat>;
 
   /**
    * A label supports different sizes.
@@ -48,9 +53,14 @@ export type LabelDefaultedProps = 'size';
  * State used in rendering Label
  * {@docCategory Label}
  */
-export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
+export interface LabelState extends ComponentStateCompat<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
   /**
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * The required prop resolved to a slot object
+   */
+  required?: ObjectShorthandPropsCompat<ComponentPropsCompat>;
 }

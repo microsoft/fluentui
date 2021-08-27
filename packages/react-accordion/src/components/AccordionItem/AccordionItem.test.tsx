@@ -3,15 +3,13 @@ import { AccordionItem } from './AccordionItem';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { AccordionItemContext } from './useAccordionItemContext';
-import { DescendantProvider } from '@fluentui/react-utilities';
-import { accordionItemDescendantContext } from './useAccordionItem';
+import { AccordionItemContext } from './AccordionItemContext';
 
 describe('AccordionItem', () => {
   isConformant({
     Component: AccordionItem,
     displayName: 'AccordionItem',
-    helperComponents: [AccordionItemContext.Provider, DescendantProvider, accordionItemDescendantContext.Provider],
+    helperComponents: [AccordionItemContext.Provider],
   });
 
   let wrapper: ReactWrapper | undefined;
@@ -27,7 +25,7 @@ describe('AccordionItem', () => {
    * Note: see more visual regression tests for AccordionItem in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<AccordionItem>Default AccordionItem</AccordionItem>);
+    const component = renderer.create(<AccordionItem value={0}>Default AccordionItem</AccordionItem>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

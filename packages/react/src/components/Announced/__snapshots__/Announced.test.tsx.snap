@@ -30,6 +30,7 @@ exports[`Announced renders message after delay 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
   >

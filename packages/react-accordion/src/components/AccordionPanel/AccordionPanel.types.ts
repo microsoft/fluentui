@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
-export interface AccordionPanelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {}
+export type AccordionPanelSlots = {};
 
-export interface AccordionPanelState extends AccordionPanelProps {
+export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots>, React.HTMLAttributes<HTMLElement> {}
+
+export interface AccordionPanelState extends ComponentState<AccordionPanelSlots>, React.HTMLAttributes<HTMLElement> {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
+  ref: React.Ref<HTMLElement>;
   /**
    * Internal open state, provided by context
    */

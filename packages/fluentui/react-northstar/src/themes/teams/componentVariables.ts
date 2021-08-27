@@ -144,6 +144,7 @@ export { tooltipContentVariables as TooltipContent } from './components/Tooltip/
 
 export { splitButtonVariables as SplitButton } from './components/SplitButton/splitButtonVariables';
 export { splitButtonToggleVariables as SplitButtonToggle } from './components/SplitButton/splitButtonToggleVariables';
+export { splitButtonDividerVariables as SplitButtonDivider } from './components/SplitButton/splitButtonDividerVariables';
 
 export { carouselVariables as Carousel } from './components/Carousel/carouselVariables';
 export { carouselItemVariables as CarouselItem } from './components/Carousel/carouselItemVariables';

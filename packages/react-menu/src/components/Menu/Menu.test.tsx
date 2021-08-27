@@ -1,8 +1,8 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Menu } from './Menu';
-import { render, fireEvent } from '@testing-library/react';
-import { ReactWrapper } from 'enzyme';
+import { render, fireEvent, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
@@ -31,15 +31,9 @@ describe('Menu', () => {
     },
   });
 
-  let wrapper: ReactWrapper | undefined;
-
   afterEach(() => {
     resetIdsForTests();
-
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    jest.useRealTimers();
   });
 
   /**
@@ -157,9 +151,9 @@ describe('Menu', () => {
   });
 
   it.each([
-    ['menuitem', MenuItem],
-    ['menuitemradio', MenuItemRadio],
-  ])('should close menu after clicking on %s', (role, MenuItemComponent) => {
+    ['menuitem', MenuItem, {}],
+    ['menuitemradio', MenuItemRadio, { name: 'test', value: 'test' }],
+  ])('should close menu after clicking on %s', (role, MenuItemComponent, props) => {
     // Arrange
     const { getByRole, queryByRole } = render(
       <Menu>
@@ -168,7 +162,9 @@ describe('Menu', () => {
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
-            <MenuItemComponent>Item</MenuItemComponent>
+            {/* eslint-disable-next-line @fluentui/max-len */}
+            {/* @ts-expect-error - MenuItemComponent is union of 2 non-matching interfaces. Unnecessary narrowing logic would be needed which is out of scope for what is being tested  */}
+            <MenuItemComponent {...props}>Item</MenuItemComponent>
           </MenuList>
         </MenuPopover>
       </Menu>,
@@ -183,10 +179,10 @@ describe('Menu', () => {
   });
 
   it.each([
-    ['menuitem', MenuItem],
-    ['menuitemcheckbox', MenuItemCheckbox],
-    ['menuitemradio', MenuItemRadio],
-  ])('should not close menu after clicking on a disabled %s', (role, MenuItemComponent) => {
+    ['menuitem', MenuItem, {}],
+    ['menuitemcheckbox', MenuItemCheckbox, { name: 'test', value: 'test' }],
+    ['menuitemradio', MenuItemRadio, { name: 'test', value: 'test' }],
+  ])('should not close menu after clicking on a disabled %s', (role, MenuItemComponent, props) => {
     // Arrange
     const { getByRole } = render(
       <Menu>
@@ -195,7 +191,11 @@ describe('Menu', () => {
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
-            <MenuItemComponent disabled>Item</MenuItemComponent>
+            {/* eslint-disable-next-line @fluentui/max-len */}
+            {/* @ts-expect-error - MenuItemComponent is union of 3 non-matching interfaces. Unnecessary narrowing logic would be needed which is out of scope for what is being tested  */}
+            <MenuItemComponent disabled {...props}>
+              Item
+            </MenuItemComponent>
           </MenuList>
         </MenuPopover>
       </Menu>,
@@ -209,7 +209,7 @@ describe('Menu', () => {
     getByRole(role);
   });
 
-  // THID ONE
+  // THIRD ONE
   it.each([
     ['menuitemcheckbox', MenuItemCheckbox],
     ['menuitemradio', MenuItemRadio],
@@ -293,8 +293,9 @@ describe('Menu', () => {
     expect(getByRole('menuitemcheckbox').getAttribute('aria-checked')).toEqual('true');
   });
 
-  it('should open nested menu with mouse enter', () => {
+  it('should open nested menu with mouse move', () => {
     // Arrange
+    jest.useFakeTimers();
     const expected = 'visible';
     const { getByRole, getByText } = render(
       <Menu open>
@@ -317,10 +318,92 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.mouseEnter(getByRole('menuitem'));
+    act(() => {
+      fireEvent.mouseMove(getByRole('menuitem'));
+      jest.runOnlyPendingTimers();
+    });
 
     // Assert
     getByText(expected);
+  });
+
+  it('should not open nested menu with mouseenter without mousemove', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const expected = 'hidden';
+    const { getByRole, queryByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>Item</MenuItem>
+              </MenuTrigger>
+              <MenuList>
+                <MenuItem>{expected}</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    // Act
+    act(() => {
+      fireEvent.mouseEnter(getByRole('menuitem'));
+      jest.runOnlyPendingTimers();
+    });
+
+    // Assert
+    expect(queryByText(expected)).toBeNull();
+  });
+
+  it('should not open nested menu mousemove after first mousemove event', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const expected = 'hidden';
+    const { getByText, queryByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>Trigger</MenuItem>
+              </MenuTrigger>
+              <MenuList>
+                <MenuItem>{expected}</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    // Act
+    act(() => {
+      // open menu
+      fireEvent.mouseMove(getByText('Trigger'));
+      jest.runOnlyPendingTimers();
+    });
+    act(() => {
+      // close menu
+      fireEvent.mouseLeave(getByText('Trigger'));
+      jest.runOnlyPendingTimers();
+    });
+    act(() => {
+      // fail to open again with mouse mouve
+      fireEvent.mouseMove(getByText('Trigger'));
+      jest.runOnlyPendingTimers();
+    });
+
+    // Assert
+    expect(queryByText(expected)).toBeNull();
   });
 
   it('should close open nested menu when mouse enters another menuitem', () => {
@@ -360,7 +443,7 @@ describe('Menu', () => {
     expect(queryByText(invisible)).toBeNull();
   });
 
-  it.each(['Escape', 'ArrowLeft'])('should close open nested menu with %s key', key => {
+  it.each([keyboardKey.Escape, keyboardKey.ArrowLeft])('should close open nested menu with %s key', keyCode => {
     // Arrange
     const target = 'target';
     const trigger = 'trigger';
@@ -390,8 +473,8 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { key: 'ArrowRight' });
-    fireEvent.keyDown(getByText(invisible), { key });
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(invisible), { keyCode });
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
@@ -416,8 +499,8 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { key: 'ArrowRight' });
-    fireEvent.keyDown(getByText(visible), { key: 'ArrowLeft' });
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(visible), { keyCode: keyboardKey.ArrowLeft });
 
     // Assert
     getByText(visible);

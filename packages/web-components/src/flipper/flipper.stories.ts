@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import FlipperTemplate from './fixtures/flipper.html';
-import { FluentFlipper } from './';
-
-// Prevent tree-shaking
-FluentFlipper;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Flipper',
 };
 
-export const Flipper = (): string => FlipperTemplate;
+export const Flipper = () => FlipperTemplate;

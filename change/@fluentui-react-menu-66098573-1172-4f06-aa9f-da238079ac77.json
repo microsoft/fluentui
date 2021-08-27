@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Menu): MenuPopover component",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -35,14 +35,14 @@ export const felaDisableAnimationsPlugin = (
     return Object.keys(styles).reduce((acc, cssPropertyName: keyof ICSSInJSStyle) => {
       const cssPropertyValue = styles[cssPropertyName];
 
-      if (animationProps.indexOf(cssPropertyName as string) !== -1) {
+      if (animationProps.indexOf(cssPropertyName) !== -1) {
         return acc;
       }
 
       if (isPlainObject(cssPropertyValue)) {
         return {
           ...acc,
-          [cssPropertyName]: felaDisableAnimationsPlugin(cssPropertyValue, type, renderer, props),
+          [cssPropertyName]: felaDisableAnimationsPlugin(cssPropertyValue as ICSSInJSStyle, type, renderer, props),
         };
       }
 

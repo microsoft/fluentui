@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
+import type { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 
 /**
  * {@docCategory List}

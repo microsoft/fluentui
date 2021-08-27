@@ -1,12 +1,12 @@
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarNavigationIcons } from '../Calendar.types';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import {
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { ICalendarNavigationIcons } from '../Calendar.types';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type {
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,
   ICalendarDayGridStyles,
 } from '../../CalendarDayGrid/CalendarDayGrid.types';
-import { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
+import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 
 /**
  * {@docCategory Calendar}
@@ -79,7 +79,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   showWeekNumbers?: boolean;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter: IDateFormatting;
 

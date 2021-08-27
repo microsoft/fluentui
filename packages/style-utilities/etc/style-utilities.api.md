@@ -20,7 +20,7 @@ import { IAnimationStyles } from '@fluentui/theme/lib/types/IAnimationStyles';
 import { IAnimationVariables } from '@fluentui/theme/lib/types/IAnimationStyles';
 import { IconFontSizes } from '@fluentui/theme/lib/fonts/index';
 import { ICSPSettings } from '@fluentui/merge-styles';
-import { ICustomizerContext } from '@fluentui/utilities';
+import type { ICustomizerContext } from '@fluentui/utilities';
 import { IEffects } from '@fluentui/theme/lib/types/IEffects';
 import { IFontFace } from '@fluentui/merge-styles';
 import { IFontStyles } from '@fluentui/theme/lib/types/IFontStyles';
@@ -206,6 +206,7 @@ export interface IIconSubset {
     icons: {
         [key: string]: string | JSX.Element;
     };
+    mergeImageProps?: boolean;
     // (undocumented)
     style?: IRawStyle;
 }
@@ -344,7 +345,6 @@ export namespace ZIndexes {
     const // (undocumented)
     KeytipLayer: number;
 }
-
 
 // Warnings were encountered during analysis:
 //

@@ -5,9 +5,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { create } from '@fluentui/utilities/lib/test';
 import { Slider } from './Slider';
-import { ISlider } from './Slider.types';
-import { ONKEYDOWN_TIMEOUT_DURATION } from './useSlider';
 import { isConformant } from '../../common/isConformant';
+import type { ISlider } from './Slider.types';
 
 const MIN_PREFIX = 'min';
 const MAX_PREFIX = 'max';
@@ -23,6 +22,9 @@ describe('Slider', () => {
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
+    }
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
     }
   });
 
@@ -43,89 +45,129 @@ describe('Slider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('calls onChange when slider value changes', () => {
-    const onChange = jest.fn();
-    wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
+  it('can provide the current value', () => {
+    const slider = React.createRef<ISlider>();
 
-    const sliderLine = wrapper.find('.ms-Slider-line');
-    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
-
-    sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 0,
-      clientY: 0,
-    });
-    // Default min is 0.
-    expect(onChange.mock.calls.length).toEqual(1);
+    wrapper = mount(<Slider defaultValue={12} min={0} max={100} componentRef={slider} />);
+    expect(slider.current?.value).toEqual(12);
   });
 
-  it('calls onChange when range slider range changes', () => {
-    const onChange = jest.fn();
-    wrapper = mount(<Slider onChange={onChange} defaultValue={5} ranged />);
+  it('can provide the current range', () => {
+    const slider = React.createRef<ISlider>();
 
-    const sliderLine = wrapper.find('.ms-Slider-line');
-    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
-
-    sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 0,
-      clientY: 0,
-    });
-    // Default min is 0.
-    expect(onChange.mock.calls.length).toEqual(1);
+    wrapper = mount(<Slider defaultValue={12} min={0} max={100} componentRef={slider} ranged />);
+    expect(slider.current?.range).toEqual([0, 12]);
   });
 
-  it('does not call onChange with range when ranged is false', () => {
+  it('can set id', () => {
+    wrapper = mount(<Slider id="test_id" styles={{ titleLabel: 'test_label' }} />);
+
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().id).toEqual('test_id');
+
+    // properly associates label with custom id
+    const label = wrapper.find('label.test_label');
+    expect(label.prop('htmlFor')).toBe('test_id');
+  });
+
+  it('can set id via buttonProps', () => {
+    // Not the recommended way of doing things, but it should work consistently still
+    wrapper = mount(<Slider buttonProps={{ id: 'test_id' }} styles={{ titleLabel: 'test_label' }} />);
+
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().id).toEqual('test_id');
+
+    // properly associates label with custom id
+    const label = wrapper.find('label.test_label');
+    expect(label.prop('htmlFor')).toBe('test_id');
+  });
+
+  it('handles zero default value', () => {
+    const slider = React.createRef<ISlider>();
+
+    wrapper = mount(<Slider defaultValue={0} min={-100} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(0);
+  });
+
+  it('handles zero value', () => {
+    const slider = React.createRef<ISlider>();
+
+    wrapper = mount(<Slider value={0} min={-100} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(0);
+  });
+
+  it('calls onChange and onChanged when slider value changes with mouse', () => {
     const onChange = jest.fn();
-    wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
+    const onChanged = jest.fn();
+    const slider = React.createRef<ISlider>();
+    wrapper = mount(<Slider onChange={onChange} defaultValue={5} onChanged={onChanged} componentRef={slider} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
     sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 0,
-      clientY: 0,
-    });
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 0, clientY: 0 });
+    // Default min is 0.
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][0]).toEqual(0);
+    expect(onChanged).toHaveBeenCalledTimes(0); // not called yet
+    expect(slider.current!.value).toBe(0);
+
+    // have to use a real event to trigger onChanged
+    window.dispatchEvent(new Event('mouseup'));
+    expect(onChange).toHaveBeenCalledTimes(1); // not called again
+    expect(onChanged).toHaveBeenCalledTimes(1);
+    expect(onChanged.mock.calls[0][1]).toEqual(0);
+  });
+
+  it('calls onChange and onChanged when range slider range changes with mouse', () => {
+    const onChange = jest.fn();
+    const onChanged = jest.fn();
+    const slider = React.createRef<ISlider>();
+    wrapper = mount(<Slider onChange={onChange} onChanged={onChanged} defaultValue={5} ranged componentRef={slider} />);
+
+    const sliderLine = wrapper.find('.ms-Slider-line');
+    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
+
+    sliderLine.getDOMNode().getBoundingClientRect = () =>
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 0, clientY: 0 });
+    // Default min is 0.
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual([0, 5]);
+    expect(onChanged).toHaveBeenCalledTimes(0);
+    expect(slider.current!.range).toEqual([0, 5]);
+
+    window.dispatchEvent(new Event('mouseup'));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChanged).toHaveBeenCalledTimes(1);
+    expect(onChanged.mock.calls[0][2]).toEqual([0, 5]);
+  });
+
+  it('does not call onChange or onChanged with range when ranged is false', () => {
+    const onChange = jest.fn();
+    const onChanged = jest.fn();
+    wrapper = mount(<Slider onChange={onChange} onChanged={onChanged} defaultValue={5} />);
+
+    const sliderLine = wrapper.find('.ms-Slider-line');
+    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
+
+    sliderLine.getDOMNode().getBoundingClientRect = () =>
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 0, clientY: 0 });
 
     expect(onChange.mock.calls[0][1]).toBeUndefined();
+
+    window.dispatchEvent(new Event('mouseup'));
+    expect(onChanged.mock.calls[0][2]).toBeUndefined();
   });
 
   it('can slide to default min/max and execute onChange', () => {
-    let changedValue;
-    const onChange = (val: number) => {
-      changedValue = val;
-    };
+    const onChange = jest.fn();
 
     wrapper = mount(<Slider onChange={onChange} />);
 
@@ -133,38 +175,23 @@ describe('Slider', () => {
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
     sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 100,
-      clientY: 0,
-    });
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 100, clientY: 0 });
 
     // Default max is 10.
-    expect(changedValue).toEqual(10);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][0]).toEqual(10);
 
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 0,
-      clientY: 0,
-    });
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 0, clientY: 0 });
 
     // Default min is 0.
-    expect(changedValue).toEqual(0);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[1][0]).toEqual(0);
   });
 
   it('updates the upper value thumb when click to the right side of it', () => {
-    let range;
-    const onChange = (val: number, sliderRange: [number, number]) => {
-      range = sliderRange;
-    };
+    const onChange = jest.fn();
 
     wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
 
@@ -172,28 +199,16 @@ describe('Slider', () => {
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
     sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 80,
-      clientY: 0,
-    });
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    expect(range).toEqual([0, 8]);
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 80, clientY: 0 });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual([0, 8]);
   });
 
   it('updates the upper value thumb when click close to it', () => {
-    let range;
-    const onChange = (val: number, sliderRange: [number, number]) => {
-      range = sliderRange;
-    };
+    const onChange = jest.fn();
 
     wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
 
@@ -201,50 +216,35 @@ describe('Slider', () => {
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
     sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 40,
-      clientY: 0,
-    });
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    expect(range).toEqual([0, 4]);
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 40, clientY: 0 });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual([0, 4]);
   });
 
   it('updates the lower value thumb when click close to it', () => {
-    let range;
-    const onChange = (val: number, sliderRange: [number, number]) => {
-      range = sliderRange;
-    };
+    const onChange = jest.fn();
+    const onChanged = jest.fn();
 
-    wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
+    wrapper = mount(<Slider onChange={onChange} onChanged={onChanged} ranged defaultValue={5} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
     sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 10,
-      clientY: 0,
-    });
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    expect(range).toEqual([1, 5]);
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 10, clientY: 0 });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual([1, 5]);
+
+    // test onChanged here too, since the earlier tests don't cover the lower thumb
+    window.dispatchEvent(new Event('mouseup'));
+    expect(onChanged).toHaveBeenCalledTimes(1);
+    expect(onChanged.mock.calls[0][2]).toEqual([1, 5]);
   });
 
   it('updates the lower value thumb when click to the left of it', () => {
@@ -259,25 +259,11 @@ describe('Slider', () => {
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
     sliderLine.getDOMNode().getBoundingClientRect = () =>
-      ({
-        left: 0,
-        top: 0,
-        right: 100,
-        bottom: 40,
-        width: 100,
-        height: 40,
-      } as DOMRect);
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 10,
-      clientY: 0,
-    });
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
-      clientX: 20,
-      clientY: 0,
-    });
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 10, clientY: 0 });
+
+    sliderThumb.simulate('mousedown', { type: 'mousedown', clientX: 20, clientY: 0 });
 
     expect(range).toEqual([2, 5]);
   });
@@ -288,51 +274,6 @@ describe('Slider', () => {
     wrapper.find('button').forEach(button => {
       expect(button.prop('type')).toEqual('button');
     });
-  });
-
-  it('can provide the current value', () => {
-    const slider = React.createRef<ISlider>();
-
-    wrapper = mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
-    expect(slider.current!.value).toEqual(12);
-  });
-
-  it('can provide the current range', () => {
-    const slider = React.createRef<ISlider>();
-
-    wrapper = mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} ranged />);
-    expect(slider.current!.range).toEqual([0, 12]);
-  });
-
-  it('can set id on slider', () => {
-    wrapper = mount(<Slider buttonProps={{ id: 'test_id' }} />);
-
-    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
-    expect(sliderSlideBox.getDOMNode().id).toEqual('test_id');
-  });
-
-  it('can set id on range slider', () => {
-    wrapper = mount(<Slider ranged />);
-
-    const lowerValueThumb = wrapper.find('.ms-Slider-thumb').at(0);
-    expect(lowerValueThumb.getDOMNode().id).toEqual(`${MIN_PREFIX}-Slider0`);
-
-    const upperValueThumb = wrapper.find('.ms-Slider-thumb').at(1);
-    expect(upperValueThumb.getDOMNode().id).toEqual(`${MAX_PREFIX}-Slider0`);
-  });
-
-  it('should be able to handler zero default value', () => {
-    const slider = React.createRef<ISlider>();
-
-    wrapper = mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
-    expect(slider.current!.value).toEqual(0);
-  });
-
-  it('should be able to handler zero value', () => {
-    const slider = React.createRef<ISlider>();
-
-    wrapper = mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
-    expect(slider.current!.value).toEqual(0);
   });
 
   it('renders correct aria-valuetext', () => {
@@ -436,12 +377,8 @@ describe('Slider', () => {
 
     // onChanged should only be called after a delay
     expect(onChanged).toHaveBeenCalledTimes(0);
-
-    setTimeout(() => {
-      expect(onChanged).toHaveBeenCalledTimes(1);
-    }, ONKEYDOWN_TIMEOUT_DURATION);
-
     jest.runOnlyPendingTimers();
+    expect(onChanged).toHaveBeenCalledTimes(1);
   });
 
   it('onChanged returns the correct value', () => {
@@ -462,13 +399,8 @@ describe('Slider', () => {
 
     // onChanged should only be called after a delay
     expect(onChanged).toHaveBeenCalledTimes(0);
-
-    setTimeout(() => {
-      expect(onChanged).toHaveBeenCalledTimes(1);
-    }, ONKEYDOWN_TIMEOUT_DURATION);
-
     jest.runOnlyPendingTimers();
-
+    expect(onChanged).toHaveBeenCalledTimes(1);
     expect(onChanged.mock.calls[0][1]).toEqual(2);
   });
 
@@ -512,7 +444,7 @@ describe('Slider', () => {
 
     sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
 
-    expect(slider.current?.value).toEqual(3);
+    expect(slider.current?.range).toEqual([0, 3]);
 
     // Get the second argument passed into the call
     expect(onChange.mock.calls[0][1]).toEqual([0, 2]);

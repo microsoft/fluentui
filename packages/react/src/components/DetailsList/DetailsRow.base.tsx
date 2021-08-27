@@ -2,26 +2,27 @@ import * as React from 'react';
 import {
   initializeComponentRef,
   EventGroup,
-  IDisposable,
   css,
   shallowCompare,
   getNativeProps,
   divProperties,
 } from '../../Utilities';
-import { IColumn, CheckboxVisibility } from './DetailsList.types';
+import { CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
 import { CollapseAllVisibility } from '../../GroupedList';
-import { IDragDropOptions } from '../../DragDrop';
-import { IDetailsRowBaseProps } from './DetailsRow.types';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
-import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { classNamesFunction } from '../../Utilities';
-import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
-import { IProcessedStyleSet } from '../../Styling';
+import type { IDisposable } from '../../Utilities';
+import type { IColumn } from './DetailsList.types';
+import type { IFocusZone } from '../../FocusZone';
+import type { IDragDropOptions } from '../../DragDrop';
+import type { IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import type { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import type { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -305,6 +306,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             {onRenderCheck({
               id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
+              selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
               'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,

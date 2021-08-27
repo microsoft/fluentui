@@ -4,34 +4,77 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import { ForwardRefExoticComponent } from 'react';
 import * as React_2 from 'react';
+import { RefAttributes } from 'react';
+
+// Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point index.d.ts
+//
+// @public
+const Body_2: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+export { Body_2 as Body }
 
 // @public
-export const renderText: (state: TextProps) => JSX.Element;
+export const Caption: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
-const Text_2: React_2.FunctionComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
+// @public
+export const Display: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
+// @public
+export const Headline: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public
+export const LargeTitle: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public
+export const renderText: (state: TextState) => JSX.Element;
+
+// @public
+export const Subheadline: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public
+const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
 export { Text_2 as Text }
 
-// @public (undocumented)
-export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLSpanElement> {
-    variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
+// @public
+export type TextDefaultedProps = never;
+
+// @public
+export interface TextProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
+    align?: 'start' | 'center' | 'end' | 'justify';
+    as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
+    block?: boolean;
+    font?: 'base' | 'monospace' | 'numeric';
+    italic?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    strikethrough?: boolean;
+    truncate?: boolean;
+    underline?: boolean;
+    weight?: 'regular' | 'medium' | 'semibold';
+    wrap?: boolean;
 }
 
-// @public (undocumented)
-export interface TextState extends TextProps {
-    // (undocumented)
-    ref: React_2.RefObject<HTMLElement>;
+// @public
+export interface TextState extends ComponentStateCompat<TextProps, TextDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
 }
+
+// @public
+export const Title1: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public
+export const Title2: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
+
+// @public
+export const Title3: ForwardRefExoticComponent<Props & RefAttributes<HTMLElement>>;
 
 // @public
 export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
-// @public (undocumented)
-export function useTextStyles(state: TextState): TextState;
-
+// @public
+export const useTextStyles: (state: TextState) => TextState;
 
 // (No @packageDocumentation comment for this package)
 

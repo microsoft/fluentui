@@ -28,35 +28,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
-            }
-      >
-        <div>
-          <strong>
-            Monitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
-        </div>
-      </div>
-      <div
-        className=
             ms-FocusZone
             &:focus {
               outline: none;
@@ -66,8 +37,56 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Monitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone2"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -85,6 +104,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -112,6 +135,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -147,31 +174,49 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone3"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Unmonitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Unmonitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -180,13 +225,14 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -204,6 +250,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -231,6 +281,10 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -341,27 +395,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone21"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Monitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Monitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+          </div>
         </div>
       </div>
       <div
@@ -370,13 +442,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone22"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -386,7 +459,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-labelledby="callout20"
               className=
 
                   {
@@ -394,6 +467,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -413,7 +490,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-labelledby="callout20"
               className=
 
                   {
@@ -421,6 +498,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -456,27 +537,45 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone23"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Unmonitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Unmonitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+          </div>
         </div>
       </div>
       <div
@@ -485,13 +584,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone24"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -501,7 +601,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-labelledby="callout20"
               className=
 
                   {
@@ -509,6 +609,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -528,7 +632,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout12"
+              aria-labelledby="callout20"
               className=
 
                   {
@@ -536,6 +640,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -646,31 +754,49 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone6"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Monitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Monitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -679,13 +805,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -695,7 +822,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout3"
+              aria-labelledby="callout5"
               className=
 
                   {
@@ -703,6 +830,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -722,7 +853,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout3"
+              aria-labelledby="callout5"
               className=
 
                   {
@@ -730,6 +861,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -765,31 +900,49 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone8"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Unmonitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Unmonitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -798,13 +951,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone9"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -814,7 +968,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout3"
+              aria-labelledby="callout5"
               className=
 
                   {
@@ -822,6 +976,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -841,7 +999,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout3"
+              aria-labelledby="callout5"
               className=
 
                   {
@@ -849,6 +1007,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -905,22 +1067,37 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone16"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Monitored
-          </strong>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Monitored
+            </strong>
+          </div>
         </div>
       </div>
       <div
@@ -929,13 +1106,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone17"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -945,7 +1123,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout9"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -953,6 +1131,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -972,7 +1154,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout9"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -980,6 +1162,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1015,31 +1201,49 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone18"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Unmonitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Unmonitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1048,13 +1252,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone19"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -1064,7 +1269,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout9"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -1072,6 +1277,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1091,7 +1300,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout9"
+              aria-labelledby="callout15"
               className=
 
                   {
@@ -1099,6 +1308,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={true}
               onBlur={[Function]}
@@ -1177,6 +1390,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Debit card numbers (EU and USA)"
@@ -1233,7 +1447,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1266,6 +1479,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Passport numbers (USA)"
@@ -1322,7 +1536,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1388,31 +1601,49 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone11"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Monitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Monitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1421,13 +1652,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone12"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Monitored"
             className=
 
                 {
@@ -1437,7 +1669,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout10"
               className=
 
                   {
@@ -1445,6 +1677,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1464,7 +1700,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout10"
               className=
 
                   {
@@ -1472,6 +1708,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1507,31 +1747,49 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
     >
       <div
         className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              justify-content: space-between;
-              margin-bottom: 5px;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone13"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
       >
-        <div>
-          <strong>
-            Unmonitored
-          </strong>
-        </div>
-        <div>
-          <strong>
-            40
-          </strong>
-          <span>
-            /
-            63
-          </span>
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+                margin-bottom: 5px;
+              }
+        >
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              Unmonitored
+            </strong>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <strong>
+              40
+            </strong>
+            <span>
+              /
+              63
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1540,13 +1798,14 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone14"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
       >
         <div>
           <svg
+            aria-label="Unmonitored"
             className=
 
                 {
@@ -1556,7 +1815,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout10"
               className=
 
                   {
@@ -1564,6 +1823,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}
@@ -1583,7 +1846,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout6"
+              aria-labelledby="callout10"
               className=
 
                   {
@@ -1591,6 +1854,10 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     opacity: ;
                     stroke-width: 2px;
                     stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
                   }
               data-is-focusable={false}
               onBlur={[Function]}

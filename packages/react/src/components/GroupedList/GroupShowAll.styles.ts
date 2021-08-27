@@ -1,7 +1,5 @@
-import { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 import { getGlobalClassNames } from '../../Styling';
-
-export { IGroupShowAllProps };
+import type { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 
 const GlobalClassNames = {
   root: 'ms-GroupShowAll',
@@ -30,3 +28,5 @@ export const getStyles = (props: IGroupShowAllStyleProps): IGroupShowAllStyles =
     ],
   };
 };
+
+export type { IGroupShowAllProps };

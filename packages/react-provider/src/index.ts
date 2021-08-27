@@ -1,2 +1,2 @@
 export * from './FluentProvider';
-export { useFluent } from '@fluentui/react-shared-contexts';
+export { useFluent, useTheme } from '@fluentui/react-shared-contexts';

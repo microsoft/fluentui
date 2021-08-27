@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
+import type { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
 
 /**
  * Array of all shorthand properties listed in LabelShorthandProps
@@ -45,11 +45,15 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, default
  * or a custom required text.
  */
 const resolveLabelShorthandProps = (props: LabelProps) => {
+  let propsNormalized;
   if (props.required === true) {
-    props = { ...props, required: { children: '*' } };
+    propsNormalized = { ...props, required: { children: '*' } };
   } else if (props.required === false) {
-    props = { ...props, required: undefined };
+    propsNormalized = { ...props, required: undefined };
+  } else {
+    // TypeScript needs a nudge to figure out that props.required won't be a boolean here
+    propsNormalized = props as LabelProps & { required?: Exclude<LabelProps['required'], boolean> };
   }
 
-  return resolveShorthandProps(props, labelShorthandProps);
+  return resolveShorthandProps(propsNormalized, labelShorthandProps);
 };

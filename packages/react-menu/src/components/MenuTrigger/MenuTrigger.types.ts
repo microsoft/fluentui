@@ -17,16 +17,18 @@ export interface MenuTriggerChildProps
   extends Required<
     Pick<
       React.HTMLAttributes<HTMLElement>,
-      'onClick' | 'onMouseEnter' | 'onContextMenu' | 'onKeyDown' | 'onBlur' | 'aria-haspopup' | 'aria-expanded' | 'id'
+      | 'onClick'
+      | 'onMouseEnter'
+      | 'onMouseLeave'
+      | 'onContextMenu'
+      | 'onKeyDown'
+      | 'aria-haspopup'
+      | 'aria-expanded'
+      | 'id'
     >
   > {}
 
 /**
  * {@docCategory MenuTrigger }
  */
-export interface MenuTriggerState extends MenuTriggerProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export interface MenuTriggerState extends MenuTriggerProps {}

@@ -36,26 +36,28 @@ export function useRefEffect<T>(callback: (value: T) => (() => void) | void, ini
     cleanup?: (() => void) | void;
   };
 
-  const data = React.useRef<RefData>({
-    ref: Object.assign(
-      (value: T | null) => {
-        if (data.ref.current !== value) {
-          if (data.cleanup) {
-            data.cleanup();
-            data.cleanup = undefined;
-          }
-
-          data.ref.current = value;
-
-          if (value !== null) {
-            data.cleanup = data.callback(value);
-          }
+  const createRefCallback = () => {
+    const refCallback = (value: T | null) => {
+      if (data.ref.current !== value) {
+        if (data.cleanup) {
+          data.cleanup();
+          data.cleanup = undefined;
         }
-      },
-      {
-        current: initial,
-      },
-    ),
+
+        data.ref.current = value;
+
+        if (value !== null) {
+          data.cleanup = data.callback(value);
+        }
+      }
+    };
+
+    refCallback.current = initial;
+    return refCallback;
+  };
+
+  const data = React.useRef<RefData>({
+    ref: createRefCallback(),
     callback,
   }).current;
 

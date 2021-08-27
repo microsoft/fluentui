@@ -238,6 +238,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Annie Lindqvist
         </div>
@@ -302,6 +303,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           In a meeting
         </div>
@@ -331,6 +333,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          role="none"
         >
           Available at 4:00pm
         </div>

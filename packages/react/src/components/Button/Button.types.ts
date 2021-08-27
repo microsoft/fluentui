@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
-import { IButtonClassNames } from './BaseButton.classNames';
-import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps } from '../../Icon';
-import { IStyle, ITheme } from '../../Styling';
-import { IKeytipProps } from '../../Keytip';
+import { KeyCodes } from '../../Utilities';
+import type { IButtonClassNames } from './BaseButton.classNames';
+import type { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import type { IRefObject, IRenderFunction, IComponentAs } from '../../Utilities';
+import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IIconProps } from '../../Icon';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IKeytipProps } from '../../Keytip';
 
 /**
  * {@docCategory Button}
@@ -187,7 +188,7 @@ export interface IButtonProps
   onRenderText?: IRenderFunction<IButtonProps>;
 
   /**
-   * Custom render function for the desciption text.
+   * Custom render function for the description text.
    */
   onRenderDescription?: IRenderFunction<IButtonProps>;
 

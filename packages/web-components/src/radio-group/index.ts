@@ -1,28 +1,29 @@
-import { customElement } from '@microsoft/fast-element';
-import { RadioGroup, RadioGroupTemplate as template } from '@microsoft/fast-foundation';
-import { RadioGroupStyles as styles } from './radio-group.styles';
+import { RadioGroup, radioGroupTemplate as template } from '@microsoft/fast-foundation';
+import { radioGroupStyles as styles } from './radio-group.styles';
 
 /**
  * The Fluent Radio Group Element. Implements {@link @microsoft/fast-foundation#RadioGroup},
- * {@link @microsoft/fast-foundation#RadioGroupTemplate}
+ * {@link @microsoft/fast-foundation#radioGroupTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-radio-group\>
  */
-@customElement({
-  name: 'fluent-radio-group',
+export const fluentRadioGroup = RadioGroup.compose({
+  baseName: 'radio-group',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentRadioGroup extends RadioGroup {}
+});
 
 /**
  * Styles for RadioGroup
  * @public
  */
-export const RadioGroupStyles = styles;
+export const radioGroupStyles = styles;
+
+/**
+ * Radio group base class
+ * @public
+ */
+export { RadioGroup };

@@ -75,7 +75,7 @@ function generateDeclarationReference(
 
 export function felaPerformanceEnhancer(renderer: FelaRenderer) {
   renderer._renderStyleToClassNames = function _renderStyleToClassNames(
-    { _className, ...style }: ICSSInJSStyle & { _className: string },
+    { _className, ...style }: ICSSInJSStyle & { _className?: string },
     pseudo: string = '',
     media: string = '',
     support: string = '',
@@ -83,22 +83,22 @@ export function felaPerformanceEnhancer(renderer: FelaRenderer) {
     let classNames = _className ? ` ${_className}` : '';
 
     for (const property in style) {
-      const value = style[property];
+      const value = style[property as keyof ICSSInJSStyle];
 
       if (isPlainObject(value)) {
         if (isNestedSelector(property)) {
           classNames += renderer._renderStyleToClassNames(
-            value,
+            value as any,
             pseudo + normalizeNestedProperty(property),
             media,
             support,
           );
         } else if (isMediaQuery(property)) {
           const combinedMediaQuery = generateCombinedMediaQuery(media, property.slice(6).trim());
-          classNames += renderer._renderStyleToClassNames(value, pseudo, combinedMediaQuery, support);
+          classNames += renderer._renderStyleToClassNames(value as any, pseudo, combinedMediaQuery, support);
         } else if (isSupport(property)) {
           const combinedSupport = generateCombinedMediaQuery(support, property.slice(9).trim());
-          classNames += renderer._renderStyleToClassNames(value, pseudo, media, combinedSupport);
+          classNames += renderer._renderStyleToClassNames(value as any, pseudo, media, combinedSupport);
         } else {
           // eslint-disable-next-line no-console
           console.warn(`The object key "${property}" is not a valid nested key in Fela.

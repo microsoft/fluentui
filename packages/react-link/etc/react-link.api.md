@@ -4,14 +4,14 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
 export const Link: React_2.FunctionComponent<LinkProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type LinkProps = ComponentProps & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+export type LinkProps = ComponentPropsCompat & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
     href?: string;
     onClick?: (event: React_2.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
     rel?: string;
@@ -43,7 +43,6 @@ export const useLinkState: (state: LinkState) => LinkState;
 
 // @public (undocumented)
 export const useLinkStyles: (state: LinkState) => LinkState;
-
 
 // (No @packageDocumentation comment for this package)
 

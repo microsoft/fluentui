@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { PopoverContextValue } from '../../popoverContext';
+import type { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
+import type { PopoverContextValue } from '../../popoverContext';
 
 /**
  * PopoverSurface Props
  */
-export interface PopoverSurfaceProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {}
+export interface PopoverSurfaceProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {}
 
 /**
  * Names of the shorthand properties in PopoverSurfaceProps
@@ -21,7 +21,7 @@ export type PopoverSurfaceDefaultedProps = never;
  * PopoverSurface State
  */
 export interface PopoverSurfaceState
-  extends ComponentState<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>,
+  extends ComponentStateCompat<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>,
     Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
   ref: React.Ref<HTMLElement>;
   /**

@@ -40,7 +40,7 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars(true)),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         configFile: paths.e2e('tsconfig.json'),

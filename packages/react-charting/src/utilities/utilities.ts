@@ -5,6 +5,7 @@ import { select as d3Select, event as d3Event } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
+  IAccessibilityProps,
   IEventsAnnotationProps,
   ILineChartPoints,
   ILineChartDataPoint,
@@ -277,6 +278,7 @@ type DataPoint = {
   color: string;
   yAxisCalloutData: string;
   index?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 };
 
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
@@ -286,12 +288,15 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
     x: number | Date | string;
     color: string;
     yAxisCalloutData?: string | { [id: string]: number };
+    callOutAccessibilityData?: IAccessibilityProps;
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data.map((ele: ILineChartDataPoint) => {
-      return { legend: element.legend, ...ele, color: element.color, index: element.index };
-    });
+    const elements = element.data
+      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
+      .map((ele: ILineChartDataPoint) => {
+        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+      });
     combinedResult = combinedResult.concat(elements);
   });
 
@@ -299,7 +304,14 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   combinedResult.forEach((e1: DataPoint, index: number) => {
     e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
     const filteredValues = [
-      { legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData, index: e1.index },
+      {
+        legend: e1.legend,
+        y: e1.y,
+        color: e1.color,
+        yAxisCalloutData: e1.yAxisCalloutData,
+        callOutAccessibilityData: e1.callOutAccessibilityData,
+        index: e1.index,
+      },
     ];
     combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
       e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
@@ -309,6 +321,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           y: e2.y,
           color: e2.color,
           yAxisCalloutData: e2.yAxisCalloutData,
+          callOutAccessibilityData: e2.callOutAccessibilityData,
           index: e2.index,
         });
       }
@@ -847,6 +860,10 @@ export enum Points {
   octagon,
 }
 
+export enum CustomPoints {
+  dottedLine,
+}
+
 export type PointTypes = {
   [key in number]: {
     /**
@@ -891,4 +908,25 @@ export const pointTypes: PointTypes = {
   [Points.octagon]: {
     widthRatio: 2.414,
   },
+};
+
+/**
+ * @param accessibleData accessible data
+ * @param role string to define role of tag
+ * @param isDataFocusable boolean
+ * function returns the accessibility data object
+ */
+export const getAccessibleDataObject = (
+  accessibleData?: IAccessibilityProps,
+  role: string = 'text',
+  isDataFocusable: boolean = true,
+) => {
+  accessibleData = accessibleData ?? {};
+  return {
+    role,
+    'data-is-focusable': isDataFocusable,
+    'aria-label': accessibleData!.ariaLabel,
+    'aria-labelledby': accessibleData!.ariaLabelledBy,
+    'aria-describedby': accessibleData!.ariaDescribedBy,
+  };
 };

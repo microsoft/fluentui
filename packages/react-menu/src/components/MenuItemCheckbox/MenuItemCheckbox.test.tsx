@@ -5,8 +5,9 @@ import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
 
 jest.mock('../../contexts/menuContext');
 
@@ -162,5 +163,20 @@ describe('MenuItemCheckbox', () => {
 
     // Assert
     expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('should merge checkmark slot props', () => {
+    // Arrange
+    const className = 'foo';
+    const { container } = render(
+      <MenuItemCheckbox checkmark={{ className }} name="test" value="test">
+        Item
+      </MenuItemCheckbox>,
+    );
+
+    // Assert
+    const slot = container.querySelector(`.${className}`);
+    expect(slot).not.toBeNull();
+    expect(slot?.querySelector('svg')).not.toBeNull();
   });
 });

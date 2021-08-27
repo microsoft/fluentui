@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Removing legacy patterns from converged component.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -4,40 +4,58 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = never;
-
-// @public
-export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
+    checked?: 'mixed' | boolean;
+    circular?: boolean;
+    defaultChecked?: 'mixed' | boolean;
+    disabled?: boolean;
+    id?: string;
+    labelPosition: 'before' | 'after';
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    required?: boolean;
+    rootId?: string;
+    size: 'medium' | 'large';
 }
 
 // @public
-export type CheckboxShorthandProps = never;
+export interface CheckboxOnChangeData {
+    // (undocumented)
+    checked: 'mixed' | boolean;
+}
 
 // @public
-export const checkboxShorthandProps: CheckboxShorthandProps[];
+export interface CheckboxProps extends ComponentPropsCompat, Partial<CheckboxCommons> {
+    indicator?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
+    input?: ShorthandPropsCompat<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
+}
 
 // @public
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+export const checkboxShorthandProps: readonly ["indicator", "input"];
+
+// @public
+export interface CheckboxState extends ComponentStateCompat<CheckboxProps, 'input' | 'indicator', 'size' | 'labelPosition' | 'input' | 'indicator'> {
+    containerClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }
 
-// @public
+// @public (undocumented)
 export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
 // @public
-export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CheckboxProps | undefined) => CheckboxState;
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>) => CheckboxState;
 
 // @public
 export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
-
 
 // (No @packageDocumentation comment for this package)
 
