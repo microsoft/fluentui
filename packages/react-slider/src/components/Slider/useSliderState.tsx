@@ -67,6 +67,12 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
   return () => element.removeEventListener(eventName, callback);
 };
 
+// The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
+const markContainerClassName = 'ms-Slider-markItemContainer';
+const markClassName = 'ms-Slider-mark';
+const firstMarkClassName = 'ms-Slider-firstMark';
+const lastMarkClassName = 'ms-Slider-lastMark';
+
 export const useSliderState = (state: SliderState) => {
   const {
     as = 'div',
@@ -347,11 +353,11 @@ export const useSliderState = (state: SliderState) => {
     const marksChildren: JSX.Element[] = [];
     for (let i = 0; i < marksPercent.length; i++) {
       marksChildren.push(
-        <div className="ms-Slider-markItemContainer" key={`markItemContainer-${i}`}>
+        <div className={markContainerClassName} key={`markItemContainer-${i}`}>
           <div
             className={mergeClasses(
-              'ms-Slider-mark',
-              (marksValue[i] === 0 && 'firstMark') || (marksValue[i] === 100 && 'lastMark') || '',
+              markClassName,
+              (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
             )}
             key={`mark-${i}`}
           />

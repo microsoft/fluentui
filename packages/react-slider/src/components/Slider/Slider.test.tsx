@@ -235,8 +235,8 @@ describe('Slider', () => {
       const { container } = render(<Slider max={10} marks={[0, 10]} marksWrapper={{ className: 'test-class' }} />);
       const sliderWrapper = container.querySelector('.test-class');
       expect(sliderWrapper?.getAttribute('style')).toContain('grid-template-columns: 0% 100%');
-      expect(container.querySelector('.firstMark')).toBeTruthy();
-      expect(container.querySelector('.lastMark')).toBeTruthy;
+      expect(container.querySelector('.ms-Slider-firstMark')).toBeTruthy();
+      expect(container.querySelector('.ms-Slider-lastMark')).toBeTruthy;
     });
 
     it('correctly calculates the origin border-radius when given min as the origin', () => {

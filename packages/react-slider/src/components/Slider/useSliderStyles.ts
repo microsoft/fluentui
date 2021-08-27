@@ -207,7 +207,7 @@ const useMarksWrapperStyles = makeStyles({
       background: 'white',
     },
 
-    '& .firstMark, .lastMark': {
+    '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
       opacity: '0',
     },
   }),

@@ -14,7 +14,7 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
         class="ms-Slider-markItemContainer"
       >
         <div
-          class="ms-Slider-mark firstMark"
+          class="ms-Slider-mark ms-Slider-firstMark"
         />
       </div>
       <div
