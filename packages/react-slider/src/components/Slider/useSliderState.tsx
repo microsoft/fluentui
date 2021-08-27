@@ -177,10 +177,10 @@ export const useSliderState = (state: SliderState) => {
       const position = min + step * calculateSteps(ev);
       const currentStepPosition = Math.round(position / step) * step;
 
-      updatePosition(clamp(position, min, max), ev);
+      setRenderedPosition(clamp(position, min, max));
       updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, max, min, step, updatePosition, updateValue],
+    [calculateSteps, max, min, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -189,13 +189,12 @@ export const useSliderState = (state: SliderState) => {
       disposables.current = [];
 
       showStepAnimation();
-      updatePosition(
+      setRenderedPosition(
         clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
-        ev,
       );
       inputRef.current!.focus();
     },
-    [calculateSteps, max, min, showStepAnimation, step, updatePosition],
+    [calculateSteps, max, min, showStepAnimation, step],
   );
 
   const onPointerDown = React.useCallback(
