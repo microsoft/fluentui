@@ -122,7 +122,7 @@ https://hackmd.io/VUpPADJ7Ry-ZXTrtffD7Sg
 | valueFormat       | Custom formatter for the slider value. value                                                                                                           | Label will handle custom formats                                                     |
 | originFromZero    | Whether to attach the origin of slider to zero. Helpful when the range include negatives. @defaultvalue false                                          | Replaced with origin to allow for more control over the component.                   |
 | ranged            | Whether to render a **Ranged Slider**. Ranged Sliders display two `thumbs` that allow for lower and upper bounds to be easily selected.                | Ranged will be separated into a different component.                                 |
-| label             | The description label of the **Slider**.                                                                                                               | Can be handled by a form component and is a rare use case for Slider                 |
+| label             | The description label of the **Slider**.                                                                                                               | Can be handled by a form component.                                                  |
 
 ## Structure
 
