@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
-import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import type { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
+import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export const useAccordion = (
   {

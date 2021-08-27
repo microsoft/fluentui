@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useAccordionHeader } from './useAccordionHeader';
-import { AccordionHeaderProps } from './AccordionHeader.types';
 import { renderAccordionHeader } from './renderAccordionHeader';
 import { useAccordionHeaderStyles } from './useAccordionHeaderStyles';
 import { useAccordionHeaderContextValues } from './useAccordionHeaderContextValues';
+import type { AccordionHeaderProps } from './AccordionHeader.types';
 
 /**
  * Define a styled AccordionHeader, using the `useAccordionHeader` and `useAccordionHeaderStyles` hooks.

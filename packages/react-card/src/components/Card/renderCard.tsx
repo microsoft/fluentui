@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CardState } from './Card.types';
 import { cardShorthandProps } from './useCard';
+import type { CardState } from './Card.types';
 
 /**
  * Render the final JSX of Card

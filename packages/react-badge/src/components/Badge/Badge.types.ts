@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Badge}

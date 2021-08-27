@@ -306,6 +306,11 @@
       "root": "packages/react-switch",
       "projectType": "library",
       "sourceRoot": "packages/react-switch/src"
+    },
+    "@fluentui/react-conformance-make-styles": {
+      "root": "packages/react-conformance-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-conformance-make-styles/src"
     }
   }
 }

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { makeMergePropsCompat } from '@fluentui/react-utilities';
-import { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
-import { useBadge, BadgeProps } from '../Badge/index';
+import { useBadge } from '../Badge/index';
+import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+import type { BadgeProps } from '../Badge/index';
 
 /**
  * Consts listing which props are shorthand props.
