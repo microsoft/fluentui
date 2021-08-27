@@ -9,7 +9,7 @@ let isMacResult: boolean | undefined;
 export function isMac(reset?: boolean): boolean {
   if (typeof isMacResult === 'undefined' || reset) {
     const win = getWindow();
-    const userAgent = win && win.navigator.userAgent;
+    const userAgent = win && win.navigator && win.navigator.userAgent;
 
     isMacResult = !!userAgent && userAgent.indexOf('Macintosh') !== -1;
   }
