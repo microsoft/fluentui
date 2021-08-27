@@ -22,48 +22,46 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 <Switch checked />
 <Switch checked disabled/>
 <Switch checked onChange={onChange}/>
-<Switch checked labelPosition="before">
-  This is a label
-</Switch>
 ```
 
 ## API
 
-| Name           | V0      | V8      | Description                                                                   |
-| -------------- | ------- | ------- | ----------------------------------------------------------------------------- |
-| checked        | &check; | &check; | The value of the Switch. If `true` then the Switch will be enabled.           |
-| defaultChecked | &check; | &check; | The default value of the Switch. If `true` then the Switch will be enabled.   |
-| disabled       | &check; | &check; | Whether the Switch should be disabled.                                        |
-| labelPosition  | &check; | &check; | Determines whether the label should be positioned before or after the Switch. |
-| onChange       | &check; | &check  | Callback to be called when the checked state value changes.                   |
+| Name           | V0      | V8      | Description                                                                 |
+| -------------- | ------- | ------- | --------------------------------------------------------------------------- |
+| checked        | &check; | &check; | The value of the Switch. If `true` then the Switch will be enabled.         |
+| defaultChecked | &check; | &check; | The default value of the Switch. If `true` then the Switch will be enabled. |
+| disabled       | &check; | &check; | Whether the Switch should be disabled.                                      |
+| onChange       | &check; | &check; | Callback to be called when the checked state value changes.                 |
 
 ## Migration
 
 <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
 
-| Name      | Description                                                | Reason                                                             |
-| --------- | ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| indicator | A checkbox's indicator icon can be customized.             | Toggle will have a slot for the thumb.                             |
-| label     | A checkbox can render a label next to its indicator.       | Toggle's label will be handled as a child element.                 |
-| onClick   | Called after a checkbox is clicked.                        | The native input element handles onClick.                          |
-| toggle    | A checkbox can be formatted to show an "on or off" choice. | Toggle is separated from checkbox due to vast styling differences. |
+| Name          | Description                                                                   | Reason                                                             |
+| ------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| indicator     | A checkbox's indicator icon can be customized.                                | Toggle will have a slot for the thumb.                             |
+| label         | A checkbox can render a label next to its indicator.                          | To be decided on how it is handled                                 |
+| labelPosition | Determines whether the label should be positioned before or after the Switch. | To be decided on how it is handled                                 |
+| onClick       | Called after a checkbox is clicked.                                           | The native input element handles onClick.                          |
+| toggle        | A checkbox can be formatted to show an "on or off" choice.                    | Toggle is separated from checkbox due to vast styling differences. |
 
 <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
 
-| Name         | Description                                                                                     | Reason                                             |
-| ------------ | ----------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| componentRef | Optional callback to access the IToggle interface.                                              | Not used in converged components                   |
-| label        | A label for the toggle.                                                                         | Toggle's label will be handled as a child element. |
-| onText       | Text to display when toggle is ON.                                                              | To be decided                                      |
-| offText      | Text to display when toggle is OFF.                                                             | Toggle's label will be handled as a child element. |
-| ariaLabel    | Text for screen-reader to announce as the name of the toggle.                                   | Toggle has a hidden input element.                 |
-| onAriaLabel  | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                                         |
-| offAriaLabel | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                                         |
-| inlineLabel  | Whether the label (not the onText/offText) should be positioned inline with the toggle control. | Toggle's label will be handled as a child element. |
-| onChanged    | @deprecated Use `onChange` instead.                                                             | deprecated                                         |
-| theme        | Theme provided by HOC.                                                                          | Not used in converged components                   |
-| styles       | Optional styles for the component.                                                              | Not used in converged components                   |
-| role         | Whether to use the 'switch' role (ARIA 1.1) or the 'checkbox' role (ARIA 1.0).                  | Toggle has a hidden input element.                 |
+| Name          | Description                                                                                     | Reason                              |
+| ------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------- |
+| componentRef  | Optional callback to access the IToggle interface.                                              | Not used in converged components    |
+| label         | A label for the toggle.                                                                         | To be decided on how it is handled. |
+| labelPosition | Determines whether the label should be positioned before or after the Switch.                   | To be decided on how it is handled  |
+| onText        | Text to display when toggle is ON.                                                              | To be decided.                      |
+| offText       | Text to display when toggle is OFF.                                                             | To be decided.                      |
+| ariaLabel     | Text for screen-reader to announce as the name of the toggle.                                   | Toggle has a hidden input element.  |
+| onAriaLabel   | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                          |
+| offAriaLabel  | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                          |
+| inlineLabel   | Whether the label (not the onText/offText) should be positioned inline with the toggle control. | It can be manually styled           |
+| onChanged     | @deprecated Use `onChange` instead.                                                             | deprecated                          |
+| theme         | Theme provided by HOC.                                                                          | Not used in converged components    |
+| styles        | Optional styles for the component.                                                              | Not used in converged components    |
+| role          | Whether to use the 'switch' role (ARIA 1.1) or the 'checkbox' role (ARIA 1.0).                  | Toggle has a hidden input element.  |
 
 ## Structure
 
@@ -77,15 +75,11 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 
 ```jsx=
 <slots.root {...slotProps.root}>
-  {state.labelPosition === 'before' && state.children}
-  <slots.switchWrapper {...slotProps.switchWrapper}>
-    <slots.track {...slotProps.track} />
-    <slots.thumbWrapper {...slotProps.thumbWrapper}>
-     <slots.thumb {...slotProps.thumb} />
-    </slots.thumbWrapper>
-    <input type="checkbox" />
-  </slots.switchWrapper>
-  {state.labelPosition === 'after' && state.children}
+  <slots.track {...slotProps.track} />
+  <slots.thumbWrapper {...slotProps.thumbWrapper}>
+    <slots.thumb {...slotProps.thumb} />
+  </slots.thumbWrapper>
+  <input type="checkbox" />
 </slots.root>;
 ```
 
@@ -93,13 +87,11 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 
 ```jsx=
 <div className="ms-switch-root">
-  <div className = "ms-switch-switchContainer">
-    <div className="ms-switch-track" />
-    <div className="ms-switch-thumbWrapper">
-      <div className="ms-switch-thumb" />
-    </div>
-    <input type="checkbox" />
+  <div className="ms-switch-track" />
+  <div className="ms-switch-thumbWrapper">
+    <div className="ms-switch-thumb" />
   </div>
+  <input type="checkbox" />
 </div>;
 ```
 
