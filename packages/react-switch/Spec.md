@@ -29,13 +29,13 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 
 ## API
 
-| Name           | <img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/> | <img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="100"/> | Description                                                                   |
-| -------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| checked        | &check;                                                                                 | &check;                                                                               | The value of the Switch. If `true` then the Switch will be enabled.           |
-| defaultChecked | &check;                                                                                 | &check;                                                                               | The default value of the Switch. If `true` then the Switch will be enabled.   |
-| disabled       | &check;                                                                                 | &check;                                                                               | Whether the Switch should be disabled.                                        |
-| labelPosition  | &check;                                                                                 | &check;                                                                               | Determines whether the label should be positioned before or after the Switch. |
-| onChange       | &check;                                                                                 | &check;                                                                               | Callback to be called when the checked state value changes.                   |
+| Name           | V0      | V8      | Description                                                                   |
+| -------------- | ------- | ------- | ----------------------------------------------------------------------------- |
+| checked        | &check; | &check; | The value of the Switch. If `true` then the Switch will be enabled.           |
+| defaultChecked | &check; | &check; | The default value of the Switch. If `true` then the Switch will be enabled.   |
+| disabled       | &check; | &check; | Whether the Switch should be disabled.                                        |
+| labelPosition  | &check; | &check; | Determines whether the label should be positioned before or after the Switch. |
+| onChange       | &check; | &check  | Callback to be called when the checked state value changes.                   |
 
 ## Migration
 
@@ -54,7 +54,7 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 | ------------ | ----------------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | componentRef | Optional callback to access the IToggle interface.                                              | Not used in converged components                   |
 | label        | A label for the toggle.                                                                         | Toggle's label will be handled as a child element. |
-| onText       | Text to display when toggle is ON.                                                              | Toggle's label will be handled as a child element. |
+| onText       | Text to display when toggle is ON.                                                              | To be decided                                      |
 | offText      | Text to display when toggle is OFF.                                                             | Toggle's label will be handled as a child element. |
 | ariaLabel    | Text for screen-reader to announce as the name of the toggle.                                   | Toggle has a hidden input element.                 |
 | onAriaLabel  | @deprecated Use `ariaLabel` for name, and let the metadata convey state                         | deprecated                                         |
@@ -79,7 +79,6 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 <slots.root {...slotProps.root}>
   {state.labelPosition === 'before' && state.children}
   <slots.switchWrapper {...slotProps.switchWrapper}>
-    <slots.rail {...slotProps.rail} />
     <slots.track {...slotProps.track} />
     <slots.thumbWrapper {...slotProps.thumbWrapper}>
      <slots.thumb {...slotProps.thumb} />
@@ -95,7 +94,6 @@ Amongst other major component libraries (`Material UI`, `Ant Design`, `Evergreen
 ```jsx=
 <div className="ms-switch-root">
   <div className = "ms-switch-switchContainer">
-    <div className="ms-switch-rail" />
     <div className="ms-switch-track" />
     <div className="ms-switch-thumbWrapper">
       <div className="ms-switch-thumb" />
