@@ -25,7 +25,7 @@ Within your JavaScript or TypeScript code, you can then import library APIs like
 import { FluentAnchor } from '@fluentui/web-components';
 ```
 
-Looking for a setup that integrates with a particular front-end framework or bundler? Check out [our integration docs](http://fast.design/docs/integrations/introduction).
+Looking for a setup that integrates with a particular front-end framework or bundler? Check out [our integration docs](http://fast.design/docs/integrations/introduction). If you are using Yarn 2 and PnP, see notes below.
 
 ### From CDN
 
@@ -55,3 +55,22 @@ Storybook will watch modules for changes and hot-reload the module when necessar
 `Failed to execute 'define' on 'CustomElementRegistry': the name "my-custom-element-name" has already been used with this registry`
 
 This is a known issue and will indicate that you need to refresh the page. We're working on surfacing a more instructive error message for this case.
+
+## Notes
+
+### Using Yarn 2 with PnP
+
+`@microsoft/fast-components` works out of the box with Yarn 2 and PnP; however, because of how Yarn expects peer dependencies to be satisfied, we need additional configuation for `fluentui/web-components`.
+
+In your `.yarnrc.yml`, add the following entries and run `yarn` again:
+```YAML
+packageExtensions:
+  "@microsoft/fast-foundation@*":
+    dependencies:
+      "lodash-es": "*"
+  "@fluentui/web-components@*":
+    dependencies:
+      "@microsoft/fast-web-utilities": "*"
+```
+
+More details [here](https://yarnpkg.com/advanced/error-codes#yn0002---missing_peer_dependency) about why this fix works.
