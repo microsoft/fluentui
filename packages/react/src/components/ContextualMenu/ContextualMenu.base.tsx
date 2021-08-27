@@ -369,6 +369,32 @@ function useScrollHandler(asyncTracker: Async) {
   return [onScroll, isScrollIdle] as const;
 }
 
+function useOnSubmenuDismiss(dismiss: (ev?: any, dismissAll?: boolean) => void, closeSubMenu: () => void) {
+  const isMountedRef = React.useRef(false);
+  React.useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+
+  /**
+   * This function is called ASYNCHRONOUSLY, and so there is a chance it is called
+   * after the component is unmounted. The isMountedRef is added to prevent
+   * from calling setState() after unmount. Do NOT copy this pattern in synchronous
+   * code.
+   */
+  const onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
+    if (dismissAll) {
+      dismiss(ev, dismissAll);
+    } else if (isMountedRef.current) {
+      closeSubMenu();
+    }
+  };
+
+  return onSubMenuDismiss;
+}
+
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
   HTMLDivElement,
   IContextualMenuProps
@@ -398,6 +424,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   useVisibility(props, targetWindow);
 
   const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
+  const onSubMenuDismiss = useOnSubmenuDismiss(dismiss, closeSubMenu);
 
   const [onKeyDown, onKeyUp, onMenuKeyDown] = useKeyHandlers(props, dismiss, hostElement);
 
@@ -428,6 +455,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         onMenuKeyDown,
         onScroll,
         isScrollIdle,
+        onSubMenuDismiss,
       }}
       responsiveMode={responsiveMode}
     />
@@ -460,12 +488,12 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     onMenuKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => void;
     onScroll: () => void;
     isScrollIdle: React.RefObject<boolean>;
+    onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void;
   };
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
   private _enterTimerId: number | undefined;
-  private _mounted = false;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -479,16 +507,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
 
     return !shallowCompare(this.props, newProps);
-  }
-
-  // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
-  public componentDidMount(): void {
-    this._mounted = true;
-  }
-
-  // Invoked immediately before a component is unmounted from the DOM.
-  public componentWillUnmount() {
-    this._mounted = false;
   }
 
   public render(): JSX.Element | null {
@@ -963,7 +981,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       onItemKeyDown: this._onItemKeyDown,
       expandedMenuItemKey,
       openSubMenu,
-      dismissSubMenu: this._onSubMenuDismiss,
+      dismissSubMenu: this.props.hoisted.onSubMenuDismiss,
       dismissMenu: this.props.hoisted.dismiss,
     } as const;
 
@@ -1117,7 +1135,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       }, timeoutDuration);
     } else {
       this._enterTimerId = this.props.hoisted.asyncTracker.setTimeout(() => {
-        this._onSubMenuDismiss(ev);
+        this.props.hoisted.onSubMenuDismiss(ev);
         targetElement.focus();
         this._enterTimerId = undefined;
       }, timeoutDuration);
@@ -1229,7 +1247,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       submenuProps = {
         items: getSubmenuItems(item)!,
         target: submenuTarget,
-        onDismiss: this._onSubMenuDismiss,
+        onDismiss: this.props.hoisted.onSubMenuDismiss,
         isSubMenu: true,
         id: this.props.hoisted.subMenuId,
         shouldFocusOnMount: true,
@@ -1269,20 +1287,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       }
     }
   }
-
-  /**
-   * This function is called ASYNCHRONOUSLY, and so there is a chance it is called
-   * after the component is unmounted. The _mounted property is added to prevent
-   * from calling setState() after unmount. Do NOT copy this pattern in synchronous
-   * code.
-   */
-  private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
-    if (dismissAll) {
-      this.props.hoisted.dismiss(ev, dismissAll);
-    } else if (this._mounted) {
-      this.props.hoisted.closeSubMenu();
-    }
-  };
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
     this._cancelSubMenuTimer();
