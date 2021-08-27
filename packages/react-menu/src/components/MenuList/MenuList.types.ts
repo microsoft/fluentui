@@ -10,7 +10,13 @@ interface MenuListCommons extends React.HTMLAttributes<HTMLElement> {
    * @param name - the name of the value
    * @param checkedItems - the items for this value that are checked
    */
-  onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
+  onCheckedValueChange?: (
+    e: React.MouseEvent | React.KeyboardEvent,
+    data: {
+      name: string;
+      checkedItems: string[];
+    },
+  ) => void;
 
   /**
    * Map of all checked values
