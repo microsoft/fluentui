@@ -172,7 +172,10 @@ describe('useMenuList', () => {
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), name, expectedResult);
+      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ name, checkedItems: expectedResult }),
+      );
     });
   });
 });
