@@ -226,7 +226,6 @@ exports[`DetailsHeader can render 1`] = `
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -271,7 +270,6 @@ exports[`DetailsHeader can render 1`] = `
                   forced-color-adjust: none;
                 }
             data-icon-name="StatusCircleCheckmark"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -629,7 +627,6 @@ exports[`DetailsHeader can render 1`] = `
                 top: 1px;
               }
           data-icon-name="SortUp"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -852,7 +849,6 @@ exports[`DetailsHeader can render 1`] = `
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1419,7 +1415,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
                 top: 1px;
               }
           data-icon-name="SortUp"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1642,7 +1637,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1939,7 +1933,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1984,7 +1977,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   forced-color-adjust: none;
                 }
             data-icon-name="StatusCircleCheckmark"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2343,7 +2335,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 top: 1px;
               }
           data-icon-name="SortUp"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2590,7 +2581,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 padding-left: 8px;
               }
           data-icon-name="Filter"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2621,7 +2611,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 padding-left: 8px;
               }
           data-icon-name="GroupedDescending"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-7\\"",
@@ -2653,7 +2642,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",

@@ -419,7 +419,6 @@ Array [
                               opacity: 1;
                             }
                         data-icon-name="Page"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",

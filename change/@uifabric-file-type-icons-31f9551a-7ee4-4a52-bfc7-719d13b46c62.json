@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pass Icon 'title' as alt text for File Type Icons",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "minor"
+}
