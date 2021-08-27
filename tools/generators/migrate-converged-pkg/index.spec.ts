@@ -10,8 +10,9 @@ import {
   updateJson,
   logger,
   updateProjectConfiguration,
+  serializeJson,
 } from '@nrwl/devkit';
-import { serializeJson, stringUtils } from '@nrwl/workspace';
+import { stringUtils } from '@nrwl/workspace';
 
 import { PackageJson, TsConfig } from '../../types';
 
