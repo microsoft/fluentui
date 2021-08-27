@@ -63,6 +63,55 @@ If you need to specify custom Babel configuration, you can pass them to `babelOp
 }
 ```
 
+### Configuring module evaluation
+
+```json
+{
+  "plugins": [
+    [
+      "module:@fluentui/babel-make-styles",
+      {
+        "evaluationRules": []
+      }
+    ]
+  ]
+}
+```
+
+The set of rules that defines how the matched files will be transformed during the evaluation. `EvalRule` is an object with two fields:
+
+- test is a regular expression or a function `(path: string) => boolean`
+- action is an `Evaluator` function, "ignore" or a name of the module that exports `Evaluator` function as a **default** export
+
+_If `test` is omitted, the rule is applicable for all the files._
+
+The last matched rule is used for transformation. If the last matched action for a file is "ignore" the file will be evaluated as is, so that file must not contain any js code that cannot be executed in nodejs environment (it's usually true for any lib in `node_modules`).
+
+If you need to compile certain modules under `/node_modules/` (which can be the case in monorepo projects), it's recommended to do it on a module by module basis for faster transforms, e.g. ignore: `/node_modules[\/\\](?!some-module|other-module)/`.
+
+The default setup is:
+
+```js
+module.exports = {
+  plugins: [
+    [
+      'module:@fluentui/babel-make-styles',
+      {
+        evaluationRules: [
+          {
+            action: require('@linaria/shaker').default,
+          },
+          {
+            test: /[/\\]node_modules[/\\]/,
+            action: 'ignore',
+          },
+        ],
+      },
+    ],
+  ],
+};
+```
+
 ## Transforms
 
 This plugin is designed to performed build time transforms for `@fluentui/react-make-styles`, it supports both ES modules and CommonJS thus can be used in post processing after TypeScript, for example.
