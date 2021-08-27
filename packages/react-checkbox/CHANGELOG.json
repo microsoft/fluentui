@@ -2,6 +2,58 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding accessibility tests to the Checkbox component.",
+            "author": "czearing@outlook.com",
+            "commit": "cb195b49bf761c2a636a43bdf4cb3f8ccf552aaa",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Changing the disabled cursor to not-allowed.",
+            "author": "czearing@outlook.com",
+            "commit": "f0055d2fc4803dd078223a38dc676431d2180833",
+            "package": "@fluentui/react-checkbox"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.31",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.30",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Aug 2021 07:35:19 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-alpha.25",
       "version": "9.0.0-alpha.25",

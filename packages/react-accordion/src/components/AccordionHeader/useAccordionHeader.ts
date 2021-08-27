@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useMergedRefs, useId, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
 import { useAccordionItemContext } from '../AccordionItem/index';
 import { AccordionHeaderExpandIcon } from './AccordionHeaderExpandIcon';
 import { useARIAButton } from '@fluentui/react-aria';
+import type { AccordionHeaderProps, AccordionHeaderState, AccordionHeaderSlots } from './AccordionHeader.types';
 
 /**
  * Const listing which props are shorthand props.

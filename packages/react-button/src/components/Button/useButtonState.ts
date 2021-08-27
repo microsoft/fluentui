@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
-import { ButtonState } from './Button.types';
+import type { ButtonState } from './Button.types';
 
 /**
  * The useButton hook processes the Button draft state.

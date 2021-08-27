@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
 
 export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
