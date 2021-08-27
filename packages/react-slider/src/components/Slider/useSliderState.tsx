@@ -175,12 +175,12 @@ export const useSliderState = (state: SliderState) => {
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = min + step * calculateSteps(ev);
-      const currentStepPosition = Math.round(position / step) * step;
+      const currentStepPosition = state.step ? Math.round(position / step) * step : position;
 
       setRenderedPosition(clamp(position, min, max));
-      updateValue(currentStepPosition, ev);
+      currentValue !== currentStepPosition && updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, max, min, step, updateValue],
+    [calculateSteps, currentValue, max, min, state.step, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
