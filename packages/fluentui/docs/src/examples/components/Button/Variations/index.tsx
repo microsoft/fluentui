@@ -20,7 +20,7 @@ const Variations = () => (
       examplePath="components/Button/Variations/ButtonExampleSize"
     />
     <ComponentExample
-      title="Flat \ Elevated"
+      title="Flat or Elevated"
       description="A button can be elevated or flat."
       examplePath="components/Button/Variations/ButtonExampleFlat"
     />
