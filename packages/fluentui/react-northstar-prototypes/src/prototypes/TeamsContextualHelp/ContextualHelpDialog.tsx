@@ -2,6 +2,15 @@ import * as React from 'react';
 import { Header, Button, Dialog, Text, Table, List, Accordion } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
+const srOnlyCss: React.CSSProperties = {
+  position: 'absolute',
+  left: '-10000px',
+  top: 'auto',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+}; // End srOnlyCss
+
 const tableHeader = {
   items: ['Action', 'Keys'],
 }; // End tableHeader
@@ -46,7 +55,12 @@ const panels = [
     key: 'chatsList',
     title: {
       as: 'h2',
-      content: 'Chats list',
+      content: (
+        <>
+          <Text>Chats list</Text>
+          <Text style={srOnlyCss}>, 1 of 4</Text>
+        </>
+      ),
     },
     content: (
       <>
@@ -68,7 +82,12 @@ const panels = [
     key: 'messagesList',
     title: {
       as: 'h2',
-      content: 'Messages list',
+      content: (
+        <>
+          <Text>Messages list</Text>
+          <Text style={srOnlyCss}>, 2 of 4</Text>
+        </>
+      ),
     },
     content: (
       <>
@@ -97,7 +116,12 @@ const panels = [
     key: 'composeField',
     title: {
       as: 'h2',
-      content: 'Message compose field',
+      content: (
+        <>
+          <Text>Message compose field</Text>
+          <Text style={srOnlyCss}>, 3 of 4</Text>
+        </>
+      ),
     },
     content: (
       <>
@@ -122,7 +146,12 @@ const panels = [
     key: 'global',
     title: {
       as: 'h2',
-      content: 'Global keyboard shortcuts',
+      content: (
+        <>
+          <Text>Global keyboar shortcuts</Text>
+          <Text style={srOnlyCss}>, 4 of 4</Text>
+        </>
+      ),
     },
     content: (
       <>
