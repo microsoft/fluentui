@@ -495,8 +495,6 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
   private _enterTimerId: number | undefined;
 
-  private _adjustedFocusZoneProps: IFocusZoneProps;
-
   // eslint-disable-next-line deprecation/deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
@@ -571,7 +569,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return false;
     }
 
-    this._adjustedFocusZoneProps = {
+    const adjustedFocusZoneProps = {
       ...focusZoneProps,
       className: this._classNames.root,
       isCircularNavigation: true,
@@ -673,6 +671,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                         },
                         this._onRenderMenuList,
                       ),
+                      adjustedFocusZoneProps,
                     )
                   : null}
                 {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
@@ -722,9 +721,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     );
   };
 
-  private _renderFocusZone(children: JSX.Element | null): JSX.Element {
+  private _renderFocusZone(children: JSX.Element | null, adjustedFocusZoneProps: IFocusZoneProps): JSX.Element {
     const { focusZoneAs: ChildrenRenderer = FocusZone } = this.props;
-    return <ChildrenRenderer {...this._adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
+    return <ChildrenRenderer {...adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
   }
 
   /**
