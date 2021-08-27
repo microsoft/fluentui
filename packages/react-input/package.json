@@ -22,6 +22,7 @@
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-input/src && yarn docs",
+    "bundle:storybook": "just-scripts storybook:build",
     "storybook": "start-storybook"
   },
   "devDependencies": {
