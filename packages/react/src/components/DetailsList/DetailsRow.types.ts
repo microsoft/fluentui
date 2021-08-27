@@ -222,8 +222,9 @@ export interface IDetailsRowBaseProps
    * the correct aria-posinset and aria-setsize values.
    */
   group?: IGroup;
+
   /**
-   * Properties to pass to the rows focus zone.
+   * Properties to pass to the rows' FocusZone.
    */
   focusZoneProps?: IFocusZoneProps;
 }
