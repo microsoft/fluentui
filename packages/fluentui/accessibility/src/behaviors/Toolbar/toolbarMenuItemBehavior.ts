@@ -32,5 +32,5 @@ export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps
 };
 
 export type ToolbarMenuItemBehaviorProps = Omit<MenuItemBehaviorProps, 'vertical'> & {
-  disabledFocusable: boolean;
+  disabledFocusable?: boolean;
 };
