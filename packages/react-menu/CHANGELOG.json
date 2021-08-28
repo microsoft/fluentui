@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.68",
+      "version": "9.0.0-alpha.68",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.40",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Aug 2021 07:35:43 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.67",
       "version": "9.0.0-alpha.67",

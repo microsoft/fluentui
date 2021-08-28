@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CompoundButtonState } from './CompoundButton.types';
 import { compoundButtonShorthandPropsCompat } from './useCompoundButton';
+import type { CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Renders a CompoundButton component by passing the state defined props to the appropriate slots.

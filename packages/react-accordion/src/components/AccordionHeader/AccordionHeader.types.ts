@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
-import { ARIAButtonProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
+import type { ARIAButtonProps } from '@fluentui/react-aria';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';

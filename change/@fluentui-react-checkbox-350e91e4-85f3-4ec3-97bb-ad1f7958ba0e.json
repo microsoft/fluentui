@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Adding accessibility tests to the Checkbox component.",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none"
-}

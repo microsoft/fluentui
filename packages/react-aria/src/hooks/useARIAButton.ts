@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import {
-  ObjectShorthandProps,
-  resolveShorthand,
-  ResolveShorthandOptions,
-  ShorthandProps,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
 
 function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   if (typeof disabled === 'string') {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Thu, 26 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Aug 2021 07:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 27 Aug 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Changes
+
+- Bump @fluentui/react-storybook to v9.0.0-alpha.0 ([PR #19462](https://github.com/microsoft/fluentui/pull/19462) by olfedias@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
 

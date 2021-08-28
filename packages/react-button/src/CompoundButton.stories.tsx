@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { CompoundButton, CompoundButtonProps } from './CompoundButton';
+import { CompoundButton } from './CompoundButton';
 import { Playground } from './Playground.stories';
-import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 import { buttonBaseProps } from './buttonBaseProps.stories';
+import type { CompoundButtonProps } from './CompoundButton';
+import type { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 
 type ExampleProps = { iconOnly?: string };
 
