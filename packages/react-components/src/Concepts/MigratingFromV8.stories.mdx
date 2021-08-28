@@ -1,26 +1,26 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Concepts/Developer/Migrating from v8" />
+<Meta title="Concepts/Developer/Migrating from @fluentui/react v8" />
 
-## Moving to v9-BETA from v8
+## Moving to `@fluentui/react-components` version 9-BETA from `@fluentui/react` version 8
 
-If you or your team are currently using version 8.x.x of `@fluentui/react` and are thinking of transitioning to use our 9.x.x-beta components, then we would first like to thank you for making the jump and tell you how excited we are for you to experience all the improvements and features we have been working on for the past couple of months.
+If you or your team are currently using version 8 of `@fluentui/react` and are thinking of transitioning to use our 9-beta components, then we would first like to thank you for making the jump and tell you how excited we are for you to experience all the improvements and features we have been working on for the past couple of months.
 
-There are also a couple of things to keep in mind when upgrading, so we have created the below guide explaining some of the new concepts you might encounter in the new version on how they map to what existed in version 8.x.x.
+There are also a couple of things to keep in mind when upgrading, so we have created the below guide explaining some of the new concepts you might encounter in the new version on how they map to what existed in version 8.
 
-Think of it as an FAQ of sorts for moving from version 8.x.x to version 9.x.x-beta.
+Think of it as an FAQ of sorts for moving from version 8 to version 9-beta.
 
 ---
 
-#### "I see that the list of components in the BETA release of version 9.x.x-beta is a lot shorter than the one in version 8.x.x and some of the components I was using are now missing. What is going on?"
+#### "I see that the list of components in the BETA release of version 9-beta is a lot shorter than the one in version 8 and some of the components I was using are now missing. What is going on?"
 
 When we moved both `@fluentui/react` (previously `office-ui-fabric-react`) and `@fluentui/react-northstar` (previously `@stardust-ui/react`) under the same GitHub repository and Fluent UI banner we decided to take a deep look at how to best move the library forward. Although both propositions had so far served our customers well and delivered tremendous value, there were a number of issues with them that were hard to address. After numerous discussions on how to ease these customer pains and how to move everyone to one shared codebase we decided on a solution.
 
-What we are delivering in version 9.x.x-beta are the first fruits of that decision.
+What we are delivering in version 9-beta are the first fruits of that decision.
 
-Version 9 is a library built from the ground-up that addresses many of the concerns and issues that plagued version 8. However, because we have been building components from the ground-up, the number of components that we are initially releasing in BETA is much smaller than the amount that existed in version 8. Some of them might also now exist under a different name.
+Version 9 is a "converged" library built from the ground-up that addresses many of the concerns and issues that plagued `@fluentui/react` version 8. However, this approach means that the number of components that we are initially releasing in beta is much smaller than the number that existed in version 8. Some components have also been renamed.
 
-Below is a list of the components that we are releasing with version 9.x.x-beta and what their respective equivalents are in version 8.x.x:
+Below is a list of the components that we are releasing with version 9-beta and what their respective equivalents are in version 8:
 
 | Component name in v9 | Equivalent component name in v8    |
 | -------------------- | ---------------------------------- |
@@ -72,23 +72,23 @@ We are modernizing our components in version 9 to adhere to the latest guideline
 
 #### "What if I want to override a component's styles? Say, if I want to make them look like they did before? It seems like the styles prop does not exist anymore!"
 
-The styling story in version 9 is very different to what existed in version 8. For one, we are moving away from providing a `styles` prop and are mostly focusing of providing styling via `classNames` (if you are worried about how could you style every piece of a component via `classNames`, do not fret and keep reading).
+The styling story in version 9 is very different to what existed in version 8. For one, we are moving away from providing a `styles` prop and are mostly focusing of providing styling via the `className` prop (if you are worried about how could you style every piece of a component via `className`, do not fret and keep reading).
 
-We are also moving away from `mergeStyles` in favor of `makeStyles`, another in-house CSS-in-JS solution inspired by `stylex` that allows for things like atomic classes and build-time optimization of styles.
+We are also moving away from `mergeStyles` in favor of `makeStyles`, another in-house CSS-in-JS solution inspired that allows for things like atomic classes and build-time optimization of styles.
 
-If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--page) in version 9.
+If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--page) in version 9 and the [README on the `@fluentui/react-make-styles` utilities](https://github.com/microsoft/fluentui/blob/master/packages/react-make-styles/README.md).
 
 ---
 
 #### "Ok, I am interested, where can I find the code for the new components? I cannot seem to find it in `@fluentui/react`..."
 
-The new components are available from the `@fluentui/react-components` "suite" package. (`@fluentui/react` will continue to exist for the foreseeable future as the home of our previous components.) 
+The new components are available from the `@fluentui/react-components` "suite" package. (`@fluentui/react` will continue to exist for the foreseeable future as the home of our previous components.)
 
-As for the where the actual code of the components lives, we have made the decision to scaffold the components into separate packages in version 9. The names of these packages follow the convention `@fluentui/react-[componentName]`, so, for example, the code for the `Avatar` component exists in the `@fluentui/react-avatar` package and is just re-exported by the `@fluentui/react-components` package. Where it makes sense though, we group multiple components under the same package. So, instead of having a `@fluentui/react-toggle-button` package to house `ToggleButton`, for example, we just house it inside the already existing `@fluentui/react-button` package.
+As for where the actual code of the components lives, we have made the decision to scaffold the components into separate packages in version 9. The names of these packages follow the convention `@fluentui/react-[componentName]`, so, for example, the code for the `Avatar` component exists in the `@fluentui/react-avatar` package and is just re-exported by the `@fluentui/react-components` package. Where it makes sense though, we group multiple components under the same package. So, instead of having a `@fluentui/react-toggle-button` package to house `ToggleButton`, for example, we just house it inside the already existing `@fluentui/react-button` package.
 
 It's recommended to depend on and import from `@fluentui/react-components`, rather than the individual packages (unless you have a specific reason to use an individual package). Depending on the suite helps ensure that you get consistent versions of all components and avoid duplicate dependencies. If you don't use all the components, most bundlers such as webpack and esbuild will automatically drop the unused code from your final bundle.
 
-Below is a table showing all components in the version 9 BETA release and in which package does their code live in:
+Below is a table showing all components in the version 9 BETA release and in which package their code lives in:
 
 | Component        | Package in which it lives                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------- |
@@ -131,7 +131,9 @@ In version 9 the structure for a given component would be something more like:
 
 In this way, we can actually maintain the separation of concerns we had for types and styling while also separating the concerns of state management and rendering logic into their own individually reusable parts.
 
-Another added benefit in version 9 is that, because of the move to scaffolded packages, we are able to collocate all our component examples in their respective package next to the component's code instead of having them in the separate `@fluentui/react-examples` package.
+Another change in version 9 is that we are collocating all our component examples in their respective package next to the component's code instead of having them in the separate `@fluentui/react-examples` package.
+
+Finally, other things to take note of are that version 9 does not include any "top-level`component files (i.e.`@fluentui/react/lib/Button`) nor does it have support for deep imports. The benefits of these decisions are that they allow us to not have a need for extra config in jest and other tools to remap from `esm`to`cjs`.
 
 ---
 
@@ -139,11 +141,31 @@ Another added benefit in version 9 is that, because of the move to scaffolded pa
 
 For version 9 we are utilizing a new composition model to create our components. We have decided to name the building blocks of these components **_slots_** which, as their name suggests, are slottable parts that we put together to build the component. Most of the things that `render[ComponentName]` function calls return are slots.
 
-**_Shorthands_** are the way in which we allow these _slot_ subparts within a component to be configurable. They allow a caller of the component to pass a variety of different inputs for a given _slot_, including but not limited to things like a string, JSX, an object or a function, depending on how the shorthand is configured.
+**_Shorthands_** are the way in which we allow these _slot_ subparts within a component to be configurable. They allow a caller of the component to pass a variety of different inputs for a given _slot_, including but not limited to things like a string, JSX, an object or a function, depending on how the shorthand is configured. An example of this would be the `icon` shorthand in the `Button` component, with some uses exemplified below:
+
+```jsx
+<>
+  <Button icon={<JSXIcon />} />
+  <Button icon={{ children: <JSXIcon />, id: 'button-icon' }} />
+  <Button
+    icon={{
+      // wraps "icon" slot with a custom "div"
+      children: (Component, props) => (
+        <div>
+          <Component {...props} />
+        </div>
+      ),
+    }}
+  />
+</>
+```
 
 `resolveShorthandProps` and `getSlots` are some helpers that allow us to support and parse these dynamic _shorthand_ props.
 
-If you want to learn more about our new composition model you can read the [README on our composition utilities](https://github.com/microsoft/fluentui/blob/master/packages/react-utilities/src/compose/README.md).
+Here are some other resources on the topic if you are interested:
+
+- [README on our composition utilities](https://github.com/microsoft/fluentui/blob/master/packages/react-utilities/src/compose/README.md)
+- [Slots API specification](https://github.com/microsoft/fluentui/blob/master/specs/Slots.md)
 
 ---
 
