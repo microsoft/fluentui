@@ -86,7 +86,7 @@ The new components are available from the `@fluentui/react-components` "suite" p
 
 As for where the actual code of the components lives, we have made the decision to scaffold the components into separate packages in version 9. The names of these packages follow the convention `@fluentui/react-[componentName]`, so, for example, the code for the `Avatar` component exists in the `@fluentui/react-avatar` package and is just re-exported by the `@fluentui/react-components` package. Where it makes sense though, we group multiple components under the same package. So, instead of having a `@fluentui/react-toggle-button` package to house `ToggleButton`, for example, we just house it inside the already existing `@fluentui/react-button` package.
 
-It's recommended to depend on and import from `@fluentui/react-components`, rather than the individual packages (unless you have a specific reason to use an individual package). Depending on the suite helps ensure that you get consistent versions of all components and avoid duplicate dependencies. If you don't use all the components, most bundlers such as webpack and esbuild will automatically drop the unused code from your final bundle.
+It is recommended to depend on and import from `@fluentui/react-components`, rather than the individual packages (unless you have a specific reason to use an individual package). Depending on the suite helps ensure that you get consistent versions of all components and avoid duplicate dependencies. If you do not use all the components, most bundlers such as webpack and esbuild will automatically drop the unused code from your final bundle.
 
 Below is a table showing all components in the version 9 BETA release and in which package their code lives in:
 
