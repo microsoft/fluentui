@@ -65,7 +65,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
 
   /** A toolbar item can show it is currently unable to be interacted with. */
   disabled?: boolean;
-  
+
   /** A toolbar item can be disabled and focusable at the same time. */
   disabledFocusable?: boolean;
 
