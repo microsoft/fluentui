@@ -12,6 +12,7 @@ import type { IGroup } from '../GroupedList/GroupedList.types';
 import type { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import type { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -221,6 +222,11 @@ export interface IDetailsRowBaseProps
    * the correct aria-posinset and aria-setsize values.
    */
   group?: IGroup;
+
+  /**
+   * Properties to pass to the rows' FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**
