@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
 import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
+import { Tooltip } from '@fluentui/react-tooltip';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
@@ -12,6 +13,7 @@ export const sliderShorthandProps: SliderShorthandProps[] = [
   'trackWrapper',
   'track',
   'thumbWrapper',
+  'tooltip',
   'thumb',
   'activeRail',
 ];
@@ -32,6 +34,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       trackWrapper: { as: 'div', children: null },
       track: { as: 'div', children: null },
       thumbWrapper: { as: 'div', children: null },
+      tooltip: { as: Tooltip, children: null },
       thumb: { as: 'div', children: null },
       activeRail: { as: 'div', children: null },
     },

@@ -30,6 +30,11 @@ export interface SliderProps
   thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
   /**
+   * The tooltip above the Slider's thumb. It is used to show the current value of the Slider.
+   */
+  tooltip?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+  /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
@@ -94,6 +99,11 @@ export interface SliderProps
   vertical?: boolean;
 
   /**
+   * How the tooltip above the Thumb should be displayed.
+   */
+  tooltipDisplay?: boolean;
+
+  /**
    * The starting origin point for the Slider.
    * @default min
    */
@@ -128,6 +138,7 @@ export type SliderShorthandProps =
   | 'trackWrapper'
   | 'track'
   | 'thumbWrapper'
+  | 'tooltip'
   | 'thumb'
   | 'activeRail';
 
@@ -140,6 +151,7 @@ export type SliderDefaultedProps =
   | 'trackWrapper'
   | 'track'
   | 'thumbWrapper'
+  | 'tooltip'
   | 'thumb'
   | 'activeRail';
 

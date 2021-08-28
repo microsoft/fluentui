@@ -31,7 +31,7 @@ export const BasicSliderExample = (props: SliderProps) => {
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <Slider />
+      <Slider tooltipDisplay />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
       <Slider value={sliderValue} min={10} max={200} step={1} keyboardStep={2} onChange={sliderOnChange} />
       <Label>Snapping Example</Label>

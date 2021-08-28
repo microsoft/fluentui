@@ -80,6 +80,7 @@ export const useSliderState = (state: SliderState) => {
     onChange,
     vertical = false,
     origin,
+    tooltipDisplay = true,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -304,6 +305,9 @@ export const useSliderState = (state: SliderState) => {
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbWrapperStyles;
+
+  // Tooltip Props
+  state.tooltip.pointing = true;
 
   // Thumb Props
   state.thumb.ref = thumbRef;
