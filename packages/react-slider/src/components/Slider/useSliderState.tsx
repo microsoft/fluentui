@@ -69,7 +69,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
 
 // The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
 const markContainerClassName = 'ms-Slider-markItemContainer';
-const markClassName = 'ms-Slider-mark';
+export const markClassName = 'ms-Slider-mark';
 const firstMarkClassName = 'ms-Slider-firstMark';
 const lastMarkClassName = 'ms-Slider-lastMark';
 
@@ -298,7 +298,7 @@ export const useSliderState = (state: SliderState) => {
   }, [marks, max, min, step]);
 
   /**
-   * Gets the current percentage position for the marks.
+   * Current percentage position for the marks.
    */
   const markPercent = React.useMemo((): string[] => {
     const valueArray: number[] = markValues;

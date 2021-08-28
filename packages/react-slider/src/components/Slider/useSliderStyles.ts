@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
+import { markClassName } from './useSliderState';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -202,7 +203,7 @@ const useMarksWrapperStyles = makeStyles({
     outline: 'none',
     zIndex: '1',
     whiteSpace: 'nowrap',
-    '& .ms-Slider-mark': {
+    [`& .${markClassName}`]: {
       // TODO: theme neutralStrokeOnBrand
       background: 'white',
     },
@@ -225,7 +226,7 @@ const useMarksWrapperStyles = makeStyles({
       alignItems: 'center',
     },
 
-    '& .ms-Slider-mark': {
+    [`& .${markClassName}`]: {
       height: '4px',
       width: '1px',
     },
@@ -246,7 +247,7 @@ const useMarksWrapperStyles = makeStyles({
       maxHeight: '100%',
     },
 
-    '& .ms-Slider-mark': {
+    [`& .${markClassName}`]: {
       height: '1px',
       width: 'var(--slider-mark-size)',
     },
