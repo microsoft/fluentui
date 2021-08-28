@@ -507,6 +507,7 @@ ToolbarMenuItem.propTypes = {
   activeIndicator: customPropTypes.shorthandAllowingChildren,
   defaultMenuOpen: PropTypes.bool,
   disabled: PropTypes.bool,
+  disabledFocusable: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
   index: PropTypes.number,
   submenuIndicator: customPropTypes.shorthandAllowingChildren,
