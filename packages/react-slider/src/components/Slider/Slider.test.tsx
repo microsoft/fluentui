@@ -101,10 +101,10 @@ describe('Slider', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
     expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
 
-    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 25, clientY: 0 });
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
     expect(onChange).toBeCalledTimes(2);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 30 });
-    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(25%)');
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
   });
 
   it('slides to (min/max) and executes onChange', () => {
