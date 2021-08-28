@@ -5,8 +5,6 @@ import { buttonBehavior, ButtonBehaviorProps } from '../Button/buttonBehavior';
  * @specification
  *  Adds role='radio'. This allows screen readers to handle the component as a radio button.
  *  Adds attribute 'aria-checked=true' based on the property 'active'.
- *  Adds attribute 'disabled=true' based on the property 'disabled'.
- *  Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
  *  Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  *  Adds attribute 'disabled=true' based on the property 'disabled'.
  *  Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
