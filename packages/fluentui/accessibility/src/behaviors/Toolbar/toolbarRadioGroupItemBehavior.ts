@@ -8,6 +8,8 @@ import { buttonBehavior, ButtonBehaviorProps } from '../Button/buttonBehavior';
  *  Adds attribute 'disabled=true' based on the property 'disabled'.
  *  Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
  *  Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
+ *  Adds attribute 'disabled=true' based on the property 'disabled'.
+ *  Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
  */
 export const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {

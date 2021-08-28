@@ -179,7 +179,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const { classes } = useStyles<ToolbarItemStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
-      mapPropsToStyles: () => ({ active, disabled }),
+      mapPropsToStyles: () => ({ active, disabled: disabled || disabledFocusable }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
