@@ -65,6 +65,9 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
 
   /** A toolbar item can show it is currently unable to be interacted with. */
   disabled?: boolean;
+  
+  /** A toolbar item can be disabled and focusable at the same time. */
+  disabledFocusable?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
   icon?: ShorthandValue<ToolbarMenuItemIconProps>;
@@ -144,6 +147,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       children,
       content,
       disabled,
+      disabledFocusable,
       submenuIndicator,
       icon,
       popup,
@@ -183,6 +187,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         active,
         menuOpen,
         disabled,
+        disabledFocusable,
         'aria-label': props['aria-label'],
         'aria-labelledby': props['aria-labelledby'],
         'aria-describedby': props['aria-describedby'],
@@ -208,7 +213,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        disabled,
+        disabled: disabled || disabledFocusable,
         hasContent: !!content,
       }),
       mapPropsToInlineStyles: () => ({
