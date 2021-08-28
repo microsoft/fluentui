@@ -135,11 +135,11 @@ Another added benefit in version 9 is that, because of the move to scaffolded pa
 
 #### "You mentioned something about shorthands, what is that?"
 
-For version 9 we are utilizing a new composition model to create our components. We have decided to name the building blocks of these components `slots` which, as their name suggests, are slottable parts that we put together to build the component. Most of the things that `render[ComponentName]` function calls return are slots.
+For version 9 we are utilizing a new composition model to create our components. We have decided to name the building blocks of these components **_slots_** which, as their name suggests, are slottable parts that we put together to build the component. Most of the things that `render[ComponentName]` function calls return are slots.
 
-`Shorthands` are the way in which we allow these `slot` subparts within a component to be configurable. They allow a caller of the component to pass a variety of different inputs for a given `slot`, including but not limited to things like a string, JSX, an object or a function, depending on how the shorthand is configured.
+**_Shorthands_** are the way in which we allow these _slot_ subparts within a component to be configurable. They allow a caller of the component to pass a variety of different inputs for a given _slot_, including but not limited to things like a string, JSX, an object or a function, depending on how the shorthand is configured.
 
-`resolveShorthandProps` and `getSlots` are some helpers that allow us to support and parse these dynamic `shorthand` props.
+`resolveShorthandProps` and `getSlots` are some helpers that allow us to support and parse these dynamic _shorthand_ props.
 
 If you want to learn more about our new composition model you can read the [README on our composition utilities](https://github.com/microsoft/fluentui/blob/master/packages/react-utilities/src/compose/README.md).
 
