@@ -1,44 +1,30 @@
-import { NodePath, transformSync, types as t } from '@babel/core';
+import { NodePath, types as t } from '@babel/core';
 import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
 import { resolveProxyValues } from '@fluentui/make-styles';
-import { Evaluator, Module, StrictOptions } from '@linaria/babel';
+import { Module, StrictOptions } from '@linaria/babel-preset';
 
+import type { BabelPluginOptions } from '../types';
 import { astify } from './astify';
 
 const EVAL_EXPORT_NAME = '__mkPreval';
 
-const evaluator: Evaluator = (filename, options, text) => {
-  const { code } = transformSync(text, {
-    // to avoid collisions with user's configs
-    babelrc: false,
-
-    filename: filename,
-    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-  })!;
-
-  return [code!, null];
-};
-
-function evaluate(code: string, f: string) {
+function evaluate(code: string, filename: string, pluginOptions: Required<BabelPluginOptions>) {
   const options: StrictOptions = {
     displayName: false,
     evaluate: true,
 
-    rules: [
-      {
-        // TODO: this should use @linaria/shaker for better performance and less dependencies
-        action: evaluator,
-      },
-      {
-        test: /\/node_modules\//,
-        action: 'ignore',
-      },
-    ],
-    babelOptions: {},
+    rules: pluginOptions.evaluationRules,
+    babelOptions: {
+      ...pluginOptions.babelOptions,
+
+      // This instance of Babel should ignore all user's configs and apply only our plugin
+      configFile: false,
+      babelrc: false,
+    },
   };
-  const mod = new Module(f, options);
+  const mod = new Module(filename, options);
 
   mod.evaluate(code, [EVAL_EXPORT_NAME]);
 
@@ -59,53 +45,6 @@ function findFreeName(scope: Scope, name: string): string {
   return nextName;
 }
 
-/**
- * Hoist the node and its dependencies to the highest scope possible
- *
- * @internal
- */
-// function hoist(ex: NodePath<t.Expression | null>) {
-//   const Identifier = (idPath: NodePath<t.Identifier>) => {
-//     if (!idPath.isReferencedIdentifier()) {
-//       return;
-//     }
-//
-//     const binding = idPath.scope.getBinding(idPath.node.name);
-//
-//     if (!binding) {
-//       return;
-//     }
-//
-//     const { scope, path: bindingPath, referencePaths } = binding;
-//     // parent here can be null or undefined in different versions of babel
-//     if (!scope.parent) {
-//       // It's a variable from global scope
-//       return;
-//     }
-//
-//     if (bindingPath.isVariableDeclarator()) {
-//       const initPath = bindingPath.get('init') as NodePath<t.Expression | null>;
-//
-//       hoist(initPath);
-//       initPath.hoist(scope);
-//
-//       if (initPath.isIdentifier()) {
-//         referencePaths.forEach(referencePath => {
-//           referencePath.replaceWith(t.identifier(initPath.node.name));
-//         });
-//       }
-//     }
-//   };
-//
-//   if (ex.isIdentifier()) {
-//     return Identifier(ex);
-//   }
-//
-//   ex.traverse({
-//     Identifier,
-//   });
-// }
-
 const expressionWrapperTpl = template.statement(`
   const %%wrapName%% = (fn) => {
     try {
@@ -116,7 +55,23 @@ const expressionWrapperTpl = template.statement(`
   };
 `);
 
-const expressionTpl = template.expression(`%%wrapName%%(() => %%expression%%)`);
+/**
+ * Functions, call & member expressions should be wrapped with IIFE to ensure that "theme" object will be passed
+ * without collisions.
+ *
+ * @example
+ * {
+ *   label: foo(), // call expression
+ *   header: typography.header, // could be an object or a function
+ * }
+ *
+ * Outputs following template:
+ * @example
+ * wrap(() => typeof foo === 'function' ? foo(theme) : foo)
+ */
+export const expressionTpl = template.expression(
+  `%%wrapName%%(() => typeof %%expression%% === 'function' ? %%expression%%(%%themeVariableName%%) : %%expression%%)`,
+);
 const exportsPrevalTpl = template.statement(`exports.${EVAL_EXPORT_NAME} = %%expressions%%`);
 
 /**
@@ -149,7 +104,9 @@ function addPreval(
 
       expressionWrapperTpl({ wrapName }),
       exportsPrevalTpl({
-        expressions: t.arrayExpression(lazyDeps.map(expression => expressionTpl({ expression, wrapName }))),
+        expressions: t.arrayExpression(
+          lazyDeps.map(expression => expressionTpl({ expression, wrapName, themeVariableName })),
+        ),
       }),
     ],
     programNode.directives,
@@ -165,46 +122,24 @@ export function evaluatePathsInVM(
   program: NodePath<t.Program>,
   filename: string,
   nodePaths: NodePath<t.Expression | t.SpreadElement>[],
+  pluginOptions: Required<BabelPluginOptions>,
 ): void {
   const themeVariableName = program.scope.generateUid('theme');
 
-  const hoistedPathsToEvaluate = nodePaths.map(nodePath => {
-    // save original expression that may be changed during hoisting
-    const originalNode = t.cloneNode(nodePath.node);
-
-    // TODO: re-enable it as it's required for shaker
-    // Broken fixture is "compiled-optional-chaining"
-    // hoist(nodePath as NodePath<t.Expression | null>);
-
-    // save hoisted expression to be used to evaluation
-    const hoistedNode = t.cloneNode(nodePath.node);
-
-    // get back original expression to the tree
-    nodePath.replaceWith(originalNode);
-
+  const pathsToEvaluate = nodePaths.map(nodePath => {
     // spreads ("...fooBar") can't be executed directly, so they are wrapped with an object ("{...fooBar}")
     if (nodePath.isSpreadElement()) {
-      return t.objectExpression([hoistedNode as t.SpreadElement]);
+      return t.objectExpression([nodePath.node as t.SpreadElement]);
     }
 
-    // functions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
-    if (nodePath.isArrowFunctionExpression() || nodePath.isFunctionExpression()) {
-      return t.callExpression(hoistedNode as t.ArrowFunctionExpression, [t.identifier(themeVariableName)]);
-    }
-
-    // call expressions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
-    // TODO: right now this only for call expression that returns a function that takes "theme" object as argument
-    if (nodePath.isCallExpression()) {
-      return t.callExpression(hoistedNode as t.CallExpression, [t.identifier(themeVariableName)]);
-    }
-
-    return hoistedNode;
+    return nodePath.node;
   });
 
-  const modifiedProgram = addPreval(program, themeVariableName, hoistedPathsToEvaluate);
+  // Linaria also performs hoisting of identifiers, we don't need this as all makeStyles() calls should be top level
+  const modifiedProgram = addPreval(program, themeVariableName, pathsToEvaluate);
 
   const { code } = generator(modifiedProgram);
-  const results = evaluate(code, filename);
+  const results = evaluate(code, filename, pluginOptions);
 
   for (let i = 0; i < nodePaths.length; i++) {
     const nodePath = nodePaths[i];

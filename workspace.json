@@ -2,11 +2,6 @@
   "version": 2,
   "projects": {
     "a11y-tests": { "root": "apps/a11y-tests", "projectType": "application" },
-    "codesandbox-react-northstar-template": {
-      "root": "apps/codesandbox-react-northstar-template",
-      "projectType": "application"
-    },
-    "codesandbox-react-template": { "root": "apps/codesandbox-react-template", "projectType": "application" },
     "perf-test": { "root": "apps/perf-test", "projectType": "application" },
     "@fluentui/pr-deploy-site": { "root": "apps/pr-deploy-site", "projectType": "application" },
     "@fluentui/public-docsite": { "root": "apps/public-docsite", "projectType": "application" },
@@ -20,8 +15,16 @@
     "@fluentui/a11y-testing": { "root": "packages/a11y-testing", "projectType": "library" },
     "@fluentui/api-docs": { "root": "packages/api-docs", "projectType": "library" },
     "@fluentui/azure-themes": { "root": "packages/azure-themes", "projectType": "library" },
-    "@fluentui/babel-make-styles": { "root": "packages/babel-make-styles", "projectType": "library" },
-    "@fluentui/bundle-size": { "root": "packages/bundle-size", "projectType": "library" },
+    "@fluentui/babel-make-styles": {
+      "root": "packages/babel-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/babel-make-styles/src"
+    },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
+      "projectType": "library",
+      "sourceRoot": "packages/bundle-size/src"
+    },
     "@fluentui/codemods": { "root": "packages/codemods", "projectType": "library" },
     "@fluentui/common-styles": { "root": "packages/common-styles", "projectType": "library" },
     "@fluentui/cra-template": { "root": "packages/cra-template", "projectType": "library" },
@@ -79,14 +82,19 @@
     "@fluentui/foundation-legacy": { "root": "packages/foundation-legacy", "projectType": "library" },
     "@fluentui/jest-serializer-make-styles": {
       "root": "packages/jest-serializer-make-styles",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/jest-serializer-make-styles/src"
     },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
       "projectType": "library"
     },
     "@fluentui/keyboard-key": { "root": "packages/keyboard-key", "projectType": "library" },
-    "@fluentui/make-styles": { "root": "packages/make-styles", "projectType": "library" },
+    "@fluentui/make-styles": {
+      "root": "packages/make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/make-styles/src"
+    },
     "@fluentui/merge-styles": { "root": "packages/merge-styles", "projectType": "library" },
     "@fluentui/monaco-editor": { "root": "packages/monaco-editor", "projectType": "library" },
     "@fluentui/public-docsite-setup": { "root": "packages/public-docsite-setup", "projectType": "library" },
@@ -96,16 +104,45 @@
       "projectType": "library",
       "sourceRoot": "packages/react-accordion/src"
     },
-    "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
-    "@fluentui/react-badge": { "root": "packages/react-badge", "projectType": "library" },
-    "@fluentui/react-button": { "root": "packages/react-button", "projectType": "library" },
+    "@fluentui/react-avatar": {
+      "root": "packages/react-avatar",
+      "projectType": "library",
+      "sourceRoot": "packages/react-avatar/src"
+    },
+    "@fluentui/react-badge": {
+      "root": "packages/react-badge",
+      "projectType": "library",
+      "sourceRoot": "packages/react-badge/src"
+    },
+    "@fluentui/react-button": {
+      "root": "packages/react-button",
+      "projectType": "library",
+      "sourceRoot": "packages/react-button/src"
+    },
+    "@fluentui/react-card": {
+      "root": "packages/react-card",
+      "projectType": "library",
+      "sourceRoot": "packages/react-card/src"
+    },
     "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },
-    "@fluentui/react-checkbox": { "root": "packages/react-checkbox", "projectType": "library" },
-    "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
+    "@fluentui/react-checkbox": {
+      "root": "packages/react-checkbox",
+      "projectType": "library",
+      "sourceRoot": "packages/react-checkbox/src"
+    },
+    "@fluentui/react-components": {
+      "root": "packages/react-components",
+      "projectType": "library",
+      "sourceRoot": "packages/react-components/src"
+    },
     "@fluentui/react-compose": { "root": "packages/react-compose", "projectType": "library" },
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },
-    "@fluentui/react-context-selector": { "root": "packages/react-context-selector", "projectType": "library" },
+    "@fluentui/react-context-selector": {
+      "root": "packages/react-context-selector",
+      "projectType": "library",
+      "sourceRoot": "packages/react-context-selector/src"
+    },
     "@fluentui/react-date-time": { "root": "packages/react-date-time", "projectType": "library" },
     "@fluentui/react-divider": {
       "root": "packages/react-divider",
@@ -126,13 +163,21 @@
       "projectType": "library",
       "sourceRoot": "packages/react-image/src"
     },
-    "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
+    "@fluentui/react-input": {
+      "root": "packages/react-input",
+      "projectType": "library",
+      "sourceRoot": "packages/react-input/src"
+    },
     "@fluentui/react-link": {
       "root": "packages/react-link",
       "projectType": "library",
       "sourceRoot": "packages/react-link/src"
     },
-    "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
+    "@fluentui/react-make-styles": {
+      "root": "packages/react-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-make-styles/src"
+    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",
@@ -149,22 +194,47 @@
       "projectType": "library",
       "sourceRoot": "packages/react-positioning/src"
     },
-    "@fluentui/react-provider": { "root": "packages/react-provider", "projectType": "library" },
-    "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
-    "@fluentui/react-slider": { "root": "packages/react-slider", "projectType": "library" },
-    "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
+    "@fluentui/react-provider": {
+      "root": "packages/react-provider",
+      "projectType": "library",
+      "sourceRoot": "packages/react-provider/src"
+    },
+    "@fluentui/react-shared-contexts": {
+      "root": "packages/react-shared-contexts",
+      "projectType": "library",
+      "sourceRoot": "packages/react-shared-contexts/src"
+    },
+    "@fluentui/react-storybook": {
+      "root": "packages/react-storybook",
+      "projectType": "library",
+      "sourceRoot": "packages/react-storybook/src"
+    },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
-    "@fluentui/react-tabster": { "root": "packages/react-tabster", "projectType": "library" },
+    "@fluentui/react-tabster": {
+      "root": "packages/react-tabster",
+      "projectType": "library",
+      "sourceRoot": "packages/react-tabster/src"
+    },
     "@fluentui/react-text": {
       "root": "packages/react-text",
       "projectType": "library",
       "sourceRoot": "packages/react-text/src"
     },
-    "@fluentui/react-theme": { "root": "packages/react-theme", "projectType": "library" },
-    "@fluentui/react-theme-provider": { "root": "packages/react-theme-provider", "projectType": "library" },
-    "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
-    "@fluentui/react-tooltip": { "root": "packages/react-tooltip", "projectType": "library" },
-    "@fluentui/react-utilities": { "root": "packages/react-utilities", "projectType": "library" },
+    "@fluentui/react-theme": {
+      "root": "packages/react-theme",
+      "projectType": "library",
+      "sourceRoot": "packages/react-theme/src"
+    },
+    "@fluentui/react-tooltip": {
+      "root": "packages/react-tooltip",
+      "projectType": "library",
+      "sourceRoot": "packages/react-tooltip/src"
+    },
+    "@fluentui/react-utilities": {
+      "root": "packages/react-utilities",
+      "projectType": "library",
+      "sourceRoot": "packages/react-utilities/src"
+    },
     "@fluentui/react-window-provider": { "root": "packages/react-window-provider", "projectType": "library" },
     "@fluentui/scheme-utilities": { "root": "packages/scheme-utilities", "projectType": "library" },
     "@fluentui/set-version": { "root": "packages/set-version", "projectType": "library" },
@@ -211,6 +281,36 @@
       "root": "packages/react-aria",
       "projectType": "library",
       "sourceRoot": "packages/react-aria/src"
+    },
+    "@fluentui/keyboard-keys": {
+      "root": "packages/keyboard-keys",
+      "projectType": "library",
+      "sourceRoot": "packages/keyboard-keys/src"
+    },
+    "@fluentui/react-slider": {
+      "root": "packages/react-slider",
+      "projectType": "library",
+      "sourceRoot": "packages/react-slider/src"
+    },
+    "@fluentui/make-styles-webpack-loader": {
+      "root": "packages/make-styles-webpack-loader",
+      "projectType": "library",
+      "sourceRoot": "packages/make-styles-webpack-loader/src"
+    },
+    "@fluentui/react-storybook-addon": {
+      "root": "packages/react-storybook-addon",
+      "projectType": "library",
+      "sourceRoot": "packages/react-storybook-addon/src"
+    },
+    "@fluentui/react-switch": {
+      "root": "packages/react-switch",
+      "projectType": "library",
+      "sourceRoot": "packages/react-switch/src"
+    },
+    "@fluentui/react-conformance-make-styles": {
+      "root": "packages/react-conformance-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-conformance-make-styles/src"
     }
   }
 }

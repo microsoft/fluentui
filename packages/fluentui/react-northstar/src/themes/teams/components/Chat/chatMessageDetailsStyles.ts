@@ -8,25 +8,18 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
   ChatMessageDetailsVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    marginLeft: v.detailsMargin,
-    fontSize: v.detailsFontSize,
+    color: v.detailsColor,
     display: 'inline-block',
+    fontSize: v.detailsFontSize,
     ...(p.density === 'comfy' && {
-      color: v.detailsColor,
-      ':hover': {
-        color: v.detailsHoverColor,
-      },
-      ...(p.mine && {
-        color: v.detailsColorMine,
-        ':hover': {
-          color: v.detailsHoverColorMine,
-        },
+      ...((p.attached === 'top' || !p.attached) && {
+        marginLeft: v.detailsMargin,
       }),
     }),
     ...(p.density === 'compact' && {
-      color: v.detailsColorCompact,
       alignSelf: 'flex-start',
       flexShrink: 0,
+      marginLeft: v.detailsMargin,
     }),
   }),
 };

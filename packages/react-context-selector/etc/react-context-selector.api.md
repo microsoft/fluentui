@@ -36,6 +36,9 @@ export const createContext: <Value>(defaultValue: Value) => Context<Value>;
 // @public
 export const useContextSelector: <Value, SelectedValue>(context: Context<Value>, selector: ContextSelector<Value, SelectedValue>) => SelectedValue;
 
+// @public
+export function useHasParentContext<Value>(context: Context<Value>): boolean;
+
 
 // (No @packageDocumentation comment for this package)
 

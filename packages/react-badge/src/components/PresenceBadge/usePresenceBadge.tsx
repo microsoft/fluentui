@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeMergePropsCompat } from '@fluentui/react-utilities';
-import { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
-import { useBadge, BadgeProps } from '../Badge/index';
+import { useBadge } from '../Badge/index';
 import {
   SkypeMinusIcon,
   SkypeClockIcon,
@@ -9,14 +8,16 @@ import {
   SkypeCheckIcon,
   CancelIcon,
 } from './DefaultPresenceBadgeIcons';
+import type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
+import type { BadgeProps } from '../Badge/index';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'];
+export const presenceBadgeShorthandPropsCompat: (keyof PresenceBadgeProps)[] = ['icon'];
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
+const mergeProps = makeMergePropsCompat<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandPropsCompat });
 
 const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element | null> = outOfOffice => ({
   busy: null,

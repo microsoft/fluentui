@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentPropsCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Divider}
  */
-export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface DividerProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
@@ -37,7 +37,7 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
    * JSX. The `children` prop of the object can be a render function,
    * taking in the original slot component and props.
    */
-  wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
+  wrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
 }
 
 /**

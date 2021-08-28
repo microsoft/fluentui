@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from '../../Icon';
-import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
-import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
-import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IWithResponsiveModeState } from '../../ResponsiveMode';
-import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import {
+import type { IFocusZoneProps } from '../../FocusZone';
+import type { IIconProps } from '../../Icon';
+import type { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IButtonStyles } from '../../Button';
+import type { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IWithResponsiveModeState } from '../../ResponsiveMode';
+import type { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
+import type { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import type {
   IContextualMenuItemProps,
   IContextualMenuRenderItem,
   IContextualMenuItemStyleProps,
   IContextualMenuItemRenderFunctions,
 } from './ContextualMenuItem.types';
-import { IKeytipProps } from '../../Keytip';
-import { Target } from '@fluentui/react-hooks';
-import { IPopupRestoreFocusParams } from '../../Popup';
+import type { IKeytipProps } from '../../Keytip';
+import type { Target } from '@fluentui/react-hooks';
+import type { IPopupRestoreFocusParams } from '../../Popup';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -581,7 +581,7 @@ export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The optional section title.
    */
-  title?: string;
+  title?: string | IContextualMenuItem;
 
   /**
    * If set to true, the section will display a divider at the top of the section.

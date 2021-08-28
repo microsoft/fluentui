@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Icon, Text } from '@fluentui/react';
-import { ISlotProp } from '@fluentui/foundation-legacy';
-import { IPersonaCoinProps } from '../PersonaCoin.types';
 import { getInitials, getRTL } from '../../../Utilities';
+import type { ISlotProp } from '@fluentui/foundation-legacy';
+import type { IPersonaCoinProps } from '../PersonaCoin.types';
 
 export type IPersonaCoinInitialsSlot = ISlotProp<IPersonaCoinInitialsProps, string>;
 

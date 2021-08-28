@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { MenuState } from '../Menu/Menu.types';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { MenuState } from '../Menu/Menu.types';
 
 /**
  * MenuPopover Props
@@ -12,7 +12,7 @@ export interface MenuPopoverProps extends ComponentProps, React.HTMLAttributes<H
 /**
  * State used in rendering MenuPopover
  */
-export interface MenuPopoverState extends ComponentState<MenuPopoverProps>, Pick<MenuState, 'inline'> {
+export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inline'>, React.HTMLAttributes<HTMLElement> {
   /**
    * Ref to the root element
    */

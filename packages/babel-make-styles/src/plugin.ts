@@ -1,11 +1,14 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
-import { Module } from '@linaria/babel';
-import { MakeStyles, ResolvedStylesBySlots, resolveStyleRules } from '@fluentui/make-styles';
+import { Module } from '@linaria/babel-preset';
+import shakerEvaluator from '@linaria/shaker';
+import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
-import { UNHANDLED_CASE_ERROR } from './constants';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
+import { UNHANDLED_CASE_ERROR } from './constants';
+import { BabelPluginOptions } from './types';
+import { validateOptions } from './validateOptions';
 
 type AstStyleNode =
   | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
@@ -16,12 +19,10 @@ type AstStyleNode =
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
   | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
+  | { kind: 'LAZY_MEMBER'; nodePath: NodePath<t.MemberExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
-type BabelPluginOptions = {
-  modules: { moduleSource: string; importName: string }[];
-};
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
   requireDeclarationPath?: NodePath<t.VariableDeclarator>;
@@ -82,7 +83,7 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
  */
 function isMakeStylesCallee(
   path: NodePath<t.Expression | t.V8IntrinsicIdentifier>,
-  modules: BabelPluginOptions['modules'],
+  modules: NonNullable<BabelPluginOptions['modules']>,
 ): path is NodePath<t.Identifier> {
   if (path.isIdentifier()) {
     return Boolean(modules.find(module => path.referencesImport(module.moduleSource, module.importName)));
@@ -94,7 +95,10 @@ function isMakeStylesCallee(
 /**
  * Checks if import statement import makeStyles().
  */
-function hasMakeStylesImport(path: NodePath<t.ImportDeclaration>, modules: BabelPluginOptions['modules']): boolean {
+function hasMakeStylesImport(
+  path: NodePath<t.ImportDeclaration>,
+  modules: NonNullable<BabelPluginOptions['modules']>,
+): boolean {
   return Boolean(modules.find(module => path.node.source.value === module.moduleSource));
 }
 
@@ -391,11 +395,28 @@ function processDefinitions(
         return;
       }
 
+      /**
+       * A scenario when slots styles are represented by a function call.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: display() })
+       *    makeStyles({ root: typography.display() })
+       */
       if (stylesPath.isCallExpression()) {
-        state.styleNodes?.push({
-          kind: 'LAZY_EXPRESSION_CALL',
-          nodePath: stylesPath,
-        });
+        state.styleNodes?.push({ kind: 'LAZY_EXPRESSION_CALL', nodePath: stylesPath });
+        return;
+      }
+
+      /**
+       * A scenario when slots styles are represented by an object.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: typography.display })
+       */
+      if (stylesPath.isMemberExpression()) {
+        state.styleNodes?.push({ kind: 'LAZY_MEMBER', nodePath: stylesPath });
         return;
       }
     }
@@ -404,17 +425,43 @@ function processDefinitions(
   });
 }
 
+/**
+ * Rules that are returned by `resolveStyles()` are not deduplicated.
+ * It's critical to filter out duplicates for build-time transform to avoid duplicated rules in a bundle.
+ */
+function dedupeCSSRules(cssRules: CSSRulesByBucket): CSSRulesByBucket {
+  (Object.keys(cssRules) as StyleBucketName[]).forEach(styleBucketName => {
+    cssRules[styleBucketName] = cssRules[styleBucketName]!.filter(
+      (rule, index, rules) => rules.indexOf(rule) === index,
+    );
+  });
+
+  return cssRules;
+}
+
 export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPluginState>>((api, options) => {
   api.assertVersion(7);
 
-  const pluginOptions: BabelPluginOptions = {
+  const pluginOptions: Required<BabelPluginOptions> = {
+    babelOptions: {
+      presets: ['@babel/preset-typescript'],
+    },
     modules: [
       { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
       { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
     ],
+    evaluationRules: [
+      { action: shakerEvaluator },
+      {
+        test: /[/\\]node_modules[/\\]/,
+        action: 'ignore',
+      },
+    ],
 
     ...options,
   };
+
+  validateOptions(pluginOptions);
 
   return {
     name: '@fluentui/babel-make-styles',
@@ -441,6 +488,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               if (
                 styleNode.kind === 'LAZY_IDENTIFIER' ||
                 styleNode.kind === 'LAZY_FUNCTION' ||
+                styleNode.kind === 'LAZY_MEMBER' ||
                 styleNode.kind === 'LAZY_EXPRESSION_CALL'
               ) {
                 return [...acc, styleNode.nodePath];
@@ -468,13 +516,12 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions);
           }
 
           state.styleNodes?.forEach(styleNode => {
-            const nodePath = styleNode.nodePath;
-
             if (styleNode.kind === 'SPREAD') {
+              const nodePath = styleNode.nodePath;
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
@@ -483,30 +530,31 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
                 );
               }
 
-              const stylesBySlots: Record<string, MakeStyles> = evaluationResult.value;
-              const resolvedStyles: ResolvedStylesBySlots<string> = {};
+              const stylesBySlots: Record<string /* slot*/, MakeStyles> = evaluationResult.value;
 
-              Object.keys(stylesBySlots).forEach(slotName => {
-                resolvedStyles[slotName] = resolveStyleRules(stylesBySlots[slotName]);
-              });
-
-              nodePath.replaceWithMultiple((astify(resolvedStyles) as t.ObjectExpression).properties);
-
-              return;
+              nodePath.replaceWithMultiple((astify(stylesBySlots) as t.ObjectExpression).properties);
             }
+          });
 
-            const evaluationResult = nodePath.evaluate();
+          state.calleePaths?.forEach(calleePath => {
+            const callExpressionPath = calleePath.findParent(parentPath =>
+              parentPath.isCallExpression(),
+            ) as NodePath<t.CallExpression>;
+            const argumentPath = callExpressionPath.get('arguments.0') as NodePath<t.ObjectExpression>;
+
+            const evaluationResult = argumentPath.evaluate();
 
             if (!evaluationResult.confident) {
-              throw nodePath.buildCodeFrameError(
+              throw argumentPath.buildCodeFrameError(
                 'Evaluation of a code fragment failed, this is a bug, please report it',
               );
             }
 
-            const styles: MakeStyles = evaluationResult.value;
-            const resolvedStyles = resolveStyleRules(styles);
+            const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
+            const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots, 0);
 
-            nodePath.replaceWith(astify(resolvedStyles));
+            // TODO: find a better way to replace arguments
+            callExpressionPath.node.arguments = [astify(classnamesMapping), astify(dedupeCSSRules(cssRules))];
           });
 
           if (state.importDeclarationPath) {

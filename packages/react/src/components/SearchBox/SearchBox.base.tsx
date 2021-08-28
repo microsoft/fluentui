@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
 import { KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { IconButton, IButtonProps, IButtonStyles } from '../../Button';
-import { Icon, IIconProps } from '../../Icon';
+import { IconButton } from '../../Button';
+import { Icon } from '../../Icon';
+import type { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
+import type { IButtonProps, IButtonStyles } from '../../Button';
+import type { IIconProps } from '../../Icon';
 
 const COMPONENT_NAME = 'SearchBox';
 const iconButtonStyles: Partial<IButtonStyles> = { root: { height: 'auto' }, icon: { fontSize: '12px' } };
@@ -31,17 +33,10 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   HTMLDivElement,
   ISearchBoxProps
 >((props, forwardedRef) => {
-  const { defaultValue = '' } = props;
-  const [hasFocus, setHasFocus] = React.useState(false);
-  const [uncastValue, setValue] = useControllableValue(props.value, defaultValue, props.onChange);
-  const value = String(uncastValue);
-  const rootElementRef = React.useRef<HTMLDivElement>(null);
-  const inputElementRef = React.useRef<HTMLInputElement>(null);
-  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
-  const id = useId(COMPONENT_NAME, props.id);
   const {
     ariaLabel,
     className,
+    defaultValue = '',
     disabled,
     underlined,
     styles,
@@ -60,7 +55,28 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     onKeyDown: customOnKeyDown,
     iconProps,
     role,
+    onChange,
+    // eslint-disable-next-line deprecation/deprecation
+    onChanged,
   } = props;
+
+  const [hasFocus, setHasFocus] = React.useState(false);
+  const [uncastValue, setValue] = useControllableValue(
+    props.value,
+    defaultValue,
+    React.useCallback(
+      (ev: React.ChangeEvent<HTMLInputElement> | undefined) => {
+        onChange?.(ev, ev?.target.value);
+        onChanged?.(ev?.target.value);
+      },
+      [onChange, onChanged],
+    ),
+  );
+  const value = String(uncastValue);
+  const rootElementRef = React.useRef<HTMLDivElement>(null);
+  const inputElementRef = React.useRef<HTMLInputElement>(null);
+  const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
+  const id = useId(COMPONENT_NAME, props.id);
 
   const { onClick: customOnClearClick } = clearButtonProps;
 

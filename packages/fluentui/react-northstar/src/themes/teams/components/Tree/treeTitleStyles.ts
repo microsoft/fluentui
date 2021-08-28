@@ -19,6 +19,7 @@ export const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, 
       marginLeft: pxToRem(1 + (p.level - 1) * 10),
       paddingRight: v.paddingRight,
       paddingLeft: v.paddingLeft,
+      userSelect: 'none',
       ...(p.selectable && {
         display: 'flex',
         justifyContent: 'space-between',

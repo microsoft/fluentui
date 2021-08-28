@@ -4,13 +4,13 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { Context } from '@fluentui/react-context-selector';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { PopperOptions } from '@fluentui/react-positioning';
-import { PopperVirtualElement } from '@fluentui/react-positioning';
-import { PortalProps } from '@fluentui/react-portal';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { Context } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { PopperVirtualElement } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -30,14 +30,14 @@ export const Popover: React_2.FC<PopoverProps>;
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
 }
 
 // @public
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
@@ -48,6 +48,7 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
+    positioning?: PositioningShorthand;
     size?: PopoverSize;
     trapFocus?: boolean;
 }
@@ -59,7 +60,7 @@ export type PopoverShorthandProps = never;
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
+export interface PopoverState extends ComponentStateCompat<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     contextTarget: PopperVirtualElement | undefined;
@@ -78,14 +79,14 @@ export const PopoverSurface: React_2.ForwardRefExoticComponent<PopoverSurfacePro
 export type PopoverSurfaceDefaultedProps = never;
 
 // @public
-export interface PopoverSurfaceProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface PopoverSurfaceProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
 export type PopoverSurfaceShorthandProps = never;
 
 // @public
-export interface PopoverSurfaceState extends ComponentState<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
+export interface PopoverSurfaceState extends ComponentStateCompat<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     // (undocumented)
@@ -128,7 +129,6 @@ export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSur
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -119,9 +119,9 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
 
     return (
       <ChatItemContextProvider value={{ attached }}>
-        {contentPosition === 'start' && gutterElement}
+        {(contentPosition === 'start' || density === 'compact') && gutterElement}
         {messageElement}
-        {contentPosition === 'end' && gutterElement}
+        {contentPosition === 'end' && density === 'comfy' && gutterElement}
       </ChatItemContextProvider>
     );
   };

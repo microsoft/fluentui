@@ -100,6 +100,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <svg className={this._classNames.chart}>
+                    {points!.chartTitle && <title>{points!.chartTitle}</title>}
                     <g
                       id={keyVal}
                       key={keyVal}
@@ -132,6 +133,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           directionalHint={DirectionalHint.rightTopEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
           {...this._getAccessibleDataObject(this.state.callOutAccessibilityData)}
         >
@@ -214,7 +216,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = this._getAccessibleDataObject(chartData.chartDataAccessibilityData);
+    const accessibilityData = this._getAccessibleDataObject(data.chartDataAccessibilityData!);
     switch (chartDataMode) {
       case 'default':
         const chartDataText: string = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -278,6 +280,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         value = 1;
       }
       startingPoint.push(prevPosition);
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
       return (
         <rect
           key={index}

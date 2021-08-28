@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../../Utilities';
-import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
+import type { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 
 const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 

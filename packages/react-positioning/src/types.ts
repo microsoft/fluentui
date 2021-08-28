@@ -23,9 +23,7 @@ export type PopperRefHandle = { updatePosition: () => void };
 export type PopperVirtualElement = PopperJs.VirtualElement;
 
 export interface PositioningProps {
-  /**
-   * Alignment for the component.
-   */
+  /** Alignment for the component. */
   align?: Alignment;
 
   /** The element which will define the boundaries of the popper position for the flip behavior. */
@@ -35,7 +33,7 @@ export interface PositioningProps {
   overflowBoundary?: Boundary;
 
   /** An imperative handle to Popper methods. */
-  containerRef?: React.Ref<PopperRefHandle>;
+  popperRef?: React.Ref<PopperRefHandle>;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
@@ -44,12 +42,6 @@ export interface PositioningProps {
    * then provided value for 'align' will be ignored and 'center' will be used instead.
    */
   position?: Position;
-
-  /**
-   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
-   * @default false
-   */
-  positionFixed?: boolean;
 
   /**
    * Lets you displace a popper element from its reference element.
@@ -63,20 +55,6 @@ export interface PositioningProps {
    * Use to prevent the arrow from overlapping a rounded corner, for example.
    */
   arrowPadding?: number;
-
-  /**
-   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
-   * "all" enables this behavior for all axis.
-   */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_disableTether?: boolean | 'all';
-
-  /**
-   * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
-   * `position` props, regardless of the size of the component, the reference element or the viewport.
-   */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_pinned?: boolean;
 
   /**
    * Applies max-height and max-width on popper to fit it within the available space in viewport.
@@ -96,19 +74,26 @@ export interface PositioningProps {
    * Modifies position and alignment to cover the target
    */
   coverTarget?: boolean;
-}
-
-export interface PopperOptions extends PositioningProps {
-  /**
-   * If false, delays Popper's creation.
-   * @default true
-   */
-  enabled?: boolean;
 
   /**
-   * Array of conditions to be met in order to trigger a subsequent render to reposition the elements.
+   * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
+   * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
-  positioningDependencies?: React.DependencyList;
-
-  onStateUpdate?: (state: Partial<PopperJs.State>) => void;
+  pinned?: boolean;
 }
+
+export type PositioningShorthandValue =
+  | 'above'
+  | 'above-start'
+  | 'above-end'
+  | 'below'
+  | 'below-start'
+  | 'below-end'
+  | 'before'
+  | 'before-top'
+  | 'before-bottom'
+  | 'after'
+  | 'after-top'
+  | 'after-bottom';
+
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;

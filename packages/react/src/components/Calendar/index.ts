@@ -6,10 +6,5 @@ export * from './CalendarPicker/CalendarPicker.types';
 export * from './CalendarYear/CalendarYear.types';
 export * from '../CalendarDayGrid/CalendarDayGrid.types';
 export * from './defaults';
-export {
-  DayOfWeek,
-  DateRangeType,
-  FirstWeekOfYear,
-  ICalendarStrings,
-  IDateFormatting,
-} from '@fluentui/date-time-utilities';
+export { DayOfWeek, DateRangeType, FirstWeekOfYear } from '@fluentui/date-time-utilities';
+export type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';

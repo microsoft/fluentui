@@ -1,50 +1,64 @@
-import { css } from '@microsoft/fast-element';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { neutralFocusBehavior, neutralForegroundActiveBehavior, neutralForegroundRestBehavior } from '../styles';
+import {
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
+import {
+  bodyFont,
+  controlCornerRadius,
+  designUnit,
+  focusStrokeOuter,
+  neutralForegroundRest,
+  strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+} from '../design-tokens';
 
-export const DataGridCellStyles = css`
+export const dataGridCellStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+  css`
     :host {
-        padding: calc(var(--design-unit) * 1px) calc(var(--design-unit) * 3px);
-        color: ${neutralForegroundRestBehavior.var};
-        box-sizing: border-box;
-        font-family: var(--body-font);
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        font-weight: 400;
-        border: transparent calc(var(--outline-width) * 1px) solid;
-        overflow: hidden;
-        white-space: nowrap;
-        border-radius: calc(var(--corner-radius) * 1px);
+      padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
+      color: ${neutralForegroundRest};
+      box-sizing: border-box;
+      font-family: ${bodyFont};
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      font-weight: 400;
+      border: transparent calc(${strokeWidth} * 1px) solid;
+      overflow: hidden;
+      white-space: nowrap;
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host(.column-header) {
-        font-weight: 600;
+      font-weight: 600;
     }
 
     :host(:${focusVisible}) {
-        border: ${neutralFocusBehavior.var} calc(var(--outline-width) * 1px) solid;
-        color: ${neutralForegroundActiveBehavior.var};
+      border: ${focusStrokeOuter} calc(${strokeWidth} * 1px) solid;
+      color: ${neutralForegroundRest};
     }
-
-`.withBehaviors(
-  neutralFocusBehavior,
-  neutralForegroundActiveBehavior,
-  neutralForegroundRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
         :host {
-            forced-color-adjust: none;
-            border-color: transparent;
-            background: ${SystemColors.Field};
-            color: ${SystemColors.FieldText};
+          forced-color-adjust: none;
+          border-color: transparent;
+          background: ${SystemColors.Field};
+          color: ${SystemColors.FieldText};
         }
 
         :host(:${focusVisible}) {
-            border-color: ${SystemColors.FieldText};
-            box-shadow: 0 0 0 2px inset ${SystemColors.Field};
-            color: ${SystemColors.FieldText};
+          border-color: ${SystemColors.FieldText};
+          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
+          color: ${SystemColors.FieldText};
         }
-        `,
-  ),
-);
+      `,
+    ),
+  );

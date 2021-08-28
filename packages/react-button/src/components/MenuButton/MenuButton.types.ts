@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { ComponentState, ShorthandProps } from '@fluentui/react-utilities';
-import { ButtonDefaultedProps, ButtonProps, ButtonShorthandProps, ButtonState } from '../Button/Button.types';
+import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type {
+  ButtonDefaultedProps,
+  ButtonProps,
+  ButtonShorthandPropsCompat,
+  ButtonState,
+} from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
@@ -9,7 +14,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
    */
-  menuIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  menuIcon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   // /**
   //  * Defines the initial expanded state of the MenuButton.
@@ -45,7 +50,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
 /**
  * {@docCategory Button}
  */
-export type MenuButtonShorthandProps = ButtonShorthandProps | 'menuIcon';
+export type MenuButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'menuIcon';
 
 /**
  * {@docCategory Button}
@@ -57,4 +62,4 @@ export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
  */
 export interface MenuButtonState
   extends Omit<ButtonState, 'iconPosition'>,
-    ComponentState<MenuButtonProps, MenuButtonShorthandProps, MenuButtonDefaultedProps> {}
+    ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {}

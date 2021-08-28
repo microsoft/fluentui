@@ -5,12 +5,18 @@
 ```ts
 
 import type { MakeStylesStyleRule } from '@fluentui/make-styles';
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
 import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public (undocumented)
-export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>) => MakeStylesStyleRule<Theme>;
+export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
+
+// @public (undocumented)
+export interface CreateFocusIndicatorStyleRuleOptions {
+    // (undocumented)
+    selector?: 'focus' | 'focus-within';
+}
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -47,7 +53,6 @@ export interface UseModalAttributesOptions {
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
-
 
 // (No @packageDocumentation comment for this package)
 

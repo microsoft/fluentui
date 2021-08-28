@@ -1,27 +1,23 @@
 import * as React from 'react';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionHeaderSize,
-  AccordionHeaderExpandIconPosition,
-} from './index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from './index';
 import { RocketIcon } from './icons.stories';
+import type { AccordionHeaderSize, AccordionHeaderExpandIconPosition } from './index';
+import type { AccordionToggleData, AccordionToggleEvent } from './components/Accordion/Accordion.types';
 
 interface AccordionItemExampleProps {
   icon: boolean;
   inline: boolean;
+  disabled: boolean;
   size: AccordionHeaderSize;
   expandIconPosition: AccordionHeaderExpandIconPosition;
-  onToggle(ev: React.MouseEvent<HTMLElement>, index: number): void;
+  onToggle(ev: AccordionToggleEvent, data: AccordionToggleData): void;
   label: string;
 }
 
 export const AccordionItemExample = (args: AccordionItemExampleProps) => {
   return (
     <Accordion onToggle={args.onToggle} collapsible>
-      <AccordionItem>
+      <AccordionItem value="1" disabled={args.disabled}>
         <AccordionHeader
           inline={args.inline}
           icon={args.icon ? <RocketIcon /> : undefined}
@@ -37,6 +33,9 @@ export const AccordionItemExample = (args: AccordionItemExampleProps) => {
 };
 AccordionItemExample.argTypes = {
   onToggle: { action: 'toggled' },
+  as: {
+    control: false,
+  },
   inline: {
     defaultValue: false,
     control: 'boolean',

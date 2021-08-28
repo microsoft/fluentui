@@ -8,6 +8,30 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
     onFocus={[Function]}
     onKeyDown={[Function]}
   >
+    <div
+      aria-live="assertive"
+      className=
+
+          {
+            border: 0px;
+            height: 1px;
+            margin-bottom: -1px;
+            margin-left: -1px;
+            margin-right: -1px;
+            margin-top: -1px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+          }
+      id="selected-suggestion-alert-id__0"
+    >
+      
+    </div>
     <span
       hidden={true}
       id="selected-items-id__0-label"
@@ -27,6 +51,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
       role="presentation"
     >
       <div
+        aria-owns=""
         className=
             ms-BasePicker-text
             {
@@ -284,6 +309,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Annie Lindqvist
                     </div>
@@ -313,6 +339,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Designer
                     </div>
@@ -342,6 +369,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       In a meeting
                     </div>
@@ -371,6 +399,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Available at 4:00pm
                     </div>
@@ -730,6 +759,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Aaron Reid
                     </div>
@@ -759,6 +789,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Designer
                     </div>
@@ -788,6 +819,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       In a meeting
                     </div>
@@ -817,6 +849,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Available at 4:00pm
                     </div>
@@ -1176,6 +1209,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Alex Lundberg
                     </div>
@@ -1205,6 +1239,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Software Developer
                     </div>
@@ -1234,6 +1269,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       In a meeting
                     </div>
@@ -1263,6 +1299,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
+                      role="none"
                     >
                       Available at 4:00pm
                     </div>

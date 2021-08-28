@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
-import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent } from '@fluentui/react-shared-contexts';
-
-const mergeProps = makeMergeProps<MenuPopoverState>({});
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 
 /**
  * Create the state required to render MenuPopover.
@@ -16,17 +15,12 @@ const mergeProps = makeMergeProps<MenuPopoverState>({});
  *
  * @param props - props from this instance of MenuPopover
  * @param ref - reference to root HTMLElement of MenuPopover
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useMenuPopover = (
-  props: MenuPopoverProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuPopoverProps,
-): MenuPopoverState => {
+export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const popoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const openOnHover = useMenuContext(context => context.openOnHover);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
 
@@ -59,22 +53,18 @@ export const useMenuPopover = (
     () => clearTimeout(throttleDispatchTimerRef.current);
   }, []);
 
-  const state = mergeProps(
-    {
-      role: 'presentation',
-      children: null,
-      inline: false,
-      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
-    },
-    defaultProps,
-    props,
-  );
+  const inline = useMenuContext(context => context.inline);
 
-  state.inline = useMenuContext(context => context.inline);
+  const state = {
+    ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
+    role: 'presentation',
+    inline: inline ?? false,
+    ...props,
+  };
 
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
 
-  state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, { open: true, keyboard: false });
     }
@@ -82,7 +72,7 @@ export const useMenuPopover = (
     onMouseEnterOriginal?.(e);
   });
 
-  state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
     const keyCode = getCode(e);
     if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === CloseArrowKey)) {
       if (popoverRef.current?.contains(e.target as HTMLElement)) {
@@ -98,5 +88,9 @@ export const useMenuPopover = (
     onKeyDownOriginal?.(e);
   });
 
-  return state;
+  return {
+    ...state,
+    onKeyDown,
+    onMouseEnter,
+  };
 };

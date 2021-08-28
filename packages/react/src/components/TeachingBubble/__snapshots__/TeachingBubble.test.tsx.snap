@@ -213,6 +213,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -223,6 +224,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
           role="heading"
         >
@@ -324,6 +326,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -334,6 +337,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
           role="heading"
         >
@@ -1008,6 +1012,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1017,6 +1022,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
           role="heading"
         >
@@ -1298,6 +1304,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1308,6 +1315,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
           role="heading"
         >
@@ -1413,6 +1421,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {
@@ -1422,6 +1431,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow-wrap: break-word;
               }
           role="heading"
         >

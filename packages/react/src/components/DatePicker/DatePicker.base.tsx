@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import {
   KeyCodes,
   classNamesFunction,
@@ -8,15 +7,18 @@ import {
   css,
   format,
   getPropsWithDefaults,
-  IRenderFunction,
 } from '@fluentui/utilities';
-import { Calendar, ICalendar } from '../../Calendar';
+import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { TextField, ITextField, ITextFieldProps } from '../../TextField';
+import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
 import { defaultDatePickerStrings } from './defaults';
+import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
+import type { IRenderFunction } from '@fluentui/utilities';
+import type { ICalendar } from '../../Calendar';
+import type { ITextField, ITextFieldProps } from '../../TextField';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -431,17 +433,13 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
-      <div
-        ref={datePickerDiv}
-        aria-haspopup="true"
-        aria-owns={isCalendarShown ? calloutId : undefined}
-        className={classNames.wrapper}
-      >
+      <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
         <TextField
           role="combobox"
           label={label}
           aria-expanded={isCalendarShown}
           ariaLabel={ariaLabel}
+          aria-haspopup="dialog"
           aria-controls={isCalendarShown ? calloutId : undefined}
           required={isRequired}
           disabled={disabled}

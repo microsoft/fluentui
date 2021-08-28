@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { MenuItemState } from '../../components/index';
 import { useMenuListContext } from '../../contexts/menuListContext';
+import type { MenuItemState } from '../../components/index';
 
-export const useCharacterSearch = (state: MenuItemState) => {
+export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HTMLElement>) => {
   const setFocusByFirstCharacter = useMenuListContext(context => context.setFocusByFirstCharacter);
 
   const { onKeyDown: onKeyDownBase } = state;
@@ -15,7 +15,9 @@ export const useCharacterSearch = (state: MenuItemState) => {
       return;
     }
 
-    setFocusByFirstCharacter?.(e, state.ref.current);
+    if (ref.current) {
+      setFocusByFirstCharacter?.(e, ref.current);
+    }
   };
 
   return state;

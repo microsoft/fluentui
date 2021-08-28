@@ -43,9 +43,9 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
 
   author: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...((p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
-    color: p.mine ? v.authorColorCompact : v.authorColor,
+    color: p.mine ? v.authorColorMineCompact : v.contentColor,
     float: 'left',
-    fontWeight: v.authorFontWeight,
+    fontWeight: v.authorFontWeightCompact,
     marginRight: v.authorMarginRightCompact,
   }),
 
@@ -58,6 +58,9 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
   compactBody: (): ICSSInJSStyle => ({
     display: 'flex',
     justifyContent: 'space-between',
+    '& > div': {
+      minWidth: 0,
+    },
   }),
 
   reactionGroup: (): ICSSInJSStyle => ({
@@ -67,7 +70,6 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
 
   timestamp: ({ variables: v }): ICSSInJSStyle => ({
     alignSelf: 'flex-start',
-    color: v.timestampColorCompact,
     flexShrink: 0,
     marginLeft: v.compactSpacing,
     marginTop: pxToRem(2),

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { useCustomizationSettings } from '@fluentui/utilities';
-import { ITheme, createTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { ThemeContext } from './ThemeContext';
-import { Theme } from '@fluentui/theme';
+import type { ITheme, Theme } from '@fluentui/theme';
 
 /**
  * Get theme from CustomizerContext or Customizations singleton.

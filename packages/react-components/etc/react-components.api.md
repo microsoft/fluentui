@@ -23,7 +23,6 @@ export * from "@fluentui/react-popover";
 export * from "@fluentui/react-portal";
 export * from "@fluentui/react-provider";
 export * from "@fluentui/react-theme";
-export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-tooltip";
 
 // (No @packageDocumentation comment for this package)

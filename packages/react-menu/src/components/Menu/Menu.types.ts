@@ -1,24 +1,15 @@
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
-import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
-import { MenuListProps } from '../MenuList/index';
+import { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { MenuListProps } from '../MenuList/index';
+import type { MenuContextValue } from '../../contexts/menuContext';
 
-/**
- * Extends and drills down Menulist props to simplify API
- * {@docCategory Menu }
- */
-export interface MenuProps
-  extends MenuListProps,
-    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'> {
-  /**
-   * Can contain two children including {@see MenuTrigger} and {@see MenuPopover}
-   * Alternatively can only contain {@see MenuPopover} if using a custom {@see target}
-   */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+interface MenuCommons extends MenuListProps {
   /**
    * Whether the popup is open
    */
-  open?: boolean;
+  open: boolean;
 
   /**
    * Call back when the component requests to change value
@@ -31,15 +22,10 @@ export interface MenuProps
    */
   defaultOpen?: boolean;
 
-  /**
-   * Wrapper to style and add events for the popup
-   */
-  menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
   /*
    * Opens the menu on hover
    */
-  openOnHover?: boolean;
+  openOnHover: boolean;
 
   /**
    * Opens the menu on right click (context menu), removes all other menu open interactions
@@ -64,19 +50,26 @@ export interface MenuProps
 }
 
 /**
+ * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuState extends MenuProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
   /**
-   * Ref to the root slot
+   * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
+   * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
    */
-  ref: React.MutableRefObject<HTMLElement>;
+  children: [JSX.Element, JSX.Element] | JSX.Element;
 
   /**
-   * Whether the popup is open
+   * Configures the positioned menu
    */
-  open: boolean;
+  positioning?: PositioningShorthand;
+}
 
+/**
+ * {@docCategory Menu }
+ */
+export interface MenuState extends MenuCommons, ComponentState {
   /**
    * Callback to open/close the popup
    */
@@ -135,6 +128,10 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
    * indicates whether the request for the open state was bubbled from a nested menu
    */
   bubble?: boolean;
+}
+
+export interface MenuContextValues {
+  menu: MenuContextValue;
 }
 
 /**

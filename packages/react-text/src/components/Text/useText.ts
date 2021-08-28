@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps } from '@fluentui/react-utilities';
-import { TextProps, TextState } from './Text.types';
+import type { TextProps, TextState } from './Text.types';
 
 const mergeProps = makeMergeProps<TextState>();
 
@@ -18,6 +18,7 @@ export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultPr
   const state = mergeProps(
     {
       ref,
+      as: 'span',
     },
     defaultProps,
     props,

@@ -4,7 +4,7 @@ Fluent UI React Native Link has default styling based on the Fluent Design Langu
 
 <img src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200511.001/fabric-website/images/controls/cross/Link/Link_windows.PNG"/>
 
-#### Example usage (from [LinkTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/RNTester/TestComponents/Link/LinkTest.tsx))
+#### Example usage (from [LinkTest.tsx](https://github.com/microsoft/fluentui-react-native/blob/master/apps/fluent-tester/src/FluentTester/TestComponents/Link/LinkTest.tsx))
 
 ```
 import * as React from 'react';

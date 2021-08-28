@@ -2,19 +2,13 @@ import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
-import { IChartDataPoint, IChartProps } from './index';
+import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
-
-export interface IIndexData {
-  lengthOfChartData?: number;
-  indexValOfRect?: number;
-}
-
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   selectedLegendTitle: string;
@@ -27,8 +21,7 @@ export interface IStackedBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
-  indexValOfRect: number;
-  lengthOfChartData: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -54,8 +47,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
-      indexValOfRect: 1,
-      lengthOfChartData: 1,
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
@@ -108,36 +99,20 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetRatio,
     });
 
-    const titleAriaLabel = this.props.ariaLabel
-      ? this.props.ariaLabel
-      : `Bar chart depicting about ${data!.chartTitle}`;
-    const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
-    let numberAriaLabel: string = '';
-    if (showRatio) {
-      numberAriaLabel = !this.props.hideDenominator ? `number ${chartDataVal} of ${total}` : `number ${total}`;
-    }
-    if (showNumber) {
-      numberAriaLabel = `number ${chartDataVal}`;
-    }
-    const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChartData}`;
     return (
       <div className={this._classNames.root}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div data-is-focusable={true} role="text" aria-label={titleAriaLabel}>
+              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
-              <div
-                role="text"
-                data-is-focusable={showRatio}
-                aria-label={numberAriaLabel}
-                aria-labelledby={this.props.ariaLabelledBy}
-                aria-describedby={this.props.ariaDescribedBy}
-              >
-                <span className={this._classNames.ratioNumerator}>{chartDataVal}</span>
+              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+                <span className={this._classNames.ratioNumerator}>
+                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
+                </span>
                 {!this.props.hideDenominator && (
                   <span>
                     /<span className={this._classNames.ratioDenominator}>{total}</span>
@@ -146,7 +121,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               </div>
             )}
             {showNumber && (
-              <div role="text" data-is-focusable={showNumber} aria-label={numberAriaLabel}>
+              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <strong>{data!.chartData![0].data}</strong>
               </div>
             )}
@@ -160,7 +135,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
-            <svg className={this._classNames.chart}>
+            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
               <g>{bars[0]}</g>
               <Callout
                 gapSpace={15}
@@ -171,10 +146,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 directionalHint={DirectionalHint.topRightEdge}
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
+                preventDismissOnLostFocus={true}
                 {...this.props.calloutProps}
+                {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
               >
                 <>
-                  <div className={this._classNames.visuallyHidden}>{barSeriesLabel}</div>
                   {this.props.onRenderCalloutPerDataPoint ? (
                     this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
                   ) : (
@@ -223,11 +199,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     let value = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const indexDetails: IIndexData = {
-        indexValOfRect: index,
-        lengthOfChartData: data.chartData!.length!,
-      };
-
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.data ? point.data : 0;
       // mapping data to the format Legends component needs
@@ -276,6 +247,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         shouldHighlight: shouldHighlight,
         href: this.props.href!,
       });
+
+      if (value < 1) {
+        return <React.Fragment key={index}> </React.Fragment>;
+      }
+
       return (
         <g
           key={index}
@@ -284,13 +260,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={!this.props.hideTooltip}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point, indexDetails)}
+          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
           aria-label="Stacked bar chart"
           role="img"
           aria-labelledby={this._calloutId}
-          onMouseOver={this._onBarHover.bind(this, pointData, color, point, indexDetails)}
-          onMouseMove={this._onBarHover.bind(this, pointData, color, point, indexDetails)}
+          onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
+          onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
           onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
@@ -326,7 +302,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     ];
   }
 
-  private _onBarFocus(pointData: number, color: string, point: IChartDataPoint, indexDetails: IIndexData): void {
+  private _onBarFocus(pointData: number, color: string, point: IChartDataPoint): void {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
@@ -342,8 +318,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             xCalloutValue: point.xAxisCalloutData!,
             yCalloutValue: point.yAxisCalloutData!,
             dataPointCalloutProps: point,
-            indexValOfRect: indexDetails.indexValOfRect! + 1,
-            lengthOfChartData: indexDetails.lengthOfChartData!,
+            callOutAccessibilityData: point.callOutAccessibilityData!,
           });
         }
       });
@@ -417,7 +392,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     pointData: number,
     color: string,
     point: IChartDataPoint,
-    indexDetails: IIndexData,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
@@ -434,8 +408,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
-        indexValOfRect: indexDetails.indexValOfRect! + 1,
-        lengthOfChartData: indexDetails.lengthOfChartData!,
+        callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }
   }
@@ -454,5 +427,20 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAccessibleDataObject = (
+    accessibleData?: IAccessibilityProps,
+    role: string = 'text',
+    isDataFocusable: boolean = true,
+  ) => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': isDataFocusable,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
   };
 }

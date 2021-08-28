@@ -3,8 +3,9 @@ import { getCode, ArrowRightKey, ArrowDownKey, ArrowLeftKey } from '@fluentui/ke
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
-import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 
 const noop = () => null;
 
@@ -19,7 +20,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   const triggerId = useMenuContext(context => context.triggerId);
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const isSubmenu = useIsSubmenu();
   const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(menuPopoverRef.current);
@@ -134,7 +135,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
 
   state.children = React.cloneElement(child, {
     ...triggerProps,
-    ref: useMergedRefs(child.props.ref, triggerRef),
+    ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
   });
 
   return state as MenuTriggerState;

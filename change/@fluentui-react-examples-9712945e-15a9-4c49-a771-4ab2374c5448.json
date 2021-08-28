@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migrate to new DX",
-  "packageName": "@fluentui/react-examples",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
-}

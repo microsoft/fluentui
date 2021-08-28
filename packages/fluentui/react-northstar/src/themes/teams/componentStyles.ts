@@ -130,6 +130,7 @@ export { statusStyles as Status } from './components/Status/statusStyles';
 
 export { splitButtonStyles as SplitButton } from './components/SplitButton/splitButtonStyles';
 export { splitButtonToggleStyles as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
+export { splitButtonDividerStyles as SplitButtonDivider } from './components/SplitButton/splitButtonDividerStyles';
 
 export { textStyles as Text } from './components/Text/textStyles';
 

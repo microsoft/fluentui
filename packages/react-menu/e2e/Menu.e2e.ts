@@ -1,9 +1,3 @@
-const menuTriggerSelector = '[aria-haspopup="true"]';
-const menuItemSelector = '[role="menuitem"]';
-const menuItemCheckboxSelector = '[role="menuitemcheckbox"]';
-const menuItemRadioSelector = '[role="menuitemradio"]';
-const menuSelector = '[role="menu"]';
-
 const defaultStory = 'Default';
 const groupsStory = 'WithGroups';
 const customTriggerStory = 'CustomTrigger';
@@ -12,7 +6,14 @@ const nestedMenuStory = 'NestedSubmenus';
 const nestedMenuControlledStory = 'NestedSubmenusControlled';
 
 const menuStoriesTitle = 'Components/Menu';
-const defaultMouseOverDelay = 250;
+
+import {
+  menuTriggerSelector,
+  menuItemSelector,
+  menuItemCheckboxSelector,
+  menuItemRadioSelector,
+  menuSelector,
+} from './selectors';
 
 describe('Menu', () => {
   before(() => {

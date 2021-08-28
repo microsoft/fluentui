@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IFocusTrapZoneProps } from '../../FocusTrapZone';
-import { ILayerProps } from '../../Layer';
-import { IOverlayProps } from '../../Overlay';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonStyles } from '../../Button';
 import { PanelBase } from './Panel.base';
-import { IPopupProps } from '../../Popup';
+import type { IFocusTrapZoneProps } from '../../FocusTrapZone';
+import type { ILayerProps } from '../../Layer';
+import type { IOverlayProps } from '../../Overlay';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IButtonStyles } from '../../Button';
+import type { IPopupProps } from '../../Popup';
 
 /**
  * {@docCategory Panel}

@@ -4,6 +4,8 @@ import {
   black,
   white,
   grey,
+  whiteAlpha,
+  blackAlpha,
   hcButtonFace,
   hcButtonText,
   hcCanvas,
@@ -15,7 +17,7 @@ import {
 } from './colors';
 import { textAlignments, fontFamilies, fontWeights, fontSizes, lineHeights } from './fonts';
 import { strokeWidths } from './strokeWidths';
-import { Theme, BrandVariants } from '../types';
+import type { Theme, BrandVariants } from '../types';
 
 export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
   return {
@@ -35,6 +37,8 @@ export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
       ...sharedColors,
       brand: brand,
       grey,
+      whiteAlpha,
+      blackAlpha,
     },
     type: {
       alignment: textAlignments,

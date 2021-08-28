@@ -1,8 +1,8 @@
-import { IRawStyle } from '@fluentui/merge-styles';
-import { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
 import { HighContrastSelector } from './CommonStyles';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
 import { ZIndexes } from './zIndexes';
+import type { IRawStyle } from '@fluentui/merge-styles';
+import type { IGetFocusStylesOptions, ITheme } from '../interfaces/index';
 
 /**
  * Generates a focus style which can be used to define an :after focus border.

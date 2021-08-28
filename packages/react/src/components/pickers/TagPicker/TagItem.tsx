@@ -2,10 +2,9 @@ import * as React from 'react';
 
 import { styled, classNamesFunction } from '../../../Utilities';
 import { IconButton } from '../../../Button';
-
-import { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getStyles } from './TagItem.styles';
 import { useId } from '@fluentui/react-hooks';
+import type { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 

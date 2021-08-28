@@ -44,6 +44,12 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       cursor: href ? 'pointer' : 'default',
       stroke: theme.palette.white,
       strokeWidth: 2,
+      selectors: {
+        '&:focus': {
+          stroke: theme.palette.black,
+          strokeWidth: '2px',
+        },
+      },
     },
     ratioNumerator: {
       fontSize: FontSizes.small,
@@ -98,11 +104,6 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
           backgroundImage: `linear-gradient(to right, ${targetColor}, ${targetColor})`,
         } as IStyle,
       },
-    },
-    visuallyHidden: {
-      position: 'absolute',
-      fontSize: '0 !important',
-      clip: 'rect(0, 0, 0, 0)',
     },
   };
 };
