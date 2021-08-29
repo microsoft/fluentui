@@ -23,12 +23,22 @@ import { menuItemBehavior, MenuItemBehaviorProps } from '../Menu/menuItemBehavio
  * Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
  */
 export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
-  return menuItemBehavior({
+  const defaultBehaviors = menuItemBehavior({
     ...props,
     vertical: true,
-    disabled: props.disabled,
-    'aria-disabled': props.disabledFocusable,
   });
+
+  return {
+    ...defaultBehaviors,
+    attributes: {
+      ...defaultBehaviors.attributes,
+      root: {
+        ...defaultBehaviors.attributes.root,
+        disabled: props.disabled,
+        'aria-disabled': props.disabledFocusable,
+      },
+    },
+  };
 };
 
 export type ToolbarMenuItemBehaviorProps = Omit<MenuItemBehaviorProps, 'vertical'> & {
