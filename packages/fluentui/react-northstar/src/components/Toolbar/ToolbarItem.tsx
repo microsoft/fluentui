@@ -381,6 +381,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       'content',
       'design',
       'styles',
+      'disabledFocusable',
       'variables',
       'active',
       'disabled',

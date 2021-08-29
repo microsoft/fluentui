@@ -482,7 +482,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       'design',
       'styles',
       'variables',
-
+      'disabledFocusable',
       'active',
       'activeIndicator',
       'defaultMenuOpen',
