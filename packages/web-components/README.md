@@ -60,7 +60,7 @@ This is a known issue and will indicate that you need to refresh the page. We're
 
 ### Using Yarn 2 with PnP
 
-`@microsoft/fast-components` works out of the box with Yarn 2 and PnP; however, because of how Yarn expects peer dependencies to be satisfied, we need additional configuation for `fluentui/web-components`.
+Because of how Yarn expects peer dependencies to be satisfied, we need additional configuation for `fluentui/web-components`.
 
 In your `.yarnrc.yml`, add the following entries and run `yarn` again:
 ```YAML
