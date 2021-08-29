@@ -60,7 +60,7 @@ This is a known issue and will indicate that you need to refresh the page. We're
 
 ### Using Yarn 2 with PnP
 
-Because of how Yarn expects peer dependencies to be satisfied, we need additional configuation for `fluentui/web-components`.
+Because of how Yarn expects peer dependencies to be satisfied, we need additional configuation for this package.
 
 In your `.yarnrc.yml`, add the following entries and run `yarn` again:
 ```YAML
