@@ -8,12 +8,14 @@ interface MenuListCommons extends React.HTMLAttributes<HTMLElement> {
    * Callback when checked items change for value with a name
    *
    * @param event - React's original SyntheticEvent
-   * @param data - Contains the name of the value and the items for this value that are checked
+   * @param data - A data object with relevant information
    */
   onCheckedValueChange?: (
     e: React.MouseEvent | React.KeyboardEvent,
     data: {
+      /** The name of the value */
       name: string;
+      /** The items for this value that are checked */
       checkedItems: string[];
     },
   ) => void;
