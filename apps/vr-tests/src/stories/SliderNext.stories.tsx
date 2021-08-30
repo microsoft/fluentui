@@ -39,4 +39,11 @@ storiesOf('SliderNext', module)
   .addStory('Origin (max)', () => <Slider className="test-class" max={10} origin={10} />)
   .addStory('Origin Vertical (max)', () => (
     <Slider className="test-class" min={10} vertical origin={10} />
+  ))
+  .addStory('Tooltip', () => <Slider className="test-class" defaultValue={30} tooltipVisible />)
+  .addStory('Tooltip Vertical', () => (
+    <Slider className="test-class" defaultValue={30} vertical tooltipVisible />
+  ))
+  .addStory('Tooltip Disabled', () => (
+    <Slider className="test-class" defaultValue={30} disabled tooltipVisible />
   ));

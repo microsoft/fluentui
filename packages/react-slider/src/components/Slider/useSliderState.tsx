@@ -24,24 +24,6 @@ const getPercent = (value: number, min: number, max: number) => {
 };
 
 /**
- * Finds the closest number that is divisible by a specified value.
- *
- * @param value the number to evaluate the closest value for.
- * @param divisibleBy the number to check if divisible by.
- */
-const findClosestValue = (value: number, divisibleBy: number) => {
-  const absoluteValue = Math.abs(value);
-  const absoluteDivisibleBy = Math.abs(divisibleBy);
-
-  const lowerValue = absoluteValue - (absoluteValue % absoluteDivisibleBy);
-  const upperValue = lowerValue + absoluteDivisibleBy;
-
-  return absoluteValue - lowerValue < upperValue - absoluteValue
-    ? lowerValue * Math.sign(value)
-    : upperValue * Math.sign(value);
-};
-
-/**
  * Finds and swaps a provided key for it's right to left format.
  */
 const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
@@ -184,12 +166,11 @@ export const useSliderState = (state: SliderState) => {
       disposables.current = [];
 
       showStepAnimation();
-      hideTooltip();
       // When undefined, the position fallbacks to the currentValue state.
       setRenderedPosition(undefined);
       thumbRef.current!.focus();
     },
-    [hideTooltip, showStepAnimation],
+    [showStepAnimation],
   );
 
   const onPointerDown = React.useCallback(
@@ -287,6 +268,9 @@ export const useSliderState = (state: SliderState) => {
       ? `translateY(${valuePercent}%)`
       : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}s` : 'none',
+    // Transition causes the onPointerEnter callback for the tooltip to trigger when collided with.
+    // To avoid this pointer events are disabled during the animation
+
     ...state.thumbWrapper.style,
   };
 
@@ -322,7 +306,7 @@ export const useSliderState = (state: SliderState) => {
     state.tooltip.content = currentValue;
     state.tooltip.showDelay = animationTime;
     state.tooltip.hideDelay = animationTime;
-    state.tooltip.visible = state.tooltip.visible || isTooltipVisible;
+    state.tooltip.visible = isTooltipVisible;
     state.tooltip.positioning = vertical ? 'after' : 'above';
   }
 
@@ -334,9 +318,11 @@ export const useSliderState = (state: SliderState) => {
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  state.thumb;
   if (tooltipVisible && !disabled) {
-    state.thumb.onPointerEnterCapture = showTooltip;
-    state.thumb.onPointerOutCapture = hideTooltip;
+    state.thumb.onPointerEnter = showTooltip;
+    state.thumb.onPointerOut = hideTooltip;
+    !thumbHasFocus && (state.thumb.onFocus = showTooltip);
     thumbHasFocus && (state.thumb.onBlur = onThumbBlur);
   }
   disabled && (state.thumb['aria-disabled'] = true);
