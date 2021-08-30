@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
     ':hover': {
       background: theme.alias.color.neutral.neutralBackground1Hover,
       borderColor: theme.alias.color.neutral.neutralStroke1Hover,
-      color: theme.alias.color.neutral.neutralForeground1,
+      color: theme.alias.color.neutral.neutralForeground2Hover,
 
       cursor: 'pointer',
     },
@@ -50,7 +50,7 @@ const useRootStyles = makeStyles({
     ':active': {
       background: theme.alias.color.neutral.neutralBackground1Pressed,
       borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
-      color: theme.alias.color.neutral.neutralForeground1,
+      color: theme.alias.color.neutral.neutralForeground2Pressed,
 
       outline: 'none',
     },
