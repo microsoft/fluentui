@@ -93,7 +93,7 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-element": "^1.5.0",
-    "@microsoft/fast-foundation": "^2.8.0",
+    "@microsoft/fast-foundation": "^2.8.1",
     "lodash-es": "^4.17.20",
     "tslib": "^1.13.0"
   }
