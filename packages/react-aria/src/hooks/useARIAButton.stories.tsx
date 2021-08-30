@@ -1,6 +1,8 @@
-import { ComponentState, getSlots, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ARIAButtonShorthandProps, useARIAButton } from './useARIAButton';
+import { useARIAButton } from './useARIAButton';
+import type { ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ARIAButtonShorthandProps } from './useARIAButton';
 
 type Slots = {
   root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 23 Aug 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Aug 2021 07:35:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.30.0)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.29.2..@fluentui/react_v8.30.0)
+
+### Minor changes
+
+- Expose FocusZoneProps on the DetailsList and DetailsRow components. ([PR #19404](https://github.com/microsoft/fluentui/pull/19404) by richard@einfinity.co.uk)
+
+## [8.29.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.29.2)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.29.1..@fluentui/react_v8.29.2)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.1.10 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
 
 ## [8.29.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.29.1)
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAccordionHeaderContext } from './AccordionHeaderContext';
-import { AccordionHeaderContextValue } from './AccordionHeader.types';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { AccordionHeaderContextValue } from './AccordionHeader.types';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type AccordionHeaderExpandIconProps = ObjectShorthandProps<
   React.HTMLAttributes<HTMLSpanElement>,

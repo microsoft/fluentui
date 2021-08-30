@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { AccordionPanelState, AccordionPanelSlots } from './AccordionPanel.types';
 import { accordionPanelShorthandProps } from './useAccordionPanel';
+import type { AccordionPanelState, AccordionPanelSlots } from './AccordionPanel.types';
 
 /**
  * Function that renders the final JSX of the component

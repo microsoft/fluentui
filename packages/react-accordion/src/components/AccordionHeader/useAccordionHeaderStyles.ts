@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { AccordionHeaderState } from './AccordionHeader.types';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import type { AccordionHeaderState } from './AccordionHeader.types';
 
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package

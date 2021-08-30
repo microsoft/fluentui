@@ -2675,17 +2675,17 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.0.tgz#f62ce25a800e6b413d3aa562e8416cdc1ed9131c"
   integrity sha512-u4R/sfF4SoKSAyDWJaBSDuVo4aGf1BXntlEWukC+1ubH36C6JmmdLSyyip5TQZiTqjQIy3uctcbepPi7oGI0Rw==
 
-"@microsoft/fast-element@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.4.0.tgz#761b5ebdde1a271c5f96f7c15fab9f5a2a10657f"
-  integrity sha512-7BC/juFc7S4HMGt/tNCP9bjwtUslheGiPM2jtIibe1bj+PO34woUfH5TxaklOT6sRStig/0fODX4R5oqY4DYLA==
+"@microsoft/fast-element@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.5.0.tgz#fcef9058cb007561f9fa85dcf537cbb618aec8b3"
+  integrity sha512-usrPwHFdV4w4nZ3vlBbTYy9lXwfu0QJWfjHItgIqBIGkUIoWotW91BQaszt3xlQXx8e3v8294WEMtfc/MCukRA==
 
-"@microsoft/fast-foundation@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.5.0.tgz#f205befe050735c5a55bdc76f60c70087c67cd78"
-  integrity sha512-+WUuXrNa1k6SffAuDEAXrDhQb9PVMY7oEAoOjDHqgZkM5F3aYB/uTJ1vPe3tqf3OX54LdHQtT1HGtfVM3RrAGw==
+"@microsoft/fast-foundation@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.8.0.tgz#f6757ab24bec41dd4b846d90fb1dfbf4d10d10b0"
+  integrity sha512-UjLXxTrx8w5EiXq3JLTZ7zEzJJjofKAuv7Q6zgq22AByKU1mfEMAn6c74w1cCZ/YUn9NTaes1hzW3gJwuqYfoQ==
   dependencies:
-    "@microsoft/fast-element" "^1.4.0"
+    "@microsoft/fast-element" "^1.5.0"
     "@microsoft/fast-web-utilities" "^4.8.0"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^5.2.0"
@@ -16532,10 +16532,10 @@ karma@^5.0.4:
     ua-parser-js "0.7.21"
     yargs "^15.3.1"
 
-keyborg@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-0.7.1.tgz#6ee90d616a472e6b028a33b2fcb26f419e203eab"
-  integrity sha512-6qap3S5enGXdpjLQ6Q6bIjmTpewc8Ur+zYWJstinWDHtDe8eF6hqxpC/e7MA8g1TS1yk6sEopokq/ZnFBSLZ7w==
+keyborg@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.0.0.tgz#2c1bd78a1d5b9357345f6cd3c1b661c21303f56e"
+  integrity sha512-kOY0HEqlIRO3qZ96j325JU/KGJz2tlRakK4h/RxCjG6c6Rf/T40vQ73cui090KYz1SCpUnWUqsCIx/SCVYW2LQ==
 
 keyv@3.0.0:
   version "3.0.0"
@@ -24150,12 +24150,12 @@ table@^6.0.4:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-tabster@^0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-0.7.4.tgz#8d8ddafc82962517e7a4fe325e426ea2f2e2314f"
-  integrity sha512-9LtbJ2r0yL5eMK5Hu8IqDjeGryB042nqRdGQbgiGeWHzxLyZ+dTVI+BEUcYY3deoKQvKac5PnL251+K01AZS2Q==
+tabster@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-1.0.0.tgz#ba71943d0cabaa743ac028604a90284bb2e82b68"
+  integrity sha512-k6g6jVi4gXT/zFKomyeM8B6Cdsdv2eYQgdnaLI0b7N7JKKF5TMoN2hoXuMKEIc9Swt5JKV2eVJHe+C7U4h07nw==
   dependencies:
-    keyborg "^0.7.1"
+    keyborg "^1.0.0"
 
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"

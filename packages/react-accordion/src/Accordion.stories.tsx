@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { RocketIcon } from './icons.stories';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from './index';
-import { ArgType } from '@storybook/addons';
-import { AccordionHeaderProps } from './components/AccordionHeader/AccordionHeader.types';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from './index';
+import type { AccordionProps } from './index';
+import type { ArgType } from '@storybook/addons';
+import type { AccordionHeaderProps } from './components/AccordionHeader/AccordionHeader.types';
 
 interface AccordionExampleProps
   extends AccordionProps,

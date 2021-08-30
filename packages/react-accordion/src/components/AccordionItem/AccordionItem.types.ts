@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;

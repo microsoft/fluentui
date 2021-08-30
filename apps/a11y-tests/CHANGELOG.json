@@ -2,6 +2,36 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.0",
+            "author": "richard@einfinity.co.uk",
+            "commit": "b9845c29770ba058344f01f02f5e111da0d31cbb",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.29.2",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

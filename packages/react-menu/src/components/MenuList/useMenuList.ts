@@ -104,7 +104,7 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
         newCheckedItems.push(value);
       }
 
-      onCheckedValueChange?.(e, name, newCheckedItems);
+      onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
       setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     },
   );
@@ -112,7 +112,7 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): 
   const selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
     setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
-    onCheckedValueChange?.(e, name, newCheckedItems);
+    onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
   });
 
   const state = {

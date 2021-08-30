@@ -1,6 +1,7 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel-preset';
+import shakerEvaluator from '@linaria/shaker';
 import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
 import { astify } from './utils/astify';
@@ -449,6 +450,13 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
       { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
       { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
     ],
+    evaluationRules: [
+      { action: shakerEvaluator },
+      {
+        test: /[/\\]node_modules[/\\]/,
+        action: 'ignore',
+      },
+    ],
 
     ...options,
   };
@@ -508,7 +516,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions);
           }
 
           state.styleNodes?.forEach(styleNode => {

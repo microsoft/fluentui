@@ -1,4 +1,4 @@
-import { AccordionContextValues, AccordionState } from './Accordion.types';
+import type { AccordionContextValues, AccordionState } from './Accordion.types';
 
 export function useAccordionContextValues(state: AccordionState): AccordionContextValues {
   const { navigable, openItems, requestToggle } = state;

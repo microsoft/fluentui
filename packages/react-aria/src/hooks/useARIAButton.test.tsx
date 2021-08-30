@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { ARIAButtonShorthandProps, useARIAButton } from './useARIAButton';
+import { useARIAButton } from './useARIAButton';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, screen, render } from '@testing-library/react';
 import { getSlots } from '@fluentui/react-utilities';
+import type { ARIAButtonShorthandProps } from './useARIAButton';
 
 describe('useARIAButton', () => {
   it('should return by default shorthand props for a button', () => {

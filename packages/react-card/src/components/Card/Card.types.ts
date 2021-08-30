@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Card Props

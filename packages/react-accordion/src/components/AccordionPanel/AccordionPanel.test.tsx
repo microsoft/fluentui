@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper, mount, MountRendererProps } from 'enzyme';
+import { ReactWrapper, mount } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { AccordionItemContext } from '../AccordionItem';
+import type { MountRendererProps } from 'enzyme';
 
 describe('AccordionPanel', () => {
   isConformant({

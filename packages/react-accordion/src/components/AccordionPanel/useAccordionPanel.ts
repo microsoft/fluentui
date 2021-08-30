@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 import { useAccordionItemContext } from '../AccordionItem/index';
+import type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 
 /**
  * Const listing which props are shorthand props.

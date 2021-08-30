@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
-import { CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButtonState } from './CompoundButton.types';
+import type {
+  CompoundButtonProps,
+  CompoundButtonShorthandPropsCompat,
+  CompoundButtonState,
+} from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
 

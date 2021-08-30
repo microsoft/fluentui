@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
-import { useControllableState, useEventCallback, getNativeElementProps } from '@fluentui/react-utilities';
-import {
+import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import type {
   AccordionProps,
   AccordionSlots,
   AccordionState,
   AccordionToggleData,
   AccordionToggleEvent,
 } from './Accordion.types';
+import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export const accordionShorthandProps: Array<keyof AccordionSlots> = ['root'];
 

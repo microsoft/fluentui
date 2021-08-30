@@ -2,6 +2,50 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.73",
+      "version": "9.0.0-alpha.73",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.40",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.40",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.71",
       "version": "9.0.0-alpha.71",
