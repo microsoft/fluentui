@@ -212,6 +212,9 @@ export const hcHighlightText = "#000000";
 export const hcHyperlink = "#ffff00";
 
 // @public (undocumented)
+export const hcMediaQuery: MediaQueryList;
+
+// @public (undocumented)
 export type LineHeights = FontSizes;
 
 // @public (undocumented)
@@ -430,7 +433,6 @@ export type Theme = {
     };
     alias: {
         color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
-            highContrast: NeutralColorTokens;
             neutral: NeutralColorTokens;
         };
         shadow: ShadowLevelTokens;
