@@ -33,13 +33,21 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Label>Basic Example</Label>
       <Slider tooltipDisplay />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={1} keyboardStep={2} onChange={sliderOnChange} />
+      <Slider
+        value={sliderValue}
+        min={10}
+        max={200}
+        step={1}
+        keyboardStep={2}
+        onChange={sliderOnChange}
+        tooltipDisplay
+      />
       <Label>Snapping Example</Label>
-      <Slider defaultValue={5} step={5} min={0} max={10} />
+      <Slider defaultValue={5} step={5} min={0} max={10} tooltipDisplay />
       <Label>Disabled Example</Label>
-      <Slider defaultValue={30} disabled />
+      <Slider defaultValue={30} disabled tooltipDisplay />
       <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} min={0} max={10} />
+      <Slider defaultValue={8} origin={3} min={0} max={10} tooltipDisplay />
     </div>
   );
 };

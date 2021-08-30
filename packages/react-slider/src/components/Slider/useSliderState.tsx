@@ -308,6 +308,10 @@ export const useSliderState = (state: SliderState) => {
 
   // Tooltip Props
   state.tooltip.pointing = true;
+  state.tooltip.disabled = disabled;
+  state.tooltip.content = currentValue;
+  state.tooltip.showDelay = 0;
+  state.tooltip.hideDelay = 0;
 
   // Thumb Props
   state.thumb.ref = thumbRef;
