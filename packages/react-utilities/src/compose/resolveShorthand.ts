@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import { DefaultObjectShorthandProps, ShorthandProps } from './types';
+import type { DefaultObjectShorthandProps, ShorthandProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ResolveShorthandOptions<Props extends Record<string, any>, Required extends boolean = false> {
@@ -11,7 +11,7 @@ export interface ResolveShorthandOptions<Props extends Record<string, any>, Requ
  * Resolves ShorthandProps into ObjectShorthandProps, to ensure normalization of the signature
  * being passed down to getSlots method
  * @param value - the base ShorthandProps
- * @param defaultProps - base properties to be merged with the end ObjectShorthandProps
+ * @param options - options to resolve ShorthandProps
  */
 export function resolveShorthand<Props extends DefaultObjectShorthandProps, Required extends boolean = false>(
   value: ShorthandProps<Props>,
