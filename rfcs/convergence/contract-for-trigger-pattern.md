@@ -59,33 +59,41 @@ We expect these components to need to support the `MenuTrigger` contract. Howeve
 
 ## Detailed Design or Proposal
 
-### Proposal 1: Hoist trigger contracts outside of packages
+### Support render functions for `Trigger` components
+
+This API is already supported by `Tooltip`, this section of the RFC proposes to formalize this API across v9 components.
+
+All `Trigger` like components that rely on cloning a component should also allow children as a render
+function. This kind of API is well known in the React ecosystem, in many cases it has been replaced by using
+React context and hooks, but provides an easy API for simple components variants.
 
 ```tsx
-import { TooltipTriggerProps } from '@fluentui/react-shared-smth';
+import { MenuButton } from '@fluentui/react-menu-button';
+import { Menu } from '@fluentui/react-menu';
 
-export function CustomTooltipTriggerChild(props: TooltipTriggerProps);
+<Tooltip content="Trigger button using a render function">
+  {triggerProps => (
+    <div>
+      <button {...triggerProps}>Custom trigger</button>
+    </div>
+  )}
+</Tooltip>
+
+<Menu>
+  <MenuTrigger>
+    {triggerProps => (
+      <div>
+        <button {...triggerProps}>Custom trigger</button>
+      </div>
+    )}
+  </MenuTrigger>
+  ...
+</Menu>;
 ```
 
-```tsx
-import { MenuTriggerProps } from '@fluentui/react-shared-smth';
+### Extract compound components to separate packages
 
-export function CustomMenuTriggerChild(props: MenuTriggerProps);
-```
-
-```tsx
-import { PopoverTriggerProps } from '@fluentui/react-react-shared-smth';
-
-export function CustomPopoverTriggerChild(props: PopoverTriggerProps);
-```
-
-In each of the above cases we require a **hard dependency** on the component package to be able to access these types, which could create unnecessary coupling if the rest of the component is never used. It can also cause bundle size issues for customers that don't setup tree shaking properly.
-
-To mitigate this we could hoist common type interfaces like this to a separate package so that there is no hard dependency on the component.
-
-### Proposal 2: Create separate packages for components that might want to avoid dependencies
-
-We can evaluate on a case by case basis whether to move these kinds of components to a nother package
+We can evaluate on a case by case basis whether to move these kinds of components to another package
 
 ```tsx
 import { MenuButton } from '@fluentui/react-menu-button';
@@ -99,11 +107,38 @@ import { Menu } from '@fluentui/react-menu';
 </Menu>;
 ```
 
-### Proposal 3: Each component defines its own requirements
+Here is a sample implementation that can be used for a `MenuButton` component that expects a specific set of
+`props` from the trigger component.
 
-> No change from current
+```tsx
+import { MenuTriggerChildProps } from '@fluentui/react-menu';
 
-In this proposal `MenuButton` should be designed to work with a contract that enables it to function with any kind of menu component. It is up to the responsibility of the team to make sure that `MenuButton` and `Menu` compatibility is not broken through testing and validation.
+interface MenuButtonProps extends React.ReactHTMLAttributes<HTMLButtonElement>, MenuTriggerChildProps {}
+
+function MenuButton(props: MenuButtonProps) {}
+```
+
+For components that will potentially contain different slots as HTML elements, the above solution is no longer feasible.
+
+```tsx
+import { MenuTriggerChildProps } from '@fluentui/react-menu';
+
+interface SplitButtonProps extends React.ReactHTMLAttributes<HTMLButtonElement> {
+  // ⚠️ Expected to clone this element and apply trigger props to a specific slot
+  menuButton: React.HTMLAttributes<HTMLButtonElement> & MenuTriggerChildProps;
+}
+
+// ⚠️ the trigger props are actually a part of the main props
+function SplitButton(props: SplitButtonProps) {
+  return (
+    <div>
+      {/* ⚠️ No way to distinguish both values */}
+      <button onKeyDown={props.onKeyDown}> Action </button>
+      <button onKeyDown={props.onKeyDown}> Trigger </button>
+    </div>
+  );
+}
+```
 
 ## Pros and Cons
 
