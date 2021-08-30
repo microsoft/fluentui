@@ -4,14 +4,14 @@ import * as renderer from 'react-test-renderer';
 import { styled } from '../../../Utilities';
 import { Suggestions } from './Suggestions';
 import { getStyles as suggestionsStyles } from './Suggestions.styles';
-import {
+import { isConformant } from '../../../common/isConformant';
+import type {
   ISuggestionModel,
   ISuggestionsProps,
   ISuggestionsStyleProps,
   ISuggestionsStyles,
   ISuggestions,
 } from './Suggestions.types';
-import { isConformant } from '../../../common/isConformant';
 
 const suggestions = [
   'black',

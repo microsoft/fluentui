@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { compose, ComposeOptions } from '@fluentui/react-compose';
-import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
-import { CheckboxBase } from './Checkbox.base';
-import { useCheckboxClasses } from './useCheckboxClasses';
-import { ICheckboxProps } from './Checkbox.types';
+import { useCheckbox } from './useCheckbox';
+import { CheckboxProps } from './Checkbox.types';
+import { renderCheckbox } from './renderCheckbox';
+import { useCheckboxStyles } from './useCheckboxStyles';
 
-const composeOptions: ComposeOptions = {
-  displayName: 'Checkbox',
-  classes: useCheckboxClasses,
-  slots: {
-    checkmark: CheckMarkIcon,
-  },
-};
+/**
+ * A Checkbox component provides a way to represent options that can be selected
+ */
+export const Checkbox = React.forwardRef<HTMLElement, CheckboxProps>((props, ref) => {
+  const state = useCheckbox(props, ref);
 
-export const Checkbox: React.FunctionComponent<ICheckboxProps> = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
-  CheckboxBase,
-  composeOptions,
-);
+  useCheckboxStyles(state);
+  return renderCheckbox(state);
+});
+
+Checkbox.displayName = 'Checkbox';

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverContent, PopoverProps } from './index';
+import { Popover, PopoverTrigger, PopoverSurface } from './index';
+import type { PopoverProps } from './index';
+import type { ArgTypes, Meta, Parameters } from '@storybook/react';
 
 const ExampleContent = () => {
   return (
@@ -17,33 +19,27 @@ export const Default = (props: PopoverProps) => (
       <button>Popover trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
 
       <div>
         <button>Action</button>
         <button>Action</button>
       </div>
-    </PopoverContent>
+    </PopoverSurface>
   </Popover>
 );
-
+// @FIXME - remove manually specified argTypes once `react-components` package will use new storybook setup(DX)
+// https://github.com/microsoft/fluentui/issues/18514
 Default.argTypes = {
-  open: {
-    defaultValue: false,
-    control: 'boolean',
-  },
-
   openOnContext: {
     defaultValue: false,
     control: 'boolean',
   },
-
   openOnHover: {
     defaultValue: false,
     control: 'boolean',
   },
-
   position: {
     type: { name: 'string', required: false },
     control: {
@@ -51,7 +47,6 @@ Default.argTypes = {
       options: ['above', 'below', 'before', 'after'],
     },
   },
-
   align: {
     type: { name: 'string', required: false },
     control: {
@@ -59,7 +54,6 @@ Default.argTypes = {
       options: ['top', 'bottom', 'start', 'end', 'center'],
     },
   },
-
   size: {
     type: { name: 'string', required: false },
     control: {
@@ -67,12 +61,16 @@ Default.argTypes = {
       options: ['small', 'medium', 'large'],
     },
   },
-
   trapFocus: {
     defaultValue: true,
     control: 'boolean',
   },
-};
+} as ArgTypes;
+Default.parameters = {
+  controls: {
+    disable: false,
+  },
+} as Parameters;
 
 export const AnchorToTarget = () => {
   const [target, setTarget] = React.useState<HTMLButtonElement | null>();
@@ -80,14 +78,14 @@ export const AnchorToTarget = () => {
   return (
     <>
       <div>
-        <Popover target={target}>
+        <Popover positioning={{ target }}>
           <PopoverTrigger>
             <button>Popover trigger</button>
           </PopoverTrigger>
 
-          <PopoverContent>
+          <PopoverSurface>
             <ExampleContent />
-          </PopoverContent>
+          </PopoverSurface>
         </Popover>
       </div>
 
@@ -98,16 +96,16 @@ export const AnchorToTarget = () => {
 
 export const Controlled = () => {
   const [open, setOpen] = React.useState(false);
-  const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
+  const handleOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
   return (
-    <Popover open={open} onOpenChange={onOpenChange}>
+    <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger>
         <button>Controlled trigger</button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverSurface>
         <ExampleContent />
-      </PopoverContent>
+      </PopoverSurface>
     </Popover>
   );
 };
@@ -115,6 +113,7 @@ export const Controlled = () => {
 export const WithCustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const [target, setTarget] = React.useState<HTMLElement | null>(null);
+
   const onClick = () => setOpen(s => !s);
   const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
@@ -123,10 +122,10 @@ export const WithCustomTrigger = () => {
       <button aria-haspopup ref={setTarget} onClick={onClick}>
         Custom trigger
       </button>
-      <Popover target={target} open={open} onOpenChange={onOpenChange}>
-        <PopoverContent>
+      <Popover positioning={{ target }} open={open} onOpenChange={onOpenChange}>
+        <PopoverSurface>
           <ExampleContent />
-        </PopoverContent>
+        </PopoverSurface>
       </Popover>
     </>
   );
@@ -138,12 +137,12 @@ const FirstNestedPopover = () => (
       <button>First nested trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
       <button>First nested button</button>
       <SecondNestedPopover />
       <SecondNestedPopover />
-    </PopoverContent>
+    </PopoverSurface>
   </Popover>
 );
 
@@ -153,10 +152,10 @@ const SecondNestedPopover = () => (
       <button>Second nested trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
       <button>Second nested button</button>
-    </PopoverContent>
+    </PopoverSurface>
   </Popover>
 );
 
@@ -167,19 +166,43 @@ export const NestedPopovers = () => {
         <button>Root trigger</button>
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverSurface>
         <ExampleContent />
         <button>Root button</button>
         <FirstNestedPopover />
-      </PopoverContent>
+      </PopoverSurface>
+    </Popover>
+  );
+};
+
+// Used for internal testing
+export const InternalUpdateContent = () => {
+  const [visible, setVisible] = React.useState(true);
+
+  const changeContent = () => setVisible(false);
+
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <button>Popover trigger</button>
+      </PopoverTrigger>
+
+      <PopoverSurface>
+        <ExampleContent />
+
+        {visible ? (
+          <div>
+            <button onClick={changeContent}>Action</button>
+          </div>
+        ) : (
+          <div>The second panel</div>
+        )}
+      </PopoverSurface>
     </Popover>
   );
 };
 
 export default {
-  // use the Components prefix and (react-popover) suffix to have the same naming convention as react-examples
-  title: 'Components/Popover (react-popover)',
-  // Explicit id used in story URL
-  id: 'Components/Popover',
+  title: 'Components/Popover',
   component: Popover,
-};
+} as Meta;

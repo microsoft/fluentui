@@ -16,7 +16,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
     disableAnimations: false,
     renderer: {
       ...noopRenderer,
-      renderRule: props => {
+      renderRule: (props: any) => {
         return cx(
           props.color && `color-${props.color}`,
           props.hidden && `hidden-${props.hidden}`,

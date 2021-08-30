@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "1.0.0-beta.60",
-  "description": "Fluent UI React Checkbox component",
+  "version": "9.0.0-alpha.27",
+  "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,14 +17,16 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start": "yarn storybook",
+    "test": "jest",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-checkbox/src && yarn docs",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.0",
-    "@fluentui/react-conformance": "^0.4.0",
+    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.34",
+    "@fluentui/react-conformance": "^0.4.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -38,11 +40,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.25",
-    "@fluentui/react-hooks": "^8.2.1",
-    "@fluentui/react-icons-mdl2": "^1.1.1",
-    "@fluentui/style-utilities": "^8.1.1",
-    "@fluentui/utilities": "^8.1.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
+    "@fluentui/react-utilities": "^9.0.0-alpha.41",
+    "@fluentui/react-label": "^9.0.0-alpha.31",
+    "@fluentui/react-tabster": "^9.0.0-alpha.53",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -52,7 +53,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
       "minor",

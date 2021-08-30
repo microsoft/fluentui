@@ -1,7 +1,11 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { Combobox, ComboboxTemplate as template } from '@microsoft/fast-foundation';
+import { attr } from '@microsoft/fast-element';
+import {
+  ComboboxOptions,
+  Combobox as FoundationCombobox,
+  comboboxTemplate as template,
+} from '@microsoft/fast-foundation';
 import { SelectAppearance } from '../select';
-import { ComboboxStyles as styles } from './combobox.styles';
+import { comboboxStyles as styles } from './combobox.styles';
 
 /**
  * Combobox appearances
@@ -10,23 +14,10 @@ import { ComboboxStyles as styles } from './combobox.styles';
 export type ComboboxAppearance = SelectAppearance;
 
 /**
- * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox|Combobox},
- * {@link @microsoft/fast-foundation#ComboboxTemplate|ComboboxTemplate}
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-combobox\>
- *
+ * The Fluent combobox class
+ * @internal
  */
-@customElement({
-  name: 'fluent-combobox',
-  template,
-  styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
-})
-export class FluentCombobox extends Combobox {
+export class Combobox extends FoundationCombobox {
   /**
    * The appearance of the element.
    *
@@ -60,7 +51,34 @@ export class FluentCombobox extends Combobox {
 }
 
 /**
+ * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox},
+ * {@link @microsoft/fast-foundation#comboboxTemplate}
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-combobox\>
+ *
+ */
+export const fluentCombobox = Combobox.compose<ComboboxOptions>({
+  baseName: 'combobox',
+  template,
+  styles,
+  indicator: `
+    <svg
+        class="select-indicator"
+        part="select-indicator"
+        viewBox="0 0 12 7"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M11.85.65c.2.2.2.5 0 .7L6.4 6.84a.55.55 0 01-.78 0L.14 1.35a.5.5 0 11.71-.7L6 5.8 11.15.65c.2-.2.5-.2.7 0z"
+        />
+    </svg>
+  `,
+});
+
+/**
  * Styles for combobox
  * @public
  */
-export const ComboboxStyles = styles;
+export const comboboxStyles = styles;

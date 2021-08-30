@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { setWarningCallback } from '@fluentui/utilities';
-import { IWarningOptions, useWarnings } from './useWarnings';
+import { useWarnings } from './useWarnings';
+import type { IWarningOptions } from './useWarnings';
 
 // These tests don't cover the core warning utilities (which have their own tests), just the
 // integration with the hook and usage within function components.

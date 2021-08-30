@@ -12,3 +12,4 @@ export * from './contexts/menuContext';
 export * from './contexts/menuTriggerContext';
 export * from './contexts/menuGroupContext';
 export * from './contexts/menuListContext';
+export * from './MenuPopover';

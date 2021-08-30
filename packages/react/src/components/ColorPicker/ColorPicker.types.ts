@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IColor } from '../../utilities/color/interfaces';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IColor } from '../../utilities/color/interfaces';
 
 /**
  * {@docCategory ColorPicker}
@@ -83,7 +83,7 @@ export interface IColorPickerProps {
   blueLabel?: string;
 
   /**
-   * Label for the alpha textfield.
+   * Label for the alpha text field.
    * @defaultvalue Alpha
    * @deprecated Use `strings`
    */
@@ -158,11 +158,13 @@ export interface IColorPickerStrings {
 
   /**
    * Customized aria-label for the alpha slider.
+   * This overrides the visible text label, and should be used with extreme care (and very rarely).
    */
   alphaAriaLabel?: string;
 
   /**
    * Customized aria-label for the transparency slider.
+   * This overrides the visible text label, and should be used with extreme care (and very rarely).
    */
   transparencyAriaLabel?: string;
 

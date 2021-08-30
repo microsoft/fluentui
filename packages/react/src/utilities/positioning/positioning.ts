@@ -1,16 +1,17 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getScrollbarWidth, getRTL, IRectangle } from '../../Utilities';
-import {
+import { getScrollbarWidth, getRTL } from '../../Utilities';
+import { RectangleEdge } from './positioning.types';
+import { Rectangle } from '../../Utilities';
+import type { IRectangle, Point } from '../../Utilities';
+import type {
   IPositionDirectionalHintData,
   IPositionedData,
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
   ICalloutPositionProps,
-  RectangleEdge,
   IWindowWithSegments,
 } from './positioning.types';
-import { Point, Rectangle } from '../../Utilities';
 
 function _createPositionData(
   targetEdge: RectangleEdge,
@@ -127,7 +128,7 @@ function _getCenterValue(rect: Rectangle, edge: RectangleEdge): number {
  * Flips the value depending on the edge.
  * If the edge is a "positive" edge, Top or Left, then the value should stay as it is.
  * If the edge is a "negative" edge, Bottom or Right, then the value should be flipped.
- * This is to account for the fact that the coordinates are effectively reveserved in certain cases for the
+ * This is to account for the fact that the coordinates are effectively reserved in certain cases for the
  * "negative" edges.
  *
  * For example, when testing to see if a bottom edge 1 is within the bounds of another bottom edge 2:
@@ -423,11 +424,11 @@ function _finalizeReturnEdge(
 }
 
 /**
- * Finalizes the element positon based on the hostElement. Only returns the
+ * Finalizes the element position based on the hostElement. Only returns the
  * rectangle values to position such that they are anchored to the target.
  * This helps prevent resizing from looking very strange.
  * For instance, if the target edge is top and aligned with the left side then
- * the bottom and left values are returned so as the callou shrinks it shrinks towards that corner.
+ * the bottom and left values are returned so as the Callout shrinks it shrinks towards that corner.
  */
 function _finalizeElementPosition(
   elementRectangle: Rectangle,
@@ -494,7 +495,7 @@ function _getPositionData(
 }
 
 /**
- * Get's the alignment data for the given information. This only really matters if the positioning is Auto.
+ * Gets the alignment data for the given information. This only really matters if the positioning is Auto.
  * If it is auto then the alignmentEdge should be chosen based on the target edge's position relative to
  * the center of the page.
  */

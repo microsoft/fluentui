@@ -4,120 +4,58 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ClassFunction } from '@fluentui/react-compose';
-import { ComponentWithAs } from '@fluentui/react-compose';
-import { IRefObject } from '@fluentui/utilities';
-import { IRenderFunction } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
-import { ITheme } from '@fluentui/style-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
-import { SlotProp } from '@fluentui/react-compose';
-import { SlotProps } from '@fluentui/react-compose';
-
-// @public (undocumented)
-export const Checkbox: React_2.FunctionComponent<ICheckboxProps>;
-
-// @public (undocumented)
-export const CheckboxBase: ComponentWithAs<'div', ICheckboxProps>;
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
-export interface ICheckbox {
-    checked: boolean;
-    focus: () => void;
-    indeterminate: boolean;
-}
-
-// @public (undocumented)
-export type ICheckboxClasses = {
-    [key in keyof ICheckboxSlots]: string;
-};
+export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export interface ICheckboxProps extends React_2.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React_2.RefAttributes<HTMLElement> {
-    ariaDescribedBy?: string;
-    ariaLabel?: string;
-    ariaLabelledBy?: string;
-    as?: React_2.ElementType;
-    boxSide?: 'start' | 'end';
-    checked?: boolean;
-    checkmark?: SlotProp<ISvgIconProps>;
-    className?: string;
-    componentRef?: IRefObject<ICheckbox>;
-    defaultChecked?: boolean;
-    defaultIndeterminate?: boolean;
+export interface CheckboxCommons extends Omit<LabelProps, 'defaultChecked' | 'onChange' | 'as'> {
+    checked?: 'mixed' | boolean;
+    circular?: boolean;
+    defaultChecked?: 'mixed' | boolean;
     disabled?: boolean;
-    indeterminate?: boolean;
-    inputProps?: React_2.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    label?: SlotProp<React_2.HTMLAttributes<HTMLSpanElement>>;
-    onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
-    // @deprecated
-    onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    id?: string;
+    labelPosition: 'before' | 'after';
+    onChange?: (ev: React_2.FormEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     required?: boolean;
-    // @deprecated
-    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
-    theme?: ITheme;
+    rootId?: string;
+    size: 'medium' | 'large';
 }
 
-// @public (undocumented)
-export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React_2.HTMLAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export interface ICheckboxSlots extends BaseSlots {
+// @public
+export interface CheckboxOnChangeData {
     // (undocumented)
-    checkbox: React_2.ElementType;
-    // (undocumented)
-    checkmark: React_2.ElementType;
-    // (undocumented)
-    container: React_2.ElementType;
-    // (undocumented)
-    input: React_2.ElementType;
-    // (undocumented)
-    label: React_2.ElementType;
+    checked: 'mixed' | boolean;
 }
 
-// @public (undocumented)
-export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
-    // (undocumented)
+// @public
+export interface CheckboxProps extends ComponentPropsCompat, Partial<CheckboxCommons> {
+    indicator?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
+    input?: ShorthandPropsCompat<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
+}
+
+// @public
+export const checkboxShorthandProps: readonly ["indicator", "input"];
+
+// @public
+export interface CheckboxState extends ComponentStateCompat<CheckboxProps, 'input' | 'indicator', 'size' | 'labelPosition' | 'input' | 'indicator'> {
+    containerClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }
 
 // @public (undocumented)
-export interface ICheckboxStyleProps {
-    // (undocumented)
-    checked?: boolean;
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    indeterminate?: boolean;
-    // (undocumented)
-    isUsingCustomLabelRender: boolean;
-    // (undocumented)
-    reversed?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
+export const renderCheckbox: (state: CheckboxState) => JSX.Element;
 
-// @public (undocumented)
-export interface ICheckboxStyles {
-    checkbox?: IStyle;
-    checkmark?: IStyle;
-    input?: IStyle;
-    label?: IStyle;
-    root?: IStyle;
-    text?: IStyle;
-}
+// @public
+export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLElement>) => CheckboxState;
 
-// @public (undocumented)
-export const useCheckbox: (props: ICheckboxProps, forwardedRef: React_2.Ref<HTMLElement>) => ICheckboxState;
-
-// @public (undocumented)
-export const useCheckboxClasses: ClassFunction[];
-
+// @public
+export const useCheckboxStyles: (state: CheckboxState) => CheckboxState;
 
 // (No @packageDocumentation comment for this package)
 

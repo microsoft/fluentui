@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
 import { KeyCodes, resetIds } from '../../Utilities';
-import { ISearchBoxProps } from './SearchBox.types';
 import { isConformant } from '../../common/isConformant';
+import type { ReactTestRenderer } from 'react-test-renderer';
+import type { ISearchBoxProps } from './SearchBox.types';
 
 describe('SearchBox', () => {
   let component: ReactTestRenderer | undefined;
@@ -171,6 +171,28 @@ describe('SearchBox', () => {
     wrapper = mount(<SearchBox value={0 as any} />);
     // this is not allowed per typings, but users might do it anyway
     expect(wrapper.find('input').getDOMNode().getAttribute('value')).toBe('0');
+  });
+
+  it('handles onChange', () => {
+    const onChange = jest.fn();
+
+    wrapper = mount(<SearchBox onChange={onChange} />);
+    expect(onChange).toHaveBeenCalledTimes(0);
+
+    wrapper.find('input').simulate('change', { target: { value: 'New value' } });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('handles onChanged', () => {
+    const onChanged = jest.fn();
+
+    wrapper = mount(<SearchBox onChanged={onChanged} />);
+    expect(onChanged).toHaveBeenCalledTimes(0);
+
+    wrapper.find('input').simulate('change', { target: { value: 'New value' } });
+
+    expect(onChanged).toHaveBeenCalledTimes(1);
   });
 
   it('invokes onEscape callback on escape keydown', () => {

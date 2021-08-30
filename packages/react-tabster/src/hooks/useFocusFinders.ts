@@ -14,10 +14,18 @@ export const useFocusFinders = () => {
   );
   const findFirstFocusable = React.useCallback((root: HTMLElement) => tabster?.focusable.findFirst(root), [tabster]);
   const findLastFocusable = React.useCallback((root: HTMLElement) => tabster?.focusable.findLast(root), [tabster]);
+  const findNextFocusable = React.useCallback((current: HTMLElement) => tabster?.focusable.findNext(current), [
+    tabster,
+  ]);
+  const findPrevFocusable = React.useCallback((current: HTMLElement) => tabster?.focusable.findPrev(current), [
+    tabster,
+  ]);
 
   return {
     findAllFocusable,
     findFirstFocusable,
     findLastFocusable,
+    findNextFocusable,
+    findPrevFocusable,
   };
 };

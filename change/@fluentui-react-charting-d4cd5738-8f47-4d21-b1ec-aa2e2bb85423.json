@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding onClick handler to charts that do not have one to provide more flexible user scenarios",
-  "packageName": "@fluentui/react-charting",
-  "email": "jisooj0403@gmail.com",
-  "dependentChangeType": "patch"
-}

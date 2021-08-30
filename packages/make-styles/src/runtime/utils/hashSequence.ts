@@ -1,5 +1,7 @@
 import hash from '@emotion/hash';
+
 import { SEQUENCE_HASH_LENGTH, SEQUENCE_PREFIX } from '../../constants';
+import { SequenceHash } from '../../types';
 
 function padEndHash(value: string): string {
   const hashLength = value.length;
@@ -15,6 +17,6 @@ function padEndHash(value: string): string {
   return value;
 }
 
-export function hashSequence(classes: string, dir: 'ltr' | 'rtl') {
+export function hashSequence(classes: string, dir: 'ltr' | 'rtl'): SequenceHash {
   return SEQUENCE_PREFIX + padEndHash(hash(classes + dir));
 }

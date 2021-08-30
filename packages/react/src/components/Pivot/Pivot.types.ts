@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { PivotItem } from './PivotItem';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory Pivot}
@@ -88,6 +89,11 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+
+  /**
+   * Props passed to the `FocusZone` component used as the root of `Pivot`.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

@@ -9,6 +9,6 @@ export const useStyles = makeStyles({
     };
   },
   rootPrimary: function (theme) {
-    return { color: theme.alias.color.brand.brandBackground };
+    return { color: theme.alias.color.neutral.brandBackground };
   },
 });

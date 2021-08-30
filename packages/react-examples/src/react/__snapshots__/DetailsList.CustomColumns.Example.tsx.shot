@@ -88,7 +88,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -137,7 +137,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -257,9 +256,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -296,14 +298,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -344,6 +349,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"
@@ -432,7 +438,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
             >
               <span
                 aria-describedby="header1-thumbnail-tooltip"
-                aria-haspopup={false}
                 aria-labelledby="header1-thumbnail-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -464,7 +469,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-thumbnail"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -503,6 +508,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-thumbnail-tooltip"
@@ -589,7 +595,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -621,7 +626,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -724,7 +729,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -756,7 +760,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -859,7 +863,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-description-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -891,7 +894,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-description"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -994,7 +997,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-color-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1026,7 +1028,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-color"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1129,7 +1131,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-shape-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1161,7 +1162,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-shape"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1264,7 +1265,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-location-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1296,7 +1296,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-location"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1399,7 +1399,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-width-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1431,7 +1430,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-width"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1534,7 +1533,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                   }
             >
               <span
-                aria-haspopup={false}
                 aria-labelledby="header1-height-name"
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1566,7 +1564,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
+                data-is-focusable="true"
                 id="header1-height"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1896,9 +1894,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1935,14 +1936,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -2880,9 +2884,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2919,14 +2926,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -3864,9 +3874,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -3903,14 +3916,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -4848,9 +4864,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -4887,14 +4906,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -5832,9 +5854,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -5871,14 +5896,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -6816,9 +6844,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -6855,14 +6886,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -7800,9 +7834,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -7839,14 +7876,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -8784,9 +8824,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -8823,14 +8866,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -9768,9 +9814,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -9807,14 +9856,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -10752,9 +10804,12 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -10791,14 +10846,17 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }

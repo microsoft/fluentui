@@ -5,7 +5,8 @@ import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider, MenuListContextValue } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
 
 describe('MenuItemRadio', () => {
   isConformant({
@@ -139,5 +140,20 @@ describe('MenuItemRadio', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should merge checkmark slot props', () => {
+    // Arrange
+    const className = 'foo';
+    const { container } = render(
+      <MenuItemRadio checkmark={{ className }} name="test" value="test">
+        Item
+      </MenuItemRadio>,
+    );
+
+    // Assert
+    const slot = container.querySelector(`.${className}`);
+    expect(slot).not.toBeNull();
+    expect(slot?.querySelector('svg')).not.toBeNull();
   });
 });

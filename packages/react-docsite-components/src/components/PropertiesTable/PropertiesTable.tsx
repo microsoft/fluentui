@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from '@fluentui/react/lib/DetailsList';
+import {
+  DetailsHeader,
+  DetailsList,
+  DetailsListLayoutMode,
+  IColumn,
+  IDetailsListProps,
+  IGroup,
+} from '@fluentui/react/lib/DetailsList';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { styled, classNamesFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
@@ -92,6 +99,17 @@ const ENUM_COLUMNS: IColumn[] = getColumns([
   { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 },
 ]);
 
+const onShouldVirtualize = () => false;
+
+const onRenderHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
+  return (
+    <DetailsHeader
+      {...props!}
+      ariaLabelForToggleAllGroupsButton={props!.isAllCollapsed ? 'Expand all groups' : 'Collapse all groups'}
+    />
+  );
+};
+
 class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
   public static defaultProps: Partial<IPropertiesTableProps> = {
     title: 'Properties',
@@ -139,15 +157,12 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
           groups={this._groups}
           columns={renderAsEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
           styles={classNames.subComponentStyles.list}
-          onShouldVirtualize={this._onShouldVirtualize}
+          onShouldVirtualize={onShouldVirtualize}
+          onRenderDetailsHeader={onRenderHeader}
         />
       </div>
     );
   }
-
-  private _onShouldVirtualize = (): boolean => {
-    return false;
-  };
 
   private _getGroups(): IGroup[] {
     const groups: IGroup[] = [];

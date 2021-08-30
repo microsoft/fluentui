@@ -9,11 +9,21 @@ function buttonTokens(theme: Theme) {
   };
 }
 
-export const useStyles = __styles({
-  root: {
-    De3pzq: ['', 'fbrlg6g', '.fbrlg6g{background-color:var(--global-color-black);}'],
-    sj55zd: ['', 'fk38h1u', '.fk38h1u{color:var(--alias-color-blue-border2);}'],
-    mc9l5x: ['', 'f22iagw', '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
-    Bi91k9c: ['h', 'faf35ka', '.faf35ka:hover{color:red;}'],
+export const useStyles = __styles(
+  {
+    root: {
+      De3pzq: 'fbrlg6g',
+      sj55zd: 'fk38h1u',
+      mc9l5x: 'f22iagw',
+      Bi91k9c: 'faf35ka',
+    },
   },
-});
+  {
+    d: [
+      '.fbrlg6g{background-color:var(--global-color-black);}',
+      '.fk38h1u{color:var(--alias-color-blue-border2);}',
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
+    ],
+    h: ['.faf35ka:hover{color:red;}'],
+  },
+);

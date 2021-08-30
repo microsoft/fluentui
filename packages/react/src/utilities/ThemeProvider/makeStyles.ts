@@ -1,8 +1,8 @@
-import { IStyle } from '@fluentui/style-utilities';
-import { Theme } from '@fluentui/theme';
 import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
+import type { IStyle } from '@fluentui/style-utilities';
+import type { Theme } from '@fluentui/theme';
 
 const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
   for (const key of path) {
@@ -45,7 +45,7 @@ export type UseStylesOptions = {
  * @param styleOrFunction - Either a css javascript object, or a function which takes in `ITheme`
  * and returns a css javascript object.
  */
-export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle }>(
+export function makeStyles<TStyleSet extends { [key in keyof TStyleSet]: IStyle } = { [key: string]: IStyle }>(
   styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet),
 ): (options?: UseStylesOptions) => { [key in keyof TStyleSet]: string } {
   // Create graph of inputs to map to output.

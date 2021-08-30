@@ -4,13 +4,19 @@
 
 ```ts
 
-import { MakeStylesStyleRule } from '@fluentui/make-styles';
-import { RefObject } from 'react';
-import { Theme } from '@fluentui/react-theme';
+import type { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { RefObject } from 'react';
+import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public (undocumented)
-export const makeFocusIndicatorStyle: (rule: MakeStylesStyleRule<Theme>) => () => string;
+export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
+
+// @public (undocumented)
+export interface CreateFocusIndicatorStyleRuleOptions {
+    // (undocumented)
+    selector?: 'focus' | 'focus-within';
+}
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -26,10 +32,9 @@ export const useFocusFinders: () => {
     findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
+    findPrevFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
 };
-
-// @public
-export const useFocusIndicatorStyle: () => string;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
@@ -48,7 +53,6 @@ export interface UseModalAttributesOptions {
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
-
 
 // (No @packageDocumentation comment for this package)
 

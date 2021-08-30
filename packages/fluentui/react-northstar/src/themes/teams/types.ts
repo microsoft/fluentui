@@ -21,6 +21,7 @@ import { AttachmentIconStylesProps } from '../../components/Attachment/Attachmen
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
 import { AvatarImageStylesProps } from '../../components/Avatar/AvatarImage';
 import { AvatarStatusStylesProps } from '../../components/Avatar/AvatarStatus';
+import { AvatarStatusIconStylesProps } from '../../components/Avatar/AvatarStatusIcon';
 import { BoxStylesProps } from '../../components/Box/Box';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
 import { ButtonStylesProps } from '../../components/Button/Button';
@@ -128,6 +129,7 @@ export type TeamsThemeStylesProps = {
   Avatar: AvatarStylesProps;
   AvatarImage: AvatarImageStylesProps;
   AvatarStatus: AvatarStatusStylesProps;
+  AvatarStatusIcon: AvatarStatusIconStylesProps;
   Button: ButtonStylesProps;
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;

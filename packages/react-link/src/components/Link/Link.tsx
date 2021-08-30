@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useLink } from './useLink';
-import { LinkProps } from './Link.types';
 import { useLinkStyles } from './useLinkStyles';
 import { renderLink } from './renderLink';
+import type { LinkProps } from './Link.types';
 
 /**
  * Defines a styled Link, using the `useLink` hook.

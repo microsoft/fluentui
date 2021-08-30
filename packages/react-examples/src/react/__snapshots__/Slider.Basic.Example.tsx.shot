@@ -367,7 +367,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
-            ms-Slider-showTransitions
             {
               align-items: center;
               background: transparent;
@@ -481,7 +480,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
-                  transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
                 }
             style={
@@ -501,7 +499,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
                 {
                   background: #c8c6c4;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: 1px solid WindowText;
@@ -523,7 +520,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
                 {
                   background: #605e5c;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: WindowText;
@@ -545,7 +541,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
                 {
                   background: #c8c6c4;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: 1px solid WindowText;

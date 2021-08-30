@@ -1,5 +1,8 @@
-import { IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle } from './FloatingSuggestionsList.types';
 import { getGlobalClassNames, getTheme } from '@fluentui/style-utilities';
+import type {
+  IFloatingSuggestionsListStyleProps,
+  IFloatingSuggestionsListStyle,
+} from './FloatingSuggestionsList.types';
 
 const GlobalClassNames = {
   root: 'ms-FloatingSuggestionsList',

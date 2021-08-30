@@ -6,7 +6,7 @@
 
 ### Source code
 
-[ActivityIndicatorView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/ActivityIndicatorView.swift)
+[ActivityIndicatorView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/ActivityIndicator/ActivityIndicatorView.swift)
 
 [HUD](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/HUD/HUD.swift)
 

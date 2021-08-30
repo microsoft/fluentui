@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
-import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
+import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   Async,
@@ -9,7 +8,6 @@ import {
   getId,
   getNativeProps,
   getWindow,
-  IStyleFunctionOrObject,
   initializeComponentRef,
   inputProperties,
   isControlled,
@@ -19,7 +17,10 @@ import {
   warnControlledUsage,
   warnMutuallyExclusive,
 } from '../../Utilities';
-import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { ILabelStyleProps, ILabelStyles } from '../../Label';
+import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 

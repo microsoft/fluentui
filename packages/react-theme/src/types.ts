@@ -15,24 +15,33 @@ export type NeutralColorTokens = {
   neutralForeground2Hover: string;
   neutralForeground2Pressed: string;
   neutralForeground2Selected: string;
-  brandForeground2Hover: string;
-  brandForeground2Pressed: string;
-  brandForeground2Selected: string;
+  neutralForeground2BrandHover: string;
+  neutralForeground2BrandPressed: string;
+  neutralForeground2BrandSelected: string;
   neutralForeground3: string;
   neutralForeground3Hover: string;
   neutralForeground3Pressed: string;
   neutralForeground3Selected: string;
-  brandForeground3Hover: string;
-  brandForeground3Pressed: string;
-  brandForeground3Selected: string;
+  neutralForeground3BrandHover: string;
+  neutralForeground3BrandPressed: string;
+  neutralForeground3BrandSelected: string;
   neutralForeground4: string;
   neutralForegroundDisabled: string;
-  brandForeground: string;
-  brandForegroundHover: string;
-  brandForegroundPressed: string;
-  brandForegroundSelected: string;
+  brandForegroundLink: string;
+  brandForegroundLinkHover: string;
+  brandForegroundLinkPressed: string;
+  brandForegroundLinkSelected: string;
+  compoundBrandForeground1: string;
+  compoundBrandForeground1Hover: string;
+  compoundBrandForeground1Pressed: string;
+  brandForeground1: string;
+  brandForeground2: string;
   neutralForegroundInverted: string;
-  neutralForegroundInvertedAccessible: string;
+  neutralForegroundOnBrand: string;
+  neutralForegroundInvertedLink: string;
+  neutralForegroundInvertedLinkHover: string;
+  neutralForegroundInvertedLinkPressed: string;
+  neutralForegroundInvertedLinkSelected: string;
   neutralBackground1: string;
   neutralBackground1Hover: string;
   neutralBackground1Pressed: string;
@@ -54,7 +63,27 @@ export type NeutralColorTokens = {
   neutralBackground5Pressed: string;
   neutralBackground5Selected: string;
   neutralBackground6: string;
+  neutralBackgroundInverted: string;
+  subtleBackground: string;
+  subtleBackgroundHover: string;
+  subtleBackgroundPressed: string;
+  subtleBackgroundSelected: string;
+  transparentBackground: string;
+  transparentBackgroundHover: string;
+  transparentBackgroundPressed: string;
+  transparentBackgroundSelected: string;
   neutralBackgroundDisabled: string;
+  neutralStencil1: string;
+  neutralStencil2: string;
+  brandBackground: string;
+  brandBackgroundHover: string;
+  brandBackgroundPressed: string;
+  brandBackgroundSelected: string;
+  compoundBrandBackground: string;
+  compoundBrandBackgroundHover: string;
+  compoundBrandBackgroundPressed: string;
+  brandBackgroundStatic: string;
+  brandBackground2: string;
   neutralStrokeAccessible: string;
   neutralStrokeAccessibleHover: string;
   neutralStrokeAccessiblePressed: string;
@@ -65,16 +94,25 @@ export type NeutralColorTokens = {
   neutralStroke1Selected: string;
   neutralStroke2: string;
   neutralStroke3: string;
+  brandStroke1: string;
+  brandStroke2: string;
+  compoundBrandStroke: string;
+  compoundBrandStrokeHover: string;
+  compoundBrandStrokePressed: string;
   neutralStrokeDisabled: string;
-  strokeAccessible: string;
-  strokeAccessibleInteractive: string;
-  strokeAccessibleDisabled: string;
+  transparentStroke: string;
+  transparentStrokeInteractive: string;
+  transparentStrokeDisabled: string;
+  strokeFocus1: string;
+  strokeFocus2: string;
   neutralShadowAmbient: string;
   neutralShadowKey: string;
   neutralShadowAmbientLighter: string;
   neutralShadowKeyLighter: string;
   neutralShadowAmbientDarker: string;
   neutralShadowKeyDarker: string;
+  brandShadowAmbient: string;
+  brandShadowKey: string;
 };
 
 /**
@@ -336,6 +374,8 @@ export type Greys =
   | 98
   | 100;
 
+export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
 // TODO: do we want to split theme for better tree shaking? (MUI)
 // But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
 export type Theme = {
@@ -346,13 +386,20 @@ export type Theme = {
     color: {
       black: string;
       white: string;
-      hyperlink: string;
-      disabled: string;
-      selected: string;
+      hcHyperlink: string;
+      hcHighlight: string;
+      hcDisabled: string;
+      hcCanvas: string;
+      hcCanvasText: string;
+      hcHighlightText: string;
+      hcButtonText: string;
+      hcButtonFace: string;
     };
     palette: GlobalSharedColors & {
       brand: BrandVariants; // Only the Theme brand, not all
       grey: Record<Greys, string>;
+      whiteAlpha: Record<AlphaColors, string>;
+      blackAlpha: Record<AlphaColors, string>;
     };
     type: {
       fontSizes: FontSizes;
@@ -367,9 +414,6 @@ export type Theme = {
   alias: {
     color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
       neutral: NeutralColorTokens;
-      subtle: BackgroundColorTokens;
-      transparent: BackgroundColorTokens;
-      brand: BrandColorTokens;
     };
     shadow: ShadowLevelTokens;
   };

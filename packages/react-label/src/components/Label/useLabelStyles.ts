@@ -1,15 +1,43 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { LabelState } from './Label.types';
+import type { LabelState } from './Label.types';
 
 /**
- * Styles for the root slot
+ * Styles for the label
  */
 const useStyles = makeStyles({
   root: theme => ({
-    // TODO Add default styles for the root element
+    fontFamily: theme.global.type.fontFamilies.base,
+    color: theme.alias.color.neutral.neutralForeground1,
   }),
 
-  // TODO add additional classes for different states and/or slots
+  disabled: theme => ({
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+  }),
+
+  required: theme => ({
+    color: theme.alias.color.red.foreground3,
+    paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
+  }),
+
+  small: theme => ({
+    fontSize: theme.global.type.fontSizes.base[200],
+    lineHeight: theme.global.type.lineHeights.base[200],
+  }),
+
+  medium: theme => ({
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
+
+  large: theme => ({
+    fontSize: theme.global.type.fontSizes.base[400],
+    lineHeight: theme.global.type.lineHeights.base[400],
+    fontWeight: theme.global.type.fontWeights.semibold,
+  }),
+
+  strong: theme => ({
+    fontWeight: theme.global.type.fontWeights.semibold,
+  }),
 });
 
 /**
@@ -17,10 +45,17 @@ const useStyles = makeStyles({
  */
 export const useLabelStyles = (state: LabelState): LabelState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.className = mergeClasses(
+    styles.root,
+    state.disabled && styles.disabled,
+    styles[state.size],
+    state.strong && styles.strong,
+    state.className,
+  );
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.required) {
+    state.required.className = mergeClasses(styles.required, state.required.className);
+  }
 
   return state;
 };

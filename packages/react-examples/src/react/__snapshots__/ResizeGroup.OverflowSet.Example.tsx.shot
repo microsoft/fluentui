@@ -41,6 +41,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -217,6 +218,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -393,6 +395,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -569,6 +572,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -745,6 +749,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -921,6 +926,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -1097,6 +1103,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -1273,6 +1280,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -1449,6 +1457,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -1625,6 +1634,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -1801,6 +1811,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -1977,6 +1988,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -2153,6 +2165,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -2329,6 +2342,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -2505,6 +2519,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -2681,6 +2696,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -2857,6 +2873,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -3033,6 +3050,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -3209,6 +3227,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=
@@ -3385,6 +3404,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   display: inherit;
                   flex-shrink: 0;
                 }
+            role="none"
           >
             <button
               className=

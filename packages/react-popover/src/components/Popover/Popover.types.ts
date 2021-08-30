@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PopperOptions, PopperVirtualElement } from '@fluentui/react-positioning';
-import { PortalProps } from '@fluentui/react-portal';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { PopperVirtualElement, PositioningShorthand } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
 
 /**
  * Determines popover padding and arrow size
@@ -11,9 +11,7 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 /**
  * Popover Props
  */
-export interface PopoverProps
-  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>,
-    Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PortalProps, 'mountNode'> {
   children: React.ReactNode;
   /**
    * Controls the opening of the Popover
@@ -60,6 +58,11 @@ export interface PopoverProps
    * Should trap focus
    */
   trapFocus?: boolean;
+
+  /**
+   * Configures the position of the Popover
+   */
+  positioning?: PositioningShorthand;
 }
 
 /**
@@ -75,7 +78,7 @@ export type PopoverDefaultedProps = never;
 /**
  * Popover State
  */
-export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
+export interface PopoverState extends ComponentStateCompat<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
   /**
    * Open state of the Popover
    */
@@ -89,7 +92,7 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
    */
   triggerRef: React.MutableRefObject<HTMLElement | null>;
   /**
-   * Ref of the PopoverContent
+   * Ref of the PopoverSurface
    */
   contentRef: React.MutableRefObject<HTMLElement | null>;
   /**

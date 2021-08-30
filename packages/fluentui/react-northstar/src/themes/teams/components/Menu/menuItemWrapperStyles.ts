@@ -5,7 +5,7 @@ import { menuItemClassName } from '../../../../components/Menu/MenuItem';
 import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
 import { getColorScheme } from '../../colors';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { submenuIndicatorUrl, submenuIndicatorDirection } from './submenuIndicatorUrl';
+import { submenuIndicatorDirection } from './submenuIndicatorDirection';
 import {
   horizontalPillsRightMargin,
   verticalPillsBottomMargin,
@@ -14,7 +14,7 @@ import {
 } from './menuItemStyles';
 
 export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesProps, MenuVariables> = {
-  root: ({ props, variables: v, rtl }): ICSSInJSStyle => {
+  root: ({ props, variables: v }): ICSSInJSStyle => {
     const {
       active,
       disabled,
@@ -76,6 +76,9 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       // active styles
       ...(active && {
         color: v.wrapperColorActive,
+        ...(!underlined && {
+          background: v.backgroundColorActive,
+        }),
 
         ...(!underlined &&
           on !== 'hover' && {
@@ -159,13 +162,13 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         }),
 
         [`&>.${menuItemClassName}>.${menuItemIndicatorClassName}`]: {
-          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover),
+          color: v.indicatorColorHover,
 
           ...(primary && {
-            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover),
+            color: v.primaryIndicatorColorHover,
           }),
 
-          ...submenuIndicatorDirection(vertical, rtl),
+          ...submenuIndicatorDirection(vertical),
         },
       },
 
