@@ -1,10 +1,8 @@
 import { useId, usePrevious } from '@fluentui/react-utilities';
-import { themeToCSSVariables } from '@fluentui/react-theme';
+import { hcMediaQuery, themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
 
-const hcMediaQuery =
-  window && window.matchMedia && window.matchMedia('screen and (-ms-high-contrast: active), (forced-colors: active)');
 const globalHcColorTokens = [
   '--global-color-hcButtonFace',
   '--global-color-hcButtonText',
@@ -49,18 +47,11 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
   const cssRule = React.useMemo(() => {
     const cssVars = themeToCSSVariables(theme);
     let cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
-      if (hcMediaQuery && hcMediaQuery.matches) {
-        if (globalHcColorTokens.includes(cssVar)) {
-          cssVarRule += `${cssVar}: ${globalHcColorTokensToValuesMapping[cssVar]}; `;
-        } else if (cssVar.includes('highContrast')) {
-          cssVarRule += `${cssVar.replace('highContrast', 'neutral')}: ${cssVars[cssVar]}; `;
-        } else if (!cssVar.includes('neutral')) {
-          cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
-        }
-      } else if (!cssVar.includes('highContrast')) {
-        cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
+      if (hcMediaQuery && hcMediaQuery.matches && globalHcColorTokens.includes(cssVar)) {
+        return cssVarRule + `${cssVar}: ${globalHcColorTokensToValuesMapping[cssVar]}; `;
       }
-      return cssVarRule;
+
+      return cssVarRule + `${cssVar}: ${cssVars[cssVar]}; `;
     }, '');
 
     if (hcMediaQuery && hcMediaQuery.matches) {

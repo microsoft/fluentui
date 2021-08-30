@@ -10,7 +10,6 @@ export const createHighContrastTheme: (brand: BrandVariants) => Theme = brand =>
     alias: {
       color: {
         ...generateSharedColorTokens(global.palette),
-        highContrast: neutralColorTokens,
         neutral: neutralColorTokens,
       } as Theme['alias']['color'],
       shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
