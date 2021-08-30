@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Support more Nav overrides and style cues",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
