@@ -170,9 +170,9 @@ export const useSliderState = (state: SliderState) => {
       const currentStepPosition = state.step ? Math.round(position / step) * step : position;
 
       setRenderedPosition(clamp(position, min, max));
-      currentValue !== currentStepPosition && updateValue(currentStepPosition, ev);
+      updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, currentValue, max, min, state.step, step, updateValue],
+    [calculateSteps, max, min, state.step, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -327,9 +327,9 @@ export const useSliderState = (state: SliderState) => {
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
   tooltipVisible && (state.thumb.onMouseOverCapture = showTooltip);
-  tooltipVisible && (state.thumb.onMouseOut = hideTooltip);
+  tooltipVisible && (state.thumb.onMouseOutCapture = hideTooltip);
   // state.thumb.onFocus = () => showTooltip();
-  // state.thumb.onBlur = hideTooltip;
+  // state.onBlur = hideTooltip;
 
   disabled && (state.thumb['aria-disabled'] = true);
 
