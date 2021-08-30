@@ -26,7 +26,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       menuIcon: { as: 'span' },
       // Non-slot props
       size: 'medium',
-      type: 'button',
+      type: 'button', // This is added because the default for type is 'submit'
     },
     defaultProps && resolveShorthandProps(defaultProps, menuButtonShorthandPropsCompat),
     resolveShorthandProps(props, menuButtonShorthandPropsCompat),

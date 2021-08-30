@@ -39,7 +39,7 @@ export const useCompoundButton = (
       secondaryContent: { as: 'span' },
       // Non-slot props
       size: 'medium',
-      type: 'button',
+      type: 'button', // This is added because the default for type is 'submit'
     },
     defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
     resolveShorthandProps(props, compoundButtonShorthandPropsCompat),
