@@ -239,35 +239,45 @@ const templates = {
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
   const defaults = {};
-  const workspaceConfig = readWorkspaceConfiguration(host);
-  const projectConfig = readProjectConfiguration(host, options.name);
+  const project = getProjectConfig(host, { packageName: options.name });
 
   return {
     ...defaults,
     ...options,
-    projectConfig,
-    workspaceConfig: workspaceConfig,
+    ...project,
+
     /**
      * package name without npmScope (@scopeName)
      */
-    normalizedPkgName: options.name.replace(`@${workspaceConfig.npmScope}/`, ''),
-    paths: {
-      configRoot: joinPathFragments(projectConfig.root, 'config'),
-      packageJson: joinPathFragments(projectConfig.root, 'package.json'),
-      tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
-      babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
-      jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
-      rootTsconfig: '/tsconfig.base.json',
-      rootJestPreset: '/jest.preset.js',
-      rootJestConfig: '/jest.config.js',
-      npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
-      storybook: {
-        rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
-        tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
-        main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
-        preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
-      },
+    normalizedPkgName: options.name.replace(`@${project.workspaceConfig.npmScope}/`, ''),
+  };
+}
+
+function getProjectConfig(tree: Tree, options: { packageName: string }) {
+  const projectConfig = readProjectConfiguration(tree, options.packageName);
+  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const paths = {
+    configRoot: joinPathFragments(projectConfig.root, 'config'),
+    packageJson: joinPathFragments(projectConfig.root, 'package.json'),
+    tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
+    babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
+    jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
+    rootTsconfig: '/tsconfig.base.json',
+    rootJestPreset: '/jest.preset.js',
+    rootJestConfig: '/jest.config.js',
+    npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
+    storybook: {
+      rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
+      tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
+      main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
+      preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
     },
+  };
+
+  return {
+    projectConfig,
+    workspaceConfig,
+    paths,
   };
 }
 
@@ -698,10 +708,13 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
 
   const config = templates.babelConfig({ extraPlugins });
 
+  const babelMakeStylesProjectName = `${currentProjectNpmScope}/babel-make-styles`;
   if (shouldAddMakeStylesPlugin) {
-    pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`] = '*';
+    const babelMakeStylesProject = getProjectConfig(tree, { packageName: babelMakeStylesProjectName });
+    const babelMakeStylesPkgJson: PackageJson = readJson(tree, babelMakeStylesProject.paths.packageJson);
+    pkgJson.devDependencies[babelMakeStylesProjectName] = `^${babelMakeStylesPkgJson.version}`;
   } else {
-    delete pkgJson.devDependencies[`${currentProjectNpmScope}/babel-make-styles`];
+    delete pkgJson.devDependencies[babelMakeStylesProjectName];
   }
 
   tree.write(options.paths.babelConfig, serializeJson(config));
