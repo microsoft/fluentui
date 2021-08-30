@@ -9,6 +9,12 @@ import {
 import type { INavStyleProps, INavStyles } from './Nav.types';
 import type { IButtonStyles } from '../../Button';
 
+// The number pixels per indentation level for Nav links.
+const _indentationSize = 14;
+
+// The number of pixels of left margin
+const _baseIndent = 3;
+
 const GlobalClassNames = {
   root: 'ms-Nav',
   linkText: 'ms-Nav-linkText',
@@ -45,11 +51,18 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     isDisabled,
     isButtonEntry,
     navHeight = 44,
-    position,
-    leftPadding = 20,
+    nestingLevel,
+    hasIcon,
     leftPaddingExpanded = 28,
     rightPadding = 20,
   } = props;
+
+  const basePosition = typeof nestingLevel === 'number' ? _indentationSize * nestingLevel + 1 : undefined;
+
+  const baseLeftPadding =
+    typeof nestingLevel === 'number' ? _indentationSize * nestingLevel + _baseIndent + (hasIcon ? 0 : 24) : undefined;
+
+  const { position = basePosition, leftPadding = baseLeftPadding ?? 20 } = props;
 
   const { palette, semanticColors, fonts } = theme;
 

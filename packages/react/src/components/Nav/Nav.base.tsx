@@ -14,13 +14,8 @@ import type {
   INavStyleProps,
   INavStyles,
   IRenderGroupHeaderProps,
+  IRenderNavLinkProps,
 } from './Nav.types';
-
-// The number pixels per indentation level for Nav links.
-const _indentationSize = 14;
-
-// The number of pixels of left margin
-const _baseIndent = 3;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -109,9 +104,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       isSelected: isSelectedLink,
       isDisabled: link.disabled,
       isButtonEntry: link.onClick && !link.forceAnchor,
-      leftPadding: _indentationSize * nestingLevel + _baseIndent + (isLinkWithIcon ? 0 : 24),
+      nestingLevel,
+      hasIcon: !!isLinkWithIcon,
       groups,
     });
+
+    const linkRenderProps: IRenderNavLinkProps = {
+      ...link,
+      nestingLevel,
+    };
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
@@ -139,7 +140,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         aria-label={link.ariaLabel ? link.ariaLabel : undefined}
         link={link}
       >
-        {onRenderLink(link)}
+        {onRenderLink(linkRenderProps)}
       </LinkAs>
     );
   }
@@ -148,13 +149,17 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
     // eslint-disable-next-line deprecation/deprecation
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
+
+    const isCollapsible = link.isCollapsible ?? true;
+
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isExpanded: !!link.isExpanded,
       isSelected: this._isLinkSelected(link),
       isLink: true,
       isDisabled: link.disabled,
-      position: _indentationSize * nestingLevel + 1,
+      isCollapsible,
+      nestingLevel,
       groups,
     });
 
@@ -170,7 +175,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     return (
       <div {...divProps} key={link.key || linkIndex} className={classNames.compositeLink}>
-        {link.links && link.links.length > 0 ? (
+        {link.links && link.links.length > 0 && isCollapsible ? (
           <button
             className={classNames.chevronButton}
             onClick={this._onLinkExpandClicked.bind(this, link)}
@@ -252,12 +257,13 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // eslint-disable-next-line deprecation/deprecation
     const { styles, groups, theme, expandButtonAriaLabel } = this.props;
 
-    const { isExpanded } = group;
+    const { isExpanded, isCollapsible = true } = group;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
       isExpanded,
+      isCollapsible,
       groups,
     });
 
@@ -273,8 +279,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     return (
       <button className={classNames.chevronButton} onClick={onClick} aria-label={label} aria-expanded={isExpanded}>
-        <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
-        {group.name}
+        {isCollapsible ? <Icon className={classNames.chevronIcon} iconName="ChevronDown" /> : null}
+        <div className={classNames.linkText}>{group.name}</div>
       </button>
     );
   };

@@ -17,6 +17,16 @@ export interface IRenderGroupHeaderProps extends INavLinkGroup {
 /**
  * {@docCategory Nav}
  */
+export interface IRenderNavLinkProps extends INavLink {
+  /**
+   * The nesting level at which the link will be rendered.
+   */
+  nestingLevel?: number;
+}
+
+/**
+ * {@docCategory Nav}
+ */
 export interface INav {
   /**
    * The meta 'key' property of the currently selected NavItem of the Nav. Can return
@@ -79,7 +89,7 @@ export interface INavProps {
   /**
    * Used to customize how content inside the link tag is rendered
    */
-  onRenderLink?: IRenderFunction<INavLink>;
+  onRenderLink?: IRenderFunction<IRenderNavLinkProps>;
 
   /**
    * Function callback invoked when a link in the navigation is clicked
@@ -148,6 +158,12 @@ export interface INavLinkGroup {
    * If true, the group should render collapsed by default
    */
   collapseByDefault?: boolean;
+
+  /**
+   * Whether not the group may be collapsed.
+   * @defaultvalue true
+   */
+  isCollapsible?: boolean;
 
   /**
    * Callback invoked when a group header is clicked
@@ -269,6 +285,12 @@ export interface INavLink {
   collapseAriaLabel?: string;
 
   /**
+   * Whether not the link's children may be collapsed.
+   * @defaultvalue true
+   */
+  isCollapsible?: boolean;
+
+  /**
    * (Optional) Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
@@ -349,10 +371,24 @@ export interface INavStyleProps {
   position?: number;
 
   /**
+   * The nesting level of the link being rendered. Will only be present for links, not groups.
+   */
+  nestingLevel?: number;
+  /**
+   * Whether or not the link being rendered has an icon. Will only be present for links, not groups.
+   */
+  hasIcon?: boolean;
+
+  /**
    * Inherited from INavProps
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[] | null;
+
+  /**
+   * Whether or not the node being rendered may be collapsed.
+   */
+  isCollapsible?: boolean;
 }
 
 /**
@@ -420,5 +456,5 @@ export interface INavButtonProps extends IButtonProps {
   /**
    * (Optional) Link to be rendered.
    */
-  link?: INavLink;
+  link?: IRenderNavLinkProps;
 }

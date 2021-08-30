@@ -13,6 +13,7 @@ const navStyles: Partial<INavStyles> = {
 
 const navLinkGroups: INavLinkGroup[] = [
   {
+    name: 'Group',
     links: [
       {
         name: 'Home',
