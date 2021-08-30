@@ -6063,7 +6063,7 @@ export interface INav {
 
 // @public (undocumented)
 export interface INavButtonProps extends IButtonProps {
-    link?: INavLink;
+    link?: IRenderNavLinkProps;
 }
 
 // @public (undocumented)
@@ -6080,6 +6080,7 @@ export interface INavLink {
     // @deprecated (undocumented)
     iconClassName?: string;
     iconProps?: IIconProps;
+    isCollapsible?: boolean;
     isExpanded?: boolean;
     key?: string;
     links?: INavLink[];
@@ -6097,6 +6098,7 @@ export interface INavLinkGroup {
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
     groupData?: any;
+    isCollapsible?: boolean;
     links: INavLink[];
     name?: string;
     onHeaderClick?: (ev?: React_2.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
@@ -6116,7 +6118,7 @@ export interface INavProps {
     onLinkClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onLinkExpandClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
-    onRenderLink?: IRenderFunction<INavLink>;
+    onRenderLink?: IRenderFunction<IRenderNavLinkProps>;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
@@ -6140,7 +6142,9 @@ export interface INavState {
 export interface INavStyleProps {
     className?: string;
     groups: INavLinkGroup[] | null;
+    hasIcon?: boolean;
     isButtonEntry?: boolean;
+    isCollapsible?: boolean;
     isDisabled?: boolean;
     isExpanded?: boolean;
     isGroup?: boolean;
@@ -6150,6 +6154,7 @@ export interface INavStyleProps {
     leftPadding?: number;
     leftPaddingExpanded?: number;
     navHeight?: number;
+    nestingLevel?: number;
     position?: number;
     rightPadding?: number;
     theme: ITheme;
@@ -6958,6 +6963,12 @@ export interface IRelativePositions {
 // @public (undocumented)
 export interface IRenderGroupHeaderProps extends INavLinkGroup {
     isExpanded?: boolean;
+}
+
+// @public (undocumented)
+export interface IRenderNavLinkProps extends INavLink {
+    // (undocumented)
+    nestingLevel?: number;
 }
 
 // @public (undocumented)
