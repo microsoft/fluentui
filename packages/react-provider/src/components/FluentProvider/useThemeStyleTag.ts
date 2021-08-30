@@ -1,7 +1,10 @@
 import { useId, usePrevious } from '@fluentui/react-utilities';
-import { themeToCSSVariables } from '@fluentui/react-theme';
+import { webHighContrastTheme, themeToCSSVariables } from '@fluentui/react-theme';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
+
+const hcMediaQuery =
+  window && window.matchMedia && window.matchMedia('screen and (-ms-high-contrast: active), (forced-colors: active)');
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
@@ -9,7 +12,21 @@ import type { FluentProviderState } from './FluentProvider.types';
  * @returns CSS class to apply the rule
  */
 export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
-  const { targetDocument, theme } = options;
+  const { targetDocument } = options;
+  let { theme } = options;
+
+  if (hcMediaQuery && hcMediaQuery.matches) {
+    theme = webHighContrastTheme;
+
+    theme.global.color.hcButtonFace = 'ButtonFace';
+    theme.global.color.hcButtonText = 'ButtonText';
+    theme.global.color.hcCanvas = 'Canvas';
+    theme.global.color.hcCanvasText = 'CanvasText';
+    theme.global.color.hcDisabled = 'GrayText';
+    theme.global.color.hcHighlight = 'Highlight';
+    theme.global.color.hcHighlightText = 'HighlightText';
+    theme.global.color.hcHyperlink = 'LinkText';
+  }
 
   const styleTagId = useId('fluent-provider');
   const styleTag = React.useMemo(() => {
@@ -25,10 +42,14 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
 
   const cssRule = React.useMemo(() => {
     const cssVars = themeToCSSVariables(theme);
-    const cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
+    let cssVarsAsString = Object.keys(cssVars).reduce((cssVarRule, cssVar) => {
       cssVarRule += `${cssVar}: ${cssVars[cssVar]}; `;
       return cssVarRule;
     }, '');
+
+    if (hcMediaQuery && hcMediaQuery.matches) {
+      cssVarsAsString += 'forced-color-adjust: none;';
+    }
 
     // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
