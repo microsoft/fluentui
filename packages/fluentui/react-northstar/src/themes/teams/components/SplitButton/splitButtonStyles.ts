@@ -10,12 +10,14 @@ export const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesPro
     borderRightWidth: 0,
     padding: v.padding,
     minWidth: v.minWidth,
-    boxShadow: 'none',
     ...(p.size === 'small' && {
       height: v.smallDimension,
       padding: v.smallPadding,
       minWidth: v.smallMinWidth,
-      boxShadow: v.smallBoxShadow,
+    }),
+
+    ...((p.flat || p.size === 'small') && {
+      boxShadow: 'none',
     }),
 
     ':focus-visible': {
@@ -53,7 +55,7 @@ export const splitButtonStyles: ComponentSlotStylesPrepared<SplitButtonStylesPro
       whiteSpace: 'nowrap',
       display: 'inline-block',
       width: 'fit-content',
-      boxShadow: v.boxShadow,
+
       ':focus-within': {
         boxShadow: 'none',
         ...(p.isFromKeyboard && {

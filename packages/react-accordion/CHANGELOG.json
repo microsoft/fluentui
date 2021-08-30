@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.67",
+      "version": "9.0.0-alpha.67",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "e2ee214821eeb15080fa66ea0905dee4838fb291",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Aug 2021 07:33:32 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.66",
       "version": "9.0.0-alpha.66",

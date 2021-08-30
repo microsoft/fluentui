@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/web-components_v1.3.7",
+      "version": "1.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update dependencies",
+            "author": "jes@microsoft.com",
+            "commit": "997099c28f27cc2979f984d0c0b06c97f84a4aac",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Aug 2021 07:35:43 GMT",
       "tag": "@fluentui/web-components_v1.3.6",
       "version": "1.3.6",

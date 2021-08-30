@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "9.0.0-alpha.75",
+  "version": "9.0.0-alpha.76",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,6 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/react-menu": "^9.0.0-alpha.67",
     "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/babel-make-styles": "^9.0.0-alpha.40",
     "@fluentui/eslint-plugin": "^1.4.1",
