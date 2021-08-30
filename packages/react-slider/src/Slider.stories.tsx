@@ -31,23 +31,17 @@ export const BasicSliderExample = (props: SliderProps) => {
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <Slider tooltipVisible />
+      <Slider />
       <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider
-        value={sliderValue}
-        min={10}
-        max={200}
-        step={1}
-        keyboardStep={2}
-        onChange={sliderOnChange}
-        tooltipVisible
-      />
+      <Slider value={sliderValue} min={10} max={200} step={1} keyboardStep={2} onChange={sliderOnChange} />
       <Label>Snapping Example</Label>
-      <Slider defaultValue={5} step={5} min={0} max={10} tooltipVisible />
+      <Slider defaultValue={5} step={5} min={0} max={10} />
       <Label>Disabled Example</Label>
-      <Slider defaultValue={30} disabled tooltipVisible />
+      <Slider defaultValue={30} disabled />
       <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} min={0} max={10} tooltipVisible />
+      <Slider defaultValue={8} origin={3} min={0} max={10} />
+      <Label>Tooltip Example</Label>
+      <Slider defaultValue={3} min={0} max={10} step={3} tooltipVisible />
     </div>
   );
 };

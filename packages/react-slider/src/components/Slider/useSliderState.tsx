@@ -335,9 +335,11 @@ export const useSliderState = (state: SliderState) => {
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
-  tooltipVisible && (state.thumb.onPointerEnterCapture = showTooltip);
-  tooltipVisible && (state.thumb.onPointerOutCapture = hideTooltip);
-  tooltipVisible && thumbHasFocus && (state.thumb.onBlur = onThumbBlur);
+  if (tooltipVisible && !disabled) {
+    state.thumb.onPointerEnterCapture = showTooltip;
+    state.thumb.onPointerOutCapture = hideTooltip;
+    thumbHasFocus && (state.thumb.onBlur = onThumbBlur);
+  }
   disabled && (state.thumb['aria-disabled'] = true);
 
   // Active Rail Props

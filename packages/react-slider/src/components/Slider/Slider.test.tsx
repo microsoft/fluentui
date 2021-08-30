@@ -45,6 +45,11 @@ describe('Slider', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('renders Slider with tooltip correctly', () => {
+    const { container } = render(<Slider defaultValue={5} min={0} max={10} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('handles (id) prop', () => {
     render(<Slider id="test_id" data-testid="test" />);
     const sliderRoot = screen.getByTestId('test');
