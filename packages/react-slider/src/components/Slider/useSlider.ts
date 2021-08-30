@@ -34,7 +34,8 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       trackWrapper: { as: 'div', children: null },
       track: { as: 'div', children: null },
       thumbWrapper: { as: 'div', children: null },
-      tooltip: { as: Tooltip, children: null },
+      // Tooltip's content prop is defined in useSliderState
+      tooltip: { as: Tooltip, content: null },
       thumb: { as: 'div', children: null },
       activeRail: { as: 'div', children: null },
     },
