@@ -71,7 +71,7 @@ export const useSliderState = (state: SliderState) => {
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
   const [isTooltipVisible, { setTrue: showTooltip, setFalse: hideTooltip }] = useBoolean(false);
-  const [thumbHasFocus, { setTrue: thumbFocused, setFalse: thumbUnfocused }] = useBoolean(false);
+  const [thumbFocus, { setTrue: thumbHasFocus, setFalse: thumbLostFocus }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
@@ -114,12 +114,11 @@ export const useSliderState = (state: SliderState) => {
    */
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
-      showTooltip();
+      thumbHasFocus();
       setRenderedPosition(clamp(incomingValue, min, max));
       updateValue(incomingValue, ev);
-      thumbFocused();
     },
-    [max, min, showTooltip, thumbFocused, updateValue],
+    [max, min, thumbHasFocus, updateValue],
   );
 
   /**
@@ -165,12 +164,14 @@ export const useSliderState = (state: SliderState) => {
       disposables.current.forEach(dispose => dispose());
       disposables.current = [];
 
+      hideTooltip();
       showStepAnimation();
+
       // When undefined, the position fallbacks to the currentValue state.
       setRenderedPosition(undefined);
       thumbRef.current!.focus();
     },
-    [showStepAnimation],
+    [hideTooltip, showStepAnimation],
   );
 
   const onPointerDown = React.useCallback(
@@ -181,6 +182,7 @@ export const useSliderState = (state: SliderState) => {
       target.setPointerCapture?.(pointerId);
 
       hideStepAnimation();
+      thumbLostFocus();
       showTooltip();
       onPointerDownCallback?.(ev);
 
@@ -190,13 +192,8 @@ export const useSliderState = (state: SliderState) => {
 
       onPointerMove(ev);
     },
-    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp, showTooltip],
+    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp, showTooltip, thumbLostFocus],
   );
-
-  const onThumbBlur = React.useCallback(() => {
-    hideTooltip();
-    thumbUnfocused();
-  }, [hideTooltip, thumbUnfocused]);
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
@@ -238,6 +235,11 @@ export const useSliderState = (state: SliderState) => {
     [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
+  const onPointerOut = React.useCallback(() => {
+    hideTooltip();
+    hideStepAnimation();
+  }, [hideStepAnimation, hideTooltip]);
+
   const getTrackBorderRadius = () => {
     if (origin && origin !== (max || min)) {
       if (vertical) {
@@ -268,9 +270,6 @@ export const useSliderState = (state: SliderState) => {
       ? `translateY(${valuePercent}%)`
       : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
     transition: stepAnimation ? `transform ease-in-out ${animationTime}s` : 'none',
-    // Transition causes the onPointerEnter callback for the tooltip to trigger when collided with.
-    // To avoid this pointer events are disabled during the animation
-
     ...state.thumbWrapper.style,
   };
 
@@ -310,6 +309,11 @@ export const useSliderState = (state: SliderState) => {
     state.tooltip.positioning = vertical ? 'after' : 'above';
   }
 
+  const onBlur = React.useCallback(() => {
+    hideTooltip();
+    thumbLostFocus();
+  }, [hideTooltip, thumbLostFocus]);
+
   // Thumb Props
   state.thumb.ref = thumbRef;
   state.thumb.tabIndex = disabled ? undefined : 0;
@@ -318,12 +322,16 @@ export const useSliderState = (state: SliderState) => {
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
-  state.thumb;
   if (tooltipVisible && !disabled) {
-    state.thumb.onPointerEnter = showTooltip;
-    state.thumb.onPointerOut = hideTooltip;
-    !thumbHasFocus && (state.thumb.onFocus = showTooltip);
-    thumbHasFocus && (state.thumb.onBlur = onThumbBlur);
+    // Transition causes the onPointerEnter callback for the tooltip to trigger when collided with.
+    // To avoid this, hover events are ignored while the animation occurs
+    !stepAnimation && (state.thumb.onPointerEnter = showTooltip);
+    // Once the cursor leaves the thumb hide the tooltip and disable the animation
+    state.thumb.onPointerOut = onPointerOut;
+    // onBlur will hide the tooltip when the rail is pressed and focus will trigger during any selection
+    // The thumb focus boolean is set during a valid keypress to true and false when onBlur is called
+    !thumbFocus && !stepAnimation && (state.thumb.onFocus = showTooltip);
+    thumbFocus && (state.onBlur = onBlur);
   }
   disabled && (state.thumb['aria-disabled'] = true);
 
