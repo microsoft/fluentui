@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-
+import { TooltipProps } from '@fluentui/react-tooltip';
 export interface SliderProps
   extends ComponentPropsCompat,
     Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
@@ -32,7 +32,7 @@ export interface SliderProps
   /**
    * The tooltip above the Slider's thumb. It is used to show the current value of the Slider.
    */
-  tooltip?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  tooltip?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & TooltipProps>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
@@ -99,9 +99,10 @@ export interface SliderProps
   vertical?: boolean;
 
   /**
-   * How the tooltip above the Thumb should be displayed.
+   * Whether the tooltip above the Thumb should be displayed.
+   * @default `false`
    */
-  tooltipDisplay?: boolean;
+  tooltipVisible?: boolean;
 
   /**
    * The starting origin point for the Slider.

@@ -17,9 +17,13 @@ export const renderSlider = (state: SliderState) => {
           <slots.track {...slotProps.track} />
         </slots.trackWrapper>
         <slots.thumbWrapper {...slotProps.thumbWrapper}>
-          <slots.tooltip {...slotProps.tooltip}>
+          {state.tooltipVisible && !state.disabled ? (
+            <slots.tooltip {...slotProps.tooltip}>
+              <slots.thumb {...slotProps.thumb} />
+            </slots.tooltip>
+          ) : (
             <slots.thumb {...slotProps.thumb} />
-          </slots.tooltip>
+          )}
         </slots.thumbWrapper>
         <slots.activeRail {...slotProps.activeRail} />
       </slots.sliderWrapper>

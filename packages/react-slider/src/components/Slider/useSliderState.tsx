@@ -80,7 +80,7 @@ export const useSliderState = (state: SliderState) => {
     onChange,
     vertical = false,
     origin,
-    tooltipDisplay = true,
+    tooltipVisible = false,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
@@ -88,6 +88,7 @@ export const useSliderState = (state: SliderState) => {
   const { dir } = useFluent();
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
+  const [isTooltipVisible, { setTrue: showTooltip, setFalse: hideTooltip }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<number>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
@@ -180,12 +181,13 @@ export const useSliderState = (state: SliderState) => {
       disposables.current = [];
 
       showStepAnimation();
+      hideTooltip();
       setRenderedPosition(
         clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
       );
       thumbRef.current!.focus();
     },
-    [calculateSteps, max, min, showStepAnimation, step],
+    [calculateSteps, hideTooltip, max, min, showStepAnimation, step],
   );
 
   const onPointerDown = React.useCallback(
@@ -196,6 +198,7 @@ export const useSliderState = (state: SliderState) => {
       target.setPointerCapture?.(pointerId);
 
       hideStepAnimation();
+      showTooltip();
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
@@ -204,13 +207,14 @@ export const useSliderState = (state: SliderState) => {
 
       onPointerMove(ev);
     },
-    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
+    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp, showTooltip],
   );
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
       const normalizedKey = getRTLSafeKey(ev.key, dir);
       hideStepAnimation();
+      showTooltip();
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
@@ -244,7 +248,7 @@ export const useSliderState = (state: SliderState) => {
         }
       }
     },
-    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, showTooltip, updatePosition],
   );
 
   const getTrackBorderRadius = () => {
@@ -268,7 +272,7 @@ export const useSliderState = (state: SliderState) => {
   const valuePercent = getPercent(renderedPosition!, min, max);
 
   // TODO: Awaiting animation time from design spec.
-  const animationTime = '0.1s';
+  const animationTime = 0.1;
 
   const originPercent = origin ? getPercent(origin, min, max) : 0;
 
@@ -276,7 +280,7 @@ export const useSliderState = (state: SliderState) => {
     transform: vertical
       ? `translateY(${valuePercent}%)`
       : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
-    transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
+    transition: stepAnimation ? `transform ease-in-out ${animationTime}s` : 'none',
     ...state.thumbWrapper.style,
   };
 
@@ -308,10 +312,11 @@ export const useSliderState = (state: SliderState) => {
 
   // Tooltip Props
   state.tooltip.pointing = true;
-  state.tooltip.disabled = disabled;
   state.tooltip.content = currentValue;
-  state.tooltip.showDelay = 0;
-  state.tooltip.hideDelay = 0;
+  state.tooltip.showDelay = animationTime;
+  state.tooltip.hideDelay = animationTime;
+  state.tooltip.visible = isTooltipVisible;
+  state.tooltip.positioning = vertical ? 'after' : 'above';
 
   // Thumb Props
   state.thumb.ref = thumbRef;
@@ -321,6 +326,11 @@ export const useSliderState = (state: SliderState) => {
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
+  tooltipVisible && (state.thumb.onMouseOverCapture = showTooltip);
+  tooltipVisible && (state.thumb.onMouseOut = hideTooltip);
+  // state.thumb.onFocus = () => showTooltip();
+  // state.thumb.onBlur = hideTooltip;
+
   disabled && (state.thumb['aria-disabled'] = true);
 
   // Active Rail Props
