@@ -144,9 +144,9 @@ export const useSliderState = (state: SliderState) => {
       const currentStepPosition = Math.round(position / step) * step;
 
       setRenderedPosition(clamp(position, min, max));
-      currentValue !== currentStepPosition && updateValue(currentStepPosition, ev);
+      updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, currentValue, max, min, step, updateValue],
+    [calculateSteps, max, min, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
