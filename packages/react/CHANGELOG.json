@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/react_v8.30.0",
+      "version": "8.30.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose FocusZoneProps on the DetailsList and DetailsRow components.",
+            "author": "richard@einfinity.co.uk",
+            "commit": "b9845c29770ba058344f01f02f5e111da0d31cbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Aug 2021 07:35:19 GMT",
       "tag": "@fluentui/react_v8.29.2",
       "version": "8.29.2",
