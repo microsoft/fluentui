@@ -66,7 +66,7 @@ export const VerticalSliderExample = (props: SliderProps) => {
       <Label>Origin Example</Label>
       <Slider defaultValue={40} origin={60} vertical />
       <Label>Vertical Tooltip Example</Label>
-      <Slider defaultValue={40} origin={60} vertical tooltipVisible />
+      <Slider defaultValue={60} vertical tooltipVisible />
     </div>
   );
 };

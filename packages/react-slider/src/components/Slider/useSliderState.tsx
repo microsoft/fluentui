@@ -90,7 +90,7 @@ export const useSliderState = (state: SliderState) => {
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
   const [isTooltipVisible, { setTrue: showTooltip, setFalse: hideTooltip }] = useBoolean(false);
   const [thumbHasFocus, { setTrue: thumbFocused, setFalse: thumbUnfocused }] = useBoolean(false);
-  const [renderedPosition, setRenderedPosition] = React.useState<number>(value ? value : defaultValue);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
     defaultState: clamp(defaultValue, min, max),
@@ -170,12 +170,12 @@ export const useSliderState = (state: SliderState) => {
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = min + step * calculateSteps(ev);
-      const currentStepPosition = state.step ? Math.round(position / step) * step : position;
+      const currentStepPosition = Math.round(position / step) * step;
 
       setRenderedPosition(clamp(position, min, max));
       updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, max, min, state.step, step, updateValue],
+    [calculateSteps, max, min, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -185,12 +185,11 @@ export const useSliderState = (state: SliderState) => {
 
       showStepAnimation();
       hideTooltip();
-      setRenderedPosition(
-        clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
-      );
+      // When undefined, the position fallbacks to the currentValue state.
+      setRenderedPosition(undefined);
       thumbRef.current!.focus();
     },
-    [calculateSteps, hideTooltip, max, min, showStepAnimation, step],
+    [hideTooltip, showStepAnimation],
   );
 
   const onPointerDown = React.useCallback(
@@ -276,7 +275,7 @@ export const useSliderState = (state: SliderState) => {
     disposables.current = [];
   });
 
-  const valuePercent = getPercent(renderedPosition!, min, max);
+  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
   // TODO: Awaiting animation time from design spec.
   const animationTime = 0.1;
@@ -318,12 +317,12 @@ export const useSliderState = (state: SliderState) => {
   state.thumbWrapper.style = thumbWrapperStyles;
 
   // Tooltip Props
-  if (tooltipVisible) {
+  if (tooltipVisible && !disabled) {
     state.tooltip.pointing = true;
     state.tooltip.content = currentValue;
     state.tooltip.showDelay = animationTime;
     state.tooltip.hideDelay = animationTime;
-    state.tooltip.visible = isTooltipVisible;
+    state.tooltip.visible = state.tooltip.visible || isTooltipVisible;
     state.tooltip.positioning = vertical ? 'after' : 'above';
   }
 

@@ -213,6 +213,52 @@ Array [
 ]
 `;
 
+exports[`Slider renders Slider with tooltip correctly 1`] = `
+<div>
+  <div
+    class=""
+    id="slider-1"
+  >
+    <div
+      class=""
+    >
+      <div
+        class=""
+      />
+      <div
+        class=""
+      >
+        <div
+          class="ms-Slider-track"
+          style="left: 0px; width: 50%; border-radius: 99px; transition: none;"
+        />
+      </div>
+      <div
+        class=""
+        style="transform: translateX(50%); transition: none;"
+      >
+        <div
+          aria-labelledby="tooltip-2"
+          aria-valuemax="10"
+          aria-valuemin="0"
+          aria-valuenow="5"
+          aria-valuetext="5"
+          class="ms-Slider-thumb"
+          role="slider"
+          tabindex="0"
+        />
+        <span
+          hidden=""
+        />
+      </div>
+      <div
+        class=""
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Slider renders vertical Slider correctly 1`] = `
 <div
   className=""
