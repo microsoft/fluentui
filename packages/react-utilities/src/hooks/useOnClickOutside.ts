@@ -78,7 +78,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     return () => {
       element?.removeEventListener('click', conditionalHandler, true);
       element?.removeEventListener('touchstart', conditionalHandler, true);
-      element?.addEventListener('contextmenu', conditionalHandler, true);
+      element?.removeEventListener('contextmenu', conditionalHandler, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
