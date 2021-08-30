@@ -24,4 +24,4 @@ const ButtonExampleFlat = () => (
   </>
 );
 
-export default ButtonExampleFluid;
+export default ButtonExampleFlat;

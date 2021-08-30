@@ -124,4 +124,4 @@ const SplitButtonExampleFlat = () => (
   </>
 );
 
-export default ButtonExampleFluid;
+export default SplitButtonExampleFlat;
