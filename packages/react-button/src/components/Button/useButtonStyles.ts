@@ -239,6 +239,12 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
+  disabledFocusable: {
+    ['@media (forced-colors: active)']: {
+      color: 'GrayText',
+      borderColor: 'GrayText',
+    },
+  },
 });
 
 const useRootFocusStyles = makeStyles({
@@ -326,6 +332,7 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
     (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
     (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
+    state.disabledFocusable && rootStyles.disabledFocusable,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );

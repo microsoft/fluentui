@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     fontSize: theme.global.type.fontSizes.base[200],
     lineHeight: theme.global.type.lineHeights.base[200],
     borderRadius: theme.global.borderRadius.medium, // Update tooltipBorderRadius in useTooltip.tsx if this changes
+    border: '1px solid transparent',
 
     background: theme.alias.color.neutral.neutralBackground1,
     color: theme.alias.color.neutral.neutralForeground1,
@@ -49,6 +50,8 @@ const useStyles = makeStyles({
       background: 'inherit',
       visibility: 'visible',
       borderBottomRightRadius: theme.global.borderRadius.small,
+      borderBottom: '1px solid transparent',
+      borderRight: '1px solid transparent',
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 

@@ -115,6 +115,13 @@ const useRootStyles = makeStyles({
       },
     },
   }),
+  disabledFocusable: {
+    ['@media (forced-colors: active)']: {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: 'GrayText',
+      },
+    },
+  },
 });
 
 const useRootIconOnlyStyles = makeStyles({
@@ -185,6 +192,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
     (state.disabled || state.disabledFocusable) && rootStyles.disabled,
+    state.disabledFocusable && rootStyles.disabledFocusable,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );

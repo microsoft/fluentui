@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     boxShadow: theme.alias.shadow.shadow16,
     borderRadius: '4px',
+    border: '1px solid transparent',
   }),
 
   inverted: theme => ({
@@ -68,6 +69,8 @@ const useStyles = makeStyles({
       background: 'inherit',
       visibility: 'visible',
       borderBottomRightRadius: theme.global.borderRadius.small,
+      borderBottom: '1px solid transparent',
+      borderRight: '1px solid transparent',
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
 

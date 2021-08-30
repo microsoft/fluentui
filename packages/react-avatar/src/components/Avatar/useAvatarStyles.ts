@@ -59,6 +59,7 @@ const useStyles = makeStyles({
     fontFamily: theme.global.type.fontFamilies.base,
     fontWeight: theme.global.type.fontWeights.semibold,
     boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.transparentStroke} inset`,
+    border: '1px solid transparent',
   }),
 
   textCaption2: theme => ({
