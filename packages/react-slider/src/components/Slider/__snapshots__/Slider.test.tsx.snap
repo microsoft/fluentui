@@ -239,10 +239,10 @@ exports[`Slider renders Slider with tooltip correctly 1`] = `
       >
         <div
           aria-labelledby="tooltip-2"
-          aria-valuemax="10"
+          aria-valuemax="100"
           aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
+          aria-valuenow="50"
+          aria-valuetext="50"
           class="ms-Slider-thumb"
           role="slider"
           tabindex="0"

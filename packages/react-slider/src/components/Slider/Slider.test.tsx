@@ -46,9 +46,7 @@ describe('Slider', () => {
   });
 
   it('renders Slider with tooltip correctly', () => {
-    const { container } = render(
-      <Slider defaultValue={5} min={0} max={10} tooltipVisible tooltip={{ visible: true }} />,
-    );
+    const { container } = render(<Slider defaultValue={50} tooltipVisible />);
     expect(container).toMatchSnapshot();
   });
 
