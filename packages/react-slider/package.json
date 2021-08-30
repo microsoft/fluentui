@@ -25,10 +25,12 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.40",
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.34",
     "@fluentui/react-conformance": "^0.4.4",
     "@fluentui/react-label": "^9.0.0-alpha.31",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.73",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -38,8 +40,7 @@
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.40"
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.59",

@@ -114,11 +114,10 @@ export const useSliderState = (state: SliderState) => {
    */
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
-      thumbHasFocus();
       setRenderedPosition(clamp(incomingValue, min, max));
       updateValue(incomingValue, ev);
     },
-    [max, min, thumbHasFocus, updateValue],
+    [max, min, updateValue],
   );
 
   /**
@@ -200,6 +199,7 @@ export const useSliderState = (state: SliderState) => {
       const normalizedKey = getRTLSafeKey(ev.key, dir);
       hideStepAnimation();
       onKeyDownCallback?.(ev);
+      thumbHasFocus();
 
       if (ev.shiftKey) {
         if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
@@ -232,7 +232,7 @@ export const useSliderState = (state: SliderState) => {
         }
       }
     },
-    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, thumbHasFocus, updatePosition],
   );
 
   const onPointerOut = React.useCallback(() => {

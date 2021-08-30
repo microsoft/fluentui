@@ -8,6 +8,7 @@ import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
@@ -16,7 +17,7 @@ export const renderSlider: (state: SliderState) => JSX.Element;
 export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type SliderDefaultedProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export type SliderDefaultedProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'tooltip' | 'thumb' | 'activeRail';
 
 // @public (undocumented)
 export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
@@ -37,6 +38,8 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     step?: number;
     thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
     thumbWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
+    tooltip?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement> & TooltipProps>;
+    tooltipVisible?: boolean;
     track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     trackWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     value?: number;
@@ -44,7 +47,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
 }
 
 // @public
-export type SliderShorthandProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export type SliderShorthandProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'tooltip' | 'thumb' | 'activeRail';
 
 // @public
 export const sliderShorthandProps: SliderShorthandProps[];
