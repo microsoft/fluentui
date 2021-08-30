@@ -1,186 +1,29 @@
-import * as React from 'react';
-import { Badge } from './index';
+import { Badge, BadgeAppearance } from './index';
+import descriptionMd from './BadgeDescription.md';
+import bestPracticesMd from './BadgeBestPractices.md';
+import { Template } from './Badge.stories';
 
-export const BadgeAppearanceExample = () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '8px',
-    }}
-  >
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="danger">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="danger">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="danger">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="danger">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="severe">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="severe">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="severe">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="severe">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="warning">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="warning">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="warning">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="warning">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="success">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="success">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="success">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="success">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="important">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="important">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="important">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="important">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="informative">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="informative">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="informative">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="informative">
-        999+
-      </Badge>
-    </div>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-      }}
-    >
-      <Badge shape="rounded" appearance="filled" color="subtle">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="ghost" color="subtle">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="outline" color="subtle">
-        999+
-      </Badge>
-      <Badge shape="rounded" appearance="tint" color="subtle">
-        999+
-      </Badge>
-    </div>
-  </div>
-);
+export const { ghost: Ghost, outline: Outline, tint: Tint } = ([
+  'tint',
+  'outline',
+  'ghost',
+] as BadgeAppearance[]).reduce((acc, curr) => {
+  acc[curr] = Template.bind({});
+  acc[curr].args = {
+    appearance: curr,
+    children: ['+999'],
+  };
+  return acc;
+}, {} as Record<BadgeAppearance, typeof Template>);
 
 export default {
-  title: 'Components/BadgeAppearance',
+  title: 'Components/Badge/Appearance',
   component: Badge,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      },
+    },
+  },
 };

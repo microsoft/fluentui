@@ -1,44 +1,36 @@
 import * as React from 'react';
+import { PresenceBadgeProps, PresenceBadgeStatus } from './components/PresenceBadge/PresenceBadge.types';
 import { PresenceBadge } from './index';
 
-export const PresenceBadgeStatus = () => (
-  <>
-    <h2>Status</h2>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 200,
-      }}
-    >
-      <PresenceBadge status="busy" />
-      <PresenceBadge status="away" />
-      <PresenceBadge status="available" />
-      <PresenceBadge status="outOfOffice" />
-      <PresenceBadge status="offline" />
-      <PresenceBadge status="doNotDisturb" />
-    </div>
-    <h2>OOF</h2>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 200,
-      }}
-    >
-      <PresenceBadge outOfOffice status="busy" />
-      <PresenceBadge outOfOffice status="away" />
-      <PresenceBadge outOfOffice status="available" />
-      <PresenceBadge outOfOffice status="outOfOffice" />
-      <PresenceBadge outOfOffice status="offline" />
-      <PresenceBadge outOfOffice status="doNotDisturb" />
-    </div>
-  </>
+const Template = (args: PresenceBadgeProps) => <PresenceBadge {...args} />;
+Template.args = {} as PresenceBadgeProps;
+
+export const {
+  busy: Busy,
+  available: Available,
+  away: Away,
+  doNotDisturb: DoNotDisturb,
+  offline: Offline,
+  outOfOffice: OutOfOffice,
+} = (['busy', 'available', 'away', 'doNotDisturb', 'offline', 'outOfOffice'] as PresenceBadgeStatus[]).reduce(
+  (acc, curr) => {
+    acc[curr] = Template.bind({});
+    acc[curr].args = {
+      status: curr,
+    };
+    return acc;
+  },
+  {} as Record<PresenceBadgeStatus, typeof Template>,
 );
 
 export default {
-  title: 'Components/PresenceBadge',
+  title: 'Components/Badge/Presence Badges',
   component: PresenceBadge,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Presence represents someone’s availability',
+      },
+    },
+  },
 };

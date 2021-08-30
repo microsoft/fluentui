@@ -1,64 +1,31 @@
 import * as React from 'react';
+import { CounterBadgeProps } from './components/CounterBadge/CounterBadge.types';
 import { CounterBadge } from './index';
 
-const DisplayBadge: React.FC<{}> = props => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: 4, margin: 4 }}>{props.children}</div>
-);
+const Template = (args: CounterBadgeProps) => <CounterBadge {...args} />;
+Template.args = {
+  count: 5,
+} as CounterBadgeProps;
 
-export const BadgeAppearanceExample = () => {
-  const [value, setValue] = React.useState(90);
-  return (
-    <>
-      <div
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        <button
-          onClick={() => {
-            if (value > 0) {
-              setValue(val => val - 1);
-            }
-          }}
-        >
-          -
-        </button>
-        <button onClick={() => setValue(val => val + 1)}>+</button>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          maxWidth: 200,
-        }}
-      >
-        <DisplayBadge>
-          <CounterBadge dot />
-          <CounterBadge count={value} />
-        </DisplayBadge>
-        <DisplayBadge>
-          <CounterBadge dot color="warning" />
-          <CounterBadge count={value} color="warning" />
-        </DisplayBadge>
-        <DisplayBadge>
-          <CounterBadge dot color="important" />
-          <CounterBadge count={value} color="important" />
-        </DisplayBadge>
-        <DisplayBadge>
-          <CounterBadge dot color="severe" />
-          <CounterBadge count={value} color="severe" />
-        </DisplayBadge>
-        <DisplayBadge>
-          <CounterBadge dot color="informative" />
-          <CounterBadge count={value} color="informative" />
-        </DisplayBadge>
-      </div>
-    </>
-  );
+export const Default = Template.bind({});
+Default.args = {
+  ...Template.args,
+};
+
+export const Dot = Template.bind({});
+Dot.args = {
+  ...Template.args,
+  dot: true,
 };
 
 export default {
-  title: 'Components/CounterBadge',
+  title: 'Components/Badge/Counter Badge',
   component: CounterBadge,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Counter Badge represents a count or amount of information.',
+      },
+    },
+  },
 };

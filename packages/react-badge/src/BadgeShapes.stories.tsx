@@ -2,29 +2,25 @@ import * as React from 'react';
 import { Badge, BadgeProps } from './index';
 import descriptionMd from './BadgeDescription.md';
 import bestPracticesMd from './BadgeBestPractices.md';
-import { BadgeSize } from './components/Badge/Badge.types';
+import { BadgeShape } from './components/Badge/Badge.types';
 
 export const Template = (args: BadgeProps) => <Badge {...args} />;
 Template.args = {} as BadgeProps;
 
-export const {
-  smallest: Smallest,
-  smaller: Smaller,
-  small: Small,
-  medium: Medium,
-  large: Large,
-  larger: Larger,
-  largest: Largest,
-} = (['smallest', 'smaller', 'small', 'medium', 'large', 'larger', 'largest'] as BadgeSize[]).reduce((acc, curr) => {
+export const { square: Square, circular: Circular, rounded: Rounded } = ([
+  'square',
+  'circular',
+  'rounded',
+] as BadgeShape[]).reduce((acc, curr) => {
   acc[curr] = Template.bind({});
   acc[curr].args = {
-    size: curr,
+    shape: curr,
   };
   return acc;
-}, {} as Record<BadgeSize, typeof Template>);
+}, {} as Record<BadgeShape, typeof Template>);
 
 export default {
-  title: 'Components/Badge/Sizes',
+  title: 'Components/Badge/Shapes',
   component: Badge,
   parameters: {
     docs: {
