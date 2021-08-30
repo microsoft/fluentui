@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type {
   AccordionProps,
   AccordionSlots,
