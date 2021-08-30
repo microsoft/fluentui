@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
@@ -94,19 +91,10 @@ export type ButtonProps = ComponentPropsCompat &
     transparent?: boolean;
   };
 
-/**
- * {@docCategory Button}
- */
 export type ButtonShorthandPropsCompat = 'icon';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonDefaultedProps = 'icon' | 'size';
 
-/**
- * {@docCategory Button}
- */
 export interface ButtonState
   extends ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> {
   /**

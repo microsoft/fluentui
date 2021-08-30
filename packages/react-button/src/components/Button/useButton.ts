@@ -11,7 +11,7 @@ export const buttonShorthandPropsCompat: ButtonShorthandPropsCompat[] = ['icon']
 const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandPropsCompat });
 
 /**
- * Given user props, returns state and render function for a Button.
+ * Given user props, returns the final state for a Button.
  */
 export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps): ButtonState => {
   const state = mergeProps(
@@ -22,6 +22,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       icon: { as: 'span' },
       // Non-slot props
       size: 'medium',
+      type: 'button',
     },
     defaultProps && resolveShorthandProps(defaultProps, buttonShorthandPropsCompat),
     resolveShorthandProps(props, buttonShorthandPropsCompat),

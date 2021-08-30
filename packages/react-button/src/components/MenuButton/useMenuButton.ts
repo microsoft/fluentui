@@ -11,7 +11,7 @@ export const menuButtonShorthandPropsCompat: MenuButtonShorthandPropsCompat[] = 
 const mergeProps = makeMergeProps<MenuButtonState>({ deepMerge: menuButtonShorthandPropsCompat });
 
 /**
- * Redefine the component factory, reusing button factory.
+ * Given user props, returns the final state for a MenuButton.
  */
 export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps) => {
   // Note: because menu button's template and slots are different, we can't reuse
@@ -26,6 +26,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       menuIcon: { as: 'span' },
       // Non-slot props
       size: 'medium',
+      type: 'button',
     },
     defaultProps && resolveShorthandProps(defaultProps, menuButtonShorthandPropsCompat),
     resolveShorthandProps(props, menuButtonShorthandPropsCompat),
