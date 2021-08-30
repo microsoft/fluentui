@@ -72,6 +72,9 @@ function getSlot<R extends ObjectShorthandPropsRecord, K extends keyof R>(
       } as unknown) as R[K],
     ];
   }
-  const props = (typeof slot === 'string' ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
-  return [slot, props];
+
+  const shouldOmitAsProp = typeof slot === 'string' && state[slotName]?.as;
+  const slotProps = (shouldOmitAsProp ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
+
+  return [slot, slotProps];
 }
