@@ -7,25 +7,21 @@ exports[`Switch Snapshot Tests renders a basic Switch checked 1`] = `
     id="switch-1"
   >
     <div
+      class="ms-Switch-track"
+    />
+    <div
       class=""
+      style="transform: translate(100%);"
     >
       <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(100%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        checked=""
-        class=""
-        type="checkbox"
+        class="ms-Switch-thumb"
       />
     </div>
+    <input
+      checked=""
+      class=""
+      type="checkbox"
+    />
   </span>
 </div>
 `;
@@ -37,24 +33,20 @@ exports[`Switch Snapshot Tests renders a basic Switch unchecked 1`] = `
     id="switch-1"
   >
     <div
+      class="ms-Switch-track"
+    />
+    <div
       class=""
+      style="transform: translate(0%);"
     >
       <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(0%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        class=""
-        type="checkbox"
+        class="ms-Switch-thumb"
       />
     </div>
+    <input
+      class=""
+      type="checkbox"
+    />
   </span>
 </div>
 `;
@@ -66,25 +58,21 @@ exports[`Switch Snapshot Tests renders a disabled Switch checked 1`] = `
     id="switch-1"
   >
     <div
+      class="ms-Switch-track"
+    />
+    <div
       class=""
+      style="transform: translate(100%);"
     >
       <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(100%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        checked=""
-        class=""
-        type="checkbox"
+        class="ms-Switch-thumb"
       />
     </div>
+    <input
+      checked=""
+      class=""
+      type="checkbox"
+    />
   </span>
 </div>
 `;
@@ -96,24 +84,20 @@ exports[`Switch Snapshot Tests renders a disabled Switch unchecked 1`] = `
     id="switch-1"
   >
     <div
+      class="ms-Switch-track"
+    />
+    <div
       class=""
+      style="transform: translate(0%);"
     >
       <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(0%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        class=""
-        type="checkbox"
+        class="ms-Switch-thumb"
       />
     </div>
+    <input
+      class=""
+      type="checkbox"
+    />
   </span>
 </div>
 `;
@@ -125,25 +109,21 @@ exports[`Switch Snapshot Tests renders a disabled labeled Switch 1`] = `
     id="switch-1"
   >
     <div
+      class="ms-Switch-track"
+    />
+    <div
       class=""
+      style="transform: translate(0%);"
     >
       <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(0%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        class=""
-        disabled=""
-        type="checkbox"
+        class="ms-Switch-thumb"
       />
     </div>
+    <input
+      class=""
+      disabled=""
+      type="checkbox"
+    />
   </span>
 </div>
 `;
@@ -155,24 +135,20 @@ exports[`Switch Snapshot Tests renders a labeled Switch 1`] = `
     id="switch-1"
   >
     <div
+      class="ms-Switch-track"
+    />
+    <div
       class=""
+      style="transform: translate(0%);"
     >
       <div
-        class="ms-Switch-track"
-      />
-      <div
-        class=""
-        style="transform: translate(0%);"
-      >
-        <div
-          class="ms-Switch-thumb"
-        />
-      </div>
-      <input
-        class=""
-        type="checkbox"
+        class="ms-Switch-thumb"
       />
     </div>
+    <input
+      class=""
+      type="checkbox"
+    />
   </span>
 </div>
 `;

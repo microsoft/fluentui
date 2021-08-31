@@ -8,11 +8,6 @@ export interface SwitchProps
   extends ComponentPropsCompat,
     Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
   /**
-   * The wrapper around the Switch. It is used to specify the size of the Switch.
-   */
-  switchWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
-  /**
    * The bar indicating the status of the Switch.
    */
   track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
@@ -67,12 +62,12 @@ export interface SwitchProps
 /**
  * Names of the shorthand properties in SwitchProps
  */
-export type SwitchShorthandProps = 'switchWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'input';
+export type SwitchShorthandProps = 'track' | 'thumbWrapper' | 'thumb' | 'input';
 
 /**
  * Names of SwitchProps that have a default value in useSwitch
  */
-export type SwitchDefaultedProps = 'switchWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'input';
+export type SwitchDefaultedProps = 'track' | 'thumbWrapper' | 'thumb' | 'input';
 
 /**
  * State used in rendering Switch

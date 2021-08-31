@@ -6,13 +6,7 @@ import type { SwitchProps, SwitchShorthandProps, SwitchState } from './Switch.ty
 /**
  * Array of all shorthand properties listed in switchShorthandProps
  */
-export const switchShorthandProps: SwitchShorthandProps[] = [
-  'switchWrapper',
-  'track',
-  'thumbWrapper',
-  'thumb',
-  'input',
-];
+export const switchShorthandProps: SwitchShorthandProps[] = ['track', 'thumbWrapper', 'thumb', 'input'];
 
 /**
  * Given user props, returns state and render function for a Switch.
@@ -27,7 +21,6 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>, defau
       ref,
       id: useId('switch-'),
       as: 'span',
-      switchWrapper: { as: 'div', children: null },
       track: { as: 'div', children: null },
       thumbWrapper: { as: 'div', children: null },
       thumb: { as: 'div', children: null },

@@ -55,6 +55,9 @@ const useTeamsStyles = makeStyles({
 
 const useIosStyles = makeStyles({
   root: {
+    width: '50px',
+    height: '30px',
+
     ':hover .ms-Switch-thumb': {
       background: 'white',
     },
@@ -77,11 +80,6 @@ const useIosStyles = makeStyles({
         border: 'none',
       },
     },
-  },
-
-  switchWrapper: {
-    width: '50px',
-    height: '30px',
   },
 
   thumbWrapper: {
@@ -107,6 +105,9 @@ const useIosStyles = makeStyles({
 
 const useMaterialStyles = makeStyles({
   root: {
+    width: '34px',
+    height: '14px',
+
     ':hover .ms-Switch-thumb': {
       background: 'white',
     },
@@ -134,11 +135,6 @@ const useMaterialStyles = makeStyles({
         border: 'none',
       },
     },
-  },
-
-  switchWrapper: {
-    width: '34px',
-    height: '14px',
   },
 
   thumbWrapper: {
@@ -202,7 +198,6 @@ export const CustomSwitchExample = (props: SwitchProps) => {
       <Switch
         defaultChecked={true}
         className={iosStyles.root}
-        switchWrapper={{ className: iosStyles.switchWrapper }}
         track={{ className: iosStyles.track }}
         thumbWrapper={{ className: iosStyles.thumbWrapper }}
         thumb={{ className: iosStyles.thumb }}
@@ -211,7 +206,6 @@ export const CustomSwitchExample = (props: SwitchProps) => {
       <Switch
         defaultChecked={true}
         className={materialStyles.root}
-        switchWrapper={{ className: materialStyles.switchWrapper }}
         track={{ className: materialStyles.track }}
         thumbWrapper={{ className: materialStyles.thumbWrapper }}
         thumb={{ className: materialStyles.thumb }}

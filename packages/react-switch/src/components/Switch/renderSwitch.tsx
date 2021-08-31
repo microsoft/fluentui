@@ -11,13 +11,11 @@ export const renderSwitch = (state: SwitchState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.switchWrapper {...slotProps.switchWrapper}>
-        <slots.track {...slotProps.track} />
-        <slots.thumbWrapper {...slotProps.thumbWrapper}>
-          <slots.thumb {...slotProps.thumb} />
-        </slots.thumbWrapper>
-        <slots.input {...slotProps.input} />
-      </slots.switchWrapper>
+      <slots.track {...slotProps.track} />
+      <slots.thumbWrapper {...slotProps.thumbWrapper}>
+        <slots.thumb {...slotProps.thumb} />
+      </slots.thumbWrapper>
+      <slots.input {...slotProps.input} />
     </slots.root>
   );
 };

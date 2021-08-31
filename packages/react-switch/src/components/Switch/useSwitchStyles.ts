@@ -11,11 +11,13 @@ const thumbClassName = 'ms-Switch-thumb';
  */
 const useRootStyles = makeStyles({
   root: theme => ({
-    '--switch-track-width': '40px',
-    '--switch-track-height': '20px',
+    '--switch-width': '40px',
+    '--switch-height': '20px',
     '--switch-thumb-size': '14px',
 
     position: 'relative',
+    width: 'var(--switch-width)',
+    height: 'var(--switch-height)',
     display: 'inline-block',
     userSelect: 'none',
     touchAction: 'none',
@@ -54,14 +56,6 @@ const useRootStyles = makeStyles({
     }),
     { selector: 'focus-within' },
   ),
-});
-
-const useSwitchWrapper = makeStyles({
-  switchWrapper: {
-    position: 'relative',
-    width: 'var(--switch-track-width)',
-    height: 'var(--switch-track-height)',
-  },
 });
 
 /**
@@ -169,7 +163,6 @@ const useInputStyle = makeStyles({
  */
 export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const rootStyles = useRootStyles();
-  const switchWrapperStyles = useSwitchWrapper();
   const trackStyles = useTrackStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
@@ -182,8 +175,6 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     !state.disabled && (state.input.checked ? rootStyles.checked : rootStyles.unchecked),
     state.className,
   );
-
-  state.switchWrapper.className = mergeClasses(switchWrapperStyles.switchWrapper, state.switchWrapper.className);
 
   state.track.className = mergeClasses(
     trackClassName,
