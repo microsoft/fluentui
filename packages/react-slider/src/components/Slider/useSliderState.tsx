@@ -240,6 +240,11 @@ export const useSliderState = (state: SliderState) => {
     hideStepAnimation();
   }, [hideStepAnimation, hideTooltip]);
 
+  const onBlur = React.useCallback(() => {
+    hideTooltip();
+    thumbLostFocus();
+  }, [hideTooltip, thumbLostFocus]);
+
   const getTrackBorderRadius = () => {
     if (origin && origin !== (max || min)) {
       if (vertical) {
@@ -308,11 +313,6 @@ export const useSliderState = (state: SliderState) => {
     state.tooltip.visible = isTooltipVisible;
     state.tooltip.positioning = vertical ? 'after' : 'above';
   }
-
-  const onBlur = React.useCallback(() => {
-    hideTooltip();
-    thumbLostFocus();
-  }, [hideTooltip, thumbLostFocus]);
 
   // Thumb Props
   state.thumb.ref = thumbRef;

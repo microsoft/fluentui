@@ -40,10 +40,18 @@ storiesOf('SliderNext', module)
   .addStory('Origin Vertical (max)', () => (
     <Slider className="test-class" min={10} vertical origin={10} />
   ))
-  .addStory('Tooltip', () => <Slider className="test-class" defaultValue={30} tooltipVisible />)
+  .addStory('Tooltip', () => (
+    <Slider thumb={{ className: 'test-class' }} defaultValue={30} tooltipVisible />
+  ))
   .addStory('Tooltip Vertical', () => (
-    <Slider className="test-class" defaultValue={30} vertical tooltipVisible />
+    <Slider thumb={{ className: 'test-class' }} defaultValue={30} vertical tooltipVisible />
   ))
   .addStory('Tooltip Disabled', () => (
+    <Slider thumb={{ className: 'test-class' }} defaultValue={30} disabled tooltipVisible />
+  ))
+  .addStory('Tooltip (Root)', () => (
+    <Slider className="test-class" defaultValue={30} disabled tooltipVisible />
+  ))
+  .addStory('Tooltip Disabled (Root)', () => (
     <Slider className="test-class" defaultValue={30} disabled tooltipVisible />
   ));
