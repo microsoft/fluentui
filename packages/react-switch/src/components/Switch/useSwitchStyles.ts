@@ -26,17 +26,18 @@ const useRootStyles = makeStyles({
 
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
-      background: '#424242',
+      background: theme.alias.color.neutral.neutralForeground3Hover,
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: '#424242',
+      borderColor: theme.alias.color.neutral.neutralForeground3Hover,
     },
   }),
 
   checked: theme => ({
     ':hover .ms-Switch-track': {
-      background: '#004578',
+      // TODO: theme.alias.color.neutral.brandBackgroundInteractive
+      background: theme.global.palette.brand.shade30,
     },
   }),
 
@@ -68,7 +69,8 @@ const useTrackStyles = makeStyles({
     height: '100%',
     boxSizing: 'border-box',
     borderRadius: '999px',
-    transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1) border .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    pointerEvents: 'none',
   }),
 
   unchecked: theme => ({
@@ -77,8 +79,8 @@ const useTrackStyles = makeStyles({
   }),
 
   checked: theme => ({
-    background: '#0078d4',
     // TODO: background: theme.alias.color.neutral.brandBackgroundInteractive,
+    background: theme.global.palette.brand.primary,
     border: 'none',
   }),
 
@@ -103,6 +105,7 @@ const useThumbWrapperStyles = makeStyles({
     left: 'calc(var(--switch-thumb-size) * .7)',
     right: 'calc(var(--switch-thumb-size) * .7)',
     transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    pointerEvents: 'none',
   }),
 });
 
@@ -118,6 +121,7 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
+    pointerEvents: 'none',
   }),
 
   unchecked: theme => ({
@@ -125,6 +129,7 @@ const useThumbStyles = makeStyles({
   }),
 
   checked: theme => ({
+    // Neutral foreground accessible
     background: 'white',
   }),
 
