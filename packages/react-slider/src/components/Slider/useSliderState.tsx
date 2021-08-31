@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
 import type { SliderState } from './Slider.types';
+import { render } from '@testing-library/react';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -221,7 +222,7 @@ export const useSliderState = (state: SliderState) => {
   );
 
   const getTrackBorderRadius = () => {
-    if (origin && origin !== (max || min)) {
+    if (origin !== undefined && origin !== (max || min)) {
       if (vertical) {
         return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
       } else {
@@ -243,7 +244,7 @@ export const useSliderState = (state: SliderState) => {
   // TODO: Awaiting animation time from design spec.
   const animationTime = '0.1s';
 
-  const originPercent = origin ? getPercent(origin, min, max) : 0;
+  const originPercent = origin !== undefined ? getPercent(origin, min, max) : 0;
 
   const thumbWrapperStyles = {
     transform: vertical
@@ -253,15 +254,27 @@ export const useSliderState = (state: SliderState) => {
     ...state.thumbWrapper.style,
   };
 
-  const trackStyles = {
-    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-    [vertical ? 'height' : 'width']: origin
-      ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-      : `${valuePercent}%`,
+  console.log({
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
+      origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']:
+      origin !== undefined
+        ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+        : `${valuePercent}%`,
     borderRadius: getTrackBorderRadius(),
     transition: stepAnimation
       ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
       : 'none',
+  });
+  const trackStyles = {
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
+      origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']:
+      origin !== undefined
+        ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+        : `${valuePercent}%`,
+    borderRadius: getTrackBorderRadius(),
+    transition: stepAnimation ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}` : 'none',
     ...state.track.style,
   };
 
