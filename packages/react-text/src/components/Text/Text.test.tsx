@@ -7,6 +7,12 @@ describe('Text', () => {
   isConformant({
     Component: Text,
     displayName: 'Text',
+    testOptions: {
+      'classname-wins': {
+        callCount: 1,
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any,
   });
 
   it('renders a default state', () => {
