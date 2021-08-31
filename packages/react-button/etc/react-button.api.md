@@ -158,7 +158,7 @@ export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 // @public (undocumented)
 export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
 
-// @public (undocumented)
+// @public
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)

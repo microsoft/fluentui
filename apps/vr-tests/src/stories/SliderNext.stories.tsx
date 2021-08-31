@@ -50,7 +50,7 @@ storiesOf('SliderNext', module)
     <Slider thumb={{ className: 'test-class' }} defaultValue={30} disabled tooltipVisible />
   ))
   .addStory('Tooltip (Root)', () => (
-    <Slider className="test-class" defaultValue={30} disabled tooltipVisible />
+    <Slider className="test-class" defaultValue={30} tooltipVisible />
   ))
   .addStory('Tooltip Disabled (Root)', () => (
     <Slider className="test-class" defaultValue={30} disabled tooltipVisible />

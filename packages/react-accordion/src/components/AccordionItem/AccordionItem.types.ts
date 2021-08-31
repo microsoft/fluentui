@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
@@ -11,9 +11,11 @@ export interface AccordionItemContextValues {
   accordionItem: AccordionItemContextValue;
 }
 
-export type AccordionItemSlots = {};
+export type AccordionItemSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
 
-export interface AccordionItemCommons extends React.HTMLAttributes<HTMLElement> {
+export interface AccordionItemCommons {
   /**
    * Disables opening/closing of panel
    */
@@ -32,9 +34,4 @@ export type AccordionItemValue = unknown;
 export interface AccordionItemState
   extends ComponentState<AccordionItemSlots>,
     AccordionItemCommons,
-    AccordionItemContextValue {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.Ref<HTMLElement>;
-}
+    AccordionItemContextValue {}

@@ -21,7 +21,7 @@ const mergeProps = makeMergeProps<CompoundButtonState>({
 });
 
 /**
- * Given user props, returns state and render function for a Button.
+ * Given user props, returns the final state for a CompoundButton.
  */
 export const useCompoundButton = (
   props: CompoundButtonProps,
@@ -39,6 +39,7 @@ export const useCompoundButton = (
       secondaryContent: { as: 'span' },
       // Non-slot props
       size: 'medium',
+      type: 'button', // This is added because the default for type is 'submit'
     },
     defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
     resolveShorthandProps(props, compoundButtonShorthandPropsCompat),
