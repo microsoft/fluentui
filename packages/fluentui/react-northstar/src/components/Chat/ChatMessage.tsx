@@ -72,6 +72,7 @@ export interface ChatMessageSlotClassNames {
   author: string;
   badge: string;
   bar: string;
+  comfyBody: string;
   compactBody: string;
   content: string;
   reactionGroup: string;
@@ -106,6 +107,9 @@ export interface ChatMessageProps
 
   /** A message can format the badge to appear at the start or the end of the message. */
   badgePosition?: 'start' | 'end';
+
+  /** Testing this */
+  comfyBody?: ShorthandValue<BoxProps>;
 
   /** A message can have a custom body. Only rendered in compact density. */
   compactBody?: ShorthandValue<BoxProps>;
@@ -192,6 +196,7 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   author: `${chatMessageClassName}__author`,
   badge: `${chatMessageClassName}__badge`,
   bar: `${chatMessageClassName}__bar`,
+  comfyBody: `${chatMessageClassName}__comfy-body`,
   compactBody: `${chatMessageClassName}__compact-body`,
   content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
@@ -232,6 +237,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     badgePosition,
     children,
     className,
+    comfyBody,
     compactBody,
     content,
     density = chatDensity,
@@ -544,7 +550,27 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             {authorElement}
             {timestampElement}
             {detailsElement}
-            {reactionGroupPosition === 'start' && reactionGroupElement}
+          </>
+        ),
+      }),
+    });
+
+    const bodyElement = Box.create(comfyBody || {}, {
+      defaultProps: () =>
+        getA11Props('comfyBody', {
+          className: chatMessageSlotClassNames.comfyBody,
+          styles: resolvedStyles.comfyBody,
+        }),
+      overrideProps: () => ({
+        content: (
+          <>
+            {actionMenuElement}
+            <div className={chatMessageSlotClassNames.bar} />
+            {badgePosition === 'start' && badgeElement}
+            {messageContent}
+            {reactionGroupPosition === 'end' && reactionGroupElement}
+            {badgePosition === 'end' && badgeElement}
+            {readStatusElement}
           </>
         ),
       }),
@@ -552,14 +578,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
     elements = (
       <>
-        {actionMenuElement}
-        <div className={chatMessageSlotClassNames.bar} />
-        {badgePosition === 'start' && badgeElement}
         {headerElement}
-        {messageContent}
-        {reactionGroupPosition === 'end' && reactionGroupElement}
-        {badgePosition === 'end' && badgeElement}
-        {readStatusElement}
+        {bodyElement}
       </>
     );
   }
@@ -605,6 +625,7 @@ ChatMessage.propTypes = {
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
+  comfyBody: customPropTypes.itemShorthand,
   compactBody: customPropTypes.itemShorthand,
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   details: customPropTypes.itemShorthand,

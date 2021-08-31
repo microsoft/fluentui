@@ -8,18 +8,44 @@ import { ChatMessageVariables } from './chatMessageVariables';
 /** ChatMessage styles specific for the default/comfy density. */
 export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    marginLeft: p.mine ? v.offset : 0,
-    marginRight: !p.mine ? v.offset : 0,
-    maxWidth: `calc(100% - ${v.offset})`,
-    minWidth: v.offset,
+    ...(p.mine && {
+      [`& .ui-chat__messageheader`]: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+      },
+    }),
 
-    paddingLeft: v.padding,
-    paddingRight: v.padding,
-    paddingTop: pxToRem(8),
-    paddingBottom: pxToRem(10),
+    [`& .ui-chat__message__comfy-body`]: {
+      borderRadius: v.borderRadius,
+      marginLeft: p.mine ? v.offset : 0,
+      marginRight: !p.mine ? v.offset : 0,
+      maxWidth: `calc(100% - ${v.offset})`,
+      minWidth: v.offset,
 
-    backgroundColor: p.mine ? v.backgroundColorMine : v.backgroundColor,
-    border: v.border,
+      position: 'relative',
+      paddingLeft: v.padding,
+      paddingRight: v.padding,
+      paddingTop: pxToRem(8),
+      paddingBottom: pxToRem(10),
+
+      backgroundColor: p.mine ? v.backgroundColorMine : v.backgroundColor,
+      border: v.border,
+
+      ...(p.attached === true && {
+        [p.mine ? 'borderTopRightRadius' : 'borderTopLeftRadius']: 0,
+        [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0,
+        paddingTop: pxToRem(5),
+        paddingBottom: pxToRem(7),
+      }),
+      ...(p.attached === 'top' && {
+        [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0,
+      }),
+      ...(p.attached === 'bottom' && {
+        [p.mine ? 'borderTopRightRadius' : 'borderTopLeftRadius']: 0,
+        paddingTop: pxToRem(5),
+        paddingBottom: pxToRem(7),
+      }),
+    },
 
     ...((v.hasMention || v.isImportant) && {
       [`& .${chatMessageSlotClassNames.bar}`]: {
@@ -33,21 +59,6 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
         top: '0',
         width: pxToRem(3),
       },
-    }),
-
-    ...(p.attached === true && {
-      [p.mine ? 'borderTopRightRadius' : 'borderTopLeftRadius']: 0,
-      [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0,
-      paddingTop: pxToRem(5),
-      paddingBottom: pxToRem(7),
-    }),
-    ...(p.attached === 'top' && {
-      [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0,
-    }),
-    ...(p.attached === 'bottom' && {
-      [p.mine ? 'borderTopRightRadius' : 'borderTopLeftRadius']: 0,
-      paddingTop: pxToRem(5),
-      paddingBottom: pxToRem(7),
     }),
   }),
 
