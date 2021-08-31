@@ -178,7 +178,9 @@ storiesOf('PeoplePicker', module)
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}
         pickerSuggestionsProps={suggestionProps}
-        placeholder="Add items here"
+        inputProps={{
+          placeholder: 'Add items here',
+        }}
       />
     </Fabric>
   ))
@@ -190,7 +192,9 @@ storiesOf('PeoplePicker', module)
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}
         pickerSuggestionsProps={suggestionProps}
-        placeholder="Add items here"
+        inputProps={{
+          placeholder: 'Add items here',
+        }}
         disabled
       />
     </Fabric>
