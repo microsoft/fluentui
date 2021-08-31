@@ -254,18 +254,6 @@ export const useSliderState = (state: SliderState) => {
     ...state.thumbWrapper.style,
   };
 
-  console.log({
-    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
-      origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
-    [vertical ? 'height' : 'width']:
-      origin !== undefined
-        ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-        : `${valuePercent}%`,
-    borderRadius: getTrackBorderRadius(),
-    transition: stepAnimation
-      ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
-      : 'none',
-  });
   const trackStyles = {
     [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
       origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
@@ -274,7 +262,9 @@ export const useSliderState = (state: SliderState) => {
         ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
         : `${valuePercent}%`,
     borderRadius: getTrackBorderRadius(),
-    transition: stepAnimation ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}` : 'none',
+    // When a transition is applied with the origin, a visible animation plays when it goes below the min.
+    transition:
+      stepAnimation && origin === undefined ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}` : 'none',
     ...state.track.style,
   };
 
