@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Upgrading tabster.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

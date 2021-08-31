@@ -8,7 +8,6 @@ exports[`AccordionHeader renders a default state 1`] = `
   <button
     className=""
     disabled={false}
-    id="accordion-header-1"
     onClick={[Function]}
   >
     <span

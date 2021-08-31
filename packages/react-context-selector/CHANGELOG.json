@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.42",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7a53d85571212d2f5b56a84fd84e29f5e1985daa",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Fri, 27 Aug 2021 07:33:32 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.34)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.33..@fluentui/react-popover_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.54 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.33)
 

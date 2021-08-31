@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "none": [
+          {
+            "comment": "docs(composeUtils): update README",
+            "author": "olfedias@microsoft.com",
+            "commit": "3205b59f5d25006349b27883e4e3ec70eb14ad6f",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "fix(useOnClickOutside): Treat right click/context menu as outside click",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7a53d85571212d2f5b56a84fd84e29f5e1985daa",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.41",
       "version": "9.0.0-alpha.41",

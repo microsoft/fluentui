@@ -2,6 +2,29 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding type=button to all button components, removing @docCategory tags from API and fixing some documentation in the comments.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "abed5eb9fb05032c87e724176132618343886083",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "revert(react-button): remove vNext components used in SB  from devDeps that are stale",
+            "author": "martinhochel@microsoft.com",
+            "commit": "77a8622d91df6507eb4bd8367c9c98ed165ebeac",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Aug 2021 07:35:05 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.76",
       "version": "9.0.0-alpha.76",

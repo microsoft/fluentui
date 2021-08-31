@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "update signature for callbacks",
+  "comment": "Updates react-menu to use root as slot",
   "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
+  "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
 }

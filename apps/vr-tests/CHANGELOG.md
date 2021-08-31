@@ -1,8 +1,33 @@
 # Change Log - vr-tests
 
-This log was last generated on Mon, 30 Aug 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.1 ([PR #18892](https://github.com/microsoft/fluentui/pull/18892) by tmichon@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.149 ([PR #18892](https://github.com/microsoft/fluentui/pull/18892) by tmichon@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.69 ([PR #19544](https://github.com/microsoft/fluentui/pull/19544) by olfedias@microsoft.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.68 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.74 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.70 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
+- Bump @fluentui/react-slider to v9.0.0-alpha.0 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.73 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-card to v9.0.0-alpha.0 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.60 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-alpha.32 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.60 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.41 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-text to v9.0.0-alpha.8 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
