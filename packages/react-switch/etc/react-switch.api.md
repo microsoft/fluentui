@@ -16,7 +16,7 @@ export const renderSwitch: (state: SwitchState) => JSX.Element;
 export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type SwitchDefaultedProps = 'switchWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'input';
+export type SwitchDefaultedProps = 'track' | 'thumbWrapper' | 'thumb' | 'input';
 
 // @public
 export interface SwitchProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
@@ -27,14 +27,13 @@ export interface SwitchProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: {
         checked: boolean;
     }) => void;
-    switchWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     thumbWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
-export type SwitchShorthandProps = 'switchWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'input';
+export type SwitchShorthandProps = 'track' | 'thumbWrapper' | 'thumb' | 'input';
 
 // @public
 export const switchShorthandProps: SwitchShorthandProps[];
