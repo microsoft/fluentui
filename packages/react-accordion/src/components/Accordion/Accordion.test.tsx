@@ -10,6 +10,8 @@ describe('Accordion', () => {
     Component: Accordion,
     displayName: 'Accordion',
     helperComponents: [AccordionContext.Provider],
+    // Accordion does not have own styles
+    disabledTests: ['classname-wins'],
   });
 
   let wrapper: ReactWrapper | undefined;
