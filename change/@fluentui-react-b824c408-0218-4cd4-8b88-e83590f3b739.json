@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix position bug of Callout when target prop has changed.",
-  "packageName": "@fluentui/react",
-  "email": "kinhln@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: syntax error in card styles",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Panel: header and footer now reflow properly when zoomed in.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

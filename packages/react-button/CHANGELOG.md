@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 30 Aug 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.77)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.76..@fluentui/react-button_v9.0.0-alpha.77)
+
+### Changes
+
+- Button: Adding type=button to all button components, removing @docCategory tags from API and fixing some documentation in the comments. ([PR #19564](https://github.com/microsoft/fluentui/pull/19564) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.76)
 
