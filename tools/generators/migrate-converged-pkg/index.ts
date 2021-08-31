@@ -12,9 +12,8 @@ import {
   logger,
   writeJson,
   updateProjectConfiguration,
+  serializeJson,
 } from '@nrwl/devkit';
-import { serializeJson } from '@nrwl/workspace';
-
 import * as path from 'path';
 
 import { PackageJson, TsConfig } from '../../types';

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Adding type=button to all button components, removing @docCategory tags from API and fixing some documentation in the comments.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
