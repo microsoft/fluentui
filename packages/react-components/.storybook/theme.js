@@ -1,8 +1,10 @@
 import { create } from '@storybook/theming';
 import logo from '../public/fluent.svg';
 
-// Theming and branding the storybook to fluent. Taken from https://storybook.js.org/docs/react/configure/theming
-export default create({
+/**
+ * Theming and branding the storybook to fluent. Taken from https://storybook.js.org/docs/react/configure/theming
+ */
+const theme = create({
   base: 'light',
 
   // Storybook-specific color palette
@@ -35,3 +37,5 @@ export default create({
   brandUrl: 'https://github.com/microsoft/fluentui',
   brandImage: logo,
 });
+
+export default theme;
