@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added placeholder styles to base picker",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
