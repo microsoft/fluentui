@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 export const useMenuGroupHeaderStyles = (state: MenuGroupHeaderState) => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   return state;
 };
