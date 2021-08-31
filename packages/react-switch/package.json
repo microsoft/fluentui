@@ -33,13 +33,13 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
+    "@fluentui/react-label": "^9.0.0-alpha.31",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-label": "^9.0.0-alpha.31",
     "@fluentui/react-make-styles": "^9.0.0-alpha.60",
     "@fluentui/react-tabster": "^9.0.0-alpha.53",
     "@fluentui/react-utilities": "^9.0.0-alpha.42",

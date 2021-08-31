@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import type { SwitchSlots, SwitchState, SwitchCommon } from './Switch.types';
+import type { SwitchState } from './Switch.types';
 
-export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | keyof SwitchSlots | 'as' | 'ref'>) => {
+export const useSwitchState = (state: SwitchState) => {
   const { defaultChecked = false, checked, disabled = false, onChange } = state;
   const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
@@ -41,7 +41,6 @@ export const useSwitchState = (state: Pick<SwitchState, keyof SwitchCommon | key
   };
 
   // Input Props
-  state.input.type = 'checkbox';
   state.input.onChange = onInputChange;
   state.input.checked = internalValue;
   state.input.disabled = disabled;

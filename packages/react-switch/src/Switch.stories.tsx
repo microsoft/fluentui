@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
+import { teamsLightTheme } from '@fluentui/react-theme';
+import { FluentProvider } from '@fluentui/react-provider';
 import { Switch, SwitchProps } from './index';
 import { Label } from '@fluentui/react-label';
 import { Meta } from '@storybook/react';
@@ -175,32 +177,27 @@ export const BasicSwitchExample = (props: SwitchProps) => {
       <Label>Disabled Example</Label>
       <Switch disabled defaultChecked={true} />
       <Switch disabled defaultChecked={false} />
-      <Switch className={styles.root} labelPosition="before">
-        Label Example
-      </Switch>
     </div>
   );
 };
 
 export const CustomSwitchExample = (props: SwitchProps) => {
-  const [switchValue, setSwitchValue] = React.useState(false);
-
-  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) =>
-    setSwitchValue(data.checked);
-
   const styles = useStyles();
   const teamsStyles = useTeamsStyles();
   const iosStyles = useIosStyles();
   const materialStyles = useMaterialStyles();
+
   return (
     <div className={styles.root}>
       <Label>Teams Example</Label>
-      <Switch
-        defaultChecked={true}
-        className={teamsStyles.root}
-        track={{ className: teamsStyles.track }}
-        thumb={{ className: teamsStyles.thumb }}
-      />
+      <FluentProvider theme={teamsLightTheme}>
+        <Switch
+          defaultChecked={true}
+          className={teamsStyles.root}
+          track={{ className: teamsStyles.track }}
+          thumb={{ className: teamsStyles.thumb }}
+        />
+      </FluentProvider>
       <Label>iOS Example</Label>
       <Switch
         defaultChecked={true}
@@ -219,10 +216,6 @@ export const CustomSwitchExample = (props: SwitchProps) => {
         thumbWrapper={{ className: materialStyles.thumbWrapper }}
         thumb={{ className: materialStyles.thumb }}
       />
-      <Label>On/Off Example</Label>
-      <Switch checked={switchValue} onChange={switchOnChange}>
-        {switchValue ? 'On' : 'Off'}
-      </Switch>
     </div>
   );
 };

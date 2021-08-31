@@ -27,10 +27,4 @@ storiesOf('SwitchNext', module)
   ))
   .addStory('Disabled (checked)', () => (
     <Switch className="test-class" disabled defaultChecked={true} />
-  ))
-  .addStory('Label (enabled)', () => <Switch className="test-class">Hello world</Switch>)
-  .addStory('Label (disabled)', () => (
-    <Switch className="test-class" disabled>
-      Hello world
-    </Switch>
   ));

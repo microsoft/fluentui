@@ -4,9 +4,10 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const renderSwitch: (state: SwitchState) => JSX.Element;
@@ -14,40 +15,37 @@ export const renderSwitch: (state: SwitchState) => JSX.Element;
 // @public
 export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
-export interface SwitchCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+// @public
+export type SwitchDefaultedProps = 'switchWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'input';
+
+// @public
+export interface SwitchProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
     checked?: boolean;
     defaultChecked?: boolean;
     disabled?: boolean;
-    labelPosition: 'before' | 'after';
+    input?: ShorthandPropsCompat<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: {
         checked: boolean;
     }) => void;
+    switchWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    thumb?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    thumbWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    track?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
-export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Partial<SwitchCommon> {
-}
+export type SwitchShorthandProps = 'switchWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'input';
 
 // @public
-export const switchShorthandProps: Array<keyof SwitchSlots>;
+export const switchShorthandProps: SwitchShorthandProps[];
 
 // @public
-export type SwitchSlots = {
-    switchWrapper: React_2.HTMLAttributes<HTMLElement>;
-    track: React_2.HTMLAttributes<HTMLElement>;
-    thumbWrapper: React_2.HTMLAttributes<HTMLElement>;
-    thumb: React_2.HTMLAttributes<HTMLElement>;
-    input: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>;
-};
-
-// @public
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
+export interface SwitchState extends ComponentStateCompat<SwitchProps, SwitchShorthandProps, SwitchDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 
 // @public
-export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLElement>) => SwitchState;
+export const useSwitch: (props: SwitchProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SwitchProps | undefined) => SwitchState;
 
 // @public
 export const useSwitchStyles: (state: SwitchState) => SwitchState;
