@@ -3,10 +3,26 @@ import { render, fireEvent } from '@testing-library/react';
 import { PopoverTrigger } from './PopoverTrigger';
 import * as renderer from 'react-test-renderer';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { isConformant } from '../../common/isConformant';
 
 jest.mock('../../popoverContext');
 
 describe('PopoverTrigger', () => {
+  isConformant({
+    Component: PopoverTrigger,
+    displayName: 'PopoverTrigger',
+    requiredProps: { children: <span /> },
+    skipAsPropTests: true,
+    disabledTests: [
+      // PopoverTrigger does not render DOM elements
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      // PopoverTrigger does not have own styles
+      'classname-wins',
+    ],
+  });
+
   beforeEach(() => {
     mockPopoverContext();
   });
