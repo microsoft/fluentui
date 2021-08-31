@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { ObjectShorthandProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
@@ -10,11 +9,11 @@ function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   return disabled ?? false;
 }
 
-export type ARIAButtonAsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & { as?: 'button' };
-export type ARIAButtonAsElementProps = React.HTMLAttributes<HTMLElement> & { as: 'div' | 'span' };
-export type ARIAButtonAsAnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & { as: 'a' };
-
-export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
+export type ARIAButtonShorthandProps =
+  | ObjectShorthandProps<JSX.IntrinsicElements['button'], HTMLButtonElement, 'button'>
+  | ObjectShorthandProps<JSX.IntrinsicElements['div'], HTMLDivElement, 'div'>
+  | ObjectShorthandProps<JSX.IntrinsicElements['span'], HTMLSpanElement, 'span'>
+  | ObjectShorthandProps<JSX.IntrinsicElements['a'], HTMLAnchorElement, 'a'>;
 
 /**
  * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
@@ -22,19 +21,19 @@ export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps
  * where no attribute addition is required
  */
 export function useARIAButton<Required extends boolean = false>(
-  value: ShorthandProps<ARIAButtonProps>,
-  options?: ResolveShorthandOptions<ARIAButtonProps, Required>,
-): Required extends false ? ObjectShorthandProps<ARIAButtonProps> | undefined : ObjectShorthandProps<ARIAButtonProps> {
+  value: ShorthandProps<ARIAButtonShorthandProps>,
+  options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>,
+): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps {
   const shorthand = resolveShorthand(value, options);
 
   const { onClick, onKeyDown, onKeyUp, ['aria-disabled']: ariaDisabled } = (shorthand ||
-    {}) as ObjectShorthandProps<ARIAButtonProps>;
+    {}) as ARIAButtonShorthandProps;
 
   const disabled = mergeARIADisabled(
     (shorthand && shorthand.as === 'button' ? shorthand.disabled : undefined) ?? ariaDisabled,
   );
 
-  const onClickHandler: ARIAButtonProps['onClick'] = useEventCallback(ev => {
+  const onClickHandler: ARIAButtonShorthandProps['onClick'] = useEventCallback(ev => {
     if (disabled) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -45,7 +44,7 @@ export function useARIAButton<Required extends boolean = false>(
     }
   });
 
-  const onKeyDownHandler: ARIAButtonProps['onKeyDown'] = useEventCallback(ev => {
+  const onKeyDownHandler: ARIAButtonShorthandProps['onKeyDown'] = useEventCallback(ev => {
     if (typeof onKeyDown === 'function') {
       onKeyDown(ev);
     }
@@ -68,7 +67,7 @@ export function useARIAButton<Required extends boolean = false>(
     }
   });
 
-  const onKeyupHandler: ARIAButtonProps['onKeyUp'] = useEventCallback(ev => {
+  const onKeyupHandler: ARIAButtonShorthandProps['onKeyUp'] = useEventCallback(ev => {
     if (typeof onKeyUp === 'function') {
       onKeyUp(ev);
     }

@@ -3823,6 +3823,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
     flexMargin?: number;
+    focusZoneProps?: IFocusZoneProps;
     getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
@@ -3936,6 +3937,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
         callback: (item?: any, index?: number, event?: any) => void;
     }[];
     flatIndexOffset?: number;
+    focusZoneProps?: IFocusZoneProps;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     group?: IGroup;

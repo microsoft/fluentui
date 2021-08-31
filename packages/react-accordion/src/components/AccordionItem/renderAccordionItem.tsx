@@ -13,7 +13,7 @@ export const renderAccordionItem = (state: AccordionItemState, contextValues: Ac
   return (
     <slots.root {...slotProps.root}>
       <AccordionItemContext.Provider value={contextValues.accordionItem}>
-        {state.children}
+        {slotProps.root.children}
       </AccordionItemContext.Provider>
     </slots.root>
   );
