@@ -2,6 +2,21 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.54",
+            "author": "marata@microsoft.com",
+            "commit": "4a7f81f3d92f128a672717eda660af3ba50ee71b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Aug 2021 07:33:32 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.33",
       "version": "9.0.0-alpha.33",

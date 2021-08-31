@@ -59,6 +59,9 @@ export interface SliderState extends ComponentStateCompat<SliderProps, SliderSho
 // @public
 export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => SliderState;
 
+// @public (undocumented)
+export const useSliderState: (state: SliderState) => SliderState;
+
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;
 

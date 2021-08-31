@@ -25,24 +25,6 @@ const getPercent = (value: number, min: number, max: number) => {
 };
 
 /**
- * Finds the closest number that is divisible by a specified value.
- *
- * @param value the number to evaluate the closest value for.
- * @param divisibleBy the number to check if divisible by.
- */
-const findClosestValue = (value: number, divisibleBy: number) => {
-  const absoluteValue = Math.abs(value);
-  const absoluteDivisibleBy = Math.abs(divisibleBy);
-
-  const lowerValue = absoluteValue - (absoluteValue % absoluteDivisibleBy);
-  const upperValue = lowerValue + absoluteDivisibleBy;
-
-  return absoluteValue - lowerValue < upperValue - absoluteValue
-    ? lowerValue * Math.sign(value)
-    : upperValue * Math.sign(value);
-};
-
-/**
  * Finds and swaps a provided key for it's right to left format.
  */
 const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
@@ -95,7 +77,7 @@ export const useSliderState = (state: SliderState) => {
   const { dir } = useFluent();
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
-  const [renderedPosition, setRenderedPosition] = React.useState<number>(value ? value : defaultValue);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
     defaultState: clamp(defaultValue, min, max),
@@ -109,9 +91,6 @@ export const useSliderState = (state: SliderState) => {
 
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
-   *
-   * @param incomingValue
-   * @param ev
    */
   const updateValue = useEventCallback(
     (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
@@ -131,9 +110,6 @@ export const useSliderState = (state: SliderState) => {
 
   /**
    * Updates the controlled `currentValue` and `renderedPosition` of the Slider.
-   *
-   * @param incomingValue
-   * @param ev
    */
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
@@ -176,23 +152,21 @@ export const useSliderState = (state: SliderState) => {
       const currentStepPosition = Math.round(position / step) * step;
 
       setRenderedPosition(clamp(position, min, max));
-      currentValue !== currentStepPosition && updateValue(currentStepPosition, ev);
+      updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, currentValue, max, min, step, updateValue],
+    [calculateSteps, max, min, step, updateValue],
   );
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       disposables.current.forEach(dispose => dispose());
       disposables.current = [];
-
       showStepAnimation();
-      setRenderedPosition(
-        clamp(findClosestValue(Math.round((min + step * calculateSteps(ev)) / step) * step, step), min, max),
-      );
+      // When undefined, the position fallbacks to the currentValue state.
+      setRenderedPosition(undefined);
       thumbRef.current!.focus();
     },
-    [calculateSteps, max, min, showStepAnimation, step],
+    [showStepAnimation],
   );
 
   const onPointerDown = React.useCallback(
@@ -275,7 +249,7 @@ export const useSliderState = (state: SliderState) => {
   // TODO: Awaiting animation time from design spec.
   const animationTime = '0.1s';
 
-  const valuePercent = getPercent(renderedPosition!, min, max);
+  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
   const originPercent = React.useMemo(() => {
     return origin ? getPercent(origin, min, max) : 0;

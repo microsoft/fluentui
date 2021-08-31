@@ -83,26 +83,77 @@ describe('Slider', () => {
       expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('0');
     });
 
+    it('slides to the correct position when dragged in-between steps', () => {
+      const onChange = jest.fn();
+      const wrapper: ReactWrapper = mount(
+        <Slider
+          step={10}
+          thumbWrapper={{ className: 'thumb-wrapper' }}
+          activeRail={{ className: 'active-rail' }}
+          onChange={onChange}
+        />,
+      );
+
+      const activeRail = wrapper.find('.active-rail');
+
+      activeRail.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
+      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
+      expect(onChange).toBeCalledTimes(2);
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
+      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
+    });
+
     it('calls onChange when pointerDown', () => {
       const onChange = jest.fn();
 
       render(<Slider defaultValue={5} onChange={onChange} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
-
       expect(onChange).toBeCalledTimes(0);
-
       fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
     });
 
+    it('slides to the correct position when dragged in-between steps', () => {
+      const onChange = jest.fn();
+      const wrapper: ReactWrapper = mount(
+        <Slider
+          step={10}
+          thumbWrapper={{ className: 'thumb-wrapper' }}
+          activeRail={{ className: 'active-rail' }}
+          onChange={onChange}
+        />,
+      );
+
+      const activeRail = wrapper.find('.active-rail');
+
+      activeRail.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
+      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
+      expect(onChange).toBeCalledTimes(2);
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
+      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
+    });
+
     it('slides to min/max and executes onChange', () => {
       const onChange = jest.fn();
 
-      const wrapper: ReactWrapper = mount(<Slider onChange={onChange} />);
+      const wrapper: ReactWrapper = mount(<Slider onChange={onChange} thumbWrapper={{ className: 'thumb-wrapper' }} />);
       const sliderRoot = wrapper.first();
-
       expect(onChange).toBeCalledTimes(0);
 
       sliderRoot.getDOMNode().getBoundingClientRect = () =>
@@ -111,10 +162,12 @@ describe('Slider', () => {
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
+      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(100%)');
 
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
+      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(0%)');
 
       wrapper.unmount();
     });
