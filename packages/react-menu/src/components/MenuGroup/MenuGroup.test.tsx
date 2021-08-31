@@ -10,6 +10,10 @@ describe('MenuGroup', () => {
   isConformant({
     Component: MenuGroup,
     displayName: 'MenuGroup',
+    disabledTests: [
+      // MenuTrigger does not have own styles
+      'classname-wins',
+    ],
   });
 
   let wrapper: ReactWrapper | undefined;

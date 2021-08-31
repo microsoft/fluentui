@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { MenuList } from './MenuList';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { isConformant } from '../../common/isConformant';
@@ -12,16 +11,10 @@ describe('MenuList', () => {
     Component: MenuList,
     displayName: 'MenuList',
     helperComponents: [MenuListProvider],
-    skipAsPropTests: true,
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    disabledTests: [
+      // MenuTrigger does not have own styles
+      'classname-wins',
+    ],
   });
 
   /**

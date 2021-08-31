@@ -2,33 +2,24 @@ import * as React from 'react';
 import { MenuTrigger } from './MenuTrigger';
 import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 
 describe('MenuTrigger', () => {
   isConformant({
     disabledTests: [
-      'as-renders-html',
-      'as-renders-fc',
+      // MenuTrigger does not render DOM elements
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'as-passes-as-value',
+      // MenuTrigger does not have own styles
+      'classname-wins',
     ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',
+    skipAsPropTests: true,
     requiredProps: {
       children: <button>MenuTrigger</button>,
     },
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**
