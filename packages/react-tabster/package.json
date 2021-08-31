@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.0.0-alpha.53",
+  "version": "9.0.0-alpha.54",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@fluentui/make-styles": "^9.0.0-alpha.31",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
-    "keyborg": "^0.7.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.60",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
-    "@fluentui/react-utilities": "^9.0.0-alpha.41",
-    "tabster": "^0.7.4",
+    "@fluentui/react-utilities": "^9.0.0-alpha.42",
+    "keyborg": "^1.0.0",
+    "tabster": "^1.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

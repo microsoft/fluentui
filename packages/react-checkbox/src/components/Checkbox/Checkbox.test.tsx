@@ -163,4 +163,18 @@ describe('Checkbox', () => {
     expect(input.prop('checked')).toBe(false);
     expect(checkboxRef.current?.indeterminate).toEqual(true);
   });
+
+  describe('Accessibility Tests', () => {
+    it('renders the input slot (as input)', () => {
+      const { container } = render(<Checkbox input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.tagName).toEqual('INPUT');
+    });
+
+    it('provides the input slot with a type of (checkbox)', () => {
+      const { container } = render(<Checkbox input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.getAttribute('type')).toEqual('checkbox');
+    });
+  });
 });
