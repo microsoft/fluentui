@@ -7,12 +7,12 @@ import bestPracticesMd from './ButtonBestPractices.md';
 
 export { Emphasis } from './ButtonEmphasis.stories';
 export { Default } from './ButtonDefault.stories';
-export { ButtonDisabled } from './ButtonDisabled.stories';
-export { ButtonWithIcon } from './ButtonWithIcon.stories';
-export { ButtonCircular } from './ButtonCircular.stories';
-export { ButtonSize } from './ButtonSize.stories';
-export { ButtonBlock } from './ButtonBlock.stories';
-export { ButtonWithLongText } from './ButtonWithLongText.stories';
+export { Disabled } from './ButtonDisabled.stories';
+export { WithIcon } from './ButtonWithIcon.stories';
+export { Circular } from './ButtonCircular.stories';
+export { Size } from './ButtonSize.stories';
+export { Block } from './ButtonBlock.stories';
+export { WithLongText } from './ButtonWithLongText.stories';
 
 export default {
   title: 'Components/Button',

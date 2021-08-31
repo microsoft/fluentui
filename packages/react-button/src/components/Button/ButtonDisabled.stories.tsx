@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 
-export const ButtonDisabled = () => {
+export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
 
   return (
@@ -26,7 +26,7 @@ export const ButtonDisabled = () => {
     </>
   );
 };
-ButtonDisabled.parameters = {
+Disabled.parameters = {
   docs: {
     description: {
       story: `A button can be \`disabled\` or \`disabledFocusable\`.

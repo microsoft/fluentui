@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 
-export const ButtonWithIcon = () => (
+export const WithIcon = () => (
   <>
     <Button icon={<CalendarMonth24Regular />}>Text</Button>
     <Button icon={<CalendarMonth24Regular />} iconPosition="after">
@@ -11,7 +11,7 @@ export const ButtonWithIcon = () => (
     <Button icon={<CalendarMonth24Regular />} />
   </>
 );
-ButtonWithIcon.parameters = {
+WithIcon.parameters = {
   docs: {
     description: {
       story:
