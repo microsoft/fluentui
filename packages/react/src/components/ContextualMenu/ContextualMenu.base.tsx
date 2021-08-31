@@ -104,6 +104,7 @@ const _getMenuItemStylesFunction = memoizeFunction(
   },
 );
 
+//#region Custom hooks
 function useVisibility(props: IContextualMenuProps, targetWindow: Window | undefined) {
   const { hidden = false, onMenuDismissed, onMenuOpened } = props;
   const previousHidden = usePrevious(hidden);
@@ -394,6 +395,7 @@ function useOnSubmenuDismiss(dismiss: (ev?: any, dismissAll?: boolean) => void, 
 
   return onSubMenuDismiss;
 }
+//#endregion
 
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
   HTMLDivElement,
@@ -495,9 +497,6 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
   private _enterTimerId: number | undefined;
 
-  // eslint-disable-next-line deprecation/deprecation
-  private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
-
   public shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
@@ -542,7 +541,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       hoisted: { expandedMenuItemKey, targetRef, onMenuFocusCapture, hostElement, forwardedRef },
     } = this.props;
 
-    this._classNames = getMenuClassNames
+    const classNames = getMenuClassNames
       ? getMenuClassNames(theme!, className)
       : getClassNames(styles, {
           theme: theme!,
@@ -571,7 +570,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     const adjustedFocusZoneProps = {
       ...focusZoneProps,
-      className: this._classNames.root,
+      className: classNames.root,
       isCircularNavigation: true,
       handleTabKey: FocusZoneTabbableElements.all,
       direction: this.props.focusZoneProps?.direction ?? FocusZoneDirection.vertical,
@@ -611,8 +610,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         }
       }
 
-      const calloutStyles = this._classNames.subComponentStyles
-        ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<
+      const calloutStyles = classNames.subComponentStyles
+        ? (classNames.subComponentStyles.callout as IStyleFunctionOrObject<
             ICalloutContentStyleProps,
             ICalloutContentStyles
           >)
@@ -647,7 +646,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 style={contextMenuStyle}
                 ref={hostElement}
                 id={id}
-                className={this._classNames.container}
+                className={classNames.container}
                 tabIndex={shouldFocusOnContainer ? 0 : -1}
                 onKeyDown={this.props.hoisted.onMenuKeyDown}
                 onKeyUp={this.props.hoisted.onKeyUp}
@@ -656,7 +655,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 aria-labelledby={labelElementId}
                 role={'menu'}
               >
-                {title && <div className={this._classNames.title}> {title} </div>}
+                {title && <div className={classNames.title}> {title} </div>}
                 {items && items.length
                   ? this._renderFocusZone(
                       onRenderMenuList(
@@ -666,10 +665,14 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                           totalItemCount,
                           hasCheckmarks,
                           hasIcons,
-                          defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                          defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) =>
+                            this._defaultMenuItemRenderer(item, classNames),
                           labelElementId,
                         },
-                        this._onRenderMenuList,
+                        (
+                          menuListProps: IContextualMenuListProps,
+                          defaultRender?: IRenderFunction<IContextualMenuListProps>,
+                        ) => this._onRenderMenuList(menuListProps, classNames, defaultRender),
                       ),
                       adjustedFocusZoneProps,
                     )
@@ -697,6 +700,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _onRenderMenuList = (
     menuListProps: IContextualMenuListProps,
+    // eslint-disable-next-line deprecation/deprecation
+    menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
@@ -704,13 +709,21 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     return (
       <ul
-        className={this._classNames.list}
+        className={menuClassNames.list}
         onKeyDown={this.props.hoisted.onKeyDown}
         onKeyUp={this.props.hoisted.onKeyUp}
         role={'presentation'}
       >
         {items.map((item, index) => {
-          const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+          const menuItem = this._renderMenuItem(
+            item,
+            index,
+            indexCorrection,
+            totalItemCount,
+            hasCheckmarks,
+            hasIcons,
+            menuClassNames,
+          );
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -737,6 +750,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     totalItemCount: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
+    // eslint-disable-next-line deprecation/deprecation
+    menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
   ): JSX.Element => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
@@ -789,7 +804,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       // We need to generate default styles then override if styles are provided
       // since the ContextualMenu currently handles item classNames.
       itemClassNames = getContextualMenuItemClassNames(
-        _getMenuItemStylesFunction(this._classNames.subComponentStyles?.menuItem, styles),
+        _getMenuItemStylesFunction(menuClassNames.subComponentStyles?.menuItem, styles),
         itemStyleProps,
       );
     }
@@ -804,11 +819,20 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         break;
       case ContextualMenuItemType.Header:
         renderedItems.push(this._renderSeparator(index, itemClassNames));
-        const headerItem = this._renderHeaderMenuItem(item, itemClassNames, index, hasCheckmarks, hasIcons);
+        const headerItem = this._renderHeaderMenuItem(
+          item,
+          itemClassNames,
+          menuClassNames,
+          index,
+          hasCheckmarks,
+          hasIcons,
+        );
         renderedItems.push(this._renderListItem(headerItem, item.key || index, itemClassNames, item.title));
         break;
       case ContextualMenuItemType.Section:
-        renderedItems.push(this._renderSectionItem(item, itemClassNames, index, hasCheckmarks, hasIcons));
+        renderedItems.push(
+          this._renderSectionItem(item, itemClassNames, menuClassNames, index, hasCheckmarks, hasIcons),
+        );
         break;
       default:
         const menuItem = this._renderNormalItem(
@@ -829,15 +853,29 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     return <React.Fragment key={item.key}>{renderedItems}</React.Fragment>;
   };
 
-  private _defaultMenuItemRenderer = (item: IContextualMenuItemRenderProps): React.ReactNode => {
+  private _defaultMenuItemRenderer = (
+    item: IContextualMenuItemRenderProps,
+    // eslint-disable-next-line deprecation/deprecation
+    menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
+  ): React.ReactNode => {
     const { index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = item;
-    return this._renderMenuItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+    return this._renderMenuItem(
+      item,
+      index,
+      focusableElementIndex,
+      totalItemCount,
+      hasCheckmarks,
+      hasIcons,
+      menuClassNames,
+    );
   };
 
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
     // eslint-disable-next-line deprecation/deprecation
-    menuClassNames: IMenuItemClassNames,
+    itemClassNames: IMenuItemClassNames,
+    // eslint-disable-next-line deprecation/deprecation
+    menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
@@ -876,6 +914,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         };
         headerItem = this._renderHeaderMenuItem(
           headerContextualMenuItem,
+          itemClassNames,
           menuClassNames,
           index,
           hasCheckmarks,
@@ -888,10 +927,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div {...groupProps}>
-            <ul className={this._classNames.list} role="presentation">
-              {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
+            <ul className={menuClassNames.list} role="presentation">
+              {sectionProps.topDivider && this._renderSeparator(index, itemClassNames, true, true)}
               {headerItem &&
-                this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
+                this._renderListItem(headerItem, sectionItem.key || index, itemClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
                 this._renderMenuItem(
                   contextualMenuItem,
@@ -900,9 +939,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                   sectionProps.items.length,
                   hasCheckmarks,
                   hasIcons,
+                  menuClassNames,
                 ),
               )}
-              {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
+              {sectionProps.bottomDivider && this._renderSeparator(index, itemClassNames, false, true)}
             </ul>
           </div>
         </li>
@@ -1007,7 +1047,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _renderHeaderMenuItem(
     item: IContextualMenuItem,
     // eslint-disable-next-line deprecation/deprecation
-    classNames: IMenuItemClassNames,
+    itemClassNames: IMenuItemClassNames,
+    // eslint-disable-next-line deprecation/deprecation
+    menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
@@ -1018,10 +1060,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
     return (
       // eslint-disable-next-line deprecation/deprecation
-      <div id={id} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
+      <div id={id} className={menuClassNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
-          classNames={classNames}
+          classNames={itemClassNames}
           index={index}
           onCheckmarkClick={hasCheckmarks ? this._onItemClick : undefined}
           hasIcons={hasIcons}
