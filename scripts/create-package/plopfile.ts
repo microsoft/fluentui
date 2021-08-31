@@ -199,7 +199,7 @@ function replaceVersionsFromReference(
       continue;
     }
     for (const depPkg of Object.keys(newPackageJson[depType])) {
-      if (!hasTests && /\b(jest|enzyme|test|react-conformance)\b/.test(depPkg)) {
+      if (!hasTests && /\b(jest|enzyme|test|react-conformance|react-conformance-make-styles|)\b/.test(depPkg)) {
         delete newPackageJson[depType][depPkg];
       } else if (referenceDeps[depType]?.[depPkg]) {
         newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
