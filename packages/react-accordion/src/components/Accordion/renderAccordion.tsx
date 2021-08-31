@@ -1,8 +1,7 @@
 import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
-
-import { AccordionState, AccordionSlots, AccordionContextValues } from './Accordion.types';
 import { AccordionContext } from './AccordionContext';
+import type { AccordionState, AccordionSlots, AccordionContextValues } from './Accordion.types';
 
 /**
  * Function that renders the final JSX of the component

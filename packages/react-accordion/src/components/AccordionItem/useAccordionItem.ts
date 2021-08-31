@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
-import { AccordionToggleEvent } from '../Accordion/Accordion.types';
+import type { AccordionItemProps, AccordionItemState, AccordionItemSlots } from './AccordionItem.types';
+import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
 
 /**
  * Const listing which props are shorthand props.

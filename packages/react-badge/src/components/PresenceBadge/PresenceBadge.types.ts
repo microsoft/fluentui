@@ -1,4 +1,4 @@
-import { BadgeProps, BadgeState } from '../Badge/index';
+import type { BadgeProps, BadgeState } from '../Badge/index';
 
 /**
  * {@docCategory PresenceBadge}

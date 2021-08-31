@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "add config for rules evaluation",
-  "packageName": "@fluentui/babel-make-styles",
+  "comment": "update signature for callbacks",
+  "packageName": "@fluentui/react-menu",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Checkbox, Dropdown, IDropdownOption, TextField } from './tmp-components.stories';
-import { PlaygroundProps } from './Playground.types.stories';
+import { Checkbox, Dropdown, TextField } from './tmp-components.stories';
 import { makeStyles } from '@fluentui/react-make-styles';
+import type { IDropdownOption } from './tmp-components.stories';
+import type { PlaygroundProps } from './Playground.types.stories';
 
 const tableStyle: React.CSSProperties = {
   border: '1px solid black',

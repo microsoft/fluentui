@@ -1,6 +1,6 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { PresenceBadgeState } from './PresenceBadge.types';
 import { useBadgeStyles } from '../../Badge';
+import type { PresenceBadgeState } from './PresenceBadge.types';
 
 const useStyles = makeStyles({
   root: theme => ({
