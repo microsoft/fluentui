@@ -80,24 +80,59 @@ describe('Slider', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
   });
 
+  it('slides to the correct position when dragged in-between steps', () => {
+    const onChange = jest.fn();
+    const wrapper: ReactWrapper = mount(
+      <Slider
+        step={10}
+        thumbWrapper={{ className: 'thumb-wrapper' }}
+        activeRail={{ className: 'active-rail' }}
+        onChange={onChange}
+      />,
+    );
+
+    const activeRail = wrapper.find('.active-rail');
+
+    activeRail.getDOMNode().getBoundingClientRect = () =>
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
+    expect(onChange).toBeCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
+    expect(onChange).toBeCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
+  });
+
   it('slides to (min/max) and executes onChange', () => {
     const onChange = jest.fn();
 
-    const wrapper: ReactWrapper = mount(<Slider onChange={onChange} />);
-    const sliderRoot = wrapper.first();
+    const wrapper: ReactWrapper = mount(
+      <Slider
+        onChange={onChange}
+        activeRail={{ className: 'active-rail' }}
+        thumbWrapper={{ className: 'thumb-wrapper' }}
+      />,
+    );
+    const activeRail = wrapper.find('.active-rail');
 
     expect(onChange).toBeCalledTimes(0);
 
-    sliderRoot.getDOMNode().getBoundingClientRect = () =>
+    activeRail.getDOMNode().getBoundingClientRect = () =>
       ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
 
-    sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
     expect(onChange).toBeCalledTimes(1);
     expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(100%)');
 
-    sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
+    wrapper.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
     expect(onChange).toBeCalledTimes(2);
     expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
+    expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(0%)');
 
     wrapper.unmount();
   });
@@ -164,6 +199,44 @@ describe('Slider', () => {
     fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
 
     expect(onChange.mock.calls[2][1]).toEqual({ value: 51 });
+  });
+
+  it('correctly calculates the (horizontal) origin (border-radius)', () => {
+    const { container } = render(<Slider defaultValue={50} max={100} origin={50} data-testid="test" />);
+
+    const sliderRoot = screen.getByTestId('test');
+    const sliderTrack = container.querySelector('.ms-Slider-track');
+
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+    expect(sliderTrack?.getAttribute('style')).toContain('0px 99px 99px 0px');
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+    expect(sliderTrack?.getAttribute('style')).toContain('99px 0px 0px 99px');
+  });
+
+  it('correctly calculates the (vertical) origin (border-radius)', () => {
+    const { container } = render(<Slider defaultValue={50} vertical max={100} origin={50} data-testid="test" />);
+
+    const sliderRoot = screen.getByTestId('test');
+    const sliderTrack = container.querySelector('.ms-Slider-track');
+
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+    expect(sliderTrack?.getAttribute('style')).toContain('0px 0px 99px 99px');
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+    fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
+    expect(sliderTrack?.getAttribute('style')).toContain('99px 99px 0px 0px');
+  });
+
+  it('correctly calculates the origin (border-radius) when given (min) as the origin', () => {
+    const { container } = render(<Slider origin={0} min={0} vertical />);
+    const sliderTrack = container.querySelector('.ms-Slider-track');
+    expect(sliderTrack?.getAttribute('style')).toContain('99px');
+  });
+
+  it('correctly calculates the origin (border-radius) when given (max) as the origin', () => {
+    const { container } = render(<Slider origin={100} max={100} vertical />);
+    const sliderTrack = container.querySelector('.ms-Slider-track');
+    expect(sliderTrack?.getAttribute('style')).toContain('99px');
   });
 
   it('handles a negative (step) prop', () => {

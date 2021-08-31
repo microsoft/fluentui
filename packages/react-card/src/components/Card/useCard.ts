@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { CardProps, CardShorthandProps, CardState } from './Card.types';
+import type { CardProps, CardShorthandProps, CardState } from './Card.types';
 
 /**
  * Array of all shorthand properties listed in CardShorthandProps

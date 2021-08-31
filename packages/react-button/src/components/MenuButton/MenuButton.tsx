@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { ChevronDownIcon } from './DefaultIcons';
-import { MenuButtonProps } from './MenuButton.types';
 import { renderMenuButton } from './renderMenuButton';
 import { useMenuButton } from './useMenuButton';
 import { useMenuButtonStyles } from './useMenuButtonStyles';
+import type { MenuButtonProps } from './MenuButton.types';
 
 /**
- * Define a styled MenuButton, using the `useMenuButton` hook.
- * {@docCategory Button}
+ * MenuButtons are buttons that handle opening and closing a menu when they are triggered.
  */
 export const MenuButton: React.FunctionComponent<MenuButtonProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
   HTMLElement,

@@ -1,11 +1,16 @@
 import * as React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/react-menu';
-import { MenuButton, MenuButtonProps } from './MenuButton';
+import { Menu, MenuItem, MenuList, MenuTrigger } from '@fluentui/react-menu';
+// @ts-ignore
+import type { MenuProps } from '@fluentui/react-menu';
+/* eslint-enable @typescript-eslint/ban-ts-comment */
+
+import { MenuButton } from './MenuButton';
 import { Playground } from './Playground.stories';
-import { PlaygroundProps } from './Playground.types.stories';
 import { buttonBaseProps } from './buttonBaseProps.stories';
+import type { MenuButtonProps } from './MenuButton';
+import type { PlaygroundProps } from './Playground.types.stories';
 
 const ExampleMenu = (props: MenuButtonProps): JSX.Element => (
   <Menu>

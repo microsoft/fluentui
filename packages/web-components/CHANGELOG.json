@@ -2,6 +2,57 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/web-components_v1.3.8",
+      "version": "1.3.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: syntax error in card styles",
+            "author": "jes@microsoft.com",
+            "commit": "2180a7a5e618570fcbdb87938811417abcabf50c",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "version bump fast foundation",
+            "author": "jes@microsoft.com",
+            "commit": "e156f244668fe3b80353a97e2037ec9635901a27",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/web-components_v1.3.7",
+      "version": "1.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update dependencies",
+            "author": "jes@microsoft.com",
+            "commit": "997099c28f27cc2979f984d0c0b06c97f84a4aac",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/web-components_v1.3.6",
+      "version": "1.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix transform fragments script causing template errors in the bundle",
+            "author": "chhol@microsoft.com",
+            "commit": "f1e6a048ed5e50c7977242802ea5dc50b07f1ece",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/web-components_v1.3.5",
       "version": "1.3.5",

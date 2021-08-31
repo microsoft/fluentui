@@ -49,6 +49,9 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   /** A toolbar item can show it is currently unable to be interacted with. */
   disabled?: boolean;
 
+  /** A toolbar item can be disabled and focusable at the same time. */
+  disabledFocusable?: boolean;
+
   /** Name or shorthand for Toolbar Item Icon */
   icon?: ShorthandValue<ToolbarItemIconProps>;
 
@@ -125,6 +128,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       icon,
       children,
       disabled,
+      disabledFocusable,
       popup,
       menuOpen,
       wrapper,
@@ -164,6 +168,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       mapPropsToBehavior: () => ({
         as: String(props.as),
         disabled,
+        disabledFocusable,
         hasMenu: !!menu,
         hasPopup: !!popup,
         menuOpen,
@@ -174,7 +179,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const { classes } = useStyles<ToolbarItemStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
-      mapPropsToStyles: () => ({ active, disabled }),
+      mapPropsToStyles: () => ({ active, disabled: disabled || disabledFocusable }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -194,7 +199,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     };
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-      if (disabled) {
+      if (disabled || disabledFocusable) {
         e.preventDefault();
         return;
       }
@@ -376,6 +381,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       'content',
       'design',
       'styles',
+      'disabledFocusable',
       'variables',
       'active',
       'disabled',
@@ -396,6 +402,7 @@ ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
+  disabledFocusable: PropTypes.bool,
   icon: customPropTypes.shorthandAllowingChildren,
   menu: PropTypes.oneOfType([
     customPropTypes.shorthandAllowingChildren,
