@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.70)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.69..@fluentui/react-provider_v9.0.0-alpha.70)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.54 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
+
+## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.69)
+
+Fri, 27 Aug 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.68..@fluentui/react-provider_v9.0.0-alpha.69)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.40 ([PR #19462](https://github.com/microsoft/fluentui/pull/19462) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.68)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.67..@fluentui/react-provider_v9.0.0-alpha.68)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.39 ([PR #19486](https://github.com/microsoft/fluentui/pull/19486) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.67)
 

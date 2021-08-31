@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Tue, 24 Aug 2021 07:34:48 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.34)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.33..@fluentui/react-popover_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.54 ([PR #19534](https://github.com/microsoft/fluentui/pull/19534) by marata@microsoft.com)
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.33)
+
+Fri, 27 Aug 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.32..@fluentui/react-popover_v9.0.0-alpha.33)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.40 ([PR #19462](https://github.com/microsoft/fluentui/pull/19462) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.32)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.31..@fluentui/react-popover_v9.0.0-alpha.32)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.39 ([PR #19486](https://github.com/microsoft/fluentui/pull/19486) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.31)
 

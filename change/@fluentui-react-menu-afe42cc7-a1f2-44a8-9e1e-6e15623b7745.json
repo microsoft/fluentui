@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Reverting to compat",
-  "packageName": "@fluentui/react-checkbox",
+  "comment": "Updates react-menu to use root as slot",
+  "packageName": "@fluentui/react-menu",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
 }
