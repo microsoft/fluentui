@@ -491,8 +491,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 padding-top: 16px;
               }
               & li {
-                height: 16px;
-                line-height: 16px;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
                 margin-bottom: 8px;
                 overflow: hidden;
               }
@@ -505,6 +506,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -546,6 +548,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     box-sizing: border-box;
                     color: #201f1e;
                     display: inline-block;
+                    flex-grow: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
@@ -555,7 +558,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    width: calc(100% - 24px);
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
@@ -628,6 +630,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -669,6 +672,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     box-sizing: border-box;
                     color: #201f1e;
                     display: inline-block;
+                    flex-grow: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
@@ -678,7 +682,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    width: calc(100% - 24px);
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
@@ -751,6 +754,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -792,6 +796,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     box-sizing: border-box;
                     color: #201f1e;
                     display: inline-block;
+                    flex-grow: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
@@ -801,7 +806,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    width: calc(100% - 24px);
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
