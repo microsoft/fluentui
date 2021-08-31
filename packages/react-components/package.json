@@ -22,7 +22,7 @@
     "start": "yarn storybook",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-components/src && yarn docs",
-    "storybook": "start-storybook --port 3000 -s ./public",
+    "storybook": "start-storybook --port 3000 -s ./public --no-manager-cache",
     "build-storybook": "build-storybook -s ./public -o ./dist/storybook",
     "test": "jest"
   },
@@ -51,6 +51,7 @@
     "@fluentui/react-theme": "^9.0.0-alpha.22",
     "@fluentui/react-tooltip": "^9.0.0-alpha.75",
     "@fluentui/react-utilities": "^9.0.0-alpha.43",
+    "storybook-addon-export-to-codesandbox": "^0.1.8",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
