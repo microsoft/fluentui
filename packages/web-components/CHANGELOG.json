@@ -2,6 +2,123 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/web-components_v1.3.8",
+      "version": "1.3.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "ci(storybook): unify and simplify storybook production build deployments across the repo",
+            "author": "martinhochel@microsoft.com",
+            "commit": "42a36dd1dba02d7023de84ca17d3ea20e1e2c8b3",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/web-components_v1.3.8",
+      "version": "1.3.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: syntax error in card styles",
+            "author": "jes@microsoft.com",
+            "commit": "2180a7a5e618570fcbdb87938811417abcabf50c",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "version bump fast foundation",
+            "author": "jes@microsoft.com",
+            "commit": "e156f244668fe3b80353a97e2037ec9635901a27",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/web-components_v1.3.7",
+      "version": "1.3.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update dependencies",
+            "author": "jes@microsoft.com",
+            "commit": "997099c28f27cc2979f984d0c0b06c97f84a4aac",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/web-components_v1.3.6",
+      "version": "1.3.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix transform fragments script causing template errors in the bundle",
+            "author": "chhol@microsoft.com",
+            "commit": "f1e6a048ed5e50c7977242802ea5dc50b07f1ece",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/web-components_v1.3.5",
+      "version": "1.3.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update background to Canvas and color to CanvasText",
+            "author": "khamu@microsoft.com",
+            "commit": "882c7f7309d11e5de733d8c8ccf8ec67dca517c9",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/web-components_v1.3.4",
+      "version": "1.3.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ensure card foreground color responds to fill color changes",
+            "author": "chhol@microsoft.com",
+            "commit": "22316c6a87239b6646c98f8f7f603bb069d55bad",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "fix various style bugs and design token uses",
+            "author": "corylaviska@microsoft.com",
+            "commit": "efcc1419197ddee42260c0503a571d693098fa54",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Aug 2021 07:33:54 GMT",
+      "tag": "@fluentui/web-components_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "style: fix formatting violations in repo",
+            "author": "martinhochel@microsoft.com",
+            "commit": "5dfa622011b10aaab3ab1fb3fc2e5f77c8a13166",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Aug 2021 07:35:14 GMT",
       "tag": "@fluentui/web-components_v1.3.3",
       "version": "1.3.3",

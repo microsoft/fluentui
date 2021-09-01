@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
-import { MenuListProps } from '../MenuList/index';
+import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
+import { MenuListCommons } from '../MenuList/index';
+import { MenuContextValue } from '../../contexts/menuContext';
 
-interface MenuCommons extends MenuListProps {
+interface MenuCommons extends MenuListCommons {
   /**
    * Whether the popup is open
    */
@@ -47,25 +48,29 @@ interface MenuCommons extends MenuListProps {
   hoverDelay?: number;
 }
 
+export type MenuSlots = {};
+
 /**
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps
-  extends Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'>,
-    Partial<MenuCommons>,
-    ComponentProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps<MenuSlots> {
   /**
    * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
    * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
+
+  /**
+   * Configures the positioned menu
+   */
+  positioning?: PositioningShorthand;
 }
 
 /**
  * {@docCategory Menu }
  */
-export interface MenuState extends MenuCommons, ComponentState {
+export interface MenuState extends MenuCommons, ComponentState<MenuSlots> {
   /**
    * Callback to open/close the popup
    */
@@ -124,6 +129,10 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
    * indicates whether the request for the open state was bubbled from a nested menu
    */
   bubble?: boolean;
+}
+
+export interface MenuContextValues {
+  menu: MenuContextValue;
 }
 
 /**

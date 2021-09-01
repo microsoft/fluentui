@@ -1,11 +1,10 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { MenuPopoverState } from './MenuPopover.types';
+import type { MenuPopoverState } from './MenuPopover.types';
 
 const useStyles = makeStyles({
   root: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     minWidth: '128px',
-    minHeight: '48px',
     maxWidth: '300px',
     width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
@@ -21,6 +20,6 @@ const useStyles = makeStyles({
  */
 export const useMenuPopoverStyles = (state: MenuPopoverState): MenuPopoverState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
   return state;
 };

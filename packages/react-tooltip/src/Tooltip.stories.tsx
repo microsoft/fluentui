@@ -47,7 +47,7 @@ export const Basic = () => {
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="Tooltip pointing to a custom target" target={exampleTarget} pointing>
+        <Tooltip content="Tooltip pointing to a custom target" positioning={{ target: exampleTarget }} pointing>
           <button>
             Custom target:{' '}
             <div
@@ -95,43 +95,43 @@ export const Positioning = () => {
     <>
       <div>Each of these buttons places the tooltip in a different location relative to its trigger button.</div>
       <div className={styles.targetContainer}>
-        <Tooltip content="above start" position="above" align="start">
+        <Tooltip content="above start" positioning="above-start">
           <button style={{ gridArea: '1 / 2' }}>above start</button>
         </Tooltip>
-        <Tooltip content="above center" position="above" align="center">
+        <Tooltip content="above center" positioning="above">
           <button style={{ gridArea: '1 / 3' }}>above center</button>
         </Tooltip>
-        <Tooltip content="above end" position="above" align="end">
+        <Tooltip content="above end" positioning="above-end">
           <button style={{ gridArea: '1 / 4' }}>above end</button>
         </Tooltip>
 
-        <Tooltip content="before top" position="before" align="top">
+        <Tooltip content="before top" positioning="before-top">
           <button style={{ gridArea: '2 / 1' }}>before top</button>
         </Tooltip>
-        <Tooltip content="before center" position="before" align="center">
+        <Tooltip content="before center" positioning="before">
           <button style={{ gridArea: '3 / 1' }}>before center</button>
         </Tooltip>
-        <Tooltip content="before bottom" position="before" align="bottom">
+        <Tooltip content="before bottom" positioning="before-bottom">
           <button style={{ gridArea: '4 / 1' }}>before bottom</button>
         </Tooltip>
 
-        <Tooltip content="after top" position="after" align="top">
+        <Tooltip content="after top" positioning="after-top">
           <button style={{ gridArea: '2 / 5' }}>after top</button>
         </Tooltip>
-        <Tooltip content="after center" position="after" align="center">
+        <Tooltip content="after center" positioning="after">
           <button style={{ gridArea: '3 / 5' }}>after center</button>
         </Tooltip>
-        <Tooltip content="after bottom" position="after" align="bottom">
+        <Tooltip content="after bottom" positioning="after-bottom">
           <button style={{ gridArea: '4 / 5' }}>after bottom</button>
         </Tooltip>
 
-        <Tooltip content="below start" position="below" align="start">
+        <Tooltip content="below start" positioning="below-start">
           <button style={{ gridArea: '5 / 2' }}>below start</button>
         </Tooltip>
-        <Tooltip content="below center" position="below" align="center">
+        <Tooltip content="below center" positioning="below">
           <button style={{ gridArea: '5 / 3' }}>below center</button>
         </Tooltip>
-        <Tooltip content="below end" position="below" align="end">
+        <Tooltip content="below end" positioning="below-end">
           <button style={{ gridArea: '5 / 4' }}>below end</button>
         </Tooltip>
       </div>
@@ -161,7 +161,7 @@ export const OnlyIfTruncated = () => {
       <Tooltip
         content={text}
         visible={tooltipVisible}
-        position="below"
+        positioning="below"
         onVisibleChange={(_ev, { visible }) => {
           if (
             visible &&

@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { LinkState } from './Link.types';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import type { LinkState } from './Link.types';
 
 const useStyles = makeStyles({
   focusIndicator: createFocusIndicatorStyleRule({

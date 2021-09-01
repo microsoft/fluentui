@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ITileProps, TileSize } from './Tile.types';
 import { Check } from '@fluentui/react/lib/Check';
 import { SELECTION_CHANGE } from '@fluentui/react/lib/Selection';
-import { ISize, css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
+import { css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from './Check.scss';
+import type { ITileProps, TileSize } from './Tile.types';
+import type { ISize } from '../../Utilities';
 
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;

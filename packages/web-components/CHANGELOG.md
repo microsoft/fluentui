@@ -1,8 +1,55 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.8)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.7..@fluentui/web-components_v1.3.8)
+
+### Patches
+
+- fix: syntax error in card styles ([PR #19573](https://github.com/microsoft/fluentui/pull/19573) by jes@microsoft.com)
+- version bump fast foundation ([PR #19569](https://github.com/microsoft/fluentui/pull/19569) by jes@microsoft.com)
+
+## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.7)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.6..@fluentui/web-components_v1.3.7)
+
+### Patches
+
+- update dependencies ([PR #19548](https://github.com/microsoft/fluentui/pull/19548) by jes@microsoft.com)
+
+## [1.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.6)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.5..@fluentui/web-components_v1.3.6)
+
+### Patches
+
+- fix transform fragments script causing template errors in the bundle ([PR #19504](https://github.com/microsoft/fluentui/pull/19504) by chhol@microsoft.com)
+
+## [1.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.5)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.4..@fluentui/web-components_v1.3.5)
+
+### Patches
+
+- update background to Canvas and color to CanvasText ([PR #19368](https://github.com/microsoft/fluentui/pull/19368) by khamu@microsoft.com)
+
+## [1.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.4)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.3..@fluentui/web-components_v1.3.4)
+
+### Patches
+
+- ensure card foreground color responds to fill color changes ([PR #19439](https://github.com/microsoft/fluentui/pull/19439) by chhol@microsoft.com)
+- fix various style bugs and design token uses ([PR #19418](https://github.com/microsoft/fluentui/pull/19418) by corylaviska@microsoft.com)
 
 ## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.3)
 

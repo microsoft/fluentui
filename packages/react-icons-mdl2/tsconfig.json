@@ -16,7 +16,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": ["jest"]
+    "types": ["jest"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

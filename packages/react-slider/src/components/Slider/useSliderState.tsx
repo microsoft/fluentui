@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { useId, useControllableState, useMount } from '@fluentui/react-utilities';
-import { SliderSlots, SliderState, SliderCommon } from './Slider.types';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import { mergeClasses } from '@fluentui/react-make-styles';
+import type { SliderState } from './Slider.types';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
@@ -22,26 +24,60 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
+/**
+ * Finds and swaps a provided key for it's right to left format.
+ */
+const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
+  if (dir === 'rtl') {
+    switch (key) {
+      case 'ArrowLeft': {
+        return 'ArrowRight';
+      }
+
+      case 'ArrowRight': {
+        return 'ArrowLeft';
+      }
+    }
+  }
+
+  return key;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
   element.addEventListener(eventName, callback);
   return () => element.removeEventListener(eventName, callback);
 };
 
-export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | keyof SliderSlots | 'as' | 'ref'>) => {
+// The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
+const markContainerClassName = 'ms-Slider-markItemContainer';
+export const markClassName = 'ms-Slider-mark';
+const firstMarkClassName = 'ms-Slider-firstMark';
+const lastMarkClassName = 'ms-Slider-lastMark';
+
+export const useSliderState = (state: SliderState) => {
   const {
     as = 'div',
     value,
     defaultValue = 0,
     min = 0,
-    max = 10,
+    max = 100,
     step = 1,
+    keyboardStep = state.step || 1,
+    disabled = false,
     ariaValueText,
     onChange,
+    marks,
+    vertical = false,
+    origin,
     onPointerDown: onPointerDownCallback,
     onKeyDown: onKeyDownCallback,
   } = state;
 
+  const { dir } = useFluent();
+
+  const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clamp(value, min, max),
     defaultState: clamp(defaultValue, min, max),
@@ -49,19 +85,15 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = React.useRef<HTMLDivElement>(null);
+  const thumbRef = React.useRef<HTMLElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const onChangeCallback = React.useRef(onChange);
   const id = useId('slider-', state.id);
 
   /**
-   * Updates the `currentValue` to the new `incomingValue` and clamps it.
-   *
-   * @param ev
-   * @param incomingValue
+   * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
    */
-  const updateValue = React.useCallback(
-    (incomingValue: number, ev): void => {
+  const updateValue = useEventCallback(
+    (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -71,13 +103,20 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
         }
       }
 
-      if (onChange && onChangeCallback.current) {
-        onChangeCallback.current(clampedValue, ev);
-      }
-
+      onChange?.(ev, { value: clampedValue });
       setCurrentValue(clampedValue);
     },
-    [max, min, onChange, setCurrentValue],
+  );
+
+  /**
+   * Updates the controlled `currentValue` and `renderedPosition` of the Slider.
+   */
+  const updatePosition = React.useCallback(
+    (incomingValue: number, ev) => {
+      setRenderedPosition(clamp(incomingValue, min, max));
+      updateValue(incomingValue, ev);
+    },
+    [max, min, updateValue],
   );
 
   /**
@@ -86,153 +125,253 @@ export const useSliderState = (state: Pick<SliderState, keyof SliderCommon | key
   const calculateSteps = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): number => {
       const currentBounds = railRef?.current?.getBoundingClientRect();
-      const size = currentBounds?.width || 0;
-      const position = currentBounds?.left || 0;
+      const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
+      let position;
+
+      if (vertical) {
+        position = currentBounds!.bottom;
+      } else if (dir === 'rtl') {
+        position = currentBounds!.right;
+      } else {
+        position = currentBounds!.left;
+      }
 
       const totalSteps = (max - min) / step;
-      const stepLength = size / totalSteps;
-      const thumbPosition = ev.clientX;
-      const distance = thumbPosition - position;
+      const stepLength = sliderSize / totalSteps;
+      const thumbPosition = vertical ? ev.clientY : ev.clientX;
+      const distance = dir === 'rtl' || vertical ? position - thumbPosition : thumbPosition - position;
+
       return distance / stepLength;
     },
-    [max, min, step],
+    [dir, max, min, step, vertical],
   );
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      if (step !== 1) {
-        updateValue(Math.round((min + step * calculateSteps(ev)) / step) * step, ev);
-      } else {
-        updateValue(min + step * calculateSteps(ev), ev);
-      }
+      const position = min + step * calculateSteps(ev);
+      const currentStepPosition = Math.round(position / step) * step;
+
+      setRenderedPosition(clamp(position, min, max));
+      updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, min, step, updateValue],
+    [calculateSteps, max, min, step, updateValue],
   );
 
-  const onPointerUp = (): void => {
-    disposables.current.forEach(dispose => dispose());
-    disposables.current = [];
-    thumbRef.current!.focus();
-  };
+  const onPointerUp = React.useCallback(
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      disposables.current.forEach(dispose => dispose());
+      disposables.current = [];
+      showStepAnimation();
+      // When undefined, the position fallbacks to the currentValue state.
+      setRenderedPosition(undefined);
+      thumbRef.current!.focus();
+    },
+    [showStepAnimation],
+  );
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
-      if (target.setPointerCapture) {
-        target.setPointerCapture(pointerId);
-      }
+      target.setPointerCapture?.(pointerId);
 
+      hideStepAnimation();
       onPointerDownCallback?.(ev);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture(pointerId);
+        target.releasePointerCapture?.(pointerId);
       });
 
       onPointerMove(ev);
     },
-    [onPointerMove, onPointerDownCallback],
+    [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
   );
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      const normalizedKey = getRTLSafeKey(ev.key, dir);
+      hideStepAnimation();
       onKeyDownCallback?.(ev);
 
       if (ev.shiftKey) {
-        if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-          updateValue(currentValue! - step * 10, ev);
+        if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
+          updatePosition(currentValue! - keyboardStep * 10, ev);
           return;
-        } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-          updateValue(currentValue! + step * 10, ev);
+        } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
+          updatePosition(currentValue! + keyboardStep * 10, ev);
           return;
         }
-      } else if (ev.key === 'ArrowDown' || ev.key === 'ArrowLeft') {
-        updateValue(currentValue! - step, ev);
+      } else if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
+        updatePosition(currentValue! - keyboardStep, ev);
         return;
-      } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowRight') {
-        updateValue(currentValue! + step, ev);
+      } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
+        updatePosition(currentValue! + keyboardStep, ev);
         return;
       } else {
-        switch (ev.key) {
+        switch (normalizedKey) {
           case 'PageDown':
-            updateValue(currentValue! - step * 10, ev);
+            updatePosition(currentValue! - keyboardStep * 10, ev);
             break;
           case 'PageUp':
-            updateValue(currentValue! + step * 10, ev);
+            updatePosition(currentValue! + keyboardStep * 10, ev);
             break;
           case 'Home':
-            updateValue(min, ev);
+            updatePosition(min, ev);
             break;
           case 'End':
-            updateValue(max, ev);
+            updatePosition(max, ev);
             break;
         }
       }
     },
-    [currentValue, max, min, onKeyDownCallback, step, updateValue],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
-  React.useEffect(() => {
-    if (state.ref && state.ref.current) {
-      state.ref.current.value = currentValue;
-      state.ref.current.focus = () => thumbRef?.current?.focus();
-    }
-  }, [currentValue, state.ref]);
-
-  useMount(() => {
-    // If the user passes an out of bounds controlled value, clamp and update their value onMount.
-    if (value !== undefined && (value < min || value > max) && onChange && onChangeCallback.current) {
-      onChangeCallback.current(clamp(value, min, max));
-
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('It appears that a controlled Slider has received an unclamped value outside of the min/max.');
+  const getTrackBorderRadius = () => {
+    if (origin && origin !== (max || min)) {
+      if (vertical) {
+        return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
+      } else {
+        return (dir === 'rtl' ? valuePercent > originPercent : valuePercent < originPercent)
+          ? '99px 0px 0px 99px'
+          : '0px 99px 99px 0px';
       }
     }
+    return '99px';
+  };
+
+  useUnmount(() => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
   });
 
-  const valuePercent = getPercent(currentValue!, min, max);
+  // TODO: Awaiting animation time from design spec.
+  const animationTime = '0.1s';
 
-  const thumbStyles = { transform: `translateX(${valuePercent}%)`, ...state.thumb.style };
+  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
-  const trackStyles = { width: `${valuePercent}%`, ...state.track.style };
+  const originPercent = React.useMemo(() => {
+    return origin ? getPercent(origin, min, max) : 0;
+  }, [max, min, origin]);
+
+  const markValues = React.useMemo((): number[] => {
+    const valueArray: number[] = [];
+
+    // 1. We receive a boolean: mark for every step.
+    if (typeof marks === 'boolean' && marks === true) {
+      for (let i = 0; i < (max - min) / step + 1; i++) {
+        valueArray.push(getPercent(min + step * i, min, max));
+      }
+    } else if (Array.isArray(marks) && marks.length > 0) {
+      // 2. We receive an array with numbers: mark for every value in array.
+      return marks.map(marksItem => getPercent(min + marksItem, min, max));
+    }
+
+    return valueArray;
+  }, [marks, max, min, step]);
+
+  /**
+   * Current percentage position for the marks.
+   */
+  const markPercent = React.useMemo((): string[] => {
+    const valueArray: number[] = markValues;
+    const result: string[] = [];
+
+    // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
+    if (valueArray.length > 0) {
+      result.push(valueArray[0] + '% ');
+      let prevPercent = valueArray[0];
+      for (let i = 1; i < valueArray.length; i++) {
+        result.push(valueArray[i] - prevPercent + '% ');
+        prevPercent = valueArray[i];
+      }
+    }
+
+    return result;
+  }, [markValues]);
+
+  const thumbWrapperStyles = {
+    transform: vertical
+      ? `translateY(${valuePercent}%)`
+      : `translateX(${dir === 'rtl' ? -valuePercent : valuePercent}%)`,
+    transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
+    ...state.thumbWrapper.style,
+  };
+
+  const trackStyles = {
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']: origin
+      ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+      : `${valuePercent}%`,
+    borderRadius: getTrackBorderRadius(),
+    transition: stepAnimation
+      ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
+      : 'none',
+    ...state.track.style,
+  };
+
+  const marksWrapperStyles = marks
+    ? {
+        [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: markPercent.join(''),
+        ...state.marksWrapper.style,
+      }
+    : {};
+
+  /**
+   * Renders the marks
+   */
+  const renderMarks = () => {
+    const marksPercent = markPercent;
+    const marksValue = markValues;
+    const marksChildren: JSX.Element[] = [];
+    for (let i = 0; i < marksPercent.length; i++) {
+      marksChildren.push(
+        <div className={markContainerClassName} key={`markItemContainer-${i}`}>
+          <div
+            className={mergeClasses(
+              markClassName,
+              (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
+            )}
+            key={`mark-${i}`}
+          />
+        </div>,
+      );
+    }
+
+    return marksChildren;
+  };
 
   // Root props
   state.as = as;
-  state.onPointerDown = onPointerDown;
-  state.onKeyDown = onKeyDown;
   state.id = id;
-
-  // Rail Props
-  state.rail.children = null;
-
-  // Track Props
-  state.trackWrapper.children = null;
+  if (!disabled) {
+    state.onPointerDown = onPointerDown;
+    state.onKeyDown = onKeyDown;
+  }
 
   // Track Props
-  state.track.className = 'ms-Slider-track';
   state.track.style = trackStyles;
-  state.track.children = null;
+
+  // Mark props
+  state.marksWrapper.children = marks ? renderMarks() : undefined;
+  state.marksWrapper.style = marksWrapperStyles;
 
   // Thumb Wrapper Props
-  state.thumbWrapper.style = thumbStyles;
-  state.thumbWrapper.children = null;
+  state.thumbWrapper.style = thumbWrapperStyles;
 
   // Thumb Props
-  state.thumb.className = 'ms-Slider-thumb';
   state.thumb.ref = thumbRef;
-  state.thumb.tabIndex = 0;
+  state.thumb.tabIndex = disabled ? undefined : 0;
   state.thumb.role = 'slider';
   state.thumb['aria-valuemin'] = min;
   state.thumb['aria-valuemax'] = max;
   state.thumb['aria-valuenow'] = currentValue;
   state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
-  state.thumb.children = null;
+  disabled && (state.thumb['aria-disabled'] = true);
 
   // Active Rail Props
   state.activeRail.ref = railRef;
-  state.activeRail.children = null;
 
   return state;
 };

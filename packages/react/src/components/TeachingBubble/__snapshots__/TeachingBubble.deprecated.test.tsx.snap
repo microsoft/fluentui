@@ -56,6 +56,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             }
       >
         <p
+          aria-level={3}
           className=
               ms-TeachingBubble-headline
               {

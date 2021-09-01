@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
-import { ButtonState } from './Button.types';
+import type { ButtonState } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
 //       We're tracking these here to determine how we can hoist them.
@@ -34,6 +34,8 @@ const useRootStyles = makeStyles({
     borderColor: theme.alias.color.neutral.neutralStroke1,
     borderStyle: 'solid',
     borderWidth: theme.global.strokeWidth.thin,
+
+    fontFamily: theme.global.type.fontFamilies.base,
 
     outline: 'none',
 
@@ -244,7 +246,7 @@ const useRootFocusStyles = makeStyles({
     borderColor: 'transparent',
     boxShadow: `
       ${theme.alias.shadow.shadow4},
-      0 0 0 2px ${theme.alias.color.neutral.neutralForeground1}
+      0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
     `,
   })),
   circular: createFocusIndicatorStyleRule(theme => ({
@@ -252,7 +254,7 @@ const useRootFocusStyles = makeStyles({
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,
-    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralForeground1}`,
+    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}`,
   })),
 });
 

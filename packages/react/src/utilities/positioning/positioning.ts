@@ -1,16 +1,17 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getScrollbarWidth, getRTL, IRectangle } from '../../Utilities';
-import {
+import { getScrollbarWidth, getRTL } from '../../Utilities';
+import { RectangleEdge } from './positioning.types';
+import { Rectangle } from '../../Utilities';
+import type { IRectangle, Point } from '../../Utilities';
+import type {
   IPositionDirectionalHintData,
   IPositionedData,
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,
   ICalloutPositionProps,
-  RectangleEdge,
   IWindowWithSegments,
 } from './positioning.types';
-import { Point, Rectangle } from '../../Utilities';
 
 function _createPositionData(
   targetEdge: RectangleEdge,

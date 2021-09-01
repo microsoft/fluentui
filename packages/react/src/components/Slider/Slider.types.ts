@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
+import type { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Slider}

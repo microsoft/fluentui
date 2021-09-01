@@ -1,6 +1,6 @@
-import { ICalloutProps } from '../../Callout';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, Point } from '../../Utilities';
+import type { ICalloutProps } from '../../Callout';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, Point } from '../../Utilities';
 
 /**
  * {@docCategory Keytips}

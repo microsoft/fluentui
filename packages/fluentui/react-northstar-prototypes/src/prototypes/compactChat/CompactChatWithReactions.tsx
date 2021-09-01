@@ -54,7 +54,7 @@ const ChatMessage = ({
   return (
     <Chat.Message
       content={content}
-      author="Tim"
+      author="Tim Deboer"
       timestamp="11:21"
       reactionGroup={reactionGroup}
       actionMenu={!hideActionMenu && actionMenu}

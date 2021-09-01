@@ -3,9 +3,9 @@ import * as renderer from 'react-test-renderer';
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider, MenuListContextValue } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
 
 describe('MenuItemRadio', () => {
   isConformant({
@@ -15,15 +15,6 @@ describe('MenuItemRadio', () => {
       value: '1',
     },
     displayName: 'MenuItemRadio',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**

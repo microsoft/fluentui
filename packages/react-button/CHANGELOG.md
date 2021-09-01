@@ -1,8 +1,98 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 06 Aug 2021 07:35:14 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.78)
+
+Wed, 01 Sep 2021 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.77..@fluentui/react-button_v9.0.0-alpha.78)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.43 ([PR #19483](https://github.com/microsoft/fluentui/pull/19483) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.77)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.76..@fluentui/react-button_v9.0.0-alpha.77)
+
+### Changes
+
+- Button: Adding type=button to all button components, removing @docCategory tags from API and fixing some documentation in the comments. ([PR #19564](https://github.com/microsoft/fluentui/pull/19564) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.76)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.75..@fluentui/react-button_v9.0.0-alpha.76)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19485](https://github.com/microsoft/fluentui/pull/19485) by dzearing@hotmail.com)
+
+## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.75)
+
+Fri, 27 Aug 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.74..@fluentui/react-button_v9.0.0-alpha.75)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.40 ([PR #19462](https://github.com/microsoft/fluentui/pull/19462) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.74)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.73..@fluentui/react-button_v9.0.0-alpha.74)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.39 ([PR #19486](https://github.com/microsoft/fluentui/pull/19486) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.73)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.72..@fluentui/react-button_v9.0.0-alpha.73)
+
+### Changes
+
+- Update .npmignore ([PR #19441](https://github.com/microsoft/fluentui/pull/19441) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.72)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.71..@fluentui/react-button_v9.0.0-alpha.72)
+
+### Changes
+
+- fix default styling for button on focus ([PR #19440](https://github.com/microsoft/fluentui/pull/19440) by ololubek@microsoft.com)
+
+## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.71)
+
+Wed, 18 Aug 2021 07:33:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.70..@fluentui/react-button_v9.0.0-alpha.71)
+
+### Changes
+
+- Update hc focus styling for vNext button ([PR #19408](https://github.com/microsoft/fluentui/pull/19408) by ololubek@microsoft.com)
+
+## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.70)
+
+Fri, 13 Aug 2021 07:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.69..@fluentui/react-button_v9.0.0-alpha.70)
+
+### Changes
+
+- Button: Adding font family styles. ([PR #19353](https://github.com/microsoft/fluentui/pull/19353) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.69)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.68..@fluentui/react-button_v9.0.0-alpha.69)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.35 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.68)
 
