@@ -84,7 +84,7 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
   reactionGroup: ({ props: p, variables: v }) => ({
     marginLeft: v.reactionGroupMarginLeft,
     ...(p.hasBadge && p.badgePosition === 'end' && { marginRight: pxToRem(2) }),
-    float: 'right',
+    // float: 'right',
   }),
 
   timestamp: ({ props: p, variables: v }) => ({
