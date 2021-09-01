@@ -46,7 +46,7 @@ export const ComboBoxSelectAllExample: React.FunctionComponent = () => {
       } else {
         const updatedKeys = selected
           ? [...currentSelectedOptionKeys, option!.key as string]
-          : currentSelectedOptionKeys.filter(k => k !== option!.key);
+          : currentSelectedOptionKeys.filter(k => k !== option.key);
         if (updatedKeys.length === selectableOptions.length) {
           updatedKeys.push('selectAll');
         }

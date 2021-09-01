@@ -844,6 +844,68 @@ describe('ComboBox', () => {
     });
   });
 
+  it('in multiSelect mode with mixed selected, selectAll is indeterminate', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
+      wrapper => {
+        const inputElement = wrapper.find('input');
+        inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+        const options = wrapper.find(CHECKBOX_OPTION);
+        expect(options.at(0).props()['aria-checked']).toEqual('mixed');
+      },
+    );
+  });
+
+  it('in multiSelect mode, checking options sets selectAll to indeterminate', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(1).simulate('change');
+
+      let selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
+      expect(selectAll.props()['aria-checked']).toEqual('mixed');
+
+      options.at(2).simulate('change');
+      options.at(3).simulate('change');
+
+      selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
+      expect(selectAll.props()['aria-checked']).toEqual('true');
+    });
+  });
+
+  it('in multiSelect mode, checking an indeterminate selectAll checks all options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    safeMount(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
+      wrapper => {
+        const inputElement = wrapper.find('input');
+        inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+        const options = wrapper.find(CHECKBOX_OPTION);
+        options.at(0).simulate('change');
+
+        expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
+      },
+    );
+  });
+
   it('invokes optional onItemClick callback on option select', () => {
     const onItemClickMock = jest.fn();
     safeMount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, wrapper => {
