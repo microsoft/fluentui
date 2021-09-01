@@ -30,8 +30,8 @@
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
     "@fluentui/react-conformance": "^0.4.4",
-    "@fluentui/react-label": "^9.0.0-alpha.32",
-    "@fluentui/react-provider": "^9.0.0-alpha.70",
+    "@fluentui/react-label": "^9.0.0-alpha.33",
+    "@fluentui/react-provider": "^9.0.0-alpha.71",
     "@fluentui/react-theme": "^9.0.0-alpha.22",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -46,7 +46,7 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.61",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
-    "@fluentui/react-tabster": "^9.0.0-alpha.54",
+    "@fluentui/react-tabster": "^9.0.0-alpha.55",
     "@fluentui/react-utilities": "^9.0.0-alpha.43",
     "tslib": "^2.1.0"
   },
