@@ -1,18 +1,23 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
+import { makeStyles } from '@fluentui/react-make-styles/src';
+
+const useStyles = makeStyles({
+  group: { display: 'flex', flexWrap: 'wrap', gap: '0.5em' },
+});
 
 export const Disabled = () => {
-  const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
+  const classes = useStyles();
 
   return (
     <>
-      <div style={groupStyles}>
+      <div className={classes.group}>
         <Button>Default</Button>
         <Button disabled>Disabled</Button>
         <Button disabledFocusable>Disabled focusable</Button>
       </div>
-      <div style={groupStyles}>
+      <div className={classes.group}>
         <Button primary icon={<CalendarMonth24Regular />}>
           Primary
         </Button>
