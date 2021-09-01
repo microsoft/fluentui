@@ -10,7 +10,6 @@ yarn.lock
 
 # generated folders
 node_modules
-.cache
 lib
 lib-amd
 lib-esm
