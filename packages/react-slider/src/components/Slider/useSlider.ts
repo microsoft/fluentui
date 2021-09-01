@@ -15,6 +15,7 @@ export const sliderShorthandProps: SliderShorthandProps[] = [
   'thumbWrapper',
   'track',
   'trackWrapper',
+  'marksWrapper',
 ];
 
 /**
@@ -34,6 +35,7 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defau
       trackWrapper: { as: 'div', children: null },
       track: { as: 'div', children: null },
       thumbWrapper: { as: 'div', children: null },
+      marksWrapper: { as: 'div', children: null },
       thumb: { as: 'div', children: null },
       activeRail: { as: 'div', children: null },
       input: { as: 'input', type: 'range', children: null },

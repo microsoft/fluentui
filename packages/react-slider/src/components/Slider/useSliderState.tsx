@@ -8,6 +8,7 @@ import {
   useUnmount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { mergeClasses } from '@fluentui/react-make-styles';
 import type { SliderState } from './Slider.types';
 
 /**
@@ -55,6 +56,12 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
   return () => element.removeEventListener(eventName, callback);
 };
 
+// The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
+const markContainerClassName = 'ms-Slider-markItemContainer';
+export const markClassName = 'ms-Slider-mark';
+const firstMarkClassName = 'ms-Slider-firstMark';
+const lastMarkClassName = 'ms-Slider-lastMark';
+
 export const useSliderState = (state: SliderState) => {
   const {
     value,
@@ -66,6 +73,7 @@ export const useSliderState = (state: SliderState) => {
     disabled = false,
     ariaValueText,
     onChange,
+    marks,
     vertical = false,
     origin,
     onPointerDown: onPointerDownCallback,
@@ -248,12 +256,50 @@ export const useSliderState = (state: SliderState) => {
     disposables.current = [];
   });
 
-  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
-
   // TODO: Awaiting animation time from design spec.
   const animationTime = '0.1s';
 
-  const originPercent = origin ? getPercent(origin, min, max) : 0;
+  const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
+
+  const originPercent = React.useMemo(() => {
+    return origin ? getPercent(origin, min, max) : 0;
+  }, [max, min, origin]);
+
+  const markValues = React.useMemo((): number[] => {
+    const valueArray: number[] = [];
+
+    // 1. We receive a boolean: mark for every step.
+    if (typeof marks === 'boolean' && marks === true) {
+      for (let i = 0; i < (max - min) / step + 1; i++) {
+        valueArray.push(getPercent(min + step * i, min, max));
+      }
+    } else if (Array.isArray(marks) && marks.length > 0) {
+      // 2. We receive an array with numbers: mark for every value in array.
+      return marks.map(marksItem => getPercent(min + marksItem, min, max));
+    }
+
+    return valueArray;
+  }, [marks, max, min, step]);
+
+  /**
+   * Current percentage position for the marks.
+   */
+  const markPercent = React.useMemo((): string[] => {
+    const valueArray: number[] = markValues;
+    const result: string[] = [];
+
+    // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
+    if (valueArray.length > 0) {
+      result.push(valueArray[0] + '% ');
+      let prevPercent = valueArray[0];
+      for (let i = 1; i < valueArray.length; i++) {
+        result.push(valueArray[i] - prevPercent + '% ');
+        prevPercent = valueArray[i];
+      }
+    }
+
+    return result;
+  }, [markValues]);
 
   const thumbWrapperStyles = {
     transform: vertical
@@ -275,6 +321,37 @@ export const useSliderState = (state: SliderState) => {
     ...state.track.style,
   };
 
+  const marksWrapperStyles = marks
+    ? {
+        [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: markPercent.join(''),
+        ...state.marksWrapper.style,
+      }
+    : {};
+
+  /**
+   * Renders the marks
+   */
+  const renderMarks = () => {
+    const marksPercent = markPercent;
+    const marksValue = markValues;
+    const marksChildren: JSX.Element[] = [];
+    for (let i = 0; i < marksPercent.length; i++) {
+      marksChildren.push(
+        <div className={markContainerClassName} key={`markItemContainer-${i}`}>
+          <div
+            className={mergeClasses(
+              markClassName,
+              (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
+            )}
+            key={`mark-${i}`}
+          />
+        </div>,
+      );
+    }
+
+    return marksChildren;
+  };
+
   // Root props
   state.id = id;
   if (!disabled) {
@@ -284,6 +361,10 @@ export const useSliderState = (state: SliderState) => {
 
   // Track Props
   state.track.style = trackStyles;
+
+  // Mark props
+  state.marksWrapper.children = marks ? renderMarks() : undefined;
+  state.marksWrapper.style = marksWrapperStyles;
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbWrapperStyles;
