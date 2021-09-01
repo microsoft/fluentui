@@ -230,7 +230,8 @@
     "webpack-merge": "5.7.3",
     "workspace-tools": "0.12.3",
     "yargs": "13.3.2",
-    "yargs-parser": "13.1.2"
+    "yargs-parser": "13.1.2",
+    "storybook-addon-export-to-codesandbox": "0.1.8"
   },
   "license": "MIT",
   "workspaces": {
