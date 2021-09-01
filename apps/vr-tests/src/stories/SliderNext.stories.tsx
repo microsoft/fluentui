@@ -51,16 +51,182 @@ storiesOf('SliderNext', module)
     },
   )
   .addStory(
-    'Marks Custom',
+    'Marks Custom Value',
     () => <Slider className="test-class" max={10} defaultValue={3} marks={[0, 1, 5, 8, 10]} />,
     {
       rtl: true,
     },
   )
   .addStory(
-    'Marks Custom Vertical',
+    'Marks Custom Value Vertical',
     () => (
       <Slider className="test-class" vertical max={10} defaultValue={3} marks={[0, 1, 5, 8, 10]} />
+    ),
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Marks Label Value',
+    () => (
+      <Slider
+        className="test-class"
+        max={10}
+        defaultValue={3}
+        marks={[
+          0,
+          { value: 1, label: 'hello world' },
+          { value: 2, label: 'hello' },
+          8,
+          { value: 10, label: '10' },
+        ]}
+      />
+    ),
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Marks Label Vertical',
+    () => (
+      <Slider
+        className="test-class"
+        vertical
+        max={10}
+        defaultValue={3}
+        marks={[
+          0,
+          { value: 1, label: 'hello world' },
+          { value: 2, label: 'hello' },
+          8,
+          { value: 10, label: '10' },
+        ]}
+      />
+    ),
+    {
+      rtl: true,
+    },
+  )
+  .addStory('Marks Label Disabled', () => (
+    <Slider
+      className="test-class"
+      disabled
+      max={10}
+      defaultValue={7}
+      marks={[
+        0,
+        { value: 1, label: 'hello world' },
+        { value: 2, label: 'hello' },
+        8,
+        { value: 10, label: '10' },
+      ]}
+    />
+  ))
+  .addStory(
+    'Marks Custom Label Value',
+    () => (
+      <Slider
+        className="test-class"
+        max={10}
+        defaultValue={6}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Marks Custom Label Vertical',
+    () => (
+      <Slider
+        className="test-class"
+        vertical
+        max={10}
+        defaultValue={6}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Custom Marks',
+    () => (
+      <Slider
+        className="test-class"
+        max={10}
+        defaultValue={6}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
+            mark: (
+              <div
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  background: 'red',
+                  marginTop: '-2px',
+                }}
+              />
+            ),
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
+    ),
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Custom Marks Vertical',
+    () => (
+      <Slider
+        className="test-class"
+        vertical
+        max={10}
+        defaultValue={6}
+        marks={[
+          1,
+          {
+            value: 3,
+            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
+            mark: (
+              <div
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  background: 'red',
+                  marginLeft: '-2px',
+                }}
+              />
+            ),
+          },
+          { value: 4, label: 'world' },
+          8,
+        ]}
+      />
     ),
     {
       rtl: true,

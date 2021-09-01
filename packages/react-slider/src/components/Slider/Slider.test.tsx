@@ -99,7 +99,6 @@ describe('Slider', () => {
             { value: 40, label: 'world' },
             80,
           ]}
-          disabled
         />,
       );
       expect(container).toMatchSnapshot();
@@ -128,7 +127,6 @@ describe('Slider', () => {
             { value: 40, label: 'world' },
             80,
           ]}
-          disabled
         />,
       );
       expect(container).toMatchSnapshot();
