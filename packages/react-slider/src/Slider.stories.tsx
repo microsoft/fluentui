@@ -23,6 +23,27 @@ const useStyles = makeStyles({
   },
 });
 
+const CustomMark = () => (
+  <div
+    style={{
+      width: '2px',
+      height: '8px',
+      background: 'red',
+      marginTop: '-2px',
+    }}
+  />
+);
+
+const CustomLabel = () => (
+  <div
+    style={{
+      width: '20px',
+      height: '20px',
+      background: 'red',
+    }}
+  />
+);
+
 export const BasicSliderExample = (props: SliderProps) => {
   const [sliderValue, setSliderValue] = React.useState(160);
   const sliderOnChange = (
@@ -57,10 +78,59 @@ export const MarkedSliderExample = (props: SliderProps) => {
       <Slider marks={true} max={10} />
       <Label>Custom Mark Values</Label>
       <Slider marks={[3, 4, 8, 10]} max={10} />
+      <Label>Mark Custom Label Example</Label>
+      <Slider
+        marks={[
+          1,
+          { value: 5, label: '5 oz' },
+          {
+            value: 7,
+            label: <CustomLabel />,
+          },
+          { value: 9, label: '9 oz' },
+        ]}
+        max={10}
+      />
+      <Label>Disabled Marks</Label>
+      <Slider disabled marks={[1, { value: 5, label: '5 oz' }, { value: 9, label: '9 oz' }]} max={10} />
+      <Label>Custom Marks Example</Label>
+      <Slider
+        marks={[
+          1,
+          {
+            value: 2,
+            mark: <CustomMark />,
+          },
+          {
+            value: 8,
+            label: '8',
+            mark: <CustomMark />,
+          },
+          {
+            value: 9,
+            mark: <CustomMark />,
+          },
+        ]}
+        max={10}
+      />
       <Label>Vertical Marks</Label>
       <div className={styles.verticalWrapper}>
         <Slider vertical marks max={10} />
         <Slider vertical marks={[2, 4, 7, 8, 10]} max={10} />
+        <Slider vertical marks={[{ value: 6, label: '6' }]} max={10} disabled />
+        <Slider
+          vertical
+          marks={[
+            { value: 1, label: '1' },
+            5,
+            {
+              value: 7,
+              label: <CustomLabel />,
+            },
+            9,
+          ]}
+          max={10}
+        />
       </div>
     </div>
   );

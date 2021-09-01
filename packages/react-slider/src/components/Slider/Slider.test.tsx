@@ -50,13 +50,87 @@ describe('Slider', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders horizontal Slider with (custom marks) correctly', () => {
+    it('renders horizontal Slider with unique mark values correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={[1, 3, 7, 8]} />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders vertical Slider with (custom marks) correctly', () => {
+    it('renders vertical Slider with unique mark values correctly', () => {
       const { container } = render(<Slider defaultValue={5} marks={[2, 5, 9, 18]} vertical />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders horizontal Slider with mark labels correctly', () => {
+      const { container } = render(
+        <Slider defaultValue={5} marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders vertical Slider with mark labels correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]}
+          vertical
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders disabled Slider with mark labels correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[10, { value: 30, label: 'hello' }, { value: 40, label: 'world' }, 80]}
+          disabled
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders Slider with custom mark labels correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[
+            10,
+            { value: 30, label: <div style={{ width: '10px', height: '10px', background: 'green' }} /> },
+            { value: 40, label: 'world' },
+            80,
+          ]}
+          disabled
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders Slider with custom marks correctly', () => {
+      const { container } = render(
+        <Slider
+          defaultValue={5}
+          marks={[
+            10,
+            {
+              value: 30,
+              label: <div style={{ width: '10px', height: '10px', background: 'green' }} />,
+              mark: (
+                <div
+                  style={{
+                    width: '2px',
+                    height: '8px',
+                    background: 'red',
+                    marginTop: '-2px',
+                  }}
+                />
+              ),
+            },
+            { value: 40, label: 'world' },
+            80,
+          ]}
+          disabled
+        />,
+      );
       expect(container).toMatchSnapshot();
     });
   });

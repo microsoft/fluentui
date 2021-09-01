@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import { mergeClasses } from '@fluentui/react-make-styles';
 import type { SliderState } from './Slider.types';
 
@@ -52,6 +53,7 @@ const on = (element: Element, eventName: string, callback: (ev: any) => void) =>
 // The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
 const markContainerClassName = 'ms-Slider-markItemContainer';
 export const markClassName = 'ms-Slider-mark';
+export const markLabelClassName = 'ms-Slider-label';
 const firstMarkClassName = 'ms-Slider-firstMark';
 const lastMarkClassName = 'ms-Slider-lastMark';
 
@@ -265,9 +267,21 @@ export const useSliderState = (state: SliderState) => {
       }
     } else if (Array.isArray(marks) && marks.length > 0) {
       // 2. We receive an array with numbers: mark for every value in array.
-      return marks.map(marksItem => getPercent(min + marksItem, min, max));
-    }
+      for (let i = 0; i < marks.length; i++) {
+        const marksItem = marks[i];
 
+        // 2. We receive an array with numbers: mark for every value in array.
+        if (typeof marksItem === 'number') {
+          valueArray.push(getPercent(min + marksItem, min, max));
+        }
+
+        // 3. We receive an array with objects containing numbers and strings:
+        // mark and label for every value + string in each object.
+        else {
+          valueArray.push(getPercent(min + marksItem.value, min, max));
+        }
+      }
+    }
     return valueArray;
   }, [marks, max, min, step]);
 
@@ -326,15 +340,33 @@ export const useSliderState = (state: SliderState) => {
     const marksValue = markValues;
     const marksChildren: JSX.Element[] = [];
     for (let i = 0; i < marksPercent.length; i++) {
+      const marksItem = typeof marks === 'boolean' ? null : marks![i];
+
       marksChildren.push(
         <div className={markContainerClassName} key={`markItemContainer-${i}`}>
-          <div
-            className={mergeClasses(
-              markClassName,
-              (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
-            )}
-            key={`mark-${i}`}
-          />
+          {marksItem && typeof marksItem === 'object' && marksItem.mark ? (
+            marksItem.mark
+          ) : (
+            <div
+              className={mergeClasses(
+                markClassName,
+                (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
+              )}
+              key={`mark-${i}`}
+            />
+          )}
+          {marksItem !== (undefined || null) &&
+            typeof marksItem === 'object' &&
+            marksItem.label &&
+            (typeof marksItem.label === 'string' ? (
+              <Label className={markLabelClassName} key={`markLabel-${i}`} disabled={disabled}>
+                {marksItem.label}
+              </Label>
+            ) : (
+              <div className={markLabelClassName} key={`markLabel-${i}`}>
+                {marksItem.label}
+              </div>
+            ))}
         </div>,
       );
     }

@@ -25,7 +25,11 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     defaultValue?: number;
     disabled?: boolean;
     keyboardStep?: number;
-    marks?: boolean | number[];
+    marks?: boolean | number[] | (number | {
+        value: number;
+        label?: string | JSX.Element;
+        mark?: JSX.Element;
+    })[];
     marksWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     max?: number;
     min?: number;

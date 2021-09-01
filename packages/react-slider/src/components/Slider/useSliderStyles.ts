@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
-import { markClassName } from './useSliderState';
+import { markClassName, markLabelClassName } from './useSliderState';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -208,6 +208,11 @@ const useMarksWrapperStyles = makeStyles({
       background: 'white',
     },
 
+    [`& .${markLabelClassName}`]: {
+      padding: '2px',
+      fontSize: '12px',
+    },
+
     '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
       opacity: '0',
     },
@@ -224,6 +229,10 @@ const useMarksWrapperStyles = makeStyles({
       flexDirection: 'column',
       transform: 'translateX(50%)',
       alignItems: 'center',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
     [`& .${markClassName}`]: {
@@ -245,6 +254,11 @@ const useMarksWrapperStyles = makeStyles({
       alignItems: 'center',
       maxWidth: '100%',
       maxHeight: '100%',
+    },
+
+    [`& .${markLabelClassName}`]: {
+      paddingLeft: 'calc(var(--slider-thumb-size) /2 )',
+      transform: 'scaleY(-1)',
     },
 
     [`& .${markClassName}`]: {
