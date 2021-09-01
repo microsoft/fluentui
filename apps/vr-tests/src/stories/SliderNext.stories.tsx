@@ -39,4 +39,30 @@ storiesOf('SliderNext', module)
   .addStory('Origin (max)', () => <Slider className="test-class" max={10} origin={10} />)
   .addStory('Origin Vertical (max)', () => (
     <Slider className="test-class" min={10} vertical origin={10} />
-  ));
+  ))
+  .addStory('Marks', () => <Slider className="test-class" max={10} defaultValue={3} marks />, {
+    rtl: true,
+  })
+  .addStory(
+    'Marks Vertical',
+    () => <Slider className="test-class" vertical max={10} defaultValue={3} marks />,
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Marks Custom',
+    () => <Slider className="test-class" max={10} defaultValue={3} marks={[0, 1, 5, 8, 10]} />,
+    {
+      rtl: true,
+    },
+  )
+  .addStory(
+    'Marks Custom Vertical',
+    () => (
+      <Slider className="test-class" vertical max={10} defaultValue={3} marks={[0, 1, 5, 8, 10]} />
+    ),
+    {
+      rtl: true,
+    },
+  );

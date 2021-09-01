@@ -25,6 +25,11 @@ export interface SliderProps
   track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
+   * The wrapper holding the marks and mark labels for the Slider.
+   */
+  marksWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+  /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
   thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
@@ -81,17 +86,25 @@ export interface SliderProps
   keyboardStep?: number;
 
   /**
-   *  Whether to render the **Slider** as disabled.
+   *  Whether to render the Slider as disabled.
    *
    * @default `false` (renders enabled)
    */
   disabled?: boolean;
 
   /**
-   * Whether to render the **Slider** vertically.
+   * Whether to render the Slider vertically.
    * @default `false` (renders horizontally)
    */
   vertical?: boolean;
+
+  /**
+   * When enabled, small marks are displayed across the Slider, showing potential steps.
+   *
+   * - If `true`, marks are visible at each `step`.
+   * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
+   */
+  marks?: boolean | number[];
 
   /**
    * The starting origin point for the Slider.
@@ -127,6 +140,7 @@ export type SliderShorthandProps =
   | 'sliderWrapper'
   | 'trackWrapper'
   | 'track'
+  | 'marksWrapper'
   | 'thumbWrapper'
   | 'thumb'
   | 'activeRail';
@@ -139,6 +153,7 @@ export type SliderDefaultedProps =
   | 'sliderWrapper'
   | 'trackWrapper'
   | 'track'
+  | 'marksWrapper'
   | 'thumbWrapper'
   | 'thumb'
   | 'activeRail';
