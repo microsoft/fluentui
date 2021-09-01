@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
+import { markClassName } from './useSliderState';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -11,8 +12,8 @@ const trackClassName = 'ms-Slider-track';
 const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
-    userSelect: 'none',
     display: 'inline-flex',
+    userSelect: 'none',
     touchAction: 'none',
     verticalAlign: 'bottom',
   }),
@@ -20,22 +21,26 @@ const useRootStyles = makeStyles({
   small: {
     '--slider-thumb-size': '10px',
     '--slider-rail-size': '2px',
+    '--slider-mark-size': '2px',
   },
 
   medium: {
     '--slider-thumb-size': '20px',
     '--slider-rail-size': '4px',
+    '--slider-mark-size': '4px',
   },
 
   horizontal: theme => ({
     minWidth: '120px',
-    height: 'var(--slider-thumb-size)',
+    minHeight: 'var(--slider-thumb-size)',
+    flexDirection: 'column',
   }),
 
   vertical: theme => ({
     transform: 'scaleY(-1)',
-    width: 'var(--slider-thumb-size)',
+    minWidth: 'var(--slider-thumb-size)',
     minHeight: '120px',
+    flexDirection: 'row',
   }),
 
   enabled: theme => ({
@@ -189,12 +194,74 @@ const useTrackStyles = makeStyles({
 });
 
 /**
+ * Styles for the mark slot
+ */
+const useMarksWrapperStyles = makeStyles({
+  marksWrapper: theme => ({
+    position: 'relative',
+    display: 'grid',
+    outline: 'none',
+    zIndex: '1',
+    whiteSpace: 'nowrap',
+    [`& .${markClassName}`]: {
+      // TODO: change to theme neutralStrokeOnBrand once it is added
+      background: 'white',
+    },
+
+    '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
+      opacity: '0',
+    },
+  }),
+
+  horizontal: theme => ({
+    marginTop: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
+    marginLeft: 'calc(var(--slider-thumb-size) / 2)',
+    marginRight: 'calc(var(--slider-thumb-size) / 2)',
+    justifyItems: 'end',
+
+    '& .ms-Slider-markItemContainer': {
+      display: 'flex',
+      flexDirection: 'column',
+      transform: 'translateX(50%)',
+      alignItems: 'center',
+    },
+
+    [`& .${markClassName}`]: {
+      height: '4px',
+      width: '1px',
+    },
+  }),
+
+  vertical: theme => ({
+    marginTop: 'calc(var(--slider-thumb-size) / 2)',
+    marginBottom: 'calc(var(--slider-thumb-size) / 2)',
+    marginLeft: 'calc(var(--slider-rail-size) + var(--slider-mark-size))',
+    justifyItems: 'start',
+
+    '& .ms-Slider-markItemContainer': {
+      display: 'flex',
+      flexDirection: 'row',
+      transform: 'translateY(50%)',
+      alignItems: 'center',
+      maxWidth: '100%',
+      maxHeight: '100%',
+    },
+
+    [`& .${markClassName}`]: {
+      height: '1px',
+      width: 'var(--slider-mark-size)',
+    },
+  }),
+});
+
+/**
  * Styles for the thumb slot
  */
 const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
+    zIndex: '2',
   }),
 
   horizontal: theme => ({
@@ -222,11 +289,11 @@ const useThumbStyles = makeStyles({
     left: '0px',
     bottom: '0px',
     right: '0px',
-    transform: 'translate(-50%, -50%)',
     outline: 'none',
     borderRadius: theme.global.borderRadius.circular,
     boxSizing: 'border-box',
     boxShadow: `0 0 0 calc(var(--slider-thumb-size) * .2) ${theme.alias.color.neutral.neutralBackground1} inset`,
+    transform: 'translate(-50%, -50%)',
 
     ':before': {
       position: 'absolute',
@@ -283,17 +350,18 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackWrapperStyles = useTrackWrapperStyles();
   const trackStyles = useTrackStyles();
+  const marksWrapperStyles = useMarksWrapperStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
 
   state.className = mergeClasses(
     rootStyles.root,
+    rootStyles.focusIndicator,
     // TODO: Remove once compat is reverted
     rootStyles[state.size || 'medium'],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     !state.disabled && rootStyles.enabled,
-    rootStyles.focusIndicator,
     state.className,
   );
 
@@ -310,6 +378,12 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.rail.className,
   );
 
+  state.sliderWrapper.className = mergeClasses(
+    sliderWrapperStyles.sliderWrapper,
+    state.vertical ? sliderWrapperStyles.vertical : sliderWrapperStyles.horizontal,
+    state.sliderWrapper.className,
+  );
+
   state.trackWrapper.className = mergeClasses(
     trackWrapperStyles.trackWrapper,
     state.vertical ? trackWrapperStyles.vertical : trackWrapperStyles.horizontal,
@@ -322,6 +396,12 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.vertical ? trackStyles.vertical : trackStyles.horizontal,
     state.disabled ? trackStyles.disabled : trackStyles.enabled,
     state.track.className,
+  );
+
+  state.marksWrapper.className = mergeClasses(
+    marksWrapperStyles.marksWrapper,
+    state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
+    state.marksWrapper.className,
   );
 
   state.thumbWrapper.className = mergeClasses(

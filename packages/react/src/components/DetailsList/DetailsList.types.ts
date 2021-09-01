@@ -20,6 +20,7 @@ import type {
   IDetailsColumnStyles,
   IDetailsColumnFilterIconProps,
 } from './DetailsColumn.types';
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -325,6 +326,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** Role for the list. */
   role?: string;
+
+  /**
+   * Properties to pass through to the FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

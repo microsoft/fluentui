@@ -241,16 +241,16 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
             >
-              <div className={_classNames.commands} data-is-visible={true}>
-                {onRenderNavigation(this.props, this._onRenderNavigation)}
-              </div>
               <div className={_classNames.contentInner}>
-                {(this._hasCustomNavigation || !hasCloseButton) &&
-                  onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
+                  <div className={_classNames.commands} data-is-visible={true}>
+                    {onRenderNavigation(this.props, this._onRenderNavigation)}
+                  </div>
+                  {(this._hasCustomNavigation || !hasCloseButton) &&
+                    onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
                   {onRenderBody(this.props, this._onRenderBody)}
+                  {onRenderFooter(this.props, this._onRenderFooter)}
                 </div>
-                {onRenderFooter(this.props, this._onRenderFooter)}
               </div>
             </FocusTrapZone>
           </div>
