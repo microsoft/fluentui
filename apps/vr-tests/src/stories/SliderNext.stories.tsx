@@ -4,6 +4,18 @@ import { storiesOf } from '@storybook/react';
 import { FluentProviderDecorator } from '../utilities/index';
 import { Slider } from '@fluentui/react-slider';
 
+const LabelComponent = () => <div style={{ width: '30px', height: '30px', background: 'green' }} />;
+
+const MarkComponent = () => (
+  <div
+    style={{
+      width: '10px',
+      height: '10px',
+      background: 'red',
+    }}
+  />
+);
+
 storiesOf('SliderNext', module)
   .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
@@ -133,7 +145,7 @@ storiesOf('SliderNext', module)
           1,
           {
             value: 3,
-            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
+            label: <LabelComponent />,
           },
           { value: 4, label: 'world' },
           8,
@@ -156,7 +168,7 @@ storiesOf('SliderNext', module)
           1,
           {
             value: 3,
-            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
+            label: <LabelComponent />,
           },
           { value: 4, label: 'world' },
           8,
@@ -178,17 +190,8 @@ storiesOf('SliderNext', module)
           1,
           {
             value: 3,
-            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
-            mark: (
-              <div
-                style={{
-                  width: '10px',
-                  height: '10px',
-                  background: 'red',
-                  marginTop: '-2px',
-                }}
-              />
-            ),
+            label: <LabelComponent />,
+            mark: <MarkComponent />,
           },
           { value: 4, label: 'world' },
           8,
@@ -211,17 +214,8 @@ storiesOf('SliderNext', module)
           1,
           {
             value: 3,
-            label: <div style={{ width: '30px', height: '30px', background: 'green' }} />,
-            mark: (
-              <div
-                style={{
-                  width: '10px',
-                  height: '10px',
-                  background: 'red',
-                  marginLeft: '-2px',
-                }}
-              />
-            ),
+            label: <LabelComponent />,
+            mark: <MarkComponent />,
           },
           { value: 4, label: 'world' },
           8,
