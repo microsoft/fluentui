@@ -28,9 +28,12 @@ const renderType = queryParams.renderType;
 const PerfTestScenario = scenarios[scenario];
 const PerfTestDecorator = PerfTestScenario.decorator || 'div';
 
-if (renderType === 'virtual-rerender') {
+if (renderType === 'virtual-rerender' || renderType === 'virtual-rerender-with-unmount') {
   for (let i = 0; i < iterations - 1; i++) {
     ReactDOM.render(<PerfTestScenario />, div);
+    if (renderType === 'virtual-rerender-with-unmount') {
+      ReactDOM.unmountComponentAtNode(div);
+    }
   }
   ReactDOM.render(<PerfTestScenario />, div, () => div.appendChild(renderFinishedMarker));
 } else {
