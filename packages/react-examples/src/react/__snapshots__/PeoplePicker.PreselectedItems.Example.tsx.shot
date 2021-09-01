@@ -1433,6 +1433,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
           </div>
         </span>
         <input
+          aria-activedescendant="sug-noResultsFound"
           aria-autocomplete="both"
           aria-controls=""
           aria-describedby="selected-items-id__0"

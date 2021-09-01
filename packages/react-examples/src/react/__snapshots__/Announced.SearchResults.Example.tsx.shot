@@ -107,6 +107,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             }
       >
         <input
+          aria-activedescendant="sug-noResultsFound"
           aria-autocomplete="both"
           aria-controls=""
           aria-expanded={false}

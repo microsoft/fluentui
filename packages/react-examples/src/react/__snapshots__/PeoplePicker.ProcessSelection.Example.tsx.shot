@@ -70,6 +70,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
             }
       >
         <input
+          aria-activedescendant="sug-noResultsFound"
           aria-autocomplete="both"
           aria-controls=""
           aria-expanded={false}
