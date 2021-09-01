@@ -26,7 +26,7 @@ export interface InputCommons {
   size?: 'small' | 'medium' | 'large';
   inline?: boolean;
   /** @default 'outline' */
-  appearance?: 'filledDarker' | 'filledLighter' | 'underline' | 'outline';
+  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 }
 
 /**

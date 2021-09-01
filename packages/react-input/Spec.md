@@ -82,12 +82,12 @@ General abbreviations used:
   - bookend "spacing between content and icon" => "spacing within bookend"
   - omitted "focus indicator" b/c that's handled elsewhere
 
-|               | All                 |
+| Style         | All                 |
 | ------------- | ------------------- |
 | v-align       | vertically centered |
 | border radius | medium              |
 
-|                               | medium           | small               | large     |
+| Style                         | medium           | small               | large     |
 | ----------------------------- | ---------------- | ------------------- | --------- |
 | height                        | 32px             | 24px                | 40px      |
 | left/right padding            | mNudge           | sNudge              | m         |
@@ -101,7 +101,7 @@ General abbreviations used:
 
 ### Sizes application
 
-| thing                         | slot                         | notes                                                            |
+| Style                         | Slot                         | Notes                                                            |
 | ----------------------------- | ---------------------------- | ---------------------------------------------------------------- |
 | v-align                       | root, inputWrapper           | ???                                                              |
 | height                        | root                         | ? as minHeight or height ?                                       |
@@ -113,7 +113,7 @@ General abbreviations used:
 | "icon" size                   | n/a                          | no icons built in                                                |
 | spacing start/end to content  | inputWrapper                 | display: flex (also to grow input), flex gap                     |
 | spacing within insideEnd      | insideEnd                    | display: flex, flex gap                                          |
-| spacing within bookends       | bookends                     | display flex, flex gap                                           |
+| spacing within bookends       | bookends                     | display: flex, flex gap                                          |
 
 ## Appearance colors and strokes
 
@@ -121,7 +121,7 @@ General abbreviations used:
 - interpreting "compound brand stroke 1 pressed" as compoundBrandStrokePressed
 - appears that focus and keyboard focus styles are the same
 
-|                                            | All                       |
+| Style                                      | All                       |
 | ------------------------------------------ | ------------------------- |
 | content                                    | neutralForeground1        |
 | content disabled                           | neutralForegroundDisabled |
@@ -135,7 +135,7 @@ General abbreviations used:
 | in focus indicator (bottom border) pressed | _^Pressed_                |
 | cursor disabled                            | not-allowed               |
 
-|                      | filledDarker       | filledLighter      | underline                | outline              |
+| Style                | filledDarker       | filledLighter      | underline                | outline              |
 | -------------------- | ------------------ | ------------------ | ------------------------ | -------------------- |
 | shadow               | shadow2            | "                  | none                     | "                    |
 | background           | neutralBackground3 | neutralBackground1 | transparentBackground    | neutralBackground1   |
@@ -150,7 +150,7 @@ General abbreviations used:
 
 ### Appearance application
 
-| thing                      | slot                | notes                                                    |
+| Style                      | Slot                | Notes                                                    |
 | -------------------------- | ------------------- | -------------------------------------------------------- |
 | content color              | input               | other things have their own colors                       |
 | placeholder color          | input               | `::placeholder`                                          |
@@ -171,7 +171,7 @@ General abbreviations used:
 
 ## Bookend appearance (TODO)
 
-|                 | filled             | brand                    | transparent           |
+| Style           | filled             | brand                    | transparent           |
 | --------------- | ------------------ | ------------------------ | --------------------- |
 | background      | neutralBackground6 | brandBackground          | transparentBackground |
 | content (+icon) | neutralForeground2 | neutralForegroundOnBrand | neutralForeground2    |

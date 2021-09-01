@@ -107,18 +107,18 @@ const useInputElementStyles = makeStyles({
     // This is set on inputWrapper but doesn't inherit
     background: backgroundColors.filledLighter(theme),
   }),
+  underline: theme => ({
+    background: backgroundColors.transparent(theme),
+  }),
   filledLighter: theme => ({
     background: backgroundColors.filledLighter(theme),
   }),
   filledDarker: theme => ({
-    backgroundColor: backgroundColors.filledDarker(theme),
-  }),
-  underline: theme => ({
-    backgroundColor: backgroundColors.transparent(theme),
+    background: backgroundColors.filledDarker(theme),
   }),
   disabled: theme => ({
     color: theme.alias.color.neutral.neutralForegroundDisabled,
-    backgroundColor: theme.alias.color.neutral.transparentBackground,
+    background: theme.alias.color.neutral.transparentBackground,
     cursor: 'not-allowed',
     '::placeholder': {
       color: theme.alias.color.neutral.neutralForegroundDisabled,
@@ -134,9 +134,6 @@ const useInputWrapperStyles = makeStyles({
     flexWrap: 'no-wrap',
     gap: horizontalSpacing.xxs,
 
-    // Set this on inputWrapper rather than root since bookends will have separate background colors and borders
-    background: backgroundColors.filledLighter(theme), // for outline/filledLighter
-
     // This may need to be conditionally applied to start/end corners when bookend styling is added
     borderRadius: borderRadius(theme),
   }),
@@ -149,25 +146,24 @@ const useInputWrapperStyles = makeStyles({
   large: {
     padding: `0 ${horizontalSpacing.m}`,
   },
-  filled: theme => ({
-    // This is set on inputWrapper since bookends have different borders.
-    // Don't set it in the main inputWrapper style to avoid override issues for underline appearance.
-    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
-  }),
-  filledDarker: theme => ({
-    backgroundColor: backgroundColors.filledDarker(theme),
+  outline: theme => ({
+    // Set this on inputWrapper rather than root since bookends will have separate background colors and borders
+    background: backgroundColors.filledLighter(theme),
+    border: `1px solid ${theme.alias.color.neutral.neutralStroke1}`,
+    borderBottom: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
   }),
   underline: theme => ({
     backgroundColor: backgroundColors.transparent(theme),
-    border: 'none', // set later
     borderRadius: 0, // corners look strange if rounded
-  }),
-  outline: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralStroke1}`,
-  }),
-  /** bottom border for underline/outline appearances */
-  borderBottom: theme => ({
     borderBottom: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
+  }),
+  filledDarker: theme => ({
+    background: backgroundColors.filledDarker(theme),
+    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
+  }),
+  filledLighter: theme => ({
+    background: backgroundColors.filledLighter(theme),
+    border: `1px solid ${theme.alias.color.neutral.transparentStroke}`,
   }),
   disabled: theme => ({
     border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
@@ -219,8 +215,7 @@ export const useInputStyles = (state: InputState): InputState => {
   state.inputWrapper.className = mergeClasses(
     inputWrapperStyles.base,
     inputWrapperStyles[size],
-    filled ? inputWrapperStyles.filled : inputWrapperStyles[appearance as 'outline' | 'underline'],
-    !filled && inputWrapperStyles.borderBottom,
+    inputWrapperStyles[appearance],
     disabled && inputWrapperStyles.disabled,
     state.inputWrapper.className,
   );
