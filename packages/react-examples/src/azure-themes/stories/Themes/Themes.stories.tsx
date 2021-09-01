@@ -42,6 +42,7 @@ import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
+import { SliderBasicExample } from '../components/slider.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -87,6 +88,11 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Slider</Label>
+      <SliderBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
