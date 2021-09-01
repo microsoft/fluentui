@@ -550,6 +550,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             {authorElement}
             {timestampElement}
             {detailsElement}
+            {reactionGroupPosition === 'start' && reactionGroupElement}
           </>
         ),
       }),
