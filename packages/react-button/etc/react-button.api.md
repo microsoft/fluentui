@@ -87,7 +87,7 @@ export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.Ref
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
 // @public (undocumented)
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & MenuProps & {
     menuIcon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -99,6 +99,10 @@ export const menuButtonShorthandPropsCompat: MenuButtonShorthandPropsCompat[];
 
 // @public (undocumented)
 export interface MenuButtonState extends Omit<ButtonState, 'iconPosition'>, ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {
+}
+
+// @public (undocumented)
+export interface MenuProps extends Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'aria-expanded' | 'id' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'> {
 }
 
 // @public
