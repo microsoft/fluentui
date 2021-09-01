@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.100",
+      "version": "9.0.0-alpha.100",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adding FAQ on moving to v9-BETA from v8.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ecfdff4eb91d289b9ee1348717556babfdf21e1e",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor(react-components): update storybook setup to mitigate big diffs when executing migration generator with --all flags",
+            "author": "martinhochel@microsoft.com",
+            "commit": "bd44bb2f0936177a4edc43be2fedc80f73b986cc",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Aug 2021 07:37:47 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.99",
       "version": "9.0.0-alpha.99",

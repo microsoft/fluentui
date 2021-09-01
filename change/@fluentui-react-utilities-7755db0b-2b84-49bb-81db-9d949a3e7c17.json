@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update implementation to handle 'root' as a slot",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

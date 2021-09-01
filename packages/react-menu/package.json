@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.0.0-alpha.69",
+  "version": "9.0.0-alpha.70",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,9 +26,9 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.41",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.42",
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.35",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
     "@fluentui/react-conformance": "^0.4.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -45,13 +45,13 @@
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.4",
     "@fluentui/react-icons": "^1.1.136",
-    "@fluentui/react-tabster": "^9.0.0-alpha.54",
-    "@fluentui/react-context-selector": "^9.0.0-alpha.25",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.60",
-    "@fluentui/react-portal": "^9.0.0-alpha.41",
-    "@fluentui/react-positioning": "^9.0.0-alpha.47",
-    "@fluentui/react-provider": "^9.0.0-alpha.70",
-    "@fluentui/react-utilities": "^9.0.0-alpha.42",
+    "@fluentui/react-tabster": "^9.0.0-alpha.55",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.26",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.61",
+    "@fluentui/react-portal": "^9.0.0-alpha.42",
+    "@fluentui/react-positioning": "^9.0.0-alpha.48",
+    "@fluentui/react-provider": "^9.0.0-alpha.71",
+    "@fluentui/react-utilities": "^9.0.0-alpha.43",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
