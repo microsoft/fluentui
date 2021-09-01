@@ -2531,10 +2531,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@linaria/babel-preset@^3.0.0-beta.7":
-  version "3.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.7.tgz#015f4406ce11d6c78bc6dec58801dc5a500e1c0e"
-  integrity sha512-NE5f//T9ywXZA+W+Pw1YjWKdzskUpaV7GVkxXhkxLM2la1+S4xOoZR1rzW77bR1C9GFFwzZTeb8XP85whb2ZqQ==
+"@linaria/babel-preset@^3.0.0-beta.12":
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.12.tgz#008db6be156204d55b89e9914d989062b9e280ab"
+  integrity sha512-QMl/f4j18VllyqpANFZkF32Tc1ESFhOo+J71g/0ZyqaMniEyXpk7eizX3eauYYhpJtxjF9BTnGHs3HG7CrlkXw==
   dependencies:
     "@babel/generator" ">=7"
     "@babel/plugin-syntax-dynamic-import" ">=7"
@@ -2557,26 +2557,27 @@
   dependencies:
     debug "^4.1.1"
 
-"@linaria/preeval@^3.0.0-beta.8":
-  version "3.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.8.tgz#b7c7fc7540e6deef731a94df4b65dc6bdf4197ae"
-  integrity sha512-zZcs9sMtpBh9KXvBmKCyocbcjUe5sZQbTHNe2VayfWTzPwNuMnvZ+qcs4nFrli4XKVOoIKIz7T1wmN4CC/X88Q==
+"@linaria/preeval@^3.0.0-beta.12":
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@linaria/preeval/-/preeval-3.0.0-beta.12.tgz#a0ac3bc5ed67d60b8327481456361a9e9e786180"
+  integrity sha512-cgiB3hQwyyoTvJQuw5J0f1JsJRmNfdO2otA8dmhdrc3+8PLFdqf6hphmCil0db809frnt4woE5fE6EQJioC6bw==
   dependencies:
-    "@linaria/babel-preset" "^3.0.0-beta.7"
+    "@linaria/babel-preset" "^3.0.0-beta.12"
 
-"@linaria/shaker@^3.0.0-beta.8":
-  version "3.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@linaria/shaker/-/shaker-3.0.0-beta.8.tgz#3114de281284638b4926638c4636b412104db9b8"
-  integrity sha512-8vMoJvndJODH7XAufluSDnrEtvP5EhL/HwiVD1icRF4YgMSHVCkzEI7qhmxoC7jD/jQPbJFdt3T/OGkZzKSjNQ==
+"@linaria/shaker@^3.0.0-beta.12":
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@linaria/shaker/-/shaker-3.0.0-beta.12.tgz#770c52078bae346a19bf755641b6e2f1b9705ad7"
+  integrity sha512-/6wR1E/1fHX9zkgYmwLPiB6x+QWelqPkanyeWzbgKsVCHI9gtIhDPwXUlSFJwFMgjBWLBf6ffZYaDQ0+sZKcfw==
   dependencies:
     "@babel/generator" ">=7"
     "@babel/plugin-transform-runtime" ">=7"
     "@babel/plugin-transform-template-literals" ">=7"
     "@babel/preset-env" ">=7"
-    "@linaria/babel-preset" "^3.0.0-beta.7"
+    "@linaria/babel-preset" "^3.0.0-beta.12"
     "@linaria/logger" "^3.0.0-beta.3"
-    "@linaria/preeval" "^3.0.0-beta.8"
+    "@linaria/preeval" "^3.0.0-beta.12"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
+    ts-invariant "^0.9.0"
 
 "@mdx-js/loader@^1.5.5", "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -24673,6 +24674,13 @@ ts-essentials@^2.0.3:
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/ts-essentials/-/ts-essentials-2.0.12.tgz#c9303f3d74f75fa7528c3d49b80e089ab09d8745"
   integrity sha512-3IVX4nI6B5cc31/GFFE+i8ey/N2eA0CZDbo6n0yrz0zDX8ZJ8djmU1p+XRz7G3is0F3bB3pu2pAroFdAWQKU3w==
+
+ts-invariant@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.9.0.tgz#4c60e9159a31742ab0103f13d7f63314fb5409c9"
+  integrity sha512-+JqhKqywk+ue5JjAC6eTWe57mOIxYXypMUkBDStkAzvnlfkDJ1KGyeMuNRMwOt6GXzHSC1UT9JecowpZDmgXqA==
+  dependencies:
+    tslib "^2.1.0"
 
 ts-jest@24.3.0:
   version "24.3.0"

@@ -136,7 +136,7 @@ packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell
 packages/react-tooltip/ @microsoft/cxe-red @behowell
 packages/react-switch/ @microsoft/cxe-red @behowell @czearing
-packages/react-label/ @microsoft/cxe-red @sopranopillow
+packages/react-label/ @microsoft/cxe-red
 packages/react-portal/ @microsoft/teams-prg
 packages/react-popover/ @microsoft/teams-prg
 packages/react-provider/ @microsoft/teams-prg

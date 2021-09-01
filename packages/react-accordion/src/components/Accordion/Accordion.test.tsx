@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Accordion } from './Accordion';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { AccordionContext } from './AccordionContext';
 
@@ -10,15 +9,8 @@ describe('Accordion', () => {
     Component: Accordion,
     displayName: 'Accordion',
     helperComponents: [AccordionContext.Provider],
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    // Accordion does not have own styles
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   /**
