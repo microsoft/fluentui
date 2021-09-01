@@ -39,7 +39,7 @@
     "@fluentui/font-icons-mdl2": "^8.1.10",
     "@fluentui/foundation-legacy": "^8.1.10",
     "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react": "^8.30.1",
+    "@fluentui/react": "^8.30.2",
     "@fluentui/react-cards": "^0.200.22",
     "@fluentui/react-charting": "^5.3.33",
     "@fluentui/react-docsite-components": "^8.3.21",

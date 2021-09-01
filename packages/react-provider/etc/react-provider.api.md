@@ -25,7 +25,7 @@ export interface FluentProviderContextValues {
     // (undocumented)
     theme: ThemeContextValue;
     // (undocumented)
-    themeClassname: ThemeClassNameContextValue;
+    themeClassName: ThemeClassNameContextValue;
     // (undocumented)
     tooltip: TooltipContextType;
 }
@@ -52,6 +52,8 @@ export interface FluentProviderState extends FluentProviderProps {
     targetDocument: Document | undefined;
     // (undocumented)
     theme: Theme;
+    // (undocumented)
+    themeClassName: string;
 }
 
 // @public
