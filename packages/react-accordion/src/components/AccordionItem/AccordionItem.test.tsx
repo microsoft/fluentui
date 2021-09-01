@@ -10,7 +10,7 @@ describe('AccordionItem', () => {
     displayName: 'AccordionItem',
     helperComponents: [AccordionItemContext.Provider],
     // Accordion does not have own styles
-    disabledTests: ['classname-wins'],
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   /**
