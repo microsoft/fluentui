@@ -9,18 +9,30 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  */
 
 /**
- *  @typedef {{check:boolean; checkOptions: Record<string,unknown>; reactDocgen: string | boolean; reactDocgenTypescriptOptions: Record<string,unknown>}} StorybookTsConfig
+ *  @typedef {{
+ *    check:boolean;
+ *    checkOptions: Record<string,unknown>;
+ *    reactDocgen: string | boolean;
+ *    reactDocgenTypescriptOptions: Record<string,unknown>
+ *  }} StorybookTsConfig
  */
 
 /**
- * @typedef {{stories: string[] ; addons: string[]; typescript: StorybookTsConfig; babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>; webpackFinal: StorybookWebpackConfig}} StorybookConfig
+ *  @typedef {{
+ *    stories: string[];
+ *    addons: string[];
+ *    typescript: StorybookTsConfig;
+ *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
+ *    webpackFinal: StorybookWebpackConfig;
+ *    core: {builder:'webpack5'};
+ * }} StorybookConfig
  */
 
 /**
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
  */
 
-module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFinal'>} */ ({
+module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   stories: [],
   addons: [
     '@storybook/addon-essentials',
@@ -42,6 +54,10 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
     }
 
     return config;
+  },
+
+  core: {
+    builder: 'webpack5',
   },
 });
 
@@ -65,7 +81,7 @@ function overrideDefaultBabelLoader(rules) {
   }
 
   const loaderIdx = rule.use.findIndex(loaderConfig => {
-    return /** @type {LoaderObjectDef} */ (loaderConfig).loader === 'babel-loader';
+    return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
   });
 
   const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);

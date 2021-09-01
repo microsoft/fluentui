@@ -110,16 +110,22 @@ This is achieved with the `make-styles` rules being available to the user so tha
 ### Using styles directly
 
 ```jsx
-import { useTypographyStyles } from '@fluentui/react-text';
+import { typographyStyles } from '@fluentui/react-text';
+
+const useStyles = makeStyles({
+  root: typographyStyles.title,
+  caption: typographyStyles.caption,
+});
 
 const Test = () => {
-  const typographyStyles = useTypographyStyles();
+  const styles = useStyles();
 
   return (
     <>
-      <span className={typographyStyles.display}>I am styled like a display</span>
-      <span className={typographyStyles.title}>I am styled like a title</span>
-      <span className={typographyStyles.subtitle}>I am styled like a subtitle</span>
+      <p className={styles.root}>
+        <span>I am styled like a title</span>
+        <span className={styles.caption}>I am styled like a caption</span>
+      </p>
     </>
   );
 };

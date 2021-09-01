@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { useFocusRects } from '@fluentui/utilities';
-import { CardProps } from './Card.types';
 import { useCard } from './useCard';
+import { renderCard } from './renderCard';
 import { useCardStyles } from './useCardStyles';
+import type { CardProps } from './Card.types';
 
 /**
- * Define a styled Card, using the `useCard` hook.
+ * A card provides scaffolding for hosting actions and content for a single topic within a card sized object.
  */
-export const Card: React.FunctionComponent<CardProps> = React.forwardRef<HTMLElement, CardProps>((props, ref) => {
-  const { render, state } = useCard(props, ref);
+export const Card = React.forwardRef<HTMLElement, CardProps>((props, ref) => {
+  const state = useCard(props, ref);
 
   useCardStyles(state);
-  useFocusRects(state.ref);
-
-  return render(state);
+  return renderCard(state);
 });
 
 Card.displayName = 'Card';

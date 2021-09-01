@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Position, Alignment } from '@fluentui/react-positioning';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * Properties for the Tooltip component
@@ -13,7 +13,10 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * Alternatively, children can be a render function that takes the props and adds
    * them to the appropriate elements.
    */
-  children: React.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React.ReactNode);
+  children?:
+    | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
+    | ((props: TooltipTriggerProps) => React.ReactNode)
+    | null;
 
   /**
    * The content displayed inside the tooltip.
@@ -21,36 +24,36 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
   content: ShorthandPropsCompat<ComponentPropsCompat>;
 
   /**
-   * How to position the tooltip relative to the target element. This is a "best effort" placement,
-   * but the tooltip may be flipped to the other side if there is not enough room.
+   * Color variant with inverted colors
    *
-   * @defaultvalue above
+   * @defaultvalue false
    */
-  position?: Position;
+  inverted?: boolean;
 
   /**
-   * How to align the tooltip along the edge of the target element.
+   * Render an arrow pointing to the target element
    *
-   * @defaultvalue center
+   * @defaultvalue false
    */
-  align?: Alignment;
+  pointing?: boolean;
 
   /**
-   * Color variant with a subtle look
-   */
-  subtle?: boolean;
-
-  /**
-   * Do not render an arrow pointing to the target element
-   */
-  noArrow?: boolean;
-
-  /**
-   * Distance between the tooltip and the target element, in pixels
+   * Control the tooltip's visibility programatically.
    *
-   * @defaultvalue 4
+   * This can be used in conjunction with onVisibleChange to modify the tooltip's show and hide behavior.
+   *
+   * If not provided, the visibility will be controlled by the tooltip itself, based on hover and focus events on the
+   * trigger (child) element.
    */
-  offset?: number;
+  visible?: boolean;
+
+  /**
+   * Notification when the visibility of the tooltip is changing
+   */
+  onVisibleChange?: (
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
+    data: OnVisibleChangeData,
+  ) => void;
 
   /**
    * Specifies which aria attribute to set on the trigger element.
@@ -62,13 +65,6 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
    * @defaultvalue label
    */
   triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
-
-  /**
-   * Only show the tooltip if the target element's children are truncated (overflowing).
-   *
-   * @defaultvalue false
-   */
-  onlyIfTruncated?: boolean;
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -85,21 +81,28 @@ export interface TooltipProps extends ComponentPropsCompat, React.HTMLAttributes
   hideDelay?: number;
 
   /**
-   * A ref to an alternative element that the tooltip should be anchored to.
-   *
-   * @defaultvalue The child element (the element that triggered the tooltip).
+   * Configure the positioning of the tooltip
    */
-  targetRef?: React.RefObject<HTMLElement>;
+  positioning?: PositioningShorthand;
 }
 
 /**
  * The properties that are added to the trigger of the Tooltip
  * {@docCategory Tooltip}
  */
-export type TooltipTriggerProps = Pick<
+export type TooltipTriggerProps = {
+  ref?: React.Ref<never>;
+} & Pick<
   React.HTMLAttributes<HTMLElement>,
   'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'
 >;
+
+/**
+ * Data for the Tooltip's onVisibleChange event.
+ */
+export interface OnVisibleChangeData {
+  visible: boolean;
+}
 
 /**
  * Names of the shorthand properties in TooltipProps
@@ -111,14 +114,7 @@ export type TooltipShorthandProps = 'content';
  * Names of TooltipProps that have a default value in useTooltip
  * {@docCategory Tooltip}
  */
-export type TooltipDefaultedProps =
-  | 'position'
-  | 'align'
-  | 'offset'
-  | 'showDelay'
-  | 'hideDelay'
-  | 'content'
-  | 'triggerAriaAttribute';
+export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 
 /**
  * State used in rendering Tooltip
@@ -130,11 +126,6 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
   ref: React.Ref<HTMLElement>;
 
   /**
-   * Whether the tooltip is currently displayed.
-   */
-  readonly visible: boolean;
-
-  /**
    * Whether the tooltip should be rendered to the DOM.
    *
    * Normally the tooltip will only be rendered when visible. However, if
@@ -142,7 +133,7 @@ export interface TooltipState extends ComponentStateCompat<TooltipProps, Tooltip
    * always be rendered even when hidden so that those aria attributes
    * to always refer to a valid DOM element.
    */
-  shouldRenderTooltip: boolean;
+  shouldRenderTooltip?: boolean;
 
   /**
    * Ref to the arrow element

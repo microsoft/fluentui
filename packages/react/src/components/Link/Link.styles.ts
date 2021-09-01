@@ -1,5 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector } from '@fluentui/style-utilities';
-import { ILinkStyleProps, ILinkStyles } from './Link.types';
+import type { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
   root: 'ms-Link',

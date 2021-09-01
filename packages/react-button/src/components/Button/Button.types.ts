@@ -1,14 +1,8 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
-    // Temporarily declare children as a shorthand slot until #18471 is fixed
-    children?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
@@ -97,19 +91,10 @@ export type ButtonProps = ComponentPropsCompat &
     transparent?: boolean;
   };
 
-/**
- * {@docCategory Button}
- */
-export type ButtonShorthandPropsCompat = 'children' | 'icon';
+export type ButtonShorthandPropsCompat = 'icon';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonDefaultedProps = 'icon' | 'size';
 
-/**
- * {@docCategory Button}
- */
 export interface ButtonState
   extends ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> {
   /**

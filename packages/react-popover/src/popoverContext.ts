@@ -1,5 +1,6 @@
-import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
-import { PopoverState } from './components/Popover/index';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector, Context } from '@fluentui/react-context-selector';
+import type { PopoverState } from './components/Popover/index';
 
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
   open: false,
@@ -7,7 +8,6 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   triggerRef: { current: null },
   contentRef: { current: null },
   arrowRef: { current: null },
-  target: undefined,
   openOnContext: false,
   openOnHover: false,
   size: 'medium',
@@ -24,7 +24,6 @@ export interface PopoverContextValue
     | 'setOpen'
     | 'triggerRef'
     | 'contentRef'
-    | 'target'
     | 'openOnHover'
     | 'openOnContext'
     | 'mountNode'

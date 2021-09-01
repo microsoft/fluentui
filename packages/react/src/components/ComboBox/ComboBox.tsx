@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autofill, IAutofill } from '../../Autofill';
+import { Autofill } from '../../Autofill';
 import {
   initializeComponentRef,
   css,
@@ -19,24 +19,27 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
-  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
-import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
-import {
+import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
+import { Label } from '../../Label';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
+import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IAutofill } from '../../Autofill';
+import type { IRenderFunction } from '../../Utilities';
+import type { IComboBoxClassNames } from './ComboBox.classNames';
+import type {
   IComboBoxOption,
   IComboBoxOptionStyles,
   IComboBoxProps,
   IOnRenderComboBoxLabelProps,
   IComboBox,
 } from './ComboBox.types';
-import { Label } from '../../Label';
-import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
-import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../Button';
-import { ICalloutProps } from '../../Callout';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IButtonStyles } from '../../Button';
+import type { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {
   /** The open state */
@@ -269,6 +272,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       text: 'defaultSelectedKey',
       selectedKey: 'value',
       dropdownWidth: 'useComboBoxAsMenuWidth',
+      ariaLabel: 'label',
     });
 
     this._id = props.id || getId('ComboBox');
@@ -567,6 +571,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         ref={this._comboBoxWrapper}
         id={this._id + 'wrapper'}
         className={this._classNames.root}
+        aria-owns={isOpen ? this._id + '-list' : undefined}
       >
         <Autofill
           data-ktp-execute-target={true}
@@ -594,7 +599,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={this._getAriaActiveDescendantValue()}
           aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._id + '-list' : undefined}
+          aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
@@ -1289,7 +1294,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options, label } = props;
+    const { onRenderItem, options, label, ariaLabel } = props;
 
     const id = this._id;
     return (
@@ -1297,6 +1302,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         id={id + '-list'}
         className={this._classNames.optionsContainer}
         aria-labelledby={label && id + '-label'}
+        aria-label={ariaLabel && !label ? ariaLabel : undefined}
         role="listbox"
       >
         {options.map(item => onRenderItem?.(item, this._onRenderItem))}
@@ -2158,6 +2164,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       customStylesForCurrentOption,
       this._isPendingOption(item),
       item.hidden,
+      this._isOptionSelected(item.index),
     );
   }
 

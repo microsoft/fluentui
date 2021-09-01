@@ -1,8 +1,53 @@
 # Change Log - @fluentui/common-styles
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Aug 2021 07:35:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.16)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.15..@fluentui/common-styles_v1.0.16)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [1.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.15)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.14..@fluentui/common-styles_v1.0.15)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
+
+## [1.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.14)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.13..@fluentui/common-styles_v1.0.14)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.2.2 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
+
+## [1.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.13)
+
+Thu, 29 Jul 2021 07:35:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.12..@fluentui/common-styles_v1.0.13)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.2.1 ([PR #18028](https://github.com/microsoft/fluentui/pull/18028) by ashwin.gokhale98@gmail.com)
+
+## [1.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.12)
+
+Tue, 13 Jul 2021 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.11..@fluentui/common-styles_v1.0.12)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.2.0 ([PR #18802](https://github.com/microsoft/fluentui/pull/18802) by tmichon@microsoft.com)
 
 ## [1.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.11)
 

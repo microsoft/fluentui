@@ -1,12 +1,12 @@
 /*!
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
-
-import { IButtonStyles } from '@fluentui/react/lib/Button';
-import { concatStyleSets, ITheme } from '@fluentui/react/lib/Styling';
+import { concatStyleSets } from '@fluentui/react/lib/Styling';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { sidebarFonts } from './Sidebar.styles';
 import { SidebarStylingConstants } from './Sidebar.types';
+import type { IButtonStyles } from '@fluentui/react/lib/Button';
+import type { ITheme } from '@fluentui/react/lib/Styling';
 
 export const getSidebarButtonStyles = memoizeFunction(
   (theme: ITheme, sidebarButtonStyles?: IButtonStyles, customStyles?: IButtonStyles): IButtonStyles => {

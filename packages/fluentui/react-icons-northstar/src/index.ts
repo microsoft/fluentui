@@ -5,8 +5,10 @@ export * from './utils/iconClassNames';
 
 // Icon components
 export { AcceptIcon } from './components/AcceptIcon';
+export { AccessibilityIcon } from './components/AccessibilityIcon';
 export { AddIcon } from './components/AddIcon';
 export { ApprovalsAppbarIcon } from './components/ApprovalsAppbarIcon';
+export { AppFolderIcon } from './components/AppFolderIcon';
 export { AppsIcon } from './components/AppsIcon';
 export { ArchiveIcon } from './components/ArchiveIcon';
 export { ArrowDownIcon } from './components/ArrowDownIcon';
@@ -182,6 +184,7 @@ export { OptionsIcon } from './components/OptionsIcon';
 export { OutdentIcon } from './components/OutdentIcon';
 export { OutlookColorIcon } from './components/OutlookColorIcon';
 export { OpenOutsideIcon } from './components/OpenOutsideIcon';
+export { PageFitIcon } from './components/PageFitIcon';
 export { PanoramaIcon } from './components/PanoramaIcon';
 export { PanoramaOffIcon } from './components/PanoramaOffIcon';
 export { PaperclipIcon } from './components/PaperclipIcon';
@@ -239,6 +242,7 @@ export { SpotlightStopIcon } from './components/SpotlightStopIcon';
 export { StarIcon } from './components/StarIcon';
 export { StickerIcon } from './components/StickerIcon';
 export { StrikeIcon } from './components/StrikeIcon';
+export { SubtractIcon } from './components/SubtractIcon';
 export { SurveyIcon } from './components/SurveyIcon';
 export { SwitchCameraIcon } from './components/SwitchCameraIcon';
 export { SyncIcon } from './components/SyncIcon';

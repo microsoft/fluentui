@@ -1,4 +1,4 @@
-import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
+import type { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
 
 export const neutralColorTokens: NeutralColorTokens = {
   neutralForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
@@ -27,8 +27,8 @@ export const neutralColorTokens: NeutralColorTokens = {
   compoundBrandForeground1Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   brandForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
   brandForeground2: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
-  neutralForegroundInverted: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  neutralForegroundInvertedAccessible: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
+  neutralForegroundInverted: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
+  neutralForegroundOnBrand: 'var(--global-color-hcButtonText)', // #000000 Global.Color.hcButtonText
   neutralForegroundInvertedLink: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
   neutralForegroundInvertedLinkHover: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
   neutralForegroundInvertedLinkPressed: 'var(--global-color-hcHyperlink)', // #ffff00 Global.Color.hcHyperlink
@@ -54,6 +54,7 @@ export const neutralColorTokens: NeutralColorTokens = {
   neutralBackground5Pressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralBackground5Selected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralBackground6: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
+  neutralBackgroundInverted: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
   subtleBackground: 'transparent', // transparent undefined
   subtleBackgroundHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   subtleBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
@@ -63,6 +64,8 @@ export const neutralColorTokens: NeutralColorTokens = {
   transparentBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   transparentBackgroundSelected: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralBackgroundDisabled: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
+  neutralStencil1: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
+  neutralStencil2: 'var(--global-palette-grey-52)', // #858585 Global.Color.Grey.52
   brandBackground: 'var(--global-color-hcButtonFace)', // #ffffff Global.Color.hcButtonFace
   brandBackgroundHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   brandBackgroundPressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
@@ -88,9 +91,9 @@ export const neutralColorTokens: NeutralColorTokens = {
   compoundBrandStrokeHover: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   compoundBrandStrokePressed: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralStrokeDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
-  strokeAccessible: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
-  strokeAccessibleInteractive: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  strokeAccessibleDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
+  transparentStroke: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
+  transparentStrokeInteractive: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
+  transparentStrokeDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
   strokeFocus1: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
   strokeFocus2: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
   neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined

@@ -19,6 +19,7 @@ import {
   designUnit,
   disabledOpacity,
   focusStrokeOuter,
+  focusStrokeWidth,
   neutralFillRecipe,
   neutralFillRest,
   neutralFillStealthActive,
@@ -40,7 +41,7 @@ const ltr = css`
     left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    left: calc(var(--focus-outline-width) * 1px);
+    left: calc(${focusStrokeWidth} * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
     transform: rotate(45deg);
@@ -55,7 +56,7 @@ const rtl = css`
     right: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    right: calc(var(--focus-outline-width) * 1px);
+    right: calc(${focusStrokeWidth} * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
     transform: rotate(135deg);
@@ -185,8 +186,10 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     ::slotted(svg) {
-      ${/* Glyph size is temporary -
-            replace when glyph-size var is added */ ''} width: 16px;
+      ${
+        /* Glyph size is temporary -
+            replace when glyph-size var is added */ ''
+      } width: 16px;
       height: 16px;
     }
 

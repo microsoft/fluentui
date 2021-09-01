@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding block, circular, disabledFocusable and outline props to Button stories.",
-  "packageName": "@fluentui/react-examples",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

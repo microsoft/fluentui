@@ -1,8 +1,8 @@
-import { IRGB, IColor } from './interfaces';
 import { MAX_COLOR_ALPHA } from './consts';
 import { rgb2hsv } from './rgb2hsv';
 import { rgb2hex } from './rgb2hex';
 import { _rgbaOrHexString } from './_rgbaOrHexString';
+import type { IRGB, IColor } from './interfaces';
 
 /** Converts an RGBA color to a color object (alpha defaults to 100). */
 export function getColorFromRGBA(rgba: IRGB): IColor {

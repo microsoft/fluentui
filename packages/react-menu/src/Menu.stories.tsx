@@ -9,13 +9,15 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
-  MenuProps,
   MenuPopover,
-  MenuTriggerChildProps,
 } from './index';
 import { boolean } from '@storybook/addon-knobs';
-
-import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from './tmp-icons.stories';
+import {
+  Cut20Regular as CutIcon,
+  ClipboardPaste20Regular as PasteIcon,
+  Edit20Regular as EditIcon,
+} from '@fluentui/react-icons';
+import type { MenuProps, MenuTriggerChildProps } from './index';
 
 export const Default = (props: Partial<MenuProps>) => (
   <Menu {...props}>
@@ -162,7 +164,7 @@ export const CustomTarget = () => {
       <button ref={setTarget} onClick={() => setOpen(s => !s)}>
         Custom Target
       </button>
-      <Menu open={open} onOpenChange={onOpenChange} target={target}>
+      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
         <MenuPopover>
           <MenuList>
             <MenuItem>New </MenuItem>
@@ -193,65 +195,29 @@ export const SelectionGroup = () => (
       <MenuList>
         <MenuGroup>
           <MenuGroupHeader>Checkbox group</MenuGroupHeader>
-          <MenuItemCheckbox
-            secondaryContent="Ctrl+N"
-            icon={<CutIcon />}
-            name="edit"
-            value="cut"
-            checkmark={<AcceptIcon />}
-          >
+          <MenuItemCheckbox secondaryContent="Ctrl+N" icon={<CutIcon />} name="edit" value="cut">
             Show Menu Bar
           </MenuItemCheckbox>
-          <MenuItemCheckbox
-            secondaryContent="Ctrl+Shift+N"
-            icon={<PasteIcon />}
-            name="edit"
-            value="paste"
-            checkmark={<AcceptIcon />}
-          >
+          <MenuItemCheckbox secondaryContent="Ctrl+Shift+N" icon={<PasteIcon />} name="edit" value="paste">
             Show Side Bar
           </MenuItemCheckbox>
-          <MenuItemCheckbox
-            secondaryContent="Ctrl+Shift+O"
-            icon={<EditIcon />}
-            name="edit"
-            value="edit"
-            checkmark={<AcceptIcon />}
-          >
+          <MenuItemCheckbox secondaryContent="Ctrl+Shift+O" icon={<EditIcon />} name="edit" value="edit">
             Show Status Bar
           </MenuItemCheckbox>
-          <MenuItemCheckbox disabled icon={<EditIcon />} name="disabled" value="disabled" checkmark={<AcceptIcon />}>
+          <MenuItemCheckbox disabled icon={<EditIcon />} name="disabled" value="disabled">
             Show Debug Panel
           </MenuItemCheckbox>
         </MenuGroup>
         <MenuDivider />
         <MenuGroup>
           <MenuGroupHeader>Radio group</MenuGroupHeader>
-          <MenuItemRadio
-            secondaryContent="Ctrl+N"
-            icon={<CutIcon />}
-            name="font"
-            value="segoe"
-            checkmark={<AcceptIcon />}
-          >
+          <MenuItemRadio secondaryContent="Ctrl+N" icon={<CutIcon />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>
-          <MenuItemRadio
-            secondaryContent="Ctrl+Shift+N"
-            icon={<PasteIcon />}
-            name="font"
-            value="calibri"
-            checkmark={<AcceptIcon />}
-          >
+          <MenuItemRadio secondaryContent="Ctrl+Shift+N" icon={<PasteIcon />} name="font" value="calibri">
             Caliri
           </MenuItemRadio>
-          <MenuItemRadio
-            secondaryContent="Ctrl+Shift+N"
-            icon={<EditIcon />}
-            name="font"
-            value="arial"
-            checkmark={<AcceptIcon />}
-          >
+          <MenuItemRadio secondaryContent="Ctrl+Shift+N" icon={<EditIcon />} name="font" value="arial">
             Arial
           </MenuItemRadio>
         </MenuGroup>

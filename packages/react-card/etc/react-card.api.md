@@ -4,88 +4,39 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Card: React_2.FunctionComponent<CardProps>;
+export const Card: React_2.ForwardRefExoticComponent<CardProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
-export const CardBody: React_2.FunctionComponent<CardSectionProps>;
+// @public
+export type CardDefaultedProps = never;
 
-// @public (undocumented)
-export const CardFooter: React_2.FunctionComponent<CardSectionProps>;
-
-// @public (undocumented)
-export const CardHeader: React_2.FunctionComponent<CardSectionProps>;
-
-// @public (undocumented)
-export const CardPreview: React_2.FunctionComponent<CardSectionProps>;
-
-// @public (undocumented)
-export type CardProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLDivElement> & {
-    compact?: boolean;
-    horizontal?: boolean;
-    centered?: boolean;
-    size?: 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
-    block?: boolean;
-    disabled?: boolean;
-    expandable?: boolean;
-    inverted?: boolean;
-    ghost?: boolean;
-    selected?: boolean;
-};
-
-// @public (undocumented)
-export type CardSectionProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean;
-};
-
-// @public (undocumented)
-export interface CardSectionState extends CardSectionProps {
-    // (undocumented)
-    ref: React_2.RefObject<HTMLElement>;
+// @public
+export interface CardProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
 }
 
-// @public (undocumented)
-export interface CardState extends CardProps {
-    // (undocumented)
-    ref: React_2.RefObject<HTMLElement>;
+// @public
+export type CardShorthandProps = never;
+
+// @public
+export const cardShorthandProps: CardShorthandProps[];
+
+// @public
+export interface CardState extends CardProps, ComponentStateCompat<CardProps, CardShorthandProps, CardDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
 }
 
-// @public (undocumented)
-export const renderCardSection: (state: CardSectionState) => JSX.Element;
+// @public
+export const renderCard: (state: CardState) => JSX.Element;
 
 // @public
-export const useCard: (props: CardProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => {
-    state: CardState;
-    render: (state: CardState) => JSX.Element;
-};
-
-// @public (undocumented)
-export function useCardBodyStyles(state: CardSectionState): CardSectionState;
-
-// @public (undocumented)
-export function useCardFooterStyles(state: CardSectionState): CardSectionState;
-
-// @public (undocumented)
-export function useCardHeaderStyles(state: CardSectionState): CardSectionState;
-
-// @public (undocumented)
-export function useCardPreviewStyles(state: CardSectionState): CardSectionState;
+export const useCard: (props: CardProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => CardState;
 
 // @public
-export const useCardSection: (props: CardSectionProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardSectionProps | undefined) => {
-    state: CardSectionState;
-    render: (state: CardSectionState) => JSX.Element;
-};
-
-// @public
-export const useCardState: (draftState: CardState) => void;
-
-// @public (undocumented)
-export function useCardStyles(state: CardState): CardState;
-
+export const useCardStyles: (state: CardState) => CardState;
 
 // (No @packageDocumentation comment for this package)
 

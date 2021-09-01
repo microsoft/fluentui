@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IPickerItemProps } from './PickerItem.types';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { Autofill } from '../../Autofill';
-import { ICalloutProps } from '../../Callout';
-import { ITheme, IStyle } from '../../Styling';
-import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
+import type { IPickerItemProps } from './PickerItem.types';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
+import type { ICalloutProps } from '../../Callout';
+import type { ITheme, IStyle } from '../../Styling';
+import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 /**
  * BasePicker component.
@@ -172,6 +172,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
+
+  /**
+   * The text that will be announced when a suggestion is removed. A default value is only provided for English.
+   * @default 'removed \{0\}'
+   */
+  suggestionRemovedText?: string;
 
   /**
    * Optional aria-label that will be placed on the element that has the role "combobox"

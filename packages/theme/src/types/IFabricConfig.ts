@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { IStyleSheetConfig } from '@fluentui/merge-styles';
+import type { IStyleSheetConfig } from '@fluentui/merge-styles';
 
 // TODO: figure out a better place (e.g a shared typing package) for this interface.
 

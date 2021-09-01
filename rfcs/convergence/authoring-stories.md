@@ -2,7 +2,7 @@
 
 ---
 
-_List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andrefcdias
+_List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andrefcdias, @PeterDraex
 
 <!-- toc -->
 
@@ -15,8 +15,13 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
   - [4. should we render descriptions table in Canvas Control pane](#4-should-we-render-descriptions-table-in-canvas-control-pane)
   - [5. how to author e2e suites for those stories](#5-how-to-author-e2e-suites-for-those-stories)
   - [6. how to properly annotate stories with TS metadata to get the best DX possible](#6-how-to-properly-annotate-stories-with-ts-metadata-to-get-the-best-dx-possible)
-  - [7. how structure stories in the storybook nav tree](#7-how-structure-stories-in-the-storybook-nav-tree)
-  - [8. dissecting big story files into smaller ones](#8-dissecting-big-story-files-into-smaller-ones)
+  - [7. dissecting big story files into smaller ones](#7-dissecting-big-story-files-into-smaller-ones)
+  - [8. location and naming convention](#8-location-and-naming-convention)
+  - [9. UX of stories](#9-ux-of-stories)
+    - [first story is called default](#first-story-is-called-default)
+    - [appearance of stories](#appearance-of-stories)
+    - [story code should be useful](#story-code-should-be-useful)
+  - [10. Internal stories for testing](#10-internal-stories-for-testing)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
 - [Open Issues](#open-issues)
@@ -55,7 +60,7 @@ We should use [controls](https://storybook.js.org/docs/react/essentials/controls
 
 **Why:**
 
-- while there are some limitations with using controls (they don't mirror the state in URL thus cannot be tested in e2e scenarios), using them is an industry standard in the open source world, also knobs will be deprecated in the next major storybook versions.
+- while there are some limitations with using controls (~~they don't mirror the state in URL thus cannot be tested in e2e scenarios~~, UPDATE: sync of url and controls was [added in 6.2.0](https://github.com/storybookjs/storybook/issues/13160)), using them is an industry standard in the open source world, also knobs will be deprecated in the next major storybook versions.
 
 ### 2. how to use `argTypes`
 
@@ -267,13 +272,209 @@ TBA
 
 TBA
 
-### 7. how structure stories in the storybook nav tree
+### 7. dissecting big story files into smaller ones
 
-TBA
+Components with complex API require many long stories, both for documentation and for e2e testing. This creates big story files, which are hard to maintain. How can these files be dissected into smaller ones?
 
-### 8. dissecting big story files into smaller ones
+#### Proposal
 
-TBA
+1. Every component can have at most one `.stories.tsx` file with default export which configures metadata about the component. This file must be called `Component.stories.tsx`, for example `Button.stories.tsx`.
+2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
+3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories besides the default export.
+
+**Good Example 1 - single file**
+
+```tsx
+// @filename Button.stories.tsx
+import { Button, ButtonProps } from './Button'; // the component
+import { Meta } from '@storybook/react';
+
+export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+**Good Example 2 - multiple files**
+
+```tsx
+// @filename Button.stories.tsx
+import { Button } from './Button'; // the component
+import { Meta } from '@storybook/react';
+
+// 💡 `Default` re-export needs to be always first !
+export * from 'ButtonDefault.stories';
+export * from 'ButtonWithIcon.stories';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+```tsx
+// @filename ButtonDefault.stories.tsx
+export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
+ButtonDefault.storyName = 'Default';
+```
+
+```tsx
+// @filename ButtonWithIcon.stories.tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+```
+
+**Bad example 1** - only `Component.stories.tsx` can have a default export
+
+```tsx
+// @filename  ButtonDefault.stories.tsx
+export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
+ButtonDefault.storyName = 'Default';
+
+// don’t do this
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+```tsx
+// @filename  ButtonWithIcon.stories.tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+
+// don’t do this
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+**Bad example 2** - don’t mix re-exports with inline definition within the main story
+
+```tsx
+// @filename  Button.stories.tsx
+export const ButtonDefault = (props: ButtonProps) => <Button {...props}>Button</Button>;
+ButtonDefault.storyName = 'Default';
+
+export * from 'ButtonWithIcon.stories';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+```tsx
+// @filename  ButtonWithIcon.stories.tsx
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+```
+
+### 8. location and naming convention
+
+1. Story files should be in the same folder as the component which they are meant to show off. This will usually be the component which is the most unique to the story.
+2. Name of every .stories.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation, like this:
+
+```tsx
+export const ButtonPrimary = (props: ButtonProps) => <Button {...props}>Text</Button>;
+ButtonPrimary.args = {
+  primary: true,
+};
+ButtonPrimary.storyName = 'Better story name';
+```
+
+3. If an internal story is broken out into its own file, then the file should mirror the name of the story, which will include the `Internal` keyword and a `.internal.stories` suffix for easier IDE search.
+
+### 9. UX of stories
+
+#### default story
+
+Every component must have a story called `Default`, which:
+
+- must be defined as first story inline or as first re-expored story when using multi-file pattern - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
+- must support auto generated [Controls](https://storybook.js.org/docs/react/essentials/controls) - more details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
+
+Storybook will render a Controls table under this story.
+
+#### appearance of stories
+
+Public stories should follow Fluent Design Language to give developers better feel for patterns they should utilize. For example, when a button is necessary to demonstrate usage of a component, Fluent UI Button should be used instead of a pure HTML button.
+
+**Do:**
+
+```tsx
+import { Button } from '@fluentui/react-button';
+
+export const Default = (props: PopoverProps) => (
+  <Popover {...props}>
+    <PopoverTrigger>
+      <Button>Popover trigger</Button>
+    </PopoverTrigger>
+
+    <PopoverSurface>Content</PopoverSurface>
+  </Popover>
+);
+```
+
+**Don’t:**
+
+```tsx
+export const Default = (props: PopoverProps) => (
+  <Popover {...props}>
+    <PopoverTrigger>
+      <button>Popover trigger</button>
+    </PopoverTrigger>
+
+    <PopoverSurface>Content</PopoverSurface>
+  </Popover>
+);
+```
+
+#### story code should be useful
+
+Public stories should only contain code, which is useful for users to see after clicking on “Show code” in documentation.
+Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
+
+### 10. Internal stories for testing
+
+As mentioned in for E2E testing, we should ensure maximum coverage for all publicly viewable stories by our consumers.
+For more complex scenarios that need to be tested we should make sure that stories exist for E2E tests but should not be
+easily accessible publicly.
+
+Storybook has proposed a feature for this in [storybookjs/storybook#9209](https://github.com/storybookjs/storybook/issues/9209)
+which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page. As stated in the issue,
+we can workaround before the release of this feature by modifying `manager-head.html` and set `display:none`for all
+stories with a specific DOM `id` attribute. Storybook uses the `id` attribute for each link in the nav tree, and sets
+the value to the story id.
+
+We propose to use an extra filename extension and naming convention for internal stories:
+
+```ts
+// MenuTabstopsInternal.internal.stories.tsx
+// Deep link /story/components-menu--tabstops-internal
+// Does not appear in the sidebar or docs page
+export const TabstopsInternal = () => {
+  // story
+};
+```
+
+The naming convention of the story simply adds the `Internal` keyword to the Pascal case story name. This will match the
+filename. More importantly the generated id will contain `menu-tabstops-internal`.
+
+We can simply use a css wildcard query selector:
+
+```css
+[id*='internal'] {
+  display: none;
+}
+```
+
+This means that `Internal` will be a reserved keyword in our stories which will determine visibility. This does not cause
+any conflicts with current stories, since this word is never used in any story name.
+
+This solution will only need to be applied within `react-components` storybook configuration since that is the storybook currently targeted for
+public use. Individual component storybooks are only used for local development, so there is no need to hide internal stories from their nav trees.
 
 ### Pros and Cons
 

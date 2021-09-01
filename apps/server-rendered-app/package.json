@@ -14,16 +14,16 @@
     "start": "node ./server/index.js"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.2",
+    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "compression": "^1.7.2"
   },
   "dependencies": {
-    "@fluentui/font-icons-mdl2": "^8.1.5",
-    "@fluentui/merge-styles": "^8.1.3",
-    "@fluentui/react": "^8.22.3",
+    "@fluentui/font-icons-mdl2": "^8.1.10",
+    "@fluentui/merge-styles": "^8.1.5",
+    "@fluentui/react": "^8.30.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-dom": "16.8.6",

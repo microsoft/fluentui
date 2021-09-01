@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useMenuItemCheckbox } from './useMenuItemCheckbox';
-import { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 import { renderMenuItemCheckbox } from './renderMenuItemCheckbox';
 import { useMenuItemCheckBoxStyles } from './useMenuItemCheckboxStyles';
+import type { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 
 /**
  * Define a styled MenuItemCheckbox, using the `useMenuItemCheckbox` hook.

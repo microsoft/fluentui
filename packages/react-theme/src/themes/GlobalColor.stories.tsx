@@ -49,6 +49,12 @@ export const GlobalColors = () => {
           }}
         />
       </div>
+      <div>
+        <h3>White Alpha</h3>
+        <ColorRamp ramp={theme.light.global.palette.whiteAlpha} />
+        <h3>Black Alpha</h3>
+        <ColorRamp ramp={theme.light.global.palette.blackAlpha} />
+      </div>
 
       <div>
         <h3>Aliases</h3>

@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
 
 export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
-  /** The Avatar's image. */
+  /**
+   * The Avatar's image.
+   */
   image?: ShorthandPropsCompat<React.ImgHTMLAttributes<HTMLImageElement>>;
 
   /**
-   * The label shown when there's no image or icon. Defaults to the initials derived from `name` using
-   * `getInitials`.
+   * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
    */
   label?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
-  /** Icon displayed when there's no image. */
+  /**
+   * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
+   *
+   * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
+   */
   icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
@@ -21,10 +26,14 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
    */
   badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
 
-  /** The name used for displaying the initials of the avatar if the image is not provided. */
+  /**
+   * The name used for displaying the initials of the avatar if the image is not provided
+   */
   name?: string;
 
-  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
+  /**
+   * Custom method for generating the initials from the name property, which is shown if no image is provided.
+   */
   getInitials?: (name: string, isRtl: boolean) => string;
 
   /**
@@ -42,7 +51,9 @@ export interface AvatarProps extends ComponentPropsCompat, React.HTMLAttributes<
    */
   size?: AvatarSizeValue;
 
-  /** The avatar can have a square shape. */
+  /**
+   * The avatar can have a square shape.
+   */
   square?: boolean;
 
   /**
@@ -125,12 +136,12 @@ export type AvatarNamedColor =
 /**
  * Names of the shorthand properties in AvatarProps
  */
-export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge';
+export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
 
 /**
  * Names of AvatarProps that have a default value in useAvatar
  */
-export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label';
+export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
 
 export interface AvatarState
   extends ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> {
@@ -138,4 +149,9 @@ export interface AvatarState
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * True if the avatar has no label/initials and should render an icon
+   */
+  showIcon?: boolean;
 }

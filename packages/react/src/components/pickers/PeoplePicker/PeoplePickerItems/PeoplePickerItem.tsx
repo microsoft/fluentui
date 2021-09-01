@@ -1,22 +1,22 @@
 import * as React from 'react';
 
-import { getId, classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import {
-  Persona,
-  PersonaSize,
+import { getId, classNamesFunction, styled } from '../../../../Utilities';
+import { Persona, PersonaSize } from '../../../../Persona';
+import { IconButton } from '../../../../Button';
+import { ValidationState } from '../../BasePicker.types';
+import { getStyles } from './PeoplePickerItem.styles';
+import type { IStyleFunctionOrObject } from '../../../../Utilities';
+import type {
   IPersonaStyleProps,
   IPersonaStyles,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
 } from '../../../../Persona';
-import { IconButton } from '../../../../Button';
-import { ValidationState } from '../../BasePicker.types';
-import {
+import type {
   IPeoplePickerItemSelectedProps,
   IPeoplePickerItemSelectedStyleProps,
   IPeoplePickerItemSelectedStyles,
 } from './PeoplePickerItem.types';
-import { getStyles } from './PeoplePickerItem.styles';
 
 const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 

@@ -8,6 +8,30 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
     onFocus={[Function]}
     onKeyDown={[Function]}
   >
+    <div
+      aria-live="assertive"
+      className=
+
+          {
+            border: 0px;
+            height: 1px;
+            margin-bottom: -1px;
+            margin-left: -1px;
+            margin-right: -1px;
+            margin-top: -1px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+          }
+      id="selected-suggestion-alert-id__0"
+    >
+      
+    </div>
     <span
       hidden={true}
       id="selected-items-id__0-label"
@@ -27,6 +51,7 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
       role="presentation"
     >
       <div
+        aria-owns=""
         className=
             ms-BasePicker-text
             {
@@ -75,6 +100,42 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
               }
               &::-ms-clear {
                 display: none;
+              }
+              &::placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
               }
           data-lpignore={true}
           disabled={false}

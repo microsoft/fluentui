@@ -1,25 +1,20 @@
 import * as React from 'react';
 import { MenuList } from './MenuList';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider, useMenuListContext } from '../../contexts/menuListContext';
+import { MenuListContext, MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuList', () => {
   isConformant({
     Component: MenuList,
     displayName: 'MenuList',
     helperComponents: [MenuListProvider],
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    disabledTests: [
+      // MenuTrigger does not have own styles
+      'make-styles-overrides-win',
+    ],
   });
 
   /**
@@ -35,7 +30,7 @@ describe('MenuList', () => {
     // Arrange
     let hasMenuListContext: boolean | undefined = false;
     const TestComponent = () => {
-      hasMenuListContext = useMenuListContext(context => context.hasMenuListContext);
+      hasMenuListContext = useHasParentContext(MenuListContext);
       return null;
     };
 

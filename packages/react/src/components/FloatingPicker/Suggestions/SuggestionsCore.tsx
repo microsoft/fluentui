@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { initializeComponentRef, css } from '../../../Utilities';
-import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
-import { ISuggestionsCoreProps } from './Suggestions.types';
+import { SuggestionsItem } from '../../../Pickers';
 import * as stylesImport from './SuggestionsCore.scss';
+import type { ISuggestionItemProps, ISuggestionModel } from '../../../Pickers';
+import type { ISuggestionsCoreProps } from './Suggestions.types';
 
 const styles: any = stylesImport;
 

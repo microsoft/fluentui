@@ -1,8 +1,152 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.8)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.7..@fluentui/web-components_v1.3.8)
+
+### Patches
+
+- fix: syntax error in card styles ([PR #19573](https://github.com/microsoft/fluentui/pull/19573) by jes@microsoft.com)
+- version bump fast foundation ([PR #19569](https://github.com/microsoft/fluentui/pull/19569) by jes@microsoft.com)
+
+## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.7)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.6..@fluentui/web-components_v1.3.7)
+
+### Patches
+
+- update dependencies ([PR #19548](https://github.com/microsoft/fluentui/pull/19548) by jes@microsoft.com)
+
+## [1.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.6)
+
+Thu, 26 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.5..@fluentui/web-components_v1.3.6)
+
+### Patches
+
+- fix transform fragments script causing template errors in the bundle ([PR #19504](https://github.com/microsoft/fluentui/pull/19504) by chhol@microsoft.com)
+
+## [1.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.5)
+
+Fri, 20 Aug 2021 07:37:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.4..@fluentui/web-components_v1.3.5)
+
+### Patches
+
+- update background to Canvas and color to CanvasText ([PR #19368](https://github.com/microsoft/fluentui/pull/19368) by khamu@microsoft.com)
+
+## [1.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.4)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.3..@fluentui/web-components_v1.3.4)
+
+### Patches
+
+- ensure card foreground color responds to fill color changes ([PR #19439](https://github.com/microsoft/fluentui/pull/19439) by chhol@microsoft.com)
+- fix various style bugs and design token uses ([PR #19418](https://github.com/microsoft/fluentui/pull/19418) by corylaviska@microsoft.com)
+
+## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.3)
+
+Thu, 05 Aug 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.2..@fluentui/web-components_v1.3.3)
+
+### Patches
+
+- add border and adjust padding to badge component ([PR #19268](https://github.com/microsoft/fluentui/pull/19268) by khamu@microsoft.com)
+
+## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.2)
+
+Wed, 04 Aug 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.1..@fluentui/web-components_v1.3.2)
+
+### Patches
+
+- fix storybook startup issue for Windows ([PR #19236](https://github.com/microsoft/fluentui/pull/19236) by tristan.watanabe@gmail.com)
+
+## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.1)
+
+Fri, 30 Jul 2021 07:35:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.0..@fluentui/web-components_v1.3.1)
+
+### Patches
+
+- fix border styles when control is active ([PR #19184](https://github.com/microsoft/fluentui/pull/19184) by corylaviska@microsoft.com)
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.0)
+
+Mon, 26 Jul 2021 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.3..@fluentui/web-components_v1.3.0)
+
+### Minor changes
+
+- feat(web-components): improve ergonomics of the fluent design system ([PR #19056](https://github.com/microsoft/fluentui/pull/19056) by roeisenb@microsoft.com)
+
+## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.3)
+
+Fri, 23 Jul 2021 07:38:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.2..@fluentui/web-components_v1.2.3)
+
+### Patches
+
+- remove incorrectly added component definition for toolbar ([PR #19087](https://github.com/microsoft/fluentui/pull/19087) by chhol@microsoft.com)
+
+## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.2)
+
+Thu, 22 Jul 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.1..@fluentui/web-components_v1.2.2)
+
+### Patches
+
+- fluent-text-field: start/end display flex ([PR #18969](https://github.com/microsoft/fluentui/pull/18969) by fredrik.rasch@gmail.com)
+
+## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.1)
+
+Fri, 16 Jul 2021 22:53:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.0..@fluentui/web-components_v1.2.1)
+
+### Patches
+
+- fixe incorrect css selectors introduced by prettier formatting bug related to template literal interpolatin in css files ([PR #18982](https://github.com/microsoft/fluentui/pull/18982) by chhol@microsoft.com)
+- ensure component definitions are resolved and exported ([PR #18985](https://github.com/microsoft/fluentui/pull/18985) by chhol@microsoft.com)
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.0)
+
+Fri, 16 Jul 2021 00:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.1..@fluentui/web-components_v1.2.0)
+
+### Minor changes
+
+- add single export object for easily registering all Fluent UI web components ([PR #18962](https://github.com/microsoft/fluentui/pull/18962) by chhol@microsoft.com)
+- create and export web component definitions for use with Monaco editor tooling ([PR #18961](https://github.com/microsoft/fluentui/pull/18961) by chhol@microsoft.com)
+
+### Patches
+
+- Fixed ability to set palette base color on DSP ([PR #18958](https://github.com/microsoft/fluentui/pull/18958) by 47367562+bheston@users.noreply.github.com)
+
+## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.1)
+
+Thu, 15 Jul 2021 07:36:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.0..@fluentui/web-components_v1.1.1)
+
+### Patches
+
+- update fast-foundation version to fix design token typings ([PR #18948](https://github.com/microsoft/fluentui/pull/18948) by chhol@microsoft.com)
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.0)
+
+Tue, 13 Jul 2021 22:32:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.2..@fluentui/web-components_v1.1.0)
+
+### Minor changes
+
+- add attribute to recreate the accent palette using design system provider ([PR #18922](https://github.com/microsoft/fluentui/pull/18922) by chhol@microsoft.com)
+- Added attribute to allow easy update to the neutral palette ([PR #18910](https://github.com/microsoft/fluentui/pull/18910) by 47367562+bheston@users.noreply.github.com)
 
 ## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.2)
 

@@ -390,6 +390,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="key"
             draggable={false}
             role="columnheader"
@@ -412,7 +413,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -443,7 +443,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -524,6 +523,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="name"
             draggable={false}
             role="columnheader"
@@ -546,7 +546,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -577,7 +576,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -658,6 +656,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="value"
             draggable={false}
             role="columnheader"
@@ -680,7 +679,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -711,7 +709,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1233,6 +1230,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="key"
             draggable={false}
             role="columnheader"
@@ -1255,7 +1253,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1286,7 +1283,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header13-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1367,6 +1363,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="name"
             draggable={false}
             role="columnheader"
@@ -1389,7 +1386,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1420,7 +1416,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header13-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1501,6 +1496,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="value"
             draggable={false}
             role="columnheader"
@@ -1523,7 +1519,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1554,7 +1549,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header13-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1872,7 +1866,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
-      role="checkbox"
+      role="radio"
       tabIndex={-1}
     >
       <div
@@ -2597,6 +2591,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="key"
             draggable={false}
             role="columnheader"
@@ -2619,7 +2614,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2650,7 +2644,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header5-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -2731,6 +2724,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="name"
             draggable={false}
             role="columnheader"
@@ -2753,7 +2747,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2784,7 +2777,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header5-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -2865,6 +2857,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="value"
             draggable={false}
             role="columnheader"
@@ -2887,7 +2880,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2918,7 +2910,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header5-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -3440,6 +3431,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="key"
             draggable={false}
             role="columnheader"
@@ -3462,7 +3454,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3493,7 +3484,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header9-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -3574,6 +3564,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="name"
             draggable={false}
             role="columnheader"
@@ -3596,7 +3587,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3627,7 +3617,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header9-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -3708,6 +3697,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="value"
             draggable={false}
             role="columnheader"
@@ -3730,7 +3720,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3761,7 +3750,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header9-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}

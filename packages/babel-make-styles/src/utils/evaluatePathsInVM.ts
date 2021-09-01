@@ -1,31 +1,23 @@
-import { NodePath, TransformOptions, types as t } from '@babel/core';
+import { NodePath, types as t } from '@babel/core';
 import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
 import { resolveProxyValues } from '@fluentui/make-styles';
-import { Module, StrictOptions } from '@linaria/babel';
-import shakerEvaluator from '@linaria/shaker';
+import { Module, StrictOptions } from '@linaria/babel-preset';
 
+import type { BabelPluginOptions } from '../types';
 import { astify } from './astify';
 
 const EVAL_EXPORT_NAME = '__mkPreval';
 
-function evaluate(code: string, filename: string, babelOptions: TransformOptions) {
+function evaluate(code: string, filename: string, pluginOptions: Required<BabelPluginOptions>) {
   const options: StrictOptions = {
     displayName: false,
     evaluate: true,
 
-    rules: [
-      /* TODO: rules should be configurable */
-
-      { action: shakerEvaluator },
-      {
-        test: /[/\\]node_modules[/\\]/,
-        action: 'ignore',
-      },
-    ],
+    rules: pluginOptions.evaluationRules,
     babelOptions: {
-      ...babelOptions,
+      ...pluginOptions.babelOptions,
 
       // This instance of Babel should ignore all user's configs and apply only our plugin
       configFile: false,
@@ -63,7 +55,23 @@ const expressionWrapperTpl = template.statement(`
   };
 `);
 
-const expressionTpl = template.expression(`%%wrapName%%(() => %%expression%%)`);
+/**
+ * Functions, call & member expressions should be wrapped with IIFE to ensure that "theme" object will be passed
+ * without collisions.
+ *
+ * @example
+ * {
+ *   label: foo(), // call expression
+ *   header: typography.header, // could be an object or a function
+ * }
+ *
+ * Outputs following template:
+ * @example
+ * wrap(() => typeof foo === 'function' ? foo(theme) : foo)
+ */
+export const expressionTpl = template.expression(
+  `%%wrapName%%(() => typeof %%expression%% === 'function' ? %%expression%%(%%themeVariableName%%) : %%expression%%)`,
+);
 const exportsPrevalTpl = template.statement(`exports.${EVAL_EXPORT_NAME} = %%expressions%%`);
 
 /**
@@ -96,7 +104,9 @@ function addPreval(
 
       expressionWrapperTpl({ wrapName }),
       exportsPrevalTpl({
-        expressions: t.arrayExpression(lazyDeps.map(expression => expressionTpl({ expression, wrapName }))),
+        expressions: t.arrayExpression(
+          lazyDeps.map(expression => expressionTpl({ expression, wrapName, themeVariableName })),
+        ),
       }),
     ],
     programNode.directives,
@@ -112,7 +122,7 @@ export function evaluatePathsInVM(
   program: NodePath<t.Program>,
   filename: string,
   nodePaths: NodePath<t.Expression | t.SpreadElement>[],
-  babelOptions: TransformOptions,
+  pluginOptions: Required<BabelPluginOptions>,
 ): void {
   const themeVariableName = program.scope.generateUid('theme');
 
@@ -122,17 +132,6 @@ export function evaluatePathsInVM(
       return t.objectExpression([nodePath.node as t.SpreadElement]);
     }
 
-    // functions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
-    if (nodePath.isArrowFunctionExpression() || nodePath.isFunctionExpression()) {
-      return t.callExpression(nodePath.node as t.ArrowFunctionExpression, [t.identifier(themeVariableName)]);
-    }
-
-    // call expressions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
-    // TODO: right now this only for call expression that returns a function that takes "theme" object as argument
-    if (nodePath.isCallExpression()) {
-      return t.callExpression(nodePath.node as t.CallExpression, [t.identifier(themeVariableName)]);
-    }
-
     return nodePath.node;
   });
 
@@ -140,7 +139,7 @@ export function evaluatePathsInVM(
   const modifiedProgram = addPreval(program, themeVariableName, pathsToEvaluate);
 
   const { code } = generator(modifiedProgram);
-  const results = evaluate(code, filename, babelOptions);
+  const results = evaluate(code, filename, pluginOptions);
 
   for (let i = 0; i < nodePaths.length; i++) {
     const nodePath = nodePaths[i];
