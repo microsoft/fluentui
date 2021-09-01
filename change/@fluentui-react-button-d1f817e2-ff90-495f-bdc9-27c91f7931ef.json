@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "export to codesandbox",
+  "comment": "update stories structure to make them exportable to CodeSandbox",
   "packageName": "@fluentui/react-button",
   "email": "peter@draxler.ml",
   "dependentChangeType": "none"
