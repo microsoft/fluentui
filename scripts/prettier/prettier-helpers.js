@@ -55,6 +55,7 @@ function runPrettier(files, config = {}) {
       });
 
   if (!prettierSupportedFiles.length) {
+    // Exit if there are no supported files (otherwise it will hang forever waiting for stdin)
     return;
   }
 
