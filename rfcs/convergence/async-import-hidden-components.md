@@ -31,13 +31,49 @@ Partners will likely do the same. (e.g. try to use `Tooltip`, find out they regr
 Components such as `Tooltip` are split into 2 parts:
 
 1. A synchronous tiny component
-2. An asynchronous heavy component.
 
 When a consumer imports `Tooltip`, they get the tiny part in their bundle which just registers handlers and logic to determine when the tooltip is visible.
 
+```jsx
+<>
+{state.children}
+{state.shouldRenderTooltip && (...)}
+</>
+```
+
+2. A asynchronous heavy component
+
 Once it becomes visible, we async import the actual `Tooltip` code, which in turn has graph edges to heavy things like `Popper` and styling.
 
-We should consider async imports usage for things not initial-render-critical in converged components. All major bundlers support async imports. For scenarios where it does not such as AMD bundlers and old builds of webpack, partners are free to use a pre-bundle step to produce an AMD friendly bundle using a modern bundler. Alternatively use Fluent's UMD bundle.
+```jsx
+<Portal>
+  <slots.root {...slotProps.root}>
+    {state.pointing && <div ref={state.arrowRef} className={state.arrowClassName} />}
+    <slots.content {...slotProps.content} />
+  </slots.root>
+</Portal>
+```
+
+### Example Implementation
+
+```jsx
+const RenderTooltipContent = React.lazy(() => import('./renderTooltipContent'));
+
+export const renderTooltip = (state: TooltipState) => {
+  return (
+    <>
+      {state.children}
+      {state.shouldRenderTooltip && (
+        <React.Suspense fallback={null}>
+          <RenderTooltipContent {...state} />
+        </React.Suspense>
+      )}
+    </>
+  );
+};
+```
+
+We should consider async imports usage for things not initial-render-critical in converged components. All major bundlers support async imports. For scenarios where it does not such as AMD bundlers and old builds of webpack, partners are free to use a pre-bundle step to produce an AMD friendly bundle using a modern bundler.
 
 ### Pros and Cons
 
