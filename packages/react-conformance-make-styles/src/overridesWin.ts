@@ -18,7 +18,8 @@ async function getReactComponent(
 }
 
 /**
- * A conformance test for mergeClasses() that ensures that a classname from props is passed as a last param, i.e. ensures that user's overrides have higher priority.
+ * A conformance test for mergeClasses() that ensures that a classname from props is passed as a last param,
+ * i.e. ensures that user's overrides have higher priority.
  */
 export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
   let container: HTMLDivElement | null = null;
