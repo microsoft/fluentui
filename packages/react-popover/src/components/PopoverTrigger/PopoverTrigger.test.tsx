@@ -19,7 +19,7 @@ describe('PopoverTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       // PopoverTrigger does not have own styles
-      'classname-wins',
+      'make-styles-overrides-win',
     ],
   });
 

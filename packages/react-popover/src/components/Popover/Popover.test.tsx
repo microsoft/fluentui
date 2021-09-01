@@ -16,7 +16,7 @@ describe('Popover', () => {
       'component-has-root-ref',
       'component-handles-classname',
       // Popover does not have own styles
-      'classname-wins',
+      'make-styles-overrides-win',
     ],
   });
 
