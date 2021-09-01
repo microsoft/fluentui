@@ -19,18 +19,16 @@ export const toHaveMergeClassesCalledTimesWithClassName: jest.CustomMatcher = (
   className: string,
   expectedTimes: number,
 ) => {
-  let callCount: number = 0;
-
   let pass = true;
   let message = '';
 
-  result.forEach(classesList => {
-    const indexInClassList = classesList.indexOf(className);
-
-    if (indexInClassList >= 0) {
-      callCount += 1;
+  const callCount = result.reduce((callCount, classesList) => {
+    if (classesList.includes(className)) {
+      return callCount + 1;
     }
-  });
+
+    return callCount;
+  }, 0);
 
   if (callCount !== expectedTimes) {
     pass = false;
