@@ -65,12 +65,10 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         {
           display: 'flex',
           maxWidth: '480px',
-          height: '108px',
           selectors: {
             [`.${previewClassNames.root}`]: {
               borderRight: `1px solid ${palette.neutralLight}`,
               borderBottom: 0, // Remove the usual border from the preview
-              maxHeight: '106px',
               maxWidth: '144px',
             },
             [`.${previewClassNames.icon}`]: {
