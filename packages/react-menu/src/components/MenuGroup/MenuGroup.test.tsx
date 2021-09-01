@@ -11,7 +11,7 @@ describe('MenuGroup', () => {
     displayName: 'MenuGroup',
     disabledTests: [
       // MenuGroup does not have own styles
-      'classname-wins',
+      'make-styles-overrides-win',
     ],
   });
 

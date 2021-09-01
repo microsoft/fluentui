@@ -12,7 +12,7 @@ describe('MenuTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       // MenuTrigger does not have own styles
-      'classname-wins',
+      'make-styles-overrides-win',
     ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',

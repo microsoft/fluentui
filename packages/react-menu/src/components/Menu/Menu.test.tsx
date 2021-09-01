@@ -20,7 +20,7 @@ describe('Menu', () => {
       'component-has-root-ref',
       'component-handles-classname',
       // Menu does not have own styles
-      'classname-wins',
+      'make-styles-overrides-win',
     ],
     Component: Menu,
     displayName: 'Menu',

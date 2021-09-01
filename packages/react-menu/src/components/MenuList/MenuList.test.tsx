@@ -13,7 +13,7 @@ describe('MenuList', () => {
     helperComponents: [MenuListProvider],
     disabledTests: [
       // MenuTrigger does not have own styles
-      'classname-wins',
+      'make-styles-overrides-win',
     ],
   });
 
