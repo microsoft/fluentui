@@ -10,7 +10,7 @@ When components such as `Tooltip` and `ContextualMenu` are not present in the DO
 
 ## Background
 
-In the past we've avoided the use of async imports to prescribe split points, because the technology was new, and bundlers didn't have strong support for it. We built a proprietary webpack plugin for managing re-aliasing. This was done before webpack supported async import split points, so that we could ensure the right files were aliased, rather than asking each partner to set this up. But I think the only partner to take advantage of this plugin was OOUI. (Was very proprietary, not well documented, etc.) But now with async imports, we don't need plugins. With the new components being worked on and tools being modernized, we should revisit this issue.
+In the past we've avoided the use of async imports to prescribe split points, because the technology was new, and bundlers didn't have strong support for it. We built a proprietary webpack plugin for managing re-aliasing. This was done before webpack supported async import split points, so that we could ensure the right files were aliased, rather than asking each partner to set this up. But (I believe) the only partner to take advantage of this plugin was OOUI. (Was very proprietary, not well documented, etc.) But now with async imports, we don't need plugins. With the new components being worked on and tools being modernized, we should revisit this issue.
 
 If you don't know what they are; it is a way to asynchronously import source code. Bundlers use async imports as a cue for creating a split point in the bundle.
 
