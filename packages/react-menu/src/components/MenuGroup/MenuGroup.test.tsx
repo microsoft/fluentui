@@ -11,7 +11,7 @@ describe('MenuGroup', () => {
     Component: MenuGroup,
     displayName: 'MenuGroup',
     disabledTests: [
-      // MenuTrigger does not have own styles
+      // MenuGroup does not have own styles
       'classname-wins',
     ],
   });
