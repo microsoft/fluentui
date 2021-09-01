@@ -223,6 +223,20 @@
       "command": "yarn create-component",
       "cwd": "${workspaceFolder}",
       "outputCapture": "std"
+    },
+    {
+      "name": "Debug current ts-node script",
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "cwd": "${workspaceRoot}",
+      "args": ["${file}"],
+      "runtimeArgs": ["--nolazy", "--inspect", "-r", "${workspaceRoot}/scripts/ts-node-register"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "console": "integratedTerminal"
     }
   ]
 }

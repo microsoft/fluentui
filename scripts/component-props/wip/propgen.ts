@@ -25,22 +25,18 @@ const currentDirectoryParts = currentDirectoryPath.split(path.sep);
 const currentDirectoryName = currentDirectoryParts[currentDirectoryParts.length - 1];
 
 type InterfaceOrTypeAliasDeclaration = ts.TypeAliasDeclaration | ts.InterfaceDeclaration;
-export interface StringIndexedObject<T> {
+interface StringIndexedObject<T> {
   [key: string]: T;
 }
 
-export interface ComponentDoc {
-  displayName: string;
-  filePath: string;
-  description: string;
+interface TypeOrInterface {
+  name: string;
   props: Props;
-  parents?: string[];
-  tags?: {};
 }
 
-export interface Props extends StringIndexedObject<PropItem> {}
+interface Props extends StringIndexedObject<PropItem> {}
 
-export interface PropItem {
+interface PropItem {
   name: string;
   required: boolean;
   type: PropItemType;
@@ -52,111 +48,57 @@ export interface PropItem {
   tags?: {};
 }
 
-export interface Component {
-  name: string;
-}
-
-export interface PropItemType {
+interface PropItemType {
   name: string;
   value?: any;
   raw?: string;
 }
 
-export interface ParentType {
+interface ParentType {
   name: string;
   fileName: string;
 }
-export type ResolvedType = {
+type ResolvedType = {
   type: string;
   name: string;
 };
 
-export type RTLiteral = ResolvedType & {
+type RTLiteral = ResolvedType & {
   type: 'StringLiteral' | 'NumberLiteral' | 'BooleanLiteral';
   value: string | number | boolean;
 };
 
-export type RTUnion = ResolvedType & {
+type RTUnion = ResolvedType & {
   type: 'union';
   types: ResolvedType[];
 };
 
-export type RTEnum = ResolvedType & {
-  type: 'enum';
-  values: RTLiteral[]; // these should be just
-};
-
-export type RTIntersection = ResolvedType & {
+type RTIntersection = ResolvedType & {
   type: 'intersection';
   types: ResolvedType[];
 };
 
-export type RTArray = ResolvedType & {
+type RTArray = ResolvedType & {
   type: 'array';
   indexedType: ResolvedType;
 };
 
-export type RTObject = ResolvedType & {
+type RTObject = ResolvedType & {
   type: 'object';
   props: Record<string, ResolvedType>;
 };
 
-export type PropFilter = (props: PropItem, component: Component) => boolean;
+type PropFilter = (props: PropItem) => boolean;
 
-export type ComponentNameResolver = (exp: ts.Symbol, source: ts.SourceFile) => string | undefined | null | false;
-
-export interface ParserOptions {
+interface ParserOptions {
   propFilter?: PropFilter;
-  componentNameResolver?: ComponentNameResolver;
 }
-
-export const defaultParserOpts: ParserOptions = {};
-
-export interface FileParser {
-  parse(filePathOrPaths: string | string[]): ComponentDoc[];
-  parseWithProgramProvider(filePathOrPaths: string | string[], programProvider?: () => ts.Program): ComponentDoc[];
-}
-
-const defaultOptions: ts.CompilerOptions = {
-  jsx: ts.JsxEmit.React,
-  module: ts.ModuleKind.CommonJS,
-  target: ts.ScriptTarget.Latest,
-  allowUnusedLabels: true,
-  allowUnreachableCode: true,
-};
-
-const reactComponentSymbolNames = [
-  'StatelessComponent',
-  'Stateless',
-  'StyledComponentClass',
-  'StyledComponent',
-  'FunctionComponent',
-  'ForwardRefExoticComponent',
-
-  // magic for ComponentWithAs
-  'ComponentWithAs',
-  '__type',
-];
 
 /** max # of members to expand in a union type (could be made configurable if needed) */
 const MAX_UNION_MEMBERS = 16;
 
-type MaybeIntersectType = ts.Type & { types?: ts.Type[] };
-
-/**
- * Parses a file with default TS options
- * @param filePathOrPaths component file that should be parsed
- * @param parserOpts options used to parse the files
- */
-export function parse(filePathOrPaths: string | string[], parserOpts: ParserOptions = defaultParserOpts) {
-  return withCompilerOptions(defaultOptions, parserOpts).parse(filePathOrPaths);
-}
-
-/**
- * Constructs a parser for a default configuration.
- */
-export function withDefaultConfig(parserOpts: ParserOptions = defaultParserOpts): FileParser {
-  return withCompilerOptions(defaultOptions, parserOpts);
+export interface FileParser {
+  parse(filePathOrPaths: string | string[]): TypeOrInterface[];
 }
 
 /**
@@ -177,22 +119,9 @@ export function withCustomConfig(tsconfigPath: string, parserOpts: ParserOptions
     throw errors[0];
   }
 
-  return withCompilerOptions(options, parserOpts);
-}
-
-/**
- * Constructs a parser for a specified set of TS compiler options.
- */
-export function withCompilerOptions(
-  compilerOptions: ts.CompilerOptions,
-  parserOpts: ParserOptions = defaultParserOpts,
-): FileParser {
   return {
-    parse(filePathOrPaths: string | string[]): ComponentDoc[] {
-      return parseWithProgramProvider(filePathOrPaths, compilerOptions, parserOpts);
-    },
-    parseWithProgramProvider(filePathOrPaths, programProvider) {
-      return parseWithProgramProvider(filePathOrPaths, compilerOptions, parserOpts, programProvider);
+    parse(filePathOrPaths: string | string[]): TypeOrInterface[] {
+      return parseWithProgramProvider(filePathOrPaths, options, parserOpts);
     },
   };
 }
@@ -209,7 +138,7 @@ const defaultJSDoc: JSDoc = {
   tags: {},
 };
 
-const defaultPropFilter = (prop, component) => {
+const defaultPropFilter = prop => {
   // skip children property in case it has no custom documentation
   if (prop.name === 'children' && prop.description.length === 0) {
     return false;
@@ -217,25 +146,7 @@ const defaultPropFilter = (prop, component) => {
   return true;
 };
 
-const getComponentSymbolOfType = (type: MaybeIntersectType) => {
-  if (type.symbol) {
-    const symbolName = type.symbol.getName();
-    if (reactComponentSymbolNames.indexOf(symbolName) !== -1) {
-      return type.symbol;
-    }
-  }
-
-  if (type.types) {
-    for (const innerType of type.types) {
-      const componentSymbol = getComponentSymbolOfType(innerType);
-      if (componentSymbol) {
-        return componentSymbol;
-      }
-    }
-  }
-};
-
-export class Parser {
+class Parser {
   private checker: ts.TypeChecker;
   private propFilter: PropFilter;
 
@@ -245,13 +156,9 @@ export class Parser {
   }
 
   /**
-   * @param symbolParam symbol of an export from a component file (TBD if it's a component)
+   * @param symbolParam symbol of an export from a props file
    */
-  public getComponentInfo(
-    symbolParam: ts.Symbol,
-    source: ts.SourceFile,
-    componentNameResolver: ComponentNameResolver = () => undefined,
-  ): ComponentDoc | null {
+  public getTypeOrInterfaceInfo(symbolParam: ts.Symbol, source: ts.SourceFile): TypeOrInterface | null {
     if (!!symbolParam.declarations && symbolParam.declarations.length === 0) {
       return null;
     }
@@ -330,75 +237,6 @@ export class Parser {
         displayName,
         props: {},
       };
-    }
-
-    return null;
-  }
-
-  private getComponentFromExpression(exp: ts.Symbol) {
-    const declaration = exp.valueDeclaration || exp.declarations![0];
-    const type = this.checker.getTypeOfSymbolAtLocation(exp, declaration);
-    const typeSymbol = type.symbol || type.aliasSymbol;
-
-    if (typeSymbol) {
-      const symbolName = typeSymbol.getName();
-
-      if (
-        (symbolName === 'MemoExoticComponent' || symbolName === 'ForwardRefExoticComponent') &&
-        exp.valueDeclaration &&
-        ts.isExportAssignment(exp.valueDeclaration) &&
-        ts.isCallExpression(exp.valueDeclaration.expression)
-      ) {
-        const component = this.checker.getSymbolAtLocation(exp.valueDeclaration.expression.arguments[0]);
-
-        if (component) {
-          return component;
-        }
-      }
-    }
-
-    return exp;
-  }
-
-  public extractPropsFromTypeIfStatelessComponent(type: ts.Type): ts.Symbol | null {
-    const callSignatures = type.getCallSignatures();
-
-    if (callSignatures.length) {
-      // Could be a stateless component.  Is a function, so the props object we're interested
-      // in is the (only) parameter.
-
-      for (const sig of callSignatures) {
-        const params = sig.getParameters();
-        if (params.length === 0) {
-          continue;
-        }
-        // Maybe we could check return type instead,
-        // but not sure if Element, ReactElement<T> are all possible values
-        const propsParam = params[0];
-        if (propsParam.name === 'props' || params.length === 1) {
-          return propsParam;
-        }
-      }
-    }
-
-    return null;
-  }
-
-  public extractPropsFromTypeIfStatefulComponent(type: ts.Type): ts.Symbol | null {
-    const constructSignatures = type.getConstructSignatures();
-
-    if (constructSignatures.length) {
-      // React.Component. Is a class, so the props object we're interested
-      // in is the type of 'props' property of the object constructed by the class.
-
-      for (const sig of constructSignatures) {
-        const instanceType = sig.getReturnType();
-        const props = instanceType.getProperty('props');
-
-        if (props) {
-          return props;
-        }
-      }
     }
 
     return null;
@@ -544,7 +382,7 @@ export class Parser {
     return { type: 'unknown', name };
   }
 
-  public getPropsInfo(propsObj: ts.Symbol, defaultProps: StringIndexedObject<string> = {}): Props {
+  private getPropsInfo(propsObj: ts.Symbol, defaultProps: StringIndexedObject<string> = {}): Props {
     if (!propsObj.valueDeclaration) {
       return {};
     }
@@ -628,7 +466,7 @@ export class Parser {
     return result;
   }
 
-  public findDocComment(symbol: ts.Symbol): JSDoc {
+  private findDocComment(symbol: ts.Symbol): JSDoc {
     const comment = this.getFullJsDocComment(symbol);
     if (comment.fullComment || comment.tags.default) {
       return comment;
@@ -652,7 +490,7 @@ export class Parser {
    * though TypeScript has broken down the JsDoc comment into plain
    * text and JsDoc tags.
    */
-  public getFullJsDocComment(symbol: ts.Symbol): JSDoc {
+  private getFullJsDocComment(symbol: ts.Symbol): JSDoc {
     // in some cases this can be undefined (Pick<Type, 'prop1'|'prop2'>)
     if (symbol.getDocumentationComment === undefined) {
       return defaultJSDoc;
@@ -688,7 +526,7 @@ export class Parser {
     };
   }
 
-  public extractDefaultPropsFromComponent(symbol: ts.Symbol, source: ts.SourceFile) {
+  private extractDefaultPropsFromComponent(symbol: ts.Symbol, source: ts.SourceFile) {
     let possibleStatements = [
       ...source.statements
         // ensure that name property is available
@@ -800,7 +638,7 @@ export class Parser {
     }, {});
   }
 
-  public getLiteralValueFromImportSpecifier(
+  private getLiteralValueFromImportSpecifier(
     property: ts.ImportSpecifier,
   ): string | boolean | number | null | undefined {
     if (ts.isImportSpecifier(property)) {
@@ -821,7 +659,7 @@ export class Parser {
     return null;
   }
 
-  public getLiteralValueFromPropertyAssignment(
+  private getLiteralValueFromPropertyAssignment(
     property: ts.PropertyAssignment | ts.BindingElement,
   ): string | boolean | number | null | undefined {
     let { initializer } = property;
@@ -894,7 +732,7 @@ export class Parser {
     }
   }
 
-  public getPropMap(
+  private getPropMap(
     properties: ts.NodeArray<ts.PropertyAssignment | ts.BindingElement>,
   ): StringIndexedObject<string | boolean | number | null> {
     return properties.reduce((acc, property) => {
@@ -1045,7 +883,7 @@ function computeComponentName(exp: ts.Symbol, source: ts.SourceFile) {
 }
 
 // Default export for a file: named after file
-export function getDefaultExportForFile(source: ts.SourceFile) {
+function getDefaultExportForFile(source: ts.SourceFile) {
   const name = path.basename(source.fileName, path.extname(source.fileName));
   const filename = name === 'index' ? path.basename(path.dirname(source.fileName)) : name;
 
@@ -1138,12 +976,12 @@ function isInterfaceOrTypeAliasDeclaration(node: ts.Node): node is ts.InterfaceD
   return node.kind === ts.SyntaxKind.InterfaceDeclaration || node.kind === ts.SyntaxKind.TypeAliasDeclaration;
 }
 
-export function parseWithProgramProvider(
+function parseWithProgramProvider(
   filePathOrPaths: string | string[],
   compilerOptions: ts.CompilerOptions,
   parserOpts: ParserOptions,
   programProvider?: () => ts.Program,
-): ComponentDoc[] {
+): TypeOrInterface[] {
   const filePaths = Array.isArray(filePathOrPaths) ? filePathOrPaths : [filePathOrPaths];
 
   const program = programProvider ? programProvider() : ts.createProgram(filePaths, compilerOptions);
@@ -1155,7 +993,7 @@ export function parseWithProgramProvider(
   return filePaths
     .map(filePath => program.getSourceFile(filePath))
     .filter((sourceFile): sourceFile is ts.SourceFile => typeof sourceFile !== 'undefined')
-    .reduce<ComponentDoc[]>((docs, sourceFile) => {
+    .reduce<TypeOrInterface[]>((docs, sourceFile) => {
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
 
       if (!moduleSymbol) {
@@ -1166,11 +1004,9 @@ export function parseWithProgramProvider(
         docs,
         checker
           .getExportsOfModule(moduleSymbol)
-          .map(exp => parser.getComponentInfo(exp, sourceFile, parserOpts.componentNameResolver))
-          .filter((comp): comp is ComponentDoc => comp !== null)
-          .filter((comp, index, comps) =>
-            comps.slice(index + 1).every(innerComp => innerComp!.displayName !== comp!.displayName),
-          ),
+          .map(exp => parser.getTypeOrInterfaceInfo(exp, sourceFile))
+          .filter((t): t is TypeOrInterface => t !== null)
+          .filter((t, index, types) => types.slice(index + 1).every(innerT => innerT!.name !== t!.name)),
       );
 
       return docs;
