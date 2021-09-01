@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix initial ResponsiveMode value",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

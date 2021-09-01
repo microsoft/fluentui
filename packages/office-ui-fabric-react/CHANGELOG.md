@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Sep 2021 12:22:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.175.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.175.1)
+
+Wed, 01 Sep 2021 12:22:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.175.0..office-ui-fabric-react_v7.175.1)
+
+### Patches
+
+- Fix initial ResponsiveMode value ([PR #19566](https://github.com/microsoft/fluentui/pull/19566) by tmichon@microsoft.com)
 
 ## [7.175.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.175.0)
 
