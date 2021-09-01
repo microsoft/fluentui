@@ -14,7 +14,7 @@ export const Input: React_2.FunctionComponent<InputProps>;
 
 // @public (undocumented)
 export interface InputCommons {
-    appearance?: 'filledDarker' | 'filledLighter' | 'underline' | 'outline';
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     // (undocumented)
     inline?: boolean;
     size?: 'small' | 'medium' | 'large';

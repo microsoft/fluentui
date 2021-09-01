@@ -29,6 +29,7 @@ export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputS
 
   return {
     components: {
+      root: 'span',
       input: 'input',
       inputWrapper: 'span',
       bookendBefore: 'span',
