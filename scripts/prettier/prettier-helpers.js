@@ -54,6 +54,10 @@ function runPrettier(files, config = {}) {
         return prettierSupportedFileExtensions.includes(ext);
       });
 
+  if (!prettierSupportedFiles.length) {
+    return;
+  }
+
   // As of writing, Prettier's Node API (https://prettier.io/docs/en/api.html) only supports running
   // on a single file. So to easily format multiple files, we have to use the CLI.
   const cmd = [
