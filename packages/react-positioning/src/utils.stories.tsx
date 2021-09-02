@@ -1,8 +1,14 @@
 import * as React from 'react';
 import { PositioningProps, PositioningShorthand } from './types';
 import { resolvePositioningShorthand } from './utils/resolvePositioningShorthand';
+// Need to disable compilation for aliases: https://github.com/microsoft/fluentui/pull/16976/files#r575447074
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { makeStyles } from '@fluentui/react-make-styles';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+// Need to disable compilation for aliases: https://github.com/microsoft/fluentui/pull/16976/files#r575447074
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Button } from '@fluentui/react-button';
 
 export const PositionedComponent = (props: {
