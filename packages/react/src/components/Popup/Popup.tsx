@@ -126,11 +126,13 @@ function useHideSiblingNodes(props: IPopupProps) {
   React.useEffect(() => {
     const targetDocument = getDocument();
     if (isModalOrPanel && targetDocument) {
-      const children = targetDocument.body.children;
+      const bodyChildren = targetDocument.body.children;
+      const popupNode = bodyChildren[bodyChildren.length - 1];
+      const popupNodeParentChildren = popupNode.parentElement ? popupNode.parentElement.children : [];
       let nodesToHide: Element[] = [];
 
-      for (let i = 0; i < children.length - 1; i++) {
-        nodesToHide.push(children[i]);
+      for (let i = 0; i < popupNodeParentChildren.length - 1; i++) {
+        nodesToHide.push(popupNodeParentChildren[i]);
       }
 
       nodesToHide = nodesToHide.filter(
