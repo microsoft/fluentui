@@ -34,15 +34,15 @@ export const ComboBoxSelectAllExample: React.FunctionComponent = () => {
     index?: number,
     value?: string,
   ): void => {
-    let selected = option?.selected;
-    const currentSelectedOptionKeys = selectedKeys.filter(value => value !== 'selectAll');
+    const selected = option?.selected;
+    const currentSelectedOptionKeys = selectedKeys.filter(key => key !== 'selectAll');
     const selectAllState = currentSelectedOptionKeys.length === selectableOptions.length;
 
     if (option) {
       if (option?.itemType === SelectableOptionMenuItemType.SelectAll) {
         selectAllState
           ? setSelectedKeys([])
-          : setSelectedKeys(['selectAll', ...selectableOptions.map(option => option.key as string)]);
+          : setSelectedKeys(['selectAll', ...selectableOptions.map(o => o.key as string)]);
       } else {
         const updatedKeys = selected
           ? [...currentSelectedOptionKeys, option!.key as string]
@@ -70,6 +70,7 @@ export const ComboBoxSelectAllExample: React.FunctionComponent = () => {
         multiSelect
         options={options}
         selectedKey={selectedKeys}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={onChange}
         styles={comboBoxStyles}
       />
