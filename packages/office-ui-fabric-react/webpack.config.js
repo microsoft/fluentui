@@ -8,8 +8,8 @@ let entry = {
   [BUNDLE_NAME]: './lib/index.bundle.js'
 };
 
-// In production builds, produce the demo-app bundle.
-if (IS_PRODUCTION) {
+// In production or PR builds, produce the demo-app bundle.
+if (IS_PRODUCTION || process.env.TF_BUILD) {
   entry['demo-app'] = './lib/demo/index.js';
 }
 

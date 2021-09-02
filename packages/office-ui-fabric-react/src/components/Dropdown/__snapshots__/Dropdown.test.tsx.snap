@@ -5,12 +5,12 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <div
-    aria-activedescendant={null}
-    aria-autocomplete="none"
+    aria-activedescendant={undefined}
     aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
-    aria-label={undefined}
+    aria-haspopup="listbox"
+    aria-labelledby="Dropdown94-label"
     aria-live="assertive"
     aria-owns={null}
     className="ms-Dropdown"
@@ -18,6 +18,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     id="Dropdown94"
     onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     role="combobox"
@@ -25,10 +26,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
-      id="Dropdown94-option"
-      role="listbox"
     />
     <span
       className="ms-Dropdown-caretDownWrapper"
@@ -53,12 +51,12 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   className="ms-Dropdown-container"
 >
   <div
-    aria-activedescendant={null}
-    aria-autocomplete="none"
+    aria-activedescendant={undefined}
     aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
-    aria-label={undefined}
+    aria-haspopup="listbox"
+    aria-labelledby="Dropdown0-label"
     aria-live="assertive"
     aria-owns={null}
     className="ms-Dropdown"
@@ -66,6 +64,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     id="Dropdown0"
     onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     role="combobox"
@@ -73,10 +72,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
   >
     <span
       aria-atomic={true}
-      aria-readonly="true"
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
-      id="Dropdown0-option"
-      role="listbox"
     />
     <span
       className="ms-Dropdown-caretDownWrapper"

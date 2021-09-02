@@ -36,7 +36,6 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <input
           aria-activedescendant={undefined}
@@ -102,7 +101,6 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <input
           aria-activedescendant={undefined}

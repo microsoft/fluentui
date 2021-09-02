@@ -235,7 +235,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         componentRef={ this._focusZone }
         role='row'
         aria-label={ ariaLabel }
-        ariaDescribedBy={ ariaDescribedBy }
+        aria-describedby={ ariaDescribedBy }
         className={ css(
           'ms-DetailsRow',
           className,
