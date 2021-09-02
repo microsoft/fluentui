@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "MenuButton: Cleaning up implementation and adhering to MenuTrigger contract.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
