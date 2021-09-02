@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { MenuButtonState } from './MenuButton.types';
 import { menuButtonShorthandPropsCompat } from './useMenuButton';
+import type { MenuButtonState } from './MenuButton.types';
 
 /**
  * Renders a MenuButton component by passing the state defined props to the appropriate slots.

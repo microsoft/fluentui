@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Fri, 27 Aug 2021 07:33:32 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.74)
+
+Wed, 01 Sep 2021 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.73..@fluentui/react-badge_v9.0.0-alpha.74)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.43 ([PR #19483](https://github.com/microsoft/fluentui/pull/19483) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.73)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.72..@fluentui/react-badge_v9.0.0-alpha.73)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.42 ([PR #19556](https://github.com/microsoft/fluentui/pull/19556) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.72)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.71..@fluentui/react-badge_v9.0.0-alpha.72)
+
+### Changes
+
+- Updating TypeScript type-only imports/exports to use import/export type syntax. ([PR #19485](https://github.com/microsoft/fluentui/pull/19485) by dzearing@hotmail.com)
 
 ## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.71)
 

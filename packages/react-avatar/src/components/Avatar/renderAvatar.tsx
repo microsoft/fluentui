@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { AvatarState } from './Avatar.types';
 import { avatarShorthandPropsCompat } from './useAvatar';
+import type { AvatarState } from './Avatar.types';
 
 export const renderAvatar = (state: AvatarState) => {
   const { slots, slotProps } = getSlotsCompat(state, avatarShorthandPropsCompat);

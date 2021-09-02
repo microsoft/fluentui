@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useAccordionPanel } from './useAccordionPanel';
-import { AccordionPanelProps } from './AccordionPanel.types';
 import { renderAccordionPanel } from './renderAccordionPanel';
 import { useAccordionPanelStyles } from './useAccordionPanelStyles';
+import type { AccordionPanelProps } from './AccordionPanel.types';
 
 /**
  * Define a styled AccordionPanel, using the `useAccordionPanel` and `useAccordionPanelStyles` hooks.

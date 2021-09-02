@@ -63,8 +63,8 @@ export function initializeResponsiveMode(element?: HTMLElement): void {
   }
 }
 
-export function getInitialResponsiveMode() {
-  return _defaultMode || _lastMode || ResponsiveMode.large;
+export function getInitialResponsiveMode(): ResponsiveMode {
+  return _defaultMode ?? _lastMode ?? ResponsiveMode.large;
 }
 
 /**

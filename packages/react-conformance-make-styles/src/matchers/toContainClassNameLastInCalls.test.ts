@@ -22,17 +22,6 @@ describe('toContainClassNameLastInCalls', () => {
     );
   });
 
-  it('fails on multiple occurrences of a class in multiple calls', () => {
-    const callA: MergeClassesParams = ['a', 'className'];
-    const callB: MergeClassesParams = ['b', 'className'];
-
-    expect(() => {
-      expect([callA, callB]).toContainClassNameLastInCalls('className');
-    }).toThrowErrorMatchingInlineSnapshot(
-      `"There multiple calls of mergeClasses() that contain \\"className\\". Last call: b className"`,
-    );
-  });
-
   it('fails on when a class is not last', () => {
     const call: MergeClassesParams = ['className', 'foo'];
 

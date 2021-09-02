@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 27 Aug 2021 07:33:32 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.100)
+
+Wed, 01 Sep 2021 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.99..@fluentui/react-components_v9.0.0-alpha.100)
+
+### Changes
+
+- Adding FAQ on moving to v9-BETA from v8. ([PR #19505](https://github.com/microsoft/fluentui/pull/19505) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.99)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.98..@fluentui/react-components_v9.0.0-alpha.99)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.69 ([PR #19544](https://github.com/microsoft/fluentui/pull/19544) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.98)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.97..@fluentui/react-components_v9.0.0-alpha.98)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.67 ([PR #19485](https://github.com/microsoft/fluentui/pull/19485) by dzearing@hotmail.com)
 
 ## [9.0.0-alpha.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.97)
 

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.43",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-label"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.42",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7a53d85571212d2f5b56a84fd84e29f5e1985daa",
+            "package": "@fluentui/react-label"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Aug 2021 07:33:32 GMT",
       "tag": "@fluentui/react-label_v9.0.0-alpha.31",
       "version": "9.0.0-alpha.31",

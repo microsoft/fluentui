@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import { ButtonDefaultedProps, ButtonProps, ButtonShorthandPropsCompat, ButtonState } from '../Button/Button.types';
+import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type {
+  ButtonDefaultedProps,
+  ButtonProps,
+  ButtonShorthandPropsCompat,
+  ButtonState,
+} from '../Button/Button.types';
 
-/**
- * {@docCategory Button}
- */
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
@@ -42,19 +44,10 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
   // onMenuDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
 };
 
-/**
- * {@docCategory Button}
- */
 export type MenuButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'menuIcon';
 
-/**
- * {@docCategory Button}
- */
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
-/**
- * {@docCategory Button}
- */
 export interface MenuButtonState
   extends Omit<ButtonState, 'iconPosition'>,
     ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {}

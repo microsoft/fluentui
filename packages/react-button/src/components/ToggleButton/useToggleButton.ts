@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { useButton } from '../Button/useButton';
-import { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 import { useChecked } from './useChecked';
+import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
+/**
+ * Given user props, returns the final state for a ToggleButton.
+ */
 export const useToggleButton = (
   props: ToggleButtonProps,
   ref: React.Ref<HTMLElement>,

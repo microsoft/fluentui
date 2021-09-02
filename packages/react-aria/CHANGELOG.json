@@ -2,6 +2,51 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updates react-aria to use root as slot",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.42",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7a53d85571212d2f5b56a84fd84e29f5e1985daa",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "e2ee214821eeb15080fa66ea0905dee4838fb291",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Aug 2021 07:35:43 GMT",
       "tag": "@fluentui/react-aria_v9.0.0-alpha.22",
       "version": "9.0.0-alpha.22",
