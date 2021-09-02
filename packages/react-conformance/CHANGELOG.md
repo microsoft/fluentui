@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.5)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.4.4..@fluentui/react-conformance_v0.4.5)
+
+### Patches
+
+- handle "disabledTests" for "extraTests" ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
 
 ## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.4)
 

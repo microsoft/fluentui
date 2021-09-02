@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "make number of calls configurable",
-  "packageName": "@fluentui/react-conformance-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

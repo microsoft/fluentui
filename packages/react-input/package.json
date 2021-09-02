@@ -27,7 +27,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
-    "@fluentui/react-conformance": "^0.4.4",
+    "@fluentui/react-conformance": "^0.4.5",
     "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
