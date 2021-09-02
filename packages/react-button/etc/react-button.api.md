@@ -6,6 +6,7 @@
 
 import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { MenuTriggerChildProps } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
@@ -87,7 +88,7 @@ export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.Ref
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
 // @public (undocumented)
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & PassedMenuProps & {
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & Partial<MenuTriggerChildProps> & {
     menuIcon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -99,10 +100,6 @@ export const menuButtonShorthandPropsCompat: MenuButtonShorthandPropsCompat[];
 
 // @public (undocumented)
 export interface MenuButtonState extends Omit<ButtonState, 'iconPosition'>, ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {
-}
-
-// @public (undocumented)
-export interface PassedMenuProps extends Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'aria-expanded' | 'id' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'> {
 }
 
 // @public

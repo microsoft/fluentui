@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { MenuTriggerChildProps } from '@fluentui/react-menu';
 import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 import type {
   ButtonDefaultedProps,
@@ -7,22 +8,8 @@ import type {
   ButtonState,
 } from '../Button/Button.types';
 
-// Align with MenuTriggerChildProps in @fluentui/react-menu as needed
-export interface PassedMenuProps
-  extends Pick<
-    React.HTMLAttributes<HTMLElement>,
-    | 'aria-haspopup'
-    | 'aria-expanded'
-    | 'id'
-    | 'onClick'
-    | 'onContextMenu'
-    | 'onKeyDown'
-    | 'onMouseEnter'
-    | 'onMouseLeave'
-  > {}
-
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  PassedMenuProps & {
+  Partial<MenuTriggerChildProps> & {
     /**
      * Menu icon that indicates that this button has a menu that can be expanded.
      */
