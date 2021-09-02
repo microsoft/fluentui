@@ -194,7 +194,7 @@ const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> =
           setDialogOpened(true);
         }}
         onCancel={() => setDialogOpened(false)}
-        header={<h1>Keyboard shortcuts help</h1>}
+        header={<h1>Chats keyboard help</h1>}
         headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
         footer={{
           children: (Component, props) => (
