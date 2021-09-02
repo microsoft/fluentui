@@ -1,0 +1,47 @@
+import * as React from 'react';
+import { Popover, PopoverTrigger, PopoverSurface } from './index';
+import { Button } from './utils.stories';
+import { makeStyles } from '@fluentui/react-make-styles';
+import { ExampleContent } from './utils.stories';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    gap: '10px',
+  },
+});
+
+export const AnchorToCustomTarget = () => {
+  const [target, setTarget] = React.useState<HTMLElement | null>();
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <Popover positioning={{ target }}>
+        <PopoverTrigger>
+          <Button>Popover trigger</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+
+      <Button ref={setTarget}>Custom target</Button>
+    </div>
+  );
+};
+
+AnchorToCustomTarget.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A Popover can be used without a trigger and anchored to a any DOM element. This can be useful if',
+        'a Popover instance needs to be reused in different places.',
+        '',
+        '_Not using a PopoverTrigger will require more work to make sure your scenario is accessible_',
+        '_such as implementing accessible markup and keyboard interactions for your trigger_',
+      ].join('\n'),
+    },
+  },
+};
