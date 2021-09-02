@@ -310,7 +310,13 @@ export const useSliderState = (state: SliderState) => {
     // When a transition is applied with the origin, a visible animation plays when it goes below the min.
     transition: stepAnimation
       ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}${
-          ', ' + vertical ? 'top' : dir === 'rtl' ? 'right' : 'left' + 'ease-in-out ' + animationTime
+          origin !== undefined
+            ? ', ' + vertical
+              ? 'top'
+              : dir === 'rtl'
+              ? 'right'
+              : 'left' + 'ease-in-out ' + animationTime
+            : ''
         }`
       : 'none',
     ...state.track.style,
