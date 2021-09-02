@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "move positioning stories to react-components",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
