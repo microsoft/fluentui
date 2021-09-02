@@ -10,21 +10,32 @@ export const ControllingOpenAndClose = () => {
     setOpen(data.open);
   };
 
-  return (
-    <Menu open={open} onOpenChange={onOpenChange}>
-      <MenuTrigger>
-        <Button>Toggle menu</Button>
-      </MenuTrigger>
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOpen(e.target.checked);
+  };
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+  return (
+    <div>
+      <label style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
+        open
+        <input type="checkbox" name="state" value="open" checked={open} onChange={onChange} />
+      </label>
+
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <Button>Toggle menu</Button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem disabled>Open File</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </div>
   );
 };
 
