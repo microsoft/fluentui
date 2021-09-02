@@ -23,7 +23,7 @@ export type PopperRefHandle = { updatePosition: () => void };
 export type PopperVirtualElement = PopperJs.VirtualElement;
 
 export interface PositioningProps {
-  /** Alignment for the component */
+  /** Alignment for the component. */
   align?: Alignment;
 
   /** The element which will define the boundaries of the popper position for the flip behavior. */
