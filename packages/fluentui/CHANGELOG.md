@@ -64,6 +64,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add additional properties(`focusInnerBorderWidth`, `focusOuterBorderWidth`, `focusBorderRadius`) to `getBorderFocusStyles` @annabratseiko ([#19319](https://github.com/microsoft/fluentui/pull/19319))
 - Add `dismissOnContentMouseEnter` in `Tooltip` @chassunc ([#19425](https://github.com/microsoft/fluentui/pull/19425))
 - Allow `Tooltip` to configure a delay to open on mouse enter trigger @chassunc ([#19405](https://github.com/microsoft/fluentui/pull/19405))
+- Add `EmojiAddIcon` to icon set @notandrew ([#19626](https://github.com/microsoft/fluentui/pull/19626))
 
 ### Documentation
 - Align author name in compact chat with design spec @Hirse ([#18988](https://github.com/microsoft/fluentui/pull/18988))
