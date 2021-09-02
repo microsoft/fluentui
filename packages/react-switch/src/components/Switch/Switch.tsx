@@ -5,7 +5,7 @@ import { useSwitchStyles } from './useSwitchStyles';
 import type { SwitchProps } from './Switch.types';
 
 /**
- * Define a styled Switch, using the `useSwitch` hook.
+ * The Switch control enables users to trigger an option on or off through pressing on the component.
  */
 export const Switch = React.forwardRef<HTMLElement, SwitchProps>((props, ref) => {
   const state = useSwitch(props, ref);

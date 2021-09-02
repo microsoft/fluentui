@@ -167,25 +167,27 @@ const useInputStyle = makeStyles({
  * Apply styling to the Switch slots based on the state
  */
 export const useSwitchStyles = (state: SwitchState): SwitchState => {
+  const { checked, disabled } = state.input;
+
   const rootStyles = useRootStyles();
   const trackStyles = useTrackStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyle();
 
-  state.className = mergeClasses(
-    rootClassName + (state.input.checked ? ' checked' : ''),
+  state.root.className = mergeClasses(
+    rootClassName + (checked ? ' checked' : ''),
     rootStyles.root,
     rootStyles.focusIndictor,
-    !state.disabled && (state.input.checked ? rootStyles.checked : rootStyles.unchecked),
-    state.className,
+    !disabled && (checked ? rootStyles.checked : rootStyles.unchecked),
+    state.root.className,
   );
 
   state.track.className = mergeClasses(
     trackClassName,
     trackStyles.track,
-    !state.disabled && (state.input.checked ? trackStyles.checked : trackStyles.unchecked),
-    state.disabled && (state.input.checked ? trackStyles.disabledChecked : trackStyles.disabledUnchecked),
+    !disabled && (checked ? trackStyles.checked : trackStyles.unchecked),
+    disabled && (checked ? trackStyles.disabledChecked : trackStyles.disabledUnchecked),
     state.track.className,
   );
 
@@ -194,14 +196,14 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   state.thumb.className = mergeClasses(
     thumbClassName,
     thumbStyles.thumb,
-    !state.disabled && (state.input.checked ? thumbStyles.checked : thumbStyles.unchecked),
-    state.disabled && (state.input.checked ? thumbStyles.disabledChecked : thumbStyles.disabledUnchecked),
+    !disabled && (checked ? thumbStyles.checked : thumbStyles.unchecked),
+    disabled && (checked ? thumbStyles.disabledChecked : thumbStyles.disabledUnchecked),
     state.thumb.className,
   );
 
   state.input.className = mergeClasses(
     inputStyles.input,
-    state.disabled ? inputStyles.disabled : inputStyles.enabled,
+    disabled ? inputStyles.disabled : inputStyles.enabled,
     state.input.className,
   );
 

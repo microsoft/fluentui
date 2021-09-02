@@ -4,7 +4,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
 
 export const useSwitchState = (state: SwitchState) => {
-  const { defaultChecked = false, checked, disabled = false, onChange } = state;
+  const { defaultChecked = false, checked, disabled = false, onChange } = state.root;
   const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
   const [internalValue, setInternalValue] = useControllableState({
@@ -41,6 +41,7 @@ export const useSwitchState = (state: SwitchState) => {
   };
 
   // Input Props
+  state.input.type = 'checkbox';
   state.input.onChange = onInputChange;
   state.input.checked = internalValue;
   state.input.disabled = disabled;

@@ -1,32 +1,34 @@
 import * as React from 'react';
-import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * Names of the shorthand properties in SwitchProps
- */
-export interface SwitchProps
-  extends ComponentPropsCompat,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export type SwitchSlots = {
+  /**
+   * The root of the Switch.
+   */
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+
   /**
    * The bar indicating the status of the Switch.
    */
-  track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  track: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
    */
-  thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  thumbWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The circular icon indicating the status of the Switch.
    */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  thumb: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The hidden input that handles the Switch's internal functionality.
    */
-  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+  input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>;
+};
 
+export type SwitchCommon = {
   /**
    * The starting value for a uncontrolled Switch. If `true` then the Switch will be enabled.
    * Mutually exclusive with `checked` prop.
@@ -57,24 +59,8 @@ export interface SwitchProps
       checked: boolean;
     },
   ) => void;
-}
+};
 
-/**
- * Names of the shorthand properties in SwitchProps
- */
-export type SwitchShorthandProps = 'track' | 'thumbWrapper' | 'thumb' | 'input';
+export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommon {}
 
-/**
- * Names of SwitchProps that have a default value in useSwitch
- */
-export type SwitchDefaultedProps = 'track' | 'thumbWrapper' | 'thumb' | 'input';
-
-/**
- * State used in rendering Switch
- */
-export interface SwitchState extends ComponentStateCompat<SwitchProps, SwitchShorthandProps, SwitchDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {}
