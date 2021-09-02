@@ -4,14 +4,16 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
 export const Link: React_2.FunctionComponent<LinkProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type LinkProps = ComponentPropsCompat & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+export type LinkCommons = Omit<React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'children'> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'children' | 'type'> & {
     href?: string;
     onClick?: (event: React_2.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
     rel?: string;
@@ -23,11 +25,20 @@ export type LinkProps = ComponentPropsCompat & React_2.AnchorHTMLAttributes<HTML
     secondary?: boolean;
 };
 
+// @public (undocumented)
+export interface LinkProps extends Omit<ComponentProps<LinkSlots>, 'onClick'>, Partial<LinkCommons> {
+}
+
 // @public
-export const linkShorthandProps: never[];
+export const linkShorthandProps: Array<keyof LinkSlots>;
 
 // @public (undocumented)
-export interface LinkState extends LinkProps {
+export type LinkSlots = {
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, HTMLAnchorElement | HTMLButtonElement | HTMLElement>;
+};
+
+// @public (undocumented)
+export interface LinkState extends ComponentState<LinkSlots>, LinkProps {
     // (undocumented)
     ref: React_2.Ref<HTMLElement>;
 }
@@ -36,7 +47,7 @@ export interface LinkState extends LinkProps {
 export const renderLink: (state: LinkState) => JSX.Element;
 
 // @public
-export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>, defaultProps?: LinkProps | undefined) => LinkState;
+export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>) => LinkState;
 
 // @public
 export const useLinkState: (state: LinkState) => LinkState;
