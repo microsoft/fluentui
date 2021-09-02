@@ -84,7 +84,7 @@ const useStyles = makeStyles({
 
 export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     styles.focusIndicator,
     state.href && styles.href,

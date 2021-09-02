@@ -1,12 +1,20 @@
 import * as React from 'react';
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Link}
- */
-export type LinkProps = ComponentPropsCompat &
-  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
-  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+export type LinkSlots = {
+  root: ObjectShorthandProps<
+    React.HTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
+      React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
+      Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>,
+    HTMLAnchorElement | HTMLButtonElement | HTMLElement
+  >;
+};
+
+export type LinkCommons = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
+  'children'
+> &
+  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'children' | 'type'> & {
     /**
      * URL the link points to. If not provided, the link renders as a button (unless that behavior is
      * overridden using `as`).
@@ -65,9 +73,8 @@ export type LinkProps = ComponentPropsCompat &
     secondary?: boolean;
   };
 
-/**
- * {@docCategory Link}
- */
-export interface LinkState extends LinkProps {
+export interface LinkProps extends Omit<ComponentProps<LinkSlots>, 'onClick'>, Partial<LinkCommons> {}
+
+export interface LinkState extends ComponentState<LinkSlots>, LinkProps {
   ref: React.Ref<HTMLElement>;
 }

@@ -3,11 +3,12 @@ import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import type { LinkState } from './Link.types';
 
 /**
- * The useLink hook processes the Link draft state.
+ * The useLink hook processes the Link draft state.root.
  * @param state - Link draft state to mutate.
  */
 export const useLinkState = (state: LinkState): LinkState => {
-  const { as, disabled, disabledFocusable, href, onClick, onKeyDown: onKeyDownCallback, type } = state;
+  const { disabled, disabledFocusable, href, onClick, onKeyDown: onKeyDownCallback, type } = state;
+  const as = state.components?.root;
 
   const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     onKeyDownCallback?.(ev);
@@ -25,38 +26,39 @@ export const useLinkState = (state: LinkState): LinkState => {
   // Adjust props depending on the root type.
   if (typeof as === 'string') {
     if (as === 'a') {
-      state.href = disabled ? undefined : href;
-      state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
+      state.root;
+      state.root.href = disabled ? undefined : href;
+      state.root.tabIndex = disabled && !disabledFocusable ? undefined : 0;
     }
     // Remove the href, rel and target props for all non-anchor elements.
     else {
-      state.href = undefined;
-      state.rel = undefined;
-      state.target = undefined;
+      state.root.href = undefined;
+      state.root.rel = undefined;
+      state.root.target = undefined;
 
       // Add 'role=link' for all non-anchor elements.
-      state.role = 'link';
+      state.root.role = 'link';
 
       // Add the type="button" prop for button elements.
       if (as === 'button') {
-        state.type = type ? type : 'button';
+        state.root.type = type ? type : 'button';
       }
       // Add keydown event handler and 'tabIndex=0' for all other elements.
       else {
-        state.onKeyDown = onNonAnchorOrButtonKeyDown;
-        state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
+        state.root.onKeyDown = onNonAnchorOrButtonKeyDown;
+        state.root.tabIndex = disabled && !disabledFocusable ? undefined : 0;
       }
     }
   }
   // Add keydown event handler, 'role=link' and 'tabIndex=0' for all other elements.
   else {
-    state.onKeyDown = onNonAnchorOrButtonKeyDown;
-    state.role = 'link';
-    state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
+    state.root.onKeyDown = onNonAnchorOrButtonKeyDown;
+    state.root.role = 'link';
+    state.root.tabIndex = disabled && !disabledFocusable ? undefined : 0;
   }
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
-  state.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+  state.root.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     if (disabled || disabledFocusable) {
       ev.preventDefault();
     } else {
@@ -66,7 +68,7 @@ export const useLinkState = (state: LinkState): LinkState => {
 
   // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
   const { onKeyDown } = state;
-  state.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+  state.root.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     const keyCode = getCode(ev);
     if ((disabled || disabledFocusable) && (keyCode === EnterKey || keyCode === SpacebarKey)) {
       ev.preventDefault();
@@ -78,7 +80,7 @@ export const useLinkState = (state: LinkState): LinkState => {
 
   // Set the aria-disabled and disabled props correctly.
   state['aria-disabled'] = disabled || disabledFocusable;
-  state.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
+  state.root.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
 
   return state;
 };
