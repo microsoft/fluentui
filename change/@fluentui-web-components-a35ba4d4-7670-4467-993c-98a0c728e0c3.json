@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Increased contrast for small input controls",
-  "packageName": "@fluentui/web-components",
-  "email": "47367562+bheston@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
