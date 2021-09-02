@@ -22,10 +22,16 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): Swit
     components: {
       input: 'input',
     },
+    ...props,
     track: resolveShorthand(track, { required: true }),
     thumbWrapper: resolveShorthand(thumbWrapper, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
-    input: resolveShorthand(input, { required: true }),
+    input: resolveShorthand(input, {
+      required: true,
+      defaultProps: {
+        type: 'checkbox',
+      },
+    }),
   };
 
   useSwitchState(state);
