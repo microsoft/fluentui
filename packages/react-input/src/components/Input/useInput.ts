@@ -25,19 +25,28 @@ export const inputShorthandProps: (keyof InputSlots)[] = [
  * @param ref - reference to root HTMLInputElement of Input
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLElement>): InputState => {
-  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart } = props;
+  const { input, inputWrapper, bookendAfter, bookendBefore, insideEnd, insideStart, size, appearance, inline } = props;
+
   return {
+    size,
+    appearance,
+    inline,
     components: {
+      root: 'span',
       input: 'input',
+      inputWrapper: 'span',
+      bookendBefore: 'span',
+      bookendAfter: 'span',
+      insideStart: 'span',
+      insideEnd: 'span',
     },
-    // temporarily must add fake children to prevent getSlots from substituting nullRender
     input: resolveShorthand(input, { required: true }),
     inputWrapper: resolveShorthand(inputWrapper, { required: true }),
     bookendAfter: resolveShorthand(bookendAfter),
     bookendBefore: resolveShorthand(bookendBefore),
     insideEnd: resolveShorthand(insideEnd),
     insideStart: resolveShorthand(insideStart),
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('span', {
       ref,
       ...props,
     }),
