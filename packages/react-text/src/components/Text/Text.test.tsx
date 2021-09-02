@@ -8,9 +8,10 @@ describe('Text', () => {
     Component: Text,
     displayName: 'Text',
     testOptions: {
-      'classname-wins': {
+      'make-styles-overrides-win': {
         callCount: 1,
       },
+      // TODO: https://github.com/microsoft/fluentui/issues/19618
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any,
   });

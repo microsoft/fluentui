@@ -10,9 +10,10 @@ export function isConformant<TProps = {}>(
     componentPath: module!.parent!.filename.replace('.test', ''),
     extraTests: makeStylesTests as TestObject<TProps>,
     testOptions: {
-      'classname-wins': {
+      'make-styles-overrides-win': {
         callCount: 2,
       },
+      // TODO: https://github.com/microsoft/fluentui/issues/19618
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any,
   };
