@@ -10,6 +10,7 @@ import {
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
+  bodyFont,
   designUnit,
   disabledOpacity,
   fillColor,
@@ -18,10 +19,12 @@ import {
   neutralFillInputHover,
   neutralFillInputRest,
   neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
+  neutralStrokeStrongActive,
+  neutralStrokeStrongHover,
+  neutralStrokeStrongRest,
   strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
 } from '../design-tokens';
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
@@ -51,7 +54,7 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       height: calc(var(--input-size) * 1px);
       box-sizing: border-box;
       border-radius: 50%;
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
       background: ${neutralFillInputRest};
       outline: none;
       cursor: pointer;
@@ -63,15 +66,15 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     .label {
-      font-family: var(--body-font);
+      font-family: ${bodyFont};
       color: ${neutralForegroundRest};
       ${
         /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
       } padding-inline-start: calc(${designUnit} * 2px + 2px);
       margin-inline-end: calc(${designUnit} * 2px + 2px);
       cursor: pointer;
-      font-size: var(--type-ramp-base-font-size);
-      line-height: var(--type-ramp-base-line-height);
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
     }
 
     .control,
@@ -95,12 +98,12 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
 
     :host(:enabled) .control:hover {
       background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeHover};
+      border-color: ${neutralStrokeStrongHover};
     }
 
     :host(:enabled) .control:active {
       background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeActive};
+      border-color: ${neutralStrokeStrongActive};
     }
 
     :host(:${focusVisible}) .control {

@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { render, fireEvent } from '@testing-library/react';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import type { MenuListContextValue } from '../../contexts/menuListContext';
 
 jest.mock('../../contexts/menuContext');
 
@@ -18,15 +18,6 @@ describe('MenuItemCheckbox conformance', () => {
       value: '1',
     },
     displayName: 'MenuItemCheckbox',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**

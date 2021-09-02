@@ -7,18 +7,9 @@
 
 import * as React from 'react';
 import { TinyColor } from '@ctrl/tinycolor';
-import {
-  BackgroundColorTokens,
-  BrandColorTokens,
-  NeutralColorTokens,
-  SharedColorTokens,
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  webDarkTheme,
-  Theme,
-} from '../index';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme } from '../index';
 import { ColorRampItem } from './ColorRamp.stories';
+import type { BackgroundColorTokens, BrandColorTokens, NeutralColorTokens, SharedColorTokens, Theme } from '../index';
 
 // FIXME: hardcoded theme
 const theme = {

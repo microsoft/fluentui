@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { MenuState } from '../Menu/Menu.types';
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+
+export type MenuPopoverSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
 
 /**
  * MenuPopover Props
  */
-export interface MenuPopoverProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
-}
+export interface MenuPopoverProps extends ComponentProps<MenuPopoverSlots> {}
 
 /**
  * State used in rendering MenuPopover
  */
-export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inline'>, React.HTMLAttributes<HTMLElement> {
+export interface MenuPopoverState extends ComponentState<MenuPopoverSlots> {
   /**
-   * Ref to the root element
+   * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order
+   * This option is disregarded for submenus
    */
-  ref: React.Ref<HTMLElement>;
+  inline: boolean;
 }

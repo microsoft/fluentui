@@ -148,7 +148,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -157,6 +157,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -201,6 +202,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -212,7 +214,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -245,6 +246,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -289,6 +291,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -300,7 +303,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -466,7 +468,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               justify-content: unset;
               position: relative;
             }
-        role="group"
+        role="listbox"
       >
         <div
           className=
@@ -475,6 +477,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Metadata1"
@@ -519,6 +522,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
+            role="option"
           >
             <div
               className=
@@ -530,7 +534,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -563,6 +566,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                 display: inherit;
                 flex-shrink: 0;
               }
+          role="none"
         >
           <button
             aria-label="Metadata2"
@@ -607,6 +611,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
+            role="option"
           >
             <div
               className=
@@ -618,7 +623,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     content: ;
                     height: 12px;
                     margin-right: 8px;
-                    opacity: ;
                     width: 12px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -901,7 +905,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -910,6 +914,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -954,6 +959,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -965,7 +971,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -998,6 +1003,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1042,6 +1048,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1053,7 +1060,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1236,7 +1242,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1245,6 +1251,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1289,6 +1296,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1300,7 +1308,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1333,6 +1340,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1377,6 +1385,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1388,7 +1397,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1571,7 +1579,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1580,6 +1588,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1624,6 +1633,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1635,7 +1645,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1668,6 +1677,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -1712,6 +1722,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1723,7 +1734,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1906,7 +1916,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -1915,6 +1925,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -1959,6 +1970,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -1970,7 +1982,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2003,6 +2014,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -2047,6 +2059,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2058,7 +2071,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2241,7 +2253,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                     justify-content: unset;
                     position: relative;
                   }
-              role="group"
+              role="listbox"
             >
               <div
                 className=
@@ -2250,6 +2262,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata1"
@@ -2294,6 +2307,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2305,7 +2319,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2338,6 +2351,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                       display: inherit;
                       flex-shrink: 0;
                     }
+                role="none"
               >
                 <button
                   aria-label="Metadata2"
@@ -2382,6 +2396,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   onFocus={[Function]}
                   onMouseOut={[Function]}
                   onMouseOver={[Function]}
+                  role="option"
                 >
                   <div
                     className=
@@ -2393,7 +2408,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           content: ;
                           height: 12px;
                           margin-right: 8px;
-                          opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

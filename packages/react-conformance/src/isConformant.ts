@@ -32,7 +32,9 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
       if (extraTests) {
         describe('extraTests', () => {
           for (const test of Object.keys(extraTests)) {
-            extraTests[test](componentInfo, mergedOptions, tsProgram);
+            if (!disabledTests.includes(test)) {
+              extraTests[test](componentInfo, mergedOptions, tsProgram);
+            }
           }
         });
       }

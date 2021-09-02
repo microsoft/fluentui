@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -43,7 +43,6 @@ export const useLinkState: (state: LinkState) => LinkState;
 
 // @public (undocumented)
 export const useLinkStyles: (state: LinkState) => LinkState;
-
 
 // (No @packageDocumentation comment for this package)
 

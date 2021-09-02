@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
-
-import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { assign } from '../../Utilities';
 import { TooltipHost } from './TooltipHost';
-import { ITooltipProps, TooltipDelay } from './Tooltip.types';
+import { TooltipDelay } from './Tooltip.types';
+import type { ICalloutProps } from '../../Callout';
+import type { ITooltipProps } from './Tooltip.types';
 
 describe('TooltipHost', () => {
   it('renders correctly', () => {

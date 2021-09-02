@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { useControllableValue, useId } from '@fluentui/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
-import { CommandButton, IButton } from '../../Button';
+import { CommandButton } from '../../Button';
 import { useOverflow } from '../../utilities/useOverflow';
-import { FocusZone, IFocusZone, FocusZoneDirection } from '../../FocusZone';
-import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { DirectionalHint } from '../ContextualMenu/ContextualMenu.types';
 import { Icon } from '../Icon/Icon';
-import { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { PivotItem } from './PivotItem';
-import { IPivotItemProps } from './PivotItem.types';
+import type { IButton } from '../../Button';
+import type { IFocusZone } from '../../FocusZone';
+import type { IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
+import type { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import type { IPivotItemProps } from './PivotItem.types';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 

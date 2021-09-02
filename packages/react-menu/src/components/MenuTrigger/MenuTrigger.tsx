@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMenuTrigger } from './useMenuTrigger';
-import { MenuTriggerProps } from './MenuTrigger.types';
 import { renderMenuTrigger } from './renderMenuTrigger';
+import type { MenuTriggerProps } from './MenuTrigger.types';
 
 /**
  * Wraps a trigger element as an only child

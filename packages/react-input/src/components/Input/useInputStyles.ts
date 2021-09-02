@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { InputSlots, InputState } from './Input.types';
+import type { InputSlots, InputState } from './Input.types';
 
 /**
  * Styles for the root slot
@@ -19,7 +19,7 @@ const useStyles = makeStyles<keyof InputSlots | 'root'>({
  */
 export const useInputStyles = (state: InputState): InputState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { MenuItemRadioState } from './MenuItemRadio.types';
-import { MenuItemSlots } from '../MenuItem/MenuItem.types';
 import { menuItemSlots } from '../MenuItem/index';
+import type { MenuItemRadioState } from './MenuItemRadio.types';
+import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
 
 /**
  * Redefine the render function to add slots. Reuse the menuitemradio structure but add

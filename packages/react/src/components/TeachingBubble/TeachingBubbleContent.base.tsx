@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { classNamesFunction, KeyCodes } from '../../Utilities';
-import {
-  ITeachingBubbleProps,
-  ITeachingBubbleStyleProps,
-  ITeachingBubbleStyles,
-  ITeachingBubble,
-} from './TeachingBubble.types';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { Image } from '../../Image';
 import { useOnEvent, useMergedRefs } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
+import type {
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles,
+  ITeachingBubble,
+} from './TeachingBubble.types';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
@@ -100,7 +100,7 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
     headerContent = (
       <div className={classNames.header}>
-        <HeaderWrapperAs role="heading" className={classNames.headline} id={ariaLabelledBy}>
+        <HeaderWrapperAs role="heading" aria-level={3} className={classNames.headline} id={ariaLabelledBy}>
           {headline}
         </HeaderWrapperAs>
       </div>

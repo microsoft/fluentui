@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import {
+import type {
   IDocumentCardDetailsProps,
   IDocumentCardDetailsStyleProps,
   IDocumentCardDetailsStyles,
 } from './DocumentCardDetails.types';
-import { IProcessedStyleSet } from '../../Styling';
+import type { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>();
 
