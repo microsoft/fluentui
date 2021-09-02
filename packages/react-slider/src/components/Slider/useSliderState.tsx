@@ -3,7 +3,6 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
 import { mergeClasses } from '@fluentui/react-make-styles';
 import type { SliderState } from './Slider.types';
-import { render } from '@testing-library/react';
 
 /**
  * Validates that the `value` is a number and falls between the min and max.
