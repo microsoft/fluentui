@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
+- Don't show `ChatMessage` timestamp if reactions are in the bottom @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 
 ### Fixes
 - Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
@@ -45,6 +46,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tooltip` flickering in multi-window use case @yuanboxue-amber ([#19235](https://github.com/microsoft/fluentui/pull/19235))
 - Fix `Datepicker` input @yuanboxue-amber ([#19261](https://github.com/microsoft/fluentui/pull/19261))
 - Fix `Dialog` styles border radius changed @bcalvery ([#19328](https://github.com/microsoft/fluentui/pull/19328))
+- Fix `ChatMessage` header margin if there are reactions @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
