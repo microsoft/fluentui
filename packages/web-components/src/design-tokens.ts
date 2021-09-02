@@ -25,6 +25,7 @@ import { neutralLayer2 as neutralLayer2Algorithm } from './color/recipes/neutral
 import { neutralLayer3 as neutralLayer3Algorithm } from './color/recipes/neutral-layer-3';
 import { neutralLayer4 as neutralLayer4Algorithm } from './color/recipes/neutral-layer-4';
 import { neutralStroke as neutralStrokeAlgorithm } from './color/recipes/neutral-stroke';
+import { neutralStrokeStrong as neutralStrokeStrongAlgorithm } from './color/recipes/neutral-stroke-strong';
 import { accentBase, middleGrey } from './color/utilities/color-constants';
 import { StandardLuminance } from './color/utilities/base-layer-luminance';
 import { InteractiveSwatchSet } from './color/recipe';
@@ -168,6 +169,13 @@ export const neutralStrokeFocusDelta = create<number>('neutral-stroke-focus-delt
 export const neutralStrokeHoverDelta = create<number>('neutral-stroke-hover-delta').withDefault(40);
 /** @public */
 export const neutralStrokeRestDelta = create<number>('neutral-stroke-rest-delta').withDefault(25);
+
+/** @public */
+export const neutralStrokeStrongHoverDelta = create<number>('neutral-stroke-strong-hover-delta').withDefault(40);
+/** @public */
+export const neutralStrokeStrongActiveDelta = create<number>('neutral-stroke-strong-active-delta').withDefault(16);
+/** @public */
+export const neutralStrokeStrongFocusDelta = create<number>('neutral-stroke-strong-focus-delta').withDefault(25);
 
 /** @public */
 export const strokeWidth = create<number>('stroke-width').withDefault(1);
@@ -717,6 +725,41 @@ export const neutralOutlineHover = neutralStrokeHover;
 export const neutralOutlineActive = neutralStrokeActive;
 /** @public @deprecated Use neutralStrokeFocus */
 export const neutralOutlineFocus = neutralStrokeFocus;
+
+// Neutral Stroke Strong
+/** @public */
+export const neutralStrokeStrongRecipe = create<InteractiveColorRecipe>({
+  name: 'neutral-stroke-strong-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement): InteractiveSwatchSet => {
+    return neutralStrokeStrongAlgorithm(
+      neutralPalette.getValueFor(element),
+      fillColor.getValueFor(element),
+      3,
+      neutralStrokeStrongHoverDelta.getValueFor(element),
+      neutralStrokeStrongActiveDelta.getValueFor(element),
+      neutralStrokeStrongFocusDelta.getValueFor(element),
+    );
+  },
+});
+
+/** @public */
+export const neutralStrokeStrongRest = create<Swatch>('neutral-stroke-strong-rest').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).rest,
+);
+/** @public */
+export const neutralStrokeStrongHover = create<Swatch>('neutral-stroke-strong-hover').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).hover,
+);
+/** @public */
+export const neutralStrokeStrongActive = create<Swatch>('neutral-stroke-strong-active').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).active,
+);
+/** @public */
+export const neutralStrokeStrongFocus = create<Swatch>('neutral-stroke-strong-focus').withDefault(
+  (element: HTMLElement) => neutralStrokeStrongRecipe.getValueFor(element).evaluate(element).focus,
+);
 
 // Neutral Layer Card Container
 /** @public */

@@ -15,6 +15,7 @@ import {
   serializeJson,
 } from '@nrwl/devkit';
 import * as path from 'path';
+import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
 import { arePromptsEnabled, prompt, updateJestConfig } from '../../utils';
@@ -123,9 +124,9 @@ const templates = {
     extends: '../../tsconfig.base.json',
     include: ['src'],
     compilerOptions: {
-      target: 'ES2020',
+      target: 'ES2019',
       module: 'CommonJS',
-      lib: ['ES2020', 'dom'],
+      lib: ['ES2019', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
@@ -203,8 +204,8 @@ const templates = {
       include: ['../src/**/*', '*.js'],
     },
   },
-  npmIgnoreConfig: stripIndents`
-    .cache/
+  npmIgnoreConfig:
+    stripIndents`
     .storybook/
     .vscode/
     bundle-size/
@@ -233,7 +234,7 @@ const templates = {
     .eslint*
     .git*
     .prettierignore
-  `,
+  ` + os.EOL,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {

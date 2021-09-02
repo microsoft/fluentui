@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 30 Aug 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.0)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.8..@fluentui/web-components_v1.4.0)
+
+### Minor changes
+
+- Increased contrast for small input controls ([PR #19608](https://github.com/microsoft/fluentui/pull/19608) by 47367562+bheston@users.noreply.github.com)
+
+## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.8)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.7..@fluentui/web-components_v1.3.8)
+
+### Patches
+
+- fix: syntax error in card styles ([PR #19573](https://github.com/microsoft/fluentui/pull/19573) by jes@microsoft.com)
+- version bump fast foundation ([PR #19569](https://github.com/microsoft/fluentui/pull/19569) by jes@microsoft.com)
 
 ## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.7)
 

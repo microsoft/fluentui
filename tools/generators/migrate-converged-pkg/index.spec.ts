@@ -193,12 +193,12 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['ES2020', 'dom'],
+          lib: ['ES2019', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'ES2020',
+          target: 'ES2019',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
@@ -805,8 +805,7 @@ describe('migrate-converged-pkg generator', () => {
       npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
 
       expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".cache/
-        .storybook/
+        ".storybook/
         .vscode/
         bundle-size/
         config/
@@ -833,7 +832,8 @@ describe('migrate-converged-pkg generator', () => {
         .editorconfig
         .eslint*
         .git*
-        .prettierignore"
+        .prettierignore
+        "
       `);
     });
   });

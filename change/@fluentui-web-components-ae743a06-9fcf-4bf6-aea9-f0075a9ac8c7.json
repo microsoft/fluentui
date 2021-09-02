@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "version bump fast foundation",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

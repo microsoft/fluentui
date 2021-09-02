@@ -14,7 +14,14 @@ import { MenuPopover } from '../MenuPopover/index';
 describe('Menu', () => {
   isConformant({
     skipAsPropTests: true,
-    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
+    disabledTests: [
+      // Menu does not render DOM elements
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      // Menu does not have own styles
+      'make-styles-overrides-win',
+    ],
     Component: Menu,
     displayName: 'Menu',
     requiredProps: {

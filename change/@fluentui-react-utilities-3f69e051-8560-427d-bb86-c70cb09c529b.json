@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(useOnClickOutside): Treat right click/context menu as outside click",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
