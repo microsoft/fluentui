@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { AccordionItemContext } from '../AccordionItem';
 import type { MountRendererProps } from 'enzyme';
@@ -16,15 +16,6 @@ describe('AccordionPanel', () => {
         wrappingComponent: AccordionItemContext.Provider,
         wrappingComponentProps: { value: { open: true } },
       }),
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**
