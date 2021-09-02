@@ -86,7 +86,8 @@ const useInputElementStyles = makeStyles({
     color: theme.alias.color.neutral.neutralForeground1,
 
     '::placeholder': {
-      color: theme.alias.color.neutral.neutralForeground4, // for outline/underline/filledLighter
+      color: theme.alias.color.neutral.neutralForeground4,
+      opacity: 1, // browser style override
     },
     ':focus-visible': {
       outline: 'none', // disable default browser outline
