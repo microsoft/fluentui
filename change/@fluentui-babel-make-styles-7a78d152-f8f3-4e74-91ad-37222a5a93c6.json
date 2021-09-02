@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update Linaria dependencies",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
