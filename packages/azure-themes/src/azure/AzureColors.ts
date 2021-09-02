@@ -816,8 +816,8 @@ export const LightSemanticColors: IAzureSemanticColors = {
     activeBackgroundHovered: BaseColors.BLUE_0078D4,
     inactiveBackgroundHovered: BaseColors.BLUE_C7E0F4,
     activeDisabledBackground: BaseColors.GRAY_A19F9D,
-    inactiveDisabledBackground: BaseColors.GRAY_A19F9D,
-    activeBackgroundPressed: BaseColors.BLUE_0078D4,
+    inactiveDisabledBackground: BaseColors.GRAY_EDEBE9,
+    activeBackgroundPressed: BaseColors.BLUE_106EBE,
   },
 };
 
