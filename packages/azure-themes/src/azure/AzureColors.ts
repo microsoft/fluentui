@@ -589,11 +589,11 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   slider: {
     activeBackground: BaseColors.GRAY_605E5C,
-    activeBackgroundHovered: BaseColors.BLUE_2899F5,
+    activeBackgroundHovered: BaseColors.BLUE_00FFFF,
     inactiveBackgroundHovered: BaseColors.GRAY_585858,
     activeDisabledBackground: BaseColors.GREEN_0AFF00,
     inactiveDisabledBackground: BaseColors.GREEN_0AFF00,
-    activeBackgroundPressed: BaseColors.BLUE_2899F5,
+    activeBackgroundPressed: BaseColors.BLUE_00FFFF,
   },
 };
 
@@ -1035,10 +1035,10 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   slider: {
     activeBackground: BaseColors.GRAY_605E5C,
-    activeBackgroundHovered: BaseColors.BLUE_0078D4,
+    activeBackgroundHovered: BaseColors.PURPLE_800080,
     inactiveBackgroundHovered: BaseColors.BLUE_C7E0F4,
     activeDisabledBackground: BaseColors.RED_800000,
     inactiveDisabledBackground: BaseColors.RED_800000,
-    activeBackgroundPressed: BaseColors.BLUE_0078D4,
+    activeBackgroundPressed: BaseColors.PURPLE_800080,
   },
 };
