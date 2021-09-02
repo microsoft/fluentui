@@ -26,10 +26,11 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.42",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.43",
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
-    "@fluentui/react-conformance": "^0.4.4",
+    "@fluentui/react-conformance": "^0.4.5",
+    "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.5",
     "@fluentui/react-label": "^9.0.0-alpha.33",
     "@fluentui/react-provider": "^9.0.0-alpha.71",
     "@fluentui/react-theme": "^9.0.0-alpha.22",

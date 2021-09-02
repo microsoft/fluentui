@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update osDetector.ts to resolve the issuse that win.navigator may be null in some ssr framework",
-  "packageName": "@fluentui/utilities",
-  "email": "xiaowxie@microsoft.com",
-  "dependentChangeType": "patch"
-}

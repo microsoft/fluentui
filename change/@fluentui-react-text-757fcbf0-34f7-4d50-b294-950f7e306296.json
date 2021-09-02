@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "enable makeStyles conformance tests",
-  "packageName": "@fluentui/react-provider",
+  "packageName": "@fluentui/react-text",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "none"
 }
