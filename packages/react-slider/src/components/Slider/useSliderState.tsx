@@ -309,8 +309,11 @@ export const useSliderState = (state: SliderState) => {
         : `${valuePercent}%`,
     borderRadius: getTrackBorderRadius(),
     // When a transition is applied with the origin, a visible animation plays when it goes below the min.
-    transition:
-      stepAnimation && origin === undefined ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}` : 'none',
+    transition: stepAnimation
+      ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}${
+          ', ' + vertical ? 'top' : dir === 'rtl' ? 'right' : 'left' + 'ease-in-out ' + animationTime
+        }`
+      : 'none',
     ...state.track.style,
   };
 
