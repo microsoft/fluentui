@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "ci(storybook): unify and simplify storybook production build deployments across the repo",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -4,7 +4,7 @@ import { renderPopoverTrigger } from './renderPopoverTrigger';
 import type { PopoverTriggerProps } from './PopoverTrigger.types';
 
 /**
- * PopoverTrigger component
+ * Wraps a trigger element as an only child and adds the necessary event handling to open a popover.
  */
 export const PopoverTrigger: React.FC<PopoverTriggerProps> = props => {
   const state = usePopoverTrigger(props);
