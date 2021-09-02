@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Header, Button, Dialog, Text, Table, List, Accordion } from '@fluentui/react-northstar';
+import { Header, Button, Dialog, Breadcrumb, Text, Table, List, Accordion } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-const srOnlyCss: React.CSSProperties = {
+const dialogCSS: React.CSSProperties = {
+  height: '90vh',
+};
+
+const srOnlyCSS: React.CSSProperties = {
   position: 'absolute',
   left: '-10000px',
   top: 'auto',
@@ -10,6 +14,11 @@ const srOnlyCss: React.CSSProperties = {
   height: '1px',
   overflow: 'hidden',
 }; // End srOnlyCss
+
+const navigateTo = (page, setPage, event) => {
+  event.preventDefault();
+  setPage(page);
+}; // End navigateTo
 
 const tableHeader = {
   items: ['Action', 'Keys'],
@@ -50,15 +59,17 @@ const generalTableRows = [
   },
 ]; // End generalTableRows
 
-const panels = [
+const getPanels = count => [
   {
     key: 'chatsList',
     title: {
       as: 'h2',
+      className: 'firstFocusable',
+      tabIndex: -1,
       content: (
         <>
           <Text>Chats list</Text>
-          <Text style={srOnlyCss}>, 1 of 4</Text>
+          <Text style={srOnlyCSS}>, 1 of {count}</Text>
         </>
       ),
     },
@@ -85,7 +96,7 @@ const panels = [
       content: (
         <>
           <Text>Messages list</Text>
-          <Text style={srOnlyCss}>, 2 of 4</Text>
+          <Text style={srOnlyCSS}>, 2 of {count}</Text>
         </>
       ),
     },
@@ -119,7 +130,7 @@ const panels = [
       content: (
         <>
           <Text>Message compose field</Text>
-          <Text style={srOnlyCss}>, 3 of 4</Text>
+          <Text style={srOnlyCSS}>, 3 of {count}</Text>
         </>
       ),
     },
@@ -149,7 +160,7 @@ const panels = [
       content: (
         <>
           <Text>Global keyboar shortcuts</Text>
-          <Text style={srOnlyCss}>, 4 of 4</Text>
+          <Text style={srOnlyCSS}>, 4 of {count}</Text>
         </>
       ),
     },
@@ -173,50 +184,153 @@ const panels = [
       </>
     ),
   },
-]; // End panels
+]; // End getPanels
 
-interface ContextualHelpDialogProps {
+const fourPanels = getPanels(4);
+const panels1 = [fourPanels[0], fourPanels[1], fourPanels[2], fourPanels[3]]; // End panels1
+
+const threePanels = getPanels(3);
+const panels2 = [threePanels[0], threePanels[1], threePanels[2]]; // End panels2
+
+interface ContextualHelpDialog1Props {
   defaultPanelIndex: number;
   triggerText: string;
 }
 
-const ContextualHelpDialog: React.FunctionComponent<ContextualHelpDialogProps> = (props: ContextualHelpDialogProps) => {
+export const ContextualHelpDialog1: React.FunctionComponent<ContextualHelpDialog1Props> = (
+  props: ContextualHelpDialog1Props,
+) => {
   const { defaultPanelIndex, triggerText } = props;
 
   const [dialogOpened, setDialogOpened] = React.useState(false);
 
   return (
-    <>
-      <Dialog
-        trapFocus={{ firstFocusableSelector: '[data-aa-class="AccordionTitle__content"]' }}
-        open={dialogOpened}
-        onOpen={() => {
-          setDialogOpened(true);
-        }}
-        onCancel={() => setDialogOpened(false)}
-        header={<h1>Chats keyboard help</h1>}
-        headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
-        footer={{
-          children: (Component, props) => (
-            <>
-              <Text as="a" href="">
-                See shortcuts for all platforms
-              </Text>
-              <Text as="a" href="">
-                Office Accessibility Center
-              </Text>
-            </>
-          ),
-        }}
-        trigger={<Button content={triggerText} />}
-        content={
+    <Dialog
+      style={dialogCSS}
+      trapFocus={{ firstFocusableSelector: '[aria-expanded="true"][data-aa-class="AccordionTitle__content"]' }}
+      open={dialogOpened}
+      onOpen={() => {
+        setDialogOpened(true);
+      }}
+      onCancel={() => {
+        setDialogOpened(false);
+      }}
+      header={<Header as="h1" content="Chats keyboard help" />}
+      headerAction={{
+        icon: <CloseIcon />,
+        title: 'Close',
+        onClick: () => {
+          setDialogOpened(false);
+        },
+      }}
+      footer={{
+        children: (Component, props) => (
           <>
-            <Accordion panels={panels} defaultActiveIndex={defaultPanelIndex} exclusive={true} />
+            <Text as="a" href="">
+              See shortcuts for all platforms
+            </Text>
+            <Text as="a" href="">
+              Office Accessibility Center
+            </Text>
           </>
-        }
-      />
-    </>
+        ),
+      }}
+      trigger={<Button content={triggerText} />}
+      content={<Accordion panels={panels1} defaultActiveIndex={defaultPanelIndex} exclusive={true} />}
+    />
   );
-}; // End ContextualHelpDialog
+}; // End ContextualHelpDialog1
 
-export default ContextualHelpDialog;
+interface ContextualHelpDialog2Props {
+  defaultPage: number | string;
+  triggerText: string;
+}
+
+export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog2Props> = (
+  props: ContextualHelpDialog2Props,
+) => {
+  const { defaultPage, triggerText } = props;
+
+  const [dialogOpened, setDialogOpened] = React.useState(false);
+  const [page, setPage] = React.useState('contexts');
+
+  React.useEffect(() => {
+    if (typeof defaultPage === 'string') {
+      setPage(defaultPage);
+    }
+  }, [defaultPage]); // End useEffect
+
+  React.useEffect(() => {
+    const first = document.querySelector('.firstFocusable');
+    if (first) {
+      (first as HTMLElement).focus();
+    }
+  }, [page]); // End useEffect
+
+  let header;
+  let content;
+  if (page === 'shortcuts') {
+    header = <Header as="h1" content="Keyboard shortcuts" className="firstFocusable" tabIndex={-1} />;
+    content = fourPanels[3].content;
+  } else if (page === 'contexts') {
+    header = (
+      <Breadcrumb aria-label="Breadcrumb">
+        <Breadcrumb.Item>
+          <Breadcrumb.Link href="#shortcuts" onClick={event => navigateTo('shortcuts', setPage, event)}>
+            Keyboard shortcuts
+          </Breadcrumb.Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item aria-current="page">Contextual keyboard help</Breadcrumb.Item>
+      </Breadcrumb>
+    );
+    content = <Accordion panels={panels2} defaultActiveIndex={defaultPage as number} exclusive={true} />;
+  }
+
+  return (
+    <Dialog
+      style={dialogCSS}
+      aria-labelledby=""
+      aria-label="Keyboard shortcuts"
+      trapFocus={{
+        firstFocusableSelector:
+          page === 'contexts' ? '[aria-expanded="true"][data-aa-class="AccordionTitle__content"]' : '.firstFocusable',
+      }}
+      open={dialogOpened}
+      onOpen={() => {
+        setDialogOpened(true);
+      }}
+      onCancel={() => {
+        setDialogOpened(false);
+      }}
+      header={header}
+      headerAction={{
+        icon: <CloseIcon />,
+        title: 'Close',
+        onClick: () => {
+          setDialogOpened(false);
+        },
+      }}
+      footer={{
+        children: (Component, props) => (
+          <>
+            <Text as="a" href="">
+              See shortcuts for all platforms
+            </Text>
+            <Text as="a" href="">
+              Office Accessibility Center
+            </Text>
+            {page === 'shortcuts' && (
+              <Text as="a" href="#contexts" onClick={event => navigateTo('contexts', setPage, event)}>
+                See chats contextual keyboard help
+              </Text>
+            )}
+          </>
+        ),
+      }}
+      trigger={<Button content={triggerText} />}
+      content={content}
+    />
+  );
+}; // End ContextualHelpDialog2
+
+// export default ContextualHelpDialog;
