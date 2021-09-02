@@ -7,7 +7,8 @@ import type { LinkState } from './Link.types';
  * @param state - Link draft state to mutate.
  */
 export const useLinkState = (state: LinkState): LinkState => {
-  const { disabled, disabledFocusable, href, onClick, onKeyDown: onKeyDownCallback, type } = state;
+  const { disabled, disabledFocusable } = state;
+  const { href, onClick, onKeyDown: onKeyDownCallback, type } = state.root;
   const as = state.components?.root;
 
   const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {

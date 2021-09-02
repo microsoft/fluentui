@@ -15,14 +15,19 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>): LinkStat
   const rootAs = props.href ? 'a' : 'button';
 
   const state: LinkState = {
+    // Forwarded ref
     ref,
-    ...props,
 
+    // Props passed at the top-level
+    disabled: props.disabled,
+    disabledFocusable: props.disabledFocusable,
+
+    // Slots definition
     components: {
       root: rootAs,
     },
 
-    root: getNativeElementProps(rootAs, props),
+    root: getNativeElementProps(props.as || rootAs, props),
   };
 
   useLinkState(state);
