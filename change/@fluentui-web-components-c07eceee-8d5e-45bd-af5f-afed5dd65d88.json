@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "patch: apply fast version updates",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
