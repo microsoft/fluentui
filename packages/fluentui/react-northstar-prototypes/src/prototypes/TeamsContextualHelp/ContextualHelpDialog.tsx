@@ -253,6 +253,7 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
 
   const [dialogOpened, setDialogOpened] = React.useState(false);
   const [page, setPage] = React.useState('contexts');
+  const [defaultPanel, setDefaultPanel] = React.useState(defaultPage as number);
 
   React.useEffect(() => {
     if (typeof defaultPage === 'string') {
@@ -264,6 +265,9 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
     const first = document.querySelector('.firstFocusable');
     if (first) {
       (first as HTMLElement).focus();
+    }
+    if (page === 'shortcuts') {
+      setDefaultPanel(undefined);
     }
   }, [page]); // End useEffect
 
@@ -283,7 +287,7 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
         <Breadcrumb.Item aria-current="page">Contextual keyboard help</Breadcrumb.Item>
       </Breadcrumb>
     );
-    content = <Accordion panels={panels2} defaultActiveIndex={defaultPage as number} exclusive={true} />;
+    content = <Accordion panels={panels2} defaultActiveIndex={defaultPanel} exclusive={true} />;
   }
 
   return (
