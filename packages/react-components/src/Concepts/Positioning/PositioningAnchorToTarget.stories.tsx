@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { PositionedComponent } from './utils.stories';
-// Need to disable compilation for aliases: https://github.com/microsoft/fluentui/pull/16976/files#r575447074
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { Button } from '@fluentui/react-button';
 
 export { Default } from './PositioningDefault.stories';

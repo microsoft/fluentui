@@ -9,7 +9,7 @@ export { Offset } from './PositioningOffset.stories';
 export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
 
 export default {
-  title: 'Concepts/Positioning',
+  title: 'Concepts/Developer/Positioning',
   component: Positioning,
   parameters: {
     layout: 'centered',
