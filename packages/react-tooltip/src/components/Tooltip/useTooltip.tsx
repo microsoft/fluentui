@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePopper } from '@fluentui/react-positioning';
+import { usePopper, resolvePositioningShorthand, mergeArrowOffset } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   makeMergeProps,
@@ -12,7 +12,7 @@ import {
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import type { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
 /**
  * Names of the shorthand properties in TooltipProps
@@ -57,9 +57,6 @@ export const useTooltip = (
       },
       id: useId('tooltip-'),
       role: 'tooltip',
-      position: 'above',
-      align: 'center',
-      offset: 4,
       showDelay: 250,
       hideDelay: 250,
       triggerAriaAttribute: 'label',
@@ -86,6 +83,19 @@ export const useTooltip = (
   state.visible = visible;
   state.shouldRenderTooltip = visible;
 
+  const popperOptions = {
+    enabled: state.visible,
+    arrowPadding: 2 * tooltipBorderRadius,
+    position: 'above' as const,
+    align: 'center' as const,
+    offset: [0, 4] as [number, number],
+    ...resolvePositioningShorthand(state.positioning),
+  };
+
+  if (state.pointing) {
+    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
+  }
+
   const {
     targetRef,
     containerRef,
@@ -94,14 +104,7 @@ export const useTooltip = (
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper({
-    enabled: state.visible,
-    position: state.position,
-    align: state.align,
-    target: state.target,
-    offset: [0, state.offset + (state.pointing ? arrowHeight : 0)],
-    arrowPadding: 2 * tooltipBorderRadius,
-  });
+  } = usePopper(popperOptions);
 
   state.ref = useMergedRefs(state.ref, containerRef);
   state.arrowRef = arrowRef;
@@ -199,7 +202,7 @@ export const useTooltip = (
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
   const childTargetRef = useMergedRefs(child?.ref, targetRef);
-  if (state.target === undefined) {
+  if (popperOptions.target === undefined) {
     triggerProps.ref = childTargetRef;
   }
 

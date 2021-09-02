@@ -82,6 +82,8 @@ unpacked size: 263.9 kB
 total files:   518
 ```
 
+> **NOTE:** The issue with `.cache` (Jest cache) was addressed separately by moving the cache under `<package root>/node_modules/.cache/jest`, following the convention used by other tools' caches.
+
 ## Detailed Design or Proposal
 
 > **💡 NOTE:** This proposal/guide applies only for vNext packages and libraries using new DX
@@ -94,37 +96,38 @@ This is a living document that will describe various proposals that all aim to i
 - better security for consumers
 - better tree-shaking capabilities
 
-### 1. `.npmignore` cleanup
+### 1. `.npmignore` cleanup _(implemented)_
 
 **`<package>/.npmignore`**
 
 ```sh
-.cache/
 .storybook/
 .vscode/
-coverage/
-src/
 bundle-size/
 config/
-temp/
+coverage/
 e2e/
+etc/
 node_modules/
+src/
+temp/
 __fixtures__
+__mocks__
 __tests__
 
+*.api.json
 *.log
-*.yml
-*.test.*
 *.spec.*
 *.stories.*
-*.api.json
+*.test.*
+*.yml
 
 # config files
-.git*
-*rc.*
 *config.*
-.eslint*
+*rc.*
 .editorconfig
+.eslint*
+.git*
 .prettierignore
 ```
 

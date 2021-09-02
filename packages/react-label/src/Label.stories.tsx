@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Label, LabelProps } from './index';
+import { Label } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
+import type { LabelProps } from './index';
 
 const useStyles = makeStyles({
   exampleContainer: {

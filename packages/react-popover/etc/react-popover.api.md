@@ -4,13 +4,13 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
-import { Context } from '@fluentui/react-context-selector';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { PopperVirtualElement } from '@fluentui/react-positioning';
-import { PortalProps } from '@fluentui/react-portal';
-import { PositioningProps } from '@fluentui/react-positioning';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { Context } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { PopperVirtualElement } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -30,14 +30,14 @@ export const Popover: React_2.FC<PopoverProps>;
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
 }
 
 // @public
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PositioningProps, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
@@ -48,6 +48,7 @@ export interface PopoverProps extends Pick<PositioningProps, 'position' | 'align
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
+    positioning?: PositioningShorthand;
     size?: PopoverSize;
     trapFocus?: boolean;
 }

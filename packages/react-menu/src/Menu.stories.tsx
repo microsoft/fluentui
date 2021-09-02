@@ -9,9 +9,7 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
-  MenuProps,
   MenuPopover,
-  MenuTriggerChildProps,
 } from './index';
 import { boolean } from '@storybook/addon-knobs';
 import {
@@ -19,6 +17,7 @@ import {
   ClipboardPaste20Regular as PasteIcon,
   Edit20Regular as EditIcon,
 } from '@fluentui/react-icons';
+import type { MenuProps, MenuTriggerChildProps } from './index';
 
 export const Default = (props: Partial<MenuProps>) => (
   <Menu {...props}>
@@ -165,7 +164,7 @@ export const CustomTarget = () => {
       <button ref={setTarget} onClick={() => setOpen(s => !s)}>
         Custom Target
       </button>
-      <Menu open={open} onOpenChange={onOpenChange} target={target}>
+      <Menu open={open} onOpenChange={onOpenChange} positioning={{ target }}>
         <MenuPopover>
           <MenuList>
             <MenuItem>New </MenuItem>

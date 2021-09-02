@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
-import { Breadcrumb, IBreadcrumbItem } from './index';
+import { Breadcrumb } from './index';
 import { Icon } from '../../Icon';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '@fluentui/utilities';
+import type { IBreadcrumbItem } from './index';
 
 describe('Breadcrumb', () => {
   const items: IBreadcrumbItem[] = [

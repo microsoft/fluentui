@@ -4,16 +4,31 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { PartialTheme } from '@fluentui/react-theme';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { PartialTheme } from '@fluentui/react-theme';
+import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-theme';
-import { TooltipContextType } from '@fluentui/react-shared-contexts';
+import type { Theme } from '@fluentui/react-theme';
+import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
+import type { ThemeContextValue } from '@fluentui/react-shared-contexts';
+import type { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface FluentProviderContextValues {
+    // (undocumented)
+    provider: ProviderContextValue;
+    // (undocumented)
+    theme: ThemeContextValue;
+    // (undocumented)
+    themeClassName: ThemeClassNameContextValue;
+    // (undocumented)
+    tooltip: TooltipContextType;
+}
 
 // @public (undocumented)
 export interface FluentProviderProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
@@ -29,6 +44,8 @@ export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
 // @public (undocumented)
 export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
+    className: string;
+    // (undocumented)
     dir: 'ltr' | 'rtl';
     ref: React_2.MutableRefObject<HTMLElement>;
     // (undocumented)
@@ -36,16 +53,19 @@ export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
     theme: Theme;
     // (undocumented)
-    tooltipContext: TooltipContextType;
+    themeClassName: string;
 }
 
 // @public
-export const renderFluentProvider: (state: FluentProviderState) => JSX.Element;
+export const renderFluentProvider: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
 
 export { useFluent }
 
 // @public
 export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
+
+// @public (undocumented)
+export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;
 
 export { useTheme }
 

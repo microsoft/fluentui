@@ -1,7 +1,10 @@
-import { Point, Rectangle } from '../../Utilities';
-import { getBoundsFromTargetWindow, RectangleEdge, IElementPosition } from './index';
+import { Rectangle } from '../../Utilities';
+import { getBoundsFromTargetWindow, RectangleEdge } from './index';
 import { __positioningTestPackage } from './positioning';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import type { Point } from '../../Utilities';
+import type { IElementPosition } from './index';
+
 interface ITestValidation {
   callout: Rectangle;
   beak: Rectangle | null;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
@@ -53,18 +53,16 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     () => clearTimeout(throttleDispatchTimerRef.current);
   }, []);
 
-  const inline = useMenuContext(context => context.inline);
-
-  const state = {
-    ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
+  const inline = useMenuContext(context => context.inline) ?? false;
+  const rootProps = getNativeElementProps('div', {
     role: 'presentation',
-    inline: inline ?? false,
     ...props,
-  };
+    ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
+  });
 
-  const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
+  const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
 
-  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  rootProps.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, { open: true, keyboard: false });
     }
@@ -72,8 +70,9 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     onMouseEnterOriginal?.(e);
   });
 
-  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+  rootProps.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
     const keyCode = getCode(e);
+
     if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === CloseArrowKey)) {
       if (popoverRef.current?.contains(e.target as HTMLElement)) {
         setOpen(e, { open: false, keyboard: true });
@@ -89,8 +88,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   });
 
   return {
-    ...state,
-    onKeyDown,
-    onMouseEnter,
+    inline,
+    root: rootProps,
   };
 };

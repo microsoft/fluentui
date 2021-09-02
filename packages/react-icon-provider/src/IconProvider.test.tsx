@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { IconProvider, useIconSubset } from './IconProvider';
-import { IIconSubset } from '@fluentui/style-utilities';
+import type { IIconSubset } from '@fluentui/style-utilities';
 
 const TestOverriddenIcon = () => {
   return null;

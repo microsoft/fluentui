@@ -6,8 +6,8 @@ import {
   shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { usePopoverContext } from '../../popoverContext';
+import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 const mergeProps = makeMergeProps<PopoverTriggerState>({});
 
@@ -90,7 +90,7 @@ export const usePopoverTrigger = (
     onKeyDown,
     onMouseLeave,
     onContextMenu,
-    ref: useMergedRefs(child.props.ref, triggerRef),
+    ref: useMergedRefs(((child as unknown) as React.ReactElement & React.RefAttributes<unknown>).ref, triggerRef),
     ...triggerAttributes,
   });
 

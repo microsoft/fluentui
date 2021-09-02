@@ -1,14 +1,8 @@
 import * as React from 'react';
-import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
-  Accordion,
-  AccordionHeaderSize,
-  AccordionHeaderExpandIconPosition,
-} from './index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from './index';
 import { RocketIcon } from './icons.stories';
-import { AccordionToggleData, AccordionToggleEvent } from './components/Accordion/Accordion.types';
+import type { AccordionHeaderSize, AccordionHeaderExpandIconPosition } from './index';
+import type { AccordionToggleData, AccordionToggleEvent } from './components/Accordion/Accordion.types';
 
 interface AccordionItemExampleProps {
   icon: boolean;

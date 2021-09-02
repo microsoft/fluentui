@@ -1,6 +1,6 @@
-import { IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
-import { IStyleFunction } from '../../Utilities';
-import { IStyle } from '../../Styling';
+import type { IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
+import type { IStyleFunction } from '../../Utilities';
+import type { IStyle } from '../../Styling';
 
 const overflowItemStyle: IStyle = {
   flexShrink: 0,

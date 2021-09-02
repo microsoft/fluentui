@@ -415,6 +415,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column1"
             draggable={false}
             role="columnheader"
@@ -437,7 +438,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -468,7 +468,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -605,6 +604,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
+            data-is-focusable="true"
             data-item-key="column2"
             draggable={false}
             role="columnheader"
@@ -627,7 +627,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   }
             >
               <span
-                aria-haspopup={false}
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -658,7 +657,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       top: 1px;
                       z-index: 1;
                     }
-                data-is-focusable={true}
                 id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}

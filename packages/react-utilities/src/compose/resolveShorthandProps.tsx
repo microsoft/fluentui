@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ObjectShorthandPropsCompat, ResolvedShorthandPropsCompat } from './types';
+import type { ObjectShorthandPropsCompat, ResolvedShorthandPropsCompat } from './types';
 
 /**
  * Ensures that the given slots are represented using object syntax. This ensures that

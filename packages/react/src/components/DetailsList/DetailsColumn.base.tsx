@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { Icon, FontIcon } from '../../Icon';
-import { IProcessedStyleSet } from '../../Styling';
-import {
-  initializeComponentRef,
-  EventGroup,
-  Async,
-  IDisposable,
-  classNamesFunction,
-  composeRenderFunction,
-} from '../../Utilities';
+import { initializeComponentRef, EventGroup, Async, classNamesFunction, composeRenderFunction } from '../../Utilities';
 import { ColumnActionsMode } from './DetailsList.types';
-import { IDragDropOptions } from '../../DragDrop';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IDisposable } from '../../Utilities';
+import type { IDragDropOptions } from '../../DragDrop';
+import type {
   IDetailsColumnStyleProps,
   IDetailsColumnProps,
   IDetailsColumnStyles,
@@ -119,6 +113,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           {...(!hasInnerButton && accNameDescription)}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
+          // when the column is not disabled and has no inner button, this node should be in the focus order
+          data-is-focusable={
+            !hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
+          }
           className={classNames.root}
           data-is-draggable={isDraggable}
           draggable={isDraggable}
@@ -146,12 +144,15 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                 <span
                   id={`${parentId}-${column.key}`}
                   className={classNames.cellTitle}
-                  data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
+                  // this node should only be focusable when it is a button
+                  data-is-focusable={
+                    hasInnerButton && column.columnActionsMode !== ColumnActionsMode.disabled ? 'true' : undefined
+                  }
                   role={hasInnerButton ? 'button' : undefined}
                   {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
-                  aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
+                  aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown ? 'menu' : undefined}
                   aria-expanded={
                     column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined
                   }

@@ -2,8 +2,9 @@ import * as React from 'react';
 import { DelayedRender, classNamesFunction, getNativeProps, htmlElementProperties, css } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { MessageBarType } from './MessageBar.types';
 import { useId, useBoolean } from '@fluentui/react-hooks';
+import type { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles } from './MessageBar.types';
 
 const ICON_MAP = {
   [MessageBarType.info]: 'Info',

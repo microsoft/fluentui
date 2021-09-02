@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ImageLoadState } from '../../Image';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory Persona}

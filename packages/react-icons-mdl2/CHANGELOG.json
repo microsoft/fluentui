@@ -2,6 +2,113 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.2.2",
+      "version": "1.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.2",
+            "author": "xiaowxie@microsoft.com",
+            "commit": "53bd7afcd68378ee0c1047636e4bacb5f31aef3a",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.2.1",
+      "version": "1.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.1",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "0198c05dad393704afbe8aeab6c5cdf6005bcc5a",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-icons-mdl2"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-icons-mdl2"
+          },
+          {
+            "comment": "Bump @fluentui/react-icon-provider to v1.2.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0198c05dad393704afbe8aeab6c5cdf6005bcc5a",
+            "package": "@fluentui/react-icons-mdl2"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-icons-mdl2"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.1.9",
+      "version": "1.1.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.3.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.1.9",
+      "version": "1.1.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-icon-provider to v1.1.9",
+            "author": "dzearing@hotmail.com",
+            "commit": "3dbb57b1e6940df2d4039f61a35d961bcb8560c3",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Aug 2021 07:39:30 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.1.8",
       "version": "1.1.8",

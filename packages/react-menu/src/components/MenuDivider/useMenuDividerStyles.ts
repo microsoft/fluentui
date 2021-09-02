@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { MenuDividerState } from './MenuDivider.types';
+import type { MenuDividerState } from './MenuDivider.types';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 export const useMenuDividerStyles = (state: MenuDividerState) => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.root.className = mergeClasses(styles.root, state.root.className);
 
   return state;
 };

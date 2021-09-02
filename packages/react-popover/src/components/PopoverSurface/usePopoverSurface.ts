@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
-import { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 import { usePopoverContext } from '../../popoverContext';
+import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 const mergeProps = makeMergeProps<PopoverSurfaceState>({});
 

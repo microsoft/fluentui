@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { css, classNamesFunction } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '@fluentui/react/lib/Persona';
-import { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
-import {
-  getStyles,
-  ISuggestionItemDefaultStylesProps,
-  ISuggestionItemDefaultStyles,
-} from './SuggestionItemDefault.styles';
+import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react/lib/Persona';
+import { getStyles } from './SuggestionItemDefault.styles';
+import type { IPersonaProps } from '@fluentui/react/lib/Persona';
+import type { ISuggestionItemProps } from '@fluentui/react/lib/Pickers';
+import type { ISuggestionItemDefaultStylesProps, ISuggestionItemDefaultStyles } from './SuggestionItemDefault.styles';
 
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (
   personaProps: IPersonaProps,
