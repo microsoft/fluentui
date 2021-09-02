@@ -13,7 +13,7 @@
     "@fluentui/react-icons-northstar": "^0.57.0",
     "@fluentui/react-northstar": "^0.57.0",
     "axe-core": "3.5.0",
-    "immer": "^8.0.1",
+    "immer": "^9.0.6",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
     "react": "16.8.6",
