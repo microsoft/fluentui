@@ -2650,7 +2650,7 @@
     source-map "~0.6.1"
     typescript "~4.3.2"
 
-"@microsoft/fast-colors@^5.1.3":
+"@microsoft/fast-colors@^5.1.0":
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.3.tgz#5c46147401a823835a3833e3e18dae7f06016966"
   integrity sha512-XDEnRYxPO5P3Jsizm4TCxLu1osS/uV3Lym6SfRhq2PxfXPTgEcdvOYDUXyV2drqebs3U5VQnOcYcJiSp73xhng==
@@ -2660,7 +2660,7 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.5.0.tgz#fcef9058cb007561f9fa85dcf537cbb618aec8b3"
   integrity sha512-usrPwHFdV4w4nZ3vlBbTYy9lXwfu0QJWfjHItgIqBIGkUIoWotW91BQaszt3xlQXx8e3v8294WEMtfc/MCukRA==
 
-"@microsoft/fast-foundation@^2.8.2":
+"@microsoft/fast-foundation@^2.10.0":
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.10.0.tgz#fc3356b5955eb080bfe4ea3be912502eb71400ea"
   integrity sha512-E0Q9IogdLQReJCC9jIGM6tGf8631reBhrapZbYiZwrOM/sX7TS2waYy54zsLuI5mOgDdOYFH8LtiHCKwgFVoDw==
