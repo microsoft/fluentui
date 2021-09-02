@@ -8,7 +8,7 @@ import type {
 } from '../Button/Button.types';
 
 // Align with MenuTriggerChildProps in @fluentui/react-menu as needed
-export interface MenuProps
+export interface MenuTriggerProps
   extends Pick<
     React.HTMLAttributes<HTMLElement>,
     | 'aria-haspopup'
@@ -22,7 +22,7 @@ export interface MenuProps
   > {}
 
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  MenuProps & {
+  MenuTriggerProps & {
     /**
      * Menu icon that indicates that this button has a menu that can be expanded.
      */
