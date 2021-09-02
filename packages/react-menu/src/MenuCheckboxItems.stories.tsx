@@ -30,3 +30,18 @@ export const CheckboxItems = () => {
     </Menu>
   );
 };
+
+CheckboxItems.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A variant of `MenuItem` that handles checkbox like selection. The `name` and `value` props are are used',
+        'similar to [HTML checkboxes with `input`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)',
+        '',
+        '```html',
+        '<input type="checkbox" name="name" value="value" />',
+        '```',
+      ].join('\n'),
+    },
+  },
+};

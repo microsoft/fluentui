@@ -30,3 +30,18 @@ export const RadioItems = () => {
     </Menu>
   );
 };
+
+RadioItems.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A variant of `MenuItem` that handles radio like selection. The `name` and `value` props are are used',
+        'similar to [HTML checkboxes with `input`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)',
+        '',
+        '```html',
+        '<input type="radio" name="name" value="value" />',
+        '```',
+      ].join('\n'),
+    },
+  },
+};

@@ -8,7 +8,7 @@ import {
   Edit20Regular as EditIcon,
 } from '@fluentui/react-icons';
 
-export const DividerOnly = () => (
+export const VisualDividerOnly = () => (
   <Menu>
     <MenuTrigger>
       <Button>Toggle menu</Button>
@@ -28,7 +28,7 @@ export const DividerOnly = () => (
   </Menu>
 );
 
-DividerOnly.parameters = {
+VisualDividerOnly.parameters = {
   docs: {
     description: {
       story: [
