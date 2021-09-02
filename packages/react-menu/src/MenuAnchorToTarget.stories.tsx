@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu, MenuList, MenuItem, MenuPopover } from './index';
 
-import { Button } from '@fluentui/react-button';
+import { Button } from './utils.stories';
 import type { MenuProps } from './index';
 
 export const AnchorToCustomTarget = () => {

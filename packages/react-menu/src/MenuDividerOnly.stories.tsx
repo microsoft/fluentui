@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuDivider, MenuPopover } from './index';
 
-import { Button } from '@fluentui/react-button';
+import { Button } from './utils.stories';
 import {
   Cut20Regular as CutIcon,
   ClipboardPaste20Regular as PasteIcon,

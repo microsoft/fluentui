@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuItemCheckboxProps } from './index';
 
-import { Button } from '@fluentui/react-button';
+import { Button } from './utils.stories';
 import { Edit20Regular as EditIcon } from '@fluentui/react-icons';
 
 const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {

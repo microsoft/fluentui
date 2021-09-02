@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from './index';
 
-import { Button } from '@fluentui/react-button';
+import { Button } from './utils.stories';
 
 export const Default = (props: Partial<MenuProps>) => (
   <Menu {...props}>

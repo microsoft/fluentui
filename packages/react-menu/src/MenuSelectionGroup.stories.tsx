@@ -11,7 +11,7 @@ import {
   MenuPopover,
 } from './index';
 
-import { Button } from '@fluentui/react-button';
+import { Button } from './utils.stories';
 import {
   Cut20Regular as CutIcon,
   ClipboardPaste20Regular as PasteIcon,
