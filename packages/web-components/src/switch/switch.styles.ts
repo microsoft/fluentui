@@ -25,17 +25,17 @@ import {
   neutralFillInputHover,
   neutralFillInputRest,
   neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
+  neutralStrokeStrongActive,
+  neutralStrokeStrongHover,
+  neutralStrokeStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const switchStyles: (context: ElementDefinitionContext, defintiion: SwitchOptions) => ElementStyles = (
+export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles = (
   context: ElementDefinitionContext,
-  defintiion: SwitchOptions,
+  definition: SwitchOptions,
 ) =>
   css`
     :host([hidden]) {
@@ -74,18 +74,18 @@ export const switchStyles: (context: ElementDefinitionContext, defintiion: Switc
       height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
       background: ${neutralFillInputRest};
       border-radius: calc(${heightNumber} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
     }
 
     :host(:enabled) .switch:hover {
       background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeHover};
+      border-color: ${neutralStrokeStrongHover};
       cursor: pointer;
     }
 
     :host(:enabled) .switch:active {
       background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeActive};
+      border-color: ${neutralStrokeStrongActive};
     }
 
     :host(:${focusVisible}) .switch {
