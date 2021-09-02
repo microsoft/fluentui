@@ -9,15 +9,26 @@ export const ControllingOpenAndClose = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOpen(e.target.checked);
+  };
+
   return (
-    <Popover open={open} onOpenChange={handleOpenChange}>
-      <PopoverTrigger>
-        <Button>Controlled trigger</Button>
-      </PopoverTrigger>
-      <PopoverSurface>
-        <ExampleContent />
-      </PopoverSurface>
-    </Popover>
+    <div>
+      <Popover open={open} onOpenChange={handleOpenChange}>
+        <PopoverTrigger>
+          <Button>Controlled trigger</Button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+
+      <label style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
+        open
+        <input type="checkbox" name="state" value="open" checked={open} onChange={onChange} />
+      </label>
+    </div>
   );
 };
 
