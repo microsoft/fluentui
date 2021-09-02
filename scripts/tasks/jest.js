@@ -7,6 +7,7 @@ exports.jest = () =>
   jestTask({
     ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE) && { runInBand: true }),
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
+    passWithNoTests: argv().passWithNoTests === undefined ? true : argv().passWithNoTests,
     env: {
       ...process.env,
       NODE_ENV: 'test',

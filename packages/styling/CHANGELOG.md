@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Aug 2021 12:24:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.19.1)
+
+Fri, 27 Aug 2021 12:24:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.19.0..@uifabric/styling_v7.19.1)
+
+### Patches
+
+- Pass Icon 'title' as alt text for File Type Icons ([PR #18923](https://github.com/microsoft/fluentui/pull/18923) by tmichon@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.19.0)
 

@@ -257,7 +257,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             text-align: center;
           }
       data-icon-name="Add"
-      role="presentation"
       style={
         Object {
           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -323,7 +322,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             color: GrayText;
           }
       data-icon-name="ChevronDown"
-      role="presentation"
       style={
         Object {
           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -724,7 +722,6 @@ exports[`Button renders IconButton correctly 1`] = `
             text-align: center;
           }
       data-icon-name="Emoji2"
-      role="presentation"
       style={
         Object {
           "fontFamily": "\\"FabricMDL2Icons-0\\"",

@@ -309,7 +309,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -626,7 +625,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Cancel"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",

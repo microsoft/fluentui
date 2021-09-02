@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "opacity removed for unselected legends border, opacity was causing accessibility luminosity ratio issue",
-  "packageName": "@uifabric/charting",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}

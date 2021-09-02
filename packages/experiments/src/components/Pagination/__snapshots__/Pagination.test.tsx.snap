@@ -131,7 +131,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 color: GrayText;
               }
           data-icon-name="Previous"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-1\\"",
@@ -261,7 +260,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 color: GrayText;
               }
           data-icon-name="CaretSolidLeft"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -920,7 +918,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="CaretSolidRight"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -1061,7 +1058,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="Next"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-1\\"",
@@ -1210,7 +1206,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: GrayText;
             }
         data-icon-name="Previous"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-1\\"",
@@ -1340,7 +1335,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: GrayText;
             }
         data-icon-name="CaretSolidLeft"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -1705,7 +1699,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1844,7 +1837,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-align: center;
             }
         data-icon-name="CaretSolidRight"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-8\\"",
@@ -1972,7 +1964,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-align: center;
             }
         data-icon-name="Next"
-        role="presentation"
         style={
           Object {
             "fontFamily": "\\"FabricMDL2Icons-1\\"",

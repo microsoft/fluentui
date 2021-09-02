@@ -2,6 +2,36 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Wed, 01 Sep 2021 12:22:53 GMT",
+      "tag": "@fluentui/storybook_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.8.1",
+            "author": "tmichon@microsoft.com",
+            "commit": "1dc3ee883d156fe441eae7cd04f54b8ad2bb9291",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Aug 2021 12:24:10 GMT",
+      "tag": "@fluentui/storybook_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.8.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "f0cae03cfc5fdd749e228c75a9d6961e5b2a510b",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 12:24:13 GMT",
       "tag": "@fluentui/storybook_v0.6.62",
       "version": "0.6.62",

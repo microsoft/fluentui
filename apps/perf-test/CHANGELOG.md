@@ -1,8 +1,26 @@
 # Change Log - perf-test
 
-This log was last generated on Thu, 19 Aug 2021 12:24:13 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Sep 2021 12:22:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v7.0.0)
+
+Wed, 01 Sep 2021 12:22:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v7.0.0..perf-test_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.175.1 ([PR #19566](https://github.com/microsoft/fluentui/pull/19566) by tmichon@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v7.0.0)
+
+Fri, 27 Aug 2021 12:24:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v7.0.0..perf-test_v7.0.0)
+
+### Minor changes
+
+- Bump @uifabric/experiments to v7.40.0 ([PR #18923](https://github.com/microsoft/fluentui/pull/18923) by tmichon@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v7.0.0)
 

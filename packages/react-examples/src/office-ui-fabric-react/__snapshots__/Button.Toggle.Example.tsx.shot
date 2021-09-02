@@ -118,7 +118,6 @@ exports[`Component Examples renders Button.Toggle.Example.tsx correctly 1`] = `
             text-align: center;
           }
       data-icon-name="Volume3"
-      role="presentation"
       style={
         Object {
           "fontFamily": "\\"FabricMDL2Icons-3\\"",

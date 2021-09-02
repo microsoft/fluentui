@@ -2,6 +2,44 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 01 Sep 2021 12:22:53 GMT",
+      "tag": "@uifabric/experiments_v7.40.1",
+      "version": "7.40.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.8.1",
+            "author": "tmichon@microsoft.com",
+            "commit": "1dc3ee883d156fe441eae7cd04f54b8ad2bb9291",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Aug 2021 12:24:10 GMT",
+      "tag": "@uifabric/experiments_v7.40.0",
+      "version": "7.40.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots",
+            "author": "tmichon@microsoft.com",
+            "commit": "f0cae03cfc5fdd749e228c75a9d6961e5b2a510b",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.7.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "f0cae03cfc5fdd749e228c75a9d6961e5b2a510b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Aug 2021 12:24:13 GMT",
       "tag": "@uifabric/experiments_v7.39.45",
       "version": "7.39.45",
