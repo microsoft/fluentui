@@ -1,5 +1,12 @@
-import { IsConformantOptions, ConformanceTest } from '@fluentui/react-conformance';
+import type { IsConformantOptions, ConformanceTest, TestOptions } from '@fluentui/react-conformance';
 import './matchers/index';
+
+export const OVERRIDES_WIN_TEST_NAME = 'make-styles-overrides-win';
+
+export type OverridesWinTestOptions = {
+  /** Defines number of allowed mergeClasses() calls per a component render. Defaults to 1. */
+  callCount?: number;
+};
 
 /**
  * Requires a component from a file path, required for proper mocking.
@@ -22,6 +29,10 @@ async function getReactComponent(
  * i.e. ensures that user's overrides have higher priority.
  */
 export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
+  const testOptions = testInfo.testOptions as
+    | (TestOptions & { [OVERRIDES_WIN_TEST_NAME]?: OverridesWinTestOptions })
+    | undefined;
+
   let container: HTMLDivElement | null = null;
   const mergeClasses = jest.fn();
 
@@ -69,5 +80,9 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
 
     expect(mergeClasses.mock.calls.length).toBeGreaterThanOrEqual(1);
     expect(mergeClasses.mock.calls).toContainClassNameLastInCalls(className);
+    expect(mergeClasses.mock.calls).toHaveMergeClassesCalledTimesWithClassName(
+      className,
+      testOptions?.[OVERRIDES_WIN_TEST_NAME]?.callCount || 1,
+    );
   });
 };
