@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update Linaria dependencies",
-  "packageName": "@fluentui/make-styles-webpack-loader",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
