@@ -25,7 +25,7 @@ export type SwitchSlots = {
   /**
    * The hidden input that handles the Switch's internal functionality.
    */
-  input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>;
+  input: ObjectShorthandProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 };
 
 export type SwitchCommon = {

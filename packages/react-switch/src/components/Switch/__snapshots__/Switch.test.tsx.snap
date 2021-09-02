@@ -2,7 +2,7 @@
 
 exports[`Switch Snapshot Tests renders a basic Switch checked 1`] = `
 <div>
-  <span
+  <div
     class="ms-Switch-root checked"
     id="switch-1"
   >
@@ -22,13 +22,13 @@ exports[`Switch Snapshot Tests renders a basic Switch checked 1`] = `
       class=""
       type="checkbox"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`Switch Snapshot Tests renders a basic Switch unchecked 1`] = `
 <div>
-  <span
+  <div
     class="ms-Switch-root"
     id="switch-1"
   >
@@ -47,13 +47,13 @@ exports[`Switch Snapshot Tests renders a basic Switch unchecked 1`] = `
       class=""
       type="checkbox"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`Switch Snapshot Tests renders a disabled Switch checked 1`] = `
 <div>
-  <span
+  <div
     class="ms-Switch-root checked"
     id="switch-1"
   >
@@ -73,13 +73,13 @@ exports[`Switch Snapshot Tests renders a disabled Switch checked 1`] = `
       class=""
       type="checkbox"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`Switch Snapshot Tests renders a disabled Switch unchecked 1`] = `
 <div>
-  <span
+  <div
     class="ms-Switch-root"
     id="switch-1"
   >
@@ -98,13 +98,13 @@ exports[`Switch Snapshot Tests renders a disabled Switch unchecked 1`] = `
       class=""
       type="checkbox"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`Switch Snapshot Tests renders a disabled labeled Switch 1`] = `
 <div>
-  <span
+  <div
     class="ms-Switch-root"
     id="switch-1"
   >
@@ -124,13 +124,13 @@ exports[`Switch Snapshot Tests renders a disabled labeled Switch 1`] = `
       disabled=""
       type="checkbox"
     />
-  </span>
+  </div>
 </div>
 `;
 
 exports[`Switch Snapshot Tests renders a labeled Switch 1`] = `
 <div>
-  <span
+  <div
     class="ms-Switch-root"
     id="switch-1"
   >
@@ -149,6 +149,6 @@ exports[`Switch Snapshot Tests renders a labeled Switch 1`] = `
       class=""
       type="checkbox"
     />
-  </span>
+  </div>
 </div>
 `;
