@@ -22,7 +22,7 @@
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-card/src && yarn docs",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook -s assets"
   },
   "devDependencies": {
     "@fluentui/babel-make-styles": "^9.0.0-alpha.45",
