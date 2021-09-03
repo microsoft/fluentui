@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix mergeClasses() mock",
-  "packageName": "@fluentui/react-conformance-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

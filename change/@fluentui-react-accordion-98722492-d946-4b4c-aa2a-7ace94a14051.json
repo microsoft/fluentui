@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "enable makeStyles conformance tests",
-  "packageName": "@fluentui/react-accordion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

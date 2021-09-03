@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 01 Sep 2021 07:39:56 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Sep 2021 00:13:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.80)
+
+Fri, 03 Sep 2021 00:13:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.79..@fluentui/react-button_v9.0.0-alpha.80)
+
+### Changes
+
+- MenuButton: Cleaning up implementation and adhering to MenuTrigger contract. ([PR #19612](https://github.com/microsoft/fluentui/pull/19612) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.79)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.78..@fluentui/react-button_v9.0.0-alpha.79)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.43 ([PR #19065](https://github.com/microsoft/fluentui/pull/19065) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.78)
 
