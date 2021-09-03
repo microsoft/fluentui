@@ -17,6 +17,10 @@ const useStyles = makeStyles({
     '--slider-thumb-size': '50px',
     '--slider-rail-size': '8px',
   },
+  verticalWrapper: {
+    display: 'flex',
+    gap: '10px',
+  },
 });
 
 export const BasicSliderExample = (props: SliderProps) => {
@@ -40,6 +44,24 @@ export const BasicSliderExample = (props: SliderProps) => {
       <Slider defaultValue={30} disabled />
       <Label>Origin Example</Label>
       <Slider defaultValue={8} origin={3} min={0} max={10} />
+    </div>
+  );
+};
+
+export const MarkedSliderExample = (props: SliderProps) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <Label>Basic Example</Label>
+      <Slider marks={true} max={10} />
+      <Label>Custom Mark Values</Label>
+      <Slider marks={[3, 4, 8, 10]} max={10} />
+      <Label>Vertical Marks</Label>
+      <div className={styles.verticalWrapper}>
+        <Slider vertical marks max={10} />
+        <Slider vertical marks={[2, 4, 7, 8, 10]} max={10} />
+      </div>
     </div>
   );
 };
