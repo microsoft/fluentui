@@ -3,12 +3,14 @@ import { IAzureSemanticColors } from './IAzureSemanticColors';
 export namespace BaseColors {
   export const BLUE_F0F6FF = '#F0F6FF';
   export const BLUE_CCE1FF = '#cce1ff';
+  export const BLUE_C7E0F4 = '#C7E0F4';
   export const BLUE_DEECF9 = '#deecf9';
   export const BLUE_0000CD = '#0000cd';
   export const BLUE_00245B = '#00245B';
   export const BLUE_00E8E8 = '#00e8e8';
   export const BLUE_00FFFF = '#00ffff';
   export const BLUE_004578 = '#004578';
+  export const BLUE_004C87 = '#004C87';
   export const BLUE_005A9E = '#005A9E';
   export const BLUE_0078D4 = '#0078D4';
   export const BLUE_016AFE = '#016afe';
@@ -77,6 +79,7 @@ export namespace BaseColors {
   export const GRAY_3B3A39 = '#3B3A39';
   export const GRAY_414141 = '#414141';
   export const GRAY_484644 = '#484644';
+  export const GRAY_585858 = '#585858';
   export const GRAY_595959 = '#595959';
   export const GRAY_605E5C = '#605E5C';
   export const GRAY_747474 = '#747474';
@@ -362,6 +365,14 @@ export const DarkSemanticColors: IAzureSemanticColors = {
       primaryButtonBackground: BaseColors.BLUE_043862,
     },
   },
+  slider: {
+    activeBackground: BaseColors.GRAY_A19F9D,
+    activeBackgroundHovered: BaseColors.BLUE_2899F5,
+    inactiveBackgroundHovered: BaseColors.BLUE_004C87,
+    activeDisabledBackground: BaseColors.GRAY_797775,
+    inactiveDisabledBackground: BaseColors.GRAY_292827,
+    activeBackgroundPressed: BaseColors.BLUE_3AA0F3,
+  },
 };
 
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
@@ -576,6 +587,14 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     hover: {
       primaryButtonBackground: BaseColors.BLUE_043862,
     },
+  },
+  slider: {
+    activeBackground: BaseColors.GRAY_605E5C,
+    activeBackgroundHovered: BaseColors.BLUE_00FFFF,
+    inactiveBackgroundHovered: BaseColors.GRAY_585858,
+    activeDisabledBackground: BaseColors.GREEN_0AFF00,
+    inactiveDisabledBackground: BaseColors.GREEN_0AFF00,
+    activeBackgroundPressed: BaseColors.BLUE_00FFFF,
   },
 };
 
@@ -792,6 +811,14 @@ export const LightSemanticColors: IAzureSemanticColors = {
       primaryButtonBackground: BaseColors.BLUE_DEECF9,
     },
   },
+  slider: {
+    activeBackground: BaseColors.GRAY_605E5C,
+    activeBackgroundHovered: BaseColors.BLUE_0078D4,
+    inactiveBackgroundHovered: BaseColors.BLUE_C7E0F4,
+    activeDisabledBackground: BaseColors.GRAY_A19F9D,
+    inactiveDisabledBackground: BaseColors.GRAY_EDEBE9,
+    activeBackgroundPressed: BaseColors.BLUE_106EBE,
+  },
 };
 
 export const HighContrastLightSemanticColors: IAzureSemanticColors = {
@@ -1006,5 +1033,13 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     hover: {
       primaryButtonBackground: BaseColors.BLUE_DEECF9,
     },
+  },
+  slider: {
+    activeBackground: BaseColors.GRAY_605E5C,
+    activeBackgroundHovered: BaseColors.PURPLE_800080,
+    inactiveBackgroundHovered: BaseColors.BLUE_C7E0F4,
+    activeDisabledBackground: BaseColors.RED_800000,
+    inactiveDisabledBackground: BaseColors.RED_800000,
+    activeBackgroundPressed: BaseColors.PURPLE_800080,
   },
 };
