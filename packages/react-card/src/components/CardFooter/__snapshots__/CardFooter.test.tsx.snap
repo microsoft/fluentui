@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooter renders a default state 1`] = `
+<div>
+  <div
+    class=""
+  >
+    <div>
+      Default CardFooter
+    </div>
+    <span>
+      Action slot
+    </span>
+  </div>
+</div>
+`;

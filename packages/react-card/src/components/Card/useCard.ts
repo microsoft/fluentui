@@ -1,15 +1,8 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import type { CardProps, CardShorthandProps, CardState } from './Card.types';
+import { makeMergeProps } from '@fluentui/react-utilities';
+import type { CardProps, CardState } from './Card.types';
 
-/**
- * Array of all shorthand properties listed in CardShorthandProps
- */
-export const cardShorthandProps: CardShorthandProps[] = [
-  /* TODO add shorthand property names */
-];
-
-const mergeProps = makeMergeProps<CardState>({ deepMerge: cardShorthandProps });
+const mergeProps = makeMergeProps<CardState>();
 
 /**
  * Create the state required to render Card.
@@ -26,8 +19,8 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultPr
     {
       ref,
     },
-    defaultProps && resolveShorthandProps(defaultProps, cardShorthandProps),
-    resolveShorthandProps(props, cardShorthandProps),
+    defaultProps,
+    props,
   );
 
   return state;
