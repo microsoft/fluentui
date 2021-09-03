@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactor ObjectShorthandProps into ElementShorthandProps",
+  "packageName": "@fluentui/react-menu",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
