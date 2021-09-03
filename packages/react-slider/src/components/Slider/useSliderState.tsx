@@ -229,7 +229,7 @@ export const useSliderState = (state: SliderState) => {
   );
 
   const getTrackBorderRadius = () => {
-    if (origin && origin !== (max || min)) {
+    if (origin !== undefined && origin !== (max || min)) {
       if (vertical) {
         return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
       } else {
@@ -252,7 +252,7 @@ export const useSliderState = (state: SliderState) => {
   const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
   const originPercent = React.useMemo(() => {
-    return origin ? getPercent(origin, min, max) : 0;
+    return origin !== undefined ? getPercent(origin, min, max) : 0;
   }, [max, min, origin]);
 
   const markValues = React.useMemo((): number[] => {
@@ -300,13 +300,24 @@ export const useSliderState = (state: SliderState) => {
   };
 
   const trackStyles = {
-    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-    [vertical ? 'height' : 'width']: origin
-      ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-      : `${valuePercent}%`,
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
+      origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']:
+      origin !== undefined
+        ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+        : `${valuePercent}%`,
     borderRadius: getTrackBorderRadius(),
+    // When a transition is applied with the origin, a visible animation plays when it goes below the min.
     transition: stepAnimation
-      ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
+      ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}${
+          origin !== undefined
+            ? ', ' + vertical
+              ? 'top'
+              : dir === 'rtl'
+              ? 'right'
+              : 'left' + 'ease-in-out ' + animationTime
+            : ''
+        }`
       : 'none',
     ...state.track.style,
   };
