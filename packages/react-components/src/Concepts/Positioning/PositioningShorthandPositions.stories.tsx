@@ -53,7 +53,6 @@ ShorthandPositions.parameters = {
       story: [
         'If all you need to configure is the placement of the positioned element, you can use a shorthand syntax to',
         'avoid using a full blown javascript object',
-        'A simple string shorthand is enough to configure the',
       ].join('\n'),
     },
   },
