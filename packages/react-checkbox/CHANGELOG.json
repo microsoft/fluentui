@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 03 Sep 2021 00:13:07 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable makeStyles conformance tests",
+            "author": "olfedias@microsoft.com",
+            "commit": "0606b747c8fca1e6551d521f2526a6c1f969205a",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-alpha.30",
       "version": "9.0.0-alpha.30",
