@@ -16,7 +16,7 @@ export const renderSlider: (state: SliderState) => JSX.Element;
 export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type SliderDefaultedProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'marksWrapper' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export type SliderDefaultedProps = 'activeRail' | 'input' | 'rail' | 'sliderWrapper' | 'thumb' | 'thumbWrapper' | 'track' | 'trackWrapper' | 'marksWrapper';
 
 // @public (undocumented)
 export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
@@ -24,6 +24,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
     disabled?: boolean;
+    input?: ShorthandPropsCompat<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
     keyboardStep?: number;
     marks?: boolean | number[] | (number | {
         value: number;
@@ -50,7 +51,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
 }
 
 // @public
-export type SliderShorthandProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'marksWrapper' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export type SliderShorthandProps = 'activeRail' | 'input' | 'rail' | 'sliderWrapper' | 'thumb' | 'thumbWrapper' | 'track' | 'trackWrapper' | 'marksWrapper';
 
 // @public
 export const sliderShorthandProps: SliderShorthandProps[];

@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { useBoolean, useControllableState, useEventCallback, useId, useUnmount } from '@fluentui/react-utilities';
+import {
+  useBoolean,
+  useControllableState,
+  useEventCallback,
+  useId,
+  useUnmount,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { mergeClasses } from '@fluentui/react-make-styles';
 import type { SliderState } from './Slider.types';
@@ -59,7 +66,6 @@ const lastMarkClassName = 'ms-Slider-lastMark';
 
 export const useSliderState = (state: SliderState) => {
   const {
-    as = 'div',
     value,
     defaultValue = 0,
     min = 0,
@@ -87,7 +93,7 @@ export const useSliderState = (state: SliderState) => {
   });
 
   const railRef = React.useRef<HTMLDivElement>(null);
-  const thumbRef = React.useRef<HTMLElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
   const id = useId('slider-', state.id);
 
@@ -148,6 +154,10 @@ export const useSliderState = (state: SliderState) => {
     [dir, max, min, step, vertical],
   );
 
+  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    updatePosition(Number(ev.target.value), ev);
+  };
+
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = min + step * calculateSteps(ev);
@@ -166,7 +176,7 @@ export const useSliderState = (state: SliderState) => {
       showStepAnimation();
       // When undefined, the position fallbacks to the currentValue state.
       setRenderedPosition(undefined);
-      thumbRef.current!.focus();
+      inputRef.current!.focus();
     },
     [showStepAnimation],
   );
@@ -231,7 +241,7 @@ export const useSliderState = (state: SliderState) => {
   );
 
   const getTrackBorderRadius = () => {
-    if (origin && origin !== (max || min)) {
+    if (origin !== undefined && origin !== (max || min)) {
       if (vertical) {
         return originPercent > valuePercent ? '99px 99px 0px 0px' : '0px 0px 99px 99px';
       } else {
@@ -254,7 +264,7 @@ export const useSliderState = (state: SliderState) => {
   const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
   const originPercent = React.useMemo(() => {
-    return origin ? getPercent(origin, min, max) : 0;
+    return origin !== undefined ? getPercent(origin, min, max) : 0;
   }, [max, min, origin]);
 
   const markValues = React.useMemo((): number[] => {
@@ -314,13 +324,24 @@ export const useSliderState = (state: SliderState) => {
   };
 
   const trackStyles = {
-    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: origin ? `${Math.min(valuePercent, originPercent)}%` : 0,
-    [vertical ? 'height' : 'width']: origin
-      ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-      : `${valuePercent}%`,
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']:
+      origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : 0,
+    [vertical ? 'height' : 'width']:
+      origin !== undefined
+        ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
+        : `${valuePercent}%`,
     borderRadius: getTrackBorderRadius(),
+    // When a transition is applied with the origin, a visible animation plays when it goes below the min.
     transition: stepAnimation
-      ? `transform ease-in-out ${animationTime}, ${vertical ? 'height' : 'width'} ease-in-out ${animationTime}`
+      ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}${
+          origin !== undefined
+            ? ', ' + vertical
+              ? 'top'
+              : dir === 'rtl'
+              ? 'right'
+              : 'left' + 'ease-in-out ' + animationTime
+            : ''
+        }`
       : 'none',
     ...state.track.style,
   };
@@ -375,7 +396,6 @@ export const useSliderState = (state: SliderState) => {
   };
 
   // Root props
-  state.as = as;
   state.id = id;
   if (!disabled) {
     state.onPointerDown = onPointerDown;
@@ -392,18 +412,18 @@ export const useSliderState = (state: SliderState) => {
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbWrapperStyles;
 
-  // Thumb Props
-  state.thumb.ref = thumbRef;
-  state.thumb.tabIndex = disabled ? undefined : 0;
-  state.thumb.role = 'slider';
-  state.thumb['aria-valuemin'] = min;
-  state.thumb['aria-valuemax'] = max;
-  state.thumb['aria-valuenow'] = currentValue;
-  state.thumb['aria-valuetext'] = ariaValueText ? ariaValueText(currentValue!) : currentValue!.toString();
-  disabled && (state.thumb['aria-disabled'] = true);
-
   // Active Rail Props
   state.activeRail.ref = railRef;
+
+  // Input Props
+  state.input.ref = useMergedRefs(state.input.ref, inputRef);
+  state.input.value = currentValue;
+  state.input.min = min;
+  state.input.max = max;
+  ariaValueText && (state.input['aria-valuetext'] = ariaValueText(currentValue!));
+  state.input.disabled = disabled;
+  state.input.step = step;
+  state.input.onChange = onInputChange;
 
   return state;
 };

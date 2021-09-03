@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor(react-components): update storybook setup to mitigate big diffs when executing migration generator with --all flags",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -70,17 +70,19 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -157,17 +159,19 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -449,17 +453,19 @@ exports[`Slider Snapshot Tests renders Slider with marks correctly 1`] = `
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="3"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -491,17 +497,20 @@ exports[`Slider Snapshot Tests renders disabled Slider correctly 1`] = `
         style="transform: translateX(50%); transition: none;"
       >
         <div
-          aria-disabled="true"
-          aria-valuemax="10"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        disabled=""
+        max="10"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -576,17 +585,20 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          aria-disabled="true"
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        disabled=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -618,17 +630,19 @@ exports[`Slider Snapshot Tests renders horizontal Slider correctly 1`] = `
         style="transform: translateX(50%); transition: none;"
       >
         <div
-          aria-valuemax="10"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="10"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -703,17 +717,19 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -778,17 +794,19 @@ exports[`Slider Snapshot Tests renders horizontal Slider with unique mark values
         style="transform: translateX(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -820,17 +838,19 @@ exports[`Slider Snapshot Tests renders horizontal origin Slider correctly 1`] = 
         style="transform: translateX(50%); transition: none;"
       >
         <div
-          aria-valuemax="10"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="10"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -862,17 +882,19 @@ exports[`Slider Snapshot Tests renders vertical Slider correctly 1`] = `
         style="transform: translateY(50%); transition: none;"
       >
         <div
-          aria-valuemax="10"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="10"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -947,17 +969,19 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
         style="transform: translateY(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -1022,17 +1046,19 @@ exports[`Slider Snapshot Tests renders vertical Slider with unique mark values c
         style="transform: translateY(5%); transition: none;"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="100"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>
@@ -1064,17 +1090,19 @@ exports[`Slider Snapshot Tests renders vertical origin Slider correctly 1`] = `
         style="transform: translateY(50%); transition: none;"
       >
         <div
-          aria-valuemax="10"
-          aria-valuemin="0"
-          aria-valuenow="5"
-          aria-valuetext="5"
           class="ms-Slider-thumb"
-          role="slider"
-          tabindex="0"
         />
       </div>
       <div
         class=""
+      />
+      <input
+        class=""
+        max="10"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
       />
     </div>
   </div>

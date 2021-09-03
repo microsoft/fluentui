@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding FAQ on moving to v9-BETA from v8.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

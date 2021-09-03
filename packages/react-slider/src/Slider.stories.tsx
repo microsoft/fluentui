@@ -55,16 +55,24 @@ export const BasicSliderExample = (props: SliderProps) => {
 
   return (
     <div className={styles.root}>
-      <Label>Basic Example</Label>
-      <Slider />
-      <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={1} keyboardStep={2} onChange={sliderOnChange} />
-      <Label>Snapping Example</Label>
-      <Slider defaultValue={5} step={5} min={0} max={10} />
-      <Label>Disabled Example</Label>
-      <Slider defaultValue={30} disabled />
-      <Label>Origin Example</Label>
-      <Slider defaultValue={8} origin={3} min={0} max={10} />
+      <Label htmlFor={'basic-slider'}>Basic Example</Label>
+      <Slider input={{ id: 'basic-slider' }} />
+      <Label htmlFor={'controlled-slider'}>Controlled Example [ Current Value: {sliderValue} ]</Label>
+      <Slider
+        value={sliderValue}
+        min={10}
+        max={200}
+        step={10}
+        keyboardStep={2}
+        onChange={sliderOnChange}
+        input={{ id: 'controlled-slider' }}
+      />
+      <Label htmlFor={'snapping-slider'}>Snapping Example</Label>
+      <Slider defaultValue={5} step={5} min={0} max={10} input={{ id: 'snapping-slider' }} />
+      <Label htmlFor={'disabled-slider'}>Disabled Example</Label>
+      <Slider defaultValue={30} disabled input={{ id: 'disabled-slider' }} />
+      <Label htmlFor={'origin-slider'}>Origin Example</Label>
+      <Slider defaultValue={8} origin={3} min={0} max={10} input={{ id: 'origin-slider' }} />
     </div>
   );
 };
@@ -147,14 +155,22 @@ export const VerticalSliderExample = (props: SliderProps) => {
 
   return (
     <div className={styles.root}>
-      <Label>Basic Example</Label>
-      <Slider vertical />
-      <Label>Controlled Example [ Current Value: {sliderValue} ]</Label>
-      <Slider value={sliderValue} min={10} max={200} step={10} onChange={sliderOnChange} vertical />
-      <Label>Disabled Example</Label>
-      <Slider defaultValue={50} disabled vertical />
-      <Label>Origin Example</Label>
-      <Slider defaultValue={40} origin={60} vertical />
+      <Label htmlFor={'vertical-basic-slider'}>Basic Example</Label>
+      <Slider vertical input={{ id: 'vertical-basic-slider' }} />
+      <Label htmlFor={'vertical-controlled-slider'}>Controlled Example [ Current Value: {sliderValue} ]</Label>
+      <Slider
+        value={sliderValue}
+        min={10}
+        max={200}
+        step={10}
+        onChange={sliderOnChange}
+        vertical
+        input={{ id: 'vertical-controlled-slider' }}
+      />
+      <Label htmlFor={'vertical-disabled-slider'}>Disabled Example</Label>
+      <Slider defaultValue={50} disabled vertical input={{ id: 'vertical-disabled-slider' }} />
+      <Label htmlFor={'vertical-origin-slider'}>Origin Example</Label>
+      <Slider defaultValue={40} origin={60} vertical input={{ id: 'vertical-origin-slider' }} />
     </div>
   );
 };
@@ -164,10 +180,10 @@ export const CustomSliderExample = (props: SliderProps) => {
 
   return (
     <div className={styles.root}>
-      <Label>Custom Styles</Label>
-      <Slider defaultValue={4} className={styles.slider} />
-      <Label>Size Example</Label>
-      <Slider defaultValue={2} size={'small'} />
+      <Label htmlFor={'custom-slider'}>Custom Styles</Label>
+      <Slider defaultValue={4} className={styles.slider} input={{ id: 'custom-slider' }} />
+      <Label htmlFor={'size-slider'}>Size Example</Label>
+      <Slider defaultValue={2} size={'small'} input={{ id: 'size-slider' }} />
     </div>
   );
 };
