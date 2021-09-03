@@ -12,22 +12,22 @@ export const linkShorthandProps: Array<keyof LinkSlots> = ['root'];
  * Given user props, returns state and render function for a Link.
  */
 export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>): LinkState => {
-  const rootAs = props.href ? 'a' : 'button';
+  const { as, disabled, disabledFocusable, href, inline, secondary } = props;
+  const rootAs = as || (href ? 'a' : 'button');
 
   const state: LinkState = {
-    // Forwarded ref
-    ref,
-
     // Props passed at the top-level
-    disabled: props.disabled,
-    disabledFocusable: props.disabledFocusable,
+    disabled,
+    disabledFocusable,
+    inline,
+    secondary,
 
     // Slots definition
     components: {
       root: rootAs,
     },
 
-    root: getNativeElementProps(props.as || rootAs, props),
+    root: getNativeElementProps(rootAs, { ref, ...props }),
   };
 
   useLinkState(state);

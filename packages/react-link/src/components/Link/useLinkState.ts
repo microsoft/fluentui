@@ -80,7 +80,7 @@ export const useLinkState = (state: LinkState): LinkState => {
   };
 
   // Set the aria-disabled and disabled props correctly.
-  state['aria-disabled'] = disabled || disabledFocusable;
+  state.root['aria-disabled'] = disabled || disabledFocusable;
   state.root.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
 
   return state;

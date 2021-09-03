@@ -6,7 +6,8 @@ export type LinkSlots = {
     React.HTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
       React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
       Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>,
-    HTMLAnchorElement | HTMLButtonElement | HTMLElement
+    HTMLAnchorElement | HTMLButtonElement | HTMLElement,
+    'a' | 'button'
   >;
 };
 
@@ -75,6 +76,4 @@ export type LinkCommons = Omit<
 
 export interface LinkProps extends Omit<ComponentProps<LinkSlots>, 'onClick'>, Partial<LinkCommons> {}
 
-export interface LinkState extends ComponentState<LinkSlots>, LinkProps {
-  ref: React.Ref<HTMLElement>;
-}
+export interface LinkState extends ComponentState<LinkSlots>, LinkProps {}

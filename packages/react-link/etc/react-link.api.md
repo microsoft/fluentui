@@ -34,13 +34,11 @@ export const linkShorthandProps: Array<keyof LinkSlots>;
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, HTMLAnchorElement | HTMLButtonElement | HTMLElement>;
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, HTMLAnchorElement | HTMLButtonElement | HTMLElement, 'a' | 'button'>;
 };
 
 // @public (undocumented)
 export interface LinkState extends ComponentState<LinkSlots>, LinkProps {
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public

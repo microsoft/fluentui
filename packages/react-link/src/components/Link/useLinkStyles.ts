@@ -87,12 +87,12 @@ export const useLinkStyles = (state: LinkState): LinkState => {
   state.root.className = mergeClasses(
     styles.root,
     styles.focusIndicator,
-    state.href && styles.href,
+    state.root.href && styles.href,
     state.secondary && styles.secondary,
     state.inline && styles.inline,
     state.secondary && state.inline && styles.inlineSecondary,
-    state['aria-disabled'] && styles.disabled,
-    state.className,
+    state.root['aria-disabled'] && styles.disabled,
+    state.root.className,
   );
 
   return state;

@@ -8,6 +8,7 @@ export function isConformant<TProps = {}>(
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
     disabledTests: [`has-docblock`],
+    skipAsPropTests: true,
   };
 
   baseIsConformant(defaultOptions, testInfo);
