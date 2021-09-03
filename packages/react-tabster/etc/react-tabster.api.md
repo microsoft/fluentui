@@ -25,15 +25,16 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions 
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal';
     circular?: boolean;
+    memorizeCurrent?: boolean;
 }
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
-    findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
-    findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
-    findPrevFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
+    findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
 };
 
 // @public

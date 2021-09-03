@@ -73,11 +73,11 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,
-    state.className,
+    state.root.className,
   );
   state.content.className = mergeClasses(styles.content, state.content.className);
   if (state.secondaryContent) {

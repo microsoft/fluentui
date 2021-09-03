@@ -10,8 +10,9 @@ import {
   updateJson,
   logger,
   updateProjectConfiguration,
+  serializeJson,
+  names,
 } from '@nrwl/devkit';
-import { serializeJson, stringUtils } from '@nrwl/workspace';
 
 import { PackageJson, TsConfig } from '../../types';
 
@@ -63,6 +64,15 @@ describe('migrate-converged-pkg generator', () => {
         '@proj/old-v8-foo': '8.0.40',
         '@proj/old-v8-bar': '8.0.41',
       },
+    });
+    tree = setupDummyPackage(tree, {
+      name: '@proj/babel-make-styles',
+      version: '9.0.0-alpha.0',
+      dependencies: {
+        '@proj/make-styles': '^9.0.0-alpha.1',
+      },
+      tsConfig: { extends: '../../tsconfig.base.json', compilerOptions: {}, include: ['src'] },
+      projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
     });
   });
 
@@ -183,12 +193,12 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['ES2020', 'dom'],
+          lib: ['ES2019', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'ES2020',
+          target: 'ES2019',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
@@ -403,18 +413,16 @@ describe('migrate-converged-pkg generator', () => {
       const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
 
+      const normalizedProjectNameNamesVariants = names(normalizedProjectName);
+
       const paths = {
         reactExamples: {
-          // eslint-disable-next-line @fluentui/max-len
+          /* eslint-disable @fluentui/max-len */
           //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
-          storyFileOne: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
-            normalizedProjectName,
-          )}/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
-          // eslint-disable-next-line @fluentui/max-len
+          storyFileOne: `${pathToStoriesWithinReactExamples}/${normalizedProjectNameNamesVariants.className}/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
           // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
-          storyFileTwo: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
-            normalizedProjectName,
-          )}Other/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
+          storyFileTwo: `${pathToStoriesWithinReactExamples}/${normalizedProjectNameNamesVariants.className}Other/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+          /* eslint-enable @fluentui/max-len */
         },
       };
 
@@ -438,8 +446,8 @@ describe('migrate-converged-pkg generator', () => {
 
       function getMovedStoriesData() {
         const movedStoriesExportNames = {
-          storyOne: `${stringUtils.classify(normalizedProjectName)}`,
-          storyTwo: `${stringUtils.classify(normalizedProjectName)}Other`,
+          storyOne: `${normalizedProjectNameNamesVariants.className}`,
+          storyTwo: `${normalizedProjectNameNamesVariants.className}Other`,
         };
         const movedStoriesFileNames = {
           storyOne: `${movedStoriesExportNames.storyOne}.stories.tsx`,
@@ -797,8 +805,7 @@ describe('migrate-converged-pkg generator', () => {
       npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
 
       expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".cache/
-        .storybook/
+        ".storybook/
         .vscode/
         bundle-size/
         config/
@@ -825,7 +832,8 @@ describe('migrate-converged-pkg generator', () => {
         .editorconfig
         .eslint*
         .git*
-        .prettierignore"
+        .prettierignore
+        "
       `);
     });
   });
@@ -881,7 +889,7 @@ describe('migrate-converged-pkg generator', () => {
           '@babel/transform-react-pure-annotations',
         ],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe('*');
+      expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
     });
 
     it(`should add @fluentui/babel-make-styles plugin only if needed`, async () => {
@@ -895,7 +903,7 @@ describe('migrate-converged-pkg generator', () => {
         }
 
         json.devDependencies = json.devDependencies || {};
-        json.devDependencies[babelMakeStylesPkg] = '*';
+        json.devDependencies[babelMakeStylesPkg] = '^9.0.0-alpha.0';
 
         return json;
       });
@@ -911,7 +919,7 @@ describe('migrate-converged-pkg generator', () => {
           '@babel/transform-react-pure-annotations',
         ],
       });
-      expect(devDeps[babelMakeStylesPkg]).toBe('*');
+      expect(devDeps[babelMakeStylesPkg]).toBe('^9.0.0-alpha.0');
 
       await generator(tree, options);
 
@@ -996,8 +1004,13 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (0):');
-      expect(loggerInfoSpy.mock.calls[3][0]).toEqual('');
+      // babel-make-styles is booted as migrated
+      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
+      expect(loggerInfoSpy.mock.calls[3][0]).toEqual(
+        expect.stringContaining(stripIndents`
+      - @proj/babel-make-styles
+      `),
+      );
       expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
       expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
         expect.stringContaining(stripIndents`
@@ -1012,7 +1025,7 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
+      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (2):');
       expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (2):`);
     });
   });
@@ -1058,7 +1071,13 @@ describe('migrate-converged-pkg generator', () => {
 function setupDummyPackage(
   tree: Tree,
   options: AssertedSchema &
-    Partial<{ version: string; dependencies: Record<string, string>; compilerOptions: TsConfig['compilerOptions'] }>,
+    Partial<{
+      version: string;
+      dependencies: Record<string, string>;
+      tsConfig: TsConfig;
+      babelConfig: Partial<{ presets: string[]; plugins: string[] }>;
+      projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
+    }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
   const defaults = {
@@ -1070,7 +1089,10 @@ function setupDummyPackage(
       tslib: '^2.1.0',
       someThirdPartyDep: '^11.1.2',
     },
-    compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] },
+    babelConfig: {
+      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+    },
+    tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
   };
 
   const normalizedOptions = { ...defaults, ...options };
@@ -1099,7 +1121,7 @@ function setupDummyPackage(
       dependencies: normalizedOptions.dependencies,
     },
     tsConfig: {
-      compilerOptions: normalizedOptions.compilerOptions,
+      ...normalizedOptions.tsConfig,
     },
     jestConfig: stripIndents`
       const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
@@ -1158,7 +1180,7 @@ function setupDummyPackage(
       visualtests
     `,
     babelConfig: {
-      plugins: ['module:@fluentui/babel-make-styles', 'annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+      ...normalizedOptions.babelConfig,
     },
   };
 
@@ -1173,6 +1195,7 @@ function setupDummyPackage(
     root: paths.root,
     projectType: 'library',
     targets: {},
+    ...options.projectConfiguration,
   });
 
   return tree;

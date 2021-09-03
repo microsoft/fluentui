@@ -14,36 +14,39 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start": "yarn storybook",
+    "test": "jest",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-slider/src && yarn docs",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.34",
-    "@fluentui/react-conformance": "^0.4.4",
-    "@fluentui/react-label": "^9.0.0-alpha.30",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
+    "@fluentui/react-conformance": "^0.4.5",
+    "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.5",
+    "@fluentui/react-label": "^9.0.0-alpha.34",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.43"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.59",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.61",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
-    "@fluentui/react-tabster": "^9.0.0-alpha.53",
-    "@fluentui/react-utilities": "^9.0.0-alpha.41",
+    "@fluentui/react-tabster": "^9.0.0-alpha.55",
+    "@fluentui/react-utilities": "^9.0.0-alpha.43",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

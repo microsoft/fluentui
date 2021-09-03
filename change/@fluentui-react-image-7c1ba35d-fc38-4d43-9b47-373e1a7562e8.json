@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "enable makeStyles conformance tests",
+  "packageName": "@fluentui/react-image",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
