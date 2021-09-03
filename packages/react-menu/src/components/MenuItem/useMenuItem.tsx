@@ -44,6 +44,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     hasSubmenu,
     ...props,
     components: {
+      root: 'div',
       icon: 'span',
       checkmark: 'span',
       submenuIndicator: 'span',
@@ -69,7 +70,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
   };
 
   const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state.root;
-  state.root.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  state.root.onKeyDown = e => {
     if (shouldPreventDefaultOnKeyDown(e)) {
       if (state.disabled) {
         e.preventDefault();
@@ -85,7 +86,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     onKeyDownOriginal?.(e);
   };
 
-  state.root.onClick = (e: React.MouseEvent<HTMLElement>) => {
+  state.root.onClick = e => {
     if (state.disabled) {
       e.preventDefault();
       e.stopPropagation();
@@ -107,7 +108,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
   };
 
   const { onMouseEnter: onMouseEnterOriginal } = state.root;
-  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  state.root.onMouseEnter = useEventCallback(e => {
     innerRef.current?.focus();
 
     onMouseEnterOriginal?.(e);

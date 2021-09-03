@@ -58,15 +58,20 @@ export interface ComponentPropsCompat {
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components?: {
-        [Key in keyof Shorthands]?: React_2.ElementType<NonNullable<Shorthands[Key]>> | keyof JSX.IntrinsicElements;
+        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends {
+            as?: infer As;
+        } ? As : never);
     };
 } & Shorthands;
 
 // @public
 export type ComponentStateCompat<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;
 
-// @public (undocumented)
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{}, unknown, keyof JSX.IntrinsicElements>;
+// @public
+export type DefaultObjectShorthandProps = ObjectShorthandProps<{
+    children?: React_2.ReactNode;
+    as?: keyof JSX.IntrinsicElements;
+}>;
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -115,6 +120,11 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
+export type IsSingleton<T extends string> = {
+    [K in T]: Exclude<T, K> extends never ? true : false;
+}[T];
+
+// @public
 export const labelProperties: Record<string, number>;
 
 // @public
@@ -134,15 +144,30 @@ export type MergePropsOptions<TState> = {
 };
 
 // @public
+export type NoLegacyRef<Props extends {
+    ref?: unknown;
+}> = Omit<Props, 'ref'> & {
+    ref?: Exclude<Props['ref'], string>;
+};
+
+// @public
 export const nullRender: () => null;
 
-// @public (undocumented)
+// @public
 export type ObjectShorthandProps<Props extends {
     children?: React_2.ReactNode;
-} = {}, Ref = unknown, As extends keyof JSX.IntrinsicElements = never> = Props & React_2.RefAttributes<Ref> & {
-    as?: As;
+} = {}> = Props & {
     children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
+
+// @public
+export type ObjectShorthandPropsAs<DefaultElement extends keyof JSX.IntrinsicElements, AlternateElements extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultElement> extends false ? 'Error: first parameter to ObjectShorthandPropsAs must be a single element type, not a union of types' : ({
+    as?: DefaultElement;
+} & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>) | {
+    [As in AlternateElements]: {
+        as: As;
+    } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[As]>>;
+}[AlternateElements];
 
 // @public (undocumented)
 export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = TProps & Omit<ComponentPropsCompat, 'children'> & {

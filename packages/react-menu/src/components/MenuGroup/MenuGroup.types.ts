@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandPropsAs } from '@fluentui/react-utilities';
 import { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 export type MenuGroupSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: ObjectShorthandPropsAs<'div'>;
 };
 
 /**

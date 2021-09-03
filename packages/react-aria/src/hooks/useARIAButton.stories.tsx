@@ -1,11 +1,11 @@
 import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useARIAButton } from './useARIAButton';
-import type { ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentState, ObjectShorthandPropsAs } from '@fluentui/react-utilities';
 import type { ARIAButtonShorthandProps } from './useARIAButton';
 
 type Slots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: ObjectShorthandPropsAs<'div'>;
   button: ARIAButtonShorthandProps;
 };
 
@@ -35,6 +35,7 @@ export const Anchor = (args: DefaultArgs) => {
   const props = useARIAButton(
     {
       as: 'a',
+      href: '/',
       onClick: ev => {
         ev.preventDefault();
         args.onClick(ev);
@@ -43,11 +44,7 @@ export const Anchor = (args: DefaultArgs) => {
     { required: true },
   );
   const { slots, slotProps } = getSlots({ root: props }, ['root']);
-  return (
-    <slots.root href="/" {...slotProps.root}>
-      this is an anchor
-    </slots.root>
-  );
+  return <slots.root {...slotProps.root}>this is an anchor</slots.root>;
 };
 
 export const Span = (args: DefaultArgs) => {

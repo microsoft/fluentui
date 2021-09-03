@@ -1,23 +1,22 @@
-import * as React from 'react';
-import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandPropsAs } from '@fluentui/react-utilities';
 
 export type InputSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: ObjectShorthandPropsAs<'span'>;
   /** The actual `<input>` element */
-  input: ObjectShorthandProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+  input: ObjectShorthandPropsAs<'input'>;
   /**
    * Wrapper element containing `insideStart`, `input`, and `insideEnd`. This is the element that
    * visually appears to be the input and is used for borders, focus styling, etc.
    */
-  inputWrapper: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  inputWrapper: ObjectShorthandPropsAs<'span'>;
   /** Element before the input field, visually separated from it */
-  bookendBefore?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  bookendBefore?: ObjectShorthandPropsAs<'span'>;
   /** Element after the input field, visually separated from it */
-  bookendAfter?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  bookendAfter?: ObjectShorthandPropsAs<'span'>;
   /** Element at the start of the input field, visually appearing to be inside of it */
-  insideStart?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  insideStart?: ObjectShorthandPropsAs<'span'>;
   /** Element at the end of the input field, visually appearing to be inside of it */
-  insideEnd?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  insideEnd?: ObjectShorthandPropsAs<'span'>;
 };
 
 export interface InputCommons {

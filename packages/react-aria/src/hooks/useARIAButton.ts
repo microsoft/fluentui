@@ -1,6 +1,6 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
+import type { ObjectShorthandPropsAs, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
 
 function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   if (typeof disabled === 'string') {
@@ -9,11 +9,7 @@ function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
   return disabled ?? false;
 }
 
-export type ARIAButtonShorthandProps =
-  | ObjectShorthandProps<JSX.IntrinsicElements['button'], HTMLButtonElement, 'button'>
-  | ObjectShorthandProps<JSX.IntrinsicElements['div'], HTMLDivElement, 'div'>
-  | ObjectShorthandProps<JSX.IntrinsicElements['span'], HTMLSpanElement, 'span'>
-  | ObjectShorthandProps<JSX.IntrinsicElements['a'], HTMLAnchorElement, 'a'>;
+export type ARIAButtonShorthandProps = ObjectShorthandPropsAs<'button', 'div' | 'span' | 'a'>;
 
 /**
  * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
