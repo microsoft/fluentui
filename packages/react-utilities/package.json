@@ -37,7 +37,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.3.4",
+    "@fluentui/keyboard-keys": "^9.0.0-alpha.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
