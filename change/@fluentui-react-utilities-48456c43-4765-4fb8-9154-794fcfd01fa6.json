@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(react-utilities): Remove unused `@fluentui/keyboard-key` dependency",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
