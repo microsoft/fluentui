@@ -10,6 +10,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ElementShorthandProps } from '@fluentui/react-utilities';
 import { NoLegacyRef } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandRenderFunction } from '@fluentui/react-utilities';
 
@@ -99,7 +100,7 @@ export type AccordionHeaderSlots = {
     button: ARIAButtonShorthandProps;
     expandIcon: AccordionHeaderExpandIconProps;
     icon?: ElementShorthandProps<'div'>;
-    children: ElementShorthandProps<'div'>;
+    children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
 // @public (undocumented)
