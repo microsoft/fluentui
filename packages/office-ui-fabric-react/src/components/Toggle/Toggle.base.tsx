@@ -54,7 +54,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
     this.state = {
       checked: !!(props.checked || props.defaultChecked),
     };
-    this._id = props.id || getId('Toggle');
+    this._id = getId('Toggle');
   }
 
   /**
@@ -71,6 +71,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
       theme,
       disabled,
       keytipProps,
+      id,
       label,
       ariaLabel,
       /* eslint-disable deprecation/deprecation */
@@ -95,8 +96,9 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
       onOffMissing: !onText && !offText,
     });
 
-    const labelId = `${this._id}-label`;
-    const stateTextId = `${this._id}-stateText`;
+    const toggleId = id || this._id;
+    const labelId = `${toggleId}-label`;
+    const stateTextId = `${toggleId}-stateText`;
 
     // The following properties take priority for what Narrator should read:
     // 1. ariaLabel
@@ -121,7 +123,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
         {...keytipAttributes}
         className={classNames.pill}
         disabled={disabled}
-        id={this._id}
+        id={toggleId}
         type="button"
         role={ariaRole}
         ref={this._toggleButton}
@@ -152,7 +154,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
     return (
       <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
         {label && (
-          <Label htmlFor={this._id} className={classNames.label} id={labelId}>
+          <Label htmlFor={toggleId} className={classNames.label} id={labelId}>
             {label}
           </Label>
         )}
@@ -162,7 +164,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
           {stateText && (
             // This second "htmlFor" property is needed to allow the
             // toggle's stateText to also trigger a state change when clicked.
-            <Label htmlFor={this._id} className={classNames.text} id={stateTextId}>
+            <Label htmlFor={toggleId} className={classNames.text} id={stateTextId}>
               {stateText}
             </Label>
           )}
