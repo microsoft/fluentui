@@ -13,7 +13,7 @@ const DefaultRenderTypes = ['mount'];
 
 const scenarioRenderTypes = {
   ThemeProvider: AllRenderTypes,
-  FluentProviderWithTheme: ['mount', 'virtual-rerender-with-unmount'],
+  FluentProviderWithTheme: AllRenderTypes,
 };
 
 module.exports = {
