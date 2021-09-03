@@ -144,6 +144,29 @@ describe('Toggle', () => {
     expect(onSubmit.called).toEqual(false);
   });
 
+  it('correctly changes id if a different one is passed after first render', () => {
+    const testId1 = 'testId1';
+    const testId2 = 'testId2';
+    const component = mount(<Toggle id={testId1} />);
+
+    const toggleButton = component.find('button');
+    expect(toggleButton.length).toEqual(1);
+    expect(
+      toggleButton
+        .first()
+        .getDOMNode()
+        .getAttribute('id'),
+    ).toEqual(testId1);
+
+    component.setProps({ id: testId2 });
+    expect(
+      toggleButton
+        .first()
+        .getDOMNode()
+        .getAttribute('id'),
+    ).toEqual(testId2);
+  });
+
   describe('aria-labelledby', () => {
     it('has no aria-labelledby attribute if ariaLabel is provided', () => {
       const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
