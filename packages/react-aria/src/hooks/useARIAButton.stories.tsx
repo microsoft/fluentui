@@ -1,11 +1,11 @@
 import { getSlots } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useARIAButton } from './useARIAButton';
-import type { ComponentState, ObjectShorthandPropsAs } from '@fluentui/react-utilities';
+import type { ComponentState, ElementShorthandProps } from '@fluentui/react-utilities';
 import type { ARIAButtonShorthandProps } from './useARIAButton';
 
 type Slots = {
-  root: ObjectShorthandPropsAs<'div'>;
+  root: ElementShorthandProps<'div'>;
   button: ARIAButtonShorthandProps;
 };
 

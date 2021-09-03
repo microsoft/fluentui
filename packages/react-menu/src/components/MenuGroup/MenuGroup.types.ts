@@ -1,8 +1,8 @@
-import { ComponentProps, ComponentState, ObjectShorthandPropsAs } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ElementShorthandProps } from '@fluentui/react-utilities';
 import { MenuGroupContextValue } from '../../contexts/menuGroupContext';
 
 export type MenuGroupSlots = {
-  root: ObjectShorthandPropsAs<'div'>;
+  root: ElementShorthandProps<'div'>;
 };
 
 /**

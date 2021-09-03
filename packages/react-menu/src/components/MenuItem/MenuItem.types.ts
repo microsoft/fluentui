@@ -1,34 +1,34 @@
-import { ComponentProps, ComponentState, ObjectShorthandPropsAs } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ElementShorthandProps } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: ObjectShorthandPropsAs<'div'>;
+  root: ElementShorthandProps<'div'>;
 
   /**
    * Icon slot rendered before children content
    */
-  icon?: ObjectShorthandPropsAs<'span'>;
+  icon?: ElementShorthandProps<'span'>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark?: ObjectShorthandPropsAs<'span'>;
+  checkmark?: ElementShorthandProps<'span'>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: ObjectShorthandPropsAs<'span'>;
+  submenuIndicator?: ElementShorthandProps<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content: ObjectShorthandPropsAs<'span'>;
+  content: ElementShorthandProps<'span'>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent?: ObjectShorthandPropsAs<'span'>;
+  secondaryContent?: ElementShorthandProps<'span'>;
 };
 
 interface MenuItemCommons {
