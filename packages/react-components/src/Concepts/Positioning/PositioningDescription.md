@@ -1,4 +1,4 @@
-Fluent components that make use of positioning can all be configured in the same. Some components who make use of
+Fluent components that make use of positioning can all be configured in the same way. Some components who make use of
 positioned DOM elements are:
 
 - Tooltip
