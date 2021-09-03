@@ -2,6 +2,8 @@
 import { createElement } from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
+import { addDecorator } from '@storybook/client-api';
+import { FluentProviderDecoratorRTL } from '../src/utilities/index';
 
 const defaultConfig = {
   rtl: false,
@@ -29,14 +31,21 @@ setAddon({
   addStory(storyName, storyFn, config = defaultConfig) {
     this.add(storyName, context => {
       setRTL(false);
+      storyFn.addDecorator(FluentProviderDecoratorRTL);
       return storyFn(context);
     });
 
     if (config.rtl) {
-      this.add(storyName + ' - RTL', context => {
-        setRTL(true);
-        return storyFn(context);
-      });
+      if (this.kind.includes('Next')) {
+        this.add(storyName + ' - RTL', context => {
+          return storyFn(context);
+        });
+      } else {
+        this.add(storyName + ' - RTL', context => {
+          setRTL(true);
+          return storyFn(context);
+        });
+      }
     }
 
     return this;
