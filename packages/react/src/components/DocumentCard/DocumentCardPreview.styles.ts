@@ -49,6 +49,8 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
       margin: 0,
       selectors: {
         li: {
+          height: '16px',
+          lineHeight: '16px',
           display: 'flex',
           flexWrap: 'nowrap',
           alignItems: 'center',

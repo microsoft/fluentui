@@ -34,6 +34,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           background-color: #ffffff;
           border: 1px solid #edebe9;
           display: flex;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -79,6 +80,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
           border-right: 1px solid #edebe9;
+          max-height: 106px;
           max-width: 144px;
         }
         & .ms-DocumentCardPreview-icon {
@@ -391,6 +393,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           background-color: #ffffff;
           border: 1px solid #edebe9;
           display: flex;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -436,6 +439,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
           border-right: 1px solid #edebe9;
+          max-height: 106px;
           max-width: 144px;
         }
         & .ms-DocumentCardPreview-icon {
@@ -490,6 +494,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 align-items: center;
                 display: flex;
                 flex-wrap: nowrap;
+                height: 16px;
+                line-height: 16px;
                 margin-bottom: 8px;
                 overflow: hidden;
               }
@@ -1099,6 +1105,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           background-color: #ffffff;
           border: 1px solid #edebe9;
           display: flex;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -1144,6 +1151,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
           border-right: 1px solid #edebe9;
+          max-height: 106px;
           max-width: 144px;
         }
         & .ms-DocumentCardPreview-icon {
@@ -1434,6 +1442,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           background-color: #ffffff;
           border: 1px solid #edebe9;
           display: flex;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -1479,6 +1488,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
           border-right: 1px solid #edebe9;
+          max-height: 106px;
           max-width: 144px;
         }
         & .ms-DocumentCardPreview-icon {
