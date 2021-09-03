@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor(Menu): use `event.key` for keyboard events",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
