@@ -70,8 +70,8 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
             [`.${previewClassNames.root}`]: {
               borderRight: `1px solid ${palette.neutralLight}`,
               borderBottom: 0, // Remove the usual border from the preview
-              maxWidth: '144px',
               maxHeight: '106px',
+              maxWidth: '144px',
             },
             [`.${previewClassNames.icon}`]: {
               maxHeight: '32px',
