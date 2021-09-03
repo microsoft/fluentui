@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 03 Sep 2021 00:13:07 GMT",
+      "tag": "@fluentui/web-components_v1.4.1",
+      "version": "1.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "patch: apply fast version updates",
+            "author": "jes@microsoft.com",
+            "commit": "65fc391022bb3ed9143ce5b3c52491ab0fff08dc",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/web-components_v1.4.0",
       "version": "1.4.0",
