@@ -1,47 +1,32 @@
 import * as React from 'react';
 
 import { MenuList, MenuItem, Menu, MenuPopover, MenuTrigger } from './index';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { useMenuListContainerStyles } from './utils.stories';
 
-const useStyles = makeStyles({
-  container: theme => ({
-    backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    minWidth: '128px',
-    minHeight: '48px',
-    maxWidth: '300px',
-    width: 'max-content',
-    boxShadow: `${theme.alias.shadow.shadow16}`,
-    paddingTop: '4px',
-    paddingBottom: '4px',
-  }),
-});
-
-const Container: React.FC = props => {
-  const styles = useStyles();
-  return <div className={styles.container}>{props.children}</div>;
+export const MenuListWithNestedSubmenus = () => {
+  const styles = useMenuListContainerStyles();
+  return (
+    <div className={styles.container}>
+      <MenuList>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Paste</MenuItem>
+        <MenuItem>Edit</MenuItem>
+        <Menu>
+          <MenuTrigger>
+            <MenuItem>Preferences</MenuItem>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Cut</MenuItem>
+              <MenuItem>Paste</MenuItem>
+              <MenuItem>Edit</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </MenuList>
+    </div>
+  );
 };
-
-export const MenuListWithNestedSubmenus = () => (
-  <Container>
-    <MenuList>
-      <MenuItem>Cut</MenuItem>
-      <MenuItem>Paste</MenuItem>
-      <MenuItem>Edit</MenuItem>
-      <Menu>
-        <MenuTrigger>
-          <MenuItem>Preferences</MenuItem>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Cut</MenuItem>
-            <MenuItem>Paste</MenuItem>
-            <MenuItem>Edit</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </MenuList>
-  </Container>
-);
 
 MenuListWithNestedSubmenus.parameters = {
   docs: {
