@@ -35,13 +35,7 @@ const useStyles = makeStyles({
  */
 export const useCardHeaderStyles = (state: CardHeaderState): CardHeaderState => {
   const styles = useStyles();
-  state.className = mergeClasses(
-    styles.root,
-    // state.image && state.header && state.description && styles.all,
-    // !state.image && styles.noImage,
-    // state.image && (!state.header || !state.description) && styles.noText,
-    state.className,
-  );
+  state.className = mergeClasses(styles.root, state.className);
 
   if (state.image) {
     state.image.className = mergeClasses(styles.image, state.image.className);
