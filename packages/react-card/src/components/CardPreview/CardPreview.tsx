@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useCardPreview } from './useCardPreview';
-import { CardPreviewProps } from './CardPreview.types';
 import { renderCardPreview } from './renderCardPreview';
 import { useCardPreviewStyles } from './useCardPreviewStyles';
+import type { CardPreviewProps } from './CardPreview.types';
 
 /**
  * Component to render image previews of documents or articles in a Card component.

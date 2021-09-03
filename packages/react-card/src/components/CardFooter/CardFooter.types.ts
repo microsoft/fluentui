@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * CardFooter Props

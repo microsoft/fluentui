@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CardHeaderState } from './CardHeader.types';
-import { cardHeaderShorthandPropsCompat } from './useCardHeader';
 import { makeStyles } from '@fluentui/react-make-styles';
+import { cardHeaderShorthandPropsCompat } from './useCardHeader';
+import type { CardHeaderState } from './CardHeader.types';
 
 const useStyles = makeStyles({
   textContainer: {

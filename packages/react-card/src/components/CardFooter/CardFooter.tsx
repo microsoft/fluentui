@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useCardFooter } from './useCardFooter';
-import { CardFooterProps } from './CardFooter.types';
 import { renderCardFooter } from './renderCardFooter';
 import { useCardFooterStyles } from './useCardFooterStyles';
+import type { CardFooterProps } from './CardFooter.types';
 
 /**
  * Component to render Button actions in a Card component.

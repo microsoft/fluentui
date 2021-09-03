@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useCardHeader } from './useCardHeader';
-import { CardHeaderProps } from './CardHeader.types';
 import { renderCardHeader } from './renderCardHeader';
 import { useCardHeaderStyles } from './useCardHeaderStyles';
+import type { CardHeaderProps } from './CardHeader.types';
 
 /**
  * Component to render an image, text and an action in a Card component.

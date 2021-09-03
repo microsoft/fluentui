@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { CardHeaderState } from './CardHeader.types';
+import type { CardHeaderState } from './CardHeader.types';
 
 /**
  * Styles for the root slot

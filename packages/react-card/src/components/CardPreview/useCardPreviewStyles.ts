@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { CardPreviewState } from './CardPreview.types';
+import type { CardPreviewState } from './CardPreview.types';
 
 /**
  * Styles for the root slot

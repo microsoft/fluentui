@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { CardFooterState } from './CardFooter.types';
 import { cardFooterShorthandProps } from './useCardFooter';
+import type { CardFooterState } from './CardFooter.types';
 
 /**
  * Render the final JSX of CardFooter
