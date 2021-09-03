@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor(Link): use `event.key` for keyboard event",
+  "packageName": "@fluentui/react-link",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
