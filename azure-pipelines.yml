@@ -14,7 +14,7 @@ variables:
 
   - template: .devops/templates/variables.yml
 
-pool: '1ES-Host-Ubuntu-2'
+pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: BuildTestLint
