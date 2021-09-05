@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "enable makeStyles conformance tests",
-  "packageName": "@fluentui/react-label",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
