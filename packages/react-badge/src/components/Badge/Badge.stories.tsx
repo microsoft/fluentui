@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Badge } from '@fluentui/react-badge';
+import { Badge } from '../../Badge';
 import { AcceptIcon } from '../../tmp-icons.stories';
 import descriptionMd from '../../BadgeDescription.md';
 import bestPracticesMd from '../../BadgeBestPractices.md';

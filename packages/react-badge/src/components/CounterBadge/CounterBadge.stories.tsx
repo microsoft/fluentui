@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { CounterBadge, CounterBadgeProps } from '@fluentui/react-badge';
+import { CounterBadge, CounterBadgeProps } from '../../CounterBadge';
 import descriptionMd from '../../BadgeDescription.md';
 import bestPracticesMd from '../../BadgeBestPractices.md';
 
