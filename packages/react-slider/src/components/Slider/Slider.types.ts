@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ComponentState, ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
+  /**
+   * The root of the Slider.
+   */
   root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
   /**
@@ -48,10 +51,10 @@ export type SliderSlots = {
   /**
    * The hidden input for the Slider.
    */
-  input?: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>;
+  input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLElement>;
 };
 
-export interface SliderCommons {
+export type SliderCommons = {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -137,16 +140,8 @@ export interface SliderCommons {
    * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
-}
+};
 
-/**
- * Slider Props
- */
-export interface SliderProps
-  extends SliderCommons,
-    Omit<ComponentProps<Partial<SliderSlots>>, 'onChange' | 'defaultValue'> {}
+export interface SliderProps extends Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'>, SliderCommons {}
 
-/**
- * State used in rendering Slider
- */
-export interface SliderState extends SliderCommons, ComponentState<SliderSlots> {}
+export interface SliderState extends ComponentState<SliderSlots>, SliderCommons {}

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
 import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 
 /**
- * Array of all shorthand properties listed in SliderShorthandProps
+ * Array of all shorthand properties listed in sliderShorthandProps
  */
 export const sliderShorthandProps: (keyof SliderSlots)[] = [
+  'root',
   'activeRail',
   'input',
   'rail',
@@ -21,10 +22,51 @@ export const sliderShorthandProps: (keyof SliderSlots)[] = [
 /**
  * Given user props, returns state and render function for a Slider.
  */
-export const useInput = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
-  const { input, activeRail, thumb, marksWrapper, thumbWrapper, track, trackWrapper, rail, sliderWrapper } = props;
+export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
+  const {
+    value,
+    defaultValue,
+    min,
+    max,
+    step = 1,
+    keyboardStep,
+    disabled,
+    ariaValueText,
+    onChange,
+    marks,
+    vertical,
+    size = 'medium',
+    origin,
+    input,
+    activeRail,
+    thumb,
+    marksWrapper,
+    thumbWrapper,
+    track,
+    trackWrapper,
+    rail,
+    sliderWrapper,
+  } = props;
 
-  const state = {
+  const state: SliderState = {
+    value,
+    defaultValue,
+    min,
+    max,
+    step,
+    keyboardStep,
+    disabled,
+    ariaValueText,
+    onChange,
+    marks,
+    vertical,
+    origin,
+    size,
+    root: getNativeElementProps('span', {
+      ref,
+      id: useId('slider-'),
+      ...props,
+    }),
     components: {
       input: 'input',
     },
@@ -42,11 +84,6 @@ export const useInput = (props: SliderProps, ref: React.Ref<HTMLElement>): Slide
         type: 'range',
       },
     }),
-    root: getNativeElementProps('span', {
-      ref,
-      ...props,
-    }),
-    ...props,
   };
 
   useSliderState(state);
