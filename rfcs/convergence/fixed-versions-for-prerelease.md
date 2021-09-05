@@ -36,6 +36,8 @@ Unfortunately there is no 'correct' way to handle this problem. [According to th
 
 > a user who has opted into using a prerelease version has clearly indicated the intent to use that specific set of alpha/beta/rc versions. By including a prerelease tag in the range, the user is indicating that they are aware of the risk.
 
+**We have to work around the problem in a non-standard way because we have a hard requirement to not utilize semver fully while introducing new components for partners to use in production**
+
 ## Detailed Design or Proposal
 
 While Fluent v9 is in a prerelease stage and the core of packages for v9 use a prerelease tag (alpha, beta...), use
