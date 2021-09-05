@@ -91,14 +91,14 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
-      // TODO: Find a way to get thumbWrapper styles to update
+      // TODO: Find a way to get thumbWrapper styles to update with simplified prop merging change.
       // expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
       expect(inputRef.current?.value).toEqual('20');
-      // TODO: Find a way to get thumbWrapper styles to update
+      // TODO: Find a way to get thumbWrapper styles to update with simplified prop merging change.
       // expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
     });
 
@@ -174,14 +174,14 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
       expect(inputRef.current?.value).toEqual('100');
-      // TODO: Find a way to get thumbWrapper styles to update
+      // TODO: Find a way to get thumbWrapper styles to update with simplified prop merging change.
       // expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(100%)');
 
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
       expect(inputRef.current?.value).toEqual('0');
-      // TODO: Find a way to get thumbWrapper styles to update
+      // TODO: Find a way to get thumbWrapper styles to update with simplified prop merging change.
       // expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(0%)');
 
       wrapper.unmount();
@@ -209,14 +209,14 @@ describe('Slider', () => {
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
       expect(inputRef.current?.value).toEqual('50');
-      // TODO: Find a way to get thumbWrapper styles to update
+      // TODO: Find a way to get thumbWrapper styles to update with simplified prop merging change.
       // expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 }, { type: 'pointerup' });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
       expect(inputRef.current?.value).toEqual('20');
-      // TODO: Find a way to get thumbWrapper styles to update
+      // TODO: Find a way to get thumbWrapper styles to update  with simplified prop merging change.
       // expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
     });
 
