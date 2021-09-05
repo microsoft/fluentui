@@ -12,8 +12,12 @@ export const switchShorthandProps: (keyof SwitchSlots)[] = ['root', 'track', 'th
  * Given user props, returns state and render function for a Switch.
  */
 export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): SwitchState => {
-  const { track, thumbWrapper, thumb, input } = props;
+  const { track, thumbWrapper, thumb, input, defaultChecked, checked, disabled, onChange } = props;
   const state: SwitchState = {
+    defaultChecked,
+    checked,
+    disabled,
+    onChange,
     root: getNativeElementProps('span', {
       ref,
       id: useId('switch-'),
@@ -22,7 +26,6 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): Swit
     components: {
       input: 'input',
     },
-    ...props,
     track: resolveShorthand(track, { required: true }),
     thumbWrapper: resolveShorthand(thumbWrapper, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
