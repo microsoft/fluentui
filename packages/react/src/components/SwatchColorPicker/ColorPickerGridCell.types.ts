@@ -80,7 +80,7 @@ export interface IColorPickerGridCellProps {
   /**
    * Handler for when a color cell is clicked.
    */
-  onClick?: (item: IColorCellProps) => void;
+  onClick?: (event: React.FormEvent<HTMLElement>, item: IColorCellProps) => void;
 
   onHover?: (item?: IColorCellProps) => void;
 

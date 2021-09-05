@@ -26,7 +26,7 @@ export interface IButtonGridCellProps<T> {
   /**
    * The on click handler
    */
-  onClick?: (item: T) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>, item: T) => void;
 
   /**
    * The render callback to handle rendering the item

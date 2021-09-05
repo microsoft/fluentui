@@ -231,7 +231,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * Handle the click on a cell
    */
   const onCellClick = React.useCallback(
-    (item: IColorCellProps): void => {
+    (event: React.FormEvent<HTMLElement>, item: IColorCellProps): void => {
       if (disabled) {
         return;
       }
@@ -241,7 +241,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
           internalState.cellFocused = false;
           onCellFocused();
         }
-        setSelectedId(item.id);
+        setSelectedId(item.id, event);
       }
     },
     [disabled, internalState, onCellFocused, selectedId, setSelectedId],

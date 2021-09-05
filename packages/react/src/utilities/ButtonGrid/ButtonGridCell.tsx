@@ -27,11 +27,14 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
     onFocus,
   } = props;
 
-  const handleClick = React.useCallback((): void => {
-    if (onClick && !disabled) {
-      onClick(item);
-    }
-  }, [disabled, item, onClick]);
+  const handleClick = React.useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>): void => {
+      if (onClick && !disabled) {
+        onClick(event, item);
+      }
+    },
+    [disabled, item, onClick],
+  );
 
   const handleMouseEnter = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): void => {
