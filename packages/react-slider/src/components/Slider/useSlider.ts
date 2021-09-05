@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useSliderState } from './useSliderState';
-import { SliderProps, SliderShorthandProps, SliderState } from './Slider.types';
+import { SliderProps, SliderSlots, SliderState } from './Slider.types';
 
 /**
  * Array of all shorthand properties listed in SliderShorthandProps
  */
-export const sliderShorthandProps: SliderShorthandProps[] = [
+export const sliderShorthandProps: (keyof SliderSlots)[] = [
   'activeRail',
   'input',
   'rail',
@@ -21,28 +21,33 @@ export const sliderShorthandProps: SliderShorthandProps[] = [
 /**
  * Given user props, returns state and render function for a Slider.
  */
-export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>, defaultProps?: SliderProps): SliderState => {
-  const mergeProps = makeMergeProps<SliderState>({
-    deepMerge: sliderShorthandProps,
-  });
+export const useInput = (props: SliderProps, ref: React.Ref<HTMLElement>): SliderState => {
+  const { input, activeRail, thumb, marksWrapper, thumbWrapper, track, trackWrapper, rail, sliderWrapper } = props;
 
-  const state = mergeProps(
-    {
-      ref,
-      as: 'div',
-      sliderWrapper: { as: 'div', children: null },
-      rail: { as: 'div', children: null },
-      trackWrapper: { as: 'div', children: null },
-      track: { as: 'div', children: null },
-      thumbWrapper: { as: 'div', children: null },
-      marksWrapper: { as: 'div', children: null },
-      thumb: { as: 'div', children: null },
-      activeRail: { as: 'div', children: null },
-      input: { as: 'input', type: 'range', children: null },
+  const state = {
+    components: {
+      input: 'input',
     },
-    defaultProps && resolveShorthandProps(defaultProps, sliderShorthandProps),
-    resolveShorthandProps(props, sliderShorthandProps),
-  );
+    sliderWrapper: resolveShorthand(sliderWrapper, { required: true }),
+    rail: resolveShorthand(rail, { required: true }),
+    trackWrapper: resolveShorthand(trackWrapper, { required: true }),
+    track: resolveShorthand(track, { required: true }),
+    thumbWrapper: resolveShorthand(thumbWrapper, { required: true }),
+    marksWrapper: resolveShorthand(marksWrapper, { required: true }),
+    thumb: resolveShorthand(thumb, { required: true }),
+    activeRail: resolveShorthand(activeRail, { required: true }),
+    input: resolveShorthand(input, {
+      required: true,
+      defaultProps: {
+        type: 'range',
+      },
+    }),
+    root: getNativeElementProps('span', {
+      ref,
+      ...props,
+    }),
+    ...props,
+  };
 
   useSliderState(state);
 
