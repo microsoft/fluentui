@@ -336,5 +336,3 @@ export const ContextualHelpDialog2: React.FunctionComponent<ContextualHelpDialog
     />
   );
 }; // End ContextualHelpDialog2
-
-// export default ContextualHelpDialog;
