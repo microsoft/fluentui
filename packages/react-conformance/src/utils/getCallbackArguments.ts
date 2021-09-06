@@ -11,7 +11,7 @@ type ArgumentValue = ArgumentPrimitiveValue | Record<string, ArgumentPrimitiveVa
 /**
  * Returns an identifier as a string.
  */
-function escapeIdentifier(node: ts.Identifier): string {
+function identifierToString(node: ts.Identifier): string {
   if (typeof node.escapedText !== 'string') {
     throw new Error(
       'An identifier is not a string, this could be a bug or an unhandled scenario. Please report it if it happens',
@@ -24,17 +24,17 @@ function escapeIdentifier(node: ts.Identifier): string {
 /**
  * Converts AST node that has "*Keyword" kind to a primitive value.
  */
-function fromKeywordNodeToValue(node: ts.Node): null | string | undefined {
+function keywordNodeToPrimitive(node: ts.Node): null | string | undefined {
   if (node.kind === ts.SyntaxKind.BooleanKeyword) {
-    return 'Boolean';
+    return 'boolean';
   }
 
   if (node.kind === ts.SyntaxKind.NumberKeyword) {
-    return 'Number';
+    return 'number';
   }
 
   if (node.kind === ts.SyntaxKind.StringKeyword) {
-    return 'String';
+    return 'string';
   }
 
   if (node.kind === ts.SyntaxKind.UndefinedKeyword) {
@@ -49,7 +49,7 @@ function fromKeywordNodeToValue(node: ts.Node): null | string | undefined {
 /**
  * Converts AST node with "LiteralType" that has "*Keyword" kind to a primitive value.
  */
-function fromLiteralNodeToValue(node: ts.LiteralTypeNode['literal']): null | boolean {
+function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean {
   if (node.kind === ts.SyntaxKind.NullKeyword) {
     return null;
   }
@@ -93,7 +93,7 @@ function parseArgumentName(name: ts.PropertyName | ts.ParameterDeclaration['name
     );
   }
 
-  return escapeIdentifier(name);
+  return identifierToString(name);
 }
 
 /**
@@ -134,7 +134,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   //                    ^
   if (ts.isTypeReferenceNode(type)) {
     if (ts.isIdentifier(type.typeName)) {
-      return escapeIdentifier(type.typeName);
+      return identifierToString(type.typeName);
     }
 
     if (ts.isQualifiedName(type.typeName)) {
@@ -142,7 +142,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
         throw new Error('We met an unhandled case, please report it');
       }
 
-      return `${escapeIdentifier(type.typeName.left)}.${escapeIdentifier(type.typeName.right)}`;
+      return `${identifierToString(type.typeName.left)}.${identifierToString(type.typeName.right)}`;
     }
   }
 
@@ -164,7 +164,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   // { onChange: (data: false) => void }
   //                    ^
   if (ts.isLiteralTypeNode(type)) {
-    return fromLiteralNodeToValue(type.literal);
+    return literalNodeToPrimitive(type.literal);
   }
 
   // Handles a case when a node is a keyword
@@ -174,10 +174,10 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   //                    ^
   // eslint-disable-next-line no-bitwise
   if (type.kind & ts.SyntaxKind.IsKeyword) {
-    return fromKeywordNodeToValue(type);
+    return keywordNodeToPrimitive(type);
   }
 
-  throw new Error('We met an unhandled case, please report if it happens');
+  throw new Error('Failed to parse an unknown argument type, please report if it happens');
 }
 
 /**

@@ -497,8 +497,8 @@ export const defaultErrorMessages = {
       overview: 'uses non-standard callback arguments.',
       details: ['These callback(s) need have two params:', testErrorInfo(formatArray(invalidProps))],
       suggestions: [
-        `Ensure that callbacks ${resolveInfo(displayName + `'s`)} have two params (an event and data object)`,
-        `If the name is correct, add the prop to isConformant ${resolveInfo(
+        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks have two params (an event and data object).`,
+        `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
           "testOptions['consistent-callback-args'].ignoreProps",
         )}.`,
       ],

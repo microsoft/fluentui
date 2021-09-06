@@ -60,6 +60,15 @@ async function setupProgram(
 
 describe('getCallbackArguments', () => {
   describe('params', () => {
+    it('handles empty params', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './Accordion.types.ts': 'export interface AccordionProps { onToggle: () => void; }',
+      });
+      const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
+
+      expect(type).toMatchObject({});
+    });
+
     it('handles "null" as a param', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': 'export interface AccordionProps { onToggle: (e: null) => void; }',
@@ -77,7 +86,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ a: 'String', b: 'Number', c: 'Boolean', d: undefined });
+      expect(type).toMatchObject({ a: 'string', b: 'number', c: 'boolean', d: undefined });
     });
 
     it('handles arrays', async () => {
@@ -114,6 +123,19 @@ describe('getCallbackArguments', () => {
         './Accordion.types.ts': `import * as React from 'react';
       
        type AccordionOnToggle = (e: React.MouseEvent) => void;
+       export interface AccordionProps { onToggle: AccordionOnToggle; }`,
+      });
+      const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
+
+      expect(type).toMatchObject({ e: 'React.MouseEvent' });
+    });
+
+    it('handles imported alias type as a param', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './AccordionToggle.types.ts': `export type AccordionOnToggle = (e: React.MouseEvent) => void;`,
+        './Accordion.types.ts': `import * as React from 'react';
+        import { AccordionOnToggle } from './AccordionToggle.types';
+      
        export interface AccordionProps { onToggle: AccordionOnToggle; }`,
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
@@ -202,7 +224,7 @@ describe('getCallbackArguments', () => {
       );
     });
 
-    it('throws when an interface is not found', async () => {
+    it('throws when a property is not found', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
         './Accordion.types.ts': 'export interface AccordionProps { onToggle: (e: null) => void; }',
       });

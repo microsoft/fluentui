@@ -336,7 +336,7 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
+  /** Ensures that components have consistent callback arguments (ev, data) */
   'consistent-callback-args': (componentInfo, testInfo, tsProgram) => {
     it('has consistent custom callback arguments (consistent-callback-args)', () => {
       const { testOptions = {} } = testInfo;
@@ -351,8 +351,9 @@ export const defaultTests: TestObject = {
           if (!propInfo.declarations) {
             throw new Error(
               [
-                `Definition for "${propName}" does not have ".declarations".`,
-                'Please report a bug if this happens',
+                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
               ].join(' '),
             );
           }
@@ -360,8 +361,10 @@ export const defaultTests: TestObject = {
           if (propInfo.declarations.length !== 1) {
             throw new Error(
               [
-                `Definition for "${propName}" has multiple elements in ".declarations".`,
-                'Please report a bug if this happens',
+                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+                `"react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
               ].join(' '),
             );
           }
