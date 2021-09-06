@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import type { PopoverProps } from '@fluentui/react-popover';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { Button } from '@fluentui/react-button';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
