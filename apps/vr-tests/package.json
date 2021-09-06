@@ -29,6 +29,7 @@
     "@fluentui/react-hooks": "^8.3.2",
     "@fluentui/react-icons": "^1.1.136",
     "@fluentui/react-icons-mdl2": "^1.2.2",
+    "@fluentui/react-image": "^9.0.0-alpha.74",
     "@fluentui/react-label": "^9.0.0-alpha.35",
     "@fluentui/react-link": "^9.0.0-alpha.77",
     "@fluentui/react-make-styles": "^9.0.0-alpha.62",
