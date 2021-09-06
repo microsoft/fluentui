@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor(Button): use `event.key` for keyboard event",
-  "packageName": "@fluentui/react-button",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
