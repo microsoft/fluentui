@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add useAutoTheme() hook",
+  "packageName": "@fluentui/react-theme",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
