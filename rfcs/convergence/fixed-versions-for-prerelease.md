@@ -253,6 +253,8 @@ working demo repo in the link under the heading.
 - Still a temporary solution, we should get rid of it after major release
 - Extra scripts/infra needed to manage an interim solution
 - We now ship alpha with beta in the same package
+- No clear difference compared to releasing new components straight into beta -> if API breaks, customers will still
+  have to deal with it
 
 ### Conclusion -> consuming individual packages
 
