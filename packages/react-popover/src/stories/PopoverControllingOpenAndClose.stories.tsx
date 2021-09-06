@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from './index';
-import type { PopoverProps } from './index';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
 
-import { Button } from './utils.stories';
+import { Button } from '@fluentui/react-button';
 import { ExampleContent } from './utils.stories';
 
 export const ControllingOpenAndClose = () => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Popover, PopoverSurface } from './index';
-import type { PopoverProps } from './index';
-import { Button } from './utils.stories';
+import { Popover, PopoverSurface } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
+import { Button } from '@fluentui/react-button';
 import { ExampleContent } from './utils.stories';
 
 export const CustomTrigger = () => {
@@ -9,7 +9,12 @@ export const CustomTrigger = () => {
   const [target, setTarget] = React.useState<HTMLElement | null>(null);
 
   const onClick = () => setOpen(s => !s);
-  const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
+  const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
+    // handle custom trigger interactions separately
+    if (e.target !== target) {
+      setOpen(data.open);
+    }
+  };
 
   return (
     <>

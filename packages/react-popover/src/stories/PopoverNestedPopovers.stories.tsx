@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from './index';
-import { Button } from './utils.stories';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { Button } from '@fluentui/react-button';
 import { ExampleContent } from './utils.stories';
 
 const FirstNestedPopover = () => (

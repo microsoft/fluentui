@@ -1,4 +1,4 @@
-import { Popover } from './index';
+import { Popover } from '../index';
 import { Meta } from '@storybook/react';
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
