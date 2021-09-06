@@ -162,6 +162,17 @@ Realistically for the Fluent team, bugs found during either `alpha` or `beta` ph
 upon release. If a bug or an API design does not match customer requirements in either phases, we **are entitled** break the
 API in a further iteration to improve.
 
+#### Pros
+
+- No extra work required, just a convention to release all new components straight to beta
+- Avoid dependency hell by recommending customers to only use the suite package
+- No extra effort for customers other than install the correct suite package version
+
+#### Cons
+
+- Not sure what customer expectations are for new components in beta
+- Need to properly define alpha vs beta -> what are our requirements ?
+
 ### Provide resolutions to customers
 
 If we must release a component into the `alpha`, consumers can still apply manual resolutions.
@@ -171,6 +182,15 @@ work together from the a consuming app.
 The generated resolutions must be for a specific version of the `react-components` package.
 
 We can provide this functionality either on our docsite or as a published CLI package.
+
+#### Pros
+
+- Easier debugging for partners, there should only be one Fluent UI version in node_modules
+
+#### Cons
+
+- Need to work on a project to generate resolutions
+- Temporary, no need for this after major release
 
 ### Lockstep versioning for `beta` components
 
@@ -190,7 +210,49 @@ It's clear that we only need to find any version of `react-dropdown` that uses `
 future version mismatch can be easily investigated and fixed.
 
 For the problem of fixed versions, lockstep only solves a temporary problem since
-on major release Fluent can use full semver features. A future RFC will deal with the long term benefits of lockstep.
+on major release Fluent can use full semver features.
+
+#### Pros
+
+- Easy to find compatible versions for alpha packages
+- Easier debugging for partners, there should only be one Fluent UI version in node_modules
+- Don't have to get rid of lockstep after major release
+
+#### Cons
+
+- Need infra to support lockstep versioning
+- Doesn't solve the dependency issue, just makes it easier to manage
+
+### Deep imports for `alpha` packages
+
+> Demo here: https://github.com/ling1726/multiple-entrypoints-test
+
+This solution reintroduces deep imports with the path `@fluentui/react-components/lib/alpha`. The only workaround that
+should be necessary is for jest, which uses `commonjs`.
+
+Since `lib` is used the `esm` imports only, it's possible to generate a new `package.json` file that points to the
+correct commonjs code so that tests still work in the same way for alpha components. This modification needs to happen
+for react-components only. Here is the sample snippet for `package.json`, you can find a fully
+working demo repo in the link under the heading.
+
+```json
+// react-components/lib/alpha/package.json
+{
+  "main": "../../lib-commonjs/alpha/index.js", // commonjs entrypoint for jest
+  "module": "index.js" // esm entrypoint for webpack
+}
+```
+
+#### Pros
+
+- Avoid dependency hell by recommending customers to only use the suite package
+- No extra effort for customers other than install the correct suite package version
+
+#### Cons
+
+- Still a temporary solution, we should get rid of it after major release
+- Extra scripts/infra needed to manage an interim solution
+- We now ship alpha with beta in the same package
 
 ### Conclusion -> consuming individual packages
 
