@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
+- Don't show `ChatMessage` timestamp if reactions are in the bottom @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 
 ### Fixes
 - Fix `Carousel` animation in controlled mode @assuncaocharles ([#18798](https://github.com/microsoft/fluentui/pull/18798))
@@ -45,12 +46,27 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tooltip` flickering in multi-window use case @yuanboxue-amber ([#19235](https://github.com/microsoft/fluentui/pull/19235))
 - Fix `Datepicker` input @yuanboxue-amber ([#19261](https://github.com/microsoft/fluentui/pull/19261))
 - Fix `Dialog` styles border radius changed @bcalvery ([#19328](https://github.com/microsoft/fluentui/pull/19328))
+- Fix `ChatMessage` header margin if there are reactions @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
+- Fix `Menu` high contrast focus for submenus @notandrew ([#19393](https://github.com/microsoft/fluentui/pull/19393))
 - Fix `Card` HC styles on hover @chassunc ([#19382](https://github.com/microsoft/fluentui/pull/19382))
+- Add `AppsIcon`, `AppFolderIcon`, `PageFitIcon`, `SubtractIcon` @notandrew ([#19424](https://github.com/microsoft/fluentui/pull/19424))
+- Fix `Dialog` background in teams dark v2  @chassunc ([#19434](https://github.com/microsoft/fluentui/pull/19434))
+- Fix to update Yellow's Background1 color to BackgroundTransparent @notandrew ([#19444](https://github.com/microsoft/fluentui/pull/19444))
+- Add missging pressed state styles for text `Button`  @chassunc ([#19480](https://github.com/microsoft/fluentui/pull/19480))
+- Fix `MenuItem` apply focus styles for vertical menu from `getBorderFocusStyles` @annabratseiko ([#19419](https://github.com/microsoft/fluentui/pull/19419))
+- Fix default `Tooltip` (`pointing: false`) to have 4px distance to trigger  @yuanboxue-amber ([#19478](https://github.com/microsoft/fluentui/pull/19478))
+- Replace `SplitButton` shadow-box by `Divider`  @chassunc ([#19477](https://github.com/microsoft/fluentui/pull/19477))
+- add `disabledFocusable` for toolbar items @adamsamec ([#18720](https://github.com/microsoft/fluentui/pull/18720))
+- Fix `Tooltip` appearance in high contrast theme @yuanboxue-amber ([#19559](https://github.com/microsoft/fluentui/pull/19559))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
+- Add 'flat' variation to Button and Splitbutton @codepretty ([#19130](https://github.com/microsoft/fluentui/pull/19130))
 - Add secondary styles for `Loader` @chassunc ([#19104](https://github.com/microsoft/fluentui/pull/19104))
 - Add additional properties(`focusInnerBorderWidth`, `focusOuterBorderWidth`, `focusBorderRadius`) to `getBorderFocusStyles` @annabratseiko ([#19319](https://github.com/microsoft/fluentui/pull/19319))
+- Add `dismissOnContentMouseEnter` in `Tooltip` @chassunc ([#19425](https://github.com/microsoft/fluentui/pull/19425))
+- Allow `Tooltip` to configure a delay to open on mouse enter trigger @chassunc ([#19405](https://github.com/microsoft/fluentui/pull/19405))
+- Add `EmojiAddIcon` and filled version of `ExclamationCircleIcon` to icon set @notandrew ([#19626](https://github.com/microsoft/fluentui/pull/19626))
 
 ### Documentation
 - Align author name in compact chat with design spec @Hirse ([#18988](https://github.com/microsoft/fluentui/pull/18988))

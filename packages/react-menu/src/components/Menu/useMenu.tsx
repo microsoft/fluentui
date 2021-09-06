@@ -4,11 +4,11 @@ import { useControllableState, useId, useOnClickOutside, useEventCallback } from
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 
 /**
  * Create the state required to render Menu.
@@ -83,7 +83,7 @@ export const useMenu = (props: MenuProps): MenuState => {
  * i.e checkboxes and radios
  */
 const useMenuSelectableState = (
-  state: Pick<MenuState, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+  state: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
   const [checkedValues, setCheckedValues] = useControllableState({
     state: state.checkedValues,
@@ -91,9 +91,9 @@ const useMenuSelectableState = (
     initialState: {},
   });
   const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
-  const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, name, checkedItems) => {
+  const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, { name, checkedItems }) => {
     if (onCheckedValueChangeOriginal) {
-      onCheckedValueChangeOriginal(e, name, checkedItems);
+      onCheckedValueChangeOriginal(e, { name, checkedItems });
     }
 
     setCheckedValues(s => {
@@ -112,7 +112,7 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleKeyboadRef = React.useRef(false);
+  const shouldHandleKeyboardRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
   const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
@@ -136,7 +136,7 @@ const useMenuOpenState = (
     }
 
     if (data.keyboard) {
-      shouldHandleKeyboadRef.current = true;
+      shouldHandleKeyboardRef.current = true;
       shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
       pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
     }
@@ -215,7 +215,7 @@ const useMenuOpenState = (
   }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
-    if (!shouldHandleKeyboadRef.current) {
+    if (!shouldHandleKeyboardRef.current) {
       return;
     }
 
@@ -229,7 +229,7 @@ const useMenuOpenState = (
       }
     }
 
-    shouldHandleKeyboadRef.current = false;
+    shouldHandleKeyboardRef.current = false;
     shouldHandleTabRef.current = false;
     pressedShiftRef.current = false;
   }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);

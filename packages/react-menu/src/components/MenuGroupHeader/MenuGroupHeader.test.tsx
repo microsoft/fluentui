@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { MenuGroupHeader } from './MenuGroupHeader';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
@@ -10,15 +9,6 @@ describe('MenuGroupHeader', () => {
   isConformant({
     Component: MenuGroupHeader,
     displayName: 'MenuGroupHeader',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useMenuList } from './useMenuList';
-import { MenuListProps } from './MenuList.types';
 import { renderMenuList } from './renderMenuList';
 import { useMenuListContextValues } from './useMenuListContextValues';
+import type { MenuListProps } from './MenuList.types';
 
 /**
  * Define a styled MenuList, using the `useMenuList` hook.

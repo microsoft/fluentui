@@ -1,4 +1,4 @@
-import { PopperVirtualElement } from './types';
+import type { PopperVirtualElement } from './types';
 
 /**
  * Creates a virtual element based on the position of a click event

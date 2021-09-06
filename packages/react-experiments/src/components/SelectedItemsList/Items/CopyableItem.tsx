@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISelectedItemProps } from '../SelectedItemsList.types';
+import type { ISelectedItemProps } from '../SelectedItemsList.types';
 
 type CopyableItemWrappedComponent<T> = React.ComponentType<ISelectedItemProps<T>>;
 

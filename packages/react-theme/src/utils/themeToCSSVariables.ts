@@ -1,4 +1,4 @@
-import { Theme } from '../types';
+import type { Theme } from '../types';
 
 function flattenThemeToCSSVariables(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,5 +1,5 @@
-import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useTriggerElement } from './useTriggerElement';
+import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 
 /**
  * Create the state required to render MenuTrigger.

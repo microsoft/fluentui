@@ -1,4 +1,4 @@
-import { FontFamilies, FontSizes, FontWeights, LineHeights, TextAlignments } from '../types';
+import type { FontFamilies, FontSizes, FontWeights, LineHeights, TextAlignments } from '../types';
 
 export const fontSizes: FontSizes = {
   base: {

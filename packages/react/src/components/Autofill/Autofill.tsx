@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
-import { IAutofill, IAutofillProps } from './Autofill.types';
+import type { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
   inputValue: string;

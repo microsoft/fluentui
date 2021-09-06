@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlotsCompat } from '@fluentui/react-utilities';
-import { ButtonState } from './Button.types';
 import { buttonShorthandPropsCompat } from './useButton';
+import type { ButtonState } from './Button.types';
 
 /**
  * Renders a Button component by passing the state defined props to the appropriate slots.

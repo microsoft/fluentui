@@ -6,8 +6,8 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import { Context } from '@fluentui/react-context-selector';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { Context } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -37,13 +37,16 @@ export interface MenuContextValues {
 export const MenuDivider: React_2.FunctionComponent<MenuDividerProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface MenuDividerProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface MenuDividerProps extends ComponentProps<MenuDividerSlots> {
 }
 
 // @public (undocumented)
-export interface MenuDividerState extends ComponentState, React_2.HTMLAttributes<HTMLElement> {
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
+export type MenuDividerSlots = {
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
+
+// @public (undocumented)
+export interface MenuDividerState extends ComponentState<MenuDividerSlots> {
 }
 
 // @public
@@ -67,31 +70,37 @@ export interface MenuGroupContextValues {
 export const MenuGroupHeader: React_2.FunctionComponent<MenuGroupHeaderProps>;
 
 // @public (undocumented)
-export interface MenuGroupHeaderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface MenuGroupHeaderProps extends ComponentProps<MenuGroupHeaderSlots> {
 }
 
 // @public (undocumented)
-export interface MenuGroupHeaderState extends ComponentState, React_2.HTMLAttributes<HTMLElement> {
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
+export type MenuGroupHeaderSlots = {
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
+
+// @public (undocumented)
+export interface MenuGroupHeaderState extends ComponentState<MenuGroupHeaderSlots> {
 }
 
 // @public (undocumented)
-export interface MenuGroupProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface MenuGroupProps extends ComponentProps<MenuGroupSlots> {
 }
 
 // @public (undocumented)
-export interface MenuGroupState extends ComponentState, React_2.HTMLAttributes<HTMLElement> {
+export type MenuGroupSlots = {
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
+
+// @public (undocumented)
+export interface MenuGroupState extends ComponentState<MenuGroupSlots> {
     headerId: string;
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public
-export const MenuItem: React_2.ForwardRefExoticComponent<MenuItemProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuItem: React_2.ForwardRefExoticComponent<Pick<MenuItemProps, "slot" | "style" | "title" | "icon" | "checkmark" | "submenuIndicator" | "content" | "secondaryContent" | "children" | "color" | "translate" | "hidden" | "onClick" | "onMouseEnter" | "onMouseLeave" | "onContextMenu" | "onKeyDown" | "aria-haspopup" | "aria-expanded" | "id" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-flowto" | "aria-grabbed" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClickCapture" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "disabled" | "as" | "key" | "hasSubmenu" | "persistOnClick"> & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export const MenuItemCheckbox: React_2.ForwardRefExoticComponent<MenuItemCheckboxProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuItemCheckbox: React_2.ForwardRefExoticComponent<Pick<MenuItemCheckboxProps, "slot" | "style" | "title" | "icon" | "checkmark" | "submenuIndicator" | "content" | "secondaryContent" | "children" | "color" | "translate" | "hidden" | "value" | "onClick" | "onMouseEnter" | "onMouseLeave" | "onContextMenu" | "onKeyDown" | "aria-haspopup" | "aria-expanded" | "id" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-flowto" | "aria-grabbed" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClickCapture" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "disabled" | "name" | "as" | "key" | "hasSubmenu" | "persistOnClick"> & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface MenuItemCheckboxProps extends MenuItemProps, MenuItemSelectableProps {
@@ -104,11 +113,11 @@ export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectable
 // Warning: (ae-forgotten-export) The symbol "MenuItemCommons" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, React_2.HTMLAttributes<HTMLElement>, MenuItemCommons {
+export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, MenuItemCommons {
 }
 
 // @public
-export const MenuItemRadio: React_2.ForwardRefExoticComponent<MenuItemRadioProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuItemRadio: React_2.ForwardRefExoticComponent<Pick<MenuItemRadioProps, "slot" | "style" | "title" | "icon" | "checkmark" | "submenuIndicator" | "content" | "secondaryContent" | "children" | "color" | "translate" | "hidden" | "value" | "onClick" | "onMouseEnter" | "onMouseLeave" | "onContextMenu" | "onKeyDown" | "aria-haspopup" | "aria-expanded" | "id" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-flowto" | "aria-grabbed" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClickCapture" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "disabled" | "name" | "as" | "key" | "hasSubmenu" | "persistOnClick"> & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface MenuItemRadioProps extends MenuItemProps, MenuItemSelectableProps {
@@ -119,7 +128,7 @@ export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableSta
 }
 
 // @public
-export interface MenuItemSelectableProps extends React_2.HTMLAttributes<HTMLElement> {
+export interface MenuItemSelectableProps {
     name: string;
     value: string;
 }
@@ -133,23 +142,35 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    icon: React_2.HTMLAttributes<HTMLElement>;
-    checkmark: React_2.HTMLAttributes<HTMLElement>;
-    submenuIndicator: React_2.HTMLAttributes<HTMLElement>;
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    icon?: React_2.HTMLAttributes<HTMLElement>;
+    checkmark?: React_2.HTMLAttributes<HTMLElement>;
+    submenuIndicator?: React_2.HTMLAttributes<HTMLElement>;
     content: React_2.HTMLAttributes<HTMLElement>;
-    secondaryContent: React_2.HTMLAttributes<HTMLElement>;
+    secondaryContent?: React_2.HTMLAttributes<HTMLElement>;
 };
 
 // @public
 export const menuItemSlots: Array<keyof MenuItemSlots>;
 
 // @public (undocumented)
-export interface MenuItemState extends ComponentState<MenuItemSlots>, React_2.HTMLAttributes<HTMLElement>, MenuItemCommons {
-    ref: React_2.Ref<HTMLElement>;
+export interface MenuItemState extends ComponentState<MenuItemSlots>, MenuItemCommons {
 }
 
 // @public
 export const MenuList: React_2.FunctionComponent<MenuListProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface MenuListCommons {
+    checkedValues: Record<string, string[]>;
+    defaultCheckedValues?: Record<string, string[]>;
+    hasCheckmarks?: boolean;
+    hasIcons?: boolean;
+    onCheckedValueChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: {
+        name: string;
+        checkedItems: string[];
+    }) => void;
+}
 
 // @public (undocumented)
 export const MenuListContext: Context<MenuListContextValue>;
@@ -170,18 +191,20 @@ export interface MenuListContextValues {
     menuList: MenuListContextValue;
 }
 
-// Warning: (ae-forgotten-export) The symbol "MenuListCommons" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export interface MenuListProps extends ComponentProps, Partial<MenuListCommons> {
+export interface MenuListProps extends ComponentProps<MenuListSlots>, Partial<MenuListCommons> {
 }
 
 // @public (undocumented)
 export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.FC<React_2.ProviderProps<MenuListContextValue>>;
 
 // @public (undocumented)
-export interface MenuListState extends ComponentState, MenuListCommons {
-    ref: React_2.Ref<HTMLElement>;
+export type MenuListSlots = {
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
+
+// @public (undocumented)
+export interface MenuListState extends ComponentState<MenuListSlots>, MenuListCommons {
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     // (undocumented)
@@ -198,23 +221,26 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
 export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
-export const MenuPopover: React_2.ForwardRefExoticComponent<MenuPopoverProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuPopover: React_2.ForwardRefExoticComponent<Pick<MenuPopoverProps, "slot" | "style" | "title" | "children" | "color" | "translate" | "hidden" | "onClick" | "onMouseEnter" | "onMouseLeave" | "onContextMenu" | "onKeyDown" | "aria-haspopup" | "aria-expanded" | "id" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-flowto" | "aria-grabbed" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClickCapture" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "as" | "key"> & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export interface MenuPopoverProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
-    // (undocumented)
-    children: React_2.ReactNode;
+export interface MenuPopoverProps extends ComponentProps<MenuPopoverSlots> {
 }
 
+// @public (undocumented)
+export type MenuPopoverSlots = {
+    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
+
 // @public
-export interface MenuPopoverState extends ComponentState, Pick<MenuState, 'inline'>, React_2.HTMLAttributes<HTMLElement> {
-    ref: React_2.Ref<HTMLElement>;
+export interface MenuPopoverState extends ComponentState<MenuPopoverSlots> {
+    inline: boolean;
 }
 
 // Warning: (ae-forgotten-export) The symbol "MenuCommons" needs to be exported by the entry point index.d.ts
 //
 // @public
-export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps<MenuSlots> {
     children: [JSX.Element, JSX.Element] | JSX.Element;
     positioning?: PositioningShorthand;
 }
@@ -223,7 +249,10 @@ export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
 export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
-export interface MenuState extends MenuCommons, ComponentState {
+export type MenuSlots = {};
+
+// @public (undocumented)
+export interface MenuState extends MenuCommons, ComponentState<MenuSlots> {
     contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
@@ -292,9 +321,7 @@ export interface UninitializedMenuListState extends Omit<MenuListState, 'setFocu
 }
 
 // @public
-export const useCheckmarkStyles: (state: MenuItemSelectableState & {
-    checkmark: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-}) => void;
+export const useCheckmarkStyles: (state: MenuItemSelectableState & Pick<MenuItemSlots, 'checkmark'>) => void;
 
 // @public
 export const useMenu: (props: MenuProps) => MenuState;

@@ -1,7 +1,7 @@
-import { IColumn } from './DetailsList.types';
-import { ICellStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { IDetailsListProps } from './DetailsList';
-import { IDetailsRowProps } from './DetailsRow';
+import type { IColumn } from './DetailsList.types';
+import type { ICellStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import type { IDetailsListProps } from './DetailsList';
+import type { IDetailsRowProps } from './DetailsRow';
 
 /**
  * Extended column render props.

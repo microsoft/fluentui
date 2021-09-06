@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useCard } from './useCard';
-import { CardProps } from './Card.types';
 import { renderCard } from './renderCard';
 import { useCardStyles } from './useCardStyles';
+import type { CardProps } from './Card.types';
 
 /**
  * A card provides scaffolding for hosting actions and content for a single topic within a card sized object.

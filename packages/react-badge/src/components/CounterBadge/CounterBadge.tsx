@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { CounterBadgeProps } from './CounterBadge.types';
 import { useCounterBadge } from './useCounterBadge';
 import { useCounterBadgeStyles } from './useCounterBadgeStyles';
 import { renderBadge } from '../Badge/index';
+import type { CounterBadgeProps } from './CounterBadge.types';
 
 /**
  * Define a styled CounterBadge, using the `useCounterBadge` hook.

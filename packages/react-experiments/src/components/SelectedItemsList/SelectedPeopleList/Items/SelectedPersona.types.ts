@@ -1,7 +1,7 @@
-import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IPersonaStyleProps, IPersonaCoinStyleProps } from '@fluentui/react/lib/Persona';
-import { IButtonStyles } from '@fluentui/react/lib/Button';
+import type { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import type { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import type { IPersonaStyleProps, IPersonaCoinStyleProps } from '@fluentui/react/lib/Persona';
+import type { IButtonStyles } from '@fluentui/react/lib/Button';
 
 export interface ISelectedPersonaStyleProps {
   theme: ITheme;

@@ -1,6 +1,7 @@
-import { getDocument, Point, Rectangle } from '@fluentui/utilities';
+import { getDocument, Rectangle } from '@fluentui/utilities';
 import * as React from 'react';
 import { useWindow } from '@fluentui/react-window-provider';
+import type { Point } from '@fluentui/utilities';
 
 export type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element>;
 

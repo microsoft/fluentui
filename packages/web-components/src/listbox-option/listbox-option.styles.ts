@@ -38,94 +38,93 @@ export const optionStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('inline-flex')} :host {
-        font-family: ${bodyFont};
-        border-radius: calc(${controlCornerRadius} * 1px);
-        border: calc(${focusStrokeWidth} * 1px) solid transparent;
-        box-sizing: border-box;
-        color: ${neutralForegroundRest};
-        cursor: pointer;
-        fill: currentcolor;
-        font-size: ${typeRampBaseFontSize};
-        height: calc(${heightNumber} * 1px);
-        line-height: ${typeRampBaseLineHeight};
-        margin: 0 calc(${designUnit} * 1px);
-        outline: none;
-        overflow: hidden;
-        align-items: center;
-        padding: 0 calc(${designUnit} * 2.25px);
-        user-select: none;
-        white-space: nowrap;
+      font-family: ${bodyFont};
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      box-sizing: border-box;
+      color: ${neutralForegroundRest};
+      cursor: pointer;
+      fill: currentcolor;
+      font-size: ${typeRampBaseFontSize};
+      height: calc(${heightNumber} * 1px);
+      line-height: ${typeRampBaseLineHeight};
+      margin: 0 calc(${designUnit} * 1px);
+      outline: none;
+      overflow: hidden;
+      align-items: center;
+      padding: 0 calc(${designUnit} * 2.25px);
+      user-select: none;
+      white-space: nowrap;
     }
 
     :host(:${focusVisible}) {
-        box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
-        border-color: ${focusStrokeOuter};
-        background: ${accentFillFocus};
-        color: ${foregroundOnAccentFocus};
+      box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
+      border-color: ${focusStrokeOuter};
+      background: ${accentFillFocus};
+      color: ${foregroundOnAccentFocus};
     }
 
-    :host([aria-selected="true"]) {
-        background: ${accentFillRest};
-        color: ${foregroundOnAccentRest};
+    :host([aria-selected='true']) {
+      background: ${accentFillRest};
+      color: ${foregroundOnAccentRest};
     }
 
     :host(:hover) {
       background: ${accentFillHover};
       color: ${foregroundOnAccentHover};
     }
-  
+
     :host(:active) {
-        background: ${accentFillActive};
-        color: ${foregroundOnAccentActive};
+      background: ${accentFillActive};
+      color: ${foregroundOnAccentActive};
     }
 
-    :host(:not([aria-selected="true"]):hover) {
-        background: ${neutralFillHover};
-        color: ${neutralForegroundRest}};
+    :host(:not([aria-selected='true']):hover) {
+      background: ${neutralFillHover};
+      color: ${neutralForegroundRest};
     }
 
-    :host(:not([aria-selected="true"]):active) {
-        background: ${neutralFillActive};
-        color: ${neutralForegroundRest}};
+    :host(:not([aria-selected='true']):active) {
+      background: ${neutralFillActive};
+      color: ${neutralForegroundRest};
     }
 
     :host([disabled]) {
-        cursor: ${disabledCursor};
-        opacity: ${disabledOpacity};
+      cursor: ${disabledCursor};
+      opacity: ${disabledOpacity};
     }
 
     :host([disabled]:hover) {
-        background-color: inherit;
+      background-color: inherit;
     }
 
     .content {
-        grid-column-start: 2;
-        justify-self: start;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      grid-column-start: 2;
+      justify-self: start;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .start,
     .end,
     ::slotted(svg) {
-        display: flex;
+      display: flex;
     }
 
     ::slotted(svg) {
-        ${/* Glyph size and margin-left is temporary - replace when adaptive typography is figured out */ ''}
-        height: calc(${designUnit} * 4px);
-        width: calc(${designUnit} * 4px);
+      ${/* Glyph size and margin-left is temporary - replace when adaptive typography is figured out */ ''}
+      height: calc(${designUnit} * 4px);
+      width: calc(${designUnit} * 4px);
     }
 
-    ::slotted([slot="end"]) {
-        margin-inline-start: 1ch;
+    ::slotted([slot='end']) {
+      margin-inline-start: 1ch;
     }
 
-    ::slotted([slot="start"]) {
-        margin-inline-end: 1ch;
+    ::slotted([slot='start']) {
+      margin-inline-end: 1ch;
     }
-
-`.withBehaviors(
+  `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
         :host {

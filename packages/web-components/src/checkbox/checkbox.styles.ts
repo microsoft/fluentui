@@ -20,9 +20,9 @@ import {
   neutralFillInputHover,
   neutralFillInputRest,
   neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
+  neutralStrokeStrongActive,
+  neutralStrokeStrongHover,
+  neutralStrokeStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -51,7 +51,7 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       height: calc((${heightNumber} / 2 + ${designUnit}) * 1px);
       box-sizing: border-box;
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
       background: ${neutralFillInputRest};
       outline: none;
       cursor: pointer;
@@ -97,12 +97,12 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
 
     :host(:enabled) .control:hover {
       background: ${neutralFillInputHover};
-      border-color: ${neutralStrokeHover};
+      border-color: ${neutralStrokeStrongHover};
     }
 
     :host(:enabled) .control:active {
       background: ${neutralFillInputActive};
-      border-color: ${neutralStrokeActive};
+      border-color: ${neutralStrokeStrongActive};
     }
 
     :host(:${focusVisible}) .control {

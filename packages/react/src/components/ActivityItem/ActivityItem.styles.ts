@@ -1,13 +1,13 @@
 import {
   concatStyleSets,
-  ITheme,
   getTheme,
   HighContrastSelector,
   keyframes,
   PulsingBeaconAnimationStyles,
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
-import { IActivityItemStyles, IActivityItemProps } from './ActivityItem.types';
+import type { ITheme } from '../../Styling';
+import type { IActivityItemStyles, IActivityItemProps } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';

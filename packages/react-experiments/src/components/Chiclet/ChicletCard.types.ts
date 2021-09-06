@@ -1,5 +1,5 @@
-import { ITheme, IStyle } from '../../Styling';
-import { IChicletProps } from './Chiclet.types';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IChicletProps } from './Chiclet.types';
 
 export interface IChicletCard {}
 
