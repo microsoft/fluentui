@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { PositionedComponent } from './utils.stories';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { Button } from '@fluentui/react-button';
 
-export { Default } from './PositioningDefault.stories';
-export { ShorthandPositions } from './PositioningShorthandPositions.stories';
-export { CoverTarget } from './PositioningCoverTarget.stories';
-
-export const Offset = () => {
+export const OffsetValue = () => {
   const [offsetY, setOffsetY] = React.useState(10);
   const [offsetX, setOffsetX] = React.useState(10);
 
@@ -26,19 +23,25 @@ export const Offset = () => {
         Offset X
         <input onChange={onChangeX} value={offsetX} type="number" />
       </label>
-      <PositionedComponent
-        positioning={{ position: 'after', offset: [offsetY, offsetX] }}
-        targetContent="Simple offset"
-      />
-      <PositionedComponent
-        positioning={{ position: 'after', offset: () => [offsetY, offsetX] }}
-        targetContent="Offset function"
-      />
+      <Popover positioning={{ position: 'after', offset: [offsetY, offsetX] }} noArrow>
+        <PopoverTrigger>
+          <Button primary>Click me</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
+      </Popover>
+      <Popover positioning={{ position: 'after', offset: () => [offsetY, offsetX] }} noArrow>
+        <PopoverTrigger>
+          <Button primary>Click me</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
+      </Popover>
     </div>
   );
 };
 
-Offset.parameters = {
+OffsetValue.parameters = {
   layout: 'padded',
   docs: {
     description: {

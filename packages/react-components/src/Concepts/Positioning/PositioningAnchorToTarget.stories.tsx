@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { PositionedComponent } from './utils.stories';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
-
-export { Default } from './PositioningDefault.stories';
-export { ShorthandPositions } from './PositioningShorthandPositions.stories';
-export { CoverTarget } from './PositioningCoverTarget.stories';
-export { Offset } from './PositioningOffset.stories';
 
 export const AnchorToTarget = () => {
   const [target, setTarget] = React.useState<HTMLElement | null>(null);
   return (
     <div style={{ display: 'flex', gap: 10 }}>
-      <PositionedComponent positioning={{ position: 'above', align: 'start', target }} />
+      <Popover positioning={{ position: 'above', align: 'start', target }} noArrow>
+        <PopoverTrigger>
+          <Button primary>Click me</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
+      </Popover>
       <Button ref={setTarget}>Target</Button>
     </div>
   );

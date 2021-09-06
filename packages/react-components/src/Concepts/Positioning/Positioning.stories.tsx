@@ -5,8 +5,10 @@ import bestPracticesMd from './PositioningBestPractices.md';
 export { Default } from './PositioningDefault.stories';
 export { ShorthandPositions } from './PositioningShorthandPositions.stories';
 export { CoverTarget } from './PositioningCoverTarget.stories';
-export { Offset } from './PositioningOffset.stories';
+export { OffsetValue } from './PositioningOffsetValue.stories';
+export { OffsetFunction } from './PositioningOffsetFunction.stories';
 export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
+export { PopperImperativeHandle } from './PositioningPopperImperativeHandle.stories';
 
 export default {
   title: 'Concepts/Developer/Positioning',
