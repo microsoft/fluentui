@@ -128,6 +128,10 @@ const useGridExampleStyles = makeStyles({
   },
   above: {
     gridArea: '1/3',
+    justifyContent: 'center',
+    '& div:nth-child(2)': {
+      display: 'none',
+    },
   },
   aboveEnd: {
     gridArea: '1/4',
@@ -142,8 +146,9 @@ const useGridExampleStyles = makeStyles({
   before: {
     gridArea: '3/1',
     flexDirection: 'row-reverse',
+    justifyContent: 'center',
     '& div:nth-child(2)': {
-      transform: 'rotate(270deg)',
+      display: 'none',
     },
   },
   beforeBottom: {
@@ -162,8 +167,9 @@ const useGridExampleStyles = makeStyles({
   },
   after: {
     gridArea: '3/5',
+    justifyContent: 'center',
     '& div:nth-child(2)': {
-      transform: 'rotate(90deg)',
+      display: 'none',
     },
   },
   afterBottom: {
@@ -182,8 +188,9 @@ const useGridExampleStyles = makeStyles({
   },
   below: {
     gridArea: '5/3',
+    justifyContent: 'center',
     '& div:nth-child(2)': {
-      transform: 'rotate(180deg)',
+      display: 'none',
     },
   },
   belowEnd: {
