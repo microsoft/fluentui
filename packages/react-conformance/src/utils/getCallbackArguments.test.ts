@@ -194,7 +194,7 @@ describe('getCallbackArguments', () => {
       });
       const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
 
-      expect(type).toMatchObject({ e: null, data: { value: 'String' } });
+      expect(type).toMatchObject({ e: null, data: { value: 'string' } });
     });
   });
 
