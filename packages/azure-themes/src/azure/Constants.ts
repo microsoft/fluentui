@@ -7,6 +7,7 @@ import {
 
 export const inputHeight = '18px';
 export const borderWidth = '1px';
+export const borderRadius = '3px';
 export const borderWidthError = '1px';
 export const borderSolid = 'solid';
 export const borderNone = 'none';
