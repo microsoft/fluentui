@@ -46,7 +46,7 @@ fixed versions for all dependencies within the Fluent monorepo.
 
 Example of proposed changes to `@fluentui/react-components` `package.json` file.
 
-```json
+```diff
 {
   "dependencies": {
 -    "@fluentui/react-accordion": "^9.0.0-alpha.70",
@@ -88,7 +88,7 @@ Example of proposed changes to `@fluentui/react-components` `package.json` file.
 
 Example of proposed changes to `@fluentui/react-button` `package.json` file.
 
-```json
+```diff
   "dependencies": {
 -    "@fluentui/keyboard-keys": "^9.0.0-alpha.1",
 -    "@fluentui/react-icons": "^1.1.136", // not a monorepo dependency
