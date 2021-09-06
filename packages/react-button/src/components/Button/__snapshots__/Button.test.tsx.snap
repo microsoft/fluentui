@@ -5,6 +5,7 @@ exports[`Button renders a default button 1`] = `
   className=""
   onClick={[Function]}
   onKeyDown={[Function]}
+  type="button"
 >
   This is a button
 </button>

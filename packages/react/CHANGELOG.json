@@ -2,6 +2,101 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react_v8.30.4",
+      "version": "8.30.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated to flexbox the document card preview items",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react_v8.30.3",
+      "version": "8.30.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react_v8.30.2",
+      "version": "8.30.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added placeholder styles to base picker",
+            "author": "gcox@microsoft.com",
+            "commit": "66fe45c6e8aea6af84014186505fb37a2c27b881",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "ci(storybook): unify and simplify storybook production build deployments across the repo",
+            "author": "martinhochel@microsoft.com",
+            "commit": "42a36dd1dba02d7023de84ca17d3ea20e1e2c8b3",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react_v8.30.1",
+      "version": "8.30.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix initial ResponsiveMode value",
+            "author": "tmichon@microsoft.com",
+            "commit": "6e818d76d4bea22b0fc701828cdcbfe58fda24d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Panel: header and footer now reflow properly when zoomed in.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cb4515542336a543ccb15f1ea9a9cb0ec4d33330",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix position bug of Callout when target prop has changed.",
+            "author": "kinhln@microsoft.com",
+            "commit": "60678091ef944df92d2d0b906b86ad3e261e4598",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "@fluentui/react_v8.30.0",
+      "version": "8.30.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose FocusZoneProps on the DetailsList and DetailsRow components.",
+            "author": "richard@einfinity.co.uk",
+            "commit": "b9845c29770ba058344f01f02f5e111da0d31cbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Aug 2021 07:35:19 GMT",
       "tag": "@fluentui/react_v8.29.2",
       "version": "8.29.2",

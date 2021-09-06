@@ -256,9 +256,9 @@ export const MemoCheckboxItems = () => {
 
 export const CheckboxItemsControlled = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
-  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
+  const onChange: MenuListProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
     setCheckedValues(s => {
-      return s ? { ...s, [name]: items } : { [name]: items };
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
     });
   };
 
@@ -281,8 +281,8 @@ export const CheckboxItemsControlled = () => {
 
 export const RadioItemsControlled = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues(s => ({ ...s, [name]: items }));
+  const onChange: MenuListProps['onCheckedValueChange'] = (e: React.SyntheticEvent, { name, checkedItems }) => {
+    setCheckedValues(s => ({ ...s, [name]: checkedItems }));
   };
 
   return (
