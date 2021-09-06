@@ -2,14 +2,28 @@ import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { ExampleContent } from './utils.stories';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     gap: '10px',
   },
+
+  contentHeader: {
+    marginTop: '0',
+  },
 });
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+    </div>
+  );
+};
 
 export const AnchorToCustomTarget = () => {
   const [target, setTarget] = React.useState<HTMLElement | null>();

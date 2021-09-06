@@ -1,7 +1,24 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
-import { ExampleContent } from './utils.stories';
+import { makeStyles } from '@fluentui/react-make-styles';
+
+const useStyles = makeStyles({
+  contentHeader: {
+    marginTop: '0',
+  },
+});
+
+const ExampleContent = () => {
+  const styles = useStyles();
+  return (
+    <div>
+      <h3 className={styles.contentHeader}>Popover content</h3>
+
+      <div>This is some popover content</div>
+    </div>
+  );
+};
 
 const FirstNestedPopover = () => (
   <Popover trapFocus>
