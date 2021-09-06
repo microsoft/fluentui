@@ -10,8 +10,3 @@
 
 - Don't use more than 2 levels of nested `Popovers`.
 - Don't use `Popovers` to display too much content, consider if that content should be on the main page.
-
-### Content
-
-- Use sentence-style capitalization—only capitalize the first word. For more info, see
-  [Capitalization](https://docs.microsoft.com/en-us/style-guide/capitalization) in the Microsoft Writing Style Guide.

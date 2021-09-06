@@ -59,7 +59,7 @@ AnchorToCustomTarget.parameters = {
   docs: {
     description: {
       story: [
-        'A Popover can be used without a trigger and anchored to a any DOM element. This can be useful if',
+        'A Popover can be used without a trigger and anchored to any DOM element. This can be useful if',
         'a Popover instance needs to be reused in different places.',
         '',
         '_Not using a PopoverTrigger will require more work to make sure your scenario is accessible_',
