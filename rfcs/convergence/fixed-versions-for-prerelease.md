@@ -201,9 +201,8 @@ consuming a new component is to bump the suite package.
 The only scalable solution is to get out of the prerelease phase
 and leverage all the benefits of semver.
 
-Keeping caret versions during
-prerelease tags does not solve the problem of consuming individual packages but does solve the problem of predictable
-dependency tree, we should move on with it.
+Making it harder to consume `alpha` packages if they are even needed for customers should be acceptable, since
+they opt to use a less stable release stage. We can try to make it easier for them to consume `alpha` packages.
 
 > Prerelease tags matching every latest version is not a bug, it's a feature.
 
