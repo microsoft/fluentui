@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "disable 'consistent-callback-args' test",
-  "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
