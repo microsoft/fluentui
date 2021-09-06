@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "refactor(Link): use `event.key` for keyboard event",
+            "author": "lingfangao@hotmail.com",
+            "commit": "44b883198c67fc53eff10915c703425f3ca7d07c",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Sep 2021 00:13:07 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.76",
       "version": "9.0.0-alpha.76",
