@@ -46,6 +46,11 @@ export interface SliderProps
   activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
   /**
+   * The hidden input for the Slider.
+   */
+  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+
+  /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
    */
@@ -71,7 +76,7 @@ export interface SliderProps
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value.
+   * will snap to the closest available value. This must be a positive value.
    * @default 1
    */
   step?: number;
@@ -136,27 +141,29 @@ export interface SliderProps
  * Names of the shorthand properties in SliderProps
  */
 export type SliderShorthandProps =
+  | 'activeRail'
+  | 'input'
   | 'rail'
   | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail';
+  | 'thumbWrapper'
+  | 'track'
+  | 'trackWrapper'
+  | 'marksWrapper';
 
 /**
  * Names of SliderProps that have a default value in useSlider
  */
 export type SliderDefaultedProps =
+  | 'activeRail'
+  | 'input'
   | 'rail'
   | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail';
+  | 'thumbWrapper'
+  | 'track'
+  | 'trackWrapper'
+  | 'marksWrapper';
 
 /**
  * State used in rendering Slider
