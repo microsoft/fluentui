@@ -31,7 +31,7 @@ const LogoBackground = (props: React.HTMLAttributes<HTMLElement>) => {
 };
 
 export const ActionCard = () => (
-  <div>
+  <>
     <Card style={{ minWidth: '368px' }} onClick={() => console.log('Test action')}>
       <CardHeader
         image={<img src="./avatar_elvia.svg" alt="Face of a person" />}
@@ -86,7 +86,7 @@ export const ActionCard = () => (
         <Button icon={<Open16Regular />}>View changes</Button>
       </CardFooter>
     </Card>
-  </div>
+  </>
 );
 
 export const GridviewCard = () => (
