@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 01 Sep 2021 12:22:53 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Sep 2021 12:26:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.2)
+
+Mon, 06 Sep 2021 12:26:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.15.1..@fluentui/react-examples_v0.15.2)
+
+### Patches
+
+- Azure Themes: Add Slider story ([PR #19630](https://github.com/microsoft/fluentui/pull/19630) by aidanmc95@gmail.com)
 
 ## [0.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.15.1)
 

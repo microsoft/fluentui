@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 06 Sep 2021 12:26:23 GMT",
+      "tag": "@fluentui/react-examples_v0.15.2",
+      "version": "0.15.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Azure Themes: Add Slider story",
+            "author": "aidanmc95@gmail.com",
+            "commit": "fd4ec9c3bfb5a5ac0ee4e1444981b4d0872d7031",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 12:22:53 GMT",
       "tag": "@fluentui/react-examples_v0.15.1",
       "version": "0.15.1",

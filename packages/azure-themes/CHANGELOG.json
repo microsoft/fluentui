@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 06 Sep 2021 12:26:23 GMT",
+      "tag": "@uifabric/azure-themes_v7.8.2",
+      "version": "7.8.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Azure Theme: Slider style update and dark theme update",
+            "author": "aidanmc95@gmail.com",
+            "commit": "fd4ec9c3bfb5a5ac0ee4e1444981b4d0872d7031",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 12:22:53 GMT",
       "tag": "@uifabric/azure-themes_v7.8.1",
       "version": "7.8.1",

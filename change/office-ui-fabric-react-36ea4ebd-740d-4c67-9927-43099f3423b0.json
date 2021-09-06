@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Toggle: Fixing issue where id was not changing if a different one was passed after first render.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

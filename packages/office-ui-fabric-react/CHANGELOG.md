@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Sep 2021 12:22:53 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Sep 2021 12:26:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.175.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.175.2)
+
+Mon, 06 Sep 2021 12:26:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.175.1..office-ui-fabric-react_v7.175.2)
+
+### Patches
+
+- Toggle: Fixing issue where id was not changing if a different one was passed after first render. ([PR #19648](https://github.com/microsoft/fluentui/pull/19648) by Humberto.Morimoto@microsoft.com)
 
 ## [7.175.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.175.1)
 

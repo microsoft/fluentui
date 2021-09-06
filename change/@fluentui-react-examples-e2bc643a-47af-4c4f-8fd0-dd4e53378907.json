@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Azure Themes: Add Slider story",
-  "packageName": "@fluentui/react-examples",
-  "email": "aidanmc95@gmail.com",
-  "dependentChangeType": "patch"
-}
