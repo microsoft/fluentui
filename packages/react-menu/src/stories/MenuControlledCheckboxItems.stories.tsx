@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover } from './index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuProps } from '@fluentui/react-menu';
 
-import { Button } from './utils.stories';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
 import {
   Cut20Regular as CutIcon,
   ClipboardPaste20Regular as PasteIcon,
   Edit20Regular as EditIcon,
 } from '@fluentui/react-icons';
-import type { MenuProps } from './index';
 
 export const ControlledCheckboxItems = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});

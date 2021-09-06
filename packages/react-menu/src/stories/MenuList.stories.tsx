@@ -1,4 +1,4 @@
-import { MenuList } from './MenuList';
+import { MenuList } from '../index';
 import descriptionMd from './MenuListDescription.md';
 
 export { Default } from './MenuListDefault.stories';

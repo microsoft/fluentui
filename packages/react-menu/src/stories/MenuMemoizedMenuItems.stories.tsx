@@ -1,7 +1,20 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuItemCheckboxProps } from './index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import {
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemCheckbox,
+  MenuPopover,
+  MenuItemCheckboxProps,
+} from '@fluentui/react-menu';
 
-import { Button } from './utils.stories';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
 import { Edit20Regular as EditIcon } from '@fluentui/react-icons';
 
 const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {

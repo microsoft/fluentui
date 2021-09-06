@@ -1,12 +1,9 @@
 import * as React from 'react';
+
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { Button as ReactButton, ButtonProps } from '@fluentui/react-button';
-export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
-  return <ReactButton ref={ref} {...props} />;
-});
-
+import { MenuList, MenuItem } from '@fluentui/react-menu';
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -24,3 +21,16 @@ export const useMenuListContainerStyles = makeStyles({
     paddingBottom: '4px',
   }),
 });
+
+export const Default = () => {
+  const styles = useMenuListContainerStyles();
+  return (
+    <div className={styles.container}>
+      <MenuList>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Paste</MenuItem>
+        <MenuItem>Edit</MenuItem>
+      </MenuList>
+    </div>
+  );
+};

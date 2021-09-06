@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from './index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 
-import { Button } from './utils.stories';
-import type { MenuProps } from './index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
 
 const EditorLayoutSubMenu = () => {
-  const [open, setOpen] = React.useState(false);
-  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-    setOpen(data.open);
-  };
-
   return (
-    <Menu open={open} onOpenChange={onOpenChange}>
+    <Menu>
       <MenuTrigger>
         <MenuItem>Editor Layout</MenuItem>
       </MenuTrigger>
@@ -28,13 +28,8 @@ const EditorLayoutSubMenu = () => {
 };
 
 const AppearanceSubMenu = () => {
-  const [open, setOpen] = React.useState(false);
-  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-    setOpen(data.open);
-  };
-
   return (
-    <Menu open={open} onOpenChange={onOpenChange}>
+    <Menu>
       <MenuTrigger>
         <MenuItem>Appearance</MenuItem>
       </MenuTrigger>
@@ -52,13 +47,8 @@ const AppearanceSubMenu = () => {
 };
 
 const PreferencesSubMenu = () => {
-  const [open, setOpen] = React.useState(false);
-  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-    setOpen(data.open);
-  };
-
   return (
-    <Menu open={open} onOpenChange={onOpenChange}>
+    <Menu>
       <MenuTrigger>
         <MenuItem>Preferences</MenuItem>
       </MenuTrigger>
@@ -76,7 +66,7 @@ const PreferencesSubMenu = () => {
   );
 };
 
-export const NestedSubmenusControlled = () => {
+export const NestedSubmenus = () => {
   return (
     <Menu>
       <MenuTrigger>
@@ -96,7 +86,7 @@ export const NestedSubmenusControlled = () => {
   );
 };
 
-NestedSubmenusControlled.parameters = {
+NestedSubmenus.parameters = {
   layout: 'padded',
   docs: {
     description: {

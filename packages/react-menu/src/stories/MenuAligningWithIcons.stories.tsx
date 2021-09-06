@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from './index';
-
-import { Button } from './utils.stories';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
 import { ClipboardPaste20Regular as PasteIcon } from '@fluentui/react-icons';
 
 export const AligningWithIcons = () => (

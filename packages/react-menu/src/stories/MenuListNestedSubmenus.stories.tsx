@@ -1,7 +1,26 @@
 import * as React from 'react';
 
-import { MenuList, MenuItem, Menu, MenuPopover, MenuTrigger } from './index';
-import { useMenuListContainerStyles } from './utils.stories';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { MenuList, MenuItem, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { makeStyles } from '@fluentui/react-make-styles';
+
+export const useMenuListContainerStyles = makeStyles({
+  container: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    minWidth: '128px',
+    minHeight: '48px',
+    maxWidth: '300px',
+    width: 'max-content',
+    boxShadow: `${theme.alias.shadow.shadow16}`,
+    paddingTop: '4px',
+    paddingBottom: '4px',
+  }),
+});
 
 export const MenuListWithNestedSubmenus = () => {
   const styles = useMenuListContainerStyles();

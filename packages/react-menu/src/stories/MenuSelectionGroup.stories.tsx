@@ -1,4 +1,7 @@
 import * as React from 'react';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import {
   Menu,
   MenuTrigger,
@@ -9,9 +12,12 @@ import {
   MenuDivider,
   MenuGroupHeader,
   MenuPopover,
-} from './index';
+} from '@fluentui/react-menu';
 
-import { Button } from './utils.stories';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Button } from '@fluentui/react-button';
 import {
   Cut20Regular as CutIcon,
   ClipboardPaste20Regular as PasteIcon,
