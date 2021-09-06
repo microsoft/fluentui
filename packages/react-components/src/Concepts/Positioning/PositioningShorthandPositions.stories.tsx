@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
 import { PositioningShorthand } from '@fluentui/react-positioning';
@@ -14,34 +14,34 @@ export const ShorthandPositions = () => {
         <PositionedComponent
           positioning="above-start"
           targetClassName={styles.aboveStart}
-          targetContent="above-start ↑"
+          targetContent="above-start"
         />
-        <PositionedComponent positioning="above" targetClassName={styles.above} targetContent="above ↑" />
-        <PositionedComponent positioning="above-end" targetClassName={styles.aboveEnd} targetContent="above-end ↑" />
+        <PositionedComponent positioning="above" targetClassName={styles.above} targetContent="above" />
+        <PositionedComponent positioning="above-end" targetClassName={styles.aboveEnd} targetContent="above-end" />
 
-        <PositionedComponent positioning="before-top" targetClassName={styles.beforeTop} targetContent="← before-top" />
-        <PositionedComponent positioning="before" targetClassName={styles.before} targetContent="← before" />
+        <PositionedComponent positioning="before-top" targetClassName={styles.beforeTop} targetContent="before-top" />
+        <PositionedComponent positioning="before" targetClassName={styles.before} targetContent="before" />
         <PositionedComponent
           positioning="before-bottom"
           targetClassName={styles.beforeBottom}
-          targetContent="← before-bottom"
+          targetContent="before-bottom"
         />
 
-        <PositionedComponent positioning="after-top" targetClassName={styles.afterTop} targetContent="after-top →" />
-        <PositionedComponent positioning="after" targetClassName={styles.after} targetContent="after →" />
+        <PositionedComponent positioning="after-top" targetClassName={styles.afterTop} targetContent="after-top" />
+        <PositionedComponent positioning="after" targetClassName={styles.after} targetContent="after" />
         <PositionedComponent
           positioning="after-bottom"
           targetClassName={styles.afterBottom}
-          targetContent="after-bottom →"
+          targetContent="after-bottom"
         />
 
         <PositionedComponent
           positioning="below-start"
           targetClassName={styles.belowStart}
-          targetContent="below-start ↓"
+          targetContent="below-start"
         />
-        <PositionedComponent positioning="below" targetClassName={styles.below} targetContent="below ↓" />
-        <PositionedComponent positioning="below-end" targetClassName={styles.belowEnd} targetContent="below-end ↓" />
+        <PositionedComponent positioning="below" targetClassName={styles.below} targetContent="below" />
+        <PositionedComponent positioning="below-end" targetClassName={styles.belowEnd} targetContent="below-end" />
       </div>
     </>
   );
@@ -78,8 +78,9 @@ const PositionedComponent = (props: {
   return (
     <Popover positioning={positioning} noArrow>
       <PopoverTrigger>
-        <Button primary className={targetClassName}>
-          {targetContent}
+        <Button primary className={mergeClasses(styles.target, targetClassName)}>
+          <div>{targetContent}</div>
+          <div>↑</div>
         </Button>
       </PopoverTrigger>
 
@@ -95,6 +96,13 @@ const useExampleStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  target: {
+    height: '50px',
+    width: '140px',
+    display: 'flex',
+    justifyContent: 'space-between',
   },
 });
 
@@ -116,6 +124,7 @@ const useGridExampleStyles = makeStyles({
 
   aboveStart: {
     gridArea: '1/2',
+    flexDirection: 'row-reverse',
   },
   above: {
     gridArea: '1/3',
@@ -125,29 +134,62 @@ const useGridExampleStyles = makeStyles({
   },
   beforeTop: {
     gridArea: '2/1',
+    flexDirection: 'column-reverse',
+    '& div:nth-child(2)': {
+      transform: 'rotate(270deg)',
+    },
   },
   before: {
     gridArea: '3/1',
+    flexDirection: 'row-reverse',
+    '& div:nth-child(2)': {
+      transform: 'rotate(270deg)',
+    },
   },
   beforeBottom: {
     gridArea: '4/1',
+    flexDirection: 'column',
+    '& div:nth-child(2)': {
+      transform: 'rotate(270deg)',
+    },
   },
   afterTop: {
     gridArea: '2/5',
+    flexDirection: 'column-reverse',
+    '& div:nth-child(2)': {
+      transform: 'rotate(90deg)',
+    },
   },
   after: {
     gridArea: '3/5',
+    '& div:nth-child(2)': {
+      transform: 'rotate(90deg)',
+    },
   },
   afterBottom: {
     gridArea: '4/5',
+    flexDirection: 'column',
+    '& div:nth-child(2)': {
+      transform: 'rotate(90deg)',
+    },
   },
   belowStart: {
+    flexDirection: 'row-reverse',
     gridArea: '5/2',
+    '& div:nth-child(2)': {
+      transform: 'rotate(180deg)',
+    },
   },
   below: {
     gridArea: '5/3',
+    '& div:nth-child(2)': {
+      transform: 'rotate(180deg)',
+    },
   },
   belowEnd: {
     gridArea: '5/4',
+    '& div:nth-child(2)': {
+      transform: 'rotate(180deg)',
+    },
   },
 });

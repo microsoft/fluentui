@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
 import { PositioningShorthand } from '@fluentui/react-positioning';
@@ -13,65 +13,65 @@ export const CoverTarget = () => {
         <PositionedComponent
           positioning={{ position: 'above', align: 'start', coverTarget: true }}
           targetClassName={styles.aboveStart}
-          targetContent="above-start ↑"
+          targetContent="above-start"
         />
         <PositionedComponent
           positioning={{ position: 'above', coverTarget: true }}
           targetClassName={styles.above}
-          targetContent="above ↑"
+          targetContent="above"
         />
         <PositionedComponent
           positioning={{ position: 'above', align: 'end', coverTarget: true }}
           targetClassName={styles.aboveEnd}
-          targetContent="above-end ↑"
+          targetContent="above-end"
         />
 
         <PositionedComponent
           positioning={{ position: 'before', align: 'top', coverTarget: true }}
           targetClassName={styles.beforeTop}
-          targetContent="← before-top"
+          targetContent="before-top"
         />
         <PositionedComponent
           positioning={{ position: 'before', coverTarget: true }}
           targetClassName={styles.before}
-          targetContent="← before"
+          targetContent="before"
         />
         <PositionedComponent
           positioning={{ position: 'before', align: 'bottom', coverTarget: true }}
           targetClassName={styles.beforeBottom}
-          targetContent="← before-bottom"
+          targetContent="before-bottom"
         />
 
         <PositionedComponent
           positioning={{ position: 'after', align: 'top', coverTarget: true }}
           targetClassName={styles.afterTop}
-          targetContent="after-top →"
+          targetContent="after-top"
         />
         <PositionedComponent
           positioning={{ position: 'after', coverTarget: true }}
           targetClassName={styles.after}
-          targetContent="after →"
+          targetContent="after"
         />
         <PositionedComponent
           positioning={{ position: 'after', align: 'bottom', coverTarget: true }}
           targetClassName={styles.afterBottom}
-          targetContent="after-bottom →"
+          targetContent="after-bottom"
         />
 
         <PositionedComponent
           positioning={{ position: 'below', align: 'start', coverTarget: true }}
           targetClassName={styles.belowStart}
-          targetContent="below-start ↓"
+          targetContent="below-start"
         />
         <PositionedComponent
           positioning={{ position: 'below', coverTarget: true }}
           targetClassName={styles.below}
-          targetContent="below ↓"
+          targetContent="below"
         />
         <PositionedComponent
           positioning={{ position: 'below', align: 'end', coverTarget: true }}
           targetClassName={styles.belowEnd}
-          targetContent="below-end ↓"
+          targetContent="below-end"
         />
       </div>
     </>
@@ -110,8 +110,9 @@ const PositionedComponent = (props: {
   return (
     <Popover positioning={positioning} noArrow>
       <PopoverTrigger>
-        <Button primary className={targetClassName}>
-          {targetContent}
+        <Button primary className={mergeClasses(styles.target, targetClassName)}>
+          <div>{targetContent}</div>
+          <div>↑</div>
         </Button>
       </PopoverTrigger>
 
@@ -127,6 +128,13 @@ const useExampleStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  target: {
+    height: '50px',
+    width: '140px',
+    display: 'flex',
+    justifyContent: 'space-between',
   },
 });
 
@@ -147,6 +155,7 @@ const useGridExampleStyles = makeStyles({
   },
 
   aboveStart: {
+    flexDirection: 'row-reverse',
     gridArea: '1/2',
   },
   above: {
@@ -157,29 +166,62 @@ const useGridExampleStyles = makeStyles({
   },
   beforeTop: {
     gridArea: '2/1',
+    flexDirection: 'column-reverse',
+    '& div:nth-child(2)': {
+      transform: 'rotate(270deg)',
+    },
   },
   before: {
     gridArea: '3/1',
+    flexDirection: 'row-reverse',
+    '& div:nth-child(2)': {
+      transform: 'rotate(270deg)',
+    },
   },
   beforeBottom: {
     gridArea: '4/1',
+    flexDirection: 'column',
+    '& div:nth-child(2)': {
+      transform: 'rotate(270deg)',
+    },
   },
   afterTop: {
     gridArea: '2/5',
+    flexDirection: 'column-reverse',
+    '& div:nth-child(2)': {
+      transform: 'rotate(90deg)',
+    },
   },
   after: {
     gridArea: '3/5',
+    '& div:nth-child(2)': {
+      transform: 'rotate(90deg)',
+    },
   },
   afterBottom: {
     gridArea: '4/5',
+    flexDirection: 'column',
+    '& div:nth-child(2)': {
+      transform: 'rotate(90deg)',
+    },
   },
   belowStart: {
+    flexDirection: 'row-reverse',
     gridArea: '5/2',
+    '& div:nth-child(2)': {
+      transform: 'rotate(180deg)',
+    },
   },
   below: {
     gridArea: '5/3',
+    '& div:nth-child(2)': {
+      transform: 'rotate(180deg)',
+    },
   },
   belowEnd: {
     gridArea: '5/4',
+    '& div:nth-child(2)': {
+      transform: 'rotate(180deg)',
+    },
   },
 });
