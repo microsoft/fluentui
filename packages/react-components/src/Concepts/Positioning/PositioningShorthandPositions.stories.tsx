@@ -10,7 +10,7 @@ export const ShorthandPositions = () => {
   return (
     <>
       <div className={styles.targetContainer}>
-        <div className={styles.instructions}>Hover over each box to see its positioned element</div>
+        <div className={styles.instructions}>Click each button to see its positioned element</div>
         <PositionedComponent
           positioning="above-start"
           targetClassName={styles.aboveStart}
@@ -74,6 +74,7 @@ const PositionedComponent = (props: {
   targetClassName?: string;
 }) => {
   const { positioning, targetContent = 'Click me', targetClassName } = props;
+  const styles = useExampleStyles();
   return (
     <Popover positioning={positioning} noArrow>
       <PopoverTrigger>
@@ -82,10 +83,20 @@ const PositionedComponent = (props: {
         </Button>
       </PopoverTrigger>
 
-      <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
+      <PopoverSurface className={styles.popoverSurface}>Container</PopoverSurface>
     </Popover>
   );
 };
+
+const useExampleStyles = makeStyles({
+  popoverSurface: {
+    width: '150px',
+    height: '50px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 const useGridExampleStyles = makeStyles({
   targetContainer: {
