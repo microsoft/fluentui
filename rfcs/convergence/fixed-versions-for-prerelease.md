@@ -6,13 +6,14 @@
 
 This RFC proposes using fixed version dependencies within the Fluent monoreop for all v9 prerelease packages.
 The term 'prerelease' refers to any packages with matching the version pattern `9.y.z-<prerelease tag>.<prerelease version>`.
-Prerelease tags do not communicate any kind of breaking changes, we will illustrate this in below sections.
+Prerelease tags do not communicate any kind of breaking changes, we will show this in the problem statement.
 
-This interim versioning approach while we are in pre-release will help to alleviate the dependency hell currently
+This versioning strategy will be temporary while we are in pre-release. It will reduce the dependency hell currently
 caused by using carets with prerelease tags.
 
 Once the core of Fluent v9 is fully released without any prerelease tags, this approach should be abandoned. Without
-prerelease tags, we can fully rely on caret dependencies to provider consumers with a consistent dependency tree.
+prerelease tags, we can fully rely on caret dependencies to provide consumers with a consistent dependency tree and
+commnuicate breaking changes with major version bumps.
 
 ## Problem statement
 
@@ -23,7 +24,7 @@ constraint:
 - `9.0.0-alpha.17` -> breaking change from `alpha.16`
 - `9.0.0-alpha.30`
 
-Any version greater than the current is matched, there is no way of communicating compatibility with prerelease versions.
+Any version greater than the current is matched, there is no way of communicating breaking changes with prerelease versions.
 You can test this for yourself [on the official npm semver calculator](https://semver.npmjs.com/).
 
 All Fluent v9 packages are currently released with a prerelease tag. There is no possible way of knowing
@@ -114,53 +115,93 @@ Example of proposed changes to `@fluentui/react-button` `package.json` file.
 The consequence of using fixed versions for the entire suite of `@fluentui/` scoped packages is that consuming
 multiple individual packages becomes problematic.
 
-Assuming Fluent uses fixed internal dependency versions, let us consider the following example:
+Assuming Fluent uses fixed internal dependency versions, a consumer installs the
+latest version of `react-components` and `react-dropdown`.
 
-```json
-// app/package.json
-"dependencies": {
-  "@fluentui/react-components": "^9.0.0-beta.15",
-  "@fluentui/react-dropdown": "^9.0.0-alpha.15",
-}
+- `@fluentui/react-components` -> 9.0.0.beta.15
 
-// @fluentui/react-dropdown
-"dependencies": {
-  "@fluentui/react-utilities": "^9.0.0-beta.1",
-  "@fluentui/react-positioning": "^9.0.0-beta.2",
-}
-```
+  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.4
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.3
 
-This will result in duplicated packages with different versions.
+- `@fluentui/react-dropdown` -> 9.0.0.alpha.1
+  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.4
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.3
+
+This scenario will work, both packages are on the latest version and pin the same shared dependencies.
+We release all changes in one pipeline run, so after a single release phase the dependencies should be in sync.
+
+When `react-components` is an older version a customer is already using, adding the new package will
+result in duplicate versions. This can happen if a consumer is already using an older `react-components`
+and installs a newly released `react-dropdown`.
+
+- `@fluentui/react-components` -> 9.0.0.beta.13
+
+  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.3
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.3
+
+- `@fluentui/react-dropdown` -> 9.0.0.alpha.1
+  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.4
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.3
+
+In the above example `react-shared-contexts` is duplicated.
+
+When upgrading Fluent v9 packages, the customer needs to make sure that the dependencies of `react-components` and
+`react-dropdown` are pinned to the same versions, the only way to easily guarantee this without doing an exhaustive
+investigation is to make sure to use the latest version of both, which is still not easy.
 
 To mitigate this problem during the prerelease phase we can do the following:
 
-### Release new components straight into react-components beta
+### Prefer to release new components straight into react-components beta
 
-This RFC argues that having a predictable dependency tree is during subsequent install is more important
+This RFC argues that having a predictable dependency tree is during subsequent installs is more important
 than managing expectations for new components with `alpha` and `beta` release phases. `beta` does not
-guarantee that APIs will/won't break, especially when a component has not even been used in any realistic
+guarantee that APIs won't break, especially when a component has not even been used in any realistic
 scenario by partners.
 
-Realistically for the Fluent team, bugs found during either `alpha` or `beta` phases will must be addressed or fixed
+Realistically for the Fluent team, bugs found during either `alpha` or `beta` phases must be addressed or fixed
 upon release. If a bug or an API design does not match customer requirements in either phases, we **are entitled** break the
 API in a further iteration to improve.
 
 ### Provide resolutions to customers
 
-If there is a real need to release a component into the `alpha`, consumers can still apply manual resolutions, if we
-want to support this scenario we can provide a generated set of yarn resolutions to allow all Fluent dependencies to
+If we must release a component into the `alpha`, consumers can still apply manual resolutions.
+To support this scenario, we can provide a generated set of yarn resolutions to allow all Fluent dependencies to
 work together from the a consuming app.
+
+The generated resolutions must be for a specific version of the `react-components` package.
 
 We can provide this functionality either on our docsite or as a published CLI package.
 
+### Lockstep versioning for `beta` components
+
+Lockstep versioning does not solve the problem, but makes finding compatible versions of `beta` and `alpha` packages
+easier. Using the below example:
+
+- `@fluentui/react-components` -> 9.0.0.beta.13
+
+  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.13
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.3
+
+- `@fluentui/react-dropdown` -> 9.0.0.alpha.1
+  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.10
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.10
+
+It's clear that we only need to find any version of `react-dropdown` that uses `beta.10` dependencies. Any
+future version mismatch can be easily investigated and fixed.
+
+For the problem of fixed versions, lockstep only solves a temporary problem since
+on major release Fluent can use full semver features. A future RFC will deal with the long term benefits of lockstep.
+
 ### Conclusion -> consuming individual packages
 
-We should propose to partners to consume only `@fluentui/react-components`. If new components are released to the same
-prerelease phase, there is no obvious reason to consume components as separate packages and the obvious solution to
+We should recommend partners to install only `@fluentui/react-components`. If new components are released to the same
+prerelease phase, there is no obvious reason to consume components as separate packages and the solution to
 consuming a new component is to bump the suite package.
 
-The only real scalable solution is to get out of the prerelease phase
-and leverage all the benefits of semver. Since keeping caret versions during
+The only scalable solution is to get out of the prerelease phase
+and leverage all the benefits of semver.
+
+Keeping caret versions during
 prerelease tags does not solve the problem of consuming individual packages but does solve the problem of predictable
 dependency tree, we should move on with it.
 
@@ -173,8 +214,12 @@ dependency tree, we should move on with it.
 - Predictably trace dependencies to code for debugging.
 - Only a temporary measure until Fluent moves out of prerelease phase.
 - We can still go back to carets easily in prerelease phase if needed.
+- If beta released in lockstep, can easily go back to independent versioning for main release.
+  - We don't break semver because we were still using prerelease tags
 
 ### Cons
 
 - Hard to release components into different prerelease phases.
+  - Resolutions are not good developer experience.
+  - Lockstep is solving temporary problem in this case.
 - Cannot strictly enforce customers to only use the suite package.
