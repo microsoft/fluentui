@@ -6,6 +6,11 @@ const Types = () => (
   <ExampleSection title="Types">
     <ComponentExample title="Default" description="A default Chat." examplePath="components/Chat/Types/ChatExample" />
     <ComponentExample
+      title="Bold"
+      description="A chat can have bold or classic bubble backgrounds."
+      examplePath="components/Chat/Types/ChatExampleBold"
+    />
+    <ComponentExample
       title="Compact"
       description="A compact Chat."
       examplePath="components/Chat/Types/ChatExampleCompact"

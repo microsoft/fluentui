@@ -12,6 +12,7 @@ export interface ChatMessageVariables {
   authorMarginRightCompact: string;
   backgroundColor: string;
   backgroundColorMine: string;
+  backgroundColorMineBold: string;
   badgeShadow: string;
   badgeTextColor: string;
   border: string;
@@ -21,6 +22,7 @@ export interface ChatMessageVariables {
   compactHoverBorder: string;
   compactSpacing: string;
   contentColor: string;
+  contentColorBold: string;
   hasMention: boolean;
   hasMentionColor: string;
   hasMentionNubbinColor: string;
@@ -51,6 +53,7 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   authorMarginRightCompact: pxToRem(8),
   backgroundColor: siteVars.colorScheme.default.background,
   backgroundColorMine: siteVars.colorScheme.brand.background1,
+  backgroundColorMineBold: siteVars.colorScheme.brand.background6,
   badgeShadow: siteVars.shadowLevel1Dark,
   badgeTextColor: siteVars.colorScheme.brand.foreground4,
   border: 'none',
@@ -60,6 +63,7 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   compactHoverBorder: `solid ${siteVars.borderWidth} ${siteVars.colorScheme.default.backgroundHover3}`,
   compactSpacing: pxToRem(12),
   contentColor: siteVars.colorScheme.default.foreground,
+  contentColorBold: siteVars.colorScheme.brand.foreground4,
   hasMention: false,
   hasMentionColor: siteVars.colors.orange[300],
   hasMentionNubbinColor: siteVars.colorScheme.orange.background,

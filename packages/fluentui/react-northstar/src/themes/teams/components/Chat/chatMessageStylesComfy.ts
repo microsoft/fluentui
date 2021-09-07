@@ -29,6 +29,10 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
       paddingBottom: pxToRem(10),
 
       backgroundColor: p.mine ? v.backgroundColorMine : v.backgroundColor,
+      ...(p.bubbleTheme === 'bold' &&
+        p.mine && {
+          backgroundColor: v.backgroundColorMineBold,
+        }),
       border: v.border,
 
       ...(p.attached === true && {

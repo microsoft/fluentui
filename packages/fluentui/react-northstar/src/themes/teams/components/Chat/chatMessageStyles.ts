@@ -105,10 +105,19 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     const { props: p, variables: v } = componentStyleFunctionParam;
     return {
       color: v.contentColor,
+      ...(p.bubbleTheme === 'bold' &&
+        p.mine && {
+          color: v.contentColorBold,
+        }),
       display: 'block',
       '& a': {
         outline: 'none',
         color: p.mine ? v.linkColorMine : v.linkColor,
+        ...(p.bubbleTheme === 'bold' &&
+          p.mine && {
+            color: v.contentColorBold,
+            textDecoration: 'underline',
+          }),
         ':focus': {
           textDecoration: 'underline',
         },

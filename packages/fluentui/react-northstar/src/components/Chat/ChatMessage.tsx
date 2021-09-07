@@ -61,6 +61,7 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
+import { ChatBubbleTheme, useChatBubbleThemeContext } from './chatBubbleThemeContext';
 import { ChatDensity, useChatDensityContext } from './chatDensityContext';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
@@ -107,6 +108,9 @@ export interface ChatMessageProps
 
   /** A message can format the badge to appear at the start or the end of the message. */
   badgePosition?: 'start' | 'end';
+
+  /** A message can have a different set of background colors. */
+  bubbleTheme?: ChatBubbleTheme;
 
   /** Testing this */
   comfyBody?: ShorthandValue<BoxProps>;
@@ -180,7 +184,10 @@ export interface ChatMessageProps
   unstable_overflow?: boolean;
 }
 
-export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
+export type ChatMessageStylesProps = Pick<
+  ChatMessageProps,
+  'attached' | 'badgePosition' | 'density' | 'mine' | 'bubbleTheme'
+> & {
   hasBadge: boolean;
   hasReactionGroup: boolean;
 
@@ -228,6 +235,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
+  const chatBubbleTheme = useChatBubbleThemeContext();
   const chatDensity = useChatDensityContext();
   const {
     accessibility,
@@ -235,6 +243,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     author,
     badge,
     badgePosition,
+    bubbleTheme = chatBubbleTheme,
     children,
     className,
     comfyBody,
@@ -333,6 +342,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
+      bubbleTheme,
       density,
       focused,
       hasActionMenu,
@@ -498,7 +508,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ attached, density, mine }),
+    defaultProps: () => ({ attached, density, mine, bubbleTheme }),
   });
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {
@@ -626,6 +636,7 @@ ChatMessage.propTypes = {
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
+  bubbleTheme: PropTypes.oneOf<ChatBubbleTheme>(['classic', 'bold']),
   comfyBody: customPropTypes.itemShorthand,
   compactBody: customPropTypes.itemShorthand,
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),

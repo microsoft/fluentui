@@ -23,6 +23,7 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { ChatDensity, ChatDensityContextProvider, defaultChatDensity } from './chatDensityContext';
+import { ChatBubbleTheme, ChatBubbleThemeContextProvider, defaultChatBubbleTheme } from './chatBubbleThemeContext';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
@@ -39,6 +40,9 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Chat density. */
   density?: ChatDensity;
+
+  /** Chat bubble theme coloring */
+  bubbleTheme?: ChatBubbleTheme;
 
   /** Shorthand array of the items inside the chat. */
   items?: ShorthandCollection<ChatItemProps>;
@@ -65,7 +69,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, density, design, items, styles, variables } = props;
+  const { accessibility, bubbleTheme, children, className, density, design, items, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Chat.displayName,
@@ -73,7 +77,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
     className: chatClassName,
-    mapPropsToStyles: () => ({ density }),
+    mapPropsToStyles: () => ({ density, bubbleTheme }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -94,15 +98,17 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
         ...unhandledProps,
       })}
     >
-      <ChatDensityContextProvider value={density}>
-        {childrenExist(children)
-          ? children
-          : _.map(items, item =>
-              ChatItem.create(item, {
-                defaultProps: () => ({ className: chatSlotClassNames.item }),
-              }),
-            )}
-      </ChatDensityContextProvider>
+      <ChatBubbleThemeContextProvider value={bubbleTheme}>
+        <ChatDensityContextProvider value={density}>
+          {childrenExist(children)
+            ? children
+            : _.map(items, item =>
+                ChatItem.create(item, {
+                  defaultProps: () => ({ className: chatSlotClassNames.item }),
+                }),
+              )}
+        </ChatDensityContextProvider>
+      </ChatBubbleThemeContextProvider>
     </ElementType>,
   );
   setEnd();
@@ -116,6 +122,7 @@ Chat.defaultProps = {
   accessibility: chatBehavior,
   as: 'ul',
   density: defaultChatDensity,
+  bubbleTheme: defaultChatBubbleTheme,
 };
 Chat.propTypes = {
   ...commonPropTypes.createCommon({
