@@ -70,6 +70,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
+      searchForMoreIconName,
       searchForMoreText,
       className,
       moreSuggestionsAvailable,
@@ -193,7 +194,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           <CommandButton
             componentRef={this._searchForMoreButton}
             className={this._classNames.searchForMoreButton}
-            iconProps={{ iconName: 'Search' }}
+            iconProps={{ iconName: searchForMoreIconName || 'Search' }}
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
