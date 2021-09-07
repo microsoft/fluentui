@@ -8,21 +8,17 @@ import {
   useUnmount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { mergeClasses } from '@fluentui/react-make-styles';
-import { getRTLSafeKey, clamp, getPercent, calculateSteps, getMarkPercent, getMarkValue } from '../../utils/index';
+import {
+  on,
+  clamp,
+  getPercent,
+  calculateSteps,
+  getMarkPercent,
+  getMarkValue,
+  getKeydownValue,
+  renderMarks,
+} from '../../utils/index';
 import type { SliderState } from './Slider.types';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
-  element.addEventListener(eventName, callback);
-  return () => element.removeEventListener(eventName, callback);
-};
-
-// The mark related classNames are needed since they are used in a JSX element that is dynamically generated.
-const markContainerClassName = 'ms-Slider-markItemContainer';
-export const markClassName = 'ms-Slider-mark';
-const firstMarkClassName = 'ms-Slider-firstMark';
-const lastMarkClassName = 'ms-Slider-lastMark';
 
 export const useSliderState = (state: SliderState) => {
   const {
@@ -135,39 +131,12 @@ export const useSliderState = (state: SliderState) => {
 
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      const normalizedKey = getRTLSafeKey(ev.key, dir);
       hideStepAnimation();
       onKeyDownCallback?.(ev);
+      const incomingValue = getKeydownValue(ev, currentValue, min, max, dir, keyboardStep);
 
-      if (ev.shiftKey) {
-        if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
-          updatePosition(currentValue! - keyboardStep * 10, ev);
-          return;
-        } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
-          updatePosition(currentValue! + keyboardStep * 10, ev);
-          return;
-        }
-      } else if (normalizedKey === 'ArrowDown' || normalizedKey === 'ArrowLeft') {
-        updatePosition(currentValue! - keyboardStep, ev);
-        return;
-      } else if (normalizedKey === 'ArrowUp' || normalizedKey === 'ArrowRight') {
-        updatePosition(currentValue! + keyboardStep, ev);
-        return;
-      } else {
-        switch (normalizedKey) {
-          case 'PageDown':
-            updatePosition(currentValue! - keyboardStep * 10, ev);
-            break;
-          case 'PageUp':
-            updatePosition(currentValue! + keyboardStep * 10, ev);
-            break;
-          case 'Home':
-            updatePosition(min, ev);
-            break;
-          case 'End':
-            updatePosition(max, ev);
-            break;
-        }
+      if (currentValue !== incomingValue) {
+        updatePosition(incomingValue, ev);
       }
     },
     [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
@@ -200,9 +169,7 @@ export const useSliderState = (state: SliderState) => {
     return origin !== undefined ? getPercent(origin, min, max) : 0;
   }, [max, min, origin]);
 
-  const markValues = React.useMemo((): number[] => {
-    return getMarkValue(marks, min, max, step);
-  }, [marks, max, min, step]);
+  const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
 
   const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
 
@@ -244,30 +211,6 @@ export const useSliderState = (state: SliderState) => {
       }
     : {};
 
-  /**
-   * Renders the marks
-   */
-  const renderMarks = () => {
-    const marksPercent = markPercent;
-    const marksValue = markValues;
-    const marksChildren: JSX.Element[] = [];
-    for (let i = 0; i < marksPercent.length; i++) {
-      marksChildren.push(
-        <div className={markContainerClassName} key={`markItemContainer-${i}`}>
-          <div
-            className={mergeClasses(
-              markClassName,
-              (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
-            )}
-            key={`mark-${i}`}
-          />
-        </div>,
-      );
-    }
-
-    return marksChildren;
-  };
-
   // Root props
   state.id = id;
   if (!disabled) {
@@ -279,8 +222,10 @@ export const useSliderState = (state: SliderState) => {
   state.track.style = trackStyles;
 
   // Mark props
-  state.marksWrapper.children = marks ? renderMarks() : undefined;
-  state.marksWrapper.style = marksWrapperStyles;
+  if (marks) {
+    state.marksWrapper.children = renderMarks(markValues);
+    state.marksWrapper.style = marksWrapperStyles;
+  }
 
   // Thumb Wrapper Props
   state.thumbWrapper.style = thumbWrapperStyles;
