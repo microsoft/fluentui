@@ -4,7 +4,7 @@
 
 ## Summary
 
-This RFC proposes using fixed version dependencies within the Fluent monoreop for all v9 prerelease packages.
+This RFC proposes using fixed version dependencies within the Fluent monorepo for all v9 prerelease packages.
 The term 'prerelease' refers to any packages with matching the version pattern `9.y.z-<prerelease tag>.<prerelease version>`.
 Prerelease tags do not communicate any kind of breaking changes, we will show this in the problem statement.
 
