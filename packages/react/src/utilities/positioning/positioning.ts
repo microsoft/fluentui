@@ -338,26 +338,28 @@ function _adjustFitWithinBounds(
   if (!directionalHintFixed && !coverTarget) {
     elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
-  const outOfBounds = _getOutOfBoundsEdges(element, bounding);
+  const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
 
-  if (alignTargetEdge) {
-    // The edge opposite to the alignment edge might be out of bounds.
-    // Flip alignment to see if we can get it within bounds.
-    if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
-      const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
-      if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
-        return flippedElementEstimate;
-      } else {
-        // If the flipped elements edges are still out of bounds, try nudging it.
-        elementEstimate = _alignOutOfBoundsEdges(
-          _getOutOfBoundsEdges(flippedElementEstimate.elementRectangle, bounding),
-          elementEstimate,
-          bounding,
-        );
+  if (outOfBounds.length > 0) {
+    if (alignTargetEdge) {
+      // The edge opposite to the alignment edge might be out of bounds.
+      // Flip alignment to see if we can get it within bounds.
+      if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
+        const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
+        if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
+          return flippedElementEstimate;
+        } else {
+          // If the flipped elements edges are still out of bounds, try nudging it.
+          elementEstimate = _alignOutOfBoundsEdges(
+            _getOutOfBoundsEdges(flippedElementEstimate.elementRectangle, bounding),
+            elementEstimate,
+            bounding,
+          );
+        }
       }
+    } else {
+      elementEstimate = _alignOutOfBoundsEdges(outOfBounds, elementEstimate, bounding);
     }
-  } else {
-    elementEstimate = _alignOutOfBoundsEdges(outOfBounds, elementEstimate, bounding);
   }
 
   return elementEstimate;
