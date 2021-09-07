@@ -83,7 +83,7 @@ export const useMenu = (props: MenuProps): MenuState => {
  * i.e checkboxes and radios
  */
 const useMenuSelectableState = (
-  state: Pick<MenuState, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+  state: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
   const [checkedValues, setCheckedValues] = useControllableState({
     state: state.checkedValues,

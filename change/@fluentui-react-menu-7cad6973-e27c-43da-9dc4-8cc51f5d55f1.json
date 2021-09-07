@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "update signature for callbacks",
+  "comment": "fix(Menu): Missing submenu indicator slot",
   "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
+  "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
 }

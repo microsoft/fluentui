@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 30 Aug 2021 07:35:05 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.151](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.151)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.150..@fluentui/react-tabs_v1.0.0-beta.151)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.4 ([PR #19584](https://github.com/microsoft/fluentui/pull/19584) by gcox@microsoft.com)
+
+## [1.0.0-beta.150](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.150)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.149..@fluentui/react-tabs_v1.0.0-beta.150)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+- Bump @fluentui/react to v8.30.3 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+- Bump @fluentui/utilities to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
+- Bump @fluentui/react-hooks to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
+- Bump @fluentui/style-utilities to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
+
+## [1.0.0-beta.149](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.149)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.148..@fluentui/react-tabs_v1.0.0-beta.149)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.1 ([PR #18892](https://github.com/microsoft/fluentui/pull/18892) by tmichon@microsoft.com)
 
 ## [1.0.0-beta.148](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.148)
 

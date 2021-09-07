@@ -10,8 +10,9 @@ import {
   updateJson,
   logger,
   updateProjectConfiguration,
+  serializeJson,
+  names,
 } from '@nrwl/devkit';
-import { serializeJson, stringUtils } from '@nrwl/workspace';
 
 import { PackageJson, TsConfig } from '../../types';
 
@@ -192,12 +193,12 @@ describe('migrate-converged-pkg generator', () => {
           experimentalDecorators: true,
           importHelpers: true,
           jsx: 'react',
-          lib: ['ES2020', 'dom'],
+          lib: ['ES2019', 'dom'],
           module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'ES2020',
+          target: 'ES2019',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
@@ -412,18 +413,16 @@ describe('migrate-converged-pkg generator', () => {
       const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
 
+      const normalizedProjectNameNamesVariants = names(normalizedProjectName);
+
       const paths = {
         reactExamples: {
-          // eslint-disable-next-line @fluentui/max-len
+          /* eslint-disable @fluentui/max-len */
           //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
-          storyFileOne: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
-            normalizedProjectName,
-          )}/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
-          // eslint-disable-next-line @fluentui/max-len
+          storyFileOne: `${pathToStoriesWithinReactExamples}/${normalizedProjectNameNamesVariants.className}/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
           // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
-          storyFileTwo: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
-            normalizedProjectName,
-          )}Other/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
+          storyFileTwo: `${pathToStoriesWithinReactExamples}/${normalizedProjectNameNamesVariants.className}Other/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+          /* eslint-enable @fluentui/max-len */
         },
       };
 
@@ -447,8 +446,8 @@ describe('migrate-converged-pkg generator', () => {
 
       function getMovedStoriesData() {
         const movedStoriesExportNames = {
-          storyOne: `${stringUtils.classify(normalizedProjectName)}`,
-          storyTwo: `${stringUtils.classify(normalizedProjectName)}Other`,
+          storyOne: `${normalizedProjectNameNamesVariants.className}`,
+          storyTwo: `${normalizedProjectNameNamesVariants.className}Other`,
         };
         const movedStoriesFileNames = {
           storyOne: `${movedStoriesExportNames.storyOne}.stories.tsx`,
@@ -806,8 +805,7 @@ describe('migrate-converged-pkg generator', () => {
       npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
 
       expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".cache/
-        .storybook/
+        ".storybook/
         .vscode/
         bundle-size/
         config/
@@ -834,7 +832,8 @@ describe('migrate-converged-pkg generator', () => {
         .editorconfig
         .eslint*
         .git*
-        .prettierignore"
+        .prettierignore
+        "
       `);
     });
   });

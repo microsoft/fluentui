@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "Fix initial ResponsiveMode value",
+  "comment": "Set active descendant for no results found",
   "packageName": "@fluentui/react",
-  "email": "tmichon@microsoft.com",
+  "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }

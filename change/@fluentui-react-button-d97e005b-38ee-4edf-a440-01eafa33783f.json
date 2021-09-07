@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "revert(react-button): remove vNext components used in SB  from devDeps that are stale",
-  "packageName": "@fluentui/react-button",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

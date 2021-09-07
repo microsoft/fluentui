@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 27 Aug 2021 07:33:32 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.72)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.71..@fluentui/react-menu_v9.0.0-alpha.72)
+
+### Changes
+
+- refactor(Menu): use `event.key` for keyboard events ([PR #19637](https://github.com/microsoft/fluentui/pull/19637) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.71)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.70..@fluentui/react-menu_v9.0.0-alpha.71)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.4.5 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.43 ([PR #19065](https://github.com/microsoft/fluentui/pull/19065) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.70)
+
+Wed, 01 Sep 2021 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.69..@fluentui/react-menu_v9.0.0-alpha.70)
+
+### Changes
+
+- Updates react-menu to use root as slot ([PR #19483](https://github.com/microsoft/fluentui/pull/19483) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.69)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.68..@fluentui/react-menu_v9.0.0-alpha.69)
+
+### Changes
+
+- update signature for callbacks ([PR #19544](https://github.com/microsoft/fluentui/pull/19544) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.68)
 

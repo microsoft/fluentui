@@ -20,7 +20,7 @@ export const cardStyles: (context: ElementDefinitionContext, definition: Foundat
         width: var(--card-width, 100%);
         box-sizing: border-box;
         background: ${fillColor};
-        color: ${neutralForegroundRest}
+        color: ${neutralForegroundRest};
         border-radius: calc(${layerCornerRadius} * 1px);
         ${elevation}
       }

@@ -2,6 +2,112 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.102",
+      "version": "9.0.0-alpha.102",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.71",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.102",
+      "version": "9.0.0-alpha.102",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.81",
+            "author": "lingfangao@hotmail.com",
+            "commit": "c3b21e84137ee07572e52faffbfffd384ed92609",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Sep 2021 00:13:07 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.101",
+      "version": "9.0.0-alpha.101",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.75",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1896d9a205eee055d3a2ccdb21710ca397271d",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.101",
+      "version": "9.0.0-alpha.101",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.70",
+            "author": "olfedias@microsoft.com",
+            "commit": "ff3225d408fa6a97628e3f08a5a11a196bef6934",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.100",
+      "version": "9.0.0-alpha.100",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adding FAQ on moving to v9-BETA from v8.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ecfdff4eb91d289b9ee1348717556babfdf21e1e",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor(react-components): update storybook setup to mitigate big diffs when executing migration generator with --all flags",
+            "author": "martinhochel@microsoft.com",
+            "commit": "bd44bb2f0936177a4edc43be2fedc80f73b986cc",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.99",
+      "version": "9.0.0-alpha.99",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.77",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "abed5eb9fb05032c87e724176132618343886083",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.69",
+            "author": "olfedias@microsoft.com",
+            "commit": "905f14558a95303cbbe168fca4584245cb35773a",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Aug 2021 07:35:05 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.98",
       "version": "9.0.0-alpha.98",

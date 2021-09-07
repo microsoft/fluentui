@@ -11,6 +11,7 @@ export function isConformant<TProps = {}>(
       'is-static-property-of-parent',
       // Will enable with appropriate overrides separately
       'consistent-callback-names',
+      'consistent-callback-args',
     ],
     skipAsPropTests: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
