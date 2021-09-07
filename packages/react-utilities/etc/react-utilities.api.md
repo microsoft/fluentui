@@ -76,6 +76,9 @@ export const defaultSSRContextValue: SSRContextValue;
 // @public
 export const divProperties: Record<string, number>;
 
+// @public (undocumented)
+export type Dummy = 'dummy';
+
 // @public
 export const formProperties: Record<string, number>;
 

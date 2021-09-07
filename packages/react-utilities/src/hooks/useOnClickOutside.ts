@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
+export type Dummy = 'dummy';
+
 export interface UseOnClickOrScrollOutsideOptions {
   /**
    * The element to listen for the click event

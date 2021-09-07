@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
+export type Dummy = 'dummy';
+
 export type AccordionIndex = number | number[];
 
 export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;

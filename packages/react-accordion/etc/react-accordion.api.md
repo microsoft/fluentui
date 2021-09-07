@@ -200,6 +200,9 @@ export type AccordionToggleEvent<E = HTMLElement> = React_2.MouseEvent<E> | Reac
 // @public (undocumented)
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
+// @public (undocumented)
+export type Dummy = 'dummy';
+
 // @public
 export const renderAccordion: (state: AccordionState, contextValues: AccordionContextValues) => JSX.Element;
 
