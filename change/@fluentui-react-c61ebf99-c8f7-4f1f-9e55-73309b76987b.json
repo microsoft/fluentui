@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Customize search for more icon for Suggestions",
+  "packageName": "@fluentui/react",
+  "email": "tschao@microsoft.com",
+  "dependentChangeType": "patch"
+}
