@@ -54,7 +54,7 @@ export type SliderSlots = {
   input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLElement>;
 };
 
-export type SliderCommons = {
+export interface SliderCommons {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -140,7 +140,7 @@ export type SliderCommons = {
    * The Slider's current value label to be read by the screen reader.
    */
   ariaValueText?: (value: number) => string;
-};
+}
 
 export interface SliderProps extends Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'>, SliderCommons {}
 

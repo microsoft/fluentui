@@ -64,8 +64,8 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLElement>): Slid
     size,
     root: getNativeElementProps('span', {
       ref,
-      id: useId('slider-'),
       ...props,
+      id: useId('slider-', props.id),
     }),
     components: {
       input: 'input',
