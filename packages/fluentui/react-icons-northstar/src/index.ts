@@ -85,6 +85,7 @@ export { EditIcon } from './components/EditIcon';
 export { EmailIcon } from './components/EmailIcon';
 export { EmailWithDotIcon } from './components/EmailWithDotIcon';
 export { EmojiIcon } from './components/EmojiIcon';
+export { EmojiAddIcon } from './components/EmojiAddIcon';
 export { EmojiSadIcon } from './components/EmojiSadIcon';
 export { EmojiSurprisedIcon } from './components/EmojiSurprisedIcon';
 export { ErrorIcon } from './components/ErrorIcon';

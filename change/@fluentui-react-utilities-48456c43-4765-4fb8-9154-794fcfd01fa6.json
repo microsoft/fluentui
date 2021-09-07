@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-utilities): use `event.key` for keyboard events",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

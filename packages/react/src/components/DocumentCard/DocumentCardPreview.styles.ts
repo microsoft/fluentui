@@ -51,6 +51,9 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         li: {
           height: '16px',
           lineHeight: '16px',
+          display: 'flex',
+          flexWrap: 'nowrap',
+          alignItems: 'center',
           marginBottom: '8px',
           overflow: 'hidden',
         },
@@ -58,6 +61,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
     },
     fileListIcon: {
       display: 'inline-block',
+      flexShrink: 0,
       marginRight: '8px',
     },
     fileListLink: [
@@ -70,12 +74,12 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
       {
         boxSizing: 'border-box',
         color: palette.neutralDark,
+        flexGrow: 1,
         overflow: 'hidden',
         display: 'inline-block',
         textDecoration: 'none',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
-        width: 'calc(100% - 24px)',
         selectors: {
           ':hover': {
             color: palette.themePrimary,
