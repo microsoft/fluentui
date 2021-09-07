@@ -78,6 +78,13 @@ export const ImageAppearanceShape = () => (
     />
   </Stack>
 );
+ImageAppearanceShape.parameters = {
+  docs: {
+    description: {
+      story: 'Images can be styled as square, rounded corners or circular shape.',
+    },
+  },
+};
 
 export const ImageVariationsBorder = () => (
   <Stack horizontal>
@@ -130,6 +137,13 @@ export const ImageVariationsBorder = () => (
     </Stack>
   </Stack>
 );
+ImageVariationsBorder.parameters = {
+  docs: {
+    description: {
+      story: 'The `bordered` prop will apply a border to images.',
+    },
+  },
+};
 
 export const ImageVariationsFallback = () => (
   <Stack horizontal>
@@ -149,6 +163,14 @@ export const ImageVariationsFallback = () => (
     />
   </Stack>
 );
+ImageVariationsFallback.parameters = {
+  docs: {
+    description: {
+      story:
+        'In cases when images fail to load, the Image component results into the native `<img/>` browser fallback.',
+    },
+  },
+};
 
 export const ImageLayoutFit = () => (
   <>
@@ -184,7 +206,7 @@ export const ImageLayoutFit = () => (
     </div>
 
     <h1>Cover</h1>
-    <div style={{ border: '1px solid green', height: 250, width: 400 }}>
+    <div style={{ border: '1px solid green', height: 200, width: 400 }}>
       <Image src="https://via.placeholder.com/400x250" fit="cover" />
     </div>
     <br />
@@ -197,6 +219,15 @@ export const ImageLayoutFit = () => (
     </div>
   </>
 );
+ImageLayoutFit.parameters = {
+  docs: {
+    description: {
+      story: `The \`fit\` prop is used to determine how the image should be resized in order to fit its container.
+      The image can be resized in various ways: centering to its container(\`center\`)., filling its container
+      (\`cover\`) or preserving the aspect ratio (\`contain\`).`,
+    },
+  },
+};
 
 export const ImageFluid = () => (
   <Stack horizontal>
@@ -204,6 +235,13 @@ export const ImageFluid = () => (
     <Image fluid src="https://via.placeholder.com/100x100" />
   </Stack>
 );
+ImageFluid.parameters = {
+  docs: {
+    description: {
+      story: 'An Image can be maximized in order to fill its parent container.',
+    },
+  },
+};
 
 export default {
   title: 'Components/Image',
