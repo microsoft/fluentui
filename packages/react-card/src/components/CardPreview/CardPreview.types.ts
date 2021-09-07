@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * CardPreview Props
  */
-export interface CardPreviewProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface CardPreviewProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Image slot
    */

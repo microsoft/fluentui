@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * CardFooter Props
  */
-export interface CardFooterProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface CardFooterProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Actions slot
    */
