@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.30.3",
+  "version": "8.30.4",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,7 +35,7 @@
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/example-data": "^8.2.6",
     "@fluentui/jest-serializer-merge-styles": "^8.0.10",
-    "@fluentui/react-conformance": "^0.4.5",
+    "@fluentui/react-conformance": "^0.5.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.8",
     "@fluentui/webpack-utilities": "^8.1.5",

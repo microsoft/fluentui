@@ -156,7 +156,6 @@ storiesOf('react-menu Menu - selection groups', module)
         <MenuTrigger>
           <button>Toggle menu</button>
         </MenuTrigger>
-
         <MenuPopover>
           <MenuList>
             <MenuGroup>
@@ -184,6 +183,41 @@ storiesOf('react-menu Menu - selection groups', module)
                 Arial
               </MenuItemRadio>
             </MenuGroup>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { rtl: true, provider: 'FluentProvider' },
+  );
+
+storiesOf('react-menu Menu - nested submenus', module)
+  .addDecorator(story => <Screener>{story()}</Screener>)
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>New </MenuItem>
+            <MenuItem>New Window</MenuItem>
+            <MenuItem>Open Folder</MenuItem>
+            <Menu open>
+              <MenuTrigger>
+                <MenuItem>Preferences</MenuItem>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>New </MenuItem>
+                  <MenuItem>New Window</MenuItem>
+                  <MenuItem>Open Folder</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
           </MenuList>
         </MenuPopover>
       </Menu>
