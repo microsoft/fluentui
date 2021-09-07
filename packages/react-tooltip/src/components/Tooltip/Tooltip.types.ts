@@ -1,21 +1,18 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  /**
-   * The content displayed inside the tooltip.
-   */
-  content: React.HTMLAttributes<HTMLElement>;
+  root: Omit<ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, 'children'>;
 };
 
 /**
  * Properties and state for Tooltip
  */
-export interface TooltipCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
+export interface TooltipCommons {
   /**
    * The child is the element that triggers the Tooltip. It will have additional properties added,
    * including events and aria properties.
@@ -26,6 +23,11 @@ export interface TooltipCommons extends Omit<React.HTMLAttributes<HTMLElement>, 
     | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
     | ((props: TooltipTriggerProps) => React.ReactNode)
     | null;
+
+  /**
+   * The content displayed inside the tooltip.
+   */
+  content: React.ReactNode;
 
   /**
    * Color variant with inverted colors
@@ -113,17 +115,15 @@ export interface OnVisibleChangeData {
 /**
  * Properties for Tooltip
  */
-export interface TooltipProps extends ComponentProps<TooltipSlots>, Partial<TooltipCommons> {}
+export interface TooltipProps
+  extends ComponentProps<TooltipSlots>,
+    Partial<Omit<TooltipCommons, 'content'>>,
+    Pick<TooltipCommons, 'content'> {}
 
 /**
  * State used in rendering Tooltip
  */
 export interface TooltipState extends ComponentState<TooltipSlots>, TooltipCommons {
-  /**
-   * Ref to the root tooltip element.
-   */
-  ref: React.Ref<HTMLElement>;
-
   /**
    * Whether the tooltip should be rendered to the DOM.
    *

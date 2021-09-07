@@ -2,8 +2,8 @@ import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
+  getNativeElementProps,
   onlyChild,
-  resolveShorthand,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
@@ -51,27 +51,25 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
   );
 
   const state: TooltipState = {
-    // Default values
-    id: useId('tooltip-', props.id),
-    role: 'tooltip',
     showDelay: 250,
     hideDelay: 250,
     triggerAriaAttribute: 'label',
     shouldRenderTooltip: visible,
 
-    // User-provided props
     ...props,
-    ref,
 
-    // Controlled state values
     visible,
 
     // Slots
     components: {
       root: 'div',
-      content: React.Fragment,
     },
-    content: resolveShorthand(props.content, { required: true }),
+    root: getNativeElementProps('div', {
+      role: 'tooltip',
+      ...props,
+      ref,
+      id: useId('tooltip-', props.id),
+    }),
   };
 
   const popperOptions = {
@@ -97,7 +95,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePopper(popperOptions);
 
-  state.ref = useMergedRefs(state.ref, containerRef);
+  state.root.ref = useMergedRefs(state.root.ref, containerRef);
   state.arrowRef = arrowRef;
 
   // When this tooltip is visible, hide any other tooltips, and register it
@@ -178,8 +176,8 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
 
   // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
   // This keeps the tooltip visible when the pointer is moved over it.
-  state.onPointerEnter = useMergedCallbacks(state.onPointerEnter, clearDelayTimeout);
-  state.onPointerLeave = useMergedCallbacks(state.onPointerLeave, onLeaveTrigger);
+  state.root.onPointerEnter = useMergedCallbacks(state.root.onPointerEnter, clearDelayTimeout);
+  state.root.onPointerLeave = useMergedCallbacks(state.root.onPointerLeave, onLeaveTrigger);
 
   const child = React.isValidElement(state.children) ? state.children : undefined;
 
@@ -199,19 +197,19 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
 
   if (state.triggerAriaAttribute === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use labelledby.
-    if (typeof state.content.children === 'string') {
-      triggerProps['aria-label'] = state.content.children as string;
+    if (typeof state.content === 'string') {
+      triggerProps['aria-label'] = state.content;
     } else {
       state.triggerAriaAttribute = 'labelledby';
     }
   }
 
   if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
-    triggerProps['aria-labelledby'] = state.id;
+    triggerProps['aria-labelledby'] = state.root.id;
     // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
     state.shouldRenderTooltip = true;
   } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
-    triggerProps['aria-describedby'] = state.id;
+    triggerProps['aria-describedby'] = state.root.id;
     state.shouldRenderTooltip = true;
   }
 

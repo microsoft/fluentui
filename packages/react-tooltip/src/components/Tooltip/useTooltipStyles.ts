@@ -67,11 +67,11 @@ const useStyles = makeStyles({
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.inverted && styles.inverted,
     state.visible && styles.visible,
-    state.className,
+    state.root.className,
   );
 
   state.arrowClassName = styles.arrow;

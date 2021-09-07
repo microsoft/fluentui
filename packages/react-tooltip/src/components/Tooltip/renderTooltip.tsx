@@ -8,7 +8,7 @@ import type { TooltipSlots, TooltipState } from './Tooltip.types';
  * {@docCategory Tooltip}
  */
 export const renderTooltip = (state: TooltipState) => {
-  const { slots, slotProps } = getSlots<TooltipSlots>(state, ['content']);
+  const { slots, slotProps } = getSlots<TooltipSlots>(state);
 
   return (
     <>
@@ -17,7 +17,7 @@ export const renderTooltip = (state: TooltipState) => {
         <Portal>
           <slots.root {...slotProps.root}>
             {state.pointing && <div ref={state.arrowRef} className={state.arrowClassName} />}
-            <slots.content {...slotProps.content} />
+            {state.content}
           </slots.root>
         </Portal>
       )}
