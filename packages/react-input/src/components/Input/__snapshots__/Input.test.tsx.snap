@@ -2,12 +2,16 @@
 
 exports[`Input renders a default state 1`] = `
 <div>
-  <div
+  <span
     class=""
   >
-    <div>
-      <input />
-    </div>
-  </div>
+    <span
+      class=""
+    >
+      <input
+        class=""
+      />
+    </span>
+  </span>
 </div>
 `;

@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Updates react-menu to use root as slot",
+  "comment": "fix(Menu): Missing submenu indicator slot",
   "packageName": "@fluentui/react-menu",
-  "email": "bsunderhus@microsoft.com",
+  "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
 }

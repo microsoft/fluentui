@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ChevronDownIcon } from './DefaultIcons';
 import { renderMenuButton } from './renderMenuButton';
 import { useMenuButton } from './useMenuButton';
 import { useMenuButtonStyles } from './useMenuButtonStyles';
@@ -12,9 +11,7 @@ export const MenuButton: React.FunctionComponent<MenuButtonProps & React.RefAttr
   HTMLElement,
   MenuButtonProps
 >((props, ref) => {
-  const state = useMenuButton(props, ref, {
-    menuIcon: { as: ChevronDownIcon },
-  });
+  const state = useMenuButton(props, ref);
 
   useMenuButtonStyles(state);
 
