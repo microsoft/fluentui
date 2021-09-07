@@ -215,6 +215,7 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
       }
 >
   <input
+    aria-checked="mixed"
     checked={false}
     className=
 
