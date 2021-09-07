@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { clamp } from './clamp';
 
 /**
  * Calculates the `step` position based off of a `Mouse` or `Touch` event.
@@ -29,5 +30,5 @@ export const calculateSteps = (
   const thumbPosition = vertical ? ev.clientY : ev.clientX;
   const distance = dir === 'rtl' || vertical ? position - thumbPosition : thumbPosition - position;
 
-  return distance / stepLength;
+  return clamp(min + step * (distance / stepLength), min, max);
 };
