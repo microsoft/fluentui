@@ -4,7 +4,6 @@ import {
   useBoolean,
   useControllableState,
   useEventCallback,
-  useId,
   useUnmount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -34,9 +33,8 @@ export const useSliderState = (state: SliderState) => {
     marks,
     vertical = false,
     origin,
-    onPointerDown: onPointerDownCallback,
-    onKeyDown: onKeyDownCallback,
   } = state;
+  const { onPointerDown: onPointerDownCallback, onKeyDown: onKeyDownCallback } = state.root;
 
   const { dir } = useFluent();
 
@@ -51,7 +49,6 @@ export const useSliderState = (state: SliderState) => {
   const railRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const disposables = React.useRef<(() => void)[]>([]);
-  const id = useId('slider-', state.id);
 
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
@@ -212,10 +209,9 @@ export const useSliderState = (state: SliderState) => {
     : {};
 
   // Root props
-  state.id = id;
   if (!disabled) {
-    state.onPointerDown = onPointerDown;
-    state.onKeyDown = onKeyDown;
+    state.root.onPointerDown = onPointerDown;
+    state.root.onKeyDown = onKeyDown;
   }
 
   // Track Props

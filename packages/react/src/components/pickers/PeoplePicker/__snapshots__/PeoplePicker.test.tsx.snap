@@ -67,6 +67,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           }
     >
       <input
+        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
         aria-controls=""
         aria-expanded={false}
@@ -687,6 +688,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
         </div>
       </span>
       <input
+        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
         aria-controls=""
         aria-describedby="selected-items-id__0"
