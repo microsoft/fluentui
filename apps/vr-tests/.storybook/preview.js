@@ -1,9 +1,7 @@
 // @ts-check
-import { createElement } from 'react';
-import { setAddon } from '@storybook/react';
 import * as React from 'react';
+import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-import { addDecorator } from '@storybook/client-api';
 import { webLightTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
