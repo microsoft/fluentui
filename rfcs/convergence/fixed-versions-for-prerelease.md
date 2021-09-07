@@ -153,7 +153,7 @@ To mitigate this problem during the prerelease phase we can do the following:
 
 ### Prefer to release new components straight into react-components beta
 
-This RFC argues that having a predictable dependency tree is during subsequent installs is more important
+This RFC argues that having a predictable dependency tree during subsequent installs is more important
 than managing expectations for new components with `alpha` and `beta` release phases. `beta` does not
 guarantee that APIs won't break, especially when a component has not even been used in any realistic
 scenario by partners.
