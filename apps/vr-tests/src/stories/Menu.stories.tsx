@@ -193,7 +193,7 @@ storiesOf('react-menu Menu - nested submenus', module)
           <MenuItem>Open Folder</MenuItem>
           <Menu open>
             <MenuTrigger>
-              <button>Toggle menu</button>
+              <MenuItem>Preferences</MenuItem>
             </MenuTrigger>
 
             <MenuPopover>
