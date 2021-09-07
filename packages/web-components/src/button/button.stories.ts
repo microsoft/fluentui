@@ -35,7 +35,7 @@ Button.args = {
 };
 
 const example = `
-<fluent-button>Button</fluent-button>
+<fluent-button appearance="accent">Button</fluent-button>
 `;
 
 Button.parameters = {

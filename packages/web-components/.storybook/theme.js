@@ -9,7 +9,7 @@ export default create({
   barSelectedColor: '#0078d4', // use msft primary blue default
 
   colorPrimary: '#dedede',
-  colorSecondary: 'blue',
+  colorSecondary: 'deepskyblue',
 
   // UI
   // appBg: '#0ff',
