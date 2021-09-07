@@ -178,13 +178,7 @@ storiesOf('react-menu Menu - selection groups', module)
   ));
 
 storiesOf('react-menu Menu - nested submenus', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
-    >
-      {story()}
-    </Screener>
-  ))
+  .addDecorator(story => <Screener>{story()}</Screener>)
   .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu open>
