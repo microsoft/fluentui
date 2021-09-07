@@ -14,7 +14,6 @@ import {
   MenuDivider,
 } from '@fluentui/react-menu';
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
-import { FluentProviderDecorator } from '../utilities/index';
 
 storiesOf('react-menu Menu - basic', module)
   .addDecorator(story => (
@@ -24,22 +23,25 @@ storiesOf('react-menu Menu - basic', module)
       {story()}
     </Screener>
   ))
-  .addDecorator(FluentProviderDecorator)
-  .addStory('default', () => (
-    <Menu open>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
-          <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
-          <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  ));
+        <MenuPopover>
+          <MenuList>
+            <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
+            <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
+            <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { rtl: true, provider: 'FluentProvider' },
+  );
 
 storiesOf('react-menu Menu - secondary content', module)
   .addDecorator(story => (
@@ -49,55 +51,61 @@ storiesOf('react-menu Menu - secondary content', module)
       {story()}
     </Screener>
   ))
-  .addDecorator(FluentProviderDecorator)
-  .addStory('default', () => (
-    <Menu open>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem icon={<Cut20Regular />} secondaryContent="Ctrl+X">
-            Cut
-          </MenuItem>
-          <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
-          <MenuItem icon={<ClipboardPaste20Regular />} secondaryContent="Ctrl+P">
-            Paste
-          </MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  ));
+        <MenuPopover>
+          <MenuList>
+            <MenuItem icon={<Cut20Regular />} secondaryContent="Ctrl+X">
+              Cut
+            </MenuItem>
+            <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
+            <MenuItem icon={<ClipboardPaste20Regular />} secondaryContent="Ctrl+P">
+              Paste
+            </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { rtl: true, provider: 'FluentProvider' },
+  );
 
 storiesOf('react-menu Menu - groups', module)
   .addDecorator(story => <Screener>{story()}</Screener>)
-  .addDecorator(FluentProviderDecorator)
-  .addStory('default', () => (
-    <Menu open>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuGroup>
-            <MenuGroupHeader>Section header</MenuGroupHeader>
-            <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
-            <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
-            <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
-          </MenuGroup>
-          <MenuDivider />
-          <MenuGroup>
-            <MenuGroupHeader>Section header</MenuGroupHeader>
-            <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
-            <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
-            <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
-          </MenuGroup>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  ));
+        <MenuPopover>
+          <MenuList>
+            <MenuGroup>
+              <MenuGroupHeader>Section header</MenuGroupHeader>
+              <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
+              <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
+              <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup>
+              <MenuGroupHeader>Section header</MenuGroupHeader>
+              <MenuItem icon={<Cut20Regular />}>Cut</MenuItem>
+              <MenuItem icon={<ClipboardPaste20Regular />}>Paste</MenuItem>
+              <MenuItem icon={<Edit20Regular />}>Edit</MenuItem>
+            </MenuGroup>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { rtl: true, provider: 'FluentProvider' },
+  );
 
 storiesOf('react-menu Menu - selection', module)
   .addDecorator(story => (
@@ -107,48 +115,16 @@ storiesOf('react-menu Menu - selection', module)
       {story()}
     </Screener>
   ))
-  .addDecorator(FluentProviderDecorator)
-  .addStory('checkbox', () => (
-    <Menu open>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
+  .addStory(
+    'checkbox',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItemCheckbox icon={<Cut20Regular />} name="edit" value="cut">
-            Cut
-          </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<ClipboardPaste20Regular />} name="edit" value="paste">
-            Paste
-          </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<Edit20Regular />} name="edit" value="edit">
-            Edit
-          </MenuItemCheckbox>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  ));
-
-storiesOf('react-menu Menu - selection groups', module)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addDecorator(FluentProviderDecorator)
-  .addStory('default', () => (
-    <Menu open>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
-
-      <MenuPopover>
-        <MenuList>
-          <MenuGroup>
-            <MenuGroupHeader>Checkbox group</MenuGroupHeader>
+        <MenuPopover>
+          <MenuList>
             <MenuItemCheckbox icon={<Cut20Regular />} name="edit" value="cut">
               Cut
             </MenuItemCheckbox>
@@ -158,21 +134,59 @@ storiesOf('react-menu Menu - selection groups', module)
             <MenuItemCheckbox icon={<Edit20Regular />} name="edit" value="edit">
               Edit
             </MenuItemCheckbox>
-          </MenuGroup>
-          <MenuDivider />
-          <MenuGroup>
-            <MenuGroupHeader>Radio group</MenuGroupHeader>
-            <MenuItemRadio icon={<Cut20Regular />} name="font" value="segoe">
-              Segoe
-            </MenuItemRadio>
-            <MenuItemRadio icon={<ClipboardPaste20Regular />} name="font" value="calibri">
-              Caliri
-            </MenuItemRadio>
-            <MenuItemRadio icon={<Edit20Regular />} name="font" value="arial">
-              Arial
-            </MenuItemRadio>
-          </MenuGroup>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  ));
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { rtl: true, provider: 'FluentProvider' },
+  );
+
+storiesOf('react-menu Menu - selection groups', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuGroup>
+              <MenuGroupHeader>Checkbox group</MenuGroupHeader>
+              <MenuItemCheckbox icon={<Cut20Regular />} name="edit" value="cut">
+                Cut
+              </MenuItemCheckbox>
+              <MenuItemCheckbox icon={<ClipboardPaste20Regular />} name="edit" value="paste">
+                Paste
+              </MenuItemCheckbox>
+              <MenuItemCheckbox icon={<Edit20Regular />} name="edit" value="edit">
+                Edit
+              </MenuItemCheckbox>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup>
+              <MenuGroupHeader>Radio group</MenuGroupHeader>
+              <MenuItemRadio icon={<Cut20Regular />} name="font" value="segoe">
+                Segoe
+              </MenuItemRadio>
+              <MenuItemRadio icon={<ClipboardPaste20Regular />} name="font" value="calibri">
+                Caliri
+              </MenuItemRadio>
+              <MenuItemRadio icon={<Edit20Regular />} name="font" value="arial">
+                Arial
+              </MenuItemRadio>
+            </MenuGroup>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { rtl: true, provider: 'FluentProvider' },
+  );

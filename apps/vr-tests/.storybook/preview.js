@@ -1,8 +1,11 @@
 // @ts-check
 import { createElement } from 'react';
 import { setAddon } from '@storybook/react';
+import * as React from 'react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
 import { addDecorator } from '@storybook/client-api';
+import { webLightTheme } from '@fluentui/react-theme';
+import { FluentProvider } from '@fluentui/react-provider';
 
 const defaultConfig = {
   rtl: false,
@@ -28,17 +31,32 @@ const defaultConfig = {
  */
 setAddon({
   addStory(storyName, storyFn, config = defaultConfig) {
-    this.add(storyName, context => {
-      setRTL(false);
-      return storyFn(context);
-    });
-
-    if (config.rtl) {
-      if (this.kind.includes('Next')) {
+    // V-Next stories
+    if (this.kind.includes('Next') || config.provider === 'FluentProvider') {
+      this.add(storyName, context => {
+        return (
+          <FluentProvider theme={webLightTheme} dir={'ltr'}>
+            {storyFn({ context })}
+          </FluentProvider>
+        );
+      });
+      if (config.rtl) {
         this.add(storyName + ' - RTL', context => {
-          return storyFn(context);
+          return (
+            <FluentProvider theme={webLightTheme} dir={'rtl'}>
+              {storyFn({ context })}
+            </FluentProvider>
+          );
         });
-      } else {
+      }
+    }
+    // Other stories
+    else {
+      this.add(storyName, context => {
+        setRTL(false);
+        return storyFn(context);
+      });
+      if (config.rtl) {
         this.add(storyName + ' - RTL', context => {
           setRTL(true);
           return storyFn(context);
