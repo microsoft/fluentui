@@ -11,6 +11,11 @@ export interface CardHeaderProps extends ComponentPropsCompat, React.HTMLAttribu
   image: ShorthandPropsCompat<React.ImgHTMLAttributes<HTMLImageElement>>;
 
   /**
+   * Content slot, wrapper of the header and description slots
+   */
+  content?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+  /**
    * Header title slot
    */
   header: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
@@ -29,7 +34,7 @@ export interface CardHeaderProps extends ComponentPropsCompat, React.HTMLAttribu
 /**
  * Names of the shorthand properties in CardHeaderProps
  */
-export type CardHeaderShorthandProps = 'image' | 'header' | 'description' | 'action'; // TODO add shorthand property names
+export type CardHeaderShorthandProps = 'image' | 'content' | 'header' | 'description' | 'action';
 
 /**
  * Names of CardHeaderProps that have a default value in useCardHeader

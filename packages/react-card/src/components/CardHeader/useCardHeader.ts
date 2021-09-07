@@ -5,7 +5,13 @@ import type { CardHeaderProps, CardHeaderShorthandProps, CardHeaderState } from 
 /**
  * Array of all shorthand properties listed in CardHeaderShorthandProps
  */
-export const cardHeaderShorthandPropsCompat: CardHeaderShorthandProps[] = ['image', 'header', 'description', 'action'];
+export const cardHeaderShorthandPropsCompat: CardHeaderShorthandProps[] = [
+  'image',
+  'content',
+  'header',
+  'description',
+  'action',
+];
 
 const mergeProps = makeMergeProps<CardHeaderState>({ deepMerge: cardHeaderShorthandPropsCompat });
 
@@ -27,6 +33,7 @@ export const useCardHeader = (
   const state = mergeProps(
     {
       image: { as: 'div' },
+      content: { as: 'div', children: React.Fragment },
       header: { as: 'span' },
       description: { as: 'span' },
       action: { as: 'div' },

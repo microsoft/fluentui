@@ -28,6 +28,17 @@ const useStyles = makeStyles({
       maxHeight: '100%',
     },
   },
+
+  textContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    height: 'inherit',
+
+    '> *': {
+      height: '50%',
+    },
+  },
 });
 
 /**
@@ -39,6 +50,10 @@ export const useCardHeaderStyles = (state: CardHeaderState): CardHeaderState => 
 
   if (state.image) {
     state.image.className = mergeClasses(styles.image, state.image.className);
+  }
+
+  if (state.content) {
+    state.content.className = mergeClasses(styles.textContainer, state.content.className);
   }
 
   return state;
