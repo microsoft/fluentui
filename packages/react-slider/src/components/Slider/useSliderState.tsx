@@ -9,46 +9,8 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { mergeClasses } from '@fluentui/react-make-styles';
+import { getRTLSafeKey, clamp, getPercent, calculateSteps, getMarkPercent, getMarkValue } from '../../utils/index';
 import type { SliderState } from './Slider.types';
-
-/**
- * Validates that the `value` is a number and falls between the min and max.
- *
- * @param value - the value to be clamped
- * @param min - the lowest valid value
- * @param max - the highest valid value
- */
-const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
-
-/**
- * Gets the current percent of specified value between a min and max
- *
- * @param value - the value to find the percent
- * @param min - the lowest valid value
- * @param max - the highest valid value
- */
-const getPercent = (value: number, min: number, max: number) => {
-  return max === min ? 0 : ((value - min) / (max - min)) * 100;
-};
-
-/**
- * Finds and swaps a provided key for it's right to left format.
- */
-const getRTLSafeKey = (key: string, dir: 'ltr' | 'rtl') => {
-  if (dir === 'rtl') {
-    switch (key) {
-      case 'ArrowLeft': {
-        return 'ArrowRight';
-      }
-
-      case 'ArrowRight': {
-        return 'ArrowLeft';
-      }
-    }
-  }
-
-  return key;
-};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
@@ -125,46 +87,19 @@ export const useSliderState = (state: SliderState) => {
     [max, min, updateValue],
   );
 
-  /**
-   * Calculates the `step` position based off of a `Mouse` or `Touch` event.
-   */
-  const calculateSteps = React.useCallback(
-    (ev: React.PointerEvent<HTMLDivElement>): number => {
-      const currentBounds = railRef?.current?.getBoundingClientRect();
-      const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
-      let position;
-
-      if (vertical) {
-        position = currentBounds!.bottom;
-      } else if (dir === 'rtl') {
-        position = currentBounds!.right;
-      } else {
-        position = currentBounds!.left;
-      }
-
-      const totalSteps = (max - min) / step;
-      const stepLength = sliderSize / totalSteps;
-      const thumbPosition = vertical ? ev.clientY : ev.clientX;
-      const distance = dir === 'rtl' || vertical ? position - thumbPosition : thumbPosition - position;
-
-      return distance / stepLength;
-    },
-    [dir, max, min, step, vertical],
-  );
-
   const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     updatePosition(Number(ev.target.value), ev);
   };
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      const position = min + step * calculateSteps(ev);
+      const position = min + step * calculateSteps(ev, railRef, min, max, step, vertical, dir);
       const currentStepPosition = Math.round(position / step) * step;
 
       setRenderedPosition(clamp(position, min, max));
       updateValue(currentStepPosition, ev);
     },
-    [calculateSteps, max, min, step, updateValue],
+    [dir, max, min, step, updateValue, vertical],
   );
 
   const onPointerUp = React.useCallback(
@@ -266,40 +201,10 @@ export const useSliderState = (state: SliderState) => {
   }, [max, min, origin]);
 
   const markValues = React.useMemo((): number[] => {
-    const valueArray: number[] = [];
-
-    // 1. We receive a boolean: mark for every step.
-    if (typeof marks === 'boolean' && marks === true) {
-      for (let i = 0; i < (max - min) / step + 1; i++) {
-        valueArray.push(getPercent(min + step * i, min, max));
-      }
-    } else if (Array.isArray(marks) && marks.length > 0) {
-      // 2. We receive an array with numbers: mark for every value in array.
-      return marks.map(marksItem => getPercent(min + marksItem, min, max));
-    }
-
-    return valueArray;
+    return getMarkValue(marks, min, max, step);
   }, [marks, max, min, step]);
 
-  /**
-   * Current percentage position for the marks.
-   */
-  const markPercent = React.useMemo((): string[] => {
-    const valueArray: number[] = markValues;
-    const result: string[] = [];
-
-    // For CSS grid to work the percents array must be remapped by the previous percent - the current percent
-    if (valueArray.length > 0) {
-      result.push(valueArray[0] + '% ');
-      let prevPercent = valueArray[0];
-      for (let i = 1; i < valueArray.length; i++) {
-        result.push(valueArray[i] - prevPercent + '% ');
-        prevPercent = valueArray[i];
-      }
-    }
-
-    return result;
-  }, [markValues]);
+  const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
 
   const thumbWrapperStyles = {
     transform: vertical
