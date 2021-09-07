@@ -9,7 +9,10 @@ import {
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
-import { ChevronRightIcon, ChevronLeftIcon } from '../../utils/DefaultIcons';
+import {
+  ChevronRight20Regular as ChevronRightIcon,
+  ChevronLeft20Regular as ChevronLeftIcon,
+} from '@fluentui/react-icons';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuContext } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
@@ -60,6 +63,7 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>): 
     icon: resolveShorthand(props.icon, { required: hasIcons }),
     checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
     submenuIndicator: resolveShorthand(props.submenuIndicator, {
+      required: hasSubmenu,
       defaultProps: {
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
