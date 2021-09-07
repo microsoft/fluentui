@@ -214,7 +214,7 @@ function _getOutOfBoundsDegree(rect: Rectangle, bounds: Rectangle) {
 
 /**
  * Attempts to move the rectangle through various sides of the target to find a place to fit.
- * If no fit is found, the original position should be returned.
+ * If no fit is found, the least bad option should be returned.
  */
 function _flipToFit(
   rect: Rectangle,
@@ -279,7 +279,7 @@ function _flipToFit(
     }
   }
 
-  // nothing fit, use least-bad option
+  // nothing fits, use least-bad option
   currentEstimate = _estimatePosition(rect, target, { targetEdge: bestEdge, alignmentEdge: bestAlignment }, gap);
   return {
     elementRectangle: currentEstimate,
@@ -487,7 +487,7 @@ function _finalizeElementPosition(
   alignmentEdge?: RectangleEdge,
   coverTarget?: boolean,
   doNotFinalizeReturnEdge?: boolean,
-  forceWithinnBounds?: boolean,
+  forceWithinBounds?: boolean,
 ): IPartialIRectangle {
   const returnValue: IPartialIRectangle = {};
 
@@ -502,7 +502,7 @@ function _finalizeElementPosition(
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
 
   // if the positioned element will still overflow, return all four edges with in-bounds values
-  if (forceWithinnBounds) {
+  if (forceWithinBounds) {
     returnValue[RectangleEdge[elementEdge * -1]] = _getRelativeEdgeDifference(
       elementRectangle,
       hostRect,
