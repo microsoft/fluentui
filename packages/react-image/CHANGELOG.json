@@ -2,6 +2,36 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.74",
+      "version": "9.0.0-alpha.74",
+      "comments": {
+        "none": [
+          {
+            "comment": "Added default snapshot test",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "7dfbf1225a317a7a930a177b5f4674add1322ad7",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.74",
+      "version": "9.0.0-alpha.74",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.44",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Sep 2021 00:13:07 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.73",
       "version": "9.0.0-alpha.73",
