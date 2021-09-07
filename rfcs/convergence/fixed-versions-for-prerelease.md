@@ -153,81 +153,14 @@ To mitigate this problem during the prerelease phase we can do the following:
 
 ### Prefer to release new components straight into react-components beta
 
-This RFC argues that having a predictable dependency tree during subsequent installs is more important
-than managing expectations for new components with `alpha` and `beta` release phases. `beta` does not
-guarantee that APIs won't break, especially when a component has not even been used in any realistic
-scenario by partners.
+For sane versioning, new packages should be released straight into the `beta` prerelease tag. A new way of consuming
+unstable packages is proposed in the next section.
 
-Realistically for the Fluent team, bugs found during either `alpha` or `beta` phases must be addressed or fixed
-upon release. If a bug or an API design does not match customer requirements in either phases, we **are entitled** break the
-API in a further iteration to improve.
-
-#### Pros
-
-- No extra work required, just a convention to release all new components straight to beta
-- Avoid dependency hell by recommending customers to only use the suite package
-- No extra effort for customers other than install the correct suite package version
-
-#### Cons
-
-- Not sure what customer expectations are for new components in beta
-- Need to properly define alpha vs beta -> what are our requirements ?
-
-### Provide resolutions to customers
-
-If we must release a component into the `alpha`, consumers can still apply manual resolutions.
-To support this scenario, we can provide a generated set of yarn resolutions to allow all Fluent dependencies to
-work together from the a consuming app.
-
-The generated resolutions must be for a specific version of the `react-components` package.
-
-We can provide this functionality either on our docsite or as a published CLI package.
-
-#### Pros
-
-- Easier debugging for partners, there should only be one Fluent UI version in node_modules
-
-#### Cons
-
-- Need to work on a project to generate resolutions
-- Temporary, no need for this after major release
-
-### Lockstep versioning for `beta` components
-
-Lockstep versioning does not solve the problem, but makes finding compatible versions of `beta` and `alpha` packages
-easier. Using the below example:
-
-- `@fluentui/react-components` -> 9.0.0.beta.13
-
-  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.13
-  - `@fluentui/react-make-styles` -> 9.0.0.beta.13
-
-- `@fluentui/react-dropdown` -> 9.0.0.alpha.1
-  - `@fluentui/react-shared-contexts` -> 9.0.0.beta.10
-  - `@fluentui/react-make-styles` -> 9.0.0.beta.10
-
-It's clear that we only need to find any version of `react-dropdown` that uses `beta.10` dependencies. Any
-future version mismatch can be easily investigated and fixed.
-
-For the problem of fixed versions, lockstep only solves a temporary problem since
-on major release Fluent can use full semver features.
-
-#### Pros
-
-- Easy to find compatible versions for alpha packages
-- Easier debugging for partners, there should only be one Fluent UI version in node_modules
-- Don't have to get rid of lockstep after major release
-
-#### Cons
-
-- Need infra to support lockstep versioning
-- Doesn't solve the dependency issue, just makes it easier to manage
-
-### Deep imports for `alpha` packages
+### Deep imports for `unstable` packages
 
 > Demo here: https://github.com/ling1726/multiple-entrypoints-test
 
-This solution reintroduces deep imports with the path `@fluentui/react-components/lib/alpha`. The only workaround that
+This solution reintroduces deep imports with the path `@fluentui/react-components/lib/unstable`. The only workaround that
 should be necessary is for jest, which uses `commonjs`.
 
 Since `lib` is used the `esm` imports only, it's possible to generate a new `package.json` file that points to the
@@ -238,35 +171,19 @@ working demo repo in the link under the heading.
 ```json
 // react-components/lib/alpha/package.json
 {
-  "main": "../../lib-commonjs/alpha/index.js", // commonjs entrypoint for jest
+  "main": "../../lib-commonjs/unstable/index.js", // commonjs entrypoint for jest
   "module": "index.js" // esm entrypoint for webpack
 }
 ```
 
-#### Pros
-
-- Avoid dependency hell by recommending customers to only use the suite package
-- No extra effort for customers other than install the correct suite package version
-
-#### Cons
-
-- Still a temporary solution, we should get rid of it after major release
-- Extra scripts/infra needed to manage an interim solution
-- We now ship alpha with beta in the same package
-- No clear difference compared to releasing new components straight into beta -> if API breaks, customers will still
-  have to deal with it
-
-### Conclusion -> consuming individual packages
-
-We should recommend partners to install only `@fluentui/react-components`. If new components are released to the same
-prerelease phase, there is no obvious reason to consume components as separate packages and the solution to
+Even though all new package will have the `beta` prerelease tag, our recommendation to users should still be to use
+the `@fluentui/react-components` package uniquely. Then we should clearly document/explain for our partners that
+unstable components can be used through these deep imports. If new components are released to the same
+package, there is no obvious reason to consume components as separate packages and the solution to
 consuming a new component is to bump the suite package.
 
 The only scalable solution is to get out of the prerelease phase
 and leverage all the benefits of semver.
-
-Making it harder to consume `alpha` packages if they are even needed for customers should be acceptable, since
-they opt to use a less stable release stage. We can try to make it easier for them to consume `alpha` packages.
 
 > Prerelease tags matching every latest version is not a bug, it's a feature.
 
@@ -274,15 +191,17 @@ they opt to use a less stable release stage. We can try to make it easier for th
 
 ### Pros
 
-- Predictably trace dependencies to code for debugging.
+- Customers won't consume breaking changes accidentally
 - Only a temporary measure until Fluent moves out of prerelease phase.
 - We can still go back to carets easily in prerelease phase if needed.
-- If beta released in lockstep, can easily go back to independent versioning for main release.
-  - We don't break semver because we were still using prerelease tags
+- No concept of alpha/beta components -> only `unstable`
+- Avoid dependency hell by recommending customers to only use the suite package.
+- Straightforward way for customers to upgrade -> upgrade 1 package.
+- No extra effort for customers other than install the correct suite package version.
 
 ### Cons
 
-- Hard to release components into different prerelease phases.
-  - Resolutions are not good developer experience.
-  - Lockstep is solving temporary problem in this case.
+- Still a temporary solution, we should get rid of it after major release -> we will use full semver features
+- Extra scripts/infra needed to manage the interim solution
 - Cannot strictly enforce customers to only use the suite package.
+- No concept of alpha/beta components, we need to communicate a new `unstable` concept to partners.
