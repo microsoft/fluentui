@@ -18,6 +18,7 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultPr
   const state = mergeProps(
     {
       ref,
+      role: 'group',
     },
     defaultProps,
     props,

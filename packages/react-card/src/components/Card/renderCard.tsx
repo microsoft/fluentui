@@ -8,9 +8,5 @@ import type { CardState } from './Card.types';
 export const renderCard = (state: CardState) => {
   const { slots, slotProps } = getSlotsCompat(state);
 
-  return (
-    <slots.root role="group" {...slotProps.root}>
-      {state.children}
-    </slots.root>
-  );
+  return <slots.root {...slotProps.root}>{state.children}</slots.root>;
 };
