@@ -3,9 +3,8 @@ import { mergeThemes } from '@fluentui/react-theme';
 import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-
-import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 import { useThemeStyleTag } from './useThemeStyleTag';
+import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
 export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
 
@@ -49,12 +48,9 @@ export const useFluentProvider = (
   state.targetDocument = state.targetDocument ?? parentContext.targetDocument;
   state.dir = state.dir ?? parentContext.dir;
 
-  // useThemeStyleTag() should be called after .targetDocument will be defined
-  const themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
-
-  // mergeClasses() is not needed here because `themeClassName` is not from a `makeStyles` call
-  state.className = [state.className || '', themeClassName].filter(Boolean).join(' ');
   state.theme = mergedTheme;
+  // useThemeStyleTag() should be called after .targetDocument will be defined
+  state.themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
 
   return state;
 };

@@ -4,10 +4,11 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentStateCompat } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
@@ -33,20 +34,16 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export interface CheckboxProps extends ComponentProps<Partial<CheckboxSlots>>, Partial<CheckboxCommons> {
+export interface CheckboxProps extends ComponentPropsCompat, Partial<CheckboxCommons> {
+    indicator?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLDivElement>>;
+    input?: ShorthandPropsCompat<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
 }
 
 // @public
-export const checkboxShorthandProps: (keyof CheckboxSlots)[];
-
-// @public (undocumented)
-export type CheckboxSlots = {
-    input: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>;
-    indicator: React_2.HtmlHTMLAttributes<HTMLDivElement>;
-};
+export const checkboxShorthandProps: readonly ["indicator", "input"];
 
 // @public
-export interface CheckboxState extends ComponentState<CheckboxSlots>, CheckboxCommons {
+export interface CheckboxState extends ComponentStateCompat<CheckboxProps, 'input' | 'indicator', 'size' | 'labelPosition' | 'input' | 'indicator'> {
     containerClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }

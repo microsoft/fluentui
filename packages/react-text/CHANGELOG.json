@@ -2,6 +2,201 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.44",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Sep 2021 00:13:07 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable makeStyles conformance tests",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d246f9483660ee7a6b2a459d102d0d7cbf06695",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.43",
+            "author": "olfedias@microsoft.com",
+            "commit": "ff3225d408fa6a97628e3f08a5a11a196bef6934",
+            "package": "@fluentui/react-text"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.42",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.41",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7a53d85571212d2f5b56a84fd84e29f5e1985daa",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.40",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-text"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-text_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-text"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.38",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.41",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.59",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/react-text_v9.0.0-alpha.4",
       "version": "9.0.0-alpha.4",

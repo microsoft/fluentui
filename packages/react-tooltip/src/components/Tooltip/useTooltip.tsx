@@ -11,7 +11,7 @@ import {
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 
 // Style values that are required for popper to properly position the tooltip
 const tooltipBorderRadius = 4; // Update the root's borderRadius in useTooltipStyles.ts if this changes

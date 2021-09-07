@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';
-import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem } from '../MenuItem/useMenuItem';
+import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (
@@ -24,17 +24,17 @@ export const useMenuItemCheckbox = (
   ) as MenuItemCheckboxState;
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
-  const { onClick: onClickOriginal } = state;
+  const { onClick: onClickOriginal } = state.root;
   const checked = useMenuListContext(context => {
     const checkedItems = context.checkedValues?.[state.name] || [];
     return checkedItems.indexOf(state.value) !== -1;
   });
 
   state.checked = checked;
-  state['aria-checked'] = state.checked;
+  state.root['aria-checked'] = state.checked;
 
   // MenuItem state already transforms keyDown to click events
-  state.onClick = e => {
+  state.root.onClick = e => {
     if (state.disabled) {
       e.preventDefault();
       e.stopPropagation();

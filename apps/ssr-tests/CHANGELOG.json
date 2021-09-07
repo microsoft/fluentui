@@ -2,6 +2,171 @@
   "name": "ssr-tests",
   "entries": [
     {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "xiaowxie@microsoft.com",
+            "commit": "53bd7afcd68378ee0c1047636e4bacb5f31aef3a",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "gcox@microsoft.com",
+            "commit": "66fe45c6e8aea6af84014186505fb37a2c27b881",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "marata@microsoft.com",
+            "commit": "4a7f81f3d92f128a672717eda660af3ba50ee71b",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Aug 2021 07:35:05 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "richard@einfinity.co.uk",
+            "commit": "b9845c29770ba058344f01f02f5e111da0d31cbb",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Aug 2021 07:35:19 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "arujain@microsoft.com",
+            "commit": "e6ee3ff194c59ee27e853387fad06f161e63652c",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Aug 2021 07:35:43 GMT",
+      "tag": "ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.1.41",
+            "author": "keyou@microsoft.com",
+            "commit": "0d9443614ded375ef210549eeb3ab3e3bba965ed",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "ssr-tests_v1.0.0",
       "version": "1.0.0",

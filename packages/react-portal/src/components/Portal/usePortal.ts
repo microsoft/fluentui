@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { makeMergeProps, useIsSSR } from '@fluentui/react-utilities';
-
-import { PortalProps, PortalState } from './Portal.types';
 import { usePortalMountNode } from './usePortalMountNode';
 import { setVirtualParent } from '../../virtualParent/index';
+import type { PortalProps, PortalState } from './Portal.types';
 
 const mergeProps = makeMergeProps<PortalState>();
 

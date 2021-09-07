@@ -1,5 +1,5 @@
-import { ButtonProps } from './Button';
-import { PropDefinition } from './Playground.types.stories';
+import type { ButtonProps } from './Button';
+import type { PropDefinition } from './Playground.types.stories';
 
 type ExampleProps = { iconOnly?: string };
 

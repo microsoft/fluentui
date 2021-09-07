@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { IStyle } from '@fluentui/style-utilities';
-import {
+import type { ICalloutProps } from '@fluentui/react/lib/Callout';
+import type { IStyle } from '@fluentui/style-utilities';
+import type {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IRenderFunction, IRefObject } from '@fluentui/utilities';
-import { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
-import { Target } from '@fluentui/react-hooks';
+import type { IRenderFunction, IRefObject } from '@fluentui/utilities';
+import type { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * FloatingSuggestions component props

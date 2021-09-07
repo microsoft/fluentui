@@ -169,6 +169,35 @@ storiesOf('PeoplePicker', module)
         disabled
       />
     </Fabric>
+  ))
+  .addStory('Normal with placeholder', () => (
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        inputProps={{
+          placeholder: 'Add items here',
+        }}
+      />
+    </Fabric>
+  ))
+  .addStory('Normal disabled with placeholder', () => (
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        inputProps={{
+          placeholder: 'Add items here',
+        }}
+        disabled
+      />
+    </Fabric>
   ));
 
 storiesOf('PeoplePicker', module).addStory('Normal with text', () => (

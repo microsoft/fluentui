@@ -1,6 +1,6 @@
-import { PartialTheme, Theme } from '../types';
 import { teamsLightTheme } from '../themes';
 import { mergeThemes } from './mergeThemes';
+import type { PartialTheme, Theme } from '../types';
 
 describe('mergeThemes', () => {
   it('performs a merge of themes', () => {

@@ -1,15 +1,16 @@
-import { ImageLoadState, IBaseProps } from '@fluentui/react';
-import {
+import { ImageLoadState } from '@fluentui/react';
+import type { IBaseProps } from '@fluentui/react';
+import type {
   IComponentStyles,
   IHTMLSlot,
   ISlotProp,
   IComponent,
   IStyleableComponentProps,
 } from '@fluentui/foundation-legacy';
-import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
-import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
-import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
-import { IPersonaCoinInitialsSlot } from './PersonaCoinInitials/PersonaCoinInitials';
+import type { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
+import type { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
+import type { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
+import type { IPersonaCoinInitialsSlot } from './PersonaCoinInitials/PersonaCoinInitials';
 
 export type IPersonaCoinComponent = IComponent<
   IPersonaCoinProps,

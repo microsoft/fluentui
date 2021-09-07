@@ -2,6 +2,94 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.44",
+      "version": "9.0.0-alpha.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(react-utilities): use `event.key` for keyboard events",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.43",
+      "version": "9.0.0-alpha.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update implementation to handle 'root' as a slot",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "none": [
+          {
+            "comment": "docs(composeUtils): update README",
+            "author": "olfedias@microsoft.com",
+            "commit": "3205b59f5d25006349b27883e4e3ec70eb14ad6f",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "fix(useOnClickOutside): Treat right click/context menu as outside click",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7a53d85571212d2f5b56a84fd84e29f5e1985daa",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export type syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Aug 2021 07:37:28 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.40",
       "version": "9.0.0-alpha.40",

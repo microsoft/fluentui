@@ -4,12 +4,12 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { ComponentStateCompat } from '@fluentui/react-utilities';
-import { PresenceBadgeProps } from '@fluentui/react-badge';
-import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
+import type { PresenceBadgeStatus } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: React_2.ForwardRefExoticComponent<AvatarProps & React_2.RefAttributes<HTMLElement>>;

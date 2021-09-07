@@ -178,7 +178,7 @@ export interface ChatMessageProps
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
   hasBadge: boolean;
-  hasReactionGroup: boolean;
+  hasHeaderReactionGroup: boolean;
 
   // focused, hasActionMenu and showActionMenu controls the visibility of action menu
   focused: boolean;
@@ -258,6 +258,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     value: controlledShowActionMenu,
   });
   const hasActionMenu = !_.isNil(actionMenu);
+  const hasHeaderReactionGroup = !!reactionGroup && reactionGroupPosition === 'start';
 
   const actionMenuId = React.useRef<string>();
   actionMenuId.current = getOrGenerateIdFromShorthand(`${chatMessageClassName}-`, actionMenu, actionMenuId.current);
@@ -331,7 +332,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       focused,
       hasActionMenu,
       hasBadge: !!badge,
-      hasReactionGroup: !!reactionGroup,
+      hasHeaderReactionGroup,
       mine,
       showActionMenu,
     }),
@@ -492,7 +493,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ attached, density, mine }),
+    defaultProps: () => ({ attached, density, hasHeaderReactionGroup, mine }),
   });
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {
