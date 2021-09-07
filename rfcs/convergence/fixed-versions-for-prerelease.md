@@ -13,7 +13,7 @@ caused by using carets with prerelease tags.
 
 Once the core of Fluent v9 is fully released without any prerelease tags, this approach should be abandoned. Without
 prerelease tags, we can fully rely on caret dependencies to provide consumers with a consistent dependency tree and
-commnuicate breaking changes with major version bumps.
+communicate breaking changes with major version bumps.
 
 ## Problem statement
 
