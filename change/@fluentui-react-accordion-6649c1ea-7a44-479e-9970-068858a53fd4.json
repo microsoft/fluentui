@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(Accordion): Pass `interactive` prop to the `AccordionButton` component",
+  "packageName": "@fluentui/react-accordion",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

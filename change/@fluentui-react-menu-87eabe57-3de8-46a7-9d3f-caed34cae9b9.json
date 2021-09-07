@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(Menu): Menu supports styles for 400% zoom",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
