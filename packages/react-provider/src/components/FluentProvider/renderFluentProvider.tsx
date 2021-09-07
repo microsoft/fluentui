@@ -12,7 +12,7 @@ export const renderFluentProvider = (state: FluentProviderState, contextValues: 
   return (
     <ProviderContext.Provider value={contextValues.provider}>
       <ThemeContext.Provider value={contextValues.theme}>
-        <ThemeClassNameContext.Provider value={contextValues.themeClassname}>
+        <ThemeClassNameContext.Provider value={contextValues.themeClassName}>
           <TooltipContext.Provider value={contextValues.tooltip}>
             <slots.root {...slotProps.root}>{state.children}</slots.root>
           </TooltipContext.Provider>

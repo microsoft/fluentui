@@ -25,6 +25,11 @@ export interface SliderProps
   track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
+   * The wrapper holding the marks and mark labels for the Slider.
+   */
+  marksWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+
+  /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
   thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
@@ -39,6 +44,11 @@ export interface SliderProps
    * The area in which the Slider's rail allows for the thumb to be dragged.
    */
   activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+  /**
+   * The hidden input for the Slider.
+   */
+  input?: ShorthandPropsCompat<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
 
   /**
    * The starting value for an uncontrolled Slider.
@@ -66,7 +76,7 @@ export interface SliderProps
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value.
+   * will snap to the closest available value. This must be a positive value.
    * @default 1
    */
   step?: number;
@@ -81,17 +91,25 @@ export interface SliderProps
   keyboardStep?: number;
 
   /**
-   *  Whether to render the **Slider** as disabled.
+   *  Whether to render the Slider as disabled.
    *
    * @default `false` (renders enabled)
    */
   disabled?: boolean;
 
   /**
-   * Whether to render the **Slider** vertically.
+   * Whether to render the Slider vertically.
    * @default `false` (renders horizontally)
    */
   vertical?: boolean;
+
+  /**
+   * When enabled, small marks are displayed across the Slider, showing potential steps.
+   *
+   * - If `true`, marks are visible at each `step`.
+   * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
+   */
+  marks?: boolean | number[];
 
   /**
    * The starting origin point for the Slider.
@@ -123,25 +141,29 @@ export interface SliderProps
  * Names of the shorthand properties in SliderProps
  */
 export type SliderShorthandProps =
+  | 'activeRail'
+  | 'input'
   | 'rail'
   | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail';
+  | 'thumbWrapper'
+  | 'track'
+  | 'trackWrapper'
+  | 'marksWrapper';
 
 /**
  * Names of SliderProps that have a default value in useSlider
  */
 export type SliderDefaultedProps =
+  | 'activeRail'
+  | 'input'
   | 'rail'
   | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'thumbWrapper'
   | 'thumb'
-  | 'activeRail';
+  | 'thumbWrapper'
+  | 'track'
+  | 'trackWrapper'
+  | 'marksWrapper';
 
 /**
  * State used in rendering Slider

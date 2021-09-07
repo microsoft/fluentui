@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
@@ -16,15 +15,6 @@ describe('MenuItemRadio', () => {
       value: '1',
     },
     displayName: 'MenuItemRadio',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**
@@ -123,7 +113,7 @@ describe('MenuItemRadio', () => {
     expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, radioValue, false);
   });
 
-  it.each([[EnterKey], [SpacebarKey]])('should call selectRadio with %s key', keyCode => {
+  it.each([[Enter], [Space]])('should call selectRadio with %s key', key => {
     // Arrange
     const spy = jest.fn();
     const { getByRole } = render(
@@ -135,8 +125,8 @@ describe('MenuItemRadio', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByRole('menuitemradio'), { keyCode });
-    fireEvent.keyUp(getByRole('menuitemradio'), { keyCode });
+    fireEvent.keyDown(getByRole('menuitemradio'), { key });
+    fireEvent.keyUp(getByRole('menuitemradio'), { key });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);

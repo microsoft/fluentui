@@ -20,12 +20,21 @@ export type InputSlots = {
   insideEnd?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 };
 
+export interface InputCommons {
+  /** @default 'medium' */
+  // TODO this overlaps with a native input prop
+  size?: 'small' | 'medium' | 'large';
+  inline?: boolean;
+  /** @default 'outline' */
+  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+}
+
 /**
  * Input Props
  */
-export interface InputProps extends ComponentProps<Partial<InputSlots>> {}
+export interface InputProps extends InputCommons, Omit<ComponentProps<Partial<InputSlots>>, 'children'> {}
 
 /**
  * State used in rendering Input
  */
-export interface InputState extends ComponentState<InputSlots> {}
+export interface InputState extends InputCommons, ComponentState<InputSlots> {}

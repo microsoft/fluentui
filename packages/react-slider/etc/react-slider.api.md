@@ -16,7 +16,7 @@ export const renderSlider: (state: SliderState) => JSX.Element;
 export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type SliderDefaultedProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export type SliderDefaultedProps = 'activeRail' | 'input' | 'rail' | 'sliderWrapper' | 'thumb' | 'thumbWrapper' | 'track' | 'trackWrapper' | 'marksWrapper';
 
 // @public (undocumented)
 export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
@@ -24,7 +24,10 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
     disabled?: boolean;
+    input?: ShorthandPropsCompat<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
     keyboardStep?: number;
+    marks?: boolean | number[];
+    marksWrapper?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     max?: number;
     min?: number;
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
@@ -44,7 +47,7 @@ export interface SliderProps extends ComponentPropsCompat, Omit<React_2.HTMLAttr
 }
 
 // @public
-export type SliderShorthandProps = 'rail' | 'sliderWrapper' | 'trackWrapper' | 'track' | 'thumbWrapper' | 'thumb' | 'activeRail';
+export type SliderShorthandProps = 'activeRail' | 'input' | 'rail' | 'sliderWrapper' | 'thumb' | 'thumbWrapper' | 'track' | 'trackWrapper' | 'marksWrapper';
 
 // @public
 export const sliderShorthandProps: SliderShorthandProps[];
@@ -56,6 +59,9 @@ export interface SliderState extends ComponentStateCompat<SliderProps, SliderSho
 
 // @public
 export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SliderProps | undefined) => SliderState;
+
+// @public (undocumented)
+export const useSliderState: (state: SliderState) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;
