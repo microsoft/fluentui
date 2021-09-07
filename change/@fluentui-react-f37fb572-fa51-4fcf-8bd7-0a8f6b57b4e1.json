@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updated to flexbox the document card preview items",
+  "comment": "Set active descendant for no results found",
   "packageName": "@fluentui/react",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"

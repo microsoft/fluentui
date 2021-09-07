@@ -28,7 +28,7 @@ export type SwitchSlots = {
   input: ObjectShorthandProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 };
 
-export type SwitchCommon = {
+export interface SwitchCommons {
   /**
    * The starting value for a uncontrolled Switch. If `true` then the Switch will be enabled.
    * Mutually exclusive with `checked` prop.
@@ -59,8 +59,8 @@ export type SwitchCommon = {
       checked: boolean;
     },
   ) => void;
-};
+}
 
-export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommon {}
+export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {}
 
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {}
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {}

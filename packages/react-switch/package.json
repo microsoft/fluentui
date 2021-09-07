@@ -26,11 +26,11 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.43",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.44",
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
-    "@fluentui/react-conformance": "^0.4.5",
-    "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.5",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.37",
+    "@fluentui/react-conformance": "^0.5.0",
+    "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.6",
     "@fluentui/react-label": "^9.0.0-alpha.33",
     "@fluentui/react-provider": "^9.0.0-alpha.71",
     "@fluentui/react-theme": "^9.0.0-alpha.22",
@@ -45,10 +45,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.61",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.62",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
     "@fluentui/react-tabster": "^9.0.0-alpha.55",
-    "@fluentui/react-utilities": "^9.0.0-alpha.43",
+    "@fluentui/react-utilities": "^9.0.0-alpha.44",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -34,16 +34,6 @@ describe('Switch', () => {
       const { container } = render(<Switch defaultChecked={true} />);
       expect(container).toMatchSnapshot();
     });
-
-    it('renders a labeled Switch', () => {
-      const { container } = render(<Switch>Hello</Switch>);
-      expect(container).toMatchSnapshot();
-    });
-
-    it('renders a disabled labeled Switch', () => {
-      const { container } = render(<Switch disabled>Hello</Switch>);
-      expect(container).toMatchSnapshot();
-    });
   });
 
   describe('Unit Tests', () => {

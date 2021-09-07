@@ -20,8 +20,8 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): Swit
     onChange,
     root: getNativeElementProps('span', {
       ref,
-      id: useId('switch-'),
       ...props,
+      id: useId('switch-', props.id),
     }),
     components: {
       input: 'input',
