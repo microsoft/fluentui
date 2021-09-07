@@ -65,7 +65,7 @@ Example of proposed changes to `@fluentui/react-components` `package.json` file.
 -    "@fluentui/react-theme": "^9.0.0-alpha.22",
 -    "@fluentui/react-tooltip": "^9.0.0-alpha.76",
 -    "@fluentui/react-utilities": "^9.0.0-alpha.43",
--    "@fluentui/react-accordion": "9.0.0-alpha.70",
++    "@fluentui/react-accordion": "9.0.0-alpha.70",
 +    "@fluentui/react-avatar": "9.0.0-alpha.75",
 +    "@fluentui/react-badge": "9.0.0-alpha.75",
 +    "@fluentui/react-button": "9.0.0-alpha.80",
