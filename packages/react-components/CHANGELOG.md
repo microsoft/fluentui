@@ -1,8 +1,68 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Sep 2021 21:37:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 9.0.0-alpha.103
+
+Tue, 07 Sep 2021 21:37:40 GMT
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - fix(Accordion): Pass `interactive` prop to the `AccordionButton` component (lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - fix(Menu): Missing submenu indicator slot (lingfangao@hotmail.com)
+  - feat(Menu): Menu supports styles for 400% zoom (lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - chore(usePopper): Document that `align` does not work without `position` (lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - feat(useOnClickOutside): Handle nested iframe clicks (lingfangao@hotmail.com)
+- `@fluentui/react-components`
+  - Bump @fluentui/react-accordion to v9.0.0-alpha.72 (lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - Bump @fluentui/react-menu to v9.0.0-alpha.73 (lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - Bump @fluentui/react-positioning to v9.0.0-alpha.50 (lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - Bump @fluentui/react-positioning to v9.0.0-alpha.50 (lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-context-selector`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-image`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-make-styles`
+  - Bump @fluentui/react-utilities to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/babel-make-styles`
+  - Bump @fluentui/react-make-styles to v9.0.0-alpha.63 (lingfangao@hotmail.com)
+- `@fluentui/jest-serializer-make-styles`
+  - Bump @fluentui/react-make-styles to v9.0.0-alpha.63 (lingfangao@hotmail.com)
+- `@fluentui/react-conformance-make-styles`
+  - Bump @fluentui/react-make-styles to v9.0.0-alpha.63 (lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - Bump @fluentui/react-make-styles to v9.0.0-alpha.63 (lingfangao@hotmail.com)
+- `@fluentui/make-styles-webpack-loader`
+  - Bump @fluentui/babel-make-styles to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - Bump @fluentui/babel-make-styles to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - Bump @fluentui/babel-make-styles to v9.0.0-alpha.45 (lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.38 (lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.102)
 
