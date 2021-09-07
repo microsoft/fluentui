@@ -200,7 +200,7 @@ easier. Using the below example:
 - `@fluentui/react-components` -> 9.0.0.beta.13
 
   - `@fluentui/react-shared-contexts` -> 9.0.0.beta.13
-  - `@fluentui/react-make-styles` -> 9.0.0.beta.3
+  - `@fluentui/react-make-styles` -> 9.0.0.beta.13
 
 - `@fluentui/react-dropdown` -> 9.0.0.alpha.1
   - `@fluentui/react-shared-contexts` -> 9.0.0.beta.10
