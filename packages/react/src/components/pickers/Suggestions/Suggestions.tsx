@@ -142,7 +142,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
     const noResults = () => (
       // This ID can be used by the parent to set aria-activedescendant to this
-      <div id="sug-noResultsFound">
+      <div id="sug-noResultsFound" role="option">
         {onRenderNoResultFound ? (
           onRenderNoResultFound(undefined, noResults)
         ) : (
