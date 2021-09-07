@@ -875,12 +875,23 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     }
 
     const currentIndex = this.suggestionStore.currentIndex;
-    // if the suggestions element has actions and the currentIndex does not point to a suggestion, return the action id
-    if (currentIndex < 0 && this.suggestionElement.current && this.suggestionElement.current.hasSuggestedAction()) {
-      return 'sug-selectedAction';
-    }
 
-    return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
+    if (currentIndex < 0) {
+      // if the suggestions element has actions and the currentIndex does not point to a suggestion,
+      // return the action id
+      if (this.suggestionElement.current?.hasSuggestedAction()) {
+        return 'sug-selectedAction';
+      }
+
+      // If there are no suggestions and no action suggested, then return the ID for the no results found.
+      if (this.suggestionStore.suggestions.length === 0) {
+        return 'sug-noResultsFound';
+      }
+
+      return undefined;
+    } else {
+      return `sug-${currentIndex}`;
+    }
   }
 
   /** @deprecated use renderCustomAlert instead */

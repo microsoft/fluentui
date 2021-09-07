@@ -140,9 +140,16 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       ? { styles: spinnerStyles }
       : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
 
-    const noResults = () => {
-      return noResultsFoundText ? <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div> : null;
-    };
+    const noResults = () => (
+      // This ID can be used by the parent to set aria-activedescendant to this
+      <div id="sug-noResultsFound" role="option">
+        {onRenderNoResultFound ? (
+          onRenderNoResultFound(undefined, noResults)
+        ) : (
+          <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div>
+        )}
+      </div>
+    );
 
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;
@@ -181,11 +188,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           </CommandButton>
         )}
         {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
-        {hasNoSuggestions
-          ? onRenderNoResultFound
-            ? onRenderNoResultFound(undefined, noResults)
-            : noResults()
-          : this._renderSuggestions()}
+        {hasNoSuggestions ? noResults() : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={this._searchForMoreButton}
