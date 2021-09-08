@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix selected semantics and scroll-to-view on Combobox, remove select-on-hover behavior, remove unneeded aria-checked on checkbox",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

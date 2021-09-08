@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.103)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.102..@fluentui/react-components_v9.0.0-alpha.103)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.82 ([PR #19661](https://github.com/microsoft/fluentui/pull/19661) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.102)
 
