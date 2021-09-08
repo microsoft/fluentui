@@ -395,6 +395,26 @@ function useOnSubmenuDismiss(dismiss: (ev?: any, dismissAll?: boolean) => void, 
 
   return onSubMenuDismiss;
 }
+
+function useSubmenuEnterTimer({ subMenuHoverDelay = NavigationIdleDelay }: IContextualMenuProps, asyncTracker: Async) {
+  const enterTimerRef = React.useRef<number | undefined>(undefined);
+
+  const cancelSubMenuTimer = () => {
+    if (enterTimerRef.current !== undefined) {
+      asyncTracker.clearTimeout(enterTimerRef.current);
+      enterTimerRef.current = undefined;
+    }
+  };
+
+  const startSubmenuTimer = (onTimerExpired: () => void) => {
+    enterTimerRef.current = asyncTracker.setTimeout(() => {
+      onTimerExpired();
+      cancelSubMenuTimer();
+    }, subMenuHoverDelay);
+  };
+
+  return [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef as React.RefObject<number | undefined>] as const;
+}
 //#endregion
 
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.forwardRef<
@@ -420,6 +440,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
   const [onScroll, isScrollIdle] = useScrollHandler(asyncTracker);
+  const [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef] = useSubmenuEnterTimer(props, asyncTracker);
 
   const responsiveMode = useResponsiveMode(hostElement, props.responsiveMode);
 
@@ -458,6 +479,9 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         onScroll,
         isScrollIdle,
         onSubMenuDismiss,
+        cancelSubMenuTimer,
+        startSubmenuTimer,
+        subMenuEntryTimer: enterTimerRef,
       }}
       responsiveMode={responsiveMode}
     />
@@ -491,12 +515,13 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     onScroll: () => void;
     isScrollIdle: React.RefObject<boolean>;
     onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void;
+    cancelSubMenuTimer: () => void;
+    startSubmenuTimer: (callback: () => void) => void;
+    subMenuEntryTimer: React.RefObject<number | undefined>;
   };
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
-  private _enterTimerId: number | undefined;
-
   public shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
@@ -1027,7 +1052,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
           {...commonProps}
           onItemClick={this._onItemClick}
           onItemClickBase={this._onItemClickBase}
-          onTap={this._onPointerAndTouchEvent}
+          onTap={this.props.hoisted.cancelSubMenuTimer}
         />
       );
     }
@@ -1087,7 +1112,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     if (
       !this.props.hoisted.isScrollIdle ||
-      this._enterTimerId !== undefined ||
+      this.props.hoisted.subMenuEntryTimer !== undefined ||
       targetElement === (targetWindow?.document.activeElement as HTMLElement)
     ) {
       return;
@@ -1107,10 +1132,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return;
     }
 
-    if (this._enterTimerId !== undefined) {
-      this.props.hoisted.asyncTracker.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-    }
+    this.props.hoisted.cancelSubMenuTimer();
 
     if (expandedMenuItemKey !== undefined) {
       return;
@@ -1140,7 +1162,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _updateFocusOnMouseEvent(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement) {
     const targetElement = target ? target : (ev.currentTarget as HTMLElement);
     const {
-      subMenuHoverDelay: timeoutDuration = NavigationIdleDelay,
       hoisted: { expandedMenuItemKey, openSubMenu },
     } = this.props;
 
@@ -1148,10 +1169,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return;
     }
 
-    if (this._enterTimerId !== undefined) {
-      this.props.hoisted.asyncTracker.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-    }
+    this.props.hoisted.cancelSubMenuTimer();
 
     // If the menu is not expanded we can update focus without any delay
     if (expandedMenuItemKey === undefined) {
@@ -1162,17 +1180,15 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
       ev.stopPropagation();
-      this._enterTimerId = this.props.hoisted.asyncTracker.setTimeout(() => {
+      this.props.hoisted.startSubmenuTimer(() => {
         targetElement.focus();
         openSubMenu(item, targetElement, true);
-        this._enterTimerId = undefined;
-      }, timeoutDuration);
+      });
     } else {
-      this._enterTimerId = this.props.hoisted.asyncTracker.setTimeout(() => {
+      this.props.hoisted.startSubmenuTimer(() => {
         this.props.hoisted.onSubMenuDismiss(ev);
         targetElement.focus();
-        this._enterTimerId = undefined;
-      }, timeoutDuration);
+      });
     }
   }
 
@@ -1193,7 +1209,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     // Cancel a async menu item hover timeout action from being taken and instead
     // just trigger the click event instead.
-    this._cancelSubMenuTimer();
+    this.props.hoisted.cancelSubMenuTimer();
 
     if (!hasSubmenu(item) && (!items || !items.length)) {
       // This is an item without a menu. Click it.
@@ -1257,15 +1273,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
   };
 
-  // Cancel a async menu item hover timeout action from being taken and instead
-  // do new upcoming behavior
-  private _cancelSubMenuTimer = () => {
-    if (this._enterTimerId !== undefined) {
-      this.props.hoisted.asyncTracker.clearTimeout(this._enterTimerId);
-      this._enterTimerId = undefined;
-    }
-  };
-
   private _getSubmenuProps() {
     const {
       hoisted: { submenuTarget, expandedMenuItemKey, expandedByMouseClick },
@@ -1295,10 +1302,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
     return submenuProps;
   }
-
-  private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
-    this._cancelSubMenuTimer();
-  };
 }
 
 /**
