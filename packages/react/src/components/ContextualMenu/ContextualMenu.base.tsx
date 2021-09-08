@@ -130,11 +130,12 @@ function useVisibility(props: IContextualMenuProps, targetWindow: Window | undef
   React.useEffect(() => () => onMenuClosedRef.current?.(propsRef.current), []);
 }
 
-function useSubMenuState({ hidden }: IContextualMenuProps) {
+function useSubMenuState({ hidden, items, theme, className, id }: IContextualMenuProps, dismiss: () => void) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
   /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
   const [expandedByMouseClick, setExpandedByMouseClick] = React.useState<boolean>();
+  const subMenuId = useId(COMPONENT_NAME, id);
 
   const closeSubMenu = React.useCallback(() => {
     setExpandedByMouseClick(undefined);
@@ -163,7 +164,43 @@ function useSubMenuState({ hidden }: IContextualMenuProps) {
     }
   }, [hidden, closeSubMenu]);
 
-  return [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] as const;
+  const onSubMenuDismiss = useOnSubmenuDismiss(dismiss, closeSubMenu);
+
+  const getSubmenuProps = (): IContextualMenuProps | null => {
+    const item = findItemByKeyFromItems(expandedMenuItemKey!, items);
+    let submenuProps: IContextualMenuProps | null = null;
+
+    if (item) {
+      submenuProps = {
+        items: getSubmenuItems(item)!,
+        target: submenuTarget,
+        onDismiss: onSubMenuDismiss,
+        isSubMenu: true,
+        id: subMenuId,
+        shouldFocusOnMount: true,
+        shouldFocusOnContainer: expandedByMouseClick,
+        directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        className: className,
+        gapSpace: 0,
+        isBeakVisible: false,
+      };
+
+      if (item.subMenuProps) {
+        assign(submenuProps, item.subMenuProps);
+      }
+    }
+    return submenuProps;
+  };
+
+  return [
+    expandedMenuItemKey,
+    submenuTarget,
+    expandedByMouseClick,
+    openSubMenu,
+    closeSubMenu,
+    getSubmenuProps,
+    onSubMenuDismiss,
+  ] as const;
 }
 
 function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IContextualMenuProps) {
@@ -424,7 +461,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
   const hostElement = React.useRef<HTMLDivElement>(null);
   const asyncTracker = useAsync();
-  const subMenuId = useId(COMPONENT_NAME, props.id);
   const menuId = useId(COMPONENT_NAME, props.id);
 
   useWarnings({
@@ -435,9 +471,18 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     },
   });
 
+  const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [previousActiveElementRef, tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
-  const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
+  const [
+    expandedMenuItemKey,
+    submenuTarget,
+    expandedByMouseClick,
+    openSubMenu,
+    closeSubMenu,
+    getSubmenuProps,
+    onSubMenuDismiss,
+  ] = useSubMenuState(props, dismiss);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
   const [onScroll, isScrollIdle] = useScrollHandler(asyncTracker);
   const [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef] = useSubmenuEnterTimer(props, asyncTracker);
@@ -445,9 +490,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const responsiveMode = useResponsiveMode(hostElement, props.responsiveMode);
 
   useVisibility(props, targetWindow);
-
-  const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
-  const onSubMenuDismiss = useOnSubmenuDismiss(dismiss, closeSubMenu);
 
   const [onKeyDown, onKeyUp, onMenuKeyDown] = useKeyHandlers(props, dismiss, hostElement);
 
@@ -468,7 +510,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         gotMouseMove,
         onMenuFocusCapture,
         asyncTracker,
-        subMenuId,
         menuId,
         previousActiveElementRef,
         dismiss,
@@ -482,6 +523,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         cancelSubMenuTimer,
         startSubmenuTimer,
         subMenuEntryTimer: enterTimerRef,
+        getSubmenuProps,
       }}
       responsiveMode={responsiveMode}
     />
@@ -504,7 +546,6 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     closeSubMenu(): void;
     onMenuFocusCapture(): void;
     asyncTracker: Async;
-    subMenuId: string;
     menuId: string;
     previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
     dismiss: (ev?: any, dismissAll?: boolean) => void;
@@ -518,6 +559,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     cancelSubMenuTimer: () => void;
     startSubmenuTimer: (callback: () => void) => void;
     subMenuEntryTimer: React.RefObject<number | undefined>;
+    getSubmenuProps: () => IContextualMenuProps | null;
   };
 }
 
@@ -605,7 +647,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
-    const submenuProps = expandedMenuItemKey && this.props.hidden !== true ? this._getSubmenuProps() : null;
+    const submenuProps =
+      expandedMenuItemKey && this.props.hidden !== true ? this.props.hoisted.getSubmenuProps() : null;
 
     isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
     /**
@@ -1272,38 +1315,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       ev.preventDefault();
     }
   };
-
-  private _getSubmenuProps() {
-    const {
-      hoisted: { submenuTarget, expandedMenuItemKey, expandedByMouseClick, onSubMenuDismiss, subMenuId },
-      items,
-      theme,
-      className,
-    } = this.props;
-    const item = findItemByKeyFromItems(expandedMenuItemKey!, items);
-    let submenuProps: IContextualMenuProps | null = null;
-
-    if (item) {
-      submenuProps = {
-        items: getSubmenuItems(item)!,
-        target: submenuTarget,
-        onDismiss: onSubMenuDismiss,
-        isSubMenu: true,
-        id: subMenuId,
-        shouldFocusOnMount: true,
-        shouldFocusOnContainer: expandedByMouseClick,
-        directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-        className: className,
-        gapSpace: 0,
-        isBeakVisible: false,
-      };
-
-      if (item.subMenuProps) {
-        assign(submenuProps, item.subMenuProps);
-      }
-    }
-    return submenuProps;
-  }
 }
 
 /**
