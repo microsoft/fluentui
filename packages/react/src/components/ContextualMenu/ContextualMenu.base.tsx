@@ -1267,8 +1267,11 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   };
 
   private _getSubmenuProps() {
-    const { submenuTarget, expandedMenuItemKey, expandedByMouseClick } = this.props.hoisted;
-    const item = this._findItemByKey(expandedMenuItemKey!);
+    const {
+      hoisted: { submenuTarget, expandedMenuItemKey, expandedByMouseClick },
+      items,
+    } = this.props;
+    const item = findItemByKeyFromItems(expandedMenuItemKey!, items);
     let submenuProps: IContextualMenuProps | null = null;
 
     if (item) {
@@ -1291,11 +1294,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       }
     }
     return submenuProps;
-  }
-
-  private _findItemByKey(key: string): IContextualMenuItem | undefined {
-    const { items } = this.props;
-    return findItemByKeyFromItems(key, items);
   }
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
