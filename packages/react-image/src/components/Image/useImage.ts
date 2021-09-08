@@ -18,7 +18,5 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, default
     resolveShorthandProps(props, []),
   );
 
-  state['aria-hidden'] = state.alt || state['aria-label'] ? undefined : 'true';
-
   return state;
 };
