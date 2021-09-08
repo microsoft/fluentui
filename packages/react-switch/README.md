@@ -1,3 +1,5 @@
+# @fluentui/react-switch
+
 **React Switch components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 The `Switch` control (formerly `Toggle`) enables users to trigger an option on or off through pressing on the component.
