@@ -533,7 +533,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       styles,
       theme,
       calloutProps,
-      onRenderSubMenu = this._onRenderSubMenu,
+      onRenderSubMenu = onDefaultRenderSubMenu,
       onRenderMenuList = (
         menuListProps: IContextualMenuListProps,
         defaultRender?: IRenderFunction<IContextualMenuListProps>,
@@ -680,7 +680,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                       adjustedFocusZoneProps,
                     )
                   : null}
-                {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
+                {submenuProps && onRenderSubMenu(submenuProps, onDefaultRenderSubMenu)}
               </div>
             </Callout>
           )}
@@ -689,16 +689,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     } else {
       return null;
     }
-  }
-
-  private _onRenderSubMenu(
-    subMenuProps: IContextualMenuInternalProps,
-    defaultRender?: IRenderFunction<IContextualMenuProps>,
-  ): JSX.Element {
-    throw Error(
-      'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
-        'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.',
-    );
   }
 
   private _onRenderMenuList = (
@@ -1341,4 +1331,14 @@ function _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
 
 function onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void {
   item.onMouseDown?.(item, ev);
+}
+
+function onDefaultRenderSubMenu(
+  subMenuProps: IContextualMenuInternalProps,
+  defaultRender?: IRenderFunction<IContextualMenuProps>,
+): JSX.Element {
+  throw Error(
+    'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
+      'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.',
+  );
 }
