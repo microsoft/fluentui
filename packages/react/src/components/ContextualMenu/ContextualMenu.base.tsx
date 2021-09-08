@@ -192,15 +192,7 @@ function useSubMenuState({ hidden, items, theme, className, id }: IContextualMen
     return submenuProps;
   };
 
-  return [
-    expandedMenuItemKey,
-    submenuTarget,
-    expandedByMouseClick,
-    openSubMenu,
-    closeSubMenu,
-    getSubmenuProps,
-    onSubMenuDismiss,
-  ] as const;
+  return [expandedMenuItemKey, openSubMenu, getSubmenuProps, onSubMenuDismiss] as const;
 }
 
 function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IContextualMenuProps) {
@@ -252,7 +244,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
       previousActiveElement.current = undefined;
     }
   }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
-  return [previousActiveElement, tryFocusPreviousActiveElement] as const;
+  return [tryFocusPreviousActiveElement] as const;
 }
 
 function useKeyHandlers(
@@ -473,16 +465,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
   const [targetRef, targetWindow] = useTarget(props.target, hostElement);
-  const [previousActiveElementRef, tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
-  const [
-    expandedMenuItemKey,
-    submenuTarget,
-    expandedByMouseClick,
-    openSubMenu,
-    closeSubMenu,
-    getSubmenuProps,
-    onSubMenuDismiss,
-  ] = useSubMenuState(props, dismiss);
+  const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
+  const [expandedMenuItemKey, openSubMenu, getSubmenuProps, onSubMenuDismiss] = useSubMenuState(props, dismiss);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
   const [onScroll, isScrollIdle] = useScrollHandler(asyncTracker);
   const [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef] = useSubmenuEnterTimer(props, asyncTracker);
@@ -502,16 +486,11 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         targetRef,
         targetWindow,
         expandedMenuItemKey,
-        submenuTarget,
-        expandedByMouseClick,
         openSubMenu,
-        closeSubMenu,
         shouldUpdateFocusOnMouseEvent,
         gotMouseMove,
         onMenuFocusCapture,
-        asyncTracker,
         menuId,
-        previousActiveElementRef,
         dismiss,
         tryFocusPreviousActiveElement,
         onKeyDown,
@@ -538,16 +517,11 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     targetRef: React.RefObject<Element | MouseEvent | Point | null>;
     targetWindow: Window | undefined;
     expandedMenuItemKey?: string;
-    submenuTarget?: Element;
-    expandedByMouseClick?: boolean;
     shouldUpdateFocusOnMouseEvent: React.MutableRefObject<boolean>;
     gotMouseMove: React.MutableRefObject<boolean>;
     openSubMenu(submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean): void;
-    closeSubMenu(): void;
     onMenuFocusCapture(): void;
-    asyncTracker: Async;
     menuId: string;
-    previousActiveElementRef: React.RefObject<HTMLElement | undefined>;
     dismiss: (ev?: any, dismissAll?: boolean) => void;
     tryFocusPreviousActiveElement: (options: IPopupRestoreFocusParams) => void;
     onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
