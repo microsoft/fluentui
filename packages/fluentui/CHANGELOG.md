@@ -60,6 +60,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - add `disabledFocusable` for toolbar items @adamsamec ([#18720](https://github.com/microsoft/fluentui/pull/18720))
 - Fix `Tooltip` appearance in high contrast theme @yuanboxue-amber ([#19559](https://github.com/microsoft/fluentui/pull/19559))
 - Fix `Shadow` colors to match redlines @notandrew ([#19552](https://github.com/microsoft/fluentui/pull/19552))
+- Fix `Checkbox` background issue on zoom above 100% @vitthalr ([#19619](https://github.com/microsoft/fluentui/pull/19619))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))
