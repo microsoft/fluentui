@@ -2,9 +2,9 @@ import * as ts from 'typescript';
 
 // ---
 
-type ArgumentName = string;
+export type ArgumentName = string;
 type ArgumentPrimitiveValue = null | boolean | string | undefined;
-type ArgumentValue = ArgumentPrimitiveValue | Record<string, ArgumentPrimitiveValue>;
+export type ArgumentValue = ArgumentPrimitiveValue | Record<string, ArgumentPrimitiveValue>;
 
 // ---
 
@@ -42,7 +42,10 @@ function keywordNodeToPrimitive(node: ts.Node): null | string | undefined {
   }
 
   throw new Error(
-    'Unexpected kind of node is passed, this could be a bug or an unhandled scenario. Please report it if it happens',
+    [
+      `Unexpected kind (${node.kind}) of node is passed (${node.getText()}).`,
+      'This could be a bug or an unhandled scenario, please report it if it happens',
+    ].join(' '),
   );
 }
 
@@ -97,6 +100,50 @@ function parseArgumentName(name: ts.PropertyName | ts.ParameterDeclaration['name
 }
 
 /**
+ * TS does not export "IntrinsicType".
+ * See https://github.com/microsoft/TypeScript/issues/22269
+ */
+function isIntrinsicType(type: ts.Type): type is ts.Type & { intrinsicName: string } {
+  return Object.prototype.hasOwnProperty.call(type, 'intrinsicName');
+}
+
+function typeHasSubtypes(type: ts.Type): type is ts.Type & { types: ts.Type[] } {
+  return Array.isArray((type as ts.Type & { types: ts.Type[] }).types);
+}
+
+function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue | ArgumentValue[] {
+  if (isIntrinsicType(type)) {
+    return (type as any).intrinsicName;
+  }
+
+  if (type.symbol) {
+    const firstDeclaration = type.symbol.declarations[0];
+    const fileName = firstDeclaration.parent.getSourceFile().fileName;
+
+    // If types are coming from "node_modules" we want don't want to expand them, otherwise "Event" becomes an object
+    // with properties.
+    // "React" types are handled separately to add "React." prefix otherwise it's impossible to distinguish
+    // "React.MouseEvent" and "MouseEvent" types.
+
+    if (/\/node_modules\/@types\/react\//.test(fileName)) {
+      return 'React.' + type.symbol.escapedName;
+    }
+
+    if (/\/node_modules\//.test(fileName)) {
+      return type.symbol.escapedName as string;
+    }
+
+    return parseArgumentType(typeChecker, type.symbol.declarations[0]);
+  }
+
+  if (typeHasSubtypes(type)) {
+    return type.types.map(t => typeToString(typeChecker, t) as ArgumentValue);
+  }
+
+  return typeChecker.typeToString(type);
+}
+
+/**
  * Parses a value in a callback.
  *
  * @example
@@ -106,7 +153,10 @@ function parseArgumentName(name: ts.PropertyName | ts.ParameterDeclaration['name
  *              parses these nodes
  * }
  */
-function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue | ArgumentValue[] {
+function parseArgumentType(
+  typeChecker: ts.TypeChecker,
+  type: ts.ParameterDeclaration['type'] | ts.Declaration,
+): ArgumentValue | ArgumentValue[] {
   if (!type) {
     throw new Error(`We received ${typeof type} instead of a node from TS AST, please report this if it happens`);
   }
@@ -122,7 +172,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
 
       return {
         ...acc,
-        [parseArgumentName(member.name)]: parseArgumentType(member.type),
+        [parseArgumentName(member.name)]: parseArgumentType(typeChecker, member.type),
       };
     }, {});
   }
@@ -133,17 +183,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   // { onChange: (data: React.MouseEvent) => void }
   //                    ^
   if (ts.isTypeReferenceNode(type)) {
-    if (ts.isIdentifier(type.typeName)) {
-      return identifierToString(type.typeName);
-    }
-
-    if (ts.isQualifiedName(type.typeName)) {
-      if (!ts.isIdentifier(type.typeName.left)) {
-        throw new Error('We met an unhandled case, please report it');
-      }
-
-      return `${identifierToString(type.typeName.left)}.${identifierToString(type.typeName.right)}`;
-    }
+    return typeToString(typeChecker, typeChecker.getTypeAtLocation(type));
   }
 
   // Handles a case when a node is an array
@@ -157,7 +197,7 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   // { onChange: (data: MouseEvent | KeyboardEvent) => void }
   //                    ^
   if (ts.isUnionTypeNode(type)) {
-    return type.types.map(typeFromUnion => parseArgumentType(typeFromUnion)) as ArgumentValue[];
+    return type.types.map(typeFromUnion => parseArgumentType(typeChecker, typeFromUnion)) as ArgumentValue[];
   }
 
   // Handles a case when a node is a literal
@@ -165,6 +205,32 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   //                    ^
   if (ts.isLiteralTypeNode(type)) {
     return literalNodeToPrimitive(type.literal);
+  }
+
+  // Handles a case when a node is a class declaration
+  // class Item {}
+  // ...
+  // { onChange: (data: Item) => void }
+  //
+  if (ts.isClassDeclaration(type)) {
+    return type.name?.escapedText as string;
+  }
+
+  // Handles a case when a node is an interface declaration
+  // interface Item {}
+  // ...
+  // { onChange: (data: Item) => void }
+  //
+  if (ts.isInterfaceDeclaration(type)) {
+    return type.members.reduce((acc, member) => {
+      const propertyName = parseArgumentName(member.name!);
+      const propertyType = (member as ts.PropertySignature).type;
+
+      return {
+        ...acc,
+        [propertyName]: parseArgumentType(typeChecker, propertyType),
+      };
+    }, {});
   }
 
   // Handles a case when a node is a keyword
@@ -177,13 +243,16 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
     return keywordNodeToPrimitive(type);
   }
 
-  throw new Error('Failed to parse an unknown argument type, please report if it happens');
+  throw new Error(`Failed to parse an unknown argument type (${type.getText()}), please report if it happens`);
 }
 
 /**
  * Parses callbacks arguments and values.
  */
-function parseFunctionArguments(node: ts.Node): Record<ArgumentName, ArgumentValue> {
+function parseFunctionArguments(
+  typeChecker: ts.TypeChecker,
+  node: ts.Node,
+): Record<ArgumentName, ArgumentValue | ArgumentValue[]> {
   if (!ts.isFunctionTypeNode(node)) {
     throw new Error(`We received an AST node with wrong kind (${node.kind}), please report this as a bug`);
   }
@@ -191,7 +260,7 @@ function parseFunctionArguments(node: ts.Node): Record<ArgumentName, ArgumentVal
   return node.parameters.reduce((acc, parameter) => {
     return {
       ...acc,
-      [parseArgumentName(parameter.name)]: parseArgumentType(parameter.type),
+      [parseArgumentName(parameter.name)]: parseArgumentType(typeChecker, parameter.type),
     };
   }, {});
 }
@@ -289,7 +358,8 @@ export function getCallbackArguments(
   filename: string,
   typeName: string,
   propertyName: string,
-): Record<ArgumentName, ArgumentValue> {
+): Record<ArgumentName, ArgumentValue | ArgumentValue[]> {
+  const typeChecker = program.getTypeChecker();
   const sourceFile = program.getSourceFiles().find(file => file.fileName.includes(filename));
 
   if (!sourceFile) {
@@ -318,8 +388,6 @@ export function getCallbackArguments(
   // export type Callback = () => {}
   // export type ComponentProps = { onClick: Callback }
   if (ts.isTypeReferenceNode(propertySignature.type)) {
-    const typeChecker = program.getTypeChecker();
-
     const typeAtLocation = typeChecker.getTypeAtLocation(propertySignature.type);
     const typeDeclarations = typeAtLocation.symbol.declarations;
 
@@ -332,8 +400,8 @@ export function getCallbackArguments(
       );
     }
 
-    return parseFunctionArguments(typeDeclarations[0]);
+    return parseFunctionArguments(typeChecker, typeDeclarations[0]);
   }
 
-  return parseFunctionArguments(propertySignature.type);
+  return parseFunctionArguments(typeChecker, propertySignature.type);
 }

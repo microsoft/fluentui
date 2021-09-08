@@ -143,26 +143,66 @@ describe('getCallbackArguments', () => {
       expect(type).toMatchObject({ e: 'React.MouseEvent' });
     });
 
-    // TODO: to write better assertions we will need to resolve some of our custom types
-    // it.todo('revolves references', async () => {
-    //   const program = await setupProgram(['Accordion.types.ts'], {
-    //     './Accordion.types.ts': `import * as React from 'react';
-    //
-    //     export interface AccordionToggleData {
-    //       value: AccordionItemValue;
-    //     }
-    //
-    //     export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
-    //     export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-    //
-    //     export interface AccordionProps {
-    //       onToggle: AccordionToggleEventHandler;
-    //     }`,
-    //   });
-    //   const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
-    //
-    //   expect(type).toMatchObject({ event: ['React.MouseEvent', 'React.KeyboardEvent'], data: { value: 'String' } });
-    // });
+    it('revolves references', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './Accordion.types.ts': `import * as React from 'react';
+
+        export type TypeA = React.MouseEvent;
+        export type TypeString = string;
+        export type TypeB = React.MouseEvent | MouseEvent | TypeString | number;
+        
+        export type AccordionToggleEventHandler = (a: TypeA, b: TypeB, c: React.MouseEvent) => void;
+
+        export interface AccordionProps {
+          onToggle: AccordionToggleEventHandler;
+        }`,
+      });
+      const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
+
+      expect(type).toMatchObject({
+        a: 'React.MouseEvent',
+        b: ['string', 'number', 'MouseEvent', 'React.MouseEvent'],
+        c: 'React.MouseEvent',
+      });
+    });
+
+    it('revolves references to classes', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './Accordion.types.ts': `import * as React from 'react';
+
+        export class TabItem {}
+        export interface AccordionProps {
+          onToggle: (item: TabItem) => void;
+        }`,
+      });
+      const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
+
+      expect(type).toMatchObject({
+        item: 'TabItem',
+      });
+    });
+
+    it('revolves references to interfaces', async () => {
+      const program = await setupProgram(['Accordion.types.ts'], {
+        './Accordion.types.ts': `import * as React from 'react';
+
+        type AccordionItemValue = string
+
+        export interface Data {
+          key: string
+          value: AccordionItemValue;
+        }
+        
+        export type AccordionToggleEventHandler = (data: Data) => void;
+
+        export interface AccordionProps {
+          onToggle: AccordionToggleEventHandler;
+        }`,
+      });
+      const type = getCallbackArguments(program, 'Accordion.types.ts', 'AccordionProps', 'onToggle');
+
+      expect(type).toMatchObject({ data: { key: 'string', value: 'string' } });
+    });
 
     it('handles generics', async () => {
       const program = await setupProgram(['Accordion.types.ts'], {
