@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 
@@ -43,6 +44,18 @@ describe('FocusZone', () => {
 
   beforeEach(() => {
     lastFocusedElement = undefined;
+  });
+
+  it('renders FocusZone correctly with no props', () => {
+    const component = renderer.create(<FocusZone />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders FocusZone correctly with aria-describedby and aria-labelledby', () => {
+    const component = renderer.create(<FocusZone aria-describedby='customDescribedBy' aria-labelledby='customLabelledBy' />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('can use arrows vertically', () => {
