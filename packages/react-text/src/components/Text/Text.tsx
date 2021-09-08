@@ -11,6 +11,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>((props, ref) => {
   const state = useText(props, ref);
 
   useTextStyles(state);
+
   return renderText(state);
 });
 
