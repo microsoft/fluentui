@@ -20,9 +20,7 @@
     "lint": "just-scripts lint",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-positioning/src && yarn docs",
-    "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-positioning/src && yarn docs"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",

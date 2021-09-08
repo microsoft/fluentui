@@ -31,6 +31,7 @@
       "@fluentui/react-context-selector": ["packages/react-context-selector/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-divider/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
+      "@fluentui/react-icons": ["undefined/src/index.ts"],
       "@fluentui/react-image": ["packages/react-image/src/index.ts"],
       "@fluentui/react-input": ["packages/react-input/src/index.ts"],
       "@fluentui/react-label": ["packages/react-label/src/index.ts"],

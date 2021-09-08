@@ -17,13 +17,14 @@
     "lint": "just-scripts lint",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-conformance-make-styles/src && yarn docs",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-conformance-make-styles/src && yarn docs",
     "storybook": "start-storybook",
     "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.44"
   },
   "dependencies": {
     "@fluentui/react-conformance": "^0.5.0",

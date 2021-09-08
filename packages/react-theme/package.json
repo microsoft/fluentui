@@ -18,11 +18,11 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "storybook",
+    "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-theme/src && yarn docs"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-theme/src && yarn docs"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",

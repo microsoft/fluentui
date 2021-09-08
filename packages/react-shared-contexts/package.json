@@ -18,8 +18,10 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-shared-contexts/src && yarn docs",
-    "test": "jest --passWithNoTests"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-shared-contexts/src && yarn docs",
+    "test": "jest",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",

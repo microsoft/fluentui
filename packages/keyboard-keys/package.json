@@ -18,7 +18,10 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/keyboard-keys/src && yarn docs"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/keyboard-keys/src && yarn docs",
+    "storybook": "start-storybook",
+    "start": "yarn storybook",
+    "test": "jest"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",

@@ -23,7 +23,7 @@
     "storybook": "start-storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-popover/src && yarn docs"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-popover/src && yarn docs"
   },
   "devDependencies": {
     "@fluentui/babel-make-styles": "^9.0.0-alpha.44",

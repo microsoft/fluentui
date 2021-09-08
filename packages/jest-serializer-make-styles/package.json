@@ -17,7 +17,9 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/jest-serializer-make-styles/src && yarn docs"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/jest-serializer-make-styles/src && yarn docs",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
@@ -30,7 +32,8 @@
     "@types/react-test-renderer": "^16.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.44"
   },
   "dependencies": {
     "@fluentui/make-styles": "^9.0.0-alpha.31"

@@ -16,15 +16,18 @@
     "lint": "just-scripts lint",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/babel-make-styles/src && yarn docs",
-    "type-check": "tsc -p ./tsconfig.spec.json"
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs",
+    "type-check": "tsc -p ./tsconfig.spec.json",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/react-make-styles": "^9.0.0-alpha.62",
     "@fluentui/react-theme": "^9.0.0-alpha.22",
     "@fluentui/scripts": "^1.0.0",
-    "babel-plugin-tester": "^10.0.0"
+    "babel-plugin-tester": "^10.0.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.44"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",

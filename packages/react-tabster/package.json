@@ -18,9 +18,9 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "storybook": "start-storybook",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-tabster/src && yarn docs",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-tabster/src && yarn docs",
     "start": "yarn storybook"
   },
   "devDependencies": {
@@ -31,7 +31,8 @@
     "@types/react-test-renderer": "^16.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.44"
   },
   "dependencies": {
     "@fluentui/make-styles": "^9.0.0-alpha.31",
