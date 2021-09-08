@@ -53,13 +53,6 @@ import type { IPopupRestoreFocusParams } from '../../Popup';
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
-export interface IContextualMenuState {
-  contextualMenuTarget?: Element;
-  positions?: any;
-  slideDirectionalClassName?: string;
-  submenuDirection?: DirectionalHint;
-}
-
 // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
 const DEFAULT_PROPS: Partial<IContextualMenuProps> = {
   items: [],
@@ -538,7 +531,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
 }
 
 class ContextualMenuInternal extends React.Component<IContextualMenuInternalProps, never> {
-  public shouldComponentUpdate(newProps: IContextualMenuInternalProps, newState: IContextualMenuState): boolean {
+  public shouldComponentUpdate(newProps: IContextualMenuInternalProps): boolean {
     if (!newProps.shouldUpdateWhenHidden && this.props.hidden && newProps.hidden) {
       // Do not update when hidden.
       return false;
