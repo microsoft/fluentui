@@ -7883,6 +7883,7 @@ export interface ISuggestionsProps<T> extends React_2.Props<any> {
     resultsMaximumNumber?: number;
     // @deprecated
     searchErrorText?: string;
+    searchForMoreIconName?: string;
     searchForMoreText?: string;
     searchingText?: string;
     showForceResolve?: () => boolean;
