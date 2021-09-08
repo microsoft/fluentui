@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "Moving Slider logic into utils folder.",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
