@@ -706,11 +706,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         hostElement,
         forwardedRef,
         targetRef,
-        targetWindow,
         expandedMenuItemKey,
         openSubMenu,
-        shouldUpdateFocusOnMouseEvent,
-        gotMouseMove,
         onMenuFocusCapture,
         menuId,
         dismiss,
@@ -719,11 +716,8 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         onKeyUp,
         onMenuKeyDown,
         onScroll,
-        isScrollIdle,
         onSubMenuDismiss,
         cancelSubMenuTimer,
-        startSubmenuTimer,
-        subMenuEntryTimer,
         getSubmenuProps,
         onItemKeyDown,
         onItemMouseEnterBase,
@@ -745,10 +739,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     hostElement: React.RefObject<HTMLDivElement>;
     forwardedRef: React.Ref<HTMLDivElement>;
     targetRef: React.RefObject<Element | MouseEvent | Point | null>;
-    targetWindow: Window | undefined;
     expandedMenuItemKey?: string;
-    shouldUpdateFocusOnMouseEvent: React.MutableRefObject<boolean>;
-    gotMouseMove: React.MutableRefObject<boolean>;
     openSubMenu(submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean): void;
     onMenuFocusCapture(): void;
     menuId: string;
@@ -758,11 +749,8 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     onKeyUp: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     onMenuKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => void;
     onScroll: () => void;
-    isScrollIdle: React.RefObject<boolean>;
     onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void;
     cancelSubMenuTimer: () => void;
-    startSubmenuTimer: (callback: () => void) => void;
-    subMenuEntryTimer: React.RefObject<number | undefined>;
     getSubmenuProps: () => IContextualMenuProps | null;
     onItemKeyDown: (item: any, ev: React.KeyboardEvent<HTMLElement>) => void;
     onItemMouseEnterBase(item: any, ev: React.MouseEvent<HTMLElement>, target?: HTMLElement): void;
