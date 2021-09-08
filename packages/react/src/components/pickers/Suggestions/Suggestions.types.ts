@@ -6,7 +6,7 @@ import type { IPersonaProps } from '../../Persona/Persona.types';
 import type { IStyle, ITheme } from '../../../Styling';
 import type { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 import type { ISuggestionItemProps } from './SuggestionsItem.types';
-
+import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
  * {@docCategory Pickers}
@@ -224,6 +224,12 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /**
+   *  Props for the icon used in the item's remove button.
+   *  @defaultvalue `{ iconName:'Cancel' }`
+   */
+  removeButtonIconProps?: IIconProps;
 }
 
 /**
