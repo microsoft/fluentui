@@ -75,7 +75,6 @@ describe('Switch', () => {
       render(<Switch onChange={eventHandler} />);
 
       const input = screen.getByRole('checkbox');
-
       expect(eventHandler).toBeCalledTimes(0);
 
       fireEvent.click(input);
