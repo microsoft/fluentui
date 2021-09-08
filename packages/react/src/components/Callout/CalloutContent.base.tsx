@@ -102,6 +102,7 @@ function usePositions(
   getBounds: () => IRectangle | undefined,
 ) {
   const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
+  const [targetAttempts, setTargetAttempts] = React.useState<number>(0);
   const positionAttempts = React.useRef(0);
   const previousTarget = React.useRef<Target>();
   const async = useAsync();
@@ -112,9 +113,15 @@ function usePositions(
       const timerId = async.requestAnimationFrame(() => {
         // If we expect a target element to position against, we need to wait until `targetRef.current`
         // is resolved. Otherwise we can try to position.
-        const expectsTarget = !!target;
+        if (!!target && !targetRef.current) {
+          if (targetAttempts < 5) {
+            setTargetAttempts(targetAttempts + 1);
+          }
 
-        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+          return;
+        }
+
+        if (hostElement.current && calloutElement.current) {
           const currentProps: IPositionProps = {
             ...props,
             target: targetRef.current!,
@@ -414,7 +421,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 
     const visibilityStyle: React.CSSProperties | undefined = props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
-    const content = (
+    return (
       <div ref={rootRef} className={classNames.container} style={visibilityStyle}>
         <div
           {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
@@ -446,8 +453,6 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
         </div>
       </div>
     );
-
-    return content;
   }),
   (previousProps: ICalloutProps, nextProps: ICalloutProps) => {
     if (!nextProps.shouldUpdateWhenHidden && previousProps.hidden && nextProps.hidden) {
