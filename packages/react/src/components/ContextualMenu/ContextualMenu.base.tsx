@@ -1015,7 +1015,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       onItemMouseEnter: this._onItemMouseEnterBase,
       onItemMouseLeave: this._onMouseItemLeave,
       onItemMouseMove: this._onItemMouseMoveBase,
-      onItemMouseDown: this._onItemMouseDown,
+      onItemMouseDown: onItemMouseDown,
       executeItemClick: this._executeItemClick,
       onItemKeyDown: this._onItemKeyDown,
       expandedMenuItemKey,
@@ -1183,12 +1183,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     }
   }
 
-  private _onItemMouseDown = (item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void => {
-    if (item.onMouseDown) {
-      item.onMouseDown(item, ev);
-    }
-  };
-
   private _onItemClick = (
     item: IContextualMenuItem,
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
@@ -1340,4 +1334,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 function _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
   // eslint-disable-next-line deprecation/deprecation
   return ev.which === KeyCodes.alt || ev.key === 'Meta';
+}
+
+function onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>): void {
+  item.onMouseDown?.(item, ev);
 }
