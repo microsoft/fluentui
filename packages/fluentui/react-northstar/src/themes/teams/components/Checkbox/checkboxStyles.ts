@@ -117,16 +117,13 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
 
-    ...(p.checked &&
-      p.checked && {
-        borderColor: v.checkedBorderColor,
-        backgroundColor: v.checkedBackground,
-        backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
-      }),
-
-    ...(p.checked === 'mixed' && {
+    ...(p.checked && {
       borderColor: v.checkedBorderColor,
       backgroundColor: v.checkedBackground,
+      backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
+    }),
+
+    ...(p.checked === 'mixed' && {
       backgroundImage: checkboxIndicatorIndeterminateUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
