@@ -51,6 +51,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Card` HC styles on hover @chassunc ([#19382](https://github.com/microsoft/fluentui/pull/19382))
 - Add `AppsIcon`, `AppFolderIcon`, `PageFitIcon`, `SubtractIcon` @notandrew ([#19424](https://github.com/microsoft/fluentui/pull/19424))
 - Fix `Dialog` background in teams dark v2  @chassunc ([#19434](https://github.com/microsoft/fluentui/pull/19434))
+- Fix `Menu` and `Popup` border, box-shadow, and paddings @notandrew ([#19084](https://github.com/microsoft/fluentui/pull/19084))
 - Fix to update Yellow's Background1 color to BackgroundTransparent @notandrew ([#19444](https://github.com/microsoft/fluentui/pull/19444))
 - Add missging pressed state styles for text `Button`  @chassunc ([#19480](https://github.com/microsoft/fluentui/pull/19480))
 - Fix `MenuItem` apply focus styles for vertical menu from `getBorderFocusStyles` @annabratseiko ([#19419](https://github.com/microsoft/fluentui/pull/19419))
