@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.50)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.49..@fluentui/react-positioning_v9.0.0-alpha.50)
+
+### Changes
+
+- chore(usePopper): Document that `align` does not work without `position` ([PR #19659](https://github.com/microsoft/fluentui/pull/19659) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.49)
 

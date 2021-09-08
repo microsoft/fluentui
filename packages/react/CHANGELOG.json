@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react_v8.31.0",
+      "version": "8.31.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set active descendant for no results found",
+            "author": "gcox@microsoft.com",
+            "commit": "eb85601d894b5be70c7ba5ea162547022d96b54c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Put layer mount events after DOM updated.",
+            "author": "gcox@microsoft.com",
+            "commit": "ea831f5695e395293b5e8416d1fb961ba5a0079e",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "fix selected semantics and scroll-to-view on Combobox, remove select-on-hover behavior, remove unneeded aria-checked on checkbox",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react_v8.30.4",
       "version": "8.30.4",
