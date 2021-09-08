@@ -1,5 +1,5 @@
 /**
- * Validates that the `value` is a number and falls between the min and max.
+ * Clamps `value` to a number between the min and max.
  *
  * @param value - the value to be clamped
  * @param min - the lowest valid value

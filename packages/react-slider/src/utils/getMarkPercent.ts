@@ -1,8 +1,8 @@
 /**
  * Gets the current percentage position for the marks with respect to adjacent marks.
+ * This is used primarily for positioning with CSS grid.
  *
- * The marks percentage position relative to their individual positions.
- * @param markValues
+ * @param markValues The marks percentage position relative to their individual positions.
  */
 export const getMarkPercent = (markValues: number[]) => {
   const valueArray: number[] = markValues;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { clamp } from './clamp';
 
 /**
- * Calculates the `step` position based off of a `Mouse` or `Touch` event.
+ * Calculates the `step` position based off of a `Mouse` or `Touch` event relative to the size of the rail.
  */
 export const calculateSteps = (
   ev: React.PointerEvent<HTMLDivElement>,

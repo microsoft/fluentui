@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { getRTLSafeKey } from './getRTLSafeKey';
 
+/**
+ * Determines the incoming value for the Slider based off of a keyboard event.
+ * It automatically flips the key direction if the dir parameter is rtl.
+ */
 export const getKeydownValue = (
   ev: React.KeyboardEvent<HTMLDivElement>,
   currentValue: number,
