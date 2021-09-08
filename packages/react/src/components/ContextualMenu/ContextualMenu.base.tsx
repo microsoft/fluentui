@@ -383,7 +383,7 @@ function useKeyHandlers(
 }
 
 function useScrollHandler(asyncTracker: Async) {
-  const isScrollIdle = React.useRef<boolean>(false);
+  const isScrollIdle = React.useRef<boolean>(true);
   const scrollIdleTimeoutId = React.useRef<number | undefined>();
 
   /**
