@@ -1295,25 +1295,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _findItemByKey(key: string): IContextualMenuItem | undefined {
     const { items } = this.props;
-    return this._findItemByKeyFromItems(key, items);
-  }
-
-  /**
-   * Returns the item that matches a given key if any.
-   * @param key - The key of the item to match
-   * @param items - The items to look for the key
-   */
-  private _findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
-    for (const item of items) {
-      if (item.itemType === ContextualMenuItemType.Section && item.sectionProps) {
-        const match = this._findItemByKeyFromItems(key, item.sectionProps.items);
-        if (match) {
-          return match;
-        }
-      } else if (item.key && item.key === key) {
-        return item;
-      }
-    }
+    return findItemByKeyFromItems(key, items);
   }
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {
@@ -1341,4 +1323,22 @@ function onDefaultRenderSubMenu(
     'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
       'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.',
   );
+}
+
+/**
+ * Returns the item that matches a given key if any.
+ * @param key - The key of the item to match
+ * @param items - The items to look for the key
+ */
+function findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
+  for (const item of items) {
+    if (item.itemType === ContextualMenuItemType.Section && item.sectionProps) {
+      const match = findItemByKeyFromItems(key, item.sectionProps.items);
+      if (match) {
+        return match;
+      }
+    } else if (item.key && item.key === key) {
+      return item;
+    }
+  }
 }
