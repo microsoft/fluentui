@@ -23,7 +23,12 @@ export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, Ch
   gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
     marginTop: p.density === 'compact' ? v.gutterMarginCompact : v.gutterMargin,
-    [p.contentPosition === 'end' ? 'right' : 'left']: p.density === 'compact' ? pxToRem(28) : 0,
+    ...(p.density === 'compact' && {
+      left: pxToRem(28),
+    }),
+    ...(p.density === 'comfy' && {
+      [p.contentPosition === 'end' ? 'right' : 'left']: 0,
+    }),
     ...((p.attached === 'bottom' || p.attached === true) && {
       display: 'none',
     }),
