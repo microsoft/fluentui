@@ -1275,8 +1275,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _getSubmenuProps() {
     const {
-      hoisted: { submenuTarget, expandedMenuItemKey, expandedByMouseClick },
+      hoisted: { submenuTarget, expandedMenuItemKey, expandedByMouseClick, onSubMenuDismiss, subMenuId },
       items,
+      theme,
+      className,
     } = this.props;
     const item = findItemByKeyFromItems(expandedMenuItemKey!, items);
     let submenuProps: IContextualMenuProps | null = null;
@@ -1285,13 +1287,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       submenuProps = {
         items: getSubmenuItems(item)!,
         target: submenuTarget,
-        onDismiss: this.props.hoisted.onSubMenuDismiss,
+        onDismiss: onSubMenuDismiss,
         isSubMenu: true,
-        id: this.props.hoisted.subMenuId,
+        id: subMenuId,
         shouldFocusOnMount: true,
         shouldFocusOnContainer: expandedByMouseClick,
-        directionalHint: getRTL(this.props.theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-        className: this.props.className,
+        directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        className: className,
         gapSpace: 0,
         isBeakVisible: false,
       };
