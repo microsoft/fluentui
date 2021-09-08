@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding react-slider",
+  "packageName": "@fluentui/react-components",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}
