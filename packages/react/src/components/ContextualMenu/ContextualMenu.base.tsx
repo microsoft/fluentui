@@ -248,6 +248,7 @@ function useKeyHandlers(
   }: IContextualMenuProps,
   dismiss: (ev?: any, dismissAll?: boolean | undefined) => void | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
+  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => void,
 ) {
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>();
@@ -365,7 +366,20 @@ function useKeyHandlers(
     }
   };
 
-  return [onKeyDown, onKeyUp, onMenuKeyDown] as const;
+  const onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
+    const openKey = getRTL(theme) ? KeyCodes.left : KeyCodes.right;
+
+    if (
+      !item.disabled &&
+      // eslint-disable-next-line deprecation/deprecation
+      (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
+    ) {
+      openSubMenu(item, ev.currentTarget as HTMLElement, false);
+      ev.preventDefault();
+    }
+  };
+
+  return [onKeyDown, onKeyUp, onMenuKeyDown, onItemKeyDown] as const;
 }
 
 function useScrollHandler(asyncTracker: Async) {
@@ -468,7 +482,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   useVisibility(props, targetWindow);
 
-  const [onKeyDown, onKeyUp, onMenuKeyDown] = useKeyHandlers(props, dismiss, hostElement);
+  const [onKeyDown, onKeyUp, onMenuKeyDown, onItemKeyDown] = useKeyHandlers(props, dismiss, hostElement, openSubMenu);
 
   return (
     <ContextualMenuInternal
@@ -496,6 +510,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         startSubmenuTimer,
         subMenuEntryTimer: enterTimerRef,
         getSubmenuProps,
+        onItemKeyDown,
       }}
       responsiveMode={responsiveMode}
     />
@@ -527,6 +542,7 @@ interface IContextualMenuInternalProps extends IContextualMenuProps {
     startSubmenuTimer: (callback: () => void) => void;
     subMenuEntryTimer: React.RefObject<number | undefined>;
     getSubmenuProps: () => IContextualMenuProps | null;
+    onItemKeyDown: (item: any, ev: React.KeyboardEvent<HTMLElement>) => void;
   };
 }
 
@@ -1045,7 +1061,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       onItemMouseMove: this._onItemMouseMoveBase,
       onItemMouseDown: onItemMouseDown,
       executeItemClick: this._executeItemClick,
-      onItemKeyDown: this._onItemKeyDown,
+      onItemKeyDown: this.props.hoisted.onItemKeyDown,
       expandedMenuItemKey,
       openSubMenu,
       dismissSubMenu: this.props.hoisted.onSubMenuDismiss,
@@ -1267,19 +1283,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     if (dismiss || !ev.defaultPrevented) {
       this.props.hoisted.dismiss(ev, true);
-    }
-  };
-
-  private _onItemKeyDown = (item: any, ev: React.KeyboardEvent<HTMLElement>): void => {
-    const openKey = getRTL(this.props.theme) ? KeyCodes.left : KeyCodes.right;
-
-    if (
-      !item.disabled &&
-      // eslint-disable-next-line deprecation/deprecation
-      (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
-    ) {
-      this.props.hoisted.openSubMenu(item, ev.currentTarget as HTMLElement, false);
-      ev.preventDefault();
     }
   };
 }
