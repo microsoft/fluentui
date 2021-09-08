@@ -169,10 +169,10 @@ for react-components only. Here is the sample snippet for `package.json`, you ca
 working demo repo in the link under the heading.
 
 ```json
-// react-components/lib/alpha/package.json
+// react-components/unstable/package.json
 {
-  "main": "../../lib-commonjs/unstable/index.js", // commonjs entrypoint for jest
-  "module": "index.js" // esm entrypoint for webpack
+  "main": "../lib-commonjs/unstable/index.js", // commonjs entrypoint for jest
+  "module": "../lib/unstable/index.js" // esm entrypoint for webpack
 }
 ```
 
