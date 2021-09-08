@@ -1,50 +1,60 @@
 import * as React from 'react';
-import { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ComponentState, ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 
-export interface SliderProps
-  extends ComponentPropsCompat,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export type SliderSlots = {
+  /**
+   * The root of the Slider.
+   */
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  rail: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the Slider component.
    */
-  sliderWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  sliderWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  trackWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  trackWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The bar showing the current selected area adjacent to the Slider's thumb.
    */
-  track?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  track: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper holding the marks and mark labels for the Slider.
    */
-  marksWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  marksWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
-  thumbWrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  thumb: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
 
   /**
    * The area in which the Slider's rail allows for the thumb to be dragged.
    */
-  activeRail?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
 
+  /**
+   * The hidden input for the Slider.
+   */
+  input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLElement>;
+};
+
+export interface SliderCommons {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
@@ -71,7 +81,7 @@ export interface SliderProps
 
   /**
    * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value.
+   * will snap to the closest available value. This must be a positive value.
    * @default 1
    */
   step?: number;
@@ -132,38 +142,6 @@ export interface SliderProps
   ariaValueText?: (value: number) => string;
 }
 
-/**
- * Names of the shorthand properties in SliderProps
- */
-export type SliderShorthandProps =
-  | 'rail'
-  | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
-  | 'thumb'
-  | 'activeRail';
+export interface SliderProps extends Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'>, SliderCommons {}
 
-/**
- * Names of SliderProps that have a default value in useSlider
- */
-export type SliderDefaultedProps =
-  | 'rail'
-  | 'sliderWrapper'
-  | 'trackWrapper'
-  | 'track'
-  | 'marksWrapper'
-  | 'thumbWrapper'
-  | 'thumb'
-  | 'activeRail';
-
-/**
- * State used in rendering Slider
- */
-export interface SliderState extends ComponentStateCompat<SliderProps, SliderShorthandProps, SliderDefaultedProps> {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export interface SliderState extends ComponentState<SliderSlots>, SliderCommons {}

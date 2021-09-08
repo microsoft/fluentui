@@ -12,6 +12,7 @@ const scenarioIterations = {
   ComboBox: 1000,
   Persona: 1000,
   ContextualMenu: 1000,
+  FluentProviderWithTheme: 10,
 };
 
 module.exports = scenarioIterations;

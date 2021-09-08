@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Set active descendant for no results found",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
