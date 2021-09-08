@@ -534,7 +534,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,
-      onRenderMenuList = this._onRenderMenuList,
+      onRenderMenuList = (
+        menuListProps: IContextualMenuListProps,
+        defaultRender?: IRenderFunction<IContextualMenuListProps>,
+      ) => this._onRenderMenuList(menuListProps, classNames, defaultRender),
       focusZoneProps,
       // eslint-disable-next-line deprecation/deprecation
       getMenuClassNames,
