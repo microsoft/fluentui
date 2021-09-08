@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add 'consistent-callback-args' test for event handler arguments",
-  "packageName": "@fluentui/react-conformance",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

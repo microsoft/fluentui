@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "disable 'consistent-callback-args' conformance test",
-  "packageName": "@fluentui/react",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
