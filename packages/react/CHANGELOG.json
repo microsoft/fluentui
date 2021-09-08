@@ -2,6 +2,65 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react_v8.31.0",
+      "version": "8.31.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set active descendant for no results found",
+            "author": "gcox@microsoft.com",
+            "commit": "eb85601d894b5be70c7ba5ea162547022d96b54c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Put layer mount events after DOM updated.",
+            "author": "gcox@microsoft.com",
+            "commit": "ea831f5695e395293b5e8416d1fb961ba5a0079e",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "fix selected semantics and scroll-to-view on Combobox, remove select-on-hover behavior, remove unneeded aria-checked on checkbox",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react_v8.30.4",
+      "version": "8.30.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "disable 'consistent-callback-args' conformance test",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react_v8.30.4",
+      "version": "8.30.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated to flexbox the document card preview items",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/react_v8.30.3",
       "version": "8.30.3",
