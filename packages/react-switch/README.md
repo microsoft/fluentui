@@ -27,7 +27,4 @@ import { Switch } from '@fluentui/react';
 <Switch defaultChecked={true} />
 <Switch checked={switchValue} onChange={switchOnChange} />
 <Switch disabled />
-<Switch labelPosition="before">
-    Label Example
-</Switch>
 ```
