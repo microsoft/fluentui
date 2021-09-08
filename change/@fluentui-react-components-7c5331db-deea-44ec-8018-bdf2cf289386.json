@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adding react-slider",
+  "comment": "Adding the converged Slider component.",
   "packageName": "@fluentui/react-components",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch"
