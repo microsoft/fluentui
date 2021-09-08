@@ -162,6 +162,7 @@ function usePositions(
     calloutElement,
     hostElement,
     targetRef,
+    targetAttempts,
     finalHeight,
     getBounds,
     onPositioned,
