@@ -10,9 +10,10 @@ export function createWrapper(options: { displayName: string; useStyles: () => R
   const Wrapper = React.forwardRef<HTMLElement, Props>((props, ref) => {
     const styles = useStyles();
     const state = useText(props, ref);
+
     useTextStyles(state);
 
-    state.className = mergeClasses(state.className, styles.root, props.className);
+    state.root.className = mergeClasses(state.root.className, styles.root, props.className);
 
     return renderText(state);
   });

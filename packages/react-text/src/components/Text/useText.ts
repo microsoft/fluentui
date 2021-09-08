@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { makeMergeProps } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { TextProps, TextState } from './Text.types';
-
-const mergeProps = makeMergeProps<TextState>();
 
 /**
  * Create the state required to render Text.
@@ -12,17 +10,25 @@ const mergeProps = makeMergeProps<TextState>();
  *
  * @param props - props from this instance of Text
  * @param ref - reference to root HTMLElement of Text
- * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps): TextState => {
-  const state = mergeProps(
-    {
-      ref,
-      as: 'span',
-    },
-    defaultProps,
-    props,
-  );
+export const useText = (props: TextProps, ref: React.Ref<HTMLElement>): TextState => {
+  return {
+    wrap: true,
+    truncate: false,
+    block: false,
+    italic: false,
+    underline: false,
+    strikethrough: false,
+    size: 300,
+    font: 'base',
+    weight: 'regular',
+    align: 'start',
 
-  return state;
+    components: { root: 'span' },
+
+    root: getNativeElementProps('span', {
+      ref,
+      ...props,
+    }),
+  };
 };
