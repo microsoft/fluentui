@@ -3,7 +3,8 @@ import { makeStyles } from '@fluentui/react-make-styles';
 import { Image } from './index';
 import type { ArgTypes, Meta, Parameters } from '@storybook/react';
 import type { ImageProps } from './index';
-
+import descriptionMd from './ImageDescription.md';
+import bestPracticesMd from './ImageBestPractices.md';
 /**
  * Temporary Stack until there's one in its own package.
  */
@@ -47,6 +48,7 @@ Default.argTypes = {
     defaultValue: 'https://via.placeholder.com/300x300',
     description: 'path to the image you want to display',
   },
+  as: { table: { disable: true } },
 } as ArgTypes;
 Default.parameters = {
   controls: {
@@ -81,7 +83,7 @@ export const ImageAppearanceShape = () => (
 ImageAppearanceShape.parameters = {
   docs: {
     description: {
-      story: 'Images can be styled as square, rounded corners or circular shape.',
+      story: 'Images can be styled as square, rounded corners or circular.',
     },
   },
 };
@@ -140,7 +142,7 @@ export const ImageVariationsBorder = () => (
 ImageVariationsBorder.parameters = {
   docs: {
     description: {
-      story: 'The `bordered` prop will apply a border to images.',
+      story: 'The `bordered` prop will apply a border style to images regardless of its shape.',
     },
   },
 };
@@ -167,7 +169,7 @@ ImageVariationsFallback.parameters = {
   docs: {
     description: {
       story:
-        'In cases when images fail to load, the Image component results into the native `<img/>` browser fallback.',
+        'In cases when images fail to load, the Image component will result into the native `<img/>` browser fallback.',
     },
   },
 };
@@ -222,9 +224,12 @@ export const ImageLayoutFit = () => (
 ImageLayoutFit.parameters = {
   docs: {
     description: {
-      story: `The \`fit\` prop is used to determine how the image should be resized in order to fit its container.
-      The image can be resized in various ways: centering to its container(\`center\`)., filling its container
-      (\`cover\`) or preserving the aspect ratio (\`contain\`).`,
+      story: [
+        'The `fit` prop is used to determine how the image should be resized in order to fit its container.',
+        '',
+        `The image can be resized in various ways: centering to its container(\`center\`),
+         filling its container (\`cover\`) or preserving the aspect ratio (\`contain\`).`,
+      ].join('\n'),
     },
   },
 };
@@ -246,4 +251,11 @@ ImageFluid.parameters = {
 export default {
   title: 'Components/Image',
   component: Image,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      },
+    },
+  },
 } as Meta;

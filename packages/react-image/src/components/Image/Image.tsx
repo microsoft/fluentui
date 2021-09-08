@@ -4,6 +4,9 @@ import { useImage } from './useImage';
 import { useImageStyles } from './useImageStyles';
 import type { ImageProps } from './Image.types';
 
+/**
+ * The Image component ensures the consistent styling of images.
+ */
 export const Image: React.FunctionComponent<ImageProps & React.RefAttributes<HTMLElement>> = React.forwardRef(
   (props: ImageProps, ref: React.Ref<HTMLElement>) => {
     const state = useImage(props, ref);
