@@ -365,6 +365,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       suggestionsContainerAriaLabel,
       suggestionsHeaderText,
       suggestionsListId,
+      removeButtonIconProps,
     } = this.props;
 
     let { suggestions } = this.props;
@@ -420,6 +421,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
               removeButtonAriaLabel={removeSuggestionAriaLabel}
               onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
               id={'sug-' + index}
+              removeButtonIconProps={removeButtonIconProps}
             />
           </div>
         ))}
