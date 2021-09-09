@@ -6,7 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -34,11 +34,11 @@ export const switchShorthandProps: (keyof SwitchSlots)[];
 
 // @public (undocumented)
 export type SwitchSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    track: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    thumbWrapper: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    thumb: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    input: ObjectShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    root: IntrinsicShorthandProps<'div'>;
+    track: IntrinsicShorthandProps<'div'>;
+    thumbWrapper: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
 };
 
 // @public (undocumented)

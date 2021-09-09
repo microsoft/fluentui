@@ -24,6 +24,10 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLElement>): Swit
       id: useId('switch-', props.id),
     }),
     components: {
+      root: 'div',
+      track: 'div',
+      thumbWrapper: 'div',
+      thumb: 'div',
       input: 'input',
     },
     track: resolveShorthand(track, { required: true }),
