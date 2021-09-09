@@ -21,7 +21,18 @@ export const ContextualMenuAsyncMenuExample: React.FunctionComponent = () => {
     [],
   );
 
-  async function getItems() {
+  const getShareSubmenuProps = React.useCallback(async () => {
+    await new Promise(resolve => setTimeout(resolve, loadingDelay));
+    return {
+      items: [
+        { key: 'sharetoemail', text: 'Share to Email', iconProps: { iconName: 'Mail' } },
+        { key: 'sharetofacebook', text: 'Share to Facebook' },
+        { key: 'sharetotwitter', text: 'Share to Twitter', iconProps: { iconName: 'Share' } },
+      ],
+    };
+  }, [loadingDelay]);
+
+  const getItems = React.useCallback(async () => {
     await new Promise(resolve => setTimeout(resolve, loadingDelay));
     return [
       {
@@ -53,18 +64,7 @@ export const ContextualMenuAsyncMenuExample: React.FunctionComponent = () => {
       { key: 'print', iconProps: { iconName: 'Print' }, text: 'Print' },
       { key: 'Bing', text: 'Go to Bing', href: 'http://www.bing.com', target: '_blank' },
     ] as const;
-  }
-
-  async function getShareSubmenuProps() {
-    await new Promise(resolve => setTimeout(resolve, loadingDelay));
-    return {
-      items: [
-        { key: 'sharetoemail', text: 'Share to Email', iconProps: { iconName: 'Mail' } },
-        { key: 'sharetofacebook', text: 'Share to Facebook' },
-        { key: 'sharetotwitter', text: 'Share to Twitter', iconProps: { iconName: 'Share' } },
-      ],
-    };
-  }
+  }, [getShareSubmenuProps, loadingDelay]);
 
   return (
     <div>
