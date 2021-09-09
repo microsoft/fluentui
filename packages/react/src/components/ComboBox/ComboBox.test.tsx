@@ -816,8 +816,63 @@ describe('ComboBox', () => {
 
       const options = wrapper.find(CHECKBOX_OPTION);
       options.at(0).simulate('change');
+      inputElement.simulate('keydown', { which: KeyCodes.escape });
 
       expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
+      expect(wrapper.find('input').props().value).toEqual('1, 2, 3');
+    });
+  });
+
+  it('in multiSelect mode, selectAll does not select disabled options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...DEFAULT_OPTIONS,
+    ];
+    SELECTALL_OPTIONS[1] = { ...SELECTALL_OPTIONS[1], disabled: true };
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '2', '3']);
+    });
+  });
+
+  it('in multiSelect mode, selectAll does not select heeaders or dividers', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...RENDER_OPTIONS,
+    ];
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(0).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2']);
+    });
+  });
+
+  it('in multiSelect mode, selectAll checked calculation ignores headers, dividers, and disabled options', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...RENDER_OPTIONS,
+    ];
+    SELECTALL_OPTIONS[2] = { ...SELECTALL_OPTIONS[2], disabled: true };
+    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(CHECKBOX_OPTION);
+      options.at(2).simulate('change');
+
+      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', 'selectAll']);
     });
   });
 
@@ -882,7 +937,8 @@ describe('ComboBox', () => {
       options.at(3).simulate('change');
 
       selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
-      expect(selectAll.props()['aria-checked']).toEqual('true');
+      expect(selectAll.props().checked).toEqual(true);
+      expect(selectAll.props()['aria-checked']).toBeUndefined();
     });
   });
 
@@ -904,6 +960,23 @@ describe('ComboBox', () => {
         expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
       },
     );
+  });
+
+  it('in single-select mode, selectAll behaves as a normal option', () => {
+    const comboBoxRef = React.createRef<IComboBox>();
+    const SELECTALL_OPTIONS: IComboBoxOption[] = [
+      { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
+      ...RENDER_OPTIONS,
+    ];
+    safeMount(<ComboBox options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
+      const inputElement = wrapper.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.enter });
+
+      const options = wrapper.find(BUTTON_OPTION);
+      options.at(0).simulate('click');
+
+      expect(wrapper.find('input').props().value).toEqual('Select All');
+    });
   });
 
   it('invokes optional onItemClick callback on option select', () => {

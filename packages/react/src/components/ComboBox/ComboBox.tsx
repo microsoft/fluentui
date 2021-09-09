@@ -987,7 +987,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           // if select all is set to checked, push all selectable option indices
           if (option.selected) {
             currentOptions.forEach((currentOption, i) => {
-              if (!option.disabled && isSelectableOption(currentOption)) {
+              if (!currentOption.disabled && isSelectableOption(currentOption)) {
                 selectedIndices.push(i);
                 changedOptions[i] = { ...currentOption, selected: true };
               }
