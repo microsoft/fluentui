@@ -22,3 +22,21 @@ Once the Slider component graduates to a production release, the component will 
 ```js
 import { Slider } from '@fluentui/slider';
 ```
+
+### Examples
+
+```jsx
+<Slider />
+<Slider defaultValue={3} />
+<Slider value={sliderValue} onChange={sliderOnChange} />
+<Slider min={0} max={10} />
+<Slider vertical />
+<Slider disabled />
+<Slider origin={2} />
+<Slider step={10} keyboardStep={2} />
+<Slider marks={true} max={10} />
+<Slider marks={[30, 40, 80, 100]} />
+<Slider marks={[2, { value: 50, label: "50" }]} />
+<Slider marks={[2, { value: 50, mark: <MyComponent/>, label: <MyComponent/> }]} />
+<Slider size="small" />
+```
