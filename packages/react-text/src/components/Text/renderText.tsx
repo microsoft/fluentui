@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { TextSlots, TextState } from './Text.types';
+import type { TextSlots, TextState } from './Text.types';
 
 /**
  * Render the final JSX of Text
