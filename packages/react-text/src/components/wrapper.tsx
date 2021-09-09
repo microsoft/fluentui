@@ -5,7 +5,10 @@ import type { TextProps } from '../Text';
 
 export interface Props extends Omit<TextProps, 'font' | 'size'> {}
 
-export function createWrapper(options: { displayName: string; useStyles: () => Record<'root', string> }) {
+export function createWrapper(options: {
+  displayName: string;
+  useStyles: () => Record<'root', string>;
+}): React.FunctionComponent<TextProps> {
   const { useStyles, displayName } = options;
   const Wrapper = React.forwardRef<HTMLElement, Props>((props, ref) => {
     const styles = useStyles();
