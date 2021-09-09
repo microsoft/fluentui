@@ -6,7 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ElementShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -29,13 +29,13 @@ export const inputShorthandProps: (keyof InputSlots)[];
 
 // @public (undocumented)
 export type InputSlots = {
-    root: ElementShorthandProps<'span'>;
-    input: ElementShorthandProps<'input'>;
-    inputWrapper: ElementShorthandProps<'span'>;
-    bookendBefore?: ElementShorthandProps<'span'>;
-    bookendAfter?: ElementShorthandProps<'span'>;
-    insideStart?: ElementShorthandProps<'span'>;
-    insideEnd?: ElementShorthandProps<'span'>;
+    root: IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    inputWrapper: IntrinsicShorthandProps<'span'>;
+    bookendBefore?: IntrinsicShorthandProps<'span'>;
+    bookendAfter?: IntrinsicShorthandProps<'span'>;
+    insideStart?: IntrinsicShorthandProps<'span'>;
+    insideEnd?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public

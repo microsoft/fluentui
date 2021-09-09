@@ -30,7 +30,7 @@ export type DefaultObjectShorthandProps = ObjectShorthandProps<{
 /**
  * Defines the slot props for a slot that supports a Component type.
  *
- * For intrinsic elements like 'div', use {@link ElementShorthandProps} instead.
+ * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
  */
 export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props & {
   children?: Props['children'] | ShorthandRenderFunction<Props>;
@@ -44,16 +44,16 @@ export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = 
  * The second param is an optional union of alternative types that can be specified for the `as` prop.
  *
  * ```
- * ElementShorthandProps<'div'> // Slot is always a <div>
- * ElementShorthandProps<'a', 'button'> // Defaults to <a>, but allows { as: 'button' } to be a <button>
- * ElementShorthandProps<'label', 'span' | 'div'>; // Defaults to <label>, but allows { as: 'span' } or { as: 'div' }
+ * IntrinsicShorthandProps<'div'> // Slot is always a <div>
+ * IntrinsicShorthandProps<'a', 'button'> // Defaults to <a>, but allows { as: 'button' } to be a <button>
+ * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to <label>, but allows { as: 'span' } or { as: 'div' }
  * ```
  */
-export type ElementShorthandProps<
+export type IntrinsicShorthandProps<
   DefaultElement extends keyof JSX.IntrinsicElements,
   AlternateElements extends keyof JSX.IntrinsicElements = never
 > = IsSingleton<DefaultElement> extends false
-  ? 'Error: first parameter to ElementShorthandProps must be a single element type, not a union of types'
+  ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
   :
       | ({ as?: DefaultElement } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>)
       | {

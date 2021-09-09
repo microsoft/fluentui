@@ -1,22 +1,22 @@
-import type { ComponentProps, ComponentState, ElementShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type InputSlots = {
-  root: ElementShorthandProps<'span'>;
+  root: IntrinsicShorthandProps<'span'>;
   /** The actual `<input>` element */
-  input: ElementShorthandProps<'input'>;
+  input: IntrinsicShorthandProps<'input'>;
   /**
    * Wrapper element containing `insideStart`, `input`, and `insideEnd`. This is the element that
    * visually appears to be the input and is used for borders, focus styling, etc.
    */
-  inputWrapper: ElementShorthandProps<'span'>;
+  inputWrapper: IntrinsicShorthandProps<'span'>;
   /** Element before the input field, visually separated from it */
-  bookendBefore?: ElementShorthandProps<'span'>;
+  bookendBefore?: IntrinsicShorthandProps<'span'>;
   /** Element after the input field, visually separated from it */
-  bookendAfter?: ElementShorthandProps<'span'>;
+  bookendAfter?: IntrinsicShorthandProps<'span'>;
   /** Element at the start of the input field, visually appearing to be inside of it */
-  insideStart?: ElementShorthandProps<'span'>;
+  insideStart?: IntrinsicShorthandProps<'span'>;
   /** Element at the end of the input field, visually appearing to be inside of it */
-  insideEnd?: ElementShorthandProps<'span'>;
+  insideEnd?: IntrinsicShorthandProps<'span'>;
 };
 
 export interface InputCommons {

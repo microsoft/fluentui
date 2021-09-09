@@ -1,7 +1,7 @@
-import type { ComponentProps, ComponentState, ElementShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type AccordionPanelSlots = {
-  root: ElementShorthandProps<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
 };
 
 export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots> {}

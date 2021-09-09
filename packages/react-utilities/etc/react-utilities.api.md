@@ -82,15 +82,6 @@ export const defaultSSRContextValue: SSRContextValue;
 export const divProperties: Record<string, number>;
 
 // @public
-export type ElementShorthandProps<DefaultElement extends keyof JSX.IntrinsicElements, AlternateElements extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultElement> extends false ? 'Error: first parameter to ElementShorthandProps must be a single element type, not a union of types' : ({
-    as?: DefaultElement;
-} & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>) | {
-    [As in AlternateElements]: {
-        as: As;
-    } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[As]>>;
-}[AlternateElements];
-
-// @public
 export const formProperties: Record<string, number>;
 
 // @public
@@ -127,6 +118,15 @@ export const imgProperties: Record<string, number>;
 
 // @public
 export const inputProperties: Record<string, number>;
+
+// @public
+export type IntrinsicShorthandProps<DefaultElement extends keyof JSX.IntrinsicElements, AlternateElements extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultElement> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
+    as?: DefaultElement;
+} & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>) | {
+    [As in AlternateElements]: {
+        as: As;
+    } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[As]>>;
+}[AlternateElements];
 
 // @public
 export type IsSingleton<T extends string> = {

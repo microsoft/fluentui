@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { ElementShorthandProps } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { usePopperMouseTarget } from '@fluentui/react-positioning';
@@ -42,7 +42,7 @@ export interface MenuDividerProps extends ComponentProps<MenuDividerSlots> {
 
 // @public (undocumented)
 export type MenuDividerSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)
@@ -75,7 +75,7 @@ export interface MenuGroupHeaderProps extends ComponentProps<MenuGroupHeaderSlot
 
 // @public (undocumented)
 export type MenuGroupHeaderSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)
@@ -88,7 +88,7 @@ export interface MenuGroupProps extends ComponentProps<MenuGroupSlots> {
 
 // @public (undocumented)
 export type MenuGroupSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)
@@ -142,12 +142,12 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: ElementShorthandProps<'div'>;
-    icon?: ElementShorthandProps<'span'>;
-    checkmark?: ElementShorthandProps<'span'>;
-    submenuIndicator?: ElementShorthandProps<'span'>;
-    content: ElementShorthandProps<'span'>;
-    secondaryContent?: ElementShorthandProps<'span'>;
+    root: IntrinsicShorthandProps<'div'>;
+    icon?: IntrinsicShorthandProps<'span'>;
+    checkmark?: IntrinsicShorthandProps<'span'>;
+    submenuIndicator?: IntrinsicShorthandProps<'span'>;
+    content: IntrinsicShorthandProps<'span'>;
+    secondaryContent?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
@@ -200,7 +200,7 @@ export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.
 
 // @public (undocumented)
 export type MenuListSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)
@@ -229,7 +229,7 @@ export interface MenuPopoverProps extends ComponentProps<MenuPopoverSlots> {
 
 // @public (undocumented)
 export type MenuPopoverSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public

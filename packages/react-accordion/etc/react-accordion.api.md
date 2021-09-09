@@ -8,7 +8,7 @@ import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
-import type { ElementShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { NoLegacyRef } from '@fluentui/react-utilities';
 import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -82,7 +82,7 @@ export const AccordionHeaderExpandIcon: React_2.ForwardRefExoticComponent<Pick<{
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
-export type AccordionHeaderExpandIconProps = ElementShorthandProps<'span'>;
+export type AccordionHeaderExpandIconProps = IntrinsicShorthandProps<'span'>;
 
 // @public (undocumented)
 export interface AccordionHeaderProps extends ComponentProps<AccordionHeaderSlots>, Partial<AccordionHeaderCommons> {
@@ -96,10 +96,10 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 // @public (undocumented)
 export type AccordionHeaderSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
     button: ARIAButtonShorthandProps;
     expandIcon: AccordionHeaderExpandIconProps;
-    icon?: ElementShorthandProps<'div'>;
+    icon?: IntrinsicShorthandProps<'div'>;
     children: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -147,7 +147,7 @@ export const accordionItemShorthandProps: Array<keyof AccordionItemSlots>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)
@@ -169,7 +169,7 @@ export const accordionPanelShorthandProps: Array<keyof AccordionPanelSlots>;
 
 // @public (undocumented)
 export type AccordionPanelSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)
@@ -190,7 +190,7 @@ export const accordionShorthandProps: Array<keyof AccordionSlots>;
 
 // @public (undocumented)
 export type AccordionSlots = {
-    root: ElementShorthandProps<'div'>;
+    root: IntrinsicShorthandProps<'div'>;
 };
 
 // @public (undocumented)

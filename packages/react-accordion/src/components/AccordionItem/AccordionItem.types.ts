@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, ElementShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
@@ -12,7 +12,7 @@ export interface AccordionItemContextValues {
 }
 
 export type AccordionItemSlots = {
-  root: ElementShorthandProps<'div'>;
+  root: IntrinsicShorthandProps<'div'>;
 };
 
 export interface AccordionItemCommons {
