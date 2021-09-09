@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import { useSwitchState } from './useSwitchState';
-import type { SwitchProps, SwitchState, SwitchSlots } from './Switch.types';
+import type { SwitchProps, SwitchSlots, SwitchState } from './Switch.types';
 
 /**
  * Array of all shorthand properties listed in SwitchSlots

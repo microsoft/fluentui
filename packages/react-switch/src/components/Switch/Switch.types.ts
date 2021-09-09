@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
