@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { render, fireEvent } from '@testing-library/react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { ArrowRight, ArrowDown } from '@fluentui/keyboard-keys';
 import { useTriggerElement } from './useTriggerElement';
 import { useMenuContext } from '../../contexts/menuContext';
 import { MenuItem } from '../MenuItem/index';
@@ -249,7 +249,7 @@ describe('useTriggerElement', () => {
 
     // Act
     const { getByRole } = render(result.current.children);
-    fireEvent.keyDown(getByRole('menuitem'), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByRole('menuitem'), { key: ArrowRight });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
@@ -265,7 +265,7 @@ describe('useTriggerElement', () => {
 
     // Act
     const { getByRole } = render(result.current.children);
-    fireEvent.keyDown(getByRole('button'), { keyCode: keyboardKey.ArrowDown });
+    fireEvent.keyDown(getByRole('button'), { key: ArrowDown });
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);

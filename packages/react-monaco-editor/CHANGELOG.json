@@ -2,6 +2,96 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.2.7",
+      "version": "1.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.32.0",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/react-monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.2.6",
+      "version": "1.2.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.31.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react-monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.2.5",
+      "version": "1.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.2.5",
+      "version": "1.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/react-monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.2.4",
+      "version": "1.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.2.3",
+      "version": "1.2.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.2",
+            "author": "gcox@microsoft.com",
+            "commit": "66fe45c6e8aea6af84014186505fb37a2c27b881",
+            "package": "@fluentui/react-monaco-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Aug 2021 07:37:47 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.2.3",
       "version": "1.2.3",

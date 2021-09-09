@@ -176,3 +176,35 @@ storiesOf('react-menu Menu - selection groups', module)
       </MenuPopover>
     </Menu>
   ));
+
+storiesOf('react-menu Menu - nested submenus', module)
+  .addDecorator(story => <Screener>{story()}</Screener>)
+  .addDecorator(FluentProviderDecorator)
+  .addStory('default', () => (
+    <Menu open>
+      <MenuTrigger>
+        <button>Toggle menu</button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+          <Menu open>
+            <MenuTrigger>
+              <MenuItem>Preferences</MenuItem>
+            </MenuTrigger>
+
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>New </MenuItem>
+                <MenuItem>New Window</MenuItem>
+                <MenuItem>Open Folder</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  ));

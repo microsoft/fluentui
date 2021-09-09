@@ -13,6 +13,6 @@ export function useFluentProviderContextValues(state: FluentProviderState): Flue
     provider,
     tooltip,
     theme,
-    themeClassname: className,
+    themeClassName: className,
   };
 }

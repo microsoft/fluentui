@@ -1,8 +1,44 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Tue, 31 Aug 2021 07:37:47 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Sep 2021 07:39:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Thu, 09 Sep 2021 07:39:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.32.0 ([PR #18829](https://github.com/microsoft/fluentui/pull/18829) by shujathlive@gmail.com)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.31.0 ([PR #19344](https://github.com/microsoft/fluentui/pull/19344) by sarah.higley@microsoft.com)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.4 ([PR #19584](https://github.com/microsoft/fluentui/pull/19584) by gcox@microsoft.com)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.3 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
 
 ## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
 
