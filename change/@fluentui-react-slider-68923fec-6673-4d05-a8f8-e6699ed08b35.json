@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Updating README.md files to use react-components instead of react",
+  "comment": "Updating README.md",
   "packageName": "@fluentui/react-slider",
   "email": "czearing@outlook.com",
   "dependentChangeType": "none"
