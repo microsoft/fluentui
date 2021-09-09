@@ -12,8 +12,6 @@ import type { TextProps, TextState } from './Text.types';
  * @param ref - reference to root HTMLElement of Text
  */
 export const useText = (props: TextProps, ref: React.Ref<HTMLElement>): TextState => {
-  const asProp = props.as || 'span';
-
   return {
     wrap: true,
     truncate: false,
@@ -26,11 +24,11 @@ export const useText = (props: TextProps, ref: React.Ref<HTMLElement>): TextStat
     weight: 'regular',
     align: 'start',
 
-    components: { root: asProp },
+    components: { root: 'span' },
 
     ...props,
 
-    root: getNativeElementProps(asProp, {
+    root: getNativeElementProps(props.as || 'span', {
       ref,
       ...props,
     }),
