@@ -14,9 +14,20 @@ import {
   Edit20Regular as EditIcon,
 } from '@fluentui/react-icons';
 
+// FIXME need to redeclare types since type import is under a @ts-ignore
+type OnCheckedValueChange = (
+  e: React.MouseEvent | React.KeyboardEvent,
+  data: {
+    /** The name of the value */
+    name: string;
+    /** The items for this value that are checked */
+    checkedItems: string[];
+  },
+) => void;
+
 export const ControlledRadioItems = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange: MenuProps['onCheckedValueChange'] = (e: React.SyntheticEvent, { name, checkedItems }) => {
+  const onChange: OnCheckedValueChange = (e: React.SyntheticEvent, { name, checkedItems }) => {
     setCheckedValues(s => ({ ...s, [name]: checkedItems }));
   };
 

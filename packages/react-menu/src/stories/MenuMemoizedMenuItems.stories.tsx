@@ -1,7 +1,4 @@
 import * as React from 'react';
-// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import {
   Menu,
   MenuTrigger,
@@ -9,6 +6,9 @@ import {
   MenuItemCheckbox,
   MenuPopover,
   MenuItemCheckboxProps,
+  // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
 } from '@fluentui/react-menu';
 
 // https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982

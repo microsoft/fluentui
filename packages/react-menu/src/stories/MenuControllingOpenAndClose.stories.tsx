@@ -9,9 +9,17 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '@
 // @ts-ignore
 import { Button } from '@fluentui/react-button';
 
+// FIXME need to redeclare types since type import is under a @ts-ignore
+type MenuOpenEvents =
+  | MouseEvent
+  | TouchEvent
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;
+
 export const ControllingOpenAndClose = () => {
   const [open, setOpen] = React.useState(false);
-  const onOpenChange: MenuProps['onOpenChange'] = (event, data) => {
+  const onOpenChange = (event: MenuOpenEvents, data: { open: boolean }) => {
     setOpen(data.open);
   };
 
