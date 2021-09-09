@@ -1,5 +1,6 @@
 import './version';
 export * from './useAsync';
+export * from './useAsyncValue';
 export * from './useBoolean';
 export * from './useConst';
 export * from './useConstCallback';

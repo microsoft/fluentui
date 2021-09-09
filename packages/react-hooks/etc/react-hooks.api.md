@@ -12,6 +12,9 @@ import * as React_2 from 'react';
 import { Rectangle } from '@fluentui/utilities';
 
 // @public (undocumented)
+export type AsyncValue<T> = [value: T | undefined, isLoaded: boolean];
+
+// @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
 // @public
@@ -47,6 +50,9 @@ export type Target = Element | string | MouseEvent | Point | Rectangle | null | 
 
 // @public
 export function useAsync(): Async;
+
+// @public
+export function useAsyncValue<T>(value: T | (() => Promise<T>)): AsyncValue<T>;
 
 // @public
 export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];

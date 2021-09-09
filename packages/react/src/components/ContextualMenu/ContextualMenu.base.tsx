@@ -30,7 +30,7 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync, useWarnings, useId } from '@fluentui/react-hooks';
+import { useTarget, usePrevious, useAsync, useWarnings, useId, useAsyncValue } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -159,7 +159,6 @@ function useSubMenuState(
   const onSubMenuDismiss = useOnSubmenuDismiss(dismiss, closeSubMenu);
 
   // Handle async submenu props
-  const [submenuProps, setSubMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
   const defaultSubmenuProps = React.useMemo(
     () => ({
       target: submenuTarget,
@@ -176,42 +175,32 @@ function useSubMenuState(
     [className, expandedByMouseClick, onSubMenuDismiss, subMenuId, submenuTarget, theme],
   );
 
-  React.useEffect(() => {
-    const item = findItemByKeyFromItems(expandedMenuItemKey!, items);
-
-    if (item) {
-      (async () => {
-        const itemSubmenuProps =
-          typeof item.subMenuProps === 'function' ? await item.subMenuProps() : item.subMenuProps;
-        const itemSubmenuItems = itemSubmenuProps ? itemSubmenuProps.items : item.items;
-        // TODO: Handle race condition if props change before async call returns
-        setSubMenuProps({
-          items: itemSubmenuItems,
-          ...defaultSubmenuProps,
-          ...(itemSubmenuProps ?? {}),
-        });
-      })();
-    } else {
-      setSubMenuProps(undefined);
-    }
-  }, [defaultSubmenuProps, expandedMenuItemKey, items]);
+  const item = findItemByKeyFromItems(expandedMenuItemKey, items);
+  const [subMenuProps, isSubMenuPropsLoaded] = useAsyncValue(item?.subMenuProps);
 
   const onRenderSubmenuWithProps = () => {
-    if (expandedMenuItemKey) {
-      if (submenuProps) {
-        return onRenderSubMenu(submenuProps, onDefaultRenderSubMenu);
+    if (item) {
+      if (isSubMenuPropsLoaded) {
+        return onRenderSubMenu(
+          {
+            items: subMenuProps?.items ?? item.items,
+            ...defaultSubmenuProps,
+            ...(subMenuProps ?? {}),
+          },
+          onDefaultRenderSubMenu,
+        );
       } else {
         return onRenderSubMenu(
           {
             items: [
               {
                 key: 'Loading',
+                onRenderContent(props, defaultRender) {
+                  return <Spinner />;
+                },
               },
             ],
             ...defaultSubmenuProps,
-            onRenderMenuList() {
-              return <Spinner style={{ padding: '5px' }} />;
-            },
           },
           onDefaultRenderSubMenu,
         );
@@ -1314,7 +1303,10 @@ function onDefaultRenderSubMenu(
  * @param key - The key of the item to match
  * @param items - The items to look for the key
  */
-function findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
+function findItemByKeyFromItems(
+  key: string | undefined,
+  items: IContextualMenuItem[],
+): IContextualMenuItem | undefined {
   for (const item of items) {
     if (item.itemType === ContextualMenuItemType.Section && item.sectionProps) {
       const match = findItemByKeyFromItems(key, item.sectionProps.items);
