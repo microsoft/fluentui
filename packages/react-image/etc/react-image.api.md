@@ -7,7 +7,7 @@
 import type { ComponentPropsCompat } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
-// @public (undocumented)
+// @public
 const Image_2: React_2.FunctionComponent<ImageProps & React_2.RefAttributes<HTMLElement>>;
 export { Image_2 as Image }
 
