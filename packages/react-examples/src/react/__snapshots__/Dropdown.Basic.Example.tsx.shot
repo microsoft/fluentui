@@ -158,9 +158,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       tabIndex={0}
     >
       <span
-        aria-atomic={true}
         aria-invalid={false}
-        aria-live="polite"
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -349,9 +347,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       tabIndex={-1}
     >
       <span
-        aria-atomic={true}
         aria-invalid={false}
-        aria-live="polite"
         className=
             ms-Dropdown-title
             {
@@ -567,9 +563,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       tabIndex={0}
     >
       <span
-        aria-atomic={true}
         aria-invalid={false}
-        aria-live="polite"
         className=
             ms-Dropdown-title
             {
