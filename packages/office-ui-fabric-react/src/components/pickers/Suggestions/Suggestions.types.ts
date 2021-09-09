@@ -77,6 +77,11 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   mostRecentlyUsedHeaderText?: string;
 
   /**
+   * The icon that appears indicating to the user that they can search for more results.
+   */
+  searchForMoreIcon?: IIconProps;
+
+  /**
    * The text that appears indicating to the user that they can search for more results.
    */
   searchForMoreText?: string;
