@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "target": "es2019",
+    "target": "es5",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
