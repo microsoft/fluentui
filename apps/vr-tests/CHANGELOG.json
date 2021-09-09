@@ -2,6 +2,43 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.32.0",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.153",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-slider to v9.0.0-alpha.1",
+            "author": "czearing@outlook.com",
+            "commit": "1dc3c445f3e970ea82e1f65e26fa89b596809002",
+            "package": "vr-tests"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.76",
+            "author": "email not defined",
+            "commit": "70480659e5f969c30fdfa87e13e0b427bb8326f6",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Sep 2021 07:34:11 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

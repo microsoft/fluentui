@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.103",
+      "version": "9.0.0-alpha.103",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add documentation for Fluent positioning",
+            "author": "lingfangao@hotmail.com",
+            "commit": "1413312362bbda9e0feedf42d7c7c82be136fb32",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Sep 2021 07:34:11 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.103",
       "version": "9.0.0-alpha.103",

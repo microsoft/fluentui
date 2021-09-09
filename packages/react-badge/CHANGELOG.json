@@ -2,6 +2,20 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "none": [
+          {
+            "author": "email not defined",
+            "commit": "70480659e5f969c30fdfa87e13e0b427bb8326f6",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.76",
       "version": "9.0.0-alpha.76",
