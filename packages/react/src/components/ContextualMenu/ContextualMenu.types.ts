@@ -432,7 +432,7 @@ export interface IContextualMenuItem {
    * `id`, `shouldFocusOnMount`, `directionalHint`, `className`, and `gapSpace`, all of which
    * can be overridden.
    */
-  subMenuProps?: IContextualMenuProps;
+  subMenuProps?: IContextualMenuProps | (() => Promise<IContextualMenuProps>);
 
   /**
    * Method to provide the classnames to style the individual items inside a menu.

@@ -1224,9 +1224,6 @@ export function getShade(color: IColor, shade: Shade, isInverted?: boolean): ICo
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
 
 // @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
-
-// @public (undocumented)
 export const GroupedList: React_2.FunctionComponent<IGroupedListProps>;
 
 // @public (undocumented)
@@ -3270,7 +3267,7 @@ export interface IContextualMenuItem {
     // @deprecated
     style?: React_2.CSSProperties;
     submenuIconProps?: IIconProps;
-    subMenuProps?: IContextualMenuProps;
+    subMenuProps?: IContextualMenuProps | (() => Promise<IContextualMenuProps>);
     target?: string;
     text?: string;
     title?: string;
@@ -3431,22 +3428,6 @@ export interface IContextualMenuSection extends React_2.ClassAttributes<any> {
     items: IContextualMenuItem[];
     title?: string | IContextualMenuItem;
     topDivider?: boolean;
-}
-
-// @public (undocumented)
-export interface IContextualMenuState {
-    // (undocumented)
-    contextualMenuItems?: IContextualMenuItem[];
-    // (undocumented)
-    contextualMenuTarget?: Element;
-    // (undocumented)
-    positions?: any;
-    // (undocumented)
-    slideDirectionalClassName?: string;
-    // (undocumented)
-    submenuDirection?: DirectionalHint;
-    // (undocumented)
-    subMenuId?: string;
 }
 
 // @public (undocumented)
@@ -6726,7 +6707,7 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
 export interface IPopupRestoreFocusParams {
     containsFocus: boolean;
     documentContainsFocus: boolean;
-    originalElement?: HTMLElement | Window;
+    originalElement?: HTMLElement | Window | null;
 }
 
 // @public
