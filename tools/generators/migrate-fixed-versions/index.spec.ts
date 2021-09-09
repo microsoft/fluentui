@@ -58,7 +58,7 @@ describe('migrate-fixed-versions generator', () => {
       name: '@proj/react-positioning',
       version: '9.0.0-alpha.0',
       dependencies: {
-        'popperjs/core': '1.0.0',
+        'popperjs/core': '^1.0.0',
       },
       projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-positioning/src' },
     });
@@ -67,7 +67,7 @@ describe('migrate-fixed-versions generator', () => {
     const packageJson = readJson(tree, 'packages/react-positioning/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
       Object {
-        "popperjs/core": "1.0.0",
+        "popperjs/core": "^1.0.0",
       }
     `);
   });
