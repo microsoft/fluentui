@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Setting the package to public.",
-  "packageName": "@fluentui/react-slider",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}

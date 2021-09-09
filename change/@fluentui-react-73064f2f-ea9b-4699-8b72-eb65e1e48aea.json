@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Exposed an optional removeButtonIconProps prop in PeoplePicker, Suggestions and TagPicker. This change is backward compatible.",
-  "packageName": "@fluentui/react",
-  "email": "shujathlive@gmail.com",
-  "dependentChangeType": "patch"
-}
