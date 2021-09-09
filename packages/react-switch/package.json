@@ -14,12 +14,13 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-switch/src && yarn docs",
     "storybook": "start-storybook"
@@ -30,6 +31,9 @@
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.37",
     "@fluentui/react-conformance": "^0.5.0",
     "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.6",
+    "@fluentui/react-label": "^9.0.0-alpha.35",
+    "@fluentui/react-provider": "^9.0.0-alpha.73",
+    "@fluentui/react-theme": "^9.0.0-alpha.22",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,6 +48,8 @@
   },
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.62",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
+    "@fluentui/react-tabster": "^9.0.0-alpha.56",
     "@fluentui/react-utilities": "^9.0.0-alpha.44",
     "tslib": "^2.1.0"
   },
