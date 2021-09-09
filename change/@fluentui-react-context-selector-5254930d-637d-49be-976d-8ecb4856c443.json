@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-context-selector): Run NX migration generator",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
