@@ -21,7 +21,7 @@ export interface SliderCommons {
     defaultValue?: number;
     disabled?: boolean;
     keyboardStep?: number;
-    marks?: boolean | number[] | (number | {
+    marks?: boolean | (number | {
         value: number;
         label?: string | JSX.Element;
         mark?: JSX.Element;
