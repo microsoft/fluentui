@@ -1583,6 +1583,7 @@ export interface IBasePickerProps<T> extends React_2.Props<any> {
     pickerCalloutProps?: ICalloutProps;
     pickerSuggestionsProps?: IBasePickerSuggestionsProps;
     removeButtonAriaLabel?: string;
+    removeButtonIconProps?: IIconProps;
     resolveDelay?: number;
     searchingText?: ((props: {
         input: string;
@@ -1637,7 +1638,7 @@ export interface IBasePickerStyles {
 }
 
 // @public
-export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve'> {
+export interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel' | 'showForceResolve' | 'removeButtonIconProps'> {
 }
 
 // @public (undocumented)
@@ -6620,6 +6621,7 @@ export interface IPickerItemProps<T> extends React_2.AllHTMLAttributes<HTMLEleme
     onItemChange?: (item: T, index: number) => void;
     onRemoveItem?: () => void;
     removeButtonAriaLabel?: string;
+    removeButtonIconProps?: IIconProps;
     selected?: boolean;
 }
 
@@ -7746,6 +7748,7 @@ export interface ISuggestionItemProps<T> {
     onClick: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     onRemoveItem: (ev: React_2.MouseEvent<HTMLButtonElement>) => void;
     removeButtonAriaLabel?: string;
+    removeButtonIconProps?: IIconProps;
     RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
     showRemoveButton?: boolean;
     styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
@@ -7873,6 +7876,7 @@ export interface ISuggestionsProps<T> extends React_2.Props<any> {
     onSuggestionClick: (ev?: React_2.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
     onSuggestionRemove?: (ev?: React_2.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
     refocusSuggestions?: (keyCode: KeyCodes) => void;
+    removeButtonIconProps?: IIconProps;
     removeSuggestionAriaLabel?: string;
     resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
