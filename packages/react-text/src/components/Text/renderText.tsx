@@ -8,5 +8,5 @@ import type { TextSlots, TextState } from './Text.types';
 export const renderText = (state: TextState) => {
   const { slots, slotProps } = getSlots<TextSlots>(state);
 
-  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
+  return <slots.root {...slotProps.root} />;
 };
