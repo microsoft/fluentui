@@ -309,7 +309,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderLabel = this._onRenderLabel,
       hoisted: { selectedIndices },
     } = props;
-    const { isOpen, calloutRenderEdge } = this.state;
+    const { isOpen, calloutRenderEdge, hasFocus } = this.state;
     // eslint-disable-next-line deprecation/deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
@@ -381,8 +381,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           <span
             id={this._optionId}
             className={this._classNames.title}
-            aria-live="polite"
-            aria-atomic={true}
+            aria-live={hasFocus ? 'polite' : undefined}
+            aria-atomic={hasFocus ? true : undefined}
             aria-invalid={hasErrorMessage}
           >
             {
