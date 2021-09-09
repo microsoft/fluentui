@@ -5,7 +5,7 @@ import { IPersonaProps } from '../../Persona/Persona.types';
 import { IStyle, ITheme } from '../../../Styling';
 import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 import { ISuggestionItemProps } from './SuggestionsItem.types';
-
+import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
  * {@docCategory Pickers}
