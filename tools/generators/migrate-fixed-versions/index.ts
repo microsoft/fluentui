@@ -1,4 +1,4 @@
-import { Tree, updateJson, getProjects, logger } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, logger, formatFiles } from '@nrwl/devkit';
 import { MigrateFixedVersionsGeneratorSchema } from './schema';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
@@ -12,6 +12,8 @@ export default async function (host: Tree, schema: MigrateFixedVersionsGenerator
   } else {
     runMigrationOnProject(host, validatedSchema, userLog);
   }
+
+  formatFiles(host);
 
   return () => {
     printUserLogs(userLog);
