@@ -273,7 +273,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-menu": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-monaco-editor": {
