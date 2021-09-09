@@ -33,26 +33,26 @@ This Migration guide is a work in progress and is not yet ready for use.
 
 ### v8
 
-| v8 `Link`         | Converged `Link` |
-| ----------------- | ---------------- |
-| originFromZero    | origin           |
-| ariaLabel         | -                |
-| valueLabel        | -                |
-| defaultLowerValue | -                |
-| lowerValue        | -                |
-| showValue         | -                |
-| onChanged         | -                |
-| snapToStep        | -                |
-| buttonProps       | -                |
-| valueFormat       | -                |
-| ranged            | -                |
-| label             | -                |
+| v8 `Slider`       | Converged `Slider` |
+| ----------------- | ------------------ |
+| originFromZero    | origin             |
+| ariaLabel         | -                  |
+| valueLabel        | -                  |
+| defaultLowerValue | -                  |
+| lowerValue        | -                  |
+| showValue         | -                  |
+| onChanged         | -                  |
+| snapToStep        | -                  |
+| buttonProps       | -                  |
+| valueFormat       | -                  |
+| ranged            | -                  |
+| label             | -                  |
 
 ### v0
 
-| v0 `Link`                   | Converged `Link` |
-| --------------------------- | ---------------- |
-| inputRef                    | -                |
-| getA11yValueMessageOnChange | -                |
-| fluid                       | -                |
-| label                       | -                |
+| v0 `Slider`                 | Converged `Slider` |
+| --------------------------- | ------------------ |
+| inputRef                    | -                  |
+| getA11yValueMessageOnChange | -                  |
+| fluid                       | -                  |
+| label                       | -                  |
