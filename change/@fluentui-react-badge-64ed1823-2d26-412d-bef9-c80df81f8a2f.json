@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(Badge): Run NX migration generator",
+  "packageName": "@fluentui/react-badge",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
