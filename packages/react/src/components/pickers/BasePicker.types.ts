@@ -265,6 +265,7 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'className'
     | 'suggestionsClassName'
     | 'suggestionsItemClassName'
+    | 'searchForMoreIcon'
     | 'searchForMoreText'
     | 'forceResolveText'
     | 'loadingText'
