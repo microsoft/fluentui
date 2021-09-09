@@ -41,7 +41,7 @@ const useRootStyles = makeStyles({
     },
   }),
 
-  focusIndictor: createFocusIndicatorStyleRule(
+  focusIndicator: createFocusIndicatorStyleRule(
     theme => ({
       ':after': {
         content: "''",
@@ -178,7 +178,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   state.root.className = mergeClasses(
     rootClassName + (checked ? ' checked' : ''),
     rootStyles.root,
-    rootStyles.focusIndictor,
+    rootStyles.focusIndicator,
     !disabled && (checked ? rootStyles.checked : rootStyles.unchecked),
     state.root.className,
   );

@@ -35,9 +35,9 @@ export const switchShorthandProps: (keyof SwitchSlots)[];
 // @public (undocumented)
 export type SwitchSlots = {
     root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    track: React_2.HTMLAttributes<HTMLElement>;
-    thumbWrapper: React_2.HTMLAttributes<HTMLElement>;
-    thumb: React_2.HTMLAttributes<HTMLElement>;
+    track: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    thumbWrapper: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    thumb: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
     input: ObjectShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 };
 

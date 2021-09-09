@@ -11,17 +11,17 @@ export type SwitchSlots = {
   /**
    * The bar indicating the status of the Switch.
    */
-  track: React.HTMLAttributes<HTMLElement>;
+  track: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
   /**
    * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
    */
-  thumbWrapper: React.HTMLAttributes<HTMLElement>;
+  thumbWrapper: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
   /**
    * The circular icon indicating the status of the Switch.
    */
-  thumb: React.HTMLAttributes<HTMLElement>;
+  thumb: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
   /**
    * The hidden input that handles the Switch's internal functionality.
