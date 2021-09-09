@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2019",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,

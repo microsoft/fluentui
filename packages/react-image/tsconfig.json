@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "include": ["src"],
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es2019",
     "module": "CommonJS",
     "lib": ["es5", "dom"],
     "outDir": "dist",

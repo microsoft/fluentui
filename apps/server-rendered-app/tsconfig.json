@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib",
-    "target": "es5",
+    "target": "es2019",
     "module": "es6",
     "jsx": "react",
     "declaration": true,

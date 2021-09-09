@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "es2019",
     "outDir": "lib",
     "module": "commonjs",
     "lib": ["es5", "dom"],
