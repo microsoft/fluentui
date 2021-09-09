@@ -19,7 +19,7 @@ import { Switch } from '@fluentui/react-switch';
 Once the Switch component graduates to a production release, the component will be available at:
 
 ```js
-import { Switch } from '@fluentui/react';
+import { Switch } from '@fluentui/react-components';
 ```
 
 ### Examples

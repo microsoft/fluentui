@@ -4,7 +4,7 @@ import { useSwitchState } from './useSwitchState';
 import type { SwitchProps, SwitchState, SwitchSlots } from './Switch.types';
 
 /**
- * Array of all shorthand properties listed in switchShorthandProps
+ * Array of all shorthand properties listed in SwitchSlots
  */
 export const switchShorthandProps: (keyof SwitchSlots)[] = ['root', 'track', 'thumbWrapper', 'thumb', 'input'];
 
