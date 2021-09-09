@@ -227,10 +227,16 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       overflowButtonProps = {}, // assure that props is not empty
     } = this.props;
 
-    const combinedOverflowItems: ICommandBarItemProps[] = [
-      ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
-      ...overflowItems,
-    ];
+    const combinedOverflowItems:
+      | ICommandBarItemProps[]
+      | (() => Promise<ICommandBarItemProps[]>) = overflowButtonProps.menuProps
+      ? typeof overflowButtonProps.menuProps.items === 'function'
+        ? async () => [
+            ...(await (overflowButtonProps.menuProps!.items as () => Promise<ICommandBarItemProps[]>)()),
+            ...overflowItems,
+          ]
+        : [...overflowButtonProps.menuProps.items, ...overflowItems]
+      : overflowItems;
 
     const overflowProps: IButtonProps = {
       role: 'menuitem',

@@ -3394,13 +3394,15 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     id?: string;
     isBeakVisible?: boolean;
     isSubMenu?: boolean;
-    items: IContextualMenuItem[];
+    items: IContextualMenuItem[] | (() => Promise<IContextualMenuItem[]>);
     labelElementId?: string;
     onDismiss?: (ev?: Event | React_2.MouseEvent | React_2.KeyboardEvent, dismissAll?: boolean) => void;
     onItemClick?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
     onMenuDismissed?: (contextualMenu?: IContextualMenuProps) => void;
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
-    onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
+    onRenderMenuList?: IRenderFunction<Exclude<IContextualMenuListProps, 'items'> & {
+        items: IContextualMenuItem[];
+    }>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     shouldFocusOnContainer?: boolean;

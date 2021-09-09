@@ -120,7 +120,8 @@ function useVisibility(props: IContextualMenuProps, targetWindow: Window | undef
 }
 
 function useSubMenuState(
-  { hidden, items, theme, className, id, onRenderSubMenu = onDefaultRenderSubMenu }: IContextualMenuProps,
+  { hidden, theme, className, id, onRenderSubMenu = onDefaultRenderSubMenu }: IContextualMenuProps,
+  items: IContextualMenuItem[] | undefined,
   dismiss: () => void,
 ) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
@@ -175,7 +176,7 @@ function useSubMenuState(
     [className, expandedByMouseClick, onSubMenuDismiss, subMenuId, submenuTarget, theme],
   );
 
-  const item = findItemByKeyFromItems(expandedMenuItemKey, items);
+  const item = items ? findItemByKeyFromItems(expandedMenuItemKey, items) : undefined;
   const [subMenuProps, isSubMenuPropsLoaded] = useAsyncValue(item?.subMenuProps);
 
   const onRenderSubmenuWithProps = () => {
@@ -686,11 +687,13 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     });
 
     const { onDismiss } = props;
+    const [items, areItemsLoaded] = useAsyncValue(props.items);
     const dismiss = React.useCallback((ev?: any, dismissAll?: boolean) => onDismiss?.(ev, dismissAll), [onDismiss]);
     const [targetRef, targetWindow] = useTarget(props.target, hostElement);
     const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
     const [expandedMenuItemKey, openSubMenu, onSubMenuDismiss, onRenderSubmenuWithProps] = useSubMenuState(
       props,
+      items,
       dismiss,
     );
     const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
@@ -729,17 +732,17 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     //#region Render helpers
 
     const onDefaultRenderMenuList = (
-      menuListProps: IContextualMenuListProps,
+      menuListProps: Exclude<IContextualMenuListProps, 'items'> & { items: IContextualMenuItem[] },
       // eslint-disable-next-line deprecation/deprecation
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
       defaultRender?: IRenderFunction<IContextualMenuListProps>,
     ): JSX.Element => {
       let indexCorrection = 0;
-      const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
+      const { items: menuItems, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
 
       return (
         <ul className={menuClassNames.list} onKeyDown={onKeyDown} onKeyUp={onKeyUp} role={'presentation'}>
-          {items.map((item, index) => {
+          {menuItems.map((item, index) => {
             const menuItem = renderMenuItem(
               item,
               index,
@@ -1087,7 +1090,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     let { isBeakVisible } = props;
 
     const {
-      items,
       labelElementId,
       id,
       className,
@@ -1111,7 +1113,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       theme,
       calloutProps,
       onRenderMenuList = (
-        menuListProps: IContextualMenuListProps,
+        menuListProps: Exclude<IContextualMenuListProps, 'items'> & { items: IContextualMenuItem[] },
         defaultRender?: IRenderFunction<IContextualMenuListProps>,
       ) => onDefaultRenderMenuList(menuListProps, classNames, defaultRender),
       focusZoneProps,
@@ -1126,7 +1128,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
           className: className,
         });
 
-    const hasIcons = itemsHaveIcons(items);
+    const hasIcons = !!items && itemsHaveIcons(items);
 
     function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
       for (const item of contextualMenuItems) {
@@ -1154,7 +1156,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       direction: props.focusZoneProps?.direction ?? FocusZoneDirection.vertical,
     };
 
-    const hasCheckmarks = canAnyMenuItemsCheck(items);
+    const hasCheckmarks = !!items && canAnyMenuItemsCheck(items);
 
     isBeakVisible = isBeakVisible === undefined ? responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
     /**
@@ -1177,8 +1179,60 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       }
     }
 
+    const calloutStyles = classNames.subComponentStyles
+      ? (classNames.subComponentStyles.callout as IStyleFunctionOrObject<
+          ICalloutContentStyleProps,
+          ICalloutContentStyles
+        >)
+      : undefined;
+
     // The menu should only return if items were provided, if no items were provided then it should not appear.
-    if (items && items.length > 0) {
+    if (!areItemsLoaded) {
+      return (
+        <MenuContext.Consumer>
+          {menuContext => (
+            <Callout
+              styles={calloutStyles}
+              onRestoreFocus={tryFocusPreviousActiveElement}
+              {...calloutProps}
+              target={target || (menuContext.target as IContextualMenuProps['target'])}
+              isBeakVisible={isBeakVisible}
+              beakWidth={beakWidth}
+              directionalHint={directionalHint}
+              directionalHintForRTL={directionalHintForRTL}
+              gapSpace={gapSpace}
+              coverTarget={coverTarget}
+              doNotLayer={doNotLayer}
+              className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
+              setInitialFocus={shouldFocusOnMount}
+              onDismiss={props.onDismiss || menuContext.onDismiss}
+              onScroll={onScroll}
+              bounds={bounds}
+              directionalHintFixed={directionalHintFixed}
+              alignTargetEdge={alignTargetEdge}
+              hidden={props.hidden || menuContext.hidden}
+              ref={forwardedRef}
+            >
+              <div
+                style={contextMenuStyle}
+                ref={hostElement}
+                id={id}
+                className={classNames.container}
+                tabIndex={shouldFocusOnContainer ? 0 : -1}
+                onKeyDown={onMenuKeyDown}
+                onKeyUp={onKeyUp}
+                onFocusCapture={onMenuFocusCapture}
+                aria-label={ariaLabel}
+                aria-labelledby={labelElementId}
+                role={'menu'}
+              >
+                <Spinner />
+              </div>
+            </Callout>
+          )}
+        </MenuContext.Consumer>
+      );
+    } else if (items && items.length > 0) {
       let totalItemCount = 0;
       for (const item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -1186,13 +1240,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
           totalItemCount += itemCount;
         }
       }
-
-      const calloutStyles = classNames.subComponentStyles
-        ? (classNames.subComponentStyles.callout as IStyleFunctionOrObject<
-            ICalloutContentStyleProps,
-            ICalloutContentStyles
-          >)
-        : undefined;
 
       return (
         <MenuContext.Consumer>

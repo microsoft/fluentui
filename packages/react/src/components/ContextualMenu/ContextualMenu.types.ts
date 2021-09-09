@@ -134,7 +134,7 @@ export interface IContextualMenuProps
   /**
    * Menu items to display.
    */
-  items: IContextualMenuItem[];
+  items: IContextualMenuItem[] | (() => Promise<IContextualMenuItem[]>);
 
   /**
    * Used as `aria-labelledby` for the menu element inside the callout.
@@ -230,7 +230,7 @@ export interface IContextualMenuProps
   /**
    * Method to override the render of the list of menu items.
    */
-  onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
+  onRenderMenuList?: IRenderFunction<Exclude<IContextualMenuListProps, 'items'> & { items: IContextualMenuItem[] }>;
 
   /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave

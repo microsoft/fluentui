@@ -7,7 +7,7 @@ import { ContextualMenuDefaultExample } from './ContextualMenu.Default.Example';
 import { ContextualMenuIconExample } from './ContextualMenu.Icon.Example';
 import { ContextualMenuIconSecondaryTextExample } from './ContextualMenu.Icon.SecondaryText.Example';
 import { ContextualMenuSubmenuExample } from './ContextualMenu.Submenu.Example';
-import { ContextualMenuAsyncSubmenuExample } from './ContextualMenu.Submenu.Example';
+import { ContextualMenuAsyncMenuExample } from './ContextualMenu.AsyncMenu.Example';
 import { ContextualMenuSectionExample } from './ContextualMenu.Section.Example';
 import { ContextualMenuCheckmarksExample } from './ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './ContextualMenu.Directional.Example';
@@ -36,7 +36,7 @@ const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader?esModul
 const ContextualMenuCustomMenuListExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.CustomMenuList.Example.tsx') as string;
 const ContextualMenuHeaderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Header.Example.tsx') as string;
 const ContextualMenuScreenReaderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.ScreenReader.Example.tsx') as string;
-const ContextualMenuAsyncSubmenuExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.AsyncSubmenu.Example.tsx') as string;
+const ContextualMenuAsyncMenuExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.AsyncMenu.Example.tsx') as string;
 
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
@@ -74,9 +74,9 @@ export const ContextualMenuPageProps: IDocPageProps = {
       view: <ContextualMenuSubmenuExample />,
     },
     {
-      title: 'ContextualMenu with async submenu',
-      code: ContextualMenuAsyncSubmenuExampleCode,
-      view: <ContextualMenuAsyncSubmenuExample />,
+      title: 'ContextualMenu with async items and submenus',
+      code: ContextualMenuAsyncMenuExampleCode,
+      view: <ContextualMenuAsyncMenuExample />,
     },
     {
       title: 'ContextualMenu with section headers',
