@@ -20,5 +20,5 @@ import { Slider } from '@fluentui/react-slider';
 Once the Slider component graduates to a production release, the component will be available at:
 
 ```js
-import { Slider } from '@fluentui/slider';
+import { Slider } from '@fluentui/react-components';
 ```
