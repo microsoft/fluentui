@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { KeyCodes } from '../../../Utilities';
-import type { IIconProps } from '../../Icon';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
 import type { IPersonaProps } from '../../Persona/Persona.types';
 import type { IStyle, ITheme } from '../../../Styling';
