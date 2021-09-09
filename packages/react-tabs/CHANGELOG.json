@@ -2,6 +2,51 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.152",
+      "version": "1.0.0-beta.152",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.31.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.151",
+      "version": "1.0.0-beta.151",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.151",
+      "version": "1.0.0-beta.151",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.30.4",
+            "author": "gcox@microsoft.com",
+            "commit": "b2d5440a8434649f6a2a11b12b18557c606a70cd",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.150",
       "version": "1.0.0-beta.150",

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.78)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.77..@fluentui/react-tooltip_v9.0.0-alpha.78)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.50 ([PR #19659](https://github.com/microsoft/fluentui/pull/19659) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.77)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.76..@fluentui/react-tooltip_v9.0.0-alpha.77)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.44 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.76)
 

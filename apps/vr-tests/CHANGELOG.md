@@ -1,8 +1,49 @@
 # Change Log - vr-tests
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.31.0 ([PR #19344](https://github.com/microsoft/fluentui/pull/19344) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.152 ([PR #19344](https://github.com/microsoft/fluentui/pull/19344) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.73 ([PR #19661](https://github.com/microsoft/fluentui/pull/19661) by lingfangao@hotmail.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.82 ([PR #19661](https://github.com/microsoft/fluentui/pull/19661) by lingfangao@hotmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.151 ([PR #19584](https://github.com/microsoft/fluentui/pull/19584) by gcox@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.81 ([PR #19638](https://github.com/microsoft/fluentui/pull/19638) by lingfangao@hotmail.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.77 ([PR #19639](https://github.com/microsoft/fluentui/pull/19639) by lingfangao@hotmail.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.72 ([PR #19637](https://github.com/microsoft/fluentui/pull/19637) by lingfangao@hotmail.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.71 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.76 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-card to v9.0.0-alpha.0 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.63 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-label to v9.0.0-alpha.35 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-slider to v9.0.0-alpha.0 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.62 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.44 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.73 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
+- Bump @fluentui/react-text to v9.0.0-alpha.11 ([PR #19640](https://github.com/microsoft/fluentui/pull/19640) by lingfangao@hotmail.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

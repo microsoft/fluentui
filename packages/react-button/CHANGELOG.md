@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 03 Sep 2021 00:13:07 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.82)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.81..@fluentui/react-button_v9.0.0-alpha.82)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.73 ([PR #19661](https://github.com/microsoft/fluentui/pull/19661) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.81)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.80..@fluentui/react-button_v9.0.0-alpha.81)
+
+### Changes
+
+- refactor(Button): use `event.key` for keyboard event ([PR #19638](https://github.com/microsoft/fluentui/pull/19638) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.80)
 

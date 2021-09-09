@@ -44,6 +44,7 @@ const useRootStyles = makeStyles({
   }),
 
   enabled: theme => ({
+    cursor: 'grab',
     ':hover': {
       '& .ms-Slider-thumb': {
         background: theme.alias.color.neutral.brandBackgroundHover,
@@ -53,6 +54,7 @@ const useRootStyles = makeStyles({
       },
     },
     ':active': {
+      cursor: 'grabbing',
       '& .ms-Slider-thumb': {
         background: theme.alias.color.neutral.brandBackgroundPressed,
       },
@@ -60,6 +62,10 @@ const useRootStyles = makeStyles({
         background: theme.alias.color.neutral.brandBackgroundPressed,
       },
     },
+  }),
+
+  disabled: theme => ({
+    cursor: 'not-allowed',
   }),
 
   focusIndicator: createFocusIndicatorStyleRule(
@@ -342,6 +348,22 @@ const useActiveRailStyles = makeStyles({
 });
 
 /**
+ * Styles for the Input slot
+ */
+const useInputStyles = makeStyles({
+  input: {
+    opacity: 0,
+    position: 'absolute',
+    padding: 0,
+    margin: 0,
+    width: '100%',
+    height: '100%',
+    touchAction: 'none',
+    pointerEvents: 'none',
+  },
+});
+
+/**
  * Apply styling to the Slider slots based on the state
  */
 export const useSliderStyles = (state: SliderState): SliderState => {
@@ -354,15 +376,16 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
+  const inputStyles = useInputStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     rootStyles.root,
     rootStyles.focusIndicator,
-    // TODO: Remove once compat is reverted
-    rootStyles[state.size || 'medium'],
+    rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
-    !state.disabled && rootStyles.enabled,
-    state.className,
+    state.disabled ? rootStyles.disabled : rootStyles.enabled,
+    rootStyles.focusIndicator,
+    state.root.className,
   );
 
   state.sliderWrapper.className = mergeClasses(
@@ -423,6 +446,8 @@ export const useSliderStyles = (state: SliderState): SliderState => {
     state.vertical ? activeRailStyles.vertical : activeRailStyles.horizontal,
     state.activeRail.className,
   );
+
+  state.input.className = mergeClasses(inputStyles.input, state.input.className);
 
   return state;
 };

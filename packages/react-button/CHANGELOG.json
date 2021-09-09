@@ -2,6 +2,51 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.82",
+      "version": "9.0.0-alpha.82",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.73",
+            "author": "lingfangao@hotmail.com",
+            "commit": "1b6533cbc87422583bff6d1d6fcd74c9bdbad1c7",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.81",
+      "version": "9.0.0-alpha.81",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.5.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.81",
+      "version": "9.0.0-alpha.81",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "refactor(Button): use `event.key` for keyboard event",
+            "author": "lingfangao@hotmail.com",
+            "commit": "c3b21e84137ee07572e52faffbfffd384ed92609",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Sep 2021 00:13:07 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.80",
       "version": "9.0.0-alpha.80",

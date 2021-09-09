@@ -1,8 +1,26 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.64](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.64)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.63..@fluentui/azure-themes_v8.1.64)
+
+### Patches
+
+- Bump @fluentui/react to v8.31.0 ([PR #19344](https://github.com/microsoft/fluentui/pull/19344) by sarah.higley@microsoft.com)
+
+## [8.1.63](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.63)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.62..@fluentui/azure-themes_v8.1.63)
+
+### Patches
+
+- Azure Theme: Slider style update and dark theme update ([PR #19611](https://github.com/microsoft/fluentui/pull/19611) by aidanmc95@gmail.com)
 
 ## [8.1.62](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.62)
 

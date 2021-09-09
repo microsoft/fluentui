@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Sep 2021 07:34:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.0)
+
+Tue, 07 Sep 2021 07:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.4.5..@fluentui/react-conformance_v0.5.0)
+
+### Minor changes
+
+- add 'consistent-callback-args' test for event handler arguments ([PR #19369](https://github.com/microsoft/fluentui/pull/19369) by olfedias@microsoft.com)
 
 ## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.5)
 
