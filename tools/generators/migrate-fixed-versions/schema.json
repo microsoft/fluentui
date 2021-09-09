@@ -12,9 +12,9 @@
         "index": 0
       }
     },
-    "allWeb": {
+    "all": {
       "type": "boolean",
-      "description": "Run generator on all vNext packages with tag `platform:web`"
+      "description": "Run generator on all vNext packages`"
     }
   },
   "required": []

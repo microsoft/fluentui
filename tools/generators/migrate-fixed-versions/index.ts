@@ -1,4 +1,4 @@
-import { Tree, updateJson, getProjects, logger, formatFiles } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, logger, formatFiles, readJson } from '@nrwl/devkit';
 import { MigrateFixedVersionsGeneratorSchema } from './schema';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
@@ -7,7 +7,7 @@ export default async function (host: Tree, schema: MigrateFixedVersionsGenerator
   const userLog: UserLog = [];
   const validatedSchema = validateSchema(host, schema);
 
-  if (validatedSchema.allWeb) {
+  if (validatedSchema.all) {
     runBatchMigration(host, userLog);
   } else {
     runMigrationOnProject(host, validatedSchema, userLog);
@@ -49,7 +49,7 @@ function runBatchMigration(host: Tree, userLog: UserLog) {
       userLog.push({ type: 'error', message: `${projectName} is not a converged web package. Skipping...` });
       return;
     }
-    runMigrationOnProject(host, { name: projectName, allWeb: false }, userLog);
+    runMigrationOnProject(host, { name: projectName, all: false }, userLog);
   });
 }
 
@@ -58,11 +58,9 @@ function runBatchMigration(host: Tree, userLog: UserLog) {
  * @returns whether the package name is a converged package
  */
 function isPackageConverged(packageName: string, host: Tree) {
+  let config: ReturnType<typeof getProjectConfig>;
   try {
-    const config = getProjectConfig(host, { packageName });
-    if (config.projectConfig.tags?.includes('platform:web')) {
-      return true;
-    }
+    config = getProjectConfig(host, { packageName });
   } catch (err) {
     if (!(err as Error).message.startsWith('Cannot find configuration for')) {
       throw err;
@@ -71,7 +69,8 @@ function isPackageConverged(packageName: string, host: Tree) {
     return false;
   }
 
-  return false;
+  const packageJson = readJson(host, config.paths.packageJson);
+  return packageJson.version.startsWith('9.');
 }
 
 type NormalizedSchema = ReturnType<typeof normalizeOptions>;
@@ -97,7 +96,7 @@ type ValidatedSchema = Required<MigrateFixedVersionsGeneratorSchema>;
 function validateSchema(tree: Tree, schema: MigrateFixedVersionsGeneratorSchema) {
   const newSchema = { ...schema };
 
-  if ((newSchema.name && newSchema.allWeb) || (!newSchema.name && !newSchema.allWeb)) {
+  if ((newSchema.name && newSchema.all) || (!newSchema.name && !newSchema.all)) {
     throw new Error('--name and --all are mutually exclusive');
   }
 
@@ -105,7 +104,7 @@ function validateSchema(tree: Tree, schema: MigrateFixedVersionsGeneratorSchema)
     if (!isPackageConverged(newSchema.name, tree)) {
       throw new Error(
         `${newSchema.name} is not converged package consumed by customers.
-        Make sure to run the migration on packages with version 9.x.x and has tag 'platform:web' in nx.json`,
+        Make sure to run the migration on packages with version 9.x.x and has tag`,
       );
     }
   }

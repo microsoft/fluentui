@@ -5,7 +5,7 @@ export interface MigrateFixedVersionsGeneratorSchema {
   name?: string;
 
   /**
-   * Runs migration for all packages with tag `platform:web`
+   * Runs migration for all vNext packages
    */
-  allWeb?: boolean;
+  all?: boolean;
 }

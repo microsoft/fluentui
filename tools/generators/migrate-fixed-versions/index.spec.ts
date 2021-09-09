@@ -72,10 +72,10 @@ describe('migrate-fixed-versions generator', () => {
     `);
   });
 
-  it('should throw error when if package does not have tag platform:web', async () => {
+  it('should throw error when if package is not converged', async () => {
     tree = setupDummyPackage(tree, {
       name: '@proj/babel-make-styles',
-      version: '9.0.0-alpha.0',
+      version: '8.0.0-alpha.0',
       dependencies: {
         '@proj/make-styles': '^9.0.0-alpha.1',
       },
@@ -86,11 +86,11 @@ describe('migrate-fixed-versions generator', () => {
 
     await expect(result).rejects.toMatchInlineSnapshot(`
             [Error: @proj/babel-make-styles is not converged package consumed by customers.
-                    Make sure to run the migration on packages with version 9.x.x and has tag 'platform:web' in nx.json]
+                    Make sure to run the migration on packages with version 9.x.x and has tag]
           `);
   });
 
-  describe('--allWeb', () => {
+  describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
         name: '@proj/react-button',
@@ -116,7 +116,7 @@ describe('migrate-fixed-versions generator', () => {
       });
       tree = setupDummyPackage(tree, {
         name: '@proj/babel-make-styles',
-        version: '9.0.0-alpha.0',
+        version: '1.0.0',
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
         },
@@ -125,7 +125,7 @@ describe('migrate-fixed-versions generator', () => {
     });
 
     it('should migrate all web packages', async () => {
-      await generator(tree, { allWeb: true, name: '' });
+      await generator(tree, { all: true, name: '' });
 
       const reactButtonPackageJson = readJson(tree, 'packages/react-button/package.json');
       const makeStylesPackageJson = readJson(tree, 'packages/make-styles/package.json');
@@ -143,7 +143,7 @@ describe('migrate-fixed-versions generator', () => {
     });
 
     it('should skip all non-web packages', async () => {
-      await generator(tree, { allWeb: true, name: '' });
+      await generator(tree, { all: true, name: '' });
 
       const packageJson = readJson(tree, 'packages/babel-make-styles/package.json');
       expect(packageJson.dependencies).toMatchInlineSnapshot(`

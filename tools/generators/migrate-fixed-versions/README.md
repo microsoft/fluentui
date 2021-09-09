@@ -9,7 +9,7 @@ Workspace Generator for migrating converged package dependencies from carets to 
   - [Examples](#examples)
 - [Options](#options)
   - [`name`](#name)
-  - [`allWeb`](#all)
+  - [`all`](#all)
 
 <!-- tocstop -->
 
@@ -43,7 +43,7 @@ yarn nx workspace-generator migrate-fixed-versions --name='@fluentui/example'
 Run migration on all vNext web packages
 
 ```sh
-yarn nx workspace-generator migrate-fixed-versions --allWeb
+yarn nx workspace-generator migrate-fixed-versions --all
 ```
 
 ## Options
@@ -56,7 +56,7 @@ Package/library name (needs to be full name of the package, scope included - e.g
 
 > NOTE: will trigger CLI prompt if you didn't provide this option
 
-#### `allWeb`
+#### `all`
 
 Type: `boolean`
 
