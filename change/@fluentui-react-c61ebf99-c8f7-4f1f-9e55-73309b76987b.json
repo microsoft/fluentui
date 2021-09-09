@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Customize search for more icon for Suggestions",
   "packageName": "@fluentui/react",
   "email": "tschao@microsoft.com",
