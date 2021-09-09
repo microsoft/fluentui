@@ -149,7 +149,7 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "tags": ["vNext"],
+      "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
     "@fluentui/react-aria": {
