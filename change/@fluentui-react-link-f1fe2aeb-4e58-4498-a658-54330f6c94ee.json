@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Updating README.md files to use react-components instead of react",
+  "packageName": "@fluentui/react-link",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "none"
+}
