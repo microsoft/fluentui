@@ -12,6 +12,14 @@ import { Button } from '@fluentui/react-button';
 // @ts-ignore
 import { makeStyles } from '@fluentui/react-make-styles';
 
+// FIXME need to redeclare types because type imports are under @ts-ignore
+export type OpenPopoverEvents =
+  | MouseEvent
+  | TouchEvent
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;
+
 const useStyles = makeStyles({
   contentHeader: {
     marginTop: '0',
@@ -31,7 +39,7 @@ const ExampleContent = () => {
 
 export const ControllingOpenAndClose = () => {
   const [open, setOpen] = React.useState(false);
-  const handleOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
+  const handleOpenChange = (e: OpenPopoverEvents, data: { open: boolean }) => setOpen(data.open || false);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOpen(e.target.checked);
