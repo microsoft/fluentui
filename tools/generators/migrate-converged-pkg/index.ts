@@ -125,6 +125,7 @@ const templates = {
     include: ['src'],
     compilerOptions: {
       target: 'ES2019',
+      isolatedModules: true,
       module: 'CommonJS',
       lib: ['ES2019', 'dom'],
       outDir: 'dist',
