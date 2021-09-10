@@ -352,14 +352,14 @@ export const useActiveRailStyles = makeStyles({
  */
 export const useInputStyles = makeStyles({
   input: {
-    // opacity: 0,
+    opacity: 0,
     position: 'absolute',
-    // padding: 0,
-    // margin: 0,
-    // width: '100%',
-    // height: '100%',
-    // touchAction: 'none',
-    // pointerEvents: 'none',
+    padding: 0,
+    margin: 0,
+    width: '100%',
+    height: '100%',
+    touchAction: 'none',
+    pointerEvents: 'none',
   },
 });
 
