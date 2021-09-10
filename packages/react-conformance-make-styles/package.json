@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@fluentui/react-conformance": "^0.5.0",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.63",
+    "@fluentui/react-make-styles": "9.0.0-alpha.63",
     "tslib": "^2.1.0"
   },
   "beachball": {

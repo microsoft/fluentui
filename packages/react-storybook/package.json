@@ -29,7 +29,7 @@
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.38"
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.38"
   },
   "dependencies": {
     "@fluentui/react-provider": "9.0.0-alpha.74",

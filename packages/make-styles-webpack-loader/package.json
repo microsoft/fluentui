@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.45",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.45",
     "@linaria/babel-preset": "^3.0.0-beta.12",
     "enhanced-resolve": "^5.8.2",
     "loader-utils": "^2.0.0",
