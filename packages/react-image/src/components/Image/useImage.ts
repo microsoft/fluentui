@@ -26,7 +26,7 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): I
     }),
   };
 
-  // state['aria-hidden'] = state.alt || state['aria-label'] ? undefined : 'true';
+  state.root['aria-hidden'] = state.root.alt || state.root['aria-label'] ? undefined : 'true';
 
   return state;
 };
