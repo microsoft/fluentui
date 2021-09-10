@@ -28,8 +28,8 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={'basic-ranged-slider'}>Basic Example</Label>
-      <RangedSlider input={{ id: 'basic-ranged-slider' }} />
+      <Label>Basic Example</Label>
+      <RangedSlider />
     </div>
   );
 };

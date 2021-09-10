@@ -18,14 +18,14 @@ export const renderRangedSlider = (state: RangedSliderState) => {
           <slots.track {...slotProps.track} />
         </slots.trackWrapper>
         <slots.lowerThumbWrapper {...slotProps.lowerThumbWrapper}>
+          <slots.inputLower {...slotProps.inputLower} />
           <slots.lowerThumb {...slotProps.lowerThumb} />
         </slots.lowerThumbWrapper>
         <slots.upperThumbWrapper {...slotProps.upperThumbWrapper}>
+          <slots.inputUpper {...slotProps.inputUpper} />
           <slots.upperThumb {...slotProps.upperThumb} />
         </slots.upperThumbWrapper>
         <slots.activeRail {...slotProps.activeRail} />
-        <slots.inputLower {...slotProps.inputLower} />
-        <slots.inputUpper {...slotProps.inputUpper} />
       </slots.sliderWrapper>
     </slots.root>
   );

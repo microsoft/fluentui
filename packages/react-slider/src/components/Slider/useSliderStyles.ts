@@ -3,18 +3,18 @@ import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
 import { markClassName } from '../../utils/renderMarks';
 
-const thumbClassName = 'ms-Slider-thumb';
-const trackClassName = 'ms-Slider-track';
+export const thumbClassName = 'ms-Slider-thumb';
+export const trackClassName = 'ms-Slider-track';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles({
+export const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
     display: 'inline-flex',
-    userSelect: 'none',
-    touchAction: 'none',
+    // userSelect: 'none',
+    // touchAction: 'none',
     verticalAlign: 'bottom',
   }),
 
@@ -89,7 +89,7 @@ const useRootStyles = makeStyles({
 /**
  * Styles for the slider wrapper slot
  */
-const useSliderWrapper = makeStyles({
+export const useSliderWrapper = makeStyles({
   sliderWrapper: theme => ({
     position: 'absolute',
     overflow: 'hidden',
@@ -113,7 +113,7 @@ const useSliderWrapper = makeStyles({
 /**
  * Styles for the rail slot
  */
-const useRailStyles = makeStyles({
+export const useRailStyles = makeStyles({
   rail: theme => ({
     position: 'absolute',
     borderRadius: theme.global.borderRadius.xLarge,
@@ -149,7 +149,7 @@ const useRailStyles = makeStyles({
 /**
  * Styles for the trackWrapper slot
  */
-const useTrackWrapperStyles = makeStyles({
+export const useTrackWrapperStyles = makeStyles({
   trackWrapper: theme => ({
     position: 'absolute',
   }),
@@ -170,7 +170,7 @@ const useTrackWrapperStyles = makeStyles({
 /**
  * Styles for the track slot
  */
-const useTrackStyles = makeStyles({
+export const useTrackStyles = makeStyles({
   track: theme => ({
     position: 'absolute',
     borderRadius: theme.global.borderRadius.xLarge,
@@ -202,7 +202,7 @@ const useTrackStyles = makeStyles({
 /**
  * Styles for the mark slot
  */
-const useMarksWrapperStyles = makeStyles({
+export const useMarksWrapperStyles = makeStyles({
   marksWrapper: theme => ({
     position: 'relative',
     display: 'grid',
@@ -263,7 +263,7 @@ const useMarksWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbWrapperStyles = makeStyles({
+export const useThumbWrapperStyles = makeStyles({
   thumbWrapper: theme => ({
     position: 'absolute',
     outline: 'none',
@@ -286,7 +286,7 @@ const useThumbWrapperStyles = makeStyles({
 /**
  * Styles for the thumb slot
  */
-const useThumbStyles = makeStyles({
+export const useThumbStyles = makeStyles({
   thumb: theme => ({
     position: 'absolute',
     width: 'var(--slider-thumb-size)',
@@ -331,7 +331,7 @@ const useThumbStyles = makeStyles({
 /**
  * Styles for the activeRail slot
  */
-const useActiveRailStyles = makeStyles({
+export const useActiveRailStyles = makeStyles({
   activeRail: theme => ({
     position: 'absolute',
   }),
@@ -350,16 +350,16 @@ const useActiveRailStyles = makeStyles({
 /**
  * Styles for the Input slot
  */
-const useInputStyles = makeStyles({
+export const useInputStyles = makeStyles({
   input: {
-    opacity: 0,
+    // opacity: 0,
     position: 'absolute',
-    padding: 0,
-    margin: 0,
-    width: '100%',
-    height: '100%',
-    touchAction: 'none',
-    pointerEvents: 'none',
+    // padding: 0,
+    // margin: 0,
+    // width: '100%',
+    // height: '100%',
+    // touchAction: 'none',
+    // pointerEvents: 'none',
   },
 });
 
