@@ -80,8 +80,7 @@ const clampArray = (array: number[], min: number, max: number) => {
 
 type RangedValue = { lowerValue: number; upperValue: number };
 
-const clampObject = (object: { lowerValue: number; upperValue: number }, min: number, max: number): RangedValue => {
-  console.log(object);
+const clampObject = (object: RangedValue, min: number, max: number): RangedValue => {
   return object;
 };
 
@@ -106,6 +105,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const lowerInputRef = React.useRef<HTMLInputElement>(null);
   const upperInputRef = React.useRef<HTMLInputElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
+  const activeThumb = React.useRef<'lowerValue' | 'upperValue'>('lowerValue');
   const disposables = React.useRef<(() => void)[]>([]);
 
   const [currentValue, setCurrentValue] = useControllableState({
@@ -129,7 +129,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       }
 
       onChange?.(ev, { value: clampedValue });
-      setCurrentValue(clampedValue);
+      setCurrentValue({
+        ...currentValue,
+        [activeThumb.current]: clampedValue,
+      });
     },
   );
 
@@ -152,23 +155,38 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   //   [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
   // );
 
-  const onKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+  const keyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>) => {
       onKeyDownCallback?.(ev);
 
-      // const incomingValue = getKeydownValue(ev, currentValue, min, max, dir, keyboardStep);
+      const incomingValue = getKeydownValue(ev, currentValue[activeThumb.current], min, max, dir, keyboardStep);
 
-      // if (currentValue !== incomingValue) {
-      //   updatePosition(incomingValue, ev);
-      // }
+      if (currentValue[activeThumb.current] !== incomingValue) {
+        updateValue(incomingValue, ev);
+      }
     },
-    [onKeyDownCallback],
+    [currentValue, dir, keyboardStep, max, min, onKeyDownCallback, updateValue],
+  );
+
+  const onKeyDownLower = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      activeThumb.current = 'lowerValue';
+      keyDown(ev);
+    },
+    [keyDown],
+  );
+
+  const onKeyDownUpper = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      activeThumb.current = 'upperValue';
+      keyDown(ev);
+    },
+    [keyDown],
   );
 
   // Root props
   if (!disabled) {
     // state.root.onPointerDown = onPointerDown;
-    state.root.onKeyDown = onKeyDown;
   }
 
   const lowerValuePercent = getPercent(currentValue.lowerValue, min, max);
@@ -206,6 +224,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   ariaValueText && (state.inputLower['aria-valuetext'] = ariaValueText(currentValue.lowerValue));
   state.inputLower.disabled = disabled;
   state.inputLower.step = step;
+  state.inputLower.onKeyDown = onKeyDownLower;
   // state.inputLower.onChange = onInputChange;
 
   // Upper Input Props
@@ -216,6 +235,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   ariaValueText && (state.inputUpper['aria-valuetext'] = ariaValueText(currentValue.upperValue));
   state.inputUpper.disabled = disabled;
   state.inputUpper.step = step;
+  state.inputUpper.onKeyDown = onKeyDownUpper;
   // state.inputUpper.onChange = onInputChange;
 
   return state;

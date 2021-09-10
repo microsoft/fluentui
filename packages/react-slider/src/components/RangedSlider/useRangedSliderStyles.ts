@@ -35,7 +35,11 @@ export const useInputStyles = makeStyles({
   lowerInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
       '& + .lower': {
-        background: 'red',
+        ':before': {
+          outline: 'none',
+          boxSizing: 'border-box',
+          border: 'calc(var(--slider-thumb-size) * .05) solid black',
+        },
       },
     }),
     { selector: 'focus' },
@@ -44,7 +48,11 @@ export const useInputStyles = makeStyles({
   upperInputFocusIndicator: createFocusIndicatorStyleRule(
     theme => ({
       '& + .upper': {
-        background: 'red',
+        ':before': {
+          outline: 'none',
+          boxSizing: 'border-box',
+          border: 'calc(var(--slider-thumb-size) * .05) solid black',
+        },
       },
     }),
     { selector: 'focus' },
