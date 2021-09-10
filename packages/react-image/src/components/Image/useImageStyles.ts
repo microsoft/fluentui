@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 
 export const useImageStyles = (state: ImageState) => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.bordered && styles.rootBordered,
     state.circular && styles.rootCircular,
@@ -61,6 +61,6 @@ export const useImageStyles = (state: ImageState) => {
     state.fit === 'cover' && styles.rootFitCover,
     state.fit === 'contain' && styles.rootFitContain,
     state.fluid && styles.rootFluid,
-    state.className,
+    state.root.className,
   );
 };
