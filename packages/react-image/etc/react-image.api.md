@@ -6,7 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -31,7 +31,7 @@ export const imageShorthandProps: Array<keyof ImageSlots>;
 
 // @public (undocumented)
 export type ImageSlots = {
-    root: ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement, 'img'>;
+    root: IntrinsicShorthandProps<'img'>;
 };
 
 // @public (undocumented)
