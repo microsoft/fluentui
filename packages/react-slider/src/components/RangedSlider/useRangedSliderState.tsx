@@ -78,11 +78,12 @@ const clampArray = (array: number[], min: number, max: number) => {
 //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 //   object.map((value: number) => clamp(value, min, max));
 
-const clampObject = (
-  object: { lowerValue: number; upperValue: number },
-  min: number,
-  max: number,
-): { lowerValue: number; upperValue: number } => object.map((value: number) => clamp(value, min, max));
+type RangedValue = { lowerValue: number; upperValue: number };
+
+const clampObject = (object: { lowerValue: number; upperValue: number }, min: number, max: number): RangedValue => {
+  console.log(object);
+  return object;
+};
 
 export const useRangedSliderState = (state: RangedSliderState) => {
   const {
@@ -104,12 +105,98 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const lowerInputRef = React.useRef<HTMLInputElement>(null);
   const upperInputRef = React.useRef<HTMLInputElement>(null);
+  const railRef = React.useRef<HTMLDivElement>(null);
+  const disposables = React.useRef<(() => void)[]>([]);
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clampObject(value, min, max),
     defaultState: clampObject(defaultValue, min, max),
     initialState: { lowerValue: min, upperValue: max },
   });
+
+  /**
+   * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
+   */
+  const updateValue = useEventCallback(
+    (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
+      const clampedValue = clamp(incomingValue, min, max);
+
+      if (clampedValue !== min && clampedValue !== max) {
+        ev.stopPropagation();
+        if (ev.type === 'keydown') {
+          ev.preventDefault();
+        }
+      }
+
+      onChange?.(ev, { value: clampedValue });
+      setCurrentValue(clampedValue);
+    },
+  );
+
+  // const onPointerDown = React.useCallback(
+  //   (ev: React.PointerEvent<HTMLDivElement>): void => {
+  //     const { pointerId } = ev;
+  //     const target = ev.target as HTMLElement;
+
+  //     target.setPointerCapture?.(pointerId);
+
+  //     onPointerDownCallback?.(ev);
+
+  //     disposables.current.push(on(target,
+  // 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
+  //       target.releasePointerCapture?.(pointerId);
+  //     });
+
+  //     onPointerMove(ev);
+  //   },
+  //   [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
+  // );
+
+  const onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      onKeyDownCallback?.(ev);
+
+      // const incomingValue = getKeydownValue(ev, currentValue, min, max, dir, keyboardStep);
+
+      // if (currentValue !== incomingValue) {
+      //   updatePosition(incomingValue, ev);
+      // }
+    },
+    [onKeyDownCallback],
+  );
+
+  // Root props
+  if (!disabled) {
+    // state.root.onPointerDown = onPointerDown;
+    state.root.onKeyDown = onKeyDown;
+  }
+
+  const lowerValuePercent = getPercent(currentValue.lowerValue, min, max);
+
+  const lowerThumbWrapperStyles = {
+    transform: vertical
+      ? `translateY(${lowerValuePercent}%)`
+      : `translateX(${dir === 'rtl' ? -lowerValuePercent : lowerValuePercent}%)`,
+    ...state.lowerThumbWrapper.style,
+  };
+
+  const upperValuePercent = getPercent(currentValue.upperValue, min, max);
+
+  const upperThumbWrapperStyles = {
+    transform: vertical
+      ? `translateY(${upperValuePercent}%)`
+      : `translateX(${dir === 'rtl' ? -upperValuePercent : upperValuePercent}%)`,
+    ...state.upperThumbWrapper.style,
+  };
+
+  // Lower Thumb Wrapper Props
+  state.lowerThumbWrapper.style = lowerThumbWrapperStyles;
+
+  // Upper Thumb Wrapper Props
+  state.upperThumbWrapper.style = upperThumbWrapperStyles;
+
+  // Active Rail Props
+  state.activeRail.ref = railRef;
 
   // Lower Input Props
   state.inputLower.ref = useMergedRefs(state.inputLower.ref, lowerInputRef);
