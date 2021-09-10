@@ -18,7 +18,7 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { PackageJson, TsConfig } from '../../types';
-import { arePromptsEnabled, prompt, updateJestConfig } from '../../utils';
+import { arePromptsEnabled, getProjectConfig, printUserLogs, prompt, updateJestConfig, UserLog } from '../../utils';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -38,8 +38,6 @@ interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
 }
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
-
-type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
@@ -125,6 +123,7 @@ const templates = {
     include: ['src'],
     compilerOptions: {
       target: 'ES2019',
+      isolatedModules: true,
       module: 'CommonJS',
       lib: ['ES2019', 'dom'],
       outDir: 'dist',
@@ -250,34 +249,6 @@ function normalizeOptions(host: Tree, options: AssertedSchema) {
      * package name without npmScope (@scopeName)
      */
     normalizedPkgName: options.name.replace(`@${project.workspaceConfig.npmScope}/`, ''),
-  };
-}
-
-function getProjectConfig(tree: Tree, options: { packageName: string }) {
-  const projectConfig = readProjectConfiguration(tree, options.packageName);
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const paths = {
-    configRoot: joinPathFragments(projectConfig.root, 'config'),
-    packageJson: joinPathFragments(projectConfig.root, 'package.json'),
-    tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
-    babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
-    jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
-    rootTsconfig: '/tsconfig.base.json',
-    rootJestPreset: '/jest.preset.js',
-    rootJestConfig: '/jest.config.js',
-    npmConfig: joinPathFragments(projectConfig.root, '.npmignore'),
-    storybook: {
-      rootFolder: joinPathFragments(projectConfig.root, '.storybook'),
-      tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
-      main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
-      preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
-    },
-  };
-
-  return {
-    projectConfig,
-    workspaceConfig,
-    paths,
   };
 }
 
@@ -721,14 +692,6 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   writeJson(tree, options.paths.packageJson, pkgJson);
 
   return tree;
-}
-
-function printUserLogs(logs: UserLog) {
-  logger.log(`${'='.repeat(80)}\n`);
-
-  logs.forEach(log => logger[log.type](log.message));
-
-  logger.log(`${'='.repeat(80)}\n`);
 }
 
 function splitPathFragments(filePath: string) {

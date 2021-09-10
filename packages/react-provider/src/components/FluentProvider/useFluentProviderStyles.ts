@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 export const useFluentProviderStyles = (state: FluentProviderState) => {
   const styles = useStyles();
 
-  state.className = mergeClasses(state.themeClassName, styles.root, state.className);
+  state.root.className = mergeClasses(state.themeClassName, styles.root, state.root.className);
 
   return state;
 };

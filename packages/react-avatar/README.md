@@ -19,7 +19,7 @@ import { Avatar } from '@fluentui/react-avatar';
 Once the Avatar component graduates to a production release, the component will be available at:
 
 ```js
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-components';
 ```
 
 ### Examples
