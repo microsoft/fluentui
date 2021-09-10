@@ -18,6 +18,10 @@ export interface TooltipContentVariables {
   backgroundColor: string;
 
   zIndex: number;
+
+  subtleBackgroundColor: string;
+  subtleForegroundColor: string;
+  subtleBorderColor: string;
 }
 
 export const tooltipContentVariables = (siteVars: any): TooltipContentVariables => ({
@@ -35,6 +39,8 @@ export const tooltipContentVariables = (siteVars: any): TooltipContentVariables 
   pointerHeight: pxToRem(6),
   color: siteVars.colorScheme.default.foreground3,
   backgroundColor: siteVars.colors.grey[500],
-
+  subtleBackgroundColor: siteVars.colorScheme.default.background,
+  subtleForegroundColor: siteVars.colorScheme.default.foreground,
+  subtleBorderColor: siteVars.colorScheme.onyx.border1,
   zIndex: siteVars.zIndexes.overlayPriority,
 });

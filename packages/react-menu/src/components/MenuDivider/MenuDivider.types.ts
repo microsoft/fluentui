@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+
+export type MenuDividerSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
 
 /**
  * {@docCategory MenuDivider}
  */
-export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export interface MenuDividerProps extends ComponentProps<MenuDividerSlots> {}
 
 /**
  * {@docCategory MenuDivider}
  */
-export interface MenuDividerState extends MenuDividerProps {
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export interface MenuDividerState extends ComponentState<MenuDividerSlots> {}

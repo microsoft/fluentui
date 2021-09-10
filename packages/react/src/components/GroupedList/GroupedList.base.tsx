@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
-import {
+import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
+import { GroupedListSection } from './GroupedListSection';
+import { List, ScrollToMode } from '../../List';
+import { SelectionMode } from '../../Selection';
+import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   IGroupedList,
   IGroupedListProps,
   IGroup,
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
-import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
-import { GroupedListSection } from './GroupedListSection';
-import { List, ScrollToMode, IListProps } from '../../List';
-import { SelectionMode } from '../../Selection';
-import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
-import { IGroupHeaderProps } from './GroupHeader';
-import { IGroupShowAllProps } from './GroupShowAll.styles';
-import { IGroupFooterProps } from './GroupFooter.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import type { IListProps } from '../../List';
+import type { IGroupHeaderProps } from './GroupHeader';
+import type { IGroupShowAllProps } from './GroupShowAll.styles';
+import type { IGroupFooterProps } from './GroupFooter.types';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
@@ -287,7 +288,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   private _getDefaultGroupItemLimit = (group: IGroup): number => {
-    return group.count;
+    return group.children && group.children.length > 0 ? group.children.length : group.count;
   };
 
   private _getGroupItemLimit = (group: IGroup): number => {

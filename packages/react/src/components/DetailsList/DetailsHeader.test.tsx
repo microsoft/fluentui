@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
-import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
-import { DetailsListLayoutMode, IColumn, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
+import { SelectAllVisibility } from './DetailsHeader.types';
+import { DetailsListLayoutMode, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { getTheme } from '../../Styling';
+import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
+import type { IColumn } from './DetailsList.types';
 
 const _items: {}[] = [];
 const _selection = new Selection();
@@ -318,15 +320,15 @@ describe('DetailsHeader', () => {
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
         columns={columns}
+        ariaLabelForSelectAllCheckbox={'Toggle selection for all items'}
       />,
     );
 
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not
-  // be rendered and therefore aria-describedby should not exist on the select all checkbox
-  it('does not accessible label for select all checkbox or aria-describedby', () => {
+  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not be rendered
+  it('does not render label for select all column header without string', () => {
     const component = mount(
       <DetailsHeader
         selection={_selection}
@@ -341,16 +343,12 @@ describe('DetailsHeader', () => {
       .getDOMNode()
       .getAttribute('aria-labelledby');
 
-    expect(
-      component.find(`#${selectAllCheckBoxAriaLabelledBy}`).first().getDOMNode().hasAttribute('aria-describedby'),
-    ).toBe(false);
-
-    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}`).length).toEqual(0);
   });
 
   // if ariaLabelForSelectAllCheckbox is passed in and onRenderColumnHeaderTooltip is not,
-  // the select all checkbox label should be rendered and aria-describedby on select all
-  // checkbox should exist with a valid id
+  // the checkbox should use it as an aria-label, and the columnheader
+  // should have aria-labelledby pointing to a valid id
   it('renders accessible label for select all checkbox and valid aria-describedby', () => {
     const component = mount(
       <DetailsHeader
@@ -362,16 +360,16 @@ describe('DetailsHeader', () => {
       />,
     );
 
-    const selectAllCheckBoxAriaLabelledBy = component
+    const selectAllColumnAriaLabelledBy = component
       .find('[aria-colindex=1]')
       .getDOMNode()
       .getAttribute('aria-labelledby');
 
-    expect(
-      component.find(`#${selectAllCheckBoxAriaLabelledBy}`).first().getDOMNode().getAttribute('aria-describedby')!,
-    ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
+    expect(component.find(`#${selectAllColumnAriaLabelledBy}`).length).toEqual(1);
 
-    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
+    const selectAllCheckboxLabel = component.find('[role="checkbox"]').getDOMNode().getAttribute('aria-label');
+
+    expect(selectAllCheckboxLabel).toEqual('Toggle selection for all items');
   });
 
   it('should mark the columns as draggable', () => {

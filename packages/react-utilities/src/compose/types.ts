@@ -1,17 +1,53 @@
 import * as React from 'react';
 
-/**
- * Generic name to any dictionary.
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type GenericDictionary = Record<string, any>;
+export type ShorthandRenderFunction<Props> = (
+  Component: React.ElementType<Props>,
+  props: Omit<Props, 'children' | 'as'>,
+) => React.ReactNode;
 
-/**
- * Class dictionary.
- */
-export type ClassDictionary = Record<string, string>;
+export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
 
-export interface ComponentProps {
+export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
+  | React.ReactChild
+  | React.ReactNodeArray
+  | React.ReactPortal
+  | number
+  | null // force null render
+  | undefined // default render (or null render if no default provided)
+  | Props;
+
+export type DefaultObjectShorthandProps = ObjectShorthandProps<{}, unknown, keyof JSX.IntrinsicElements>;
+
+export type ObjectShorthandProps<
+  Props extends { children?: React.ReactNode } = {},
+  Ref = unknown,
+  As extends keyof JSX.IntrinsicElements = never
+> = Props &
+  React.RefAttributes<Ref> & {
+    as?: As;
+    children?: Props['children'] | ShorthandRenderFunction<Props>;
+  };
+
+export type ComponentProps<
+  Shorthands extends ObjectShorthandPropsRecord,
+  Primary extends keyof Shorthands = 'root'
+> = Omit<
+  {
+    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+  },
+  Primary
+> &
+  Shorthands[Primary];
+
+export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
+  components?: {
+    [Key in keyof Shorthands]?: React.ElementType<NonNullable<Shorthands[Key]>> | keyof JSX.IntrinsicElements;
+  };
+} & Shorthands;
+
+/////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
+
+export interface ComponentPropsCompat {
   as?: React.ElementType;
   className?: string;
   children?: React.ReactNode;
@@ -19,28 +55,34 @@ export interface ComponentProps {
 
 // Shorthand types
 
-export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+export type ShorthandRenderFunctionCompat<TProps> = (
+  Component: React.ElementType<TProps>,
+  props: TProps,
+) => React.ReactNode;
 
-export type ShorthandProps<TProps extends ComponentProps = {}> =
+export type ShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> =
   | React.ReactChild
   | React.ReactNodeArray
   | React.ReactPortal
-  | boolean
   | number
   | null
   | undefined
-  | ObjectShorthandProps<TProps>;
+  | ObjectShorthandPropsCompat<TProps>;
 
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps &
-  Omit<ComponentProps, 'children'> & {
-    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+export type ObjectShorthandPropsCompat<TProps extends ComponentPropsCompat = {}> = TProps &
+  Omit<ComponentPropsCompat, 'children'> & {
+    children?: TProps['children'] | ShorthandRenderFunctionCompat<TProps>;
   };
 
-export interface BaseSlots {
+export interface BaseSlotsCompat {
   root: React.ElementType;
 }
 
-export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+export type SlotPropsCompat<
+  TSlots extends BaseSlotsCompat,
+  TProps,
+  TRootProps extends React.HTMLAttributes<HTMLElement>
+> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
 } & {
@@ -50,14 +92,14 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 /**
  * Helper type to convert the given props of type ShorthandProps into ObjectShorthandProps
  */
-export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> &
-  { [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P] };
+export type ResolvedShorthandPropsCompat<T, K extends keyof T> = Omit<T, K> &
+  { [P in K]: T[P] extends ShorthandPropsCompat<infer U> ? ObjectShorthandPropsCompat<U> : T[P] };
 
 /**
  * Helper type to mark the given props as required.
  * Similar to Required<T> except it only requires a subset of the props.
  */
-export type RequiredProps<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P] };
+export type RequiredPropsCompat<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P] };
 
 /**
  * Converts a components Props type to a State type:
@@ -68,8 +110,8 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P
  * @template ShorthandPropNames - The keys of Props that correspond to ShorthandProps
  * @template DefaultedPropNames - The keys of Props that will always have a default value provided
  */
-export type ComponentState<
+export type ComponentStateCompat<
   Props,
   ShorthandPropNames extends keyof Props = never,
-  DefaultedPropNames extends keyof ResolvedShorthandProps<Props, ShorthandPropNames> = never
-> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames>;
+  DefaultedPropNames extends keyof ResolvedShorthandPropsCompat<Props, ShorthandPropNames> = never
+> = RequiredPropsCompat<ResolvedShorthandPropsCompat<Props, ShorthandPropNames>, DefaultedPropNames>;

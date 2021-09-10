@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 import { ModalBase } from './Modal.base';
 import { getStyles } from './Modal.styles';
+import type { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 
 export const Modal: React.FunctionComponent<IModalProps> = styled<IModalProps, IModalStyleProps, IModalStyles>(
   ModalBase,

@@ -1,22 +1,29 @@
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { ChatItemVariables } from './chatItemVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+
 import { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
 import { pxToRem } from '../../../../utils';
+import { ChatItemVariables } from './chatItemVariables';
 
 export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, ChatItemVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  root: ({ props: p }): ICSSInJSStyle => ({
     position: 'relative',
-    ...((!p.attached || p.attached === 'top') && { paddingTop: pxToRem(16) }),
+    ...((!p.attached || p.attached === 'top') && {
+      paddingTop: p.density === 'compact' ? pxToRem(8) : pxToRem(16),
+    }),
     ...((p.attached === 'bottom' || p.attached === true) && {
-      paddingTop: pxToRem(2),
+      paddingTop: p.density === 'compact' ? 0 : pxToRem(2),
     }),
     paddingBottom: 0,
+    ...(p.density === 'compact' && {
+      marginTop: pxToRem(-2),
+      marginBottom: pxToRem(-2),
+    }),
   }),
 
   gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
-    marginTop: v.gutterMargin,
-    [p.contentPosition === 'end' ? 'right' : 'left']: 0,
+    marginTop: p.density === 'compact' ? v.gutterMarginCompact : v.gutterMargin,
+    [p.contentPosition === 'end' ? 'right' : 'left']: p.density === 'compact' ? pxToRem(28) : 0,
     ...((p.attached === 'bottom' || p.attached === true) && {
       display: 'none',
     }),
@@ -25,7 +32,10 @@ export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, Ch
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     float: p.contentPosition === 'end' ? 'right' : 'left',
-    marginLeft: v.messageMargin,
-    marginRight: v.messageMargin,
+    marginLeft: p.density === 'compact' ? v.messageMarginCompact : v.messageMargin,
+    marginRight: p.density === 'compact' ? v.messageMarginEndCompact : v.messageMargin,
+    ...(p.density === 'compact' && {
+      width: `calc(100% - ${v.messageMarginCompact} - ${v.messageMarginEndCompact})`,
+    }),
   }),
 };

@@ -1,8 +1,11 @@
-import { ButtonProps, ButtonState, ButtonStyleSelectors, ButtonTokens, ButtonVariants } from '../Button/Button.types';
+import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type {
+  ButtonDefaultedProps,
+  ButtonProps,
+  ButtonShorthandPropsCompat,
+  ButtonState,
+} from '../Button/Button.types';
 
-/**
- * {@docCategory Button}
- */
 export interface ToggleButtonProps extends ButtonProps {
   /**
    * Defines the controlled checked state of the `ToggleButton`.
@@ -14,43 +17,17 @@ export interface ToggleButtonProps extends ButtonProps {
   checked?: boolean;
 
   /**
-   * Defines whether the `ToggleButton` is inititally in a checked state or not when rendered.
+   * Defines whether the `ToggleButton` is initially in a checked state or not when rendered.
    * Mutually exclusive to `checked`.
    * @default false
    */
   defaultChecked?: boolean;
 }
 
-/**
- * {@docCategory Button}
- */
-export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon'>, ButtonState {}
+export type ToggleButtonShorthandPropsCompat = ButtonShorthandPropsCompat;
 
-/**
- * {@docCategory Button}
- */
-export type ToggleButtonStyleSelectors = ButtonStyleSelectors & { checked?: boolean };
+export type ToggleButtonDefaultedProps = ButtonDefaultedProps;
 
-/**
- * {@docCategory Button}
- */
-export type ToggleButtonTokens = ButtonTokens;
-
-/**
- * {@docCategory Button}
- */
-export type ToggleButtonVariants =
-  | ButtonVariants
-  | 'checked'
-  | 'checkedPrimary'
-  | 'checkedSubtle'
-  | 'checkedTransparent';
-
-/**
- * {@docCategory Button}
- */
-export type ToggleButtonVariantTokens = Partial<
-  {
-    [variant in ToggleButtonVariants]: Partial<ToggleButtonTokens>;
-  }
->;
+export interface ToggleButtonState
+  extends ButtonState,
+    ComponentStateCompat<ToggleButtonProps, ToggleButtonShorthandPropsCompat, ToggleButtonDefaultedProps> {}

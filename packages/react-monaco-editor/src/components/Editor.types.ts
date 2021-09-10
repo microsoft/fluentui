@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMonacoEditorOptions, IMonacoTextModel } from '../interfaces/index';
+import type { IMonacoEditorOptions, IMonacoTextModel } from '../interfaces/index';
 
 export interface IEditorProps {
   /**

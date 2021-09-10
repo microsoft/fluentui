@@ -77,19 +77,19 @@ The `Button` component can be loading if it's waiting for another action to occu
 ### Props
 
 ```ts
-export type ButtonProps = ComponentProps &
+export type ButtonProps = ComponentPropsCompat &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 
     /**
      * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag is
      * set to `true`.
      */
-    loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    loader?: ShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 
     /**
      * A button can fill the width of its container.

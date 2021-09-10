@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IRefObject } from '@fluentui/utilities';
-import { Point } from '@fluentui/utilities';
+import type { IRefObject } from '@fluentui/utilities';
+import type { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -26,7 +26,7 @@ export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFo
     // (undocumented)
     render(): React_2.ReactNode;
     setFocusAlignment(point: Point): void;
-    }
+}
 
 // @public (undocumented)
 export enum FocusZoneDirection {
@@ -102,7 +102,6 @@ export interface IFocusZoneProps extends React_2.HTMLAttributes<HTMLElement> {
     shouldResetActiveElementWhenTabFromZone?: boolean;
     stopFocusPropagation?: boolean;
 }
-
 
 // (No @packageDocumentation comment for this package)
 

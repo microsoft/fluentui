@@ -1,39 +1,32 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
-import {
-  initializeComponentRef,
-  EventGroup,
-  IDisposable,
-  css,
-  getRTL,
-  getId,
-  KeyCodes,
-  classNamesFunction,
-} from '../../Utilities';
-import {
-  IColumn,
-  IDetailsHeaderBaseProps,
-  IColumnDragDropDetails,
-  ColumnDragEndLocation,
-  CheckboxVisibility,
-} from './DetailsList.types';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { initializeComponentRef, EventGroup, css, getRTL, getId, KeyCodes, classNamesFunction } from '../../Utilities';
+import { ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon, FontIcon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { ITooltipHostProps } from '../../Tooltip';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { IDragDropOptions, DragDropHelper } from '../../DragDrop';
-import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
-import {
-  SelectAllVisibility,
+import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
+import { DragDropHelper } from '../../DragDrop';
+import { DetailsColumn } from '../../components/DetailsList/DetailsColumn';
+import { SelectAllVisibility } from './DetailsHeader.types';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IDisposable } from '../../Utilities';
+import type { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails } from './DetailsList.types';
+import type { IFocusZone } from '../../FocusZone';
+import type { ITooltipHostProps } from '../../Tooltip';
+import type { ISelection } from '../../Selection';
+import type { IDragDropOptions } from '../../DragDrop';
+import type { IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
+import type {
   IDropHintDetails,
   IColumnReorderHeaderProps,
   IDetailsHeaderState,
+  IDetailsHeaderStyleProps,
+  IDetailsHeaderStyles,
+  IDetailsHeader,
 } from './DetailsHeader.types';
-import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
@@ -227,7 +220,7 @@ export class DetailsHeaderBase
               <div
                 key="__checkbox"
                 className={classNames.cellIsCheck}
-                aria-labelledby={`${this._id}-check`}
+                aria-labelledby={`${this._id}-checkTooltip`}
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
@@ -245,15 +238,6 @@ export class DetailsHeaderBase
                           selectionMode === SelectionMode.multiple
                             ? ariaLabelForSelectAllCheckbox
                             : ariaLabelForSelectionColumn
-                        }
-                        aria-describedby={
-                          !isCheckboxHidden
-                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
-                              ? `${this._id}-checkTooltip`
-                              : undefined
-                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
-                            ? `${this._id}-checkTooltip`
-                            : undefined
                         }
                         data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}

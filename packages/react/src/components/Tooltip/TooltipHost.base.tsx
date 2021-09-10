@@ -12,15 +12,10 @@ import {
   classNamesFunction,
   KeyCodes,
 } from '../../Utilities';
-import {
-  ITooltipHostProps,
-  TooltipOverflowMode,
-  ITooltipHostStyles,
-  ITooltipHostStyleProps,
-  ITooltipHost,
-} from './TooltipHost.types';
+import { TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
+import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 
 export interface ITooltipHostState {
   isAriaPlaceholderRendered: boolean;
@@ -44,6 +39,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   private _dismissTimerId: number;
   private _openTimerId: number;
   private _defaultTooltipId = getId('tooltip');
+  private _ignoreNextFocusEvent: boolean;
 
   // Constructor
   constructor(props: ITooltipHostProps) {
@@ -69,6 +65,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       directionalHintForRTL,
       hostClassName: className,
       id,
+      // eslint-disable-next-line deprecation/deprecation
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
@@ -93,11 +90,13 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       <div
         className={this._classNames.root}
         ref={this._tooltipHost}
-        {...{ onFocusCapture: this._onTooltipMouseEnter }}
-        {...{ onBlurCapture: this._hideTooltip }}
+        {...{ onFocusCapture: this._onTooltipFocus }}
+        {...{ onBlurCapture: this._onTooltipBlur }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
         onKeyDown={this._onTooltipKeyDown}
+        role="none"
+        // WARNING: aria-describedby on this node provides no value, since it isn't allowed generic elements
         aria-describedby={ariaDescribedBy}
       >
         {children}
@@ -120,7 +119,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
           />
         )}
         {isAriaPlaceholderRendered && (
-          <div id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
+          <div id={tooltipId} role="none" style={hiddenContentStyle as React.CSSProperties}>
             {content}
           </div>
         )}
@@ -164,6 +163,27 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     }
 
     return this._tooltipHost.current;
+  };
+
+  private _onTooltipFocus = (ev: React.FocusEvent<HTMLElement>) => {
+    if (this._ignoreNextFocusEvent) {
+      this._ignoreNextFocusEvent = false;
+      return;
+    }
+
+    this._onTooltipMouseEnter(ev);
+  };
+
+  private _onTooltipBlur = (ev: React.FocusEvent<HTMLElement>) => {
+    // The focused element gets a blur event when the document loses focus
+    // (e.g. switching tabs in the browser), but we don't want to show the
+    // tooltip again when the document gets focus back. Handle this case by
+    // checking if the blurred element is still the document's activeElement,
+    // and ignoring when it next gets focus back.
+    // See https://github.com/microsoft/fluentui/issues/13541
+    this._ignoreNextFocusEvent = document?.activeElement === ev.target;
+
+    this._hideTooltip();
   };
 
   // Show Tooltip

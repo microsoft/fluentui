@@ -2,6 +2,7 @@ import { TestObject, IsConformantOptions } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
 import { getComponent } from './utils/getComponent';
+import { getCallbackArguments } from './utils/getCallbackArguments';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import parseDocblock from './utils/parseDocblock';
@@ -10,6 +11,8 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as path from 'path';
 import consoleUtil from './utils/consoleUtil';
+
+const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -243,8 +246,7 @@ export const defaultTests: TestObject = {
     it(`is exported at top-level (exported-top-level)`, () => {
       try {
         const { displayName, componentPath, Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const indexFile = require(path.join(rootPath, 'src', 'index'));
+        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
 
         expect(indexFile[displayName]).toBe(Component);
       } catch (e) {
@@ -262,8 +264,7 @@ export const defaultTests: TestObject = {
     it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
       try {
         const { displayName, componentPath, Component } = testInfo;
-        const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const topLevelFile = require(path.join(rootPath, 'src', displayName));
+        const topLevelFile = require(path.join(getPackagePath(componentPath), 'src', displayName));
 
         expect(topLevelFile[displayName]).toBe(Component);
       } catch (e) {
@@ -316,7 +317,7 @@ export const defaultTests: TestObject = {
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
 
       const invalidProps = propNames.filter(propName => {
-        if (!ignoreProps.includes(propName) && /^on(?!Render[A-Z])[A-Z]/.test(propName)) {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
           const words = propName.slice(2).match(/[A-Z][a-z]+/g);
           if (words) {
             // Make sure last word doesn't end with ed
@@ -331,6 +332,60 @@ export const defaultTests: TestObject = {
         expect(invalidProps).toEqual([]);
       } catch (e) {
         throw new Error(defaultErrorMessages['consistent-callback-names'](testInfo, invalidProps));
+      }
+    });
+  },
+
+  /** Ensures that components have consistent callback arguments (ev, data) */
+  'consistent-callback-args': (componentInfo, testInfo, tsProgram) => {
+    it('has consistent custom callback arguments (consistent-callback-args)', () => {
+      const { testOptions = {} } = testInfo;
+
+      const propNames = Object.keys(componentInfo.props);
+      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+
+      const invalidProps = propNames.filter(propName => {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+          const propInfo = componentInfo.props[propName];
+
+          if (!propInfo.declarations) {
+            throw new Error(
+              [
+                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
+
+          if (propInfo.declarations.length !== 1) {
+            throw new Error(
+              [
+                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+                `"react-docgen-typescript".`,
+                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+                'where it happens and used interfaces.',
+              ].join(' '),
+            );
+          }
+
+          const rootFileName = propInfo.declarations[0].fileName;
+          const typeName = propInfo.declarations[0].name;
+
+          const handlerArguments = getCallbackArguments(tsProgram, rootFileName, typeName, propName);
+
+          if (Object.keys(handlerArguments).length !== 2) {
+            return true;
+          }
+        }
+
+        return false;
+      });
+
+      try {
+        expect(invalidProps).toEqual([]);
+      } catch (e) {
+        throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
       }
     });
   },
@@ -461,3 +516,9 @@ export const defaultTests: TestObject = {
     });
   },
 };
+
+function getPackagePath(componentPath: string) {
+  // Use lastIndexOf in case anyone has all their repos under a folder called "src" (it happens)
+  const srcIndex = componentPath.replace(/\\/g, '/').lastIndexOf('/src/');
+  return componentPath.slice(0, srcIndex);
+}

@@ -1,20 +1,27 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
+import type {
+  CompoundButtonProps,
+  CompoundButtonShorthandPropsCompat,
+  CompoundButtonState,
+} from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['children', 'contentContainer', 'icon', 'secondaryContent'] as const;
+export const compoundButtonShorthandPropsCompat: CompoundButtonShorthandPropsCompat[] = [
+  'contentContainer',
+  'icon',
+  'secondaryContent',
+];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<CompoundButtonState>({
-  deepMerge: compoundButtonShorthandProps,
+const mergeProps = makeMergeProps<CompoundButtonState>({
+  deepMerge: compoundButtonShorthandPropsCompat,
 });
 
 /**
- * Given user props, returns state and render function for a Button.
+ * Given user props, returns the final state for a CompoundButton.
  */
 export const useCompoundButton = (
   props: CompoundButtonProps,
@@ -27,13 +34,15 @@ export const useCompoundButton = (
       as: 'button',
       // Slots inherited from Button
       icon: { as: 'span' },
-      loader: { as: 'span' },
       // Slots exclusive to CompoundButton
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
+      // Non-slot props
+      size: 'medium',
+      type: 'button', // This is added because the default for type is 'submit'
     },
-    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandProps),
-    resolveShorthandProps(props, compoundButtonShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
+    resolveShorthandProps(props, compoundButtonShorthandPropsCompat),
   );
 
   useButtonState(state);

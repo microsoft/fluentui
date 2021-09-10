@@ -1,11 +1,13 @@
-import { isConformant as baseIsConformant, IsConformantOptions } from '@fluentui/react-conformance';
+import { isConformant as baseIsConformant, IsConformantOptions, TestObject } from '@fluentui/react-conformance';
+import makeStylesTests from '@fluentui/react-conformance-make-styles';
 
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
-    disabledTests: ['has-docblock', 'kebab-aria-attributes'],
+    asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
+    extraTests: makeStylesTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

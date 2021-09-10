@@ -384,6 +384,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
   class="ms-ComboBox-container "
 >
   <div
+    aria-owns="ComboBox0-list"
     class=
         ms-ComboBox
         is-open
@@ -505,8 +506,8 @@ exports[`ComboBox Renders correctly when open 1`] = `
     <input
       aria-activedescendant="ComboBox0-list3"
       aria-autocomplete="both"
+      aria-controls="ComboBox0-list"
       aria-expanded="true"
-      aria-owns="ComboBox0-list"
       autocapitalize="off"
       autocomplete="off"
       class=
@@ -769,7 +770,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
               class="ms-ComboBox-optionsContainerWrapper "
             >
               <div
-                aria-labelledby="ComboBox0-label"
                 class=
                     ms-ComboBox-optionsContainer
                     {
@@ -978,7 +978,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   role="separator"
                 />
                 <button
-                  aria-selected="false"
+                  aria-selected="true"
                   class=
                       ms-Button
                       ms-Button--action
@@ -995,7 +995,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         border-width: 1px;
                         border: 1px solid transparent;
                         box-sizing: border-box;
-                        color: #201f1e;
+                        color: #000000;
                         cursor: pointer;
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1151,6 +1151,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
   class="ms-ComboBox-container "
 >
   <div
+    aria-owns="ComboBox0-list"
     class=
         ms-ComboBox
         is-open
@@ -1272,8 +1273,8 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
     <input
       aria-activedescendant="ComboBox0-list3"
       aria-autocomplete="both"
+      aria-controls="ComboBox0-list"
       aria-expanded="true"
-      aria-owns="ComboBox0-list"
       autocapitalize="off"
       autocomplete="off"
       class=
@@ -1537,7 +1538,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               class="ms-ComboBox-optionsContainerWrapper "
             >
               <div
-                aria-labelledby="ComboBox0-label"
                 class=
                     ms-ComboBox-optionsContainer
                     {
@@ -1668,7 +1668,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   title="Option 1"
                 >
                   <input
-                    aria-checked="false"
                     aria-selected="false"
                     class=
 
@@ -1883,7 +1882,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   title="Option 2"
                 >
                   <input
-                    aria-checked="true"
                     aria-selected="true"
                     checked=""
                     class=

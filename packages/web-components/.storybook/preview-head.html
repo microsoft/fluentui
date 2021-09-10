@@ -2,15 +2,18 @@
   html,
   body,
   #root {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+    margin: 8px;
     height: 100%;
+    background: var(--fill-color);
   }
-
-  fluent-design-system-provider {
-    flex-grow: 1;
-    overflow: auto;
-    padding: calc(var(--design-unit) * 2px);
+  #root > h1,
+  #root > h2,
+  #root > h3,
+  #root > h4,
+  #root > h5,
+  #root > h6,
+  #root > p,
+  #root > span {
+    color: var(--neutral-foreground-rest);
   }
 </style>

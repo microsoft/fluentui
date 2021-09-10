@@ -1,7 +1,12 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { LinkState } from './Link.types';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
+import type { LinkState } from './Link.types';
 
 const useStyles = makeStyles({
+  focusIndicator: createFocusIndicatorStyleRule({
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'double',
+  }),
   // Common styles.
   root: tokens => ({
     backgroundColor: 'transparent',
@@ -81,6 +86,7 @@ export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
+    styles.focusIndicator,
     state.href && styles.href,
     state.secondary && styles.secondary,
     state.inline && styles.inline,

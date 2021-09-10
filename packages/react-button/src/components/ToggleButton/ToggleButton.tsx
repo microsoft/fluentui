@@ -1,27 +1,16 @@
 import * as React from 'react';
-import { ToggleButtonProps, ToggleButtonStyleSelectors } from './ToggleButton.types';
 import { renderToggleButton } from './renderToggleButton';
 import { useToggleButton } from './useToggleButton';
 import { useToggleButtonStyles } from './useToggleButtonStyles';
+import type { ToggleButtonProps } from './ToggleButton.types';
 
 /**
- * Define a styled ToggleButton, using the `useToggleButton` hook.
- * {@docCategory Button}
+ * ToggleButtons are buttons that toggle between two defined states when triggered.
  */
 export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((props, ref) => {
   const state = useToggleButton(props, ref);
 
-  const styleSelectors: ToggleButtonStyleSelectors = {
-    checked: state.checked,
-    disabled: state.disabled,
-    iconOnly: state.iconOnly,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useToggleButtonStyles(state, styleSelectors);
+  useToggleButtonStyles(state);
 
   return renderToggleButton(state);
 });

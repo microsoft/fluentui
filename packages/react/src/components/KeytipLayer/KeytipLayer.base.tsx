@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from './KeytipLayer.types';
 import { getLayerStyles } from './KeytipLayer.styles';
-import { Keytip, IKeytipProps } from '../../Keytip';
+import { Keytip } from '../../Keytip';
 import { Layer } from '../../Layer';
 import {
   classNamesFunction,
@@ -16,19 +15,18 @@ import {
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
-import { IKeytipTreeNode } from './IKeytipTreeNode';
 import {
   ktpTargetFromId,
   ktpTargetFromSequences,
   sequencesToID,
   mergeOverflows,
 } from '../../utilities/keytips/KeytipUtils';
-import {
-  transitionKeysContain,
-  KeytipTransitionModifier,
-  IKeytipTransitionKey,
-} from '../../utilities/keytips/IKeytipTransitionKey';
+import { transitionKeysContain } from '../../utilities/keytips/IKeytipTransitionKey';
 import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
+import type { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from './KeytipLayer.types';
+import type { IKeytipProps } from '../../Keytip';
+import type { IKeytipTreeNode } from './IKeytipTreeNode';
+import type { KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -199,7 +197,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     } else if (transitionKeysContain(this.props.keytipStartSequences!, transitionKey) && !currKtp) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
       this._keyHandled = true;
-      this._enterKeytipMode();
+      this._enterKeytipMode(transitionKey);
       this._warnIfDuplicateKeytips();
     }
   }
@@ -287,7 +285,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   /**
    * Enters keytip mode for this layer
    */
-  private _enterKeytipMode(): void {
+  private _enterKeytipMode(transitionKey?: IKeytipTransitionKey): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
       if (this._keytipManager.delayUpdatingKeytipChange) {
         this._buildTree();
@@ -300,7 +298,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       this._setInKeytipMode(true /* inKeytipMode */);
 
       if (this.props.onEnterKeytipMode) {
-        this.props.onEnterKeytipMode();
+        this.props.onEnterKeytipMode(transitionKey);
       }
     }
   }

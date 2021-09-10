@@ -5,12 +5,18 @@
 ```ts
 
 import type { MakeStylesStyleRule } from '@fluentui/make-styles';
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
 import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public (undocumented)
-export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>) => MakeStylesStyleRule<Theme>;
+export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>, options?: CreateFocusIndicatorStyleRuleOptions) => MakeStylesStyleRule<Theme>;
+
+// @public (undocumented)
+export interface CreateFocusIndicatorStyleRuleOptions {
+    // (undocumented)
+    selector?: 'focus' | 'focus-within';
+}
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -19,13 +25,16 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions 
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal';
     circular?: boolean;
+    memorizeCurrent?: boolean;
 }
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
-    findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
-    findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
+    findAllFocusable: (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement) => HTMLElement | null | undefined;
 };
 
 // @public
@@ -45,7 +54,6 @@ export interface UseModalAttributesOptions {
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
-
 
 // (No @packageDocumentation comment for this package)
 

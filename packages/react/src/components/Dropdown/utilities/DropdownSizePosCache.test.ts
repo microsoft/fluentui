@@ -1,5 +1,6 @@
 import { DropdownSizePosCache } from './DropdownSizePosCache';
-import { IDropdownOption, DropdownMenuItemType } from '../Dropdown.types';
+import { DropdownMenuItemType } from '../Dropdown.types';
+import type { IDropdownOption } from '../Dropdown.types';
 
 const pureOptions: IDropdownOption[] = [
   { key: 'A', text: 'Option a' },

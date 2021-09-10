@@ -3,10 +3,11 @@ const popoverContentSelector = '[role="dialog"]';
 const popoverStoriesTitle = 'Components/Popover';
 
 const popoverDefaultStory = 'Default';
-const popoverAnchorToTargetStory = 'AnchorToTarget';
-const popoverControlledStory = 'Controlled';
-const popoverWithCustomTriggerStory = 'WithCustomTrigger';
+const popoverAnchorToTargetStory = 'AnchorToCustomTarget';
+const popoverControlledStory = 'ControllingOpenAndClose';
+const popoverWithCustomTriggerStory = 'CustomTrigger';
 const popoverNestedStory = 'NestedPopovers';
+const popoverUpdateContentStory = 'InternalUpdateContent';
 
 describe('Popover', () => {
   before(() => {
@@ -134,6 +135,20 @@ describe('Popover', () => {
       cy.get(popoverContentSelector).should('have.length', 1);
       cy.focused().realPress('Escape');
       cy.get(popoverContentSelector).should('not.exist');
+    });
+  });
+
+  describe('updating content', () => {
+    it('should not close popover', () => {
+      cy.loadStory(popoverStoriesTitle, popoverUpdateContentStory)
+        .get(popoverTriggerSelector)
+        .click()
+        .get(popoverContentSelector)
+        .within(() => {
+          cy.get('button').click();
+        })
+        .get(popoverContentSelector)
+        .should('exist');
     });
   });
 });

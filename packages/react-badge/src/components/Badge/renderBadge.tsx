@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import { BadgeState } from './Badge.types';
-import { badgeShorthandProps } from './useBadge';
+import { getSlotsCompat } from '@fluentui/react-utilities';
+import { badgeShorthandPropsCompat } from './useBadge';
+import type { BadgeState } from './Badge.types';
 
 export const renderBadge = (state: BadgeState) => {
-  const { slots, slotProps } = getSlots(state, badgeShorthandProps);
+  const { slots, slotProps } = getSlotsCompat(state, badgeShorthandPropsCompat);
 
   return (
     <slots.root {...slotProps.root}>

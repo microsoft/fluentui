@@ -1,21 +1,29 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
-export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface MenuListCommons {
   /**
    * Callback when checked items change for value with a name
    *
-   * @param name - the name of the value
-   * @param checkedItems - the items for this value that are checked
+   * @param event - React's original SyntheticEvent
+   * @param data - A data object with relevant information
    */
-  onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
+  onCheckedValueChange?: (
+    e: React.MouseEvent | React.KeyboardEvent,
+    data: {
+      /** The name of the value */
+      name: string;
+      /** The items for this value that are checked */
+      checkedItems: string[];
+    },
+  ) => void;
 
   /**
    * Map of all checked values
    */
-  checkedValues?: Record<string, string[]>;
+  checkedValues: Record<string, string[]>;
 
   /**
    * Default values to be checked on mount
@@ -33,16 +41,17 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
   hasCheckmarks?: boolean;
 }
 
-export interface MenuListState extends MenuListProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
+export type MenuListSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
 
+export interface MenuListProps extends ComponentProps<MenuListSlots>, Partial<MenuListCommons> {}
+
+export interface MenuListState extends ComponentState<MenuListSlots>, MenuListCommons {
   /**
    * Callback to set focus on the next menu item by first character
    */
-  setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
+  setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
 
   /*
    * Toggles the state of a checkbox item
@@ -54,3 +63,11 @@ export interface MenuListState extends MenuListProps {
    */
   selectRadio: SelectableHandler;
 }
+
+export interface MenuListContextValues {
+  menuList: MenuListContextValue;
+}
+
+export interface UninitializedMenuListState
+  extends Omit<MenuListState, 'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'>,
+    Partial<Pick<MenuListState, 'checkedValues'>> {}

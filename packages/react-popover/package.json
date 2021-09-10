@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-popover",
-  "version": "9.0.0-alpha.3",
+  "version": "9.0.0-alpha.38",
   "description": "Popover component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,16 +18,19 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",
-    "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
+    "start": "yarn storybook",
+    "e2e": "e2e",
     "storybook": "start-storybook",
     "test": "jest",
-    "update-snapshots": "just-scripts jest -u"
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-popover/src && yarn docs"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.3.0",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.15",
-    "@fluentui/react-conformance": "^0.4.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.44",
+    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.37",
+    "@fluentui/react-conformance": "^0.5.0",
+    "@fluentui/react-conformance-make-styles": "^9.0.0-alpha.6",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -41,13 +44,13 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.0.0-alpha.10",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.39",
-    "@fluentui/react-portal": "^9.0.0-alpha.18",
-    "@fluentui/react-positioning": "^9.0.0-alpha.25",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.13",
-    "@fluentui/react-tabster": "^9.0.0-alpha.31",
-    "@fluentui/react-utilities": "^9.0.0-alpha.26",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.27",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.62",
+    "@fluentui/react-portal": "^9.0.0-alpha.44",
+    "@fluentui/react-positioning": "^9.0.0-alpha.50",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
+    "@fluentui/react-tabster": "^9.0.0-alpha.56",
+    "@fluentui/react-utilities": "^9.0.0-alpha.44",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

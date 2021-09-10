@@ -1,9 +1,10 @@
-import { makeStyles as vanillaMakeStyles, MakeStylesOptions, MakeStylesStyleRule } from '@fluentui/make-styles';
+import { makeStyles as vanillaMakeStyles } from '@fluentui/make-styles';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { Theme } from '@fluentui/react-theme';
 import * as React from 'react';
 
 import { useRenderer } from './RendererContext';
+import type { MakeStylesOptions, MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { Theme } from '@fluentui/react-theme';
 
 function isInsideComponent() {
   try {
@@ -15,7 +16,7 @@ function isInsideComponent() {
   }
 }
 
-export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
+export function makeStyles<Slots extends string | number>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
   const getStyles = vanillaMakeStyles(stylesBySlots);
 
   if (process.env.NODE_ENV !== 'production') {

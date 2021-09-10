@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Badge}
@@ -19,7 +19,20 @@ export type BadgeShape = 'rounded' | 'square' | 'circular';
 /**
  * {@docCategory Badge}
  */
-export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export type BadgeColors =
+  | 'brand'
+  | 'danger'
+  | 'severe'
+  | 'warning'
+  | 'success'
+  | 'important'
+  | 'informative'
+  | 'subtle';
+
+/**
+ * {@docCategory Badge}
+ */
+export interface BadgeProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * A Badge can be sized.
    * @defaultvalue medium
@@ -39,9 +52,15 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   appearance?: BadgeAppearance;
 
   /**
+   * A Badge has a preset of colors
+   * @defaultvalue filled
+   */
+  color?: BadgeColors;
+
+  /**
    * Icon slot
    */
-  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Position for Icon to be rendered
@@ -61,5 +80,5 @@ export interface BadgeState extends BadgeProps {
   /**
    * Icon slot when processed by internal state
    */
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  icon?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
 }

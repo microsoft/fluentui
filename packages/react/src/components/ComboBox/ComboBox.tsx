@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Autofill, IAutofill } from '../../Autofill';
+import { Autofill } from '../../Autofill';
 import {
   initializeComponentRef,
   css,
@@ -19,24 +19,27 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
-  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
-import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
-import {
+import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
+import { Label } from '../../Label';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
+import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IAutofill } from '../../Autofill';
+import type { IRenderFunction } from '../../Utilities';
+import type { IComboBoxClassNames } from './ComboBox.classNames';
+import type {
   IComboBoxOption,
   IComboBoxOptionStyles,
   IComboBoxProps,
   IOnRenderComboBoxLabelProps,
   IComboBox,
 } from './ComboBox.types';
-import { Label } from '../../Label';
-import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
-import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../Button';
-import { ICalloutProps } from '../../Callout';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IButtonStyles } from '../../Button';
+import type { ICalloutProps } from '../../Callout';
 
 export interface IComboBoxState {
   /** The open state */
@@ -269,6 +272,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       text: 'defaultSelectedKey',
       selectedKey: 'value',
       dropdownWidth: 'useComboBoxAsMenuWidth',
+      ariaLabel: 'label',
     });
 
     this._id = props.id || getId('ComboBox');
@@ -567,6 +571,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         ref={this._comboBoxWrapper}
         id={this._id + 'wrapper'}
         className={this._classNames.root}
+        aria-owns={isOpen ? this._id + '-list' : undefined}
       >
         <Autofill
           data-ktp-execute-target={true}
@@ -594,7 +599,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={this._getAriaActiveDescendantValue()}
           aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._id + '-list' : undefined}
+          aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
@@ -1265,6 +1270,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _onLayerMounted = () => {
     this._onCalloutLayerMounted();
 
+    // need to call this again here to get the correct scroll parent dimensions
+    // when the callout is first opened
+    this._async.setTimeout(() => {
+      this._scrollIntoView();
+    }, 0);
+
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
     }
@@ -1289,14 +1300,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   // Render List of items
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem, options } = props;
+    const { onRenderItem, options, label, ariaLabel } = props;
 
     const id = this._id;
     return (
       <div
         id={id + '-list'}
         className={this._classNames.optionsContainer}
-        aria-labelledby={id + '-label'}
+        aria-labelledby={label && id + '-label'}
+        aria-label={ariaLabel && !label ? ariaLabel : undefined}
         role="listbox"
       >
         {options.map(item => onRenderItem?.(item, this._onRenderItem))}
@@ -1374,7 +1386,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
           // aria-selected should only be applied to checked items, not hovered items
-          aria-selected={isChecked ? 'true' : 'false'}
+          aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
@@ -1439,7 +1451,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * we do not have a valid index and we currently have a pending input value,
    * otherwise use the selected index
    * */
-  private _isOptionSelected(index: number | undefined): boolean {
+  private _isOptionHighlighted(index: number | undefined): boolean {
     const { currentPendingValueValidIndexOnHover } = this.state;
 
     // If the hover state is set to clearAll, don't show a selected index.
@@ -1448,7 +1460,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return false;
     }
 
-    return this._getPendingSelectedIndex(true /* includePendingValue */) === index ? true : false;
+    return currentPendingValueValidIndexOnHover >= 0
+      ? currentPendingValueValidIndexOnHover === index
+      : this._isOptionSelected(index);
+  }
+
+  private _isOptionSelected(index: number | undefined): boolean {
+    return this._getPendingSelectedIndex(true /* includePendingValue */) === index;
   }
 
   private _isOptionChecked(index: number | undefined): boolean {
@@ -1462,17 +1480,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   /**
-   * Gets the pending selected index taking into account hover, valueValidIndex, and selectedIndex
+   * Gets the pending selected index taking into account valueValidIndex and selectedIndex
    * @param includeCurrentPendingValue - Should we include the currentPendingValue when
    * finding the index
    */
   private _getPendingSelectedIndex(includeCurrentPendingValue: boolean): number {
-    const { currentPendingValueValidIndexOnHover, currentPendingValueValidIndex, currentPendingValue } = this.state;
+    const { currentPendingValueValidIndex, currentPendingValue } = this.state;
 
-    return currentPendingValueValidIndexOnHover >= 0
-      ? currentPendingValueValidIndexOnHover
-      : currentPendingValueValidIndex >= 0 ||
-        (includeCurrentPendingValue && currentPendingValue !== null && currentPendingValue !== undefined)
+    return currentPendingValueValidIndex >= 0 ||
+      (includeCurrentPendingValue && currentPendingValue !== null && currentPendingValue !== undefined)
       ? currentPendingValueValidIndex
       : this.props.multiSelect
       ? 0
@@ -2158,6 +2174,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       customStylesForCurrentOption,
       this._isPendingOption(item),
       item.hidden,
+      this._isOptionHighlighted(item.index),
     );
   }
 

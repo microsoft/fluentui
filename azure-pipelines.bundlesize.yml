@@ -5,9 +5,54 @@ trigger:
   - master
 
 variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
   - template: .devops/templates/variables.yml
 
 jobs:
+  - job: bundlesize
+    workspace:
+      clean: all
+    pool: 'Self Host Ubuntu'
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn lage bundle-size --no-cache --verbose $(sinceArg)
+        displayName: build packages & create reports
+
+      - script: |
+          yarn bundle-size compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
+        displayName: compare bundle size with base (PR only)
+        condition: eq(variables.isPR, true)
+
+      - task: GithubPRComment@0
+        displayName: Post results to PR (PR only)
+        condition: eq(variables.isPR, true)
+        inputs:
+          githubOwner: microsoft
+          githubRepo: 'fluentui'
+          blobFilePath: 'packages/bundle-size/dist/bundle-size.md'
+          status: 'success'
+          uniqueId: 'bundleSizeComment9423'
+
+      - script: |
+          yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+        displayName: upload a report (base only)
+        condition: eq(variables.isPR, false)
+        env:
+          # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
+          BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
+
+      - template: .devops/templates/cleanup.yml
+
   - job: build_react
     workspace:
       clean: all
@@ -43,44 +88,6 @@ jobs:
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop-react
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: build_converged
-    workspace:
-      clean: all
-    timeoutInMinutes: 75
-    pool: 'Self Host Ubuntu'
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: yarn build --to @fluentui/react-components --no-cache
-        displayName: yarn build to @fluentui/react-components
-
-      - script: yarn workspace test-bundles bundle:size
-        displayName: yarn bundle test-bundles
-        env:
-          PACKAGE: '@fluentui/react-components'
-
-      - script: yarn bundlesizecollect
-        displayName: 'Collate Bundle Size Information'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
-          ArtifactName: bundlesize-converged
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist'
-          ArtifactName: distdrop-converged
 
       - template: .devops/templates/cleanup.yml
 
@@ -127,7 +134,6 @@ jobs:
       vmImage: 'windows-2019'
     dependsOn:
       - build_northstar
-      - build_converged
       - build_react
     steps:
       - checkout: none
@@ -139,12 +145,6 @@ jobs:
           targetPath: '$(Build.ArtifactStagingDirectory)/react'
 
       - task: DownloadPipelineArtifact@2
-        displayName: 'Download Pipeline Artifact: @fluentui/react-components'
-        inputs:
-          artifactName: 'bundlesize-converged'
-          targetPath: '$(Build.ArtifactStagingDirectory)/react-converged'
-
-      - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact: @fluentui/react-northstar'
         inputs:
           artifactName: 'bundlesize-northstar'
@@ -153,7 +153,7 @@ jobs:
       - script: 'chocolatey install jq'
         displayName: 'Install jq'
 
-      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-converged/bundlesize.json $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
+      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
         displayName: 'Merge @fluentui/react, @fluentui/react-components & @fluentui/react-northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1

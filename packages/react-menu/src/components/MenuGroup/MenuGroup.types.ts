@@ -1,19 +1,26 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { MenuGroupContextValue } from '../../contexts/menuGroupContext';
+
+export type MenuGroupSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
 
 /**
  * {@docCategory MenuGroup}
  */
-export type MenuGroupProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export interface MenuGroupProps extends ComponentProps<MenuGroupSlots> {}
 
 /**
  * {@docCategory MenuGroup}
  */
-export interface MenuGroupState extends MenuGroupProps {
-  ref: React.MutableRefObject<HTMLElement>;
-
+export interface MenuGroupState extends ComponentState<MenuGroupSlots> {
   /**
    * id applied to the DOM element of `MenuGroupHeader`
    */
   headerId: string;
+}
+
+export interface MenuGroupContextValues {
+  menuGroup: MenuGroupContextValue;
 }

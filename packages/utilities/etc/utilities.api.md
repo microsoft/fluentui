@@ -11,10 +11,10 @@ import { findElementRecursive } from '@fluentui/dom-utilities';
 import { getChildren } from '@fluentui/dom-utilities';
 import { getParent } from '@fluentui/dom-utilities';
 import { getVirtualParent } from '@fluentui/dom-utilities';
-import { IProcessedStyleSet } from '@fluentui/merge-styles';
+import type { IProcessedStyleSet } from '@fluentui/merge-styles';
 import { IStyleFunction } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
-import { IStyleSet } from '@fluentui/merge-styles';
+import type { IStyleSet } from '@fluentui/merge-styles';
 import { isVirtualElement } from '@fluentui/dom-utilities';
 import { IVirtualElement } from '@fluentui/dom-utilities';
 import { Omit as Omit_2 } from '@fluentui/merge-styles';
@@ -80,7 +80,7 @@ export class Async {
         leading?: boolean;
         trailing?: boolean;
     }): T;
-    }
+}
 
 // @public
 export const audioProperties: Record<string, number>;
@@ -90,7 +90,7 @@ export class AutoScroll {
     constructor(element: HTMLElement);
     // (undocumented)
     dispose(): void;
-    }
+}
 
 // @public @deprecated
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React_2.Component<TProps, TState> {
@@ -205,7 +205,7 @@ export class DelayedRender extends React_2.Component<IDelayedRenderProps, IDelay
     };
     // (undocumented)
     render(): React_2.ReactElement<{}> | null;
-    }
+}
 
 // @public
 export function disableBodyScroll(): void;
@@ -242,7 +242,7 @@ export class EventGroup {
     raise(eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
     // (undocumented)
     static stopPropagation(event: any): void;
-    }
+}
 
 // @public
 export function extendComponent<T extends React_2.Component>(parent: T, methods: {
@@ -260,7 +260,7 @@ export class FabricPerformance {
     //
     // (undocumented)
     static summary: IPerfSummary;
-    }
+}
 
 // @public
 export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]): any;
@@ -858,6 +858,7 @@ export const KeyCodes: {
     seven: 55;
     eight: 56;
     nine: 57;
+    colon: 58;
     a: 65;
     b: 66;
     c: 67;
@@ -1099,8 +1100,7 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     toggleKeySelected(key: string): void;
     // (undocumented)
     toggleRangeSelected(fromIndex: number, count: number): void;
-    }
-
+}
 export { Selection_2 as Selection }
 
 // @public (undocumented)
@@ -1123,7 +1123,6 @@ enum SelectionMode_2 {
     // (undocumented)
     single = 1
 }
-
 export { SelectionMode_2 as SelectionMode }
 
 // @public
@@ -1230,7 +1229,6 @@ export function warnDeprecations<P>(componentName: string, props: P, deprecation
 
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -72,6 +72,7 @@ perf-test/ @microsoft/fluentui-react-build
 # todo-app/
 
 #### Packages
+packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-charting/ @Raghurk
 packages/react-date-time @lorejoh12 @evlevy
 packages/date-time-utilities @lorejoh12 @evlevy
@@ -89,13 +90,23 @@ packages/style-utilities/ @dzearing
 packages/style-utilities/src/interfaces/ @phkuo @dzearing
 packages/style-utilities/src/styles/ @phkuo @dzearing
 packages/theme/ @dzearing
-packages/react-theme-provider/ @dzearing
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @microsoft/cxe-red
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
-packages/make-styles/ @layershifter
-packages/react-make-styles/ @layershifter
+packages/make-styles/ @microsoft/teams-prg
+packages/react-make-styles/ @microsoft/teams-prg
+packages/react-aria/ @bsunderhus
+packages/babel-make-styles/ @microsoft/teams-prg
+packages/make-styles-webpack-loader/ @microsoft/teams-prg
+packages/react-conformance-make-styles/ @microsoft/teams-prg
+packages/jest-serializer-make-styles/ @microsoft/teams-prg
+packages/bundle-size/ @microsoft/teams-prg
+packages/react-shared-contexts/ @microsoft/teams-prg
+packages/react-context-selector/ @microsoft/teams-prg
+packages/react-tabster/ @microsoft/teams-prg
+packages/react-positioning/ @microsoft/teams-prg
+packages/react-theme/ @microsoft/teams-prg
 
 ### Fabric
 # common/
@@ -106,81 +117,71 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## Component packages
 packages/react-avatar/ @microsoft/cxe-red @behowell
-packages/react-menu/ @teams-prg
+packages/react-menu/ @microsoft/teams-prg
+packages/react-accordion/ @microsoft/teams-prg
 packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
-packages/react-cards/ @microsoft/cxe-red @khmakoto
+packages/react-card/ @microsoft/cxe-prg
 packages/react-checkbox/ @microsoft/cxe-red @khmakoto
-packages/react-components/ @layershifter @miroslavstastny
+packages/react-components/ @microsoft/teams-prg @microsoft/cxe-prg @microsoft/cxe-red
 packages/react-focus/ @microsoft/cxe-red @khmakoto
-packages/react-image/ @cxe-prg
-packages/react-storybook/ @cxe-prg @ling1726 @layershifter
-packages/storybook/ @cxe-prg @ling1726 @layershifter
+packages/react-image/ @microsoft/cxe-prg
+packages/react-text/ @microsoft/cxe-prg
+packages/react-input/ @microsoft/cxe-red @ecraig12345
+packages/react-storybook/ @microsoft/cxe-prg @microsoft/teams-prg
+packages/react-storybook-addon/ @microsoft/cxe-prg
+packages/storybook/ @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-link/ @microsoft/cxe-red @khmakoto
 packages/react-slider/ @microsoft/cxe-red
 packages/react-tabs/ @microsoft/cxe-red @behowell
-packages/react-toggle/ @microsoft/cxe-red @behowell
 packages/react-tooltip/ @microsoft/cxe-red @behowell
-packages/react-label/ @microsoft/cxe-red @sopranopillow
+packages/react-switch/ @microsoft/cxe-red @behowell @czearing
+packages/react-label/ @microsoft/cxe-red
+packages/react-portal/ @microsoft/teams-prg
+packages/react-popover/ @microsoft/teams-prg
+packages/react-provider/ @microsoft/teams-prg
 
 ## Components
+packages/react @microsoft/cxe-red
 packages/react/src/components/ActivityItem/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Announced/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Breadcrumb/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Button/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Calendar/ @lorejoh12 @pompomon
+packages/react/src/components/Calendar/ @lorejoh12
 packages/react/src/components/CalendarDayGrid/ @lorejoh12
-packages/react/src/components/Callout/ @microsoft/cxe-red
 packages/react/src/components/Check/ @microsoft/cxe-red @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/ChoiceGroup/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Coachmark/ @leddie24
+packages/react/src/components/Coachmark/ @microsoft/cxe-red @leddie24
 packages/react/src/components/ColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/ComboBox/ @microsoft/cxe-red
-packages/react/src/components/CommandBar/ @microsoft/cxe-red
-packages/react/src/components/ContextualMenu/ @microsoft/cxe-red
-packages/react/src/components/DatePicker/ @lorejoh12 @pompomon
+packages/react/src/components/DatePicker/ @lorejoh12
 packages/react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
-packages/react/src/components/Dialog/ @microsoft/cxe-red
-packages/react/src/components/DocumentCard/ @yiminwu
-packages/react/src/components/Dropdown/ @microsoft/cxe-red
-packages/react/src/components/Fabric/ @dzearing
-packages/react/src/components/Facepile/ @markionium @mtennoe
+packages/react/src/components/DocumentCard/ @microsoft/cxe-red @yiminwu
+packages/react/src/components/Fabric/ @microsoft/cxe-red @dzearing
+packages/react/src/components/Facepile/ @microsoft/cxe-red @markionium @mtennoe
 packages/react/src/components/FolderCover/ @microsoft/cxe-red @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/GroupedList/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/HoverCard/ @microsoft/cxe-red @Jahnp @Vitalius1
 packages/react/src/components/Icon/ @microsoft/cxe-red @dzearing @ecraig12345
-packages/react/src/components/Image/ @dzearing
+packages/react/src/components/Image/ @microsoft/cxe-red @dzearing
 packages/react/src/components/Label/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Layer/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/Link/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/List/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/MarqueeSelection/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/MessageBar/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Modal/ @microsoft/cxe-red
 packages/react/src/components/Nav/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/OverflowSet/ @microsoft/cxe-red
 packages/react/src/components/Overlay/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Panel/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Persona/ @markionium @mtennoe
-packages/react/src/components/PersonaCoin/ @mtennoe @markionium
-packages/react/src/components/Persona/PersonaConsts.tsx @mtennoe
-packages/react/src/components/pickers/ @microsoft/cxe-red
+packages/react/src/components/Persona/ @microsoft/cxe-red @markionium @mtennoe
+packages/react/src/components/PersonaCoin/ @microsoft/cxe-red @mtennoe @markionium
 packages/react/src/components/Pivot/ @microsoft/cxe-red @behowell
-packages/react/src/components/Popup/ @microsoft/cxe-red
-packages/react/src/components/ProgressIndicator/ @microsoft/cxe-red
-packages/react/src/components/Rating/ @microsoft/cxe-red
-packages/react/src/components/ResizeGroup/ @microsoft/cxe-red
 packages/react/src/components/SearchBox/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Separator/ @microsoft/cxe-red
 packages/react/src/components/Shimmer/ @microsoft/cxe-red @Vitalius1
-packages/react/src/components/Slider/ @microsoft/cxe-red
 packages/react/src/components/SpinButton/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/Spinner/ @microsoft/cxe-red
 packages/react/src/components/Stack/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/SwatchColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/TeachingBubble/ @microsoft/cxe-red
 packages/react/src/components/Text/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/TextField/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Toggle/ @microsoft/cxe-red @khmakoto
@@ -188,10 +189,9 @@ packages/react/src/components/Tooltip/ @microsoft/cxe-red @behowell
 packages/react/src/components/WeeklyDayPicker/ @lorejoh12
 
 ## Theming and styling
-packages/react/src/utilities/ThemeProvider @dzearing
+packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
 
 ## Experiments
-packages/react-experiments/src/components/Pagination/ @caradong
 packages/react-experiments/src/components/Signals/ @ThomasMichon
 packages/react-experiments/src/components/Tile/ @ThomasMichon
 packages/react-experiments/src/components/TileList/ @ThomasMichon

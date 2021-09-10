@@ -1,28 +1,31 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonState } from './Button.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from './useButtonState';
+import type { ButtonProps, ButtonShorthandPropsCompat, ButtonState } from './Button.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandProps = ['children', 'icon'] as const;
+export const buttonShorthandPropsCompat: ButtonShorthandPropsCompat[] = ['icon'];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<ButtonState>({ deepMerge: buttonShorthandProps });
+const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandPropsCompat });
 
 /**
- * Given user props, returns state and render function for a Button.
+ * Given user props, returns the final state for a Button.
  */
 export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps): ButtonState => {
   const state = mergeProps(
     {
       ref,
       as: 'button',
+      // Slots
       icon: { as: 'span' },
+      // Non-slot props
+      size: 'medium',
+      type: 'button', // This is added because the default for type is 'submit'
     },
-    defaultProps && resolveShorthandProps(defaultProps, buttonShorthandProps),
-    resolveShorthandProps(props, buttonShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, buttonShorthandPropsCompat),
+    resolveShorthandProps(props, buttonShorthandPropsCompat),
   );
 
   useButtonState(state);

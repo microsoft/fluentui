@@ -65,7 +65,7 @@ describe(`normalize-import`, () => {
     const utils = setup();
 
     expect(() => execSync(`node ${utils.scriptPath} --output some/nonexistent/path`, { stdio: 'pipe' })).toThrowError(
-      `some/nonexistent/path doesn't exist`,
+      /some[/\\]nonexistent[\\/]path doesn't exist/,
     );
   });
 

@@ -7,8 +7,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const FIXTURE_PATH = 'temp/fixtures/';
 
-function createWebpackConfig(entries) {
+function createWebpackConfig(entries, packageName) {
   return Object.keys(entries).map(entryName => {
+    /** @type {BundleAnalyzerPlugin.Options} */
     let anaylizerPluginOptions = {
       analyzerMode: 'static',
       reportFilename: entryName + '.stats.html',
@@ -29,7 +30,7 @@ function createWebpackConfig(entries) {
           modules: true,
 
           builtAt: false,
-          outputPath: false,
+          .../** @type {*} */ ({ outputPath: false }),
           namedChunkGroups: false,
           logging: false,
           children: false,
@@ -45,7 +46,7 @@ function createWebpackConfig(entries) {
       };
     }
 
-    return resources.createConfig(
+    const config = resources.createConfig(
       entryName,
       true,
       {
@@ -69,6 +70,11 @@ function createWebpackConfig(entries) {
       true,
       true,
     )[0];
+    if (packageName === '@fluentui/react-northstar') {
+      // This is used most of the configs for IE 11 compat, which northstar doesn't need
+      delete config.target;
+    }
+    return config;
   });
 }
 
@@ -94,64 +100,6 @@ function createFluentNorthstarFixtures() {
       } catch (err) {
         console.log(err);
       }
-    }
-  });
-}
-
-/**
- * Webpack will remove any unused import as a dead code (tree shaking).
- * Thus we are creating temporary JS files with top-level component imports
- * and console logging them. This will ensure that the code is active
- * and that webpack bundles it correctly.
- */
-function createFluentConvergedFixtures() {
-  const packageName = '@fluentui/react-components';
-
-  // Imports definition is temporary manual, we should find a better way and automate it
-  const imports = [
-    // components
-    'Accordion',
-    'Avatar',
-    'Badge',
-    'Button',
-    'CompoundButton',
-    'Divider',
-    'Image',
-    'Link',
-    'Menu',
-    'MenuButton',
-    'Portal',
-    'SplitButton',
-    'ToggleButton',
-    'Tooltip',
-
-    // Provider-related
-    'FluentProvider',
-    'useFluent',
-
-    // themes
-    'teamsLightTheme',
-    'webLightTheme',
-
-    // makeStyles
-    'mergeClasses',
-    'makeStyles',
-    'makeStaticStyles',
-    '__styles',
-
-    // utils
-    // 'usePopper',
-  ];
-
-  imports.forEach(importName => {
-    const importStatement = `import { ${importName} } from '${packageName}'; console.log(${importName})`;
-    try {
-      const folderName = getFolderName(packageName);
-      const entryPath = path.join(FIXTURE_PATH, folderName, `${importName}.js`);
-
-      fs.outputFileSync(entryPath, importStatement, 'utf-8');
-    } catch (err) {
-      console.log(err);
     }
   });
 }
@@ -238,7 +186,6 @@ function getFolderName(packageName) {
 module.exports = {
   buildEntries,
   buildEntry,
-  createFluentConvergedFixtures,
   createFluentNorthstarFixtures,
   createFluentReactFixtures,
   createEntry,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, Descendant } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export interface AccordionItemContextValue {
   open: boolean;
@@ -7,29 +7,31 @@ export interface AccordionItemContextValue {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
 }
 
-export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface AccordionItemContextValues {
+  accordionItem: AccordionItemContextValue;
+}
+
+export type AccordionItemSlots = {
+  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+};
+
+export interface AccordionItemCommons {
   /**
    * Disables opening/closing of panel
    */
-  disabled?: boolean;
+  disabled: boolean;
 }
 
-export interface AccordionItemState extends AccordionItemProps {
+export interface AccordionItemProps extends ComponentProps<AccordionItemSlots>, Partial<AccordionItemCommons> {
   /**
-   * Ref to the root slot
+   * required value that identifies this item inside an Accordion component
    */
-  ref: React.MutableRefObject<HTMLElement>;
-  context: AccordionItemContextValue;
-  /**
-   * Internal Context used by AccordionHeader and AccordionPanel communication
-   */
-  descendants: AccordionItemDescendant[];
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
+  value: AccordionItemValue;
 }
 
-export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
-  id: string;
-}
+export type AccordionItemValue = unknown;
+
+export interface AccordionItemState
+  extends ComponentState<AccordionItemSlots>,
+    AccordionItemCommons,
+    AccordionItemContextValue {}

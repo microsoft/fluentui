@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
-import { LinkState } from './Link.types';
+import { Enter, Space } from '@fluentui/keyboard-keys';
+import type { LinkState } from './Link.types';
 
 /**
  * The useLink hook processes the Link draft state.
@@ -12,8 +12,8 @@ export const useLinkState = (state: LinkState): LinkState => {
   const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     onKeyDownCallback?.(ev);
 
-    const keyCode = getCode(ev);
-    if (!ev.defaultPrevented && onClick && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    const key = ev.key;
+    if (!ev.defaultPrevented && onClick && (key === Enter || key === Space)) {
       // Translate the keydown enter/space to a click.
       ev.preventDefault();
       ev.stopPropagation();
@@ -57,7 +57,7 @@ export const useLinkState = (state: LinkState): LinkState => {
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
   state.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
-    if (disabled) {
+    if (disabled || disabledFocusable) {
       ev.preventDefault();
     } else {
       onClick?.(ev);
@@ -67,8 +67,8 @@ export const useLinkState = (state: LinkState): LinkState => {
   // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
   const { onKeyDown } = state;
   state.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
-    const keyCode = getCode(ev);
-    if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    const key = ev.key;
+    if ((disabled || disabledFocusable) && (key === Enter || key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {

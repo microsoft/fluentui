@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../../Utilities';
-import { IBeakProps } from './Beak.types';
-import { getStyles, IBeakStyles } from './Beak.styles';
-import { IBeakStylesProps } from './Beak.types';
+import { getStyles } from './Beak.styles';
 import { RectangleEdge } from '../../../Positioning';
+import type { IBeakProps, IBeakStylesProps } from './Beak.types';
+import type { IBeakStyles } from './Beak.styles';
 
 export const BEAK_HEIGHT = 10;
 export const BEAK_WIDTH = 18;

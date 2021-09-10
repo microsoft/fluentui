@@ -488,6 +488,23 @@ export const defaultErrorMessages = {
     });
   },
 
+  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: string[]) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: 'uses non-standard callback arguments.',
+      details: ['These callback(s) need have two params:', testErrorInfo(formatArray(invalidProps))],
+      suggestions: [
+        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks have two params (an event and data object).`,
+        `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
+          "testOptions['consistent-callback-args'].ignoreProps",
+        )}.`,
+      ],
+    });
+  },
+
   'as-renders-fc': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName } = testInfo;
     const { resolveInfo } = errorMessageColors;

@@ -1,5 +1,5 @@
-import { MenuButton } from './MenuButton';
 import { isConformant } from '../../common/isConformant';
+import { MenuButton } from './MenuButton';
 
 describe('MenuButton', () => {
   isConformant({

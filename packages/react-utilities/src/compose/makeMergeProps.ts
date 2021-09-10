@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { GenericDictionary } from './types';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type GenericDictionary = Record<string, any>;
 
 // TODO
 // css() function is temporary there, mergeClasses() should be used instead, but it's not possible now due possible
@@ -32,7 +33,7 @@ interface SerializableObject {
 type CssInput = string | SerializableObject | Dictionary | null | undefined | boolean;
 
 /**
- * Concatination helper, which can merge class names together. Skips over falsey values.
+ * Concatenation helper, which can merge class names together. Skips over falsey values.
  *
  * @public
  */
