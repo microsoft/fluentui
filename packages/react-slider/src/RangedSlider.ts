@@ -1,1 +1,1 @@
-// export * from './components/RangedSlider/index';
+export * from './components/RangedSlider/index';
