@@ -13,9 +13,61 @@ However, 1200 CSS variables in DOM affects browser performance. This RFC propose
 
 ## <a name="performance-analysis"></a>Performance analysis
 
-TBD
+The current theme consists of ~1200 tokens which are injected into DOM as CSS variables. It impacts not only Javascript performance but also browser performance in styles computation phase.
 
-## Proposed changes
+To see the performance impact we render 20 `FluentProvider` components side by side (**each** injecting a class with 1200 CSS variables) - mount and unmount 10 times and measure the performance in Chrome profiler with 6x CPU slowdown. After each mount, a CSS attribute is accessed to force reflow in order to be able to measure the rendering performance.
+
+### Master
+
+Current implementation in `@fluentui/react-theme@9.0.0-alpha.22`.
+
+- 1200 CSS variables in a theme = ~650 global tokens + ~550 alias tokens
+- alias token implemented as a "reference" to a global token: `--alias-token: var(--global-token)`.
+- **Each reflow takes ~150ms (1500 ms total for the 10 mounts)**
+
+![Flamechart - Master](theme-shape/perf-master.png)
+
+### Inline values to alias tokens.
+
+- Still the same 1200 CSS variables (650 global + 550 alias)
+- Instead of "referencing" global tokens in the alias tokens, inline the values: `--alias-token: #fff`.
+- **Each reflow takes ~90ms (1000 ms total for the 10 mounts)**
+
+![Flamechart - Inline values to alias tokens](theme-shape/perf-inline-alias.png)
+
+### Reduce number of tokens (CSS variables)
+
+- Removed global color tokens, number of CSS variables reduced to 550.
+- **Each reflow takes ~50ms (600 ms total for the 10 mounts)**
+
+![Flamechart - Reduce number of tokens](theme-shape/perf-no-global.png)
+
+### Remove even more tokens
+
+It seems that the rendering performance depends on the number of CSS variables in the DOM. This is an experiment to remove even more variables to verify the hypothesis.
+
+- Removed alias shared color tokens, number of CSS variables reduced to 160.
+- **Each reflow takes ~20ms (350 ms total for the 10 mounts)**
+
+![Flamechart - Remove even more tokens](theme-shape/perf-no-colors.png)
+
+### Hash CSS variables
+
+In inline aliases scenario, there are 1200 CSS variables with names like `--alias-color-neutral-neutralStrokeAccessibleHover`. The total string length of CSS variable names (including the leading `--`) is 39,252 characters - is that affecting the perf as well? We used 7-char hashes for variable names to check for any difference - this reduced the string length to 10,354 characters. There is no difference in the performance.
+
+- **Each reflow takes ~90ms (1000 ms total for the 10 mounts)**
+
+**The perf example intentionally uses precomputed hashes to keep the hash computation out of the measured code path.**
+
+![Flamechart - Hash CSS variables](theme-shape/perf-hash-variables.png)
+
+### Results Summary
+
+We also used flamegrill to compare the approaches. Inlined aliases is used as a baseline all other approaches are compared to. For each experiment we run the test 10 times for both the experiment and the baseline to get comparable numbers.
+
+![Flamegrill - Results Summary](theme-shape/perf-flamegrill.png)
+
+## Proposed changes to the theme shape
 
 1. [Inline values in alias tokens](#inline-alias)
 2. [Do not inject global color tokens as CSS variables](#no-global-tokens)
@@ -133,10 +185,11 @@ In Typescript the theme is represented by a deep object:
 theme.alias.colors.red.neutral;
 ```
 
-This brings the two following issues:
+This brings the three following issues:
 
 1. Engineers might struggle to find the expected token in the object.
 2. Theme merging is expensive as we need to merge deep objects.
+3. Insertion of CSS variables is more expensive as we need to flatten CSS variables in runtime (`flattenThemeToCSSVariables()`).
 
 **The proposal is to merge all the tokens to a single flat object**:
 
