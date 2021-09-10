@@ -805,7 +805,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
     if (processedItemPromiseLike && processedItemPromiseLike.then) {
       processedItemPromiseLike.then((resolvedProcessedItem: T | null) => {
-        if(resolvedProcessedItem === null) {
+        if (resolvedProcessedItem === null) {
           return;
         }
         const newItems: T[] = this.state.items.concat([resolvedProcessedItem]);
