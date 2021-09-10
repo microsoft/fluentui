@@ -32,16 +32,12 @@ setAddon({
     // V-Next stories
     if (this.kind.includes('Next') || config.provider === 'FluentProvider') {
       this.add(storyName, context => {
-        return (
-          <FluentProvider theme={webLightTheme} dir={'ltr'}>
-            {storyFn({ context })}
-          </FluentProvider>
-        );
+        return <FluentProvider theme={webLightTheme}>{storyFn({ context })}</FluentProvider>;
       });
       if (config.rtl) {
         this.add(storyName + ' - RTL', context => {
           return (
-            <FluentProvider theme={webLightTheme} dir={'rtl'}>
+            <FluentProvider theme={webLightTheme} dir="rtl">
               {storyFn({ context })}
             </FluentProvider>
           );
