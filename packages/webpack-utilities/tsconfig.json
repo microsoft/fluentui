@@ -3,7 +3,7 @@
     "target": "es2019",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es2017"],
+    "lib": ["es2019"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["es2019", "dom"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

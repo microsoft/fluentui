@@ -14,7 +14,7 @@
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es2015", "dom", "es2015.promise"],
+    "lib": ["es2019", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"]
   },

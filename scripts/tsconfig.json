@@ -3,8 +3,8 @@
   // This config is used for running build scripts through ts-node
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "ES2018", // Node 10 per https://kangax.github.io/compat-table/es2016plus/#node10_9
-    "lib": ["ES2018", "DOM"], // Node 10, occasional test-related stuff that uses DOM
+    "target": "es2019",
+    "lib": ["es2019", "DOM"], // Node 10, occasional test-related stuff that uses DOM
     "esModuleInterop": true,
     "allowJs": true,
     "noImplicitAny": false,

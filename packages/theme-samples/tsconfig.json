@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es2019", "dom"],
     "isolatedModules": true
   },
   "include": ["src"]

@@ -17,7 +17,7 @@
     "preserveConstEnums": true,
     "noImplicitThis": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom", "es2015.promise"],
+    "lib": ["es2019", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["webpack-env", "custom-global"]
   },

@@ -14,7 +14,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
+    "lib": ["es2019", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["webpack-env", "custom-global"]
   },

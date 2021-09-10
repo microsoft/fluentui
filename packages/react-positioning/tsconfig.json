@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es2019",
-    "lib": ["es5", "dom"],
+    "lib": ["es2019", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,

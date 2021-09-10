@@ -2,9 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "include": ["src"],
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "es2019",
     "module": "CommonJS",
-    "lib": ["ES2015", "dom"],
+    "lib": ["es2019", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib",
-    "target": "es6",
+    "target": "es2019",
     "module": "es6",
     "jsx": "react",
     "declaration": true,
@@ -15,7 +15,7 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es2019", "dom"],
     "types": [],
     "esModuleInterop": true
   },

@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "strict": false,
-    "lib": ["es6", "dom"],
+    "lib": ["es2019", "dom"],
     "types": [],
     "noImplicitAny": true
   },
