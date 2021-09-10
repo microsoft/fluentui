@@ -25,5 +25,5 @@
       "description": "Replacement string for the matched version part"
     }
   },
-  "required": ["name", "match", "replace"]
+  "required": ["match", "replace"]
 }
