@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
-import { Menu, MenuItem, MenuList, MenuTrigger } from '@fluentui/react-menu';
-import { buttonBaseProps } from '../Button/Button.stories';
-import { Playground } from '../Playground';
-import { PlaygroundProps, PropDefinition } from '../Playground.types';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+// @ts-ignore
+import type { MenuProps } from '@fluentui/react-menu';
+// @ts-ignore
+import { SplitButton, SplitButtonProps } from './SplitButton';
+import { buttonBaseProps } from './buttonBaseProps.stories';
+import { Playground } from './Playground.stories';
+import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface ExampleProps {
   primaryActionDisabled?: boolean;
 }
@@ -19,10 +23,12 @@ const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element
         <SplitButton button={{ disabled: primaryActionDisabled || rest.disabled }} {...rest} />
       </MenuTrigger>
 
-      <MenuList>
-        <MenuItem>Item a</MenuItem>
-        <MenuItem>Item b</MenuItem>
-      </MenuList>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
     </Menu>
   );
 };

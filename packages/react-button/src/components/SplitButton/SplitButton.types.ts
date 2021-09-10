@@ -1,63 +1,28 @@
 import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { ButtonProps } from '../Button/Button.types';
-import {
-  MenuButtonProps,
-  MenuButtonState,
-  MenuButtonStyleSelectors,
-  MenuButtonTokens,
-  MenuButtonVariants,
-} from '../MenuButton/MenuButton.types';
+import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { ButtonProps, ButtonShorthandPropsCompat } from '../Button/Button.types';
+import type { MenuButtonProps } from '../MenuButton/MenuButton.types';
 
-/**
- * {@docCategory Button}
- */
-export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
+export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandPropsCompat>, MenuButtonProps {
   /**
    * Button to perform primary action in SplitButton.
    */
-  button?: ShorthandProps<ButtonProps>;
+  button?: ShorthandPropsCompat<ButtonProps>;
 
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: ShorthandProps<MenuButtonProps>;
+  menuButton?: ShorthandPropsCompat<MenuButtonProps>;
 
-  menuButtonRef?: React.RefObject<HTMLButtonElement>;
+  /**
+   * Ref to the menu button element
+   */
+  menuButtonRef?: React.Ref<HTMLElement>;
 }
 
-/**
- * {@docCategory Button}
- */
+export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
+
+export type SplitButtonDefaultedProps = 'size';
+
 export interface SplitButtonState
-  extends Omit<SplitButtonProps, 'children' | 'icon' | 'menu' | 'menuIcon'>,
-    MenuButtonState {
-  button?: ObjectShorthandProps<ButtonProps>;
-  menuButton?: ObjectShorthandProps<MenuButtonProps>;
-}
-
-/**
- * {@docCategory Button}
- */
-export type SplitButtonStyleSelectors = MenuButtonStyleSelectors & {};
-
-/**
- * {@docCategory Button}
- */
-export type SplitButtonTokens = MenuButtonTokens & {
-  dividerColor?: string;
-};
-
-/**
- * {@docCategory Button}
- */
-export type SplitButtonVariants = MenuButtonVariants;
-
-/**
- * {@docCategory Button}
- */
-export type SplitButtonVariantTokens = Partial<
-  {
-    [variant in SplitButtonVariants]: Partial<SplitButtonTokens>;
-  }
->;
+  extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {}

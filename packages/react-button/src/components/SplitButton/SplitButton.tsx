@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { ChevronDownIcon } from '../../common/DefaultIcons';
 import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
-import { SplitButtonProps, SplitButtonStyleSelectors } from './SplitButton.types';
 import { renderSplitButton } from './renderSplitButton';
 import { useSplitButton } from './useSplitButton';
 import { useSplitButtonStyles } from './useSplitButtonStyles';
+import type { SplitButtonProps } from './SplitButton.types';
 
 /**
  * Define a styled SplitButton, using the `useSplitButton` hook.
@@ -14,20 +13,10 @@ import { useSplitButtonStyles } from './useSplitButtonStyles';
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const state = useSplitButton(props, ref, {
     button: { as: Button },
-    menuButton: { as: MenuButton, icon: <ChevronDownIcon /> },
+    menuButton: { as: MenuButton },
   });
 
-  const styleSelectors: SplitButtonStyleSelectors = {
-    disabled: state.disabled,
-    // expanded: state.expanded,
-    iconOnly: state.iconOnly,
-    primary: state.primary,
-    size: state.size,
-    subtle: state.subtle,
-    transparent: state.transparent,
-  };
-
-  useSplitButtonStyles(state, styleSelectors);
+  useSplitButtonStyles(state);
 
   return renderSplitButton(state);
 });

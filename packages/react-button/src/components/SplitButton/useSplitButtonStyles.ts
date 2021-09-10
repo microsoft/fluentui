@@ -1,20 +1,10 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { Theme } from '@fluentui/react-theme';
-import { SplitButtonState, SplitButtonStyleSelectors, SplitButtonVariantTokens } from './SplitButton.types';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import type { SplitButtonState } from './SplitButton.types';
 
 const SplitButtonClassNames = {
   button: 'SplitButton-button',
   menuButton: 'SplitButton-menuButton',
 };
-
-export const makeSplitButtonTokens = (theme: Theme): SplitButtonVariantTokens => ({
-  primary: {
-    dividerColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-  },
-  disabledPrimary: {
-    dividerColor: theme.alias.color.neutral.neutralStrokeDisabled,
-  },
-});
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -36,58 +26,54 @@ const useStyles = makeStyles({
     },
   }),
   rootPrimary: theme => {
-    const splitButtonTokens = makeSplitButtonTokens(theme);
-
     return {
       // Use classnames to increase specificy of styles and avoid collisions.
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: splitButtonTokens.primary?.dividerColor,
+        borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
       },
 
       ':hover': {
         [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: splitButtonTokens.primary?.dividerColor,
+          borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
         },
       },
 
       ':active': {
         [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: splitButtonTokens.primary?.dividerColor,
+          borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
         },
       },
     };
   },
   rootDisabledPrimary: theme => {
-    const splitButtonTokens = makeSplitButtonTokens(theme);
-
     return {
       // Use classnames to increase specificy of styles and avoid collisions.
       [`& .${SplitButtonClassNames.button}`]: {
-        borderRightColor: splitButtonTokens.disabledPrimary?.dividerColor,
+        borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
       },
 
       ':hover': {
         [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: splitButtonTokens.disabledPrimary?.dividerColor,
+          borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
         },
       },
 
       ':active': {
         [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: splitButtonTokens.disabledPrimary?.dividerColor,
+          borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
         },
       },
     };
   },
 });
 
-export const useSplitButtonStyles = (state: SplitButtonState, selectors: SplitButtonStyleSelectors) => {
+export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState => {
   const styles = useStyles();
 
   state.className = mergeClasses(
     styles.root,
-    selectors.primary && styles.rootPrimary,
-    selectors.disabled && selectors.primary && styles.rootDisabledPrimary,
+    state.primary && styles.rootPrimary,
+    state.disabled && state.primary && styles.rootDisabledPrimary,
     state.className,
   );
 
@@ -98,4 +84,6 @@ export const useSplitButtonStyles = (state: SplitButtonState, selectors: SplitBu
   if (state.menuButton) {
     state.menuButton.className = mergeClasses(SplitButtonClassNames.menuButton, state.menuButton.className);
   }
+
+  return state;
 };
