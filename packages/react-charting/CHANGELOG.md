@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 09 Sep 2021 07:39:06 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.38)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.37..@fluentui/react-charting_v5.3.38)
+
+### Patches
+
+- Dots for all points will render with opacity as 1 or 0.01 depends on line is active or not. This is done becouse reverse focus was not proper in line chart ([PR #19708](https://github.com/microsoft/fluentui/pull/19708) by v-scharde@microsoft.com)
 
 ## [5.3.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.37)
 

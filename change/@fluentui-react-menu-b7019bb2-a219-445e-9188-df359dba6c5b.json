@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactor ObjectShorthandProps into IntrinsicShorthandProps",
-  "packageName": "@fluentui/react-menu",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
