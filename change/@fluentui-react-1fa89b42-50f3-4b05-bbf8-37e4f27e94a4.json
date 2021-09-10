@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Backspace does not work in BaseExtendedpicker in projection popout windows",
+  "packageName": "@fluentui/react",
+  "email": "srangam@microsoft.com",
+  "dependentChangeType": "patch"
+}
