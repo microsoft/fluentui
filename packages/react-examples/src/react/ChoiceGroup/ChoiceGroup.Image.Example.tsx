@@ -6,17 +6,18 @@ const options: IChoiceGroupOption[] = [
   {
     key: 'bar',
     imageSrc: TestImages.choiceGroupBarUnselected,
-    imageAlt: 'Bar chart icon',
+    imageAlt: 'Bar chart',
     selectedImageSrc: TestImages.choiceGroupBarSelected,
     imageSize: { width: 32, height: 32 },
-    text: 'Clustered bar chart', // This text is long to show text wrapping.
+    text: 'Bar', // This text is long to show text wrapping.
   },
   {
     key: 'pie',
-    imageSrc: TestImages.choiceGroupBarUnselected,
-    selectedImageSrc: TestImages.choiceGroupBarSelected,
+    imageSrc: TestImages.choiceGroupPieUnselected,
+    imageAlt: 'Pie chart',
+    selectedImageSrc: TestImages.choiceGroupPieSelected,
     imageSize: { width: 32, height: 32 },
-    text: 'Pie chart',
+    text: 'Pie',
   },
 ];
 
