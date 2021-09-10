@@ -2,6 +2,65 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.40"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.39",
+      "version": "9.0.0-alpha.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Popover): Implement Popover documentation",
+            "author": "lingfangao@hotmail.com",
+            "commit": "5df101a6f17dfa64c0effe134ac6718999145052",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.28",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.50",
+            "author": "lingfangao@hotmail.com",
+            "commit": "21f67e9922763bc9b50c9be8e5cc690d0ee3dac1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.37",
       "version": "9.0.0-alpha.37",

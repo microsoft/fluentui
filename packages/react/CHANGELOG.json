@@ -2,6 +2,73 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react_v8.33.0",
+      "version": "8.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Dropdown to only add ARIA live region when focused",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "86c831d73355084919a5ff0495895a49cfe6eaa7",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Customize search for more icon for Suggestions",
+            "author": "tschao@microsoft.com",
+            "commit": "da0edb6f63c6209ba2d608b45d1c9d8ac219cb50",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react_v8.32.0",
+      "version": "8.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exposed an optional removeButtonIconProps prop in PeoplePicker, Suggestions and TagPicker. This change is backward compatible.",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react_v8.31.0",
+      "version": "8.31.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set active descendant for no results found",
+            "author": "gcox@microsoft.com",
+            "commit": "eb85601d894b5be70c7ba5ea162547022d96b54c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Put layer mount events after DOM updated.",
+            "author": "gcox@microsoft.com",
+            "commit": "ea831f5695e395293b5e8416d1fb961ba5a0079e",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "fix selected semantics and scroll-to-view on Combobox, remove select-on-hover behavior, remove unneeded aria-checked on checkbox",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react_v8.30.4",
       "version": "8.30.4",

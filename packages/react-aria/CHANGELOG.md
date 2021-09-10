@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.29)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.28..@fluentui/react-aria_v9.0.0-alpha.29)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.0.0-alpha.29 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.28)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.0-alpha.27..@fluentui/react-aria_v9.0.0-alpha.28)
+
+### Changes
+
+- Refactor ObjectShorthandProps into IntrinsicShorthandProps ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.0-alpha.27)
 

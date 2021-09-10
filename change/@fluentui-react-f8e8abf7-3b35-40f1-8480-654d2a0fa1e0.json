@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Put layer mount events after DOM updated.",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

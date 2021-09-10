@@ -201,7 +201,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
       if (
         this.input.current &&
         !this.input.current.isValueSelected &&
-        this.input.current.inputElement === document.activeElement &&
+        this.input.current.inputElement === ev.currentTarget.ownerDocument.activeElement &&
         (this.input.current as Autofill).cursorLocation === 0
       ) {
         if (this.floatingPicker.current) {

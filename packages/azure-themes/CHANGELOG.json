@@ -2,6 +2,66 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.67",
+      "version": "8.1.67",
+      "comments": {
+        "patch": [
+          {
+            "author": "67673432+q-xg@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "comment": "Fixed contrast ratio of Dropdown placeholder",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.66",
+      "version": "8.1.66",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.33.0",
+            "author": "tschao@microsoft.com",
+            "commit": "da0edb6f63c6209ba2d608b45d1c9d8ac219cb50",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.65",
+      "version": "8.1.65",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.32.0",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/azure-themes_v8.1.64",
+      "version": "8.1.64",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.31.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "3d0232b6ce5213b5bb4a9ccd9a926268a4fad478",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/azure-themes_v8.1.63",
       "version": "8.1.63",
