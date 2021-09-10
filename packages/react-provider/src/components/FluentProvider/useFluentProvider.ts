@@ -41,6 +41,7 @@ export const useFluentProvider = (props: FluentProviderProps, ref: React.Ref<HTM
 
     root: getNativeElementProps('div', {
       ...props,
+      dir,
       ref: useMergedRefs(ref, useKeyboardNavAttribute()),
     }),
   };
