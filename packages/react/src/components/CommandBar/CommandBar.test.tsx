@@ -235,8 +235,8 @@ describe('CommandBar', () => {
     expect(document.querySelectorAll('.customMenuClass')).toHaveLength(1);
   });
 
-  it('updates menu after update if item is still present', () => {
-    const items = [
+  fit('updates menu after update if item is still present', () => {
+    const items = (subMenuItemClassName: string) => [
       {
         name: 'TestText 1',
         key: 'TestKey1',
@@ -245,14 +245,14 @@ describe('CommandBar', () => {
             {
               name: 'SubmenuText 1',
               key: 'SubmenuKey1',
-              className: 'SubMenuClass',
+              className: subMenuItemClassName,
             },
           ],
         },
       },
     ];
 
-    const commandBar = mount(<CommandBar items={items} />);
+    const commandBar = mount(<CommandBar items={items('SubMenuClass')} />);
 
     const menuItem = commandBar.find('button');
 
@@ -261,12 +261,9 @@ describe('CommandBar', () => {
     // Make sure the menu is open before the re-render
     expect(document.querySelector('.SubMenuClass')).toBeTruthy();
 
-    // Update the props
-    items[0].subMenuProps.items[0].className = 'SubMenuClassUpdate';
-
     // Re-render
     commandBar.setProps({
-      items: items,
+      items: items('SubMenuClassUpdate'),
     });
 
     // Make sure the menu is still open after the re-render
