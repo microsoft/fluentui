@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Refactor ObjectShorthandProps into IntrinsicShorthandProps",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.71",
       "version": "9.0.0-alpha.71",

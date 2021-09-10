@@ -2,6 +2,21 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-switch_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Setting the package to public.",
+            "author": "czearing@outlook.com",
+            "commit": "92aa1d73ca244e0a77691acc800fab0d84e665fe",
+            "package": "@fluentui/react-switch"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-switch_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

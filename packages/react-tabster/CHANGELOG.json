@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.57",
+      "version": "9.0.0-alpha.57",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.63",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Sep 2021 07:34:53 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.56",
       "version": "9.0.0-alpha.56",

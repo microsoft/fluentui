@@ -2,6 +2,56 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding migration guide documentation.",
+            "author": "czearing@outlook.com",
+            "commit": "e7f09a25a1dc21acc3217612f0267f99b031ea89",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Updating README.md",
+            "author": "czearing@outlook.com",
+            "commit": "47c570ff69cb5303b1cc419b0eab8fddf8890ade",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Updating MIGRATION.md file.",
+            "author": "czearing@outlook.com",
+            "commit": "9fcb642d0a1947d85e81dc2db9a9d51816b7a3ae",
+            "package": "@fluentui/react-slider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Refactor ObjectShorthandProps into IntrinsicShorthandProps",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Setting the package to public.",
+            "author": "czearing@outlook.com",
+            "commit": "1dc3c445f3e970ea82e1f65e26fa89b596809002",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-slider_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

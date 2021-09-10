@@ -2,6 +2,29 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.39",
+      "version": "9.0.0-alpha.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Popover): Implement Popover documentation",
+            "author": "lingfangao@hotmail.com",
+            "commit": "5df101a6f17dfa64c0effe134ac6718999145052",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.28",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Sep 2021 07:34:11 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.38",
       "version": "9.0.0-alpha.38",

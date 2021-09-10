@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 08 Sep 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.74)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.73..@fluentui/react-menu_v9.0.0-alpha.74)
+
+### Changes
+
+- Refactor ObjectShorthandProps into IntrinsicShorthandProps ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.73)
 
