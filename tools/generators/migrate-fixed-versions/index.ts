@@ -23,16 +23,28 @@ export default async function (host: Tree, schema: MigrateFixedVersionsGenerator
 function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
   const options = normalizeOptions(host, schema);
   const packageJsonPath = options.paths.packageJson;
+
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     if (packageJson.dependencies) {
       Object.keys(packageJson.dependencies).forEach(dependency => {
-        console.log(dependency);
         if (isPackageConverged(dependency, host) && packageJson.dependencies) {
           userLog.push({
             type: 'info',
             message: `Updating package ${schema.name}`,
           });
           packageJson.dependencies[dependency] = packageJson.dependencies[dependency].replace('^', '');
+        }
+      });
+    }
+
+    if (packageJson.devDependencies) {
+      Object.keys(packageJson.devDependencies).forEach(dependency => {
+        if (isPackageConverged(dependency, host) && packageJson.devDependencies) {
+          userLog.push({
+            type: 'info',
+            message: `Updating package ${schema.name}`,
+          });
+          packageJson.devDependencies[dependency] = packageJson.devDependencies[dependency].replace('^', '');
         }
       });
     }
@@ -45,10 +57,6 @@ function runBatchMigration(host: Tree, userLog: UserLog) {
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
-    if (!isPackageConverged(projectName, host)) {
-      userLog.push({ type: 'error', message: `${projectName} is not a converged web package. Skipping...` });
-      return;
-    }
     runMigrationOnProject(host, { name: projectName, all: false }, userLog);
   });
 }
