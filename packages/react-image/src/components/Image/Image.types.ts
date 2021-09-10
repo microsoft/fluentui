@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ComponentState, ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type ImageSlots = {
-  root: ObjectShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
+  root: ObjectShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement, 'img'>;
 };
 
 export type ImageCommons = {

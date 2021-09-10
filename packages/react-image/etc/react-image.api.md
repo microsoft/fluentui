@@ -31,7 +31,7 @@ export const imageShorthandProps: Array<keyof ImageSlots>;
 
 // @public (undocumented)
 export type ImageSlots = {
-    root: ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
+    root: ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement, 'img'>;
 };
 
 // @public (undocumented)

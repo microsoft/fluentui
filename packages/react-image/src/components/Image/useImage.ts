@@ -9,7 +9,6 @@ export const imageShorthandProps: Array<keyof ImageSlots> = ['root'];
  */
 export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
   const { bordered, fit, fluid, circular, rounded } = props;
-  const rootAs = 'img';
   const state: ImageState = {
     //props
     bordered,
@@ -20,7 +19,7 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): I
     components: {
       root: 'img',
     },
-    root: getNativeElementProps(rootAs, {
+    root: getNativeElementProps('img', {
       ref,
       ...props,
     }),
