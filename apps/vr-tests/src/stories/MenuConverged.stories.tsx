@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react-menu';
 import { Cut20Regular, Edit20Regular, ClipboardPaste20Regular } from '@fluentui/react-icons';
 
-storiesOf('react-menu Menu - basic', module)
+storiesOf('Menu Converged - basic', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
@@ -40,10 +40,10 @@ storiesOf('react-menu Menu - basic', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );
 
-storiesOf('react-menu Menu - secondary content', module)
+storiesOf('Menu Converged - secondary content', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end()}
@@ -72,10 +72,10 @@ storiesOf('react-menu Menu - secondary content', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );
 
-storiesOf('react-menu Menu - groups', module)
+storiesOf('Menu Converged - groups', module)
   .addDecorator(story => <Screener>{story()}</Screener>)
   .addStory(
     'default',
@@ -104,10 +104,10 @@ storiesOf('react-menu Menu - groups', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );
 
-storiesOf('react-menu Menu - selection', module)
+storiesOf('Menu Converged - selection', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
@@ -138,10 +138,10 @@ storiesOf('react-menu Menu - selection', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );
 
-storiesOf('react-menu Menu - selection groups', module)
+storiesOf('Menu Converged - selection groups', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end()}
@@ -187,10 +187,10 @@ storiesOf('react-menu Menu - selection groups', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );
 
-storiesOf('react-menu Menu - nested submenus', module)
+storiesOf('Menu Converged - nested submenus', module)
   .addDecorator(story => <Screener>{story()}</Screener>)
   .addStory(
     'default',
@@ -222,5 +222,5 @@ storiesOf('react-menu Menu - nested submenus', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );

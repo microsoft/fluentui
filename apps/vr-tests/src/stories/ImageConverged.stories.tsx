@@ -6,7 +6,7 @@ import { Image } from '@fluentui/react-image';
 const imageUrl =
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
-storiesOf('ImageNext', module)
+storiesOf('Image Converged', module)
   .addDecorator((story: () => React.ReactNode) => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}

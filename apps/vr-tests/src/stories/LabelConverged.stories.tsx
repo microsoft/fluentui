@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Label } from '@fluentui/react-label';
 
-storiesOf('LabelNext', module)
+storiesOf('Label Converged', module)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

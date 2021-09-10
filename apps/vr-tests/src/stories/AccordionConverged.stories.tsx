@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-accordion';
 import { CircleRingIcon } from '@fluentui/react-icons-mdl2';
 
-storiesOf('Accordion', module)
+storiesOf('Accordion Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -40,7 +40,7 @@ storiesOf('Accordion', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   );
 
 storiesOf('Accordion', module)
@@ -74,7 +74,7 @@ storiesOf('Accordion', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   )
   .addStory(
     'expandIconPosition="end"',
@@ -90,7 +90,7 @@ storiesOf('Accordion', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   )
   .addStory(
     'expandIcon="<Icon/>"',
@@ -116,7 +116,7 @@ storiesOf('Accordion', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   )
   .addStory(
     'icon="<Icon/>"',
@@ -142,25 +142,21 @@ storiesOf('Accordion', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   )
-  .addStory(
-    'disabled',
-    () => (
-      <Accordion openItems={[]}>
-        <AccordionItem value={0} disabled>
-          <AccordionHeader>Disabled Item Opened</AccordionHeader>
-          <AccordionPanel>Disabled Item Opened Panel</AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value={1} disabled>
-          <AccordionHeader>Disabled Item Closed</AccordionHeader>
-          <AccordionPanel>Disabled Item Closed Panel</AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value={2} disabled>
-          <AccordionHeader inline>Disabled Item ClosedInline</AccordionHeader>
-          <AccordionPanel>Disabled Item ClosedInline Panel</AccordionPanel>
-        </AccordionItem>
-      </Accordion>
-    ),
-    { provider: 'FluentProvider' },
-  );
+  .addStory('disabled', () => (
+    <Accordion openItems={[]}>
+      <AccordionItem value={0} disabled>
+        <AccordionHeader>Disabled Item Opened</AccordionHeader>
+        <AccordionPanel>Disabled Item Opened Panel</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem value={1} disabled>
+        <AccordionHeader>Disabled Item Closed</AccordionHeader>
+        <AccordionPanel>Disabled Item Closed Panel</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem value={2} disabled>
+        <AccordionHeader inline>Disabled Item ClosedInline</AccordionHeader>
+        <AccordionPanel>Disabled Item ClosedInline Panel</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  ));

@@ -30,7 +30,7 @@ const defaultConfig = {
 setAddon({
   addStory(storyName, storyFn, config = defaultConfig) {
     // V-Next stories
-    if (this.kind.includes('Next') || config.provider === 'FluentProvider') {
+    if (this.kind.includes('Converged') || config.provider === 'FluentProvider') {
       this.add(storyName, context => {
         return <FluentProvider theme={webLightTheme}>{storyFn({ context })}</FluentProvider>;
       });

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
 
-storiesOf('react-button Next - Button', module)
+storiesOf('Button Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -68,7 +68,7 @@ storiesOf('react-button Next - Button', module)
   .addStory('Icon only', () => <Button icon="X" />)
   .addStory('Circular and icon only', () => <Button circular icon="X" />, { rtl: true });
 
-storiesOf('react-button Next - Button Block', module)
+storiesOf('Button Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -125,7 +125,7 @@ storiesOf('react-button Next - Button Block', module)
     </Button>
   ));
 
-storiesOf('react-button Next - CompoundButton', module)
+storiesOf('CompoundButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -228,7 +228,7 @@ storiesOf('react-button Next - CompoundButton', module)
   .addStory('Icon only', () => <CompoundButton icon="X" />)
   .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />, { rtl: true });
 
-storiesOf('react-button Next - CompoundButton Block', module)
+storiesOf('CompoundButton Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -293,7 +293,7 @@ storiesOf('react-button Next - CompoundButton Block', module)
     </CompoundButton>
   ));
 
-storiesOf('react-button Next - ToggleButton', module)
+storiesOf('ToggleButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -365,7 +365,7 @@ storiesOf('react-button Next - ToggleButton', module)
     </ToggleButton>
   ));
 
-storiesOf('react-button Next - ToggleButton Block', module)
+storiesOf('ToggleButton Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -442,7 +442,7 @@ storiesOf('react-button Next - ToggleButton Block', module)
     </ToggleButton>
   ));
 
-storiesOf('react-button Next - MenuButton', module)
+storiesOf('MenuButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -498,7 +498,7 @@ storiesOf('react-button Next - MenuButton', module)
   .addStory('Icon only', () => <MenuButton icon="X" />)
   .addStory('Circular and icon only', () => <MenuButton circular icon="X" />);
 
-storiesOf('react-button Next - MenuButton Block', module)
+storiesOf('MenuButton Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

@@ -63,7 +63,7 @@ const AvatarCustomSizeList: React.FC<
   );
 };
 
-storiesOf('Avatar', module)
+storiesOf('Avatar Converged', module)
   .addDecorator(story => (
     <div style={{ display: 'flex' }}>
       <Stack
@@ -95,65 +95,49 @@ storiesOf('Avatar', module)
         <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
       </>
     ),
-    { rtl: true, provider: 'FluentProvider' },
+    { rtl: true },
   )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
   .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" square />)
   .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
-  .addStory(
-    'size+inactive+badge',
-    () => <AvatarList images={examples.image} active="inactive" badge="offline" />,
-    { provider: 'FluentProvider' },
-  )
-  .addStory(
-    'size+active+badge',
-    () => <AvatarList images={examples.image} active="active" badge="available" />,
-    { provider: 'FluentProvider' },
-  )
-  .addStory(
-    'size+active+shadow',
-    () => <AvatarList images={examples.image} active="active" activeDisplay="shadow" />,
-    { provider: 'FluentProvider' },
-  )
+  .addStory('size+inactive+badge', () => (
+    <AvatarList images={examples.image} active="inactive" badge="offline" />
+  ))
+  .addStory('size+active+badge', () => (
+    <AvatarList images={examples.image} active="active" badge="available" />
+  ))
+  .addStory('size+active+shadow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
+  ))
   .addStory('size+active+glow', () => (
     <AvatarList images={examples.image} active="active" activeDisplay="glow" />
   ))
-  .addStory(
-    'size+active+ring-shadow',
-    () => <AvatarList images={examples.image} active="active" activeDisplay="ring-shadow" />,
-    { provider: 'FluentProvider' },
-  )
-  .addStory(
-    'size+active+ring-glow',
-    () => <AvatarList images={examples.image} active="active" activeDisplay="ring-glow" />,
-    { provider: 'FluentProvider' },
-  )
+  .addStory('size+active+ring-shadow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="ring-shadow" />
+  ))
+  .addStory('size+active+ring-glow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="ring-glow" />
+  ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
-  .addStory(
-    'customSize+name+badge',
-    () => <AvatarCustomSizeList names={examples.name} badge="available" />,
-    { provider: 'FluentProvider' },
-  )
+  .addStory('customSize+name+badge', () => (
+    <AvatarCustomSizeList names={examples.name} badge="available" />
+  ))
   .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
-  .addStory(
-    'color',
-    () => (
-      <Stack tokens={{ childrenGap: 24 }}>
-        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-          <Avatar color="neutral" />
-          <Avatar color="brand" />
-        </Stack>
-        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-          {examples.name.map(name => (
-            <Avatar color="colorful" name={name} key={name} />
-          ))}
-        </Stack>
-        <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-          {examples.namedColors.map(color => (
-            <Avatar color={color} key={color} />
-          ))}
-        </Stack>
+  .addStory('color', () => (
+    <Stack tokens={{ childrenGap: 24 }}>
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        <Avatar color="neutral" />
+        <Avatar color="brand" />
       </Stack>
-    ),
-    { provider: 'FluentProvider' },
-  );
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        {examples.name.map(name => (
+          <Avatar color="colorful" name={name} key={name} />
+        ))}
+      </Stack>
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        {examples.namedColors.map(color => (
+          <Avatar color={color} key={color} />
+        ))}
+      </Stack>
+    </Stack>
+  ));

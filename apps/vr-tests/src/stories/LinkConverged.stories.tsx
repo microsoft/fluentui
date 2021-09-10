@@ -6,7 +6,7 @@ import { Link, LinkProps } from '@fluentui/react-link';
 const AnchorLink = (props: LinkProps) => <Link {...props} href="https://www.bing.com" />;
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
-storiesOf('Link Next - Rendered as anchor', module)
+storiesOf('Link Converged - Rendered as anchor', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -58,7 +58,7 @@ storiesOf('Link Next - Rendered as anchor', module)
     </div>
   ));
 
-storiesOf('Link Next - Rendered as button', module)
+storiesOf('Link Converged - Rendered as button', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

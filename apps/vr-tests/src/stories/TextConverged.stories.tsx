@@ -14,7 +14,7 @@ import {
   Title3,
 } from '@fluentui/react-text';
 
-storiesOf('TextNext', module)
+storiesOf('Text Converged', module)
   .addDecorator((story: () => React.ReactNode) => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '250px' }}>
