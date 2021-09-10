@@ -139,12 +139,15 @@ describe('Callout Positioning', () => {
       beakWidth: 0,
     };
 
-    // should align as close to the bottom left as possible
+    // when no alignment options fit within bounds, bottom left should flip to top left
+    // since there is more room at the top
     const validateBottomLeft: ITestValidation = {
-      callout: new Rectangle(100, 300, 100, 300),
+      callout: new Rectangle(100, 300, 8, 208),
       beak: null,
     };
 
+    // when no alignment options fit within bounds, top right stays top right
+    // since that side has the most room
     const validateTopRight: ITestValidation = {
       callout: new Rectangle(8, 208, 8, 208),
       beak: null,
