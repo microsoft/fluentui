@@ -1,10 +1,12 @@
 import * as React from 'react';
 
-import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
+import { IconType } from './Icon.types';
 import { Image } from '../Image/Image';
-import { ImageLoadState, IImageProps } from '../Image/Image.types';
+import { ImageLoadState } from '../Image/Image.types';
 import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
 import { getIconContent } from './FontIcon';
+import type { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
+import type { IImageProps } from '../Image/Image.types';
 
 export interface IIconState {
   imageLoadError: boolean;

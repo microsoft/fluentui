@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccordionHeaderContextValue } from './AccordionHeader.types';
+import type { AccordionHeaderContextValue } from './AccordionHeader.types';
 
 export const AccordionHeaderContext = React.createContext<AccordionHeaderContextValue>({
   open: false,

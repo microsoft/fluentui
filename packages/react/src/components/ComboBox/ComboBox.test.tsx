@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import { ReactWrapper } from 'enzyme';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
-import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate, safeMount } from '@fluentui/test-utilities';
 import { useKeytipRef } from '../../Keytips';
 import { Autofill } from '../../Autofill';
+import type { IComboBox, IComboBoxOption } from './ComboBox.types';
 
 const OPTION_SELECTOR = '.ms-ComboBox-option';
 const CHECKBOX_OPTION = OPTION_SELECTOR + ' > input';
@@ -207,6 +207,16 @@ describe('ComboBox', () => {
       wrapper.update();
 
       expect(wrapper.find('input').props().value).toEqual('');
+    });
+  });
+
+  it('Applies correct attributes to the selected option', () => {
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="2" />, wrapper => {
+      // open combobox to check options list
+      wrapper.find('button').simulate('click');
+
+      const options = wrapper.find(BUTTON_OPTION);
+      expect(options.at(1).prop('aria-selected')).toEqual('true');
     });
   });
 

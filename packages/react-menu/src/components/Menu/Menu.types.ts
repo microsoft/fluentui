@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
-import { MenuListProps } from '../MenuList/index';
+import { MenuListCommons } from '../MenuList/index';
 import { MenuContextValue } from '../../contexts/menuContext';
 
-interface MenuCommons extends MenuListProps {
+interface MenuCommons extends MenuListCommons {
   /**
    * Whether the popup is open
    */
@@ -48,11 +48,13 @@ interface MenuCommons extends MenuListProps {
   hoverDelay?: number;
 }
 
+export type MenuSlots = {};
+
 /**
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
+export interface MenuProps extends Partial<MenuCommons>, ComponentProps<MenuSlots> {
   /**
    * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
    * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
@@ -68,7 +70,7 @@ export interface MenuProps extends Partial<MenuCommons>, ComponentProps {
 /**
  * {@docCategory Menu }
  */
-export interface MenuState extends MenuCommons, ComponentState {
+export interface MenuState extends MenuCommons, ComponentState<MenuSlots> {
   /**
    * Callback to open/close the popup
    */

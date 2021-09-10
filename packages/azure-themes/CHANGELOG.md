@@ -1,8 +1,107 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 16 Aug 2021 07:36:39 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.67](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.67)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.66..@fluentui/azure-themes_v8.1.67)
+
+### Patches
+
+- Fixed contrast ratio of Dropdown placeholder ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by 67673432+q-xg@users.noreply.github.com)
+
+## [8.1.66](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.66)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.65..@fluentui/azure-themes_v8.1.66)
+
+### Patches
+
+- Bump @fluentui/react to v8.33.0 ([PR #19671](https://github.com/microsoft/fluentui/pull/19671) by tschao@microsoft.com)
+
+## [8.1.65](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.65)
+
+Thu, 09 Sep 2021 07:39:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.64..@fluentui/azure-themes_v8.1.65)
+
+### Patches
+
+- Bump @fluentui/react to v8.32.0 ([PR #18829](https://github.com/microsoft/fluentui/pull/18829) by shujathlive@gmail.com)
+
+## [8.1.64](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.64)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.63..@fluentui/azure-themes_v8.1.64)
+
+### Patches
+
+- Bump @fluentui/react to v8.31.0 ([PR #19344](https://github.com/microsoft/fluentui/pull/19344) by sarah.higley@microsoft.com)
+
+## [8.1.63](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.63)
+
+Mon, 06 Sep 2021 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.62..@fluentui/azure-themes_v8.1.63)
+
+### Patches
+
+- Azure Theme: Slider style update and dark theme update ([PR #19611](https://github.com/microsoft/fluentui/pull/19611) by aidanmc95@gmail.com)
+
+## [8.1.62](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.62)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.61..@fluentui/azure-themes_v8.1.62)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.3 ([PR #19590](https://github.com/microsoft/fluentui/pull/19590) by olfedias@microsoft.com)
+
+## [8.1.61](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.61)
+
+Tue, 31 Aug 2021 07:37:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.60..@fluentui/azure-themes_v8.1.61)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.1 ([PR #18892](https://github.com/microsoft/fluentui/pull/18892) by tmichon@microsoft.com)
+
+## [8.1.60](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.60)
+
+Mon, 30 Aug 2021 07:35:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.59..@fluentui/azure-themes_v8.1.60)
+
+### Patches
+
+- Bump @fluentui/react to v8.30.0 ([PR #19404](https://github.com/microsoft/fluentui/pull/19404) by richard@einfinity.co.uk)
+
+## [8.1.59](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.59)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.58..@fluentui/azure-themes_v8.1.59)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.2 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [8.1.58](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.58)
+
+Mon, 23 Aug 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.57..@fluentui/azure-themes_v8.1.58)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.1 ([PR #19467](https://github.com/microsoft/fluentui/pull/19467) by keyou@microsoft.com)
+
+## [8.1.57](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.57)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.56..@fluentui/azure-themes_v8.1.57)
+
+### Patches
+
+- Bump @fluentui/react to v8.29.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
 
 ## [8.1.56](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.56)
 

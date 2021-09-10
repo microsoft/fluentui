@@ -1,33 +1,34 @@
-import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+
   /**
    * Icon slot rendered before children content
    */
-  icon: React.HTMLAttributes<HTMLElement>;
+  icon?: IntrinsicShorthandProps<'span'>;
 
   /**
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark: React.HTMLAttributes<HTMLElement>;
+  checkmark?: IntrinsicShorthandProps<'span'>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator: React.HTMLAttributes<HTMLElement>;
+  submenuIndicator?: IntrinsicShorthandProps<'span'>;
 
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
-  content: React.HTMLAttributes<HTMLElement>;
+  content: IntrinsicShorthandProps<'span'>;
 
   /**
    * Secondary content rendered opposite the primary content (e.g Shortcut text)
    */
-  secondaryContent: React.HTMLAttributes<HTMLElement>;
+  secondaryContent?: IntrinsicShorthandProps<'span'>;
 };
 
 interface MenuItemCommons {
@@ -47,17 +48,6 @@ interface MenuItemCommons {
   persistOnClick?: boolean;
 }
 
-export interface MenuItemProps
-  extends ComponentProps<Partial<MenuItemSlots>>,
-    React.HTMLAttributes<HTMLElement>,
-    MenuItemCommons {}
+export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, MenuItemCommons {}
 
-export interface MenuItemState
-  extends ComponentState<MenuItemSlots>,
-    React.HTMLAttributes<HTMLElement>,
-    MenuItemCommons {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export interface MenuItemState extends ComponentState<MenuItemSlots>, MenuItemCommons {}

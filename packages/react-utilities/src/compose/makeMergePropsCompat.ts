@@ -1,4 +1,5 @@
-import { makeMergeProps, MergePropsOptions } from './makeMergeProps';
+import { makeMergeProps } from './makeMergeProps';
+import type { MergePropsOptions } from './makeMergeProps';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GenericDictionary = Record<string, any>;

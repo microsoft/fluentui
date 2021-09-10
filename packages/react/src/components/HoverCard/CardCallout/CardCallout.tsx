@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { divProperties, getNativeProps } from '../../../Utilities';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { IBaseCardProps } from '../BaseCard.types';
-import { Callout, FocusTrapCallout, ICalloutProps } from '../../../Callout';
+import { Callout, FocusTrapCallout } from '../../../Callout';
+import type { IBaseCardProps } from '../BaseCard.types';
+import type { ICalloutProps } from '../../../Callout';
 
 export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
   finalHeight?: number;

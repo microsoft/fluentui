@@ -4,31 +4,15 @@
 
 ```ts
 
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
-import { ShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import type { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonAsAnchorProps = React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
-    as: 'a';
-};
-
-// @public (undocumented)
-export type ARIAButtonAsButtonProps = React_2.ButtonHTMLAttributes<HTMLButtonElement> & {
-    as?: 'button';
-};
-
-// @public (undocumented)
-export type ARIAButtonAsElementProps = React_2.HTMLAttributes<HTMLElement> & {
-    as: 'div' | 'span';
-};
-
-// @public (undocumented)
-export type ARIAButtonProps = ARIAButtonAsButtonProps | ARIAButtonAsElementProps | ARIAButtonAsAnchorProps;
+export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'div' | 'span' | 'a'>;
 
 // @public
-export function useARIAButton(value: ShorthandProps<ARIAButtonProps>, defaultProps?: ARIAButtonProps): ObjectShorthandProps<ARIAButtonProps>;
-
+export function useARIAButton<Required extends boolean = false>(value: ShorthandProps<ARIAButtonShorthandProps>, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;
 
 // (No @packageDocumentation comment for this package)
 

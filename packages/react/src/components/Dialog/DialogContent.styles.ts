@@ -1,4 +1,3 @@
-import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import {
   FontWeights,
   getGlobalClassNames,
@@ -6,6 +5,7 @@ import {
   ScreenWidthMinSmall,
   ScreenWidthMaxSmall,
 } from '../../Styling';
+import type { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',

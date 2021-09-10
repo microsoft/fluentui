@@ -1,52 +1,98 @@
 import * as React from 'react';
 
-/**
- * Generic record of possible ShorthandProps
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type SlotPropsRecord = Record<string, Record<string, any> | undefined>;
+export type ShorthandRenderFunction<Props> = (
+  Component: React.ElementType<Props>,
+  props: Omit<Props, 'children' | 'as'>,
+) => React.ReactNode;
 
-export type ShorthandPropsRecord<Record extends SlotPropsRecord = SlotPropsRecord> = {
-  [K in keyof Record]: ShorthandProps<NonNullable<Record[K]>>;
-};
+export type ObjectShorthandPropsRecord = Record<string, DefaultObjectShorthandProps | undefined>;
 
-export type ObjectShorthandPropsRecord<Record extends SlotPropsRecord = SlotPropsRecord> = {
-  [K in keyof Record]: ObjectShorthandProps<NonNullable<Record[K]>>;
-};
-
-export type ShorthandRenderFunction<Props> = (Component: React.ElementType<Props>, props: Props) => React.ReactNode;
-
-export type ShorthandProps<Props = {}> =
+export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
   | React.ReactChild
   | React.ReactNodeArray
   | React.ReactPortal
   | number
-  | null
-  | undefined
-  | ObjectShorthandProps<Props>;
+  | null // force null render
+  | undefined // default render (or null render if no default provided)
+  | Props;
 
+/**
+ * Matches any shorthand props type.
+ *
+ * This should ONLY be used in type templates as in `extends DefaultObjectShorthandProps`;
+ * it shouldn't be used as the type of a slot.
+ */
+export type DefaultObjectShorthandProps = ObjectShorthandProps<{
+  children?: React.ReactNode;
+  as?: keyof JSX.IntrinsicElements;
+}>;
+
+/**
+ * Defines the slot props for a slot that supports a Component type.
+ *
+ * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ */
 export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props & {
   children?: Props['children'] | ShorthandRenderFunction<Props>;
 };
 
-export interface DefaultComponentProps {
-  as?: keyof JSX.IntrinsicElements;
-}
+/**
+ * Define the slot arguments for a slot that supports one or more intrinsic element types, such as 'div'.
+ * For slots that support custom components, use {@link ObjectShorthandProps} instead.
+ *
+ * The first param is the slot's default type if no `as` prop is specified.
+ * The second param is an optional union of alternative types that can be specified for the `as` prop.
+ *
+ * ```
+ * IntrinsicShorthandProps<'div'> // Slot is always a <div>
+ * IntrinsicShorthandProps<'a', 'button'> // Defaults to <a>, but allows { as: 'button' } to be a <button>
+ * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to <label>, but allows { as: 'span' } or { as: 'div' }
+ * ```
+ */
+export type IntrinsicShorthandProps<
+  DefaultElement extends keyof JSX.IntrinsicElements,
+  AlternateElements extends keyof JSX.IntrinsicElements = never
+> = IsSingleton<DefaultElement> extends false
+  ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
+  :
+      | ({ as?: DefaultElement } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>)
+      | {
+          [As in AlternateElements]: { as: As } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[As]>>;
+        }[AlternateElements];
 
-export type ComponentProps<Record extends SlotPropsRecord = {}> = DefaultComponentProps & ShorthandPropsRecord<Record>;
+/**
+ * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
+ *
+ * ```
+ * IsSingleton<'a'> // true
+ * IsSingleton<'a' | 'b' | 'c'> // false
+ * ```
+ */
+export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
 
-export type ComponentState<Record extends SlotPropsRecord = {}> = Pick<
-  ComponentProps<Record>,
-  keyof DefaultComponentProps
-> & {
+/**
+ * Excludes LegacyRef (string) from the ref prop of the given Props type
+ */
+export type NoLegacyRef<Props extends { ref?: unknown }> = Omit<Props, 'ref'> & { ref?: Exclude<Props['ref'], string> };
+
+export type ComponentProps<
+  Shorthands extends ObjectShorthandPropsRecord,
+  Primary extends keyof Shorthands = 'root'
+> = Omit<
+  {
+    [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+  },
+  Primary
+> &
+  Shorthands[Primary];
+
+export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
-    [K in keyof Record]?: React.ElementType<Record[K]>;
+    [Key in keyof Shorthands]-?:
+      | React.ComponentType<NonNullable<Shorthands[Key]>>
+      | (NonNullable<Shorthands[Key]> extends { as?: infer As } ? As : keyof JSX.IntrinsicElements);
   };
-} & {
-  components?: {
-    root?: React.ElementType;
-  };
-} & ObjectShorthandPropsRecord<Record>;
+} & Shorthands;
 
 /////////////////////////// COMPAT /////////////////////////////////////////////////////////////////////
 

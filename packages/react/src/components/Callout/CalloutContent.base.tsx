@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
-  Point,
-  IRectangle,
   css,
   divProperties,
   elementContains,
@@ -15,10 +12,7 @@ import {
 } from '../../Utilities';
 import {
   positionCallout,
-  ICalloutPositionedInfo,
-  IPositionProps,
   getMaxHeight,
-  IPosition,
   RectangleEdge,
   positionCard,
   getBoundsFromTargetWindow,
@@ -26,7 +20,11 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync, useConst, useTarget, Target } from '@fluentui/react-hooks';
+import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
+import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
+import type { Point, IRectangle } from '../../Utilities';
+import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
+import type { Target } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -246,7 +244,12 @@ function usePositions(
         }
       }, calloutElement.current);
 
-      return () => async.cancelAnimationFrame(timerId);
+      previousTarget.current = target;
+
+      return () => {
+        async.cancelAnimationFrame(timerId);
+        previousTarget.current = undefined;
+      };
     }
   }, [
     hidden,
@@ -262,8 +265,6 @@ function usePositions(
     props,
     target,
   ]);
-
-  previousTarget.current = target;
 
   return positions;
 }
@@ -334,7 +335,7 @@ function useDismissHandlers(
     };
 
     const dismissOnResize = (ev: Event) => {
-      if (!preventDismissOnResize) {
+      if (!preventDismissOnResize && !(preventDismissOnEvent && preventDismissOnEvent(ev))) {
         onDismiss?.(ev);
       }
     };
@@ -364,6 +365,9 @@ function useDismissHandlers(
             dismissOnTargetClick ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
       ) {
+        if (preventDismissOnEvent && preventDismissOnEvent(ev)) {
+          return;
+        }
         onDismiss?.(ev);
       }
     };

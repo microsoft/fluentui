@@ -1,4 +1,5 @@
-import { PopoverContextValue, usePopoverContext } from '../popoverContext';
+import { usePopoverContext } from '../popoverContext';
+import type { PopoverContextValue } from '../popoverContext';
 
 /**
  * A test utility to mock the usePopoverContext hook that relies on context selector

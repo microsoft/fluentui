@@ -1,5 +1,5 @@
-import { Offset } from '../types';
 import { mergeArrowOffset } from './mergeArrowOffset';
+import type { Offset } from '../types';
 
 describe('mergeArrowOffset', () => {
   it.each([null, undefined])('should return arrow offset when user offset is %s', userOffset => {

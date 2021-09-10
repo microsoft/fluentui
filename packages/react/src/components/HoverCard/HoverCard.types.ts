@@ -1,9 +1,9 @@
 import * as React from 'react';
-
-import { IExpandingCardProps } from './ExpandingCard.types';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
-import { IPlainCardProps } from './PlainCard/PlainCard.types';
+import { KeyCodes } from '../../Utilities';
+import type { IExpandingCardProps } from './ExpandingCard.types';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IPlainCardProps } from './PlainCard/PlainCard.types';
 
 /**
  * {@docCategory HoverCard}

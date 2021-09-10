@@ -1049,6 +1049,30 @@ export const neutralStrokeRest: CSSDesignToken<Swatch>;
 // @public (undocumented)
 export const neutralStrokeRestDelta: CSSDesignToken<number>;
 
+// @public (undocumented)
+export const neutralStrokeStrongActive: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongActiveDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongFocus: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongFocusDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongHover: CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const neutralStrokeStrongHoverDelta: CSSDesignToken<number>;
+
+// @public (undocumented)
+export const neutralStrokeStrongRecipe: DesignToken<InteractiveColorRecipe>;
+
+// @public (undocumented)
+export const neutralStrokeStrongRest: CSSDesignToken<Swatch>;
+
 // Warning: (ae-internal-missing-underscore) The name "NumberField" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -1201,7 +1225,7 @@ export const SwatchRGB: Readonly<{
 export { Switch }
 
 // @public
-export const switchStyles: (context: ElementDefinitionContext, defintiion: SwitchOptions) => ElementStyles;
+export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles;
 
 export { Tab }
 

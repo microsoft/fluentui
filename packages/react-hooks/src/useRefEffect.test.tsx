@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { useRefEffect, RefCallback } from './useRefEffect';
+import { useRefEffect } from './useRefEffect';
+import type { RefCallback } from './useRefEffect';
 
 describe('useRefEffect', () => {
   it('maintains ref.current and calls the callback and cleanup functions appropriately', () => {

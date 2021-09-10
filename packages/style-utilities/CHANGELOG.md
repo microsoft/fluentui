@@ -1,8 +1,40 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.2)
+
+Thu, 02 Sep 2021 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.3.1..@fluentui/style-utilities_v8.3.2)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.2 ([PR #19542](https://github.com/microsoft/fluentui/pull/19542) by xiaowxie@microsoft.com)
+
+## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.1)
+
+Wed, 25 Aug 2021 07:35:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.3.0..@fluentui/style-utilities_v8.3.1)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.1 ([PR #19481](https://github.com/microsoft/fluentui/pull/19481) by arujain@microsoft.com)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.3.0)
+
+Thu, 19 Aug 2021 07:41:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.2.2..@fluentui/style-utilities_v8.3.0)
+
+### Minor changes
+
+- Moving type-based imports/exports to use "import type" and "export type" to enable isolatedModules. ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.3.0 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
+- Bump @fluentui/theme to v2.2.2 ([PR #19416](https://github.com/microsoft/fluentui/pull/19416) by dzearing@hotmail.com)
 
 ## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.2.2)
 

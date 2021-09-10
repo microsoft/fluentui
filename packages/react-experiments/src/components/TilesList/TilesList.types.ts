@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import { TilesList } from './TilesList';
-import { IFocusZone } from '@fluentui/react/lib/FocusZone';
-import { IListProps } from '@fluentui/react/lib/List';
-import { IRenderFunction } from '@fluentui/utilities';
+import type { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
+import type { IFocusZone } from '@fluentui/react/lib/FocusZone';
+import type { IListProps } from '@fluentui/react/lib/List';
+import type { IRenderFunction } from '@fluentui/utilities';
 
 export interface ITilesGridItemCellProps<TItem> {
   item: TItem;
@@ -61,7 +61,7 @@ export interface ITilesGridItem<TItem> {
   onRenderCell?: (props: ITilesGridItemCellProps<TItem>) => JSX.Element | null;
 }
 
-export const enum TilesGridMode {
+export enum TilesGridMode {
   /**
    * Every item in the grid gets its own row.
    */
@@ -133,8 +133,6 @@ export interface ITilesGridSegment<TItem> {
   isPlaceholder?: boolean;
 }
 
-export { ISize as ITileSize };
-
 export interface ITilesListProps<TItem>
   extends IBaseProps,
     React.Props<TilesList<TItem>>, // eslint-disable-line deprecation/deprecation
@@ -173,3 +171,5 @@ export interface ITilesListProps<TItem>
    */
   onRenderRoot?: IRenderFunction<ITilesListRootProps<TItem>>;
 }
+
+export type { ISize as ITileSize };

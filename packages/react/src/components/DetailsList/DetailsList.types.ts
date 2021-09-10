@@ -1,36 +1,26 @@
 import * as React from 'react';
 import { DetailsListBase } from './DetailsList.base';
-import { ISelection, SelectionMode, ISelectionZoneProps } from '../../Selection';
-import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
-import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
-import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
-import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
-import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
-import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import { IList, IListProps, ScrollToMode } from '../../List';
-import { ITheme, IStyle } from '../../Styling';
-import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import {
+import { SelectionMode } from '../../Selection';
+import { ScrollToMode } from '../../List';
+import type { ISelection, ISelectionZoneProps } from '../../Selection';
+import type { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
+import type { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
+import type { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
+import type { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
+import type { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
+import type { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
+import type { IList, IListProps } from '../../List';
+import type { ITheme, IStyle } from '../../Styling';
+import type { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
+import type { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import type {
   IDetailsColumnStyleProps,
   IDetailsColumnProps,
   IDetailsColumnStyles,
   IDetailsColumnFilterIconProps,
 } from './DetailsColumn.types';
-
-export {
-  IDetailsHeaderProps,
-  IDetailsRowBaseProps,
-  IDetailsHeaderBaseProps,
-  IDetailsFooterBaseProps,
-  IDragDropContext,
-  IDragDropEvents,
-  IDragDropHelper,
-  IDragDropOptions,
-  IViewport,
-  IWithViewportProps,
-};
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -336,6 +326,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** Role for the list. */
   role?: string;
+
+  /**
+   * Properties to pass through to the FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**
@@ -677,3 +672,16 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
 
 export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}
+
+export type {
+  IDetailsHeaderProps,
+  IDetailsRowBaseProps,
+  IDetailsHeaderBaseProps,
+  IDetailsFooterBaseProps,
+  IDragDropContext,
+  IDragDropEvents,
+  IDragDropHelper,
+  IDragDropOptions,
+  IViewport,
+  IWithViewportProps,
+};

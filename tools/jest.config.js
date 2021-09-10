@@ -8,8 +8,8 @@ module.exports = {
   preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.json',
       diagnostics: false,
+      tsconfig: '<rootDir>/tsconfig.json',
     },
   },
   transform: {

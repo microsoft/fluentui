@@ -91,7 +91,7 @@ export function preset() {
     const args = getJustArgv();
 
     return args.commonjs
-      ? 'ts:commonjs-only'
+      ? series('ts:commonjs-only')
       : parallel(
           condition('ts:commonjs', () => !args.min),
           'ts:esm',

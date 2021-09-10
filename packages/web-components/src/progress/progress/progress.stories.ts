@@ -1,8 +1,37 @@
-import Examples from './fixtures/linear.html';
-import './index';
+import { fluentProgress } from './index';
 
 export default {
-  title: 'Progress',
+  title: 'Components/Progress',
+  component: fluentProgress,
+  argTypes: {
+    paused: {
+      control: { type: 'boolean' },
+    },
+  },
 };
 
-export const Progress = () => Examples;
+const ProgressTemplate = ({ paused, value }) => `
+  <fluent-progress
+    ${paused ? `paused="${paused}"` : ''}
+    ${value ? `value=${value}` : ''}
+  ></fluent-progress>
+`;
+
+export const Progress = ProgressTemplate.bind({});
+
+Progress.args = {
+  value: 50,
+  paused: false,
+};
+
+const example = `
+<fluent-progress min="0" max="100" value="75"></fluent-progress>
+`;
+
+Progress.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};
