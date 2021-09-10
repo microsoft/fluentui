@@ -9,7 +9,7 @@ const options: IChoiceGroupOption[] = [
     imageAlt: 'Bar chart',
     selectedImageSrc: TestImages.choiceGroupBarSelected,
     imageSize: { width: 32, height: 32 },
-    text: 'Bar', // This text is long to show text wrapping.
+    text: 'Bar',
   },
   {
     key: 'pie',
