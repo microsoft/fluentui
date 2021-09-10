@@ -41,13 +41,13 @@ export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' |
    * The starting value for an uncontrolled RangedSlider.
    * Mutually exclusive with `value` prop.
    */
-  defaultValue?: [{ lowerThumb: number; upperThumb: number }];
+  defaultValue?: [{ lowerValue: number; upperValue: number }];
 
   /**
    * The current value of the controlled RangedSlider.
    * Mutually exclusive with `defaultValue` prop.
    */
-  value?: [{ lowerThumb: number; upperThumb: number }];
+  value?: [{ lowerValue: number; upperValue: number }];
 };
 
 export interface RangedSliderProps

@@ -15,33 +15,8 @@ import {
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { RangedSliderState } from './RangedSlider.types';
 
-/**
- * Focus styling for the lower hidden input. It applies the focus border around the thumb.
- */
-export const useInputLowerFocusStyles = makeStyles({
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      '& + .ms-Slider-thumb': {
-        background: 'red',
-      },
-    }),
-    { selector: 'focus' },
-  ),
-});
-
-/**
- * Focus styling for the upper hidden input. It applies the focus border around the upper thumb.
- */
-export const useInputUpperFocusStyles = makeStyles({
-  focusIndicator: createFocusIndicatorStyleRule(
-    theme => ({
-      '& + .ms-Slider-thumb': {
-        background: 'red',
-      },
-    }),
-    { selector: 'focus' },
-  ),
-});
+export const lowerThumbClassName = mergeClasses(thumbClassName, 'lower');
+export const upperThumbClassName = mergeClasses(thumbClassName, 'upper');
 
 /**
  * Styles for the Input slot
@@ -54,9 +29,26 @@ export const useInputStyles = makeStyles({
     margin: 0,
     width: '100%',
     height: '100%',
-    touchAction: 'none',
     pointerEvents: 'none',
   },
+
+  lowerInputFocusIndicator: createFocusIndicatorStyleRule(
+    theme => ({
+      '& + .lower': {
+        background: 'red',
+      },
+    }),
+    { selector: 'focus' },
+  ),
+
+  upperInputFocusIndicator: createFocusIndicatorStyleRule(
+    theme => ({
+      '& + .upper': {
+        background: 'red',
+      },
+    }),
+    { selector: 'focus' },
+  ),
 });
 
 export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderState => {
@@ -70,8 +62,6 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
   const thumbStyles = useThumbStyles();
   const activeRailStyles = useActiveRailStyles();
   const inputStyles = useInputStyles();
-  const inputLowerFocusStyles = useInputLowerFocusStyles();
-  const inputUpperFocusStyles = useInputLowerFocusStyles();
 
   state.root.className = mergeClasses(
     rootStyles.root,
@@ -127,7 +117,7 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
   );
 
   state.lowerThumb.className = mergeClasses(
-    thumbClassName,
+    lowerThumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
     state.disabled ? trackStyles.disabled : trackStyles.enabled,
@@ -141,7 +131,7 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
   );
 
   state.upperThumb.className = mergeClasses(
-    thumbClassName,
+    upperThumbClassName,
     thumbStyles.thumb,
     !state.vertical && thumbStyles.horizontal,
     state.disabled ? trackStyles.disabled : trackStyles.enabled,
@@ -156,12 +146,13 @@ export const useRangedSliderStyles = (state: RangedSliderState): RangedSliderSta
 
   state.inputLower.className = mergeClasses(
     inputStyles.input,
-    inputLowerFocusStyles.focusIndicator,
+    inputStyles.lowerInputFocusIndicator,
     state.inputLower.className,
   );
+
   state.inputUpper.className = mergeClasses(
     inputStyles.input,
-    inputUpperFocusStyles.focusIndicator,
+    inputStyles.upperInputFocusIndicator,
     state.inputUpper.className,
   );
 
