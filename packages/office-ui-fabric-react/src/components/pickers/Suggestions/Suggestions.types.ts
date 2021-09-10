@@ -5,7 +5,7 @@ import { IPersonaProps } from '../../Persona/Persona.types';
 import { IStyle, ITheme } from '../../../Styling';
 import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 import { ISuggestionItemProps } from './SuggestionsItem.types';
-
+import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
  * {@docCategory Pickers}
@@ -75,6 +75,11 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * The text that should appear at the top of the most recently used box.
    */
   mostRecentlyUsedHeaderText?: string;
+
+  /**
+   * The icon that appears indicating to the user that they can search for more results.
+   */
+  searchForMoreIcon?: IIconProps;
 
   /**
    * The text that appears indicating to the user that they can search for more results.
