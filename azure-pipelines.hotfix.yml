@@ -2,7 +2,7 @@ pr: none
 
 trigger: none
 
-pool: '1ES-Host-Ubuntu'
+pool: 'Self Host Ubuntu'
 
 workspace:
   clean: all
