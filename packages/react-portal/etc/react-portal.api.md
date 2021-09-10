@@ -13,13 +13,17 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
 export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
-export interface PortalProps {
-    children?: React_2.ReactNode;
-    mountNode?: HTMLDivElement | null;
+export interface PortalCommons {
+    children: React_2.ReactNode;
+    mountNode: HTMLDivElement | undefined;
 }
 
 // @public (undocumented)
-export interface PortalState extends PortalProps {
+export interface PortalProps extends Partial<PortalCommons> {
+}
+
+// @public (undocumented)
+export interface PortalState extends PortalCommons {
     shouldRender: boolean;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 }
@@ -31,8 +35,7 @@ export const renderPortal: (state: PortalState) => React_2.ReactElement;
 export function setVirtualParent(child: HTMLElement, parent?: HTMLElement): void;
 
 // @public
-export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => PortalState;
-
+export const usePortal: (props: PortalProps) => PortalState;
 
 // (No @packageDocumentation comment for this package)
 
