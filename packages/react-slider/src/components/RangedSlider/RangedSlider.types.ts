@@ -1,29 +1,29 @@
 import * as React from 'react';
-import { ComponentState, ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentState, ComponentProps } from '@fluentui/react-utilities';
 import type { SliderSlots, SliderCommons } from '../Slider/Slider.types';
 
 export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
   /**
    * The lower draggable icon used to select a given value in the RangedSlider.
    */
-  lowerThumb?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  lowerThumb: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the RangedSlider's lower thumb.
    * It is primarily used to handle the dragging animation from translateX.
    */
-  lowerThumbWrapper?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  lowerThumbWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The upper draggable icon used to select a given value in the RangedSlider.
    */
-  upperThumb?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  upperThumb: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The wrapper around the RangedSlider's upper thumb.
    * It is primarily used to handle the dragging animation from translateX.
    */
-  upperThumbWrapper?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  upperThumbWrapper: React.HTMLAttributes<HTMLElement>;
 
   /**
    * The hidden input for the Slider's lower thumb.
@@ -36,7 +36,7 @@ export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'in
   inputUpper: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLElement>;
 };
 
-export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' | 'origin'> & {
+export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> & {
   /**
    * The starting value for an uncontrolled RangedSlider.
    * Mutually exclusive with `value` prop.
@@ -48,6 +48,14 @@ export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' |
    * Mutually exclusive with `defaultValue` prop.
    */
   value?: { lowerValue: number; upperValue: number };
+
+  /**
+   * Triggers a callback when the value has been changed. This will be called on every individual step.
+   */
+  onChange?: (
+    ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
+    data: { value: { lowerValue: number; upperValue: number } },
+  ) => void;
 };
 
 export interface RangedSliderProps

@@ -12,8 +12,8 @@ export const markClassName = 'ms-Slider-mark';
  *
  * @param markValues The marks percentage position relative to their individual positions.
  */
-export const renderMarks = (markValues: number[]) =>
-  markValues.map((value, i) => (
+export const renderMarks = (markValues: number[]) => {
+  return markValues.map((value, i) => (
     <div className={markContainerClassName} key={`markItemContainer-${i}`}>
       <div
         className={mergeClasses(
@@ -24,3 +24,4 @@ export const renderMarks = (markValues: number[]) =>
       />
     </div>
   ));
+};

@@ -128,7 +128,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         }
       }
 
-      onChange?.(ev, { value: clampedValue });
+      onChange?.(ev, { value: currentValue });
       setCurrentValue({
         ...currentValue,
         [activeThumb.current]: clampedValue,
@@ -145,8 +145,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   //     onPointerDownCallback?.(ev);
 
-  //     disposables.current.push(on(target,
-  // 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
+  //     disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
   //       target.releasePointerCapture?.(pointerId);
   //     });
 
@@ -184,12 +183,16 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     [keyDown],
   );
 
-  // Root props
-  if (!disabled) {
-    // state.root.onPointerDown = onPointerDown;
-  }
+  useUnmount(() => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
+  });
 
   const lowerValuePercent = getPercent(currentValue.lowerValue, min, max);
+
+  const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
+
+  const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
 
   const lowerThumbWrapperStyles = {
     transform: vertical
@@ -206,6 +209,24 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       : `translateX(${dir === 'rtl' ? -upperValuePercent : upperValuePercent}%)`,
     ...state.upperThumbWrapper.style,
   };
+
+  const marksWrapperStyles = marks
+    ? {
+        [vertical ? 'gridTemplateRows' : 'gridTemplateColumns']: markPercent.join(''),
+        ...state.marksWrapper.style,
+      }
+    : {};
+
+  // Root props
+  if (!disabled) {
+    // state.root.onPointerDown = onPointerDown;
+  }
+
+  // Mark props
+  if (marks) {
+    state.marksWrapper.children = renderMarks(markValues);
+    state.marksWrapper.style = marksWrapperStyles;
+  }
 
   // Lower Thumb Wrapper Props
   state.lowerThumbWrapper.style = lowerThumbWrapperStyles;
