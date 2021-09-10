@@ -6967,7 +6967,6 @@ export interface IRenderGroupHeaderProps extends INavLinkGroup {
 
 // @public (undocumented)
 export interface IRenderNavLinkProps extends INavLink {
-    // (undocumented)
     nestingLevel?: number;
 }
 
