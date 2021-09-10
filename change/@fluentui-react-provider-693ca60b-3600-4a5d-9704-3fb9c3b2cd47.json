@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use simplified prop mergin",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

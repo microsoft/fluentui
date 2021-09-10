@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
-  "packageName": "@fluentui/react-accordion",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

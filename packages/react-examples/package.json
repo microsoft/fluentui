@@ -33,7 +33,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/azure-themes": "^8.1.66",
+    "@fluentui/azure-themes": "^8.1.67",
     "@fluentui/date-time-utilities": "^8.2.2",
     "@fluentui/example-data": "^8.2.6",
     "@fluentui/font-icons-mdl2": "^8.1.11",

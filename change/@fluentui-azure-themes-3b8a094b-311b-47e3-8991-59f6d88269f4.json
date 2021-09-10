@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed contrast ratio of Dropdown placeholder",
-  "packageName": "@fluentui/azure-themes",
-  "email": "67673432+q-xg@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

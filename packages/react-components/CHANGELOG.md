@@ -1,8 +1,104 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 16:31:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.105](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.105)
+
+Fri, 10 Sep 2021 16:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.104..@fluentui/react-components_v9.0.0-alpha.105)
+
+### Changes
+
+- `@fluentui/babel-make-styles`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/babel-make-styles to v9.0.0-alpha.46 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/jest-serializer-make-styles`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.39 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/make-styles-webpack-loader`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.19 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-accordion to v9.0.0-alpha.73 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-aria to v9.0.0-alpha.29 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-avatar to v9.0.0-alpha.78 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-badge to v9.0.0-alpha.78 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-button to v9.0.0-alpha.84 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-checkbox to v9.0.0-alpha.33 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-components`
+  - feat(react-components): Allow deep export of unstable components ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-components to v9.0.0-alpha.105 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-conformance-make-styles`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.8 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-context-selector`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-context-selector to v9.0.0-alpha.29 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-divider to v9.0.0-alpha.65 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-image`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-image to v9.0.0-alpha.76 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-label to v9.0.0-alpha.37 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-link to v9.0.0-alpha.79 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-make-styles`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-make-styles to v9.0.0-alpha.64 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-menu to v9.0.0-alpha.75 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-popover to v9.0.0-alpha.40 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - use simplified prop merging ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by olfedias@microsoft.com)
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-portal to v9.0.0-alpha.46 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-positioning to v9.0.0-alpha.52 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - use simplified prop mergin ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by olfedias@microsoft.com)
+  - Bump @fluentui/react-provider to v9.0.0-alpha.75 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-slider to v9.0.0-alpha.3 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-switch`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-switch to v9.0.0-alpha.2 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-tabster to v9.0.0-alpha.58 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-text to v9.0.0-alpha.13 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+  - Bump @fluentui/react-tooltip to v9.0.0-alpha.80 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.104](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.104)
 

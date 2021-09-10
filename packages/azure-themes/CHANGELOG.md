@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.67](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.67)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.66..@fluentui/azure-themes_v8.1.67)
+
+### Patches
+
+- Fixed contrast ratio of Dropdown placeholder ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by 67673432+q-xg@users.noreply.github.com)
 
 ## [8.1.66](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.66)
 
