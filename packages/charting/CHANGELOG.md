@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 06 Sep 2021 12:26:23 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Sep 2021 12:24:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.17.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.17.3)
+
+Fri, 10 Sep 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.17.2..@uifabric/charting_v4.17.3)
+
+### Patches
+
+- Dots for all points will render with opacity as 1 or 0.01 depends on line is active or not. This is done becouse reverse focus was not proper in line chart ([PR #19709](https://github.com/microsoft/fluentui/pull/19709) by v-scharde@microsoft.com)
 
 ## [4.17.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.17.2)
 

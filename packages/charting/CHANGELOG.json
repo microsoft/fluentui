@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 10 Sep 2021 12:24:23 GMT",
+      "tag": "@uifabric/charting_v4.17.3",
+      "version": "4.17.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dots for all points will render with opacity as 1 or 0.01 depends on line is active or not. This is done becouse reverse focus was not proper in line chart",
+            "author": "v-scharde@microsoft.com",
+            "commit": "8e0931dc0dd8eb73122bc369b7775887df910544",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Sep 2021 12:26:23 GMT",
       "tag": "@uifabric/charting_v4.17.2",
       "version": "4.17.2",
