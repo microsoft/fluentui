@@ -34,10 +34,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.31",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.63",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
-    "@fluentui/react-utilities": "^9.0.0-alpha.45",
+    "@fluentui/make-styles": "9.0.0-alpha.31",
+    "@fluentui/react-make-styles": "9.0.0-alpha.63",
+    "@fluentui/react-shared-contexts": "9.0.0-alpha.23",
+    "@fluentui/react-utilities": "9.0.0-alpha.45",
     "keyborg": "^1.0.0",
     "tabster": "^1.0.0",
     "tslib": "^2.1.0"

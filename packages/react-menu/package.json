@@ -44,15 +44,15 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.0-alpha.3",
-    "@fluentui/react-context-selector": "^9.0.0-alpha.28",
+    "@fluentui/keyboard-keys": "9.0.0-alpha.3",
+    "@fluentui/react-context-selector": "9.0.0-alpha.28",
     "@fluentui/react-icons": "^1.1.136",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.63",
-    "@fluentui/react-portal": "^9.0.0-alpha.45",
-    "@fluentui/react-positioning": "^9.0.0-alpha.51",
-    "@fluentui/react-provider": "^9.0.0-alpha.74",
-    "@fluentui/react-tabster": "^9.0.0-alpha.57",
-    "@fluentui/react-utilities": "^9.0.0-alpha.45",
+    "@fluentui/react-make-styles": "9.0.0-alpha.63",
+    "@fluentui/react-portal": "9.0.0-alpha.45",
+    "@fluentui/react-positioning": "9.0.0-alpha.51",
+    "@fluentui/react-provider": "9.0.0-alpha.74",
+    "@fluentui/react-tabster": "9.0.0-alpha.57",
+    "@fluentui/react-utilities": "9.0.0-alpha.45",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
