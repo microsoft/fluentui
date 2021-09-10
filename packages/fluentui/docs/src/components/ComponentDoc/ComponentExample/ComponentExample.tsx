@@ -41,6 +41,30 @@ import config from '../../../config';
 
 const ERROR_COLOR = '#D34';
 
+const editorTheme = mergeThemes(
+  teamsDarkTheme,
+  createTheme(
+    {
+      siteVariables: {
+        bodyBackground: EDITOR_GUTTER_COLOR,
+      },
+      componentVariables: {
+        Menu: {
+          borderColor: 'transparent',
+          underlinedBottomBorderWidth: 0,
+        },
+        MenuItem: {
+          horizontalPadding: pxToRem(8),
+        },
+        MenuItemWrapper: {
+          borderColor: 'transparent',
+        },
+      },
+    },
+    'ComponentExampleCode',
+  ),
+);
+
 export interface ComponentExampleProps
   extends RouteComponentProps<any, any>,
     ComponentSourceManagerRenderProps,
@@ -363,31 +387,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     const { currentCode = '', handleCodeChange } = this.props;
 
     return (
-      <Provider
-        theme={mergeThemes(
-          teamsDarkTheme,
-          createTheme(
-            {
-              siteVariables: {
-                bodyBackground: EDITOR_GUTTER_COLOR,
-              },
-              componentVariables: {
-                Menu: {
-                  borderColor: 'transparent',
-                  underlinedBottomBorderWidth: 0,
-                },
-                MenuItem: {
-                  horizontalPadding: pxToRem(8),
-                },
-                MenuItemWrapper: {
-                  borderColor: 'transparent',
-                },
-              },
-            },
-            'ComponentExampleCode',
-          ),
-        )}
-      >
+      <Provider theme={editorTheme}>
         <div style={{ padding: `0 ${pxToRem(19)}` }}>
           <Flex styles={{ justifyContent: 'space-between' }}>
             {this.renderAPIsMenu()}
