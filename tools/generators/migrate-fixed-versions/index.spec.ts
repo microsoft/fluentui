@@ -28,7 +28,7 @@ xdescribe('migrate-fixed-versions generator', () => {
     tree = setupDummyPackage(tree, options);
   });
 
-  it('should run successfully', async () => {
+  it('should successfully migrate depedencies', async () => {
     tree = setupDummyPackage(tree, {
       name: '@proj/react-button',
       version: '9.0.0-alpha.0',
@@ -53,6 +53,32 @@ xdescribe('migrate-fixed-versions generator', () => {
     `);
   });
 
+  it('should successfully migrate dev depedencies', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-button',
+      version: '9.0.0-alpha.0',
+      dependencies: {},
+      devDependencies: {
+        '@proj/make-styles': '^9.0.0-alpha.1',
+      },
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-button/src' },
+    });
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '9.0.0-alpha.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+    });
+
+    await generator(tree, { name: '@proj/react-button' });
+
+    const packageJson = readJson(tree, 'packages/react-button/package.json');
+    expect(packageJson.devDependencies).toMatchInlineSnapshot(`
+      Object {
+        "@proj/make-styles": "9.0.0-alpha.1",
+      }
+    `);
+  });
+
   it('should not migrate third party dependencies', async () => {
     tree = setupDummyPackage(tree, {
       name: '@proj/react-positioning',
@@ -66,6 +92,26 @@ xdescribe('migrate-fixed-versions generator', () => {
 
     const packageJson = readJson(tree, 'packages/react-positioning/package.json');
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
+      Object {
+        "popperjs/core": "^1.0.0",
+      }
+    `);
+  });
+
+  it('should not migrate third party dev dependencies', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-positioning',
+      version: '9.0.0-alpha.0',
+      dependencies: {},
+      devDependencies: {
+        'popperjs/core': '^1.0.0',
+      },
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/react-positioning/src' },
+    });
+    await generator(tree, { name: '@proj/react-positioning' });
+
+    const packageJson = readJson(tree, 'packages/react-positioning/package.json');
+    expect(packageJson.devDependencies).toMatchInlineSnapshot(`
       Object {
         "popperjs/core": "^1.0.0",
       }
@@ -124,7 +170,7 @@ xdescribe('migrate-fixed-versions generator', () => {
       });
     });
 
-    it('should migrate all web packages', async () => {
+    it('should migrate all packages', async () => {
       await generator(tree, { all: true, name: '' });
 
       const reactButtonPackageJson = readJson(tree, 'packages/react-button/package.json');
@@ -141,17 +187,6 @@ xdescribe('migrate-fixed-versions generator', () => {
         }
       `);
     });
-
-    it('should skip all non-web packages', async () => {
-      await generator(tree, { all: true, name: '' });
-
-      const packageJson = readJson(tree, 'packages/babel-make-styles/package.json');
-      expect(packageJson.dependencies).toMatchInlineSnapshot(`
-        Object {
-          "@proj/make-styles": "^9.0.0-alpha.1",
-        }
-      `);
-    });
   });
 });
 
@@ -160,6 +195,7 @@ function setupDummyPackage(
   options: MigrateFixedVersionsGeneratorSchema &
     Partial<{
       version: string;
+      devDependencies: Record<string, string>;
       dependencies: Record<string, string>;
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
     }>,
@@ -188,6 +224,7 @@ function setupDummyPackage(
       name: pkgName,
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
+      devDependencies: normalizedOptions.devDependencies,
     },
   };
 
