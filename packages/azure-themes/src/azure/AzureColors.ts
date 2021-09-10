@@ -612,7 +612,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hyperlinkHovered: BaseColors.BLUE_004578,
     success: BaseColors.GREEN_428000,
     error: BaseColors.RED_A4262C,
-    placeholder: BaseColors.GRAY_8A8886,
+    placeholder: BaseColors.GRAY_605E5C,
   },
   statusBar: {
     link: BaseColors.BLUE_106EBE,
