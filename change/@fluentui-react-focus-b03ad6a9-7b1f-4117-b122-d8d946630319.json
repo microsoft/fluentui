@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "disable 'consistent-callback-args' test in FocusZone",
-  "packageName": "@fluentui/react-focus",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
