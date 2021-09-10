@@ -13,7 +13,7 @@ import { MigrateFixedVersionsGeneratorSchema } from './schema';
 
 const noop = () => null;
 
-xdescribe('migrate-fixed-versions generator', () => {
+describe('migrate-fixed-versions generator', () => {
   let tree: Tree;
   const options: MigrateFixedVersionsGeneratorSchema = { name: 'test' };
 
