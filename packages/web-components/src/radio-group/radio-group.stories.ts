@@ -1,9 +1,46 @@
-import Examples from './fixtures/radio-group.html';
-
-import './index';
+import { fluentRadioGroup } from './index';
 
 export default {
-  title: 'Radio Group',
+  title: 'Components/Radio Group',
+  component: fluentRadioGroup,
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    required: {
+      control: { type: 'boolean' },
+    },
+  },
 };
 
-export const RadioGroup = () => Examples;
+const RadioGroupTemplate = ({ disabled, required }) => `
+  <fluent-radio-group
+    ${disabled ? 'disabled' : ''}
+    ${required ? 'required' : ''}
+  >
+    <fluent-radio>Apples</fluent-radio>
+    <fluent-radio>Bananas</fluent-radio>
+  </fluent-radio-group>`;
+
+export const RadioGroup = RadioGroupTemplate.bind({});
+
+RadioGroup.args = {
+  disabled: false,
+  required: false,
+};
+
+const example = `
+<fluent-radio-group name="numbers">
+  <label style="color: --var(neutral-foreground-rest)" slot="label"> Numbers </label>
+  <fluent-radio value="one">One</fluent-radio>
+  <fluent-radio value="two">Two</fluent-radio>
+</fluent-radio-group>
+`;
+
+RadioGroup.parameters = {
+  docs: {
+    source: {
+      code: example,
+    },
+  },
+};
