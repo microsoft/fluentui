@@ -4,11 +4,11 @@ import { getRTL, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
 import type { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from './ContextualMenuItem.types';
 
-const defaultIconRenderer = (props:IContextualMenuItemProps) => {
+const defaultIconRenderer = (props: IContextualMenuItemProps) => {
   const { item, classNames } = props;
   const { iconProps } = item;
   return <Icon {...iconProps} className={classNames.icon} />;
-}
+};
 
 const renderItemIcon = (props: IContextualMenuItemProps) => {
   const { item, hasIcons } = props;
