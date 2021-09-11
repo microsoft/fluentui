@@ -21,7 +21,7 @@ export const upperThumbClassName = mergeClasses(thumbClassName, 'upper');
 /**
  * Styles for the Input slot
  */
-export const useInputStyles = makeStyles({
+const useInputStyles = makeStyles({
   input: {
     opacity: 0,
     position: 'absolute',

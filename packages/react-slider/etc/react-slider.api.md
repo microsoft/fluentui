@@ -9,6 +9,54 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
+// @public (undocumented)
+export const lowerThumbClassName: string;
+
+// @public
+export const RangedSlider: React_2.ForwardRefExoticComponent<Pick<RangedSliderProps, "slot" | "style" | "title" | "track" | "children" | "rail" | "sliderWrapper" | "trackWrapper" | "marksWrapper" | "activeRail" | "onChange" | "defaultValue" | "defaultChecked" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "css" | "key" | "as" | "value" | "min" | "max" | "step" | "keyboardStep" | "disabled" | "ariaValueText" | "marks" | "vertical" | "size" | "lowerThumb" | "lowerThumbWrapper" | "upperThumb" | "upperThumbWrapper" | "inputLower" | "inputUpper"> & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> & {
+    defaultValue?: {
+        lowerValue: number;
+        upperValue: number;
+    };
+    value?: {
+        lowerValue: number;
+        upperValue: number;
+    };
+    onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
+        value: {
+            lowerValue: number;
+            upperValue: number;
+        };
+    }) => void;
+};
+
+// @public (undocumented)
+export interface RangedSliderProps extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>, RangedSliderCommons {
+}
+
+// @public
+export const rangedSliderShorthandProps: (keyof RangedSliderSlots)[];
+
+// @public (undocumented)
+export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'input'> & {
+    lowerThumb: React_2.HTMLAttributes<HTMLElement>;
+    lowerThumbWrapper: React_2.HTMLAttributes<HTMLElement>;
+    upperThumb: React_2.HTMLAttributes<HTMLElement>;
+    upperThumbWrapper: React_2.HTMLAttributes<HTMLElement>;
+    inputLower: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLElement>;
+    inputUpper: React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLElement>;
+};
+
+// @public (undocumented)
+export interface RangedSliderState extends ComponentState<RangedSliderSlots>, RangedSliderCommons {
+}
+
+// @public
+export const renderRangedSlider: (state: RangedSliderState) => JSX.Element;
+
 // @public
 export const renderSlider: (state: SliderState) => JSX.Element;
 
@@ -59,6 +107,33 @@ export type SliderSlots = {
 export interface SliderState extends ComponentState<SliderSlots>, SliderCommons {
 }
 
+// @public (undocumented)
+export const thumbClassName = "ms-Slider-thumb";
+
+// @public (undocumented)
+export const trackClassName = "ms-Slider-track";
+
+// @public (undocumented)
+export const upperThumbClassName: string;
+
+// @public
+export const useActiveRailStyles: () => Record<"activeRail" | "vertical" | "horizontal", string>;
+
+// @public
+export const useMarksWrapperStyles: () => Record<"marksWrapper" | "vertical" | "horizontal", string>;
+
+// @public
+export const useRailStyles: () => Record<"rail" | "disabled" | "vertical" | "horizontal" | "enabled", string>;
+
+// @public
+export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
+
+// @public (undocumented)
+export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
+
+// @public
+export const useRootStyles: () => Record<"small" | "medium" | "root" | "disabled" | "vertical" | "horizontal" | "enabled" | "focusIndicator", string>;
+
 // @public
 export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
 
@@ -67,6 +142,21 @@ export const useSliderState: (state: SliderState) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;
+
+// @public
+export const useSliderWrapper: () => Record<"sliderWrapper" | "vertical" | "horizontal", string>;
+
+// @public
+export const useThumbStyles: () => Record<"thumb" | "disabled" | "horizontal" | "enabled", string>;
+
+// @public
+export const useThumbWrapperStyles: () => Record<"thumbWrapper" | "vertical" | "horizontal", string>;
+
+// @public
+export const useTrackStyles: () => Record<"track" | "disabled" | "vertical" | "horizontal" | "enabled", string>;
+
+// @public
+export const useTrackWrapperStyles: () => Record<"trackWrapper" | "vertical" | "horizontal", string>;
 
 // (No @packageDocumentation comment for this package)
 

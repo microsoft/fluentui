@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import {
-  useBoolean,
-  useControllableState,
-  useEventCallback,
-  useUnmount,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useUnmount, useMergedRefs } from '@fluentui/react-utilities';
 import {
   on,
   clamp,
@@ -78,6 +72,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const updateValue = useEventCallback(
     (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
+      const newValue = {
+        ...currentValue,
+        [activeThumb.current]: clampedValue,
+      };
 
       if (clampedValue !== min && clampedValue !== max) {
         ev.stopPropagation();
@@ -86,11 +84,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         }
       }
 
-      onChange?.(ev, { value: currentValue });
-      setCurrentValue({
-        ...currentValue,
-        [activeThumb.current]: clampedValue,
-      });
+      onChange?.(ev, { value: newValue });
+      setCurrentValue(newValue);
     },
   );
 
@@ -194,8 +189,11 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     : {};
 
   const trackStyles = {
-    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: `${lowerValuePercent}%`,
-    [vertical ? 'height' : 'width']: `${upperValuePercent - lowerValuePercent}%`,
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: `${Math.min(lowerValuePercent, upperValuePercent)}%`,
+    [vertical ? 'height' : 'width']: `${Math.max(
+      upperValuePercent - lowerValuePercent,
+      lowerValuePercent - upperValuePercent,
+    )}%`,
     ...state.track.style,
   };
 
