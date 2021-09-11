@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { useControllableState, useEventCallback, useUnmount, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  useBoolean,
+  useControllableState,
+  useEventCallback,
+  useUnmount,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import {
   on,
   clamp,
@@ -60,6 +66,9 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const activeThumb = React.useRef<'lowerValue' | 'upperValue'>('lowerValue');
   const disposables = React.useRef<(() => void)[]>([]);
 
+  const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [renderedPosition, setRenderedPosition] = React.useState<any>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clampRangedThumbValues(value, min, max),
     defaultState: clampRangedThumbValues(defaultValue, min, max),
@@ -89,25 +98,49 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     },
   );
 
+  /**
+   * Updates the controlled `currentValue` and `renderedPosition` of the Slider.
+   */
+  const updatePosition = React.useCallback(
+    (incomingValue: number, ev) => {
+      setRenderedPosition({
+        ...renderedPosition,
+        [activeThumb.current]: clamp(incomingValue, min, max),
+      });
+      updateValue(incomingValue, ev);
+    },
+    [max, min, renderedPosition, updateValue],
+  );
+
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = calculateSteps(ev, railRef, min, max, step, vertical, dir);
       const currentStepPosition = Math.round(position / step) * step;
 
+      setRenderedPosition({
+        ...renderedPosition,
+        [activeThumb.current]: position,
+      });
       updateValue(currentStepPosition, ev);
     },
-    [dir, max, min, step, updateValue, vertical],
+    [dir, max, min, renderedPosition, step, updateValue, vertical],
   );
 
-  const onPointerUp = React.useCallback((ev: React.PointerEvent<HTMLDivElement>): void => {
-    disposables.current.forEach(dispose => dispose());
-    disposables.current = [];
-    if (activeThumb.current === 'lowerValue') {
-      lowerInputRef.current!.focus();
-    } else {
-      upperInputRef.current!.focus();
-    }
-  }, []);
+  const onPointerUp = React.useCallback(
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      disposables.current.forEach(dispose => dispose());
+      disposables.current = [];
+      showStepAnimation();
+      // When undefined, the position fallbacks to the currentValue state.
+      setRenderedPosition(undefined);
+      if (activeThumb.current === 'lowerValue') {
+        lowerInputRef.current!.focus();
+      } else {
+        upperInputRef.current!.focus();
+      }
+    },
+    [showStepAnimation],
+  );
 
   const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
@@ -116,6 +149,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
       target.setPointerCapture?.(pointerId);
       onPointerDownCallback?.(ev);
+      hideStepAnimation();
       activeThumb.current = findClosestThumb(currentValue, calculateSteps(ev, railRef, min, max, step, vertical, dir));
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
         target.releasePointerCapture?.(pointerId);
@@ -123,12 +157,17 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
       onPointerMove(ev);
     },
-    [currentValue, dir, max, min, onPointerDownCallback, onPointerMove, onPointerUp, step, vertical],
+    [currentValue, dir, hideStepAnimation, max, min, onPointerDownCallback, onPointerMove, onPointerUp, step, vertical],
   );
+
+  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    updatePosition(Number(ev.target.value), ev);
+  };
 
   const keyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
       onKeyDownCallback?.(ev);
+      hideStepAnimation();
 
       const incomingValue = getKeydownValue(ev, currentValue[activeThumb.current], min, max, dir, keyboardStep);
 
@@ -136,7 +175,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         updateValue(incomingValue, ev);
       }
     },
-    [currentValue, dir, keyboardStep, max, min, onKeyDownCallback, updateValue],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updateValue],
   );
 
   const onKeyDownLower = React.useCallback(
@@ -160,24 +199,37 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     disposables.current = [];
   });
 
-  const lowerValuePercent = getPercent(currentValue.lowerValue, min, max);
+  const lowerValuePercent = getPercent(
+    renderedPosition !== undefined ? renderedPosition.lowerValue : currentValue.lowerValue,
+    min,
+    max,
+  );
+
+  const upperValuePercent = getPercent(
+    renderedPosition !== undefined ? renderedPosition.upperValue : currentValue.upperValue,
+    min,
+    max,
+  );
 
   const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
   const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
+
+  // TODO: Awaiting animation time from design spec.
+  const animationTime = '0.1s';
 
   const lowerThumbWrapperStyles = {
     transform: vertical
       ? `translateY(${lowerValuePercent}%)`
       : `translateX(${dir === 'rtl' ? -lowerValuePercent : lowerValuePercent}%)`,
+    transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.lowerThumbWrapper.style,
   };
-
-  const upperValuePercent = getPercent(currentValue.upperValue, min, max);
 
   const upperThumbWrapperStyles = {
     transform: vertical
       ? `translateY(${upperValuePercent}%)`
       : `translateX(${dir === 'rtl' ? -upperValuePercent : upperValuePercent}%)`,
+    transition: stepAnimation ? `transform ease-in-out ${animationTime}` : 'none',
     ...state.upperThumbWrapper.style,
   };
 
@@ -194,6 +246,11 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       upperValuePercent - lowerValuePercent,
       lowerValuePercent - upperValuePercent,
     )}%`,
+    transition: stepAnimation
+      ? `${vertical ? 'height' : 'width'} ease-in-out ${animationTime}${
+          ', ' + vertical ? 'top' : dir === 'rtl' ? 'right' : 'left' + 'ease-in-out ' + animationTime
+        }`
+      : 'none',
     ...state.track.style,
   };
 
@@ -229,7 +286,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   state.inputLower.disabled = disabled;
   state.inputLower.step = step;
   state.inputLower.onKeyDown = onKeyDownLower;
-  // state.inputLower.onChange = onInputChange;
+  state.inputLower.onChange = onInputChange;
 
   // Upper Input Props
   state.inputUpper.ref = useMergedRefs(state.inputUpper.ref, upperInputRef);
@@ -240,7 +297,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   state.inputUpper.disabled = disabled;
   state.inputUpper.step = step;
   state.inputUpper.onKeyDown = onKeyDownUpper;
-  // state.inputUpper.onChange = onInputChange;
+  state.inputUpper.onChange = onInputChange;
 
   return state;
 };
