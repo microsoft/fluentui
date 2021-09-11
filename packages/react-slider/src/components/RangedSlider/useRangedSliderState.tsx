@@ -161,9 +161,12 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     [currentValue, dir, hideStepAnimation, max, min, onPointerDownCallback, onPointerMove, onPointerUp, step, vertical],
   );
 
-  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    updatePosition(Number(ev.target.value), ev);
-  };
+  const onInputChange = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
+      updatePosition(Number(ev.target.value), ev);
+    },
+    [updatePosition],
+  );
 
   const keyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
@@ -173,10 +176,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       const incomingValue = getKeydownValue(ev, currentValue[activeThumb.current], min, max, dir, keyboardStep);
 
       if (currentValue[activeThumb.current] !== incomingValue) {
-        updateValue(incomingValue, ev);
+        updatePosition(incomingValue, ev);
       }
     },
-    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updateValue],
+    [currentValue, dir, hideStepAnimation, keyboardStep, max, min, onKeyDownCallback, updatePosition],
   );
 
   const onKeyDownLower = React.useCallback(

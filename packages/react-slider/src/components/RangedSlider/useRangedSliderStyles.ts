@@ -27,8 +27,8 @@ const useInputStyles = makeStyles({
     position: 'absolute',
     padding: 0,
     margin: 0,
-    width: '100%',
-    height: '100%',
+    width: '0px',
+    height: '0px',
     pointerEvents: 'none',
   },
 
