@@ -104,12 +104,12 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
       setRenderedPosition({
-        ...renderedPosition,
+        ...currentValue,
         [activeThumb.current]: clamp(incomingValue, min, max),
       });
       updateValue(incomingValue, ev);
     },
-    [max, min, renderedPosition, updateValue],
+    [currentValue, max, min, updateValue],
   );
 
   const onPointerMove = React.useCallback(
@@ -118,12 +118,13 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       const currentStepPosition = Math.round(position / step) * step;
 
       setRenderedPosition({
-        ...renderedPosition,
+        ...currentValue,
         [activeThumb.current]: position,
       });
+
       updateValue(currentStepPosition, ev);
     },
-    [dir, max, min, renderedPosition, step, updateValue, vertical],
+    [currentValue, dir, max, min, step, updateValue, vertical],
   );
 
   const onPointerUp = React.useCallback(
