@@ -19,69 +19,24 @@ import {
 } from '../../utils/index';
 import { RangedSliderState } from './RangedSlider.types';
 
-/**
- * Replaces a value at a given index in an array.
- */
-const replaceAt = (array: number[], index: number, value: number) => {
-  const result = array.slice(0);
-  result[index] = value;
-  return result;
-};
-
-/**
- * Converts an unknown number or number array value to always be a number array.
- *
- * @param value the value to convert to a number array
- */
-const toNumberArray = (value: number | number[]): number[] => {
-  return typeof value === 'number' ? [value] : value;
-};
-
-/**
- * Finds the closest value in an array and returns it's index.
- */
-const findClosestArrayValue = (array: number[], value: number) => {
-  let closestValue = Math.abs(array[0] - value);
-  let index = 0;
-
-  for (let i = 0; i < array.length; i++) {
-    const newValue = Math.abs(array[i] - value);
-    if (newValue < closestValue) {
-      closestValue = newValue;
-      index = i;
-    }
-  }
-
-  return index;
-};
-
-/**
- * Clamps the values in an array to a given min and max.
- */
-const clampArray = (array: number[], min: number, max: number) => {
-  const clampedArray = [];
-  for (let i = 0; i < array.length; i++) {
-    const clampedValue = clamp(array[i], min, max);
-    clampedArray.push(clampedValue);
-  }
-  return clampedArray;
-};
-
-/**
- * Clamps object's `values` to a number between the min and max.
- *
- * @param object - the object to be clamped
- * @param min - the lowest valid value
- * @param max - the highest valid value
- */
-// const clampObject = <T,>(object: T, min: number, max: number): T =>
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//   object.map((value: number) => clamp(value, min, max));
-
 type RangedValue = { lowerValue: number; upperValue: number };
 
-const clampObject = (object: RangedValue, min: number, max: number): RangedValue => {
-  return object;
+/**
+ * Finds the closest thumb based of a given value and returns it's key.
+ */
+const findClosestThumb = (object: RangedValue, incomingValue: number) => {
+  return incomingValue - object.lowerValue <= object.upperValue - incomingValue ? 'lowerValue' : 'upperValue';
+};
+/**
+ * Clamps the values in RangedSlider to a given min and max
+ */
+const clampRangedThumbValues = (object: RangedValue, min: number, max: number): RangedValue => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const result: any = {};
+  for (const [key, value] of Object.entries(object)) {
+    result[key] = clamp(value, min, max);
+  }
+  return result as RangedValue;
 };
 
 export const useRangedSliderState = (state: RangedSliderState) => {
@@ -109,8 +64,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const disposables = React.useRef<(() => void)[]>([]);
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value && clampObject(value, min, max),
-    defaultState: clampObject(defaultValue, min, max),
+    state: value && clampRangedThumbValues(value, min, max),
+    defaultState: clampRangedThumbValues(defaultValue, min, max),
     initialState: { lowerValue: min, upperValue: max },
   });
 
@@ -136,23 +91,42 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     },
   );
 
-  // const onPointerDown = React.useCallback(
-  //   (ev: React.PointerEvent<HTMLDivElement>): void => {
-  //     const { pointerId } = ev;
-  //     const target = ev.target as HTMLElement;
+  const onPointerMove = React.useCallback(
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      const position = calculateSteps(ev, railRef, min, max, step, vertical, dir);
+      const currentStepPosition = Math.round(position / step) * step;
 
-  //     target.setPointerCapture?.(pointerId);
+      updateValue(currentStepPosition, ev);
+    },
+    [dir, max, min, step, updateValue, vertical],
+  );
 
-  //     onPointerDownCallback?.(ev);
+  const onPointerUp = React.useCallback((ev: React.PointerEvent<HTMLDivElement>): void => {
+    disposables.current.forEach(dispose => dispose());
+    disposables.current = [];
+    if (activeThumb.current === 'lowerValue') {
+      lowerInputRef.current!.focus();
+    } else {
+      upperInputRef.current!.focus();
+    }
+  }, []);
 
-  //     disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-  //       target.releasePointerCapture?.(pointerId);
-  //     });
+  const onPointerDown = React.useCallback(
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      const { pointerId } = ev;
+      const target = ev.target as HTMLElement;
 
-  //     onPointerMove(ev);
-  //   },
-  //   [hideStepAnimation, onPointerDownCallback, onPointerMove, onPointerUp],
-  // );
+      target.setPointerCapture?.(pointerId);
+      onPointerDownCallback?.(ev);
+      activeThumb.current = findClosestThumb(currentValue, calculateSteps(ev, railRef, min, max, step, vertical, dir));
+      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
+        target.releasePointerCapture?.(pointerId);
+      });
+
+      onPointerMove(ev);
+    },
+    [currentValue, dir, max, min, onPointerDownCallback, onPointerMove, onPointerUp, step, vertical],
+  );
 
   const keyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
@@ -191,7 +165,6 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const lowerValuePercent = getPercent(currentValue.lowerValue, min, max);
 
   const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
-
   const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
 
   const lowerThumbWrapperStyles = {
@@ -219,7 +192,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   // Root props
   if (!disabled) {
-    // state.root.onPointerDown = onPointerDown;
+    state.root.onPointerDown = onPointerDown;
   }
 
   // Mark props
