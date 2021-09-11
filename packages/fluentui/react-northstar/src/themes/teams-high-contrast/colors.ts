@@ -143,6 +143,7 @@ export const colorScheme: ColorSchemeMapping = {
     background4: colors.black,
     background5: colors.white,
     background6: colors.white,
+    background7: colors.black,
 
     border: colors.white, // buttons
     border1: colors.white,

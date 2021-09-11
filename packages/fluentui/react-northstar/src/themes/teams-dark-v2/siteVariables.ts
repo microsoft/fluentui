@@ -69,6 +69,7 @@ export const colorScheme = {
     background3: colors.brand['1000'],
     background4: colors.grey['910'],
     background5: colors.brand['900'],
+    background7: colors.brand['600'],
 
     foreground: colors.brand['450'],
     foreground1: colors.brand['450'],

@@ -101,6 +101,7 @@ export const colorScheme: ColorSchemeMapping = {
     background4: colors.grey[650],
     background5: colors.brand[900],
     background6: colors.brand[450],
+    background7: colors.brand[600],
 
     border: colors.grey[450],
     border1: colors.brand[800],

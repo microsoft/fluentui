@@ -11,18 +11,18 @@ import { TeamsColorNames, TeamsContextualColors, TeamsNaturalColors, TeamsTransp
 
 export const contextualColors: TeamsContextualColors = {
   brand: {
-    50: '#E8EBFA', // siteVariables.brand16, same as prev
-    100: '#DCDFFA', // brand15
-    200: '#C5CBFA', // 100, light brand14, dark theme brand02
-    300: '#ACB3FA', // 200, light brand12, dark theme brand04
-    400: '#9399F5', // dark theme brand06 (dark06)
-    450: '#9399F5',
-    500: '#7A80EB', // light08, dark08
-    600: '#5B5FC7', // 500, siteVariables.brand, siteVariables.brand06, dark theme brand, brand12
-    700: '#444791', // light05
-    800: '#3D3E78', // light04, dark14
-    900: '#383966', // siteVariables.brand02, dark theme brand16, same as 900 prev
-    1000: '#2F2F4A',
+    50: '#F4F4FC', // siteVariables.brand16, same as prev
+    100: '#E5E5F1', // brand15
+    200: '#E2E2F6', // 100, light brand14, dark theme brand02
+    300: '#BDBDE6', // 200, light brand12, dark theme brand04
+    400: '#A6A7DC', // dark theme brand06 (dark06)
+    450: '#9EA2FF',
+    500: '#8B8CC7', // light08, dark08
+    600: '#6264A7', // 500, siteVariables.brand, siteVariables.brand06, dark theme brand, brand12
+    700: '#585A96', // light05
+    800: '#464775', // light04, dark14
+    900: '#33344A', // siteVariables.brand02, dark theme brand16, same as 900 prev
+    1000: '#373644',
   },
 };
 
@@ -311,6 +311,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background4: colors.brand[800],
     background5: colors.brand[100],
     background6: colors.brand[600],
+    background7: colors.brand[600],
 
     border: colors.grey[200],
     border1: colors.brand[200],
