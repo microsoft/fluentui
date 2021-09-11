@@ -25,8 +25,11 @@ type RangedValue = { lowerValue: number; upperValue: number };
  * Finds the closest thumb based of a given value and returns it's key.
  */
 const findClosestThumb = (object: RangedValue, incomingValue: number) => {
-  return incomingValue - object.lowerValue <= object.upperValue - incomingValue ? 'lowerValue' : 'upperValue';
+  return Math.abs(incomingValue - object.lowerValue) <= Math.abs(object.upperValue - incomingValue)
+    ? 'lowerValue'
+    : 'upperValue';
 };
+
 /**
  * Clamps the values in RangedSlider to a given min and max
  */
@@ -190,10 +193,19 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       }
     : {};
 
+  const trackStyles = {
+    [vertical ? 'top' : dir === 'rtl' ? 'right' : 'left']: `${lowerValuePercent}%`,
+    [vertical ? 'height' : 'width']: `${upperValuePercent - lowerValuePercent}%`,
+    ...state.track.style,
+  };
+
   // Root props
   if (!disabled) {
     state.root.onPointerDown = onPointerDown;
   }
+
+  // Track Props
+  state.track.style = trackStyles;
 
   // Mark props
   if (marks) {
