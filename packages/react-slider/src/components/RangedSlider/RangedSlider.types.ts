@@ -36,7 +36,7 @@ export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'in
   inputUpper: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLElement>;
 };
 
-export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> & {
+export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
   /**
    * The starting value for an uncontrolled RangedSlider.
    * Mutually exclusive with `value` prop.
@@ -56,7 +56,7 @@ export type RangedSliderCommons = Omit<SliderCommons, 'value' | 'defaultValue' |
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
     data: { value: { lowerValue: number; upperValue: number } },
   ) => void;
-};
+}
 
 export interface RangedSliderProps
   extends Omit<ComponentProps<RangedSliderSlots>, 'onChange' | 'defaultValue'>,
