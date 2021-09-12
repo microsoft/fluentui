@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react-northstar';
+import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection, Text } from '@fluentui/react-northstar';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const robinAvatar = {
@@ -70,7 +70,12 @@ const items: ShorthandCollection<ChatItemProps> = [
   {
     message: (
       <Chat.Message
-        content="Would you like to grab lunch there?"
+        content={
+          <>
+            <Text atMention="me" content="John" />
+            {', would you like to grab lunch there?.'}
+          </>
+        }
         author="Cecil Folk"
         timestamp="Yesterday, 10:16 PM"
         mine
