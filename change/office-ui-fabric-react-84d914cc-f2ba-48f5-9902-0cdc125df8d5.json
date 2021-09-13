@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Customize search for more icon for Suggestions",
-  "packageName": "office-ui-fabric-react",
-  "email": "tschao@microsoft.com",
-  "dependentChangeType": "patch"
-}
