@@ -1,7 +1,10 @@
 import { makeStyles } from '@fluentui/react-make-styles';
 import * as React from 'react';
+import { Meta } from '@storybook/react';
 import { Text } from './Text';
 import type { TextProps } from './Text';
+import textDescriptionMd from './TextDescription.md';
+import textBestPracticesMd from './TextBestPractices.md';
 
 const useStyles = makeStyles({
   container: {
@@ -9,16 +12,16 @@ const useStyles = makeStyles({
   },
 });
 
-export const TextStory = (props: TextProps) => {
+export const Default = (props: TextProps) => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
-      <Text {...props}>This is an example of the Text component's usage.</Text>
+      <Text {...props}>This is an example of the Text component's usage. </Text>
     </div>
   );
 };
 
-TextStory.argTypes = {
+Default.argTypes = {
   wrap: {
     defaultValue: true,
     control: 'boolean',
@@ -80,4 +83,11 @@ TextStory.argTypes = {
 export default {
   title: 'Components/Text',
   component: Text,
-};
+  parameters: {
+    docs: {
+      description: {
+        component: [textDescriptionMd, textBestPracticesMd].join('\n'),
+      },
+    },
+  },
+} as Meta;
