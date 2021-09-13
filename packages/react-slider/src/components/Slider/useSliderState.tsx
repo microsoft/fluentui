@@ -7,7 +7,6 @@ import {
   useUnmount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import { mergeClasses } from '@fluentui/react-make-styles';
 import type { SliderState } from './Slider.types';
 
@@ -373,18 +372,11 @@ export const useSliderState = (state: SliderState) => {
               key={`mark-${i}`}
             />
           )}
-          {marksItem !== (undefined || null) &&
-            typeof marksItem === 'object' &&
-            marksItem.label &&
-            (typeof marksItem.label === 'string' ? (
-              <Label className={markLabelClassName} key={`markLabel-${i}`} disabled={disabled}>
-                {marksItem.label}
-              </Label>
-            ) : (
-              <div className={markLabelClassName} key={`markLabel-${i}`}>
-                {marksItem.label}
-              </div>
-            ))}
+          {marksItem !== (undefined || null) && typeof marksItem === 'object' && marksItem.label && (
+            <div className={markLabelClassName} key={`markLabel-${i}`}>
+              {marksItem.label}
+            </div>
+          )}
         </div>,
       );
     }

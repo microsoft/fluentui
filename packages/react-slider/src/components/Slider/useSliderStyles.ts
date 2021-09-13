@@ -238,6 +238,8 @@ const useMarksWrapperStyles = makeStyles({
     },
 
     [`& .${markLabelClassName}`]: {
+      fontFamily: theme.global.type.fontFamilies.base,
+      color: theme.alias.color.neutral.neutralForeground1,
       paddingTop: 'calc(var(--slider-thumb-size) /2 )',
     },
 
@@ -270,6 +272,12 @@ const useMarksWrapperStyles = makeStyles({
     [`& .${markClassName}`]: {
       height: '1px',
       width: 'var(--slider-mark-size)',
+    },
+  }),
+
+  disabled: theme => ({
+    [`& .${markLabelClassName}`]: {
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   }),
 });
@@ -438,6 +446,7 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   state.marksWrapper.className = mergeClasses(
     marksWrapperStyles.marksWrapper,
     state.vertical ? marksWrapperStyles.vertical : marksWrapperStyles.horizontal,
+    state.disabled && marksWrapperStyles.disabled,
     state.marksWrapper.className,
   );
 

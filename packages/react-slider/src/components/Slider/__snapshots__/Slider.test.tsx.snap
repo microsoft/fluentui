@@ -37,11 +37,11 @@ exports[`Slider Snapshot Tests renders Slider with custom mark labels correctly 
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           world
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -126,11 +126,11 @@ exports[`Slider Snapshot Tests renders Slider with custom marks correctly 1`] = 
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           world
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -540,11 +540,11 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           hello
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -552,11 +552,11 @@ exports[`Slider Snapshot Tests renders disabled Slider with mark labels correctl
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           world
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -672,11 +672,11 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           hello
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -684,11 +684,11 @@ exports[`Slider Snapshot Tests renders horizontal Slider with mark labels correc
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           world
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -924,11 +924,11 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           hello
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
@@ -936,11 +936,11 @@ exports[`Slider Snapshot Tests renders vertical Slider with mark labels correctl
         <div
           class="ms-Slider-mark "
         />
-        <label
+        <div
           class="ms-Slider-label"
         >
           world
-        </label>
+        </div>
       </div>
       <div
         class="ms-Slider-markItemContainer"
