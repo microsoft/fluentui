@@ -11,7 +11,7 @@ export function mergeARIADisabled(
     children?: React.ReactNode;
   }>,
 ) {
-  const disabled = shorthand.disabled || shorthand['aria-disabled'] || undefined;
+  const disabled = shorthand.disabled ?? shorthand['aria-disabled'] ?? undefined;
   if (typeof disabled === 'string') {
     return disabled === 'false' ? false : true;
   }
