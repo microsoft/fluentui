@@ -354,7 +354,7 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
         <slots.track {...slotProps.track} />
       </slots.trackWrapper>
       <slots.lowerThumbWrapper {...slotProps.lowerThumbWrapper}>
-        // The hidden input element is moved inside the thumbWrapper for // styling purposes regarding focus
+        // The hidden input element is moved inside the thumbWrapper for styling purposes regarding focus
         <slots.inputLower {...slotProps.inputLower} />
         <slots.lowerThumb {...slotProps.lowerThumb} />
       </slots.lowerThumbWrapper>
