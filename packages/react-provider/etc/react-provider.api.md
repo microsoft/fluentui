@@ -4,7 +4,9 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
@@ -16,7 +18,13 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
-export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
+export const FluentProvider: React_2.ForwardRefExoticComponent<Pick<FluentProviderProps, "slot" | "style" | "title" | "key" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "className" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "children" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "as" | "targetDocument" | "theme"> & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface FluentProviderCommons {
+    dir: 'ltr' | 'rtl';
+    targetDocument: Document | undefined;
+}
 
 // @public (undocumented)
 export interface FluentProviderContextValues {
@@ -31,25 +39,21 @@ export interface FluentProviderContextValues {
 }
 
 // @public (undocumented)
-export interface FluentProviderProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    dir?: 'ltr' | 'rtl';
-    targetDocument?: Document | undefined;
+export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
     // (undocumented)
     theme?: PartialTheme;
 }
 
 // @public (undocumented)
-export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
+export const fluentProviderShorthandProps: (keyof FluentProviderSlots)[];
 
 // @public (undocumented)
-export interface FluentProviderState extends FluentProviderProps {
-    // (undocumented)
-    className: string;
-    // (undocumented)
-    dir: 'ltr' | 'rtl';
-    ref: React_2.MutableRefObject<HTMLElement>;
-    // (undocumented)
-    targetDocument: Document | undefined;
+export type FluentProviderSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+};
+
+// @public (undocumented)
+export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
     // (undocumented)
     theme: Theme;
     // (undocumented)
@@ -62,7 +66,7 @@ export const renderFluentProvider: (state: FluentProviderState, contextValues: F
 export { useFluent }
 
 // @public
-export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
+export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
 
 // @public (undocumented)
 export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;

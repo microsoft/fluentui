@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Setting the package to public.",
-  "packageName": "@fluentui/react-switch",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}

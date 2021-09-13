@@ -1,57 +1,57 @@
 import * as React from 'react';
-import { ComponentState, ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type SliderSlots = {
   /**
    * The root of the Slider.
    */
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
    * The Slider's base. It is used to visibly display the min and max selectable values.
    */
-  rail: React.HTMLAttributes<HTMLElement>;
+  rail: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider component.
    */
-  sliderWrapper: React.HTMLAttributes<HTMLElement>;
+  sliderWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider's track. It is primarily used to handle the positioning of the track.
    */
-  trackWrapper: React.HTMLAttributes<HTMLElement>;
+  trackWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The bar showing the current selected area adjacent to the Slider's thumb.
    */
-  track: React.HTMLAttributes<HTMLElement>;
+  track: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper holding the marks and mark labels for the Slider.
    */
-  marksWrapper: React.HTMLAttributes<HTMLElement>;
+  marksWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the Slider's thumb. It is primarily used to handle the dragging animation from translateX.
    */
-  thumbWrapper: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
+  thumbWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The draggable icon used to select a given value from the Slider.
    * This is the element containing `role = 'slider'`.
    */
-  thumb: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
+  thumb: IntrinsicShorthandProps<'div'>;
 
   /**
    * The area in which the Slider's rail allows for the thumb to be dragged.
    */
-  activeRail: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>;
+  activeRail: IntrinsicShorthandProps<'div'>;
 
   /**
    * The hidden input for the Slider.
    */
-  input: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLElement>;
+  input: IntrinsicShorthandProps<'input'>;
 };
 
 export interface SliderCommons {

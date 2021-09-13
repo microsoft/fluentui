@@ -8,6 +8,8 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
+    // TODO // https://github.com/microsoft/fluentui/issues/19522
+    skipAsPropTests: true,
     extraTests: makeStylesTests as TestObject<TProps>,
   };
 
