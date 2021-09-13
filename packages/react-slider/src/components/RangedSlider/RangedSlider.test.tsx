@@ -50,4 +50,12 @@ describe('RangedSlider', () => {
       expect(container).toMatchSnapshot();
     });
   });
+
+  describe('Unit Tests', () => {
+    it('handles id prop', () => {
+      render(<RangedSlider id="test_id" data-testid="test" />);
+      const sliderRoot = screen.getByTestId('test');
+      expect(sliderRoot.getAttribute('id')).toEqual('test_id');
+    });
+  });
 });
