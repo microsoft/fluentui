@@ -44,5 +44,13 @@ export const ContextualMenuHeaderExample: React.FunctionComponent = () => {
     ],
   }));
 
-  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
+  return (
+    <>
+      <p>
+        Note: this example demonstrates how to use the Header menu item type as a standalone menu item. For semantically
+        grouped options, refer to the "Contextual Menu with section headers" example.
+      </p>
+      <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />
+    </>
+  );
 };
