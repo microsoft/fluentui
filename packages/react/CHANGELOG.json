@@ -2,6 +2,67 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 13 Sep 2021 07:37:03 GMT",
+      "tag": "@fluentui/react_v8.34.0",
+      "version": "8.34.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "srangam@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "Backspace does not work in BaseExtendedpicker in projection popout windows",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2"
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "comment": "feat(Combobox): add select all functionality",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react_v8.33.0",
+      "version": "8.33.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Dropdown to only add ARIA live region when focused",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "86c831d73355084919a5ff0495895a49cfe6eaa7",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Customize search for more icon for Suggestions",
+            "author": "tschao@microsoft.com",
+            "commit": "da0edb6f63c6209ba2d608b45d1c9d8ac219cb50",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react_v8.32.0",
+      "version": "8.32.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exposed an optional removeButtonIconProps prop in PeoplePicker, Suggestions and TagPicker. This change is backward compatible.",
+            "author": "shujathlive@gmail.com",
+            "commit": "7d9180debc95b08349c4df48b854c1bf5fe2dd46",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Sep 2021 07:34:11 GMT",
       "tag": "@fluentui/react_v8.31.0",
       "version": "8.31.0",

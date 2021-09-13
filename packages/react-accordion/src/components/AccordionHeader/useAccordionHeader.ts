@@ -42,6 +42,8 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
       root: 'div',
       button: 'button',
       expandIcon: AccordionHeaderExpandIcon,
+      icon: 'div',
+      children: 'div',
     },
     root: getNativeElementProps('div', {
       ref,
@@ -57,12 +59,14 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
     }),
     button: {
       ...buttonShorthand,
-      onClick: useEventCallback(ev => {
-        buttonShorthand.onClick?.(ev);
-        if (!ev.defaultPrevented) {
-          onAccordionHeaderClick(ev);
-        }
-      }),
+      onClick: useEventCallback(
+        (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
+          buttonShorthand.onClick?.(ev);
+          if (!ev.defaultPrevented) {
+            onAccordionHeaderClick(ev);
+          }
+        },
+      ),
     },
     children: resolveShorthand(children as AccordionHeaderSlots['children'], {
       required: true,
