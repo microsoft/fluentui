@@ -101,7 +101,8 @@ const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
   }
 
   if (typeof badge === 'string') {
-    badge = { as: PresenceBadge, status: badge };
+    // typing should be fixed after mergeProps migration with the `components` property in state
+    badge = { as: (PresenceBadge as unknown) as 'div', status: badge };
   }
 
   if (image !== props.image || badge !== props.badge) {
