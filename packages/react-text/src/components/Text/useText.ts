@@ -26,8 +26,6 @@ export const useText = (props: TextProps, ref: React.Ref<HTMLElement>): TextStat
 
     components: { root: 'span' },
 
-    ...props,
-
     root: getNativeElementProps(props.as || 'span', {
       ref,
       ...props,
