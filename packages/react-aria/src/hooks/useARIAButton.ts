@@ -1,7 +1,7 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { ObjectShorthandProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { IntrinsicShorthandProps, ResolveShorthandOptions, ShorthandProps } from '@fluentui/react-utilities';
-import { mergeARIADisabled } from '../utils';
+import { mergeARIADisabled } from '../utils/index';
 
 export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'div' | 'span' | 'a'>;
 
