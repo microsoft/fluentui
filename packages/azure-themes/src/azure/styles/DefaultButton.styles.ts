@@ -14,6 +14,10 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       selectors: {
+        // fix for azure portal bug, text-alignment is off.
+        '.ms-Button-label': {
+          lineHeight: '20px',
+        },
         // standard button
         '&.is-expanded': {
           color: semanticColors.buttonTextHovered,
