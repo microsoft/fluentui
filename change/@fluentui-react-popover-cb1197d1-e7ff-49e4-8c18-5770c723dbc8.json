@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor(Popover): Remove mergeProps and migrate to simple slots",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
