@@ -8,14 +8,10 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-
-    '> :first-child': {
-      flexGrow: 1,
-
-      display: 'flex',
-      flexDirection: 'row',
-      gap: '12px',
-    },
+    gap: '12px',
+  },
+  action: {
+    marginLeft: 'auto',
   },
 });
 
@@ -25,6 +21,10 @@ const useStyles = makeStyles({
 export const useCardFooterStyles = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();
   state.className = mergeClasses(styles.root, state.className);
+
+  if (state.action) {
+    state.action.className = mergeClasses(styles.action, state.action.className);
+  }
 
   return state;
 };
