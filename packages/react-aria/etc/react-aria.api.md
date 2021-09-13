@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import type { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonShorthandProps = ObjectShorthandProps<JSX.IntrinsicElements['button'], HTMLButtonElement, 'button'> | ObjectShorthandProps<JSX.IntrinsicElements['div'], HTMLDivElement, 'div'> | ObjectShorthandProps<JSX.IntrinsicElements['span'], HTMLSpanElement, 'span'> | ObjectShorthandProps<JSX.IntrinsicElements['a'], HTMLAnchorElement, 'a'>;
+export type ARIAButtonShorthandProps = IntrinsicShorthandProps<'button', 'div' | 'span' | 'a'>;
 
 // @public
 export function useARIAButton<Required extends boolean = false>(value: ShorthandProps<ARIAButtonShorthandProps>, options?: ResolveShorthandOptions<ARIAButtonShorthandProps, Required>): Required extends false ? ARIAButtonShorthandProps | undefined : ARIAButtonShorthandProps;

@@ -15,7 +15,7 @@ export const renderMenuItem = (state: MenuItemState) => {
       <slots.icon {...slotProps.icon} />
       <slots.content {...slotProps.content} />
       <slots.secondaryContent {...slotProps.secondaryContent} />
-      {state.hasSubmenu && <slots.submenuIndicator {...slotProps.submenuIndicator} />}
+      <slots.submenuIndicator {...slotProps.submenuIndicator} />
     </slots.root>
   );
 };

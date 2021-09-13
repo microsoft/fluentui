@@ -34,6 +34,7 @@ exports[`BasePicker renders correctly 1`] = `
       className="ms-BasePicker-text"
     >
       <input
+        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
         aria-controls=""
         aria-expanded={false}
@@ -100,6 +101,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
       className="ms-BasePicker-text"
     >
       <input
+        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
         aria-controls=""
         aria-expanded={false}
