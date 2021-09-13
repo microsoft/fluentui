@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionItemProps } from '../index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import {
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+  Accordion,
+  AccordionItemProps,
+} from '@fluentui/react-accordion';
 
 export const Disabled = (args: AccordionItemProps) => (
   <Accordion>
@@ -27,3 +36,11 @@ export const Disabled = (args: AccordionItemProps) => (
 Disabled.args = {
   disabled: true,
 } as AccordionItemProps;
+
+Disabled.parameters = {
+  docs: {
+    description: {
+      story: 'An Accordion Item can be `disabled`',
+    },
+  },
+};

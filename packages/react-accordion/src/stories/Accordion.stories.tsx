@@ -10,11 +10,19 @@ export { Disabled } from './AccordionDisabled.stories';
 export { ExpandIcon } from './AccordionExpandIcon.stories';
 export { ExpandIconPosition } from './AccordionExpandIconPosition.stories';
 export { WithIcon } from './AccordionWithIcon.stories';
+import descriptionMd from '../AccordionDescription.md';
 
 export default {
   title: 'Components/Accordion',
   component: Accordion,
-  parameters: { actions: { argTypesRegex: '^on.*' } },
+  parameters: {
+    actions: { argTypesRegex: '^on.*' },
+    docs: {
+      description: {
+        component: [descriptionMd].join('\n'),
+      },
+    },
+  },
   argTypes: {
     inline: {
       defaultValue: false,

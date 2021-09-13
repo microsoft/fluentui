@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
 
 export const OpenItems = (args: AccordionProps) => (
   <Accordion {...args}>
@@ -27,3 +30,11 @@ export const OpenItems = (args: AccordionProps) => (
 OpenItems.args = {
   openItems: ['1'],
 } as AccordionProps;
+
+OpenItems.parameters = {
+  docs: {
+    description: {
+      story: 'A Accordion can have defined open items',
+    },
+  },
+};

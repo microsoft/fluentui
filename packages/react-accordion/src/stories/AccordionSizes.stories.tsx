@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
 
 export const Sizes = () => (
   <>
@@ -37,3 +40,11 @@ export const Sizes = () => (
     </Accordion>
   </>
 );
+
+Sizes.parameters = {
+  docs: {
+    description: {
+      story: 'A Accordion can support `small`, `medium`, `large` and `extra-larger` sizes',
+    },
+  },
+};

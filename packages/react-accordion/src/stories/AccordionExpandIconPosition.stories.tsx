@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+// https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
 
 export const ExpandIconPosition = () => (
   <Accordion>
@@ -17,3 +20,11 @@ export const ExpandIconPosition = () => (
     </AccordionItem>
   </Accordion>
 );
+
+ExpandIconPosition.parameters = {
+  docs: {
+    description: {
+      story: 'The Expand Icon can be placed at the `start` or `end`',
+    },
+  },
+};
