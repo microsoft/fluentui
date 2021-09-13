@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "Migrate to simplified slots",
   "packageName": "@fluentui/react-image",
   "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }

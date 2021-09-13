@@ -10,7 +10,6 @@ export const imageShorthandProps: Array<keyof ImageSlots> = ['root'];
 export const useImage = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
   const { bordered, fit, fluid, circular, rounded } = props;
   const state: ImageState = {
-    //props
     bordered,
     fit,
     fluid,
