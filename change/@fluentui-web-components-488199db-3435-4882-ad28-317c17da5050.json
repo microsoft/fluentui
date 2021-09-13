@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "implement base class for components which extend beyond foundation",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}
