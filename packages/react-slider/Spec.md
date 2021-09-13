@@ -239,7 +239,12 @@ This approach strays away from an array due to:
 2. If we choose to support and arbitrary number of ranges in the future it would be best to have it as an object still to allow for multiple tracks instead of thumbs (three thumbs on one track is not helpful):
 
 ```jsx
-<RangedSlider defaultValue={({ lowerValue: 40, upperValue: 50 }, { lowerValue: 60, upperValue: 80 })} />
+<RangedSlider
+  defaultValue={[
+    { lowerValue: 40, upperValue: 50 },
+    { lowerValue: 60, upperValue: 80 },
+  ]}
+/>
 ```
 
 ## Sample Code
