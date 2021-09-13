@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities/';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { useBadge } from '../Badge/index';
 import {
   SkypeMinusIcon,
