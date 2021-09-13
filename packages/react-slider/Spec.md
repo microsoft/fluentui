@@ -353,15 +353,15 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
       <slots.trackWrapper {...slotProps.trackWrapper}>
         <slots.track {...slotProps.track} />
       </slots.trackWrapper>
-      <slots.lowerThumbWrapper {...slotProps.lowerThumbWrapper}>
-        // The hidden input element is moved inside the thumbWrapper for styling purposes regarding focus
-        <slots.inputLower {...slotProps.inputLower} />
-        <slots.lowerThumb {...slotProps.lowerThumb} />
-      </slots.lowerThumbWrapper>
       <slots.upperThumbWrapper {...slotProps.upperThumbWrapper}>
+        // The hidden input element is moved inside the thumbWrapper for styling purposes regarding focus
         <slots.inputUpper {...slotProps.inputUpper} />
         <slots.upperThumb {...slotProps.upperThumb} />
       </slots.upperThumbWrapper>
+      <slots.lowerThumbWrapper {...slotProps.lowerThumbWrapper}>
+        <slots.inputLower {...slotProps.inputLower} />
+        <slots.lowerThumb {...slotProps.lowerThumb} />
+      </slots.lowerThumbWrapper>
       <slots.activeRail {...slotProps.activeRail} />
     </slots.sliderWrapper>
   </slots.root>
@@ -382,13 +382,13 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
     <div className="ms-Slider-trackWrapper">
       <div className="ms-Slider-track" />
     </div>
-    <div className="ms-RangedSlider-lowerThumbWrapper">
-      <div className="ms-RangedSlider-inputLower" />
-      <div className="ms-Slider-lowerThumb" />
-    </div>
     <div className="ms-RangedSlider-upperThumbWrapper">
       <div className="ms-RangedSlider-inputUpper" />
       <div className="ms-RangedSlider-upperThumb" />
+    </div>
+    <div className="ms-RangedSlider-lowerThumbWrapper">
+      <div className="ms-RangedSlider-inputLower" />
+      <div className="ms-Slider-lowerThumb" />
     </div>
     <div className="ms-RangedSlider-activeRail" />
   </div>
