@@ -1,40 +1,21 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
-/**
- * {@docCategory PresenceBadge}
- */
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
-/**
- * {@docCategory PresenceBadge}
- */
-export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+export interface PresenceBadgeCommons {
   /**
    * Represents several status
-   * @defaultvalue available
-   */
-  status?: PresenceBadgeStatus;
-  /**
-   * Modifies the display to indicate that the user is out of office.
-   * This can be combined with any status to display an out-of-office version of that status
-   * @defaultvalue false
-   */
-  outOfOffice?: boolean;
-}
-
-/**
- * {@docCategory Badge}
- */
-export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearance'> {
-  /**
-   * Represents several status
-   * @defaultvalue available
+   * @default available
    */
   status: PresenceBadgeStatus;
   /**
    * Modifies the display to indicate that the user is out of office.
    * This can be combined with any status to display an out-of-office version of that status
-   * @defaultvalue false
+   * @default false
    */
   outOfOffice: boolean;
 }
+
+export interface PresenceBadgeProps extends BadgeProps, Partial<PresenceBadgeCommons> {}
+
+export interface PresenceBadgeState extends BadgeState, PresenceBadgeCommons {}

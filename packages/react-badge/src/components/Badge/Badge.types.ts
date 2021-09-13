@@ -1,5 +1,4 @@
-import * as React from 'react';
-import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps, ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Badge}
@@ -29,56 +28,43 @@ export type BadgeColors =
   | 'informative'
   | 'subtle';
 
-/**
- * {@docCategory Badge}
- */
-export interface BadgeProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
+export type BadgeSlots = {
+  // React internally has a non-standard `color` attribute for HTML elements
+  root: Omit<IntrinsicShorthandProps<'div'>, 'color'>;
+  icon?: IntrinsicShorthandProps<'span'>;
+};
+
+export interface BadgeCommons {
   /**
    * A Badge can be sized.
-   * @defaultvalue medium
+   * @default medium
    */
-  size?: BadgeSize;
+  size: BadgeSize;
 
   /**
    * A Badge can be square, circular or rounded
-   * @defaultvalue circular
+   * @default circular
    */
-  shape?: BadgeShape;
+  shape: BadgeShape;
 
   /**
    * A Badge can be filled, outline, ghost, inverted
-   * @defaultvalue filled
+   * @default filled
    */
-  appearance?: BadgeAppearance;
+  appearance: BadgeAppearance;
 
   /**
    * A Badge has a preset of colors
-   * @defaultvalue filled
+   * @default brand
    */
-  color?: BadgeColors;
-
-  /**
-   * Icon slot
-   */
-  icon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
+  color: BadgeColors;
 
   /**
    * Position for Icon to be rendered
-   * @defaultvalue before
+   * @default before
    */
-  iconPosition?: 'before' | 'after';
+  iconPosition: 'before' | 'after';
 }
 
-/**
- * {@docCategory Badge}
- */
-export interface BadgeState extends BadgeProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.RefObject<HTMLElement>;
-  /**
-   * Icon slot when processed by internal state
-   */
-  icon?: ObjectShorthandPropsCompat<React.HTMLAttributes<HTMLSpanElement>>;
-}
+export interface BadgeProps extends ComponentProps<Partial<BadgeSlots>>, Partial<BadgeCommons> {}
+export interface BadgeState extends ComponentState<BadgeSlots>, BadgeCommons {}
