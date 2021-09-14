@@ -37,8 +37,6 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
         !iconOnly &&
         !(pointing && vertical) &&
         !underlined && {
-          // primary has hardcoded grey border color
-          border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
           borderRadius: siteVariables.borderRadiusMedium,
         }),
       ...(underlined && {
