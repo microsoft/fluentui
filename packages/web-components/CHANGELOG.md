@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 03 Sep 2021 00:13:07 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Sep 2021 07:37:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.0)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.2..@fluentui/web-components_v1.5.0)
+
+### Minor changes
+
+- implement base class for components which extend beyond foundation ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by chhol@microsoft.com)
+
+## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.2)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.1..@fluentui/web-components_v1.4.2)
+
+### Patches
+
+- fix tab panel display ([PR #19731](https://github.com/microsoft/fluentui/pull/19731) by corylaviska@microsoft.com)
+- Updated the default fill color to neutral layer 1 ([PR #19726](https://github.com/microsoft/fluentui/pull/19726) by 47367562+bheston@users.noreply.github.com)
 
 ## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.1)
 

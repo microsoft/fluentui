@@ -6,7 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -29,13 +29,13 @@ export const inputShorthandProps: (keyof InputSlots)[];
 
 // @public (undocumented)
 export type InputSlots = {
-    root: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    input: ObjectShorthandProps<React_2.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-    inputWrapper: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    bookendBefore?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    bookendAfter?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    insideStart?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
-    insideEnd?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>, HTMLElement>;
+    root: IntrinsicShorthandProps<'span'>;
+    input: IntrinsicShorthandProps<'input'>;
+    inputWrapper: IntrinsicShorthandProps<'span'>;
+    bookendBefore?: IntrinsicShorthandProps<'span'>;
+    bookendAfter?: IntrinsicShorthandProps<'span'>;
+    insideStart?: IntrinsicShorthandProps<'span'>;
+    insideEnd?: IntrinsicShorthandProps<'span'>;
 };
 
 // @public
