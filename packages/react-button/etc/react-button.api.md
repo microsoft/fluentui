@@ -130,7 +130,7 @@ export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandProps
 }
 
 // @public (undocumented)
-export const splitButtonShorthandProps: readonly ["button", "menuButton"];
+export const splitButtonShorthandProps: SplitButtonShorthandPropsCompat[];
 
 // @public (undocumented)
 export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
@@ -189,7 +189,7 @@ export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
 export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
 
 // @public (undocumented)
-export const useSplitButtonStyles: (state: SplitButtonState) => void;
+export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
 
 // @public
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
