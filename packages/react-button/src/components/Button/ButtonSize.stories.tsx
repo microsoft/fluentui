@@ -4,7 +4,7 @@ import * as React from 'react';
 // @ts-ignore - add link to this comment please  (see https://github.com/microsoft/fluentui/pull/18695)
 import { Button } from '@fluentui/react-button';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
-import { makeStyles } from '@fluentui/react-make-styles/src';
+import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   group: { display: 'flex', flexWrap: 'wrap', gap: '0.5em' },
