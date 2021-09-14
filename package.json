@@ -42,7 +42,7 @@
     "postinstall": "node ./scripts/postinstall.js",
     "preinstall": "node ./scripts/use-yarn-please.js",
     "prelint": "yarn satisfied && yarn syncpack:list",
-    "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
+    "publish:beachball": "beachball publish",
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
     "release:fluentui:canary": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-canary",
     "release:fluentui:minor": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-minor",
