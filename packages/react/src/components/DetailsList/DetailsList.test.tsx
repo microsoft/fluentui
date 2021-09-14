@@ -512,10 +512,9 @@ describe('DetailsList', () => {
     columns[1].onColumnResize = jest.fn();
 
     safeMount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />, () => {
-      setTimeout(() => {
-        expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
-        expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
-      }, 1000);
+      jest.runOnlyPendingTimers();
+      expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
+      expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
     });
   });
 
