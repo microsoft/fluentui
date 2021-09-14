@@ -345,6 +345,27 @@ describe('Slider', () => {
       expect(sliderTrack?.getAttribute('style')).toContain('99px');
     });
 
+    it('handles a keyboardStep prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onChange = jest.fn();
+
+      render(
+        <Slider
+          defaultValue={20}
+          step={3}
+          keyboardStep={5}
+          onChange={onChange}
+          data-testid="test"
+          input={{ ref: inputRef }}
+        />,
+      );
+      const sliderRoot = screen.getByTestId('test');
+
+      fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 25 });
+      expect(inputRef.current?.value).toBe('25');
+    });
+
     it('handles a negative step prop', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();

@@ -305,6 +305,88 @@ describe('RangedSlider', () => {
     expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('50%');
   });
 
+  it('handles a keyboardStep prop', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+
+    render(
+      <RangedSlider
+        defaultValue={{ lowerValue: 20, upperValue: 20 }}
+        step={3}
+        keyboardStep={5}
+        onChange={onChange}
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+      />,
+    );
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 20, upperValue: 25 } });
+    expect(lowerInputRef.current?.value).toBe('20');
+    expect(upperInputRef.current?.value).toBe('25');
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 15, upperValue: 20 } });
+    expect(lowerInputRef.current?.value).toBe('15');
+    expect(upperInputRef.current?.value).toBe('20');
+  });
+
+  it('handles a negative step prop', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+
+    render(
+      <RangedSlider
+        defaultValue={{ lowerValue: 20, upperValue: 20 }}
+        step={-3}
+        onChange={onChange}
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+      />,
+    );
+
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 17, upperValue: 20 } });
+    expect(lowerInputRef.current?.value).toBe('17');
+    expect(upperInputRef.current?.value).toBe('20');
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 14, upperValue: 17 } });
+    expect(lowerInputRef.current?.value).toBe('14');
+    expect(upperInputRef.current?.value).toBe('17');
+  });
+
+  it('handles a decimal step prop', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+
+    render(
+      <RangedSlider
+        defaultValue={{ lowerValue: 20, upperValue: 20 }}
+        step={0.0001}
+        onChange={onChange}
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+      />,
+    );
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 20, upperValue: 20.0001 } });
+    expect(lowerInputRef.current?.value).toBe('20');
+    expect(upperInputRef.current?.value).toBe('20.0001');
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 19.9999, upperValue: 20 } });
+    expect(lowerInputRef.current?.value).toBe('19.9999');
+    expect(upperInputRef.current?.value).toBe('20');
+  });
+
   it('applies focus to inputLower', () => {
     const inputRef = React.createRef<HTMLInputElement>();
     render(<RangedSlider inputLower={{ ref: inputRef }} />);
