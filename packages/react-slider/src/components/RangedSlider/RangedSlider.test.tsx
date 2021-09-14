@@ -148,7 +148,7 @@ describe('RangedSlider', () => {
     it('applies the disabled prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(<RangedSlider disabled={true} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      render(<RangedSlider disabled inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.disabled).toEqual(true);
       expect(upperInputRef.current?.disabled).toEqual(true);
     });
@@ -193,6 +193,35 @@ describe('RangedSlider', () => {
       expect(lowerInputRef.current?.value).toEqual('0');
       expect(upperInputRef.current?.value).toEqual('100');
     });
+  });
+
+  it('handles role prop', () => {
+    render(<RangedSlider role="test" data-testid="test" />);
+    const sliderRoot = screen.getByTestId('test');
+    expect(sliderRoot.getAttribute('role')).toEqual('test');
+  });
+
+  it('applies ariaValueText', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+
+    const values = ['small', 'medium', 'large'];
+    const defaultValue = { lowerValue: 1, upperValue: 2 };
+    const getTextValue = (value: number) => values[value];
+
+    render(
+      <RangedSlider
+        defaultValue={defaultValue}
+        ariaValueText={getTextValue}
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+        min={1}
+        max={3}
+      />,
+    );
+
+    expect(lowerInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue.lowerValue]);
+    expect(upperInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue.upperValue]);
   });
 
   it('slides to min/max and executes onChange', () => {
@@ -288,6 +317,16 @@ describe('RangedSlider', () => {
     render(<RangedSlider inputUpper={{ ref: inputRef }} />);
     inputRef?.current?.focus();
     expect(document.activeElement).toEqual(inputRef.current);
+  });
+
+  it('does not allow focus on disabled RangedSlider', () => {
+    const sliderRef = React.createRef<HTMLInputElement>();
+
+    render(<RangedSlider ref={sliderRef} disabled />);
+
+    expect(document.activeElement).toEqual(document.body);
+    sliderRef?.current?.focus();
+    expect(document.activeElement).toEqual(document.body);
   });
 
   it('switches to the opposite thumb when its value is surpassed', () => {
@@ -394,5 +433,61 @@ describe('RangedSlider', () => {
     expect(upperInputRef.current?.value).toEqual('90');
 
     expect(onChange).toBeCalledTimes(10);
+  });
+
+  it('does not allow change on disabled Slider', () => {
+    const onChange = jest.fn();
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+
+    render(
+      <RangedSlider
+        onChange={onChange}
+        data-testid="test"
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+        disabled
+      />,
+    );
+
+    expect(onChange).toBeCalledTimes(0);
+
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange).toBeCalledTimes(0);
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange).toBeCalledTimes(0);
+  });
+
+  it('handles onKeyDown callback', () => {
+    const onKeyDown = jest.fn();
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+
+    render(
+      <RangedSlider onKeyDown={onKeyDown} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />,
+    );
+
+    expect(onKeyDown).toBeCalledTimes(0);
+
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
+    expect(onKeyDown).toBeCalledTimes(1);
+
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
+    expect(onKeyDown).toBeCalledTimes(2);
+  });
+
+  it('handles onPointerDown callback', () => {
+    const onPointerDown = jest.fn();
+
+    const wrapper: ReactWrapper = mount(<RangedSlider onPointerDown={onPointerDown} />);
+    const sliderRoot = wrapper.first();
+
+    expect(onPointerDown).toBeCalledTimes(0);
+
+    sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
+    expect(onPointerDown).toBeCalledTimes(1);
+
+    wrapper.unmount();
   });
 });

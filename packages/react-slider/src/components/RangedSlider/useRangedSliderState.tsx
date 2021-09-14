@@ -251,7 +251,6 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const keyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
-      onKeyDownCallback?.(ev);
       hideStepAnimation();
 
       const incomingValue = getKeydownValue(
@@ -263,6 +262,12 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         keyboardStep,
       );
 
+      if (incomingValue !== min && incomingValue !== max) {
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
+      onKeyDownCallback?.(ev);
+
       if (currentValue[internalState.current.activeThumb] !== incomingValue) {
         updatePosition(incomingValue, ev);
       }
@@ -272,6 +277,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const onKeyDownLower = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+      ev.stopPropagation();
+      ev.preventDefault();
       internalState.current.activeThumb = 'lowerValue';
       keyDown(ev);
     },
@@ -374,8 +381,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   ariaValueText && (state.inputLower['aria-valuetext'] = ariaValueText(currentValue.lowerValue));
   state.inputLower.disabled = disabled;
   state.inputLower.step = step;
-  state.inputLower.onKeyDown = onKeyDownLower;
-  state.inputLower.onChange = onInputChange;
+  if (!disabled) {
+    state.inputLower.onKeyDown = onKeyDownLower;
+    state.inputLower.onChange = onInputChange;
+  }
 
   // Upper Input Props
   state.inputUpper.ref = useMergedRefs(state.inputUpper.ref, upperInputRef);
@@ -385,8 +394,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   ariaValueText && (state.inputUpper['aria-valuetext'] = ariaValueText(currentValue.upperValue));
   state.inputUpper.disabled = disabled;
   state.inputUpper.step = step;
-  state.inputUpper.onKeyDown = onKeyDownUpper;
-  state.inputUpper.onChange = onInputChange;
+  if (!disabled) {
+    state.inputUpper.onKeyDown = onKeyDownUpper;
+    state.inputUpper.onChange = onInputChange;
+  }
 
   return state;
 };
