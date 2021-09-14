@@ -322,24 +322,25 @@ size: PopoverSize;
 - Prefer making an appearance property optional rather than specifying a 'default' or 'normal' value in the discriminated union.
 
 **Proposed Work Items**
-[ ] Update AvatarProps to rename activeDisplay to activeAppearance
-[ ] Update AvatarProps to rename color to iconColor
-[ ] Update AvatarProps to replace square with shape?: 'square'
-[ ] Update BadgeProps to inline BadgeAppearance, BadgeShape, and BadgeColors union values
-[ ] Update CounterBadgeProps to inline CounterBadgeColors union values
-[ ] Update CounterBadgeProps dot to indicatorAppearance: 'dot'
-[ ] Update ButtonProps to replace primary, outline, subtle, transparent properties with appearance?: 'primary' | 'outline' | 'subtle' | 'transparent'
-[ ] Update ButtonProps to replace circular with shape?: 'circular'
-[ ] Update DividerProps appearance to remove the 'default' value
-[ ] Update DividerProps comments to better describe important vs. appearance: 'strong' or remove important.
-[ ] Rename DividerProps inset to padContent. This helps associate with alignContent.
-[ ] Update ImageProps to replace circular and rounded with appearance?: 'circular' | 'rounded'
-[ ] Update ImageProps to replace bordered with borderShape?: 'square'
-[ ] Update LabelProps to replace strong with contentAppearance?: 'strong'
-[ ] Update LinkProps to replace secondary with appearance?: 'secondary'
-[ ] Update PopoverProps to replace brand, inverted with appearance?: 'brand', 'inverted'
-[ ] Update TooltipProps to replace inverted with appearance?: 'inverted'
-[ ] Update TooltipProps to replace pointing with indicatorAppearance?: 'arrow'
+
+- [ ] Update AvatarProps to rename activeDisplay to activeAppearance
+- [ ] Update AvatarProps to rename color to iconColor
+- [ ] Update AvatarProps to replace square with shape?: 'square'
+- [ ] Update BadgeProps to inline BadgeAppearance, BadgeShape, and BadgeColors union values
+- [ ] Update CounterBadgeProps to inline CounterBadgeColors union values
+- [ ] Update CounterBadgeProps dot to indicatorAppearance: 'dot'
+- [ ] Update ButtonProps to replace primary, outline, subtle, transparent properties with appearance?: 'primary' | 'outline' | 'subtle' | 'transparent'
+- [ ] Update ButtonProps to replace circular with shape?: 'circular'
+- [ ] Update DividerProps appearance to remove the 'default' value
+- [ ] Update DividerProps comments to better describe important vs. appearance: 'strong' or remove important.
+- [ ] Rename DividerProps inset to padContent. This helps associate with alignContent.
+- [ ] Update ImageProps to replace circular and rounded with appearance?: 'circular' | 'rounded'
+- [ ] Update ImageProps to replace bordered with borderShape?: 'square'
+- [ ] Update LabelProps to replace strong with contentAppearance?: 'strong'
+- [ ] Update LinkProps to replace secondary with appearance?: 'secondary'
+- [ ] Update PopoverProps to replace brand, inverted with appearance?: 'brand', 'inverted'
+- [ ] Update TooltipProps to replace inverted with appearance?: 'inverted'
+- [ ] Update TooltipProps to replace pointing with indicatorAppearance?: 'arrow'
 
 AvatarProps
 
