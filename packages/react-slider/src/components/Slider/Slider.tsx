@@ -7,7 +7,7 @@ import type { SliderProps } from './Slider.types';
 /**
  * Define a styled Slider, using the `useSlider` hook
  */
-export const Slider: React.FunctionComponent<SliderProps> = React.forwardRef<HTMLElement, SliderProps>((props, ref) => {
+export const Slider: React.ForwardRefExoticComponent<SliderProps> = React.forwardRef((props, ref) => {
   const state = useSlider(props, ref);
 
   useSliderStyles(state);

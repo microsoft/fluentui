@@ -7,7 +7,7 @@ import type { RangedSliderProps } from './RangedSlider.types';
 /**
  * Define a styled RangedSlider, using the `useRangedSlider` hook
  */
-export const RangedSlider = React.forwardRef<HTMLElement, RangedSliderProps>((props, ref) => {
+export const RangedSlider: React.ForwardRefExoticComponent<RangedSliderProps> = React.forwardRef((props, ref) => {
   const state = useRangedSlider(props, ref);
 
   useRangedSliderStyles(state);
