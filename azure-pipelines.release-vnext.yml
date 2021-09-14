@@ -56,7 +56,7 @@ steps:
   #   displayName: yarn lint
 
   - script: |
-      npm run beachball bump -- -b origin/master -n $(npmToken) --access public -y
+      yarn beachball bump -- -b origin/master -n $(npmToken) --access public -y
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
