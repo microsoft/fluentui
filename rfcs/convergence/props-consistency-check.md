@@ -307,6 +307,40 @@ size: PopoverSize;
 > Some components define a color property that are a set of colors, others are a set semantic names.
 > Some naming is inconsistent (e.g. noArrow, pointing)
 
+**Recommendations**
+
+- Use a single property with discriminated unions when appearance configuration is mutually exclusive.
+- Prefer using unions inline.
+  - If a union set of values is used for more than one property, then extract to a type defintion.
+- Prefer prefixing properties with the target when it isn't targeting the component top-level (e.g. borderAppearance, backgroundShape).
+  - Corollary to this is to avoid repeating the component name when targeting top-level (i.e. prefer shape over badgeShape)
+  - Consider a prefix if the property name would conflict with a native property name.
+  - Prefer using a name that matches what the part is called in the design breakdown.
+- Prefer to use an optional property with a single string over a boolean for appearance (e.g. appearance?: 'brand' over brand?: boolean).
+  - This provides extensibility in the future and avoids confusion of appearance and behavioral properties.
+- If a component's appearance for a given property union value is similar to other components, prefer to use the same value. (e.g. subtle, colorful, glow)
+- Prefer making an appearance property optional rather than specifying a 'default' or 'normal' value in the discriminated union.
+
+**Proposed Work Items**
+[ ] Update AvatarProps to rename activeDisplay to activeAppearance
+[ ] Update AvatarProps to rename color to iconColor
+[ ] Update AvatarProps to replace square with shape?: 'square'
+[ ] Update BadgeProps to inline BadgeAppearance, BadgeShape, and BadgeColors union values
+[ ] Update CounterBadgeProps to inline CounterBadgeColors union values
+[ ] Update CounterBadgeProps dot to indicatorAppearance: 'dot'
+[ ] Update ButtonProps to replace primary, outline, subtle, transparent properties with appearance?: 'primary' | 'outline' | 'subtle' | 'transparent'
+[ ] Update ButtonProps to replace circular with shape?: 'circular'
+[ ] Update DividerProps appearance to remove the 'default' value
+[ ] Update DividerProps comments to better describe important vs. appearance: 'strong' or remove important.
+[ ] Rename DividerProps inset to padContent. This helps associate with alignContent.
+[ ] Update ImageProps to replace circular and rounded with appearance?: 'circular' | 'rounded'
+[ ] Update ImageProps to replace bordered with borderShape?: 'square'
+[ ] Update LabelProps to replace strong with contentAppearance?: 'strong'
+[ ] Update LinkProps to replace secondary with appearance?: 'secondary'
+[ ] Update PopoverProps to replace brand, inverted with appearance?: 'brand', 'inverted'
+[ ] Update TooltipProps to replace inverted with appearance?: 'inverted'
+[ ] Update TooltipProps to replace pointing with indicatorAppearance?: 'arrow'
+
 AvatarProps
 
 ```ts
@@ -323,7 +357,7 @@ BadgeProps
 appearance: BadgeAppearance;
 // BadgeShape = 'rounded' | 'square' | 'circular'
 shape: BadgeShape;
-// BadgeColors =  | 'brand'  | 'danger'  | 'severe'  | 'warning'  | 'success'  | important'  | 'informative'  | 'subtle'
+// BadgeColors =  | 'brand'  | 'danger'  | 'severe'  | 'warning'  | 'success'  | 'important'  | 'informative'  | 'subtle'
 color: BadgeColors;
 ```
 
