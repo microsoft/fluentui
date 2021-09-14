@@ -13,8 +13,8 @@ export const useRootStyles = makeStyles({
   root: theme => ({
     position: 'relative',
     display: 'inline-flex',
-    // userSelect: 'none',
-    // touchAction: 'none',
+    userSelect: 'none',
+    touchAction: 'none',
     verticalAlign: 'bottom',
   }),
 
