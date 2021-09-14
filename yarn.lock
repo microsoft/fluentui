@@ -2660,21 +2660,21 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.5.1.tgz#a4e98da1ac0873568360d69dfcf0e4fcc46a374c"
   integrity sha512-2wv3svn2fJqT84PrchSNjRjCJ2z74tuzoo7odACouuQaLXuJckv1XexXWUj5INKY6/LB/rN/bJMYauX33JgOZA==
 
-"@microsoft/fast-foundation@^2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.12.0.tgz#d21599531fcda1df83ea37b118f40fdaa547f726"
-  integrity sha512-cgK8JGpVI4HyH94ddUdHwypg9kdeL/CP42VuxNWydTb2zoZiNsINyx/b/r7KRf8z9KvTH596JeBcS8WJlUGuBw==
+"@microsoft/fast-foundation@^2.13.0":
+  version "2.13.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.13.1.tgz#d99fcb54fa1c6c5ba6d841f8e2bc9a3e26259d88"
+  integrity sha512-fKDftqgCmcKXYKtRTqYGyLihaWahW62ygk/1Ga46hTNyW3Wf1nI1Gsqosv+usg7KY1otkjarM1Q+5+HViP00WQ==
   dependencies:
     "@microsoft/fast-element" "^1.5.1"
-    "@microsoft/fast-web-utilities" "^4.8.0"
+    "@microsoft/fast-web-utilities" "^4.8.1"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^5.2.0"
     tslib "^1.13.0"
 
-"@microsoft/fast-web-utilities@^4.8.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.8.0.tgz#a27f755669027071d8886fbe89ceaae4e69e203a"
-  integrity sha512-+MroMIP5yGD8mqbegqSZoIbQVjvmsQRQtn87Gc8TJk00KIfRu2x9sFAq8q5m8H61sjCRHreJ0Bq5telz09h55g==
+"@microsoft/fast-web-utilities@^4.8.1":
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.8.1.tgz#c10906711dfaf885b1d9d3d206fb102cf721c84d"
+  integrity sha512-P3xeyUwQ9nPkFrgAdmkOzaXxIq8YqMU5K+LXcoHgJddJCBCKfGWW9OZQOTigLddItTyVyfO8qsJpDQb1TskKHA==
   dependencies:
     exenv-es6 "^1.0.0"
 
