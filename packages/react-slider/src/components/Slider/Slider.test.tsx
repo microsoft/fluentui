@@ -448,4 +448,18 @@ describe('Slider', () => {
       wrapper.unmount();
     });
   });
+
+  describe('Accessibility Tests', () => {
+    it('renders the input slot as input', () => {
+      const { container } = render(<Slider input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.tagName).toEqual('INPUT');
+    });
+
+    it('provides the input slot with a type of range', () => {
+      const { container } = render(<Slider input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.getAttribute('type')).toEqual('range');
+    });
+  });
 });
