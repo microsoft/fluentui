@@ -174,5 +174,24 @@ describe('RangedSlider', () => {
       expect(lowerInputRef.current?.step).toEqual('11');
       expect(upperInputRef.current?.step).toEqual('11');
     });
+
+    it('clamps an initial defaultValue that is out of bounds', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(
+        <RangedSlider
+          value={{
+            lowerValue: -10,
+            upperValue: 110,
+          }}
+          min={0}
+          max={100}
+          inputLower={{ ref: lowerInputRef }}
+          inputUpper={{ ref: upperInputRef }}
+        />,
+      );
+      expect(lowerInputRef.current?.step).toEqual('0');
+      expect(upperInputRef.current?.step).toEqual('100');
+    });
   });
 });
