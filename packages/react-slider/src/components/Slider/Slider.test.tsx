@@ -375,17 +375,6 @@ describe('Slider', () => {
       expect(sliderRoot.getAttribute('role')).toEqual('test');
     });
 
-    it('applies ariaValueText', () => {
-      const values = ['small', 'medium', 'large'];
-      const defaultValue = 1;
-      const getTextValue = (value: number) => values[value];
-
-      render(<Slider defaultValue={defaultValue} ariaValueText={getTextValue} />);
-      const sliderInput = screen.getByRole('slider');
-
-      expect(sliderInput.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
-    });
-
     it('applies focus to the hidden input', () => {
       const inputRef = React.createRef<HTMLInputElement>();
       render(<Slider defaultValue={3} input={{ ref: inputRef }} />);
@@ -460,6 +449,17 @@ describe('Slider', () => {
       const { container } = render(<Slider input={{ className: 'test' }} />);
       const inputElement = container.querySelector('.test');
       expect(inputElement?.getAttribute('type')).toEqual('range');
+    });
+
+    it('applies ariaValueText', () => {
+      const values = ['small', 'medium', 'large'];
+      const defaultValue = 1;
+      const getTextValue = (value: number) => values[value];
+
+      render(<Slider defaultValue={defaultValue} ariaValueText={getTextValue} />);
+      const sliderInput = screen.getByRole('slider');
+
+      expect(sliderInput.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
     });
   });
 });
