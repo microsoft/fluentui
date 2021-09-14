@@ -1,4 +1,6 @@
-A `Menu` displays a list of actionalble items on a popover surface whose position is configurable.
+A `Menu` displays a list of actionalble items on a popover surface whose position is configurable. For scenarios
+that don't require a popover, or when the built-in popover is not necessary, `MenuList` component can be used
+by itself in any custom surface.
 
 The visibility of a menu changes through user interactions with
 a trigger element, which are configurable to an extent. In most cases the trigger element is a button, but other types of elements can be used.
