@@ -36,11 +36,11 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
   const documentRef = useDocument();
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);
 
-  const ariaDescribedByRef = useId('teaching-bubble-content-');
-  const ariaLabelledByRef = useId('teaching-bubble-title-');
+  const ariaDescribedById = useId('teaching-bubble-content-');
+  const ariaLabelledById = useId('teaching-bubble-title-');
 
-  const ariaDescribedBy = props.ariaDescribedBy ?? ariaDescribedByRef;
-  const ariaLabelledBy = props.ariaLabelledBy ?? ariaLabelledByRef;
+  const ariaDescribedBy = props.ariaDescribedBy ?? ariaDescribedById;
+  const ariaLabelledBy = props.ariaLabelledBy ?? ariaLabelledById;
 
   const {
     illustrationImage,
