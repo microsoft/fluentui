@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Generalize mergeARIADisabled",
+  "packageName": "@fluentui/react-aria",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
