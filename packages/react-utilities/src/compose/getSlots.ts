@@ -1,17 +1,30 @@
 import * as React from 'react';
 
-import { ComponentState, ShorthandRenderFunction, ObjectShorthandPropsRecord, ObjectShorthandProps } from './types';
+import {
+  ComponentState,
+  ShorthandRenderFunction,
+  ObjectShorthandPropsRecord,
+  ObjectShorthandProps,
+  IntrinsicShorthandProps,
+  InferIntrinsicShorthandDefaultAs,
+} from './types';
 import { nullRender } from './nullRender';
 import { omit } from '../utils/omit';
 
 export type Slots<S extends ObjectShorthandPropsRecord> = {
-  [K in keyof S]-?: S[K] extends ObjectShorthandProps<infer P>
+  [K in keyof S]-?: NonNullable<S[K]> extends InferIntrinsicShorthandDefaultAs<infer As>
+    ? As
+    : S[K] extends ObjectShorthandProps<infer P>
     ? React.ElementType<NonNullable<P>>
     : React.ElementType<NonNullable<S[K]>>;
 };
 
 type SlotProps<S extends ObjectShorthandPropsRecord> = {
-  [K in keyof S]-?: NonNullable<S[K]> extends ObjectShorthandProps<infer P> ? P : never;
+  [K in keyof S]-?: NonNullable<S[K]> extends InferIntrinsicShorthandDefaultAs<infer As>
+    ? IntrinsicShorthandProps<As>
+    : NonNullable<S[K]> extends ObjectShorthandProps<infer P>
+    ? P
+    : never;
 };
 
 /**
@@ -42,9 +55,7 @@ export function getSlots<R extends ObjectShorthandPropsRecord>(
 
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
-    slots[slotName] = slot as R[typeof slotName] extends ObjectShorthandProps<infer P>
-      ? React.ElementType<NonNullable<P>>
-      : never;
+    slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
   return { slots, slotProps: (slotProps as unknown) as SlotProps<R> };

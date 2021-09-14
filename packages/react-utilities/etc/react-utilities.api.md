@@ -43,7 +43,7 @@ export const colProperties: Record<string, number>;
 // @public (undocumented)
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary> & Shorthands[Primary];
+}, Primary> & PropsWithoutRef<Shorthands[Primary]>;
 
 // @public (undocumented)
 export interface ComponentPropsCompat {
@@ -58,9 +58,7 @@ export interface ComponentPropsCompat {
 // @public (undocumented)
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
     components?: {
-        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends {
-            as?: infer As;
-        } ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Shorthands]-?: React_2.ComponentType<NonNullable<Shorthands[Key]>> | (NonNullable<Shorthands[Key]> extends InferIntrinsicShorthandDefaultAs<infer DefaultAs> ? DefaultAs : keyof JSX.IntrinsicElements);
     };
 } & Shorthands;
 
@@ -117,16 +115,23 @@ export const imageProperties: Record<string, number>;
 export const imgProperties: Record<string, number>;
 
 // @public
-export const inputProperties: Record<string, number>;
+export type InferIntrinsicShorthandDefaultAs<DefaultAs extends keyof JSX.IntrinsicElements> = {
+    __intrinsicShorthandPropsDefaultAs?: DefaultAs;
+};
 
 // @public
-export type IntrinsicShorthandProps<DefaultElement extends keyof JSX.IntrinsicElements, AlternateElements extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultElement> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
-    as?: DefaultElement;
-} & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>) | {
-    [As in AlternateElements]: {
+export const inputProperties: Record<string, number>;
+
+// @public (undocumented)
+export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : (({
+    as?: DefaultAs;
+} & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
+    [As in AlternateAs]: {
         as: As;
-    } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[As]>>;
-}[AlternateElements];
+    } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
+}[AlternateAs]) & {
+    __intrinsicShorthandPropsDefaultAs?: DefaultAs;
+};
 
 // @public
 export type IsSingleton<T extends string> = {
@@ -150,13 +155,6 @@ export const makeMergePropsCompat: <TState = Record<string, any>>(options?: Merg
 // @public (undocumented)
 export type MergePropsOptions<TState> = {
     deepMerge?: readonly (keyof TState)[];
-};
-
-// @public
-export type NoLegacyRef<Props extends {
-    ref?: unknown;
-}> = Omit<Props, 'ref'> & {
-    ref?: Exclude<Props['ref'], string>;
 };
 
 // @public
@@ -188,6 +186,9 @@ export const onlyChild: <P>(child: string | number | boolean | {} | React_2.Reac
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
+
+// @public
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 // @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
@@ -246,7 +247,7 @@ export type SlotPropsCompat<TSlots extends BaseSlotsCompat, TProps, TRootProps e
 
 // @public (undocumented)
 export type Slots<S extends ObjectShorthandPropsRecord> = {
-    [K in keyof S]-?: S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
+    [K in keyof S]-?: NonNullable<S[K]> extends InferIntrinsicShorthandDefaultAs<infer As> ? As : S[K] extends ObjectShorthandProps<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<NonNullable<S[K]>>;
 };
 
 // Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal

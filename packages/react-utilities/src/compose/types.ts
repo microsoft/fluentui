@@ -44,36 +44,47 @@ export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = 
  * The second param is an optional union of alternative types that can be specified for the `as` prop.
  *
  * ```
- * IntrinsicShorthandProps<'div'> // Slot is always a <div>
- * IntrinsicShorthandProps<'a', 'button'> // Defaults to <a>, but allows { as: 'button' } to be a <button>
- * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to <label>, but allows { as: 'span' } or { as: 'div' }
- * ```
- */
-export type IntrinsicShorthandProps<
-  DefaultElement extends keyof JSX.IntrinsicElements,
-  AlternateElements extends keyof JSX.IntrinsicElements = never
-> = IsSingleton<DefaultElement> extends false
-  ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
-  :
-      | ({ as?: DefaultElement } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[DefaultElement]>>)
-      | {
-          [As in AlternateElements]: { as: As } & ObjectShorthandProps<NoLegacyRef<JSX.IntrinsicElements[As]>>;
-        }[AlternateElements];
-
-/**
- * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
- *
- * ```
- * IsSingleton<'a'> // true
- * IsSingleton<'a' | 'b' | 'c'> // false
+ * IntrinsicShorthandProps<'div'> // Slot is always div
+ * IntrinsicShorthandProps<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
+ * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to label, but allows as="span" or as="div"
  * ```
  */
 export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
+export type IntrinsicShorthandProps<
+  DefaultAs extends keyof JSX.IntrinsicElements,
+  AlternateAs extends keyof JSX.IntrinsicElements = never
+> = IsSingleton<DefaultAs> extends false
+  ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
+  : (
+      | ({ as?: DefaultAs } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
+      | {
+          [As in AlternateAs]: { as: As } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
+        }[AlternateAs]
+    ) & {
+      /** @deprecated only for use by the InferIntrinsicShorthandDefaultAs helper type */
+      __intrinsicShorthandPropsDefaultAs?: DefaultAs;
+    };
 
 /**
- * Excludes LegacyRef (string) from the ref prop of the given Props type
+ * Helper type for inferring the `DefaultAs` type from IntrinsicShorthandProps in a type template.
+ *
+ * For example:
+ * ```
+ * type Example<T> = T extends InferIntrinsicShorthandDefaultAs<infer DefaultAs> ? DefaultAs : never;
+ * ```
  */
-export type NoLegacyRef<Props extends { ref?: unknown }> = Omit<Props, 'ref'> & { ref?: Exclude<Props['ref'], string> };
+export type InferIntrinsicShorthandDefaultAs<DefaultAs extends keyof JSX.IntrinsicElements> = {
+  __intrinsicShorthandPropsDefaultAs?: DefaultAs;
+};
+
+/**
+ * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
+ * IntrinsicShorthandProps). This allows IntrinsicShorthandProps to be used with React.forwardRef.
+ *
+ * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
+ * types, to prevent unions from being expanded.
+ */
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 export type ComponentProps<
   Shorthands extends ObjectShorthandPropsRecord,
@@ -84,13 +95,15 @@ export type ComponentProps<
   },
   Primary
 > &
-  Shorthands[Primary];
+  PropsWithoutRef<Shorthands[Primary]>;
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
     [Key in keyof Shorthands]-?:
       | React.ComponentType<NonNullable<Shorthands[Key]>>
-      | (NonNullable<Shorthands[Key]> extends { as?: infer As } ? As : keyof JSX.IntrinsicElements);
+      | (NonNullable<Shorthands[Key]> extends InferIntrinsicShorthandDefaultAs<infer DefaultAs>
+          ? DefaultAs
+          : keyof JSX.IntrinsicElements);
   };
 } & Shorthands;
 
