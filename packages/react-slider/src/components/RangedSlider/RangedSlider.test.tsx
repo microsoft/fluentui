@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
+import { mount, ReactWrapper } from 'enzyme';
 import { RangedSlider } from './RangedSlider';
 import { isConformant } from '../../common/isConformant';
 
@@ -53,6 +54,125 @@ describe('RangedSlider', () => {
       render(<RangedSlider id="test_id" data-testid="test" />);
       const sliderRoot = screen.getByTestId('test');
       expect(sliderRoot.getAttribute('id')).toEqual('test_id');
+    });
+
+    it('slides to the correct position when dragged in-between steps', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onChange = jest.fn();
+
+      const wrapper: ReactWrapper = mount(
+        <RangedSlider
+          step={10}
+          activeRail={{ className: 'active-rail' }}
+          onChange={onChange}
+          inputLower={{ ref: inputRef }}
+        />,
+      );
+
+      const activeRail = wrapper.find('.active-rail');
+
+      activeRail.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({
+        value: {
+          lowerValue: 50,
+          upperValue: 100,
+        },
+      });
+      expect(inputRef.current?.value).toEqual('50');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('55%');
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
+      expect(onChange).toBeCalledTimes(2);
+      expect(onChange.mock.calls[0][1]).toEqual({
+        value: {
+          lowerValue: 50,
+          upperValue: 100,
+        },
+      });
+      expect(inputRef.current?.value).toEqual('20');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('76%');
+    });
+
+    it('calls onChange when pointerDown', () => {
+      const onChange = jest.fn();
+
+      render(<RangedSlider defaultValue={{ lowerValue: 5, upperValue: 10 }} onChange={onChange} data-testid="test" />);
+
+      const sliderRoot = screen.getByTestId('test');
+      expect(onChange).toBeCalledTimes(0);
+      fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 0, upperValue: 10 } });
+    });
+
+    it('applies the defaultValue prop', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(
+        <RangedSlider
+          defaultValue={{
+            lowerValue: 50,
+            upperValue: 100,
+          }}
+          inputLower={{ ref: lowerInputRef }}
+          inputUpper={{ ref: upperInputRef }}
+        />,
+      );
+      expect(lowerInputRef.current?.value).toEqual('50');
+      expect(upperInputRef.current?.value).toEqual('100');
+    });
+
+    it('applies the value prop', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(
+        <RangedSlider
+          value={{
+            lowerValue: 20,
+            upperValue: 80,
+          }}
+          inputLower={{ ref: lowerInputRef }}
+          inputUpper={{ ref: upperInputRef }}
+        />,
+      );
+      expect(lowerInputRef.current?.value).toEqual('20');
+      expect(upperInputRef.current?.value).toEqual('80');
+    });
+
+    it('applies the disabled prop', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(<RangedSlider disabled={true} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      expect(lowerInputRef.current?.disabled).toEqual(true);
+      expect(upperInputRef.current?.disabled).toEqual(true);
+    });
+
+    it('applies the min prop', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(<RangedSlider min={11} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      expect(lowerInputRef.current?.min).toEqual('11');
+      expect(upperInputRef.current?.min).toEqual('11');
+    });
+
+    it('applies the max prop', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(<RangedSlider max={11} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      expect(lowerInputRef.current?.max).toEqual('11');
+      expect(upperInputRef.current?.max).toEqual('11');
+    });
+
+    it('applies the step prop', () => {
+      const lowerInputRef = React.createRef<HTMLInputElement>();
+      const upperInputRef = React.createRef<HTMLInputElement>();
+      render(<RangedSlider step={11} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
+      expect(lowerInputRef.current?.step).toEqual('11');
+      expect(upperInputRef.current?.step).toEqual('11');
     });
   });
 });
