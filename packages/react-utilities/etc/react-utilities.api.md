@@ -164,11 +164,6 @@ export type NoLegacyRef<Props extends {
     ref?: Exclude<Props['ref'], string>;
 };
 
-// @public (undocumented)
-export type NoRef<Props extends {
-    ref?: unknown;
-}> = Omit<Props, 'ref'>;
-
 // @public
 export const nullRender: () => null;
 
