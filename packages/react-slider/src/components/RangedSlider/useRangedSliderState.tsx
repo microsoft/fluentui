@@ -64,6 +64,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const upperInputRef = React.useRef<HTMLInputElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
   const activeThumb = React.useRef<'lowerValue' | 'upperValue'>('lowerValue');
+  const internalValue = React.useRef<RangedValue>(value ? value : defaultValue);
   const disposables = React.useRef<(() => void)[]>([]);
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
@@ -82,7 +83,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
       const newValue = {
-        ...currentValue,
+        ...internalValue.current,
         [activeThumb.current]: clampedValue,
       };
 
@@ -93,6 +94,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         }
       }
 
+      internalValue.current = newValue;
       onChange?.(ev, { value: newValue });
       setCurrentValue(newValue);
     },
@@ -103,28 +105,54 @@ export const useRangedSliderState = (state: RangedSliderState) => {
    */
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
-      setRenderedPosition({
-        ...currentValue,
+      internalValue.current = {
+        ...internalValue.current,
         [activeThumb.current]: clamp(incomingValue, min, max),
-      });
+      };
+      setRenderedPosition(internalValue.current);
       updateValue(incomingValue, ev);
     },
-    [currentValue, max, min, updateValue],
+    [max, min, updateValue],
   );
+
+  /**
+   * Updates the internal `renderedPosition` of the Slider.
+   */
+  const updatedRenderedPosition = React.useCallback((incomingValue: number) => {
+    setRenderedPosition({
+      ...internalValue.current,
+      [activeThumb.current]: incomingValue,
+    });
+  }, []);
+
+  /**
+   * Updates the active thumb of the rangedSlider
+   */
+  const updateActiveThumb = React.useCallback((incomingValue: number) => {
+    switch (activeThumb.current) {
+      case 'lowerValue':
+        if (incomingValue > internalValue.current.upperValue) {
+          activeThumb.current = 'upperValue';
+        }
+        break;
+      case 'upperValue':
+        if (incomingValue < internalValue.current.lowerValue) {
+          activeThumb.current = 'lowerValue';
+        }
+        break;
+    }
+  }, []);
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const position = calculateSteps(ev, railRef, min, max, step, vertical, dir);
       const currentStepPosition = Math.round(position / step) * step;
 
-      setRenderedPosition({
-        ...currentValue,
-        [activeThumb.current]: position,
-      });
-
+      updateActiveThumb(currentStepPosition);
+      updatedRenderedPosition(position);
       updateValue(currentStepPosition, ev);
     },
-    [currentValue, dir, max, min, step, updateValue, vertical],
+    [dir, max, min, step, updateActiveThumb, updateValue, updatedRenderedPosition, vertical],
   );
 
   const onPointerUp = React.useCallback(
@@ -151,14 +179,18 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       target.setPointerCapture?.(pointerId);
       onPointerDownCallback?.(ev);
       hideStepAnimation();
-      activeThumb.current = findClosestThumb(currentValue, calculateSteps(ev, railRef, min, max, step, vertical, dir));
+      activeThumb.current = findClosestThumb(
+        internalValue.current,
+        calculateSteps(ev, railRef, min, max, step, vertical, dir),
+      );
+
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
         target.releasePointerCapture?.(pointerId);
       });
 
       onPointerMove(ev);
     },
-    [currentValue, dir, hideStepAnimation, max, min, onPointerDownCallback, onPointerMove, onPointerUp, step, vertical],
+    [dir, hideStepAnimation, max, min, onPointerDownCallback, onPointerMove, onPointerUp, step, vertical],
   );
 
   const onInputChange = React.useCallback(
