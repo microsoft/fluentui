@@ -84,17 +84,19 @@ describe('RangedSlider', () => {
       });
       expect(inputRef.current?.value).toEqual('50');
       expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('55%');
+      expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
-      expect(onChange.mock.calls[0][1]).toEqual({
+      expect(onChange.mock.calls[1][1]).toEqual({
         value: {
-          lowerValue: 50,
+          lowerValue: 20,
           upperValue: 100,
         },
       });
       expect(inputRef.current?.value).toEqual('20');
       expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('76%');
+      expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('24%');
     });
 
     it('calls onChange when pointerDown', () => {
@@ -184,14 +186,56 @@ describe('RangedSlider', () => {
             lowerValue: -10,
             upperValue: 110,
           }}
-          min={0}
-          max={100}
           inputLower={{ ref: lowerInputRef }}
           inputUpper={{ ref: upperInputRef }}
         />,
       );
-      expect(lowerInputRef.current?.step).toEqual('0');
-      expect(upperInputRef.current?.step).toEqual('100');
+      expect(lowerInputRef.current?.value).toEqual('0');
+      expect(upperInputRef.current?.value).toEqual('100');
     });
+  });
+
+  it('slides to min/max and executes onChange', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+
+    const wrapper: ReactWrapper = mount(
+      <RangedSlider
+        defaultValue={{
+          lowerValue: 50,
+          upperValue: 50,
+        }}
+        onChange={onChange}
+        activeRail={{ className: 'active-rail' }}
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+      />,
+    );
+
+    const activeRail = wrapper.find('.active-rail');
+
+    activeRail.getDOMNode().getBoundingClientRect = () =>
+      ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+    expect(onChange).toBeCalledTimes(0);
+
+    activeRail.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
+    expect(onChange).toBeCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 50, upperValue: 100 } });
+    expect(lowerInputRef.current?.value).toEqual('50');
+    expect(upperInputRef.current?.value).toEqual('100');
+    expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('50%');
+    expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('50%');
+
+    activeRail.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
+    expect(onChange).toBeCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: { lowerValue: 0, upperValue: 100 } });
+    expect(lowerInputRef.current?.value).toEqual('0');
+    expect(upperInputRef.current?.value).toEqual('100');
+    expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('100%');
+    expect(wrapper.find('.ms-Slider-track').props().style?.left).toEqual('0%');
+
+    wrapper.unmount();
   });
 });
