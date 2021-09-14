@@ -93,6 +93,7 @@ export class Card extends FoundationCard {
  */
 export const fluentCard = Card.compose({
   baseName: 'card',
+  baseClass: FoundationCard,
   template,
   styles,
 });

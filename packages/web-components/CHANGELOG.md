@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Sep 2021 07:37:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.0)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.2..@fluentui/web-components_v1.5.0)
+
+### Minor changes
+
+- implement base class for components which extend beyond foundation ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by chhol@microsoft.com)
 
 ## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.2)
 

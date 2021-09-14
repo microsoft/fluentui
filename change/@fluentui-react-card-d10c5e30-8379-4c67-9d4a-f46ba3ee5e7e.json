@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Phase 1 release",
+  "packageName": "@fluentui/react-card",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}
