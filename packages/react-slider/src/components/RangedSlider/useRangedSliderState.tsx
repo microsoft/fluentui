@@ -65,6 +65,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const railRef = React.useRef<HTMLDivElement>(null);
   const activeThumb = React.useRef<'lowerValue' | 'upperValue'>('lowerValue');
   const internalValue = React.useRef<RangedValue>(value ? value : defaultValue);
+  const lockedValue = React.useRef<number>(0);
   const disposables = React.useRef<(() => void)[]>([]);
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
@@ -99,9 +100,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const updateValue = useEventCallback(
     (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
-      const newValue = {
-        ...internalValue.current,
-        [activeThumb.current]: clampedValue,
+
+      const newValue: RangedValue = {
+        upperValue: activeThumb.current === 'upperValue' ? clampedValue : lockedValue.current,
+        lowerValue: activeThumb.current === 'lowerValue' ? clampedValue : lockedValue.current,
       };
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -127,6 +129,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         ...internalValue.current,
         [activeThumb.current]: clamp(incomingValue, min, max),
       };
+      lockedValue.current =
+        activeThumb.current === 'lowerValue' ? internalValue.current.upperValue : internalValue.current.lowerValue;
 
       if (activeThumb.current === 'lowerValue') {
         lowerInputRef.current!.focus();
@@ -190,6 +194,9 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         internalValue.current,
         calculateSteps(ev, railRef, min, max, step, vertical, dir),
       );
+
+      lockedValue.current =
+        activeThumb.current === 'lowerValue' ? internalValue.current.upperValue : internalValue.current.lowerValue;
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
         target.releasePointerCapture?.(pointerId);
