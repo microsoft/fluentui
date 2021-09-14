@@ -1,0 +1,86 @@
+pr: none
+trigger: none
+
+# Customize build number to include major version
+# Example: v9_20201022.1
+name: 'v9_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+
+pool: 'Self Host Ubuntu'
+
+# schedules:
+#   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
+#   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+#   - cron: '0 7 * * 1-5'
+#     # will be 12am during daylight savings time unless trigger is updated
+#     displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
+#     branches:
+#       include:
+#         - master
+
+workspace:
+  clean: all
+
+steps:
+  - template: .devops/templates/tools.yml
+
+  - script: |
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+    displayName: Authenticate git for pushes
+
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn
+
+  - script: |
+      yarn generate-version-files
+    displayName: Generate version files
+
+  - script: |
+      yarn build --to @fluentui/react-components
+    displayName: yarn build
+
+  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
+  - script: |
+      yarn test --to @fluentui/react-components
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  # TODO this needs to change for v9
+  - script: |
+      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      git reset --hard origin/master
+    env:
+      GITHUB_PAT: $(githubPAT)
+    displayName: Publish changes and bump versions
+
+  # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
+  # failure doesn't need to block anything else
+  # - script: |
+  #     node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+  #   displayName: 'Update github release notes'
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false
