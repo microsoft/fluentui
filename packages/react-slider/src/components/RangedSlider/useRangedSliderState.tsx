@@ -17,6 +17,7 @@ import {
   getKeydownValue,
   renderMarks,
 } from '../../utils/index';
+import { animationTime } from '../Slider/useSliderState';
 import { RangedSliderState } from './RangedSlider.types';
 
 type RangedValue = { lowerValue: number; upperValue: number };
@@ -42,6 +43,28 @@ const clampRangedThumbValues = (object: RangedValue, min: number, max: number): 
   return result as RangedValue;
 };
 
+interface RangedSliderInternalState {
+  /**
+   * The internal rendered value of the RangedSlider.
+   */
+  internalValue: RangedValue;
+
+  /**
+   * The locked value of the non-moving thumb. Used to ensure that the active thumb updates correctly when changed.
+   */
+  lockedValue: number;
+
+  /**
+   * The current selected thumb of the RangedSlider.
+   */
+  activeThumb: 'lowerValue' | 'upperValue';
+
+  /**
+   * Disposable events for the RangedSlider.
+   */
+  disposables: (() => void)[];
+}
+
 export const useRangedSliderState = (state: RangedSliderState) => {
   const {
     min = 0,
@@ -63,10 +86,12 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const lowerInputRef = React.useRef<HTMLInputElement>(null);
   const upperInputRef = React.useRef<HTMLInputElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
-  const activeThumb = React.useRef<'lowerValue' | 'upperValue'>('lowerValue');
-  const internalValue = React.useRef<RangedValue>(value ? value : defaultValue);
-  const lockedValue = React.useRef<number>(0);
-  const disposables = React.useRef<(() => void)[]>([]);
+  const internalState = React.useRef<RangedSliderInternalState>({
+    internalValue: value ? value : defaultValue,
+    lockedValue: 0,
+    activeThumb: 'lowerValue',
+    disposables: [],
+  });
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<RangedValue | undefined>(value ? value : defaultValue);
@@ -80,15 +105,15 @@ export const useRangedSliderState = (state: RangedSliderState) => {
    * Updates the active thumb of the RangedSlider
    */
   const updateActiveThumb = React.useCallback((incomingValue: number) => {
-    switch (activeThumb.current) {
+    switch (internalState.current.activeThumb) {
       case 'lowerValue':
-        if (incomingValue > internalValue.current.upperValue) {
-          activeThumb.current = 'upperValue';
+        if (incomingValue > internalState.current.internalValue.upperValue) {
+          internalState.current.activeThumb = 'upperValue';
         }
         break;
       case 'upperValue':
-        if (incomingValue < internalValue.current.lowerValue) {
-          activeThumb.current = 'lowerValue';
+        if (incomingValue < internalState.current.internalValue.lowerValue) {
+          internalState.current.activeThumb = 'lowerValue';
         }
         break;
     }
@@ -102,8 +127,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       const clampedValue = clamp(incomingValue, min, max);
 
       const newValue: RangedValue = {
-        upperValue: activeThumb.current === 'upperValue' ? clampedValue : lockedValue.current,
-        lowerValue: activeThumb.current === 'lowerValue' ? clampedValue : lockedValue.current,
+        upperValue:
+          internalState.current.activeThumb === 'upperValue' ? clampedValue : internalState.current.lockedValue,
+        lowerValue:
+          internalState.current.activeThumb === 'lowerValue' ? clampedValue : internalState.current.lockedValue,
       };
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -113,7 +140,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
         }
       }
 
-      internalValue.current = newValue;
+      internalState.current.internalValue = newValue;
       onChange?.(ev, { value: newValue });
       setCurrentValue(newValue);
     },
@@ -125,20 +152,22 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
       updateActiveThumb(clamp(incomingValue, min, max));
-      internalValue.current = {
-        ...internalValue.current,
-        [activeThumb.current]: clamp(incomingValue, min, max),
+      internalState.current.internalValue = {
+        ...internalState.current.internalValue,
+        [internalState.current.activeThumb]: clamp(incomingValue, min, max),
       };
-      lockedValue.current =
-        activeThumb.current === 'lowerValue' ? internalValue.current.upperValue : internalValue.current.lowerValue;
+      internalState.current.lockedValue =
+        internalState.current.activeThumb === 'lowerValue'
+          ? internalState.current.internalValue.upperValue
+          : internalState.current.internalValue.lowerValue;
 
-      if (activeThumb.current === 'lowerValue') {
+      if (internalState.current.activeThumb === 'lowerValue') {
         lowerInputRef.current!.focus();
       } else {
         upperInputRef.current!.focus();
       }
 
-      setRenderedPosition(internalValue.current);
+      setRenderedPosition(internalState.current.internalValue);
       updateValue(incomingValue, ev);
     },
     [max, min, updateActiveThumb, updateValue],
@@ -149,8 +178,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
    */
   const updatedRenderedPosition = React.useCallback((incomingValue: number) => {
     setRenderedPosition({
-      ...internalValue.current,
-      [activeThumb.current]: incomingValue,
+      ...internalState.current.internalValue,
+      [internalState.current.activeThumb]: incomingValue,
     });
   }, []);
 
@@ -168,12 +197,12 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      disposables.current.forEach(dispose => dispose());
-      disposables.current = [];
+      internalState.current.disposables.forEach(dispose => dispose());
+      internalState.current.disposables = [];
       showStepAnimation();
       // When undefined, the position fallbacks to the currentValue state.
       setRenderedPosition(undefined);
-      if (activeThumb.current === 'lowerValue') {
+      if (internalState.current.activeThumb === 'lowerValue') {
         lowerInputRef.current!.focus();
       } else {
         upperInputRef.current!.focus();
@@ -190,17 +219,23 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       target.setPointerCapture?.(pointerId);
       onPointerDownCallback?.(ev);
       hideStepAnimation();
-      activeThumb.current = findClosestThumb(
-        internalValue.current,
+      internalState.current.activeThumb = findClosestThumb(
+        internalState.current.internalValue,
         calculateSteps(ev, railRef, min, max, step, vertical, dir),
       );
 
-      lockedValue.current =
-        activeThumb.current === 'lowerValue' ? internalValue.current.upperValue : internalValue.current.lowerValue;
+      internalState.current.lockedValue =
+        internalState.current.activeThumb === 'lowerValue'
+          ? internalState.current.internalValue.upperValue
+          : internalState.current.internalValue.lowerValue;
 
-      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture?.(pointerId);
-      });
+      internalState.current.disposables.push(
+        on(target, 'pointermove', onPointerMove),
+        on(target, 'pointerup', onPointerUp),
+        () => {
+          target.releasePointerCapture?.(pointerId);
+        },
+      );
 
       onPointerMove(ev);
     },
@@ -219,9 +254,16 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       onKeyDownCallback?.(ev);
       hideStepAnimation();
 
-      const incomingValue = getKeydownValue(ev, currentValue[activeThumb.current], min, max, dir, keyboardStep);
+      const incomingValue = getKeydownValue(
+        ev,
+        currentValue[internalState.current.activeThumb],
+        min,
+        max,
+        dir,
+        keyboardStep,
+      );
 
-      if (currentValue[activeThumb.current] !== incomingValue) {
+      if (currentValue[internalState.current.activeThumb] !== incomingValue) {
         updatePosition(incomingValue, ev);
       }
     },
@@ -230,7 +272,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const onKeyDownLower = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      activeThumb.current = 'lowerValue';
+      internalState.current.activeThumb = 'lowerValue';
       keyDown(ev);
     },
     [keyDown],
@@ -238,15 +280,15 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const onKeyDownUpper = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      activeThumb.current = 'upperValue';
+      internalState.current.activeThumb = 'upperValue';
       keyDown(ev);
     },
     [keyDown],
   );
 
   useUnmount(() => {
-    disposables.current.forEach(dispose => dispose());
-    disposables.current = [];
+    internalState.current.disposables.forEach(dispose => dispose());
+    internalState.current.disposables = [];
   });
 
   const lowerValuePercent = getPercent(
@@ -263,9 +305,6 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const markValues = React.useMemo((): number[] => getMarkValue(marks, min, max, step), [marks, max, min, step]);
   const markPercent = React.useMemo((): string[] => getMarkPercent(markValues), [markValues]);
-
-  // TODO: Awaiting animation time from design spec.
-  const animationTime = '0.1s';
 
   const lowerThumbWrapperStyles = {
     transform: vertical

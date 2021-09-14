@@ -19,6 +19,9 @@ import {
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';
 
+// TODO: Awaiting animation time from design spec.
+export const animationTime = '0.1s';
+
 export const useSliderState = (state: SliderState) => {
   const {
     value,
@@ -156,9 +159,6 @@ export const useSliderState = (state: SliderState) => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
   });
-
-  // TODO: Awaiting animation time from design spec.
-  const animationTime = '0.1s';
 
   const valuePercent = getPercent(renderedPosition !== undefined ? renderedPosition : currentValue, min, max);
 
