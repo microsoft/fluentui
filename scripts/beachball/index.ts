@@ -15,7 +15,7 @@ const fluentConvergedPackagePaths = Object.values(allPackageInfo)
 
 const ignoreFluentConvergedScope = fluentConvergedPackagePaths.map(path => `!${path}`);
 // Northstar is never published with beachball
-const northstarScope = '!packages/fluentui';
+const northstarScope = '!packages/fluentui/*';
 
 // Default scope used to publish Fluent UI v8
 const defaultScope = [northstarScope, ...ignoreFluentConvergedScope];
