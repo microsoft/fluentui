@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "setting the defaultRenderer argument for the onRenderIcon of ContextualMenuItem",
-  "packageName": "@fluentui/react",
-  "email": "dmitry@grechka.family",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/api-docs_v8.1.35",
+      "version": "8.1.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "@fluentui/api-docs",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3",
+            "comment": "Bump @fluentui/api-docs to v8.1.35"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Sep 2021 07:37:03 GMT",
       "tag": "@fluentui/api-docs_v8.1.35",
       "version": "8.1.35",

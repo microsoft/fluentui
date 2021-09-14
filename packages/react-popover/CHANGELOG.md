@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.41)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.40..@fluentui/react-popover_v9.0.0-alpha.41)
+
+### Changes
+
+- refactor(Popover): Remove mergeProps and migrate to simple slots ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.40)
 

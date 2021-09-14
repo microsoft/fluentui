@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "@fluentui/public-docsite",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3",
+            "comment": "Bump @fluentui/public-docsite to v8.2.41"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Sep 2021 07:37:03 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",
