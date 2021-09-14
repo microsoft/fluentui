@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 18:07:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.0.0-beta.157
+
+Tue, 14 Sep 2021 18:07:12 GMT
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.157 (lingfangao@hotmail.com)
 
 ## [1.0.0-beta.156](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.156)
 

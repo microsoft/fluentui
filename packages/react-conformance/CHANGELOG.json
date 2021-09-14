@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 18:07:12 GMT",
+      "tag": "@fluentui/react-conformance_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance",
+            "comment": "make sample change",
+            "commit": "e18d6201c46bfc957ae1168cc67eb207448c9d2d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-conformance_v0.5.0",
       "version": "0.5.0",

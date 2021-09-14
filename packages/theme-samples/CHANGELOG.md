@@ -1,8 +1,16 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 18:07:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 8.2.11
+
+Tue, 14 Sep 2021 18:07:12 GMT
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.2.11 (lingfangao@hotmail.com)
 
 ## [8.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.2.10)
 

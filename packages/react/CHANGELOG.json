@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 18:07:12 GMT",
+      "tag": "@fluentui/react_v8.34.2",
+      "version": "8.34.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "e18d6201c46bfc957ae1168cc67eb207448c9d2d",
+            "comment": "Bump @fluentui/react to v8.34.2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Sep 2021 07:38:18 GMT",
       "tag": "@fluentui/react_v8.34.1",
       "version": "8.34.1",

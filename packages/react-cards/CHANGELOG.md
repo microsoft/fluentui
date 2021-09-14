@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 18:07:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.200.30
+
+Tue, 14 Sep 2021 18:07:12 GMT
+
+### Patches
+
+- Bump @fluentui/react-cards to v0.200.30 (lingfangao@hotmail.com)
 
 ## [0.200.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.200.29)
 

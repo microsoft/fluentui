@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "make sample change",
-  "packageName": "@fluentui/react-conformance",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

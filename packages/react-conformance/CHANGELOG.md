@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 07 Sep 2021 07:34:55 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 18:07:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.6.0
+
+Tue, 14 Sep 2021 18:07:12 GMT
+
+### Minor changes
+
+- make sample change (lingfangao@hotmail.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.5.0)
 

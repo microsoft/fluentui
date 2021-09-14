@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 18:07:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 9.0.0-alpha.0
+
+Tue, 14 Sep 2021 18:07:12 GMT
+
+### Changes
+
+- Bump @fluentui/react-input to v9.0.0-alpha.0 (lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-alpha.0)
 
