@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 13 Sep 2021 12:24:39 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 12:23:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.4](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.8.4)
+
+Tue, 14 Sep 2021 12:23:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.8.3..@uifabric/azure-themes_v7.8.4)
+
+### Patches
+
+- [7.0] dropdown and textfield placeholder contrast theme fix, light theme only  ([PR #19674](https://github.com/microsoft/fluentui/pull/19674) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.8.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.8.3)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "[7.0] dropdown and textfield placeholder contrast theme fix, light theme only ",
-  "packageName": "@uifabric/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.8.3",
+  "version": "7.8.4",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
