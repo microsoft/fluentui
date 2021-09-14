@@ -17,6 +17,17 @@ Portal
 
 > Some components declare their type explicity, others do not.
 
+**Recommendations**
+
+- Declare type explicitly at the component level.
+- Do not intersect props and RefAttributes (ensure props extend native and ref attributes)
+
+**Proposed Work Items**
+
+- [ ] Update components to explictly declare type
+
+**Details**
+
 ```tsx
 export const Accordion: React.FunctionComponent<AccordionProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
   HTMLElement,
@@ -31,6 +42,29 @@ export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLE
 ## Props declared as interfaces vs types
 
 > Some props are defined as interfaces and extended. Others are defined as types and intersected. This isn't always consistent within the same component.
+
+**Documentation**
+
+- [TS docs](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
+- The [TS playgroud](https://www.typescriptlang.org/play?q=414#example/types-vs-interfaces) recommends interfaces, but may be outdates :
+  - interfaces provide better error messages
+  - you can extend an interface by declaring it a second time
+- The [StackOverflow thread](https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript/52682220#52682220) adds more information:
+  - Type aliases can be used for primitives, unions, and tuples.
+  - Classes canot implement a type alias that use sa union type.
+- [Team discussion](https://github.com/microsoft/fluentui/pull/19376#discussion_r700046363)
+  - Types can be inlined leading to inflated declaration files
+  - Non-exported interfaces required by a declaration give an error (because they can't be inlined)
+
+**Recommendations**
+
+- While functional programming in Typescript should prefer types over interfaces, there are still some benefits to using interfaces for now.
+
+**Proposed WorkItems**
+
+- [ ] Update all vNext component props to interfaces.
+
+**Details**
 
 Note: I won't list out every component here. We can scrub once we decide the right approach.
 
@@ -50,6 +84,16 @@ export interface AccordionHeaderCommons
 
 ## Props extending ComponentProps vs. ComponentPropsCompat
 
+**Recommendations**
+
+- (none)
+
+**Proposed WorkItems**
+
+- (none)
+
+**Details**
+
 > Some props are still extended from ComponentPropsCompat
 
 AvatarProps, BadgeProps, ButtonProps, ...
@@ -59,6 +103,16 @@ AvatarProps, BadgeProps, ButtonProps, ...
 AvatarProps (badge, image, label, icon), BadgeProps (icon), ButtonProps (icon), ...
 
 ## Slots and HTML attributes
+
+**Recommendations**
+
+- (none)
+
+**Proposed WorkItems**
+
+- (none)
+
+**Details**
 
 > Only Accordian and Menu components use ComponentProps<> with slots currently.
 
@@ -108,6 +162,16 @@ secondaryContent?: React.HTMLAttributes<HTMLElement>;
 ```
 
 ## Compat and HTML attributes
+
+**Recommendations**
+
+- (none yet)
+
+**Proposed WorkItems**
+
+- (none)
+
+**Details**
 
 > The components not yet using slots extend ComponentPropsCompat and provide HTML attributes by extending the associated React HTML attribute types (e.g `React.HTMLAttributes<HTMLElement>`).
 > PortalProps and PopoverTriggerProps do not extend any HTML attributes, but provide children as a property directly in their types.
@@ -184,15 +248,33 @@ React.HTMLAttributes<HTMLElement>
 
 checked, children, color, defaultChecked, disabled, href, image, name, onClick, open, ref, target, type, value
 
-> Several components use declar properties that are also HTML element names.
+> Several components declare properties that are also HTML element names.
 
 button, label strong
+
+**Recommendations**
+
+- (none yet)
+
+**Proposed WorkItems**
+
+- (none)
 
 # Layout properties
 
 > Positioning is defined differently based on component layout specifics.
 > Some props define a type for their enums like start | end, other's don't.
 > Some props leverage Popper positioning.
+
+**Recommendations**
+
+- Consider replacing booleans (e.g. inline) with distributed unions (e.g. layout: 'inline' or layout: 'horizontal')
+
+**Proposed Work Items**
+
+- [ ] Update AccordionHeaderCommons to inline expandIconPosition values
+
+**Details**
 
 AccordionHeaderCommons
 
@@ -213,6 +295,8 @@ ButtonProps
 ```ts
 iconPosition: 'before' | 'after';
 ```
+
+ButtonProps
 
 DividerProps
 
@@ -264,7 +348,7 @@ positioning: PositioningShorthand;
 - [ ] Update ImageProps to reconcile fit vs. fluid. Unclear if affecting same aspect of layout.
 - [ ] Update PopoverProps size to inline 'small' | 'medium' | 'large'
 
-**Current State**
+**Details**
 
 AccordionHeaderCommons
 
@@ -362,7 +446,7 @@ size: PopoverSize;
 - [ ] Update TooltipProps to replace inverted with appearance?: 'inverted'
 - [ ] Update TooltipProps to replace pointing with indicatorAppearance?: 'arrow'
 
-**Current State**
+**Details**
 
 AvatarProps
 
@@ -446,3 +530,11 @@ pointing: boolean;
 ## Events and component state
 
 > The PopoverProps onChangeData event has PopoverState as the type of the data. It maybe difficult to maintain consistency between expected event payload and the state used internally to the component to render. The state also includes refs to elements that may constitute and implementation detail and create confusion with slots.
+
+**Recommendations**
+
+- Avoid exposing State both as the implementation chaining structure and as an event payload.
+
+**Work Items**
+
+- [ ] Update PropoverProps to define a Change event type and pass that to onChangeData
