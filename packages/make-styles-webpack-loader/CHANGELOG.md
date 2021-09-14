@@ -1,8 +1,17 @@
 # Change Log - @fluentui/make-styles-webpack-loader
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 20:09:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.20)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.19..@fluentui/make-styles-webpack-loader_v9.0.0-alpha.20)
+
+### Changes
+
+- Bump @fluentui/make-styles-webpack-loader to v9.0.0-alpha.20 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles-webpack-loader_v9.0.0-alpha.19)
 

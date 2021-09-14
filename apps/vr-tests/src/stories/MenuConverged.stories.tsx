@@ -156,6 +156,7 @@ storiesOf('Menu Converged - selection groups', module)
         <MenuTrigger>
           <button>Toggle menu</button>
         </MenuTrigger>
+
         <MenuPopover>
           <MenuList>
             <MenuGroup>
@@ -191,7 +192,12 @@ storiesOf('Menu Converged - selection groups', module)
   );
 
 storiesOf('Menu Converged - nested submenus', module)
-  .addDecorator(story => <Screener>{story()}</Screener>)
+  .addDecorator(story => (
+    // https://github.com/microsoft/fluentui/issues/19782
+    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory(
     'default',
     () => (
@@ -205,9 +211,9 @@ storiesOf('Menu Converged - nested submenus', module)
             <MenuItem>New </MenuItem>
             <MenuItem>New Window</MenuItem>
             <MenuItem>Open Folder</MenuItem>
-            <Menu open>
+            <Menu>
               <MenuTrigger>
-                <MenuItem>Preferences</MenuItem>
+                <MenuItem id="nestedTrigger">Preferences</MenuItem>
               </MenuTrigger>
 
               <MenuPopover>
