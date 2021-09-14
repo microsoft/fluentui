@@ -1,7 +1,10 @@
-import * as React from 'react';
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import type { ComponentState, ComponentProps, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttributes<HTMLImageElement> {
+export type ImageSlots = {
+  root: IntrinsicShorthandProps<'img'>;
+};
+
+export type ImageCommons = {
   /**
    * An image can appear with rectangular border.
    */
@@ -26,8 +29,8 @@ export interface ImageProps extends ComponentPropsCompat, React.ImgHTMLAttribute
    * An image can appear rounded.
    */
   rounded?: boolean;
-}
+};
 
-export interface ImageState extends ImageProps {
-  ref: React.RefObject<HTMLElement>;
-}
+export interface ImageProps extends ComponentProps<ImageSlots>, Partial<ImageCommons> {}
+
+export interface ImageState extends ComponentState<ImageSlots>, ImageCommons {}
