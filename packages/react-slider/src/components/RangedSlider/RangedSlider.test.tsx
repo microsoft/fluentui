@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 // TODO: Find a way to use pointer events with testing-library and remove enzyme.
-import { mount, ReactWrapper } from 'enzyme';
 import { RangedSlider } from './RangedSlider';
 import { isConformant } from '../../common/isConformant';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 describe('RangedSlider', () => {
   isConformant({
