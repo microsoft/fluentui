@@ -245,6 +245,27 @@ positioning: PositioningShorthand;
 > Some components use different sets of semantic sizes. Avatar uses a set of numbers.
 > The property name for filling available space is sometimes block and sometimes fluid. The fit property value of cover could also be considered filling available space.
 
+**Recommendations**
+
+- Use a consistent set of size names: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'
+  - T-shirt sizes are semantic and avoid too many options.
+  - OK if a particular component doesn't support them all.
+- Prefer using unions inline.
+  - If a union set of values is used for more than one property, then extract to a type defintion.
+
+**Proposed Work Items**
+
+- [ ] Update AccordionHeaderCommons size to inline 'small' | 'medium' | 'large' | 'extra-large'
+- [ ] Consider renaming AvatarProps size to indicate what part is being sized and inline values.
+- [ ] Update BadgeProps size to use 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' (inline)
+- [ ] Update ButtonProps and ImageProps to both use either fluid or block to indicate taking up space.
+      Consider discriminated untion if there will be additional values later.
+- [ ] Update ImageProps fit to remove 'none' if that is the default when not specified OR document the default.
+- [ ] Update ImageProps to reconcile fit vs. fluid. Unclear if affecting same aspect of layout.
+- [ ] Update PopoverProps size to inline 'small' | 'medium' | 'large'
+
+**Current State**
+
 AccordionHeaderCommons
 
 ```ts
@@ -263,7 +284,6 @@ BadgeProps
 
 ```ts
 // BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest'
-
 size: BadgeSize;
 showZero: boolean;
 ```
@@ -341,6 +361,8 @@ size: PopoverSize;
 - [ ] Update PopoverProps to replace brand, inverted with appearance?: 'brand', 'inverted'
 - [ ] Update TooltipProps to replace inverted with appearance?: 'inverted'
 - [ ] Update TooltipProps to replace pointing with indicatorAppearance?: 'arrow'
+
+**Current State**
 
 AvatarProps
 
