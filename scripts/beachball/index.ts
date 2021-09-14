@@ -1,6 +1,6 @@
 import { BeachballConfig } from 'beachball';
 import { getAllPackageInfo } from '../monorepo/index';
-import { renderHeader, renderEntry } from './customRenderers';
+// import { renderHeader, renderEntry } from './customRenderers';
 
 const allPackageInfo = getAllPackageInfo();
 const fluentConvergedPackagePaths = Object.values(allPackageInfo)
@@ -28,10 +28,10 @@ export const config: BeachballConfig = {
   // @ts-ignore
   scope: process.env.RELEASE_VNEXT ? fluentConvergedPackagePaths : defaultScope,
   changelog: {
-    customRenderers: {
-      renderHeader,
-      renderEntry,
-    },
+    // customRenderers: {
+    //   renderHeader,
+    //   renderEntry,
+    // },
     groups: [
       {
         masterPackageName: '@fluentui/react-components',
