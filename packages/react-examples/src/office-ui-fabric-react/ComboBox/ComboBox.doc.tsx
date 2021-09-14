@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ComboBoxBasicExample } from './ComboBox.Basic.Example';
 import { ComboBoxTogglesExample } from './ComboBox.Toggles.Example';
 import { ComboBoxControlledExample } from './ComboBox.Controlled.Example';
+import { ComboBoxSelectAllExample } from './ComboBox.SelectAll.Example';
 import { ComboBoxVirtualizedExample } from './ComboBox.Virtualized.Example';
 import { ComboBoxErrorHandlingExample } from './ComboBox.ErrorHandling.Example';
 import { ComboBoxCustomStyledExample } from './ComboBox.CustomStyled.Example';
@@ -13,6 +14,8 @@ const ComboBoxBasicExampleCode = require('!raw-loader!@fluentui/react-examples/s
 const ComboBoxTogglesExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/ComboBox/ComboBox.Toggles.Example.tsx') as string;
 
 const ComboBoxControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/ComboBox/ComboBox.Controlled.Example.tsx') as string;
+
+const ComboBoxSelectAllExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/ComboBox/ComboBox.SelectAll.Example.tsx') as string;
 
 const ComboBoxVirtualizedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/ComboBox/ComboBox.Virtualized.Example.tsx') as string;
 
@@ -40,6 +43,11 @@ export const ComboBoxPageProps: IDocPageProps = {
       title: 'Controlled ComboBox',
       code: ComboBoxControlledExampleCode,
       view: <ComboBoxControlledExample />,
+    },
+    {
+      title: 'ComboBox with select all option',
+      code: ComboBoxSelectAllExampleCode,
+      view: <ComboBoxSelectAllExample />,
     },
     {
       title: 'VirtualizedComboBox',
