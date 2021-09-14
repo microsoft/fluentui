@@ -43,7 +43,7 @@ storiesOf('Accordion Converged', module)
     { rtl: true },
   );
 
-storiesOf('Accordion', module)
+storiesOf('Accordion Converged', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '300px' }}>
