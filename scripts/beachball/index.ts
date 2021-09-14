@@ -23,6 +23,7 @@ const defaultScope = [northstarScope, ...ignoreFluentConvergedScope];
 export const config: BeachballConfig = {
   disallowedChangeTypes: ['major', 'prerelease'],
   tag: 'latest',
+  publish: false,
   generateChangelog: true,
   // @ts-ignore
   scope: process.env.RELEASE_VNEXT ? fluentConvergedPackagePaths : defaultScope,
