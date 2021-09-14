@@ -22,7 +22,7 @@ describe('Layer', () => {
     <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
   );
 
-  const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
+  const Parent: React.FunctionComponent<{ hostId?: string | Node }> = props => (
     <context.Provider value={{ foo: 'bar' }}>
       <div id="parent">
         <Layer hostId={props.hostId}>
@@ -107,6 +107,26 @@ describe('Layer', () => {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
     }
+  });
+
+  it('can render within a targeted Node passed as HostId', () => {
+    const original = global.document.body;
+    document.body.innerHTML = '<div id="hostNode"></div>';
+
+    const hostNode = document.getElementById('hostNode') as Node;
+
+    mount(
+      <>
+        <TestChild />
+        <Parent hostId={hostNode} />
+      </>,
+    );
+
+    const childElement = document.getElementById('child');
+    expect(childElement).toBeTruthy();
+    expect(childElement?.textContent).toEqual('bar');
+
+    global.document.body = original;
   });
 
   it('stops bubbling events', () => {

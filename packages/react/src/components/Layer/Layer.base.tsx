@@ -49,7 +49,8 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       }
 
       if (hostId) {
-        return doc.getElementById(hostId) as Node;
+        const hostNode: Node = typeof hostId === 'string' ? (doc.getElementById(hostId) as Node) : hostId;
+        return hostNode;
       } else {
         const defaultHostSelector = getDefaultTarget();
         return defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : doc.body;

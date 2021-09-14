@@ -4,29 +4,31 @@ let _defaultHostSelector: string | undefined;
 
 /**
  * Register a layer for a given host id
- * @param hostId Id of the layer host
+ * @param hostId Id or Node of the layer host
  * @param layer Layer instance
  */
-export function registerLayer(hostId: string, callback: () => void) {
-  if (!_layersByHostId[hostId]) {
-    _layersByHostId[hostId] = [];
+export function registerLayer(hostId: string | Node, callback: () => void) {
+  const nodeName = typeof hostId === 'string' ? hostId : (hostId as Node).nodeName;
+  if (!_layersByHostId[nodeName]) {
+    _layersByHostId[nodeName] = [];
   }
 
-  _layersByHostId[hostId].push(callback);
+  _layersByHostId[nodeName].push(callback);
 }
 
 /**
  * Unregister a layer for a given host id
- * @param hostId Id of the layer host
+ * @param hostId Id or Node of the layer host
  * @param layer Layer instance
  */
-export function unregisterLayer(hostId: string, callback: () => void) {
-  if (_layersByHostId[hostId]) {
-    const idx = _layersByHostId[hostId].indexOf(callback);
+export function unregisterLayer(hostId: string | Node, callback: () => void) {
+  const nodeName = typeof hostId === 'string' ? hostId : (hostId as Node).nodeName;
+  if (_layersByHostId[nodeName]) {
+    const idx = _layersByHostId[nodeName].indexOf(callback);
     if (idx >= 0) {
-      _layersByHostId[hostId].splice(idx, 1);
-      if (_layersByHostId[hostId].length === 0) {
-        delete _layersByHostId[hostId];
+      _layersByHostId[nodeName].splice(idx, 1);
+      if (_layersByHostId[nodeName].length === 0) {
+        delete _layersByHostId[nodeName];
       }
     }
   }

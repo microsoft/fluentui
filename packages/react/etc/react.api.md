@@ -5639,7 +5639,7 @@ export interface ILayerProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
-    hostId?: string;
+    hostId?: string | Node;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
     // @deprecated
