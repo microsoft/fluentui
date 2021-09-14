@@ -5,6 +5,8 @@ import * as ts from 'typescript';
 import { defaultTests } from './defaultTests';
 import { mount, ComponentType } from 'enzyme';
 
+export type ConformanceDummy = 'true';
+
 export type Tests = keyof typeof defaultTests;
 
 /**
