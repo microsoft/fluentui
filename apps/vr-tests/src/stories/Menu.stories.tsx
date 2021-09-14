@@ -178,7 +178,12 @@ storiesOf('react-menu Menu - selection groups', module)
   ));
 
 storiesOf('react-menu Menu - nested submenus', module)
-  .addDecorator(story => <Screener>{story()}</Screener>)
+  .addDecorator(story => (
+    // https://github.com/microsoft/fluentui/issues/19782
+    <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>
+      {story()}
+    </Screener>
+  ))
   .addDecorator(FluentProviderDecorator)
   .addStory('default', () => (
     <Menu open>
@@ -191,9 +196,9 @@ storiesOf('react-menu Menu - nested submenus', module)
           <MenuItem>New </MenuItem>
           <MenuItem>New Window</MenuItem>
           <MenuItem>Open Folder</MenuItem>
-          <Menu open>
+          <Menu>
             <MenuTrigger>
-              <MenuItem>Preferences</MenuItem>
+              <MenuItem id="nestedTrigger">Preferences</MenuItem>
             </MenuTrigger>
 
             <MenuPopover>

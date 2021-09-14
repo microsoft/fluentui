@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 10 Sep 2021 16:31:52 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.106](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.106)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.105..@fluentui/react-components_v9.0.0-alpha.106)
+
+### Changes
+
+- `@fluentui/react-aria`
+  - Generalize mergeARIADisabled ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by bsunderhus@microsoft.com)
+- `@fluentui/react-popover`
+  - refactor(Popover): Remove mergeProps and migrate to simple slots ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - Bump @fluentui/react-accordion to v9.0.0-alpha.74 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by bsunderhus@microsoft.com)
+- `@fluentui/react-components`
+  - Bump @fluentui/react-components to v9.0.0-alpha.106 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.105](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.105)
 

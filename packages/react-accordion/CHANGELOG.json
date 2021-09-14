@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.74",
+      "version": "9.0.0-alpha.74",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3",
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.74"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 16:31:53 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.73",
       "version": "9.0.0-alpha.73",
