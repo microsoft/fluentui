@@ -179,6 +179,7 @@ storiesOf('react-menu Menu - selection groups', module)
 
 storiesOf('react-menu Menu - nested submenus', module)
   .addDecorator(story => (
+    // https://github.com/microsoft/fluentui/issues/19782
     <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>
       {story()}
     </Screener>
