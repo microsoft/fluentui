@@ -325,57 +325,74 @@ describe('RangedSlider', () => {
     expect(document.activeElement).toEqual(lowerInputRef.current);
   });
 
-  // it('handles keydown events', () => {
-  //   const inputRef = React.createRef<HTMLInputElement>();
-  //   const onChange = jest.fn();
+  it('handles keydown events', () => {
+    const onChange = jest.fn();
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
 
-  //   render(
-  //     <Slider defaultValue={50} min={0} max={100} onChange={onChange} input={{ ref: inputRef }} data-testid="test" />,
-  //   );
+    render(
+      <RangedSlider
+        defaultValue={{ lowerValue: 50, upperValue: 50 }}
+        min={0}
+        max={100}
+        onChange={onChange}
+        inputLower={{ ref: lowerInputRef }}
+        inputUpper={{ ref: upperInputRef }}
+      />,
+    );
 
-  //   const sliderRoot = screen.getByTestId('test');
-  //   expect(onChange).toBeCalledTimes(0);
+    expect(onChange).toBeCalledTimes(0);
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
-  //   expect(onChange.mock.calls[0][1]).toEqual({ value: 49 });
-  //   expect(inputRef.current?.value).toEqual('49');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowDown' });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 49, upperValue: 50 } });
+    expect(lowerInputRef.current?.value).toEqual('49');
+    expect(upperInputRef.current?.value).toEqual('50');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-  //   expect(onChange.mock.calls[1][1]).toEqual({ value: 50 });
-  //   expect(inputRef.current?.value).toEqual('50');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: { lowerValue: 50, upperValue: 50 } });
+    expect(lowerInputRef.current?.value).toEqual('50');
+    expect(upperInputRef.current?.value).toEqual('50');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
-  //   expect(onChange.mock.calls[2][1]).toEqual({ value: 49 });
-  //   expect(inputRef.current?.value).toEqual('49');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowLeft' });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 49, upperValue: 50 } });
+    expect(lowerInputRef.current?.value).toEqual('49');
+    expect(upperInputRef.current?.value).toEqual('50');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowRight' });
-  //   expect(onChange.mock.calls[3][1]).toEqual({ value: 50 });
-  //   expect(inputRef.current?.value).toEqual('50');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowRight' });
+    expect(onChange.mock.calls[3][1]).toEqual({ value: { lowerValue: 50, upperValue: 50 } });
+    expect(lowerInputRef.current?.value).toEqual('50');
+    expect(upperInputRef.current?.value).toEqual('50');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'PageUp' });
-  //   expect(onChange.mock.calls[4][1]).toEqual({ value: 60 });
-  //   expect(inputRef.current?.value).toEqual('60');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'PageUp' });
+    expect(onChange.mock.calls[4][1]).toEqual({ value: { lowerValue: 50, upperValue: 60 } });
+    expect(lowerInputRef.current?.value).toEqual('50');
+    expect(upperInputRef.current?.value).toEqual('60');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'PageDown' });
-  //   expect(onChange.mock.calls[5][1]).toEqual({ value: 50 });
-  //   expect(inputRef.current?.value).toEqual('50');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'PageDown' });
+    expect(onChange.mock.calls[5][1]).toEqual({ value: { lowerValue: 40, upperValue: 60 } });
+    expect(lowerInputRef.current?.value).toEqual('40');
+    expect(upperInputRef.current?.value).toEqual('60');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'Home' });
-  //   expect(onChange.mock.calls[6][1]).toEqual({ value: 0 });
-  //   expect(inputRef.current?.value).toEqual('0');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'Home' });
+    expect(onChange.mock.calls[6][1]).toEqual({ value: { lowerValue: 0, upperValue: 60 } });
+    expect(lowerInputRef.current?.value).toEqual('0');
+    expect(upperInputRef.current?.value).toEqual('60');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'End' });
-  //   expect(onChange.mock.calls[7][1]).toEqual({ value: 100 });
-  //   expect(inputRef.current?.value).toEqual('100');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'End' });
+    expect(onChange.mock.calls[7][1]).toEqual({ value: { lowerValue: 0, upperValue: 100 } });
+    expect(lowerInputRef.current?.value).toEqual('0');
+    expect(upperInputRef.current?.value).toEqual('100');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft', shiftKey: true });
-  //   expect(onChange.mock.calls[8][1]).toEqual({ value: 90 });
-  //   expect(inputRef.current?.value).toEqual('90');
+    fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowLeft', shiftKey: true });
+    expect(onChange.mock.calls[8][1]).toEqual({ value: { lowerValue: 0, upperValue: 90 } });
+    expect(lowerInputRef.current?.value).toEqual('0');
+    expect(upperInputRef.current?.value).toEqual('90');
 
-  //   fireEvent.keyDown(sliderRoot, { key: 'ArrowRight', shiftKey: true });
-  //   expect(onChange.mock.calls[9][1]).toEqual({ value: 100 });
-  //   expect(inputRef.current?.value).toEqual('100');
+    fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowRight', shiftKey: true });
+    expect(onChange.mock.calls[9][1]).toEqual({ value: { lowerValue: 10, upperValue: 90 } });
+    expect(lowerInputRef.current?.value).toEqual('10');
+    expect(upperInputRef.current?.value).toEqual('90');
 
-  //   expect(onChange).toBeCalledTimes(10);
-  // });
+    expect(onChange).toBeCalledTimes(10);
+  });
 });
