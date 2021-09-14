@@ -68,13 +68,30 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const disposables = React.useRef<(() => void)[]>([]);
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [renderedPosition, setRenderedPosition] = React.useState<any>(value ? value : defaultValue);
+  const [renderedPosition, setRenderedPosition] = React.useState<RangedValue | undefined>(value ? value : defaultValue);
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clampRangedThumbValues(value, min, max),
     defaultState: clampRangedThumbValues(defaultValue, min, max),
     initialState: { lowerValue: min, upperValue: max },
   });
+
+  /**
+   * Updates the active thumb of the RangedSlider
+   */
+  const updateActiveThumb = React.useCallback((incomingValue: number) => {
+    switch (activeThumb.current) {
+      case 'lowerValue':
+        if (incomingValue > internalValue.current.upperValue) {
+          activeThumb.current = 'upperValue';
+        }
+        break;
+      case 'upperValue':
+        if (incomingValue < internalValue.current.lowerValue) {
+          activeThumb.current = 'lowerValue';
+        }
+        break;
+    }
+  }, []);
 
   /**
    * Updates the controlled `currentValue` to the new `incomingValue` and clamps it.
@@ -101,46 +118,36 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   );
 
   /**
-   * Updates the controlled `currentValue` and `renderedPosition` of the Slider.
+   * Updates the controlled `currentValue` and `renderedPosition` of the RangedSlider.
    */
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
+      updateActiveThumb(clamp(incomingValue, min, max));
       internalValue.current = {
         ...internalValue.current,
         [activeThumb.current]: clamp(incomingValue, min, max),
       };
+
+      if (activeThumb.current === 'lowerValue') {
+        lowerInputRef.current!.focus();
+      } else {
+        upperInputRef.current!.focus();
+      }
+
       setRenderedPosition(internalValue.current);
       updateValue(incomingValue, ev);
     },
-    [max, min, updateValue],
+    [max, min, updateActiveThumb, updateValue],
   );
 
   /**
-   * Updates the internal `renderedPosition` of the Slider.
+   * Updates the internal `renderedPosition` of the RangedSlider.
    */
   const updatedRenderedPosition = React.useCallback((incomingValue: number) => {
     setRenderedPosition({
       ...internalValue.current,
       [activeThumb.current]: incomingValue,
     });
-  }, []);
-
-  /**
-   * Updates the active thumb of the rangedSlider
-   */
-  const updateActiveThumb = React.useCallback((incomingValue: number) => {
-    switch (activeThumb.current) {
-      case 'lowerValue':
-        if (incomingValue > internalValue.current.upperValue) {
-          activeThumb.current = 'upperValue';
-        }
-        break;
-      case 'upperValue':
-        if (incomingValue < internalValue.current.lowerValue) {
-          activeThumb.current = 'lowerValue';
-        }
-        break;
-    }
   }, []);
 
   const onPointerMove = React.useCallback(
