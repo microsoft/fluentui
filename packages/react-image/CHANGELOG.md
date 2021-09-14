@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 20:09:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.77)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.76..@fluentui/react-image_v9.0.0-alpha.77)
+
+### Changes
+
+- Migrate to simplified slots ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by tkrasniqi@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.77 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.76)
 

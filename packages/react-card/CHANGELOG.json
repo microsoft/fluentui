@@ -2,6 +2,27 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "comment": "Phase 1 release",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-card to v9.0.0-alpha.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 16:31:53 GMT",
       "tag": "@fluentui/react-card_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",
