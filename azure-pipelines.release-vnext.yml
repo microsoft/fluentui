@@ -43,10 +43,6 @@ steps:
     displayName: yarn
 
   - script: |
-      yarn generate-version-files
-    displayName: Generate version files
-
-  - script: |
       yarn build --to @fluentui/react-components
     displayName: yarn build
 
