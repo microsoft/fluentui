@@ -63,7 +63,7 @@ export class Card extends FoundationCard {
       fillColor.setValueFor(
         this,
         (target: HTMLElement): Swatch =>
-          neutralFillLayerRecipe.getValueFor(target).evaluate(target, fillColor.getValueFor(source)),
+          neutralFillLayerRecipe.getValueFor(target).evaluate(target, fillColor.getValueFor(source)).rest,
       );
     }
   }

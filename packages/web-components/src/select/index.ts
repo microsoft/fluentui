@@ -1,6 +1,5 @@
 import { attr } from '@microsoft/fast-element';
 import { Select as FoundationSelect, SelectOptions, selectTemplate as template } from '@microsoft/fast-foundation';
-import { fillColor, neutralLayerFloating } from '../design-tokens';
 import { selectStyles as styles } from './select.styles';
 
 /**
@@ -43,11 +42,6 @@ export class Select extends FoundationSelect {
     if (!this.appearance) {
       this.appearance = 'outline';
     }
-
-    const listbox = this.closest('.listbox') as HTMLElement;
-    if (listbox) {
-      fillColor.setValueFor(listbox, neutralLayerFloating);
-    }
   }
 }
 
@@ -67,7 +61,9 @@ export const fluentSelect = Select.compose<SelectOptions>({
   template,
   styles,
   indicator: `
-    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M3.15 5.65c.2-.2.5-.2.7 0L8 9.79l4.15-4.14a.5.5 0 01.7.7l-4.5 4.5a.5.5 0 01-.7 0l-4.5-4.5a.5.5 0 010-.7z"/></svg>
+    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.15 4.65c.2-.2.5-.2.7 0L6 7.79l3.15-3.14a.5.5 0 11.7.7l-3.5 3.5a.5.5 0 01-.7 0l-3.5-3.5a.5.5 0 010-.7z"/>
+    </svg>
   `,
 });
 

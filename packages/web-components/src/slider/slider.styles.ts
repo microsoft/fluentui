@@ -13,23 +13,19 @@ import {
   accentFillActive,
   accentFillHover,
   accentFillRest,
-  accentForegroundRest,
   controlCornerRadius,
   density,
   designUnit,
   disabledOpacity,
   fillColor,
   focusStrokeOuter,
-  neutralFillActive,
-  neutralFillHover,
   neutralFillRest,
   neutralFillStrongRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  strokeControlRest,
-  strokeControlStrongRest,
+  neutralStrokeControlRest,
+  neutralStrokeStrongRest,
   strokeWidth,
 } from '../design-tokens';
+import { neutralStrokeControlActive, neutralStrokeControlHover } from '..';
 
 export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -78,7 +74,8 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       border: none;
       width: calc(var(--thumb-size) * 1px);
       height: calc(var(--thumb-size) * 1px);
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${strokeControlRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlRest};
       border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: 50%;
       box-sizing: border-box;
@@ -100,15 +97,15 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
       margin: 5px;
     }
     :host(:not(.disabled)) .thumb-cursor:hover {
-      background: ${neutralFillHover};
-      border-color: ${neutralStrokeHover};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlHover};
     }
     :host(:not(.disabled)) .thumb-cursor:active {
-      background: ${neutralFillActive};
-      border-color: ${neutralStrokeActive};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlActive};
     }
     .track-start {
-      background: ${accentForegroundRest};
+      background: ${accentFillRest};
       position: absolute;
       height: 100%;
       left: 0;
@@ -139,7 +136,7 @@ export const sliderStyles: (context: ElementDefinitionContext, definition: Slide
     }
     .track {
       background: ${neutralFillStrongRest};
-      border: 1px solid ${strokeControlStrongRest};
+      border: 1px solid ${neutralStrokeStrongRest};
       border-radius: 2px;
       box-sizing: border-box;
       position: absolute;

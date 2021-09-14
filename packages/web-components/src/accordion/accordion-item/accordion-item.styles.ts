@@ -15,12 +15,13 @@ import {
   designUnit,
   focusStrokeOuter,
   focusStrokeWidth,
+  layerCornerRadius,
   neutralFillLayerAltRest,
   neutralFillLayerRecipe,
   neutralFillLayerRest,
   neutralFillStealthRecipe,
   neutralForegroundRest,
-  neutralStrokeRest,
+  neutralStrokeLayerRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -32,7 +33,7 @@ const neutralFillStealthRestOnNeutralFillLayerRest = DesignToken.create<Swatch>(
 ).withDefault((target: HTMLElement) => {
   const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
   const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target)).rest;
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).rest;
 });
 
 const neutralFillStealthHoverOnNeutralFillLayerRest = DesignToken.create<Swatch>(
@@ -40,7 +41,7 @@ const neutralFillStealthHoverOnNeutralFillLayerRest = DesignToken.create<Swatch>
 ).withDefault((target: HTMLElement) => {
   const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
   const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target)).hover;
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
 });
 
 const neutralFillStealthActiveOnNeutralFillLayerRest = DesignToken.create<Swatch>(
@@ -48,7 +49,7 @@ const neutralFillStealthActiveOnNeutralFillLayerRest = DesignToken.create<Swatch
 ).withDefault((target: HTMLElement) => {
   const baseRecipe = neutralFillLayerRecipe.getValueFor(target);
   const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
-  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target)).active;
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).active;
 });
 
 export const accordionItemStyles: (
@@ -64,8 +65,8 @@ export const accordionItemStyles: (
       line-height: ${typeRampBaseLineHeight};
       background: ${neutralFillLayerRest};
       color: ${neutralForegroundRest};
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
+      border-radius: calc(${layerCornerRadius} * 1px);
     }
 
     .region {
@@ -89,9 +90,9 @@ export const accordionItemStyles: (
       grid-column: 2;
       grid-row: 1;
       outline: none;
+      margin: calc(${designUnit} * 3 * 1px) 0;
       padding: 0 calc(${designUnit} * 2 * 1px);
       text-align: left;
-      height: calc(${heightNumber} * 1px);
       color: inherit;
       cursor: pointer;
       font-family: inherit;
@@ -111,7 +112,7 @@ export const accordionItemStyles: (
     .button:${focusVisible}::before {
       outline: none;
       border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-      border-radius: calc(${controlCornerRadius} * 1px);
+      border-radius: calc(${layerCornerRadius} * 1px);
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
 
@@ -122,9 +123,9 @@ export const accordionItemStyles: (
 
     :host(.expanded) .region {
       display: block;
-      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      border-bottom-left-radius: calc((${controlCornerRadius} - ${strokeWidth}) * 1px);
-      border-bottom-right-radius: calc((${controlCornerRadius} - ${strokeWidth}) * 1px);
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
+      border-bottom-left-radius: calc((${layerCornerRadius} - ${strokeWidth}) * 1px);
+      border-bottom-right-radius: calc((${layerCornerRadius} - ${strokeWidth}) * 1px);
     }
 
     .icon {

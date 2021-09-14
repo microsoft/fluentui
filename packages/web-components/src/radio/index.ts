@@ -16,7 +16,7 @@ export const fluentRadio = Radio.compose<RadioOptions>({
   styles,
   checkedIndicator: `
     <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="8" cy="8" r="3"/>
+      <circle cx="8" cy="8" r="4"/>
     </svg>
   `,
 });

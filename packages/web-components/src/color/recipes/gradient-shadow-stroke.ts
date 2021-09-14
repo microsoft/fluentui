@@ -14,10 +14,13 @@ export function gradientShadowStroke(
   activeDelta: number,
   focusDelta: number,
   shadowDelta: number,
+  direction?: -1 | 1,
   shadowPercentage: number = 10,
 ): InteractiveSet {
   const referenceIndex = palette.closestIndexOf(reference);
-  const direction = directionByIsDark(reference);
+  if (direction === void 0) {
+    direction = directionByIsDark(reference);
+  }
 
   const restIndex = referenceIndex + direction * restDelta;
   const hoverIndex = restIndex + direction * (hoverDelta - restDelta);
@@ -30,7 +33,7 @@ export function gradientShadowStroke(
     const color = palette.get(index);
     if (applyShadow) {
       // Shadow is actually "highlight" on top in dark mode.
-      const shadowColor = palette.get(index + direction * shadowDelta);
+      const shadowColor = palette.get(index + direction! * shadowDelta);
       const startColor = direction === -1 ? shadowColor : color;
       const endColor = direction === -1 ? color : shadowColor;
       return `linear-gradient(${startColor.toColorString()} ${startPosition}%, ${endColor.toColorString()})`;

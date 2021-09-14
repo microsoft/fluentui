@@ -46,6 +46,11 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       cursor: ${disabledCursor};
     }
 
+    .next,
+    .previous {
+      display: flex;
+    }
+
     :host(:not(.disabled):hover) {
       cursor: pointer;
     }

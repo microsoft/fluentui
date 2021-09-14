@@ -1016,10 +1016,10 @@ export class DesignSystemProvider extends FoundationElement {
   public baseLayerLuminance: number; // 0...1
 
   /**
-   * The distance from the resolved neutral divider color for the rest state of the neutral-foreground recipe.
+   * The distance from the resolved divider color for the rest state of the neutral-stroke-divider recipe.
    *
    * @remarks
-   * HTML attribute: neutral-divider-rest-delta
+   * HTML attribute: neutral-stroke-divider-rest-delta
    *
    * CSS custom property: N/A
    */

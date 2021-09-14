@@ -1,29 +1,63 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
+  DesignToken,
   disabledCursor,
   ElementDefinitionContext,
   focusVisible,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import { Swatch } from '../../color/swatch';
 import {
-  accentForegroundRest,
+  accentFillRest,
   bodyFont,
   controlCornerRadius,
   disabledOpacity,
   focusStrokeWidth,
-  neutralFillHover,
+  neutralFillAltHover,
+  neutralFillAltRecipe,
+  neutralFillAltRest,
+  neutralFillInputFocus,
   neutralFillInputHover,
+  neutralFillInputRecipe,
   neutralFillInputRest,
-  neutralFillRest,
+  neutralForegroundHintRecipe,
   neutralForegroundRest,
-  strokeControlTextHover,
-  strokeControlTextRest,
+  neutralStrokeInputHover,
+  neutralStrokeInputRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../../design-tokens';
 import { heightNumber } from '../size';
+
+const placeholderRest = DesignToken.create<Swatch>('input-placeholder-rest').withDefault((target: HTMLElement) => {
+  const baseRecipe = neutralFillInputRecipe.getValueFor(target);
+  const hintRecipe = neutralForegroundHintRecipe.getValueFor(target);
+  return hintRecipe.evaluate(target, baseRecipe.evaluate(target).rest);
+});
+
+const placeholderHover = DesignToken.create<Swatch>('input-placeholder-hover').withDefault((target: HTMLElement) => {
+  const baseRecipe = neutralFillInputRecipe.getValueFor(target);
+  const hintRecipe = neutralForegroundHintRecipe.getValueFor(target);
+  return hintRecipe.evaluate(target, baseRecipe.evaluate(target).hover);
+});
+
+const filledPlaceholderRest = DesignToken.create<Swatch>('input-filled-placeholder-rest').withDefault(
+  (target: HTMLElement) => {
+    const baseRecipe = neutralFillAltRecipe.getValueFor(target);
+    const hintRecipe = neutralForegroundHintRecipe.getValueFor(target);
+    return hintRecipe.evaluate(target, baseRecipe.evaluate(target).rest);
+  },
+);
+
+const filledPlaceholderHover = DesignToken.create<Swatch>('input-filled-placeholder-hover').withDefault(
+  (target: HTMLElement) => {
+    const baseRecipe = neutralFillAltRecipe.getValueFor(target);
+    const hintRecipe = neutralForegroundHintRecipe.getValueFor(target);
+    return hintRecipe.evaluate(target, baseRecipe.evaluate(target).hover);
+  },
+);
 
 /**
  * @internal
@@ -52,7 +86,8 @@ export const inputStyles: (
     box-sizing: border-box;
     position: relative;
     color: inherit;
-    background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${strokeControlTextRest};
+    background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
+      border-box ${neutralStrokeInputRest};
     border: calc(${strokeWidth} * 1px) solid transparent;
     border-radius: calc(${controlCornerRadius} * 1px);
     height: calc(${heightNumber} * 1px);
@@ -87,8 +122,21 @@ export const inputStyles: (
   }
 
   :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
-    background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
-      border-box ${strokeControlTextHover};
+    background: padding-box linear-gradient(${neutralFillInputHover}, ${neutralFillInputHover}),
+      border-box ${neutralStrokeInputHover};
+  }
+
+  :host(:not([disabled]):focus-within) ${rootSelector} {
+    background: padding-box linear-gradient(${neutralFillInputFocus}, ${neutralFillInputFocus}),
+      border-box ${neutralStrokeInputRest};
+  }
+
+  .control::placeholder {
+    color: ${placeholderRest};
+  }
+
+  :host(:hover:not([disabled]):not(:focus-within)) .control::placeholder {
+    color: ${placeholderHover};
   }
 
   :host([disabled]) ${rootSelector}, :host([readonly]) ${rootSelector}, :host([disabled]) .label,
@@ -135,7 +183,7 @@ export const inputStateStyles: (
     position: absolute;
     height: 100%;
     bottom: 0;
-    border-bottom: calc(${focusStrokeWidth} * 1px) solid ${accentForegroundRest};
+    border-bottom: calc(${focusStrokeWidth} * 1px) solid ${accentFillRest};
     border-bottom-left-radius: calc(${controlCornerRadius} * 1px);
     border-bottom-right-radius: calc(${controlCornerRadius} * 1px);
     z-index: 2;
@@ -156,13 +204,21 @@ export const inputFilledStyles: (
   rootSelector: string,
 ) => css`
   :host ${rootSelector} {
-    background: ${neutralFillInputRest};
+    background: ${neutralFillAltRest};
     border-color: transparent;
   }
 
   :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
-    background: ${neutralFillInputHover};
+    background: ${neutralFillAltHover};
     border-color: transparent;
+  }
+
+  .control::placeholder {
+    color: ${filledPlaceholderRest};
+  }
+
+  :host(:hover:not([disabled]):not(:focus-within)) .control::placeholder {
+    color: ${filledPlaceholderHover};
   }
 
   :host(:focus-within:not([disabled])) ${rootSelector} {

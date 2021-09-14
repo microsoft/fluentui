@@ -19,14 +19,14 @@ import {
   fillColor,
   focusStrokeOuter,
   foregroundOnAccentRest,
-  neutralFillInputActive,
-  neutralFillInputFocus,
-  neutralFillInputHover,
-  neutralFillInputRest,
+  neutralFillAltActive,
+  neutralFillAltFocus,
+  neutralFillAltHover,
+  neutralFillAltRest,
   neutralForegroundRest,
-  strokeControlStrongActive,
-  strokeControlStrongHover,
-  strokeControlStrongRest,
+  neutralStrokeStrongActive,
+  neutralStrokeStrongHover,
+  neutralStrokeStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -59,8 +59,8 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       height: calc(var(--input-size) * 1px);
       box-sizing: border-box;
       border-radius: 50%;
-      border: calc(${strokeWidth} * 1px) solid ${strokeControlStrongRest};
-      background: ${neutralFillInputRest};
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
+      background: ${neutralFillAltRest};
       outline: none;
       cursor: pointer;
     }
@@ -99,13 +99,13 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     :host(:enabled:hover) .control {
-      background: ${neutralFillInputHover};
-      border-color: ${strokeControlStrongHover};
+      background: ${neutralFillAltHover};
+      border-color: ${neutralStrokeStrongHover};
     }
 
     :host(:enabled:active) .control {
-      background: ${neutralFillInputActive};
-      border-color: ${strokeControlStrongActive};
+      background: ${neutralFillAltActive};
+      border-color: ${neutralStrokeStrongActive};
     }
 
     :host(:enabled:active) slot[name='checked-indicator'] {
@@ -114,7 +114,7 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
 
     :host(:${focusVisible}) .control {
       box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
-      background: ${neutralFillInputFocus};
+      background: ${neutralFillAltFocus};
       border-color: ${focusStrokeOuter};
     }
 

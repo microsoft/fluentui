@@ -24,7 +24,7 @@ export const fluentProgress = Progress.compose<ProgressOptions>({
     <span class="indeterminate-indicator-1" part="indeterminate-indicator-1"></span>
   `,
   indeterminateIndicator2: `
-    <span class="indeterminate-indicator-1" part="indeterminate-indicator-1"></span>
+    <span class="indeterminate-indicator-2" part="indeterminate-indicator-2"></span>
   `,
 });
 

@@ -16,8 +16,8 @@ export const fluentTreeItem = TreeItem.compose<TreeItemOptions>({
   template,
   styles,
   expandCollapseGlyph: `
-    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5 12.33a1 1 0 001.63.77l4.27-4.26a1.5 1.5 0 000-2.35L6.63 2.22A1 1 0 005 3v9.33z"/>
+    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.65 2.15a.5.5 0 000 .7L7.79 6 4.65 9.15a.5.5 0 10.7.7l3.5-3.5a.5.5 0 000-.7l-3.5-3.5a.5.5 0 00-.7 0z"/>
     </svg>
   `,
 });

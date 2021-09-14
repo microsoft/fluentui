@@ -21,14 +21,14 @@ import {
   foregroundOnAccentActive,
   foregroundOnAccentHover,
   foregroundOnAccentRest,
-  neutralFillInputActive,
-  neutralFillInputFocus,
-  neutralFillInputHover,
-  neutralFillInputRest,
+  neutralFillAltActive,
+  neutralFillAltFocus,
+  neutralFillAltHover,
+  neutralFillAltRest,
   neutralForegroundRest,
-  strokeControlStrongActive,
-  strokeControlStrongHover,
-  strokeControlStrongRest,
+  neutralStrokeStrongActive,
+  neutralStrokeStrongHover,
+  neutralStrokeStrongRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -75,24 +75,24 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
       box-sizing: border-box;
       width: calc(((${heightNumber} / 2) + ${designUnit}) * 2px);
       height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
-      background: ${neutralFillInputRest};
+      background: ${neutralFillAltRest};
       border-radius: calc(${heightNumber} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${strokeControlStrongRest};
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
     }
 
     :host(:enabled:hover) .switch {
-      background: ${neutralFillInputHover};
-      border-color: ${strokeControlStrongHover};
+      background: ${neutralFillAltHover};
+      border-color: ${neutralStrokeStrongHover};
     }
 
     :host(:enabled:active) .switch {
-      background: ${neutralFillInputActive};
-      border-color: ${strokeControlStrongActive};
+      background: ${neutralFillAltActive};
+      border-color: ${neutralStrokeStrongActive};
     }
 
     :host(:${focusVisible}) .switch {
       box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
-      background: ${neutralFillInputFocus};
+      background: ${neutralFillAltFocus};
       border-color: ${focusStrokeOuter};
     }
 
@@ -149,7 +149,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     :host([aria-checked='true']) .switch slot[name='switch'] {
       fill: ${foregroundOnAccentRest};
-      filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.15));
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
     }
 
     :host([aria-checked='true']:enabled) .switch:hover {
@@ -169,7 +169,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     }
 
     :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
-      box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
       border-color: transparent;
     }
 

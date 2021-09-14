@@ -15,6 +15,9 @@ import {
   accentForegroundActive,
   accentForegroundHover,
   accentForegroundRest,
+  accentStrokeControlActive,
+  accentStrokeControlHover,
+  accentStrokeControlRest,
   bodyFont,
   controlCornerRadius,
   density,
@@ -33,14 +36,11 @@ import {
   neutralFillStealthRest,
   neutralForegroundRest,
   neutralStrokeActive,
+  neutralStrokeControlActive,
+  neutralStrokeControlHover,
+  neutralStrokeControlRest,
   neutralStrokeHover,
   neutralStrokeRest,
-  strokeControlAccentActive,
-  strokeControlAccentHover,
-  strokeControlAccentRest,
-  strokeControlActive,
-  strokeControlHover,
-  strokeControlRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -71,7 +71,7 @@ export const baseButtonStyles = (
     }
 
     :host .control {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${strokeControlRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${neutralStrokeControlRest};
       border: calc(${strokeWidth} * 1px) solid transparent;
       flex-grow: 1;
       box-sizing: border-box;
@@ -102,12 +102,12 @@ export const baseButtonStyles = (
 
     :host .control${interactivitySelector}:hover {
       background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
-        border-box ${strokeControlHover};
+        border-box ${neutralStrokeControlHover};
     }
 
     :host .control${interactivitySelector}:active {
       background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
-        border-box ${strokeControlActive};
+        border-box ${neutralStrokeControlActive};
     }
 
     :host .control:${focusVisible} {
@@ -198,25 +198,30 @@ export const AccentButtonStyles = (
 ) =>
   css`
     :host .control {
-      background: padding-box linear-gradient(${accentFillRest}, ${accentFillRest}), border-box ${strokeControlAccentRest};
+      background: padding-box linear-gradient(${accentFillRest}, ${accentFillRest}),
+        border-box ${accentStrokeControlRest};
       color: ${foregroundOnAccentRest};
     }
 
     :host .control${interactivitySelector}:hover {
       background: padding-box linear-gradient(${accentFillHover}, ${accentFillHover}),
-        border-box ${strokeControlAccentHover};
+        border-box ${accentStrokeControlHover};
       color: ${foregroundOnAccentHover};
     }
 
     :host .control${interactivitySelector}:active {
       background: padding-box linear-gradient(${accentFillActive}, ${accentFillActive}),
-        border-box ${strokeControlAccentActive};
+        border-box ${accentStrokeControlActive};
       color: ${foregroundOnAccentActive};
     }
 
     :host .control:${focusVisible} {
       box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset,
-        0 0 0 calc(((${focusStrokeWidth} * 2) - ${strokeWidth}) * 1px) ${focusStrokeInner} inset !important;
+        0 0 0 calc(((${focusStrokeWidth} + ${strokeWidth}) - ${strokeWidth}) * 1px) ${focusStrokeInner} inset !important;
+    }
+
+    :host([disabled]) .control {
+      background: ${accentFillRest};
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
@@ -296,10 +301,12 @@ export const HypertextStyles = (
     :host .control${interactivitySelector}:hover {
       background: transparent;
       color: ${accentForegroundHover};
+      text-decoration: none;
     }
     :host .control${interactivitySelector}:active {
       background: transparent;
       color: ${accentForegroundActive};
+      text-decoration: none;
     }
     :host .control:${focusVisible} {
       box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${focusStrokeOuter} !important;
@@ -352,12 +359,14 @@ export const LightweightButtonStyles = (
       position: absolute;
       top: calc(1em + 3px);
       width: 100%;
-      background: ${accentForegroundRest};
+      background: transparent;
     }
 
-    :host .control${interactivitySelector}:hover .content::before,
+    :host .control${interactivitySelector}:hover .content::before {
+      background: ${accentForegroundHover};
+    }
     :host .control${interactivitySelector}:active .content::before {
-      background: transparent;
+      background: ${accentForegroundActive};
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

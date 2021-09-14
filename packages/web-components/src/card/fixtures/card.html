@@ -1,111 +1,109 @@
-<fluent-design-system-provider fill-color="#F7F7F7" layer-corner-radius="10">
-  <style>
-    fluent-design-system-provider {
-      padding: 20px 0;
-    }
-    fluent-card {
-      --card-height: 400px;
-      --card-width: 500px;
-      padding: 20px;
-      margin: 12px;
-    }
+<style>
+  fluent-design-system-provider {
+    padding: 20px 0;
+  }
+  fluent-card {
+    --card-height: 400px;
+    --card-width: 500px;
+    padding: 20px;
+    margin: 12px;
+  }
 
-    .class-override {
-      height: 163px;
-      width: 300px;
-    }
+  .class-override {
+    height: 163px;
+    width: 300px;
+  }
 
-    .state-override {
-      --card-width: 350px;
-      --card-height: 300px;
-    }
+  .state-override {
+    --card-width: 350px;
+    --card-height: 300px;
+  }
 
-    .contents {
-      display: flex;
-      flex-direction: column;
-    }
-  </style>
-  <div>
-    <fluent-card class="state-override">Custom size using CSS</fluent-card>
+  .contents {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+<div>
+  <fluent-card class="state-override">Custom size using CSS</fluent-card>
 
-    <fluent-design-system-provider fill-color="#333333">
-      <fluent-card>
-        <div class="contents">
-          Dark
-          <fluent-button appearance="accent">Accent</fluent-button>
-          <fluent-button appearance="stealth">Stealth</fluent-button>
-          <fluent-button appearance="outline">Outline</fluent-button>
-          <fluent-button appearance="lightweight">Lightweight</fluent-button>
-        </div>
-      </fluent-card>
-    </fluent-design-system-provider>
-
-    <fluent-design-system-provider fill-color="#E5E5E5">
-      <fluent-card neutral-palette-source="#3995C9">
-        <div class="contents">
-          Tinted neutral, light
-          <fluent-button appearance="accent">Accent</fluent-button>
-          <fluent-button appearance="stealth">Stealth</fluent-button>
-          <fluent-button appearance="outline">Outline</fluent-button>
-          <fluent-button appearance="lightweight">Lightweight</fluent-button>
-        </div>
-      </fluent-card>
-    </fluent-design-system-provider>
-
-    <fluent-design-system-provider fill-color="#333333">
-      <fluent-card neutral-palette-source="#3995C9">
-        <div class="contents">
-          Tinted neutral, dark
-          <fluent-button appearance="accent">Accent</fluent-button>
-          <fluent-button appearance="stealth">Stealth</fluent-button>
-          <fluent-button appearance="outline">Outline</fluent-button>
-          <fluent-button appearance="lightweight">Lightweight</fluent-button>
-        </div>
-      </fluent-card>
-    </fluent-design-system-provider>
-
-    <fluent-design-system-provider fill-color="#333333">
-      <fluent-card neutral-palette-source="#3995C9">
-        <div class="contents">
-          Tinted neutral, dark
-          <fluent-button appearance="accent">Accent</fluent-button>
-          <fluent-button appearance="stealth">Stealth</fluent-button>
-          <fluent-button appearance="outline">Outline</fluent-button>
-          <fluent-button appearance="lightweight">Lightweight</fluent-button>
-        </div>
-        <fluent-card neutral-palette-source="#00A900" style="margin: 0; --card-height: 200px; --card-width: 460px">
-          <div class="contents">
-            Tinted neutral, nested, dark
-            <fluent-button appearance="accent">Accent</fluent-button>
-            <fluent-button appearance="stealth">Stealth</fluent-button>
-            <fluent-button appearance="outline">Outline</fluent-button>
-            <fluent-button appearance="lightweight">Lightweight</fluent-button>
-          </div>
-        </fluent-card>
-      </fluent-card>
-    </fluent-design-system-provider>
-
-    <fluent-card card-fill-color="#2A5193">
+  <fluent-design-system-provider fill-color="#333333">
+    <fluent-card>
       <div class="contents">
-        Custom card fill color
+        Dark
         <fluent-button appearance="accent">Accent</fluent-button>
         <fluent-button appearance="stealth">Stealth</fluent-button>
         <fluent-button appearance="outline">Outline</fluent-button>
         <fluent-button appearance="lightweight">Lightweight</fluent-button>
       </div>
     </fluent-card>
+  </fluent-design-system-provider>
 
-    <fluent-design-system-provider accent-base-color="#00a900" neutral-base-color="#A90000">
-      <fluent-card>
+  <fluent-design-system-provider fill-color="#E5E5E5">
+    <fluent-card neutral-palette-source="#3995C9">
+      <div class="contents">
+        Tinted neutral, light
+        <fluent-button appearance="accent">Accent</fluent-button>
+        <fluent-button appearance="stealth">Stealth</fluent-button>
+        <fluent-button appearance="outline">Outline</fluent-button>
+        <fluent-button appearance="lightweight">Lightweight</fluent-button>
+      </div>
+    </fluent-card>
+  </fluent-design-system-provider>
+
+  <fluent-design-system-provider fill-color="#333333">
+    <fluent-card neutral-palette-source="#3995C9">
+      <div class="contents">
+        Tinted neutral, dark
+        <fluent-button appearance="accent">Accent</fluent-button>
+        <fluent-button appearance="stealth">Stealth</fluent-button>
+        <fluent-button appearance="outline">Outline</fluent-button>
+        <fluent-button appearance="lightweight">Lightweight</fluent-button>
+      </div>
+    </fluent-card>
+  </fluent-design-system-provider>
+
+  <fluent-design-system-provider fill-color="#333333">
+    <fluent-card neutral-palette-source="#3995C9">
+      <div class="contents">
+        Tinted neutral, dark
+        <fluent-button appearance="accent">Accent</fluent-button>
+        <fluent-button appearance="stealth">Stealth</fluent-button>
+        <fluent-button appearance="outline">Outline</fluent-button>
+        <fluent-button appearance="lightweight">Lightweight</fluent-button>
+      </div>
+      <fluent-card neutral-palette-source="#00A900" style="margin: 0; --card-height: 200px; --card-width: 460px">
         <div class="contents">
-          Accent and neutral color by DSP
+          Tinted neutral, nested, dark
           <fluent-button appearance="accent">Accent</fluent-button>
-          <fluent-button>Neutral</fluent-button>
           <fluent-button appearance="stealth">Stealth</fluent-button>
           <fluent-button appearance="outline">Outline</fluent-button>
           <fluent-button appearance="lightweight">Lightweight</fluent-button>
         </div>
       </fluent-card>
-    </fluent-design-system-provider>
-  </div>
-</fluent-design-system-provider>
+    </fluent-card>
+  </fluent-design-system-provider>
+
+  <fluent-card card-fill-color="#2A5193">
+    <div class="contents">
+      Custom card fill color
+      <fluent-button appearance="accent">Accent</fluent-button>
+      <fluent-button appearance="stealth">Stealth</fluent-button>
+      <fluent-button appearance="outline">Outline</fluent-button>
+      <fluent-button appearance="lightweight">Lightweight</fluent-button>
+    </div>
+  </fluent-card>
+
+  <fluent-design-system-provider accent-base-color="#00a900" neutral-base-color="#A90000">
+    <fluent-card>
+      <div class="contents">
+        Accent and neutral color by DSP
+        <fluent-button appearance="accent">Accent</fluent-button>
+        <fluent-button>Neutral</fluent-button>
+        <fluent-button appearance="stealth">Stealth</fluent-button>
+        <fluent-button appearance="outline">Outline</fluent-button>
+        <fluent-button appearance="lightweight">Lightweight</fluent-button>
+      </div>
+    </fluent-card>
+  </fluent-design-system-provider>
+</div>

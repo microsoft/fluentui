@@ -19,19 +19,20 @@ import {
   fillColor,
   focusStrokeOuter,
   focusStrokeWidth,
+  layerCornerRadius,
   neutralFillActive,
+  neutralFillAltActive,
+  neutralFillAltHover,
+  neutralFillAltRest,
   neutralFillHover,
-  neutralFillInputActive,
-  neutralFillInputHover,
-  neutralFillInputRest,
   neutralFillRest,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
-  strokeControlActive,
-  strokeControlHover,
-  strokeControlRest,
+  neutralStrokeControlActive,
+  neutralStrokeControlHover,
+  neutralStrokeControlRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -42,17 +43,17 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
   definition: SelectOptions,
 ) => css`
   :host {
-    background: ${neutralFillInputRest};
+    background: ${neutralFillAltRest};
     border-color: transparent;
   }
 
-  :host(:not([disabled]):hover) {
-    background: ${neutralFillInputHover};
+  :host(:not([disabled]):not([open]):hover) {
+    background: ${neutralFillAltHover};
     border-color: transparent;
   }
 
-  :host(:not([disabled]):active) {
-    background: ${neutralFillInputActive};
+  :host(:not([disabled]):not([open]):active) {
+    background: ${neutralFillAltActive};
     border-color: transparent;
   }
 `;
@@ -66,12 +67,12 @@ export const selectStealthStyles: (context: ElementDefinitionContext, definition
     border-color: transparent;
   }
 
-  :host(:not([disabled]):hover) {
+  :host(:not([disabled]):not([open]):hover) {
     background: ${neutralFillStealthHover};
     border-color: transparent;
   }
 
-  :host(:not([disabled]):active) {
+  :host(:not([disabled]):not([open]):active) {
     background: ${neutralFillStealthActive};
     border-color: transparent;
   }
@@ -80,7 +81,7 @@ export const selectStealthStyles: (context: ElementDefinitionContext, definition
 export const selectStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${strokeControlRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}), border-box ${neutralStrokeControlRest};
       border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;
@@ -97,7 +98,7 @@ export const selectStyles = (context, definition) =>
     :host .listbox {
       box-shadow: ${elevationShadowFlyout};
       background: ${fillColor};
-      border-radius: calc(${controlCornerRadius} * 1px);
+      border-radius: calc(${layerCornerRadius} * 1px);
       box-sizing: border-box;
       display: inline-flex;
       flex-direction: column;
@@ -128,14 +129,14 @@ export const selectStyles = (context, definition) =>
       width: 100%;
     }
 
-    :host(:not([disabled]):hover) {
+    :host(:not([disabled]):not([open]):hover) {
       background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
-        border-box ${strokeControlHover};
+        border-box ${neutralStrokeControlHover};
     }
 
-    :host(:not([disabled]):active) {
+    :host(:not([disabled]):not([open]):active) {
       background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
-        border-box ${strokeControlActive};
+        border-box ${neutralStrokeControlActive};
     }
 
     :host(:${focusVisible}) {

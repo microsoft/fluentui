@@ -90,6 +90,10 @@ export const numberFieldStyles = (context, definition) =>
       padding: 0 8px;
       cursor: pointer;
     }
+
+    .step-up {
+      padding-top: 3px;
+    }
   `.withBehaviors(
     appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(

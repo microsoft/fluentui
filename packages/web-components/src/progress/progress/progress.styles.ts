@@ -10,7 +10,7 @@ import {
   accentFillRest,
   designUnit,
   neutralForegroundHint,
-  strokeControlStrongRest,
+  neutralStrokeStrongRest,
   strokeWidth,
 } from '../../design-tokens';
 
@@ -27,7 +27,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
     }
 
     .progress {
-      background-color: ${strokeControlStrongRest};
+      background-color: ${neutralStrokeStrongRest};
       border-radius: calc(${designUnit} * 1px);
       width: 100%;
       height: calc(${strokeWidth} * 1px);
@@ -77,8 +77,10 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
 
     :host(.paused) .indeterminate-indicator-1,
     :host(.paused) .indeterminate-indicator-2 {
-      animation-play-state: paused;
-      background-color: ${neutralFillRest};
+      animation: none;
+      background-color: ${neutralForegroundHint};
+      width: 100%;
+      opacity: 1;
     }
 
     :host(.paused) .determinate {

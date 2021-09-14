@@ -10,16 +10,16 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
-  accentForegroundRest,
+  accentFillRest,
   bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
-  neutralFillActive,
-  neutralFillHover,
-  neutralFillRest,
+  neutralFillAltActive,
+  neutralFillAltHover,
+  neutralFillAltRest,
   neutralFillStealthActive,
   neutralFillStealthFocus,
   neutralFillStealthHover,
@@ -77,12 +77,12 @@ export const optionStyles: (
     }
 
     :host(:not([disabled]):active)::before {
-      background: ${accentForegroundRest};
+      background: ${accentFillRest};
       height: calc(((${heightNumber} / 2) - 6) * 1px);
     }
 
     :host([aria-selected='true'])::before {
-      background: ${accentForegroundRest};
+      background: ${accentFillRest};
     }
 
     :host(:${focusVisible}) {
@@ -91,15 +91,15 @@ export const optionStyles: (
     }
 
     :host([aria-selected='true']) {
-      background: ${neutralFillRest};
+      background: ${neutralFillAltRest};
     }
 
     :host(:not([disabled])[aria-selected='true']:hover) {
-      background: ${neutralFillHover};
+      background: ${neutralFillAltHover};
     }
 
     :host(:not([disabled])[aria-selected='true']:active) {
-      background: ${neutralFillActive};
+      background: ${neutralFillAltActive};
     }
 
     :host(:not([disabled]):not([aria-selected='true']):hover) {

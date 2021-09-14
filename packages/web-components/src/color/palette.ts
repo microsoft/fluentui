@@ -260,7 +260,7 @@ class PaletteRGBImpl implements Palette<SwatchRGB> {
     return new PaletteRGBImpl(
       source,
       Object.freeze(
-        PaletteRGBImpl.createColorPaletteByContrast(ColorRGBA64.fromObject(source)!, 1.06).map(x => SwatchRGB.from(x)),
+        PaletteRGBImpl.createColorPaletteByContrast(ColorRGBA64.fromObject(source)!, 1.05).map(x => SwatchRGB.from(x)),
       ),
     );
   }

@@ -6,7 +6,7 @@ import {
   controlCornerRadius,
   designUnit,
   foregroundOnAccentRest,
-  neutralFillRest,
+  neutralFillAltRest,
   neutralForegroundRest,
   strokeWidth,
   typeRampMinus1FontSize,
@@ -43,7 +43,7 @@ export const badgeStyles: (
     }
 
     :host(.neutral) .control {
-      background: ${neutralFillRest};
+      background: ${neutralFillAltRest};
       color: ${neutralForegroundRest};
     }
 

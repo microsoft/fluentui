@@ -6,7 +6,7 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { bodyFont, designUnit, disabledOpacity, strokeControlStrongRest, strokeWidth } from '../design-tokens';
+import { bodyFont, designUnit, disabledOpacity, neutralStrokeStrongRest, strokeWidth } from '../design-tokens';
 
 export const sliderLabelStyles: (
   context: ElementDefinitionContext,
@@ -54,7 +54,7 @@ export const sliderLabelStyles: (
     .mark {
       width: calc(${strokeWidth} * 1px);
       height: calc(${designUnit} * 1px);
-      background: ${strokeControlStrongRest};
+      background: ${neutralStrokeStrongRest};
       justify-self: center;
     }
     :host(.vertical) .mark {

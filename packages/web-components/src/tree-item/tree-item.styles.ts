@@ -11,7 +11,7 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
-  accentForegroundRest,
+  accentFillRest,
   baseHeightMultiplier,
   bodyFont,
   controlCornerRadius,
@@ -20,8 +20,8 @@ import {
   disabledOpacity,
   focusStrokeOuter,
   focusStrokeWidth,
-  neutralFillRecipe,
-  neutralFillRest,
+  neutralFillAltRecipe,
+  neutralFillAltRest,
   neutralFillStealthActive,
   neutralFillStealthHover,
   neutralFillStealthRecipe,
@@ -44,7 +44,7 @@ const ltr = css`
     left: calc(${focusStrokeWidth} * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-button svg {
-    transform: rotate(45deg);
+    transform: rotate(90deg);
   }
 `;
 
@@ -59,23 +59,23 @@ const rtl = css`
     right: calc(${focusStrokeWidth} * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-button svg {
-    transform: rotate(135deg);
+    transform: rotate(90deg);
   }
 `;
 
 export const expandCollapseButtonSize = cssPartial`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
 
-const expandCollapseHoverBehavior = DesignToken.create<Swatch>('tree-item-expand-collapse-hover').withDefault(
+const expandCollapseHover = DesignToken.create<Swatch>('tree-item-expand-collapse-hover').withDefault(
   (target: HTMLElement) => {
     const recipe = neutralFillStealthRecipe.getValueFor(target);
     return recipe.evaluate(target, recipe.evaluate(target).hover).hover;
   },
 );
 
-const selectedExpandCollapseHoverBehavior = DesignToken.create<Swatch>(
+const selectedExpandCollapseHover = DesignToken.create<Swatch>(
   'tree-item-expand-collapse-selected-hover',
 ).withDefault((target: HTMLElement) => {
-  const baseRecipe = neutralFillRecipe.getValueFor(target);
+  const baseRecipe = neutralFillAltRecipe.getValueFor(target);
   const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
   return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
 });
@@ -214,15 +214,15 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(.nested) .expand-collapse-button:hover {
-      background: ${expandCollapseHoverBehavior};
+      background: ${expandCollapseHover};
     }
 
     :host(:not([disabled])[selected]) .positioning-region {
-      background: ${neutralFillRest};
+      background: ${neutralFillAltRest};
     }
 
     :host(:not([disabled])[selected]) .expand-collapse-button:hover {
-      background: ${selectedExpandCollapseHoverBehavior};
+      background: ${selectedExpandCollapseHover};
     }
 
     :host([selected])::after {
@@ -234,8 +234,8 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       height: calc((${heightNumber} / 2) * 1px);
       ${
         /* The french fry background needs to be calculated based on the selected background state for this control.
-            We currently have no way of chaning that, so setting to accent-foreground-rest for the time being */ ''
-      } background: ${accentForegroundRest};
+            We currently have no way of changing that, so setting to accent-foreground-rest for the time being */ ''
+      } background: ${accentFillRest};
       border-radius: calc(${controlCornerRadius} * 1px);
     }
 
