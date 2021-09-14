@@ -75,6 +75,16 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
  */
 export type NoLegacyRef<Props extends { ref?: unknown }> = Omit<Props, 'ref'> & { ref?: Exclude<Props['ref'], string> };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ExtractRef<Props extends { ref?: any }> = Props['ref'] extends
+  | ((instance: infer I | null) => void)
+  | React.RefObject<infer I>
+  | null
+  | undefined
+  ? I
+  : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    any;
+
 export type ComponentProps<
   Shorthands extends ObjectShorthandPropsRecord,
   Primary extends keyof Shorthands = 'root'

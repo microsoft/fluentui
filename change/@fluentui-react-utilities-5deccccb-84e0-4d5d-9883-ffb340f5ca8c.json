@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds ExtractRef typings to react-utilities to extract reference from props",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
