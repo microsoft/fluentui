@@ -12,21 +12,22 @@ import type { TextProps, TextState } from './Text.types';
  * @param ref - reference to root HTMLElement of Text
  */
 export const useText = (props: TextProps, ref: React.Ref<HTMLElement>): TextState => {
+  const { wrap, truncate, block, italic, underline, strikethrough, size, font, weight, align } = props;
   return {
-    wrap: true,
-    truncate: false,
-    block: false,
-    italic: false,
-    underline: false,
-    strikethrough: false,
-    size: 300,
-    font: 'base',
-    weight: 'regular',
-    align: 'start',
+    wrap: wrap ?? true,
+    truncate: truncate ?? false,
+    block: block ?? false,
+    italic: italic ?? false,
+    underline: underline ?? false,
+    strikethrough: strikethrough ?? false,
+    size: size ?? 300,
+    font: font ?? 'base',
+    weight: weight ?? 'regular',
+    align: align ?? 'start',
 
     components: { root: 'span' },
 
-    root: getNativeElementProps(props.as || 'span', {
+    root: getNativeElementProps(props.as ?? 'span', {
       ref,
       ...props,
     }),
