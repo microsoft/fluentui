@@ -2,6 +2,21 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "vr-tests",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump vr-tests to v1.0.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Sep 2021 07:38:18 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add Card to unstable components",
-  "packageName": "@fluentui/react-components",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}
