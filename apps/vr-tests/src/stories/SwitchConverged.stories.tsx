@@ -1,11 +1,9 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FluentProviderDecorator } from '../utilities/index';
 import { Switch } from '@fluentui/react-switch';
 
-storiesOf('SwitchNext', module)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Switch Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

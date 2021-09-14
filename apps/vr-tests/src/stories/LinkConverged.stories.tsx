@@ -2,13 +2,11 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
-import { FluentProviderDecorator } from '../utilities/index';
 
 const AnchorLink = (props: LinkProps) => <Link {...props} href="https://www.bing.com" />;
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
-storiesOf('Link Next - Rendered as anchor', module)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Link Converged - Rendered as anchor', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -23,7 +21,7 @@ storiesOf('Link Next - Rendered as anchor', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>)
+  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, { rtl: true })
   .addStory('Stand-alone Disabled', () => (
     <AnchorLink disabled>Stand-alone disabled link</AnchorLink>
   ))
@@ -32,11 +30,15 @@ storiesOf('Link Next - Rendered as anchor', module)
       Stand-alone disabled focusable link
     </AnchorLink>
   ))
-  .addStory('Inline', () => (
-    <div>
-      This is <AnchorLink inline>a link</AnchorLink> used alongside other text content.
-    </div>
-  ))
+  .addStory(
+    'Inline',
+    () => (
+      <div>
+        This is <AnchorLink inline>a link</AnchorLink> used alongside other text content.
+      </div>
+    ),
+    { rtl: true },
+  )
   .addStory('Inline Disabled', () => (
     <div>
       This is{' '}
@@ -56,8 +58,7 @@ storiesOf('Link Next - Rendered as anchor', module)
     </div>
   ));
 
-storiesOf('Link Next - Rendered as button', module)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Link Converged - Rendered as button', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -72,7 +73,7 @@ storiesOf('Link Next - Rendered as button', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>)
+  .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { rtl: true })
   .addStory('Stand-alone Disabled', () => (
     <ButtonLink disabled>Stand-alone disabled link</ButtonLink>
   ))
@@ -81,11 +82,15 @@ storiesOf('Link Next - Rendered as button', module)
       Stand-alone disabled focusable link
     </ButtonLink>
   ))
-  .addStory('Inline', () => (
-    <div>
-      This is <ButtonLink inline>a link</ButtonLink> used alongside other text content.
-    </div>
-  ))
+  .addStory(
+    'Inline',
+    () => (
+      <div>
+        This is <ButtonLink inline>a link</ButtonLink> used alongside other text content.
+      </div>
+    ),
+    { rtl: true },
+  )
   .addStory('Inline Disabled', () => (
     <div>
       This is{' '}

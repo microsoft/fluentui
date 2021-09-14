@@ -1,21 +1,17 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import Screener from 'screener-storybook/src/screener';
-import { FluentProviderDecorator } from '../utilities/index';
 import { Image } from '@fluentui/react-image';
-
-const ScreenerWrapper = (story: () => React.ReactNode) => (
-  <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-    {story()}
-  </Screener>
-);
 
 const imageUrl =
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
-storiesOf('react-image Image', module)
-  .addDecorator(ScreenerWrapper)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Image Converged', module)
+  .addDecorator((story: () => React.ReactNode) => (
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
   .addStory('Default', () => (
     <Image src="https://via.placeholder.com/300x300" alt="Placeholder image" />
   ))
@@ -40,7 +36,7 @@ storiesOf('react-image Image', module)
       <div>
         <Image
           src={imageUrl}
-          alt="Amanda's avatar boredered and rounded"
+          alt="Amanda's avatar bordered and rounded"
           height={200}
           width={200}
           bordered
@@ -50,7 +46,7 @@ storiesOf('react-image Image', module)
       <div>
         <Image
           src={imageUrl}
-          alt="Amanda's avatar boredered and circular"
+          alt="Amanda's avatar bordered and circular"
           height={200}
           width={200}
           bordered
