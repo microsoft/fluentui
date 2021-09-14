@@ -42,33 +42,24 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
-  # - script: |
-  #     yarn build --to @fluentui/react-components
-  #   displayName: yarn build
-
-  # # test, lint, bundle using lage cached build from previous step (omit --no-cache)
-  # - script: |
-  #     yarn test --to @fluentui/react-components
-  #   displayName: yarn test
-
-  # - script: |
-  #     yarn run:published lint
-  #   displayName: yarn lint
+  - script: |
+      yarn build --to @fluentui/react-components
+    displayName: yarn build
 
   - script: |
-      yarn beachball bump -- -b origin/master -n $(npmToken) --access public -y
+      yarn test --to @fluentui/react-components
+    displayName: yarn test
+
+  - script: |
+      yarn lint --to @fluentui/react-components
+    displayName: yarn lint
+
+  - script: |
+      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
     displayName: Publish changes and bump versions
-
-  # TODO this needs to change for v9
-  # - script: |
-  #     npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
-  #     git reset --hard origin/master
-  #   env:
-  #     GITHUB_PAT: $(githubPAT)
-  #   displayName: Publish changes and bump versions
 
   # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
   # failure doesn't need to block anything else
