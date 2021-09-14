@@ -5,10 +5,10 @@ exports[`CardFooter renders a default state 1`] = `
   <div
     class=""
   >
-    <div>
-      Default CardFooter
-    </div>
-    <span>
+    Default CardFooter
+    <span
+      class=""
+    >
       Action slot
     </span>
   </div>
