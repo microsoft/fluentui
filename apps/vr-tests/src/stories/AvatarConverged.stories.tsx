@@ -6,8 +6,6 @@ import { Stack } from '@fluentui/react';
 import { People20Regular, PersonCall20Regular } from '@fluentui/react-icons';
 import { AvatarExamples as examples } from '@fluentui/example-data';
 
-import { FluentProviderDecorator } from '../utilities/index';
-
 /** Renders an Avatar at every standard size */
 const AvatarList: React.FC<
   AvatarProps & {
@@ -65,7 +63,7 @@ const AvatarCustomSizeList: React.FC<
   );
 };
 
-storiesOf('Avatar', module)
+storiesOf('Avatar Converged', module)
   .addDecorator(story => (
     <div style={{ display: 'flex' }}>
       <Stack
@@ -77,25 +75,28 @@ storiesOf('Avatar', module)
       </Stack>
     </div>
   ))
-  .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
   ))
-  .addStory('basic', () => (
-    <>
-      <Avatar />
-      <Avatar name="First Last" />
-      <Avatar name="Three Word Name" />
-      <Avatar name="One" />
-      <Avatar name="(111)-555-1234" icon={<PersonCall20Regular />} />
-      <Avatar icon={<People20Regular />} square />
-      <Avatar name="Group" icon={<People20Regular />} square />
-      <Avatar image={examples.image[14]} badge="away" />
-      <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
-    </>
-  ))
+  .addStory(
+    'basic',
+    () => (
+      <>
+        <Avatar />
+        <Avatar name="First Last" />
+        <Avatar name="Three Word Name" />
+        <Avatar name="One" />
+        <Avatar name="(111)-555-1234" icon={<PersonCall20Regular />} />
+        <Avatar icon={<People20Regular />} square />
+        <Avatar name="Group" icon={<People20Regular />} square />
+        <Avatar image={examples.image[14]} badge="away" />
+        <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
+      </>
+    ),
+    { rtl: true },
+  )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
   .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" square />)
   .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
