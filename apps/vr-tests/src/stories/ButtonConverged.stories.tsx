@@ -3,15 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
 
-import {
-  FabricDecorator,
-  FabricDecoratorFullWidth,
-  FluentProviderDecorator,
-} from '../utilities/index';
-
-storiesOf('react-button Button', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Button Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -26,7 +18,7 @@ storiesOf('react-button Button', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button>Hello, world</Button>)
+  .addStory('Default', () => <Button>Hello, world</Button>, { includeRtl: true })
   .addStory('Circular', () => <Button circular>Hello, world</Button>)
   .addStory('Outline', () => <Button outline>Hello, world</Button>)
   .addStory('Primary', () => <Button primary>Hello, world</Button>)
@@ -63,18 +55,22 @@ storiesOf('react-button Button', module)
       Hello, world
     </Button>
   ))
-  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>)
-  .addStory('With icon after content', () => (
-    <Button icon="X" iconPosition="after">
-      Hello, world
-    </Button>
-  ))
+  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>, {
+    includeRtl: true,
+  })
+  .addStory(
+    'With icon after content',
+    () => (
+      <Button icon="X" iconPosition="after">
+        Hello, world
+      </Button>
+    ),
+    { includeRtl: true },
+  )
   .addStory('Icon only', () => <Button icon="X" />)
-  .addStory('Circular and icon only', () => <Button circular icon="X" />);
+  .addStory('Circular and icon only', () => <Button circular icon="X" />, { includeRtl: true });
 
-storiesOf('react-button Button - Block', module)
-  .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('Button Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -89,7 +85,7 @@ storiesOf('react-button Button - Block', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button block>Hello, world</Button>)
+  .addStory('Default', () => <Button block>Hello, world</Button>, { includeRtl: true })
   .addStory('Circular', () => (
     <Button block circular>
       Hello, world
@@ -131,9 +127,7 @@ storiesOf('react-button Button - Block', module)
     </Button>
   ));
 
-storiesOf('react-button CompoundButton', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('CompoundButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -148,9 +142,13 @@ storiesOf('react-button CompoundButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => (
-    <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>
-  ))
+  .addStory(
+    'Default',
+    () => (
+      <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>
+    ),
+    { includeRtl: true },
+  )
   .addStory('Circular', () => (
     <CompoundButton circular secondaryContent="This is some secondary text">
       Hello, world
@@ -211,22 +209,30 @@ storiesOf('react-button CompoundButton', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory('With icon before content', () => (
-    <CompoundButton secondaryContent="This is some secondary text" icon="X">
-      Hello, world
-    </CompoundButton>
-  ))
-  .addStory('With icon after content', () => (
-    <CompoundButton secondaryContent="This is some secondary text" icon="X" iconPosition="after">
-      Hello, world
-    </CompoundButton>
-  ))
+  .addStory(
+    'With icon before content',
+    () => (
+      <CompoundButton secondaryContent="This is some secondary text" icon="X">
+        Hello, world
+      </CompoundButton>
+    ),
+    { includeRtl: true },
+  )
+  .addStory(
+    'With icon after content',
+    () => (
+      <CompoundButton secondaryContent="This is some secondary text" icon="X" iconPosition="after">
+        Hello, world
+      </CompoundButton>
+    ),
+    { includeRtl: true },
+  )
   .addStory('Icon only', () => <CompoundButton icon="X" />)
-  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />);
+  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />, {
+    includeRtl: true,
+  });
 
-storiesOf('react-button CompoundButton - Block', module)
-  .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('CompoundButton Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -241,11 +247,15 @@ storiesOf('react-button CompoundButton - Block', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => (
-    <CompoundButton block secondaryContent="This is some secondary text">
-      Hello, world
-    </CompoundButton>
-  ))
+  .addStory(
+    'Default',
+    () => (
+      <CompoundButton block secondaryContent="This is some secondary text">
+        Hello, world
+      </CompoundButton>
+    ),
+    { includeRtl: true },
+  )
   .addStory('Circular', () => (
     <CompoundButton block secondaryContent="This is some secondary text" circular>
       Hello, world
@@ -287,9 +297,7 @@ storiesOf('react-button CompoundButton - Block', module)
     </CompoundButton>
   ));
 
-storiesOf('react-button ToggleButton', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('ToggleButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -304,7 +312,7 @@ storiesOf('react-button ToggleButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
+  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>, { includeRtl: true })
   .addStory('Circular', () => <ToggleButton circular>Hello, world</ToggleButton>)
   .addStory('Outline', () => <ToggleButton outline>Hello, world</ToggleButton>)
   .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
@@ -361,9 +369,7 @@ storiesOf('react-button ToggleButton', module)
     </ToggleButton>
   ));
 
-storiesOf('react-button ToggleButton - Block', module)
-  .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('ToggleButton Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -378,7 +384,7 @@ storiesOf('react-button ToggleButton - Block', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>)
+  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <ToggleButton block circular>
       Hello, world
@@ -440,9 +446,7 @@ storiesOf('react-button ToggleButton - Block', module)
     </ToggleButton>
   ));
 
-storiesOf('react-button MenuButton', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('MenuButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -457,7 +461,7 @@ storiesOf('react-button MenuButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>)
+  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => <MenuButton circular>Hello, world</MenuButton>)
   .addStory('Outline', () => <MenuButton outline>Hello, world</MenuButton>)
   .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
@@ -498,9 +502,7 @@ storiesOf('react-button MenuButton', module)
   .addStory('Icon only', () => <MenuButton icon="X" />)
   .addStory('Circular and icon only', () => <MenuButton circular icon="X" />);
 
-storiesOf('react-button MenuButton - Block', module)
-  .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(FluentProviderDecorator)
+storiesOf('MenuButton Block Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -515,7 +517,7 @@ storiesOf('react-button MenuButton - Block', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>)
+  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <MenuButton block circular>
       Hello, world
