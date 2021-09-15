@@ -8,6 +8,7 @@ import {
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import { GlobalClassNames as LinkGlobalClassNames } from '../../components/Link/Link.styles';
 import type { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import type { IStyle } from '../../Styling';
 
@@ -73,7 +74,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     neutralDark,
     neutralQuaternaryAlt,
   } = palette;
-  const { focusBorder } = theme.semanticColors;
+  const { focusBorder, linkHovered: focusedLinkColor } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
 
@@ -136,6 +137,10 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           right: 0,
           content: '',
           borderTop: `1px solid ${white}`,
+        },
+
+        [`.${LinkGlobalClassNames.root}`]: {
+          color: focusedLinkColor,
         },
 
         // Selected State hover
@@ -319,6 +324,10 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
             selectors: {
               [`.${classNames.isRowHeader}`]: {
                 color: colors.defaultHoverHeaderText,
+              },
+
+              [`.${LinkGlobalClassNames.root}`]: {
+                color: focusedLinkColor,
               },
             },
           },
