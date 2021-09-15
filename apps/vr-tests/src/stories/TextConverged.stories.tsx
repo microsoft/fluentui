@@ -134,7 +134,7 @@ storiesOf('Text Converged', module)
         </p>
       </>
     ),
-    { rtl: true },
+    { rtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'Display',
