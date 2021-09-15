@@ -235,7 +235,7 @@ describe('CommandBar', () => {
     expect(document.querySelectorAll('.customMenuClass')).toHaveLength(1);
   });
 
-  fit('updates menu after update if item is still present', () => {
+  it('updates menu after update if item is still present', () => {
     const items = (subMenuItemClassName: string) => [
       {
         name: 'TestText 1',
