@@ -44,7 +44,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-aria": "9.0.0-alpha.31",
+    "@fluentui/react-aria": "^9.0.0-alpha.31",
     "@fluentui/react-context-selector": "9.0.0-alpha.30",
     "@fluentui/react-make-styles": "9.0.0-alpha.65",
     "@fluentui/react-tabster": "9.0.0-alpha.59",
