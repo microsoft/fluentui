@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Delay calculating viewport on mount",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

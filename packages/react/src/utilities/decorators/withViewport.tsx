@@ -102,7 +102,9 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           this._events.on(win, 'resize', this._onAsyncResize);
         }
 
-        this._updateViewport();
+        this._async.setTimeout(() => {
+          this._updateViewport();
+        }, RESIZE_DELAY);
       }
     }
 
