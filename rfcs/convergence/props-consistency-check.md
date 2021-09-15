@@ -19,12 +19,11 @@ Portal
 
 **Recommendations**
 
-- Declare type explicitly at the component level.
-- Do not intersect props and RefAttributes (ensure props extend native and ref attributes)
+- Based on [forwardRef PR](https://github.com/microsoft/fluentui/pull/19812) from Ben, prefer allowing the component types to be inferred
 
 **Proposed Work Items**
 
-- [ ] Update components to explictly declare type
+- [ ] Update components to use new forwardRef
 
 **Details**
 
@@ -46,23 +45,29 @@ export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLE
 **Documentation**
 
 - [TS docs](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
-- The [TS playgroud](https://www.typescriptlang.org/play?q=414#example/types-vs-interfaces) recommends interfaces, but may be outdates :
+- [TS playgroud](https://www.typescriptlang.org/play?q=414#example/types-vs-interfaces) recommends interfaces, but may be outdated :
   - interfaces provide better error messages
   - you can extend an interface by declaring it a second time
-- The [StackOverflow thread](https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript/52682220#52682220) adds more information:
+- [StackOverflow thread](https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript/52682220#52682220) adds more information:
   - Type aliases can be used for primitives, unions, and tuples.
   - Classes canot implement a type alias that use sa union type.
 - [Team discussion](https://github.com/microsoft/fluentui/pull/19376#discussion_r700046363)
   - Types can be inlined leading to inflated declaration files
   - Non-exported interfaces required by a declaration give an error (because they can't be inlined)
+  - No clear decision at the time.
 
 **Recommendations**
 
-- While functional programming in Typescript should prefer types over interfaces, there are still some benefits to using interfaces for now.
+- Use types and intersections over interfaces.
+  - Even though Typescript recommends interfaces, their recommendation is in the context of using classes. React hooks is functional programming and I think types are the expected approach.
+  - Unless the types cause so much duplication that we have a bundle size problem, I think they are worth it especially with the union problem.
+  - I don't think we want to leverage the declaration merging of interfaces, so that isn't a key requirement.
+  - The interface error messages are only marginally better than the types. The component composition is complex enough that devs will need to decipher it either way.
+  - I think we can look at ways to make the API documentation better. I'm happy to investigate that.
 
 **Proposed WorkItems**
 
-- [ ] Update all vNext component props to interfaces.
+- [ ] Update all vNext component props to use types and intersections.
 
 **Details**
 
@@ -165,7 +170,7 @@ secondaryContent?: React.HTMLAttributes<HTMLElement>;
 
 **Recommendations**
 
-- (none yet)
+- (none)
 
 **Proposed WorkItems**
 
@@ -254,11 +259,14 @@ button, label strong
 
 **Recommendations**
 
-- (none yet)
+- Avoid re-declaring a native property and redefining its type.
+- Avoid naming properties that conflict with native prop names.
+- Provide a suffix of 'slot' to properties that provide a slot.
+- Prefer semanitic slot property names; prefer names aligned with the part names from the figma desng.
 
 **Proposed WorkItems**
 
-- (none)
+- [ ] Add slot prefix to slot properties.
 
 # Layout properties
 
@@ -268,7 +276,7 @@ button, label strong
 
 **Recommendations**
 
-- Consider replacing booleans (e.g. inline) with distributed unions (e.g. layout: 'inline' or layout: 'horizontal')
+- Prefer distributed unions (e.g. layout: 'inline' or layout: 'horizontal') to booleans (e.g. inline) where there maybe other values in the future.
 
 **Proposed Work Items**
 
@@ -414,9 +422,8 @@ size: PopoverSize;
 **Recommendations**
 
 - Use a single property with discriminated unions when appearance configuration is mutually exclusive.
-- Prefer using unions inline.
-  - If a union set of values is used for more than one property, then extract to a type defintion.
-- Prefer prefixing properties with the target when it isn't targeting the component top-level (e.g. borderAppearance, backgroundShape).
+- Prefer inline unions when only used in one place; extract to a type definition when used in multiple places.
+  - Prefer prefixing properties with the target when it isn't targeting the component top-level (e.g. borderAppearance, backgroundShape).
   - Corollary to this is to avoid repeating the component name when targeting top-level (i.e. prefer shape over badgeShape)
   - Consider a prefix if the property name would conflict with a native property name.
   - Prefer using a name that matches what the part is called in the design breakdown.
@@ -526,15 +533,3 @@ TooltipProps
 inverted: boolean;
 pointing: boolean;
 ```
-
-## Events and component state
-
-> The PopoverProps onChangeData event has PopoverState as the type of the data. It maybe difficult to maintain consistency between expected event payload and the state used internally to the component to render. The state also includes refs to elements that may constitute and implementation detail and create confusion with slots.
-
-**Recommendations**
-
-- Avoid exposing State both as the implementation chaining structure and as an event payload.
-
-**Work Items**
-
-- [ ] Update PropoverProps to define a Change event type and pass that to onChangeData
