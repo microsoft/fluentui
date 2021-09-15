@@ -139,7 +139,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           borderTop: `1px solid ${white}`,
         },
 
-        [`.${LinkGlobalClassNames.root}`]: {
+        [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
           color: focusedLinkColor,
         },
 
@@ -326,7 +326,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
                 color: colors.defaultHoverHeaderText,
               },
 
-              [`.${LinkGlobalClassNames.root}`]: {
+              [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
                 color: focusedLinkColor,
               },
             },
