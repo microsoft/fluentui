@@ -53,21 +53,33 @@ storiesOf('Button Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory('Primary Disabled', () => (
-    <Button primary disabled>
-      Hello, world
-    </Button>
-  ))
-  .addStory('Subtle Disabled', () => (
-    <Button subtle disabled>
-      Hello, world
-    </Button>
-  ))
-  .addStory('Transparent Disabled', () => (
-    <Button transparent disabled>
-      Hello, world
-    </Button>
-  ))
+  .addStory(
+    'Primary Disabled',
+    () => (
+      <Button primary disabled>
+        Hello, world
+      </Button>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
+  .addStory(
+    'Subtle Disabled',
+    () => (
+      <Button subtle disabled>
+        Hello, world
+      </Button>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
+  .addStory(
+    'Transparent Disabled',
+    () => (
+      <Button transparent disabled>
+        Hello, world
+      </Button>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
   .addStory('Size small', () => (
     <Button icon="X" size="small">
       Hello, world
