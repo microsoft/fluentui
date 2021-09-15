@@ -112,7 +112,7 @@ function shouldUseWildcardVersion(packageName: string, host: Tree) {
   }
 
   const pkgJson: PackageJson = readJson(host, config.paths.packageJson);
-  return !pkgJson.private && !pkgJson.version.startsWith('9.');
+  return !pkgJson.private && !isVersionConverged(pkgJson.version);
 }
 
 function isPackageConverged(packageName: string, host: Tree) {
@@ -128,5 +128,9 @@ function isPackageConverged(packageName: string, host: Tree) {
   }
 
   const packageJson = readJson(host, config.paths.packageJson);
-  return packageJson.version.startsWith('9.');
+  return isVersionConverged(packageJson.version);
+}
+
+function isVersionConverged(version: string) {
+  return version.startsWith('9.');
 }

@@ -15,7 +15,8 @@ version.
 
 - Only affects dev dependencies that are also published from the monorepo
 - Does not affect third party dependencies
-- Will run for every package in the monorepo
+- Will run for only v9 packages in the monorepo
+- Will create or update the syncpack version group
 
 ## Usage
 
