@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { ButtonState } from '../Button';
+import { ButtonState } from '../Button/Button.types';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { MenuButtonState } from './MenuButton.types';
 
