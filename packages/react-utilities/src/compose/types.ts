@@ -55,9 +55,9 @@ export type IntrinsicShorthandProps<
 > = IsSingleton<DefaultAs> extends false
   ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
   :
-      | ({ as?: DefaultAs } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
+      | ({ as?: DefaultAs } & ObjectShorthandProps<NormalizeRef<JSX.IntrinsicElements[DefaultAs]>>)
       | {
-          [As in AlternateAs]: { as: As } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
+          [As in AlternateAs]: { as: As } & ObjectShorthandProps<NormalizeRef<JSX.IntrinsicElements[As]>>;
         }[AlternateAs];
 
 /**
@@ -69,6 +69,11 @@ export type IntrinsicShorthandProps<
  * ```
  */
 export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
+
+/**
+ * Extends a props object with a LegagyRef, to be a normal Ref
+ */
+export type NormalizeRef<P> = P extends { ref?: React.LegacyRef<infer T> } ? P & { ref?: React.Ref<T> } : P;
 
 /**
  * Helper type for inferring the type of the as prop from a Props interface.
@@ -84,15 +89,6 @@ export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: 
  * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)
  */
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicShorthandProps). This allows IntrinsicShorthandProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ExtractRef<Props extends { ref?: any }> = Props['ref'] extends
@@ -113,7 +109,7 @@ export type ComponentProps<
   },
   Primary
 > &
-  PropsWithoutRef<Shorthands[Primary]>;
+  Shorthands[Primary];
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {

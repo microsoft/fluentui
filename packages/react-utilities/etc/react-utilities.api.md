@@ -48,7 +48,7 @@ export const colProperties: Record<string, number>;
 // @public (undocumented)
 export type ComponentProps<Shorthands extends ObjectShorthandPropsRecord, Primary extends keyof Shorthands = 'root'> = Omit<{
     [Key in keyof Shorthands]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
-}, Primary> & PropsWithoutRef<Shorthands[Primary]>;
+}, Primary> & Shorthands[Primary];
 
 // @public (undocumented)
 export interface ComponentPropsCompat {
@@ -93,6 +93,9 @@ export type ExtractRef<Props extends {
 export const formProperties: Record<string, number>;
 
 // @public
+export function forwardRef<Props extends React_2.RefAttributes<unknown>>(component: React_2.ForwardRefRenderFunction<Props extends React_2.RefAttributes<infer R> ? R : never, Props>): React_2.FunctionComponent<Props>;
+
+// @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
@@ -130,10 +133,10 @@ export const inputProperties: Record<string, number>;
 // @public
 export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
     as?: DefaultAs;
-} & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
+} & ObjectShorthandProps<NormalizeRef<JSX.IntrinsicElements[DefaultAs]>>) | {
     [As in AlternateAs]: {
         as: As;
-    } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[As]>>;
+    } & ObjectShorthandProps<NormalizeRef<JSX.IntrinsicElements[As]>>;
 }[AlternateAs];
 
 // @public
@@ -159,6 +162,13 @@ export const makeMergePropsCompat: <TState = Record<string, any>>(options?: Merg
 export type MergePropsOptions<TState> = {
     deepMerge?: readonly (keyof TState)[];
 };
+
+// @public
+export type NormalizeRef<P> = P extends {
+    ref?: React_2.LegacyRef<infer T>;
+} ? P & {
+    ref?: React_2.Ref<T>;
+} : P;
 
 // @public
 export const nullRender: () => null;
@@ -189,9 +199,6 @@ export const onlyChild: <P>(child: string | number | boolean | {} | React_2.Reac
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
-
-// @public
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
 
 // @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);

@@ -1,3 +1,4 @@
+export * from './forwardRef';
 export * from './getSlots';
 export * from './getSlotsCompat';
 export * from './makeMergeProps';
