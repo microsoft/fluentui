@@ -69,7 +69,7 @@ storiesOf('ChoiceGroup', module)
         ]}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('With default size images', () => (
     <ChoiceGroup

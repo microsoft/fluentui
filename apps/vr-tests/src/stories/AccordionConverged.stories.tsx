@@ -40,7 +40,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('Accordion Converged', module)
@@ -74,7 +74,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'expandIconPosition="end"',
@@ -90,7 +90,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'expandIcon="<Icon/>"',
@@ -116,7 +116,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'icon="<Icon/>"',
@@ -142,7 +142,7 @@ storiesOf('Accordion Converged', module)
         </AccordionItem>
       </Accordion>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('disabled', () => (
     <Accordion openItems={[]}>

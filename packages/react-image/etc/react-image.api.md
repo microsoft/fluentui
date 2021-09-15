@@ -10,7 +10,7 @@ import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
-const Image_2: React_2.FunctionComponent<ImageProps>;
+const Image_2: React_2.ForwardRefExoticComponent<ImageProps & React_2.RefAttributes<HTMLImageElement>>;
 export { Image_2 as Image }
 
 // @public (undocumented)
