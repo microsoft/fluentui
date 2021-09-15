@@ -2,7 +2,7 @@
 
 ## Background
 
-A cards main function is to provide the scaffolding for hosting actions and content for a single topic within a card sized object. It is a framework for organizing content within the confines of a card.
+A card's main function is to provide the scaffolding for hosting actions and content for a single topic within a card sized object. It is a framework for organizing content within the confines of a card.
 
 The card itself should not have content or actions built in, but provide the mechanisms for it to be displayed.
 
