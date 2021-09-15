@@ -1,8 +1,8 @@
 import { makeStyles } from '@fluentui/react-make-styles';
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Text } from './Text';
-import type { TextProps } from './Text';
+import { Text } from '../Text';
+import type { TextProps } from '../Text';
 import textDescriptionMd from './TextDescription.md';
 import textBestPracticesMd from './TextBestPractices.md';
 
