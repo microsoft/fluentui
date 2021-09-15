@@ -15,17 +15,6 @@ type MenuOpenEvents =
 
 const buttonStyle = { height: 22, verticalAlign: 'middle' };
 
-const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
-  return (
-    <div>
-      <button style={buttonStyle}>Custom Trigger</button>
-      <button {...props} ref={ref} style={buttonStyle}>
-        <ChevronDown16Regular />
-      </button>
-    </div>
-  );
-});
-
 export const CustomInnerFunctionTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange = (e: MenuOpenEvents, data: { open: boolean }) => {
@@ -35,7 +24,14 @@ export const CustomInnerFunctionTrigger = () => {
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <CustomMenuTrigger />
+        {(props: MenuTriggerChildProps) => (
+          <div>
+            <button style={buttonStyle}>Custom Trigger</button>
+            <button {...props} style={buttonStyle}>
+              <ChevronDown16Regular />
+            </button>
+          </div>
+        )}
       </MenuTrigger>
 
       <MenuPopover>
@@ -54,11 +50,8 @@ CustomInnerFunctionTrigger.parameters = {
   docs: {
     description: {
       story: [
-        'When a function component is passed as the children of `MenuTrigger`, the actual trigger can be customized to',
-        'be an inner part of the component.',
-        '',
-        'These components should use ref forwarding with',
-        '[React.forwardRef](https://reactjs.org/docs/forwarding-refs.html#forwarding-refs-to-dom-components)',
+        'When a function is passed as the children of `MenuTrigger`, the actual trigger can be customized to be an',
+        'inner part of the function.',
       ].join('\n'),
     },
   },
