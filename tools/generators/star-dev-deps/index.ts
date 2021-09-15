@@ -1,11 +1,14 @@
-import { Tree, updateJson, getProjects, formatFiles, readWorkspaceConfiguration, readJson } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, formatFiles, readJson, addDependenciesToPackageJson } from '@nrwl/devkit';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
+
+const dependenciesUpdated = new Set<string>();
 
 export default async function (host: Tree) {
   const userLog: UserLog = [];
 
-  runMigration(host, userLog);
+  const { versionGroupDependencies, versionGroupPackages } = runMigration(host, userLog);
+  updateVersionGroups(host, versionGroupPackages, versionGroupDependencies);
 
   formatFiles(host);
 
@@ -14,20 +17,33 @@ export default async function (host: Tree) {
   };
 }
 
-function runMigrationOnProject(host: Tree, packageName: string, userLog: UserLog) {
-  const projectConfig = getProjectConfig(host, { packageName });
-  const packageJsonPath = projectConfig.paths.packageJson;
+type SyncPack = {
+  syncpack: {
+    versionGroups: {
+      packages: string[];
+      dependencies: string[];
+    }[];
+  };
+};
 
-  updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
-    if (packageJson.devDependencies) {
-      Object.keys(packageJson.devDependencies).forEach(dependency => {
-        if (isPackageInMonorepo(dependency, host) && packageJson.devDependencies) {
-          userLog.push({
-            type: 'info',
-            message: `Updating dev dependency ${dependency} in ${packageName}`,
-          });
-          packageJson.devDependencies[dependency] = '*';
-        }
+function updateVersionGroups(host: Tree, versionGroupPackages: string[], versionGroupDependencies: string[]) {
+  const vNextVersionGroup = 'fluent-ui-vnext';
+  updateJson(host, 'package.json', (packageJson: PackageJson & SyncPack) => {
+    const existingVersionGroup = Object.values(packageJson.syncpack.versionGroups).find(versionGroup => {
+      if (versionGroup.packages.includes(vNextVersionGroup)) {
+        return true;
+      }
+
+      return false;
+    });
+
+    if (existingVersionGroup) {
+      existingVersionGroup.dependencies = Array.from(versionGroupDependencies);
+      existingVersionGroup.packages = [...Array.from(versionGroupPackages), vNextVersionGroup];
+    } else {
+      packageJson.syncpack.versionGroups.push({
+        dependencies: Array.from(versionGroupDependencies),
+        packages: [...Array.from(versionGroupPackages), vNextVersionGroup],
       });
     }
 
@@ -35,18 +51,55 @@ function runMigrationOnProject(host: Tree, packageName: string, userLog: UserLog
   });
 }
 
-function runMigration(host: Tree, userLog: UserLog) {
-  const projects = getProjects(host);
+function runMigrationOnProject(
+  host: Tree,
+  packageName: string,
+  versionGroupDependencies: Set<string>,
+  userLog: UserLog,
+) {
+  const projectConfig = getProjectConfig(host, { packageName });
+  const packageJsonPath = projectConfig.paths.packageJson;
 
-  projects.forEach((project, projectName) => {
-    runMigrationOnProject(host, projectName, userLog);
+  updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
+    if (packageJson.devDependencies) {
+      Object.keys(packageJson.devDependencies).forEach(dependency => {
+        if (shouldUseWildcardVersion(dependency, host) && packageJson.devDependencies) {
+          userLog.push({
+            type: 'info',
+            message: `Updating dependency ${dependency} in package ${packageName}`,
+          });
+          packageJson.devDependencies[dependency] = '*';
+          dependenciesUpdated.add(dependency);
+          versionGroupDependencies.add(dependency);
+        }
+      });
+    }
+
+    return packageJson;
   });
+
+  return Array.from(versionGroupDependencies);
 }
 
-/**
- * @returns whether the packageName is internally in the monorepo
- */
-function isPackageInMonorepo(packageName: string, host: Tree) {
+function runMigration(host: Tree, userLog: UserLog) {
+  const projects = getProjects(host);
+  const versionGroupPackages = new Set<string>();
+  const versionGroupDependencies = new Set<string>();
+
+  projects.forEach((project, projectName) => {
+    if (isPackageConverged(projectName, host)) {
+      versionGroupPackages.add(projectName);
+      runMigrationOnProject(host, projectName, versionGroupDependencies, userLog);
+    }
+  });
+
+  return {
+    versionGroupDependencies: Array.from(versionGroupDependencies),
+    versionGroupPackages: Array.from(versionGroupPackages),
+  };
+}
+
+function shouldUseWildcardVersion(packageName: string, host: Tree) {
   let config: ReturnType<typeof getProjectConfig>;
   try {
     config = getProjectConfig(host, { packageName });
@@ -58,5 +111,22 @@ function isPackageInMonorepo(packageName: string, host: Tree) {
     return false;
   }
 
-  return true;
+  const pkgJson: PackageJson = readJson(host, config.paths.packageJson);
+  return !pkgJson.private && !pkgJson.version.startsWith('9.');
+}
+
+function isPackageConverged(packageName: string, host: Tree) {
+  let config: ReturnType<typeof getProjectConfig>;
+  try {
+    config = getProjectConfig(host, { packageName });
+  } catch (err) {
+    if (!(err as Error).message.startsWith('Cannot find configuration for')) {
+      throw err;
+    }
+
+    return false;
+  }
+
+  const packageJson = readJson(host, config.paths.packageJson);
+  return packageJson.version.startsWith('9.');
 }
