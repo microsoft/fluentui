@@ -35,7 +35,7 @@ import { Image } from '@fluentui/react-provider';
 
 const App = () => (
   <FluentProvider>
-    <Image src="example_image.png" />;
+    <Image src="example_image.png" alt="Example image" />;
   </FluentProvider>
 );
 ```
@@ -43,7 +43,7 @@ const App = () => (
 The DOM structure will result into:
 
 ```jsx
-<img src="example_image.png" />
+<img src="example_image.png" alt="Example image" />
 ```
 
 ## API
