@@ -19,6 +19,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### BREAKING CHANGES
+- Remove Red Foreground 3 from color scheme tokens  @codepretty ([#19761](https://github.com/microsoft/fluentui/pull/19761))
+
+### Fixes
+- Ignore `ChatItem` contentPosition in compact density @Hirse ([#19701](https://github.com/microsoft/fluentui/pull/19701))
+- Fix compact `ChatMessage` focus highlight @Hirse ([#19720](https://github.com/microsoft/fluentui/pull/19720))
+
+### Documentation
+- Add Chat Playground @Hirse ([#19702](https://github.com/microsoft/fluentui/pull/19702))
+
+<!--------------------------------[ v0.58.0 ]------------------------------- -->
+## [v0.58.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.58.0) (2021-09-09)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.57.0..@fluentui/react-northstar_v0.58.0)
+
+### BREAKING CHANGES
 - Make `Tooltip` subtle by default and no pointing by default @chassunc ([#19024](https://github.com/microsoft/fluentui/pull/19024))
 - Don't show `ChatMessage` timestamp if reactions are in the bottom @Hirse ([#19377](https://github.com/microsoft/fluentui/pull/19377))
 
@@ -60,6 +74,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - add `disabledFocusable` for toolbar items @adamsamec ([#18720](https://github.com/microsoft/fluentui/pull/18720))
 - Fix `Tooltip` appearance in high contrast theme @yuanboxue-amber ([#19559](https://github.com/microsoft/fluentui/pull/19559))
 - Fix `Shadow` colors to match redlines @notandrew ([#19552](https://github.com/microsoft/fluentui/pull/19552))
+- Fix `Checkbox` background issue on zoom above 100% @vitthalr ([#19619](https://github.com/microsoft/fluentui/pull/19619))
 
 ### Features
 - Add Onyx 600, Silver 100 to color palette and some color tokens @codepretty ([#18827](https://github.com/microsoft/fluentui/pull/18827))

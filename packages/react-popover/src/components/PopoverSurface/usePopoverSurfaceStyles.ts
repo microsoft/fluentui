@@ -84,14 +84,14 @@ const useStyles = makeStyles({
  */
 export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     styles.root,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
     state.inverted && styles.inverted,
     state.brand && styles.brand,
-    state.className,
+    state.root.className,
   );
 
   state.arrowClassName = mergeClasses(

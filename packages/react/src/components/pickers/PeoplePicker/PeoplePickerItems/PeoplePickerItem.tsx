@@ -21,7 +21,18 @@ import type {
 const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 
 export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
-  const { item, onRemoveItem, index, selected, removeButtonAriaLabel, styles, theme, className, disabled } = props;
+  const {
+    item,
+    onRemoveItem,
+    index,
+    selected,
+    removeButtonAriaLabel,
+    styles,
+    theme,
+    className,
+    disabled,
+    removeButtonIconProps,
+  } = props;
 
   const itemId = getId();
 
@@ -50,7 +61,8 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
         id={itemId}
         onClick={onRemoveItem}
         disabled={disabled}
-        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+        iconProps={removeButtonIconProps ?? { iconName: 'Cancel' }}
+        styles={{ icon: { fontSize: '12px' } }}
         className={classNames.removeButton}
         ariaLabel={removeButtonAriaLabel}
         aria-labelledby={`${itemId} selectedItemPersona-${itemId}`}

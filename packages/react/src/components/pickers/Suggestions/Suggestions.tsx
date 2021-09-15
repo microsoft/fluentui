@@ -70,6 +70,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
+      searchForMoreIcon,
       searchForMoreText,
       className,
       moreSuggestionsAvailable,
@@ -193,7 +194,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           <CommandButton
             componentRef={this._searchForMoreButton}
             className={this._classNames.searchForMoreButton}
-            iconProps={{ iconName: 'Search' }}
+            iconProps={searchForMoreIcon || { iconName: 'Search' }}
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
@@ -365,6 +366,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       suggestionsContainerAriaLabel,
       suggestionsHeaderText,
       suggestionsListId,
+      removeButtonIconProps,
     } = this.props;
 
     let { suggestions } = this.props;
@@ -420,6 +422,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
               removeButtonAriaLabel={removeSuggestionAriaLabel}
               onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
               id={'sug-' + index}
+              removeButtonIconProps={removeButtonIconProps}
             />
           </div>
         ))}

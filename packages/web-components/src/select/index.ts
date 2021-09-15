@@ -57,6 +57,7 @@ export class Select extends FoundationSelect {
  */
 export const fluentSelect = Select.compose<SelectOptions>({
   baseName: 'select',
+  baseClass: FoundationSelect,
   template,
   styles,
   indicator: `
