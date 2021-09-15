@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use wrapper for forwardRef to clean up component type",
+  "packageName": "@fluentui/react-provider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
