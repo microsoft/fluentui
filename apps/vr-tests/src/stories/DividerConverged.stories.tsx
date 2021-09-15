@@ -34,7 +34,7 @@ storiesOf('Divider Converged', module)
         <Divider>Today</Divider>
       </div>
     ),
-    { rtl: true, includeHighContrast: true, includeDarkMode: true },
+    { rtl: true },
   )
   .addStory(
     'Horizontal Start Aligned',
@@ -73,42 +73,21 @@ storiesOf('Divider Converged', module)
       </Divider>
     </div>
   ))
-  .addStory(
-    'Appearance subtle',
-    () => (
-      <div className={verticalStyles}>
-        <Divider appearance="subtle">Today</Divider>
-      </div>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Appearance strong',
-    () => (
-      <div className={verticalStyles}>
-        <Divider appearance="strong">Today</Divider>
-      </div>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Appearance brand',
-    () => (
-      <div className={verticalStyles}>
-        <Divider appearance="brand">Today</Divider>
-      </div>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
+  .addStory('Appearance subtle', () => (
+    <div className={verticalStyles}>
+      <Divider appearance="subtle">Today</Divider>
+    </div>
+  ))
+  .addStory('Appearance strong', () => (
+    <div className={verticalStyles}>
+      <Divider appearance="strong">Today</Divider>
+    </div>
+  ))
+  .addStory('Appearance brand', () => (
+    <div className={verticalStyles}>
+      <Divider appearance="brand">Today</Divider>
+    </div>
+  ))
   .addStory('Inset', () => (
     <div className={verticalStyles}>
       <Divider inset>Today</Divider>
