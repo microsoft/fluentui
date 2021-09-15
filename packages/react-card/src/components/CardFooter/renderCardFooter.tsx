@@ -11,7 +11,7 @@ export const renderCardFooter = (state: CardFooterState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {state.children}
+      {slotProps.root.children}
       <slots.action {...slotProps.action} />
     </slots.root>
   );
