@@ -2,6 +2,21 @@
   "name": "server-rendered-app",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "server-rendered-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "server-rendered-app",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3",
+            "comment": "Bump server-rendered-app to v1.0.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Sep 2021 07:37:03 GMT",
       "tag": "server-rendered-app_v1.0.0",
       "version": "1.0.0",

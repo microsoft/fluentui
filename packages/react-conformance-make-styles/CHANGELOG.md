@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance-make-styles
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 20:09:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-make-styles_v9.0.0-alpha.9)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-make-styles_v9.0.0-alpha.8..@fluentui/react-conformance-make-styles_v9.0.0-alpha.9)
+
+### Changes
+
+- Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.9 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-make-styles_v9.0.0-alpha.8)
 
