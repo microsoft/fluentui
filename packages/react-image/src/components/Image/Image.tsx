@@ -4,7 +4,7 @@ import { useImage } from './useImage';
 import { useImageStyles } from './useImageStyles';
 import type { ImageProps } from './Image.types';
 
-export const Image = React.forwardRef<HTMLElement, ImageProps>((props, ref) => {
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const state = useImage(props, ref);
   useImageStyles(state);
 

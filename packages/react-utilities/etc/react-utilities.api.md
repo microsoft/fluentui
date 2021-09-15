@@ -84,6 +84,11 @@ export const defaultSSRContextValue: SSRContextValue;
 // @public
 export const divProperties: Record<string, number>;
 
+// @public (undocumented)
+export type ExtractRef<Props extends {
+    ref?: any;
+}> = Props['ref'] extends ((instance: infer I | null) => void) | React_2.RefObject<infer I> | null | undefined ? I : any;
+
 // @public
 export const formProperties: Record<string, number>;
 

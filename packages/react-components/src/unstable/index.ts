@@ -1,3 +1,3 @@
 // Stub for unstable exports
 
-// export * from '@fluentui/react-switch';
+export * from '@fluentui/react-card';
