@@ -19,12 +19,12 @@ describe('RangedSlider', () => {
 
   describe('Snapshot Tests', () => {
     it('renders horizontal RangedSlider correctly', () => {
-      const { container } = render(<RangedSlider defaultValue={{ lowerValue: 5, upperValue: 7 }} min={0} max={10} />);
+      const { container } = render(<RangedSlider defaultValue={[5, 7]} min={0} max={10} />);
       expect(container).toMatchSnapshot();
     });
 
     it('renders vertical RangedSlider correctly', () => {
-      const { container } = render(<RangedSlider defaultValue={{ lowerValue: 2, upperValue: 8 }} vertical />);
+      const { container } = render(<RangedSlider defaultValue={[2, 8]} vertical />);
       expect(container).toMatchSnapshot();
     });
 
@@ -77,10 +77,7 @@ describe('RangedSlider', () => {
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({
-        value: {
-          lowerValue: 50,
-          upperValue: 100,
-        },
+        value: [50, 100],
       });
       expect(inputRef.current?.value).toEqual('50');
       expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('55%');
@@ -89,10 +86,7 @@ describe('RangedSlider', () => {
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({
-        value: {
-          lowerValue: 20,
-          upperValue: 100,
-        },
+        value: [20, 100],
       });
       expect(inputRef.current?.value).toEqual('20');
       expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('76%');
@@ -102,13 +96,13 @@ describe('RangedSlider', () => {
     it('calls onChange when pointerDown', () => {
       const onChange = jest.fn();
 
-      render(<RangedSlider defaultValue={{ lowerValue: 5, upperValue: 10 }} onChange={onChange} data-testid="test" />);
+      render(<RangedSlider defaultValue={[5, 10]} onChange={onChange} data-testid="test" />);
 
       const sliderRoot = screen.getByTestId('test');
       expect(onChange).toBeCalledTimes(0);
       fireEvent.pointerDown(sliderRoot, { clientX: 0, clientY: 0 });
       expect(onChange).toBeCalledTimes(1);
-      expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 0, upperValue: 10 } });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: [0, 10] });
     });
 
     it('applies the defaultValue prop', () => {
@@ -116,10 +110,7 @@ describe('RangedSlider', () => {
       const upperInputRef = React.createRef<HTMLInputElement>();
       render(
         <RangedSlider
-          defaultValue={{
-            lowerValue: 50,
-            upperValue: 100,
-          }}
+          defaultValue={[50, 100]}
           inputLower={{ ref: lowerInputRef }}
           inputUpper={{ ref: upperInputRef }}
         />,
@@ -131,16 +122,7 @@ describe('RangedSlider', () => {
     it('applies the value prop', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
-      render(
-        <RangedSlider
-          value={{
-            lowerValue: 20,
-            upperValue: 80,
-          }}
-          inputLower={{ ref: lowerInputRef }}
-          inputUpper={{ ref: upperInputRef }}
-        />,
-      );
+      render(<RangedSlider value={[20, 80]} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />);
       expect(lowerInputRef.current?.value).toEqual('20');
       expect(upperInputRef.current?.value).toEqual('80');
     });
@@ -181,14 +163,7 @@ describe('RangedSlider', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
       render(
-        <RangedSlider
-          value={{
-            lowerValue: -10,
-            upperValue: 110,
-          }}
-          inputLower={{ ref: lowerInputRef }}
-          inputUpper={{ ref: upperInputRef }}
-        />,
+        <RangedSlider value={[-10, 110]} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />,
       );
       expect(lowerInputRef.current?.value).toEqual('0');
       expect(upperInputRef.current?.value).toEqual('100');
@@ -206,7 +181,7 @@ describe('RangedSlider', () => {
     const upperInputRef = React.createRef<HTMLInputElement>();
 
     const values = ['small', 'medium', 'large'];
-    const defaultValue = { lowerValue: 1, upperValue: 2 };
+    const defaultValue: [number, number] = [1, 2];
     const getTextValue = (value: number) => values[value];
 
     render(
@@ -220,8 +195,8 @@ describe('RangedSlider', () => {
       />,
     );
 
-    expect(lowerInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue.lowerValue]);
-    expect(upperInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue.upperValue]);
+    expect(lowerInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue[0]]);
+    expect(upperInputRef?.current?.getAttribute('aria-valuetext')).toEqual(values[defaultValue[1]]);
   });
 
   it('slides to min/max and executes onChange', () => {
@@ -231,10 +206,7 @@ describe('RangedSlider', () => {
 
     const wrapper: ReactWrapper = mount(
       <RangedSlider
-        defaultValue={{
-          lowerValue: 50,
-          upperValue: 50,
-        }}
+        defaultValue={[50, 50]}
         onChange={onChange}
         activeRail={{ className: 'active-rail' }}
         inputLower={{ ref: lowerInputRef }}
@@ -251,7 +223,7 @@ describe('RangedSlider', () => {
 
     activeRail.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
     expect(onChange).toBeCalledTimes(1);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 50, upperValue: 100 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [50, 100] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('100');
     expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('50%');
@@ -259,7 +231,7 @@ describe('RangedSlider', () => {
 
     activeRail.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
     expect(onChange).toBeCalledTimes(2);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: { lowerValue: 0, upperValue: 100 } });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: [0, 100] });
     expect(lowerInputRef.current?.value).toEqual('0');
     expect(upperInputRef.current?.value).toEqual('100');
     expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('100%');
@@ -290,7 +262,7 @@ describe('RangedSlider', () => {
 
     wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 }, { type: 'pointerup' });
     expect(onChange).toBeCalledTimes(1);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 50, upperValue: 100 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [50, 100] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('100');
     expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('55%');
@@ -298,7 +270,7 @@ describe('RangedSlider', () => {
 
     wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 84, clientY: 0 }, { type: 'pointerup' });
     expect(onChange).toBeCalledTimes(2);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: { lowerValue: 50, upperValue: 80 } });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: [50, 80] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('80');
     expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('34%');
@@ -312,7 +284,7 @@ describe('RangedSlider', () => {
 
     render(
       <RangedSlider
-        defaultValue={{ lowerValue: 20, upperValue: 20 }}
+        defaultValue={[20, 20]}
         step={3}
         keyboardStep={5}
         onChange={onChange}
@@ -322,13 +294,13 @@ describe('RangedSlider', () => {
     );
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 20, upperValue: 25 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [20, 25] });
     expect(lowerInputRef.current?.value).toBe('20');
     expect(upperInputRef.current?.value).toBe('25');
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 15, upperValue: 20 } });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: [15, 20] });
     expect(lowerInputRef.current?.value).toBe('15');
     expect(upperInputRef.current?.value).toBe('20');
   });
@@ -340,7 +312,7 @@ describe('RangedSlider', () => {
 
     render(
       <RangedSlider
-        defaultValue={{ lowerValue: 20, upperValue: 20 }}
+        defaultValue={[20, 20]}
         step={-3}
         onChange={onChange}
         inputLower={{ ref: lowerInputRef }}
@@ -349,13 +321,13 @@ describe('RangedSlider', () => {
     );
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 17, upperValue: 20 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [17, 20] });
     expect(lowerInputRef.current?.value).toBe('17');
     expect(upperInputRef.current?.value).toBe('20');
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 14, upperValue: 17 } });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: [14, 17] });
     expect(lowerInputRef.current?.value).toBe('14');
     expect(upperInputRef.current?.value).toBe('17');
   });
@@ -367,7 +339,7 @@ describe('RangedSlider', () => {
 
     render(
       <RangedSlider
-        defaultValue={{ lowerValue: 20, upperValue: 20 }}
+        defaultValue={[20, 20]}
         step={0.0001}
         onChange={onChange}
         inputLower={{ ref: lowerInputRef }}
@@ -376,13 +348,13 @@ describe('RangedSlider', () => {
     );
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 20, upperValue: 20.0001 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [20, 20.0001] });
     expect(lowerInputRef.current?.value).toBe('20');
     expect(upperInputRef.current?.value).toBe('20.0001');
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 19.9999, upperValue: 20 } });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: [19.9999, 20] });
     expect(lowerInputRef.current?.value).toBe('19.9999');
     expect(upperInputRef.current?.value).toBe('20');
   });
@@ -418,7 +390,7 @@ describe('RangedSlider', () => {
 
     render(
       <RangedSlider
-        defaultValue={{ lowerValue: 48, upperValue: 50 }}
+        defaultValue={[48, 50]}
         onChange={onChange}
         inputLower={{ ref: lowerInputRef }}
         inputUpper={{ ref: upperInputRef }}
@@ -426,23 +398,23 @@ describe('RangedSlider', () => {
     );
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 49, upperValue: 50 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [49, 50] });
     expect(document.activeElement).toEqual(lowerInputRef.current);
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[1][1]).toEqual({ value: { lowerValue: 50, upperValue: 50 } });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: [50, 50] });
     expect(document.activeElement).toEqual(lowerInputRef.current);
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 50, upperValue: 51 } });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: [50, 51] });
     expect(document.activeElement).toEqual(upperInputRef.current);
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
-    expect(onChange.mock.calls[3][1]).toEqual({ value: { lowerValue: 50, upperValue: 50 } });
+    expect(onChange.mock.calls[3][1]).toEqual({ value: [50, 50] });
     expect(document.activeElement).toEqual(upperInputRef.current);
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowDown' });
-    expect(onChange.mock.calls[4][1]).toEqual({ value: { lowerValue: 49, upperValue: 50 } });
+    expect(onChange.mock.calls[4][1]).toEqual({ value: [49, 50] });
     expect(document.activeElement).toEqual(lowerInputRef.current);
   });
 
@@ -453,7 +425,7 @@ describe('RangedSlider', () => {
 
     render(
       <RangedSlider
-        defaultValue={{ lowerValue: 50, upperValue: 50 }}
+        defaultValue={[50, 50]}
         min={0}
         max={100}
         onChange={onChange}
@@ -465,52 +437,52 @@ describe('RangedSlider', () => {
     expect(onChange).toBeCalledTimes(0);
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowDown' });
-    expect(onChange.mock.calls[0][1]).toEqual({ value: { lowerValue: 49, upperValue: 50 } });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: [49, 50] });
     expect(lowerInputRef.current?.value).toEqual('49');
     expect(upperInputRef.current?.value).toEqual('50');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowUp' });
-    expect(onChange.mock.calls[1][1]).toEqual({ value: { lowerValue: 50, upperValue: 50 } });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: [50, 50] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('50');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowLeft' });
-    expect(onChange.mock.calls[2][1]).toEqual({ value: { lowerValue: 49, upperValue: 50 } });
+    expect(onChange.mock.calls[2][1]).toEqual({ value: [49, 50] });
     expect(lowerInputRef.current?.value).toEqual('49');
     expect(upperInputRef.current?.value).toEqual('50');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowRight' });
-    expect(onChange.mock.calls[3][1]).toEqual({ value: { lowerValue: 50, upperValue: 50 } });
+    expect(onChange.mock.calls[3][1]).toEqual({ value: [50, 50] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('50');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'PageUp' });
-    expect(onChange.mock.calls[4][1]).toEqual({ value: { lowerValue: 50, upperValue: 60 } });
+    expect(onChange.mock.calls[4][1]).toEqual({ value: [50, 60] });
     expect(lowerInputRef.current?.value).toEqual('50');
     expect(upperInputRef.current?.value).toEqual('60');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'PageDown' });
-    expect(onChange.mock.calls[5][1]).toEqual({ value: { lowerValue: 40, upperValue: 60 } });
+    expect(onChange.mock.calls[5][1]).toEqual({ value: [40, 60] });
     expect(lowerInputRef.current?.value).toEqual('40');
     expect(upperInputRef.current?.value).toEqual('60');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'Home' });
-    expect(onChange.mock.calls[6][1]).toEqual({ value: { lowerValue: 0, upperValue: 60 } });
+    expect(onChange.mock.calls[6][1]).toEqual({ value: [0, 60] });
     expect(lowerInputRef.current?.value).toEqual('0');
     expect(upperInputRef.current?.value).toEqual('60');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'End' });
-    expect(onChange.mock.calls[7][1]).toEqual({ value: { lowerValue: 0, upperValue: 100 } });
+    expect(onChange.mock.calls[7][1]).toEqual({ value: [0, 100] });
     expect(lowerInputRef.current?.value).toEqual('0');
     expect(upperInputRef.current?.value).toEqual('100');
 
     fireEvent.keyDown(upperInputRef.current!, { key: 'ArrowLeft', shiftKey: true });
-    expect(onChange.mock.calls[8][1]).toEqual({ value: { lowerValue: 0, upperValue: 90 } });
+    expect(onChange.mock.calls[8][1]).toEqual({ value: [0, 90] });
     expect(lowerInputRef.current?.value).toEqual('0');
     expect(upperInputRef.current?.value).toEqual('90');
 
     fireEvent.keyDown(lowerInputRef.current!, { key: 'ArrowRight', shiftKey: true });
-    expect(onChange.mock.calls[9][1]).toEqual({ value: { lowerValue: 10, upperValue: 90 } });
+    expect(onChange.mock.calls[9][1]).toEqual({ value: [10, 90] });
     expect(lowerInputRef.current?.value).toEqual('10');
     expect(upperInputRef.current?.value).toEqual('90');
 

@@ -17,20 +17,11 @@ export const RangedSlider: React_2.ForwardRefExoticComponent<RangedSliderProps>;
 
 // @public (undocumented)
 export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
-    defaultValue?: {
-        lowerValue: number;
-        upperValue: number;
-    };
+    defaultValue?: [number, number];
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
-        value: {
-            lowerValue: number;
-            upperValue: number;
-        };
+        value: [number, number];
     }) => void;
-    value?: {
-        lowerValue: number;
-        upperValue: number;
-    };
+    value?: [number, number];
 }
 
 // @public (undocumented)
