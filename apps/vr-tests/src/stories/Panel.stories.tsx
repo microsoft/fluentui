@@ -79,7 +79,14 @@ storiesOf('Panel', module)
   .addStory('With no header, close button', () => (
     <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
   ))
-  .addStory('With footer at the bottom', () => <Panel {...defaultProps} isFooterAtBottom={true} />);
+  .addStory('With footer at the bottom', () => (
+    <Panel
+      {...defaultProps}
+      type={PanelType.smallFixedFar}
+      headerText="Footer at bottom"
+      isFooterAtBottom={true}
+    />
+  ));
 
 storiesOf('Panel', module)
   .addDecorator(story => (
