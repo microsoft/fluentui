@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/react_v8.34.1",
+      "version": "8.34.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmitry@grechka.family",
+            "package": "@fluentui/react",
+            "comment": "setting the defaultRenderer argument for the onRenderIcon of ContextualMenuItem",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Sep 2021 07:37:03 GMT",
       "tag": "@fluentui/react_v8.34.0",
       "version": "8.34.0",

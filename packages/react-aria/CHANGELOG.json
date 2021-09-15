@@ -2,6 +2,36 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-aria to v9.0.0-alpha.31"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "comment": "Generalize mergeARIADisabled",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 16:31:53 GMT",
       "tag": "@fluentui/react-aria_v9.0.0-alpha.29",
       "version": "9.0.0-alpha.29",
