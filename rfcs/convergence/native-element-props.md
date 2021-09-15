@@ -1,12 +1,16 @@
 # RFC: Customizing application of native element props and `ref`
 
-@ecraig12345 @sopranopillow @behowell
+Authors:<br>
+@ecraig12345, @sopranopillow, @behowell
+
+Special thank you to everyone who contributed in the design and discussion around this RFC, including:<br>
+@bsunderhus, @layershifter, @miroslavstastny, @ling1726, @dzearing, @GeoffCoxMSFT
 
 ## Summary
 
-For certain components, it's necessary to apply top-level native props to an element besides the actual DOM root. This RFC proposes two possible mechanisms for handling this.
+For certain components, it's necessary to apply top-level native props to an element besides the actual DOM root. This RFC proposes a mechanism for handling this.
 
-Whichever option is chosen, it should be used very sparingly to avoid confusion. The most obvious case is for input components (options for exact criteria discussed below).
+This functionality should be used very sparingly to avoid confusion. The most obvious case is for input components (options for exact criteria discussed below).
 
 ## Problem statement
 
@@ -53,7 +57,9 @@ The chosen solution needs to adhere to the following principles (thanks @levitho
 - User needs to retain access to any part of DOM at any time (can't make a piece of DOM that's unable to receive props)
 - Consider what the user expects when using the component
 
-### For inputs: 3rd-party form validation libraries
+### Compatibility with 3rd-party libraries
+
+#### For inputs: form validation libraries
 
 To the degree possible, we'd like inputs to work nicely with 3rd-party form libraries, which may have APIs that expect to be able to pass native props to the component and have them applied to the actual `<input>`. (needs more research)
 
@@ -62,7 +68,158 @@ To the degree possible, we'd like inputs to work nicely with 3rd-party form libr
   - Note, for this one they might need to make a wrapper for our component because the library expects to be able to _set_ `.value` on the input, which presents its own challenges. (Someone brought this up for v8 [here](https://github.com/microsoft/fluentui/issues/18126).)
 - [React Final Form](https://github.com/final-form/react-final-form)
 
-## Detailed Design or Proposal
+#### For styling: StyledComponents and Emotion
+
+Third-party styling libraries can assume that `className` applies to the root DOM element. Even if we forward other props to an inner element, we should ensure that `className` is always applied to the root.
+
+## Proposed Design
+
+_For reference, this proposal was labeled **Option D** in discussion on [PR #18983](https://github.com/microsoft/fluentui/pull/18983#issuecomment-910563694)_.
+
+### Introduce the concept of a `primary` slot
+
+The `primary` slot is the slot that receives the native props that are specified as props of the component itself.
+
+1. By default, `root` (the outermost DOM element) is the primary slot:
+
+   - This is the _status quo_: all components worked like this prior to this RFC.
+   - `root` gets all of the native props specified as props on the component.
+   - The component does _not_ have a prop called `root`.
+
+2. A component can be designed with a different `primary` slot:
+
+   - All native props are forwarded to the `primary` slot, _except_ `className` and `style`.
+   - The `className` and `style` props are _always_ forwarded to the `root` slot.
+   - Both `root` and the `primary` slot are exposed as props, to allow for props to be explicitly set on those slots.
+   - The `primary` slot is intrinsic to the component, and is part of how it works. Users cannot designate a different slot as primary.
+
+See [Usage examples](#Usage-examples) below for examples of how this works.
+
+### How to pick the primary slot
+
+To avoid confusion from a user standpoint, if we're going to allow varying where top-level native props go, we need a very clear/coherent definition of where people can expect this different behavior, and/or categories of components it applies to.
+
+#### Proposed guidelines
+
+- When a component is wrapping a single underlying HTML element, the primary slot is that element.
+- If a component is emulating an HTML element via `role`, the primary slot is the one with the component's primary `role`.
+- Otherwise, leave the `root` element as the default (this should apply to most components).
+
+Examples include:
+
+- Input components like `Input`, `Checkbox`, `Dropdown`, etc. These wrap the actual `<input>` element with styling/layout divs, but the `<input>` should be the primary slot.
+- Example from v8 (not sure if this applies to converged): Modal's actual React root element is usually a Layer, but from a user standpoint it makes a lot more sense to apply top-level props to the modal _content's_ root element.
+
+### Propsed Implementation
+
+#### Typings
+
+The `ComponentProps` type has a template parameter to specify the primary slot:
+
+```ts
+export type ComponentProps<Shorthands, Primary extends keyof Shorthands = 'root'> =
+  // Put the primary slot's props directly on the ComponentProps
+  Shorthands[Primary] &
+    // Add shorthand props for the other slots
+    {
+      [Key in Exclude<
+        keyof Shorthands,
+        // Exclude `root` only if it is the primary slot
+        Primary extends 'root' ? Primary : never
+      >]?: ShorthandProps<NonNullable<Shorthands[Key]>>;
+    };
+```
+
+#### Implementation
+
+Add a function similar to `getNativeElementProps` function, except it handles splitting the `className` and `style` props to the root slot, as well as mixing in the primary slot.
+
+Something along the lines of this (names and API is still a work in progress):
+
+```ts
+const [rootProps, inputProps] = getRootAndPrimaryNativeElementProps(props, 'input');
+const state = {
+  // ...
+  root: rootProps,
+  input: inputProps, // primary slot
+};
+```
+
+#### Conformance tests
+
+- Need to be able to specify which is the primary slot in conformance tests
+- Check that `className` and `style` always go to the root slot
+- Check that `<input>` elements are always the primary slot
+
+## Usage examples
+
+### Example with `root` as the primary slot (default case)
+
+`Button` falls into the default case, where `root` is its primary slot. All native props specified on the component go to the `root` slot:
+
+**Given JSX:**
+
+```jsx
+<Button id="myId" className="myClass" />
+```
+
+**Resulting DOM (simplified):**
+
+```html
+<button id="myId" class="myClass" />
+```
+
+There is no `root` prop:
+
+```jsx
+<Button root={{ id: 'myId' }} /> // ❌ Fails to compile: root is not a prop
+```
+
+### Example with `input` as the primary slot
+
+`Checkbox` specifies its `input` slot as the primary slot. (Its `root` slot is a wrapper `<div>` around the `<input>` element.)
+
+**Given JSX:**
+
+```jsx
+<Checkbox id="myId" className="myClass" />
+```
+
+**Resulting DOM (simplified):**
+
+```html
+<div class="myClass">
+  <input id="myId" />
+</div>
+```
+
+If props are specified on the `root` or `input` slots, they always go to the specified slot, and always win over props specified on the element itself:
+
+**Given JSX:**
+
+```jsx
+<Checkbox
+  id="myId" // ⚠ overridden by "inputId" below
+  className="myClass" // ⚠ overridden by "rootClass" below
+  style={{ color: 'red' }}
+  root={{ id: 'rootId', className: 'rootClass' }}
+  input={{ id: 'inputId', className: 'inputClass' }}
+/>
+```
+
+**Resulting DOM (simplified):**
+
+```html
+<div id="rootId" class="rootClass" style="color: red">
+  <input id="inputId" class="inputClass" />
+</div>
+```
+
+## Discarded Solutions
+
+There have been a number of proposals discussed, including on a previous [RFC #18804](https://github.com/microsoft/fluentui/pull/18804), as well as in earlier iterations of this proposal.
+
+The names of the discarded options reflect their name when they were proposed.
 
 ### Option A: allow setting a different "primary" slot; explicitly expose `root` _(formerly the proposed solution)_
 
@@ -186,29 +343,7 @@ Which would give you roughly this:
 - Inconsistent what `root` means (it's weird to call something "root" which isn't actually at the root). However since `root` is not exposed in the public API in this proposal,
 - The name `wrapper` is already being used for slots in some components, with a different meaning (would probably need to change this)
 
-## Open Issues
-
-### Which components are "special"?
-
-To avoid confusion from a user standpoint, if we're going to allow varying where top-level native props go, we need a very clear/coherent definition of where people can expect this different behavior, and/or categories of compnents it applies to.
-
-The most obvious category is input components, as discussed earlier. So for consistency we'd need to ensure this pattern is applied to **all input components**. Please comment if you can think of any input components where this wouldn't work.
-
-The following definitions have also been discussed. Feel free to comment with feedback on these, breaking counter-examples, or additional proposals.
-
-- For any component that's **directly emulating an underlying HTML element**, native props go to the actual underlying element.
-  - Most obviously applies to input components
-  - Need examples of other components where this applies (if any)
-- Native props go to the **semantic element**: either the native element, or the one with the the primary `role` for that component
-  - Still works for inputs
-  - Need examples of when the semantic `role` wouldn't be on the root element
-  - Example from v8 (not sure if this applies to converged): Modal's actual React root element is usually a Layer, but from a user standpoint it makes a lot more sense to apply top-level props to the modal _content's_ root element.
-- For interactive controls, props are passed to the **interative element**
-  - Need examples here too
-
-## Discarded Solutions
-
-These were discussed on a [previous RFC](https://github.com/microsoft/fluentui/pull/18804) and retain the numbering used there.
+### Option 1: All native props always applied to root (current behavior)
 
 The examples below assume you're rendering a Checkbox and this is roughly your desired HTML output (a few things omitted for clarity):
 
@@ -218,8 +353,6 @@ The examples below assume you're rendering a Checkbox and this is roughly your d
   <label>sample</label>
 </div>
 ```
-
-### Option 1: All native props always applied to root (current behavior)
 
 > **Reason discarded:** Counterintuitive to user; possible incompatibility with 3rd-party form libraries.
 
