@@ -110,7 +110,7 @@ describe('Layer', () => {
   });
 
   it('can render within a targeted Node passed as HostId', () => {
-    const original = global.document.body;
+    const original = document.body;
     document.body.innerHTML = '<div id="hostNode"></div>';
 
     const hostNode = document.getElementById('hostNode') as Node;
@@ -126,7 +126,7 @@ describe('Layer', () => {
     expect(childElement).toBeTruthy();
     expect(childElement?.textContent).toEqual('bar');
 
-    global.document.body = original;
+    document.body = original;
   });
 
   it('stops bubbling events', () => {
