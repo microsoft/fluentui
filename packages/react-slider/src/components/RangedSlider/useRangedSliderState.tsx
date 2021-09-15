@@ -54,7 +54,7 @@ interface RangedSliderInternalState {
   /**
    * The current selected thumb index of the RangedSlider.
    */
-  activeThumb: number;
+  activeThumb: 'lowerValue' | 'upperValue';
 
   /**
    * Disposable events for the RangedSlider.
@@ -67,7 +67,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     min = 0,
     max = 100,
     value,
-    defaultValue = { lowerValue: min, upperValue: max },
+    defaultValue = [min, max],
     step = 1,
     keyboardStep = state.step || 1,
     disabled = false,
@@ -97,7 +97,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clampRangedThumbValues(value, min, max),
     defaultState: clampRangedThumbValues(defaultValue, min, max),
-    initialState: { lowerValue: min, upperValue: max },
+    initialState: [min, max],
   });
 
   /**
@@ -106,12 +106,12 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const updateActiveThumb = React.useCallback((incomingValue: number) => {
     switch (internalState.current.activeThumb) {
       case 'lowerValue':
-        if (incomingValue > internalState.current.internalValue.upperValue) {
+        if (incomingValue > internalState.current.internalValue[1]) {
           internalState.current.activeThumb = 'upperValue';
         }
         break;
       case 'upperValue':
-        if (incomingValue < internalState.current.internalValue.lowerValue) {
+        if (incomingValue < internalState.current.internalValue[0]) {
           internalState.current.activeThumb = 'lowerValue';
         }
         break;
@@ -125,12 +125,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
     (incomingValue: number, ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>): void => {
       const clampedValue = clamp(incomingValue, min, max);
 
-      const newValue: RangedValue = {
-        upperValue:
-          internalState.current.activeThumb === 'upperValue' ? clampedValue : internalState.current.lockedValue,
-        lowerValue:
-          internalState.current.activeThumb === 'lowerValue' ? clampedValue : internalState.current.lockedValue,
-      };
+      const newValue: [number, number] = [
+        internalState.current.activeThumb === 'upperValue' ? clampedValue : internalState.current.lockedValue,
+        internalState.current.activeThumb === 'lowerValue' ? clampedValue : internalState.current.lockedValue,
+      ];
 
       if (clampedValue !== min && clampedValue !== max) {
         ev.stopPropagation();
@@ -157,8 +155,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       };
       internalState.current.lockedValue =
         internalState.current.activeThumb === 'lowerValue'
-          ? internalState.current.internalValue.upperValue
-          : internalState.current.internalValue.lowerValue;
+          ? internalState.current.internalValue[1]
+          : internalState.current.internalValue[0];
 
       if (internalState.current.activeThumb === 'lowerValue') {
         lowerInputRef.current!.focus();
@@ -225,8 +223,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
       internalState.current.lockedValue =
         internalState.current.activeThumb === 'lowerValue'
-          ? internalState.current.internalValue.upperValue
-          : internalState.current.internalValue.lowerValue;
+          ? internalState.current.internalValue[1]
+          : internalState.current.internalValue[0];
 
       internalState.current.disposables.push(
         on(target, 'pointermove', onPointerMove),
@@ -250,16 +248,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const keyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
+      const activeThumbIndex = internalState.current.activeThumb === 'lowerValue' ? 0 : 1;
       hideStepAnimation();
 
-      const incomingValue = getKeydownValue(
-        ev,
-        currentValue[internalState.current.activeThumb],
-        min,
-        max,
-        dir,
-        keyboardStep,
-      );
+      const incomingValue = getKeydownValue(ev, currentValue[activeThumbIndex], min, max, dir, keyboardStep);
 
       if (incomingValue !== min && incomingValue !== max) {
         ev.stopPropagation();
@@ -267,7 +259,7 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       }
       onKeyDownCallback?.(ev);
 
-      if (currentValue[internalState.current.activeThumb] !== incomingValue) {
+      if (currentValue[activeThumbIndex] !== incomingValue) {
         updatePosition(incomingValue, ev);
       }
     },
@@ -298,13 +290,13 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   });
 
   const lowerValuePercent = getPercent(
-    renderedPosition !== undefined ? renderedPosition.lowerValue : currentValue.lowerValue,
+    renderedPosition !== undefined ? renderedPosition[0] : currentValue[0],
     min,
     max,
   );
 
   const upperValuePercent = getPercent(
-    renderedPosition !== undefined ? renderedPosition.upperValue : currentValue.upperValue,
+    renderedPosition !== undefined ? renderedPosition[1] : currentValue[1],
     min,
     max,
   );
@@ -374,10 +366,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   // Lower Input Props
   state.inputLower.ref = useMergedRefs(state.inputLower.ref, lowerInputRef);
-  state.inputLower.value = currentValue.lowerValue;
+  state.inputLower.value = currentValue[0];
   state.inputLower.min = min;
   state.inputLower.max = max;
-  ariaValueText && (state.inputLower['aria-valuetext'] = ariaValueText(currentValue.lowerValue));
+  ariaValueText && (state.inputLower['aria-valuetext'] = ariaValueText(currentValue[0]));
   state.inputLower.disabled = disabled;
   state.inputLower.step = step;
   if (!disabled) {
@@ -387,10 +379,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   // Upper Input Props
   state.inputUpper.ref = useMergedRefs(state.inputUpper.ref, upperInputRef);
-  state.inputUpper.value = currentValue.upperValue;
+  state.inputUpper.value = currentValue[1];
   state.inputUpper.min = min;
   state.inputUpper.max = max;
-  ariaValueText && (state.inputUpper['aria-valuetext'] = ariaValueText(currentValue.upperValue));
+  ariaValueText && (state.inputUpper['aria-valuetext'] = ariaValueText(currentValue[1]));
   state.inputUpper.disabled = disabled;
   state.inputUpper.step = step;
   if (!disabled) {

@@ -24,20 +24,20 @@ const useStyles = makeStyles({
 });
 
 export const BasicRangedSliderExample = (props: RangedSliderProps) => {
-  const [rangedSliderValue, setRangedSliderValue] = React.useState({ lowerValue: 10, upperValue: 20 });
+  const [rangedSliderValue, setRangedSliderValue] = React.useState<[number, number]>([10, 20]);
   const styles = useStyles();
 
   const sliderOnChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: { lowerValue: number; upperValue: number } },
+    data: { value: [number, number] },
   ) => setRangedSliderValue(data.value);
 
   return (
     <div className={styles.root}>
       <Label>Basic Example</Label>
-      <RangedSlider defaultValue={{ lowerValue: 40, upperValue: 80 }} />
+      <RangedSlider defaultValue={[40, 80]} />
       <Label>
-        Controlled Example [ Lower Value: {rangedSliderValue.lowerValue}, Upper Value: {rangedSliderValue.upperValue} ]
+        Controlled Example [ Lower Value: {rangedSliderValue[0]}, Upper Value: {rangedSliderValue[1]} ]
       </Label>
       <RangedSlider value={rangedSliderValue} min={0} max={50} step={10} onChange={sliderOnChange} marks />
       <Label>Vertical Range</Label>
@@ -46,8 +46,8 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
         <RangedSlider vertical marks={[2, 4, 7, 8, 10]} max={10} />
       </div>
       <Label>Disabled Range</Label>
-      <RangedSlider defaultValue={{ lowerValue: 20, upperValue: 90 }} disabled />
-      <RangedSlider defaultValue={{ lowerValue: 1, upperValue: 5 }} max={10} marks disabled />
+      <RangedSlider defaultValue={[20, 90]} disabled />
+      <RangedSlider defaultValue={[1, 5]} max={10} marks disabled />
     </div>
   );
 };
