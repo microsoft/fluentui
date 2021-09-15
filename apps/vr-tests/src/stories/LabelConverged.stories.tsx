@@ -14,7 +14,7 @@ storiesOf('Label Converged', module)
       {story()}
     </Screener>,
   )
-  .addStory('Root', () => <Label>I'm a label</Label>, { rtl: true })
+  .addStory('Root', () => <Label>I'm a label</Label>, { includeRtl: true })
   .addStory('Disabled', () => <Label disabled>I'm a disabled label</Label>)
   .addStory('Required', () => <Label required>I'm a required label</Label>)
   .addStory('Strong', () => <Label strong>I'm a strong label</Label>)
@@ -23,7 +23,7 @@ storiesOf('Label Converged', module)
   .addStory(
     'CustomRequired',
     () => <Label required="**">I'm a label with custom required text</Label>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Multiline',
@@ -32,5 +32,5 @@ storiesOf('Label Converged', module)
         <Label required>Super long label to show overflow into multiple lines</Label>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

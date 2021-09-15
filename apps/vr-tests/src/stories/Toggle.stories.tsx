@@ -17,8 +17,10 @@ storiesOf('Toggle', module)
       {story()}
     </Screener>
   ))
-  .addStory('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { rtl: true })
-  .addStory('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, { rtl: true })
+  .addStory('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { includeRtl: true })
+  .addStory('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, {
+    includeRtl: true,
+  })
   .addStory('Disabled checked', () => (
     <Toggle {...baseProps} defaultChecked={true} disabled={true} />
   ))

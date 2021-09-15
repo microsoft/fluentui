@@ -26,7 +26,7 @@ storiesOf('Panel', module)
     () => (
       <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Small fixed right w/ close button',
@@ -38,7 +38,7 @@ storiesOf('Panel', module)
         headerText="Small fixed"
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Small fluid right', () => (
     <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
@@ -46,7 +46,7 @@ storiesOf('Panel', module)
   .addStory(
     'Medium right',
     () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Large right', () => (
     <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
@@ -109,5 +109,5 @@ storiesOf('Panel', module)
         </Panel>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

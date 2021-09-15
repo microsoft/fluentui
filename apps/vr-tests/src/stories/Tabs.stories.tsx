@@ -62,7 +62,7 @@ storiesOf('Tabs', module)
         </TabItem>
       </Tabs>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Large links', () => (
     <Tabs tabSize="large">
@@ -95,7 +95,7 @@ storiesOf('Tabs', module)
         </TabItem>
       </Tabs>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Large tab format', () => (
     <Tabs tabFormat="tabs" tabSize="large">
