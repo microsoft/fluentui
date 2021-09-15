@@ -16,7 +16,7 @@ export const Default = (props: TextProps) => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
-      <Text {...props}>This is an example of the Text component's usage. </Text>
+      <Text {...props}>This is an example of the Text component's usage.</Text>
     </div>
   );
 };
