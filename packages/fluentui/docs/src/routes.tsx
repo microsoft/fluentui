@@ -37,6 +37,7 @@ import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
   AlertsPrototype,
   AsyncShorthandPrototype,
+  AttachmentsPrototype,
   ChatMessagesPrototype,
   ChatPanePrototype,
   CompactChatPrototype,
@@ -106,27 +107,28 @@ const Routes = () => (
                 </Route>
                 <Route exact path="/quick-start" component={QuickStart} />
                 <Route exact path="/perf-tests" component={PerformanceTests} />
-                <Route exact path="/prototype-roster" component={RosterPrototype} />
-                <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
+                <Route exact path="/prototype-alerts" component={AlertsPrototype} />
+                <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
+                <Route exact path="/prototype-attachments" component={AttachmentsPrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
+                <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-compact-chat" component={CompactChatPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
                 <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
-                <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
-                <Route exact path="/prototype-employee-card" component={EmployeeCardPrototype} />
-                <Route exact path="/prototype-meeting-options" component={MeetingOptionsPrototype} />
-                <Route exact path="/prototype-participants-list" component={ParticipantsListPrototype} />
-                <Route exact path="/prototype-search-page" component={SearchPagePrototype} />
-                <Route exact path="/prototype-mentions" component={MentionsPrototype} />
                 <Route exact path="/prototype-dropdowns" component={DropdownsPrototype} />
-                <Route exact path="/prototype-popups" component={PopupsPrototype} />
-                <Route exact path="/prototype-alerts" component={AlertsPrototype} />
                 <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
-                <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
-                <Route exact path="/prototype-text-area-autosize" component={TextAreaAutoSize} />
-                <Route exact path="/prototype-table" component={TablePrototype} />
-                <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+                <Route exact path="/prototype-employee-card" component={EmployeeCardPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
+                <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
+                <Route exact path="/prototype-meeting-options" component={MeetingOptionsPrototype} />
+                <Route exact path="/prototype-mentions" component={MentionsPrototype} />
+                <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
+                <Route exact path="/prototype-participants-list" component={ParticipantsListPrototype} />
+                <Route exact path="/prototype-popups" component={PopupsPrototype} />
+                <Route exact path="/prototype-roster" component={RosterPrototype} />
+                <Route exact path="/prototype-search-page" component={SearchPagePrototype} />
+                <Route exact path="/prototype-table" component={TablePrototype} />
+                <Route exact path="/prototype-text-area-autosize" component={TextAreaAutoSize} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
                 <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />

@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+export const AttachmentsPrototype = React.lazy(
+  () => import(/* webpackChunkName: "prototypes" */ './prototypes/attachment'),
+);
 export const CustomToolbarPrototype = React.lazy(
   () => import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
 );

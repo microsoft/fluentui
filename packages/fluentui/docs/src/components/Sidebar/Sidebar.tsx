@@ -100,6 +100,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: false,
   },
   {
+    id: 'attachments',
+    title: { content: 'Attachments', as: NavLink, to: '/prototype-attachments' },
+    public: true,
+  },
+  {
     id: 'asyncshorthand',
     title: { content: 'Async Shorthand', as: NavLink, to: '/prototype-async-shorthand' },
     public: false,

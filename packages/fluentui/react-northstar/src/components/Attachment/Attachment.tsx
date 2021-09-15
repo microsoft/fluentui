@@ -17,12 +17,13 @@ import * as React from 'react';
 
 import { ComponentEventHandler, ShorthandValue } from '../../types';
 import {
-  createShorthandFactory,
-  commonPropTypes,
-  UIComponentProps,
   ChildrenComponentProps,
+  childrenExist,
+  commonPropTypes,
   createShorthand,
+  createShorthandFactory,
   ShorthandFactory,
+  UIComponentProps,
 } from '../../utils';
 import { AttachmentAction, AttachmentActionProps } from './AttachmentAction';
 import { AttachmentBody, AttachmentBodyProps } from './AttachmentBody';
@@ -83,6 +84,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
       action,
       actionable,
       body,
+      children,
       className,
       description,
       design,
@@ -140,8 +142,8 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
       _.invoke(props, 'onClick', e, props);
     };
 
-    const element = getA11Props.unstable_wrapWithFocusZone(
-      <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
+    const elements = () => (
+      <>
         {createShorthand(composeOptions.slots.icon, icon, {
           defaultProps: () => slotProps.icon,
           overrideProps: predefinedProps => ({
@@ -150,7 +152,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
         })}
 
         {(header || description) &&
-          createShorthand(composeOptions.slots.body, body, {
+          createShorthand(composeOptions.slots.body, body ?? {}, {
             defaultProps: () => slotProps.body,
             overrideProps: predefinedProps => ({
               content: (
@@ -180,6 +182,12 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
           }),
         })}
         {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
+      </>
+    );
+
+    const element = getA11Props.unstable_wrapWithFocusZone(
+      <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
+        {childrenExist(children) ? children : elements()}
       </ElementType>,
     );
     setEnd();
@@ -240,7 +248,6 @@ Attachment.propTypes = {
 };
 Attachment.defaultProps = {
   accessibility: attachmentBehavior,
-  body: {},
 };
 
 Attachment.Action = AttachmentAction;
