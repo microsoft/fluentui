@@ -10,7 +10,8 @@ describe('RangedSlider', () => {
   isConformant({
     Component: RangedSlider,
     displayName: 'RangedSlider',
-    disabledTests: ['kebab-aria-attributes'],
+    // consistent-callback-args throws error when given a tuple type.
+    disabledTests: ['kebab-aria-attributes', 'consistent-callback-args'],
   });
 
   afterEach(() => {

@@ -6,7 +6,7 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
 const defaultConfig = {
-  rtl: false,
+  includeRtl: false,
 };
 
 /**
@@ -34,7 +34,7 @@ setAddon({
       this.add(storyName, context => {
         return <FluentProvider theme={webLightTheme}>{storyFn({ context })}</FluentProvider>;
       });
-      if (config.rtl) {
+      if (config.includeRtl) {
         this.add(storyName + ' - RTL', context => {
           return (
             <FluentProvider theme={webLightTheme} dir="rtl">
@@ -50,7 +50,7 @@ setAddon({
         setRTL(false);
         return storyFn(context);
       });
-      if (config.rtl) {
+      if (config.includeRtl) {
         this.add(storyName + ' - RTL', context => {
           setRTL(true);
           return storyFn(context);
