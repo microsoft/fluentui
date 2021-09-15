@@ -49,7 +49,6 @@ export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = 
  * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to label, but allows as="span" or as="div"
  * ```
  */
-export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
 export type IntrinsicShorthandProps<
   DefaultAs extends keyof JSX.IntrinsicElements,
   AlternateAs extends keyof JSX.IntrinsicElements = never
@@ -62,6 +61,16 @@ export type IntrinsicShorthandProps<
         }[AlternateAs];
 
 /**
+ * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
+ *
+ * ```
+ * IsSingleton<'a'> // true
+ * IsSingleton<'a' | 'b' | 'c'> // false
+ * ```
+ */
+export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
+
+/**
  * Helper type for inferring the type of the as prop from a Props interface.
  *
  * For example:
@@ -72,7 +81,7 @@ export type IntrinsicShorthandProps<
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
 
 /**
- * Helper type to convert a union type (`A | B | C`) to an intersection type (`A & B & C`)
+ * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)
  */
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
