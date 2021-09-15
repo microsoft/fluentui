@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, ExtractRef } from '@fluentui/react-utilities';
+import { resolveShorthand, ExtractRef } from '@fluentui/react-utilities';
 import type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 import { useARIAButton } from '@fluentui/react-aria';
 
@@ -33,7 +33,7 @@ export const useButton = (
       root: 'button',
       icon: 'span',
     },
-    root: useARIAButton(getNativeElementProps('button', props), {
+    root: useARIAButton(props, {
       required: true,
       defaultProps: {
         ref,

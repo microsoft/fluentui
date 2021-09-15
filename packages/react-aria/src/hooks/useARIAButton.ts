@@ -90,6 +90,10 @@ export function useARIAButton<Required extends boolean = false>(
 
     // Add keydown event handler for all other non-anchor elements.
     if (shorthand.as !== 'a') {
+      // Removes disabled attribute for all other non-anchor elements
+      if ('disabled' in shorthand) {
+        delete shorthand.disabled;
+      }
       if (!shorthand.hasOwnProperty('tabIndex')) {
         shorthand.tabIndex = disabled ? undefined : 0;
       }
