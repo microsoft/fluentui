@@ -1,3 +1,4 @@
+import { mergeARIADisabled } from '@fluentui/react-aria';
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
@@ -308,7 +309,9 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  state.className = mergeClasses(
+  const disabled = mergeARIADisabled(state.root);
+
+  state.root.className = mergeClasses(
     rootStyles.base,
     rootFocusStyles.base,
     rootStyles[state.size],
@@ -320,16 +323,18 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     state.primary && rootFocusStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    (state.disabled || state.disabledFocusable) && state.outline && rootStyles.disabledOutline,
-    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
-    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
-    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
+    (disabled || state.disabledFocusable) && rootStyles.disabled,
+    (disabled || state.disabledFocusable) && state.outline && rootStyles.disabledOutline,
+    (disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
+    (disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
+    (disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
     state.iconOnly && rootIconOnlyStyles[state.size],
-    state.className,
+    state.root.className,
   );
 
-  state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+  }
 
   return state;
 };

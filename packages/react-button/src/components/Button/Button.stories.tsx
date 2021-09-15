@@ -5,7 +5,9 @@ import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
 
-export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
+export const Default = (props: ButtonProps) => {
+  return <Button {...props}>Button</Button>;
+};
 
 export const Emphasis = () => (
   <>

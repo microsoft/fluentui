@@ -1,3 +1,4 @@
+import { mergeARIADisabled } from '@fluentui/react-aria';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
@@ -145,17 +146,19 @@ const useRootStyles = makeStyles({
 export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
   const rootStyles = useRootStyles();
 
-  state.className = mergeClasses(
+  const disabled = mergeARIADisabled(state.root);
+
+  state.root.className = mergeClasses(
     state.checked && rootStyles.checked,
     state.checked && state.outline && rootStyles.checkedOutline,
     state.checked && state.primary && rootStyles.checkedPrimary,
     state.checked && state.subtle && rootStyles.checkedSubtle,
     state.checked && state.transparent && rootStyles.checkedTransparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
-    (state.disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
-    (state.disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
-    (state.disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
-    state.className,
+    (disabled || state.disabledFocusable) && rootStyles.disabled,
+    (disabled || state.disabledFocusable) && state.primary && rootStyles.disabledPrimary,
+    (disabled || state.disabledFocusable) && state.subtle && rootStyles.disabledSubtle,
+    (disabled || state.disabledFocusable) && state.transparent && rootStyles.disabledTransparent,
+    state.root.className,
   );
 
   useButtonStyles(state);

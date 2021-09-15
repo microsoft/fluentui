@@ -1,19 +1,46 @@
+import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useButton } from '../Button/useButton';
-import { useChecked } from './useChecked';
 import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
 /**
  * Given user props, returns the final state for a ToggleButton.
  */
 export const useToggleButton = (
-  props: ToggleButtonProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: ToggleButtonProps,
-) => {
-  const state = useButton(props, ref, defaultProps);
+  { checked, defaultChecked, ...props }: ToggleButtonProps,
+  ref: React.Ref<HTMLButtonElement>,
+): ToggleButtonState => {
+  const buttonState = useButton(props, ref);
+  const { role, onClick } = buttonState.root;
 
-  useChecked(state as ToggleButtonProps);
+  const [checkedValue, setCheckedValue] = useControllableState({
+    state: checked,
+    defaultState: defaultChecked,
+    initialState: false,
+  });
 
-  return state as ToggleButtonState;
+  const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
+
+  return {
+    ...buttonState,
+    checked: checkedValue,
+    root: {
+      ...buttonState.root,
+      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: !!checkedValue,
+      onClick: React.useCallback(
+        ev => {
+          if (onClick) {
+            onClick(ev);
+
+            if (ev.defaultPrevented) {
+              return;
+            }
+          }
+
+          setCheckedValue(!checkedValue);
+        },
+        [checkedValue, setCheckedValue, onClick],
+      ),
+    },
+  };
 };

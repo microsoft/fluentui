@@ -1,25 +1,15 @@
-import * as React from 'react';
 import type { MenuTriggerChildProps } from '@fluentui/react-menu';
-import type { ComponentStateCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
-import type {
-  ButtonDefaultedProps,
-  ButtonProps,
-  ButtonShorthandPropsCompat,
-  ButtonState,
-} from '../Button/Button.types';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
+
+export type MenuButtonSlots = ButtonSlots & {
+  menuIcon?: IntrinsicShorthandProps<'span'>;
+};
 
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  Partial<MenuTriggerChildProps> & {
-    /**
-     * Menu icon that indicates that this button has a menu that can be expanded.
-     */
-    menuIcon?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-  };
-
-export type MenuButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'menuIcon';
-
-export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
+  Partial<MenuTriggerChildProps> &
+  ComponentProps<MenuButtonSlots>;
 
 export interface MenuButtonState
-  extends Omit<ButtonState, 'iconPosition'>,
-    ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {}
+  extends Omit<ButtonState, 'iconPosition' | 'components'>,
+    ComponentState<MenuButtonSlots> {}

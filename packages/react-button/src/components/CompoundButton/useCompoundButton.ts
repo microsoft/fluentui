@@ -1,51 +1,34 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { useButtonState } from '../Button/useButtonState';
-import type {
-  CompoundButtonProps,
-  CompoundButtonShorthandPropsCompat,
-  CompoundButtonState,
-} from './CompoundButton.types';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import type { CompoundButtonProps, CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
+import { useButton } from '../Button/index';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandPropsCompat: CompoundButtonShorthandPropsCompat[] = [
+export const compoundButtonSlots: (keyof CompoundButtonSlots)[] = [
   'contentContainer',
   'icon',
   'secondaryContent',
+  'root',
 ];
-
-const mergeProps = makeMergeProps<CompoundButtonState>({
-  deepMerge: compoundButtonShorthandPropsCompat,
-});
 
 /**
  * Given user props, returns the final state for a CompoundButton.
  */
 export const useCompoundButton = (
-  props: CompoundButtonProps,
-  ref: React.Ref<HTMLElement>,
-  defaultProps?: CompoundButtonProps,
+  { contentContainer, secondaryContent, ...props }: CompoundButtonProps,
+  ref: React.Ref<HTMLButtonElement>,
 ): CompoundButtonState => {
-  const state = mergeProps(
-    {
-      ref,
-      as: 'button',
-      // Slots inherited from Button
-      icon: { as: 'span' },
-      // Slots exclusive to CompoundButton
-      contentContainer: { as: 'span', children: null },
-      secondaryContent: { as: 'span' },
-      // Non-slot props
-      size: 'medium',
-      type: 'button', // This is added because the default for type is 'submit'
+  return {
+    ...useButton(props, ref),
+    components: {
+      root: 'button',
+      icon: 'span',
+      contentContainer: 'span',
+      secondaryContent: 'span',
     },
-    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandPropsCompat),
-    resolveShorthandProps(props, compoundButtonShorthandPropsCompat),
-  );
-
-  useButtonState(state);
-
-  return state;
+    contentContainer: resolveShorthand(contentContainer, { required: true }),
+    secondaryContent: resolveShorthand(secondaryContent),
+  };
 };

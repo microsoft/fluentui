@@ -1,3 +1,4 @@
+import { mergeARIADisabled } from '@fluentui/react-aria';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
@@ -178,27 +179,33 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  state.className = mergeClasses(
+  const disabled = mergeARIADisabled(state.root);
+
+  state.root.className = mergeClasses(
     rootStyles.base,
     rootStyles[state.size],
     state.primary && rootStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    (state.disabled || state.disabledFocusable) && rootStyles.disabled,
+    (disabled || state.disabledFocusable) && rootStyles.disabled,
     state.iconOnly && rootIconOnlyStyles[state.size],
-    state.className,
+    state.root.className,
   );
 
-  state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
+  }
 
   state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
 
-  state.secondaryContent.className = mergeClasses(
-    CompoundButtonClassNames.secondaryContent,
-    secondaryContentStyles.base,
-    secondaryContentStyles[state.size],
-    state.secondaryContent.className,
-  );
+  if (state.secondaryContent) {
+    state.secondaryContent.className = mergeClasses(
+      CompoundButtonClassNames.secondaryContent,
+      secondaryContentStyles.base,
+      secondaryContentStyles[state.size],
+      state.secondaryContent.className,
+    );
+  }
 
   useButtonStyles(state);
 
