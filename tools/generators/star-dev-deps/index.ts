@@ -24,7 +24,7 @@ function runMigrationOnProject(host: Tree, packageName: string, userLog: UserLog
         if (isPackageInMonorepo(dependency, host) && packageJson.devDependencies) {
           userLog.push({
             type: 'info',
-            message: `Updating package ${packageName}`,
+            message: `Updating dev dependency ${packageName} version`,
           });
           packageJson.devDependencies[dependency] = '*';
         }
@@ -51,7 +51,7 @@ function isPackageInMonorepo(packageName: string, host: Tree) {
   try {
     config = getProjectConfig(host, { packageName });
   } catch (err) {
-    if (!(err as Error).message.startsWith('Error: Cannot find configuration for')) {
+    if (!(err as Error).message.startsWith('Cannot find configuration for')) {
       throw err;
     }
 
