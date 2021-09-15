@@ -16,17 +16,93 @@ export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
   | undefined // default render (or null render if no default provided)
   | Props;
 
-export type DefaultObjectShorthandProps = ObjectShorthandProps<{}, unknown, keyof JSX.IntrinsicElements>;
+/**
+ * Matches any shorthand props type.
+ *
+ * This should ONLY be used in type templates as in `extends DefaultObjectShorthandProps`;
+ * it shouldn't be used as the type of a slot.
+ */
+export type DefaultObjectShorthandProps = ObjectShorthandProps<{
+  children?: React.ReactNode;
+  as?: keyof JSX.IntrinsicElements;
+}>;
 
-export type ObjectShorthandProps<
-  Props extends { children?: React.ReactNode } = {},
-  Ref = unknown,
-  As extends keyof JSX.IntrinsicElements = never
-> = Props &
-  React.RefAttributes<Ref> & {
-    as?: As;
-    children?: Props['children'] | ShorthandRenderFunction<Props>;
-  };
+/**
+ * Defines the slot props for a slot that supports a Component type.
+ *
+ * For intrinsic elements like 'div', use {@link IntrinsicShorthandProps} instead.
+ */
+export type ObjectShorthandProps<Props extends { children?: React.ReactNode } = {}> = Props & {
+  children?: Props['children'] | ShorthandRenderFunction<Props>;
+};
+
+/**
+ * Define the slot arguments for a slot that supports one or more intrinsic element types, such as 'div'.
+ * For slots that support custom components, use {@link ObjectShorthandProps} instead.
+ *
+ * The first param is the slot's default type if no `as` prop is specified.
+ * The second param is an optional union of alternative types that can be specified for the `as` prop.
+ *
+ * ```
+ * IntrinsicShorthandProps<'div'> // Slot is always div
+ * IntrinsicShorthandProps<'button', 'a'> // Defaults to button, but allows as="a" with anchor-specific props
+ * IntrinsicShorthandProps<'label', 'span' | 'div'>; // Defaults to label, but allows as="span" or as="div"
+ * ```
+ */
+export type IntrinsicShorthandProps<
+  DefaultAs extends keyof JSX.IntrinsicElements,
+  AlternateAs extends keyof JSX.IntrinsicElements = never
+> = IsSingleton<DefaultAs> extends false
+  ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
+  :
+      | ({ as?: DefaultAs } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
+      | {
+          [As in AlternateAs]: { as: As } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
+        }[AlternateAs];
+
+/**
+ * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
+ *
+ * ```
+ * IsSingleton<'a'> // true
+ * IsSingleton<'a' | 'b' | 'c'> // false
+ * ```
+ */
+export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
+
+/**
+ * Helper type for inferring the type of the as prop from a Props interface.
+ *
+ * For example:
+ * ```
+ * type Example<T> = T extends AsIntrinsicElement<infer As> ? As : never;
+ * ```
+ */
+export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
+
+/**
+ * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)
+ */
+export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+
+/**
+ * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
+ * IntrinsicShorthandProps). This allows IntrinsicShorthandProps to be used with React.forwardRef.
+ *
+ * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
+ * types, to prevent unions from being expanded.
+ */
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ExtractRef<Props extends { ref?: any }> = Props['ref'] extends
+  | ((instance: infer I | null) => void)
+  | React.RefObject<infer I>
+  | null
+  | undefined
+  ? I
+  : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    any;
 
 export type ComponentProps<
   Shorthands extends ObjectShorthandPropsRecord,
@@ -37,11 +113,13 @@ export type ComponentProps<
   },
   Primary
 > &
-  Shorthands[Primary];
+  PropsWithoutRef<Shorthands[Primary]>;
 
 export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
-    [Key in keyof Shorthands]?: React.ElementType<NonNullable<Shorthands[Key]>> | keyof JSX.IntrinsicElements;
+    [Key in keyof Shorthands]-?:
+      | React.ComponentType<NonNullable<Shorthands[Key]>>
+      | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & Shorthands;
 

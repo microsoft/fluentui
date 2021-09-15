@@ -106,9 +106,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -281,9 +279,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
     tabindex="0"
   >
     <span
-      aria-atomic="true"
       aria-invalid="false"
-      aria-live="polite"
       class=
           ms-Dropdown-title
           {
@@ -1123,9 +1119,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
     tabIndex={0}
   >
     <span
-      aria-atomic={true}
       aria-invalid={false}
-      aria-live="polite"
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -1298,9 +1292,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
     tabindex="0"
   >
     <span
-      aria-atomic="true"
       aria-invalid="false"
-      aria-live="polite"
       class=
           ms-Dropdown-title
           {
