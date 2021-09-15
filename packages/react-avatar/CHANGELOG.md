@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Sep 2021 20:09:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.79)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.78..@fluentui/react-avatar_v9.0.0-alpha.79)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.79 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.78)
 
