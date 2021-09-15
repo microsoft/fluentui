@@ -32,6 +32,6 @@ export interface LinkCommons {
   secondary?: boolean;
 }
 
-export interface LinkProps extends ComponentProps<LinkSlots>, LinkCommons {}
+export type LinkProps = ComponentProps<LinkSlots> & LinkCommons & {};
 
 export interface LinkState extends ComponentState<LinkSlots>, LinkCommons {}

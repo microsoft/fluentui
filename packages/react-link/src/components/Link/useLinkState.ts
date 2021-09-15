@@ -8,10 +8,10 @@ import type { LinkState } from './Link.types';
  */
 export const useLinkState = (state: LinkState): LinkState => {
   const { disabled, disabledFocusable } = state;
-  const { as, onClick, onKeyDown, role, type } = state.root;
+  const { onClick, onKeyDown, role, type } = state.root;
 
   // Add href and tabIndex=0 for anchor elements.
-  if (as === 'a') {
+  if (state.root.as === 'a') {
     state.root.href = disabled ? undefined : state.root.href;
     state.root.tabIndex = disabled && !disabledFocusable ? undefined : 0;
   }
@@ -43,7 +43,7 @@ export const useLinkState = (state: LinkState): LinkState => {
 
   // Set the aria-disabled and disabled props correctly.
   state.root['aria-disabled'] = disabled || disabledFocusable;
-  if (as === 'button') {
+  if (state.root.as === 'button') {
     state.root.disabled = disabled && !disabledFocusable;
   }
 

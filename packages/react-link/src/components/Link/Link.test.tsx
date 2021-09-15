@@ -16,7 +16,7 @@ describe('Link', () => {
   });
 
   isConformant({
-    Component: Link,
+    Component: Link as React.ComponentType,
     displayName: 'Link',
   });
 
