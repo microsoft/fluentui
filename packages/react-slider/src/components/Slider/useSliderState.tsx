@@ -272,7 +272,6 @@ export const useSliderState = (state: SliderState) => {
         valueArray.push(getPercent(min + step * i, min, max));
       }
     } else if (Array.isArray(marks) && marks.length > 0) {
-      // 2. We receive an array with numbers: mark for every value in array.
       for (let i = 0; i < marks.length; i++) {
         const marksItem = marks[i];
 
@@ -357,7 +356,7 @@ export const useSliderState = (state: SliderState) => {
     const marksValue = markValues;
     const marksChildren: JSX.Element[] = [];
     for (let i = 0; i < marksPercent.length; i++) {
-      const marksItem = typeof marks === 'boolean' ? null : marks![i];
+      const marksItem = typeof marks === 'boolean' || marks === undefined ? null : marks[i];
 
       marksChildren.push(
         <div className={markContainerClassName} key={`markItemContainer-${i}`}>
@@ -372,7 +371,7 @@ export const useSliderState = (state: SliderState) => {
               key={`mark-${i}`}
             />
           )}
-          {marksItem !== (undefined || null) && typeof marksItem === 'object' && marksItem.label && (
+          {marksItem !== null && typeof marksItem === 'object' && marksItem.label && (
             <div className={markLabelClassName} key={`markLabel-${i}`}>
               {marksItem.label}
             </div>

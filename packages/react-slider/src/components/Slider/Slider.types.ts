@@ -113,7 +113,7 @@ export interface SliderCommons {
    *
    * - If `true`, marks are visible at each `step`.
    * - If `number[]`, marks will be displayed at each provided number. Numbers must be in ascending order.
-   * - If `{}[]` A mark is shown at the value location and displays any provided custom labels and marks.
+   * - If `{}[]`, mark is shown at the value location and displays any provided custom labels and marks.
    */
   marks?: boolean | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[];
 
