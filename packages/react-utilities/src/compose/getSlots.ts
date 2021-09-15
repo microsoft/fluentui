@@ -1,27 +1,30 @@
 import * as React from 'react';
 
 import {
+  AsIntrinsicElement,
   ComponentState,
   ShorthandRenderFunction,
   ObjectShorthandPropsRecord,
   ObjectShorthandProps,
-  IntrinsicShorthandProps,
-  InferIntrinsicShorthandDefaultAs,
+  UnionToIntersection,
 } from './types';
 import { nullRender } from './nullRender';
 import { omit } from '../utils/omit';
 
 export type Slots<S extends ObjectShorthandPropsRecord> = {
-  [K in keyof S]-?: NonNullable<S[K]> extends InferIntrinsicShorthandDefaultAs<infer As>
-    ? As
+  [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
+    ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
+      As
     : S[K] extends ObjectShorthandProps<infer P>
     ? React.ElementType<NonNullable<P>>
     : React.ElementType<NonNullable<S[K]>>;
 };
 
 type SlotProps<S extends ObjectShorthandPropsRecord> = {
-  [K in keyof S]-?: NonNullable<S[K]> extends InferIntrinsicShorthandDefaultAs<infer As>
-    ? IntrinsicShorthandProps<As>
+  [K in keyof S]-?: NonNullable<S[K]> extends AsIntrinsicElement<infer As>
+    ? // For intrinsic element types, return the intersection of all possible
+      // element's props, to be compatible with the As type returned by Slots<>
+      UnionToIntersection<JSX.IntrinsicElements[As]>
     : NonNullable<S[K]> extends ObjectShorthandProps<infer P>
     ? P
     : never;

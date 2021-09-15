@@ -55,27 +55,26 @@ export type IntrinsicShorthandProps<
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = IsSingleton<DefaultAs> extends false
   ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types'
-  : (
+  :
       | ({ as?: DefaultAs } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>)
       | {
           [As in AlternateAs]: { as: As } & ObjectShorthandProps<React.PropsWithRef<JSX.IntrinsicElements[As]>>;
-        }[AlternateAs]
-    ) & {
-      /** @deprecated only for use by the InferIntrinsicShorthandDefaultAs helper type */
-      __intrinsicShorthandPropsDefaultAs?: DefaultAs;
-    };
+        }[AlternateAs];
 
 /**
- * Helper type for inferring the `DefaultAs` type from IntrinsicShorthandProps in a type template.
+ * Helper type for inferring the type of the as prop from a Props interface.
  *
  * For example:
  * ```
- * type Example<T> = T extends InferIntrinsicShorthandDefaultAs<infer DefaultAs> ? DefaultAs : never;
+ * type Example<T> = T extends AsIntrinsicElement<infer As> ? As : never;
  * ```
  */
-export type InferIntrinsicShorthandDefaultAs<DefaultAs extends keyof JSX.IntrinsicElements> = {
-  __intrinsicShorthandPropsDefaultAs?: DefaultAs;
-};
+export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
+
+/**
+ * Helper type to convert a union type (`A | B | C`) to an intersection type (`A & B & C`)
+ */
+export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
@@ -101,9 +100,7 @@ export type ComponentState<Shorthands extends ObjectShorthandPropsRecord> = {
   components?: {
     [Key in keyof Shorthands]-?:
       | React.ComponentType<NonNullable<Shorthands[Key]>>
-      | (NonNullable<Shorthands[Key]> extends InferIntrinsicShorthandDefaultAs<infer DefaultAs>
-          ? DefaultAs
-          : keyof JSX.IntrinsicElements);
+      | (NonNullable<Shorthands[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & Shorthands;
 
