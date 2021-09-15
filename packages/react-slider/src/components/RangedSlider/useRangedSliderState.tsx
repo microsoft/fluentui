@@ -149,10 +149,16 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const updatePosition = React.useCallback(
     (incomingValue: number, ev) => {
       updateActiveThumb(clamp(incomingValue, min, max));
-      internalState.current.internalValue = {
-        ...internalState.current.internalValue,
-        [internalState.current.activeThumb]: clamp(incomingValue, min, max),
-      };
+
+      internalState.current.internalValue = [
+        internalState.current.activeThumb === 'lowerValue'
+          ? clamp(incomingValue, min, max)
+          : internalState.current.internalValue[0],
+        internalState.current.activeThumb === 'upperValue'
+          ? clamp(incomingValue, min, max)
+          : internalState.current.internalValue[1],
+      ];
+
       internalState.current.lockedValue =
         internalState.current.activeThumb === 'lowerValue'
           ? internalState.current.internalValue[1]
@@ -175,8 +181,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
    */
   const updatedRenderedPosition = React.useCallback((incomingValue: number) => {
     setRenderedPosition([
-      internalState.current.activeThumb === 'lowerValue' ? incomingValue : internalState.current.lockedValue,
-      internalState.current.activeThumb === 'upperValue' ? incomingValue : internalState.current.lockedValue,
+      internalState.current.activeThumb === 'lowerValue' ? incomingValue : internalState.current.internalValue[0],
+      internalState.current.activeThumb === 'upperValue' ? incomingValue : internalState.current.internalValue[1],
     ]);
   }, []);
 
