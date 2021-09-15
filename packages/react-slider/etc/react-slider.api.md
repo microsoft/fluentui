@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { FunctionComponent } from 'react';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
@@ -13,7 +14,7 @@ import * as React_2 from 'react';
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
+export const Slider: FunctionComponent<SliderProps>;
 
 // @public (undocumented)
 export interface SliderCommons {

@@ -6,11 +6,12 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { FunctionComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
-const Image_2: React_2.ForwardRefExoticComponent<ImageProps & React_2.RefAttributes<HTMLImageElement>>;
+const Image_2: FunctionComponent<ImageProps>;
 export { Image_2 as Image }
 
 // @public (undocumented)

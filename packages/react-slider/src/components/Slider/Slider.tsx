@@ -1,13 +1,13 @@
-import * as React from 'react';
 import { useSlider } from './useSlider';
 import { renderSlider } from './renderSlider';
 import { useSliderStyles } from './useSliderStyles';
 import type { SliderProps } from './Slider.types';
+import { forwardRef } from '@fluentui/react-utilities';
 
 /**
  * Define a styled Slider, using the `useSlider` hook
  */
-export const Slider = React.forwardRef<HTMLElement, SliderProps>((props, ref) => {
+export const Slider = forwardRef<SliderProps>((props, ref) => {
   const state = useSlider(props, ref);
 
   useSliderStyles(state);

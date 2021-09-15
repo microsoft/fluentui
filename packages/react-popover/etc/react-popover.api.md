@@ -8,6 +8,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FunctionComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
@@ -71,7 +72,7 @@ export interface PopoverState extends PopoverCommons, Pick<PopoverProps, 'childr
 }
 
 // @public
-export const PopoverSurface: React_2.ForwardRefExoticComponent<PopoverSurfaceProps & React_2.RefAttributes<HTMLDivElement>>;
+export const PopoverSurface: FunctionComponent<PopoverSurfaceProps>;
 
 // @public
 export interface PopoverSurfaceProps extends ComponentProps<PopoverSurfaceSlots> {
