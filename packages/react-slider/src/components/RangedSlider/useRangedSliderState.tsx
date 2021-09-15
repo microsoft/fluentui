@@ -23,21 +23,17 @@ import { RangedSliderState } from './RangedSlider.types';
 /**
  * Finds the closest thumb based of a given value and returns it's key.
  */
-const findClosestThumb = (object: [number, number], incomingValue: number) => {
-  return Math.abs(incomingValue - object[0]) <= Math.abs(object[1] - incomingValue) ? 'lowerValue' : 'upperValue';
+const findClosestThumb = (thumbArray: [number, number], incomingValue: number) => {
+  return Math.abs(incomingValue - thumbArray[0]) <= Math.abs(thumbArray[1] - incomingValue)
+    ? 'lowerValue'
+    : 'upperValue';
 };
 
 /**
- * Clamps the values in RangedSlider to a given min and max
+ * Clamps and sorts the values in RangedSlider to a given min and max
  */
-const clampRangedThumbValues = (object: [number, number], min: number, max: number): [number, number] => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const result: any = {};
-  for (const [key, value] of Object.entries(object)) {
-    result[key] = clamp(value, min, max);
-  }
-  return result;
-};
+const validateRangedThumbValues = (thumbValues: [number, number], min: number, max: number): [number, number] =>
+  thumbValues.map(value => clamp(value, min, max)).sort() as [number, number];
 
 interface RangedSliderInternalState {
   /**
@@ -84,7 +80,9 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   const upperInputRef = React.useRef<HTMLInputElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
   const internalState = React.useRef<RangedSliderInternalState>({
-    internalValue: value ? value : defaultValue,
+    internalValue: value
+      ? validateRangedThumbValues(value, min, max)
+      : validateRangedThumbValues(defaultValue, min, max),
     lockedValue: 0,
     activeThumb: 'lowerValue',
     disposables: [],
@@ -92,11 +90,11 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<[number, number] | undefined>(
-    value ? value : defaultValue,
+    value ? validateRangedThumbValues(value, min, max) : validateRangedThumbValues(defaultValue, min, max),
   );
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value && clampRangedThumbValues(value, min, max),
-    defaultState: clampRangedThumbValues(defaultValue, min, max),
+    state: value && validateRangedThumbValues(value, min, max),
+    defaultState: validateRangedThumbValues(defaultValue, min, max),
     initialState: [min, max],
   });
 

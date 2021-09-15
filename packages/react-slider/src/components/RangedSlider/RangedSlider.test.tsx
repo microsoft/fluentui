@@ -164,7 +164,11 @@ describe('RangedSlider', () => {
       const lowerInputRef = React.createRef<HTMLInputElement>();
       const upperInputRef = React.createRef<HTMLInputElement>();
       render(
-        <RangedSlider value={[-10, 110]} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />,
+        <RangedSlider
+          defaultValue={[-10, 110]}
+          inputLower={{ ref: lowerInputRef }}
+          inputUpper={{ ref: upperInputRef }}
+        />,
       );
       expect(lowerInputRef.current?.value).toEqual('0');
       expect(upperInputRef.current?.value).toEqual('100');
