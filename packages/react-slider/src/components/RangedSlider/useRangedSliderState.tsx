@@ -51,6 +51,7 @@ interface RangedSliderInternalState {
 
   /**
    * The locked value of the non-moving thumb. Used to ensure that the active thumb updates correctly when changed.
+   * If the mouse moves quickly it would re evaluate both positions allowing for unintended movement. This locks it.
    */
   lockedValue: number;
 
