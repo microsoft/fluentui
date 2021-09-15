@@ -127,7 +127,7 @@ export const imgProperties: Record<string, number>;
 // @public
 export const inputProperties: Record<string, number>;
 
-// @public (undocumented)
+// @public
 export type IntrinsicShorthandProps<DefaultAs extends keyof JSX.IntrinsicElements, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<DefaultAs> extends false ? 'Error: first parameter to IntrinsicShorthandProps must be a single element type, not a union of types' : ({
     as?: DefaultAs;
 } & ObjectShorthandProps<React_2.PropsWithRef<JSX.IntrinsicElements[DefaultAs]>>) | {
