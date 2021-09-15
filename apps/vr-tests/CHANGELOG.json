@@ -2,6 +2,21 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Wed, 15 Sep 2021 16:53:08 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "vr-tests",
+            "commit": "0b118407aa49e5924a2630f99eacbe795899853b",
+            "comment": "Bump vr-tests to v1.0.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Sep 2021 20:09:02 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",
