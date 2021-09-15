@@ -24,7 +24,7 @@ function runMigrationOnProject(host: Tree, packageName: string, userLog: UserLog
         if (isPackageInMonorepo(dependency, host) && packageJson.devDependencies) {
           userLog.push({
             type: 'info',
-            message: `Updating dev dependency ${packageName} version`,
+            message: `Updating dev dependency ${dependency} in ${packageName}`,
           });
           packageJson.devDependencies[dependency] = '*';
         }
