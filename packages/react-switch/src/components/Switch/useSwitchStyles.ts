@@ -26,18 +26,17 @@ const useRootStyles = makeStyles({
 
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
-      background: theme.alias.color.neutral.neutralForeground3Hover,
+      background: theme.alias.color.neutral.neutralForeground2,
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: theme.alias.color.neutral.neutralForeground3Hover,
+      borderColor: theme.alias.color.neutral.neutralForeground2,
     },
   }),
 
   checked: theme => ({
     ':hover .ms-Switch-track': {
-      // TODO: theme.alias.color.neutral.brandBackgroundInteractive
-      background: theme.global.palette.brand.shade30,
+      background: theme.alias.color.neutral.brandBackground,
     },
   }),
 
@@ -79,8 +78,7 @@ const useTrackStyles = makeStyles({
   }),
 
   checked: theme => ({
-    // TODO: background: theme.alias.color.neutral.brandBackgroundInteractive,
-    background: theme.global.palette.brand.primary,
+    background: theme.alias.color.neutral.brandBackground,
     border: 'none',
   }),
 
@@ -129,8 +127,7 @@ const useThumbStyles = makeStyles({
   }),
 
   checked: theme => ({
-    // Neutral foreground accessible
-    background: 'white',
+    background: theme.alias.color.neutral.neutralForegroundOnBrand,
   }),
 
   disabledUnchecked: theme => ({
