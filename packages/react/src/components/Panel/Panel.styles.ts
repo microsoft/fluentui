@@ -334,7 +334,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         paddingBottom: 20,
       },
       isFooterAtBottom && {
-        height: '100%',
+        selectors: {
+          [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            height: `100%`,
+          },
+        },
       },
     ],
     footer: [
