@@ -231,7 +231,7 @@
     "workspace-tools": "0.12.3",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
-    "storybook-addon-export-to-codesandbox": "0.2.0"
+    "storybook-addon-export-to-codesandbox": "0.2.2"
   },
   "license": "MIT",
   "workspaces": {
