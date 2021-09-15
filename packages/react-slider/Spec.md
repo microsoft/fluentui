@@ -216,51 +216,20 @@ _Explain how the component will behave in use, including:_
 
 # RangedSlider
 
-## Research Summary
-
-Amongst other libraries that support multi thumb Slider's two common and different approaches are:
-
-1. **RangedSlider** is implemented in a standard **Slider** component.
-2. It uses an array of values for thumb positions and renders the individual thumbs.
-
-### Separating the component
-
-This approach separates the component due to vast differences in accessibility, conflicts with props like origin, and complications of internal state management for the value (value would need to handle an object and number).
-
-### Using an array
-
-```jsx
-<Slider value={[0, 100]} />
-```
-
-This approach strays away from an array due to:
-
-1. It implies an arbitrary number of thumb's can be rendered.
-2. If we choose to support and arbitrary number of ranges in the future it would be best to have it as an object still to allow for multiple tracks instead of thumbs (three thumbs on one track is not helpful):
-
-```jsx
-<RangedSlider
-  defaultValue={[
-    { lowerValue: 40, upperValue: 50 },
-    { lowerValue: 60, upperValue: 80 },
-  ]}
-/>
-```
-
 ## Sample Code
 
 ```jsx=
 export const BasicRangedSliderExample = (props: RangedSliderProps) => {
-  const [rangedSliderValue, setRangedSliderValue] = React.useState({ lowerValue: 10, upperValue: 20 });
+  const [rangedSliderValue, setRangedSliderValue] = React.useState([10, 20]);
 
   const sliderOnChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: { lowerValue: number; upperValue: number } },
+    data: { value: [number, number] },
   ) => setRangedSliderValue(data.value);
 
   return (
     <div>
-      <RangedSlider defaultValue={{ lowerValue: 40, upperValue: 80 }} />
+      <RangedSlider defaultValue={[40, 80]} />
       <RangedSlider value={rangedSliderValue} onChange={sliderOnChange} />
     </div>
   );
@@ -271,7 +240,7 @@ export const BasicRangedSliderExample = (props: RangedSliderProps) => {
 
 The API is the same as **Slider** with two differences:
 
-1. The value changes to an object.
+1. The value changes to a tuple.
 2. The `origin` prop is omitted from the api.
 
 | Name         | V0  | V8  | Description                                                                                        |
@@ -282,13 +251,19 @@ The API is the same as **Slider** with two differences:
 
 ## Migration
 
-<img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
+<img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
 
 | v8 `Slider`         | Converged `RangedSlider` |
 | ------------------- | ------------------------ |
 | `lowerValue`        | `value`                  |
 | `defaultLowerValue` | `defaultValue`           |
 | `ranged`            | X                        |
+
+<img src="https://img.shields.io/badge/Used%20in-v0-orange" alt="drawing" width="100"/>
+
+| v0 `Slider` | Converged `RangedSlider` |
+| ----------- | ------------------------ |
+| -           | -                        |
 
 ### v8
 
@@ -315,27 +290,21 @@ export const SliderRangedExample: React.FunctionComponent = () => {
 
 ```jsx
 export const BasicRangedSliderExample = (props: RangedSliderProps) => {
-  const [rangedSliderValue, setRangedSliderValue] = React.useState({ lowerValue: 0, upperValue: 10 });
+  const [rangedSliderValue, setRangedSliderValue] = React.useState([0, 10]);
 
   const sliderOnChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: { lowerValue: number, upperValue: number } },
+    data: { value: [number, number] },
   ) => setRangedSliderValue(data.value);
 
   return (
     <div>
-      <RangedSlider defaultValue={{ lowerValue: 2, upperValue: 8 }} />
+      <RangedSlider defaultValue={[2, 8]} />
       <RangedSlider value={rangedSliderValue} onChange={sliderOnChange} />
     </div>
   );
 };
 ```
-
-<img src="https://img.shields.io/badge/Used%20in-v8-blue" alt="drawing" width="120"/>
-
-| Name       | Description                                        | Reason                           |
-| ---------- | -------------------------------------------------- | -------------------------------- |
-| lowerValue | Optional callback to access the IToggle interface. | Not used in converged components |
 
 ## Structure
 
