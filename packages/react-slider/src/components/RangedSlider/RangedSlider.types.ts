@@ -38,23 +38,23 @@ export type RangedSliderSlots = Omit<SliderSlots, 'thumb' | 'thumbWrapper' | 'in
 
 export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {
   /**
-   * The starting value for an uncontrolled RangedSlider.
+   * The starting value for an uncontrolled RangedSlider. The first value is always lower than the second value.
    * Mutually exclusive with `value` prop.
    */
-  defaultValue?: { lowerValue: number; upperValue: number };
+  defaultValue?: [number, number];
 
   /**
-   * The current value of the controlled RangedSlider.
+   * The current value of the controlled RangedSlider. The first value is always lower than the second value.
    * Mutually exclusive with `defaultValue` prop.
    */
-  value?: { lowerValue: number; upperValue: number };
+  value?: [number, number];
 
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (
     ev: React.PointerEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>,
-    data: { value: { lowerValue: number; upperValue: number } },
+    data: { value: [number, number] },
   ) => void;
 }
 

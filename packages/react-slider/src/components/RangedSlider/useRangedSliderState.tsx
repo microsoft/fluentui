@@ -20,34 +20,30 @@ import {
 import { animationTime } from '../Slider/useSliderState';
 import { RangedSliderState } from './RangedSlider.types';
 
-type RangedValue = { lowerValue: number; upperValue: number };
-
 /**
  * Finds the closest thumb based of a given value and returns it's key.
  */
-const findClosestThumb = (object: RangedValue, incomingValue: number) => {
-  return Math.abs(incomingValue - object.lowerValue) <= Math.abs(object.upperValue - incomingValue)
-    ? 'lowerValue'
-    : 'upperValue';
+const findClosestThumb = (object: [number, number], incomingValue: number) => {
+  return Math.abs(incomingValue - object[0]) <= Math.abs(object[1] - incomingValue) ? 'lowerValue' : 'upperValue';
 };
 
 /**
  * Clamps the values in RangedSlider to a given min and max
  */
-const clampRangedThumbValues = (object: RangedValue, min: number, max: number): RangedValue => {
+const clampRangedThumbValues = (object: [number, number], min: number, max: number): [number, number] => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const result: any = {};
   for (const [key, value] of Object.entries(object)) {
     result[key] = clamp(value, min, max);
   }
-  return result as RangedValue;
+  return result;
 };
 
 interface RangedSliderInternalState {
   /**
    * The internal rendered value of the RangedSlider.
    */
-  internalValue: RangedValue;
+  internalValue: [number, number];
 
   /**
    * The locked value of the non-moving thumb. Used to ensure that the active thumb updates correctly when changed.
@@ -56,9 +52,9 @@ interface RangedSliderInternalState {
   lockedValue: number;
 
   /**
-   * The current selected thumb of the RangedSlider.
+   * The current selected thumb index of the RangedSlider.
    */
-  activeThumb: 'lowerValue' | 'upperValue';
+  activeThumb: number;
 
   /**
    * Disposable events for the RangedSlider.
@@ -95,7 +91,9 @@ export const useRangedSliderState = (state: RangedSliderState) => {
   });
 
   const [stepAnimation, { setTrue: showStepAnimation, setFalse: hideStepAnimation }] = useBoolean(false);
-  const [renderedPosition, setRenderedPosition] = React.useState<RangedValue | undefined>(value ? value : defaultValue);
+  const [renderedPosition, setRenderedPosition] = React.useState<[number, number] | undefined>(
+    value ? value : defaultValue,
+  );
   const [currentValue, setCurrentValue] = useControllableState({
     state: value && clampRangedThumbValues(value, min, max),
     defaultState: clampRangedThumbValues(defaultValue, min, max),
