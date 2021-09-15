@@ -106,7 +106,7 @@ Card goes for a more structural and generic approach to a card component and is 
 | selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                         |
 | expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                                |
 | contextMenu | _slot_                                                                               | undefined  | Slot for the context menu, when right-clicking the card                                   |
-| disabled    | boolean                                                                              | false      | Makes the card disabled                                                                   |
+| disabled    | boolean                                                                              | false      | Makes the card and card selection disabled (not propagated to children)                   |
 
 #### `scale` property
 
@@ -254,7 +254,9 @@ Clicking the card surface can toggle the checkbox state to `selected`. Note that
 
 ![Visual interaction of non-interactive cards using the mouse](./assets/non-interactive-interaction-mouse.png)
 
-Cards that have multiple actionable child components within them cannot be clickable. We preserve the use of `EnterKey` for moving focus to actionable controls inside the card, therefore the card surface cannot be used to set the state of the card but is reliant on the checkbox or similar inputs to set the card state.
+Cards that have multiple actionable child components are expected to not be clickable. We preserve the use of `EnterKey` for moving focus to actionable controls inside the card, therefore the card surface should not be used to set the state of the card but is reliant on the checkbox or similar inputs to set the card state.
+
+If users have a scenario that requires them to use actionable components within a clickable Card then the bubbling of events is expected to be managed by the users themselves.
 
 Mouse interaction
 
@@ -294,7 +296,7 @@ A context menu can be triggered by right clicking the surface or through an acti
 
 #### Disabled
 
-![Visual interaction of disabled cards using the mouse](./assets/disabled.png)
+![Visual interaction of Disabled cards using the mouse](./assets/disabled.png)
 
 1. Unselected disabled
 
