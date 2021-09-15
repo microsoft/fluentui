@@ -333,6 +333,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         paddingBottom: 20,
       },
+      isFooterAtBottom && {
+        height: '100%',
+      },
     ],
     footer: [
       classNames.footer,
