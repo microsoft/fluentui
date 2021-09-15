@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "extending layer to accept Node as host in addition to hostId",
+  "packageName": "@fluentui/react",
+  "email": "marion.lepontois@skatteetaten.no",
+  "dependentChangeType": "patch"
+}
