@@ -6,12 +6,12 @@ import { Button } from '@fluentui/react-button';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 
 export const Circular = () => (
-  <>
+  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
     <Button circular>Button</Button>
     <Button circular outline icon={<CalendarMonth24Regular />} />
     <Button circular subtle icon={<CalendarMonth24Regular />} />
     <Button circular transparent icon={<CalendarMonth24Regular />} />
-  </>
+  </div>
 );
 Circular.parameters = {
   docs: {

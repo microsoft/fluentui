@@ -14,7 +14,7 @@ export const Disabled = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
       <div className={classes.group}>
         <Button>Default</Button>
         <Button disabled>Disabled</Button>
@@ -31,7 +31,7 @@ export const Disabled = () => {
           Primary disabled focusable
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 Disabled.parameters = {

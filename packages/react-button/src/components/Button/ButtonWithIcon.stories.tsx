@@ -6,13 +6,13 @@ import { Button } from '@fluentui/react-button';
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 
 export const WithIcon = () => (
-  <>
+  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
     <Button icon={<CalendarMonth24Regular />}>Text</Button>
     <Button icon={<CalendarMonth24Regular />} iconPosition="after">
       Text
     </Button>
     <Button icon={<CalendarMonth24Regular />} />
-  </>
+  </div>
 );
 WithIcon.parameters = {
   docs: {

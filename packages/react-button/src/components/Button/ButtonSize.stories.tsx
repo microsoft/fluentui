@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 export const Size = () => {
   const classes = useStyles();
   return (
-    <>
+    <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
       <div className={classes.group}>
         <h4 className={classes.header}>small</h4>
         <Button size="small">Text</Button>
@@ -37,7 +37,7 @@ export const Size = () => {
         </Button>
         <Button size="large" icon={<CalendarMonth24Regular />} />
       </div>
-    </>
+    </div>
   );
 };
 Size.parameters = {

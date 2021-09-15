@@ -5,13 +5,13 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 
 export const Emphasis = () => (
-  <>
+  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
     <Button primary>Primary button</Button>
     <Button>Default button</Button>
     <Button outline>Outline button</Button>
     <Button subtle>Subtle button</Button>
     <Button transparent>Transparent button</Button>
-  </>
+  </div>
 );
 Emphasis.parameters = {
   docs: {

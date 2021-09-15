@@ -5,10 +5,10 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 
 export const WithLongText = () => (
-  <>
+  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
     <Button>Text</Button>
     <Button>Text truncates after it hits the max width token value</Button>
-  </>
+  </div>
 );
 WithLongText.parameters = {
   docs: {

@@ -5,9 +5,9 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 
 export const Block = () => (
-  <>
+  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
     <Button block>Block button</Button>
-  </>
+  </div>
 );
 Block.parameters = {
   docs: {
