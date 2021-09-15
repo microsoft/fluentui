@@ -126,8 +126,8 @@ export const useRangedSliderState = (state: RangedSliderState) => {
       const clampedValue = clamp(incomingValue, min, max);
 
       const newValue: [number, number] = [
-        internalState.current.activeThumb === 'upperValue' ? clampedValue : internalState.current.lockedValue,
         internalState.current.activeThumb === 'lowerValue' ? clampedValue : internalState.current.lockedValue,
+        internalState.current.activeThumb === 'upperValue' ? clampedValue : internalState.current.lockedValue,
       ];
 
       if (clampedValue !== min && clampedValue !== max) {
@@ -174,10 +174,10 @@ export const useRangedSliderState = (state: RangedSliderState) => {
    * Updates the internal `renderedPosition` of the RangedSlider.
    */
   const updatedRenderedPosition = React.useCallback((incomingValue: number) => {
-    setRenderedPosition({
-      ...internalState.current.internalValue,
-      [internalState.current.activeThumb]: incomingValue,
-    });
+    setRenderedPosition([
+      internalState.current.activeThumb === 'lowerValue' ? incomingValue : internalState.current.lockedValue,
+      internalState.current.activeThumb === 'upperValue' ? incomingValue : internalState.current.lockedValue,
+    ]);
   }, []);
 
   const onPointerMove = React.useCallback(
