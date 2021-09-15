@@ -13,7 +13,7 @@ import * as React_2 from 'react';
 export const renderSwitch: (state: SwitchState) => JSX.Element;
 
 // @public
-export const Switch: React_2.FunctionComponent<SwitchProps>;
+export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export interface SwitchCommons {

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix typings in React.forwardRef",
+  "packageName": "@fluentui/react-image",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

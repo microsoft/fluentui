@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix IntrinsicShorthandProps used in the root slot with multiple possible `as` values",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
