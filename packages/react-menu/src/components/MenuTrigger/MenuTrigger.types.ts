@@ -5,9 +5,9 @@ import * as React from 'react';
  */
 export interface MenuTriggerProps {
   /**
-   * Explicitly require single child
+   * Explicitly require single child or function to a node
    */
-  children: React.ReactElement;
+  children: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: MenuTriggerChildProps) => React.ReactNode);
 }
 
 /**

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { usePopper, resolvePositioningShorthand, mergeArrowOffset } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
+  applyTriggerPropsToChildren,
   makeMergeProps,
-  onlyChild,
   resolveShorthandProps,
   useControllableState,
   useId,
@@ -225,11 +225,7 @@ export const useTooltip = (
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  if (typeof state.children === 'function') {
-    (state.children as React.ReactNode) = state.children(triggerProps);
-  } else if (state.children) {
-    (state.children as React.ReactNode) = React.cloneElement(onlyChild(state.children), triggerProps);
-  }
+  state.children = applyTriggerPropsToChildren(state.children, triggerProps);
 
   return state;
 };

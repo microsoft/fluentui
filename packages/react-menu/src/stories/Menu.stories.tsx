@@ -21,6 +21,7 @@ export { NestedSubmenus } from './MenuNestedSubmenus.stories';
 export { NestedSubmenusControlled } from './MenuNestedSubmenusControlled.stories';
 export { AnchorToCustomTarget } from './MenuAnchorToTarget.stories';
 export { CustomTrigger } from './MenuCustomTrigger.stories';
+export { CustomInnerFunctionTrigger } from './MenuCustomInnerFunctionTrigger.stories';
 export { MemoizedMenuItems } from './MenuMemoizedMenuItems.stories';
 
 export default {

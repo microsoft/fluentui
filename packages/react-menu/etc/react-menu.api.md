@@ -276,7 +276,9 @@ export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 
 // @public (undocumented)
 export interface MenuTriggerProps {
-    children: React_2.ReactElement;
+    children: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: MenuTriggerChildProps) => React_2.ReactNode);
 }
 
 // @public (undocumented)
