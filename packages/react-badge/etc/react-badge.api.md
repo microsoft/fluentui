@@ -43,9 +43,6 @@ export type BadgeSlots = {
     icon?: IntrinsicShorthandProps<'span'>;
 };
 
-// @public
-export const badgeSlots: Array<keyof BadgeSlots>;
-
 // @public (undocumented)
 export interface BadgeState extends ComponentState<BadgeSlots>, BadgeCommons {
 }
@@ -55,11 +52,11 @@ export const CounterBadge: React_2.ForwardRefExoticComponent<Pick<CounterBadgePr
 
 // @public (undocumented)
 export interface CounterBadgeCommons {
-    appearance: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
+    appearance: 'filled' | 'ghost';
     count: number;
     dot: boolean;
     overflowCount: number;
-    shape: Extract<BadgeProps['shape'], 'rounded' | 'circular'>;
+    shape: 'rounded' | 'circular';
     showZero: boolean;
 }
 
