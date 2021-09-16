@@ -13,7 +13,7 @@ import * as React_2 from 'react';
 export const lowerThumbClassName: string;
 
 // @public
-export const RangedSlider: React_2.ForwardRefExoticComponent<RangedSliderProps>;
+export const RangedSlider: React_2.ForwardRefExoticComponent<RangedSliderProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export interface RangedSliderCommons extends Omit<SliderCommons, 'value' | 'defaultValue' | 'origin' | 'onChange'> {

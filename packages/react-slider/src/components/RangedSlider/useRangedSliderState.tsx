@@ -33,7 +33,7 @@ const findClosestThumb = (thumbArray: [number, number], incomingValue: number) =
  * Clamps and sorts the values in RangedSlider to a given min and max
  */
 const validateRangedThumbValues = (thumbValues: [number, number], min: number, max: number): [number, number] =>
-  thumbValues.map(value => clamp(value, min, max)).sort() as [number, number];
+  thumbValues.map(value => clamp(value, min, max)).sort((a, b) => a - b) as [number, number];
 
 interface RangedSliderInternalState {
   /**
@@ -272,8 +272,6 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
   const onKeyDownLower = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>): void => {
-      ev.stopPropagation();
-      ev.preventDefault();
       internalState.current.activeThumb = 'lowerValue';
       keyDown(ev);
     },

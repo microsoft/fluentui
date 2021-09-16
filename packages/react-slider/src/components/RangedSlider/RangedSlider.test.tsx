@@ -175,6 +175,16 @@ describe('RangedSlider', () => {
     });
   });
 
+  it('sorts an unsorted set of defaultValues', () => {
+    const lowerInputRef = React.createRef<HTMLInputElement>();
+    const upperInputRef = React.createRef<HTMLInputElement>();
+    render(
+      <RangedSlider defaultValue={[100, 50]} inputLower={{ ref: lowerInputRef }} inputUpper={{ ref: upperInputRef }} />,
+    );
+    expect(lowerInputRef.current?.value).toEqual('50');
+    expect(upperInputRef.current?.value).toEqual('100');
+  });
+
   it('handles role prop', () => {
     render(<RangedSlider role="test" data-testid="test" />);
     const sliderRoot = screen.getByTestId('test');
