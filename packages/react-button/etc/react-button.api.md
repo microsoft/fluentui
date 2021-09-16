@@ -153,7 +153,7 @@ export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundBu
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
 
-// @public (undocumented)
+// @public
 export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
