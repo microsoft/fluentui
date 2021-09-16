@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Image } from '../index';
+import { Image } from './index';
 import type { ArgTypes, Meta, Parameters } from '@storybook/react';
-import type { ImageProps } from '../index';
+import type { ImageProps } from './index';
 import descriptionMd from './ImageDescription.md';
 import bestPracticesMd from './ImageBestPractices.md';
 /**
