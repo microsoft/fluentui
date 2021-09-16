@@ -3,8 +3,8 @@ import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import type { LinkState } from './Link.types';
 
 /**
- * The useLink hook processes the Link draft state.root.
- * @param state - Link draft state to mutate.
+ * The useLinkState hook processes the Link state.
+ * @param state - Link state to mutate.
  */
 export const useLinkState = (state: LinkState): LinkState => {
   const { disabled, disabledFocusable } = state;
@@ -22,7 +22,7 @@ export const useLinkState = (state: LinkState): LinkState => {
   }
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
-  state.root.onClick = (ev: React.MouseEvent<HTMLAnchorElement> & React.MouseEvent<HTMLButtonElement>) => {
+  state.root.onClick = (ev: React.MouseEvent<HTMLAnchorElement & HTMLButtonElement>) => {
     if (disabled || disabledFocusable) {
       ev.preventDefault();
     } else {
@@ -31,7 +31,7 @@ export const useLinkState = (state: LinkState): LinkState => {
   };
 
   // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
-  state.root.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement> & React.KeyboardEvent<HTMLButtonElement>) => {
+  state.root.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement & HTMLButtonElement>) => {
     const keyCode = getCode(ev);
     if ((disabled || disabledFocusable) && (keyCode === EnterKey || keyCode === SpacebarKey)) {
       ev.preventDefault();

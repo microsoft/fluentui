@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { useLinkState } from './useLinkState';
-import type { LinkProps, LinkSlots, LinkState } from './Link.types';
+import type { LinkProps, LinkState } from './Link.types';
 
 /**
- * Consts listing which props are shorthand props.
- */
-export const linkShorthandProps: Array<keyof LinkSlots> = ['root'];
-
-/**
- * Given user props, returns state and render function for a Link.
+ * Given user props, defines default props for the Link, calls useLinkState, and returns processed state.
+ * @param props - User provided props to the Link component.
+ * @param ref - User provided ref to be passed to the Link component.
  */
 export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>): LinkState => {
   const { disabled, disabledFocusable, inline, secondary } = props;
@@ -32,6 +29,8 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTM
       ...props,
     }),
   };
+
+  // TODO: Remove after https://github.com/microsoft/fluentui/issues/19785 is fixed.
   state.root.as = as;
 
   useLinkState(state);

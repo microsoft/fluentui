@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type LinkSlots = {
@@ -32,6 +31,6 @@ export interface LinkCommons {
   secondary?: boolean;
 }
 
-export type LinkProps = ComponentProps<LinkSlots> & LinkCommons & {};
+export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
-export interface LinkState extends ComponentState<LinkSlots>, LinkCommons {}
+export type LinkState = ComponentState<LinkSlots> & LinkCommons;

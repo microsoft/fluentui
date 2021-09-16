@@ -4,6 +4,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
+import { LinkProps } from './Link.types';
 
 describe('Link', () => {
   let wrapper: ReactWrapper | undefined;
@@ -15,8 +16,8 @@ describe('Link', () => {
     }
   });
 
-  isConformant({
-    Component: Link as React.ComponentType,
+  isConformant<LinkProps>({
+    Component: Link,
     displayName: 'Link',
   });
 
