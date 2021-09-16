@@ -3,16 +3,17 @@ import {
   Tree,
   readProjectConfiguration,
   addProjectConfiguration,
-  removeProjectConfiguration,
   serializeJson,
   readWorkspaceConfiguration,
   readJson,
 } from '@nrwl/devkit';
 
 import generator from './index';
+import { StarDevDepsGeneratorSchema } from './schema';
 
 describe('star-dev-deps generator', () => {
   let tree: Tree;
+  const options: StarDevDepsGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
@@ -20,15 +21,6 @@ describe('star-dev-deps generator', () => {
       packageName: '@proj/eslint-plugin',
       version: '1.0.0',
     });
-
-    tree.write(
-      'package.json',
-      serializeJson({
-        syncpack: {
-          versionGroups: [],
-        },
-      }),
-    );
   });
 
   it('should change internal package devdeps to * version', async () => {
@@ -36,7 +28,6 @@ describe('star-dev-deps generator', () => {
 
     setupDummyPackage(tree, {
       packageName: '@proj/react-button',
-      version: '9.0.0',
       devDependencies: { [devPkgName]: '1.0.0' },
     });
 
@@ -45,35 +36,45 @@ describe('star-dev-deps generator', () => {
     expect(pkgJson.devDependencies[devPkgName]).toBe('*');
   });
 
-  it('should not run for packages not vNext', async () => {
+  it('should run for all packages in the monorepo', async () => {
     const devPkgName = '@proj/eslint-plugin';
-    const expectedVersion = '1.0.0';
 
     setupDummyPackage(tree, {
-      packageName: '@proj/react',
-      version: '1.0.0',
+      packageName: '@proj/react-button',
       devDependencies: { [devPkgName]: '1.0.0' },
     });
 
     setupDummyPackage(tree, {
-      packageName: '@proj/react-charting',
-      version: '1.0.0',
+      packageName: '@proj/react-avatar',
       devDependencies: { [devPkgName]: '1.0.0' },
     });
 
     setupDummyPackage(tree, {
-      packageName: '@proj/react-focus',
-      version: '1.0.0',
+      packageName: '@proj/react-menu',
       devDependencies: { [devPkgName]: '1.0.0' },
     });
 
     await generator(tree);
 
-    ['react', 'react-charting', 'react-focus'].forEach(name => {
+    ['react-button', 'react-avatar', 'react-menu'].forEach(name => {
       const path = `packages/${name}/package.json`;
       const pkgJson = readJson(tree, path);
-      expect(pkgJson.devDependencies[devPkgName]).toBe(expectedVersion);
+      expect(pkgJson.devDependencies[devPkgName]).toBe('*');
     });
+  });
+
+  it('should also modify non-v9 packages', async () => {
+    const devPkgName = '@proj/eslint-plugin';
+
+    setupDummyPackage(tree, {
+      packageName: '@proj/react-button',
+      version: '1.0.0',
+      devDependencies: { [devPkgName]: '1.0.0' },
+    });
+
+    await generator(tree);
+    const pkgJson = readJson(tree, 'packages/react-button/package.json');
+    expect(pkgJson.devDependencies[devPkgName]).toBe('*');
   });
 
   it('should only modify dev dependencies', async () => {
@@ -104,112 +105,6 @@ describe('star-dev-deps generator', () => {
     await generator(tree);
     const pkgJson = readJson(tree, 'packages/react-button/package.json');
     expect(pkgJson.dependencies[devPkgName]).toBe(expectedVersion);
-  });
-
-  it('should create new version group in base package.json', async () => {
-    const devPkgName = '@proj/eslint-plugin';
-    setupDummyPackage(tree, {
-      packageName: '@proj/react-button',
-      version: '9.0.0',
-      devDependencies: { [devPkgName]: '1.0.0' },
-    });
-
-    await generator(tree);
-
-    const pkgJson = readJson(tree, 'package.json');
-    expect(pkgJson.syncpack).toMatchInlineSnapshot(`
-      Object {
-        "versionGroups": Array [
-          Object {
-            "dependencies": Array [
-              "@proj/eslint-plugin",
-            ],
-            "packages": Array [
-              "@proj/react-button",
-              "fluent-ui-vnext",
-            ],
-          },
-        ],
-      }
-    `);
-  });
-
-  it('should update a a new package to the existing version group in base package.json', async () => {
-    const devPkgName = '@proj/eslint-plugin';
-    setupDummyPackage(tree, {
-      packageName: '@proj/react-button',
-      version: '9.0.0',
-      devDependencies: { [devPkgName]: '1.0.0' },
-    });
-
-    await generator(tree);
-
-    setupDummyPackage(tree, {
-      packageName: '@proj/react-menu',
-      version: '9.0.0',
-      devDependencies: { [devPkgName]: '1.0.0' },
-    });
-
-    await generator(tree);
-
-    const pkgJson = readJson(tree, 'package.json');
-    expect(pkgJson.syncpack).toMatchInlineSnapshot(`
-      Object {
-        "versionGroups": Array [
-          Object {
-            "dependencies": Array [
-              "@proj/eslint-plugin",
-            ],
-            "packages": Array [
-              "@proj/react-button",
-              "@proj/react-menu",
-              "fluent-ui-vnext",
-            ],
-          },
-        ],
-      }
-    `);
-  });
-
-  it('should add a new dependency to the version group', async () => {
-    const devPkgName = '@proj/eslint-plugin';
-    const newDevPkgName = '@proj/react-conformance';
-    setupDummyPackage(tree, {
-      packageName: '@proj/react-button',
-      version: '9.0.0',
-      devDependencies: { [devPkgName]: '1.0.0' },
-    });
-
-    await generator(tree);
-    removeDummyPackage(tree, '@proj/react-button');
-    setupDummyPackage(tree, {
-      packageName: newDevPkgName,
-      version: '1.0.0',
-    });
-    setupDummyPackage(tree, {
-      packageName: '@proj/react-button',
-      version: '9.0.0',
-      devDependencies: { [devPkgName]: '1.0.0', [newDevPkgName]: '1.0.0' },
-    });
-    await generator(tree);
-
-    const pkgJson = readJson(tree, 'package.json');
-    expect(pkgJson.syncpack).toMatchInlineSnapshot(`
-      Object {
-        "versionGroups": Array [
-          Object {
-            "dependencies": Array [
-              "@proj/eslint-plugin",
-              "@proj/react-conformance",
-            ],
-            "packages": Array [
-              "@proj/react-button",
-              "fluent-ui-vnext",
-            ],
-          },
-        ],
-      }
-    `);
   });
 });
 
@@ -261,18 +156,5 @@ function setupDummyPackage(
     ...options.projectConfiguration,
   });
 
-  return tree;
-}
-
-function removeDummyPackage(tree: Tree, packageName: string) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const normalizedPkgName = packageName.replace(`@${workspaceConfig.npmScope}/`, '');
-  const paths = {
-    root: `packages/${normalizedPkgName}`,
-  };
-
-  tree.delete(paths.root);
-
-  removeProjectConfiguration(tree, packageName);
   return tree;
 }
