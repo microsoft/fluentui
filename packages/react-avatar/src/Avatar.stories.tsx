@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { StoryExample } from './StoryExample.stories';
 import { AvatarExamples as examples } from './AvatarExamples.stories';
-import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from './index';
+import { Avatar, renderAvatar, useAvatar, useAvatarStyles } from './index';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { People20Regular, Guest20Regular, Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
+import type { AvatarProps } from './index';
 
 /**
  * Temporary workaround for Buttons

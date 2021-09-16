@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, fireEvent, screen } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
 import { mount, ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
@@ -130,6 +130,22 @@ describe('Checkbox', () => {
     expect(checkboxRef.current?.checked).toBe(false);
   });
 
+  it('calls onChange with the correct value', () => {
+    const eventHandler = jest.fn();
+
+    render(<Checkbox checked onChange={eventHandler} />);
+    const input = screen.getByRole('checkbox');
+
+    expect(eventHandler).toBeCalledTimes(0);
+
+    fireEvent.click(input);
+    fireEvent.click(input);
+    fireEvent.click(input);
+
+    expect(eventHandler).toBeCalledTimes(3);
+    expect(eventHandler.mock.calls[2][1]).toEqual({ checked: false });
+  });
+
   it("doesn't remove controlled mixed when no onChange provided", () => {
     component = mount(<Checkbox checked="mixed" input={{ ref: checkboxRef }} />);
     let input = component.find('input');
@@ -146,5 +162,19 @@ describe('Checkbox', () => {
     const input = component.find('input');
     expect(input.prop('checked')).toBe(false);
     expect(checkboxRef.current?.indeterminate).toEqual(true);
+  });
+
+  describe('Accessibility Tests', () => {
+    it('renders the input slot (as input)', () => {
+      const { container } = render(<Checkbox input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.tagName).toEqual('INPUT');
+    });
+
+    it('provides the input slot with a type of (checkbox)', () => {
+      const { container } = render(<Checkbox input={{ className: 'test' }} />);
+      const inputElement = container.querySelector('.test');
+      expect(inputElement?.getAttribute('type')).toEqual('checkbox');
+    });
   });
 });

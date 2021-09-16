@@ -1,24 +1,66 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
-/**
- * Names of the shorthand properties in SwitchProps
- */
-export type SwitchSlots = {};
-
-export interface SwitchCommon extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {}
-
-/**
- * Switch Props
- */
-export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Partial<SwitchCommon> {}
-
-/**
- * State used in rendering Switch
- */
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
+export type SwitchSlots = {
   /**
-   * Ref to the root element
+   * The root of the Switch.
    */
-  ref: React.Ref<HTMLElement>;
+  root: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The bar indicating the status of the Switch.
+   */
+  track: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
+   */
+  thumbWrapper: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The circular icon indicating the status of the Switch.
+   */
+  thumb: IntrinsicShorthandProps<'div'>;
+
+  /**
+   * The hidden input that handles the Switch's internal functionality.
+   */
+  input: IntrinsicShorthandProps<'input'>;
+};
+
+export interface SwitchCommons {
+  /**
+   * The starting value for a uncontrolled Switch. If `true` then the Switch will be enabled.
+   * Mutually exclusive with `checked` prop.
+   *
+   * @default false
+   */
+  defaultChecked?: boolean;
+
+  /**
+   * The current value for a controlled Switch. If `true` then the Switch will be enabled.
+   * Mutually exclusive with `defaultChecked` prop.
+   */
+  checked?: boolean;
+
+  /**
+   * Whether the Switch should be disabled.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
+   * Callback to be called when the `checked` value changes.
+   */
+  onChange?: (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: {
+      checked: boolean;
+    },
+  ) => void;
 }
+
+export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {}
+
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {}

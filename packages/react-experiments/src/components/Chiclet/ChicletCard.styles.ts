@@ -1,5 +1,5 @@
 import { normalize, FontWeights } from '../../Styling';
-import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
+import type { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme, className } = props;

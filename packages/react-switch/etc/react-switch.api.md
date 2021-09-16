@@ -4,33 +4,45 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
 export const renderSwitch: (state: SwitchState) => JSX.Element;
 
 // @public
-export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLElement>>;
+export const Switch: React_2.ForwardRefExoticComponent<SwitchProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export interface SwitchCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface SwitchCommons {
+    checked?: boolean;
+    defaultChecked?: boolean;
+    disabled?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: {
+        checked: boolean;
+    }) => void;
+}
+
+// @public (undocumented)
+export interface SwitchProps extends Omit<ComponentProps<SwitchSlots>, 'onChange'>, SwitchCommons {
 }
 
 // @public
-export interface SwitchProps extends ComponentProps<Partial<SwitchSlots>>, Partial<SwitchCommon> {
-}
+export const switchShorthandProps: (keyof SwitchSlots)[];
 
-// @public
-export const switchShorthandProps: Array<keyof SwitchSlots>;
+// @public (undocumented)
+export type SwitchSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+    track: IntrinsicShorthandProps<'div'>;
+    thumbWrapper: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
+};
 
-// @public
-export type SwitchSlots = {};
-
-// @public
-export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommon {
-    ref: React_2.Ref<HTMLElement>;
+// @public (undocumented)
+export interface SwitchState extends ComponentState<SwitchSlots>, SwitchCommons {
 }
 
 // @public

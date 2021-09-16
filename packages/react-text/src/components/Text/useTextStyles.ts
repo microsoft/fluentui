@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
-import { TextState } from './Text.types';
+import type { TextState } from './Text.types';
 
 /**
  * Styles for the root slot

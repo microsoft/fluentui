@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarNamedColor, AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
+import type { AvatarNamedColor, AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
 import {
   Person16Regular,
   Person20Regular,

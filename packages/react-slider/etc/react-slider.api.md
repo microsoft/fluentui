@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
@@ -15,51 +16,54 @@ export const renderSlider: (state: SliderState) => JSX.Element;
 export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface SliderCommon extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface SliderCommons {
     ariaValueText?: (value: number) => string;
     defaultValue?: number;
     disabled?: boolean;
+    keyboardStep?: number;
+    marks?: boolean | number[];
     max?: number;
     min?: number;
     onChange?: (ev: React_2.PointerEvent<HTMLDivElement> | React_2.KeyboardEvent<HTMLDivElement>, data: {
         value: number;
     }) => void;
     origin?: number;
+    size?: 'small' | 'medium';
     step?: number;
     value?: number;
     vertical?: boolean;
 }
 
-// @public
-export interface SliderProps extends ComponentProps<Partial<SliderSlots>>, Partial<SliderCommon> {
+// @public (undocumented)
+export interface SliderProps extends Omit<ComponentProps<SliderSlots>, 'onChange' | 'defaultValue'>, SliderCommons {
 }
 
 // @public
-export interface SliderPublicRef {
-    focus: () => void;
-    value: number | undefined;
-}
+export const sliderShorthandProps: (keyof SliderSlots)[];
 
-// @public
-export const sliderShorthandProps: Array<keyof SliderSlots>;
-
-// @public
+// @public (undocumented)
 export type SliderSlots = {
-    rail: React_2.HTMLAttributes<HTMLElement>;
-    trackWrapper: React_2.HTMLAttributes<HTMLElement>;
-    track: React_2.HTMLAttributes<HTMLElement>;
-    thumbWrapper: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
-    thumb: React_2.HTMLAttributes<HTMLDivElement> & React_2.RefAttributes<HTMLDivElement>;
-    activeRail: React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>;
+    root: IntrinsicShorthandProps<'div'>;
+    rail: IntrinsicShorthandProps<'div'>;
+    sliderWrapper: IntrinsicShorthandProps<'div'>;
+    trackWrapper: IntrinsicShorthandProps<'div'>;
+    track: IntrinsicShorthandProps<'div'>;
+    marksWrapper: IntrinsicShorthandProps<'div'>;
+    thumbWrapper: IntrinsicShorthandProps<'div'>;
+    thumb: IntrinsicShorthandProps<'div'>;
+    activeRail: IntrinsicShorthandProps<'div'>;
+    input: IntrinsicShorthandProps<'input'>;
 };
 
-// @public
-export interface SliderState extends ComponentState<SliderSlots>, SliderCommon {
-    ref: React_2.RefObject<HTMLElement & SliderPublicRef>;
+// @public (undocumented)
+export interface SliderState extends ComponentState<SliderSlots>, SliderCommons {
 }
 
 // @public
-export const useSlider: (props: SliderProps, ref: React_2.RefObject<HTMLElement & SliderPublicRef>) => SliderState;
+export const useSlider: (props: SliderProps, ref: React_2.Ref<HTMLElement>) => SliderState;
+
+// @public (undocumented)
+export const useSliderState: (state: SliderState) => SliderState;
 
 // @public
 export const useSliderStyles: (state: SliderState) => SliderState;

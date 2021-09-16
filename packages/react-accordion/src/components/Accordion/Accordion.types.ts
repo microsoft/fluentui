@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
+
+export type AccordionIndex = number | number[];
 
 export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
 
@@ -22,9 +24,11 @@ export interface AccordionContextValues {
   accordion: AccordionContextValue;
 }
 
-export type AccordionSlots = {};
+export type AccordionSlots = {
+  root: IntrinsicShorthandProps<'div'>;
+};
 
-export interface AccordionCommons extends React.HTMLAttributes<HTMLElement> {
+export interface AccordionCommons {
   /**
    * Indicates if keyboard navigation is available
    */
@@ -55,9 +59,4 @@ export interface AccordionProps extends ComponentProps<AccordionSlots>, Partial<
   onToggle?: AccordionToggleEventHandler;
 }
 
-export interface AccordionState extends ComponentState<AccordionSlots>, AccordionCommons, AccordionContextValue {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.Ref<HTMLElement>;
-}
+export interface AccordionState extends ComponentState<AccordionSlots>, AccordionCommons, AccordionContextValue {}

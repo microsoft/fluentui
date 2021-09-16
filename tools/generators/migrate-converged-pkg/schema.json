@@ -11,7 +11,7 @@
         "$source": "argv",
         "index": 0
       },
-      "pattern": "^[a-zA-Z].*$"
+      "pattern": "^[@a-zA-Z].*$"
     },
     "stats": {
       "type": "boolean",

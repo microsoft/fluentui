@@ -1,5 +1,5 @@
-import { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
-import { Theme } from '@fluentui/react-theme';
+import type { MakeStylesStyleFunctionRule } from '@fluentui/make-styles';
+import type { Theme } from '@fluentui/react-theme';
 
 /**
  * Make-styles rules for the typography variants

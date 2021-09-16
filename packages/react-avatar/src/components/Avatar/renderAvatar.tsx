@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { AvatarSlots, AvatarState } from './Avatar.types';
+import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 const avatarSlots: (keyof AvatarSlots)[] = ['label', 'image', 'badge', 'icon'];
 

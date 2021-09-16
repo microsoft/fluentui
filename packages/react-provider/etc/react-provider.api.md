@@ -4,19 +4,27 @@
 
 ```ts
 
-import { ComponentPropsCompat } from '@fluentui/react-utilities';
-import { PartialTheme } from '@fluentui/react-theme';
-import { ProviderContextValue } from '@fluentui/react-shared-contexts';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { PartialTheme } from '@fluentui/react-theme';
+import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
-import { Theme } from '@fluentui/react-theme';
-import { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
-import { ThemeContextValue } from '@fluentui/react-shared-contexts';
-import { TooltipContextType } from '@fluentui/react-shared-contexts';
+import type { Theme } from '@fluentui/react-theme';
+import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
+import type { ThemeContextValue } from '@fluentui/react-shared-contexts';
+import type { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface FluentProviderCommons {
+    dir: 'ltr' | 'rtl';
+    targetDocument: Document | undefined;
+}
 
 // @public (undocumented)
 export interface FluentProviderContextValues {
@@ -25,33 +33,31 @@ export interface FluentProviderContextValues {
     // (undocumented)
     theme: ThemeContextValue;
     // (undocumented)
-    themeClassname: ThemeClassNameContextValue;
+    themeClassName: ThemeClassNameContextValue;
     // (undocumented)
     tooltip: TooltipContextType;
 }
 
 // @public (undocumented)
-export interface FluentProviderProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    dir?: 'ltr' | 'rtl';
-    targetDocument?: Document | undefined;
+export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
     // (undocumented)
     theme?: PartialTheme;
 }
 
 // @public (undocumented)
-export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
+export const fluentProviderShorthandProps: (keyof FluentProviderSlots)[];
 
 // @public (undocumented)
-export interface FluentProviderState extends FluentProviderProps {
-    // (undocumented)
-    className: string;
-    // (undocumented)
-    dir: 'ltr' | 'rtl';
-    ref: React_2.MutableRefObject<HTMLElement>;
-    // (undocumented)
-    targetDocument: Document | undefined;
+export type FluentProviderSlots = {
+    root: IntrinsicShorthandProps<'div'>;
+};
+
+// @public (undocumented)
+export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
     // (undocumented)
     theme: Theme;
+    // (undocumented)
+    themeClassName: string;
 }
 
 // @public
@@ -60,7 +66,7 @@ export const renderFluentProvider: (state: FluentProviderState, contextValues: F
 export { useFluent }
 
 // @public
-export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
+export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;
 
 // @public (undocumented)
 export function useFluentProviderContextValues(state: FluentProviderState): FluentProviderContextValues;
