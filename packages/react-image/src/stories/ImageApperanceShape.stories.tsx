@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image } from '../index';
 
 export const ImageAppearanceShape = () => (
-  <>
+  <div style={{ display: 'flex', gap: 8 }}>
     <Image
       alt="Allan's avatar"
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
@@ -23,7 +23,7 @@ export const ImageAppearanceShape = () => (
       height={200}
       width={200}
     />
-  </>
+  </div>
 );
 ImageAppearanceShape.parameters = {
   docs: {

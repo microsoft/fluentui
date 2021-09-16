@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image } from '../index';
 
 export const ImageLayoutFit = () => (
-  <div>
+  <>
     <h1>None</h1>
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>
       <Image src="https://via.placeholder.com/600x200" fit="none" />
@@ -46,7 +46,7 @@ export const ImageLayoutFit = () => (
     <div style={{ border: '1px solid green', height: 200, width: 400 }}>
       <Image src="https://via.placeholder.com/600x200" fit="cover" />
     </div>
-  </div>
+  </>
 );
 ImageLayoutFit.parameters = {
   docs: {

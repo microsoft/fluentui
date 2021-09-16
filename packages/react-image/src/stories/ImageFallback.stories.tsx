@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image } from '../index';
 
 export const ImageFallback = () => (
-  <>
+  <div style={{ display: 'flex', gap: 8 }}>
     <Image
       alt="Allan's avatar"
       bordered
@@ -17,7 +17,7 @@ export const ImageFallback = () => (
       height={200}
       width={200}
     />
-  </>
+  </div>
 );
 ImageFallback.parameters = {
   docs: {

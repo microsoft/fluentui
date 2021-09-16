@@ -3,7 +3,7 @@ import { Image } from '../index';
 
 export const ImageBorderVariations = () => (
   <div>
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+    <div style={{ display: 'flex', gap: 8 }}>
       <Image
         alt="Allan's avatar"
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
@@ -25,7 +25,7 @@ export const ImageBorderVariations = () => (
         width={200}
       />
     </div>
-    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: '15px' }}>
+    <div style={{ display: 'flex', gap: 8, marginTop: '15px' }}>
       <Image
         alt="Allan's avatar"
         bordered
