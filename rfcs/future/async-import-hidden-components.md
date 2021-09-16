@@ -6,7 +6,17 @@ Driver: @czearing
 
 ## Summary
 
-When components such as `Tooltip` and `ContextualMenu` are not present in the DOM, they should be asynchronously imported to avoid bundle size related issues.
+When components such as `Tooltip` and `Menu` are not present in the DOM, expensive logic such as popper should be asynchronously imported to avoid bundle size related issues.
+
+In experimental trials of using `React.lazy` it cut the `Tooltip` bundle size from **46.054 kB** to **9.21 kB**.
+
+Before:
+![](https://i.imgur.com/hBbg3OE.png)
+
+After:
+![](https://i.imgur.com/LrXqGcp.png)
+
+This will help address the bundle size concerns of using these controls.
 
 ## Background
 
