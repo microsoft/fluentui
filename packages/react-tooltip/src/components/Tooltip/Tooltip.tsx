@@ -9,7 +9,7 @@ import type { TooltipProps } from './Tooltip.types';
  *
  * {@docCategory Tooltip}
  */
-export const Tooltip = React.forwardRef<HTMLElement, TooltipProps>((props, ref) => {
+export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
   const state = useTooltip(props, ref);
 
   useTooltipStyles(state);

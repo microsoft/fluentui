@@ -1,29 +1,29 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Slot properties for Tooltip
  */
 export type TooltipSlots = {
-  root: Omit<ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, 'children'>;
+  root: Omit<IntrinsicShorthandProps<'div'>, 'children'> & {
+    /**
+     * The child is the element that triggers the Tooltip. It will have additional properties added,
+     * including events and aria properties.
+     * Alternatively, children can be a render function that takes the props and adds
+     * them to the appropriate elements.
+     */
+    children?:
+      | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
+      | ((props: TooltipTriggerProps) => React.ReactNode)
+      | null;
+  };
 };
 
 /**
  * Properties and state for Tooltip
  */
 export interface TooltipCommons {
-  /**
-   * The child is the element that triggers the Tooltip. It will have additional properties added,
-   * including events and aria properties.
-   * Alternatively, children can be a render function that takes the props and adds
-   * them to the appropriate elements.
-   */
-  children?:
-    | (React.ReactElement<React.HTMLAttributes<HTMLElement>> & { ref?: React.Ref<unknown> })
-    | ((props: TooltipTriggerProps) => React.ReactNode)
-    | null;
-
   /**
    * The content displayed inside the tooltip.
    */
@@ -64,7 +64,7 @@ export interface TooltipCommons {
    * Notification when the visibility of the tooltip is changing
    */
   onVisibleChange?: (
-    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | null,
     data: OnVisibleChangeData,
   ) => void;
 

@@ -8,11 +8,11 @@ import type { TooltipSlots, TooltipState } from './Tooltip.types';
  * {@docCategory Tooltip}
  */
 export const renderTooltip = (state: TooltipState) => {
-  const { slots, slotProps } = getSlots<TooltipSlots>(state);
+  const { slots, slotProps } = getSlots<TooltipSlots>(state, ['root']);
 
   return (
     <>
-      {state.children}
+      {state.root.children}
       {state.shouldRenderTooltip && (
         <Portal>
           <slots.root {...slotProps.root}>

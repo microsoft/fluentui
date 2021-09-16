@@ -29,20 +29,30 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  *
  * {@docCategory Tooltip}
  */
-export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): TooltipState => {
+export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLDivElement>): TooltipState => {
   const context = React.useContext(TooltipContext);
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
-  const { onVisibleChange } = props;
+  const {
+    content,
+    inverted,
+    pointing,
+    positioning,
+    onVisibleChange,
+    triggerAriaAttribute = 'label',
+    showDelay = 250,
+    hideDelay = 250,
+  } = props;
+
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
   const setVisible = React.useCallback(
     (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
         if (newVisible !== oldVisible) {
-          onVisibleChange?.(ev, { visible: newVisible });
+          onVisibleChange?.(ev || null, { visible: newVisible });
         }
         return newVisible;
       });
@@ -51,14 +61,15 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
   );
 
   const state: TooltipState = {
-    showDelay: 250,
-    hideDelay: 250,
-    triggerAriaAttribute: 'label',
-    shouldRenderTooltip: visible,
-
-    ...props,
-
+    content,
+    inverted,
+    pointing,
+    positioning,
+    showDelay,
+    hideDelay,
+    triggerAriaAttribute,
     visible,
+    shouldRenderTooltip: visible,
 
     // Slots
     components: {
@@ -91,7 +102,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
     arrowRef,
   }: {
     targetRef: React.MutableRefObject<unknown>;
-    containerRef: React.MutableRefObject<HTMLElement>;
+    containerRef: React.MutableRefObject<HTMLDivElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePopper(popperOptions);
 
@@ -179,7 +190,7 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
   state.root.onPointerEnter = useMergedCallbacks(state.root.onPointerEnter, clearDelayTimeout);
   state.root.onPointerLeave = useMergedCallbacks(state.root.onPointerLeave, onLeaveTrigger);
 
-  const child = React.isValidElement(state.children) ? state.children : undefined;
+  const child = React.isValidElement(state.root.children) ? state.root.children : undefined;
 
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
@@ -214,10 +225,10 @@ export const useTooltip = (props: TooltipProps, ref: React.Ref<HTMLElement>): To
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  if (typeof state.children === 'function') {
-    (state.children as React.ReactNode) = state.children(triggerProps);
-  } else if (state.children) {
-    (state.children as React.ReactNode) = React.cloneElement(onlyChild(state.children), triggerProps);
+  if (typeof state.root.children === 'function') {
+    (state.root.children as React.ReactNode) = state.root.children(triggerProps);
+  } else if (state.root.children) {
+    (state.root.children as React.ReactNode) = React.cloneElement(onlyChild(state.root.children), triggerProps);
   }
 
   return state;
