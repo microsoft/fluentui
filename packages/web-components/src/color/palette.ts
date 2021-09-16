@@ -53,6 +53,8 @@ class PaletteRGBImpl implements Palette<SwatchRGB> {
   public readonly swatches: ReadonlyArray<SwatchRGB>;
   private lastIndex: number;
   private reversedSwatches: ReadonlyArray<SwatchRGB>;
+  private closestIndexCache = new Map<number, number>();
+
   /**
    *
    * @param source - The source color for the palette
@@ -108,9 +110,14 @@ class PaletteRGBImpl implements Palette<SwatchRGB> {
    * {@inheritdoc Palette.closestIndexOf}
    */
   public closestIndexOf(reference: Swatch): number {
-    const index = this.swatches.indexOf(reference as SwatchRGB);
+    if (this.closestIndexCache.has(reference.relativeLuminance)) {
+      return this.closestIndexCache.get(reference.relativeLuminance)!;
+    }
+
+    let index = this.swatches.indexOf(reference as SwatchRGB);
 
     if (index !== -1) {
+      this.closestIndexCache.set(reference.relativeLuminance, index);
       return index;
     }
 
@@ -121,7 +128,10 @@ class PaletteRGBImpl implements Palette<SwatchRGB> {
         : previous,
     );
 
-    return this.swatches.indexOf(closest);
+    index = this.swatches.indexOf(closest);
+    this.closestIndexCache.set(reference.relativeLuminance, index);
+
+    return index;
   }
 
   /**
