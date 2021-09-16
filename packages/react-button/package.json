@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "9.0.0-alpha.78",
+  "version": "9.0.0-alpha.85",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,10 +26,12 @@
   },
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",
-    "@fluentui/babel-make-styles": "^9.0.0-alpha.42",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.47",
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
-    "@fluentui/react-conformance": "^0.4.4",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.40",
+    "@fluentui/react-conformance": "^0.5.0",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.9",
+    "@fluentui/react-menu": "9.0.0-alpha.76",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -43,10 +45,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.3.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.61",
-    "@fluentui/react-tabster": "^9.0.0-alpha.55",
-    "@fluentui/react-utilities": "^9.0.0-alpha.43",
+    "@fluentui/keyboard-keys": "9.0.0-alpha.3",
+    "@fluentui/react-icons": "^1.1.136",
+    "@fluentui/react-make-styles": "9.0.0-alpha.65",
+    "@fluentui/react-tabster": "9.0.0-alpha.59",
+    "@fluentui/react-utilities": "9.0.0-alpha.47",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

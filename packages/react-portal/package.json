@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-portal",
-  "version": "9.0.0-alpha.42",
+  "version": "9.0.0-alpha.47",
   "description": "A utility component that creates portals compatible with Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.36",
-    "@fluentui/react-conformance": "^0.4.4",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.40",
+    "@fluentui/react-conformance": "^0.5.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -41,10 +41,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.61",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.23",
-    "@fluentui/react-tabster": "^9.0.0-alpha.55",
-    "@fluentui/react-utilities": "^9.0.0-alpha.43",
+    "@fluentui/react-make-styles": "9.0.0-alpha.65",
+    "@fluentui/react-shared-contexts": "9.0.0-alpha.24",
+    "@fluentui/react-tabster": "9.0.0-alpha.59",
+    "@fluentui/react-utilities": "9.0.0-alpha.47",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -8,13 +8,11 @@ import type { MenuGroupProps } from './MenuGroup.types';
  * Define a styled MenuGroup, using the `useMenuGroup` hook.
  * {@docCategory MenuGroup }
  */
-export const MenuGroup: React.FunctionComponent<MenuGroupProps> = React.forwardRef<HTMLElement, MenuGroupProps>(
-  (props, ref) => {
-    const state = useMenuGroup(props, ref);
-    const contextValues = useMenuGroupContextValues(state);
+export const MenuGroup = React.forwardRef<HTMLDivElement, MenuGroupProps>((props, ref) => {
+  const state = useMenuGroup(props, ref);
+  const contextValues = useMenuGroupContextValues(state);
 
-    return renderMenuGroup(state, contextValues);
-  },
-);
+  return renderMenuGroup(state, contextValues);
+});
 
 MenuGroup.displayName = 'MenuGroup';

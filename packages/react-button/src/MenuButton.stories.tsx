@@ -1,7 +1,7 @@
 import * as React from 'react';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import { Menu, MenuItem, MenuList, MenuTrigger } from '@fluentui/react-menu';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 // @ts-ignore
 import type { MenuProps } from '@fluentui/react-menu';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
@@ -18,10 +18,12 @@ const ExampleMenu = (props: MenuButtonProps): JSX.Element => (
       <MenuButton {...props} />
     </MenuTrigger>
 
-    <MenuList>
-      <MenuItem>Item a</MenuItem>
-      <MenuItem>Item b</MenuItem>
-    </MenuList>
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>Item a</MenuItem>
+        <MenuItem>Item b</MenuItem>
+      </MenuList>
+    </MenuPopover>
   </Menu>
 );
 
