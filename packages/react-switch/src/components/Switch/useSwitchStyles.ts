@@ -36,7 +36,7 @@ const useRootStyles = makeStyles({
 
   checked: theme => ({
     ':hover .ms-Switch-track': {
-      background: theme.alias.color.neutral.brandBackground,
+      background: theme.alias.color.neutral.brandBackgroundHover,
     },
   }),
 
@@ -87,7 +87,7 @@ const useTrackStyles = makeStyles({
   }),
 
   disabledChecked: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
     border: 'none',
   }),
 });
@@ -136,7 +136,7 @@ const useThumbStyles = makeStyles({
   }),
 
   disabledChecked: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
   }),
 });
 
