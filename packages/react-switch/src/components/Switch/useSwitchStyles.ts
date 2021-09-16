@@ -102,7 +102,7 @@ const useThumbWrapperStyles = makeStyles({
     bottom: '0',
     left: 'calc(var(--switch-thumb-size) * .7)',
     right: 'calc(var(--switch-thumb-size) * .7)',
-    transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transition: 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
     pointerEvents: 'none',
   }),
 });
