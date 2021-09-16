@@ -1,15 +1,10 @@
-import * as React from 'react';
-import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Text slots
  */
 export type TextSlots = {
-  root: ObjectShorthandProps<
-    React.HTMLAttributes<HTMLElement>,
-    HTMLElement,
-    'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'
-  >;
+  root: IntrinsicShorthandProps<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
 export interface TextCommons {
@@ -87,7 +82,7 @@ export interface TextCommons {
 /**
  * Text Props
  */
-export interface TextProps extends ComponentProps<TextSlots>, Partial<TextCommons> {}
+export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
 
 /**
  * State used in rendering Text
