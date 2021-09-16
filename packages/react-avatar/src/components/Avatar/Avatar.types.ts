@@ -1,36 +1,43 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
-import { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
+import type {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+} from '@fluentui/react-utilities';
+import type { PresenceBadgeProps } from '@fluentui/react-badge';
 
 export type AvatarSlots = {
+  root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & { children?: never };
+
   /**
    * The Avatar's image.
    */
-  image?: React.ImgHTMLAttributes<HTMLImageElement>;
+  image?: IntrinsicShorthandProps<'img'> & { children?: never };
 
   /**
    * The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
    */
-  label?: React.HTMLAttributes<HTMLElement>;
+  label?: IntrinsicShorthandProps<'span'>;
 
   /**
    * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
    *
    * @defaultvalue `Person20Regular` (the default icon's size depends on the Avatar's size)
    */
-  icon?: React.HTMLAttributes<HTMLElement>;
+  icon?: IntrinsicShorthandProps<'span'>;
 
   /**
    * Badge to show the avatar's presence status.
    */
-  badge?: PresenceBadgeProps;
+  badge?: ObjectShorthandProps<PresenceBadgeProps>;
 };
 
 export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {
   /**
    * The name used for displaying the initials of the avatar if the image is not provided
    */
-  name?: string;
+  name: string;
 
   /**
    * Custom method for generating the initials from the name property, which is shown if no image is provided.
@@ -54,8 +61,10 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
 
   /**
    * The avatar can have a square shape.
+   *
+   * @defaultvalue false
    */
-  square?: boolean;
+  square: boolean;
 
   /**
    * Optional activity indicator
@@ -65,7 +74,7 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
    *
    * @defaultvalue unset
    */
-  active?: 'active' | 'inactive' | 'unset';
+  active: 'active' | 'inactive' | 'unset';
 
   /**
    * The type of visual treatment to use when `active="active"`
@@ -89,7 +98,7 @@ export interface AvatarCommons extends Omit<React.HTMLAttributes<HTMLElement>, '
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
    * Use this when a name is not available, but there is another unique identifier that can be used instead.
    */
-  idForColor?: string;
+  idForColor: string | undefined;
 }
 
 /**
@@ -137,29 +146,12 @@ export type AvatarNamedColor =
 /**
  * Properties for Avatar
  */
-export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
-  /**
-   * Badge to show the avatar's presence status.
-   * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
-   */
-  badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps>;
-
-  /**
-   * The Avatar's image.
-   * Can either be the URL of the image, or the props of the img tag
-   */
-  image?: string | ObjectShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>>;
-}
+export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {}
 
 /**
  * State used in rendering Avatar
  */
 export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons {
-  /**
-   * Ref to the root element
-   */
-  ref: React.Ref<HTMLElement>;
-
   /**
    * The Avatar's color, with `'colorful'` resolved to a named color
    */

@@ -73,7 +73,7 @@ export type ComponentStateCompat<Props, ShorthandPropNames extends keyof Props =
 // @public
 export type DefaultObjectShorthandProps = ObjectShorthandProps<{
     children?: React_2.ReactNode;
-    as?: keyof JSX.IntrinsicElements;
+    as?: unknown;
 }>;
 
 // Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { getInitials } from '../../utils/index';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getInitials as getInitialsDefault } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarSizeValue, AvatarState } from './Avatar.types';
 import {
   Person16Regular,
@@ -15,7 +15,15 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 
 export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { size = 32 } = props;
+  const {
+    name = '',
+    size = 32,
+    square = false,
+    active = 'unset',
+    activeDisplay = 'ring',
+    idForColor,
+    getInitials = getInitialsDefault,
+  } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
@@ -25,13 +33,13 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
 
   const state: AvatarState = {
     size,
-    activeDisplay: 'ring',
-    getInitials,
-    ref,
-
-    ...props,
-
+    name,
+    square,
+    active,
+    activeDisplay,
     color,
+    idForColor,
+    getInitials,
 
     components: {
       root: 'span',
@@ -41,29 +49,26 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>): Avat
       badge: PresenceBadge,
     },
 
+    root: getNativeElementProps('span', { ...props, ref }),
     label: resolveShorthand(props.label),
-
-    // The icon will be resolved below, only if there is no label text
-    icon: undefined,
-
-    // If a string is provided for image, it is the img's src property rather than its children
-    image: resolveShorthand(typeof props.image === 'string' ? { src: props.image } : props.image),
-
-    // If a string is provided for badge, it is the PresenceBadge's status property rather than its children
-    badge: resolveShorthand(typeof props.badge === 'string' ? { status: props.badge } : props.badge, {
+    icon: undefined, // The icon will be resolved below if there is no label text
+    image: resolveShorthand(props.image),
+    badge: resolveShorthand(props.badge, {
       defaultProps: { size: getBadgeSize(size) },
     }),
   };
 
   // If a label was not provided, use the initials and fall back to the icon if initials aren't available
   if (!state.label?.children) {
-    const initials = state.getInitials(state.name || '', dir === 'rtl');
+    const initials = state.getInitials(state.name, dir === 'rtl');
     if (initials) {
       state.label = { ...state.label, children: initials };
     } else {
       state.icon = resolveShorthand(props.icon, {
         required: true,
-        defaultProps: { children: getDefaultIcon(state.size) },
+        defaultProps: {
+          children: getDefaultIcon(state.size),
+        },
       });
     }
   }

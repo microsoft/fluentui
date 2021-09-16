@@ -35,7 +35,7 @@ describe('Avatar', () => {
   });
 
   it('renders an image', () => {
-    const component = renderer.create(<Avatar image="i.png" />);
+    const component = renderer.create(<Avatar image={{ src: 'i.png' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -79,19 +79,21 @@ describe('Avatar', () => {
   });
 
   it('prioritizes image over initials', () => {
-    const component = renderer.create(<Avatar name="First Last" image="i.png" />);
+    const component = renderer.create(<Avatar name="First Last" image={{ src: 'i.png' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('prioritizes image over icon', () => {
-    const component = renderer.create(<Avatar icon={<span className="icon" />} image="i.png" />);
+    const component = renderer.create(<Avatar icon={<span className="icon" />} image={{ src: 'i.png' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('prioritizes image over initials and icon', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<span className="icon" />} image="i.png" />);
+    const component = renderer.create(
+      <Avatar name="First Last" icon={<span className="icon" />} image={{ src: 'i.png' }} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

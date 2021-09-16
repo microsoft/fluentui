@@ -4,26 +4,26 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
-import type { ComponentStateCompat } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
+import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import type { PresenceBadgeProps } from '@fluentui/react-badge';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Avatar: React_2.ForwardRefExoticComponent<AvatarProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface AvatarCommons extends Omit<React_2.HTMLAttributes<HTMLElement>, 'children'> {
-    active?: 'active' | 'inactive' | 'unset';
+    active: 'active' | 'inactive' | 'unset';
     activeDisplay: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
     color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     getInitials: (name: string, isRtl: boolean) => string;
-    idForColor?: string;
-    name?: string;
+    idForColor: string | undefined;
+    name: string;
     size: AvatarSizeValue;
-    square?: boolean;
+    square: boolean;
 }
 
 // @public
@@ -31,8 +31,6 @@ export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'pe
 
 // @public
 export interface AvatarProps extends ComponentProps<AvatarSlots>, Partial<AvatarCommons> {
-    badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps>;
-    image?: string | ObjectShorthandProps<React_2.ImgHTMLAttributes<HTMLImageElement>>;
 }
 
 // @public
@@ -40,16 +38,20 @@ export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 
 
 // @public (undocumented)
 export type AvatarSlots = {
-    image?: React_2.ImgHTMLAttributes<HTMLImageElement>;
-    label?: React_2.HTMLAttributes<HTMLElement>;
-    icon?: React_2.HTMLAttributes<HTMLElement>;
-    badge?: PresenceBadgeProps;
+    root: Omit<IntrinsicShorthandProps<'span'>, 'color'> & {
+        children?: never;
+    };
+    image?: IntrinsicShorthandProps<'img'> & {
+        children?: never;
+    };
+    label?: IntrinsicShorthandProps<'span'>;
+    icon?: IntrinsicShorthandProps<'span'>;
+    badge?: ObjectShorthandProps<PresenceBadgeProps>;
 };
 
 // @public
 export interface AvatarState extends ComponentState<AvatarSlots>, AvatarCommons {
     color: Exclude<AvatarCommons['color'], 'colorful'>;
-    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public (undocumented)

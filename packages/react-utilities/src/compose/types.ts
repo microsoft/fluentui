@@ -24,7 +24,7 @@ export type ShorthandProps<Props extends DefaultObjectShorthandProps> =
  */
 export type DefaultObjectShorthandProps = ObjectShorthandProps<{
   children?: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: unknown;
 }>;
 
 /**
