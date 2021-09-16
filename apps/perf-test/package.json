@@ -12,7 +12,7 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "^1.4.1"
   },
   "dependencies": {
     "@fluentui/make-styles": "9.0.0-alpha.31",
