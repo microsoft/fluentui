@@ -8,13 +8,13 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import {
-  on,
-  clamp,
-  getPercent,
   calculateSteps,
+  clamp,
+  getKeydownValue,
   getMarkPercent,
   getMarkValue,
-  getKeydownValue,
+  getPercent,
+  on,
   renderMarks,
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';

@@ -3,6 +3,11 @@ import { ChevronDown20Regular, ChevronDown24Regular } from '@fluentui/react-icon
 import { useButtonState } from '../Button/useButtonState';
 import type { MenuButtonState } from './MenuButton.types';
 
+/**
+ * The useMenuButtonState hook processes the MenuButton state, first calling useButtonState, and then adding any
+ * additional MenuButton specific processing.
+ * @param state - MenuButtonButton state to mutate.
+ */
 export const useMenuButtonState = (state: MenuButtonState): MenuButtonState => {
   // It behaves like a button.
   useButtonState(state);
