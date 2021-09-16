@@ -24,7 +24,6 @@ export const ComoBoxControlledMultiExample: React.FC = () => {
 
   const onChange = React.useCallback(
     (ev: React.FormEvent<IComboBox>, option?: IComboBoxOption): void => {
-      console.log('set option selected:', option, option.selected);
       setSelectedKeys(
         option?.selected ? [...selectedKeys, option.key as string] : selectedKeys.filter(key => key !== option?.key),
       );

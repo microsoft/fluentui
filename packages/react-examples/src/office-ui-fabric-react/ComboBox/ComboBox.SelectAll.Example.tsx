@@ -37,7 +37,6 @@ export const ComboBoxSelectAllExample: React.FC = () => {
         componentRef={comboBoxRef}
         defaultSelectedKey="C"
         label="Multi-select ComboBox with select all"
-        allowFreeform
         autoComplete="on"
         options={comboBoxBasicOptions}
       />
