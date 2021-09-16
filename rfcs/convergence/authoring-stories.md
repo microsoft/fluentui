@@ -4,6 +4,10 @@
 
 _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andrefcdias, @PeterDraex
 
+<!--
+command to generate TOC:
+npx markdown-toc -i rfcs/convergence/authoring-stories.md
+-->
 <!-- toc -->
 
 - [Summary](#summary)
@@ -36,19 +40,7 @@ Currently we have no style-guide/functionality requirements on how to be consist
 
 For convergence (vNext) we agreed on a collocated stories approach that uses [Component Story Format (CSF)](https://storybook.js.org/docs/react/api/csf) for implementation.
 
-**What are we missing:**
-
-1. what should we use for interactive props playground - controls or knobs?
-2. how to use `argTypes`
-3. should controls work for all stories or only for general/default one
-4. should we render descriptions table in Canvas Control pane
-5. how to author e2e suites for those stories
-6. how to properly annotate stories with TS metadata to get the best DX possible
-7. how structure stories in the storybook nav tree / @miroslavstastny
-8. what to do if story files are getting way too big (dissecting big story files into smaller ones) / @ling1726
-
-> **💡 NOTE:**
-> This RFC will address the first 4 points for now (should be updated with others later).
+In this RFC we supplement CSF with our own conventions for writing stories to ensure that format of our stories is consistent and compatibile with internal tooling.
 
 ## Detailed Design or Proposal
 
@@ -60,7 +52,7 @@ We should use [controls](https://storybook.js.org/docs/react/essentials/controls
 
 **Why:**
 
-- while there are some limitations with using controls (~~they don't mirror the state in URL thus cannot be tested in e2e scenarios~~, UPDATE: sync of url and controls was [added in 6.2.0](https://github.com/storybookjs/storybook/issues/13160)), using them is an industry standard in the open source world, also knobs will be deprecated in the next major storybook versions.
+- while there are some limitations with using controls using them is an industry standard in the open source world and knobs will be deprecated in the next major storybook versions.
 
 ### 2. how to use `argTypes`
 
@@ -90,12 +82,10 @@ AccordionExample.argTypes = {
 
 **Proposal:**
 
-> **NOTE:** we still need to manually provide `argTypes` until all vNext packages including react-components will be migrated to new DX. See [#18514](https://github.com/microsoft/fluentui/issues/18514)
-
 - this is not necessary as storybook generates all those controls automatically from TS metadata (Props interface)
 - `argTypes` can be used for use cases when:
 
-  - SB is unable to generated appropriate controls
+  - Storybook is unable to generated appropriate controls
   - we wanna override default value based on API
   - we wanna hide some controls that don't make sense to be handled in particular story
 
@@ -264,41 +254,19 @@ export const parameters = { controls: { expanded: true } };
 **After:**
 ![](https://user-images.githubusercontent.com/1223799/121168684-84c0ca00-c853-11eb-8742-2fa10a797809.png)
 
-### 5. how to author e2e suites for those stories
+### 5. how to properly annotate stories with TS metadata to get the best DX possible
 
 TBA
 
-### 6. how to properly annotate stories with TS metadata to get the best DX possible
+### 6. file structure
 
-TBA
-
-### 7. dissecting big story files into smaller ones
-
-Components with complex API require many long stories, both for documentation and for e2e testing. This creates big story files, which are hard to maintain. How can these files be dissected into smaller ones?
-
-#### Proposal
+The following rules must be followed when writing stories. They are put in place to allow easy intergration with CodeSandbox.
 
 1. Every component can have at most one `.stories.tsx` file with default export which configures metadata about the component. This file must be called `Component.stories.tsx`, for example `Button.stories.tsx`.
-2. If putting all stories into one file would make it too long, individual stories might be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
-3. If individual story files are employed, `Component.stories.tsx` file must not contain any stories besides the default export.
+2. Individual stories must be put into additional `.stories.tsx` files as a named export, and then re-exported from `Component.stories.tsx` file like this: `export * from ‘./IndividualStoryFile.stories’;`
+3. `Component.stories.tsx` file must not contain any stories besides the default export.
 
-**Good Example 1 - single file**
-
-```tsx
-// @filename Button.stories.tsx
-import { Button, ButtonProps } from './Button'; // the component
-import { Meta } from '@storybook/react';
-
-export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
-export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
-
-export default {
-  title: 'Components/Button',
-  component: Button,
-} as Meta;
-```
-
-**Good Example 2 - multiple files**
+**Good Example - multiple files**
 
 ```tsx
 // @filename Button.stories.tsx
@@ -326,7 +294,23 @@ ButtonDefault.storyName = 'Default';
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
 ```
 
-**Bad example 1** - only `Component.stories.tsx` can have a default export
+**Bad Example 1 - multiple stories in a single file**
+
+```tsx
+// @filename Button.stories.tsx
+import { Button, ButtonProps } from './Button'; // the component
+import { Meta } from '@storybook/react';
+
+export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
+export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} as Meta;
+```
+
+**Bad example 2** - only `Component.stories.tsx` can have a default export
 
 ```tsx
 // @filename  ButtonDefault.stories.tsx
@@ -351,7 +335,7 @@ export default {
 } as Meta;
 ```
 
-**Bad example 2** - don’t mix re-exports with inline definition within the main story
+**Bad example 3** - mixing re-exports with inline definition within the main story
 
 ```tsx
 // @filename  Button.stories.tsx
@@ -373,18 +357,7 @@ export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button
 
 ### 8. location and naming convention
 
-1. Story files should be in the same folder as the component which they are meant to show off. This will usually be the component which is the most unique to the story.
-2. Name of every .stories.tsx file should start with name of a component which it is targeting, to improve colocation in alphabetical file ordering. If appropriate, story name should be adjusted via configuration to a well readable name, suitable for documentation, like this:
-
-```tsx
-export const ButtonPrimary = (props: ButtonProps) => <Button {...props}>Text</Button>;
-ButtonPrimary.args = {
-  primary: true,
-};
-ButtonPrimary.storyName = 'Better story name';
-```
-
-3. If an internal story is broken out into its own file, then the file should mirror the name of the story, which will include the `Internal` keyword and a `.internal.stories` suffix for easier IDE search.
+All `.stories.tsx` which are related to a single docs page files must be in the same folder, which can either be the folder with component code, or a folder called `stories`.
 
 ### 9. UX of stories
 
@@ -392,7 +365,7 @@ ButtonPrimary.storyName = 'Better story name';
 
 Every component must have a story called `Default`, which:
 
-- must be defined as first story inline or as first re-expored story when using multi-file pattern - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
+- must be re-expored as the first story - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
 - must support auto generated [Controls](https://storybook.js.org/docs/react/essentials/controls) - more details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
 
 Storybook will render a Controls table under this story.
@@ -404,6 +377,8 @@ Public stories should follow Fluent Design Language to give developers better fe
 **Do:**
 
 ```tsx
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - add link to this comment please (see https://github.com/microsoft/fluentui/pull/18695)
 import { Button } from '@fluentui/react-button';
 
 export const Default = (props: PopoverProps) => (
@@ -448,10 +423,10 @@ we can workaround before the release of this feature by modifying `manager-head.
 stories with a specific DOM `id` attribute. Storybook uses the `id` attribute for each link in the nav tree, and sets
 the value to the story id.
 
-We propose to use an extra filename extension and naming convention for internal stories:
+Filename should mirror the name of the story, which will include the `Internal` keyword and therefore an `Internal.stories` suffix. This will enable easy IDE search. For example:
 
 ```ts
-// MenuTabstopsInternal.internal.stories.tsx
+// MenuTabstopsInternal.stories.tsx
 // Deep link /story/components-menu--tabstops-internal
 // Does not appear in the sidebar or docs page
 export const TabstopsInternal = () => {
@@ -460,9 +435,9 @@ export const TabstopsInternal = () => {
 ```
 
 The naming convention of the story simply adds the `Internal` keyword to the Pascal case story name. This will match the
-filename. More importantly the generated id will contain `menu-tabstops-internal`.
+filename. More importantly the generated id will contain `-internal` suffix, as in `menu-tabstops-internal`.
 
-We can simply use a css wildcard query selector:
+To hide these stories from published documentation, we can simply use a css wildcard query selector:
 
 ```css
 [id*='internal'] {
@@ -475,18 +450,6 @@ any conflicts with current stories, since this word is never used in any story n
 
 This solution will only need to be applied within `react-components` storybook configuration since that is the storybook currently targeted for
 public use. Individual component storybooks are only used for local development, so there is no need to hide internal stories from their nav trees.
-
-### Pros and Cons
-
-<!-- Enumerate the pros and cons of the proposal. Make sure to think about and be clear on the cons or drawbacks of this propsoal. If there are multiple proposals include this for each. -->
-
-N/A for now
-
-## Discarded Solutions
-
-<!-- As you enumerate possible solutions, try to keep track of the discarded ones. This should include why we discarded the solution. -->
-
-N/A
 
 ## Open Issues
 
