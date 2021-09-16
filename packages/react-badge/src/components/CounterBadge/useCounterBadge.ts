@@ -1,19 +1,28 @@
 import * as React from 'react';
 import { useBadge } from '../Badge/index';
 import type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
-import { BadgeState } from '../Badge/index';
 
 /**
  * Returns the props and state required to render the component
  */
 export const useCounterBadge = (props: CounterBadgeProps, ref: React.Ref<HTMLElement>): CounterBadgeState => {
+  const {
+    shape = 'circular',
+    appearance = 'filled',
+    showZero = false,
+    overflowCount = 99,
+    count = 0,
+    dot = false,
+  } = props;
+
   const state: CounterBadgeState = {
-    ...(useBadge(props, ref) as Omit<BadgeState, 'shape' | 'appearance'> &
-      Pick<CounterBadgeState, 'shape' | 'appearance'>),
-    showZero: props.showZero ?? false,
-    overflowCount: props.overflowCount ?? 99,
-    count: props.count ?? 0,
-    dot: props.dot ?? false,
+    ...useBadge(props, ref),
+    shape,
+    appearance,
+    showZero,
+    overflowCount,
+    count,
+    dot,
   };
 
   if (!state.dot && !state.root.children) {
