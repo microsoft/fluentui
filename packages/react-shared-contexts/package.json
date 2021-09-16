@@ -22,7 +22,7 @@
     "test": "jest --passWithNoTests"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.8",
     "@types/enzyme": "3.10.3",

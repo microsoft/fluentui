@@ -27,9 +27,9 @@
     "storybook": "start-storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.41",
-    "@fluentui/react-conformance": "^0.5.0",
+    "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-make-styles": "9.0.0-alpha.10",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
