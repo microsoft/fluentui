@@ -34,6 +34,7 @@ export const useText = (props: TextProps, ref: React.Ref<HTMLElement>): TextStat
       ...props,
     }),
   };
+  // TODO: Remove after fix to https://github.com/microsoft/fluentui/issues/19785
   state.root.as = as;
 
   return state;
