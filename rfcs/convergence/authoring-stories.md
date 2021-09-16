@@ -406,10 +406,11 @@ export const Default = (props: PopoverProps) => (
 );
 ```
 
-#### story code should be useful
+#### story code
 
-Public stories should only contain code, which is useful for users to see after clicking on “Show code” in documentation.
-Extra markup (e.g., container with CSS styles) can be added via [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators).
+The user should be able to copy&paste the example code to their project and it should behave exactly the same as in the documentation. You can test this by exporting your story to CodeSandbox.
+
+Because of this, using [Decorators](https://storybook.js.org/docs/react/writing-stories/decorators) is discouraged.
 
 ### 10. Internal stories for testing
 
