@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "9.0.0-alpha.3",
-    "@fluentui/react-aria": "^9.0.0-alpha.31",
+    "@fluentui/react-aria": "9.0.0-alpha.32",
     "@fluentui/react-icons": "^1.1.136",
     "@fluentui/react-make-styles": "9.0.0-alpha.66",
     "@fluentui/react-tabster": "9.0.0-alpha.60",
