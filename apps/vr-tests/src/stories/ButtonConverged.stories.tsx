@@ -19,7 +19,7 @@ storiesOf('Button Converged', module)
     </Screener>
   ))
   .addStory('Default', () => <Button>Hello, world</Button>, {
-    rtl: true,
+    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
@@ -90,7 +90,9 @@ storiesOf('Button Converged', module)
       Hello, world
     </Button>
   ))
-  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>, { rtl: true })
+  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>, {
+    includeRtl: true,
+  })
   .addStory(
     'With icon after content',
     () => (
@@ -98,10 +100,10 @@ storiesOf('Button Converged', module)
         Hello, world
       </Button>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Icon only', () => <Button icon="X" />)
-  .addStory('Circular and icon only', () => <Button circular icon="X" />, { rtl: true });
+  .addStory('Circular and icon only', () => <Button circular icon="X" />, { includeRtl: true });
 
 storiesOf('Button Block Converged', module)
   .addDecorator(story => (
@@ -118,7 +120,7 @@ storiesOf('Button Block Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button block>Hello, world</Button>, { rtl: true })
+  .addStory('Default', () => <Button block>Hello, world</Button>, { includeRtl: true })
   .addStory('Circular', () => (
     <Button block circular>
       Hello, world
@@ -180,7 +182,7 @@ storiesOf('CompoundButton Converged', module)
     () => (
       <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Circular', () => (
     <CompoundButton circular secondaryContent="This is some secondary text">
@@ -249,7 +251,7 @@ storiesOf('CompoundButton Converged', module)
         Hello, world
       </CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'With icon after content',
@@ -258,10 +260,12 @@ storiesOf('CompoundButton Converged', module)
         Hello, world
       </CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Icon only', () => <CompoundButton icon="X" />)
-  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />, { rtl: true });
+  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />, {
+    includeRtl: true,
+  });
 
 storiesOf('CompoundButton Block Converged', module)
   .addDecorator(story => (
@@ -285,7 +289,7 @@ storiesOf('CompoundButton Block Converged', module)
         Hello, world
       </CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Circular', () => (
     <CompoundButton block secondaryContent="This is some secondary text" circular>
@@ -344,7 +348,7 @@ storiesOf('ToggleButton Converged', module)
     </Screener>
   ))
   .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>, {
-    rtl: true,
+    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
@@ -422,7 +426,7 @@ storiesOf('ToggleButton Block Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>, { rtl: true })
+  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <ToggleButton block circular>
       Hello, world
@@ -499,7 +503,7 @@ storiesOf('MenuButton Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>, { rtl: true })
+  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => <MenuButton circular>Hello, world</MenuButton>)
   .addStory('Outline', () => <MenuButton outline>Hello, world</MenuButton>)
   .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
@@ -555,7 +559,7 @@ storiesOf('MenuButton Block Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>, { rtl: true })
+  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <MenuButton block circular>
       Hello, world

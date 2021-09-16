@@ -25,7 +25,7 @@ storiesOf('Divider Converged', module)
         <Divider />
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Horizontal with content',
@@ -34,7 +34,7 @@ storiesOf('Divider Converged', module)
         <Divider>Today</Divider>
       </div>
     ),
-    { rtl: true, includeHighContrast: true, includeDarkMode: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'Horizontal Start Aligned',
@@ -43,7 +43,7 @@ storiesOf('Divider Converged', module)
         <Divider alignContent="start">Today</Divider>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Horizontal End Aligned',
@@ -52,7 +52,7 @@ storiesOf('Divider Converged', module)
         <Divider alignContent="end">Today</Divider>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Vertical Center Aligned', () => (
     <div className={verticalStyles}>

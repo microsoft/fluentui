@@ -19,12 +19,12 @@ storiesOf('Slider Converged', module)
     </Screener>
   ))
   .addStory('Root', () => <Slider className="test-class" defaultValue={30} />, {
-    rtl: true,
+    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory('Vertical', () => <Slider className="test-class" vertical defaultValue={30} />, {
-    rtl: true,
+    includeRtl: true,
   })
   .addStory('Disabled', () => <Slider className="test-class" disabled defaultValue={30} />, {
     includeHighContrast: true,
@@ -33,9 +33,9 @@ storiesOf('Slider Converged', module)
   .addStory('Disabled Vertical', () => (
     <Slider className="test-class" disabled vertical defaultValue={30} />
   ))
-  .addStory('Origin', () => <Slider className="test-class" origin={30} />, { rtl: true })
+  .addStory('Origin', () => <Slider className="test-class" origin={30} />, { includeRtl: true })
   .addStory('Origin Vertical', () => <Slider className="test-class" vertical origin={30} />, {
-    rtl: true,
+    includeRtl: true,
   })
   .addStory('Origin (min)', () => <Slider className="test-class" min={0} origin={0} />)
   .addStory('Origin Vertical (min)', () => (
@@ -46,7 +46,7 @@ storiesOf('Slider Converged', module)
     <Slider className="test-class" min={10} vertical origin={10} />
   ))
   .addStory('Marks', () => <Slider className="test-class" max={10} defaultValue={3} marks />, {
-    rtl: true,
+    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
@@ -54,14 +54,14 @@ storiesOf('Slider Converged', module)
     'Marks Vertical',
     () => <Slider className="test-class" vertical max={10} defaultValue={3} marks />,
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
     'Marks Custom',
     () => <Slider className="test-class" max={10} defaultValue={3} marks={[0, 1, 5, 8, 10]} />,
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -70,6 +70,6 @@ storiesOf('Slider Converged', module)
       <Slider className="test-class" vertical max={10} defaultValue={3} marks={[0, 1, 5, 8, 10]} />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   );

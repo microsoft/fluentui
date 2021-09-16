@@ -95,7 +95,7 @@ storiesOf('Avatar Converged', module)
         <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
       </>
     ),
-    { rtl: true, includeHighContrast: true, includeDarkMode: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
   .addStory('size+icon+badge+square', () => <AvatarList badge="outOfOffice" square />)
