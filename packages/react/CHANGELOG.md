@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.2)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.34.1..@fluentui/react_v8.34.2)
+
+### Patches
+
+- Delay calculating viewport on mount ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by gcox@microsoft.com)
 
 ## [8.34.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.34.1)
 
