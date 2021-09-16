@@ -13,7 +13,7 @@ export const linkShorthandProps: Array<keyof LinkSlots> = ['root'];
  */
 export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>): LinkState => {
   const { disabled, disabledFocusable, inline, secondary } = props;
-  const rootAs = props.as || (props.href ? 'a' : 'button');
+  const as = props.as || (props.href ? 'a' : 'button');
 
   const state: LinkState = {
     // Props passed at the top-level
@@ -27,12 +27,12 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLAnchorElement | HTM
       root: 'a',
     },
 
-    root: getNativeElementProps(rootAs, {
+    root: getNativeElementProps(as, {
       ref,
       ...props,
     }),
   };
-  state.root.as = rootAs;
+  state.root.as = as;
 
   useLinkState(state);
 
