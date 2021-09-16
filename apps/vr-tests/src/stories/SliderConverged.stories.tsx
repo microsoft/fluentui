@@ -93,7 +93,7 @@ storiesOf('Slider Converged', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -114,7 +114,7 @@ storiesOf('Slider Converged', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Marks Label Disabled', () => (
@@ -151,7 +151,7 @@ storiesOf('Slider Converged', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -174,7 +174,7 @@ storiesOf('Slider Converged', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -197,7 +197,7 @@ storiesOf('Slider Converged', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -221,6 +221,6 @@ storiesOf('Slider Converged', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   );
