@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.0.0-alpha.31",
+  "version": "9.0.0-alpha.32",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.40",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.41",
     "@fluentui/react-conformance": "^0.5.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -41,8 +41,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "9.0.0-alpha.3",
-    "@fluentui/react-make-styles": "9.0.0-alpha.65",
-    "@fluentui/react-utilities": "9.0.0-alpha.47",
+    "@fluentui/react-make-styles": "9.0.0-alpha.66",
+    "@fluentui/react-utilities": "9.0.0-alpha.48",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

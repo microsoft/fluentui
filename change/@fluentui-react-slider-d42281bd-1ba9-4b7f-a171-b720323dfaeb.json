@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix typings in React.forwardRef",
-  "packageName": "@fluentui/react-slider",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
