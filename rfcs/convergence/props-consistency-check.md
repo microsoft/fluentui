@@ -65,7 +65,7 @@ export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLE
   - The interface error messages are only marginally better than the types. The component composition is complex enough that devs will need to decipher it either way.
   - I think we can look at ways to make the API documentation better. I'm happy to investigate that.
 
-**Proposed WorkItems**
+**Proposed Work Items**
 
 - [ ] Update all vNext component props to use types and intersections.
 
@@ -93,7 +93,7 @@ export interface AccordionHeaderCommons
 
 - (none)
 
-**Proposed WorkItems**
+**Proposed Work Items**
 
 - (none)
 
@@ -113,7 +113,7 @@ AvatarProps (badge, image, label, icon), BadgeProps (icon), ButtonProps (icon), 
 
 - (none)
 
-**Proposed WorkItems**
+**Proposed Work Items**
 
 - (none)
 
@@ -172,7 +172,7 @@ secondaryContent?: React.HTMLAttributes<HTMLElement>;
 
 - (none)
 
-**Proposed WorkItems**
+**Proposed Work Items**
 
 - (none)
 
@@ -264,7 +264,7 @@ button, label strong
 - Provide a suffix of 'slot' to properties that provide a slot.
 - Prefer semanitic slot property names; prefer names aligned with the part names from the figma desng.
 
-**Proposed WorkItems**
+**Proposed Work Items**
 
 - [ ] Add slot prefix to slot properties.
 
@@ -348,7 +348,7 @@ positioning: PositioningShorthand;
 **Proposed Work Items**
 
 - [ ] Update AccordionHeaderCommons size to inline 'small' | 'medium' | 'large' | 'extra-large'
-- [ ] Consider renaming AvatarProps size to indicate what part is being sized and inline values.
+- [ ] Rename AvatarProps size to indicate what part is being sized and inline values.
 - [ ] Update BadgeProps size to use 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' (inline)
 - [ ] Update ButtonProps and ImageProps to both use either fluid or block to indicate taking up space.
       Consider discriminated untion if there will be additional values later.
