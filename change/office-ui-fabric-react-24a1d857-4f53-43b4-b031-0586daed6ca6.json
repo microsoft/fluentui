@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Ported viewport fix to 7.0",
-  "packageName": "office-ui-fabric-react",
-  "email": "geoff.cox@live.com",
-  "dependentChangeType": "patch"
-}
