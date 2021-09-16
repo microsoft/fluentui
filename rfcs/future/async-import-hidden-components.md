@@ -18,6 +18,20 @@ After:
 
 This will help address the bundle size concerns of using these controls.
 
+## Continuing the discussion
+
+During v9, async imports were discussed but decided on being pushed to later due to other high priority issues that were blocking. This should be thoroughly looked into when the blocking issues are resolved which would likely be v10.
+
+## Previously discussed concerns
+
+While being investigated the prominent concerns that were mentioned had to due with:
+
+1. We need to look at other partners and how they are splitting their code.
+2. Some code splitting tools have issues with server side rendering.
+3. How/can we support sync and async?
+
+[Pull Request Discussion](https://github.com/microsoft/fluentui/pull/19609)
+
 ## Background
 
 In the past we've avoided the use of async imports to prescribe split points, because the technology was new, and bundlers didn't have strong support for it. We built a proprietary webpack plugin for managing re-aliasing. This was done before webpack supported async import split points, so that we could ensure the right files were aliased, rather than asking each partner to set this up. But (I believe) the only partner to take advantage of this plugin was OOUI. (Was very proprietary, not well documented, etc.) But now with async imports, we don't need plugins. With the new components being worked on and tools being modernized, we should revisit this issue.
