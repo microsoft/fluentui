@@ -2,6 +2,189 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "none": [
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Adding missing theme token for mark background",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Fix typings in React.forwardRef",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-slider to v9.0.0-alpha.5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-slider to v9.0.0-alpha.4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-slider to v9.0.0-alpha.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adding migration guide documentation.",
+            "author": "czearing@outlook.com",
+            "commit": "e7f09a25a1dc21acc3217612f0267f99b031ea89",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Updating README.md",
+            "author": "czearing@outlook.com",
+            "commit": "47c570ff69cb5303b1cc419b0eab8fddf8890ade",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Updating MIGRATION.md file.",
+            "author": "czearing@outlook.com",
+            "commit": "9fcb642d0a1947d85e81dc2db9a9d51816b7a3ae",
+            "package": "@fluentui/react-slider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Refactor ObjectShorthandProps into IntrinsicShorthandProps",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Sep 2021 07:39:06 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Setting the package to public.",
+            "author": "czearing@outlook.com",
+            "commit": "1dc3c445f3e970ea82e1f65e26fa89b596809002",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.35",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.35",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Sep 2021 00:13:07 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.34",
+            "author": "olfedias@microsoft.com",
+            "commit": "0606b747c8fca1e6551d521f2526a6c1f969205a",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.34",
+            "author": "olfedias@microsoft.com",
+            "commit": "ff3225d408fa6a97628e3f08a5a11a196bef6934",
+            "package": "@fluentui/react-slider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Sep 2021 07:39:56 GMT",
       "tag": "@fluentui/react-slider_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

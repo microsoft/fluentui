@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getCode, ArrowRightKey, ArrowDownKey, ArrowLeftKey } from '@fluentui/keyboard-key';
+import { ArrowRight, ArrowDown, ArrowLeft, Escape } from '@fluentui/keyboard-keys';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
@@ -31,7 +31,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   const hasMouseMoved = React.useRef(false);
 
   const { dir } = useFluent();
-  const OpenArrowKey = dir === 'ltr' ? ArrowRightKey : ArrowLeftKey;
+  const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
@@ -59,22 +59,22 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
       (e.target as HTMLElement)?.click();
     }
 
-    const keyCode = getCode(e);
+    const key = e.key;
 
-    if (!openOnContext && ((isSubmenu && keyCode === OpenArrowKey) || (!isSubmenu && keyCode === ArrowDownKey))) {
+    if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
       setOpen(e, { open: true, keyboard: true });
     }
 
-    if (keyCode === 27 /* Escape */ && !isSubmenu) {
+    if (key === Escape && !isSubmenu) {
       setOpen(e, { open: false, keyboard: true });
     }
 
     // if menu is already open, can't rely on effects to focus
-    if (open && keyCode === OpenArrowKey && isSubmenu) {
+    if (open && key === OpenArrowKey && isSubmenu) {
       focusFirst();
     }
 
-    if (open && keyCode === ArrowDownKey && !isSubmenu) {
+    if (open && key === ArrowDown && !isSubmenu) {
       focusFirst();
     }
 

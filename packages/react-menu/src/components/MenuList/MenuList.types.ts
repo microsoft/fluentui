@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
@@ -42,7 +42,7 @@ export interface MenuListCommons {
 }
 
 export type MenuListSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: IntrinsicShorthandProps<'div'>;
 };
 
 export interface MenuListProps extends ComponentProps<MenuListSlots>, Partial<MenuListCommons> {}

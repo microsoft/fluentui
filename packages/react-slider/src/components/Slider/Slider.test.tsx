@@ -68,30 +68,12 @@ describe('Slider', () => {
       expect(sliderRoot.getAttribute('id')).toEqual('test_id');
     });
 
-    it('applies the defaultValue prop', () => {
-      render(<Slider defaultValue={10} min={0} max={100} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
-    });
-
-    it('applies the value prop', () => {
-      render(<Slider value={10} min={0} max={100} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('10');
-    });
-
-    it('clamps an initial defaultValue that is out of bounds', () => {
-      render(<Slider defaultValue={-10} min={0} max={100} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('0');
-    });
-
     it('slides to the correct position when dragged in-between steps', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
+
       const wrapper: ReactWrapper = mount(
-        <Slider
-          step={10}
-          thumbWrapper={{ className: 'thumb-wrapper' }}
-          activeRail={{ className: 'active-rail' }}
-          onChange={onChange}
-        />,
+        <Slider step={10} activeRail={{ className: 'active-rail' }} onChange={onChange} input={{ ref: inputRef }} />,
       );
 
       const activeRail = wrapper.find('.active-rail');
@@ -102,12 +84,14 @@ describe('Slider', () => {
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
-      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+      expect(inputRef.current?.value).toEqual('50');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('45%');
 
       wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
-      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
+      expect(inputRef.current?.value).toEqual('20');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('24%');
     });
 
     it('calls onChange when pointerDown', () => {
@@ -122,38 +106,55 @@ describe('Slider', () => {
       expect(onChange.mock.calls[0][1]).toEqual({ value: 0 });
     });
 
-    it('slides to the correct position when dragged in-between steps', () => {
-      const onChange = jest.fn();
-      const wrapper: ReactWrapper = mount(
-        <Slider
-          step={10}
-          thumbWrapper={{ className: 'thumb-wrapper' }}
-          activeRail={{ className: 'active-rail' }}
-          onChange={onChange}
-        />,
-      );
+    it('applies the defaultValue prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider defaultValue={10} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.value).toEqual('10');
+    });
 
-      const activeRail = wrapper.find('.active-rail');
+    it('applies the value prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider value={10} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.value).toEqual('10');
+    });
 
-      activeRail.getDOMNode().getBoundingClientRect = () =>
-        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+    it('applies the disabled prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider disabled={true} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.disabled).toEqual(true);
+    });
 
-      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 });
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
-      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(45%)');
+    it('applies the min prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider min={11} disabled={true} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.min).toEqual('11');
+    });
 
-      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 });
-      expect(onChange).toBeCalledTimes(2);
-      expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
-      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(24%)');
+    it('applies the max prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider max={11} disabled={true} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.max).toEqual('11');
+    });
+
+    it('applies the step prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider step={11} disabled={true} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.step).toEqual('11');
+    });
+
+    it('clamps an initial defaultValue that is out of bounds', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider defaultValue={-10} min={0} max={100} input={{ ref: inputRef }} />);
+      expect(inputRef.current?.value).toEqual('0');
     });
 
     it('slides to min/max and executes onChange', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
 
-      const wrapper: ReactWrapper = mount(<Slider onChange={onChange} thumbWrapper={{ className: 'thumb-wrapper' }} />);
+      const wrapper: ReactWrapper = mount(<Slider onChange={onChange} input={{ ref: inputRef }} />);
       const sliderRoot = wrapper.first();
+
       expect(onChange).toBeCalledTimes(0);
 
       sliderRoot.getDOMNode().getBoundingClientRect = () =>
@@ -162,64 +163,104 @@ describe('Slider', () => {
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: 110, clientY: 0 });
       expect(onChange).toBeCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toEqual({ value: 100 });
-      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(100%)');
+      expect(inputRef.current?.value).toEqual('100');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('100%');
 
       sliderRoot.simulate('pointerdown', { type: 'pointermove', clientX: -10, clientY: 0 });
       expect(onChange).toBeCalledTimes(2);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 0 });
-      expect(wrapper.find('.thumb-wrapper').props().style?.transform).toEqual('translateX(0%)');
+      expect(inputRef.current?.value).toEqual('0');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('0%');
 
       wrapper.unmount();
     });
 
+    it('clamps to the correct value when dragged in-between steps', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onChange = jest.fn();
+      const wrapper: ReactWrapper = mount(
+        <Slider step={10} activeRail={{ className: 'active-rail' }} input={{ ref: inputRef }} onChange={onChange} />,
+      );
+
+      const activeRail = wrapper.find('.active-rail');
+
+      activeRail.getDOMNode().getBoundingClientRect = () =>
+        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 45, clientY: 0 }, { type: 'pointerup' });
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 50 });
+      expect(inputRef.current?.value).toEqual('50');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('45%');
+
+      wrapper.simulate('pointerdown', { type: 'pointermove', clientX: 24, clientY: 0 }, { type: 'pointerup' });
+      expect(onChange).toBeCalledTimes(2);
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 20 });
+      expect(inputRef.current?.value).toEqual('20');
+      expect(wrapper.find('.ms-Slider-track').props().style?.width).toEqual('24%');
+    });
+
     it('handles keydown events', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
 
-      render(<Slider defaultValue={50} min={0} max={100} onChange={onChange} data-testid="test" />);
+      render(
+        <Slider defaultValue={50} min={0} max={100} onChange={onChange} input={{ ref: inputRef }} data-testid="test" />,
+      );
 
       const sliderRoot = screen.getByTestId('test');
       expect(onChange).toBeCalledTimes(0);
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowDown' });
       expect(onChange.mock.calls[0][1]).toEqual({ value: 49 });
+      expect(inputRef.current?.value).toEqual('49');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
       expect(onChange.mock.calls[1][1]).toEqual({ value: 50 });
+      expect(inputRef.current?.value).toEqual('50');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft' });
       expect(onChange.mock.calls[2][1]).toEqual({ value: 49 });
+      expect(inputRef.current?.value).toEqual('49');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowRight' });
       expect(onChange.mock.calls[3][1]).toEqual({ value: 50 });
+      expect(inputRef.current?.value).toEqual('50');
 
       fireEvent.keyDown(sliderRoot, { key: 'PageUp' });
       expect(onChange.mock.calls[4][1]).toEqual({ value: 60 });
+      expect(inputRef.current?.value).toEqual('60');
 
       fireEvent.keyDown(sliderRoot, { key: 'PageDown' });
       expect(onChange.mock.calls[5][1]).toEqual({ value: 50 });
+      expect(inputRef.current?.value).toEqual('50');
 
       fireEvent.keyDown(sliderRoot, { key: 'Home' });
       expect(onChange.mock.calls[6][1]).toEqual({ value: 0 });
+      expect(inputRef.current?.value).toEqual('0');
 
       fireEvent.keyDown(sliderRoot, { key: 'End' });
       expect(onChange.mock.calls[7][1]).toEqual({ value: 100 });
+      expect(inputRef.current?.value).toEqual('100');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowLeft', shiftKey: true });
       expect(onChange.mock.calls[8][1]).toEqual({ value: 90 });
+      expect(inputRef.current?.value).toEqual('90');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowRight', shiftKey: true });
       expect(onChange.mock.calls[9][1]).toEqual({ value: 100 });
+      expect(inputRef.current?.value).toEqual('100');
 
       expect(onChange).toBeCalledTimes(10);
     });
 
     it('does not update when the controlled value prop is provided', () => {
-      render(<Slider value={50} min={0} max={100} data-testid="test" />);
-
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider value={50} min={0} max={100} data-testid="test" input={{ ref: inputRef }} />);
       const sliderRoot = screen.getByTestId('test');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toEqual('50');
+      expect(inputRef.current?.value).toBe('50');
     });
 
     it('calls onChange with the correct value', () => {
@@ -305,24 +346,27 @@ describe('Slider', () => {
     });
 
     it('handles a negative step prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
 
-      render(<Slider value={50} min={0} max={100} step={-3} onChange={onChange} data-testid="test" />);
-
+      render(<Slider defaultValue={20} step={-3} onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
       const sliderRoot = screen.getByTestId('test');
+
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 47 });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 17 });
+      expect(inputRef.current?.value).toBe('17');
     });
 
     it('handles a decimal step prop', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
       const onChange = jest.fn();
 
-      render(<Slider defaultValue={50} min={0} max={100} step={0.001} onChange={onChange} data-testid="test" />);
-
+      render(<Slider step={0.001} onChange={onChange} data-testid="test" input={{ ref: inputRef }} />);
       const sliderRoot = screen.getByTestId('test');
 
       fireEvent.keyDown(sliderRoot, { key: 'ArrowUp' });
-      expect(onChange.mock.calls[0][1]).toEqual({ value: 50.001 });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 0.001 });
+      expect(inputRef.current?.value).toBe('0.001');
     });
 
     it('handles role prop', () => {
@@ -331,68 +375,23 @@ describe('Slider', () => {
       expect(sliderRoot.getAttribute('role')).toEqual('test');
     });
 
-    it('applies Slider role to thumb', () => {
-      render(<Slider />);
-      expect(screen.getByRole('slider')).toBeTruthy();
-    });
-
-    it('applies aria-valuetext correctly', () => {
-      render(<Slider defaultValue={3} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual('3');
-    });
-
-    it('applies aria-valuetext to the thumb', () => {
+    it('applies ariaValueText', () => {
       const values = ['small', 'medium', 'large'];
-      const selected = 1;
+      const defaultValue = 1;
       const getTextValue = (value: number) => values[value];
 
-      render(<Slider value={selected} ariaValueText={getTextValue} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(values[selected]);
+      render(<Slider defaultValue={defaultValue} ariaValueText={getTextValue} />);
+      const sliderInput = screen.getByRole('slider');
+
+      expect(sliderInput.getAttribute('aria-valuetext')).toEqual(values[defaultValue]);
     });
 
-    it('applies aria-valuenow to the thumb', () => {
-      const wrapper: ReactWrapper = mount(<Slider defaultValue={3} />);
-      const sliderRoot = wrapper.first();
-
-      sliderRoot.simulate('keydown', { key: 'ArrowRight' });
-
-      expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(4);
-
-      sliderRoot.getDOMNode().getBoundingClientRect = () =>
-        ({ left: 0, top: 0, right: 100, bottom: 40, width: 100, height: 40 } as DOMRect);
-
-      sliderRoot.simulate('pointerdown', { type: 'pointerMove', clientX: 87, clientY: 32 });
-
-      expect(wrapper.find({ role: 'slider' }).prop('aria-valuenow')).toEqual(100);
-      wrapper.unmount();
+    it('applies focus to the hidden input', () => {
+      const inputRef = React.createRef<HTMLInputElement>();
+      render(<Slider defaultValue={3} input={{ ref: inputRef }} />);
+      inputRef?.current?.focus();
+      expect(document.activeElement).toEqual(inputRef.current);
     });
-
-    it('applies aria-valuemax to the thumb', () => {
-      render(<Slider max={3} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuemax')).toEqual('3');
-    });
-
-    it('applies aria-valuemin to the thumb', () => {
-      render(<Slider min={-1} />);
-      expect(screen.getByRole('slider').getAttribute('aria-valuemin')).toEqual('-1');
-    });
-
-    // TODO: Apply ref to a hidden input element and update this test
-    //
-    // it('applies (focus) to the thumb', () => {
-    //   let sliderRef: any;
-
-    //   const SliderTestComponent = () => {
-    //     sliderRef = React.useRef(null);
-
-    //     return <Slider defaultValue={3} ref={sliderRef} />;
-    //   };
-
-    //   render(<SliderTestComponent />);
-    //   const sliderThumb = screen.getByRole('slider');
-    //   sliderRef.current.focus();
-    //   expect(document.activeElement).toEqual(sliderThumb);
-    // });
 
     it('does not allow focus on disabled Slider', () => {
       let sliderRef: any;

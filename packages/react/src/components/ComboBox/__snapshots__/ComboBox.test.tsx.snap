@@ -978,7 +978,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   role="separator"
                 />
                 <button
-                  aria-selected="false"
+                  aria-selected="true"
                   class=
                       ms-Button
                       ms-Button--action
@@ -1668,7 +1668,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   title="Option 1"
                 >
                   <input
-                    aria-checked="false"
                     aria-selected="false"
                     class=
 
@@ -1883,7 +1882,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                   title="Option 2"
                 >
                   <input
-                    aria-checked="true"
                     aria-selected="true"
                     checked=""
                     class=
