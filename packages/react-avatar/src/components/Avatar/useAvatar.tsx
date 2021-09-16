@@ -101,7 +101,7 @@ const resolveAvatarShorthandPropsCompat = (props: AvatarProps) => {
   }
 
   if (typeof badge === 'string') {
-    // typing should be fixed after mergeProps migration with the `components` property in state
+    // TODO separate as an components https://github.com/microsoft/fluentui/pull/19763
     badge = { as: (PresenceBadge as unknown) as 'div', status: badge };
   }
 
