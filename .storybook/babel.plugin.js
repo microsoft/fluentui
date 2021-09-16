@@ -22,6 +22,7 @@ module.exports = function (babel) {
               t.identifier('__STORY__'),
             ),
           );
+          // @ts-ignore
           const expressionStatement = path.findParent(p => p.isExpressionStatement());
           expressionStatement.insertAfter(expression);
           path.stop();
