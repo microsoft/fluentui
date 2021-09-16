@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Link: Refactor to use simplified prop merging.",
+  "packageName": "@fluentui/react-link",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

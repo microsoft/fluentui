@@ -3,8 +3,8 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import type { ButtonState } from './Button.types';
 
 /**
- * The useButton hook processes the Button draft state.
- * @param state - Button draft state to mutate.
+ * The useButton hook processes the Button state.
+ * @param state - Button state to mutate.
  */
 export const useButtonState = (state: ButtonState): ButtonState => {
   const { as, children, disabled, disabledFocusable, icon, onClick, onKeyDown: onKeyDownCallback } = state;

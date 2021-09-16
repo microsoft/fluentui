@@ -21,7 +21,9 @@ const mergeProps = makeMergeProps<CompoundButtonState>({
 });
 
 /**
- * Given user props, returns the final state for a CompoundButton.
+ * Given user props, defines default props for the CompoundButton, calls useButtonState, and returns processed state.
+ * @param props - User provided props to the CompoundButton component.
+ * @param ref - User provided ref to be passed to the CompoundButton component.
  */
 export const useCompoundButton = (
   props: CompoundButtonProps,

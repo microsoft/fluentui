@@ -10,6 +10,8 @@ export function isConformant<TProps = {}>(
     componentPath: module!.parent!.filename.replace('.test', ''),
     disabledTests: [`has-docblock`],
     extraTests: makeStylesTests as TestObject<TProps>,
+    // TODO: To fix as part of https://github.com/microsoft/fluentui/issues/19522
+    skipAsPropTests: true,
   };
 
   baseIsConformant(defaultOptions, testInfo);
