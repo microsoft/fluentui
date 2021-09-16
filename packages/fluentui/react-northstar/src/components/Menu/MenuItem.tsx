@@ -199,6 +199,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     active: parentProps.active,
     variables: parentProps.variables,
     accessibility: parentProps.accessibility,
+    onItemSelect: parentProps.onItemSelect,
     ...inputProps,
   };
 
@@ -224,6 +225,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     styles,
     variables,
     on,
+    index,
   } = props;
 
   const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
@@ -353,8 +355,10 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   const handleFocus = (e: React.FocusEvent) => {
     setIsFromKeyboard(isEventFromKeyboard());
-
     _.invoke(props, 'onFocus', e, props);
+    if (menu) {
+      _.invoke(props, 'onItemSelect', e, index);
+    }
   };
 
   const isSubmenuOpen = (): boolean => {
@@ -412,7 +416,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
           _.invoke(props, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props.index);
+          _.invoke(parentProps, 'onItemSelect', e, index);
         },
         onMouseLeave: e => {
           trySetMenuOpen(false, e);
@@ -505,7 +509,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
         setWhatInputSource(context.target, 'mouse');
         trySetMenuOpen(true, e);
         _.invoke(predefinedProps, 'onMouseEnter', e, props);
-        _.invoke(parentProps, 'onItemSelect', e, props.index);
+        _.invoke(parentProps, 'onItemSelect', e, index);
       },
       onMouseLeave: e => {
         trySetMenuOpen(false, e);
