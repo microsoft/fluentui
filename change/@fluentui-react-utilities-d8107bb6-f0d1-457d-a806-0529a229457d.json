@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removes ExtractRef Typings",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
