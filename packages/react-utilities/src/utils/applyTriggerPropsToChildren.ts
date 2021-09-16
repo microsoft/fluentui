@@ -7,12 +7,12 @@ import { onlyChild } from './onlyChild';
 export const applyTriggerPropsToChildren = <TTriggerProps>(
   children: React.ReactElement | ((props: TTriggerProps) => React.ReactNode) | null | undefined,
   triggerProps: TTriggerProps,
-): React.ReactElement<TTriggerProps> => {
+): React.ReactNode => {
   if (typeof children === 'function') {
-    (children as React.ReactNode) = children(triggerProps);
+    return children(triggerProps);
   } else if (children) {
-    (children as React.ReactNode) = React.cloneElement(onlyChild(children), triggerProps);
+    return React.cloneElement(onlyChild(children), triggerProps);
   }
 
-  return children as React.ReactElement<TTriggerProps>;
+  return children;
 };

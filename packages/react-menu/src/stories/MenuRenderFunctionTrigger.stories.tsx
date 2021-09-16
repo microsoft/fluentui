@@ -15,7 +15,7 @@ type MenuOpenEvents =
 
 const buttonStyle = { height: 22, verticalAlign: 'middle' };
 
-export const CustomInnerFunctionTrigger = () => {
+export const RenderFunctionTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange = (e: MenuOpenEvents, data: { open: boolean }) => {
     setOpen(data.open);
@@ -46,7 +46,7 @@ export const CustomInnerFunctionTrigger = () => {
   );
 };
 
-CustomInnerFunctionTrigger.parameters = {
+RenderFunctionTrigger.parameters = {
   docs: {
     description: {
       story: [

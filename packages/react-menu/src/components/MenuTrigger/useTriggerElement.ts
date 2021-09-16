@@ -2,9 +2,10 @@ import * as React from 'react';
 import { ArrowRight, ArrowDown, ArrowLeft, Escape } from '@fluentui/keyboard-keys';
 import {
   applyTriggerPropsToChildren,
-  useMergedRefs,
-  useEventCallback,
+  onlyChild,
   shouldPreventDefaultOnKeyDown,
+  useEventCallback,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext } from '../../contexts/menuContext';
@@ -38,7 +39,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  const child = React.isValidElement(state.children) ? state.children : undefined;
+  const child = React.isValidElement(state.children) ? onlyChild(state.children) : undefined;
 
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
@@ -139,10 +140,10 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
         }),
   };
 
-  state.children = applyTriggerPropsToChildren<MenuTriggerChildProps & { ref?: React.Ref<unknown> }>(state.children, {
+  state.children = applyTriggerPropsToChildren(state.children, {
     ...triggerProps,
     ref: useMergedRefs((typeof state.children !== 'function' && state.children.ref) || null, triggerRef),
-  });
+  }) as React.ReactElement;
 
   return state as MenuTriggerState;
 };

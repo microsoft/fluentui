@@ -9,7 +9,7 @@ describe('applyTriggerPropsToChildren', () => {
 
   it('returns the child with the props applied if a React element is sent as the child', () => {
     const result = applyTriggerPropsToChildren(child, triggerProps);
-    const div = render(result).getByTestId(dataTestId);
+    const div = render(result as React.ReactElement).getByTestId(dataTestId);
 
     expect(div.tagName).toBe('DIV');
     expect(div.id).toBe(triggerProps.id);
@@ -21,7 +21,7 @@ describe('applyTriggerPropsToChildren', () => {
       child`, () => {
     const fragment = <>{child}</>;
     const result = applyTriggerPropsToChildren(fragment, triggerProps);
-    const div = render(result).getByTestId(dataTestId);
+    const div = render(result as React.ReactElement).getByTestId(dataTestId);
 
     expect(div.tagName).toBe('DIV');
     expect(div.id).toBe(triggerProps.id);
@@ -37,7 +37,7 @@ describe('applyTriggerPropsToChildren', () => {
       </div>
     );
     let result = applyTriggerPropsToChildren(functionComponent, triggerProps);
-    const div = render(result).getByTestId(dataTestId);
+    const div = render(result as React.ReactElement).getByTestId(dataTestId);
 
     expect(div.tagName).toBe('DIV');
     expect(div.id).toBe(triggerProps.id);
@@ -60,7 +60,7 @@ describe('applyTriggerPropsToChildren', () => {
       </div>
     );
     result = applyTriggerPropsToChildren(functionComponent, triggerProps);
-    const span = render(result).getByTestId(dataTestId2);
+    const span = render(result as React.ReactElement).getByTestId(dataTestId2);
 
     expect(span.tagName).toBe('SPAN');
     expect(span.id).toBe(triggerProps.id);

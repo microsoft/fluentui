@@ -269,6 +269,8 @@ export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
 export interface MenuTriggerChildProps extends Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> {
+    // (undocumented)
+    ref?: React_2.Ref<never>;
 }
 
 // @public (undocumented)

@@ -225,7 +225,7 @@ export const useTooltip = (
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
-  state.children = applyTriggerPropsToChildren(state.children, triggerProps);
+  state.children = applyTriggerPropsToChildren(state.children, triggerProps) as React.ReactElement;
 
   return state;
 };
