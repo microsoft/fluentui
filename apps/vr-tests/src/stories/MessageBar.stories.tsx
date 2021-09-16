@@ -23,11 +23,13 @@ storiesOf('MessageBar', module)
       {story()}
     </Screener>,
   )
-  .addStory('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, { rtl: true })
+  .addStory('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, {
+    includeRtl: true,
+  })
   .addStory(
     'Root dismiss',
     () => <MessageBar onDismiss={noop}>Info/default message bar. {link}</MessageBar>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Root dismiss single line', () => (
     <MessageBar onDismiss={noop} isMultiline={false}>
@@ -48,7 +50,7 @@ storiesOf('MessageBar', module)
         mauris. {link}
       </MessageBar>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Root actions',
@@ -64,7 +66,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Root actions single line',
@@ -81,7 +83,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Root dismiss and action',
@@ -98,7 +100,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Root dismiss and action single line',
@@ -116,17 +118,17 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Root multiline',
     () => <MessageBar isMultiline>Info/default message bar. {longText}</MessageBar>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Root overflow',
     () => <MessageBar isMultiline={false}>Info/default message bar. {longText} </MessageBar>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Error', () =>
     // prettier-ignore

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Tue, 14 Sep 2021 20:09:02 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.81)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.80..@fluentui/react-link_v9.0.0-alpha.81)
+
+### Changes
+
+- Bump @fluentui/react-link to v9.0.0-alpha.81 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.80)
 
