@@ -87,7 +87,7 @@ const useTrackStyles = makeStyles({
   }),
 
   disabledChecked: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
   }),
 });
