@@ -1,7 +1,9 @@
 # star-dev-deps
 
-For all packages in the monorepo, replace dev dependencies on other internal packages in the monorepo with the `*`
+For all packages in the monorepo, replace certain dev dependencies on other internal packages in the monorepo with the `*`
 version.
+
+The dependencies to be updated can be configured in `config.ts`
 
 <!-- toc -->
 
@@ -15,8 +17,8 @@ version.
 
 - Only affects dev dependencies that are also published from the monorepo
 - Does not affect third party dependencies
-- Will run for only v9 packages in the monorepo
-- Will create or update the syncpack version group
+- Will run for every package in the monorepo
+- Only updates dependencies listed in `config.ts`
 
 ## Usage
 

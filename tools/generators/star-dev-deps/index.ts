@@ -1,6 +1,7 @@
 import { Tree, updateJson, getProjects, formatFiles, readWorkspaceConfiguration, readJson } from '@nrwl/devkit';
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
+import { dependenciesToUpdate } from './config';
 
 export default async function (host: Tree) {
   const userLog: UserLog = [];
@@ -14,12 +15,6 @@ export default async function (host: Tree) {
   };
 }
 
-const dependenciesToChange = [
-  '@fluentui/eslint-plugin',
-  '@fluentui/react-conformance',
-  '@fluentui/react-conformance-make-styles',
-];
-
 function runMigrationOnProject(host: Tree, packageName: string, userLog: UserLog) {
   const projectConfig = getProjectConfig(host, { packageName });
   const packageJsonPath = projectConfig.paths.packageJson;
@@ -30,7 +25,7 @@ function runMigrationOnProject(host: Tree, packageName: string, userLog: UserLog
         if (
           isPackageInMonorepo(dependency, host) &&
           packageJson.devDependencies &&
-          dependenciesToChange.includes(dependency)
+          dependenciesToUpdate.includes(dependency)
         ) {
           userLog.push({
             type: 'info',
