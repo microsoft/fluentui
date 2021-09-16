@@ -11,8 +11,10 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style"
   },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  },
   "dependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/make-styles": "9.0.0-alpha.31",
     "@fluentui/react": "^8.34.2",
     "@fluentui/react-avatar": "9.0.0-alpha.80",
