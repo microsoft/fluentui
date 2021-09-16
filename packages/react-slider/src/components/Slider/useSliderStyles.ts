@@ -210,8 +210,7 @@ const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      // TODO: change to theme neutralStrokeOnBrand once it is added
-      background: 'white',
+      background: theme.alias.color.neutral.neutralBackground1,
     },
 
     '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
