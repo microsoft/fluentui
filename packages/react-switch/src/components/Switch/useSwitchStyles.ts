@@ -68,7 +68,7 @@ const useTrackStyles = makeStyles({
     height: '100%',
     boxSizing: 'border-box',
     borderRadius: '999px',
-    transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
     pointerEvents: 'none',
   }),
 
@@ -87,8 +87,8 @@ const useTrackStyles = makeStyles({
   }),
 
   disabledChecked: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
-    border: 'none',
+    border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
   }),
 });
 
@@ -136,7 +136,7 @@ const useThumbStyles = makeStyles({
   }),
 
   disabledChecked: theme => ({
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    background: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 });
 
