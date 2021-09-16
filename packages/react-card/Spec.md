@@ -105,7 +105,6 @@ Card goes for a more structural and generic approach to a card component and is 
 | selectable  | boolean                                                                              | false      | Makes the card selectable by adding a checkbox to the _Actions_ area                      |
 | selected    | boolean                                                                              | false      | Set to `true` if card is selected                                                         |
 | expandable  | boolean                                                                              | false      | Allow card to expand to show whole content                                                |
-| contextMenu | _slot_                                                                               | undefined  | Slot for the context menu, when right-clicking the card                                   |
 | disabled    | boolean                                                                              | false      | Makes the card and card selection disabled (not propagated to children)                   |
 
 #### `scale` property
@@ -117,6 +116,27 @@ Card goes for a more structural and generic approach to a card component and is 
 - `fluid-width`: `width` is set to `100%`.
 - `fluid-height`: `height` is set to `100%`.
 - `fluid`: `width` and `height` are set to `100%`.
+
+#### Context menu
+
+Context menu should be handled in conjunction with the @fluentui/react-menu component. A simple usage example would be:
+
+```jsx
+<Menu openOnContext>
+  <MenuTrigger>
+    <Card />
+  </MenuTrigger>
+
+  <MenuPopover>
+    <MenuList>
+      <MenuItem>Share</MenuItem>
+      <MenuItem>Dismiss</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>
+```
+
+`react-card` documentation will contain more elabora examples to cover the different use cases.
 
 ### CardHeader
 
@@ -272,28 +292,6 @@ Mouse interaction
 
   (Checkbox) Card and Checkbox are both in selected state, clicking again toggles components to unselected state
 
-### Context menu
-
-![Visual interaction of the context menu on cards using the mouse](./assets/context-interaction-mouse.png)
-
-A context menu can be triggered by right clicking the surface or through an action in the card.
-
-1. Rest
-
-   Default state
-
-2. RightClick [LongPress]
-
-   Right click anywhere on card surface invokes content menu
-
-3. Show
-
-   Context menu appears close to cursor location on card
-
-4. Hide/Dismiss
-
-   Clicking or tapping anywhere outside of menu to dismiss
-
 #### Disabled
 
 ![Visual interaction of Disabled cards using the mouse](./assets/disabled.png)
@@ -349,34 +347,6 @@ Keyboard interaction
    Depending on your tab order of items within the card, the number of keystrokes will vary. Once focus is set on the checkbox by default it will be set to unselected
 
 4. SpaceBar or EnterKey, while focused on the Checkbox, will toggle both Card and Checkbox to selected state. Keying again will toggle to unselected
-
-### Context menu
-
-![Visual interaction of the context menu on cards using the keyboard](./assets/context-interaction-keyboard.png)
-
-1. Rest
-
-   Default state
-
-2. OnFocus
-
-   Focus rect. is set on card. Use shiftKey and press F10 to invoke context menu
-
-   `aria-haspopup="menu"`
-
-   `aria-expanded="false"`
-
-3. ShowSet
-
-   Focus on context menu
-
-   `aria-expanded="true"`
-
-4. Hide/Dismiss
-
-   Use EscKey to hide/dismiss
-
-   `aria-expanded="false"`
 
 ## Accessibility
 
@@ -460,25 +430,3 @@ Each card is of `role="group"`.
 1. Label: Selectable Card
 2. Role: Group
 3. State: Disabled, selected
-
-#### Context menu
-
-![Context menu opening and closing](./assets/context-narrator.png)
-
-RightClick / ShiftKey + F10
-
-1. OnFocus
-
-   `aria-haspopup="true"`
-
-   `aria-expanded="false"`
-
-   `aria-controls="menu"`
-
-2. Opening
-
-   `aria-expanded="true"` - Indicates popup menu is open.
-
-3. Closing
-
-   `aria-expanded="false"` - Indicates popup menu is closed
