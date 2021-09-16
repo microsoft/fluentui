@@ -31,7 +31,6 @@
     "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.41",
     "@fluentui/react-conformance": "^0.5.0",
     "@fluentui/react-conformance-make-styles": "9.0.0-alpha.10",
-    "@fluentui/react-menu": "9.0.0-alpha.77",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -46,6 +45,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "9.0.0-alpha.3",
+    "@fluentui/react-menu": "9.0.0-alpha.77",
     "@fluentui/react-aria": "9.0.0-alpha.32",
     "@fluentui/react-icons": "^1.1.136",
     "@fluentui/react-make-styles": "9.0.0-alpha.66",
