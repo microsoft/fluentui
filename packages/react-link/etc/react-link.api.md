@@ -75,10 +75,7 @@ export interface LinkCommons {
 }
 
 // @public (undocumented)
-export type LinkProps = ComponentProps<LinkSlots> & LinkCommons & {};
-
-// @public
-export const linkShorthandProps: Array<keyof LinkSlots>;
+export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 
 // @public (undocumented)
 export type LinkSlots = {
@@ -86,8 +83,7 @@ export type LinkSlots = {
 };
 
 // @public (undocumented)
-export interface LinkState extends ComponentState<LinkSlots>, LinkCommons {
-}
+export type LinkState = ComponentState<LinkSlots> & LinkCommons;
 
 // @public
 export const renderLink: (state: LinkState) => JSX.Element;
