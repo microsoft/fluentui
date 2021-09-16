@@ -31,6 +31,7 @@ export class Tooltip extends FoundationTooltip {
  */
 export const fluentTooltip = Tooltip.compose({
   baseName: 'tooltip',
+  baseClass: FoundationTooltip,
   template,
   styles,
 });

@@ -96,7 +96,7 @@ packages/utilities/positioning/ @microsoft/cxe-red
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 packages/make-styles/ @microsoft/teams-prg
 packages/react-make-styles/ @microsoft/teams-prg
-packages/react-aria/ @bsunderhus
+packages/react-aria/ @microsoft/teams-prg
 packages/babel-make-styles/ @microsoft/teams-prg
 packages/make-styles-webpack-loader/ @microsoft/teams-prg
 packages/react-conformance-make-styles/ @microsoft/teams-prg

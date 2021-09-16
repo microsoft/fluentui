@@ -1,5 +1,10 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  IntrinsicShorthandProps,
+  ObjectShorthandProps,
+} from '@fluentui/react-utilities';
 import type { AccordionHeaderExpandIconProps } from './AccordionHeaderExpandIcon';
 import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 
@@ -18,7 +23,7 @@ export interface AccordionHeaderContextValues {
 }
 
 export type AccordionHeaderSlots = {
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: IntrinsicShorthandProps<'div'>;
   /**
    * The component to be used as button in heading
    */
@@ -30,8 +35,8 @@ export type AccordionHeaderSlots = {
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-  children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  icon?: IntrinsicShorthandProps<'div'>;
+  children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
 
 export interface AccordionHeaderCommons {
