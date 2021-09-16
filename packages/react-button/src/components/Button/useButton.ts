@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, ExtractRef } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 import { useARIAButton } from '@fluentui/react-aria';
 
@@ -25,7 +25,7 @@ export const useButton = (
     transparent = false,
     ...props
   }: ButtonProps,
-  ref: React.Ref<ExtractRef<ButtonProps>>,
+  ref: React.Ref<unknown>,
 ): ButtonState => {
   const iconShorthand = resolveShorthand(icon);
   return {
@@ -36,7 +36,7 @@ export const useButton = (
     root: useARIAButton(props, {
       required: true,
       defaultProps: {
-        ref,
+        ref: ref as React.Ref<HTMLButtonElement>,
         type: 'button', // This is added because the default for type is 'submit'
       },
     }),
