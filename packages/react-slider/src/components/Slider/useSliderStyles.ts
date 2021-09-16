@@ -210,8 +210,7 @@ const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      // TODO: change to theme neutralStrokeOnBrand once it is added
-      background: 'white',
+      background: theme.alias.color.neutral.neutralBackground1,
     },
 
     '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
@@ -378,15 +377,14 @@ export const useSliderStyles = (state: SliderState): SliderState => {
   const activeRailStyles = useActiveRailStyles();
   const inputStyles = useInputStyles();
 
-  state.className = mergeClasses(
+  state.root.className = mergeClasses(
     rootStyles.root,
     rootStyles.focusIndicator,
-    // TODO: Remove once compat is reverted
-    rootStyles[state.size || 'medium'],
+    rootStyles[state.size!],
     state.vertical ? rootStyles.vertical : rootStyles.horizontal,
     state.disabled ? rootStyles.disabled : rootStyles.enabled,
     rootStyles.focusIndicator,
-    state.className,
+    state.root.className,
   );
 
   state.sliderWrapper.className = mergeClasses(

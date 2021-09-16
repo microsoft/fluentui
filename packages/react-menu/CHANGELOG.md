@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 06 Sep 2021 07:34:53 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.77)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.76..@fluentui/react-menu_v9.0.0-alpha.77)
+
+### Changes
+
+- Fix typings in React.forwardRef ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.77 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.76)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.75..@fluentui/react-menu_v9.0.0-alpha.76)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.76 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.75)
+
+Fri, 10 Sep 2021 16:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.74..@fluentui/react-menu_v9.0.0-alpha.75)
+
+### Changes
+
+- chore(v9): Move all internal v9 dependencies from caret to fixed version ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.75 ([PR #19748](https://github.com/microsoft/fluentui/pull/19748) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.74)
+
+Fri, 10 Sep 2021 07:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.73..@fluentui/react-menu_v9.0.0-alpha.74)
+
+### Changes
+
+- Refactor ObjectShorthandProps into IntrinsicShorthandProps ([PR #19642](https://github.com/microsoft/fluentui/pull/19642) by behowell@microsoft.com)
+
+## [9.0.0-alpha.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.73)
+
+Wed, 08 Sep 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.72..@fluentui/react-menu_v9.0.0-alpha.73)
+
+### Changes
+
+- fix(Menu): Missing submenu indicator slot ([PR #19661](https://github.com/microsoft/fluentui/pull/19661) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.72)
 

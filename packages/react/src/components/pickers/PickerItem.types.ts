@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IRefObject } from '../../Utilities';
-
+import { IIconProps } from '../Icon/Icon.types';
 /**
  * PickerItem component.
  * {@docCategory Pickers}
@@ -41,4 +41,10 @@ export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement
 
   /** Aria-label for the picked item remove button. */
   removeButtonAriaLabel?: string;
+
+  /**
+   *  Props for the icon used in the remove button.
+   *  @defaultvalue `{ iconName:'Cancel' }`
+   */
+  removeButtonIconProps?: IIconProps;
 }

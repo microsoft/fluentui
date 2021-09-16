@@ -297,9 +297,9 @@ storiesOf('ContextualMenu', module)
   .addStory('Root', () => <ContextualMenu items={items} />)
   .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
   .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
-    rtl: true,
+    includeRtl: true,
   })
-  .addStory('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { rtl: true })
+  .addStory('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { includeRtl: true })
   .addStory('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
   .addStory('With split button submenu', () => (
     <ContextualMenu items={itemsWithSplitButtonSubmenu} />

@@ -62,7 +62,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 // The stories for label placement are separate since they don't need to include hover/click states
@@ -83,7 +83,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Label at end with icon',
@@ -92,7 +92,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Label on top', () => (
     <Fabric>
