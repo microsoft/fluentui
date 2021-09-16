@@ -3,7 +3,9 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-const AnchorLink = (props: LinkProps) => <Link {...props} href="https://www.bing.com" />;
+const AnchorLink = (props: LinkProps & { as?: 'a' }) => (
+  <Link {...props} href="https://www.bing.com" />
+);
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 storiesOf('Link Converged - Rendered as anchor', module)
@@ -21,7 +23,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, { rtl: true })
+  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, { includeRtl: true })
   .addStory('Stand-alone Disabled', () => (
     <AnchorLink disabled>Stand-alone disabled link</AnchorLink>
   ))
@@ -37,7 +39,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
         This is <AnchorLink inline>a link</AnchorLink> used alongside other text content.
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Inline Disabled', () => (
     <div>
@@ -73,7 +75,7 @@ storiesOf('Link Converged - Rendered as button', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { rtl: true })
+  .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { includeRtl: true })
   .addStory('Stand-alone Disabled', () => (
     <ButtonLink disabled>Stand-alone disabled link</ButtonLink>
   ))
@@ -89,7 +91,7 @@ storiesOf('Link Converged - Rendered as button', module)
         This is <ButtonLink inline>a link</ButtonLink> used alongside other text content.
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Inline Disabled', () => (
     <div>
