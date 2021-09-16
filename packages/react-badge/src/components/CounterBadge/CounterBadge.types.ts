@@ -29,13 +29,13 @@ export interface CounterBadgeCommons {
    * A Badge can be circular or rounded
    * @default circular
    */
-  shape: Extract<BadgeProps['shape'], 'rounded' | 'circular'>;
+  shape: 'rounded' | 'circular';
 
   /**
    * A Badge can be filled, ghost
    * @default filled
    */
-  appearance: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
+  appearance: 'filled' | 'ghost';
 }
 
 /**
