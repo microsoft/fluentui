@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { SliderState } from './Slider.types';
-import { markClassName } from './useSliderState';
+import { markClassName } from '../../utils/renderMarks';
 
 const thumbClassName = 'ms-Slider-thumb';
 const trackClassName = 'ms-Slider-track';
@@ -210,8 +210,7 @@ const useMarksWrapperStyles = makeStyles({
     zIndex: '1',
     whiteSpace: 'nowrap',
     [`& .${markClassName}`]: {
-      // TODO: change to theme neutralStrokeOnBrand once it is added
-      background: 'white',
+      background: theme.alias.color.neutral.neutralBackground1,
     },
 
     '& .ms-Slider-firstMark, .ms-Slider-lastMark': {
