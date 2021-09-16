@@ -26,7 +26,7 @@ storiesOf('Separator', module)
         <Separator>Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Horizontal Start Aligned',
@@ -35,7 +35,7 @@ storiesOf('Separator', module)
         <Separator alignContent="start">Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Horizontal End Aligned',
@@ -44,7 +44,7 @@ storiesOf('Separator', module)
         <Separator alignContent="end">Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Vertical Center Aligned',
@@ -53,7 +53,7 @@ storiesOf('Separator', module)
         <Separator vertical>Today</Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Vertical Start Aligned',
@@ -64,7 +64,7 @@ storiesOf('Separator', module)
         </Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Vertical End Aligned',
@@ -75,5 +75,5 @@ storiesOf('Separator', module)
         </Separator>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

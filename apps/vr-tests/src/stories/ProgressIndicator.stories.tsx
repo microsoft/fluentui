@@ -32,7 +32,7 @@ storiesOf('ProgressIndicator', module)
         percentComplete={0.5}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('100%', () => (
     <ProgressIndicator

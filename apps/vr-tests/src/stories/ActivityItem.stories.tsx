@@ -26,7 +26,7 @@ storiesOf('ActivityItem', module)
         timeStamp="timeStamp text"
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Personas',
@@ -43,7 +43,7 @@ storiesOf('ActivityItem', module)
         timeStamp="timeStamp text"
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Compact', () => (
     <ActivityItem

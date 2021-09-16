@@ -2,6 +2,48 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.78",
+      "version": "9.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "Fix typings in React.forwardRef",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-image to v9.0.0-alpha.78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tkrasniqi@microsoft.com",
+            "package": "@fluentui/react-image",
+            "comment": "Migrate to simplified slots",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-image to v9.0.0-alpha.77"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 16:31:53 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.76",
       "version": "9.0.0-alpha.76",
