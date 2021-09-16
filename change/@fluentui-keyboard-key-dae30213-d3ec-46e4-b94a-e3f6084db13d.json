@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update dev deps to *",
+  "packageName": "@fluentui/keyboard-key",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update dev deps to *",
+  "packageName": "@fluentui/theme",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
