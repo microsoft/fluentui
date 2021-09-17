@@ -58,11 +58,7 @@ describe('Menu', () => {
     it('set active index of items with submenu on focus', () => {
       const mockActiveIndexChange = jest.fn();
       const menu = mountWithProvider(
-        <Menu onActiveIndexChange={mockActiveIndexChange}>
-          <Menu.Item index={0} menu={['1']}>
-            item 1
-          </Menu.Item>
-        </Menu>,
+        <Menu items={[{ index: 0, key: 0, menu: ['0'] }]} onActiveIndexChange={mockActiveIndexChange} />,
       );
 
       menu.find('MenuItem').first().find('a').first().simulate('focus');
