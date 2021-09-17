@@ -8,7 +8,6 @@ import type {
 
 /**
  * Label Props
- * {@docCategory Label}
  */
 export interface LabelProps extends ComponentPropsCompat, React.LabelHTMLAttributes<HTMLLabelElement> {
   /**
@@ -39,19 +38,16 @@ export interface LabelProps extends ComponentPropsCompat, React.LabelHTMLAttribu
 
 /**
  * Names of the shorthand properties in LabelProps
- * {@docCategory Label}
  */
 export type LabelShorthandProps = 'required';
 
 /**
  * Names of LabelProps that have a default value in useLabel
- * {@docCategory Label}
  */
 export type LabelDefaultedProps = 'size';
 
 /**
  * State used in rendering Label
- * {@docCategory Label}
  */
 export interface LabelState extends ComponentStateCompat<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
   /**

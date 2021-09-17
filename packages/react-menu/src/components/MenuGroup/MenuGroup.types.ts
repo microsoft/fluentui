@@ -5,14 +5,8 @@ export type MenuGroupSlots = {
   root: IntrinsicShorthandProps<'div'>;
 };
 
-/**
- * {@docCategory MenuGroup}
- */
 export interface MenuGroupProps extends ComponentProps<MenuGroupSlots> {}
 
-/**
- * {@docCategory MenuGroup}
- */
 export interface MenuGroupState extends ComponentState<MenuGroupSlots> {
   /**
    * id applied to the DOM element of `MenuGroupHeader`
