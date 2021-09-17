@@ -20,7 +20,7 @@
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/jest-serializer-make-styles/src && yarn docs"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/react-make-styles": "9.0.0-alpha.67",
     "@fluentui/react-shared-contexts": "9.0.0-alpha.24",
     "@fluentui/scripts": "^1.0.0",

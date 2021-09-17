@@ -32,10 +32,10 @@
   },
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.17",
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/example-data": "^8.2.6",
     "@fluentui/jest-serializer-merge-styles": "^8.0.10",
-    "@fluentui/react-conformance": "^0.5.0",
+    "@fluentui/react-conformance": "*",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.8",
     "@fluentui/webpack-utilities": "^8.1.5",

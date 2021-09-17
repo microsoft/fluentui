@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+  "packageName": "@fluentui/react-focus",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
