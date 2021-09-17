@@ -14,7 +14,7 @@ export const calculateSteps = (
   dir: 'ltr' | 'rtl',
 ): number => {
   const currentBounds = railRef?.current?.getBoundingClientRect();
-  const sliderSize = vertical ? currentBounds!.height : currentBounds!.width;
+  const sliderSize = vertical ? currentBounds!.height || 0 : currentBounds!.width || 0;
   let position;
 
   if (vertical) {

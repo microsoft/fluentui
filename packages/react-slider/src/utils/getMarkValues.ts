@@ -1,7 +1,12 @@
 import { getPercent } from './getPercent';
 
 /**
- * Gets the current percentage position for the marks relative to their individual positions.
+ * Gets the current percentage position for the marks with relative to the rail.
+ *
+ * Example
+ * `Rail: width = 100px`
+ * `Marks: [0, 25, 50, 75, 100]`
+ * `getMarkValue: 0%, 25%, 50%, 75%, 100%`
  */
 export const getMarkValue = (marks: boolean | number[] | undefined, min: number, max: number, step: number) => {
   const valueArray: number[] = [];
