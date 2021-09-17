@@ -26,11 +26,11 @@ const useRootStyles = makeStyles({
 
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
-      background: theme.alias.color.neutral.neutralForeground2,
+      background: theme.alias.color.neutral.neutralStrokeAccessibleHover,
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: theme.alias.color.neutral.neutralForeground2,
+      borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
     },
   }),
 
