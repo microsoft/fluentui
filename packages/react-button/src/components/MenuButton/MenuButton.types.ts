@@ -9,7 +9,7 @@ import type {
 } from '../Button/Button.types';
 
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> &
-  Partial<MenuTriggerChildProps> & {
+  Partial<Omit<MenuTriggerChildProps, 'ref'>> & {
     /**
      * Menu icon that indicates that this button has a menu that can be expanded.
      */

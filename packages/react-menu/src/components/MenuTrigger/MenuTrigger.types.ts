@@ -5,9 +5,9 @@ import * as React from 'react';
  */
 export type MenuTriggerProps = {
   /**
-   * Explicitly require single child
+   * Explicitly require single child or render function
    */
-  children: React.ReactElement;
+  children: (React.ReactElement & { ref?: React.Ref<unknown> }) | ((props: MenuTriggerChildProps) => React.ReactNode);
 };
 
 /**
@@ -25,7 +25,9 @@ export type MenuTriggerChildProps = Required<
     | 'aria-expanded'
     | 'id'
   >
->;
+> & {
+  ref?: React.Ref<never>;
+};
 
 /**
  * {@docCategory MenuTrigger }
