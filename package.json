@@ -87,7 +87,7 @@
     "@babel/register": "7.14.5",
     "@babel/standalone": "7.14.8",
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/react-icons": "^1.1.136",
+    "@fluentui/react-icons": "^1.1.140",
     "@microsoft/api-extractor": "7.18.1",
     "@nrwl/cli": "12.5.9",
     "@nrwl/devkit": "12.5.9",

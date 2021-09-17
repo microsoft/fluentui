@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@fluentui/react-badge": "9.0.0-alpha.80",
-    "@fluentui/react-icons": "^1.1.136",
+    "@fluentui/react-icons": "^1.1.140",
     "@fluentui/react-make-styles": "9.0.0-alpha.66",
     "@fluentui/react-theme": "9.0.0-alpha.22",
     "@fluentui/react-utilities": "9.0.0-alpha.48",
