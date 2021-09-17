@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Sep 2021 07:35:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.82)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.81..@fluentui/react-link_v9.0.0-alpha.82)
+
+### Changes
+
+- Link: Refactor to use simplified prop merging. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.82 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.81)
 
