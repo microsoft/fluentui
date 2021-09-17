@@ -79,31 +79,32 @@ The Label component should be simple as shown below. It will just need the text 
  * Label Props
  * {@docCategory Label}
  */
-export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLElement> {
-  /**
-   * Renders the label as disabled
-   * @defaultvalue false
-   */
-  disabled?: boolean;
+export type LabelProps = ComponentProps &
+  React.LabelHTMLAttributes<HTMLElement> & {
+    /**
+     * Renders the label as disabled
+     * @defaultvalue false
+     */
+    disabled?: boolean;
 
-  /**
-   * Whether the associated form field is required or not. If true it will be an asterisk, otherwise it will be what is provided.
-   * @defaultvalue false
-   */
-  required?: boolean | ShorthandProps<ComponentProps>;
+    /**
+     * Whether the associated form field is required or not. If true it will be an asterisk, otherwise it will be what is provided.
+     * @defaultvalue false
+     */
+    required?: boolean | ShorthandProps<ComponentProps>;
 
-  /**
-   * A label supports different font sizes, see tokens for reference.
-   * @defaultvalue 'medium'
-   */
-  size?: 'small' | 'medium' | 'large';
+    /**
+     * A label supports different font sizes, see tokens for reference.
+     * @defaultvalue 'medium'
+     */
+    size?: 'small' | 'medium' | 'large';
 
-  /**
-   * A label supports semibold/strong fontweight. When size is set to large, label strong will be set by default.
-   * @defaultvalue false
-   */
-  strong?: boolean;
-}
+    /**
+     * A label supports semibold/strong fontweight. When size is set to large, label strong will be set by default.
+     * @defaultvalue false
+     */
+    strong?: boolean;
+  };
 
 /**
  * Names of the shorthand properties in LabelProps
@@ -121,12 +122,12 @@ export type LabelDefaultedProps = never;
  * State used in rendering Label
  * {@docCategory Label}
  */
-export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
+export type LabelState = ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> & {
   /**
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
-}
+};
 ```
 
 ## Structure

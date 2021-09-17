@@ -8,7 +8,7 @@ export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' 
 /**
  * {@docCategory PresenceBadge}
  */
-export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   /**
    * Represents several status
    * @defaultvalue available
@@ -20,12 +20,12 @@ export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearan
    * @defaultvalue false
    */
   outOfOffice?: boolean;
-}
+};
 
 /**
  * {@docCategory Badge}
  */
-export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearance'> {
+export type PresenceBadgeState = Omit<BadgeState, 'shape' | 'appearance'> & {
   /**
    * Represents several status
    * @defaultvalue available
@@ -37,4 +37,4 @@ export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearan
    * @defaultvalue false
    */
   outOfOffice: boolean;
-}
+};

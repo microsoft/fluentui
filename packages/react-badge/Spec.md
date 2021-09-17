@@ -36,7 +36,7 @@ type BadgeShape = 'rounded' | 'square' | 'circular';
 
 type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
-interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+type BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * A Badge can be sized.
    */
@@ -127,7 +127,7 @@ export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offli
 /**
  * {@docCategory PresenceBadge}
  */
-export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   /**
    * A PresenceBadge can represent several status
    * @defaultvalue available
@@ -138,12 +138,12 @@ export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearan
    * @defaultvalue true
    */
   inOffice?: boolean;
-}
+};
 
 /**
  * {@docCategory Badge}
  */
-export interface PresenceBadgeState extends BadgeState {
+export type PresenceBadgeState = BadgeState & {
   /**
    * A PresenceBadge can represent several status
    * @defaultvalue available
@@ -154,7 +154,7 @@ export interface PresenceBadgeState extends BadgeState {
    * @defaultvalue true
    */
   inOffice: boolean;
-}
+};
 ```
 
 ### Counter Badge
@@ -170,7 +170,7 @@ export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' |
 /**
  * {@docCategory CounterBadge}
  */
-export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & {
   /**
    * A Badge can be circular or rounded
    * @defaultvalue circular
@@ -212,5 +212,5 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
    * @defaultvalue false
    */
   dot?: boolean;
-}
+};
 ```

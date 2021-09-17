@@ -3,7 +3,7 @@ import type { BadgeProps, BadgeState } from '../Badge/index';
 /**
  * {@docCategory CounterBadge}
  */
-export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
+export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & {
   /**
    * A Badge can be circular or rounded
    * @defaultvalue circular
@@ -39,12 +39,12 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
    * @defaultvalue false
    */
   dot?: boolean;
-}
+};
 
 /**
  * {@docCategory CounterBadge}
  */
-export interface CounterBadgeState extends BadgeState {
+export type CounterBadgeState = BadgeState & {
   /**
    * Max number to be displayed
    * @defaultvalue 99
@@ -68,4 +68,4 @@ export interface CounterBadgeState extends BadgeState {
    * @defaultvalue false
    */
   dot: boolean;
-}
+};

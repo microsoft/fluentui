@@ -7,9 +7,9 @@ export type MenuGroupHeaderSlots = {
 /**
  * {@docCategory MenuGroupHeader}
  */
-export interface MenuGroupHeaderProps extends ComponentProps<MenuGroupHeaderSlots> {}
+export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
 
 /**
  * {@docCategory MenuGroupHeader}
  */
-export interface MenuGroupHeaderState extends ComponentState<MenuGroupHeaderSlots> {}
+export type MenuGroupHeaderState = ComponentState<MenuGroupHeaderSlots>;

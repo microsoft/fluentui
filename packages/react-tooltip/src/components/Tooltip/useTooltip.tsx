@@ -201,7 +201,8 @@ export const useTooltip = (
   };
 
   // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
+  const childWithRef = child as { ref?: React.Ref<unknown> } | undefined;
+  const childTargetRef = useMergedRefs(childWithRef?.ref, targetRef);
   if (popperOptions.target === undefined) {
     triggerProps.ref = childTargetRef;
   }

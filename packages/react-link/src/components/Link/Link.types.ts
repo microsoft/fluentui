@@ -4,7 +4,7 @@ export type LinkSlots = {
   root: IntrinsicShorthandProps<'a', 'button'>;
 };
 
-export interface LinkCommons {
+export type LinkCommons = {
   /**
    * Whether the link is disabled.
    * @default false
@@ -29,7 +29,7 @@ export interface LinkCommons {
    * @default false
    */
   secondary?: boolean;
-}
+};
 
 export type LinkProps = ComponentProps<LinkSlots> & LinkCommons;
 

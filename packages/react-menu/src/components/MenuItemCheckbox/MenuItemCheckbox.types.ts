@@ -5,9 +5,9 @@ import type { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
  * {@docCategory MenuItemCheckbox}
  */
 
-export interface MenuItemCheckboxProps extends MenuItemProps, MenuItemSelectableProps {}
+export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
 
 /**
  * {@docCategory MenuItemCheckbox}
  */
-export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {}
+export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
