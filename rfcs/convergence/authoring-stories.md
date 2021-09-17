@@ -6,7 +6,7 @@ _List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andr
 
 <!--
 command to generate TOC:
-npx markdown-toc -i rfcs/convergence/authoring-stories.md
+yarn doctoc --github rfcs/convergence/authoring-stories.md
 -->
 <!-- toc -->
 
