@@ -75,7 +75,6 @@ storiesOf('Slider Converged', module)
   );
 
 storiesOf('RangedSlider Converged', module)
-  .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -93,7 +92,7 @@ storiesOf('RangedSlider Converged', module)
   .addStory(
     'Root',
     () => <RangedSlider className="test-class" defaultValue={{ lowerValue: 30, upperValue: 80 }} />,
-    { includeRtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
     'Vertical',
@@ -106,13 +105,17 @@ storiesOf('RangedSlider Converged', module)
     ),
     { includeRtl: true },
   )
-  .addStory('Vertical', () => (
-    <RangedSlider
-      className="test-class"
-      defaultValue={{ lowerValue: 10, upperValue: 80 }}
-      disabled
-    />
-  ))
+  .addStory(
+    'Disabled',
+    () => (
+      <RangedSlider
+        className="test-class"
+        defaultValue={{ lowerValue: 10, upperValue: 80 }}
+        disabled
+      />
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
   .addStory('Disabled Vertical', () => (
     <RangedSlider
       className="test-class"
@@ -133,6 +136,8 @@ storiesOf('RangedSlider Converged', module)
     ),
     {
       includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
     },
   )
   .addStory(
