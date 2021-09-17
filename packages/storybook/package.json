@@ -24,14 +24,14 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-storybook": "^9.0.0-alpha.0",
-    "@fluentui/react": "^8.32.0",
+    "@fluentui/react-storybook": "9.0.0-alpha.0",
+    "@fluentui/react": "^8.34.2",
     "@fluentui/theme": "^2.3.2",
     "@storybook/addon-knobs": "6.3.0",
     "@storybook/addon-essentials": "6.3.6",
     "@storybook/addons": "6.3.6",
-    "@fluentui/azure-themes": "^8.1.65",
-    "@fluentui/theme-samples": "^8.2.7",
+    "@fluentui/azure-themes": "^8.1.70",
+    "@fluentui/theme-samples": "^8.2.11",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

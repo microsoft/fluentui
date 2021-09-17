@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix tab panel display",
-  "packageName": "@fluentui/web-components",
-  "email": "corylaviska@microsoft.com",
-  "dependentChangeType": "patch"
-}

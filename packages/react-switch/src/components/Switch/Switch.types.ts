@@ -1,31 +1,31 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, ObjectShorthandProps } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@fluentui/react-utilities';
 
 export type SwitchSlots = {
   /**
    * The root of the Switch.
    */
-  root: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  root: IntrinsicShorthandProps<'div'>;
 
   /**
    * The bar indicating the status of the Switch.
    */
-  track: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  track: IntrinsicShorthandProps<'div'>;
 
   /**
    * The wrapper around the thumb. It is used as the active area for the thumb to position itself.
    */
-  thumbWrapper: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  thumbWrapper: IntrinsicShorthandProps<'div'>;
 
   /**
    * The circular icon indicating the status of the Switch.
    */
-  thumb: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  thumb: IntrinsicShorthandProps<'div'>;
 
   /**
    * The hidden input that handles the Switch's internal functionality.
    */
-  input: ObjectShorthandProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+  input: IntrinsicShorthandProps<'input'>;
 };
 
 export interface SwitchCommons {

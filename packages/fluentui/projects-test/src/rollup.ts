@@ -2,11 +2,14 @@ import config from '@fluentui/scripts/config';
 import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
-import portfinder from 'portfinder';
 
-import { addResolutionPathsForProjectPackages, packProjectPackages } from './packPackages';
-import { performBrowserTest } from './performBrowserTest';
-import { createTempDir, log } from './utils';
+import {
+  addResolutionPathsForProjectPackages,
+  packProjectPackages,
+  performBrowserTest,
+  createTempDir,
+  log,
+} from '@fluentui/scripts/projects-test';
 
 export async function rollup() {
   const logger = log('test:projects:rollup');
@@ -30,7 +33,7 @@ export async function rollup() {
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger);
+  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tmpDirectory);
 
   await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
@@ -44,6 +47,6 @@ export async function rollup() {
   await sh(`yarn rollup -c`, tmpDirectory);
   logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
 
-  await performBrowserTest(tmpDirectory, await portfinder.getPortPromise());
+  await performBrowserTest(tmpDirectory);
   logger(`✔️ Browser test was passed`);
 }

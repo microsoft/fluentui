@@ -59,7 +59,7 @@ storiesOf('Button (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <DefaultButton {...baseProps} />, { rtl: true })
+  .addStory('Root', () => <DefaultButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <DefaultButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <DefaultButton {...baseProps} checked={true} />)
   .addStory('Primary', () => <DefaultButton {...baseProps} primary={true} />)
@@ -90,7 +90,7 @@ storiesOf('Button Action (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <ActionButton {...baseProps} />, { rtl: true })
+  .addStory('Root', () => <ActionButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />)
   .addStory('No Icon', () => <ActionButton>Button</ActionButton>)
@@ -111,7 +111,7 @@ storiesOf('Button Compound (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <CompoundButton {...baseProps} />, { rtl: true })
+  .addStory('Root', () => <CompoundButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <CompoundButton {...baseProps} disabled={true} />)
   .addStory('Checked', () => <CompoundButton {...baseProps} checked={true} />)
   .addStory('Primary', () => <CompoundButton {...baseProps} primary={true} />)
@@ -144,7 +144,7 @@ storiesOf('Button Command (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <CommandBarButton {...commandProps} />, { rtl: true })
+  .addStory('Root', () => <CommandBarButton {...commandProps} />, { includeRtl: true })
   .addStory('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
   .addStory('Checked', () => <CommandBarButton {...commandProps} checked={true} />);
 
@@ -172,7 +172,7 @@ storiesOf('Button Split (compat)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { rtl: true })
+  .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { includeRtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
   .addStory('Default with Primary Action Disabled', () => (
     <DefaultButton {...commandProps} primaryDisabled={true} split={true} />
