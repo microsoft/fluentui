@@ -70,7 +70,7 @@ const useTrackStyles = makeStyles({
     boxSizing: 'border-box',
     borderRadius: '999px',
     transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   }),
 
   unchecked: theme => ({
@@ -104,8 +104,8 @@ const useThumbWrapperStyles = makeStyles({
     bottom: '0',
     left: 'calc(var(--switch-thumb-size) * .7)',
     right: 'calc(var(--switch-thumb-size) * .7)',
-    transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
-    pointerEvents: 'none',
+    // transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    // pointerEvents: 'none',
   }),
 });
 
@@ -121,7 +121,7 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    pointerEvents: 'none',
+    background: 'green',
   }),
 
   unchecked: theme => ({
@@ -144,6 +144,19 @@ const useThumbStyles = makeStyles({
 });
 
 /**
+ * Styles for the activeRail slot
+ */
+const useActiveRailStyles = makeStyles({
+  activeRail: theme => ({
+    position: 'absolute',
+    left: 'calc(var(--switch-thumb-size) * .7)',
+    right: 'calc(var(--switch-thumb-size) * .7)',
+  }),
+});
+
+/**
+ *
+/**
  * Styles for the hidden input slot
  */
 const useInputStyle = makeStyles({
@@ -152,6 +165,7 @@ const useInputStyle = makeStyles({
     width: '100%',
     height: '100%',
     margin: 0,
+    pointerEvents: 'none',
   },
 
   enabled: {
@@ -173,6 +187,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   const trackStyles = useTrackStyles();
   const thumbWrapperStyles = useThumbWrapperStyles();
   const thumbStyles = useThumbStyles();
+  const activeRailStyles = useActiveRailStyles();
   const inputStyles = useInputStyle();
 
   state.root.className = mergeClasses(
@@ -200,6 +215,8 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     disabled && (checked ? thumbStyles.disabledChecked : thumbStyles.disabledUnchecked),
     state.thumb.className,
   );
+
+  state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
 
   state.input.className = mergeClasses(
     inputStyles.input,

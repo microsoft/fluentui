@@ -26,6 +26,11 @@ export type SwitchSlots = {
    * The hidden input that handles the Switch's internal functionality.
    */
   input: IntrinsicShorthandProps<'input'>;
+
+  /**
+   * The area in which the Slider's rail allows for the thumb to be dragged.
+   */
+  activeRail: IntrinsicShorthandProps<'div'>;
 };
 
 export interface SwitchCommons {
