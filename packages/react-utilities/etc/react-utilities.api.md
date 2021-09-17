@@ -11,6 +11,9 @@ import * as React_2 from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
+export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | ((props: TTriggerProps) => React_2.ReactNode) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactNode;
+
+// @public
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
     as?: As;
 };
