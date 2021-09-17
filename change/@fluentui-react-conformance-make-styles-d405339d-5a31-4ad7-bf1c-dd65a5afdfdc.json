@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor(react-conformance-make-styles): react-conformance as dev deps",
-  "packageName": "@fluentui/react-conformance-make-styles",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

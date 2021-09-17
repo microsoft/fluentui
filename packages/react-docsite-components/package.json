@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.17",
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
     "@types/color-check": "0.0.0",
     "@types/markdown-to-jsx": "6.11.0",
