@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "implement caching mechanism for PaletteRGB.closestIndexOf",
-  "packageName": "@fluentui/web-components",
-  "email": "nicholasrice@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactoring out functionality that applies trigger props to children as a utility.",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

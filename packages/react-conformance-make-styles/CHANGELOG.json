@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance-make-styles",
   "entries": [
     {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-conformance-make-styles_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-make-styles",
+            "comment": "refactor(react-conformance-make-styles): react-conformance as dev deps",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-conformance-make-styles",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.11"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Sep 2021 07:38:39 GMT",
       "tag": "@fluentui/react-conformance-make-styles_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",
