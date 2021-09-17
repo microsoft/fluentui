@@ -1,21 +1,16 @@
 import * as React from 'react';
 
 /**
- * Wrapper for `React.forwardRef`, with an API that works with components that use `IntrinsicShorthandProps`
- * from this package. It can also be used as a cleaner API for defining any component that forwards refs.
+ * Re-typed version of `React.forwardRef`, with an API that works with components that use `IntrinsicShorthandProps`
+ * from this package, and works around an issue in the official types, where its use of `React.PropsWithoutRef`
+ * breaks the union type created by `IntrinsicShorthandProps`.
  *
  * Expects the Props type to already have a `ref` attribute (which is the case if using `IntrinsicShorthandProps`).
  * If not, add the ref attribute using `React.RefAttributes`:
  * ```
- * const Example = forwardRef<ExampleProps & React.RefAttributes<HTMLElement>>((props, ref) => { ... });
+ * const Example = forwardRef<ExampleProps & React.RefAttributes<HTMLDivElement>>((props, ref) => { ... });
  * ```
- *
- * @returns the same as `React.forwardRef`, re-typed to `React.FunctionCompoonent<Props>`.
- * This prevents union props types from getting broken by the use of `React.PropsWithoutRef`,
- * which is unnecessary in this case, since Props already contains `ref`.
  */
-export function forwardRef<Props extends React.RefAttributes<unknown>>(
+export const forwardRef = React.forwardRef as <Props extends React.RefAttributes<unknown>>(
   component: React.ForwardRefRenderFunction<Props extends React.RefAttributes<infer R> ? R : never, Props>,
-) {
-  return (React.forwardRef(component) as unknown) as React.FunctionComponent<Props>;
-}
+) => React.ForwardRefExoticComponent<Props>;

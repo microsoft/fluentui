@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { FunctionComponent } from 'react';
+import { ForwardRefExoticComponent } from 'react';
 import { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -35,7 +35,7 @@ export interface MenuContextValues {
 }
 
 // @public
-export const MenuDivider: FunctionComponent<MenuDividerProps>;
+export const MenuDivider: ForwardRefExoticComponent<MenuDividerProps>;
 
 // @public (undocumented)
 export interface MenuDividerProps extends ComponentProps<MenuDividerSlots> {
@@ -51,7 +51,7 @@ export interface MenuDividerState extends ComponentState<MenuDividerSlots> {
 }
 
 // @public
-export const MenuGroup: FunctionComponent<MenuGroupProps>;
+export const MenuGroup: ForwardRefExoticComponent<MenuGroupProps>;
 
 // @public (undocumented)
 export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
@@ -68,7 +68,7 @@ export interface MenuGroupContextValues {
 }
 
 // @public
-export const MenuGroupHeader: FunctionComponent<MenuGroupHeaderProps>;
+export const MenuGroupHeader: ForwardRefExoticComponent<MenuGroupHeaderProps>;
 
 // @public (undocumented)
 export interface MenuGroupHeaderProps extends ComponentProps<MenuGroupHeaderSlots> {
@@ -98,10 +98,10 @@ export interface MenuGroupState extends ComponentState<MenuGroupSlots> {
 }
 
 // @public
-export const MenuItem: FunctionComponent<MenuItemProps>;
+export const MenuItem: ForwardRefExoticComponent<MenuItemProps>;
 
 // @public
-export const MenuItemCheckbox: FunctionComponent<MenuItemCheckboxProps>;
+export const MenuItemCheckbox: ForwardRefExoticComponent<MenuItemCheckboxProps>;
 
 // @public (undocumented)
 export interface MenuItemCheckboxProps extends MenuItemProps, MenuItemSelectableProps {
@@ -118,7 +118,7 @@ export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, M
 }
 
 // @public
-export const MenuItemRadio: FunctionComponent<MenuItemRadioProps>;
+export const MenuItemRadio: ForwardRefExoticComponent<MenuItemRadioProps>;
 
 // @public (undocumented)
 export interface MenuItemRadioProps extends MenuItemProps, MenuItemSelectableProps {
@@ -159,7 +159,7 @@ export interface MenuItemState extends ComponentState<MenuItemSlots>, MenuItemCo
 }
 
 // @public
-export const MenuList: FunctionComponent<MenuListProps>;
+export const MenuList: ForwardRefExoticComponent<MenuListProps>;
 
 // @public (undocumented)
 export interface MenuListCommons {
@@ -222,7 +222,7 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
 export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
-export const MenuPopover: FunctionComponent<MenuPopoverProps>;
+export const MenuPopover: ForwardRefExoticComponent<MenuPopoverProps>;
 
 // @public
 export interface MenuPopoverProps extends ComponentProps<MenuPopoverSlots> {

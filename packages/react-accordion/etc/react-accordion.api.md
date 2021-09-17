@@ -8,13 +8,13 @@ import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
-import { FunctionComponent } from 'react';
+import { ForwardRefExoticComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Accordion: FunctionComponent<AccordionProps>;
+export const Accordion: ForwardRefExoticComponent<AccordionProps>;
 
 // @public (undocumented)
 export interface AccordionCommons {
@@ -41,7 +41,7 @@ export interface AccordionContextValues {
 }
 
 // @public
-export const AccordionHeader: FunctionComponent<AccordionHeaderProps>;
+export const AccordionHeader: ForwardRefExoticComponent<AccordionHeaderProps>;
 
 // @public (undocumented)
 export interface AccordionHeaderCommons {
@@ -69,7 +69,7 @@ export interface AccordionHeaderContextValues {
 }
 
 // @public (undocumented)
-export const AccordionHeaderExpandIcon: React_2.FunctionComponent<ComponentProps<{
+export const AccordionHeaderExpandIcon: React_2.ForwardRefExoticComponent<ComponentProps<{
     root: IntrinsicShorthandProps<'span'>;
 }, "root">>;
 
@@ -108,7 +108,7 @@ export interface AccordionHeaderState extends ComponentState<AccordionHeaderSlot
 export type AccordionIndex = number | number[];
 
 // @public
-export const AccordionItem: FunctionComponent<AccordionItemProps>;
+export const AccordionItem: ForwardRefExoticComponent<AccordionItemProps>;
 
 // @public (undocumented)
 export interface AccordionItemCommons {
@@ -155,7 +155,7 @@ export interface AccordionItemState extends ComponentState<AccordionItemSlots>, 
 export type AccordionItemValue = unknown;
 
 // @public
-export const AccordionPanel: FunctionComponent<AccordionPanelProps>;
+export const AccordionPanel: ForwardRefExoticComponent<AccordionPanelProps>;
 
 // @public (undocumented)
 export interface AccordionPanelProps extends ComponentProps<AccordionPanelSlots> {

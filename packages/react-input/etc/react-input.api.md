@@ -6,12 +6,12 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FunctionComponent } from 'react';
+import { ForwardRefExoticComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public
-export const Input: FunctionComponent<InputProps>;
+export const Input: ForwardRefExoticComponent<InputProps>;
 
 // @public (undocumented)
 export interface InputCommons {

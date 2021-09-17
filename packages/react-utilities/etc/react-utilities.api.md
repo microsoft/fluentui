@@ -93,7 +93,7 @@ export type ExtractRef<Props extends {
 export const formProperties: Record<string, number>;
 
 // @public
-export function forwardRef<Props extends React_2.RefAttributes<unknown>>(component: React_2.ForwardRefRenderFunction<Props extends React_2.RefAttributes<infer R> ? R : never, Props>): React_2.FunctionComponent<Props>;
+export const forwardRef: <Props extends React_2.RefAttributes<unknown>>(component: React_2.ForwardRefRenderFunction<Props extends React_2.RefAttributes<infer R> ? R : never, Props>) => React_2.ForwardRefExoticComponent<Props>;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;

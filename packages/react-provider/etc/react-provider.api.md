@@ -6,7 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FunctionComponent } from 'react';
+import { ForwardRefExoticComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
@@ -19,7 +19,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
-export const FluentProvider: FunctionComponent<FluentProviderProps>;
+export const FluentProvider: ForwardRefExoticComponent<FluentProviderProps>;
 
 // @public (undocumented)
 export interface FluentProviderCommons {
