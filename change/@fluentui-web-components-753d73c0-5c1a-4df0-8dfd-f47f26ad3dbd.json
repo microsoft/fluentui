@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Fix web-component toolbar storybook location",
+  "packageName": "@fluentui/web-components",
+  "email": "brookdozer@gmail.com",
+  "dependentChangeType": "none"
+}

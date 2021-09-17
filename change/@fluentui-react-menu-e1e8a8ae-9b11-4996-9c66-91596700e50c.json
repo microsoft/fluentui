@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Menu: Making MenuTrigger accept function components which customize where props go as children.",
+  "packageName": "@fluentui/react-menu",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
