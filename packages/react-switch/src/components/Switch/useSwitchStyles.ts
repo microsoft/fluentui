@@ -26,18 +26,21 @@ const useRootStyles = makeStyles({
 
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
-      background: theme.alias.color.neutral.neutralForeground3Hover,
+      background: theme.alias.color.neutral.neutralStrokeAccessibleHover,
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: theme.alias.color.neutral.neutralForeground3Hover,
+      borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
     },
   }),
 
   checked: theme => ({
     ':hover .ms-Switch-track': {
-      // TODO: theme.alias.color.neutral.brandBackgroundInteractive
-      background: theme.global.palette.brand.shade30,
+      background: theme.alias.color.neutral.brandBackgroundHover,
+    },
+
+    ':active .ms-Switch-track': {
+      background: theme.alias.color.neutral.brandBackgroundPressed,
     },
   }),
 
@@ -69,7 +72,7 @@ const useTrackStyles = makeStyles({
     height: '100%',
     boxSizing: 'border-box',
     borderRadius: '999px',
-    transition: 'background .2s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
     pointerEvents: 'none',
   }),
 
@@ -79,8 +82,7 @@ const useTrackStyles = makeStyles({
   }),
 
   checked: theme => ({
-    // TODO: background: theme.alias.color.neutral.brandBackgroundInteractive,
-    background: theme.global.palette.brand.primary,
+    background: theme.alias.color.neutral.brandBackground,
     border: 'none',
   }),
 
@@ -89,8 +91,8 @@ const useTrackStyles = makeStyles({
   }),
 
   disabledChecked: theme => ({
+    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    border: 'none',
   }),
 });
 
@@ -104,7 +106,7 @@ const useThumbWrapperStyles = makeStyles({
     bottom: '0',
     left: 'calc(var(--switch-thumb-size) * .7)',
     right: 'calc(var(--switch-thumb-size) * .7)',
-    transition: 'transform .2s cubic-bezier(0.33, 0.0, 0.67, 1), background .2s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    transition: 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
     pointerEvents: 'none',
   }),
 });
@@ -129,8 +131,7 @@ const useThumbStyles = makeStyles({
   }),
 
   checked: theme => ({
-    // Neutral foreground accessible
-    background: 'white',
+    background: theme.alias.color.neutral.neutralForegroundOnBrand,
   }),
 
   disabledUnchecked: theme => ({
