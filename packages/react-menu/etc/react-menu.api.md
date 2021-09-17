@@ -339,9 +339,8 @@ export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
 export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> & {
-    // (undocumented)
     ref?: React_2.Ref<never>;
-}
+};
 
 // @public (undocumented)
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;
@@ -351,7 +350,7 @@ export type MenuTriggerProps = {
     children: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: MenuTriggerChildProps) => React_2.ReactNode);
-}
+};
 
 // @public (undocumented)
 export type MenuTriggerState = MenuTriggerProps;
