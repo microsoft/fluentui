@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Modifying MenuButton to adhere to MenuTrigger changes.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

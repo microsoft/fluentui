@@ -2,6 +2,27 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-slider",
+            "comment": "Moving Slider logic into utils folder.",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-slider to v9.0.0-alpha.6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Sep 2021 07:38:39 GMT",
       "tag": "@fluentui/react-slider_v9.0.0-alpha.5",
       "version": "9.0.0-alpha.5",
