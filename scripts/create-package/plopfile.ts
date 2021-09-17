@@ -7,7 +7,7 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import { NxJson } from '@nrwl/workspace';
+import { NxJsonConfiguration } from '@nrwl/devkit';
 import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
@@ -286,7 +286,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   Object.assign(nxWorkspace.projects, templates.workspace);
 
   const nxConfigContent = fs.readFileSync(paths.config, 'utf-8');
-  const nxConfig: NxJson = jju.parse(nxConfigContent);
+  const nxConfig: NxJsonConfiguration = jju.parse(nxConfigContent);
   Object.assign(nxConfig.projects, templates.config);
 
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
