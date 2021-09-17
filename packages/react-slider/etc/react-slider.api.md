@@ -14,7 +14,7 @@ import * as React_2 from 'react';
 export const renderSlider: (state: SliderState) => JSX.Element;
 
 // @public
-export const Slider: React_2.ForwardRefExoticComponent<SliderProps & React_2.RefAttributes<HTMLDivElement>>;
+export const Slider: ForwardRefExoticComponent<SliderProps>;
 
 // @public (undocumented)
 export interface SliderCommons {
