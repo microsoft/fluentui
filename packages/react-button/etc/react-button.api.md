@@ -125,6 +125,7 @@ export type SplitButtonDefaultedProps = 'size';
 // @public (undocumented)
 export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandPropsCompat>, MenuButtonProps {
     button?: ShorthandPropsCompat<ButtonProps>;
+    buttonRef?: React_2.Ref<HTMLElement>;
     menuButton?: ShorthandPropsCompat<MenuButtonProps>;
     menuButtonRef?: React_2.Ref<HTMLElement>;
 }
