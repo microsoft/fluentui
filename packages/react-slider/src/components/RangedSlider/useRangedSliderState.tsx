@@ -246,7 +246,6 @@ export const useRangedSliderState = (state: RangedSliderState) => {
 
       if (incomingValue !== min && incomingValue !== max) {
         ev.stopPropagation();
-        ev.preventDefault();
       }
       onKeyDownCallback?.(ev);
 

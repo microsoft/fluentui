@@ -105,6 +105,9 @@ export const upperThumbClassName: string;
 export const useRangedSlider: (props: RangedSliderProps, ref: React_2.Ref<HTMLElement>) => RangedSliderState;
 
 // @public (undocumented)
+export const useRangedSliderState: (state: RangedSliderState) => RangedSliderState;
+
+// @public (undocumented)
 export const useRangedSliderStyles: (state: RangedSliderState) => RangedSliderState;
 
 // @public
