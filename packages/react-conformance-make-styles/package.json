@@ -22,9 +22,9 @@
     "start": "yarn storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-conformance": "^0.5.0"
+    "@fluentui/react-conformance": "*"
   },
   "dependencies": {
     "@fluentui/react-make-styles": "9.0.0-alpha.67",

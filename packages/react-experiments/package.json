@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.17",
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",

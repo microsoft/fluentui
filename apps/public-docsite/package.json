@@ -24,7 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.17",
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/react-monaco-editor": "^1.2.11",
     "@fluentui/scripts": "^1.0.0",
     "write-file-webpack-plugin": "^4.1.0"
