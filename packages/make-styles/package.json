@@ -24,7 +24,6 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.4.1",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.0.8",
     "@types/stylis": "4.0.0"
   },
   "dependencies": {
