@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   clamp,
+  on,
   useBoolean,
   useControllableState,
   useEventCallback,
@@ -14,7 +15,6 @@ import {
   getMarkPercent,
   getMarkValue,
   getPercent,
-  on,
   renderMarks,
 } from '../../utils/index';
 import type { SliderState } from './Slider.types';
