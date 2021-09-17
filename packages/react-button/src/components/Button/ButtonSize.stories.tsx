@@ -45,5 +45,8 @@ Size.parameters = {
     description: {
       story: 'A button supports `small`, `medium` and `large` size. Default size is `medium`.',
     },
+    source: {
+      code: __STORY__,
+    },
   },
 };

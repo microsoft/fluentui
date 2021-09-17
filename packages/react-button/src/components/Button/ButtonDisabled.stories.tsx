@@ -42,5 +42,8 @@ Disabled.parameters = {
               for screen reader and keyboard users. The primary example of this pattern is when
               the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.`,
     },
+    source: {
+      code: __STORY__,
+    },
   },
 };
