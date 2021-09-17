@@ -15,36 +15,29 @@ export const markLabelClassName = 'ms-Slider-label';
  */
 export const renderMarks = (
   markValues: number[],
-  markPercent: string[],
   marks: boolean | (number | { value: number; label?: string | JSX.Element; mark?: JSX.Element })[],
-) => {
-  const marksPercent = markPercent;
-  const marksValue = markValues;
-  const marksChildren: JSX.Element[] = [];
-  for (let i = 0; i < marksPercent.length; i++) {
-    const marksItem = typeof marks === 'boolean' || marks === undefined ? null : marks[i];
+) =>
+  markValues.map((value, i) => {
+    const marksItem = typeof marks === 'boolean' ? undefined : marks[i];
 
-    marksChildren.push(
+    return (
       <div className={markContainerClassName} key={`markItemContainer-${i}`}>
-        {marksItem && typeof marksItem === 'object' && marksItem.mark ? (
+        {marksItem !== undefined && typeof marksItem === 'object' && marksItem.mark ? (
           marksItem.mark
         ) : (
           <div
             className={mergeClasses(
               markClassName,
-              (marksValue[i] === 0 && firstMarkClassName) || (marksValue[i] === 100 && lastMarkClassName) || '',
+              (markValues[i] === 0 && firstMarkClassName) || (markValues[i] === 100 && lastMarkClassName) || '',
             )}
             key={`mark-${i}`}
           />
         )}
-        {marksItem !== null && typeof marksItem === 'object' && marksItem.label && (
+        {marksItem !== undefined && typeof marksItem === 'object' && marksItem.label && (
           <div className={markLabelClassName} key={`markLabel-${i}`}>
             {marksItem.label}
           </div>
         )}
-      </div>,
+      </div>
     );
-  }
-
-  return marksChildren;
-};
+  });
