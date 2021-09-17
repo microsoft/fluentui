@@ -107,7 +107,7 @@ storiesOf('RangedSlider Converged', module)
   ))
   .addStory(
     'Marks',
-    () => <RangedSlider className="test-class" max={10} defaultValue={[10, 80]} marks />,
+    () => <RangedSlider className="test-class" max={10} defaultValue={[1, 8]} marks />,
     {
       includeRtl: true,
       includeHighContrast: true,
@@ -116,7 +116,7 @@ storiesOf('RangedSlider Converged', module)
   )
   .addStory(
     'Marks Vertical',
-    () => <RangedSlider className="test-class" vertical max={10} defaultValue={[10, 80]} marks />,
+    () => <RangedSlider className="test-class" vertical max={10} defaultValue={[1, 8]} marks />,
     {
       includeRtl: true,
     },
@@ -127,7 +127,7 @@ storiesOf('RangedSlider Converged', module)
       <RangedSlider
         className="test-class"
         max={10}
-        defaultValue={[10, 80]}
+        defaultValue={[1, 8]}
         marks={[0, 1, 5, 8, 10]}
       />
     ),
@@ -142,7 +142,7 @@ storiesOf('RangedSlider Converged', module)
         className="test-class"
         vertical
         max={10}
-        defaultValue={[10, 80]}
+        defaultValue={[1, 8]}
         marks={[0, 1, 5, 8, 10]}
       />
     ),
