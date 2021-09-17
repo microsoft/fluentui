@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Slider } from '@fluentui/react-slider';
+import { Slider, RangedSlider } from '@fluentui/react-slider';
 
 storiesOf('Slider Converged', module)
   .addDecorator(story => (
