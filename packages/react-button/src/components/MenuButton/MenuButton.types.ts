@@ -3,6 +3,9 @@ import type { ComponentProps, ComponentState, IntrinsicShorthandProps } from '@f
 import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type MenuButtonSlots = ButtonSlots & {
+  /**
+   * Menu icon that indicates that this button has a menu that can be expanded.
+   */
   menuIcon?: IntrinsicShorthandProps<'span'>;
 };
 

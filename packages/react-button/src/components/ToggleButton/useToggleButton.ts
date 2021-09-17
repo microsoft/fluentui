@@ -4,7 +4,10 @@ import { useButton } from '../Button/useButton';
 import type { ToggleButtonProps, ToggleButtonState } from './ToggleButton.types';
 
 /**
- * Given user props, returns the final state for a ToggleButton.
+ * Given user props, defines default props for the ToggleButton, calls useButtonState and useChecked, and returns
+ * processed state.
+ * @param props - User provided props to the ToggleButton component.
+ * @param ref - User provided ref to be passed to the ToggleButton component.
  */
 export const useToggleButton = (
   { checked, defaultChecked, ...props }: ToggleButtonProps,

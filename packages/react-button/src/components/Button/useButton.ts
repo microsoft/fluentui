@@ -9,7 +9,9 @@ import { useARIAButton } from '@fluentui/react-aria';
 export const buttonSlots: (keyof ButtonSlots)[] = ['icon', 'root'];
 
 /**
- * Given user props, returns the final state for a Button.
+ * Given user props, defines default props for the Button, calls useButtonState, and returns processed state.
+ * @param props - User provided props to the Button component.
+ * @param ref - User provided ref to be passed to the Button component.
  */
 export const useButton = (
   {
