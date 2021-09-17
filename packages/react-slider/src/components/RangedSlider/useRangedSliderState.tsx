@@ -16,24 +16,11 @@ import {
   getMarkValue,
   getKeydownValue,
   renderMarks,
+  validateRangedThumbValues,
+  findClosestThumb,
 } from '../../utils/index';
 import { animationTime } from '../Slider/useSliderState';
 import { RangedSliderState } from './RangedSlider.types';
-
-/**
- * Finds the closest thumb based of a given value and returns it's key.
- */
-const findClosestThumb = (thumbArray: [number, number], incomingValue: number) => {
-  return Math.abs(incomingValue - thumbArray[0]) <= Math.abs(thumbArray[1] - incomingValue)
-    ? 'lowerValue'
-    : 'upperValue';
-};
-
-/**
- * Clamps and sorts the values in RangedSlider to a given min and max
- */
-const validateRangedThumbValues = (thumbValues: [number, number], min: number, max: number): [number, number] =>
-  thumbValues.map(value => clamp(value, min, max)).sort((a, b) => a - b) as [number, number];
 
 interface RangedSliderInternalState {
   /**

@@ -1,5 +1,6 @@
 export * from './calculateSteps';
 export * from './clamp';
+export * from './findClosestThumb';
 export * from './getKeydownValue';
 export * from './getMarkPercent';
 export * from './getMarkValues';
@@ -7,3 +8,4 @@ export * from './getPercent';
 export * from './getRTLSafeKey';
 export * from './on';
 export * from './renderMarks';
+export * from './validateRangedThumbValues';
