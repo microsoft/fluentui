@@ -365,7 +365,7 @@ All `.stories.tsx` which are related to a single docs page files must be in the 
 
 Every component must have a story called `Default`, which:
 
-- must be re-expored as the first story - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
+- must be re-exported as the first story - see [chapter 7](#7-dissecting-big-story-files-into-smaller-ones) for examples
 - must support auto generated [Controls](https://storybook.js.org/docs/react/essentials/controls) - more details in [chapter 3](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
 
 Storybook will render a Controls table under this story.
