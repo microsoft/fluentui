@@ -88,7 +88,7 @@ export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.Ref
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
 // @public (undocumented)
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & Partial<MenuTriggerChildProps> & {
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & Partial<Omit<MenuTriggerChildProps, 'ref'>> & {
     menuIcon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -153,7 +153,7 @@ export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundBu
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
 
-// @public (undocumented)
+// @public
 export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)

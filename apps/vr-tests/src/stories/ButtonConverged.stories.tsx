@@ -18,33 +18,68 @@ storiesOf('Button Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button>Hello, world</Button>, { rtl: true })
+  .addStory('Default', () => <Button>Hello, world</Button>, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Circular', () => <Button circular>Hello, world</Button>)
   .addStory('Outline', () => <Button outline>Hello, world</Button>)
-  .addStory('Primary', () => <Button primary>Hello, world</Button>)
-  .addStory('Subtle', () => <Button subtle>Hello, world</Button>)
-  .addStory('Transparent', () => <Button transparent>Hello, world</Button>)
-  .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
-  .addStory('Outline Disabled', () => (
-    <Button outline disabled>
-      Hello, world
-    </Button>
-  ))
-  .addStory('Primary Disabled', () => (
-    <Button primary disabled>
-      Hello, world
-    </Button>
-  ))
-  .addStory('Subtle Disabled', () => (
-    <Button subtle disabled>
-      Hello, world
-    </Button>
-  ))
-  .addStory('Transparent Disabled', () => (
-    <Button transparent disabled>
-      Hello, world
-    </Button>
-  ))
+  .addStory('Primary', () => <Button primary>Hello, world</Button>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Subtle', () => <Button subtle>Hello, world</Button>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Transparent', () => <Button transparent>Hello, world</Button>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('Disabled', () => <Button disabled>Hello, world</Button>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory(
+    'Outline Disabled',
+    () => (
+      <Button outline disabled>
+        Hello, world
+      </Button>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Primary Disabled',
+    () => (
+      <Button primary disabled>
+        Hello, world
+      </Button>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
+  .addStory(
+    'Subtle Disabled',
+    () => (
+      <Button subtle disabled>
+        Hello, world
+      </Button>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
+  .addStory(
+    'Transparent Disabled',
+    () => (
+      <Button transparent disabled>
+        Hello, world
+      </Button>
+    ),
+    { includeHighContrast: true, includeDarkMode: true },
+  )
   .addStory('Size small', () => (
     <Button icon="X" size="small">
       Hello, world
@@ -55,7 +90,9 @@ storiesOf('Button Converged', module)
       Hello, world
     </Button>
   ))
-  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>, { rtl: true })
+  .addStory('With icon before content', () => <Button icon="X">Hello, world</Button>, {
+    includeRtl: true,
+  })
   .addStory(
     'With icon after content',
     () => (
@@ -63,10 +100,10 @@ storiesOf('Button Converged', module)
         Hello, world
       </Button>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Icon only', () => <Button icon="X" />)
-  .addStory('Circular and icon only', () => <Button circular icon="X" />, { rtl: true });
+  .addStory('Circular and icon only', () => <Button circular icon="X" />, { includeRtl: true });
 
 storiesOf('Button Block Converged', module)
   .addDecorator(story => (
@@ -83,7 +120,7 @@ storiesOf('Button Block Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <Button block>Hello, world</Button>, { rtl: true })
+  .addStory('Default', () => <Button block>Hello, world</Button>, { includeRtl: true })
   .addStory('Circular', () => (
     <Button block circular>
       Hello, world
@@ -145,7 +182,7 @@ storiesOf('CompoundButton Converged', module)
     () => (
       <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Circular', () => (
     <CompoundButton circular secondaryContent="This is some secondary text">
@@ -214,7 +251,7 @@ storiesOf('CompoundButton Converged', module)
         Hello, world
       </CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'With icon after content',
@@ -223,10 +260,12 @@ storiesOf('CompoundButton Converged', module)
         Hello, world
       </CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Icon only', () => <CompoundButton icon="X" />)
-  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />, { rtl: true });
+  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />, {
+    includeRtl: true,
+  });
 
 storiesOf('CompoundButton Block Converged', module)
   .addDecorator(story => (
@@ -250,7 +289,7 @@ storiesOf('CompoundButton Block Converged', module)
         Hello, world
       </CompoundButton>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Circular', () => (
     <CompoundButton block secondaryContent="This is some secondary text" circular>
@@ -308,10 +347,17 @@ storiesOf('ToggleButton Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>, { rtl: true })
+  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Circular', () => <ToggleButton circular>Hello, world</ToggleButton>)
   .addStory('Outline', () => <ToggleButton outline>Hello, world</ToggleButton>)
-  .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Subtle', () => <ToggleButton subtle>Hello, world</ToggleButton>)
   .addStory('Transparent', () => <ToggleButton transparent>Hello, world</ToggleButton>)
   .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
@@ -380,7 +426,7 @@ storiesOf('ToggleButton Block Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>, { rtl: true })
+  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <ToggleButton block circular>
       Hello, world
@@ -457,7 +503,7 @@ storiesOf('MenuButton Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>, { rtl: true })
+  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => <MenuButton circular>Hello, world</MenuButton>)
   .addStory('Outline', () => <MenuButton outline>Hello, world</MenuButton>)
   .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
@@ -513,7 +559,7 @@ storiesOf('MenuButton Block Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>, { rtl: true })
+  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>, { includeRtl: true })
   .addStory('Circular', () => (
     <MenuButton block circular>
       Hello, world
