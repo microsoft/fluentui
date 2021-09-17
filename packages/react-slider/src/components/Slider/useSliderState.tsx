@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
+  clamp,
   useBoolean,
   useControllableState,
   useEventCallback,
@@ -9,7 +10,6 @@ import {
 } from '@fluentui/react-utilities';
 import {
   calculateSteps,
-  clamp,
   getKeydownValue,
   getMarkPercent,
   getMarkValue,

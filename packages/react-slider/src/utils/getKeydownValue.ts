@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getRTLSafeKey } from './getRTLSafeKey';
+import { getRTLSafeKey } from '@fluentui/react-utilities';
 
 /**
  * Determines the incoming value for the Slider based off of a keyboard event.

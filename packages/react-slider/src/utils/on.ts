@@ -1,5 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
-  element.addEventListener(eventName, callback);
-  return () => element.removeEventListener(eventName, callback);
+export const on = <T>(
+  element: Element | Window | Document,
+  eventName: string,
+  callback: (ev: T) => void,
+  options?: boolean,
+) => {
+  element.addEventListener(eventName, (callback as unknown) as (ev: Event) => void);
+  return () => element.removeEventListener(eventName, (callback as unknown) as (ev: Event) => void);
 };
