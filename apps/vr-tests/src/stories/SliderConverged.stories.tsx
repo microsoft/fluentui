@@ -18,11 +18,18 @@ storiesOf('Slider Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <Slider className="test-class" defaultValue={30} />, { includeRtl: true })
+  .addStory('Root', () => <Slider className="test-class" defaultValue={30} />, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Vertical', () => <Slider className="test-class" vertical defaultValue={30} />, {
     includeRtl: true,
   })
-  .addStory('Disabled', () => <Slider className="test-class" disabled defaultValue={30} />)
+  .addStory('Disabled', () => <Slider className="test-class" disabled defaultValue={30} />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('Disabled Vertical', () => (
     <Slider className="test-class" disabled vertical defaultValue={30} />
   ))
@@ -40,6 +47,8 @@ storiesOf('Slider Converged', module)
   ))
   .addStory('Marks', () => <Slider className="test-class" max={10} defaultValue={3} marks />, {
     includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
   .addStory(
     'Marks Vertical',
