@@ -5,7 +5,15 @@ import { renderHeader, renderEntry } from './customRenderers';
 const allPackageInfo = getAllPackageInfo();
 const fluentConvergedPackagePaths = Object.values(allPackageInfo)
   .map(packageInfo => {
-    if (packageInfo.packageJson.version.startsWith('9.') && !packageInfo.packageJson.private) {
+    if (packageInfo.packageJson.version.startsWith('9.')) {
+      return packageInfo.packagePath;
+    }
+
+    // These packages depend on converged packages, but are private
+    // Can be included in the publish scope so that dependencies are bumped correctly.
+    const privateNonConverged = ['perf-test', 'vr-tests'];
+
+    if (privateNonConverged.includes(packageInfo.packageJson.name)) {
       return packageInfo.packagePath;
     }
 
@@ -15,10 +23,10 @@ const fluentConvergedPackagePaths = Object.values(allPackageInfo)
 
 const ignoreFluentConvergedScope = fluentConvergedPackagePaths.map(path => `!${path}`);
 // Northstar is never published with beachball
-const northstarScope = '!packages/fluentui/*';
+const ignoreNorthstarScope = '!packages/fluentui/*';
 
-// Default scope used to publish Fluent UI v8
-const defaultScope = [northstarScope, ...ignoreFluentConvergedScope];
+// Default scope used to publish Fluent UI v8 and non-v9 packages
+const defaultScope = [ignoreNorthstarScope, ...ignoreFluentConvergedScope];
 
 export const config: BeachballConfig = {
   disallowedChangeTypes: ['major', 'prerelease'],
