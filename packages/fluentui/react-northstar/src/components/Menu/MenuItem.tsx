@@ -199,7 +199,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     active: parentProps.active,
     variables: parentProps.variables,
     accessibility: parentProps.accessibility,
-    onItemSelect: parentProps.onItemSelect,
     ...inputProps,
   };
 
@@ -357,7 +356,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     setIsFromKeyboard(isEventFromKeyboard());
     _.invoke(props, 'onFocus', e, props);
     if (menu) {
-      _.invoke(props, 'onItemSelect', e, index);
+      _.invoke(parentProps, 'onItemSelect', e, index);
     }
   };
 

@@ -55,6 +55,24 @@ describe('Menu', () => {
       expect(items[0].onClick).toHaveBeenCalled();
     });
 
+    it('set active index of items with submenu on focus', () => {
+      const mockActiveIndexChange = jest.fn();
+      const menu = mountWithProvider(
+        <Menu onActiveIndexChange={mockActiveIndexChange}>
+          <Menu.Item index={0} menu={['1']}>
+            item 1
+          </Menu.Item>
+        </Menu>,
+      );
+
+      menu.find('MenuItem').first().find('a').first().simulate('focus');
+      expect(mockActiveIndexChange).toHaveBeenCalled();
+      expect(mockActiveIndexChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'focus' }),
+        expect.objectContaining({ activeIndex: 0 }),
+      );
+    });
+
     it('should open on hover and keep open on click', () => {
       const items: MenuItemProps[] = getNestedItems();
       items[1].on = 'hover';
