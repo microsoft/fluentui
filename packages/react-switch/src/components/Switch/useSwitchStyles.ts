@@ -38,6 +38,10 @@ const useRootStyles = makeStyles({
     ':hover .ms-Switch-track': {
       background: theme.alias.color.neutral.brandBackgroundHover,
     },
+
+    ':active .ms-Switch-track': {
+      background: theme.alias.color.neutral.brandBackgroundPressed,
+    },
   }),
 
   focusIndicator: createFocusIndicatorStyleRule(
