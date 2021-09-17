@@ -20,13 +20,21 @@ storiesOf('Switch Converged', module)
   ))
   .addStory('Root (unchecked)', () => <Switch className="test-class" defaultChecked={false} />, {
     rtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
   .addStory('Root (checked)', () => <Switch className="test-class" defaultChecked={true} />, {
     rtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
   })
-  .addStory('Disabled (unchecked)', () => (
-    <Switch className="test-class" disabled defaultChecked={false} />
-  ))
-  .addStory('Disabled (checked)', () => (
-    <Switch className="test-class" disabled defaultChecked={true} />
-  ));
+  .addStory(
+    'Disabled (unchecked)',
+    () => <Switch className="test-class" disabled defaultChecked={false} />,
+    { includeHighContrast: true, includeDarkMode: true },
+  )
+  .addStory(
+    'Disabled (checked)',
+    () => <Switch className="test-class" disabled defaultChecked={true} />,
+    { includeHighContrast: true, includeDarkMode: true },
+  );

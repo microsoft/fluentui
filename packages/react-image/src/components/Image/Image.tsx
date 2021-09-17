@@ -4,6 +4,9 @@ import { useImageStyles } from './useImageStyles';
 import type { ImageProps } from './Image.types';
 import { forwardRef } from '@fluentui/react-utilities';
 
+/**
+ * The Image component ensures the consistent styling of images.
+ */
 export const Image = forwardRef<ImageProps>((props, ref) => {
   const state = useImage(props, ref);
   useImageStyles(state);

@@ -90,16 +90,6 @@ export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: 
  */
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ExtractRef<Props extends { ref?: any }> = Props['ref'] extends
-  | ((instance: infer I | null) => void)
-  | React.RefObject<infer I>
-  | null
-  | undefined
-  ? I
-  : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    any;
-
 export type ComponentProps<
   Shorthands extends ObjectShorthandPropsRecord,
   Primary extends keyof Shorthands = 'root'
