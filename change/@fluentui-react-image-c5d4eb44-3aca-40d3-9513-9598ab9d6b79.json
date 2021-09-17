@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Fix typings in React.forwardRef",
+  "comment": "Removed conditional adding of aria-hidden",
   "packageName": "@fluentui/react-image",
-  "email": "behowell@microsoft.com",
+  "email": "tkrasniqi@microsoft.com",
   "dependentChangeType": "patch"
 }

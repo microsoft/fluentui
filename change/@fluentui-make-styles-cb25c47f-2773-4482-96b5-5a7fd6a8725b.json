@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(make-styles): Remove unnecessary dev dependency",
+  "packageName": "@fluentui/make-styles",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

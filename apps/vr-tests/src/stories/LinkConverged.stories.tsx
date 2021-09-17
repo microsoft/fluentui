@@ -3,7 +3,9 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-const AnchorLink = (props: LinkProps) => <Link {...props} href="https://www.bing.com" />;
+const AnchorLink = (props: LinkProps & { as?: 'a' }) => (
+  <Link {...props} href="https://www.bing.com" />
+);
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 storiesOf('Link Converged - Rendered as anchor', module)
