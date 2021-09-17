@@ -1,8 +1,5 @@
 import * as React from 'react';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore - add link to this comment please  (see https://github.com/microsoft/fluentui/pull/18695)
-import { Button } from '@fluentui/react-button';
+import { Button } from '../../Button'; // codesandbox-dependency: @fluentui/react-button ^9.0.0-alpha
 import { CalendarMonth24Regular } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-make-styles';
 
@@ -43,6 +40,8 @@ Disabled.parameters = {
               the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.`,
     },
     source: {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       code: __STORY__,
     },
   },
