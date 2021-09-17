@@ -15,7 +15,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1"
+    "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.5",
