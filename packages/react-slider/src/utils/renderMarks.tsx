@@ -12,6 +12,7 @@ export const markLabelClassName = 'ms-Slider-label';
  * Renders the marks
  *
  * @param markValues The marks percentage position relative to their individual positions.
+ * @param marks The provided marks prop from the Slider component.
  */
 export const renderMarks = (
   markValues: number[],
