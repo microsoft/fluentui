@@ -15,7 +15,12 @@ export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandProps
   menuButton?: ShorthandPropsCompat<MenuButtonProps>;
 
   /**
-   * Ref to the menu button element
+   * Ref to the Button element.
+   */
+  buttonRef?: React.Ref<HTMLElement>;
+
+  /**
+   * Ref to the MenuButton element.
    */
   menuButtonRef?: React.Ref<HTMLElement>;
 }

@@ -8,7 +8,9 @@ export const splitButtonShorthandProps: SplitButtonShorthandPropsCompat[] = ['bu
 const mergeProps = makeMergePropsCompat({ deepMerge: splitButtonShorthandProps });
 
 /**
- * Redefine the component factory, reusing button factory.
+ * Given user props, defines default props for the SplitButton and returns processed state.
+ * @param props - User provided props to the SplitButton component.
+ * @param ref - User provided ref to be passed to the SplitButton component.
  */
 export const useSplitButton = (
   props: SplitButtonProps,
@@ -18,46 +20,41 @@ export const useSplitButton = (
   const resolvedShorthandProps = resolveShorthandProps(props, splitButtonShorthandProps);
   const { className } = props;
   const {
-    as = 'span',
-    block,
     button,
+    buttonRef,
     circular,
     disabled,
     disabledFocusable,
-    subtle,
     menuButton,
     menuButtonRef,
+    outline,
     primary,
     size = 'medium',
-    style,
+    subtle,
     transparent,
     ...userProps
   } = resolvedShorthandProps;
 
-  const buttonRef = React.useRef<HTMLElement | undefined>(null);
+  const buttonInternalRef = React.useRef<HTMLElement | undefined>(null);
   const menuButtonInternalRef = React.useRef<HTMLElement | undefined>(null);
 
   const state = mergeProps(
     {
       as: 'div',
       'aria-disabled': disabled,
-      block,
       className,
-      disabled,
-      primary,
-      size,
-      style,
-      transparent,
+      ref,
 
       button: {
         as: 'button',
-        ref: useMergedRefs(ref, buttonRef),
+        ref: useMergedRefs(buttonRef, buttonInternalRef),
         circular,
         disabled,
         disabledFocusable,
-        subtle,
+        outline,
         primary,
         size,
+        subtle,
         transparent,
         ...userProps,
         ...button,
@@ -69,9 +66,10 @@ export const useSplitButton = (
         circular,
         disabled,
         disabledFocusable,
-        subtle,
+        outline,
         primary,
         size,
+        subtle,
         transparent,
         ...menuButton,
       },

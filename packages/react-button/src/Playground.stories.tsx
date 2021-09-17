@@ -132,7 +132,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
             <td style={cellStyle}>
               <TextField
                 value={
-                  componentProps && componentProps[propName]
+                  componentProps && componentProps[propName] !== undefined
                     ? (componentProps[propName] as string)
                     : (prop.defaultValue as string)
                 }

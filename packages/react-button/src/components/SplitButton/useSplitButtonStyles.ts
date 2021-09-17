@@ -25,46 +25,81 @@ const useStyles = makeStyles({
       borderBottomLeftRadius: 0,
     },
   }),
-  rootPrimary: theme => {
-    return {
-      // Use classnames to increase specificy of styles and avoid collisions.
+  rootBlock: {
+    width: '100%',
+  },
+  rootPrimary: theme => ({
+    // Use classnames to increase specificy of styles and avoid collisions.
+    [`& .${SplitButtonClassNames.button}`]: {
+      borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
+    },
+
+    ':hover': {
       [`& .${SplitButtonClassNames.button}`]: {
         borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
       },
+    },
 
-      ':hover': {
-        [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
-        },
+    ':active': {
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
       },
+    },
+  }),
+  rootSubtle: theme => ({
+    // Use classnames to increase specificy of styles and avoid collisions.
+    [`& .${SplitButtonClassNames.button}`]: {
+      borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+    },
 
-      ':active': {
-        [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: theme.alias.color.neutral.neutralForegroundInverted,
-        },
+    ':hover': {
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
       },
-    };
-  },
-  rootDisabledPrimary: theme => {
-    return {
-      // Use classnames to increase specificy of styles and avoid collisions.
+    },
+
+    ':active': {
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      },
+    },
+  }),
+  rootTransparent: theme => ({
+    // Use classnames to increase specificy of styles and avoid collisions.
+    [`& .${SplitButtonClassNames.button}`]: {
+      borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+    },
+
+    ':hover': {
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      },
+    },
+
+    ':active': {
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: theme.alias.color.neutral.neutralStroke1Hover,
+      },
+    },
+  }),
+  rootDisabled: theme => ({
+    // Use classnames to increase specificy of styles and avoid collisions.
+    [`& .${SplitButtonClassNames.button}`]: {
+      borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
+    },
+
+    ':hover': {
       [`& .${SplitButtonClassNames.button}`]: {
         borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
       },
+    },
 
-      ':hover': {
-        [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
-        },
+    ':active': {
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
       },
-
-      ':active': {
-        [`& .${SplitButtonClassNames.button}`]: {
-          borderRightColor: theme.alias.color.neutral.neutralStrokeDisabled,
-        },
-      },
-    };
-  },
+    },
+  }),
 });
 
 export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState => {
@@ -72,8 +107,11 @@ export const useSplitButtonStyles = (state: SplitButtonState): SplitButtonState 
 
   state.className = mergeClasses(
     styles.root,
+    state.block && styles.rootBlock,
     state.primary && styles.rootPrimary,
-    state.disabled && state.primary && styles.rootDisabledPrimary,
+    state.subtle && styles.rootSubtle,
+    state.transparent && styles.rootTransparent,
+    state.disabled && styles.rootDisabled,
     state.className,
   );
 

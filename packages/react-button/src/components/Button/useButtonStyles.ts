@@ -102,7 +102,7 @@ const useRootStyles = makeStyles({
     width: '100%',
   },
   circular: theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: '50000px',
   }),
   outline: theme => ({
     background: theme.alias.color.neutral.transparentBackground,
@@ -248,9 +248,10 @@ const useRootFocusStyles = makeStyles({
       ${theme.alias.shadow.shadow4},
       0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
     `,
+    zIndex: 1,
   })),
   circular: createFocusIndicatorStyleRule(theme => ({
-    borderRadius: theme.global.borderRadius.circular,
+    borderRadius: '50000px',
   })),
   primary: createFocusIndicatorStyleRule(theme => ({
     borderColor: theme.alias.color.neutral.neutralForegroundOnBrand,

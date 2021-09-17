@@ -3,8 +3,6 @@ import * as React from 'react';
 // @ts-ignore
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 // @ts-ignore
-import type { MenuProps } from '@fluentui/react-menu';
-// @ts-ignore
 import { SplitButton, SplitButtonProps } from './SplitButton';
 import { buttonBaseProps } from './buttonBaseProps.stories';
 import { Playground } from './Playground.stories';
@@ -18,9 +16,15 @@ const ExampleSplitButton = (props: SplitButtonProps & ExampleProps): JSX.Element
   const { primaryActionDisabled, ...rest } = props;
 
   return (
-    <Menu>
+    <Menu positioning="below-end">
       <MenuTrigger>
-        <SplitButton button={{ disabled: primaryActionDisabled || rest.disabled }} {...rest} />
+        {triggerProps => (
+          <SplitButton
+            button={{ disabled: primaryActionDisabled || rest.disabled }}
+            menuButton={triggerProps}
+            {...rest}
+          />
+        )}
       </MenuTrigger>
 
       <MenuPopover>
@@ -49,4 +53,9 @@ export const SplitButtonPlayground = () => {
       <ExampleSplitButton />
     </Playground>
   );
+};
+
+export default {
+  title: 'Components/SplitButton',
+  component: SplitButton,
 };

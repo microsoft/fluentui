@@ -7,8 +7,8 @@ import { useSplitButtonStyles } from './useSplitButtonStyles';
 import type { SplitButtonProps } from './SplitButton.types';
 
 /**
- * Define a styled SplitButton, using the `useSplitButton` hook.
- * {@docCategory Button}
+ * SplitButtons are a grouping of two interactive surfaces where the interacting with the first one triggers a primary
+ * action, while interacting with the second one opens a menu with secondary actions.
  */
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((props, ref) => {
   const state = useSplitButton(props, ref, {
