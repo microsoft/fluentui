@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Panel: isFooterAtBottom prop now working as expected",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
