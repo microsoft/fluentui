@@ -138,6 +138,7 @@ export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
 
 // @public (undocumented)
 export interface SplitButtonState extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public

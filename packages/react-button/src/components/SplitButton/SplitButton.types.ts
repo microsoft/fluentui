@@ -30,4 +30,9 @@ export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
 export type SplitButtonDefaultedProps = 'size';
 
 export interface SplitButtonState
-  extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {}
+  extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+}

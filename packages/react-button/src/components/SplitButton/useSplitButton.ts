@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import type { SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonState } from './SplitButton.types';
 
 export const splitButtonShorthandProps: SplitButtonShorthandPropsCompat[] = ['button', 'menuButton'];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat({ deepMerge: splitButtonShorthandProps });
+const mergeProps = makeMergeProps<SplitButtonState>({ deepMerge: splitButtonShorthandProps });
 
 /**
  * Given user props, defines default props for the SplitButton and returns processed state.
@@ -35,19 +34,22 @@ export const useSplitButton = (
     ...userProps
   } = resolvedShorthandProps;
 
-  const buttonInternalRef = React.useRef<HTMLElement | undefined>(null);
-  const menuButtonInternalRef = React.useRef<HTMLElement | undefined>(null);
+  // TODO: To be resolved when moving to simplified prop merging
+  // const buttonInternalRef = React.useRef<HTMLElement | null>(null);
+  // const menuButtonInternalRef = React.useRef<HTMLElement | null>(null);
 
   const state = mergeProps(
     {
-      as: 'div',
       'aria-disabled': disabled,
+      as: 'div',
       className,
       ref,
+      size,
 
       button: {
         as: 'button',
-        ref: useMergedRefs(buttonRef, buttonInternalRef),
+        // TODO: To be resolved when moving to simplified prop merging
+        // ref: useMergedRefs(buttonRef, buttonInternalRef),
         circular,
         disabled,
         disabledFocusable,
@@ -62,7 +64,8 @@ export const useSplitButton = (
 
       menuButton: {
         as: 'button',
-        ref: useMergedRefs(menuButtonRef, menuButtonInternalRef),
+        // TODO: To be resolved when moving to simplified prop merging
+        // ref: useMergedRefs(menuButtonRef, menuButtonInternalRef),
         circular,
         disabled,
         disabledFocusable,
@@ -74,9 +77,11 @@ export const useSplitButton = (
         ...menuButton,
       },
     },
-    defaultProps,
+    // TODO: To be resolved when moving to simplified prop merging
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    defaultProps as any,
     resolvedShorthandProps,
-  ) as SplitButtonState;
+  );
 
   return state;
 };
