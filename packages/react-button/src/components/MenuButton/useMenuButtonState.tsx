@@ -12,7 +12,8 @@ export const useMenuButtonState = (state: MenuButtonState): MenuButtonState => {
   // It behaves like a button.
   useButtonState(state);
 
-  const { menuIcon, size } = state;
+  const { children, menuIcon, size } = state;
+  state.iconOnly = !children;
   if (!menuIcon.children) {
     if (size === 'large') {
       menuIcon.children = <ChevronDown24Regular />;

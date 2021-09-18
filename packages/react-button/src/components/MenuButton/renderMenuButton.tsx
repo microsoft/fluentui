@@ -8,13 +8,13 @@ import type { MenuButtonState } from './MenuButton.types';
  */
 export const renderMenuButton = (state: MenuButtonState) => {
   const { slots, slotProps } = getSlotsCompat(state, menuButtonShorthandPropsCompat);
-  const { children, iconOnly } = state;
+  const { children, icon, iconOnly } = state;
 
   return (
     <slots.root {...slotProps.root}>
       <slots.icon {...slotProps.icon} />
       {!iconOnly && children}
-      {!iconOnly && <slots.menuIcon {...slotProps.menuIcon} />}
+      {(!iconOnly || !icon.children) && <slots.menuIcon {...slotProps.menuIcon} />}
     </slots.root>
   );
 };

@@ -30,7 +30,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
     },
     defaultProps && resolveShorthandProps(defaultProps, menuButtonShorthandPropsCompat),
     resolveShorthandProps(props, menuButtonShorthandPropsCompat),
-  ) as MenuButtonState;
+  );
 
   useMenuButtonState(state);
 

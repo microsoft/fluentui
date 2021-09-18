@@ -7,12 +7,12 @@ import type { MenuProps } from '@fluentui/react-menu';
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 
 import { MenuButton } from './MenuButton';
-import { Playground } from './Playground.stories';
 import { buttonBaseProps } from './buttonBaseProps.stories';
+import { Playground } from './Playground.stories';
 import type { MenuButtonProps } from './MenuButton';
 import type { PlaygroundProps } from './Playground.types.stories';
 
-const ExampleMenu = (props: MenuButtonProps): JSX.Element => (
+const ExampleMenuButton = (props: MenuButtonProps): JSX.Element => (
   <Menu>
     <MenuTrigger>
       <MenuButton {...props} />
@@ -34,7 +34,7 @@ const menuButtonProps: PlaygroundProps<MenuProps>['sections'] = [
 export const MenuButtonPlayground = () => {
   return (
     <Playground sections={menuButtonProps}>
-      <ExampleMenu />
+      <ExampleMenuButton />
     </Playground>
   );
 };
