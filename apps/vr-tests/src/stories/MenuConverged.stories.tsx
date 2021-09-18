@@ -40,7 +40,7 @@ storiesOf('Menu Converged - basic', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('Menu Converged - secondary content', module)
@@ -72,7 +72,7 @@ storiesOf('Menu Converged - secondary content', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('Menu Converged - groups', module)
@@ -104,7 +104,7 @@ storiesOf('Menu Converged - groups', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
 
 storiesOf('Menu Converged - selection', module)
@@ -138,7 +138,7 @@ storiesOf('Menu Converged - selection', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true },
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   );
 
 storiesOf('Menu Converged - selection groups', module)
@@ -188,7 +188,7 @@ storiesOf('Menu Converged - selection groups', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('Menu Converged - nested submenus', module)
@@ -228,5 +228,5 @@ storiesOf('Menu Converged - nested submenus', module)
         </MenuPopover>
       </Menu>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

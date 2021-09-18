@@ -1,8 +1,17 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Tue, 14 Sep 2021 07:38:18 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Sep 2021 07:38:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.1.35 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by gcox@microsoft.com)
 
 ## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
 
