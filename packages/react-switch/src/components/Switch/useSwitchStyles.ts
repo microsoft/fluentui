@@ -14,6 +14,8 @@ const useRootStyles = makeStyles({
     '--switch-width': '40px',
     '--switch-height': '20px',
     '--switch-thumb-size': '14px',
+    '--switch-checked-opacity': '100',
+    '--switch-unchecked-opacity': '100',
 
     position: 'relative',
     width: 'var(--switch-width)',
@@ -27,10 +29,12 @@ const useRootStyles = makeStyles({
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
       background: theme.alias.color.neutral.neutralForeground3Hover,
+      opacity: 'var(--switch-unchecked-opacity)',
     },
 
     ':hover .ms-Switch-track': {
       borderColor: theme.alias.color.neutral.neutralForeground3Hover,
+      opacity: 'var(--switch-unchecked-opacity)',
     },
   }),
 
@@ -38,6 +42,7 @@ const useRootStyles = makeStyles({
     ':hover .ms-Switch-track': {
       // TODO: theme.alias.color.neutral.brandBackgroundInteractive
       background: theme.global.palette.brand.shade30,
+      opacity: 'var(--switch-checked-opacity)',
     },
   }),
 
@@ -76,21 +81,25 @@ const useTrackStyles = makeStyles({
   unchecked: theme => ({
     border: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
     background: 'none',
+    opacity: 'var(--switch-unchecked-opacity)',
   }),
 
   checked: theme => ({
     // TODO: background: theme.alias.color.neutral.brandBackgroundInteractive,
     background: theme.global.palette.brand.primary,
     border: 'none',
+    opacity: 'var(--switch-checked-opacity)',
   }),
 
   disabledUnchecked: theme => ({
     border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
+    opacity: 'var(--switch-unchecked-opacity)',
   }),
 
   disabledChecked: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     border: 'none',
+    opacity: 'var(--switch-checked-opacity)',
   }),
 });
 
@@ -121,25 +130,28 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    background: 'green',
   }),
 
   unchecked: theme => ({
     background: theme.alias.color.neutral.neutralStrokeAccessible,
+    opacity: 'var(--switch-unchecked-opacity)',
   }),
 
   checked: theme => ({
     // Neutral foreground accessible
     background: 'white',
+    opacity: 'var(--switch-checked-opacity)',
   }),
 
   disabledUnchecked: theme => ({
     border: `1px solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
     background: theme.alias.color.neutral.neutralBackground1,
+    opacity: 'var(--switch-unchecked-opacity)',
   }),
 
   disabledChecked: theme => ({
     background: theme.alias.color.neutral.neutralForegroundDisabled,
+    opacity: 'var(--switch-checked-opacity)',
   }),
 });
 

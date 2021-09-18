@@ -1,7 +1,16 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useBoolean, useControllableState, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
+
+/**
+ * Validates that the `value` is a number and falls between the min and max.
+ *
+ * @param value - the value to be clamped
+ * @param min - the lowest valid value
+ * @param max - the highest valid value
+ */
+const clamp = (value: number, min: number, max: number): number => Math.max(min, Math.min(max, value || 0));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const on = (element: Element, eventName: string, callback: (ev: any) => void) => {
@@ -21,6 +30,7 @@ export const useSwitchState = (state: SwitchState) => {
     state: checked,
     initialState: false,
   });
+  const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(false);
   const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(internalValue === true ? 100 : 0);
 
   const setChecked = React.useCallback(
@@ -47,18 +57,20 @@ export const useSwitchState = (state: SwitchState) => {
       const railPosition = dir === 'rtl' ? currentBounds!.right : currentBounds!.left;
       const distance = dir === 'rtl' ? railPosition - ev.clientX : ev.clientX - railPosition;
 
-      return (distance / railWidth) * 100;
+      return clamp((distance / railWidth) * 100, 0, 100);
     },
     [dir],
   );
 
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      const value = calculatePosition(ev);
-      console.log(value);
-      setRenderedPosition(value);
+      const incomingPosition = calculatePosition(ev);
+      // const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
+      setRenderedPosition(incomingPosition);
+      onChange?.(ev, { checked: incomingPosition === 100 ? true : false });
+      setInternalValue(incomingPosition === 100 ? true : false);
     },
-    [calculatePosition],
+    [calculatePosition, setInternalValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -66,11 +78,19 @@ export const useSwitchState = (state: SwitchState) => {
       disposables.current.forEach(dispose => dispose());
       disposables.current = [];
       inputRef.current!.focus();
+      const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
+      showThumbAnimation();
+      setRenderedPosition(roundedPosition);
+      if (roundedPosition === 100) {
+        setChecked(ev, true);
+      } else if (roundedPosition === 0) {
+        setChecked(ev, false);
+      }
     },
-    [inputRef],
+    [calculatePosition, inputRef, setChecked, showThumbAnimation],
   );
 
-  const onPointerDown = React.useCallback(
+  const onThumbPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
@@ -82,17 +102,43 @@ export const useSwitchState = (state: SwitchState) => {
       });
 
       onPointerMove(ev);
+      hideThumbAnimation();
     },
-    [onPointerMove, onPointerUp],
+    [hideThumbAnimation, onPointerMove, onPointerUp],
+  );
+
+  const onRootPointerDown = React.useCallback(
+    (ev: React.PointerEvent<HTMLDivElement>): void => {
+      ev.stopPropagation();
+      setChecked(ev, !internalValue);
+    },
+    [internalValue, setChecked],
   );
 
   const thumbWrapperStyles = {
     transform: `translate(${renderedPosition}%)`,
+    transition: thumbAnimation
+      ? 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), background .1s cubic-bezier(0.33, 0.0, 0.67, 1)'
+      : 'none',
+    '::after': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      borderRadius: '999px',
+      boxSizing: 'border-box',
+      content: "''",
+      background: 'red',
+    },
   };
+
+  // Root Props
+  //state.root.onPointerDown = onRootPointerDown;
 
   // Thumb Props
   if (!disabled) {
-    state.thumb.onPointerDown = onPointerDown;
+    state.thumb.onPointerDown = onThumbPointerDown;
   }
 
   // Input Props
