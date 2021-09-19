@@ -2,12 +2,19 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
-import { Panel, PanelType, SearchBox } from '@fluentui/react';
+import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
   isOpen: true,
   children: 'Content goes here',
 };
+
+const onRenderFooterContent = () => (
+  <div>
+    <PrimaryButton>Save</PrimaryButton>
+    <DefaultButton>Cancel</DefaultButton>
+  </div>
+);
 
 storiesOf('Panel', module)
   .addDecorator(FabricDecorator)
@@ -78,6 +85,15 @@ storiesOf('Panel', module)
   ))
   .addStory('With no header, close button', () => (
     <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
+  ))
+  .addStory('With footer at the bottom', () => (
+    <Panel
+      {...defaultProps}
+      type={PanelType.smallFixedFar}
+      headerText="Footer at bottom"
+      onRenderFooterContent={onRenderFooterContent}
+      isFooterAtBottom={true}
+    />
   ));
 
 storiesOf('Panel', module)

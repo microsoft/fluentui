@@ -2,6 +2,42 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Refactoring out functionality that applies trigger props to children as a utility.",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Removes ExtractRef Typings",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "comment": "Fix IntrinsicShorthandProps used in the root slot with multiple possible `as` values",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Sep 2021 20:09:02 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.47",
       "version": "9.0.0-alpha.47",
