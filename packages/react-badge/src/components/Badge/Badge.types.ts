@@ -1,24 +1,12 @@
 import * as React from 'react';
 import type { ComponentPropsCompat, ShorthandPropsCompat, ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
-/**
- * {@docCategory Badge}
- */
 export type BadgeColors =
   | 'brand'
   | 'danger'
@@ -29,9 +17,6 @@ export type BadgeColors =
   | 'informative'
   | 'subtle';
 
-/**
- * {@docCategory Badge}
- */
 export interface BadgeProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * A Badge can be sized.
@@ -69,9 +54,6 @@ export interface BadgeProps extends ComponentPropsCompat, React.HTMLAttributes<H
   iconPosition?: 'before' | 'after';
 }
 
-/**
- * {@docCategory Badge}
- */
 export interface BadgeState extends BadgeProps {
   /**
    * Ref to the root slot

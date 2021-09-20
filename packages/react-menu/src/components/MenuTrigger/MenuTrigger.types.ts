@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-/**
- * {@docCategory MenuTrigger }
- */
 export interface MenuTriggerProps {
   /**
    * Explicitly require single child or render function
@@ -30,7 +27,4 @@ export interface MenuTriggerChildProps
   ref?: React.Ref<never>;
 }
 
-/**
- * {@docCategory MenuTrigger }
- */
 export interface MenuTriggerState extends MenuTriggerProps {}

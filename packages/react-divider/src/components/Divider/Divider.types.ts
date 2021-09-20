@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { ComponentPropsCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Divider}
- */
 export interface DividerProps extends ComponentPropsCompat, React.HTMLAttributes<HTMLElement> {
   /**
    * Determines the alignment of the content within the divider.
@@ -40,9 +37,6 @@ export interface DividerProps extends ComponentPropsCompat, React.HTMLAttributes
   wrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
 }
 
-/**
- * {@docCategory Divider}
- */
 export interface DividerState extends DividerProps {
   /**
    * Ref to the root slot

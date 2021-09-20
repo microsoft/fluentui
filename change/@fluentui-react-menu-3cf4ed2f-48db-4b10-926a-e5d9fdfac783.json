@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove unnecessary docCategory tags",
+  "packageName": "@fluentui/react-menu",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

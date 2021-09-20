@@ -52,7 +52,6 @@ export type MenuSlots = {};
 
 /**
  * Extends and drills down Menulist props to simplify API
- * {@docCategory Menu }
  */
 export interface MenuProps extends Partial<MenuCommons>, ComponentProps<MenuSlots> {
   /**
@@ -67,9 +66,6 @@ export interface MenuProps extends Partial<MenuCommons>, ComponentProps<MenuSlot
   positioning?: PositioningShorthand;
 }
 
-/**
- * {@docCategory Menu }
- */
 export interface MenuState extends MenuCommons, ComponentState<MenuSlots> {
   /**
    * Callback to open/close the popup

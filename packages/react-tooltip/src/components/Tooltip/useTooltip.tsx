@@ -16,7 +16,6 @@ import type { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerP
 
 /**
  * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
  */
 export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
@@ -35,8 +34,6 @@ const arrowHeight = 6; // Update the arrow's width/height in useTooltipStyles.ts
  * @param props - props from this instance of Tooltip
  * @param ref - reference to root HTMLElement of Tooltip
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory Tooltip}
  */
 export const useTooltip = (
   props: TooltipProps,

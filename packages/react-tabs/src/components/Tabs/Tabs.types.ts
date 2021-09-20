@@ -3,9 +3,6 @@ import { TabItem } from './TabItem';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 
-/**
- * {@docCategory Tabs}
- */
 export interface TabsImperativeHandle {
   /**
    * Sets focus to the first tab.
@@ -13,9 +10,6 @@ export interface TabsImperativeHandle {
   focus(): void;
 }
 
-/**
- * {@docCategory Tabs}
- */
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the TabsImperativeHandle interface. Use this instead of ref for accessing
@@ -90,18 +84,12 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.R
   getTabId?: (itemKey: string, index: number) => string;
 }
 
-/**
- * {@docCategory Tabs}
- */
 export type TabsStyleProps = Required<Pick<TabsProps, 'theme'>> &
   Pick<TabsProps, 'className'> & {
     tabSize?: TabSizeType;
     tabFormat?: TabFormatType;
   };
 
-/**
- * {@docCategory Tabs}
- */
 export interface TabsStyles {
   /**
    * Style for the root element.
@@ -119,13 +107,11 @@ export interface TabsStyles {
 }
 
 /**
- * {@docCategory Tabs}
  * Display mode for the tabs
  */
 export type TabFormatType = 'links' | 'tabs';
 
 /**
- * {@docCategory Tabs}
  * Size of the tabs
  */
 export type TabSizeType = 'normal' | 'large';

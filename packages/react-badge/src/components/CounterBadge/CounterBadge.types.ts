@@ -1,8 +1,5 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
-/**
- * {@docCategory CounterBadge}
- */
 export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
   /**
    * A Badge can be circular or rounded
@@ -41,9 +38,6 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
   dot?: boolean;
 }
 
-/**
- * {@docCategory CounterBadge}
- */
 export interface CounterBadgeState extends BadgeState {
   /**
    * Max number to be displayed

@@ -6,7 +6,6 @@ import type { MenuGroupHeaderProps } from './MenuGroupHeader.types';
 
 /**
  * Define a styled MenuGroupHeader, using the `useMenuGroupHeader` hook.
- * {@docCategory MenuGroupHeader }
  */
 export const MenuGroupHeader = React.forwardRef<HTMLDivElement, MenuGroupHeaderProps>((props, ref) => {
   const state = useMenuGroupHeader(props, ref);

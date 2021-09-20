@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the Menu slots based on the state
- * {@docCategory Menu }
  */
 export const useMenuPopoverStyles = (state: MenuPopoverState): MenuPopoverState => {
   const styles = useStyles();
