@@ -4,7 +4,6 @@ import { isNil } from 'lodash';
 import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
-import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { chatMessageStylesComfy } from './chatMessageStylesComfy';
 import { chatMessageStylesCompact } from './chatMessageStylesCompact';
 import { ChatMessageVariables } from './chatMessageVariables';
@@ -31,11 +30,7 @@ const getChatMessageDensityStyles = (density: ChatDensity = defaultChatDensity) 
 
 export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const {
-      props: p,
-      variables: v,
-      theme: { siteVariables },
-    } = componentStyleFunctionParam;
+    const { props: p, variables: v } = componentStyleFunctionParam;
     return {
       borderRadius: v.borderRadius,
       display: 'inline-block',
@@ -43,8 +38,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       position: 'relative',
       wordBreak: 'break-word',
       wordWrap: 'break-word',
-
-      ...getBorderFocusStyles({ borderRadius: 'inherit', variables: siteVariables }),
 
       // ActionMenu's appearance can be controlled by the value of showActionMenu variable - in this
       // case this variable will serve the single source of truth on whether actions menu should be shown.

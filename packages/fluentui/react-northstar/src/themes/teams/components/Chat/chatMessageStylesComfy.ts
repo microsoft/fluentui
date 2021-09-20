@@ -1,21 +1,28 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { chatMessageHeaderClassName } from '../../../../components/Chat/ChatMessageHeader';
 import { pxToRem } from '../../../../utils';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ChatMessageVariables } from './chatMessageVariables';
 
 /** ChatMessage styles specific for the default/comfy density. */
 export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     ...(p.mine && {
-      [`& .ui-chat__messageheader`]: {
+      [`& .${chatMessageHeaderClassName}`]: {
         display: 'flex',
         justifyContent: 'flex-end',
       },
     }),
 
-    [`& .ui-chat__message__comfy-body`]: {
+    [`:focus-visible > .${chatMessageSlotClassNames.comfyBody}`]: {
+      outline: 'none',
+      ...getBorderFocusStyles({ borderRadius: 'inherit', variables: siteVariables })[':focus-visible'],
+    },
+
+    [`& .${chatMessageSlotClassNames.comfyBody}`]: {
       borderRadius: v.borderRadius,
       marginLeft: p.mine ? v.offset : 0,
       marginRight: !p.mine ? v.offset : 0,
