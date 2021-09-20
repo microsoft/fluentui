@@ -7,7 +7,7 @@ import type { TextProps } from './Text.types';
 /**
  * Typography and styling abstraction component used to ensure consistency of text.
  */
-export const Text = React.forwardRef<
+export const Text: React.FunctionComponent<TextProps> = React.forwardRef<
   HTMLSpanElement | HTMLParagraphElement | HTMLHeadingElement | HTMLPreElement,
   TextProps
 >((props, ref) => {
