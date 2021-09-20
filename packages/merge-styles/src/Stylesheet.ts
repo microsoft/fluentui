@@ -66,6 +66,7 @@ export interface IStyleSheetConfig {
 
   /**
    * Callback executed when a rule is inserted.
+   * @deprecated Use `Stylesheet.onInsertRule` instead.
    */
   onInsertRule?: (rule: string) => void;
 
@@ -82,7 +83,12 @@ const STYLESHEET_SETTING = '__stylesheet__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-let _global: { [key: string]: any } = {};
+let _global: Window & {
+  [STYLESHEET_SETTING]?: Stylesheet;
+  FabricConfig?: {
+    mergeStyles?: IStyleSheetConfig;
+  };
+};
 
 // Grab window.
 try {
@@ -106,10 +112,10 @@ export class Stylesheet {
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
   private _config: IStyleSheetConfig;
-  private _rulesToInsert: string[] = [];
   private _counter = 0;
   private _keyToClassName: { [key: string]: string } = {};
-  private _onResetCallbacks: (() => void)[] = [];
+  private _onInsertRuleCallbacks: Function[] = [];
+  private _onResetCallbacks: Function[] = [];
 
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
@@ -154,9 +160,28 @@ export class Stylesheet {
    * Configures a reset callback.
    *
    * @param callback - A callback which will be called when the Stylesheet is reset.
+   * @returns function which when called un-registers provided callback.
    */
-  public onReset(callback: () => void): void {
+  public onReset(callback: Function): Function {
     this._onResetCallbacks.push(callback);
+
+    return () => {
+      this._onResetCallbacks = this._onResetCallbacks.filter(cb => cb !== callback);
+    };
+  }
+
+  /**
+   * Configures an insert rule callback.
+   *
+   * @param callback - A callback which will be called when a rule is inserted.
+   * @returns function which when called un-registers provided callback.
+   */
+  public onInsertRule(callback: Function): Function {
+    this._onInsertRuleCallbacks.push(callback);
+
+    return () => {
+      this._onInsertRuleCallbacks = this._onInsertRuleCallbacks.filter(cb => cb !== callback);
+    };
   }
 
   /**
@@ -209,7 +234,7 @@ export class Stylesheet {
   }
 
   /**
-   * Gets the arguments associated with a given classname which was
+   * Gets the rules associated with a given classname which was
    * previously registered using cacheClassName.
    */
   public insertedRulesFromClassName(className: string): string[] | undefined {
@@ -252,9 +277,13 @@ export class Stylesheet {
       this._rules.push(rule);
     }
 
+    // eslint-disable-next-line deprecation/deprecation
     if (this._config.onInsertRule) {
+      // eslint-disable-next-line deprecation/deprecation
       this._config.onInsertRule(rule);
     }
+
+    this._onInsertRuleCallbacks.forEach(callback => callback());
   }
 
   /**
@@ -262,9 +291,7 @@ export class Stylesheet {
    * using InsertionMode.none.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (
-      (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('')
-    );
+    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('');
   }
 
   /**
@@ -273,12 +300,11 @@ export class Stylesheet {
    */
   public reset(): void {
     this._rules = [];
-    this._rulesToInsert = [];
     this._counter = 0;
     this._classNameToArgs = {};
     this._keyToClassName = {};
 
-    this._onResetCallbacks.forEach((callback: () => void) => callback());
+    this._onResetCallbacks.forEach(callback => callback());
   }
 
   // Forces the regeneration of incoming styles without totally resetting the stylesheet.
