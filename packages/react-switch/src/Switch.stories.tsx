@@ -159,10 +159,7 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const switchOnChange = (
     ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>,
     data: { checked: boolean },
-  ) => {
-    setSwitchValue(data.checked);
-    console.log(data.checked);
-  };
+  ) => setSwitchValue(data.checked);
 
   return (
     <div className={styles.root}>

@@ -53,7 +53,7 @@ export const useSwitchState = (state: SwitchState) => {
     initialState: false,
   });
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
-  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(currentValue === true ? 100 : 0);
+  const [renderedPosition, setRenderedPosition] = React.useState<number>(currentValue === true ? 100 : 0);
 
   const setChecked = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>, incomingValue: boolean) => {
@@ -61,9 +61,9 @@ export const useSwitchState = (state: SwitchState) => {
       onChange?.(ev, { checked: incomingValue });
       internalState.current.internalValue = incomingValue;
       setCurrentValue(incomingValue);
-      setRenderedPosition(incomingValue ? (dir === 'ltr' ? 100 : -100) : 0);
+      setRenderedPosition(incomingValue ? 100 : 0);
     },
-    [dir, onChange, setCurrentValue],
+    [onChange, setCurrentValue],
   );
 
   const userOnChange = state.input.onChange;
@@ -80,7 +80,6 @@ export const useSwitchState = (state: SwitchState) => {
       const railWidth = currentBounds!.width;
       const railPosition = dir === 'rtl' ? currentBounds!.right : currentBounds!.left;
       const distance = dir === 'rtl' ? railPosition - ev.clientX : ev.clientX - railPosition;
-
       return clamp((distance / railWidth) * 100, 0, 100);
     },
     [dir],
@@ -148,12 +147,12 @@ export const useSwitchState = (state: SwitchState) => {
   );
 
   const rootStyles = {
-    '--switch-checked-opacity': renderedPosition! / 100,
-    '--switch-unchecked-opacity': (100 - renderedPosition!) / 100,
+    '--switch-checked-opacity': renderedPosition / 100,
+    '--switch-unchecked-opacity': (100 - renderedPosition) / 100,
   } as React.CSSProperties;
 
   const thumbWrapperStyles = {
-    transform: `translate(${renderedPosition}%)`,
+    transform: `translate(${dir === 'rtl' ? -renderedPosition : renderedPosition}%)`,
     transition: thumbAnimation
       ? 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1)'
       : 'none',
