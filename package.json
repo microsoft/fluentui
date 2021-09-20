@@ -144,7 +144,7 @@
     "babel-plugin-annotate-pure-calls": "0.4.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.2.2",
-    "beachball": "2.12.1",
+    "beachball": "2.15.0",
     "chalk": "4.1.0",
     "ci-info": "3.2.0",
     "cli-table3": "0.6.0",
