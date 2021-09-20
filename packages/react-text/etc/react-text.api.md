@@ -6,51 +6,51 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FunctionComponent } from 'react';
+import type { FunctionComponent } from 'react';
 import type { IntrinsicShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
-// Warning: (ae-forgotten-export) The symbol "Props" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "TextWrapperProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-const Body_2: FunctionComponent<Props>;
+const Body_2: FunctionComponent<TextWrapperProps>;
 export { Body_2 as Body }
 
 // @public
-export const Caption: FunctionComponent<Props>;
+export const Caption: FunctionComponent<TextWrapperProps>;
 
 // @public
-export const Display: FunctionComponent<Props>;
+export const Display: FunctionComponent<TextWrapperProps>;
 
 // @public
-export const Headline: FunctionComponent<Props>;
+export const Headline: FunctionComponent<TextWrapperProps>;
 
 // @public
-export const LargeTitle: FunctionComponent<Props>;
+export const LargeTitle: FunctionComponent<TextWrapperProps>;
 
 // @public
 export const renderText: (state: TextState) => JSX.Element;
 
 // @public
-export const Subheadline: FunctionComponent<Props>;
+export const Subheadline: FunctionComponent<TextWrapperProps>;
 
 // @public
 const Text_2: React_2.FunctionComponent<TextProps>;
 export { Text_2 as Text }
 
 // @public (undocumented)
-export interface TextCommons {
-    align: 'start' | 'center' | 'end' | 'justify';
-    block: boolean;
-    font: 'base' | 'monospace' | 'numeric';
-    italic: boolean;
-    size: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
-    strikethrough: boolean;
-    truncate: boolean;
-    underline: boolean;
-    weight: 'regular' | 'medium' | 'semibold';
+export type TextCommons = {
     wrap: boolean;
-}
+    truncate: boolean;
+    block: boolean;
+    italic: boolean;
+    underline: boolean;
+    strikethrough: boolean;
+    size: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    font: 'base' | 'monospace' | 'numeric';
+    weight: 'regular' | 'medium' | 'semibold';
+    align: 'start' | 'center' | 'end' | 'justify';
+};
 
 // @public
 export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
@@ -61,17 +61,16 @@ export type TextSlots = {
 };
 
 // @public
-export interface TextState extends ComponentState<TextSlots>, TextCommons {
-}
+export type TextState = ComponentState<TextSlots> & TextCommons;
 
 // @public
-export const Title1: FunctionComponent<Props>;
+export const Title1: FunctionComponent<TextWrapperProps>;
 
 // @public
-export const Title2: FunctionComponent<Props>;
+export const Title2: FunctionComponent<TextWrapperProps>;
 
 // @public
-export const Title3: FunctionComponent<Props>;
+export const Title3: FunctionComponent<TextWrapperProps>;
 
 // @public
 export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;

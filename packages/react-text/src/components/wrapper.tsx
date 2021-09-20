@@ -3,14 +3,14 @@ import { mergeClasses } from '@fluentui/react-make-styles';
 import { renderText, useText, useTextStyles } from '../Text';
 import type { TextProps } from '../Text';
 
-export type Props = Omit<TextProps, 'font' | 'size'>;
+export type TextWrapperProps = Omit<TextProps, 'font' | 'size'>;
 
 export function createWrapper(options: {
   displayName: string;
   useStyles: () => Record<'root', string>;
-}): React.FunctionComponent<Props> {
+}): React.FunctionComponent<TextWrapperProps> {
   const { useStyles, displayName } = options;
-  const Wrapper = React.forwardRef<HTMLElement, Props>((props, ref) => {
+  const Wrapper = React.forwardRef<HTMLElement, TextWrapperProps>((props, ref) => {
     const styles = useStyles();
     const state = useText(props as TextProps, ref);
 
