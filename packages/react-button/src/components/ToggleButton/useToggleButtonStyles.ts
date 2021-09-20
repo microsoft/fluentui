@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 

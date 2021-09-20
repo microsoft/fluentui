@@ -109,7 +109,7 @@ storiesOf('Nav', module)
         <Nav groups={[{ links: links }]} selectedKey="key3" />
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Disabled',
@@ -118,5 +118,5 @@ storiesOf('Nav', module)
         <Nav groups={[{ links: disabledLinks }]} selectedKey="key3" />
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
