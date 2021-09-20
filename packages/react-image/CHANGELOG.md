@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 17 Sep 2021 07:35:26 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.80)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.79..@fluentui/react-image_v9.0.0-alpha.80)
+
+### Changes
+
+- Removed conditional adding of aria-hidden ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by tkrasniqi@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.80 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
 
 ## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.79)
 

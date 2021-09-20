@@ -121,6 +121,34 @@ export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
 export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
 
 // @public
+export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
+
+// @public
+export const SplitButton: React_2.ForwardRefExoticComponent<SplitButtonProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type SplitButtonDefaultedProps = 'size';
+
+// @public (undocumented)
+export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandPropsCompat>, MenuButtonProps {
+    button?: ShorthandPropsCompat<ButtonProps>;
+    buttonRef?: React_2.Ref<HTMLElement>;
+    menuButton?: ShorthandPropsCompat<MenuButtonProps>;
+    menuButtonRef?: React_2.Ref<HTMLElement>;
+}
+
+// @public (undocumented)
+export const splitButtonShorthandProps: SplitButtonShorthandPropsCompat[];
+
+// @public (undocumented)
+export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
+
+// @public (undocumented)
+export interface SplitButtonState extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
 export const ToggleButton: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.ButtonHTMLAttributes<HTMLElement> & {
     icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
     block?: boolean | undefined;
@@ -179,6 +207,12 @@ export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
 export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
+
+// @public
+export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
+
+// @public (undocumented)
+export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
 
 // @public
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
