@@ -301,6 +301,11 @@ export interface IDatePickerStyleProps {
   disabled?: boolean;
   label?: boolean;
   isDatePickerShown?: boolean;
+  hasErrorMessage?: boolean;
+  underlined?: boolean;
+  required?: boolean;
+  borderless?: boolean;
+  onlyPlaceHolder?: boolean;
 }
 
 /**
@@ -316,4 +321,9 @@ export interface IDatePickerStyles {
   icon: IStyle;
   statusMessage?: IStyle;
   wrapper?: IStyle;
+  readOnlyTextfield?: IStyle;
+  readOnlyTextfieldDescription?: IStyle;
+  readOnlyTextfieldErrorMessage?: IStyle;
+  readOnlyTextfieldGroup?: IStyle;
+  readOnlyTextfieldWrapper?: IStyle;
 }

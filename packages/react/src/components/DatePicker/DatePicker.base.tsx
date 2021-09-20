@@ -7,6 +7,7 @@ import {
   css,
   format,
   getPropsWithDefaults,
+  DelayedRender,
 } from '@fluentui/utilities';
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
@@ -19,6 +20,8 @@ import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from 
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
 import type { ITextField, ITextFieldProps } from '../../TextField';
+import { Icon } from '../Icon';
+import { Label } from '../Label/Label';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -235,6 +238,8 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const id = useId('DatePicker', props.id);
   const calloutId = useId('DatePicker-Callout');
+  const labelId = useId('DatePicker-Label');
+  const descriptionId = useId('DatePicker-Description');
 
   const calendar = React.useRef<ICalendar>(null);
   const datePickerDiv = React.useRef<HTMLDivElement>(null);
@@ -389,6 +394,63 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     }
   };
 
+  const onRenderReadOnlyTextField = (): React.ReactElement<React.ReactHTMLElement<HTMLDivElement>> => {
+    const divProps =
+      props.textField && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props.textField, divProperties);
+    const isDescriptionAvailable = props.textField?.description;
+
+    return (
+      <>
+        <div className={classNames.readOnlyTextfieldWrapper}>
+          {label && (
+            <Label required={isRequired} htmlFor={textFieldId} disabled={disabled} id={labelId}>
+              {label}
+            </Label>
+          )}
+          <div
+            data-is-focusable={!disabled}
+            data-ktp-target={true}
+            role="combobox"
+            id={textFieldId}
+            tabIndex={tabIndex ?? 0}
+            className={classNames.readOnlyTextfieldGroup}
+            aria-expanded={isCalendarShown}
+            aria-label={ariaLabel}
+            aria-haspopup="dialog"
+            aria-controls={isCalendarShown ? calloutId : undefined}
+            aria-describedby={isDescriptionAvailable ? descriptionId : props['aria-describedby']}
+            aria-invalid={!!errorMessage}
+            onKeyDown={onTextFieldKeyDown}
+            onClick={onTextFieldClick}
+            {...divProps}
+          >
+            <span className={classNames.readOnlyTextfield}>{formattedDate || placeholder} </span>
+            <Icon
+              {...{
+                iconName: 'Calendar',
+                ...iconProps,
+                className: css(classNames.icon, iconProps && iconProps.className),
+                onClick: onIconClick,
+              }}
+            />
+          </div>
+        </div>
+        <span id={descriptionId}>
+          {props.textField && renderTextfieldDescription(props.textField, onRenderDescription)}
+          {errorMessage && (
+            <div role="alert">
+              <DelayedRender>
+                <p className={classNames.readOnlyTextfieldErrorMessage}>
+                  <span data-automation-id="error-message">{errorMessage}</span>
+                </p>
+              </DelayedRender>
+            </div>
+          )}
+        </span>
+      </>
+    );
+  };
+
   const renderTextfieldDescription = (inputProps: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>) => {
     return (
       <>
@@ -398,6 +460,13 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
         </div>
       </>
     );
+  };
+
+  const onRenderDescription = (inputProps: ITextFieldProps): JSX.Element | null => {
+    if (inputProps.description) {
+      return <span className={classNames.readOnlyTextfieldDescription}>{inputProps.description}</span>;
+    }
+    return null;
   };
 
   /**
@@ -424,55 +493,65 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     disabled,
     label: !!label,
     isDatePickerShown: isCalendarShown,
+    hasErrorMessage: !!errorMessage,
+    underlined: underlined,
+    required: isRequired,
+    borderless: borderless,
+    onlyPlaceHolder: !formattedDate,
   });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
   const iconProps = textFieldProps && textFieldProps.iconProps;
   const textFieldId =
     textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
+  const readOnly = !allowTextInput && !disabled;
 
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
-        <TextField
-          role="combobox"
-          label={label}
-          aria-expanded={isCalendarShown}
-          ariaLabel={ariaLabel}
-          aria-haspopup="dialog"
-          aria-controls={isCalendarShown ? calloutId : undefined}
-          required={isRequired}
-          disabled={disabled}
-          errorMessage={errorMessage}
-          placeholder={placeholder}
-          borderless={borderless}
-          value={formattedDate}
-          componentRef={textFieldRef}
-          underlined={underlined}
-          tabIndex={tabIndex}
-          readOnly={!allowTextInput}
-          {...textFieldProps}
-          id={textFieldId}
-          className={css(classNames.textField, textFieldProps && textFieldProps.className)}
-          iconProps={{
-            iconName: 'Calendar',
-            ...iconProps,
-            className: css(classNames.icon, iconProps && iconProps.className),
-            onClick: onIconClick,
-          }}
-          // eslint-disable-next-line react/jsx-no-bind
-          onRenderDescription={renderTextfieldDescription}
-          // eslint-disable-next-line react/jsx-no-bind
-          onKeyDown={onTextFieldKeyDown}
-          // eslint-disable-next-line react/jsx-no-bind
-          onFocus={onTextFieldFocus}
-          // eslint-disable-next-line react/jsx-no-bind
-          onBlur={onTextFieldBlur}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={onTextFieldClick}
-          // eslint-disable-next-line react/jsx-no-bind
-          onChange={onTextFieldChanged}
-        />
+        {readOnly ? (
+          onRenderReadOnlyTextField()
+        ) : (
+          <TextField
+            role="combobox"
+            label={label}
+            aria-expanded={isCalendarShown}
+            ariaLabel={ariaLabel}
+            aria-haspopup="dialog"
+            aria-controls={isCalendarShown ? calloutId : undefined}
+            required={isRequired}
+            disabled={disabled}
+            errorMessage={errorMessage}
+            placeholder={placeholder}
+            borderless={borderless}
+            value={formattedDate}
+            componentRef={textFieldRef}
+            underlined={underlined}
+            tabIndex={tabIndex}
+            readOnly={!allowTextInput}
+            {...textFieldProps}
+            id={textFieldId}
+            className={css(classNames.textField, textFieldProps && textFieldProps.className)}
+            iconProps={{
+              iconName: 'Calendar',
+              ...iconProps,
+              className: css(classNames.icon, iconProps && iconProps.className),
+              onClick: onIconClick,
+            }}
+            // eslint-disable-next-line react/jsx-no-bind
+            onRenderDescription={renderTextfieldDescription}
+            // eslint-disable-next-line react/jsx-no-bind
+            onKeyDown={onTextFieldKeyDown}
+            // eslint-disable-next-line react/jsx-no-bind
+            onFocus={onTextFieldFocus}
+            // eslint-disable-next-line react/jsx-no-bind
+            onBlur={onTextFieldBlur}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={onTextFieldClick}
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={onTextFieldChanged}
+          />
+        )}
       </div>
       {isCalendarShown && (
         <Callout
