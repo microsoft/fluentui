@@ -293,7 +293,7 @@ export function getCallbackArguments(
   const propertySignature = findPropertySignature(program.getTypeChecker(), sourceFile, typeName, propertyName);
 
   if (!propertySignature) {
-    throw new Error(`A file (${filename}) does not contain definition for type "${typeName}" with ${propertyName} `);
+    throw new Error(`A file (${filename}) does not contain definition for type "${typeName}.${propertyName}".`);
   }
 
   if (!propertySignature.type) {
