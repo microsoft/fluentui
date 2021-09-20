@@ -32,6 +32,7 @@ export const config: BeachballConfig = {
   disallowedChangeTypes: ['major', 'prerelease'],
   tag: 'latest',
   generateChangelog: true,
+  // https://github.com/microsoft/beachball/pull/599
   // @ts-ignore
   scope: process.env.RELEASE_VNEXT ? fluentConvergedPackagePaths : defaultScope,
   changelog: {
