@@ -19,7 +19,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-merge-styles": "^8.0.10",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
@@ -39,9 +39,9 @@
     "@fluentui/font-icons-mdl2": "^8.1.11",
     "@fluentui/foundation-legacy": "^8.1.11",
     "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react": "^8.34.2",
+    "@fluentui/react": "^8.34.3",
     "@fluentui/react-cards": "^0.200.30",
-    "@fluentui/react-charting": "^5.3.41",
+    "@fluentui/react-charting": "^5.3.42",
     "@fluentui/react-docsite-components": "^8.3.29",
     "@fluentui/react-experiments": "^8.3.11",
     "@fluentui/react-file-type-icons": "^8.3.2",

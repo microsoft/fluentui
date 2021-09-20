@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating to types over interfaces",
+  "packageName": "@fluentui/react-link",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
