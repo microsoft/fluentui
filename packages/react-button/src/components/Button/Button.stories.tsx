@@ -4,8 +4,8 @@ import { Meta } from '@storybook/react';
 import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
 
-export { Emphasis } from './ButtonEmphasis.stories';
 export { Default } from './ButtonDefault.stories';
+export { Emphasis } from './ButtonEmphasis.stories';
 export { Disabled } from './ButtonDisabled.stories';
 
 export { WithIcon } from './ButtonWithIcon.stories';
