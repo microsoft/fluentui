@@ -39,7 +39,8 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
 
     return packageJson.private !== true || websitePackages.includes(packageJson.name);
   })
-  .map(([packageName]) => `--to=${packageName}`);
+  .map(([packageName]) => `--to=${packageName}`)
+  .filter(Boolean);
 
 const lageArgs = [
   'run',
