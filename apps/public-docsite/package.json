@@ -24,7 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.17",
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/eslint-plugin": "*",
     "@fluentui/react-monaco-editor": "^1.2.11",
     "@fluentui/scripts": "^1.0.0",
     "write-file-webpack-plugin": "^4.1.0"
@@ -33,7 +33,7 @@
     "@fluentui/api-docs": "^8.1.35",
     "@fluentui/font-icons-mdl2": "^8.1.11",
     "@fluentui/public-docsite-setup": "^0.3.7",
-    "@fluentui/react": "^8.34.2",
+    "@fluentui/react": "^8.34.3",
     "@fluentui/react-docsite-components": "^8.3.29",
     "@fluentui/react-examples": "^8.34.4",
     "@fluentui/react-experiments": "^8.3.11",

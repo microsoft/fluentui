@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-popover",
-  "version": "9.0.0-alpha.44",
+  "version": "9.0.0-alpha.45",
   "description": "Popover component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,11 +26,11 @@
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-popover/src && yarn docs"
   },
   "devDependencies": {
-    "@fluentui/babel-make-styles": "9.0.0-alpha.49",
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.42",
-    "@fluentui/react-conformance": "^0.5.0",
-    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.11",
+    "@fluentui/babel-make-styles": "9.0.0-alpha.50",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-make-styles": "9.0.0-alpha.43",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-make-styles": "9.0.0-alpha.12",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -45,11 +45,11 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "9.0.0-alpha.32",
-    "@fluentui/react-make-styles": "9.0.0-alpha.67",
-    "@fluentui/react-portal": "9.0.0-alpha.49",
-    "@fluentui/react-positioning": "9.0.0-alpha.55",
+    "@fluentui/react-make-styles": "9.0.0-alpha.68",
+    "@fluentui/react-portal": "9.0.0-alpha.50",
+    "@fluentui/react-positioning": "9.0.0-alpha.56",
     "@fluentui/react-shared-contexts": "9.0.0-alpha.24",
-    "@fluentui/react-tabster": "9.0.0-alpha.61",
+    "@fluentui/react-tabster": "9.0.0-alpha.62",
     "@fluentui/react-utilities": "9.0.0-alpha.49",
     "tslib": "^2.1.0"
   },

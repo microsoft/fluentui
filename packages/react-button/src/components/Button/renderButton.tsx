@@ -12,7 +12,6 @@ export const renderButton = (state: ButtonState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {/*{loading && <slots.loader {...slotProps.loader} />}*/}
       {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
       {!iconOnly && state.root.children}
       {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}

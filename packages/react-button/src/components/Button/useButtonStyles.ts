@@ -249,6 +249,7 @@ const useRootFocusStyles = makeStyles({
       ${theme.alias.shadow.shadow4},
       0 0 0 2px ${theme.alias.color.neutral.strokeFocus2}
     `,
+    zIndex: 1,
   })),
   circular: createFocusIndicatorStyleRule(theme => ({
     borderRadius: theme.global.borderRadius.circular,
