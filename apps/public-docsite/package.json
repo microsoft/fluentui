@@ -33,7 +33,7 @@
     "@fluentui/api-docs": "^8.1.35",
     "@fluentui/font-icons-mdl2": "^8.1.11",
     "@fluentui/public-docsite-setup": "^0.3.7",
-    "@fluentui/react": "^8.34.2",
+    "@fluentui/react": "^8.34.3",
     "@fluentui/react-docsite-components": "^8.3.29",
     "@fluentui/react-examples": "^8.34.4",
     "@fluentui/react-experiments": "^8.3.11",
