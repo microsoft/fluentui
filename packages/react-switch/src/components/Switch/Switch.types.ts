@@ -28,7 +28,7 @@ export type SwitchSlots = {
   input: IntrinsicShorthandProps<'input'>;
 
   /**
-   * The area in which the Slider's rail allows for the thumb to be dragged.
+   * The area in which the Switch's rail allows for the thumb to be dragged.
    */
   activeRail: IntrinsicShorthandProps<'div'>;
 };
