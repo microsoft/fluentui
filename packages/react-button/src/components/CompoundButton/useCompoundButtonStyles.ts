@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import type { CompoundButtonState } from './CompoundButton.types';
+import { mergeFallbackCssVariable } from '@fluentui/react-theme';
 
 const CompoundButtonClassNames = {
   secondaryContent: 'CompoundButton-secondaryContent',
@@ -115,13 +116,13 @@ const useRootStyles = makeStyles({
       },
     },
   }),
-  disabledFocusable: {
+  disabledFocusable: theme => ({
     ['@media (forced-colors: active)']: {
       [`& .${CompoundButtonClassNames.secondaryContent}`]: {
-        color: 'GrayText',
+        color: mergeFallbackCssVariable(theme.alias.color.forced?.foregroundDisabled, 'GrayText'),
       },
     },
-  },
+  }),
 });
 
 const useRootIconOnlyStyles = makeStyles({

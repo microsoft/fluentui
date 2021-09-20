@@ -19,7 +19,7 @@ export const createFocusIndicatorStyleRule = (
   options: CreateFocusIndicatorStyleRuleOptions = defaultOptions,
 ): MakeStylesStyleRule<Theme> => theme => ({
   ':focus-visible': {
-    outline: 'none',
+    outline: '2px solid transparent',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${options.selector || defaultOptions.selector}`]:
     typeof rule === 'function' ? rule(theme) : rule,

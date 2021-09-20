@@ -5,3 +5,4 @@ export * from './createHighContrastTheme';
 
 export { mergeThemes } from './mergeThemes';
 export * from './themeToCSSVariables';
+export * from './mergeFallbackCssVariable';

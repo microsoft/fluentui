@@ -120,6 +120,24 @@ export type FontWeights = {
 // @public (undocumented)
 export const fontWeights: FontWeights;
 
+// @public
+export type ForcedColorTokens = {
+    background: string;
+    backgroundButton: string;
+    backgroundFormField: string;
+    backgroundHighlight: string;
+    backgroundMark: string;
+    foreground: string;
+    foregroundDisabled: string;
+    foregroundButton: string;
+    foregroundFormField: string;
+    foregroundLink: string;
+    foregroundLinkActive: string;
+    foregroundLinkVisited: string;
+    foregroundHighlight: string;
+    foregroundMark: string;
+};
+
 // @public (undocumented)
 export type GhostColorTokens = {
     ghostBackground: string;
@@ -216,6 +234,9 @@ export type LineHeights = FontSizes;
 
 // @public (undocumented)
 export const lineHeights: LineHeights;
+
+// @public (undocumented)
+export function mergeFallbackCssVariable(cssVariable: string | undefined, fallback: string | undefined): string | undefined;
 
 // @public (undocumented)
 export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | undefined): Theme;
@@ -431,6 +452,7 @@ export type Theme = {
     alias: {
         color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
             neutral: NeutralColorTokens;
+            forced?: ForcedColorTokens;
         };
         shadow: ShadowLevelTokens;
     };

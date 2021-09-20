@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { mergeFallbackCssVariable } from '@fluentui/react-theme';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import type { ToggleButtonState } from './ToggleButton.types';
 
@@ -20,6 +21,10 @@ const useRootStyles = makeStyles({
       background: theme.alias.color.neutral.neutralBackground1Pressed,
       borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
       color: theme.alias.color.neutral.neutralForeground1,
+    },
+
+    ['@media (forced-colors: active)']: {
+      background: mergeFallbackCssVariable(theme.alias.color.forced?.backgroundHighlight, 'Highlight'),
     },
   }),
   checkedOutline: theme => ({

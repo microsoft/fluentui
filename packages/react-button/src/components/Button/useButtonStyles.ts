@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { mergeFallbackCssVariable } from '@fluentui/react-theme';
 import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import type { ButtonState } from './Button.types';
 
@@ -239,12 +240,12 @@ const useRootStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  disabledFocusable: {
+  disabledFocusable: theme => ({
     ['@media (forced-colors: active)']: {
-      color: 'GrayText',
-      borderColor: 'GrayText',
+      color: mergeFallbackCssVariable(theme.alias.color.forced?.foregroundDisabled, 'GrayText'),
+      borderColor: mergeFallbackCssVariable(theme.alias.color.forced?.foregroundDisabled, 'GrayText'),
     },
-  },
+  }),
 });
 
 const useRootFocusStyles = makeStyles({

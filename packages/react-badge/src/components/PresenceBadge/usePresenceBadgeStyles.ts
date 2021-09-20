@@ -6,6 +6,7 @@ const useStyles = makeStyles({
   root: theme => ({
     padding: 0,
     borderWidth: theme.global.strokeWidth.thick,
+    forcedColorAdjust: 'none',
   }),
   thinBorder: theme => ({
     borderWidth: theme.global.strokeWidth.thin,

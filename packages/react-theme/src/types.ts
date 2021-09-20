@@ -130,6 +130,27 @@ export type SharedColorTokens = {
 };
 
 /**
+ * Design tokens for forced-colors mode override colors
+ * WARNING: should not be used unless forcibly overriding Windows High Contrast colors
+ */
+export type ForcedColorTokens = {
+  background: string;
+  backgroundButton: string;
+  backgroundFormField: string;
+  backgroundHighlight: string;
+  backgroundMark: string;
+  foreground: string;
+  foregroundDisabled: string;
+  foregroundButton: string;
+  foregroundFormField: string;
+  foregroundLink: string;
+  foregroundLinkActive: string;
+  foregroundLinkVisited: string;
+  foregroundHighlight: string;
+  foregroundMark: string;
+};
+
+/**
  * Possible color variant values
  */
 export type ColorVariants = {
@@ -414,6 +435,7 @@ export type Theme = {
   alias: {
     color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
       neutral: NeutralColorTokens;
+      forced?: ForcedColorTokens;
     };
     shadow: ShadowLevelTokens;
   };
