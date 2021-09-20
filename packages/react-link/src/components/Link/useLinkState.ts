@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import type { LinkState } from './Link.types';
 
 /**
@@ -32,8 +32,7 @@ export const useLinkState = (state: LinkState): LinkState => {
 
   // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
   state.root.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement & HTMLButtonElement>) => {
-    const keyCode = getCode(ev);
-    if ((disabled || disabledFocusable) && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    if ((disabled || disabledFocusable) && (ev.key === Enter || ev.key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {
