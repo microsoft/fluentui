@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.62",
+      "version": "9.0.0-alpha.62",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.62"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Sep 2021 07:35:26 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.61",
       "version": "9.0.0-alpha.61",

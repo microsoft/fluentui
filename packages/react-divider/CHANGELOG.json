@@ -2,6 +2,29 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.69",
+      "version": "9.0.0-alpha.69",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.69"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Sep 2021 07:35:26 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-alpha.68",
       "version": "9.0.0-alpha.68",

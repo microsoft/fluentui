@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removed conditional adding of aria-hidden",
-  "packageName": "@fluentui/react-image",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "patch"
-}

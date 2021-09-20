@@ -36,7 +36,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.34.2",
+    "@fluentui/react": "^8.34.3",
     "@fluentui/react-hooks": "^8.3.2",
     "@fluentui/style-utilities": "^8.3.2",
     "@fluentui/utilities": "^8.3.2",

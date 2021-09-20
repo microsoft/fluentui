@@ -32,7 +32,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.34.2",
+    "@fluentui/react": "^8.34.3",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.2.6",
     "@fluentui/monaco-editor": "^1.1.4",

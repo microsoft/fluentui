@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
-  "packageName": "@fluentui/test-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

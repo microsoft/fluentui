@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Change date parsing to use toLocalString()",
-  "packageName": "@fluentui/react-charting",
-  "email": "rkilburn@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

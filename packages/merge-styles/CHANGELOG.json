@@ -2,6 +2,27 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/merge-styles_v8.1.5",
+      "version": "8.1.5",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/merge-styles",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/merge-styles to v8.1.5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Aug 2021 07:35:19 GMT",
       "tag": "@fluentui/merge-styles_v8.1.5",
       "version": "8.1.5",
