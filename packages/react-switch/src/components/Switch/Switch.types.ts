@@ -59,7 +59,7 @@ export interface SwitchCommons {
    * Callback to be called when the `checked` value changes.
    */
   onChange?: (
-    ev: React.ChangeEvent<HTMLInputElement>,
+    ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>,
     data: {
       checked: boolean;
     },

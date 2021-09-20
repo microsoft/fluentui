@@ -66,9 +66,11 @@ const useIosStyles = makeStyles({
       0px 3px 1px 0px rgba(0, 0, 0, 0.06)
     `,
     ':before': {
+      opacity: 1,
       background: 'white',
     },
     ':after': {
+      opacity: 1,
       background: 'white',
     },
   },
@@ -94,7 +96,7 @@ const useMaterialStyles = makeStyles({
       ':before': {
         background: 'white',
       },
-      ':hover': {
+      ':after': {
         background: '#f50057',
       },
     },
@@ -154,8 +156,12 @@ export const BasicSwitchExample = (props: SwitchProps) => {
   const styles = useStyles();
   const [switchValue, setSwitchValue] = React.useState(false);
 
-  const switchOnChange = (ev: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => {
+  const switchOnChange = (
+    ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>,
+    data: { checked: boolean },
+  ) => {
     setSwitchValue(data.checked);
+    console.log(data.checked);
   };
 
   return (

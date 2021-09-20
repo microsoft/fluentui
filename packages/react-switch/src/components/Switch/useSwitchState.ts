@@ -3,6 +3,23 @@ import { useBoolean, useControllableState, useEventCallback, useMergedRefs } fro
 import { useFluent } from '@fluentui/react-shared-contexts';
 import type { SwitchState } from './Switch.types';
 
+interface SwitchInternalState {
+  /**
+   * The internal rendered value of the Switch.
+   */
+  internalValue: boolean;
+
+  /**
+   * Whether the thumb is currently being dragged.
+   */
+  thumbIsDragging: boolean;
+
+  /**
+   * Disposable events for the Switch.
+   */
+  disposables: (() => void)[];
+}
+
 /**
  * Validates that the `value` is a number and falls between the min and max.
  *
@@ -24,22 +41,29 @@ export const useSwitchState = (state: SwitchState) => {
   const { dir } = useFluent();
   const inputRef = useMergedRefs(state.input.ref);
   const railRef = React.useRef<HTMLDivElement>(null);
-  const disposables = React.useRef<(() => void)[]>([]);
-  const [internalValue, setInternalValue] = useControllableState({
+  const internalState = React.useRef<SwitchInternalState>({
+    internalValue: checked ? checked : defaultChecked,
+    thumbIsDragging: false,
+    disposables: [],
+  });
+
+  const [currentValue, setCurrentValue] = useControllableState({
     defaultState: defaultChecked,
     state: checked,
     initialState: false,
   });
   const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
-  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(internalValue === true ? 100 : 0);
+  const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(currentValue === true ? 100 : 0);
 
   const setChecked = React.useCallback(
-    (ev: React.ChangeEvent<HTMLInputElement>, incomingValue: boolean) => {
+    (ev: React.PointerEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>, incomingValue: boolean) => {
+      ev.stopPropagation();
       onChange?.(ev, { checked: incomingValue });
-      setInternalValue(incomingValue);
+      internalState.current.internalValue = incomingValue;
+      setCurrentValue(incomingValue);
       setRenderedPosition(incomingValue ? (dir === 'ltr' ? 100 : -100) : 0);
     },
-    [dir, onChange, setInternalValue],
+    [dir, onChange, setCurrentValue],
   );
 
   const userOnChange = state.input.onChange;
@@ -65,27 +89,39 @@ export const useSwitchState = (state: SwitchState) => {
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const incomingPosition = calculatePosition(ev);
+
+      internalState.current.thumbIsDragging = true;
       hideThumbAnimation();
-      // const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
       setRenderedPosition(incomingPosition);
-      // onChange?.(ev, { checked: incomingPosition === 100 ? true : false });
-      setInternalValue(incomingPosition === 100 ? true : false);
+
+      // If the Switch reaches a new position of 0% or 100%, update the state and fire change.
+      if (incomingPosition === 100 && internalState.current.internalValue !== true) {
+        setChecked(ev, true);
+      } else if (incomingPosition === 0 && internalState.current.internalValue !== false) {
+        setChecked(ev, false);
+      }
     },
-    [calculatePosition, hideThumbAnimation, setInternalValue],
+    [calculatePosition, hideThumbAnimation, setChecked],
   );
 
   const onPointerUp = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
-      disposables.current.forEach(dispose => dispose());
-      disposables.current = [];
+      internalState.current.disposables.forEach(dispose => dispose());
+      internalState.current.disposables = [];
       inputRef.current!.focus();
-      const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
-      showThumbAnimation();
-      setRenderedPosition(roundedPosition);
-      if (roundedPosition === 100) {
-        setChecked(ev, true);
-      } else if (roundedPosition === 0) {
-        setChecked(ev, false);
+
+      if (internalState.current.thumbIsDragging) {
+        const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
+
+        showThumbAnimation();
+        setRenderedPosition(roundedPosition);
+        if (roundedPosition === 100) {
+          setChecked(ev, true);
+        } else if (roundedPosition === 0) {
+          setChecked(ev, false);
+        }
+      } else {
+        setChecked(ev, !internalState.current.internalValue);
       }
     },
     [calculatePosition, inputRef, setChecked, showThumbAnimation],
@@ -98,10 +134,15 @@ export const useSwitchState = (state: SwitchState) => {
 
       showThumbAnimation();
       target.setPointerCapture?.(pointerId);
+      internalState.current.thumbIsDragging = false;
 
-      disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
-        target.releasePointerCapture?.(pointerId);
-      });
+      internalState.current.disposables.push(
+        on(target, 'pointermove', onPointerMove),
+        on(target, 'pointerup', onPointerUp),
+        () => {
+          target.releasePointerCapture?.(pointerId);
+        },
+      );
     },
     [onPointerMove, onPointerUp, showThumbAnimation],
   );
@@ -120,14 +161,14 @@ export const useSwitchState = (state: SwitchState) => {
 
   // Root Props
   state.root.style = rootStyles;
+  if (!disabled) {
+    state.root.onPointerDown = onPointerDown;
+  }
 
   // Input Props
   state.input.onChange = onInputChange;
-  state.input.checked = internalValue;
+  state.input.checked = currentValue;
   state.input.disabled = disabled;
-  if (!disabled) {
-    state.input.onPointerDown = onPointerDown;
-  }
   state.input.ref = inputRef;
 
   // Thumb Container Props

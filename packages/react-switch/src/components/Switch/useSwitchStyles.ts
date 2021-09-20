@@ -54,6 +54,16 @@ const useRootStyles = makeStyles({
     },
   }),
 
+  enabled: {
+    '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
+    cursor: 'pointer',
+  },
+
+  disabled: {
+    cursor: 'not-allowed',
+    pointerEvents: 'none',
+  },
+
   focusIndicator: createFocusIndicatorStyleRule(
     theme => ({
       ':after': {
@@ -80,7 +90,9 @@ const useTrackStyles = makeStyles({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    // pointerEvents: 'none',
+    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    touchAction: 'none',
+    pointerEvents: 'none',
 
     ':before': {
       position: 'absolute',
@@ -139,15 +151,15 @@ const useTrackStyles = makeStyles({
  * Styles for the thumb wrapper slot
  */
 const useThumbWrapperStyles = makeStyles({
-  thumbWrapper: theme => ({
+  thumbWrapper: {
     position: 'absolute',
     top: '0',
     bottom: '0',
     left: 'calc(var(--switch-thumb-size) * .7)',
     right: 'calc(var(--switch-thumb-size) * .7)',
-    // transition: 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
-    // pointerEvents: 'none',
-  }),
+    touchAction: 'none',
+    pointerEvents: 'none',
+  },
 });
 
 /**
@@ -162,6 +174,9 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
+    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
+    touchAction: 'none',
+    pointerEvents: 'none',
 
     ':before': {
       position: 'absolute',
@@ -216,15 +231,13 @@ const useThumbStyles = makeStyles({
  * Styles for the activeRail slot
  */
 const useActiveRailStyles = makeStyles({
-  activeRail: theme => ({
+  activeRail: {
     position: 'absolute',
     left: 'calc(var(--switch-thumb-size) * .7)',
     right: 'calc(var(--switch-thumb-size) * .7)',
-  }),
+  },
 });
 
-/**
- *
 /**
  * Styles for the hidden input slot
  */
@@ -237,14 +250,7 @@ const useInputStyle = makeStyles({
     width: '100%',
     height: '100%',
     touchAction: 'none',
-  },
-
-  enabled: {
-    cursor: 'pointer',
-  },
-
-  disabled: {
-    cursor: 'not-allowed',
+    pointerEvents: 'none',
   },
 });
 
@@ -267,6 +273,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     rootStyles.focusIndicator,
     !disabled && rootStyles.checked,
     !disabled && rootStyles.unchecked,
+    disabled ? rootStyles.disabled : rootStyles.enabled,
     state.root.className,
   );
 
@@ -294,11 +301,7 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
 
   state.activeRail.className = mergeClasses(activeRailStyles.activeRail, state.activeRail.className);
 
-  state.input.className = mergeClasses(
-    inputStyles.input,
-    disabled ? inputStyles.disabled : inputStyles.enabled,
-    state.input.className,
-  );
+  state.input.className = mergeClasses(inputStyles.input, state.input.className);
 
   return state;
 };
