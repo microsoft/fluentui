@@ -204,7 +204,14 @@ const findPropertySignature = (
   sourceFile: ts.SourceFile,
   typeName: string,
   propertyName: string,
+  seen: { typeName: string; fileName: string }[],
 ): ts.PropertySignature | undefined => {
+  // avoid infinte recursion looking up types
+  if (seen.some(x => x.fileName === sourceFile.fileName && x.typeName === typeName)) {
+    return undefined;
+  }
+  seen.push({ typeName, fileName: sourceFile.fileName });
+
   for (let i = 0; i < sourceFile.statements.length; i++) {
     const statement = sourceFile.statements[i];
 
@@ -247,6 +254,7 @@ const findPropertySignature = (
           statement.type.getSourceFile(),
           statement.name.escapedText as string,
           propertyName,
+          seen,
         );
 
         if (propertySignature) {
@@ -290,7 +298,7 @@ export function getCallbackArguments(
     );
   }
 
-  const propertySignature = findPropertySignature(program.getTypeChecker(), sourceFile, typeName, propertyName);
+  const propertySignature = findPropertySignature(program.getTypeChecker(), sourceFile, typeName, propertyName, []);
 
   if (!propertySignature) {
     throw new Error(`A file (${filename}) does not contain definition for type "${typeName}.${propertyName}".`);
