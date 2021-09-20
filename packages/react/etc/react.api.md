@@ -3549,14 +3549,24 @@ export interface IDatePickerStrings extends ICalendarStrings {
 
 // @public (undocumented)
 export interface IDatePickerStyleProps {
+    // (undocumented)
+    borderless?: boolean;
     className?: string;
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
+    hasErrorMessage?: boolean;
+    // (undocumented)
     isDatePickerShown?: boolean;
     // (undocumented)
     label?: boolean;
+    // (undocumented)
+    onlyPlaceHolder?: boolean;
+    // (undocumented)
+    required?: boolean;
     theme: ITheme;
+    // (undocumented)
+    underlined?: boolean;
 }
 
 // @public (undocumented)
@@ -3565,6 +3575,16 @@ export interface IDatePickerStyles {
     callout: IStyle;
     // (undocumented)
     icon: IStyle;
+    // (undocumented)
+    readOnlyTextfield?: IStyle;
+    // (undocumented)
+    readOnlyTextfieldDescription?: IStyle;
+    // (undocumented)
+    readOnlyTextfieldErrorMessage?: IStyle;
+    // (undocumented)
+    readOnlyTextfieldGroup?: IStyle;
+    // (undocumented)
+    readOnlyTextfieldWrapper?: IStyle;
     root: IStyle;
     // (undocumented)
     statusMessage?: IStyle;
