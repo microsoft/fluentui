@@ -20,6 +20,5 @@ export type MenuButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'menuI
 
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
-export interface MenuButtonState
-  extends Omit<ButtonState, 'iconPosition'>,
-    ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps> {}
+export type MenuButtonState = Omit<ButtonState, 'iconPosition'> &
+  ComponentStateCompat<MenuButtonProps, MenuButtonShorthandPropsCompat, MenuButtonDefaultedProps>;

@@ -95,8 +95,7 @@ export type ButtonShorthandPropsCompat = 'icon';
 
 export type ButtonDefaultedProps = 'icon' | 'size';
 
-export interface ButtonState
-  extends ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> {
+export type ButtonState = ComponentStateCompat<ButtonProps, ButtonShorthandPropsCompat, ButtonDefaultedProps> & {
   /**
    * A button can contain only an icon.
    * @default false
@@ -107,4 +106,4 @@ export interface ButtonState
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
-}
+};

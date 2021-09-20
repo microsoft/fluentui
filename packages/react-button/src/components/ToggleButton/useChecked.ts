@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableValue } from '@fluentui/react-utilities';
 
-export interface CheckedState {
+export type CheckedState = {
   checked?: boolean;
   defaultChecked?: boolean;
   onClick?: React.DOMAttributes<HTMLElement>['onClick'];
@@ -9,7 +9,7 @@ export interface CheckedState {
   role?: string;
   'aria-checked'?: React.AriaAttributes['aria-pressed'];
   'aria-pressed'?: React.AriaAttributes['aria-pressed'];
-}
+};
 
 /**
  * The useToggle hook processes adds the correct toggled state and acccessibility as needed.

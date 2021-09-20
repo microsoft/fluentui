@@ -1,6 +1,6 @@
 import type { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
 import type { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
 
-export interface MenuItemCheckboxProps extends MenuItemProps, MenuItemSelectableProps {}
+export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
 
-export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {}
+export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;

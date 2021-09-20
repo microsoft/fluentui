@@ -4,15 +4,29 @@
 
 ```ts
 
-import type { ComponentPropsCompat } from '@fluentui/react-utilities';
+import { ComponentPropsCompat } from '@fluentui/react-utilities';
 import type { ComponentStateCompat } from '@fluentui/react-utilities';
-import type { PresenceBadgeProps } from '@fluentui/react-badge';
+import { ObjectShorthandPropsCompat } from '@fluentui/react-utilities';
+import { PresenceBadgeProps } from '@fluentui/react-badge';
 import type { PresenceBadgeStatus } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { ShorthandPropsCompat } from '@fluentui/react-utilities';
+import { ShorthandPropsCompat } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export const Avatar: React_2.ForwardRefExoticComponent<AvatarProps & React_2.RefAttributes<HTMLElement>>;
+export const Avatar: React_2.ForwardRefExoticComponent<ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
+    image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
+    label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    badge?: number | React_2.ReactElement<any, string | ((props: any) => React_2.ReactElement<any, string | any | (new (props: any) => React_2.Component<any, any, any>)> | null) | (new (props: any) => React_2.Component<any, any, any>)> | React_2.ReactNodeArray | React_2.ReactPortal | "available" | "away" | "busy" | "doNotDisturb" | "offline" | "outOfOffice" | ObjectShorthandPropsCompat<PresenceBadgeProps> | null | undefined;
+    name?: string | undefined;
+    getInitials?: ((name: string, isRtl: boolean) => string) | undefined;
+    size?: 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128 | undefined;
+    square?: boolean | undefined;
+    active?: "unset" | "active" | "inactive" | undefined;
+    activeDisplay?: "ring" | "ring-shadow" | "ring-glow" | "shadow" | "glow" | undefined;
+    color?: "darkRed" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "darkGreen" | "lightTeal" | "teal" | "steel" | "blue" | "royalBlue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum" | "anchor" | "neutral" | "brand" | "colorful" | undefined;
+    idForColor?: string | undefined;
+} & React_2.RefAttributes<HTMLElement>>;
 
 // @public
 export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInitials' | 'label' | 'icon';
@@ -21,20 +35,20 @@ export type AvatarDefaultedProps = 'size' | 'color' | 'activeDisplay' | 'getInit
 export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public (undocumented)
-export interface AvatarProps extends ComponentPropsCompat, React_2.HTMLAttributes<HTMLElement> {
-    active?: 'active' | 'inactive' | 'unset';
-    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
-    badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
-    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-    getInitials?: (name: string, isRtl: boolean) => string;
-    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
-    idForColor?: string;
+export type AvatarProps = ComponentPropsCompat & React_2.HTMLAttributes<HTMLElement> & {
     image?: ShorthandPropsCompat<React_2.ImgHTMLAttributes<HTMLImageElement>>;
     label?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    icon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
+    badge?: PresenceBadgeStatus | Exclude<ShorthandPropsCompat<PresenceBadgeProps>, string>;
     name?: string;
+    getInitials?: (name: string, isRtl: boolean) => string;
     size?: AvatarSizeValue;
     square?: boolean;
-}
+    active?: 'active' | 'inactive' | 'unset';
+    activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+    color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+    idForColor?: string;
+};
 
 // @public
 export type AvatarShorthandPropsCompat = 'label' | 'image' | 'badge' | 'icon';
@@ -46,10 +60,10 @@ export const avatarShorthandPropsCompat: AvatarShorthandPropsCompat[];
 export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
-export interface AvatarState extends ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> {
+export type AvatarState = ComponentStateCompat<AvatarProps, AvatarShorthandPropsCompat, AvatarDefaultedProps> & {
     ref: React_2.Ref<HTMLElement>;
     showIcon?: boolean;
-}
+};
 
 // @public (undocumented)
 export const renderAvatar: (state: AvatarState) => JSX.Element;

@@ -11,16 +11,16 @@ import type { ARIAButtonShorthandProps } from '@fluentui/react-aria';
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
-export interface AccordionHeaderContextValue {
+export type AccordionHeaderContextValue = {
   disabled: boolean;
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   size: AccordionHeaderSize;
-}
+};
 
-export interface AccordionHeaderContextValues {
+export type AccordionHeaderContextValues = {
   accordionHeader: AccordionHeaderContextValue;
-}
+};
 
 export type AccordionHeaderSlots = {
   root: IntrinsicShorthandProps<'div'>;
@@ -39,7 +39,7 @@ export type AccordionHeaderSlots = {
   children: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 };
 
-export interface AccordionHeaderCommons {
+export type AccordionHeaderCommons = {
   /**
    * Size of spacing in the heading
    */
@@ -52,11 +52,10 @@ export interface AccordionHeaderCommons {
    * Indicates if the AccordionHeader should be rendered inline
    */
   inline: boolean;
-}
+};
 
-export interface AccordionHeaderProps extends ComponentProps<AccordionHeaderSlots>, Partial<AccordionHeaderCommons> {}
+export type AccordionHeaderProps = ComponentProps<AccordionHeaderSlots> & Partial<AccordionHeaderCommons>;
 
-export interface AccordionHeaderState
-  extends ComponentState<AccordionHeaderSlots>,
-    AccordionHeaderCommons,
-    AccordionHeaderContextValue {}
+export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
+  AccordionHeaderCommons &
+  AccordionHeaderContextValue;

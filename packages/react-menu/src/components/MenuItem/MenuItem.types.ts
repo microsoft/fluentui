@@ -31,7 +31,7 @@ export type MenuItemSlots = {
   secondaryContent?: IntrinsicShorthandProps<'span'>;
 };
 
-interface MenuItemCommons {
+type MenuItemCommons = {
   /**
    * If the menu item is a trigger for a submenu
    */
@@ -46,8 +46,8 @@ interface MenuItemCommons {
    * Clicking on the menu item will not dismiss an open menu
    */
   persistOnClick?: boolean;
-}
+};
 
-export interface MenuItemProps extends ComponentProps<Partial<MenuItemSlots>>, MenuItemCommons {}
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
 
-export interface MenuItemState extends ComponentState<MenuItemSlots>, MenuItemCommons {}
+export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;

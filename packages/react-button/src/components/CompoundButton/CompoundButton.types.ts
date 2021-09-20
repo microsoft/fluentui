@@ -7,7 +7,7 @@ import type {
   ButtonState,
 } from '../Button/Button.types';
 
-export interface CompoundButtonProps extends ButtonProps {
+export type CompoundButtonProps = ButtonProps & {
   /**
    * Second line of text that describes the action this button takes.
    */
@@ -17,12 +17,11 @@ export interface CompoundButtonProps extends ButtonProps {
    * Container that wraps the children and secondaryContent slots.
    */
   contentContainer?: ShorthandPropsCompat<React.HTMLAttributes<HTMLElement>>;
-}
+};
 
 export type CompoundButtonShorthandPropsCompat = ButtonShorthandPropsCompat | 'contentContainer' | 'secondaryContent';
 
 export type CompoundButtonDefaultedProps = ButtonDefaultedProps | 'contentContainer' | 'secondaryContent';
 
-export interface CompoundButtonState
-  extends ButtonState,
-    ComponentStateCompat<CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButtonDefaultedProps> {}
+export type CompoundButtonState = ButtonState &
+  ComponentStateCompat<CompoundButtonProps, CompoundButtonShorthandPropsCompat, CompoundButtonDefaultedProps>;
