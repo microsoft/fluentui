@@ -1,8 +1,5 @@
 import { AllPackageInfo, getAllPackageInfo } from '../monorepo/index';
 
-// Northstar is never published with beachbal
-const ignoreNorthstarScope = '!packages/fluentui/*';
-
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release
  * @returns Appropriate scoped packages for beachball
@@ -15,6 +12,8 @@ export function getScopes() {
   }
 
   const ignoreVNextScope = getVNextPackagePaths(allPackageInfo).map(path => `!${path}`);
+  // Northstar is never published with beachbal
+  const ignoreNorthstarScope = '!packages/fluentui/*';
   return [ignoreNorthstarScope, ignoreVNextScope];
 }
 
