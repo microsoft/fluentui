@@ -4,7 +4,7 @@ import { AllPackageInfo, getAllPackageInfo } from '../monorepo/index';
  * Reads package info from the monorepo and generates the scopes for beachball bump and release
  * @returns Appropriate scoped packages for beachball
  */
-export function getScopes() {
+export function getScopes(): string[] {
   const allPackageInfo = getAllPackageInfo();
 
   if (process.env.RELEASE_VNEXT) {
@@ -14,7 +14,7 @@ export function getScopes() {
   const ignoreVNextScope = getVNextPackagePaths(allPackageInfo).map(path => `!${path}`);
   // Northstar is never published with beachbal
   const ignoreNorthstarScope = '!packages/fluentui/*';
-  return [ignoreNorthstarScope, ignoreVNextScope];
+  return [ignoreNorthstarScope, ...ignoreVNextScope];
 }
 
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
