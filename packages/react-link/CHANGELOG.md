@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.83)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.82..@fluentui/react-link_v9.0.0-alpha.83)
+
+### Changes
+
+- Bump @fluentui/react-link to v9.0.0-alpha.83 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.82)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.81..@fluentui/react-link_v9.0.0-alpha.82)
+
+### Changes
+
+- Link: Refactor to use simplified prop merging. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.82 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.81)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.80..@fluentui/react-link_v9.0.0-alpha.81)
+
+### Changes
+
+- Bump @fluentui/react-link to v9.0.0-alpha.81 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.80)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.79..@fluentui/react-link_v9.0.0-alpha.80)
+
+### Changes
+
+- Bump @fluentui/react-link to v9.0.0-alpha.80 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.79)
 

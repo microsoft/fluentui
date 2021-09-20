@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 13 Sep 2021 07:37:03 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Sep 2021 07:35:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.2)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.1..@fluentui/web-components_v1.5.2)
+
+### Patches
+
+- fix slider thumb positioning math ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by chhol@microsoft.com)
+- implement caching mechanism for PaletteRGB.closestIndexOf ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by nicholasrice@users.noreply.github.com)
+
+## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.1)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.0..@fluentui/web-components_v1.5.1)
+
+### Patches
+
+- add toolbar as new web component ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
 ## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.0)
 
