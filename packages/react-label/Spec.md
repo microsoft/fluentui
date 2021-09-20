@@ -77,7 +77,6 @@ The Label component should be simple as shown below. It will just need the text 
 ```ts
 /**
  * Label Props
- * {@docCategory Label}
  */
 export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLElement> {
   /**
@@ -107,19 +106,16 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
 
 /**
  * Names of the shorthand properties in LabelProps
- * {@docCategory Label}
  */
 export type LabelShorthandProps = 'required';
 
 /**
  * Names of LabelProps that have a default value in useLabel
- * {@docCategory Label}
  */
 export type LabelDefaultedProps = never;
 
 /**
  * State used in rendering Label
- * {@docCategory Label}
  */
 export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
   /**
