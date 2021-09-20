@@ -1,3 +1,4 @@
+.cache/
 .storybook/
 .vscode/
 bundle-size/
