@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-/**
- * {@docCategory MenuTrigger }
- */
 export type MenuTriggerProps = {
   /**
    * Explicitly require single child or render function
@@ -29,7 +26,4 @@ export type MenuTriggerChildProps = Required<
   ref?: React.Ref<never>;
 };
 
-/**
- * {@docCategory MenuTrigger }
- */
 export type MenuTriggerState = MenuTriggerProps;

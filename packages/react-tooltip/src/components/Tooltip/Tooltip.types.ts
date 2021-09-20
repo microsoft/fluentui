@@ -4,7 +4,6 @@ import type { ComponentPropsCompat, ComponentStateCompat, ShorthandPropsCompat }
 
 /**
  * Properties for the Tooltip component
- * {@docCategory Tooltip}
  */
 export type TooltipProps = ComponentPropsCompat &
   React.HTMLAttributes<HTMLElement> & {
@@ -89,7 +88,6 @@ export type TooltipProps = ComponentPropsCompat &
 
 /**
  * The properties that are added to the trigger of the Tooltip
- * {@docCategory Tooltip}
  */
 export type TooltipTriggerProps = {
   ref?: React.Ref<never>;
@@ -107,13 +105,11 @@ export type OnVisibleChangeData = {
 
 /**
  * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
  */
 export type TooltipShorthandProps = 'content';
 
 /**
  * Names of TooltipProps that have a default value in useTooltip
- * {@docCategory Tooltip}
  */
 export type TooltipDefaultedProps = 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 

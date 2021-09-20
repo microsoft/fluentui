@@ -52,7 +52,6 @@ export type MenuSlots = {};
 
 /**
  * Extends and drills down Menulist props to simplify API
- * {@docCategory Menu }
  */
 export type MenuProps = Partial<MenuCommons> &
   ComponentProps<MenuSlots> & {
@@ -68,9 +67,6 @@ export type MenuProps = Partial<MenuCommons> &
     positioning?: PositioningShorthand;
   };
 
-/**
- * {@docCategory Menu }
- */
 export type MenuState = MenuCommons &
   ComponentState<MenuSlots> & {
     /**

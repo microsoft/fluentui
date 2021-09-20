@@ -119,14 +119,8 @@ type BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 A Presence Badge represents someone's availbility or status
 
 ```typescript
-/**
- * {@docCategory PresenceBadge}
- */
 export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offline';
 
-/**
- * {@docCategory PresenceBadge}
- */
 export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   /**
    * A PresenceBadge can represent several status
@@ -140,9 +134,6 @@ export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   inOffice?: boolean;
 };
 
-/**
- * {@docCategory Badge}
- */
 export type PresenceBadgeState = BadgeState & {
   /**
    * A PresenceBadge can represent several status
@@ -162,14 +153,8 @@ export type PresenceBadgeState = BadgeState & {
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
 ```typescript
-/**
- * {@docCategory CounterBadge}
- */
 export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
 
-/**
- * {@docCategory CounterBadge}
- */
 export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'shape'> & {
   /**
    * A Badge can be circular or rounded

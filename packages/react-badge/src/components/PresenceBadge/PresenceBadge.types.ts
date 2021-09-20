@@ -1,13 +1,7 @@
 import type { BadgeProps, BadgeState } from '../Badge/index';
 
-/**
- * {@docCategory PresenceBadge}
- */
 export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
-/**
- * {@docCategory PresenceBadge}
- */
 export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   /**
    * Represents several status
@@ -22,9 +16,6 @@ export type PresenceBadgeProps = Omit<BadgeProps, 'shape' | 'appearance'> & {
   outOfOffice?: boolean;
 };
 
-/**
- * {@docCategory Badge}
- */
 export type PresenceBadgeState = Omit<BadgeState, 'shape' | 'appearance'> & {
   /**
    * Represents several status

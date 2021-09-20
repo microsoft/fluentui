@@ -203,8 +203,6 @@ This imperative interface is implemented by `TooltipProvider`, and used by `Tool
  *
  * This imperative interface is used by TooltipTrigger to show and hide its tooltip
  * based on events on the trigger element.
- *
- * {@docCategory TooltipProvider}
  */
 export interface TooltipManager {
   showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => void;
@@ -218,8 +216,6 @@ export interface TooltipManager {
 
 /**
  * The arguments to TooltipManager.showTooltip
- *
- * {@docCategory TooltipProvider}
  */
 export type ShowTooltipArgs = {
   tooltip: TooltipImperativeHandle;
@@ -232,8 +228,6 @@ export type ShowTooltipArgs = {
 
 /**
  * The source of the event that caused the tooltip to be shown or hidden
- *
- * {@docCategory TooltipProvider}
  */
 export type TooltipTriggerReason = 'focus' | 'pointer';
 ```
@@ -264,9 +258,6 @@ export const useTooltipContext = () => React.useContext(internal__TooltipContext
 `TooltipTrigger` allows tooltips to be added to any focusable component that doesn't have its own `tooltip` prop. It supports a single JSX child, and works by cloning the JSX element in order to add the same `onPointerDown`, etc. listeners that are added by `useTooltipSlot`.
 
 ```ts
-/**
- * {@docCategory TooltipTrigger}
- */
 export type TooltipTriggerProps
   = Pick<TooltipProps, 'position' | 'align' | 'subtle' | 'noArrow' | 'offset'> & {
   /**
@@ -329,19 +320,14 @@ export type TooltipTriggerChildProps = Pick<
 
 /**
  * Names of the shorthand properties in TooltipTriggerProps
- * {@docCategory TooltipTrigger}
  */
 export type TooltipTriggerShorthandProps = typeof tooltipTriggerShorthandProps[number];
 
 /**
  * Names of TooltipTriggerProps that have a default value in useTooltipTrigger
- * {@docCategory TooltipTrigger}
  */
 export type TooltipTriggerDefaultedProps = 'showDelay' | 'hideDelay';
 
-/**
- * {@docCategory TooltipTrigger}
- */
 export type TooltipTriggerState = RequiredProps<
   ResolvedShorthandProps<
     TooltipTriggerProps & {
@@ -371,19 +357,14 @@ export { TooltipProps };
 
 /**
  * Names of the shorthand properties in TooltipProps
- * {@docCategory Tooltip}
  */
 export type TooltipShorthandProps = 'arrow';
 
 /**
  * Names of TooltipProps that have a default value in useTooltip
- * {@docCategory Tooltip}
  */
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset';
 
-/**
- * {@docCategory Tooltip}
- */
 export type TooltipState = ComponentState<
   React.Ref<HTMLElement>,
   TooltipProps & {

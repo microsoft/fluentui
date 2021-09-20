@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { ComponentPropsCompat, ShorthandPropsCompat } from '@fluentui/react-utilities';
 
-/**
- * {@docCategory Divider}
- */
 export type DividerProps = ComponentPropsCompat &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -41,9 +38,6 @@ export type DividerProps = ComponentPropsCompat &
     wrapper?: ShorthandPropsCompat<React.HTMLAttributes<HTMLDivElement>>;
   };
 
-/**
- * {@docCategory Divider}
- */
 export type DividerState = DividerProps & {
   /**
    * Ref to the root slot
