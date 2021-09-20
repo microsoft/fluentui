@@ -120,49 +120,50 @@ _A note about the terminology used for the elements that the tooltip is attached
 The `TooltipProps` interface is defined in `react-tooltip-trigger` so that components can specify the details of the tooltip without needing the full `react-tooltip` package.
 
 ```ts
-export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * How to position the tooltip relative to the target element. This is a "best effort" placement,
-   * but the tooltip may be flipped to the other side if there is not enough room.
-   *
-   * @defaultvalue above
-   */
-  position?: 'above' | 'below' | 'before' | 'after';
+export type TooltipProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * How to position the tooltip relative to the target element. This is a "best effort" placement,
+     * but the tooltip may be flipped to the other side if there is not enough room.
+     *
+     * @defaultvalue above
+     */
+    position?: 'above' | 'below' | 'before' | 'after';
 
-  /**
-   * How to align the tooltip along the edge of the target element.
-   *
-   * @defaultvalue center
-   */
-  align?: 'top' | 'bottom' | 'start' | 'end' | 'center';
+    /**
+     * How to align the tooltip along the edge of the target element.
+     *
+     * @defaultvalue center
+     */
+    align?: 'top' | 'bottom' | 'start' | 'end' | 'center';
 
-  /**
-   * Color variant with a subtle look
-   */
-  subtle?: boolean;
+    /**
+     * Color variant with a subtle look
+     */
+    subtle?: boolean;
 
-  /**
-   * Do not render an arrow pointing to the target element
-   */
-  noArrow?: boolean;
+    /**
+     * Do not render an arrow pointing to the target element
+     */
+    noArrow?: boolean;
 
-  /**
-   * Distance between the tooltip and the target element, in pixels
-   *
-   * @defaultvalue 4
-   */
-  offset?: number;
+    /**
+     * Distance between the tooltip and the target element, in pixels
+     *
+     * @defaultvalue 4
+     */
+    offset?: number;
 
-  /**
-   * The arrow that points to the target element. This will be rendered by default unless `noArrow` is specified.
-   */
-  arrow?: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+    /**
+     * The arrow that points to the target element. This will be rendered by default unless `noArrow` is specified.
+     */
+    arrow?: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
-  /**
-   * Imperative handle to show and hide the tooltip
-   */
-  componentRef?: React.Ref<TooltipImperativeHandle>;
-}
+    /**
+     * Imperative handle to show and hide the tooltip
+     */
+    componentRef?: React.Ref<TooltipImperativeHandle>;
+  };
 ```
 
 ### TooltipImperativeHandle
@@ -257,8 +258,8 @@ export const useTooltipContext = () => React.useContext(internal__TooltipContext
 `TooltipTrigger` allows tooltips to be added to any focusable component that doesn't have its own `tooltip` prop. It supports a single JSX child, and works by cloning the JSX element in order to add the same `onPointerDown`, etc. listeners that are added by `useTooltipSlot`.
 
 ```ts
-export interface TooltipTriggerProps
-  extends Pick<TooltipProps, 'position' | 'align' | 'subtle' | 'noArrow' | 'offset'> {
+export type TooltipTriggerProps
+  = Pick<TooltipProps, 'position' | 'align' | 'subtle' | 'noArrow' | 'offset'> & {
   /**
    * The child of TooltipTrigger is the element that triggers the tooltip. It will
    * have additional properties added, including events and aria properties.
@@ -379,9 +380,10 @@ export type TooltipState = ComponentState<
 `TooltipProvider` is responsible for providing the actual implementation of `TooltipManager` and `Tooltip`. It uses a React context to that contains those when it is included in the tree. This context will also be included into `FluentContext`.
 
 ```ts
-export interface TooltipProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  // TooltipProvider has no additional props
-}
+export type TooltipProviderProps = ComponentProps &
+  React.HTMLAttributes<HTMLElement> & {
+    // TooltipProvider has no additional props
+  };
 
 export type TooltipProviderState = ComponentState<
   React.RefObject<HTMLElement>,

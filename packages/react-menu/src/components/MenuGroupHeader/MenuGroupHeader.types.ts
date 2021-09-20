@@ -4,6 +4,6 @@ export type MenuGroupHeaderSlots = {
   root: IntrinsicShorthandProps<'div'>;
 };
 
-export interface MenuGroupHeaderProps extends ComponentProps<MenuGroupHeaderSlots> {}
+export type MenuGroupHeaderProps = ComponentProps<MenuGroupHeaderSlots>;
 
-export interface MenuGroupHeaderState extends ComponentState<MenuGroupHeaderSlots> {}
+export type MenuGroupHeaderState = ComponentState<MenuGroupHeaderSlots>;
