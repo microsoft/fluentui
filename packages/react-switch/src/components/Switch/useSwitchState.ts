@@ -30,7 +30,7 @@ export const useSwitchState = (state: SwitchState) => {
     state: checked,
     initialState: false,
   });
-  const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(false);
+  const [thumbAnimation, { setTrue: showThumbAnimation, setFalse: hideThumbAnimation }] = useBoolean(true);
   const [renderedPosition, setRenderedPosition] = React.useState<number | undefined>(internalValue === true ? 100 : 0);
 
   const setChecked = React.useCallback(
@@ -65,12 +65,13 @@ export const useSwitchState = (state: SwitchState) => {
   const onPointerMove = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const incomingPosition = calculatePosition(ev);
+      hideThumbAnimation();
       // const roundedPosition = Math.round(calculatePosition(ev)! / 100) * 100;
       setRenderedPosition(incomingPosition);
-      onChange?.(ev, { checked: incomingPosition === 100 ? true : false });
+      // onChange?.(ev, { checked: incomingPosition === 100 ? true : false });
       setInternalValue(incomingPosition === 100 ? true : false);
     },
-    [calculatePosition, setInternalValue],
+    [calculatePosition, hideThumbAnimation, setInternalValue],
   );
 
   const onPointerUp = React.useCallback(
@@ -90,61 +91,43 @@ export const useSwitchState = (state: SwitchState) => {
     [calculatePosition, inputRef, setChecked, showThumbAnimation],
   );
 
-  const onThumbPointerDown = React.useCallback(
+  const onPointerDown = React.useCallback(
     (ev: React.PointerEvent<HTMLDivElement>): void => {
       const { pointerId } = ev;
       const target = ev.target as HTMLElement;
 
+      showThumbAnimation();
       target.setPointerCapture?.(pointerId);
 
       disposables.current.push(on(target, 'pointermove', onPointerMove), on(target, 'pointerup', onPointerUp), () => {
         target.releasePointerCapture?.(pointerId);
       });
-
-      onPointerMove(ev);
-      hideThumbAnimation();
     },
-    [hideThumbAnimation, onPointerMove, onPointerUp],
+    [onPointerMove, onPointerUp, showThumbAnimation],
   );
 
-  const onRootPointerDown = React.useCallback(
-    (ev: React.PointerEvent<HTMLDivElement>): void => {
-      ev.stopPropagation();
-      setChecked(ev, !internalValue);
-    },
-    [internalValue, setChecked],
-  );
+  const rootStyles = {
+    '--switch-checked-opacity': renderedPosition! / 100,
+    '--switch-unchecked-opacity': (100 - renderedPosition!) / 100,
+  } as React.CSSProperties;
 
   const thumbWrapperStyles = {
     transform: `translate(${renderedPosition}%)`,
     transition: thumbAnimation
-      ? 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), background .1s cubic-bezier(0.33, 0.0, 0.67, 1)'
+      ? 'transform .1s cubic-bezier(0.33, 0.0, 0.67, 1), opacity .1s cubic-bezier(0.33, 0.0, 0.67, 1)'
       : 'none',
-    '::after': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      bottom: '0px',
-      right: '0px',
-      borderRadius: '999px',
-      boxSizing: 'border-box',
-      content: "''",
-      background: 'red',
-    },
   };
 
   // Root Props
-  //state.root.onPointerDown = onRootPointerDown;
-
-  // Thumb Props
-  if (!disabled) {
-    state.thumb.onPointerDown = onThumbPointerDown;
-  }
+  state.root.style = rootStyles;
 
   // Input Props
   state.input.onChange = onInputChange;
   state.input.checked = internalValue;
   state.input.disabled = disabled;
+  if (!disabled) {
+    state.input.onPointerDown = onPointerDown;
+  }
   state.input.ref = inputRef;
 
   // Thumb Container Props

@@ -14,8 +14,8 @@ const useRootStyles = makeStyles({
     '--switch-width': '40px',
     '--switch-height': '20px',
     '--switch-thumb-size': '14px',
-    '--switch-checked-opacity': '100',
-    '--switch-unchecked-opacity': '100',
+    '--switch-checked-opacity': '0',
+    '--switch-unchecked-opacity': '0',
 
     position: 'relative',
     width: 'var(--switch-width)',
@@ -28,25 +28,29 @@ const useRootStyles = makeStyles({
 
   unchecked: theme => ({
     ':hover .ms-Switch-thumb': {
-      background: theme.alias.color.neutral.neutralStrokeAccessibleHover,
-      opacity: 'var(--switch-unchecked-opacity)',
+      ':before': {
+        background: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+      },
     },
 
     ':hover .ms-Switch-track': {
-      borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
-      opacity: 'var(--switch-unchecked-opacity)',
+      ':before': {
+        borderColor: theme.alias.color.neutral.neutralStrokeAccessibleHover,
+      },
     },
   }),
 
   checked: theme => ({
     ':hover .ms-Switch-track': {
-      background: theme.alias.color.neutral.brandBackgroundHover,
-      opacity: 'var(--switch-checked-opacity)',
+      ':after': {
+        background: theme.alias.color.neutral.brandBackgroundHover,
+      },
     },
 
     ':active .ms-Switch-track': {
-      background: theme.alias.color.neutral.brandBackgroundPressed,
-      opacity: 'var(--switch-checked-opacity)',
+      ':after': {
+        background: theme.alias.color.neutral.brandBackgroundPressed,
+      },
     },
   }),
 
@@ -76,33 +80,58 @@ const useTrackStyles = makeStyles({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    boxSizing: 'border-box',
-    borderRadius: '999px',
-    transition: 'background .1s cubic-bezier(0.33, 0.0, 0.67, 1), borderColor .1s cubic-bezier(0.33, 0.0, 0.67, 1)',
     // pointerEvents: 'none',
+
+    ':before': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      boxSizing: 'border-box',
+      borderRadius: '999px',
+      content: "''",
+      opacity: 'var(--switch-unchecked-opacity)',
+    },
+
+    ':after': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      boxSizing: 'border-box',
+      borderRadius: '999px',
+      content: "''",
+      opacity: 'var(--switch-checked-opacity)',
+    },
   }),
 
   unchecked: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
-    background: 'none',
-    opacity: 'var(--switch-unchecked-opacity)',
+    ':before': {
+      border: `1px solid ${theme.alias.color.neutral.neutralStrokeAccessible}`,
+      background: 'none',
+    },
   }),
 
   checked: theme => ({
-    background: theme.alias.color.neutral.brandBackground,
-    border: 'none',
-    opacity: 'var(--switch-checked-opacity)',
+    ':after': {
+      background: theme.alias.color.neutral.brandBackground,
+      border: 'none',
+    },
   }),
 
   disabledUnchecked: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
-    opacity: 'var(--switch-unchecked-opacity)',
+    ':before': {
+      border: `1px solid ${theme.alias.color.neutral.neutralStrokeDisabled}`,
+    },
   }),
 
   disabledChecked: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
-    background: theme.alias.color.neutral.neutralBackgroundDisabled,
-    opacity: 'var(--switch-checked-opacity)',
+    ':after': {
+      border: `1px solid ${theme.alias.color.neutral.transparentStrokeDisabled}`,
+      background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    },
   }),
 });
 
@@ -133,27 +162,53 @@ const useThumbStyles = makeStyles({
     borderRadius: theme.global.borderRadius.circular,
     top: '50%',
     transform: 'translate(-50%, -50%)',
+
+    ':before': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      borderRadius: theme.global.borderRadius.circular,
+      content: "''",
+      opacity: 'var(--switch-unchecked-opacity)',
+    },
+
+    ':after': {
+      position: 'absolute',
+      top: '0px',
+      left: '0px',
+      bottom: '0px',
+      right: '0px',
+      borderRadius: theme.global.borderRadius.circular,
+      content: "''",
+      opacity: 'var(--switch-checked-opacity)',
+    },
   }),
 
   unchecked: theme => ({
-    background: theme.alias.color.neutral.neutralStrokeAccessible,
-    opacity: 'var(--switch-unchecked-opacity)',
+    ':before': {
+      background: theme.alias.color.neutral.neutralStrokeAccessible,
+    },
   }),
 
   checked: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundOnBrand,
-    opacity: 'var(--switch-checked-opacity)',
+    ':after': {
+      background: theme.alias.color.neutral.neutralForegroundOnBrand,
+    },
   }),
 
   disabledUnchecked: theme => ({
-    border: `1px solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
-    background: theme.alias.color.neutral.neutralBackground1,
-    opacity: 'var(--switch-unchecked-opacity)',
+    ':before': {
+      border: `1px solid ${theme.alias.color.neutral.neutralForegroundDisabled}`,
+      background: theme.alias.color.neutral.neutralBackground1,
+    },
   }),
 
   disabledChecked: theme => ({
-    background: theme.alias.color.neutral.neutralForegroundDisabled,
-    opacity: 'var(--switch-checked-opacity)',
+    ':after': {
+      background: theme.alias.color.neutral.neutralForegroundDisabled,
+    },
   }),
 });
 
@@ -176,10 +231,12 @@ const useActiveRailStyles = makeStyles({
 const useInputStyle = makeStyles({
   input: {
     opacity: 0,
+    position: 'absolute',
+    padding: 0,
+    margin: 0,
     width: '100%',
     height: '100%',
-    margin: 0,
-    pointerEvents: 'none',
+    touchAction: 'none',
   },
 
   enabled: {
@@ -208,15 +265,18 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
     rootClassName + (checked ? ' checked' : ''),
     rootStyles.root,
     rootStyles.focusIndicator,
-    !disabled && (checked ? rootStyles.checked : rootStyles.unchecked),
+    !disabled && rootStyles.checked,
+    !disabled && rootStyles.unchecked,
     state.root.className,
   );
 
   state.track.className = mergeClasses(
     trackClassName,
     trackStyles.track,
-    !disabled && (checked ? trackStyles.checked : trackStyles.unchecked),
-    disabled && (checked ? trackStyles.disabledChecked : trackStyles.disabledUnchecked),
+    !disabled && trackStyles.checked,
+    !disabled && trackStyles.unchecked,
+    disabled && trackStyles.disabledChecked,
+    disabled && trackStyles.disabledUnchecked,
     state.track.className,
   );
 
@@ -225,8 +285,10 @@ export const useSwitchStyles = (state: SwitchState): SwitchState => {
   state.thumb.className = mergeClasses(
     thumbClassName,
     thumbStyles.thumb,
-    !disabled && (checked ? thumbStyles.checked : thumbStyles.unchecked),
-    disabled && (checked ? thumbStyles.disabledChecked : thumbStyles.disabledUnchecked),
+    !disabled && thumbStyles.checked,
+    !disabled && thumbStyles.unchecked,
+    disabled && thumbStyles.disabledChecked,
+    disabled && thumbStyles.disabledUnchecked,
     state.thumb.className,
   );
 
