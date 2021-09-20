@@ -84,7 +84,7 @@ steps:
     displayName: yarn bundle
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      yarn beachball publish -b origin/master -n $(npmToken) --access public -y
       git reset --hard origin/master
     env:
       GITHUB_PAT: $(githubPAT)
