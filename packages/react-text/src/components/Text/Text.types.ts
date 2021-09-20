@@ -7,7 +7,7 @@ export type TextSlots = {
   root: IntrinsicShorthandProps<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
 };
 
-export interface TextCommons {
+export type TextCommons = {
   /**
    * Wraps the text content on white spaces.
    *
@@ -77,7 +77,7 @@ export interface TextCommons {
    * @defaultValue start
    */
   align: 'start' | 'center' | 'end' | 'justify';
-}
+};
 
 /**
  * Text Props
@@ -87,4 +87,4 @@ export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
 /**
  * State used in rendering Text
  */
-export interface TextState extends ComponentState<TextSlots>, TextCommons {}
+export type TextState = ComponentState<TextSlots> & TextCommons;

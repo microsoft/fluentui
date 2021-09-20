@@ -3,7 +3,7 @@ import { mergeClasses } from '@fluentui/react-make-styles';
 import { renderText, useText, useTextStyles } from '../Text';
 import type { TextProps } from '../Text';
 
-export interface Props extends Omit<TextProps, 'font' | 'size'> {}
+export type Props = Omit<TextProps, 'font' | 'size'>;
 
 export function createWrapper(options: {
   displayName: string;
