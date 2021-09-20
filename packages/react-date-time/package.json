@@ -30,7 +30,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.34.2",
+    "@fluentui/react": "^8.34.3",
     "@fluentui/set-version": "^8.1.4",
     "tslib": "^2.1.0"
   },
