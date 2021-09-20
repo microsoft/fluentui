@@ -88,7 +88,7 @@ export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.Ref
 export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
 
 // @public (undocumented)
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & Partial<MenuTriggerChildProps> & {
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & Partial<Omit<MenuTriggerChildProps, 'ref'>> & {
     menuIcon?: ShorthandPropsCompat<React_2.HTMLAttributes<HTMLElement>>;
 };
 
@@ -112,6 +112,34 @@ export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
 
 // @public
 export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
+
+// @public
+export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
+
+// @public
+export const SplitButton: React_2.ForwardRefExoticComponent<SplitButtonProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type SplitButtonDefaultedProps = 'size';
+
+// @public (undocumented)
+export interface SplitButtonProps extends Omit<ButtonProps, ButtonShorthandPropsCompat>, MenuButtonProps {
+    button?: ShorthandPropsCompat<ButtonProps>;
+    buttonRef?: React_2.Ref<HTMLElement>;
+    menuButton?: ShorthandPropsCompat<MenuButtonProps>;
+    menuButtonRef?: React_2.Ref<HTMLElement>;
+}
+
+// @public (undocumented)
+export const splitButtonShorthandProps: SplitButtonShorthandPropsCompat[];
+
+// @public (undocumented)
+export type SplitButtonShorthandPropsCompat = 'button' | 'menuButton';
+
+// @public (undocumented)
+export interface SplitButtonState extends ComponentStateCompat<SplitButtonProps, SplitButtonShorthandPropsCompat, SplitButtonDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
 
 // @public
 export const ToggleButton: React_2.ForwardRefExoticComponent<ToggleButtonProps & React_2.RefAttributes<HTMLElement>>;
@@ -153,11 +181,17 @@ export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundBu
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
 
-// @public (undocumented)
+// @public
 export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
 export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
+
+// @public
+export const useSplitButton: (props: SplitButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
+
+// @public (undocumented)
+export const useSplitButtonStyles: (state: SplitButtonState) => SplitButtonState;
 
 // @public
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;

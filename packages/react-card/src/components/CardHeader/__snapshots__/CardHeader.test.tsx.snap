@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardHeader renders a default state 1`] = `
+<div>
+  <div
+    class=""
+  >
+    <div
+      class=""
+    >
+      Image slot
+    </div>
+    <div
+      class=""
+    >
+      <span>
+        Title slot
+      </span>
+      <span>
+        Description slot
+      </span>
+    </div>
+    <div>
+      Action slot
+    </div>
+  </div>
+</div>
+`;

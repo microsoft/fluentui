@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.56)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.55..@fluentui/react-positioning_v9.0.0-alpha.56)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.56 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.55)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.54..@fluentui/react-positioning_v9.0.0-alpha.55)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.55 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.54)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.53..@fluentui/react-positioning_v9.0.0-alpha.54)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.54 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.53)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.52..@fluentui/react-positioning_v9.0.0-alpha.53)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.53 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.52)
 

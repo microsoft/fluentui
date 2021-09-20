@@ -2,6 +2,94 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.79",
+      "version": "9.0.0-alpha.79",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.78",
+      "version": "9.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "comment": "Menu: Making MenuTrigger accept function components which customize where props go as children.",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "comment": "Fix typings in React.forwardRef",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.77"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "comment": "chore(Menu): Align docs with proposed format",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.76"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 16:31:53 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.75",
       "version": "9.0.0-alpha.75",

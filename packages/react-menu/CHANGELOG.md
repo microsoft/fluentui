@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.79)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.78..@fluentui/react-menu_v9.0.0-alpha.79)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.79 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.78)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.77..@fluentui/react-menu_v9.0.0-alpha.78)
+
+### Changes
+
+- Menu: Making MenuTrigger accept function components which customize where props go as children. ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.78 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.77)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.76..@fluentui/react-menu_v9.0.0-alpha.77)
+
+### Changes
+
+- Fix typings in React.forwardRef ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.77 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.76)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.75..@fluentui/react-menu_v9.0.0-alpha.76)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.76 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.75)
 

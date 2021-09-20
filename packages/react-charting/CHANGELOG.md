@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.42)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.41..@fluentui/react-charting_v5.3.42)
+
+### Patches
+
+- Change date parsing to use toLocalString() ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by rkilburn@users.noreply.github.com)
+- Bump @fluentui/react-charting to v5.3.42 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [5.3.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.41)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.40..@fluentui/react-charting_v5.3.41)
+
+### Patches
+
+- Bump @fluentui/react-charting to v5.3.41 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by gcox@microsoft.com)
+
+## [5.3.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.40)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.39..@fluentui/react-charting_v5.3.40)
+
+### Patches
+
+- Bump @fluentui/react-charting to v5.3.40 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by dmitry@grechka.family)
+
+## [5.3.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.39)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.38..@fluentui/react-charting_v5.3.39)
+
+### Patches
+
+- Bump @fluentui/react-charting to v5.3.39 ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by sarah.higley@microsoft.com)
 
 ## [5.3.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.38)
 

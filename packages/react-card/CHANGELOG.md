@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Fri, 10 Sep 2021 16:31:53 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Sep 2021 07:36:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.4)
+
+Mon, 20 Sep 2021 07:36:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-alpha.3..@fluentui/react-card_v9.0.0-alpha.4)
+
+### Changes
+
+- Bump @fluentui/react-card to v9.0.0-alpha.4 ([PR #19844](https://github.com/microsoft/fluentui/pull/19844) by lingfangao@hotmail.com)
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.3)
+
+Fri, 17 Sep 2021 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-alpha.2..@fluentui/react-card_v9.0.0-alpha.3)
+
+### Changes
+
+- Bump @fluentui/react-card to v9.0.0-alpha.3 ([PR #19840](https://github.com/microsoft/fluentui/pull/19840) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.2)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-alpha.1..@fluentui/react-card_v9.0.0-alpha.2)
+
+### Changes
+
+- Bump @fluentui/react-card to v9.0.0-alpha.2 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by behowell@microsoft.com)
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.1)
+
+Tue, 14 Sep 2021 20:09:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-alpha.0..@fluentui/react-card_v9.0.0-alpha.1)
+
+### Changes
+
+- Phase 1 release ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by andredias@microsoft.com)
+- Bump @fluentui/react-card to v9.0.0-alpha.1 ([PR #19155](https://github.com/microsoft/fluentui/pull/19155) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-alpha.0)
 
