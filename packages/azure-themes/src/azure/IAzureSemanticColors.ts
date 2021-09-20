@@ -219,4 +219,18 @@ export interface IAzureSemanticColors {
     inactiveDisabledBackground: string;
     activeBackgroundPressed: string;
   };
+  calendar: {
+    background: string;
+    text: {
+      rest: string;
+      hover: string;
+      disabled: string;
+      outside: string;
+    };
+    button: {
+      border: string;
+      selected: string;
+      hover: string;
+    };
+  };
 }
