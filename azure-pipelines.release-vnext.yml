@@ -43,15 +43,15 @@ steps:
     displayName: yarn
 
   - script: |
-      yarn build --to @fluentui/react-components
+      yarn run:published build --production --no-cache
     displayName: yarn build
 
   - script: |
-      yarn test --to @fluentui/react-components
+      yarn run:published test
     displayName: yarn test
 
   - script: |
-      yarn lint --to @fluentui/react-components
+      yarn run:published lint
     displayName: yarn lint
 
   - script: |
