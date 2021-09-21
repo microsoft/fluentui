@@ -4,6 +4,6 @@ export const on = <T>(
   callback: (ev: T) => void,
   options?: boolean,
 ) => {
-  element.addEventListener(eventName, (callback as unknown) as (ev: Event) => void);
-  return () => element.removeEventListener(eventName, (callback as unknown) as (ev: Event) => void);
+  element.addEventListener(eventName, (callback as unknown) as (ev: Event) => void, options);
+  return () => element.removeEventListener(eventName, (callback as unknown) as (ev: Event) => void, options);
 };
